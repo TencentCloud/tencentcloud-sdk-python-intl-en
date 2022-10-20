@@ -14723,7 +14723,7 @@ For other valid values, see [RFC 5646](https://tools.ietf.org/html/rfc5646).
         :type Format: str
         :param Content: Subtitle content, which is [Base64-encoded](https://tools.ietf.org/html/rfc4648) strings
         :type Content: str
-        :param Id: Subtitle ID. Its length cannot exceed 16 characters. Uppercase and lowercase letters, numbers, underscores (_), and hyphens (-) are supported. It cannot be the same as the IDs of the existing subtitles in the media file.
+        :param Id: The subtitle ID. It can be up to 16 characters long, can contain letters, numbers, underscores (_), and hyphens (-), and cannot be identical to an existing subtitle ID.
         :type Id: str
         """
         self.Name = None

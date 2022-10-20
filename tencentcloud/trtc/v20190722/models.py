@@ -775,7 +775,7 @@ class McuPublishCdnParam(AbstractModel):
         r"""
         :param PublishCdnUrl: The URLs of the CDNs to relay to.
         :type PublishCdnUrl: str
-        :param IsTencentCdn: Whether to relay to Tencent Cloud’s CDN. 0 (default): No; 1: Yes. An optimized route will be assigned if you relay to Tencent Cloud’s CDN.
+        :param IsTencentCdn: Whether to relay to Tencent Cloud’s CDN. 0 (default): Third-party CDN; 1: Tencent Cloud’s CDN. Note: Relaying to a third-party CDN will incur fees. If you are relaying to Tencent Cloud’s CDN, to avoid incurring fees, be sure to set this parameter to `1`. For details, see the API document.
         :type IsTencentCdn: int
         """
         self.PublishCdnUrl = None
@@ -1628,9 +1628,9 @@ class StorageParams(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CloudStorage: The third-party cloud storage information (not supported currently).
+        :param CloudStorage: The account information for third-party cloud storage. This parameter is not available currently. Please use `CloudVod` instead to save files to Tencent Cloud VOD.
         :type CloudStorage: :class:`tencentcloud.trtc.v20190722.models.CloudStorage`
-        :param CloudVod: The VOD information.
+        :param CloudVod: The account information for saving files to Tencent Cloud VOD. This parameter is required. Currently, you can only save files to Tencent Cloud VOD.
         :type CloudVod: :class:`tencentcloud.trtc.v20190722.models.CloudVod`
         """
         self.CloudStorage = None

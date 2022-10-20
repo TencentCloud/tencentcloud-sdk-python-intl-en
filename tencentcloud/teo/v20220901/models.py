@@ -44,6 +44,201 @@ class AccelerateType(AbstractModel):
         
 
 
+class AclCondition(AbstractModel):
+    """The condition that makes up an access control rule
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MatchFrom: The field to match. Values:
+<li>`host`: Request domain name</li>
+<li>`sip`: Client IP</li>
+<li>`ua`: User-Agent</li>
+<li>`cookie`: Cookie</li>
+<li>`cgi`: CGI script</li>
+<li>`xff`: XFF header</li>
+<li>`url`: Request URL</li>
+<li>`accept`: Request content type</li>
+<li>`method`: Request method</li>
+<li>`header`: Request header</li>
+<li>`sip_proto`: Network layer protocol</li>
+        :type MatchFrom: str
+        :param MatchParam: The parameter of the field. When `MatchFrom = header`, the key contained in the header can be passed.
+        :type MatchParam: str
+        :param Operator: The logical operator. Values:
+<li>`equal`: Value equals</li>
+<li>`not_equal`: Value not equals</li>
+<li>`include`: String contains</li>
+<li>`not_include`: String not contains</li>
+<li>`match`: IP matches</li>
+<li>`not_match`: IP not matches</li>
+<li>`include_area`: Regions contain</li>
+<li>`is_empty`: Value left empty</li>
+<li>`not_exists`: Key fields not exist</li>
+<li>`regexp`: Regex matches</li>
+<li>`len_gt`: Value greater than</li>
+<li>`len_lt`: Value smaller than</li>
+<li>`len_eq`: Value equals</li>
+<li>`match_prefix`: Prefix matches</li>
+<li>`match_suffix`: Suffix matches</li>
+<li>`wildcard`: Wildcard</li>
+        :type Operator: str
+        :param MatchContent: The content to match.
+        :type MatchContent: str
+        """
+        self.MatchFrom = None
+        self.MatchParam = None
+        self.Operator = None
+        self.MatchContent = None
+
+
+    def _deserialize(self, params):
+        self.MatchFrom = params.get("MatchFrom")
+        self.MatchParam = params.get("MatchParam")
+        self.Operator = params.get("Operator")
+        self.MatchContent = params.get("MatchContent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AclConfig(AbstractModel):
+    """ACL configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: Switch. Values:
+<li>`on`: Enable</li>
+<li>`off`: Disable</li>
+        :type Switch: str
+        :param AclUserRules: The custom rule.
+        :type AclUserRules: list of AclUserRule
+        """
+        self.Switch = None
+        self.AclUserRules = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("AclUserRules") is not None:
+            self.AclUserRules = []
+            for item in params.get("AclUserRules"):
+                obj = AclUserRule()
+                obj._deserialize(item)
+                self.AclUserRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AclUserRule(AbstractModel):
+    """The custom rule
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleName: The rule name.
+        :type RuleName: str
+        :param Action: The rule action. Values:
+<li>`trans`: Allow the request.</li>
+<li>`drop`: Block the request.</li>
+<li>`monitor`: Observe the request.</li>
+<li>`ban`: Block the IP.</li>
+<li>`redirect`: Redirect the request.</li>
+<li>`page`: Return the specified page.</li>
+<li>`alg`: Verify the request by Javascript challenge.</li>
+        :type Action: str
+        :param RuleStatus: The rule status. Values:
+<li>`on`: Enabled</li>
+<li>`off`: Disabled</li>
+        :type RuleStatus: str
+        :param AclConditions: The custom rule.
+        :type AclConditions: list of AclCondition
+        :param RulePriority: The rule priority. Value range: 0-100.
+        :type RulePriority: int
+        :param RuleID: The rule ID, which is only used as an output parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RuleID: int
+        :param UpdateTime: The update time, which is only used as an output parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UpdateTime: str
+        :param PunishTime: The IP blocking duration. Value range: 0 seconds - 2 days. Default value: 0 seconds.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PunishTime: int
+        :param PunishTimeUnit: The unit of the IP blocking duration. Values:
+<li>`second`: Second</li>
+<li>`minutes`: Minute</li>
+<li>`hour`: Hour</li>Default value: second.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PunishTimeUnit: str
+        :param Name: The name of the custom page, which defaults to an empty string.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Name: str
+        :param PageId: The ID of the custom page, which defaults to 0.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PageId: int
+        :param RedirectUrl: The redirection URL, which must be a subdomain name of the site. It defaults to an empty string.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RedirectUrl: str
+        :param ResponseCode: The response code returned after redirection, which defaults to 0.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ResponseCode: int
+        """
+        self.RuleName = None
+        self.Action = None
+        self.RuleStatus = None
+        self.AclConditions = None
+        self.RulePriority = None
+        self.RuleID = None
+        self.UpdateTime = None
+        self.PunishTime = None
+        self.PunishTimeUnit = None
+        self.Name = None
+        self.PageId = None
+        self.RedirectUrl = None
+        self.ResponseCode = None
+
+
+    def _deserialize(self, params):
+        self.RuleName = params.get("RuleName")
+        self.Action = params.get("Action")
+        self.RuleStatus = params.get("RuleStatus")
+        if params.get("AclConditions") is not None:
+            self.AclConditions = []
+            for item in params.get("AclConditions"):
+                obj = AclCondition()
+                obj._deserialize(item)
+                self.AclConditions.append(obj)
+        self.RulePriority = params.get("RulePriority")
+        self.RuleID = params.get("RuleID")
+        self.UpdateTime = params.get("UpdateTime")
+        self.PunishTime = params.get("PunishTime")
+        self.PunishTimeUnit = params.get("PunishTimeUnit")
+        self.Name = params.get("Name")
+        self.PageId = params.get("PageId")
+        self.RedirectUrl = params.get("RedirectUrl")
+        self.ResponseCode = params.get("ResponseCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Action(AbstractModel):
     """Rule engine feature operation. A feature can be of only one of the following three types, so each item in the `RuleAction` array can be of only one of the following types. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view more requirements for entering feature items.
 
@@ -114,16 +309,16 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 class AdvancedFilter(AbstractModel):
     """Key-value pair filters for conditional filtering queries and fuzzy queries, such as filtering ID, name, and status.
-    If there are multiple filters, they’re combined with `AND`.
-    Values of the same Filter are combined with `OR`.
+    If more than one filter exists, the logical relationship between these filters is `AND`.
+    If one filter has multiple values, the logical relationship between these values is `OR`.
 
     """
 
     def __init__(self):
         r"""
-        :param Name: The name of the field to filter.
+        :param Name: Field to be filtered.
         :type Name: str
-        :param Values: Values of the filtered field.
+        :param Values: Value of the filtered field.
         :type Values: list of str
         :param Fuzzy: Whether to enable fuzzy query.
         :type Fuzzy: bool
@@ -137,6 +332,262 @@ class AdvancedFilter(AbstractModel):
         self.Name = params.get("Name")
         self.Values = params.get("Values")
         self.Fuzzy = params.get("Fuzzy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AdvancedOriginGroup(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OriginGroupConditions: 
+        :type OriginGroupConditions: list of OriginGroupCondition
+        :param OriginGroupId: 
+        :type OriginGroupId: str
+        :param BackupOriginGroupId: 
+        :type BackupOriginGroupId: str
+        """
+        self.OriginGroupConditions = None
+        self.OriginGroupId = None
+        self.BackupOriginGroupId = None
+
+
+    def _deserialize(self, params):
+        if params.get("OriginGroupConditions") is not None:
+            self.OriginGroupConditions = []
+            for item in params.get("OriginGroupConditions"):
+                obj = OriginGroupCondition()
+                obj._deserialize(item)
+                self.OriginGroupConditions.append(obj)
+        self.OriginGroupId = params.get("OriginGroupId")
+        self.BackupOriginGroupId = params.get("BackupOriginGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiRule(AbstractModel):
+    """AI rule engine
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Mode: The status of the AI rule engine. Values:
+<li>`smart_status_close`: Disabled</li>
+<li>`smart_status_open`: Block</li>
+<li>`smart_status_observe`: Observe</li>
+        :type Mode: str
+        """
+        self.Mode = None
+
+
+    def _deserialize(self, params):
+        self.Mode = params.get("Mode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApplicationProxy(AbstractModel):
+    """Application proxy instance
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: The site ID.
+        :type ZoneId: str
+        :param ZoneName: The site name.
+        :type ZoneName: str
+        :param ProxyId: The proxy ID.
+        :type ProxyId: str
+        :param ProxyName: The domain name or subdomain name when `ProxyType=hostname`.
+The instance name when `ProxyType=instance`.
+        :type ProxyName: str
+        :param ProxyType: The proxy type. Values:
+<li>`hostname`: The proxy is created by subdomain name.</li>
+<li>`instance`: The proxy is created by instance.</li>
+        :type ProxyType: str
+        :param PlatType: The scheduling mode. Values:
+<li>`ip`: Schedule via Anycast IP.</li>
+<li>`domain`: Schedule via CNAME.</li>
+        :type PlatType: str
+        :param Area: Acceleration region. Values:
+<li>`mainland`: Chinese mainland.</li>
+<li>`overseas`: Global (outside the Chinese mainland);</li>
+Default value: overseas.
+        :type Area: str
+        :param SecurityType: Whether to enable security protection. Values:
+<li>`0`: Disable security protection.</li>
+<li>`1`: Enable security protection.</li>
+        :type SecurityType: int
+        :param AccelerateType: Whether to enable acceleration. Values:
+<li>`0`: Disable acceleration.</li>
+<li>`1`: Enable acceleration.</li>
+        :type AccelerateType: int
+        :param SessionPersistTime: The session persistence duration.
+        :type SessionPersistTime: int
+        :param Status: The rule status. Values:
+<li>`online`: Enabled</li>
+<li>`offline`: Disabled</li>
+<li>`progress`: Deploying</li>
+<li>`stopping`: Disabling</li>
+<li>`fail`: Failed to deploy or disable</li>
+        :type Status: str
+        :param BanStatus: The blocking status of the proxy. Values:
+<li>`banned`: Blocked</li>
+<li>`banning`: Blocking</li>
+<li>`recover`: Unblocked</li>
+<li>`recovering`: Unblocking</li>
+        :type BanStatus: str
+        :param ScheduleValue: Scheduling information.
+        :type ScheduleValue: list of str
+        :param HostId: When `ProxyType=hostname`:
+This field indicates the unique ID of the subdomain name.
+        :type HostId: str
+        :param Ipv6: The IPv6 access configuration.
+        :type Ipv6: :class:`tencentcloud.teo.v20220901.models.Ipv6`
+        :param UpdateTime: The update time.
+        :type UpdateTime: str
+        :param ApplicationProxyRules: List of rules.
+        :type ApplicationProxyRules: list of ApplicationProxyRule
+        """
+        self.ZoneId = None
+        self.ZoneName = None
+        self.ProxyId = None
+        self.ProxyName = None
+        self.ProxyType = None
+        self.PlatType = None
+        self.Area = None
+        self.SecurityType = None
+        self.AccelerateType = None
+        self.SessionPersistTime = None
+        self.Status = None
+        self.BanStatus = None
+        self.ScheduleValue = None
+        self.HostId = None
+        self.Ipv6 = None
+        self.UpdateTime = None
+        self.ApplicationProxyRules = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.ZoneName = params.get("ZoneName")
+        self.ProxyId = params.get("ProxyId")
+        self.ProxyName = params.get("ProxyName")
+        self.ProxyType = params.get("ProxyType")
+        self.PlatType = params.get("PlatType")
+        self.Area = params.get("Area")
+        self.SecurityType = params.get("SecurityType")
+        self.AccelerateType = params.get("AccelerateType")
+        self.SessionPersistTime = params.get("SessionPersistTime")
+        self.Status = params.get("Status")
+        self.BanStatus = params.get("BanStatus")
+        self.ScheduleValue = params.get("ScheduleValue")
+        self.HostId = params.get("HostId")
+        if params.get("Ipv6") is not None:
+            self.Ipv6 = Ipv6()
+            self.Ipv6._deserialize(params.get("Ipv6"))
+        self.UpdateTime = params.get("UpdateTime")
+        if params.get("ApplicationProxyRules") is not None:
+            self.ApplicationProxyRules = []
+            for item in params.get("ApplicationProxyRules"):
+                obj = ApplicationProxyRule()
+                obj._deserialize(item)
+                self.ApplicationProxyRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApplicationProxyRule(AbstractModel):
+    """Application proxy rule
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Proto: The protocol. Values:
+<li>`TCP`: TCP protocol.</li>
+<li>`UDP`: UDP protocol.</li>
+        :type Proto: str
+        :param Port: The port, which can be specified in the following formats:
+Single port, such as 80.
+Port range, such as 81-82.
+Note that each rule can have up to 20 ports.
+        :type Port: list of str
+        :param OriginType: The origin type. Values:
+<li>`custom`: Specified origins</li>
+<li>`origins`: Origin group</li>
+        :type OriginType: str
+        :param OriginValue: Origin server information.
+When `OriginType=custom`, it indicates one or more origin servers. Example:
+OriginValue=["8.8.8.8:80","9.9.9.9:80"]
+OriginValue=["test.com:80"];
+When `OriginType=origins`, it indicates an origin group ID. Example:
+OriginValue=["origin-537f5b41-162a-11ed-abaa-525400c5da15"]。
+        :type OriginValue: list of str
+        :param RuleId: The rule ID.
+        :type RuleId: str
+        :param Status: The rule status. Values:
+<li>`online`: Enabled.</li>
+<li>`offline`: Disabled.</li>
+<li>`progress`: Deploying</li>
+<li>`stopping`: Disabling</li>
+<li>`fail`: Failed to deploy or disable</li>
+        :type Status: str
+        :param ForwardClientIp: Passes the client IP. Values:
+<li>`TOA`: Pass the client IP via TOA (available only when `Proto=TCP`).</li>
+<li>`PPV1`: Pass the client IP via Proxy Protocol V1 (available only when `Proto=TCP`).</li>
+<li>`PPV2`: Pass the client IP via Proxy Protocol V2.</li>
+<li>`OFF`: Not pass the client IP.</li>Default value: OFF.
+        :type ForwardClientIp: str
+        :param SessionPersist: Whether to enable session persistence. Values:
+<li>`true`: Enable</li>
+<li>`false`: Disable</li>Default value: false
+        :type SessionPersist: bool
+        """
+        self.Proto = None
+        self.Port = None
+        self.OriginType = None
+        self.OriginValue = None
+        self.RuleId = None
+        self.Status = None
+        self.ForwardClientIp = None
+        self.SessionPersist = None
+
+
+    def _deserialize(self, params):
+        self.Proto = params.get("Proto")
+        self.Port = params.get("Port")
+        self.OriginType = params.get("OriginType")
+        self.OriginValue = params.get("OriginValue")
+        self.RuleId = params.get("RuleId")
+        self.Status = params.get("Status")
+        self.ForwardClientIp = params.get("ForwardClientIp")
+        self.SessionPersist = params.get("SessionPersist")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -201,6 +652,51 @@ class BillingDataFilter(AbstractModel):
     def _deserialize(self, params):
         self.Type = params.get("Type")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BotConfig(AbstractModel):
+    """Bot security configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: Whether to enable bot security. Values:
+<li>`on`: Enable</li>
+<li>`off`: Disable</li>
+        :type Switch: str
+        :param BotManagedRule: The settings of the bot managed rule. If it is null, the settings that were last configured will be used.
+        :type BotManagedRule: :class:`tencentcloud.teo.v20220901.models.BotManagedRule`
+        :param BotPortraitRule: The settings of the client reputation rule. If it is null, the settings that were last configured will be used.
+        :type BotPortraitRule: :class:`tencentcloud.teo.v20220901.models.BotPortraitRule`
+        :param IntelligenceRule: The bot intelligence settings. If it is null, the settings that were last configured will be used.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IntelligenceRule: :class:`tencentcloud.teo.v20220901.models.IntelligenceRule`
+        """
+        self.Switch = None
+        self.BotManagedRule = None
+        self.BotPortraitRule = None
+        self.IntelligenceRule = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("BotManagedRule") is not None:
+            self.BotManagedRule = BotManagedRule()
+            self.BotManagedRule._deserialize(params.get("BotManagedRule"))
+        if params.get("BotPortraitRule") is not None:
+            self.BotPortraitRule = BotPortraitRule()
+            self.BotPortraitRule._deserialize(params.get("BotPortraitRule"))
+        if params.get("IntelligenceRule") is not None:
+            self.IntelligenceRule = IntelligenceRule()
+            self.IntelligenceRule._deserialize(params.get("IntelligenceRule"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -312,6 +808,149 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self.RuleDetailList.append(obj)
         self.Label = params.get("Label")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BotManagedRule(AbstractModel):
+    """Bot managed rules. The rule IDs can be obtained from the output of DescribeBotManagedRules.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Action: The rule action. Values:
+<li>`drop`: Block</li>
+<li>`trans`: Allow</li>
+<li>`alg`: JavaScript challenge</li>
+<li>`monitor`: Observe</li>
+        :type Action: str
+        :param RuleID: The rule ID, which is only used as an output parameter.
+        :type RuleID: int
+        :param TransManagedIds: The ID of the rule that applies the "Allow" action.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TransManagedIds: list of int
+        :param AlgManagedIds: The ID of the rule that applies the "JavaScript challenge" action.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AlgManagedIds: list of int
+        :param CapManagedIds: The ID of the rule that applies the "Managed challenge" action.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CapManagedIds: list of int
+        :param MonManagedIds: The ID of the rule that applies the "Observe" action.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MonManagedIds: list of int
+        :param DropManagedIds: The ID of the rule that applies the "Block" action.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DropManagedIds: list of int
+        """
+        self.Action = None
+        self.RuleID = None
+        self.TransManagedIds = None
+        self.AlgManagedIds = None
+        self.CapManagedIds = None
+        self.MonManagedIds = None
+        self.DropManagedIds = None
+
+
+    def _deserialize(self, params):
+        self.Action = params.get("Action")
+        self.RuleID = params.get("RuleID")
+        self.TransManagedIds = params.get("TransManagedIds")
+        self.AlgManagedIds = params.get("AlgManagedIds")
+        self.CapManagedIds = params.get("CapManagedIds")
+        self.MonManagedIds = params.get("MonManagedIds")
+        self.DropManagedIds = params.get("DropManagedIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BotManagedRuleDetail(AbstractModel):
+    """Bot managed rule details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleId: The rule ID.
+        :type RuleId: int
+        :param Description: The rule description.
+        :type Description: str
+        :param RuleTypeName: Rule type
+        :type RuleTypeName: str
+        :param Status: The rule status.
+        :type Status: str
+        """
+        self.RuleId = None
+        self.Description = None
+        self.RuleTypeName = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        self.Description = params.get("Description")
+        self.RuleTypeName = params.get("RuleTypeName")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BotPortraitRule(AbstractModel):
+    """Bot user portrait rules
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: Switch. Values:
+<li>`on`: Enable</li>
+<li>`off`: Disable</li>
+        :type Switch: str
+        :param RuleID: The rule ID, which is only used as an output parameter.
+        :type RuleID: int
+        :param AlgManagedIds: The ID of the rule that applies the "JavaScript challenge" action.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AlgManagedIds: list of int
+        :param CapManagedIds: The ID of the rule that applies the "Managed challenge" action.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CapManagedIds: list of int
+        :param MonManagedIds: The ID of the rule that applies the "Observe" action.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MonManagedIds: list of int
+        :param DropManagedIds: The ID of the rule that applies the "Block" action.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DropManagedIds: list of int
+        """
+        self.Switch = None
+        self.RuleID = None
+        self.AlgManagedIds = None
+        self.CapManagedIds = None
+        self.MonManagedIds = None
+        self.DropManagedIds = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.RuleID = params.get("RuleID")
+        self.AlgManagedIds = params.get("AlgManagedIds")
+        self.CapManagedIds = params.get("CapManagedIds")
+        self.MonManagedIds = params.get("MonManagedIds")
+        self.DropManagedIds = params.get("DropManagedIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -840,6 +1479,192 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class CreateApplicationProxyRequest(AbstractModel):
+    """CreateApplicationProxy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: The site ID.
+        :type ZoneId: str
+        :param ProxyName: When `ProxyType=hostname`, this field indicates a domain name or subdomain name.
+When `ProxyType=instance`, it indicates a proxy instance.
+        :type ProxyName: str
+        :param PlatType: The scheduling mode. Values:
+<li>`ip`: Schedule via Anycast IP.</li>
+<li>`domain`: Schedule via CNAME.</li>
+        :type PlatType: str
+        :param SecurityType: Whether to enable security protection. Values:
+<li>`0`: Disable security protection.</li>
+<li>`1`: Enable security protection.</li>
+        :type SecurityType: int
+        :param AccelerateType: Whether to enable acceleration. Values:
+<li>`0`: Disable acceleration.</li>
+<li>`1`: Enable acceleration.</li>
+        :type AccelerateType: int
+        :param ProxyType: The proxy type. Values:
+<li>`hostname`: The proxy is created by subdomain name.</li>
+<li>`instance`: The proxy is created by instance.</li>If not specified, this field uses the default value `instance`.
+        :type ProxyType: str
+        :param SessionPersistTime: The session persistence duration. Value range: 30-3600 (in seconds).
+If not specified, this field uses the default value 600.
+        :type SessionPersistTime: int
+        :param Ipv6: The IPv6 access configuration.
+If this field is not specified, IPv6 access will be disabled.
+        :type Ipv6: :class:`tencentcloud.teo.v20220901.models.Ipv6`
+        :param ApplicationProxyRules: The rule details.
+If this field is not specified, an application proxy rule will not be created.
+        :type ApplicationProxyRules: list of ApplicationProxyRule
+        """
+        self.ZoneId = None
+        self.ProxyName = None
+        self.PlatType = None
+        self.SecurityType = None
+        self.AccelerateType = None
+        self.ProxyType = None
+        self.SessionPersistTime = None
+        self.Ipv6 = None
+        self.ApplicationProxyRules = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.ProxyName = params.get("ProxyName")
+        self.PlatType = params.get("PlatType")
+        self.SecurityType = params.get("SecurityType")
+        self.AccelerateType = params.get("AccelerateType")
+        self.ProxyType = params.get("ProxyType")
+        self.SessionPersistTime = params.get("SessionPersistTime")
+        if params.get("Ipv6") is not None:
+            self.Ipv6 = Ipv6()
+            self.Ipv6._deserialize(params.get("Ipv6"))
+        if params.get("ApplicationProxyRules") is not None:
+            self.ApplicationProxyRules = []
+            for item in params.get("ApplicationProxyRules"):
+                obj = ApplicationProxyRule()
+                obj._deserialize(item)
+                self.ApplicationProxyRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateApplicationProxyResponse(AbstractModel):
+    """CreateApplicationProxy response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProxyId: The L4 application proxy ID.
+        :type ProxyId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ProxyId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ProxyId = params.get("ProxyId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateApplicationProxyRuleRequest(AbstractModel):
+    """CreateApplicationProxyRule request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: The site ID.
+        :type ZoneId: str
+        :param ProxyId: The proxy ID.
+        :type ProxyId: str
+        :param Proto: The protocol. Values:
+<li>`TCP`: TCP protocol</li>
+<li>`UDP`: UDP protocol</li>
+        :type Proto: str
+        :param Port: The origin type. Values:
+<li>`custom`: Specified origins</li>
+<li>`origins`: Origin group</li>
+        :type Port: list of str
+        :param OriginType: The origin type. Values:
+`custom`: Origin server, which is formatted as "IP:Port" or "Domain name:Port"
+`origins`: Origin group
+        :type OriginType: str
+        :param OriginValue: Origin server information:
+When `OriginType=custom`, it indicates one or more origin servers. Example:
+OriginValue=["8.8.8.8:80","9.9.9.9:80"]
+OriginValue=["test.com:80"];
+When `OriginType=origins`, it indicates an origin group ID. Example:
+OriginValue=["origin-537f5b41-162a-11ed-abaa-525400c5da15"]。
+        :type OriginValue: list of str
+        :param ForwardClientIp: Passes the client IP. Values:
+<li>`TOA`: Pass the client IP via TOA (available only when `Proto=TCP`).</li>
+<li>`PPV1`: Pass the client IP via Proxy Protocol V1 (available only when `Proto=TCP`).</li>
+<li>`PPV2`: Pass the client IP via Proxy Protocol V2.</li>
+<li>`OFF`: Not pass the client IP.</li>Default value: OFF.
+        :type ForwardClientIp: str
+        :param SessionPersist: Whether to enable session persistence. Values:
+<li>`true`: Enable.</li>
+<li>`false`: Disable.</li>Default value: false.
+        :type SessionPersist: bool
+        """
+        self.ZoneId = None
+        self.ProxyId = None
+        self.Proto = None
+        self.Port = None
+        self.OriginType = None
+        self.OriginValue = None
+        self.ForwardClientIp = None
+        self.SessionPersist = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.ProxyId = params.get("ProxyId")
+        self.Proto = params.get("Proto")
+        self.Port = params.get("Port")
+        self.OriginType = params.get("OriginType")
+        self.OriginValue = params.get("OriginValue")
+        self.ForwardClientIp = params.get("ForwardClientIp")
+        self.SessionPersist = params.get("SessionPersist")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateApplicationProxyRuleResponse(AbstractModel):
+    """CreateApplicationProxyRule response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleId: The rule ID.
+        :type RuleId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RuleId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateCredentialRequest(AbstractModel):
     """CreateCredential request structure.
 
@@ -860,6 +1685,63 @@ class CreateCredentialResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateCustomErrorPageRequest(AbstractModel):
+    """CreateCustomErrorPage request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: The site ID.
+        :type ZoneId: str
+        :param Entity: The subdomain name.
+        :type Entity: str
+        :param Name: Name of the file specified to be returned.
+        :type Name: str
+        :param Content: The custom page content, which is passed after being URL-encoded.
+        :type Content: str
+        """
+        self.ZoneId = None
+        self.Entity = None
+        self.Name = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.Entity = params.get("Entity")
+        self.Name = params.get("Name")
+        self.Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCustomErrorPageResponse(AbstractModel):
+    """CreateCustomErrorPage response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PageId: ID of the custom page
+        :type PageId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.PageId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PageId = params.get("PageId")
         self.RequestId = params.get("RequestId")
 
 
@@ -939,6 +1821,141 @@ class CreateDnsRecordResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.DnsRecordId = params.get("DnsRecordId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateIpTableListRequest(AbstractModel):
+    """CreateIpTableList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: The site ID.
+        :type ZoneId: str
+        :param Entity: The subdomain name/layer-4 proxy.
+        :type Entity: str
+        :param IpTableRules: List of basic access control rules.
+        :type IpTableRules: list of IpTableRule
+        """
+        self.ZoneId = None
+        self.Entity = None
+        self.IpTableRules = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.Entity = params.get("Entity")
+        if params.get("IpTableRules") is not None:
+            self.IpTableRules = []
+            for item in params.get("IpTableRules"):
+                obj = IpTableRule()
+                obj._deserialize(item)
+                self.IpTableRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateIpTableListResponse(AbstractModel):
+    """CreateIpTableList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateLoadBalancingRequest(AbstractModel):
+    """CreateLoadBalancing request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: The site ID.
+        :type ZoneId: str
+        :param Host: The load balancing hostname.
+        :type Host: str
+        :param Type: The proxy mode. Values:
+<li>`dns_only`: Only DNS</li>
+<li>`proxied`: Proxied</li>
+        :type Type: str
+        :param OriginGroupId: The ID of the primary origin group.
+        :type OriginGroupId: str
+        :param BackupOriginGroupId: The ID of the secondary origin group (only available when `Type=proxied`). If not specified, it indicates that secondary origins are not used.
+        :type BackupOriginGroupId: str
+        :param TTL: When `Type=dns_only`, it indicates the amount of time that DNS records remain in the cache of a DNS server.
+Value range: 60-86400 (in seconds). If it’s not specified, the default value 600 will be used.
+        :type TTL: int
+        :param OriginType: 
+        :type OriginType: str
+        :param AdvancedOriginGroups: 
+        :type AdvancedOriginGroups: list of AdvancedOriginGroup
+        """
+        self.ZoneId = None
+        self.Host = None
+        self.Type = None
+        self.OriginGroupId = None
+        self.BackupOriginGroupId = None
+        self.TTL = None
+        self.OriginType = None
+        self.AdvancedOriginGroups = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.Host = params.get("Host")
+        self.Type = params.get("Type")
+        self.OriginGroupId = params.get("OriginGroupId")
+        self.BackupOriginGroupId = params.get("BackupOriginGroupId")
+        self.TTL = params.get("TTL")
+        self.OriginType = params.get("OriginType")
+        if params.get("AdvancedOriginGroups") is not None:
+            self.AdvancedOriginGroups = []
+            for item in params.get("AdvancedOriginGroups"):
+                obj = AdvancedOriginGroup()
+                obj._deserialize(item)
+                self.AdvancedOriginGroups.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateLoadBalancingResponse(AbstractModel):
+    """CreateLoadBalancing response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LoadBalancingId: The load balancer ID.
+        :type LoadBalancingId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.LoadBalancingId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancingId = params.get("LoadBalancingId")
         self.RequestId = params.get("RequestId")
 
 
@@ -1077,6 +2094,82 @@ class CreateLogTopicTaskResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.TopicId = params.get("TopicId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateOriginGroupRequest(AbstractModel):
+    """CreateOriginGroup request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: The site ID.
+        :type ZoneId: str
+        :param OriginType: The origin type. Values:
+<li>`self`: Customer origin</li>
+<li>`third_party`: Third-party origin</li>
+<li>`cos`: Tencent Cloud COS origin</li>
+        :type OriginType: str
+        :param OriginGroupName: The name of the origin group.
+        :type OriginGroupName: str
+        :param ConfigurationType: The origin configuration type when `OriginType=self`. Values:
+<li>`area`: Configure by region.</li>
+<li>`weight`: Configure by weight.</li>
+<li>`proto`: Configure by HTTP protocol.</li>When `OriginType=third_party/cos`, leave this field empty.
+        :type ConfigurationType: str
+        :param OriginRecords: Details of the origin record.
+        :type OriginRecords: list of OriginRecord
+        :param HostHeader: 
+        :type HostHeader: str
+        """
+        self.ZoneId = None
+        self.OriginType = None
+        self.OriginGroupName = None
+        self.ConfigurationType = None
+        self.OriginRecords = None
+        self.HostHeader = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.OriginType = params.get("OriginType")
+        self.OriginGroupName = params.get("OriginGroupName")
+        self.ConfigurationType = params.get("ConfigurationType")
+        if params.get("OriginRecords") is not None:
+            self.OriginRecords = []
+            for item in params.get("OriginRecords"):
+                obj = OriginRecord()
+                obj._deserialize(item)
+                self.OriginRecords.append(obj)
+        self.HostHeader = params.get("HostHeader")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateOriginGroupResponse(AbstractModel):
+    """CreateOriginGroup response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OriginGroupId: The ID of the origin group.
+        :type OriginGroupId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.OriginGroupId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.OriginGroupId = params.get("OriginGroupId")
         self.RequestId = params.get("RequestId")
 
 
@@ -1412,6 +2505,120 @@ class CreateRuleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateSecurityDropPageRequest(AbstractModel):
+    """CreateSecurityDropPage request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: The site ID.
+        :type ZoneId: str
+        :param Entity: The subdomain name.
+        :type Entity: str
+        :param Name: Name of the block page file.
+        :type Name: str
+        :param Content: The block page content, which is passed after being URL-encoded.
+        :type Content: str
+        :param Type: How to build the block page. Values:
+<li>`file`: Upload a file to be URL-encoded.</li>
+<li>`url`: Upload a URL to be URL-encoded.</li>
+        :type Type: str
+        :param Module: The module that applies on the block page. Values:
+<li>`waf`: Managed rules</li>
+<li>`rate`: Custom rules</li>
+        :type Module: str
+        """
+        self.ZoneId = None
+        self.Entity = None
+        self.Name = None
+        self.Content = None
+        self.Type = None
+        self.Module = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.Entity = params.get("Entity")
+        self.Name = params.get("Name")
+        self.Content = params.get("Content")
+        self.Type = params.get("Type")
+        self.Module = params.get("Module")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSecurityDropPageResponse(AbstractModel):
+    """CreateSecurityDropPage response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PageId: ID of the custom page.
+        :type PageId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.PageId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PageId = params.get("PageId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateSpeedTestingRequest(AbstractModel):
+    """CreateSpeedTesting request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: The site ID.
+        :type ZoneId: str
+        :param Host: The subdomain name to test.
+        :type Host: str
+        """
+        self.ZoneId = None
+        self.Host = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.Host = params.get("Host")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSpeedTestingResponse(AbstractModel):
+    """CreateSpeedTesting response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateZoneRequest(AbstractModel):
     """CreateZone request structure.
 
@@ -1493,6 +2700,247 @@ class DDoS(AbstractModel):
 
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DDoSAcl(AbstractModel):
+    """DDoS port filtering
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DDoSAclRules: Array of port filtering rules.
+        :type DDoSAclRules: list of DDoSAclRule
+        :param Switch: Whether to clear port filtering rules. Values:
+<li>`off`: Clear port filtering rules.</li>
+<li>`on`: Configure port filtering rules. In this case, DDoSAclRules needs to be specified.</li>
+        :type Switch: str
+        """
+        self.DDoSAclRules = None
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        if params.get("DDoSAclRules") is not None:
+            self.DDoSAclRules = []
+            for item in params.get("DDoSAclRules"):
+                obj = DDoSAclRule()
+                obj._deserialize(item)
+                self.DDoSAclRules.append(obj)
+        self.Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DDoSAclRule(AbstractModel):
+    """DDoS port filtering configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DportEnd: End of the destination port. Value range: 0–65535.
+        :type DportEnd: int
+        :param DportStart: Start of the destination port. Value range: 0–65535.
+        :type DportStart: int
+        :param SportEnd: End of the source port. Value range: 0–65535.
+        :type SportEnd: int
+        :param SportStart: Start of the source port. Value range: 0–65535.
+        :type SportStart: int
+        :param Protocol: The protocol. Values:
+<li>`tcp`: TCP protocol</li>
+<li>`udp`: UDP protocol</li>
+<li>`all`: All protocols</li>
+        :type Protocol: str
+        :param Action: Action to be executed. Values:
+<li>`drop`: Discard</li>
+<li>`transmit`: Allow</li>
+<li>`forward`: Continue protection</li>
+        :type Action: str
+        """
+        self.DportEnd = None
+        self.DportStart = None
+        self.SportEnd = None
+        self.SportStart = None
+        self.Protocol = None
+        self.Action = None
+
+
+    def _deserialize(self, params):
+        self.DportEnd = params.get("DportEnd")
+        self.DportStart = params.get("DportStart")
+        self.SportEnd = params.get("SportEnd")
+        self.SportStart = params.get("SportStart")
+        self.Protocol = params.get("Protocol")
+        self.Action = params.get("Action")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DDoSAllowBlock(AbstractModel):
+    """IP Allowlist/Blocklist
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DDoSAllowBlockRules: Array of objects in the blocklist/allowlist configuration.
+        :type DDoSAllowBlockRules: list of DDoSAllowBlockRule
+        :param Switch: Whether to clear the blocklist/allowlist. Values:
+<li>`off`: Disable.</li>
+<li>`on`: Enable. In this case, UserAllowBlockIp needs to be specified.</li>
+        :type Switch: str
+        """
+        self.DDoSAllowBlockRules = None
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        if params.get("DDoSAllowBlockRules") is not None:
+            self.DDoSAllowBlockRules = []
+            for item in params.get("DDoSAllowBlockRules"):
+                obj = DDoSAllowBlockRule()
+                obj._deserialize(item)
+                self.DDoSAllowBlockRules.append(obj)
+        self.Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DDoSAllowBlockRule(AbstractModel):
+    """Details of the IP blocklist/allowlist
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Ip: The client IP, which can be a single IP, IP range, or subnet range, such as "1.1.1.1", "1.1.1.2-1.1.1.3", and "1.2.1.0/24-1.2.2.0/24".
+        :type Ip: str
+        :param Type: The type. Values:
+<li>`block`: Blocklist</li><li>`allow`: Allowlist</li>
+        :type Type: str
+        :param UpdateTime: The 10-digit timestamp, such as `1199116800`. The current time will be used if this field is not specified.
+        :type UpdateTime: int
+        """
+        self.Ip = None
+        self.Type = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Ip = params.get("Ip")
+        self.Type = params.get("Type")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DDoSAntiPly(AbstractModel):
+    """DDoS protection against protocol and connection attacks
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DropTcp: Whether to enable TCP protocol blocking. Values:
+<li>`off`: Disable</li>
+<li>`on`: Enable</li>
+        :type DropTcp: str
+        :param DropUdp: Whether to enable UDP protocol blocking. Values:
+<li>`off`: Disable</li>
+<li>`on`: Enable</li>
+        :type DropUdp: str
+        :param DropIcmp: Whether to enable ICMP protocol blocking. Values:
+<li>`off`: Disable</li>
+<li>`on`: Enable</li>
+        :type DropIcmp: str
+        :param DropOther: Whether to enable blocking of other protocols. Values:
+<li>`off`: Disable</li>
+<li>`on`: Enable</li>
+        :type DropOther: str
+        :param SourceCreateLimit: Maximum number of new connections to the origin per second. Value range: 0–4294967295.
+        :type SourceCreateLimit: int
+        :param SourceConnectLimit: Maximum number of concurrent connections to the origin. Value range: 0–4294967295.
+        :type SourceConnectLimit: int
+        :param DestinationCreateLimit: Maximum number of new connections to the destination port per second. Value range: 0–4294967295.
+        :type DestinationCreateLimit: int
+        :param DestinationConnectLimit: Maximum number of concurrent connections to the destination port. Value range: 0–4294967295.
+        :type DestinationConnectLimit: int
+        :param AbnormalConnectNum: Maximum number of abnormal connections per second. Value range: 0–4294967295.
+        :type AbnormalConnectNum: int
+        :param AbnormalSynRatio: Maximum percentage of abnormal SYN packets. Value range: 0–100.
+        :type AbnormalSynRatio: int
+        :param AbnormalSynNum: Maximum number of abnormal SYN packets. Value range: 0–65535.
+        :type AbnormalSynNum: int
+        :param ConnectTimeout: Maximum number of detected connections timed out per second. Value range: 0–65535.
+        :type ConnectTimeout: int
+        :param EmptyConnectProtect: Whether to enable null session protection. Values:
+<li>`off`: Disable</li>
+<li>`on`: Enable</li>
+        :type EmptyConnectProtect: str
+        :param UdpShard: Whether to enable UDP fragmentation. Values:
+<li>`off`: Disable</li>
+<li>`on`: Enable</li>
+        :type UdpShard: str
+        """
+        self.DropTcp = None
+        self.DropUdp = None
+        self.DropIcmp = None
+        self.DropOther = None
+        self.SourceCreateLimit = None
+        self.SourceConnectLimit = None
+        self.DestinationCreateLimit = None
+        self.DestinationConnectLimit = None
+        self.AbnormalConnectNum = None
+        self.AbnormalSynRatio = None
+        self.AbnormalSynNum = None
+        self.ConnectTimeout = None
+        self.EmptyConnectProtect = None
+        self.UdpShard = None
+
+
+    def _deserialize(self, params):
+        self.DropTcp = params.get("DropTcp")
+        self.DropUdp = params.get("DropUdp")
+        self.DropIcmp = params.get("DropIcmp")
+        self.DropOther = params.get("DropOther")
+        self.SourceCreateLimit = params.get("SourceCreateLimit")
+        self.SourceConnectLimit = params.get("SourceConnectLimit")
+        self.DestinationCreateLimit = params.get("DestinationCreateLimit")
+        self.DestinationConnectLimit = params.get("DestinationConnectLimit")
+        self.AbnormalConnectNum = params.get("AbnormalConnectNum")
+        self.AbnormalSynRatio = params.get("AbnormalSynRatio")
+        self.AbnormalSynNum = params.get("AbnormalSynNum")
+        self.ConnectTimeout = params.get("ConnectTimeout")
+        self.EmptyConnectProtect = params.get("EmptyConnectProtect")
+        self.UdpShard = params.get("UdpShard")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1679,6 +3127,206 @@ class DDoSBlockData(AbstractModel):
         
 
 
+class DDoSFeaturesFilter(AbstractModel):
+    """DDoS feature filtering
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Action: Action to be executed. Valid values:
+<li>`drop`: Discard</li>
+<li>`transmit`: Allow</li>
+<li>`drop_block`: Discard and block</li>
+<li>`forward`: Continue protection</li>
+        :type Action: str
+        :param Protocol: The protocol. Values:
+<li>`tcp`: TCP protocol</li>
+<li>`udp`: UDP protocol</li>
+<li>`icmp`: ICMP protocol</li>
+<li>`all`: All protocols</li>
+        :type Protocol: str
+        :param DportStart: Start of the destination port. Value range: 0–65535.
+        :type DportStart: int
+        :param DportEnd: End of the destination port. Value range: 0–65535.
+        :type DportEnd: int
+        :param PacketMin: Minimum packet length. Value range: 0–1500.
+        :type PacketMin: int
+        :param PacketMax: Maximum packet length. Value range: 0–1500.
+        :type PacketMax: int
+        :param SportStart: Start of the source port. Value range: 0–65535.
+        :type SportStart: int
+        :param SportEnd: End of the source port. Value range: 0–65535.
+        :type SportEnd: int
+        :param MatchType: Matching method 1 of **feature 1**. Values:
+<li>`pcre`: Regular expression match</li>
+<li>`sunday`: String match</li>An empty string is used by default.
+        :type MatchType: str
+        :param IsNot: Whether the pattern in **feature 1** is matched. This parameter is used together with `MatchType`. Values:
+<li>`0`: Matched</li>
+<li>`1`: Not matched</li>
+        :type IsNot: int
+        :param Offset: Offset 1 of **feature 1**. Value range: 0–1500.
+        :type Offset: int
+        :param Depth: The depth to inspect **feature 1** in the packet. Value range: 1–1500.
+        :type Depth: int
+        :param MatchBegin: The layer from which each match starts. Values:
+<li>`begin_l5`: Start from the payload.</li>
+<li>`begin_l4`: Start from the TCP/UDP header.</li>
+<li>`begin_l3`: Start from the IP header.</li>
+        :type MatchBegin: str
+        :param Str: The match content of **feature 1**.
+        :type Str: str
+        :param MatchType2: Matching method 2 of **feature 2**. Values:
+<li>`pcre`: Regular expression match</li>
+<li>`sunday`: String match</li>An empty string is used by default.
+        :type MatchType2: str
+        :param IsNot2: Whether the pattern in **feature 2** is matched. This parameter is used together with `MatchType2`. Values:
+<li>`0`: Matched</li>
+<li>`1`: Not matched</li>
+        :type IsNot2: int
+        :param Offset2: Offset 2 of **feature 2**. Value range: 0–1500.
+        :type Offset2: int
+        :param Depth2: The depth to inspect **feature 2** in the packet. Value range: 1–1500.
+        :type Depth2: int
+        :param MatchBegin2: The layer from which each match starts. Values:
+<li>`begin_l5`: Start from the payload.</li>
+<li>`begin_l4`: Start from the TCP/UDP header.</li>
+<li>`begin_l3`: Start from the IP header.</li>
+        :type MatchBegin2: str
+        :param Str2: The match content of **feature 2**.
+        :type Str2: str
+        :param MatchLogic: Multi-feature relationship. Enter `none` if only **feature 1** is configured. If **feature 2** exists, you can leave this parameter empty.
+        :type MatchLogic: str
+        """
+        self.Action = None
+        self.Protocol = None
+        self.DportStart = None
+        self.DportEnd = None
+        self.PacketMin = None
+        self.PacketMax = None
+        self.SportStart = None
+        self.SportEnd = None
+        self.MatchType = None
+        self.IsNot = None
+        self.Offset = None
+        self.Depth = None
+        self.MatchBegin = None
+        self.Str = None
+        self.MatchType2 = None
+        self.IsNot2 = None
+        self.Offset2 = None
+        self.Depth2 = None
+        self.MatchBegin2 = None
+        self.Str2 = None
+        self.MatchLogic = None
+
+
+    def _deserialize(self, params):
+        self.Action = params.get("Action")
+        self.Protocol = params.get("Protocol")
+        self.DportStart = params.get("DportStart")
+        self.DportEnd = params.get("DportEnd")
+        self.PacketMin = params.get("PacketMin")
+        self.PacketMax = params.get("PacketMax")
+        self.SportStart = params.get("SportStart")
+        self.SportEnd = params.get("SportEnd")
+        self.MatchType = params.get("MatchType")
+        self.IsNot = params.get("IsNot")
+        self.Offset = params.get("Offset")
+        self.Depth = params.get("Depth")
+        self.MatchBegin = params.get("MatchBegin")
+        self.Str = params.get("Str")
+        self.MatchType2 = params.get("MatchType2")
+        self.IsNot2 = params.get("IsNot2")
+        self.Offset2 = params.get("Offset2")
+        self.Depth2 = params.get("Depth2")
+        self.MatchBegin2 = params.get("MatchBegin2")
+        self.Str2 = params.get("Str2")
+        self.MatchLogic = params.get("MatchLogic")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DDoSGeoIp(AbstractModel):
+    """DDoS regional blocking
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: Whether to clear the blocklist of the region. Values:
+<li>`off`: Clear the blocklist of the region.</li>
+<li>`on`: Perform no operations.</li>
+        :type Switch: str
+        :param RegionIds: Region information. For more information on the ID, see [DescribeSecurityPolicyRegions](https://tcloud4api.woa.com/document/product/1657/81247?!preview&!document=1).
+        :type RegionIds: list of int
+        """
+        self.Switch = None
+        self.RegionIds = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.RegionIds = params.get("RegionIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DDoSHost(AbstractModel):
+    """DDoS protection for the application layer (layer 7)
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Host: The second-level domain name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Host: str
+        :param Status: Status of the domain name. Values:
+`init`: NS to be switched
+`offline`: Site acceleration not enabled with DNS
+`process`: Deployment in progress
+`online`: Normal
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Status: str
+        :param AccelerateType: Site acceleration switch. `on`: Enable site acceleration; `off`: Disable site acceleration. This field can be used together with `SecurityType`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AccelerateType: str
+        :param SecurityType: Security acceleration switch. `on`: Enable site acceleration; `off`: Disable site acceleration. This field can be used together with `AccelerateType`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SecurityType: str
+        """
+        self.Host = None
+        self.Status = None
+        self.AccelerateType = None
+        self.SecurityType = None
+
+
+    def _deserialize(self, params):
+        self.Host = params.get("Host")
+        self.Status = params.get("Status")
+        self.AccelerateType = params.get("AccelerateType")
+        self.SecurityType = params.get("SecurityType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DDoSMajorAttackEvent(AbstractModel):
     """The large DDoS attack event
 
@@ -1702,6 +3350,177 @@ class DDoSMajorAttackEvent(AbstractModel):
         self.PolicyId = params.get("PolicyId")
         self.AttackMaxBandWidth = params.get("AttackMaxBandWidth")
         self.AttackTime = params.get("AttackTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DDoSPacketFilter(AbstractModel):
+    """DDoS feature filtering
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DDoSFeaturesFilters: Array of feature filtering rules.
+        :type DDoSFeaturesFilters: list of DDoSFeaturesFilter
+        :param Switch: Whether to clear feature filtering rules. Values:
+<li>`off`: Clear feature filtering rules.</li>
+<li>`on`: Configure feature filtering rules. In this case, `DDoSFeaturesFilters` needs to be specified.</li>
+        :type Switch: str
+        """
+        self.DDoSFeaturesFilters = None
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        if params.get("DDoSFeaturesFilters") is not None:
+            self.DDoSFeaturesFilters = []
+            for item in params.get("DDoSFeaturesFilters"):
+                obj = DDoSFeaturesFilter()
+                obj._deserialize(item)
+                self.DDoSFeaturesFilters.append(obj)
+        self.Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DDoSRule(AbstractModel):
+    """DDoS mitigation configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DDoSStatusInfo: The DDoS mitigation level. If it is null, the setting that was last configured will be used.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DDoSStatusInfo: :class:`tencentcloud.teo.v20220901.models.DDoSStatusInfo`
+        :param DDoSGeoIp: The regional blocking settings. If it is null, the settings that were last configured will be used.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DDoSGeoIp: :class:`tencentcloud.teo.v20220901.models.DDoSGeoIp`
+        :param DDoSAllowBlock: The IP blocklist/allowlist. If it is null, the settings that were last configured will be used.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DDoSAllowBlock: :class:`tencentcloud.teo.v20220901.models.DDoSAllowBlock`
+        :param DDoSAntiPly: The protocol and connection protection settings. If it is null, the settings that were last configured will be used.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DDoSAntiPly: :class:`tencentcloud.teo.v20220901.models.DDoSAntiPly`
+        :param DDoSPacketFilter: The feature filtering settings. If it is null, the settings that were last configured will be used.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DDoSPacketFilter: :class:`tencentcloud.teo.v20220901.models.DDoSPacketFilter`
+        :param DDoSAcl: The port filtering settings. If it is null, the settings that were last configured will be used.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DDoSAcl: :class:`tencentcloud.teo.v20220901.models.DDoSAcl`
+        :param Switch: Whether to enable DDoS mitigation. Values:
+<li>`on`: Enable</li>
+<li>`off`: Disable</li>If it is null, the setting that was last configured will be used.
+        :type Switch: str
+        :param UdpShardOpen: Whether to enable UDP fragmentation. Values:
+<li>`on`: Enable</li>
+<li>`off`: Disable</li>It is required only when used as an output parameter.
+        :type UdpShardOpen: str
+        :param DDoSSpeedLimit: The settings of the rate limiting rule. If it is null, the settings that were last configured will be used.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DDoSSpeedLimit: :class:`tencentcloud.teo.v20220901.models.DDoSSpeedLimit`
+        """
+        self.DDoSStatusInfo = None
+        self.DDoSGeoIp = None
+        self.DDoSAllowBlock = None
+        self.DDoSAntiPly = None
+        self.DDoSPacketFilter = None
+        self.DDoSAcl = None
+        self.Switch = None
+        self.UdpShardOpen = None
+        self.DDoSSpeedLimit = None
+
+
+    def _deserialize(self, params):
+        if params.get("DDoSStatusInfo") is not None:
+            self.DDoSStatusInfo = DDoSStatusInfo()
+            self.DDoSStatusInfo._deserialize(params.get("DDoSStatusInfo"))
+        if params.get("DDoSGeoIp") is not None:
+            self.DDoSGeoIp = DDoSGeoIp()
+            self.DDoSGeoIp._deserialize(params.get("DDoSGeoIp"))
+        if params.get("DDoSAllowBlock") is not None:
+            self.DDoSAllowBlock = DDoSAllowBlock()
+            self.DDoSAllowBlock._deserialize(params.get("DDoSAllowBlock"))
+        if params.get("DDoSAntiPly") is not None:
+            self.DDoSAntiPly = DDoSAntiPly()
+            self.DDoSAntiPly._deserialize(params.get("DDoSAntiPly"))
+        if params.get("DDoSPacketFilter") is not None:
+            self.DDoSPacketFilter = DDoSPacketFilter()
+            self.DDoSPacketFilter._deserialize(params.get("DDoSPacketFilter"))
+        if params.get("DDoSAcl") is not None:
+            self.DDoSAcl = DDoSAcl()
+            self.DDoSAcl._deserialize(params.get("DDoSAcl"))
+        self.Switch = params.get("Switch")
+        self.UdpShardOpen = params.get("UdpShardOpen")
+        if params.get("DDoSSpeedLimit") is not None:
+            self.DDoSSpeedLimit = DDoSSpeedLimit()
+            self.DDoSSpeedLimit._deserialize(params.get("DDoSSpeedLimit"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DDoSSpeedLimit(AbstractModel):
+    """The DDoS rate limits
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PackageLimit: The limit on origin packet rate. Value range: 1 pps - 1000 Gpps. If 0 is passed, the packet rate will not be restricted.
+        :type PackageLimit: str
+        :param FluxLimit: The limit on origin traffic rate. Value range: 1 bps - 10000 Gbps. If 0 is passed, the traffic rate will not be restricted.
+        :type FluxLimit: str
+        """
+        self.PackageLimit = None
+        self.FluxLimit = None
+
+
+    def _deserialize(self, params):
+        self.PackageLimit = params.get("PackageLimit")
+        self.FluxLimit = params.get("FluxLimit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DDoSStatusInfo(AbstractModel):
+    """DDoS protection level
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PlyLevel: The policy level. Values:
+<li>`low`: Loose.</li>
+<li>`middle`: Moderate</li>
+<li>`high`: Strict</li>
+        :type PlyLevel: str
+        """
+        self.PlyLevel = None
+
+
+    def _deserialize(self, params):
+        self.PlyLevel = params.get("PlyLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1785,6 +3604,100 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class DeleteApplicationProxyRequest(AbstractModel):
+    """DeleteApplicationProxy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: The site ID.
+        :type ZoneId: str
+        :param ProxyId: The proxy ID.
+        :type ProxyId: str
+        """
+        self.ZoneId = None
+        self.ProxyId = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.ProxyId = params.get("ProxyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteApplicationProxyResponse(AbstractModel):
+    """DeleteApplicationProxy response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteApplicationProxyRuleRequest(AbstractModel):
+    """DeleteApplicationProxyRule request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: The site ID.
+        :type ZoneId: str
+        :param ProxyId: The proxy ID.
+        :type ProxyId: str
+        :param RuleId: The rule ID.
+        :type RuleId: str
+        """
+        self.ZoneId = None
+        self.ProxyId = None
+        self.RuleId = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.ProxyId = params.get("ProxyId")
+        self.RuleId = params.get("RuleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteApplicationProxyRuleResponse(AbstractModel):
+    """DeleteApplicationProxyRule response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteDnsRecordsRequest(AbstractModel):
     """DeleteDnsRecords request structure.
 
@@ -1830,6 +3743,51 @@ class DeleteDnsRecordsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteLoadBalancingRequest(AbstractModel):
+    """DeleteLoadBalancing request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: The site ID.
+        :type ZoneId: str
+        :param LoadBalancingId: The load balancer ID.
+        :type LoadBalancingId: str
+        """
+        self.ZoneId = None
+        self.LoadBalancingId = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.LoadBalancingId = params.get("LoadBalancingId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLoadBalancingResponse(AbstractModel):
+    """DeleteLoadBalancing response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteLogTopicTaskRequest(AbstractModel):
     """DeleteLogTopicTask request structure.
 
@@ -1860,6 +3818,51 @@ class DeleteLogTopicTaskRequest(AbstractModel):
 
 class DeleteLogTopicTaskResponse(AbstractModel):
     """DeleteLogTopicTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteOriginGroupRequest(AbstractModel):
+    """DeleteOriginGroup request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: The site ID.
+        :type ZoneId: str
+        :param OriginGroupId: The ID of the origin group.
+        :type OriginGroupId: str
+        """
+        self.ZoneId = None
+        self.OriginGroupId = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.OriginGroupId = params.get("OriginGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteOriginGroupResponse(AbstractModel):
+    """DeleteOriginGroup response structure.
 
     """
 
@@ -2018,6 +4021,73 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def _deserialize(self, params):
         self.TotalCount = params.get("TotalCount")
         self.EntityList = params.get("EntityList")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeApplicationProxiesRequest(AbstractModel):
+    """DescribeApplicationProxies request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: The paginated query offset. Default value: 0
+        :type Offset: int
+        :param Limit: The paginated query limit. Default value: 20. Maximum value: 1000.
+        :type Limit: int
+        :param Filters: Filter criteria. Each filter criteria can have up to 20 entries. <li>`proxy-id`:<br>   Filter by <strong>proxy ID</strong>, such as proxy-ev2sawbwfd<br>   Type: String<br>   Required: No<li>`zone-id`:<br>   Filter by <strong>site ID</strong>, such as zone-vawer2vadg<br>   Type: String<br>   Required: No
+        :type Filters: list of Filter
+        """
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeApplicationProxiesResponse(AbstractModel):
+    """DescribeApplicationProxies response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplicationProxies: List of application proxies.
+        :type ApplicationProxies: list of ApplicationProxy
+        :param TotalCount: Total number of records.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ApplicationProxies = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ApplicationProxies") is not None:
+            self.ApplicationProxies = []
+            for item in params.get("ApplicationProxies"):
+                obj = ApplicationProxy()
+                obj._deserialize(item)
+                self.ApplicationProxies.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -2544,6 +4614,83 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self.Data.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBotManagedRulesRequest(AbstractModel):
+    """DescribeBotManagedRules request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: The site ID.
+        :type ZoneId: str
+        :param Entity: The subdomain name.
+        :type Entity: str
+        :param Offset: The page offset. Default value: 0
+        :type Offset: int
+        :param Limit: The paginated query limit. Default value: 20. Maximum value: 1000.
+        :type Limit: int
+        :param RuleType: The rule type. Values:
+<li>`idcid`</li>
+<li>`sipbot`</li>
+<li>`uabot`</li>If no value or 0 is passed, all rule types will be selected.
+        :type RuleType: str
+        """
+        self.ZoneId = None
+        self.Entity = None
+        self.Offset = None
+        self.Limit = None
+        self.RuleType = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.Entity = params.get("Entity")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.RuleType = params.get("RuleType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBotManagedRulesResponse(AbstractModel):
+    """DescribeBotManagedRules response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Count: Number of bot managed rules returned.
+        :type Count: int
+        :param BotManagedRuleDetails: The bot managed rule.
+        :type BotManagedRuleDetails: list of BotManagedRuleDetail
+        :param Total: The total number of bot managed rules.
+        :type Total: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Count = None
+        self.BotManagedRuleDetails = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Count = params.get("Count")
+        if params.get("BotManagedRuleDetails") is not None:
+            self.BotManagedRuleDetails = []
+            for item in params.get("BotManagedRuleDetails"):
+                obj = BotManagedRuleDetail()
+                obj._deserialize(item)
+                self.BotManagedRuleDetails.append(obj)
+        self.Total = params.get("Total")
         self.RequestId = params.get("RequestId")
 
 
@@ -3411,6 +5558,57 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDDoSPolicyRequest(AbstractModel):
+    """DescribeDDoSPolicy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: The site ID.
+        :type ZoneId: str
+        :param PolicyId: Policy ID
+        :type PolicyId: int
+        """
+        self.ZoneId = None
+        self.PolicyId = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.PolicyId = params.get("PolicyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDDoSPolicyResponse(AbstractModel):
+    """DescribeDDoSPolicy response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DDoSRule: DDoS mitigation configuration.
+        :type DDoSRule: :class:`tencentcloud.teo.v20220901.models.DDoSRule`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DDoSRule = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DDoSRule") is not None:
+            self.DDoSRule = DDoSRule()
+            self.DDoSRule._deserialize(params.get("DDoSRule"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDefaultCertificatesRequest(AbstractModel):
     """DescribeDefaultCertificates request structure.
 
@@ -3851,6 +6049,76 @@ class DescribeIdentificationsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeLoadBalancingRequest(AbstractModel):
+    """DescribeLoadBalancing request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: Offset for paginated queries. Default value: 0.
+        :type Offset: int
+        :param Limit: Limit on paginated queries. Value range: 1-1000. Default value: 10.
+        :type Limit: int
+        :param Filters: Filter criteria. Each filter criteria can have up to 20 entries.
+<li>`zone-id`:<br>   Filter by <strong>site ID</strong>, such as zone-1a8df68z<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported
+<li>`load-balancing-id`<br>   Filter by <strong>load balancer ID</strong>, such as lb-d21bfaf7-8d72-11ec-841d-00ff977fb3c8<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported
+<li>`host`:<br>   Filter by <strong>load balancing hostname</strong>, such as lb.tencent.com<br>   Type: String<br>   Required: No<br>   Fuzzy query: Supported (only one hostname allowed in a query)
+        :type Filters: list of AdvancedFilter
+        """
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = AdvancedFilter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLoadBalancingResponse(AbstractModel):
+    """DescribeLoadBalancing response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Total number of records.
+        :type TotalCount: int
+        :param Data: Load balancer information.
+        :type Data: list of LoadBalancing
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = LoadBalancing()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeLogSetsRequest(AbstractModel):
     """DescribeLogSets request structure.
 
@@ -4026,6 +6294,74 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self.TopicList.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeOriginGroupRequest(AbstractModel):
+    """DescribeOriginGroup request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: Offset for paginated queries. Default value: 0.
+        :type Offset: int
+        :param Limit: Limit on paginated queries. Value range: 1-1000. Default value: 10.
+        :type Limit: int
+        :param Filters: Filter criteria. Each filter criteria can have up to 20 entries.
+<li>`zone-id`<br>   Filter by <strong>site ID</strong>, such as zone-20hzkd4rdmy0<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported<li>`origin-group-id`:<br>   Filter by <strong>origin group ID</strong>, such as origin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported<li>`origin-group-name`:<br>   Filter by <strong>origin group name</strong><br>   Type: String<br>   Required: No<br>   Fuzzy query: Supported (only one origin group name allowed in a query)
+        :type Filters: list of AdvancedFilter
+        """
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = AdvancedFilter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOriginGroupResponse(AbstractModel):
+    """DescribeOriginGroup response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Total number of records.
+        :type TotalCount: int
+        :param OriginGroups: Origin group information.
+        :type OriginGroups: list of OriginGroup
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.OriginGroups = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("OriginGroups") is not None:
+            self.OriginGroups = []
+            for item in params.get("OriginGroups"):
+                obj = OriginGroup()
+                obj._deserialize(item)
+                self.OriginGroups.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -4293,6 +6629,60 @@ class DescribePurgeTasksResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeRateLimitIntelligenceRuleRequest(AbstractModel):
+    """DescribeRateLimitIntelligenceRule request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: The site ID.
+        :type ZoneId: str
+        :param Entity: The subdomain name/layer-4 proxy.
+        :type Entity: str
+        """
+        self.ZoneId = None
+        self.Entity = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.Entity = params.get("Entity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRateLimitIntelligenceRuleResponse(AbstractModel):
+    """DescribeRateLimitIntelligenceRule response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RateLimitIntelligenceRuleDetails: The intelligent rate limiting rule.
+        :type RateLimitIntelligenceRuleDetails: list of RateLimitIntelligenceRuleDetail
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RateLimitIntelligenceRuleDetails = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("RateLimitIntelligenceRuleDetails") is not None:
+            self.RateLimitIntelligenceRuleDetails = []
+            for item in params.get("RateLimitIntelligenceRuleDetails"):
+                obj = RateLimitIntelligenceRuleDetail()
+                obj._deserialize(item)
+                self.RateLimitIntelligenceRuleDetails.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRulesRequest(AbstractModel):
     """DescribeRules request structure.
 
@@ -4389,6 +6779,357 @@ class DescribeRulesSettingResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSecurityGroupManagedRulesRequest(AbstractModel):
+    """DescribeSecurityGroupManagedRules request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: The site ID.
+        :type ZoneId: str
+        :param Entity: The subdomain name/layer-4 proxy.
+        :type Entity: str
+        :param Offset: The page offset. Default value: 0
+        :type Offset: int
+        :param Limit: The paginated query limit. Default value: 20. Maximum value: 1000.
+        :type Limit: int
+        """
+        self.ZoneId = None
+        self.Entity = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.Entity = params.get("Entity")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSecurityGroupManagedRulesResponse(AbstractModel):
+    """DescribeSecurityGroupManagedRules response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Count: The number of bot managed rules returned.
+        :type Count: int
+        :param Total: The total number of rules.
+        :type Total: int
+        :param WafGroupInfo: Details of the managed rule.
+        :type WafGroupInfo: :class:`tencentcloud.teo.v20220901.models.WafGroupInfo`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Count = None
+        self.Total = None
+        self.WafGroupInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Count = params.get("Count")
+        self.Total = params.get("Total")
+        if params.get("WafGroupInfo") is not None:
+            self.WafGroupInfo = WafGroupInfo()
+            self.WafGroupInfo._deserialize(params.get("WafGroupInfo"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSecurityPolicyListRequest(AbstractModel):
+    """DescribeSecurityPolicyList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: The site ID.
+        :type ZoneId: str
+        """
+        self.ZoneId = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSecurityPolicyListResponse(AbstractModel):
+    """DescribeSecurityPolicyList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SecurityEntities: List of protected resources
+        :type SecurityEntities: list of SecurityEntity
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SecurityEntities = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SecurityEntities") is not None:
+            self.SecurityEntities = []
+            for item in params.get("SecurityEntities"):
+                obj = SecurityEntity()
+                obj._deserialize(item)
+                self.SecurityEntities.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSecurityPolicyRegionsRequest(AbstractModel):
+    """DescribeSecurityPolicyRegions request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: The page offset. Default value: 0
+        :type Offset: int
+        :param Limit: The paginated query limit. Default value: 20. Maximum value: 1000.
+        :type Limit: int
+        """
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSecurityPolicyRegionsResponse(AbstractModel):
+    """DescribeSecurityPolicyRegions response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Count: Total number of regions.
+        :type Count: int
+        :param GeoIps: Region information.
+        :type GeoIps: list of GeoIp
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Count = None
+        self.GeoIps = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Count = params.get("Count")
+        if params.get("GeoIps") is not None:
+            self.GeoIps = []
+            for item in params.get("GeoIps"):
+                obj = GeoIp()
+                obj._deserialize(item)
+                self.GeoIps.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSecurityPolicyRequest(AbstractModel):
+    """DescribeSecurityPolicy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: The site ID.
+        :type ZoneId: str
+        :param Entity: The subdomain name/layer-4 proxy.
+        :type Entity: str
+        """
+        self.ZoneId = None
+        self.Entity = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.Entity = params.get("Entity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSecurityPolicyResponse(AbstractModel):
+    """DescribeSecurityPolicy response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SecurityConfig: Security configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SecurityConfig: :class:`tencentcloud.teo.v20220901.models.SecurityConfig`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SecurityConfig = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SecurityConfig") is not None:
+            self.SecurityConfig = SecurityConfig()
+            self.SecurityConfig._deserialize(params.get("SecurityConfig"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSecurityPortraitRulesRequest(AbstractModel):
+    """DescribeSecurityPortraitRules request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: The site ID.
+        :type ZoneId: str
+        :param Entity: Subdomain name/Application name
+        :type Entity: str
+        """
+        self.ZoneId = None
+        self.Entity = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.Entity = params.get("Entity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSecurityPortraitRulesResponse(AbstractModel):
+    """DescribeSecurityPortraitRules response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Count: The number of rules returned.
+        :type Count: int
+        :param PortraitManagedRuleDetails: The bot client reputation rule.
+        :type PortraitManagedRuleDetails: list of PortraitManagedRuleDetail
+        :param Total: The total number of rules.
+        :type Total: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Count = None
+        self.PortraitManagedRuleDetails = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Count = params.get("Count")
+        if params.get("PortraitManagedRuleDetails") is not None:
+            self.PortraitManagedRuleDetails = []
+            for item in params.get("PortraitManagedRuleDetails"):
+                obj = PortraitManagedRuleDetail()
+                obj._deserialize(item)
+                self.PortraitManagedRuleDetails.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSecurityRuleIdRequest(AbstractModel):
+    """DescribeSecurityRuleId request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleIdList: Array of rule IDs.
+        :type RuleIdList: list of int
+        :param RuleType: Rule type. Values:
+<li>`waf`: Web managed rules</li>
+<li>`acl`: Custom rules</li>
+<li>`rate`: Rate limiting rules</li>
+<li>`bot`: Bot managed rules</li>
+        :type RuleType: str
+        :param Entity: The subdomain name/layer-4 proxy.
+        :type Entity: str
+        """
+        self.RuleIdList = None
+        self.RuleType = None
+        self.Entity = None
+
+
+    def _deserialize(self, params):
+        self.RuleIdList = params.get("RuleIdList")
+        self.RuleType = params.get("RuleType")
+        self.Entity = params.get("Entity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSecurityRuleIdResponse(AbstractModel):
+    """DescribeSecurityRuleId response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WafGroupRules: List of rules.
+        :type WafGroupRules: list of WafGroupRule
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.WafGroupRules = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("WafGroupRules") is not None:
+            self.WafGroupRules = []
+            for item in params.get("WafGroupRules"):
+                obj = WafGroupRule()
+                obj._deserialize(item)
+                self.WafGroupRules.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSingleL7AnalysisDataRequest(AbstractModel):
     """DescribeSingleL7AnalysisData request structure.
 
@@ -4482,6 +7223,147 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = SingleDataRecord()
                 obj._deserialize(item)
                 self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSpeedTestingDetailsRequest(AbstractModel):
+    """DescribeSpeedTestingDetails request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: The site ID.
+        :type ZoneId: str
+        """
+        self.ZoneId = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSpeedTestingDetailsResponse(AbstractModel):
+    """DescribeSpeedTestingDetails response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SpeedTestingDetailData: The site’s load speed across regions.
+        :type SpeedTestingDetailData: :class:`tencentcloud.teo.v20220901.models.SpeedTestingDetailData`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SpeedTestingDetailData = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SpeedTestingDetailData") is not None:
+            self.SpeedTestingDetailData = SpeedTestingDetailData()
+            self.SpeedTestingDetailData._deserialize(params.get("SpeedTestingDetailData"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSpeedTestingMetricDataRequest(AbstractModel):
+    """DescribeSpeedTestingMetricData request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: The site ID.
+        :type ZoneId: str
+        """
+        self.ZoneId = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSpeedTestingMetricDataResponse(AbstractModel):
+    """DescribeSpeedTestingMetricData response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SpeedTestingMetricData: The site test metrics.
+        :type SpeedTestingMetricData: :class:`tencentcloud.teo.v20220901.models.SpeedTestingMetricData`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SpeedTestingMetricData = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SpeedTestingMetricData") is not None:
+            self.SpeedTestingMetricData = SpeedTestingMetricData()
+            self.SpeedTestingMetricData._deserialize(params.get("SpeedTestingMetricData"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSpeedTestingQuotaRequest(AbstractModel):
+    """DescribeSpeedTestingQuota request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: The site ID.
+        :type ZoneId: str
+        """
+        self.ZoneId = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSpeedTestingQuotaResponse(AbstractModel):
+    """DescribeSpeedTestingQuota response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SpeedTestingQuota: The quota limit on site tests.
+        :type SpeedTestingQuota: :class:`tencentcloud.teo.v20220901.models.SpeedTestingQuota`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SpeedTestingQuota = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SpeedTestingQuota") is not None:
+            self.SpeedTestingQuota = SpeedTestingQuota()
+            self.SpeedTestingQuota._deserialize(params.get("SpeedTestingQuota"))
         self.RequestId = params.get("RequestId")
 
 
@@ -5790,6 +8672,66 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class DescribeZoneDDoSPolicyRequest(AbstractModel):
+    """DescribeZoneDDoSPolicy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: The site ID.
+        :type ZoneId: str
+        """
+        self.ZoneId = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeZoneDDoSPolicyResponse(AbstractModel):
+    """DescribeZoneDDoSPolicy response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ShieldAreas: DDoS mitigation configuration.
+        :type ShieldAreas: list of ShieldArea
+        :param DDoSHosts: Information of the proxied subdomain names.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DDoSHosts: list of DDoSHost
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ShieldAreas = None
+        self.DDoSHosts = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ShieldAreas") is not None:
+            self.ShieldAreas = []
+            for item in params.get("ShieldAreas"):
+                obj = ShieldArea()
+                obj._deserialize(item)
+                self.ShieldAreas.append(obj)
+        if params.get("DDoSHosts") is not None:
+            self.DDoSHosts = []
+            for item in params.get("DDoSHosts"):
+                obj = DDoSHost()
+                obj._deserialize(item)
+                self.DDoSHosts.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeZoneSettingRequest(AbstractModel):
     """DescribeZoneSetting request structure.
 
@@ -6053,6 +8995,34 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("ClientIpCountry") is not None:
             self.ClientIpCountry = ClientIpCountry()
             self.ClientIpCountry._deserialize(params.get("ClientIpCountry"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DistrictStatistics(AbstractModel):
+    """The site’s load speed across regions
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Alpha2: The ISO 3166-2 Alpha-2 country code. For the list of country codes, see [ISO 3166-2](https://zh.m.wikipedia.org/zh-hans/ISO_3166-2).
+        :type Alpha2: str
+        :param LoadTime: The overall load time, in milliseconds.
+        :type LoadTime: int
+        """
+        self.Alpha2 = None
+        self.LoadTime = None
+
+
+    def _deserialize(self, params):
+        self.Alpha2 = params.get("Alpha2")
+        self.LoadTime = params.get("LoadTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6392,6 +9362,303 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class DropPageConfig(AbstractModel):
+    """Block page configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: Whether to enable configuration. Values:
+<li>`on`: Enable</li>
+<li>`off`: Disable</li>
+        :type Switch: str
+        :param WafDropPageDetail: The settings of the block page that applies managed rules. If it is null, the settings that were last configured will be used.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type WafDropPageDetail: :class:`tencentcloud.teo.v20220901.models.DropPageDetail`
+        :param AclDropPageDetail: The settings of the block page that applies custom rules. If it is null, the settings that were last configured will be used.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AclDropPageDetail: :class:`tencentcloud.teo.v20220901.models.DropPageDetail`
+        """
+        self.Switch = None
+        self.WafDropPageDetail = None
+        self.AclDropPageDetail = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("WafDropPageDetail") is not None:
+            self.WafDropPageDetail = DropPageDetail()
+            self.WafDropPageDetail._deserialize(params.get("WafDropPageDetail"))
+        if params.get("AclDropPageDetail") is not None:
+            self.AclDropPageDetail = DropPageDetail()
+            self.AclDropPageDetail._deserialize(params.get("AclDropPageDetail"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DropPageDetail(AbstractModel):
+    """The configuration details of the block page
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PageId: The ID of the block page, which can be obtained from the CreateSecurityDropPage API.
+If 0 is passed, the default block page will be used.
+        :type PageId: int
+        :param StatusCode: The HTTP status code of the block page. Value range: 100-600.
+        :type StatusCode: int
+        :param Name: The block page file or URL.
+        :type Name: str
+        :param Type: Type of the block page. Values:
+<li>`file`: Block page file</li>
+<li>`url`: Block page URL</li>
+        :type Type: str
+        """
+        self.PageId = None
+        self.StatusCode = None
+        self.Name = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.PageId = params.get("PageId")
+        self.StatusCode = params.get("StatusCode")
+        self.Name = params.get("Name")
+        self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExceptConfig(AbstractModel):
+    """Exception rules, which are used to bypass specific rules
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: Whether to enable configuration. Values:
+<li>`on`: Enable</li>
+<li>`off`: Disable</li>
+        :type Switch: str
+        :param ExceptUserRules: The settings of the exception rule. If it is null, the settings that were last configured will be used.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExceptUserRules: list of ExceptUserRule
+        """
+        self.Switch = None
+        self.ExceptUserRules = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("ExceptUserRules") is not None:
+            self.ExceptUserRules = []
+            for item in params.get("ExceptUserRules"):
+                obj = ExceptUserRule()
+                obj._deserialize(item)
+                self.ExceptUserRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExceptUserRule(AbstractModel):
+    """The settings of the exception rule
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleName: The rule name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RuleName: str
+        :param Action: The rule action. It only supports the value `skip`, which indicates skipping all managed rules.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Action: str
+        :param RuleStatus: The rule status. Values:
+<li>`on`: Enabled</li>
+<li>`off`: Disabled</li>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RuleStatus: str
+        :param RuleID: The rule ID, which is only used as an output parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RuleID: int
+        :param UpdateTime: The update time, which is only used as an output parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UpdateTime: str
+        :param ExceptUserRuleConditions: The matching condition.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExceptUserRuleConditions: list of ExceptUserRuleCondition
+        :param ExceptUserRuleScope: The scope to which the exception rule applies.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExceptUserRuleScope: :class:`tencentcloud.teo.v20220901.models.ExceptUserRuleScope`
+        :param RulePriority: The rule priority. Value range: 0-100.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RulePriority: int
+        """
+        self.RuleName = None
+        self.Action = None
+        self.RuleStatus = None
+        self.RuleID = None
+        self.UpdateTime = None
+        self.ExceptUserRuleConditions = None
+        self.ExceptUserRuleScope = None
+        self.RulePriority = None
+
+
+    def _deserialize(self, params):
+        self.RuleName = params.get("RuleName")
+        self.Action = params.get("Action")
+        self.RuleStatus = params.get("RuleStatus")
+        self.RuleID = params.get("RuleID")
+        self.UpdateTime = params.get("UpdateTime")
+        if params.get("ExceptUserRuleConditions") is not None:
+            self.ExceptUserRuleConditions = []
+            for item in params.get("ExceptUserRuleConditions"):
+                obj = ExceptUserRuleCondition()
+                obj._deserialize(item)
+                self.ExceptUserRuleConditions.append(obj)
+        if params.get("ExceptUserRuleScope") is not None:
+            self.ExceptUserRuleScope = ExceptUserRuleScope()
+            self.ExceptUserRuleScope._deserialize(params.get("ExceptUserRuleScope"))
+        self.RulePriority = params.get("RulePriority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExceptUserRuleCondition(AbstractModel):
+    """The condition of the exception rule
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MatchFrom: The field to match. Values:
+<li>`host`: Request domain name</li>
+<li>`sip`: Client IP</li>
+<li>`ua`: User-Agent</li>
+<li>`cookie`: Cookie</li>
+<li>`cgi`: CGI script</li>
+<li>`xff`: XFF header</li>
+<li>`url`: Request URL</li>
+<li>`accept`: Request content type</li>
+<li>`method`: Request method</li>
+<li>`header`: Request header</li>
+<li>`sip_proto`: Network layer protocol</li>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MatchFrom: str
+        :param MatchParam: The parameter of the field. When `MatchFrom = header`, the key contained in the header can be passed.
+        :type MatchParam: str
+        :param Operator: The logical operator. Values:
+<li>`equal`: String equals</li>
+<li>`not_equal`: Value not equals</li>
+<li>`include`: String contains</li>
+<li>`not_include`: String not contains</li>
+<li>`match`: IP matches</li>
+<li>`not_match`: IP not matches</li>
+<li>`include_area`: Regions contain</li>
+<li>`is_empty`: Value left empty</li>
+<li>`not_exists`: Key fields not exist</li>
+<li>`regexp`: Regex matches</li>
+<li>`len_gt`: Value greater than</li>
+<li>`len_lt`: Value smaller than</li>
+<li>`len_eq`: Value equals</li>
+<li>`match_prefix`: Prefix matches</li>
+<li>`match_suffix`: Suffix matches</li>
+<li>`wildcard`: Wildcard</li>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Operator: str
+        :param MatchContent: The value of the parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MatchContent: str
+        """
+        self.MatchFrom = None
+        self.MatchParam = None
+        self.Operator = None
+        self.MatchContent = None
+
+
+    def _deserialize(self, params):
+        self.MatchFrom = params.get("MatchFrom")
+        self.MatchParam = params.get("MatchParam")
+        self.Operator = params.get("Operator")
+        self.MatchContent = params.get("MatchContent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExceptUserRuleScope(AbstractModel):
+    """The scope to which the exception rule applies
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 
+        :type Type: str
+        :param Modules: The module that applies. Only WAF managed rules are supported currently.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Modules: list of str
+        :param PartialModules: 
+        :type PartialModules: list of PartialModule
+        :param SkipConditions: 
+        :type SkipConditions: list of SkipCondition
+        """
+        self.Type = None
+        self.Modules = None
+        self.PartialModules = None
+        self.SkipConditions = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Modules = params.get("Modules")
+        if params.get("PartialModules") is not None:
+            self.PartialModules = []
+            for item in params.get("PartialModules"):
+                obj = PartialModule()
+                obj._deserialize(item)
+                self.PartialModules.append(obj)
+        if params.get("SkipConditions") is not None:
+            self.SkipConditions = []
+            for item in params.get("SkipConditions"):
+                obj = SkipCondition()
+                obj._deserialize(item)
+                self.SkipConditions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FailReason(AbstractModel):
     """Failure reason
 
@@ -6450,14 +9717,14 @@ class FileAscriptionInfo(AbstractModel):
 
 class Filter(AbstractModel):
     """Key-value pair filters for conditional filtering queries, such as filtering ID, name, and status.
-    If there are multiple filters, they’re combined with `AND`.
-    Values of the same Filter are combined with `OR`.
+    If more than one filter exists, the logical relationship between these filters is `AND`.
+    If multiple values exist in one filter, the logical relationship between these values under the same filter is `OR`.
 
     """
 
     def __init__(self):
         r"""
-        :param Name: The name of the field to filter.
+        :param Name: Fields to be filtered.
         :type Name: str
         :param Values: Value of the filtered field.
         :type Values: list of str
@@ -6528,6 +9795,42 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
         self.RedirectStatusCode = params.get("RedirectStatusCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GeoIp(AbstractModel):
+    """Region information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RegionId: Region ID
+        :type RegionId: int
+        :param Country: Country name
+        :type Country: str
+        :param Continent: The continent.
+        :type Continent: str
+        :param Province: The state/province.
+        :type Province: str
+        """
+        self.RegionId = None
+        self.Country = None
+        self.Continent = None
+        self.Province = None
+
+
+    def _deserialize(self, params):
+        self.RegionId = params.get("RegionId")
+        self.Country = params.get("Country")
+        self.Continent = params.get("Continent")
+        self.Province = params.get("Province")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6770,8 +10073,164 @@ class IdentifyZoneResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class IntelligenceRule(AbstractModel):
+    """Bot intelligence rules
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: Switch. Values:
+<li>`on`: Enable</li>
+<li>`off`: Disable</li>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Switch: str
+        :param IntelligenceRuleItems: Items in a bot intelligence rule
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IntelligenceRuleItems: list of IntelligenceRuleItem
+        """
+        self.Switch = None
+        self.IntelligenceRuleItems = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("IntelligenceRuleItems") is not None:
+            self.IntelligenceRuleItems = []
+            for item in params.get("IntelligenceRuleItems"):
+                obj = IntelligenceRuleItem()
+                obj._deserialize(item)
+                self.IntelligenceRuleItems.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IntelligenceRuleItem(AbstractModel):
+    """Bot intelligence rule items
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Label: The tag to categorize bots. Values:
+<li>`evil_bot`: Malicious bot</li>
+<li>`suspect_bot`: Suspected bot</li>
+<li>`good_bot`: Good bot</li>
+<li>`normal`: Normal request</li>
+        :type Label: str
+        :param Action: The action taken on bots. Values
+<li>`drop`: Block</li>
+<li>`trans`: Allow</li>
+<li>`alg`: JavaScript challenge</li>
+<li>`captcha`: Managed challenge</li>
+<li>`monitor`: Observe</li>
+        :type Action: str
+        """
+        self.Label = None
+        self.Action = None
+
+
+    def _deserialize(self, params):
+        self.Label = params.get("Label")
+        self.Action = params.get("Action")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IpTableConfig(AbstractModel):
+    """IP/Region blocklist/allowlist configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: Switch. Values:
+<li>`on`: Enable</li>
+<li>`off`: Disable</li>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Switch: str
+        :param IpTableRules: The settings of the basic access control rule. If it is null, the settings that were last configured will be used.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IpTableRules: list of IpTableRule
+        """
+        self.Switch = None
+        self.IpTableRules = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("IpTableRules") is not None:
+            self.IpTableRules = []
+            for item in params.get("IpTableRules"):
+                obj = IpTableRule()
+                obj._deserialize(item)
+                self.IpTableRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IpTableRule(AbstractModel):
+    """IP blocklist/allowlist rule details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Action: The action. Values:
+<li>`drop`: Block</li>
+<li>`trans`: Allow</li>
+<li>`monitor`: Observe</li>
+        :type Action: str
+        :param MatchFrom: The matching dimension. Values:
+<li>`ip`: Match by IP.</li>
+<li>`area`: Match by IP region.</li>
+        :type MatchFrom: str
+        :param MatchContent: The matching content.
+        :type MatchContent: str
+        :param RuleID: The rule ID, which is only used as an output parameter.
+        :type RuleID: int
+        :param UpdateTime: The update time, which is only used as an output parameter.
+        :type UpdateTime: str
+        """
+        self.Action = None
+        self.MatchFrom = None
+        self.MatchContent = None
+        self.RuleID = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Action = params.get("Action")
+        self.MatchFrom = params.get("MatchFrom")
+        self.MatchContent = params.get("MatchContent")
+        self.RuleID = params.get("RuleID")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Ipv6(AbstractModel):
-    """IPv6 access configuration
+    """The IPv6 access configuration.
 
     """
 
@@ -6880,6 +10339,83 @@ class L7OfflineLog(AbstractModel):
         self.Url = params.get("Url")
         self.LogPacketName = params.get("LogPacketName")
         self.Area = params.get("Area")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LoadBalancing(AbstractModel):
+    """CLB information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LoadBalancingId: The load balancer ID.
+        :type LoadBalancingId: str
+        :param ZoneId: The site ID.
+        :type ZoneId: str
+        :param Host: Subdomain name. You can use @ to represent the root domain.
+        :type Host: str
+        :param Type: The proxy mode. Values:
+<li>`dns_only`: Only DNS</li>
+<li>`proxied`: Proxied</li>
+        :type Type: str
+        :param TTL: The cache time of DNS records when `Type=dns_only`.
+        :type TTL: int
+        :param Status: The load balancer status. Values:
+<li>`online`: Deployed</li>
+<li>`process`: Deployment in progress</li>
+        :type Status: str
+        :param Cname: Schedules domain names.
+        :type Cname: str
+        :param OriginGroupId: The ID of the primary origin group.
+        :type OriginGroupId: str
+        :param BackupOriginGroupId: The ID of the secondary origin group. If not specified, it indicates that secondary origins are not used.
+        :type BackupOriginGroupId: str
+        :param UpdateTime: The update time.
+        :type UpdateTime: str
+        :param OriginType: 
+        :type OriginType: str
+        :param AdvancedOriginGroups: 
+        :type AdvancedOriginGroups: list of AdvancedOriginGroup
+        """
+        self.LoadBalancingId = None
+        self.ZoneId = None
+        self.Host = None
+        self.Type = None
+        self.TTL = None
+        self.Status = None
+        self.Cname = None
+        self.OriginGroupId = None
+        self.BackupOriginGroupId = None
+        self.UpdateTime = None
+        self.OriginType = None
+        self.AdvancedOriginGroups = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancingId = params.get("LoadBalancingId")
+        self.ZoneId = params.get("ZoneId")
+        self.Host = params.get("Host")
+        self.Type = params.get("Type")
+        self.TTL = params.get("TTL")
+        self.Status = params.get("Status")
+        self.Cname = params.get("Cname")
+        self.OriginGroupId = params.get("OriginGroupId")
+        self.BackupOriginGroupId = params.get("BackupOriginGroupId")
+        self.UpdateTime = params.get("UpdateTime")
+        self.OriginType = params.get("OriginType")
+        if params.get("AdvancedOriginGroups") is not None:
+            self.AdvancedOriginGroups = []
+            for item in params.get("AdvancedOriginGroups"):
+                obj = AdvancedOriginGroup()
+                obj._deserialize(item)
+                self.AdvancedOriginGroups.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7042,6 +10578,494 @@ Note: The value `0` means not to cache.
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyAlarmConfigRequest(AbstractModel):
+    """ModifyAlarmConfig request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ServiceType: The alarm service type. Values:
+<li>`ddos`: DDoS alarm service.</li>
+        :type ServiceType: str
+        :param ZoneId: The site ID.
+        :type ZoneId: str
+        :param EntityList: The list of protection entities.
+        :type EntityList: list of str
+        :param Threshold: The alarm threshold. When no value or 0 is passed, the default alarm threshold will be used.
+        :type Threshold: int
+        :param IsDefault: Whether the default alarm threshold is used.
+        :type IsDefault: bool
+        """
+        self.ServiceType = None
+        self.ZoneId = None
+        self.EntityList = None
+        self.Threshold = None
+        self.IsDefault = None
+
+
+    def _deserialize(self, params):
+        self.ServiceType = params.get("ServiceType")
+        self.ZoneId = params.get("ZoneId")
+        self.EntityList = params.get("EntityList")
+        self.Threshold = params.get("Threshold")
+        self.IsDefault = params.get("IsDefault")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAlarmConfigResponse(AbstractModel):
+    """ModifyAlarmConfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyAlarmDefaultThresholdRequest(AbstractModel):
+    """ModifyAlarmDefaultThreshold request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ServiceType: The alarm service type. Values:
+<li>`ddos`: DDoS alarm service.</li>
+        :type ServiceType: str
+        :param ZoneId: The site ID.
+        :type ZoneId: str
+        :param Threshold: The threshold in Mbps. Maximum value: 10.
+        :type Threshold: int
+        :param Entity: The protection entity, which is a proxy ID when layer-4 protection is enabled, or a site name when layer-7 protection is on.
+        :type Entity: str
+        """
+        self.ServiceType = None
+        self.ZoneId = None
+        self.Threshold = None
+        self.Entity = None
+
+
+    def _deserialize(self, params):
+        self.ServiceType = params.get("ServiceType")
+        self.ZoneId = params.get("ZoneId")
+        self.Threshold = params.get("Threshold")
+        self.Entity = params.get("Entity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAlarmDefaultThresholdResponse(AbstractModel):
+    """ModifyAlarmDefaultThreshold response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyApplicationProxyRequest(AbstractModel):
+    """ModifyApplicationProxy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: The site ID.
+        :type ZoneId: str
+        :param ProxyId: The proxy ID.
+        :type ProxyId: str
+        :param ProxyName: The domain name or subdomain name when `ProxyType=hostname`.
+The instance name when `ProxyType=instance`.
+        :type ProxyName: str
+        :param SessionPersistTime: The session persistence duration. Value range: 30-3600 (in seconds).
+The original configuration will apply if this field is not specified.
+        :type SessionPersistTime: int
+        :param ProxyType: The proxy type. Values:
+<li>`hostname`: The proxy is created by subdomain name.</li>
+<li>`instance`: The proxy is created by instance.</li>If not specified, this field uses the default value `instance`.
+        :type ProxyType: str
+        :param Ipv6: The IPv6 access configuration. The original configuration will apply if this field is not specified.
+        :type Ipv6: :class:`tencentcloud.teo.v20220901.models.Ipv6`
+        """
+        self.ZoneId = None
+        self.ProxyId = None
+        self.ProxyName = None
+        self.SessionPersistTime = None
+        self.ProxyType = None
+        self.Ipv6 = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.ProxyId = params.get("ProxyId")
+        self.ProxyName = params.get("ProxyName")
+        self.SessionPersistTime = params.get("SessionPersistTime")
+        self.ProxyType = params.get("ProxyType")
+        if params.get("Ipv6") is not None:
+            self.Ipv6 = Ipv6()
+            self.Ipv6._deserialize(params.get("Ipv6"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyApplicationProxyResponse(AbstractModel):
+    """ModifyApplicationProxy response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyApplicationProxyRuleRequest(AbstractModel):
+    """ModifyApplicationProxyRule request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: The site ID.
+        :type ZoneId: str
+        :param ProxyId: The proxy ID.
+        :type ProxyId: str
+        :param RuleId: The rule ID.
+        :type RuleId: str
+        :param OriginType: The origin type. Values:
+<li>`custom`: Specified origins</li>
+<li>`origins`: Origin group</li></li>The original configuration will apply if this field is not specified.
+        :type OriginType: str
+        :param Port: The port, which can be specified in the following formats:
+Single port, such as 80.
+Port range, such as 81-90. The original configuration will apply if this field is not specified.
+        :type Port: list of str
+        :param Proto: The protocol. Values:
+<li>`TCP`: TCP protocol</li>
+<li>`UDP`: UDP protocol</li>The original configuration will apply if this field is not specified.
+        :type Proto: str
+        :param OriginValue: Origin server information:
+When `OriginType=custom`, it indicates one or more origin servers. Example:
+OriginValue=["8.8.8.8:80","9.9.9.9:80"]
+OriginValue=["test.com:80"];
+When `OriginType=origins`, it indicates an origin group ID. Example:
+OriginValue=["origin-537f5b41-162a-11ed-abaa-525400c5da15"]
+The original configuration will apply if this field is not specified.
+        :type OriginValue: list of str
+        :param ForwardClientIp: Passes the client IP. Values:
+<li>`TOA`: Pass the client IP via TOA (available only when `Proto=TCP`).</li>
+<li>`PPV1`: Pass the client IP via Proxy Protocol V1 (available only when `Proto=TCP`).</li>
+<li>`PPV2`: Pass the client IP via Proxy Protocol V2.</li>
+<li>`OFF`: Not pass the client IP.</li>If not specified, this field uses the default value OFF.
+        :type ForwardClientIp: str
+        :param SessionPersist: Whether to enable session persistence. Values:
+<li>`true`: Enable</li>
+<li>`false`: Disable</li>The original configuration will apply if this field is not specified.
+        :type SessionPersist: bool
+        """
+        self.ZoneId = None
+        self.ProxyId = None
+        self.RuleId = None
+        self.OriginType = None
+        self.Port = None
+        self.Proto = None
+        self.OriginValue = None
+        self.ForwardClientIp = None
+        self.SessionPersist = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.ProxyId = params.get("ProxyId")
+        self.RuleId = params.get("RuleId")
+        self.OriginType = params.get("OriginType")
+        self.Port = params.get("Port")
+        self.Proto = params.get("Proto")
+        self.OriginValue = params.get("OriginValue")
+        self.ForwardClientIp = params.get("ForwardClientIp")
+        self.SessionPersist = params.get("SessionPersist")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyApplicationProxyRuleResponse(AbstractModel):
+    """ModifyApplicationProxyRule response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyApplicationProxyRuleStatusRequest(AbstractModel):
+    """ModifyApplicationProxyRuleStatus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: The site ID.
+        :type ZoneId: str
+        :param ProxyId: The proxy ID.
+        :type ProxyId: str
+        :param RuleId: The rule ID.
+        :type RuleId: str
+        :param Status: The rule status. Values:
+<li>`offline`: Disabled</li>
+<li>`online`: Enabled</li>
+        :type Status: str
+        """
+        self.ZoneId = None
+        self.ProxyId = None
+        self.RuleId = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.ProxyId = params.get("ProxyId")
+        self.RuleId = params.get("RuleId")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyApplicationProxyRuleStatusResponse(AbstractModel):
+    """ModifyApplicationProxyRuleStatus response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyApplicationProxyStatusRequest(AbstractModel):
+    """ModifyApplicationProxyStatus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: The site ID.
+        :type ZoneId: str
+        :param ProxyId: The proxy ID.
+        :type ProxyId: str
+        :param Status: The proxy status. Values:
+<li>`offline`: The proxy is disabled.</li>
+<li>`online`: The proxy is enabled.</li>
+        :type Status: str
+        """
+        self.ZoneId = None
+        self.ProxyId = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.ProxyId = params.get("ProxyId")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyApplicationProxyStatusResponse(AbstractModel):
+    """ModifyApplicationProxyStatus response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyDDoSPolicyHostRequest(AbstractModel):
+    """ModifyDDoSPolicyHost request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: The site ID.
+        :type ZoneId: str
+        :param Host: The subdomain name/layer-4 proxy.
+        :type Host: str
+        :param AccelerateType: Whether to enabled acceleration. Values:
+<li>`on`: Enable</li>
+<li>`off`: Disable</li>
+        :type AccelerateType: str
+        :param PolicyId: The policy ID.
+        :type PolicyId: int
+        :param SecurityType: Whether to enable security protection. Values:
+<li>`on`: Enable</li>
+<li>`off`: Disable</li>
+        :type SecurityType: str
+        """
+        self.ZoneId = None
+        self.Host = None
+        self.AccelerateType = None
+        self.PolicyId = None
+        self.SecurityType = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.Host = params.get("Host")
+        self.AccelerateType = params.get("AccelerateType")
+        self.PolicyId = params.get("PolicyId")
+        self.SecurityType = params.get("SecurityType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDDoSPolicyHostResponse(AbstractModel):
+    """ModifyDDoSPolicyHost response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyDDoSPolicyRequest(AbstractModel):
+    """ModifyDDoSPolicy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PolicyId: The policy ID.
+        :type PolicyId: int
+        :param ZoneId: The site ID.
+        :type ZoneId: str
+        :param DDoSRule: Details of the DDoS mitigation configuration.
+        :type DDoSRule: :class:`tencentcloud.teo.v20220901.models.DDoSRule`
+        """
+        self.PolicyId = None
+        self.ZoneId = None
+        self.DDoSRule = None
+
+
+    def _deserialize(self, params):
+        self.PolicyId = params.get("PolicyId")
+        self.ZoneId = params.get("ZoneId")
+        if params.get("DDoSRule") is not None:
+            self.DDoSRule = DDoSRule()
+            self.DDoSRule._deserialize(params.get("DDoSRule"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDDoSPolicyResponse(AbstractModel):
+    """ModifyDDoSPolicy response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class ModifyDefaultCertificateRequest(AbstractModel):
@@ -7275,6 +11299,134 @@ class ModifyHostsCertificateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyLoadBalancingRequest(AbstractModel):
+    """ModifyLoadBalancing request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: The site ID.
+        :type ZoneId: str
+        :param LoadBalancingId: The load balancer ID.
+        :type LoadBalancingId: str
+        :param Type: The proxy mode. Values:
+<li>`dns_only`: Only DNS</li>
+<li>`proxied`: Proxied</li>
+        :type Type: str
+        :param OriginGroupId: The ID of the primary origin group.
+        :type OriginGroupId: str
+        :param BackupOriginGroupId: The ID of the secondary origin group (only available when `Type=proxied`). If not specified, it indicates that secondary origins are not used.
+        :type BackupOriginGroupId: str
+        :param TTL: When `Type=dns_only`, it indicates the amount of time that DNS records remain in the cache of a DNS server.
+Value range: 60-86400 (in seconds). If it’s not specified, the default value 600 will be used.
+        :type TTL: int
+        :param OriginType: 
+        :type OriginType: str
+        :param AdvancedOriginGroups: 
+        :type AdvancedOriginGroups: list of AdvancedOriginGroup
+        """
+        self.ZoneId = None
+        self.LoadBalancingId = None
+        self.Type = None
+        self.OriginGroupId = None
+        self.BackupOriginGroupId = None
+        self.TTL = None
+        self.OriginType = None
+        self.AdvancedOriginGroups = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.LoadBalancingId = params.get("LoadBalancingId")
+        self.Type = params.get("Type")
+        self.OriginGroupId = params.get("OriginGroupId")
+        self.BackupOriginGroupId = params.get("BackupOriginGroupId")
+        self.TTL = params.get("TTL")
+        self.OriginType = params.get("OriginType")
+        if params.get("AdvancedOriginGroups") is not None:
+            self.AdvancedOriginGroups = []
+            for item in params.get("AdvancedOriginGroups"):
+                obj = AdvancedOriginGroup()
+                obj._deserialize(item)
+                self.AdvancedOriginGroups.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLoadBalancingResponse(AbstractModel):
+    """ModifyLoadBalancing response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyLoadBalancingStatusRequest(AbstractModel):
+    """ModifyLoadBalancingStatus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: The site ID.
+        :type ZoneId: str
+        :param LoadBalancingId: The load balancer ID.
+        :type LoadBalancingId: str
+        :param Status: The load balancer status. Values:
+<li>`online`: Enabled</li>
+<li>`offline`: Disabled</li>
+        :type Status: str
+        """
+        self.ZoneId = None
+        self.LoadBalancingId = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.LoadBalancingId = params.get("LoadBalancingId")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLoadBalancingStatusResponse(AbstractModel):
+    """ModifyLoadBalancingStatus response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyLogTopicTaskRequest(AbstractModel):
     """ModifyLogTopicTask request structure.
 
@@ -7347,6 +11499,82 @@ class ModifyLogTopicTaskRequest(AbstractModel):
 
 class ModifyLogTopicTaskResponse(AbstractModel):
     """ModifyLogTopicTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyOriginGroupRequest(AbstractModel):
+    """ModifyOriginGroup request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: The site ID.
+        :type ZoneId: str
+        :param OriginGroupId: The ID of the origin group.
+        :type OriginGroupId: str
+        :param OriginType: The origin type. Values:
+<li>`self`: Customer origin</li>
+<li>`third_party`: Third-party origin</li>
+<li>`cos`: Tencent Cloud COS origin</li>
+        :type OriginType: str
+        :param OriginGroupName: The name of the origin group.
+        :type OriginGroupName: str
+        :param ConfigurationType: The origin configuration type when `OriginType=self`. Values:
+<li>`area`: Configure by region.</li>
+<li>`weight`: Configure by weight.</li>
+<li>`proto`: Configure by HTTP protocol.</li> When `OriginType=third_party/cos`, leave this field empty.
+        :type ConfigurationType: str
+        :param OriginRecords: Details of the origin record.
+        :type OriginRecords: list of OriginRecord
+        :param HostHeader: 
+        :type HostHeader: str
+        """
+        self.ZoneId = None
+        self.OriginGroupId = None
+        self.OriginType = None
+        self.OriginGroupName = None
+        self.ConfigurationType = None
+        self.OriginRecords = None
+        self.HostHeader = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.OriginGroupId = params.get("OriginGroupId")
+        self.OriginType = params.get("OriginType")
+        self.OriginGroupName = params.get("OriginGroupName")
+        self.ConfigurationType = params.get("ConfigurationType")
+        if params.get("OriginRecords") is not None:
+            self.OriginRecords = []
+            for item in params.get("OriginRecords"):
+                obj = OriginRecord()
+                obj._deserialize(item)
+                self.OriginRecords.append(obj)
+        self.HostHeader = params.get("HostHeader")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyOriginGroupResponse(AbstractModel):
+    """ModifyOriginGroup response structure.
 
     """
 
@@ -7472,6 +11700,144 @@ class ModifyRuleResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RuleId = params.get("RuleId")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifySecurityPolicyRequest(AbstractModel):
+    """ModifySecurityPolicy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: The site ID.
+        :type ZoneId: str
+        :param Entity: The subdomain name/layer-4 proxy.
+        :type Entity: str
+        :param SecurityConfig: Security configuration.
+        :type SecurityConfig: :class:`tencentcloud.teo.v20220901.models.SecurityConfig`
+        """
+        self.ZoneId = None
+        self.Entity = None
+        self.SecurityConfig = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.Entity = params.get("Entity")
+        if params.get("SecurityConfig") is not None:
+            self.SecurityConfig = SecurityConfig()
+            self.SecurityConfig._deserialize(params.get("SecurityConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySecurityPolicyResponse(AbstractModel):
+    """ModifySecurityPolicy response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifySecurityWafGroupPolicyRequest(AbstractModel):
+    """ModifySecurityWafGroupPolicy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: The site ID.
+        :type ZoneId: str
+        :param Entity: The subdomain name.
+        :type Entity: str
+        :param Switch: Switch. Values:
+<li>`on`: Enable</li>
+<li>`off`: Disable</li>If not specified, it defaults to the setting that was last configured.
+        :type Switch: str
+        :param Level: The rule level. Values:
+<li>`loose`: Loose</li>
+<li>`normal`: Moderate</li>
+<li>`strict`: Strict</li>
+<li>`stricter`: Super strict</li>
+<li>`custom`: Custom</li>If not specified, it defaults to the setting that was last configured.
+        :type Level: str
+        :param Mode: The rule action. Values:
+<li>`block`: Block</li>
+<li>`observe`: Observe</li>If not specified, it defaults to the setting that was last configured.
+        :type Mode: str
+        :param WafRules: The settings of the managed rule. If not specified, it defaults to the settings that were last configured.
+        :type WafRules: :class:`tencentcloud.teo.v20220901.models.WafRule`
+        :param AiRule: The settings of the AI rule engine. If not specified, it defaults to the settings that were last configured.
+        :type AiRule: :class:`tencentcloud.teo.v20220901.models.AiRule`
+        :param WafGroups: The settings of the managed rule group. If not specified, it defaults to the settings that were last configured.
+        :type WafGroups: list of WafGroup
+        """
+        self.ZoneId = None
+        self.Entity = None
+        self.Switch = None
+        self.Level = None
+        self.Mode = None
+        self.WafRules = None
+        self.AiRule = None
+        self.WafGroups = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.Entity = params.get("Entity")
+        self.Switch = params.get("Switch")
+        self.Level = params.get("Level")
+        self.Mode = params.get("Mode")
+        if params.get("WafRules") is not None:
+            self.WafRules = WafRule()
+            self.WafRules._deserialize(params.get("WafRules"))
+        if params.get("AiRule") is not None:
+            self.AiRule = AiRule()
+            self.AiRule._deserialize(params.get("AiRule"))
+        if params.get("WafGroups") is not None:
+            self.WafGroups = []
+            for item in params.get("WafGroups"):
+                obj = WafGroup()
+                obj._deserialize(item)
+                self.WafGroups.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySecurityWafGroupPolicyResponse(AbstractModel):
+    """ModifySecurityWafGroupPolicy response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -7866,6 +12232,45 @@ class OfflineCache(AbstractModel):
         
 
 
+class OptimizeAction(AbstractModel):
+    """The optimization suggestions
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: The optimization metric. Values:
+<li>`Http2`</li>
+<li>`Http3`</li>
+<li>`Brotli`</li>
+        :type Name: str
+        :param Connectivity: The network environment.
+        :type Connectivity: str
+        :param Value: The estimated load time, in milliseconds.
+        :type Value: int
+        :param Ratio: The estimated improvement ratio, in %.
+        :type Ratio: int
+        """
+        self.Name = None
+        self.Connectivity = None
+        self.Value = None
+        self.Ratio = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Connectivity = params.get("Connectivity")
+        self.Value = params.get("Value")
+        self.Ratio = params.get("Ratio")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Origin(AbstractModel):
     """The origin server configuration.
 
@@ -7900,6 +12305,205 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.BackupOrigins = params.get("BackupOrigins")
         self.OriginPullProtocol = params.get("OriginPullProtocol")
         self.CosPrivateAccess = params.get("CosPrivateAccess")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OriginGroup(AbstractModel):
+    """Origin group information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: The site ID.
+        :type ZoneId: str
+        :param ZoneName: The site name.
+        :type ZoneName: str
+        :param OriginGroupId: The ID of the origin group.
+        :type OriginGroupId: str
+        :param OriginType: The origin type. Values:
+<li>`self`: Customer origin</li>
+<li>`third_party`: Third-party origin</li>
+<li>`cos`: Tencent Cloud COS origin</li>
+        :type OriginType: str
+        :param OriginGroupName: The name of the origin group.
+        :type OriginGroupName: str
+        :param ConfigurationType: The origin configuration type when `OriginType=self`. Values:
+<li>`area`: Configure by region.</li>
+<li>`weight`: Configure by weight.</li>
+<li>`proto`: Configure by HTTP protocol.</li>When `OriginType=third_party/cos`, leave this field empty.
+        :type ConfigurationType: str
+        :param OriginRecords: The origin record information.
+        :type OriginRecords: list of OriginRecord
+        :param UpdateTime: The update time of the origin group.
+        :type UpdateTime: str
+        :param HostHeader: 
+        :type HostHeader: str
+        """
+        self.ZoneId = None
+        self.ZoneName = None
+        self.OriginGroupId = None
+        self.OriginType = None
+        self.OriginGroupName = None
+        self.ConfigurationType = None
+        self.OriginRecords = None
+        self.UpdateTime = None
+        self.HostHeader = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.ZoneName = params.get("ZoneName")
+        self.OriginGroupId = params.get("OriginGroupId")
+        self.OriginType = params.get("OriginType")
+        self.OriginGroupName = params.get("OriginGroupName")
+        self.ConfigurationType = params.get("ConfigurationType")
+        if params.get("OriginRecords") is not None:
+            self.OriginRecords = []
+            for item in params.get("OriginRecords"):
+                obj = OriginRecord()
+                obj._deserialize(item)
+                self.OriginRecords.append(obj)
+        self.UpdateTime = params.get("UpdateTime")
+        self.HostHeader = params.get("HostHeader")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OriginGroupCondition(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Target: 
+        :type Target: str
+        :param Operator: 
+        :type Operator: str
+        :param Values: 
+        :type Values: list of str
+        """
+        self.Target = None
+        self.Operator = None
+        self.Values = None
+
+
+    def _deserialize(self, params):
+        self.Target = params.get("Target")
+        self.Operator = params.get("Operator")
+        self.Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OriginRecord(AbstractModel):
+    """Origin group record
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Record: The origin record value, which can be an IPv4/IPv6 address or a domain name.
+        :type Record: str
+        :param RecordId: The origin record ID.
+        :type RecordId: str
+        :param Port: The origin port. Value rang: 1-65535.
+        :type Port: int
+        :param Weight: The weight when `ConfigurationType=weight`.
+If 0 or no value is passed, the weight of each origin in a group will be 0 or left empty, indicating that origin-pull is performed by round-robin.
+If a value between 1-100 is passed, the total weight of multiple origins in a group should be 100, indicating that origin-pull is performed by weight.
+The weight when `ConfigurationType=proto`.
+If 0 or no value is passed, the weight of each origin in a group will be 0 or left empty, indicating that origin-pull is performed by round-robin.
+If a value between 1-100 is passed, the total weight of multiple origins with the same protocol in a group should be 100, indicating that origin-pull is performed by weight.
+        :type Weight: int
+        :param Proto: The origin protocol when `ConfigurationType=proto`, indicating that origin-pull is performed by protocol.
+<li>`http`: HTTP protocol</li>
+<li>`https`: HTTPS protocol</li>
+        :type Proto: str
+        :param Area: The region when `ConfigurationType=area`, which is specified by country code (ISO 3166 alpha-2) or continent code. If not specified, it indicates all regions. Supported continent codes:
+<li>`Asia`</li>
+<li>`Europe`</li>
+<li>`Africa`</li>
+<li>`Oceania`</li>
+<li>`Americas`</li>An origin group must have at least one origin configured with all regions.
+        :type Area: list of str
+        :param Private: It is valid only when `OriginType=third_part`.
+Whether the origin group is private. Values:
+<li>`true`: Yes.</li>
+<li>`false`: No.</li>If not specified, it defaults to false.
+        :type Private: bool
+        :param PrivateParameters: The authentication parameter, which is used when `Private=true`.
+        :type PrivateParameters: list of PrivateParameter
+        """
+        self.Record = None
+        self.RecordId = None
+        self.Port = None
+        self.Weight = None
+        self.Proto = None
+        self.Area = None
+        self.Private = None
+        self.PrivateParameters = None
+
+
+    def _deserialize(self, params):
+        self.Record = params.get("Record")
+        self.RecordId = params.get("RecordId")
+        self.Port = params.get("Port")
+        self.Weight = params.get("Weight")
+        self.Proto = params.get("Proto")
+        self.Area = params.get("Area")
+        self.Private = params.get("Private")
+        if params.get("PrivateParameters") is not None:
+            self.PrivateParameters = []
+            for item in params.get("PrivateParameters"):
+                obj = PrivateParameter()
+                obj._deserialize(item)
+                self.PrivateParameters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PartialModule(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Module: 
+        :type Module: str
+        :param Include: 
+        :type Include: list of int
+        """
+        self.Module = None
+        self.Include = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Include = params.get("Include")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7978,6 +12582,51 @@ class PlanInfo(AbstractModel):
         
 
 
+class PortraitManagedRuleDetail(AbstractModel):
+    """User profiling rule details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleId: Unique rule ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RuleId: int
+        :param Description: Rule description
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Description: str
+        :param RuleTypeName: Rule type name: botdb (user profile)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RuleTypeName: str
+        :param ClassificationId: The ID that classifies the rule category.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ClassificationId: int
+        :param Status: Action status of the rule.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Status: str
+        """
+        self.RuleId = None
+        self.Description = None
+        self.RuleTypeName = None
+        self.ClassificationId = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        self.Description = params.get("Description")
+        self.RuleTypeName = params.get("RuleTypeName")
+        self.ClassificationId = params.get("ClassificationId")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PostMaxSize(AbstractModel):
     """Maximum size of the file uploaded for streaming via a POST request
 
@@ -8000,6 +12649,36 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
         self.MaxSize = params.get("MaxSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PrivateParameter(AbstractModel):
+    """Origin authentication parameter
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: The parameter name. Values
+<li>`AccessKeyId`: Access Key ID</li>
+<li>`SecretAccessKey`: Secret Access Key</li>
+        :type Name: str
+        :param Value: The parameter value.
+        :type Value: str
+        """
+        self.Name = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8144,6 +12823,311 @@ class Quota(AbstractModel):
         self.Daily = params.get("Daily")
         self.DailyAvailable = params.get("DailyAvailable")
         self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RateLimitConfig(AbstractModel):
+    """Rate limiting configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: Switch. Values:
+<li>`on`: Enable</li>
+<li>`off`: Disable</li>
+        :type Switch: str
+        :param RateLimitUserRules: The settings of the custom rate limiting rule. If it is null, the settings that were last configured will be used.
+        :type RateLimitUserRules: list of RateLimitUserRule
+        :param RateLimitTemplate: The settings of the rate limiting template. If it is null, the settings that were last configured will be used.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RateLimitTemplate: :class:`tencentcloud.teo.v20220901.models.RateLimitTemplate`
+        :param RateLimitIntelligence: The client filtering settings. If it is null, the settings that were last configured will be used.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RateLimitIntelligence: :class:`tencentcloud.teo.v20220901.models.RateLimitIntelligence`
+        """
+        self.Switch = None
+        self.RateLimitUserRules = None
+        self.RateLimitTemplate = None
+        self.RateLimitIntelligence = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("RateLimitUserRules") is not None:
+            self.RateLimitUserRules = []
+            for item in params.get("RateLimitUserRules"):
+                obj = RateLimitUserRule()
+                obj._deserialize(item)
+                self.RateLimitUserRules.append(obj)
+        if params.get("RateLimitTemplate") is not None:
+            self.RateLimitTemplate = RateLimitTemplate()
+            self.RateLimitTemplate._deserialize(params.get("RateLimitTemplate"))
+        if params.get("RateLimitIntelligence") is not None:
+            self.RateLimitIntelligence = RateLimitIntelligence()
+            self.RateLimitIntelligence._deserialize(params.get("RateLimitIntelligence"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RateLimitIntelligence(AbstractModel):
+    """Client filtering
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: Whether to enable configuration. Values:
+<li>`on`: Enable</li>
+<li>`off`: Disable</li>
+        :type Switch: str
+        :param Action: Action to be executed. Values:
+<li>`monitor`: Observe</li>
+<li>`alg`: Challenge</li>
+        :type Action: str
+        """
+        self.Switch = None
+        self.Action = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Action = params.get("Action")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RateLimitIntelligenceRuleDetail(AbstractModel):
+    """Details of the intelligent rate limiting rule
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MatchContent: The client IP detected.
+        :type MatchContent: str
+        :param Action: The action taken.
+        :type Action: str
+        :param EffectiveTime: Update time
+        :type EffectiveTime: str
+        :param ExpireTime: The expiration time.
+        :type ExpireTime: str
+        :param RuleId: The rule ID.
+        :type RuleId: int
+        :param Status: The action status. `allowed` indicates that the request is allowed.
+        :type Status: str
+        """
+        self.MatchContent = None
+        self.Action = None
+        self.EffectiveTime = None
+        self.ExpireTime = None
+        self.RuleId = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.MatchContent = params.get("MatchContent")
+        self.Action = params.get("Action")
+        self.EffectiveTime = params.get("EffectiveTime")
+        self.ExpireTime = params.get("ExpireTime")
+        self.RuleId = params.get("RuleId")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RateLimitTemplate(AbstractModel):
+    """Rate limit template
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Mode: The mode. Values:
+<li>`sup_loose`: Super loose</li>
+<li>`loose`: Loose</li>
+<li>`emergency`: Emergency</li>
+<li>`normal`: Moderate</li>
+<li>`strict`: Strict</li>
+<li>`close`: Off</li>
+        :type Mode: str
+        :param Action: 
+        :type Action: str
+        :param RateLimitTemplateDetail: The settings of the rate limiting template. It is only used as an output parameter.
+        :type RateLimitTemplateDetail: :class:`tencentcloud.teo.v20220901.models.RateLimitTemplateDetail`
+        """
+        self.Mode = None
+        self.Action = None
+        self.RateLimitTemplateDetail = None
+
+
+    def _deserialize(self, params):
+        self.Mode = params.get("Mode")
+        self.Action = params.get("Action")
+        if params.get("RateLimitTemplateDetail") is not None:
+            self.RateLimitTemplateDetail = RateLimitTemplateDetail()
+            self.RateLimitTemplateDetail._deserialize(params.get("RateLimitTemplateDetail"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RateLimitTemplateDetail(AbstractModel):
+    """The settings of the rate limiting template
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Mode: The mode. Values:
+<li>`sup_loose`: Super loose</li>
+<li>`loose`: Loose</li>
+<li>`emergency`: Emergency</li>
+<li>`normal`: Moderate</li>
+<li>`strict`: Strict</li>
+<li>`close`: Off</li>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Mode: str
+        :param ID: The unique ID.
+        :type ID: int
+        :param Action: The action, which will be triggered when the specified threshold reaches.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Action: str
+        :param PunishTime: The amount of time taken to perform the action. Value range: 0-172800 seconds.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PunishTime: int
+        :param Threshold: The request threshold. Value range: 0-4294967294.
+        :type Threshold: int
+        :param Period: The statistical period. Value range: 0-120 seconds.
+        :type Period: int
+        """
+        self.Mode = None
+        self.ID = None
+        self.Action = None
+        self.PunishTime = None
+        self.Threshold = None
+        self.Period = None
+
+
+    def _deserialize(self, params):
+        self.Mode = params.get("Mode")
+        self.ID = params.get("ID")
+        self.Action = params.get("Action")
+        self.PunishTime = params.get("PunishTime")
+        self.Threshold = params.get("Threshold")
+        self.Period = params.get("Period")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RateLimitUserRule(AbstractModel):
+    """Rate limit rule
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Threshold: The request threshold. Value range: 0-4294967294.
+        :type Threshold: int
+        :param Period: The statistical period. The value can be 10, 20, 30, 40, 50, or 60 seconds.
+        :type Period: int
+        :param RuleName: The rule name, which consists of only letters, digits, and underscores and cannot start with an underscore.
+        :type RuleName: str
+        :param Action: The action. Values:
+<li>`monitor`: Observe</li>
+<li>`drop`: Block</li>
+<li>`alg`: JavaScript challenge</li>
+        :type Action: str
+        :param PunishTime: The amount of time taken to perform the action. Value range: 0 seconds - 2 days.
+        :type PunishTime: int
+        :param PunishTimeUnit: The time unit. Values:
+<li>`second`: Second</li>
+<li>`minutes`: Minute</li>
+<li>`hour`: Hour</li>
+        :type PunishTimeUnit: str
+        :param RuleStatus: The rule status. Values:
+<li>`on`: Enable</li>
+<li>`off`: Disable</li>
+<li>Default value: on</li>
+        :type RuleStatus: str
+        :param AclConditions: The rule details.
+        :type AclConditions: list of AclCondition
+        :param RulePriority: The rule weight. Value range: 0-100.
+        :type RulePriority: int
+        :param RuleID: The rule ID, which is only used as an output parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RuleID: int
+        :param FreqFields: The filter. Values:
+<li>`host`: Domain name</li>
+<li>`sip`: Client IP</li>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FreqFields: list of str
+        :param UpdateTime: Update time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UpdateTime: str
+        """
+        self.Threshold = None
+        self.Period = None
+        self.RuleName = None
+        self.Action = None
+        self.PunishTime = None
+        self.PunishTimeUnit = None
+        self.RuleStatus = None
+        self.AclConditions = None
+        self.RulePriority = None
+        self.RuleID = None
+        self.FreqFields = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Threshold = params.get("Threshold")
+        self.Period = params.get("Period")
+        self.RuleName = params.get("RuleName")
+        self.Action = params.get("Action")
+        self.PunishTime = params.get("PunishTime")
+        self.PunishTimeUnit = params.get("PunishTimeUnit")
+        self.RuleStatus = params.get("RuleStatus")
+        if params.get("AclConditions") is not None:
+            self.AclConditions = []
+            for item in params.get("AclConditions"):
+                obj = AclCondition()
+                obj._deserialize(item)
+                self.AclConditions.append(obj)
+        self.RulePriority = params.get("RulePriority")
+        self.RuleID = params.get("RuleID")
+        self.FreqFields = params.get("FreqFields")
+        self.UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9009,6 +13993,116 @@ class SecRuleRelatedInfo(AbstractModel):
         
 
 
+class SecurityConfig(AbstractModel):
+    """Security configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WafConfig: The settings of the managed rule. If it is null, the settings that were last configured will be used.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type WafConfig: :class:`tencentcloud.teo.v20220901.models.WafConfig`
+        :param RateLimitConfig: The settings of the rate limiting rule. If it is null, the settings that were last configured will be used.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RateLimitConfig: :class:`tencentcloud.teo.v20220901.models.RateLimitConfig`
+        :param AclConfig: The settings of the custom rule. If it is null, the settings that were last configured will be used.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AclConfig: :class:`tencentcloud.teo.v20220901.models.AclConfig`
+        :param BotConfig: The settings of the bot configuration. If it is null, the settings that were last configured will be used.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BotConfig: :class:`tencentcloud.teo.v20220901.models.BotConfig`
+        :param SwitchConfig: The switch setting of the layer-7 protection. If it is null, the setting that was last configured will be used.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SwitchConfig: :class:`tencentcloud.teo.v20220901.models.SwitchConfig`
+        :param IpTableConfig: The settings of the basic access control rule. If it is null, the settings that were last configured will be used.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IpTableConfig: :class:`tencentcloud.teo.v20220901.models.IpTableConfig`
+        :param ExceptConfig: The settings of the exception rule. If it is null, the settings that were last configured will be used.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExceptConfig: :class:`tencentcloud.teo.v20220901.models.ExceptConfig`
+        :param DropPageConfig: The settings of the custom block page. If it is null, the settings that were last configured will be used.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DropPageConfig: :class:`tencentcloud.teo.v20220901.models.DropPageConfig`
+        """
+        self.WafConfig = None
+        self.RateLimitConfig = None
+        self.AclConfig = None
+        self.BotConfig = None
+        self.SwitchConfig = None
+        self.IpTableConfig = None
+        self.ExceptConfig = None
+        self.DropPageConfig = None
+
+
+    def _deserialize(self, params):
+        if params.get("WafConfig") is not None:
+            self.WafConfig = WafConfig()
+            self.WafConfig._deserialize(params.get("WafConfig"))
+        if params.get("RateLimitConfig") is not None:
+            self.RateLimitConfig = RateLimitConfig()
+            self.RateLimitConfig._deserialize(params.get("RateLimitConfig"))
+        if params.get("AclConfig") is not None:
+            self.AclConfig = AclConfig()
+            self.AclConfig._deserialize(params.get("AclConfig"))
+        if params.get("BotConfig") is not None:
+            self.BotConfig = BotConfig()
+            self.BotConfig._deserialize(params.get("BotConfig"))
+        if params.get("SwitchConfig") is not None:
+            self.SwitchConfig = SwitchConfig()
+            self.SwitchConfig._deserialize(params.get("SwitchConfig"))
+        if params.get("IpTableConfig") is not None:
+            self.IpTableConfig = IpTableConfig()
+            self.IpTableConfig._deserialize(params.get("IpTableConfig"))
+        if params.get("ExceptConfig") is not None:
+            self.ExceptConfig = ExceptConfig()
+            self.ExceptConfig._deserialize(params.get("ExceptConfig"))
+        if params.get("DropPageConfig") is not None:
+            self.DropPageConfig = DropPageConfig()
+            self.DropPageConfig._deserialize(params.get("DropPageConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SecurityEntity(AbstractModel):
+    """Protected resource
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: The site ID.
+        :type ZoneId: str
+        :param Entity: The subdomain name/layer-4 proxy
+        :type Entity: str
+        :param EntityType: The type. Values:
+<li>`domain`: Layer-7 subdomain name</li>
+<li>`application`: Layer-4 proxy name</li>
+        :type EntityType: str
+        """
+        self.ZoneId = None
+        self.Entity = None
+        self.EntityType = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.Entity = params.get("Entity")
+        self.EntityType = params.get("EntityType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SecurityType(AbstractModel):
     """The security type setting item.
 
@@ -9088,6 +14182,66 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class ShieldArea(AbstractModel):
+    """DDoS mitigation configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: The site ID.
+        :type ZoneId: str
+        :param PolicyId: The policy ID.
+        :type PolicyId: int
+        :param Type: The type of protected resources. Values:
+<li>`domain`: Layer-7 subdomain name</li>
+<li>`application`: Layer-4 proxy</li>
+        :type Type: str
+        :param EntityName: The layer-7 site name.
+        :type EntityName: str
+        :param DDoSHosts: The layer-7 subdomain name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DDoSHosts: list of DDoSHost
+        :param TcpNum: Number of layer-4 TCP forwarding rules
+        :type TcpNum: int
+        :param UdpNum: Number of layer-4 UDP forwarding rules
+        :type UdpNum: int
+        :param Entity: Name of the protected resource
+        :type Entity: str
+        """
+        self.ZoneId = None
+        self.PolicyId = None
+        self.Type = None
+        self.EntityName = None
+        self.DDoSHosts = None
+        self.TcpNum = None
+        self.UdpNum = None
+        self.Entity = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.PolicyId = params.get("PolicyId")
+        self.Type = params.get("Type")
+        self.EntityName = params.get("EntityName")
+        if params.get("DDoSHosts") is not None:
+            self.DDoSHosts = []
+            for item in params.get("DDoSHosts"):
+                obj = DDoSHost()
+                obj._deserialize(item)
+                self.DDoSHosts.append(obj)
+        self.TcpNum = params.get("TcpNum")
+        self.UdpNum = params.get("UdpNum")
+        self.Entity = params.get("Entity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SingleDataRecord(AbstractModel):
     """The dimensional data record
 
@@ -9149,6 +14303,50 @@ class SingleTypeValue(AbstractModel):
         
 
 
+class SkipCondition(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 
+        :type Type: str
+        :param Selector: 
+        :type Selector: str
+        :param MatchFromType: 
+        :type MatchFromType: str
+        :param MatchFrom: 
+        :type MatchFrom: list of str
+        :param MatchContentType: 
+        :type MatchContentType: str
+        :param MatchContent: 
+        :type MatchContent: list of str
+        """
+        self.Type = None
+        self.Selector = None
+        self.MatchFromType = None
+        self.MatchFrom = None
+        self.MatchContentType = None
+        self.MatchContent = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Selector = params.get("Selector")
+        self.MatchFromType = params.get("MatchFromType")
+        self.MatchFrom = params.get("MatchFrom")
+        self.MatchContentType = params.get("MatchContentType")
+        self.MatchContent = params.get("MatchContent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SmartRouting(AbstractModel):
     """Smart acceleration configuration
 
@@ -9166,6 +14364,357 @@ class SmartRouting(AbstractModel):
 
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SpeedTestingConfig(AbstractModel):
+    """The site test configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskType: The task type. Values:
+<li>`1`: Page performance</li>
+<li>`2`: File uploads</li>
+<li>`3`: File downloads</li>
+<li>`4`: Port performance</li>
+<li>`5`: Network quality</li>
+<li>`6`: Audio/Video experience</li>
+        :type TaskType: int
+        :param Url: The URL.
+        :type Url: str
+        :param UA: The user agent.
+        :type UA: str
+        :param Connectivity: The network type.
+        :type Connectivity: str
+        """
+        self.TaskType = None
+        self.Url = None
+        self.UA = None
+        self.Connectivity = None
+
+
+    def _deserialize(self, params):
+        self.TaskType = params.get("TaskType")
+        self.Url = params.get("Url")
+        self.UA = params.get("UA")
+        self.Connectivity = params.get("Connectivity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SpeedTestingDetailData(AbstractModel):
+    """The site’s load speed across regions.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: The site ID.
+        :type ZoneId: str
+        :param ZoneName: The site name.
+        :type ZoneName: str
+        :param DistrictStatistics: The site performance across regions.
+        :type DistrictStatistics: list of DistrictStatistics
+        """
+        self.ZoneId = None
+        self.ZoneName = None
+        self.DistrictStatistics = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.ZoneName = params.get("ZoneName")
+        if params.get("DistrictStatistics") is not None:
+            self.DistrictStatistics = []
+            for item in params.get("DistrictStatistics"):
+                obj = DistrictStatistics()
+                obj._deserialize(item)
+                self.DistrictStatistics.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SpeedTestingInfo(AbstractModel):
+    """The site test information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StatusCode: The task status. Values:
+<li>`200`: The task completed.</li>
+<li>`100`: The task is running.</li>
+<li>`503`: The task failed.</li>
+        :type StatusCode: int
+        :param TestId: ID of the site test task.
+        :type TestId: str
+        :param SpeedTestingConfig: The settings of the site test task.
+        :type SpeedTestingConfig: :class:`tencentcloud.teo.v20220901.models.SpeedTestingConfig`
+        :param SpeedTestingStatistics: The site test result.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SpeedTestingStatistics: :class:`tencentcloud.teo.v20220901.models.SpeedTestingStatistics`
+        """
+        self.StatusCode = None
+        self.TestId = None
+        self.SpeedTestingConfig = None
+        self.SpeedTestingStatistics = None
+
+
+    def _deserialize(self, params):
+        self.StatusCode = params.get("StatusCode")
+        self.TestId = params.get("TestId")
+        if params.get("SpeedTestingConfig") is not None:
+            self.SpeedTestingConfig = SpeedTestingConfig()
+            self.SpeedTestingConfig._deserialize(params.get("SpeedTestingConfig"))
+        if params.get("SpeedTestingStatistics") is not None:
+            self.SpeedTestingStatistics = SpeedTestingStatistics()
+            self.SpeedTestingStatistics._deserialize(params.get("SpeedTestingStatistics"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SpeedTestingMetricData(AbstractModel):
+    """The site test metrics.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: The site ID.
+        :type ZoneId: str
+        :param ZoneName: The site name.
+        :type ZoneName: str
+        :param OriginSpeedTestingInfo: The origin information.
+        :type OriginSpeedTestingInfo: list of SpeedTestingInfo
+        :param ProxySpeedTestingInfo: The EdgeOne information.
+        :type ProxySpeedTestingInfo: list of SpeedTestingInfo
+        :param SpeedTestingStatus: The site status.
+        :type SpeedTestingStatus: :class:`tencentcloud.teo.v20220901.models.SpeedTestingStatus`
+        :param OptimizeAction: The optimization suggestions.
+        :type OptimizeAction: list of OptimizeAction
+        :param ProxyLoadTime: The EdgeOne load time, in milliseconds.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProxyLoadTime: int
+        :param OriginLoadTime: The origin load time, in milliseconds.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OriginLoadTime: int
+        """
+        self.ZoneId = None
+        self.ZoneName = None
+        self.OriginSpeedTestingInfo = None
+        self.ProxySpeedTestingInfo = None
+        self.SpeedTestingStatus = None
+        self.OptimizeAction = None
+        self.ProxyLoadTime = None
+        self.OriginLoadTime = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.ZoneName = params.get("ZoneName")
+        if params.get("OriginSpeedTestingInfo") is not None:
+            self.OriginSpeedTestingInfo = []
+            for item in params.get("OriginSpeedTestingInfo"):
+                obj = SpeedTestingInfo()
+                obj._deserialize(item)
+                self.OriginSpeedTestingInfo.append(obj)
+        if params.get("ProxySpeedTestingInfo") is not None:
+            self.ProxySpeedTestingInfo = []
+            for item in params.get("ProxySpeedTestingInfo"):
+                obj = SpeedTestingInfo()
+                obj._deserialize(item)
+                self.ProxySpeedTestingInfo.append(obj)
+        if params.get("SpeedTestingStatus") is not None:
+            self.SpeedTestingStatus = SpeedTestingStatus()
+            self.SpeedTestingStatus._deserialize(params.get("SpeedTestingStatus"))
+        if params.get("OptimizeAction") is not None:
+            self.OptimizeAction = []
+            for item in params.get("OptimizeAction"):
+                obj = OptimizeAction()
+                obj._deserialize(item)
+                self.OptimizeAction.append(obj)
+        self.ProxyLoadTime = params.get("ProxyLoadTime")
+        self.OriginLoadTime = params.get("OriginLoadTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SpeedTestingQuota(AbstractModel):
+    """The quota limit on site tests.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalTestRuns: The total number of site tests.
+        :type TotalTestRuns: int
+        :param AvailableTestRuns: The number of available site tests.
+        :type AvailableTestRuns: int
+        """
+        self.TotalTestRuns = None
+        self.AvailableTestRuns = None
+
+
+    def _deserialize(self, params):
+        self.TotalTestRuns = params.get("TotalTestRuns")
+        self.AvailableTestRuns = params.get("AvailableTestRuns")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SpeedTestingStatistics(AbstractModel):
+    """The site test result
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FirstContentfulPaint: Last contentful paint, in milliseconds.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FirstContentfulPaint: int
+        :param FirstMeaningfulPaint: Full content load, in milliseconds.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FirstMeaningfulPaint: int
+        :param OverallDownloadSpeed: Average download speed, in KB/s.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OverallDownloadSpeed: float
+        :param RenderTime: Rendering time, in milliseconds.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RenderTime: int
+        :param DocumentFinishTime: DOM content loaded, in milliseconds.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DocumentFinishTime: int
+        :param TcpConnectionTime: Average TCP connection, in milliseconds.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TcpConnectionTime: int
+        :param ResponseTime: Average backend response, in milliseconds.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ResponseTime: int
+        :param FileDownloadTime: Average DOM content download, in milliseconds.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FileDownloadTime: int
+        :param LoadTime: Load time, in milliseconds.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LoadTime: int
+        """
+        self.FirstContentfulPaint = None
+        self.FirstMeaningfulPaint = None
+        self.OverallDownloadSpeed = None
+        self.RenderTime = None
+        self.DocumentFinishTime = None
+        self.TcpConnectionTime = None
+        self.ResponseTime = None
+        self.FileDownloadTime = None
+        self.LoadTime = None
+
+
+    def _deserialize(self, params):
+        self.FirstContentfulPaint = params.get("FirstContentfulPaint")
+        self.FirstMeaningfulPaint = params.get("FirstMeaningfulPaint")
+        self.OverallDownloadSpeed = params.get("OverallDownloadSpeed")
+        self.RenderTime = params.get("RenderTime")
+        self.DocumentFinishTime = params.get("DocumentFinishTime")
+        self.TcpConnectionTime = params.get("TcpConnectionTime")
+        self.ResponseTime = params.get("ResponseTime")
+        self.FileDownloadTime = params.get("FileDownloadTime")
+        self.LoadTime = params.get("LoadTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SpeedTestingStatus(AbstractModel):
+    """The test task status
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Url: The URL.
+        :type Url: str
+        :param Tls: Whether the URL uses HTTPS.
+        :type Tls: bool
+        :param CreatedOn: Creation time of the task.
+        :type CreatedOn: str
+        :param StatusCode: The task status. Values:
+<li>`200`: The task completed.</li>
+<li>`100`: The task is running.</li>
+<li>`503`: The task failed./li>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type StatusCode: int
+        :param UA: The user agent.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UA: str
+        :param Connectivity: The network environment.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Connectivity: str
+        :param Reachable: Whether the URL is reachable. Values:
+<li>`true`: Yes</li>
+<li>`false`: No</li>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Reachable: bool
+        :param TimedOut: Whether the URL connection timed out. Values:
+<li>`true`: Yes</li>
+<li>`false`: No</li>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TimedOut: bool
+        """
+        self.Url = None
+        self.Tls = None
+        self.CreatedOn = None
+        self.StatusCode = None
+        self.UA = None
+        self.Connectivity = None
+        self.Reachable = None
+        self.TimedOut = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
+        self.Tls = params.get("Tls")
+        self.CreatedOn = params.get("CreatedOn")
+        self.StatusCode = params.get("StatusCode")
+        self.UA = params.get("UA")
+        self.Connectivity = params.get("Connectivity")
+        self.Reachable = params.get("Reachable")
+        self.TimedOut = params.get("TimedOut")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9194,6 +14743,32 @@ class Sv(AbstractModel):
     def _deserialize(self, params):
         self.Key = params.get("Key")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SwitchConfig(AbstractModel):
+    """Web security configuration switch
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WebSwitch: Whether to enable web protection. Values:
+<li>`on`: Enable</li>
+<li>`off`: Disable</li>It does not affect DDoS and bot configuration.
+        :type WebSwitch: str
+        """
+        self.WebSwitch = None
+
+
+    def _deserialize(self, params):
+        self.WebSwitch = params.get("WebSwitch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9658,6 +15233,297 @@ class Waf(AbstractModel):
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
         self.PolicyId = params.get("PolicyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WafConfig(AbstractModel):
+    """WAF configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: Whether to enable WAF configuration. Values:
+<li>`on`: Enable</li>
+<li>`off`: Disable</li>The configuration can be modified even when it is disabled.
+        :type Switch: str
+        :param Level: The protection level. Values:
+<li>`loose`: Loose</li>
+<li>`normal`: Moderate</li>
+<li>`strict`: Strict</li>
+<li>`stricter`: Super strict</li>
+<li>`custom`: Custom</li>
+        :type Level: str
+        :param Mode: The WAF global mode. Values:
+<li>`block`: Block globally</li>
+<li>`observe`: Observe globally</li>
+        :type Mode: str
+        :param WafRule: The settings of the managed rule. If it is null, the settings that were last configured will be used.
+        :type WafRule: :class:`tencentcloud.teo.v20220901.models.WafRule`
+        :param AiRule: The setting of the AI rule engine. If it is null, the setting that was last configured will be used.
+        :type AiRule: :class:`tencentcloud.teo.v20220901.models.AiRule`
+        """
+        self.Switch = None
+        self.Level = None
+        self.Mode = None
+        self.WafRule = None
+        self.AiRule = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Level = params.get("Level")
+        self.Mode = params.get("Mode")
+        if params.get("WafRule") is not None:
+            self.WafRule = WafRule()
+            self.WafRule._deserialize(params.get("WafRule"))
+        if params.get("AiRule") is not None:
+            self.AiRule = AiRule()
+            self.AiRule._deserialize(params.get("AiRule"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WafGroup(AbstractModel):
+    """WAF managed rule group
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Action: Action to be executed. Values:
+<li>`block`: Block</li>
+<li>`observe: Observe</li>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Action: str
+        :param Level: The protection level. Values:
+<li>`loose`: Loose</li>
+<li>`normal`: Moderate</li>
+<li>`strict`: Strict</li>
+<li>`stricter`: Super strict</li>
+<li>`custom`: Custom</li>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Level: str
+        :param TypeId: ID of the rule type.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TypeId: int
+        """
+        self.Action = None
+        self.Level = None
+        self.TypeId = None
+
+
+    def _deserialize(self, params):
+        self.Action = params.get("Action")
+        self.Level = params.get("Level")
+        self.TypeId = params.get("TypeId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WafGroupDetail(AbstractModel):
+    """Details of the managed rule group
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleTypeId: ID of the rule type.
+        :type RuleTypeId: int
+        :param RuleTypeName: The rule type.
+        :type RuleTypeName: str
+        :param RuleTypeDesc: Description of the rule type.
+        :type RuleTypeDesc: str
+        :param WafGroupRules: List of rules.
+        :type WafGroupRules: list of WafGroupRule
+        :param Level: The rule level.
+        :type Level: str
+        :param Action: The rule action.
+        :type Action: str
+        """
+        self.RuleTypeId = None
+        self.RuleTypeName = None
+        self.RuleTypeDesc = None
+        self.WafGroupRules = None
+        self.Level = None
+        self.Action = None
+
+
+    def _deserialize(self, params):
+        self.RuleTypeId = params.get("RuleTypeId")
+        self.RuleTypeName = params.get("RuleTypeName")
+        self.RuleTypeDesc = params.get("RuleTypeDesc")
+        if params.get("WafGroupRules") is not None:
+            self.WafGroupRules = []
+            for item in params.get("WafGroupRules"):
+                obj = WafGroupRule()
+                obj._deserialize(item)
+                self.WafGroupRules.append(obj)
+        self.Level = params.get("Level")
+        self.Action = params.get("Action")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WafGroupInfo(AbstractModel):
+    """The managed rule
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WafGroupDetails: List of managed rule groups.
+        :type WafGroupDetails: list of WafGroupDetail
+        :param Level: The level of the managed rule group
+<li>`loose`: Loose</li>
+<li>`normal`: Moderate</li>
+<li>`strict`: Strict</li>
+<li>`stricter`: Super strict</li>
+        :type Level: str
+        :param Act: Reserved field.
+        :type Act: str
+        :param Mode: The mode. Values:
+<li>`block`: Block</li>
+<li>`observe`: Observer</li>
+        :type Mode: str
+        :param Switch: Switch. Values:
+<li>`on`: Enable</li>
+<li>`off`: Disable</li>
+        :type Switch: str
+        """
+        self.WafGroupDetails = None
+        self.Level = None
+        self.Act = None
+        self.Mode = None
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        if params.get("WafGroupDetails") is not None:
+            self.WafGroupDetails = []
+            for item in params.get("WafGroupDetails"):
+                obj = WafGroupDetail()
+                obj._deserialize(item)
+                self.WafGroupDetails.append(obj)
+        self.Level = params.get("Level")
+        self.Act = params.get("Act")
+        self.Mode = params.get("Mode")
+        self.Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WafGroupRule(AbstractModel):
+    """The managed rule details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleId: The rule ID.
+        :type RuleId: int
+        :param Description: The rule description.
+        :type Description: str
+        :param RuleLevelDesc: The description of the rule level.
+        :type RuleLevelDesc: str
+        :param RuleTags: The rule tag.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RuleTags: list of str
+        :param UpdateTime: The update time in the format of YYYY-MM-DD hh:mm:ss.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UpdateTime: str
+        :param Status: The rule status. Values:
+<li>`on`: Enabled</li>
+<li>`off`: Disabled</li>It can be left empty when you query a managed rule.
+        :type Status: str
+        :param RuleTypeName: The rule type.
+        :type RuleTypeName: str
+        :param RuleTypeId: ID of the rule type.
+        :type RuleTypeId: int
+        :param RuleTypeDesc: Description of the rule type.
+        :type RuleTypeDesc: str
+        """
+        self.RuleId = None
+        self.Description = None
+        self.RuleLevelDesc = None
+        self.RuleTags = None
+        self.UpdateTime = None
+        self.Status = None
+        self.RuleTypeName = None
+        self.RuleTypeId = None
+        self.RuleTypeDesc = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        self.Description = params.get("Description")
+        self.RuleLevelDesc = params.get("RuleLevelDesc")
+        self.RuleTags = params.get("RuleTags")
+        self.UpdateTime = params.get("UpdateTime")
+        self.Status = params.get("Status")
+        self.RuleTypeName = params.get("RuleTypeName")
+        self.RuleTypeId = params.get("RuleTypeId")
+        self.RuleTypeDesc = params.get("RuleTypeDesc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WafRule(AbstractModel):
+    """WAF rule
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: Whether to enable managed rules. Values:
+<li>`on`: Enable</li>
+<li>`off`: Disable</li>
+        :type Switch: str
+        :param BlockRuleIDs: IDs of the managed rules in the Block mode. You can obtain more details from [DescribeSecurityGroupManagedRules](https://tcloud4api.woa.com/document/product/1657/80807?!preview&!document=1).
+        :type BlockRuleIDs: list of int
+        :param ObserveRuleIDs: IDs of the managed rules in the Observe mode. You can obtain more details from [DescribeSecurityGroupManagedRules](https://tcloud4api.woa.com/document/product/1657/80807?!preview&!document=1).
+        :type ObserveRuleIDs: list of int
+        """
+        self.Switch = None
+        self.BlockRuleIDs = None
+        self.ObserveRuleIDs = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.BlockRuleIDs = params.get("BlockRuleIDs")
+        self.ObserveRuleIDs = params.get("ObserveRuleIDs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
