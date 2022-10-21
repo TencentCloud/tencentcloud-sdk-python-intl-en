@@ -334,17 +334,22 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param BillId: Bill ID.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type BillId: str
+        :param DBInstanceId: ID of the cloned instance, which will be returned only when the instance is pay-as-you-go.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DBInstanceId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.DealName = None
         self.BillId = None
+        self.DBInstanceId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.DealName = params.get("DealName")
         self.BillId = params.get("BillId")
+        self.DBInstanceId = params.get("DBInstanceId")
         self.RequestId = params.get("RequestId")
 
 
@@ -699,6 +704,22 @@ class CreateInstancesRequest(AbstractModel):
         :type KMSKeyId: str
         :param KMSRegion: The region where the KMS service is enabled. When `KMSRegion` is left empty, the KMS of the current region will be enabled by default. If the current region is not supported, you need to select another region supported by KMS.
         :type KMSRegion: str
+        :param DBEngine: Database engine. Valid values:
+1. `postgresql` (TencentDB for PostgreSQL)
+2. `mssql_compatible`（MSSQL compatible-TencentDB for PostgreSQL)
+Default value: `postgresql`
+        :type DBEngine: str
+        :param DBEngineConfig: Configuration information of database engine in the following format:
+{"$key1":"$value1", "$key2":"$value2"}
+
+Valid values:
+1. mssql_compatible engine：
+`migrationMode`: Database mode. Valid values: `single-db` (single-database mode), `multi-db` (multi-database mode). Default value: `single-db`.
+`defaultLocale`: Default locale, which can’t be modified after the initialization. Default value: `en_US`. Valid values:
+"af_ZA", "sq_AL", "ar_DZ", "ar_BH", "ar_EG", "ar_IQ", "ar_JO", "ar_KW", "ar_LB", "ar_LY", "ar_MA", "ar_OM", "ar_QA", "ar_SA", "ar_SY", "ar_TN", "ar_AE", "ar_YE", "hy_AM", "az_Cyrl_AZ", "az_Latn_AZ", "eu_ES", "be_BY", "bg_BG", "ca_ES", "zh_HK", "zh_MO", "zh_CN", "zh_SG", "zh_TW", "hr_HR", "cs_CZ", "da_DK", "nl_BE", "nl_NL", "en_AU", "en_BZ", "en_CA", "en_IE", "en_JM", "en_NZ", "en_PH", "en_ZA", "en_TT", "en_GB", "en_US", "en_ZW", "et_EE", "fo_FO", "fa_IR", "fi_FI", "fr_BE", "fr_CA", "fr_FR", "fr_LU", "fr_MC", "fr_CH", "mk_MK", "ka_GE", "de_AT", "de_DE", "de_LI", "de_LU", "de_CH", "el_GR", "gu_IN", "he_IL", "hi_IN", "hu_HU", "is_IS", "id_ID", "it_IT", "it_CH", "ja_JP", "kn_IN", "kok_IN", "ko_KR", "ky_KG", "lv_LV", "lt_LT", "ms_BN", "ms_MY", "mr_IN", "mn_MN", "nb_NO", "nn_NO", "pl_PL", "pt_BR", "pt_PT", "pa_IN", "ro_RO", "ru_RU", "sa_IN", "sr_Cyrl_RS", "sr_Latn_RS", "sk_SK", "sl_SI", "es_AR", "es_BO", "es_CL", "es_CO", "es_CR", "es_DO", "es_EC", "es_SV", "es_GT", "es_HN", "es_MX", "es_NI", "es_PA", "es_PY","es_PE", "es_PR", "es_ES", "es_TRADITIONAL", "es_UY", "es_VE", "sw_KE", "sv_FI", "sv_SE", "tt_RU", "te_IN", "th_TH", "tr_TR", "uk_UA", "ur_IN", "ur_PK", "uz_Cyrl_UZ", "uz_Latn_UZ", "vi_VN".
+`serverCollationName`: Name of collation rule, which can’t be modified after the initialization. Default value: `sql_latin1_general_cp1_ci_as`. Valid values:
+"bbf_unicode_general_ci_as", "bbf_unicode_cp1_ci_as", "bbf_unicode_CP1250_ci_as", "bbf_unicode_CP1251_ci_as", "bbf_unicode_cp1253_ci_as", "bbf_unicode_cp1254_ci_as", "bbf_unicode_cp1255_ci_as", "bbf_unicode_cp1256_ci_as", "bbf_unicode_cp1257_ci_as", "bbf_unicode_cp1258_ci_as", "bbf_unicode_cp874_ci_as", "sql_latin1_general_cp1250_ci_as", "sql_latin1_general_cp1251_ci_as", "sql_latin1_general_cp1_ci_as", "sql_latin1_general_cp1253_ci_as", "sql_latin1_general_cp1254_ci_as", "sql_latin1_general_cp1255_ci_as","sql_latin1_general_cp1256_ci_as", "sql_latin1_general_cp1257_ci_as", "sql_latin1_general_cp1258_ci_as", "chinese_prc_ci_as", "cyrillic_general_ci_as", "finnish_swedish_ci_as", "french_ci_as", "japanese_ci_as", "korean_wansung_ci_as", "latin1_general_ci_as", "modern_spanish_ci_as", "polish_ci_as", "thai_ci_as", "traditional_spanish_ci_as", "turkish_ci_as", "ukrainian_ci_as", "vietnamese_ci_as".
+        :type DBEngineConfig: str
         """
         self.SpecCode = None
         self.Storage = None
@@ -727,6 +748,8 @@ class CreateInstancesRequest(AbstractModel):
         self.NeedSupportTDE = None
         self.KMSKeyId = None
         self.KMSRegion = None
+        self.DBEngine = None
+        self.DBEngineConfig = None
 
 
     def _deserialize(self, params):
@@ -767,6 +790,8 @@ class CreateInstancesRequest(AbstractModel):
         self.NeedSupportTDE = params.get("NeedSupportTDE")
         self.KMSKeyId = params.get("KMSKeyId")
         self.KMSRegion = params.get("KMSRegion")
+        self.DBEngine = params.get("DBEngine")
+        self.DBEngineConfig = params.get("DBEngineConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -814,8 +839,6 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
         r"""
         :param SpecCode: Purchasable specification ID, which can be obtained through the `SpecCode` field in the returned value of the `DescribeProductConfig` API.
         :type SpecCode: str
-        :param DBVersion: PostgreSQL kernel version, which must be the same as that of the primary instance
-        :type DBVersion: str
         :param Storage: Instance storage capacity in GB
         :type Storage: int
         :param InstanceCount: Number of instances purchased at a time. Value range: 1–100.
@@ -828,7 +851,9 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
         :type Zone: str
         :param ProjectId: Project ID
         :type ProjectId: int
-        :param InstanceChargeType: Instance billing mode. Valid values: `PREPAID` (monthly subscription), `POSTPAID_BY_HOUR` (pay-as-you-go).
+        :param DBVersion: (Disused) You don’t need to specify a version, as the kernel version is as the same as that of the instance.
+        :type DBVersion: str
+        :param InstanceChargeType: Instance billing mode. Valid value: `POSTPAID_BY_HOUR` (pay-as-you-go). If the source instance is pay-as-you-go, so is the read-only instance.
         :type InstanceChargeType: str
         :param AutoVoucher: Whether to automatically use vouchers. Valid values: `1` (yes), `0` (no). Default value: `0`.
         :type AutoVoucher: int
@@ -854,13 +879,13 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
         :type SecurityGroupIds: list of str
         """
         self.SpecCode = None
-        self.DBVersion = None
         self.Storage = None
         self.InstanceCount = None
         self.Period = None
         self.MasterDBInstanceId = None
         self.Zone = None
         self.ProjectId = None
+        self.DBVersion = None
         self.InstanceChargeType = None
         self.AutoVoucher = None
         self.VoucherIds = None
@@ -877,13 +902,13 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.SpecCode = params.get("SpecCode")
-        self.DBVersion = params.get("DBVersion")
         self.Storage = params.get("Storage")
         self.InstanceCount = params.get("InstanceCount")
         self.Period = params.get("Period")
         self.MasterDBInstanceId = params.get("MasterDBInstanceId")
         self.Zone = params.get("Zone")
         self.ProjectId = params.get("ProjectId")
+        self.DBVersion = params.get("DBVersion")
         self.InstanceChargeType = params.get("InstanceChargeType")
         self.AutoVoucher = params.get("AutoVoucher")
         self.VoucherIds = params.get("VoucherIds")
@@ -1326,6 +1351,11 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param IsSupportTDE: Whether the instance supports TDE data encryption. Valid values: 0 (no), 1 (yes)
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type IsSupportTDE: int
+        :param DBEngine: 
+        :type DBEngine: str
+        :param DBEngineConfig: Configuration information of database engine
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DBEngineConfig: str
         """
         self.Region = None
         self.Zone = None
@@ -1364,6 +1394,8 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.DBMajorVersion = None
         self.DBNodeSet = None
         self.IsSupportTDE = None
+        self.DBEngine = None
+        self.DBEngineConfig = None
 
 
     def _deserialize(self, params):
@@ -1424,6 +1456,8 @@ Note: This field may return `null`, indicating that no valid values can be obtai
                 obj._deserialize(item)
                 self.DBNodeSet.append(obj)
         self.IsSupportTDE = params.get("IsSupportTDE")
+        self.DBEngine = params.get("DBEngine")
+        self.DBEngineConfig = params.get("DBEngineConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2645,12 +2679,19 @@ class DescribeProductConfigRequest(AbstractModel):
         r"""
         :param Zone: AZ name
         :type Zone: str
+        :param DBEngine: Database engines. Valid values:
+1. `postgresql` (TencentDB for PostgreSQL)
+2. `mssql_compatible` (MSSQL compatible-TencentDB for PostgreSQL)
+Default value: `postgresql`
+        :type DBEngine: str
         """
         self.Zone = None
+        self.DBEngine = None
 
 
     def _deserialize(self, params):
         self.Zone = params.get("Zone")
+        self.DBEngine = params.get("DBEngine")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3527,10 +3568,16 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
         :type InstanceCount: int
         :param Period: Length of purchase in months. Currently, only 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, and 36 are supported.
         :type Period: int
-        :param Pid: Billing ID, which can be obtained through the `Pid` field in the returned value of the `DescribeProductConfig` API.
+        :param Pid: [Disused] Billing ID, which can be obtained through the `Pid` field in the returned value of the `DescribeProductConfig` API.
         :type Pid: int
         :param InstanceChargeType: Instance billing type. Valid value: POSTPAID_BY_HOUR (pay-as-you-go)
         :type InstanceChargeType: str
+        :param InstanceType: Instance type. Default value: `primary`. Valid values:
+`primary` (dual-server high-availability, one-primary-one-standby)
+`readonly` (read-only instance)
+        :type InstanceType: str
+        :param DBEngine: 
+        :type DBEngine: str
         """
         self.Zone = None
         self.SpecCode = None
@@ -3539,6 +3586,8 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
         self.Period = None
         self.Pid = None
         self.InstanceChargeType = None
+        self.InstanceType = None
+        self.DBEngine = None
 
 
     def _deserialize(self, params):
@@ -3549,6 +3598,8 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
         self.Period = params.get("Period")
         self.Pid = params.get("Pid")
         self.InstanceChargeType = params.get("InstanceChargeType")
+        self.InstanceType = params.get("InstanceType")
+        self.DBEngine = params.get("DBEngine")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3565,11 +3616,11 @@ class InquiryPriceCreateDBInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OriginalPrice: Original price in 0.01 CNY.
+        :param OriginalPrice: Published price in US Cent
         :type OriginalPrice: int
-        :param Price: Discounted price in 0.01 CNY.
+        :param Price: Discounted total amount in US Cent
         :type Price: int
-        :param Currency: Currency, such as USD for US dollar.
+        :param Currency: Currency, such as USD.
         :type Currency: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -3626,7 +3677,7 @@ class InquiryPriceRenewDBInstanceResponse(AbstractModel):
         :type OriginalPrice: int
         :param Price: Actual amount payable; for example, 24650 indicates 246.5 CNY
         :type Price: int
-        :param Currency: Currency, such as USD for US dollar.
+        :param Currency: Currency, such as USD.
         :type Currency: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -3689,9 +3740,9 @@ class InquiryPriceUpgradeDBInstanceResponse(AbstractModel):
         r"""
         :param OriginalPrice: Total cost before discount.
         :type OriginalPrice: int
-        :param Price: Actual amount payable
+        :param Price: Discounted total amount
         :type Price: int
-        :param Currency: Currency, such as USD for US dollar.
+        :param Currency: Currency, such as USD.
         :type Currency: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -5515,7 +5566,7 @@ class SpecItemInfo(AbstractModel):
         :type MinStorage: int
         :param Qps: Estimated QPS for this specification
         :type Qps: int
-        :param Pid: Billing ID for this specification
+        :param Pid: (Disused)
         :type Pid: int
         :param Type: Machine type
         :type Type: str

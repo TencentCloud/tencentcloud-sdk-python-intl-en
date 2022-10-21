@@ -1100,7 +1100,7 @@ class PostgresClient(AbstractClient):
 
 
     def DestroyDBInstance(self, request):
-        """This API is used to eliminate an isolated instance by specifying the `DBInstanceId` parameter. The data of an eliminated instance will be deleted and cannot be recovered.
+        """This API is used to terminate an isolated instance by specifying the `DBInstanceId` parameter. The data of an terminated instance will be deleted and cannot be recovered.
 
         :param request: Request instance for DestroyDBInstance.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DestroyDBInstanceRequest`
@@ -1245,7 +1245,7 @@ class PostgresClient(AbstractClient):
 
 
     def InquiryPriceUpgradeDBInstance(self, request):
-        """This API is used to query the upgrade price of an instance.
+        """This API is used to query the fees of upgrading a specified database instance. Only pay-as-you-go instance is supported.
 
         :param request: Request instance for InquiryPriceUpgradeDBInstance.
         :type request: :class:`tencentcloud.postgres.v20170312.models.InquiryPriceUpgradeDBInstanceRequest`

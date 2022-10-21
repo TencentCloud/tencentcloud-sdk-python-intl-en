@@ -1898,7 +1898,7 @@ class CreateLoadBalancingRequest(AbstractModel):
         :param BackupOriginGroupId: The ID of the secondary origin group (only available when `Type=proxied`). If not specified, it indicates that secondary origins are not used.
         :type BackupOriginGroupId: str
         :param TTL: When `Type=dns_only`, it indicates the amount of time that DNS records remain in the cache of a DNS server.
-Value range: 60-86400 (in seconds). If it’s not specified, the default value 600 will be used.
+Value range: 60-86400 (in seconds). If it's not specified, the default value 600 will be used.
         :type TTL: int
         :param OriginType: 
         :type OriginType: str
@@ -11319,7 +11319,7 @@ class ModifyLoadBalancingRequest(AbstractModel):
         :param BackupOriginGroupId: The ID of the secondary origin group (only available when `Type=proxied`). If not specified, it indicates that secondary origins are not used.
         :type BackupOriginGroupId: str
         :param TTL: When `Type=dns_only`, it indicates the amount of time that DNS records remain in the cache of a DNS server.
-Value range: 60-86400 (in seconds). If it’s not specified, the default value 600 will be used.
+Value range: 60-86400 (in seconds). If it's not specified, the default value 600 will be used.
         :type TTL: int
         :param OriginType: 
         :type OriginType: str
