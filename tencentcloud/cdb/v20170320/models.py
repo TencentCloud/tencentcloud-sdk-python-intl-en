@@ -565,6 +565,14 @@ class BackupInfo(AbstractModel):
         :type ManualBackupName: str
         :param SaveMode: Backup retention type. Valid values: `save_mode_regular` (non-archive backup), save_mode_period`(archive backup).
         :type SaveMode: str
+        :param Region: The region where local backup resides
+        :type Region: str
+        :param RemoteInfo: Detailed information of remote backups
+        :type RemoteInfo: list of RemoteBackupInfo
+        :param CosStorageType: Storage method. Valid values: `0` (regular storage), `1`(archive storage). Default value: `0`.
+        :type CosStorageType: int
+        :param InstanceId: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.
+        :type InstanceId: str
         """
         self.Name = None
         self.Size = None
@@ -581,6 +589,10 @@ class BackupInfo(AbstractModel):
         self.Way = None
         self.ManualBackupName = None
         self.SaveMode = None
+        self.Region = None
+        self.RemoteInfo = None
+        self.CosStorageType = None
+        self.InstanceId = None
 
 
     def _deserialize(self, params):
@@ -599,6 +611,15 @@ class BackupInfo(AbstractModel):
         self.Way = params.get("Way")
         self.ManualBackupName = params.get("ManualBackupName")
         self.SaveMode = params.get("SaveMode")
+        self.Region = params.get("Region")
+        if params.get("RemoteInfo") is not None:
+            self.RemoteInfo = []
+            for item in params.get("RemoteInfo"):
+                obj = RemoteBackupInfo()
+                obj._deserialize(item)
+                self.RemoteInfo.append(obj)
+        self.CosStorageType = params.get("CosStorageType")
+        self.InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -848,6 +869,16 @@ class BinlogInfo(AbstractModel):
         :type BinlogStartTime: str
         :param BinlogFinishTime: Binlog file end time
         :type BinlogFinishTime: str
+        :param Region: The region where the binlog file resides
+        :type Region: str
+        :param Status: Backup task status. Valid values: `SUCCESS` (backup succeeded), `FAILED` (backup failed), `RUNNING` (backup is in progress).
+        :type Status: str
+        :param RemoteInfo: The detailed information of remote binlog backups
+        :type RemoteInfo: list of RemoteBackupInfo
+        :param CosStorageType: Storage method. Valid values: `0` (regular storage), `1`(archive storage). Default value: `0`.
+        :type CosStorageType: int
+        :param InstanceId: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.
+        :type InstanceId: str
         """
         self.Name = None
         self.Size = None
@@ -857,6 +888,11 @@ class BinlogInfo(AbstractModel):
         self.Type = None
         self.BinlogStartTime = None
         self.BinlogFinishTime = None
+        self.Region = None
+        self.Status = None
+        self.RemoteInfo = None
+        self.CosStorageType = None
+        self.InstanceId = None
 
 
     def _deserialize(self, params):
@@ -868,6 +904,16 @@ class BinlogInfo(AbstractModel):
         self.Type = params.get("Type")
         self.BinlogStartTime = params.get("BinlogStartTime")
         self.BinlogFinishTime = params.get("BinlogFinishTime")
+        self.Region = params.get("Region")
+        self.Status = params.get("Status")
+        if params.get("RemoteInfo") is not None:
+            self.RemoteInfo = []
+            for item in params.get("RemoteInfo"):
+                obj = RemoteBackupInfo()
+                obj._deserialize(item)
+                self.RemoteInfo.append(obj)
+        self.CosStorageType = params.get("CosStorageType")
+        self.InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2883,6 +2929,14 @@ class DescribeBackupConfigResponse(AbstractModel):
         :type BackupPeriodSaveCount: int
         :param StartBackupPeriodSaveDate: The start time in the format: yyyy-mm-dd HH:MM:SS, which is used to enable archive backup retention policy.
         :type StartBackupPeriodSaveDate: str
+        :param EnableBackupArchive: Whether to enable the archive backup. Valid values: `off` (disable), `on` (enable). Default value: `off`.
+        :type EnableBackupArchive: str
+        :param BackupArchiveDays: The period (in days) of how long a data backup is retained before being archived, which falls between 180 days and the number of days from the time it is created until it expires.
+        :type BackupArchiveDays: int
+        :param EnableBinlogArchive: Whether to enable the archive backup of logs. Valid values: `off` (disable), `on` (enable). Default value: `off`.
+        :type EnableBinlogArchive: str
+        :param BinlogArchiveDays: The period (in days) of how long a log backup is retained before being archived, which falls between 180 days and the number of days from the time it is created until it expires.
+        :type BinlogArchiveDays: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -2897,6 +2951,10 @@ class DescribeBackupConfigResponse(AbstractModel):
         self.BackupPeriodSaveInterval = None
         self.BackupPeriodSaveCount = None
         self.StartBackupPeriodSaveDate = None
+        self.EnableBackupArchive = None
+        self.BackupArchiveDays = None
+        self.EnableBinlogArchive = None
+        self.BinlogArchiveDays = None
         self.RequestId = None
 
 
@@ -2914,6 +2972,10 @@ class DescribeBackupConfigResponse(AbstractModel):
         self.BackupPeriodSaveInterval = params.get("BackupPeriodSaveInterval")
         self.BackupPeriodSaveCount = params.get("BackupPeriodSaveCount")
         self.StartBackupPeriodSaveDate = params.get("StartBackupPeriodSaveDate")
+        self.EnableBackupArchive = params.get("EnableBackupArchive")
+        self.BackupArchiveDays = params.get("BackupArchiveDays")
+        self.EnableBinlogArchive = params.get("EnableBinlogArchive")
+        self.BinlogArchiveDays = params.get("BinlogArchiveDays")
         self.RequestId = params.get("RequestId")
 
 
@@ -3004,6 +3066,12 @@ class DescribeBackupOverviewResponse(AbstractModel):
         :type BillingVolume: int
         :param FreeVolume: Backup capacity in the free tier of a user in the current region.
         :type FreeVolume: int
+        :param RemoteBackupVolume: Total capacity of backups of a user in the current region
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type RemoteBackupVolume: int
+        :param BackupArchiveVolume: Archive backup capacity, which includes data backups and log backups.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type BackupArchiveVolume: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -3011,6 +3079,8 @@ class DescribeBackupOverviewResponse(AbstractModel):
         self.BackupVolume = None
         self.BillingVolume = None
         self.FreeVolume = None
+        self.RemoteBackupVolume = None
+        self.BackupArchiveVolume = None
         self.RequestId = None
 
 
@@ -3019,6 +3089,8 @@ class DescribeBackupOverviewResponse(AbstractModel):
         self.BackupVolume = params.get("BackupVolume")
         self.BillingVolume = params.get("BillingVolume")
         self.FreeVolume = params.get("FreeVolume")
+        self.RemoteBackupVolume = params.get("RemoteBackupVolume")
+        self.BackupArchiveVolume = params.get("BackupArchiveVolume")
         self.RequestId = params.get("RequestId")
 
 
@@ -3193,6 +3265,10 @@ class DescribeBinlogBackupOverviewResponse(AbstractModel):
         :type RemoteBinlogVolume: int
         :param RemoteBinlogCount: Number of remote backups
         :type RemoteBinlogCount: int
+        :param BinlogArchiveVolume: Capacity of archive log backups in bytes
+        :type BinlogArchiveVolume: int
+        :param BinlogArchiveCount: Number of archived log backups
+        :type BinlogArchiveCount: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -3200,6 +3276,8 @@ class DescribeBinlogBackupOverviewResponse(AbstractModel):
         self.BinlogBackupCount = None
         self.RemoteBinlogVolume = None
         self.RemoteBinlogCount = None
+        self.BinlogArchiveVolume = None
+        self.BinlogArchiveCount = None
         self.RequestId = None
 
 
@@ -3208,6 +3286,8 @@ class DescribeBinlogBackupOverviewResponse(AbstractModel):
         self.BinlogBackupCount = params.get("BinlogBackupCount")
         self.RemoteBinlogVolume = params.get("RemoteBinlogVolume")
         self.RemoteBinlogCount = params.get("RemoteBinlogCount")
+        self.BinlogArchiveVolume = params.get("BinlogArchiveVolume")
+        self.BinlogArchiveCount = params.get("BinlogArchiveCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -4255,10 +4335,14 @@ class DescribeDataBackupOverviewResponse(AbstractModel):
         :type ManualBackupVolume: int
         :param ManualBackupCount: Total number of manual backups in the current region.
         :type ManualBackupCount: int
-        :param RemoteBackupVolume: Total capacity of remote backups in the current region
+        :param RemoteBackupVolume: Total capacity of remote backups
         :type RemoteBackupVolume: int
-        :param RemoteBackupCount: Total number of remote backups in the current region
+        :param RemoteBackupCount: Total number of remote backups
         :type RemoteBackupCount: int
+        :param DataBackupArchiveVolume: Total capacity of archive backups in the current region
+        :type DataBackupArchiveVolume: int
+        :param DataBackupArchiveCount: Total number of archive backups in the current region
+        :type DataBackupArchiveCount: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -4270,6 +4354,8 @@ class DescribeDataBackupOverviewResponse(AbstractModel):
         self.ManualBackupCount = None
         self.RemoteBackupVolume = None
         self.RemoteBackupCount = None
+        self.DataBackupArchiveVolume = None
+        self.DataBackupArchiveCount = None
         self.RequestId = None
 
 
@@ -4282,6 +4368,8 @@ class DescribeDataBackupOverviewResponse(AbstractModel):
         self.ManualBackupCount = params.get("ManualBackupCount")
         self.RemoteBackupVolume = params.get("RemoteBackupVolume")
         self.RemoteBackupCount = params.get("RemoteBackupCount")
+        self.DataBackupArchiveVolume = params.get("DataBackupArchiveVolume")
+        self.DataBackupArchiveCount = params.get("DataBackupArchiveCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -7176,6 +7264,14 @@ class ModifyBackupConfigRequest(AbstractModel):
         :type BackupPeriodSaveCount: int
         :param StartBackupPeriodSaveDate: The start time in the format of yyyy-mm-dd HH:MM:SS, which is used to enable archive backup retention policy.
         :type StartBackupPeriodSaveDate: str
+        :param EnableBackupArchive: Whether to enable the archive backup. Valid values: `off` (disable), `on` (enable). Default value: `off`.
+        :type EnableBackupArchive: str
+        :param BackupArchiveDays: The period (in days) of how long a data backup is retained before being archived, which falls between 180 days and the number of days from the time it is created until it expires.
+        :type BackupArchiveDays: int
+        :param BinlogArchiveDays: The period (in days) of how long a log backup is retained before being archived, which falls between 180 days and the number of days from the time it is created until it expires.
+        :type BinlogArchiveDays: int
+        :param EnableBinlogArchive: Whether to enable the archive backup of the log. Valid values: `off` (disable), `on` (enable). Default value: `off`.
+        :type EnableBinlogArchive: str
         """
         self.InstanceId = None
         self.ExpireDays = None
@@ -7189,6 +7285,10 @@ class ModifyBackupConfigRequest(AbstractModel):
         self.BackupPeriodSaveInterval = None
         self.BackupPeriodSaveCount = None
         self.StartBackupPeriodSaveDate = None
+        self.EnableBackupArchive = None
+        self.BackupArchiveDays = None
+        self.BinlogArchiveDays = None
+        self.EnableBinlogArchive = None
 
 
     def _deserialize(self, params):
@@ -7206,6 +7306,10 @@ class ModifyBackupConfigRequest(AbstractModel):
         self.BackupPeriodSaveInterval = params.get("BackupPeriodSaveInterval")
         self.BackupPeriodSaveCount = params.get("BackupPeriodSaveCount")
         self.StartBackupPeriodSaveDate = params.get("StartBackupPeriodSaveDate")
+        self.EnableBackupArchive = params.get("EnableBackupArchive")
+        self.BackupArchiveDays = params.get("BackupArchiveDays")
+        self.BinlogArchiveDays = params.get("BinlogArchiveDays")
+        self.EnableBinlogArchive = params.get("EnableBinlogArchive")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9165,6 +9269,50 @@ class ReloadBalanceProxyNodeResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class RemoteBackupInfo(AbstractModel):
+    """Information of the remote backup
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SubBackupId: ID of the remote backup subtask
+        :type SubBackupId: list of int
+        :param Region: The region where the remote backup resides
+        :type Region: str
+        :param Status: Backup task status. Valid values: `SUCCESS` (backup succeeded), `FAILED` (backup failed), `RUNNING` (backup is in progress).
+        :type Status: str
+        :param StartTime: The start time of remote backup
+        :type StartTime: str
+        :param FinishTime: The end time of remote backup
+        :type FinishTime: str
+        :param Url: The download address
+        :type Url: str
+        """
+        self.SubBackupId = None
+        self.Region = None
+        self.Status = None
+        self.StartTime = None
+        self.FinishTime = None
+        self.Url = None
+
+
+    def _deserialize(self, params):
+        self.SubBackupId = params.get("SubBackupId")
+        self.Region = params.get("Region")
+        self.Status = params.get("Status")
+        self.StartTime = params.get("StartTime")
+        self.FinishTime = params.get("FinishTime")
+        self.Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ResetRootAccountRequest(AbstractModel):
