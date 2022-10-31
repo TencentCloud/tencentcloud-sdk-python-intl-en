@@ -5001,6 +5001,12 @@ class HTTPListener(AbstractModel):
 3: adjusting origin server;
 4: modifying configuration.
         :type ListenerStatus: int
+        :param ProxyId: Connection ID of the listener. A null value is returned if the listener is associated with the connection group.
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type ProxyId: str
+        :param GroupId: Connection group ID of the listener. A null value is returned if the listener is associated with a specific connection.
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type GroupId: str
         """
         self.ListenerId = None
         self.ListenerName = None
@@ -5008,6 +5014,8 @@ class HTTPListener(AbstractModel):
         self.CreateTime = None
         self.Protocol = None
         self.ListenerStatus = None
+        self.ProxyId = None
+        self.GroupId = None
 
 
     def _deserialize(self, params):
@@ -5017,6 +5025,8 @@ class HTTPListener(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.Protocol = params.get("Protocol")
         self.ListenerStatus = params.get("ListenerStatus")
+        self.ProxyId = params.get("ProxyId")
+        self.GroupId = params.get("GroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5077,6 +5087,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 If HTTP3 is supported for a connection, the listener will use the port that is originally accessed to UDP, and a UDP listener with the same port cannot be created.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Http3Supported: int
+        :param ProxyId: Connection ID of the listener. A null value is returned if the listener is associated with the connection group.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProxyId: str
+        :param GroupId: Connection group ID of the listener. A null value is returned if the listener is associated with a specific connection.
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type GroupId: str
         """
         self.ListenerId = None
         self.ListenerName = None
@@ -5092,6 +5108,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.ClientCertificateAlias = None
         self.PolyClientCertificateAliasInfo = None
         self.Http3Supported = None
+        self.ProxyId = None
+        self.GroupId = None
 
 
     def _deserialize(self, params):
@@ -5114,6 +5132,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self.PolyClientCertificateAliasInfo.append(obj)
         self.Http3Supported = params.get("Http3Supported")
+        self.ProxyId = params.get("ProxyId")
+        self.GroupId = params.get("GroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7729,6 +7749,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param SessionPersist: Specifies whether to enable session persistence. Values: `0` (disable), `1` (enable)
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SessionPersist: int
+        :param ProxyId: Connection ID of the listener. A null value is returned if the listener is associated with the connection group.
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type ProxyId: str
+        :param GroupId: Connection group ID of the listener. A null value is returned if the listener is associated with a specific connection.
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type GroupId: str
         """
         self.ListenerId = None
         self.ListenerName = None
@@ -7749,6 +7775,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.UnhealthyThreshold = None
         self.FailoverSwitch = None
         self.SessionPersist = None
+        self.ProxyId = None
+        self.GroupId = None
 
 
     def _deserialize(self, params):
@@ -7776,6 +7804,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.UnhealthyThreshold = params.get("UnhealthyThreshold")
         self.FailoverSwitch = params.get("FailoverSwitch")
         self.SessionPersist = params.get("SessionPersist")
+        self.ProxyId = params.get("ProxyId")
+        self.GroupId = params.get("GroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7915,6 +7945,12 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         :param RecvContext: The UDP message received by the health probe port. This parameter is used only when `CheckType = PORT`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type RecvContext: str
+        :param ProxyId: Connection ID of the listener. A null value is returned if the listener is associated with the connection group.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ProxyId: str
+        :param GroupId: Connection group ID of the listener. A null value is returned if the listener is associated with a specific connection.
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type GroupId: str
         """
         self.ListenerId = None
         self.ListenerName = None
@@ -7939,6 +7975,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.ContextType = None
         self.SendContext = None
         self.RecvContext = None
+        self.ProxyId = None
+        self.GroupId = None
 
 
     def _deserialize(self, params):
@@ -7970,6 +8008,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.ContextType = params.get("ContextType")
         self.SendContext = params.get("SendContext")
         self.RecvContext = params.get("RecvContext")
+        self.ProxyId = params.get("ProxyId")
+        self.GroupId = params.get("GroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

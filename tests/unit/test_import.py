@@ -459,6 +459,11 @@ def test_import_vm():
     from tencentcloud.vm.v20201229 import models
 
 
+def test_import_vm():
+    from tencentcloud.vm.v20210922 import vm_client
+    from tencentcloud.vm.v20210922 import models
+
+
 def test_import_vod():
     from tencentcloud.vod.v20180717 import vod_client
     from tencentcloud.vod.v20180717 import models

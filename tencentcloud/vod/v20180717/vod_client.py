@@ -568,7 +568,8 @@ class VodClient(AbstractClient):
 
 
     def CreateSuperPlayerConfig(self, request):
-        """This API is used to create a player configuration. Up to 100 configurations can be created.
+        """We have <font color='red'>stopped updating</font> this API. Currently, you no longer need a player configuration to use player signatures. For details, see [Player Signature](https://intl.cloud.tencent.com/document/product/266/45554?from_cn_redirect=1).
+        This API is used to create a player configuration. Up to 100 configurations can be created.
 
         :param request: Request instance for CreateSuperPlayerConfig.
         :type request: :class:`tencentcloud.vod.v20180717.models.CreateSuperPlayerConfigRequest`
@@ -1067,7 +1068,8 @@ class VodClient(AbstractClient):
 
 
     def DeleteSuperPlayerConfig(self, request):
-        """This API is used to delete a player configuration.
+        """We have <font color='red'>stopped updating</font> this API. Currently, you no longer need a player configuration to use player signatures. For details, see [Player Signature](https://intl.cloud.tencent.com/document/product/266/45554?from_cn_redirect=1).
+        This API is used to delete a player configuration.
         *Note: Preset player configurations cannot be deleted.*
 
         :param request: Request instance for DeleteSuperPlayerConfig.
@@ -2049,7 +2051,8 @@ class VodClient(AbstractClient):
 
 
     def DescribeSuperPlayerConfigs(self, request):
-        """This API is used to query player configurations. It supports pagination.
+        """We have <font color='red'>stopped updating</font> this API. Currently, you no longer need a player configuration to use player signatures. For details, see [Player Signature](https://intl.cloud.tencent.com/document/product/266/45554?from_cn_redirect=1).
+        This API is used to query player configurations. It supports pagination.
 
         :param request: Request instance for DescribeSuperPlayerConfigs.
         :type request: :class:`tencentcloud.vod.v20180717.models.DescribeSuperPlayerConfigsRequest`
@@ -2872,7 +2875,8 @@ class VodClient(AbstractClient):
 
 
     def ModifySuperPlayerConfig(self, request):
-        """This API is used to modify a player configuration.
+        """We have <font color='red'>stopped updating</font> this API. Currently, you no longer need a player configuration to use player signatures. For details, see [Player Signature](https://intl.cloud.tencent.com/document/product/266/45554?from_cn_redirect=1).
+        This API is used to modify a player configuration.
 
         :param request: Request instance for ModifySuperPlayerConfig.
         :type request: :class:`tencentcloud.vod.v20180717.models.ModifySuperPlayerConfigRequest`

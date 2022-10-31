@@ -366,6 +366,8 @@ The default is `VOD`.
         :type CreateTime: str
         :param UpdateTime: Last modified time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type UpdateTime: str
+        :param SegmentType: The segment type. This parameter is valid only if `Format` is `HLS`.
+        :type SegmentType: str
         """
         self.Definition = None
         self.Type = None
@@ -379,6 +381,7 @@ The default is `VOD`.
         self.DisableHigherVideoResolution = None
         self.CreateTime = None
         self.UpdateTime = None
+        self.SegmentType = None
 
 
     def _deserialize(self, params):
@@ -399,6 +402,7 @@ The default is `VOD`.
         self.DisableHigherVideoResolution = params.get("DisableHigherVideoResolution")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+        self.SegmentType = params.get("SegmentType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6029,6 +6033,11 @@ Default value: no.
         :type DisableHigherVideoResolution: int
         :param Comment: Template description. Length limit: 256 characters.
         :type Comment: str
+        :param SegmentType: The segment type. This parameter is valid only if `Format` is `HLS`. Valid values:
+<li>ts: TS segment</li>
+<li>fmp4: fMP4 segment</li>
+Default: ts
+        :type SegmentType: str
         """
         self.Format = None
         self.StreamInfos = None
@@ -6039,6 +6048,7 @@ Default value: no.
         self.DisableHigherVideoBitrate = None
         self.DisableHigherVideoResolution = None
         self.Comment = None
+        self.SegmentType = None
 
 
     def _deserialize(self, params):
@@ -6056,6 +6066,7 @@ Default value: no.
         self.DisableHigherVideoBitrate = params.get("DisableHigherVideoBitrate")
         self.DisableHigherVideoResolution = params.get("DisableHigherVideoResolution")
         self.Comment = params.get("Comment")
+        self.SegmentType = params.get("SegmentType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7079,6 +7090,11 @@ Default value: 0.
         :type AudioTemplate: :class:`tencentcloud.vod.v20180717.models.AudioTemplateInfo`
         :param TEHDConfig: TESHD transcoding parameter.
         :type TEHDConfig: :class:`tencentcloud.vod.v20180717.models.TEHDConfig`
+        :param SegmentType: The segment type. This parameter is valid only if `Container` is `hls`. Valid values:
+<li>ts: TS segment</li>
+<li>fmp4: fMP4 segment</li>
+Default: ts
+        :type SegmentType: str
         """
         self.Container = None
         self.SubAppId = None
@@ -7089,6 +7105,7 @@ Default value: 0.
         self.VideoTemplate = None
         self.AudioTemplate = None
         self.TEHDConfig = None
+        self.SegmentType = None
 
 
     def _deserialize(self, params):
@@ -7107,6 +7124,7 @@ Default value: 0.
         if params.get("TEHDConfig") is not None:
             self.TEHDConfig = TEHDConfig()
             self.TEHDConfig._deserialize(params.get("TEHDConfig"))
+        self.SegmentType = params.get("SegmentType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -15319,6 +15337,10 @@ Note: the frame rate of all streams must be the same; otherwise, the frame rate 
         :type StreamInfos: list of AdaptiveStreamTemplate
         :param Comment: Template description. Length limit: 256 characters.
         :type Comment: str
+        :param SegmentType: The segment type. This parameter is valid only if `Format` is `HLS`. Valid values:
+<li>ts: TS segment</li>
+<li>fmp4: fMP4 segment</li>
+        :type SegmentType: str
         """
         self.Definition = None
         self.SubAppId = None
@@ -15328,6 +15350,7 @@ Note: the frame rate of all streams must be the same; otherwise, the frame rate 
         self.DisableHigherVideoResolution = None
         self.StreamInfos = None
         self.Comment = None
+        self.SegmentType = None
 
 
     def _deserialize(self, params):
@@ -15344,6 +15367,7 @@ Note: the frame rate of all streams must be the same; otherwise, the frame rate 
                 obj._deserialize(item)
                 self.StreamInfos.append(obj)
         self.Comment = params.get("Comment")
+        self.SegmentType = params.get("SegmentType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -16447,6 +16471,10 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
         :type AudioTemplate: :class:`tencentcloud.vod.v20180717.models.AudioTemplateInfoForUpdate`
         :param TEHDConfig: TESHD transcoding parameter.
         :type TEHDConfig: :class:`tencentcloud.vod.v20180717.models.TEHDConfigForUpdate`
+        :param SegmentType: The segment type. This parameter is valid only if `Container` is `hls`. Valid values:
+<li>ts: TS segment</li>
+<li>fmp4: fMP4 segment</li>
+        :type SegmentType: str
         """
         self.Definition = None
         self.SubAppId = None
@@ -16458,6 +16486,7 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
         self.VideoTemplate = None
         self.AudioTemplate = None
         self.TEHDConfig = None
+        self.SegmentType = None
 
 
     def _deserialize(self, params):
@@ -16477,6 +16506,7 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
         if params.get("TEHDConfig") is not None:
             self.TEHDConfig = TEHDConfigForUpdate()
             self.TEHDConfig._deserialize(params.get("TEHDConfig"))
+        self.SegmentType = params.get("SegmentType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -20914,11 +20944,12 @@ class StatDataItem(AbstractModel):
 <li>For data at hourly level, `2019-08-22T00:00:00+08:00` indicates the statistics between 00:00 and 01:00 AM on August 22, 2019.</li>
 <li>For data at daily level, `2019-08-22T00:00:00+08:00` indicates statistics on August 22, 2019.</li>
         :type Time: str
-        :param Value: Data size.
+        :param Value: The data size.
 <li>Storage capacity in bytes.</li>
 <li>Transcoding duration in seconds.</li>
 <li>Traffic in bytes.</li>
 <li>Bandwidth in bps.</li>
+<li>Live stream clip duration in seconds.</li>
         :type Value: int
         """
         self.Time = None
@@ -22253,6 +22284,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type CreateTime: str
         :param UpdateTime: Last modified time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type UpdateTime: str
+        :param SegmentType: The segment type. This parameter is valid only if `Container` is `hls`
+        :type SegmentType: str
         """
         self.Definition = None
         self.Container = None
@@ -22267,6 +22300,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ContainerType = None
         self.CreateTime = None
         self.UpdateTime = None
+        self.SegmentType = None
 
 
     def _deserialize(self, params):
@@ -22289,6 +22323,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ContainerType = params.get("ContainerType")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+        self.SegmentType = params.get("SegmentType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
