@@ -7692,6 +7692,8 @@ class GetMonitorDataResponse(AbstractModel):
         :type StartTime: str
         :param EndTime: End time
         :type EndTime: str
+        :param Msg: Returned message
+        :type Msg: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -7700,6 +7702,7 @@ class GetMonitorDataResponse(AbstractModel):
         self.DataPoints = None
         self.StartTime = None
         self.EndTime = None
+        self.Msg = None
         self.RequestId = None
 
 
@@ -7714,6 +7717,7 @@ class GetMonitorDataResponse(AbstractModel):
                 self.DataPoints.append(obj)
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        self.Msg = params.get("Msg")
         self.RequestId = params.get("RequestId")
 
 
@@ -9994,6 +9998,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param RecordingRuleLimit: The recording rule limit
 Note: This field may return null, indicating that no valid values can be obtained.
         :type RecordingRuleLimit: int
+        :param MigrationType: Migration status. 0: Not migrating; 1: Migrating from source instance; 2: Migrating to target instance.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MigrationType: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -10024,6 +10031,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.GrafanaInstanceId = None
         self.AlertRuleLimit = None
         self.RecordingRuleLimit = None
+        self.MigrationType = None
 
 
     def _deserialize(self, params):
@@ -10063,6 +10071,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.GrafanaInstanceId = params.get("GrafanaInstanceId")
         self.AlertRuleLimit = params.get("AlertRuleLimit")
         self.RecordingRuleLimit = params.get("RecordingRuleLimit")
+        self.MigrationType = params.get("MigrationType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
