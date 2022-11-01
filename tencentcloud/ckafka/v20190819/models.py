@@ -2627,7 +2627,7 @@ class DescribeTopicRequest(AbstractModel):
         :type SearchWord: str
         :param Offset: Offset. If this parameter is left empty, 0 will be used by default
         :type Offset: int
-        :param Limit: Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 20
+        :param Limit: The number of results to be returned, which defaults to 20 if left empty. The maximum value is 50.
         :type Limit: int
         :param AclRuleName: Name of the preset ACL rule.
         :type AclRuleName: str

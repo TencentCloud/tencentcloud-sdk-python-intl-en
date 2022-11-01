@@ -1426,6 +1426,8 @@ class DescribeDataFetchUrlRequest(AbstractModel):
         :type Status: str
         :param Ret: retcode
         :type Ret: str
+        :param NetStatus: Network status
+        :type NetStatus: str
         """
         self.StartTime = None
         self.Type = None
@@ -1452,6 +1454,7 @@ class DescribeDataFetchUrlRequest(AbstractModel):
         self.Env = None
         self.Status = None
         self.Ret = None
+        self.NetStatus = None
 
 
     def _deserialize(self, params):
@@ -1480,6 +1483,7 @@ class DescribeDataFetchUrlRequest(AbstractModel):
         self.Env = params.get("Env")
         self.Status = params.get("Status")
         self.Ret = params.get("Ret")
+        self.NetStatus = params.get("NetStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1739,6 +1743,8 @@ class DescribeDataPerformancePageRequest(AbstractModel):
         :type CostType: str
         :param Env: Environment variable
         :type Env: str
+        :param NetStatus: Network status
+        :type NetStatus: str
         """
         self.ID = None
         self.StartTime = None
@@ -1762,6 +1768,7 @@ class DescribeDataPerformancePageRequest(AbstractModel):
         self.From = None
         self.CostType = None
         self.Env = None
+        self.NetStatus = None
 
 
     def _deserialize(self, params):
@@ -1787,6 +1794,7 @@ class DescribeDataPerformancePageRequest(AbstractModel):
         self.From = params.get("From")
         self.CostType = params.get("CostType")
         self.Env = params.get("Env")
+        self.NetStatus = params.get("NetStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3081,21 +3089,21 @@ class DescribeLogListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Sort: Sorting order. Valid values: desc, asc
+        :param Sort: Sorting order (required). Valid values: `desc`, `asc`.
         :type Sort: str
-        :param ActionType: searchlog  histogram
+        :param ActionType: This parameter is required. Valid values: `searchlog`, `histogram`.
         :type ActionType: str
-        :param ID: Project ID
+        :param ID: Project ID (required)
         :type ID: int
-        :param StartTime: Start time
+        :param StartTime: Start time (required)
         :type StartTime: str
-        :param Limit: Number of raw logs returned in a single query. Maximum value: 100
+        :param Limit: The number of raw logs returned for a single query. This parameter is required. Maximum value: 100.
         :type Limit: int
         :param Context: Context, which is used to load more logs. Pass through the last `Context` value returned to get more log content (up to 10,000 raw logs). It will expire after 1 hour
         :type Context: str
-        :param Query: Query statement, which can contain up to 4,096 characters.
+        :param Query: Query statement, which is required and can contain up to 4,096 characters.
         :type Query: str
-        :param EndTime: End time
+        :param EndTime: End time (required)
         :type EndTime: str
         """
         self.Sort = None

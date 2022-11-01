@@ -173,7 +173,7 @@ class AssociateSecurityGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Product: Database engine name: mariadb, cdb, cynosdb, dcdb, redis, mongodb, etc.
+        :param Product: Database engine name, which is `redis` for this API.
         :type Product: str
         :param SecurityGroupId: ID of the security group to be associated in the format of sg-efil73jd.
         :type SecurityGroupId: str
@@ -553,6 +553,51 @@ class ClearInstanceRequest(AbstractModel):
 
 class ClearInstanceResponse(AbstractModel):
     """ClearInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: Task ID
+        :type TaskId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class CloseSSLRequest(AbstractModel):
+    """CloseSSL request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloseSSLResponse(AbstractModel):
+    """CloseSSL response structure.
 
     """
 
@@ -2488,58 +2533,60 @@ class DescribeInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: Number of returned results. Default value: 20. Maximum value: 1000.
+        :param Limit: Number of instances. Default value: 20. Maximum value: 1000.
         :type Limit: int
         :param Offset: Offset, which is an integral multiple of `Limit`.
         :type Offset: int
-        :param InstanceId: Instance ID, such as crs-6ubhgouj
+        :param InstanceId: Instance ID, such as crs-6ubhgouj.
         :type InstanceId: str
-        :param OrderBy: Enumerated values: projectId, createtime, instancename, type, curDeadline
+        :param OrderBy: Instance sorting criteria. The enumerated values are as listed below: <ul><li>projectId: Project ID. </li><li>createtime: Instance creation time. </li><li>instancename: Instance name. </li><li>type: Instance type. </li><li>curDeadline: Instance expiration time. </li></ul>
         :type OrderBy: str
-        :param OrderType: 1: reverse; 0: sequential; reverse by default
+        :param OrderType: Instance sorting order. <ul><li>`1`: Descending. </li><li>`0`: Ascending. Default value: `1`.</li></ul>
         :type OrderType: int
-        :param VpcIds: Array of VPC IDs such as 47525. The array subscript starts from 0. If this parameter is not passed in, the classic network will be selected by default
+        :param VpcIds: Array of VPC IDs such as 47525. If this parameter is not passed in or the array is empty, the classic network will be selected by default. This parameter is retained and can be ignored. It is set based on `UniqVpcIds` parameter format.
         :type VpcIds: list of str
-        :param SubnetIds: Array of subnet IDs such as 56854. The array subscript starts from 0.
+        :param SubnetIds: Array of VPC subnet IDs such as 56854. This parameter is retained and can be ignored. It is set based on `UniqSubnetIds` parameter format.
         :type SubnetIds: list of str
-        :param ProjectIds: Array of project IDs. The array subscript starts from 0.
-        :type ProjectIds: list of int
-        :param SearchKey: ID of the instance to be searched for.
+        :param SearchKey: Keywords for fuzzy query. which can be used to fuzzy query an instance by its ID or name.
         :type SearchKey: str
+        :param ProjectIds: Array of project IDs
+        :type ProjectIds: list of int
         :param InstanceName: Instance name
         :type InstanceName: str
-        :param UniqVpcIds: Array of VPC IDs such as vpc-sad23jfdfk. The array subscript starts from 0. If this parameter is not passed in, the classic network will be selected by default
+        :param UniqVpcIds: Array of VPC IDs such as vpc-sad23jfdfk. If this parameter is not passed in or or the array is empty, the classic network will be selected by default.
         :type UniqVpcIds: list of str
-        :param UniqSubnetIds: Array of subnet IDs such as subnet-fdj24n34j2. The array subscript starts from 0.
+        :param UniqSubnetIds: Array of VPC subnet IDs such as subnet-fdj24n34j2
         :type UniqSubnetIds: list of str
-        :param RegionIds: Region ID, which has already been disused. The corresponding region can be queried through the common parameter `Region`.
+        :param RegionIds: Array of region IDs (disused). The corresponding region can be queried through the common parameter `Region`.
         :type RegionIds: list of int
-        :param Status: Instance status. 0: to be initialized; 1: in process; 2: running; -2: isolated; -3: to be deleted
+        :param Status: Instance status. <ul><li>`0`: Uninitialized. </li><li>`1`: In the process. </li><li>`2`: Running. </li><li>`-2`: Isolated. </li><li>`-3`: To be deleted. </li></ul>
         :type Status: list of int
-        :param TypeVersion: Type edition. 1: Standalone Edition; 2: Master-Replica Edition; 3: Cluster Edition
+        :param TypeVersion: Instance architecture. <ul><li>`1`: Standalone edition. </li><li>`2`: Master-replica edition. </li><li>`3`: Cluster edition. </li></ul>
         :type TypeVersion: int
-        :param EngineName: Engine information: Redis-2.8, Redis-4.0, CKV
+        :param EngineName: Storage engine information. Valid values: `Redis-2.8`, `Redis-4.0`, `Redis-5.0`, `Redis-6.0` or `CKV`.
         :type EngineName: str
-        :param AutoRenew: Renewal mode. 0: default status (manual renewal); 1: auto-renewal enabled; 2: auto-renewal disabled
+        :param AutoRenew: Renewal mode. <ul><li>`0`: Manual renewal (default). </li><li>`1`: Auto-renewal. </li><li>`2`: No auto-renewal (set by user)</ul>
         :type AutoRenew: list of int
-        :param BillingMode: Billing mode. postpaid: pay-as-you-go; prepaid: monthly subscription
+        :param BillingMode: Billing mode. Only pay-as-you-go billing is supported.
         :type BillingMode: str
-        :param Type: Instance type. 1: legacy Redis Cluster Edition, 2: Redis 2.8 Master-Replica Edition, 3: CKV Master-Replica Edition, 4: CKV Cluster Edition, 5: Redis 2.8 Standalone Edition, 6: Redis 4.0 Master-Replica Edition, 7: Redis 4.0 Cluster Edition, 8: Redis 5.0 Master-Replica Edition, 9: Redis 5.0 Cluster Edition
+        :param Type: Instance type. <ul><li>`1`: Legacy Redis cluster edition. </li><li>`2`: Redis 2.8 master-replica edition. </li><li>`3`: CKV master-replica edition. </li><li>`4`: CKV cluster edition. </li><li>`5`: Redis 2.8 standalone edition. </li><li>`6`: Redis 4.0 master-replica edition. </li><li>`7`: Redis 4.0 cluster edition. </li><li>8: Redis 5.0 master-replica edition. </li><li>`9`: Redis 5.0 cluster edition. </li></ul>
         :type Type: int
-        :param SearchKeys: Search keywords, which can be instance ID, instance name, or complete IP.
+        :param SearchKeys: Array of the search keywords, which can query the instance by its ID, name, IP address.
         :type SearchKeys: list of str
         :param TypeList: Internal parameter, which can be ignored.
         :type TypeList: list of int
         :param MonitorVersion: Internal parameter, which can be ignored.
         :type MonitorVersion: str
-        :param InstanceTags: Filters resources by tag key and value. If this parameter is not specified or is an empty array, resources will not be filtered.
+        :param InstanceTags: Resources filter by tag key and value. If this parameter is not specified or is an empty array, resources will not be filtered.
         :type InstanceTags: list of InstanceTagInfo
-        :param TagKeys: Filters resources by tag key. If this parameter is not specified or is an empty array, resources will not be filtered.
+        :param TagKeys: Resources filter by tag key. If this parameter is not specified or is an empty array, resources will not be filtered.
         :type TagKeys: list of str
-        :param ProductVersions: Product editions to be filtered. Valid values: `local` (local disk edition), `cloud` (cloud disk edition), `cdc` (dedicated cluster edition). If this parameter is not passed in, the product will not be filtered by default.
+        :param ProductVersions: Instance product version. If this parameter is not passed in or the array is empty, the instances will not be filtered based this parameter by default. <ul><li>`local`: local disk edition. </li><li>`cloud`: Cloud disk edition. </li><li>`cdc`: Dedicated cluster edition. </li></ul>
         :type ProductVersions: list of str
-        :param InstanceIds: The specified instances for batch query
+        :param InstanceIds: Batch query of the specified instances ID. The number of results returned is based on `Limit`.
         :type InstanceIds: list of str
+        :param AzMode: AZ deployment mode. <ul><li>`singleaz`: Single-AZ. </li><li>`1`: Multi-AZ. </li></ul>
+        :type AzMode: str
         """
         self.Limit = None
         self.Offset = None
@@ -2548,8 +2595,8 @@ class DescribeInstancesRequest(AbstractModel):
         self.OrderType = None
         self.VpcIds = None
         self.SubnetIds = None
-        self.ProjectIds = None
         self.SearchKey = None
+        self.ProjectIds = None
         self.InstanceName = None
         self.UniqVpcIds = None
         self.UniqSubnetIds = None
@@ -2567,6 +2614,7 @@ class DescribeInstancesRequest(AbstractModel):
         self.TagKeys = None
         self.ProductVersions = None
         self.InstanceIds = None
+        self.AzMode = None
 
 
     def _deserialize(self, params):
@@ -2577,8 +2625,8 @@ class DescribeInstancesRequest(AbstractModel):
         self.OrderType = params.get("OrderType")
         self.VpcIds = params.get("VpcIds")
         self.SubnetIds = params.get("SubnetIds")
-        self.ProjectIds = params.get("ProjectIds")
         self.SearchKey = params.get("SearchKey")
+        self.ProjectIds = params.get("ProjectIds")
         self.InstanceName = params.get("InstanceName")
         self.UniqVpcIds = params.get("UniqVpcIds")
         self.UniqSubnetIds = params.get("UniqSubnetIds")
@@ -2601,6 +2649,7 @@ class DescribeInstancesRequest(AbstractModel):
         self.TagKeys = params.get("TagKeys")
         self.ProductVersions = params.get("ProductVersions")
         self.InstanceIds = params.get("InstanceIds")
+        self.AzMode = params.get("AzMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2617,7 +2666,7 @@ class DescribeInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Number of instances
+        :param TotalCount: Total number of instances
         :type TotalCount: int
         :param InstanceSet: List of instance details
         :type InstanceSet: list of InstanceSet
@@ -2914,13 +2963,13 @@ class DescribeProjectSecurityGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Product: Database engine name: mariadb, cdb, cynosdb, dcdb, redis, mongodb.
+        :param Product: Database engine name, which is `redis` for this API.
         :type Product: str
-        :param ProjectId: Project ID.
+        :param ProjectId: Project ID
         :type ProjectId: int
-        :param Offset: Offset.
+        :param Offset: Offset, which is an integral multiple of `Limit`.
         :type Offset: int
-        :param Limit: Number of results to be pulled. Default value: 20
+        :param Limit: The number of security groups to be pulled. Default value: `20`.
         :type Limit: int
         :param SearchKey: Search criteria. You can enter a security group ID or name.
         :type SearchKey: str
@@ -3571,9 +3620,9 @@ class DisassociateSecurityGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Product: Database engine name: mariadb, cdb, cynosdb, dcdb, redis, mongodb, etc.
+        :param Product: Database engine name, which is `redis` for this API.
         :type Product: str
-        :param SecurityGroupId: Security group ID.
+        :param SecurityGroupId: Security group ID
         :type SecurityGroupId: str
         :param InstanceIds: List of instance IDs, which is an array of one or more instance IDs.
         :type InstanceIds: list of str
@@ -4435,23 +4484,23 @@ class InstanceSet(AbstractModel):
         :type InstanceName: str
         :param InstanceId: Instance ID
         :type InstanceId: str
-        :param Appid: User `Appid`
+        :param Appid: User's Appid
         :type Appid: int
         :param ProjectId: Project ID
         :type ProjectId: int
-        :param RegionId: Region ID. 1: Guangzhou; 4: Shanghai; 5: Hong Kong (China); 6: Toronto; 7: Shanghai Finance; 8: Beijing; 9: Singapore; 11: Shenzhen Finance; 15: West US (Silicon Valley); 16: Chengdu; 17: Germany; 18: South Korea; 19: Chongqing; 21: India; 22: East US (Virginia); 23: Thailand; 24: Russia; 25: Japan
+        :param RegionId: Region ID. 1: Guangzhou; 4: Shanghai; 5: Hong Kong (China); 6: Toronto; 7: Shanghai Finance; 8: Beijing; 9: Singapore; 11: Shenzhen Finance; 15: West US (Silicon Valley); 16: Chengdu; 17: Germany; 18: South Korea; 19: Chongqing; 21: India; 22: East US (Virginia); 23: Thailand; 24: Russia; 25: Japan.
         :type RegionId: int
         :param ZoneId: Region ID
         :type ZoneId: int
-        :param VpcId: VPC ID, such as 75101
+        :param VpcId: VPC ID, such as 75101.
         :type VpcId: int
-        :param SubnetId: VPC subnet ID, such as 46315
+        :param SubnetId: VPC subnet ID, such as 46315.
         :type SubnetId: int
-        :param Status: Current instance status. 0: to be initialized; 1: instance in process; 2: instance running; -2: instance isolated; -3: instance to be deleted
+        :param Status: Current instance status. <ul><li>`0`: To be initialized. </li><li>`1`: In the process. </li><li>`2`: Running. </li><li>`-2`: Isolated. </li><li>`-3`: To be deleted. </li></ul>
         :type Status: int
         :param WanIp: Instance VIP
         :type WanIp: str
-        :param Port: Port number of the instance
+        :param Port: Port number of an instance
         :type Port: int
         :param Createtime: Instance creation time
         :type Createtime: str
@@ -4459,27 +4508,27 @@ class InstanceSet(AbstractModel):
         :type Size: float
         :param SizeUsed: This field has been disused
         :type SizeUsed: float
-        :param Type: Instance type. Valid values: `1` (Redis 2.8 Memory Edition in cluster architecture), `2` (Redis 2.8 Memory Edition in standard architecture), `3` (CKV 3.2 Memory Edition in standard architecture), `4` (CKV 3.2 Memory Edition in cluster architecture), `5` (Redis 2.8 Memory Edition in standalone architecture), `6` (Redis 4.0 Memory Edition in standard architecture), `7` (Redis 4.0 Memory Edition in cluster architecture), `8` (Redis 5.0 Memory Edition in standard architecture), `9` (Redis 5.0 Memory Edition in cluster architecture)
+        :param Type: Instance type. <ul><li>`1`: Redis 2.8 memory edition in cluster architecture. </li><li>`2`: Redis 2.8 memory edition in standard architecture. </li><li>`3`: CKV 3.2 memory edition in standard architecture. </li><li>`4`: CKV 3.2 memory edition in cluster architecture. </li><li>`5`: Redis 2.8 memory edition in standalone architecture. </li></li><li>`6`: Redis 4.0 memory edition in standard architecture. </li></li><li>`7`: Redis 4.0 memory edition in cluster architecture. </li></li><li>`8`: Redis 5.0 memory edition in standard architecture. </li></li><li>`9`: Redis 5.0 memory edition in cluster architecture. </li></ul>
         :type Type: int
-        :param AutoRenewFlag: Whether to set the auto-renewal flag for the instance. 1: yes; 0: no
+        :param AutoRenewFlag: Whether to set the auto-renewal flag for an instance. <ul><li>`1`: Auto-renewal set. </li><li>`0`: Auto-renewal not set.</li></ul>
         :type AutoRenewFlag: int
         :param DeadlineTime: Instance expiration time
         :type DeadlineTime: str
-        :param Engine: Engine: Redis Community Edition, Tencent Cloud CKV
+        :param Engine: Engine: Redis community edition, Tencent Cloud CKV
         :type Engine: str
-        :param ProductType: Instance type. Valid values: standalone (Standard Edition); cluster (Cluster Edition)
+        :param ProductType: Product type. <ul><li>`standalone`: Standard edition. </li><li>`cluster`: Cluster edition. </li></ul>
         :type ProductType: str
-        :param UniqVpcId: VPC ID, such as vpc-fk33jsf43kgv
+        :param UniqVpcId: VPC ID, such as vpc-fk33jsf43kgv.
         :type UniqVpcId: str
-        :param UniqSubnetId: VPC subnet ID, such as subnet-fd3j6l35mm0
+        :param UniqSubnetId: VPC subnet ID, such as subnet-fd3j6l35mm0.
         :type UniqSubnetId: str
-        :param BillingMode: Billing mode. 0: pay-as-you-go; 1: monthly subscription
+        :param BillingMode: Billing mode. Only pay-as-you-go billing is supported.
         :type BillingMode: int
-        :param InstanceTitle: Description of the instance status, such as "instance running"
+        :param InstanceTitle: Description of an instance status, such as "Running".
         :type InstanceTitle: str
-        :param OfflineTime: Planned elimination time
+        :param OfflineTime: Scheduled deactivation time
         :type OfflineTime: str
-        :param SubStatus: Sub-status returned for the instance in process
+        :param SubStatus: Sub-status returned for an instance in process
         :type SubStatus: int
         :param Tags: Anti-affinity tag
         :type Tags: list of str
@@ -4495,56 +4544,74 @@ class InstanceSet(AbstractModel):
         :type PriceId: int
         :param CloseTime: Isolation time
         :type CloseTime: str
-        :param SlaveReadWeight: Read weight of the replica node
+        :param SlaveReadWeight: Read weight of a replica node
         :type SlaveReadWeight: int
         :param InstanceTags: Instance tag information
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type InstanceTags: list of InstanceTagInfo
         :param ProjectName: Project name
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type ProjectName: str
-        :param NoAuth: Whether the instance is password-free. true: yes; false: no.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param NoAuth: Whether an instance is password-free. <ul><li>`true`: Yes. </li><li>`false`: No. </li></ul>
+Note: This field may return null, indicating that no valid value can be obtained.
         :type NoAuth: bool
         :param ClientLimit: Number of client connections
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type ClientLimit: int
         :param DtsStatus: DTS status (internal parameter, which can be ignored)
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type DtsStatus: int
-        :param NetLimit: Shard bandwidth cap in MB
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param NetLimit: Upper shard bandwidth limit in MB
+Note: This field may return null, indicating that no valid value can be obtained.
         :type NetLimit: int
         :param PasswordFree: Password-free instance flag (internal parameter, which can be ignored)
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type PasswordFree: int
-        :param ReadOnly: Read-only instance flag (internal parameter, which can be ignored)
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type ReadOnly: int
         :param Vip6: Internal parameter, which can be ignored.
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type Vip6: str
+        :param ReadOnly: Read-only instance flag (internal parameter, which can be ignored)
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type ReadOnly: int
         :param RemainBandwidthDuration: Internal parameter, which can be ignored.
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type RemainBandwidthDuration: str
-        :param DiskSize: Disk size of the Tendis instance
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param DiskSize: This parameter can be ignored for Redis instance.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type DiskSize: int
-        :param MonitorVersion: Monitoring version. Valid values: 1m (monitoring at 1-minute granularity); 5s (monitoring at 5-second granularity)
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param MonitorVersion: Monitoring granularity type. <ul><li>`1m`: Monitoring at 1-minute granularity). </li><li>`5s`: Monitoring at 5-second granularity. </li></ul>
+Note: This field may return null, indicating that no valid value can be obtained.
         :type MonitorVersion: str
-        :param ClientLimitMin: Minimum value for the range of maximum connections to the client
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param ClientLimitMin: The minimum number of max client connections
+Note: This field may return null, indicating that no valid value can be obtained.
         :type ClientLimitMin: int
-        :param ClientLimitMax: Maximum value for the range of maximum connections to the client
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param ClientLimitMax: The maximum number of max client connections
+Note: This field may return null, indicating that no valid value can be obtained.
         :type ClientLimitMax: int
         :param NodeSet: Instance node details
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type NodeSet: list of RedisNodeInfo
-        :param Region: Instance region, such as ap-guangzhou
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param Region: Information of the region where the instance is deployed, such as `ap-guangzhou`.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type Region: str
+        :param WanAddress: Public IP
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type WanAddress: str
+        :param PolarisServer: Polaris service address
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type PolarisServer: str
+        :param CurrentProxyVersion: The current proxy version of an instance
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type CurrentProxyVersion: str
+        :param CurrentRedisVersion: The current cache minor version of an instance
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type CurrentRedisVersion: str
+        :param UpgradeProxyVersion: Proxy version, which can be upgraded for the instance
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type UpgradeProxyVersion: str
+        :param UpgradeRedisVersion: Cache minor version, which can be upgraded for the instance
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type UpgradeRedisVersion: str
         """
         self.InstanceName = None
         self.InstanceId = None
@@ -4586,8 +4653,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.DtsStatus = None
         self.NetLimit = None
         self.PasswordFree = None
-        self.ReadOnly = None
         self.Vip6 = None
+        self.ReadOnly = None
         self.RemainBandwidthDuration = None
         self.DiskSize = None
         self.MonitorVersion = None
@@ -4595,6 +4662,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.ClientLimitMax = None
         self.NodeSet = None
         self.Region = None
+        self.WanAddress = None
+        self.PolarisServer = None
+        self.CurrentProxyVersion = None
+        self.CurrentRedisVersion = None
+        self.UpgradeProxyVersion = None
+        self.UpgradeRedisVersion = None
 
 
     def _deserialize(self, params):
@@ -4648,8 +4721,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.DtsStatus = params.get("DtsStatus")
         self.NetLimit = params.get("NetLimit")
         self.PasswordFree = params.get("PasswordFree")
-        self.ReadOnly = params.get("ReadOnly")
         self.Vip6 = params.get("Vip6")
+        self.ReadOnly = params.get("ReadOnly")
         self.RemainBandwidthDuration = params.get("RemainBandwidthDuration")
         self.DiskSize = params.get("DiskSize")
         self.MonitorVersion = params.get("MonitorVersion")
@@ -4662,6 +4735,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self.NodeSet.append(obj)
         self.Region = params.get("Region")
+        self.WanAddress = params.get("WanAddress")
+        self.PolarisServer = params.get("PolarisServer")
+        self.CurrentProxyVersion = params.get("CurrentProxyVersion")
+        self.CurrentRedisVersion = params.get("CurrentRedisVersion")
+        self.UpgradeProxyVersion = params.get("UpgradeProxyVersion")
+        self.UpgradeRedisVersion = params.get("UpgradeRedisVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5138,9 +5217,9 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Product: Database engine name: mariadb, cdb, cynosdb, dcdb, redis, mongodb, etc.
+        :param Product: Database engine name, which is `redis` for this API.
         :type Product: str
-        :param SecurityGroupIds: ID list of the security groups to be modified, which is an array of one or more security group IDs.
+        :param SecurityGroupIds: List of IDs of security groups to be modified, which is an array of one or more security group IDs.
         :type SecurityGroupIds: list of str
         :param InstanceId: Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.
         :type InstanceId: str
@@ -5610,6 +5689,51 @@ class ModifyParamTemplateResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class OpenSSLRequest(AbstractModel):
+    """OpenSSL request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OpenSSLResponse(AbstractModel):
+    """OpenSSL response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: Task ID
+        :type TaskId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
 
 
@@ -7232,7 +7356,8 @@ class UpgradeVersionToMultiAvailabilityZonesRequest(AbstractModel):
         r"""
         :param InstanceId: Instance ID
         :type InstanceId: str
-        :param UpgradeProxyAndRedisServer: Whether to upgrade the proxy and Redis kernel. After the upgrade, the "Read Local Nodes Only" feature can be supported.
+        :param UpgradeProxyAndRedisServer: Whether to support “Reading Local Nodes Only” feature after upgrading to multi-AZ deployment.
+ul><li>`true`: The “Read Local Nodes Only” feature is supported. During the upgrade, you need to upgrade the proxy version and Redis kernel minor version simultaneously, which will involve data migration and may take hours to complete. </li><li>`false`: The “Read Local Nodes Only” feature is not supported. Upgrading to multi-AZ deployment will involve metadata migration only without affecting the service, which generally take less than three minutes to complete.</li></ul>
         :type UpgradeProxyAndRedisServer: bool
         """
         self.InstanceId = None
