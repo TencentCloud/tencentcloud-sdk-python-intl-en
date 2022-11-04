@@ -884,10 +884,14 @@ class MetricData(AbstractModel):
         :type Metric: str
         :param DataSet: Table data
         :type DataSet: list of DatePoint
+        :param MetricCount: The total number of requests within the query scope.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type MetricCount: int
         """
         self.Resource = None
         self.Metric = None
         self.DataSet = None
+        self.MetricCount = None
 
 
     def _deserialize(self, params):
@@ -899,6 +903,7 @@ class MetricData(AbstractModel):
                 obj = DatePoint()
                 obj._deserialize(item)
                 self.DataSet.append(obj)
+        self.MetricCount = params.get("MetricCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1108,6 +1113,67 @@ class ModifyPrivateZoneVpcResponse(AbstractModel):
                 obj = AccountVpcInfoOutput()
                 obj._deserialize(item)
                 self.AccountVpcSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyRecordsStatusRequest(AbstractModel):
+    """ModifyRecordsStatus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: The private domain ID
+        :type ZoneId: str
+        :param RecordIds: The DNS record IDs.
+        :type RecordIds: list of int
+        :param Status: `enabled`: Enable; `disabled`: Disable.
+        :type Status: str
+        """
+        self.ZoneId = None
+        self.RecordIds = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.RecordIds = params.get("RecordIds")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRecordsStatusResponse(AbstractModel):
+    """ModifyRecordsStatus response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: The private domain ID
+        :type ZoneId: str
+        :param RecordIds: The DNS record IDs.
+        :type RecordIds: list of int
+        :param Status: `enabled`: Enabled; `disabled`: Disabled.
+        :type Status: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ZoneId = None
+        self.RecordIds = None
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.RecordIds = params.get("RecordIds")
+        self.Status = params.get("Status")
         self.RequestId = params.get("RequestId")
 
 

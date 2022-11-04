@@ -529,11 +529,16 @@ class McuAudioParams(AbstractModel):
         r"""
         :param AudioEncode: The audio encoding parameters.
         :type AudioEncode: :class:`tencentcloud.trtc.v20190722.models.AudioEncode`
-        :param SubscribeAudioList: The users whose audios are mixed. For the `StartPublishCdnStream` API, if you do not pass this parameter or leave it empty, the audios of all anchors will be mixed. For the `UpdatePublishCdnStream` API, if you do not pass this parameter, TRTC will not change the users whose audios are mixed; if you pass in an empty string, the audios of all anchors will be mixed.
+        :param SubscribeAudioList: The audio mix allowlist. For the `StartPublishCdnStream` API, if you do not pass this parameter or leave it empty, the audios of all anchors will be mixed. For the `UpdatePublishCdnStream` API, if you do not pass this parameter, no changes will be made to the current allowlist; if you pass in an empty string, the audios of all anchors will be mixed.
+In cases where `SubscribeAudioList` and `UnSubscribeAudioList` are used at the same time, you need to specify both parameters. If you pass neither `SubscribeAudioList` nor `UnSubscribeAudioList`, no changes will be made. If a user is included in both parameters, the user’s audio will not be mixed.
         :type SubscribeAudioList: list of McuUserInfoParams
+        :param UnSubscribeAudioList: The audio mix blocklist. If you do not pass this parameter or leave it empty, there won’t be a blocklist. For the `UpdatePublishCdnStream` API, if you do not pass this parameter, no changes will be made to the current blocklist; if you pass in an empty string, the blocklist will be reset.
+In cases where `SubscribeAudioList` and `UnSubscribeAudioList` are used at the same time, you need to specify both parameters. If you pass neither `SubscribeAudioList` nor `UnSubscribeAudioList`, no changes will be made. If a user is included in both parameters, the user’s audio will not be mixed.
+        :type UnSubscribeAudioList: list of McuUserInfoParams
         """
         self.AudioEncode = None
         self.SubscribeAudioList = None
+        self.UnSubscribeAudioList = None
 
 
     def _deserialize(self, params):
@@ -546,6 +551,12 @@ class McuAudioParams(AbstractModel):
                 obj = McuUserInfoParams()
                 obj._deserialize(item)
                 self.SubscribeAudioList.append(obj)
+        if params.get("UnSubscribeAudioList") is not None:
+            self.UnSubscribeAudioList = []
+            for item in params.get("UnSubscribeAudioList"):
+                obj = McuUserInfoParams()
+                obj._deserialize(item)
+                self.UnSubscribeAudioList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -582,6 +593,42 @@ class McuCustomCrop(AbstractModel):
         self.LocationY = params.get("LocationY")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class McuFeedBackRoomParams(AbstractModel):
+    """Parameters for relaying to a TRTC room.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RoomId: The room ID.
+        :type RoomId: str
+        :param RoomIdType: The ID type of the room to which streams are relayed. `0` indicates integer, and `1` indicates string.
+        :type RoomIdType: int
+        :param UserId: The [user ID](https://intl.cloud.tencent.com/document/product/647/37714) of the relaying robot in the TRTC room, which cannot be the same as a user ID already in use. We recommend you include the room ID in this user ID.
+        :type UserId: str
+        :param UserSig: The signature (similar to login password) required for the relaying robot to enter the room. For information on how to calculate the signature, see [What is UserSig?](https://intl.cloud.tencent.com/document/product/647/38104).
+        :type UserSig: str
+        """
+        self.RoomId = None
+        self.RoomIdType = None
+        self.UserId = None
+        self.UserSig = None
+
+
+    def _deserialize(self, params):
+        self.RoomId = params.get("RoomId")
+        self.RoomIdType = params.get("RoomIdType")
+        self.UserId = params.get("UserId")
+        self.UserSig = params.get("UserSig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -775,7 +822,7 @@ class McuPublishCdnParam(AbstractModel):
         r"""
         :param PublishCdnUrl: The URLs of the CDNs to relay to.
         :type PublishCdnUrl: str
-        :param IsTencentCdn: Whether to relay to Tencent Cloud’s CDN. 0 (default): Third-party CDN; 1: Tencent Cloud’s CDN. Note: Relaying to a third-party CDN will incur fees. If you are relaying to Tencent Cloud’s CDN, to avoid incurring fees, be sure to set this parameter to `1`. For details, see the API document.
+        :param IsTencentCdn: Whether to relay to Tencent Cloud’s CDN. 0: Third-party CDN; 1 (default): Tencent Cloud’s CDN. Relaying to a third-party CDN will incur fees. To avoid unexpected charges, we recommend you pass in a specific value. For details, see the API document.
         :type IsTencentCdn: int
         """
         self.PublishCdnUrl = None
@@ -1462,6 +1509,8 @@ class StartPublishCdnStreamRequest(AbstractModel):
         :type PublishCdnParams: list of McuPublishCdnParam
         :param SeiParams: The stream mixing SEI parameters.
         :type SeiParams: :class:`tencentcloud.trtc.v20190722.models.McuSeiParams`
+        :param FeedBackRoomParams: The information of the room to which streams are relayed.
+        :type FeedBackRoomParams: list of McuFeedBackRoomParams
         """
         self.SdkAppId = None
         self.RoomId = None
@@ -1473,6 +1522,7 @@ class StartPublishCdnStreamRequest(AbstractModel):
         self.SingleSubscribeParams = None
         self.PublishCdnParams = None
         self.SeiParams = None
+        self.FeedBackRoomParams = None
 
 
     def _deserialize(self, params):
@@ -1501,6 +1551,12 @@ class StartPublishCdnStreamRequest(AbstractModel):
         if params.get("SeiParams") is not None:
             self.SeiParams = McuSeiParams()
             self.SeiParams._deserialize(params.get("SeiParams"))
+        if params.get("FeedBackRoomParams") is not None:
+            self.FeedBackRoomParams = []
+            for item in params.get("FeedBackRoomParams"):
+                obj = McuFeedBackRoomParams()
+                obj._deserialize(item)
+                self.FeedBackRoomParams.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1767,6 +1823,8 @@ class UpdatePublishCdnStreamRequest(AbstractModel):
         :type PublishCdnParams: list of McuPublishCdnParam
         :param SeiParams: The stream mixing SEI parameters.
         :type SeiParams: :class:`tencentcloud.trtc.v20190722.models.McuSeiParams`
+        :param FeedBackRoomParams: The information of the room to which streams are relayed.
+        :type FeedBackRoomParams: list of McuFeedBackRoomParams
         """
         self.SdkAppId = None
         self.TaskId = None
@@ -1777,6 +1835,7 @@ class UpdatePublishCdnStreamRequest(AbstractModel):
         self.SingleSubscribeParams = None
         self.PublishCdnParams = None
         self.SeiParams = None
+        self.FeedBackRoomParams = None
 
 
     def _deserialize(self, params):
@@ -1802,6 +1861,12 @@ class UpdatePublishCdnStreamRequest(AbstractModel):
         if params.get("SeiParams") is not None:
             self.SeiParams = McuSeiParams()
             self.SeiParams._deserialize(params.get("SeiParams"))
+        if params.get("FeedBackRoomParams") is not None:
+            self.FeedBackRoomParams = []
+            for item in params.get("FeedBackRoomParams"):
+                obj = McuFeedBackRoomParams()
+                obj._deserialize(item)
+                self.FeedBackRoomParams.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

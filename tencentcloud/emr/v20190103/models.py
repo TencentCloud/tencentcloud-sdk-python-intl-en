@@ -1499,6 +1499,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         :param IsMultiZoneCluster: Whether it is a multi-AZ cluster
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type IsMultiZoneCluster: bool
+        :param IsHandsCluster: Whether it is a manually deployed cluster
+Note: This field may return null, indicating that no valid value can be obtained. 
+        :type IsHandsCluster: bool
         """
         self.ClusterId = None
         self.StatusDesc = None
@@ -1527,6 +1530,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self.UniqSubnetId = None
         self.ClusterClass = None
         self.IsMultiZoneCluster = None
+        self.IsHandsCluster = None
 
 
     def _deserialize(self, params):
@@ -1562,6 +1566,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self.UniqSubnetId = params.get("UniqSubnetId")
         self.ClusterClass = params.get("ClusterClass")
         self.IsMultiZoneCluster = params.get("IsMultiZoneCluster")
+        self.IsHandsCluster = params.get("IsHandsCluster")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2682,7 +2687,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         :param CurrentTime: The current system time.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CurrentTime: str
-        :param IsFederation: Whether the hardware node is used in a federation. Valid values: `0` (no), `1` (yes).
+        :param IsFederation: Whether it is used in a federation. Valid values: `0` (no), `1` (yes).
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IsFederation: int
         :param DeviceName: Device name
@@ -3532,6 +3537,8 @@ When `HardwareResourceType` is `pod`, this parameter does not take effect.
         :type SubnetId: str
         :param ScaleOutServiceConfAssign: Pre-defined configuration set
         :type ScaleOutServiceConfAssign: str
+        :param AutoRenew: Whether to enable auto-renewal. Valid values: `0` (no), `1` (yes).
+        :type AutoRenew: int
         """
         self.TimeUnit = None
         self.TimeSpan = None
@@ -3558,6 +3565,7 @@ When `HardwareResourceType` is `pod`, this parameter does not take effect.
         self.ZoneId = None
         self.SubnetId = None
         self.ScaleOutServiceConfAssign = None
+        self.AutoRenew = None
 
 
     def _deserialize(self, params):
@@ -3600,6 +3608,7 @@ When `HardwareResourceType` is `pod`, this parameter does not take effect.
         self.ZoneId = params.get("ZoneId")
         self.SubnetId = params.get("SubnetId")
         self.ScaleOutServiceConfAssign = params.get("ScaleOutServiceConfAssign")
+        self.AutoRenew = params.get("AutoRenew")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

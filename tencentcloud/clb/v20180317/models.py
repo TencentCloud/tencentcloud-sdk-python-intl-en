@@ -3248,7 +3248,7 @@ class DescribeLoadBalancersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LoadBalancerIds: CLB instance ID
+        :param LoadBalancerIds: CLB instance IDs. There can be up to 20 IDs.
         :type LoadBalancerIds: list of str
         :param LoadBalancerType: CLB instance network type:
 OPEN: public network; INTERNAL: private network.
@@ -3404,6 +3404,75 @@ class DescribeQuotaResponse(AbstractModel):
                 obj = Quota()
                 obj._deserialize(item)
                 self.QuotaSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeResourcesRequest(AbstractModel):
+    """DescribeResources request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: Number of returned AZ resources. Default value: 20. Maximum value: 100.
+        :type Limit: int
+        :param Offset: Starting offset of the returned AZ resource list. Default value: 0.
+        :type Offset: int
+        :param Filters: Filter to query the list of AZ resources as detailed below:
+<li> `zone` - String - Optional - Filter by AZ, such as "ap-guangzhou-1".</li>
+<li> `isp` -- String - Optional - Filter by the ISP. Values: `BGP`, `CMCC`, `CUCC` and `CTCC`.</li>
+        :type Filters: list of Filter
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResourcesResponse(AbstractModel):
+    """DescribeResources response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneResourceSet: List of resources supported by the AZ
+        :type ZoneResourceSet: list of ZoneResource
+        :param TotalCount: Number of entries in the AZ resource list.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ZoneResourceSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ZoneResourceSet") is not None:
+            self.ZoneResourceSet = []
+            for item in params.get("ZoneResourceSet"):
+                obj = ZoneResource()
+                obj._deserialize(item)
+                self.ZoneResourceSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -6335,6 +6404,34 @@ class ReplaceCertForLoadBalancersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class Resource(AbstractModel):
+    """Resource details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: Specific ISP resource information, Vaules: `CMCC`, `CUCC`, `CTCC`, `BGP`, and `INTERNAL`.
+        :type Type: list of str
+        :param Isp: ISP information, such as `CMCC`, `CUCC`, `CTCC`, `BGP`, and `INTERNAL`.
+        :type Isp: str
+        """
+        self.Type = None
+        self.Isp = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Isp = params.get("Isp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RewriteLocationMap(AbstractModel):
     """Redirection relationship between forwarding rules
 
@@ -6804,6 +6901,67 @@ class RulesItems(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class SetCustomizedConfigForLoadBalancerRequest(AbstractModel):
+    """SetCustomizedConfigForLoadBalancer request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OperationType: Operation type: `ADD`, `DELETE`, `UPDATE`, `BIND`, `UNBIND`
+        :type OperationType: str
+        :param UconfigId: This field is required except for creating custom configurations, such as "pz-1234abcd".
+        :type UconfigId: str
+        :param ConfigContent: This field is required when creating or modifying custom configurations.
+        :type ConfigContent: str
+        :param ConfigName: This field is required when creating or renaming custom configurations.
+        :type ConfigName: str
+        :param LoadBalancerIds: This field is required when binding/unbinding resources.
+        :type LoadBalancerIds: list of str
+        """
+        self.OperationType = None
+        self.UconfigId = None
+        self.ConfigContent = None
+        self.ConfigName = None
+        self.LoadBalancerIds = None
+
+
+    def _deserialize(self, params):
+        self.OperationType = params.get("OperationType")
+        self.UconfigId = params.get("UconfigId")
+        self.ConfigContent = params.get("ConfigContent")
+        self.ConfigName = params.get("ConfigName")
+        self.LoadBalancerIds = params.get("LoadBalancerIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetCustomizedConfigForLoadBalancerResponse(AbstractModel):
+    """SetCustomizedConfigForLoadBalancer response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ConfigId: Configuration ID, such as "pz-1234abcd"
+        :type ConfigId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ConfigId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ConfigId = params.get("ConfigId")
+        self.RequestId = params.get("RequestId")
 
 
 class SetLoadBalancerClsLogRequest(AbstractModel):
@@ -7391,6 +7549,57 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.ZoneId = params.get("ZoneId")
         self.Zone = params.get("Zone")
         self.ZoneName = params.get("ZoneName")
+        self.ZoneRegion = params.get("ZoneRegion")
+        self.LocalZone = params.get("LocalZone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ZoneResource(AbstractModel):
+    """List of AZs
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MasterZone: Primary AZ, such as "ap-guangzhou-1".
+        :type MasterZone: str
+        :param ResourceSet: List of resources
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ResourceSet: list of Resource
+        :param SlaveZone: Secondary AZ, such as "ap-guangzhou-2". 
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SlaveZone: str
+        :param IPVersion: IP version. Values: `IPv4`, `IPv6`, and `IPv6_Nat`.
+        :type IPVersion: str
+        :param ZoneRegion: Region of the AZ, such as `ap-guangzhou`.
+        :type ZoneRegion: str
+        :param LocalZone: Whether the AZ is a `LocalZone`. Values: `true`, `false`.
+        :type LocalZone: bool
+        """
+        self.MasterZone = None
+        self.ResourceSet = None
+        self.SlaveZone = None
+        self.IPVersion = None
+        self.ZoneRegion = None
+        self.LocalZone = None
+
+
+    def _deserialize(self, params):
+        self.MasterZone = params.get("MasterZone")
+        if params.get("ResourceSet") is not None:
+            self.ResourceSet = []
+            for item in params.get("ResourceSet"):
+                obj = Resource()
+                obj._deserialize(item)
+                self.ResourceSet.append(obj)
+        self.SlaveZone = params.get("SlaveZone")
+        self.IPVersion = params.get("IPVersion")
         self.ZoneRegion = params.get("ZoneRegion")
         self.LocalZone = params.get("LocalZone")
         memeber_set = set(params.keys())

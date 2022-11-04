@@ -1269,6 +1269,35 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeResources(self, request):
+        """This API is used to query the list of AZs and resources supported for the user in the current region.
+
+        :param request: Request instance for DescribeResources.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeResourcesRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeResourcesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeResources", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeResourcesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRewrite(self, request):
         """This API (DescribeRewrite) is used to query the redirection relationship between the forwarding rules of a CLB instance by instance ID. If no listener ID or forwarding rule ID is specified, all redirection relationships in the instance will be returned.
 
@@ -2026,6 +2055,35 @@ class ClbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReplaceCertForLoadBalancersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SetCustomizedConfigForLoadBalancer(self, request):
+        """This API is used to create or manage a user-defined CLB configuration template.
+
+        :param request: Request instance for SetCustomizedConfigForLoadBalancer.
+        :type request: :class:`tencentcloud.clb.v20180317.models.SetCustomizedConfigForLoadBalancerRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.SetCustomizedConfigForLoadBalancerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SetCustomizedConfigForLoadBalancer", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetCustomizedConfigForLoadBalancerResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

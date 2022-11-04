@@ -341,6 +341,8 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
         :type OperationDuration: :class:`tencentcloud.es.v20180416.models.OperationDuration`
         :param EnableHybridStorage: Whether to enable the storage-computing separation feature.
         :type EnableHybridStorage: bool
+        :param DiskEnhance: Whether to enable enhanced SSD
+        :type DiskEnhance: int
         """
         self.Zone = None
         self.EsVersion = None
@@ -374,6 +376,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
         self.Protocol = None
         self.OperationDuration = None
         self.EnableHybridStorage = None
+        self.DiskEnhance = None
 
 
     def _deserialize(self, params):
@@ -428,6 +431,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
             self.OperationDuration = OperationDuration()
             self.OperationDuration._deserialize(params.get("OperationDuration"))
         self.EnableHybridStorage = params.get("EnableHybridStorage")
+        self.DiskEnhance = params.get("DiskEnhance")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1447,6 +1451,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         :param FrozenMinAge: Min age before data transitions to the frozen phase
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type FrozenMinAge: str
+        :param ColdAction: /
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type ColdAction: str
         """
         self.WarmEnable = None
         self.WarmMinAge = None
@@ -1454,6 +1461,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self.ColdMinAge = None
         self.FrozenEnable = None
         self.FrozenMinAge = None
+        self.ColdAction = None
 
 
     def _deserialize(self, params):
@@ -1463,6 +1471,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self.ColdMinAge = params.get("ColdMinAge")
         self.FrozenEnable = params.get("FrozenEnable")
         self.FrozenMinAge = params.get("FrozenMinAge")
+        self.ColdAction = params.get("ColdAction")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1530,7 +1539,7 @@ class InstanceInfo(AbstractModel):
         :type VpcUid: str
         :param SubnetUid: UID of the subnet where the instance resides
         :type SubnetUid: str
-        :param Status: Instance status. 0: processing; 1: normal; -1: stopped; -2: terminating; -3: terminated
+        :param Status: Instance status. `0`: Processing; `1`: Normal; `-1`: `Stopped`; `-2`: Being terminated; `-3`: Terminated; `2`: Initializing during the cluster creation.
         :type Status: int
         :param RenewFlag: This parameter is not used on the global website
         :type RenewFlag: str
@@ -1715,6 +1724,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param EnableHybridStorage: Whether the storage-computing separation feature is enabled.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type EnableHybridStorage: bool
+        :param ProcessPercent: The process progress
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProcessPercent: float
+        :param KibanaAlteringPublicAccess: The alerting policy of Kibana over the public network. <li>`OPEN`: Enable the policy;</li><li>`CLOSE`: Disable the policy.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type KibanaAlteringPublicAccess: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -1795,6 +1810,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.OptionalWebServiceInfos = None
         self.AutoIndexEnabled = None
         self.EnableHybridStorage = None
+        self.ProcessPercent = None
+        self.KibanaAlteringPublicAccess = None
 
 
     def _deserialize(self, params):
@@ -1918,6 +1935,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 self.OptionalWebServiceInfos.append(obj)
         self.AutoIndexEnabled = params.get("AutoIndexEnabled")
         self.EnableHybridStorage = params.get("EnableHybridStorage")
+        self.ProcessPercent = params.get("ProcessPercent")
+        self.KibanaAlteringPublicAccess = params.get("KibanaAlteringPublicAccess")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2200,6 +2219,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param MemSize: Memory size in GB
 Note: This field may return null, indicating that no valid values can be obtained.
         :type MemSize: int
+        :param DiskEnhance: /
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DiskEnhance: int
         """
         self.NodeNum = None
         self.NodeType = None
@@ -2211,6 +2233,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.DiskEncrypt = None
         self.CpuNum = None
         self.MemSize = None
+        self.DiskEnhance = None
 
 
     def _deserialize(self, params):
@@ -2226,6 +2249,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.DiskEncrypt = params.get("DiskEncrypt")
         self.CpuNum = params.get("CpuNum")
         self.MemSize = params.get("MemSize")
+        self.DiskEnhance = params.get("DiskEnhance")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
