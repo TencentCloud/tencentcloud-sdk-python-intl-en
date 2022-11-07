@@ -50,18 +50,51 @@ class AlarmEvent(AbstractModel):
         
 
 
-class AlarmHierarchicalValue(AbstractModel):
-    """
+class AlarmHierarchicalNotice(AbstractModel):
+    """Notification template ID and the list of alarm notification levels. The values `Remind` and `Serious` indicate that the notification template only sends alarms at the `Remind` and `Serious` levels.
 
     """
 
     def __init__(self):
         r"""
-        :param Remind: 
+        :param NoticeId: Notification template ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type NoticeId: str
+        :param Classification: The list of alarm notification levels. The values `Remind` and `Serious` indicate that the notification template only sends alarms at the `Remind` and `Serious` levels.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Classification: list of str
+        """
+        self.NoticeId = None
+        self.Classification = None
+
+
+    def _deserialize(self, params):
+        self.NoticeId = params.get("NoticeId")
+        self.Classification = params.get("Classification")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AlarmHierarchicalValue(AbstractModel):
+    """The configuration of alarm level threshold
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Remind: Threshold for the `Remind` level
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Remind: str
-        :param Warn: 
+        :param Warn: Threshold for the `Warn` level
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Warn: str
-        :param Serious: 
+        :param Serious: Threshold for the `Serious` level
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Serious: str
         """
         self.Remind = None
@@ -747,7 +780,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param ValueMin: Minimum value
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ValueMin: float
-        :param HierarchicalValue: 
+        :param HierarchicalValue: The configuration of alarm level threshold
+Note: This field may return null, indicating that no valid values can be obtained.
         :type HierarchicalValue: :class:`tencentcloud.monitor.v20180724.models.AlarmHierarchicalValue`
         """
         self.MetricName = None
@@ -1392,6 +1426,10 @@ class CreateAlarmPolicyRequest(AbstractModel):
         :type Tags: list of Tag
         :param LogAlarmReqInfo: Log alarm information
         :type LogAlarmReqInfo: :class:`tencentcloud.monitor.v20180724.models.LogAlarmReq`
+        :param HierarchicalNotices: Notification rules for different alarm levels
+        :type HierarchicalNotices: list of AlarmHierarchicalNotice
+        :param MigrateFlag: A dedicated field for migration policies. 0: Implement authentication logic; 1: Skip authentication logic.
+        :type MigrateFlag: int
         """
         self.Module = None
         self.PolicyName = None
@@ -1409,6 +1447,8 @@ class CreateAlarmPolicyRequest(AbstractModel):
         self.GroupBy = None
         self.Tags = None
         self.LogAlarmReqInfo = None
+        self.HierarchicalNotices = None
+        self.MigrateFlag = None
 
 
     def _deserialize(self, params):
@@ -1446,6 +1486,13 @@ class CreateAlarmPolicyRequest(AbstractModel):
         if params.get("LogAlarmReqInfo") is not None:
             self.LogAlarmReqInfo = LogAlarmReq()
             self.LogAlarmReqInfo._deserialize(params.get("LogAlarmReqInfo"))
+        if params.get("HierarchicalNotices") is not None:
+            self.HierarchicalNotices = []
+            for item in params.get("HierarchicalNotices"):
+                obj = AlarmHierarchicalNotice()
+                obj._deserialize(item)
+                self.HierarchicalNotices.append(obj)
+        self.MigrateFlag = params.get("MigrateFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
