@@ -6003,6 +6003,55 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
+class DropLiveStreamRequest(AbstractModel):
+    """DropLiveStream request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StreamName: The stream name.
+        :type StreamName: str
+        :param DomainName: Your push domain.
+        :type DomainName: str
+        :param AppName: The push path, which should be the same as `AppName` in the push and playback URL. The default value is `live`.
+        :type AppName: str
+        """
+        self.StreamName = None
+        self.DomainName = None
+        self.AppName = None
+
+
+    def _deserialize(self, params):
+        self.StreamName = params.get("StreamName")
+        self.DomainName = params.get("DomainName")
+        self.AppName = params.get("AppName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DropLiveStreamResponse(AbstractModel):
+    """DropLiveStream response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class EnableLiveDomainRequest(AbstractModel):
     """EnableLiveDomain request structure.
 
@@ -8883,12 +8932,16 @@ topspeed_H265: top speed codec - H265.
         :type ModuleCodec: str
         :param Bitrate: Bitrate.
         :type Bitrate: int
-        :param Type: Type. Valid values: Transcode, MixStream, WaterMark.
+        :param Type: The task type. Valid values: Transcode, MixStream, WaterMark, Webrtc.
         :type Type: str
         :param PushDomain: Push domain name.
         :type PushDomain: str
         :param Resolution: Resolution.
         :type Resolution: str
+        :param MainlandOrOversea: The region. Valid values:
+`Mainland`: Inside the Chinese mainland.
+`Overseas`: Outside the Chinese mainland.
+        :type MainlandOrOversea: str
         """
         self.StreamName = None
         self.StartTime = None
@@ -8899,6 +8952,7 @@ topspeed_H265: top speed codec - H265.
         self.Type = None
         self.PushDomain = None
         self.Resolution = None
+        self.MainlandOrOversea = None
 
 
     def _deserialize(self, params):
@@ -8911,6 +8965,7 @@ topspeed_H265: top speed codec - H265.
         self.Type = params.get("Type")
         self.PushDomain = params.get("PushDomain")
         self.Resolution = params.get("Resolution")
+        self.MainlandOrOversea = params.get("MainlandOrOversea")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

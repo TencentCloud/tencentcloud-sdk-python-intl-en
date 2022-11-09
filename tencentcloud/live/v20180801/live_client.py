@@ -2453,6 +2453,36 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DropLiveStream(self, request):
+        """This API is used to pause a live stream. The stream can be resumed if it is paused.
+        Note: If you call this API to pause an inactive stream, the request will be considered successful.
+
+        :param request: Request instance for DropLiveStream.
+        :type request: :class:`tencentcloud.live.v20180801.models.DropLiveStreamRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DropLiveStreamResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DropLiveStream", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DropLiveStreamResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def EnableLiveDomain(self, request):
         """This API is used to enable a disabled LVB domain name.
 

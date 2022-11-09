@@ -4795,6 +4795,10 @@ Note: when a download URL of other media files is used as the material source an
         :type SourceMediaStartTime: float
         :param Duration: Audio segment duration in seconds. By default, the length of the material will be used, which means that the entire material will be captured.
         :type Duration: float
+        :param TargetDuration: The target audio duration, in seconds.
+<li>If `TargetDuration` is empty or `0`, the target duration is the same as `Duration`.</li>
+<li>If `TargetDuration` is a value greater than 0, the playback speed will be changed to make the final audio duration the same as the value of `TargetDuration`.</li>
+        :type TargetDuration: float
         :param AudioOperations: Operation on audio segment, such as volume adjustment.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AudioOperations: list of AudioTransform
@@ -4802,6 +4806,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.SourceMedia = None
         self.SourceMediaStartTime = None
         self.Duration = None
+        self.TargetDuration = None
         self.AudioOperations = None
 
 
@@ -4809,6 +4814,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.SourceMedia = params.get("SourceMedia")
         self.SourceMediaStartTime = params.get("SourceMediaStartTime")
         self.Duration = params.get("Duration")
+        self.TargetDuration = params.get("TargetDuration")
         if params.get("AudioOperations") is not None:
             self.AudioOperations = []
             for item in params.get("AudioOperations"):
@@ -13408,10 +13414,11 @@ class MediaDeleteItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: Type of files to delete. If this parameter is left empty, it will be invalid. Valid values:
-<li>`OriginalFiles`: original files. You cannot initiate transcoding, publishing on WeChat, or other video processing operations after deleting the original files.</li>
-<li>`TranscodeFiles`: transcoded files</li>
-<li>`WechatPublishFiles`: files for publishing on WeChat</li>
+        :param Type: The type of files to delete. If this parameter is left empty, it will be invalid. Valid values:
+<li>`OriginalFiles`: The original file. After deleting an original file, you can no longer perform operations such as transcoding or WeChat publishing on the file ID.</li>
+<li>`TranscodeFiles`: Transcoding outputs</li>
+<li>`AdaptiveDynamicStreamingFiles`: Adaptive bitrate outputs</li>
+<li>`WechatPublishFiles`: The file for WeChat publishing</li>
         :type Type: str
         :param Definition: ID of the template for which to delete the videos of the type specified by the `Type` parameter. For the template definition, please see [Transcoding Template](https://intl.cloud.tencent.com/document/product/266/33478?from_cn_redirect=1#.3Cspan-id-.3D-.22zm.22-.3E.3C.2Fspan.3E.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF).
 Default value: 0, which indicates to delete all videos of the type specified by the `Type` parameter.
@@ -20112,9 +20119,6 @@ class SearchMediaRequest(AbstractModel):
         :param StreamIds: The live stream code array. A media file will be returned if it matches any element in the array.
 <li>Array length limit: 10</li>
         :type StreamIds: list of str
-        :param Vids: Unique ID of LVB recording file. Any element in the set can be matched.
-<li>Array length limit: 10.</li>
-        :type Vids: list of str
         :param CreateTime: Matches files created within the time period.
 <li>Includes specified start and end points in time.</li>
         :type CreateTime: :class:`tencentcloud.vod.v20180717.models.TimeRange`
@@ -20169,9 +20173,6 @@ Media file source. For valid values, please see [SourceType](https://intl.cloud.
         :param StreamId: (Not recommended. Consider using `StreamIds` instead.)
 The live stream code.
         :type StreamId: str
-        :param Vid: (This is not recommended. `Vids` should be used instead)
-Unique ID of LVB recording file.
-        :type Vid: str
         :param StartTime: (This is not recommended. `CreateTime` should be used instead)
 Start time in the creation time range.
 <li>After or at the start time.</li>
@@ -20184,6 +20185,10 @@ End time in the creation time range.
 <li>If `CreateTime.Before` also exists, it will be used first.</li>
 <li>In ISO 8601 format. For more information, please see [ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).</li>
         :type EndTime: str
+        :param Vids: This parameter is invalid now.
+        :type Vids: list of str
+        :param Vid: This parameter is invalid now.
+        :type Vid: str
         """
         self.SubAppId = None
         self.FileIds = None
@@ -20195,7 +20200,6 @@ End time in the creation time range.
         self.Categories = None
         self.SourceTypes = None
         self.StreamIds = None
-        self.Vids = None
         self.CreateTime = None
         self.ExpireTime = None
         self.Sort = None
@@ -20209,9 +20213,10 @@ End time in the creation time range.
         self.Text = None
         self.SourceType = None
         self.StreamId = None
-        self.Vid = None
         self.StartTime = None
         self.EndTime = None
+        self.Vids = None
+        self.Vid = None
 
 
     def _deserialize(self, params):
@@ -20225,7 +20230,6 @@ End time in the creation time range.
         self.Categories = params.get("Categories")
         self.SourceTypes = params.get("SourceTypes")
         self.StreamIds = params.get("StreamIds")
-        self.Vids = params.get("Vids")
         if params.get("CreateTime") is not None:
             self.CreateTime = TimeRange()
             self.CreateTime._deserialize(params.get("CreateTime"))
@@ -20245,9 +20249,10 @@ End time in the creation time range.
         self.Text = params.get("Text")
         self.SourceType = params.get("SourceType")
         self.StreamId = params.get("StreamId")
-        self.Vid = params.get("Vid")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        self.Vids = params.get("Vids")
+        self.Vid = params.get("Vid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -22997,6 +23002,10 @@ Note: when a download URL of other media files is used as the material source an
         :type SourceMediaStartTime: float
         :param Duration: Video segment duration in seconds. By default, the length of the video material will be used, which means that the entire material will be captured. If the source file is an image, `Duration` needs to be greater than 0.
         :type Duration: float
+        :param TargetDuration: The target video duration, in seconds.
+<li>If `TargetDuration` is empty or `0`, the target duration is the same as `Duration`.</li>
+<li>If `TargetDuration` is a value greater than 0, the playback speed will be changed to make the final video duration the same as the value of `TargetDuration`.</li>
+        :type TargetDuration: float
         :param CoordinateOrigin: Video origin position. Valid values:
 <li> Center: the origin of coordinates is the center position, such as the center of canvas.</li>
 Default value: Center.
@@ -23025,46 +23034,48 @@ Default value: 0 px.
 <li>If `Width` is empty, but `Height` is not empty, `Width` will be proportionally scaled.</li>
 <li>If `Width` is not empty, but `Height` is empty, `Height` will be proportionally scaled.</li>
         :type Height: str
-        :param ImageOperations: Operation on video image such as image rotation.
-Note: this field may return null, indicating that no valid values can be obtained.
-        :type ImageOperations: list of ImageTransform
         :param AudioOperations: Operation on audio such as muting.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AudioOperations: list of AudioTransform
+        :param ImageOperations: Operation on video image such as image rotation.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ImageOperations: list of ImageTransform
         """
         self.SourceMedia = None
         self.SourceMediaStartTime = None
         self.Duration = None
+        self.TargetDuration = None
         self.CoordinateOrigin = None
         self.XPos = None
         self.YPos = None
         self.Width = None
         self.Height = None
-        self.ImageOperations = None
         self.AudioOperations = None
+        self.ImageOperations = None
 
 
     def _deserialize(self, params):
         self.SourceMedia = params.get("SourceMedia")
         self.SourceMediaStartTime = params.get("SourceMediaStartTime")
         self.Duration = params.get("Duration")
+        self.TargetDuration = params.get("TargetDuration")
         self.CoordinateOrigin = params.get("CoordinateOrigin")
         self.XPos = params.get("XPos")
         self.YPos = params.get("YPos")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
-        if params.get("ImageOperations") is not None:
-            self.ImageOperations = []
-            for item in params.get("ImageOperations"):
-                obj = ImageTransform()
-                obj._deserialize(item)
-                self.ImageOperations.append(obj)
         if params.get("AudioOperations") is not None:
             self.AudioOperations = []
             for item in params.get("AudioOperations"):
                 obj = AudioTransform()
                 obj._deserialize(item)
                 self.AudioOperations.append(obj)
+        if params.get("ImageOperations") is not None:
+            self.ImageOperations = []
+            for item in params.get("ImageOperations"):
+                obj = ImageTransform()
+                obj._deserialize(item)
+                self.ImageOperations.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -1638,6 +1638,51 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class DeleteBackupRequest(AbstractModel):
+    """DeleteBackup request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param SnapshotIdList: Backup file ID
+        :type SnapshotIdList: list of int
+        """
+        self.ClusterId = None
+        self.SnapshotIdList = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.SnapshotIdList = params.get("SnapshotIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteBackupResponse(AbstractModel):
+    """DeleteBackup response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAccountsRequest(AbstractModel):
     """DescribeAccounts request structure.
 
@@ -4279,11 +4324,14 @@ class QueryFilter(AbstractModel):
         :type ExactMatch: bool
         :param Name: Search field
         :type Name: str
+        :param Operator: Operator
+        :type Operator: str
         """
         self.Names = None
         self.Values = None
         self.ExactMatch = None
         self.Name = None
+        self.Operator = None
 
 
     def _deserialize(self, params):
@@ -4291,6 +4339,7 @@ class QueryFilter(AbstractModel):
         self.Values = params.get("Values")
         self.ExactMatch = params.get("ExactMatch")
         self.Name = params.get("Name")
+        self.Operator = params.get("Operator")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
