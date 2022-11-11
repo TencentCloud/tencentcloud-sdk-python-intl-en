@@ -14,6 +14,9 @@
 # limitations under the License.
 
 
+# CAM signature/authentication error.
+AUTHFAILURE = 'AuthFailure'
+
 # The operation failed.
 FAILEDOPERATION = 'FailedOperation'
 
@@ -41,8 +44,20 @@ FAILEDOPERATION_LOGINAREANOTALLOWED = 'FailedOperation.LoginAreaNotAllowed'
 # Login failed. Check whether the account and password are correct.
 FAILEDOPERATION_LOGINFAILED = 'FailedOperation.LoginFailed'
 
+# You are not the domain owner.
+FAILEDOPERATION_NOTDOMAINOWNER = 'FailedOperation.NotDomainOwner'
+
+# Your account identity has not been verified. Complete identity verification first before performing this operation.
+FAILEDOPERATION_NOTREALNAMEDUSER = 'FailedOperation.NotRealNamedUser'
+
 # The operation has no response. Try again later.
 FAILEDOPERATION_UNKNOWERROR = 'FailedOperation.UnknowError'
+
+# Internal error.
+INTERNALERROR = 'InternalError'
+
+# Invalid parameter.
+INVALIDPARAMETER = 'InvalidParameter'
 
 # Your account is banned by the system. Please contact us if you have any questions.
 INVALIDPARAMETER_ACCOUNTISBANNED = 'InvalidParameter.AccountIsBanned'
@@ -98,6 +113,12 @@ INVALIDPARAMETER_MOBILENOTVERIFIED = 'InvalidParameter.MobileNotVerified'
 # The MX priority is incorrect.
 INVALIDPARAMETER_MXINVALID = 'InvalidParameter.MxInvalid'
 
+# Operation failed. Please try again later.
+INVALIDPARAMETER_OPERATEFAILED = 'InvalidParameter.OperateFailed'
+
+# Parameter format error.
+INVALIDPARAMETER_PARAMINVALID = 'InvalidParameter.ParamInvalid'
+
 # The record number is incorrect.
 INVALIDPARAMETER_RECORDIDINVALID = 'InvalidParameter.RecordIdInvalid'
 
@@ -119,6 +140,9 @@ INVALIDPARAMETER_REMARKTOOLONG = 'InvalidParameter.RemarkTooLong'
 # Your IP is invalid, so the request was rejected.
 INVALIDPARAMETER_REQUESTIPLIMITED = 'InvalidParameter.RequestIpLimited'
 
+# The search results contain more than 500 entries. Add one or more keywords.
+INVALIDPARAMETER_RESULTMORETHAN500 = 'InvalidParameter.ResultMoreThan500'
+
 # The subdomain is incorrect.
 INVALIDPARAMETER_SUBDOMAININVALID = 'InvalidParameter.SubdomainInvalid'
 
@@ -136,6 +160,9 @@ INVALIDPARAMETER_USERNOTEXISTS = 'InvalidParameter.UserNotExists'
 
 # The current domain is incorrect. Return to the previous step and try again.
 INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = 'InvalidParameterValue.DomainNotExists'
+
+# Error in number of entries per page.
+INVALIDPARAMETERVALUE_LIMITINVALID = 'InvalidParameterValue.LimitInvalid'
 
 # The user number is incorrect.
 INVALIDPARAMETERVALUE_USERIDINVALID = 'InvalidParameterValue.UserIdInvalid'
@@ -191,5 +218,14 @@ OPERATIONDENIED_NOTAGENT = 'OperationDenied.NotAgent'
 # The user is not under your account.
 OPERATIONDENIED_NOTMANAGEDUSER = 'OperationDenied.NotManagedUser'
 
+# The number of requests exceeds the frequency limit.
+REQUESTLIMITEXCEEDED = 'RequestLimitExceeded'
+
 # The number of API requests exceeds the limit.
 REQUESTLIMITEXCEEDED_REQUESTLIMITEXCEEDED = 'RequestLimitExceeded.RequestLimitExceeded'
+
+# Empty record list.
+RESOURCENOTFOUND_NODATAOFRECORD = 'ResourceNotFound.NoDataOfRecord'
+
+# Unauthorized operation.
+UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'

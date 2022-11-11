@@ -718,7 +718,7 @@ class McuLayoutParams(AbstractModel):
         r"""
         :param MixLayoutMode: The layout mode. Valid values: 1 (floating), 2 (screen sharing), 3 (grid), 4 (custom). Floating, screen sharing, and grid are dynamic layouts. Custom layouts are static layouts.
         :type MixLayoutMode: int
-        :param PureAudioHoldPlaceMode: Whether to display users who publish only audio. 0: Yes; 1: No. This parameter is valid only if dynamic layouts are used. If you do not pass this parameter, 0 will be used.
+        :param PureAudioHoldPlaceMode: Whether to display users who publish only audio. 0: No; 1: Yes. This parameter is valid only if a dynamic layout is used. If you do not pass this parameter, 0 will be used.
         :type PureAudioHoldPlaceMode: int
         :param MixLayoutList: The details of a custom layout.
         :type MixLayoutList: list of McuLayout
@@ -1441,6 +1441,112 @@ class RemoveUserRequest(AbstractModel):
 
 class RemoveUserResponse(AbstractModel):
     """RemoveUser response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class SetUserBlockedByStrRoomIdRequest(AbstractModel):
+    """SetUserBlockedByStrRoomId request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: The application ID.
+        :type SdkAppId: int
+        :param StrRoomId: The room ID (string).
+        :type StrRoomId: str
+        :param UserId: The user ID.
+        :type UserId: str
+        :param IsMute: Whether to disable the user’s audio and video. 0: Enable; 1: Disable.
+        :type IsMute: int
+        """
+        self.SdkAppId = None
+        self.StrRoomId = None
+        self.UserId = None
+        self.IsMute = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.StrRoomId = params.get("StrRoomId")
+        self.UserId = params.get("UserId")
+        self.IsMute = params.get("IsMute")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetUserBlockedByStrRoomIdResponse(AbstractModel):
+    """SetUserBlockedByStrRoomId response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class SetUserBlockedRequest(AbstractModel):
+    """SetUserBlocked request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: The application ID.
+        :type SdkAppId: int
+        :param RoomId: The room ID (number).
+        :type RoomId: int
+        :param UserId: The user ID.
+        :type UserId: str
+        :param IsMute: Whether to disable the user’s audio and video. 0: Enable; 1: Disable.
+        :type IsMute: int
+        """
+        self.SdkAppId = None
+        self.RoomId = None
+        self.UserId = None
+        self.IsMute = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.RoomId = params.get("RoomId")
+        self.UserId = params.get("UserId")
+        self.IsMute = params.get("IsMute")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetUserBlockedResponse(AbstractModel):
+    """SetUserBlocked response structure.
 
     """
 

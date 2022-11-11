@@ -200,6 +200,35 @@ class DnspodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeRecordList(self, request):
+        """This API is used to get DNS records of a domain.
+
+        :param request: Request instance for DescribeRecordList.
+        :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeRecordListRequest`
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.DescribeRecordListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRecordList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRecordListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyDomainRemark(self, request):
         """This API is used to set the remarks of a domain.
 

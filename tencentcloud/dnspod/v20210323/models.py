@@ -303,6 +303,106 @@ class DescribeDomainResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeRecordListRequest(AbstractModel):
+    """DescribeRecordList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: The domain for which DNS records are to be obtained.
+        :type Domain: str
+        :param DomainId: The ID of the domain for which DNS records are to be obtained. If `DomainId` is passed in, the system will omit the parameter `Domain`.
+        :type DomainId: int
+        :param Subdomain: The host header of a DNS record. If this parameter is passed in, only the DNS record corresponding to this host header will be returned.
+        :type Subdomain: str
+        :param RecordType: The type of DNS record, such as A, CNAME, NS, AAAA, explicit URL, implicit URL, CAA, or SPF record.
+        :type RecordType: str
+        :param RecordLine: The split zone name.
+        :type RecordLine: str
+        :param RecordLineId: The split zone ID. If `RecordLineId` is passed in, the system will omit the parameter `RecordLine`.
+        :type RecordLineId: str
+        :param GroupId: The group ID.
+        :type GroupId: int
+        :param Keyword: The keyword for searching for DNS records. Host headers and record values are supported.
+        :type Keyword: str
+        :param SortField: The sorting field. Available values: `name`, `line`, `type`, `value`, `weight`, `mx`, and `ttl,updated_on`.
+        :type SortField: str
+        :param SortType: The sorting type. Valid values: `ASC` (ascending, default), `DESC` (descending).
+        :type SortType: str
+        :param Offset: The offset. Default value: `0`.
+        :type Offset: int
+        :param Limit: The limit. It defaults to 100 and can be up to 3,000.
+        :type Limit: int
+        """
+        self.Domain = None
+        self.DomainId = None
+        self.Subdomain = None
+        self.RecordType = None
+        self.RecordLine = None
+        self.RecordLineId = None
+        self.GroupId = None
+        self.Keyword = None
+        self.SortField = None
+        self.SortType = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.DomainId = params.get("DomainId")
+        self.Subdomain = params.get("Subdomain")
+        self.RecordType = params.get("RecordType")
+        self.RecordLine = params.get("RecordLine")
+        self.RecordLineId = params.get("RecordLineId")
+        self.GroupId = params.get("GroupId")
+        self.Keyword = params.get("Keyword")
+        self.SortField = params.get("SortField")
+        self.SortType = params.get("SortType")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRecordListResponse(AbstractModel):
+    """DescribeRecordList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RecordCountInfo: The record count info.
+        :type RecordCountInfo: :class:`tencentcloud.dnspod.v20210323.models.RecordCountInfo`
+        :param RecordList: The record list result.
+        :type RecordList: list of RecordListItem
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RecordCountInfo = None
+        self.RecordList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("RecordCountInfo") is not None:
+            self.RecordCountInfo = RecordCountInfo()
+            self.RecordCountInfo._deserialize(params.get("RecordCountInfo"))
+        if params.get("RecordList") is not None:
+            self.RecordList = []
+            for item in params.get("RecordList"):
+                obj = RecordListItem()
+                obj._deserialize(item)
+                self.RecordList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRecordRequest(AbstractModel):
     """DescribeRecord request structure.
 
@@ -696,6 +796,38 @@ class ModifyRecordResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RecordCountInfo(AbstractModel):
+    """Count info of the queried record list
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SubdomainCount: The subdomain count.
+        :type SubdomainCount: int
+        :param ListCount: The count of records returned in the list.
+        :type ListCount: int
+        :param TotalCount: The total record count.
+        :type TotalCount: int
+        """
+        self.SubdomainCount = None
+        self.ListCount = None
+        self.TotalCount = None
+
+
+    def _deserialize(self, params):
+        self.SubdomainCount = params.get("SubdomainCount")
+        self.ListCount = params.get("ListCount")
+        self.TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RecordInfo(AbstractModel):
     """Record information
 
@@ -769,6 +901,80 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.Remark = params.get("Remark")
         self.UpdatedOn = params.get("UpdatedOn")
         self.DomainId = params.get("DomainId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecordListItem(AbstractModel):
+    """Record list elements
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RecordId: The record ID.
+        :type RecordId: int
+        :param Value: The record value.
+        :type Value: str
+        :param Status: The record status. Valid values: `ENABLE` (enabled), `DISABLE` (disabled).
+        :type Status: str
+        :param UpdatedOn: The update time.
+        :type UpdatedOn: str
+        :param Name: The host name.
+        :type Name: str
+        :param Line: The record split zone.
+        :type Line: str
+        :param LineId: The split zone ID.
+        :type LineId: str
+        :param Type: The record type.
+        :type Type: str
+        :param Weight: The record weight, which is required for round-robin DNS records.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Weight: int
+        :param MonitorStatus: The monitoring status of the record. Valid values: `OK` (normal), `WARN` (warning), and `DOWN` (downtime). It is empty if no monitoring is set or the monitoring is suspended.
+        :type MonitorStatus: str
+        :param Remark: The record remarks.
+        :type Remark: str
+        :param TTL: The record cache time.
+        :type TTL: int
+        :param MX: The MX value, applicable to the MX record only.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MX: int
+        """
+        self.RecordId = None
+        self.Value = None
+        self.Status = None
+        self.UpdatedOn = None
+        self.Name = None
+        self.Line = None
+        self.LineId = None
+        self.Type = None
+        self.Weight = None
+        self.MonitorStatus = None
+        self.Remark = None
+        self.TTL = None
+        self.MX = None
+
+
+    def _deserialize(self, params):
+        self.RecordId = params.get("RecordId")
+        self.Value = params.get("Value")
+        self.Status = params.get("Status")
+        self.UpdatedOn = params.get("UpdatedOn")
+        self.Name = params.get("Name")
+        self.Line = params.get("Line")
+        self.LineId = params.get("LineId")
+        self.Type = params.get("Type")
+        self.Weight = params.get("Weight")
+        self.MonitorStatus = params.get("MonitorStatus")
+        self.Remark = params.get("Remark")
+        self.TTL = params.get("TTL")
+        self.MX = params.get("MX")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
