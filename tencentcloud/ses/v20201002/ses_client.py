@@ -173,7 +173,7 @@ class SesClient(AbstractClient):
 
 
     def CreateReceiverDetail(self, request):
-        """This API is used to add recipient email addresses (up to 100,000 at a time) to a recipient group. This will be processed asynchronously. You can upload recipient email addresses only once. If the data volume is large, it may take some time to upload. You can check the recipient group to learn the upload status and upload quantity.
+        """This API is used to add recipient email addresses (up to 20,000 at a time) to a recipient group. This will be processed asynchronously. If the data volume is large, it may take some time to upload. You can check the recipient group for the upload status and upload quantity. This API has basically the same feature as that of `CreateReceiverDetailWithData` except that it doesn't support uploading template parameters for email sending. You need to first call the `CreateReceiver` API to create a recipient group, then call this API to pass in recipient addresses, and finally call the `BatchSendEmail` API to batch send emails. This API supports adding more recipient addresses during upload but not address deduplication, so you need to make sure that the recipient addresses are not duplicate by yourself. This API can request up to 20,000 recipient addresses at a time, but the recipient group can contain up to 50,000 addresses currently.
 
         :param request: Request instance for CreateReceiverDetail.
         :type request: :class:`tencentcloud.ses.v20201002.models.CreateReceiverDetailRequest`

@@ -1650,7 +1650,7 @@ class CreateSubscriptionRequest(AbstractModel):
         :type EnvironmentId: str
         :param TopicName: Topic name.
         :type TopicName: str
-        :param SubscriptionName: Subscriber name, which can contain up to 150 letters, digits, hyphens, and underscores.
+        :param SubscriptionName: Subscriber name, which can contain up to 128 characters.
         :type SubscriptionName: str
         :param IsIdempotent: Whether the creation is idempotent; if not, you cannot create subscriptions with the same name.
         :type IsIdempotent: bool
@@ -3445,6 +3445,136 @@ Note: this field may return `null`, indicating that no valid values can be obtai
                 obj = Publisher()
                 obj._deserialize(item)
                 self.Publishers.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRabbitMQNodeListRequest(AbstractModel):
+    """DescribeRabbitMQNodeList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: TDMQ for RabbitMQ cluster ID
+        :type InstanceId: str
+        :param Offset: Offset
+        :type Offset: int
+        :param Limit: The maximum entries per page
+        :type Limit: int
+        """
+        self.InstanceId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRabbitMQNodeListResponse(AbstractModel):
+    """DescribeRabbitMQNodeList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: The number of clusters
+        :type TotalCount: int
+        :param NodeList: Cluster list
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type NodeList: list of RabbitMQPrivateNode
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.NodeList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("NodeList") is not None:
+            self.NodeList = []
+            for item in params.get("NodeList"):
+                obj = RabbitMQPrivateNode()
+                obj._deserialize(item)
+                self.NodeList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRabbitMQVipInstancesRequest(AbstractModel):
+    """DescribeRabbitMQVipInstances request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Filters: Query condition filter
+        :type Filters: list of Filter
+        :param Limit: The maximum number of queried items, which defaults to 20.
+        :type Limit: int
+        :param Offset: Start offset for query
+        :type Offset: int
+        """
+        self.Filters = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRabbitMQVipInstancesResponse(AbstractModel):
+    """DescribeRabbitMQVipInstances response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: The total number of unpaginated items
+        :type TotalCount: int
+        :param Instances: Instance information list
+        :type Instances: list of RabbitMQVipInstance
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Instances = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Instances") is not None:
+            self.Instances = []
+            for item in params.get("Instances"):
+                obj = RabbitMQVipInstance()
+                obj._deserialize(item)
+                self.Instances.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -5258,6 +5388,109 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.AverageMsgSize = params.get("AverageMsgSize")
         self.ConnectedSince = params.get("ConnectedSince")
         self.Partition = params.get("Partition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RabbitMQPrivateNode(AbstractModel):
+    """TDMQ for RabbitMQ node information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NodeName: Node name
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type NodeName: str
+        """
+        self.NodeName = None
+
+
+    def _deserialize(self, params):
+        self.NodeName = params.get("NodeName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RabbitMQVipInstance(AbstractModel):
+    """TDMQ for RabbitMQ exclusive instance information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param InstanceName: Instance name
+        :type InstanceName: str
+        :param InstanceVersion: Instance version
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type InstanceVersion: str
+        :param Status: Instance status. Valid values: `0` (Creating), `1` (Normal), `2` (Isolated), `3` (Terminated), `4` (Abnormal), `5` (Delivery failed).
+        :type Status: int
+        :param NodeCount: Number of nodes
+        :type NodeCount: int
+        :param ConfigDisplay: Instance specification name
+        :type ConfigDisplay: str
+        :param MaxTps: Peak TPS
+        :type MaxTps: int
+        :param MaxBandWidth: Peak bandwidth in Mbps
+        :type MaxBandWidth: int
+        :param MaxStorage: Storage capacity in GB
+        :type MaxStorage: int
+        :param ExpireTime: Instance expiration time in milliseconds
+        :type ExpireTime: int
+        :param AutoRenewFlag: Renewal mode. Valid values: `0` (Manual renewal, which is the default mode), `1` (Auto-renewal), `2` (Manual renewal, which is specified by users).
+        :type AutoRenewFlag: int
+        :param PayMode: Payment mode. `0`: Postpaid; `1`: Prepaid.
+        :type PayMode: int
+        :param Remark: Remarks
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Remark: str
+        :param SpecName: Instance specification ID
+        :type SpecName: str
+        """
+        self.InstanceId = None
+        self.InstanceName = None
+        self.InstanceVersion = None
+        self.Status = None
+        self.NodeCount = None
+        self.ConfigDisplay = None
+        self.MaxTps = None
+        self.MaxBandWidth = None
+        self.MaxStorage = None
+        self.ExpireTime = None
+        self.AutoRenewFlag = None
+        self.PayMode = None
+        self.Remark = None
+        self.SpecName = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.InstanceVersion = params.get("InstanceVersion")
+        self.Status = params.get("Status")
+        self.NodeCount = params.get("NodeCount")
+        self.ConfigDisplay = params.get("ConfigDisplay")
+        self.MaxTps = params.get("MaxTps")
+        self.MaxBandWidth = params.get("MaxBandWidth")
+        self.MaxStorage = params.get("MaxStorage")
+        self.ExpireTime = params.get("ExpireTime")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.PayMode = params.get("PayMode")
+        self.Remark = params.get("Remark")
+        self.SpecName = params.get("SpecName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

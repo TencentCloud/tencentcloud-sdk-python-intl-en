@@ -27,7 +27,7 @@ class Attachment(AbstractModel):
         r"""
         :param FileName: Attachment name, which cannot exceed 255 characters. Some attachment types are not supported. For details, see [Attachment Types](https://intl.cloud.tencent.com/document/product/1288/51951?from_cn_redirect=1).
         :type FileName: str
-        :param Content: Attachment content after Base64 encoding. A single attachment cannot exceed 4 MB. Note: Tencent Cloud APIs require that a request packet should not exceed 8 MB. If you are sending multiple attachments, the total size of these attachments cannot exceed 8 MB.
+        :param Content: Base64-encoded attachment content. You can send attachments of up to 4 MB in the total size. Note: The TencentCloud API supports a request packet of up to 8 MB in size, and the size of the attachment content will increase by 1.5 times after Base64 encoding. Therefore, you need to keep the total size of all attachments below 4 MB. If the entire request exceeds 8 MB, the API will return an error.
         :type Content: str
         """
         self.FileName = None
@@ -53,9 +53,9 @@ class BatchSendEmailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FromEmailAddress: Sender address. Enter a sender address, for example, noreply@mail.qcloud.com. To display the sender name, enter the address in the following format:
-Sender <email address>, for example:
-Tencent Cloud team <noreply@mail.qcloud.com>
+        :param FromEmailAddress: Sender address. Enter a sender address such as `noreply@mail.qcloud.com`. To display the sender name, enter the address in the following format:
+sender &lt;email address&gt;. For example:
+Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
         :type FromEmailAddress: str
         :param ReceiverId: Recipient group ID
         :type ReceiverId: int
@@ -437,14 +437,18 @@ class CycleEmailParam(AbstractModel):
         :type BeginTime: str
         :param IntervalTime: Task recurrence in hours
         :type IntervalTime: int
+        :param TermCycle: Specifies whether to end the cycle. This parameter is used to update the task. Valid values: 0: No; 1: Yes.
+        :type TermCycle: int
         """
         self.BeginTime = None
         self.IntervalTime = None
+        self.TermCycle = None
 
 
     def _deserialize(self, params):
         self.BeginTime = params.get("BeginTime")
         self.IntervalTime = params.get("IntervalTime")
+        self.TermCycle = params.get("TermCycle")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1420,11 +1424,11 @@ Sender <email address>
         :type Subject: str
         :param ReplyToAddresses: Reply-to address. You can enter a valid personal email address that can receive emails. If this parameter is left empty, reply emails will fail to be sent.
         :type ReplyToAddresses: str
-        :param Template: Template when sending emails using a template.
+        :param Template: Template parameters for template-based sending. As `Simple` has been disused, `Template` is required.
         :type Template: :class:`tencentcloud.ses.v20201002.models.Template`
         :param Simple: Disused
         :type Simple: :class:`tencentcloud.ses.v20201002.models.Simple`
-        :param Attachments: Email attachments
+        :param Attachments: Parameters for the attachments to be sent. The TencentCloud API supports a request packet of up to 8 MB in size, and the size of the attachment content will increase by 1.5 times after Base64 encoding. Therefore, you need to keep the total size of all attachments below 4 MB. If the entire request exceeds 8 MB, the API will return an error.
         :type Attachments: list of Attachment
         :param Unsubscribe: Unsubscribe option. `1`: provides an unsubscribe link; `0`: does not provide an unsubscribe link
         :type Unsubscribe: str
@@ -1514,18 +1518,20 @@ class SendEmailStatus(AbstractModel):
 1005: Internal system exception.
 1006: You have sent too many emails to the same address in a short period.
 1007: The email address is in the blocklist.
+1008: The sender domain is rejected by the recipient.
 1009: Internal system exception.
 1010: The daily email sending limit is exceeded.
 1011: You have no permission to send custom content. Use a template.
+1013: The sender domain is unsubscribed from by the recipient.
 2001: No results were found.
 3007: The template ID is invalid or the template is unavailable.
-3008: Template status exception.
+3008: The sender domain is temporarily blocked by the recipient domain.
 3009: You have no permission to use this template.
 3010: The format of the `TemplateData` field is incorrect. 
 3014: The email cannot be sent because the sender domain is not verified.
 3020: The recipient email address is in the blocklist.
 3024: Failed to precheck the email address format.
-3030: Email sending is restricted temporarily due to high bounce rate.
+3030: Email sending is restricted temporarily due to a high bounce rate.
 3033: The account has insufficient balance or overdue payment.
         :type SendStatus: int
         :param DeliverStatus: Recipient processing status

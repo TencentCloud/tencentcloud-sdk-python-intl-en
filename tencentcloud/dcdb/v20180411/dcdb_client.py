@@ -1162,6 +1162,93 @@ class DcdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyInstanceNetwork(self, request):
+        """This API is used to modify instance network.
+
+        :param request: Request instance for ModifyInstanceNetwork.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.ModifyInstanceNetworkRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.ModifyInstanceNetworkResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceNetwork", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyInstanceNetworkResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyInstanceVip(self, request):
+        """This API is used to modify instance VIP.
+
+        :param request: Request instance for ModifyInstanceVip.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.ModifyInstanceVipRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.ModifyInstanceVipResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceVip", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyInstanceVipResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyInstanceVport(self, request):
+        """This API is used to modify instance Vport.
+
+        :param request: Request instance for ModifyInstanceVport.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.ModifyInstanceVportRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.ModifyInstanceVportResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceVport", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyInstanceVportResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ResetAccountPassword(self, request):
         """This API is used to reset the password of a TencentDB account.
         Note: accounts with the same username but different hosts are different accounts.
