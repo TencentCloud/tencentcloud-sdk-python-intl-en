@@ -2198,6 +2198,55 @@ class DescribeInstanceNodeInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeLogFileRetentionPeriodRequest(AbstractModel):
+    """DescribeLogFileRetentionPeriod request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of `tdsql-ow728lmc`.
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLogFileRetentionPeriodResponse(AbstractModel):
+    """DescribeLogFileRetentionPeriod response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of `tdsql-ow728lmc`.
+        :type InstanceId: str
+        :param Days: Backup log retention days
+        :type Days: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.InstanceId = None
+        self.Days = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Days = params.get("Days")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeOrdersRequest(AbstractModel):
     """DescribeOrders request structure.
 
@@ -2924,6 +2973,173 @@ class ModifyDBSyncModeResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyInstanceNetworkRequest(AbstractModel):
+    """ModifyInstanceNetwork request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param VpcId: VpcId, ID of the desired VPC network.
+        :type VpcId: str
+        :param SubnetId: SubnetId, subnet ID of the desired VPC network.
+        :type SubnetId: str
+        :param Vip: The field is required to specify VIP.
+        :type Vip: str
+        :param Vipv6: The field is required to specify VIPv6.
+        :type Vipv6: str
+        :param VipReleaseDelay: VIP retention period in hours. Value range: 0-168. Default value: `24`. `0` indicates that the VIP will be released immediately, but there will be 1-minute delay.
+        :type VipReleaseDelay: int
+        """
+        self.InstanceId = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.Vip = None
+        self.Vipv6 = None
+        self.VipReleaseDelay = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.Vip = params.get("Vip")
+        self.Vipv6 = params.get("Vipv6")
+        self.VipReleaseDelay = params.get("VipReleaseDelay")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceNetworkResponse(AbstractModel):
+    """ModifyInstanceNetwork response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: Async task ID, which can be used to query the task status through `DescribeFlow` API.
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyInstanceVipRequest(AbstractModel):
+    """ModifyInstanceVip request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param Vip: Instance VIP
+        :type Vip: str
+        :param Ipv6Flag: IPv6 flag
+        :type Ipv6Flag: int
+        :param VipReleaseDelay: VIP retention period in hours. Value range: 0-168. Default value: `24`. `0` indicates that the VIP will be released immediately, but there will be 1-minute delay.
+        :type VipReleaseDelay: int
+        """
+        self.InstanceId = None
+        self.Vip = None
+        self.Ipv6Flag = None
+        self.VipReleaseDelay = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Vip = params.get("Vip")
+        self.Ipv6Flag = params.get("Ipv6Flag")
+        self.VipReleaseDelay = params.get("VipReleaseDelay")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceVipResponse(AbstractModel):
+    """ModifyInstanceVip response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: Async task flow ID
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyInstanceVportRequest(AbstractModel):
+    """ModifyInstanceVport request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param Vport: Instance Vport
+        :type Vport: int
+        """
+        self.InstanceId = None
+        self.Vport = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Vport = params.get("Vport")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceVportResponse(AbstractModel):
+    """ModifyInstanceVport response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 

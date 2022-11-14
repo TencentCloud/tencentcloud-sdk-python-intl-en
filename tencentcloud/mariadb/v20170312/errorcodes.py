@@ -23,6 +23,9 @@ FAILEDOPERATION = 'FailedOperation'
 # Failed to add the security group information of an instance.
 FAILEDOPERATION_ADDINSTANCEINFOFAILED = 'FailedOperation.AddInstanceInfoFailed'
 
+# Failed to apply for VIP
+FAILEDOPERATION_APPLYVIPFAILED = 'FailedOperation.ApplyVipFailed'
+
 # Failed to associate the security group.
 FAILEDOPERATION_ASSOCIATESECURITYGROUPSFAILED = 'FailedOperation.AssociateSecurityGroupsFailed'
 
@@ -59,6 +62,9 @@ FAILEDOPERATION_OSSOPERATIONFAILED = 'FailedOperation.OssOperationFailed'
 # Failed to reset the account password.
 FAILEDOPERATION_RESETPASSWORDFAILED = 'FailedOperation.ResetPasswordFailed'
 
+# Failed to update the security group
+FAILEDOPERATION_SGCHANGEVIP = 'FailedOperation.SGChangeVip'
+
 # Failed to set a rule.
 FAILEDOPERATION_SETRULELOCATIONFAILED = 'FailedOperation.SetRuleLocationFailed'
 
@@ -67,6 +73,15 @@ FAILEDOPERATION_TAGDRYRUNERROR = 'FailedOperation.TagDryRunError'
 
 # Failed to update the security group information of an instance.
 FAILEDOPERATION_UPDATEINSTANCEINFOFAILED = 'FailedOperation.UpdateInstanceInfoFailed'
+
+# VIP can’t be the same.
+FAILEDOPERATION_VIPNOTCHANGE = 'FailedOperation.VipNotChange'
+
+# Failed to add service to VPC
+FAILEDOPERATION_VPCADDSERVICEFAILED = 'FailedOperation.VpcAddServiceFailed'
+
+# Abnormal public network status
+FAILEDOPERATION_WANSTATUSABNORMAL = 'FailedOperation.WanStatusAbnormal'
 
 # Internal error.
 INTERNALERROR = 'InternalError'
@@ -176,6 +191,9 @@ INTERNALERROR_SETSVCLOCATIONFAILED = 'InternalError.SetSvcLocationFailed'
 # Failed to update the database.
 INTERNALERROR_UPDATEDATABASEFAILED = 'InternalError.UpdateDatabaseFailed'
 
+# VPC operation failed
+INTERNALERROR_VPCOPERATIONFAILED = 'InternalError.VpcOperationFailed'
+
 # Public network operation failed.
 INTERNALERROR_WANSERVICEFAILED = 'InternalError.WanServiceFailed'
 
@@ -215,8 +233,20 @@ INVALIDPARAMETER_SHARDRESOURCEIDNOTFOUND = 'InvalidParameter.ShardResourceIdNotF
 # The specified VPC subnet was not found.
 INVALIDPARAMETER_SUBNETNOTFOUND = 'InvalidParameter.SubnetNotFound'
 
+# The SNAT subnet doesn’t support applying for IPs.
+INVALIDPARAMETER_SUBNETUNAVAILABLE = 'InvalidParameter.SubnetUnavailable'
+
+# VIP is not in the subnet.
+INVALIDPARAMETER_VIPNOTINSUBNET = 'InvalidParameter.VipNotInSubnet'
+
+# VIP is in use.
+INVALIDPARAMETER_VIPUSED = 'InvalidParameter.VipUsed'
+
 # The specified VPC subnet was not found.
 INVALIDPARAMETER_VPCNOTFOUND = 'InvalidParameter.VpcNotFound'
+
+# Vport is in use.
+INVALIDPARAMETER_VPORTUSED = 'InvalidParameter.VportUsed'
 
 # The account to be created already exists.
 INVALIDPARAMETERVALUE_ACCOUNTALREADYEXISTS = 'InvalidParameterValue.AccountAlreadyExists'
