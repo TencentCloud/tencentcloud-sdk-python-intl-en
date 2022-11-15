@@ -870,11 +870,14 @@ class GetEmailTemplateResponse(AbstractModel):
         :type TemplateContent: :class:`tencentcloud.ses.v20201002.models.TemplateContent`
         :param TemplateStatus: Template status. Valid values: `0` (approved); `1` (pending approval); `2` (rejected).
         :type TemplateStatus: int
+        :param TemplateName: Template name
+        :type TemplateName: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.TemplateContent = None
         self.TemplateStatus = None
+        self.TemplateName = None
         self.RequestId = None
 
 
@@ -883,6 +886,7 @@ class GetEmailTemplateResponse(AbstractModel):
             self.TemplateContent = TemplateContent()
             self.TemplateContent._deserialize(params.get("TemplateContent"))
         self.TemplateStatus = params.get("TemplateStatus")
+        self.TemplateName = params.get("TemplateName")
         self.RequestId = params.get("RequestId")
 
 

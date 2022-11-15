@@ -249,6 +249,11 @@ def test_import_ims():
     from tencentcloud.ims.v20201229 import models
 
 
+def test_import_intlpartnersmgt():
+    from tencentcloud.intlpartnersmgt.v20220928 import intlpartnersmgt_client
+    from tencentcloud.intlpartnersmgt.v20220928 import models
+
+
 def test_import_iotcloud():
     from tencentcloud.iotcloud.v20210408 import iotcloud_client
     from tencentcloud.iotcloud.v20210408 import models
