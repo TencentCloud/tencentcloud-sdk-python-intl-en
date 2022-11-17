@@ -13965,6 +13965,8 @@ class MediaProcessTaskAdaptiveDynamicStreamingResult(AbstractModel):
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
+        :param Progress: The progress of the adaptive bitrate task. Value range: 0-100.
+        :type Progress: int
         :param Input: Input of adaptive bitrate streaming task.
         :type Input: :class:`tencentcloud.vod.v20180717.models.AdaptiveDynamicStreamingTaskInput`
         :param Output: Output of adaptive bitrate streaming task.
@@ -13974,6 +13976,7 @@ class MediaProcessTaskAdaptiveDynamicStreamingResult(AbstractModel):
         self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
+        self.Progress = None
         self.Input = None
         self.Output = None
 
@@ -13983,6 +13986,7 @@ class MediaProcessTaskAdaptiveDynamicStreamingResult(AbstractModel):
         self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
+        self.Progress = params.get("Progress")
         if params.get("Input") is not None:
             self.Input = AdaptiveDynamicStreamingTaskInput()
             self.Input._deserialize(params.get("Input"))
@@ -21062,9 +21066,9 @@ class StorageRegionInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Region: Storage region.
+        :param Region: The storage region.
         :type Region: str
-        :param Description: Description of the storage region.
+        :param Description: The description of the storage region.
         :type Description: str
         :param Status: Whether storage is enabled in the region. Valid values:
 <li>opened: Enabled</li>
@@ -21072,11 +21076,16 @@ class StorageRegionInfo(AbstractModel):
         :type Status: str
         :param IsDefault: Whether the region is the default storage region. Valid values: true, false.
         :type IsDefault: bool
+        :param Area: Whether the storage region is inside or outside the Chinese mainland. Valid values:
+<li>Chinese Mainland</li>
+<li>Outside Chinese Mainland</li>
+        :type Area: str
         """
         self.Region = None
         self.Description = None
         self.Status = None
         self.IsDefault = None
+        self.Area = None
 
 
     def _deserialize(self, params):
@@ -21084,6 +21093,7 @@ class StorageRegionInfo(AbstractModel):
         self.Description = params.get("Description")
         self.Status = params.get("Status")
         self.IsDefault = params.get("IsDefault")
+        self.Area = params.get("Area")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

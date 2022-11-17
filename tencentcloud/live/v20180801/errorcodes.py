@@ -68,7 +68,7 @@ FAILEDOPERATION_COSBUCKETNOTEXIST = 'FailedOperation.CosBucketNotExist'
 # You don’t have permission to access the COS bucket.
 FAILEDOPERATION_COSBUCKETNOTPERMISSION = 'FailedOperation.CosBucketNotPermission'
 
-# The COS role does not exist.
+# The COS role does not exist. Please go to the “Feature Configuration > Live Screencapture & Porn Detection” page of the CSS console to grant the permission.
 FAILEDOPERATION_COSROLENOTEXISTS = 'FailedOperation.CosRoleNotExists'
 
 # The domain name cannot be deleted because it incurred traffic in the last 2 days and is in locked state.

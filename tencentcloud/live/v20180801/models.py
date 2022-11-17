@@ -1139,6 +1139,7 @@ class CreateLivePullStreamTaskRequest(AbstractModel):
         :param SourceType: The source type. Valid values:
 PullLivePushLive: Live streaming
 PullVodPushLive: Video files
+PullPicPushLive: Images
         :type SourceType: str
         :param SourceUrls: The source URL(s).
 If `SourceType` is `PullLivePushLive`, you can specify only one source URL.
@@ -1239,6 +1240,11 @@ Notes:
 2. Make sure you use publicly accessible URLs for the watermark images.
 3. Supported image formats include PNG, JPG, and GIF.
         :type WatermarkList: list of PullPushWatermarkInfo
+        :param VodLocalMode: Whether to use local mode when the source type is video files. The default is `0`.
+0: Do not use local mode
+1: Use local mode
+Note: If you enable local mode, MP4 files will be downloaded to local storage, and the local files will be used for push. This ensures more reliable push. Pushing a local file will incur additional fees.
+        :type VodLocalMode: int
         """
         self.SourceType = None
         self.SourceUrls = None
@@ -1259,6 +1265,7 @@ Notes:
         self.BackupSourceType = None
         self.BackupSourceUrl = None
         self.WatermarkList = None
+        self.VodLocalMode = None
 
 
     def _deserialize(self, params):
@@ -1286,6 +1293,7 @@ Notes:
                 obj = PullPushWatermarkInfo()
                 obj._deserialize(item)
                 self.WatermarkList.append(obj)
+        self.VodLocalMode = params.get("VodLocalMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6924,8 +6932,9 @@ PullLivePushLive: Live streaming
 PullVodPushLive: Video files
 Notes:
 1. Backup sources are supported only if the primary source type is live streaming.
-2. When pull from the primary source is interrupted, the system will pull from the backup source.
-3. If the backup source is a video file, each time the video is finished, the system will check if the primary source is recovered and will switch back if it is.
+2. Leaving this parameter empty will reset the backup source.
+3. When pull from the primary source is interrupted, the system will pull from the backup source.
+4. If the backup source is a video file, each time the video is finished, the system will check if the primary source is recovered and will switch back if it is.
         :type BackupSourceType: str
         :param BackupSourceUrl: The URL of the backup source.
 You can specify only one backup source URL.
@@ -6940,6 +6949,11 @@ Notes:
 6. If you want to stop using watermarks, pass in an empty array.
 7. Currently, animated watermarks are not supported.
         :type WatermarkList: list of PullPushWatermarkInfo
+        :param VodLocalMode: Whether to use local mode when the source type is video files. The default is `0`.
+0: Do not use local mode
+1: Use local mode
+Note: If you enable local mode, MP4 files will be downloaded to local storage, and the local files will be used for push. This ensures more reliable push. Pushing a local file will incur additional fees.
+        :type VodLocalMode: int
         """
         self.TaskId = None
         self.Operator = None
@@ -6957,6 +6971,7 @@ Notes:
         self.BackupSourceType = None
         self.BackupSourceUrl = None
         self.WatermarkList = None
+        self.VodLocalMode = None
 
 
     def _deserialize(self, params):
@@ -6981,6 +6996,7 @@ Notes:
                 obj = PullPushWatermarkInfo()
                 obj._deserialize(item)
                 self.WatermarkList.append(obj)
+        self.VodLocalMode = params.get("VodLocalMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7700,6 +7716,7 @@ class PullStreamTaskInfo(AbstractModel):
         :param SourceType: The source type. Valid values:
 PullLivePushLive: Live streaming
 PullVodPushLive: Video files
+PullPicPushLive: Images
         :type SourceType: str
         :param SourceUrls: The source URL(s).
 If `SourceType` is `PullLiveToLive`, there can be only one source URL.
@@ -7798,6 +7815,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param WatermarkList: The information of watermarks to add.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type WatermarkList: list of PullPushWatermarkInfo
+        :param VodLocalMode: Whether to use local mode when the source type is video files. The default is `0`.
+0: Do not use local mode
+1: Use local mode
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VodLocalMode: int
         """
         self.TaskId = None
         self.SourceType = None
@@ -7825,6 +7847,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.BackupSourceType = None
         self.BackupSourceUrl = None
         self.WatermarkList = None
+        self.VodLocalMode = None
 
 
     def _deserialize(self, params):
@@ -7861,6 +7884,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = PullPushWatermarkInfo()
                 obj._deserialize(item)
                 self.WatermarkList.append(obj)
+        self.VodLocalMode = params.get("VodLocalMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
