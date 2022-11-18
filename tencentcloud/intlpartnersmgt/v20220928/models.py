@@ -132,9 +132,9 @@ A password must contain numbers, letters, and symbols (!@#$%^&*()). Space is not
         :param PhoneNum: Customer mobile number, which should be valid and correct.
 A global mobile number within 1-32 digits is allowed, such as 18888888888.
         :type PhoneNum: str
-        :param CountryCode: Customer’s country/region code, which can be obtained via the `GetCountryCodes` API, such as “852”.
+        :param CountryCode: Customer's country/region code, which can be obtained via the `GetCountryCodes` API, such as "852".
         :type CountryCode: str
-        :param Area: Customer’s ISO2 standard country/region code, which can be obtained via the `GetCountryCodes` API. It should correspond to the `CountryCode` field, such as `HK`.
+        :param Area: Customer's ISO2 standard country/region code, which can be obtained via the `GetCountryCodes` API. It should correspond to the `CountryCode` field, such as `HK`.
         :type Area: str
         :param Extended: Extension field, which is left empty by default.
         :type Extended: str
@@ -514,7 +514,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class QueryDirectCustomersCreditData(AbstractModel):
-    """A customer’s credit information
+    """The credit information of direct customers
 
     """
 
@@ -558,7 +558,7 @@ class QueryDirectCustomersCreditResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: Customer information list
+        :param Data: Direct customer information list
         :type Data: list of QueryDirectCustomersCreditData
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str

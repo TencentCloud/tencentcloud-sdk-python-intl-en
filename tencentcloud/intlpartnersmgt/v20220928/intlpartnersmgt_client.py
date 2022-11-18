@@ -180,7 +180,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def QueryCustomersCredit(self, request):
-        """This API is used for a partner to query a customer's credit and basic information.
+        """This API is used for a partner to the credits and basic information of cutomers.
 
         :param request: Request instance for QueryCustomersCredit.
         :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.QueryCustomersCreditRequest`
@@ -209,7 +209,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def QueryDirectCustomersCredit(self, request):
-        """This API is used to query a customer’s credit.
+        """This API is used to query the credits of direct customers.
 
         :param request: Request instance for QueryDirectCustomersCredit.
         :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.QueryDirectCustomersCreditRequest`

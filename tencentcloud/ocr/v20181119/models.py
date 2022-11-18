@@ -496,11 +496,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param HeadImage: Base64-encoded identity photo
 Note: this field may return null, indicating that no valid values can be obtained.
         :type HeadImage: str
-        :param WarningCode: Multiple alarm codes. If the ID card is spoofed, photocopied, or doctored, the corresponding alarm code will be returned.
--9102: alarm for photocopied document
--9103: alarm for spoofed document
--9104: alarm for doctored document
--9105: alarm for forged document
+        :param WarningCode: Multiple alarm codes. If the ID card is spoofed, photocopied, or photoshopped, the corresponding alarm code will be returned.
+-9102: Alarm for photocopied document
+-9103: Alarm for spoofed document
+-9104: Alarm for photoshopped document
         :type WarningCode: list of int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -731,9 +730,9 @@ class MLIDPassportOCRResponse(AbstractModel):
         :type IssuingCountry: str
         :param Nationality: Country/region code
         :type Nationality: str
-        :param Warn: Alarm code
--9103 Alarm for spoofed card
--9102 Alarm for photocopied card
+        :param Warn: Alarm codes
+-9103 Alarm for spoofed document
+-9102 Alarm for photocopied document (including black & white and color ones)
 -9106 Alarm for covered card
         :type Warn: list of int
         :param Image: Identity photo

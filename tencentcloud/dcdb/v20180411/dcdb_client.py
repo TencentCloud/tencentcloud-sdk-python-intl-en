@@ -958,6 +958,35 @@ class DcdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def IsolateDedicatedDBInstance(self, request):
+        """This API is used to isolate a dedicated TencentDB instance.
+
+        :param request: Request instance for IsolateDedicatedDBInstance.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.IsolateDedicatedDBInstanceRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.IsolateDedicatedDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("IsolateDedicatedDBInstance", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.IsolateDedicatedDBInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def IsolateHourDCDBInstance(self, request):
         """This API is used to isolate pay-as-you-go TDSQL for MySQL instances.
 
@@ -1294,6 +1323,35 @@ class DcdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SwitchDBInstanceHAResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def TerminateDedicatedDBInstance(self, request):
+        """This API is used to terminate the isolated dedicated TDSQL instance.
+
+        :param request: Request instance for TerminateDedicatedDBInstance.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.TerminateDedicatedDBInstanceRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.TerminateDedicatedDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TerminateDedicatedDBInstance", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.TerminateDedicatedDBInstanceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

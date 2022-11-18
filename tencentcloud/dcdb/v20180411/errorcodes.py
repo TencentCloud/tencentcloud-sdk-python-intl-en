@@ -89,7 +89,7 @@ INTERNALERROR = 'InternalError'
 # CAM authentication request failed.
 INTERNALERROR_CAMAUTHFAILED = 'InternalError.CamAuthFailed'
 
-# 
+# Failed to verify the VIP status
 INTERNALERROR_CHECKVIPSTATUSFAILED = 'InternalError.CheckVipStatusFailed'
 
 # Invalid COS instance address configuration.

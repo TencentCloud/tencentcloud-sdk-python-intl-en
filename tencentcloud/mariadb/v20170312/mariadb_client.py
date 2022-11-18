@@ -639,7 +639,7 @@ class MariadbClient(AbstractClient):
 
 
     def DescribeLogFileRetentionPeriod(self, request):
-        """This API is used to view the configured number of days for retention of database backup logs.
+        """This API is used to view the backup log retention days.
 
         :param request: Request instance for DescribeLogFileRetentionPeriod.
         :type request: :class:`tencentcloud.mariadb.v20170312.models.DescribeLogFileRetentionPeriodRequest`
@@ -828,6 +828,64 @@ class MariadbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GrantAccountPrivilegesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def IsolateDBInstance(self, request):
+        """This API is used to isolate a monthly subscribed TencentDB instance, which will no longer be accessible via IP and port. The isolated instance can be started up in the recycle bin. If it is isolated due to overdue payments, top up your account as soon as possible.
+
+        :param request: Request instance for IsolateDBInstance.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.IsolateDBInstanceRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.IsolateDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("IsolateDBInstance", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.IsolateDBInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def IsolateDedicatedDBInstance(self, request):
+        """This API is used to isolate a dedicated TencentDB instance.
+
+        :param request: Request instance for IsolateDedicatedDBInstance.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.IsolateDedicatedDBInstanceRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.IsolateDedicatedDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("IsolateDedicatedDBInstance", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.IsolateDedicatedDBInstanceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1125,6 +1183,35 @@ class MariadbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetAccountPasswordResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def TerminateDedicatedDBInstance(self, request):
+        """This API is used to terminate the isolated dedicated TencentDB instance.
+
+        :param request: Request instance for TerminateDedicatedDBInstance.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.TerminateDedicatedDBInstanceRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.TerminateDedicatedDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TerminateDedicatedDBInstance", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.TerminateDedicatedDBInstanceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
