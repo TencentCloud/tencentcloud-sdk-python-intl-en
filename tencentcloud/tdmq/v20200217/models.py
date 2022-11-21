@@ -726,6 +726,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Status: Cluster status. 0: creating; 1: normal; 2: terminating; 3: deleted; 4. isolated; 5. creation failed; 6: deletion failed
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Status: int
+        :param BrokerType: Valid values: `0` (Pulsar), `1` (RocketMQ).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BrokerType: int
         """
         self.TopicId = None
         self.TopicName = None
@@ -742,6 +745,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.TenantId = None
         self.NamespaceName = None
         self.Status = None
+        self.BrokerType = None
 
 
     def _deserialize(self, params):
@@ -765,6 +769,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.TenantId = params.get("TenantId")
         self.NamespaceName = params.get("NamespaceName")
         self.Status = params.get("Status")
+        self.BrokerType = params.get("BrokerType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

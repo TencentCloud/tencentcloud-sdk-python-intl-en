@@ -1821,10 +1821,10 @@ class MpsClient(AbstractClient):
     def ProcessLiveStream(self, request):
         """This API is used to initiate live stream processing tasks. Such tasks may include the following:
 
-        * Intelligent content moderation (detection of pornographic content in images and speech, detection of sensitive information)
-        * Intelligent content recognition (face, full text, text keyword, full speech, and speech keyword)
+        * Intelligent content moderation (detection of pornographic content in images and audio, detection of sensitive information)
+        * Intelligent content recognition (face, full text, text keyword, and speech keyword recognition; real-time speech translation)
 
-        Live stream processing event notifications are written into specified CMQ queues in real time. Users need to obtain event notification results from such CMQ queues. Output files of the processing tasks are written into destination buckets specified by users.
+        Live stream processing notifications are written into the specified CMQ queue in real time. You need to obtain the processing results from the CMQ queue. The output files of processing tasks are saved to the specified bucket.
 
         :param request: Request instance for ProcessLiveStream.
         :type request: :class:`tencentcloud.mps.v20190612.models.ProcessLiveStreamRequest`
@@ -1853,16 +1853,16 @@ class MpsClient(AbstractClient):
 
 
     def ProcessMedia(self, request):
-        """This API is used to initiate processing tasks for media files in COS. Such tasks may include the following:
-        1. Video transcoding (with watermark)
+        """This API is used to initiate processing tasks for media specified by a URL or in COS. Such tasks may include the following:
+        1. Video transcoding (general transcoding, Top Speed Codec, audio/video enhancement)
         2. Animated image generating
         3. Time point screencapturing
         4. Sampled screencapturing
         5. Image sprite generating
         6. Adaptive bitrate streaming
         7. Intelligent content moderation (detection of pornographic and sensitive content)
-        8. Intelligent content analysis (labeling, categorization, thumbnail generation, frame-specific labeling)
-        9. Intelligent content recognition (face, full text, text keyword, full speech, and speech keyword)
+        8. Intelligent content analysis (labeling, categorization, thumbnail generation, labeling by frame, splitting, highlight generation, opening and closing segment recognition)
+        9. Intelligent content recognition (face, full text, text keyword, full speech, speech keyword, speech translation, object recognition)
 
         :param request: Request instance for ProcessMedia.
         :type request: :class:`tencentcloud.mps.v20190612.models.ProcessMediaRequest`

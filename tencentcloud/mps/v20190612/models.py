@@ -1128,14 +1128,13 @@ class AiRecognitionResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: Task type. Valid values:
-<li>FaceRecognition: Face recognition,</li>
-<li>AsrWordsRecognition: Speech keyword recognition,</li>
-<li>OcrWordsRecognition: Text keyword recognition,</li>
-<li>AsrFullTextRecognition: Full speech recognition,</li>
-<li>OcrFullTextRecognition: Full text recognition,</li>
-<li>HeadTailRecognition: Video opening and ending credits recognition,</li>
-<li>ObjectRecognition: Object recognition.</li>
+        :param Type: The task type. Valid values:
+<li>FaceRecognition: Face recognition</li>
+<li>AsrWordsRecognition: Speech keyword recognition</li>
+<li>OcrWordsRecognition: Text keyword recognition</li>
+<li>AsrFullTextRecognition: Full speech recognition</li>
+<li>OcrFullTextRecognition: Full text recognition</li>
+<li>TransTextRecognition: Speech translation</li>
         :type Type: str
         :param FaceTask: Face recognition result, which is valid when `Type` is 
  `FaceRecognition`.
@@ -1157,6 +1156,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
  `OcrFullTextRecognition`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OcrFullTextTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrFullTextResult`
+        :param TransTextTask: The translation result. This parameter is valid only if `Type` is
+ `TransTextRecognition`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TransTextTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskTransTextResult`
         """
         self.Type = None
         self.FaceTask = None
@@ -1164,6 +1167,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.AsrFullTextTask = None
         self.OcrWordsTask = None
         self.OcrFullTextTask = None
+        self.TransTextTask = None
 
 
     def _deserialize(self, params):
@@ -1183,6 +1187,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("OcrFullTextTask") is not None:
             self.OcrFullTextTask = AiRecognitionTaskOcrFullTextResult()
             self.OcrFullTextTask._deserialize(params.get("OcrFullTextTask"))
+        if params.get("TransTextTask") is not None:
+            self.TransTextTask = AiRecognitionTaskTransTextResult()
+            self.TransTextTask._deserialize(params.get("TransTextTask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2096,6 +2103,158 @@ class AiRecognitionTaskOcrWordsSegmentItem(AbstractModel):
         self.EndTimeOffset = params.get("EndTimeOffset")
         self.Confidence = params.get("Confidence")
         self.AreaCoordSet = params.get("AreaCoordSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiRecognitionTaskTransTextResult(AbstractModel):
+    """The translation result.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: The task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :type Status: str
+        :param ErrCodeExt: The error code. An empty string indicates the task is successful; any other value indicates the task has failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).
+        :type ErrCodeExt: str
+        :param ErrCode: The error code. `0` indicates the task is successful; other values indicate the task has failed. This parameter is not recommended. Please use `ErrCodeExt` instead.
+        :type ErrCode: int
+        :param Message: The error message.
+        :type Message: str
+        :param Input: The input of the translation task.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskTransTextResultInput`
+        :param Output: The output of the translation task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskTransTextResultOutput`
+        """
+        self.Status = None
+        self.ErrCodeExt = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiRecognitionTaskTransTextResultInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = AiRecognitionTaskTransTextResultOutput()
+            self.Output._deserialize(params.get("Output"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiRecognitionTaskTransTextResultInput(AbstractModel):
+    """The translation input.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Definition: The translation template ID.
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiRecognitionTaskTransTextResultOutput(AbstractModel):
+    """The translation result.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SegmentSet: The translated segments.
+        :type SegmentSet: list of AiRecognitionTaskTransTextSegmentItem
+        :param SubtitlePath: The subtitle URL.
+        :type SubtitlePath: str
+        :param OutputStorage: The subtitle storage location.
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        self.SegmentSet = None
+        self.SubtitlePath = None
+        self.OutputStorage = None
+
+
+    def _deserialize(self, params):
+        if params.get("SegmentSet") is not None:
+            self.SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = AiRecognitionTaskTransTextSegmentItem()
+                obj._deserialize(item)
+                self.SegmentSet.append(obj)
+        self.SubtitlePath = params.get("SubtitlePath")
+        if params.get("OutputStorage") is not None:
+            self.OutputStorage = TaskOutputStorage()
+            self.OutputStorage._deserialize(params.get("OutputStorage"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiRecognitionTaskTransTextSegmentItem(AbstractModel):
+    """The translated segments.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Confidence: The confidence score for a segment. Value range: 0-100.
+        :type Confidence: float
+        :param StartTimeOffset: The start time offset (seconds) of a segment.
+        :type StartTimeOffset: float
+        :param EndTimeOffset: The end time offset (seconds) of a segment.
+        :type EndTimeOffset: float
+        :param Text: The text transcript.
+        :type Text: str
+        :param Trans: The translation.
+        :type Trans: str
+        """
+        self.Confidence = None
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
+        self.Text = None
+        self.Trans = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
+        self.Text = params.get("Text")
+        self.Trans = params.get("Trans")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3908,11 +4067,14 @@ In Hz.
 <li>6: Stereo</li>
 When the media is packaged in audio format (FLAC, OGG, MP3, M4A), the sound channel cannot be set to stereo.
         :type AudioChannel: int
+        :param StreamSelects: The audio tracks to retain. All audio tracks are retained by default.
+        :type StreamSelects: list of int
         """
         self.Codec = None
         self.Bitrate = None
         self.SampleRate = None
         self.AudioChannel = None
+        self.StreamSelects = None
 
 
     def _deserialize(self, params):
@@ -3920,6 +4082,7 @@ When the media is packaged in audio format (FLAC, OGG, MP3, M4A), the sound chan
         self.Bitrate = params.get("Bitrate")
         self.SampleRate = params.get("SampleRate")
         self.AudioChannel = params.get("AudioChannel")
+        self.StreamSelects = params.get("StreamSelects")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4685,6 +4848,8 @@ Default value: black.
         :type FillType: str
         :param Comment: Template description. Length limit: 256 characters.
         :type Comment: str
+        :param Format: The image format. Valid values: jpg (default), png, webp.
+        :type Format: str
         """
         self.SampleType = None
         self.SampleInterval = None
@@ -4696,6 +4861,7 @@ Default value: black.
         self.ResolutionAdaptive = None
         self.FillType = None
         self.Comment = None
+        self.Format = None
 
 
     def _deserialize(self, params):
@@ -4709,6 +4875,7 @@ Default value: black.
         self.ResolutionAdaptive = params.get("ResolutionAdaptive")
         self.FillType = params.get("FillType")
         self.Comment = params.get("Comment")
+        self.Format = params.get("Format")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4843,7 +5010,7 @@ class CreateSampleSnapshotTemplateRequest(AbstractModel):
 <li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>
 Default value: open.
         :type ResolutionAdaptive: str
-        :param Format: Image format. Valid values: jpg; png. Default value: jpg.
+        :param Format: The image format. Valid values: jpg (default), png, webp.
         :type Format: str
         :param Comment: Template description. Length limit: 256 characters.
         :type Comment: str
@@ -4924,7 +5091,7 @@ class CreateSnapshotByTimeOffsetTemplateRequest(AbstractModel):
 <li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>
 Default value: open.
         :type ResolutionAdaptive: str
-        :param Format: Image format. Valid values: jpg; png. Default value: jpg.
+        :param Format: The image format. Valid values: jpg (default), png, webp.
         :type Format: str
         :param Comment: Template description. Length limit: 256 characters.
         :type Comment: str
@@ -7857,6 +8024,8 @@ Default value: black.
         :type FillType: str
         :param Comment: Template description.
         :type Comment: str
+        :param Format: The image format.
+        :type Format: str
         """
         self.Definition = None
         self.Type = None
@@ -7872,6 +8041,7 @@ Default value: black.
         self.UpdateTime = None
         self.FillType = None
         self.Comment = None
+        self.Format = None
 
 
     def _deserialize(self, params):
@@ -7889,6 +8059,7 @@ Default value: black.
         self.UpdateTime = params.get("UpdateTime")
         self.FillType = params.get("FillType")
         self.Comment = params.get("Comment")
+        self.Format = params.get("Format")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8067,12 +8238,13 @@ class LiveStreamAiRecognitionResultItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: Result type. Valid values:
-<li>FaceRecognition: face recognition,</li>
-<li>AsrWordsRecognition: speech keyword recognition,</li>
-<li>OcrWordsRecognition: text keyword recognition,</li>
-<li>AsrFullTextRecognition: full speech recognition,</li>
-<li>OcrFullTextRecognition: full text recognition.</li>
+        :param Type: The result type. Valid values:
+<li>FaceRecognition: Face recognition</li>
+<li>AsrWordsRecognition: Speech keyword recognition</li>
+<li>OcrWordsRecognition: Text keyword recognition</li>
+<li>AsrFullTextRecognition: Full speech recognition</li>
+<li>OcrFullTextRecognition: Full text recognition</li>
+<li>TransTextRecognition: Speech translation</li>
         :type Type: str
         :param FaceRecognitionResultSet: Face recognition result, which is valid when `Type` is
 `FaceRecognition`.
@@ -8089,6 +8261,8 @@ class LiveStreamAiRecognitionResultItem(AbstractModel):
         :param OcrFullTextRecognitionResultSet: Full text recognition result, which is valid when `Type` is
 `OcrFullTextRecognition`.
         :type OcrFullTextRecognitionResultSet: list of LiveStreamOcrFullTextRecognitionResult
+        :param TransTextRecognitionResultSet: The translation result. This parameter is valid only if `Type` is `TransTextRecognition`.
+        :type TransTextRecognitionResultSet: list of LiveStreamTransTextRecognitionResult
         """
         self.Type = None
         self.FaceRecognitionResultSet = None
@@ -8096,6 +8270,7 @@ class LiveStreamAiRecognitionResultItem(AbstractModel):
         self.OcrWordsRecognitionResultSet = None
         self.AsrFullTextRecognitionResultSet = None
         self.OcrFullTextRecognitionResultSet = None
+        self.TransTextRecognitionResultSet = None
 
 
     def _deserialize(self, params):
@@ -8130,6 +8305,12 @@ class LiveStreamAiRecognitionResultItem(AbstractModel):
                 obj = LiveStreamOcrFullTextRecognitionResult()
                 obj._deserialize(item)
                 self.OcrFullTextRecognitionResultSet.append(obj)
+        if params.get("TransTextRecognitionResultSet") is not None:
+            self.TransTextRecognitionResultSet = []
+            for item in params.get("TransTextRecognitionResultSet"):
+                obj = LiveStreamTransTextRecognitionResult()
+                obj._deserialize(item)
+                self.TransTextRecognitionResultSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8762,6 +8943,46 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
         self.TopicName = params.get("TopicName")
         self.NotifyType = params.get("NotifyType")
         self.NotifyUrl = params.get("NotifyUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LiveStreamTransTextRecognitionResult(AbstractModel):
+    """The live stream translation result.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Text: The text transcript.
+        :type Text: str
+        :param StartPtsTime: The PTS (seconds) of the start of a segment.
+        :type StartPtsTime: float
+        :param EndPtsTime: The PTS (seconds) of the end of a segment.
+        :type EndPtsTime: float
+        :param Confidence: The confidence score for a segment. Value range: 0-100.
+        :type Confidence: float
+        :param Trans: The translation.
+        :type Trans: str
+        """
+        self.Text = None
+        self.StartPtsTime = None
+        self.EndPtsTime = None
+        self.Confidence = None
+        self.Trans = None
+
+
+    def _deserialize(self, params):
+        self.Text = params.get("Text")
+        self.StartPtsTime = params.get("StartPtsTime")
+        self.EndPtsTime = params.get("EndPtsTime")
+        self.Confidence = params.get("Confidence")
+        self.Trans = params.get("Trans")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10671,6 +10892,8 @@ Default value: black.
         :type FillType: str
         :param Comment: Template description. Length limit: 256 characters.
         :type Comment: str
+        :param Format: The image format. Valid values: jpg, png, webp.
+        :type Format: str
         """
         self.Definition = None
         self.Name = None
@@ -10683,6 +10906,7 @@ Default value: black.
         self.ColumnCount = None
         self.FillType = None
         self.Comment = None
+        self.Format = None
 
 
     def _deserialize(self, params):
@@ -10697,6 +10921,7 @@ Default value: black.
         self.ColumnCount = params.get("ColumnCount")
         self.FillType = params.get("FillType")
         self.Comment = params.get("Comment")
+        self.Format = params.get("Format")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10835,7 +11060,7 @@ Default value: open.
 <li>If `SampleType` is `Percent`, sampling will be performed at an interval of the specified percentage.</li>
 <li>If `SampleType` is `Time`, sampling will be performed at the specified time interval in seconds.</li>
         :type SampleInterval: int
-        :param Format: Image format. Valid values: jpg; png.
+        :param Format: The image format. Valid values: jpg, png, webp.
         :type Format: str
         :param Comment: Template description. Length limit: 256 characters.
         :type Comment: str
@@ -10916,7 +11141,7 @@ class ModifySnapshotByTimeOffsetTemplateRequest(AbstractModel):
 <li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>
 Default value: open.
         :type ResolutionAdaptive: str
-        :param Format: Image format. Valid values: jpg, png.
+        :param Format: The image format. Valid values: jpg, png, webp.
         :type Format: str
         :param Comment: Template description. Length limit: 256 characters.
         :type Comment: str
@@ -11453,6 +11678,8 @@ class OverrideTranscodeParameter(AbstractModel):
         :type AudioTemplate: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfoForUpdate`
         :param TEHDConfig: TESHD transcoding parameter.
         :type TEHDConfig: :class:`tencentcloud.mps.v20190612.models.TEHDConfigForUpdate`
+        :param SubtitleTemplate: The subtitle settings.
+        :type SubtitleTemplate: :class:`tencentcloud.mps.v20190612.models.SubtitleTemplate`
         """
         self.Container = None
         self.RemoveVideo = None
@@ -11460,6 +11687,7 @@ class OverrideTranscodeParameter(AbstractModel):
         self.VideoTemplate = None
         self.AudioTemplate = None
         self.TEHDConfig = None
+        self.SubtitleTemplate = None
 
 
     def _deserialize(self, params):
@@ -11475,6 +11703,9 @@ class OverrideTranscodeParameter(AbstractModel):
         if params.get("TEHDConfig") is not None:
             self.TEHDConfig = TEHDConfigForUpdate()
             self.TEHDConfig._deserialize(params.get("TEHDConfig"))
+        if params.get("SubtitleTemplate") is not None:
+            self.SubtitleTemplate = SubtitleTemplate()
+            self.SubtitleTemplate._deserialize(params.get("SubtitleTemplate"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11599,16 +11830,17 @@ class ParseNotificationResponse(AbstractModel):
 <li>EditMediaTask</li>
 <li>ScheduleTask (scheme)</li>
         :type EventType: str
-        :param WorkflowTaskEvent: Information of a video processing task. This field has a value only when `TaskType` is `WorkflowTask`.
+        :param WorkflowTaskEvent: The information of a video processing task. Information will be returned only if `EventType` is `WorkflowTask`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type WorkflowTaskEvent: :class:`tencentcloud.mps.v20190612.models.WorkflowTask`
-        :param EditMediaTaskEvent: Video editing task information. This field has a value only when `TaskType` is `EditMediaTask`.
+        :param EditMediaTaskEvent: The information of a video editing task. Information will be returned only if `EventType` is `EditMediaTask`.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type EditMediaTaskEvent: :class:`tencentcloud.mps.v20190612.models.EditMediaTask`
         :param SessionId: The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or an empty string is entered, no deduplication will be performed.
         :type SessionId: str
         :param SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
         :type SessionContext: str
-        :param ScheduleTaskEvent: The information of a scheme. This parameter is valid only if `TaskType` is `ScheduleTask`.
+        :param ScheduleTaskEvent: The information of a scheme. Information will be returned only if `EventType` is `ScheduleTask`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ScheduleTaskEvent: :class:`tencentcloud.mps.v20190612.models.ScheduleTask`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
@@ -12353,9 +12585,12 @@ class ProcessMediaRequest(AbstractModel):
         :param SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
         :type SessionContext: str
         :param ScheduleId: The scheme ID.
-Notes: 1. If output information is not specified for a scheme, the request parameters `OutputStorage` and `OutputDir` will be used.
-2. If a notification is not configured for a scheme, the request parameter `TaskNotifyConfig` will be used.
-3. The trigger configured for a scheme is for automatically starting a scheme. It stops working when you manually call this API to start a scheme.
+Note 1: About `OutputStorage` and `OutputDir`
+<li>If an output storage and directory are specified for a subtask of the scheme, those output settings will be applied.</li>
+<li>If an output storage and directory are not specified for the subtasks of a scheme, the output parameters passed in the `ProcessMedia` API will be applied.</li>
+Note 2: If `TaskNotifyConfig` is specified, the specified settings will be used instead of the default callback settings of the scheme.
+
+Note 3: The trigger configured for a scheme is for automatically starting a scheme. It stops working when you manually call this API to start a scheme.
         :type ScheduleId: int
         """
         self.InputInfo = None
@@ -13435,6 +13670,58 @@ Default value: black.
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
         self.FillType = params.get("FillType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubtitleTemplate(AbstractModel):
+    """The subtitle settings.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Path: The URL of the subtitles to add to the video.
+        :type Path: str
+        :param StreamIndex: The subtitle track to add to the video. If both `Path` and `StreamIndex` are specified, `Path` will be used. You need to specify at least one of the two parameters.
+        :type StreamIndex: int
+        :param FontType: The font. Valid values:
+<li>hei.ttf</li>
+<li>song.ttf</li>
+<li>simkai.ttf</li>
+<li>arial.ttf (for English only)</li>
+The default is `hei.ttf`.
+        :type FontType: str
+        :param FontSize: The font size (pixels). If this is not specified, the font size in the subtitle file will be used.
+        :type FontSize: str
+        :param FontColor: The font color in 0xRRGGBB format. Default value: 0xFFFFFF (white).
+        :type FontColor: str
+        :param FontAlpha: The text transparency. Value range: 0-1.
+<li>0: Completely transparent</li>
+<li>1: Completely opaque</li>
+Default value: 1.
+        :type FontAlpha: float
+        """
+        self.Path = None
+        self.StreamIndex = None
+        self.FontType = None
+        self.FontSize = None
+        self.FontColor = None
+        self.FontAlpha = None
+
+
+    def _deserialize(self, params):
+        self.Path = params.get("Path")
+        self.StreamIndex = params.get("StreamIndex")
+        self.FontType = params.get("FontType")
+        self.FontSize = params.get("FontSize")
+        self.FontColor = params.get("FontColor")
+        self.FontAlpha = params.get("FontAlpha")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
