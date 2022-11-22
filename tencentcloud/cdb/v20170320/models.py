@@ -9239,12 +9239,16 @@ class ReloadBalanceProxyNodeRequest(AbstractModel):
         r"""
         :param ProxyGroupId: Proxy group ID
         :type ProxyGroupId: str
+        :param ProxyAddressId: Address ID of the proxy group
+        :type ProxyAddressId: str
         """
         self.ProxyGroupId = None
+        self.ProxyAddressId = None
 
 
     def _deserialize(self, params):
         self.ProxyGroupId = params.get("ProxyGroupId")
+        self.ProxyAddressId = params.get("ProxyAddressId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
