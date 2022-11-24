@@ -5916,6 +5916,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param SupportNamespaceEndpoint: Whether the namespace access point is supported.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type SupportNamespaceEndpoint: bool
+        :param Vpcs: VPC Information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Vpcs: list of VpcConfig
+        :param IsVip: Whether it is an exclusive instance
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsVip: bool
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -5925,6 +5931,8 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.PublicEndPoint = None
         self.VpcEndPoint = None
         self.SupportNamespaceEndpoint = None
+        self.Vpcs = None
+        self.IsVip = None
 
 
     def _deserialize(self, params):
@@ -5936,6 +5944,13 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.PublicEndPoint = params.get("PublicEndPoint")
         self.VpcEndPoint = params.get("VpcEndPoint")
         self.SupportNamespaceEndpoint = params.get("SupportNamespaceEndpoint")
+        if params.get("Vpcs") is not None:
+            self.Vpcs = []
+            for item in params.get("Vpcs"):
+                obj = VpcConfig()
+                obj._deserialize(item)
+                self.Vpcs.append(obj)
+        self.IsVip = params.get("IsVip")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6992,6 +7007,34 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Ip = params.get("Ip")
         self.Port = params.get("Port")
         self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VpcConfig(AbstractModel):
+    """VPC configuration information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VpcId: VPC ID
+        :type VpcId: str
+        :param SubnetId: Subnet ID
+        :type SubnetId: str
+        """
+        self.VpcId = None
+        self.SubnetId = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

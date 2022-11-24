@@ -2675,16 +2675,24 @@ class RestartNodesRequest(AbstractModel):
         :type NodeNames: list of str
         :param ForceRestart: Whether to force restart
         :type ForceRestart: bool
+        :param RestartMode: The restart mode. Valid values: `in-place` (default), `blue-green`.
+        :type RestartMode: str
+        :param IsOffline: The node status, applicable in the blue/green mode. The blue/green restart is risky if the node is offline.
+        :type IsOffline: bool
         """
         self.InstanceId = None
         self.NodeNames = None
         self.ForceRestart = None
+        self.RestartMode = None
+        self.IsOffline = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.NodeNames = params.get("NodeNames")
         self.ForceRestart = params.get("ForceRestart")
+        self.RestartMode = params.get("RestartMode")
+        self.IsOffline = params.get("IsOffline")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
