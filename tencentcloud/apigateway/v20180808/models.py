@@ -1296,6 +1296,87 @@ class AttachedApiSummary(AbstractModel):
         
 
 
+class AttachedPluginInfo(AbstractModel):
+    """Information of bound plug-ins
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PluginId: Plugin ID
+        :type PluginId: str
+        :param Environment: Environment information
+        :type Environment: str
+        :param AttachedTime: Binding time
+        :type AttachedTime: str
+        :param PluginName: Plugin name
+        :type PluginName: str
+        :param PluginType: Plugin type
+        :type PluginType: str
+        :param Description: Plugin description
+        :type Description: str
+        :param PluginData: Plugin definition statement
+        :type PluginData: str
+        """
+        self.PluginId = None
+        self.Environment = None
+        self.AttachedTime = None
+        self.PluginName = None
+        self.PluginType = None
+        self.Description = None
+        self.PluginData = None
+
+
+    def _deserialize(self, params):
+        self.PluginId = params.get("PluginId")
+        self.Environment = params.get("Environment")
+        self.AttachedTime = params.get("AttachedTime")
+        self.PluginName = params.get("PluginName")
+        self.PluginType = params.get("PluginType")
+        self.Description = params.get("Description")
+        self.PluginData = params.get("PluginData")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AttachedPluginSummary(AbstractModel):
+    """Information of bound plug-ins
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Total number of bound plug-ins
+        :type TotalCount: int
+        :param PluginSummary: Information of bound plug-ins
+        :type PluginSummary: list of AttachedPluginInfo
+        """
+        self.TotalCount = None
+        self.PluginSummary = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("PluginSummary") is not None:
+            self.PluginSummary = []
+            for item in params.get("PluginSummary"):
+                obj = AttachedPluginInfo()
+                obj._deserialize(item)
+                self.PluginSummary.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AvailableApiInfo(AbstractModel):
     """Information of the APIs that can use this plugin
 
@@ -4233,7 +4314,7 @@ class DescribeApisStatusRequest(AbstractModel):
         :type Offset: int
         :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
         :type Limit: int
-        :param Filters: API filter. Valid values: ApiId, ApiName, ApiPath, ApiType, AuthRelationApiId, AuthType, ApiBuniessType, NotUsagePlanId, Environment, Tags (whose values are the list of `$tag_key:tag_value`), TagKeys (whose values are the list of tag keys).
+        :param Filters: API filter. Valid values: `ApiId`, `ApiName`, `ApiPath`, `ApiType`, `AuthRelationApiId`, `AuthType`, `ApiBuniessType`, `NotUsagePlanId`, `Environment`, `Tags` (whose values are the list of `$tag_key:tag_value`), `TagKeys` (whose values are the list of tag keys). Note that `NotUsagePlanId` and `Environment` must be used in the same time.
         :type Filters: list of Filter
         """
         self.ServiceId = None
@@ -4725,6 +4806,69 @@ class DescribePluginResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Result") is not None:
             self.Result = Plugin()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePluginsByApiRequest(AbstractModel):
+    """DescribePluginsByApi request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApiId: ID of the API to query
+        :type ApiId: str
+        :param ServiceId: ID of the service to query
+        :type ServiceId: str
+        :param EnvironmentName: Environment information
+        :type EnvironmentName: str
+        :param Limit: Number of returned results. Default value: 20. Maximum value: 100
+        :type Limit: int
+        :param Offset: Offset. Default value: 0
+        :type Offset: int
+        """
+        self.ApiId = None
+        self.ServiceId = None
+        self.EnvironmentName = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.ApiId = params.get("ApiId")
+        self.ServiceId = params.get("ServiceId")
+        self.EnvironmentName = params.get("EnvironmentName")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePluginsByApiResponse(AbstractModel):
+    """DescribePluginsByApi response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: List of plug-ins bound with the API
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.AttachedPluginSummary`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = AttachedPluginSummary()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
 

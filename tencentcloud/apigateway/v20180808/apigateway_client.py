@@ -1401,6 +1401,35 @@ class ApigatewayClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePluginsByApi(self, request):
+        """This API is used to query all plug-ins bound with the API.
+
+        :param request: Request instance for DescribePluginsByApi.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribePluginsByApiRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.DescribePluginsByApiResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePluginsByApi", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePluginsByApiResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeService(self, request):
         """This API is used to query the details of a service, such as its description, domain name, protocol, creation time, and releases.
 
