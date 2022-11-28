@@ -6451,6 +6451,12 @@ Default value: 0.
 <li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>
 Default value: open.
         :type ResolutionAdaptive: str
+        :param Format: The image format. Valid values:
+<li> jpg</li>
+<li> png</li>
+<li> webp</li>
+Default: jpg
+        :type Format: str
         """
         self.SampleType = None
         self.SampleInterval = None
@@ -6463,6 +6469,7 @@ Default value: open.
         self.Width = None
         self.Height = None
         self.ResolutionAdaptive = None
+        self.Format = None
 
 
     def _deserialize(self, params):
@@ -6477,6 +6484,7 @@ Default value: open.
         self.Width = params.get("Width")
         self.Height = params.get("Height")
         self.ResolutionAdaptive = params.get("ResolutionAdaptive")
+        self.Format = params.get("Format")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12193,6 +12201,8 @@ Default value: black.
         :type FillType: str
         :param Comment: Template description.
         :type Comment: str
+        :param Format: The image format.
+        :type Format: str
         """
         self.Definition = None
         self.Type = None
@@ -12208,6 +12218,7 @@ Default value: black.
         self.UpdateTime = None
         self.FillType = None
         self.Comment = None
+        self.Format = None
 
 
     def _deserialize(self, params):
@@ -12225,6 +12236,7 @@ Default value: black.
         self.UpdateTime = params.get("UpdateTime")
         self.FillType = params.get("FillType")
         self.Comment = params.get("Comment")
+        self.Format = params.get("Format")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -15725,6 +15737,11 @@ Default value: black.
         :type FillType: str
         :param Comment: Template description. Length limit: 256 characters.
         :type Comment: str
+        :param Format: The image format. Valid values:
+<li> jpg</li>
+<li> png</li>
+<li> webp</li>
+        :type Format: str
         """
         self.Definition = None
         self.SubAppId = None
@@ -15738,6 +15755,7 @@ Default value: black.
         self.ColumnCount = None
         self.FillType = None
         self.Comment = None
+        self.Format = None
 
 
     def _deserialize(self, params):
@@ -15753,6 +15771,7 @@ Default value: black.
         self.ColumnCount = params.get("ColumnCount")
         self.FillType = params.get("FillType")
         self.Comment = params.get("Comment")
+        self.Format = params.get("Format")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -15807,7 +15826,7 @@ class ModifyMediaInfoRequest(AbstractModel):
         :param ClearKeyFrameDescs: The value `1` indicates to delete all timestamps in the video. Other values are meaningless.
 In the same request, `ClearKeyFrameDescs` and `AddKeyFrameDescs` cannot be present at the same time.
         :type ClearKeyFrameDescs: int
-        :param AddTags: Set of tags to be added. Up to 16 tags can be added to one media file, and one tag can contain up to 16 characters. In the same request, the parameters of `AddTags` must be different from those of `DeleteTags`.
+        :param AddTags: The tags to add. Each file can have up to 16 tags. A tag can contain at most 32 characters. You cannot include the same tag in `AddTags` and `DeleteTags` at the same time.
         :type AddTags: list of str
         :param DeleteTags: Set of tags to be deleted. In the same request, the parameters of `AddTags` must be different from those of `DeleteTags`.
         :type DeleteTags: list of str
@@ -18700,7 +18719,7 @@ For more information about supported extensions, see [Media types](https://intl.
         :type SubAppId: int
         :param MediaName: Media name.
         :type MediaName: str
-        :param CoverUrl: URL of video cover to be pulled. Only gif, jpeg, and png formats are supported.
+        :param CoverUrl: The URL of the video to pull. Supported formats include GIF, JPEG (JPG), and PNG.
         :type CoverUrl: str
         :param Procedure: Subsequent task for media. For more information, please see [Specifying Task Flow After Upload](https://intl.cloud.tencent.com/document/product/266/9759?from_cn_redirect=1).
         :type Procedure: str
