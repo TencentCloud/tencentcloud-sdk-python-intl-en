@@ -62,23 +62,110 @@ INTERNALERROR_QUOTASYSTEM = 'InternalError.QuotaSystem'
 # The backend routing address is incorrect.
 INTERNALERROR_ROUTEERROR = 'InternalError.RouteError'
 
-# System error.
+# Internal system error.
 INTERNALERROR_SYSTEMERROR = 'InternalError.SystemError'
 
 # Parameter error.
 INVALIDPARAMETER = 'InvalidParameter'
 
-# 
+# Too many attempts. Please try again later.
 INVALIDPARAMETER_ACTIONINPROGRESS = 'InvalidParameter.ActionInProgress'
+
+# HTTPS certificate chain error.
+INVALIDPARAMETER_CERTCHAINERROR = 'InvalidParameter.CertChainError'
+
+# Certificate error.
+INVALIDPARAMETER_CERTCHECKERROR = 'InvalidParameter.CertCheckError'
+
+# Certificate error.
+INVALIDPARAMETER_CERTCOMPLETEERROR = 'InvalidParameter.CertCompleteError'
+
+# Certificate error.
+INVALIDPARAMETER_CERTFORMATERROR = 'InvalidParameter.CertFormatError'
+
+# The HTTPS certificate has expired.
+INVALIDPARAMETER_CERTISEXPIRED = 'InvalidParameter.CertIsExpired'
+
+# Certificate error.
+INVALIDPARAMETER_CERTNOCN = 'InvalidParameter.CertNoCn'
+
+# Invalid HTTPS certificate.
+INVALIDPARAMETER_CERTNOINFO = 'InvalidParameter.CertNoInfo'
+
+# Mismatch between the HTTPS certificate and the domain name.
+INVALIDPARAMETER_CERTNOTMATCHDOMAIN = 'InvalidParameter.CertNotMatchDomain'
+
+# Mismatch between the HTTPS certificate and the key.
+INVALIDPARAMETER_CERTNOTMATCHKEY = 'InvalidParameter.CertNotMatchKey'
+
+# Certificate error.
+INVALIDPARAMETER_CERTNOTPEM = 'InvalidParameter.CertNotPem'
+
+# Internal error.
+INVALIDPARAMETER_CERTSYSTEMERROR = 'InvalidParameter.CertSystemError'
+
+# The HTTPS certificate is about to expire.
+INVALIDPARAMETER_CERTTOEXPIRE = 'InvalidParameter.CertToExpire'
+
+# Certificate error.
+INVALIDPARAMETER_CERTTOOSHORTKEYSIZE = 'InvalidParameter.CertTooShortKeySize'
+
+# Certificate error.
+INVALIDPARAMETER_CERTUNSUPPORTEDTYPE = 'InvalidParameter.CertUnsupportedType'
 
 # The domain name does not exist or is not belong to this account.
 INVALIDPARAMETER_DOMAINNOTFOUND = 'InvalidParameter.DomainNotFound'
 
+# Traffic scheduling is enabled for the current domain name.
+INVALIDPARAMETER_DOMAINONTRAFFICSCHEDULING = 'InvalidParameter.DomainOnTrafficScheduling'
+
+# Invalid operation.
+INVALIDPARAMETER_ERRINVALIDACTION = 'InvalidParameter.ErrInvalidAction'
+
+# Invalid operation: Invalid parameter.
+INVALIDPARAMETER_ERRINVALIDACTIONPARAM = 'InvalidParameter.ErrInvalidActionParam'
+
+# Invalid parameter: Duplicate parameter names.
+INVALIDPARAMETER_ERRINVALIDACTIONPARAMDUPLICATENAME = 'InvalidParameter.ErrInvalidActionParamDuplicateName'
+
+# Invalid parameter: The parameter has too many values.
+INVALIDPARAMETER_ERRINVALIDACTIONPARAMTOOMANYVALUES = 'InvalidParameter.ErrInvalidActionParamTooManyValues'
+
 # 
+INVALIDPARAMETER_ERRINVALIDACTIONTYPE = 'InvalidParameter.ErrInvalidActionType'
+
+# Invalid condition: The letter case is ignored.
+INVALIDPARAMETER_ERRINVALIDCONDITIONIGNORECASE = 'InvalidParameter.ErrInvalidConditionIgnoreCase'
+
+# Invalid condition: The match type is not supported by this parameter.
+INVALIDPARAMETER_ERRINVALIDCONDITIONNAMETARGETNOTSUPPORTNAME = 'InvalidParameter.ErrInvalidConditionNameTargetNotSupportName'
+
+# Invalid condition: The parameter value is invalid.
+INVALIDPARAMETER_ERRINVALIDCONDITIONVALUEBADVALUE = 'InvalidParameter.ErrInvalidConditionValueBadValue'
+
+# Invalid parameter value: File extension is not allowed.
+INVALIDPARAMETER_ERRINVALIDCONDITIONVALUEBADVALUECONTAINFILENAMEEXTENSION = 'InvalidParameter.ErrInvalidConditionValueBadValueContainFileNameExtension'
+
+# Invalid condition: The parameter value exceeds the limit.
+INVALIDPARAMETER_ERRINVALIDCONDITIONVALUETOOLONGVALUE = 'InvalidParameter.ErrInvalidConditionValueTooLongValue'
+
+# 
+INVALIDPARAMETER_ERRINVALIDCONDITIONVALUEZEROLENGTH = 'InvalidParameter.ErrInvalidConditionValueZeroLength'
+
+# The domain name does not exist.
 INVALIDPARAMETER_HOSTNOTFOUND = 'InvalidParameter.HostNotFound'
 
 # 
+INVALIDPARAMETER_INVALIDAUTHENTICATION = 'InvalidParameter.InvalidAuthentication'
+
+# Invalid token authentication parameter.
 INVALIDPARAMETER_INVALIDAUTHENTICATIONTYPESIGNPARAM = 'InvalidParameter.InvalidAuthenticationTypeSignParam'
+
+# Invalid cache key.
+INVALIDPARAMETER_INVALIDCACHEKEY = 'InvalidParameter.InvalidCacheKey'
+
+# Invalid query string.
+INVALIDPARAMETER_INVALIDCACHEKEYQUERYSTRINGVALUE = 'InvalidParameter.InvalidCacheKeyQueryStringValue'
 
 # Invalid node cache.
 INVALIDPARAMETER_INVALIDCACHEONLYONSWITCH = 'InvalidParameter.InvalidCacheOnlyOnSwitch'
@@ -89,20 +176,32 @@ INVALIDPARAMETER_INVALIDCERTINFO = 'InvalidParameter.InvalidCertInfo'
 # Invalid client IP request header.
 INVALIDPARAMETER_INVALIDCLIENTIPHEADERNAME = 'InvalidParameter.InvalidClientIpHeaderName'
 
-# 
+# Invalid smart acceleration.
 INVALIDPARAMETER_INVALIDDYNAMICROUTINE = 'InvalidParameter.InvalidDynamicRoutine'
 
-# 
+# Invalid custom error page.
 INVALIDPARAMETER_INVALIDERRORPAGEREDIRECTURL = 'InvalidParameter.InvalidErrorPageRedirectUrl'
+
+# Invalid HTTPS HSTS.
+INVALIDPARAMETER_INVALIDHTTPSHSTSMAXAGE = 'InvalidParameter.InvalidHttpsHstsMaxAge'
+
+# Invalid HTTPS TLS version.
+INVALIDPARAMETER_INVALIDHTTPSTLSVERSION = 'InvalidParameter.InvalidHttpsTlsVersion'
+
+# Invalid IPv6 settings.
+INVALIDPARAMETER_INVALIDIPV6SWITCH = 'InvalidParameter.InvalidIpv6Switch'
 
 # Invalid origin server.
 INVALIDPARAMETER_INVALIDORIGIN = 'InvalidParameter.InvalidOrigin'
 
-# 
+# Invalid parameter.
 INVALIDPARAMETER_INVALIDPARAMETER = 'InvalidParameter.InvalidParameter'
 
 # The speciThe plan does not support limiting the max upload size.
 INVALIDPARAMETER_INVALIDPOSTMAXSIZEBILLING = 'InvalidParameter.InvalidPostMaxSizeBilling'
+
+# Invalid POST request size.
+INVALIDPARAMETER_INVALIDPOSTSIZEVALUE = 'InvalidParameter.InvalidPostSizeValue'
 
 # Invalid request header.
 INVALIDPARAMETER_INVALIDREQUESTHEADERNAME = 'InvalidParameter.InvalidRequestHeaderName'
@@ -110,22 +209,31 @@ INVALIDPARAMETER_INVALIDREQUESTHEADERNAME = 'InvalidParameter.InvalidRequestHead
 # You have not purchased a plan yet.
 INVALIDPARAMETER_INVALIDRESOURCEIDBILLING = 'InvalidParameter.InvalidResourceIdBilling'
 
-# 
+# Invalid response header.
+INVALIDPARAMETER_INVALIDRESPONSEHEADERNAME = 'InvalidParameter.InvalidResponseHeaderName'
+
+# Invalid rule engine settings.
+INVALIDPARAMETER_INVALIDRULEENGINE = 'InvalidParameter.InvalidRuleEngine'
+
+# Invalid rule engine operation.
 INVALIDPARAMETER_INVALIDRULEENGINEACTION = 'InvalidParameter.InvalidRuleEngineAction'
 
-# 
+# The rule does not exist.
 INVALIDPARAMETER_INVALIDRULEENGINENOTFOUND = 'InvalidParameter.InvalidRuleEngineNotFound'
 
-# 
+# Invalid rule engine condition.
 INVALIDPARAMETER_INVALIDRULEENGINETARGET = 'InvalidParameter.InvalidRuleEngineTarget'
 
-# 
+# Invalid file extension in the rule engine condition.
 INVALIDPARAMETER_INVALIDRULEENGINETARGETSEXTENSION = 'InvalidParameter.InvalidRuleEngineTargetsExtension'
 
-# 
+# Invalid URL in the rule engine condition.
 INVALIDPARAMETER_INVALIDRULEENGINETARGETSURL = 'InvalidParameter.InvalidRuleEngineTargetsUrl'
 
-# 
+# Invalid origin domain.
+INVALIDPARAMETER_INVALIDSERVERNAME = 'InvalidParameter.InvalidServerName'
+
+# Invalid target host in the URL rewriting rule.
 INVALIDPARAMETER_INVALIDURLREDIRECTHOST = 'InvalidParameter.InvalidUrlRedirectHost'
 
 # The target URL for URL rewrite is invalid.
@@ -134,13 +242,22 @@ INVALIDPARAMETER_INVALIDURLREDIRECTURL = 'InvalidParameter.InvalidUrlRedirectUrl
 # Invalid WebSocket.
 INVALIDPARAMETER_INVALIDWEBSOCKETTIMEOUT = 'InvalidParameter.InvalidWebSocketTimeout'
 
+# Invalid cache key.
+INVALIDPARAMETER_KEYRULESINVALIDQUERYSTRINGVALUE = 'InvalidParameter.KeyRulesInvalidQueryStringValue'
+
+# Maximum parameter length exceeded.
+INVALIDPARAMETER_LENGTHEXCEEDSLIMIT = 'InvalidParameter.LengthExceedsLimit'
+
 # Parameter error.
 INVALIDPARAMETER_PARAMETERERROR = 'InvalidParameter.ParameterError'
+
+# The plan doesn’t exist.
+INVALIDPARAMETER_PLANNOTFOUND = 'InvalidParameter.PlanNotFound'
 
 # Invalid parameter.
 INVALIDPARAMETER_SECURITY = 'InvalidParameter.Security'
 
-# Incorrect domain name configuration.
+# Configuration parameter error.
 INVALIDPARAMETER_SETTINGINVALIDPARAM = 'InvalidParameter.SettingInvalidParam'
 
 # Resource error
@@ -152,8 +269,14 @@ INVALIDPARAMETER_TASKNOTGENERATED = 'InvalidParameter.TaskNotGenerated'
 # Invalid file upload link.
 INVALIDPARAMETER_UPLOADURL = 'InvalidParameter.UploadUrl'
 
+# The site is already bound.
+INVALIDPARAMETER_ZONEHASBEENBOUND = 'InvalidParameter.ZoneHasBeenBound'
+
 # The site does not exist.
 INVALIDPARAMETER_ZONENOTFOUND = 'InvalidParameter.ZoneNotFound'
+
+# Invalid parameter value.
+INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
 # It conflicts with existing records.
 INVALIDPARAMETERVALUE_CONFLICTRECORD = 'InvalidParameterValue.ConflictRecord'
@@ -172,6 +295,9 @@ INVALIDPARAMETERVALUE_INVALIDDNSCONTENT = 'InvalidParameterValue.InvalidDNSConte
 
 # Incorrect DNS CNAME
 INVALIDPARAMETERVALUE_INVALIDDNSNAME = 'InvalidParameterValue.InvalidDNSName'
+
+# Invalid domain name. Please check the status.
+INVALIDPARAMETERVALUE_INVALIDDOMAINSTATUS = 'InvalidParameterValue.InvalidDomainStatus'
 
 # Incorrect DNS proxied domain name.
 INVALIDPARAMETERVALUE_INVALIDPROXYNAME = 'InvalidParameterValue.InvalidProxyName'
@@ -194,10 +320,13 @@ LIMITEXCEEDED_BATCHQUOTA = 'LimitExceeded.BatchQuota'
 # Reached the daily upper limit of resource number
 LIMITEXCEEDED_DAILYQUOTA = 'LimitExceeded.DailyQuota'
 
+# Reached the API rate limit.
+LIMITEXCEEDED_RATELIMITEXCEEDED = 'LimitExceeded.RateLimitExceeded'
+
 # Operation denied.
 OPERATIONDENIED = 'OperationDenied'
 
-# 
+# Unable to use the domain name when it’s blocked.
 OPERATIONDENIED_DOMAINISBLOCKED = 'OperationDenied.DomainIsBlocked'
 
 # The domain name doesn't have an ICP filing number.
@@ -207,43 +336,58 @@ OPERATIONDENIED_DOMAINNOICP = 'OperationDenied.DomainNoICP'
 OPERATIONDENIED_L4PROXYINBANNEDSTATUS = 'OperationDenied.L4ProxyInBannedStatus'
 
 # 
+OPERATIONDENIED_L4STATUSNOTINONLINE = 'OperationDenied.L4StatusNotInOnline'
+
+# Unable to switch to NS for multiple sites using CNAME.
 OPERATIONDENIED_MULTIPLECNAMEZONE = 'OperationDenied.MultipleCnameZone'
+
+# Domain traffic scheduling is not supported in NS access mode.
+OPERATIONDENIED_NSNOTALLOWTRAFFICSTRATEGY = 'OperationDenied.NSNotAllowTrafficStrategy'
 
 # The resource is occupied.
 RESOURCEINUSE = 'ResourceInUse'
 
-# 
+# Resources occupied by the alias domain names under this account.
 RESOURCEINUSE_ALIASDOMAIN = 'ResourceInUse.AliasDomain'
 
-# 
+# Resources occupied by this account via CNAME.
 RESOURCEINUSE_CNAME = 'ResourceInUse.Cname'
 
-# 
+# DNS resources occupied.
 RESOURCEINUSE_DNS = 'ResourceInUse.Dns'
 
-# 
+# Duplicate alias domain names.
+RESOURCEINUSE_DUPLICATENAME = 'ResourceInUse.DuplicateName'
+
+# Resources occupied by the wildcard domain name.
+RESOURCEINUSE_GENERICHOST = 'ResourceInUse.GenericHost'
+
+# Resources occupied by the subdomain names under this account.
 RESOURCEINUSE_HOST = 'ResourceInUse.Host'
 
-# 
+# Resources occupied by this account via NS.
 RESOURCEINUSE_NS = 'ResourceInUse.NS'
 
 # The resource has been connected to EdgeOne by another user.
 RESOURCEINUSE_OTHERS = 'ResourceInUse.Others'
 
-# 
+# Resources occupied by the alias domain names under other accounts.
 RESOURCEINUSE_OTHERSALIASDOMAIN = 'ResourceInUse.OthersAliasDomain'
 
-# 
+# Resources occupied by other accounts via CNAME.
 RESOURCEINUSE_OTHERSCNAME = 'ResourceInUse.OthersCname'
 
-# 
+# Resources occupied by the subdomain names under other accounts.
 RESOURCEINUSE_OTHERSHOST = 'ResourceInUse.OthersHost'
 
-# 
+# Resources occupied by other accounts via NS.
 RESOURCEINUSE_OTHERSNS = 'ResourceInUse.OthersNS'
 
-# 
+# Resources occupied by this account and others via CNAME.
 RESOURCEINUSE_SELFANDOTHERSCNAME = 'ResourceInUse.SelfAndOthersCname'
+
+# The alias domain name is already added.
+RESOURCEINUSE_ZONE = 'ResourceInUse.Zone'
 
 # Insufficient resource.
 RESOURCEINSUFFICIENT = 'ResourceInsufficient'
