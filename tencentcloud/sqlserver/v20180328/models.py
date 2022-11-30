@@ -284,7 +284,7 @@ class Backup(AbstractModel):
         :type DBs: list of str
         :param Strategy: Backup policy (0: instance backup, 1: multi-database backup)
         :type Strategy: int
-        :param BackupWay: Backup mode. 0: scheduled, 1: manual
+        :param BackupWay: Backup Mode. Valid values: `0` (scheduled backup); `1` (manual backup); `2` (archive backup).
         :type BackupWay: int
         :param BackupName: Backup task name (customizable)
         :type BackupName: str
@@ -982,7 +982,7 @@ class CreateDBInstancesRequest(AbstractModel):
         :type AutoVoucher: int
         :param VoucherIds: Array of voucher IDs (currently, only one voucher can be used per order)
         :type VoucherIds: list of str
-        :param DBVersion: SQL Server version. Valid values: 2008R2 (SQL Server 2008 Enterprise), 2012SP3 (SQL Server 2012 Enterprise), 2016SP1 (SQL Server 2016 Enterprise), 201602 (SQL Server 2016 Standard), 2017 (SQL Server 2017 Enterprise). The version purchasable varies by region and can be queried by calling the `DescribeProductConfig` API. If this parameter is left empty, 2008R2 will be used by default.
+        :param DBVersion: SQL Server version. Valid values: `2008R2` (SQL Server 2008 R2 Enterprise), `2012SP3` (SQL Server 2012 Enterprise), `201202` (SQL Server 2012 Standard), `2014SP2` (SQL Server 2014 Enterprise), 201402 (SQL Server 2014 Standard), `2016SP1` (SQL Server 2016 Enterprise), `201602` (SQL Server 2016 Standard), `2017` (SQL Server 2017 Enterprise), `201702` (SQL Server 2017 Standard), `2019` (SQL Server 2019 Enterprise), `201902` (SQL Server 2019 Standard). Default value: `2008R2`. The available version varies by region, and you can pull the version information by calling the `DescribeProductConfig` API.
         :type DBVersion: str
         :param AutoRenewFlag: Auto-renewal flag. 0: normal renewal, 1: auto-renewal. Default value: 1.
         :type AutoRenewFlag: int
@@ -2571,7 +2571,7 @@ class DescribeBackupsRequest(AbstractModel):
         :type BackupName: str
         :param Strategy: Filter by backup policy. Valid values: 0 (instance backup), 1 (multi-database backup). If this parameter is left empty, backup policy will not be used in filtering.
         :type Strategy: int
-        :param BackupWay: Filter by backup mode. Valid values: 0 (automatic backup on a regular basis), 1 (manual backup performed by the user at any time). If this parameter is left empty, backup mode will not be used in filtering.
+        :param BackupWay: Filter by backup mode. Valid values: `0` (scheduled backup); `1` (manual backup); `2` (archive backup). Default value: `2`.
         :type BackupWay: int
         :param BackupId: Filter by backup ID. If this parameter is left empty, backup ID will not be used in filtering.
         :type BackupId: int
@@ -4810,6 +4810,16 @@ class ModifyBackupStrategyRequest(AbstractModel):
         :type BackupCycle: list of int non-negative
         :param BackupSaveDays: Data (log) backup retention period. Value range: 3-1830 days, default value: 7 days.
         :type BackupSaveDays: int
+        :param RegularBackupEnable: Archive backup status. Valid values: `enable` (enabled); `disable` (disabled). Default value: `disable`.
+        :type RegularBackupEnable: str
+        :param RegularBackupSaveDays: Archive backup retention days. Value range: 90–3650 days. Default value: 365 days.
+        :type RegularBackupSaveDays: int
+        :param RegularBackupStrategy: Archive backup policy. Valid values: `years` (yearly); `quarters (quarterly); `months` (monthly); Default value: `months`.
+        :type RegularBackupStrategy: str
+        :param RegularBackupCounts: The number of retained archive backups. Default value: `1`.
+        :type RegularBackupCounts: int
+        :param RegularBackupStartTime: Archive backup start date in YYYY-MM-DD format, which is the current time by default.
+        :type RegularBackupStartTime: str
         """
         self.InstanceId = None
         self.BackupType = None
@@ -4818,6 +4828,11 @@ class ModifyBackupStrategyRequest(AbstractModel):
         self.BackupModel = None
         self.BackupCycle = None
         self.BackupSaveDays = None
+        self.RegularBackupEnable = None
+        self.RegularBackupSaveDays = None
+        self.RegularBackupStrategy = None
+        self.RegularBackupCounts = None
+        self.RegularBackupStartTime = None
 
 
     def _deserialize(self, params):
@@ -4828,6 +4843,11 @@ class ModifyBackupStrategyRequest(AbstractModel):
         self.BackupModel = params.get("BackupModel")
         self.BackupCycle = params.get("BackupCycle")
         self.BackupSaveDays = params.get("BackupSaveDays")
+        self.RegularBackupEnable = params.get("RegularBackupEnable")
+        self.RegularBackupSaveDays = params.get("RegularBackupSaveDays")
+        self.RegularBackupStrategy = params.get("RegularBackupStrategy")
+        self.RegularBackupCounts = params.get("RegularBackupCounts")
+        self.RegularBackupStartTime = params.get("RegularBackupStartTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

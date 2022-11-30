@@ -5964,14 +5964,19 @@ class ProxyNodes(AbstractModel):
     def __init__(self):
         r"""
         :param NodeId: Node ID
-Note: This field may return `null`, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type NodeId: str
+        :param ZoneId: AZ ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ZoneId: int
         """
         self.NodeId = None
+        self.ZoneId = None
 
 
     def _deserialize(self, params):
         self.NodeId = params.get("NodeId")
+        self.ZoneId = params.get("ZoneId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6329,18 +6334,22 @@ class RenewInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Period: Length of purchase in months
+        :param Period: Validity period in months
         :type Period: int
         :param InstanceId: Instance ID
         :type InstanceId: str
+        :param ModifyPayMode: The parameter used to determine whether to modify the billing mode. <ul><li>If you want to change the billing mode from pay-as-you-go to monthly subscription, specify this parameter as <b>prepaid</b>. </li><li>If the current instance is monthly subscribed, this parameter is not required. </li></ul>
+        :type ModifyPayMode: str
         """
         self.Period = None
         self.InstanceId = None
+        self.ModifyPayMode = None
 
 
     def _deserialize(self, params):
         self.Period = params.get("Period")
         self.InstanceId = params.get("InstanceId")
+        self.ModifyPayMode = params.get("ModifyPayMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7121,15 +7130,15 @@ class UpgradeInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance ID
+        :param InstanceId: The ID of instance to be modified.
         :type InstanceId: str
-        :param MemSize: Shard size in MB. This parameter cannot be passed in at the same time as `RedisShardNum`/`RedisReplicasNum`.
+        :param MemSize: New memory size of an instance shard. <ul><li>Unit: MB. </li><li>You can only modify one of the three parameters at a time: `MemSize`, `RedisShardNum`, and `RedisReplicasNum`. To modify one of them, you need to enter the other two, which are consistent with the original configuration specifications of the instance. </li></ul>
         :type MemSize: int
-        :param RedisShardNum: Number of shards. This parameter is not required by standard architecture instances and cannot be passed in at the same time as `RedisReplicasNum`/`MemSize`.
+        :param RedisShardNum: New number of instance shards. <ul><li>This parameter is not required for standard architecture instances, but for cluster architecture instances. </li><li>For cluster architecture, you can only modify one of the three parameters at a time: `MemSize`, `RedisShardNum`, and `RedisReplicasNum`. To modify one of them, you need to enter the other two, which are consistent with the original configuration specifications of the instance. </li></ul>
         :type RedisShardNum: int
-        :param RedisReplicasNum: Number of replicas. This parameter cannot be passed in at the same time as `RedisShardNum`/`MemSize`. To modify the number of replicas in a multi-AZ instance, `NodeSet` must be passed in.
+        :param RedisReplicasNum: New replica quantity. <ul><li>You can only modify one of the three parameters at a time: `MemSize`, `RedisShardNum`, and `RedisReplicasNum`. To modify one of them, you need to enter the other two, which are consistent with the original configuration specifications of the instance. </li></ul>To modify the number of replicas in a multi-AZ instance, `NodeSet` must be passed in.</li></ul>
         :type RedisReplicasNum: int
-        :param NodeSet: Additional information for adding replicas for multi-AZ instances. This parameter is not required for single-AZ instances but is required when adding replicas for multi-AZ instances. It contains the information of the replicas to be added, including replica AZ and type (`NodeType` is 1).
+        :param NodeSet: Additional information for adding replicas for multi-AZ instances, including replica AZ and type (`NodeType` is `1`). This parameter is not required for single-AZ instances.
         :type NodeSet: list of RedisNodeInfo
         """
         self.InstanceId = None
