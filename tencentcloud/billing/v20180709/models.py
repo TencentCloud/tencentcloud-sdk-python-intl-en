@@ -681,6 +681,54 @@ class BusinessSummaryTotal(AbstractModel):
         
 
 
+class CosDetailSets(AbstractModel):
+    """Information about the data structure of the returned COS usage details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BucketName: Bucket name
+        :type BucketName: str
+        :param DosageBeginTime: The start time of the usage
+        :type DosageBeginTime: str
+        :param DosageEndTime: The end time of the usage
+        :type DosageEndTime: str
+        :param SubProductCodeName: Sub-product name
+        :type SubProductCodeName: str
+        :param BillingItemCodeName: Billable item name
+        :type BillingItemCodeName: str
+        :param DosageValue: Usage
+        :type DosageValue: str
+        :param Unit: Unit of the billable item
+        :type Unit: str
+        """
+        self.BucketName = None
+        self.DosageBeginTime = None
+        self.DosageEndTime = None
+        self.SubProductCodeName = None
+        self.BillingItemCodeName = None
+        self.DosageValue = None
+        self.Unit = None
+
+
+    def _deserialize(self, params):
+        self.BucketName = params.get("BucketName")
+        self.DosageBeginTime = params.get("DosageBeginTime")
+        self.DosageEndTime = params.get("DosageEndTime")
+        self.SubProductCodeName = params.get("SubProductCodeName")
+        self.BillingItemCodeName = params.get("BillingItemCodeName")
+        self.DosageValue = params.get("DosageValue")
+        self.Unit = params.get("Unit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeAccountBalanceRequest(AbstractModel):
     """DescribeAccountBalance request structure.
 
@@ -1332,6 +1380,64 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         if params.get("SummaryTotal") is not None:
             self.SummaryTotal = SummaryTotal()
             self.SummaryTotal._deserialize(params.get("SummaryTotal"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDosageCosDetailByDateRequest(AbstractModel):
+    """DescribeDosageCosDetailByDate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartDate: The start date of the usage query
+        :type StartDate: str
+        :param EndDate: The end date of the usage query (end date must be in the same month as the start date)
+        :type EndDate: str
+        :param BucketName: Bucket name. You can use `Get Service` to query the list of all buckets under a requester account. For details, see [GET Service (List Buckets)](https://www.tencentcloud.com/document/product/436/8291).
+        :type BucketName: str
+        """
+        self.StartDate = None
+        self.EndDate = None
+        self.BucketName = None
+
+
+    def _deserialize(self, params):
+        self.StartDate = params.get("StartDate")
+        self.EndDate = params.get("EndDate")
+        self.BucketName = params.get("BucketName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDosageCosDetailByDateResponse(AbstractModel):
+    """DescribeDosageCosDetailByDate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DetailSets: Array of usage
+        :type DetailSets: list of CosDetailSets
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DetailSets = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DetailSets") is not None:
+            self.DetailSets = []
+            for item in params.get("DetailSets"):
+                obj = CosDetailSets()
+                obj._deserialize(item)
+                self.DetailSets.append(obj)
         self.RequestId = params.get("RequestId")
 
 
