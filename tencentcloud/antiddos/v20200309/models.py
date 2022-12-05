@@ -4002,6 +4002,10 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         :type FilterInstanceIdList: list of str
         :param FilterEnterpriseFlag: Filters by Enterprise edition
         :type FilterEnterpriseFlag: int
+        :param FilterLightFlag: Whether it’s a Lighthouse edition
+        :type FilterLightFlag: int
+        :param FilterChannelFlag: Whether it’s a Channel edition
+        :type FilterChannelFlag: int
         :param FilterTag: Filters by tag
         :type FilterTag: :class:`tencentcloud.antiddos.v20200309.models.TagFilter`
         """
@@ -4016,6 +4020,8 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         self.FilterBoundStatus = None
         self.FilterInstanceIdList = None
         self.FilterEnterpriseFlag = None
+        self.FilterLightFlag = None
+        self.FilterChannelFlag = None
         self.FilterTag = None
 
 
@@ -4031,6 +4037,8 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         self.FilterBoundStatus = params.get("FilterBoundStatus")
         self.FilterInstanceIdList = params.get("FilterInstanceIdList")
         self.FilterEnterpriseFlag = params.get("FilterEnterpriseFlag")
+        self.FilterLightFlag = params.get("FilterLightFlag")
+        self.FilterChannelFlag = params.get("FilterChannelFlag")
         if params.get("FilterTag") is not None:
             self.FilterTag = TagFilter()
             self.FilterTag._deserialize(params.get("FilterTag"))
@@ -5005,6 +5013,49 @@ class DescribeOverviewDDoSEventListResponse(AbstractModel):
                 obj = OverviewDDoSEvent()
                 obj._deserialize(item)
                 self.EventList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePendingRiskInfoRequest(AbstractModel):
+    """DescribePendingRiskInfo request structure.
+
+    """
+
+
+class DescribePendingRiskInfoResponse(AbstractModel):
+    """DescribePendingRiskInfo response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IsPaidUsr: Whether the user is a paid user
+        :type IsPaidUsr: bool
+        :param AttackingCount: Number of resources being attacked
+        :type AttackingCount: int
+        :param BlockingCount: Number of resource blocked
+        :type BlockingCount: int
+        :param ExpiredCount: Number of expired resources
+        :type ExpiredCount: int
+        :param Total: Total pending risk events
+        :type Total: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.IsPaidUsr = None
+        self.AttackingCount = None
+        self.BlockingCount = None
+        self.ExpiredCount = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.IsPaidUsr = params.get("IsPaidUsr")
+        self.AttackingCount = params.get("AttackingCount")
+        self.BlockingCount = params.get("BlockingCount")
+        self.ExpiredCount = params.get("ExpiredCount")
+        self.Total = params.get("Total")
         self.RequestId = params.get("RequestId")
 
 
@@ -6487,6 +6538,8 @@ When the `MatchType` is `pcre`, enter a regular expression.
         :type IsNot2: int
         :param Id: A rule ID is generated after a feature filtering configuration is added successfully. Leave this field empty when adding a new feature filtering configuration.
         :type Id: str
+        :param PktLenGT: Byte threshold of the packet. Packets larger than the specified size are not returned. It must be an integer larger than 1.
+        :type PktLenGT: int
         """
         self.Protocol = None
         self.SportStart = None
@@ -6510,6 +6563,7 @@ When the `MatchType` is `pcre`, enter a regular expression.
         self.Offset2 = None
         self.IsNot2 = None
         self.Id = None
+        self.PktLenGT = None
 
 
     def _deserialize(self, params):
@@ -6535,6 +6589,7 @@ When the `MatchType` is `pcre`, enter a regular expression.
         self.Offset2 = params.get("Offset2")
         self.IsNot2 = params.get("IsNot2")
         self.Id = params.get("Id")
+        self.PktLenGT = params.get("PktLenGT")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6642,6 +6697,36 @@ class ProtectThresholdRelation(AbstractModel):
         :type InstanceDetailList: list of InstanceRelation
         :param ListenerCcThresholdList: Domain name and protocol protection thresholds
         :type ListenerCcThresholdList: list of ListenerCcThreholdConfig
+        :param SynFloodThreshold: SYN traffic threshold
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SynFloodThreshold: int
+        :param SynFloodPktThreshold: SYN packet threshold
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SynFloodPktThreshold: int
+        :param UdpFloodThreshold: UDP traffic threshold
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UdpFloodThreshold: int
+        :param UdpFloodPktThreshold: UDP packet threshold
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UdpFloodPktThreshold: int
+        :param AckFloodThreshold: ACK traffic threshold
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AckFloodThreshold: int
+        :param AckFloodPktThreshold: ACK packet threshold
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AckFloodPktThreshold: int
+        :param SynAckFloodThreshold: SYNACK traffic threshold
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SynAckFloodThreshold: int
+        :param SynAckFloodPktThreshold: SYNACK packet threshold
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SynAckFloodPktThreshold: int
+        :param RstFloodThreshold: RST traffic threshold
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RstFloodThreshold: int
+        :param RstFloodPktThreshold: RST packet threshold
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RstFloodPktThreshold: int
         """
         self.DDoSLevel = None
         self.DDoSThreshold = None
@@ -6650,6 +6735,16 @@ class ProtectThresholdRelation(AbstractModel):
         self.CCThreshold = None
         self.InstanceDetailList = None
         self.ListenerCcThresholdList = None
+        self.SynFloodThreshold = None
+        self.SynFloodPktThreshold = None
+        self.UdpFloodThreshold = None
+        self.UdpFloodPktThreshold = None
+        self.AckFloodThreshold = None
+        self.AckFloodPktThreshold = None
+        self.SynAckFloodThreshold = None
+        self.SynAckFloodPktThreshold = None
+        self.RstFloodThreshold = None
+        self.RstFloodPktThreshold = None
 
 
     def _deserialize(self, params):
@@ -6670,6 +6765,16 @@ class ProtectThresholdRelation(AbstractModel):
                 obj = ListenerCcThreholdConfig()
                 obj._deserialize(item)
                 self.ListenerCcThresholdList.append(obj)
+        self.SynFloodThreshold = params.get("SynFloodThreshold")
+        self.SynFloodPktThreshold = params.get("SynFloodPktThreshold")
+        self.UdpFloodThreshold = params.get("UdpFloodThreshold")
+        self.UdpFloodPktThreshold = params.get("UdpFloodPktThreshold")
+        self.AckFloodThreshold = params.get("AckFloodThreshold")
+        self.AckFloodPktThreshold = params.get("AckFloodPktThreshold")
+        self.SynAckFloodThreshold = params.get("SynAckFloodThreshold")
+        self.SynAckFloodPktThreshold = params.get("SynAckFloodPktThreshold")
+        self.RstFloodThreshold = params.get("RstFloodThreshold")
+        self.RstFloodPktThreshold = params.get("RstFloodPktThreshold")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6696,12 +6801,18 @@ class ProtocolBlockConfig(AbstractModel):
         :type DropOther: int
         :param CheckExceptNullConnect: Null connection protection. Valid values: `0` (disabled), `1` (enabled).
         :type CheckExceptNullConnect: int
+        :param PingOfDeath: PoD protection. Values: `0` (disable), `1` (enable).
+        :type PingOfDeath: int
+        :param TearDrop: Teardrop protection. Values: `0` (disable), `1` (enable).
+        :type TearDrop: int
         """
         self.DropTcp = None
         self.DropUdp = None
         self.DropIcmp = None
         self.DropOther = None
         self.CheckExceptNullConnect = None
+        self.PingOfDeath = None
+        self.TearDrop = None
 
 
     def _deserialize(self, params):
@@ -6710,6 +6821,8 @@ class ProtocolBlockConfig(AbstractModel):
         self.DropIcmp = params.get("DropIcmp")
         self.DropOther = params.get("DropOther")
         self.CheckExceptNullConnect = params.get("CheckExceptNullConnect")
+        self.PingOfDeath = params.get("PingOfDeath")
+        self.TearDrop = params.get("TearDrop")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -1216,7 +1216,7 @@ class TcrClient(AbstractClient):
 
 
     def DescribeInstanceAllNamespaces(self, request):
-        """This API is used to query the list of all instance namespaces.
+        """This API is used to query the list of all namespaces in an instance.
 
         :param request: Request instance for DescribeInstanceAllNamespaces.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeInstanceAllNamespacesRequest`

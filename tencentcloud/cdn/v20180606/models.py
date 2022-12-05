@@ -1371,6 +1371,31 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         
 
 
+class AvifAdapter(AbstractModel):
+    """AVIF adapter, used for image optimization
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: Switch. Valid values: `on`, `off`.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AwsPrivateAccess(AbstractModel):
     """Origin access authentication for S3 bucket.
 
@@ -2990,8 +3015,8 @@ class DescribeCdnDomainLogsRequest(AbstractModel):
 `global`: specifies to return a download link of logs on acceleration within Mainland China and a link of logs on acceleration outside Mainland China.
 Default value: `mainland`.
         :type Area: str
-        :param LogType: The type of log to be downloaded.
-access: access logs
+        :param LogType: Specifies the type of logs to download (only access logs supported).
+`access`: Access logs.
         :type LogType: str
         """
         self.Domain = None
@@ -3027,7 +3052,8 @@ class DescribeCdnDomainLogsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainLogs: Download link of the log package
+        :param DomainLogs: Download link of the log package.
+You can open the link to download a .gz log package that contains all log files without extension.
         :type DomainLogs: list of DomainLog
         :param TotalCount: Total number of entries obtained
         :type TotalCount: int
@@ -5648,10 +5674,14 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         :param GuetzliAdapter: `GuetzliAdapter` configuration
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type GuetzliAdapter: :class:`tencentcloud.cdn.v20180606.models.GuetzliAdapter`
+        :param AvifAdapter: AVIF adapter configuration
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type AvifAdapter: :class:`tencentcloud.cdn.v20180606.models.AvifAdapter`
         """
         self.WebpAdapter = None
         self.TpgAdapter = None
         self.GuetzliAdapter = None
+        self.AvifAdapter = None
 
 
     def _deserialize(self, params):
@@ -5664,6 +5694,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         if params.get("GuetzliAdapter") is not None:
             self.GuetzliAdapter = GuetzliAdapter()
             self.GuetzliAdapter._deserialize(params.get("GuetzliAdapter"))
+        if params.get("AvifAdapter") is not None:
+            self.AvifAdapter = AvifAdapter()
+            self.AvifAdapter._deserialize(params.get("AvifAdapter"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6626,9 +6659,13 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         :param MaxAgeRules: MaxAge rule
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type MaxAgeRules: list of MaxAgeRule
+        :param MaxAgeCodeRule: MaxAge status code
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type MaxAgeCodeRule: :class:`tencentcloud.cdn.v20180606.models.MaxAgeCodeRule`
         """
         self.Switch = None
         self.MaxAgeRules = None
+        self.MaxAgeCodeRule = None
 
 
     def _deserialize(self, params):
@@ -6639,6 +6676,38 @@ Note: This field may return `null`, indicating that no valid value can be obtain
                 obj = MaxAgeRule()
                 obj._deserialize(item)
                 self.MaxAgeRules.append(obj)
+        if params.get("MaxAgeCodeRule") is not None:
+            self.MaxAgeCodeRule = MaxAgeCodeRule()
+            self.MaxAgeCodeRule._deserialize(params.get("MaxAgeCodeRule"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MaxAgeCodeRule(AbstractModel):
+    """MaxAge status code
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Action: Action to execute.
+`clear`: Clear the cache-control header.
+        :type Action: str
+        :param StatusCodes: Specifies the HTTP status code in the range 400-599.
+        :type StatusCodes: list of str
+        """
+        self.Action = None
+        self.StatusCodes = None
+
+
+    def _deserialize(self, params):
+        self.Action = params.get("Action")
+        self.StatusCodes = params.get("StatusCodes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

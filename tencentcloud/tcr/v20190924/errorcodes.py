@@ -110,7 +110,7 @@ INVALIDPARAMETER_ERRORTAGOVERLIMIT = 'InvalidParameter.ErrorTagOverLimit'
 # Invalid TCR request.
 INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = 'InvalidParameter.ErrorTcrInvalidParameter'
 
-# 
+# The replicated instance already exists.
 INVALIDPARAMETER_REPLICATIONEXISTS = 'InvalidParameter.ReplicationExists'
 
 # Creating instance is not supported in this region.

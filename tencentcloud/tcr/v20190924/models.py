@@ -2117,6 +2117,8 @@ class DescribeImagesRequest(AbstractModel):
         :type Offset: int
         :param Digest: Image digest specified for search
         :type Digest: str
+        :param ExactMatch: Whether to use exact matching. Valid values: `true` (exact matching), `null` (fuzzy matching).
+        :type ExactMatch: bool
         """
         self.RegistryId = None
         self.NamespaceName = None
@@ -2125,6 +2127,7 @@ class DescribeImagesRequest(AbstractModel):
         self.Limit = None
         self.Offset = None
         self.Digest = None
+        self.ExactMatch = None
 
 
     def _deserialize(self, params):
@@ -2135,6 +2138,7 @@ class DescribeImagesRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
         self.Digest = params.get("Digest")
+        self.ExactMatch = params.get("ExactMatch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2238,6 +2242,28 @@ class DescribeInstanceAllNamespacesRequest(AbstractModel):
     """DescribeInstanceAllNamespaces request structure.
 
     """
+
+    def __init__(self):
+        r"""
+        :param Limit: Number of entries per page
+        :type Limit: int
+        :param Offset: Start position offset
+        :type Offset: int
+        """
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeInstanceAllNamespacesResponse(AbstractModel):

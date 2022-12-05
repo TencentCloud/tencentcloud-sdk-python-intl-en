@@ -2704,7 +2704,7 @@ class EnhancedService(AbstractModel):
         :type SecurityService: :class:`tencentcloud.cvm.v20170312.models.RunSecurityServiceEnabled`
         :param MonitorService: Enables cloud monitor service. If this parameter is not specified, the cloud monitor service will be enabled by default.
         :type MonitorService: :class:`tencentcloud.cvm.v20170312.models.RunMonitorServiceEnabled`
-        :param AutomationService: Enables the TAT service. If this parameter is not specified, the TAT service will not be enabled.
+        :param AutomationService: Whether to enable the TAT service. If this parameter is not specified, the TAT service is enabled for public images and disabled for other images by default.
         :type AutomationService: :class:`tencentcloud.cvm.v20170312.models.RunAutomationServiceEnabled`
         """
         self.SecurityService = None
@@ -5420,7 +5420,7 @@ class Placement(AbstractModel):
         r"""
         :param Zone: ID of the availability zone where the instance resides. You can call the [DescribeZones](https://intl.cloud.tencent.com/document/product/213/35071) API and obtain the ID in the returned `Zone` field.
         :type Zone: str
-        :param ProjectId: ID of the project to which the instance belongs. To obtain the project IDs, you can call [DescribeProject](https://intl.cloud.tencent.com/document/api/378/4400?from_cn_redirect=1) and look for the `projectId` fields in the response. If this parameter is not specified, the default project will be used.
+        :param ProjectId: ID of the project to which the instance belongs. This parameter can be obtained from the `projectId` returned by [DescribeProject](https://intl.cloud.tencent.com/document/api/651/78725?from_cn_redirect=1). If this is left empty, the default project is used.
         :type ProjectId: int
         :param HostIds: ID list of CDHs from which the instance can be created. If you have purchased CDHs and specify this parameter, the instances you purchase will be randomly deployed on the CDHs.
         :type HostIds: list of str
@@ -6039,6 +6039,8 @@ class ResetInstanceRequest(AbstractModel):
         :type EnhancedService: :class:`tencentcloud.cvm.v20170312.models.EnhancedService`
         :param HostName: Host name of the CVM, editable during the system reinstallation. <br><li>Periods (.) or hyphens (-) cannot be the start or end of a host name or appear consecutively in a host name.<br><li>For Windows instances, the host name must consist of 2-15 characters , including uppercase and lowercase letters, numbers, or hyphens (-). It cannot contain periods (.) or contain only numbers.<br><li>For other instances, such as Linux instances, the host name must consist of 2-60 characters, including multiple periods (.), and allows uppercase and lowercase letters, numbers, or hyphens (-) between any two periods (.).
         :type HostName: str
+        :param UserData: User data provided to the instance. This parameter needs to be encoded in base64 format with the maximum size of 16 KB. For more information on how to get the value of this parameter, see the commands you need to execute on startup for [Windows](https://intl.cloud.tencent.com/document/product/213/17526) or [Linux](https://intl.cloud.tencent.com/document/product/213/17525).
+        :type UserData: str
         """
         self.InstanceId = None
         self.ImageId = None
@@ -6046,6 +6048,7 @@ class ResetInstanceRequest(AbstractModel):
         self.LoginSettings = None
         self.EnhancedService = None
         self.HostName = None
+        self.UserData = None
 
 
     def _deserialize(self, params):
@@ -6061,6 +6064,7 @@ class ResetInstanceRequest(AbstractModel):
             self.EnhancedService = EnhancedService()
             self.EnhancedService._deserialize(params.get("EnhancedService"))
         self.HostName = params.get("HostName")
+        self.UserData = params.get("UserData")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6793,6 +6797,34 @@ Note: This field may return null, indicating that no valid value is found.
         
 
 
+class SyncImage(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ImageId: 
+        :type ImageId: str
+        :param Region: 
+        :type Region: str
+        """
+        self.ImageId = None
+        self.Region = None
+
+
+    def _deserialize(self, params):
+        self.ImageId = params.get("ImageId")
+        self.Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SyncImagesRequest(AbstractModel):
     """SyncImages request structure.
 
@@ -6836,13 +6868,22 @@ class SyncImagesResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param ImageSet: 
+        :type ImageSet: list of SyncImage
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.ImageSet = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("ImageSet") is not None:
+            self.ImageSet = []
+            for item in params.get("ImageSet"):
+                obj = SyncImage()
+                obj._deserialize(item)
+                self.ImageSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
