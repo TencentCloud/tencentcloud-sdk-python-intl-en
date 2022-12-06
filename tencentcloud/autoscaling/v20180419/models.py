@@ -252,7 +252,7 @@ class AttachLoadBalancersRequest(AbstractModel):
         :type AutoScalingGroupId: str
         :param LoadBalancerIds: List of classic CLB IDs. Up to 20 classic CLBs can be bound to a security group. `LoadBalancerIds` and `ForwardLoadBalancers` cannot be specified at the same time.
         :type LoadBalancerIds: list of str
-        :param ForwardLoadBalancers: List of application CLBs. Up to 50 application CLBs can be bound to a security group. `LoadBalancerIds` and `ForwardLoadBalancers` cannot be specified at the same time.
+        :param ForwardLoadBalancers: List of application CLBs. Up to 100 application CLBs can be bound to a scaling group. `LoadBalancerIds` and `ForwardLoadBalancers` cannot be specified at the same time.
         :type ForwardLoadBalancers: list of ForwardLoadBalancer
         """
         self.AutoScalingGroupId = None
@@ -789,7 +789,7 @@ class CreateAutoScalingGroupRequest(AbstractModel):
         :type LoadBalancerIds: list of str
         :param ProjectId: Project ID of an instance in a scaling group. The default project is used if it’s left blank.
         :type ProjectId: int
-        :param ForwardLoadBalancers: List of application CLBs. Up to 50 CLBs are allowed. You cannot specify `loadBalancerIds` and `ForwardLoadBalancers` at the same time.
+        :param ForwardLoadBalancers: List of application CLBs. Up to 100 CLBs are allowed. `LoadBalancerIds` and `ForwardLoadBalancers` cannot be specified at the same time.
         :type ForwardLoadBalancers: list of ForwardLoadBalancer
         :param SubnetIds: List of subnet IDs. A subnet must be specified in the VPC scenario. If multiple subnets are entered, their priority will be determined by the order in which they are entered, and they will be tried one by one until instances can be successfully created.
         :type SubnetIds: list of str
@@ -2531,7 +2531,7 @@ class DetachLoadBalancersRequest(AbstractModel):
         :type AutoScalingGroupId: str
         :param LoadBalancerIds: List of classic CLB IDs. Up to 20 IDs are allowed. `LoadBalancerIds` and `ForwardLoadBalancerIdentifications` cannot be specified at the same time.
         :type LoadBalancerIds: list of str
-        :param ForwardLoadBalancerIdentifications: List of application CLB IDs. Up to 50 IDs are allowed. `LoadBalancerIds` and `ForwardLoadBalancerIdentifications` cannot be specified at the same time.
+        :param ForwardLoadBalancerIdentifications: List of application CLB IDs. Up to 100 IDs are allowed. `LoadBalancerIds` and `ForwardLoadBalancerIdentifications` cannot be specified at the same time.
         :type ForwardLoadBalancerIdentifications: list of ForwardLoadBalancerIdentification
         """
         self.AutoScalingGroupId = None
@@ -2719,9 +2719,15 @@ class EnhancedService(AbstractModel):
         :type SecurityService: :class:`tencentcloud.autoscaling.v20180419.models.RunSecurityServiceEnabled`
         :param MonitorService: Enables the Cloud Monitor service. If this parameter is not specified, the Cloud Monitor service will be enabled by default.
         :type MonitorService: :class:`tencentcloud.autoscaling.v20180419.models.RunMonitorServiceEnabled`
+        :param AutomationService: Deprecated parameter.
+        :type AutomationService: list of RunAutomationServiceEnabled
+        :param AutomationToolsService: 
+        :type AutomationToolsService: :class:`tencentcloud.autoscaling.v20180419.models.RunAutomationServiceEnabled`
         """
         self.SecurityService = None
         self.MonitorService = None
+        self.AutomationService = None
+        self.AutomationToolsService = None
 
 
     def _deserialize(self, params):
@@ -2731,6 +2737,15 @@ class EnhancedService(AbstractModel):
         if params.get("MonitorService") is not None:
             self.MonitorService = RunMonitorServiceEnabled()
             self.MonitorService._deserialize(params.get("MonitorService"))
+        if params.get("AutomationService") is not None:
+            self.AutomationService = []
+            for item in params.get("AutomationService"):
+                obj = RunAutomationServiceEnabled()
+                obj._deserialize(item)
+                self.AutomationService.append(obj)
+        if params.get("AutomationToolsService") is not None:
+            self.AutomationToolsService = RunAutomationServiceEnabled()
+            self.AutomationToolsService._deserialize(params.get("AutomationToolsService"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4129,7 +4144,7 @@ class ModifyLoadBalancerTargetAttributesRequest(AbstractModel):
         r"""
         :param AutoScalingGroupId: Scaling group ID
         :type AutoScalingGroupId: str
-        :param ForwardLoadBalancers: List of application CLBs to modify. Up to 50 CLBs allowed.
+        :param ForwardLoadBalancers: List of application CLBs to modify. Up to 100 CLBs allowed.
         :type ForwardLoadBalancers: list of ForwardLoadBalancer
         """
         self.AutoScalingGroupId = None
@@ -4185,7 +4200,7 @@ class ModifyLoadBalancersRequest(AbstractModel):
         :type AutoScalingGroupId: str
         :param LoadBalancerIds: List of classic CLB IDs. Currently, the maximum length is 20. You cannot specify LoadBalancerIds and ForwardLoadBalancers at the same time.
         :type LoadBalancerIds: list of str
-        :param ForwardLoadBalancers: List of application CLBs. Up to 50 CLBs are allowed. You cannot specify `loadBalancerIds` and `ForwardLoadBalancers` at the same time.
+        :param ForwardLoadBalancers: List of application CLBs. Up to 100 CLBs are allowed. `LoadBalancerIds` and `ForwardLoadBalancers` cannot be specified at the same time.
         :type ForwardLoadBalancers: list of ForwardLoadBalancer
         :param LoadBalancersCheckPolicy: CLB verification policy. Valid values: "ALL" and "DIFF". Default value: "ALL"
 <br><li> ALL. Verification is successful only when all CLBs are valid. Otherwise, verification fails.
@@ -4521,6 +4536,31 @@ class RemoveInstancesResponse(AbstractModel):
     def _deserialize(self, params):
         self.ActivityId = params.get("ActivityId")
         self.RequestId = params.get("RequestId")
+
+
+class RunAutomationServiceEnabled(AbstractModel):
+    """Status of TAT service.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Enabled: Whether to enable [TencentCloud Automation Tools](https://intl.cloud.tencent.com/document/product/1340?from_cn_redirect=1). Valid values:<br><li>`TRUE`: Enable<br><li>`FALSE`: Not enable.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Enabled: bool
+        """
+        self.Enabled = None
+
+
+    def _deserialize(self, params):
+        self.Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class RunMonitorServiceEnabled(AbstractModel):

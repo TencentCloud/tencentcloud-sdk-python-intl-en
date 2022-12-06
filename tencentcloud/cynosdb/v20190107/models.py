@@ -2754,6 +2754,64 @@ class DescribeParamTemplatesRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param EngineVersions: Database engine version number
+        :type EngineVersions: list of str
+        :param TemplateNames: Template name
+        :type TemplateNames: list of str
+        :param TemplateIds: Template ID
+        :type TemplateIds: list of int
+        :param DbModes: Database Type. Valid values: `NORMAL`, `SERVERLESS`.
+        :type DbModes: list of str
+        :param Offset: Offset for query
+        :type Offset: int
+        :param Limit: Limit on queries
+        :type Limit: int
+        :param Products: Product type of the queried template
+        :type Products: list of str
+        :param TemplateTypes: Template type
+        :type TemplateTypes: list of str
+        :param EngineTypes: Version type
+        :type EngineTypes: list of str
+        :param OrderBy: The sorting order of the returned results
+        :type OrderBy: str
+        :param OrderDirection: Sorting order. Valid values: `desc`, `asc `.
+        :type OrderDirection: str
+        """
+        self.EngineVersions = None
+        self.TemplateNames = None
+        self.TemplateIds = None
+        self.DbModes = None
+        self.Offset = None
+        self.Limit = None
+        self.Products = None
+        self.TemplateTypes = None
+        self.EngineTypes = None
+        self.OrderBy = None
+        self.OrderDirection = None
+
+
+    def _deserialize(self, params):
+        self.EngineVersions = params.get("EngineVersions")
+        self.TemplateNames = params.get("TemplateNames")
+        self.TemplateIds = params.get("TemplateIds")
+        self.DbModes = params.get("DbModes")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Products = params.get("Products")
+        self.TemplateTypes = params.get("TemplateTypes")
+        self.EngineTypes = params.get("EngineTypes")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderDirection = params.get("OrderDirection")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeParamTemplatesResponse(AbstractModel):
     """DescribeParamTemplates response structure.
@@ -4187,11 +4245,18 @@ class ParamTemplateListInfo(AbstractModel):
         :type TemplateDescription: str
         :param EngineVersion: Engine version
         :type EngineVersion: str
+        :param DbMode: Database Type. Valid values: `NORMAL`, `SERVERLESS`.
+        :type DbMode: str
+        :param ParamInfoSet: Parameter template details
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ParamInfoSet: list of TemplateParamInfo
         """
         self.Id = None
         self.TemplateName = None
         self.TemplateDescription = None
         self.EngineVersion = None
+        self.DbMode = None
+        self.ParamInfoSet = None
 
 
     def _deserialize(self, params):
@@ -4199,6 +4264,13 @@ class ParamTemplateListInfo(AbstractModel):
         self.TemplateName = params.get("TemplateName")
         self.TemplateDescription = params.get("TemplateDescription")
         self.EngineVersion = params.get("EngineVersion")
+        self.DbMode = params.get("DbMode")
+        if params.get("ParamInfoSet") is not None:
+            self.ParamInfoSet = []
+            for item in params.get("ParamInfoSet"):
+                obj = TemplateParamInfo()
+                obj._deserialize(item)
+                self.ParamInfoSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4718,6 +4790,65 @@ class Tag(AbstractModel):
     def _deserialize(self, params):
         self.TagKey = params.get("TagKey")
         self.TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TemplateParamInfo(AbstractModel):
+    """Parameter template details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CurrentValue: Current value
+        :type CurrentValue: str
+        :param Default: Default value
+        :type Default: str
+        :param EnumValue: The collection of valid value types when parameter type is `enum`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EnumValue: list of str
+        :param Max: Maximum value when parameter type is `float` or `integer`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Max: str
+        :param Min: Minimum value when parameter type is `float` or `integer`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Min: str
+        :param ParamName: Parameter name
+        :type ParamName: str
+        :param NeedReboot: Whether to restart the instance for the parameter to take effect
+        :type NeedReboot: int
+        :param Description: Parameter description
+        :type Description: str
+        :param ParamType: Parameter type. Valid value: `integer`, `float`, `string`, `enum`.
+        :type ParamType: str
+        """
+        self.CurrentValue = None
+        self.Default = None
+        self.EnumValue = None
+        self.Max = None
+        self.Min = None
+        self.ParamName = None
+        self.NeedReboot = None
+        self.Description = None
+        self.ParamType = None
+
+
+    def _deserialize(self, params):
+        self.CurrentValue = params.get("CurrentValue")
+        self.Default = params.get("Default")
+        self.EnumValue = params.get("EnumValue")
+        self.Max = params.get("Max")
+        self.Min = params.get("Min")
+        self.ParamName = params.get("ParamName")
+        self.NeedReboot = params.get("NeedReboot")
+        self.Description = params.get("Description")
+        self.ParamType = params.get("ParamType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

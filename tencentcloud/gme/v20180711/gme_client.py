@@ -85,7 +85,7 @@ class GmeClient(AbstractClient):
 
 
     def DescribeAppStatistics(self, request):
-        """This API is used to get the usage statistics of a GME application, including those of voice chat, voice messaging and speech-to-text, phrase analysis, etc. The maximum query period is the past 30 days.
+        """This API is used to query the usage statistics of a GME application, including those of Voice Chat, Voice Message Service, Voice Analysis, etc. The maximum query period is the past 30 days.
 
         :param request: Request instance for DescribeAppStatistics.
         :type request: :class:`tencentcloud.gme.v20180711.models.DescribeAppStatisticsRequest`
@@ -114,7 +114,7 @@ class GmeClient(AbstractClient):
 
 
     def DescribeApplicationData(self, request):
-        """This API (DescribeApplicationData) is used to query usage data details within 90 days.
+        """This API is used to query data details for up to the past 90 days.
 
         :param request: Request instance for DescribeApplicationData.
         :type request: :class:`tencentcloud.gme.v20180711.models.DescribeApplicationDataRequest`
@@ -143,8 +143,8 @@ class GmeClient(AbstractClient):
 
 
     def DescribeScanResultList(self, request):
-        """This API is used to query the speech detection result. Up to 100 tasks can be added in the task query list.
-        <p style="color:red">If the `Callback` field is not set when a speech detection task is submitted, this API will be needed to get the detection result.</p>
+        """This API is used to query the result of voice moderation tasks. Up to 100 tasks can be queried in one time.
+        <p style="color:red">If the `Callback` field is not set when a voice moderation task is submitted, this API is called to query the moderation result.</p>
 
         :param request: Request instance for DescribeScanResultList.
         :type request: :class:`tencentcloud.gme.v20180711.models.DescribeScanResultListRequest`
@@ -173,7 +173,7 @@ class GmeClient(AbstractClient):
 
 
     def ModifyAppStatus(self, request):
-        """This API is used to change the status of an application's primary switch.
+        """This API is used to change the status of an application.
 
         :param request: Request instance for ModifyAppStatus.
         :type request: :class:`tencentcloud.gme.v20180711.models.ModifyAppStatusRequest`
@@ -202,16 +202,16 @@ class GmeClient(AbstractClient):
 
 
     def ScanVoice(self, request):
-        """This API is used to submit a speech detection task. Up to 100 tasks can be added in the detection task list. Before using this API, please activate the speech analysis service in [Console > Service Configuration](https://console.cloud.tencent.com/gamegme/conf).
+        """This API is used to submit a voice moderation task. Up to 100 tasks can be added in a task. Make sure you have activated Voice Analysis Service in [GME Console > Voice Content Moderation > Service Configuration](https://console.cloud.tencent.com/gamegme/conf).
         </br></br>
 
-        <h4><b>About the trial:</b></h4>
-        <li>You can try out the speech analysis service free of charge in <a href="https://console.cloud.tencent.com/gamegme/tryout">Console > Product Trial</a>.</li>
+        <h4><b>Free trial:</b></h4>
+        <li>You can try out the Voice Analysis Service free of charge in <a href="https://console.cloud.tencent.com/gamegme/tryout">GME Console > Voice Content Moderation > Product Trial</a>.</li>
         </br>
 
         <h4><b>API feature description:</b></h4>
-        <li>This API checks audio streams or files for non-compliant content.</li>
-        <li>The detection result can be obtained by setting the callback address (`Callback`) or calling the `DescribeScanResultList` API for polling.</li>
+        <li>This API checks voice streams or files for non-compliant content.</li>
+        <li>The detection result can be queried by setting the callback address (`Callback`) or calling the `DescribeScanResultList` API for polling.</li>
         <li>The scenario can be specified, such as abusive or pornographic.</li>
         <li>Detection tasks can be submitted in batches. Up to 100 tasks can be added in the detection task list.</li>
         </br>
@@ -220,14 +220,14 @@ class GmeClient(AbstractClient):
         <li>Audio file duration limit: 30 minutes</li>
         <li>Supported audio file formats: .wav, .m4a, .amr, .mp3, .aac, .wma, .ogg</li>
         </br>
-        <h4><b>Audio stream limit description:</b></h4>
-        <li>Supported audio stream formats: .m3u8, .flv</li>
-        <li>Supported audio stream transfer protocols: RTMP, HTTP, HTTPS</li>
-        <li>Audio stream duration limit: 4 hours</li>
+        <h4><b>Voice stream limit description:</b></h4>
+        <li>Supported voice stream formats: .m3u8, .flv</li>
+        <li>Supported voice stream transfer protocols: RTMP, HTTP, HTTPS</li>
+        <li>Voice stream duration limit: 4 hours</li>
         <li>Audio/video stream separation and audio stream analysis are supported</li>
         </br>
         <h4 id="Label_Value"><b>`Scenes` and `Label` parameter description:</b></h4>
-        <p>When submitting a speech detection task, you need to specify the `Scenes` parameter. <font color="red">You are currently required to set the `Scenes` parameter to `["default"]`</font>. The detection result will contain the scenario specified at the time of request and detection result in the corresponding type.</p>
+        <p>When submitting a voice detection task, you need to specify the `Scenes` parameter. <font color="red">You are currently required to set the `Scenes` parameter to `["default"]`</font>. The detection result will contain the scenario specified at the time of request and detection result in the corresponding type.</p>
         <table>
         <thread>
         <tr>
@@ -238,15 +238,15 @@ class GmeClient(AbstractClient):
         </thread>
         <tbody>
         <tr>
-        <td>Speech detection</td>
-        <td>Speech detection type</td>
+        <td>Voice detection</td>
+        <td>Voice detection type</td>
         <td>
-        <p>normal: normal</p>
-        <p>porn: pornographic</p>
-        <p>abuse: abusive</p>
-        <p>ad: advertising</p>
-        <p>contraband: prohibited</p>
-        <p>customized: custom keyword library. This feature is only available to beta users. To try it out, please <a href="https://intl.cloud.tencent.com/apply/p/8809fjcik56?from_cn_redirect=1">contact us</a>.</p>
+        <p>`normal`: Normal</p>
+        <p>`porn`: Pornographic</p>
+        <p>`abuse`: Abusive</p>
+        <p>`ad`: Advertising</p>
+        <p>`contraband`: Prohibited</p>
+        <p>`customized`: Custom keyword library. This feature is only available to beta users. To try it out, please <a href="https://intl.cloud.tencent.com/apply/p/8809fjcik56?from_cn_redirect=1">contact us</a>.</p>
         </td>
         </tr>
         </tbody>

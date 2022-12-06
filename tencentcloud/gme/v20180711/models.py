@@ -25,22 +25,38 @@ class AppStatisticsItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RealtimeSpeechStatisticsItem: Voice chat statistics
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param RealtimeSpeechStatisticsItem: Voice Chat statistics
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type RealtimeSpeechStatisticsItem: :class:`tencentcloud.gme.v20180711.models.RealTimeSpeechStatisticsItem`
-        :param VoiceMessageStatisticsItem: Voice messaging statistics
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param VoiceMessageStatisticsItem: Voice Message statistics
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type VoiceMessageStatisticsItem: :class:`tencentcloud.gme.v20180711.models.VoiceMessageStatisticsItem`
-        :param VoiceFilterStatisticsItem: Phrase filtering statistics
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param VoiceFilterStatisticsItem: Phrase Filtering statistics
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type VoiceFilterStatisticsItem: :class:`tencentcloud.gme.v20180711.models.VoiceFilterStatisticsItem`
-        :param Date: Statistical period
+        :param Date: Reference period
         :type Date: str
+        :param AudioTextStatisticsItem: Recording-to-Text usage statistics
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type AudioTextStatisticsItem: :class:`tencentcloud.gme.v20180711.models.AudioTextStatisticsItem`
+        :param StreamTextStatisticsItem: Stream-to-Text usage statistics
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type StreamTextStatisticsItem: :class:`tencentcloud.gme.v20180711.models.StreamTextStatisticsItem`
+        :param OverseaTextStatisticsItem: Usage statistics of Voice-to-Text of outside-MLC requests
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type OverseaTextStatisticsItem: :class:`tencentcloud.gme.v20180711.models.OverseaTextStatisticsItem`
+        :param RealtimeTextStatisticsItem: Real-time Voice-to-Text usage statistics
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type RealtimeTextStatisticsItem: :class:`tencentcloud.gme.v20180711.models.RealtimeTextStatisticsItem`
         """
         self.RealtimeSpeechStatisticsItem = None
         self.VoiceMessageStatisticsItem = None
         self.VoiceFilterStatisticsItem = None
         self.Date = None
+        self.AudioTextStatisticsItem = None
+        self.StreamTextStatisticsItem = None
+        self.OverseaTextStatisticsItem = None
+        self.RealtimeTextStatisticsItem = None
 
 
     def _deserialize(self, params):
@@ -54,6 +70,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
             self.VoiceFilterStatisticsItem = VoiceFilterStatisticsItem()
             self.VoiceFilterStatisticsItem._deserialize(params.get("VoiceFilterStatisticsItem"))
         self.Date = params.get("Date")
+        if params.get("AudioTextStatisticsItem") is not None:
+            self.AudioTextStatisticsItem = AudioTextStatisticsItem()
+            self.AudioTextStatisticsItem._deserialize(params.get("AudioTextStatisticsItem"))
+        if params.get("StreamTextStatisticsItem") is not None:
+            self.StreamTextStatisticsItem = StreamTextStatisticsItem()
+            self.StreamTextStatisticsItem._deserialize(params.get("StreamTextStatisticsItem"))
+        if params.get("OverseaTextStatisticsItem") is not None:
+            self.OverseaTextStatisticsItem = OverseaTextStatisticsItem()
+            self.OverseaTextStatisticsItem._deserialize(params.get("OverseaTextStatisticsItem"))
+        if params.get("RealtimeTextStatisticsItem") is not None:
+            self.RealtimeTextStatisticsItem = RealtimeTextStatisticsItem()
+            self.RealtimeTextStatisticsItem._deserialize(params.get("RealtimeTextStatisticsItem"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -72,29 +100,29 @@ class ApplicationDataStatistics(AbstractModel):
         r"""
         :param BizId: Application ID
         :type BizId: int
-        :param DauDataNum: DAU data
+        :param DauDataNum: Number of DAU metrics
         :type DauDataNum: int
-        :param DauDataMainland: DAU in Chinese mainland
+        :param DauDataMainland: DAUs in the Chinese mainland
         :type DauDataMainland: list of StatisticsItem
-        :param DauDataOversea: DAU outside Chinese mainland
+        :param DauDataOversea: DAUs outside the Chinese mainland
         :type DauDataOversea: list of StatisticsItem
-        :param DauDataSum: Total DAU
+        :param DauDataSum: Total DAUs
         :type DauDataSum: list of StatisticsItem
-        :param DurationDataNum: Number of voice chat metrics
+        :param DurationDataNum: Number of Voice Chat metrics
         :type DurationDataNum: int
-        :param DurationDataMainland: Duration of voice chat in Chinese mainland in minutes
+        :param DurationDataMainland: Duration of Voice Chat in the Chinese mainland (in minutes)
         :type DurationDataMainland: list of StatisticsItem
-        :param DurationDataOversea: Duration of voice chat outside Chinese mainland in minutes
+        :param DurationDataOversea: Duration of Voice Chat outside the Chinese mainland (in minutes)
         :type DurationDataOversea: list of StatisticsItem
-        :param DurationDataSum: Total duration of voice chat in minutes
+        :param DurationDataSum: Total duration of Voice Chat (in minutes)
         :type DurationDataSum: list of StatisticsItem
-        :param PcuDataNum: PCU data
+        :param PcuDataNum: Number of PCU metrics
         :type PcuDataNum: int
-        :param PcuDataMainland: PCU in Chinese mainland
+        :param PcuDataMainland: PCUs in the Chinese mainland
         :type PcuDataMainland: list of StatisticsItem
-        :param PcuDataOversea: PCU outside Chinese mainland
+        :param PcuDataOversea: PCUs outside the Chinese mainland
         :type PcuDataOversea: list of StatisticsItem
-        :param PcuDataSum: Total PCU
+        :param PcuDataSum: Total PCUs
         :type PcuDataSum: list of StatisticsItem
         """
         self.BizId = None
@@ -180,6 +208,31 @@ class ApplicationDataStatistics(AbstractModel):
         
 
 
+class AudioTextStatisticsItem(AbstractModel):
+    """Recording-to-Text usage statistics
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: Statistical value (in seconds)
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Data: float
+        """
+        self.Data = None
+
+
+    def _deserialize(self, params):
+        self.Data = params.get("Data")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateAppRequest(AbstractModel):
     """CreateApp request structure.
 
@@ -189,17 +242,17 @@ class CreateAppRequest(AbstractModel):
         r"""
         :param AppName: Application name
         :type AppName: str
-        :param ProjectId: Tencent Cloud project ID. Default value: 0, which means the default project
+        :param ProjectId: Tencent Cloud project ID. Default value: 0, which means that the default project is used.
         :type ProjectId: int
         :param EngineList: List of engines to be supported. All values are selected by default.
         :type EngineList: list of str
         :param RegionList: Service region list. All values are selected by default.
         :type RegionList: list of str
-        :param RealtimeSpeechConf: Configuration information of voice chat
+        :param RealtimeSpeechConf: Configuration information of Voice Chat
         :type RealtimeSpeechConf: :class:`tencentcloud.gme.v20180711.models.RealtimeSpeechConf`
-        :param VoiceMessageConf: Configuration information of voice messaging and speech-to-text
+        :param VoiceMessageConf: Configuration information of Voice Message Service
         :type VoiceMessageConf: :class:`tencentcloud.gme.v20180711.models.VoiceMessageConf`
-        :param VoiceFilterConf: Configuration information of phrase analysis
+        :param VoiceFilterConf: Configuration information of Voice Analysis Service
         :type VoiceFilterConf: :class:`tencentcloud.gme.v20180711.models.VoiceFilterConf`
         :param Tags: List of tags to be added
         :type Tags: list of Tag
@@ -250,21 +303,21 @@ class CreateAppResp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BizId: App ID, automatically generated by the backend.
+        :param BizId: Application ID, automatically generated by the backend.
         :type BizId: int
-        :param AppName: App name, the input of `AppName`.
+        :param AppName: Application name, the input of `AppName`.
         :type AppName: str
         :param ProjectId: Project ID, the input of `ProjectId`.
         :type ProjectId: int
-        :param SecretKey: App key, used to initialize GME SDK.
+        :param SecretKey: Application key, used to initialize GME SDK.
         :type SecretKey: str
         :param CreateTime: Timestamp, indicating when the service is created.
         :type CreateTime: int
-        :param RealtimeSpeechConf: Configuration information of voice chat
+        :param RealtimeSpeechConf: Configuration information of Voice Chat
         :type RealtimeSpeechConf: :class:`tencentcloud.gme.v20180711.models.RealtimeSpeechConf`
-        :param VoiceMessageConf: Configuration information of voice messaging and speech-to-text
+        :param VoiceMessageConf: Configuration information of Voice Message Service
         :type VoiceMessageConf: :class:`tencentcloud.gme.v20180711.models.VoiceMessageConf`
-        :param VoiceFilterConf: Configuration information of phrase analysis
+        :param VoiceFilterConf: Configuration information of Voice Analysis Service
         :type VoiceFilterConf: :class:`tencentcloud.gme.v20180711.models.VoiceFilterConf`
         """
         self.BizId = None
@@ -420,11 +473,11 @@ class DescribeAppStatisticsRequest(AbstractModel):
         r"""
         :param BizId: GME application ID
         :type BizId: int
-        :param StartDate: Data start date (GMT+8) in the format of yyyy-mm-dd, such as 2018-07-13
+        :param StartDate: Data start date (GMT+8) in the format of yyyy-mm-dd, such as 2018-07-13.
         :type StartDate: str
-        :param EndDate: Data end date (GMT+8) in the format of yyyy-mm-dd, such as 2018-07-13
+        :param EndDate: Data end date (GMT+8) in the format of yyyy-mm-dd, such as 2018-07-13.
         :type EndDate: str
-        :param Services: List of services to be queried. Valid values: RealTimeSpeech, VoiceMessage, VoiceFilter
+        :param Services: List of services to be queried. Valid values: `RealTimeSpeech`, `VoiceMessage`, `VoiceFilter`, `SpeechToText`.
         :type Services: list of str
         """
         self.BizId = None
@@ -448,13 +501,13 @@ class DescribeAppStatisticsRequest(AbstractModel):
 
 
 class DescribeAppStatisticsResp(AbstractModel):
-    """Output parameters of app usage statistics
+    """Output parameters of application usage statistics
 
     """
 
     def __init__(self):
         r"""
-        :param AppStatistics: App usage statistics
+        :param AppStatistics: Application usage statistics
         :type AppStatistics: list of AppStatisticsItem
         """
         self.AppStatistics = None
@@ -483,7 +536,7 @@ class DescribeAppStatisticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: App usage statistics
+        :param Data: Application usage statistics
         :type Data: :class:`tencentcloud.gme.v20180711.models.DescribeAppStatisticsResp`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -508,9 +561,9 @@ class DescribeApplicationDataRequest(AbstractModel):
         r"""
         :param BizId: Application ID
         :type BizId: int
-        :param StartDate: Data start date in the format of yyyy-mm-dd, such as 2018-07-13
+        :param StartDate: Data start date in the format of yyyy-mm-dd, such as 2018-07-13.
         :type StartDate: str
-        :param EndDate: Data end date in the format of yyyy-mm-dd, such as 2018-07-13
+        :param EndDate: Data end date in the format of yyyy-mm-dd, such as 2018-07-13.
         :type EndDate: str
         """
         self.BizId = None
@@ -555,7 +608,7 @@ class DescribeApplicationDataResponse(AbstractModel):
 
 
 class DescribeScanResult(AbstractModel):
-    """Returned speech detection result
+    """Returned voice detection result
 
     """
 
@@ -572,23 +625,23 @@ class DescribeScanResult(AbstractModel):
         :param Live: Whether it is a stream
         :type Live: bool
         :param Msg: Business return description
-Note: this field may return null, indicating that no valid values can be obtained.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Msg: str
         :param ScanPiece: Detection result, which will be returned if `Code` is 0
-Note: this field may return null, indicating that no valid values can be obtained.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type ScanPiece: list of ScanPiece
         :param ScanStartTime: Detection task submission timestamp
         :type ScanStartTime: int
-        :param Scenes: Speech detection scenario, which corresponds to the `Scene` at the time of request
+        :param Scenes: Voice detection scenario, which corresponds to the `Scene` at the time of request
         :type Scenes: list of str
-        :param TaskId: Speech detection task ID, which is assigned by the backend
+        :param TaskId: Voice detection task ID, which is assigned by the backend
         :type TaskId: str
         :param Url: File or stream address
         :type Url: str
-        :param Status: Detection task execution result task. Valid values:
-<li>Start: task started</li>
-<li>Success: task ended successfully</li>
-<li>Error: exceptional</li>
+        :param Status: Detection task execution result status. Valid values:
+<li>Start: Task started</li>
+<li>Success: Task ended successfully</li>
+<li>Error: An exception occurs</li>
         :type Status: str
         :param BizId: ID of the application submitted for detection
         :type BizId: int
@@ -643,11 +696,11 @@ class DescribeScanResultListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BizId: Application ID, which is the `AppID` obtained when you create an application in the [console](https://console.cloud.tencent.com/gamegme)
+        :param BizId: Application ID, which is obtained when you create an application in the [GME console](https://console.cloud.tencent.com/gamegme).
         :type BizId: int
         :param TaskIdList: List of IDs of the tasks to be queried. Up to 100 entries can be added in the ID list.
         :type TaskIdList: list of str
-        :param Limit: Number of task results to be returned. Default value: 10. Maximum value: 500. This parameter will be ignored for large file tasks where all results will be returned
+        :param Limit: Number of task results to be returned. Default value: 10. Maximum value: 500. This parameter will be ignored for large file tasks where all results will be returned.
         :type Limit: int
         """
         self.BizId = None
@@ -675,8 +728,8 @@ class DescribeScanResultListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: Result of the speech detection task to be queried
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param Data: Result of the voice detection task to be queried
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Data: list of DescribeScanResult
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -702,9 +755,9 @@ class ModifyAppStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BizId: Application ID, which is generated and returned by the backend after application creation.
+        :param BizId: Application ID, which is generated and returned by the backend after the application creation.
         :type BizId: int
-        :param Status: Application status. Valid values: open, close
+        :param Status: Application status. Valid values: `open`, `close`.
         :type Status: str
         """
         self.BizId = None
@@ -730,9 +783,9 @@ class ModifyAppStatusResp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BizId: GME app ID
+        :param BizId: GME application ID
         :type BizId: int
-        :param Status: App status. Valid values: `open`, `close`
+        :param Status: Application status. Valid values: `open`, `close`.
         :type Status: str
         """
         self.BizId = None
@@ -774,24 +827,49 @@ class ModifyAppStatusResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class RealTimeSpeechStatisticsItem(AbstractModel):
-    """Voice chat usage statistics
+class OverseaTextStatisticsItem(AbstractModel):
+    """Usage statistics of Voice-to-Text of outside-MLC requests
 
     """
 
     def __init__(self):
         r"""
-        :param MainLandDau: DAU in Mainland China
+        :param Data: Statistical value (in seconds)
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Data: float
+        """
+        self.Data = None
+
+
+    def _deserialize(self, params):
+        self.Data = params.get("Data")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RealTimeSpeechStatisticsItem(AbstractModel):
+    """Voice Chat usage statistics
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MainLandDau: DAUs in the Chinese mainland
         :type MainLandDau: int
-        :param MainLandPcu: PCU in Mainland China
+        :param MainLandPcu: PCUs in the Chinese mainland
         :type MainLandPcu: int
-        :param MainLandDuration: Total duration of use in Mainland China in minutes
+        :param MainLandDuration: Total duration of use in the Chinese mainland (in minutes)
         :type MainLandDuration: int
-        :param OverseaDau: DAU outside Mainland China
+        :param OverseaDau: DAUs outside the Chinese mainland
         :type OverseaDau: int
-        :param OverseaPcu: PCU outside Mainland China
+        :param OverseaPcu: PCUs outside the Chinese mainland
         :type OverseaPcu: int
-        :param OverseaDuration: Total duration of use outside Mainland China in minutes
+        :param OverseaDuration: Total duration of use outside the Chinese mainland (in minutes)
         :type OverseaDuration: int
         """
         self.MainLandDau = None
@@ -819,15 +897,15 @@ class RealTimeSpeechStatisticsItem(AbstractModel):
 
 
 class RealtimeSpeechConf(AbstractModel):
-    """Configuration information of voice chat
+    """Configuration information of Voice Chat
 
     """
 
     def __init__(self):
         r"""
-        :param Status: Voice chat status. Valid values: open, close
+        :param Status: Voice Chat status. Valid values: `open`, `close`.
         :type Status: str
-        :param Quality: Voice chat sound quality. Valid value: `high`
+        :param Quality: Voice Chat sound quality. Valid value: `high`.
         :type Quality: str
         """
         self.Status = None
@@ -846,22 +924,47 @@ class RealtimeSpeechConf(AbstractModel):
         
 
 
-class ScanDetail(AbstractModel):
-    """Speech detection details
+class RealtimeTextStatisticsItem(AbstractModel):
+    """Real-time Voice-to-Text usage statistics
 
     """
 
     def __init__(self):
         r"""
-        :param Label: Violation scenario. For more information, please see the definition of <a href="https://intl.cloud.tencent.com/document/product/607/37622?from_cn_redirect=1#Label_Value">Label</a>
+        :param Data: Statistical value (in seconds)
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Data: float
+        """
+        self.Data = None
+
+
+    def _deserialize(self, params):
+        self.Data = params.get("Data")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScanDetail(AbstractModel):
+    """Voice detection details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Label: Violation scenario. For more information, please see the definition of <a href="https://intl.cloud.tencent.com/document/product/607/37622?from_cn_redirect=1#Label_Value">Label</a>.
         :type Label: str
-        :param Rate: Confidence score in scenario. Value range: [0.00,100.00]. The higher the score, the more likely the content is non-compliant
+        :param Rate: Confidence score in scenario. Value range: [0.00,100.00]. The higher the score, the more likely the content is non-compliant.
         :type Rate: str
         :param KeyWord: Non-compliant keyword
         :type KeyWord: str
-        :param StartTime: Start time offset in milliseconds from 0 of keyword in audio
+        :param StartTime: Start time offset of keyword from 0 in audio (in milliseconds)
         :type StartTime: int
-        :param EndTime: End time offset in milliseconds from 0 of keyword in audio
+        :param EndTime: End time offset of keyword from 0 in audio (in milliseconds)
         :type EndTime: int
         """
         self.Label = None
@@ -887,39 +990,39 @@ class ScanDetail(AbstractModel):
 
 
 class ScanPiece(AbstractModel):
-    """Speech detection result, which will be returned if `Code` is 0
+    """Voice detection result, which will be returned if `Code` is 0.
 
     """
 
     def __init__(self):
         r"""
-        :param DumpUrl: Audio retention address, which will be returned for stream detection. The audio will be retained for 30 minutes
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param DumpUrl: Audio retention address, which will be returned for stream detection. The audio will be retained for 30 minutes.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type DumpUrl: str
         :param HitFlag: Whether non-compliant information is detected
         :type HitFlag: bool
         :param MainType: Main non-compliant content type
-Note: this field may return null, indicating that no valid values can be obtained.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type MainType: str
-        :param ScanDetail: Speech detection details
+        :param ScanDetail: Voice detection details
         :type ScanDetail: list of ScanDetail
-        :param RoomId: GME voice chat room ID, which is the `RoomId` passed through when the task was submitted
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param RoomId: GME Voice Chat room ID, which is the `RoomId` passed through when the task was submitted.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type RoomId: str
-        :param OpenId: GME voice chat user ID, which is the `OpenId` passed through when the task was submitted
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param OpenId: GME Voice Chat user ID, which is the `OpenId` passed through when the task was submitted.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type OpenId: str
         :param Info: Remarks
-Note: this field may return null, indicating that no valid values can be obtained.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Info: str
-        :param Offset: Offset time in milliseconds of segment in stream during stream detection
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param Offset: Offset time of multipart in stream during stream detection (in milliseconds)
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Offset: int
-        :param Duration: Segment duration during stream detection
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param Duration: Multipart duration during stream detection
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Duration: int
-        :param PieceStartTime: Segment detection start time
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param PieceStartTime: Multipart detection start time
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type PieceStartTime: int
         """
         self.DumpUrl = None
@@ -966,19 +1069,19 @@ class ScanVoiceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BizId: Application ID, which is the `AppID` obtained when you create an application in [Console > Service Management](https://console.cloud.tencent.com/gamegme)
+        :param BizId: Application ID, which is obtained when you create an application in the [GME console - Service Management](https://console.cloud.tencent.com/gamegme).
         :type BizId: int
-        :param Scenes: Speech detection scenario. The value of this parameter is currently required to be `default`. Preset scenarios: abusive, pornographic, advertising, and other prohibited scenarios. For specific values, please see the <a href="#Label_Value">Label description</a> above.
+        :param Scenes: Voice detection scenario. It must be `default`. See the <a href="#Label_Value">Label description</a> as the result.
         :type Scenes: list of str
-        :param Live: Whether it is a live stream. false: audio file detection, true: audio stream detection.
+        :param Live: Whether it is a live stream. Values: `false` (voice file), `true` (live stream).
         :type Live: bool
-        :param Tasks: Speech detection task list. Up to 100 tasks can be added in the list. The structure contains:
-<li>DataId: unique data ID</li>
-<li>Url: URL-encoded data file URL, which is a pull address if the detected speech is a stream</li>
+        :param Tasks: Voice detection task list. Up to 100 tasks can be added in the list. 
+<li>`DataId`: Unique data ID</li>
+<li>`Url`: URL-encoded data file URL, which is a pull address if the detected voice is a stream</li>
         :type Tasks: list of Task
-        :param Callback: Async callback address for detection result. For more information, please see the <a href="#Callback_Declare">callback description</a> above. (Note: if this field is empty, the detection result can only be obtained by calling the `DescribeScanResultList` API.)
+        :param Callback: Async callback address for detection result. For more information, please see the <a href="#Callback_Declare">Callback description</a> above. (Note: If this field is empty, the detection result can only be queried by calling the `DescribeScanResultList` API.)
         :type Callback: str
-        :param Lang: The language. `jp` represents Japanese
+        :param Lang: Language. `jp`: Japanese
         :type Lang: str
         """
         self.BizId = None
@@ -1017,8 +1120,8 @@ class ScanVoiceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: Speech detection return. The `Data` field is a JSON array where each element contains: <li>DataId: corresponding `DataId` in request.</li>
-<li>TaskID: detection task ID, which is used to poll the speech detection result.</li>
+        :param Data: Voice moderation result. <li>`DataId`: Corresponding `DataId` in request.</li>
+<li>`TaskID`: Moderation task ID, which is used to poll the voice detection result.</li>
         :type Data: list of ScanVoiceResult
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1038,7 +1141,7 @@ class ScanVoiceResponse(AbstractModel):
 
 
 class ScanVoiceResult(AbstractModel):
-    """Returned result of speech detection
+    """Result of voice moderation
 
     """
 
@@ -1066,7 +1169,7 @@ class ScanVoiceResult(AbstractModel):
 
 
 class StatisticsItem(AbstractModel):
-    """Usage data
+    """Usage data unit
 
     """
 
@@ -1074,7 +1177,7 @@ class StatisticsItem(AbstractModel):
         r"""
         :param StatDate: Date in the format of yyyy-mm-dd, such as 2018-07-13
         :type StatDate: str
-        :param Data: Statistics
+        :param Data: Statistical value
         :type Data: int
         """
         self.StatDate = None
@@ -1093,6 +1196,31 @@ class StatisticsItem(AbstractModel):
         
 
 
+class StreamTextStatisticsItem(AbstractModel):
+    """Stream-to-Text usage statistics
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: Usage of the service (in seconds)
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Data: float
+        """
+        self.Data = None
+
+
+    def _deserialize(self, params):
+        self.Data = params.get("Data")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Tag(AbstractModel):
     """Tag list
 
@@ -1101,10 +1229,10 @@ class Tag(AbstractModel):
     def __init__(self):
         r"""
         :param TagKey: Tag key
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type TagKey: str
         :param TagValue: Tag value
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type TagValue: str
         """
         self.TagKey = None
@@ -1124,7 +1252,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class Task(AbstractModel):
-    """Speech detection task list
+    """Voice detection task list
 
     """
 
@@ -1132,11 +1260,11 @@ class Task(AbstractModel):
         r"""
         :param DataId: Unique data ID
         :type DataId: str
-        :param Url: URL-encoded data file URL, which is a pull address if the detected speech is a stream
+        :param Url: URL-encoded data file URL, which is a pull address if the detected voice is a stream.
         :type Url: str
-        :param RoomId: GME voice chat room ID, which is entered during speech detection by GME voice chat
+        :param RoomId: GME Voice Chat room ID, which is entered during voice analysis by GME Voice Chat.
         :type RoomId: str
-        :param OpenId: GME voice chat user ID, which is entered during speech detection by GME voice chat
+        :param OpenId: GME Voice Chat user ID, which is entered during voice analysis by GME Voice Chat.
         :type OpenId: str
         """
         self.DataId = None
@@ -1160,13 +1288,13 @@ class Task(AbstractModel):
 
 
 class VoiceFilterConf(AbstractModel):
-    """Configuration information of phrase filtering
+    """Configuration information of Phrase Filtering
 
     """
 
     def __init__(self):
         r"""
-        :param Status: Phrase filtering status. Valid values: open, close
+        :param Status: Phrase Filtering status. Valid values: `open`, `close`.
         :type Status: str
         """
         self.Status = None
@@ -1184,13 +1312,13 @@ class VoiceFilterConf(AbstractModel):
 
 
 class VoiceFilterStatisticsItem(AbstractModel):
-    """Phrase filtering usage statistics
+    """Phrase Filtering usage statistics
 
     """
 
     def __init__(self):
         r"""
-        :param Duration: Total duration of phrase filtering
+        :param Duration: Total duration of phrase filtering (in minutes)
         :type Duration: int
         """
         self.Duration = None
@@ -1208,15 +1336,15 @@ class VoiceFilterStatisticsItem(AbstractModel):
 
 
 class VoiceMessageConf(AbstractModel):
-    """Configuration information of voice messaging and speech-to-text
+    """Configuration information of Voice Message Service
 
     """
 
     def __init__(self):
         r"""
-        :param Status: Voice messaging and speech-to-text status. Valid values: open, close
+        :param Status: Voice Message Service status. Valid values: `open`, `close`.
         :type Status: str
-        :param Language: Language supported for voice messaging and speech-to-text. Valid values: all (all languages), cnen (Chinese and English). Default value: cnen
+        :param Language: Language supported for Voice Message Service. Valid values: `all` (all languages), `cnen` (Chinese and English). Default value: `cnen`.
         :type Language: str
         """
         self.Status = None
@@ -1236,13 +1364,13 @@ class VoiceMessageConf(AbstractModel):
 
 
 class VoiceMessageStatisticsItem(AbstractModel):
-    """Voice messaging usage statistics
+    """Voice Message Service usage statistics
 
     """
 
     def __init__(self):
         r"""
-        :param Dau: DAU of voice messaging and speech-to-text
+        :param Dau: DAUs of Voice Message Service
         :type Dau: int
         """
         self.Dau = None
