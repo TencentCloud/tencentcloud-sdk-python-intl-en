@@ -1081,7 +1081,7 @@ class ScanVoiceRequest(AbstractModel):
         :type Tasks: list of Task
         :param Callback: Async callback address for detection result. For more information, please see the <a href="#Callback_Declare">Callback description</a> above. (Note: If this field is empty, the detection result can only be queried by calling the `DescribeScanResultList` API.)
         :type Callback: str
-        :param Lang: Language. `jp`: Japanese
+        :param Lang: Language. Chinese will be used if it is left empty.
         :type Lang: str
         """
         self.BizId = None

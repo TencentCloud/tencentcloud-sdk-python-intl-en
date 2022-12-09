@@ -14,6 +14,9 @@
 # limitations under the License.
 
 
+# CAM signature/authentication error.
+AUTHFAILURE_INVALIDAUTHORIZATION = 'AuthFailure.InvalidAuthorization'
+
 # No motions of eye closing are detected.
 FAILEDOPERATION_ACTIONCLOSEEYE = 'FailedOperation.ActionCloseEye'
 

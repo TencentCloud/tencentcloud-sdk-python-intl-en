@@ -202,11 +202,11 @@ class GmeClient(AbstractClient):
 
 
     def ScanVoice(self, request):
-        """This API is used to submit a voice moderation task. Up to 100 tasks can be added in a task. Make sure you have activated Voice Analysis Service in [GME Console > Voice Content Moderation > Service Configuration](https://console.cloud.tencent.com/gamegme/conf).
+        """This API is used to submit a voice detection task. Up to 100 tasks can be added in the detection task list. Before using this API, please activate the Voice Content Moderation Service in [GME Console > Voice Content Moderation > Service Configuration](https://console.cloud.tencent.com/gamegme/conf).
         </br></br>
 
-        <h4><b>Free trial:</b></h4>
-        <li>You can try out the Voice Analysis Service free of charge in <a href="https://console.cloud.tencent.com/gamegme/tryout">GME Console > Voice Content Moderation > Product Trial</a>.</li>
+        <h4><b>About the trial:</b></h4>
+        <li>You can try out the Voice Content Moderation Service free of charge in <a href="https://console.cloud.tencent.com/gamegme/tryout">GME Console > Voice Content Moderation > Product Trial</a>.</li>
         </br>
 
         <h4><b>API feature description:</b></h4>
@@ -215,12 +215,12 @@ class GmeClient(AbstractClient):
         <li>The scenario can be specified, such as abusive or pornographic.</li>
         <li>Detection tasks can be submitted in batches. Up to 100 tasks can be added in the detection task list.</li>
         </br>
-        <h4><b>Audio file limit description:</b></h4>
+        <h4><b>Audio file limits:</b></h4>
         <li>Audio file size limit: 100 MB</li>
         <li>Audio file duration limit: 30 minutes</li>
         <li>Supported audio file formats: .wav, .m4a, .amr, .mp3, .aac, .wma, .ogg</li>
         </br>
-        <h4><b>Voice stream limit description:</b></h4>
+        <h4><b>Voice stream limits:</b></h4>
         <li>Supported voice stream formats: .m3u8, .flv</li>
         <li>Supported voice stream transfer protocols: RTMP, HTTP, HTTPS</li>
         <li>Voice stream duration limit: 4 hours</li>
@@ -241,12 +241,13 @@ class GmeClient(AbstractClient):
         <td>Voice detection</td>
         <td>Voice detection type</td>
         <td>
-        <p>`normal`: Normal</p>
-        <p>`porn`: Pornographic</p>
-        <p>`abuse`: Abusive</p>
-        <p>`ad`: Advertising</p>
-        <p>`contraband`: Prohibited</p>
-        <p>`customized`: Custom keyword library. This feature is only available to beta users. To try it out, please <a href="https://intl.cloud.tencent.com/apply/p/8809fjcik56?from_cn_redirect=1">contact us</a>.</p>
+        <p>normal: Normal</p>
+        <p>porn: Pornographic</p>
+        <p>abuse: Abusive</p>
+        <p>ad: Advertising</p>
+        <p>illegal: Illegal</p>
+        <p>moan: Moaning </p>
+        <p>customized: Custom dictionary</p>
         </td>
         </tr>
         </tbody>
@@ -283,7 +284,7 @@ class GmeClient(AbstractClient):
         	</ul>
         </ul>
 
-        <li>Below is a sample callback <font color="red">(for more information on the fields, please see the structure:
+        <li>Sample callback <font color="red">(for more information on the fields, please see the structure:
         <a href="https://intl.cloud.tencent.com/document/api/607/35375?from_cn_redirect=1#DescribeScanResult" target="_blank">DescribeScanResult</a>)</font>:</li>
         <pre><code>{
         	"Code": 0,
