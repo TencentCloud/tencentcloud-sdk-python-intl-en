@@ -201,7 +201,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeRecordList(self, request):
-        """This API is used to get DNS records of a domain.
+        """This API is used to get the DNS records of a domain.
 
         :param request: Request instance for DescribeRecordList.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeRecordListRequest`

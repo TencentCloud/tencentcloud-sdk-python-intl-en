@@ -27,7 +27,7 @@ class CreateDomainRequest(AbstractModel):
         r"""
         :param Domain: Domain
         :type Domain: str
-        :param GroupId: Domain group ID
+        :param GroupId: The group ID of the domain. You can view the group information of this domain via the `DescribeDomainGroupList` API.
         :type GroupId: int
         :param IsMark: Whether the domain is starred. Valid values: yes, no.
         :type IsMark: str
@@ -167,7 +167,7 @@ class DeleteDomainRequest(AbstractModel):
         r"""
         :param Domain: Domain
         :type Domain: str
-        :param DomainId: Domain ID. The `DomainId` parameter has a higher priority than `Domain`. If `DomainId` is passed in, `Domain` will be ignored.
+        :param DomainId: The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
         :type DomainId: int
         """
         self.Domain = None
@@ -212,9 +212,9 @@ class DeleteRecordRequest(AbstractModel):
         r"""
         :param Domain: Domain
         :type Domain: str
-        :param RecordId: Record ID.
+        :param RecordId: The record ID. You can view all DNS records and their IDs via the `DescribeRecordList` API.
         :type RecordId: int
-        :param DomainId: Domain ID. The `DomainId` parameter has a higher priority than `Domain`. If `DomainId` is passed in, `Domain` will be ignored.
+        :param DomainId: The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
         :type DomainId: int
         """
         self.Domain = None
@@ -261,7 +261,7 @@ class DescribeDomainRequest(AbstractModel):
         r"""
         :param Domain: Domain
         :type Domain: str
-        :param DomainId: Domain ID. The `DomainId` parameter has a higher priority than `Domain`. If `DomainId` is passed in, `Domain` will be ignored.
+        :param DomainId: The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
         :type DomainId: int
         """
         self.Domain = None
@@ -312,17 +312,17 @@ class DescribeRecordListRequest(AbstractModel):
         r"""
         :param Domain: The domain for which DNS records are to be obtained.
         :type Domain: str
-        :param DomainId: The ID of the domain for which DNS records are to be obtained. If `DomainId` is passed in, the system will omit the parameter `Domain`.
+        :param DomainId: The ID of the domain whose DNS records are requested. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
         :type DomainId: int
         :param Subdomain: The host header of a DNS record. If this parameter is passed in, only the DNS record corresponding to this host header will be returned.
         :type Subdomain: str
         :param RecordType: The type of DNS record, such as A, CNAME, NS, AAAA, explicit URL, implicit URL, CAA, or SPF record.
         :type RecordType: str
-        :param RecordLine: The split zone name.
+        :param RecordLine: The name of the split zone for which DNS records are requested. You can view split zones allowed by this domain via the `DescribeRecordLineList` API.
         :type RecordLine: str
-        :param RecordLineId: The split zone ID. If `RecordLineId` is passed in, the system will omit the parameter `RecordLine`.
+        :param RecordLineId: The ID of the split zone for which DNS records are requested. If `RecordLineId` is passed in, `RecordLine` is ignored. You can view split zones allowed by this domain via the `DescribeRecordLineList` API.
         :type RecordLineId: str
-        :param GroupId: The group ID.
+        :param GroupId: The group ID passed in to get DNS records in the group.
         :type GroupId: int
         :param Keyword: The keyword for searching for DNS records. Host headers and record values are supported.
         :type Keyword: str
@@ -412,9 +412,9 @@ class DescribeRecordRequest(AbstractModel):
         r"""
         :param Domain: Domain
         :type Domain: str
-        :param RecordId: Record ID.
+        :param RecordId: The record ID. You can view all DNS records and their IDs via the `DescribeRecordList` API.
         :type RecordId: int
-        :param DomainId: Domain ID. The `DomainId` parameter has a higher priority than `Domain`. If `DomainId` is passed in, `Domain` will be ignored.
+        :param DomainId: The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
         :type DomainId: int
         """
         self.Domain = None
@@ -618,7 +618,7 @@ class ModifyDomainRemarkRequest(AbstractModel):
         r"""
         :param Domain: Domain
         :type Domain: str
-        :param DomainId: Domain ID. The `DomainId` parameter has a higher priority than `Domain`. If `DomainId` is passed in, `Domain` will be ignored.
+        :param DomainId: The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
         :type DomainId: int
         :param Remark: Domain remarks. To delete the remarks, submit empty content.
         :type Remark: str
@@ -669,7 +669,7 @@ class ModifyDomainStatusRequest(AbstractModel):
         :type Domain: str
         :param Status: Domain status. Valid values: enable; disable.
         :type Status: str
-        :param DomainId: Domain ID. The `DomainId` parameter has a higher priority than `Domain`. If `DomainId` is passed in, `Domain` will be ignored.
+        :param DomainId: The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
         :type DomainId: int
         """
         self.Domain = None
@@ -722,9 +722,9 @@ class ModifyRecordRequest(AbstractModel):
         :type RecordLine: str
         :param Value: Record value, such as `IP : 200.200.200.200`, `CNAME : cname.dnspod.com`, and `MX : mail.dnspod.com`.
         :type Value: str
-        :param RecordId: Record ID.
+        :param RecordId: The record ID. You can view all DNS records and their IDs via the `DescribeRecordList` API.
         :type RecordId: int
-        :param DomainId: Domain ID. The `DomainId` parameter has a higher priority than `Domain`. If `DomainId` is passed in, `Domain` will be ignored.
+        :param DomainId: The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.
         :type DomainId: int
         :param SubDomain: Host record such as `www`. If it is not passed in, it will be `@` by default.
         :type SubDomain: str
