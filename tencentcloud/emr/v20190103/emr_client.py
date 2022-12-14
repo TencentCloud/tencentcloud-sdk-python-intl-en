@@ -86,7 +86,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeClusterNodes(self, request):
-        """This API is used to query the information of a hardware node.
+        """This API is used to query the information of nodes in a cluster.
 
         :param request: Request instance for DescribeClusterNodes.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeClusterNodesRequest`
@@ -144,7 +144,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeInstances(self, request):
-        """This API is used to query EMR instances.
+        """This API is used to query the information of instances in a cluster.
 
         :param request: Request instance for DescribeInstances.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeInstancesRequest`
@@ -173,7 +173,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeInstancesList(self, request):
-        """This API is used to query EMR cluster instances.
+        """This API is used to query the cluster list.
 
         :param request: Request instance for DescribeInstancesList.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeInstancesListRequest`
@@ -202,7 +202,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeResourceSchedule(self, request):
-        """This API is used to get data from the YARN Resource Scheduling page.
+        """This API is used to query the data of YARN Resource Scheduling.
 
         :param request: Request instance for DescribeResourceSchedule.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeResourceScheduleRequest`

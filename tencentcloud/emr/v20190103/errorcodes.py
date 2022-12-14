@@ -17,6 +17,9 @@
 # Operation failed.
 FAILEDOPERATION = 'FailedOperation'
 
+# 
+FAILEDOPERATION_CHECKIFSUPPORTPODSTRETCH = 'FailedOperation.CheckIfSupportPodStretch'
+
 # Duplicate order. Please check the EMR console.
 FAILEDOPERATION_DUPLICATEORDERNOTALLOWED = 'FailedOperation.DuplicateOrderNotAllowed'
 
@@ -55,6 +58,9 @@ INTERNALERROR_CONFIGCGWERROR = 'InternalError.ConfigCgwError'
 
 # An error occurred while calling another service API.
 INTERNALERROR_CVMERROR = 'InternalError.CvmError'
+
+# Error in calling EKS.
+INTERNALERROR_EKSERROR = 'InternalError.EKSError'
 
 # An error occurred while calling another service API.
 INTERNALERROR_KMSERROR = 'InternalError.KmsError'

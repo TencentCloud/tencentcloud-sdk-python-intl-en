@@ -1490,6 +1490,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param SubnetId: Subnet ID
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type SubnetId: str
+        :param ProtocolType: Database connection protocol type. Valid values: `postgresql`, `mssql` (MSSQL-compatible)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProtocolType: str
         """
         self.Address = None
         self.Ip = None
@@ -1498,6 +1501,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.Status = None
         self.VpcId = None
         self.SubnetId = None
+        self.ProtocolType = None
 
 
     def _deserialize(self, params):
@@ -1508,6 +1512,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.Status = params.get("Status")
         self.VpcId = params.get("VpcId")
         self.SubnetId = params.get("SubnetId")
+        self.ProtocolType = params.get("ProtocolType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3673,9 +3678,9 @@ class InquiryPriceRenewDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OriginalPrice: Total cost before discount; for example, 24650 indicates 246.5 CNY
+        :param OriginalPrice: Published price in cents. For example, 24650 indicates 246.5 USD.
         :type OriginalPrice: int
-        :param Price: Actual amount payable; for example, 24650 indicates 246.5 CNY
+        :param Price: Discounted total amount. For example, 24650 indicates 246.5 USD.
         :type Price: int
         :param Currency: Currency, such as USD.
         :type Currency: str
@@ -4642,8 +4647,8 @@ For a `bool` parameter, the valid values include `true` and `false`;
 For an `enum` or `mutil_enum` parameter, the `EnumValue` field represents the valid values.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ParamValueType: str
-        :param Unit: Value unit of the parameter. If the parameter has no unit, this field will return an empty string.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param Unit: Unit of the parameter value. If the parameter has no unit, this field will return null.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Unit: str
         :param DefaultValue: Default value of the parameter, which is returned as a string
 Note: this field may return `null`, indicating that no valid values can be obtained.
@@ -4651,12 +4656,12 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param CurrentValue: Current value of the parameter, which is returned as a string
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type CurrentValue: str
-        :param EnumValue: Value range of the enum parameter
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type EnumValue: list of str
         :param Max: The maximum value of the `integer` or `real` parameter
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Max: float
+        :param EnumValue: Value range of the enum parameter
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type EnumValue: list of str
         :param Min: The minimum value of the `integer` or `real` parameter
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Min: float
@@ -4684,6 +4689,15 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param LastModifyTime: The last modified time of the parameter
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type LastModifyTime: str
+        :param StandbyRelated: Primary-standby constraint. Valid values: `0` (no constraint), `1` (The parameter value of the standby server must be greater than that of the primary server), `2` (The parameter value of the primary server must be greater than that of the standby server.)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type StandbyRelated: int
+        :param VersionRelationSet: Associated parameter version information, which refers to the detailed parameter information of the kernel version.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VersionRelationSet: list of ParamVersionRelation
+        :param SpecRelationSet: Associated parameter specification information, which refers to the detailed parameter information of the specifications.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SpecRelationSet: list of ParamSpecRelation
         """
         self.ID = None
         self.Name = None
@@ -4691,8 +4705,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.Unit = None
         self.DefaultValue = None
         self.CurrentValue = None
-        self.EnumValue = None
         self.Max = None
+        self.EnumValue = None
         self.Min = None
         self.ParamDescriptionCH = None
         self.ParamDescriptionEN = None
@@ -4702,6 +4716,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.SpecRelated = None
         self.Advanced = None
         self.LastModifyTime = None
+        self.StandbyRelated = None
+        self.VersionRelationSet = None
+        self.SpecRelationSet = None
 
 
     def _deserialize(self, params):
@@ -4711,8 +4728,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.Unit = params.get("Unit")
         self.DefaultValue = params.get("DefaultValue")
         self.CurrentValue = params.get("CurrentValue")
-        self.EnumValue = params.get("EnumValue")
         self.Max = params.get("Max")
+        self.EnumValue = params.get("EnumValue")
         self.Min = params.get("Min")
         self.ParamDescriptionCH = params.get("ParamDescriptionCH")
         self.ParamDescriptionEN = params.get("ParamDescriptionEN")
@@ -4722,6 +4739,129 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.SpecRelated = params.get("SpecRelated")
         self.Advanced = params.get("Advanced")
         self.LastModifyTime = params.get("LastModifyTime")
+        self.StandbyRelated = params.get("StandbyRelated")
+        if params.get("VersionRelationSet") is not None:
+            self.VersionRelationSet = []
+            for item in params.get("VersionRelationSet"):
+                obj = ParamVersionRelation()
+                obj._deserialize(item)
+                self.VersionRelationSet.append(obj)
+        if params.get("SpecRelationSet") is not None:
+            self.SpecRelationSet = []
+            for item in params.get("SpecRelationSet"):
+                obj = ParamSpecRelation()
+                obj._deserialize(item)
+                self.SpecRelationSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ParamSpecRelation(AbstractModel):
+    """Parameter information of each specification
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Parameter name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Name: str
+        :param Memory: The specification that corresponds to the parameter information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Memory: str
+        :param Value: The default parameter value under this specification
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Value: str
+        :param Unit: Unit of the parameter value. If the parameter has no unit, this field will return null.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Unit: str
+        :param Max: The maximum value of the `integer` or `real` parameter
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Max: float
+        :param Min: The minimum value of the `integer` or `real` parameter
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Min: float
+        :param EnumValue: Value range of the enum parameter
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EnumValue: list of str
+        """
+        self.Name = None
+        self.Memory = None
+        self.Value = None
+        self.Unit = None
+        self.Max = None
+        self.Min = None
+        self.EnumValue = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Memory = params.get("Memory")
+        self.Value = params.get("Value")
+        self.Unit = params.get("Unit")
+        self.Max = params.get("Max")
+        self.Min = params.get("Min")
+        self.EnumValue = params.get("EnumValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ParamVersionRelation(AbstractModel):
+    """Parameter information of each version
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Parameter name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Name: str
+        :param DBKernelVersion: The kernel version that corresponds to the parameter information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DBKernelVersion: str
+        :param Value: Default parameter value under the kernel version and specification of the instance
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Value: str
+        :param Unit: Unit of the parameter value. If the parameter has no unit, this field will return null.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Unit: str
+        :param Max: The maximum value of the `integer` or `real` parameter
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Max: float
+        :param Min: The minimum value of the `integer` or `real` parameter
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Min: float
+        :param EnumValue: Value range of the enum parameter
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EnumValue: list of str
+        """
+        self.Name = None
+        self.DBKernelVersion = None
+        self.Value = None
+        self.Unit = None
+        self.Max = None
+        self.Min = None
+        self.EnumValue = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.DBKernelVersion = params.get("DBKernelVersion")
+        self.Value = params.get("Value")
+        self.Unit = params.get("Unit")
+        self.Max = params.get("Max")
+        self.Min = params.get("Min")
+        self.EnumValue = params.get("EnumValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

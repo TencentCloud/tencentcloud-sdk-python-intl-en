@@ -609,6 +609,8 @@ class AiAnalysisTaskClassificationResult(AbstractModel):
         :param Output: Output of intelligent categorization task.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskClassificationOutput`
+        :param Progress: The progress of an intelligent categorization task. Value range: 0-100.
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -616,6 +618,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -629,6 +632,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("Output") is not None:
             self.Output = AiAnalysisTaskClassificationOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -720,6 +724,8 @@ class AiAnalysisTaskCoverResult(AbstractModel):
         :param Output: Output of intelligent cover generating task.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskCoverOutput`
+        :param Progress: The progress of an intelligent thumbnail generation task. Value range: 0-100.
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -727,6 +733,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -740,6 +747,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("Output") is not None:
             self.Output = AiAnalysisTaskCoverOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -831,6 +839,8 @@ class AiAnalysisTaskFrameTagResult(AbstractModel):
         :param Output: Output of intelligent frame-specific tagging task.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskFrameTagOutput`
+        :param Progress: The progress of an intelligent labeling by frame task. Value range: 0-100.
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -838,6 +848,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -851,6 +862,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("Output") is not None:
             self.Output = AiAnalysisTaskFrameTagOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -942,6 +954,8 @@ class AiAnalysisTaskHighlightResult(AbstractModel):
         :param Output: Output of an intelligent highlight generating task.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskHighlightOutput`
+        :param Progress: The progress of an intelligent highlight generation task. Value range: 0-100.
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -949,6 +963,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -962,6 +977,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("Output") is not None:
             self.Output = AiAnalysisTaskHighlightOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1077,6 +1093,8 @@ class AiAnalysisTaskTagResult(AbstractModel):
         :param Output: Output of intelligent tagging task.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskTagOutput`
+        :param Progress: The progress of an intelligent labeling task. Value range: 0-100.
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -1084,6 +1102,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -1097,6 +1116,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("Output") is not None:
             self.Output = AiAnalysisTaskTagOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1539,6 +1559,8 @@ class AiRecognitionTaskAsrWordsResult(AbstractModel):
         :param Output: Output information of speech keyword recognition task.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrWordsResultOutput`
+        :param Progress: The progress of a speech keyword recognition task. Value range: 0-100.
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -1546,6 +1568,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -1559,6 +1582,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("Output") is not None:
             self.Output = AiRecognitionTaskAsrWordsResultOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1715,6 +1739,8 @@ class AiRecognitionTaskFaceResult(AbstractModel):
         :param Output: Output information of face recognition task.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskFaceResultOutput`
+        :param Progress: The progress of a face recognition task. Value range: 0-100.
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -1722,6 +1748,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -1735,6 +1762,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("Output") is not None:
             self.Output = AiRecognitionTaskFaceResultOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1905,6 +1933,8 @@ class AiRecognitionTaskHeadTailResult(AbstractModel):
         :param Output: Output information of video opening and ending credits recognition task.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskHeadTailResultOutput`
+        :param Progress: The progress of an opening/closing segment recognition task. Value range: 0-100.
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -1912,6 +1942,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -1925,6 +1956,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("Output") is not None:
             self.Output = AiRecognitionTaskHeadTailResultOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2038,6 +2070,8 @@ class AiRecognitionTaskObjectResult(AbstractModel):
         :param Output: Output information of object recognition task.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskObjectResultOutput`
+        :param Progress: The progress of an object recognition task. Value range: 0-100.
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -2045,6 +2079,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -2058,6 +2093,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("Output") is not None:
             self.Output = AiRecognitionTaskObjectResultOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2218,6 +2254,8 @@ class AiRecognitionTaskOcrFullTextResult(AbstractModel):
         :param Output: Output information of full text recognition task.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskOcrFullTextResultOutput`
+        :param Progress: The progress of a full text recognition task. Value range: 0-100.
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -2225,6 +2263,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -2238,6 +2277,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("Output") is not None:
             self.Output = AiRecognitionTaskOcrFullTextResultOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2398,6 +2438,8 @@ class AiRecognitionTaskOcrWordsResult(AbstractModel):
         :param Output: Output information of text keyword recognition task.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskOcrWordsResultOutput`
+        :param Progress: The progress of a text keyword recognition task. Value range: 0-100.
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -2405,6 +2447,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -2418,6 +2461,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("Output") is not None:
             self.Output = AiRecognitionTaskOcrWordsResultOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2579,6 +2623,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Output: Output information of video splitting task.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskSegmentResultOutput`
+        :param Progress: The progress of a video splitting task. Value range: 0-100.
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -2586,6 +2632,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -2599,6 +2646,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("Output") is not None:
             self.Output = AiRecognitionTaskSegmentResultOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3338,6 +3386,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalAsrTaskInput`
         :param Output: Output for ASR-based recognition of politically sensitive content
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalAsrTaskOutput`
+        :param Progress: The progress of an ASR-based moderation task (politically sensitive content). Value range: 0-100.
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -3345,6 +3395,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -3358,6 +3409,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("Output") is not None:
             self.Output = AiReviewPoliticalAsrTaskOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3438,6 +3490,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Output: Output for intelligent recognition of politically sensitive content
 Note: This field may return `null`, indicating that no valid value can be found.
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalTaskOutput`
+        :param Progress: The progress of a moderation task (politically sensitive content). Value range: 0-100.
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -3445,6 +3499,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -3458,6 +3513,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
         if params.get("Output") is not None:
             self.Output = AiReviewPoliticalTaskOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3488,6 +3544,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Output: Output for ASR-based recognition of pornographic content
 Note: This field may return `null`, indicating that no valid value can be found.
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPornAsrTaskOutput`
+        :param Progress: The progress of an ASR-based moderation task (pornographic content). Value range: 0-100.
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -3495,6 +3553,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -3508,6 +3567,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
         if params.get("Output") is not None:
             self.Output = AiReviewPornAsrTaskOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3538,6 +3598,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Output: Output for OCR-based recognition of pornographic content
 Note: This field may return `null`, indicating that no valid value can be found.
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPornOcrTaskOutput`
+        :param Progress: The progress of an OCR-based moderation task (pornographic content). Value range: 0-100.
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -3545,6 +3607,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -3558,6 +3621,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
         if params.get("Output") is not None:
             self.Output = AiReviewPornOcrTaskOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3588,6 +3652,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Output: Output for intelligent recognition of pornographic content
 Note: This field may return `null`, indicating that no valid value can be found.
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPornTaskOutput`
+        :param Progress: The progress of a moderation task (pornographic content). Value range: 0-100.
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -3595,6 +3661,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -3608,6 +3675,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
         if params.get("Output") is not None:
             self.Output = AiReviewPornTaskOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3637,6 +3705,8 @@ class AiReviewTaskProhibitedAsrResult(AbstractModel):
         :param Output: Output for ASR-based recognition of banned content
 Note: This field may return `null`, indicating that no valid value can be found.
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewProhibitedAsrTaskOutput`
+        :param Progress: The progress of an ASR-based moderation task (banned content). Value range: 0-100.
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -3644,6 +3714,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -3657,6 +3728,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
         if params.get("Output") is not None:
             self.Output = AiReviewProhibitedAsrTaskOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3686,6 +3758,8 @@ class AiReviewTaskProhibitedOcrResult(AbstractModel):
         :param Output: Output for OCR-based recognition of banned content
 Note: This field may return `null`, indicating that no valid value can be found.
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewProhibitedOcrTaskOutput`
+        :param Progress: The progress of an OCR-based moderation task (banned content). Value range: 0-100.
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -3693,6 +3767,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -3706,6 +3781,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
         if params.get("Output") is not None:
             self.Output = AiReviewProhibitedOcrTaskOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3735,6 +3811,8 @@ class AiReviewTaskTerrorismOcrResult(AbstractModel):
         :param Output: Output for OCR-based recognition of terrorism content
 Note: This field may return `null`, indicating that no valid value can be found.
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewTerrorismOcrTaskOutput`
+        :param Progress: The progress of an OCR-based moderation task (terrorist content). Value range: 0-100.
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -3742,6 +3820,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -3755,6 +3834,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
         if params.get("Output") is not None:
             self.Output = AiReviewTerrorismOcrTaskOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3785,6 +3865,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Output: Output for intelligent recognition of terrorism content
 Note: This field may return `null`, indicating that no valid value can be found.
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewTerrorismTaskOutput`
+        :param Progress: The progress of a moderation task (terrorist content). Value range: 0-100.
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -3792,6 +3874,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -3805,6 +3888,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
         if params.get("Output") is not None:
             self.Output = AiReviewTerrorismTaskOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6341,6 +6425,69 @@ class CreateContentReviewTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateImageProcessingTemplateRequest(AbstractModel):
+    """CreateImageProcessingTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Operations: An array of image processing operations. The operations will be performed in the specified order.
+<li>Length limit: 3.</li>
+        :type Operations: list of ImageOperation
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
+        :param Name: The name of the image processing template. Length limit: 64 characters.
+        :type Name: str
+        :param Comment: The template description. Length limit: 256 characters.
+        :type Comment: str
+        """
+        self.Operations = None
+        self.SubAppId = None
+        self.Name = None
+        self.Comment = None
+
+
+    def _deserialize(self, params):
+        if params.get("Operations") is not None:
+            self.Operations = []
+            for item in params.get("Operations"):
+                obj = ImageOperation()
+                obj._deserialize(item)
+                self.Operations.append(obj)
+        self.SubAppId = params.get("SubAppId")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateImageProcessingTemplateResponse(AbstractModel):
+    """CreateImageProcessingTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Definition: The template ID.
+        :type Definition: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Definition = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateImageSpriteTask2017(AbstractModel):
     """The details of an image sprite task. This parameter is only valid for tasks initiated by the v2017 image sprite API.
 
@@ -7644,6 +7791,51 @@ class DeleteContentReviewTemplateRequest(AbstractModel):
 
 class DeleteContentReviewTemplateResponse(AbstractModel):
     """DeleteContentReviewTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteImageProcessingTemplateRequest(AbstractModel):
+    """DeleteImageProcessingTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Definition: The template ID.
+        :type Definition: int
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
+        """
+        self.Definition = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteImageProcessingTemplateResponse(AbstractModel):
+    """DeleteImageProcessingTemplate response structure.
 
     """
 
@@ -9038,6 +9230,164 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class DescribeFileAttributesTask(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 
+        :type TaskId: str
+        :param Status: 
+        :type Status: str
+        :param ErrCode: 
+        :type ErrCode: int
+        :param ErrCodeExt: 
+        :type ErrCodeExt: str
+        :param Message: 
+        :type Message: str
+        :param Progress: 
+        :type Progress: int
+        :param FileId: 
+        :type FileId: str
+        :param Output: 
+        :type Output: :class:`tencentcloud.vod.v20180717.models.DescribeFileAttributesTaskOutput`
+        :param SessionId: 
+        :type SessionId: str
+        :param SessionContext: 
+        :type SessionContext: str
+        """
+        self.TaskId = None
+        self.Status = None
+        self.ErrCode = None
+        self.ErrCodeExt = None
+        self.Message = None
+        self.Progress = None
+        self.FileId = None
+        self.Output = None
+        self.SessionId = None
+        self.SessionContext = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.ErrCodeExt = params.get("ErrCodeExt")
+        self.Message = params.get("Message")
+        self.Progress = params.get("Progress")
+        self.FileId = params.get("FileId")
+        if params.get("Output") is not None:
+            self.Output = DescribeFileAttributesTaskOutput()
+            self.Output._deserialize(params.get("Output"))
+        self.SessionId = params.get("SessionId")
+        self.SessionContext = params.get("SessionContext")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFileAttributesTaskOutput(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Md5: 
+        :type Md5: str
+        """
+        self.Md5 = None
+
+
+    def _deserialize(self, params):
+        self.Md5 = params.get("Md5")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeImageProcessingTemplatesRequest(AbstractModel):
+    """DescribeImageProcessingTemplates request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
+        :param Definitions: The IDs of the templates to query. Length limit: 100.
+        :type Definitions: list of int non-negative
+        :param Type: The template type. Valid values:
+<li>Preset</li>
+<li>Custom</li>
+        :type Type: str
+        :param Offset: The offset. Default value: 0.
+        :type Offset: int
+        :param Limit: The number of records to return. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        """
+        self.SubAppId = None
+        self.Definitions = None
+        self.Type = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
+        self.Definitions = params.get("Definitions")
+        self.Type = params.get("Type")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeImageProcessingTemplatesResponse(AbstractModel):
+    """DescribeImageProcessingTemplates response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: The total number of records that meet the conditions.
+        :type TotalCount: int
+        :param ImageProcessingTemplateSet: The information of the queried image processing templates.
+        :type ImageProcessingTemplateSet: list of ImageProcessingTemplate
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ImageProcessingTemplateSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ImageProcessingTemplateSet") is not None:
+            self.ImageProcessingTemplateSet = []
+            for item in params.get("ImageProcessingTemplateSet"):
+                obj = ImageProcessingTemplate()
+                obj._deserialize(item)
+                self.ImageProcessingTemplateSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeImageReviewUsageDataRequest(AbstractModel):
     """DescribeImageReviewUsageData request structure.
 
@@ -10214,7 +10564,6 @@ class DescribeTaskDetailResponse(AbstractModel):
 <li>FastClipMedia: Quick clipping</li>
 <li>RemoveWatermarkTask: Watermark removal</li>
 <li> ReviewAudioVideo: Moderation</li>
-<li> ReduceMediaBitrate: Bitrate reduction</li>
         :type TaskType: str
         :param Status: Task status. Valid values:
 <li>WAITING: waiting;</li>
@@ -10272,9 +10621,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param ReviewAudioVideoTask: The information of a moderation task. This parameter is valid only if `TaskType` is `ReviewAudioVideo`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ReviewAudioVideoTask: :class:`tencentcloud.vod.v20180717.models.ReviewAudioVideoTask`
-        :param ReduceMediaBitrateTask: The information of a bitrate reduction task. This parameter is valid only if `TaskType` is `ReduceMediaBitrate`.
+        :param ReduceMediaBitrateTask: This parameter is invalid now.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ReduceMediaBitrateTask: :class:`tencentcloud.vod.v20180717.models.ReduceMediaBitrateTask`
+        :param DescribeFileAttributesTask: 
+        :type DescribeFileAttributesTask: :class:`tencentcloud.vod.v20180717.models.DescribeFileAttributesTask`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -10299,6 +10650,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.ExtractTraceWatermarkTask = None
         self.ReviewAudioVideoTask = None
         self.ReduceMediaBitrateTask = None
+        self.DescribeFileAttributesTask = None
         self.RequestId = None
 
 
@@ -10356,6 +10708,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("ReduceMediaBitrateTask") is not None:
             self.ReduceMediaBitrateTask = ReduceMediaBitrateTask()
             self.ReduceMediaBitrateTask._deserialize(params.get("ReduceMediaBitrateTask"))
+        if params.get("DescribeFileAttributesTask") is not None:
+            self.DescribeFileAttributesTask = DescribeFileAttributesTask()
+            self.DescribeFileAttributesTask._deserialize(params.get("DescribeFileAttributesTask"))
         self.RequestId = params.get("RequestId")
 
 
@@ -11271,9 +11626,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param ReviewAudioVideoCompleteEvent: The callback for the completion of the moderation task. This parameter is valid only if `EventType` is `ReviewAudioVideoComplete`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ReviewAudioVideoCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ReviewAudioVideoTask`
-        :param ReduceMediaBitrateCompleteEvent: The callback for the completion of bitrate reduction. This parameter is valid only if `EventType` is `ReduceMediaBitrateComplete`.
+        :param ReduceMediaBitrateCompleteEvent: This parameter is invalid now.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ReduceMediaBitrateCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ReduceMediaBitrateTask`
+        :param DescribeFileAttributesCompleteEvent: 
+        :type DescribeFileAttributesCompleteEvent: :class:`tencentcloud.vod.v20180717.models.DescribeFileAttributesTask`
         """
         self.EventHandle = None
         self.EventType = None
@@ -11296,6 +11653,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.ExtractTraceWatermarkCompleteEvent = None
         self.ReviewAudioVideoCompleteEvent = None
         self.ReduceMediaBitrateCompleteEvent = None
+        self.DescribeFileAttributesCompleteEvent = None
 
 
     def _deserialize(self, params):
@@ -11358,6 +11716,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("ReduceMediaBitrateCompleteEvent") is not None:
             self.ReduceMediaBitrateCompleteEvent = ReduceMediaBitrateTask()
             self.ReduceMediaBitrateCompleteEvent._deserialize(params.get("ReduceMediaBitrateCompleteEvent"))
+        if params.get("DescribeFileAttributesCompleteEvent") is not None:
+            self.DescribeFileAttributesCompleteEvent = DescribeFileAttributesTask()
+            self.DescribeFileAttributesCompleteEvent._deserialize(params.get("DescribeFileAttributesCompleteEvent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12096,6 +12457,134 @@ class HighlightsConfigureInfoForUpdate(AbstractModel):
         
 
 
+class ImageCenterCut(AbstractModel):
+    """Image cropping details.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: The cropping type. Valid values:
+<li>Circle: Cropping to circle. `Radius` specifies the radius of the output image.</li>
+<li>Rectangle: Cropping to rectangle. `Width` and `Height` specify the width and height of the output image.</li>
+        :type Type: str
+        :param Width: The width (pixels) of the output image. This parameter is valid if `Type` is `Rectangle`.
+        :type Width: int
+        :param Height: The height (pixels) of the output image. This parameter is valid if `Type` is `Rectangle`.
+        :type Height: int
+        :param Radius: The radius of the output image. This parameter is valid if `Type` is `Circle`.
+        :type Radius: int
+        """
+        self.Type = None
+        self.Width = None
+        self.Height = None
+        self.Radius = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.Radius = params.get("Radius")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageOperation(AbstractModel):
+    """An image operation.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: The image processing type. Valid values:
+<li>`Scale`: Scaling</li>
+<li>`CenterCut`: Cropping</li>
+        :type Type: str
+        :param Scale: The scaling details. This parameter is valid only if `Type` is `Scale`.
+        :type Scale: :class:`tencentcloud.vod.v20180717.models.ImageScale`
+        :param CenterCut: The cropping details. This parameter is valid only if `Type` is `CenterCut`.
+        :type CenterCut: :class:`tencentcloud.vod.v20180717.models.ImageCenterCut`
+        """
+        self.Type = None
+        self.Scale = None
+        self.CenterCut = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        if params.get("Scale") is not None:
+            self.Scale = ImageScale()
+            self.Scale._deserialize(params.get("Scale"))
+        if params.get("CenterCut") is not None:
+            self.CenterCut = ImageCenterCut()
+            self.CenterCut._deserialize(params.get("CenterCut"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageProcessingTemplate(AbstractModel):
+    """An image processing template, which can contain at most three operations, for example, cropping, scaling, and cropping again.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Definition: The template ID.
+        :type Definition: int
+        :param Type: The template type. Valid values:
+<li>Preset</li>
+<li>Custom</li>
+        :type Type: str
+        :param Name: The template name.
+        :type Name: str
+        :param Comment: The template description.
+        :type Comment: str
+        :param Operations: An array of image processing operations. The operations will be performed in the specified order.
+<li>Length limit: 3.</li>
+        :type Operations: list of ImageOperation
+        :param CreateTime: The template creation time in [ISO date format](https://www.tencentcloud.com/document/product/266/11732?lang=en&pg=#iso-date-format).
+        :type CreateTime: str
+        """
+        self.Definition = None
+        self.Type = None
+        self.Name = None
+        self.Comment = None
+        self.Operations = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Type = params.get("Type")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        if params.get("Operations") is not None:
+            self.Operations = []
+            for item in params.get("Operations"):
+                obj = ImageOperation()
+                obj._deserialize(item)
+                self.Operations.append(obj)
+        self.CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ImageReviewUsageDataItem(AbstractModel):
     """The usage statistics for the image recognition feature.
 
@@ -12115,6 +12604,51 @@ class ImageReviewUsageDataItem(AbstractModel):
     def _deserialize(self, params):
         self.Time = params.get("Time")
         self.Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageScale(AbstractModel):
+    """Image scaling details.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: The scaling type. Valid values:
+<li>`WidthFirst`: Specify the width and proportionally scale the height.</li>
+<li>`HeightFirst`: Specify the height and proportionally scale the width.</li>
+<li>`LongEdgeFirst`: Specify the long side (`LongEdge`) and proportionally scale the short side.</li>
+<li>`ShortEdgeFirst`: Specify the short side (`ShortEdge`) and proportionally scale the long side.</li>
+<li>Force: Specify both the height and width. The output image may be distorted.</li>
+        :type Type: str
+        :param Height: The image height (pixels). This parameter is valid only if `Type` is `HeightFirst` or `Force`.
+        :type Height: int
+        :param Width: The image width (pixels). This parameter is valid only if `Type` is `WidthFirst` or `Force`.
+        :type Width: int
+        :param LongEdge: The long side of the output image (pixels). This parameter is valid only if `Type` is `LongEdgeFirst`.
+        :type LongEdge: int
+        :param ShortEdge: The short side of the output image (pixels). This parameter is valid only if `Type` is `ShortEdgeFirst`.
+        :type ShortEdge: int
+        """
+        self.Type = None
+        self.Height = None
+        self.Width = None
+        self.LongEdge = None
+        self.ShortEdge = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Height = params.get("Height")
+        self.Width = params.get("Width")
+        self.LongEdge = params.get("LongEdge")
+        self.ShortEdge = params.get("ShortEdge")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14035,6 +14569,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Output: Output of animated image generating task.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Output: :class:`tencentcloud.vod.v20180717.models.MediaAnimatedGraphicsItem`
+        :param Progress: The progress of an animated image generation task. Value range: 0-100.
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -14042,6 +14578,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -14055,6 +14592,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("Output") is not None:
             self.Output = MediaAnimatedGraphicsItem()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14084,6 +14622,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Input: :class:`tencentcloud.vod.v20180717.models.CoverBySnapshotTaskInput`
         :param Output: Output of cover generating task.
         :type Output: :class:`tencentcloud.vod.v20180717.models.CoverBySnapshotTaskOutput`
+        :param Progress: The progress of a video screenshot (thumbnail) task. Value range: 0-100.
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -14091,6 +14631,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -14104,6 +14645,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("Output") is not None:
             self.Output = CoverBySnapshotTaskOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14134,6 +14676,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Output: Output of image sprite generating task.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Output: :class:`tencentcloud.vod.v20180717.models.MediaImageSpriteItem`
+        :param Progress: The progress of an image sprite generation task. Value range: 0-100.
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -14141,6 +14685,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -14154,6 +14699,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("Output") is not None:
             self.Output = MediaImageSpriteItem()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14354,6 +14900,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Output: Output of sampled screencapturing task.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Output: :class:`tencentcloud.vod.v20180717.models.MediaSampleSnapshotItem`
+        :param Progress: The progress of a sampled screenshot task. Value range: 0-100.
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -14361,6 +14909,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -14374,6 +14923,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("Output") is not None:
             self.Output = MediaSampleSnapshotItem()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14404,6 +14954,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Output: Output of time point screencapturing task.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Output: :class:`tencentcloud.vod.v20180717.models.MediaSnapshotByTimeOffsetItem`
+        :param Progress: The progress of a time point screenshot task. Value range: 0-100.
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -14411,6 +14963,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -14424,6 +14977,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("Output") is not None:
             self.Output = MediaSnapshotByTimeOffsetItem()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -18047,6 +18601,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param SessionId: The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SessionId: str
+        :param Operator: The operator. Valid values:
+<li>`SYSTEM`: The task is triggered by the system.</li>
+        :type Operator: str
+        :param OperationType: The operation type. Valid values:
+<li>`TSC`: TSC-based smart bitrate reduction</li>
+        :type OperationType: str
         """
         self.TaskId = None
         self.Status = None
@@ -18064,6 +18624,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.TasksNotifyMode = None
         self.SessionContext = None
         self.SessionId = None
+        self.Operator = None
+        self.OperationType = None
 
 
     def _deserialize(self, params):
@@ -18105,6 +18667,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.TasksNotifyMode = params.get("TasksNotifyMode")
         self.SessionContext = params.get("SessionContext")
         self.SessionId = params.get("SessionId")
+        self.Operator = params.get("Operator")
+        self.OperationType = params.get("OperationType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -18832,6 +19396,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type SessionContext: str
         :param SessionId: The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.
         :type SessionId: str
+        :param Progress: The progress of a pull and upload task. Value range: 0-100.
+        :type Progress: int
         """
         self.TaskId = None
         self.Status = None
@@ -18844,6 +19410,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ProcedureTaskId = None
         self.SessionContext = None
         self.SessionId = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -18862,6 +19429,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ProcedureTaskId = params.get("ProcedureTaskId")
         self.SessionContext = params.get("SessionContext")
         self.SessionId = params.get("SessionId")
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -20842,6 +21410,8 @@ class SplitMediaTask(AbstractModel):
         :type SessionContext: str
         :param SessionId: ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or set to an empty string, no deduplication will be performed.
         :type SessionId: str
+        :param Progress: The progress of a video splitting task. Value range: 0-100.
+        :type Progress: int
         """
         self.TaskId = None
         self.Status = None
@@ -20851,6 +21421,7 @@ class SplitMediaTask(AbstractModel):
         self.FileInfoSet = None
         self.SessionContext = None
         self.SessionId = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -20867,6 +21438,7 @@ class SplitMediaTask(AbstractModel):
                 self.FileInfoSet.append(obj)
         self.SessionContext = params.get("SessionContext")
         self.SessionId = params.get("SessionId")
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

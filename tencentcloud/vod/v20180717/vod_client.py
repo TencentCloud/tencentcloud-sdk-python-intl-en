@@ -362,6 +362,35 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateImageProcessingTemplate(self, request):
+        """This API is used to create a custom image processing template. You can create up to 16 templates, and each template can contain up to three operations, for example, cropping, scaling, and cropping again.
+
+        :param request: Request instance for CreateImageProcessingTemplate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateImageProcessingTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateImageProcessingTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateImageProcessingTemplate", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateImageProcessingTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateImageSpriteTemplate(self, request):
         """This API is used to create a custom image sprite generating template. Up to 16 templates can be created.
 
@@ -877,6 +906,35 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteContentReviewTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteImageProcessingTemplate(self, request):
+        """This API is used to delete an image processing template.
+
+        :param request: Request instance for DeleteImageProcessingTemplate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DeleteImageProcessingTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DeleteImageProcessingTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteImageProcessingTemplate", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteImageProcessingTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1569,6 +1627,35 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDrmKeyProviderInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeImageProcessingTemplates(self, request):
+        """This API is used to query image processing templates. You can specify the filters as well as the offset to start returning records from.
+
+        :param request: Request instance for DescribeImageProcessingTemplates.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeImageProcessingTemplatesRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeImageProcessingTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeImageProcessingTemplates", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeImageProcessingTemplatesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -3089,17 +3176,11 @@ class VodClient(AbstractClient):
         5. Image sprite generating
         6. Taking a screenshot to use as the thumbnail
         7. Adaptive bitrate streaming and encryption
-        8. Intelligent recognition of pornographic, terrorism, and politically sensitive content
-        9. Intelligent content analysis for labeling, categorization, thumbnail generation, or frame-specific labeling
-        10. Recognition of opening and closing credits, faces, full text, text keywords, full speech, speech keywords, and objects
+        8. Detecting pornographic, terrorist, and politically sensitive content
+        9. Content analysis for labeling, categorization, thumbnail generation, or frame-specific labeling
+        10. Recognition of opening and closing segments, faces, full text, text keywords, full speech, speech keywords, and objects
 
         If event notifications are used, the event type is [ProcedureStateChanged](https://intl.cloud.tencent.com/document/product/266/9636?from_cn_redirect=1).
-
-        A digital watermark has the following restrictions:
-        <li>Digital watermarks can only be image watermarks.</li>
-        <li>Digital watermarks must be looped.</li>
-        <li>If you use digital watermarks, the output video must be in HLS format.</li>
-        <li>Digital watermarks can only be displayed in the upper half of a video.</li>
 
         :param request: Request instance for ProcessMedia.
         :type request: :class:`tencentcloud.vod.v20180717.models.ProcessMediaRequest`

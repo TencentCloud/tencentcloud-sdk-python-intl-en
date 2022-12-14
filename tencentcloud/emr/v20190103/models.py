@@ -573,27 +573,19 @@ class CreateInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProductId: Product ID. Different product IDs represent different EMR product versions. Valid values:
-<li>1: EMR v1.3.1</li>
-<li>2: EMR v2.0.1</li>
-<li>4: EMR v2.1.0</li>
-<li>7: EMR v3.0.0</li>
-<li>9: EMR v2.2.0</li>
-<li>11: ClickHouse v1.0.0</li>
-<li>13: Druid v1.0.0</li>
-<li>15: EMR v2.2.1</li>
+        :param ProductId: The product ID. Different product IDs represent different EMR product versions. Valid values:
 <li>16: EMR v2.3.0</li>
-<li>17: ClickHouse v1.1.0</li>
-<li>19: EMR v2.4.0</li>
 <li>20: EMR v2.5.0</li>
-<li>22: ClickHouse v1.2.0</li>
-<li>24: EMR TianQiong v1.0.0</li>
 <li>25: EMR v3.1.0</li>
-<li>26: Doris v1.0.0</li>
 <li>27: Kafka v1.0.0</li>
-<li>28: EMR v3.2.0</li>
-<li>29: EMR v2.5.1</li>
 <li>30: EMR v2.6.0</li>
+<li>33: EMR v3.2.1</li>
+<li>34: EMR v3.3.0</li>
+<li>36: StarRocks v1.0.0</li>
+<li>37: EMR v3.4.0</li>
+<li>38: EMR v2.7.0</li>
+<li>39: StarRocks v1.1.0</li>
+<li>41: Druid v1.1.0</li>
         :type ProductId: int
         :param Software: List of deployed components. The list of component options varies by EMR product ID (i.e., `ProductId`; for specific meanings, please see the `ProductId` input parameter). For more information, please see [Component Version](https://intl.cloud.tencent.com/document/product/589/20279?from_cn_redirect=1).
 Enter an instance value: `hive` or `flink`.
@@ -2170,6 +2162,8 @@ class InquiryPriceUpdateInstanceRequest(AbstractModel):
         :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`
         :param Currency: Currency.
         :type Currency: str
+        :param ResourceIdList: The resource ID list for batch configuration change.
+        :type ResourceIdList: list of str
         """
         self.TimeUnit = None
         self.TimeSpan = None
@@ -2177,6 +2171,7 @@ class InquiryPriceUpdateInstanceRequest(AbstractModel):
         self.PayMode = None
         self.Placement = None
         self.Currency = None
+        self.ResourceIdList = None
 
 
     def _deserialize(self, params):
@@ -2190,6 +2185,7 @@ class InquiryPriceUpdateInstanceRequest(AbstractModel):
             self.Placement = Placement()
             self.Placement._deserialize(params.get("Placement"))
         self.Currency = params.get("Currency")
+        self.ResourceIdList = params.get("ResourceIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2219,6 +2215,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param TimeSpan: Duration of scaling.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TimeSpan: int
+        :param PriceDetail: Pricing details
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PriceDetail: list of PriceDetail
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -2226,6 +2225,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.DiscountCost = None
         self.TimeUnit = None
         self.TimeSpan = None
+        self.PriceDetail = None
         self.RequestId = None
 
 
@@ -2234,6 +2234,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.DiscountCost = params.get("DiscountCost")
         self.TimeUnit = params.get("TimeUnit")
         self.TimeSpan = params.get("TimeSpan")
+        if params.get("PriceDetail") is not None:
+            self.PriceDetail = []
+            for item in params.get("PriceDetail"):
+                obj = PriceDetail()
+                obj._deserialize(item)
+                self.PriceDetail.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2244,9 +2250,9 @@ class LoginSettings(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Password: Password
+        :param Password: The login password of the instance, which contains 8 to 16 uppercase letters, lowercase letters, digits, and special characters (only !@%^*) and cannot start with a special character.
         :type Password: str
-        :param PublicKeyId: Public Key
+        :param PublicKeyId: The key ID. After an instance is associated with a key, you can access it with the private key in the key pair. You can call [DescribeKeyPairs](https://intl.cloud.tencent.com/document/api/213/15699?from_cn_redirect=1) to obtain `PublicKeyId`.
         :type PublicKeyId: str
         """
         self.Password = None
@@ -2309,17 +2315,22 @@ class ModifyResourceScheduleConfigResponse(AbstractModel):
         :param ErrorMsg: Verification error information. If it is not null, the verification fails and thus the configuration fails.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type ErrorMsg: str
+        :param Data: The response data.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Data: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.IsDraft = None
         self.ErrorMsg = None
+        self.Data = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.IsDraft = params.get("IsDraft")
         self.ErrorMsg = params.get("ErrorMsg")
+        self.Data = params.get("Data")
         self.RequestId = params.get("RequestId")
 
 
@@ -2696,6 +2707,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param ServiceClient: Service
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ServiceClient: str
+        :param DisableApiTermination: Enabling instance protection for this instance. Valid values: `true` (enable) and `false` (disable).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DisableApiTermination: bool
+        :param TradeVersion: The billing version. Valid values: `0` (original billing) and `1` (new billing)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TradeVersion: int
         """
         self.AppId = None
         self.SerialNo = None
@@ -2745,6 +2762,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.IsFederation = None
         self.DeviceName = None
         self.ServiceClient = None
+        self.DisableApiTermination = None
+        self.TradeVersion = None
 
 
     def _deserialize(self, params):
@@ -2810,6 +2829,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.IsFederation = params.get("IsFederation")
         self.DeviceName = params.get("DeviceName")
         self.ServiceClient = params.get("ServiceClient")
+        self.DisableApiTermination = params.get("DisableApiTermination")
+        self.TradeVersion = params.get("TradeVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2926,18 +2947,18 @@ class Placement(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProjectId: ID of the project to which the instance belongs. This parameter can be obtained from the `projectId` field in the return value of the `DescribeProject` API. If 0 is entered, the default project will be used.
-        :type ProjectId: int
-        :param Zone: AZ where the instance resides, such as ap-guangzhou-1. You can call the `DescribeZones` API and see the `Zone` field to get the value of this parameter.
+        :param Zone: The ID of the availability zone where the instance resides, such as `ap-guangzhou-1`. You can call the [DescribeZones](https://intl.cloud.tencent.com/document/product/213/15707?from_cn_redirect=1) API and obtain this ID from the `Zone` field in the response.
         :type Zone: str
+        :param ProjectId: The ID of the project to which the instance belongs. You can call the [DescribeProject](https://intl.cloud.tencent.com/document/api/651/78725?from_cn_redirect=1) and obtain this ID from the `projectId` field in the response. If this is left empty, the ID of the default project is used.
+        :type ProjectId: int
         """
-        self.ProjectId = None
         self.Zone = None
+        self.ProjectId = None
 
 
     def _deserialize(self, params):
-        self.ProjectId = params.get("ProjectId")
         self.Zone = params.get("Zone")
+        self.ProjectId = params.get("ProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3268,6 +3289,42 @@ class PreExecuteFileSettings(AbstractModel):
         self.CosSecretId = params.get("CosSecretId")
         self.CosSecretKey = params.get("CosSecretKey")
         self.AppId = params.get("AppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PriceDetail(AbstractModel):
+    """Pricing details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceId: The node ID
+        :type ResourceId: str
+        :param Formula: The price formula
+        :type Formula: str
+        :param OriginalCost: The original price
+        :type OriginalCost: float
+        :param DiscountCost: The discount price
+        :type DiscountCost: float
+        """
+        self.ResourceId = None
+        self.Formula = None
+        self.OriginalCost = None
+        self.DiscountCost = None
+
+
+    def _deserialize(self, params):
+        self.ResourceId = params.get("ResourceId")
+        self.Formula = params.get("Formula")
+        self.OriginalCost = params.get("OriginalCost")
+        self.DiscountCost = params.get("DiscountCost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
