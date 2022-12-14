@@ -30,8 +30,8 @@ class DetailResults(AbstractModel):
         :param Suggestion: Recommended follow-up action. <br>`Block`: block it automatically; `Review`: review the content again in human; **Pass**: pass
 Note: This field may return `null`, indicating that no valid value can be found.
         :type Suggestion: str
-        :param Keywords: This field returns the matched keywords. This parameter can include multiple returned values, which means multiple keywords are matched. If no keyword is returned but there is a `Score`, it means that the result of `Label` is determined by a semantic model.
-Note: This field may return `null`, indicating that no valid value can be found.
+        :param Keywords: Returns the information of keywords hit in the text. When no value is returned and `Score` is not empty, it means the `Label` is determined by the semantic-based detection model.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Keywords: list of str
         :param Score: This field indicates the convincing level of the `Label`, ranging from `0` (lowest) to `100` (highest). 
 Note: This field may return `null`, indicating that no valid value can be found.
@@ -48,6 +48,9 @@ Note: This field may return `null`, indicating that no valid value can be found.
         :param SubLabel: The field returns the second-level labels under the current label.
 Note: This field may return `null`, indicating that no valid value can be found.
         :type SubLabel: str
+        :param Tags: Returns the keywords, label, sub-label and the score.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Tags: list of Tag
         """
         self.Label = None
         self.Suggestion = None
@@ -57,6 +60,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
         self.LibId = None
         self.LibName = None
         self.SubLabel = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -68,6 +72,12 @@ Note: This field may return `null`, indicating that no valid value can be found.
         self.LibId = params.get("LibId")
         self.LibName = params.get("LibName")
         self.SubLabel = params.get("SubLabel")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -155,6 +165,41 @@ class RiskDetails(AbstractModel):
         
 
 
+class Tag(AbstractModel):
+    """Returns the keywords, label, sub-label and the score.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Keyword: Returns the hit keywords.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Keyword: str
+        :param SubLabel: Returns the sub-tags.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SubLabel: str
+        :param Score: Returns the score for the sub-label
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Score: int
+        """
+        self.Keyword = None
+        self.SubLabel = None
+        self.Score = None
+
+
+    def _deserialize(self, params):
+        self.Keyword = params.get("Keyword")
+        self.SubLabel = params.get("SubLabel")
+        self.Score = params.get("Score")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TextModerationRequest(AbstractModel):
     """TextModeration request structure.
 
@@ -232,6 +277,9 @@ Note: This field may return `null`, indicating that no valid value can be found.
         :param SubLabel: The field returns the second-level labels under the current label.
 Note: This field may return `null`, indicating that no valid value can be found.
         :type SubLabel: str
+        :param ContextText: Returns the context text.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ContextText: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -245,6 +293,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
         self.Extra = None
         self.DataId = None
         self.SubLabel = None
+        self.ContextText = None
         self.RequestId = None
 
 
@@ -269,6 +318,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
         self.Extra = params.get("Extra")
         self.DataId = params.get("DataId")
         self.SubLabel = params.get("SubLabel")
+        self.ContextText = params.get("ContextText")
         self.RequestId = params.get("RequestId")
 
 
@@ -303,6 +353,12 @@ Note: Up to 5 MB is supported, and the minimum resolution is 256 x 256. When it 
         :type HeadUrl: str
         :param Desc: This field indicates the profile information of service subscribers. It can contain up to 5,000 characters, including Chinese characters, letters and special symbols.
         :type Desc: str
+        :param RoomId: Room ID of the group chat.
+        :type RoomId: str
+        :param ReceiverId: Receiver ID.
+        :type ReceiverId: str
+        :param SendTime: Generation time of the message, in ms.
+        :type SendTime: int
         """
         self.UserId = None
         self.Nickname = None
@@ -313,6 +369,9 @@ Note: Up to 5 MB is supported, and the minimum resolution is 256 x 256. When it 
         self.Phone = None
         self.HeadUrl = None
         self.Desc = None
+        self.RoomId = None
+        self.ReceiverId = None
+        self.SendTime = None
 
 
     def _deserialize(self, params):
@@ -325,6 +384,9 @@ Note: Up to 5 MB is supported, and the minimum resolution is 256 x 256. When it 
         self.Phone = params.get("Phone")
         self.HeadUrl = params.get("HeadUrl")
         self.Desc = params.get("Desc")
+        self.RoomId = params.get("RoomId")
+        self.ReceiverId = params.get("ReceiverId")
+        self.SendTime = params.get("SendTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -3384,11 +3384,17 @@ If this parameter is left empty, edge server information will be returned by def
         :type Area: str
         :param Segment: Whether to return a value as an IP range
         :type Segment: bool
+        :param ShowIpv6: 
+        :type ShowIpv6: bool
+        :param AbbreviationIpv6: Whether to abbreviate the IPv6 address.
+        :type AbbreviationIpv6: bool
         """
         self.Domain = None
         self.Layer = None
         self.Area = None
         self.Segment = None
+        self.ShowIpv6 = None
+        self.AbbreviationIpv6 = None
 
 
     def _deserialize(self, params):
@@ -3396,6 +3402,8 @@ If this parameter is left empty, edge server information will be returned by def
         self.Layer = params.get("Layer")
         self.Area = params.get("Area")
         self.Segment = params.get("Segment")
+        self.ShowIpv6 = params.get("ShowIpv6")
+        self.AbbreviationIpv6 = params.get("AbbreviationIpv6")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7038,7 +7046,7 @@ class OriginIp(AbstractModel):
 
 
 class OriginPullOptimization(AbstractModel):
-    """Cross-border origin-pull optimization configuration. This is disabled by default. (This feature is in beta and not generally available yet.)
+    """(Disused) Cross-border origin-pull optimization
 
     """
 
@@ -7080,7 +7088,7 @@ class OriginPullTimeout(AbstractModel):
         :param ConnectTimeout: The origin-pull connection timeout (in seconds). Valid range: 5-60.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type ConnectTimeout: int
-        :param ReceiveTimeout: The origin-pull receipt timeout (in seconds). Valid range: 10-60.
+        :param ReceiveTimeout: The origin-pull receipt timeout (in seconds). Valid range: 10-300.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type ReceiveTimeout: int
         """
@@ -10149,7 +10157,7 @@ class UpdateDomainConfigRequest(AbstractModel):
         :type VideoSeek: :class:`tencentcloud.cdn.v20180606.models.VideoSeek`
         :param Cache: Cache expiration time configuration
         :type Cache: :class:`tencentcloud.cdn.v20180606.models.Cache`
-        :param OriginPullOptimization: Cross-border linkage optimization configuration
+        :param OriginPullOptimization: (Disused) Cross-border linkage optimization\
         :type OriginPullOptimization: :class:`tencentcloud.cdn.v20180606.models.OriginPullOptimization`
         :param Https: HTTPS acceleration configuration
         :type Https: :class:`tencentcloud.cdn.v20180606.models.Https`

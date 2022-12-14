@@ -432,6 +432,35 @@ class LighthouseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAllScenes(self, request):
+        """This API is used to query the list of scenes in all regions.
+
+        :param request: Request instance for DescribeAllScenes.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeAllScenesRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DescribeAllScenesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAllScenes", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAllScenesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBlueprintInstances(self, request):
         """This API is used to query the information of an image instance.
 
@@ -1131,6 +1160,35 @@ class LighthouseClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeResetInstanceBlueprintsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeScenes(self, request):
+        """This API is used to query the list of scenes.
+
+        :param request: Request instance for DescribeScenes.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeScenesRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DescribeScenesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeScenes", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeScenesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -890,12 +890,16 @@ class DataDiskPrice(AbstractModel):
         :type Discount: float
         :param DiscountPrice: Discounted total price.
         :type DiscountPrice: float
+        :param InstanceId: ID of the instance to which the data disk is mounted.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type InstanceId: str
         """
         self.DiskId = None
         self.OriginalDiskPrice = None
         self.OriginalPrice = None
         self.Discount = None
         self.DiscountPrice = None
+        self.InstanceId = None
 
 
     def _deserialize(self, params):
@@ -904,6 +908,7 @@ class DataDiskPrice(AbstractModel):
         self.OriginalPrice = params.get("OriginalPrice")
         self.Discount = params.get("Discount")
         self.DiscountPrice = params.get("DiscountPrice")
+        self.InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1122,6 +1127,68 @@ class DeniedAction(AbstractModel):
         
 
 
+class DescribeAllScenesRequest(AbstractModel):
+    """DescribeAllScenes request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SceneIds: List of scene IDs
+        :type SceneIds: list of str
+        :param Offset: Offset. Default value: 0
+        :type Offset: int
+        :param Limit: Number of returned results. Default value: 20. Maximum value: 100
+        :type Limit: int
+        """
+        self.SceneIds = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.SceneIds = params.get("SceneIds")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAllScenesResponse(AbstractModel):
+    """DescribeAllScenes response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SceneInfoSet: List of scenes
+        :type SceneInfoSet: list of SceneInfo
+        :param TotalCount: Total count of scenes
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SceneInfoSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SceneInfoSet") is not None:
+            self.SceneInfoSet = []
+            for item in params.get("SceneInfoSet"):
+                obj = SceneInfo()
+                obj._deserialize(item)
+                self.SceneInfoSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeBlueprintInstancesRequest(AbstractModel):
     """DescribeBlueprintInstances request structure.
 
@@ -1190,28 +1257,28 @@ class DescribeBlueprintsRequest(AbstractModel):
         :param Limit: Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, please see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).
         :type Limit: int
         :param Filters: Filter list
-<li>blueprint-id</li>Filter by **image ID**.
+<li>blueprint-id</li>Filter by the **image ID**.
 Type: String
 Required: no
-<li>blueprint-type</li>Filter by **image type**.
+<li>blueprint-type</li>Filter by the **image type**.
 Valid values: `APP_OS` (application image); `PURE_OS` (system image); `PRIVATE` (custom image) and `SHARED` (shared image)
 Type: String
 Required: no
-<li>platform-type</li>Filter by **image operating system**.
+<li>platform-type</li>Filter by the **image operating system**.
 Valid values: `LINUX_UNIX` (Linux or Unix), `WINDOWS` (Windows)
 Type: String
 Required: no
-<li>blueprint-name</li>Filter by **image name**.
+<li>blueprint-name</li>Filter by the **image name**.
 Type: String
 Required: no
-<li>blueprint-state</li>Filter by **image status**.
+<li>blueprint-state</li>Filter by the **image status**.
 Type: String
 Required: no
-<li>scene-id</li>Filter by **scene ID**.
+<li>scene-id</li>Filter by the **scene ID**.
 Type: String
 Required: no
 
-Each request can contain up to 10 `Filters` and 5 `Filter.Values`. `BlueprintIds` and `Filters` cannot be specified at the same time.
+Each request can contain up to 10 `Filters`, each of which can contain up to 00 `Filter.Values`. `BlueprintIds` and `Filters` cannot be specified at the same time.
         :type Filters: list of Filter
         """
         self.BlueprintIds = None
@@ -1336,15 +1403,23 @@ class DescribeBundlesRequest(AbstractModel):
         :type Offset: int
         :param Limit: Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, please see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).
         :type Limit: int
-        :param Filters: Filter list.
-<li>bundle-id</li>Filter by **package ID**.
+        :param Filters: Filter list
+<li>bundle-id</li>Filter by the **bundle ID**.
 Type: String
-Required: no
-<li>support-platform-type</li>Filter by **system type**.
-Valid values: LINUX_UNIX (Linux/Unix), WINDOWS ( Windows)
+Required: No
+<li>support-platform-type</li>Filter by the **OS type**.
+Valid values: `LINUX_UNIX` (Linux or Unix), `WINDOWS` (Windows)
 Type: String
-Required: no
-Each request can contain up to 10 `Filters` and 5 `Filter.Values`. You cannot specify both `BundleIds` and `Filters` at the same time.
+Required: No
+<li>bundle-type</li>Filter by the **bundle type**.
+Valid values: `GENERAL_BUNDLE` (General bundle), `STORAGE_BUNDLE` (Storage bundle), `ENTERPRISE_BUNDLE` (Enterprise bundle), `EXCLUSIVE_BUNDLE` (Dedicated bundle), `BEFAST_BUNDLE` (BeFast bundle)
+Type: String
+Required: No
+<li>bundle-state</li>Filter by the **bundle status**.
+Valid values: `ONLINE`, `OFFLINE`
+Type: String
+Required: No
+Each request can contain up to 10 `Filters`, and up to 5 `Filter.Values` for each filter. You cannot specify both `BundleIds` and `Filters` at the same time.
         :type Filters: list of Filter
         :param Zones: AZ list, which contains all AZs by default.
         :type Zones: list of str
@@ -2358,14 +2433,14 @@ class DescribeKeyPairsRequest(AbstractModel):
         :type Offset: int
         :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
         :type Limit: int
-        :param Filters: Filter list
+        :param Filters: Filter list.
 <li>key-id</li>Filter by **key pair ID**.
 Type: String
 Required: no
-<li>key-name</li>Filter by **key pair name**.
+<li>key-name</li>Filter by the **key pair name**. Fuzzy match is supported.
 Type: String
 Required: no
-Each request can contain up to 10 `Filters` and 5 `Filter.Values`. `KeyIds` and `Filters` cannot be specified at the same time.
+Each request can contain up to 10 `Filters` and up to 5 `Filter.Values` for each filter. `KeyIds` and `Filters` cannot be specified at the same time.
         :type Filters: list of Filter
         """
         self.KeyIds = None
@@ -2432,15 +2507,23 @@ class DescribeModifyInstanceBundlesRequest(AbstractModel):
         r"""
         :param InstanceId: Instance ID.
         :type InstanceId: str
-        :param Filters: Filter list.
-<li>bundle-id</li>Filter by **package ID**.
+        :param Filters: Filter list
+<li>bundle-id</li>Filter by the **bundle ID**.
 Type: String
-Required: no
-<li>support-platform-type</li>Filter by **system type**.
-Valid values: LINUX_UNIX (Linux/Unix), WINDOWS ( Windows)
+Required: No
+<li>support-platform-type</li>Filter by the **OS type**.
+Valid values: `LINUX_UNIX` (Linux or Unix), `WINDOWS` (Windows)
 Type: String
-Required: no
-Each request can contain up to 10 `Filters` and 5 `Filter.Values`.
+Required: No
+<li>bundle-type</li>Filter by the **bundle type**.
+Valid values: `GENERAL_BUNDLE` (General bundle), `STORAGE_BUNDLE` (Storage bundle), `ENTERPRISE_BUNDLE` (Enterprise bundle), `EXCLUSIVE_BUNDLE` (Dedicated bundle), `BEFAST_BUNDLE` (BeFast bundle)
+Type: String
+Required: No
+<li>bundle-state</li>Filter by the **bundle status**.
+Valid values: `ONLINE`, `OFFLINE`
+Type: String
+Required: No
+Each request can contain up to 10 `Filters`, and each filter can have up to 5 `Filter.Values`.
         :type Filters: list of Filter
         :param Offset: Offset. Default value: 0. For more information on `Offset`, please see the relevant section in [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).
         :type Offset: int
@@ -2625,6 +2708,68 @@ class DescribeResetInstanceBlueprintsResponse(AbstractModel):
                 obj = ResetInstanceBlueprint()
                 obj._deserialize(item)
                 self.ResetInstanceBlueprintSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeScenesRequest(AbstractModel):
+    """DescribeScenes request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SceneIds: List of scene IDs
+        :type SceneIds: list of str
+        :param Offset: Offset. Default value: 0
+        :type Offset: int
+        :param Limit: Number of returned results. Default value: 20. Maximum value: 100
+        :type Limit: int
+        """
+        self.SceneIds = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.SceneIds = params.get("SceneIds")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeScenesResponse(AbstractModel):
+    """DescribeScenes response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SceneSet: List of scenes
+        :type SceneSet: list of Scene
+        :param TotalCount: Total number of scenes
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SceneSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SceneSet") is not None:
+            self.SceneSet = []
+            for item in params.get("SceneSet"):
+                obj = Scene()
+                obj._deserialize(item)
+                self.SceneSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -3909,13 +4054,13 @@ class InquirePriceRenewInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceIds: Instance to be renewed.
+        :param InstanceIds: IDs of the instances to be renewed. Each request can contain up to 50 instances at a time. You can get an instance ID from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.
         :type InstanceIds: list of str
         :param InstanceChargePrepaid: Prepaid mode, i.e., monthly subscription. This parameter can specify the purchase period and other attributes such as auto-renewal. It is required for prepaid instances.
         :type InstanceChargePrepaid: :class:`tencentcloud.lighthouse.v20200324.models.InstanceChargePrepaid`
-        :param RenewDataDisk: Whether to renew the data disk
+        :param RenewDataDisk: Whether to renew the data disk. Default: `false`.
         :type RenewDataDisk: bool
-        :param AlignInstanceExpiredTime: Whether the data disk has the same expiration time as the instance
+        :param AlignInstanceExpiredTime: Whether to align the data disk expiration with the instance expiration time. Default: `false`.
         :type AlignInstanceExpiredTime: bool
         """
         self.InstanceIds = None
@@ -3947,16 +4092,23 @@ class InquirePriceRenewInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Price: Price query information.
+        :param Price: Price information. It defaults to the price information of the first instance in the list.
         :type Price: :class:`tencentcloud.lighthouse.v20200324.models.Price`
         :param DataDiskPriceSet: List of data disk price information.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DataDiskPriceSet: list of DataDiskPrice
+        :param InstancePriceDetailSet: Price list of the instances to be renewed.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type InstancePriceDetailSet: list of InstancePriceDetail
+        :param TotalPrice: Total price
+        :type TotalPrice: :class:`tencentcloud.lighthouse.v20200324.models.TotalPrice`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.Price = None
         self.DataDiskPriceSet = None
+        self.InstancePriceDetailSet = None
+        self.TotalPrice = None
         self.RequestId = None
 
 
@@ -3970,6 +4122,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = DataDiskPrice()
                 obj._deserialize(item)
                 self.DataDiskPriceSet.append(obj)
+        if params.get("InstancePriceDetailSet") is not None:
+            self.InstancePriceDetailSet = []
+            for item in params.get("InstancePriceDetailSet"):
+                obj = InstancePriceDetail()
+                obj._deserialize(item)
+                self.InstancePriceDetailSet.append(obj)
+        if params.get("TotalPrice") is not None:
+            self.TotalPrice = TotalPrice()
+            self.TotalPrice._deserialize(params.get("TotalPrice"))
         self.RequestId = params.get("RequestId")
 
 
@@ -4219,6 +4380,47 @@ class InstancePrice(AbstractModel):
         self.OriginalPrice = params.get("OriginalPrice")
         self.Discount = params.get("Discount")
         self.DiscountPrice = params.get("DiscountPrice")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstancePriceDetail(AbstractModel):
+    """Instance price details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type InstanceId: str
+        :param InstancePrice: Price query information.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type InstancePrice: :class:`tencentcloud.lighthouse.v20200324.models.InstancePrice`
+        :param DiscountDetail: 
+        :type DiscountDetail: list of DiscountDetail
+        """
+        self.InstanceId = None
+        self.InstancePrice = None
+        self.DiscountDetail = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("InstancePrice") is not None:
+            self.InstancePrice = InstancePrice()
+            self.InstancePrice._deserialize(params.get("InstancePrice"))
+        if params.get("DiscountDetail") is not None:
+            self.DiscountDetail = []
+            for item in params.get("DiscountDetail"):
+                obj = DiscountDetail()
+                obj._deserialize(item)
+                self.DiscountDetail.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5246,6 +5448,70 @@ class ResetInstancesPasswordResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class Scene(AbstractModel):
+    """Scene information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SceneId: Scene ID
+        :type SceneId: str
+        :param DisplayName: Display name of the scene
+        :type DisplayName: str
+        :param Description: Scene description
+        :type Description: str
+        """
+        self.SceneId = None
+        self.DisplayName = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.SceneId = params.get("SceneId")
+        self.DisplayName = params.get("DisplayName")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SceneInfo(AbstractModel):
+    """Scene information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SceneId: Scene ID
+        :type SceneId: str
+        :param DisplayName: Display name of the scene
+        :type DisplayName: str
+        :param Description: Scene description
+        :type Description: str
+        """
+        self.SceneId = None
+        self.DisplayName = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.SceneId = params.get("SceneId")
+        self.DisplayName = params.get("DisplayName")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Snapshot(AbstractModel):
     """Snapshot information.
 
@@ -5656,6 +5922,36 @@ class TerminateInstancesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class TotalPrice(AbstractModel):
+    """Total price information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OriginalPrice: Total original price
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type OriginalPrice: float
+        :param DiscountPrice: Total discounted price
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type DiscountPrice: float
+        """
+        self.OriginalPrice = None
+        self.DiscountPrice = None
+
+
+    def _deserialize(self, params):
+        self.OriginalPrice = params.get("OriginalPrice")
+        self.DiscountPrice = params.get("DiscountPrice")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class TrafficPackage(AbstractModel):

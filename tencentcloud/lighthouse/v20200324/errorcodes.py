@@ -215,6 +215,9 @@ INVALIDPARAMETERVALUE_INVALIDPASSWORD = 'InvalidParameterValue.InvalidPassword'
 # Incorrect quota resource name.
 INVALIDPARAMETERVALUE_INVALIDRESOURCEQUOTARESOURCENAME = 'InvalidParameterValue.InvalidResourceQuotaResourceName'
 
+# Invalid scene ID
+INVALIDPARAMETERVALUE_INVALIDSCENEIDMALFORMED = 'InvalidParameterValue.InvalidSceneIdMalformed'
+
 # Invalid `Zone` value.
 INVALIDPARAMETERVALUE_INVALIDZONE = 'InvalidParameterValue.InvalidZone'
 
