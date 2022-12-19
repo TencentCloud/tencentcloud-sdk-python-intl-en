@@ -822,7 +822,7 @@ class McuPublishCdnParam(AbstractModel):
         r"""
         :param PublishCdnUrl: The URLs of the CDNs to relay to.
         :type PublishCdnUrl: str
-        :param IsTencentCdn: Whether to relay to Tencent Cloud’s CDN. 0: Third-party CDN; 1 (default): Tencent Cloud’s CDN. Relaying to a third-party CDN will incur fees. To avoid unexpected charges, we recommend you pass in a specific value. For details, see the API document.
+        :param IsTencentCdn: Whether to relay to Tencent Cloud’s CDN. `0`: Third-party CDN; `1` (default): Tencent Cloud’s CDN. Relaying to a third-party CDN will incur fees. To avoid unexpected charges, we recommend you pass in a specific value. For details, see the API document.
         :type IsTencentCdn: int
         """
         self.PublishCdnUrl = None
@@ -1135,10 +1135,14 @@ This parameter specifies the type of the stream displayed in the big window. If 
         :type PlaceHolderMode: int
         :param BackgroundImageRenderMode: The render mode to use when the aspect ratio of a video is different from that of the window. This parameter is defined the same as `RenderMode` in `MixLayoufList`.
         :type BackgroundImageRenderMode: int
-        :param DefaultSubBackgroundImage: The download URL of the default background image for a window. The image must be in JPG or PNG format and cannot be larger than 5 MB. If the image’s aspect ratio is different from that of the window, the image will be rendered according to the value of `RenderMode`.
+        :param DefaultSubBackgroundImage: The URL of the background image for a window. The image must be in JPG or PNG format and cannot be larger than 5 MB. If the image’s aspect ratio is different from that of the window, the image will be rendered according to the value of `RenderMode`.
         :type DefaultSubBackgroundImage: str
         :param WaterMarkList: The watermark layout. Up to 25 watermarks are supported.
         :type WaterMarkList: list of WaterMark
+        :param RenderMode: The render mode to use when the aspect ratio of a video is different from that of the window. This parameter is invalid if a custom layout is used. It is defined the same as `RenderMode` in `MixLayoufList`.
+        :type RenderMode: int
+        :param MaxResolutionUserAlign: This parameter is valid only if the screen sharing layout is used. If you set it to `1`, the large video window will appear on the right and the small window on the left. The default value is `0`.
+        :type MaxResolutionUserAlign: int
         """
         self.MixLayoutMode = None
         self.MixLayoutList = None
@@ -1150,6 +1154,8 @@ This parameter specifies the type of the stream displayed in the big window. If 
         self.BackgroundImageRenderMode = None
         self.DefaultSubBackgroundImage = None
         self.WaterMarkList = None
+        self.RenderMode = None
+        self.MaxResolutionUserAlign = None
 
 
     def _deserialize(self, params):
@@ -1173,6 +1179,8 @@ This parameter specifies the type of the stream displayed in the big window. If 
                 obj = WaterMark()
                 obj._deserialize(item)
                 self.WaterMarkList.append(obj)
+        self.RenderMode = params.get("RenderMode")
+        self.MaxResolutionUserAlign = params.get("MaxResolutionUserAlign")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1318,7 +1326,7 @@ class RecordParams(AbstractModel):
 1: Single-stream recording. Records the audio and video of each subscribed user (`UserId`) in a room and saves the recording files to the cloud.
 2: Mixed-stream recording. Mixes the audios and videos of subscribed users (`UserId`) in a room, records the mixed stream, and saves the recording files to the cloud.
         :type RecordMode: int
-        :param MaxIdleTime: The time period (seconds) to wait after there are no anchors in a room to stop recording automatically. The value cannot be smaller than 5 or larger than 86400 (24 hours). Default value: 30.
+        :param MaxIdleTime: The time period (seconds) to wait to automatically stop recording after there are no anchors (users who publish streams) in a room. Value range: 5-86400 (max 24 hours). Default value: 30.
         :type MaxIdleTime: int
         :param StreamType: The media type of the streams to record.
 0: Audio and video streams (default)
@@ -1327,10 +1335,13 @@ class RecordParams(AbstractModel):
         :type StreamType: int
         :param SubscribeStreamUserIds: The allowlist/blocklist for stream subscription.
         :type SubscribeStreamUserIds: :class:`tencentcloud.trtc.v20190722.models.SubscribeStreamUserIds`
-        :param OutputFormat: The output format. 0 (default): HLS; 1: HLS + MP4 (recorded in HLS and converted to MP4). This parameter is invalid if you save recording files to VOD. To specify the format of files saved to VOD, use `MediaType` of `TencentVod`.
+        :param OutputFormat: The output format. `0` (default): HLS; `1`: HLS + MP4; `2`: HLS + AAC. This parameter is invalid if you save recording files to VOD. To specify the format of files saved to VOD, use `MediaType` of `TencentVod`.
         :type OutputFormat: int
         :param AvMerge: Whether to merge the audio and video of a user in the single-stream recording mode. 0 (default): Do not mix the audio and video; 1: Mix the audio and video into one TS file. You don’t need to specify this parameter for mixed-stream recording, which merges audios and videos by default.
         :type AvMerge: int
+        :param MaxMediaFileDuration: The maximum file duration allowed (minutes). If the output format is AAC or MP4, and the maximum file duration is exceeded, the file will be segmented. Value range: 1-1440. Default value: 1440 (24 hours). The maximum file size allowed is 2 GB. If the file size exceeds 2 GB, or the file duration exceeds 24 hours, the file will also be segmented.
+This parameter is invalid if the output format is HLS.
+        :type MaxMediaFileDuration: int
         """
         self.RecordMode = None
         self.MaxIdleTime = None
@@ -1338,6 +1349,7 @@ class RecordParams(AbstractModel):
         self.SubscribeStreamUserIds = None
         self.OutputFormat = None
         self.AvMerge = None
+        self.MaxMediaFileDuration = None
 
 
     def _deserialize(self, params):
@@ -1349,6 +1361,7 @@ class RecordParams(AbstractModel):
             self.SubscribeStreamUserIds._deserialize(params.get("SubscribeStreamUserIds"))
         self.OutputFormat = params.get("OutputFormat")
         self.AvMerge = params.get("AvMerge")
+        self.MaxMediaFileDuration = params.get("MaxMediaFileDuration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1873,8 +1886,10 @@ The default value is `0`, which means others.
         :type SessionContext: str
         :param SourceContext: The upload context, which is passed through after upload is completed.
         :type SourceContext: str
-        :param MediaType: The format of recording files saved to VOD. 0 (default): MP4; 1: HLS.
+        :param MediaType: The format of recording files uploaded to VOD. `0` (default): MP4; `1`: HLS; `2`: AAC (valid only if `StreamType` is `1`).
         :type MediaType: int
+        :param UserDefineRecordId: The custom prefix of recording files. This parameter is valid only if recording files are uploaded to VOD. It can contain letters, numbers, underscores, and hyphens and cannot exceed 64 bytes. This prefix and the automatically generated filename are connected with `__UserId_u_`.
+        :type UserDefineRecordId: str
         """
         self.Procedure = None
         self.ExpireTime = None
@@ -1884,6 +1899,7 @@ The default value is `0`, which means others.
         self.SessionContext = None
         self.SourceContext = None
         self.MediaType = None
+        self.UserDefineRecordId = None
 
 
     def _deserialize(self, params):
@@ -1895,6 +1911,7 @@ The default value is `0`, which means others.
         self.SessionContext = params.get("SessionContext")
         self.SourceContext = params.get("SourceContext")
         self.MediaType = params.get("MediaType")
+        self.UserDefineRecordId = params.get("UserDefineRecordId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -812,7 +812,7 @@ class CreateMigrationServiceRequest(AbstractModel):
         :type SrcRegion: str
         :param DstRegion: Target instance region, such as `ap-guangzhou`. Note that it must be the same as the API request region.
         :type DstRegion: str
-        :param InstanceClass: Instance specification. Valid values: `micro`, `small`, `medium`, `large`, `xlarge`, `2xlarge`.
+        :param InstanceClass: Instance specification. Valid values: `small`, `medium`, `large`, `xlarge`, `2xlarge`.
         :type InstanceClass: str
         :param Count: Quantity. Value range: [1,15]. Default value: `1`.
         :type Count: int
@@ -895,15 +895,15 @@ class CreateSyncJobRequest(AbstractModel):
         :type DstRegion: str
         :param Specification: Sync task specification, such as `Standard`.
         :type Specification: str
-        :param Tags: Tag
+        :param Tags: Tag information
         :type Tags: list of TagItem
-        :param Count: Number of sync tasks
+        :param Count: The number of sync tasks purchased at a time. Value range: [1, 10]. Default value: `1`.
         :type Count: int
-        :param AutoRenew: Auto-renewal flag
+        :param AutoRenew: Auto-renewal flag, which takes effect if `PayMode` is `PrePay`. Valid values: `1` (auto-renewal enabled); `0` (auto-renewal disabled). Default value: `0`.
         :type AutoRenew: int
-        :param InstanceClass: Sync link specification
+        :param InstanceClass: Sync link specification, such as `micro`, `small`, `medium`, and `large`. Default value: `medium`.
         :type InstanceClass: str
-        :param JobName: Sync link name
+        :param JobName: Sync task name
         :type JobName: str
         :param ExistedJobId: ID of the existing task used to create a similar task
         :type ExistedJobId: str
@@ -1433,10 +1433,10 @@ class DdlOption(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DdlObject: DDL type, such as database, table, and view.
+        :param DdlObject: DDL type, such as database, table, view, and index.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DdlObject: str
-        :param DdlValue: Specific DDL value, such as `Create` or `Drop`.
+        :param DdlValue: DDL value. Valid values: [Create,Drop,Alter] for database <br>[Create,Drop,Alter,Truncate,Rename] for table <br/>[Create,Drop] for view <br/>[Create,Drop] for index
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DdlValue: list of str
         """
@@ -2179,7 +2179,7 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: Sync task ID
+        :param JobId: Sync task ID, such as `sync-werwfs23`.
         :type JobId: str
         :param JobName: Sync task name
         :type JobName: str
@@ -2593,6 +2593,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param TmpToken: Temporary token, which is required if the operation is performed across accounts.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TmpToken: str
+        :param RoleExternalId: External role ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RoleExternalId: str
         """
         self.Region = None
         self.DbKernel = None
@@ -2616,6 +2619,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.TmpSecretId = None
         self.TmpSecretKey = None
         self.TmpToken = None
+        self.RoleExternalId = None
 
 
     def _deserialize(self, params):
@@ -2641,6 +2645,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.TmpSecretId = params.get("TmpSecretId")
         self.TmpSecretKey = params.get("TmpSecretKey")
         self.TmpToken = params.get("TmpToken")
+        self.RoleExternalId = params.get("RoleExternalId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4187,11 +4192,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param HelpDoc: Help document
 Note: This field may return null, indicating that no valid values can be obtained.
         :type HelpDoc: str
+        :param SkipInfo: Whether the current step is skipped
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SkipInfo: str
         """
         self.Code = None
         self.Message = None
         self.Solution = None
         self.HelpDoc = None
+        self.SkipInfo = None
 
 
     def _deserialize(self, params):
@@ -4199,6 +4208,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.Message = params.get("Message")
         self.Solution = params.get("Solution")
         self.HelpDoc = params.get("HelpDoc")
+        self.SkipInfo = params.get("SkipInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4407,19 +4417,19 @@ class SyncJobInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: Sync task ID
+        :param JobId: Sync task ID, such as `sync-btso140`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type JobId: str
         :param JobName: Sync task name
 Note: This field may return null, indicating that no valid values can be obtained.
         :type JobName: str
-        :param PayMode: Billing mode
+        :param PayMode: Billing mode. Valid values: `PostPay` (pay-as-you-go); `PrePay` (monthly subscription).
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PayMode: str
-        :param RunMode: Running mode
+        :param RunMode: Running mode. Valid values: `Immediate`, `Timed`. Default value: `Immediate`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type RunMode: str
-        :param ExpectRunTime: Expected execution time
+        :param ExpectRunTime: Expected execution time in the format of `yyyy-mm-dd hh:mm:ss`
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ExpectRunTime: str
         :param AllActions: All supported operations
@@ -4437,51 +4447,63 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param Specification: Task specification
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Specification: str
-        :param ExpireTime: Expiration time
+        :param ExpireTime: Expiration time in the format of `yyyy-mm-dd hh:mm:ss`
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ExpireTime: str
-        :param SrcRegion: Source database region
+        :param SrcRegion: Source database region, such as `ap-guangzhou`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SrcRegion: str
-        :param SrcDatabaseType: Source database type
+        :param SrcDatabaseType: Source database type, such as `mysql`, `cynosdbmysql`, `tdapg`, `tdpg`, and `tdsqlmysql`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SrcDatabaseType: str
-        :param SrcAccessType: Source database access type
+        :param SrcAccessType: Source database access type. Valid values: `cdb` (database); `cvm` (self-build on CVM); `vpc` (VPC); `extranet` (public network); `vpncloud` (VPN access); `dcg` (Direct Connect); `ccn` (CCN); `intranet` (intranet).
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SrcAccessType: str
         :param SrcInfo: Source database information
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SrcInfo: :class:`tencentcloud.dts.v20211206.models.Endpoint`
-        :param DstRegion: Target database region
+        :param DstRegion: Target database region, such as `ap-guangzhou`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DstRegion: str
-        :param DstDatabaseType: Target database type
+        :param DstDatabaseType: Target database type, such as `mysql`, `cynosdbmysql`, `tdapg`, `tdpg`, and `tdsqlmysql`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DstDatabaseType: str
-        :param DstAccessType: Target database access type
+        :param DstAccessType: Target database access type. Valid values: `cdb` (database); `cvm` (self-build on CVM); `vpc` (VPC); `extranet` (public network); `vpncloud` (VPN access); `dcg` (Direct Connect); `ccn` (CCN); `intranet` (intranet).
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DstAccessType: str
         :param DstInfo: Target database information
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DstInfo: :class:`tencentcloud.dts.v20211206.models.Endpoint`
-        :param CreateTime: Creation time
+        :param CreateTime: Creation time in the format of `yyyy-mm-dd hh:mm:ss`
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CreateTime: str
-        :param StartTime: Start time
+        :param StartTime: Start time in the format of `yyyy-mm-dd hh:mm:ss`
 Note: This field may return null, indicating that no valid values can be obtained.
         :type StartTime: str
-        :param EndTime: End time
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type EndTime: str
-        :param Status: Task status
+        :param Status: Task status. Valid values: `UnInitialized`, `Initialized`, `Checking`, `CheckPass`, `CheckNotPass`, `ReadyRunning`, `Running`, `Pausing`, `Paused`, `Stopping`, `Stopped`, `ResumableErr`, `Resuming`, `Failed`, `Released`, `Resetting`, `Unknown`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Status: str
-        :param Tags: Tag
+        :param EndTime: End time in the format of `yyyy-mm-dd hh:mm:ss`
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EndTime: str
+        :param Tags: Tag information
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Tags: list of TagItem
         :param Detail: Step information of the sync task
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Detail: :class:`tencentcloud.dts.v20211206.models.SyncDetailInfo`
+        :param TradeStatus: Billing status. Valid values: `Normal`, `Resizing`, `Renewing`, `Isolating`, `Isolated`, `Offlining`, `Offlined`, `NotBilled`, `Recovering`, `PostPay2Prepaying`, `PrePay2Postpaying`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TradeStatus: str
+        :param InstanceClass: Sync link specification, such as `micro`, `small`, `medium`, and `large`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceClass: str
+        :param AutoRenew: Auto-renewal flag, which takes effect if `PayMode` is `PrePay`. Valid values: `1` (auto-renewal enabled); `0` (auto-renewal disabled).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AutoRenew: int
+        :param OfflineTime: Deletion time in the format of `yyyy-mm-dd hh:mm:ss`
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OfflineTime: str
         """
         self.JobId = None
         self.JobName = None
@@ -4504,10 +4526,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.DstInfo = None
         self.CreateTime = None
         self.StartTime = None
-        self.EndTime = None
         self.Status = None
+        self.EndTime = None
         self.Tags = None
         self.Detail = None
+        self.TradeStatus = None
+        self.InstanceClass = None
+        self.AutoRenew = None
+        self.OfflineTime = None
 
 
     def _deserialize(self, params):
@@ -4540,8 +4566,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
             self.DstInfo._deserialize(params.get("DstInfo"))
         self.CreateTime = params.get("CreateTime")
         self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
         self.Status = params.get("Status")
+        self.EndTime = params.get("EndTime")
         if params.get("Tags") is not None:
             self.Tags = []
             for item in params.get("Tags"):
@@ -4551,6 +4577,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("Detail") is not None:
             self.Detail = SyncDetailInfo()
             self.Detail._deserialize(params.get("Detail"))
+        self.TradeStatus = params.get("TradeStatus")
+        self.InstanceClass = params.get("InstanceClass")
+        self.AutoRenew = params.get("AutoRenew")
+        self.OfflineTime = params.get("OfflineTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

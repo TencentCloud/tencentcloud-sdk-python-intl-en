@@ -490,6 +490,159 @@ class CreateAccountResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateDCDBInstanceRequest(AbstractModel):
+    """CreateDCDBInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Zones: AZs to deploy shard nodes. You can specify up to two AZs. When the shard specification is 1-source-2-replica, two of the nodes are deployed in the first AZ.
+The current purchasable AZ needs be pulled through `DescribeDCDBSaleInfo` API.
+        :type Zones: list of str
+        :param Period: Validity period in months
+        :type Period: int
+        :param ShardMemory: Shard memory size in GB, which can be obtained 
+ by querying the instance specification through `DescribeShardSpec` API.
+        :type ShardMemory: int
+        :param ShardStorage: Shard storage size in GB, which can be obtained
+ by querying the instance specification through `DescribeShardSpec` API.
+        :type ShardStorage: int
+        :param ShardNodeCount: Number of nodes in a single shard, which can be obtained
+ by querying the instance specification through `DescribeShardSpec` API.
+        :type ShardNodeCount: int
+        :param ShardCount: The number of shards in the instance. Value range: 2-8. You can increase up to 64 shards by upgrading your instance.
+        :type ShardCount: int
+        :param Count: The number of instances to be purchased
+        :type Count: int
+        :param ProjectId: Project ID, which can be obtained through the `DescribeProjects` API. If this parameter is not passed in, the instance will be associated with the default project.
+        :type ProjectId: int
+        :param VpcId: VPC ID. If this parameter is left empty or not passed in, the instance will be created on the classic network.
+        :type VpcId: str
+        :param SubnetId: VPC subnet ID, which is required when `VpcId` is specified.
+        :type SubnetId: str
+        :param DbVersionId: Database engine version. Valid values: 8.0.18, 10.1.9, 5.7.17.
+8.0.18 - MySQL 8.0.18；
+10.1.9: MariaDB 10.1.9;
+5.7.17: Percona 5.7.17.
+If this parameter is left empty, `5.7.17` will be used.
+        :type DbVersionId: str
+        :param AutoVoucher: Whether to automatically use vouchers. This option is disabled by default.
+        :type AutoVoucher: bool
+        :param VoucherIds: Voucher ID list. Currently, you can specify only one voucher.
+        :type VoucherIds: list of str
+        :param SecurityGroupId: Security group ID
+        :type SecurityGroupId: str
+        :param InstanceName: Custom name of the instance
+        :type InstanceName: str
+        :param Ipv6Flag: Whether IPv6 is supported
+        :type Ipv6Flag: int
+        :param ResourceTags: Array of tag key-value pairs
+        :type ResourceTags: list of ResourceTag
+        :param InitParams: List of parameters. Valid values: `character_set_server` (character set; required); `lower_case_table_names` (table name case sensitivity; required; `0`: case-sensitive; `1`: case-insensitive); `innodb_page_size` (InnoDB data page size; default size: 16 KB); `sync_mode` (sync mode; `0`: async; `1`: strong sync; `2`: downgradable strong sync; default value: `2`).
+        :type InitParams: list of DBParamValue
+        :param DcnRegion: DCN source region
+        :type DcnRegion: str
+        :param DcnInstanceId: DCN source instance ID
+        :type DcnInstanceId: str
+        :param AutoRenewFlag: Renewal mode. Valid values: `0` (Manual renewal, which is the default mode), `1` (Auto-renewal), `2` (Manual renewal, which is specified by users). If no renewal is required, set it to `0`.
+        :type AutoRenewFlag: int
+        :param SecurityGroupIds: Security group IDs in array. This parameter is compatible with the old parameter `SecurityGroupId`.
+        :type SecurityGroupIds: list of str
+        """
+        self.Zones = None
+        self.Period = None
+        self.ShardMemory = None
+        self.ShardStorage = None
+        self.ShardNodeCount = None
+        self.ShardCount = None
+        self.Count = None
+        self.ProjectId = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.DbVersionId = None
+        self.AutoVoucher = None
+        self.VoucherIds = None
+        self.SecurityGroupId = None
+        self.InstanceName = None
+        self.Ipv6Flag = None
+        self.ResourceTags = None
+        self.InitParams = None
+        self.DcnRegion = None
+        self.DcnInstanceId = None
+        self.AutoRenewFlag = None
+        self.SecurityGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.Zones = params.get("Zones")
+        self.Period = params.get("Period")
+        self.ShardMemory = params.get("ShardMemory")
+        self.ShardStorage = params.get("ShardStorage")
+        self.ShardNodeCount = params.get("ShardNodeCount")
+        self.ShardCount = params.get("ShardCount")
+        self.Count = params.get("Count")
+        self.ProjectId = params.get("ProjectId")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.DbVersionId = params.get("DbVersionId")
+        self.AutoVoucher = params.get("AutoVoucher")
+        self.VoucherIds = params.get("VoucherIds")
+        self.SecurityGroupId = params.get("SecurityGroupId")
+        self.InstanceName = params.get("InstanceName")
+        self.Ipv6Flag = params.get("Ipv6Flag")
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = ResourceTag()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
+        if params.get("InitParams") is not None:
+            self.InitParams = []
+            for item in params.get("InitParams"):
+                obj = DBParamValue()
+                obj._deserialize(item)
+                self.InitParams.append(obj)
+        self.DcnRegion = params.get("DcnRegion")
+        self.DcnInstanceId = params.get("DcnInstanceId")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDCDBInstanceResponse(AbstractModel):
+    """CreateDCDBInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DealName: Long order ID, which is used to call the `DescribeOrders` API.
+ The parameter can be used to either query order details or call the user account APIs to make another payment when this payment fails.
+        :type DealName: str
+        :param InstanceIds: IDs of the instances you have purchased in this order. If no instance IDs are returned, you can query them with the `DescribeOrders` API. You can also use the `DescribeDBInstances` API to check whether an instance has been created successfully.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceIds: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DealName = None
+        self.InstanceIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DealName = params.get("DealName")
+        self.InstanceIds = params.get("InstanceIds")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateHourDCDBInstanceRequest(AbstractModel):
     """CreateHourDCDBInstance request structure.
 
@@ -2985,6 +3138,63 @@ class IsolateHourDCDBInstanceResponse(AbstractModel):
     def _deserialize(self, params):
         self.SuccessInstanceIds = params.get("SuccessInstanceIds")
         self.FailedInstanceIds = params.get("FailedInstanceIds")
+        self.RequestId = params.get("RequestId")
+
+
+class KillSessionRequest(AbstractModel):
+    """KillSession request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param SessionId: List of session IDs
+        :type SessionId: list of int
+        :param ShardId: Shard ID. Either `ShardId` or `ShardSerialId` is required.
+        :type ShardId: str
+        :param ShardSerialId: Shard sequence ID. Either `ShardId` or `ShardSerialId` is required.
+        :type ShardSerialId: str
+        """
+        self.InstanceId = None
+        self.SessionId = None
+        self.ShardId = None
+        self.ShardSerialId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.SessionId = params.get("SessionId")
+        self.ShardId = params.get("ShardId")
+        self.ShardSerialId = params.get("ShardSerialId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KillSessionResponse(AbstractModel):
+    """KillSession response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: Task ID
+        :type TaskId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
 
 

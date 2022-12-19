@@ -87,7 +87,7 @@ class DtsClient(AbstractClient):
 
 
     def CreateCheckSyncJob(self, request):
-        """This API is used to verify a sync task by checking required parameters and peripheral information.
+        """This API is used to verify a sync task by checking required parameters and peripheral configuration.
 
         :param request: Request instance for CreateCheckSyncJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.CreateCheckSyncJobRequest`
@@ -234,7 +234,7 @@ class DtsClient(AbstractClient):
 
 
     def DeleteCompareTask(self, request):
-        """This API is used to delete a data consistency check task.
+        """This API is used to delete a data consistency check task, which can be called when the task status is `success`, `failed`, or `canceled`.
 
         :param request: Request instance for DeleteCompareTask.
         :type request: :class:`tencentcloud.dts.v20211206.models.DeleteCompareTaskRequest`
@@ -410,7 +410,7 @@ class DtsClient(AbstractClient):
 
 
     def DescribeMigrationDetail(self, request):
-        """This API is used to query the details of a data migration task.
+        """This API is used to query the details of a migration task.
 
         :param request: Request instance for DescribeMigrationDetail.
         :type request: :class:`tencentcloud.dts.v20211206.models.DescribeMigrationDetailRequest`
@@ -845,7 +845,7 @@ class DtsClient(AbstractClient):
 
 
     def ResumeMigrateJob(self, request):
-        """This API is used to retry a failed Redis data migration task. Note that this operation will skip the check stage and directly start the task, just like by calling `StartMigrationJob`. After calling this API, you can call the `DescribeMigrationJobs` API to query the latest task status.
+        """This API is used to retry an abnormal or failed Redis data migration task. Note that this operation will skip the check stage and directly start the task, just like by calling `StartMigrationJob`. After calling this API, you can call the `DescribeMigrationJobs` API to query the latest task status.
 
         :param request: Request instance for ResumeMigrateJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.ResumeMigrateJobRequest`
@@ -1049,7 +1049,7 @@ class DtsClient(AbstractClient):
 
 
     def StopSyncJob(self, request):
-        """This API is used to stop a sync task.
+        """This API is used to stop a sync task. After calling this API, you can call the `DescribeSyncJobs` API to query the latest task status.
 
         :param request: Request instance for StopSyncJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.StopSyncJobRequest`

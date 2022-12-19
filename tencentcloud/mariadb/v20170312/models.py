@@ -939,6 +939,75 @@ class DBParamValue(AbstractModel):
         
 
 
+class DCNReplicaConfig(AbstractModel):
+    """DCN configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RoReplicationMode: DCN running status. Valid values: `START` (running), `STOP` (pause)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RoReplicationMode: str
+        :param DelayReplicationType: Delayed replication type. Valid values: `DEFAULT` (no delay), `DUE_TIME` (specified replication time)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DelayReplicationType: str
+        :param DueTime: Specified time for delayed replication
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DueTime: str
+        :param ReplicationDelay: The number of seconds to delay the replication
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ReplicationDelay: int
+        """
+        self.RoReplicationMode = None
+        self.DelayReplicationType = None
+        self.DueTime = None
+        self.ReplicationDelay = None
+
+
+    def _deserialize(self, params):
+        self.RoReplicationMode = params.get("RoReplicationMode")
+        self.DelayReplicationType = params.get("DelayReplicationType")
+        self.DueTime = params.get("DueTime")
+        self.ReplicationDelay = params.get("ReplicationDelay")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DCNReplicaStatus(AbstractModel):
+    """DCN status information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: DCN running status. Valid values: `START` (running), `STOP` (pause).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Status: str
+        :param Delay: The current delay, which takes the delay value of the replica instance.
+        :type Delay: int
+        """
+        self.Status = None
+        self.Delay = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.Delay = params.get("Delay")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Database(AbstractModel):
     """Database information
 
@@ -1130,6 +1199,14 @@ class DcnDetailItem(AbstractModel):
         :type PeriodEndTime: str
         :param InstanceType: Instance type. Valid values: `1` (dedicated primary instance), `2` (non-dedicated primary instance), `3` (non-dedicated disaster recovery instance), `4` (dedicated disaster recovery instance)
         :type InstanceType: int
+        :param ReplicaConfig: Configuration information of DCN replication. This field is null for a primary instance.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ReplicaConfig: :class:`tencentcloud.mariadb.v20170312.models.DCNReplicaConfig`
+        :param ReplicaStatus: DCN replication status. This field is null for the primary instance.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ReplicaStatus: :class:`tencentcloud.mariadb.v20170312.models.DCNReplicaStatus`
+        :param EncryptStatus: Whether KMS is enabled.
+        :type EncryptStatus: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -1149,6 +1226,9 @@ class DcnDetailItem(AbstractModel):
         self.CreateTime = None
         self.PeriodEndTime = None
         self.InstanceType = None
+        self.ReplicaConfig = None
+        self.ReplicaStatus = None
+        self.EncryptStatus = None
 
 
     def _deserialize(self, params):
@@ -1170,6 +1250,13 @@ class DcnDetailItem(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.PeriodEndTime = params.get("PeriodEndTime")
         self.InstanceType = params.get("InstanceType")
+        if params.get("ReplicaConfig") is not None:
+            self.ReplicaConfig = DCNReplicaConfig()
+            self.ReplicaConfig._deserialize(params.get("ReplicaConfig"))
+        if params.get("ReplicaStatus") is not None:
+            self.ReplicaStatus = DCNReplicaStatus()
+            self.ReplicaStatus._deserialize(params.get("ReplicaStatus"))
+        self.EncryptStatus = params.get("EncryptStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1194,7 +1281,7 @@ class Deal(AbstractModel):
         :type Count: int
         :param FlowId: ID of the associated process, which can be used to query the process execution status.
         :type FlowId: int
-        :param InstanceIds: This field is populated only for orders that create instances, indicating the ID of the created instance.
+        :param InstanceIds: The ID of the created instance, which is required only for the order that creates an instance.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type InstanceIds: list of str
         :param PayMode: Payment mode. Valid values: 0 (postpaid), 1 (prepaid)
@@ -2298,6 +2385,92 @@ class DescribeOrdersResponse(AbstractModel):
                 obj = Deal()
                 obj._deserialize(item)
                 self.Deals.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePriceRequest(AbstractModel):
+    """DescribePrice request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Zone: AZ ID of the purchased instance.
+        :type Zone: str
+        :param NodeCount: Number of instance nodes, which can be obtained 
+ by querying the instance specification through the `DescribeDBInstanceSpecs` API.
+        :type NodeCount: int
+        :param Memory: Memory size in GB, which can be obtained 
+ by querying the instance specification through the `DescribeDBInstanceSpecs` API.
+        :type Memory: int
+        :param Storage: Storage capacity in GB. The maximum and minimum storage space can be obtained 
+ by querying instance specification through the `DescribeDBInstanceSpecs` API.
+        :type Storage: int
+        :param Period: Purchase period in months
+        :type Period: int
+        :param Count: The number of instances to be purchased. Only one instance is queried for price by default.
+        :type Count: int
+        :param Paymode: Billing type. Valid values: `postpaid` (pay-as-you-go), `prepaid` (monthly subscription).
+        :type Paymode: str
+        :param AmountUnit: Price unit. Valid values:   
+`* pent` (cent), 
+`* microPent` (microcent).
+        :type AmountUnit: str
+        """
+        self.Zone = None
+        self.NodeCount = None
+        self.Memory = None
+        self.Storage = None
+        self.Period = None
+        self.Count = None
+        self.Paymode = None
+        self.AmountUnit = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.NodeCount = params.get("NodeCount")
+        self.Memory = params.get("Memory")
+        self.Storage = params.get("Storage")
+        self.Period = params.get("Period")
+        self.Count = params.get("Count")
+        self.Paymode = params.get("Paymode")
+        self.AmountUnit = params.get("AmountUnit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePriceResponse(AbstractModel):
+    """DescribePrice response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OriginalPrice: Original price  
+* Unit: Cent (default). If the request parameter contains `AmountUnit`, see `AmountUnit` description.
+* Currency: CNY (Chinese site), USD (international site)
+        :type OriginalPrice: int
+        :param Price: The actual price may be different from the original price due to discounts. 
+* Unit: Cent (default). If the request parameter contains `AmountUnit`, see `AmountUnit` description.
+* Currency: CNY (Chinese site), USD (international site)
+        :type Price: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.OriginalPrice = None
+        self.Price = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.OriginalPrice = params.get("OriginalPrice")
+        self.Price = params.get("Price")
         self.RequestId = params.get("RequestId")
 
 

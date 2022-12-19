@@ -926,7 +926,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeLogHistogram(self, request):
-        """This API is used to build a histogram.
+        """This API is used to get a log count histogram.
 
         :param request: Request instance for DescribeLogHistogram.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeLogHistogramRequest`

@@ -562,6 +562,9 @@ class ConfigInfo(AbstractModel):
         r"""
         :param ConfigId: Collection rule configuration ID
         :type ConfigId: str
+        :param Name: Name of the collection rule configuration
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Name: str
         :param LogFormat: Log formatting method
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type LogFormat: str
@@ -589,6 +592,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :type UserDefineRule: str
         """
         self.ConfigId = None
+        self.Name = None
         self.LogFormat = None
         self.Path = None
         self.LogType = None
@@ -602,6 +606,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     def _deserialize(self, params):
         self.ConfigId = params.get("ConfigId")
+        self.Name = params.get("Name")
         self.LogFormat = params.get("LogFormat")
         self.Path = params.get("Path")
         self.LogType = params.get("LogType")
@@ -1391,7 +1396,7 @@ class CreateTopicRequest(AbstractModel):
         :type MaxSplitPartitions: int
         :param StorageType: Log topic storage type. Valid values: `hot` (STANDARD storage); `cold` (IA storage). Default value: `hot`.
         :type StorageType: str
-        :param Period: Lifecycle in days. Value range: 1-3600 (3640 indicates permanent retention)
+        :param Period: Lifecycle in days. Value range: 1–3600 (STANDARD storage); 7–3600 (IA storage). `3640` indicates permanent retention.
         :type Period: int
         """
         self.LogsetId = None
@@ -2561,7 +2566,7 @@ class DescribeLogHistogramRequest(AbstractModel):
         :type To: int
         :param Query: Query statement
         :type Query: str
-        :param Interval: Time interval in milliseconds
+        :param Interval: Interval in milliseconds. Condition: (To – From) / Interval ≤ 200
         :type Interval: int
         """
         self.TopicId = None
@@ -3346,17 +3351,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
 Note: This field may return null, indicating that no valid values can be obtained.
         :type JsonStandard: int
         :param Protocol: Syslog protocol. Valid values: `tcp`, `udp`.
-This field can be used when you create/modify collection rule configurations.
+This field can be used when you create or modify collection rule configurations.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Protocol: str
         :param Address: Listening address and port specified by the syslog collection. Format: [ip]:[port]. Example: 127.0.0.1:9000.
-This field can be used when you create/modify collection rule configurations.
+This field can be used when you create or modify collection rule configurations.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Address: str
-        :param ParseProtocol: `rfc3164`: Resolve logs by using the RFC3164 protocol during the syslog collection.
-`rfc5424`: Resolve logs by using the RFC5424 protocol during the syslog collection.
-`auto`: Automatically match either the RFC3164 or RFC5424 protocol.
-This field can be used when you create/modify collection rule configurations.
+        :param ParseProtocol: `rfc3164`: Resolve logs by using the RFC 3164 protocol during the syslog collection.
+`rfc5424`: Resolve logs by using the RFC 5424 protocol during the syslog collection.
+`auto`: Automatically match either the RFC 3164 or RFC 5424 protocol.
+This field can be used when you create or modify collection rule configurations.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ParseProtocol: str
         """
@@ -3911,17 +3916,21 @@ class LogsetInfo(AbstractModel):
         :type LogsetName: str
         :param CreateTime: Creation time
         :type CreateTime: str
+        :param AssumerName: Cloud product identifier. If the logset is created by another cloud product, this field returns the name of the cloud product, such as `CDN` or `TKE`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AssumerName: str
         :param Tags: Tag bound to logset
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Tags: list of Tag
         :param TopicCount: Number of log topics in logset
         :type TopicCount: int
-        :param RoleName: If `AssumerUin` is not empty, it indicates the service provider who creates the logset
+        :param RoleName: If `AssumerName` is not empty, it indicates the service provider who creates the logset.
         :type RoleName: str
         """
         self.LogsetId = None
         self.LogsetName = None
         self.CreateTime = None
+        self.AssumerName = None
         self.Tags = None
         self.TopicCount = None
         self.RoleName = None
@@ -3931,6 +3940,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.LogsetId = params.get("LogsetId")
         self.LogsetName = params.get("LogsetName")
         self.CreateTime = params.get("CreateTime")
+        self.AssumerName = params.get("AssumerName")
         if params.get("Tags") is not None:
             self.Tags = []
             for item in params.get("Tags"):
@@ -5238,6 +5248,12 @@ Notes:
 If the value is `false`, the old response method will be used, and the output parameters `AnalysisResults` and `ColNames` will be valid.
 The two response methods differ slightly in terms of encoding format. You are advised to use the new method (`true`).
         :type UseNewAnalysis: bool
+        :param SamplingRate: Indicates whether to sample raw logs before statistical analysis (`Query` includes SQL statements).
+`0`: Auto-sample.
+`0–1`: Sample by the specified sample rate, such as `0.02`.
+`1`: Precise analysis without sampling.
+Default value: `1`
+        :type SamplingRate: float
         """
         self.TopicId = None
         self.From = None
@@ -5247,6 +5263,7 @@ The two response methods differ slightly in terms of encoding format. You are ad
         self.Context = None
         self.Sort = None
         self.UseNewAnalysis = None
+        self.SamplingRate = None
 
 
     def _deserialize(self, params):
@@ -5258,6 +5275,7 @@ The two response methods differ slightly in terms of encoding format. You are ad
         self.Context = params.get("Context")
         self.Sort = params.get("Sort")
         self.UseNewAnalysis = params.get("UseNewAnalysis")
+        self.SamplingRate = params.get("SamplingRate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5593,6 +5611,9 @@ class TopicInfo(AbstractModel):
         :type PartitionCount: int
         :param Index: Whether index is enabled
         :type Index: bool
+        :param AssumerName: Cloud product identifier. If the log topic is created by another cloud product, this field returns the name of the cloud product, such as `CDN` or `TKE`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AssumerName: str
         :param CreateTime: Creation time
         :type CreateTime: str
         :param Status: Whether collection is enabled in the log topic
@@ -5612,12 +5633,19 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param Period: Lifecycle in days. Value range: 1-3600 (3640 indicates permanent retention)
 Note: This field may return `null`, indicating that no valid value was found.
         :type Period: int
+        :param SubAssumerName: Cloud product sub-identifier. If the log topic is created by another cloud product, this field returns the name of the cloud product and its log type, such as `TKE-Audit` or `TKE-Event`. Some products only return the cloud product identifier (`AssumerName`), without this field.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SubAssumerName: str
+        :param Describes: Log topic description
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Describes: str
         """
         self.LogsetId = None
         self.TopicId = None
         self.TopicName = None
         self.PartitionCount = None
         self.Index = None
+        self.AssumerName = None
         self.CreateTime = None
         self.Status = None
         self.Tags = None
@@ -5625,6 +5653,8 @@ Note: This field may return `null`, indicating that no valid value was found.
         self.MaxSplitPartitions = None
         self.StorageType = None
         self.Period = None
+        self.SubAssumerName = None
+        self.Describes = None
 
 
     def _deserialize(self, params):
@@ -5633,6 +5663,7 @@ Note: This field may return `null`, indicating that no valid value was found.
         self.TopicName = params.get("TopicName")
         self.PartitionCount = params.get("PartitionCount")
         self.Index = params.get("Index")
+        self.AssumerName = params.get("AssumerName")
         self.CreateTime = params.get("CreateTime")
         self.Status = params.get("Status")
         if params.get("Tags") is not None:
@@ -5645,6 +5676,8 @@ Note: This field may return `null`, indicating that no valid value was found.
         self.MaxSplitPartitions = params.get("MaxSplitPartitions")
         self.StorageType = params.get("StorageType")
         self.Period = params.get("Period")
+        self.SubAssumerName = params.get("SubAssumerName")
+        self.Describes = params.get("Describes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
