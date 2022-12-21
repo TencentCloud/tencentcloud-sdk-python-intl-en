@@ -212,80 +212,6 @@ Note: this field may return `null`, indicating that no valid value can be found.
         
 
 
-class ApplyCDBProxyRequest(AbstractModel):
-    """ApplyCDBProxy request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param InstanceId: Unique ID of the source instance
-        :type InstanceId: str
-        :param UniqVpcId: VPC ID
-        :type UniqVpcId: str
-        :param UniqSubnetId: VPC subnet ID
-        :type UniqSubnetId: str
-        :param ProxyCount: Number of nodes in the proxy group
-        :type ProxyCount: int
-        :param Cpu: Number of CPU cores
-        :type Cpu: int
-        :param Mem: Memory
-        :type Mem: int
-        :param SecurityGroup: Security group
-        :type SecurityGroup: list of str
-        :param Desc: Description (up to 256 characters)
-        :type Desc: str
-        """
-        self.InstanceId = None
-        self.UniqVpcId = None
-        self.UniqSubnetId = None
-        self.ProxyCount = None
-        self.Cpu = None
-        self.Mem = None
-        self.SecurityGroup = None
-        self.Desc = None
-
-
-    def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.UniqVpcId = params.get("UniqVpcId")
-        self.UniqSubnetId = params.get("UniqSubnetId")
-        self.ProxyCount = params.get("ProxyCount")
-        self.Cpu = params.get("Cpu")
-        self.Mem = params.get("Mem")
-        self.SecurityGroup = params.get("SecurityGroup")
-        self.Desc = params.get("Desc")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ApplyCDBProxyResponse(AbstractModel):
-    """ApplyCDBProxy response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param AsyncRequestId: Async request ID
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type AsyncRequestId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.AsyncRequestId = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.AsyncRequestId = params.get("AsyncRequestId")
-        self.RequestId = params.get("RequestId")
-
-
 class AssociateSecurityGroupsRequest(AbstractModel):
     """AssociateSecurityGroups request structure.
 
@@ -573,6 +499,9 @@ class BackupInfo(AbstractModel):
         :type CosStorageType: int
         :param InstanceId: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.
         :type InstanceId: str
+        :param EncryptionFlag: Whether the backup file is encrypted. Valid values: `on` (encrypted), `off` (unencrypted).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EncryptionFlag: str
         """
         self.Name = None
         self.Size = None
@@ -593,6 +522,7 @@ class BackupInfo(AbstractModel):
         self.RemoteInfo = None
         self.CosStorageType = None
         self.InstanceId = None
+        self.EncryptionFlag = None
 
 
     def _deserialize(self, params):
@@ -620,6 +550,7 @@ class BackupInfo(AbstractModel):
                 self.RemoteInfo.append(obj)
         self.CosStorageType = params.get("CosStorageType")
         self.InstanceId = params.get("InstanceId")
+        self.EncryptionFlag = params.get("EncryptionFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -991,7 +922,7 @@ class CdbSellConfig(AbstractModel):
         :type Info: str
         :param Status: Status. The value `0` indicates that this specification is available.
         :type Status: int
-        :param DeviceType: Instance type. Valid values: `UNIVERSAL` (general instance), `EXCLUSIVE` (dedicated instance), `BASIC` (basic instance).
+        :param DeviceType: Instance type. Valid values: `UNIVERSAL` (general instance), `EXCLUSIVE` (dedicated instance), `BASIC` (basic instance), `BASIC_V2` (basic v2 instance).
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DeviceType: str
         :param EngineType: Engine type description. Valid values: `Innodb`, `RocksDB`.
@@ -7507,77 +7438,6 @@ class ModifyCDBProxyDescResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class ModifyCDBProxyRequest(AbstractModel):
-    """ModifyCDBProxy request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ProxyGroupId: Unique ID of the database proxy group
-        :type ProxyGroupId: str
-        :param IsKickout: Whether to remove delayed read-only instances from the proxy group. Valid values: `true`, `false`. Default value: `false`.
-        :type IsKickout: bool
-        :param MinCount: The minimum number of read-only instances allowed by the proxy group. Minimum value: 1; maximum value: The number of instances.
-        :type MinCount: int
-        :param MaxDelay: Delay threshold. If `IsKickOut` is set to `true`, this parameter is required.
-        :type MaxDelay: int
-        :param WeightMode: Assignment mode of read/write weights. Valid values: `system` (auto-assigned), `custom`
-        :type WeightMode: str
-        :param RoWeightValues: Read-Only weight of an instance
-        :type RoWeightValues: :class:`tencentcloud.cdb.v20170320.models.RoWeight`
-        :param FailOver: Whether to enable failover. If it is enabled, the connection address will route requests to the source instance in case of proxy failure. Valid values: `true`, `false`. Default value: `false`.
-        :type FailOver: bool
-        :param AutoAddRo: Whether to automatically add newly created read-only instances to the proxy group. Valid values: `true`, `false` Default value: `false`.
-        :type AutoAddRo: bool
-        """
-        self.ProxyGroupId = None
-        self.IsKickout = None
-        self.MinCount = None
-        self.MaxDelay = None
-        self.WeightMode = None
-        self.RoWeightValues = None
-        self.FailOver = None
-        self.AutoAddRo = None
-
-
-    def _deserialize(self, params):
-        self.ProxyGroupId = params.get("ProxyGroupId")
-        self.IsKickout = params.get("IsKickout")
-        self.MinCount = params.get("MinCount")
-        self.MaxDelay = params.get("MaxDelay")
-        self.WeightMode = params.get("WeightMode")
-        if params.get("RoWeightValues") is not None:
-            self.RoWeightValues = RoWeight()
-            self.RoWeightValues._deserialize(params.get("RoWeightValues"))
-        self.FailOver = params.get("FailOver")
-        self.AutoAddRo = params.get("AutoAddRo")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ModifyCDBProxyResponse(AbstractModel):
-    """ModifyCDBProxy response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
 class ModifyCDBProxyVipVPortRequest(AbstractModel):
     """ModifyCDBProxyVipVPort request structure.
 
@@ -7923,7 +7783,7 @@ class ModifyInstancePasswordComplexityRequest(AbstractModel):
         r"""
         :param InstanceIds: Instance ID list
         :type InstanceIds: list of str
-        :param ParamList: List of parameters to be modified. Every element is a pair of `Name` (parameter name) and `CurrentValue` (new value).
+        :param ParamList: List of parameters to be modified. Every element is a combination of `Name` (parameter name) and `CurrentValue` (new value). Valid values for `Name` of version 8.0: `validate_password.policy`, `validate_password.lengt`, `validate_password.mixed_case_coun`, `validate_password.number_coun`, `validate_password.special_char_count`. Valid values for `Name` of version 5.6 and 5.7: `validate_password_polic`, `validate_password_lengt` `validate_password_mixed_case_coun`, `validate_password_number_coun`, `validate_password_special_char_coun`.
         :type ParamList: list of Parameter
         """
         self.InstanceIds = None
@@ -9693,12 +9553,6 @@ class RoVipInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
-
-
-class RoWeight(AbstractModel):
-    """Instance weight
-
-    """
 
 
 class RoWeightValue(AbstractModel):

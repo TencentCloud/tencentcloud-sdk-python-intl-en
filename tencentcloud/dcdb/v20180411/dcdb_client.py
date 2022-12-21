@@ -580,6 +580,35 @@ class DcdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDCDBPrice(self, request):
+        """This API is used to query the price of an instance before you purchase it.
+
+        :param request: Request instance for DescribeDCDBPrice.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDCDBPriceRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.DescribeDCDBPriceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDCDBPrice", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDCDBPriceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDCDBShards(self, request):
         """This API is used to query the information of shards of a TencentDB instance.
 
@@ -1090,6 +1119,40 @@ class DcdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAccountDescriptionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyAccountPrivileges(self, request):
+        """This API is used to modify the permissions of a TencentDB instance account.
+
+        **Notes**
+        - Only the SELECT permission (that is, set the permission parameter to `["SELECT"]`) of the system database `mysql` can be granted.
+        - An error will be reported if read-write permissions are granted to a read-only account.
+        - If the parameter is not passed in, no change will be made to the granted table permissions. To clear the granted table permissions, set `Privileges` to an empty array.
+
+        :param request: Request instance for ModifyAccountPrivileges.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.ModifyAccountPrivilegesRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.ModifyAccountPrivilegesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAccountPrivileges", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyAccountPrivilegesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

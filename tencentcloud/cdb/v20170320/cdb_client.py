@@ -55,35 +55,6 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ApplyCDBProxy(self, request):
-        """This API is used to create a database proxy group for a source instance.
-
-        :param request: Request instance for ApplyCDBProxy.
-        :type request: :class:`tencentcloud.cdb.v20170320.models.ApplyCDBProxyRequest`
-        :rtype: :class:`tencentcloud.cdb.v20170320.models.ApplyCDBProxyResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ApplyCDBProxy", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ApplyCDBProxyResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def AssociateSecurityGroups(self, request):
         """This API (AssociateSecurityGroups) is used to bind security groups to instances in batches.
 
@@ -2291,35 +2262,6 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyBackupDownloadRestrictionResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def ModifyCDBProxy(self, request):
-        """This API is used to configure read/write separation of database proxy.
-
-        :param request: Request instance for ModifyCDBProxy.
-        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyCDBProxyRequest`
-        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyCDBProxyResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ModifyCDBProxy", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyCDBProxyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

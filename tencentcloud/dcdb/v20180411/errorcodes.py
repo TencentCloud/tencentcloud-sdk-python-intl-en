@@ -50,13 +50,13 @@ FAILEDOPERATION_DELETEUSERFAILED = 'FailedOperation.DeleteUserFailed'
 # Failed to unassociate the security group.
 FAILEDOPERATION_DISASSOCIATESECURITYGROUPSFAILED = 'FailedOperation.DisassociateSecurityGroupsFailed'
 
-# 
+# Failed to query the security group details
 FAILEDOPERATION_GETSECURITYGROUPDETAILFAILED = 'FailedOperation.GetSecurityGroupDetailFailed'
 
 # Failed to modify account permissions.
 FAILEDOPERATION_MODIFYRIGHTFAILED = 'FailedOperation.ModifyRightFailed'
 
-# 
+# Failed to isolate the instance
 FAILEDOPERATION_OSSISOLATEINSTANCEFAILED = 'FailedOperation.OssIsolateInstanceFailed'
 
 # Failed to request the backend API.
@@ -74,7 +74,7 @@ FAILEDOPERATION_SGCHANGEVIP = 'FailedOperation.SGChangeVip'
 # Failed to set a rule.
 FAILEDOPERATION_SETRULELOCATIONFAILED = 'FailedOperation.SetRuleLocationFailed'
 
-# 
+# Failed to publish security group rules
 FAILEDOPERATION_SETSVCLOCATIONFAILED = 'FailedOperation.SetSvcLocationFailed'
 
 # Either tag key/value verification or tag API authentication failed.
@@ -188,10 +188,13 @@ INTERNALERROR_QUERYDATABASEFAILED = 'InternalError.QueryDatabaseFailed'
 # Failed to query the order information.
 INTERNALERROR_QUERYORDERFAILED = 'InternalError.QueryOrderFailed'
 
+# Failed to query the price
+INTERNALERROR_QUERYPRICEFAILED = 'InternalError.QueryPriceFailed'
+
 # An error occurred when reading data from the database.
 INTERNALERROR_READDATABASEFAILED = 'InternalError.ReadDatabaseFailed'
 
-# 
+# Invalid rollback time
 INTERNALERROR_RETREATETIME = 'InternalError.RetreateTime'
 
 # Route not found.
@@ -242,7 +245,7 @@ INVALIDPARAMETER_PERMISSIONDENIED = 'InvalidParameter.PermissionDenied'
 # Security group validity test failed.
 INVALIDPARAMETER_SGCHECKFAIL = 'InvalidParameter.SGCheckFail'
 
-# 
+# No purchasable specifications found
 INVALIDPARAMETER_SPECNOTFOUND = 'InvalidParameter.SpecNotFound'
 
 # The specified VPC subnet was not found.
@@ -293,7 +296,7 @@ INVALIDPARAMETERVALUE_ILLEGALRIGHTPARAM = 'InvalidParameterValue.IllegalRightPar
 # The specified AZ was not found.
 INVALIDPARAMETERVALUE_ILLEGALZONE = 'InvalidParameterValue.IllegalZone'
 
-# 
+# Parameter input error
 INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = 'InvalidParameterValue.InvalidParameterValueError'
 
 # The specification information of the database instance was not found.
@@ -302,7 +305,7 @@ INVALIDPARAMETERVALUE_SPECIDILLEGAL = 'InvalidParameterValue.SpecIdIllegal'
 # Operations by a system user are not allowed.
 INVALIDPARAMETERVALUE_SUPERUSERFORBIDDEN = 'InvalidParameterValue.SuperUserForbidden'
 
-# 
+# The deployment mode does not support setting the sync mode.
 INVALIDPARAMETERVALUE_SYNCMODENOTALLOWED = 'InvalidParameterValue.SyncModeNotAllowed'
 
 # The specified account does not exist.
@@ -332,7 +335,7 @@ RESOURCEUNAVAILABLE_INSTANCEHASBEENLOCKED = 'ResourceUnavailable.InstanceHasBeen
 # Incorrect database instance status. Operations are not allowed.
 RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = 'ResourceUnavailable.InstanceStatusAbnormal'
 
-# 
+# Failed to verify the security group
 RESOURCEUNAVAILABLE_SGCHECKFAIL = 'ResourceUnavailable.SGCheckFail'
 
 # You have no permission to manipulate this API or resource.

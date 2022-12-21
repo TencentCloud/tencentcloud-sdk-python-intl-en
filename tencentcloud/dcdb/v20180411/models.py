@@ -18,6 +18,34 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class Account(AbstractModel):
+    """TencentDB account information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param User: Account name
+        :type User: str
+        :param Host: Host address
+        :type Host: str
+        """
+        self.User = None
+        self.Host = None
+
+
+    def _deserialize(self, params):
+        self.User = params.get("User")
+        self.Host = params.get("Host")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ActiveHourDCDBInstanceRequest(AbstractModel):
     """ActiveHourDCDBInstance request structure.
 
@@ -305,6 +333,42 @@ class CloseDBExtranetAccessResponse(AbstractModel):
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
         self.RequestId = params.get("RequestId")
+
+
+class ColumnPrivilege(AbstractModel):
+    """Column permission information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Database: Database name
+        :type Database: str
+        :param Table: Table name
+        :type Table: str
+        :param Column: Column name
+        :type Column: str
+        :param Privileges: Permission information
+        :type Privileges: list of str
+        """
+        self.Database = None
+        self.Table = None
+        self.Column = None
+        self.Privileges = None
+
+
+    def _deserialize(self, params):
+        self.Database = params.get("Database")
+        self.Table = params.get("Table")
+        self.Column = params.get("Column")
+        self.Privileges = params.get("Privileges")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ConstraintRange(AbstractModel):
@@ -1289,6 +1353,34 @@ class DatabaseFunction(AbstractModel):
         
 
 
+class DatabasePrivilege(AbstractModel):
+    """Database permission
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Privileges: Permission information
+        :type Privileges: list of str
+        :param Database: Database name
+        :type Database: str
+        """
+        self.Privileges = None
+        self.Database = None
+
+
+    def _deserialize(self, params):
+        self.Privileges = params.get("Privileges")
+        self.Database = params.get("Database")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DatabaseProcedure(AbstractModel):
     """Database stored procedure information
 
@@ -1404,6 +1496,8 @@ class DcnDetailItem(AbstractModel):
         :type PeriodEndTime: str
         :param InstanceType: Instance type. Valid values: `1` (dedicated primary instance), `2` (non-dedicated primary instance), `3` (non-dedicated disaster recovery instance), and `4` (dedicated disaster recovery instance).
         :type InstanceType: int
+        :param EncryptStatus: Whether KMS is enabled.
+        :type EncryptStatus: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -1423,6 +1517,7 @@ class DcnDetailItem(AbstractModel):
         self.CreateTime = None
         self.PeriodEndTime = None
         self.InstanceType = None
+        self.EncryptStatus = None
 
 
     def _deserialize(self, params):
@@ -1444,6 +1539,7 @@ class DcnDetailItem(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.PeriodEndTime = params.get("PeriodEndTime")
         self.InstanceType = params.get("InstanceType")
+        self.EncryptStatus = params.get("EncryptStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1469,7 +1565,7 @@ class Deal(AbstractModel):
         :param FlowId: The associated process ID, which can be used to query the process execution status.
         :type FlowId: int
         :param InstanceIds: The ID of the created instance, which is required only for the order that creates an instance.
-Note: This field may return null, indicating that no valid value can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type InstanceIds: list of str
         :param PayMode: Billing mode. Valid values: `0` (postpaid), `1` (prepaid).
         :type PayMode: int
@@ -2219,6 +2315,96 @@ class DescribeDCDBInstancesResponse(AbstractModel):
                 obj = DCDBInstanceInfo()
                 obj._deserialize(item)
                 self.Instances.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDCDBPriceRequest(AbstractModel):
+    """DescribeDCDBPrice request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Zone: AZ ID of the purchased instance.
+        :type Zone: str
+        :param Count: The number of instances to be purchased. You can purchase 1-10 instances.
+        :type Count: int
+        :param Period: Validity period in months
+        :type Period: int
+        :param ShardNodeCount: Number of nodes in a single shard, which can be obtained
+ by querying the instance specification through the `DescribeDBInstanceSpecs` API.
+        :type ShardNodeCount: int
+        :param ShardMemory: Shard memory size in GB, which can be obtained 
+ by querying the instance specification through the `DescribeDBInstanceSpecs` API.
+        :type ShardMemory: int
+        :param ShardStorage: Shard storage size in GB, which can be obtained
+ by querying the instance specification through the `DescribeDBInstanceSpecs` API.
+        :type ShardStorage: int
+        :param ShardCount: The number of shards in the instance. Value range: 2-8. Upgrade your instance to have up to 64 shards if you require more.
+        :type ShardCount: int
+        :param Paymode: Billing type. Valid values: `postpaid` (pay-as-you-go), `prepaid` (monthly subscription).
+        :type Paymode: str
+        :param AmountUnit: Price unit. Valid values:   
+`* pent` (cent), 
+`* microPent` (microcent).
+        :type AmountUnit: str
+        """
+        self.Zone = None
+        self.Count = None
+        self.Period = None
+        self.ShardNodeCount = None
+        self.ShardMemory = None
+        self.ShardStorage = None
+        self.ShardCount = None
+        self.Paymode = None
+        self.AmountUnit = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.Count = params.get("Count")
+        self.Period = params.get("Period")
+        self.ShardNodeCount = params.get("ShardNodeCount")
+        self.ShardMemory = params.get("ShardMemory")
+        self.ShardStorage = params.get("ShardStorage")
+        self.ShardCount = params.get("ShardCount")
+        self.Paymode = params.get("Paymode")
+        self.AmountUnit = params.get("AmountUnit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDCDBPriceResponse(AbstractModel):
+    """DescribeDCDBPrice response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OriginalPrice: Original price  
+* Unit: Cent (default). If the request parameter contains `AmountUnit`, see `AmountUnit` description.
+* Currency: CNY (Chinese site), USD (international site)
+        :type OriginalPrice: int
+        :param Price: The actual price may be different from the original price due to discounts. 
+* Unit: Cent (default). If the request parameter contains `AmountUnit`, see `AmountUnit` description.
+* Currency: CNY (Chinese site), USD (international site)
+        :type Price: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.OriginalPrice = None
+        self.Price = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.OriginalPrice = params.get("OriginalPrice")
+        self.Price = params.get("Price")
         self.RequestId = params.get("RequestId")
 
 
@@ -3287,6 +3473,105 @@ class ModifyAccountDescriptionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyAccountPrivilegesRequest(AbstractModel):
+    """ModifyAccountPrivileges request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of tdsql-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.
+        :type InstanceId: str
+        :param Accounts: Database account, including username and host address.
+        :type Accounts: list of Account
+        :param GlobalPrivileges: Global permission. Valid values: "SELECT", "INSERT", "UPDATE", "DELETE", "CREATE", "PROCESS", "DROP", "REFERENCES", "INDEX", "ALTER", "SHOW DATABASES", "CREATE TEMPORARY TABLES", "LOCK TABLES", "EXECUTE", "CREATE VIEW", "SHOW VIEW", "CREATE ROUTINE", "ALTER ROUTINE", "EVENT", "TRIGGER".
+Note: If the parameter is left empty, no change will be made to the granted global permissions. To clear the granted global permissions, set the parameter to an empty array.
+        :type GlobalPrivileges: list of str
+        :param DatabasePrivileges: Database permission. Value range: "SELECT", "INSERT", "UPDATE", "DELETE", "CREATE", "DROP", "REFERENCES", "INDEX", "ALTER", "CREATE TEMPORARY TABLES", "LOCK TABLES", "EXECUTE", "CREATE VIEW", "SHOW VIEW", "CREATE ROUTINE", "ALTER ROUTINE", "EVENT", "TRIGGER".	
+Note: If the parameter is not passed in, no change will be made to the granted stored procedure permissions. To clear the granted database permissions, set `Privileges` to an empty array.
+        :type DatabasePrivileges: list of DatabasePrivilege
+        :param TablePrivileges: Database table permission. Valid values of `Privileges`: `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `CREATE`, `DROP`, `REFERENCES`, `INDEX`, `ALTER`, `CREATE VIEW`, `SHOW VIEW`, `TRIGGER`.
+Note: If the parameter is not passed in, no change will be made to the granted view permissions. To clear the granted table permissions, set `Privileges` to an empty array.
+        :type TablePrivileges: list of TablePrivilege
+        :param ColumnPrivileges: Column permission in the table. Valid values: "SELECT", "INSERT", "UPDATE", "REFERENCES".
+Note: If the parameter is not passed in, no change will be made to the granted column permissions. To clear the granted column permissions, set `Privileges` to an empty array.
+        :type ColumnPrivileges: list of ColumnPrivilege
+        :param ViewPrivileges: Database view permission. Valid values of `Privileges`: `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `CREATE`, `DROP`, `REFERENCES`, `INDEX`, `ALTER`, `CREATE VIEW`, `SHOW VIEW`, `TRIGGER`.
+Note: If the parameter is not passed in, no change will be made to the granted table permissions. To clear the granted view permissions, set `Privileges` to an empty array.
+        :type ViewPrivileges: list of ViewPrivileges
+        """
+        self.InstanceId = None
+        self.Accounts = None
+        self.GlobalPrivileges = None
+        self.DatabasePrivileges = None
+        self.TablePrivileges = None
+        self.ColumnPrivileges = None
+        self.ViewPrivileges = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("Accounts") is not None:
+            self.Accounts = []
+            for item in params.get("Accounts"):
+                obj = Account()
+                obj._deserialize(item)
+                self.Accounts.append(obj)
+        self.GlobalPrivileges = params.get("GlobalPrivileges")
+        if params.get("DatabasePrivileges") is not None:
+            self.DatabasePrivileges = []
+            for item in params.get("DatabasePrivileges"):
+                obj = DatabasePrivilege()
+                obj._deserialize(item)
+                self.DatabasePrivileges.append(obj)
+        if params.get("TablePrivileges") is not None:
+            self.TablePrivileges = []
+            for item in params.get("TablePrivileges"):
+                obj = TablePrivilege()
+                obj._deserialize(item)
+                self.TablePrivileges.append(obj)
+        if params.get("ColumnPrivileges") is not None:
+            self.ColumnPrivileges = []
+            for item in params.get("ColumnPrivileges"):
+                obj = ColumnPrivilege()
+                obj._deserialize(item)
+                self.ColumnPrivileges.append(obj)
+        if params.get("ViewPrivileges") is not None:
+            self.ViewPrivileges = []
+            for item in params.get("ViewPrivileges"):
+                obj = ViewPrivileges()
+                obj._deserialize(item)
+                self.ViewPrivileges.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAccountPrivilegesResponse(AbstractModel):
+    """ModifyAccountPrivileges response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: Async task ID, which can be used in the [DescribeFlow](https://www.tencentcloud.com/document/product/237/16177) API to query the async task result.
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyDBInstanceNameRequest(AbstractModel):
     """ModifyDBInstanceName request structure.
 
@@ -4238,6 +4523,38 @@ class TableColumn(AbstractModel):
         
 
 
+class TablePrivilege(AbstractModel):
+    """Table permission
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Database: Database name
+        :type Database: str
+        :param Table: Table name
+        :type Table: str
+        :param Privileges: Permission information
+        :type Privileges: list of str
+        """
+        self.Database = None
+        self.Table = None
+        self.Privileges = None
+
+
+    def _deserialize(self, params):
+        self.Database = params.get("Database")
+        self.Table = params.get("Table")
+        self.Privileges = params.get("Privileges")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TerminateDedicatedDBInstanceRequest(AbstractModel):
     """TerminateDedicatedDBInstance request structure.
 
@@ -4281,3 +4598,35 @@ class TerminateDedicatedDBInstanceResponse(AbstractModel):
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
         self.RequestId = params.get("RequestId")
+
+
+class ViewPrivileges(AbstractModel):
+    """View permission information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Database: Database name
+        :type Database: str
+        :param View: View name
+        :type View: str
+        :param Privileges: Permission information
+        :type Privileges: list of str
+        """
+        self.Database = None
+        self.View = None
+        self.Privileges = None
+
+
+    def _deserialize(self, params):
+        self.Database = params.get("Database")
+        self.View = params.get("View")
+        self.Privileges = params.get("Privileges")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
