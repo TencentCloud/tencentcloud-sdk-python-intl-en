@@ -472,6 +472,146 @@ class CreateAccountResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateDBInstanceRequest(AbstractModel):
+    """CreateDBInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Zones: AZs to deploy instance nodes. You can specify up to two AZs (one as primary AZ and another as replica AZ). When the shard specification is 1-primary-2-replica, the primary and one of the replicas are deployed in the primary AZ.
+        :type Zones: list of str
+        :param NodeCount: Number of nodes, which can be obtained 
+ by querying the instance specification through the `DescribeDBInstanceSpecs` API.
+        :type NodeCount: int
+        :param Memory: Memory size in GB, which can be obtained 
+ by querying the instance specification through the `DescribeDBInstanceSpecs` API.
+        :type Memory: int
+        :param Storage: Storage capacity in GB. The maximum and minimum storage space can be obtained 
+ by querying instance specification through the `DescribeDBInstanceSpecs` API.
+        :type Storage: int
+        :param Period: Validity period in months
+        :type Period: int
+        :param Count: The number of instances to be purchased. Only one instance is queried for price by default.
+        :type Count: int
+        :param AutoVoucher: Whether to automatically use vouchers. This option is disabled by default.
+        :type AutoVoucher: bool
+        :param VoucherIds: Voucher ID list. Currently, you can specify only one voucher.
+        :type VoucherIds: list of str
+        :param VpcId: VPC ID. If this parameter is not passed in, the instance will be created on the classic network.
+        :type VpcId: str
+        :param SubnetId: VPC subnet ID, which is required when `VpcId` is specified.
+        :type SubnetId: str
+        :param ProjectId: Project ID, which can be obtained through the `DescribeProjects` API. If this parameter is not passed in, the instance will be associated with the default project.
+        :type ProjectId: int
+        :param DbVersionId: Database engine version. Valid values: `8.0.18`, `10.1.9`, `5.7.17`. Default value: `5.7.17`.
+        :type DbVersionId: str
+        :param InstanceName: Name of the instance, which can be customized.
+        :type InstanceName: str
+        :param SecurityGroupIds: List of security group IDs
+        :type SecurityGroupIds: list of str
+        :param AutoRenewFlag: Auto-renewal flag. Valid values: `1` (auto-renewal), `2` (no renewal upon expiration).
+        :type AutoRenewFlag: int
+        :param Ipv6Flag: Whether IPv6 is supported.
+        :type Ipv6Flag: int
+        :param ResourceTags: Array of tag key-value pairs
+        :type ResourceTags: list of ResourceTag
+        :param InitParams: List of parameters. Valid values: `character_set_server` (character set; required); `lower_case_table_names` (table name case sensitivity; required; `0`: case-sensitive; `1`: case-insensitive); `innodb_page_size` (InnoDB data page size; default size: 16 KB); `sync_mode` (sync mode; `0`: async; `1`: strong sync; `2`: downgradable strong sync; default value: `2`).
+        :type InitParams: list of DBParamValue
+        :param DcnRegion: DCN source region
+        :type DcnRegion: str
+        :param DcnInstanceId: DCN source instance ID
+        :type DcnInstanceId: str
+        """
+        self.Zones = None
+        self.NodeCount = None
+        self.Memory = None
+        self.Storage = None
+        self.Period = None
+        self.Count = None
+        self.AutoVoucher = None
+        self.VoucherIds = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.ProjectId = None
+        self.DbVersionId = None
+        self.InstanceName = None
+        self.SecurityGroupIds = None
+        self.AutoRenewFlag = None
+        self.Ipv6Flag = None
+        self.ResourceTags = None
+        self.InitParams = None
+        self.DcnRegion = None
+        self.DcnInstanceId = None
+
+
+    def _deserialize(self, params):
+        self.Zones = params.get("Zones")
+        self.NodeCount = params.get("NodeCount")
+        self.Memory = params.get("Memory")
+        self.Storage = params.get("Storage")
+        self.Period = params.get("Period")
+        self.Count = params.get("Count")
+        self.AutoVoucher = params.get("AutoVoucher")
+        self.VoucherIds = params.get("VoucherIds")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.ProjectId = params.get("ProjectId")
+        self.DbVersionId = params.get("DbVersionId")
+        self.InstanceName = params.get("InstanceName")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.Ipv6Flag = params.get("Ipv6Flag")
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = ResourceTag()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
+        if params.get("InitParams") is not None:
+            self.InitParams = []
+            for item in params.get("InitParams"):
+                obj = DBParamValue()
+                obj._deserialize(item)
+                self.InitParams.append(obj)
+        self.DcnRegion = params.get("DcnRegion")
+        self.DcnInstanceId = params.get("DcnInstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDBInstanceResponse(AbstractModel):
+    """CreateDBInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DealName: Order ID, which is used for calling the `DescribeOrders` API.
+ The parameter can be used to either query order details or call the user account APIs to make another payment when this payment fails.
+        :type DealName: str
+        :param InstanceIds: IDs of the instances you have purchased in this order. If no instance IDs are returned, you can query them with the `DescribeOrders` API. You can also use the `DescribeDBInstances` API to check whether an instance has been created successfully.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceIds: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DealName = None
+        self.InstanceIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DealName = params.get("DealName")
+        self.InstanceIds = params.get("InstanceIds")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateHourDBInstanceRequest(AbstractModel):
     """CreateHourDBInstance request structure.
 
@@ -2871,6 +3011,55 @@ class IsolateDedicatedDBInstanceResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class KillSessionRequest(AbstractModel):
+    """KillSession request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param SessionId: List of session IDs
+        :type SessionId: list of int
+        """
+        self.InstanceId = None
+        self.SessionId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.SessionId = params.get("SessionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KillSessionResponse(AbstractModel):
+    """KillSession response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: Task ID
+        :type TaskId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
 
 

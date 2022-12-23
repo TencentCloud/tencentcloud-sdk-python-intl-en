@@ -1553,6 +1553,11 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         :type Collation: str
         :param TimeZone: System time zone. Default value: `China Standard Time`.
         :type TimeZone: str
+        :param IsDrZone: Whether the instance is deployed across AZs
+        :type IsDrZone: bool
+        :param SlaveZones: Replica AZ information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SlaveZones: :class:`tencentcloud.sqlserver.v20180328.models.SlaveZones`
         """
         self.InstanceId = None
         self.Name = None
@@ -1604,6 +1609,8 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.TgwWanVPort = None
         self.Collation = None
         self.TimeZone = None
+        self.IsDrZone = None
+        self.SlaveZones = None
 
 
     def _deserialize(self, params):
@@ -1662,6 +1669,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.TgwWanVPort = params.get("TgwWanVPort")
         self.Collation = params.get("Collation")
         self.TimeZone = params.get("TimeZone")
+        self.IsDrZone = params.get("IsDrZone")
+        if params.get("SlaveZones") is not None:
+            self.SlaveZones = SlaveZones()
+            self.SlaveZones._deserialize(params.get("SlaveZones"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2214,16 +2225,28 @@ class DescribeAccountsRequest(AbstractModel):
         :type Limit: int
         :param Offset: Page number. Default value: 0
         :type Offset: int
+        :param Name: Account ID
+        :type Name: str
+        :param OrderBy: Sorting by `createTime`, `updateTime`, or `passTime`. Default value: `createTime` (desc).
+        :type OrderBy: str
+        :param OrderByType: Sorting rule. Valid values: `desc` (descending order), `asc` (ascending order). Default value: `desc`.
+        :type OrderByType: str
         """
         self.InstanceId = None
         self.Limit = None
         self.Offset = None
+        self.Name = None
+        self.OrderBy = None
+        self.OrderByType = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        self.Name = params.get("Name")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderByType = params.get("OrderByType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3046,16 +3069,24 @@ class DescribeDBsRequest(AbstractModel):
         :type Limit: int
         :param Offset: Page number. Default value: 0
         :type Offset: int
+        :param Name: Database name
+        :type Name: str
+        :param OrderByType: Sorting rule. Valid values: `desc` (descending order), `asc` (ascending order). Default value: `desc`.
+        :type OrderByType: str
         """
         self.InstanceIdSet = None
         self.Limit = None
         self.Offset = None
+        self.Name = None
+        self.OrderByType = None
 
 
     def _deserialize(self, params):
         self.InstanceIdSet = params.get("InstanceIdSet")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        self.Name = params.get("Name")
+        self.OrderByType = params.get("OrderByType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6090,6 +6121,34 @@ class RunMigrationResponse(AbstractModel):
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
         self.RequestId = params.get("RequestId")
+
+
+class SlaveZones(AbstractModel):
+    """Replica AZ information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SlaveZone: Replica AZ region code
+        :type SlaveZone: str
+        :param SlaveZoneName: Replica AZ
+        :type SlaveZoneName: str
+        """
+        self.SlaveZone = None
+        self.SlaveZoneName = None
+
+
+    def _deserialize(self, params):
+        self.SlaveZone = params.get("SlaveZone")
+        self.SlaveZoneName = params.get("SlaveZoneName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SlowlogInfo(AbstractModel):

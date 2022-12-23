@@ -71,6 +71,9 @@ FAILEDOPERATION_OSSISOLATEINSTANCEFAILED = 'FailedOperation.OssIsolateInstanceFa
 # Failed to request the backend API.
 FAILEDOPERATION_OSSOPERATIONFAILED = 'FailedOperation.OssOperationFailed'
 
+# Failed to make order payment.
+FAILEDOPERATION_PAYFAILED = 'FailedOperation.PayFailed'
+
 # Failed to reset the account password.
 FAILEDOPERATION_RESETPASSWORDFAILED = 'FailedOperation.ResetPasswordFailed'
 
@@ -106,6 +109,9 @@ INTERNALERROR = 'InternalError'
 
 # CAM authentication request failed.
 INTERNALERROR_CAMAUTHFAILED = 'InternalError.CamAuthFailed'
+
+# Failed to verify the VIP status
+INTERNALERROR_CHECKVIPSTATUSFAILED = 'InternalError.CheckVipStatusFailed'
 
 # Invalid COS address configuration.
 INTERNALERROR_COSCONFIGURATION = 'InternalError.CosConfiguration'
