@@ -35,12 +35,15 @@ class Account(AbstractModel):
         :type UpdateTime: str
         :param Host: Host
         :type Host: str
+        :param MaxUserConnections: The max connections
+        :type MaxUserConnections: int
         """
         self.AccountName = None
         self.Description = None
         self.CreateTime = None
         self.UpdateTime = None
         self.Host = None
+        self.MaxUserConnections = None
 
 
     def _deserialize(self, params):
@@ -49,6 +52,7 @@ class Account(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
         self.Host = params.get("Host")
+        self.MaxUserConnections = params.get("MaxUserConnections")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -704,7 +708,7 @@ Clusters with storage billed in monthly subscription can’t be cloned or rolled
         :type SecurityGroupIds: list of str
         :param AlarmPolicyIds: Array of alarm policy IDs
         :type AlarmPolicyIds: list of str
-        :param ClusterParams: Array of parameters
+        :param ClusterParams: Array of parameters. Valid values: `character_set_server` (utf8｜latin1｜gbk｜utf8mb4), `lower_case_table_names`. 0: case-sensitive; 1: case-insensitive).
         :type ClusterParams: list of ParamItem
         :param DealMode: Transaction mode. Valid values: `0` (place and pay for an order), `1` (place an order)
         :type DealMode: int
@@ -712,6 +716,8 @@ Clusters with storage billed in monthly subscription can’t be cloned or rolled
         :type ParamTemplateId: int
         :param SlaveZone: Multi-AZ address
         :type SlaveZone: str
+        :param InstanceInitInfos: 
+        :type InstanceInitInfos: list of InstanceInitInfo
         """
         self.Zone = None
         self.VpcId = None
@@ -753,6 +759,7 @@ Clusters with storage billed in monthly subscription can’t be cloned or rolled
         self.DealMode = None
         self.ParamTemplateId = None
         self.SlaveZone = None
+        self.InstanceInitInfos = None
 
 
     def _deserialize(self, params):
@@ -806,6 +813,12 @@ Clusters with storage billed in monthly subscription can’t be cloned or rolled
         self.DealMode = params.get("DealMode")
         self.ParamTemplateId = params.get("ParamTemplateId")
         self.SlaveZone = params.get("SlaveZone")
+        if params.get("InstanceInitInfos") is not None:
+            self.InstanceInitInfos = []
+            for item in params.get("InstanceInitInfos"):
+                obj = InstanceInitInfo()
+                obj._deserialize(item)
+                self.InstanceInitInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1268,6 +1281,20 @@ Note: this field may return `null`, indicating that no valid value can be obtain
         :type StorageId: str
         :param StoragePayMode: Storage billing mode
         :type StoragePayMode: int
+        :param PhysicalZone: Physical zone
+        :type PhysicalZone: str
+        :param BusinessType: Business type
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type BusinessType: str
+        :param Tasks: Task
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Tasks: list of ObjectTask
+        :param IsFreeze: Whether to freeze
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsFreeze: str
+        :param ResourceTags: The resource tag
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ResourceTags: list of Tag
         """
         self.Uin = None
         self.AppId = None
@@ -1311,6 +1338,11 @@ Note: this field may return `null`, indicating that no valid value can be obtain
         self.ServerlessStatus = None
         self.StorageId = None
         self.StoragePayMode = None
+        self.PhysicalZone = None
+        self.BusinessType = None
+        self.Tasks = None
+        self.IsFreeze = None
+        self.ResourceTags = None
 
 
     def _deserialize(self, params):
@@ -1356,6 +1388,21 @@ Note: this field may return `null`, indicating that no valid value can be obtain
         self.ServerlessStatus = params.get("ServerlessStatus")
         self.StorageId = params.get("StorageId")
         self.StoragePayMode = params.get("StoragePayMode")
+        self.PhysicalZone = params.get("PhysicalZone")
+        self.BusinessType = params.get("BusinessType")
+        if params.get("Tasks") is not None:
+            self.Tasks = []
+            for item in params.get("Tasks"):
+                obj = ObjectTask()
+                obj._deserialize(item)
+                self.Tasks.append(obj)
+        self.IsFreeze = params.get("IsFreeze")
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1696,17 +1743,30 @@ class DescribeAccountsRequest(AbstractModel):
         :type AccountNames: list of str
         :param DbType: Database type. Valid values: 
 <li> MYSQL </li>
+This parameter has been disused.
         :type DbType: str
+        :param Hosts: List of accounts to be filtered
+        :type Hosts: list of str
+        :param Limit: Maximum entries returned per page
+        :type Limit: int
+        :param Offset: Offset
+        :type Offset: int
         """
         self.ClusterId = None
         self.AccountNames = None
         self.DbType = None
+        self.Hosts = None
+        self.Limit = None
+        self.Offset = None
 
 
     def _deserialize(self, params):
         self.ClusterId = params.get("ClusterId")
         self.AccountNames = params.get("AccountNames")
         self.DbType = params.get("DbType")
+        self.Hosts = params.get("Hosts")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1724,11 +1784,15 @@ class DescribeAccountsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param AccountSet: Database account list
+Note: This field may return null, indicating that no valid values can be obtained.
         :type AccountSet: list of Account
+        :param TotalCount: Total number of accounts
+        :type TotalCount: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.AccountSet = None
+        self.TotalCount = None
         self.RequestId = None
 
 
@@ -1739,6 +1803,7 @@ class DescribeAccountsResponse(AbstractModel):
                 obj = Account()
                 obj._deserialize(item)
                 self.AccountSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -1886,6 +1951,8 @@ class DescribeBackupListRequest(AbstractModel):
         :type FileNames: list of str
         :param BackupNames: Backup alias, which supports fuzzy query.
         :type BackupNames: list of str
+        :param SnapshotIdList: ID list of the snapshot backup
+        :type SnapshotIdList: list of int
         """
         self.ClusterId = None
         self.Limit = None
@@ -1899,6 +1966,7 @@ class DescribeBackupListRequest(AbstractModel):
         self.EndTime = None
         self.FileNames = None
         self.BackupNames = None
+        self.SnapshotIdList = None
 
 
     def _deserialize(self, params):
@@ -1914,6 +1982,7 @@ class DescribeBackupListRequest(AbstractModel):
         self.EndTime = params.get("EndTime")
         self.FileNames = params.get("FileNames")
         self.BackupNames = params.get("BackupNames")
+        self.SnapshotIdList = params.get("SnapshotIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2228,12 +2297,16 @@ class DescribeClusterParamsRequest(AbstractModel):
         r"""
         :param ClusterId: Cluster ID
         :type ClusterId: str
+        :param ParamName: Parameter name
+        :type ParamName: str
         """
         self.ClusterId = None
+        self.ParamName = None
 
 
     def _deserialize(self, params):
         self.ClusterId = params.get("ClusterId")
+        self.ParamName = params.get("ParamName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2253,6 +2326,7 @@ class DescribeClusterParamsResponse(AbstractModel):
         :param TotalCount: Number of parameters
         :type TotalCount: int
         :param Items: Instance parameter list
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Items: list of ParamInfo
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -2852,12 +2926,24 @@ class DescribeProjectSecurityGroupsRequest(AbstractModel):
         r"""
         :param ProjectId: Project ID
         :type ProjectId: int
+        :param Limit: Maximum entries returned per page
+        :type Limit: int
+        :param Offset: Offset
+        :type Offset: int
+        :param SearchKey: Search by keyword
+        :type SearchKey: str
         """
         self.ProjectId = None
+        self.Limit = None
+        self.Offset = None
+        self.SearchKey = None
 
 
     def _deserialize(self, params):
         self.ProjectId = params.get("ProjectId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.SearchKey = params.get("SearchKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2876,10 +2962,13 @@ class DescribeProjectSecurityGroupsResponse(AbstractModel):
         r"""
         :param Groups: Security group details
         :type Groups: list of SecurityGroup
+        :param Total: The total number of groups
+        :type Total: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.Groups = None
+        self.Total = None
         self.RequestId = None
 
 
@@ -2890,6 +2979,7 @@ class DescribeProjectSecurityGroupsResponse(AbstractModel):
                 obj = SecurityGroup()
                 obj._deserialize(item)
                 self.Groups.append(obj)
+        self.Total = params.get("Total")
         self.RequestId = params.get("RequestId")
 
 
@@ -2979,8 +3069,10 @@ class DescribeRollbackTimeRangeResponse(AbstractModel):
     def __init__(self):
         r"""
         :param TimeRangeStart: Start time of valid rollback time range (disused)
+Note: This field may return null, indicating that no valid values can be obtained.
         :type TimeRangeStart: str
         :param TimeRangeEnd: End time of valid rollback time range (disused)
+Note: This field may return null, indicating that no valid values can be obtained.
         :type TimeRangeEnd: str
         :param RollbackTimeRanges: Time range available for rollback
         :type RollbackTimeRanges: list of RollbackTimeRange
@@ -3310,6 +3402,42 @@ class InquirePriceRenewResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class InstanceInitInfo(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Cpu: 
+        :type Cpu: int
+        :param Memory: 
+        :type Memory: int
+        :param InstanceType: 
+        :type InstanceType: str
+        :param InstanceCount: 
+        :type InstanceCount: int
+        """
+        self.Cpu = None
+        self.Memory = None
+        self.InstanceType = None
+        self.InstanceCount = None
+
+
+    def _deserialize(self, params):
+        self.Cpu = params.get("Cpu")
+        self.Memory = params.get("Memory")
+        self.InstanceType = params.get("InstanceType")
+        self.InstanceCount = params.get("InstanceCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InstanceSpec(AbstractModel):
     """Details of purchasable instance specifications. `Cpu` and `Memory` determine the instance specification during instance creation. The value range of the storage capacity is [MinStorageSize,MaxStorageSize]
 
@@ -3483,6 +3611,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.FlowId = params.get("FlowId")
         self.DealNames = params.get("DealNames")
         self.RequestId = params.get("RequestId")
+
+
+class ModifiableInfo(AbstractModel):
+    """Details of whether the parameter can be modified
+
+    """
 
 
 class ModifyBackupConfigRequest(AbstractModel):
@@ -4163,6 +4297,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type MatchValue: str
         :param Description: Parameter description
         :type Description: str
+        :param IsGlobal: Whether it is global parameter
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsGlobal: int
+        :param ModifiableInfo: Whether the parameter can be modified
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ModifiableInfo: :class:`tencentcloud.cynosdb.v20190107.models.ModifiableInfo`
+        :param IsFunc: Whether it is a function
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsFunc: bool
+        :param Func: Function
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Func: str
         """
         self.CurrentValue = None
         self.Default = None
@@ -4175,6 +4321,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.MatchType = None
         self.MatchValue = None
         self.Description = None
+        self.IsGlobal = None
+        self.ModifiableInfo = None
+        self.IsFunc = None
+        self.Func = None
 
 
     def _deserialize(self, params):
@@ -4189,6 +4339,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.MatchType = params.get("MatchType")
         self.MatchValue = params.get("MatchValue")
         self.Description = params.get("Description")
+        self.IsGlobal = params.get("IsGlobal")
+        if params.get("ModifiableInfo") is not None:
+            self.ModifiableInfo = ModifiableInfo()
+            self.ModifiableInfo._deserialize(params.get("ModifiableInfo"))
+        self.IsFunc = params.get("IsFunc")
+        self.Func = params.get("Func")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4470,6 +4626,59 @@ class RemoveClusterSlaveZoneResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ResetAccountPasswordRequest(AbstractModel):
+    """ResetAccountPassword request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AccountName: Database account name
+        :type AccountName: str
+        :param AccountPassword: New password of the database account
+        :type AccountPassword: str
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param Host: Host. Default value: `%`
+        :type Host: str
+        """
+        self.AccountName = None
+        self.AccountPassword = None
+        self.ClusterId = None
+        self.Host = None
+
+
+    def _deserialize(self, params):
+        self.AccountName = params.get("AccountName")
+        self.AccountPassword = params.get("AccountPassword")
+        self.ClusterId = params.get("ClusterId")
+        self.Host = params.get("Host")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResetAccountPasswordResponse(AbstractModel):
+    """ResetAccountPassword response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ResumeServerlessRequest(AbstractModel):
     """ResumeServerless request structure.
 
@@ -4541,6 +4750,128 @@ class RollbackTimeRange(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class SearchClusterDatabasesRequest(AbstractModel):
+    """SearchClusterDatabases request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: The cluster ID
+        :type ClusterId: str
+        :param Database: Database name
+        :type Database: str
+        :param MatchType: Whether to search exactly
+Valid values: `0` (fuzzy search), `1` (exact search). 
+Default value: `0`.
+        :type MatchType: int
+        """
+        self.ClusterId = None
+        self.Database = None
+        self.MatchType = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Database = params.get("Database")
+        self.MatchType = params.get("MatchType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchClusterDatabasesResponse(AbstractModel):
+    """SearchClusterDatabases response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Databases: Database List
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Databases: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Databases = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Databases = params.get("Databases")
+        self.RequestId = params.get("RequestId")
+
+
+class SearchClusterTablesRequest(AbstractModel):
+    """SearchClusterTables request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param Database: Database name
+        :type Database: str
+        :param Table: Data table name
+        :type Table: str
+        :param TableType: Data table type. Valid values:
+`view`: Only return to view,
+`base_table`: Only return to basic table,
+`all`: Return to view and table.
+        :type TableType: str
+        """
+        self.ClusterId = None
+        self.Database = None
+        self.Table = None
+        self.TableType = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Database = params.get("Database")
+        self.Table = params.get("Table")
+        self.TableType = params.get("TableType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchClusterTablesResponse(AbstractModel):
+    """SearchClusterTables response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Tables: Data table list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Tables: list of DatabaseTables
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Tables = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Tables") is not None:
+            self.Tables = []
+            for item in params.get("Tables"):
+                obj = DatabaseTables()
+                obj._deserialize(item)
+                self.Tables.append(obj)
+        self.RequestId = params.get("RequestId")
 
 
 class SecurityGroup(AbstractModel):
@@ -4771,6 +5102,67 @@ class SwitchClusterZoneResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SwitchProxyVpcRequest(AbstractModel):
+    """SwitchProxyVpc request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param UniqVpcId: VPC ID in string
+        :type UniqVpcId: str
+        :param UniqSubnetId: Subnet ID in string
+        :type UniqSubnetId: str
+        :param OldIpReserveHours: Valid hours of old IP
+        :type OldIpReserveHours: int
+        :param ProxyGroupId: Database proxy group ID (required), which can be obtained through the `DescribeProxies` API.
+        :type ProxyGroupId: str
+        """
+        self.ClusterId = None
+        self.UniqVpcId = None
+        self.UniqSubnetId = None
+        self.OldIpReserveHours = None
+        self.ProxyGroupId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.UniqSubnetId = params.get("UniqSubnetId")
+        self.OldIpReserveHours = params.get("OldIpReserveHours")
+        self.ProxyGroupId = params.get("ProxyGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SwitchProxyVpcResponse(AbstractModel):
+    """SwitchProxyVpc response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: Async task ID
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class Tag(AbstractModel):
     """Information of tags associated with cluster, including `TagKey` and `TagValue`
 
@@ -4929,6 +5321,8 @@ class UpgradeInstanceRequest(AbstractModel):
         :type DbType: str
         :param DealMode: Transaction mode. Valid values: `0` (place and pay for an order), `1` (place an order)
         :type DealMode: int
+        :param UpgradeMode: Valid values: `NormalUpgrade` (Normal mode), `FastUpgrade` (QuickChange). If the system detects that the configuration modification process will cause a momentary disconnection, the process will be terminated.
+        :type UpgradeMode: str
         """
         self.InstanceId = None
         self.Cpu = None
@@ -4938,6 +5332,7 @@ class UpgradeInstanceRequest(AbstractModel):
         self.AutoVoucher = None
         self.DbType = None
         self.DealMode = None
+        self.UpgradeMode = None
 
 
     def _deserialize(self, params):
@@ -4949,6 +5344,7 @@ class UpgradeInstanceRequest(AbstractModel):
         self.AutoVoucher = params.get("AutoVoucher")
         self.DbType = params.get("DbType")
         self.DealMode = params.get("DealMode")
+        self.UpgradeMode = params.get("UpgradeMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
