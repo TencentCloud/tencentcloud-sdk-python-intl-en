@@ -78,6 +78,74 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self.RequestId = params.get("RequestId")
 
 
+class AllNodeResourceSpec(AbstractModel):
+    """Resource description
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MasterResourceSpec: The description of master nodes.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MasterResourceSpec: :class:`tencentcloud.emr.v20190103.models.NodeResourceSpec`
+        :param CoreResourceSpec: The description of core nodes.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CoreResourceSpec: :class:`tencentcloud.emr.v20190103.models.NodeResourceSpec`
+        :param TaskResourceSpec: The description of task nodes.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TaskResourceSpec: :class:`tencentcloud.emr.v20190103.models.NodeResourceSpec`
+        :param CommonResourceSpec: The description of common nodes.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CommonResourceSpec: :class:`tencentcloud.emr.v20190103.models.NodeResourceSpec`
+        :param MasterCount: The number of master nodes.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MasterCount: int
+        :param CoreCount: The number of core nodes.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CoreCount: int
+        :param TaskCount: The number of task nodes.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TaskCount: int
+        :param CommonCount: The number of common nodes.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CommonCount: int
+        """
+        self.MasterResourceSpec = None
+        self.CoreResourceSpec = None
+        self.TaskResourceSpec = None
+        self.CommonResourceSpec = None
+        self.MasterCount = None
+        self.CoreCount = None
+        self.TaskCount = None
+        self.CommonCount = None
+
+
+    def _deserialize(self, params):
+        if params.get("MasterResourceSpec") is not None:
+            self.MasterResourceSpec = NodeResourceSpec()
+            self.MasterResourceSpec._deserialize(params.get("MasterResourceSpec"))
+        if params.get("CoreResourceSpec") is not None:
+            self.CoreResourceSpec = NodeResourceSpec()
+            self.CoreResourceSpec._deserialize(params.get("CoreResourceSpec"))
+        if params.get("TaskResourceSpec") is not None:
+            self.TaskResourceSpec = NodeResourceSpec()
+            self.TaskResourceSpec._deserialize(params.get("TaskResourceSpec"))
+        if params.get("CommonResourceSpec") is not None:
+            self.CommonResourceSpec = NodeResourceSpec()
+            self.CommonResourceSpec._deserialize(params.get("CommonResourceSpec"))
+        self.MasterCount = params.get("MasterCount")
+        self.CoreCount = params.get("CoreCount")
+        self.TaskCount = params.get("TaskCount")
+        self.CommonCount = params.get("CommonCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ApplicationStatics(AbstractModel):
     """Yarn application statistics
 
@@ -566,6 +634,175 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         
 
 
+class CreateClusterRequest(AbstractModel):
+    """CreateCluster request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductVersion: The EMR version, such as `EMR-V2.3.0` that indicates the version 2.3.0 of EMR. You can query the EMR version [here](https://intl.cloud.tencent.com/document/product/589/66338?from_cn_redirect=1).
+        :type ProductVersion: str
+        :param EnableSupportHAFlag: Whether to enable high availability for nodes. Valid values:
+<li>`true`: Enable</li>
+<li>`false`: Disable</li>
+        :type EnableSupportHAFlag: bool
+        :param InstanceName: The instance name.
+<li>Length limit: 6–36 characters.</li>
+<li>Can contain only Chinese characters, letters, digits, hyphens (-), and underscores (_).</li>
+        :type InstanceName: str
+        :param InstanceChargeType: The instance billing mode. Valid values:
+<li>`PREPAID`: The prepaid mode, namely monthly subscription.</li>
+<li>`POSTPAID_BY_HOUR`: The postpaid mode by hour.</li>
+        :type InstanceChargeType: str
+        :param LoginSettings: The instance login setting. This parameter allows you to set a login password or key for your purchased node.
+<li>If a key is set, the password will be used for login to the native component WebUI only.</li>
+<li>If no key is set, the password will be used for login to all purchased nodes and the native component WebUI.</li>
+        :type LoginSettings: :class:`tencentcloud.emr.v20190103.models.LoginSettings`
+        :param SceneSoftwareConfig: The configuration of cluster application scenario and supported components.
+        :type SceneSoftwareConfig: :class:`tencentcloud.emr.v20190103.models.SceneSoftwareConfig`
+        :param InstanceChargePrepaid: The details of the monthly subscription, including the instance period and auto-renewal. It is required if `InstanceChargeType` is `PREPAID`.
+        :type InstanceChargePrepaid: :class:`tencentcloud.emr.v20190103.models.InstanceChargePrepaid`
+        :param SecurityGroupIds: The ID of the security group to which the instance belongs, in the format of `sg-xxxxxxxx`. You can call the [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1) API and obtain this parameter from the `SecurityGroupId` field in the response.
+        :type SecurityGroupIds: list of str
+        :param ScriptBootstrapActionConfig: The [Bootstrap action](https://intl.cloud.tencent.com/document/product/589/35656?from_cn_redirect=1) script settings.
+        :type ScriptBootstrapActionConfig: list of ScriptBootstrapActionConfig
+        :param ClientToken: A unique random token, which is valid for 5 minutes and needs to be specified by the caller to prevent the client from repeatedly creating resources. An example value is `a9a90aa6-751a-41b6-aad6-fae360632808`.
+        :type ClientToken: str
+        :param NeedMasterWan: Whether to enable public IP access for master nodes. Valid values:
+<li>`NEED_MASTER_WAN`: Enable public IP for master nodes.</li>
+<li>`NOT_NEED_MASTER_WAN`: Disable.</li>The public IP is enabled for master nodes by default.
+        :type NeedMasterWan: str
+        :param EnableRemoteLoginFlag: Whether to enable remote login over the public network. It is invalid if `SecurityGroupId` is passed in. It is disabled by default. Valid values:
+<li>`true`: Enable</li>
+<li>`false`: Disable</li>
+        :type EnableRemoteLoginFlag: bool
+        :param EnableKerberosFlag: Whether to enable Kerberos authentication. Valid values:
+<li>`true`: Enable</li>
+<li>`false` (default): Disable</li>
+        :type EnableKerberosFlag: bool
+        :param CustomConf: [Custom software configuration](https://intl.cloud.tencent.com/document/product/589/35655?from_cn_redirect=1?from_cn_redirect=1)
+        :type CustomConf: str
+        :param Tags: The tag description list. This parameter is used to bind a tag to a resource instance.
+        :type Tags: list of Tag
+        :param DisasterRecoverGroupIds: The list of spread placement group IDs. Only one can be specified.
+You can call the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/document/product/213/17810?from_cn_redirect=1) API and obtain this parameter from the `DisasterRecoverGroupId` field in the response.
+        :type DisasterRecoverGroupIds: list of str
+        :param EnableCbsEncryptFlag: Whether to enable the cluster-level CBS encryption. Valid values:
+<li>`true`: Enable</li>
+<li>`false` (default): Disable</li>
+        :type EnableCbsEncryptFlag: bool
+        :param MetaDBInfo: The metadatabase information. If `MetaType` is `EMR_NEW_META`, `MetaDataJdbcUrl`, `MetaDataUser`, `MetaDataPass`, and `UnifyMetaInstanceId` are not required.
+If `MetaType` is `EMR_EXIT_META`, `UnifyMetaInstanceId` is required.
+If `MetaType` is `USER_CUSTOM_META`, `MetaDataJdbcUrl`, `MetaDataUser`, and `MetaDataPass` are required.
+        :type MetaDBInfo: :class:`tencentcloud.emr.v20190103.models.CustomMetaDBInfo`
+        :param DependService: The shared component information.
+        :type DependService: list of DependService
+        :param ZoneResourceConfiguration: The node resource specs. A spec is specified for each AZ, with the first spec for the primary AZ, the second for the backup AZ, and the third for the arbitrator AZ. If the multi-AZ mode is not enabled, only one spec is required.
+        :type ZoneResourceConfiguration: list of ZoneResourceConfiguration
+        """
+        self.ProductVersion = None
+        self.EnableSupportHAFlag = None
+        self.InstanceName = None
+        self.InstanceChargeType = None
+        self.LoginSettings = None
+        self.SceneSoftwareConfig = None
+        self.InstanceChargePrepaid = None
+        self.SecurityGroupIds = None
+        self.ScriptBootstrapActionConfig = None
+        self.ClientToken = None
+        self.NeedMasterWan = None
+        self.EnableRemoteLoginFlag = None
+        self.EnableKerberosFlag = None
+        self.CustomConf = None
+        self.Tags = None
+        self.DisasterRecoverGroupIds = None
+        self.EnableCbsEncryptFlag = None
+        self.MetaDBInfo = None
+        self.DependService = None
+        self.ZoneResourceConfiguration = None
+
+
+    def _deserialize(self, params):
+        self.ProductVersion = params.get("ProductVersion")
+        self.EnableSupportHAFlag = params.get("EnableSupportHAFlag")
+        self.InstanceName = params.get("InstanceName")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        if params.get("LoginSettings") is not None:
+            self.LoginSettings = LoginSettings()
+            self.LoginSettings._deserialize(params.get("LoginSettings"))
+        if params.get("SceneSoftwareConfig") is not None:
+            self.SceneSoftwareConfig = SceneSoftwareConfig()
+            self.SceneSoftwareConfig._deserialize(params.get("SceneSoftwareConfig"))
+        if params.get("InstanceChargePrepaid") is not None:
+            self.InstanceChargePrepaid = InstanceChargePrepaid()
+            self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        if params.get("ScriptBootstrapActionConfig") is not None:
+            self.ScriptBootstrapActionConfig = []
+            for item in params.get("ScriptBootstrapActionConfig"):
+                obj = ScriptBootstrapActionConfig()
+                obj._deserialize(item)
+                self.ScriptBootstrapActionConfig.append(obj)
+        self.ClientToken = params.get("ClientToken")
+        self.NeedMasterWan = params.get("NeedMasterWan")
+        self.EnableRemoteLoginFlag = params.get("EnableRemoteLoginFlag")
+        self.EnableKerberosFlag = params.get("EnableKerberosFlag")
+        self.CustomConf = params.get("CustomConf")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
+        self.EnableCbsEncryptFlag = params.get("EnableCbsEncryptFlag")
+        if params.get("MetaDBInfo") is not None:
+            self.MetaDBInfo = CustomMetaDBInfo()
+            self.MetaDBInfo._deserialize(params.get("MetaDBInfo"))
+        if params.get("DependService") is not None:
+            self.DependService = []
+            for item in params.get("DependService"):
+                obj = DependService()
+                obj._deserialize(item)
+                self.DependService.append(obj)
+        if params.get("ZoneResourceConfiguration") is not None:
+            self.ZoneResourceConfiguration = []
+            for item in params.get("ZoneResourceConfiguration"):
+                obj = ZoneResourceConfiguration()
+                obj._deserialize(item)
+                self.ZoneResourceConfiguration.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateClusterResponse(AbstractModel):
+    """CreateCluster response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: The instance ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.InstanceId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateInstanceRequest(AbstractModel):
     """CreateInstance request structure.
 
@@ -804,6 +1041,49 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.RequestId = params.get("RequestId")
 
 
+class CustomMetaDBInfo(AbstractModel):
+    """The user-created Hive-MetaDB instance information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MetaDataJdbcUrl: The JDBC URL of the custom metadatabase instance. Example: jdbc:mysql://10.10.10.10:3306/dbname
+        :type MetaDataJdbcUrl: str
+        :param MetaDataUser: The custom metadatabase instance username.
+        :type MetaDataUser: str
+        :param MetaDataPass: The custom metadatabase instance password.
+        :type MetaDataPass: str
+        :param MetaType: The Hive-shared metadatabase type. Valid values:
+<li>`EMR_NEW_META`: The cluster creates a metadatabase by default.</li>
+<li>`EMR_EXIST_META`: The cluster uses a specified EMR-MetaDB instance.</li>
+<li>`USER_CUSTOM_META`: The cluster uses a custom metadatabase instance.</li>
+        :type MetaType: str
+        :param UnifyMetaInstanceId: The EMR-MetaDB instance.
+        :type UnifyMetaInstanceId: str
+        """
+        self.MetaDataJdbcUrl = None
+        self.MetaDataUser = None
+        self.MetaDataPass = None
+        self.MetaType = None
+        self.UnifyMetaInstanceId = None
+
+
+    def _deserialize(self, params):
+        self.MetaDataJdbcUrl = params.get("MetaDataJdbcUrl")
+        self.MetaDataUser = params.get("MetaDataUser")
+        self.MetaDataPass = params.get("MetaDataPass")
+        self.MetaType = params.get("MetaType")
+        self.UnifyMetaInstanceId = params.get("UnifyMetaInstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CustomMetaInfo(AbstractModel):
     """User-created Hive-MetaDB instance information
 
@@ -855,6 +1135,34 @@ class CustomServiceDefine(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DependService(AbstractModel):
+    """Shared component information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ServiceName: The shared component name.
+        :type ServiceName: str
+        :param InstanceId: The cluster to which the shared component belongs.
+        :type InstanceId: str
+        """
+        self.ServiceName = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.ServiceName = params.get("ServiceName")
+        self.InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1375,6 +1683,56 @@ Note: This field may return null, indicating that no valid value can be obtained
                 obj._deserialize(item)
                 self.UserManagerUserList.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class DiskSpecInfo(AbstractModel):
+    """Node disk information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Count: The number of disks.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Count: int
+        :param DiskType: The system disk type. Valid values:
+<li>`CLOUD_SSD`: Cloud SSD</li>
+<li>`CLOUD_PREMIUM`: Premium cloud disk</li>
+<li>`CLOUD_BASIC`: Cloud HDD</li>
+<li>`LOCAL_BASIC`: Local disk</li>
+<li>`LOCAL_SSD`: Local SSD</li>
+
+The data disk type. Valid values:
+<li>`CLOUD_SSD`: Cloud SSD</li>
+<li>`CLOUD_PREMIUM`: Premium cloud disk</li>
+<li>`CLOUD_BASIC`: Cloud HDD</li>
+<li>`LOCAL_BASIC`: Local disk</li>
+<li>`LOCAL_SSD`: Local SSD</li>
+<li>`CLOUD_HSSD`: Enhanced SSD</li>
+<li>`CLOUD_THROUGHPUT`: Throughput HDD</li>
+<li>CLOUD_TSSD: ulTra SSD</li>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DiskType: str
+        :param DiskSize: The disk capacity in GB.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DiskSize: int
+        """
+        self.Count = None
+        self.DiskType = None
+        self.DiskSize = None
+
+
+    def _deserialize(self, params):
+        self.Count = params.get("Count")
+        self.DiskType = params.get("DiskType")
+        self.DiskSize = params.get("DiskSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DynamicPodSpec(AbstractModel):
@@ -2243,6 +2601,37 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class InstanceChargePrepaid(AbstractModel):
+    """The instance prepayment parameter. It applies only when the billing type is `PREPAID`.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Period: The period of monthly subscription, which defaults to 1 and is expressed in month.
+Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60.
+        :type Period: int
+        :param RenewFlag: Whether to enable auto-renewal. Valid values:
+<li>`true`: Enable</li>
+<li>`false` (default): Disable</li>
+        :type RenewFlag: bool
+        """
+        self.Period = None
+        self.RenewFlag = None
+
+
+    def _deserialize(self, params):
+        self.Period = params.get("Period")
+        self.RenewFlag = params.get("RenewFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LoginSettings(AbstractModel):
     """Login settings
 
@@ -2840,6 +3229,71 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class NodeResourceSpec(AbstractModel):
+    """Resource details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceType: The spec type, such as `S2.MEDIUM8`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceType: str
+        :param SystemDisk: The system disk, which can be up to 1 PCS.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SystemDisk: list of DiskSpecInfo
+        :param Tags: The list of tags to be bound.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Tags: list of Tag
+        :param DataDisk: The cloud data disk, which can be up to 15 PCS.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DataDisk: list of DiskSpecInfo
+        :param LocalDataDisk: The local data disk.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LocalDataDisk: list of DiskSpecInfo
+        """
+        self.InstanceType = None
+        self.SystemDisk = None
+        self.Tags = None
+        self.DataDisk = None
+        self.LocalDataDisk = None
+
+
+    def _deserialize(self, params):
+        self.InstanceType = params.get("InstanceType")
+        if params.get("SystemDisk") is not None:
+            self.SystemDisk = []
+            for item in params.get("SystemDisk"):
+                obj = DiskSpecInfo()
+                obj._deserialize(item)
+                self.SystemDisk.append(obj)
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        if params.get("DataDisk") is not None:
+            self.DataDisk = []
+            for item in params.get("DataDisk"):
+                obj = DiskSpecInfo()
+                obj._deserialize(item)
+                self.DataDisk.append(obj)
+        if params.get("LocalDataDisk") is not None:
+            self.LocalDataDisk = []
+            for item in params.get("LocalDataDisk"):
+                obj = DiskSpecInfo()
+                obj._deserialize(item)
+                self.LocalDataDisk.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OutterResource(AbstractModel):
     """Resource details
 
@@ -2959,6 +3413,227 @@ class Placement(AbstractModel):
     def _deserialize(self, params):
         self.Zone = params.get("Zone")
         self.ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PodNewParameter(AbstractModel):
+    """The custom pod permission and parameter.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: The TKE or EKS cluster ID.
+        :type InstanceId: str
+        :param Config: Custom permissions
+Examples:
+{
+  "apiVersion": "v1",
+  "clusters": [
+    {
+      "cluster": {
+        "certificate-authority-data": "xxxxxx==",
+        "server": "https://xxxxx.com"
+      },
+      "name": "cls-xxxxx"
+    }
+  ],
+  "contexts": [
+    {
+      "context": {
+        "cluster": "cls-xxxxx",
+        "user": "100014xxxxx"
+      },
+      "name": "cls-a44yhcxxxxxxxxxx"
+    }
+  ],
+  "current-context": "cls-a4xxxx-context-default",
+  "kind": "Config",
+  "preferences": {},
+  "users": [
+    {
+      "name": "100014xxxxx",
+      "user": {
+        "client-certificate-data": "xxxxxx",
+        "client-key-data": "xxxxxx"
+      }
+    }
+  ]
+}
+        :type Config: str
+        :param Parameter: Custom parameters
+Examples:
+{
+    "apiVersion": "apps/v1",
+    "kind": "Deployment",
+    "metadata": {
+      "name": "test-deployment",
+      "labels": {
+        "app": "test"
+      }
+    },
+    "spec": {
+      "replicas": 3,
+      "selector": {
+        "matchLabels": {
+          "app": "test-app"
+        }
+      },
+      "template": {
+        "metadata": {
+          "annotations": {
+            "your-organization.com/department-v1": "test-example-v1",
+            "your-organization.com/department-v2": "test-example-v2"
+          },
+          "labels": {
+            "app": "test-app",
+            "environment": "production"
+          }
+        },
+        "spec": {
+          "nodeSelector": {
+            "your-organization/node-test": "test-node"
+          },
+          "containers": [
+            {
+              "name": "nginx",
+              "image": "nginx:1.14.2",
+              "ports": [
+                {
+                  "containerPort": 80
+                }
+              ]
+            }
+          ],
+          "affinity": {
+            "nodeAffinity": {
+              "requiredDuringSchedulingIgnoredDuringExecution": {
+                "nodeSelectorTerms": [
+                  {
+                    "matchExpressions": [
+                      {
+                        "key": "disk-type",
+                        "operator": "In",
+                        "values": [
+                          "ssd",
+                          "sas"
+                        ]
+                      },
+                      {
+                        "key": "cpu-num",
+                        "operator": "Gt",
+                        "values": [
+                          "6"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+        :type Parameter: str
+        """
+        self.InstanceId = None
+        self.Config = None
+        self.Parameter = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Config = params.get("Config")
+        self.Parameter = params.get("Parameter")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PodNewSpec(AbstractModel):
+    """Resource descriptions for container resource scale-out
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceProviderIdentifier: The identifier of an external resource provider, such as "cls-a1cd23fa".
+        :type ResourceProviderIdentifier: str
+        :param ResourceProviderType: The type of the external resource provider, such as "tke". Currently, only "tke" is supported.
+        :type ResourceProviderType: str
+        :param NodeFlag: The purpose of the resource, which means the node type and can only be "TASK".
+        :type NodeFlag: str
+        :param Cpu: The number of CPUs.
+        :type Cpu: int
+        :param Memory: The memory size in GB.
+        :type Memory: int
+        :param CpuType: The EKS cluster - CPU type. Valid values: `intel` and `amd`.
+        :type CpuType: str
+        :param PodVolumes: The data directory mounting information of the pod node.
+        :type PodVolumes: list of PodVolume
+        :param EnableDynamicSpecFlag: Whether the dynamic spec is used. Valid values:
+<li>`true`: Yes</li>
+<li>`false` (default): No</li>
+        :type EnableDynamicSpecFlag: bool
+        :param DynamicPodSpec: The dynamic spec.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DynamicPodSpec: :class:`tencentcloud.emr.v20190103.models.DynamicPodSpec`
+        :param VpcId: The unique VPC ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VpcId: str
+        :param SubnetId: The unique VPC subnet ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SubnetId: str
+        :param PodName: The pod name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PodName: str
+        """
+        self.ResourceProviderIdentifier = None
+        self.ResourceProviderType = None
+        self.NodeFlag = None
+        self.Cpu = None
+        self.Memory = None
+        self.CpuType = None
+        self.PodVolumes = None
+        self.EnableDynamicSpecFlag = None
+        self.DynamicPodSpec = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.PodName = None
+
+
+    def _deserialize(self, params):
+        self.ResourceProviderIdentifier = params.get("ResourceProviderIdentifier")
+        self.ResourceProviderType = params.get("ResourceProviderType")
+        self.NodeFlag = params.get("NodeFlag")
+        self.Cpu = params.get("Cpu")
+        self.Memory = params.get("Memory")
+        self.CpuType = params.get("CpuType")
+        if params.get("PodVolumes") is not None:
+            self.PodVolumes = []
+            for item in params.get("PodVolumes"):
+                obj = PodVolume()
+                obj._deserialize(item)
+                self.PodVolumes.append(obj)
+        self.EnableDynamicSpecFlag = params.get("EnableDynamicSpecFlag")
+        if params.get("DynamicPodSpec") is not None:
+            self.DynamicPodSpec = DynamicPodSpec()
+            self.DynamicPodSpec._deserialize(params.get("DynamicPodSpec"))
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.PodName = params.get("PodName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3182,6 +3857,38 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.VpcId = params.get("VpcId")
         self.SubnetId = params.get("SubnetId")
         self.PodName = params.get("PodName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PodSpecInfo(AbstractModel):
+    """Other pod information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PodSpec: The specified information such as pod spec and source for scale-out with pod resources.
+        :type PodSpec: :class:`tencentcloud.emr.v20190103.models.PodNewSpec`
+        :param PodParameter: The custom pod permission and parameter.
+        :type PodParameter: :class:`tencentcloud.emr.v20190103.models.PodNewParameter`
+        """
+        self.PodSpec = None
+        self.PodParameter = None
+
+
+    def _deserialize(self, params):
+        if params.get("PodSpec") is not None:
+            self.PodSpec = PodNewSpec()
+            self.PodSpec._deserialize(params.get("PodSpec"))
+        if params.get("PodParameter") is not None:
+            self.PodParameter = PodNewParameter()
+            self.PodParameter._deserialize(params.get("PodParameter"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3529,6 +4236,157 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         
 
 
+class ScaleOutClusterRequest(AbstractModel):
+    """ScaleOutCluster request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceChargeType: The node billing mode. Valid values:
+<li>`PREPAID`：The prepaid mode, namely monthly subscription.</li>
+<li>`POSTPAID_BY_HOUR`: The postpaid mode by hour.</li>
+<li>`SPOTPAID`: The spot instance mode (for task nodes only).</li>
+        :type InstanceChargeType: str
+        :param InstanceId: The cluster instance ID.
+        :type InstanceId: str
+        :param ScaleOutNodeConfig: The type and number of nodes to be added.
+        :type ScaleOutNodeConfig: :class:`tencentcloud.emr.v20190103.models.ScaleOutNodeConfig`
+        :param ClientToken: A unique random token, which is valid for 5 minutes and needs to be specified by the caller to prevent the client from repeatedly creating resources. An example value is `a9a90aa6-751a-41b6-aad6-fae36063280`.
+        :type ClientToken: str
+        :param InstanceChargePrepaid: The details of the monthly subscription, including the instance period and auto-renewal. It is required if the `InstanceChargeType` is `PREPAID`.
+        :type InstanceChargePrepaid: :class:`tencentcloud.emr.v20190103.models.InstanceChargePrepaid`
+        :param ScriptBootstrapActionConfig: The [Bootstrap action](https://intl.cloud.tencent.com/document/product/589/35656?from_cn_redirect=1) script settings.
+        :type ScriptBootstrapActionConfig: list of ScriptBootstrapActionConfig
+        :param SoftDeployInfo: The services to be deployed for new nodes. By default, new nodes will inherit all services deployed for the current node type. Deployed services include default optional services. This parameter only supports optional services. For example, if `HDFS`, `YARN`, and `Impala` have been deployed for existing task nodes, only `HDFS` and `YARN` are passed in with this parameter if `Impala` is not deployed during the task node scale-out with API.
+        :type SoftDeployInfo: list of int
+        :param ServiceNodeInfo: The processes to be deployed. All processes for services to be added are deployed by default. Deployed processes can be changed. For example, `HDFS`, `YARN`, and `Impala` have been deployed for current task nodes, and default services are `DataNode`, `NodeManager`, and `ImpalaServer`; if you want to change deployed processes, you can set this parameter to `DataNode,NodeManager,ImpalaServerCoordinator` or `DataNode,NodeManager,ImpalaServerExecutor`.
+        :type ServiceNodeInfo: list of int
+        :param DisasterRecoverGroupIds: The list of spread placement group IDs. Only one can be specified.
+You can call the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/document/product/213/17810?from_cn_redirect=1) API and obtain this parameter from the `DisasterRecoverGroupId` field in the response.
+        :type DisasterRecoverGroupIds: list of str
+        :param Tags: The list of tags bound to added nodes.
+        :type Tags: list of Tag
+        :param HardwareSourceType: The type of resources to add. Valid values: `host` (general CVM resources) and `pod` (resources provided by a TKE or EKS cluster).
+        :type HardwareSourceType: str
+        :param PodSpecInfo: The pod resource information.
+        :type PodSpecInfo: :class:`tencentcloud.emr.v20190103.models.PodSpecInfo`
+        :param ClickHouseClusterName: The server group name selected for ClickHouse cluster scale-out.
+        :type ClickHouseClusterName: str
+        :param ClickHouseClusterType: The server group type selected for ClickHouse cluster scale-out. Valid values: `new` (create a group) and `old` (select an existing group).
+        :type ClickHouseClusterType: str
+        :param YarnNodeLabel: The YARN node label specified for scale-out.
+        :type YarnNodeLabel: str
+        :param EnableStartServiceFlag: Whether to start services after scale-out.
+<li>`true`: Yes</li>
+<li>`false` (default): No</li>
+        :type EnableStartServiceFlag: bool
+        :param ResourceSpec: The spec settings.
+        :type ResourceSpec: :class:`tencentcloud.emr.v20190103.models.NodeResourceSpec`
+        :param Zone: The ID of the AZ where the instance resides, such as `ap-guangzhou-1`. You can call the [DescribeZones](https://intl.cloud.tencent.com/document/product/213/15707?from_cn_redirect=1) API and obtain this ID from the `Zone` field in the response.
+        :type Zone: str
+        :param SubnetId: The subnet, which defaults to the subnet used when the cluster is created.
+        :type SubnetId: str
+        """
+        self.InstanceChargeType = None
+        self.InstanceId = None
+        self.ScaleOutNodeConfig = None
+        self.ClientToken = None
+        self.InstanceChargePrepaid = None
+        self.ScriptBootstrapActionConfig = None
+        self.SoftDeployInfo = None
+        self.ServiceNodeInfo = None
+        self.DisasterRecoverGroupIds = None
+        self.Tags = None
+        self.HardwareSourceType = None
+        self.PodSpecInfo = None
+        self.ClickHouseClusterName = None
+        self.ClickHouseClusterType = None
+        self.YarnNodeLabel = None
+        self.EnableStartServiceFlag = None
+        self.ResourceSpec = None
+        self.Zone = None
+        self.SubnetId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        self.InstanceId = params.get("InstanceId")
+        if params.get("ScaleOutNodeConfig") is not None:
+            self.ScaleOutNodeConfig = ScaleOutNodeConfig()
+            self.ScaleOutNodeConfig._deserialize(params.get("ScaleOutNodeConfig"))
+        self.ClientToken = params.get("ClientToken")
+        if params.get("InstanceChargePrepaid") is not None:
+            self.InstanceChargePrepaid = InstanceChargePrepaid()
+            self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        if params.get("ScriptBootstrapActionConfig") is not None:
+            self.ScriptBootstrapActionConfig = []
+            for item in params.get("ScriptBootstrapActionConfig"):
+                obj = ScriptBootstrapActionConfig()
+                obj._deserialize(item)
+                self.ScriptBootstrapActionConfig.append(obj)
+        self.SoftDeployInfo = params.get("SoftDeployInfo")
+        self.ServiceNodeInfo = params.get("ServiceNodeInfo")
+        self.DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.HardwareSourceType = params.get("HardwareSourceType")
+        if params.get("PodSpecInfo") is not None:
+            self.PodSpecInfo = PodSpecInfo()
+            self.PodSpecInfo._deserialize(params.get("PodSpecInfo"))
+        self.ClickHouseClusterName = params.get("ClickHouseClusterName")
+        self.ClickHouseClusterType = params.get("ClickHouseClusterType")
+        self.YarnNodeLabel = params.get("YarnNodeLabel")
+        self.EnableStartServiceFlag = params.get("EnableStartServiceFlag")
+        if params.get("ResourceSpec") is not None:
+            self.ResourceSpec = NodeResourceSpec()
+            self.ResourceSpec._deserialize(params.get("ResourceSpec"))
+        self.Zone = params.get("Zone")
+        self.SubnetId = params.get("SubnetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScaleOutClusterResponse(AbstractModel):
+    """ScaleOutCluster response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: The instance ID.
+        :type InstanceId: str
+        :param ClientToken: The client token.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ClientToken: str
+        :param FlowId: The scale-out workflow ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.InstanceId = None
+        self.ClientToken = None
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ClientToken = params.get("ClientToken")
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class ScaleOutInstanceRequest(AbstractModel):
     """ScaleOutInstance request structure.
 
@@ -3714,6 +4572,111 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.FlowId = params.get("FlowId")
         self.BillId = params.get("BillId")
         self.RequestId = params.get("RequestId")
+
+
+class ScaleOutNodeConfig(AbstractModel):
+    """The type and number of nodes to be added.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NodeFlag: Valid values of node type:
+  <li>MASTER</li>
+  <li>TASK</li>
+  <li>CORE</li>
+  <li>ROUTER</li>
+        :type NodeFlag: str
+        :param NodeCount: The number of nodes.
+        :type NodeCount: int
+        """
+        self.NodeFlag = None
+        self.NodeCount = None
+
+
+    def _deserialize(self, params):
+        self.NodeFlag = params.get("NodeFlag")
+        self.NodeCount = params.get("NodeCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SceneSoftwareConfig(AbstractModel):
+    """The configuration of cluster application scenario and supported components.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Software: The list of deployed components. The list of component options varies by `ProductVersion` (EMR version). For more information, see [Component Version](https://intl.cloud.tencent.com/document/product/589/20279?from_cn_redirect=1).
+The instance type, `hive` or `flink`.
+        :type Software: list of str
+        :param SceneName: The scenario name, which defaults to `Hadoop-Default`. For more details, see [here](https://intl.cloud.tencent.com/document/product/589/14624?from_cn_redirect=1). Valid values:
+Hadoop-Kudu
+Hadoop-Zookeeper
+Hadoop-Presto
+Hadoop-Hbase
+Hadoop-Default
+        :type SceneName: str
+        """
+        self.Software = None
+        self.SceneName = None
+
+
+    def _deserialize(self, params):
+        self.Software = params.get("Software")
+        self.SceneName = params.get("SceneName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScriptBootstrapActionConfig(AbstractModel):
+    """The bootstrap action.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CosFileURI: The COS URL of the script, in the format of `https://beijing-111111.cos.ap-beijing.myqcloud.com/data/test.sh`. For the COS bucket list, see [Bucket List](https://console.cloud.tencent.com/cos/bucket).
+        :type CosFileURI: str
+        :param ExecutionMoment: The execution time of the bootstrap action script. Valid values:
+<li>`resourceAfter`: After node initialization</li>
+<li>`clusterAfter`: After cluster start</li>
+<li>`clusterBefore`: Before cluster start</li>
+        :type ExecutionMoment: str
+        :param Args: The execution script parameter. The parameter format must comply with standard shell specifications.
+        :type Args: list of str
+        :param CosFileName: The script file name.
+        :type CosFileName: str
+        """
+        self.CosFileURI = None
+        self.ExecutionMoment = None
+        self.Args = None
+        self.CosFileName = None
+
+
+    def _deserialize(self, params):
+        self.CosFileURI = params.get("CosFileURI")
+        self.ExecutionMoment = params.get("ExecutionMoment")
+        self.Args = params.get("Args")
+        self.CosFileName = params.get("CosFileName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SearchItem(AbstractModel):
@@ -4134,6 +5097,83 @@ class VPCSettings(AbstractModel):
     def _deserialize(self, params):
         self.VpcId = params.get("VpcId")
         self.SubnetId = params.get("SubnetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VirtualPrivateCloud(AbstractModel):
+    """VPC parameters
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VpcId: The VPC ID.
+        :type VpcId: str
+        :param SubnetId: The subnet ID.
+        :type SubnetId: str
+        """
+        self.VpcId = None
+        self.SubnetId = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ZoneResourceConfiguration(AbstractModel):
+    """AZ configurations
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VirtualPrivateCloud: The VPC configuration information. This parameter is used to specify the VPC ID, subnet ID and other information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VirtualPrivateCloud: :class:`tencentcloud.emr.v20190103.models.VirtualPrivateCloud`
+        :param Placement: The instance location. This parameter is used to specify the AZ, project, and other attributes of the instance.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`
+        :param AllNodeResourceSpec: The specs of all nodes.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AllNodeResourceSpec: :class:`tencentcloud.emr.v20190103.models.AllNodeResourceSpec`
+        :param ZoneTag: For a single AZ, `ZoneTag` can be left out. For a double-AZ mode, `ZoneTag` is set to `master` and `standby` for the first and second AZs, respectively. If there are three AZs, `ZoneTag` is set to `master`, `standby`, and `third-party` for the first, second, and third AZs, respectively. Valid values:
+  <li>master</li>
+  <li>standby</li>
+  <li>third-party</li>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ZoneTag: str
+        """
+        self.VirtualPrivateCloud = None
+        self.Placement = None
+        self.AllNodeResourceSpec = None
+        self.ZoneTag = None
+
+
+    def _deserialize(self, params):
+        if params.get("VirtualPrivateCloud") is not None:
+            self.VirtualPrivateCloud = VirtualPrivateCloud()
+            self.VirtualPrivateCloud._deserialize(params.get("VirtualPrivateCloud"))
+        if params.get("Placement") is not None:
+            self.Placement = Placement()
+            self.Placement._deserialize(params.get("Placement"))
+        if params.get("AllNodeResourceSpec") is not None:
+            self.AllNodeResourceSpec = AllNodeResourceSpec()
+            self.AllNodeResourceSpec._deserialize(params.get("AllNodeResourceSpec"))
+        self.ZoneTag = params.get("ZoneTag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

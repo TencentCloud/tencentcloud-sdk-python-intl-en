@@ -9230,32 +9230,101 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
-class DescribeFileAttributesTask(AbstractModel):
-    """
+class DescribeFileAttributesRequest(AbstractModel):
+    """DescribeFileAttributes request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param TaskId: 
-        :type TaskId: str
-        :param Status: 
-        :type Status: str
-        :param ErrCode: 
-        :type ErrCode: int
-        :param ErrCodeExt: 
-        :type ErrCodeExt: str
-        :param Message: 
-        :type Message: str
-        :param Progress: 
-        :type Progress: int
-        :param FileId: 
+        :param FileId: The file ID.
         :type FileId: str
-        :param Output: 
-        :type Output: :class:`tencentcloud.vod.v20180717.models.DescribeFileAttributesTaskOutput`
-        :param SessionId: 
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
+        :param SessionId: The session ID, which is used for de-duplication. If there was a request with the same session ID in the last three days, an error will be returned for the current request. The session ID can contain up to 50 characters. If you do not pass this parameter or pass in an empty string, duplicate sessions will not be identified.
         :type SessionId: str
-        :param SessionContext: 
+        :param SessionContext: The source context, which is used to pass through user request information. The `ProcedureStateChanged` callback will return the value of this parameter. It can contain up to 1,000 characters.
+        :type SessionContext: str
+        :param TasksPriority: The task priority. The higher the value, the higher the priority. Value range: -10-10. If this parameter is left empty, 0 will be used.
+        :type TasksPriority: int
+        :param ExtInfo: A reserved parameter.
+        :type ExtInfo: str
+        """
+        self.FileId = None
+        self.SubAppId = None
+        self.SessionId = None
+        self.SessionContext = None
+        self.TasksPriority = None
+        self.ExtInfo = None
+
+
+    def _deserialize(self, params):
+        self.FileId = params.get("FileId")
+        self.SubAppId = params.get("SubAppId")
+        self.SessionId = params.get("SessionId")
+        self.SessionContext = params.get("SessionContext")
+        self.TasksPriority = params.get("TasksPriority")
+        self.ExtInfo = params.get("ExtInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFileAttributesResponse(AbstractModel):
+    """DescribeFileAttributes response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: The task ID.
+        :type TaskId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeFileAttributesTask(AbstractModel):
+    """The information of a task to get file attributes.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: The task ID.
+        :type TaskId: str
+        :param Status: The task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :type Status: str
+        :param ErrCode: The error code. `0` indicates the task is successful. Other values indicate that the task failed.
+<li>`40000`: Invalid input parameter.</li>
+<li>`60000`: Source file error (e.g., video data is corrupted).</li>
+<li>`70000`: Internal server error. Please try again.</li>
+        :type ErrCode: int
+        :param ErrCodeExt: The error code. An empty string indicates the task is successful; other values indicate that the task failed. For details, see [Video processing error codes](https://intl.cloud.tencent.com/document/product/266/39145?lang=en&pg=#video-processing).
+        :type ErrCodeExt: str
+        :param Message: The error message.
+        :type Message: str
+        :param Progress: The task progress. Value range: 0-100.
+        :type Progress: int
+        :param FileId: The file ID
+        :type FileId: str
+        :param Output: The output of the task to get file attributes.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Output: :class:`tencentcloud.vod.v20180717.models.DescribeFileAttributesTaskOutput`
+        :param SessionId: The session ID, which is used for de-duplication. If there was a request with the same session ID in the last seven days, an error will be returned for the current request. The session ID can contain up to 50 characters. If you do not pass this parameter or pass in an empty string, duplicate sessions will not be identified.
+        :type SessionId: str
+        :param SessionContext: The source context, which is used to pass through user request information. The `ProcedureStateChanged` callback will return the value of this parameter. It can contain up to 1,000 characters.
         :type SessionContext: str
         """
         self.TaskId = None
@@ -9293,13 +9362,13 @@ class DescribeFileAttributesTask(AbstractModel):
 
 
 class DescribeFileAttributesTaskOutput(AbstractModel):
-    """
+    """The output of a task to get file attributes.
 
     """
 
     def __init__(self):
         r"""
-        :param Md5: 
+        :param Md5: The MD5 hash of the file.
         :type Md5: str
         """
         self.Md5 = None
@@ -10554,16 +10623,17 @@ class DescribeTaskDetailResponse(AbstractModel):
     def __init__(self):
         r"""
         :param TaskType: The task type. Valid values:
-<li>Procedure: Video processing</li>
-<li>EditMedia: Video editing</li>
-<li>SplitMedia: Video splitting</li>
-<li>ComposeMedia: Media file production</li>
-<li>WechatPublish: WeChat publishing</li>
-<li>WechatMiniProgramPublish: Publishing videos on WeChat Mini Program</li>
-<li>PullUpload: Pulling media files for upload</li>
-<li>FastClipMedia: Quick clipping</li>
-<li>RemoveWatermarkTask: Watermark removal</li>
-<li> ReviewAudioVideo: Moderation</li>
+<li>`Procedure`: Video processing</li>
+<li>`EditMedia`: Video editing</li>
+<li>`SplitMedia`: Video splitting</li>
+<li>`ComposeMedia`: Media file production</li>
+<li>`WechatPublish`: WeChat publishing</li>
+<li>`WechatMiniProgramPublish`: Publishing videos on WeChat Mini Program</li>
+<li>`PullUpload`: Pulling media files for upload</li>
+<li>`FastClipMedia`: Quick clipping</li>
+<li>`RemoveWatermarkTask`: Watermark removal</li>
+<li>`DescribeFileAttributesTask`: Getting file attributes</li>
+<li> `ReviewAudioVideo`: Moderation</li>
         :type TaskType: str
         :param Status: Task status. Valid values:
 <li>WAITING: waiting;</li>
@@ -10624,7 +10694,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param ReduceMediaBitrateTask: This parameter is invalid now.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ReduceMediaBitrateTask: :class:`tencentcloud.vod.v20180717.models.ReduceMediaBitrateTask`
-        :param DescribeFileAttributesTask: 
+        :param DescribeFileAttributesTask: The information of a task to get file attributes. This parameter is valid only if `TaskType` is `DescribeFileAttributes`.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type DescribeFileAttributesTask: :class:`tencentcloud.vod.v20180717.models.DescribeFileAttributesTask`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -11553,24 +11624,25 @@ class EventContent(AbstractModel):
         :param EventHandle: Event handler. The caller must call `ConfirmEvents` to confirm that the message has been received, and the confirmation is valid for 30 seconds. After the confirmation expires, the event can be obtained again.
         :type EventHandle: str
         :param EventType: <b>Supported event types:</b>
-<li>NewFileUpload: Video uploaded.</li>
-<li>ProcedureStateChanged: Task flow status changed.</li>
-<li>FileDeleted: Video deleted.</li>
-<li>PullComplete: Finished video pulling.</li>
-<li>EditMediaComplete: Finished video editing.</li>
-<li>SplitMediaComplete: Finished video splitting.</li>
-<li>WechatPublishComplete: Published to WeChat.</li>
-<li>ComposeMediaComplete: Finished producing the media file.</li>
-<li>WechatMiniProgramPublishComplete: Finished publishing on WeChat Mini Program</li>
-<li>FastClipMediaComplete: Finished quick clipping.</li>
-<li>ReviewAudioVideoComplete: Finished moderation.</li>
-<li>ExtractTraceWatermarkComplete: Finished digital watermark extraction.</li>
+<li>`NewFileUpload`: Video uploaded.</li>
+<li>`ProcedureStateChanged`: Task flow status changed.</li>
+<li>`FileDeleted`: Video deleted.</li>
+<li>`PullComplete`: Finished video pulling.</li>
+<li>`EditMediaComplete`: Finished video editing.</li>
+<li>`SplitMediaComplete`: Finished video splitting.</li>
+<li>`WechatPublishComplete`: Published to WeChat.</li>
+<li>`ComposeMediaComplete`: Finished producing the media file.</li>
+<li>`WechatMiniProgramPublishComplete`: Finished publishing on WeChat Mini Program.</li>
+<li>`FastClipMediaComplete`: Finished quick clipping.</li>
+<li>`ReviewAudioVideoComplete`: Finished moderation.</li>
+<li>`ExtractTraceWatermarkComplete`: Finished digital watermark extraction.</li>
+<li>`DescribeFileAttributesComplete`: Finished getting file attributes.</li>
 <b>v2017 task types:</b>
-<li>TranscodeComplete: Finished video transcoding.</li>
-<li>ConcatComplete: Finished video splicing.</li>
-<li>ClipComplete: Finished video clipping.</li>
-<li>CreateImageSpriteComplete: Finished image sprite generation.</li>
-<li>CreateSnapshotByTimeOffsetComplete: Finished time point screencapturing.</li>
+<li>`TranscodeComplete`: Finished video transcoding.</li>
+<li>`ConcatComplete`: Finished video splicing.</li>
+<li>`ClipComplete`: Finished video clipping.</li>
+<li>`CreateImageSpriteComplete`: Finished image sprite generation.</li>
+<li>`CreateSnapshotByTimeOffsetComplete`: Finished time point screencapturing.</li>
         :type EventType: str
         :param FileUploadEvent: Video upload completion event, which is valid if the event type is `NewFileUpload`.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -11629,7 +11701,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param ReduceMediaBitrateCompleteEvent: This parameter is invalid now.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ReduceMediaBitrateCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ReduceMediaBitrateTask`
-        :param DescribeFileAttributesCompleteEvent: 
+        :param DescribeFileAttributesCompleteEvent: The event of finishing getting file attributes. This parameter is valid only if `EventType` is `DescribeFileAttributesComplete`.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type DescribeFileAttributesCompleteEvent: :class:`tencentcloud.vod.v20180717.models.DescribeFileAttributesTask`
         """
         self.EventHandle = None
@@ -14297,6 +14370,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param AudioDuration: Audio duration in seconds.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AudioDuration: float
+        :param Md5: The MD5 hash of the file.
+<li><font color=red>Note</font>: To get the MD5 hash of a file, call the `DescribeFileAttributes` API. The information will be returned after the task is completed.</li>
+        :type Md5: str
         """
         self.Size = None
         self.Container = None
@@ -14309,6 +14385,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.AudioStreamSet = None
         self.VideoDuration = None
         self.AudioDuration = None
+        self.Md5 = None
 
 
     def _deserialize(self, params):
@@ -14333,6 +14410,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 self.AudioStreamSet.append(obj)
         self.VideoDuration = params.get("VideoDuration")
         self.AudioDuration = params.get("AudioDuration")
+        self.Md5 = params.get("Md5")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -20226,6 +20304,9 @@ class ReviewAudioVideoRequest(AbstractModel):
         :type FileId: str
         :param SubAppId: <b>The VOD [subapplication](https://www.tencentcloud.com/document/product/266/33987) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
+        :param Definition: The moderation template ID. Valid values:
+<li>`10` (default): The preset template, which can detect inappropriate information with labels including pornographic (`Porn`), terrorist (`Terror`), and politically sensitive (`Polity`).</li>
+        :type Definition: int
         :param TasksPriority: The priority of a task flow. The higher the value, the higher the priority. Value range: [-10, 10]. If this parameter is left empty, 0 will be used.
         :type TasksPriority: int
         :param SessionContext: The source context, which is used to pass through user request information. The `ReviewAudioVideoComplete` callback will return the value of this parameter. It can contain up to 1,000 characters.
@@ -20237,6 +20318,7 @@ class ReviewAudioVideoRequest(AbstractModel):
         """
         self.FileId = None
         self.SubAppId = None
+        self.Definition = None
         self.TasksPriority = None
         self.SessionContext = None
         self.SessionId = None
@@ -20246,6 +20328,7 @@ class ReviewAudioVideoRequest(AbstractModel):
     def _deserialize(self, params):
         self.FileId = params.get("FileId")
         self.SubAppId = params.get("SubAppId")
+        self.Definition = params.get("Definition")
         self.TasksPriority = params.get("TasksPriority")
         self.SessionContext = params.get("SessionContext")
         self.SessionId = params.get("SessionId")
@@ -20329,6 +20412,11 @@ Valid values when `Form` is `Voice` and `Label` is `Porn`:
         :type Text: str
         :param KeywordSet: The keywords that match the suspicious text. This parameter is valid only if `Form` is `OCR` or `ASR`.
         :type KeywordSet: list of str
+        :param Url: The URL of a suspected image (which will be deleted
+ after `PicUrlExpireTime`).
+        :type Url: str
+        :param PicUrlExpireTime: The expiration time of the suspected image URL in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
+        :type PicUrlExpireTime: str
         """
         self.StartTimeOffset = None
         self.EndTimeOffset = None
@@ -20340,6 +20428,8 @@ Valid values when `Form` is `Voice` and `Label` is `Porn`:
         self.AreaCoordSet = None
         self.Text = None
         self.KeywordSet = None
+        self.Url = None
+        self.PicUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -20353,6 +20443,8 @@ Valid values when `Form` is `Voice` and `Label` is `Porn`:
         self.AreaCoordSet = params.get("AreaCoordSet")
         self.Text = params.get("Text")
         self.KeywordSet = params.get("KeywordSet")
+        self.Url = params.get("Url")
+        self.PicUrlExpireTime = params.get("PicUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -20431,12 +20523,16 @@ class ReviewAudioVideoTaskInput(AbstractModel):
         r"""
         :param FileId: The ID of the media file.
         :type FileId: str
+        :param Definition: The moderation template ID.
+        :type Definition: int
         """
         self.FileId = None
+        self.Definition = None
 
 
     def _deserialize(self, params):
         self.FileId = params.get("FileId")
+        self.Definition = params.get("Definition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

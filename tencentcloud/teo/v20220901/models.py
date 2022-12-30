@@ -342,43 +342,6 @@ class AdvancedFilter(AbstractModel):
         
 
 
-class AdvancedOriginGroup(AbstractModel):
-    """Advanced origin-pull configuration
-
-    """
-
-    def __init__(self):
-        r"""
-        :param OriginGroupConditions: Matching condition. The "Target" field must be unique.
-        :type OriginGroupConditions: list of OriginGroupCondition
-        :param OriginGroupId: ID of the primary origin server.
-        :type OriginGroupId: str
-        :param BackupOriginGroupId: ID of the secondary origin server.
-        :type BackupOriginGroupId: str
-        """
-        self.OriginGroupConditions = None
-        self.OriginGroupId = None
-        self.BackupOriginGroupId = None
-
-
-    def _deserialize(self, params):
-        if params.get("OriginGroupConditions") is not None:
-            self.OriginGroupConditions = []
-            for item in params.get("OriginGroupConditions"):
-                obj = OriginGroupCondition()
-                obj._deserialize(item)
-                self.OriginGroupConditions.append(obj)
-        self.OriginGroupId = params.get("OriginGroupId")
-        self.BackupOriginGroupId = params.get("BackupOriginGroupId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class AiRule(AbstractModel):
     """AI rule engine
 
@@ -1885,85 +1848,6 @@ class CreateCustomErrorPageResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class CreateDnsRecordRequest(AbstractModel):
-    """CreateDnsRecord request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ZoneId: The site ID of the DNS record.
-        :type ZoneId: str
-        :param Type: The DNS record type. Values:
-<li>`A`: Point a domain name to an IPv4 address, such as 8.8.8.8.</li>
-<li>`AAAA`: Point a domain name to an IPv6 address.</li>
-<li>`MX`: It is used for email servers. The record value and priority parameters are provided by email service providers. If there are multiple MX records, the lower the priority value, the higher the priority.</li>
-<li>`CNAME`: Point a domain name to another domain name that can be resolved to an IP address.</li>
-<li>`TXT`: Identify and describe a domain name. It is usually used for domain verification and as SPF records (for anti-spam).</li>
-<li>`NS`: If you need to authorize a subdomain name to another DNS service provider for DNS resolution, you need to add an NS record. You cannot add an NS record for a root domain name.</li>
-<li>`CAA`: Specify CAs to issue certificates for sites.</li>
-<li>`SRV`: Identify a service used by a server. It is commonly used in Microsoft directory management.</li>
-        :type Type: str
-        :param Name: The DNS record name.
-        :type Name: str
-        :param Content: The DNS record content.
-        :type Content: str
-        :param Mode: The proxy mode. Values:
-<li>`dns_only`: Only DNS</li>
-<li>`proxied`: Proxied</li>
-        :type Mode: str
-        :param TTL: TTL (in seconds). The smaller the value, the faster the record changes take effect. Default value: 300
-        :type TTL: int
-        :param Priority: Specifies a value in the range 1–50 when you make changes to the MX records. A smaller value indicates higher priority. Note that the default value 0 will be used if this field is not specified.
-        :type Priority: int
-        """
-        self.ZoneId = None
-        self.Type = None
-        self.Name = None
-        self.Content = None
-        self.Mode = None
-        self.TTL = None
-        self.Priority = None
-
-
-    def _deserialize(self, params):
-        self.ZoneId = params.get("ZoneId")
-        self.Type = params.get("Type")
-        self.Name = params.get("Name")
-        self.Content = params.get("Content")
-        self.Mode = params.get("Mode")
-        self.TTL = params.get("TTL")
-        self.Priority = params.get("Priority")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateDnsRecordResponse(AbstractModel):
-    """CreateDnsRecord response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param DnsRecordId: The DNS record ID.
-        :type DnsRecordId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.DnsRecordId = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.DnsRecordId = params.get("DnsRecordId")
-        self.RequestId = params.get("RequestId")
-
-
 class CreateIpTableListRequest(AbstractModel):
     """CreateIpTableList request structure.
 
@@ -2015,89 +1899,6 @@ class CreateIpTableListResponse(AbstractModel):
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class CreateLoadBalancingRequest(AbstractModel):
-    """CreateLoadBalancing request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ZoneId: The site ID.
-        :type ZoneId: str
-        :param Host: The load balancing hostname.
-        :type Host: str
-        :param Type: The proxy mode. Values:
-<li>`dns_only`: Only DNS</li>
-<li>`proxied`: Proxied</li>
-        :type Type: str
-        :param OriginGroupId: The ID of the primary origin group.
-        :type OriginGroupId: str
-        :param BackupOriginGroupId: The ID of the secondary origin group (only available when `Type=proxied`). If not specified, it indicates that secondary origins are not used.
-        :type BackupOriginGroupId: str
-        :param TTL: When `Type=dns_only`, it indicates the amount of time that DNS records remain in the cache of a DNS server.
-Value range: 60-86400 (in seconds). If it's not specified, the default value 600 will be used.
-        :type TTL: int
-        :param OriginType: The origin-pull type. Values:
-<li>`normal`: Primary/Secondary origin-pull</li>
-<li>`advanced`: Advanced origin-pull (only used when `Type=proxied`)</li>If it is left empty, primary/secondary origin-pull is applied.
-        :type OriginType: str
-        :param AdvancedOriginGroups: Advanced origin-pull configuration. This field is valid when `OriginType=advanced`.
-        :type AdvancedOriginGroups: list of AdvancedOriginGroup
-        """
-        self.ZoneId = None
-        self.Host = None
-        self.Type = None
-        self.OriginGroupId = None
-        self.BackupOriginGroupId = None
-        self.TTL = None
-        self.OriginType = None
-        self.AdvancedOriginGroups = None
-
-
-    def _deserialize(self, params):
-        self.ZoneId = params.get("ZoneId")
-        self.Host = params.get("Host")
-        self.Type = params.get("Type")
-        self.OriginGroupId = params.get("OriginGroupId")
-        self.BackupOriginGroupId = params.get("BackupOriginGroupId")
-        self.TTL = params.get("TTL")
-        self.OriginType = params.get("OriginType")
-        if params.get("AdvancedOriginGroups") is not None:
-            self.AdvancedOriginGroups = []
-            for item in params.get("AdvancedOriginGroups"):
-                obj = AdvancedOriginGroup()
-                obj._deserialize(item)
-                self.AdvancedOriginGroups.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateLoadBalancingResponse(AbstractModel):
-    """CreateLoadBalancing response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param LoadBalancingId: The load balancer ID.
-        :type LoadBalancingId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.LoadBalancingId = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.LoadBalancingId = params.get("LoadBalancingId")
         self.RequestId = params.get("RequestId")
 
 
@@ -3912,96 +3713,6 @@ class DeleteApplicationProxyRuleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DeleteDnsRecordsRequest(AbstractModel):
-    """DeleteDnsRecords request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ZoneId: The site ID of the DNS record to be deleted.
-        :type ZoneId: str
-        :param DnsRecordIds: The ID of the DNS record to be deleted.
-        :type DnsRecordIds: list of str
-        """
-        self.ZoneId = None
-        self.DnsRecordIds = None
-
-
-    def _deserialize(self, params):
-        self.ZoneId = params.get("ZoneId")
-        self.DnsRecordIds = params.get("DnsRecordIds")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DeleteDnsRecordsResponse(AbstractModel):
-    """DeleteDnsRecords response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class DeleteLoadBalancingRequest(AbstractModel):
-    """DeleteLoadBalancing request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ZoneId: The site ID.
-        :type ZoneId: str
-        :param LoadBalancingId: The load balancer ID.
-        :type LoadBalancingId: str
-        """
-        self.ZoneId = None
-        self.LoadBalancingId = None
-
-
-    def _deserialize(self, params):
-        self.ZoneId = params.get("ZoneId")
-        self.LoadBalancingId = params.get("LoadBalancingId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DeleteLoadBalancingResponse(AbstractModel):
-    """DeleteLoadBalancing response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
 class DeleteLogTopicTaskRequest(AbstractModel):
     """DeleteLogTopicTask request structure.
 
@@ -5490,12 +5201,12 @@ class DescribeDDoSAttackTopDataRequest(AbstractModel):
         :param EndTime: The end time.
         :type EndTime: str
         :param MetricName: The statistical metric. Values:
-<li>`ddos_attackFlux_protocol`: Top-ranked protocols by DDoS attack traffic.</li>
-<li>`ddos_attackPackageNum_protocol`: Top-ranked protocols by DDoS attack packets.</li>
-<li>`ddos_attackNum_attackType`: Top-ranked attack types by DDoS attacks.</li>
-<li>`ddos_attackNum_sregion`: Top-ranked attack source regions by DDoS attacks.</li>
-<li>`ddos_attackFlux_sip`: Top-ranked attacker IPs by DDoS attack traffic.</li>
-<li>`ddos_attackFlux_sregion`: Top-ranked attack source regions by DDoS attack traffic.</li>
+<li>`ddos_attackFlux_protocol`: Rank protocols by the attack traffic.</li>
+<li>`ddos_attackPackageNum_protocol`: Rank protocols by the number of attack packets.</li>
+<li>`ddos_attackNum_attackType`: Rank attack types by the number of attacks.</li>
+<li>`ddos_attackNum_sregion`: Rank attacker regions by the number of attacks.</li>
+<li>`ddos_attackFlux_sip`: Rank attacker IPs by the number of attacks.</li>
+<li>`ddos_attackFlux_sregion`: Rank attacker regions by the number of attacks.</li>
         :type MetricName: str
         :param ZoneIds: List of site IDs to be queried. All sites will be selected if this field is not specified.
         :type ZoneIds: list of str
@@ -5871,6 +5582,100 @@ class DescribeDefaultCertificatesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDistributionL4AccessDataRequest(AbstractModel):
+    """DescribeDistributionL4AccessData request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: Query start time
+        :type StartTime: str
+        :param EndTime: Query end time
+        :type EndTime: str
+        :param MetricNames: Query metric. Vaules: 
+<li>`l4Flow_connection_distribution`: Distribution of connection duration</li>
+        :type MetricNames: list of str
+        :param ZoneIds: IDs of sites to be queried. All sites will be selected if this field is not specified.
+        :type ZoneIds: list of str
+        :param Interval: The query granularity. Values:
+<li>`min`: 1 minute</li>
+<li>`5min`: 5 minutes</li>
+<li>`hour`: 1 hour</li>
+<li>`day`: 1 day</li>If this field is not specified, the granularity is determined based on the query period. **Query period ≤ 1 hour**: 1-minute granularity; **1 hour < query period ≤ 2 days**: 5-minute granularity; **2 days < query period ≤ 7 days**: 1 hour granularity; **Query period > 7 days**: 1 day granularity.
+        :type Interval: str
+        :param QueryConditions: Filter conditions. See below for details: 
+<li>`ruleId`:<br>   Filter by the <strong>forwarding rule ID</strong><br>   Type: String<br>   Required: No</li>
+<li>`proxyId`:<br>   Filter by the <strong>L4 proxy ID</strong><br>   Type: String<br>   Required: No</li>
+        :type QueryConditions: list of QueryCondition
+        :param Area: Geolocation scope. Values:
+<li>`overseas`: Regions outside the Chinese mainland</li>
+<li>`mainland`: Chinese mainland</li>
+<li>`global`: Global</li>If this field is not specified, the default value `global` is used.
+        :type Area: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.MetricNames = None
+        self.ZoneIds = None
+        self.Interval = None
+        self.QueryConditions = None
+        self.Area = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.MetricNames = params.get("MetricNames")
+        self.ZoneIds = params.get("ZoneIds")
+        self.Interval = params.get("Interval")
+        if params.get("QueryConditions") is not None:
+            self.QueryConditions = []
+            for item in params.get("QueryConditions"):
+                obj = QueryCondition()
+                obj._deserialize(item)
+                self.QueryConditions.append(obj)
+        self.Area = params.get("Area")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDistributionL4AccessDataResponse(AbstractModel):
+    """DescribeDistributionL4AccessData response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Total number of query results.
+        :type TotalCount: int
+        :param TopDataRecords: Distribution of connection duration
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type TopDataRecords: list of TopDataRecord
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.TopDataRecords = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("TopDataRecords") is not None:
+            self.TopDataRecords = []
+            for item in params.get("TopDataRecords"):
+                obj = TopDataRecord()
+                obj._deserialize(item)
+                self.TopDataRecords.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDnsDataRequest(AbstractModel):
     """DescribeDnsData request structure.
 
@@ -5944,104 +5749,6 @@ class DescribeDnsDataResponse(AbstractModel):
                 obj = DnsData()
                 obj._deserialize(item)
                 self.Data.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeDnsRecordsRequest(AbstractModel):
-    """DescribeDnsRecords request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ZoneId: The site ID of the DNS record. All sites’ DNS records will be returned if this field is not specified.
-        :type ZoneId: str
-        :param Filters: Filter criteria. Each filter criteria can have up to 20 entries.
-<li>`record-id`:<br>   Filter by <strong>DNS record ID</strong>, such as record-1a8df68z<br>   Type: String<br>Required: No
-<li>`record-name`:<br>   Filter by <strong>DNS record name</strong><br>   Type: String<br>Required: No
-<li>`record-type`:<br>   Filter by <strong>DNS record type</strong><br>   Type: String<br>Required: No<br>   Values:<br>   `A`: Point a domain name to an IPv4 address, such as 8.8.8.8.<br>   `AAAA`: Point a domain name to an IPv6 address.<br>   `CNAME`: Point a domain name to another domain name that can be resolved to an IP address.<br>   `TXT`: Identify and describe a domain name. It is usually used for domain verification and as SPF records (for anti-spam).<br>   `NS`: If you need to authorize a subdomain name to another DNS service provider for DNS resolution, you need to add an NS record. You cannot add an NS record for a root domain name.<br>   `CAA`: Specify CAs to issue certificates for sites.<br>   `SRV`: Identify a service used by a server. It is commonly used in Microsoft directory management.<br>  `MX`: Specify the mail server for receiving emails.
-<li>`mode`:<br>   Filter by <strong>proxy mode</strong><br>   Type: String<br>Required: No<br>   Values:<br>   `dns_only`: Only DNS<br>   `proxied`: Proxied
-<li>`ttl`:<br>   Filter by <strong>TTL</strong><br>   Type: String<br>Required: No
-        :type Filters: list of AdvancedFilter
-        :param Direction: The sorting order. Values:
-<li>`ASC`: Ascending order</li>
-<li>`desc`: Descending order</li> Default value: asc
-        :type Direction: str
-        :param Match: The match mode. Values:
-<li>`all`: Return all records that match the specified filter.</li>
-<li>`any`: Return any record that matches the specified filter.</li>Default value: all.
-        :type Match: str
-        :param Limit: The paginated query limit. Default value: 20. Maximum value: 1000.
-        :type Limit: int
-        :param Offset: The page offset. Default value: 0
-        :type Offset: int
-        :param Order: The sorting criteria. Values:
-<li>`content`: DNS record content.</li>
-<li>`created_on`: Creation time of the DNS record.</li>
-<li>`mode`: Proxy mode.</li>
-<li>`record-name`: DNS record name.</li>
-<li>`ttl`: DNS TTL.</li>
-<li>`record-type`: DNS record type.</li>If this field is not specified, the DNS records are sorted based on `record-type` and `recrod-name`.
-        :type Order: str
-        """
-        self.ZoneId = None
-        self.Filters = None
-        self.Direction = None
-        self.Match = None
-        self.Limit = None
-        self.Offset = None
-        self.Order = None
-
-
-    def _deserialize(self, params):
-        self.ZoneId = params.get("ZoneId")
-        if params.get("Filters") is not None:
-            self.Filters = []
-            for item in params.get("Filters"):
-                obj = AdvancedFilter()
-                obj._deserialize(item)
-                self.Filters.append(obj)
-        self.Direction = params.get("Direction")
-        self.Match = params.get("Match")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        self.Order = params.get("Order")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeDnsRecordsResponse(AbstractModel):
-    """DescribeDnsRecords response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param TotalCount: Total number of DNS records.
-        :type TotalCount: int
-        :param DnsRecords: List of DNS records
-        :type DnsRecords: list of DnsRecord
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.TotalCount = None
-        self.DnsRecords = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        if params.get("DnsRecords") is not None:
-            self.DnsRecords = []
-            for item in params.get("DnsRecords"):
-                obj = DnsRecord()
-                obj._deserialize(item)
-                self.DnsRecords.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -6240,76 +5947,6 @@ class DescribeIdentificationsResponse(AbstractModel):
                 obj = Identification()
                 obj._deserialize(item)
                 self.Identifications.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeLoadBalancingRequest(AbstractModel):
-    """DescribeLoadBalancing request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Offset: Offset for paginated queries. Default value: 0.
-        :type Offset: int
-        :param Limit: Limit on paginated queries. Value range: 1-1000. Default value: 10.
-        :type Limit: int
-        :param Filters: Filter criteria. Each filter criteria can have up to 20 entries.
-<li>`zone-id`:<br>   Filter by <strong>site ID</strong>, such as zone-1a8df68z<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported
-</li><li>`load-balancing-id`<br>   Filter by <strong>load balancer ID</strong>, such as lb-d21bfaf7-8d72-11ec-841d-00ff977fb3c8<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported
-</li><li>`host`:<br>   Filter by <strong>load balancing hostname</strong>, such as lb.tencent.com<br>   Type: String<br>   Required: No<br>   Fuzzy query: Supported (only one hostname allowed in a query)</li>
-        :type Filters: list of AdvancedFilter
-        """
-        self.Offset = None
-        self.Limit = None
-        self.Filters = None
-
-
-    def _deserialize(self, params):
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        if params.get("Filters") is not None:
-            self.Filters = []
-            for item in params.get("Filters"):
-                obj = AdvancedFilter()
-                obj._deserialize(item)
-                self.Filters.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeLoadBalancingResponse(AbstractModel):
-    """DescribeLoadBalancing response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param TotalCount: Total number of records.
-        :type TotalCount: int
-        :param Data: Load balancer information.
-        :type Data: list of LoadBalancing
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.TotalCount = None
-        self.Data = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        if params.get("Data") is not None:
-            self.Data = []
-            for item in params.get("Data"):
-                obj = LoadBalancing()
-                obj._deserialize(item)
-                self.Data.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -6592,14 +6229,15 @@ class DescribeOverviewL7DataRequest(AbstractModel):
 <li>`hour`: 1 hour;</li>
 <li>`day`: 1 day.</li>If this field is not specified, the granularity will be determined based on the interval between the start time and end time as follows: 1-minute granularity applies for a 1-hour interval, 5-minute granularity for a 2-day interval, 1-hour granularity for a 7-day interval, and 1-day granularity for an interval of over 7 days.
         :type Interval: str
-        :param Area: Data storage region. Values:
-<li>`overseas`: Global (outside the Chinese mainland);</li>
-<li>`mainland`: Chinese mainland.</li>If this field is not specified, the data storage region will be determined based on the user’s location.
-        :type Area: str
-        :param Filters: Filter criteria. Each filter criteria can have up to 20 entries.
-<li>`tagKey`:<br>   Filter by <strong>tag key</strong><br>   Type: String<br>   Required: No</li>
-<li>`tagValue`<br>  Filter by <strong>tag value</strong><br>   Type: String<br>   Required: No</li>
+        :param Filters: Filter conditions. See below for details: 
+<li>`tagKey`:<br>   Filter by the <strong>tag key</strong><br>   Type: String<br>   Required: No</li>
+<li>`tagValue`<br>  Filter by the <strong>tag value</strong><br>   Type: String<br>   Required: No</li>
         :type Filters: list of QueryCondition
+        :param Area: Geolocation scope. Values:
+<li>`overseas`: Regions outside the Chinese mainland</li>
+<li>`mainland`: Chinese mainland</li>
+<li>`global`: Global</li>If this field is not specified, the default value `global` is used.
+        :type Area: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -6608,8 +6246,8 @@ class DescribeOverviewL7DataRequest(AbstractModel):
         self.Domains = None
         self.Protocol = None
         self.Interval = None
-        self.Area = None
         self.Filters = None
+        self.Area = None
 
 
     def _deserialize(self, params):
@@ -6620,13 +6258,13 @@ class DescribeOverviewL7DataRequest(AbstractModel):
         self.Domains = params.get("Domains")
         self.Protocol = params.get("Protocol")
         self.Interval = params.get("Interval")
-        self.Area = params.get("Area")
         if params.get("Filters") is not None:
             self.Filters = []
             for item in params.get("Filters"):
                 obj = QueryCondition()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.Area = params.get("Area")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7351,12 +6989,12 @@ class DescribeSingleL7AnalysisDataRequest(AbstractModel):
         :type MetricNames: list of str
         :param ZoneIds: List of sites to be queried. All sites will be selected if this field is not specified.
         :type ZoneIds: list of str
-        :param Filters: The key of the parameter QueryCondition, which is used to specify a filter. Values:
-<li>`country`: Country/Region;</li>
-<li>`domain`: Domain name;</li>
-<li>`protocol`: Protocol type;</li>
-<li>`tagKey`: Tag key;</li>
-<li>`tagValue`: Tag value.</li>
+        :param Filters: Filter conditions. See below for details: 
+<li>`country`:<br>   Filter by the <strong>country/region code</strong>. <a href="https://zh.wikipedia.org/wiki/ISO_3166-1">ISO 3166</a> country codes are used.<br>   Type: String<br>   Required: No</li>
+<li>`domain`<br>   Filter by the <strong>sub-domain name</strong>, such as `test.example.com`<br>   Type: String<br>   Required: No</li>
+<li>`protocol`:<br>   Filter by the <strong>HTTP protocol</strong><br>   Type: String<br>   Required: No<br>   Values:<br>   `HTTP/1.0`: HTTP 1.0<br>   `HTTP/1.1`: HTTP 1.1<br>   `HTTP/2.0`: HTTP 2.0<br>   `HTTP/3.0`: HTTP 3.0<br>   `WebSocket`: WebSocket</li>
+<li>`tagKey`:<br>   Filter by the <strong>tag key</strong><br>   Type: String<br>   Required: No</li>
+<li>`tagValue`<br>  Filter by the <strong>tag value</strong><br>   Type: String<br>   Required: No</li>
         :type Filters: list of QueryCondition
         :param Interval: The query time granularity. Values:
 <li>`min`: 1 minute;</li>
@@ -7364,9 +7002,10 @@ class DescribeSingleL7AnalysisDataRequest(AbstractModel):
 <li>`hour`: 1 hour;</li>
 <li>`day`: 1 day.</li>If this field is not specified, the granularity will be determined based on the interval between the start time and end time as follows: 1-minute granularity applies for a 1-hour interval, 5-minute granularity for a 2-day interval, 1-hour granularity for a 7-day interval, and 1-day granularity for an interval of over 7 days.
         :type Interval: str
-        :param Area: Data storage region. Values:
-<li>`overseas`: Global (outside the Chinese mainland);</li>
-<li>`mainland`: Chinese mainland.</li>If this field is not specified, the data storage region will be determined based on the user’s location.
+        :param Area: Geolocation scope. Values:
+<li>`overseas`: Regions outside the Chinese mainland</li>
+<li>`mainland`: Chinese mainland</li>
+<li>`global`: Global</li>If this field is not specified, the default value `global` is used.
         :type Area: str
         """
         self.StartTime = None
@@ -7572,6 +7211,100 @@ class DescribeSpeedTestingQuotaResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTimingL4AccessDataRequest(AbstractModel):
+    """DescribeTimingL4AccessData request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: Query start time
+        :type StartTime: str
+        :param EndTime: Query end time
+        :type EndTime: str
+        :param MetricNames: Metric to query. Values:
+<li>`l4Flow_connections`: Number of connections</li>
+        :type MetricNames: list of str
+        :param ZoneIds: IDs of sites to be queried. All sites will be selected if this field is not specified.
+        :type ZoneIds: list of str
+        :param Interval: The query granularity. Values:
+<li>`min`: 1 minute</li>
+<li>`5min`: 5 minutes</li>
+<li>`hour`: 1 hour</li>
+<li>`day`: 1 day</li>If this field is not specified, the granularity will be determined based on the interval between the start time and end time as follows: 1-minute granularity applies for a 1-hour interval, 5-minute granularity for a 2-day interval, 1-hour granularity for a 7-day interval, and 1-day granularity for an interval of over 7 days.
+        :type Interval: str
+        :param QueryConditions: Filter conditions. See below for details: 
+<li>`ruleId`:<br>   Filter by the <strong>forwarding rule ID</strong><br>   Type: String<br>   Required: No</li>
+<li>`proxyId`:<br>   Filter by the <strong>L4 proxy ID</strong><br>   Type: String<br>   Required: No</li>
+        :type QueryConditions: list of QueryCondition
+        :param Area: Geolocation scope. Values:
+<li>`overseas`: Regions outside the Chinese mainland</li>
+<li>`mainland`: Chinese mainland</li>
+<li>`global`: Global</li>If this field is not specified, the default value `global` is used.
+        :type Area: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.MetricNames = None
+        self.ZoneIds = None
+        self.Interval = None
+        self.QueryConditions = None
+        self.Area = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.MetricNames = params.get("MetricNames")
+        self.ZoneIds = params.get("ZoneIds")
+        self.Interval = params.get("Interval")
+        if params.get("QueryConditions") is not None:
+            self.QueryConditions = []
+            for item in params.get("QueryConditions"):
+                obj = QueryCondition()
+                obj._deserialize(item)
+                self.QueryConditions.append(obj)
+        self.Area = params.get("Area")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTimingL4AccessDataResponse(AbstractModel):
+    """DescribeTimingL4AccessData response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Total number of query results.
+        :type TotalCount: int
+        :param TimingDataRecords: Number of L4 connections over time
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type TimingDataRecords: list of TimingDataRecord
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.TimingDataRecords = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("TimingDataRecords") is not None:
+            self.TimingDataRecords = []
+            for item in params.get("TimingDataRecords"):
+                obj = TimingDataRecord()
+                obj._deserialize(item)
+                self.TimingDataRecords.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTimingL4DataRequest(AbstractModel):
     """DescribeTimingL4Data request structure.
 
@@ -7600,13 +7333,14 @@ class DescribeTimingL4DataRequest(AbstractModel):
 <li>`hour`: 1 hour;</li>
 <li>`day`: 1 day.</li>If this field is not specified, the granularity will be determined based on the interval between the start time and end time as follows: 1-minute granularity applies for a 1-hour interval, 5-minute granularity for a 2-day interval, 1-hour granularity for a 7-day interval, and 1-day granularity for an interval of over 7 days.
         :type Interval: str
-        :param Filters: The key of the parameter QueryCondition, which is used to specify a filter. Values:
-<li>`ruleId`: Filter by rule ID;</li>
-<li>`proxyId`: Filter by connection ID.</li>
+        :param Filters: Filter conditions. See below for details: 
+<li>`ruleId`:<br>   Filter by the <strong>forwarding rule ID</strong><br>   Type: String<br>   Required: No</li>
+<li>`proxyId`:<br>   Filter by the <strong>L4 proxy ID</strong><br>   Type: String<br>   Required: No</li>
         :type Filters: list of QueryCondition
-        :param Area: Data storage region. Values:
-<li>`overseas`: Global (outside the Chinese mainland);</li>
-<li>`mainland`: Chinese mainland.</li>If this field is not specified, the data storage region will be determined based on the user’s location.
+        :param Area: Geolocation scope. Values:
+<li>`overseas`: Regions outside the Chinese mainland</li>
+<li>`mainland`: Chinese mainland</li>
+<li>`global`: Global</li>If this field is not specified, the default value `global` is used.
         :type Area: str
         """
         self.StartTime = None
@@ -7697,25 +7431,28 @@ class DescribeTimingL7AnalysisDataRequest(AbstractModel):
 <li>`hour`: 1 hour;</li>
 <li>`day`: 1 day.</li>If this field is not specified, the granularity will be determined based on the interval between the start time and end time as follows: 1-minute granularity applies for a 1-hour interval, 5-minute granularity for a 2-day interval, 1-hour granularity for a 7-day interval, and 1-day granularity for an interval of over 7 days.
         :type Interval: str
-        :param Filters: The key of the parameter QueryCondition, which is used to specify a filter. Values:
-<li>`country`: Country/Region;</li>
-<li>`domain`: Domain name;</li>
-<li>`protocol`: Protocol type;</li>
-<li>`resourceType`: Resource type;</li>
-<li>`statusCode`: Status code;</li>
-<li>`browserType`: Browser type;</li>
-<li>`deviceType`: Device type;</li>
-<li>`operatingSystemType`: OS type;</li>
-<li>`tlsVersion`: TLS version;</li>
-<li>`url`: URL address;</li>
-<li>`referer`: Refer header;</li>
-<li>`ipVersion`: IP version;</li>
-<li>`tagKey`: Tag key;</li>
-<li>`tagValue`: Tag value.</li>
+        :param Filters: Filter conditions. See below for details: 
+<li>`country`:<br>   Filter by the <strong>country/region code</strong>. <a href="https://zh.wikipedia.org/wiki/ISO_3166-1">ISO 3166</a> country codes are used.<br>   Type: String<br>   Required: No</li>
+<li>`province`<br>   Filter by the <strong>province name</strong>. It’s only available when `Area` is `mainland`. <br>   Type: String<br>   Required: No</li>
+<li>`isp`<br>   Filter by the <strong>ISP</strong>. It’s only available when `Area` is `mainland`.<br>   Type: String<br>   Required: No<br>   Values: <br>   `2`: CTCC; <br>   `26`: CUCC;<br>   `1046`: CMCC;<br>   `3947`: CTT; <br>   `38`: CERNET; <br>   `43`: GWBN;<br>   `0`: Others</li>
+<li>`domain`<br>   Filter by the <strong>sub-domain name</strong>, such as `test.example.com`<br>   Type: String<br>   Required: No</li>
+<li>`url`<br>   Filter by the <strong>URL</strong>, such as `/content`. Separate multiple URLs with semicolons. The query period cannot exceed 30 days. <br>   Type: String<br>   Required: No</li>
+<li>`referer`<br>   Filter by the <strong>Referer header</strong>, such as `example.com`. The query period cannot exceed 30 days.<br>   Type: String<br>   Required: No</li>
+<li>`resourceType`<br>   Filter by the <strong>resource file type</strong>, such as `jpg`, `png`. The query period cannot exceed 30 days.<br>  Type: String<br>   Required: No</li>
+<li>`protocol`:<br>   Filter by the <strong>HTTP protocol</strong><br>   Type: String<br>   Required: No<br>   Values:<br>   `HTTP/1.0`: HTTP 1.0<br>   `HTTP/1.1`: HTTP 1.1<br>   `HTTP/2.0`: HTTP 2.0<br>   `HTTP/3.0`: HTTP 3.0<br>   `WebSocket`: WebSocket</li>
+<li>`statusCode`<br>   Filter by the <strong> status code</strong>. The query period  cannot exceed 30 days. <br>   Type: String<br>   Required: No<br>   Values: <br>   `1XX`: All 1xx status codes;<br>   `100`: 100 status code;<br>   `101`: 101 status code;<br>   `102`: 102 status code;<br>   `2XX`: All 2xx status codes;<br>   `200`: 200 status code;<br>   `201`: 201 status code;<br>   `202`: 202 status code;<br>   `203`: 203 status code;<br>   `204`: 204 status code;<br>   `205`: 205 status code;<br>   `206`: 206 status code;<br>   `207`: 207 status code;<br>  `3XX`: All 3xx status codes;<br>   `300`: 300 status code;<br>   `301`: 301 status code;<br>   `302`: 302 status code;<br>   `303`: 303 status code;<br>   `304`: 304 status code;<br>   `305`: 305 status code;<br>   `307`: 307 status code;<br>   `4XX`: All 4xx status codes;<br>   `400`: 400 status code;<br>   `401`: 401 status code;<br>   `402`: 402 status code;<br>   `403`: 403 status code;<br>   `404`: 404 status code;<br>   `405`: 405 status code;<br>   `406`: 406 status code;<br>   `407`: 407 status code;<br>   `408`: 408 status code;<br>   `409`: 409 status code;<br>   `410`: 410 status code;<br>   `411`: 411 status code;<br>   `412`: 412 status code;<br>   `412`: 413 status code;<br>   `414`: 414 status code;<br>   `415`: 415 status code;<br>   `416`: 416 status code;<br>   `417`: 417 status code;<br>  `422`: 422 status code;<br>   `423`: 423 status code;<br>   `424`: 424 status code;<br>   `426`: 426 status code;<br>   `451`: 451 status code;<br>   `5XX`: All 5xx status codes;<br>   `500`: 500 status code;<br>   `501`: 501 status code;<br>   `502`: 502 status code;<br>   `503`: 503 status code;<br>   `504`: 504 status code;<br>   `505`: 505 status code;<br>   `506`: 506 status code;<br>   `507`: 507 status code;<br>   `510`: 510 status code;<br>   `514`: 514 status code;<br>   `544`: 544 status code.</li>
+<li>`browserType`<br>   Filter by the <strong>browser type</strong>. The query period cannot exceed 30 days. <br>   Type:  String<br>   Required:  No<br>   Values: <br>  `Firefox`: Firefox browser;<br>   `Chrome`: Chrome browser;<br>   `Safari`: Safari browser;<br>   `MicrosoftEdge`: Microsoft Edge browser;<br>   `IE`: IE browser;<br>   `Opera`: Opera browser;<br>   `QQBrowser`: QQ browser;<br>   `LBBrowser`: LB browser;<br>   `MaxthonBrowser`: Maxthon browser;<br>   `SouGouBrowser`: Sogou browser;<br>  `BIDUBrowser`: Baidu browser;<br>   `TaoBrowser`: Tao browser;<br>   `UBrowser`: UC browser;<br>   `Other`: Other browsers; <br>   `Empty`: The browser type is not specified; <br>   `Bot`: Web crawler.</li>
+<li>`deviceType`<br>   Filter by the <strong>device type</strong>. The query period cannot exceed 30 days. <br>   Type: String<br>   Required: No<br>   Values: <br>   `TV`: TV; <br>   `Tablet`: Tablet;<br>   `Mobile`: Mobile phone;<br>   `Desktop`: Desktop device; <br>   `Other`: Other device;<br>   `Empty`: Device type not specified.</li>
+<li>`operatingSystemType`<br>   Filter by the <strong>operating system</strong>. The query period cannot exceed 30 days. <br>   Type: String<br>   Required: No<br>   Values: <br>   `Linux`：Linux OS;<br>   `MacOS`: OS;<br>   `Android`: Android OS;<br>   `IOS`: iOS OS;<br>   `Windows`: Windows OS;<br>   `NetBSD`: NetBSD OS;<br>   `ChromiumOS`: Chromium OS;<br>   `Bot`: Web crawler: <br>   `Other`: Other OS;<br>   `Empty`: The OS is not specified.</li>
+<li>`tlsVersion`<br>   Filter by the <strong>TLS version</strong>. The query period cannot exceed 30 days.<br>   Type: String<br>   Required: No<br>   Values:<br>   `TLS1.0`: TLS 1.0; <br>   `TLS1.1`: TLS 1.1;<br>   `TLS1.2`: TLS 1.2;<br>   `TLS1.3`: TLS 1.3.</li>
+<li>`ipVersion`<br>   Filter by the <strong>IP version</strong>.<br>   Type: String<br>   Required: No<br>   Values:<br>   `4`: IPv4；<br>   `6`: IPv6.</li>
+<li>`tagKey`:<br>   Filter by the <strong>tag key</strong><br>   Type: String<br>   Required: No</li>
+<li>`tagValue`<br>  Filter by the <strong>tag value</strong><br>   Type: String<br>   Required: No</li>
         :type Filters: list of QueryCondition
-        :param Area: Data storage region. Values:
-<li>`overseas`: Global (outside the Chinese mainland);</li>
-<li>`mainland`: Chinese mainland.</li>If this field is not specified, the data storage region will be determined based on the user’s location.
+        :param Area: Geolocation scope. Values:
+<li>`overseas`: Regions outside the Chinese mainland</li>
+<li>`mainland`: Chinese mainland</li>
+<li>`global`: Global</li>If this field is not specified, the default value `global` is used.
         :type Area: str
         """
         self.StartTime = None
@@ -7798,13 +7535,14 @@ class DescribeTimingL7CacheDataRequest(AbstractModel):
         :type MetricNames: list of str
         :param ZoneIds: List of sites to be queried. All sites will be selected if this field is not specified.
         :type ZoneIds: list of str
-        :param Filters: The key of the parameter QueryCondition, which is used to specify a filter. Values:
-<li>`cacheType`: Cache type;</li>
-<li>`domain`: Host/domain name;</li>
-<li>`resourceType`: Resource type;</li>
-<li>`url`: URL address;</li>
-<li>`tagKey`: Tag key;</li>
-<li>`tagValue`: Tag value.</li>
+        :param Filters: Filter conditions. See below for details: 
+<li>`domain`<br>   Filter by the <strong>sub-domain name</strong>, such as `test.example.com`<br>   Type: String<br>   Required: No</li>
+<li>`url`<br>   Filter by the <strong>URL</strong>, such as `/content`. The query period cannot exceed 30 days. <br>   Type: String<br>   Required: No</li>
+<li>`resourceType`<br>   Filter by the <strong>resource file type</strong>, such as `jpg`, `png`. The query period cannot exceed 30 days.<br>  Type: String<br>   Required: No</li>
+<li>cacheType<br>  Filter by the <strong>cache hit result</strong>.<br> Type: String<br>   Required: No<br>   Values: <br>   `hit`: Cache hit; <br>   `dynamic`: Resource non-cacheable; <br>   `miss`: Cache miss</li>
+<li>`statusCode`<br>   Filter by the <strong> status code</strong>. The query period  cannot exceed 30 days. <br>   Type: String<br>   Required: No<br>   Values: <br>   `1XX`: All 1xx status codes;<br>   `100`: 100 status code;<br>   `101`: 101 status code;<br>   `102`: 102 status code;<br>   `2XX`: All 2xx status codes;<br>   `200`: 200 status code;<br>   `201`: 201 status code;<br>   `202`: 202 status code;<br>   `203`: 203 status code;<br>   `204`: 204 status code;<br>   `205`: 205 status code;<br>   `206`: 206 status code;<br>   `207`: 207 status code;<br>  `3XX`: All 3xx status codes;<br>   `300`: 300 status code;<br>   `301`: 301 status code;<br>   `302`: 302 status code;<br>   `303`: 303 status code;<br>   `304`: 304 status code;<br>   `305`: 305 status code;<br>   `307`: 307 status code;<br>   `4XX`: All 4xx status codes;<br>   `400`: 400 status code;<br>   `401`: 401 status code;<br>   `402`: 402 status code;<br>   `403`: 403 status code;<br>   `404`: 404 status code;<br>   `405`: 405 status code;<br>   `406`: 406 status code;<br>   `407`: 407 status code;<br>   `408`: 408 status code;<br>   `409`: 409 status code;<br>   `410`: 410 status code;<br>   `411`: 411 status code;<br>   `412`: 412 status code;<br>   `412`: 413 status code;<br>   `414`: 414 status code;<br>   `415`: 415 status code;<br>   `416`: 416 status code;<br>   `417`: 417 status code;<br>  `422`: 422 status code;<br>   `423`: 423 status code;<br>   `424`: 424 status code;<br>   `426`: 426 status code;<br>   `451`: 451 status code;<br>   `5XX`: All 5xx status codes;<br>   `500`: 500 status code;<br>   `501`: 501 status code;<br>   `502`: 502 status code;<br>   `503`: 503 status code;<br>   `504`: 504 status code;<br>   `505`: 505 status code;<br>   `506`: 506 status code;<br>   `507`: 507 status code;<br>   `510`: 510 status code;<br>   `514`: 514 status code;<br>   `544`: 544 status code.</li>
+<li>`tagKey`:<br>   Filter by the <strong>tag key</strong><br>   Type: String<br>   Required: No</li>
+<li>`tagValue`<br>  Filter by the <strong>tag value</strong><br>   Type: String<br>   Required: No</li>
         :type Filters: list of QueryCondition
         :param Interval: The query time granularity. Values:
 <li>`min`: 1 minute;</li>
@@ -7812,9 +7550,10 @@ class DescribeTimingL7CacheDataRequest(AbstractModel):
 <li>`hour`: 1 hour;</li>
 <li>`day`: 1 day.</li>If this field is not specified, the granularity will be determined based on the interval between the start time and end time as follows: 1-minute granularity applies for a 1-hour interval, 5-minute granularity for a 2-day interval, 1-hour granularity for a 7-day interval, and 1-day granularity for an interval of over 7 days.
         :type Interval: str
-        :param Area: Data storage region. Values:
-<li>`overseas`: Global (outside the Chinese mainland);</li>
-<li>`mainland`: Chinese mainland.</li>If this field is not specified, the data storage region will be determined based on the user’s location.
+        :param Area: Geolocation scope. Values:
+<li>`overseas`: Regions outside the Chinese mainland</li>
+<li>`mainland`: Chinese mainland</li>
+<li>`global`: Global</li>If this field is not specified, the default value `global` is used.
         :type Area: str
         """
         self.StartTime = None
@@ -7906,21 +7645,23 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
         :type ZoneIds: list of str
         :param Limit: Queries the top n rows of data. Maximum value: 1000. Top 10 rows of data will be queried if this field is not specified.
         :type Limit: int
-        :param Filters: The key of the parameter QueryCondition, which is used to specify a filter. Values:
-<li>`country`: Country/Region;</li>
-<li>`domain`: Domain name;</li>
-<li>`protocol`: Protocol type;</li>
-<li>`resourceType`: Resource type;</li>
-<li>`statusCode`: Status code;</li>
-<li>`browserType`: Browser type;</li>
-<li>`deviceType`: Device type;</li>
-<li>`operatingSystemType`: OS type;</li>
-<li>`tlsVersion`: TLS version;</li>
-<li>`url`: URL address;</li>
-<li>`referer`: Refer header;</li>
-<li>`ipVersion`: IP version;</li>
-<li>`tagKey`: Tag key;</li>
-<li>`tagValue`: Tag value.</li>
+        :param Filters: Filter conditions. See below for details: 
+<li>`country`:<br>   Filter by the <strong>country/region code</strong>. <a href="https://zh.wikipedia.org/wiki/ISO_3166-1">ISO 3166</a> country codes are used.<br>   Type: String<br>   Required: No</li>
+<li>`province`<br>   Filter by the <strong>province name</strong>. It’s only available when `Area` is `mainland`. <br>   Type: String<br>   Required: No</li>
+<li>`isp`<br>   Filter by the <strong>ISP</strong>. It’s only available when `Area` is `mainland`.<br>   Type: String<br>   Required: No<br>   Values: <br>   `2`: CTCC; <br>   `26`: CUCC;<br>   `1046`: CMCC;<br>   `3947`: CTT; <br>   `38`: CERNET; <br>   `43`: GWBN;<br>   `0`: Others</li>
+<li>`domain`<br>   Filter by the <strong>sub-domain name</strong>, such as `test.example.com`<br>   Type: String<br>   Required: No</li>
+<li>`url`<br>   Filter by the <strong>URL</strong>, such as `/content`. Separate multiple URLs with semicolons. The query period cannot exceed 30 days. <br>   Type: String<br>   Required: No</li>
+<li>`referer`<br>   Filter by the <strong>Referer header</strong>, such as `example.com`. The query period cannot exceed 30 days.<br>   Type: String<br>   Required: No</li>
+<li>`resourceType`<br>   Filter by the <strong>resource file type</strong>, such as `jpg`, `png`. The query period cannot exceed 30 days.<br>  Type: String<br>   Required: No</li>
+<li>`protocol`:<br>   Filter by the <strong>HTTP protocol</strong><br>   Type: String<br>   Required: No<br>   Values:<br>   `HTTP/1.0`: HTTP 1.0<br>   `HTTP/1.1`: HTTP 1.1<br>   `HTTP/2.0`: HTTP 2.0<br>   `HTTP/3.0`: HTTP 3.0<br>   `WebSocket`: WebSocket</li>
+<li>`statusCode`<br>   Filter by the <strong> status code</strong>. The query period  cannot exceed 30 days. <br>   Type: String<br>   Required: No<br>   Values: <br>   `1XX`: All 1xx status codes;<br>   `100`: 100 status code;<br>   `101`: 101 status code;<br>   `102`: 102 status code;<br>   `2XX`: All 2xx status codes;<br>   `200`: 200 status code;<br>   `201`: 201 status code;<br>   `202`: 202 status code;<br>   `203`: 203 status code;<br>   `204`: 204 status code;<br>   `205`: 205 status code;<br>   `206`: 206 status code;<br>   `207`: 207 status code;<br>  `3XX`: All 3xx status codes;<br>   `300`: 300 status code;<br>   `301`: 301 status code;<br>   `302`: 302 status code;<br>   `303`: 303 status code;<br>   `304`: 304 status code;<br>   `305`: 305 status code;<br>   `307`: 307 status code;<br>   `4XX`: All 4xx status codes;<br>   `400`: 400 status code;<br>   `401`: 401 status code;<br>   `402`: 402 status code;<br>   `403`: 403 status code;<br>   `404`: 404 status code;<br>   `405`: 405 status code;<br>   `406`: 406 status code;<br>   `407`: 407 status code;<br>   `408`: 408 status code;<br>   `409`: 409 status code;<br>   `410`: 410 status code;<br>   `411`: 411 status code;<br>   `412`: 412 status code;<br>   `412`: 413 status code;<br>   `414`: 414 status code;<br>   `415`: 415 status code;<br>   `416`: 416 status code;<br>   `417`: 417 status code;<br>  `422`: 422 status code;<br>   `423`: 423 status code;<br>   `424`: 424 status code;<br>   `426`: 426 status code;<br>   `451`: 451 status code;<br>   `5XX`: All 5xx status codes;<br>   `500`: 500 status code;<br>   `501`: 501 status code;<br>   `502`: 502 status code;<br>   `503`: 503 status code;<br>   `504`: 504 status code;<br>   `505`: 505 status code;<br>   `506`: 506 status code;<br>   `507`: 507 status code;<br>   `510`: 510 status code;<br>   `514`: 514 status code;<br>   `544`: 544 status code.</li>
+<li>`browserType`<br>   Filter by the <strong>browser type</strong>. The query period cannot exceed 30 days. <br>   Type:  String<br>   Required:  No<br>   Values: <br>  `Firefox`: Firefox browser;<br>   `Chrome`: Chrome browser;<br>   `Safari`: Safari browser;<br>   `MicrosoftEdge`: Microsoft Edge browser;<br>   `IE`: IE browser;<br>   `Opera`: Opera browser;<br>   `QQBrowser`: QQ browser;<br>   `LBBrowser`: LB browser;<br>   `MaxthonBrowser`: Maxthon browser;<br>   `SouGouBrowser`: Sogou browser;<br>  `BIDUBrowser`: Baidu browser;<br>   `TaoBrowser`: Tao browser;<br>   `UBrowser`: UC browser;<br>   `Other`: Other browsers; <br>   `Empty`: The browser type is not specified; <br>   `Bot`: Web crawler.</li>
+<li>`deviceType`<br>   Filter by the <strong>device type</strong>. The query period cannot exceed 30 days. <br>   Type: String<br>   Required: No<br>   Values: <br>   `TV`: TV; <br>   `Tablet`: Tablet;<br>   `Mobile`: Mobile phone;<br>   `Desktop`: Desktop device; <br>   `Other`: Other device;<br>   `Empty`: Device type not specified.</li>
+<li>`operatingSystemType`<br>   Filter by the <strong>operating system</strong>. The query period cannot exceed 30 days. <br>   Type: String<br>   Required: No<br>   Values: <br>   `Linux`：Linux OS;<br>   `MacOS`: OS;<br>   `Android`: Android OS;<br>   `IOS`: iOS OS;<br>   `Windows`: Windows OS;<br>   `NetBSD`: NetBSD OS;<br>   `ChromiumOS`: Chromium OS;<br>   `Bot`: Web crawler: <br>   `Other`: Other OS;<br>   `Empty`: The OS is not specified.</li>
+<li>`tlsVersion`<br>   Filter by the <strong>TLS version</strong>. The query period cannot exceed 30 days.<br>   Type: String<br>   Required: No<br>   Values:<br>   `TLS1.0`: TLS 1.0; <br>   `TLS1.1`: TLS 1.1;<br>   `TLS1.2`: TLS 1.2;<br>   `TLS1.3`: TLS 1.3.</li>
+<li>`ipVersion`<br>   Filter by the <strong>IP version</strong>.<br>   Type: String<br>   Required: No<br>   Values:<br>   `4`: IPv4；<br>   `6`: IPv6.</li>
+<li>`tagKey`:<br>   Filter by the <strong>tag key</strong><br>   Type: String<br>   Required: No</li>
+<li>`tagValue`<br>  Filter by the <strong>tag value</strong><br>   Type: String<br>   Required: No</li>
         :type Filters: list of QueryCondition
         :param Interval: The query time granularity. Values:
 <li>`min`: 1 minute;</li>
@@ -7928,9 +7669,10 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
 <li>`hour`: 1 hour;</li>
 <li>`day`: 1 day.</li>If this field is not specified, the granularity will be determined based on the interval between the start time and end time as follows: 1-minute granularity applies for a 1-hour interval, 5-minute granularity for a 2-day interval, 1-hour granularity for a 7-day interval, and 1-day granularity for an interval of over 7 days.
         :type Interval: str
-        :param Area: Data storage region. Values:
-<li>`overseas`: Global (outside the Chinese mainland);</li>
-<li>`mainland`: Chinese mainland.</li>If this field is not specified, the data storage region will be determined based on the user’s location.
+        :param Area: Geolocation scope. Values:
+<li>`overseas`: Regions outside the Chinese mainland</li>
+<li>`mainland`: Chinese mainland</li>
+<li>`global`: Global</li>If this field is not specified, the default value `global` is used.
         :type Area: str
         """
         self.StartTime = None
@@ -8018,13 +7760,14 @@ class DescribeTopL7CacheDataRequest(AbstractModel):
         :type ZoneIds: list of str
         :param Limit: Queries the top rows of data. Top 10 rows of data will be queried if this field is not specified.
         :type Limit: int
-        :param Filters: The key of the parameter QueryCondition, which is used to specify a filter. Values:
-<li>`cacheType`: Cache type;</li>
-<li>`domain`: Host/domain name;</li>
-<li>`resourceType`: Resource type;</li>
-<li>`url`: URL address;</li>
-<li>`tagKey`: Tag key;</li>
-<li>`tagValue`: Tag value.</li>
+        :param Filters: Filter conditions. See below for details: 
+<li>`domain`<br>   Filter by the <strong>sub-domain name</strong>, such as `test.example.com`<br>   Type: String<br>   Required: No</li>
+<li>`url`<br>   Filter by the <strong>URL</strong>, such as `/content`. The query period cannot exceed 30 days. <br>   Type: String<br>   Required: No</li>
+<li>`resourceType`<br>   Filter by the <strong>resource file type</strong>, such as `jpg`, `png`. The query period cannot exceed 30 days.<br>  Type: String<br>   Required: No</li>
+<li>cacheType<br>  Filter by the <strong>cache hit result</strong>.<br> Type: String<br>   Required: No<br>   Values: <br>   `hit`: Cache hit; <br>   `dynamic`: Resource non-cacheable; <br>   `miss`: Cache miss</li>
+<li>`statusCode`<br>   Filter by the <strong> status code</strong>. The query period  cannot exceed 30 days. <br>   Type: String<br>   Required: No<br>   Values: <br>   `1XX`: All 1xx status codes;<br>   `100`: 100 status code;<br>   `101`: 101 status code;<br>   `102`: 102 status code;<br>   `2XX`: All 2xx status codes;<br>   `200`: 200 status code;<br>   `201`: 201 status code;<br>   `202`: 202 status code;<br>   `203`: 203 status code;<br>   `204`: 204 status code;<br>   `205`: 205 status code;<br>   `206`: 206 status code;<br>   `207`: 207 status code;<br>  `3XX`: All 3xx status codes;<br>   `300`: 300 status code;<br>   `301`: 301 status code;<br>   `302`: 302 status code;<br>   `303`: 303 status code;<br>   `304`: 304 status code;<br>   `305`: 305 status code;<br>   `307`: 307 status code;<br>   `4XX`: All 4xx status codes;<br>   `400`: 400 status code;<br>   `401`: 401 status code;<br>   `402`: 402 status code;<br>   `403`: 403 status code;<br>   `404`: 404 status code;<br>   `405`: 405 status code;<br>   `406`: 406 status code;<br>   `407`: 407 status code;<br>   `408`: 408 status code;<br>   `409`: 409 status code;<br>   `410`: 410 status code;<br>   `411`: 411 status code;<br>   `412`: 412 status code;<br>   `412`: 413 status code;<br>   `414`: 414 status code;<br>   `415`: 415 status code;<br>   `416`: 416 status code;<br>   `417`: 417 status code;<br>  `422`: 422 status code;<br>   `423`: 423 status code;<br>   `424`: 424 status code;<br>   `426`: 426 status code;<br>   `451`: 451 status code;<br>   `5XX`: All 5xx status codes;<br>   `500`: 500 status code;<br>   `501`: 501 status code;<br>   `502`: 502 status code;<br>   `503`: 503 status code;<br>   `504`: 504 status code;<br>   `505`: 505 status code;<br>   `506`: 506 status code;<br>   `507`: 507 status code;<br>   `510`: 510 status code;<br>   `514`: 514 status code;<br>   `544`: 544 status code.</li>
+<li>`tagKey`:<br>   Filter by the <strong>tag key</strong><br>   Type: String<br>   Required: No</li>
+<li>`tagValue`<br>  Filter by the <strong>tag value</strong><br>   Type: String<br>   Required: No</li>
         :type Filters: list of QueryCondition
         :param Interval: The query time granularity. Values:
 <li>`min`: 1 minute;</li>
@@ -8032,9 +7775,10 @@ class DescribeTopL7CacheDataRequest(AbstractModel):
 <li>`hour`: 1 hour;</li>
 <li>`day`: 1 day.</li>If this field is not specified, the granularity will be determined based on the interval between the start time and end time as follows: 1-minute granularity applies for a 1-hour interval, 5-minute granularity for a 2-day interval, 1-hour granularity for a 7-day interval, and 1-day granularity for an interval of over 7 days.
         :type Interval: str
-        :param Area: Data storage region. Values:
-<li>`overseas`: Global (outside the Chinese mainland);</li>
-<li>`mainland`: Chinese mainland.</li>If this field is not specified, the data storage region will be determined based on the user’s location.
+        :param Area: Geolocation scope. Values:
+<li>`overseas`: Regions outside the Chinese mainland</li>
+<li>`mainland`: Chinese mainland</li>
+<li>`global`: Global</li>If this field is not specified, the default value `global` is used.
         :type Area: str
         """
         self.StartTime = None
@@ -9282,102 +9026,6 @@ class DnsData(AbstractModel):
         
 
 
-class DnsRecord(AbstractModel):
-    """DNS record
-
-    """
-
-    def __init__(self):
-        r"""
-        :param DnsRecordId: The record ID.
-        :type DnsRecordId: str
-        :param DnsRecordType: The DNS record type. Values:
-<li>`A`: Point a domain name to an IPv4 address, such as 8.8.8.8.</li>
-<li>`AAAA`: Point a domain name to an IPv6 address.</li>
-<li>`MX`: It is used for email servers. The record value and priority parameters are provided by email service providers. If there are multiple MX records, the lower the priority value, the higher the priority.</li>
-<li>`CNAME`: Point a domain name to another domain name that can be resolved to an IP address.</li>
-<li>`TXT`: Identify and describe a domain name. It is usually used for domain verification and as SPF records (for anti-spam).</li>
-<li>`NS`: If you need to authorize a subdomain name to another DNS service provider for DNS resolution, you need to add an NS record. You cannot add an NS record for a root domain name.</li>
-<li>`CAA`: Specify CAs to issue certificates for sites.</li>
-<li>`SRV`: Identify a service used by a server. It is commonly used in Microsoft directory management.</li>
-        :type DnsRecordType: str
-        :param DnsRecordName: The record name.
-        :type DnsRecordName: str
-        :param Content: The record value.
-        :type Content: str
-        :param Mode: The proxy mode. Values:
-<li>`dns_only`: Only DNS</li>
-<li>`proxied`: Proxied</li>
-        :type Mode: str
-        :param TTL: TTL (in seconds). The smaller the value, the faster the record changes take effect.
-        :type TTL: int
-        :param Priority: The MX record priority. The smaller the value, the higher the priority.
-        :type Priority: int
-        :param CreatedOn: The creation time.
-        :type CreatedOn: str
-        :param ModifiedOn: The modification time.
-        :type ModifiedOn: str
-        :param Locked: The lock status of the domain name.
-        :type Locked: bool
-        :param ZoneId: The site ID.
-        :type ZoneId: str
-        :param ZoneName: The site name.
-        :type ZoneName: str
-        :param Status: The DNS record status. Values:
-<li>`active`: Activated</li>
-<li>`pending`: Deactivated</li>
-        :type Status: str
-        :param Cname: The CNAME address.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type Cname: str
-        :param DomainStatus: The service used by the domain name. Values:
-<li>`lb`: Load balancing</li>
-<li>`security`: Security protection</li>
-<li>`l4`: L4 proxy</li>
-        :type DomainStatus: list of str
-        """
-        self.DnsRecordId = None
-        self.DnsRecordType = None
-        self.DnsRecordName = None
-        self.Content = None
-        self.Mode = None
-        self.TTL = None
-        self.Priority = None
-        self.CreatedOn = None
-        self.ModifiedOn = None
-        self.Locked = None
-        self.ZoneId = None
-        self.ZoneName = None
-        self.Status = None
-        self.Cname = None
-        self.DomainStatus = None
-
-
-    def _deserialize(self, params):
-        self.DnsRecordId = params.get("DnsRecordId")
-        self.DnsRecordType = params.get("DnsRecordType")
-        self.DnsRecordName = params.get("DnsRecordName")
-        self.Content = params.get("Content")
-        self.Mode = params.get("Mode")
-        self.TTL = params.get("TTL")
-        self.Priority = params.get("Priority")
-        self.CreatedOn = params.get("CreatedOn")
-        self.ModifiedOn = params.get("ModifiedOn")
-        self.Locked = params.get("Locked")
-        self.ZoneId = params.get("ZoneId")
-        self.ZoneName = params.get("ZoneName")
-        self.Status = params.get("Status")
-        self.Cname = params.get("Cname")
-        self.DomainStatus = params.get("DomainStatus")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class DnssecInfo(AbstractModel):
     """DNSSEC information
 
@@ -9983,16 +9631,21 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         :param DefaultCache: Specifies whether to enable cache when the origin server does not return the Cache-Control header.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type DefaultCache: str
+        :param DefaultCacheStrategy: Specifies whether to use the default caching policy when Cache-Control is not returned from the origin
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type DefaultCacheStrategy: str
         """
         self.Switch = None
         self.DefaultCacheTime = None
         self.DefaultCache = None
+        self.DefaultCacheStrategy = None
 
 
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
         self.DefaultCacheTime = params.get("DefaultCacheTime")
         self.DefaultCache = params.get("DefaultCache")
+        self.DefaultCacheStrategy = params.get("DefaultCacheStrategy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10062,6 +9715,32 @@ class GeoIp(AbstractModel):
         self.Country = params.get("Country")
         self.Continent = params.get("Continent")
         self.Province = params.get("Province")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Grpc(AbstractModel):
+    """Configuration of gRPC support
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: Whether to enable gRPC support
+<li>`on`: Enable</li>
+<li>`off`: Disable</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10584,86 +10263,6 @@ class L7OfflineLog(AbstractModel):
         self.Url = params.get("Url")
         self.LogPacketName = params.get("LogPacketName")
         self.Area = params.get("Area")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class LoadBalancing(AbstractModel):
-    """CLB information
-
-    """
-
-    def __init__(self):
-        r"""
-        :param LoadBalancingId: The load balancer ID.
-        :type LoadBalancingId: str
-        :param ZoneId: The site ID.
-        :type ZoneId: str
-        :param Host: Subdomain name. You can use @ to represent the root domain.
-        :type Host: str
-        :param Type: The proxy mode. Values:
-<li>`dns_only`: Only DNS</li>
-<li>`proxied`: Proxied</li>
-        :type Type: str
-        :param TTL: The cache time of DNS records when `Type=dns_only`.
-        :type TTL: int
-        :param Status: The load balancer status. Values:
-<li>`online`: Deployed</li>
-<li>`process`: Deployment in progress</li>
-        :type Status: str
-        :param Cname: Schedules domain names.
-        :type Cname: str
-        :param OriginGroupId: The ID of the primary origin group.
-        :type OriginGroupId: str
-        :param BackupOriginGroupId: The ID of the secondary origin group. If not specified, it indicates that secondary origins are not used.
-        :type BackupOriginGroupId: str
-        :param UpdateTime: The update time.
-        :type UpdateTime: str
-        :param OriginType: The origin-pull type. Values:
-<li>`normal`: Primary/Secondary origin-pull</li>
-<li>`advanced`: Advanced origin-pull</li>
-        :type OriginType: str
-        :param AdvancedOriginGroups: Advanced origin-pull configuration. This field is valid when `OriginType=advanced`.
-Note: This field may return `null`, indicating that no valid value can be obtained.
-        :type AdvancedOriginGroups: list of AdvancedOriginGroup
-        """
-        self.LoadBalancingId = None
-        self.ZoneId = None
-        self.Host = None
-        self.Type = None
-        self.TTL = None
-        self.Status = None
-        self.Cname = None
-        self.OriginGroupId = None
-        self.BackupOriginGroupId = None
-        self.UpdateTime = None
-        self.OriginType = None
-        self.AdvancedOriginGroups = None
-
-
-    def _deserialize(self, params):
-        self.LoadBalancingId = params.get("LoadBalancingId")
-        self.ZoneId = params.get("ZoneId")
-        self.Host = params.get("Host")
-        self.Type = params.get("Type")
-        self.TTL = params.get("TTL")
-        self.Status = params.get("Status")
-        self.Cname = params.get("Cname")
-        self.OriginGroupId = params.get("OriginGroupId")
-        self.BackupOriginGroupId = params.get("BackupOriginGroupId")
-        self.UpdateTime = params.get("UpdateTime")
-        self.OriginType = params.get("OriginType")
-        if params.get("AdvancedOriginGroups") is not None:
-            self.AdvancedOriginGroups = []
-            for item in params.get("AdvancedOriginGroups"):
-                obj = AdvancedOriginGroup()
-                obj._deserialize(item)
-                self.AdvancedOriginGroups.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11482,85 +11081,6 @@ class ModifyDefaultCertificateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class ModifyDnsRecordRequest(AbstractModel):
-    """ModifyDnsRecord request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param DnsRecordId: The record ID.
-        :type DnsRecordId: str
-        :param ZoneId: The site ID.
-        :type ZoneId: str
-        :param DnsRecordType: The DNS record type. Values:
-<li>`A`: Point a domain name to an IPv4 address, such as 8.8.8.8.</li>
-<li>`AAAA`: Point a domain name to an IPv6 address.</li>
-<li>`MX`: It is used for email servers. The record value and priority parameters are provided by email service providers. If there are multiple MX records, the lower the priority value, the higher the priority.</li>
-<li>`CNAME`: Point a domain name to another domain name that can be resolved to an IP address.</li>
-<li>`TXT`: Identify and describe a domain name. It is usually used for domain verification and as SPF records (for anti-spam).</li>
-<li>`NS`: If you need to authorize a subdomain name to another DNS service provider for DNS resolution, you need to add an NS record. You cannot add an NS record for a root domain name.</li>
-<li>`CAA`: Specify CAs to issue certificates for sites.</li>
-<li>`SRV`: Identify a service used by a server. It is commonly used in Microsoft directory management.</li>
-        :type DnsRecordType: str
-        :param DnsRecordName: The record name, which consists of the host record and site name. Note that the original configuration will be used if this field is not specified.
-        :type DnsRecordName: str
-        :param Content: The record content. Note that the original configuration will be used if this field is not specified.
-        :type Content: str
-        :param TTL: TTL (in seconds). The smaller the value, the faster the record changes take effect. Default value: 300. Note that the original configuration will be used if this field is not specified.
-        :type TTL: int
-        :param Priority: Specifies a value in the range 1–50 when you make changes to the MX records. A smaller value indicates higher priority. Note that the default value 0 will be used if this field is not specified.
-        :type Priority: int
-        :param Mode: The proxy mode. Values:
-<li>`dns_only`: Only DNS</li>
-<li>`proxied`: Proxied</li></li>The original configuration will apply if this field is not specified.
-        :type Mode: str
-        """
-        self.DnsRecordId = None
-        self.ZoneId = None
-        self.DnsRecordType = None
-        self.DnsRecordName = None
-        self.Content = None
-        self.TTL = None
-        self.Priority = None
-        self.Mode = None
-
-
-    def _deserialize(self, params):
-        self.DnsRecordId = params.get("DnsRecordId")
-        self.ZoneId = params.get("ZoneId")
-        self.DnsRecordType = params.get("DnsRecordType")
-        self.DnsRecordName = params.get("DnsRecordName")
-        self.Content = params.get("Content")
-        self.TTL = params.get("TTL")
-        self.Priority = params.get("Priority")
-        self.Mode = params.get("Mode")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ModifyDnsRecordResponse(AbstractModel):
-    """ModifyDnsRecord response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
 class ModifyDnssecRequest(AbstractModel):
     """ModifyDnssec request structure.
 
@@ -11653,137 +11173,6 @@ class ModifyHostsCertificateRequest(AbstractModel):
 
 class ModifyHostsCertificateResponse(AbstractModel):
     """ModifyHostsCertificate response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class ModifyLoadBalancingRequest(AbstractModel):
-    """ModifyLoadBalancing request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ZoneId: The site ID.
-        :type ZoneId: str
-        :param LoadBalancingId: The load balancer ID.
-        :type LoadBalancingId: str
-        :param Type: The proxy mode. Values:
-<li>`dns_only`: Only DNS</li>
-<li>`proxied`: Proxied</li>
-        :type Type: str
-        :param OriginGroupId: The ID of the primary origin group.
-        :type OriginGroupId: str
-        :param BackupOriginGroupId: The ID of the secondary origin group (only available when `Type=proxied`). If not specified, it indicates that secondary origins are not used.
-        :type BackupOriginGroupId: str
-        :param TTL: When `Type=dns_only`, it indicates the amount of time that DNS records remain in the cache of a DNS server.
-Value range: 60-86400 (in seconds). If it's not specified, the default value 600 will be used.
-        :type TTL: int
-        :param OriginType: The origin-pull type. Values:
-<li>`normal`: Primary/Secondary origin-pull</li>
-<li>`advanced`: Advanced origin-pull (only used when `Type=proxied`)</li>If it is left empty, primary/secondary origin-pull is applied.
-        :type OriginType: str
-        :param AdvancedOriginGroups: Advanced origin-pull configuration. This field is valid when `OriginType=advanced`.
-If it is left empty, this configuration is not used.
-        :type AdvancedOriginGroups: list of AdvancedOriginGroup
-        """
-        self.ZoneId = None
-        self.LoadBalancingId = None
-        self.Type = None
-        self.OriginGroupId = None
-        self.BackupOriginGroupId = None
-        self.TTL = None
-        self.OriginType = None
-        self.AdvancedOriginGroups = None
-
-
-    def _deserialize(self, params):
-        self.ZoneId = params.get("ZoneId")
-        self.LoadBalancingId = params.get("LoadBalancingId")
-        self.Type = params.get("Type")
-        self.OriginGroupId = params.get("OriginGroupId")
-        self.BackupOriginGroupId = params.get("BackupOriginGroupId")
-        self.TTL = params.get("TTL")
-        self.OriginType = params.get("OriginType")
-        if params.get("AdvancedOriginGroups") is not None:
-            self.AdvancedOriginGroups = []
-            for item in params.get("AdvancedOriginGroups"):
-                obj = AdvancedOriginGroup()
-                obj._deserialize(item)
-                self.AdvancedOriginGroups.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ModifyLoadBalancingResponse(AbstractModel):
-    """ModifyLoadBalancing response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class ModifyLoadBalancingStatusRequest(AbstractModel):
-    """ModifyLoadBalancingStatus request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ZoneId: The site ID.
-        :type ZoneId: str
-        :param LoadBalancingId: The load balancer ID.
-        :type LoadBalancingId: str
-        :param Status: The load balancer status. Values:
-<li>`online`: Enabled</li>
-<li>`offline`: Disabled</li>
-        :type Status: str
-        """
-        self.ZoneId = None
-        self.LoadBalancingId = None
-        self.Status = None
-
-
-    def _deserialize(self, params):
-        self.ZoneId = params.get("ZoneId")
-        self.LoadBalancingId = params.get("LoadBalancingId")
-        self.Status = params.get("Status")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ModifyLoadBalancingStatusResponse(AbstractModel):
-    """ModifyLoadBalancingStatus response structure.
 
     """
 
@@ -12390,6 +11779,9 @@ The original configuration will apply if this field is not specified.
         :param ClientIpCountry: Whether to carry the location information of the client IP during origin-pull.
 The original configuration will apply if this field is not specified.
         :type ClientIpCountry: :class:`tencentcloud.teo.v20220901.models.ClientIpCountry`
+        :param Grpc: Configuration of gRPC support
+The original configuration will apply if this field is not specified.
+        :type Grpc: :class:`tencentcloud.teo.v20220901.models.Grpc`
         """
         self.ZoneId = None
         self.CacheConfig = None
@@ -12409,6 +11801,7 @@ The original configuration will apply if this field is not specified.
         self.CachePrefresh = None
         self.Ipv6 = None
         self.ClientIpCountry = None
+        self.Grpc = None
 
 
     def _deserialize(self, params):
@@ -12464,6 +11857,9 @@ The original configuration will apply if this field is not specified.
         if params.get("ClientIpCountry") is not None:
             self.ClientIpCountry = ClientIpCountry()
             self.ClientIpCountry._deserialize(params.get("ClientIpCountry"))
+        if params.get("Grpc") is not None:
+            self.Grpc = Grpc()
+            self.Grpc._deserialize(params.get("Grpc"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12765,41 +12161,6 @@ Note: This field may return `null`, indicating that no valid value can be obtain
                 self.OriginRecords.append(obj)
         self.UpdateTime = params.get("UpdateTime")
         self.HostHeader = params.get("HostHeader")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class OriginGroupCondition(AbstractModel):
-    """Origin-pull condition
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Target: Match type. Values:
-<li>`url`: Partial URL path under the current site, such as "/example" and "/example/foo.jpg". You can use an asterisk (*) to indicate all values and a question mark (?) to indicate any single character.
-</li>
-        :type Target: str
-        :param Operator: The operator. Values:
-<li>`equal`: Equals</li>
-        :type Operator: str
-        :param Values: Values of the match type.
-        :type Values: list of str
-        """
-        self.Target = None
-        self.Operator = None
-        self.Values = None
-
-
-    def _deserialize(self, params):
-        self.Target = params.get("Target")
-        self.Operator = params.get("Operator")
-        self.Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -16460,6 +15821,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param ClientIpCountry: Whether to carry the location information of the client IP during origin-pull.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type ClientIpCountry: :class:`tencentcloud.teo.v20220901.models.ClientIpCountry`
+        :param Grpc: Configuration of gRPC support
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type Grpc: :class:`tencentcloud.teo.v20220901.models.Grpc`
         """
         self.ZoneName = None
         self.Area = None
@@ -16480,6 +15844,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self.Ipv6 = None
         self.Https = None
         self.ClientIpCountry = None
+        self.Grpc = None
 
 
     def _deserialize(self, params):
@@ -16536,6 +15901,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         if params.get("ClientIpCountry") is not None:
             self.ClientIpCountry = ClientIpCountry()
             self.ClientIpCountry._deserialize(params.get("ClientIpCountry"))
+        if params.get("Grpc") is not None:
+            self.Grpc = Grpc()
+            self.Grpc._deserialize(params.get("Grpc"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

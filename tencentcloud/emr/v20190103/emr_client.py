@@ -56,6 +56,35 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateCluster(self, request):
+        """This API is used to create an EMR cluster instance.
+
+        :param request: Request instance for CreateCluster.
+        :type request: :class:`tencentcloud.emr.v20190103.models.CreateClusterRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.CreateClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCluster", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateClusterResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateInstance(self, request):
         """This API is used to create an EMR cluster instance.
 
@@ -420,6 +449,35 @@ class EmrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyResourceSchedulerResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ScaleOutCluster(self, request):
+        """This API is used to scale out a cluster.
+
+        :param request: Request instance for ScaleOutCluster.
+        :type request: :class:`tencentcloud.emr.v20190103.models.ScaleOutClusterRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ScaleOutClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ScaleOutCluster", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ScaleOutClusterResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -8923,7 +8923,9 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
         :type QueueName: str
         :param TopicName: This parameter is valid when the model is `Topic`, indicating the name of the CMQ topic for receiving event notifications.
         :type TopicName: str
-        :param NotifyType: Notification type, `CMQ` by default. If this parameter is set to `URL`, HTTP callbacks are sent to the URL specified by `NotifyUrl`.
+        :param NotifyType: The notification type, `CMQ` by default. If this parameter is set to `URL`, HTTP callbacks are sent to the URL specified by `NotifyUrl`.
+
+<font color="red">Note: If you do not pass this parameter or pass in an empty string, `CMQ` will be used. To use a different notification type, specify this parameter accordingly.</font>
         :type NotifyType: str
         :param NotifyUrl: HTTP callback URL, required if `NotifyType` is set to `URL`
         :type NotifyUrl: str
@@ -9626,7 +9628,7 @@ class MediaInputInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: The type of video processing input object, which supports COS and URL.
+        :param Type: The input type, which can be `COS` or `URL`.
         :type Type: str
         :param CosInputInfo: The information of the COS object to process. This parameter is valid and required when `Type` is `COS`.
         :type CosInputInfo: :class:`tencentcloud.mps.v20190612.models.CosInputInfo`
@@ -12592,6 +12594,10 @@ Note 2: If `TaskNotifyConfig` is specified, the specified settings will be used 
 
 Note 3: The trigger configured for a scheme is for automatically starting a scheme. It stops working when you manually call this API to start a scheme.
         :type ScheduleId: int
+        :param TaskType: The task type.
+<li> `Online` (default): A task that is executed immediately.</li>
+<li> `Offline`: A task that is executed when the system is idle (within three days by default).</li>
+        :type TaskType: str
         """
         self.InputInfo = None
         self.OutputStorage = None
@@ -12605,6 +12611,7 @@ Note 3: The trigger configured for a scheme is for automatically starting a sche
         self.SessionId = None
         self.SessionContext = None
         self.ScheduleId = None
+        self.TaskType = None
 
 
     def _deserialize(self, params):
@@ -12634,6 +12641,7 @@ Note 3: The trigger configured for a scheme is for automatically starting a sche
         self.SessionId = params.get("SessionId")
         self.SessionContext = params.get("SessionContext")
         self.ScheduleId = params.get("ScheduleId")
+        self.TaskType = params.get("TaskType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13992,11 +14000,11 @@ class TaskNotifyConfig(AbstractModel):
         :param NotifyMode: Workflow notification method. Valid values: Finish, Change. If this parameter is left empty, `Finish` will be used.
         :type NotifyMode: str
         :param NotifyType: The notification type. Valid values:
-<li>CMQ: This value is no longer used. Please use `TDMQ-CMQ` instead.</li>
-<li>TDMQ-CMQ: Message queue</li>
-<li>URL: If `NotifyType` is set to `URL`, HTTP callbacks are sent to the URL specified by `NotifyUrl`. HTTP and JSON are used for the callbacks. The packet contains the response parameters of the `ParseNotification` API.</li>
-<li>SCF: We do not recommend this notification type, which you need to configure in the SCF console.</li>
-Default value: `TDMQ-CMQ`.
+<li>`CMQ`: This value is no longer used. Please use `TDMQ-CMQ` instead.</li>
+<li>`TDMQ-CMQ`: Message queue</li>
+<li>`URL`: If `NotifyType` is set to `URL`, HTTP callbacks are sent to the URL specified by `NotifyUrl`. HTTP and JSON are used for the callbacks. The packet contains the response parameters of the `ParseNotification` API.</li>
+<li>`SCF`: This notification type is not recommended. You need to configure it in the SCF console.</li>
+<font color="red">Note: If you do not pass this parameter or pass in an empty string, `CMQ` will be used. To use a different notification type, specify this parameter accordingly.</font>
         :type NotifyType: str
         :param NotifyUrl: HTTP callback URL, required if `NotifyType` is set to `URL`
         :type NotifyUrl: str

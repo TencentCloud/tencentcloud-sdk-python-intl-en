@@ -1641,6 +1641,37 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeFileAttributes(self, request):
+        """This API is used to get file attributes asynchronously.
+        - Currently, this API can only get the MD5 hash of a file.
+        - If the file queried is in HLS or DASH format, the attributes of the index file will be returned.
+
+        :param request: Request instance for DescribeFileAttributes.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeFileAttributesRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeFileAttributesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFileAttributes", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeFileAttributesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeImageProcessingTemplates(self, request):
         """This API is used to query image processing templates. You can specify the filters as well as the offset to start returning records from.
 

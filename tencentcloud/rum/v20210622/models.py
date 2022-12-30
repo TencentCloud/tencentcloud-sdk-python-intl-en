@@ -341,6 +341,10 @@ class CreateTawInstanceRequest(AbstractModel):
         :type PeriodRetain: str
         :param BuyingChannel: Instance purchase channel. Valid value: `cdn`.
         :type BuyingChannel: str
+        :param ResourcePackageType: 
+        :type ResourcePackageType: int
+        :param ResourcePackageNum: 
+        :type ResourcePackageNum: int
         """
         self.AreaId = None
         self.ChargeType = None
@@ -351,6 +355,8 @@ class CreateTawInstanceRequest(AbstractModel):
         self.CountNum = None
         self.PeriodRetain = None
         self.BuyingChannel = None
+        self.ResourcePackageType = None
+        self.ResourcePackageNum = None
 
 
     def _deserialize(self, params):
@@ -368,6 +374,8 @@ class CreateTawInstanceRequest(AbstractModel):
         self.CountNum = params.get("CountNum")
         self.PeriodRetain = params.get("PeriodRetain")
         self.BuyingChannel = params.get("BuyingChannel")
+        self.ResourcePackageType = params.get("ResourcePackageType")
+        self.ResourcePackageNum = params.get("ResourcePackageNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -443,15 +451,19 @@ class CreateWhitelistResponse(AbstractModel):
         r"""
         :param Msg: Message
         :type Msg: str
+        :param ID: Allowlist ID
+        :type ID: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.Msg = None
+        self.ID = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.Msg = params.get("Msg")
+        self.ID = params.get("ID")
         self.RequestId = params.get("RequestId")
 
 
@@ -3101,7 +3113,7 @@ class DescribeLogListRequest(AbstractModel):
         :type Limit: int
         :param Context: Context, which is used to load more logs. Pass through the last `Context` value returned to get more log content (up to 10,000 raw logs). It will expire after 1 hour
         :type Context: str
-        :param Query: Query statement, which is required and can contain up to 4,096 characters.
+        :param Query: Query statement, which is required and can contain up to 4,096 characters, such as "id:120001 AND type:\"log\"".
         :type Query: str
         :param EndTime: End time (required)
         :type EndTime: str

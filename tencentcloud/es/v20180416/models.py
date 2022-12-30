@@ -900,7 +900,7 @@ class DescribeInstancesRequest(AbstractModel):
         :type Offset: int
         :param Limit: Number of entries per page. Default value: 20
         :type Limit: int
-        :param OrderByKey: Sort by field <li>1: instance ID </li><li>2: instance name </li><li>3: AZ </li><li>4: creation time </li>If `orderKey` is not passed in, sort by creation time in descending order
+        :param OrderByKey: The sorting field. <li>1: Instance ID </li><li>2: Instance name </li><li>3: AZ </li><li>4: Creation time </li>If `OrderByKey` is not passed in, sorting is performed by creation time in descending order.
         :type OrderByKey: int
         :param OrderByType: Sorting order <li>0: ascending </li><li>1: descending </li>If orderByKey is passed in but orderByType is not, ascending order is used by default
         :type OrderByType: int
@@ -910,7 +910,7 @@ class DescribeInstancesRequest(AbstractModel):
         :type IpList: list of str
         :param ZoneList: List of availability zones
         :type ZoneList: list of str
-        :param HealthStatus: Health status filter list
+        :param HealthStatus: The health status filter. Valid values: `0` (green), `1` (yellow), `2` (red), `-1` (unknown).
         :type HealthStatus: list of int
         :param VpcIds: VPC IDs
         :type VpcIds: list of str
@@ -1321,6 +1321,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         :param AppId: Cluster APP ID
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type AppId: int
+        :param IndexDocs: The number of index docs.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IndexDocs: int
         """
         self.IndexType = None
         self.IndexName = None
@@ -1335,6 +1338,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self.IndexOptionsField = None
         self.IndexSettingsField = None
         self.AppId = None
+        self.IndexDocs = None
 
 
     def _deserialize(self, params):
@@ -1362,6 +1366,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
             self.IndexSettingsField = IndexSettingsField()
             self.IndexSettingsField._deserialize(params.get("IndexSettingsField"))
         self.AppId = params.get("AppId")
+        self.IndexDocs = params.get("IndexDocs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2993,7 +2998,7 @@ Number of nodes (2-50)
         :type EsConfig: str
         :param Password: Password of the default user 'elastic', which must contain 8 to 16 characters, including at least two of the following three types of characters: [a-z,A-Z], [0-9] and [-!@#$%&^*+=_:;,.?]
         :type Password: str
-        :param EsAcl: Access control list
+        :param EsAcl: The policy for visual component (Kibana and Cerebro) access over public network.
         :type EsAcl: :class:`tencentcloud.es.v20180416.models.EsAcl`
         :param DiskSize: This parameter has been disused. Please use `NodeInfoList`
 Disk size in GB
@@ -3016,13 +3021,19 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
         :type CosBackup: :class:`tencentcloud.es.v20180416.models.CosBackup`
         :param NodeInfoList: Node information list. You can pass in only the nodes to be updated and their corresponding specification information. Supported operations include: <li>modifying the number of nodes in the same type </li><li>modifying the specification and disk size of nodes in the same type </li><li>adding a node type (you must also specify the node type, quantity, specification, disk, etc.) </li>The above operations can only be performed one at a time, and the disk type cannot be modified
         :type NodeInfoList: list of NodeInfo
-        :param PublicAccess: Public network access status
+        :param PublicAccess: The status of ES cluster access over public network.
+`OPEN`: Enabled.
+`CLOSE`: Disabled.
         :type PublicAccess: str
         :param EsPublicAcl: Public network ACL
         :type EsPublicAcl: :class:`tencentcloud.es.v20180416.models.EsPublicAcl`
-        :param KibanaPublicAccess: Public network access status of Kibana
+        :param KibanaPublicAccess: The status of Kibana access over public network.
+`OPEN`: Enabled.
+`CLOSE`: Disabled.
         :type KibanaPublicAccess: str
-        :param KibanaPrivateAccess: Private network access status of Kibana
+        :param KibanaPrivateAccess: The status of Kibana access over private network.
+`OPEN`: Enabled.
+`CLOSE`: Disabled.
         :type KibanaPrivateAccess: str
         :param BasicSecurityType: Enables or disables user authentication for ES Basic Edition v6.8 and above
         :type BasicSecurityType: int
@@ -3042,15 +3053,21 @@ Dedicated primary node disk size in GB. This is 50 GB by default and currently c
         :type SwitchPrivateLink: str
         :param EnableCerebro: Whether to enable Cerebro
         :type EnableCerebro: bool
-        :param CerebroPublicAccess: Cerebro public network access status
+        :param CerebroPublicAccess: The status of Cerebro access over public network.
+`OPEN`: Enabled.
+`CLOSE`: Disabled.
         :type CerebroPublicAccess: str
-        :param CerebroPrivateAccess: Cerebro private network access status
+        :param CerebroPrivateAccess: The status of Cerebro access over private network.
+`OPEN`: Enabled.
+`CLOSE`: Disabled.
         :type CerebroPrivateAccess: str
         :param EsConfigSet: Added or modified configuration set information
         :type EsConfigSet: :class:`tencentcloud.es.v20180416.models.EsConfigSetInfo`
         :param OperationDuration: The maintenance time slot
         :type OperationDuration: :class:`tencentcloud.es.v20180416.models.OperationDurationUpdated`
         :param KibanaAlteringPublicAccess: Whether to enable the option for sending alerting messages over the public network.
+`OPEN`: Enabled.
+`CLOSE`: Disabled.
         :type KibanaAlteringPublicAccess: str
         """
         self.InstanceId = None

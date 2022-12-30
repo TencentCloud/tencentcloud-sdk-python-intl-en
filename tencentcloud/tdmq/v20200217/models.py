@@ -5922,6 +5922,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param IsVip: Whether it is an exclusive instance
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IsVip: bool
+        :param RocketMQFlag: TDMQ for RocketMQ cluster type flag
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RocketMQFlag: bool
+        :param Status: 
+        :type Status: int
+        :param IsolateTime: 
+        :type IsolateTime: int
+        :param HttpPublicEndpoint: 
+        :type HttpPublicEndpoint: str
+        :param HttpVpcEndpoint: 
+        :type HttpVpcEndpoint: str
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -5933,6 +5944,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.SupportNamespaceEndpoint = None
         self.Vpcs = None
         self.IsVip = None
+        self.RocketMQFlag = None
+        self.Status = None
+        self.IsolateTime = None
+        self.HttpPublicEndpoint = None
+        self.HttpVpcEndpoint = None
 
 
     def _deserialize(self, params):
@@ -5951,6 +5967,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self.Vpcs.append(obj)
         self.IsVip = params.get("IsVip")
+        self.RocketMQFlag = params.get("RocketMQFlag")
+        self.Status = params.get("Status")
+        self.IsolateTime = params.get("IsolateTime")
+        self.HttpPublicEndpoint = params.get("HttpPublicEndpoint")
+        self.HttpVpcEndpoint = params.get("HttpVpcEndpoint")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

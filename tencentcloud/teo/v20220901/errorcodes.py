@@ -116,8 +116,8 @@ INVALIDPARAMETER_CERTUNSUPPORTEDTYPE = 'InvalidParameter.CertUnsupportedType'
 # The domain name does not exist or is not belong to this account.
 INVALIDPARAMETER_DOMAINNOTFOUND = 'InvalidParameter.DomainNotFound'
 
-# Traffic scheduling is enabled for the current domain name.
-INVALIDPARAMETER_DOMAINONTRAFFICSCHEDULING = 'InvalidParameter.DomainOnTrafficScheduling'
+# The current conditions do not support the requested operation.
+INVALIDPARAMETER_ERRACTIONUNSUPPORTTARGET = 'InvalidParameter.ErrActionUnsupportTarget'
 
 # Invalid operation.
 INVALIDPARAMETER_ERRINVALIDACTION = 'InvalidParameter.ErrInvalidAction'
@@ -149,17 +149,29 @@ INVALIDPARAMETER_ERRINVALIDCONDITIONVALUEBADVALUECONTAINFILENAMEEXTENSION = 'Inv
 # Invalid condition: The parameter value exceeds the limit.
 INVALIDPARAMETER_ERRINVALIDCONDITIONVALUETOOLONGVALUE = 'InvalidParameter.ErrInvalidConditionValueTooLongValue'
 
+# 
+INVALIDPARAMETER_ERRINVALIDCONDITIONVALUETOOMANYWILDCARD = 'InvalidParameter.ErrInvalidConditionValueTooManyWildcard'
+
 # Invalid condition: The parameter value is 0.
 INVALIDPARAMETER_ERRINVALIDCONDITIONVALUEZEROLENGTH = 'InvalidParameter.ErrInvalidConditionValueZeroLength'
 
+# To enable gRPC support, HTTP/2 support must be enabled as well.
+INVALIDPARAMETER_GRPCREQUIREHTTP2 = 'InvalidParameter.GrpcRequireHttp2'
+
 # The domain name does not exist.
 INVALIDPARAMETER_HOSTNOTFOUND = 'InvalidParameter.HostNotFound'
+
+# 
+INVALIDPARAMETER_HOSTSTATUSNOTALLOWAPPLYCERTIFICATE = 'InvalidParameter.HostStatusNotAllowApplyCertificate'
 
 # Invalid token authentication.
 INVALIDPARAMETER_INVALIDAUTHENTICATION = 'InvalidParameter.InvalidAuthentication'
 
 # Invalid token authentication parameter.
 INVALIDPARAMETER_INVALIDAUTHENTICATIONTYPESIGNPARAM = 'InvalidParameter.InvalidAuthenticationTypeSignParam'
+
+# 
+INVALIDPARAMETER_INVALIDCACHECONFIGFOLLOWORIGIN = 'InvalidParameter.InvalidCacheConfigFollowOrigin'
 
 # Invalid cache key.
 INVALIDPARAMETER_INVALIDCACHEKEY = 'InvalidParameter.InvalidCacheKey'
@@ -178,6 +190,9 @@ INVALIDPARAMETER_INVALIDCLIENTIPHEADERNAME = 'InvalidParameter.InvalidClientIpHe
 
 # Invalid smart acceleration.
 INVALIDPARAMETER_INVALIDDYNAMICROUTINE = 'InvalidParameter.InvalidDynamicRoutine'
+
+# 
+INVALIDPARAMETER_INVALIDDYNAMICROUTINEBILLING = 'InvalidParameter.InvalidDynamicRoutineBilling'
 
 # Invalid custom error page.
 INVALIDPARAMETER_INVALIDERRORPAGEREDIRECTURL = 'InvalidParameter.InvalidErrorPageRedirectUrl'
@@ -266,6 +281,9 @@ INVALIDPARAMETER_TARGET = 'InvalidParameter.Target'
 # Failed to create the task
 INVALIDPARAMETER_TASKNOTGENERATED = 'InvalidParameter.TaskNotGenerated'
 
+# 
+INVALIDPARAMETER_TASKSYSTEMERROR = 'InvalidParameter.TaskSystemError'
+
 # Invalid file upload link.
 INVALIDPARAMETER_UPLOADURL = 'InvalidParameter.UploadUrl'
 
@@ -278,38 +296,8 @@ INVALIDPARAMETER_ZONENOTFOUND = 'InvalidParameter.ZoneNotFound'
 # Invalid parameter value.
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
-# It conflicts with existing records.
-INVALIDPARAMETERVALUE_CONFLICTRECORD = 'InvalidParameterValue.ConflictRecord'
-
-# DNS records conflict with DNSSEC.
-INVALIDPARAMETERVALUE_CONFLICTWITHDNSSEC = 'InvalidParameterValue.ConflictWithDNSSEC'
-
-# This DNS record conflicts with CLB records.
-INVALIDPARAMETERVALUE_CONFLICTWITHLBRECORD = 'InvalidParameterValue.ConflictWithLBRecord'
-
-# This DNS record conflicts with NS records.
-INVALIDPARAMETERVALUE_CONFLICTWITHNSRECORD = 'InvalidParameterValue.ConflictWithNSRecord'
-
-# Incorrect DNS record
-INVALIDPARAMETERVALUE_INVALIDDNSCONTENT = 'InvalidParameterValue.InvalidDNSContent'
-
-# Incorrect DNS CNAME
-INVALIDPARAMETERVALUE_INVALIDDNSNAME = 'InvalidParameterValue.InvalidDNSName'
-
 # Invalid domain name. Please check the status.
 INVALIDPARAMETERVALUE_INVALIDDOMAINSTATUS = 'InvalidParameterValue.InvalidDomainStatus'
-
-# Incorrect DNS proxied domain name.
-INVALIDPARAMETERVALUE_INVALIDPROXYNAME = 'InvalidParameterValue.InvalidProxyName'
-
-# Incorrect DNS proxy
-INVALIDPARAMETERVALUE_INVALIDPROXYORIGIN = 'InvalidParameterValue.InvalidProxyOrigin'
-
-# This record already exists.
-INVALIDPARAMETERVALUE_RECORDALREADYEXISTS = 'InvalidParameterValue.RecordAlreadyExists'
-
-# This record cannot be added.
-INVALIDPARAMETERVALUE_RECORDNOTALLOWED = 'InvalidParameterValue.RecordNotAllowed'
 
 # The quota limit has been reached.
 LIMITEXCEEDED = 'LimitExceeded'
