@@ -716,7 +716,7 @@ Clusters with storage billed in monthly subscription can’t be cloned or rolled
         :type ParamTemplateId: int
         :param SlaveZone: Multi-AZ address
         :type SlaveZone: str
-        :param InstanceInitInfos: 
+        :param InstanceInitInfos: Instance initialization configuration information, which is used to select instances with different specifications when purchasing a cluster.
         :type InstanceInitInfos: list of InstanceInitInfo
         """
         self.Zone = None
@@ -3403,19 +3403,19 @@ class InquirePriceRenewResponse(AbstractModel):
 
 
 class InstanceInitInfo(AbstractModel):
-    """
+    """Instance initialization configuration information
 
     """
 
     def __init__(self):
         r"""
-        :param Cpu: 
+        :param Cpu: Instance CPU
         :type Cpu: int
-        :param Memory: 
+        :param Memory: Instance memory
         :type Memory: int
-        :param InstanceType: 
+        :param InstanceType: Instance type. Valid values:`rw`, `ro`.
         :type InstanceType: str
-        :param InstanceCount: 
+        :param InstanceCount: Number of the instances. Value range: 1-15.
         :type InstanceCount: int
         """
         self.Cpu = None
