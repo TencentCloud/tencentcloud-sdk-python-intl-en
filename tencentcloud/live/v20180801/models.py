@@ -418,6 +418,9 @@ class CallBackTemplateInfo(AbstractModel):
         :type PornCensorshipNotifyUrl: str
         :param CallbackKey: Callback authentication key.
         :type CallbackKey: str
+        :param PushExceptionNotifyUrl: The push error callback URL.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PushExceptionNotifyUrl: str
         """
         self.TemplateId = None
         self.TemplateName = None
@@ -429,6 +432,7 @@ class CallBackTemplateInfo(AbstractModel):
         self.SnapshotNotifyUrl = None
         self.PornCensorshipNotifyUrl = None
         self.CallbackKey = None
+        self.PushExceptionNotifyUrl = None
 
 
     def _deserialize(self, params):
@@ -442,6 +446,7 @@ class CallBackTemplateInfo(AbstractModel):
         self.SnapshotNotifyUrl = params.get("SnapshotNotifyUrl")
         self.PornCensorshipNotifyUrl = params.get("PornCensorshipNotifyUrl")
         self.CallbackKey = params.get("CallbackKey")
+        self.PushExceptionNotifyUrl = params.get("PushExceptionNotifyUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1077,6 +1082,8 @@ Protocol document: [Event Message Notification](https://intl.cloud.tencent.com/d
         :type CallbackKey: str
         :param StreamMixNotifyUrl: Disused
         :type StreamMixNotifyUrl: str
+        :param PushExceptionNotifyUrl: The push error callback URL.
+        :type PushExceptionNotifyUrl: str
         """
         self.TemplateName = None
         self.Description = None
@@ -1087,6 +1094,7 @@ Protocol document: [Event Message Notification](https://intl.cloud.tencent.com/d
         self.PornCensorshipNotifyUrl = None
         self.CallbackKey = None
         self.StreamMixNotifyUrl = None
+        self.PushExceptionNotifyUrl = None
 
 
     def _deserialize(self, params):
@@ -1099,6 +1107,7 @@ Protocol document: [Event Message Notification](https://intl.cloud.tencent.com/d
         self.PornCensorshipNotifyUrl = params.get("PornCensorshipNotifyUrl")
         self.CallbackKey = params.get("CallbackKey")
         self.StreamMixNotifyUrl = params.get("StreamMixNotifyUrl")
+        self.PushExceptionNotifyUrl = params.get("PushExceptionNotifyUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2797,6 +2806,64 @@ class DeleteRecordTaskResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAllStreamPlayInfoListRequest(AbstractModel):
+    """DescribeAllStreamPlayInfoList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param QueryTime: The time point to query in the format of “yyyy-mm-dd HH:MM:00”(accurate to the minute). You can query data from the last month. Because there is a five-minute delay in the data, if you want to get the latest data, we recommend you pass in a time point five minutes earlier than the current time.
+        :type QueryTime: str
+        :param PlayDomains: The playback domains to query. If you leave this empty, all playback domains will be queried.
+        :type PlayDomains: list of str
+        """
+        self.QueryTime = None
+        self.PlayDomains = None
+
+
+    def _deserialize(self, params):
+        self.QueryTime = params.get("QueryTime")
+        self.PlayDomains = params.get("PlayDomains")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAllStreamPlayInfoListResponse(AbstractModel):
+    """DescribeAllStreamPlayInfoList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param QueryTime: The time point queried, whose value is the same as that of the corresponding request parameter.
+        :type QueryTime: str
+        :param DataInfoList: The playback data.
+        :type DataInfoList: list of MonitorStreamPlayInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.QueryTime = None
+        self.DataInfoList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.QueryTime = params.get("QueryTime")
+        if params.get("DataInfoList") is not None:
+            self.DataInfoList = []
+            for item in params.get("DataInfoList"):
+                obj = MonitorStreamPlayInfo()
+                obj._deserialize(item)
+                self.DataInfoList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -5534,6 +5601,72 @@ class DescribeStreamPlayInfoListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeStreamPushInfoListRequest(AbstractModel):
+    """DescribeStreamPushInfoList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StreamName: The stream name.
+        :type StreamName: str
+        :param StartTime: The start time (UTC+8) in the format of “yyyy-mm-dd HH:MM:SS”.
+        :type StartTime: str
+        :param EndTime: The end time (UTC+8) in the format of “yyyy-mm-dd HH:MM:SS”. You can query data from the past seven days for a period of preferably not longer than three hours.
+        :type EndTime: str
+        :param PushDomain: The push domain.
+        :type PushDomain: str
+        :param AppName: The push path, which should be the same as `AppName` in the push and playback URL. The default value is `live`.
+        :type AppName: str
+        """
+        self.StreamName = None
+        self.StartTime = None
+        self.EndTime = None
+        self.PushDomain = None
+        self.AppName = None
+
+
+    def _deserialize(self, params):
+        self.StreamName = params.get("StreamName")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.PushDomain = params.get("PushDomain")
+        self.AppName = params.get("AppName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamPushInfoListResponse(AbstractModel):
+    """DescribeStreamPushInfoList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DataInfoList: Returned data list.
+        :type DataInfoList: list of PushQualityData
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DataInfoList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DataInfoList") is not None:
+            self.DataInfoList = []
+            for item in params.get("DataInfoList"):
+                obj = PushQualityData()
+                obj._deserialize(item)
+                self.DataInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTopClientIpSumInfoListRequest(AbstractModel):
     """DescribeTopClientIpSumInfoList request structure.
 
@@ -6574,6 +6707,8 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
         :param CallbackKey: Callback key. The callback URL is public. For the callback signature, please see the event message notification document.
 [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).
         :type CallbackKey: str
+        :param PushExceptionNotifyUrl: The push error callback URL.
+        :type PushExceptionNotifyUrl: str
         """
         self.TemplateId = None
         self.TemplateName = None
@@ -6584,6 +6719,7 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
         self.SnapshotNotifyUrl = None
         self.PornCensorshipNotifyUrl = None
         self.CallbackKey = None
+        self.PushExceptionNotifyUrl = None
 
 
     def _deserialize(self, params):
@@ -6596,6 +6732,7 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
         self.SnapshotNotifyUrl = params.get("SnapshotNotifyUrl")
         self.PornCensorshipNotifyUrl = params.get("PornCensorshipNotifyUrl")
         self.CallbackKey = params.get("CallbackKey")
+        self.PushExceptionNotifyUrl = params.get("PushExceptionNotifyUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7415,6 +7552,54 @@ class ModifyLiveTranscodeTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class MonitorStreamPlayInfo(AbstractModel):
+    """The playback data.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PlayDomain: The playback domain.
+        :type PlayDomain: str
+        :param StreamName: The stream ID.
+        :type StreamName: str
+        :param Rate: The playback bitrate. `0` indicates the original bitrate.
+        :type Rate: int
+        :param Protocol: The playback protocol. Valid values: `Unknown`, `Flv`, `Hls`, `Rtmp`, `Huyap2p`.
+        :type Protocol: str
+        :param Bandwidth: The bandwidth (Mbps).
+        :type Bandwidth: float
+        :param Online: The number of online users, which is represented by the number of TCP connections (data collected every minute).
+        :type Online: int
+        :param Request: The number of requests.
+        :type Request: int
+        """
+        self.PlayDomain = None
+        self.StreamName = None
+        self.Rate = None
+        self.Protocol = None
+        self.Bandwidth = None
+        self.Online = None
+        self.Request = None
+
+
+    def _deserialize(self, params):
+        self.PlayDomain = params.get("PlayDomain")
+        self.StreamName = params.get("StreamName")
+        self.Rate = params.get("Rate")
+        self.Protocol = params.get("Protocol")
+        self.Bandwidth = params.get("Bandwidth")
+        self.Online = params.get("Online")
+        self.Request = params.get("Request")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PlayAuthKeyInfo(AbstractModel):
     """Playback authentication key information.
 
@@ -7747,11 +7932,19 @@ It must be in UTC format.
 Example: 2019-01-08T10:00:00Z.
 Note: Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format) is used.
         :type EndTime: str
-        :param Region: The region of the source (please choose the nearest region).
-ap-beijing: North China (Beijing)
-ap-shanghai: East China (Shanghai)
-ap-guangzhou: South China (Guangzhou)
-ap-mumbai: India
+        :param Region: The region where the task was created.
+`ap-beijing`: North China (Beijing)
+`ap-shanghai`: East China (Shanghai)
+`ap-guangzhou`: South China (Guangzhou)
+`ap-mumbai`: India
+`ap-hongkong`: Hong Kong
+`eu-frankfurt`: Germany
+`ap-seoul`: Korea
+`ap-bangkok`: Thailand
+`ap-singapore`: Singapore
+`na-siliconvalley`: Western US
+`na-ashburn`: Eastern US
+`ap-tokyo`: Japan
         :type Region: str
         :param VodLoopTimes: The number of times to loop video files.
 -1: Loop indefinitely
@@ -8015,6 +8208,119 @@ Example: H.264.
         self.MetaAudioSpeed = params.get("MetaAudioSpeed")
         self.MetaVideoSpeed = params.get("MetaVideoSpeed")
         self.MetaFps = params.get("MetaFps")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PushQualityData(AbstractModel):
+    """The push data of a stream.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Time: The time of the data in the format of “%Y-%m-%d %H:%M:%S.%ms” (accurate to the millisecond).
+        :type Time: str
+        :param PushDomain: The push domain.
+        :type PushDomain: str
+        :param AppName: The push path.
+        :type AppName: str
+        :param ClientIp: The IP address of the push client.
+        :type ClientIp: str
+        :param BeginPushTime: The push start time in the format of “%Y-%m-%d %H:%M:%S.%ms” (accurate to the millisecond).
+        :type BeginPushTime: str
+        :param Resolution: The resolution.
+        :type Resolution: str
+        :param VCodec: The video codec.
+        :type VCodec: str
+        :param ACodec: The audio codec.
+        :type ACodec: str
+        :param Sequence: The push sequence number, which uniquely identifies a push.
+        :type Sequence: str
+        :param VideoFps: The video frame rate.
+        :type VideoFps: int
+        :param VideoRate: The video bitrate (bps).
+        :type VideoRate: int
+        :param AudioFps: The audio frame rate.
+        :type AudioFps: int
+        :param AudioRate: The audio bitrate (bps).
+        :type AudioRate: int
+        :param LocalTs: The local elapsed time (milliseconds). The greater the difference between the local elapsed time and audio/video elapsed time, the poorer the push quality and the more severe the upstream lag.
+        :type LocalTs: int
+        :param VideoTs: The video elapsed time (milliseconds).
+        :type VideoTs: int
+        :param AudioTs: The audio elapsed time (milliseconds).
+        :type AudioTs: int
+        :param MetaVideoRate: The video bitrate (Kbps) in the metadata.
+        :type MetaVideoRate: int
+        :param MetaAudioRate: The audio bitrate (Kbps) in the metadata.
+        :type MetaAudioRate: int
+        :param MateFps: The frame rate in the metadata.
+        :type MateFps: int
+        :param StreamParam: The push parameter.
+        :type StreamParam: str
+        :param Bandwidth: The bandwidth (Mbps).
+        :type Bandwidth: float
+        :param Flux: The traffic (MB).
+        :type Flux: float
+        :param ServerIp: The IP address of the push client.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ServerIp: str
+        """
+        self.Time = None
+        self.PushDomain = None
+        self.AppName = None
+        self.ClientIp = None
+        self.BeginPushTime = None
+        self.Resolution = None
+        self.VCodec = None
+        self.ACodec = None
+        self.Sequence = None
+        self.VideoFps = None
+        self.VideoRate = None
+        self.AudioFps = None
+        self.AudioRate = None
+        self.LocalTs = None
+        self.VideoTs = None
+        self.AudioTs = None
+        self.MetaVideoRate = None
+        self.MetaAudioRate = None
+        self.MateFps = None
+        self.StreamParam = None
+        self.Bandwidth = None
+        self.Flux = None
+        self.ServerIp = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        self.PushDomain = params.get("PushDomain")
+        self.AppName = params.get("AppName")
+        self.ClientIp = params.get("ClientIp")
+        self.BeginPushTime = params.get("BeginPushTime")
+        self.Resolution = params.get("Resolution")
+        self.VCodec = params.get("VCodec")
+        self.ACodec = params.get("ACodec")
+        self.Sequence = params.get("Sequence")
+        self.VideoFps = params.get("VideoFps")
+        self.VideoRate = params.get("VideoRate")
+        self.AudioFps = params.get("AudioFps")
+        self.AudioRate = params.get("AudioRate")
+        self.LocalTs = params.get("LocalTs")
+        self.VideoTs = params.get("VideoTs")
+        self.AudioTs = params.get("AudioTs")
+        self.MetaVideoRate = params.get("MetaVideoRate")
+        self.MetaAudioRate = params.get("MetaAudioRate")
+        self.MateFps = params.get("MateFps")
+        self.StreamParam = params.get("StreamParam")
+        self.Bandwidth = params.get("Bandwidth")
+        self.Flux = params.get("Flux")
+        self.ServerIp = params.get("ServerIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -971,7 +971,7 @@ class CdbSellType(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TypeName: Name of the purchasable instance
+        :param TypeName: Name of the purchasable instance. Valid values: `Z3` (High-availability instance. `DeviceType`:`UNIVERSAL`, `EXCLUSIVE`; `CVM` (basic instance. `DeviceType`: `BASIC`); `TKE` (basic v2 instance. `DeviceType`: `BASIC_V2`).
         :type TypeName: str
         :param EngineVersion: Engine version number
         :type EngineVersion: list of str
@@ -2868,6 +2868,14 @@ class DescribeBackupConfigResponse(AbstractModel):
         :type EnableBinlogArchive: str
         :param BinlogArchiveDays: The period (in days) of how long a log backup is retained before being archived, which falls between 180 days and the number of days from the time it is created until it expires.
         :type BinlogArchiveDays: int
+        :param EnableBackupStandby: Whether to enable the standard storage policy for data backup. Valid values: `off` (disable), `on` (enable). Default value: `off`.
+        :type EnableBackupStandby: str
+        :param BackupStandbyDays: The period (in days) of how long a data backup is retained before switching to standard storage, which falls between 30 days and the number of days from the time it is created until it expires. If the archive backup is enabled, this period cannot be greater than archive backup period.
+        :type BackupStandbyDays: int
+        :param EnableBinlogStandby: Whether to enable the standard storage policy for log backup. Valid values: `off` (disable), `on` (enable). Default value: `off`.
+        :type EnableBinlogStandby: str
+        :param BinlogStandbyDays: The period (in days) of how long a log backup is retained before switching to standard storage, which falls between 30 days and the number of days from the time it is created until it expires. If the archive backup is enabled, this period cannot be greater than archive backup period.
+        :type BinlogStandbyDays: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -2886,6 +2894,10 @@ class DescribeBackupConfigResponse(AbstractModel):
         self.BackupArchiveDays = None
         self.EnableBinlogArchive = None
         self.BinlogArchiveDays = None
+        self.EnableBackupStandby = None
+        self.BackupStandbyDays = None
+        self.EnableBinlogStandby = None
+        self.BinlogStandbyDays = None
         self.RequestId = None
 
 
@@ -2907,6 +2919,10 @@ class DescribeBackupConfigResponse(AbstractModel):
         self.BackupArchiveDays = params.get("BackupArchiveDays")
         self.EnableBinlogArchive = params.get("EnableBinlogArchive")
         self.BinlogArchiveDays = params.get("BinlogArchiveDays")
+        self.EnableBackupStandby = params.get("EnableBackupStandby")
+        self.BackupStandbyDays = params.get("BackupStandbyDays")
+        self.EnableBinlogStandby = params.get("EnableBinlogStandby")
+        self.BinlogStandbyDays = params.get("BinlogStandbyDays")
         self.RequestId = params.get("RequestId")
 
 
@@ -3003,6 +3019,9 @@ Note: This field may return null, indicating that no valid value can be obtained
         :param BackupArchiveVolume: Archive backup capacity, which includes data backups and log backups.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type BackupArchiveVolume: int
+        :param BackupStandbyVolume: Backup capacity of standard storage, which includes data backups and log backups.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type BackupStandbyVolume: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -3012,6 +3031,7 @@ Note: This field may return null, indicating that no valid value can be obtained
         self.FreeVolume = None
         self.RemoteBackupVolume = None
         self.BackupArchiveVolume = None
+        self.BackupStandbyVolume = None
         self.RequestId = None
 
 
@@ -3022,6 +3042,7 @@ Note: This field may return null, indicating that no valid value can be obtained
         self.FreeVolume = params.get("FreeVolume")
         self.RemoteBackupVolume = params.get("RemoteBackupVolume")
         self.BackupArchiveVolume = params.get("BackupArchiveVolume")
+        self.BackupStandbyVolume = params.get("BackupStandbyVolume")
         self.RequestId = params.get("RequestId")
 
 
@@ -3200,6 +3221,10 @@ class DescribeBinlogBackupOverviewResponse(AbstractModel):
         :type BinlogArchiveVolume: int
         :param BinlogArchiveCount: Number of archived log backups
         :type BinlogArchiveCount: int
+        :param BinlogStandbyVolume: Log backup capacity of standard storage in bytes
+        :type BinlogStandbyVolume: int
+        :param BinlogStandbyCount: Number of log backups of standard storage
+        :type BinlogStandbyCount: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -3209,6 +3234,8 @@ class DescribeBinlogBackupOverviewResponse(AbstractModel):
         self.RemoteBinlogCount = None
         self.BinlogArchiveVolume = None
         self.BinlogArchiveCount = None
+        self.BinlogStandbyVolume = None
+        self.BinlogStandbyCount = None
         self.RequestId = None
 
 
@@ -3219,6 +3246,8 @@ class DescribeBinlogBackupOverviewResponse(AbstractModel):
         self.RemoteBinlogCount = params.get("RemoteBinlogCount")
         self.BinlogArchiveVolume = params.get("BinlogArchiveVolume")
         self.BinlogArchiveCount = params.get("BinlogArchiveCount")
+        self.BinlogStandbyVolume = params.get("BinlogStandbyVolume")
+        self.BinlogStandbyCount = params.get("BinlogStandbyCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -4274,6 +4303,10 @@ class DescribeDataBackupOverviewResponse(AbstractModel):
         :type DataBackupArchiveVolume: int
         :param DataBackupArchiveCount: Total number of archive backups in the current region
         :type DataBackupArchiveCount: int
+        :param DataBackupStandbyVolume: Total backup capacity of standard storage in current region
+        :type DataBackupStandbyVolume: int
+        :param DataBackupStandbyCount: Total number of standard storage backups in current region
+        :type DataBackupStandbyCount: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -4287,6 +4320,8 @@ class DescribeDataBackupOverviewResponse(AbstractModel):
         self.RemoteBackupCount = None
         self.DataBackupArchiveVolume = None
         self.DataBackupArchiveCount = None
+        self.DataBackupStandbyVolume = None
+        self.DataBackupStandbyCount = None
         self.RequestId = None
 
 
@@ -4301,6 +4336,8 @@ class DescribeDataBackupOverviewResponse(AbstractModel):
         self.RemoteBackupCount = params.get("RemoteBackupCount")
         self.DataBackupArchiveVolume = params.get("DataBackupArchiveVolume")
         self.DataBackupArchiveCount = params.get("DataBackupArchiveCount")
+        self.DataBackupStandbyVolume = params.get("DataBackupStandbyVolume")
+        self.DataBackupStandbyCount = params.get("DataBackupStandbyCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -5069,6 +5106,67 @@ Note: this field may return `null`, indicating that no valid value can be found.
         if params.get("WeightRule") is not None:
             self.WeightRule = Rule()
             self.WeightRule._deserialize(params.get("WeightRule"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRemoteBackupConfigRequest(AbstractModel):
+    """DescribeRemoteBackupConfig request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRemoteBackupConfigResponse(AbstractModel):
+    """DescribeRemoteBackupConfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ExpireDays: Remote backup retention period in days
+        :type ExpireDays: int
+        :param RemoteBackupSave: Remote data backup. Valid values:`off` (disable), `on` (enable).
+        :type RemoteBackupSave: str
+        :param RemoteBinlogSave: Remote log backup. Valid values: `off` (disable), `on` (enable). Only when the parameter `RemoteBackupSave` is `on`, the `RemoteBinlogSave` parameter can be set to `on`.
+        :type RemoteBinlogSave: str
+        :param RemoteRegion: List of configured remote backup regions
+        :type RemoteRegion: list of str
+        :param RegionList: List of remote backup regions
+        :type RegionList: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ExpireDays = None
+        self.RemoteBackupSave = None
+        self.RemoteBinlogSave = None
+        self.RemoteRegion = None
+        self.RegionList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ExpireDays = params.get("ExpireDays")
+        self.RemoteBackupSave = params.get("RemoteBackupSave")
+        self.RemoteBinlogSave = params.get("RemoteBinlogSave")
+        self.RemoteRegion = params.get("RemoteRegion")
+        self.RegionList = params.get("RegionList")
         self.RequestId = params.get("RequestId")
 
 
@@ -7203,6 +7301,14 @@ class ModifyBackupConfigRequest(AbstractModel):
         :type BinlogArchiveDays: int
         :param EnableBinlogArchive: Whether to enable the archive backup of the log. Valid values: `off` (disable), `on` (enable). Default value: `off`.
         :type EnableBinlogArchive: str
+        :param EnableBackupStandby: Whether to enable the standard storage policy for data backup. Valid values: `off` (disable), `on` (enable). Default value: `off`.
+        :type EnableBackupStandby: str
+        :param BackupStandbyDays: The period (in days) of how long a data backup is retained before switching to standard storage, which falls between 30 days and the number of days from the time it is created until it expires. If the archive backup is enabled, this period cannot be greater than archive backup period.
+        :type BackupStandbyDays: int
+        :param EnableBinlogStandby: Whether to enable the standard storage policy for log backup. Valid values: `off` (disable), `on` (enable). Default value: `off`.
+        :type EnableBinlogStandby: str
+        :param BinlogStandbyDays: The period (in days) of how long a log backup is retained before switching to standard storage, which falls between 30 days and the number of days from the time it is created until it expires. If the archive backup is enabled, this period cannot be greater than archive backup period.
+        :type BinlogStandbyDays: int
         """
         self.InstanceId = None
         self.ExpireDays = None
@@ -7220,6 +7326,10 @@ class ModifyBackupConfigRequest(AbstractModel):
         self.BackupArchiveDays = None
         self.BinlogArchiveDays = None
         self.EnableBinlogArchive = None
+        self.EnableBackupStandby = None
+        self.BackupStandbyDays = None
+        self.EnableBinlogStandby = None
+        self.BinlogStandbyDays = None
 
 
     def _deserialize(self, params):
@@ -7241,6 +7351,10 @@ class ModifyBackupConfigRequest(AbstractModel):
         self.BackupArchiveDays = params.get("BackupArchiveDays")
         self.BinlogArchiveDays = params.get("BinlogArchiveDays")
         self.EnableBinlogArchive = params.get("EnableBinlogArchive")
+        self.EnableBackupStandby = params.get("EnableBackupStandby")
+        self.BackupStandbyDays = params.get("BackupStandbyDays")
+        self.EnableBinlogStandby = params.get("EnableBinlogStandby")
+        self.BinlogStandbyDays = params.get("BinlogStandbyDays")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8028,6 +8142,63 @@ class ModifyParamTemplateRequest(AbstractModel):
 
 class ModifyParamTemplateResponse(AbstractModel):
     """ModifyParamTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyRemoteBackupConfigRequest(AbstractModel):
+    """ModifyRemoteBackupConfig request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.
+        :type InstanceId: str
+        :param RemoteBackupSave: Remote data backup. Valid values:`off` (disable), `on` (enable).
+        :type RemoteBackupSave: str
+        :param RemoteBinlogSave: Remote log backup. Valid values: `off` (disable), `on` (enable). Only when the parameter `RemoteBackupSave` is `on`, the `RemoteBinlogSave` parameter can be set to `on`.
+        :type RemoteBinlogSave: str
+        :param RemoteRegion: The custom backup region list
+        :type RemoteRegion: list of str
+        :param ExpireDays: Remote backup retention period in days
+        :type ExpireDays: int
+        """
+        self.InstanceId = None
+        self.RemoteBackupSave = None
+        self.RemoteBinlogSave = None
+        self.RemoteRegion = None
+        self.ExpireDays = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.RemoteBackupSave = params.get("RemoteBackupSave")
+        self.RemoteBinlogSave = params.get("RemoteBinlogSave")
+        self.RemoteRegion = params.get("RemoteRegion")
+        self.ExpireDays = params.get("ExpireDays")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRemoteBackupConfigResponse(AbstractModel):
+    """ModifyRemoteBackupConfig response structure.
 
     """
 

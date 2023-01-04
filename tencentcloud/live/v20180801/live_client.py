@@ -236,9 +236,9 @@ class LiveClient(AbstractClient):
 
 
     def CreateLiveCallbackTemplate(self, request):
-        """After a callback template is created and a template ID is successfully returned, you need to call the [CreateLiveCallbackRule](https://intl.cloud.tencent.com/document/product/267/32638?from_cn_redirect=1) API and bind the template ID to the domain name/path.
-        <br>Callback protocol document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).
-        Note: at least enter one callback URL.
+        """This API is used to create a callback template. Up to 50 templates can be created. After the template ID is returned, you need to call the [CreateLiveCallbackRule](https://intl.cloud.tencent.com/document/product/267/32638?from_cn_redirect=1) API to bind the template ID to a domain name/path.
+        <br>For information about callback protocols, see [How to Receive Event Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).
+        Note: You need to specify at least one callback URL.
 
         :param request: Request instance for CreateLiveCallbackTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.CreateLiveCallbackTemplateRequest`
@@ -990,6 +990,35 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteRecordTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAllStreamPlayInfoList(self, request):
+        """This API is used to get the playback data of all streams at a specified time point (accurate to the minute).
+
+        :param request: Request instance for DescribeAllStreamPlayInfoList.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeAllStreamPlayInfoListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeAllStreamPlayInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAllStreamPlayInfoList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAllStreamPlayInfoListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2323,6 +2352,35 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStreamPlayInfoListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeStreamPushInfoList(self, request):
+        """This API is used to get the push data of a stream, including the audio/video frame rate, bitrate, elapsed time, and codec.
+
+        :param request: Request instance for DescribeStreamPushInfoList.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeStreamPushInfoListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeStreamPushInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamPushInfoList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeStreamPushInfoListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
