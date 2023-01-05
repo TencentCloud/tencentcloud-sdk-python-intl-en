@@ -50,6 +50,42 @@ class AccessKey(AbstractModel):
         
 
 
+class AccessKeyDetail(AbstractModel):
+    """Access key
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AccessKeyId: Access key ID
+        :type AccessKeyId: str
+        :param SecretAccessKey: Access key, which is visible only when it is created. Keep it properly.
+        :type SecretAccessKey: str
+        :param Status: Key status. Valid values: `Active` (activated), `Inactive` (not activated).
+        :type Status: str
+        :param CreateTime: Creation time
+        :type CreateTime: str
+        """
+        self.AccessKeyId = None
+        self.SecretAccessKey = None
+        self.Status = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.AccessKeyId = params.get("AccessKeyId")
+        self.SecretAccessKey = params.get("SecretAccessKey")
+        self.Status = params.get("Status")
+        self.CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AddUserRequest(AbstractModel):
     """AddUser request structure.
 
@@ -639,6 +675,54 @@ class ConsumeCustomMFATokenResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateAccessKeyRequest(AbstractModel):
+    """CreateAccessKey request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TargetUin: UIN of the specified user. If this parameter is left empty, the access key will be created for the current user by default.
+        :type TargetUin: int
+        """
+        self.TargetUin = None
+
+
+    def _deserialize(self, params):
+        self.TargetUin = params.get("TargetUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAccessKeyResponse(AbstractModel):
+    """CreateAccessKey response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AccessKey: Access key
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AccessKey: :class:`tencentcloud.cam.v20190116.models.AccessKeyDetail`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AccessKey = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AccessKey") is not None:
+            self.AccessKey = AccessKeyDetail()
+            self.AccessKey._deserialize(params.get("AccessKey"))
+        self.RequestId = params.get("RequestId")
+
+
 class CreateGroupRequest(AbstractModel):
     """CreateGroup request structure.
 
@@ -1138,6 +1222,51 @@ class CreateUserSAMLConfigRequest(AbstractModel):
 
 class CreateUserSAMLConfigResponse(AbstractModel):
     """CreateUserSAMLConfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteAccessKeyRequest(AbstractModel):
+    """DeleteAccessKey request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AccessKeyId: ID of the specified access key that needs to be deleted
+        :type AccessKeyId: str
+        :param TargetUin: UIN of the specified user. If this parameter is left empty, the access key will be deleted for the current user by default.
+        :type TargetUin: int
+        """
+        self.AccessKeyId = None
+        self.TargetUin = None
+
+
+    def _deserialize(self, params):
+        self.AccessKeyId = params.get("AccessKeyId")
+        self.TargetUin = params.get("TargetUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAccessKeyResponse(AbstractModel):
+    """DeleteAccessKey response structure.
 
     """
 
@@ -2022,9 +2151,9 @@ class DetachRolePolicyRequest(AbstractModel):
         r"""
         :param PolicyId: Policy ID. Either `PolicyId` or `PolicyName` must be entered
         :type PolicyId: int
-        :param DetachRoleId: Role ID, used to specify a role. Input either `AttachRoleId` or `AttachRoleName`
+        :param DetachRoleId: Role ID, which is used to specify a role. The input parameter is either `DetachRoleId` or `DetachRoleName`.
         :type DetachRoleId: str
-        :param DetachRoleName: Role name, used to specify a role. Input either `AttachRoleId` or `AttachRoleName`
+        :param DetachRoleName: Role name, which is used to specify a role. The input parameter is either `DetachRoleId` or `DetachRoleName`.
         :type DetachRoleName: str
         :param PolicyName: Policy name. Either `PolicyId` or `PolicyName` must be entered
         :type PolicyName: str
@@ -4660,6 +4789,55 @@ class UntagRoleRequest(AbstractModel):
 
 class UntagRoleResponse(AbstractModel):
     """UntagRole response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateAccessKeyRequest(AbstractModel):
+    """UpdateAccessKey request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AccessKeyId: ID of the specified access key that needs to be updated
+        :type AccessKeyId: str
+        :param Status: Key status. Valid values: `Active` (activated), `Inactive` (not activated).
+        :type Status: str
+        :param TargetUin: UIN of the specified user. If this parameter is left empty, the access key will be updated for the current user by default.
+        :type TargetUin: int
+        """
+        self.AccessKeyId = None
+        self.Status = None
+        self.TargetUin = None
+
+
+    def _deserialize(self, params):
+        self.AccessKeyId = params.get("AccessKeyId")
+        self.Status = params.get("Status")
+        self.TargetUin = params.get("TargetUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateAccessKeyResponse(AbstractModel):
+    """UpdateAccessKey response structure.
 
     """
 

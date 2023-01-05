@@ -18,6 +18,54 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AddMachineGroupInfoRequest(AbstractModel):
+    """AddMachineGroupInfo request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupId: Machine group ID
+        :type GroupId: str
+        :param MachineGroupType: Machine group type
+Supported types: `ip` and `label`
+        :type MachineGroupType: :class:`tencentcloud.cls.v20201016.models.MachineGroupTypeInfo`
+        """
+        self.GroupId = None
+        self.MachineGroupType = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        if params.get("MachineGroupType") is not None:
+            self.MachineGroupType = MachineGroupTypeInfo()
+            self.MachineGroupType._deserialize(params.get("MachineGroupType"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddMachineGroupInfoResponse(AbstractModel):
+    """AddMachineGroupInfo response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class AlarmAnalysisConfig(AbstractModel):
     """Alarm configuration for the multidimensional analysis
 
@@ -1826,6 +1874,54 @@ class DeleteLogsetResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteMachineGroupInfoRequest(AbstractModel):
+    """DeleteMachineGroupInfo request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupId: Machine group ID
+        :type GroupId: str
+        :param MachineGroupType: Machine group type
+Supported types: `ip` and `label`
+        :type MachineGroupType: :class:`tencentcloud.cls.v20201016.models.MachineGroupTypeInfo`
+        """
+        self.GroupId = None
+        self.MachineGroupType = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        if params.get("MachineGroupType") is not None:
+            self.MachineGroupType = MachineGroupTypeInfo()
+            self.MachineGroupType._deserialize(params.get("MachineGroupType"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteMachineGroupInfoResponse(AbstractModel):
+    """DeleteMachineGroupInfo response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteMachineGroupRequest(AbstractModel):
     """DeleteMachineGroup request structure.
 
@@ -3481,9 +3577,9 @@ class FullTextInfo(AbstractModel):
         r"""
         :param CaseSensitive: Case sensitivity
         :type CaseSensitive: bool
-        :param Tokenizer: Separator of the full-text index. Each character represents a separator;
-Supports only English punctuation marks and (\n\t\r);
-We recommend you use (@&?|#()='",;:<>[]{}/ \n\t\r\) as separators;
+        :param Tokenizer: Separator of the full-text index. Each character represents a separator.
+Only symbols, \n\t\r, and escape character \ are supported.
+Note: \n\t\r can be directly enclosed in double quotes as the input parameter without escaping.
         :type Tokenizer: str
         :param ContainZH: Whether Chinese characters are contained
 Note: this field may return `null`, indicating that no valid values can be obtained.
@@ -5745,10 +5841,10 @@ class ValueInfo(AbstractModel):
         r"""
         :param Type: Field type. Valid values: `long`, `text`, `double`
         :type Type: str
-        :param Tokenizer: Separator of fields. Each character represents a separator;
-Supports only English punctuation marks and (\n\t\r);
-`long` and `double` fields need to be null;
-We recommend you use (@&?|#()='",;:<>[]{}/ \n\t\r\\) as separators for `text` fields;
+        :param Tokenizer: Separator of fields. Each character represents a separator.
+Only symbols, \n\t\r, and escape character \ are supported.
+`long` and `double` fields need to be null.
+Note: \n\t\r can be directly enclosed in double quotes as the input parameter without escaping.
         :type Tokenizer: str
         :param SqlFlag: Whether the analysis feature is enabled for the field
         :type SqlFlag: bool

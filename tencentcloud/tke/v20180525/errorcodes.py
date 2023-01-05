@@ -101,6 +101,9 @@ FAILEDOPERATION_OSNOTSUPPORT = 'FailedOperation.OsNotSupport'
 # Invalid parameter.
 FAILEDOPERATION_PARAM = 'FailedOperation.Param'
 
+# 
+FAILEDOPERATION_POLICYSERVERCOMMONERROR = 'FailedOperation.PolicyServerCommonError'
+
 # Reached the quota limit.
 FAILEDOPERATION_QUOTAMAXCLSLIMIT = 'FailedOperation.QuotaMaxClsLimit'
 
@@ -113,11 +116,17 @@ FAILEDOPERATION_QUOTAUSGLIMIT = 'FailedOperation.QuotaUSGLimit'
 # The sub-account does not have the required RBAC permissions.
 FAILEDOPERATION_RBACFORBIDDEN = 'FailedOperation.RBACForbidden'
 
+# Record not found.
+FAILEDOPERATION_RECORDNOTFOUND = 'FailedOperation.RecordNotFound'
+
 # A same task is in progress.
 FAILEDOPERATION_TASKALREADYRUNNING = 'FailedOperation.TaskAlreadyRunning'
 
 # Query failed.
 FAILEDOPERATION_TRADECOMMON = 'FailedOperation.TradeCommon'
+
+# Unexpected error.
+FAILEDOPERATION_UNEXPECTEDERROR = 'FailedOperation.UnexpectedError'
 
 # Unknown VPC error.
 FAILEDOPERATION_VPCUNEXPECTEDERROR = 'FailedOperation.VPCUnexpectedError'
@@ -391,6 +400,9 @@ RESOURCEINUSE = 'ResourceInUse'
 
 # The resource already exists.
 RESOURCEINUSE_RESOURCEEXISTALREADY = 'ResourceInUse.ResourceExistAlready'
+
+# Insufficient CVM resources.
+RESOURCEINSUFFICIENT_SPECIFIEDINSTANCETYPE = 'ResourceInsufficient.SpecifiedInstanceType'
 
 # The resource does not exist.
 RESOURCENOTFOUND = 'ResourceNotFound'

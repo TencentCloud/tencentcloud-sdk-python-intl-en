@@ -345,35 +345,6 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateClusterNodePoolFromExistingAsg(self, request):
-        """This API is used to upgrade a scaling group to a node pool.
-
-        :param request: Request instance for CreateClusterNodePoolFromExistingAsg.
-        :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterNodePoolFromExistingAsgRequest`
-        :rtype: :class:`tencentcloud.tke.v20180525.models.CreateClusterNodePoolFromExistingAsgResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateClusterNodePoolFromExistingAsg", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateClusterNodePoolFromExistingAsgResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def CreateClusterRouteTable(self, request):
         """This API is used to create a cluster route table.
 
@@ -1650,6 +1621,35 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeEdgeClusterUpgradeInfo(self, request):
+        """This API is used to query the upgrade information of an edge cluster, including the upgradeable components, the current upgrade status, and errors occur during the upgrade.
+
+        :param request: Request instance for DescribeEdgeClusterUpgradeInfo.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeEdgeClusterUpgradeInfoRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeEdgeClusterUpgradeInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEdgeClusterUpgradeInfo", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeEdgeClusterUpgradeInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeEdgeLogSwitches(self, request):
         """This API is used to query the status of events, audits and logs.
 
@@ -2622,6 +2622,35 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateClusterVersionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateEdgeClusterVersion(self, request):
+        """This API is used to upgrade an edge cluster component to a TKE Edge version.
+
+        :param request: Request instance for UpdateEdgeClusterVersion.
+        :type request: :class:`tencentcloud.tke.v20180525.models.UpdateEdgeClusterVersionRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.UpdateEdgeClusterVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateEdgeClusterVersion", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateEdgeClusterVersionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

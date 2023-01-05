@@ -7036,6 +7036,57 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class DescribePrometheusZonesRequest(AbstractModel):
+    """DescribePrometheusZones request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RegionId: Region ID
+        :type RegionId: int
+        """
+        self.RegionId = None
+
+
+    def _deserialize(self, params):
+        self.RegionId = params.get("RegionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePrometheusZonesResponse(AbstractModel):
+    """DescribePrometheusZones response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneSet: Region list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ZoneSet: list of PrometheusZoneItem
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ZoneSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ZoneSet") is not None:
+            self.ZoneSet = []
+            for item in params.get("ZoneSet"):
+                obj = PrometheusZoneItem()
+                obj._deserialize(item)
+                self.ZoneSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRecordingRulesRequest(AbstractModel):
     """DescribeRecordingRules request structure.
 
@@ -10304,6 +10355,46 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def _deserialize(self, params):
         self.Key = params.get("Key")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PrometheusZoneItem(AbstractModel):
+    """Region information returned by `PrometheusZoneItem`
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Zone: AZ
+        :type Zone: str
+        :param ZoneId: AZ ID
+        :type ZoneId: int
+        :param ZoneState: AZ status. Valid values: `0`(Unavailable), `1` (Available).
+        :type ZoneState: int
+        :param RegionId: Region ID
+        :type RegionId: int
+        :param ZoneName: AZ name
+        :type ZoneName: str
+        """
+        self.Zone = None
+        self.ZoneId = None
+        self.ZoneState = None
+        self.RegionId = None
+        self.ZoneName = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.ZoneId = params.get("ZoneId")
+        self.ZoneState = params.get("ZoneState")
+        self.RegionId = params.get("RegionId")
+        self.ZoneName = params.get("ZoneName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

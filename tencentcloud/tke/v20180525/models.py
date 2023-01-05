@@ -954,7 +954,7 @@ class ClusterBasicSettings(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterOs: Cluster operating system. Public image (enter the image ID) and custom image (enter the image name) are supported. For details, see https://intl.cloud.tencent.com/document/product/457/68289?from_cn_redirect=1
+        :param ClusterOs: Cluster operating system. Public image (enter the image name) and custom image (enter the image ID) are supported. For details, see https://intl.cloud.tencent.com/document/product/457/68289?from_cn_redirect=1
         :type ClusterOs: str
         :param ClusterVersion: Cluster version. The default value is 1.10.5.
         :type ClusterVersion: str
@@ -1670,55 +1670,6 @@ class CreateClusterInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class CreateClusterNodePoolFromExistingAsgRequest(AbstractModel):
-    """CreateClusterNodePoolFromExistingAsg request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ClusterId: Cluster ID
-        :type ClusterId: str
-        :param AutoscalingGroupId: Scaling group ID
-        :type AutoscalingGroupId: str
-        """
-        self.ClusterId = None
-        self.AutoscalingGroupId = None
-
-
-    def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
-        self.AutoscalingGroupId = params.get("AutoscalingGroupId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateClusterNodePoolFromExistingAsgResponse(AbstractModel):
-    """CreateClusterNodePoolFromExistingAsg response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param NodePoolId: Node pool ID
-        :type NodePoolId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.NodePoolId = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.NodePoolId = params.get("NodePoolId")
-        self.RequestId = params.get("RequestId")
-
-
 class CreateClusterNodePoolRequest(AbstractModel):
     """CreateClusterNodePool request structure.
 
@@ -1728,9 +1679,9 @@ class CreateClusterNodePoolRequest(AbstractModel):
         r"""
         :param ClusterId: Cluster ID
         :type ClusterId: str
-        :param AutoScalingGroupPara: AS group parameters
+        :param AutoScalingGroupPara: AS group parameters. For details, see https://intl.cloud.tencent.com/document/product/377/20440?from_cn_redirect=1
         :type AutoScalingGroupPara: str
-        :param LaunchConfigurePara: Running parameters
+        :param LaunchConfigurePara: Running parameters. For details, see https://intl.cloud.tencent.com/document/product/377/20447?from_cn_redirect=1
         :type LaunchConfigurePara: str
         :param InstanceAdvancedSettings: Sample parameters
         :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
@@ -3312,11 +3263,15 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param LatestOperationState: Result of the last modification. Values: `Updating`, `Success`, `Failed` or `TimeOut`.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type LatestOperationState: str
+        :param OIDCConfig: OIDC authentication configurations
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type OIDCConfig: :class:`tencentcloud.tke.v20180525.models.OIDCConfigAuthenticationOptions`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.ServiceAccounts = None
         self.LatestOperationState = None
+        self.OIDCConfig = None
         self.RequestId = None
 
 
@@ -3325,6 +3280,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
             self.ServiceAccounts = ServiceAccountAuthenticationOptions()
             self.ServiceAccounts._deserialize(params.get("ServiceAccounts"))
         self.LatestOperationState = params.get("LatestOperationState")
+        if params.get("OIDCConfig") is not None:
+            self.OIDCConfig = OIDCConfigAuthenticationOptions()
+            self.OIDCConfig._deserialize(params.get("OIDCConfig"))
         self.RequestId = params.get("RequestId")
 
 
@@ -4585,6 +4543,76 @@ class DescribeEdgeClusterInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeEdgeClusterUpgradeInfoRequest(AbstractModel):
+    """DescribeEdgeClusterUpgradeInfo request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param EdgeVersion: Target TKEEdge version
+        :type EdgeVersion: str
+        """
+        self.ClusterId = None
+        self.EdgeVersion = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.EdgeVersion = params.get("EdgeVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEdgeClusterUpgradeInfoResponse(AbstractModel):
+    """DescribeEdgeClusterUpgradeInfo response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ComponentVersion: Upgradeable cluster component
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type ComponentVersion: str
+        :param EdgeVersionCurrent: Current version of the edge cluster
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type EdgeVersionCurrent: str
+        :param RegistryPrefix: Prefix of the image registry of an edge component (including domain name and namespace)
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type RegistryPrefix: str
+        :param ClusterUpgradeStatus: Cluster upgrade status. Valid values: `Running`, `Updating`, `Failed`
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type ClusterUpgradeStatus: str
+        :param ClusterUpgradeStatusReason: Reason for `Updating` or `Failed`
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type ClusterUpgradeStatusReason: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ComponentVersion = None
+        self.EdgeVersionCurrent = None
+        self.RegistryPrefix = None
+        self.ClusterUpgradeStatus = None
+        self.ClusterUpgradeStatusReason = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ComponentVersion = params.get("ComponentVersion")
+        self.EdgeVersionCurrent = params.get("EdgeVersionCurrent")
+        self.RegistryPrefix = params.get("RegistryPrefix")
+        self.ClusterUpgradeStatus = params.get("ClusterUpgradeStatus")
+        self.ClusterUpgradeStatusReason = params.get("ClusterUpgradeStatusReason")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeEdgeLogSwitchesRequest(AbstractModel):
     """DescribeEdgeLogSwitches request structure.
 
@@ -5797,6 +5825,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         :param ClusterAdvancedSettings: Cluster advanced settings
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type ClusterAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.EdgeClusterAdvancedSettings`
+        :param Level: TKE edge cluster level
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Level: str
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -5810,6 +5841,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.EdgeClusterVersion = None
         self.MaxNodePodNum = None
         self.ClusterAdvancedSettings = None
+        self.Level = None
 
 
     def _deserialize(self, params):
@@ -5827,6 +5859,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         if params.get("ClusterAdvancedSettings") is not None:
             self.ClusterAdvancedSettings = EdgeClusterAdvancedSettings()
             self.ClusterAdvancedSettings._deserialize(params.get("ClusterAdvancedSettings"))
+        self.Level = params.get("Level")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6077,7 +6110,7 @@ class EnhancedService(AbstractModel):
         :type SecurityService: :class:`tencentcloud.tke.v20180525.models.RunSecurityServiceEnabled`
         :param MonitorService: Enables cloud monitor service. If this parameter is not specified, the cloud monitor service will be enabled by default.
         :type MonitorService: :class:`tencentcloud.tke.v20180525.models.RunMonitorServiceEnabled`
-        :param AutomationService: Enables the TAT service. If this parameter is not specified, the TAT service will not be enabled.
+        :param AutomationService: Whether to enable the TAT service. If this parameter is not specified, the TAT service is enabled for public images and disabled for other images by default.
         :type AutomationService: :class:`tencentcloud.tke.v20180525.models.RunAutomationServiceEnabled`
         """
         self.SecurityService = None
@@ -7150,8 +7183,8 @@ class LoginSettings(AbstractModel):
         :param Password: Login password of the instance. <br><li>For Linux instances, the password must include 8-30 characters, and contain at least two of the following character sets: [a-z], [A-Z], [0-9] and [()\`~!@#$%^&*-+=|{}[]:;',.?/]. <br><li>For Windows instances, the password must include 12-30 characters, and contain at least three of the following character sets: [a-z], [A-Z], [0-9] and [()\`~!@#$%^&*-+=|{}[]:;',.?/]. <br><br>If it's not specified, the user needs to set the login password using the **Reset password** option in the CVM console or calling the API `ResetInstancesPassword` to complete the creation of the CVM instance(s).
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Password: str
-        :param KeyIds: List of key IDs. After an instance is associated with a key, you can access the instance with the private key in the key pair. You can call [`DescribeKeyPairs`](https://intl.cloud.tencent.com/document/api/213/15699?from_cn_redirect=1) to obtain `KeyId`. A key and password cannot be specified at the same time. Windows instances do not support keys. Currently, you can only specify one key when purchasing an instance.
-Note: this field may return null, indicating that no valid value is obtained.
+        :param KeyIds: List of key IDs. After an instance is associated with a key, you can access the instance with the private key in the key pair. You can call [`DescribeKeyPairs`](https://intl.cloud.tencent.com/document/api/213/15699?from_cn_redirect=1) to obtain `KeyId`. You cannot specify a key and a password at the same time. Windows instances do not support keys.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type KeyIds: list of str
         :param KeepImageLogin: Whether to keep the original settings of an image. You cannot specify this parameter and `Password` or `KeyIds.N` at the same time. You can specify this parameter as `TRUE` only when you create an instance using a custom image, a shared image, or an imported image. Valid values: <br><li>TRUE: keep the login settings of the image <br><li>FALSE: do not keep the login settings of the image <br><br>Default value: FALSE.
 Note: This field may return null, indicating that no valid value is found.
@@ -7415,9 +7448,12 @@ class ModifyClusterAuthenticationOptionsRequest(AbstractModel):
         :type ClusterId: str
         :param ServiceAccounts: ServiceAccount authentication configuration
         :type ServiceAccounts: :class:`tencentcloud.tke.v20180525.models.ServiceAccountAuthenticationOptions`
+        :param OIDCConfig: OIDC authentication configurations
+        :type OIDCConfig: :class:`tencentcloud.tke.v20180525.models.OIDCConfigAuthenticationOptions`
         """
         self.ClusterId = None
         self.ServiceAccounts = None
+        self.OIDCConfig = None
 
 
     def _deserialize(self, params):
@@ -7425,6 +7461,9 @@ class ModifyClusterAuthenticationOptionsRequest(AbstractModel):
         if params.get("ServiceAccounts") is not None:
             self.ServiceAccounts = ServiceAccountAuthenticationOptions()
             self.ServiceAccounts._deserialize(params.get("ServiceAccounts"))
+        if params.get("OIDCConfig") is not None:
+            self.OIDCConfig = OIDCConfigAuthenticationOptions()
+            self.OIDCConfig._deserialize(params.get("OIDCConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7527,6 +7566,12 @@ class ModifyClusterNodePoolRequest(AbstractModel):
         :type OsName: str
         :param OsCustomizeType: Image tag, `DOCKER_CUSTOMIZE` (container customized tag), `GENERAL` (general tag, default value)
         :type OsCustomizeType: str
+        :param GPUArgs: GPU driver version, CUDA version, cuDNN version and wether to enable MIG
+        :type GPUArgs: :class:`tencentcloud.tke.v20180525.models.GPUArgs`
+        :param UserScript: Base64-encoded custom script
+        :type UserScript: str
+        :param IgnoreExistedNode: Ignore existing nodes when update `Label` and `Taint`
+        :type IgnoreExistedNode: bool
         :param ExtraArgs: Node custom parameter
         :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.InstanceExtraArgs`
         :param Tags: Resource tag
@@ -7535,6 +7580,8 @@ class ModifyClusterNodePoolRequest(AbstractModel):
         :type Unschedulable: int
         :param DeletionProtection: Whether Deletion Protection is enabled
         :type DeletionProtection: bool
+        :param DockerGraphPath: Specified value of dockerd --graph. Default value: /var/lib/docker
+        :type DockerGraphPath: str
         """
         self.ClusterId = None
         self.NodePoolId = None
@@ -7546,10 +7593,14 @@ class ModifyClusterNodePoolRequest(AbstractModel):
         self.EnableAutoscale = None
         self.OsName = None
         self.OsCustomizeType = None
+        self.GPUArgs = None
+        self.UserScript = None
+        self.IgnoreExistedNode = None
         self.ExtraArgs = None
         self.Tags = None
         self.Unschedulable = None
         self.DeletionProtection = None
+        self.DockerGraphPath = None
 
 
     def _deserialize(self, params):
@@ -7573,6 +7624,11 @@ class ModifyClusterNodePoolRequest(AbstractModel):
         self.EnableAutoscale = params.get("EnableAutoscale")
         self.OsName = params.get("OsName")
         self.OsCustomizeType = params.get("OsCustomizeType")
+        if params.get("GPUArgs") is not None:
+            self.GPUArgs = GPUArgs()
+            self.GPUArgs._deserialize(params.get("GPUArgs"))
+        self.UserScript = params.get("UserScript")
+        self.IgnoreExistedNode = params.get("IgnoreExistedNode")
         if params.get("ExtraArgs") is not None:
             self.ExtraArgs = InstanceExtraArgs()
             self.ExtraArgs._deserialize(params.get("ExtraArgs"))
@@ -7584,6 +7640,7 @@ class ModifyClusterNodePoolRequest(AbstractModel):
                 self.Tags.append(obj)
         self.Unschedulable = params.get("Unschedulable")
         self.DeletionProtection = params.get("DeletionProtection")
+        self.DockerGraphPath = params.get("DockerGraphPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7890,6 +7947,41 @@ class NodePoolOption(AbstractModel):
         self.AddToNodePool = params.get("AddToNodePool")
         self.NodePoolId = params.get("NodePoolId")
         self.InheritConfigurationFromNodePool = params.get("InheritConfigurationFromNodePool")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OIDCConfigAuthenticationOptions(AbstractModel):
+    """OIDC authentication related configurations
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AutoCreateOIDCConfig: Creating an identity provider
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type AutoCreateOIDCConfig: bool
+        :param AutoCreateClientId: Creating ClientId of the identity provider
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type AutoCreateClientId: list of str
+        :param AutoInstallPodIdentityWebhookAddon: Creating the PodIdentityWebhook component
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type AutoInstallPodIdentityWebhookAddon: bool
+        """
+        self.AutoCreateOIDCConfig = None
+        self.AutoCreateClientId = None
+        self.AutoInstallPodIdentityWebhookAddon = None
+
+
+    def _deserialize(self, params):
+        self.AutoCreateOIDCConfig = params.get("AutoCreateOIDCConfig")
+        self.AutoCreateClientId = params.get("AutoCreateClientId")
+        self.AutoInstallPodIdentityWebhookAddon = params.get("AutoInstallPodIdentityWebhookAddon")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8957,6 +9049,59 @@ class UpdateClusterVersionRequest(AbstractModel):
 
 class UpdateClusterVersionResponse(AbstractModel):
     """UpdateClusterVersion response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateEdgeClusterVersionRequest(AbstractModel):
+    """UpdateEdgeClusterVersion request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param EdgeVersion: Target version
+        :type EdgeVersion: str
+        :param RegistryPrefix: Prefix of the image repository of a custom edge component
+        :type RegistryPrefix: str
+        :param SkipPreCheck: Whether to skip precheck
+        :type SkipPreCheck: bool
+        """
+        self.ClusterId = None
+        self.EdgeVersion = None
+        self.RegistryPrefix = None
+        self.SkipPreCheck = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.EdgeVersion = params.get("EdgeVersion")
+        self.RegistryPrefix = params.get("RegistryPrefix")
+        self.SkipPreCheck = params.get("SkipPreCheck")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateEdgeClusterVersionResponse(AbstractModel):
+    """UpdateEdgeClusterVersion response structure.
 
     """
 

@@ -200,6 +200,35 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateAccessKey(self, request):
+        """This API is used to create an access key for a CAM user.
+
+        :param request: Request instance for CreateAccessKey.
+        :type request: :class:`tencentcloud.cam.v20190116.models.CreateAccessKeyRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.CreateAccessKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAccessKey", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAccessKeyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateGroup(self, request):
         """This API is used to create a user group.
 
@@ -447,6 +476,36 @@ class CamClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateUserSAMLConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteAccessKey(self, request):
+        """This API is used to delete an access key for a CAM user.
+        Calling this API is a high-risk operation because the key cannot be recovered once deleted and Tencent Cloud will deny all requests that use this key. Proceed with caution.
+
+        :param request: Request instance for DeleteAccessKey.
+        :type request: :class:`tencentcloud.cam.v20190116.models.DeleteAccessKeyRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.DeleteAccessKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAccessKey", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteAccessKeyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1984,6 +2043,35 @@ class CamClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UntagRoleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateAccessKey(self, request):
+        """This API is used to update an access key for a CAM user.
+
+        :param request: Request instance for UpdateAccessKey.
+        :type request: :class:`tencentcloud.cam.v20190116.models.UpdateAccessKeyRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.UpdateAccessKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateAccessKey", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateAccessKeyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

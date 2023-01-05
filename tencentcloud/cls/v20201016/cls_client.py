@@ -26,6 +26,35 @@ class ClsClient(AbstractClient):
     _service = 'cls'
 
 
+    def AddMachineGroupInfo(self, request):
+        """This API is used to add machine group information.
+
+        :param request: Request instance for AddMachineGroupInfo.
+        :type request: :class:`tencentcloud.cls.v20201016.models.AddMachineGroupInfoRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.AddMachineGroupInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddMachineGroupInfo", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddMachineGroupInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ApplyConfigToMachineGroup(self, request):
         """This API is used to apply the collection configuration to the specified machine group.
 
@@ -621,6 +650,35 @@ class ClsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteMachineGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteMachineGroupInfo(self, request):
+        """This API is used to delete machine group information.
+
+        :param request: Request instance for DeleteMachineGroupInfo.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DeleteMachineGroupInfoRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeleteMachineGroupInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteMachineGroupInfo", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteMachineGroupInfoResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

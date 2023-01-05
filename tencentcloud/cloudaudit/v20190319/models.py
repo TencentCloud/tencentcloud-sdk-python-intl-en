@@ -248,6 +248,50 @@ class CreateAuditTrackRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param Name: Tracking set name, which can only contain 3-48 letters, digits, hyphens, and underscores.
+        :type Name: str
+        :param ActionType: Tracking set event type (`Read`: Read; `Write`: Write; `*`: All)
+        :type ActionType: str
+        :param ResourceType: The product to which the tracking set event belongs. The value can be a single product such as `cos`, or `*` that indicates all products.
+        :type ResourceType: str
+        :param Status: Tracking set status (0: Not enabled; 1: Enabled)
+        :type Status: int
+        :param EventNames: The list of API names of tracking set events. When `ResourceType` is `*`, the value of `EventNames` must be `*`. When `ResourceType` is a specified product, the value of `EventNames` can be `*`. When `ResourceType` is `cos` or `cls`, up to 10 APIs are supported.
+        :type EventNames: list of str
+        :param Storage: Storage type of shipped data. Valid values: `cos`, `cls`.
+        :type Storage: :class:`tencentcloud.cloudaudit.v20190319.models.Storage`
+        :param TrackForAllMembers: Whether to enable the feature of shipping organization members’ operation logs to the organization admin account or the trusted service admin account (0: Not enabled; 1: Enabled. This feature can only be enabled by the organization admin account or the trusted service admin account)
+        :type TrackForAllMembers: int
+        """
+        self.Name = None
+        self.ActionType = None
+        self.ResourceType = None
+        self.Status = None
+        self.EventNames = None
+        self.Storage = None
+        self.TrackForAllMembers = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.ActionType = params.get("ActionType")
+        self.ResourceType = params.get("ResourceType")
+        self.Status = params.get("Status")
+        self.EventNames = params.get("EventNames")
+        if params.get("Storage") is not None:
+            self.Storage = Storage()
+            self.Storage._deserialize(params.get("Storage"))
+        self.TrackForAllMembers = params.get("TrackForAllMembers")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class CreateAuditTrackResponse(AbstractModel):
     """CreateAuditTrack response structure.
@@ -256,13 +300,17 @@ class CreateAuditTrackResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param TrackId: Tracking set ID
+        :type TrackId: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.TrackId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.TrackId = params.get("TrackId")
         self.RequestId = params.get("RequestId")
 
 
@@ -315,6 +363,24 @@ class DeleteAuditTrackRequest(AbstractModel):
     """DeleteAuditTrack request structure.
 
     """
+
+    def __init__(self):
+        r"""
+        :param TrackId: Tracking set ID
+        :type TrackId: int
+        """
+        self.TrackId = None
+
+
+    def _deserialize(self, params):
+        self.TrackId = params.get("TrackId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DeleteAuditTrackResponse(AbstractModel):
@@ -427,10 +493,108 @@ class DescribeAuditResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeAuditTrackRequest(AbstractModel):
+    """DescribeAuditTrack request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TrackId: Tracking set ID
+        :type TrackId: int
+        """
+        self.TrackId = None
+
+
+    def _deserialize(self, params):
+        self.TrackId = params.get("TrackId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAuditTrackResponse(AbstractModel):
+    """DescribeAuditTrack response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Tracking set name
+        :type Name: str
+        :param ActionType: Tracking set event type (`Read`: Read; `Write`: Write; `*`: All)
+        :type ActionType: str
+        :param ResourceType: The product to which the tracking set event belongs, such as `cos`, or `*` that indicates all products
+        :type ResourceType: str
+        :param Status: Tracking set status (0: Not enabled; 1: Enabled)
+        :type Status: int
+        :param EventNames: The list of API names of tracking set events (`*`: All)
+        :type EventNames: list of str
+        :param Storage: Storage type of shipped data. Valid values: `cos`, `cls`.
+        :type Storage: :class:`tencentcloud.cloudaudit.v20190319.models.Storage`
+        :param CreateTime: Creation time of the tracking set
+        :type CreateTime: str
+        :param TrackForAllMembers: Whether to enable the feature of shipping organization members’ operation logs to the organization admin account or the trusted service admin account
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TrackForAllMembers: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Name = None
+        self.ActionType = None
+        self.ResourceType = None
+        self.Status = None
+        self.EventNames = None
+        self.Storage = None
+        self.CreateTime = None
+        self.TrackForAllMembers = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.ActionType = params.get("ActionType")
+        self.ResourceType = params.get("ResourceType")
+        self.Status = params.get("Status")
+        self.EventNames = params.get("EventNames")
+        if params.get("Storage") is not None:
+            self.Storage = Storage()
+            self.Storage._deserialize(params.get("Storage"))
+        self.CreateTime = params.get("CreateTime")
+        self.TrackForAllMembers = params.get("TrackForAllMembers")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAuditTracksRequest(AbstractModel):
     """DescribeAuditTracks request structure.
 
     """
+
+    def __init__(self):
+        r"""
+        :param PageNumber: Page number
+        :type PageNumber: int
+        :param PageSize: The number of tracking sets per page
+        :type PageSize: int
+        """
+        self.PageNumber = None
+        self.PageSize = None
+
+
+    def _deserialize(self, params):
+        self.PageNumber = params.get("PageNumber")
+        self.PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeAuditTracksResponse(AbstractModel):
@@ -440,13 +604,26 @@ class DescribeAuditTracksResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Tracks: Tracking set list
+        :type Tracks: list of Tracks
+        :param TotalCount: Total number of tracking sets
+        :type TotalCount: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.Tracks = None
+        self.TotalCount = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("Tracks") is not None:
+            self.Tracks = []
+            for item in params.get("Tracks"):
+                obj = Tracks()
+                obj._deserialize(item)
+                self.Tracks.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -465,7 +642,7 @@ class DescribeEventsRequest(AbstractModel):
         :type NextToken: int
         :param MaxResults: Max number of returned logs (up to 50).
         :type MaxResults: int
-        :param LookupAttributes: Search criterion. Valid values: RequestId, EventName, ActionType (write/read), PrincipalId (sub-account), ResourceType, ResourceName, AccessKeyId, SensitiveAction, ApiErrorCode, and CamErrorCode.
+        :param LookupAttributes: Search condition. Valid values: `RequestId`, `EventName`, `ActionType` (write/read), `PrincipalId` (sub-account), `ResourceType`, `ResourceName`, `AccessKeyId`, `SensitiveAction`, `ApiErrorCode`, `CamErrorCode`, and `Tags` (Format of AttributeValue: [{"key":"*","value":"*"}])
         :type LookupAttributes: list of LookupAttribute
         :param IsReturnLocation: Whether to return the IP location. `1`: yes, `0`: no.
         :type IsReturnLocation: int
@@ -506,15 +683,15 @@ class DescribeEventsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ListOver: Whether the logset ends.
+        :param ListOver: Whether the log list has come to an end. `true`: Yes. Pagination is not required.
         :type ListOver: bool
         :param NextToken: Credential for viewing more logs.
         :type NextToken: int
         :param Events: Logset.
 Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :type Events: list of Event
-        :param TotalCount: Total number of events.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param TotalCount: This parameter has been deprecated. Please use `ListOver` and `NextToken` for pagination, and read data of the next page when the value of `ListOver` is `false`.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type TotalCount: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -962,6 +1139,54 @@ class ModifyAuditTrackRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param TrackId: Tracking set ID
+        :type TrackId: int
+        :param Name: Tracking set name, which can only contain 3-48 letters, digits, hyphens, and underscores.
+        :type Name: str
+        :param ActionType: Tracking set event type (`Read`: Read; `Write`: Write; `*`: All)
+        :type ActionType: str
+        :param ResourceType: The product to which the tracking set event belongs. The value can be a single product such as `cos`, or `*` that indicates all products.
+        :type ResourceType: str
+        :param Status: Tracking set status (0: Not enabled; 1: Enabled)
+        :type Status: int
+        :param EventNames: The list of API names of tracking set events. When `ResourceType` is `*`, the value of `EventNames` must be `*`. When `ResourceType` is a specified product, the value of `EventNames` can be `*`. When `ResourceType` is `cos` or `cls`, up to 10 APIs are supported.
+        :type EventNames: list of str
+        :param Storage: Storage type of shipped data. Valid values: `cos`, `cls`.
+        :type Storage: :class:`tencentcloud.cloudaudit.v20190319.models.Storage`
+        :param TrackForAllMembers: Whether to enable the feature of shipping organization members’ operation logs to the organization admin account or the trusted service admin account (0: Not enabled; 1: Enabled. This feature can only be enabled by the organization admin account or the trusted service admin account)
+        :type TrackForAllMembers: int
+        """
+        self.TrackId = None
+        self.Name = None
+        self.ActionType = None
+        self.ResourceType = None
+        self.Status = None
+        self.EventNames = None
+        self.Storage = None
+        self.TrackForAllMembers = None
+
+
+    def _deserialize(self, params):
+        self.TrackId = params.get("TrackId")
+        self.Name = params.get("Name")
+        self.ActionType = params.get("ActionType")
+        self.ResourceType = params.get("ResourceType")
+        self.Status = params.get("Status")
+        self.EventNames = params.get("EventNames")
+        if params.get("Storage") is not None:
+            self.Storage = Storage()
+            self.Storage._deserialize(params.get("Storage"))
+        self.TrackForAllMembers = params.get("TrackForAllMembers")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class ModifyAuditTrackResponse(AbstractModel):
     """ModifyAuditTrack response structure.
@@ -1097,6 +1322,96 @@ class StopLoggingResponse(AbstractModel):
     def _deserialize(self, params):
         self.IsSuccess = params.get("IsSuccess")
         self.RequestId = params.get("RequestId")
+
+
+class Storage(AbstractModel):
+    """Tracking set storage information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StorageType: Storage type (Valid values: cos, cls)
+        :type StorageType: str
+        :param StorageRegion: Storage region
+        :type StorageRegion: str
+        :param StorageName: Storage name. For COS, the storage name is the custom bucket name, which can contain up to 50 lowercase letters, digits, and hyphens. It cannot contain "-APPID" and cannot start or end with a hyphen. For CLS, the storage name is the log topic ID, which can contain 1-50 characters.
+        :type StorageName: str
+        :param StoragePrefix: Storage directory prefix. The COS log file prefix can only contain 3-40 letters and digits.
+        :type StoragePrefix: str
+        """
+        self.StorageType = None
+        self.StorageRegion = None
+        self.StorageName = None
+        self.StoragePrefix = None
+
+
+    def _deserialize(self, params):
+        self.StorageType = params.get("StorageType")
+        self.StorageRegion = params.get("StorageRegion")
+        self.StorageName = params.get("StorageName")
+        self.StoragePrefix = params.get("StoragePrefix")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Tracks(AbstractModel):
+    """Tracking set list
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Tracking set name
+        :type Name: str
+        :param ActionType: Tracking set event type (`Read`: Read; `Write`: Write; `*`: All)
+        :type ActionType: str
+        :param ResourceType: The product to which the tracking set event belongs, such as `cos`, or `*` that indicates all products
+        :type ResourceType: str
+        :param Status: Tracking set status (0: Not enabled; 1: Enabled)
+        :type Status: int
+        :param EventNames: The list of API names of tracking set events (`*`: All)
+        :type EventNames: list of str
+        :param Storage: Storage type of shipped data. Valid values: `cos`, `cls`.
+        :type Storage: :class:`tencentcloud.cloudaudit.v20190319.models.Storage`
+        :param CreateTime: Creation time of the tracking set
+        :type CreateTime: str
+        :param TrackId: Tracking set ID
+        :type TrackId: int
+        """
+        self.Name = None
+        self.ActionType = None
+        self.ResourceType = None
+        self.Status = None
+        self.EventNames = None
+        self.Storage = None
+        self.CreateTime = None
+        self.TrackId = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.ActionType = params.get("ActionType")
+        self.ResourceType = params.get("ResourceType")
+        self.Status = params.get("Status")
+        self.EventNames = params.get("EventNames")
+        if params.get("Storage") is not None:
+            self.Storage = Storage()
+            self.Storage._deserialize(params.get("Storage"))
+        self.CreateTime = params.get("CreateTime")
+        self.TrackId = params.get("TrackId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class UpdateAuditRequest(AbstractModel):

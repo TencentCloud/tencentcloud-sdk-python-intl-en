@@ -1805,6 +1805,35 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePrometheusZones(self, request):
+        """This API is used to list the AZs of Tencent Managed Service for Prometheus (TMP).
+
+        :param request: Request instance for DescribePrometheusZones.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusZonesRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusZonesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePrometheusZones", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePrometheusZonesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRecordingRules(self, request):
         """This API is used to query Prometheus recording rules by filter.
 

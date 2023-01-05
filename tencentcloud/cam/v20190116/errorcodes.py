@@ -200,6 +200,9 @@ INVALIDPARAMETER_ROLENOTEXIST = 'InvalidParameter.RoleNotExist'
 # `Scope` field invalid.
 INVALIDPARAMETER_SCOPEERROR = 'InvalidParameter.ScopeError'
 
+# 
+INVALIDPARAMETER_SEARCHKEYWORDLENGTHERROR = 'InvalidParameter.SearchKeywordLengthError'
+
 # Service policies cannot be used for permission boundaries.
 INVALIDPARAMETER_SERVICELINKEDPOLICYCANTINPERMISSIONBOUNDARY = 'InvalidParameter.ServiceLinkedPolicyCantInPermissionBoundary'
 
@@ -286,6 +289,9 @@ RESOURCENOTFOUND_NOTFOUND = 'ResourceNotFound.NotFound'
 
 # Resources specified by `PolicyId` does not exist.
 RESOURCENOTFOUND_POLICYIDNOTFOUND = 'ResourceNotFound.PolicyIdNotFound'
+
+# The key does not exist.
+RESOURCENOTFOUND_SECRETNOTEXIST = 'ResourceNotFound.SecretNotExist'
 
 # User does not exist.
 RESOURCENOTFOUND_USERNOTEXIST = 'ResourceNotFound.UserNotExist'
