@@ -59,6 +59,9 @@ INVALIDPARAMETERVALUE_ZONENOTSUPPORT = 'InvalidParameterValue.ZoneNotSupport'
 # The quota limit has been reached.
 LIMITEXCEEDED = 'LimitExceeded'
 
+# Missing parameter
+MISSINGPARAMETER = 'MissingParameter'
+
 # Operation denied.
 OPERATIONDENIED = 'OperationDenied'
 

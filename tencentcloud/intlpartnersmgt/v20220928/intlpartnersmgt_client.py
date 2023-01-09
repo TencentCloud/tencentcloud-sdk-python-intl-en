@@ -264,3 +264,90 @@ class IntlpartnersmgtClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryVoucherAmountByUin(self, request):
+        """This API is used to query the voucher quota based on the customer UIN.
+
+        :param request: Request instance for QueryVoucherAmountByUin.
+        :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.QueryVoucherAmountByUinRequest`
+        :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.QueryVoucherAmountByUinResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryVoucherAmountByUin", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryVoucherAmountByUinResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryVoucherListByUin(self, request):
+        """This API is used to query the voucher list based on the customer UIN.
+
+        :param request: Request instance for QueryVoucherListByUin.
+        :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.QueryVoucherListByUinRequest`
+        :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.QueryVoucherListByUinResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryVoucherListByUin", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryVoucherListByUinResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryVoucherPool(self, request):
+        """This API is used to query the voucher quota pool.
+
+        :param request: Request instance for QueryVoucherPool.
+        :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.QueryVoucherPoolRequest`
+        :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.QueryVoucherPoolResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryVoucherPool", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryVoucherPoolResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

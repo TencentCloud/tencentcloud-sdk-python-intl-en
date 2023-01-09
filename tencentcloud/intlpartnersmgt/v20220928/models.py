@@ -610,3 +610,255 @@ class QueryPartnerCreditResponse(AbstractModel):
         self.TotalCredit = params.get("TotalCredit")
         self.RemainingCredit = params.get("RemainingCredit")
         self.RequestId = params.get("RequestId")
+
+
+class QueryVoucherAmountByUinItem(AbstractModel):
+    """Customer voucher quota
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClientUin: Customer UIN
+        :type ClientUin: int
+        :param TotalAmount: Voucher quota
+        :type TotalAmount: float
+        :param RemainAmount: Voucher amount
+        :type RemainAmount: float
+        """
+        self.ClientUin = None
+        self.TotalAmount = None
+        self.RemainAmount = None
+
+
+    def _deserialize(self, params):
+        self.ClientUin = params.get("ClientUin")
+        self.TotalAmount = params.get("TotalAmount")
+        self.RemainAmount = params.get("RemainAmount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryVoucherAmountByUinRequest(AbstractModel):
+    """QueryVoucherAmountByUin request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClientUins: Customer UIN list
+        :type ClientUins: list of int non-negative
+        """
+        self.ClientUins = None
+
+
+    def _deserialize(self, params):
+        self.ClientUins = params.get("ClientUins")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryVoucherAmountByUinResponse(AbstractModel):
+    """QueryVoucherAmountByUin response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: Customer voucher quota information
+        :type Data: list of QueryVoucherAmountByUinItem
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = QueryVoucherAmountByUinItem()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class QueryVoucherListByUinItem(AbstractModel):
+    """Voucher information of a single customer
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClientUin: Customer UIN
+        :type ClientUin: int
+        :param TotalCount: The total number of vouchers
+        :type TotalCount: int
+        :param Data: Voucher details
+        :type Data: list of QueryVoucherListByUinVoucherItem
+        """
+        self.ClientUin = None
+        self.TotalCount = None
+        self.Data = None
+
+
+    def _deserialize(self, params):
+        self.ClientUin = params.get("ClientUin")
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = QueryVoucherListByUinVoucherItem()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryVoucherListByUinRequest(AbstractModel):
+    """QueryVoucherListByUin request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClientUins: Customer UIN list
+        :type ClientUins: list of int non-negative
+        :param Status: Voucher status. If this parameter is not passed in, all status will be queried by default. Valid values: `Unused`, `Used`, `Expired`.
+        :type Status: str
+        """
+        self.ClientUins = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.ClientUins = params.get("ClientUins")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryVoucherListByUinResponse(AbstractModel):
+    """QueryVoucherListByUin response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: Customer voucher information
+        :type Data: list of QueryVoucherListByUinItem
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = QueryVoucherListByUinItem()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class QueryVoucherListByUinVoucherItem(AbstractModel):
+    """Customer voucher information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VoucherId: Voucher ID
+        :type VoucherId: str
+        :param VoucherStatus: Voucher status
+        :type VoucherStatus: str
+        :param TotalAmount: Voucher value
+        :type TotalAmount: float
+        :param RemainAmount: Balance
+        :type RemainAmount: float
+        """
+        self.VoucherId = None
+        self.VoucherStatus = None
+        self.TotalAmount = None
+        self.RemainAmount = None
+
+
+    def _deserialize(self, params):
+        self.VoucherId = params.get("VoucherId")
+        self.VoucherStatus = params.get("VoucherStatus")
+        self.TotalAmount = params.get("TotalAmount")
+        self.RemainAmount = params.get("RemainAmount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryVoucherPoolRequest(AbstractModel):
+    """QueryVoucherPool request structure.
+
+    """
+
+
+class QueryVoucherPoolResponse(AbstractModel):
+    """QueryVoucherPool response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AgentName: Reseller name
+        :type AgentName: str
+        :param AccountType: Reseller role type (1: Reseller; 2: Distributor; 3: Second-level reseller)
+        :type AccountType: int
+        :param TotalQuota: Total quota
+        :type TotalQuota: float
+        :param RemainingQuota: Remaining quota
+        :type RemainingQuota: float
+        :param IssuedNum: The number of issued vouchers
+        :type IssuedNum: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AgentName = None
+        self.AccountType = None
+        self.TotalQuota = None
+        self.RemainingQuota = None
+        self.IssuedNum = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AgentName = params.get("AgentName")
+        self.AccountType = params.get("AccountType")
+        self.TotalQuota = params.get("TotalQuota")
+        self.RemainingQuota = params.get("RemainingQuota")
+        self.IssuedNum = params.get("IssuedNum")
+        self.RequestId = params.get("RequestId")

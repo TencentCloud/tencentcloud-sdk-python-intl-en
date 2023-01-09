@@ -830,6 +830,63 @@ class CreateInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateParameterTemplateRequest(AbstractModel):
+    """CreateParameterTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateName: Template name, which can contain 1-60 letters, digits, and symbols (-_./()[]()+=:@).
+        :type TemplateName: str
+        :param DBMajorVersion: The major database version number, such as 11, 12, 13.
+        :type DBMajorVersion: str
+        :param DBEngine: Database engine, such as postgresql, mssql_compatible.
+        :type DBEngine: str
+        :param TemplateDescription: Parameter template description, which can contain 1-60 letters, digits, and symbols (-_./()[]()+=:@).
+        :type TemplateDescription: str
+        """
+        self.TemplateName = None
+        self.DBMajorVersion = None
+        self.DBEngine = None
+        self.TemplateDescription = None
+
+
+    def _deserialize(self, params):
+        self.TemplateName = params.get("TemplateName")
+        self.DBMajorVersion = params.get("DBMajorVersion")
+        self.DBEngine = params.get("DBEngine")
+        self.TemplateDescription = params.get("TemplateDescription")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateParameterTemplateResponse(AbstractModel):
+    """CreateParameterTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: Parameter template ID, which uniquely identifies a parameter template.
+        :type TemplateId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TemplateId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateReadOnlyDBInstanceRequest(AbstractModel):
     """CreateReadOnlyDBInstance request structure.
 
@@ -1610,6 +1667,47 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.RequestId = params.get("RequestId")
 
 
+class DeleteParameterTemplateRequest(AbstractModel):
+    """DeleteParameterTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: Parameter template ID, which uniquely identifies the parameter template to be operated.
+        :type TemplateId: str
+        """
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteParameterTemplateResponse(AbstractModel):
+    """DeleteParameterTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteReadOnlyGroupNetworkAccessRequest(AbstractModel):
     """DeleteReadOnlyGroupNetworkAccess request structure.
 
@@ -2242,6 +2340,60 @@ class DescribeDBInstanceParametersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDBInstanceSecurityGroupsRequest(AbstractModel):
+    """DescribeDBInstanceSecurityGroups request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: Instance ID. Either this parameter or `ReadOnlyGroupId` must be passed in. If both parameters are passed in, `ReadOnlyGroupId` will be ignored.
+        :type DBInstanceId: str
+        :param ReadOnlyGroupId: RO group ID. Either this parameter or `DBInstanceId` must be passed in. To query the security groups associated with the RO groups, only pass in `ReadOnlyGroupId`.
+        :type ReadOnlyGroupId: str
+        """
+        self.DBInstanceId = None
+        self.ReadOnlyGroupId = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.ReadOnlyGroupId = params.get("ReadOnlyGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBInstanceSecurityGroupsResponse(AbstractModel):
+    """DescribeDBInstanceSecurityGroups response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SecurityGroupSet: Information of security groups in array
+        :type SecurityGroupSet: list of SecurityGroup
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SecurityGroupSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SecurityGroupSet") is not None:
+            self.SecurityGroupSet = []
+            for item in params.get("SecurityGroupSet"):
+                obj = SecurityGroup()
+                obj._deserialize(item)
+                self.SecurityGroupSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDBInstancesRequest(AbstractModel):
     """DescribeDBInstances request structure.
 
@@ -2516,6 +2668,65 @@ class DescribeDatabasesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDefaultParametersRequest(AbstractModel):
+    """DescribeDefaultParameters request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBMajorVersion: The major database version number, such as 11, 12, 13.
+        :type DBMajorVersion: str
+        :param DBEngine: Database engine, such as postgresql, mssql_compatible.
+        :type DBEngine: str
+        """
+        self.DBMajorVersion = None
+        self.DBEngine = None
+
+
+    def _deserialize(self, params):
+        self.DBMajorVersion = params.get("DBMajorVersion")
+        self.DBEngine = params.get("DBEngine")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDefaultParametersResponse(AbstractModel):
+    """DescribeDefaultParameters response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Number of parameters
+        :type TotalCount: int
+        :param ParamInfoSet: Parameter information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ParamInfoSet: list of ParamInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ParamInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ParamInfoSet") is not None:
+            self.ParamInfoSet = []
+            for item in params.get("ParamInfoSet"):
+                obj = ParamInfo()
+                obj._deserialize(item)
+                self.ParamInfoSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeEncryptionKeysRequest(AbstractModel):
     """DescribeEncryptionKeys request structure.
 
@@ -2618,6 +2829,162 @@ class DescribeOrdersResponse(AbstractModel):
                 obj = PgDeal()
                 obj._deserialize(item)
                 self.Deals.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeParameterTemplateAttributesRequest(AbstractModel):
+    """DescribeParameterTemplateAttributes request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: Parameter template ID
+        :type TemplateId: str
+        """
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeParameterTemplateAttributesResponse(AbstractModel):
+    """DescribeParameterTemplateAttributes response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: Parameter template ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TemplateId: str
+        :param TotalCount: Number of parameters contained in the parameter template
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TotalCount: int
+        :param ParamInfoSet: Parameter information contained in the parameter template
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ParamInfoSet: list of ParamInfo
+        :param TemplateName: Parameter template name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TemplateName: str
+        :param DBMajorVersion: Database version applicable to a parameter template
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DBMajorVersion: str
+        :param DBEngine: Database engine applicable to a parameter template
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DBEngine: str
+        :param TemplateDescription: Parameter template description
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TemplateDescription: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TemplateId = None
+        self.TotalCount = None
+        self.ParamInfoSet = None
+        self.TemplateName = None
+        self.DBMajorVersion = None
+        self.DBEngine = None
+        self.TemplateDescription = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ParamInfoSet") is not None:
+            self.ParamInfoSet = []
+            for item in params.get("ParamInfoSet"):
+                obj = ParamInfo()
+                obj._deserialize(item)
+                self.ParamInfoSet.append(obj)
+        self.TemplateName = params.get("TemplateName")
+        self.DBMajorVersion = params.get("DBMajorVersion")
+        self.DBEngine = params.get("DBEngine")
+        self.TemplateDescription = params.get("TemplateDescription")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeParameterTemplatesRequest(AbstractModel):
+    """DescribeParameterTemplates request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Filters: Filter conditions. Valid values: `TemplateName`, `TemplateId`, `DBMajorVersion`, `DBEngine`.
+        :type Filters: list of Filter
+        :param Limit: The maximum number of results returned per page. Value range: 0-100. Default: `20`.
+        :type Limit: int
+        :param Offset: Data offset
+        :type Offset: int
+        :param OrderBy: Sorting metric. Valid values: `CreateTime`, `TemplateName`, `DBMajorVersion`.
+        :type OrderBy: str
+        :param OrderByType: Sorting order. Valid values: `asc` (ascending order),`desc` (descending order).
+        :type OrderByType: str
+        """
+        self.Filters = None
+        self.Limit = None
+        self.Offset = None
+        self.OrderBy = None
+        self.OrderByType = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderByType = params.get("OrderByType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeParameterTemplatesResponse(AbstractModel):
+    """DescribeParameterTemplates response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: The total number of eligible parameter templates
+        :type TotalCount: int
+        :param ParameterTemplateSet: Parameter template list
+        :type ParameterTemplateSet: list of ParameterTemplate
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ParameterTemplateSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ParameterTemplateSet") is not None:
+            self.ParameterTemplateSet = []
+            for item in params.get("ParameterTemplateSet"):
+                obj = ParameterTemplate()
+                obj._deserialize(item)
+                self.ParameterTemplateSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -4122,6 +4489,55 @@ class ModifyDBInstanceReadOnlyGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
+    """ModifyDBInstanceSecurityGroups request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SecurityGroupIdSet: The list of security groups to be associated with the instance or RO groups
+        :type SecurityGroupIdSet: list of str
+        :param DBInstanceId: Instance ID. Either this parameter or `ReadOnlyGroupId` must be passed in. If both parameters are passed in, `ReadOnlyGroupId` will be ignored.
+        :type DBInstanceId: str
+        :param ReadOnlyGroupId: RO group ID. Either this parameter or `DBInstanceId` must be passed in. To modify  the security groups associated with the RO groups, only pass in `ReadOnlyGroupId`.
+        :type ReadOnlyGroupId: str
+        """
+        self.SecurityGroupIdSet = None
+        self.DBInstanceId = None
+        self.ReadOnlyGroupId = None
+
+
+    def _deserialize(self, params):
+        self.SecurityGroupIdSet = params.get("SecurityGroupIdSet")
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.ReadOnlyGroupId = params.get("ReadOnlyGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBInstanceSecurityGroupsResponse(AbstractModel):
+    """ModifyDBInstanceSecurityGroups response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyDBInstanceSpecRequest(AbstractModel):
     """ModifyDBInstanceSpec request structure.
 
@@ -4249,6 +4665,68 @@ class ModifyDBInstancesProjectResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Count = params.get("Count")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyParameterTemplateRequest(AbstractModel):
+    """ModifyParameterTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: Parameter template ID, which uniquely identifies a parameter template and cannot be modified.
+        :type TemplateId: str
+        :param TemplateName: Parameter template name, which can contain 1-60 letters, digits, and symbols (-_./()[]()+=:@). If this field is empty, the original parameter template name will be used.
+        :type TemplateName: str
+        :param TemplateDescription: Parameter template description, which can contain 1-60 letters, digits, and symbols (-_./()[]()+=:@). If this parameter is not passed in, the original parameter template description will be used.
+        :type TemplateDescription: str
+        :param ModifyParamEntrySet: The set of parameters to be modified or added. A parameter cannot be put to `ModifyParamEntrySet` and `DeleteParamSet` at the same time, that is, it cannot be modified/added and deleted at the same time.
+        :type ModifyParamEntrySet: list of ParamEntry
+        :param DeleteParamSet: The set of parameters to be deleted in the template. A parameter cannot be put to `ModifyParamEntrySet` and `DeleteParamSet` at the same time, that is, it cannot be modified/added and deleted at the same time.
+        :type DeleteParamSet: list of str
+        """
+        self.TemplateId = None
+        self.TemplateName = None
+        self.TemplateDescription = None
+        self.ModifyParamEntrySet = None
+        self.DeleteParamSet = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.TemplateName = params.get("TemplateName")
+        self.TemplateDescription = params.get("TemplateDescription")
+        if params.get("ModifyParamEntrySet") is not None:
+            self.ModifyParamEntrySet = []
+            for item in params.get("ModifyParamEntrySet"):
+                obj = ParamEntry()
+                obj._deserialize(item)
+                self.ModifyParamEntrySet.append(obj)
+        self.DeleteParamSet = params.get("DeleteParamSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyParameterTemplateResponse(AbstractModel):
+    """ModifyParameterTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -4871,6 +5349,46 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class ParameterTemplate(AbstractModel):
+    """Basic information of a parameter template
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: Parameter template ID
+        :type TemplateId: str
+        :param TemplateName: Parameter template name
+        :type TemplateName: str
+        :param DBMajorVersion: Database version applicable to a parameter template
+        :type DBMajorVersion: str
+        :param DBEngine: Database engine applicable to a parameter template
+        :type DBEngine: str
+        :param TemplateDescription: Parameter template description
+        :type TemplateDescription: str
+        """
+        self.TemplateId = None
+        self.TemplateName = None
+        self.DBMajorVersion = None
+        self.DBEngine = None
+        self.TemplateDescription = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.TemplateName = params.get("TemplateName")
+        self.DBMajorVersion = params.get("DBMajorVersion")
+        self.DBEngine = params.get("DBEngine")
+        self.TemplateDescription = params.get("TemplateDescription")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PgDeal(AbstractModel):
     """Order details
 
@@ -4906,6 +5424,46 @@ class PgDeal(AbstractModel):
         self.PayMode = params.get("PayMode")
         self.FlowId = params.get("FlowId")
         self.DBInstanceIdSet = params.get("DBInstanceIdSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PolicyRule(AbstractModel):
+    """Rule information for security group
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Action: Policy, Valid values: `ACCEPT`, `DROP`.
+        :type Action: str
+        :param CidrIp: Source or destination IP or IP range, such as 172.16.0.0/12.
+        :type CidrIp: str
+        :param PortRange: Port
+        :type PortRange: str
+        :param IpProtocol: Network protocol. UDP and TCP are supported.
+        :type IpProtocol: str
+        :param Description: The rule description
+        :type Description: str
+        """
+        self.Action = None
+        self.CidrIp = None
+        self.PortRange = None
+        self.IpProtocol = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.Action = params.get("Action")
+        self.CidrIp = params.get("CidrIp")
+        self.PortRange = params.get("PortRange")
+        self.IpProtocol = params.get("IpProtocol")
+        self.Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5353,6 +5911,64 @@ class RestartDBInstanceResponse(AbstractModel):
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
         self.RequestId = params.get("RequestId")
+
+
+class SecurityGroup(AbstractModel):
+    """Security group information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: Project ID
+        :type ProjectId: int
+        :param CreateTime: Creation time
+        :type CreateTime: str
+        :param Inbound: Inbound rule
+        :type Inbound: list of PolicyRule
+        :param Outbound: Outbound rule
+        :type Outbound: list of PolicyRule
+        :param SecurityGroupId: Security group ID
+        :type SecurityGroupId: str
+        :param SecurityGroupName: Security group name
+        :type SecurityGroupName: str
+        :param SecurityGroupDescription: Security group remarks
+        :type SecurityGroupDescription: str
+        """
+        self.ProjectId = None
+        self.CreateTime = None
+        self.Inbound = None
+        self.Outbound = None
+        self.SecurityGroupId = None
+        self.SecurityGroupName = None
+        self.SecurityGroupDescription = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.CreateTime = params.get("CreateTime")
+        if params.get("Inbound") is not None:
+            self.Inbound = []
+            for item in params.get("Inbound"):
+                obj = PolicyRule()
+                obj._deserialize(item)
+                self.Inbound.append(obj)
+        if params.get("Outbound") is not None:
+            self.Outbound = []
+            for item in params.get("Outbound"):
+                obj = PolicyRule()
+                obj._deserialize(item)
+                self.Outbound.append(obj)
+        self.SecurityGroupId = params.get("SecurityGroupId")
+        self.SecurityGroupName = params.get("SecurityGroupName")
+        self.SecurityGroupDescription = params.get("SecurityGroupDescription")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ServerlessDBAccount(AbstractModel):

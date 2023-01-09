@@ -1043,6 +1043,77 @@ class CreateConsumerResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateInstancePostRequest(AbstractModel):
+    """CreateInstancePost request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceName: Instance name, which is a string of up to 64 characters. It can contain letters, digits, and hyphens (-) and must start with a letter.
+        :type InstanceName: str
+        :param BandWidth: Instance bandwidth
+        :type BandWidth: int
+        :param VpcId: VPC ID. If this parameter is left empty, the classic network will be used by default.
+        :type VpcId: str
+        :param SubnetId: Subnet ID, which is required for a VPC but not for the classic network.
+        :type SubnetId: str
+        :param MsgRetentionTime: The maximum retention period for instance logs in minutes. Default value: 1,440 minutes (1 day). Max value: 12960 minutes (90 days). This parameter is optional.
+        :type MsgRetentionTime: int
+        :param ZoneId: AZ
+        :type ZoneId: int
+        :param ClusterId: Cluster ID, which can be selected when you create an instance.
+        :type ClusterId: int
+        """
+        self.InstanceName = None
+        self.BandWidth = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.MsgRetentionTime = None
+        self.ZoneId = None
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceName = params.get("InstanceName")
+        self.BandWidth = params.get("BandWidth")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.MsgRetentionTime = params.get("MsgRetentionTime")
+        self.ZoneId = params.get("ZoneId")
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateInstancePostResponse(AbstractModel):
+    """CreateInstancePost response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Returned result
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = JgwOperateResponse()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class CreateInstancePreData(AbstractModel):
     """Data returned by the `CreateInstancePre` API.
 
@@ -3436,6 +3507,409 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
+class InquireCkafkaPriceRequest(AbstractModel):
+    """InquireCkafkaPrice request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceType: `standard`: Standard Edition; `profession`: Pro Edition
+        :type InstanceType: str
+        :param InstanceChargeParam: Billing mode for instance purchase/renewal. If this parameter is left empty when you purchase an instance, the fees for one month under the monthly subscription mode will be displayed by default.
+        :type InstanceChargeParam: :class:`tencentcloud.ckafka.v20190819.models.InstanceChargeParam`
+        :param InstanceNum: The number of instances to be purchased or renewed. If this parameter is left empty, the default value is `1`.
+        :type InstanceNum: int
+        :param Bandwidth: Private network bandwidth in MB/sec, which is required when you purchase an instance.
+        :type Bandwidth: int
+        :param InquiryDiskParam: Disk type and size, which is required when you purchase an instance.
+        :type InquiryDiskParam: :class:`tencentcloud.ckafka.v20190819.models.InquiryDiskParam`
+        :param MessageRetention: Message retention period in hours, which is required when you purchase an instance.
+        :type MessageRetention: int
+        :param Topic: The number of instance topics to be purchased, which is required when you purchase an instance.
+        :type Topic: int
+        :param Partition: The number of instance partitions to be purchased, which is required when you purchase an instance.
+        :type Partition: int
+        :param ZoneIds: The region for instance purchase, which can be obtained via the `DescribeCkafkaZone` API.
+        :type ZoneIds: list of int
+        :param CategoryAction: Operation type flag. `purchase`: Making new purchases; `renew`: Renewing an instance. The default value is `purchase` if this parameter is left empty.
+        :type CategoryAction: str
+        :param BillType: This field is not required.
+        :type BillType: str
+        :param PublicNetworkParam: Billing mode for public network bandwidth, which is required when you purchase public network bandwidth. Currently, public network bandwidth is only supported for Pro Edition.
+        :type PublicNetworkParam: :class:`tencentcloud.ckafka.v20190819.models.InquiryPublicNetworkParam`
+        :param InstanceId: ID of the instance to be renewed, which is required when you renew an instance.
+        :type InstanceId: str
+        """
+        self.InstanceType = None
+        self.InstanceChargeParam = None
+        self.InstanceNum = None
+        self.Bandwidth = None
+        self.InquiryDiskParam = None
+        self.MessageRetention = None
+        self.Topic = None
+        self.Partition = None
+        self.ZoneIds = None
+        self.CategoryAction = None
+        self.BillType = None
+        self.PublicNetworkParam = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceType = params.get("InstanceType")
+        if params.get("InstanceChargeParam") is not None:
+            self.InstanceChargeParam = InstanceChargeParam()
+            self.InstanceChargeParam._deserialize(params.get("InstanceChargeParam"))
+        self.InstanceNum = params.get("InstanceNum")
+        self.Bandwidth = params.get("Bandwidth")
+        if params.get("InquiryDiskParam") is not None:
+            self.InquiryDiskParam = InquiryDiskParam()
+            self.InquiryDiskParam._deserialize(params.get("InquiryDiskParam"))
+        self.MessageRetention = params.get("MessageRetention")
+        self.Topic = params.get("Topic")
+        self.Partition = params.get("Partition")
+        self.ZoneIds = params.get("ZoneIds")
+        self.CategoryAction = params.get("CategoryAction")
+        self.BillType = params.get("BillType")
+        if params.get("PublicNetworkParam") is not None:
+            self.PublicNetworkParam = InquiryPublicNetworkParam()
+            self.PublicNetworkParam._deserialize(params.get("PublicNetworkParam"))
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquireCkafkaPriceResp(AbstractModel):
+    """Values returned by the `InquireCkafkaPrice` API
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstancePrice: Instance price
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstancePrice: :class:`tencentcloud.ckafka.v20190819.models.InquiryPrice`
+        :param PublicNetworkBandwidthPrice: Public network bandwidth price
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PublicNetworkBandwidthPrice: :class:`tencentcloud.ckafka.v20190819.models.InquiryPrice`
+        """
+        self.InstancePrice = None
+        self.PublicNetworkBandwidthPrice = None
+
+
+    def _deserialize(self, params):
+        if params.get("InstancePrice") is not None:
+            self.InstancePrice = InquiryPrice()
+            self.InstancePrice._deserialize(params.get("InstancePrice"))
+        if params.get("PublicNetworkBandwidthPrice") is not None:
+            self.PublicNetworkBandwidthPrice = InquiryPrice()
+            self.PublicNetworkBandwidthPrice._deserialize(params.get("PublicNetworkBandwidthPrice"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquireCkafkaPriceResponse(AbstractModel):
+    """InquireCkafkaPrice response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Output parameters
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.InquireCkafkaPriceResp`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = InquireCkafkaPriceResp()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class InquiryBasePrice(AbstractModel):
+    """Response parameters for instance price query
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UnitPrice: Original unit price
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UnitPrice: float
+        :param UnitPriceDiscount: Discounted unit price
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UnitPriceDiscount: float
+        :param OriginalPrice: Original price in total
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OriginalPrice: float
+        :param DiscountPrice: Discounted price in total
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DiscountPrice: float
+        :param Discount: Discount (%)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Discount: float
+        :param GoodsNum: Number of purchased items
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type GoodsNum: int
+        :param Currency: Currency for payment
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Currency: str
+        :param DiskType: Dedicated disk response parameter
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DiskType: str
+        :param TimeSpan: Validity period
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TimeSpan: int
+        :param TimeUnit: Unit of the validity period (`m`: Month; `h`: Hour)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TimeUnit: str
+        :param Value: Purchase quantity
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Value: int
+        """
+        self.UnitPrice = None
+        self.UnitPriceDiscount = None
+        self.OriginalPrice = None
+        self.DiscountPrice = None
+        self.Discount = None
+        self.GoodsNum = None
+        self.Currency = None
+        self.DiskType = None
+        self.TimeSpan = None
+        self.TimeUnit = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.UnitPrice = params.get("UnitPrice")
+        self.UnitPriceDiscount = params.get("UnitPriceDiscount")
+        self.OriginalPrice = params.get("OriginalPrice")
+        self.DiscountPrice = params.get("DiscountPrice")
+        self.Discount = params.get("Discount")
+        self.GoodsNum = params.get("GoodsNum")
+        self.Currency = params.get("Currency")
+        self.DiskType = params.get("DiskType")
+        self.TimeSpan = params.get("TimeSpan")
+        self.TimeUnit = params.get("TimeUnit")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquiryDetailPrice(AbstractModel):
+    """Prices of different purchased items
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BandwidthPrice: Price of additional private network bandwidth
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BandwidthPrice: :class:`tencentcloud.ckafka.v20190819.models.InquiryBasePrice`
+        :param DiskPrice: Disk price
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DiskPrice: :class:`tencentcloud.ckafka.v20190819.models.InquiryBasePrice`
+        :param PartitionPrice: Price of additional partitions
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PartitionPrice: :class:`tencentcloud.ckafka.v20190819.models.InquiryBasePrice`
+        :param TopicPrice: Price of additional topics
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TopicPrice: :class:`tencentcloud.ckafka.v20190819.models.InquiryBasePrice`
+        :param InstanceTypePrice: Instance package price
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceTypePrice: :class:`tencentcloud.ckafka.v20190819.models.InquiryBasePrice`
+        """
+        self.BandwidthPrice = None
+        self.DiskPrice = None
+        self.PartitionPrice = None
+        self.TopicPrice = None
+        self.InstanceTypePrice = None
+
+
+    def _deserialize(self, params):
+        if params.get("BandwidthPrice") is not None:
+            self.BandwidthPrice = InquiryBasePrice()
+            self.BandwidthPrice._deserialize(params.get("BandwidthPrice"))
+        if params.get("DiskPrice") is not None:
+            self.DiskPrice = InquiryBasePrice()
+            self.DiskPrice._deserialize(params.get("DiskPrice"))
+        if params.get("PartitionPrice") is not None:
+            self.PartitionPrice = InquiryBasePrice()
+            self.PartitionPrice._deserialize(params.get("PartitionPrice"))
+        if params.get("TopicPrice") is not None:
+            self.TopicPrice = InquiryBasePrice()
+            self.TopicPrice._deserialize(params.get("TopicPrice"))
+        if params.get("InstanceTypePrice") is not None:
+            self.InstanceTypePrice = InquiryBasePrice()
+            self.InstanceTypePrice._deserialize(params.get("InstanceTypePrice"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquiryDiskParam(AbstractModel):
+    """Disk purchase parameters
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskType: Disk type. Valid values: `SSD` (SSD), `CLOUD_SSD` (SSD cloud disk), `CLOUD_PREMIUM` (Premium cloud disk), `CLOUD_BASIC` (Cloud disk).
+        :type DiskType: str
+        :param DiskSize: Size of the purchased disk in GB
+        :type DiskSize: int
+        """
+        self.DiskType = None
+        self.DiskSize = None
+
+
+    def _deserialize(self, params):
+        self.DiskType = params.get("DiskType")
+        self.DiskSize = params.get("DiskSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquiryPrice(AbstractModel):
+    """Response parameters for instance price query
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UnitPrice: Original unit price
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UnitPrice: float
+        :param UnitPriceDiscount: Discounted unit price
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UnitPriceDiscount: float
+        :param OriginalPrice: Original price in total
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OriginalPrice: float
+        :param DiscountPrice: Discounted price in total
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DiscountPrice: float
+        :param Discount: Discount (%)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Discount: float
+        :param GoodsNum: Number of purchased items
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type GoodsNum: int
+        :param Currency: Currency for payment
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Currency: str
+        :param DiskType: Dedicated disk response parameter
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DiskType: str
+        :param TimeSpan: Validity period
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TimeSpan: int
+        :param TimeUnit: Unit of the validity period (`m`: Month; `h`: Hour)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TimeUnit: str
+        :param Value: Purchase quantity
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Value: int
+        :param DetailPrices: Prices of different purchased items
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DetailPrices: :class:`tencentcloud.ckafka.v20190819.models.InquiryDetailPrice`
+        """
+        self.UnitPrice = None
+        self.UnitPriceDiscount = None
+        self.OriginalPrice = None
+        self.DiscountPrice = None
+        self.Discount = None
+        self.GoodsNum = None
+        self.Currency = None
+        self.DiskType = None
+        self.TimeSpan = None
+        self.TimeUnit = None
+        self.Value = None
+        self.DetailPrices = None
+
+
+    def _deserialize(self, params):
+        self.UnitPrice = params.get("UnitPrice")
+        self.UnitPriceDiscount = params.get("UnitPriceDiscount")
+        self.OriginalPrice = params.get("OriginalPrice")
+        self.DiscountPrice = params.get("DiscountPrice")
+        self.Discount = params.get("Discount")
+        self.GoodsNum = params.get("GoodsNum")
+        self.Currency = params.get("Currency")
+        self.DiskType = params.get("DiskType")
+        self.TimeSpan = params.get("TimeSpan")
+        self.TimeUnit = params.get("TimeUnit")
+        self.Value = params.get("Value")
+        if params.get("DetailPrices") is not None:
+            self.DetailPrices = InquiryDetailPrice()
+            self.DetailPrices._deserialize(params.get("DetailPrices"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquiryPublicNetworkParam(AbstractModel):
+    """Public network bandwidth parameters
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PublicNetworkChargeType: Public network bandwidth billing mode (`BANDWIDTH_PREPAID`: Monthly subscription; `BANDWIDTH_POSTPAID_BY_HOUR`: Bill-by-hour)
+        :type PublicNetworkChargeType: str
+        :param PublicNetworkMonthly: Public network bandwidth in MB
+        :type PublicNetworkMonthly: int
+        """
+        self.PublicNetworkChargeType = None
+        self.PublicNetworkMonthly = None
+
+
+    def _deserialize(self, params):
+        self.PublicNetworkChargeType = params.get("PublicNetworkChargeType")
+        self.PublicNetworkMonthly = params.get("PublicNetworkMonthly")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Instance(AbstractModel):
     """Instance object
 
@@ -3655,6 +4129,34 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         if params.get("DynamicDiskConfig") is not None:
             self.DynamicDiskConfig = DynamicDiskConfig()
             self.DynamicDiskConfig._deserialize(params.get("DynamicDiskConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceChargeParam(AbstractModel):
+    """Instance billing parameters
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceChargeType: Instance billing mode (`PREPAID`: Monthly subscription; `POSTPAID_BY_HOUR`: Pay-as-you-go)
+        :type InstanceChargeType: str
+        :param InstanceChargePeriod: Validity period, which is only required for the monthly subscription billing mode
+        :type InstanceChargePeriod: int
+        """
+        self.InstanceChargeType = None
+        self.InstanceChargePeriod = None
+
+
+    def _deserialize(self, params):
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        self.InstanceChargePeriod = params.get("InstanceChargePeriod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

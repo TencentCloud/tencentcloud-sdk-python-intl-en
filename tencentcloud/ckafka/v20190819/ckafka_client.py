@@ -171,6 +171,35 @@ class CkafkaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateInstancePost(self, request):
+        """This API is used to create a pay-as-you-go instance.
+
+        :param request: Request instance for CreateInstancePost.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePostRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePostResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateInstancePost", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateInstancePostResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreatePartition(self, request):
         """This API is used to add a partition in a topic.
 
@@ -1057,6 +1086,35 @@ class CkafkaClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.FetchMessageListByOffsetResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def InquireCkafkaPrice(self, request):
+        """This API is used to purchase a CKafka instance or query the instance renewal price.
+
+        :param request: Request instance for InquireCkafkaPrice.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.InquireCkafkaPriceRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InquireCkafkaPriceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InquireCkafkaPrice", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.InquireCkafkaPriceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

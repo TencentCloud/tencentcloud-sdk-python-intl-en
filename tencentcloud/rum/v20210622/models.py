@@ -341,9 +341,9 @@ class CreateTawInstanceRequest(AbstractModel):
         :type PeriodRetain: str
         :param BuyingChannel: Instance purchase channel. Valid value: `cdn`.
         :type BuyingChannel: str
-        :param ResourcePackageType: 
+        :param ResourcePackageType: Type of prepaid resource pack (only required for prepaid mode)
         :type ResourcePackageType: int
-        :param ResourcePackageNum: 
+        :param ResourcePackageNum: The number of prepaid resource packs (only required for prepaid mode)
         :type ResourcePackageNum: int
         """
         self.AreaId = None
@@ -394,15 +394,20 @@ class CreateTawInstanceResponse(AbstractModel):
         r"""
         :param InstanceId: Instance ID
         :type InstanceId: str
+        :param DealName: ID of prepaid order
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DealName: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.InstanceId = None
+        self.DealName = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
+        self.DealName = params.get("DealName")
         self.RequestId = params.get("RequestId")
 
 
