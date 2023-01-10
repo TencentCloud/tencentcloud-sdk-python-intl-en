@@ -1898,6 +1898,51 @@ class UpdateEmailIdentityResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class UpdateEmailSmtpPassWordRequest(AbstractModel):
+    """UpdateEmailSmtpPassWord request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Password: SMTP password. Length limit: 64.
+        :type Password: str
+        :param EmailAddress: Email address. Length limit: 128.
+        :type EmailAddress: str
+        """
+        self.Password = None
+        self.EmailAddress = None
+
+
+    def _deserialize(self, params):
+        self.Password = params.get("Password")
+        self.EmailAddress = params.get("EmailAddress")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateEmailSmtpPassWordResponse(AbstractModel):
+    """UpdateEmailSmtpPassWord response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class UpdateEmailTemplateRequest(AbstractModel):
     """UpdateEmailTemplate request structure.
 

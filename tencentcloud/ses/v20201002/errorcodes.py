@@ -140,6 +140,9 @@ INVALIDPARAMETERVALUE_ILLEGALSENDERNAME = 'InvalidParameterValue.IllegalSenderNa
 # Invalid domain value.
 INVALIDPARAMETERVALUE_INVALIDEMAILIDENTITY = 'InvalidParameterValue.InvalidEmailIdentity'
 
+# The password can contain 10-20 characters and must contain at least 2 unique digits, lowercase letters, and uppercase letters.
+INVALIDPARAMETERVALUE_INVALIDSMTPPASSWORD = 'InvalidParameterValue.InvalidSmtpPassWord'
+
 # You don’t have the sender address. Check if it exists.
 INVALIDPARAMETERVALUE_NOSUCHSENDER = 'InvalidParameterValue.NoSuchSender'
 
@@ -244,6 +247,9 @@ OPERATIONDENIED_RECEIVERNOTEXIST = 'OperationDenied.ReceiverNotExist'
 
 # The recipient group is empty or hasn’t been completely uploaded.
 OPERATIONDENIED_RECEIVERSTATUSERROR = 'OperationDenied.ReceiverStatusError'
+
+# The password cannot be the same as the last set password.
+OPERATIONDENIED_REPEATPASSWORD = 'OperationDenied.RepeatPassWord'
 
 # The sender address does not exist or hasn’t been approved.
 OPERATIONDENIED_SENDADDRESSSTATUSERROR = 'OperationDenied.SendAddressStatusError'

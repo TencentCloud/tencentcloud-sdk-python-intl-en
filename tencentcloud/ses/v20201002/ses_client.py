@@ -695,6 +695,35 @@ class SesClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def UpdateEmailSmtpPassWord(self, request):
+        """This API is used to set the SMTP password. Initially, no SMTP password is set for your email address, so emails cannot be sent over SMTP. To send emails over SMTP, you must set the SMTP password. The set password can be changed subsequently.
+
+        :param request: Request instance for UpdateEmailSmtpPassWord.
+        :type request: :class:`tencentcloud.ses.v20201002.models.UpdateEmailSmtpPassWordRequest`
+        :rtype: :class:`tencentcloud.ses.v20201002.models.UpdateEmailSmtpPassWordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateEmailSmtpPassWord", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateEmailSmtpPassWordResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def UpdateEmailTemplate(self, request):
         """This API is used to update an email template. An updated template must be approved again before it can be used.
 
