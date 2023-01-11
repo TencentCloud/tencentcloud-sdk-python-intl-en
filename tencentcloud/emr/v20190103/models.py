@@ -652,7 +652,6 @@ class CreateClusterRequest(AbstractModel):
 <li>Can contain only Chinese characters, letters, digits, hyphens (-), and underscores (_).</li>
         :type InstanceName: str
         :param InstanceChargeType: The instance billing mode. Valid values:
-<li>`PREPAID`: The prepaid mode, namely monthly subscription.</li>
 <li>`POSTPAID_BY_HOUR`: The postpaid mode by hour.</li>
         :type InstanceChargeType: str
         :param LoginSettings: The instance login setting. This parameter allows you to set a login password or key for your purchased node.
@@ -1852,6 +1851,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         :param IsHandsCluster: Whether it is a manually deployed cluster
 Note: This field may return null, indicating that no valid value can be obtained. 
         :type IsHandsCluster: bool
+        :param OutSideSoftInfo: Client component information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OutSideSoftInfo: list of SoftDependInfo
         """
         self.ClusterId = None
         self.StatusDesc = None
@@ -1881,6 +1883,7 @@ Note: This field may return null, indicating that no valid value can be obtained
         self.ClusterClass = None
         self.IsMultiZoneCluster = None
         self.IsHandsCluster = None
+        self.OutSideSoftInfo = None
 
 
     def _deserialize(self, params):
@@ -1917,6 +1920,59 @@ Note: This field may return null, indicating that no valid value can be obtained
         self.ClusterClass = params.get("ClusterClass")
         self.IsMultiZoneCluster = params.get("IsMultiZoneCluster")
         self.IsHandsCluster = params.get("IsHandsCluster")
+        if params.get("OutSideSoftInfo") is not None:
+            self.OutSideSoftInfo = []
+            for item in params.get("OutSideSoftInfo"):
+                obj = SoftDependInfo()
+                obj._deserialize(item)
+                self.OutSideSoftInfo.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EmrPrice(AbstractModel):
+    """EMR inquiry description
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OriginalCost: The published price.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OriginalCost: str
+        :param DiscountCost: The discounted price.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DiscountCost: str
+        :param Unit: The unit of the billable item.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Unit: str
+        :param PriceSpec: The queried spec.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PriceSpec: :class:`tencentcloud.emr.v20190103.models.PriceResource`
+        :param SupportSpotPaid: Whether spot instances are supported.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SupportSpotPaid: bool
+        """
+        self.OriginalCost = None
+        self.DiscountCost = None
+        self.Unit = None
+        self.PriceSpec = None
+        self.SupportSpotPaid = None
+
+
+    def _deserialize(self, params):
+        self.OriginalCost = params.get("OriginalCost")
+        self.DiscountCost = params.get("DiscountCost")
+        self.Unit = params.get("Unit")
+        if params.get("PriceSpec") is not None:
+            self.PriceSpec = PriceResource()
+            self.PriceSpec._deserialize(params.get("PriceSpec"))
+        self.SupportSpotPaid = params.get("SupportSpotPaid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2290,6 +2346,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param TimeSpan: Purchase duration of instance.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TimeSpan: int
+        :param PriceList: The price list.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PriceList: list of ZoneDetailPriceResult
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -2297,6 +2356,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.DiscountCost = None
         self.TimeUnit = None
         self.TimeSpan = None
+        self.PriceList = None
         self.RequestId = None
 
 
@@ -2305,6 +2365,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.DiscountCost = params.get("DiscountCost")
         self.TimeUnit = params.get("TimeUnit")
         self.TimeSpan = params.get("TimeSpan")
+        if params.get("PriceList") is not None:
+            self.PriceList = []
+            for item in params.get("PriceList"):
+                obj = ZoneDetailPriceResult()
+                obj._deserialize(item)
+                self.PriceList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2478,6 +2544,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param PriceSpec: Node spec queried for price.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PriceSpec: :class:`tencentcloud.emr.v20190103.models.PriceResource`
+        :param MultipleEmrPrice: The inquiry results corresponding to the specs specified by the input parameter `MultipleResources`, with the result of the first spec returned by other output parameters.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MultipleEmrPrice: list of EmrPrice
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -2485,6 +2554,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.DiscountCost = None
         self.Unit = None
         self.PriceSpec = None
+        self.MultipleEmrPrice = None
         self.RequestId = None
 
 
@@ -2495,6 +2565,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("PriceSpec") is not None:
             self.PriceSpec = PriceResource()
             self.PriceSpec._deserialize(params.get("PriceSpec"))
+        if params.get("MultipleEmrPrice") is not None:
+            self.MultipleEmrPrice = []
+            for item in params.get("MultipleEmrPrice"):
+                obj = EmrPrice()
+                obj._deserialize(item)
+                self.MultipleEmrPrice.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2945,6 +3021,40 @@ class NewResourceSpec(AbstractModel):
         
 
 
+class NodeDetailPriceResult(AbstractModel):
+    """Price details by node, used for creating the cluster price list
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NodeType: The node type. Valid values: `master`, `core`, `task`, `common`, `router`, `mysql`
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type NodeType: str
+        :param PartDetailPrice: Price details by node part
+        :type PartDetailPrice: list of PartDetailPriceItem
+        """
+        self.NodeType = None
+        self.PartDetailPrice = None
+
+
+    def _deserialize(self, params):
+        self.NodeType = params.get("NodeType")
+        if params.get("PartDetailPrice") is not None:
+            self.PartDetailPrice = []
+            for item in params.get("PartDetailPrice"):
+                obj = PartDetailPriceItem()
+                obj._deserialize(item)
+                self.PartDetailPrice.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class NodeHardwareInfo(AbstractModel):
     """Node hardware information
 
@@ -3359,6 +3469,56 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
+class PartDetailPriceItem(AbstractModel):
+    """Price details by node part, used for creating the cluster price list
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceType: The type. Valid values: `node` (node); `rootDisk` (system disk); `dataDisk` and `metaDB` (cloud data disk)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceType: str
+        :param Price: Rate (original)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Price: float
+        :param RealCost: Rate (discounted)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RealCost: float
+        :param RealTotalCost: Total price (discounted)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RealTotalCost: float
+        :param Policy: Discount
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Policy: float
+        :param GoodsNum: Quantity
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type GoodsNum: int
+        """
+        self.InstanceType = None
+        self.Price = None
+        self.RealCost = None
+        self.RealTotalCost = None
+        self.Policy = None
+        self.GoodsNum = None
+
+
+    def _deserialize(self, params):
+        self.InstanceType = params.get("InstanceType")
+        self.Price = params.get("Price")
+        self.RealCost = params.get("RealCost")
+        self.RealTotalCost = params.get("RealTotalCost")
+        self.Policy = params.get("Policy")
+        self.GoodsNum = params.get("GoodsNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PersistentVolumeContext(AbstractModel):
     """Description of Pod `PVC` storage method
 
@@ -3403,7 +3563,7 @@ class Placement(AbstractModel):
         r"""
         :param Zone: The ID of the availability zone where the instance resides, such as `ap-guangzhou-1`. You can call the [DescribeZones](https://intl.cloud.tencent.com/document/product/213/15707?from_cn_redirect=1) API and obtain this ID from the `Zone` field in the response.
         :type Zone: str
-        :param ProjectId: The ID of the project to which the instance belongs. You can call the [DescribeProject](https://intl.cloud.tencent.com/document/api/651/78725?from_cn_redirect=1) and obtain this ID from the `projectId` field in the response. If this is left empty, the ID of the default project is used.
+        :param ProjectId: Project ID of the instance. If no ID is passed in, the default project ID is used.
         :type ProjectId: int
         """
         self.Zone = None
@@ -4244,7 +4404,6 @@ class ScaleOutClusterRequest(AbstractModel):
     def __init__(self):
         r"""
         :param InstanceChargeType: The node billing mode. Valid values:
-<li>`PREPAID`：The prepaid mode, namely monthly subscription.</li>
 <li>`POSTPAID_BY_HOUR`: The postpaid mode by hour.</li>
 <li>`SPOTPAID`: The spot instance mode (for task nodes only).</li>
         :type InstanceChargeType: str
@@ -4737,6 +4896,34 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         
 
 
+class SoftDependInfo(AbstractModel):
+    """Client component dependencies
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SoftName: The component name.
+        :type SoftName: str
+        :param Required: Whether the component is required.
+        :type Required: bool
+        """
+        self.SoftName = None
+        self.Required = None
+
+
+    def _deserialize(self, params):
+        self.SoftName = params.get("SoftName")
+        self.Required = params.get("Required")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SubnetInfo(AbstractModel):
     """Subnet information
 
@@ -5125,6 +5312,40 @@ class VirtualPrivateCloud(AbstractModel):
     def _deserialize(self, params):
         self.VpcId = params.get("VpcId")
         self.SubnetId = params.get("SubnetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ZoneDetailPriceResult(AbstractModel):
+    """Price details by AZ, used for creating the cluster price list
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: AZ ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ZoneId: str
+        :param NodeDetailPrice: Price details by node
+        :type NodeDetailPrice: list of NodeDetailPriceResult
+        """
+        self.ZoneId = None
+        self.NodeDetailPrice = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        if params.get("NodeDetailPrice") is not None:
+            self.NodeDetailPrice = []
+            for item in params.get("NodeDetailPrice"):
+                obj = NodeDetailPriceResult()
+                obj._deserialize(item)
+                self.NodeDetailPrice.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

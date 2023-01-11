@@ -89,6 +89,9 @@ INVALIDPARAMETER = 'InvalidParameter'
 # This API was not found.
 INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = 'InvalidParameter.ControllerNotFoundError'
 
+# Parameter passing error.
+INVALIDPARAMETER_EXCEPTIONPARAM = 'InvalidParameter.ExceptionParam'
+
 # Unknown parameter. Please check whether the parameter is valid.
 INVALIDPARAMETER_INVALIDPARAMETERERROR = 'InvalidParameter.InvalidParameterError'
 
@@ -175,6 +178,9 @@ INVALIDPARAMETERVALUE_VPCNOTFOUND = 'InvalidParameterValue.VpcNotFound'
 
 # The number of instances exceeds the limit.
 LIMITEXCEEDED_USERINSTANCELIMIT = 'LimitExceeded.UserInstanceLimit'
+
+# 
+OPERATIONDENIED_CAMDENIEDERROR = 'OperationDenied.CamDeniedError'
 
 # The current cluster does not allow the operation.
 OPERATIONDENIED_CLUSTEROPNOTALLOWEDERROR = 'OperationDenied.ClusterOpNotAllowedError'

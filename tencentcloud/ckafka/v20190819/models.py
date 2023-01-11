@@ -4628,7 +4628,7 @@ class ModifyInstanceAttributesRequest(AbstractModel):
         :type DynamicRetentionConfig: :class:`tencentcloud.ckafka.v20190819.models.DynamicRetentionTime`
         :param RebalanceTime: Modification of the rebalancing time after upgrade
         :type RebalanceTime: int
-        :param PublicNetwork: Timestamp
+        :param PublicNetwork: Public network bandwidth
         :type PublicNetwork: int
         :param DynamicDiskConfig: Dynamic disk expansion policy configuration.
         :type DynamicDiskConfig: :class:`tencentcloud.ckafka.v20190819.models.DynamicDiskConfig`

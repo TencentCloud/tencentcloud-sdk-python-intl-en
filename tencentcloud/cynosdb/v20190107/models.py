@@ -18,6 +18,44 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class Ability(AbstractModel):
+    """Features supported by the cluster
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IsSupportSlaveZone: Whether secondary AZ is supported
+        :type IsSupportSlaveZone: str
+        :param NonsupportSlaveZoneReason: The reason why secondary AZ is not supported
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type NonsupportSlaveZoneReason: str
+        :param IsSupportRo: Whether read-only instance is supported
+        :type IsSupportRo: str
+        :param NonsupportRoReason: The reason why read-only instance is not supported
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type NonsupportRoReason: str
+        """
+        self.IsSupportSlaveZone = None
+        self.NonsupportSlaveZoneReason = None
+        self.IsSupportRo = None
+        self.NonsupportRoReason = None
+
+
+    def _deserialize(self, params):
+        self.IsSupportSlaveZone = params.get("IsSupportSlaveZone")
+        self.NonsupportSlaveZoneReason = params.get("NonsupportSlaveZoneReason")
+        self.IsSupportRo = params.get("IsSupportRo")
+        self.NonsupportRoReason = params.get("NonsupportRoReason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Account(AbstractModel):
     """Database account information
 
@@ -194,6 +232,10 @@ class AddInstancesRequest(AbstractModel):
         :type OrderSource: str
         :param DealMode: Transaction mode. Valid values: `0` (place and pay for an order), `1` (place an order)
         :type DealMode: int
+        :param ParamTemplateId: Parameter template ID
+        :type ParamTemplateId: int
+        :param InstanceParams: Parameter list, which is valid only if `InstanceParams` is passed in to `ParamTemplateId`.
+        :type InstanceParams: list of ModifyParamItem
         """
         self.ClusterId = None
         self.Cpu = None
@@ -208,6 +250,8 @@ class AddInstancesRequest(AbstractModel):
         self.DbType = None
         self.OrderSource = None
         self.DealMode = None
+        self.ParamTemplateId = None
+        self.InstanceParams = None
 
 
     def _deserialize(self, params):
@@ -224,6 +268,13 @@ class AddInstancesRequest(AbstractModel):
         self.DbType = params.get("DbType")
         self.OrderSource = params.get("OrderSource")
         self.DealMode = params.get("DealMode")
+        self.ParamTemplateId = params.get("ParamTemplateId")
+        if params.get("InstanceParams") is not None:
+            self.InstanceParams = []
+            for item in params.get("InstanceParams"):
+                obj = ModifyParamItem()
+                obj._deserialize(item)
+                self.InstanceParams.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -289,6 +340,81 @@ class Addr(AbstractModel):
     def _deserialize(self, params):
         self.IP = params.get("IP")
         self.Port = params.get("Port")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuditRuleFilters(AbstractModel):
+    """Filter of rule audit
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleFilters: Audit rule
+        :type RuleFilters: list of RuleFilters
+        """
+        self.RuleFilters = None
+
+
+    def _deserialize(self, params):
+        if params.get("RuleFilters") is not None:
+            self.RuleFilters = []
+            for item in params.get("RuleFilters"):
+                obj = RuleFilters()
+                obj._deserialize(item)
+                self.RuleFilters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuditRuleTemplateInfo(AbstractModel):
+    """Details of an audit rule template
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleTemplateId: Rule template ID
+        :type RuleTemplateId: str
+        :param RuleTemplateName: Rule template name
+        :type RuleTemplateName: str
+        :param RuleFilters: Filter of the rule template
+        :type RuleFilters: list of RuleFilters
+        :param Description: Description of a rule template
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Description: str
+        :param CreateAt: Creation time of a rule template
+        :type CreateAt: str
+        """
+        self.RuleTemplateId = None
+        self.RuleTemplateName = None
+        self.RuleFilters = None
+        self.Description = None
+        self.CreateAt = None
+
+
+    def _deserialize(self, params):
+        self.RuleTemplateId = params.get("RuleTemplateId")
+        self.RuleTemplateName = params.get("RuleTemplateName")
+        if params.get("RuleFilters") is not None:
+            self.RuleFilters = []
+            for item in params.get("RuleFilters"):
+                obj = RuleFilters()
+                obj._deserialize(item)
+                self.RuleFilters.append(obj)
+        self.Description = params.get("Description")
+        self.CreateAt = params.get("CreateAt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -440,6 +566,47 @@ class BinlogItem(AbstractModel):
         
 
 
+class CloseAuditServiceRequest(AbstractModel):
+    """CloseAuditService request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloseAuditServiceResponse(AbstractModel):
+    """CloseAuditService response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ClusterInstanceDetail(AbstractModel):
     """Cluster instance information
 
@@ -463,6 +630,8 @@ class ClusterInstanceDetail(AbstractModel):
         :type InstanceMemory: int
         :param InstanceStorage: Disk
         :type InstanceStorage: int
+        :param InstanceRole: Instance role
+        :type InstanceRole: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -472,6 +641,7 @@ class ClusterInstanceDetail(AbstractModel):
         self.InstanceCpu = None
         self.InstanceMemory = None
         self.InstanceStorage = None
+        self.InstanceRole = None
 
 
     def _deserialize(self, params):
@@ -483,6 +653,7 @@ class ClusterInstanceDetail(AbstractModel):
         self.InstanceCpu = params.get("InstanceCpu")
         self.InstanceMemory = params.get("InstanceMemory")
         self.InstanceStorage = params.get("InstanceStorage")
+        self.InstanceRole = params.get("InstanceRole")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -539,6 +710,65 @@ class CreateAccountsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateAuditRuleTemplateRequest(AbstractModel):
+    """CreateAuditRuleTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleFilters: Audit rule
+        :type RuleFilters: list of RuleFilters
+        :param RuleTemplateName: Rule template name
+        :type RuleTemplateName: str
+        :param Description: Rule template description.
+        :type Description: str
+        """
+        self.RuleFilters = None
+        self.RuleTemplateName = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        if params.get("RuleFilters") is not None:
+            self.RuleFilters = []
+            for item in params.get("RuleFilters"):
+                obj = RuleFilters()
+                obj._deserialize(item)
+                self.RuleFilters.append(obj)
+        self.RuleTemplateName = params.get("RuleTemplateName")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAuditRuleTemplateResponse(AbstractModel):
+    """CreateAuditRuleTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleTemplateId: The generated rule template ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RuleTemplateId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RuleTemplateId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RuleTemplateId = params.get("RuleTemplateId")
         self.RequestId = params.get("RequestId")
 
 
@@ -902,60 +1132,110 @@ deleted
         :type ClusterId: str
         :param InstanceNum: Number of instances
         :type InstanceNum: int
-        :param Uin: User `uin`
+        :param Uin: User UIN
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Uin: str
         :param DbType: Engine type
+Note: This field may return null, indicating that no valid values can be obtained.
         :type DbType: str
         :param AppId: User `appid`
+Note: This field may return null, indicating that no valid values can be obtained.
         :type AppId: int
         :param StatusDesc: Cluster status description
+Note: This field may return null, indicating that no valid values can be obtained.
         :type StatusDesc: str
         :param CreateTime: Cluster creation time
+Note: This field may return null, indicating that no valid values can be obtained.
         :type CreateTime: str
-        :param PayMode: Billing mode. 0: pay-as-you-go; 1: monthly subscription
+        :param PayMode: Billing mode. `0`: Pay-as-you-go; `1`: Monthly subscription.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type PayMode: int
         :param PeriodEndTime: End time
+Note: This field may return null, indicating that no valid values can be obtained.
         :type PeriodEndTime: str
         :param Vip: Cluster read-write VIP
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Vip: str
         :param Vport: Cluster read-write vport
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Vport: int
         :param ProjectID: Project ID
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ProjectID: int
         :param VpcId: VPC ID
+Note: This field may return null, indicating that no valid values can be obtained.
         :type VpcId: str
         :param SubnetId: Subnet ID
+Note: This field may return null, indicating that no valid values can be obtained.
         :type SubnetId: str
         :param CynosVersion: TDSQL-C kernel version
+Note: This field may return null, indicating that no valid values can be obtained.
         :type CynosVersion: str
         :param StorageLimit: Storage capacity
+Note: This field may return null, indicating that no valid values can be obtained.
         :type StorageLimit: int
         :param RenewFlag: Renewal flag
+Note: This field may return null, indicating that no valid values can be obtained.
         :type RenewFlag: int
         :param ProcessingTask: Task in progress
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ProcessingTask: str
-        :param Tasks: Array of tasks in cluster
+        :param Tasks: Array of tasks in the cluster
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Tasks: list of ObjectTask
-        :param ResourceTags: Array of tags bound to cluster
+        :param ResourceTags: Array of tags bound to the cluster
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ResourceTags: list of Tag
-        :param DbMode: Database type (`NORMAL` or `SERVERLESS`)
+        :param DbMode: Database type. Valid values: `NORMAL`, `SERVERLESS`.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type DbMode: str
         :param ServerlessStatus: Serverless cluster status when the database type is `SERVERLESS`. Valid values:
-resume
-pause
+`resume`
+`pause`
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ServerlessStatus: str
-        :param Storage: Prepaid cluster storage
+        :param Storage: Prepaid cluster storage capacity
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Storage: int
         :param StorageId: Cluster storage ID used in prepaid storage modification
+Note: This field may return null, indicating that no valid values can be obtained.
         :type StorageId: str
-        :param StoragePayMode: Billing mode of cluster storage. Valid values: `0` (postpaid), `1` (prepaid)
+        :param StoragePayMode: Billing mode of cluster storage. Valid values: `0` (pay-as-you-go), `1` (monthly subscription).
+Note: This field may return null, indicating that no valid values can be obtained.
         :type StoragePayMode: int
-        :param MinStorageSize: The minimum storage corresponding to the compute specifications of the cluster
+        :param MinStorageSize: The minimum storage corresponding to the compute specification of the cluster
+Note: This field may return null, indicating that no valid values can be obtained.
         :type MinStorageSize: int
-        :param MaxStorageSize: The maximum storage corresponding to the compute specifications of the cluster
+        :param MaxStorageSize: The maximum storage corresponding to the compute specification of the cluster
+Note: This field may return null, indicating that no valid values can be obtained.
         :type MaxStorageSize: int
         :param NetAddrs: Network information of the cluster
+Note: This field may return null, indicating that no valid values can be obtained.
         :type NetAddrs: list of NetAddr
+        :param PhysicalZone: Physical AZ
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PhysicalZone: str
+        :param MasterZone: Primary AZ
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MasterZone: str
+        :param HasSlaveZone: Whether there is a secondary AZ
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type HasSlaveZone: str
+        :param SlaveZones: Secondary AZ
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SlaveZones: list of str
+        :param BusinessType: Business type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BusinessType: str
+        :param IsFreeze: Whether to freeze
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsFreeze: str
+        :param OrderSource: Order source
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OrderSource: str
+        :param Ability: Capability
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Ability: :class:`tencentcloud.cynosdb.v20190107.models.Ability`
         """
         self.Status = None
         self.UpdateTime = None
@@ -991,6 +1271,14 @@ pause
         self.MinStorageSize = None
         self.MaxStorageSize = None
         self.NetAddrs = None
+        self.PhysicalZone = None
+        self.MasterZone = None
+        self.HasSlaveZone = None
+        self.SlaveZones = None
+        self.BusinessType = None
+        self.IsFreeze = None
+        self.OrderSource = None
+        self.Ability = None
 
 
     def _deserialize(self, params):
@@ -1043,6 +1331,16 @@ pause
                 obj = NetAddr()
                 obj._deserialize(item)
                 self.NetAddrs.append(obj)
+        self.PhysicalZone = params.get("PhysicalZone")
+        self.MasterZone = params.get("MasterZone")
+        self.HasSlaveZone = params.get("HasSlaveZone")
+        self.SlaveZones = params.get("SlaveZones")
+        self.BusinessType = params.get("BusinessType")
+        self.IsFreeze = params.get("IsFreeze")
+        self.OrderSource = params.get("OrderSource")
+        if params.get("Ability") is not None:
+            self.Ability = Ability()
+            self.Ability._deserialize(params.get("Ability"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1111,6 +1409,72 @@ resuming
 pause
 pausing
         :type ServerlessStatus: str
+        :param LogBin: Binlog switch. Valid values: `ON`, `OFF`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LogBin: str
+        :param PitrType: PITR type. Valid values: `normal`, `redo_pitr`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PitrType: str
+        :param PhysicalZone: Physical AZ
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PhysicalZone: str
+        :param StorageId: Storage ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type StorageId: str
+        :param Storage: Storage capacity in GB
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Storage: int
+        :param MaxStorageSize: Maximum storage specification in GB
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MaxStorageSize: int
+        :param MinStorageSize: Minimum storage specification in GB
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MinStorageSize: int
+        :param StoragePayMode: Storage billing mode. Valid values: `1` (monthly subscription), `0` (pay-as-you-go).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type StoragePayMode: int
+        :param DbMode: Database type. Valid values: `normal`, `serverless`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DbMode: str
+        :param StorageLimit: Maximum storage space
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type StorageLimit: int
+        :param Ability: Features supported by the cluster
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Ability: :class:`tencentcloud.cynosdb.v20190107.models.Ability`
+        :param CynosVersion: TDSQL-C version
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CynosVersion: str
+        :param BusinessType: Business type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BusinessType: str
+        :param HasSlaveZone: Whether there is a secondary AZ
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type HasSlaveZone: str
+        :param IsFreeze: Whether to freeze
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsFreeze: str
+        :param Tasks: Task list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Tasks: list of ObjectTask
+        :param MasterZone: Primary AZ
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MasterZone: str
+        :param SlaveZones: Secondary AZ list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SlaveZones: list of str
+        :param ProxyStatus: Proxy status
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProxyStatus: str
+        :param IsSkipTrade: Whether to skip the transaction
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsSkipTrade: str
+        :param IsOpenPasswordComplexity: Whether to enable password complexity
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsOpenPasswordComplexity: str
+        :param NetworkStatus: Network type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type NetworkStatus: str
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -1136,6 +1500,28 @@ pausing
         self.Zone = None
         self.ResourceTags = None
         self.ServerlessStatus = None
+        self.LogBin = None
+        self.PitrType = None
+        self.PhysicalZone = None
+        self.StorageId = None
+        self.Storage = None
+        self.MaxStorageSize = None
+        self.MinStorageSize = None
+        self.StoragePayMode = None
+        self.DbMode = None
+        self.StorageLimit = None
+        self.Ability = None
+        self.CynosVersion = None
+        self.BusinessType = None
+        self.HasSlaveZone = None
+        self.IsFreeze = None
+        self.Tasks = None
+        self.MasterZone = None
+        self.SlaveZones = None
+        self.ProxyStatus = None
+        self.IsSkipTrade = None
+        self.IsOpenPasswordComplexity = None
+        self.NetworkStatus = None
 
 
     def _deserialize(self, params):
@@ -1178,6 +1564,35 @@ pausing
                 obj._deserialize(item)
                 self.ResourceTags.append(obj)
         self.ServerlessStatus = params.get("ServerlessStatus")
+        self.LogBin = params.get("LogBin")
+        self.PitrType = params.get("PitrType")
+        self.PhysicalZone = params.get("PhysicalZone")
+        self.StorageId = params.get("StorageId")
+        self.Storage = params.get("Storage")
+        self.MaxStorageSize = params.get("MaxStorageSize")
+        self.MinStorageSize = params.get("MinStorageSize")
+        self.StoragePayMode = params.get("StoragePayMode")
+        self.DbMode = params.get("DbMode")
+        self.StorageLimit = params.get("StorageLimit")
+        if params.get("Ability") is not None:
+            self.Ability = Ability()
+            self.Ability._deserialize(params.get("Ability"))
+        self.CynosVersion = params.get("CynosVersion")
+        self.BusinessType = params.get("BusinessType")
+        self.HasSlaveZone = params.get("HasSlaveZone")
+        self.IsFreeze = params.get("IsFreeze")
+        if params.get("Tasks") is not None:
+            self.Tasks = []
+            for item in params.get("Tasks"):
+                obj = ObjectTask()
+                obj._deserialize(item)
+                self.Tasks.append(obj)
+        self.MasterZone = params.get("MasterZone")
+        self.SlaveZones = params.get("SlaveZones")
+        self.ProxyStatus = params.get("ProxyStatus")
+        self.IsSkipTrade = params.get("IsSkipTrade")
+        self.IsOpenPasswordComplexity = params.get("IsOpenPasswordComplexity")
+        self.NetworkStatus = params.get("NetworkStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1577,7 +1992,7 @@ class CynosdbInstanceGrp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AppId: appId
+        :param AppId: User `appId`
         :type AppId: int
         :param ClusterId: Cluster ID
         :type ClusterId: str
@@ -1607,6 +2022,21 @@ class CynosdbInstanceGrp(AbstractModel):
         :type WanStatus: str
         :param InstanceSet: Information of instances contained in instance group
         :type InstanceSet: list of CynosdbInstance
+        :param UniqVpcId: VPC ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UniqVpcId: str
+        :param UniqSubnetId: Subnet ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UniqSubnetId: str
+        :param OldAddrInfo: Information of the old IP
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OldAddrInfo: :class:`tencentcloud.cynosdb.v20190107.models.OldAddrInfo`
+        :param ProcessingTasks: Task in progress
+        :type ProcessingTasks: list of str
+        :param Tasks: Task list
+        :type Tasks: list of ObjectTask
+        :param NetServiceId: biz_net_service table ID
+        :type NetServiceId: int
         """
         self.AppId = None
         self.ClusterId = None
@@ -1623,6 +2053,12 @@ class CynosdbInstanceGrp(AbstractModel):
         self.WanPort = None
         self.WanStatus = None
         self.InstanceSet = None
+        self.UniqVpcId = None
+        self.UniqSubnetId = None
+        self.OldAddrInfo = None
+        self.ProcessingTasks = None
+        self.Tasks = None
+        self.NetServiceId = None
 
 
     def _deserialize(self, params):
@@ -1646,6 +2082,19 @@ class CynosdbInstanceGrp(AbstractModel):
                 obj = CynosdbInstance()
                 obj._deserialize(item)
                 self.InstanceSet.append(obj)
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.UniqSubnetId = params.get("UniqSubnetId")
+        if params.get("OldAddrInfo") is not None:
+            self.OldAddrInfo = OldAddrInfo()
+            self.OldAddrInfo._deserialize(params.get("OldAddrInfo"))
+        self.ProcessingTasks = params.get("ProcessingTasks")
+        if params.get("Tasks") is not None:
+            self.Tasks = []
+            for item in params.get("Tasks"):
+                obj = ObjectTask()
+                obj._deserialize(item)
+                self.Tasks.append(obj)
+        self.NetServiceId = params.get("NetServiceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1685,6 +2134,47 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class DeleteAuditRuleTemplatesRequest(AbstractModel):
+    """DeleteAuditRuleTemplates request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleTemplateIds: Audit rule template ID
+        :type RuleTemplateIds: list of str
+        """
+        self.RuleTemplateIds = None
+
+
+    def _deserialize(self, params):
+        self.RuleTemplateIds = params.get("RuleTemplateIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAuditRuleTemplatesResponse(AbstractModel):
+    """DeleteAuditRuleTemplates response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteBackupRequest(AbstractModel):
     """DeleteBackup request structure.
 
@@ -1694,16 +2184,20 @@ class DeleteBackupRequest(AbstractModel):
         r"""
         :param ClusterId: Cluster ID
         :type ClusterId: str
-        :param SnapshotIdList: Backup file ID
+        :param SnapshotIdList: Backup file ID. This field is used by legacy versions and thus not recommended.
         :type SnapshotIdList: list of int
+        :param BackupIds: Backup file ID. This field is recommended.
+        :type BackupIds: list of int
         """
         self.ClusterId = None
         self.SnapshotIdList = None
+        self.BackupIds = None
 
 
     def _deserialize(self, params):
         self.ClusterId = params.get("ClusterId")
         self.SnapshotIdList = params.get("SnapshotIdList")
+        self.BackupIds = params.get("BackupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1804,6 +2298,128 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self.AccountSet.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAuditRuleTemplatesRequest(AbstractModel):
+    """DescribeAuditRuleTemplates request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleTemplateIds: Rule template ID
+        :type RuleTemplateIds: list of str
+        :param RuleTemplateNames: Rule template name
+        :type RuleTemplateNames: list of str
+        :param Limit: Number of results returned per request. Default value: `20`.
+        :type Limit: int
+        :param Offset: Offset. Default value: `0`.
+        :type Offset: int
+        """
+        self.RuleTemplateIds = None
+        self.RuleTemplateNames = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.RuleTemplateIds = params.get("RuleTemplateIds")
+        self.RuleTemplateNames = params.get("RuleTemplateNames")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAuditRuleTemplatesResponse(AbstractModel):
+    """DescribeAuditRuleTemplates response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Number of eligible instances
+        :type TotalCount: int
+        :param Items: List of rule template details
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Items: list of AuditRuleTemplateInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = AuditRuleTemplateInfo()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAuditRuleWithInstanceIdsRequest(AbstractModel):
+    """DescribeAuditRuleWithInstanceIds request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceIds: Instance ID. Currently, only one single instance can be queried.
+        :type InstanceIds: list of str
+        """
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAuditRuleWithInstanceIdsResponse(AbstractModel):
+    """DescribeAuditRuleWithInstanceIds response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: None
+        :type TotalCount: int
+        :param Items: Audit rule information of the instance
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Items: list of InstanceAuditRule
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = InstanceAuditRule()
+                obj._deserialize(item)
+                self.Items.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3402,6 +4018,45 @@ class InquirePriceRenewResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class InstanceAuditRule(AbstractModel):
+    """Audit rule details of the instance, which is an output parameter of the `DescribeAuditRuleWithInstanceIds` API.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID.
+        :type InstanceId: str
+        :param AuditRule: Whether the audit is rule audit. Valid values: `true` (rule audit), `false` (full audit).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AuditRule: bool
+        :param AuditRuleFilters: Audit rule details, which is valid only when `AuditRule` is `true`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AuditRuleFilters: list of AuditRuleFilters
+        """
+        self.InstanceId = None
+        self.AuditRule = None
+        self.AuditRuleFilters = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.AuditRule = params.get("AuditRule")
+        if params.get("AuditRuleFilters") is not None:
+            self.AuditRuleFilters = []
+            for item in params.get("AuditRuleFilters"):
+                obj = AuditRuleFilters()
+                obj._deserialize(item)
+                self.AuditRuleFilters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InstanceInitInfo(AbstractModel):
     """Instance initialization configuration information
 
@@ -3464,6 +4119,9 @@ class InstanceSpec(AbstractModel):
         :param ZoneStockInfos: Inventory information in a region
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ZoneStockInfos: list of ZoneStockInfo
+        :param StockCount: Quantity in stock
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type StockCount: int
         """
         self.Cpu = None
         self.Memory = None
@@ -3474,6 +4132,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.MaxIops = None
         self.MaxIoBandWidth = None
         self.ZoneStockInfos = None
+        self.StockCount = None
 
 
     def _deserialize(self, params):
@@ -3491,6 +4150,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = ZoneStockInfo()
                 obj._deserialize(item)
                 self.ZoneStockInfos.append(obj)
+        self.StockCount = params.get("StockCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3617,6 +4277,130 @@ class ModifiableInfo(AbstractModel):
     """Details of whether the parameter can be modified
 
     """
+
+
+class ModifyAuditRuleTemplatesRequest(AbstractModel):
+    """ModifyAuditRuleTemplates request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleTemplateIds: Audit rule template ID
+        :type RuleTemplateIds: list of str
+        :param RuleFilters: Audit rule after modification
+        :type RuleFilters: list of RuleFilters
+        :param RuleTemplateName: New name of the rule template
+        :type RuleTemplateName: str
+        :param Description: New description of the rule template
+        :type Description: str
+        """
+        self.RuleTemplateIds = None
+        self.RuleFilters = None
+        self.RuleTemplateName = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.RuleTemplateIds = params.get("RuleTemplateIds")
+        if params.get("RuleFilters") is not None:
+            self.RuleFilters = []
+            for item in params.get("RuleFilters"):
+                obj = RuleFilters()
+                obj._deserialize(item)
+                self.RuleFilters.append(obj)
+        self.RuleTemplateName = params.get("RuleTemplateName")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAuditRuleTemplatesResponse(AbstractModel):
+    """ModifyAuditRuleTemplates response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyAuditServiceRequest(AbstractModel):
+    """ModifyAuditService request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param LogExpireDay: Log retention period
+        :type LogExpireDay: int
+        :param HighLogExpireDay: Frequent log retention period
+        :type HighLogExpireDay: int
+        :param AuditAll: The parameter used to change the audit rule of the instance to full audit
+        :type AuditAll: bool
+        :param AuditRuleFilters: Rule audit
+        :type AuditRuleFilters: list of AuditRuleFilters
+        :param RuleTemplateIds: Rule template ID
+        :type RuleTemplateIds: list of str
+        """
+        self.InstanceId = None
+        self.LogExpireDay = None
+        self.HighLogExpireDay = None
+        self.AuditAll = None
+        self.AuditRuleFilters = None
+        self.RuleTemplateIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.LogExpireDay = params.get("LogExpireDay")
+        self.HighLogExpireDay = params.get("HighLogExpireDay")
+        self.AuditAll = params.get("AuditAll")
+        if params.get("AuditRuleFilters") is not None:
+            self.AuditRuleFilters = []
+            for item in params.get("AuditRuleFilters"):
+                obj = AuditRuleFilters()
+                obj._deserialize(item)
+                self.AuditRuleFilters.append(obj)
+        self.RuleTemplateIds = params.get("RuleTemplateIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAuditServiceResponse(AbstractModel):
+    """ModifyAuditService response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class ModifyBackupConfigRequest(AbstractModel):
@@ -4032,6 +4816,39 @@ class ModifyMaintainPeriodConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyParamItem(AbstractModel):
+    """Information of the modified instance parameter
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ParamName: Parameter name
+        :type ParamName: str
+        :param CurrentValue: Current parameter value
+        :type CurrentValue: str
+        :param OldValue: Old parameter value, which is used only in output parameters.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OldValue: str
+        """
+        self.ParamName = None
+        self.CurrentValue = None
+        self.OldValue = None
+
+
+    def _deserialize(self, params):
+        self.ParamName = params.get("ParamName")
+        self.CurrentValue = params.get("CurrentValue")
+        self.OldValue = params.get("OldValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class NetAddr(AbstractModel):
     """Network information
 
@@ -4063,6 +4880,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param Description: Description
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Description: str
+        :param WanIP: Public IP
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type WanIP: str
+        :param WanStatus: Public network status
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type WanStatus: str
         """
         self.Vip = None
         self.Vport = None
@@ -4072,6 +4895,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.UniqSubnetId = None
         self.UniqVpcId = None
         self.Description = None
+        self.WanIP = None
+        self.WanStatus = None
 
 
     def _deserialize(self, params):
@@ -4083,6 +4908,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.UniqSubnetId = params.get("UniqSubnetId")
         self.UniqVpcId = params.get("UniqVpcId")
         self.Description = params.get("Description")
+        self.WanIP = params.get("WanIP")
+        self.WanStatus = params.get("WanStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4093,25 +4920,28 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class NewAccount(AbstractModel):
-    """Newly created account
+    """The newly created x08 account
 
     """
 
     def __init__(self):
         r"""
-        :param AccountName: Account name
+        :param AccountName: Account name, which can contain 1-16 letters, digits, and underscores. It must begin with a letter and end with a letter or digit.
         :type AccountName: str
-        :param AccountPassword: Password
+        :param AccountPassword: Password, which can contain 8-64 characters.
         :type AccountPassword: str
         :param Host: Host
         :type Host: str
         :param Description: Description
         :type Description: str
+        :param MaxUserConnections: Maximum number of user connections, which cannot be above 10,240.
+        :type MaxUserConnections: int
         """
         self.AccountName = None
         self.AccountPassword = None
         self.Host = None
         self.Description = None
+        self.MaxUserConnections = None
 
 
     def _deserialize(self, params):
@@ -4119,6 +4949,7 @@ class NewAccount(AbstractModel):
         self.AccountPassword = params.get("AccountPassword")
         self.Host = params.get("Host")
         self.Description = params.get("Description")
+        self.MaxUserConnections = params.get("MaxUserConnections")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4264,6 +5095,103 @@ class OfflineInstanceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class OldAddrInfo(AbstractModel):
+    """Database address
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Vip: IP
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Vip: str
+        :param Vport: Port
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Vport: int
+        :param ReturnTime: Expected valid hours of old IPs
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ReturnTime: str
+        """
+        self.Vip = None
+        self.Vport = None
+        self.ReturnTime = None
+
+
+    def _deserialize(self, params):
+        self.Vip = params.get("Vip")
+        self.Vport = params.get("Vport")
+        self.ReturnTime = params.get("ReturnTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OpenAuditServiceRequest(AbstractModel):
+    """OpenAuditService request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param LogExpireDay: Log retention period
+        :type LogExpireDay: int
+        :param HighLogExpireDay: Frequent log retention period
+        :type HighLogExpireDay: int
+        :param AuditRuleFilters: Audit rule. If both this parameter and `RuleTemplateIds` are left empty, full audit will be applied.
+        :type AuditRuleFilters: list of AuditRuleFilters
+        :param RuleTemplateIds: Rule template ID. If both this parameter and `AuditRuleFilters` are left empty, full audit will be applied.
+        :type RuleTemplateIds: list of str
+        """
+        self.InstanceId = None
+        self.LogExpireDay = None
+        self.HighLogExpireDay = None
+        self.AuditRuleFilters = None
+        self.RuleTemplateIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.LogExpireDay = params.get("LogExpireDay")
+        self.HighLogExpireDay = params.get("HighLogExpireDay")
+        if params.get("AuditRuleFilters") is not None:
+            self.AuditRuleFilters = []
+            for item in params.get("AuditRuleFilters"):
+                obj = AuditRuleFilters()
+                obj._deserialize(item)
+                self.AuditRuleFilters.append(obj)
+        self.RuleTemplateIds = params.get("RuleTemplateIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OpenAuditServiceResponse(AbstractModel):
+    """OpenAuditService response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -4743,6 +5671,38 @@ class RollbackTimeRange(AbstractModel):
     def _deserialize(self, params):
         self.TimeRangeStart = params.get("TimeRangeStart")
         self.TimeRangeEnd = params.get("TimeRangeEnd")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleFilters(AbstractModel):
+    """Filter of the audit rule
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: Filter parameter name of the audit rule. Valid values: `host` (client IP), `user` (database account), `dbName` (database name), `sqlType` (SQL type), `sql` (SQL statement).
+        :type Type: str
+        :param Compare: Filter match type of the audit rule. Valid values: `INC` (including), `EXC` (excluding), `EQS` (equal to), `NEQ` (not equal to).
+        :type Compare: str
+        :param Value: Filter match value of the audit rule
+        :type Value: list of str
+        """
+        self.Type = None
+        self.Compare = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Compare = params.get("Compare")
+        self.Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5396,14 +6356,18 @@ class ZoneStockInfo(AbstractModel):
         :type Zone: str
         :param HasStock: Whether there is an inventory.
         :type HasStock: bool
+        :param StockCount: Quantity in stock
+        :type StockCount: int
         """
         self.Zone = None
         self.HasStock = None
+        self.StockCount = None
 
 
     def _deserialize(self, params):
         self.Zone = params.get("Zone")
         self.HasStock = params.get("HasStock")
+        self.StockCount = params.get("StockCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -113,6 +113,35 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CloseAuditService(self, request):
+        """This API is used to disable the audit service for a TDSQL-C for MySQL instance.
+
+        :param request: Request instance for CloseAuditService.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.CloseAuditServiceRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.CloseAuditServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CloseAuditService", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CloseAuditServiceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateAccounts(self, request):
         """This API is used to create an account.
 
@@ -128,6 +157,35 @@ class CynosdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAccountsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateAuditRuleTemplate(self, request):
+        """This API is used to create an audit rule template.
+
+        :param request: Request instance for CreateAuditRuleTemplate.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.CreateAuditRuleTemplateRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.CreateAuditRuleTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAuditRuleTemplate", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAuditRuleTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -200,6 +258,35 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteAuditRuleTemplates(self, request):
+        """This API is used to delete an audit rule template.
+
+        :param request: Request instance for DeleteAuditRuleTemplates.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DeleteAuditRuleTemplatesRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DeleteAuditRuleTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAuditRuleTemplates", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteAuditRuleTemplatesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteBackup(self, request):
         """This API is used to delete the manual backup for a cluster. It cannot be used to delete the automatic backup.
 
@@ -244,6 +331,64 @@ class CynosdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAccountsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAuditRuleTemplates(self, request):
+        """This API is used to query audit rule templates.
+
+        :param request: Request instance for DescribeAuditRuleTemplates.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeAuditRuleTemplatesRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeAuditRuleTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAuditRuleTemplates", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAuditRuleTemplatesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAuditRuleWithInstanceIds(self, request):
+        """This API is used to get the audit rule templates of an instance.
+
+        :param request: Request instance for DescribeAuditRuleWithInstanceIds.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeAuditRuleWithInstanceIdsRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeAuditRuleWithInstanceIdsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAuditRuleWithInstanceIds", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAuditRuleWithInstanceIdsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -433,7 +578,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeClusterDetail(self, request):
-        """This API is used to display cluster details.
+        """This API is used to show the details of an instance.
 
         :param request: Request instance for DescribeClusterDetail.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClusterDetailRequest`
@@ -1012,6 +1157,64 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyAuditRuleTemplates(self, request):
+        """This API is used to modify an audit rule template.
+
+        :param request: Request instance for ModifyAuditRuleTemplates.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyAuditRuleTemplatesRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyAuditRuleTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAuditRuleTemplates", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyAuditRuleTemplatesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyAuditService(self, request):
+        """This API is used to modify the audit configurations of an instance, such as audit log retention period and audit rule.
+
+        :param request: Request instance for ModifyAuditService.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyAuditServiceRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyAuditServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAuditService", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyAuditServiceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyBackupConfig(self, request):
         """This API is used to modify the backup configuration of the specified cluster.
 
@@ -1288,6 +1491,35 @@ class CynosdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.OfflineInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def OpenAuditService(self, request):
+        """This API is used to enable the audit service for a TDSQL-C for MySQL instance.
+
+        :param request: Request instance for OpenAuditService.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.OpenAuditServiceRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.OpenAuditServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OpenAuditService", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.OpenAuditServiceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
