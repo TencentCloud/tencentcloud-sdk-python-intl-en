@@ -274,6 +274,11 @@ def test_import_kms():
     from tencentcloud.kms.v20190118 import models
 
 
+def test_import_lcic():
+    from tencentcloud.lcic.v20220817 import lcic_client
+    from tencentcloud.lcic.v20220817 import models
+
+
 def test_import_lighthouse():
     from tencentcloud.lighthouse.v20200324 import lighthouse_client
     from tencentcloud.lighthouse.v20200324 import models

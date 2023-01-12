@@ -55,6 +55,93 @@ class TemClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateApplicationAutoscaler(self, request):
+        """This API is used to create a scaling rule.
+
+        :param request: Request instance for CreateApplicationAutoscaler.
+        :type request: :class:`tencentcloud.tem.v20210701.models.CreateApplicationAutoscalerRequest`
+        :rtype: :class:`tencentcloud.tem.v20210701.models.CreateApplicationAutoscalerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateApplicationAutoscaler", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateApplicationAutoscalerResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateApplicationService(self, request):
+        """This API is used to create an access policy.
+
+        :param request: Request instance for CreateApplicationService.
+        :type request: :class:`tencentcloud.tem.v20210701.models.CreateApplicationServiceRequest`
+        :rtype: :class:`tencentcloud.tem.v20210701.models.CreateApplicationServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateApplicationService", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateApplicationServiceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateConfigData(self, request):
+        """This API is used to create a configuration.
+
+        :param request: Request instance for CreateConfigData.
+        :type request: :class:`tencentcloud.tem.v20210701.models.CreateConfigDataRequest`
+        :rtype: :class:`tencentcloud.tem.v20210701.models.CreateConfigDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateConfigData", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateConfigDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateCosToken(self, request):
         """This API is used to generate a COS temporary key.
 
@@ -99,6 +186,35 @@ class TemClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateEnvironmentResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateLogConfig(self, request):
+        """This API is used to create a log collecting configuration.
+
+        :param request: Request instance for CreateLogConfig.
+        :type request: :class:`tencentcloud.tem.v20210701.models.CreateLogConfigRequest`
+        :rtype: :class:`tencentcloud.tem.v20210701.models.CreateLogConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateLogConfig", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateLogConfigResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -174,6 +290,64 @@ class TemClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteApplicationAutoscaler(self, request):
+        """This API is used to delete a scaling rule.
+
+        :param request: Request instance for DeleteApplicationAutoscaler.
+        :type request: :class:`tencentcloud.tem.v20210701.models.DeleteApplicationAutoscalerRequest`
+        :rtype: :class:`tencentcloud.tem.v20210701.models.DeleteApplicationAutoscalerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteApplicationAutoscaler", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteApplicationAutoscalerResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteApplicationService(self, request):
+        """This API is used to delete an access policy.
+
+        :param request: Request instance for DeleteApplicationService.
+        :type request: :class:`tencentcloud.tem.v20210701.models.DeleteApplicationServiceRequest`
+        :rtype: :class:`tencentcloud.tem.v20210701.models.DeleteApplicationServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteApplicationService", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteApplicationServiceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteIngress(self, request):
         """This API is used to delete an ingress rule.
 
@@ -232,6 +406,64 @@ class TemClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeApplicationAutoscalerList(self, request):
+        """This API is used to query the scaling rules of an application.
+
+        :param request: Request instance for DescribeApplicationAutoscalerList.
+        :type request: :class:`tencentcloud.tem.v20210701.models.DescribeApplicationAutoscalerListRequest`
+        :rtype: :class:`tencentcloud.tem.v20210701.models.DescribeApplicationAutoscalerListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApplicationAutoscalerList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeApplicationAutoscalerListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeApplicationInfo(self, request):
+        """This API is used to check the basic information of an application.
+
+        :param request: Request instance for DescribeApplicationInfo.
+        :type request: :class:`tencentcloud.tem.v20210701.models.DescribeApplicationInfoRequest`
+        :rtype: :class:`tencentcloud.tem.v20210701.models.DescribeApplicationInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApplicationInfo", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeApplicationInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeApplicationPods(self, request):
         """This API is used to get the list of application pods.
 
@@ -247,6 +479,64 @@ class TemClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeApplicationPodsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeApplicationServiceList(self, request):
+        """This API is used to query the list of access policies.
+
+        :param request: Request instance for DescribeApplicationServiceList.
+        :type request: :class:`tencentcloud.tem.v20210701.models.DescribeApplicationServiceListRequest`
+        :rtype: :class:`tencentcloud.tem.v20210701.models.DescribeApplicationServiceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApplicationServiceList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeApplicationServiceListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeApplications(self, request):
+        """This API is to query the list of running applications.
+
+        :param request: Request instance for DescribeApplications.
+        :type request: :class:`tencentcloud.tem.v20210701.models.DescribeApplicationsRequest`
+        :rtype: :class:`tencentcloud.tem.v20210701.models.DescribeApplicationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApplications", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeApplicationsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -290,8 +580,124 @@ class TemClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeConfigData(self, request):
+        """This API is used to query details of a configuration.
+
+        :param request: Request instance for DescribeConfigData.
+        :type request: :class:`tencentcloud.tem.v20210701.models.DescribeConfigDataRequest`
+        :rtype: :class:`tencentcloud.tem.v20210701.models.DescribeConfigDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeConfigData", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeConfigDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeConfigDataList(self, request):
+        """This API is used to query the list of configurations.
+
+        :param request: Request instance for DescribeConfigDataList.
+        :type request: :class:`tencentcloud.tem.v20210701.models.DescribeConfigDataListRequest`
+        :rtype: :class:`tencentcloud.tem.v20210701.models.DescribeConfigDataListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeConfigDataList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeConfigDataListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeEnvironment(self, request):
+        """This API is used to obtain the basic information of an environment.
+
+        :param request: Request instance for DescribeEnvironment.
+        :type request: :class:`tencentcloud.tem.v20210701.models.DescribeEnvironmentRequest`
+        :rtype: :class:`tencentcloud.tem.v20210701.models.DescribeEnvironmentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEnvironment", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeEnvironmentResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeEnvironmentStatus(self, request):
+        """This API is used to obtain the environment status.
+
+        :param request: Request instance for DescribeEnvironmentStatus.
+        :type request: :class:`tencentcloud.tem.v20210701.models.DescribeEnvironmentStatusRequest`
+        :rtype: :class:`tencentcloud.tem.v20210701.models.DescribeEnvironmentStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEnvironmentStatus", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeEnvironmentStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeEnvironments(self, request):
-        """This API is used to get the list of tenant environments.
+        """This API is used to obtain the list of environments.
 
         :param request: Request instance for DescribeEnvironments.
         :type request: :class:`tencentcloud.tem.v20210701.models.DescribeEnvironmentsRequest`
@@ -377,6 +783,64 @@ class TemClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeLogConfig(self, request):
+        """This API is used to query details of a log collecting configuration.
+
+        :param request: Request instance for DescribeLogConfig.
+        :type request: :class:`tencentcloud.tem.v20210701.models.DescribeLogConfigRequest`
+        :rtype: :class:`tencentcloud.tem.v20210701.models.DescribeLogConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLogConfig", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLogConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePagedLogConfigList(self, request):
+        """This API is used to querying the list of log collecting configurations.
+
+        :param request: Request instance for DescribePagedLogConfigList.
+        :type request: :class:`tencentcloud.tem.v20210701.models.DescribePagedLogConfigListRequest`
+        :rtype: :class:`tencentcloud.tem.v20210701.models.DescribePagedLogConfigListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePagedLogConfigList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePagedLogConfigListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRelatedIngresses(self, request):
         """This API is used to query the list of ingress rules associated with the application.
 
@@ -406,8 +870,37 @@ class TemClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DestroyConfigData(self, request):
+        """This API is used to terminate a configuration.
+
+        :param request: Request instance for DestroyConfigData.
+        :type request: :class:`tencentcloud.tem.v20210701.models.DestroyConfigDataRequest`
+        :rtype: :class:`tencentcloud.tem.v20210701.models.DestroyConfigDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DestroyConfigData", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DestroyConfigDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DestroyEnvironment(self, request):
-        """This API is used to terminate a namespace.
+        """This API is used to terminate an environment.
 
         :param request: Request instance for DestroyEnvironment.
         :type request: :class:`tencentcloud.tem.v20210701.models.DestroyEnvironmentRequest`
@@ -421,6 +914,93 @@ class TemClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DestroyEnvironmentResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DestroyLogConfig(self, request):
+        """This API is used to terminate a log collecting configuration.
+
+        :param request: Request instance for DestroyLogConfig.
+        :type request: :class:`tencentcloud.tem.v20210701.models.DestroyLogConfigRequest`
+        :rtype: :class:`tencentcloud.tem.v20210701.models.DestroyLogConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DestroyLogConfig", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DestroyLogConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DisableApplicationAutoscaler(self, request):
+        """This API is used to disable a scaling rule.
+
+        :param request: Request instance for DisableApplicationAutoscaler.
+        :type request: :class:`tencentcloud.tem.v20210701.models.DisableApplicationAutoscalerRequest`
+        :rtype: :class:`tencentcloud.tem.v20210701.models.DisableApplicationAutoscalerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisableApplicationAutoscaler", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DisableApplicationAutoscalerResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def EnableApplicationAutoscaler(self, request):
+        """This API is used to enable a scaling rule.
+
+        :param request: Request instance for EnableApplicationAutoscaler.
+        :type request: :class:`tencentcloud.tem.v20210701.models.EnableApplicationAutoscalerRequest`
+        :rtype: :class:`tencentcloud.tem.v20210701.models.EnableApplicationAutoscalerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EnableApplicationAutoscaler", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EnableApplicationAutoscalerResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -464,6 +1044,35 @@ class TemClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyApplicationAutoscaler(self, request):
+        """This API is used to modify a scaling rule.
+
+        :param request: Request instance for ModifyApplicationAutoscaler.
+        :type request: :class:`tencentcloud.tem.v20210701.models.ModifyApplicationAutoscalerRequest`
+        :rtype: :class:`tencentcloud.tem.v20210701.models.ModifyApplicationAutoscalerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyApplicationAutoscaler", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyApplicationAutoscalerResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyApplicationInfo(self, request):
         """This API is used to modify the basic information of an application.
 
@@ -479,6 +1088,64 @@ class TemClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyApplicationInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyApplicationService(self, request):
+        """This API is used to modify an access policy.
+
+        :param request: Request instance for ModifyApplicationService.
+        :type request: :class:`tencentcloud.tem.v20210701.models.ModifyApplicationServiceRequest`
+        :rtype: :class:`tencentcloud.tem.v20210701.models.ModifyApplicationServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyApplicationService", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyApplicationServiceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyConfigData(self, request):
+        """This API is used to modify a configuration.
+
+        :param request: Request instance for ModifyConfigData.
+        :type request: :class:`tencentcloud.tem.v20210701.models.ModifyConfigDataRequest`
+        :rtype: :class:`tencentcloud.tem.v20210701.models.ModifyConfigDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyConfigData", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyConfigDataResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -537,6 +1204,35 @@ class TemClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyIngressResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyLogConfig(self, request):
+        """This API is used to modify a log collecting configuration.
+
+        :param request: Request instance for ModifyLogConfig.
+        :type request: :class:`tencentcloud.tem.v20210701.models.ModifyLogConfigRequest`
+        :rtype: :class:`tencentcloud.tem.v20210701.models.ModifyLogConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyLogConfig", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyLogConfigResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

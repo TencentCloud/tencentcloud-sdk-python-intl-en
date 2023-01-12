@@ -18,6 +18,135 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class Autoscaler(AbstractModel):
+    """Scaling rule
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MinReplicas: Minimum number of instances in a scaling group
+        :type MinReplicas: int
+        :param MaxReplicas: Maximum number of instances in a scaling group
+        :type MaxReplicas: int
+        :param HorizontalAutoscaler: Policy of the scaling rule
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type HorizontalAutoscaler: list of HorizontalAutoscaler
+        :param CronHorizontalAutoscaler: Scheduled auto-scaler policy
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type CronHorizontalAutoscaler: list of CronHorizontalAutoscaler
+        :param AutoscalerId: Scaling rule ID
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type AutoscalerId: str
+        :param AutoscalerName: Scaling rule name
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type AutoscalerName: str
+        :param Description: Description of the scaling rule
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Description: str
+        :param CreateDate: Creation time
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type CreateDate: str
+        :param ModifyDate: Modification time
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ModifyDate: str
+        :param EnableDate: Start Time
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type EnableDate: str
+        :param Enabled: Whether it is enabled
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Enabled: bool
+        """
+        self.MinReplicas = None
+        self.MaxReplicas = None
+        self.HorizontalAutoscaler = None
+        self.CronHorizontalAutoscaler = None
+        self.AutoscalerId = None
+        self.AutoscalerName = None
+        self.Description = None
+        self.CreateDate = None
+        self.ModifyDate = None
+        self.EnableDate = None
+        self.Enabled = None
+
+
+    def _deserialize(self, params):
+        self.MinReplicas = params.get("MinReplicas")
+        self.MaxReplicas = params.get("MaxReplicas")
+        if params.get("HorizontalAutoscaler") is not None:
+            self.HorizontalAutoscaler = []
+            for item in params.get("HorizontalAutoscaler"):
+                obj = HorizontalAutoscaler()
+                obj._deserialize(item)
+                self.HorizontalAutoscaler.append(obj)
+        if params.get("CronHorizontalAutoscaler") is not None:
+            self.CronHorizontalAutoscaler = []
+            for item in params.get("CronHorizontalAutoscaler"):
+                obj = CronHorizontalAutoscaler()
+                obj._deserialize(item)
+                self.CronHorizontalAutoscaler.append(obj)
+        self.AutoscalerId = params.get("AutoscalerId")
+        self.AutoscalerName = params.get("AutoscalerName")
+        self.Description = params.get("Description")
+        self.CreateDate = params.get("CreateDate")
+        self.ModifyDate = params.get("ModifyDate")
+        self.EnableDate = params.get("EnableDate")
+        self.Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConfigData(AbstractModel):
+    """Configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Configuration name
+        :type Name: str
+        :param CreateTime: Creation time.
+        :type CreateTime: str
+        :param RelatedApplications: List of associated applications
+        :type RelatedApplications: list of TemService
+        :param Data: Configuration item
+        :type Data: list of Pair
+        """
+        self.Name = None
+        self.CreateTime = None
+        self.RelatedApplications = None
+        self.Data = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.CreateTime = params.get("CreateTime")
+        if params.get("RelatedApplications") is not None:
+            self.RelatedApplications = []
+            for item in params.get("RelatedApplications"):
+                obj = TemService()
+                obj._deserialize(item)
+                self.RelatedApplications.append(obj)
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = Pair()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CosToken(AbstractModel):
     """Cos token
 
@@ -74,6 +203,66 @@ class CosToken(AbstractModel):
         
 
 
+class CreateApplicationAutoscalerRequest(AbstractModel):
+    """CreateApplicationAutoscaler request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplicationId: Application ID
+        :type ApplicationId: str
+        :param EnvironmentId: Environment ID
+        :type EnvironmentId: str
+        :param SourceChannel: Source channel. Please keep the default value.
+        :type SourceChannel: int
+        :param Autoscaler: Auto scaling rule
+        :type Autoscaler: :class:`tencentcloud.tem.v20210701.models.Autoscaler`
+        """
+        self.ApplicationId = None
+        self.EnvironmentId = None
+        self.SourceChannel = None
+        self.Autoscaler = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.SourceChannel = params.get("SourceChannel")
+        if params.get("Autoscaler") is not None:
+            self.Autoscaler = Autoscaler()
+            self.Autoscaler._deserialize(params.get("Autoscaler"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateApplicationAutoscalerResponse(AbstractModel):
+    """CreateApplicationAutoscaler response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Scaling rule ID
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Result: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateApplicationRequest(AbstractModel):
     """CreateApplication request structure.
 
@@ -112,6 +301,8 @@ class CreateApplicationRequest(AbstractModel):
         :type EnableTracing: int
         :param UseDefaultImageServiceParameters: Parameters of the default image service
         :type UseDefaultImageServiceParameters: :class:`tencentcloud.tem.v20210701.models.UseDefaultRepoParameters`
+        :param Tags: Tag
+        :type Tags: list of Tag
         """
         self.ApplicationName = None
         self.Description = None
@@ -126,6 +317,7 @@ class CreateApplicationRequest(AbstractModel):
         self.DeployMode = None
         self.EnableTracing = None
         self.UseDefaultImageServiceParameters = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -144,6 +336,12 @@ class CreateApplicationRequest(AbstractModel):
         if params.get("UseDefaultImageServiceParameters") is not None:
             self.UseDefaultImageServiceParameters = UseDefaultRepoParameters()
             self.UseDefaultImageServiceParameters._deserialize(params.get("UseDefaultImageServiceParameters"))
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -162,6 +360,128 @@ class CreateApplicationResponse(AbstractModel):
         r"""
         :param Result: ID of the created application
         :type Result: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateApplicationServiceRequest(AbstractModel):
+    """CreateApplicationService request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplicationId: Application ID
+        :type ApplicationId: str
+        :param EnvironmentId: Environment ID
+        :type EnvironmentId: str
+        :param SourceChannel: Source channel. Please keep the default value.
+        :type SourceChannel: int
+        :param Service: Details of the access policy
+        :type Service: :class:`tencentcloud.tem.v20210701.models.ServicePortMapping`
+        """
+        self.ApplicationId = None
+        self.EnvironmentId = None
+        self.SourceChannel = None
+        self.Service = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.SourceChannel = params.get("SourceChannel")
+        if params.get("Service") is not None:
+            self.Service = ServicePortMapping()
+            self.Service._deserialize(params.get("Service"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateApplicationServiceResponse(AbstractModel):
+    """CreateApplicationService response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Whether the action succeeded 
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Result: bool
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateConfigDataRequest(AbstractModel):
+    """CreateConfigData request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvironmentId: Environment ID
+        :type EnvironmentId: str
+        :param Name: Configuration name
+        :type Name: str
+        :param SourceChannel: Source channel. Please keep the default value.
+        :type SourceChannel: int
+        :param Data: Configuration information
+        :type Data: list of Pair
+        """
+        self.EnvironmentId = None
+        self.Name = None
+        self.SourceChannel = None
+        self.Data = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.Name = params.get("Name")
+        self.SourceChannel = params.get("SourceChannel")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = Pair()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateConfigDataResponse(AbstractModel):
+    """CreateConfigData response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Whether the creation is successful
+        :type Result: bool
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -259,6 +579,12 @@ class CreateEnvironmentRequest(AbstractModel):
         :type SourceChannel: int
         :param EnableTswTraceService: Whether to enable the TSW service
         :type EnableTswTraceService: bool
+        :param Tags: Tag
+        :type Tags: list of Tag
+        :param EnvType: Environment type. Values: `test`, `pre`, `prod`
+        :type EnvType: str
+        :param CreateRegion: The region to create the environment
+        :type CreateRegion: str
         """
         self.EnvironmentName = None
         self.Vpc = None
@@ -267,6 +593,9 @@ class CreateEnvironmentRequest(AbstractModel):
         self.K8sVersion = None
         self.SourceChannel = None
         self.EnableTswTraceService = None
+        self.Tags = None
+        self.EnvType = None
+        self.CreateRegion = None
 
 
     def _deserialize(self, params):
@@ -277,6 +606,14 @@ class CreateEnvironmentRequest(AbstractModel):
         self.K8sVersion = params.get("K8sVersion")
         self.SourceChannel = params.get("SourceChannel")
         self.EnableTswTraceService = params.get("EnableTswTraceService")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.EnvType = params.get("EnvType")
+        self.CreateRegion = params.get("CreateRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -296,6 +633,93 @@ class CreateEnvironmentResponse(AbstractModel):
         :param Result: Environment ID in case of success and `null` in case of failure
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Result: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateLogConfigRequest(AbstractModel):
+    """CreateLogConfig request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvironmentId: Environment ID
+        :type EnvironmentId: str
+        :param Name: Configuration name
+        :type Name: str
+        :param InputType: Collection type. Values: `container_stdout` (standard); `container_file` (file)
+        :type InputType: str
+        :param ApplicationId: Application ID
+        :type ApplicationId: str
+        :param LogsetId: Logset ID
+        :type LogsetId: str
+        :param TopicId: Log topic ID
+        :type TopicId: str
+        :param LogType: Log withdrawal mode. Values: `minimalist_log` (full text in a single line); `multiline_log` (full text in multiple lines); `json_log` (JSON); `fullregex_log` (regex in a single line); `multiline_fullregex_log` (regex in multiple lines)
+        :type LogType: str
+        :param BeginningRegex: The first line regex. It’s valid when `LogType` is `multiline_log`.
+        :type BeginningRegex: str
+        :param LogPath: Directory of files to collect. It’s valid when `InputType` is `container_file`.
+        :type LogPath: str
+        :param FilePattern: Name pattern of files to collect. It’s valid when `InputType` is `container_file`.
+        :type FilePattern: str
+        :param ExtractRule: Export
+        :type ExtractRule: :class:`tencentcloud.tem.v20210701.models.LogConfigExtractRule`
+        """
+        self.EnvironmentId = None
+        self.Name = None
+        self.InputType = None
+        self.ApplicationId = None
+        self.LogsetId = None
+        self.TopicId = None
+        self.LogType = None
+        self.BeginningRegex = None
+        self.LogPath = None
+        self.FilePattern = None
+        self.ExtractRule = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.Name = params.get("Name")
+        self.InputType = params.get("InputType")
+        self.ApplicationId = params.get("ApplicationId")
+        self.LogsetId = params.get("LogsetId")
+        self.TopicId = params.get("TopicId")
+        self.LogType = params.get("LogType")
+        self.BeginningRegex = params.get("BeginningRegex")
+        self.LogPath = params.get("LogPath")
+        self.FilePattern = params.get("FilePattern")
+        if params.get("ExtractRule") is not None:
+            self.ExtractRule = LogConfigExtractRule()
+            self.ExtractRule._deserialize(params.get("ExtractRule"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateLogConfigResponse(AbstractModel):
+    """CreateLogConfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Whether the creation is successful
+        :type Result: bool
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -455,6 +879,64 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         
 
 
+class DeleteApplicationAutoscalerRequest(AbstractModel):
+    """DeleteApplicationAutoscaler request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplicationId: Application ID
+        :type ApplicationId: str
+        :param EnvironmentId: Environment ID
+        :type EnvironmentId: str
+        :param SourceChannel: Source channel. Please keep the default value.
+        :type SourceChannel: int
+        :param AutoscalerId: Scaling rule ID
+        :type AutoscalerId: str
+        """
+        self.ApplicationId = None
+        self.EnvironmentId = None
+        self.SourceChannel = None
+        self.AutoscalerId = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.SourceChannel = params.get("SourceChannel")
+        self.AutoscalerId = params.get("AutoscalerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteApplicationAutoscalerResponse(AbstractModel):
+    """DeleteApplicationAutoscaler response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Whether the action is successful
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Result: bool
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteApplicationRequest(AbstractModel):
     """DeleteApplication request structure.
 
@@ -499,6 +981,64 @@ class DeleteApplicationResponse(AbstractModel):
     def __init__(self):
         r"""
         :param Result: Returned result.
+        :type Result: bool
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteApplicationServiceRequest(AbstractModel):
+    """DeleteApplicationService request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplicationId: Application ID
+        :type ApplicationId: str
+        :param SourceChannel: Source channel. Please keep the default value.
+        :type SourceChannel: int
+        :param EnvironmentId: Environment ID
+        :type EnvironmentId: str
+        :param ServiceName: Service name
+        :type ServiceName: str
+        """
+        self.ApplicationId = None
+        self.SourceChannel = None
+        self.EnvironmentId = None
+        self.ServiceName = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.SourceChannel = params.get("SourceChannel")
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.ServiceName = params.get("ServiceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteApplicationServiceResponse(AbstractModel):
+    """DeleteApplicationService response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Whether the action succeeded 
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Result: bool
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -668,18 +1208,19 @@ If `konajdk` is selected, the value can be:
 - ALPINE
 - TENCENTOS
         :type OsFlavour: str
-        :param EnablePrometheusConf: Specifies whether to enable Prometheus metric
+        :param EnablePrometheusConf: Configuration of metrics of this application
         :type EnablePrometheusConf: :class:`tencentcloud.tem.v20210701.models.EnablePrometheusConf`
-        :param EnableTracing: `1`: Enable APM tracing (Skywalking)
+        :param EnableTracing: `1`: Automatically enable APM tracing (Skywalking)
 `0`: Disable APM tracing
         :type EnableTracing: int
-        :param EnableMetrics: 
+        :param EnableMetrics: `1`: Automatically enable metrics collection (open-telemetry)
+`0`: Disable metrics collection
         :type EnableMetrics: int
-        :param TcrInstanceId: 
+        :param TcrInstanceId: ID of the TCR instance used for image deployment
         :type TcrInstanceId: str
-        :param RepoServer: 
+        :param RepoServer: Image server address for image deployment
         :type RepoServer: str
-        :param RepoType: 
+        :param RepoType: Type of the repository. `0`: TCR Personal; `1`: TCR Enterprise; `2`: Public repository; `3`: TEM hosted repository; `4`: Demo repository
         :type RepoType: int
         """
         self.ApplicationId = None
@@ -895,6 +1436,120 @@ class DeployStrategyConf(AbstractModel):
         
 
 
+class DescribeApplicationAutoscalerListRequest(AbstractModel):
+    """DescribeApplicationAutoscalerList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplicationId: Application ID
+        :type ApplicationId: str
+        :param EnvironmentId: Environment ID
+        :type EnvironmentId: str
+        :param SourceChannel: Source channel. Please keep the default value.
+        :type SourceChannel: int
+        """
+        self.ApplicationId = None
+        self.EnvironmentId = None
+        self.SourceChannel = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.SourceChannel = params.get("SourceChannel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeApplicationAutoscalerListResponse(AbstractModel):
+    """DescribeApplicationAutoscalerList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Scaling rule
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Result: list of Autoscaler
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = []
+            for item in params.get("Result"):
+                obj = Autoscaler()
+                obj._deserialize(item)
+                self.Result.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeApplicationInfoRequest(AbstractModel):
+    """DescribeApplicationInfo request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplicationId: Application ID
+        :type ApplicationId: str
+        :param SourceChannel: Source channel. Please keep the default value.
+        :type SourceChannel: int
+        :param EnvironmentId: Environment ID
+        :type EnvironmentId: str
+        """
+        self.ApplicationId = None
+        self.SourceChannel = None
+        self.EnvironmentId = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.SourceChannel = params.get("SourceChannel")
+        self.EnvironmentId = params.get("EnvironmentId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeApplicationInfoResponse(AbstractModel):
+    """DescribeApplicationInfo response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Returned result.
+        :type Result: :class:`tencentcloud.tem.v20210701.models.TemServiceVersionInfo`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = TemServiceVersionInfo()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeApplicationPodsRequest(AbstractModel):
     """DescribeApplicationPods request structure.
 
@@ -969,6 +1624,143 @@ class DescribeApplicationPodsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeApplicationServiceListRequest(AbstractModel):
+    """DescribeApplicationServiceList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvironmentId: ID of the environment
+        :type EnvironmentId: str
+        :param ApplicationId: ID of the application
+        :type ApplicationId: str
+        :param SourceChannel: xx
+        :type SourceChannel: int
+        """
+        self.EnvironmentId = None
+        self.ApplicationId = None
+        self.SourceChannel = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.ApplicationId = params.get("ApplicationId")
+        self.SourceChannel = params.get("SourceChannel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeApplicationServiceListResponse(AbstractModel):
+    """DescribeApplicationServiceList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Application EKS service list
+        :type Result: :class:`tencentcloud.tem.v20210701.models.EksService`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = EksService()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeApplicationsRequest(AbstractModel):
+    """DescribeApplications request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvironmentId: ID of the environment
+        :type EnvironmentId: str
+        :param Limit: Pagination limit
+        :type Limit: int
+        :param Offset: Pagination offset
+        :type Offset: int
+        :param SourceChannel: Source channel. Please keep the default value.
+        :type SourceChannel: int
+        :param ApplicationId: Application ID
+        :type ApplicationId: str
+        :param Keyword: Keyword for searching.
+        :type Keyword: str
+        :param Filters: Filters for query 
+        :type Filters: list of QueryFilter
+        :param SortInfo: Sorting field
+        :type SortInfo: :class:`tencentcloud.tem.v20210701.models.SortType`
+        """
+        self.EnvironmentId = None
+        self.Limit = None
+        self.Offset = None
+        self.SourceChannel = None
+        self.ApplicationId = None
+        self.Keyword = None
+        self.Filters = None
+        self.SortInfo = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.SourceChannel = params.get("SourceChannel")
+        self.ApplicationId = params.get("ApplicationId")
+        self.Keyword = params.get("Keyword")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = QueryFilter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        if params.get("SortInfo") is not None:
+            self.SortInfo = SortType()
+            self.SortInfo._deserialize(params.get("SortInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeApplicationsResponse(AbstractModel):
+    """DescribeApplications response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Returned result.
+        :type Result: :class:`tencentcloud.tem.v20210701.models.ServicePage`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = ServicePage()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeApplicationsStatusRequest(AbstractModel):
     """DescribeApplicationsStatus request structure.
 
@@ -1023,6 +1815,264 @@ class DescribeApplicationsStatusResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeConfigDataListPage(AbstractModel):
+    """Query the list of configurations
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Records: Record
+        :type Records: list of ConfigData
+        :param ContinueToken: Paging cursor
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ContinueToken: str
+        :param RemainingCount: Remaining number
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type RemainingCount: int
+        """
+        self.Records = None
+        self.ContinueToken = None
+        self.RemainingCount = None
+
+
+    def _deserialize(self, params):
+        if params.get("Records") is not None:
+            self.Records = []
+            for item in params.get("Records"):
+                obj = ConfigData()
+                obj._deserialize(item)
+                self.Records.append(obj)
+        self.ContinueToken = params.get("ContinueToken")
+        self.RemainingCount = params.get("RemainingCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConfigDataListRequest(AbstractModel):
+    """DescribeConfigDataList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvironmentId: Environment ID
+        :type EnvironmentId: str
+        :param SourceChannel: Source channel. Please keep the default value.
+        :type SourceChannel: int
+        :param ContinueToken: Paging cursor
+        :type ContinueToken: str
+        :param Limit: Pagination limit
+        :type Limit: int
+        """
+        self.EnvironmentId = None
+        self.SourceChannel = None
+        self.ContinueToken = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.SourceChannel = params.get("SourceChannel")
+        self.ContinueToken = params.get("ContinueToken")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConfigDataListResponse(AbstractModel):
+    """DescribeConfigDataList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Configuration list.
+        :type Result: :class:`tencentcloud.tem.v20210701.models.DescribeConfigDataListPage`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = DescribeConfigDataListPage()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeConfigDataRequest(AbstractModel):
+    """DescribeConfigData request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvironmentId: Environment ID
+        :type EnvironmentId: str
+        :param Name: Configuration name
+        :type Name: str
+        :param SourceChannel: Source channel. Please keep the default value.
+        :type SourceChannel: int
+        """
+        self.EnvironmentId = None
+        self.Name = None
+        self.SourceChannel = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.Name = params.get("Name")
+        self.SourceChannel = params.get("SourceChannel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConfigDataResponse(AbstractModel):
+    """DescribeConfigData response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Configuration
+        :type Result: :class:`tencentcloud.tem.v20210701.models.ConfigData`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = ConfigData()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeEnvironmentRequest(AbstractModel):
+    """DescribeEnvironment request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvironmentId: Namespace ID
+        :type EnvironmentId: str
+        :param SourceChannel: Source channel
+        :type SourceChannel: int
+        """
+        self.EnvironmentId = None
+        self.SourceChannel = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.SourceChannel = params.get("SourceChannel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEnvironmentResponse(AbstractModel):
+    """DescribeEnvironment response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Environment information
+        :type Result: :class:`tencentcloud.tem.v20210701.models.NamespaceInfo`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = NamespaceInfo()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeEnvironmentStatusRequest(AbstractModel):
+    """DescribeEnvironmentStatus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvironmentIds: ID of the environment
+        :type EnvironmentIds: list of str
+        :param SourceChannel: Source channel
+        :type SourceChannel: int
+        """
+        self.EnvironmentIds = None
+        self.SourceChannel = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentIds = params.get("EnvironmentIds")
+        self.SourceChannel = params.get("SourceChannel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEnvironmentStatusResponse(AbstractModel):
+    """DescribeEnvironmentStatus response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: List of environment status
+        :type Result: list of NamespaceStatusInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = []
+            for item in params.get("Result"):
+                obj = NamespaceStatusInfo()
+                obj._deserialize(item)
+                self.Result.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeEnvironmentsRequest(AbstractModel):
     """DescribeEnvironments request structure.
 
@@ -1036,16 +2086,35 @@ class DescribeEnvironmentsRequest(AbstractModel):
         :type Offset: int
         :param SourceChannel: Source
         :type SourceChannel: int
+        :param Filters: Filters for query 
+        :type Filters: list of QueryFilter
+        :param SortInfo: Sorting field
+        :type SortInfo: :class:`tencentcloud.tem.v20210701.models.SortType`
+        :param EnvironmentId: Environment ID
+        :type EnvironmentId: str
         """
         self.Limit = None
         self.Offset = None
         self.SourceChannel = None
+        self.Filters = None
+        self.SortInfo = None
+        self.EnvironmentId = None
 
 
     def _deserialize(self, params):
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
         self.SourceChannel = params.get("SourceChannel")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = QueryFilter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        if params.get("SortInfo") is not None:
+            self.SortInfo = SortType()
+            self.SortInfo._deserialize(params.get("SortInfo"))
+        self.EnvironmentId = params.get("EnvironmentId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1200,6 +2269,128 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.RequestId = params.get("RequestId")
 
 
+class DescribeLogConfigRequest(AbstractModel):
+    """DescribeLogConfig request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvironmentId: Environment ID
+        :type EnvironmentId: str
+        :param Name: Configuration name
+        :type Name: str
+        :param ApplicationId: Application ID
+        :type ApplicationId: str
+        """
+        self.EnvironmentId = None
+        self.Name = None
+        self.ApplicationId = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.Name = params.get("Name")
+        self.ApplicationId = params.get("ApplicationId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLogConfigResponse(AbstractModel):
+    """DescribeLogConfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Configuration
+        :type Result: :class:`tencentcloud.tem.v20210701.models.LogConfig`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = LogConfig()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePagedLogConfigListRequest(AbstractModel):
+    """DescribePagedLogConfigList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvironmentId: Environment ID
+        :type EnvironmentId: str
+        :param ApplicationId: Application ID
+        :type ApplicationId: str
+        :param ApplicationName: Application name
+        :type ApplicationName: str
+        :param Name: Name of the rule
+        :type Name: str
+        :param Limit: Number of entries per page. Default value: 20
+        :type Limit: int
+        :param ContinueToken: Paging cursor
+        :type ContinueToken: str
+        """
+        self.EnvironmentId = None
+        self.ApplicationId = None
+        self.ApplicationName = None
+        self.Name = None
+        self.Limit = None
+        self.ContinueToken = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.ApplicationId = params.get("ApplicationId")
+        self.ApplicationName = params.get("ApplicationName")
+        self.Name = params.get("Name")
+        self.Limit = params.get("Limit")
+        self.ContinueToken = params.get("ContinueToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePagedLogConfigListResponse(AbstractModel):
+    """DescribePagedLogConfigList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: List of log collecting configurations
+        :type Result: :class:`tencentcloud.tem.v20210701.models.LogConfigListPage`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = LogConfigListPage()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRelatedIngressesRequest(AbstractModel):
     """DescribeRelatedIngresses request structure.
 
@@ -1308,6 +2499,59 @@ class DescribeRunPodPage(AbstractModel):
         
 
 
+class DestroyConfigDataRequest(AbstractModel):
+    """DestroyConfigData request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvironmentId: Environment ID
+        :type EnvironmentId: str
+        :param Name: Configuration name
+        :type Name: str
+        :param SourceChannel: Source channel. Please keep the default value.
+        :type SourceChannel: int
+        """
+        self.EnvironmentId = None
+        self.Name = None
+        self.SourceChannel = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.Name = params.get("Name")
+        self.SourceChannel = params.get("SourceChannel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DestroyConfigDataResponse(AbstractModel):
+    """DestroyConfigData response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Returned result.
+        :type Result: bool
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class DestroyEnvironmentRequest(AbstractModel):
     """DestroyEnvironment request structure.
 
@@ -1344,6 +2588,117 @@ class DestroyEnvironmentResponse(AbstractModel):
     def __init__(self):
         r"""
         :param Result: Returned result.
+        :type Result: bool
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class DestroyLogConfigRequest(AbstractModel):
+    """DestroyLogConfig request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvironmentId: Environment ID
+        :type EnvironmentId: str
+        :param Name: Configuration name
+        :type Name: str
+        :param ApplicationId: Application ID
+        :type ApplicationId: str
+        """
+        self.EnvironmentId = None
+        self.Name = None
+        self.ApplicationId = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.Name = params.get("Name")
+        self.ApplicationId = params.get("ApplicationId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DestroyLogConfigResponse(AbstractModel):
+    """DestroyLogConfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Returned result.
+        :type Result: bool
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class DisableApplicationAutoscalerRequest(AbstractModel):
+    """DisableApplicationAutoscaler request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplicationId: Application ID
+        :type ApplicationId: str
+        :param EnvironmentId: Environment ID
+        :type EnvironmentId: str
+        :param SourceChannel: Source channel. Please keep the default value.
+        :type SourceChannel: int
+        :param AutoscalerId: Scaling rule ID
+        :type AutoscalerId: str
+        """
+        self.ApplicationId = None
+        self.EnvironmentId = None
+        self.SourceChannel = None
+        self.AutoscalerId = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.SourceChannel = params.get("SourceChannel")
+        self.AutoscalerId = params.get("AutoscalerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisableApplicationAutoscalerResponse(AbstractModel):
+    """DisableApplicationAutoscaler response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Whether the action succeeded 
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Result: bool
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1397,6 +2752,21 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param PortMappings: Port mapping
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type PortMappings: list of PortMapping
+        :param ServicePortMappingList: Details of each type of access configuration
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ServicePortMappingList: list of ServicePortMapping
+        :param FlushAll: Flush all types
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type FlushAll: bool
+        :param EnableRegistryNextDeploy: `0`: Do not inject. `1`: Inject registry information automatically for the next deployment
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type EnableRegistryNextDeploy: int
+        :param ApplicationId: The application ID returned.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ApplicationId: str
+        :param AllIpDone: Whether all the application IPs are ready
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type AllIpDone: bool
         """
         self.Name = None
         self.Ports = None
@@ -1409,6 +2779,11 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.SubnetId = None
         self.LoadBalanceId = None
         self.PortMappings = None
+        self.ServicePortMappingList = None
+        self.FlushAll = None
+        self.EnableRegistryNextDeploy = None
+        self.ApplicationId = None
+        self.AllIpDone = None
 
 
     def _deserialize(self, params):
@@ -1428,6 +2803,16 @@ Note: this field may return `null`, indicating that no valid values can be obtai
                 obj = PortMapping()
                 obj._deserialize(item)
                 self.PortMappings.append(obj)
+        if params.get("ServicePortMappingList") is not None:
+            self.ServicePortMappingList = []
+            for item in params.get("ServicePortMappingList"):
+                obj = ServicePortMapping()
+                obj._deserialize(item)
+                self.ServicePortMappingList.append(obj)
+        self.FlushAll = params.get("FlushAll")
+        self.EnableRegistryNextDeploy = params.get("EnableRegistryNextDeploy")
+        self.ApplicationId = params.get("ApplicationId")
+        self.AllIpDone = params.get("AllIpDone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1435,6 +2820,64 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class EnableApplicationAutoscalerRequest(AbstractModel):
+    """EnableApplicationAutoscaler request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplicationId: Service ID
+        :type ApplicationId: str
+        :param EnvironmentId: Environment ID
+        :type EnvironmentId: str
+        :param SourceChannel: Source channel. Please keep the default value.
+        :type SourceChannel: int
+        :param AutoscalerId: Scaling rule ID
+        :type AutoscalerId: str
+        """
+        self.ApplicationId = None
+        self.EnvironmentId = None
+        self.SourceChannel = None
+        self.AutoscalerId = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.SourceChannel = params.get("SourceChannel")
+        self.AutoscalerId = params.get("AutoscalerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnableApplicationAutoscalerResponse(AbstractModel):
+    """EnableApplicationAutoscaler response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Whether the action succeeded 
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Result: bool
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
 
 
 class EnablePrometheusConf(AbstractModel):
@@ -1626,18 +3069,36 @@ class HorizontalAutoscaler(AbstractModel):
         :type MinReplicas: int
         :param MaxReplicas: (Optional) Maximum number of instances
         :type MaxReplicas: int
-        :param Metrics: Metrics (CPU or memory)
+        :param Metrics: Metric measurement
+`CPU`: CPU utilization (%)
+`MEMORY`: Memory utilization (%)
+`CPU_CORE_USED`: CPU usage (core)
+`MEMORY_SIZE_USED`: Memory usage (MiB)
+`NETWORK_BANDWIDTH_RECEIVE`: Network bandwidth in (Mbps)
+`NETWORK_BANDWIDTH_TRANSMIT`: Network bandwidth out (Mbps)
+`NETWORK_TRAFFIC_RECEIVE`: Network traffic in (MiB/s)
+`NETWORK_TRAFFIC_TRANSMIT`: Network traffic  out (MiB/s)
+`NETWORK_PACKETS_RECEIVE`: Network packets in (packets/sec)
+`NETWORK_PACKETS_TRANSMIT`: Network packets out (packets/sec)
+`FS_IOPS_WRITE`: Disk writes (count/sec)
+`FS_IOPS_READ`: Disk reads (count/sec)
+`FS_SIZE_WRITE`: Disk write size (MiB/s)
+`FS_SIZE_READ`: Disk read size (MiB/s)
         :type Metrics: str
-        :param Threshold: Threshold (percentage)
+        :param Threshold: The value of threshold (integer)
         :type Threshold: int
         :param Enabled: Whether it is enabled
         :type Enabled: bool
+        :param DoubleThreshold: The value of threshold (demical)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DoubleThreshold: float
         """
         self.MinReplicas = None
         self.MaxReplicas = None
         self.Metrics = None
         self.Threshold = None
         self.Enabled = None
+        self.DoubleThreshold = None
 
 
     def _deserialize(self, params):
@@ -1646,6 +3107,7 @@ class HorizontalAutoscaler(AbstractModel):
         self.Metrics = params.get("Metrics")
         self.Threshold = params.get("Threshold")
         self.Enabled = params.get("Enabled")
+        self.DoubleThreshold = params.get("DoubleThreshold")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1896,6 +3358,190 @@ class IngressTls(AbstractModel):
         
 
 
+class LogConfig(AbstractModel):
+    """Log collection configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Name.
+        :type Name: str
+        :param InputType: Collection type. Values: `container_stdout` (standard); `container_file` (file)
+        :type InputType: str
+        :param LogsetId: Logset ID
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type LogsetId: str
+        :param TopicId: Log topic ID
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type TopicId: str
+        :param LogType: Log withdrawal mode. Values: `minimalist_log` (full text in a single line); `multiline_log` (full text in multiple lines); `fullregex_log` (regex in a single line); `multiline_fullregex_log` (regex in multiple lines), `json_log` (JSON); 
+        :type LogType: str
+        :param BeginningRegex: First line regex. It’s valid when `LogType` is `multiline_log` or `multiline_fullregex_log`.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type BeginningRegex: str
+        :param LogPath: Directory of files to collect. It’s valid when `InputType` is `container_file`.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type LogPath: str
+        :param FilePattern: Name pattern of files to collect. It’s valid when `InputType` is `container_file`.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type FilePattern: str
+        :param CreateDate: Creation time.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type CreateDate: str
+        :param ModifyDate: Update time
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ModifyDate: str
+        :param ApplicationId: Application ID
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ApplicationId: str
+        :param ApplicationName: Application name
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ApplicationName: str
+        :param ExtractRule: Export rules
+Note: This field may return `null`, indicating that no valid value was found.
+        :type ExtractRule: :class:`tencentcloud.tem.v20210701.models.LogConfigExtractRule`
+        """
+        self.Name = None
+        self.InputType = None
+        self.LogsetId = None
+        self.TopicId = None
+        self.LogType = None
+        self.BeginningRegex = None
+        self.LogPath = None
+        self.FilePattern = None
+        self.CreateDate = None
+        self.ModifyDate = None
+        self.ApplicationId = None
+        self.ApplicationName = None
+        self.ExtractRule = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.InputType = params.get("InputType")
+        self.LogsetId = params.get("LogsetId")
+        self.TopicId = params.get("TopicId")
+        self.LogType = params.get("LogType")
+        self.BeginningRegex = params.get("BeginningRegex")
+        self.LogPath = params.get("LogPath")
+        self.FilePattern = params.get("FilePattern")
+        self.CreateDate = params.get("CreateDate")
+        self.ModifyDate = params.get("ModifyDate")
+        self.ApplicationId = params.get("ApplicationId")
+        self.ApplicationName = params.get("ApplicationName")
+        if params.get("ExtractRule") is not None:
+            self.ExtractRule = LogConfigExtractRule()
+            self.ExtractRule._deserialize(params.get("ExtractRule"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogConfigExtractRule(AbstractModel):
+    """Configuration of log exporting rule
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BeginningRegex: First line regex
+Note: This field may return `null`, indicating that no valid value was found.
+        :type BeginningRegex: str
+        :param Keys: Withdrawl result
+Note: This field may return `null`, indicating that no valid value was found.
+        :type Keys: list of str
+        :param FilterKeys: Filter keys
+Note: This field may return `null`, indicating that no valid value was found.
+        :type FilterKeys: list of str
+        :param FilterRegex: Filter values
+Note: This field may return `null`, indicating that no valid value was found.
+        :type FilterRegex: list of str
+        :param LogRegex: Log regex
+Note: This field may return `null`, indicating that no valid value was found.
+        :type LogRegex: str
+        :param TimeKey: Time field
+Note: This field may return `null`, indicating that no valid value was found.
+        :type TimeKey: str
+        :param TimeFormat: Time Format
+Note: This field may return `null`, indicating that no valid value was found.
+        :type TimeFormat: str
+        :param UnMatchUpload: - Enable the upload of the log that failed to parse
+Note: This field may return `null`, indicating that no valid value was found.
+        :type UnMatchUpload: str
+        :param UnMatchedKey: Key of log failed to be parsed
+Note: This field may return `null`, indicating that no valid value was found.
+        :type UnMatchedKey: str
+        """
+        self.BeginningRegex = None
+        self.Keys = None
+        self.FilterKeys = None
+        self.FilterRegex = None
+        self.LogRegex = None
+        self.TimeKey = None
+        self.TimeFormat = None
+        self.UnMatchUpload = None
+        self.UnMatchedKey = None
+
+
+    def _deserialize(self, params):
+        self.BeginningRegex = params.get("BeginningRegex")
+        self.Keys = params.get("Keys")
+        self.FilterKeys = params.get("FilterKeys")
+        self.FilterRegex = params.get("FilterRegex")
+        self.LogRegex = params.get("LogRegex")
+        self.TimeKey = params.get("TimeKey")
+        self.TimeFormat = params.get("TimeFormat")
+        self.UnMatchUpload = params.get("UnMatchUpload")
+        self.UnMatchedKey = params.get("UnMatchedKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogConfigListPage(AbstractModel):
+    """List of LogConfig
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Records: Record
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Records: list of LogConfig
+        :param ContinueToken: Paging cursor
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ContinueToken: str
+        """
+        self.Records = None
+        self.ContinueToken = None
+
+
+    def _deserialize(self, params):
+        if params.get("Records") is not None:
+            self.Records = []
+            for item in params.get("Records"):
+                obj = LogConfig()
+                obj._deserialize(item)
+                self.Records.append(obj)
+        self.ContinueToken = params.get("ContinueToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LogOutputConf(AbstractModel):
     """Log output configuration
 
@@ -1934,6 +3580,70 @@ class LogOutputConf(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyApplicationAutoscalerRequest(AbstractModel):
+    """ModifyApplicationAutoscaler request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplicationId: Application ID
+        :type ApplicationId: str
+        :param EnvironmentId: Environment ID
+        :type EnvironmentId: str
+        :param SourceChannel: Source channel. Please keep the default value.
+        :type SourceChannel: int
+        :param AutoscalerId: Scaling rule ID
+        :type AutoscalerId: str
+        :param Autoscaler: Auto scaling policy
+        :type Autoscaler: :class:`tencentcloud.tem.v20210701.models.Autoscaler`
+        """
+        self.ApplicationId = None
+        self.EnvironmentId = None
+        self.SourceChannel = None
+        self.AutoscalerId = None
+        self.Autoscaler = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.SourceChannel = params.get("SourceChannel")
+        self.AutoscalerId = params.get("AutoscalerId")
+        if params.get("Autoscaler") is not None:
+            self.Autoscaler = Autoscaler()
+            self.Autoscaler._deserialize(params.get("Autoscaler"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyApplicationAutoscalerResponse(AbstractModel):
+    """ModifyApplicationAutoscaler response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Whether the action is successful
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Result: bool
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
 
 
 class ModifyApplicationInfoRequest(AbstractModel):
@@ -1994,6 +3704,134 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.RequestId = params.get("RequestId")
 
 
+class ModifyApplicationServiceRequest(AbstractModel):
+    """ModifyApplicationService request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplicationId: Application ID
+        :type ApplicationId: str
+        :param EnvironmentId: Environment ID
+        :type EnvironmentId: str
+        :param SourceChannel: Source channel. Please keep the default value.
+        :type SourceChannel: int
+        :param Service: Full access mode settings
+        :type Service: :class:`tencentcloud.tem.v20210701.models.EksService`
+        :param Data: Single entry access mode settings
+        :type Data: :class:`tencentcloud.tem.v20210701.models.ServicePortMapping`
+        """
+        self.ApplicationId = None
+        self.EnvironmentId = None
+        self.SourceChannel = None
+        self.Service = None
+        self.Data = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.SourceChannel = params.get("SourceChannel")
+        if params.get("Service") is not None:
+            self.Service = EksService()
+            self.Service._deserialize(params.get("Service"))
+        if params.get("Data") is not None:
+            self.Data = ServicePortMapping()
+            self.Data._deserialize(params.get("Data"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyApplicationServiceResponse(AbstractModel):
+    """ModifyApplicationService response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Whether the action succeeded 
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Result: bool
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyConfigDataRequest(AbstractModel):
+    """ModifyConfigData request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvironmentId: Environment ID
+        :type EnvironmentId: str
+        :param Name: Configuration name
+        :type Name: str
+        :param SourceChannel: Source channel. Please keep the default value.
+        :type SourceChannel: int
+        :param Data: Configuration information
+        :type Data: list of Pair
+        """
+        self.EnvironmentId = None
+        self.Name = None
+        self.SourceChannel = None
+        self.Data = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.Name = params.get("Name")
+        self.SourceChannel = params.get("SourceChannel")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = Pair()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyConfigDataResponse(AbstractModel):
+    """ModifyConfigData response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Result of the modification
+        :type Result: bool
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyEnvironmentRequest(AbstractModel):
     """ModifyEnvironment request structure.
 
@@ -2013,6 +3851,8 @@ class ModifyEnvironmentRequest(AbstractModel):
         :type SubnetIds: list of str
         :param SourceChannel: Source channel
         :type SourceChannel: int
+        :param EnvType: Environment type. Values: `test`, `pre`, `prod`
+        :type EnvType: str
         """
         self.EnvironmentId = None
         self.EnvironmentName = None
@@ -2020,6 +3860,7 @@ class ModifyEnvironmentRequest(AbstractModel):
         self.Vpc = None
         self.SubnetIds = None
         self.SourceChannel = None
+        self.EnvType = None
 
 
     def _deserialize(self, params):
@@ -2029,6 +3870,7 @@ class ModifyEnvironmentRequest(AbstractModel):
         self.Vpc = params.get("Vpc")
         self.SubnetIds = params.get("SubnetIds")
         self.SourceChannel = params.get("SourceChannel")
+        self.EnvType = params.get("EnvType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2112,6 +3954,65 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.RequestId = params.get("RequestId")
 
 
+class ModifyLogConfigRequest(AbstractModel):
+    """ModifyLogConfig request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvironmentId: Environment ID
+        :type EnvironmentId: str
+        :param Name: Configuration name
+        :type Name: str
+        :param Data: Log collector configuration
+        :type Data: :class:`tencentcloud.tem.v20210701.models.LogConfig`
+        :param ApplicationId: Application ID
+        :type ApplicationId: str
+        """
+        self.EnvironmentId = None
+        self.Name = None
+        self.Data = None
+        self.ApplicationId = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.Name = params.get("Name")
+        if params.get("Data") is not None:
+            self.Data = LogConfig()
+            self.Data._deserialize(params.get("Data"))
+        self.ApplicationId = params.get("ApplicationId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLogConfigResponse(AbstractModel):
+    """ModifyLogConfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Result of the modification
+        :type Result: bool
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class MountedSettingConf(AbstractModel):
     """Mounting configurations
 
@@ -2153,6 +4054,84 @@ class MountedSettingConf(AbstractModel):
         
 
 
+class NamespaceInfo(AbstractModel):
+    """Basic information of the namespace
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvironmentId: ID
+        :type EnvironmentId: str
+        :param NamespaceName: (Disused) Name
+        :type NamespaceName: str
+        :param Region: Region
+        :type Region: str
+        :param VpcId: vpc id
+        :type VpcId: str
+        :param SubnetIds: Array of subnet IDs
+        :type SubnetIds: list of str
+        :param Description: Description
+        :type Description: str
+        :param CreatedDate: Creation time
+        :type CreatedDate: str
+        :param EnvironmentName: Environment name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EnvironmentName: str
+        :param ApmInstanceId: APM instance ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ApmInstanceId: str
+        :param Locked: Whether the environment is locked. `1`: Locked, `0`: Not locked
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Locked: int
+        :param Tags: Tag
+Note: This field may return `null`, indicating that no valid value was found.
+        :type Tags: list of Tag
+        :param EnvType: Environment type. Values: `test`, `pre`, `prod`
+Note: This field may return `null`, indicating that no valid value was found.
+        :type EnvType: str
+        """
+        self.EnvironmentId = None
+        self.NamespaceName = None
+        self.Region = None
+        self.VpcId = None
+        self.SubnetIds = None
+        self.Description = None
+        self.CreatedDate = None
+        self.EnvironmentName = None
+        self.ApmInstanceId = None
+        self.Locked = None
+        self.Tags = None
+        self.EnvType = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.NamespaceName = params.get("NamespaceName")
+        self.Region = params.get("Region")
+        self.VpcId = params.get("VpcId")
+        self.SubnetIds = params.get("SubnetIds")
+        self.Description = params.get("Description")
+        self.CreatedDate = params.get("CreatedDate")
+        self.EnvironmentName = params.get("EnvironmentName")
+        self.ApmInstanceId = params.get("ApmInstanceId")
+        self.Locked = params.get("Locked")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.EnvType = params.get("EnvType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class NamespacePage(AbstractModel):
     """Namespace query result pagination
 
@@ -2168,11 +4147,15 @@ class NamespacePage(AbstractModel):
         :type Size: int
         :param Pages: Total number of pages
         :type Pages: int
+        :param Current: Current entry
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Current: int
         """
         self.Records = None
         self.Total = None
         self.Size = None
         self.Pages = None
+        self.Current = None
 
 
     def _deserialize(self, params):
@@ -2185,6 +4168,101 @@ class NamespacePage(AbstractModel):
         self.Total = params.get("Total")
         self.Size = params.get("Size")
         self.Pages = params.get("Pages")
+        self.Current = params.get("Current")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NamespaceStatusInfo(AbstractModel):
+    """Environment status
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvironmentId: ID of the environment
+        :type EnvironmentId: str
+        :param EnvironmentName: Environment name
+        :type EnvironmentName: str
+        :param ClusterId: TCB envId | EKS clusterId
+        :type ClusterId: str
+        :param ClusterStatus: Environment status
+        :type ClusterStatus: str
+        :param EnvironmentStartingStatus: Whether the environment is being started. `null` is returned if it’s not being started.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type EnvironmentStartingStatus: :class:`tencentcloud.tem.v20210701.models.TemEnvironmentStartingStatus`
+        :param EnvironmentStoppingStatus: Whether the environment is being stopped. `null` is returned if it’s not being stopped.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type EnvironmentStoppingStatus: :class:`tencentcloud.tem.v20210701.models.TemEnvironmentStoppingStatus`
+        """
+        self.EnvironmentId = None
+        self.EnvironmentName = None
+        self.ClusterId = None
+        self.ClusterStatus = None
+        self.EnvironmentStartingStatus = None
+        self.EnvironmentStoppingStatus = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.EnvironmentName = params.get("EnvironmentName")
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterStatus = params.get("ClusterStatus")
+        if params.get("EnvironmentStartingStatus") is not None:
+            self.EnvironmentStartingStatus = TemEnvironmentStartingStatus()
+            self.EnvironmentStartingStatus._deserialize(params.get("EnvironmentStartingStatus"))
+        if params.get("EnvironmentStoppingStatus") is not None:
+            self.EnvironmentStoppingStatus = TemEnvironmentStoppingStatus()
+            self.EnvironmentStoppingStatus._deserialize(params.get("EnvironmentStoppingStatus"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NodeInfo(AbstractModel):
+    """Node information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Node name
+        :type Name: str
+        :param Zone: Availability zone of the node
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Zone: str
+        :param SubnetId: Node subnet ID
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type SubnetId: str
+        :param AvailableIpCount: Number of available IPs
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type AvailableIpCount: str
+        :param Cidr: CIDR block
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Cidr: str
+        """
+        self.Name = None
+        self.Zone = None
+        self.SubnetId = None
+        self.AvailableIpCount = None
+        self.Cidr = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Zone = params.get("Zone")
+        self.SubnetId = params.get("SubnetId")
+        self.AvailableIpCount = params.get("AvailableIpCount")
+        self.Cidr = params.get("Cidr")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2264,6 +4342,34 @@ class PortMapping(AbstractModel):
         self.TargetPort = params.get("TargetPort")
         self.Protocol = params.get("Protocol")
         self.ServiceName = params.get("ServiceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryFilter(AbstractModel):
+    """Filters for query
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Name of the field to query
+        :type Name: str
+        :param Value: Value of the field to query
+        :type Value: list of str
+        """
+        self.Name = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2509,6 +4615,24 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param ContainerState: Container status
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ContainerState: str
+        :param NodeInfo: Information of the node whether the instance locates
+Note: This field may return `null`, indicating that no valid value was found.
+        :type NodeInfo: :class:`tencentcloud.tem.v20210701.models.NodeInfo`
+        :param StartTime: Start time
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type StartTime: str
+        :param Unhealthy: Whether the status is unhealthy or healthy
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type Unhealthy: bool
+        :param UnhealthyWarningMsg: Warning message when the result is unhealthy
+Note: This field may return `null`, indicating that no valid value was found.
+        :type UnhealthyWarningMsg: str
+        :param VersionId: Version ID
+Note: This field may return `null`, indicating that no valid value was found.
+        :type VersionId: str
+        :param ApplicationName: Application name
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ApplicationName: str
         """
         self.Webshell = None
         self.PodId = None
@@ -2520,6 +4644,12 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.RestartCount = None
         self.Ready = None
         self.ContainerState = None
+        self.NodeInfo = None
+        self.StartTime = None
+        self.Unhealthy = None
+        self.UnhealthyWarningMsg = None
+        self.VersionId = None
+        self.ApplicationName = None
 
 
     def _deserialize(self, params):
@@ -2533,6 +4663,170 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.RestartCount = params.get("RestartCount")
         self.Ready = params.get("Ready")
         self.ContainerState = params.get("ContainerState")
+        if params.get("NodeInfo") is not None:
+            self.NodeInfo = NodeInfo()
+            self.NodeInfo._deserialize(params.get("NodeInfo"))
+        self.StartTime = params.get("StartTime")
+        self.Unhealthy = params.get("Unhealthy")
+        self.UnhealthyWarningMsg = params.get("UnhealthyWarningMsg")
+        self.VersionId = params.get("VersionId")
+        self.ApplicationName = params.get("ApplicationName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServicePage(AbstractModel):
+    """List of returned applications
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Records: List of applications
+        :type Records: list of TemService
+        :param Total: Total number of applications
+        :type Total: int
+        :param Size: Number of applications per page
+        :type Size: int
+        :param Pages: Total number of pages
+        :type Pages: int
+        :param Current: Number of current entries
+Note: This field may return `null`, indicating that no valid value was found.
+        :type Current: int
+        """
+        self.Records = None
+        self.Total = None
+        self.Size = None
+        self.Pages = None
+        self.Current = None
+
+
+    def _deserialize(self, params):
+        if params.get("Records") is not None:
+            self.Records = []
+            for item in params.get("Records"):
+                obj = TemService()
+                obj._deserialize(item)
+                self.Records.append(obj)
+        self.Total = params.get("Total")
+        self.Size = params.get("Size")
+        self.Pages = params.get("Pages")
+        self.Current = params.get("Current")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServicePortMapping(AbstractModel):
+    """Port mapping details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: Specifies how a layer-4 proxy is created.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Type: str
+        :param ServiceName: Application name
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ServiceName: str
+        :param ClusterIp: VIP for access within the environment
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ClusterIp: str
+        :param ExternalIp: Cluster external IP
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ExternalIp: str
+        :param SubnetId: Subnet ID
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type SubnetId: str
+        :param VpcId: VPC ID
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type VpcId: str
+        :param LoadBalanceId: Load balancer ID
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type LoadBalanceId: str
+        :param Yaml: YAML contents
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Yaml: str
+        :param Ports: List of exposed ports
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Ports: list of int
+        :param PortMappingItemList: Port mapping array 
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type PortMappingItemList: list of ServicePortMappingItem
+        """
+        self.Type = None
+        self.ServiceName = None
+        self.ClusterIp = None
+        self.ExternalIp = None
+        self.SubnetId = None
+        self.VpcId = None
+        self.LoadBalanceId = None
+        self.Yaml = None
+        self.Ports = None
+        self.PortMappingItemList = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.ServiceName = params.get("ServiceName")
+        self.ClusterIp = params.get("ClusterIp")
+        self.ExternalIp = params.get("ExternalIp")
+        self.SubnetId = params.get("SubnetId")
+        self.VpcId = params.get("VpcId")
+        self.LoadBalanceId = params.get("LoadBalanceId")
+        self.Yaml = params.get("Yaml")
+        self.Ports = params.get("Ports")
+        if params.get("PortMappingItemList") is not None:
+            self.PortMappingItemList = []
+            for item in params.get("PortMappingItemList"):
+                obj = ServicePortMappingItem()
+                obj._deserialize(item)
+                self.PortMappingItemList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServicePortMappingItem(AbstractModel):
+    """Application port mapping
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Port: Application access port
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Port: int
+        :param TargetPort: Application listening port
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type TargetPort: int
+        :param Protocol: Protocol type
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Protocol: str
+        """
+        self.Port = None
+        self.TargetPort = None
+        self.Protocol = None
+
+
+    def _deserialize(self, params):
+        self.Port = params.get("Port")
+        self.TargetPort = params.get("TargetPort")
+        self.Protocol = params.get("Protocol")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2586,6 +4880,24 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param UnderDeploying: Whether the application is being deployed
 Note: This field may return null, indicating that no valid values can be obtained.
         :type UnderDeploying: bool
+        :param BatchDeployStatus: Status of batch deployment
+Note: This field may return `null`, indicating that no valid value was found.
+        :type BatchDeployStatus: str
+        :param Zones: Availability zones
+Note: This field may return `null`, indicating that no valid value was found.
+        :type Zones: list of str
+        :param NodeInfos: Node information
+Note: This field may return `null`, indicating that no valid value was found.
+        :type NodeInfos: list of NodeInfo
+        :param PodList: Pod information
+Note: This field may return `null`, indicating that no valid value was found.
+        :type PodList: :class:`tencentcloud.tem.v20210701.models.DescribeRunPodPage`
+        :param WorkloadInfo: Workload information
+Note: This field may return `null`, indicating that no valid value was found.
+        :type WorkloadInfo: :class:`tencentcloud.tem.v20210701.models.WorkloadInfo`
+        :param CreateDate: Creation time
+Note: This field may return `null`, indicating that no valid value was found.
+        :type CreateDate: str
         """
         self.VersionName = None
         self.Status = None
@@ -2601,6 +4913,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.ApplicationId = None
         self.ApplicationName = None
         self.UnderDeploying = None
+        self.BatchDeployStatus = None
+        self.Zones = None
+        self.NodeInfos = None
+        self.PodList = None
+        self.WorkloadInfo = None
+        self.CreateDate = None
 
 
     def _deserialize(self, params):
@@ -2620,6 +4938,49 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.ApplicationId = params.get("ApplicationId")
         self.ApplicationName = params.get("ApplicationName")
         self.UnderDeploying = params.get("UnderDeploying")
+        self.BatchDeployStatus = params.get("BatchDeployStatus")
+        self.Zones = params.get("Zones")
+        if params.get("NodeInfos") is not None:
+            self.NodeInfos = []
+            for item in params.get("NodeInfos"):
+                obj = NodeInfo()
+                obj._deserialize(item)
+                self.NodeInfos.append(obj)
+        if params.get("PodList") is not None:
+            self.PodList = DescribeRunPodPage()
+            self.PodList._deserialize(params.get("PodList"))
+        if params.get("WorkloadInfo") is not None:
+            self.WorkloadInfo = WorkloadInfo()
+            self.WorkloadInfo._deserialize(params.get("WorkloadInfo"))
+        self.CreateDate = params.get("CreateDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SortType(AbstractModel):
+    """Query filter
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: Name of the sorting field
+        :type Key: str
+        :param Type: `0`: Ascending; `1`: Descending 
+        :type Type: int
+        """
+        self.Key = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2743,6 +5104,96 @@ class StorageMountConf(AbstractModel):
         
 
 
+class Tag(AbstractModel):
+    """Information of tags
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TagKey: The tag key.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TagKey: str
+        :param TagValue: The tag value.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TemEnvironmentStartingStatus(AbstractModel):
+    """Environment startup processes (Only applications started by the environment startup)
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplicationNumNeedToStart: Number of applications to start
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ApplicationNumNeedToStart: int
+        :param StartedApplicationNum: Number of started applictions
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type StartedApplicationNum: int
+        """
+        self.ApplicationNumNeedToStart = None
+        self.StartedApplicationNum = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationNumNeedToStart = params.get("ApplicationNumNeedToStart")
+        self.StartedApplicationNum = params.get("StartedApplicationNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TemEnvironmentStoppingStatus(AbstractModel):
+    """Processes stopped by the environment (Only applications stopped by the action of stopping the environment)
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplicationNumNeedToStop: Number of applications to stop
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ApplicationNumNeedToStop: int
+        :param StoppedApplicationNum: Number of stopped applications
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type StoppedApplicationNum: int
+        """
+        self.ApplicationNumNeedToStop = None
+        self.StoppedApplicationNum = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationNumNeedToStop = params.get("ApplicationNumNeedToStop")
+        self.StoppedApplicationNum = params.get("StoppedApplicationNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TemNamespaceInfo(AbstractModel):
     """Namespace object
 
@@ -2785,6 +5236,30 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :type EnableTswTraceService: bool
         :param Locked: Whether the environment is locked. `1`: locked; `0`: not locked
         :type Locked: int
+        :param AppId: User AppId
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AppId: str
+        :param Uin: User UIN
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Uin: str
+        :param SubAccountUin: The UIN of sub-account
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SubAccountUin: str
+        :param ClusterId: Application ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ClusterId: str
+        :param Tags: Tag.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type Tags: list of Tag
+        :param HasAuthority: Whether it’s authorized to access the resource
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type HasAuthority: bool
+        :param EnvType: Environment type. Values: `test`, `pre`, `prod`
+Note: This field may return `null`, indicating that no valid value was found.
+        :type EnvType: str
+        :param RegionId: Region code
+Note: This field may return `null`, indicating that no valid value was found.
+        :type RegionId: str
         """
         self.EnvironmentId = None
         self.Channel = None
@@ -2803,6 +5278,14 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.ClusterStatus = None
         self.EnableTswTraceService = None
         self.Locked = None
+        self.AppId = None
+        self.Uin = None
+        self.SubAccountUin = None
+        self.ClusterId = None
+        self.Tags = None
+        self.HasAuthority = None
+        self.EnvType = None
+        self.RegionId = None
 
 
     def _deserialize(self, params):
@@ -2823,6 +5306,636 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.ClusterStatus = params.get("ClusterStatus")
         self.EnableTswTraceService = params.get("EnableTswTraceService")
         self.Locked = params.get("Locked")
+        self.AppId = params.get("AppId")
+        self.Uin = params.get("Uin")
+        self.SubAccountUin = params.get("SubAccountUin")
+        self.ClusterId = params.get("ClusterId")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.HasAuthority = params.get("HasAuthority")
+        self.EnvType = params.get("EnvType")
+        self.RegionId = params.get("RegionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TemService(AbstractModel):
+    """Application details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplicationId: Version ID
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ApplicationId: str
+        :param ApplicationName: Application name
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ApplicationName: str
+        :param Description: Description
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Description: str
+        :param EnvironmentId: ID of the environment
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type EnvironmentId: str
+        :param CreateDate: Creation time.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type CreateDate: str
+        :param ModifyDate: Modification time
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ModifyDate: str
+        :param Modifier: Modifier
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Modifier: str
+        :param Creator: Creator account
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Creator: str
+        :param RepoType: TCR Individual or TCR Enterprise
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type RepoType: int
+        :param InstanceId: ID of the TCR Enterprise instance
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type InstanceId: str
+        :param RepoName: Name of the TCR instance
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type RepoName: str
+        :param CodingLanguage: Programming Language
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type CodingLanguage: str
+        :param DeployMode: Deployment mode
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type DeployMode: str
+        :param EnvironmentName: Environment name
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type EnvironmentName: str
+        :param ActiveVersions: The instance information where the application is running
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ActiveVersions: list of ServiceVersionBrief
+        :param EnableTracing: Whether to enable link tracing
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type EnableTracing: int
+        :param Tags: Tag
+Note: This field may return `null`, indicating that no valid value was found.
+        :type Tags: list of Tag
+        :param HasAuthority: Whether it’s authorized to access the resource
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type HasAuthority: bool
+        """
+        self.ApplicationId = None
+        self.ApplicationName = None
+        self.Description = None
+        self.EnvironmentId = None
+        self.CreateDate = None
+        self.ModifyDate = None
+        self.Modifier = None
+        self.Creator = None
+        self.RepoType = None
+        self.InstanceId = None
+        self.RepoName = None
+        self.CodingLanguage = None
+        self.DeployMode = None
+        self.EnvironmentName = None
+        self.ActiveVersions = None
+        self.EnableTracing = None
+        self.Tags = None
+        self.HasAuthority = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.ApplicationName = params.get("ApplicationName")
+        self.Description = params.get("Description")
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.CreateDate = params.get("CreateDate")
+        self.ModifyDate = params.get("ModifyDate")
+        self.Modifier = params.get("Modifier")
+        self.Creator = params.get("Creator")
+        self.RepoType = params.get("RepoType")
+        self.InstanceId = params.get("InstanceId")
+        self.RepoName = params.get("RepoName")
+        self.CodingLanguage = params.get("CodingLanguage")
+        self.DeployMode = params.get("DeployMode")
+        self.EnvironmentName = params.get("EnvironmentName")
+        if params.get("ActiveVersions") is not None:
+            self.ActiveVersions = []
+            for item in params.get("ActiveVersions"):
+                obj = ServiceVersionBrief()
+                obj._deserialize(item)
+                self.ActiveVersions.append(obj)
+        self.EnableTracing = params.get("EnableTracing")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.HasAuthority = params.get("HasAuthority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TemServiceVersionInfo(AbstractModel):
+    """Version information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VersionId: Version ID
+        :type VersionId: str
+        :param ApplicationId: Application ID
+        :type ApplicationId: str
+        :param DeployMode: Deployment mode
+        :type DeployMode: str
+        :param JdkVersion: JDK version
+        :type JdkVersion: str
+        :param Description: Description
+        :type Description: str
+        :param DeployVersion: Deployed version
+        :type DeployVersion: str
+        :param PublishMode: Publish mode
+        :type PublishMode: str
+        :param JvmOpts: Launch parameter
+        :type JvmOpts: str
+        :param InitPodNum: Number of initial pods
+        :type InitPodNum: int
+        :param CpuSpec: CPU specification
+        :type CpuSpec: float
+        :param MemorySpec: Memory specification
+        :type MemorySpec: float
+        :param ImgRepo: Image path
+        :type ImgRepo: str
+        :param ImgName: Image name
+        :type ImgName: str
+        :param ImgVersion: Image version
+        :type ImgVersion: str
+        :param EsInfo: Scaling configuration
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EsInfo: :class:`tencentcloud.tem.v20210701.models.EsInfo`
+        :param EnvConf: Environment configuration
+        :type EnvConf: list of Pair
+        :param StorageConfs: Storage configuration
+        :type StorageConfs: list of StorageConf
+        :param Status: Running status
+        :type Status: str
+        :param Vpc: VPC
+        :type Vpc: str
+        :param SubnetId: Subnets
+        :type SubnetId: str
+        :param CreateDate: Creation time
+        :type CreateDate: str
+        :param ModifyDate: Modification time
+        :type ModifyDate: str
+        :param StorageMountConfs: Mounting configuration
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type StorageMountConfs: list of StorageMountConf
+        :param VersionName: Version name
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type VersionName: str
+        :param LogOutputConf: Log output configuration
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type LogOutputConf: :class:`tencentcloud.tem.v20210701.models.LogOutputConf`
+        :param ApplicationName: Application name
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ApplicationName: str
+        :param ApplicationDescription: Application description
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ApplicationDescription: str
+        :param EnvironmentName: Environment name
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type EnvironmentName: str
+        :param EnvironmentId: Environment ID
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type EnvironmentId: str
+        :param PublicDomain: Public network address
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type PublicDomain: str
+        :param EnablePublicAccess: Whether to enable public network access
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type EnablePublicAccess: bool
+        :param CurrentInstances: Number of current instances
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type CurrentInstances: int
+        :param ExpectedInstances: Number of expected instances
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ExpectedInstances: int
+        :param CodingLanguage: Programming Language
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type CodingLanguage: str
+        :param PkgName: Program package name
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type PkgName: str
+        :param EsEnable: Whether to enable auto scaling
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type EsEnable: int
+        :param EsStrategy: Auto scaling policy
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type EsStrategy: int
+        :param ImageTag: Image tag
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ImageTag: str
+        :param LogEnable: Whether to enable logging
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type LogEnable: int
+        :param MinAliveInstances: Minimum number of instances
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type MinAliveInstances: str
+        :param SecurityGroupIds: Security group IDs
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type SecurityGroupIds: list of str
+        :param ImageCommand: Image command
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ImageCommand: str
+        :param ImageArgs: Image command parameters
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ImageArgs: list of str
+        :param UseRegistryDefaultConfig: Whether to use the default registry configurations
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type UseRegistryDefaultConfig: bool
+        :param Service: EKS access configuration
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Service: :class:`tencentcloud.tem.v20210701.models.EksService`
+        :param SettingConfs: Mounting configurations
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type SettingConfs: list of MountedSettingConf
+        :param LogConfs: Log path information
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type LogConfs: list of str
+        :param PostStart: The script to execute right after the startup
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type PostStart: str
+        :param PreStop: The script to run before stop
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type PreStop: str
+        :param Liveness: Configuration of aliveness probe
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Liveness: :class:`tencentcloud.tem.v20210701.models.HealthCheckConfig`
+        :param Readiness: Configuration of readiness probe
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Readiness: :class:`tencentcloud.tem.v20210701.models.HealthCheckConfig`
+        :param HorizontalAutoscaler: Auto scaling policy
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type HorizontalAutoscaler: list of HorizontalAutoscaler
+        :param CronHorizontalAutoscaler: Scheduled auto scaling policy
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type CronHorizontalAutoscaler: list of CronHorizontalAutoscaler
+        :param Zones: Availability zone of the application
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Zones: list of str
+        :param LastDeployDate: The latest deployment time
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type LastDeployDate: str
+        :param LastDeploySuccessDate: The latest successful deployment time
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type LastDeploySuccessDate: str
+        :param NodeInfos: Information of the node whether the application is deployed
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type NodeInfos: list of NodeInfo
+        :param ImageType: Image type. Values: `0` (Demo image), `1` (Normal image)
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ImageType: int
+        :param EnableTracing: Whether to 
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type EnableTracing: int
+        :param EnableTracingReport: (Disused) Whether to enable linkage tracing and report. It only takes effect when EnableTracing = `1`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EnableTracingReport: int
+        :param RepoType: Image type. `0`: Individual image; `1`: Enterprise image; `2`: Public image
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type RepoType: int
+        :param BatchDeployStatus: Status of batch deployment: `batch_updating`, `batch_updating_waiting_confirm`
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type BatchDeployStatus: str
+        :param ApmInstanceId: APM instance ID
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ApmInstanceId: str
+        :param WorkloadInfo: Workload information 
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type WorkloadInfo: :class:`tencentcloud.tem.v20210701.models.WorkloadInfo`
+        :param SpeedUp: Whether to enable application acceleration
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type SpeedUp: bool
+        :param StartupProbe: Configuration of the startup probe
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type StartupProbe: :class:`tencentcloud.tem.v20210701.models.HealthCheckConfig`
+        :param OsFlavour: OS version. Values:
+- ALPINE
+- CENTOS
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type OsFlavour: str
+        :param RepoServer: Image repository server
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type RepoServer: str
+        :param UnderDeploying: Whether the application is being deployed
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type UnderDeploying: bool
+        :param EnablePrometheusConf: Whether to enable application metric monitoring 
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EnablePrometheusConf: :class:`tencentcloud.tem.v20210701.models.EnablePrometheusConf`
+        :param StoppedManually: Whether it’s stopped manually
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type StoppedManually: bool
+        :param TcrInstanceId: TCR instance ID
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type TcrInstanceId: str
+        :param EnableMetrics: `1`: Automatically enable metrics collection (open-telemetry)
+`0`: Disable metrics collection
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EnableMetrics: int
+        :param AppId: User AppId
+Note: This field may return `null`, indicating that no valid value was found.
+        :type AppId: str
+        :param SubAccountUin: Sub Account UIN
+Note: This field may return `null`, indicating that no valid value was found.
+        :type SubAccountUin: str
+        :param Uin: User UIN
+Note: This field may return `null`, indicating that no valid value was found.
+        :type Uin: str
+        :param Region: Region
+Note: This field may return `null`, indicating that no valid value was found.
+        :type Region: str
+        :param GroupId: Application group ID
+Note: This field may return `null`, indicating that no valid value was found.
+        :type GroupId: str
+        :param EnableRegistry: Whether to enable registry
+Note: This field may return `null`, indicating that no valid value was found.
+        :type EnableRegistry: int
+        :param AutoscalerList: Array of scaling rules
+Note: This field may return `null`, indicating that no valid value was found.
+        :type AutoscalerList: list of Autoscaler
+        :param Modifier: Modifier
+Note: This field may return `null`, indicating that no valid value was found.
+        :type Modifier: str
+        :param Creator: Creator
+Note: This field may return `null`, indicating that no valid value was found.
+        :type Creator: str
+        :param DeployStrategyConf: Deployment strategy
+Note: This field may return `null`, indicating that no valid value was found.
+        :type DeployStrategyConf: :class:`tencentcloud.tem.v20210701.models.DeployStrategyConf`
+        :param PodList: List of pods
+Note: This field may return `null`, indicating that no valid value was found.
+        :type PodList: :class:`tencentcloud.tem.v20210701.models.DescribeRunPodPage`
+        :param ConfEdited: Whether the configuration has been changed during deployment
+Note: This field may return `null`, indicating that no valid value was found.
+        :type ConfEdited: bool
+        :param Tags: Tag
+Note: This field may return `null`, indicating that no valid value was found.
+        :type Tags: list of Tag
+        """
+        self.VersionId = None
+        self.ApplicationId = None
+        self.DeployMode = None
+        self.JdkVersion = None
+        self.Description = None
+        self.DeployVersion = None
+        self.PublishMode = None
+        self.JvmOpts = None
+        self.InitPodNum = None
+        self.CpuSpec = None
+        self.MemorySpec = None
+        self.ImgRepo = None
+        self.ImgName = None
+        self.ImgVersion = None
+        self.EsInfo = None
+        self.EnvConf = None
+        self.StorageConfs = None
+        self.Status = None
+        self.Vpc = None
+        self.SubnetId = None
+        self.CreateDate = None
+        self.ModifyDate = None
+        self.StorageMountConfs = None
+        self.VersionName = None
+        self.LogOutputConf = None
+        self.ApplicationName = None
+        self.ApplicationDescription = None
+        self.EnvironmentName = None
+        self.EnvironmentId = None
+        self.PublicDomain = None
+        self.EnablePublicAccess = None
+        self.CurrentInstances = None
+        self.ExpectedInstances = None
+        self.CodingLanguage = None
+        self.PkgName = None
+        self.EsEnable = None
+        self.EsStrategy = None
+        self.ImageTag = None
+        self.LogEnable = None
+        self.MinAliveInstances = None
+        self.SecurityGroupIds = None
+        self.ImageCommand = None
+        self.ImageArgs = None
+        self.UseRegistryDefaultConfig = None
+        self.Service = None
+        self.SettingConfs = None
+        self.LogConfs = None
+        self.PostStart = None
+        self.PreStop = None
+        self.Liveness = None
+        self.Readiness = None
+        self.HorizontalAutoscaler = None
+        self.CronHorizontalAutoscaler = None
+        self.Zones = None
+        self.LastDeployDate = None
+        self.LastDeploySuccessDate = None
+        self.NodeInfos = None
+        self.ImageType = None
+        self.EnableTracing = None
+        self.EnableTracingReport = None
+        self.RepoType = None
+        self.BatchDeployStatus = None
+        self.ApmInstanceId = None
+        self.WorkloadInfo = None
+        self.SpeedUp = None
+        self.StartupProbe = None
+        self.OsFlavour = None
+        self.RepoServer = None
+        self.UnderDeploying = None
+        self.EnablePrometheusConf = None
+        self.StoppedManually = None
+        self.TcrInstanceId = None
+        self.EnableMetrics = None
+        self.AppId = None
+        self.SubAccountUin = None
+        self.Uin = None
+        self.Region = None
+        self.GroupId = None
+        self.EnableRegistry = None
+        self.AutoscalerList = None
+        self.Modifier = None
+        self.Creator = None
+        self.DeployStrategyConf = None
+        self.PodList = None
+        self.ConfEdited = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.VersionId = params.get("VersionId")
+        self.ApplicationId = params.get("ApplicationId")
+        self.DeployMode = params.get("DeployMode")
+        self.JdkVersion = params.get("JdkVersion")
+        self.Description = params.get("Description")
+        self.DeployVersion = params.get("DeployVersion")
+        self.PublishMode = params.get("PublishMode")
+        self.JvmOpts = params.get("JvmOpts")
+        self.InitPodNum = params.get("InitPodNum")
+        self.CpuSpec = params.get("CpuSpec")
+        self.MemorySpec = params.get("MemorySpec")
+        self.ImgRepo = params.get("ImgRepo")
+        self.ImgName = params.get("ImgName")
+        self.ImgVersion = params.get("ImgVersion")
+        if params.get("EsInfo") is not None:
+            self.EsInfo = EsInfo()
+            self.EsInfo._deserialize(params.get("EsInfo"))
+        if params.get("EnvConf") is not None:
+            self.EnvConf = []
+            for item in params.get("EnvConf"):
+                obj = Pair()
+                obj._deserialize(item)
+                self.EnvConf.append(obj)
+        if params.get("StorageConfs") is not None:
+            self.StorageConfs = []
+            for item in params.get("StorageConfs"):
+                obj = StorageConf()
+                obj._deserialize(item)
+                self.StorageConfs.append(obj)
+        self.Status = params.get("Status")
+        self.Vpc = params.get("Vpc")
+        self.SubnetId = params.get("SubnetId")
+        self.CreateDate = params.get("CreateDate")
+        self.ModifyDate = params.get("ModifyDate")
+        if params.get("StorageMountConfs") is not None:
+            self.StorageMountConfs = []
+            for item in params.get("StorageMountConfs"):
+                obj = StorageMountConf()
+                obj._deserialize(item)
+                self.StorageMountConfs.append(obj)
+        self.VersionName = params.get("VersionName")
+        if params.get("LogOutputConf") is not None:
+            self.LogOutputConf = LogOutputConf()
+            self.LogOutputConf._deserialize(params.get("LogOutputConf"))
+        self.ApplicationName = params.get("ApplicationName")
+        self.ApplicationDescription = params.get("ApplicationDescription")
+        self.EnvironmentName = params.get("EnvironmentName")
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.PublicDomain = params.get("PublicDomain")
+        self.EnablePublicAccess = params.get("EnablePublicAccess")
+        self.CurrentInstances = params.get("CurrentInstances")
+        self.ExpectedInstances = params.get("ExpectedInstances")
+        self.CodingLanguage = params.get("CodingLanguage")
+        self.PkgName = params.get("PkgName")
+        self.EsEnable = params.get("EsEnable")
+        self.EsStrategy = params.get("EsStrategy")
+        self.ImageTag = params.get("ImageTag")
+        self.LogEnable = params.get("LogEnable")
+        self.MinAliveInstances = params.get("MinAliveInstances")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        self.ImageCommand = params.get("ImageCommand")
+        self.ImageArgs = params.get("ImageArgs")
+        self.UseRegistryDefaultConfig = params.get("UseRegistryDefaultConfig")
+        if params.get("Service") is not None:
+            self.Service = EksService()
+            self.Service._deserialize(params.get("Service"))
+        if params.get("SettingConfs") is not None:
+            self.SettingConfs = []
+            for item in params.get("SettingConfs"):
+                obj = MountedSettingConf()
+                obj._deserialize(item)
+                self.SettingConfs.append(obj)
+        self.LogConfs = params.get("LogConfs")
+        self.PostStart = params.get("PostStart")
+        self.PreStop = params.get("PreStop")
+        if params.get("Liveness") is not None:
+            self.Liveness = HealthCheckConfig()
+            self.Liveness._deserialize(params.get("Liveness"))
+        if params.get("Readiness") is not None:
+            self.Readiness = HealthCheckConfig()
+            self.Readiness._deserialize(params.get("Readiness"))
+        if params.get("HorizontalAutoscaler") is not None:
+            self.HorizontalAutoscaler = []
+            for item in params.get("HorizontalAutoscaler"):
+                obj = HorizontalAutoscaler()
+                obj._deserialize(item)
+                self.HorizontalAutoscaler.append(obj)
+        if params.get("CronHorizontalAutoscaler") is not None:
+            self.CronHorizontalAutoscaler = []
+            for item in params.get("CronHorizontalAutoscaler"):
+                obj = CronHorizontalAutoscaler()
+                obj._deserialize(item)
+                self.CronHorizontalAutoscaler.append(obj)
+        self.Zones = params.get("Zones")
+        self.LastDeployDate = params.get("LastDeployDate")
+        self.LastDeploySuccessDate = params.get("LastDeploySuccessDate")
+        if params.get("NodeInfos") is not None:
+            self.NodeInfos = []
+            for item in params.get("NodeInfos"):
+                obj = NodeInfo()
+                obj._deserialize(item)
+                self.NodeInfos.append(obj)
+        self.ImageType = params.get("ImageType")
+        self.EnableTracing = params.get("EnableTracing")
+        self.EnableTracingReport = params.get("EnableTracingReport")
+        self.RepoType = params.get("RepoType")
+        self.BatchDeployStatus = params.get("BatchDeployStatus")
+        self.ApmInstanceId = params.get("ApmInstanceId")
+        if params.get("WorkloadInfo") is not None:
+            self.WorkloadInfo = WorkloadInfo()
+            self.WorkloadInfo._deserialize(params.get("WorkloadInfo"))
+        self.SpeedUp = params.get("SpeedUp")
+        if params.get("StartupProbe") is not None:
+            self.StartupProbe = HealthCheckConfig()
+            self.StartupProbe._deserialize(params.get("StartupProbe"))
+        self.OsFlavour = params.get("OsFlavour")
+        self.RepoServer = params.get("RepoServer")
+        self.UnderDeploying = params.get("UnderDeploying")
+        if params.get("EnablePrometheusConf") is not None:
+            self.EnablePrometheusConf = EnablePrometheusConf()
+            self.EnablePrometheusConf._deserialize(params.get("EnablePrometheusConf"))
+        self.StoppedManually = params.get("StoppedManually")
+        self.TcrInstanceId = params.get("TcrInstanceId")
+        self.EnableMetrics = params.get("EnableMetrics")
+        self.AppId = params.get("AppId")
+        self.SubAccountUin = params.get("SubAccountUin")
+        self.Uin = params.get("Uin")
+        self.Region = params.get("Region")
+        self.GroupId = params.get("GroupId")
+        self.EnableRegistry = params.get("EnableRegistry")
+        if params.get("AutoscalerList") is not None:
+            self.AutoscalerList = []
+            for item in params.get("AutoscalerList"):
+                obj = Autoscaler()
+                obj._deserialize(item)
+                self.AutoscalerList.append(obj)
+        self.Modifier = params.get("Modifier")
+        self.Creator = params.get("Creator")
+        if params.get("DeployStrategyConf") is not None:
+            self.DeployStrategyConf = DeployStrategyConf()
+            self.DeployStrategyConf._deserialize(params.get("DeployStrategyConf"))
+        if params.get("PodList") is not None:
+            self.PodList = DescribeRunPodPage()
+            self.PodList._deserialize(params.get("PodList"))
+        self.ConfEdited = params.get("ConfEdited")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2858,6 +5971,71 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.EnterpriseInstanceName = params.get("EnterpriseInstanceName")
         self.EnterpriseInstanceChargeType = params.get("EnterpriseInstanceChargeType")
         self.EnterpriseInstanceType = params.get("EnterpriseInstanceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WorkloadInfo(AbstractModel):
+    """Workload details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: The resource ID.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ClusterId: str
+        :param ApplicationName: Application name
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ApplicationName: str
+        :param VersionName: Version name
+Note: This field may return `null`, indicating that no valid value was found.
+        :type VersionName: str
+        :param ReadyReplicas: Number of ready replicas
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ReadyReplicas: int
+        :param Replicas: Number of replicas
+Note: This field may return `null`, indicating that no valid value was found.
+        :type Replicas: int
+        :param UpdatedReplicas: Number of updated replicas
+Note: This field may return `null`, indicating that no valid value was found.
+        :type UpdatedReplicas: int
+        :param UpdatedReadyReplicas: Number of replicas ready for update
+Note: This field may return `null`, indicating that no valid value was found.
+        :type UpdatedReadyReplicas: int
+        :param UpdateRevision: ## Version Updates
+Note: This field may return `null`, indicating that no valid value was found.
+        :type UpdateRevision: str
+        :param CurrentRevision: Current Version
+Note: This field may return `null`, indicating that no valid value was found.
+        :type CurrentRevision: str
+        """
+        self.ClusterId = None
+        self.ApplicationName = None
+        self.VersionName = None
+        self.ReadyReplicas = None
+        self.Replicas = None
+        self.UpdatedReplicas = None
+        self.UpdatedReadyReplicas = None
+        self.UpdateRevision = None
+        self.CurrentRevision = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.ApplicationName = params.get("ApplicationName")
+        self.VersionName = params.get("VersionName")
+        self.ReadyReplicas = params.get("ReadyReplicas")
+        self.Replicas = params.get("Replicas")
+        self.UpdatedReplicas = params.get("UpdatedReplicas")
+        self.UpdatedReadyReplicas = params.get("UpdatedReadyReplicas")
+        self.UpdateRevision = params.get("UpdateRevision")
+        self.CurrentRevision = params.get("CurrentRevision")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

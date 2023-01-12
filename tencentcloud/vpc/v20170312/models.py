@@ -182,7 +182,7 @@ class Address(AbstractModel):
         :type IsBlocked: bool
         :param IsEipDirectConnection: Whether the EIP supports direct connection mode. `True` indicates the EIP supports direct connection. `False` indicates that the resource does not support direct connection.
         :type IsEipDirectConnection: bool
-        :param AddressType: EIP resource type. Valid values: `CalcIP` (device IP), `WanIP` (public network IP), `EIP` (elastic IP) and `AnycastEIP` (accelerated EIP).
+        :param AddressType: IP type. Valid values: `CalcIP` (device IP), `WanIP` (public network IP), `EIP` (general elastic IP), `AnycastEIP` (accelerated EIP), and `AntiDDoSEIP` (Anti DDoS EIP).
         :type AddressType: str
         :param CascadeRelease: Whether the EIP is automatically released after being unbound. `True` indicates the EIP will be automatically released after being unbound. `False` indicates the EIP will not be automatically released after being unbound.
         :type CascadeRelease: bool
@@ -597,6 +597,8 @@ Whether the Anycast EIP can be bound to CLB instances.
         :type BandwidthPackageId: str
         :param AddressName: EIP name, which is the custom EIP name given by the user when applying for the EIP. Default: not named
         :type AddressName: str
+        :param Egress: Network egress. It defaults to `center_egress1`.
+        :type Egress: str
         """
         self.AddressCount = None
         self.InternetServiceProvider = None
@@ -609,6 +611,7 @@ Whether the Anycast EIP can be bound to CLB instances.
         self.Tags = None
         self.BandwidthPackageId = None
         self.AddressName = None
+        self.Egress = None
 
 
     def _deserialize(self, params):
@@ -630,6 +633,7 @@ Whether the Anycast EIP can be bound to CLB instances.
                 self.Tags.append(obj)
         self.BandwidthPackageId = params.get("BandwidthPackageId")
         self.AddressName = params.get("AddressName")
+        self.Egress = params.get("Egress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -945,7 +949,7 @@ class AssociateAddressRequest(AbstractModel):
         r"""
         :param AddressId: The unique ID of the EIP, such as `eip-11112222`.
         :type AddressId: str
-        :param InstanceId: The ID of the instance to be bound, such as `ins-11112222`. You can query the instance ID by logging into the [Console](https://console.cloud.tencent.com/cvm). You can also obtain the parameter value from the `InstanceId` field in the returned result of [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) API.
+        :param InstanceId: The ID of the instance to be bound, such as `ins-11112222`, `lb-11112222`. You can query the instance ID by logging into the [Console](https://console.cloud.tencent.com/cvm). You can also obtain the parameter value from the `InstanceId` field in the returned result of [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) API.
         :type InstanceId: str
         :param NetworkInterfaceId: The ID of the ENI to be bonud, such as `eni-11112222`. `NetworkInterfaceId` and `InstanceId` cannot be specified at the same time. You can query the ENI ID by logging into the [Console](https://console.cloud.tencent.com/vpc/eni). You can also obtain the parameter value from the `networkInterfaceId` field in the returned result of [DescribeNetworkInterfaces](https://intl.cloud.tencent.com/document/api/215/15817?from_cn_redirect=1) API.
         :type NetworkInterfaceId: str
@@ -4173,14 +4177,17 @@ class CreateVpcEndPointServiceRequest(AbstractModel):
         :type AutoAcceptFlag: bool
         :param ServiceInstanceId: Real server ID, such as `lb-xxx`.
         :type ServiceInstanceId: str
-        :param IsPassService: Whether it is of the type `PassService`. Valid values: true: yes; false: no. Default value: false
+        :param IsPassService: (Disused) Whether it’s a PaaS service
         :type IsPassService: bool
+        :param ServiceType: Mounted PaaS service type. Values: `CLB` (default), `CDB`, `CRS`
+        :type ServiceType: str
         """
         self.VpcId = None
         self.EndPointServiceName = None
         self.AutoAcceptFlag = None
         self.ServiceInstanceId = None
         self.IsPassService = None
+        self.ServiceType = None
 
 
     def _deserialize(self, params):
@@ -4189,6 +4196,7 @@ class CreateVpcEndPointServiceRequest(AbstractModel):
         self.AutoAcceptFlag = params.get("AutoAcceptFlag")
         self.ServiceInstanceId = params.get("ServiceInstanceId")
         self.IsPassService = params.get("IsPassService")
+        self.ServiceType = params.get("ServiceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4279,7 +4287,7 @@ class CreateVpcRequest(AbstractModel):
         r"""
         :param VpcName: The VPC name. The maximum length is 60 bytes.
         :type VpcName: str
-        :param CidrBlock: VPC CIDR blocks, which must fall within the following three private network IP ranges: 10.0.0.0/16, 172.16.0.0/16 and 192.168.0.0/16.
+        :param CidrBlock: VPC CIDR block, which must fall within the following three private network IP ranges: 10.0.0.0/12, 172.16.0.0/12, and 192.168.0.0/16.
         :type CidrBlock: str
         :param EnableMulticast: Whether multicast is enabled. `true`: Enabled. `false`: Not enabled.
         :type EnableMulticast: str
@@ -8865,19 +8873,21 @@ class DescribeNetworkInterfacesRequest(AbstractModel):
         :param NetworkInterfaceIds: Queries the ID of the ENI instance, such as `eni-pxir56ns`. Each request can have a maximum of 100 instances. `NetworkInterfaceIds` and `Filters` cannot be specified at the same time.
         :type NetworkInterfaceIds: list of str
         :param Filters: Filter. `NetworkInterfaceIds` and `Filters` cannot be specified at the same time.
-<li>`vpc-id` - String - VPC instance ID, such as `vpc-f49l6u0z`.</li>
-<li>`subnet-id` - String - Subnet instance ID, such as `subnet-f49l6u0z`.</li>
-<li>`network-interface-id` - String - ENI instance ID, such as `eni-5k56k7k7`.</li>
-<li>`attachment.instance-id` - String - ID of the bound CVM instance, such as `ins-3nqpdn3i`.</li>
-<li>`groups.security-group-id` - String - ID of the bound security group, such as `sg-f9ekbxeq`.</li>
+<li>`vpc-id` - String - VPC ID, such as `vpc-f49l6u0z`.</li>
+<li>`subnet-id` - String - Subnet ID, such as `subnet-f49l6u0z`.</li>
+<li>`network-interface-id` - String - ENI ID, such as `eni-5k56k7k7`.</li>
+<li>`attachment.instance-id` - String - ID of the bound CVM, such as `ins-3nqpdn3i`.</li>
+<li>`groups.security-group-id` - String - IDs of associated security groups, such as `sg-f9ekbxeq`.</li>
 <li>`network-interface-name` - String - ENI instance name.</li>
 <li>`network-interface-description` - String - ENI instance description.</li>
 <li>`address-ip` - String - Private IPv4 address. A single IP will be fuzzily matched with the suffix, while multiple IPs will be exactly matched. It can be used with `ip-exact-match` to query and exactly match a single IP.</li>
 <li>`ip-exact-match` - Boolean - Exact match by private IPv4 address. The first value will be returned if multiple values are found.</li>
-<li>`tag-key` - String - Optional - Filter by tag key. See Example 2 for the detailed usage.</li>
-<li>`tag:tag-key` - String - Optional - Filter by tag key pair. Use a specific tag key to replace `tag-key`. See Example 3 for the detailed usage.</li>
-<li>`is-primary` - Boolean - Optional - Filter based on whether it is a primary ENI. If the value is `true`, filter only the primary ENI. If the value is `false`, filter only the secondary ENI. If this parameter is not specified, filter the both.</li>
-<li>`eni-type` - String - Optional - Filter by ENI type. "0" - secondary ENI, "1" - primary ENI, "2": relayed ENI</li>
+<li>`tag-key` - String - Optional - Filter by the tag key. See Example 2 for the detailed usage.</li>
+<li>`tag:tag-key` - String - Optional - Filter by the tag key pair. Use a specific tag key to replace `tag-key`. See Example 2 for the detailed usage.</li>
+<li>`is-primary` - Boolean - Optional - Filter based on whether it is a primary ENI. Values: `true`, `false`. If this parameter is not specified, filter the both.</li>
+<li>`eni-type` - String - Optional - Filter by the ENI type. Values: `0` (Secondary ENI), `1` (Primary ENI), `2` (Relayed ENI)</li>
+<li>`eni-qos` - String - Optional - Filter by the ENI service level. Values: `AG` (Bronze), `AU` (Silver)</li>
+<li>`address-ipv6` - String - Optional - Filter by the private IPv6 address. Multiple IPv6 addresses can be used for query. If this field is used together with `address-ip`, their intersection will be used.</li>
         :type Filters: list of Filter
         :param Offset: Offset. Default value: 0.
         :type Offset: int
@@ -9075,16 +9085,16 @@ class DescribeSecurityGroupPoliciesRequest(AbstractModel):
         r"""
         :param SecurityGroupId: The security group instance ID, such as `sg-33ocnj9n`. It can be obtained through DescribeSecurityGroups.
         :type SecurityGroupId: str
-        :param Filters: Filter conditions. `SecurityGroupId` and `Filters` cannot be specified at the same time.
-<li>security-group-id - String - Security group ID.</li>
-<li>ip - String - IP. IPV4 and IPV6 fuzzy matching is supported.</li>
-<li>address-module - String - IP address or address group template ID.</li>
-<li>service-module - String - Protocol port or port group template ID.</li>
-<li>protocol-type - String - Protocol supported by the security group policy. Valid values: `TCP`, `UDP`, `ICMP`, `ICMPV6`, `GRE`, `ALL`.</li>
-<li>port - String - Optional - Protocol port. Fuzzy matching is supported. Query all ports when the protocol value is `ALL`.</li>
-<li>poly - String - Protocol policy. Valid values: `ALL` (means "all policies"), `ACCEPT` (means "allow") and `DROP` (means "reject").</li>
-<li>direction - String - Protocol rule. Valid values: `ALL` (means "all rules"), `INBOUND`(means "inbound rules") and `OUTBOUND` (means "outbound rules").</li>
-<li>description - String - Protocol description. Fuzzy matching is supported in this filter condition.</li>
+        :param Filters: Filters
+<li>`security-group-id` - String - Security group ID in the rule.</li>
+<li>`ip` - String - IP. IPV4 and IPV6 fuzzy matching is supported.</li>
+<li>`address-module` - String - IP address or address group template ID.</li>
+<li>`service-module` - String - Protocol port or port group template ID.</li>
+<li>`protocol-type` - String - Protocol supported by the security group policy. Valid values: `TCP`, `UDP`, `ICMP`, `ICMPV6`, `GRE`, `ALL`.</li>
+<li>`port` - String - Optional - Port. Fuzzy matching is supported. Query all ports when the protocol value is `ALL`.</li>
+<li>`poly` - String - Policy type. Valid values: `ALL`, `ACCEPT` and `DROP`.</li>
+<li>`direction` - String - Direction of the rule. Valid values: `ALL`, `INBOUND` and `OUTBOUND`.</li>
+<li>`description` - String - Policy description. Fuzzy matching is supported.</li>
         :type Filters: list of Filter
         """
         self.SecurityGroupId = None
@@ -9529,6 +9539,80 @@ class DescribeTaskResultResponse(AbstractModel):
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
         self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTrafficPackagesRequest(AbstractModel):
+    """DescribeTrafficPackages request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TrafficPackageIds: Traffic package IDs. Multiple values can be used.
+        :type TrafficPackageIds: list of str
+        :param Filters: Each request can have up to 10 `Filters`. `TrafficPackageIds` and `Filters` cannot be specified at the same time. The specific filter conditions are as follows:
+<li> `traffic-package_id` - String - Optional - Filter by the traffic package ID.</li>
+<li> `traffic-package-name` - String - Optional - Filter by the traffic package name. Fuzzy match is not supported.</li>
+<li> `status` - String - Optional - Filter by the traffic package status. Values: [AVAILABLE|EXPIRED|EXHAUSTED].</li>
+        :type Filters: list of Filter
+        :param Offset: Pagination parameter
+        :type Offset: int
+        :param Limit: Pagination parameter
+        :type Limit: int
+        """
+        self.TrafficPackageIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.TrafficPackageIds = params.get("TrafficPackageIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTrafficPackagesResponse(AbstractModel):
+    """DescribeTrafficPackages response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Number of eligible traffic packages
+        :type TotalCount: int
+        :param TrafficPackageSet: Traffic package information
+        :type TrafficPackageSet: list of TrafficPackage
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.TrafficPackageSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("TrafficPackageSet") is not None:
+            self.TrafficPackageSet = []
+            for item in params.get("TrafficPackageSet"):
+                obj = TrafficPackage()
+                obj._deserialize(item)
+                self.TrafficPackageSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -11535,6 +11619,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :type EndPointSet: list of EndPoint
         :param CreateTime: Creation time
         :type CreateTime: str
+        :param ServiceType: Mounted PaaS service type. Values: `CLB`, `CDB`, `CRS`
+        :type ServiceType: str
         """
         self.EndPointServiceId = None
         self.VpcId = None
@@ -11546,6 +11632,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.EndPointCount = None
         self.EndPointSet = None
         self.CreateTime = None
+        self.ServiceType = None
 
 
     def _deserialize(self, params):
@@ -11564,6 +11651,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
                 obj._deserialize(item)
                 self.EndPointSet.append(obj)
         self.CreateTime = params.get("CreateTime")
+        self.ServiceType = params.get("ServiceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13073,22 +13161,19 @@ class ModifyBandwidthPackageAttributeRequest(AbstractModel):
         :type BandwidthPackageId: str
         :param BandwidthPackageName: The name of the bandwidth package.
         :type BandwidthPackageName: str
-        :param ChargeType: The billing mode of the bandwidth package.
+        :param ChargeType: The billing mode of the bandwidth package. Values: 
+`TOP5_POSTPAID_BY_MONTH`: Bill by the top 5 bandwidth value of the current month in a postpaid manner
         :type ChargeType: str
-        :param MigrateOnRefund: When a monthly-subscribed bandwidth package is returned, whether to convert it to a pay-as-you-go bandwidth packages. Default value: `No`
-        :type MigrateOnRefund: bool
         """
         self.BandwidthPackageId = None
         self.BandwidthPackageName = None
         self.ChargeType = None
-        self.MigrateOnRefund = None
 
 
     def _deserialize(self, params):
         self.BandwidthPackageId = params.get("BandwidthPackageId")
         self.BandwidthPackageName = params.get("BandwidthPackageName")
         self.ChargeType = params.get("ChargeType")
-        self.MigrateOnRefund = params.get("MigrateOnRefund")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14954,6 +15039,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         :param ExclusiveGatewayBandwidth: Bandwidth of the gateway cluster where the dedicated NAT Gateway resides. Unit: Mbps. This field does not exist when the `IsExclusive` field is set to `false`.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type ExclusiveGatewayBandwidth: int
+        :param RestrictState: Whether the NAT gateway is blocked. Values: `NORMAL`, `RESTRICTED`
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RestrictState: str
         """
         self.NatGatewayId = None
         self.NatGatewayName = None
@@ -14973,6 +15061,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.SourceIpTranslationNatRuleSet = None
         self.IsExclusive = None
         self.ExclusiveGatewayBandwidth = None
+        self.RestrictState = None
 
 
     def _deserialize(self, params):
@@ -15014,6 +15103,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
                 self.SourceIpTranslationNatRuleSet.append(obj)
         self.IsExclusive = params.get("IsExclusive")
         self.ExclusiveGatewayBandwidth = params.get("ExclusiveGatewayBandwidth")
+        self.RestrictState = params.get("RestrictState")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -15593,6 +15683,16 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param AttachType: ENI type. Valid values: `0` (standard); `1` (extension). Default value: `0`.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type AttachType: int
+        :param ResourceId: The ID of resource to retain the ENI primary IP. It’s used as the request parameters for deleting an ENI.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ResourceId: str
+        :param QosLevel: Service level
+<li>`DEFAULT`: Default level</lil>
+<li>`PT`: Gold</li>
+<li>`AU`: Silver</li>
+<li>`AG`: Bronze</li>
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type QosLevel: str
         """
         self.NetworkInterfaceId = None
         self.NetworkInterfaceName = None
@@ -15613,6 +15713,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.Business = None
         self.CdcId = None
         self.AttachType = None
+        self.ResourceId = None
+        self.QosLevel = None
 
 
     def _deserialize(self, params):
@@ -15652,6 +15754,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.Business = params.get("Business")
         self.CdcId = params.get("CdcId")
         self.AttachType = params.get("AttachType")
+        self.ResourceId = params.get("ResourceId")
+        self.QosLevel = params.get("QosLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -16814,6 +16918,47 @@ class ResourceDashboard(AbstractModel):
         
 
 
+class ReturnNormalAddressesRequest(AbstractModel):
+    """ReturnNormalAddresses request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AddressIps: 1
+        :type AddressIps: list of str
+        """
+        self.AddressIps = None
+
+
+    def _deserialize(self, params):
+        self.AddressIps = params.get("AddressIps")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReturnNormalAddressesResponse(AbstractModel):
+    """ReturnNormalAddresses response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class Route(AbstractModel):
     """Routing policy object
 
@@ -16835,7 +16980,6 @@ class Route(AbstractModel):
 `LOCAL_GATEWAY`: local gateway.
         :type GatewayType: str
         :param GatewayId: Next hop address. You simply need to specify the gateway ID of a different next hop type, and the system will automatically match the next hop address.
-Important note: When the GatewayType is EIP, the GatewayId has a fixed value `0`
         :type GatewayId: str
         :param RouteId: Routing policy ID. The IPv4 routing policy will have a meaningful value, while the IPv6 routing policy is always 0. We recommend using the unique ID `RouteItemId` for the routing policy.
 This field is required when you want to delete a routing policy.
@@ -17458,6 +17602,56 @@ class SetCcnRegionBandwidthLimitsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SetVpnGatewaysRenewFlagRequest(AbstractModel):
+    """SetVpnGatewaysRenewFlag request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VpnGatewayIds: VPN gateway IDs
+        :type VpnGatewayIds: list of str
+        :param AutoRenewFlag: Status of auto-renewal
+Values: `0` (Follow original), `1` (Enable auto-renewal), `2` (Disable auto-renewal) 
+        :type AutoRenewFlag: int
+        :param Type: VPNGW type: `IPSEC`, `SSL`
+        :type Type: str
+        """
+        self.VpnGatewayIds = None
+        self.AutoRenewFlag = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.VpnGatewayIds = params.get("VpnGatewayIds")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetVpnGatewaysRenewFlagResponse(AbstractModel):
+    """SetVpnGatewaysRenewFlag response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class SourceIpTranslationNatRule(AbstractModel):
     """SNAT rule of a NAT Gateway
 
@@ -17679,6 +17873,73 @@ Note: This field may return null, indicating no valid value.
         
 
 
+class TrafficPackage(AbstractModel):
+    """Information of a traffic package
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TrafficPackageId: Unique traffic package ID
+        :type TrafficPackageId: str
+        :param TrafficPackageName: Traffic package name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TrafficPackageName: str
+        :param TotalAmount: Traffic package size in GB
+        :type TotalAmount: float
+        :param RemainingAmount: Traffic package balance in GB
+        :type RemainingAmount: float
+        :param Status: Traffic package status. Valid values: `AVAILABLE`, `EXPIRED`, `EXHAUSTED`, `REFUNDED`, `DELETED`
+        :type Status: str
+        :param CreatedTime: Traffic package creation time
+        :type CreatedTime: str
+        :param Deadline: Traffic package expiration time
+        :type Deadline: str
+        :param UsedAmount: Used traffic in GB
+        :type UsedAmount: float
+        :param TagSet: Traffic package tag
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TagSet: list of Tag
+        :param DeductType: Traffic package type (idle-time or full-time)
+        :type DeductType: str
+        """
+        self.TrafficPackageId = None
+        self.TrafficPackageName = None
+        self.TotalAmount = None
+        self.RemainingAmount = None
+        self.Status = None
+        self.CreatedTime = None
+        self.Deadline = None
+        self.UsedAmount = None
+        self.TagSet = None
+        self.DeductType = None
+
+
+    def _deserialize(self, params):
+        self.TrafficPackageId = params.get("TrafficPackageId")
+        self.TrafficPackageName = params.get("TrafficPackageName")
+        self.TotalAmount = params.get("TotalAmount")
+        self.RemainingAmount = params.get("RemainingAmount")
+        self.Status = params.get("Status")
+        self.CreatedTime = params.get("CreatedTime")
+        self.Deadline = params.get("Deadline")
+        self.UsedAmount = params.get("UsedAmount")
+        if params.get("TagSet") is not None:
+            self.TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagSet.append(obj)
+        self.DeductType = params.get("DeductType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TransformAddressRequest(AbstractModel):
     """TransformAddress request structure.
 
@@ -17710,13 +17971,21 @@ class TransformAddressResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param TaskId: 
+        :type TaskId: int
+        :param AddressId: 
+        :type AddressId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.TaskId = None
+        self.AddressId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.AddressId = params.get("AddressId")
         self.RequestId = params.get("RequestId")
 
 
