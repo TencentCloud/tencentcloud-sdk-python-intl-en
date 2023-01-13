@@ -1006,6 +1006,8 @@ If this field is configured in a launch configuration, the `InstanceName` of a C
         :param HpcClusterId: HPC ID<br>
 Note: This field is default to empty
         :type HpcClusterId: str
+        :param IPv6InternetAccessible: IPv6 public network bandwidth configuration. If the IPv6 address is available in the new instance, public network bandwidth can be allocated to the IPv6 address. This parameter is invalid if `Ipv6AddressCount` of the scaling group associated with the launch configuration is 0.
+        :type IPv6InternetAccessible: :class:`tencentcloud.autoscaling.v20180419.models.IPv6InternetAccessible`
         """
         self.LaunchConfigurationName = None
         self.ImageId = None
@@ -1030,6 +1032,7 @@ Note: This field is default to empty
         self.InstanceChargePrepaid = None
         self.DiskTypePolicy = None
         self.HpcClusterId = None
+        self.IPv6InternetAccessible = None
 
 
     def _deserialize(self, params):
@@ -1087,6 +1090,9 @@ Note: This field is default to empty
             self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
         self.DiskTypePolicy = params.get("DiskTypePolicy")
         self.HpcClusterId = params.get("HpcClusterId")
+        if params.get("IPv6InternetAccessible") is not None:
+            self.IPv6InternetAccessible = IPv6InternetAccessible()
+            self.IPv6InternetAccessible._deserialize(params.get("IPv6InternetAccessible"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2709,7 +2715,7 @@ class EnableAutoScalingGroupResponse(AbstractModel):
 
 
 class EnhancedService(AbstractModel):
-    """This describes the conditions of enhancement services for the instance and their settings, such as the Agent of Cloud Security or Cloud Monitor.
+    """This describes the conditions and configurations of the enhanced services of the instance, such as cloud security, cloud monitor, TencentCloud Automation Tools, and other instance agents.
 
     """
 
@@ -2721,7 +2727,7 @@ class EnhancedService(AbstractModel):
         :type MonitorService: :class:`tencentcloud.autoscaling.v20180419.models.RunMonitorServiceEnabled`
         :param AutomationService: Deprecated parameter.
         :type AutomationService: list of RunAutomationServiceEnabled
-        :param AutomationToolsService: 
+        :param AutomationToolsService: Enable TAT service. If this parameter is not specified, the default logic is the same as that of the CVM instance. Note: This field may return `null`, indicating that no valid values can be obtained.
         :type AutomationToolsService: :class:`tencentcloud.autoscaling.v20180419.models.RunAutomationServiceEnabled`
         """
         self.SecurityService = None
@@ -2941,6 +2947,43 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def _deserialize(self, params):
         self.HostName = params.get("HostName")
         self.HostNameStyle = params.get("HostNameStyle")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IPv6InternetAccessible(AbstractModel):
+    """This describes the IPv6 address public network accessibility of the instance created by a launch configuration and declares the public network usage billing method of the IPv6 address and the maximum bandwidth.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InternetChargeType: Network billing mode. Valid values: TRAFFIC_POSTPAID_BY_HOUR, BANDWIDTH_PACKAGE. Default value: TRAFFIC_POSTPAID_BY_HOUR. For the current account type, see [Account Type Description](https://intl.cloud.tencent.com/document/product/1199/49090?from_cn_redirect=1#judge).
+<br><li> IPv6 supports `TRAFFIC_POSTPAID_BY_HOUR` under a bill-by-IP account.
+<br><li> IPv6 supports `BANDWIDTH_PACKAGE` under a bill-by-CVM account.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type InternetChargeType: str
+        :param InternetMaxBandwidthOut: Maximum outbound bandwidth of the public network, in Mbps. <br>The default value is 0, and no public network bandwidth is allocated to IPv6. The maximum bandwidth varies with the model, availability zone and billing mode. For more information, see [Public Network Bandwidth Cap](https://intl.cloud.tencent.com/document/product/213/12523?from_cn_redirect=1).
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type InternetMaxBandwidthOut: int
+        :param BandwidthPackageId: Bandwidth package ID. You can obtain the ID from the `BandwidthPackageId` field in the response of the [DescribeBandwidthPackages](https://intl.cloud.tencent.com/document/api/215/19209?from_cn_redirect=1) API.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type BandwidthPackageId: str
+        """
+        self.InternetChargeType = None
+        self.InternetMaxBandwidthOut = None
+        self.BandwidthPackageId = None
+
+
+    def _deserialize(self, params):
+        self.InternetChargeType = params.get("InternetChargeType")
+        self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        self.BandwidthPackageId = params.get("BandwidthPackageId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3320,6 +3363,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param HpcClusterId: HPC ID<br>
 Note: This field is default to empty
         :type HpcClusterId: str
+        :param IPv6InternetAccessible: IPv6 public network bandwidth configuration.
+        :type IPv6InternetAccessible: :class:`tencentcloud.autoscaling.v20180419.models.IPv6InternetAccessible`
         """
         self.ProjectId = None
         self.LaunchConfigurationId = None
@@ -3350,6 +3395,7 @@ Note: This field is default to empty
         self.InstanceChargePrepaid = None
         self.DiskTypePolicy = None
         self.HpcClusterId = None
+        self.IPv6InternetAccessible = None
 
 
     def _deserialize(self, params):
@@ -3418,6 +3464,9 @@ Note: This field is default to empty
             self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
         self.DiskTypePolicy = params.get("DiskTypePolicy")
         self.HpcClusterId = params.get("HpcClusterId")
+        if params.get("IPv6InternetAccessible") is not None:
+            self.IPv6InternetAccessible = IPv6InternetAccessible()
+            self.IPv6InternetAccessible._deserialize(params.get("IPv6InternetAccessible"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3967,6 +4016,8 @@ This field requires passing in the `InstanceName` field. Other fields that are n
         :param HpcClusterId: HPC ID<br>
 Note: This field is default to empty
         :type HpcClusterId: str
+        :param IPv6InternetAccessible: IPv6 public network bandwidth configuration. If the IPv6 address is available in the new instance, public network bandwidth can be allocated to the IPv6 address. This parameter is invalid if `Ipv6AddressCount` of the scaling group associated with the launch configuration is 0.
+        :type IPv6InternetAccessible: :class:`tencentcloud.autoscaling.v20180419.models.IPv6InternetAccessible`
         """
         self.LaunchConfigurationId = None
         self.ImageId = None
@@ -3987,6 +4038,7 @@ Note: This field is default to empty
         self.EnhancedService = None
         self.CamRoleName = None
         self.HpcClusterId = None
+        self.IPv6InternetAccessible = None
 
 
     def _deserialize(self, params):
@@ -4028,6 +4080,9 @@ Note: This field is default to empty
             self.EnhancedService._deserialize(params.get("EnhancedService"))
         self.CamRoleName = params.get("CamRoleName")
         self.HpcClusterId = params.get("HpcClusterId")
+        if params.get("IPv6InternetAccessible") is not None:
+            self.IPv6InternetAccessible = IPv6InternetAccessible()
+            self.IPv6InternetAccessible._deserialize(params.get("IPv6InternetAccessible"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5243,6 +5298,8 @@ If a model in InstanceTypes does not exist or has been discontinued, a verificat
 <br><li>ORIGINAL: uses the configured cloud disk type
 <br><li>AUTOMATIC: automatically chooses an available cloud disk type
         :type DiskTypePolicy: str
+        :param IPv6InternetAccessible: IPv6 public network bandwidth configuration. If the IPv6 address is available in the new instance, public network bandwidth can be allocated to the IPv6 address. This parameter is invalid if `Ipv6AddressCount` of the scaling group associated with the launch configuration is 0.
+        :type IPv6InternetAccessible: :class:`tencentcloud.autoscaling.v20180419.models.IPv6InternetAccessible`
         """
         self.LaunchConfigurationId = None
         self.ImageId = None
@@ -5265,6 +5322,7 @@ If a model in InstanceTypes does not exist or has been discontinued, a verificat
         self.InstanceNameSettings = None
         self.InstanceChargePrepaid = None
         self.DiskTypePolicy = None
+        self.IPv6InternetAccessible = None
 
 
     def _deserialize(self, params):
@@ -5315,6 +5373,9 @@ If a model in InstanceTypes does not exist or has been discontinued, a verificat
             self.InstanceChargePrepaid = InstanceChargePrepaid()
             self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
         self.DiskTypePolicy = params.get("DiskTypePolicy")
+        if params.get("IPv6InternetAccessible") is not None:
+            self.IPv6InternetAccessible = IPv6InternetAccessible()
+            self.IPv6InternetAccessible._deserialize(params.get("IPv6InternetAccessible"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

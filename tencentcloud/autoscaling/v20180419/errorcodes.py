@@ -95,7 +95,7 @@ INVALIDPARAMETER_LOADBALANCERNOTINAUTOSCALINGGROUP = 'InvalidParameter.LoadBalan
 # A parameter is missing. One of the two parameters must be specified.
 INVALIDPARAMETER_MUSTONEPARAMETER = 'InvalidParameter.MustOneParameter'
 
-# 
+# This parameter has been disused.
 INVALIDPARAMETER_PARAMETERDEPRECATED = 'InvalidParameter.ParameterDeprecated'
 
 # Some parameters cannot coexist and should be deleted.
@@ -107,7 +107,7 @@ INVALIDPARAMETERCONFLICT = 'InvalidParameterConflict'
 # Wrong parameter value.
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
-# 
+# The bandwidth package ID is not supported in this account.
 INVALIDPARAMETERVALUE_ACCOUNTNOTSUPPORTBANDWIDTHPACKAGEID = 'InvalidParameterValue.AccountNotSupportBandwidthPackageId'
 
 # The specified base capacity cannot exceed the max capacity.
@@ -149,7 +149,7 @@ INVALIDPARAMETERVALUE_GROUPNAMEDUPLICATED = 'InvalidParameterValue.GroupNameDupl
 # Invalid hostname
 INVALIDPARAMETERVALUE_HOSTNAMEILLEGAL = 'InvalidParameterValue.HostNameIllegal'
 
-# 
+# The specified IPv6 public network bandwidth billing mode is invalid.
 INVALIDPARAMETERVALUE_IPV6INTERNETCHARGETYPE = 'InvalidParameterValue.IPv6InternetChargeType'
 
 # The specified image does not exist.
@@ -233,7 +233,7 @@ INVALIDPARAMETERVALUE_LIFECYCLEHOOKNAMEDUPLICATED = 'InvalidParameterValue.Lifec
 # The value exceeds the limit.
 INVALIDPARAMETERVALUE_LIMITEXCEEDED = 'InvalidParameterValue.LimitExceeded'
 
-# 
+# The bandwidth package ID is required.
 INVALIDPARAMETERVALUE_MISSINGBANDWIDTHPACKAGEID = 'InvalidParameterValue.MissingBandwidthPackageId'
 
 # No resource permission.
@@ -365,7 +365,7 @@ RESOURCENOTFOUND_AUTOSCALINGGROUPNOTFOUND = 'ResourceNotFound.AutoScalingGroupNo
 # The notification does not exist.
 RESOURCENOTFOUND_AUTOSCALINGNOTIFICATIONNOTFOUND = 'ResourceNotFound.AutoScalingNotificationNotFound'
 
-# 
+# The specified bandwidth package ID is not found.
 RESOURCENOTFOUND_BANDWIDTHPACKAGEIDNOTFOUND = 'ResourceNotFound.BandwidthPackageIdNotFound'
 
 # The specified CMQ queue does not exist.

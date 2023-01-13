@@ -49,6 +49,10 @@ class ApplyCertificateRequest(AbstractModel):
         :type Alias: str
         :param OldCertificateId: Original certificate ID, which is used to apply for a new certificate.
         :type OldCertificateId: str
+        :param PackageId: Benefit package ID, which is used to expand the free certificate package
+        :type PackageId: str
+        :param DeleteDnsAutoRecord: Whether to delete the automatic domain name verification record after issuance, which is no by default. This parameter can be passed in only for domain names of the DNS_AUTO verification type.
+        :type DeleteDnsAutoRecord: bool
         """
         self.DvAuthMethod = None
         self.DomainName = None
@@ -62,6 +66,8 @@ class ApplyCertificateRequest(AbstractModel):
         self.CsrKeyPassword = None
         self.Alias = None
         self.OldCertificateId = None
+        self.PackageId = None
+        self.DeleteDnsAutoRecord = None
 
 
     def _deserialize(self, params):
@@ -77,6 +83,8 @@ class ApplyCertificateRequest(AbstractModel):
         self.CsrKeyPassword = params.get("CsrKeyPassword")
         self.Alias = params.get("Alias")
         self.OldCertificateId = params.get("OldCertificateId")
+        self.PackageId = params.get("PackageId")
+        self.DeleteDnsAutoRecord = params.get("DeleteDnsAutoRecord")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -228,8 +236,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Alias: Alias
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Alias: str
-        :param Status: Status value. `0`: reviewing; `1`: approved; `2`: unapproved; `3`: expired; `4`: DNS record added; `5`: OV/EV certificate, information to be submitted; `6`: canceling order; `7`: canceled; `8`: information submitted, pending confirmation letter upload
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param Status: Status. `0`: Reviewing; `1`: Approved; `2`: Unapproved; `3`: Expired; `4`: DNS record added for domain names of the DNS_AUTO verification type; `5`: Enterprise-grade certificate, pending submission; `6`: Canceling order; `7`: Canceled; `8`: Information submitted, pending confirmation letter upload; `9`: Revoking certificate; `10`: Revoked; `11`: Reissuing; `12`: Pending revocation confirmation letter upload; `13`: Pending information submission for the free certificate; `14`: Refunded.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Status: int
         :param CertificateExtra: Extended information of the certificate
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -294,6 +302,30 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Tags: List of tags
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Tags: list of Tags
+        :param IsIgnore: Whether the expiration notification was ignored
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsIgnore: bool
+        :param IsSM: Whether the certificate is a Chinese SM certificate
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsSM: bool
+        :param EncryptAlgorithm: Certificate algorithm
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EncryptAlgorithm: str
+        :param CAEncryptAlgorithms: Encryption algorithm of the uploaded CA certificate
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CAEncryptAlgorithms: list of str
+        :param CAEndTimes: Expiration time of the uploaded CA certificate
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CAEndTimes: list of str
+        :param CACommonNames: Generic name of the uploaded CA certificate
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CACommonNames: list of str
+        :param PreAuditInfo: Prereview information of the certificate
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PreAuditInfo: :class:`tencentcloud.ssl.v20191205.models.PreAuditInfo`
+        :param AutoRenewFlag: Whether auto-renewal is enabled.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type AutoRenewFlag: int
         """
         self.OwnerUin = None
         self.ProjectId = None
@@ -325,6 +357,14 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.BoundResource = None
         self.Deployable = None
         self.Tags = None
+        self.IsIgnore = None
+        self.IsSM = None
+        self.EncryptAlgorithm = None
+        self.CAEncryptAlgorithms = None
+        self.CAEndTimes = None
+        self.CACommonNames = None
+        self.PreAuditInfo = None
+        self.AutoRenewFlag = None
 
 
     def _deserialize(self, params):
@@ -367,6 +407,16 @@ Note: this field may return `null`, indicating that no valid values can be obtai
                 obj = Tags()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.IsIgnore = params.get("IsIgnore")
+        self.IsSM = params.get("IsSM")
+        self.EncryptAlgorithm = params.get("EncryptAlgorithm")
+        self.CAEncryptAlgorithms = params.get("CAEncryptAlgorithms")
+        self.CAEndTimes = params.get("CAEndTimes")
+        self.CACommonNames = params.get("CACommonNames")
+        if params.get("PreAuditInfo") is not None:
+            self.PreAuditInfo = PreAuditInfo()
+            self.PreAuditInfo._deserialize(params.get("PreAuditInfo"))
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -576,11 +626,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param StatusName: Status description
 Note: this field may return null, indicating that no valid values can be obtained.
         :type StatusName: str
-        :param SubjectAltName: Domain names associated with the certificate (including the primary domain name)
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param SubjectAltName: Multiple domain names included in the certificate (excluding the primary domain name, which uses the `Domain` field)
+Note: This field may return null, indicating that no valid values can be obtained.
         :type SubjectAltName: list of str
-        :param IsVip: Whether the customer is a VIP customer
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param IsVip: Whether the certificate is a paid one.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type IsVip: bool
         :param IsWildcard: Whether the certificate is a wildcard certificate
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -594,8 +644,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param SubmittedData: Submitted data
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SubmittedData: :class:`tencentcloud.ssl.v20191205.models.SubmittedData`
-        :param RenewAble: Whether the certificate can be reissued
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param RenewAble: Whether the certificate can be renewed.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type RenewAble: bool
         :param Deployable: Whether the certificate can be deployed
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -603,6 +653,24 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Tags: List of associated tags
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Tags: list of Tags
+        :param RootCert: Root certificate.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RootCert: :class:`tencentcloud.ssl.v20191205.models.RootCertificates`
+        :param EncryptCert: Chinese SM encryption certificate
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EncryptCert: str
+        :param EncryptPrivateKey: Private key of Chinese SM encryption
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EncryptPrivateKey: str
+        :param CertFingerprint: SHA1 fingerprint of the signature certificate
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CertFingerprint: str
+        :param EncryptCertFingerprint: SHA1 fingerprint of the encryption certificate (for Chinese SM certificates only)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EncryptCertFingerprint: str
+        :param EncryptAlgorithm: Certificate algorithm
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EncryptAlgorithm: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -640,6 +708,12 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.RenewAble = None
         self.Deployable = None
         self.Tags = None
+        self.RootCert = None
+        self.EncryptCert = None
+        self.EncryptPrivateKey = None
+        self.CertFingerprint = None
+        self.EncryptCertFingerprint = None
+        self.EncryptAlgorithm = None
         self.RequestId = None
 
 
@@ -689,6 +763,14 @@ Note: this field may return `null`, indicating that no valid values can be obtai
                 obj = Tags()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        if params.get("RootCert") is not None:
+            self.RootCert = RootCertificates()
+            self.RootCert._deserialize(params.get("RootCert"))
+        self.EncryptCert = params.get("EncryptCert")
+        self.EncryptPrivateKey = params.get("EncryptPrivateKey")
+        self.CertFingerprint = params.get("CertFingerprint")
+        self.EncryptCertFingerprint = params.get("EncryptCertFingerprint")
+        self.EncryptAlgorithm = params.get("EncryptAlgorithm")
         self.RequestId = params.get("RequestId")
 
 
@@ -984,7 +1066,7 @@ class DescribeCertificatesRequest(AbstractModel):
         r"""
         :param Offset: Pagination offset, starting from 0
         :type Offset: int
-        :param Limit: Number of certificates on each page. The default value is 20.
+        :param Limit: Number of entries per page. Default value: `20`. Maximum value: `1000`.
         :type Limit: int
         :param SearchKey: Keyword for search, which can be a certificate ID, alias, or domain name, for example, a8xHcaIs
         :type SearchKey: str
@@ -994,10 +1076,20 @@ class DescribeCertificatesRequest(AbstractModel):
         :type ProjectId: int
         :param ExpirationSort: Sorting by expiration time. `DESC`: descending; `ASC`: ascending
         :type ExpirationSort: str
-        :param CertificateStatus: Certificate status
+        :param CertificateStatus: Certificate status. `0`: Reviewing; `1`: Approved; `2`: Unapproved; `3`: Expired; `4`: DNS record added; `5`: Enterprise-grade certificate, pending submission; `6`: Canceling order; `7`: Canceled; `8`: Information submitted, pending confirmation letter upload; `9`: Revoking certificate; `10`: Revoked; `11`: Reissuing; `12`: Pending revocation confirmation letter upload; `13`: Pending information submission for the free certificate.
         :type CertificateStatus: list of int non-negative
         :param Deployable: Whether the certificate can be deployed. `1`: yes; `0`: no
         :type Deployable: int
+        :param Upload: Whether to filter uploaded hosted certificates. `1`: Yes; `0`: No.
+        :type Upload: int
+        :param Renew: Whether to filter renewable certificates. `1`: Yes; `0`: No.
+        :type Renew: int
+        :param FilterSource: Filter by source. `upload`: Uploaded certificate; `buy`: Tencent Cloud certificate. If this parameter is left empty, all certificates will be queried.
+        :type FilterSource: str
+        :param IsSM: Whether to filter Chinese SM certificates. `1`: Yes; `0`: No.
+        :type IsSM: int
+        :param FilterExpiring: Whether to filter expiring certificates. `1`: Yes; `0`: No.
+        :type FilterExpiring: int
         """
         self.Offset = None
         self.Limit = None
@@ -1007,6 +1099,11 @@ class DescribeCertificatesRequest(AbstractModel):
         self.ExpirationSort = None
         self.CertificateStatus = None
         self.Deployable = None
+        self.Upload = None
+        self.Renew = None
+        self.FilterSource = None
+        self.IsSM = None
+        self.FilterExpiring = None
 
 
     def _deserialize(self, params):
@@ -1018,6 +1115,11 @@ class DescribeCertificatesRequest(AbstractModel):
         self.ExpirationSort = params.get("ExpirationSort")
         self.CertificateStatus = params.get("CertificateStatus")
         self.Deployable = params.get("Deployable")
+        self.Upload = params.get("Upload")
+        self.Renew = params.get("Renew")
+        self.FilterSource = params.get("FilterSource")
+        self.IsSM = params.get("IsSM")
+        self.FilterExpiring = params.get("FilterExpiring")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1347,6 +1449,41 @@ class OperationLog(AbstractModel):
         
 
 
+class PreAuditInfo(AbstractModel):
+    """List of prereview information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalPeriod: Total number of years of the certificate
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TotalPeriod: int
+        :param NowPeriod: Current year of the certificate
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type NowPeriod: int
+        :param ManagerId: Certificate prereview manager ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ManagerId: str
+        """
+        self.TotalPeriod = None
+        self.NowPeriod = None
+        self.ManagerId = None
+
+
+    def _deserialize(self, params):
+        self.TotalPeriod = params.get("TotalPeriod")
+        self.NowPeriod = params.get("NowPeriod")
+        self.ManagerId = params.get("ManagerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ProjectInfo(AbstractModel):
     """Content of the `ProjectInfo` parameter. `ProjectInfo` is an element of `Certificates` array which is returned by `DescribeCertificates`.
 
@@ -1460,6 +1597,41 @@ class ReplaceCertificateResponse(AbstractModel):
     def _deserialize(self, params):
         self.CertificateId = params.get("CertificateId")
         self.RequestId = params.get("RequestId")
+
+
+class RootCertificates(AbstractModel):
+    """Root certificate
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Sign: Chinese SM signature certificate
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Sign: str
+        :param Encrypt: Chinese SM encryption certificate
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Encrypt: str
+        :param Standard: Standard certificate
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Standard: str
+        """
+        self.Sign = None
+        self.Encrypt = None
+        self.Standard = None
+
+
+    def _deserialize(self, params):
+        self.Sign = params.get("Sign")
+        self.Encrypt = params.get("Encrypt")
+        self.Standard = params.get("Standard")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SubmitCertificateInformationRequest(AbstractModel):
