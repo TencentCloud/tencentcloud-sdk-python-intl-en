@@ -65,6 +65,9 @@ FAILEDOPERATION_PHONENUMBERPARSEFAIL = 'FailedOperation.PhoneNumberParseFail'
 # Non-Root accounts cannot use the template list pull feature. You can use the TencentCloud API key of your root account to call the API.
 FAILEDOPERATION_PROHIBITSUBACCOUNTUSE = 'FailedOperation.ProhibitSubAccountUse'
 
+# The signature ID does not exist.
+FAILEDOPERATION_SIGNIDNOTEXIST = 'FailedOperation.SignIdNotExist'
+
 # The number of signatures has reached the maximum value.
 FAILEDOPERATION_SIGNNUMBERLIMIT = 'FailedOperation.SignNumberLimit'
 
@@ -74,7 +77,7 @@ FAILEDOPERATION_SIGNATUREINCORRECTORUNAPPROVED = 'FailedOperation.SignatureIncor
 # This template has been approved and cannot be modified again.
 FAILEDOPERATION_TEMPLATEALREADYPASSEDCHECK = 'FailedOperation.TemplateAlreadyPassedCheck'
 
-# The template ID or signature ID does not exist.
+# The template ID does not exist.
 FAILEDOPERATION_TEMPLATEIDNOTEXIST = 'FailedOperation.TemplateIdNotExist'
 
 # The template has not been approved or its content does not match that of the approved template. (1) Please log in to the [SMS console](https://console.cloud.tencent.com/smsv2) to check whether the template has been reviewed and approved. (2) Please click [here](https://intl.cloud.tencent.com/document/product/382/9558?from_cn_redirect=1#.E8.BF.94.E5.9B.9E1014.E9.94.99.E8.AF.AF.E5.A6.82.E4.BD.95.E5.A4.84.E7.90.86.EF.BC.9F) to check whether the template format is correct. If you have any questions, contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81).
@@ -128,7 +131,7 @@ INVALIDPARAMETER_APPIDANDBIZID = 'InvalidParameter.AppidAndBizId'
 # There are sensitive words.
 INVALIDPARAMETER_DIRTYWORDFOUND = 'InvalidParameter.DirtyWordFound'
 
-# Incorrect `International` or `SmsType` parameter. If necessary, you can contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81) for assistance.
+# Invalid parameter. If you have any questions, contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81).
 INVALIDPARAMETER_INVALIDPARAMETERS = 'InvalidParameter.InvalidParameters'
 
 # `BeginTime` parameter check failed.
@@ -143,7 +146,7 @@ INVALIDPARAMETERVALUE_ENDTIMEVERIFYFAIL = 'InvalidParameterValue.EndTimeVerifyFa
 # The format of the uploaded transcoded image is incorrect. See the description of this field in the API description. If necessary, you can contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81) for assistance.
 INVALIDPARAMETERVALUE_IMAGEINVALID = 'InvalidParameterValue.ImageInvalid'
 
-# The format of the mobile number is incorrect, Please see [Detailed Explanation of Error 1016](https://intl.cloud.tencent.com/document/product/382/9558?from_cn_redirect=1#.E8.BF.94.E5.9B.9E1016.E9.94.99.E8.AF.AF.E5.A6.82.E4.BD.95.E5.A4.84.E7.90.86.EF.BC.9F).
+# Incorrect mobile number format
 INVALIDPARAMETERVALUE_INCORRECTPHONENUMBER = 'InvalidParameterValue.IncorrectPhoneNumber'
 
 # `DocumentType` field check failed. See the description of this field in the API description. If necessary, you can contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81) for assistance.
@@ -181,6 +184,9 @@ INVALIDPARAMETERVALUE_SIGNALREADYPASSEDCHECK = 'InvalidParameterValue.SignAlread
 
 # The same signature pending review already exists.
 INVALIDPARAMETERVALUE_SIGNEXISTANDUNAPPROVED = 'InvalidParameterValue.SignExistAndUnapproved'
+
+# Too much signature content
+INVALIDPARAMETERVALUE_SIGNNAMELENGTHTOOLONG = 'InvalidParameterValue.SignNameLengthTooLong'
 
 # The parameter format of the verification code template is incorrect. For a verification code template, only 0–6 digits can be passed in as the template variable.
 INVALIDPARAMETERVALUE_TEMPLATEPARAMETERFORMATERROR = 'InvalidParameterValue.TemplateParameterFormatError'

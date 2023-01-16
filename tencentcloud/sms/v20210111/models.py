@@ -666,8 +666,8 @@ class DescribeSmsTemplateListRequest(AbstractModel):
 0: Mainland China SMS.
 1: Global SMS.
         :type International: int
-        :param TemplateIdSet: Array of template IDs. If the array is empty, the template list information will be queried by default (only allowed for root accounts). You need to use the `Limit` and `Offset` fields to set the query range.
-<dx-alert infotype="notice" title="Note">The default array length can be up to 100</dx-alert>
+        :param TemplateIdSet: Array of template IDs. If the array is empty, the template list information will be queried by default. You need to use the `Limit` and `Offset` fields to set the query range.
+<dx-alert infotype="notice" title="Note">The max array length is 100 by default.</dx-alert>
         :type TemplateIdSet: list of int non-negative
         :param Limit: Upper limit. Maximum value: 100.
 Note: it is 0 by default and is enabled when `TemplateIdSet` is empty.
