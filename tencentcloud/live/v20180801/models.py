@@ -358,9 +358,11 @@ class CallBackRuleInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CreateTime: Rule creation time.
+        :param CreateTime: The rule creation time.
+Note: Beijing time (UTC+8) is used.
         :type CreateTime: str
-        :param UpdateTime: Rule update time.
+        :param UpdateTime: The rule update time.
+Note: Beijing time (UTC+8) is used.
         :type UpdateTime: str
         :param TemplateId: Template ID.
         :type TemplateId: int
@@ -551,7 +553,8 @@ class CertInfo(AbstractModel):
         :type CertName: str
         :param Description: Description.
         :type Description: str
-        :param CreateTime: Creation time in UTC format.
+        :param CreateTime: The creation time in UTC format.
+Note: Beijing time (UTC+8) is used.
         :type CreateTime: str
         :param HttpsCrt: Certificate content.
         :type HttpsCrt: str
@@ -559,7 +562,8 @@ class CertInfo(AbstractModel):
 0: user-added certificate
 1: Tencent Cloud-hosted certificate
         :type CertType: int
-        :param CertExpireTime: Certificate expiration time in UTC format.
+        :param CertExpireTime: The certificate expiration time in UTC format.
+Note: Beijing time (UTC+8) is used.
         :type CertExpireTime: str
         :param DomainList: List of domain names that use this certificate.
         :type DomainList: list of str
@@ -6007,7 +6011,8 @@ class DomainCertInfo(AbstractModel):
         :type CertName: str
         :param Description: Description.
         :type Description: str
-        :param CreateTime: Creation time in UTC format.
+        :param CreateTime: The creation time in UTC format.
+Note: Beijing time (UTC+8) is used.
         :type CreateTime: str
         :param HttpsCrt: Certificate content.
         :type HttpsCrt: str
@@ -6015,7 +6020,8 @@ class DomainCertInfo(AbstractModel):
 0: user-added certificate
 1: Tencent Cloud-hosted certificate.
         :type CertType: int
-        :param CertExpireTime: Certificate expiration time in UTC format.
+        :param CertExpireTime: The certificate expiration time in UTC format.
+Note: Beijing time (UTC+8) is used.
         :type CertExpireTime: str
         :param DomainName: Domain name that uses this certificate.
         :type DomainName: str
@@ -6080,7 +6086,8 @@ class DomainInfo(AbstractModel):
 0: deactivated.
 1: activated.
         :type Status: int
-        :param CreateTime: Creation time.
+        :param CreateTime: The time when the domain was added.
+Note: Beijing time (UTC+8) is used.
         :type CreateTime: str
         :param BCName: Whether there is a CNAME record pointing to a fixed rule domain name:
 0: no.
@@ -6101,7 +6108,8 @@ class DomainInfo(AbstractModel):
         :type CurrentCName: str
         :param RentTag: Disused parameter, which can be ignored.
         :type RentTag: int
-        :param RentExpireTime: Disused parameter, which can be ignored.
+        :param RentExpireTime: A disused parameter.
+Note: Beijing time (UTC+8) is used.
         :type RentExpireTime: str
         :param IsMiniProgramLive: 0: LVB.
 1: LVB on Mini Program.
@@ -6370,9 +6378,11 @@ class ForbidStreamInfo(AbstractModel):
         r"""
         :param StreamName: Stream name.
         :type StreamName: str
-        :param CreateTime: Creation time.
+        :param CreateTime: The creation time.
+Note: Beijing time (UTC+8) is used.
         :type CreateTime: str
-        :param ExpireTime: Forbidding expiration time.
+        :param ExpireTime: The end time.
+Note: Beijing time (UTC+8) is used.
         :type ExpireTime: str
         :param AppName: The push path.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -6643,13 +6653,15 @@ class LiveDomainCertBindings(AbstractModel):
 1: Enabled
 0: Disabled
         :type Status: int
-        :param CertExpireTime: The expiration time of the certificate.
+        :param CertExpireTime: The certificate expiration time.
+Note: Beijing time (UTC+8) is used.
         :type CertExpireTime: str
         :param CertId: The certificate ID.
         :type CertId: int
         :param CloudCertId: The SSL certificate ID assigned by Tencent Cloud.
         :type CloudCertId: str
         :param UpdateTime: The last updated time.
+Note: Beijing time (UTC+8) is used.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type UpdateTime: str
         """
@@ -8678,9 +8690,11 @@ class RuleInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CreateTime: Rule creation time.
+        :param CreateTime: The rule creation time.
+Note: Beijing time (UTC+8) is used.
         :type CreateTime: str
-        :param UpdateTime: Rule update time.
+        :param UpdateTime: The rule update time.
+Note: Beijing time (UTC+8) is used.
         :type UpdateTime: str
         :param TemplateId: Template ID.
         :type TemplateId: int
@@ -9517,7 +9531,8 @@ class WatermarkInfo(AbstractModel):
         :type WatermarkName: str
         :param Status: Current status. 0: not used. 1: in use.
         :type Status: int
-        :param CreateTime: Creation time.
+        :param CreateTime: The time when the watermark was added.
+Note: Beijing time (UTC+8) is used.
         :type CreateTime: str
         :param Width: Watermark width.
         :type Width: int

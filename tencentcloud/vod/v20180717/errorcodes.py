@@ -104,6 +104,9 @@ INVALIDPARAMETER_EXISTEDPROCEDURENAME = 'InvalidParameter.ExistedProcedureName'
 # Incorrect parameter value: expiration time.
 INVALIDPARAMETER_EXPIRETIME = 'InvalidParameter.ExpireTime'
 
+# Parameter error: Invalid label.
+INVALIDPARAMETER_LABELS = 'InvalidParameter.Labels'
+
 # The task flow template name does not exist.
 INVALIDPARAMETER_PROCEDURENAMENOTEXIST = 'InvalidParameter.ProcedureNameNotExist'
 
@@ -335,6 +338,9 @@ INVALIDPARAMETERVALUE_KEYFRAMEDESCCONTENTTOOLONG = 'InvalidParameterValue.KeyFra
 # Incorrect parameter value: the value of the `LabelSet` parameter is invalid.
 INVALIDPARAMETERVALUE_LABELSET = 'InvalidParameterValue.LabelSet'
 
+# Parameter error: Invalid label.
+INVALIDPARAMETERVALUE_LABELS = 'InvalidParameterValue.Labels'
+
 # Invalid parameter: Limit.
 INVALIDPARAMETERVALUE_LIMIT = 'InvalidParameterValue.Limit'
 
@@ -350,7 +356,7 @@ INVALIDPARAMETERVALUE_MEDIATYPE = 'InvalidParameterValue.MediaType'
 # Incorrect parameter value: media file URL.
 INVALIDPARAMETERVALUE_MEDIAURL = 'InvalidParameterValue.MediaUrl'
 
-# Invalid `Metric`.
+# Parameter error: Invalid metric.
 INVALIDPARAMETERVALUE_METRIC = 'InvalidParameterValue.Metric'
 
 # Incorrect parameter value: the default template cannot be modified.
@@ -598,6 +604,9 @@ LIMITEXCEEDED_TOOMUCHTEMPLATE = 'LimitExceeded.TooMuchTemplate'
 
 # Missing parameter.
 MISSINGPARAMETER = 'MissingParameter'
+
+# Too many requests.
+REQUESTLIMITEXCEEDED = 'RequestLimitExceeded'
 
 # The resource does not exist.
 RESOURCENOTFOUND = 'ResourceNotFound'

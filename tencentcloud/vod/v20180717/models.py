@@ -5685,6 +5685,117 @@ class ConfirmEventsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ContentReviewOcrResult(AbstractModel):
+    """The result for OCR-based image moderation.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Confidence: The confidence score for the OCR-based moderation result. Value range: 0-100.
+        :type Confidence: float
+        :param Suggestion: The suggestion for handling the suspicious content detected based on OCR. Valid values:
+<li>pass/li>
+<li>review</li>
+<li>block</li>
+        :type Suggestion: str
+        :param KeywordSet: The list of suspicious keywords detected based on OCR.
+        :type KeywordSet: list of str
+        :param AreaCoordSet: The coordinates (pixel) of the top-left and bottom-right corners of the frame where a suspicious keyword appears. Format: [x1, y1, x2, y2].
+        :type AreaCoordSet: list of int
+        """
+        self.Confidence = None
+        self.Suggestion = None
+        self.KeywordSet = None
+        self.AreaCoordSet = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.Suggestion = params.get("Suggestion")
+        self.KeywordSet = params.get("KeywordSet")
+        self.AreaCoordSet = params.get("AreaCoordSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ContentReviewResult(AbstractModel):
+    """The result for intelligent image moderation.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: The result type. Valid values:
+<li>Porn.Image: Pornographic content in the image</li>
+<li>Terrorism.Image: Terrorist content in the image</li>
+<li>Political.Image: Politically sensitive content in the image</li>
+<li>Porn.Ocr: Pornographic content in the image based on OCR</li>
+<li>Terrorism.Ocr: Terrorist content in the image based on OCR</li>
+<li>Political.Ocr: Politically sensitive content in the image based on OCR</li>
+        :type Type: str
+        :param PornImageResult: The pornographic content detected in the image. This parameter is valid if `Type` is `Porn.Image`.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type PornImageResult: :class:`tencentcloud.vod.v20180717.models.PornImageResult`
+        :param TerrorismImageResult: The terrorist content detected in the image. This parameter is valid if `Type` is `Terrorism.Image`.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type TerrorismImageResult: :class:`tencentcloud.vod.v20180717.models.TerrorismImageResult`
+        :param PoliticalImageResult: The politically sensitive content detected in the image. This parameter is valid if `Type` is `Political.Image`.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type PoliticalImageResult: :class:`tencentcloud.vod.v20180717.models.PoliticalImageResult`
+        :param PornOcrResult: The pornographic content detected in the image based on OCR. This parameter is valid if `Type` is `Porn.Ocr`.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type PornOcrResult: :class:`tencentcloud.vod.v20180717.models.ContentReviewOcrResult`
+        :param TerrorismOcrResult: The terrorist content detected in the image based on OCR. This parameter is valid if `Type` is `Terrorism.Ocr`.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type TerrorismOcrResult: :class:`tencentcloud.vod.v20180717.models.ContentReviewOcrResult`
+        :param PoliticalOcrResult: The politically sensitive content detected in the image based on OCR. This parameter is valid if `Type` is `Political.Ocr`.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type PoliticalOcrResult: :class:`tencentcloud.vod.v20180717.models.ContentReviewOcrResult`
+        """
+        self.Type = None
+        self.PornImageResult = None
+        self.TerrorismImageResult = None
+        self.PoliticalImageResult = None
+        self.PornOcrResult = None
+        self.TerrorismOcrResult = None
+        self.PoliticalOcrResult = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        if params.get("PornImageResult") is not None:
+            self.PornImageResult = PornImageResult()
+            self.PornImageResult._deserialize(params.get("PornImageResult"))
+        if params.get("TerrorismImageResult") is not None:
+            self.TerrorismImageResult = TerrorismImageResult()
+            self.TerrorismImageResult._deserialize(params.get("TerrorismImageResult"))
+        if params.get("PoliticalImageResult") is not None:
+            self.PoliticalImageResult = PoliticalImageResult()
+            self.PoliticalImageResult._deserialize(params.get("PoliticalImageResult"))
+        if params.get("PornOcrResult") is not None:
+            self.PornOcrResult = ContentReviewOcrResult()
+            self.PornOcrResult._deserialize(params.get("PornOcrResult"))
+        if params.get("TerrorismOcrResult") is not None:
+            self.TerrorismOcrResult = ContentReviewOcrResult()
+            self.TerrorismOcrResult._deserialize(params.get("TerrorismOcrResult"))
+        if params.get("PoliticalOcrResult") is not None:
+            self.PoliticalOcrResult = ContentReviewOcrResult()
+            self.PoliticalOcrResult._deserialize(params.get("PoliticalOcrResult"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ContentReviewTemplateItem(AbstractModel):
     """Intelligent recognition template details
 
@@ -6753,30 +6864,35 @@ class CreateProcedureTemplateRequest(AbstractModel):
         r"""
         :param Name: Task flow name (up to 20 characters).
         :type Name: str
+        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :type SubAppId: int
         :param Comment: Template description. Length limit: 256 characters.
         :type Comment: str
         :param MediaProcessTask: Parameter of video processing task.
         :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
-        :param AiContentReviewTask: Intelligent recognition task
+        :param AiContentReviewTask: The information of the intelligent moderation task\*.
+<font color=red>\*: This parameter is used by our old moderation templates and is not recommended. Please use `ReviewAudioVideoTask` instead.</font> 
         :type AiContentReviewTask: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`
         :param AiAnalysisTask: Parameter of AI-based content analysis task.
         :type AiAnalysisTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`
         :param AiRecognitionTask: Type parameter of AI-based content recognition task.
         :type AiRecognitionTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
+        :param ReviewAudioVideoTask: The information of the moderation task.
+        :type ReviewAudioVideoTask: :class:`tencentcloud.vod.v20180717.models.ProcedureReviewAudioVideoTaskInput`
         """
         self.Name = None
+        self.SubAppId = None
         self.Comment = None
         self.MediaProcessTask = None
         self.AiContentReviewTask = None
         self.AiAnalysisTask = None
         self.AiRecognitionTask = None
-        self.SubAppId = None
+        self.ReviewAudioVideoTask = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
+        self.SubAppId = params.get("SubAppId")
         self.Comment = params.get("Comment")
         if params.get("MediaProcessTask") is not None:
             self.MediaProcessTask = MediaProcessTaskInput()
@@ -6790,7 +6906,9 @@ class CreateProcedureTemplateRequest(AbstractModel):
         if params.get("AiRecognitionTask") is not None:
             self.AiRecognitionTask = AiRecognitionTaskInput()
             self.AiRecognitionTask._deserialize(params.get("AiRecognitionTask"))
-        self.SubAppId = params.get("SubAppId")
+        if params.get("ReviewAudioVideoTask") is not None:
+            self.ReviewAudioVideoTask = ProcedureReviewAudioVideoTaskInput()
+            self.ReviewAudioVideoTask._deserialize(params.get("ReviewAudioVideoTask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6814,6 +6932,63 @@ class CreateProcedureTemplateResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateReviewTemplateRequest(AbstractModel):
+    """CreateReviewTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Labels: The violation labels to use. Valid values: <li>`Porn`: Pornographic content</li> <li>`Terror`: Terrorist content</li> <li>Polity: Politically sensitive content</li> <li>`Moan`: Moaning</li>
+        :type Labels: list of str
+        :param SubAppId: 
+        :type SubAppId: str
+        :param Name: 
+        :type Name: str
+        :param Comment: 
+        :type Comment: str
+        """
+        self.Labels = None
+        self.SubAppId = None
+        self.Name = None
+        self.Comment = None
+
+
+    def _deserialize(self, params):
+        self.Labels = params.get("Labels")
+        self.SubAppId = params.get("SubAppId")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateReviewTemplateResponse(AbstractModel):
+    """CreateReviewTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Definition: 
+        :type Definition: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Definition = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
         self.RequestId = params.get("RequestId")
 
 
@@ -8025,6 +8200,51 @@ class DeleteProcedureTemplateRequest(AbstractModel):
 
 class DeleteProcedureTemplateResponse(AbstractModel):
     """DeleteProcedureTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteReviewTemplateRequest(AbstractModel):
+    """DeleteReviewTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Definition: The unique ID of the moderation template.
+        :type Definition: int
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
+        """
+        self.Definition = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteReviewTemplateResponse(AbstractModel):
+    """DeleteReviewTemplate response structure.
 
     """
 
@@ -9659,30 +9879,32 @@ class DescribeMediaInfosRequest(AbstractModel):
         r"""
         :param FileIds: List of media file IDs. N starts from 0 and can be up to 19.
         :type FileIds: list of str
-        :param Filters: Specifies information entry that needs to be returned by all media files. Multiple entries can be specified simultaneously. N starts from 0. If this field is left empty, all information entries will be returned by default. Valid values:
-<li>basicInfo (basic video information).</li>
-<li>metaData (video metadata).</li>
-<li>transcodeInfo (result information of video transcoding).</li>
-<li>animatedGraphicsInfo (result information of animated image generating task).</li>
-<li>imageSpriteInfo (image sprite information).</li>
-<li>snapshotByTimeOffsetInfo (time point screenshot information).</li>
-<li>sampleSnapshotInfo (sampled screenshot information).</li>
-<li>keyFrameDescInfo (timestamp information).</li>
-<li>adaptiveDynamicStreamingInfo (information of adaptive bitrate streaming).</li>
-<li>miniProgramReviewInfo (WeChat Mini Program audit information).</li>
-        :type Filters: list of str
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
+        :param Filters: The types of information to return. You can specify multiple information types. `N` starts from 0. If you do not specify this parameter, all information will be returned. The supported information types are as follows:
+<li>`basicInfo` (basic information)</li>
+<li>`metaData` (video metadata)</li>
+<li>`transcodeInfo` (transcoding information)</li>
+<li>`animatedGraphicsInfo` (animated image information)</li>
+<li>`imageSpriteInfo` (image sprite information)</li>
+<li>`snapshotByTimeOffsetInfo` (time point screenshot information)</li>
+<li>`sampleSnapshotInfo` (sampled screenshot information)</li>
+<li>`keyFrameDescInfo` (timestamp information)</li>
+<li>`adaptiveDynamicStreamingInfo` (adaptive bitrate information)</li>
+<li>`miniProgramReviewInfo` (WeChat Mini Program moderation information)</li>
+<li>`subtitleInfo` (subtitle information)</li>
+<li>`reviewInfo` (moderation information)</li>
+        :type Filters: list of str
         """
         self.FileIds = None
-        self.Filters = None
         self.SubAppId = None
+        self.Filters = None
 
 
     def _deserialize(self, params):
         self.FileIds = params.get("FileIds")
-        self.Filters = params.get("Filters")
         self.SubAppId = params.get("SubAppId")
+        self.Filters = params.get("Filters")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9954,6 +10176,8 @@ class DescribeProcedureTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param Names: Name filter of task flow template. Array length limit: 100.
         :type Names: list of str
         :param Type: Filter of task flow template types. Valid values:
@@ -9964,22 +10188,20 @@ class DescribeProcedureTemplatesRequest(AbstractModel):
         :type Offset: int
         :param Limit: Number of returned entries. Default value: 10. Maximum value: 100.
         :type Limit: int
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
         """
+        self.SubAppId = None
         self.Names = None
         self.Type = None
         self.Offset = None
         self.Limit = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
         self.Names = params.get("Names")
         self.Type = params.get("Type")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10082,6 +10304,78 @@ class DescribeReviewDetailsResponse(AbstractModel):
                 obj = StatDataItem()
                 obj._deserialize(item)
                 self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeReviewTemplatesRequest(AbstractModel):
+    """DescribeReviewTemplates request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
+        :param Definitions: The IDs of the moderation templates to query. Array length limit: 100.
+        :type Definitions: list of int
+        :param Type: The template type. Valid values:
+<li>Preset</li>
+<li>Custom</li>
+        :type Type: str
+        :param Offset: The pagination offset. Default value: 0.
+        :type Offset: int
+        :param Limit: The number of records to return. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        """
+        self.SubAppId = None
+        self.Definitions = None
+        self.Type = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
+        self.Definitions = params.get("Definitions")
+        self.Type = params.get("Type")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeReviewTemplatesResponse(AbstractModel):
+    """DescribeReviewTemplates response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: The total number of records that meet the conditions.
+        :type TotalCount: int
+        :param ReviewTemplateSet: The details of the moderation templates.
+        :type ReviewTemplateSet: list of ReviewTemplate
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ReviewTemplateSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ReviewTemplateSet") is not None:
+            self.ReviewTemplateSet = []
+            for item in params.get("ReviewTemplateSet"):
+                obj = ReviewTemplate()
+                obj._deserialize(item)
+                self.ReviewTemplateSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -11340,6 +11634,38 @@ class DrmStreamingsInfoForUpdate(AbstractModel):
         
 
 
+class DynamicRangeInfo(AbstractModel):
+    """Dynamic range information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: The dynamic range information. Valid values:
+<li>`SDR`: Standard Dynamic Range</li>
+<li>`HDR`: High Dynamic Range</li>
+        :type Type: str
+        :param HDRType: The HDR type. This parameter is valid only if `Type` is `HDR`. Valid values:
+<li>`hdr10`</li>
+<li>`hlg`</li>
+        :type HDRType: str
+        """
+        self.Type = None
+        self.HDRType = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.HDRType = params.get("HDRType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EditMediaFileInfo(AbstractModel):
     """VOD video file editing information
 
@@ -11443,9 +11769,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.EditMediaTaskOutput`
         :param MetaData: The metadata of the output video.
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
-        :param ProcedureTaskId: If a video processing flow is specified when a video editing task is initiated, this field will be the ID of the task flow.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param ProcedureTaskId: The task ID for the task type `Procedure`. If a task flow (`ProcedureName`) is specified by [EditMedia](https://intl.cloud.tencent.com/document/api/266/34783?from_cn_redirect=1), and the task flow includes one or more of `MediaProcessTask`, `AiAnalysisTask`, and `AiRecognitionTask`, the task specified by this parameter will be executed.
         :type ProcedureTaskId: str
+        :param ReviewAudioVideoTaskId: The task ID for the task type `ReviewAudioVideo`. If a task flow (`ProcedureName`) is specified by [EditMedia](https://intl.cloud.tencent.com/document/api/266/34783?from_cn_redirect=1), and the task flow includes `ReviewAudioVideoTask`, the task specified by this parameter will be executed.
+        :type ReviewAudioVideoTaskId: str
         :param SessionId: The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SessionId: str
@@ -11463,6 +11790,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Output = None
         self.MetaData = None
         self.ProcedureTaskId = None
+        self.ReviewAudioVideoTaskId = None
         self.SessionId = None
         self.SessionContext = None
 
@@ -11484,6 +11812,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
             self.MetaData = MediaMetaData()
             self.MetaData._deserialize(params.get("MetaData"))
         self.ProcedureTaskId = params.get("ProcedureTaskId")
+        self.ReviewAudioVideoTaskId = params.get("ReviewAudioVideoTaskId")
         self.SessionId = params.get("SessionId")
         self.SessionContext = params.get("SessionContext")
         memeber_set = set(params.keys())
@@ -11876,6 +12205,9 @@ class ExtractTraceWatermarkRequest(AbstractModel):
         r"""
         :param Url: The URL of the media on which digital watermark extraction is to be performed.
         :type Url: str
+        :param FileId: The ID of the file specified by `Url`.
+<li><font color=red>Note</font>: This parameter is required.</li>
+        :type FileId: str
         :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
         :param SessionContext: The source context, which is used to pass through user request information. The `ExtractTraceWatermarkComplete` callback and the `ProcedureStateChanged` callback will return the value of this parameter. It can contain up to 1,000 characters.
@@ -11888,6 +12220,7 @@ class ExtractTraceWatermarkRequest(AbstractModel):
         :type ExtInfo: str
         """
         self.Url = None
+        self.FileId = None
         self.SubAppId = None
         self.SessionContext = None
         self.SessionId = None
@@ -11897,6 +12230,7 @@ class ExtractTraceWatermarkRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.Url = params.get("Url")
+        self.FileId = params.get("FileId")
         self.SubAppId = params.get("SubAppId")
         self.SessionContext = params.get("SessionContext")
         self.SessionId = params.get("SessionId")
@@ -12215,6 +12549,44 @@ class FileDeleteTask(AbstractModel):
         
 
 
+class FileReviewInfo(AbstractModel):
+    """File moderation information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MediaReviewInfo: Audio/Video moderation details\*.
+
+\* This parameter only contains the information of moderation tasks initiated by the [ReviewAudioVideo](https://intl.cloud.tencent.com/document/api/266/80283?from_cn_redirect=1) or [ReviewImage](https://intl.cloud.tencent.com/document/api/266/73217?from_cn_redirect=1) API.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MediaReviewInfo: :class:`tencentcloud.vod.v20180717.models.ReviewInfo`
+        :param CoverReviewInfo: Thumbnail moderation details\*.
+
+\* This parameter only contains the information of moderation tasks initiated by the [ReviewAudioVideo](https://intl.cloud.tencent.com/document/api/266/80283?from_cn_redirect=1) or [ReviewImage](https://intl.cloud.tencent.com/document/api/266/73217?from_cn_redirect=1) API.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CoverReviewInfo: :class:`tencentcloud.vod.v20180717.models.ReviewInfo`
+        """
+        self.MediaReviewInfo = None
+        self.CoverReviewInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("MediaReviewInfo") is not None:
+            self.MediaReviewInfo = ReviewInfo()
+            self.MediaReviewInfo._deserialize(params.get("MediaReviewInfo"))
+        if params.get("CoverReviewInfo") is not None:
+            self.CoverReviewInfo = ReviewInfo()
+            self.CoverReviewInfo._deserialize(params.get("CoverReviewInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FileUploadTask(AbstractModel):
     """File upload task information
 
@@ -12226,9 +12598,10 @@ class FileUploadTask(AbstractModel):
         :type FileId: str
         :param MediaBasicInfo: Basic information of media file generated after upload is completed.
         :type MediaBasicInfo: :class:`tencentcloud.vod.v20180717.models.MediaBasicInfo`
-        :param ProcedureTaskId: If a video processing flow is specified when a video is uploaded, this field will be the ID of the task flow.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param ProcedureTaskId: The task ID for the task type `Procedure`. If a task flow is specified for [uploaded media](https://intl.cloud.tencent.com/document/product/266/33475?from_cn_redirect=1#.E4.BB.BB.E5.8A.A1.E5.8F.91.E8.B5.B7), and the task flow includes one or more of `MediaProcessTask`, `AiAnalysisTask`, and `AiRecognitionTask`, the task specified by this parameter will be executed.
         :type ProcedureTaskId: str
+        :param ReviewAudioVideoTaskId: The task ID for the task type `ReviewAudioVideo`. If a task flow is specified for [uploaded media](https://intl.cloud.tencent.com/document/product/266/33475?from_cn_redirect=1#.E4.BB.BB.E5.8A.A1.E5.8F.91.E8.B5.B7), and the task flow includes `ReviewAudioVideoTask`, the task specified by this parameter will be executed.
+        :type ReviewAudioVideoTaskId: str
         :param MetaData: Metadata, such as size, duration, video stream information, audio stream information, etc.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
@@ -12236,6 +12609,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.FileId = None
         self.MediaBasicInfo = None
         self.ProcedureTaskId = None
+        self.ReviewAudioVideoTaskId = None
         self.MetaData = None
 
 
@@ -12245,6 +12619,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
             self.MediaBasicInfo = MediaBasicInfo()
             self.MediaBasicInfo._deserialize(params.get("MediaBasicInfo"))
         self.ProcedureTaskId = params.get("ProcedureTaskId")
+        self.ReviewAudioVideoTaskId = params.get("ReviewAudioVideoTaskId")
         if params.get("MetaData") is not None:
             self.MetaData = MediaMetaData()
             self.MetaData._deserialize(params.get("MetaData"))
@@ -14181,6 +14556,9 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         :type SubtitleInfo: :class:`tencentcloud.vod.v20180717.models.MediaSubtitleInfo`
         :param FileId: Unique ID of media file.
         :type FileId: str
+        :param ReviewInfo: Moderation details.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ReviewInfo: :class:`tencentcloud.vod.v20180717.models.FileReviewInfo`
         """
         self.BasicInfo = None
         self.MetaData = None
@@ -14194,6 +14572,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         self.MiniProgramReviewInfo = None
         self.SubtitleInfo = None
         self.FileId = None
+        self.ReviewInfo = None
 
 
     def _deserialize(self, params):
@@ -14231,6 +14610,9 @@ Note: this field may return `null`, indicating that no valid value is obtained.
             self.SubtitleInfo = MediaSubtitleInfo()
             self.SubtitleInfo._deserialize(params.get("SubtitleInfo"))
         self.FileId = params.get("FileId")
+        if params.get("ReviewInfo") is not None:
+            self.ReviewInfo = FileReviewInfo()
+            self.ReviewInfo._deserialize(params.get("ReviewInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -15749,6 +16131,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Fps: int
         :param CodecTag: The codec tag. This parameter is valid only if `Codec` is `hevc`.
         :type CodecTag: str
+        :param DynamicRangeInfo: Dynamic range information.
+<li><font color=red>Note</font>: This parameter is valid for transcoding files generated after 2023-01-10T00:00:00Z.</li>
+        :type DynamicRangeInfo: :class:`tencentcloud.vod.v20180717.models.DynamicRangeInfo`
         """
         self.Bitrate = None
         self.Height = None
@@ -15756,6 +16141,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Codec = None
         self.Fps = None
         self.CodecTag = None
+        self.DynamicRangeInfo = None
 
 
     def _deserialize(self, params):
@@ -15765,6 +16151,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Codec = params.get("Codec")
         self.Fps = params.get("Fps")
         self.CodecTag = params.get("CodecTag")
+        if params.get("DynamicRangeInfo") is not None:
+            self.DynamicRangeInfo = DynamicRangeInfo()
+            self.DynamicRangeInfo._deserialize(params.get("DynamicRangeInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -16707,6 +17096,63 @@ Note: this field may return `null`, indicating that no valid values can be obtai
                 obj = AiSampleFailFaceInfo()
                 obj._deserialize(item)
                 self.FailFaceInfoSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyReviewTemplateRequest(AbstractModel):
+    """ModifyReviewTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Definition: 
+        :type Definition: int
+        :param SubAppId: 
+        :type SubAppId: int
+        :param Name: 
+        :type Name: str
+        :param Comment: 
+        :type Comment: str
+        :param Labels: The violation labels to use. Valid values: <li>`Porn`: Pornographic content</li> <li>`Terror`: Terrorist content</li> <li>Polity: Politically sensitive content</li> <li>`Moan`: Moaning</li>
+        :type Labels: list of str
+        """
+        self.Definition = None
+        self.SubAppId = None
+        self.Name = None
+        self.Comment = None
+        self.Labels = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.SubAppId = params.get("SubAppId")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        self.Labels = params.get("Labels")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyReviewTemplateResponse(AbstractModel):
+    """ModifyReviewTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -18159,6 +18605,45 @@ class PoliticalConfigureInfoForUpdate(AbstractModel):
         
 
 
+class PoliticalImageResult(AbstractModel):
+    """The moderation result for politically sensitive content in an image.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Confidence: The confidence score for the moderation result. Value range: 0-100.
+        :type Confidence: float
+        :param Suggestion: The suggestion for handling the detected politically sensitive content. Valid values:
+<li>pass/li>
+<li>review</li>
+<li>block</li>
+        :type Suggestion: str
+        :param Name: The name of the politically sensitive content or banned icon detected.
+        :type Name: str
+        :param AreaCoordSet: The coordinates (pixel) of the top-left and bottom-right corners of the frame where the politically sensitive content or banned icon appears. Format: [x1, y1, x2, y2].
+        :type AreaCoordSet: list of int
+        """
+        self.Confidence = None
+        self.Suggestion = None
+        self.Name = None
+        self.AreaCoordSet = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.Suggestion = params.get("Suggestion")
+        self.Name = params.get("Name")
+        self.AreaCoordSet = params.get("AreaCoordSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PoliticalImgReviewTemplateInfo(AbstractModel):
     """Parameters for recognition of politically sensitive content in images
 
@@ -18466,6 +18951,45 @@ class PornConfigureInfoForUpdate(AbstractModel):
         
 
 
+class PornImageResult(AbstractModel):
+    """The moderation result for pornographic content in an image.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Confidence: The confidence score for the moderation result. Value range: 0-100.
+        :type Confidence: float
+        :param Suggestion: The suggestion for handling the detected pornographic content. Valid values:
+<li>pass/li>
+<li>review</li>
+<li>block</li>
+        :type Suggestion: str
+        :param Label: The label for the detected pornographic content. Valid values:
+<li>porn</li>
+<li>sexy</li>
+<li>vulgar</li>
+<li>intimacy</li>
+        :type Label: str
+        """
+        self.Confidence = None
+        self.Suggestion = None
+        self.Label = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.Suggestion = params.get("Suggestion")
+        self.Label = params.get("Label")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PornImgReviewTemplateInfo(AbstractModel):
     """Parameters for recognition of pornographic content in images
 
@@ -18609,6 +19133,37 @@ class PornOcrReviewTemplateInfoForUpdate(AbstractModel):
         self.Switch = params.get("Switch")
         self.BlockConfidence = params.get("BlockConfidence")
         self.ReviewConfidence = params.get("ReviewConfidence")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProcedureReviewAudioVideoTaskInput(AbstractModel):
+    """The moderation task details of a task flow template.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Definition: The moderation template ID.
+        :type Definition: int
+        :param ReviewContents: The type of moderated content. Valid values:
+<li>`Media`: The original audio/video.</li>
+<li>`Cover`: Thumbnails.</li>
+If this parameter is not specified or an empty array is passed in, `Media` will be used.
+        :type ReviewContents: list of str
+        """
+        self.Definition = None
+        self.ReviewContents = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.ReviewContents = params.get("ReviewContents")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -18774,8 +19329,9 @@ class ProcedureTemplate(AbstractModel):
         :param MediaProcessTask: Parameter of video processing task.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
-        :param AiContentReviewTask: Intelligent recognition task
-Note: This field may return `null`, indicating that no valid value can be found.
+        :param AiContentReviewTask: The information of the intelligent moderation task\*.
+<font color=red>\*: This parameter is used by our old moderation templates and is not recommended. Please use `ReviewAudioVideoTask` instead.</font> 
+Note: This field may return null, indicating that no valid values can be obtained.
         :type AiContentReviewTask: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`
         :param AiAnalysisTask: Parameter of AI-based content analysis task.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -18786,6 +19342,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param MiniProgramPublishTask: Parameter of a release on WeChat Mini Program task.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MiniProgramPublishTask: :class:`tencentcloud.vod.v20180717.models.WechatMiniProgramPublishTaskInput`
+        :param ReviewAudioVideoTask: The information of the moderation task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ReviewAudioVideoTask: :class:`tencentcloud.vod.v20180717.models.ProcedureReviewAudioVideoTaskInput`
         :param CreateTime: Creation time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type CreateTime: str
         :param UpdateTime: Last modified time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
@@ -18799,6 +19358,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.AiAnalysisTask = None
         self.AiRecognitionTask = None
         self.MiniProgramPublishTask = None
+        self.ReviewAudioVideoTask = None
         self.CreateTime = None
         self.UpdateTime = None
 
@@ -18822,6 +19382,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("MiniProgramPublishTask") is not None:
             self.MiniProgramPublishTask = WechatMiniProgramPublishTaskInput()
             self.MiniProgramPublishTask._deserialize(params.get("MiniProgramPublishTask"))
+        if params.get("ReviewAudioVideoTask") is not None:
+            self.ReviewAudioVideoTask = ProcedureReviewAudioVideoTaskInput()
+            self.ReviewAudioVideoTask._deserialize(params.get("ReviewAudioVideoTask"))
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
@@ -18892,17 +19455,21 @@ class ProcessMediaByProcedureResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: Task ID.
+        :param TaskId: The task ID for the task type `Procedure`, if the task flow specified by `ProcedureName` includes one or more of `MediaProcessTask`, `AiAnalysisTask`, `AiRecognitionTask`, the task specified by this parameter will be executed.
         :type TaskId: str
+        :param ReviewAudioVideoTaskId: The task ID for the task type `ReviewAudioVideo`, if the task flow specified by `ProcedureName` includes `ReviewAudioVideoTask`, the task specified by this parameter will be executed.
+        :type ReviewAudioVideoTaskId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.TaskId = None
+        self.ReviewAudioVideoTaskId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
+        self.ReviewAudioVideoTaskId = params.get("ReviewAudioVideoTaskId")
         self.RequestId = params.get("RequestId")
 
 
@@ -19010,7 +19577,8 @@ class ProcessMediaRequest(AbstractModel):
         :type SubAppId: int
         :param MediaProcessTask: Parameter of video processing task.
         :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
-        :param AiContentReviewTask: Parameters for intelligent recognition
+        :param AiContentReviewTask: The information of the audio/video moderation task\*.
+This parameter is <font color=red>\*no longer recommended</font>. Please use [ReviewAudioVideo](https://intl.cloud.tencent.com/document/api/266/80283?from_cn_redirect=1) or [ReviewImage](https://intl.cloud.tencent.com/document/api/266/73217?from_cn_redirect=1) instead.
         :type AiContentReviewTask: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`
         :param AiAnalysisTask: Video content analysis task parameter.
         :type AiAnalysisTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`
@@ -19440,13 +20008,13 @@ class PullUploadResponse(AbstractModel):
 
 
 class PullUploadTask(AbstractModel):
-    """Video pull for upload task information
+    """The information of a pull and upload task.
 
     """
 
     def __init__(self):
         r"""
-        :param TaskId: Pull for upload task ID.
+        :param TaskId: The task ID.
         :type TaskId: str
         :param Status: Task flow status. Valid values:
 <li>PROCESSING: processing;</li>
@@ -19459,22 +20027,24 @@ class PullUploadTask(AbstractModel):
         :type ErrCode: int
         :param Message: Error message.
         :type Message: str
-        :param FileId: ID of video generated after pull for upload is completed.
+        :param FileId: The ID of the uploaded file.
         :type FileId: str
-        :param MediaBasicInfo: Basic information of media file generated after pull for upload is completed.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param MediaBasicInfo: The basic information of the uploaded file.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type MediaBasicInfo: :class:`tencentcloud.vod.v20180717.models.MediaBasicInfo`
         :param MetaData: The metadata of the output video.
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
-        :param FileUrl: Playback address generated after pull for upload is completed.
+        :param FileUrl: The playback address of the uploaded file.
         :type FileUrl: str
-        :param ProcedureTaskId: If a video processing flow is specified when a video is pulled for upload, this parameter will be the ID of the task flow.
+        :param ProcedureTaskId: The task ID for the task type `Procedure`. If a task flow is specified by [PullUpload](https://intl.cloud.tencent.com/document/api/266/35575?from_cn_redirect=1), and the task flow includes one or more of `MediaProcessTask`, `AiAnalysisTask`, and `AiRecognitionTask`, the task specified by this parameter will be executed.
         :type ProcedureTaskId: str
-        :param SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
+        :param ReviewAudioVideoTaskId: The task ID for the task type `ReviewAudioVideo`. If a task flow is specified by [PullUpload](https://intl.cloud.tencent.com/document/api/266/35575?from_cn_redirect=1), and the task flow includes `ReviewAudioVideoTask`, the task specified by this parameter will be executed.
+        :type ReviewAudioVideoTaskId: str
+        :param SessionContext: The source context, which is used to pass through user request information. The [PullComplete](https://intl.cloud.tencent.com/document/product/266/7831?from_cn_redirect=1) callback will return the value of this parameter. It can contain up to 1,000 characters.
         :type SessionContext: str
         :param SessionId: The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or a blank string is entered, no deduplication will be performed.
         :type SessionId: str
-        :param Progress: The progress of a pull and upload task. Value range: 0-100.
+        :param Progress: The progress of the pull and upload task. Value range: 1-100.
         :type Progress: int
         """
         self.TaskId = None
@@ -19486,6 +20056,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.MetaData = None
         self.FileUrl = None
         self.ProcedureTaskId = None
+        self.ReviewAudioVideoTaskId = None
         self.SessionContext = None
         self.SessionId = None
         self.Progress = None
@@ -19505,6 +20076,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
             self.MetaData._deserialize(params.get("MetaData"))
         self.FileUrl = params.get("FileUrl")
         self.ProcedureTaskId = params.get("ProcedureTaskId")
+        self.ReviewAudioVideoTaskId = params.get("ReviewAudioVideoTaskId")
         self.SessionContext = params.get("SessionContext")
         self.SessionId = params.get("SessionId")
         self.Progress = params.get("Progress")
@@ -20063,30 +20635,35 @@ class ResetProcedureTemplateRequest(AbstractModel):
         r"""
         :param Name: Task flow name
         :type Name: str
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
         :param Comment: Template description. Length limit: 256 characters.
         :type Comment: str
         :param MediaProcessTask: Parameter of video processing task.
         :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
-        :param AiContentReviewTask: Parameter of AI-based content audit task.
+        :param AiContentReviewTask: The information of an intelligent moderation task\*.
+<font color=red>\*: This parameter is used by our old moderation templates and is not recommended. Please use `ReviewAudioVideoTask` instead.</font> 
         :type AiContentReviewTask: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`
         :param AiAnalysisTask: Parameter of AI-based content analysis task.
         :type AiAnalysisTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`
         :param AiRecognitionTask: Type parameter of AI-based content recognition task.
         :type AiRecognitionTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
-        :type SubAppId: int
+        :param ReviewAudioVideoTask: The information of the moderation task.
+        :type ReviewAudioVideoTask: :class:`tencentcloud.vod.v20180717.models.ProcedureReviewAudioVideoTaskInput`
         """
         self.Name = None
+        self.SubAppId = None
         self.Comment = None
         self.MediaProcessTask = None
         self.AiContentReviewTask = None
         self.AiAnalysisTask = None
         self.AiRecognitionTask = None
-        self.SubAppId = None
+        self.ReviewAudioVideoTask = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
+        self.SubAppId = params.get("SubAppId")
         self.Comment = params.get("Comment")
         if params.get("MediaProcessTask") is not None:
             self.MediaProcessTask = MediaProcessTaskInput()
@@ -20100,7 +20677,9 @@ class ResetProcedureTemplateRequest(AbstractModel):
         if params.get("AiRecognitionTask") is not None:
             self.AiRecognitionTask = AiRecognitionTaskInput()
             self.AiRecognitionTask._deserialize(params.get("AiRecognitionTask"))
-        self.SubAppId = params.get("SubAppId")
+        if params.get("ReviewAudioVideoTask") is not None:
+            self.ReviewAudioVideoTask = ProcedureReviewAudioVideoTaskInput()
+            self.ReviewAudioVideoTask._deserialize(params.get("ReviewAudioVideoTask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -20304,8 +20883,12 @@ class ReviewAudioVideoRequest(AbstractModel):
         :type FileId: str
         :param SubAppId: <b>The VOD [subapplication](https://www.tencentcloud.com/document/product/266/33987) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
-        :param Definition: The moderation template ID. Valid values:
-<li>`10` (default): The preset template, which can detect inappropriate information with labels including pornographic (`Porn`), terrorist (`Terror`), and politically sensitive (`Polity`).</li>
+        :param ReviewContents: The type of moderated content. Valid values:
+<li>`Media`: The original audio/video.</li>
+<li>`Cover`: Thumbnails.</li>
+If this parameter is not specified or an empty array is passed in, `Media` will be used.
+        :type ReviewContents: list of str
+        :param Definition: The moderation template ID. Valid values: <li>10 (default): The preset template, whose violation labels are `Porn` and `Terror`.</li>
         :type Definition: int
         :param TasksPriority: The priority of a task flow. The higher the value, the higher the priority. Value range: [-10, 10]. If this parameter is left empty, 0 will be used.
         :type TasksPriority: int
@@ -20318,6 +20901,7 @@ class ReviewAudioVideoRequest(AbstractModel):
         """
         self.FileId = None
         self.SubAppId = None
+        self.ReviewContents = None
         self.Definition = None
         self.TasksPriority = None
         self.SessionContext = None
@@ -20328,6 +20912,7 @@ class ReviewAudioVideoRequest(AbstractModel):
     def _deserialize(self, params):
         self.FileId = params.get("FileId")
         self.SubAppId = params.get("SubAppId")
+        self.ReviewContents = params.get("ReviewContents")
         self.Definition = params.get("Definition")
         self.TasksPriority = params.get("TasksPriority")
         self.SessionContext = params.get("SessionContext")
@@ -20525,14 +21110,20 @@ class ReviewAudioVideoTaskInput(AbstractModel):
         :type FileId: str
         :param Definition: The moderation template ID.
         :type Definition: int
+        :param ReviewContents: The type of moderated content. Valid values:
+<li>`Media`: The original audio/video.</li>
+<li>`Cover`: Thumbnails.</li>
+        :type ReviewContents: list of str
         """
         self.FileId = None
         self.Definition = None
+        self.ReviewContents = None
 
 
     def _deserialize(self, params):
         self.FileId = params.get("FileId")
         self.Definition = params.get("Definition")
+        self.ReviewContents = params.get("ReviewContents")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -20571,6 +21162,133 @@ class ReviewAudioVideoTaskOutput(AbstractModel):
         :type SegmentSetFileUrl: str
         :param SegmentSetFileUrlExpireTime: The expiration time of the file that contains suspicious segments, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format).
         :type SegmentSetFileUrlExpireTime: str
+        :param CoverReviewResult: The thumbnail moderation result.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CoverReviewResult: :class:`tencentcloud.vod.v20180717.models.ReviewImageResult`
+        """
+        self.Suggestion = None
+        self.Label = None
+        self.Form = None
+        self.SegmentSet = None
+        self.SegmentSetFileUrl = None
+        self.SegmentSetFileUrlExpireTime = None
+        self.CoverReviewResult = None
+
+
+    def _deserialize(self, params):
+        self.Suggestion = params.get("Suggestion")
+        self.Label = params.get("Label")
+        self.Form = params.get("Form")
+        if params.get("SegmentSet") is not None:
+            self.SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = ReviewAudioVideoSegmentItem()
+                obj._deserialize(item)
+                self.SegmentSet.append(obj)
+        self.SegmentSetFileUrl = params.get("SegmentSetFileUrl")
+        self.SegmentSetFileUrlExpireTime = params.get("SegmentSetFileUrlExpireTime")
+        if params.get("CoverReviewResult") is not None:
+            self.CoverReviewResult = ReviewImageResult()
+            self.CoverReviewResult._deserialize(params.get("CoverReviewResult"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReviewImageRequest(AbstractModel):
+    """ReviewImage request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileId: The unique ID of the media file. For this API to work, the file must be an image.
+        :type FileId: str
+        :param Definition: The image moderation template ID. Valid values: <li>10: The preset template, whose violation labels are `Porn` and `Terror`.</li>
+        :type Definition: int
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>	
+        :type SubAppId: int
+        """
+        self.FileId = None
+        self.Definition = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.FileId = params.get("FileId")
+        self.Definition = params.get("Definition")
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReviewImageResponse(AbstractModel):
+    """ReviewImage response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ReviewResultSet: The image moderation result. <font color=red>Note: This parameter is no longer used. Please use `MediaReviewResult` instead.</font>
+        :type ReviewResultSet: list of ContentReviewResult
+        :param MediaReviewResult: The image moderation result.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MediaReviewResult: :class:`tencentcloud.vod.v20180717.models.ReviewImageResult`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ReviewResultSet = None
+        self.MediaReviewResult = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ReviewResultSet") is not None:
+            self.ReviewResultSet = []
+            for item in params.get("ReviewResultSet"):
+                obj = ContentReviewResult()
+                obj._deserialize(item)
+                self.ReviewResultSet.append(obj)
+        if params.get("MediaReviewResult") is not None:
+            self.MediaReviewResult = ReviewImageResult()
+            self.MediaReviewResult._deserialize(params.get("MediaReviewResult"))
+        self.RequestId = params.get("RequestId")
+
+
+class ReviewImageResult(AbstractModel):
+    """Image moderation results.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Suggestion: The suggestion. Valid values:
+<li>pass</li>
+<li>review</li>
+<li>block</li>
+        :type Suggestion: str
+        :param Label: The most likely label for the suspicious content. This parameter is valid if `Suggestion` is `review` or `block`. Valid values: <li>`Porn`</li> <li>`Terror`</li>
+        :type Label: str
+        :param Form: The most likely type of the suspicious content. This parameter is valid only if `Suggestion` is `review` or `block`.
+<li>`Image` (people or icons in images)</li>
+<li>`OCR` (text in images)</li>
+        :type Form: str
+        :param SegmentSet: A list of the suspicious segments detected.
+<font color=red>Note</font>: Only the first 10 results will be returned at most. You can get all the results from the file specified by `SegmentSetFileUrl`.
+        :type SegmentSet: list of ReviewImageSegmentItem
+        :param SegmentSetFileUrl: The URL of the file that contains suspicious segments. The file is in JSON format and has the same data structure as `SegmentSet`. Instead of being saved permanently, the file is deleted upon the expiration time (`SegmentSetFileUrlExpireTime`).
+        :type SegmentSetFileUrl: str
+        :param SegmentSetFileUrlExpireTime: The expiration time of the file that contains suspicious segments, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format).
+        :type SegmentSetFileUrlExpireTime: str
         """
         self.Suggestion = None
         self.Label = None
@@ -20587,11 +21305,170 @@ class ReviewAudioVideoTaskOutput(AbstractModel):
         if params.get("SegmentSet") is not None:
             self.SegmentSet = []
             for item in params.get("SegmentSet"):
-                obj = ReviewAudioVideoSegmentItem()
+                obj = ReviewImageSegmentItem()
                 obj._deserialize(item)
                 self.SegmentSet.append(obj)
         self.SegmentSetFileUrl = params.get("SegmentSetFileUrl")
         self.SegmentSetFileUrlExpireTime = params.get("SegmentSetFileUrlExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReviewImageSegmentItem(AbstractModel):
+    """The information of an image moderation segment.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Confidence: The confidence score for the suspicious segment.
+        :type Confidence: float
+        :param Suggestion: The suggestion. Valid values:
+<li>`review`: The content may be non-compliant and needs to be reviewed.</li>
+<li>`block`: The content is non-compliant and should be blocked.</li>
+        :type Suggestion: str
+        :param Label: The most likely label for the suspicious content. Valid values: <li>`Porn`</li> <li>`Terror`</li>
+        :type Label: str
+        :param SubLabel: The sub-label.
+        :type SubLabel: str
+        :param Form: The type of the suspicious segment. Valid values:
+<li>`Image` (people or icons in images)</li>
+<li>`OCR` (text in images)</li>
+        :type Form: str
+        :param AreaCoordSet: The pixel coordinates of the suspicious people, icons, or text. The format is [x1, y1, x2, y2], which indicates the coordinates of the top-left and bottom-right corners.
+        :type AreaCoordSet: list of int
+        :param Text: The content of the suspicious text detected. This parameter is valid only if `Form` is `OCR`.
+        :type Text: str
+        :param KeywordSet: The keywords that match the suspicious text. This parameter is valid only if `Form` is `OCR`.
+        :type KeywordSet: list of str
+        """
+        self.Confidence = None
+        self.Suggestion = None
+        self.Label = None
+        self.SubLabel = None
+        self.Form = None
+        self.AreaCoordSet = None
+        self.Text = None
+        self.KeywordSet = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.Suggestion = params.get("Suggestion")
+        self.Label = params.get("Label")
+        self.SubLabel = params.get("SubLabel")
+        self.Form = params.get("Form")
+        self.AreaCoordSet = params.get("AreaCoordSet")
+        self.Text = params.get("Text")
+        self.KeywordSet = params.get("KeywordSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReviewInfo(AbstractModel):
+    """Moderation details.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Definition: The moderation template ID.
+        :type Definition: int
+        :param Suggestion: The suggestion. Valid values:
+<li>pass</li>
+<li>review</li>
+<li>block</li>
+        :type Suggestion: str
+        :param TypeSet: The moderation type in the format of `Form.Label`. This parameter is valid if `Suggestion` is `review` or `block`.
+`Form` indicates the type of inappropriate content detected. Valid values:
+<li>`Image` (people or icons in images)</li>
+<li>`OCR` (text in images)</li>
+<li>`ASR` (speech)</li>
+<li>`Voice`</li>
+`Label` indicates the violation label. Valid values:
+<li>`Porn` (pornographic content)</li>
+<li>`Terror` (terrorist content)</li>
+<li>Polity (politically sensitive content)</li>
+<li>`Ad`</li>
+<li>`Illegal` (illegal content)</li>
+<li>`Religion`</li>
+<li>`Abuse`</li>
+<li>`Moan`</li>
+        :type TypeSet: list of str
+        :param ReviewTime: The moderation time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
+        :type ReviewTime: str
+        """
+        self.Definition = None
+        self.Suggestion = None
+        self.TypeSet = None
+        self.ReviewTime = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Suggestion = params.get("Suggestion")
+        self.TypeSet = params.get("TypeSet")
+        self.ReviewTime = params.get("ReviewTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReviewTemplate(AbstractModel):
+    """The details of a moderation template.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Definition: The unique ID of the moderation template.
+        :type Definition: int
+        :param Name: The template name.
+        :type Name: str
+        :param Comment: The template description.
+        :type Comment: str
+        :param Type: The template type. Valid values:
+<li>Preset</li>
+<li>Custom</li>
+        :type Type: str
+        :param Labels: The violation labels used.
+        :type Labels: list of str
+        :param CreateTime: The template creation time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
+        :type CreateTime: str
+        :param UpdateTime: The last updated time of the template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
+        :type UpdateTime: str
+        """
+        self.Definition = None
+        self.Name = None
+        self.Comment = None
+        self.Type = None
+        self.Labels = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        self.Type = params.get("Type")
+        self.Labels = params.get("Labels")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -20776,12 +21653,12 @@ class SearchMediaRequest(AbstractModel):
 <li>Array length limit: 10.</li>
 <li>ID length limit: 40 characters.</li>
         :type FileIds: list of str
-        :param Names: Filename set. Filenames of media files are fuzzily matched. The higher the match rate, the higher-ranked the result.
-<li>Filename length limit: 40 characters.</li>
-<li>Array length limit: 10.</li>
+        :param Names: The file names to use for fuzzy search, which are sorted by relevance in descending order.
+<li>Name length limit: 100 characters.</li>
+<li>Array length limit: 10</li>
         :type Names: list of str
-        :param NamePrefixes: Filename prefix, which matches the filenames of media files.
-<li>Filename prefix length limit: 20 characters.</li>
+        :param NamePrefixes: The file name prefixes to search.
+<li>Prefix length limit: 100 characters.</li>
 <li>Array length limit: 10.</li>
         :type NamePrefixes: list of str
         :param Descriptions: File description set. Media file descriptions are fuzzily matched. The higher the match rate, the higher-ranked the result.
@@ -20791,9 +21668,9 @@ class SearchMediaRequest(AbstractModel):
         :param ClassIds: Category ID set. The categories of the specified IDs and all subcategories in the set are matched.
 <li>Array length limit: 10.</li>
         :type ClassIds: list of int
-        :param Tags: The tag set. A file is considered a match if it has any of the tags in the tag set.
-<li>Tag length limit: 16 characters.</li>
-<li>Array length limit: 10.</li>
+        :param Tags: The tags to search. A file is considered a match if it has any of the tags specified.
+<li>Tag length limit: 32 characters.</li>
+<li>Array length limit: 16.</li>
         :type Tags: list of str
         :param Categories: File type. Any element in the set can be matched.
 <li>Video: video file</li>
@@ -21604,12 +22481,15 @@ class SplitMediaTaskSegmentInfo(AbstractModel):
         :param Output: Output information of a video splitting task.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Output: :class:`tencentcloud.vod.v20180717.models.TaskOutputMediaInfo`
-        :param ProcedureTaskId: If a video processing flow is specified when a video splitting task is initiated, this field will be the task flow ID.
+        :param ProcedureTaskId: The task ID for the task type `Procedure`. If a task flow (`ProcedureName`) is specified by [SplitMedia](https://intl.cloud.tencent.com/document/api/266/51098?from_cn_redirect=1), and the task flow includes one or more of `MediaProcessTask`, `AiAnalysisTask`, and `AiRecognitionTask`, the task specified by this parameter will be executed.
         :type ProcedureTaskId: str
+        :param ReviewAudioVideoTaskId: The task ID for the task type `ReviewAudioVideo`. If a task flow (`ProcedureName`) is specified by [SplitMedia](https://intl.cloud.tencent.com/document/api/266/51098?from_cn_redirect=1), and the task flow includes `ReviewAudioVideoTask`, the task specified by this parameter will be executed.
+        :type ReviewAudioVideoTaskId: str
         """
         self.Input = None
         self.Output = None
         self.ProcedureTaskId = None
+        self.ReviewAudioVideoTaskId = None
 
 
     def _deserialize(self, params):
@@ -21620,6 +22500,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
             self.Output = TaskOutputMediaInfo()
             self.Output._deserialize(params.get("Output"))
         self.ProcedureTaskId = params.get("ProcedureTaskId")
+        self.ReviewAudioVideoTaskId = params.get("ReviewAudioVideoTaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -22169,16 +23050,17 @@ class TaskSimpleInfo(AbstractModel):
         :param FileId: Video ID
         :type FileId: str
         :param TaskType: The task type. Valid values:
-<li>Procedure: Video processing</li>
-<li>EditMedia: Video editing</li>
-<li> ReduceMediaBitrate: Bitrate reduction</li>
-<li>WechatDistribute: Publishing to WeChat</li>
+<li>`Procedure`: Video processing</li>
+<li>`EditMedia`: Video editing</li>
+<li>`ReduceMediaBitrate`: Bitrate reduction</li>
+<li>`WechatDistribute`: Publishing to Weixin</li>
+<li> `ReviewAudioVideo`: Moderation</li>
 Task types for v2017:
-<li>Transcode: Transcoding</li>
-<li>SnapshotByTimeOffset: Screencapturing</li>
-<li>Concat: Video splicing</li>
-<li>Clip: Video clipping</li>
-<li>ImageSprites: Image sprite generating</li>
+<li>`Transcode`: Transcoding</li>
+<li>`SnapshotByTimeOffset`: Screencapturing</li>
+<li>`Concat`: Video splicing</li>
+<li>`Clip`: Video clipping</li>
+<li>`ImageSprites`: Image sprite generating</li>
         :type TaskType: str
         :param CreateTime: Creation time of task in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type CreateTime: str
@@ -22450,6 +23332,48 @@ class TerrorismConfigureInfoForUpdate(AbstractModel):
         if params.get("OcrReviewInfo") is not None:
             self.OcrReviewInfo = TerrorismOcrReviewTemplateInfoForUpdate()
             self.OcrReviewInfo._deserialize(params.get("OcrReviewInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TerrorismImageResult(AbstractModel):
+    """The moderation result for terrorist content in an image.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Confidence: The confidence score for the moderation result. Value range: 0-100.
+        :type Confidence: float
+        :param Suggestion: The suggestion for handling the detected terrorist content. Valid values:
+<li>pass/li>
+<li>review</li>
+<li>block</li>
+        :type Suggestion: str
+        :param Label: The label for the detected terrorist content. Valid values:
+<li>`guns`</li>
+<li>`crowd`</li>
+<li>`police`</li>
+<li>`bloody`</li>
+<li>`banners`</li>
+<li>`explosion`</li>
+<li>`scenario` (terrorist scenes) </li>
+        :type Label: str
+        """
+        self.Confidence = None
+        self.Suggestion = None
+        self.Label = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.Suggestion = params.get("Suggestion")
+        self.Label = params.get("Label")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
