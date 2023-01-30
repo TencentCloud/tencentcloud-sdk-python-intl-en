@@ -424,6 +424,11 @@ def test_import_tcr():
     from tencentcloud.tcr.v20190924 import models
 
 
+def test_import_tcss():
+    from tencentcloud.tcss.v20201101 import tcss_client
+    from tencentcloud.tcss.v20201101 import models
+
+
 def test_import_tdmq():
     from tencentcloud.tdmq.v20200217 import tdmq_client
     from tencentcloud.tdmq.v20200217 import models
