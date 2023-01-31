@@ -521,45 +521,45 @@ class ConfigureSyncJobRequest(AbstractModel):
         :type JobId: str
         :param SrcAccessType: Source database access type. Valid values: `cdb` (database); `cvm` (self-build on CVM); `vpc` (VPC); `extranet` (public network); `vpncloud` (VPN access); `dcg` (Direct Connect); `ccn` (CCN); `intranet` (intranet); `noProxy`. Note that the valid values are subject to the current link.
         :type SrcAccessType: str
-        :param SrcInfo: Source database information
-        :type SrcInfo: :class:`tencentcloud.dts.v20211206.models.Endpoint`
         :param DstAccessType: Target database access type. Valid values: `cdb` (database); `cvm` (self-build on CVM); `vpc` (VPC); `extranet` (public network); `vpncloud` (VPN access); `dcg` (Direct Connect); `ccn` (CCN); `intranet` (intranet); `noProxy`. Note that the valid values are subject to the current link.
         :type DstAccessType: str
-        :param DstInfo: Target database information
-        :type DstInfo: :class:`tencentcloud.dts.v20211206.models.Endpoint`
         :param Options: Sync task options
         :type Options: :class:`tencentcloud.dts.v20211206.models.Options`
         :param Objects: Information of synced database/table objects
         :type Objects: :class:`tencentcloud.dts.v20211206.models.Objects`
         :param JobName: Sync task name
         :type JobName: str
+        :param JobMode: Enumerated values: `liteMode`: Lite mode; `fullMode`: Standard mode
+        :type JobMode: str
         :param RunMode: Running mode. Valid values: `Immediate`, `Timed`. Default value: `Immediate`.
         :type RunMode: str
         :param ExpectRunTime: Expected start time in the format of "2006-01-02 15:04:05", which is required if `RunMode` is `Timed`.
         :type ExpectRunTime: str
+        :param SrcInfo: Source database information. This parameter is used by single-node databases.
+        :type SrcInfo: :class:`tencentcloud.dts.v20211206.models.Endpoint`
+        :param DstInfo: Target database information. This parameter is used by single-node databases.
+        :type DstInfo: :class:`tencentcloud.dts.v20211206.models.Endpoint`
+        :param AutoRetryTimeRangeMinutes: Automatic retry time, which can be set to 5-720 minutes. 0 indicates that retry is disabled.
+        :type AutoRetryTimeRangeMinutes: int
         """
         self.JobId = None
         self.SrcAccessType = None
-        self.SrcInfo = None
         self.DstAccessType = None
-        self.DstInfo = None
         self.Options = None
         self.Objects = None
         self.JobName = None
+        self.JobMode = None
         self.RunMode = None
         self.ExpectRunTime = None
+        self.SrcInfo = None
+        self.DstInfo = None
+        self.AutoRetryTimeRangeMinutes = None
 
 
     def _deserialize(self, params):
         self.JobId = params.get("JobId")
         self.SrcAccessType = params.get("SrcAccessType")
-        if params.get("SrcInfo") is not None:
-            self.SrcInfo = Endpoint()
-            self.SrcInfo._deserialize(params.get("SrcInfo"))
         self.DstAccessType = params.get("DstAccessType")
-        if params.get("DstInfo") is not None:
-            self.DstInfo = Endpoint()
-            self.DstInfo._deserialize(params.get("DstInfo"))
         if params.get("Options") is not None:
             self.Options = Options()
             self.Options._deserialize(params.get("Options"))
@@ -567,8 +567,16 @@ class ConfigureSyncJobRequest(AbstractModel):
             self.Objects = Objects()
             self.Objects._deserialize(params.get("Objects"))
         self.JobName = params.get("JobName")
+        self.JobMode = params.get("JobMode")
         self.RunMode = params.get("RunMode")
         self.ExpectRunTime = params.get("ExpectRunTime")
+        if params.get("SrcInfo") is not None:
+            self.SrcInfo = Endpoint()
+            self.SrcInfo._deserialize(params.get("SrcInfo"))
+        if params.get("DstInfo") is not None:
+            self.DstInfo = Endpoint()
+            self.DstInfo._deserialize(params.get("DstInfo"))
+        self.AutoRetryTimeRangeMinutes = params.get("AutoRetryTimeRangeMinutes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1157,7 +1165,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class DBItem(AbstractModel):
-    """Migration object information
+    """Migration object information, which is case-sensitive when objects such as databases, tables, and views are configured.
 
     """
 
@@ -1337,6 +1345,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param Procedures: This parameter is required if `ProcedureMode` is `Partial`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Procedures: list of str
+        :param TriggerMode: Trigger migration mode (`all`: All objects; `partial`: Some objects)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TriggerMode: str
+        :param Triggers: This parameter is used to specify the names of the triggers to be migrated when the value of `TriggerMode` is `partial`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Triggers: list of str
+        :param EventMode: Event migration mode (`all`: All objects; `partial`: Some objects)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EventMode: str
+        :param Events: This parameter is used to specify the names of the events to be migrated when the value of `EventMode` is `partial`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Events: list of str
         """
         self.DbName = None
         self.NewDbName = None
@@ -1351,6 +1371,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.Functions = None
         self.ProcedureMode = None
         self.Procedures = None
+        self.TriggerMode = None
+        self.Triggers = None
+        self.EventMode = None
+        self.Events = None
 
 
     def _deserialize(self, params):
@@ -1377,6 +1401,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.Functions = params.get("Functions")
         self.ProcedureMode = params.get("ProcedureMode")
         self.Procedures = params.get("Procedures")
+        self.TriggerMode = params.get("TriggerMode")
+        self.Triggers = params.get("Triggers")
+        self.EventMode = params.get("EventMode")
+        self.Events = params.get("Events")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2530,6 +2558,9 @@ class Endpoint(AbstractModel):
         :param Region: Region name, such as `ap-guangzhou`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Region: str
+        :param Role: Node type of TDSQL for MySQL. Enumerated values: `proxy`, `set`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Role: str
         :param DbKernel: Database kernel type, which is used to distinguish between different kernels in TDSQL. Valid values: `percona`, `mariadb`, `mysql`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DbKernel: str
@@ -2575,15 +2606,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param EngineVersion: Database version in the format of `5.6` or `5.7`, which takes effect only if the instance is an RDS instance. Default value: `5.6`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type EngineVersion: str
-        :param AccountMode: The account to which the resource belongs. Valid values: empty or `self` (the current account); `other` (another account).
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type AccountMode: str
         :param Account: Instance account, which is required if the operation is performed across accounts.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Account: str
+        :param AccountMode: The account to which the resource belongs. Valid values: empty or `self` (the current account); `other` (another account).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AccountMode: str
         :param AccountRole: The role used for cross-account sync, which can contain [a-zA-Z0-9\-\_]+ and is required if the operation is performed across accounts.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AccountRole: str
+        :param RoleExternalId: External role ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RoleExternalId: str
         :param TmpSecretId: ID of the temporary key, which is required if the operation is performed across accounts.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TmpSecretId: str
@@ -2593,11 +2627,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param TmpToken: Temporary token, which is required if the operation is performed across accounts.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TmpToken: str
-        :param RoleExternalId: External role ID
+        :param EncryptConn: Whether to enable encrypted transfer (`UnEncrypted`: No; `Encrypted`: Yes). Default value: `UnEncrypted`.
 Note: This field may return null, indicating that no valid values can be obtained.
-        :type RoleExternalId: str
+        :type EncryptConn: str
         """
         self.Region = None
+        self.Role = None
         self.DbKernel = None
         self.InstanceId = None
         self.Ip = None
@@ -2613,17 +2648,19 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.CcnId = None
         self.Supplier = None
         self.EngineVersion = None
-        self.AccountMode = None
         self.Account = None
+        self.AccountMode = None
         self.AccountRole = None
+        self.RoleExternalId = None
         self.TmpSecretId = None
         self.TmpSecretKey = None
         self.TmpToken = None
-        self.RoleExternalId = None
+        self.EncryptConn = None
 
 
     def _deserialize(self, params):
         self.Region = params.get("Region")
+        self.Role = params.get("Role")
         self.DbKernel = params.get("DbKernel")
         self.InstanceId = params.get("InstanceId")
         self.Ip = params.get("Ip")
@@ -2639,13 +2676,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.CcnId = params.get("CcnId")
         self.Supplier = params.get("Supplier")
         self.EngineVersion = params.get("EngineVersion")
-        self.AccountMode = params.get("AccountMode")
         self.Account = params.get("Account")
+        self.AccountMode = params.get("AccountMode")
         self.AccountRole = params.get("AccountRole")
+        self.RoleExternalId = params.get("RoleExternalId")
         self.TmpSecretId = params.get("TmpSecretId")
         self.TmpSecretKey = params.get("TmpSecretKey")
         self.TmpToken = params.get("TmpToken")
-        self.RoleExternalId = params.get("RoleExternalId")
+        self.EncryptConn = params.get("EncryptConn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2835,6 +2873,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param Tags: Tag information
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Tags: list of TagItem
+        :param AutoRetryTimeRangeMinutes: Information of automatic retry time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AutoRetryTimeRangeMinutes: int
         """
         self.JobId = None
         self.JobName = None
@@ -2853,6 +2894,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.CompareTask = None
         self.TradeInfo = None
         self.Tags = None
+        self.AutoRetryTimeRangeMinutes = None
 
 
     def _deserialize(self, params):
@@ -2890,6 +2932,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = TagItem()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.AutoRetryTimeRangeMinutes = params.get("AutoRetryTimeRangeMinutes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3339,6 +3382,8 @@ class ModifyMigrationJobRequest(AbstractModel):
         :type ExpectRunTime: str
         :param Tags: Tag information
         :type Tags: list of TagItem
+        :param AutoRetryTimeRangeMinutes: Automatic retry time, which can be set to 5-720 minutes. 0 indicates that retry is disabled.
+        :type AutoRetryTimeRangeMinutes: int
         """
         self.JobId = None
         self.RunMode = None
@@ -3348,6 +3393,7 @@ class ModifyMigrationJobRequest(AbstractModel):
         self.JobName = None
         self.ExpectRunTime = None
         self.Tags = None
+        self.AutoRetryTimeRangeMinutes = None
 
 
     def _deserialize(self, params):
@@ -3370,6 +3416,7 @@ class ModifyMigrationJobRequest(AbstractModel):
                 obj = TagItem()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.AutoRetryTimeRangeMinutes = params.get("AutoRetryTimeRangeMinutes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3412,10 +3459,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param AdvancedObjects: Advanced object type, such as function and procedure. If you need to sync advanced objects, the initialization type must include structure initialization; that is, `Options.InitType` must be `Structure` or `Full`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AdvancedObjects: list of str
+        :param OnlineDDL: 
+        :type OnlineDDL: :class:`tencentcloud.dts.v20211206.models.OnlineDDL`
         """
         self.Mode = None
         self.Databases = None
         self.AdvancedObjects = None
+        self.OnlineDDL = None
 
 
     def _deserialize(self, params):
@@ -3427,6 +3477,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self.Databases.append(obj)
         self.AdvancedObjects = params.get("AdvancedObjects")
+        if params.get("OnlineDDL") is not None:
+            self.OnlineDDL = OnlineDDL()
+            self.OnlineDDL._deserialize(params.get("OnlineDDL"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3434,6 +3487,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class OnlineDDL(AbstractModel):
+    """Online DDL type
+
+    """
 
 
 class Options(AbstractModel):
@@ -3829,6 +3888,104 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class SkipCheckItemRequest(AbstractModel):
+    """SkipCheckItem request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: Data migration task ID
+        :type JobId: str
+        :param StepIds: ID of the check step to be skipped, which is obtained in the `StepInfo[i].StepId` field returned by the `DescribeMigrationCheckJob` API, such as "OptimizeCheck".
+        :type StepIds: list of str
+        :param ForeignKeyFlag: 
+        :type ForeignKeyFlag: str
+        """
+        self.JobId = None
+        self.StepIds = None
+        self.ForeignKeyFlag = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.StepIds = params.get("StepIds")
+        self.ForeignKeyFlag = params.get("ForeignKeyFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SkipCheckItemResponse(AbstractModel):
+    """SkipCheckItem response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Message: 
+        :type Message: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Message = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Message = params.get("Message")
+        self.RequestId = params.get("RequestId")
+
+
+class SkipSyncCheckItemRequest(AbstractModel):
+    """SkipSyncCheckItem request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: Task ID, such as "sync-4ddgid2".
+        :type JobId: str
+        :param StepIds: ID of the check step to be skipped, which is obtained in the `StepInfos[i].StepId` field returned by the `DescribeCheckSyncJobResult` API, such as "OptimizeCheck".
+        :type StepIds: list of str
+        """
+        self.JobId = None
+        self.StepIds = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.StepIds = params.get("StepIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SkipSyncCheckItemResponse(AbstractModel):
+    """SkipSyncCheckItem response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class SkippedDetail(AbstractModel):
@@ -4459,7 +4616,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param SrcAccessType: Source database access type. Valid values: `cdb` (database); `cvm` (self-build on CVM); `vpc` (VPC); `extranet` (public network); `vpncloud` (VPN access); `dcg` (Direct Connect); `ccn` (CCN); `intranet` (intranet).
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SrcAccessType: str
-        :param SrcInfo: Source database information
+        :param SrcInfo: Source database information. This parameter is used by single-node databases.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SrcInfo: :class:`tencentcloud.dts.v20211206.models.Endpoint`
         :param DstRegion: Target database region, such as `ap-guangzhou`.
@@ -4471,7 +4628,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param DstAccessType: Target database access type. Valid values: `cdb` (database); `cvm` (self-build on CVM); `vpc` (VPC); `extranet` (public network); `vpncloud` (VPN access); `dcg` (Direct Connect); `ccn` (CCN); `intranet` (intranet).
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DstAccessType: str
-        :param DstInfo: Target database information
+        :param DstInfo: Target database information. This parameter is used by single-node databases.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DstInfo: :class:`tencentcloud.dts.v20211206.models.Endpoint`
         :param CreateTime: Creation time in the format of `yyyy-mm-dd hh:mm:ss`
@@ -4504,6 +4661,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param OfflineTime: Deletion time in the format of `yyyy-mm-dd hh:mm:ss`
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OfflineTime: str
+        :param AutoRetryTimeRangeMinutes: Settings of automatic retry time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AutoRetryTimeRangeMinutes: int
         """
         self.JobId = None
         self.JobName = None
@@ -4534,6 +4694,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.InstanceClass = None
         self.AutoRenew = None
         self.OfflineTime = None
+        self.AutoRetryTimeRangeMinutes = None
 
 
     def _deserialize(self, params):
@@ -4581,6 +4742,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.InstanceClass = params.get("InstanceClass")
         self.AutoRenew = params.get("AutoRenew")
         self.OfflineTime = params.get("OfflineTime")
+        self.AutoRetryTimeRangeMinutes = params.get("AutoRetryTimeRangeMinutes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4632,7 +4794,7 @@ class TableItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TableName: Name of the table to be migrated
+        :param TableName: Name of the migrated table, which is case-sensitive
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TableName: str
         :param NewTableName: Name of the table after migration, which is required if `TableEditMode` is `rename`.

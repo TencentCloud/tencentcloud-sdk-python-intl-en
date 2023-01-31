@@ -29,6 +29,9 @@ AUTHFAILURE_UNAUTHORIZEDOPERATIONERROR = 'AuthFailure.UnauthorizedOperationError
 # DryRun operation, which means an unnecessary DryRun parameter is passed in yet the request will still be successful.
 DRYRUNOPERATION_DRYRUNOPERATIONERROR = 'DryRunOperation.DryRunOperationError'
 
+# Operation failed.
+FAILEDOPERATION = 'FailedOperation'
+
 # The operation failed.
 FAILEDOPERATION_FAILEDOPERATIONERROR = 'FailedOperation.FailedOperationError'
 
@@ -97,6 +100,9 @@ INVALIDPARAMETER_INSTANCENOTFOUND = 'InvalidParameter.InstanceNotFound'
 
 # The parameter is invalid.
 INVALIDPARAMETER_INVALIDPARAMETERERROR = 'InvalidParameter.InvalidParameterError'
+
+# Invalid parameter value.
+INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
 # A data conversion error occurred.
 INVALIDPARAMETERVALUE_DATACONVERTERROR = 'InvalidParameterValue.DataConvertError'

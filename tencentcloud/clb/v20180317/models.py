@@ -603,6 +603,42 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
+class CertInfo(AbstractModel):
+    """Certificate information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CertId: ID of the certificate. If it's not specified, `CertContent` and `CertKey` are required. For a server certificate, you also need to specify `CertName`. 
+        :type CertId: str
+        :param CertName: Name of the uploaded certificate. It's required if `CertId` is not specified.
+        :type CertName: str
+        :param CertContent: Public key of the uploaded certificate. It's required if `CertId` is not specified.
+        :type CertContent: str
+        :param CertKey: Private key of the uploaded server certificate. It's required if `CertId` is not specified.
+        :type CertKey: str
+        """
+        self.CertId = None
+        self.CertName = None
+        self.CertContent = None
+        self.CertKey = None
+
+
+    def _deserialize(self, params):
+        self.CertId = params.get("CertId")
+        self.CertName = params.get("CertName")
+        self.CertContent = params.get("CertContent")
+        self.CertKey = params.get("CertKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CertificateInput(AbstractModel):
     """Certificate information
 
@@ -1209,7 +1245,7 @@ class CreateListenerRequest(AbstractModel):
         :type ListenerNames: list of str
         :param HealthCheck: Health check parameter, which is applicable only to TCP, UDP, and TCP_SSL listeners.
         :type HealthCheck: :class:`tencentcloud.clb.v20180317.models.HealthCheck`
-        :param Certificate: Certificate information. This parameter is applicable only to TCP_SSL listeners and HTTPS listeners with the SNI feature not enabled.
+        :param Certificate: Certificate information. This parameter is only applicable to TCP_SSL listeners and HTTPS listeners with the SNI feature not enabled. `Certificate` and `MultiCertInfo` cannot be specified at the same time. 
         :type Certificate: :class:`tencentcloud.clb.v20180317.models.CertificateInput`
         :param SessionExpireTime: Session persistence time in seconds. Value range: 30-3,600. The default value is 0, indicating that session persistence is not enabled. This parameter is applicable only to TCP/UDP listeners.
         :type SessionExpireTime: int
@@ -1228,6 +1264,12 @@ They represent weighted round robin and least connections, respectively. Default
         :type EndPort: int
         :param DeregisterTargetRst: Whether to send the TCP RST packet to the client when unbinding a real server. This parameter is applicable to TCP listeners only.
         :type DeregisterTargetRst: bool
+        :param MultiCertInfo: Certificate information. You can specify multiple server-side certificates with different algorithm types. This parameter is only applicable to HTTPS listeners with the SNI feature not enabled. `Certificate` and `MultiCertInfo` cannot be specified at the same time. 
+        :type MultiCertInfo: :class:`tencentcloud.clb.v20180317.models.MultiCertInfo`
+        :param MaxConn: 
+        :type MaxConn: int
+        :param MaxCps: 
+        :type MaxCps: int
         """
         self.LoadBalancerId = None
         self.Ports = None
@@ -1243,6 +1285,9 @@ They represent weighted round robin and least connections, respectively. Default
         self.KeepaliveEnable = None
         self.EndPort = None
         self.DeregisterTargetRst = None
+        self.MultiCertInfo = None
+        self.MaxConn = None
+        self.MaxCps = None
 
 
     def _deserialize(self, params):
@@ -1264,6 +1309,11 @@ They represent weighted round robin and least connections, respectively. Default
         self.KeepaliveEnable = params.get("KeepaliveEnable")
         self.EndPort = params.get("EndPort")
         self.DeregisterTargetRst = params.get("DeregisterTargetRst")
+        if params.get("MultiCertInfo") is not None:
+            self.MultiCertInfo = MultiCertInfo()
+            self.MultiCertInfo._deserialize(params.get("MultiCertInfo"))
+        self.MaxConn = params.get("MaxConn")
+        self.MaxCps = params.get("MaxCps")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3261,9 +3311,9 @@ OPEN: public network; INTERNAL: private network.
         :type Domain: str
         :param LoadBalancerVips: VIP address of a CLB instance (there can be multiple addresses)
         :type LoadBalancerVips: list of str
-        :param BackendPublicIps: Public IP of the real server bound to a CLB.
+        :param BackendPublicIps: Public IPs of the backend services bound with the load balancer. Only the public IPs of CVMs are supported now.
         :type BackendPublicIps: list of str
-        :param BackendPrivateIps: Private IP of the real server bound to a CLB.
+        :param BackendPrivateIps: Private IPs of the backend services bound with the load balancer. Only the private IPs of CVMs are supported now.
         :type BackendPrivateIps: list of str
         :param Offset: Data offset. Default value: 0.
         :type Offset: int
@@ -5459,7 +5509,7 @@ class ModifyDomainAttributesRequest(AbstractModel):
         :type Domain: str
         :param NewDomain: The one domain name to modify. `NewDomain` and `NewDomains` can not be both specified.
         :type NewDomain: str
-        :param Certificate: Domain name certificate information. Note: This is only applicable to SNI-enabled listeners.
+        :param Certificate: Certificate information of the domain name. It is only applicable to listeners with SNI enabled. `Certificate` and `MultiCertInfo` cannot be specified at the same time. 
         :type Certificate: :class:`tencentcloud.clb.v20180317.models.CertificateInput`
         :param Http2: Whether to enable HTTP/2. Note: HTTP/2 can be enabled only for HTTPS domain names.
         :type Http2: bool
@@ -5469,6 +5519,8 @@ class ModifyDomainAttributesRequest(AbstractModel):
         :type NewDefaultServerDomain: str
         :param NewDomains: The new domain names to modify. `NewDomain` and `NewDomains` can not be both specified.
         :type NewDomains: list of str
+        :param MultiCertInfo: Certificate information of the domain name. It is only applicable to listeners with SNI enabled. You can specify multiple server-side certificates with different algorithm types. `Certificate` and `MultiCertInfo` cannot be specified at the same time. 
+        :type MultiCertInfo: :class:`tencentcloud.clb.v20180317.models.MultiCertInfo`
         """
         self.LoadBalancerId = None
         self.ListenerId = None
@@ -5479,6 +5531,7 @@ class ModifyDomainAttributesRequest(AbstractModel):
         self.DefaultServer = None
         self.NewDefaultServerDomain = None
         self.NewDomains = None
+        self.MultiCertInfo = None
 
 
     def _deserialize(self, params):
@@ -5493,6 +5546,9 @@ class ModifyDomainAttributesRequest(AbstractModel):
         self.DefaultServer = params.get("DefaultServer")
         self.NewDefaultServerDomain = params.get("NewDefaultServerDomain")
         self.NewDomains = params.get("NewDomains")
+        if params.get("MultiCertInfo") is not None:
+            self.MultiCertInfo = MultiCertInfo()
+            self.MultiCertInfo._deserialize(params.get("MultiCertInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5589,7 +5645,7 @@ class ModifyListenerRequest(AbstractModel):
         :type SessionExpireTime: int
         :param HealthCheck: Health check parameter, which is applicable only to TCP, UDP, and TCP_SSL listeners.
         :type HealthCheck: :class:`tencentcloud.clb.v20180317.models.HealthCheck`
-        :param Certificate: Certificate information. This parameter is applicable only to HTTPS and TCP_SSL listeners.
+        :param Certificate: Certificate information. This parameter is only applicable to HTTPS/TCP_SSL listeners. `Certificate` and `MultiCertInfo` cannot be specified at the same time. 
         :type Certificate: :class:`tencentcloud.clb.v20180317.models.CertificateInput`
         :param Scheduler: Forwarding method of a listener. Value range: WRR, LEAST_CONN.
 They represent weighted round robin and least connections, respectively. Default value: WRR.
@@ -5604,6 +5660,12 @@ They represent weighted round robin and least connections, respectively. Default
         :type DeregisterTargetRst: bool
         :param SessionType: Session persistence type. `NORMAL`: default session persistence type (L4/L7 session persistence); `QUIC_CID`: session persistence by QUIC connection ID. The `QUIC_CID` value can only be configured in UDP listeners.
         :type SessionType: str
+        :param MultiCertInfo: Certificate information. You can specify multiple server-side certificates with different algorithm types. This parameter is only applicable to HTTPS listeners with the SNI feature not enabled. `Certificate` and `MultiCertInfo` cannot be specified at the same time. 
+        :type MultiCertInfo: :class:`tencentcloud.clb.v20180317.models.MultiCertInfo`
+        :param MaxConn: 
+        :type MaxConn: int
+        :param MaxCps: 
+        :type MaxCps: int
         """
         self.LoadBalancerId = None
         self.ListenerId = None
@@ -5617,6 +5679,9 @@ They represent weighted round robin and least connections, respectively. Default
         self.KeepaliveEnable = None
         self.DeregisterTargetRst = None
         self.SessionType = None
+        self.MultiCertInfo = None
+        self.MaxConn = None
+        self.MaxCps = None
 
 
     def _deserialize(self, params):
@@ -5636,6 +5701,11 @@ They represent weighted round robin and least connections, respectively. Default
         self.KeepaliveEnable = params.get("KeepaliveEnable")
         self.DeregisterTargetRst = params.get("DeregisterTargetRst")
         self.SessionType = params.get("SessionType")
+        if params.get("MultiCertInfo") is not None:
+            self.MultiCertInfo = MultiCertInfo()
+            self.MultiCertInfo._deserialize(params.get("MultiCertInfo"))
+        self.MaxConn = params.get("MaxConn")
+        self.MaxCps = params.get("MaxCps")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6151,6 +6221,39 @@ class ModifyTargetWeightResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class MultiCertInfo(AbstractModel):
+    """Information of multiple certificates bound with the load balancer listener or rule.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SSLMode: Authentication type. Values: `UNIDIRECTIONAL` (one-way authentication), `MUTUAL` (two-way authentication)
+        :type SSLMode: str
+        :param CertList: List of listener or rule certificates. One-way and two-way authentication are supported. Only one certificate can be specified for one algorithm. If `SSLMode` is `MUTUAL` (two-way authentication), at least one CA certificate is required. 
+        :type CertList: list of CertInfo
+        """
+        self.SSLMode = None
+        self.CertList = None
+
+
+    def _deserialize(self, params):
+        self.SSLMode = params.get("SSLMode")
+        if params.get("CertList") is not None:
+            self.CertList = []
+            for item in params.get("CertList"):
+                obj = CertInfo()
+                obj._deserialize(item)
+                self.CertList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Quota(AbstractModel):
     """Quota description. All quotas are in the current region.
 
@@ -6627,7 +6730,7 @@ class RuleInput(AbstractModel):
         :type SessionExpireTime: int
         :param HealthCheck: Health check information. For more information, please see [Health Check](https://intl.cloud.tencent.com/document/product/214/6097?from_cn_redirect=1)
         :type HealthCheck: :class:`tencentcloud.clb.v20180317.models.HealthCheck`
-        :param Certificate: Certificate information
+        :param Certificate: Certificate information. `Certificate` and `MultiCertInfo` cannot be specified at the same time. 
         :type Certificate: :class:`tencentcloud.clb.v20180317.models.CertificateInput`
         :param Scheduler: Request forwarding method of the rule. Value range: WRR, LEAST_CONN, IP_HASH
 They represent weighted round robin, least connections, and IP hash, respectively. Default value: WRR.
@@ -6648,6 +6751,8 @@ They represent weighted round robin, least connections, and IP hash, respectivel
         :type Quic: bool
         :param Domains: The domain name associated with the forwarding rule. Each contain 1-80 characters. If you only need to enter one domain name, use `Domain` instead.
         :type Domains: list of str
+        :param MultiCertInfo: Certificate information. You can specify multiple server-side certificates with different algorithm types. `Certificate` and `MultiCertInfo` cannot be specified at the same time. 
+        :type MultiCertInfo: :class:`tencentcloud.clb.v20180317.models.MultiCertInfo`
         """
         self.Url = None
         self.Domain = None
@@ -6663,6 +6768,7 @@ They represent weighted round robin, least connections, and IP hash, respectivel
         self.TrpcFunc = None
         self.Quic = None
         self.Domains = None
+        self.MultiCertInfo = None
 
 
     def _deserialize(self, params):
@@ -6684,6 +6790,9 @@ They represent weighted round robin, least connections, and IP hash, respectivel
         self.TrpcFunc = params.get("TrpcFunc")
         self.Quic = params.get("Quic")
         self.Domains = params.get("Domains")
+        if params.get("MultiCertInfo") is not None:
+            self.MultiCertInfo = MultiCertInfo()
+            self.MultiCertInfo._deserialize(params.get("MultiCertInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
