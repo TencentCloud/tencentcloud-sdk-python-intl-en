@@ -27,7 +27,7 @@ class CamClient(AbstractClient):
 
 
     def AddUser(self, request):
-        """This API is used to add sub-users.
+        """This API is used to create a sub-user.
 
         :param request: Request instance for AddUser.
         :type request: :class:`tencentcloud.cam.v20190116.models.AddUserRequest`

@@ -4044,6 +4044,134 @@ class ContainerNetwork(AbstractModel):
         
 
 
+class CreateAbnormalProcessRulesExportJobRequest(AbstractModel):
+    """CreateAbnormalProcessRulesExportJob request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Filters: Filter conditions
+<li>`RuleType` - String  - Optional - Rule type</li>
+<li>`Status` - String - Optional - Status</li>
+        :type Filters: list of RunTimeFilters
+        :param Order: Sorting order
+        :type Order: str
+        :param By: Sorting field
+        :type By: str
+        :param ExportField: Fields to export
+        :type ExportField: list of str
+        """
+        self.Filters = None
+        self.Order = None
+        self.By = None
+        self.ExportField = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = RunTimeFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        self.ExportField = params.get("ExportField")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAbnormalProcessRulesExportJobResponse(AbstractModel):
+    """CreateAbnormalProcessRulesExportJob response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: ID of the exportation task. You can query the task progress by using this ID in the console.
+        :type JobId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.JobId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateAccessControlsRuleExportJobRequest(AbstractModel):
+    """CreateAccessControlsRuleExportJob request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Filters: Filter conditions
+<li>`RuleType` - String  - Optional - Rule type</li>
+<li>`Status` - String - Optional - Status</li>
+        :type Filters: list of RunTimeFilters
+        :param Order: Sorting order
+        :type Order: str
+        :param By: Sorting field
+        :type By: list of str
+        :param ExportField: Fields to export
+        :type ExportField: list of str
+        """
+        self.Filters = None
+        self.Order = None
+        self.By = None
+        self.ExportField = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = RunTimeFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        self.ExportField = params.get("ExportField")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAccessControlsRuleExportJobResponse(AbstractModel):
+    """CreateAccessControlsRuleExportJob response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: ID of the exportation task. You can query the task progress by using this ID in the console.
+        :type JobId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.JobId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateAssetImageRegistryScanTaskOneKeyRequest(AbstractModel):
     """CreateAssetImageRegistryScanTaskOneKey request structure.
 

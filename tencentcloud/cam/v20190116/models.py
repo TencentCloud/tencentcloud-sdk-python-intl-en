@@ -4382,14 +4382,19 @@ class SecretIdLastUsed(AbstractModel):
         :param LastUsedDate: The date when the key ID was last used (the value is obtained one day later).
 Note: this field may return `null`, indicating that no valid value can be obtained.
         :type LastUsedDate: str
+        :param LastSecretUsedDate: The most recent date the key was accessed
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LastSecretUsedDate: int
         """
         self.SecretId = None
         self.LastUsedDate = None
+        self.LastSecretUsedDate = None
 
 
     def _deserialize(self, params):
         self.SecretId = params.get("SecretId")
         self.LastUsedDate = params.get("LastUsedDate")
+        self.LastSecretUsedDate = params.get("LastSecretUsedDate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

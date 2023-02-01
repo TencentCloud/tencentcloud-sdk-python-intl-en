@@ -1422,6 +1422,10 @@ class CreateRocketMQGroupRequest(AbstractModel):
         :type ClusterId: str
         :param Remark: Remarks (up to 128 characters)
         :type Remark: str
+        :param GroupType: Group type (`TCP`, `HTTP`)
+        :type GroupType: str
+        :param RetryMaxTimes: The maximum number of retries for a group
+        :type RetryMaxTimes: int
         """
         self.GroupId = None
         self.Namespaces = None
@@ -1429,6 +1433,8 @@ class CreateRocketMQGroupRequest(AbstractModel):
         self.BroadcastEnable = None
         self.ClusterId = None
         self.Remark = None
+        self.GroupType = None
+        self.RetryMaxTimes = None
 
 
     def _deserialize(self, params):
@@ -1438,6 +1444,8 @@ class CreateRocketMQGroupRequest(AbstractModel):
         self.BroadcastEnable = params.get("BroadcastEnable")
         self.ClusterId = params.get("ClusterId")
         self.Remark = params.get("Remark")
+        self.GroupType = params.get("GroupType")
+        self.RetryMaxTimes = params.get("RetryMaxTimes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3752,6 +3760,8 @@ class DescribeRocketMQGroupsRequest(AbstractModel):
         :type SortOrder: str
         :param FilterOneGroup: Subscription group name. After it is specified, the information of only this subscription group will be returned.
         :type FilterOneGroup: str
+        :param Types: Group type
+        :type Types: list of str
         """
         self.ClusterId = None
         self.NamespaceId = None
@@ -3762,6 +3772,7 @@ class DescribeRocketMQGroupsRequest(AbstractModel):
         self.SortedBy = None
         self.SortOrder = None
         self.FilterOneGroup = None
+        self.Types = None
 
 
     def _deserialize(self, params):
@@ -3774,6 +3785,7 @@ class DescribeRocketMQGroupsRequest(AbstractModel):
         self.SortedBy = params.get("SortedBy")
         self.SortOrder = params.get("SortOrder")
         self.FilterOneGroup = params.get("FilterOneGroup")
+        self.Types = params.get("Types")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4917,6 +4929,8 @@ class ModifyRocketMQGroupRequest(AbstractModel):
         :type ReadEnable: bool
         :param BroadcastEnable: Whether to enable broadcast consumption
         :type BroadcastEnable: bool
+        :param RetryMaxTimes: The maximum number of retries
+        :type RetryMaxTimes: int
         """
         self.ClusterId = None
         self.NamespaceId = None
@@ -4924,6 +4938,7 @@ class ModifyRocketMQGroupRequest(AbstractModel):
         self.Remark = None
         self.ReadEnable = None
         self.BroadcastEnable = None
+        self.RetryMaxTimes = None
 
 
     def _deserialize(self, params):
@@ -4933,6 +4948,7 @@ class ModifyRocketMQGroupRequest(AbstractModel):
         self.Remark = params.get("Remark")
         self.ReadEnable = params.get("ReadEnable")
         self.BroadcastEnable = params.get("BroadcastEnable")
+        self.RetryMaxTimes = params.get("RetryMaxTimes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5925,13 +5941,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param RocketMQFlag: TDMQ for RocketMQ cluster type flag
 Note: This field may return null, indicating that no valid values can be obtained.
         :type RocketMQFlag: bool
-        :param Status: 
+        :param Status: Billing status (`1`: Normal; `2`: Service suspended; `3`: Terminated)
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Status: int
-        :param IsolateTime: 
+        :param IsolateTime: Service suspension time in milliseconds
+Note: This field may return null, indicating that no valid values can be obtained.
         :type IsolateTime: int
-        :param HttpPublicEndpoint: 
+        :param HttpPublicEndpoint: HTTP-based public network access address
+Note: This field may return null, indicating that no valid values can be obtained.
         :type HttpPublicEndpoint: str
-        :param HttpVpcEndpoint: 
+        :param HttpVpcEndpoint: HTTP-based VPC access address
+Note: This field may return null, indicating that no valid values can be obtained.
         :type HttpVpcEndpoint: str
         """
         self.ClusterId = None
@@ -6053,6 +6073,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type ConsumerType: str
         :param BroadcastEnabled: Whether to enable broadcast consumption.
         :type BroadcastEnabled: bool
+        :param GroupType: Group type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type GroupType: str
+        :param RetryMaxTimes: The number of retries
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RetryMaxTimes: int
         """
         self.Name = None
         self.ConsumerNum = None
@@ -6067,6 +6093,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.Remark = None
         self.ConsumerType = None
         self.BroadcastEnabled = None
+        self.GroupType = None
+        self.RetryMaxTimes = None
 
 
     def _deserialize(self, params):
@@ -6083,6 +6111,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.Remark = params.get("Remark")
         self.ConsumerType = params.get("ConsumerType")
         self.BroadcastEnabled = params.get("BroadcastEnabled")
+        self.GroupType = params.get("GroupType")
+        self.RetryMaxTimes = params.get("RetryMaxTimes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6148,6 +6178,10 @@ class RocketMQTopic(AbstractModel):
         r"""
         :param Name: Topic name.
         :type Name: str
+        :param Type: Topic type. Enumerated values: `Normal`, `GlobalOrder`, `PartitionedOrder`, `Transaction`, `Retry`, and `DeadLetter`.
+        :type Type: str
+        :param GroupNum: The number of subscription groups
+        :type GroupNum: int
         :param Remark: Description.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Remark: str
@@ -6159,6 +6193,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type UpdateTime: int
         """
         self.Name = None
+        self.Type = None
+        self.GroupNum = None
         self.Remark = None
         self.PartitionNum = None
         self.CreateTime = None
@@ -6167,6 +6203,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
+        self.Type = params.get("Type")
+        self.GroupNum = params.get("GroupNum")
         self.Remark = params.get("Remark")
         self.PartitionNum = params.get("PartitionNum")
         self.CreateTime = params.get("CreateTime")

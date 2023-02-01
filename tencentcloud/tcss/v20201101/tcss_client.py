@@ -579,6 +579,64 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateAbnormalProcessRulesExportJob(self, request):
+        """This API is used to export abnormal process rules.
+
+        :param request: Request instance for CreateAbnormalProcessRulesExportJob.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.CreateAbnormalProcessRulesExportJobRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.CreateAbnormalProcessRulesExportJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAbnormalProcessRulesExportJob", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAbnormalProcessRulesExportJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateAccessControlsRuleExportJob(self, request):
+        """This API is used to export file tampering detection rules.
+
+        :param request: Request instance for CreateAccessControlsRuleExportJob.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.CreateAccessControlsRuleExportJobRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.CreateAccessControlsRuleExportJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAccessControlsRuleExportJob", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAccessControlsRuleExportJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateAssetImageRegistryScanTask(self, request):
         """This API is used to create an image scan task for an image repository.
 

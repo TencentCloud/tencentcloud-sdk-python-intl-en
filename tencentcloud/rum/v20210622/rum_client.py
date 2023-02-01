@@ -1315,6 +1315,93 @@ class RumClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeRumGroupLog(self, request):
+        """This API is used to get the log aggregation information under a project.
+
+        :param request: Request instance for DescribeRumGroupLog.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeRumGroupLogRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeRumGroupLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRumGroupLog", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRumGroupLogResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRumLogList(self, request):
+        """This API is used to get the list of logs in a project (created by an instance).
+
+        :param request: Request instance for DescribeRumLogList.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeRumLogListRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeRumLogListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRumLogList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRumLogListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRumStatsLogList(self, request):
+        """This API is used to get the list of logs in a project every minute.
+
+        :param request: Request instance for DescribeRumStatsLogList.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeRumStatsLogListRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeRumStatsLogListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRumStatsLogList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRumStatsLogListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeScores(self, request):
         """This API is used to get the list of homepage scores.
 
@@ -1562,6 +1649,35 @@ class RumClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StopProject(self, request):
+        """This API is used to stop a project from reporting data.
+
+        :param request: Request instance for StopProject.
+        :type request: :class:`tencentcloud.rum.v20210622.models.StopProjectRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.StopProjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopProject", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StopProjectResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
