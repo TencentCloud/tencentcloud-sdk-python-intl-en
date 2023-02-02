@@ -1942,6 +1942,166 @@ class CreateClusterRouteTableResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateClusterVirtualNodePoolRequest(AbstractModel):
+    """CreateClusterVirtualNodePool request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param Name: Node pool name
+        :type Name: str
+        :param SubnetIds: List of subnet IDs
+        :type SubnetIds: list of str
+        :param SecurityGroupIds: List of security group IDs
+        :type SecurityGroupIds: list of str
+        :param Labels: Virtual node labels
+        :type Labels: list of Label
+        :param Taints: Virtual node taint
+        :type Taints: list of Taint
+        :param VirtualNodes: List of nodes
+        :type VirtualNodes: list of VirtualNodeSpec
+        :param DeletionProtection: Setting of deletion protection
+        :type DeletionProtection: bool
+        :param OS: Node pool OS:
+- `linux` (default value)
+- `windows`
+        :type OS: str
+        """
+        self.ClusterId = None
+        self.Name = None
+        self.SubnetIds = None
+        self.SecurityGroupIds = None
+        self.Labels = None
+        self.Taints = None
+        self.VirtualNodes = None
+        self.DeletionProtection = None
+        self.OS = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Name = params.get("Name")
+        self.SubnetIds = params.get("SubnetIds")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        if params.get("Labels") is not None:
+            self.Labels = []
+            for item in params.get("Labels"):
+                obj = Label()
+                obj._deserialize(item)
+                self.Labels.append(obj)
+        if params.get("Taints") is not None:
+            self.Taints = []
+            for item in params.get("Taints"):
+                obj = Taint()
+                obj._deserialize(item)
+                self.Taints.append(obj)
+        if params.get("VirtualNodes") is not None:
+            self.VirtualNodes = []
+            for item in params.get("VirtualNodes"):
+                obj = VirtualNodeSpec()
+                obj._deserialize(item)
+                self.VirtualNodes.append(obj)
+        self.DeletionProtection = params.get("DeletionProtection")
+        self.OS = params.get("OS")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateClusterVirtualNodePoolResponse(AbstractModel):
+    """CreateClusterVirtualNodePool response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NodePoolId: Node pool ID
+        :type NodePoolId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.NodePoolId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.NodePoolId = params.get("NodePoolId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateClusterVirtualNodeRequest(AbstractModel):
+    """CreateClusterVirtualNode request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param NodePoolId: Node pool
+        :type NodePoolId: str
+        :param SubnetId: Subnet
+        :type SubnetId: str
+        :param SubnetIds: List of subnet IDs (this parameter and `SubnetId` are mutually exclusive)
+        :type SubnetIds: list of str
+        :param VirtualNodes: List of virtual nodes
+        :type VirtualNodes: list of VirtualNodeSpec
+        """
+        self.ClusterId = None
+        self.NodePoolId = None
+        self.SubnetId = None
+        self.SubnetIds = None
+        self.VirtualNodes = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.NodePoolId = params.get("NodePoolId")
+        self.SubnetId = params.get("SubnetId")
+        self.SubnetIds = params.get("SubnetIds")
+        if params.get("VirtualNodes") is not None:
+            self.VirtualNodes = []
+            for item in params.get("VirtualNodes"):
+                obj = VirtualNodeSpec()
+                obj._deserialize(item)
+                self.VirtualNodes.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateClusterVirtualNodeResponse(AbstractModel):
+    """CreateClusterVirtualNode response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NodeName: Virtual node name
+        :type NodeName: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.NodeName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.NodeName = params.get("NodeName")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateECMInstancesRequest(AbstractModel):
     """CreateECMInstances request structure.
 
@@ -2761,6 +2921,104 @@ class DeleteClusterRouteTableRequest(AbstractModel):
 
 class DeleteClusterRouteTableResponse(AbstractModel):
     """DeleteClusterRouteTable response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteClusterVirtualNodePoolRequest(AbstractModel):
+    """DeleteClusterVirtualNodePool request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param NodePoolIds: List of virtual node pool IDs
+        :type NodePoolIds: list of str
+        :param Force: Whether to forcibly delete the nodes with pods. Values: `true`, `false`.
+        :type Force: bool
+        """
+        self.ClusterId = None
+        self.NodePoolIds = None
+        self.Force = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.NodePoolIds = params.get("NodePoolIds")
+        self.Force = params.get("Force")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteClusterVirtualNodePoolResponse(AbstractModel):
+    """DeleteClusterVirtualNodePool response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteClusterVirtualNodeRequest(AbstractModel):
+    """DeleteClusterVirtualNode request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param NodeNames: List of virtual nodes
+        :type NodeNames: list of str
+        :param Force: Whether to forcibly delete running pods in the virtual node. Values: `true`, `false`.
+        :type Force: bool
+        """
+        self.ClusterId = None
+        self.NodeNames = None
+        self.Force = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.NodeNames = params.get("NodeNames")
+        self.Force = params.get("Force")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteClusterVirtualNodeResponse(AbstractModel):
+    """DeleteClusterVirtualNode response structure.
 
     """
 
@@ -4140,6 +4398,126 @@ class DescribeClusterStatusResponse(AbstractModel):
                 obj = ClusterStatus()
                 obj._deserialize(item)
                 self.ClusterStatusSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClusterVirtualNodePoolsRequest(AbstractModel):
+    """DescribeClusterVirtualNodePools request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterVirtualNodePoolsResponse(AbstractModel):
+    """DescribeClusterVirtualNodePools response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Total number of node pools
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TotalCount: int
+        :param NodePoolSet: List of virtual node pools
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type NodePoolSet: list of VirtualNodePool
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.NodePoolSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("NodePoolSet") is not None:
+            self.NodePoolSet = []
+            for item in params.get("NodePoolSet"):
+                obj = VirtualNodePool()
+                obj._deserialize(item)
+                self.NodePoolSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClusterVirtualNodeRequest(AbstractModel):
+    """DescribeClusterVirtualNode request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param NodePoolId: Node pool ID
+        :type NodePoolId: str
+        :param NodeNames: Node name
+        :type NodeNames: list of str
+        """
+        self.ClusterId = None
+        self.NodePoolId = None
+        self.NodeNames = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.NodePoolId = params.get("NodePoolId")
+        self.NodeNames = params.get("NodeNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterVirtualNodeResponse(AbstractModel):
+    """DescribeClusterVirtualNode response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Nodes: List of nodes
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Nodes: list of VirtualNode
+        :param TotalCount: Total number of nodes
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Nodes = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Nodes") is not None:
+            self.Nodes = []
+            for item in params.get("Nodes"):
+                obj = VirtualNode()
+                obj._deserialize(item)
+                self.Nodes.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
@@ -5528,6 +5906,51 @@ class DisableClusterDeletionProtectionRequest(AbstractModel):
 
 class DisableClusterDeletionProtectionResponse(AbstractModel):
     """DisableClusterDeletionProtection response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DrainClusterVirtualNodeRequest(AbstractModel):
+    """DrainClusterVirtualNode request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param NodeName: Node name
+        :type NodeName: str
+        """
+        self.ClusterId = None
+        self.NodeName = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.NodeName = params.get("NodeName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DrainClusterVirtualNodeResponse(AbstractModel):
+    """DrainClusterVirtualNode response structure.
 
     """
 
@@ -7667,6 +8090,77 @@ class ModifyClusterNodePoolResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyClusterVirtualNodePoolRequest(AbstractModel):
+    """ModifyClusterVirtualNodePool request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param NodePoolId: Node pool ID
+        :type NodePoolId: str
+        :param Name: Node pool name
+        :type Name: str
+        :param Labels: Virtual node labels
+        :type Labels: list of Label
+        :param Taints: Virtual node taint
+        :type Taints: list of Taint
+        :param DeletionProtection: Setting of deletion protection
+        :type DeletionProtection: bool
+        """
+        self.ClusterId = None
+        self.NodePoolId = None
+        self.Name = None
+        self.Labels = None
+        self.Taints = None
+        self.DeletionProtection = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.NodePoolId = params.get("NodePoolId")
+        self.Name = params.get("Name")
+        if params.get("Labels") is not None:
+            self.Labels = []
+            for item in params.get("Labels"):
+                obj = Label()
+                obj._deserialize(item)
+                self.Labels.append(obj)
+        if params.get("Taints") is not None:
+            self.Taints = []
+            for item in params.get("Taints"):
+                obj = Taint()
+                obj._deserialize(item)
+                self.Taints.append(obj)
+        self.DeletionProtection = params.get("DeletionProtection")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyClusterVirtualNodePoolResponse(AbstractModel):
+    """ModifyClusterVirtualNodePool response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyNodePoolInstanceTypesRequest(AbstractModel):
     """ModifyNodePoolInstanceTypes request structure.
 
@@ -9177,6 +9671,8 @@ major: in-place upgrade of major version
         :type SkipPreCheck: bool
         :param MaxNotReadyPercent: The maximum tolerable proportion of unavailable pods
         :type MaxNotReadyPercent: float
+        :param UpgradeRunTime: Whether to upgrade node runtime. Values: `true`, `false` (default).
+        :type UpgradeRunTime: bool
         """
         self.ClusterId = None
         self.Operation = None
@@ -9185,6 +9681,7 @@ major: in-place upgrade of major version
         self.ResetParam = None
         self.SkipPreCheck = None
         self.MaxNotReadyPercent = None
+        self.UpgradeRunTime = None
 
 
     def _deserialize(self, params):
@@ -9197,6 +9694,7 @@ major: in-place upgrade of major version
             self.ResetParam._deserialize(params.get("ResetParam"))
         self.SkipPreCheck = params.get("SkipPreCheck")
         self.MaxNotReadyPercent = params.get("MaxNotReadyPercent")
+        self.UpgradeRunTime = params.get("UpgradeRunTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9291,6 +9789,128 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.Name = params.get("Name")
         self.Version = params.get("Version")
         self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VirtualNode(AbstractModel):
+    """Virtual node
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Virtual node name
+        :type Name: str
+        :param SubnetId: Subnet of the virtual node
+        :type SubnetId: str
+        :param Phase: Virtual node status
+        :type Phase: str
+        :param CreatedTime: Creation time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CreatedTime: str
+        """
+        self.Name = None
+        self.SubnetId = None
+        self.Phase = None
+        self.CreatedTime = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.SubnetId = params.get("SubnetId")
+        self.Phase = params.get("Phase")
+        self.CreatedTime = params.get("CreatedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VirtualNodePool(AbstractModel):
+    """Virtual node pool
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NodePoolId: Node pool ID
+        :type NodePoolId: str
+        :param SubnetIds: List of subnets
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SubnetIds: list of str
+        :param Name: Node pool name
+        :type Name: str
+        :param LifeState: Node pool lifecycle status
+        :type LifeState: str
+        :param Labels: Virtual node labels
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Labels: list of Label
+        :param Taints: Virtual node taint
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Taints: list of Taint
+        """
+        self.NodePoolId = None
+        self.SubnetIds = None
+        self.Name = None
+        self.LifeState = None
+        self.Labels = None
+        self.Taints = None
+
+
+    def _deserialize(self, params):
+        self.NodePoolId = params.get("NodePoolId")
+        self.SubnetIds = params.get("SubnetIds")
+        self.Name = params.get("Name")
+        self.LifeState = params.get("LifeState")
+        if params.get("Labels") is not None:
+            self.Labels = []
+            for item in params.get("Labels"):
+                obj = Label()
+                obj._deserialize(item)
+                self.Labels.append(obj)
+        if params.get("Taints") is not None:
+            self.Taints = []
+            for item in params.get("Taints"):
+                obj = Taint()
+                obj._deserialize(item)
+                self.Taints.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VirtualNodeSpec(AbstractModel):
+    """Virtual node
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DisplayName: Node display name
+        :type DisplayName: str
+        :param SubnetId: Subnet ID
+        :type SubnetId: str
+        """
+        self.DisplayName = None
+        self.SubnetId = None
+
+
+    def _deserialize(self, params):
+        self.DisplayName = params.get("DisplayName")
+        self.SubnetId = params.get("SubnetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

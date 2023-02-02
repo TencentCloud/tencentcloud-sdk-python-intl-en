@@ -964,12 +964,18 @@ class BindingPolicyObjectRequest(AbstractModel):
         :type InstanceGroupId: int
         :param Dimensions: Dimensions of an object to be bound.
         :type Dimensions: list of BindingPolicyObjectDimension
+        :param EbSubject: The alert configured for an event
+        :type EbSubject: str
+        :param EbEventFlag: Whether the event alert has been configured
+        :type EbEventFlag: int
         """
         self.Module = None
         self.GroupId = None
         self.PolicyId = None
         self.InstanceGroupId = None
         self.Dimensions = None
+        self.EbSubject = None
+        self.EbEventFlag = None
 
 
     def _deserialize(self, params):
@@ -983,6 +989,8 @@ class BindingPolicyObjectRequest(AbstractModel):
                 obj = BindingPolicyObjectDimension()
                 obj._deserialize(item)
                 self.Dimensions.append(obj)
+        self.EbSubject = params.get("EbSubject")
+        self.EbEventFlag = params.get("EbEventFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1052,7 +1060,7 @@ class CleanGrafanaInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance ID.
+        :param InstanceId: TCMG instance ID, such as “grafana-abcdefgh”.
         :type InstanceId: str
         """
         self.InstanceId = None
@@ -1430,6 +1438,8 @@ class CreateAlarmPolicyRequest(AbstractModel):
         :type HierarchicalNotices: list of AlarmHierarchicalNotice
         :param MigrateFlag: A dedicated field for migration policies. 0: Implement authentication logic; 1: Skip authentication logic.
         :type MigrateFlag: int
+        :param EbSubject: The alert configured for an event
+        :type EbSubject: str
         """
         self.Module = None
         self.PolicyName = None
@@ -1449,6 +1459,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
         self.LogAlarmReqInfo = None
         self.HierarchicalNotices = None
         self.MigrateFlag = None
+        self.EbSubject = None
 
 
     def _deserialize(self, params):
@@ -1493,6 +1504,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
                 obj._deserialize(item)
                 self.HierarchicalNotices.append(obj)
         self.MigrateFlag = params.get("MigrateFlag")
+        self.EbSubject = params.get("EbSubject")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1534,11 +1546,11 @@ class CreateAlertRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Prometheus instance ID
+        :param InstanceId: TMP instance ID, such as “prom-abcd1234”.
         :type InstanceId: str
         :param RuleName: Rule name
         :type RuleName: str
-        :param Expr: Rule expression
+        :param Expr: Alerting rule expression. For more information, see <a href="https://www.tencentcloud.com/document/product/1116/43192?lang=en&pg=">Alerting Rule Description</a>
         :type Expr: str
         :param Receivers: List of alert notification template IDs
         :type Receivers: list of str
@@ -1760,11 +1772,11 @@ class CreateGrafanaIntegrationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance ID.
+        :param InstanceId: TCMG instance ID, such as “grafana-abcdefgh”.
         :type InstanceId: str
-        :param Kind: Type
+        :param Kind: Integration type, such as “tencent-cloud-prometheus”. You can view it by going to the instance details page and clicking **Tencent Cloud Service Integration** > **Integration List**.
         :type Kind: str
-        :param Content: Configuration
+        :param Content: Integration configuration
         :type Content: str
         """
         self.InstanceId = None
@@ -1814,9 +1826,9 @@ class CreateGrafanaNotificationChannelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance ID.
+        :param InstanceId: TCMG instance ID, such as “grafana-abcdefgh”.
         :type InstanceId: str
-        :param ChannelName: Channel name
+        :param ChannelName: Alert channel name, such as “test”.
         :type ChannelName: str
         :param OrgId: Default value: `1`. This parameter has been deprecated. Please use `OrganizationIds` instead.
         :type OrgId: int
@@ -2190,11 +2202,11 @@ class CreatePrometheusScrapeJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance ID
+        :param InstanceId: TMP instance ID, such as “prom-abcd1234”.
         :type InstanceId: str
-        :param AgentId: Agent ID
+        :param AgentId: Agent ID, such as “agent-abcd1234”. It can be obtained on the **Agent Management** page in the console.
         :type AgentId: str
-        :param Config: Task content
+        :param Config: Scrape task ID in the format of “job_name:xx”
         :type Config: str
         """
         self.InstanceId = None
@@ -2305,9 +2317,9 @@ class CreateSSOAccountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance ID
+        :param InstanceId: TCMG instance ID, such as “grafana-abcdefgh”.
         :type InstanceId: str
-        :param UserId: User account ID
+        :param UserId: User account ID, such as “10000000”.
         :type UserId: str
         :param Role: Permission
         :type Role: list of GrafanaAccountRole
@@ -2475,14 +2487,23 @@ class DeleteAlarmNoticesRequest(AbstractModel):
         :type Module: str
         :param NoticeIds: Alarm notification template ID list
         :type NoticeIds: list of str
+        :param NoticeBindPolicys: Binding between a notification template and a policy
+        :type NoticeBindPolicys: list of NoticeBindPolicys
         """
         self.Module = None
         self.NoticeIds = None
+        self.NoticeBindPolicys = None
 
 
     def _deserialize(self, params):
         self.Module = params.get("Module")
         self.NoticeIds = params.get("NoticeIds")
+        if params.get("NoticeBindPolicys") is not None:
+            self.NoticeBindPolicys = []
+            for item in params.get("NoticeBindPolicys"):
+                obj = NoticeBindPolicys()
+                obj._deserialize(item)
+                self.NoticeBindPolicys.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2707,9 +2728,9 @@ class DeleteGrafanaIntegrationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance ID
+        :param InstanceId: TCMG instance ID, such as “grafana-12345678”.
         :type InstanceId: str
-        :param IntegrationId: Integration ID
+        :param IntegrationId: Integration ID, such as “integration-abcd1234”. You can view it by going to the instance details page and clicking **Tencent Cloud Service Integration** > **Integration List**.
         :type IntegrationId: str
         """
         self.InstanceId = None
@@ -2752,9 +2773,9 @@ class DeleteGrafanaNotificationChannelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ChannelIDs: Array of channel IDs
+        :param ChannelIDs: Array of channel IDs, such as “nchannel-abcd1234”.
         :type ChannelIDs: list of str
-        :param InstanceId: Instance name
+        :param InstanceId: TCMG instance ID, such as “grafana-abcdefgh”.
         :type InstanceId: str
         """
         self.ChannelIDs = None
@@ -2936,9 +2957,9 @@ class DeleteSSOAccountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance ID
+        :param InstanceId: TCMG instance ID, such as “grafana-abcdefgh”.
         :type InstanceId: str
-        :param UserId: User account ID
+        :param UserId: User account ID, such as “10000000”.
         :type UserId: str
         """
         self.InstanceId = None
@@ -4571,7 +4592,7 @@ class DescribeDNSConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance ID.
+        :param InstanceId: TCMG instance ID, such as “grafana-abcdefgh”.
         :type InstanceId: str
         """
         self.InstanceId = None
@@ -4685,17 +4706,17 @@ class DescribeGrafanaChannelsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance ID
+        :param InstanceId: TCMG instance ID, such as “grafana-12345678”.
         :type InstanceId: str
         :param Offset: Offset.
         :type Offset: int
         :param Limit: Number of items to be queried
         :type Limit: int
-        :param ChannelName: Channel name
+        :param ChannelName: Alert channel name, such as “test”.
         :type ChannelName: str
-        :param ChannelIds: Channel ID.
+        :param ChannelIds: Alert channel ID, such as “nchannel-abcd1234”.
         :type ChannelIds: list of str
-        :param ChannelState: Channel status
+        :param ChannelState: Alert channel status
         :type ChannelState: int
         """
         self.InstanceId = None
@@ -4755,7 +4776,7 @@ class DescribeGrafanaConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance ID.
+        :param InstanceId: TCMG instance ID, such as “grafana-12345678”.
         :type InstanceId: str
         """
         self.InstanceId = None
@@ -4800,7 +4821,7 @@ class DescribeGrafanaEnvironmentsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance ID.
+        :param InstanceId: TCMG instance ID, such as “grafana-abcdefgh”.
         :type InstanceId: str
         """
         self.InstanceId = None
@@ -4849,9 +4870,9 @@ class DescribeGrafanaInstancesRequest(AbstractModel):
         :type Offset: int
         :param Limit: Number of items to be queried
         :type Limit: int
-        :param InstanceIds: Array of instance IDs
+        :param InstanceIds: Array of TCMG instance IDs
         :type InstanceIds: list of str
-        :param InstanceName: Instance name, which supports fuzzy search by prefix.
+        :param InstanceName: TCMG instance name, which can be fuzzily matched by prefix.
         :type InstanceName: str
         :param InstanceStatus: Query status
         :type InstanceStatus: list of int
@@ -4991,17 +5012,17 @@ class DescribeGrafanaNotificationChannelsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance ID.
+        :param InstanceId: TCMG instance ID, such as “grafana-12345678”.
         :type InstanceId: str
         :param Offset: Offset
         :type Offset: int
         :param Limit: Number of items to be queried
         :type Limit: int
-        :param ChannelName: Channel name
+        :param ChannelName: Alert channel name, such as “test”.
         :type ChannelName: str
-        :param ChannelIDs: Channel ID
+        :param ChannelIDs: Alert channel ID, such as “nchannel-abcd1234”.
         :type ChannelIDs: list of str
-        :param ChannelState: Status
+        :param ChannelState: Alert channel status
         :type ChannelState: int
         """
         self.InstanceId = None
@@ -5061,7 +5082,7 @@ class DescribeGrafanaWhiteListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance ID.
+        :param InstanceId: TCMG instance ID, such as “grafana-abcdefgh”.
         :type InstanceId: str
         """
         self.InstanceId = None
@@ -5106,9 +5127,9 @@ class DescribeInstalledPluginsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance ID
+        :param InstanceId: TCMG instance ID, such as “grafana-kleu3gt0”.
         :type InstanceId: str
-        :param PluginId: Filter by plugin ID
+        :param PluginId: Filter by plugin ID such as “grafana-piechart-panel”. You can view the IDs of installed plugins through the `DescribeInstalledPlugins` API.
         :type PluginId: str
         """
         self.InstanceId = None
@@ -6857,6 +6878,65 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class DescribePrometheusInstanceUsageRequest(AbstractModel):
+    """DescribePrometheusInstanceUsage request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceIds: Query by one or more instance IDs. Instance ID is in the format of `prom-xxxxxxxx`. Up to 100 instances can be queried in one request.
+        :type InstanceIds: list of str
+        :param StartCalcDate: Start time
+        :type StartCalcDate: str
+        :param EndCalcDate: End time
+        :type EndCalcDate: str
+        """
+        self.InstanceIds = None
+        self.StartCalcDate = None
+        self.EndCalcDate = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        self.StartCalcDate = params.get("StartCalcDate")
+        self.EndCalcDate = params.get("EndCalcDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePrometheusInstanceUsageResponse(AbstractModel):
+    """DescribePrometheusInstanceUsage response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UsageSet: Usage list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UsageSet: list of PrometheusInstanceTenantUsage
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.UsageSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("UsageSet") is not None:
+            self.UsageSet = []
+            for item in params.get("UsageSet"):
+                obj = PrometheusInstanceTenantUsage()
+                obj._deserialize(item)
+                self.UsageSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribePrometheusInstancesRequest(AbstractModel):
     """DescribePrometheusInstances request structure.
 
@@ -7172,9 +7252,9 @@ class DescribeSSOAccountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance ID
+        :param InstanceId: TCMG instance ID, such as “grafana-abcdefgh”.
         :type InstanceId: str
-        :param UserId: Filter by account UIN
+        :param UserId: Filter by account ID such as “10000”
         :type UserId: str
         """
         self.InstanceId = None
@@ -7554,9 +7634,9 @@ class EnableGrafanaInternetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceID: Instance ID
+        :param InstanceID: TCMG instance ID, such as “grafana-kleu3gt0”.
         :type InstanceID: str
-        :param EnableInternet: Enable or disable
+        :param EnableInternet: Whether to enable public network access (`true`: Yes; `false`: No)
         :type EnableInternet: bool
         """
         self.InstanceID = None
@@ -7599,9 +7679,9 @@ class EnableGrafanaSSORequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EnableSSO: Whether to enable SSO
+        :param EnableSSO: Whether to enable SSO (`true`: Yes; `false`: No)
         :type EnableSSO: bool
-        :param InstanceId: Instance ID
+        :param InstanceId: TCMG instance ID, such as “grafana-abcdefgh”.
         :type InstanceId: str
         """
         self.EnableSSO = None
@@ -7644,9 +7724,9 @@ class EnableSSOCamCheckRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance ID
+        :param InstanceId: TCMG instance ID, such as “grafana-abcdefgh”.
         :type InstanceId: str
-        :param EnableSSOCamCheck: Whether to enable CAM authentication
+        :param EnableSSOCamCheck: Whether to enable CAM authentication (`true`: Yes; `false`: No)
         :type EnableSSOCamCheck: bool
         """
         self.InstanceId = None
@@ -8233,7 +8313,7 @@ class InstallPluginsRequest(AbstractModel):
         r"""
         :param Plugins: Plugin information
         :type Plugins: list of GrafanaPlugin
-        :param InstanceId: Instance ID
+        :param InstanceId: TCMG instance ID, such as “grafana-abcdefgh”.
         :type InstanceId: str
         """
         self.Plugins = None
@@ -8890,6 +8970,8 @@ class ModifyAlarmNoticeRequest(AbstractModel):
         :type URLNotices: list of URLNotice
         :param CLSNotices: The operation of pushing alarm notifications to CLS. Up to one CLS log topic can be configured.
         :type CLSNotices: list of CLSNotice
+        :param PolicyIds: List of IDs of the alerting rules bound to an alarm notification template
+        :type PolicyIds: list of str
         """
         self.Module = None
         self.Name = None
@@ -8899,6 +8981,7 @@ class ModifyAlarmNoticeRequest(AbstractModel):
         self.UserNotices = None
         self.URLNotices = None
         self.CLSNotices = None
+        self.PolicyIds = None
 
 
     def _deserialize(self, params):
@@ -8925,6 +9008,7 @@ class ModifyAlarmNoticeRequest(AbstractModel):
                 obj = CLSNotice()
                 obj._deserialize(item)
                 self.CLSNotices.append(obj)
+        self.PolicyIds = params.get("PolicyIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8974,6 +9058,14 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
         :type GroupBy: list of str
         :param LogAlarmReqInfo: Log alarm creation request parameters
         :type LogAlarmReqInfo: :class:`tencentcloud.monitor.v20180724.models.LogAlarmReq`
+        :param NoticeIds: Template ID, which is dedicated to TMP.
+        :type NoticeIds: list of str
+        :param Enable: Status (`0`: Disabled; `1`: Enabled)
+        :type Enable: int
+        :param PolicyName: Name of the policy dedicated to TMP
+        :type PolicyName: str
+        :param EbSubject: The alert configured for an event
+        :type EbSubject: str
         """
         self.Module = None
         self.PolicyId = None
@@ -8983,6 +9075,10 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
         self.Filter = None
         self.GroupBy = None
         self.LogAlarmReqInfo = None
+        self.NoticeIds = None
+        self.Enable = None
+        self.PolicyName = None
+        self.EbSubject = None
 
 
     def _deserialize(self, params):
@@ -9002,6 +9098,10 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
         if params.get("LogAlarmReqInfo") is not None:
             self.LogAlarmReqInfo = LogAlarmReq()
             self.LogAlarmReqInfo._deserialize(params.get("LogAlarmReqInfo"))
+        self.NoticeIds = params.get("NoticeIds")
+        self.Enable = params.get("Enable")
+        self.PolicyName = params.get("PolicyName")
+        self.EbSubject = params.get("EbSubject")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9298,9 +9398,9 @@ class ModifyGrafanaInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance ID
+        :param InstanceId: TCMG instance ID, such as “grafana-abcdefgh”.
         :type InstanceId: str
-        :param InstanceName: Instance name
+        :param InstanceName: TCMG instance name, such as “test”.
         :type InstanceName: str
         """
         self.InstanceId = None
@@ -9607,6 +9707,34 @@ class MonitorTypeNamespace(AbstractModel):
     def _deserialize(self, params):
         self.MonitorType = params.get("MonitorType")
         self.Namespace = params.get("Namespace")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NoticeBindPolicys(AbstractModel):
+    """Binding between a notification template and a policy
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NoticeId: Alert notification template ID
+        :type NoticeId: str
+        :param PolicyIds: List of IDs of the alerting rules bound to an alarm notification template
+        :type PolicyIds: list of str
+        """
+        self.NoticeId = None
+        self.PolicyIds = None
+
+
+    def _deserialize(self, params):
+        self.NoticeId = params.get("NoticeId")
+        self.PolicyIds = params.get("PolicyIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9961,6 +10089,51 @@ class PrometheusInstanceGrantInfo(AbstractModel):
         self.HasAgentManage = params.get("HasAgentManage")
         self.HasTkeManage = params.get("HasTkeManage")
         self.HasApiOperation = params.get("HasApiOperation")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PrometheusInstanceTenantUsage(AbstractModel):
+    """TMP usage information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceId: str
+        :param CalcDate: Billing cycle
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CalcDate: str
+        :param Total: Total usage
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Total: float
+        :param Basic: Usage of basic (free) metrics
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Basic: float
+        :param Fee: Usage of paid metrics
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Fee: float
+        """
+        self.InstanceId = None
+        self.CalcDate = None
+        self.Total = None
+        self.Basic = None
+        self.Fee = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.CalcDate = params.get("CalcDate")
+        self.Total = params.get("Total")
+        self.Basic = params.get("Basic")
+        self.Fee = params.get("Fee")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10602,7 +10775,7 @@ class ResumeGrafanaInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance ID
+        :param InstanceId: TCMG instance ID, such as “grafana-12345678”.
         :type InstanceId: str
         """
         self.InstanceId = None
@@ -11050,16 +11223,24 @@ class UnBindingAllPolicyObjectRequest(AbstractModel):
         :type GroupId: int
         :param PolicyId: Alarm policy ID. If this parameter is used, `GroupId` will be ignored.
         :type PolicyId: str
+        :param EbSubject: The alert configured for an event
+        :type EbSubject: str
+        :param EbEventFlag: Whether the event alert has been configured
+        :type EbEventFlag: int
         """
         self.Module = None
         self.GroupId = None
         self.PolicyId = None
+        self.EbSubject = None
+        self.EbEventFlag = None
 
 
     def _deserialize(self, params):
         self.Module = params.get("Module")
         self.GroupId = params.get("GroupId")
         self.PolicyId = params.get("PolicyId")
+        self.EbSubject = params.get("EbSubject")
+        self.EbEventFlag = params.get("EbEventFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11103,12 +11284,18 @@ class UnBindingPolicyObjectRequest(AbstractModel):
         :type InstanceGroupId: int
         :param PolicyId: Alarm policy ID. If this parameter is used, `GroupId` will be ignored.
         :type PolicyId: str
+        :param EbSubject: The alert configured for an event
+        :type EbSubject: str
+        :param EbEventFlag: Whether the event alert has been configured
+        :type EbEventFlag: int
         """
         self.Module = None
         self.GroupId = None
         self.UniqueId = None
         self.InstanceGroupId = None
         self.PolicyId = None
+        self.EbSubject = None
+        self.EbEventFlag = None
 
 
     def _deserialize(self, params):
@@ -11117,6 +11304,8 @@ class UnBindingPolicyObjectRequest(AbstractModel):
         self.UniqueId = params.get("UniqueId")
         self.InstanceGroupId = params.get("InstanceGroupId")
         self.PolicyId = params.get("PolicyId")
+        self.EbSubject = params.get("EbSubject")
+        self.EbEventFlag = params.get("EbEventFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11257,9 +11446,9 @@ class UninstallGrafanaPluginsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PluginIds: Array of plugin IDs
+        :param PluginIds: Array of plugin IDs, such as "PluginIds": [ "grafana-clock-panel" ]. The plugin ID can be obtained through the `DescribePluginOverviews` API.
         :type PluginIds: list of str
-        :param InstanceId: Instance ID
+        :param InstanceId: TCMG instance ID, such as “grafana-abcdefg”.
         :type InstanceId: str
         """
         self.PluginIds = None
@@ -11451,7 +11640,7 @@ class UpdateDNSConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance ID.
+        :param InstanceId: TCMG instance ID, such as “grafana-12345678”.
         :type InstanceId: str
         :param NameServers: Array of DNS servers
         :type NameServers: list of str
@@ -11601,7 +11790,7 @@ class UpdateGrafanaEnvironmentsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance ID.
+        :param InstanceId: TCMG instance ID, such as “grafana-12345678”.
         :type InstanceId: str
         :param Envs: Environment variable string
         :type Envs: str
@@ -11646,11 +11835,11 @@ class UpdateGrafanaIntegrationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IntegrationId: Integration ID
+        :param IntegrationId: Integration ID, such as “integration-abcd1234”. You can view it by going to the instance details page and clicking **Tencent Cloud Service Integration** > **Integration List**.
         :type IntegrationId: str
-        :param InstanceId: Instance ID
+        :param InstanceId: TCMG instance ID, such as “grafana-12345678”.
         :type InstanceId: str
-        :param Kind: Integration type
+        :param Kind: Integration type, such as “tencent-cloud-prometheus”. You can view it by going to the instance details page and clicking **Tencent Cloud Service Integration** > **Integration List**.
         :type Kind: str
         :param Content: Integration content
         :type Content: str
@@ -11699,11 +11888,11 @@ class UpdateGrafanaNotificationChannelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ChannelId: Channel ID
+        :param ChannelId: Channel ID, such as “nchannel-abcd1234”.
         :type ChannelId: str
-        :param InstanceId: Instance ID.
+        :param InstanceId: TCMG instance ID, such as “grafana-12345678”.
         :type InstanceId: str
-        :param ChannelName: Channel name
+        :param ChannelName: Alert channel name, such as “test”.
         :type ChannelName: str
         :param Receivers: Array of notification channel IDs
         :type Receivers: list of str
@@ -11760,9 +11949,9 @@ class UpdateGrafanaWhiteListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance name
+        :param InstanceId: TCMG instance ID, such as “grafana-abcdefgh”.
         :type InstanceId: str
-        :param Whitelist: Allowlist in array
+        :param Whitelist: Array of public IPs (such as “127.0.0.1”) in the allowlist, which can be viewed through the `DescribeGrafanaWhiteList` API.
         :type Whitelist: list of str
         """
         self.InstanceId = None
@@ -11805,9 +11994,9 @@ class UpdatePrometheusAgentStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance ID
+        :param InstanceId: TMP instance ID, such as “prom-abcd1234”.
         :type InstanceId: str
-        :param AgentIds: List of agent IDs
+        :param AgentIds: List of agent IDs such as “agent-abcd1234”, which can be obtained on the **Agent Management** page in the console.
         :type AgentIds: list of str
         :param Status: Status to update
 <li> 1 = enabled </li>
@@ -11856,13 +12045,13 @@ class UpdatePrometheusScrapeJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance ID
+        :param InstanceId: TMP instance ID, such as “prom-abcd1234”.
         :type InstanceId: str
-        :param AgentId: Agent ID
+        :param AgentId: Agent ID such as “agent-abcd1234”, which can be obtained on the **Agent Management** page in the console
         :type AgentId: str
-        :param JobId: Scrape task ID
+        :param JobId: Scrape task ID such as “job-abcd1234”. You can go to the **Agent Management** page and obtain the ID in the pop-up **Create Scrape Task** window.
         :type JobId: str
-        :param Config: Scrape task configuration
+        :param Config: Scrape task ID in the format of “job_name:xx”
         :type Config: str
         """
         self.InstanceId = None
@@ -11975,9 +12164,9 @@ class UpdateSSOAccountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance ID
+        :param InstanceId: TCMG instance ID, such as “grafana-abcdefgh”.
         :type InstanceId: str
-        :param UserId: User account ID
+        :param UserId: User account ID, such as “10000000”.
         :type UserId: str
         :param Role: Permission
         :type Role: list of GrafanaAccountRole
@@ -12095,9 +12284,9 @@ class UpgradeGrafanaInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance ID.
+        :param InstanceId: TCMG instance ID, such as “grafana-12345678”.
         :type InstanceId: str
-        :param Alias: Version alias
+        :param Alias: Version alias, such as v7.4.2.
         :type Alias: str
         """
         self.InstanceId = None
