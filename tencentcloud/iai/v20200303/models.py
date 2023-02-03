@@ -148,7 +148,7 @@ class Candidate(AbstractModel):
         r"""
         :param PersonId: Person ID
         :type PersonId: str
-        :param FaceId: Face ID
+        :param FaceId: Face ID, which is valid only when returned by the `SearchFaces` or `SearchFacesReturnsByGroup` API. User search APIs use facial feature fusion to search for users, for which this field is meaningless.
         :type FaceId: str
         :param Score: Match score of candidate. 
 
@@ -877,11 +877,11 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 PNG, JPG, JPEG, and BMP images are supported, while GIF images are not.
         :type Url: str
         :param FaceAttributesType: Whether to return attributes such as age, gender, and emotion. 
-Valid values (case-insensitive): None, Age, Beauty, Emotion, Eye, Eyebrow, 
-Gender, Hair, Hat, Headpose, Mask, Mouth, Moustache, Nose, Shape, Skin, Smile. 
-Default value: None, indicating that no attributes need to be returned. 
-You need to combine the attributes into a string and separate them with commas. The sequence of the attributes is not limited. 
-For more information on the attributes, please see the output parameters as described below. 
+Valid values (case-insensitive): None, Age, Beauty, Emotion, Eye, Eyebrow, Gender, Hair, Hat, Headpose, Mask, Mouth, Moustache, Nose, Shape, Skin, Smile. 
+  
+`None` indicates that no attributes need to be returned, which is the default value; that is, if the `FaceAttributesType` attribute is empty, the values of all attributes will be `0`.
+You need to combine the attributes into a string and separate them by comma. The sequence of the attributes is not limited. 
+For more information on the attributes, see the output parameters as described below. 
 The face attribute information of up to 5 largest faces in the image will be returned, and `AttributesInfo` of the 6th and rest faces is meaningless.
         :type FaceAttributesType: str
         :param NeedRotateDetection: Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image is not rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.
@@ -1061,6 +1061,73 @@ class DetectFaceResponse(AbstractModel):
                 obj = FaceInfo()
                 obj._deserialize(item)
                 self.FaceInfos.append(obj)
+        self.FaceModelVersion = params.get("FaceModelVersion")
+        self.RequestId = params.get("RequestId")
+
+
+class DetectLiveFaceAccurateRequest(AbstractModel):
+    """DetectLiveFaceAccurate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Image: Base64-encoded image data, which cannot exceed 5 MB.
+The long side cannot exceed 4,000 px for images in .jpg format or 2,000 px for images in other formats. 
+The recommended image aspect ratio is 3:4 (generally, the aspect ratio of images taken by mobile phones).
+The face must be greater than 100*100 px in size.
+Supported image formats are PNG, JPG, JPEG, and BMP. GIF is currently not supported.
+        :type Image: str
+        :param Url: Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
+The long side cannot exceed 4,000 px for images in .jpg format or 2,000 px for images in other formats.
+Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used. 
+The recommended image aspect ratio is 3:4 (generally, the aspect ratio of images taken by mobile phones).
+The face must be greater than 100*100 px in size.
+We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.
+Supported image formats are PNG, JPG, JPEG, and BMP. GIF is currently not supported.
+        :type Url: str
+        :param FaceModelVersion: Algorithm model version used for face recognition. Valid value: `3.0`.
+        :type FaceModelVersion: str
+        """
+        self.Image = None
+        self.Url = None
+        self.FaceModelVersion = None
+
+
+    def _deserialize(self, params):
+        self.Image = params.get("Image")
+        self.Url = params.get("Url")
+        self.FaceModelVersion = params.get("FaceModelVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DetectLiveFaceAccurateResponse(AbstractModel):
+    """DetectLiveFaceAccurate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Score: Liveness score. Value range: [0, 100]. You can set several thresholds such as 5, 10, 40, 70 and 90 to determine whether the image is photographed. We recommend you use the threshold of 40.
+        :type Score: float
+        :param FaceModelVersion: Algorithm model version used for face recognition.
+        :type FaceModelVersion: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Score = None
+        self.FaceModelVersion = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Score = params.get("Score")
         self.FaceModelVersion = params.get("FaceModelVersion")
         self.RequestId = params.get("RequestId")
 
@@ -2462,55 +2529,6 @@ class ModifyGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class ModifyPersonBaseInfoRequest(AbstractModel):
-    """ModifyPersonBaseInfo request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param PersonId: Person ID, which is the `PersonId` in the `CreatePerson` API.
-        :type PersonId: str
-        :param PersonName: Name of the person to be modified
-        :type PersonName: str
-        :param Gender: Gender of the person to be modified. 1: male; 2: female.
-        :type Gender: int
-        """
-        self.PersonId = None
-        self.PersonName = None
-        self.Gender = None
-
-
-    def _deserialize(self, params):
-        self.PersonId = params.get("PersonId")
-        self.PersonName = params.get("PersonName")
-        self.Gender = params.get("Gender")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ModifyPersonBaseInfoResponse(AbstractModel):
-    """ModifyPersonBaseInfo response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
 class ModifyPersonGroupInfoRequest(AbstractModel):
     """ModifyPersonGroupInfo request structure.
 
@@ -2943,7 +2961,7 @@ For example, if the input image in `Image` or `Url` contains multiple faces and 
         :param MinFaceSize: Minimum height and width of face in px. Default value: 34. A value below 34 will affect the search accuracy. We recommend setting this parameter to 80.
         :type MinFaceSize: int
         :param MaxPersonNumPerGroup: Detected faces, which is corresponding to the maximum number of returned most matching persons. Default value: 5. Maximum value: 10.  
-For example, if `MaxFaceNum` is 3 and `MaxPersonNum` is 5, up to 15 (3 * 5) persons will be returned.
+For example, if `MaxFaceNum` is 3, `MaxPersonNumPerGroup` is 5, and the `GroupIds` length is 3, up to 45 (3 * 5 * 3) persons will be returned.
         :type MaxPersonNumPerGroup: int
         :param NeedPersonInfo: Whether to return person details. 0: no; 1: yes. Default value: 0. Other values will be considered as 0 by default.
         :type NeedPersonInfo: int
@@ -3323,9 +3341,9 @@ The returned similarity score varies by algorithm version.
 If you need to verify whether the faces in the two images are the same person, then the 0.1%, 0.01%, and 0.001% FARs on v3.0 correspond to scores of 40, 50, and 60, respectively. Generally, if the score is above 50, it can be judged that they are the same person.
 The 0.1%, 0.01%, and 0.001% FARs on v2.0 correspond to scores of 70, 80, and 90, respectively. Generally, if the score is above 80, it can be judged that they are the same person.
         :type Score: float
-        :param IsMatch: Whether the person in the image matches the `PersonId`.
+        :param IsMatch: Whether the person is the one in the image. The fixed threshold score is 60. If you want to adjust the threshold more flexibly, you can take the returned `Score` parameter value for judgment.
         :type IsMatch: bool
-        :param FaceModelVersion: Algorithm model version used for face recognition in the group where the `Person` is, which is set when the group is created. For more information, please see [Algorithm Model Version](https://intl.cloud.tencent.com/document/product/867/40042?from_cn_redirect=1)
+        :param FaceModelVersion: Algorithm model version used for face recognition in the group where the `Person` is, which is set when the group is created.
         :type FaceModelVersion: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -3410,7 +3428,7 @@ class VerifyPersonResponse(AbstractModel):
         :type Score: float
         :param IsMatch: Whether the person in the image matches the `PersonId`.
         :type IsMatch: bool
-        :param FaceModelVersion: Algorithm model version used for face recognition in the group where the `Person` is, which is set when the group is created. For more information, please see [Algorithm Model Version](https://intl.cloud.tencent.com/document/product/867/40042?from_cn_redirect=1)
+        :param FaceModelVersion: Algorithm model version used for face recognition in the group where the `Person` is, which is set when the group is created.
         :type FaceModelVersion: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
