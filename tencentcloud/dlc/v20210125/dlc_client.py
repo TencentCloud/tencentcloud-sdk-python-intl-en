@@ -300,3 +300,26 @@ class DlcClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SuspendResumeDataEngine(self, request):
+        """This API is used to suspend or resume a data engine.
+
+        :param request: Request instance for SuspendResumeDataEngine.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.SuspendResumeDataEngineRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.SuspendResumeDataEngineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SuspendResumeDataEngine", params, headers=headers)
+            response = json.loads(body)
+            model = models.SuspendResumeDataEngineResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

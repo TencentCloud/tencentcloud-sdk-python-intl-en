@@ -487,7 +487,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeProxyProcessStatistics(self, request):
-        """This API is used to get the session statistics of the current instance. Note that this API can be called only in certain environments.
+        """This API is used to get the session statistics of a single proxy under the current instance, and can only be called in particular environments.
 
         :param request: Request instance for DescribeProxyProcessStatistics.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeProxyProcessStatisticsRequest`

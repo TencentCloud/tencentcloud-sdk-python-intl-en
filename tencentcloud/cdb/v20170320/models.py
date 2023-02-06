@@ -1354,6 +1354,12 @@ class CommonTimeWindow(AbstractModel):
         :type Saturday: str
         :param Sunday: Time window on Sunday in the format of 02:00-06:00
         :type Sunday: str
+        :param BackupPeriodStrategy: Non-archive backup retention policy. Valid values: `weekly` (back up by week), monthly (back up by month), default value: `weekly`.
+        :type BackupPeriodStrategy: str
+        :param Days: If `BackupPeriodStrategy` is `monthly`, you need to pass in the specific backup dates. The time interval between any two adjacent dates cannot exceed 2 days, for example, [1,4,7,9,11,14,17,19,22,25,28,30,31].
+        :type Days: list of int
+        :param BackupPeriodTime: Backup time by month in the format of 02:00–06:00, which is required when `BackupPeriodStrategy` is `monthly`.
+        :type BackupPeriodTime: str
         """
         self.Monday = None
         self.Tuesday = None
@@ -1362,6 +1368,9 @@ class CommonTimeWindow(AbstractModel):
         self.Friday = None
         self.Saturday = None
         self.Sunday = None
+        self.BackupPeriodStrategy = None
+        self.Days = None
+        self.BackupPeriodTime = None
 
 
     def _deserialize(self, params):
@@ -1372,6 +1381,9 @@ class CommonTimeWindow(AbstractModel):
         self.Friday = params.get("Friday")
         self.Saturday = params.get("Saturday")
         self.Sunday = params.get("Sunday")
+        self.BackupPeriodStrategy = params.get("BackupPeriodStrategy")
+        self.Days = params.get("Days")
+        self.BackupPeriodTime = params.get("BackupPeriodTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1995,6 +2007,215 @@ class CreateDBInstanceHourResponse(AbstractModel):
         :param DealIds: Short order ID.
         :type DealIds: list of str
         :param InstanceIds: Instance ID list
+        :type InstanceIds: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DealIds = None
+        self.InstanceIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DealIds = params.get("DealIds")
+        self.InstanceIds = params.get("InstanceIds")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateDBInstanceRequest(AbstractModel):
+    """CreateDBInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Memory: Instance memory size in MB. You can use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported memory specifications.
+        :type Memory: int
+        :param Volume: Instance disk size in GB. You can use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported disk specifications.
+        :type Volume: int
+        :param Period: Instance validity period in months. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`.
+        :type Period: int
+        :param GoodsNum: Number of instances. Value range: 1-100. Default value: `1`.
+        :type GoodsNum: int
+        :param Zone: AZ information. The system will automatically select an AZ by default. You can use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported AZs.
+        :type Zone: str
+        :param UniqVpcId: VPC ID. If this parameter is not passed in, the basic network will be selected by default. You can use the [DescribeVpcs](https://intl.cloud.tencent.com/document/api/215/15778?from_cn_redirect=1) API to query the VPCs.
+        :type UniqVpcId: str
+        :param UniqSubnetId: VPC subnet ID. If `UniqVpcId` is set, then `UniqSubnetId` will be required. You can use the [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) API to query the subnet lists.
+        :type UniqSubnetId: str
+        :param ProjectId: Project ID. If this is left empty, the default project will be used. If read-only instances or disaster recovery instances are purchased, the project ID will be the same as the source instance ID by default.
+        :type ProjectId: int
+        :param Port: Custom port. Value range: 1024-65535.
+        :type Port: int
+        :param InstanceRole: Instance typeA. Valid values: `master` (source instance), `dr` (disaster recovery instance), `ro` (read-only instance).
+        :type InstanceRole: str
+        :param MasterInstanceId: Instance ID. It is required when purchasing a read-only instance, which is the same as the source instance ID. You can use the [DescribeDBInstances](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) API to query the instance ID.
+        :type MasterInstanceId: str
+        :param EngineVersion: MySQL version. Valid values: `5.5`, `5.6`, `5.7`. You can use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported versions.
+        :type EngineVersion: str
+        :param Password: The root account password. It can contain 8-64 characters and must contain at least two of the following types of characters: letters, digits, and symbols (_+-&=!@#$%^*()). This parameter can be specified when purchasing a replica instance and is invalid for read-only or disaster recovery instances.
+        :type Password: str
+        :param ProtectMode: Data replication mode. Valid values: `0` (async replication), `1` (semi-sync replication), `2` (strong sync replication). Default value: `0`.
+        :type ProtectMode: int
+        :param DeployMode: Multi-AZ or single-AZ. Valid values: `0` (single-AZ), `1` (multi-AZ). Default value: `0`.
+        :type DeployMode: int
+        :param SlaveZone: Information of replica AZ 1, which is the `Zone` value by default.
+        :type SlaveZone: str
+        :param ParamList: List of parameters in the format of ParamList.0.Name=auto_increment&ParamList.0.Value=1. You can use the [DescribeDefaultParams](https://intl.cloud.tencent.com/document/api/236/32662?from_cn_redirect=1) API to query the configurable parameters.
+        :type ParamList: list of ParamInfo
+        :param BackupZone: Information of replica AZ 2, which is left empty by default. Specify this parameter when purchasing a source instance in the one-source-two-replica architecture.
+        :type BackupZone: str
+        :param AutoRenewFlag: Auto-renewal flag. Valid values: `0` (auto-renewal not enabled), `1` (auto-renewal enabled).
+        :type AutoRenewFlag: int
+        :param MasterRegion: Region information of the source instance, which is required when purchasing a read-only or disaster recovery instance.
+        :type MasterRegion: str
+        :param SecurityGroup: Security group parameter. You can use the [DescribeProjectSecurityGroups](https://intl.cloud.tencent.com/document/api/236/15850?from_cn_redirect=1) API to query the security group details of a project.
+        :type SecurityGroup: list of str
+        :param RoGroup: Read-only instance parameter. This parameter must be passed in when purchasing read-only instances.
+        :type RoGroup: :class:`tencentcloud.cdb.v20170320.models.RoGroup`
+        :param InstanceName: Instance name. For multiple instances purchased at one time, they will be distinguished by the name suffix number, such as instnaceName=db and goodsNum=3, and their instance names are db1, db2, and db3, respectively.
+        :type InstanceName: str
+        :param ResourceTags: Instance tag information
+        :type ResourceTags: list of TagInfo
+        :param DeployGroupId: Placement group ID
+        :type DeployGroupId: str
+        :param ClientToken: A string unique in 48 hours, which is supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
+        :type ClientToken: str
+        :param DeviceType: Instance isolation type. Valid values: `UNIVERSAL` (general instance), `EXCLUSIVE` (dedicated instance), `BASIC` (basic instance). Default value: `UNIVERSAL`.
+        :type DeviceType: str
+        :param ParamTemplateId: Parameter template ID
+        :type ParamTemplateId: int
+        :param AlarmPolicyList: Array of alarm policy IDs, which is `OriginId` obtained through the `DescribeAlarmPolicy` API.
+        :type AlarmPolicyList: list of int
+        :param InstanceNodes: The number of nodes of the instance. To purchase a read-only instance or a basic instance, set this parameter to `1` or leave it empty. To purchase a three-node instance, set this parameter to `3` or specify the `BackupZone` parameter. If the instance to be purchased is a source instance and both `BackupZone` and this parameter are left empty, the value `2` will be used, which indicates the source instance will have two nodes.
+        :type InstanceNodes: int
+        :param Cpu: The number of the instance CPU cores. If this parameter is left empty, it will be subject to the `Memory` value.
+        :type Cpu: int
+        :param AutoSyncFlag: Whether to automatically start disaster recovery synchronization. This parameter takes effect only for disaster recovery instances. Valid values: `0` (no), `1` (yes). Default value: `0`.
+        :type AutoSyncFlag: int
+        :param CageId: Financial cage ID.
+        :type CageId: str
+        :param ParamTemplateType: Type of the default parameter template. Valid values: `HIGH_STABILITY` (high-stability template), `HIGH_PERFORMANCE` (high-performance template).
+        :type ParamTemplateType: str
+        :param AlarmPolicyIdList: The array of alarm policy names, such as ["policy-uyoee9wg"]. If the `AlarmPolicyList` parameter is specified, this parameter is invalid.
+        :type AlarmPolicyIdList: list of str
+        :param DryRun: Whether to check the request without creating any instance. Valid values: `true`, `false` (default). After being submitted, the request will be checked to see if it is in correct format and has all required parameters with valid values. An error code is returned if the check failed, and `RequestId` is returned if the check succeeded. After a successful check, no instance will be created if this parameter is set to `true`, whereas an instance will be created and if it is set to `false`.
+        :type DryRun: bool
+        :param EngineType: Instance engine type. Valid values: `InnoDB` (default), `RocksDB`.
+        :type EngineType: str
+        :param Vips: The list of IPs for sources instances. Only one IP address can be assigned to a single source instance. If all IPs are used up, the system will automatically assign IPs to the remaining source instances that do not have one.
+        :type Vips: list of str
+        """
+        self.Memory = None
+        self.Volume = None
+        self.Period = None
+        self.GoodsNum = None
+        self.Zone = None
+        self.UniqVpcId = None
+        self.UniqSubnetId = None
+        self.ProjectId = None
+        self.Port = None
+        self.InstanceRole = None
+        self.MasterInstanceId = None
+        self.EngineVersion = None
+        self.Password = None
+        self.ProtectMode = None
+        self.DeployMode = None
+        self.SlaveZone = None
+        self.ParamList = None
+        self.BackupZone = None
+        self.AutoRenewFlag = None
+        self.MasterRegion = None
+        self.SecurityGroup = None
+        self.RoGroup = None
+        self.InstanceName = None
+        self.ResourceTags = None
+        self.DeployGroupId = None
+        self.ClientToken = None
+        self.DeviceType = None
+        self.ParamTemplateId = None
+        self.AlarmPolicyList = None
+        self.InstanceNodes = None
+        self.Cpu = None
+        self.AutoSyncFlag = None
+        self.CageId = None
+        self.ParamTemplateType = None
+        self.AlarmPolicyIdList = None
+        self.DryRun = None
+        self.EngineType = None
+        self.Vips = None
+
+
+    def _deserialize(self, params):
+        self.Memory = params.get("Memory")
+        self.Volume = params.get("Volume")
+        self.Period = params.get("Period")
+        self.GoodsNum = params.get("GoodsNum")
+        self.Zone = params.get("Zone")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.UniqSubnetId = params.get("UniqSubnetId")
+        self.ProjectId = params.get("ProjectId")
+        self.Port = params.get("Port")
+        self.InstanceRole = params.get("InstanceRole")
+        self.MasterInstanceId = params.get("MasterInstanceId")
+        self.EngineVersion = params.get("EngineVersion")
+        self.Password = params.get("Password")
+        self.ProtectMode = params.get("ProtectMode")
+        self.DeployMode = params.get("DeployMode")
+        self.SlaveZone = params.get("SlaveZone")
+        if params.get("ParamList") is not None:
+            self.ParamList = []
+            for item in params.get("ParamList"):
+                obj = ParamInfo()
+                obj._deserialize(item)
+                self.ParamList.append(obj)
+        self.BackupZone = params.get("BackupZone")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.MasterRegion = params.get("MasterRegion")
+        self.SecurityGroup = params.get("SecurityGroup")
+        if params.get("RoGroup") is not None:
+            self.RoGroup = RoGroup()
+            self.RoGroup._deserialize(params.get("RoGroup"))
+        self.InstanceName = params.get("InstanceName")
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
+        self.DeployGroupId = params.get("DeployGroupId")
+        self.ClientToken = params.get("ClientToken")
+        self.DeviceType = params.get("DeviceType")
+        self.ParamTemplateId = params.get("ParamTemplateId")
+        self.AlarmPolicyList = params.get("AlarmPolicyList")
+        self.InstanceNodes = params.get("InstanceNodes")
+        self.Cpu = params.get("Cpu")
+        self.AutoSyncFlag = params.get("AutoSyncFlag")
+        self.CageId = params.get("CageId")
+        self.ParamTemplateType = params.get("ParamTemplateType")
+        self.AlarmPolicyIdList = params.get("AlarmPolicyIdList")
+        self.DryRun = params.get("DryRun")
+        self.EngineType = params.get("EngineType")
+        self.Vips = params.get("Vips")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDBInstanceResponse(AbstractModel):
+    """CreateDBInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DealIds: Short order ID
+        :type DealIds: list of str
+        :param InstanceIds: List of instance IDs
         :type InstanceIds: list of str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -3923,6 +4144,10 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type UniqSubnetIds: list of str
         :param Tags: Tag key value
         :type Tags: list of Tag
+        :param ProxyVips: Database proxy IP
+        :type ProxyVips: list of str
+        :param ProxyIds: Database proxy ID
+        :type ProxyIds: list of str
         """
         self.ProjectId = None
         self.InstanceTypes = None
@@ -3956,6 +4181,8 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.UniqueVpcIds = None
         self.UniqSubnetIds = None
         self.Tags = None
+        self.ProxyVips = None
+        self.ProxyIds = None
 
 
     def _deserialize(self, params):
@@ -3996,6 +4223,8 @@ class DescribeDBInstancesRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.ProxyVips = params.get("ProxyVips")
+        self.ProxyIds = params.get("ProxyIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9348,6 +9577,59 @@ class RemoteBackupInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class RenewDBInstanceRequest(AbstractModel):
+    """RenewDBInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: ID of the instance to be renewed in the format of cdb-c1nl9rpv, which is the same as the instance ID displayed in the TencentDB console. You can use the [DescribeDBInstances](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) API to query the ID.
+        :type InstanceId: str
+        :param TimeSpan: Renewal period in months. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`.
+        :type TimeSpan: int
+        :param ModifyPayType: To renew a pay-as-you-go instance to a monthly subscribed one, you need to set this parameter to `PREPAID`.
+        :type ModifyPayType: str
+        """
+        self.InstanceId = None
+        self.TimeSpan = None
+        self.ModifyPayType = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.TimeSpan = params.get("TimeSpan")
+        self.ModifyPayType = params.get("ModifyPayType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RenewDBInstanceResponse(AbstractModel):
+    """RenewDBInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DealId: Order ID
+        :type DealId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DealId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DealId = params.get("DealId")
+        self.RequestId = params.get("RequestId")
 
 
 class ResetRootAccountRequest(AbstractModel):

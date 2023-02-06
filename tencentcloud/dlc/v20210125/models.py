@@ -1310,6 +1310,55 @@ class StreamingStatistics(AbstractModel):
         
 
 
+class SuspendResumeDataEngineRequest(AbstractModel):
+    """SuspendResumeDataEngine request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DataEngineName: The name of a virtual cluster.
+        :type DataEngineName: str
+        :param Operate: The operation type: `suspend` or `resume`.
+        :type Operate: str
+        """
+        self.DataEngineName = None
+        self.Operate = None
+
+
+    def _deserialize(self, params):
+        self.DataEngineName = params.get("DataEngineName")
+        self.Operate = params.get("Operate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SuspendResumeDataEngineResponse(AbstractModel):
+    """SuspendResumeDataEngine response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DataEngineName: The details of the virtual cluster.
+        :type DataEngineName: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DataEngineName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DataEngineName = params.get("DataEngineName")
+        self.RequestId = params.get("RequestId")
+
+
 class Task(AbstractModel):
     """Task type, such as SQL query.
 

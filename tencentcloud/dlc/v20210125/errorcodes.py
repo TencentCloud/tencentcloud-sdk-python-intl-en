@@ -38,6 +38,9 @@ INVALIDPARAMETER_INVALIDDATAENGINENAME = 'InvalidParameter.InvalidDataEngineName
 # The fault tolerance policy is invalid.
 INVALIDPARAMETER_INVALIDFAILURETOLERANCE = 'InvalidParameter.InvalidFailureTolerance'
 
+# Invalid maximum number of results.
+INVALIDPARAMETER_INVALIDMAXRESULTS = 'InvalidParameter.InvalidMaxResults'
+
 # The CAM role arn is invalid.
 INVALIDPARAMETER_INVALIDROLEARN = 'InvalidParameter.InvalidRoleArn'
 
@@ -76,6 +79,9 @@ RESOURCEUNAVAILABLE = 'ResourceUnavailable'
 
 # The account balance is insufficient to run the SQL task.
 RESOURCEUNAVAILABLE_BALANCEINSUFFICIENT = 'ResourceUnavailable.BalanceInsufficient'
+
+# Unauthorized engine operation by a sub-user.
+UNAUTHORIZEDOPERATION_OPERATECOMPUTINGENGINE = 'UnauthorizedOperation.OperateComputingEngine'
 
 # The sub-user does not have permission to use the compute engine.
 UNAUTHORIZEDOPERATION_USECOMPUTINGENGINE = 'UnauthorizedOperation.UseComputingEngine'

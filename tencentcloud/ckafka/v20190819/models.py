@@ -2034,6 +2034,41 @@ class DescribeCkafkaZoneResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeConnectInfoResultDTO(AbstractModel):
+    """Topic connection information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IpAddr: IP address
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IpAddr: str
+        :param Time: Connection time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Time: str
+        :param IsUnSupportVersion: Whether it is a supported version
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsUnSupportVersion: bool
+        """
+        self.IpAddr = None
+        self.Time = None
+        self.IsUnSupportVersion = None
+
+
+    def _deserialize(self, params):
+        self.IpAddr = params.get("IpAddr")
+        self.Time = params.get("Time")
+        self.IsUnSupportVersion = params.get("IsUnSupportVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeConsumerGroupRequest(AbstractModel):
     """DescribeConsumerGroup request structure.
 
@@ -2729,6 +2764,60 @@ class DescribeTopicDetailResponse(AbstractModel):
         if params.get("Result") is not None:
             self.Result = TopicDetailResponse()
             self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTopicProduceConnectionRequest(AbstractModel):
+    """DescribeTopicProduceConnection request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param TopicName: Topic name
+        :type TopicName: str
+        """
+        self.InstanceId = None
+        self.TopicName = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.TopicName = params.get("TopicName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTopicProduceConnectionResponse(AbstractModel):
+    """DescribeTopicProduceConnection response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Result set of returned connection information
+        :type Result: list of DescribeConnectInfoResultDTO
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = []
+            for item in params.get("Result"):
+                obj = DescribeConnectInfoResultDTO()
+                obj._deserialize(item)
+                self.Result.append(obj)
         self.RequestId = params.get("RequestId")
 
 

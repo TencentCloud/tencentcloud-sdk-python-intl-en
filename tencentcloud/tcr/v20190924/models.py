@@ -334,6 +334,8 @@ class CreateInstanceRequest(AbstractModel):
         :type TagSpecification: :class:`tencentcloud.tcr.v20190924.models.TagSpecification`
         :param RegistryChargeType: Instance billing mode. Valid values: 0: Pay-as-you-go billing; 1: Prepaid. Default value: 0.
         :type RegistryChargeType: int
+        :param RegistryChargePrepaid: Auto-renewal setting and purchase period
+        :type RegistryChargePrepaid: :class:`tencentcloud.tcr.v20190924.models.RegistryChargePrepaid`
         :param SyncTag: Whether to sync TCR cloud tags to the COS bucket
         :type SyncTag: bool
         """
@@ -341,6 +343,7 @@ class CreateInstanceRequest(AbstractModel):
         self.RegistryType = None
         self.TagSpecification = None
         self.RegistryChargeType = None
+        self.RegistryChargePrepaid = None
         self.SyncTag = None
 
 
@@ -351,6 +354,9 @@ class CreateInstanceRequest(AbstractModel):
             self.TagSpecification = TagSpecification()
             self.TagSpecification._deserialize(params.get("TagSpecification"))
         self.RegistryChargeType = params.get("RegistryChargeType")
+        if params.get("RegistryChargePrepaid") is not None:
+            self.RegistryChargePrepaid = RegistryChargePrepaid()
+            self.RegistryChargePrepaid._deserialize(params.get("RegistryChargePrepaid"))
         self.SyncTag = params.get("SyncTag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -669,59 +675,6 @@ class CreateRepositoryResponse(AbstractModel):
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class CreateSecurityPoliciesRequest(AbstractModel):
-    """CreateSecurityPolicies request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RegistryId: Instance ID
-        :type RegistryId: str
-        :param CidrBlock: 192.168.0.0/24
-        :type CidrBlock: str
-        :param Description: Description
-        :type Description: str
-        """
-        self.RegistryId = None
-        self.CidrBlock = None
-        self.Description = None
-
-
-    def _deserialize(self, params):
-        self.RegistryId = params.get("RegistryId")
-        self.CidrBlock = params.get("CidrBlock")
-        self.Description = params.get("Description")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateSecurityPoliciesResponse(AbstractModel):
-    """CreateSecurityPolicies response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RegistryId: Instance ID
-        :type RegistryId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.RegistryId = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RegistryId = params.get("RegistryId")
         self.RequestId = params.get("RequestId")
 
 

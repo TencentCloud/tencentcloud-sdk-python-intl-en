@@ -1395,7 +1395,7 @@ class DescribeProxyProcessStatisticsRequest(AbstractModel):
         r"""
         :param InstanceId: Instance ID.
         :type InstanceId: str
-        :param InstanceProxyId: `ProxyID` under the current instance.
+        :param InstanceProxyId: The proxy ID you want to query under the instance
         :type InstanceProxyId: str
         :param Limit: Number of returned results.
         :type Limit: int
@@ -3177,11 +3177,11 @@ class ProcessStatistic(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Items: 
+        :param Items: Array of session details
         :type Items: list of SessionItem
-        :param AllConnSum: 
+        :param AllConnSum: The total number of connections
         :type AllConnSum: int
-        :param ActiveConnSum: 
+        :param ActiveConnSum: The total number of active connections
         :type ActiveConnSum: int
         """
         self.Items = None
@@ -3537,17 +3537,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class SessionItem(AbstractModel):
-    """
+    """Access source details of the real-time session
 
     """
 
     def __init__(self):
         r"""
-        :param Ip: 
+        :param Ip: Access source
         :type Ip: str
-        :param ActiveConn: 
+        :param ActiveConn: The number of active connections from the current access source
         :type ActiveConn: str
-        :param AllConn: 
+        :param AllConn: The total number of connections from the current access source
         :type AllConn: int
         """
         self.Ip = None

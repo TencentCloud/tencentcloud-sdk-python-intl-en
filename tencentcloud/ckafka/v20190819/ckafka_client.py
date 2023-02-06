@@ -763,6 +763,29 @@ class CkafkaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeTopicProduceConnection(self, request):
+        """This API is used to query the connection information of the topic producer.
+
+        :param request: Request instance for DescribeTopicProduceConnection.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeTopicProduceConnectionRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DescribeTopicProduceConnectionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTopicProduceConnection", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTopicProduceConnectionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTopicSubscribeGroup(self, request):
         """This API is used to search and subscribe the message group information of a topic.
 

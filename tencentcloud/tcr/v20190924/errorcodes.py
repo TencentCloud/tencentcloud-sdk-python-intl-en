@@ -23,6 +23,9 @@ FAILEDOPERATION = 'FailedOperation'
 # Dependency exception.
 FAILEDOPERATION_DEPENDENCEERROR = 'FailedOperation.DependenceError'
 
+# A null is returned for `Core`.
+FAILEDOPERATION_EMPTYCOREBODY = 'FailedOperation.EmptyCoreBody'
+
 # An error occurred while obtaining the database data.
 FAILEDOPERATION_ERRORGETDBDATAERROR = 'FailedOperation.ErrorGetDBDataError'
 

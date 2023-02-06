@@ -258,6 +258,38 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateDBInstance(self, request):
+        """This API is used to create a monthly subscribed TencentDB instance (which can be a source, disaster recovery, or read-only instance) by passing in information such as instance specifications, MySQL version number, purchased duration, and quantity.
+
+        This is an asynchronous API. You can also use the [DescribeDBInstances](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) API to query the instance details. If the output parameter `Status` is `1` and the output parameter `TaskStatus` is `0`, the instance has been successfully delivered.
+
+        1. You can use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the purchasable instance specifications, and then use the [DescribeDBPrice](https://intl.cloud.tencent.com/document/api/236/18566?from_cn_redirect=1) API to query the prices of the purchasable instances.
+        2. You can create up to 100 instances at a time, with an instance validity period of up to 36 months.
+        3. MySQL v5.5, v5.6, v5.7, and v8.0 are supported.
+        4. Source instances, read-only instances, and disaster recovery instances can be created.
+        5. If `Port`, `ParamList`, or `Password` is specified in the input parameters, the instance (excluding basic instances) will be initialized.
+        6. If `Port`, `ParamTemplateId`, or `AlarmPolicyList` is specified in the input parameters, you need to update your SDK to the latest version.
+
+        :param request: Request instance for CreateDBInstance.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.CreateDBInstanceRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.CreateDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDBInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDBInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateDBInstanceHour(self, request):
         """This API is used to create pay-as-you-go TencentDB instances (which can be source instances, disaster recovery instances, or read-only replicas) by passing in information such as instance specifications, MySQL version number, and instance quantity.
 
@@ -2363,6 +2395,29 @@ class CdbClient(AbstractClient):
             body = self.call("ReloadBalanceProxyNode", params, headers=headers)
             response = json.loads(body)
             model = models.ReloadBalanceProxyNodeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RenewDBInstance(self, request):
+        """This API is used to renew a monthly subscribed TencentDB instance, and a pay-as-you-go instance can be renewed as a monthly subscribed one by this API.
+
+        :param request: Request instance for RenewDBInstance.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.RenewDBInstanceRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.RenewDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RenewDBInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.RenewDBInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

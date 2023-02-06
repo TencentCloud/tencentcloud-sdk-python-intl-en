@@ -279,29 +279,6 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateSecurityPolicies(self, request):
-        """This API is used to create public network access allowlist policies for an instance.
-
-        :param request: Request instance for CreateSecurityPolicies.
-        :type request: :class:`tencentcloud.tcr.v20190924.models.CreateSecurityPoliciesRequest`
-        :rtype: :class:`tencentcloud.tcr.v20190924.models.CreateSecurityPoliciesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateSecurityPolicies", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateSecurityPoliciesResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def CreateSecurityPolicy(self, request):
         """This API is used to create a public network access allowlist policy for an instance.
 
