@@ -72,6 +72,29 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CheckIsPrometheusNewUser(self, request):
+        """This API is used to determine whether the user is new to TMP, that is, whether the user has never created a TMP instance in any region.
+
+        :param request: Request instance for CheckIsPrometheusNewUser.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.CheckIsPrometheusNewUserRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.CheckIsPrometheusNewUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckIsPrometheusNewUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckIsPrometheusNewUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CleanGrafanaInstance(self, request):
         """This API is used to forcibly terminate a Grafana instance.
 
@@ -327,6 +350,29 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreatePrometheusRecordRuleYaml(self, request):
+        """This API is used to create a recording rule in the YAML way.
+
+        :param request: Request instance for CreatePrometheusRecordRuleYaml.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.CreatePrometheusRecordRuleYamlRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.CreatePrometheusRecordRuleYamlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePrometheusRecordRuleYaml", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreatePrometheusRecordRuleYamlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreatePrometheusScrapeJob(self, request):
         """This API is used to create a Prometheus scrape task.
 
@@ -341,6 +387,29 @@ class MonitorClient(AbstractClient):
             body = self.call("CreatePrometheusScrapeJob", params, headers=headers)
             response = json.loads(body)
             model = models.CreatePrometheusScrapeJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreatePrometheusTemp(self, request):
+        """This API is used to create a TMP template.
+
+        :param request: Request instance for CreatePrometheusTemp.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.CreatePrometheusTempRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.CreatePrometheusTempResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePrometheusTemp", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreatePrometheusTempResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -605,6 +674,29 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeletePrometheusRecordRuleYaml(self, request):
+        """This API is used to delete a recording instance.
+
+        :param request: Request instance for DeletePrometheusRecordRuleYaml.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DeletePrometheusRecordRuleYamlRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DeletePrometheusRecordRuleYamlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeletePrometheusRecordRuleYaml", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeletePrometheusRecordRuleYamlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeletePrometheusScrapeJobs(self, request):
         """This API is used to delete a Prometheus scrape task.
 
@@ -619,6 +711,52 @@ class MonitorClient(AbstractClient):
             body = self.call("DeletePrometheusScrapeJobs", params, headers=headers)
             response = json.loads(body)
             model = models.DeletePrometheusScrapeJobsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeletePrometheusTemp(self, request):
+        """This API is used to delete a TMP template.
+
+        :param request: Request instance for DeletePrometheusTemp.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DeletePrometheusTempRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DeletePrometheusTempResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeletePrometheusTemp", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeletePrometheusTempResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeletePrometheusTempSync(self, request):
+        """This API is used to unsync a template, which will delete the configuration generated by the template in the target. It takes effect for v2 instances.
+
+        :param request: Request instance for DeletePrometheusTempSync.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DeletePrometheusTempSyncRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DeletePrometheusTempSyncResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeletePrometheusTempSync", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeletePrometheusTempSyncResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1366,6 +1504,29 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePrometheusAgentInstances(self, request):
+        """This API is used to get the list of instances associated with the target cluster.
+
+        :param request: Request instance for DescribePrometheusAgentInstances.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusAgentInstancesRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusAgentInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePrometheusAgentInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePrometheusAgentInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribePrometheusAgents(self, request):
         """This API is used to list Prometheus CVM agents.
 
@@ -1380,6 +1541,98 @@ class MonitorClient(AbstractClient):
             body = self.call("DescribePrometheusAgents", params, headers=headers)
             response = json.loads(body)
             model = models.DescribePrometheusAgentsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePrometheusAlertPolicy(self, request):
+        """This API is used to get the list of v2.0 instance alerting rules.
+
+        :param request: Request instance for DescribePrometheusAlertPolicy.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusAlertPolicyRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusAlertPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePrometheusAlertPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePrometheusAlertPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePrometheusConfig(self, request):
+        """This API is used to get the Prometheus configuration.
+
+        :param request: Request instance for DescribePrometheusConfig.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusConfigRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePrometheusConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePrometheusConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePrometheusInstanceDetail(self, request):
+        """This API is used to get the details of a TMP instance.
+
+        :param request: Request instance for DescribePrometheusInstanceDetail.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusInstanceDetailRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusInstanceDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePrometheusInstanceDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePrometheusInstanceDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePrometheusInstanceInitStatus(self, request):
+        """This API is used to get the initialization task status of a v2.0 instance.
+
+        :param request: Request instance for DescribePrometheusInstanceInitStatus.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusInstanceInitStatusRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusInstanceInitStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePrometheusInstanceInitStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePrometheusInstanceInitStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1439,6 +1692,75 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePrometheusInstancesOverview(self, request):
+        """This API is used to get the list of CM-integrated instances.
+
+        :param request: Request instance for DescribePrometheusInstancesOverview.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusInstancesOverviewRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusInstancesOverviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePrometheusInstancesOverview", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePrometheusInstancesOverviewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePrometheusRecordRuleYaml(self, request):
+        """This API is used to get the YAML list of Prometheus recording rules.
+
+        :param request: Request instance for DescribePrometheusRecordRuleYaml.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusRecordRuleYamlRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusRecordRuleYamlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePrometheusRecordRuleYaml", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePrometheusRecordRuleYamlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePrometheusRecordRules(self, request):
+        """This API is used to get the list of recording rules, including those created by CRD resources in the associated cluster.
+
+        :param request: Request instance for DescribePrometheusRecordRules.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusRecordRulesRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusRecordRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePrometheusRecordRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePrometheusRecordRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribePrometheusScrapeJobs(self, request):
         """This API is used to list Prometheus scrape tasks.
 
@@ -1453,6 +1775,52 @@ class MonitorClient(AbstractClient):
             body = self.call("DescribePrometheusScrapeJobs", params, headers=headers)
             response = json.loads(body)
             model = models.DescribePrometheusScrapeJobsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePrometheusTemp(self, request):
+        """This API is used to get the list of templates, where the default template is always on top.
+
+        :param request: Request instance for DescribePrometheusTemp.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusTempRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusTempResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePrometheusTemp", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePrometheusTempResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePrometheusTempSync(self, request):
+        """This API is used to get the information of instances associated with a template. It takes effect for v2 instances.
+
+        :param request: Request instance for DescribePrometheusTempSync.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusTempSyncRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusTempSyncResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePrometheusTempSync", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePrometheusTempSyncResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1973,6 +2341,52 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyPrometheusRecordRuleYaml(self, request):
+        """This API is used to modify a Prometheus recording instance through YAML.
+
+        :param request: Request instance for ModifyPrometheusRecordRuleYaml.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyPrometheusRecordRuleYamlRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.ModifyPrometheusRecordRuleYamlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyPrometheusRecordRuleYaml", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyPrometheusRecordRuleYamlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyPrometheusTemp(self, request):
+        """This API is used to modify a template.
+
+        :param request: Request instance for ModifyPrometheusTemp.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyPrometheusTempRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.ModifyPrometheusTempResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyPrometheusTemp", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyPrometheusTempResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def PutMonitorData(self, request):
         """The default API request rate limit is 50 requests/sec.
         The default upper limit on metrics of a single tenant is 100.
@@ -2025,6 +2439,29 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def RunPrometheusInstance(self, request):
+        """This API is used to initialize a TMP instance, which is called when the integration center is enabled.
+
+        :param request: Request instance for RunPrometheusInstance.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.RunPrometheusInstanceRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.RunPrometheusInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RunPrometheusInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.RunPrometheusInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def SendCustomAlarmMsg(self, request):
         """This API is used to send a custom alarm notification.
 
@@ -2063,6 +2500,29 @@ class MonitorClient(AbstractClient):
             body = self.call("SetDefaultAlarmPolicy", params, headers=headers)
             response = json.loads(body)
             model = models.SetDefaultAlarmPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SyncPrometheusTemp(self, request):
+        """This API is used to sync a template to an instance or cluster. It takes effect for v2 instances.
+
+        :param request: Request instance for SyncPrometheusTemp.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.SyncPrometheusTempRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.SyncPrometheusTempResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SyncPrometheusTemp", params, headers=headers)
+            response = json.loads(body)
+            model = models.SyncPrometheusTempResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

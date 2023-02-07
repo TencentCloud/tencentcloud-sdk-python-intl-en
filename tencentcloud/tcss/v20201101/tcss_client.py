@@ -4216,7 +4216,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeK8sApiAbnormalRuleScopeList(self, request):
-        """This API is used to query the list of ranges in K8sApi abnormal rules.
+        """This API is used to query rules for K8s API exceptions.
 
         :param request: Request instance for DescribeK8sApiAbnormalRuleScopeList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeK8sApiAbnormalRuleScopeListRequest`

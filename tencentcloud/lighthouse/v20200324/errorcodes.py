@@ -29,6 +29,21 @@ FAILEDOPERATION_CREATEKEYPAIRFAILED = 'FailedOperation.CreateKeyPairFailed'
 # Failed to delete the key pair.
 FAILEDOPERATION_DELETEKEYPAIRFAILED = 'FailedOperation.DeleteKeyPairFailed'
 
+# 
+FAILEDOPERATION_DESCRIBEBLUEPRINTSFAILED = 'FailedOperation.DescribeBlueprintsFailed'
+
+# An error occurred when querying the instance status.
+FAILEDOPERATION_DESCRIBEINSTANCESTATUS = 'FailedOperation.DescribeInstanceStatus'
+
+# 
+FAILEDOPERATION_DESCRIBEINSTANCESMODIFICATIONERROR = 'FailedOperation.DescribeInstancesModificationError'
+
+# An error occurred when querying whether the instance is returnable.
+FAILEDOPERATION_DESCRIBEINSTANCESRETURNABLEERROR = 'FailedOperation.DescribeInstancesReturnableError'
+
+# Failed to query traffic packages.
+FAILEDOPERATION_DESCRIBEINSTANCESTRAFFICPACKAGESFAILED = 'FailedOperation.DescribeInstancesTrafficPackagesFailed'
+
 # Failed to manipulate the firewall rule.
 FAILEDOPERATION_FIREWALLRULESOPERATIONFAILED = 'FailedOperation.FirewallRulesOperationFailed'
 
@@ -38,8 +53,14 @@ FAILEDOPERATION_IMPORTKEYPAIRFAILED = 'FailedOperation.ImportKeyPairFailed'
 # Failed to manipulate the instance.
 FAILEDOPERATION_INSTANCEOPERATIONFAILED = 'FailedOperation.InstanceOperationFailed'
 
+# A request error occurred.
+FAILEDOPERATION_REQUESTERROR = 'FailedOperation.RequestError'
+
 # Failed to manipulate the snapshot.
 FAILEDOPERATION_SNAPSHOTOPERATIONFAILED = 'FailedOperation.SnapshotOperationFailed'
+
+# Failed to query the price.
+FAILEDOPERATION_TRADEGETPRICEFAILED = 'FailedOperation.TradeGetPriceFailed'
 
 # The operation failed. The custom image could not be created.
 FAILEDOPERATION_UNABLETOCREATEBLUEPRINT = 'FailedOperation.UnableToCreateBlueprint'
@@ -242,6 +263,18 @@ INVALIDPARAMETERVALUE_NOTALLOWTOCHANGEPLATFORMTYPE = 'InvalidParameterValue.NotA
 # Invalid parametric value: it is not within the valid range.
 INVALIDPARAMETERVALUE_OUTOFRANGE = 'InvalidParameterValue.OutOfRange'
 
+# 
+INVALIDPARAMETERVALUE_REGIONNOTFOUND = 'InvalidParameterValue.RegionNotFound'
+
+# 
+INVALIDPARAMETERVALUE_REGIONNOTMATCH = 'InvalidParameterValue.RegionNotMatch'
+
+# 
+INVALIDPARAMETERVALUE_REGIONNOTSUPPORTED = 'InvalidParameterValue.RegionNotSupported'
+
+# 
+INVALIDPARAMETERVALUE_REGIONUNAVAILABLE = 'InvalidParameterValue.RegionUnavailable'
+
 # Invalid parametric value: the snapshot ID format is invalid.
 INVALIDPARAMETERVALUE_SNAPSHOTIDMALFORMED = 'InvalidParameterValue.SnapshotIdMalformed'
 
@@ -334,6 +367,12 @@ RESOURCENOTFOUND_KEYIDNOTFOUND = 'ResourceNotFound.KeyIdNotFound'
 
 # The custom image does not exist.
 RESOURCENOTFOUND_PRIVATEBLUEPRINTNOTFOUND = 'ResourceNotFound.PrivateBlueprintNotFound'
+
+# The service role does not exist. Please add it to the account.
+RESOURCENOTFOUND_ROLENOTFOUND = 'ResourceNotFound.RoleNotFound'
+
+# 
+RESOURCENOTFOUND_SCENEIDNOTFOUND = 'ResourceNotFound.SceneIdNotFound'
 
 # The snapshot ID does not exist.
 RESOURCENOTFOUND_SNAPSHOTIDNOTFOUND = 'ResourceNotFound.SnapshotIdNotFound'

@@ -1224,6 +1224,10 @@ Note: if the name of the new CLB instance already exists, a default name will be
         :type Tags: list of TagInfo
         :param SecurityGroups: Security groups.
         :type SecurityGroups: list of str
+        :param AddressIPVersion: IP version. Valid values: `IPV4` (default), `IPv6FullChain` (IPv6 version). This parameter is only for public network CLB instances.
+        :type AddressIPVersion: str
+        :param SubnetId: Subnet ID. This parameter is required for IPv6 CLB instances.
+        :type SubnetId: str
         """
         self.EcmRegion = None
         self.LoadBalancerType = None
@@ -1234,6 +1238,8 @@ Note: if the name of the new CLB instance already exists, a default name will be
         self.InternetAccessible = None
         self.Tags = None
         self.SecurityGroups = None
+        self.AddressIPVersion = None
+        self.SubnetId = None
 
 
     def _deserialize(self, params):
@@ -1253,6 +1259,8 @@ Note: if the name of the new CLB instance already exists, a default name will be
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.SecurityGroups = params.get("SecurityGroups")
+        self.AddressIPVersion = params.get("AddressIPVersion")
+        self.SubnetId = params.get("SubnetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4060,11 +4068,18 @@ class DescribePriceRunInstanceRequest(AbstractModel):
         :type InstanceCount: int
         :param DataDisk: Data disk information
         :type DataDisk: list of DataDisk
+        :param InstanceChargeType: Instance billing type. Valid values:
+`0`: Bill by daily resource usage peak (CPU, memory, and disk). It applies only to non-GNR models;
+`1`: Bill by usage hours of an instance. It applies only to GNR models. It’s available to beta users now. To enable it, submit a ticket;
+`2`: Bill by usage month of an instance. It applies only to GNR models.
+If this field is left empty, `0` is selected by default for non-GNR models, and `2` is selected by default for GNR models.
+        :type InstanceChargeType: int
         """
         self.InstanceType = None
         self.SystemDisk = None
         self.InstanceCount = None
         self.DataDisk = None
+        self.InstanceChargeType = None
 
 
     def _deserialize(self, params):
@@ -4079,6 +4094,7 @@ class DescribePriceRunInstanceRequest(AbstractModel):
                 obj = DataDisk()
                 obj._deserialize(item)
                 self.DataDisk.append(obj)
+        self.InstanceChargeType = params.get("InstanceChargeType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6717,6 +6733,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param LoadBalancerPassToTarget: Whether the real server opens the traffic from ELB to the internet.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type LoadBalancerPassToTarget: bool
+        :param AddressIPv6: IPv6 address of a CLB instance
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type AddressIPv6: str
         """
         self.Region = None
         self.Position = None
@@ -6733,6 +6752,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.NetworkAttributes = None
         self.SecureGroups = None
         self.LoadBalancerPassToTarget = None
+        self.AddressIPv6 = None
 
 
     def _deserialize(self, params):
@@ -6760,6 +6780,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
             self.NetworkAttributes._deserialize(params.get("NetworkAttributes"))
         self.SecureGroups = params.get("SecureGroups")
         self.LoadBalancerPassToTarget = params.get("LoadBalancerPassToTarget")
+        self.AddressIPv6 = params.get("AddressIPv6")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

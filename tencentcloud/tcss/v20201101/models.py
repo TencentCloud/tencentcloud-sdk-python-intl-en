@@ -2743,7 +2743,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param VerifyInfo: Verification information of the check item
 Note: This field may return null, indicating that no valid values can be obtained.
         :type VerifyInfo: str
-        :param InstanceId: 
+        :param InstanceId: Instance ID
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type InstanceId: str
         """
         self.CustomerAssetId = None
@@ -2908,7 +2909,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 `RESULT_PASSED`: Passed.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CheckResult: str
-        :param InstanceId: 
+        :param InstanceId: Node instance ID
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type InstanceId: str
         """
         self.CustomerAssetId = None
@@ -24022,7 +24024,7 @@ class ModifyK8sApiAbnormalRuleStatusRequest(AbstractModel):
         r"""
         :param RuleID: Rule ID
         :type RuleID: str
-        :param Status: Status (true: Enable; false: Disable)
+        :param Status: Status of the rule. Values: `true` (Enabled), `false` (Disabled)
         :type Status: bool
         """
         self.RuleID = None

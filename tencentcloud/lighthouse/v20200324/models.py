@@ -4368,11 +4368,15 @@ class InstancePrice(AbstractModel):
         :type Discount: int
         :param DiscountPrice: Discounted price.
         :type DiscountPrice: float
+        :param Currency: Currency unit. Valid values: `CNY` and `USD`.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Currency: str
         """
         self.OriginalBundlePrice = None
         self.OriginalPrice = None
         self.Discount = None
         self.DiscountPrice = None
+        self.Currency = None
 
 
     def _deserialize(self, params):
@@ -4380,6 +4384,7 @@ class InstancePrice(AbstractModel):
         self.OriginalPrice = params.get("OriginalPrice")
         self.Discount = params.get("Discount")
         self.DiscountPrice = params.get("DiscountPrice")
+        self.Currency = params.get("Currency")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4402,7 +4407,8 @@ Note: This field may return `null`, indicating that no valid value was found.
         :param InstancePrice: Price query information.
 Note: This field may return `null`, indicating that no valid value was found.
         :type InstancePrice: :class:`tencentcloud.lighthouse.v20200324.models.InstancePrice`
-        :param DiscountDetail: 
+        :param DiscountDetail: Tiered-pricing details. The information of each tier includes the billable period, discount percentage, total price, discounted price, and discount details (`UserDiscount`, `CommonDiscount` and `FinalDiscount`).
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type DiscountDetail: list of DiscountDetail
         """
         self.InstanceId = None
@@ -5119,16 +5125,27 @@ class PolicyDetail(AbstractModel):
         :type CommonDiscount: int
         :param FinalDiscount: Final discount.
         :type FinalDiscount: int
+        :param ActivityDiscount: Activity discount. The value `null` indicates no discount.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ActivityDiscount: float
+        :param DiscountType: Discount type.
+Valid values: `user` (user discount), `common` (discount displayed on the official website), `activity` (activity discount), `null` (no discount).
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type DiscountType: str
         """
         self.UserDiscount = None
         self.CommonDiscount = None
         self.FinalDiscount = None
+        self.ActivityDiscount = None
+        self.DiscountType = None
 
 
     def _deserialize(self, params):
         self.UserDiscount = params.get("UserDiscount")
         self.CommonDiscount = params.get("CommonDiscount")
         self.FinalDiscount = params.get("FinalDiscount")
+        self.ActivityDiscount = params.get("ActivityDiscount")
+        self.DiscountType = params.get("DiscountType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
