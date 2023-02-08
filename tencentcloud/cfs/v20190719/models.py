@@ -887,12 +887,16 @@ class DeleteCfsSnapshotRequest(AbstractModel):
         r"""
         :param SnapshotId: File system snapshot ID
         :type SnapshotId: str
+        :param SnapshotIds: The list of the IDs of the file system snapshots to be deleted. At least one of `SnapshotId` and `SnapshotIds` must be specified.
+        :type SnapshotIds: list of str
         """
         self.SnapshotId = None
+        self.SnapshotIds = None
 
 
     def _deserialize(self, params):
         self.SnapshotId = params.get("SnapshotId")
+        self.SnapshotIds = params.get("SnapshotIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
