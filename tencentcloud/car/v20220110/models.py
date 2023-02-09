@@ -27,17 +27,20 @@ class ApplyConcurrentRequest(AbstractModel):
         r"""
         :param UserId: The user’s unique ID. Tencent Cloud does not parse the ID. You need to manage your own user IDs. Based on your needs, you can either define unique IDs for users or use timestamps to generate random IDs. Make sure the same ID is used when a user reconnects to your application.
         :type UserId: str
-        :param UserIp: The user’s IP address.
+        :param UserIp: Public IP of user’s application client, which is used for nearby scheduling.
         :type UserIp: str
         :param ProjectId: The project ID.
         :type ProjectId: str
         :param ApplicationVersionId: The application version ID.
         :type ApplicationVersionId: str
+        :param ApplicationId: Application ID, which is used only by the multi-application project to specify applications. For a single-application project, this parameter is ignored, and the application bound to the project will be used.
+        :type ApplicationId: str
         """
         self.UserId = None
         self.UserIp = None
         self.ProjectId = None
         self.ApplicationVersionId = None
+        self.ApplicationId = None
 
 
     def _deserialize(self, params):
@@ -45,6 +48,7 @@ class ApplyConcurrentRequest(AbstractModel):
         self.UserIp = params.get("UserIp")
         self.ProjectId = params.get("ProjectId")
         self.ApplicationVersionId = params.get("ApplicationVersionId")
+        self.ApplicationId = params.get("ApplicationId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -80,7 +84,7 @@ class CreateSessionRequest(AbstractModel):
         r"""
         :param UserId: The user’s unique ID. Tencent Cloud does not parse the ID. You need to manage your own user IDs. Based on your needs, you can either define unique IDs for users or use timestamps to generate random IDs. Make sure the same ID is used when a user reconnects to your application.
         :type UserId: str
-        :param UserIp: The user’s IP address.
+        :param UserIp: Public IP of user’s application client, which is used for nearby scheduling.
         :type UserIp: str
         :param ClientSession: The client-side session data, which is obtained from the SDK.
         :type ClientSession: str
