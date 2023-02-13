@@ -578,6 +578,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeFlow(self, request):
+        """This API is used to query task flow information.
+
+        :param request: Request instance for DescribeFlow.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeFlowRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeFlowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFlow", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFlowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeInstanceDetail(self, request):
         """This API is used to query instance details.
 
@@ -1282,6 +1305,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("ResetAccountPassword", params, headers=headers)
             response = json.loads(body)
             model = models.ResetAccountPasswordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RestartInstance(self, request):
+        """This API is used to restart an instance.
+
+        :param request: Request instance for RestartInstance.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.RestartInstanceRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.RestartInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RestartInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.RestartInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

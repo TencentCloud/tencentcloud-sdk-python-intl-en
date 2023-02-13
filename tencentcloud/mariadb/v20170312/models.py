@@ -1635,6 +1635,59 @@ class DescribeAccountsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDBEncryptAttributesRequest(AbstractModel):
+    """DescribeDBEncryptAttributes request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of `tdsql-ow728lmc`
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBEncryptAttributesResponse(AbstractModel):
+    """DescribeDBEncryptAttributes response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EncryptStatus: Whether encryption is enabled. Valid values: `1` (enabled), `2` (disabled).
+        :type EncryptStatus: int
+        :param CipherText: DEK key
+        :type CipherText: str
+        :param ExpireDate: DEK key expiration date
+        :type ExpireDate: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.EncryptStatus = None
+        self.CipherText = None
+        self.ExpireDate = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.EncryptStatus = params.get("EncryptStatus")
+        self.CipherText = params.get("CipherText")
+        self.ExpireDate = params.get("ExpireDate")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDBInstancesRequest(AbstractModel):
     """DescribeDBInstances request structure.
 

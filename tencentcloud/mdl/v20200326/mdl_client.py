@@ -693,6 +693,29 @@ class MdlClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def QueryInputStreamState(self, request):
+        """This API is used to query the stream status of a StreamLive input.
+
+        :param request: Request instance for QueryInputStreamState.
+        :type request: :class:`tencentcloud.mdl.v20200326.models.QueryInputStreamStateRequest`
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.QueryInputStreamStateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryInputStreamState", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryInputStreamStateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def StartStreamLiveChannel(self, request):
         """This API is used to start a StreamLive channel.
 

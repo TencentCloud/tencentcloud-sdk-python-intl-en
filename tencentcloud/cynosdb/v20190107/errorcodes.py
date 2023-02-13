@@ -32,6 +32,9 @@ FAILEDOPERATION_DATABASEACCESSERROR = 'FailedOperation.DatabaseAccessError'
 # Failed to create a task. Try again later. If the problem persists, contact customer service.
 FAILEDOPERATION_FLOWCREATEERROR = 'FailedOperation.FlowCreateError'
 
+# The task flow does not exist.
+FAILEDOPERATION_FLOWNOTFOUNDERROR = 'FailedOperation.FlowNotFoundError'
+
 # Failed to query the backup policy. Please try again later. If the problem persists, please contact customer service.
 FAILEDOPERATION_GETBACKUPSTRATEGYERROR = 'FailedOperation.GetBackupStrategyError'
 
@@ -176,10 +179,13 @@ INVALIDPARAMETERVALUE_SUBNETNOTFOUND = 'InvalidParameterValue.SubnetNotFound'
 # The selected VPC could not be found.
 INVALIDPARAMETERVALUE_VPCNOTFOUND = 'InvalidParameterValue.VpcNotFound'
 
+# The node count in the cluster exceeds the maximum limit.
+LIMITEXCEEDED_CLUSTERINSTANCELIMIT = 'LimitExceeded.ClusterInstanceLimit'
+
 # The number of instances exceeds the limit.
 LIMITEXCEEDED_USERINSTANCELIMIT = 'LimitExceeded.UserInstanceLimit'
 
-# 
+# Failed to verify permissions
 OPERATIONDENIED_CAMDENIEDERROR = 'OperationDenied.CamDeniedError'
 
 # The current cluster does not allow the operation.

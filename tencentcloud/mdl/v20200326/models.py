@@ -54,6 +54,16 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
         :type RateControlMode: str
         :param WatermarkId: Watermark ID
         :type WatermarkId: str
+        :param SmartSubtitles: Whether to convert audio to text. `0` (default): No; `1`: Yes.
+        :type SmartSubtitles: int
+        :param SubtitleConfiguration: The subtitle settings. Currently, the following subtitles are supported:
+`eng2eng`: English speech to English text.
+`eng2chs`: English speech to Chinese text. 
+`eng2chseng`: English speech to English and Chinese text. 
+`chs2chs`: Chinese speech to Chinese text.   
+`chs2eng`: Chinese speech to English text. 
+`chs2chseng`: Chinese speech to Chinese and English text.
+        :type SubtitleConfiguration: str
         """
         self.Name = None
         self.NeedVideo = None
@@ -69,6 +79,8 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
         self.VideoBitrate = None
         self.RateControlMode = None
         self.WatermarkId = None
+        self.SmartSubtitles = None
+        self.SubtitleConfiguration = None
 
 
     def _deserialize(self, params):
@@ -86,6 +98,8 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
         self.VideoBitrate = params.get("VideoBitrate")
         self.RateControlMode = params.get("RateControlMode")
         self.WatermarkId = params.get("WatermarkId")
+        self.SmartSubtitles = params.get("SmartSubtitles")
+        self.SubtitleConfiguration = params.get("SubtitleConfiguration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -476,6 +490,8 @@ class CreateStreamLiveChannelRequest(AbstractModel):
         :type AVTemplates: list of AVTemplate
         :param PlanSettings: Event settings
         :type PlanSettings: :class:`tencentcloud.mdl.v20200326.models.PlanSettings`
+        :param EventNotifySettings: The callback settings.
+        :type EventNotifySettings: :class:`tencentcloud.mdl.v20200326.models.EventNotifySetting`
         """
         self.Name = None
         self.AttachedInputs = None
@@ -484,6 +500,7 @@ class CreateStreamLiveChannelRequest(AbstractModel):
         self.VideoTemplates = None
         self.AVTemplates = None
         self.PlanSettings = None
+        self.EventNotifySettings = None
 
 
     def _deserialize(self, params):
@@ -521,6 +538,9 @@ class CreateStreamLiveChannelRequest(AbstractModel):
         if params.get("PlanSettings") is not None:
             self.PlanSettings = PlanSettings()
             self.PlanSettings._deserialize(params.get("PlanSettings"))
+        if params.get("EventNotifySettings") is not None:
+            self.EventNotifySettings = EventNotifySetting()
+            self.EventNotifySettings._deserialize(params.get("EventNotifySettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -829,16 +849,20 @@ class DashRemuxSettingsInfo(AbstractModel):
         :type SegmentNumber: int
         :param PeriodTriggers: Whether to enable multi-period. Valid values: CLOSE/OPEN. Default value: CLOSE.
         :type PeriodTriggers: str
+        :param H265PackageType: The HLS package type when the H.265 codec is used. Valid values: `hvc1`, `hev1` (default).
+        :type H265PackageType: str
         """
         self.SegmentDuration = None
         self.SegmentNumber = None
         self.PeriodTriggers = None
+        self.H265PackageType = None
 
 
     def _deserialize(self, params):
         self.SegmentDuration = params.get("SegmentDuration")
         self.SegmentNumber = params.get("SegmentNumber")
         self.PeriodTriggers = params.get("PeriodTriggers")
+        self.H265PackageType = params.get("H265PackageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2037,11 +2061,15 @@ https://tools.ietf.org/html/rfc3826
 Note: uppercase letters in the string will be automatically converted to lowercase ones.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Iv: str
+        :param KeyUri: The URI of the license server when AES-128 is used. This parameter may be empty.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type KeyUri: str
         """
         self.Key = None
         self.Track = None
         self.KeyId = None
         self.Iv = None
+        self.KeyUri = None
 
 
     def _deserialize(self, params):
@@ -2049,6 +2077,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.Track = params.get("Track")
         self.KeyId = params.get("KeyId")
         self.Iv = params.get("Iv")
+        self.KeyUri = params.get("KeyUri")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2081,12 +2110,16 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param SDMCSettings: SDMC key configuration. This parameter is used when `Scheme` is set to `SDMCDRM`.
 Note: This field may return `null`, indicating that no valid value was found.
         :type SDMCSettings: :class:`tencentcloud.mdl.v20200326.models.SDMCSettingsInfo`
+        :param DrmType: The DRM type. Valid values: `FAIRPLAY`, `WIDEVINE`, `AES128`. For HLS, this can be `FAIRPLAY` or `AES128`. For DASH, this can only be `WIDEVINE`.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type DrmType: str
         """
         self.State = None
         self.Scheme = None
         self.ContentId = None
         self.Keys = None
         self.SDMCSettings = None
+        self.DrmType = None
 
 
     def _deserialize(self, params):
@@ -2102,6 +2135,33 @@ Note: This field may return `null`, indicating that no valid value was found.
         if params.get("SDMCSettings") is not None:
             self.SDMCSettings = SDMCSettingsInfo()
             self.SDMCSettings._deserialize(params.get("SDMCSettings"))
+        self.DrmType = params.get("DrmType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EventNotifySetting(AbstractModel):
+    """The callback settings.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PushEventSettings: The callback configuration for push events.
+        :type PushEventSettings: :class:`tencentcloud.mdl.v20200326.models.PushEventSetting`
+        """
+        self.PushEventSettings = None
+
+
+    def _deserialize(self, params):
+        if params.get("PushEventSettings") is not None:
+            self.PushEventSettings = PushEventSetting()
+            self.PushEventSettings._deserialize(params.get("PushEventSettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2299,12 +2359,19 @@ class HlsRemuxSettingsInfo(AbstractModel):
         :type PdtDuration: int
         :param Scheme: Audio/Video packaging scheme. Valid values: `SEPARATE`, `MERGE`
         :type Scheme: str
+        :param SegmentType: The segment type. Valid values: `ts` (default), `fmp4`.
+Currently, fMP4 segments do not support DRM or time shifting.
+        :type SegmentType: str
+        :param H265PackageType: The HLS package type when the H.265 codec is used. Valid values: `hvc1`, `hev1` (default).
+        :type H265PackageType: str
         """
         self.SegmentDuration = None
         self.SegmentNumber = None
         self.PdtInsertion = None
         self.PdtDuration = None
         self.Scheme = None
+        self.SegmentType = None
+        self.H265PackageType = None
 
 
     def _deserialize(self, params):
@@ -2313,6 +2380,8 @@ class HlsRemuxSettingsInfo(AbstractModel):
         self.PdtInsertion = params.get("PdtInsertion")
         self.PdtDuration = params.get("PdtDuration")
         self.Scheme = params.get("Scheme")
+        self.SegmentType = params.get("SegmentType")
+        self.H265PackageType = params.get("H265PackageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2418,7 +2487,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class InputSettingInfo(AbstractModel):
-    """Input settings information.
+    """The input settings.
+    The format of an RTMP_PUSH address is ${InputAddress}/${AppName}/${StreamName}.
+    The format of an SRT_PUSH address is ${InputAddress}?streamid=${StreamName},h=${InputDomain}.
 
     """
 
@@ -2444,6 +2515,15 @@ Value range: 0 (default) or 10000-600000
 The value must be a multiple of 1,000.
 Note: This field may return `null`, indicating that no valid value was found.
         :type DelayTime: int
+        :param InputDomain: The domain of an SRT_PUSH address. If this is a request parameter, you don’t need to specify it.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type InputDomain: str
+        :param UserName: The username, which is used for authentication.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type UserName: str
+        :param Password: The password, which is used for authentication.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type Password: str
         """
         self.AppName = None
         self.StreamName = None
@@ -2451,6 +2531,9 @@ Note: This field may return `null`, indicating that no valid value was found.
         self.InputAddress = None
         self.SourceType = None
         self.DelayTime = None
+        self.InputDomain = None
+        self.UserName = None
+        self.Password = None
 
 
     def _deserialize(self, params):
@@ -2460,6 +2543,9 @@ Note: This field may return `null`, indicating that no valid value was found.
         self.InputAddress = params.get("InputAddress")
         self.SourceType = params.get("SourceType")
         self.DelayTime = params.get("DelayTime")
+        self.InputDomain = params.get("InputDomain")
+        self.UserName = params.get("UserName")
+        self.Password = params.get("Password")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2498,6 +2584,42 @@ class InputStatistics(AbstractModel):
                 obj = PipelineInputStatistics()
                 obj._deserialize(item)
                 self.Pipeline1.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InputStreamInfo(AbstractModel):
+    """The input stream information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InputAddress: The input stream address.
+        :type InputAddress: str
+        :param AppName: The input stream path.
+        :type AppName: str
+        :param StreamName: The input stream name.
+        :type StreamName: str
+        :param Status: The input stream status. `1` indicates the stream is active.
+        :type Status: int
+        """
+        self.InputAddress = None
+        self.AppName = None
+        self.StreamName = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.InputAddress = params.get("InputAddress")
+        self.AppName = params.get("AppName")
+        self.StreamName = params.get("StreamName")
+        self.Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2592,6 +2714,8 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
         :type AVTemplates: list of AVTemplate
         :param PlanSettings: Event settings
         :type PlanSettings: :class:`tencentcloud.mdl.v20200326.models.PlanSettings`
+        :param EventNotifySettings: The callback settings.
+        :type EventNotifySettings: :class:`tencentcloud.mdl.v20200326.models.EventNotifySetting`
         """
         self.Id = None
         self.Name = None
@@ -2601,6 +2725,7 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
         self.VideoTemplates = None
         self.AVTemplates = None
         self.PlanSettings = None
+        self.EventNotifySettings = None
 
 
     def _deserialize(self, params):
@@ -2639,6 +2764,9 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
         if params.get("PlanSettings") is not None:
             self.PlanSettings = PlanSettings()
             self.PlanSettings._deserialize(params.get("PlanSettings"))
+        if params.get("EventNotifySettings") is not None:
+            self.EventNotifySettings = EventNotifySetting()
+            self.EventNotifySettings._deserialize(params.get("EventNotifySettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3134,6 +3262,122 @@ Note: This field may return `null`, indicating that no valid value was found.
         
 
 
+class PushEventSetting(AbstractModel):
+    """The callback configuration for push events.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NotifyUrl: The callback URL (required).
+        :type NotifyUrl: str
+        :param NotifyKey: The callback key (optional).
+        :type NotifyKey: str
+        """
+        self.NotifyUrl = None
+        self.NotifyKey = None
+
+
+    def _deserialize(self, params):
+        self.NotifyUrl = params.get("NotifyUrl")
+        self.NotifyKey = params.get("NotifyKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryDispatchInputInfo(AbstractModel):
+    """The stream status of the queried input.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InputID: The input ID.
+        :type InputID: str
+        :param InputName: The input name.
+        :type InputName: str
+        :param Protocol: The input protocol.
+        :type Protocol: str
+        :param InputStreamInfoList: The stream status of the input.
+        :type InputStreamInfoList: list of InputStreamInfo
+        """
+        self.InputID = None
+        self.InputName = None
+        self.Protocol = None
+        self.InputStreamInfoList = None
+
+
+    def _deserialize(self, params):
+        self.InputID = params.get("InputID")
+        self.InputName = params.get("InputName")
+        self.Protocol = params.get("Protocol")
+        if params.get("InputStreamInfoList") is not None:
+            self.InputStreamInfoList = []
+            for item in params.get("InputStreamInfoList"):
+                obj = InputStreamInfo()
+                obj._deserialize(item)
+                self.InputStreamInfoList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryInputStreamStateRequest(AbstractModel):
+    """QueryInputStreamState request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: The StreamLive input ID.
+        :type Id: str
+        """
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryInputStreamStateResponse(AbstractModel):
+    """QueryInputStreamState response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Info: The information of the StreamLive input queried.
+        :type Info: :class:`tencentcloud.mdl.v20200326.models.QueryDispatchInputInfo`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Info = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self.Info = QueryDispatchInputInfo()
+            self.Info._deserialize(params.get("Info"))
+        self.RequestId = params.get("RequestId")
+
+
 class RegionInfo(AbstractModel):
     """Region information
 
@@ -3440,6 +3684,9 @@ Note: this field may return `null`, indicating that no valid value was found.
         :param PlanSettings: Event settings
 Note: This field may return `null`, indicating that no valid value was found.
         :type PlanSettings: :class:`tencentcloud.mdl.v20200326.models.PlanSettings`
+        :param EventNotifySettings: The callback settings.
+Note: This field may return `null`, indicating that no valid value was found.
+        :type EventNotifySettings: :class:`tencentcloud.mdl.v20200326.models.EventNotifySetting`
         """
         self.Id = None
         self.State = None
@@ -3450,6 +3697,7 @@ Note: This field may return `null`, indicating that no valid value was found.
         self.VideoTemplates = None
         self.AVTemplates = None
         self.PlanSettings = None
+        self.EventNotifySettings = None
 
 
     def _deserialize(self, params):
@@ -3489,6 +3737,9 @@ Note: This field may return `null`, indicating that no valid value was found.
         if params.get("PlanSettings") is not None:
             self.PlanSettings = PlanSettings()
             self.PlanSettings._deserialize(params.get("PlanSettings"))
+        if params.get("EventNotifySettings") is not None:
+            self.EventNotifySettings = EventNotifySetting()
+            self.EventNotifySettings._deserialize(params.get("EventNotifySettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

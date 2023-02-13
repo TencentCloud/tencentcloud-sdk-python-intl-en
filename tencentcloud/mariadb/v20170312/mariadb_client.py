@@ -281,6 +281,29 @@ class MariadbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDBEncryptAttributes(self, request):
+        """This API is used to query the encryption status of the instance data.
+
+        :param request: Request instance for DescribeDBEncryptAttributes.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.DescribeDBEncryptAttributesRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.DescribeDBEncryptAttributesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBEncryptAttributes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBEncryptAttributesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDBInstances(self, request):
         """This API is used to query the TencentDB instance list. It supports filtering instances by project ID, instance ID, private address, and instance name.
         If no filter is specified, 20 instances will be returned by default. Up to 100 instances can be returned for a single request.
