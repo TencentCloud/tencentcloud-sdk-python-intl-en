@@ -343,6 +343,8 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
         :type EnableHybridStorage: bool
         :param DiskEnhance: Whether to enable enhanced SSD
         :type DiskEnhance: int
+        :param EnableDiagnose: Whether to enable smart inspection.
+        :type EnableDiagnose: bool
         """
         self.Zone = None
         self.EsVersion = None
@@ -377,6 +379,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
         self.OperationDuration = None
         self.EnableHybridStorage = None
         self.DiskEnhance = None
+        self.EnableDiagnose = None
 
 
     def _deserialize(self, params):
@@ -432,6 +435,7 @@ Dedicated primary node disk size in GB, which is optional. If passed in, it can 
             self.OperationDuration._deserialize(params.get("OperationDuration"))
         self.EnableHybridStorage = params.get("EnableHybridStorage")
         self.DiskEnhance = params.get("DiskEnhance")
+        self.EnableDiagnose = params.get("EnableDiagnose")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
