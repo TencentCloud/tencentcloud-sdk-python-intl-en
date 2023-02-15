@@ -1185,3 +1185,26 @@ class DcdbClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpgradeHourDCDBInstance(self, request):
+        """This API is used to upgrade a pay-as-you-go TDSQL for MySQL instance.
+
+        :param request: Request instance for UpgradeHourDCDBInstance.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.UpgradeHourDCDBInstanceRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.UpgradeHourDCDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpgradeHourDCDBInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpgradeHourDCDBInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

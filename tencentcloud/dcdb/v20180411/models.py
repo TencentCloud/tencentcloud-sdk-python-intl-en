@@ -95,6 +95,38 @@ class ActiveHourDCDBInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AddShardConfig(AbstractModel):
+    """Instance upgrade -- Adding shard
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ShardCount: The number of shards to be added
+        :type ShardCount: int
+        :param ShardMemory: Shard memory capacity in GB
+        :type ShardMemory: int
+        :param ShardStorage: Shard storage capacity in GB
+        :type ShardStorage: int
+        """
+        self.ShardCount = None
+        self.ShardMemory = None
+        self.ShardStorage = None
+
+
+    def _deserialize(self, params):
+        self.ShardCount = params.get("ShardCount")
+        self.ShardMemory = params.get("ShardMemory")
+        self.ShardStorage = params.get("ShardStorage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AssociateSecurityGroupsRequest(AbstractModel):
     """AssociateSecurityGroups request structure.
 
@@ -3107,6 +3139,42 @@ class DisassociateSecurityGroupsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ExpandShardConfig(AbstractModel):
+    """Instance upgrade -- Expanding shard
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ShardInstanceIds: Shard IDs in array
+        :type ShardInstanceIds: list of str
+        :param ShardMemory: Shard memory capacity in GB
+        :type ShardMemory: int
+        :param ShardStorage: Shard storage capacity in GB
+        :type ShardStorage: int
+        :param ShardNodeCount: Number of shard nodes
+        :type ShardNodeCount: int
+        """
+        self.ShardInstanceIds = None
+        self.ShardMemory = None
+        self.ShardStorage = None
+        self.ShardNodeCount = None
+
+
+    def _deserialize(self, params):
+        self.ShardInstanceIds = params.get("ShardInstanceIds")
+        self.ShardMemory = params.get("ShardMemory")
+        self.ShardStorage = params.get("ShardStorage")
+        self.ShardNodeCount = params.get("ShardNodeCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GrantAccountPrivilegesRequest(AbstractModel):
     """GrantAccountPrivileges request structure.
 
@@ -4446,6 +4514,42 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class SplitShardConfig(AbstractModel):
+    """Instance upgrade -- Sharding
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ShardInstanceIds: Shard IDs in array
+        :type ShardInstanceIds: list of str
+        :param SplitRate: Data split ratio at 50% (fixed)
+        :type SplitRate: int
+        :param ShardMemory: Shard memory capacity in GB
+        :type ShardMemory: int
+        :param ShardStorage: Shard storage capacity in GB
+        :type ShardStorage: int
+        """
+        self.ShardInstanceIds = None
+        self.SplitRate = None
+        self.ShardMemory = None
+        self.ShardStorage = None
+
+
+    def _deserialize(self, params):
+        self.ShardInstanceIds = params.get("ShardInstanceIds")
+        self.SplitRate = params.get("SplitRate")
+        self.ShardMemory = params.get("ShardMemory")
+        self.ShardStorage = params.get("ShardStorage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SwitchDBInstanceHARequest(AbstractModel):
     """SwitchDBInstanceHA request structure.
 
@@ -4597,6 +4701,88 @@ class TerminateDedicatedDBInstanceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class UpgradeHourDCDBInstanceRequest(AbstractModel):
+    """UpgradeHourDCDBInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID to be upgraded in the format of dcdbt-ow728lmc, which can be obtained through the `DescribeDCDBInstances` API.
+        :type InstanceId: str
+        :param UpgradeType: Upgrade type. Valid values: 
+<li> `ADD`: Add a new shard </li> 
+ <li> `EXPAND`: Upgrade the existing shads</li> 
+ <li> `SPLIT`: Split data of the existing shads to the new ones</li>
+        :type UpgradeType: str
+        :param AddShardConfig: Add shards when `UpgradeType` is `ADD`.
+        :type AddShardConfig: :class:`tencentcloud.dcdb.v20180411.models.AddShardConfig`
+        :param ExpandShardConfig: Expand shard when `UpgradeType` is `EXPAND`.
+        :type ExpandShardConfig: :class:`tencentcloud.dcdb.v20180411.models.ExpandShardConfig`
+        :param SplitShardConfig: Split shard when `UpgradeType` is `SPLIT`.
+        :type SplitShardConfig: :class:`tencentcloud.dcdb.v20180411.models.SplitShardConfig`
+        :param SwitchStartTime: Switch start time in the format of "2019-12-12 07:00:00", which is no less than one hour and within 3 days from the current time.
+        :type SwitchStartTime: str
+        :param SwitchEndTime: Switch end time in the format of "2019-12-12 07:15:00", which must be later than the start time.
+        :type SwitchEndTime: str
+        :param SwitchAutoRetry: Whether to retry automatically. Valid values: `0` (no), `1` (yes).
+        :type SwitchAutoRetry: int
+        :param Zones: The list of new AZs specified in deployment modification. The first one is the source AZ, and the rest are replica AZs.
+        :type Zones: list of str
+        """
+        self.InstanceId = None
+        self.UpgradeType = None
+        self.AddShardConfig = None
+        self.ExpandShardConfig = None
+        self.SplitShardConfig = None
+        self.SwitchStartTime = None
+        self.SwitchEndTime = None
+        self.SwitchAutoRetry = None
+        self.Zones = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.UpgradeType = params.get("UpgradeType")
+        if params.get("AddShardConfig") is not None:
+            self.AddShardConfig = AddShardConfig()
+            self.AddShardConfig._deserialize(params.get("AddShardConfig"))
+        if params.get("ExpandShardConfig") is not None:
+            self.ExpandShardConfig = ExpandShardConfig()
+            self.ExpandShardConfig._deserialize(params.get("ExpandShardConfig"))
+        if params.get("SplitShardConfig") is not None:
+            self.SplitShardConfig = SplitShardConfig()
+            self.SplitShardConfig._deserialize(params.get("SplitShardConfig"))
+        self.SwitchStartTime = params.get("SwitchStartTime")
+        self.SwitchEndTime = params.get("SwitchEndTime")
+        self.SwitchAutoRetry = params.get("SwitchAutoRetry")
+        self.Zones = params.get("Zones")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpgradeHourDCDBInstanceResponse(AbstractModel):
+    """UpgradeHourDCDBInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
