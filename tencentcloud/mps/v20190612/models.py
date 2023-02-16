@@ -871,12 +871,18 @@ class AiAnalysisTaskInput(AbstractModel):
         r"""
         :param Definition: Video content analysis template ID.
         :type Definition: int
+        :param ExtendedParameter: An extended parameter, whose value is a stringfied JSON.
+Note: This parameter is for customers with special requirements. It needs to be customized offline.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExtendedParameter: str
         """
         self.Definition = None
+        self.ExtendedParameter = None
 
 
     def _deserialize(self, params):
         self.Definition = params.get("Definition")
+        self.ExtendedParameter = params.get("ExtendedParameter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

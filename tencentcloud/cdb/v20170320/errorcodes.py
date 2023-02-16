@@ -71,6 +71,9 @@ FAILEDOPERATION_JSONUNMARSHALERROR = 'FailedOperation.JsonUnmarshalError'
 # It is not a read-only instance with delayed replication enabled.
 FAILEDOPERATION_NOTDELAYRO = 'FailedOperation.NotDelayRo'
 
+# The instance has an operation in progress. Try again later.
+FAILEDOPERATION_OPERATIONINCONFLICTERR = 'FailedOperation.OperationInConflictErr'
+
 # The executed operation to modify permissions is invalid. You can refer to product documentation for more information about permissions that can be modified for this instance. If you have any questions, please contact customer service.
 FAILEDOPERATION_PRIVILEGEDATAILLEGAL = 'FailedOperation.PrivilegeDataIllegal'
 

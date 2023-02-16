@@ -2397,7 +2397,7 @@ class DescribeInstancesDetailRequest(AbstractModel):
         r"""
         :param InstanceId: (Filter) filter by instance ID
         :type InstanceId: str
-        :param SearchWord: (Filter) filter by instance name. Fuzzy search is supported
+        :param SearchWord: Filter by instance name, instance ID, AZ, VPC ID, or subnet ID. Fuzzy query is supported.
         :type SearchWord: str
         :param Status: (Filter) instance status. 0: creating, 1: running, 2: deleting. If this parameter is left empty, all instances will be returned by default
         :type Status: list of int
@@ -3574,9 +3574,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param GroupList: GroupList
 Note: this field may return null, indicating that no valid values can be obtained.
         :type GroupList: list of DescribeGroup
+        :param GroupCountQuota: Consumer group quota
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type GroupCountQuota: int
         """
         self.TotalCount = None
         self.GroupList = None
+        self.GroupCountQuota = None
 
 
     def _deserialize(self, params):
@@ -3587,6 +3591,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj = DescribeGroup()
                 obj._deserialize(item)
                 self.GroupList.append(obj)
+        self.GroupCountQuota = params.get("GroupCountQuota")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

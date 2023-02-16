@@ -2043,7 +2043,7 @@ class CreateDBInstanceRequest(AbstractModel):
         :type UniqVpcId: str
         :param UniqSubnetId: VPC subnet ID. If `UniqVpcId` is set, then `UniqSubnetId` will be required. You can use the [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) API to query the subnet lists.
         :type UniqSubnetId: str
-        :param ProjectId: Project ID. If this is left empty, the default project will be used. If read-only instances or disaster recovery instances are purchased, the project ID will be the same as the source instance ID by default.
+        :param ProjectId: Project ID. If this parameter is left empty, the default project will be used. When you purchase read-only instances and disaster recovery instances, the project ID is the same as that of the source instance by default.
         :type ProjectId: int
         :param Port: Custom port. Value range: 1024-65535.
         :type Port: int
@@ -3720,6 +3720,83 @@ class DescribeCloneListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDBFeaturesRequest(AbstractModel):
+    """DescribeDBFeatures request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBFeaturesResponse(AbstractModel):
+    """DescribeDBFeatures response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IsSupportAudit: Whether database audit is supported
+        :type IsSupportAudit: bool
+        :param AuditNeedUpgrade: Whether enabling audit requires a kernel version upgrade
+        :type AuditNeedUpgrade: bool
+        :param IsSupportEncryption: Whether database encryption is supported
+        :type IsSupportEncryption: bool
+        :param EncryptionNeedUpgrade: Whether enabling encryption requires a kernel version upgrade
+        :type EncryptionNeedUpgrade: bool
+        :param IsRemoteRo: Whether the instance is a remote read-only instance
+        :type IsRemoteRo: bool
+        :param MasterRegion: Region of the source instance
+        :type MasterRegion: str
+        :param IsSupportUpdateSubVersion: Whether minor version upgrade is supported
+        :type IsSupportUpdateSubVersion: bool
+        :param CurrentSubVersion: The current kernel version
+        :type CurrentSubVersion: str
+        :param TargetSubVersion: Available kernel version for upgrade
+        :type TargetSubVersion: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.IsSupportAudit = None
+        self.AuditNeedUpgrade = None
+        self.IsSupportEncryption = None
+        self.EncryptionNeedUpgrade = None
+        self.IsRemoteRo = None
+        self.MasterRegion = None
+        self.IsSupportUpdateSubVersion = None
+        self.CurrentSubVersion = None
+        self.TargetSubVersion = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.IsSupportAudit = params.get("IsSupportAudit")
+        self.AuditNeedUpgrade = params.get("AuditNeedUpgrade")
+        self.IsSupportEncryption = params.get("IsSupportEncryption")
+        self.EncryptionNeedUpgrade = params.get("EncryptionNeedUpgrade")
+        self.IsRemoteRo = params.get("IsRemoteRo")
+        self.MasterRegion = params.get("MasterRegion")
+        self.IsSupportUpdateSubVersion = params.get("IsSupportUpdateSubVersion")
+        self.CurrentSubVersion = params.get("CurrentSubVersion")
+        self.TargetSubVersion = params.get("TargetSubVersion")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDBImportRecordsRequest(AbstractModel):
     """DescribeDBImportRecords request structure.
 
@@ -4086,7 +4163,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type InstanceTypes: list of int non-negative
         :param Vips: Private IP address of the instance.
         :type Vips: list of str
-        :param Status: Instance status. Value range: <br>0 - creating <br>1 - running <br>4 - isolating <br>5 - isolated (the instance can be restored and started in the recycle bin)
+        :param Status: Instance status. Valid values: <br>`0` (creating) <br>`1` (running) <br>`4` (isolating) <br>`5` (isolated; the instance can be restored and started in the recycle bin)
         :type Status: list of int non-negative
         :param Offset: Offset. Default value: 0.
         :type Offset: int
@@ -6702,7 +6779,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type RoVipInfo: :class:`tencentcloud.cdb.v20170320.models.RoVipInfo`
         :param Memory: Memory capacity in MB
         :type Memory: int
-        :param Status: Instance status. Value range: 0 (creating), 1 (running), 4 (isolating), 5 (isolated)
+        :param Status: Instance status. Valid values: `0` (creating), `1` (running), `4` (isolating), `5` (isolated).
         :type Status: int
         :param VpcId: VPC ID, such as 51102
         :type VpcId: int
@@ -11513,7 +11590,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
         :type DeviceType: str
         :param Cpu: The number of CPU cores after the instance is upgraded. If this parameter is left empty, the number of CPU cores will be automatically filled in according to the `Memory` value.
         :type Cpu: int
-        :param FastUpgrade: Whether to enable QuickChange. Valid values: `0` (no), `1` (yes). After QuickChange is enabled, the required resources will be checked. QuickChange is performed only when the required resources support the feature; otherwise, an error message will be returned.
+        :param FastUpgrade: Whether to enable QuickChange. Valid values: `0` (no), `1` (yes), `2` (QuickChange preferred). After QuickChange is enabled, the required resources will be checked. QuickChange is performed only when the required resources support the feature; otherwise, an error message will be returned.
         :type FastUpgrade: int
         :param MaxDelayTime: Delay threshold. Value range: 1-10. Default value: `10`.
         :type MaxDelayTime: int
