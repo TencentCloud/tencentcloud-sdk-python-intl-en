@@ -246,6 +246,15 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         :param InstanceVersion: Edition of the instance
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type InstanceVersion: int
+        :param ConvoyId: Convoy instance ID
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type ConvoyId: str
+        :param ElasticBandwidth: Pay-as-you-go bandwidth
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type ElasticBandwidth: int
+        :param EOFlag: Whether it’s the IP broadcasted by EdgeOne. Values: `1` (yes), `0` (no)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EOFlag: int
         """
         self.InstanceDetail = None
         self.SpecificationLimit = None
@@ -270,6 +279,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self.TagInfoList = None
         self.AnycastOutPackRelation = None
         self.InstanceVersion = None
+        self.ConvoyId = None
+        self.ElasticBandwidth = None
+        self.EOFlag = None
 
 
     def _deserialize(self, params):
@@ -319,6 +331,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
             self.AnycastOutPackRelation = AnycastOutPackRelation()
             self.AnycastOutPackRelation._deserialize(params.get("AnycastOutPackRelation"))
         self.InstanceVersion = params.get("InstanceVersion")
+        self.ConvoyId = params.get("ConvoyId")
+        self.ElasticBandwidth = params.get("ElasticBandwidth")
+        self.EOFlag = params.get("EOFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -468,6 +483,11 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         :type IpCountNewFlag: int
         :param VitalityVersion: The version of attack defense package
         :type VitalityVersion: int
+        :param Line: Network line
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Line: int
+        :param ElasticServiceBandwidth: Whether to enable elastic bandwidth
+        :type ElasticServiceBandwidth: int
         """
         self.InstanceDetail = None
         self.SpecificationLimit = None
@@ -485,6 +505,8 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self.TagInfoList = None
         self.IpCountNewFlag = None
         self.VitalityVersion = None
+        self.Line = None
+        self.ElasticServiceBandwidth = None
 
 
     def _deserialize(self, params):
@@ -524,6 +546,8 @@ Note: This field may return `null`, indicating that no valid value can be obtain
                 self.TagInfoList.append(obj)
         self.IpCountNewFlag = params.get("IpCountNewFlag")
         self.VitalityVersion = params.get("VitalityVersion")
+        self.Line = params.get("Line")
+        self.ElasticServiceBandwidth = params.get("ElasticServiceBandwidth")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1492,7 +1516,7 @@ class CreateCcGeoIPBlockConfigRequest(AbstractModel):
         :type Domain: str
         :param Protocol: Protocol type
         :type Protocol: str
-        :param CcGeoIPBlockConfig: Region blocking configuration. The configuration ID should be cleared when you set this parameter.
+        :param CcGeoIPBlockConfig: CC regional blocking configuration
         :type CcGeoIPBlockConfig: :class:`tencentcloud.antiddos.v20200309.models.CcGeoIPBlockConfig`
         """
         self.InstanceId = None
@@ -2967,6 +2991,86 @@ class DescribeBgpBizTrendResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBizHttpStatusRequest(AbstractModel):
+    """DescribeBizHttpStatus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Statistics: Statistical mode. Value: `sum`.
+        :type Statistics: str
+        :param Business: Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced)
+        :type Business: str
+        :param Period: Statistical period in seconds. Valid values: `60`, `300`, `1800`, `3600`, `21600`, and `86400`.
+        :type Period: int
+        :param StartTime: Statistics start time, such as `2020-02-01 12:04:12`
+        :type StartTime: str
+        :param EndTime: Statistics end time, such as `2020-02-03 18:03:23`
+        :type EndTime: str
+        :param Id: The resource ID.
+        :type Id: str
+        :param Domain: Specific domain name query
+        :type Domain: str
+        :param ProtoInfo: Protocol and port list, which is valid when the metric is `connum`, `new_conn` or `inactive_conn`. Valid protocols: `TCP`, `UDP`, `HTTP`, `HTTPS`
+        :type ProtoInfo: list of ProtocolPort
+        """
+        self.Statistics = None
+        self.Business = None
+        self.Period = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Id = None
+        self.Domain = None
+        self.ProtoInfo = None
+
+
+    def _deserialize(self, params):
+        self.Statistics = params.get("Statistics")
+        self.Business = params.get("Business")
+        self.Period = params.get("Period")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Id = params.get("Id")
+        self.Domain = params.get("Domain")
+        if params.get("ProtoInfo") is not None:
+            self.ProtoInfo = []
+            for item in params.get("ProtoInfo"):
+                obj = ProtocolPort()
+                obj._deserialize(item)
+                self.ProtoInfo.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBizHttpStatusResponse(AbstractModel):
+    """DescribeBizHttpStatus response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param HttpStatusMap: Statistics on the HTTP status codes of business traffic
+        :type HttpStatusMap: :class:`tencentcloud.antiddos.v20200309.models.HttpStatusMap`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.HttpStatusMap = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("HttpStatusMap") is not None:
+            self.HttpStatusMap = HttpStatusMap()
+            self.HttpStatusMap._deserialize(params.get("HttpStatusMap"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeBizTrendRequest(AbstractModel):
     """DescribeBizTrend request structure.
 
@@ -2978,7 +3082,7 @@ class DescribeBizTrendRequest(AbstractModel):
         :type Statistics: str
         :param Business: Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced)
         :type Business: str
-        :param Period: Sampling interval. Valid values: `300`, `1800`, `3600`, `21600`, `86400`
+        :param Period: Sampling interval in seconds. Valid values: `60`, `300`, `1800`, `3600`, `21600`, `86400`
         :type Period: int
         :param StartTime: Beginning of the time range for the query, such as `2020-09-22 00:00:00`.
         :type StartTime: str
@@ -3888,7 +3992,7 @@ class DescribeListBGPIPInstancesRequest(AbstractModel):
         :type FilterEipEipAddressStatus: list of str
         :param FilterDamDDoSStatus: Whether to obtain only Anti-DDoS instances with Sec-MCA enabled. Valid values: `1` (only obtain Anti-DDoS instances with Sec-MCA enabled) and `0` (obtain other Anti-DDoS instances).
         :type FilterDamDDoSStatus: int
-        :param FilterStatus: Filters by status of bound resources. `idle`: normal; `attacking`: being attacked; `blocking`: blocked
+        :param FilterStatus: Filters by the status of bound resources. Values: `idle` (normal), `attacking` (being attacked), `blocking` (being blocked), `trial` (in trial)
         :type FilterStatus: str
         :param FilterCname: Filters by the instance CNAME
         :type FilterCname: str
@@ -3898,6 +4002,8 @@ class DescribeListBGPIPInstancesRequest(AbstractModel):
         :type FilterTag: :class:`tencentcloud.antiddos.v20200309.models.TagFilter`
         :param FilterPackType: Filters by package type.
         :type FilterPackType: list of str
+        :param FilterConvoy: Filters out Convoy instances
+        :type FilterConvoy: int
         """
         self.Offset = None
         self.Limit = None
@@ -3914,6 +4020,7 @@ class DescribeListBGPIPInstancesRequest(AbstractModel):
         self.FilterInstanceIdList = None
         self.FilterTag = None
         self.FilterPackType = None
+        self.FilterConvoy = None
 
 
     def _deserialize(self, params):
@@ -3934,6 +4041,7 @@ class DescribeListBGPIPInstancesRequest(AbstractModel):
             self.FilterTag = TagFilter()
             self.FilterTag._deserialize(params.get("FilterTag"))
         self.FilterPackType = params.get("FilterPackType")
+        self.FilterConvoy = params.get("FilterConvoy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4000,7 +4108,7 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         :type FilterBoundStatus: str
         :param FilterInstanceIdList: Array of instance IDs
         :type FilterInstanceIdList: list of str
-        :param FilterEnterpriseFlag: Filters by Enterprise edition
+        :param FilterEnterpriseFlag: Enterprise edition. Values: `1` (the Convoy package included), `2` (the Convoy package not included)
         :type FilterEnterpriseFlag: int
         :param FilterLightFlag: Whether it’s a Lighthouse edition
         :type FilterLightFlag: int
@@ -4008,6 +4116,12 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         :type FilterChannelFlag: int
         :param FilterTag: Filters by tag
         :type FilterTag: :class:`tencentcloud.antiddos.v20200309.models.TagFilter`
+        :param FilterTrialFlag: Filters out trial instances. Values: `1` (emergency protection instances), `2` (PLG instances)
+        :type FilterTrialFlag: int
+        :param FilterConvoy: Filters out Convoy instances
+        :type FilterConvoy: int
+        :param ExcludeAdvancedInfo: Whether to exclude the advanced information (such as `InstanceList[0].Usage`). Values: `true` (exclude), `false` (do not exclude). The default value is `false`.
+        :type ExcludeAdvancedInfo: bool
         """
         self.Offset = None
         self.Limit = None
@@ -4023,6 +4137,9 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         self.FilterLightFlag = None
         self.FilterChannelFlag = None
         self.FilterTag = None
+        self.FilterTrialFlag = None
+        self.FilterConvoy = None
+        self.ExcludeAdvancedInfo = None
 
 
     def _deserialize(self, params):
@@ -4042,6 +4159,9 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         if params.get("FilterTag") is not None:
             self.FilterTag = TagFilter()
             self.FilterTag._deserialize(params.get("FilterTag"))
+        self.FilterTrialFlag = params.get("FilterTrialFlag")
+        self.FilterConvoy = params.get("FilterConvoy")
+        self.ExcludeAdvancedInfo = params.get("ExcludeAdvancedInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5029,7 +5149,7 @@ class DescribePendingRiskInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IsPaidUsr: Whether the user is a paid user
+        :param IsPaidUsr: Whether the user is a paid user. Values: `true`, `false`.
         :type IsPaidUsr: bool
         :param AttackingCount: Number of resources being attacked
         :type AttackingCount: int
@@ -5262,6 +5382,66 @@ class ForwardListener(AbstractModel):
         
 
 
+class HttpStatusMap(AbstractModel):
+    """Aggregated data on the HTTP status codes of business traffic
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SourceHttp2xx: HTTP 2xx Forwarding status code
+        :type SourceHttp2xx: list of float
+        :param Http5xx: HTTP 5xx Status code
+        :type Http5xx: list of float
+        :param SourceHttp5xx: HTTP 5xx Forwarding status code
+        :type SourceHttp5xx: list of float
+        :param SourceHttp404: HTTP 404 Forwarding status code
+        :type SourceHttp404: list of float
+        :param Http4xx: HTTP 4xx Status code
+        :type Http4xx: list of float
+        :param SourceHttp4xx: HTTP 4xx Forwarding status code
+        :type SourceHttp4xx: list of float
+        :param Http2xx: HTTP 2xx Status code
+        :type Http2xx: list of float
+        :param Http404: HTTP 404 Status code
+        :type Http404: list of float
+        :param SourceHttp3xx: HTTP 3xx Forwarding status code
+        :type SourceHttp3xx: list of float
+        :param Http3xx: HTTP 3xx Status code
+        :type Http3xx: list of float
+        """
+        self.SourceHttp2xx = None
+        self.Http5xx = None
+        self.SourceHttp5xx = None
+        self.SourceHttp404 = None
+        self.Http4xx = None
+        self.SourceHttp4xx = None
+        self.Http2xx = None
+        self.Http404 = None
+        self.SourceHttp3xx = None
+        self.Http3xx = None
+
+
+    def _deserialize(self, params):
+        self.SourceHttp2xx = params.get("SourceHttp2xx")
+        self.Http5xx = params.get("Http5xx")
+        self.SourceHttp5xx = params.get("SourceHttp5xx")
+        self.SourceHttp404 = params.get("SourceHttp404")
+        self.Http4xx = params.get("Http4xx")
+        self.SourceHttp4xx = params.get("SourceHttp4xx")
+        self.Http2xx = params.get("Http2xx")
+        self.Http404 = params.get("Http404")
+        self.SourceHttp3xx = params.get("SourceHttp3xx")
+        self.Http3xx = params.get("Http3xx")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class IPAlarmThresholdRelation(AbstractModel):
     """Single IP alarm threshold configuration
 
@@ -5351,7 +5531,8 @@ class InsL7Rules(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: Rule status. Valid values: `0` (the rule is working), `1` (the rule goes into effect), `2` (rule configuration failed), `3` (the rule is being deleted), `5` (rule deletion failed), `6` (waiting to add rules), `7` (waiting to delete rules), `8` (waiting to upload certificates), `9` (resources for the rule not found), `10` (waiting to modify rules), `11` (the rule is being modifying).
+        :param Status: Rules can only be modified when the status is `0`, `2`, or `8`.
+Rule status. Values: `0` (Normal), `1` (Being configured), `2` (Configuration failed), `3` (Being deleted), `5` (Failed to be deleted), `6` (Pending add), `7` (Pending delete), `8` (Pending certificate upload), `9` (Associated resource not exist), `10` (Pending modify), `11` (Being modified).
         :type Status: int
         :param Domain: Domain name
         :type Domain: str
@@ -6286,6 +6467,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :type RewriteHttps: int
         :param ErrCode: Returns an error code when the rule configuration fails (only valid when `Status=2`). `1001`: The certificate does not exist. `1002`: Failed to obtain the certificate. `1003`: Failed to upload the certificate. `1004`: The certificate has expired.
         :type ErrCode: int
+        :param Version: Version
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Version: int
         """
         self.Protocol = None
         self.Domain = None
@@ -6313,6 +6497,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.VirtualPort = None
         self.RewriteHttps = None
         self.ErrCode = None
+        self.Version = None
 
 
     def _deserialize(self, params):
@@ -6347,6 +6532,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.VirtualPort = params.get("VirtualPort")
         self.RewriteHttps = params.get("RewriteHttps")
         self.ErrCode = params.get("ErrCode")
+        self.Version = params.get("Version")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7194,14 +7380,18 @@ class SwitchWaterPrintConfigRequest(AbstractModel):
         :type InstanceId: str
         :param OpenStatus: Watermark status. `1`: enabled; `0`: disabled.
         :type OpenStatus: int
+        :param CloudSdkProxy: Whether to enable proxy. Values: `1` (Enable proxy and ignore IP+port verification), `0` (Do not enable proxy and IP+port verification is required)
+        :type CloudSdkProxy: int
         """
         self.InstanceId = None
         self.OpenStatus = None
+        self.CloudSdkProxy = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.OpenStatus = params.get("OpenStatus")
+        self.CloudSdkProxy = params.get("CloudSdkProxy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7307,12 +7497,16 @@ class WaterPrintConfig(AbstractModel):
 `shortfpcheckall`: compact mode
 ]
         :type Verify: str
+        :param CloudSdkProxy: Whether to enable proxy. Values: `1` (Enable proxy and ignore IP+port verification), `0` (Do not enable proxy and IP+port verification is required)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CloudSdkProxy: int
         """
         self.Offset = None
         self.OpenStatus = None
         self.Listeners = None
         self.Keys = None
         self.Verify = None
+        self.CloudSdkProxy = None
 
 
     def _deserialize(self, params):
@@ -7331,6 +7525,7 @@ class WaterPrintConfig(AbstractModel):
                 obj._deserialize(item)
                 self.Keys.append(obj)
         self.Verify = params.get("Verify")
+        self.CloudSdkProxy = params.get("CloudSdkProxy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

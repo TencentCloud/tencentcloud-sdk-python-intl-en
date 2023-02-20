@@ -4423,6 +4423,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         :param QnPrivateAccess: Access authentication for QiNiu Cloud Kodo origin
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type QnPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.QnPrivateAccess`
+        :param HttpsBilling: HTTPS service
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type HttpsBilling: :class:`tencentcloud.cdn.v20180606.models.HttpsBilling`
         """
         self.ResourceId = None
         self.AppId = None
@@ -4488,6 +4491,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self.ParentHost = None
         self.HwPrivateAccess = None
         self.QnPrivateAccess = None
+        self.HttpsBilling = None
 
 
     def _deserialize(self, params):
@@ -4659,6 +4663,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         if params.get("QnPrivateAccess") is not None:
             self.QnPrivateAccess = QnPrivateAccess()
             self.QnPrivateAccess._deserialize(params.get("QnPrivateAccess"))
+        if params.get("HttpsBilling") is not None:
+            self.HttpsBilling = HttpsBilling()
+            self.HttpsBilling._deserialize(params.get("HttpsBilling"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5627,6 +5634,30 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         
 
 
+class HttpsBilling(AbstractModel):
+    """When it’s not enabled, HTTPS requests are blocked.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: HTTPS Service
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class HwPrivateAccess(AbstractModel):
     """Access authentication for Huawei Cloud OBS origin
 
@@ -5738,9 +5769,8 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         :param FilterRules: IP blocklist/allowlist path-based configuration. This feature is only available to selected beta customers.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type FilterRules: list of IpFilterPathRule
-        :param ReturnCode: HTTP code returned when the IP allowlist/blocklist verification fails
-Valid values: 400-499
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param ReturnCode: [Unavailable soon] The code returned when the IP blocklist/allowlist verification fails.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ReturnCode: int
         """
         self.Switch = None
@@ -7877,8 +7907,8 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         :param Reorder: Whether to sort again
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type Reorder: str
-        :param Action: Include/exclude query parameters. Valid values: `includeAll`, `excludeAll`, `includeCustom`, `excludeAll`
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param Action: Includes/excludes query parameters. Valid values: `includeAll`, `excludeAll`, `includeCustom`, `excludeCustom`
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Action: str
         :param Value: Array of included/excluded query strings (separated by ';')
 Note: This field may return `null`, indicating that no valid value can be obtained.
@@ -10223,6 +10253,8 @@ After switching to global acceleration, configurations of the domain name will b
         :type HwPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.HwPrivateAccess`
         :param QnPrivateAccess: Access authentication for QiNiu Cloud Kodo origin
         :type QnPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.QnPrivateAccess`
+        :param HttpsBilling: HTTPS service
+        :type HttpsBilling: :class:`tencentcloud.cdn.v20180606.models.HttpsBilling`
         """
         self.Domain = None
         self.ProjectId = None
@@ -10271,6 +10303,7 @@ After switching to global acceleration, configurations of the domain name will b
         self.ShareCname = None
         self.HwPrivateAccess = None
         self.QnPrivateAccess = None
+        self.HttpsBilling = None
 
 
     def _deserialize(self, params):
@@ -10405,6 +10438,9 @@ After switching to global acceleration, configurations of the domain name will b
         if params.get("QnPrivateAccess") is not None:
             self.QnPrivateAccess = QnPrivateAccess()
             self.QnPrivateAccess._deserialize(params.get("QnPrivateAccess"))
+        if params.get("HttpsBilling") is not None:
+            self.HttpsBilling = HttpsBilling()
+            self.HttpsBilling._deserialize(params.get("HttpsBilling"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

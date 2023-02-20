@@ -762,6 +762,29 @@ class AntiddosClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBizHttpStatus(self, request):
+        """This API is used to get the statistics on the status codes of business traffic.
+
+        :param request: Request instance for DescribeBizHttpStatus.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeBizHttpStatusRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.DescribeBizHttpStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBizHttpStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBizHttpStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBizTrend(self, request):
         """This API is used to get the traffic flow data collected in the specified period.
 
@@ -1062,7 +1085,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeListBGPInstances(self, request):
-        """This API is used to get a list of Anti-DDoS Pro instances.
+        """This API is used to get the list of Anti-DDoS Pro instances.
 
         :param request: Request instance for DescribeListBGPInstances.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeListBGPInstancesRequest`
