@@ -884,6 +884,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param Timestamp: Message timestamp
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Timestamp: int
+        :param Headers: Message headers
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Headers: str
         """
         self.Topic = None
         self.Partition = None
@@ -891,6 +894,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.Key = None
         self.Value = None
         self.Timestamp = None
+        self.Headers = None
 
 
     def _deserialize(self, params):
@@ -900,6 +904,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.Key = params.get("Key")
         self.Value = params.get("Value")
         self.Timestamp = params.get("Timestamp")
+        self.Headers = params.get("Headers")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
