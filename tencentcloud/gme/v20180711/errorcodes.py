@@ -26,11 +26,11 @@ INTERNALERROR = 'InternalError'
 # Incorrect parameter.
 INVALIDPARAMETER = 'InvalidParameter'
 
-# Incorrect callback URL.
-INVALIDPARAMETER_CALLBACKADDRESS = 'InvalidParameter.CallbackAddress'
-
 # Invalid date.
 INVALIDPARAMETER_DATEINVALID = 'InvalidParameter.DateInvalid'
+
+# 
+INVALIDPARAMETER_DATEOUTOFSIXTYDAYS = 'InvalidParameter.DateOutOfSixtyDays'
 
 # Incorrect tag.
 INVALIDPARAMETER_TAGKEY = 'InvalidParameter.TagKey'
@@ -44,17 +44,11 @@ LIMITEXCEEDED_APPLICATION = 'LimitExceeded.Application'
 # Parameter missing.
 MISSINGPARAMETER = 'MissingParameter'
 
-# Operation denied.
-OPERATIONDENIED = 'OperationDenied'
-
 # The resource does not exist.
 RESOURCENOTFOUND = 'ResourceNotFound'
 
 # Incorrect application ID.
 RESOURCENOTFOUND_BIZIDISNOTFOUND = 'ResourceNotFound.BizidIsNotFound'
-
-# The resource is unavailable.
-RESOURCEUNAVAILABLE = 'ResourceUnavailable'
 
 # Unauthorized operation.
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'

@@ -831,6 +831,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeZones(self, request):
+        """This API is used to query the AZ information in a purchasable region.
+
+        :param request: Request instance for DescribeZones.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeZonesRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeZonesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeZones", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeZonesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ExportInstanceSlowQueries(self, request):
         """This API is used to export the slow logs of an instance.
 
@@ -1420,6 +1443,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("SetRenewFlag", params, headers=headers)
             response = json.loads(body)
             model = models.SetRenewFlagResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SwitchClusterVpc(self, request):
+        """This API is used to modify the cluster VPC.
+
+        :param request: Request instance for SwitchClusterVpc.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.SwitchClusterVpcRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.SwitchClusterVpcResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SwitchClusterVpc", params, headers=headers)
+            response = json.loads(body)
+            model = models.SwitchClusterVpcResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

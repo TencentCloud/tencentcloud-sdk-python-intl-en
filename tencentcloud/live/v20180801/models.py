@@ -851,8 +851,8 @@ If the output stream is a stream in the input stream list, enter 0.
 If you want the stream mix result to be a new stream, enter 1.
 If this value is 1, `output_stream_id` cannot appear in `input_stram_list`, and there cannot be a stream with the same ID on the LVB backend.
         :type OutputStreamType: int
-        :param OutputStreamBitRate: Output stream bitrate. Value range: [1,50000].
-If this parameter is left empty, the system will automatically determine.
+        :param OutputStreamBitRate: The output bitrate. Value range: 1-10000.
+If you do not specify this, the system will select a bitrate automatically.
         :type OutputStreamBitRate: int
         :param OutputStreamGop: Output stream GOP size. Value range: [1,10].
 If this parameter is left empty, the system will automatically determine.
@@ -1743,6 +1743,142 @@ class CreateLiveSnapshotTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateLiveTimeShiftRuleRequest(AbstractModel):
+    """CreateLiveTimeShiftRule request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DomainName: The push domain.
+        :type DomainName: str
+        :param AppName: The push path, which should be the same as `AppName` in the push and playback URLs. The default value is `live`.
+        :type AppName: str
+        :param StreamName: The stream name.
+Note: If you pass in a non-empty string, the rule will only be applied to the specified stream.
+        :type StreamName: str
+        :param TemplateId: The template ID.
+        :type TemplateId: int
+        """
+        self.DomainName = None
+        self.AppName = None
+        self.StreamName = None
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.AppName = params.get("AppName")
+        self.StreamName = params.get("StreamName")
+        self.TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateLiveTimeShiftRuleResponse(AbstractModel):
+    """CreateLiveTimeShiftRule response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateLiveTimeShiftTemplateRequest(AbstractModel):
+    """CreateLiveTimeShiftTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateName: The template name.
+Maximum length: 255 bytes.
+Only letters, numbers, underscores, and hyphens are supported.
+        :type TemplateName: str
+        :param Duration: The time shifting duration.
+Unit: Second.
+        :type Duration: int
+        :param Description: The template description.
+Only letters, numbers, underscores, and hyphens are supported.
+        :type Description: str
+        :param Area: The region.
+`Mainland`: The Chinese mainland.
+`Overseas`: Outside the Chinese mainland.
+Default value: `Mainland`.
+        :type Area: str
+        :param ItemDuration: The segment size.
+Value range: 3-10.
+Unit: Second.
+Default value: 5
+        :type ItemDuration: int
+        :param RemoveWatermark: Whether to remove watermarks.
+If you pass in `true`, the original stream will be recorded.
+Default value: `false`.
+        :type RemoveWatermark: bool
+        :param TranscodeTemplateIds: The transcoding template IDs.
+This API works only if `RemoveWatermark` is `false`.
+        :type TranscodeTemplateIds: list of int
+        """
+        self.TemplateName = None
+        self.Duration = None
+        self.Description = None
+        self.Area = None
+        self.ItemDuration = None
+        self.RemoveWatermark = None
+        self.TranscodeTemplateIds = None
+
+
+    def _deserialize(self, params):
+        self.TemplateName = params.get("TemplateName")
+        self.Duration = params.get("Duration")
+        self.Description = params.get("Description")
+        self.Area = params.get("Area")
+        self.ItemDuration = params.get("ItemDuration")
+        self.RemoveWatermark = params.get("RemoveWatermark")
+        self.TranscodeTemplateIds = params.get("TranscodeTemplateIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateLiveTimeShiftTemplateResponse(AbstractModel):
+    """CreateLiveTimeShiftTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: The template ID.
+        :type TemplateId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TemplateId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateLiveTranscodeRuleRequest(AbstractModel):
     """CreateLiveTranscodeRule request structure.
 
@@ -2569,6 +2705,99 @@ class DeleteLiveSnapshotTemplateRequest(AbstractModel):
 
 class DeleteLiveSnapshotTemplateResponse(AbstractModel):
     """DeleteLiveSnapshotTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteLiveTimeShiftRuleRequest(AbstractModel):
+    """DeleteLiveTimeShiftRule request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DomainName: The push domain.
+`Domain name+AppName+StreamName` uniquely identifies a time shifting rule. To delete a time shifting rule, exact match is required. This means if the `AppName` of a time shifting rule is empty, to delete the rule, you need to pass in an empty string for `AppName`.
+        :type DomainName: str
+        :param AppName: The push path, which should be the same as `AppName` in the push and playback URLs. The default value is `live`.
+`Domain name+AppName+StreamName` uniquely identifies a time shifting rule. To delete a time shifting rule, exact match is required. This means if the `AppName` of a time shifting rule is empty, to delete the rule, you need to pass in an empty string for `AppName`.
+        :type AppName: str
+        :param StreamName: The stream name.
+`Domain name+AppName+StreamName` uniquely identifies a time shifting rule. To delete a time shifting rule, exact match is required. This means if the `AppName` of a time shifting rule is empty, to delete the rule, you need to pass in an empty string for `AppName`.
+        :type StreamName: str
+        """
+        self.DomainName = None
+        self.AppName = None
+        self.StreamName = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.AppName = params.get("AppName")
+        self.StreamName = params.get("StreamName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLiveTimeShiftRuleResponse(AbstractModel):
+    """DeleteLiveTimeShiftRule response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteLiveTimeShiftTemplateRequest(AbstractModel):
+    """DeleteLiveTimeShiftTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: The template ID.
+        :type TemplateId: int
+        """
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLiveTimeShiftTemplateResponse(AbstractModel):
+    """DeleteLiveTimeShiftTemplate response structure.
 
     """
 
@@ -4657,6 +4886,70 @@ class DescribeLiveTimeShiftBillInfoListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeLiveTimeShiftRulesRequest(AbstractModel):
+    """DescribeLiveTimeShiftRules request structure.
+
+    """
+
+
+class DescribeLiveTimeShiftRulesResponse(AbstractModel):
+    """DescribeLiveTimeShiftRules response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Rules: The information of the rules.
+        :type Rules: list of RuleInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Rules = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = RuleInfo()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLiveTimeShiftTemplatesRequest(AbstractModel):
+    """DescribeLiveTimeShiftTemplates request structure.
+
+    """
+
+
+class DescribeLiveTimeShiftTemplatesResponse(AbstractModel):
+    """DescribeLiveTimeShiftTemplates response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Templates: The information of the templates.
+        :type Templates: list of TimeShiftTemplate
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Templates = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Templates") is not None:
+            self.Templates = []
+            for item in params.get("Templates"):
+                obj = TimeShiftTemplate()
+                obj._deserialize(item)
+                self.Templates.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeLiveTranscodeDetailInfoRequest(AbstractModel):
     """DescribeLiveTranscodeDetailInfo request structure.
 
@@ -5668,6 +5961,161 @@ class DescribeStreamPushInfoListResponse(AbstractModel):
                 obj = PushQualityData()
                 obj._deserialize(item)
                 self.DataInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTimeShiftRecordDetailRequest(AbstractModel):
+    """DescribeTimeShiftRecordDetail request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: The push domain.
+        :type Domain: str
+        :param AppName: The push path.
+        :type AppName: str
+        :param StreamName: The stream name.
+        :type StreamName: str
+        :param StartTime: The start time, which must be a Unix timestamp.
+        :type StartTime: int
+        :param EndTime: The end time, which must be a Unix timestamp. 
+        :type EndTime: int
+        :param DomainGroup: The group the push domain belongs to. You don’t need to specify this parameter if the domain doesn’t belong to any group or the group name is an empty string.
+        :type DomainGroup: str
+        :param TransCodeId: The transcoding template ID. You don’t need to specify this parameter if the transcoding template ID is `0`.
+        :type TransCodeId: int
+        """
+        self.Domain = None
+        self.AppName = None
+        self.StreamName = None
+        self.StartTime = None
+        self.EndTime = None
+        self.DomainGroup = None
+        self.TransCodeId = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.AppName = params.get("AppName")
+        self.StreamName = params.get("StreamName")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.DomainGroup = params.get("DomainGroup")
+        self.TransCodeId = params.get("TransCodeId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTimeShiftRecordDetailResponse(AbstractModel):
+    """DescribeTimeShiftRecordDetail response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RecordList: The number of sessions recorded.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RecordList: list of TimeShiftRecord
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RecordList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("RecordList") is not None:
+            self.RecordList = []
+            for item in params.get("RecordList"):
+                obj = TimeShiftRecord()
+                obj._deserialize(item)
+                self.RecordList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTimeShiftStreamListRequest(AbstractModel):
+    """DescribeTimeShiftStreamList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: The start time, which must be a Unix timestamp.
+        :type StartTime: int
+        :param EndTime: The end time, which must be a Unix timestamp.
+        :type EndTime: int
+        :param StreamName: The stream name.
+        :type StreamName: str
+        :param Domain: The push domain.
+        :type Domain: str
+        :param DomainGroup: The group the push domain belongs to.
+        :type DomainGroup: str
+        :param PageSize: The maximum number of records to return. Value range: 0-100. If you do not specify this parameter or pass in `0`, 
+the default value `100` will be used. If you pass in a negative number or a value greater than 100, an error will be returned.
+        :type PageSize: int
+        :param PageNum: The number of page to pull records from. If you do not specify this parameter, the default value `1` will be used.
+        :type PageNum: int
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.StreamName = None
+        self.Domain = None
+        self.DomainGroup = None
+        self.PageSize = None
+        self.PageNum = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.StreamName = params.get("StreamName")
+        self.Domain = params.get("Domain")
+        self.DomainGroup = params.get("DomainGroup")
+        self.PageSize = params.get("PageSize")
+        self.PageNum = params.get("PageNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTimeShiftStreamListResponse(AbstractModel):
+    """DescribeTimeShiftStreamList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalSize: The total number of records in the specified time period.
+        :type TotalSize: int
+        :param StreamList: The information of the streams.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type StreamList: list of TimeShiftStreamInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalSize = None
+        self.StreamList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalSize = params.get("TotalSize")
+        if params.get("StreamList") is not None:
+            self.StreamList = []
+            for item in params.get("StreamList"):
+                obj = TimeShiftStreamInfo()
+                obj._deserialize(item)
+                self.StreamList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -7406,6 +7854,88 @@ Value range: 5-300s.
 
 class ModifyLiveSnapshotTemplateResponse(AbstractModel):
     """ModifyLiveSnapshotTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyLiveTimeShiftTemplateRequest(AbstractModel):
+    """ModifyLiveTimeShiftTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: The time shifting template ID.
+        :type TemplateId: int
+        :param TemplateName: The template name.
+Only letters, numbers, underscores, and hyphens are supported.
+        :type TemplateName: str
+        :param Description: The template description.
+Maximum length: 1,024 bytes.
+Only letters, numbers, underscores, and hyphens are supported.
+        :type Description: str
+        :param Duration: The time shifting duration.
+Unit: Second.
+        :type Duration: int
+        :param ItemDuration: The segment size.
+Value range: 3-10.
+Unit: Second.
+Default value: 5
+        :type ItemDuration: int
+        :param RemoveWatermark: Whether to remove watermarks.
+If you pass in `true`, the original stream will be recorded.
+Default value: `false`.
+        :type RemoveWatermark: bool
+        :param TranscodeTemplateIds: The transcoding template IDs.
+This API works only if `RemoveWatermark` is `false`.
+        :type TranscodeTemplateIds: list of int
+        :param Area: The region.
+`Mainland`: The Chinese mainland.
+`Overseas`: Outside the Chinese mainland.
+Default value: `Mainland`.
+        :type Area: str
+        """
+        self.TemplateId = None
+        self.TemplateName = None
+        self.Description = None
+        self.Duration = None
+        self.ItemDuration = None
+        self.RemoveWatermark = None
+        self.TranscodeTemplateIds = None
+        self.Area = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.TemplateName = params.get("TemplateName")
+        self.Description = params.get("Description")
+        self.Duration = params.get("Duration")
+        self.ItemDuration = params.get("ItemDuration")
+        self.RemoveWatermark = params.get("RemoveWatermark")
+        self.TranscodeTemplateIds = params.get("TranscodeTemplateIds")
+        self.Area = params.get("Area")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLiveTimeShiftTemplateResponse(AbstractModel):
+    """ModifyLiveTimeShiftTemplate response structure.
 
     """
 
@@ -9214,6 +9744,159 @@ class TimeShiftBillData(AbstractModel):
         self.StoragePeriod = params.get("StoragePeriod")
         self.Time = params.get("Time")
         self.TotalDuration = params.get("TotalDuration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TimeShiftRecord(AbstractModel):
+    """A recorded time shifting session.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Sid: The session ID.
+        :type Sid: str
+        :param StartTime: The recording start time, which is a Unix timestamp.
+        :type StartTime: int
+        :param EndTime: The recording end time, which is a Unix timestamp.
+        :type EndTime: int
+        """
+        self.Sid = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.Sid = params.get("Sid")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TimeShiftStreamInfo(AbstractModel):
+    """The information of a time shifted stream.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DomainGroup: The group the push domain belongs to.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DomainGroup: str
+        :param Domain: The push domain.
+        :type Domain: str
+        :param AppName: The push path.
+        :type AppName: str
+        :param StreamName: The stream name.
+        :type StreamName: str
+        :param StartTime: The stream start time, which is a Unix timestamp.
+        :type StartTime: int
+        :param EndTime: The stream end time (for streams that ended before the time of query), which is a Unix timestamp.
+        :type EndTime: int
+        :param TransCodeId: The transcoding template ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TransCodeId: int
+        :param StreamType: The stream type. `0`: The original stream; `1`: The watermarked stream; `2`: The transcoded stream.
+        :type StreamType: int
+        :param Duration: The storage duration (seconds) of the recording.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Duration: int
+        """
+        self.DomainGroup = None
+        self.Domain = None
+        self.AppName = None
+        self.StreamName = None
+        self.StartTime = None
+        self.EndTime = None
+        self.TransCodeId = None
+        self.StreamType = None
+        self.Duration = None
+
+
+    def _deserialize(self, params):
+        self.DomainGroup = params.get("DomainGroup")
+        self.Domain = params.get("Domain")
+        self.AppName = params.get("AppName")
+        self.StreamName = params.get("StreamName")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.TransCodeId = params.get("TransCodeId")
+        self.StreamType = params.get("StreamType")
+        self.Duration = params.get("Duration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TimeShiftTemplate(AbstractModel):
+    """The information of a time shifting template.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateName: The template name.
+        :type TemplateName: str
+        :param Duration: The time shifting duration.
+Unit: second
+        :type Duration: int
+        :param ItemDuration: The segment size.
+Value range: 3-10.
+Unit: Second.
+Default value: 5
+        :type ItemDuration: int
+        :param TemplateId: The template ID.
+        :type TemplateId: int
+        :param Description: The template description.
+        :type Description: str
+        :param Area: The region. Valid values:
+`Mainland`: The Chinese mainland.
+`Overseas`: Outside the Chinese mainland.
+Default value: `Mainland`.
+        :type Area: str
+        :param RemoveWatermark: Whether to remove watermarks.
+If you pass in `true`, the original stream will be recorded.
+Default value: `false`.
+        :type RemoveWatermark: bool
+        :param TranscodeTemplateIds: The transcoding template IDs.
+This API works only if `RemoveWatermark` is `false`.
+        :type TranscodeTemplateIds: list of int non-negative
+        """
+        self.TemplateName = None
+        self.Duration = None
+        self.ItemDuration = None
+        self.TemplateId = None
+        self.Description = None
+        self.Area = None
+        self.RemoveWatermark = None
+        self.TranscodeTemplateIds = None
+
+
+    def _deserialize(self, params):
+        self.TemplateName = params.get("TemplateName")
+        self.Duration = params.get("Duration")
+        self.ItemDuration = params.get("ItemDuration")
+        self.TemplateId = params.get("TemplateId")
+        self.Description = params.get("Description")
+        self.Area = params.get("Area")
+        self.RemoveWatermark = params.get("RemoveWatermark")
+        self.TranscodeTemplateIds = params.get("TranscodeTemplateIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

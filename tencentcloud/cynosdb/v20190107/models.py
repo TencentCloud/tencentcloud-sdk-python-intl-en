@@ -3823,6 +3823,60 @@ class DescribeRollbackTimeValidityResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeZonesRequest(AbstractModel):
+    """DescribeZones request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IncludeVirtualZones: Whether the virtual zone is included.–
+        :type IncludeVirtualZones: bool
+        :param ShowPermission: Whether to display all AZs in a region and the user’s permissions in each AZ.
+        :type ShowPermission: bool
+        """
+        self.IncludeVirtualZones = None
+        self.ShowPermission = None
+
+
+    def _deserialize(self, params):
+        self.IncludeVirtualZones = params.get("IncludeVirtualZones")
+        self.ShowPermission = params.get("ShowPermission")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeZonesResponse(AbstractModel):
+    """DescribeZones response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RegionSet: Region information
+        :type RegionSet: list of SaleRegion
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RegionSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("RegionSet") is not None:
+            self.RegionSet = []
+            for item in params.get("RegionSet"):
+                obj = SaleRegion()
+                obj._deserialize(item)
+                self.RegionSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class ExportInstanceSlowQueriesRequest(AbstractModel):
     """ExportInstanceSlowQueries request structure.
 
@@ -4894,6 +4948,34 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class Module(AbstractModel):
+    """Modules supported by the system
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IsDisable: Whether it is supported. Valid values: `yes`, `no`.
+        :type IsDisable: str
+        :param ModuleName: Module name
+        :type ModuleName: str
+        """
+        self.IsDisable = None
+        self.ModuleName = None
+
+
+    def _deserialize(self, params):
+        self.IsDisable = params.get("IsDisable")
+        self.ModuleName = params.get("ModuleName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class NetAddr(AbstractModel):
     """Network information
 
@@ -5802,6 +5884,117 @@ class RuleFilters(AbstractModel):
         
 
 
+class SaleRegion(AbstractModel):
+    """Information of a purchasable region
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Region: Region name
+        :type Region: str
+        :param RegionId: Numeric ID of a region
+        :type RegionId: int
+        :param RegionZh: Region name
+        :type RegionZh: str
+        :param ZoneSet: List of purchasable AZs
+        :type ZoneSet: list of SaleZone
+        :param DbType: Engine type
+        :type DbType: str
+        :param Modules: Supported modules in a region
+        :type Modules: list of Module
+        """
+        self.Region = None
+        self.RegionId = None
+        self.RegionZh = None
+        self.ZoneSet = None
+        self.DbType = None
+        self.Modules = None
+
+
+    def _deserialize(self, params):
+        self.Region = params.get("Region")
+        self.RegionId = params.get("RegionId")
+        self.RegionZh = params.get("RegionZh")
+        if params.get("ZoneSet") is not None:
+            self.ZoneSet = []
+            for item in params.get("ZoneSet"):
+                obj = SaleZone()
+                obj._deserialize(item)
+                self.ZoneSet.append(obj)
+        self.DbType = params.get("DbType")
+        if params.get("Modules") is not None:
+            self.Modules = []
+            for item in params.get("Modules"):
+                obj = Module()
+                obj._deserialize(item)
+                self.Modules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SaleZone(AbstractModel):
+    """Information of a purchasable AZ
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Zone: AZ name
+        :type Zone: str
+        :param ZoneId: Numeric ID of an AZ
+        :type ZoneId: int
+        :param ZoneZh: AZ name
+        :type ZoneZh: str
+        :param IsSupportServerless: Whether serverless cluster is supported. Valid values: <br>
+`0`: No<br>
+`1`: Yes
+        :type IsSupportServerless: int
+        :param IsSupportNormal: Whether standard cluster is supported. Valid values: <br>
+`0`: No<br>
+`1`: Yes
+        :type IsSupportNormal: int
+        :param PhysicalZone: Physical zone
+        :type PhysicalZone: str
+        :param HasPermission: Whether the user has AZ permission
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type HasPermission: bool
+        :param IsWholeRdmaZone: Whether it is a full-linkage RDMA AZ.
+        :type IsWholeRdmaZone: str
+        """
+        self.Zone = None
+        self.ZoneId = None
+        self.ZoneZh = None
+        self.IsSupportServerless = None
+        self.IsSupportNormal = None
+        self.PhysicalZone = None
+        self.HasPermission = None
+        self.IsWholeRdmaZone = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.ZoneId = params.get("ZoneId")
+        self.ZoneZh = params.get("ZoneZh")
+        self.IsSupportServerless = params.get("IsSupportServerless")
+        self.IsSupportNormal = params.get("IsSupportNormal")
+        self.PhysicalZone = params.get("PhysicalZone")
+        self.HasPermission = params.get("HasPermission")
+        self.IsWholeRdmaZone = params.get("IsWholeRdmaZone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SearchClusterDatabasesRequest(AbstractModel):
     """SearchClusterDatabases request structure.
 
@@ -6093,6 +6286,63 @@ class SlowQueriesItem(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class SwitchClusterVpcRequest(AbstractModel):
+    """SwitchClusterVpc request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param UniqVpcId: VPC ID in string
+        :type UniqVpcId: str
+        :param UniqSubnetId: Subnet ID in string
+        :type UniqSubnetId: str
+        :param OldIpReserveHours: Valid hours of old IP
+        :type OldIpReserveHours: int
+        """
+        self.ClusterId = None
+        self.UniqVpcId = None
+        self.UniqSubnetId = None
+        self.OldIpReserveHours = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.UniqSubnetId = params.get("UniqSubnetId")
+        self.OldIpReserveHours = params.get("OldIpReserveHours")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SwitchClusterVpcResponse(AbstractModel):
+    """SwitchClusterVpc response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: Async task ID
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
 
 
 class SwitchClusterZoneRequest(AbstractModel):
