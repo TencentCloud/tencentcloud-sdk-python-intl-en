@@ -607,6 +607,131 @@ class DescribeApplicationDataResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeRecordInfoRequest(AbstractModel):
+    """DescribeRecordInfo request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: ID of the ongoing task, which is returned from the `StartRecord` API.
+        :type TaskId: int
+        :param BizId: Application ID.
+        :type BizId: int
+        """
+        self.TaskId = None
+        self.BizId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.BizId = params.get("BizId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRecordInfoResponse(AbstractModel):
+    """DescribeRecordInfo response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RecordInfo: Information about the recording task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RecordInfo: list of RecordInfo
+        :param RecordMode: Recording mode. Valid values: `1`: single stream; `2`: mixed streams; `3`: single stream and mixed streams.
+        :type RecordMode: int
+        :param RoomId: Room ID.
+        :type RoomId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RecordInfo = None
+        self.RecordMode = None
+        self.RoomId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("RecordInfo") is not None:
+            self.RecordInfo = []
+            for item in params.get("RecordInfo"):
+                obj = RecordInfo()
+                obj._deserialize(item)
+                self.RecordInfo.append(obj)
+        self.RecordMode = params.get("RecordMode")
+        self.RoomId = params.get("RoomId")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTaskInfoRequest(AbstractModel):
+    """DescribeTaskInfo request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BizId: Application ID.
+        :type BizId: int
+        :param RoomId: Room ID.
+        :type RoomId: str
+        """
+        self.BizId = None
+        self.RoomId = None
+
+
+    def _deserialize(self, params):
+        self.BizId = params.get("BizId")
+        self.RoomId = params.get("RoomId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTaskInfoResponse(AbstractModel):
+    """DescribeTaskInfo response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: ID of the ongoing task, which is returned from the `StartRecord` API.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TaskId: int
+        :param RecordMode: Recording mode. Valid values: `1`: single stream; `2`: mixed streams; `3`: single stream and mixed streams.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RecordMode: int
+        :param SubscribeRecordUserIds: Allowlist or blocklist for stream subscription.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SubscribeRecordUserIds: :class:`tencentcloud.gme.v20180711.models.SubscribeRecordUserIds`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RecordMode = None
+        self.SubscribeRecordUserIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RecordMode = params.get("RecordMode")
+        if params.get("SubscribeRecordUserIds") is not None:
+            self.SubscribeRecordUserIds = SubscribeRecordUserIds()
+            self.SubscribeRecordUserIds._deserialize(params.get("SubscribeRecordUserIds"))
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyAppStatusRequest(AbstractModel):
     """ModifyAppStatus request structure.
 
@@ -683,6 +808,61 @@ class ModifyAppStatusResponse(AbstractModel):
         if params.get("Data") is not None:
             self.Data = ModifyAppStatusResp()
             self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyRecordInfoRequest(AbstractModel):
+    """ModifyRecordInfo request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: ID of the ongoing task, which is returned from the `StartRecord` API.
+        :type TaskId: int
+        :param RecordMode: Recording mode. Valid values: `1`: single stream; `2`: mixed streams; `3`: single stream and mixed streams.
+        :type RecordMode: int
+        :param BizId: Application ID.
+        :type BizId: int
+        :param SubscribeRecordUserIds: Allowlist or blocklist for stream subscription.
+        :type SubscribeRecordUserIds: :class:`tencentcloud.gme.v20180711.models.SubscribeRecordUserIds`
+        """
+        self.TaskId = None
+        self.RecordMode = None
+        self.BizId = None
+        self.SubscribeRecordUserIds = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RecordMode = params.get("RecordMode")
+        self.BizId = params.get("BizId")
+        if params.get("SubscribeRecordUserIds") is not None:
+            self.SubscribeRecordUserIds = SubscribeRecordUserIds()
+            self.SubscribeRecordUserIds._deserialize(params.get("SubscribeRecordUserIds"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRecordInfoResponse(AbstractModel):
+    """ModifyRecordInfo response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -808,6 +988,102 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         
 
 
+class RecordInfo(AbstractModel):
+    """Information about the recording task in a room.
+    Note: This field may return null, indicating that no valid values can be obtained.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserId: User ID. The value is `0` in mixed streams recording mode.
+        :type UserId: str
+        :param FileName: Recording filename.
+        :type FileName: str
+        :param RecordBeginTime: Recording start time, which is a Unix timestamp. Example: 1234567868.
+        :type RecordBeginTime: int
+        :param RecordStatus: Recording status. Valid values: `2`: recording; `10`: to be transcoded; `11`: transcoding; `12`: uploading; `13`: uploaded; `14`: user notified.
+        :type RecordStatus: int
+        """
+        self.UserId = None
+        self.FileName = None
+        self.RecordBeginTime = None
+        self.RecordStatus = None
+
+
+    def _deserialize(self, params):
+        self.UserId = params.get("UserId")
+        self.FileName = params.get("FileName")
+        self.RecordBeginTime = params.get("RecordBeginTime")
+        self.RecordStatus = params.get("RecordStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartRecordRequest(AbstractModel):
+    """StartRecord request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BizId: Application ID.
+        :type BizId: int
+        :param RoomId: Room ID.
+        :type RoomId: str
+        :param RecordMode: Recording mode. Valid values: `1`: single stream; `2`: mixed streams; `3`: single stream and mixed streams.
+        :type RecordMode: int
+        :param SubscribeRecordUserIds: Allowlist or blocklist for stream subscription. If you do not specify this parameter, the audio streams of all the users in the room are subscribed to by default.
+        :type SubscribeRecordUserIds: :class:`tencentcloud.gme.v20180711.models.SubscribeRecordUserIds`
+        """
+        self.BizId = None
+        self.RoomId = None
+        self.RecordMode = None
+        self.SubscribeRecordUserIds = None
+
+
+    def _deserialize(self, params):
+        self.BizId = params.get("BizId")
+        self.RoomId = params.get("RoomId")
+        self.RecordMode = params.get("RecordMode")
+        if params.get("SubscribeRecordUserIds") is not None:
+            self.SubscribeRecordUserIds = SubscribeRecordUserIds()
+            self.SubscribeRecordUserIds._deserialize(params.get("SubscribeRecordUserIds"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartRecordResponse(AbstractModel):
+    """StartRecord response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: Task ID.
+        :type TaskId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class StatisticsItem(AbstractModel):
     """Usage data unit
 
@@ -836,6 +1112,51 @@ class StatisticsItem(AbstractModel):
         
 
 
+class StopRecordRequest(AbstractModel):
+    """StopRecord request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: Task ID.
+        :type TaskId: int
+        :param BizId: Application ID.
+        :type BizId: int
+        """
+        self.TaskId = None
+        self.BizId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.BizId = params.get("BizId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopRecordResponse(AbstractModel):
+    """StopRecord response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class StreamTextStatisticsItem(AbstractModel):
     """Stream-to-Text usage statistics
 
@@ -852,6 +1173,36 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     def _deserialize(self, params):
         self.Data = params.get("Data")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubscribeRecordUserIds(AbstractModel):
+    """Allowlist or blocklist for stream subscription.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UnSubscribeUserIds: Blocklist for audio subscription. For example, `["1", "2", "3"]` means to not subscribe to the audio streams of users 1, 2, and 3. If this parameter is left empty, the audio streams of all users (max 20) in the room will not be subscribed to.
+Note: You cannot specify `UnSubscribeAudioUserIds` and `SubscribeAudioUserIds` at the same time.
+        :type UnSubscribeUserIds: list of str
+        :param SubscribeUserIds: Allowlist for audio subscription. For example, `["1", "2", "3"]` means to subscribe to the audio streams of users 1, 2, and 3. If this parameter is left empty, the audio streams of all users (max 20) in the room will be subscribed to.
+Note: You cannot specify `UnSubscribeAudioUserIds` and `SubscribeAudioUserIds` at the same time.
+        :type SubscribeUserIds: list of str
+        """
+        self.UnSubscribeUserIds = None
+        self.SubscribeUserIds = None
+
+
+    def _deserialize(self, params):
+        self.UnSubscribeUserIds = params.get("UnSubscribeUserIds")
+        self.SubscribeUserIds = params.get("SubscribeUserIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
