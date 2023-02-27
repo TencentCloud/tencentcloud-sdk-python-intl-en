@@ -620,6 +620,29 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBackupEncryptionStatus(self, request):
+        """This API is used to query the default encryption status of an instance backup.
+
+        :param request: Request instance for DescribeBackupEncryptionStatus.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupEncryptionStatusRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupEncryptionStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBackupEncryptionStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBackupEncryptionStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBackupOverview(self, request):
         """This API is used to query the backup overview of a user. It will return the user's current total number of backups, total capacity used by backups, capacity in the free tier, and paid capacity (all capacity values are in bytes).
 
@@ -1892,6 +1915,29 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyBackupEncryptionStatus(self, request):
+        """This API is used to set the default encryption status of an instance backup.
+
+        :param request: Request instance for ModifyBackupEncryptionStatus.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyBackupEncryptionStatusRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyBackupEncryptionStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyBackupEncryptionStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyBackupEncryptionStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyCDBProxyConnectionPool(self, request):
         """This API is used to configure the connection pool of database proxy. You can use the `DescribeProxyConnectionPoolConf` API to query the supported connection pool configurations.
 
@@ -2310,6 +2356,39 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def OpenDBInstanceEncryption(self, request):
+        """This API is used to enable the encryption feature for instance data storage, and custom keys are supported.
+
+        Note: Before enabling data storage encryption for an instance, you need to perform the following operations:
+
+        1. [Initialize an instance](https://intl.cloud.tencent.com/document/api/236/15873?from_cn_redirect=1).
+
+        2. Enable [KMS service](https://console.cloud.tencent.com/kms2)
+
+        3. [Grant permission to access KMS](https://console.cloud.tencent.com/cam/role) for TencentDB for MySQL. The role name is `MySQL_QCSRole`, and the preset policy name is `QcloudAccessForMySQLRole`.
+
+        This API calling may take up to 10 seconds, causing the client to time out. If it returns `InternalError`, call `DescribeDBInstanceInfo` to confirm whether the backend encryption is enabled successfully.
+
+        :param request: Request instance for OpenDBInstanceEncryption.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.OpenDBInstanceEncryptionRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.OpenDBInstanceEncryptionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OpenDBInstanceEncryption", params, headers=headers)
+            response = json.loads(body)
+            model = models.OpenDBInstanceEncryptionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def OpenDBInstanceGTID(self, request):
         """This API (OpenDBInstanceGTID) is used to enable GTID for a TencentDB instance. Only instances on or above version 5.6 are supported.
 
@@ -2698,31 +2777,6 @@ class CdbClient(AbstractClient):
             body = self.call("SwitchForUpgrade", params, headers=headers)
             response = json.loads(body)
             model = models.SwitchForUpgradeResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def UpgradeCDBProxy(self, request):
-        """接口已经废弃，请使用AdjustCdbProxy进行数据库代理的配置
-
-        This API is used to upgrade the configuration of database proxy.
-
-        :param request: Request instance for UpgradeCDBProxy.
-        :type request: :class:`tencentcloud.cdb.v20170320.models.UpgradeCDBProxyRequest`
-        :rtype: :class:`tencentcloud.cdb.v20170320.models.UpgradeCDBProxyResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("UpgradeCDBProxy", params, headers=headers)
-            response = json.loads(body)
-            model = models.UpgradeCDBProxyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

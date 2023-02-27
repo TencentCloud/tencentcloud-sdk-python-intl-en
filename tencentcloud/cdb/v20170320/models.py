@@ -1567,7 +1567,7 @@ class CreateBackupRequest(AbstractModel):
         r"""
         :param InstanceId: Instance ID in the format of cdb-c1nl9rpv. It is the same as the instance ID displayed on the TencentDB Console page.
         :type InstanceId: str
-        :param BackupMethod: Backup method of target instance. Value range: logical (logical cold backup), physical (physical cold backup).
+        :param BackupMethod: Target backup method. Valid values: `logical` (logical cold backup), `physical` (physical cold backup), `snapshot` (snapshot backup). Basic Edition instances only support snapshot backups.
         :type BackupMethod: str
         :param BackupDBTableList: Information of the table to be backed up. If this parameter is not set, the entire instance will be backed up by default. It can be set only in logical backup (i.e., BackupMethod = logical). The specified table must exist; otherwise, backup may fail.
 For example, if you want to backup tb1 and tb2 in db1 and the entire db2, you should set the parameter as [{"Db": "db1", "Table": "tb1"}, {"Db": "db1", "Table": "tb2"}, {"Db": "db2"} ].
@@ -3192,6 +3192,51 @@ class DescribeBackupDownloadRestrictionResponse(AbstractModel):
                 obj._deserialize(item)
                 self.LimitVpc.append(obj)
         self.LimitIp = params.get("LimitIp")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBackupEncryptionStatusRequest(AbstractModel):
+    """DescribeBackupEncryptionStatus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of cdb-XXXX, which is the same as that displayed in the TencentDB console.
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackupEncryptionStatusResponse(AbstractModel):
+    """DescribeBackupEncryptionStatus response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EncryptionStatus: Whether the physical cold backup is enabled for the instance. Valid values: `on`, `off`.
+        :type EncryptionStatus: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.EncryptionStatus = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.EncryptionStatus = params.get("EncryptionStatus")
         self.RequestId = params.get("RequestId")
 
 
@@ -4853,9 +4898,9 @@ class DescribeErrorLogDataRequest(AbstractModel):
         r"""
         :param InstanceId: Instance ID.
         :type InstanceId: str
-        :param StartTime: Start timestamp.
+        :param StartTime: Start timestamp, such as 1585142640.
         :type StartTime: int
-        :param EndTime: End timestamp.
+        :param EndTime: End timestamp, such as 1585142640.
         :type EndTime: int
         :param KeyWords: List of keywords to match. Up to 15 keywords are supported.
         :type KeyWords: list of str
@@ -5709,9 +5754,9 @@ class DescribeSlowLogDataRequest(AbstractModel):
         r"""
         :param InstanceId: Instance ID.
         :type InstanceId: str
-        :param StartTime: Start timestamp.
+        :param StartTime: Start timestamp, such as 1585142640.
         :type StartTime: int
-        :param EndTime: End timestamp.
+        :param EndTime: End timestamp, such as 1585142640.
         :type EndTime: int
         :param UserHosts: Client `Host` list.
         :type UserHosts: list of str
@@ -7749,6 +7794,51 @@ class ModifyBackupDownloadRestrictionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyBackupEncryptionStatusRequest(AbstractModel):
+    """ModifyBackupEncryptionStatus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of cdb-XXXX, which is the same as that displayed in the TencentDB console.
+        :type InstanceId: str
+        :param EncryptionStatus: Default encryption status for the new auto-generated physical backup files. Valid values: `on`, `off`.
+        :type EncryptionStatus: str
+        """
+        self.InstanceId = None
+        self.EncryptionStatus = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.EncryptionStatus = params.get("EncryptionStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBackupEncryptionStatusResponse(AbstractModel):
+    """ModifyBackupEncryptionStatus response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyCDBProxyConnectionPoolRequest(AbstractModel):
     """ModifyCDBProxyConnectionPool request structure.
 
@@ -8729,6 +8819,55 @@ class OpenAuditServiceRequest(AbstractModel):
 
 class OpenAuditServiceResponse(AbstractModel):
     """OpenAuditService response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class OpenDBInstanceEncryptionRequest(AbstractModel):
+    """OpenDBInstanceEncryption request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: TencentDB instance ID
+        :type InstanceId: str
+        :param KeyId: Custom key ID, which is the unique CMK ID. If this value is empty, the key KMS-CDB auto-generated by Tencent Cloud will be used.
+        :type KeyId: str
+        :param KeyRegion: Custom storage region, such as ap-guangzhou. When `KeyId` is not empty, this parameter is required.
+        :type KeyRegion: str
+        """
+        self.InstanceId = None
+        self.KeyId = None
+        self.KeyRegion = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.KeyId = params.get("KeyId")
+        self.KeyRegion = params.get("KeyRegion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OpenDBInstanceEncryptionResponse(AbstractModel):
+    """OpenDBInstanceEncryption response structure.
 
     """
 
@@ -11364,76 +11503,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
-
-
-class UpgradeCDBProxyRequest(AbstractModel):
-    """UpgradeCDBProxy request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param InstanceId: Instance ID
-        :type InstanceId: str
-        :param ProxyGroupId: Database proxy ID
-        :type ProxyGroupId: str
-        :param ProxyCount: Number of proxy nodes
-        :type ProxyCount: int
-        :param Cpu: Number of CPU cores per proxy node
-        :type Cpu: int
-        :param Mem: Memory per proxy node
-        :type Mem: int
-        :param ReloadBalance: Load rebalance mode. Valid values: `auto`, `manual`
-        :type ReloadBalance: str
-        :param UpgradeTime: Upgrade time. Valid values: `nowTime` (upgrade immediately), `timeWindow` (upgrade during instance maintenance time)
-        :type UpgradeTime: str
-        """
-        self.InstanceId = None
-        self.ProxyGroupId = None
-        self.ProxyCount = None
-        self.Cpu = None
-        self.Mem = None
-        self.ReloadBalance = None
-        self.UpgradeTime = None
-
-
-    def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.ProxyGroupId = params.get("ProxyGroupId")
-        self.ProxyCount = params.get("ProxyCount")
-        self.Cpu = params.get("Cpu")
-        self.Mem = params.get("Mem")
-        self.ReloadBalance = params.get("ReloadBalance")
-        self.UpgradeTime = params.get("UpgradeTime")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class UpgradeCDBProxyResponse(AbstractModel):
-    """UpgradeCDBProxy response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param AsyncRequestId: Async request ID
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type AsyncRequestId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.AsyncRequestId = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.AsyncRequestId = params.get("AsyncRequestId")
-        self.RequestId = params.get("RequestId")
 
 
 class UpgradeCDBProxyVersionRequest(AbstractModel):

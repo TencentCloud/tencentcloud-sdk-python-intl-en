@@ -2144,6 +2144,235 @@ class CreatePrometheusAgentResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreatePrometheusAlertPolicyRequest(AbstractModel):
+    """CreatePrometheusAlertPolicy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param AlertRule: Alert configuration
+        :type AlertRule: :class:`tencentcloud.monitor.v20180724.models.PrometheusAlertPolicyItem`
+        """
+        self.InstanceId = None
+        self.AlertRule = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("AlertRule") is not None:
+            self.AlertRule = PrometheusAlertPolicyItem()
+            self.AlertRule._deserialize(params.get("AlertRule"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePrometheusAlertPolicyResponse(AbstractModel):
+    """CreatePrometheusAlertPolicy response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: Alerting rule ID
+        :type Id: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Id = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.RequestId = params.get("RequestId")
+
+
+class CreatePrometheusClusterAgentRequest(AbstractModel):
+    """CreatePrometheusClusterAgent request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param Agents: Agent list
+        :type Agents: list of PrometheusClusterAgentBasic
+        """
+        self.InstanceId = None
+        self.Agents = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("Agents") is not None:
+            self.Agents = []
+            for item in params.get("Agents"):
+                obj = PrometheusClusterAgentBasic()
+                obj._deserialize(item)
+                self.Agents.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePrometheusClusterAgentResponse(AbstractModel):
+    """CreatePrometheusClusterAgent response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreatePrometheusConfigRequest(AbstractModel):
+    """CreatePrometheusConfig request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param ClusterType: Cluster type
+        :type ClusterType: str
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param ServiceMonitors: Configuration of service monitors
+        :type ServiceMonitors: list of PrometheusConfigItem
+        :param PodMonitors: Configuration of pod monitors
+        :type PodMonitors: list of PrometheusConfigItem
+        :param RawJobs: Configuration of Prometheus raw job
+        :type RawJobs: list of PrometheusConfigItem
+        """
+        self.InstanceId = None
+        self.ClusterType = None
+        self.ClusterId = None
+        self.ServiceMonitors = None
+        self.PodMonitors = None
+        self.RawJobs = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ClusterType = params.get("ClusterType")
+        self.ClusterId = params.get("ClusterId")
+        if params.get("ServiceMonitors") is not None:
+            self.ServiceMonitors = []
+            for item in params.get("ServiceMonitors"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.ServiceMonitors.append(obj)
+        if params.get("PodMonitors") is not None:
+            self.PodMonitors = []
+            for item in params.get("PodMonitors"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.PodMonitors.append(obj)
+        if params.get("RawJobs") is not None:
+            self.RawJobs = []
+            for item in params.get("RawJobs"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.RawJobs.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePrometheusConfigResponse(AbstractModel):
+    """CreatePrometheusConfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreatePrometheusGlobalNotificationRequest(AbstractModel):
+    """CreatePrometheusGlobalNotification request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param Notification: Alert notification channel
+        :type Notification: :class:`tencentcloud.monitor.v20180724.models.PrometheusNotificationItem`
+        """
+        self.InstanceId = None
+        self.Notification = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("Notification") is not None:
+            self.Notification = PrometheusNotificationItem()
+            self.Notification._deserialize(params.get("Notification"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePrometheusGlobalNotificationResponse(AbstractModel):
+    """CreatePrometheusGlobalNotification response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: ID of the global alert notification channel
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Id: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Id = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.RequestId = params.get("RequestId")
+
+
 class CreatePrometheusMultiTenantInstancePostPayModeRequest(AbstractModel):
     """CreatePrometheusMultiTenantInstancePostPayMode request structure.
 
@@ -2956,6 +3185,166 @@ class DeletePolicyGroupRequest(AbstractModel):
 
 class DeletePolicyGroupResponse(AbstractModel):
     """DeletePolicyGroup response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeletePrometheusAlertPolicyRequest(AbstractModel):
+    """DeletePrometheusAlertPolicy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param AlertIds: List of alerting rule IDs
+        :type AlertIds: list of str
+        :param Names: Alerting rule name
+        :type Names: list of str
+        """
+        self.InstanceId = None
+        self.AlertIds = None
+        self.Names = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.AlertIds = params.get("AlertIds")
+        self.Names = params.get("Names")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeletePrometheusAlertPolicyResponse(AbstractModel):
+    """DeletePrometheusAlertPolicy response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeletePrometheusClusterAgentRequest(AbstractModel):
+    """DeletePrometheusClusterAgent request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Agents: Agent list
+        :type Agents: list of PrometheusAgentInfo
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        """
+        self.Agents = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Agents") is not None:
+            self.Agents = []
+            for item in params.get("Agents"):
+                obj = PrometheusAgentInfo()
+                obj._deserialize(item)
+                self.Agents.append(obj)
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeletePrometheusClusterAgentResponse(AbstractModel):
+    """DeletePrometheusClusterAgent response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeletePrometheusConfigRequest(AbstractModel):
+    """DeletePrometheusConfig request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param ClusterType: Cluster type
+        :type ClusterType: str
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param ServiceMonitors: List of names of the service monitors to be deleted
+        :type ServiceMonitors: list of str
+        :param PodMonitors: List of names of the pod monitors to be deleted
+        :type PodMonitors: list of str
+        :param RawJobs: List of names of the raw jobs to be deleted
+        :type RawJobs: list of str
+        """
+        self.InstanceId = None
+        self.ClusterType = None
+        self.ClusterId = None
+        self.ServiceMonitors = None
+        self.PodMonitors = None
+        self.RawJobs = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ClusterType = params.get("ClusterType")
+        self.ClusterId = params.get("ClusterId")
+        self.ServiceMonitors = params.get("ServiceMonitors")
+        self.PodMonitors = params.get("PodMonitors")
+        self.RawJobs = params.get("RawJobs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeletePrometheusConfigResponse(AbstractModel):
+    """DeletePrometheusConfig response structure.
 
     """
 
@@ -5072,7 +5461,7 @@ class DescribeGrafanaEnvironmentsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: TCMG instance ID, such as “grafana-abcdefgh”.
+        :param InstanceId: ID of a TencentCloud Managed Service for Grafana instance, such as “grafana-abcdefgh”.
         :type InstanceId: str
         """
         self.InstanceId = None
@@ -7249,6 +7638,68 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class DescribePrometheusClusterAgentsRequest(AbstractModel):
+    """DescribePrometheusClusterAgents request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param Offset: Page offset
+        :type Offset: int
+        :param Limit: Page limit
+        :type Limit: int
+        """
+        self.InstanceId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePrometheusClusterAgentsResponse(AbstractModel):
+    """DescribePrometheusClusterAgents response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Agents: Information of the associated cluster
+        :type Agents: list of PrometheusAgentOverview
+        :param Total: The total number of the associated clusters
+        :type Total: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Agents = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Agents") is not None:
+            self.Agents = []
+            for item in params.get("Agents"):
+                obj = PrometheusAgentOverview()
+                obj._deserialize(item)
+                self.Agents.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribePrometheusConfigRequest(AbstractModel):
     """DescribePrometheusConfig request structure.
 
@@ -7295,6 +7746,133 @@ class DescribePrometheusConfigResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePrometheusGlobalConfigRequest(AbstractModel):
+    """DescribePrometheusGlobalConfig request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance-level scrape configuration
+        :type InstanceId: str
+        :param DisableStatistics: Whether to disable statistics
+        :type DisableStatistics: bool
+        """
+        self.InstanceId = None
+        self.DisableStatistics = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.DisableStatistics = params.get("DisableStatistics")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePrometheusGlobalConfigResponse(AbstractModel):
+    """DescribePrometheusGlobalConfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Config: Configuration content
+        :type Config: str
+        :param ServiceMonitors: List of service monitors and the corresponding targets information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ServiceMonitors: list of PrometheusConfigItem
+        :param PodMonitors: List of pod monitors and the corresponding targets information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PodMonitors: list of PrometheusConfigItem
+        :param RawJobs: List of raw jobs and the corresponding targets information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RawJobs: list of PrometheusConfigItem
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Config = None
+        self.ServiceMonitors = None
+        self.PodMonitors = None
+        self.RawJobs = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Config = params.get("Config")
+        if params.get("ServiceMonitors") is not None:
+            self.ServiceMonitors = []
+            for item in params.get("ServiceMonitors"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.ServiceMonitors.append(obj)
+        if params.get("PodMonitors") is not None:
+            self.PodMonitors = []
+            for item in params.get("PodMonitors"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.PodMonitors.append(obj)
+        if params.get("RawJobs") is not None:
+            self.RawJobs = []
+            for item in params.get("RawJobs"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.RawJobs.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePrometheusGlobalNotificationRequest(AbstractModel):
+    """DescribePrometheusGlobalNotification request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePrometheusGlobalNotificationResponse(AbstractModel):
+    """DescribePrometheusGlobalNotification response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Notification: Global alert notification channel
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Notification: :class:`tencentcloud.monitor.v20180724.models.PrometheusNotificationItem`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Notification = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Notification") is not None:
+            self.Notification = PrometheusNotificationItem()
+            self.Notification._deserialize(params.get("Notification"))
         self.RequestId = params.get("RequestId")
 
 
@@ -7925,6 +8503,75 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class DescribePrometheusTargetsTMPRequest(AbstractModel):
+    """DescribePrometheusTargetsTMP request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param ClusterType: Cluster type
+        :type ClusterType: str
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param Filters: Filters.
+You can filter by `RawJob`, `Job`, `ServiceMonitor`, `PodMonitor`, or `Health`.
+`Health` contains three values: `up`, `down`, `unknown`.
+        :type Filters: list of Filter
+        """
+        self.InstanceId = None
+        self.ClusterType = None
+        self.ClusterId = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ClusterType = params.get("ClusterType")
+        self.ClusterId = params.get("ClusterId")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePrometheusTargetsTMPResponse(AbstractModel):
+    """DescribePrometheusTargetsTMP response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Jobs: Targets information of all jobs
+        :type Jobs: list of PrometheusJobTargets
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Jobs = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Jobs") is not None:
+            self.Jobs = []
+            for item in params.get("Jobs"):
+                obj = PrometheusJobTargets()
+                obj._deserialize(item)
+                self.Jobs.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribePrometheusTempRequest(AbstractModel):
     """DescribePrometheusTemp request structure.
 
@@ -8054,14 +8701,18 @@ class DescribePrometheusZonesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RegionId: Region ID
+        :param RegionId: Region ID. You only need to specify the value of either `RegionId` or `RegionName`.
         :type RegionId: int
+        :param RegionName: Region name. You only need to specify the value of either `RegionId` or `RegionName`.
+        :type RegionName: str
         """
         self.RegionId = None
+        self.RegionName = None
 
 
     def _deserialize(self, params):
         self.RegionId = params.get("RegionId")
+        self.RegionName = params.get("RegionName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10576,6 +11227,230 @@ class ModifyPolicyGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyPrometheusAgentExternalLabelsRequest(AbstractModel):
+    """ModifyPrometheusAgentExternalLabels request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param ExternalLabels: New external labels
+        :type ExternalLabels: list of Label
+        """
+        self.InstanceId = None
+        self.ClusterId = None
+        self.ExternalLabels = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ClusterId = params.get("ClusterId")
+        if params.get("ExternalLabels") is not None:
+            self.ExternalLabels = []
+            for item in params.get("ExternalLabels"):
+                obj = Label()
+                obj._deserialize(item)
+                self.ExternalLabels.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyPrometheusAgentExternalLabelsResponse(AbstractModel):
+    """ModifyPrometheusAgentExternalLabels response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyPrometheusAlertPolicyRequest(AbstractModel):
+    """ModifyPrometheusAlertPolicy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param AlertRule: Alert configuration
+        :type AlertRule: :class:`tencentcloud.monitor.v20180724.models.PrometheusAlertPolicyItem`
+        """
+        self.InstanceId = None
+        self.AlertRule = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("AlertRule") is not None:
+            self.AlertRule = PrometheusAlertPolicyItem()
+            self.AlertRule._deserialize(params.get("AlertRule"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyPrometheusAlertPolicyResponse(AbstractModel):
+    """ModifyPrometheusAlertPolicy response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyPrometheusConfigRequest(AbstractModel):
+    """ModifyPrometheusConfig request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param ClusterType: Cluster type
+        :type ClusterType: str
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param ServiceMonitors: Configuration of service monitors
+        :type ServiceMonitors: list of PrometheusConfigItem
+        :param PodMonitors: Configuration of pod monitors
+        :type PodMonitors: list of PrometheusConfigItem
+        :param RawJobs: Configuration of Prometheus raw jobs
+        :type RawJobs: list of PrometheusConfigItem
+        """
+        self.InstanceId = None
+        self.ClusterType = None
+        self.ClusterId = None
+        self.ServiceMonitors = None
+        self.PodMonitors = None
+        self.RawJobs = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ClusterType = params.get("ClusterType")
+        self.ClusterId = params.get("ClusterId")
+        if params.get("ServiceMonitors") is not None:
+            self.ServiceMonitors = []
+            for item in params.get("ServiceMonitors"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.ServiceMonitors.append(obj)
+        if params.get("PodMonitors") is not None:
+            self.PodMonitors = []
+            for item in params.get("PodMonitors"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.PodMonitors.append(obj)
+        if params.get("RawJobs") is not None:
+            self.RawJobs = []
+            for item in params.get("RawJobs"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.RawJobs.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyPrometheusConfigResponse(AbstractModel):
+    """ModifyPrometheusConfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyPrometheusGlobalNotificationRequest(AbstractModel):
+    """ModifyPrometheusGlobalNotification request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param Notification: Alert notification channel
+        :type Notification: :class:`tencentcloud.monitor.v20180724.models.PrometheusNotificationItem`
+        """
+        self.InstanceId = None
+        self.Notification = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("Notification") is not None:
+            self.Notification = PrometheusNotificationItem()
+            self.Notification._deserialize(params.get("Notification"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyPrometheusGlobalNotificationResponse(AbstractModel):
+    """ModifyPrometheusGlobalNotification response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyPrometheusInstanceAttributesRequest(AbstractModel):
     """ModifyPrometheusInstanceAttributes request structure.
 
@@ -11119,6 +11994,76 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class PrometheusAgentInfo(AbstractModel):
+    """Information of managed Prometheus agent
+
+    """
+
+
+class PrometheusAgentOverview(AbstractModel):
+    """Overview of managed Prometheus agent
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterType: Cluster type
+        :type ClusterType: str
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param Status: Agent status. Valid values: 
+`normal`
+`abnormal`
+        :type Status: str
+        :param ClusterName: Cluster name
+        :type ClusterName: str
+        :param ExternalLabels: External labels
+External labels, which will be attached to all metrics in this cluster
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExternalLabels: list of Label
+        :param Region: Cluster region
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Region: str
+        :param VpcId: ID of the VPC where the cluster resides
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VpcId: str
+        :param FailedReason: Recorded information of failed operations, such as association.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FailedReason: str
+        """
+        self.ClusterType = None
+        self.ClusterId = None
+        self.Status = None
+        self.ClusterName = None
+        self.ExternalLabels = None
+        self.Region = None
+        self.VpcId = None
+        self.FailedReason = None
+
+
+    def _deserialize(self, params):
+        self.ClusterType = params.get("ClusterType")
+        self.ClusterId = params.get("ClusterId")
+        self.Status = params.get("Status")
+        self.ClusterName = params.get("ClusterName")
+        if params.get("ExternalLabels") is not None:
+            self.ExternalLabels = []
+            for item in params.get("ExternalLabels"):
+                obj = Label()
+                obj._deserialize(item)
+                self.ExternalLabels.append(obj)
+        self.Region = params.get("Region")
+        self.VpcId = params.get("VpcId")
+        self.FailedReason = params.get("FailedReason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PrometheusAlertManagerConfig(AbstractModel):
     """Self-built AlertManager configuration used by the alert channel
 
@@ -11269,6 +12214,107 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self.Annotations.append(obj)
         self.RuleState = params.get("RuleState")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PrometheusClusterAgentBasic(AbstractModel):
+    """Basic information of the cluster associated with a CM-integrated TMP instance.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Region: Cluster ID
+        :type Region: str
+        :param ClusterType: Cluster type
+        :type ClusterType: str
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param EnableExternal: Whether to enable public network CLB
+        :type EnableExternal: bool
+        :param InClusterPodConfig: Pod configurations of components deployed in the cluster
+        :type InClusterPodConfig: :class:`tencentcloud.monitor.v20180724.models.PrometheusClusterAgentPodConfig`
+        :param ExternalLabels: External labels, which will be attached to all metrics collected by this cluster
+        :type ExternalLabels: list of Label
+        :param NotInstallBasicScrape: Whether to install the default collection configuration.
+        :type NotInstallBasicScrape: bool
+        :param NotScrape: Whether to collect metrics (`true`: Drop all metrics; `false`: Collect default metrics)
+        :type NotScrape: bool
+        """
+        self.Region = None
+        self.ClusterType = None
+        self.ClusterId = None
+        self.EnableExternal = None
+        self.InClusterPodConfig = None
+        self.ExternalLabels = None
+        self.NotInstallBasicScrape = None
+        self.NotScrape = None
+
+
+    def _deserialize(self, params):
+        self.Region = params.get("Region")
+        self.ClusterType = params.get("ClusterType")
+        self.ClusterId = params.get("ClusterId")
+        self.EnableExternal = params.get("EnableExternal")
+        if params.get("InClusterPodConfig") is not None:
+            self.InClusterPodConfig = PrometheusClusterAgentPodConfig()
+            self.InClusterPodConfig._deserialize(params.get("InClusterPodConfig"))
+        if params.get("ExternalLabels") is not None:
+            self.ExternalLabels = []
+            for item in params.get("ExternalLabels"):
+                obj = Label()
+                obj._deserialize(item)
+                self.ExternalLabels.append(obj)
+        self.NotInstallBasicScrape = params.get("NotInstallBasicScrape")
+        self.NotScrape = params.get("NotScrape")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PrometheusClusterAgentPodConfig(AbstractModel):
+    """Additional pod configurations of the components deployed in the cluster when a cluster is associated
+
+    """
+
+    def __init__(self):
+        r"""
+        :param HostNet: Whether to use HostNetWork
+        :type HostNet: bool
+        :param NodeSelector: A parameter used to specify the running nodes for a pod
+        :type NodeSelector: list of Label
+        :param Tolerations: Tolerable taints
+        :type Tolerations: list of Toleration
+        """
+        self.HostNet = None
+        self.NodeSelector = None
+        self.Tolerations = None
+
+
+    def _deserialize(self, params):
+        self.HostNet = params.get("HostNet")
+        if params.get("NodeSelector") is not None:
+            self.NodeSelector = []
+            for item in params.get("NodeSelector"):
+                obj = Label()
+                obj._deserialize(item)
+                self.NodeSelector.append(obj)
+        if params.get("Tolerations") is not None:
+            self.Tolerations = []
+            for item in params.get("Tolerations"):
+                obj = Toleration()
+                obj._deserialize(item)
+                self.Tolerations.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11693,6 +12739,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class PrometheusJobTargets(AbstractModel):
+    """Targets of a Prometheus job
+
+    """
 
 
 class PrometheusNotificationItem(AbstractModel):
@@ -13036,6 +14088,38 @@ class TerminatePrometheusInstancesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class Toleration(AbstractModel):
+    """Kubernetes taint
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: Key of the taint to which the toleration is applied
+        :type Key: str
+        :param Operator: The key-value relationship
+        :type Operator: str
+        :param Effect: The taint effect to be matched
+        :type Effect: str
+        """
+        self.Key = None
+        self.Operator = None
+        self.Effect = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Operator = params.get("Operator")
+        self.Effect = params.get("Effect")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class URLNotice(AbstractModel):

@@ -1540,7 +1540,7 @@ class CreateRocketMQTopicRequest(AbstractModel):
         :type Topic: str
         :param Namespaces: Topic namespace. Currently, you can create topics only in one single namespace.
         :type Namespaces: list of str
-        :param Type: Topic type. Valid values: Normal, GlobalOrder, PartitionedOrder.
+        :param Type: Topic type. Valid values: `Normal`, `PartitionedOrder`, `Transaction`, `DelayScheduled`.
         :type Type: str
         :param ClusterId: Cluster ID
         :type ClusterId: str
@@ -3474,16 +3474,43 @@ class DescribeRabbitMQNodeListRequest(AbstractModel):
         :type Offset: int
         :param Limit: The maximum entries per page
         :type Limit: int
+        :param NodeName: Node name for fuzzy search
+        :type NodeName: str
+        :param Filters: Name and value of a filter.
+Currently, only the `nodeStatus` filter is supported.
+Valid values: `running`, `down`.
+It is an array type and can contain multiple filters.
+
+        :type Filters: list of Filter
+        :param SortElement: Sorting by a specified element.
+Valid values: `cpuUsage`, `diskUsage`.
+        :type SortElement: str
+        :param SortOrder: Sorting order.
+Valid values: `ascend`, `descend`.
+        :type SortOrder: str
         """
         self.InstanceId = None
         self.Offset = None
         self.Limit = None
+        self.NodeName = None
+        self.Filters = None
+        self.SortElement = None
+        self.SortOrder = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.NodeName = params.get("NodeName")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.SortElement = params.get("SortElement")
+        self.SortOrder = params.get("SortOrder")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5428,12 +5455,37 @@ class RabbitMQPrivateNode(AbstractModel):
         :param NodeName: Node name
 Note: This field may return null, indicating that no valid value can be obtained.
         :type NodeName: str
+        :param NodeStatus: Node status
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type NodeStatus: str
+        :param CPUUsage: CPU utilization
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CPUUsage: str
+        :param Memory: Memory usage in MB
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Memory: int
+        :param DiskUsage: Disk utilization
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DiskUsage: str
+        :param ProcessNumber: The number of RabbitMQ Erlang processes
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProcessNumber: int
         """
         self.NodeName = None
+        self.NodeStatus = None
+        self.CPUUsage = None
+        self.Memory = None
+        self.DiskUsage = None
+        self.ProcessNumber = None
 
 
     def _deserialize(self, params):
         self.NodeName = params.get("NodeName")
+        self.NodeStatus = params.get("NodeStatus")
+        self.CPUUsage = params.get("CPUUsage")
+        self.Memory = params.get("Memory")
+        self.DiskUsage = params.get("DiskUsage")
+        self.ProcessNumber = params.get("ProcessNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5480,6 +5532,9 @@ Note: This field may return null, indicating that no valid value can be obtained
         :type Remark: str
         :param SpecName: Instance specification ID
         :type SpecName: str
+        :param ExceptionInformation: Cluster exception
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExceptionInformation: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -5495,6 +5550,7 @@ Note: This field may return null, indicating that no valid value can be obtained
         self.PayMode = None
         self.Remark = None
         self.SpecName = None
+        self.ExceptionInformation = None
 
 
     def _deserialize(self, params):
@@ -5512,6 +5568,7 @@ Note: This field may return null, indicating that no valid value can be obtained
         self.PayMode = params.get("PayMode")
         self.Remark = params.get("Remark")
         self.SpecName = params.get("SpecName")
+        self.ExceptionInformation = params.get("ExceptionInformation")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5839,6 +5896,9 @@ class RocketMQClusterConfig(AbstractModel):
         :type MaxRetentionTime: int
         :param MaxLatencyTime: Maximum message delay in milliseconds
         :type MaxLatencyTime: int
+        :param MaxQueuesPerTopic: The maximum number of queues in a single topic
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MaxQueuesPerTopic: int
         """
         self.MaxTpsPerNamespace = None
         self.MaxNamespaceNum = None
@@ -5849,6 +5909,7 @@ class RocketMQClusterConfig(AbstractModel):
         self.UsedGroupNum = None
         self.MaxRetentionTime = None
         self.MaxLatencyTime = None
+        self.MaxQueuesPerTopic = None
 
 
     def _deserialize(self, params):
@@ -5861,6 +5922,7 @@ class RocketMQClusterConfig(AbstractModel):
         self.UsedGroupNum = params.get("UsedGroupNum")
         self.MaxRetentionTime = params.get("MaxRetentionTime")
         self.MaxLatencyTime = params.get("MaxLatencyTime")
+        self.MaxQueuesPerTopic = params.get("MaxQueuesPerTopic")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6232,7 +6294,7 @@ class RocketMQVipInstance(AbstractModel):
         :param InstanceVersion: Instance version
 Note: This field may return null, indicating that no valid values can be obtained.
         :type InstanceVersion: str
-        :param Status: Instance status. Valid values: `0` (Creating), `1` (Normal), `2` (Isolated), `3` (Terminated), `4` (Abnormal).
+        :param Status: Instance status. Valid values: `0` (Creating), `1` (Normal), `2` (Isolated), `3` (Terminated), `4` (Abnormal), `5` (Delivery failed).
         :type Status: int
         :param NodeCount: Number of nodes
         :type NodeCount: int
