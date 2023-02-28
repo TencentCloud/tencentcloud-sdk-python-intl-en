@@ -3695,6 +3695,124 @@ class DescribeRumGroupLogResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeRumLogExportRequest(AbstractModel):
+    """DescribeRumLogExport request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Export identifier name
+        :type Name: str
+        :param StartTime: Start time (required)
+        :type StartTime: str
+        :param Query: Query statement, which is required and can contain up to 4,096 characters.
+        :type Query: str
+        :param EndTime: End time (required)
+        :type EndTime: str
+        :param ID: Project ID (required)
+        :type ID: int
+        :param Fields: Filter field
+        :type Fields: list of str
+        """
+        self.Name = None
+        self.StartTime = None
+        self.Query = None
+        self.EndTime = None
+        self.ID = None
+        self.Fields = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.StartTime = params.get("StartTime")
+        self.Query = params.get("Query")
+        self.EndTime = params.get("EndTime")
+        self.ID = params.get("ID")
+        self.Fields = params.get("Fields")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRumLogExportResponse(AbstractModel):
+    """DescribeRumLogExport response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Response string
+        :type Result: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRumLogExportsRequest(AbstractModel):
+    """DescribeRumLogExports request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PageSize: Page size
+        :type PageSize: int
+        :param PageNum: Page number
+        :type PageNum: int
+        :param ID: Project ID (required)
+        :type ID: int
+        """
+        self.PageSize = None
+        self.PageNum = None
+        self.ID = None
+
+
+    def _deserialize(self, params):
+        self.PageSize = params.get("PageSize")
+        self.PageNum = params.get("PageNum")
+        self.ID = params.get("ID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRumLogExportsResponse(AbstractModel):
+    """DescribeRumLogExports response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Response string
+        :type Result: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRumLogListRequest(AbstractModel):
     """DescribeRumLogList request structure.
 
@@ -3704,7 +3822,7 @@ class DescribeRumLogListRequest(AbstractModel):
         r"""
         :param OrderBy: Sorting order (required). Valid values: `desc`, `asc`.
         :type OrderBy: str
-        :param StartTime: Start time (required)
+        :param StartTime: Start time in milliseconds. It is in timestamp format and is required.
         :type StartTime: str
         :param Limit: The number of raw logs returned for a single query. This parameter is required. Maximum value: `100`.
         :type Limit: int
@@ -3712,7 +3830,7 @@ class DescribeRumLogListRequest(AbstractModel):
         :type Page: int
         :param Query: Query statement, which is required and can contain up to 4,096 characters.
         :type Query: str
-        :param EndTime: End time (required)
+        :param EndTime: End time in milliseconds. It is in timestamp format and is required.
         :type EndTime: str
         :param ID: Project ID (required)
         :type ID: int
@@ -4467,6 +4585,47 @@ class ResumeInstanceRequest(AbstractModel):
 
 class ResumeInstanceResponse(AbstractModel):
     """ResumeInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ResumeProjectRequest(AbstractModel):
+    """ResumeProject request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: Project ID
+        :type ProjectId: int
+        """
+        self.ProjectId = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResumeProjectResponse(AbstractModel):
+    """ResumeProject response structure.
 
     """
 

@@ -901,8 +901,8 @@ class DescribeWhiteBoxKeyDetailsResponse(AbstractModel):
         r"""
         :param KeyInfos: White-box key information list
         :type KeyInfos: list of WhiteboxKeyInfo
-        :param TotalCount: Total number of keys
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param TotalCount: Total white-box keys.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type TotalCount: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1281,12 +1281,16 @@ class EnableKeyRotationRequest(AbstractModel):
         r"""
         :param KeyId: Unique CMK ID
         :type KeyId: str
+        :param RotateDays: The interval between each key rotation in days. Value range: 7 - 365 (default).
+        :type RotateDays: int
         """
         self.KeyId = None
+        self.RotateDays = None
 
 
     def _deserialize(self, params):
         self.KeyId = params.get("KeyId")
+        self.RotateDays = params.get("RotateDays")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1879,8 +1883,8 @@ class GetServiceStatusResponse(AbstractModel):
         :type InvalidType: int
         :param UserLevel: 0: Basic Edition, 1: Ultimate Edition
         :type UserLevel: int
-        :param ProExpireTime: Ultimate Edition expiration time
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param ProExpireTime: Expiration time of the KMS Ultimate edition. It’s represented in a Unix Epoch timestamp.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ProExpireTime: int
         :param ProRenewFlag: Whether to automatically renew Ultimate Edition. 0: no, 1: yes
 Note: this field may return null, indicating that no valid values can be obtained.

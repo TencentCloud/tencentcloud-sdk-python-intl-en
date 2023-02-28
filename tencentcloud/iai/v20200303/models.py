@@ -2751,8 +2751,7 @@ class Result(AbstractModel):
         :type Candidates: list of Candidate
         :param FaceRect: Position of detected face frame
         :type FaceRect: :class:`tencentcloud.iai.v20200303.models.FaceRect`
-        :param RetCode: Status return code of detected face image. 0: normal. 
--1601: the image quality control requirement is not met; in this case, `Candidate` is empty.
+        :param RetCode: The status return code for the face image detected. Valid values: `0` - normal; `-1601` - the image does not meet the quality requirements, in which case `Candidate` is empty; `-1604` - the face similarity is not higher than `FaceMatchThreshold`.
         :type RetCode: int
         """
         self.Candidates = None

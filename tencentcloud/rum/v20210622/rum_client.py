@@ -77,7 +77,7 @@ class RumClient(AbstractClient):
 
 
     def CreateProject(self, request):
-        """This API is used to create a project (owned by the specified team).
+        """This API is used to create a RUM application which belongs to a specific team.
 
         :param request: Request instance for CreateProject.
         :type request: :class:`tencentcloud.rum.v20210622.models.CreateProjectRequest`
@@ -146,7 +146,7 @@ class RumClient(AbstractClient):
 
 
     def CreateTawInstance(self, request):
-        """This API is used to create a RUM instance.
+        """This API is used to create a RUM business system.
 
         :param request: Request instance for CreateTawInstance.
         :type request: :class:`tencentcloud.rum.v20210622.models.CreateTawInstanceRequest`
@@ -845,7 +845,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeLogList(self, request):
-        """This API is used to get the list of logs in a project (created by an instance).
+        """This API is used to get the log list. It has been deprecated. Use `DescribeRumLogList` instead.
 
         :param request: Request instance for DescribeLogList.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeLogListRequest`
@@ -937,7 +937,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeProjectLimits(self, request):
-        """This API is used to get the list of project reporting rates.
+        """This API is used to get the sampling information of an application’s reporting APIs.
 
         :param request: Request instance for DescribeProjectLimits.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeProjectLimitsRequest`
@@ -1029,7 +1029,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeReleaseFiles(self, request):
-        """This API is used to get the list of sourcemap files of a project.
+        """This API is used to get the list of source maps of an application.
 
         :param request: Request instance for DescribeReleaseFiles.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeReleaseFilesRequest`
@@ -1065,6 +1065,52 @@ class RumClient(AbstractClient):
             body = self.call("DescribeRumGroupLog", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeRumGroupLogResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRumLogExport(self, request):
+        """This API is used to get the list of logs in a project (created by an instance).
+
+        :param request: Request instance for DescribeRumLogExport.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeRumLogExportRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeRumLogExportResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRumLogExport", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRumLogExportResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRumLogExports(self, request):
+        """This API is used to get the list of exported logs in a project.
+
+        :param request: Request instance for DescribeRumLogExports.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeRumLogExportsRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeRumLogExportsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRumLogExports", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRumLogExportsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1213,7 +1259,7 @@ class RumClient(AbstractClient):
 
 
     def ModifyInstance(self, request):
-        """This API is used to modify an instance.
+        """This API is used to modify a RUM business system.
 
         :param request: Request instance for ModifyInstance.
         :type request: :class:`tencentcloud.rum.v20210622.models.ModifyInstanceRequest`
@@ -1236,7 +1282,7 @@ class RumClient(AbstractClient):
 
 
     def ModifyProject(self, request):
-        """This API is used to modify a RUM project.
+        """This API is used to modify the RUM application information.
 
         :param request: Request instance for ModifyProject.
         :type request: :class:`tencentcloud.rum.v20210622.models.ModifyProjectRequest`
@@ -1282,7 +1328,7 @@ class RumClient(AbstractClient):
 
 
     def ResumeInstance(self, request):
-        """This API is used to resume an instance.
+        """This API is used to recover a RUM business system so that you can use the application to report data normally.
 
         :param request: Request instance for ResumeInstance.
         :type request: :class:`tencentcloud.rum.v20210622.models.ResumeInstanceRequest`
@@ -1295,6 +1341,29 @@ class RumClient(AbstractClient):
             body = self.call("ResumeInstance", params, headers=headers)
             response = json.loads(body)
             model = models.ResumeInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ResumeProject(self, request):
+        """This API is used to recover an application and resume data reporting.
+
+        :param request: Request instance for ResumeProject.
+        :type request: :class:`tencentcloud.rum.v20210622.models.ResumeProjectRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.ResumeProjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResumeProject", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResumeProjectResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

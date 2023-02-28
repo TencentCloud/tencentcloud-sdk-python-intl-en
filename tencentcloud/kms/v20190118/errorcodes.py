@@ -29,7 +29,7 @@ FAILEDOPERATION_DECRYPTERROR = 'FailedOperation.DecryptError'
 # Encryption failed.
 FAILEDOPERATION_ENCRYPTIONERROR = 'FailedOperation.EncryptionError'
 
-# 
+# Tagging error.
 FAILEDOPERATION_TAGGINGERROR = 'FailedOperation.TaggingError'
 
 # Internal error.
@@ -133,6 +133,9 @@ RESOURCEUNAVAILABLE_TOKENEXPIRED = 'ResourceUnavailable.TokenExpired'
 
 # Unauthorized operation.
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
+
+# 
+UNSUPPORTEDOPERATION = 'UnsupportedOperation'
 
 # External CMKs cannot be rotated.
 UNSUPPORTEDOPERATION_EXTERNALCMKCANNOTROTATE = 'UnsupportedOperation.ExternalCmkCanNotRotate'
