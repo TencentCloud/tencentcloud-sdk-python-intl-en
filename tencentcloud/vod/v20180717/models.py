@@ -4542,6 +4542,39 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class ArtifactRepairInfo(AbstractModel):
+    """Artifact removal (smoothing) configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: Whether to enable artifact removal. Valid values:
+<li>`ON`</li>
+<li>`OFF</li>
+        :type Switch: str
+        :param Type: The artifact removal type. This parameter is valid only if `Switch` is `ON`. Valid values:
+<li>`weak`</li>
+<li>`strong`</li>
+Default value: `weak`.
+        :type Type: str
+        """
+        self.Switch = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AsrFullTextConfigureInfo(AbstractModel):
     """Control parameter of full speech recognition task.
 
@@ -4741,6 +4774,40 @@ class AttachMediaSubtitlesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AudioDenoiseInfo(AbstractModel):
+    """Noise removal configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: Whether to enable noise removal. Valid values:
+<li>`ON`</li>
+<li>`OFF`</li>
+        :type Switch: str
+        :param Type: The noise removal type. This parameter is valid only if `Switch` is `ON`. Valid values:
+<li>`weak`</li>
+<li>`normal`</li>
+<li>`strong`</li>
+Default value: `weak`.
+        :type Type: str
+        """
+        self.Switch = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AudioTemplateInfo(AbstractModel):
     """Audio stream configuration parameter
 
@@ -4749,31 +4816,34 @@ class AudioTemplateInfo(AbstractModel):
     def __init__(self):
         r"""
         :param Codec: The audio codec.
-If `Container` parameter is `mp3`, the valid value is:
-<li>libmp3lame</li>
+If `Container` is `mp3`, the valid value is:
+<li>`libmp3lame`</li>
 If `Container` is `ogg` or `flac`, the valid value is:
-<li>flac</li>
+<li>`flac`</li>
 If `Container` is `m4a`, the valid values are:
-<li>libfdk_aac</li>
-<li>libmp3lame</li>
-<li>ac3</li>
+<li>`libfdk_aac`</li>
+<li>`libmp3lame`</li>
+<li>`ac3`</li>
 If `Container` is `mp4` or `flv`, the valid values are:
-<li>libfdk_aac: more suitable for mp4</li>
-<li>libmp3lame: More suitable for flv</li>
-<li>mp2</li>
-If `Container` is `hls`, the valid values are:
-<li>libfdk_aac</li>
-If `Format` is `HLS` or `MPEG-DASH`, the valid values are:
-<li>libfdk_aac</li>
+<li>`libfdk_aac` (Recommended for MP4)</li>
+<li>`libmp3lame` (Recommended for FLV)</li>
+<li>`mp2`</li>
+If `Container` is `hls`, the valid value is:
+<li>`libfdk_aac`</li>
+If `Format` is `HLS` or `MPEG-DASH`, the valid value is:
+<li>`libfdk_aac`</li>
+If `Container` is `wav`, the valid value is:
+<li>`pcm16`</li>
         :type Codec: str
         :param Bitrate: Audio stream bitrate in Kbps. Value range: 0 and [26, 256].
 If the value is 0, the bitrate of the audio stream will be the same as that of the original audio.
         :type Bitrate: int
-        :param SampleRate: Audio stream sample rate. Valid values:
-<li>32,000</li>
-<li>44,100</li>
-<li>48,000</li>
-In Hz.
+        :param SampleRate: The audio sample rate. Valid values:
+<li>`16000` (valid only if `Codec` is `pcm16`)</li>
+<li>`32000`</li>
+<li>`44100`</li>
+<li>`48000`</li>
+Unit: Hz.
         :type SampleRate: int
         :param AudioChannel: Audio channel system. Valid values:
 <li>1: mono-channel</li>
@@ -4811,30 +4881,33 @@ class AudioTemplateInfoForUpdate(AbstractModel):
     def __init__(self):
         r"""
         :param Codec: The audio codec.
-If `Container` parameter is `mp3`, the valid value is:
-<li>libmp3lame</li>
+If `Container` is `mp3`, the valid value is:
+<li>`libmp3lame`</li>
 If `Container` is `ogg` or `flac`, the valid value is:
-<li>flac</li>
+<li>`flac`</li>
 If `Container` is `m4a`, the valid values are:
-<li>libfdk_aac</li>
-<li>libmp3lame</li>
-<li>ac3</li>
+<li>`libfdk_aac`</li>
+<li>`libmp3lame`</li>
+<li>`ac3`</li>
 If `Container` is `mp4` or `flv`, the valid values are:
-<li>libfdk_aac: more suitable for mp4</li>
-<li>libmp3lame: More suitable for flv</li>
-<li>mp2</li>
-If `Container` is `hls`, the valid values are:
-<li>libfdk_aac</li>
-If `Format` is `HLS` or `MPEG-DASH`, the valid values are:
-<li>libfdk_aac</li>
+<li>`libfdk_aac` (Recommended for MP4)</li>
+<li>`libmp3lame` (Recommended for FLV)</li>
+<li>`mp2`</li>
+If `Container` is `hls`, the valid value is:
+<li>`libfdk_aac`</li>
+If `Format` is `HLS` or `MPEG-DASH`, the valid value is:
+<li>`libfdk_aac`</li>
+If `Container` is `wav`, the valid value is:
+<li>`pcm16`</li>
         :type Codec: str
         :param Bitrate: Audio stream bitrate in Kbps. Value range: 0 and [26, 256]. If the value is 0, the bitrate of the audio stream will be the same as that of the original audio.
         :type Bitrate: int
-        :param SampleRate: Audio stream sample rate. Valid values:
-<li>32,000</li>
-<li>44,100</li>
-<li>48,000</li>
-In Hz.
+        :param SampleRate: The audio sample rate. Valid values:
+<li>`16000` (valid only if `Codec` is `pcm16`)</li>
+<li>`32000`</li>
+<li>`44100`</li>
+<li>`48000`</li>
+Unit: Hz.
         :type SampleRate: int
         :param AudioChannel: Audio channel system. Valid values:
 <li>1: mono-channel</li>
@@ -5183,6 +5256,40 @@ class ClipTask2017(AbstractModel):
         if params.get("FileInfo") is not None:
             self.FileInfo = ClipFileInfo2017()
             self.FileInfo._deserialize(params.get("FileInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ColorEnhanceInfo(AbstractModel):
+    """Color enhancement configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: Whether to enable color enhancement. Valid values:
+<li>`ON`</li>
+<li>`OFF`</li>
+        :type Switch: str
+        :param Type: The color enhancement type. This parameter is valid only if `Switch` is `ON`.
+<li>`weak`</li>
+<li>`normal`</li>
+<li>`strong`</li>
+Default value: `weak`.
+        :type Type: str
+        """
+        self.Switch = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6942,7 +7049,7 @@ class CreateReviewTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Labels: The violation labels to use. Valid values: <li>`Porn`: Pornographic content</li> <li>`Terror`: Terrorist content</li> <li>Polity: Politically sensitive content</li> <li>`Moan`: Moaning</li>
+        :param Labels: The violation labels to use. Valid values: <li>`Porn`: Pornographic content</li> <li>`Terror`: Terrorist content</li> <li>`Moan`: Moaning</li>
         :type Labels: list of str
         :param SubAppId: 
         :type SubAppId: str
@@ -6989,6 +7096,77 @@ class CreateReviewTemplateResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Definition = params.get("Definition")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateRoundPlayRequest(AbstractModel):
+    """CreateRoundPlay request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: The playback start time, in [ISO 8601 date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).
+        :type StartTime: str
+        :param RoundPlaylist: The files on the list.
+<li>Array length limit: 100.</li>
+        :type RoundPlaylist: list of RoundPlayListItemInfo
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
+        :param Name: The playlist name (not longer than 64 characters).
+        :type Name: str
+        :param Desc: The playlist description (not longer than 256 characters).
+        :type Desc: str
+        """
+        self.StartTime = None
+        self.RoundPlaylist = None
+        self.SubAppId = None
+        self.Name = None
+        self.Desc = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        if params.get("RoundPlaylist") is not None:
+            self.RoundPlaylist = []
+            for item in params.get("RoundPlaylist"):
+                obj = RoundPlayListItemInfo()
+                obj._deserialize(item)
+                self.RoundPlaylist.append(obj)
+        self.SubAppId = params.get("SubAppId")
+        self.Name = params.get("Name")
+        self.Desc = params.get("Desc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRoundPlayResponse(AbstractModel):
+    """CreateRoundPlay response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RoundPlayId: The playlist ID, which is unique.
+        :type RoundPlayId: str
+        :param Url: The playlist URL.
+        :type Url: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RoundPlayId = None
+        self.Url = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RoundPlayId = params.get("RoundPlayId")
+        self.Url = params.get("Url")
         self.RequestId = params.get("RequestId")
 
 
@@ -7402,7 +7580,7 @@ class CreateTranscodeTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Container: Container. Valid values: mp4; flv; hls; mp3; flac; ogg; m4a. Among them, mp3, flac, ogg, and m4a are for audio files.
+        :param Container: The container format. Valid values: `mp4`, `flv`, `hls`, `mp3`, `flac`, `ogg`, `m4a`, `wav` ( `mp3`, `flac`, `ogg`, `m4a`, and `wav` are audio file formats).
         :type Container: str
         :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
@@ -8245,6 +8423,51 @@ class DeleteReviewTemplateRequest(AbstractModel):
 
 class DeleteReviewTemplateResponse(AbstractModel):
     """DeleteReviewTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteRoundPlayRequest(AbstractModel):
+    """DeleteRoundPlay request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RoundPlayId: The playlist ID, which is unique.
+        :type RoundPlayId: str
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
+        """
+        self.RoundPlayId = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.RoundPlayId = params.get("RoundPlayId")
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRoundPlayResponse(AbstractModel):
+    """DeleteRoundPlay response structure.
 
     """
 
@@ -10379,6 +10602,72 @@ class DescribeReviewTemplatesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeRoundPlaysRequest(AbstractModel):
+    """DescribeRoundPlays request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
+        :param RoundPlayIds: The playlist IDs. Array length limit: 100.
+        :type RoundPlayIds: list of str
+        :param Offset: 
+        :type Offset: int
+        :param Limit: The number of records to return. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        """
+        self.SubAppId = None
+        self.RoundPlayIds = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
+        self.RoundPlayIds = params.get("RoundPlayIds")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRoundPlaysResponse(AbstractModel):
+    """DescribeRoundPlays response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: The total number of records that meet the conditions.
+        :type TotalCount: int
+        :param RoundPlaySet: The information of the playlists.
+        :type RoundPlaySet: list of RoundPlayInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.RoundPlaySet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("RoundPlaySet") is not None:
+            self.RoundPlaySet = []
+            for item in params.get("RoundPlaySet"):
+                obj = RoundPlayInfo()
+                obj._deserialize(item)
+                self.RoundPlaySet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSampleSnapshotTemplatesRequest(AbstractModel):
     """DescribeSampleSnapshotTemplates request structure.
 
@@ -10921,12 +11210,13 @@ class DescribeTaskDetailResponse(AbstractModel):
 <li>`EditMedia`: Video editing</li>
 <li>`SplitMedia`: Video splitting</li>
 <li>`ComposeMedia`: Media file production</li>
-<li>`WechatPublish`: WeChat publishing</li>
-<li>`WechatMiniProgramPublish`: Publishing videos on WeChat Mini Program</li>
+<li>`WechatPublish`: Weixin publishing</li>
+<li>`WechatMiniProgramPublish`: Publishing videos on Weixin Mini Program</li>
 <li>`PullUpload`: Pulling media files for upload</li>
 <li>`FastClipMedia`: Quick clipping</li>
 <li>`RemoveWatermarkTask`: Watermark removal</li>
 <li>`DescribeFileAttributesTask`: Getting file attributes</li>
+<li>`RebuildMedia`; Remastering audio/video</li>
 <li> `ReviewAudioVideo`: Moderation</li>
         :type TaskType: str
         :param Status: Task status. Valid values:
@@ -10979,6 +11269,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param RemoveWatermarkTask: The information of a watermark removal task. This parameter is valid only if `TaskType` is `RemoveWatermark`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type RemoveWatermarkTask: :class:`tencentcloud.vod.v20180717.models.RemoveWatermarkTask`
+        :param RebuildMediaTask: The information of an audio/video remastering task. This parameter is valid only if `TaskType` is `RebuildMedia`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RebuildMediaTask: :class:`tencentcloud.vod.v20180717.models.RebuildMediaTask`
         :param ExtractTraceWatermarkTask: The information of a digital watermark extraction task. This parameter is valid only if `TaskType` is `ExtractTraceWatermark`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ExtractTraceWatermarkTask: :class:`tencentcloud.vod.v20180717.models.ExtractTraceWatermarkTask`
@@ -11012,6 +11305,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.CreateImageSpriteTask = None
         self.SnapshotByTimeOffsetTask = None
         self.RemoveWatermarkTask = None
+        self.RebuildMediaTask = None
         self.ExtractTraceWatermarkTask = None
         self.ReviewAudioVideoTask = None
         self.ReduceMediaBitrateTask = None
@@ -11064,6 +11358,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("RemoveWatermarkTask") is not None:
             self.RemoveWatermarkTask = RemoveWatermarkTask()
             self.RemoveWatermarkTask._deserialize(params.get("RemoveWatermarkTask"))
+        if params.get("RebuildMediaTask") is not None:
+            self.RebuildMediaTask = RebuildMediaTask()
+            self.RebuildMediaTask._deserialize(params.get("RebuildMediaTask"))
         if params.get("ExtractTraceWatermarkTask") is not None:
             self.ExtractTraceWatermarkTask = ExtractTraceWatermarkTask()
             self.ExtractTraceWatermarkTask._deserialize(params.get("ExtractTraceWatermarkTask"))
@@ -11956,13 +12253,14 @@ class EventContent(AbstractModel):
 <li>`NewFileUpload`: Video uploaded.</li>
 <li>`ProcedureStateChanged`: Task flow status changed.</li>
 <li>`FileDeleted`: Video deleted.</li>
+<li>`RestoreMediaComplete`: Video retrieved.</li>
 <li>`PullComplete`: Finished video pulling.</li>
 <li>`EditMediaComplete`: Finished video editing.</li>
 <li>`SplitMediaComplete`: Finished video splitting.</li>
-<li>`WechatPublishComplete`: Published to WeChat.</li>
 <li>`ComposeMediaComplete`: Finished producing the media file.</li>
-<li>`WechatMiniProgramPublishComplete`: Finished publishing on WeChat Mini Program.</li>
-<li>`FastClipMediaComplete`: Finished quick clipping.</li>
+<li>`WechatMiniProgramPublishComplete`: Finished publishing on Weixin Mini Program.</li>
+<li>`RemoveWatermark`: Watermark removed.</li>
+<li>`RebuildMediaComplete`: Finished audio/video remastering.</li>
 <li>`ReviewAudioVideoComplete`: Finished moderation.</li>
 <li>`ExtractTraceWatermarkComplete`: Finished digital watermark extraction.</li>
 <li>`DescribeFileAttributesComplete`: Finished getting file attributes.</li>
@@ -11988,8 +12286,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param EditMediaCompleteEvent: Video editing completion event, which is valid if the event type is `EditMediaComplete`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type EditMediaCompleteEvent: :class:`tencentcloud.vod.v20180717.models.EditMediaTask`
-        :param SplitMediaCompleteEvent: Video splitting completion event, which is valid if the event type is `EditMediaComplete`.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param SplitMediaCompleteEvent: The notification for completing video splitting, which is valid if the event type is `SplitMediaComplete`.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type SplitMediaCompleteEvent: :class:`tencentcloud.vod.v20180717.models.SplitMediaTask`
         :param ComposeMediaCompleteEvent: Media file composing task completion event, which is valid when the event type is `ComposeMediaComplete`.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -12015,13 +12313,16 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param WechatMiniProgramPublishCompleteEvent: Release on WeChat Mini Program task completion event, which is valid if the event type is `WechatMiniProgramPublishComplete`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type WechatMiniProgramPublishCompleteEvent: :class:`tencentcloud.vod.v20180717.models.WechatMiniProgramPublishTask`
-        :param RemoveWatermarkCompleteEvent: Watermark removal completion event. This parameter is valid only if `TaskType` is `RemoveWatermark`.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param RemoveWatermarkCompleteEvent: The notification for completing watermark removal. This parameter is valid only if the event type is `RemoveWatermark`.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type RemoveWatermarkCompleteEvent: :class:`tencentcloud.vod.v20180717.models.RemoveWatermarkTask`
-        :param RestoreMediaCompleteEvent: Callback for video retrieval. This parameter is valid when the event type is `RestoreMediaComplete`.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param RestoreMediaCompleteEvent: The notification for completing video retrieval. This parameter is valid if the event type is `RestoreMediaComplete`.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type RestoreMediaCompleteEvent: :class:`tencentcloud.vod.v20180717.models.RestoreMediaTask`
-        :param ExtractTraceWatermarkCompleteEvent: The callback for the completion of digital watermark extraction. This parameter is valid only if `EventType` is `ExtractTraceWatermarkComplete`.
+        :param RebuildMediaCompleteEvent: The notification for completing audio/video remastering. This parameter is valid only if the event type is `RebuildMediaComplete`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RebuildMediaCompleteEvent: :class:`tencentcloud.vod.v20180717.models.RebuildMediaTask`
+        :param ExtractTraceWatermarkCompleteEvent: The notification for completing digital watermark extraction. This parameter is valid only if `EventType` is `ExtractTraceWatermarkComplete`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ExtractTraceWatermarkCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ExtractTraceWatermarkTask`
         :param ReviewAudioVideoCompleteEvent: The callback for the completion of the moderation task. This parameter is valid only if `EventType` is `ReviewAudioVideoComplete`.
@@ -12052,6 +12353,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.WechatMiniProgramPublishCompleteEvent = None
         self.RemoveWatermarkCompleteEvent = None
         self.RestoreMediaCompleteEvent = None
+        self.RebuildMediaCompleteEvent = None
         self.ExtractTraceWatermarkCompleteEvent = None
         self.ReviewAudioVideoCompleteEvent = None
         self.ReduceMediaBitrateCompleteEvent = None
@@ -12109,6 +12411,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("RestoreMediaCompleteEvent") is not None:
             self.RestoreMediaCompleteEvent = RestoreMediaTask()
             self.RestoreMediaCompleteEvent._deserialize(params.get("RestoreMediaCompleteEvent"))
+        if params.get("RebuildMediaCompleteEvent") is not None:
+            self.RebuildMediaCompleteEvent = RebuildMediaTask()
+            self.RebuildMediaCompleteEvent._deserialize(params.get("RebuildMediaCompleteEvent"))
         if params.get("ExtractTraceWatermarkCompleteEvent") is not None:
             self.ExtractTraceWatermarkCompleteEvent = ExtractTraceWatermarkTask()
             self.ExtractTraceWatermarkCompleteEvent._deserialize(params.get("ExtractTraceWatermarkCompleteEvent"))
@@ -12482,6 +12787,37 @@ You can specify up to 100 labels, with each containing up to 16 characters.
         
 
 
+class FaceEnhanceInfo(AbstractModel):
+    """Face enhancement configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: Whether to enable face enhancement. Valid values:
+<li>`ON`</li>
+<li>`OFF`</li>
+        :type Switch: str
+        :param Intensity: The face enhancement strength. This parameter is valid only if `Switch` is `ON`. Value range: 0.0 – 1.0.
+Default value: `0.0`.
+        :type Intensity: float
+        """
+        self.Switch = None
+        self.Intensity = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Intensity = params.get("Intensity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FileDeleteResultItem(AbstractModel):
     """The result of file deletion.
 
@@ -12736,6 +13072,42 @@ class FrameTagConfigureInfoForUpdate(AbstractModel):
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
         self.ScreenshotInterval = params.get("ScreenshotInterval")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HDRInfo(AbstractModel):
+    """High dynamic range (HDR) configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: Whether to enable HDR. Valid values:
+<li>`ON`</li>
+<li>`OFF`</li>
+        :type Switch: str
+        :param Type: The HDR type. Valid values:
+<li>`hdr10`</li>
+<li>`hlg`</li>
+
+Note:
+<li>This parameter is valid only if `Switch` is `ON`.</li>
+<li>For audio/video remastering, this parameter is valid only if the output video codec is `libx265`.</li>
+        :type Type: str
+        """
+        self.Switch = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13567,6 +13939,38 @@ class LiveRealTimeClipStreamInfo(AbstractModel):
     def _deserialize(self, params):
         self.Type = params.get("Type")
         self.TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LowLightEnhanceInfo(AbstractModel):
+    """Low-light enhancement configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: Whether to enable low-light enhancement. Valid values:
+<li>`ON`</li>
+<li>`OFF`</li>
+        :type Switch: str
+        :param Type: The low-light enhancement type. This parameter is valid only if `Switch` is `ON`.
+<li>`normal`</li>
+Default value: `normal`.
+        :type Type: str
+        """
+        self.Switch = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -17114,7 +17518,7 @@ class ModifyReviewTemplateRequest(AbstractModel):
         :type Name: str
         :param Comment: 
         :type Comment: str
-        :param Labels: The violation labels to use. Valid values: <li>`Porn`: Pornographic content</li> <li>`Terror`: Terrorist content</li> <li>Polity: Politically sensitive content</li> <li>`Moan`: Moaning</li>
+        :param Labels: The violation labels to use. Valid values: <li>`Porn`: Pornographic content</li> <li>`Terror`: Terrorist content</li> <li>`Moan`: Moaning</li>
         :type Labels: list of str
         """
         self.Definition = None
@@ -17141,6 +17545,73 @@ class ModifyReviewTemplateRequest(AbstractModel):
 
 class ModifyReviewTemplateResponse(AbstractModel):
     """ModifyReviewTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyRoundPlayRequest(AbstractModel):
+    """ModifyRoundPlay request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RoundPlayId: The playlist ID, which is unique.
+        :type RoundPlayId: str
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
+        :param StartTime: The playback start time, in [ISO 8601 date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).
+        :type StartTime: str
+        :param RoundPlaylist: The files on the list.
+<li>Array length limit: 100.</li>
+        :type RoundPlaylist: list of RoundPlayListItemInfo
+        :param Name: The playlist name (not longer than 64 characters).
+        :type Name: str
+        :param Desc: The playlist description (not longer than 256 characters).
+        :type Desc: str
+        """
+        self.RoundPlayId = None
+        self.SubAppId = None
+        self.StartTime = None
+        self.RoundPlaylist = None
+        self.Name = None
+        self.Desc = None
+
+
+    def _deserialize(self, params):
+        self.RoundPlayId = params.get("RoundPlayId")
+        self.SubAppId = params.get("SubAppId")
+        self.StartTime = params.get("StartTime")
+        if params.get("RoundPlaylist") is not None:
+            self.RoundPlaylist = []
+            for item in params.get("RoundPlaylist"):
+                obj = RoundPlayListItemInfo()
+                obj._deserialize(item)
+                self.RoundPlaylist.append(obj)
+        self.Name = params.get("Name")
+        self.Desc = params.get("Desc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRoundPlayResponse(AbstractModel):
+    """ModifyRoundPlay response structure.
 
     """
 
@@ -17559,7 +18030,7 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
         :type Definition: int
         :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
-        :param Container: Container. Valid values: mp4; flv; hls; mp3; flac; ogg; m4a. Among them, mp3, flac, ogg, and m4a are for audio files.
+        :param Container: The container format. Valid values: `mp4`, `flv`, `hls`, `mp3`, `flac`, `ogg`, `m4a`, `wav` ( `mp3`, `flac`, `ogg`, `m4a`, and `wav` are audio file formats).
         :type Container: str
         :param Name: Transcoding template name. Length limit: 64 characters.
         :type Name: str
@@ -20134,6 +20605,599 @@ class PushUrlCacheResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RebuildMediaRequest(AbstractModel):
+    """RebuildMedia request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileId: The file ID.
+        :type FileId: str
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
+        :param StartTimeOffset: The start offset (seconds). If you do not specify this, the segment will start from the beginning of the video.
+        :type StartTimeOffset: float
+        :param EndTimeOffset: The end offset (seconds). If you do not specify this, the segment will end at the end of the video.
+        :type EndTimeOffset: float
+        :param RepairInfo: The video quality remastering parameters.
+        :type RepairInfo: :class:`tencentcloud.vod.v20180717.models.RepairInfo`
+        :param VideoFrameInterpolationInfo: The smart frame interpolation parameters.
+        :type VideoFrameInterpolationInfo: :class:`tencentcloud.vod.v20180717.models.VideoFrameInterpolationInfo`
+        :param SuperResolutionInfo: The super resolution parameters.
+        :type SuperResolutionInfo: :class:`tencentcloud.vod.v20180717.models.SuperResolutionInfo`
+        :param HDRInfo: The high dynamic range (HDR) parameters.
+        :type HDRInfo: :class:`tencentcloud.vod.v20180717.models.HDRInfo`
+        :param VideoDenoiseInfo: The image noise removal parameters.
+        :type VideoDenoiseInfo: :class:`tencentcloud.vod.v20180717.models.VideoDenoiseInfo`
+        :param AudioDenoiseInfo: The noise removal parameters.
+        :type AudioDenoiseInfo: :class:`tencentcloud.vod.v20180717.models.AudioDenoiseInfo`
+        :param ColorInfo: The color enhancement parameters.
+        :type ColorInfo: :class:`tencentcloud.vod.v20180717.models.ColorEnhanceInfo`
+        :param SharpInfo: The detail enhancement parameters.
+        :type SharpInfo: :class:`tencentcloud.vod.v20180717.models.SharpEnhanceInfo`
+        :param FaceInfo: The face enhancement parameters.
+        :type FaceInfo: :class:`tencentcloud.vod.v20180717.models.FaceEnhanceInfo`
+        :param LowLightInfo: The low-light enhancement parameters.
+        :type LowLightInfo: :class:`tencentcloud.vod.v20180717.models.LowLightEnhanceInfo`
+        :param ScratchRepairInfo: The banding removal parameters.
+        :type ScratchRepairInfo: :class:`tencentcloud.vod.v20180717.models.ScratchRepairInfo`
+        :param ArtifactRepairInfo: The artifact removal (smoothing) parameters.
+        :type ArtifactRepairInfo: :class:`tencentcloud.vod.v20180717.models.ArtifactRepairInfo`
+        :param TargetInfo: The output parameters of the file.
+        :type TargetInfo: :class:`tencentcloud.vod.v20180717.models.RebuildMediaTargetInfo`
+        :param SessionId: The session ID, which is used for de-duplication. If there was a request with the same session ID in the last three days, an error will be returned for the current request. The session ID can contain up to 50 characters. If you do not pass this parameter or pass in an empty string, duplicate sessions will not be identified.
+        :type SessionId: str
+        :param SessionContext: The source context, which is used to pass through user request information. The `ProcedureStateChanged` callback will return the value of this parameter. It can contain up to 1,000 characters.
+        :type SessionContext: str
+        :param TasksPriority: The task priority, which can be a value from -10 to 10. The higher the value, the higher the priority. If this parameter is left empty, 0 will be used.
+        :type TasksPriority: int
+        :param ExtInfo: A reserved parameter.
+        :type ExtInfo: str
+        """
+        self.FileId = None
+        self.SubAppId = None
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
+        self.RepairInfo = None
+        self.VideoFrameInterpolationInfo = None
+        self.SuperResolutionInfo = None
+        self.HDRInfo = None
+        self.VideoDenoiseInfo = None
+        self.AudioDenoiseInfo = None
+        self.ColorInfo = None
+        self.SharpInfo = None
+        self.FaceInfo = None
+        self.LowLightInfo = None
+        self.ScratchRepairInfo = None
+        self.ArtifactRepairInfo = None
+        self.TargetInfo = None
+        self.SessionId = None
+        self.SessionContext = None
+        self.TasksPriority = None
+        self.ExtInfo = None
+
+
+    def _deserialize(self, params):
+        self.FileId = params.get("FileId")
+        self.SubAppId = params.get("SubAppId")
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
+        if params.get("RepairInfo") is not None:
+            self.RepairInfo = RepairInfo()
+            self.RepairInfo._deserialize(params.get("RepairInfo"))
+        if params.get("VideoFrameInterpolationInfo") is not None:
+            self.VideoFrameInterpolationInfo = VideoFrameInterpolationInfo()
+            self.VideoFrameInterpolationInfo._deserialize(params.get("VideoFrameInterpolationInfo"))
+        if params.get("SuperResolutionInfo") is not None:
+            self.SuperResolutionInfo = SuperResolutionInfo()
+            self.SuperResolutionInfo._deserialize(params.get("SuperResolutionInfo"))
+        if params.get("HDRInfo") is not None:
+            self.HDRInfo = HDRInfo()
+            self.HDRInfo._deserialize(params.get("HDRInfo"))
+        if params.get("VideoDenoiseInfo") is not None:
+            self.VideoDenoiseInfo = VideoDenoiseInfo()
+            self.VideoDenoiseInfo._deserialize(params.get("VideoDenoiseInfo"))
+        if params.get("AudioDenoiseInfo") is not None:
+            self.AudioDenoiseInfo = AudioDenoiseInfo()
+            self.AudioDenoiseInfo._deserialize(params.get("AudioDenoiseInfo"))
+        if params.get("ColorInfo") is not None:
+            self.ColorInfo = ColorEnhanceInfo()
+            self.ColorInfo._deserialize(params.get("ColorInfo"))
+        if params.get("SharpInfo") is not None:
+            self.SharpInfo = SharpEnhanceInfo()
+            self.SharpInfo._deserialize(params.get("SharpInfo"))
+        if params.get("FaceInfo") is not None:
+            self.FaceInfo = FaceEnhanceInfo()
+            self.FaceInfo._deserialize(params.get("FaceInfo"))
+        if params.get("LowLightInfo") is not None:
+            self.LowLightInfo = LowLightEnhanceInfo()
+            self.LowLightInfo._deserialize(params.get("LowLightInfo"))
+        if params.get("ScratchRepairInfo") is not None:
+            self.ScratchRepairInfo = ScratchRepairInfo()
+            self.ScratchRepairInfo._deserialize(params.get("ScratchRepairInfo"))
+        if params.get("ArtifactRepairInfo") is not None:
+            self.ArtifactRepairInfo = ArtifactRepairInfo()
+            self.ArtifactRepairInfo._deserialize(params.get("ArtifactRepairInfo"))
+        if params.get("TargetInfo") is not None:
+            self.TargetInfo = RebuildMediaTargetInfo()
+            self.TargetInfo._deserialize(params.get("TargetInfo"))
+        self.SessionId = params.get("SessionId")
+        self.SessionContext = params.get("SessionContext")
+        self.TasksPriority = params.get("TasksPriority")
+        self.ExtInfo = params.get("ExtInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RebuildMediaResponse(AbstractModel):
+    """RebuildMedia response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: The ID of the audio/video remastering task. You need to provide this ID to query the task status.
+        :type TaskId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class RebuildMediaTargetAudioStream(AbstractModel):
+    """The output audio parameters of an audio/video remastering task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Codec: The audio codec.
+If `Container` is `mp3`, the valid value is:
+<li>`libmp3lame`</li>
+If `Container` is `ogg` or `flac`, the valid value is:
+<li>`flac`</li>
+If `Container` is `m4a`, the valid values are:
+<li>`libfdk_aac`</li>
+<li>`libmp3lame`</li>
+<li>`ac3`</li>
+If `Container` is `mp4` or `flv`, the valid values are:
+<li>`libfdk_aac` (Recommended for MP4)</li>
+<li>`libmp3lame` (Recommended for FLV)</li>
+<li>`mp2`</li>
+If `Container` is `hls`, the valid value is:
+<li>`libfdk_aac`</li>
+        :type Codec: str
+        :param Bitrate: The audio bitrate, in Kbps. Value range: 0 and 26-256.
+If the value is `0`, the original audio bitrate will be used.
+        :type Bitrate: int
+        :param SampleRate: The audio sample rate. Valid values:
+<li>`32000`</li>
+<li>`44100`</li>
+<li>`48000`</li>
+
+Unit: Hz.
+        :type SampleRate: int
+        :param AudioChannel: The audio channels. Valid values:
+<li>`1`: Mono-channel</li>
+<li>`2`: Dual-channel</li>
+<li>`6`: Stereo</li>
+
+You cannot set this parameter to `6` if the container format is an audio format (FLAC, OGG, MP3, M4A).
+Default value: `2`.
+        :type AudioChannel: int
+        """
+        self.Codec = None
+        self.Bitrate = None
+        self.SampleRate = None
+        self.AudioChannel = None
+
+
+    def _deserialize(self, params):
+        self.Codec = params.get("Codec")
+        self.Bitrate = params.get("Bitrate")
+        self.SampleRate = params.get("SampleRate")
+        self.AudioChannel = params.get("AudioChannel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RebuildMediaTargetInfo(AbstractModel):
+    """The parameters of an audio/video remastering output file.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MediaName: The filename. This parameter can contain up to 64 characters, and will be generated by the system if it is left empty.
+        :type MediaName: str
+        :param Description: The description (up to 128 characters). If you do not specify this, the description will be empty.
+        :type Description: str
+        :param ClassId: The ID of the file’s category. You can use the [CreateClass](https://intl.cloud.tencent.com/document/product/266/7812?from_cn_redirect=1) API to create a category and get the category ID.
+<li>The default value is `0`, which means the “Other” category.</li>
+        :type ClassId: int
+        :param ExpireTime: The expiration time of the output file, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=). The file will be deleted after the specified expiration time. By default, the file will never expire.
+        :type ExpireTime: str
+        :param Container: The output container format. Valid values: `mp4` (default), `flv`, `hls`.
+        :type Container: str
+        :param VideoStream: The output video parameters.
+        :type VideoStream: :class:`tencentcloud.vod.v20180717.models.RebuildMediaTargetVideoStream`
+        :param AudioStream: The output audio parameters.
+        :type AudioStream: :class:`tencentcloud.vod.v20180717.models.RebuildMediaTargetAudioStream`
+        :param RemoveVideo: Whether to remove video data. Valid values:
+<li>`0`: No</li>
+<li>`1`: Yes</li>
+
+Default value: `0`.
+        :type RemoveVideo: int
+        :param RemoveAudio: Whether to remove audio data. Valid values:
+<li>`0`: No</li>
+<li>`1`: Yes</li>
+
+Default value: `0`.
+        :type RemoveAudio: int
+        """
+        self.MediaName = None
+        self.Description = None
+        self.ClassId = None
+        self.ExpireTime = None
+        self.Container = None
+        self.VideoStream = None
+        self.AudioStream = None
+        self.RemoveVideo = None
+        self.RemoveAudio = None
+
+
+    def _deserialize(self, params):
+        self.MediaName = params.get("MediaName")
+        self.Description = params.get("Description")
+        self.ClassId = params.get("ClassId")
+        self.ExpireTime = params.get("ExpireTime")
+        self.Container = params.get("Container")
+        if params.get("VideoStream") is not None:
+            self.VideoStream = RebuildMediaTargetVideoStream()
+            self.VideoStream._deserialize(params.get("VideoStream"))
+        if params.get("AudioStream") is not None:
+            self.AudioStream = RebuildMediaTargetAudioStream()
+            self.AudioStream._deserialize(params.get("AudioStream"))
+        self.RemoveVideo = params.get("RemoveVideo")
+        self.RemoveAudio = params.get("RemoveAudio")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RebuildMediaTargetVideoStream(AbstractModel):
+    """The output video parameters of an audio/video remastering task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Codec: The video codec. Valid values:
+<li>`libx264`: H.264</li>
+<li>`libx265`: H.265</li>
+<li>`av1`: AOMedia Video 1</li>
+The default codec is H.264.
+        :type Codec: str
+        :param Bitrate: The video bitrate (Kbps). Value range: 0 and 128-35000.
+If the value is `0`, the original video bitrate will be used.
+        :type Bitrate: int
+        :param Fps: The video frame rate (Hz). Value range: 0-100. If the value is `0`, the original video frame rate will be used.
+        :type Fps: int
+        :param ResolutionAdaptive: Resolution adaption. Valid values:
+<li>`open`: Enable. When resolution adaption is enabled, `Width` indicates the long side of a video, while `Height` indicates the short side.</li>
+<li>`close`: Disable. When resolution adaption is disabled, `Width` indicates the width of a video, while `Height` indicates the height.</li>
+
+Default value: `open`.
+        :type ResolutionAdaptive: str
+        :param Width: The maximum video width (or long side), in pixels. Value range: 0 and 128-8192.
+<li>If both `Width` and `Height` are `0`, the original resolution will be used.</li>
+<li>If `Width` is 0 and `Height` is not, the video width will be proportionally scaled.</li>
+<li>If `Width` is not 0 and `Height` is, the video height will be proportionally scaled.</li>
+<li>If neither `Width` nor `Height` is 0, the specified width and height will be used.</li>
+
+Default value: `0`.
+        :type Width: int
+        :param Height: The maximum video height (or short side), in pixels. Value range: 0 and 128-8192.
+<li>If both `Width` and `Height` are `0`, the original resolution will be used.</li>
+<li>If `Width` is 0 and `Height` is not, the video width will be proportionally scaled.</li>
+<li>If `Width` is not 0 and `Height` is, the video height will be proportionally scaled.</li>
+<li>If neither `Width` nor `Height` is 0, the specified width and height will be used.</li>
+
+Default value: `0`.
+        :type Height: int
+        :param FillType: The fill mode, which indicates how a video is resized when the video’s original aspect ratio is different from the target aspect ratio. Valid values:
+<li>`stretch`: Stretch the image frame by frame to fill the entire screen. The video image may become "squashed" or "stretched" after transcoding.</li>
+<li>`black`: Keep the image's original aspect ratio and fill the blank space with black bars.</li>
+
+Default value: `stretch`.
+        :type FillType: str
+        :param Gop: The number of frames between two I-frames. Valid values: 0 and 1-100000.
+If this parameter is `0` or left empty, the interval will be determined by the system.
+        :type Gop: int
+        """
+        self.Codec = None
+        self.Bitrate = None
+        self.Fps = None
+        self.ResolutionAdaptive = None
+        self.Width = None
+        self.Height = None
+        self.FillType = None
+        self.Gop = None
+
+
+    def _deserialize(self, params):
+        self.Codec = params.get("Codec")
+        self.Bitrate = params.get("Bitrate")
+        self.Fps = params.get("Fps")
+        self.ResolutionAdaptive = params.get("ResolutionAdaptive")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.FillType = params.get("FillType")
+        self.Gop = params.get("Gop")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RebuildMediaTask(AbstractModel):
+    """The information of an audio/video remastering task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: The task ID.
+        :type TaskId: str
+        :param Status: The task flow status. Valid values:
+<li>`PROCESSING`</li>
+<li>`FINISH`</li>
+        :type Status: str
+        :param ErrCode: The error code. `0` indicates the task is successful. Other values indicate that the task failed.
+<li>`40000`: Invalid input parameter.</li>
+<li>`60000`: Source file error (e.g., video data is corrupted).</li>
+<li>`70000`: Internal server error. Please try again.</li>
+        :type ErrCode: int
+        :param Message: The error message.
+        :type Message: str
+        :param ErrCodeExt: The error code. An empty string indicates the task is successful; other values indicate that the task failed. For details, see [Video processing error codes](https://intl.cloud.tencent.com/document/product/266/39145?lang=en&pg=#video-processing).
+        :type ErrCodeExt: str
+        :param Progress: The task progress. Value range: 0-100.
+        :type Progress: int
+        :param Input: The input parameters of the audio/video remastering task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Input: :class:`tencentcloud.vod.v20180717.models.RebuildMediaTaskInput`
+        :param Output: The output parameters of the audio/video remastering task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Output: :class:`tencentcloud.vod.v20180717.models.RebuildMediaTaskOutput`
+        :param MetaData: The metadata of the output file.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
+        :param SessionId: The session ID, which is used for de-duplication. If there was a request with the same session ID in the last seven days, an error will be returned for the current request. The session ID can contain up to 50 characters. If you do not pass this parameter or pass in an empty string, duplicate sessions will not be identified.
+        :type SessionId: str
+        :param SessionContext: The source context, which is used to pass through user request information. The `ProcedureStateChanged` callback will return the value of this parameter. It can contain up to 1,000 characters.
+        :type SessionContext: str
+        """
+        self.TaskId = None
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.ErrCodeExt = None
+        self.Progress = None
+        self.Input = None
+        self.Output = None
+        self.MetaData = None
+        self.SessionId = None
+        self.SessionContext = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        self.ErrCodeExt = params.get("ErrCodeExt")
+        self.Progress = params.get("Progress")
+        if params.get("Input") is not None:
+            self.Input = RebuildMediaTaskInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = RebuildMediaTaskOutput()
+            self.Output._deserialize(params.get("Output"))
+        if params.get("MetaData") is not None:
+            self.MetaData = MediaMetaData()
+            self.MetaData._deserialize(params.get("MetaData"))
+        self.SessionId = params.get("SessionId")
+        self.SessionContext = params.get("SessionContext")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RebuildMediaTaskInput(AbstractModel):
+    """The input parameters of an audio/video remastering task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileId: The file ID.
+        :type FileId: str
+        :param StartTimeOffset: The start offset (seconds). If you do not specify this, the segment will start from the beginning of the video.
+        :type StartTimeOffset: float
+        :param EndTimeOffset: The end offset (seconds). If you do not specify this, the segment will end at the end of the video.
+        :type EndTimeOffset: float
+        :param RepairInfo: The video quality remastering parameters.
+        :type RepairInfo: :class:`tencentcloud.vod.v20180717.models.RepairInfo`
+        :param VideoFrameInterpolationInfo: The smart frame interpolation parameters.
+        :type VideoFrameInterpolationInfo: :class:`tencentcloud.vod.v20180717.models.VideoFrameInterpolationInfo`
+        :param SuperResolutionInfo: The super resolution parameters.
+        :type SuperResolutionInfo: :class:`tencentcloud.vod.v20180717.models.SuperResolutionInfo`
+        :param HDRInfo: The high dynamic range (HDR) parameters.
+        :type HDRInfo: :class:`tencentcloud.vod.v20180717.models.HDRInfo`
+        :param VideoDenoiseInfo: The image noise removal parameters.
+        :type VideoDenoiseInfo: :class:`tencentcloud.vod.v20180717.models.VideoDenoiseInfo`
+        :param AudioDenoiseInfo: The noise removal parameters.
+        :type AudioDenoiseInfo: :class:`tencentcloud.vod.v20180717.models.AudioDenoiseInfo`
+        :param ColorInfo: The color enhancement parameters.
+        :type ColorInfo: :class:`tencentcloud.vod.v20180717.models.ColorEnhanceInfo`
+        :param SharpInfo: The detail enhancement parameters.
+        :type SharpInfo: :class:`tencentcloud.vod.v20180717.models.SharpEnhanceInfo`
+        :param FaceInfo: The face enhancement parameters.
+        :type FaceInfo: :class:`tencentcloud.vod.v20180717.models.FaceEnhanceInfo`
+        :param LowLightInfo: The low-light enhancement parameters.
+        :type LowLightInfo: :class:`tencentcloud.vod.v20180717.models.LowLightEnhanceInfo`
+        :param ScratchRepairInfo: The banding removal parameters.
+        :type ScratchRepairInfo: :class:`tencentcloud.vod.v20180717.models.ScratchRepairInfo`
+        :param ArtifactRepairInfo: The artifact removal (smoothing) parameters.
+        :type ArtifactRepairInfo: :class:`tencentcloud.vod.v20180717.models.ArtifactRepairInfo`
+        :param TargetInfo: The output parameters of the file.
+        :type TargetInfo: :class:`tencentcloud.vod.v20180717.models.RebuildMediaTargetInfo`
+        """
+        self.FileId = None
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
+        self.RepairInfo = None
+        self.VideoFrameInterpolationInfo = None
+        self.SuperResolutionInfo = None
+        self.HDRInfo = None
+        self.VideoDenoiseInfo = None
+        self.AudioDenoiseInfo = None
+        self.ColorInfo = None
+        self.SharpInfo = None
+        self.FaceInfo = None
+        self.LowLightInfo = None
+        self.ScratchRepairInfo = None
+        self.ArtifactRepairInfo = None
+        self.TargetInfo = None
+
+
+    def _deserialize(self, params):
+        self.FileId = params.get("FileId")
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
+        if params.get("RepairInfo") is not None:
+            self.RepairInfo = RepairInfo()
+            self.RepairInfo._deserialize(params.get("RepairInfo"))
+        if params.get("VideoFrameInterpolationInfo") is not None:
+            self.VideoFrameInterpolationInfo = VideoFrameInterpolationInfo()
+            self.VideoFrameInterpolationInfo._deserialize(params.get("VideoFrameInterpolationInfo"))
+        if params.get("SuperResolutionInfo") is not None:
+            self.SuperResolutionInfo = SuperResolutionInfo()
+            self.SuperResolutionInfo._deserialize(params.get("SuperResolutionInfo"))
+        if params.get("HDRInfo") is not None:
+            self.HDRInfo = HDRInfo()
+            self.HDRInfo._deserialize(params.get("HDRInfo"))
+        if params.get("VideoDenoiseInfo") is not None:
+            self.VideoDenoiseInfo = VideoDenoiseInfo()
+            self.VideoDenoiseInfo._deserialize(params.get("VideoDenoiseInfo"))
+        if params.get("AudioDenoiseInfo") is not None:
+            self.AudioDenoiseInfo = AudioDenoiseInfo()
+            self.AudioDenoiseInfo._deserialize(params.get("AudioDenoiseInfo"))
+        if params.get("ColorInfo") is not None:
+            self.ColorInfo = ColorEnhanceInfo()
+            self.ColorInfo._deserialize(params.get("ColorInfo"))
+        if params.get("SharpInfo") is not None:
+            self.SharpInfo = SharpEnhanceInfo()
+            self.SharpInfo._deserialize(params.get("SharpInfo"))
+        if params.get("FaceInfo") is not None:
+            self.FaceInfo = FaceEnhanceInfo()
+            self.FaceInfo._deserialize(params.get("FaceInfo"))
+        if params.get("LowLightInfo") is not None:
+            self.LowLightInfo = LowLightEnhanceInfo()
+            self.LowLightInfo._deserialize(params.get("LowLightInfo"))
+        if params.get("ScratchRepairInfo") is not None:
+            self.ScratchRepairInfo = ScratchRepairInfo()
+            self.ScratchRepairInfo._deserialize(params.get("ScratchRepairInfo"))
+        if params.get("ArtifactRepairInfo") is not None:
+            self.ArtifactRepairInfo = ArtifactRepairInfo()
+            self.ArtifactRepairInfo._deserialize(params.get("ArtifactRepairInfo"))
+        if params.get("TargetInfo") is not None:
+            self.TargetInfo = RebuildMediaTargetInfo()
+            self.TargetInfo._deserialize(params.get("TargetInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RebuildMediaTaskOutput(AbstractModel):
+    """The output parameters of an audio/video remastering task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileType: The file type, such as MP4 and FLV.
+        :type FileType: str
+        :param FileUrl: The playback URL of the output file.
+        :type FileUrl: str
+        :param FileId: The file ID.
+        :type FileId: str
+        :param MediaName: The filename. This parameter can contain up to 64 characters, and will be generated by the system if it is left empty.
+        :type MediaName: str
+        :param ClassId: The ID of the file’s category. You can use the [CreateClass](https://intl.cloud.tencent.com/document/product/266/7812?from_cn_redirect=1) API to create a category and get the category ID.
+<li>The default value is `0`, which means the “Other” category.</li>
+        :type ClassId: int
+        :param ExpireTime: The expiration time of the output file, in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=). The file will be deleted after the specified expiration time. By default, the file will never expire.
+        :type ExpireTime: str
+        """
+        self.FileType = None
+        self.FileUrl = None
+        self.FileId = None
+        self.MediaName = None
+        self.ClassId = None
+        self.ExpireTime = None
+
+
+    def _deserialize(self, params):
+        self.FileType = params.get("FileType")
+        self.FileUrl = params.get("FileUrl")
+        self.FileId = params.get("FileId")
+        self.MediaName = params.get("MediaName")
+        self.ClassId = params.get("ClassId")
+        self.ExpireTime = params.get("ExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ReduceMediaBitrateAdaptiveDynamicStreamingResult(AbstractModel):
     """The information of an adaptive bitrate (bitrate reduction) task.
 
@@ -20617,6 +21681,40 @@ Note: This field may return null, indicating that no valid values can be obtaine
             self.Output._deserialize(params.get("Output"))
         self.SessionId = params.get("SessionId")
         self.SessionContext = params.get("SessionContext")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RepairInfo(AbstractModel):
+    """The video quality remastering parameters.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: Whether to enable video quality remastering. Valid values:
+<li>`ON`</li>
+<li>`OFF`</li>
+        :type Switch: str
+        :param Type: The video quality remastering type. This parameter is valid only if `Switch` is `ON`.
+<li>`weak`</li>
+<li>`normal`</li>
+<li>`strong`</li>
+Default value: `weak`.
+        :type Type: str
+        """
+        self.Switch = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -21398,10 +22496,9 @@ class ReviewInfo(AbstractModel):
 `Label` indicates the violation label. Valid values:
 <li>`Porn` (pornographic content)</li>
 <li>`Terror` (terrorist content)</li>
-<li>Polity (politically sensitive content)</li>
-<li>`Ad`</li>
+<li>`Polity` (politically sensitive content)</li>
+<li>`Ad` (advertisement)</li>
 <li>`Illegal` (illegal content)</li>
-<li>`Religion`</li>
 <li>`Abuse`</li>
 <li>`Moan`</li>
         :type TypeSet: list of str
@@ -21469,6 +22566,86 @@ class ReviewTemplate(AbstractModel):
         self.Labels = params.get("Labels")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RoundPlayInfo(AbstractModel):
+    """The information of a playlist.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RoundPlayId: The playlist ID.
+        :type RoundPlayId: str
+        :param StartTime: The playback start time, in [ISO 8601 date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).
+        :type StartTime: str
+        :param RoundPlaylist: The files on the list.
+        :type RoundPlaylist: list of RoundPlayListItemInfo
+        :param Name: The playlist name (not longer than 64 characters).
+        :type Name: str
+        :param Desc: The playlist description (not longer than 256 characters).
+        :type Desc: str
+        """
+        self.RoundPlayId = None
+        self.StartTime = None
+        self.RoundPlaylist = None
+        self.Name = None
+        self.Desc = None
+
+
+    def _deserialize(self, params):
+        self.RoundPlayId = params.get("RoundPlayId")
+        self.StartTime = params.get("StartTime")
+        if params.get("RoundPlaylist") is not None:
+            self.RoundPlaylist = []
+            for item in params.get("RoundPlaylist"):
+                obj = RoundPlayListItemInfo()
+                obj._deserialize(item)
+                self.RoundPlaylist.append(obj)
+        self.Name = params.get("Name")
+        self.Desc = params.get("Desc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RoundPlayListItemInfo(AbstractModel):
+    """The information of a file on a playlist.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileId: The file ID.
+        :type FileId: str
+        :param AudioVideoType: The type of the media played. Valid values:
+<li>`Transcode`: A transcoding output. Because a file may be bound to multiple transcoding templates, you need to specify `Definition` if the type is `Transcode`.</li>
+<li>`Original`: The original file.</li>
+The file must be in HLS format.
+        :type AudioVideoType: str
+        :param Definition: The transcoding template used to generate the transcoding output played. This parameter is required if `AudioVideoType` is `Transcode`.
+        :type Definition: int
+        """
+        self.FileId = None
+        self.AudioVideoType = None
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.FileId = params.get("FileId")
+        self.AudioVideoType = params.get("AudioVideoType")
+        self.Definition = params.get("Definition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -21631,6 +22808,43 @@ Default value: black.
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
         self.FillType = params.get("FillType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScratchRepairInfo(AbstractModel):
+    """Banding removal configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: Whether to enable banding removal. Valid values:
+<li>`ON`</li>
+<li>`OFF`</li>
+        :type Switch: str
+        :param Intensity: The banding removal strength. Value range: 0.0 – 1.0. This parameter is valid only if `Switch` is `ON`.
+Default value: `0.0`.
+        :type Intensity: float
+        :param Type: The banding removal type. This parameter is valid only if `Switch` is `ON`. Valid values:
+<li>`normal`</li>
+Default value: `normal`.
+        :type Type: str
+        """
+        self.Switch = None
+        self.Intensity = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Intensity = params.get("Intensity")
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -21954,6 +23168,37 @@ class SetDrmKeyProviderInfoResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class SharpEnhanceInfo(AbstractModel):
+    """Detail enhancement configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: Whether to enable detail enhancement. Valid values:
+<li>`ON`</li>
+<li>`OFF`</li>
+        :type Switch: str
+        :param Intensity: The detail enhancement strength. Value range: 0.0 – 1.0. This parameter is valid only if `Switch` is `ON`.
+Default value: `0.0`.
+        :type Intensity: float
+        """
+        self.Switch = None
+        self.Intensity = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Intensity = params.get("Intensity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SimpleHlsClipRequest(AbstractModel):
@@ -22789,6 +24034,45 @@ class SubtitleFormatsOperation(AbstractModel):
     def _deserialize(self, params):
         self.Type = params.get("Type")
         self.Formats = params.get("Formats")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SuperResolutionInfo(AbstractModel):
+    """Super resolution configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: Whether to enable super resolution. Valid values:
+<li>ON</li>
+<li>`OFF`</li>
+If super resolution is enabled, the output resolution will double.
+        :type Switch: str
+        :param Type: The super resolution type. This parameter is valid only if `Switch` is `ON`. Valid values:
+<li>`lq`: For low-resolution videos with obvious noise</li>
+<li>`hq`: For high-resolution videos</li>
+Default value: `lq`.
+        :type Type: str
+        :param Size: The ratio of the target resolution to the original resolution. Valid values: `2`.
+Default value: `2`.
+        :type Size: int
+        """
+        self.Switch = None
+        self.Type = None
+        self.Size = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Type = params.get("Type")
+        self.Size = params.get("Size")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -24400,6 +25684,69 @@ Up to 10 labels are allowed, each containing no more than 16 characters.
         self.LabelSet = params.get("LabelSet")
         self.BlockConfidence = params.get("BlockConfidence")
         self.ReviewConfidence = params.get("ReviewConfidence")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoDenoiseInfo(AbstractModel):
+    """Image noise removal configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: Whether to enable image noise removal. Valid values:
+<li>`ON`</li>
+<li>`OFF`</li>
+        :type Switch: str
+        :param Type: The image noise removal type. This parameter is valid only if `Switch` is `ON`. Valid values:
+<li>`weak`</li>
+<li>`strong`</li>
+Default value: `weak`.
+        :type Type: str
+        """
+        self.Switch = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoFrameInterpolationInfo(AbstractModel):
+    """Smart frame interpolation configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: Whether to enable smart frame interpolation. Valid values:
+<li>`ON`</li>
+<li>`OFF`</li>
+        :type Switch: str
+        :param Fps: The frame rate. Value range: (0, 60]. This parameter is valid only if `Switch` is `ON`. By default, the original frame rate will be used.
+        :type Fps: int
+        """
+        self.Switch = None
+        self.Fps = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Fps = params.get("Fps")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

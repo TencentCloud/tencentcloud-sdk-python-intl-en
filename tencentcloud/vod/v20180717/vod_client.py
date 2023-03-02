@@ -413,6 +413,31 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateRoundPlay(self, request):
+        """This API is used to create a playlist. You can create at most 100 playlists.
+        For each video on the list, you can either use the original file or a transcoding file.
+        The files must be in HLS format. Preferably, they should have the same bitrate and resolution.
+
+        :param request: Request instance for CreateRoundPlay.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateRoundPlayRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateRoundPlayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateRoundPlay", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateRoundPlayResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateSampleSnapshotTemplate(self, request):
         """This API is used to create a custom sampled screencapturing template. Up to 16 templates can be created.
 
@@ -898,6 +923,29 @@ class VodClient(AbstractClient):
             body = self.call("DeleteReviewTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteReviewTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteRoundPlay(self, request):
+        """This API is used to delete a playlist.
+
+        :param request: Request instance for DeleteRoundPlay.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DeleteRoundPlayRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DeleteRoundPlayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRoundPlay", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteRoundPlayResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1674,6 +1722,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeRoundPlays(self, request):
+        """This API is used to query playlists.
+
+        :param request: Request instance for DescribeRoundPlays.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeRoundPlaysRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeRoundPlaysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRoundPlays", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRoundPlaysResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeSampleSnapshotTemplates(self, request):
         """This API is used to query the list of sampled screencapturing templates and supports paged queries by filters.
 
@@ -2413,6 +2484,30 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyRoundPlay(self, request):
+        """This API is used to modify a playlist.
+        The modification will only take effect for new playback requests. For ongoing playback, the old playlist will be playable for seven days after the modification.
+
+        :param request: Request instance for ModifyRoundPlay.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ModifyRoundPlayRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ModifyRoundPlayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRoundPlay", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyRoundPlayResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifySampleSnapshotTemplate(self, request):
         """This API is used to modify a custom sampled screencapturing template.
 
@@ -2823,6 +2918,29 @@ class VodClient(AbstractClient):
             body = self.call("PushUrlCache", params, headers=headers)
             response = json.loads(body)
             model = models.PushUrlCacheResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RebuildMedia(self, request):
+        """This API is used to remaster audio/video.
+
+        :param request: Request instance for RebuildMedia.
+        :type request: :class:`tencentcloud.vod.v20180717.models.RebuildMediaRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.RebuildMediaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RebuildMedia", params, headers=headers)
+            response = json.loads(body)
+            model = models.RebuildMediaResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

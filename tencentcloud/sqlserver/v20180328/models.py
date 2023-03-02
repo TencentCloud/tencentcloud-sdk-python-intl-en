@@ -33,10 +33,12 @@ class AccountCreateInfo(AbstractModel):
         :type DBPrivileges: list of DBPrivilege
         :param Remark: Account remarks
         :type Remark: str
-        :param IsAdmin: Whether it is an admin account. Default value: no
+        :param IsAdmin: Whether it is an admin account. Valid values: `true` (Yes. It is an admin account when the instance is a basic edition type and `AccountType` is `L0`; it is a privileged account when the instance is a dual-server high availability edition type and `AccountType` is `L1`.), `false` (No. It is a standard account when `AccountType` is `L3`.)
         :type IsAdmin: bool
         :param Authentication: Valid values: `win-windows authentication`, `sql-sqlserver authentication`. Default value: `sql-sqlserver authentication`
         :type Authentication: str
+        :param AccountType: Account type, which is an extension field of `IsAdmin`. Valid values: `L0` (admin account, only for basic edition), `L1` (privileged account), `L2` (designated account), `L3` (standard account, default)
+        :type AccountType: str
         """
         self.UserName = None
         self.Password = None
@@ -44,6 +46,7 @@ class AccountCreateInfo(AbstractModel):
         self.Remark = None
         self.IsAdmin = None
         self.Authentication = None
+        self.AccountType = None
 
 
     def _deserialize(self, params):
@@ -58,6 +61,7 @@ class AccountCreateInfo(AbstractModel):
         self.Remark = params.get("Remark")
         self.IsAdmin = params.get("IsAdmin")
         self.Authentication = params.get("Authentication")
+        self.AccountType = params.get("AccountType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -96,6 +100,8 @@ class AccountDetail(AbstractModel):
         :type Authentication: str
         :param Host: The host required for `win-windows authentication` account
         :type Host: str
+        :param AccountType: Account type. Valid values: `L0` (admin account, only for basic edition), `L1` (privileged account), `L2` (designated account), `L3` (standard account).
+        :type AccountType: str
         """
         self.Name = None
         self.Remark = None
@@ -108,6 +114,7 @@ class AccountDetail(AbstractModel):
         self.IsAdmin = None
         self.Authentication = None
         self.Host = None
+        self.AccountType = None
 
 
     def _deserialize(self, params):
@@ -127,6 +134,7 @@ class AccountDetail(AbstractModel):
         self.IsAdmin = params.get("IsAdmin")
         self.Authentication = params.get("Authentication")
         self.Host = params.get("Host")
+        self.AccountType = params.get("AccountType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -173,16 +181,20 @@ class AccountPrivilege(AbstractModel):
         r"""
         :param UserName: Database username
         :type UserName: str
-        :param Privilege: Database permissions. ReadWrite: read/write, ReadOnly: read-only
+        :param Privilege: Database permission. Valid values: `ReadWrite` (read-write), `ReadOnly` (read-only), `Delete` (delete the database permissions of this account), `DBOwner` (owner).
         :type Privilege: str
+        :param AccountType: Account name. Valid values: `L0` (admin account, only for basic edition), `L1` (privileged account), `L2` (designated account), `L3` (standard account).
+        :type AccountType: str
         """
         self.UserName = None
         self.Privilege = None
+        self.AccountType = None
 
 
     def _deserialize(self, params):
         self.UserName = params.get("UserName")
         self.Privilege = params.get("Privilege")
+        self.AccountType = params.get("AccountType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -203,12 +215,15 @@ class AccountPrivilegeModifyInfo(AbstractModel):
         :type UserName: str
         :param DBPrivileges: Account permission change information
         :type DBPrivileges: list of DBPrivilegeModifyInfo
-        :param IsAdmin: Whether it is an admin account
+        :param IsAdmin: Whether the account has the admin permission. Valid values: `true` (Yes. It is an admin account when the instance is a basic edition type and `AccountType` is `L0`; it is a privileged account when the instance is a dual-server high availability edition type and `AccountType` is `L1`.), `false` (No. The admin permission is disabled by default).
         :type IsAdmin: bool
+        :param AccountType: Account type, which is an extension field of `IsAdmin`. Valid values: `L0` (admin account, only for basic edition), `L1` (privileged account), `L2` (designated account), `L3` (standard account, default)
+        :type AccountType: str
         """
         self.UserName = None
         self.DBPrivileges = None
         self.IsAdmin = None
+        self.AccountType = None
 
 
     def _deserialize(self, params):
@@ -220,6 +235,7 @@ class AccountPrivilegeModifyInfo(AbstractModel):
                 obj._deserialize(item)
                 self.DBPrivileges.append(obj)
         self.IsAdmin = params.get("IsAdmin")
+        self.AccountType = params.get("AccountType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1691,7 +1707,7 @@ class DBPrivilege(AbstractModel):
         r"""
         :param DBName: Database name
         :type DBName: str
-        :param Privilege: Database permissions. ReadWrite: read/write, ReadOnly: read-only
+        :param Privilege: Database permissions. Valid values: `ReadWrite` (read-write), `ReadOnly` (read-only), `DBOwner` (owner)
         :type Privilege: str
         """
         self.DBName = None
@@ -1719,7 +1735,7 @@ class DBPrivilegeModifyInfo(AbstractModel):
         r"""
         :param DBName: Database name
         :type DBName: str
-        :param Privilege: Permission change information. ReadWrite: read/write, ReadOnly: read-only, Delete: the account has the permission to delete this database
+        :param Privilege: Permission modification information. Valid values: `ReadWrite` (read-write), `ReadOnly` (read-only), `Delete` (delete the account's permission to this database), `DBOwner` (owner).
         :type Privilege: str
         """
         self.DBName = None
@@ -1757,6 +1773,34 @@ class DBRemark(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DBRenameRes(AbstractModel):
+    """Database renaming response parameter
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NewName: Name of the new database
+        :type NewName: str
+        :param OldName: Name of the old database
+        :type OldName: str
+        """
+        self.NewName = None
+        self.OldName = None
+
+
+    def _deserialize(self, params):
+        self.NewName = params.get("NewName")
+        self.OldName = params.get("OldName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1809,6 +1853,8 @@ class DbNormalDetail(AbstractModel):
         :type StateDesc: str
         :param UserAccessDesc: User type
         :type UserAccessDesc: str
+        :param CreateTime: Database creation time
+        :type CreateTime: str
         """
         self.IsSubscribed = None
         self.CollationName = None
@@ -1828,6 +1874,7 @@ class DbNormalDetail(AbstractModel):
         self.RetentionPeriod = None
         self.StateDesc = None
         self.UserAccessDesc = None
+        self.CreateTime = None
 
 
     def _deserialize(self, params):
@@ -1849,6 +1896,7 @@ class DbNormalDetail(AbstractModel):
         self.RetentionPeriod = params.get("RetentionPeriod")
         self.StateDesc = params.get("StateDesc")
         self.UserAccessDesc = params.get("UserAccessDesc")
+        self.CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4496,6 +4544,9 @@ Note: this field may return ‘null’, indicating that no valid values can be o
         :param IsRecovery: Whether this is the final restoration. For a full import task, this field will be left empty.
 Note: this field may return ‘null’, indicating that no valid values can be obtained.
         :type IsRecovery: str
+        :param DBRename: Name set of renamed databases
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DBRename: list of DBRenameRes
         """
         self.MigrationId = None
         self.MigrationName = None
@@ -4513,6 +4564,7 @@ Note: this field may return ‘null’, indicating that no valid values can be o
         self.Detail = None
         self.Action = None
         self.IsRecovery = None
+        self.DBRename = None
 
 
     def _deserialize(self, params):
@@ -4536,6 +4588,12 @@ Note: this field may return ‘null’, indicating that no valid values can be o
             self.Action = MigrationAction()
             self.Action._deserialize(params.get("Action"))
         self.IsRecovery = params.get("IsRecovery")
+        if params.get("DBRename") is not None:
+            self.DBRename = []
+            for item in params.get("DBRename"):
+                obj = DBRenameRes()
+                obj._deserialize(item)
+                self.DBRename.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4774,6 +4832,8 @@ class ModifyBackupMigrationRequest(AbstractModel):
         :type UploadType: str
         :param BackupFiles: If the UploadType is COS_URL, fill in URL here. If the UploadType is COS_UPLOAD, fill in the name of the backup file here. Only 1 backup file is supported, but a backup file can involve multiple databases.
         :type BackupFiles: list of str
+        :param DBRename: Name set of databases to be renamed
+        :type DBRename: list of RenameRestoreDatabase
         """
         self.InstanceId = None
         self.BackupMigrationId = None
@@ -4781,6 +4841,7 @@ class ModifyBackupMigrationRequest(AbstractModel):
         self.RecoveryType = None
         self.UploadType = None
         self.BackupFiles = None
+        self.DBRename = None
 
 
     def _deserialize(self, params):
@@ -4790,6 +4851,12 @@ class ModifyBackupMigrationRequest(AbstractModel):
         self.RecoveryType = params.get("RecoveryType")
         self.UploadType = params.get("UploadType")
         self.BackupFiles = params.get("BackupFiles")
+        if params.get("DBRename") is not None:
+            self.DBRename = []
+            for item in params.get("DBRename"):
+                obj = RenameRestoreDatabase()
+                obj._deserialize(item)
+                self.DBRename.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5787,7 +5854,7 @@ class RegionInfo(AbstractModel):
 
 
 class RenameRestoreDatabase(AbstractModel):
-    """Used in the `RestoreInstance`, `RollbackInstance`, `CreateMigration`, and `CloneDB` APIs to specify and rename the database to be restored, rolled back, migrated, or cloned.
+    """It is used to specify and rename the database to be restored through the `RestoreInstance`, `RollbackInstance`, `CreateMigration`, `CloneDB` or `ModifyBackupMigration` APIs.
 
     """
 

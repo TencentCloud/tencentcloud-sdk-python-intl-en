@@ -35,6 +35,9 @@ FAILEDOPERATION_DOMAINISSPAM = 'FailedOperation.DomainIsSpam'
 # You cannot perform this operation on a VIP domain.
 FAILEDOPERATION_DOMAINISVIP = 'FailedOperation.DomainIsVip'
 
+# Unable to get the DNS query volume because the current domain has not used the DNSPod service.
+FAILEDOPERATION_DOMAINNOTINSERVICE = 'FailedOperation.DomainNotInService'
+
 # This domain has been added by another account and can be reclaimed in the domain list.
 FAILEDOPERATION_DOMAINOWNEDBYOTHERUSER = 'FailedOperation.DomainOwnedByOtherUser'
 
@@ -50,6 +53,15 @@ FAILEDOPERATION_NOTDOMAINOWNER = 'FailedOperation.NotDomainOwner'
 # Your account identity has not been verified. Complete identity verification first before performing this operation.
 FAILEDOPERATION_NOTREALNAMEDUSER = 'FailedOperation.NotRealNamedUser'
 
+# The number of requests is currently unavailable. Try again later.
+FAILEDOPERATION_TEMPORARYERROR = 'FailedOperation.TemporaryError'
+
+# Failed to transfer to the enterprise account.
+FAILEDOPERATION_TRANSFERTOENTERPRISEDENIED = 'FailedOperation.TransferToEnterpriseDenied'
+
+# Failed to transfer to the personal account.
+FAILEDOPERATION_TRANSFERTOPERSONDENIED = 'FailedOperation.TransferToPersonDenied'
+
 # The operation has no response. Try again later.
 FAILEDOPERATION_UNKNOWERROR = 'FailedOperation.UnknowError'
 
@@ -62,11 +74,38 @@ INVALIDPARAMETER = 'InvalidParameter'
 # Your account is banned by the system. Please contact us if you have any questions.
 INVALIDPARAMETER_ACCOUNTISBANNED = 'InvalidParameter.AccountIsBanned'
 
+# Failed to bulk create domains. Cause: Internal error.
+INVALIDPARAMETER_BATCHDOMAINCREATEACTIONERROR = 'InvalidParameter.BatchDomainCreateActionError'
+
+# Failed to bulk create records. Cause: Internal error.
+INVALIDPARAMETER_BATCHRECORDCREATEACTIONERROR = 'InvalidParameter.BatchRecordCreateActionError'
+
+# Failed to bulk modify records. Cause: Internal error.
+INVALIDPARAMETER_BATCHRECORDMODIFYACTIONERROR = 'InvalidParameter.BatchRecordModifyActionError'
+
+# The record value is invalid.
+INVALIDPARAMETER_BATCHRECORDMODIFYACTIONINVALIDVALUE = 'InvalidParameter.BatchRecordModifyActionInvalidValue'
+
+# Failed to batch delete records. Cause: Internal error.
+INVALIDPARAMETER_BATCHRECORDREMOVEACTIONERROR = 'InvalidParameter.BatchRecordRemoveActionError'
+
+# Failed to bulk replace records. Cause: Internal error.
+INVALIDPARAMETER_BATCHRECORDREPLACEACTIONERROR = 'InvalidParameter.BatchRecordReplaceActionError'
+
+# The number of tasks exceeds the upper limit.
+INVALIDPARAMETER_BATCHTASKCOUNTLIMIT = 'InvalidParameter.BatchTaskCountLimit'
+
 # Custom error message.
 INVALIDPARAMETER_CUSTOMMESSAGE = 'InvalidParameter.CustomMessage'
 
 # DNSSEC has been enabled for this domain. You cannot add an @CNAME, URL, or framed URL record.
 INVALIDPARAMETER_DNSSECADDCNAMEERROR = 'InvalidParameter.DnssecAddCnameError'
+
+# The alias already exists.
+INVALIDPARAMETER_DOMAINALIASEXISTS = 'InvalidParameter.DomainAliasExists'
+
+# Th alias ID is incorrect.
+INVALIDPARAMETER_DOMAINALIASIDINVALID = 'InvalidParameter.DomainAliasIdInvalid'
 
 # The domain number is incorrect.
 INVALIDPARAMETER_DOMAINIDINVALID = 'InvalidParameter.DomainIdInvalid'
@@ -80,6 +119,12 @@ INVALIDPARAMETER_DOMAININVALID = 'InvalidParameter.DomainInvalid'
 # This domain is an alias of another domain.
 INVALIDPARAMETER_DOMAINISALIASER = 'InvalidParameter.DomainIsAliaser'
 
+# The domain is not locked.
+INVALIDPARAMETER_DOMAINISNOTLOCKED = 'InvalidParameter.DomainIsNotlocked'
+
+# Currently, the domain cannot be locked.
+INVALIDPARAMETER_DOMAINNOTALLOWEDLOCK = 'InvalidParameter.DomainNotAllowedLock'
+
 # You cannot change the DNS record of a domain currently active or invalid.
 INVALIDPARAMETER_DOMAINNOTALLOWEDMODIFYRECORDS = 'InvalidParameter.DomainNotAllowedModifyRecords'
 
@@ -92,11 +137,38 @@ INVALIDPARAMETER_DOMAINNOTREGED = 'InvalidParameter.DomainNotReged'
 # The record already exists and does not need to be added again.
 INVALIDPARAMETER_DOMAINRECORDEXIST = 'InvalidParameter.DomainRecordExist'
 
+# No domains have been submitted.
+INVALIDPARAMETER_DOMAINSEMPTY = 'InvalidParameter.DomainsEmpty'
+
+# The email address is incorrect.
+INVALIDPARAMETER_EMAILINVALID = 'InvalidParameter.EmailInvalid'
+
 # Sorry, the email address of your account has not been verified.
 INVALIDPARAMETER_EMAILNOTVERIFIED = 'InvalidParameter.EmailNotVerified'
 
+# Enter a valid email address or UIN.
+INVALIDPARAMETER_EMAILORQQINVALID = 'InvalidParameter.EmailOrQqInvalid'
+
+# The domain is already under the account.
+INVALIDPARAMETER_EMAILSAME = 'InvalidParameter.EmailSame'
+
+# The group ID is incorrect.
+INVALIDPARAMETER_GROUPIDINVALID = 'InvalidParameter.GroupIdInvalid'
+
+# The group name already exists.
+INVALIDPARAMETER_GROUPNAMEEXISTS = 'InvalidParameter.GroupNameExists'
+
+# The group name can contain 1–17 characters.
+INVALIDPARAMETER_GROUPNAMEINVALID = 'InvalidParameter.GroupNameInvalid'
+
 # The weight is invalid. Enter an integer between 0 and 100.
 INVALIDPARAMETER_INVALIDWEIGHT = 'InvalidParameter.InvalidWeight'
+
+# The number of tasks exceeds the upper limit.
+INVALIDPARAMETER_JOBGREATERTHANLIMIT = 'InvalidParameter.JobGreaterThanLimit'
+
+# The locking period is incorrect.
+INVALIDPARAMETER_LOCKDAYSINVALID = 'InvalidParameter.LockDaysInvalid'
 
 # The token ID is incorrect.
 INVALIDPARAMETER_LOGINTOKENIDERROR = 'InvalidParameter.LoginTokenIdError'
@@ -113,11 +185,29 @@ INVALIDPARAMETER_MOBILENOTVERIFIED = 'InvalidParameter.MobileNotVerified'
 # The MX priority is incorrect.
 INVALIDPARAMETER_MXINVALID = 'InvalidParameter.MxInvalid'
 
+# The pagination offset value is incorrect.
+INVALIDPARAMETER_OFFSETINVALID = 'InvalidParameter.OffsetInvalid'
+
 # Operation failed. Please try again later.
 INVALIDPARAMETER_OPERATEFAILED = 'InvalidParameter.OperateFailed'
 
+# Your account identity has not been verified. Complete identity verification first before performing this operation.
+INVALIDPARAMETER_OTHERACCOUNTUNREALNAME = 'InvalidParameter.OtherAccountUnrealName'
+
 # Parameter format error.
 INVALIDPARAMETER_PARAMINVALID = 'InvalidParameter.ParamInvalid'
+
+# The parameter is invalid, so the request was rejected.
+INVALIDPARAMETER_PARAMSILLEGAL = 'InvalidParameter.ParamsIllegal'
+
+# The parameter is incorrect.
+INVALIDPARAMETER_PARAMSMISSING = 'InvalidParameter.ParamsMissing'
+
+# The user UIN is invalid.
+INVALIDPARAMETER_QCLOUDUININVALID = 'InvalidParameter.QcloudUinInvalid'
+
+# The TXT record was not set or has not taken effect. Try again later.
+INVALIDPARAMETER_QUHUITXTRECORDWAIT = 'InvalidParameter.QuhuiTxtRecordWait'
 
 # The record number is incorrect.
 INVALIDPARAMETER_RECORDIDINVALID = 'InvalidParameter.RecordIdInvalid'
@@ -134,6 +224,12 @@ INVALIDPARAMETER_RECORDVALUEINVALID = 'InvalidParameter.RecordValueInvalid'
 # The DNS record value is too long.
 INVALIDPARAMETER_RECORDVALUELENGTHINVALID = 'InvalidParameter.RecordValueLengthInvalid'
 
+# No records have been submitted.
+INVALIDPARAMETER_RECORDSEMPTY = 'InvalidParameter.RecordsEmpty'
+
+# The length of the remarks exceeds the limit.
+INVALIDPARAMETER_REMARKLENGTHEXCEEDED = 'InvalidParameter.RemarkLengthExceeded'
+
 # The remarks are too long (max 200 characters).
 INVALIDPARAMETER_REMARKTOOLONG = 'InvalidParameter.RemarkTooLong'
 
@@ -146,8 +242,17 @@ INVALIDPARAMETER_RESULTMORETHAN500 = 'InvalidParameter.ResultMoreThan500'
 # The subdomain is incorrect.
 INVALIDPARAMETER_SUBDOMAININVALID = 'InvalidParameter.SubdomainInvalid'
 
+# The current account has too many invalid domains and is unable to use this feature. Point the DNS server of existing domains to DNSPod correctly and try adding them.
+INVALIDPARAMETER_TOOMANYINVALIDDOMAINS = 'InvalidParameter.TooManyInvalidDomains'
+
 # The domain is invalid.
 INVALIDPARAMETER_TOOLSDOMAININVALID = 'InvalidParameter.ToolsDomainInvalid'
+
+# The unlock code has expired.
+INVALIDPARAMETER_UNLOCKCODEEXPIRED = 'InvalidParameter.UnLockCodeExpired'
+
+# The unlock code is incorrect.
+INVALIDPARAMETER_UNLOCKCODEINVALID = 'InvalidParameter.UnLockCodeInvalid'
 
 # Your account identity has not been verified. Complete identity verification first before performing this operation.
 INVALIDPARAMETER_UNREALNAMEUSER = 'InvalidParameter.UnrealNameUser'
@@ -155,8 +260,14 @@ INVALIDPARAMETER_UNREALNAMEUSER = 'InvalidParameter.UnrealNameUser'
 # Sorry, the URL failed to be added/enabled because its content did not comply with the DNSPod Terms of Service. Please contact technical support for assistance.
 INVALIDPARAMETER_URLVALUEILLEGAL = 'InvalidParameter.UrlValueIllegal'
 
+# The account is not a Tencent Cloud user.
+INVALIDPARAMETER_USERAREAINVALID = 'InvalidParameter.UserAreaInvalid'
+
 # The user does not exist.
 INVALIDPARAMETER_USERNOTEXISTS = 'InvalidParameter.UserNotExists'
+
+# The domain level is incorrect.
+INVALIDPARAMETERVALUE_DOMAINGRADEINVALID = 'InvalidParameterValue.DomainGradeInvalid'
 
 # The current domain is incorrect. Return to the previous step and try again.
 INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = 'InvalidParameterValue.DomainNotExists'
@@ -173,8 +284,17 @@ LIMITEXCEEDED_AAAACOUNTLIMIT = 'LimitExceeded.AAAACountLimit'
 # The @NS record can be set to the default split zone only.
 LIMITEXCEEDED_ATNSRECORDLIMIT = 'LimitExceeded.AtNsRecordLimit'
 
+# The number of aliases has reached the limit.
+LIMITEXCEEDED_DOMAINALIASCOUNTEXCEEDED = 'LimitExceeded.DomainAliasCountExceeded'
+
+# The number of currently bound aliases has reached the limit.
+LIMITEXCEEDED_DOMAINALIASNUMBERLIMIT = 'LimitExceeded.DomainAliasNumberLimit'
+
 # Your account has been banned by the system due to excessive failed login attempts.
 LIMITEXCEEDED_FAILEDLOGINLIMITEXCEEDED = 'LimitExceeded.FailedLoginLimitExceeded'
+
+# The number of groups has reached the upper limit.
+LIMITEXCEEDED_GROUPNUMBERLIMIT = 'LimitExceeded.GroupNumberLimit'
 
 # The DNS plan used by this domain does not support framed URL forwarding, or the number of framed URL forward records exceeds the limit. To use this feature, please purchase more records.
 LIMITEXCEEDED_HIDDENURLEXCEEDED = 'LimitExceeded.HiddenUrlExceeded'
@@ -200,6 +320,12 @@ LIMITEXCEEDED_SUBDOMAINWCARDLIMIT = 'LimitExceeded.SubdomainWcardLimit'
 # The number of URL forward records of this domain exceeds the limit. To continue using this feature, please purchase more records.
 LIMITEXCEEDED_URLCOUNTLIMIT = 'LimitExceeded.UrlCountLimit'
 
+# The parameter is missing.
+MISSINGPARAMETER = 'MissingParameter'
+
+# You have no permission for this operation.
+OPERATIONDENIED_ACCESSDENIED = 'OperationDenied.AccessDenied'
+
 # Only the domain owner can perform this operation.
 OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = 'OperationDenied.DomainOwnerAllowedOnly'
 
@@ -221,8 +347,20 @@ OPERATIONDENIED_NOTMANAGEDUSER = 'OperationDenied.NotManagedUser'
 # The number of requests exceeds the frequency limit.
 REQUESTLIMITEXCEEDED = 'RequestLimitExceeded'
 
+# Too many tasks have been added for your IP. Try again later.
+REQUESTLIMITEXCEEDED_BATCHTASKLIMIT = 'RequestLimitExceeded.BatchTaskLimit'
+
+# A great number of domains have been added under your account in a short period of time. Control the frequency of adding domains.
+REQUESTLIMITEXCEEDED_CREATEDOMAINLIMIT = 'RequestLimitExceeded.CreateDomainLimit'
+
 # The number of API requests exceeds the limit.
 REQUESTLIMITEXCEEDED_REQUESTLIMITEXCEEDED = 'RequestLimitExceeded.RequestLimitExceeded'
+
+# The resource does not exist.
+RESOURCENOTFOUND = 'ResourceNotFound'
+
+# There is no domain alias.
+RESOURCENOTFOUND_NODATAOFDOMAINALIAS = 'ResourceNotFound.NoDataOfDomainAlias'
 
 # Empty record list.
 RESOURCENOTFOUND_NODATAOFRECORD = 'ResourceNotFound.NoDataOfRecord'
