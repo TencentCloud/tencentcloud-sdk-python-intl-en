@@ -146,7 +146,7 @@ RESOURCEUNAVAILABLE = 'ResourceUnavailable'
 # The cloud disk has been mounted to another CVM.
 RESOURCEUNAVAILABLE_ATTACHED = 'ResourceUnavailable.Attached'
 
-# 
+# The snapshot chain of the cloud disk is too long, so snapshot creation is refused.
 RESOURCEUNAVAILABLE_DISKSNAPSHOTCHAINTOOLARGE = 'ResourceUnavailable.DiskSnapshotChainTooLarge'
 
 # The cloud disk has expired.

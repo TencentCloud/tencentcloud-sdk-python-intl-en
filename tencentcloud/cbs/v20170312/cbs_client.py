@@ -184,6 +184,29 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateDiskBackup(self, request):
+        """This API is used to create a backup point for a cloud disk.
+
+        :param request: Request instance for CreateDiskBackup.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.CreateDiskBackupRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.CreateDiskBackupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDiskBackup", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDiskBackupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateDisks(self, request):
         """This API is used to create cloud disks.
 
@@ -410,7 +433,9 @@ class CbsClient(AbstractClient):
 
 
     def DescribeDiskOperationLogs(self, request):
-        """This API (DescribeDiskOperationLogs) is used to query a list of cloud disk operation logs.
+        """接口已废弃，切换至云审计接口。见https://tapd.woa.com/pro/prong/stories/view/1010114221880719007
+
+        This API (DescribeDiskOperationLogs) is used to query a list of cloud disk operation logs.
 
         This can be filtered according to the cloud disk ID. The format of cloud disk IDs is as follows: disk-a1kmcp13.
 
@@ -486,9 +511,9 @@ class CbsClient(AbstractClient):
 
 
     def DescribeSnapshotOperationLogs(self, request):
-        """This API (DescribeSnapshotOperationLogs) is used to query a list of snapshot operation logs.
+        """接口已废弃，切换至云审计接口。见https://tapd.woa.com/pro/prong/stories/view/1010114221880719007
 
-        You can filter according to the snapshot ID. The snapshot ID format is as follows: snap-a1kmcp13.
+        This API is used to query the operation logs of a snapshot. It will be disused soon. Use [LookUpEvents](https://intl.cloud.tencent.com/document/product/629/12359?from_cn_redirect=1) instead.
 
         :param request: Request instance for DescribeSnapshotOperationLogs.
         :type request: :class:`tencentcloud.cbs.v20170312.models.DescribeSnapshotOperationLogsRequest`

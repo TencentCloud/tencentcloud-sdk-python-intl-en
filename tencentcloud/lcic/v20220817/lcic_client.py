@@ -26,6 +26,167 @@ class LcicClient(AbstractClient):
     _service = 'lcic'
 
 
+    def AddGroupMember(self, request):
+        """This API is used to add users to a group.
+
+        :param request: Request instance for AddGroupMember.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.AddGroupMemberRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.AddGroupMemberResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddGroupMember", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddGroupMemberResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def BatchAddGroupMember(self, request):
+        """This API is used to add users to multiple groups at a time.
+
+        :param request: Request instance for BatchAddGroupMember.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.BatchAddGroupMemberRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.BatchAddGroupMemberResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BatchAddGroupMember", params, headers=headers)
+            response = json.loads(body)
+            model = models.BatchAddGroupMemberResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def BatchCreateGroupWithMembers(self, request):
+        """This API is used to create multiple groups at a time.
+
+        :param request: Request instance for BatchCreateGroupWithMembers.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.BatchCreateGroupWithMembersRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.BatchCreateGroupWithMembersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BatchCreateGroupWithMembers", params, headers=headers)
+            response = json.loads(body)
+            model = models.BatchCreateGroupWithMembersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def BatchCreateRoom(self, request):
+        """This API is used to create multiple rooms at a time.
+
+        :param request: Request instance for BatchCreateRoom.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.BatchCreateRoomRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.BatchCreateRoomResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BatchCreateRoom", params, headers=headers)
+            response = json.loads(body)
+            model = models.BatchCreateRoomResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def BatchDeleteGroupMember(self, request):
+        """This API is used to remove users from multiple groups at a time.
+
+        :param request: Request instance for BatchDeleteGroupMember.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.BatchDeleteGroupMemberRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.BatchDeleteGroupMemberResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BatchDeleteGroupMember", params, headers=headers)
+            response = json.loads(body)
+            model = models.BatchDeleteGroupMemberResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def BatchDeleteRecord(self, request):
+        """This API is used to delete the recordings of multiple rooms.
+
+        :param request: Request instance for BatchDeleteRecord.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.BatchDeleteRecordRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.BatchDeleteRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BatchDeleteRecord", params, headers=headers)
+            response = json.loads(body)
+            model = models.BatchDeleteRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def BatchRegister(self, request):
+        """This API is used to register multiple users (up to 1,000) at a time. If a user ID already exists, the existing one will be overwritten.
+
+        :param request: Request instance for BatchRegister.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.BatchRegisterRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.BatchRegisterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BatchRegister", params, headers=headers)
+            response = json.loads(body)
+            model = models.BatchRegisterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def BindDocumentToRoom(self, request):
         """This API is used to bind a document to a room.
 
@@ -63,6 +224,52 @@ class LcicClient(AbstractClient):
             body = self.call("CreateDocument", params, headers=headers)
             response = json.loads(body)
             model = models.CreateDocumentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateGroupWithMembers(self, request):
+        """This API is used to create a group and specify its members.
+
+        :param request: Request instance for CreateGroupWithMembers.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.CreateGroupWithMembersRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.CreateGroupWithMembersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateGroupWithMembers", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateGroupWithMembersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateGroupWithSubGroup(self, request):
+        """This API is used to merge groups.
+
+        :param request: Request instance for CreateGroupWithSubGroup.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.CreateGroupWithSubGroupRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.CreateGroupWithSubGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateGroupWithSubGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateGroupWithSubGroupResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -118,6 +325,98 @@ class LcicClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteDocument(self, request):
+        """This API is used to delete a document.
+
+        :param request: Request instance for DeleteDocument.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.DeleteDocumentRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.DeleteDocumentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDocument", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDocumentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteGroup(self, request):
+        """This API is used to delete one or multiple groups.
+
+        :param request: Request instance for DeleteGroup.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.DeleteGroupRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.DeleteGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteGroupMember(self, request):
+        """This API is used to remove users from a group.
+
+        :param request: Request instance for DeleteGroupMember.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.DeleteGroupMemberRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.DeleteGroupMemberResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteGroupMember", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteGroupMemberResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteRecord(self, request):
+        """This example shows you how to delete the recording files of a specific room.
+
+        :param request: Request instance for DeleteRecord.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.DeleteRecordRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.DeleteRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRecord", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteRoom(self, request):
         """This API is used to delete a room.
 
@@ -132,6 +431,144 @@ class LcicClient(AbstractClient):
             body = self.call("DeleteRoom", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteRoomResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCurrentMemberList(self, request):
+        """This API is used to get the user list of a room. This API will not work if a room has ended or expired.
+
+        :param request: Request instance for DescribeCurrentMemberList.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeCurrentMemberListRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.DescribeCurrentMemberListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCurrentMemberList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCurrentMemberListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDocument(self, request):
+        """This API is used to get the information of a specific document.
+
+        :param request: Request instance for DescribeDocument.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeDocumentRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.DescribeDocumentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDocument", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDocumentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDocumentsByRoom(self, request):
+        """This API is used to get the document list of a specific room.
+
+        :param request: Request instance for DescribeDocumentsByRoom.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeDocumentsByRoomRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.DescribeDocumentsByRoomResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDocumentsByRoom", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDocumentsByRoomResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeGroup(self, request):
+        """This API is used to get the details of a group.
+
+        :param request: Request instance for DescribeGroup.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeGroupRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.DescribeGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeGroupList(self, request):
+        """This API is used to query groups.
+
+        :param request: Request instance for DescribeGroupList.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeGroupListRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.DescribeGroupListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGroupList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeGroupListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeGroupMemberList(self, request):
+        """This API is used to get the members of a group.
+
+        :param request: Request instance for DescribeGroupMemberList.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeGroupMemberListRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.DescribeGroupMemberListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGroupMemberList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeGroupMemberListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -187,6 +624,29 @@ class LcicClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeSdkAppIdUsers(self, request):
+        """This API is used to get the user list of a specific application.
+
+        :param request: Request instance for DescribeSdkAppIdUsers.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeSdkAppIdUsersRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.DescribeSdkAppIdUsersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSdkAppIdUsers", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSdkAppIdUsersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeUser(self, request):
         """This API is used to obtain user profile.
 
@@ -201,6 +661,29 @@ class LcicClient(AbstractClient):
             body = self.call("DescribeUser", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetWatermark(self, request):
+        """This API is used to get watermark settings.
+
+        :param request: Request instance for GetWatermark.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.GetWatermarkRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.GetWatermarkResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetWatermark", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetWatermarkResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -279,6 +762,75 @@ class LcicClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyGroup(self, request):
+        """This API is used to modify a group.
+
+        :param request: Request instance for ModifyGroup.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.ModifyGroupRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.ModifyGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyRoom(self, request):
+        """This API is used to modify a room.
+
+        :param request: Request instance for ModifyRoom.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.ModifyRoomRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.ModifyRoomResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRoom", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyRoomResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyUserProfile(self, request):
+        """This API is used to modify a user profile such as the nickname and profile photo.
+
+        :param request: Request instance for ModifyUserProfile.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.ModifyUserProfileRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.ModifyUserProfileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyUserProfile", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyUserProfileResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RegisterUser(self, request):
         """This API is used to register a user.
 
@@ -316,6 +868,29 @@ class LcicClient(AbstractClient):
             body = self.call("SetAppCustomContent", params, headers=headers)
             response = json.loads(body)
             model = models.SetAppCustomContentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SetWatermark(self, request):
+        """This API is used to configure watermarks.
+
+        :param request: Request instance for SetWatermark.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.SetWatermarkRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.SetWatermarkResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SetWatermark", params, headers=headers)
+            response = json.loads(body)
+            model = models.SetWatermarkResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

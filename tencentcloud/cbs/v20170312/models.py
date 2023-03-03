@@ -490,6 +490,55 @@ class CreateAutoSnapshotPolicyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateDiskBackupRequest(AbstractModel):
+    """CreateDiskBackup request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskId: Name of the cloud disk for which to create a backup point.
+        :type DiskId: str
+        :param DiskBackupName: Name of the cloud disk backup point, which can contain up to 100 characters.
+        :type DiskBackupName: str
+        """
+        self.DiskId = None
+        self.DiskBackupName = None
+
+
+    def _deserialize(self, params):
+        self.DiskId = params.get("DiskId")
+        self.DiskBackupName = params.get("DiskBackupName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDiskBackupResponse(AbstractModel):
+    """CreateDiskBackup response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskBackupId: ID of the cloud disk backup point.
+        :type DiskBackupId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DiskBackupId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DiskBackupId = params.get("DiskBackupId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateDisksRequest(AbstractModel):
     """CreateDisks request structure.
 
@@ -1620,10 +1669,16 @@ Note: This field may return null, indicating that no valid value was found.
         :type CreateTime: str
         :param DeleteSnapshot: Delete the associated non-permanently reserved snapshots upon deletion of the source cloud disk. `0`: No (default). `1`: Yes. To check whether a snapshot is permanently reserved, refer to the `IsPermanent` field returned by the `DescribeSnapshots` API. 
         :type DeleteSnapshot: int
+        :param DiskBackupQuota: Quota of cloud disk backup points, i.e., the maximum number of backup points that a cloud disk can have.
+        :type DiskBackupQuota: int
         :param DiskBackupCount: Number of used cloud disk backups.
         :type DiskBackupCount: int
         :param InstanceType: Type of the instance mounted to the cloud disk. Valid values: <br><li>CVM<br><li>EKS
         :type InstanceType: str
+        :param LastAttachInsId: 
+        :type LastAttachInsId: str
+        :param ErrorPrompt: 
+        :type ErrorPrompt: str
         """
         self.DeleteWithInstance = None
         self.RenewFlag = None
@@ -1661,8 +1716,11 @@ Note: This field may return null, indicating that no valid value was found.
         self.Shareable = None
         self.CreateTime = None
         self.DeleteSnapshot = None
+        self.DiskBackupQuota = None
         self.DiskBackupCount = None
         self.InstanceType = None
+        self.LastAttachInsId = None
+        self.ErrorPrompt = None
 
 
     def _deserialize(self, params):
@@ -1709,8 +1767,11 @@ Note: This field may return null, indicating that no valid value was found.
         self.Shareable = params.get("Shareable")
         self.CreateTime = params.get("CreateTime")
         self.DeleteSnapshot = params.get("DeleteSnapshot")
+        self.DiskBackupQuota = params.get("DiskBackupQuota")
         self.DiskBackupCount = params.get("DiskBackupCount")
         self.InstanceType = params.get("InstanceType")
+        self.LastAttachInsId = params.get("LastAttachInsId")
+        self.ErrorPrompt = params.get("ErrorPrompt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3044,15 +3105,24 @@ class SnapshotCopyResult(AbstractModel):
 
 
 class SnapshotOperationLog(AbstractModel):
-    """The snapshot operation log.
+    """Snapshot operation log (disused).
 
     """
 
     def __init__(self):
         r"""
+        :param OperationState: Status of operation. Value range:
+SUCCESS: Operation successful 
+FAILED: Operation failed 
+PROCESSING: Operation in process
+        :type OperationState: str
+        :param StartTime: Start time
+        :type StartTime: str
         :param Operator: UIN of operator.
 Note: This field may return null, indicating that no valid value was found.
         :type Operator: str
+        :param SnapshotId: ID of snapshot being operated.
+        :type SnapshotId: str
         :param Operation: Operation type. Value range:
 SNAP_OPERATION_DELETE: Delete snapshot
 SNAP_OPERATION_ROLLBACK: Roll back snapshot
@@ -3062,32 +3132,23 @@ SNAP_OPERATION_COPY: Cross-region replication of snapshot
 ASP_OPERATION_CREATE_SNAP: Create snapshot with scheduled snapshot policy
 ASP_OPERATION_DELETE_SNAP: Delete snapshot from scheduled snapshot policy
         :type Operation: str
-        :param SnapshotId: ID of snapshot being operated.
-        :type SnapshotId: str
-        :param OperationState: Status of operation. Value range:
-SUCCESS: Operation successful 
-FAILED: Operation failed 
-PROCESSING: Operation in process
-        :type OperationState: str
-        :param StartTime: Start time
-        :type StartTime: str
         :param EndTime: End time
         :type EndTime: str
         """
-        self.Operator = None
-        self.Operation = None
-        self.SnapshotId = None
         self.OperationState = None
         self.StartTime = None
+        self.Operator = None
+        self.SnapshotId = None
+        self.Operation = None
         self.EndTime = None
 
 
     def _deserialize(self, params):
-        self.Operator = params.get("Operator")
-        self.Operation = params.get("Operation")
-        self.SnapshotId = params.get("SnapshotId")
         self.OperationState = params.get("OperationState")
         self.StartTime = params.get("StartTime")
+        self.Operator = params.get("Operator")
+        self.SnapshotId = params.get("SnapshotId")
+        self.Operation = params.get("Operation")
         self.EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
