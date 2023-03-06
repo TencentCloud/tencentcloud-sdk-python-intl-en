@@ -3324,6 +3324,51 @@ class ModifyAccountPrivilegesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyDBEncryptAttributesRequest(AbstractModel):
+    """ModifyDBEncryptAttributes request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of `tdsql-ow728lmc`
+        :type InstanceId: str
+        :param EncryptEnabled: Whether to enable the data encryption (Once enabled, it can’t be disabled). Valid values: `1` (Yes), `0` (No. Default）
+        :type EncryptEnabled: int
+        """
+        self.InstanceId = None
+        self.EncryptEnabled = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.EncryptEnabled = params.get("EncryptEnabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBEncryptAttributesResponse(AbstractModel):
+    """ModifyDBEncryptAttributes response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyDBInstancesProjectRequest(AbstractModel):
     """ModifyDBInstancesProject request structure.
 

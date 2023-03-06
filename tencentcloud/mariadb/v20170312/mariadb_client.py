@@ -864,6 +864,29 @@ class MariadbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyDBEncryptAttributes(self, request):
+        """This API is used to modify the instance data encryption.
+
+        :param request: Request instance for ModifyDBEncryptAttributes.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.ModifyDBEncryptAttributesRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.ModifyDBEncryptAttributesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDBEncryptAttributes", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDBEncryptAttributesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyDBInstancesProject(self, request):
         """This API is used to modify the project to which TencentDB instances belong.
 
