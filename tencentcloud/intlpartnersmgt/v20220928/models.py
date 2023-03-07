@@ -71,6 +71,183 @@ class AllocateCustomerCreditResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class BillDetailData(AbstractModel):
+    """Customer bill details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PayerAccountId: Reseller account
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PayerAccountId: int
+        :param OwnerAccountId: Customer account
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OwnerAccountId: int
+        :param OperatorAccountId: Operator account
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OperatorAccountId: int
+        :param ProductName: Product name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProductName: str
+        :param BillingMode: Billing mode
+`Monthly subscription` (Monthly subscription)
+`Pay-As-You-Go resources` (Pay-as-you-go)
+`Standard RI` (Reserved instance)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BillingMode: str
+        :param ProjectName: Project name
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProjectName: str
+        :param Region: Resource region
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Region: str
+        :param AvailabilityZone: Resource AZ
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AvailabilityZone: str
+        :param InstanceId: Instance ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceId: str
+        :param InstanceName: Instance name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceName: str
+        :param SubProductName: Subproduct name
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SubProductName: str
+        :param TransactionType: Settlement type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TransactionType: str
+        :param TransactionId: Transaction ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TransactionId: str
+        :param TransactionTime: Settlement time
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TransactionTime: str
+        :param UsageStartTime: Start time of resource use
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UsageStartTime: str
+        :param UsageEndTime: End time of resource use
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UsageEndTime: str
+        :param ComponentType: Component
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ComponentType: str
+        :param ComponentName: Component name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ComponentName: str
+        :param ComponentListPrice: Component list price
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ComponentListPrice: str
+        :param ComponentPriceMeasurementUnit: Price unit
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ComponentPriceMeasurementUnit: str
+        :param ComponentUsage: Component usage
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ComponentUsage: str
+        :param ComponentUsageUnit: Component usage unit
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ComponentUsageUnit: str
+        :param UsageDuration: Resource usage duration
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UsageDuration: str
+        :param DurationUnit: Duration unit
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DurationUnit: str
+        :param OriginalCost: Original cost
+Original cost = component list price * component usage * usage duration
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OriginalCost: str
+        :param DiscountRate: Discount, which defaults to `1`, indicating there is no discount.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DiscountRate: str
+        :param Currency: Currency
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Currency: str
+        :param TotalAmountAfterDiscount: Discounted total
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TotalAmountAfterDiscount: str
+        :param VoucherDeduction: Voucher deduction
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VoucherDeduction: str
+        :param TotalCost: Total cost = discounted total - voucher deduction
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TotalCost: str
+        """
+        self.PayerAccountId = None
+        self.OwnerAccountId = None
+        self.OperatorAccountId = None
+        self.ProductName = None
+        self.BillingMode = None
+        self.ProjectName = None
+        self.Region = None
+        self.AvailabilityZone = None
+        self.InstanceId = None
+        self.InstanceName = None
+        self.SubProductName = None
+        self.TransactionType = None
+        self.TransactionId = None
+        self.TransactionTime = None
+        self.UsageStartTime = None
+        self.UsageEndTime = None
+        self.ComponentType = None
+        self.ComponentName = None
+        self.ComponentListPrice = None
+        self.ComponentPriceMeasurementUnit = None
+        self.ComponentUsage = None
+        self.ComponentUsageUnit = None
+        self.UsageDuration = None
+        self.DurationUnit = None
+        self.OriginalCost = None
+        self.DiscountRate = None
+        self.Currency = None
+        self.TotalAmountAfterDiscount = None
+        self.VoucherDeduction = None
+        self.TotalCost = None
+
+
+    def _deserialize(self, params):
+        self.PayerAccountId = params.get("PayerAccountId")
+        self.OwnerAccountId = params.get("OwnerAccountId")
+        self.OperatorAccountId = params.get("OperatorAccountId")
+        self.ProductName = params.get("ProductName")
+        self.BillingMode = params.get("BillingMode")
+        self.ProjectName = params.get("ProjectName")
+        self.Region = params.get("Region")
+        self.AvailabilityZone = params.get("AvailabilityZone")
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.SubProductName = params.get("SubProductName")
+        self.TransactionType = params.get("TransactionType")
+        self.TransactionId = params.get("TransactionId")
+        self.TransactionTime = params.get("TransactionTime")
+        self.UsageStartTime = params.get("UsageStartTime")
+        self.UsageEndTime = params.get("UsageEndTime")
+        self.ComponentType = params.get("ComponentType")
+        self.ComponentName = params.get("ComponentName")
+        self.ComponentListPrice = params.get("ComponentListPrice")
+        self.ComponentPriceMeasurementUnit = params.get("ComponentPriceMeasurementUnit")
+        self.ComponentUsage = params.get("ComponentUsage")
+        self.ComponentUsageUnit = params.get("ComponentUsageUnit")
+        self.UsageDuration = params.get("UsageDuration")
+        self.DurationUnit = params.get("DurationUnit")
+        self.OriginalCost = params.get("OriginalCost")
+        self.DiscountRate = params.get("DiscountRate")
+        self.Currency = params.get("Currency")
+        self.TotalAmountAfterDiscount = params.get("TotalAmountAfterDiscount")
+        self.VoucherDeduction = params.get("VoucherDeduction")
+        self.TotalCost = params.get("TotalCost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CountryCodeItem(AbstractModel):
     """Element type of the `GetCountryCodes` API
 
@@ -185,6 +362,206 @@ class CreateAccountResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Uin = params.get("Uin")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCustomerBillDetailRequest(AbstractModel):
+    """DescribeCustomerBillDetail request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CustomerUin: Customer UIN
+        :type CustomerUin: int
+        :param Month: The queried month in “YYYY-MM” format, such as 2023-01.
+        :type Month: str
+        :param PageSize: A pagination parameter that specifies the number of entries per page
+        :type PageSize: int
+        :param Page: A pagination parameter that specifies the current page number
+        :type Page: int
+        :param PayMode: Billing mode. Valid values:
+`prePay` (Monthly subscription)
+`postPay` (Pay-as-you-go)
+        :type PayMode: str
+        :param ActionType: Transaction type. Valid values:
+`prepay_purchase` (Purchase)
+`prepay_renew` (Renewal)
+`prepay_modify` (Upgrade/Downgrade)
+`prepay_return` ( Monthly subscription refund)
+`postpay_deduct` (Pay-as-you-go)
+`postpay_deduct_h` (Hourly settlement)
+`postpay_deduct_d` (Daily settlement)
+`postpay_deduct_m` (Monthly settlement)
+`offline_deduct` (Offline project deduction)
+`online_deduct` (Offline product deduction)
+`recon_deduct` (Adjustment - deduction)
+`recon_increase` (Adjustment - compensation)
+`ripay_purchase` (One-off RI Fee)
+`postpay_deduct_s` (Spot)
+`ri_hour_pay` (Hourly RI fee)
+`prePurchase` (New monthly subscription)
+`preRenew` (Monthly subscription renewal)
+`preUpgrade` (Upgrade/Downgrade)
+`preDowngrade` (Upgrade/Downgrade)
+`svp_hour_pay` (Hourly Savings Plan fee)
+`recon_guarantee` (Minimum spend deduction)
+`pre_purchase` (New monthly subscription)
+`pre_renew` (Monthly subscription renewal)
+`pre_upgrade` (Upgrade/Downgrade)
+`pre_downgrade` (Upgrade/Downgrade)
+        :type ActionType: str
+        :param IsConfirmed: Payment status
+`0`: N/A
+`1`: Paid
+`2`: Unpaid
+        :type IsConfirmed: str
+        """
+        self.CustomerUin = None
+        self.Month = None
+        self.PageSize = None
+        self.Page = None
+        self.PayMode = None
+        self.ActionType = None
+        self.IsConfirmed = None
+
+
+    def _deserialize(self, params):
+        self.CustomerUin = params.get("CustomerUin")
+        self.Month = params.get("Month")
+        self.PageSize = params.get("PageSize")
+        self.Page = params.get("Page")
+        self.PayMode = params.get("PayMode")
+        self.ActionType = params.get("ActionType")
+        self.IsConfirmed = params.get("IsConfirmed")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCustomerBillDetailResponse(AbstractModel):
+    """DescribeCustomerBillDetail response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: Total number of data entries
+        :type Total: int
+        :param DetailSet: Data details
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DetailSet: list of BillDetailData
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Total = None
+        self.DetailSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("DetailSet") is not None:
+            self.DetailSet = []
+            for item in params.get("DetailSet"):
+                obj = BillDetailData()
+                obj._deserialize(item)
+                self.DetailSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCustomerBillSummaryRequest(AbstractModel):
+    """DescribeCustomerBillSummary request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CustomerUin: Customer UIN
+        :type CustomerUin: int
+        :param Month: The queried month in “YYYY-MM” format, such as 2023-01.
+        :type Month: str
+        :param PayMode: Billing mode. Valid values:
+`prePay` (Monthly subscription)
+`postPay` (Pay-as-you-go)
+        :type PayMode: str
+        :param ActionType: Transaction type. Valid values:
+`prepay_purchase` (Purchase)
+`prepay_renew` (Renewal)
+`prepay_modify` (Upgrade/Downgrade)
+`prepay_return` (Monthly subscription refund)
+`postpay_deduct` (Pay-as-you-go)
+`postpay_deduct_h` (Hourly settlement)
+`postpay_deduct_d` (Daily settlement)
+`postpay_deduct_m` (Monthly settlement)
+`offline_deduct` (Offline project deduction)
+`online_deduct` (Offline product deduction)
+`recon_deduct` (Adjustment - deduction)
+`recon_increase` (Adjustment - compensation)
+`ripay_purchase` (One-off RI Fee)
+`postpay_deduct_s` (Spot)
+`ri_hour_pay` (Hourly RI fee)
+`prePurchase` (New monthly subscription)
+`preRenew` (Monthly subscription renewal)
+`preUpgrade` (Upgrade/Downgrade)
+`preDowngrade` (Upgrade/Downgrade)
+`svp_hour_pay` (Hourly Savings Plan fee)
+`recon_guarantee` (Minimum spend deduction)
+`pre_purchase` (New monthly subscription)
+`pre_renew` (Monthly subscription renewal)
+`pre_upgrade` (Upgrade/Downgrade)
+`pre_downgrade` (Upgrade/Downgrade)
+        :type ActionType: str
+        :param IsConfirmed: Payment status
+`0`: N/A
+`1`: Paid
+`2`: Unpaid
+        :type IsConfirmed: str
+        """
+        self.CustomerUin = None
+        self.Month = None
+        self.PayMode = None
+        self.ActionType = None
+        self.IsConfirmed = None
+
+
+    def _deserialize(self, params):
+        self.CustomerUin = params.get("CustomerUin")
+        self.Month = params.get("Month")
+        self.PayMode = params.get("PayMode")
+        self.ActionType = params.get("ActionType")
+        self.IsConfirmed = params.get("IsConfirmed")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCustomerBillSummaryResponse(AbstractModel):
+    """DescribeCustomerBillSummary response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCost: Total amount
+        :type TotalCost: float
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCost = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCost = params.get("TotalCost")
         self.RequestId = params.get("RequestId")
 
 

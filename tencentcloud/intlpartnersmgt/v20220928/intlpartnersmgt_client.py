@@ -80,6 +80,52 @@ class IntlpartnersmgtClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCustomerBillDetail(self, request):
+        """This API is used to query the customer bill details.
+
+        :param request: Request instance for DescribeCustomerBillDetail.
+        :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeCustomerBillDetailRequest`
+        :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeCustomerBillDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCustomerBillDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCustomerBillDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCustomerBillSummary(self, request):
+        """This API is used to query the total amount of customer bills.
+
+        :param request: Request instance for DescribeCustomerBillSummary.
+        :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeCustomerBillSummaryRequest`
+        :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeCustomerBillSummaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCustomerBillSummary", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCustomerBillSummaryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetCountryCodes(self, request):
         """This API is used to obtain country/region codes.
 

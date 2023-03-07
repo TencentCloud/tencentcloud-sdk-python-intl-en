@@ -4948,6 +4948,72 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class ModifyVipVportRequest(AbstractModel):
+    """ModifyVipVport request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param InstanceGrpId: Instance group ID
+        :type InstanceGrpId: str
+        :param Vip: Target IP to be modified
+        :type Vip: str
+        :param Vport: Target port to be modified
+        :type Vport: int
+        :param DbType: Database type. Valid values: 
+<li> MYSQL </li>
+        :type DbType: str
+        :param OldIpReserveHours: Valid hours of old IPs. If it is set to `0` hours, the IPs will be released immediately.
+        :type OldIpReserveHours: int
+        """
+        self.ClusterId = None
+        self.InstanceGrpId = None
+        self.Vip = None
+        self.Vport = None
+        self.DbType = None
+        self.OldIpReserveHours = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.InstanceGrpId = params.get("InstanceGrpId")
+        self.Vip = params.get("Vip")
+        self.Vport = params.get("Vport")
+        self.DbType = params.get("DbType")
+        self.OldIpReserveHours = params.get("OldIpReserveHours")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyVipVportResponse(AbstractModel):
+    """ModifyVipVport response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: Async task ID
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class Module(AbstractModel):
     """Modules supported by the system
 
