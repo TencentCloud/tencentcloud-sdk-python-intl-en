@@ -116,7 +116,7 @@ class AllocateHostsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param HostIdSet: The ID list of the CVM instances newly created on the CDH.
+        :param HostIdSet: IDs of created instances
         :type HostIdSet: list of str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -635,7 +635,7 @@ Valid values: `TRUE` and `FALSE`; default value: `FALSE`.
 
 Click [here](https://intl.cloud.tencent.com/document/product/213/43498?from_cn_redirect=1) to learn more about Sysprep.
         :type Sysprep: str
-        :param DataDiskIds: Specified data disk ID included in the full image created from the instance.
+        :param DataDiskIds: IDs of data disks included in the image. 
         :type DataDiskIds: list of str
         :param SnapshotIds: Specified snapshot ID used to create an image. A system disk snapshot must be included. It cannot be passed together with `InstanceId`.
         :type SnapshotIds: list of str
@@ -2788,15 +2788,19 @@ class ExportImagesResponse(AbstractModel):
         r"""
         :param TaskId: ID of the image export task
         :type TaskId: int
+        :param CosPaths: List of COS filenames of the exported images
+        :type CosPaths: list of str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.TaskId = None
+        self.CosPaths = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
+        self.CosPaths = params.get("CosPaths")
         self.RequestId = params.get("RequestId")
 
 
@@ -3146,17 +3150,17 @@ Note: This field may return `null`, indicating that no valid value was found.
 
 
 class ImageOsList(AbstractModel):
-    """Supported operating systems are divided into two categories, Windows and Linux.
+    """Supported operating systems. They are divided into two categories, Windows and Linux.
 
     """
 
     def __init__(self):
         r"""
         :param Windows: Supported Windows OS
-Note: This field may return null, indicating that no valid value is found.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Windows: list of str
         :param Linux: Supported Linux OS
-Note: This field may return null, indicating that no valid value is found.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Linux: list of str
         """
         self.Windows = None
@@ -3866,6 +3870,13 @@ Note: this field may return null, indicating that no valid value was found.
         :type LicenseType: str
         :param DisableApiTermination: Whether the termination protection is enabled. Values: <br><li>`TRUE`: Enable instance protection, which means that this instance can not be deleted by an API action.<br><li>`FALSE`: Do not enable the instance protection.<br><br>Default value: `FALSE`.
         :type DisableApiTermination: bool
+        :param DefaultLoginUser: Default login user
+        :type DefaultLoginUser: str
+        :param DefaultLoginPort: Default login port
+        :type DefaultLoginPort: int
+        :param LatestOperationErrorMsg: Latest operation errors of the instance.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type LatestOperationErrorMsg: str
         """
         self.Placement = None
         self.InstanceId = None
@@ -3904,6 +3915,9 @@ Note: this field may return null, indicating that no valid value was found.
         self.GPUInfo = None
         self.LicenseType = None
         self.DisableApiTermination = None
+        self.DefaultLoginUser = None
+        self.DefaultLoginPort = None
+        self.LatestOperationErrorMsg = None
 
 
     def _deserialize(self, params):
@@ -3966,6 +3980,9 @@ Note: this field may return null, indicating that no valid value was found.
             self.GPUInfo._deserialize(params.get("GPUInfo"))
         self.LicenseType = params.get("LicenseType")
         self.DisableApiTermination = params.get("DisableApiTermination")
+        self.DefaultLoginUser = params.get("DefaultLoginUser")
+        self.DefaultLoginPort = params.get("DefaultLoginPort")
+        self.LatestOperationErrorMsg = params.get("LatestOperationErrorMsg")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4139,6 +4156,10 @@ Note: this field may return null, indicating that no valid value is obtained.
         :type Fpga: int
         :param Remark: Descriptive information of the instance.
         :type Remark: str
+        :param GpuCount: 
+        :type GpuCount: float
+        :param Frequency: CPU clock rate of the instance
+        :type Frequency: str
         """
         self.Zone = None
         self.InstanceType = None
@@ -4160,6 +4181,8 @@ Note: this field may return null, indicating that no valid value is obtained.
         self.Gpu = None
         self.Fpga = None
         self.Remark = None
+        self.GpuCount = None
+        self.Frequency = None
 
 
     def _deserialize(self, params):
@@ -4192,6 +4215,8 @@ Note: this field may return null, indicating that no valid value is obtained.
         self.Gpu = params.get("Gpu")
         self.Fpga = params.get("Fpga")
         self.Remark = params.get("Remark")
+        self.GpuCount = params.get("GpuCount")
+        self.Frequency = params.get("Frequency")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5424,7 +5449,7 @@ class Placement(AbstractModel):
         :type ProjectId: int
         :param HostIds: ID list of CDHs from which the instance can be created. If you have purchased CDHs and specify this parameter, the instances you purchase will be randomly deployed on the CDHs.
         :type HostIds: list of str
-        :param HostIps: Master host IP used to create the CVM
+        :param HostIps: IPs of the hosts to create CVMs
         :type HostIps: list of str
         :param HostId: The ID of the CDH to which the instance belongs, only used as an output parameter.
         :type HostId: str
@@ -5841,8 +5866,8 @@ class ReservedInstancePriceItem(AbstractModel):
         :param Duration: The **validity** of the reserved instance in seconds, which is the purchased usage period. For example, `31536000`.
 Unit: second
         :type Duration: int
-        :param ProductDescription: The operating system of the reserved instance, such as `linux`.
-Valid value: linux.
+        :param ProductDescription: The operating system of the reserved instance, such as `Linux`.
+Valid value: `Linux`.
         :type ProductDescription: str
         """
         self.OfferingType = None
@@ -6798,15 +6823,15 @@ Note: This field may return null, indicating that no valid value is found.
 
 
 class SyncImage(AbstractModel):
-    """
+    """Image sync information
 
     """
 
     def __init__(self):
         r"""
-        :param ImageId: 
+        :param ImageId: Image ID
         :type ImageId: str
-        :param Region: 
+        :param Region: Region
         :type Region: str
         """
         self.ImageId = None
@@ -6840,11 +6865,14 @@ class SyncImagesRequest(AbstractModel):
         :type DryRun: bool
         :param ImageName: Destination image name.
         :type ImageName: str
+        :param ImageSetRequired: Whether to return the ID of image created in the destination region
+        :type ImageSetRequired: bool
         """
         self.ImageIds = None
         self.DestinationRegions = None
         self.DryRun = None
         self.ImageName = None
+        self.ImageSetRequired = None
 
 
     def _deserialize(self, params):
@@ -6852,6 +6880,7 @@ class SyncImagesRequest(AbstractModel):
         self.DestinationRegions = params.get("DestinationRegions")
         self.DryRun = params.get("DryRun")
         self.ImageName = params.get("ImageName")
+        self.ImageSetRequired = params.get("ImageSetRequired")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6868,7 +6897,7 @@ class SyncImagesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageSet: 
+        :param ImageSet: ID of the image created in the destination region
         :type ImageSet: list of SyncImage
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str

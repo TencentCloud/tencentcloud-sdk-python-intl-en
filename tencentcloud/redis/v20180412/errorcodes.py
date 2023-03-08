@@ -110,6 +110,9 @@ INVALIDPARAMETER_INSTANCESGOVERLIMITERROR = 'InvalidParameter.InstanceSGOverLimi
 # Invalid service parameter.
 INVALIDPARAMETER_INVALIDPARAMETER = 'InvalidParameter.InvalidParameter'
 
+# The instance is not in a VPC.
+INVALIDPARAMETER_ISNOTVPCINSTANCE = 'InvalidParameter.IsNotVpcInstance'
+
 # The operation is unsupported due to incorrect parameters.
 INVALIDPARAMETER_NOTSUPPORTED = 'InvalidParameter.NotSupported'
 

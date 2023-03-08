@@ -251,6 +251,34 @@ class BackupDownloadInfo(AbstractModel):
         
 
 
+class BackupLimitVpcItem(AbstractModel):
+    """VPC information of the custom backup file download address.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Region: Region of the VPC of the custom backup file download address.
+        :type Region: str
+        :param VpcList: VPC list of the custom backup file download address.
+        :type VpcList: list of str
+        """
+        self.Region = None
+        self.VpcList = None
+
+
+    def _deserialize(self, params):
+        self.Region = params.get("Region")
+        self.VpcList = params.get("VpcList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BigKeyInfo(AbstractModel):
     """Big key details
 
@@ -1138,16 +1166,48 @@ class DescribeBackupUrlRequest(AbstractModel):
         r"""
         :param InstanceId: Instance ID
         :type InstanceId: str
-        :param BackupId: Backup ID, which can be queried through the `DescribeInstanceBackups` API
+        :param BackupId: Backup ID, which can be obtained through the `RedisBackupSet` parameter returned by the [DescribeInstanceBackups](https://intl.cloud.tencent.com/document/product/239/20011?from_cn_redirect=1) API.
         :type BackupId: str
+        :param LimitType: Type of the network restriction for downloading backup files. If this parameter is not configured, the user-defined configuration will be used.
+
+- `NoLimit`: Backup files can be downloaded over both public and private networks.
+- `LimitOnlyIntranet`: Backup files can be downloaded only at private network addresses auto-assigned by Tencent Cloud.
+- `Customize`: Backup files can be downloaded only in the customized VPC.
+        :type LimitType: str
+        :param VpcComparisonSymbol: Only `In` can be passed in for this parameter, indicating that backup files can be downloaded in the custom `LimitVpc`.
+        :type VpcComparisonSymbol: str
+        :param IpComparisonSymbol: Whether backups can be downloaded at the custom `LimitIp` address.
+
+- `In` (default value): Download is allowed for the custom IP.
+- `NotIn`: Download is not allowed for the custom IP.
+        :type IpComparisonSymbol: str
+        :param LimitVpc: VPC ID of the custom backup file download address, which is required if `LimitType` is `Customize`.
+        :type LimitVpc: list of BackupLimitVpcItem
+        :param LimitIp: VPC IP of the custom backup file download address, which is required if `LimitType` is `Customize`.
+        :type LimitIp: list of str
         """
         self.InstanceId = None
         self.BackupId = None
+        self.LimitType = None
+        self.VpcComparisonSymbol = None
+        self.IpComparisonSymbol = None
+        self.LimitVpc = None
+        self.LimitIp = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.BackupId = params.get("BackupId")
+        self.LimitType = params.get("LimitType")
+        self.VpcComparisonSymbol = params.get("VpcComparisonSymbol")
+        self.IpComparisonSymbol = params.get("IpComparisonSymbol")
+        if params.get("LimitVpc") is not None:
+            self.LimitVpc = []
+            for item in params.get("LimitVpc"):
+                obj = BackupLimitVpcItem()
+                obj._deserialize(item)
+                self.LimitVpc.append(obj)
+        self.LimitIp = params.get("LimitIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1171,7 +1231,7 @@ class DescribeBackupUrlResponse(AbstractModel):
         :param Filenames: Filename. This field will be disused soon.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Filenames: list of str
-        :param BackupInfos: List of backup file information
+        :param BackupInfos: List of backup file information.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type BackupInfos: list of BackupDownloadInfo
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
@@ -1432,34 +1492,44 @@ class DescribeInstanceBackupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Limit: Number of backups returned per page. Default value: `20`. Maximum value: `100`.
+        :type Limit: int
+        :param Offset: Pagination offset, which is an integral multiple of `Limit`. `offset` = `limit` * (page number - 1).
+        :type Offset: int
         :param InstanceId: ID of the instance to be operated on, which can be obtained through the `InstanceId` field in the return value of the `DescribeInstance` API.
         :type InstanceId: str
-        :param Limit: Instance list size. Default value: 20
-        :type Limit: int
-        :param Offset: Offset, which is an integral multiple of `Limit`.
-        :type Offset: int
         :param BeginTime: Start time in the format of yyyy-MM-dd HH:mm:ss, such as 2017-02-08 16:46:34. This parameter is used to query the list of instance backups started during the [beginTime, endTime] range.
         :type BeginTime: str
         :param EndTime: End time in the format of yyyy-MM-dd HH:mm:ss, such as 2017-02-08 19:09:26. This parameter is used to query the list of instance backups started during the [beginTime, endTime] range.
         :type EndTime: str
-        :param Status: 1: backup in process; 2: backing up normally; 3: converting from backup to RDB file; 4: RDB conversion completed; -1: backup expired; -2: backup deleted.
+        :param Status: Backup task status:
+`1`: The backup is in the process.
+`2`: The backup is normal.
+`3`: The backup is being converted to an RDB file.
+`4`: Conversion to RDB has been completed.
+`-1`: The backup expired.
+`-2`: The backup has been deleted.
         :type Status: list of int
+        :param InstanceName: Instance name, which can be fuzzily searched.
+        :type InstanceName: str
         """
-        self.InstanceId = None
         self.Limit = None
         self.Offset = None
+        self.InstanceId = None
         self.BeginTime = None
         self.EndTime = None
         self.Status = None
+        self.InstanceName = None
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        self.InstanceId = params.get("InstanceId")
         self.BeginTime = params.get("BeginTime")
         self.EndTime = params.get("EndTime")
         self.Status = params.get("Status")
+        self.InstanceName = params.get("InstanceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1476,9 +1546,9 @@ class DescribeInstanceBackupsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Total number of backups
+        :param TotalCount: Total number of backups.
         :type TotalCount: int
-        :param BackupSet: Array of instance backups
+        :param BackupSet: Array of instance backups.
         :type BackupSet: list of RedisBackupSet
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -2533,9 +2603,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: Number of instances. Default value: 20. Maximum value: 1000.
+        :param Limit: Number of instances returned per page. Default value: `20`. Maximum value: `1000`.
         :type Limit: int
-        :param Offset: Offset, which is an integral multiple of `Limit`.
+        :param Offset: Pagination offset, which is an integral multiple of `Limit`.
         :type Offset: int
         :param InstanceId: Instance ID, such as crs-6ubhgouj.
         :type InstanceId: str
@@ -2883,7 +2953,7 @@ class DescribeProductInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RegionSet: Sale information of a region
+        :param RegionSet: Sale information of a region.
         :type RegionSet: list of RegionConf
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -3107,13 +3177,13 @@ class DescribeReplicationGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: Instance list size. Default value: 20
+        :param Limit: Number of instances returned per page. Default value: `20`.
         :type Limit: int
-        :param Offset: Offset, which is an integral multiple of `Limit`
+        :param Offset: Pagination offset, which is an integral multiple of `Limit`. `offset` = `limit` * (page number - 1).
         :type Offset: int
         :param GroupId: Replication group ID
         :type GroupId: str
-        :param SearchKey: Instance ID/name. Fuzzy query is supported.
+        :param SearchKey: Keyword for fuzzy search, which can be an instance name or instance ID.
         :type SearchKey: str
         """
         self.Limit = None
@@ -3143,9 +3213,9 @@ class DescribeReplicationGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Number of replication group
+        :param TotalCount: Number of replication groups
         :type TotalCount: int
-        :param Groups: Replication group info
+        :param Groups: Replication group information
         :type Groups: list of Groups
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -3179,7 +3249,7 @@ class DescribeSlowLogRequest(AbstractModel):
         :type BeginTime: str
         :param EndTime: The end time
         :type EndTime: str
-        :param MinQueryTime: The average execution time threshold of slow query in microseconds
+        :param MinQueryTime: The average execution time threshold of slow query in ms.
         :type MinQueryTime: int
         :param Limit: Number of slow queries displayed per page. Default value: `20`.
         :type Limit: int
@@ -4407,7 +4477,7 @@ class InstanceProxySlowlogDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Duration: Slow query duration
+        :param Duration: Duration of the slow query in ms.
         :type Duration: int
         :param Client: Client address
         :type Client: str
@@ -4484,17 +4554,17 @@ class InstanceSet(AbstractModel):
         :type InstanceName: str
         :param InstanceId: Instance ID
         :type InstanceId: str
-        :param Appid: User's Appid
+        :param Appid: User AppID
         :type Appid: int
         :param ProjectId: Project ID
         :type ProjectId: int
-        :param RegionId: Region ID. 1: Guangzhou; 4: Shanghai; 5: Hong Kong (China); 6: Toronto; 7: Shanghai Finance; 8: Beijing; 9: Singapore; 11: Shenzhen Finance; 15: West US (Silicon Valley); 16: Chengdu; 17: Germany; 18: South Korea; 19: Chongqing; 21: India; 22: East US (Virginia); 23: Thailand; 24: Russia; 25: Japan.
+        :param RegionId: Region ID. <ul><li>`1`: Guangzhou. </li><li>`4`: Shanghai. </li><li>`5`: Hong Kong (China). </li><li>`6`: Toronto. </li> <li>`7`: Shanghai Finance. </li> <li>`8`: Beijing. </li> <li>`9`: Singapore. </li> <li>`11`: Shenzhen Finance. </li> <li>`15`: West US (Silicon Valley). </li><li>`16`: Chengdu. </li><li>`17`: Frankfurt. </li><li>`18`: Seoul. </li><li>`19`: Chongqing. </li><li>`21`: Mumbai. </li><li>`22`: East US (Virginia). </li><li>`23`: Bangkok. </li><li>`24`: Moscow. </li><li>`25`: Tokyo. </li></ul>
         :type RegionId: int
         :param ZoneId: Region ID
         :type ZoneId: int
-        :param VpcId: VPC ID, such as 75101.
+        :param VpcId: VPC ID, such as `75101`.
         :type VpcId: int
-        :param SubnetId: VPC subnet ID, such as 46315.
+        :param SubnetId: Subnet ID, such as `46315`.
         :type SubnetId: int
         :param Status: Current instance status. <ul><li>`0`: To be initialized. </li><li>`1`: In the process. </li><li>`2`: Running. </li><li>`-2`: Isolated. </li><li>`-3`: To be deleted. </li></ul>
         :type Status: int
@@ -4506,7 +4576,7 @@ class InstanceSet(AbstractModel):
         :type Createtime: str
         :param Size: Instance capacity in MB
         :type Size: float
-        :param SizeUsed: This field has been disused
+        :param SizeUsed: This field has been disused. You can use the [GetMonitorData](https://intl.cloud.tencent.com/document/product/248/31014?from_cn_redirect=1) API to query the capacity used by the instance.
         :type SizeUsed: float
         :param Type: Instance type. <ul><li>`1`: Redis 2.8 memory edition in cluster architecture. </li><li>`2`: Redis 2.8 memory edition in standard architecture. </li><li>`3`: CKV 3.2 memory edition in standard architecture. </li><li>`4`: CKV 3.2 memory edition in cluster architecture. </li><li>`5`: Redis 2.8 memory edition in standalone architecture. </li></li><li>`6`: Redis 4.0 memory edition in standard architecture. </li></li><li>`7`: Redis 4.0 memory edition in cluster architecture. </li></li><li>`8`: Redis 5.0 memory edition in standard architecture. </li></li><li>`9`: Redis 5.0 memory edition in cluster architecture. </li></ul>
         :type Type: int
@@ -4579,8 +4649,8 @@ Note: This field may return null, indicating that no valid value can be obtained
         :param DiskSize: This parameter can be ignored for Redis instance.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type DiskSize: int
-        :param MonitorVersion: Monitoring granularity type. <ul><li>`1m`: Monitoring at 1-minute granularity). </li><li>`5s`: Monitoring at 5-second granularity. </li></ul>
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param MonitorVersion: Monitoring granularity type. <ul><li>`1m`: Monitoring at 1-minute granularity. </li><li>`5s`: Monitoring at 5-second granularity. </li></ul>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type MonitorVersion: str
         :param ClientLimitMin: The minimum number of max client connections
 Note: This field may return null, indicating that no valid value can be obtained.
@@ -4881,13 +4951,13 @@ class Instances(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AppId: User App ID
+        :param AppId: User AppID
         :type AppId: int
         :param InstanceId: Instance ID
         :type InstanceId: str
         :param InstanceName: Instance name
         :type InstanceName: str
-        :param RegionId: Region ID. 1: Guangzhou; 4: Shanghai; 5: Hong Kong (China); 6: Toronto; 7: Shanghai Finance; 8: Beijing; 9: Singapore; 11: Shenzhen Finance; 15: West US (Silicon Valley)
+        :param RegionId: Region ID. <ul><li>`1`: Guangzhou. </li><li>`4`: Shanghai. </li><li>`5`: Hong Kong (China). </li> <li>`6`: Toronto. </li> <li>`7`: Shanghai Finance. </li> <li>`8`: Beijing. </li> <li>`9`: Singapore. </li> <li>`11`: Shenzhen Finance. </li> <li>`15`: West US (Silicon Valley). </li> </ul>
         :type RegionId: int
         :param ZoneId: Region ID
         :type ZoneId: int
@@ -4895,33 +4965,33 @@ class Instances(AbstractModel):
         :type RedisReplicasNum: int
         :param RedisShardNum: Number of shards
         :type RedisShardNum: int
-        :param RedisShardSize: Shard size
+        :param RedisShardSize: Shard memory size.
         :type RedisShardSize: int
         :param DiskSize: Instance disk size
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type DiskSize: int
-        :param Engine: Engine: Redis community edition, Tencent Cloud CKV
+        :param Engine: Engine: Redis Community Edition, Tencent Cloud CKV.
         :type Engine: str
-        :param Role: Instance role. Valid values: `rw` (read-write), `r`( read-only)
+        :param Role: Read-write permission of the instance. <ul><li>`rw`: Read/Write. </li><li>`r`: Read-only. </li></ul>
         :type Role: str
         :param Vip: Instance VIP
         :type Vip: str
         :param Vip6: Internal parameter, which can be ignored.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Vip6: str
-        :param VpcID: VPC ID, such as 75101
+        :param VpcID: VPC ID, such as `75101`.
         :type VpcID: int
-        :param VPort: Instance Port
+        :param VPort: Instance port
         :type VPort: int
-        :param Status: Instance status. 0: to be initialized; 1: in process; 2: running; -2: isolated; -3: to be deleted
+        :param Status: Instance status. <ul><li>`0`: Uninitialized. </li><li>`1`: In the process. </li><li>`2`: Running. </li><li>`-2`: Isolated. </li><li>`-3`: To be deleted. </li></ul>
         :type Status: int
         :param GrocerySysId: Repository ID
         :type GrocerySysId: int
-        :param ProductType: Instance type. Valid values: `1` (Redis 2.8 memory edition in cluster architecture), `2` (Redis 2.8 memory edition in standard architecture), `3` (CKV 3.2 memory edition in standard architecture), `4` (CKV 3.2 memory edition in cluster architecture), `5` (Redis 2.8 memory edition in standalone architecture), `6` (Redis 4.0 memory edition in standard architecture), `7` (Redis 4.0 memory edition in cluster architecture), `8` (Redis 5.0 memory edition in standard architecture), `9` (Redis 5.0 memory edition in cluster architecture)
+        :param ProductType: Instance type. <ul><li>`1`: Redis 2.8 Memory Edition (Cluster Architecture). </li><li>`2`: Redis 2.8 Memory Edition (Standard Architecture). </li><li>`3`: CKV 3.2 Memory Edition (Standard Architecture). </li><li>`4`: CKV 3.2 Memory Edition (Cluster Architecture). </li><li>`5`: Redis 2.8 Standalone Edition. </li><li>`6`: Redis 4.0 Memory Edition (Standard Architecture). </li><li>`7`: Redis 4.0 Memory Edition (Cluster Architecture). </li><li>`8`: Redis 5.0 Memory Edition (Standard Architecture). </li><li>`9`: Redis 5.0 Memory Edition (Cluster Architecture). </li></ul>
         :type ProductType: int
-        :param CreateTime: Creation time
+        :param CreateTime: The time when the instance was added to the replication group.
         :type CreateTime: str
-        :param UpdateTime: Update time
+        :param UpdateTime: The time when instances in the replication group were updated.
         :type UpdateTime: str
         """
         self.AppId = None
@@ -5150,11 +5220,11 @@ class ModifyAutoBackupConfigRequest(AbstractModel):
         r"""
         :param InstanceId: Instance ID
         :type InstanceId: str
-        :param WeekDays: Date. Valid values: `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`. This parameter cannot be modified for now.
+        :param WeekDays: Automatic backup cycle. Valid values: `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`. This parameter currently cannot be modified.
         :type WeekDays: list of str
-        :param TimePeriod: Time period. Value range: 00:00-01:00, 01:00-02:00...... 23:00-00:00
+        :param TimePeriod: Automatic backup time in the format of 00:00-01:00, 01:00-02:00... 23:00-00:00.
         :type TimePeriod: str
-        :param AutoBackupType: Automatic backup type: 1 (scheduled rollback)
+        :param AutoBackupType: Automatic backup type. `1`: Scheduled rollback.
         :type AutoBackupType: int
         """
         self.InstanceId = None
@@ -5186,9 +5256,9 @@ class ModifyAutoBackupConfigResponse(AbstractModel):
         r"""
         :param AutoBackupType: Automatic backup type: 1 (scheduled rollback)
         :type AutoBackupType: int
-        :param WeekDays: Date. Value range: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+        :param WeekDays: Automatic backup cycle. Valid values: `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`.
         :type WeekDays: list of str
-        :param TimePeriod: Time period. Value range: 00:00-01:00, 01:00-02:00...... 23:00-00:00
+        :param TimePeriod: Automatic backup time in the format of 00:00-01:00, 01:00-02:00... 23:00-00:00.
         :type TimePeriod: str
         :param BackupStorageDays: Retention time of full backup files in days
         :type BackupStorageDays: int
@@ -5566,16 +5636,26 @@ class ModifyNetworkConfigRequest(AbstractModel):
         r"""
         :param InstanceId: Instance ID
         :type InstanceId: str
-        :param Operation: Operation type. changeVip: modify the VIP of an instance; changeVpc: modify the subnet of an instance; changeBaseToVpc: change from classic network to VPC
+        :param Operation: Network change type. Valid values:
+- `changeVip`: VPC change, including the private IPv4 address and port.
+- `changeVpc`: Subnet change.
+- `changeBaseToVpc`: Change from classic network to VPC.
+- `changeVPort`: Port change.
         :type Operation: str
-        :param Vip: VIP address, which is required for the `changeVip` operation. If this parameter is left blank, a random one will be assigned by default.
+        :param Vip: Private IPv4 address of the instance, which is required if `Operation` is `changeVip`.
         :type Vip: str
-        :param VpcId: VPC ID, which is required for `changeVpc` and `changeBaseToVpc` operations.
+        :param VpcId: VPC ID after the change, which is required if `Operation` is `changeVpc` or `changeBaseToVpc`.
         :type VpcId: str
-        :param SubnetId: Subnet ID, which is required for `changeVpc` and `changeBaseToVpc` operations
+        :param SubnetId: Subnet ID after the change, which is required if `Operation` is `changeVpc` or `changeBaseToVpc`.
         :type SubnetId: str
-        :param Recycle: Retention time of the original VIP in days. Note that this parameter works only in the latest SDK. In earlier SDKs, the original VIP is released immediately. To view the SDK version, go to [SDK Center](https://intl.cloud.tencent.com/document/sdk?from_cn_redirect=1).
+        :param Recycle: Retention period of the original private IPv4 address
+- Unit: Days.
+- Valid values: `0`, `1`, `2`, `3`, `7`, `15`.
+
+**Note**: You can set the retention period of the original address only in the latest SDK. In earlier SDKs, the original address is released immediately. To view the SDK version, go to [SDK Center](https://intl.cloud.tencent.com/document/sdk?from_cn_redirect=1).
         :type Recycle: int
+        :param VPort: Network port after the change, which is required if `Operation` is `changeVPort` or `changeVip`. Value range: [1024,65535].
+        :type VPort: int
         """
         self.InstanceId = None
         self.Operation = None
@@ -5583,6 +5663,7 @@ class ModifyNetworkConfigRequest(AbstractModel):
         self.VpcId = None
         self.SubnetId = None
         self.Recycle = None
+        self.VPort = None
 
 
     def _deserialize(self, params):
@@ -5592,6 +5673,7 @@ class ModifyNetworkConfigRequest(AbstractModel):
         self.VpcId = params.get("VpcId")
         self.SubnetId = params.get("SubnetId")
         self.Recycle = params.get("Recycle")
+        self.VPort = params.get("VPort")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5608,14 +5690,16 @@ class ModifyNetworkConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: Execution status: true or false
+        :param Status: Execution status. Ignore this parameter.
         :type Status: bool
-        :param SubnetId: Subnet ID
+        :param SubnetId: New subnet ID of the instance
         :type SubnetId: str
-        :param VpcId: VPC ID
+        :param VpcId: New VPC ID of the instance
         :type VpcId: str
-        :param Vip: VIP address
+        :param Vip: New private IPv4 address of the instance
         :type Vip: str
+        :param TaskId: Task ID, which can be used to query the task execution status through the `DescribeTaskInfo` API.
+        :type TaskId: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -5623,6 +5707,7 @@ class ModifyNetworkConfigResponse(AbstractModel):
         self.SubnetId = None
         self.VpcId = None
         self.Vip = None
+        self.TaskId = None
         self.RequestId = None
 
 
@@ -5631,6 +5716,7 @@ class ModifyNetworkConfigResponse(AbstractModel):
         self.SubnetId = params.get("SubnetId")
         self.VpcId = params.get("VpcId")
         self.Vip = params.get("Vip")
+        self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
 
 
@@ -5997,13 +6083,25 @@ class RedisBackupSet(AbstractModel):
         :type StartTime: str
         :param BackupId: Backup ID
         :type BackupId: str
-        :param BackupType: Backup type. 1: manual backup initiated by the user; 0: automatic backup in the early morning initiated by the system
+        :param BackupType: Backup type
+
+- `1`: Manual backup initiated by the user.
+- `0`: Automatic backup in the early morning initiated by the system.
         :type BackupType: str
-        :param Status: Backup status. 1: backup is locked by another process; 2: backup is normal and not locked by any process; -1: backup has expired; 3: backup is being exported; 4: backup is exported successfully
+        :param Status: Backup status 
+
+- `1`: The backup is locked by another process.
+- `2`: The backup is normal and not locked by any process.
+- `-1`: The backup expired.
+- `3`: The backup is being exported.
+- `4`: The backup was exported successfully.
         :type Status: int
         :param Remark: Backup remarks
         :type Remark: str
-        :param Locked: Whether a backup is locked. 0: no; 1: yes.
+        :param Locked: Whether the backup is locked
+
+- `0`: Not locked.
+- `1`: Locked.
         :type Locked: int
         :param BackupSize: Internal field, which can be ignored.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -6014,6 +6112,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param InstanceType: Internal field, which can be ignored.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type InstanceType: int
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param InstanceName: Instance name
+        :type InstanceName: str
+        :param Region: The region where the local backup resides.
+        :type Region: str
+        :param EndTime: Backup end time
+        :type EndTime: str
+        :param FileType: Backup file type
+        :type FileType: str
+        :param ExpireTime: Backup file expiration time
+        :type ExpireTime: str
         """
         self.StartTime = None
         self.BackupId = None
@@ -6024,6 +6134,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.BackupSize = None
         self.FullBackup = None
         self.InstanceType = None
+        self.InstanceId = None
+        self.InstanceName = None
+        self.Region = None
+        self.EndTime = None
+        self.FileType = None
+        self.ExpireTime = None
 
 
     def _deserialize(self, params):
@@ -6036,6 +6152,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.BackupSize = params.get("BackupSize")
         self.FullBackup = params.get("FullBackup")
         self.InstanceType = params.get("InstanceType")
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.Region = params.get("Region")
+        self.EndTime = params.get("EndTime")
+        self.FileType = params.get("FileType")
+        self.ExpireTime = params.get("ExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6162,19 +6284,19 @@ class RedisNode(AbstractModel):
 
 
 class RedisNodeInfo(AbstractModel):
-    """Redis master or replica node information
+    """Master or replica node information of the TencentDB for Redis instance.
 
     """
 
     def __init__(self):
         r"""
-        :param NodeType: Node type. 0: master node; 1: replica node
+        :param NodeType: Node type. <ul><li>`0`: Master node.</li><li>`1`: Replica node.</li></ul>
         :type NodeType: int
-        :param NodeId: ID of the master or replica node, which is not required during instance creation
+        :param NodeId: Master or replica node ID. <ul><li>This parameter is optional when the [CreateInstances](https://intl.cloud.tencent.com/document/product/239/20026?from_cn_redirect=1) API is used to create a TencentDB for Redis instance, but it is required when the [UpgradeInstance](https://intl.cloud.tencent.com/document/product/239/20013?from_cn_redirect=1) API is used to adjust the configuration of an instance. </li><li>You can use the [DescribeInstances](https://intl.cloud.tencent.com/document/product/239/20018?from_cn_redirect=1) API to get the node ID of integer type. </li></ul>
         :type NodeId: int
-        :param ZoneId: AZ ID of the master or replica node
+        :param ZoneId: ID of the AZ of the master or replica node
         :type ZoneId: int
-        :param ZoneName: AZ name of the master or replica node
+        :param ZoneName: Name of the AZ of the master or replica node
         :type ZoneName: str
         """
         self.NodeType = None
@@ -7132,7 +7254,7 @@ class UpgradeInstanceRequest(AbstractModel):
         r"""
         :param InstanceId: The ID of instance to be modified.
         :type InstanceId: str
-        :param MemSize: New memory size of an instance shard. <ul><li>Unit: MB. </li><li>You can only modify one of the three parameters at a time: `MemSize`, `RedisShardNum`, and `RedisReplicasNum`. To modify one of them, you need to enter the other two, which are consistent with the original configuration specifications of the instance. </li></ul>
+        :param MemSize: New memory size of an instance shard. <ul><li>Unit: MB. </li><li>You can only modify one of the three parameters at a time: `MemSize`, `RedisShardNum`, and `RedisReplicasNum`. To modify one of them, you need to enter the other two, which are consistent with the original configuration specifications of the instance. </li><li>In case of capacity reduction, the new specification must be at least 1.3 times the used capacity; otherwise, the operation will fail.</li></ul>
         :type MemSize: int
         :param RedisShardNum: New number of instance shards. <ul><li>This parameter is not required for standard architecture instances, but for cluster architecture instances. </li><li>For cluster architecture, you can only modify one of the three parameters at a time: `MemSize`, `RedisShardNum`, and `RedisReplicasNum`. To modify one of them, you need to enter the other two, which are consistent with the original configuration specifications of the instance. </li></ul>
         :type RedisShardNum: int

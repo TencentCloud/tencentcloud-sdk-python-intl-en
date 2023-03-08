@@ -372,7 +372,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeBackupUrl(self, request):
-        """This API is used to query the download address of a backup RDB (it is in beta test and can be used only after you apply for the eligibility).
+        """This API is used to query the download address of a backup RDB file.
 
         :param request: Request instance for DescribeBackupUrl.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeBackupUrlRequest`
@@ -464,7 +464,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceBackups(self, request):
-        """This API is used to query the list of Redis instance backups.
+        """This API is used to query the backup list of an instance.
 
         :param request: Request instance for DescribeInstanceBackups.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceBackupsRequest`
@@ -533,7 +533,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceMonitorBigKey(self, request):
-        """This API is used to query the big key of an instance.
+        """The API for querying big keys of a TencentDB for Redis instance was disused on October 31, 2022. For more information, see [API for Querying Instance Big Key Will Be Disused](https://intl.cloud.tencent.com/document/product/239/81005?from_cn_redirect=1).
 
         :param request: Request instance for DescribeInstanceMonitorBigKey.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceMonitorBigKeyRequest`
@@ -556,7 +556,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceMonitorBigKeySizeDist(self, request):
-        """This API is used to query the big key size distribution of an instance.
+        """The API for querying big keys of a TencentDB for Redis instance was disused on October 31, 2022. For more information, see [API for Querying Instance Big Key Will Be Disused](https://intl.cloud.tencent.com/document/product/239/81005?from_cn_redirect=1).
 
         :param request: Request instance for DescribeInstanceMonitorBigKeySizeDist.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceMonitorBigKeySizeDistRequest`
@@ -579,7 +579,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceMonitorBigKeyTypeDist(self, request):
-        """This API is used to query the big key type distribution of an instance
+        """The API for querying big keys of a TencentDB for Redis instance was disused on October 31, 2022. For more information, see [API for Querying Instance Big Key Will Be Disused](https://intl.cloud.tencent.com/document/product/239/81005?from_cn_redirect=1).
 
         :param request: Request instance for DescribeInstanceMonitorBigKeyTypeDist.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceMonitorBigKeyTypeDistRequest`
@@ -947,7 +947,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeProductInfo(self, request):
-        """This API is used to query the purchasable capacity specifications of Redis instances in the specified AZ and instance type. If you are not in the allowlist for the AZ or instance type, you cannot view the details of the capacity specifications. To apply for the eligibility, please submit a ticket.
+        """This API is used to query purchasable TencentDB for Redis specifications in all regions.
 
         :param request: Request instance for DescribeProductInfo.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeProductInfoRequest`
@@ -1039,7 +1039,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeReplicationGroup(self, request):
-        """This API is used to query the global replication group.
+        """This API is used to query a replication group.
 
         :param request: Request instance for DescribeReplicationGroup.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeReplicationGroupRequest`
