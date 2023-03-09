@@ -164,33 +164,6 @@ class MongodbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeBackupAccess(self, request):
-        """备份下载功能已调整，此接口即将下线
-
-        TencentDB will soon stop supporting this API as the backup download feature has been modified.
-
-        This API is used to get the permission to download a backup file. The detailed backup file information can be obtained through the `DescribeDBBackups` API.
-
-        :param request: Request instance for DescribeBackupAccess.
-        :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeBackupAccessRequest`
-        :rtype: :class:`tencentcloud.mongodb.v20190725.models.DescribeBackupAccessResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeBackupAccess", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeBackupAccessResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DescribeBackupDownloadTask(self, request):
         """This API is used to query backup download task information.
 

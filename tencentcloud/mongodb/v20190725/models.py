@@ -156,34 +156,6 @@ class BackupDownloadTaskStatus(AbstractModel):
         
 
 
-class BackupFile(AbstractModel):
-    """Storage information of a backup file
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ReplicateSetId: ID of the replica set/shard to which a backup file belongs
-        :type ReplicateSetId: str
-        :param File: Path to a backup file
-        :type File: str
-        """
-        self.ReplicateSetId = None
-        self.File = None
-
-
-    def _deserialize(self, params):
-        self.ReplicateSetId = params.get("ReplicateSetId")
-        self.File = params.get("File")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class BackupInfo(AbstractModel):
     """Backup information
 
@@ -569,7 +541,7 @@ class CreateDBInstanceRequest(AbstractModel):
         :type VpcId: str
         :param SubnetId: VPC subnet ID. If `UniqVpcId` is set, then `UniqSubnetId` will be required. Please use the `DescribeSubnets` API to query the subnet list.
         :type SubnetId: str
-        :param Password: Instance password, which must contain 8 to 16 characters and comprise at least two of the following types: letters, digits, and symbols (!@#%^*()). If it is left empty, the password is in the format of "instance ID+@+root account UIN". For example, if the instance ID is "cmgo-higv73ed" and the root account UIN "100000001", the instance password will be "cmgo-higv73ed@100000001".
+        :param Password: Instance password. If it is left empty, the password is in the default format of "instance ID+@+root account UIN". For example, if the instance ID is "cmgo-higv73ed" and the root account UIN "100000001", the instance password will be "cmgo-higv73ed@100000001". The custom password must contain 8-32 characters in at least two of the following types: letters, digits, and symbols (!@#%^*()_).
         :type Password: str
         :param Tags: Instance tag information.
         :type Tags: list of TagInfo
@@ -595,6 +567,12 @@ class CreateDBInstanceRequest(AbstractModel):
         :type MongosMemory: int
         :param MongosNodeNum: The number of mongos routers, which is required for a sharded cluster instance of MongoDB 4.2 WiredTiger. For the specific purchasable versions supported, please see the return result of the `DescribeSpecInfo` API. Note: please purchase 3-32 mongos routers for high availability.
         :type MongosNodeNum: int
+        :param ReadonlyNodeNum: Number of read-only nodes. Value range: 2-7.
+        :type ReadonlyNodeNum: int
+        :param ReadonlyNodeAvailabilityZoneList: The AZ where the read-only node is deployed
+        :type ReadonlyNodeAvailabilityZoneList: list of str
+        :param HiddenZone: The AZ where the hidden node resides. It is required for cross-AZ instances.
+        :type HiddenZone: str
         """
         self.NodeNum = None
         self.Memory = None
@@ -622,6 +600,9 @@ class CreateDBInstanceRequest(AbstractModel):
         self.MongosCpu = None
         self.MongosMemory = None
         self.MongosNodeNum = None
+        self.ReadonlyNodeNum = None
+        self.ReadonlyNodeAvailabilityZoneList = None
+        self.HiddenZone = None
 
 
     def _deserialize(self, params):
@@ -656,6 +637,9 @@ class CreateDBInstanceRequest(AbstractModel):
         self.MongosCpu = params.get("MongosCpu")
         self.MongosMemory = params.get("MongosMemory")
         self.MongosNodeNum = params.get("MongosNodeNum")
+        self.ReadonlyNodeNum = params.get("ReadonlyNodeNum")
+        self.ReadonlyNodeAvailabilityZoneList = params.get("ReadonlyNodeAvailabilityZoneList")
+        self.HiddenZone = params.get("HiddenZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -793,68 +777,6 @@ class DescribeAsyncRequestInfoResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeBackupAccessRequest(AbstractModel):
-    """DescribeBackupAccess request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param InstanceId: Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page
-        :type InstanceId: str
-        :param BackupName: Name of the backup file for which to get the download permission
-        :type BackupName: str
-        """
-        self.InstanceId = None
-        self.BackupName = None
-
-
-    def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.BackupName = params.get("BackupName")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeBackupAccessResponse(AbstractModel):
-    """DescribeBackupAccess response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Region: Instance region
-        :type Region: str
-        :param Bucket: The bucket where a backup file is located
-        :type Bucket: str
-        :param Files: Storage information of a backup file
-        :type Files: list of BackupFile
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.Region = None
-        self.Bucket = None
-        self.Files = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.Region = params.get("Region")
-        self.Bucket = params.get("Bucket")
-        if params.get("Files") is not None:
-            self.Files = []
-            for item in params.get("Files"):
-                obj = BackupFile()
-                obj._deserialize(item)
-                self.Files.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1619,24 +1541,38 @@ class InquirePriceCreateDBInstancesRequest(AbstractModel):
         r"""
         :param Zone: Instance region name in the format of ap-guangzhou-2.
         :type Zone: str
-        :param NodeNum: The number of nodes in each replica set. The value range is subject to the response parameter of the `DescribeSpecInfo` API.
+        :param NodeNum: Number of primary and secondary nodes per shard. <br>Value range: It can be queried by the <a href="https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API, and the `MinNodeNum` and `MaxNodeNum` parameters are the minimal and maximum value respectively.</li></ul>
         :type NodeNum: int
         :param Memory: Instance memory size in GB.
         :type Memory: int
-        :param Volume: Instance disk size in GB.
+        :param Volume:  Instance disk size. <ul><li>Unit: GB</li><li>Value range: It can be queried by the <a href="https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API, and `MinStorage` and `MaxStorage` parameters are the minimal and maximum value of the disk size respectively.</br>
         :type Volume: int
-        :param MongoVersion: Version number. For the specific purchasable versions supported, please see the return result of the `DescribeSpecInfo` API. The correspondences between parameters and versions are as follows: MONGO_3_WT: MongoDB 3.2 WiredTiger Edition; MONGO_3_ROCKS: MongoDB 3.2 RocksDB Edition; MONGO_36_WT: MongoDB 3.6 WiredTiger Edition; MONGO_40_WT: MongoDB 4.0 WiredTiger Edition.
+        :param MongoVersion: Instance version information. <ul><li>For specific supported versions, query through the <a href="https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1">DescribeSpecInfo</a> API, the returned parameter `MongoVersionCode` in data structure `SpecItems` is the supported version information. </li><li>The correspondences between parameters and versions are as follows <ul><li>MONGO_3_WT: MongoDB 3.2 WiredTiger storage engine version. </li><li>MONGO_3_ROCKS: MongoDB 3.2 RocksDB storage engine version. </li><li>MONGO_36_WT: MongoDB 3.6 WiredTiger storage engine version. </li><li>MONGO_40_WT: MongoDB 4.0 WiredTiger storage engine version. </li><li>MONGO_42_WT: MongoDB 4.2 WiredTiger storage engine version. </li><li>MONGO_44_WT: MongoDB 4.4 WiredTiger storage engine version. </li></ul>
         :type MongoVersion: str
         :param MachineCode: Server type. Valid values: `HIO` (high IO), `HIO10G` (ten-gigabit high IO)
         :type MachineCode: str
         :param GoodsNum: Number of instances. Minimum value: 1. Maximum value: 10.
         :type GoodsNum: int
-        :param Period: Instance validity period in months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36.
-        :type Period: int
         :param ClusterType: Instance type. Valid values: REPLSET (replica set), SHARD (sharded cluster), STANDALONE (single-node).
         :type ClusterType: str
         :param ReplicateSetNum: Number of replica sets. To create a replica set instance, set this parameter to 1; to create a shard instance, see the parameters returned by the `DescribeSpecInfo` API; to create a single-node instance, set this parameter to 0.
         :type ReplicateSetNum: int
+        :param Period: Instance validity period in months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36.
+        :type Period: int
+        :param InstanceChargeType: 
+        :type InstanceChargeType: str
+        :param MongosCpu: 
+        :type MongosCpu: int
+        :param MongosMemory: 
+        :type MongosMemory: int
+        :param MongosNum: 
+        :type MongosNum: int
+        :param ConfigServerCpu: 
+        :type ConfigServerCpu: int
+        :param ConfigServerMemory: 
+        :type ConfigServerMemory: int
+        :param ConfigServerVolume: 
+        :type ConfigServerVolume: int
         """
         self.Zone = None
         self.NodeNum = None
@@ -1645,9 +1581,16 @@ class InquirePriceCreateDBInstancesRequest(AbstractModel):
         self.MongoVersion = None
         self.MachineCode = None
         self.GoodsNum = None
-        self.Period = None
         self.ClusterType = None
         self.ReplicateSetNum = None
+        self.Period = None
+        self.InstanceChargeType = None
+        self.MongosCpu = None
+        self.MongosMemory = None
+        self.MongosNum = None
+        self.ConfigServerCpu = None
+        self.ConfigServerMemory = None
+        self.ConfigServerVolume = None
 
 
     def _deserialize(self, params):
@@ -1658,9 +1601,16 @@ class InquirePriceCreateDBInstancesRequest(AbstractModel):
         self.MongoVersion = params.get("MongoVersion")
         self.MachineCode = params.get("MachineCode")
         self.GoodsNum = params.get("GoodsNum")
-        self.Period = params.get("Period")
         self.ClusterType = params.get("ClusterType")
         self.ReplicateSetNum = params.get("ReplicateSetNum")
+        self.Period = params.get("Period")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        self.MongosCpu = params.get("MongosCpu")
+        self.MongosMemory = params.get("MongosMemory")
+        self.MongosNum = params.get("MongosNum")
+        self.ConfigServerCpu = params.get("ConfigServerCpu")
+        self.ConfigServerMemory = params.get("ConfigServerMemory")
+        self.ConfigServerVolume = params.get("ConfigServerVolume")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1859,7 +1809,7 @@ class InstanceDetail(AbstractModel):
         :type PayMode: int
         :param ProjectId: Project ID
         :type ProjectId: int
-        :param ClusterType: Cluster type. Valid values: 0 (replica set instance), 1 (sharding instance),
+        :param ClusterType: Cluster type. Valid values: `0` (replica set instance), `1` (sharded instance).
         :type ClusterType: int
         :param Region: Region information
         :type Region: str
@@ -1871,7 +1821,7 @@ class InstanceDetail(AbstractModel):
         :type VpcId: str
         :param SubnetId: Subnet ID of VPC
         :type SubnetId: str
-        :param Status: Instance status. Valid values: 0 (to be initialized), 1 (in process), 2 (running), -2 (expired)
+        :param Status: Instance status. Valid values: `0` (to be initialized), `1` (in process), `2` (running), `-2` (expired).
         :type Status: int
         :param Vip: Instance IP
         :type Vip: str
@@ -1895,13 +1845,13 @@ class InstanceDetail(AbstractModel):
         :type SecondaryNum: int
         :param ReplicationSetNum: Number of instance shards
         :type ReplicationSetNum: int
-        :param AutoRenewFlag: Instance auto-renewal flag. Valid values: 0 (manual renewal), 1 (auto-renewal), 2 (no renewal upon expiration)
+        :param AutoRenewFlag: Instance auto-renewal flag. Valid values: `0` (manual renewal), `1` (auto-renewal), `2` (no renewal upon expiration)
         :type AutoRenewFlag: int
         :param UsedVolume: Used capacity in MB
         :type UsedVolume: int
-        :param MaintenanceStart: Start time of the maintenance time window
+        :param MaintenanceStart: Start time of the maintenance time
         :type MaintenanceStart: str
-        :param MaintenanceEnd: End time of the maintenance time window
+        :param MaintenanceEnd: End time of the maintenance time
         :type MaintenanceEnd: str
         :param ReplicaSets: Shard information
         :type ReplicaSets: list of ShardInfo
@@ -1911,15 +1861,15 @@ class InstanceDetail(AbstractModel):
         :type StandbyInstances: list of DBInstanceInfo
         :param CloneInstances: Information of temp instances
         :type CloneInstances: list of DBInstanceInfo
-        :param RelatedInstance: Information of associated instances. For a promoted instance, this field represents information of its temp instance; for a temp instance, this field represents information of its promoted instance; and for a read-only/disaster recovery instance, this field represents information of its primary instance
+        :param RelatedInstance: Information of associated instances. For a regular instance, this field represents the information of its temp instance; for a temp instance, this field represents the information of its regular instance; and for a read-only instance or a disaster recovery instance, this field represents the information of its primary instance.
         :type RelatedInstance: :class:`tencentcloud.mongodb.v20190725.models.DBInstanceInfo`
         :param Tags: Instance tag information set
         :type Tags: list of TagInfo
-        :param InstanceVer: Instance version tag
+        :param InstanceVer: Instance version
         :type InstanceVer: int
-        :param ClusterVer: Instance version tag
+        :param ClusterVer: Instance version
         :type ClusterVer: int
-        :param Protocol: Protocol information. Valid values: 1 (mongodb), 2 (dynamodb)
+        :param Protocol: Protocol information. Valid values: `1` (mongodb), `2` (dynamodb).
         :type Protocol: int
         :param InstanceType: Instance type. Valid values: 1 (promoted instance), 2 (temp instance), 3 (read-only instance), 4 (disaster recovery instance)
         :type InstanceType: int
@@ -1927,6 +1877,30 @@ class InstanceDetail(AbstractModel):
         :type InstanceStatusDesc: str
         :param RealInstanceId: Physical instance ID. For an instance that has been rolled back and replaced, its InstanceId and RealInstanceId are different. The physical instance ID is needed in such scenarios as getting monitoring data from Barad
         :type RealInstanceId: str
+        :param MongosNodeNum: Number of mongos nodes
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MongosNodeNum: int
+        :param MongosMemory: mongos node memory
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MongosMemory: int
+        :param MongosCpuNum: Number of mongos nodes
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MongosCpuNum: int
+        :param ConfigServerNodeNum: Number of ConfigServer nodes
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ConfigServerNodeNum: int
+        :param ConfigServerMemory: Memory of ConfigServer node
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ConfigServerMemory: int
+        :param ConfigServerVolume: Disk size of ConfigServer node
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ConfigServerVolume: int
+        :param ConfigServerCpuNum: CPU number of ConfigServer node
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ConfigServerCpuNum: int
+        :param ReadonlyNodeNum: Number of read-only nodes
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ReadonlyNodeNum: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -1966,6 +1940,14 @@ class InstanceDetail(AbstractModel):
         self.InstanceType = None
         self.InstanceStatusDesc = None
         self.RealInstanceId = None
+        self.MongosNodeNum = None
+        self.MongosMemory = None
+        self.MongosCpuNum = None
+        self.ConfigServerNodeNum = None
+        self.ConfigServerMemory = None
+        self.ConfigServerVolume = None
+        self.ConfigServerCpuNum = None
+        self.ReadonlyNodeNum = None
 
 
     def _deserialize(self, params):
@@ -2034,6 +2016,14 @@ class InstanceDetail(AbstractModel):
         self.InstanceType = params.get("InstanceType")
         self.InstanceStatusDesc = params.get("InstanceStatusDesc")
         self.RealInstanceId = params.get("RealInstanceId")
+        self.MongosNodeNum = params.get("MongosNodeNum")
+        self.MongosMemory = params.get("MongosMemory")
+        self.MongosCpuNum = params.get("MongosCpuNum")
+        self.ConfigServerNodeNum = params.get("ConfigServerNodeNum")
+        self.ConfigServerMemory = params.get("ConfigServerMemory")
+        self.ConfigServerVolume = params.get("ConfigServerVolume")
+        self.ConfigServerCpuNum = params.get("ConfigServerCpuNum")
+        self.ReadonlyNodeNum = params.get("ReadonlyNodeNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -125,6 +125,9 @@ INVALIDPARAMETERVALUE_REPLICASETNUMERROR = 'InvalidParameterValue.ReplicaSetNumE
 # Incorrect number of secondary nodes.
 INVALIDPARAMETERVALUE_SECONDARYNUMERROR = 'InvalidParameterValue.SecondaryNumError'
 
+# Invalid security group ID
+INVALIDPARAMETERVALUE_SECURITYGROUPID = 'InvalidParameterValue.SecurityGroupId'
+
 # The disk size to be set cannot be less than 1.2 times the used disk capacity.
 INVALIDPARAMETERVALUE_SETDISKLESSTHANUSED = 'InvalidParameterValue.SetDiskLessThanUsed'
 
