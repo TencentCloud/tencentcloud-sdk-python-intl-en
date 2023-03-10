@@ -122,6 +122,12 @@ class CompareAbstractInfo(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Options: Configuration parameters of the check task
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Options: :class:`tencentcloud.dts.v20211206.models.CompareOptions`
+        :param Objects: Consistency check objects
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Objects: :class:`tencentcloud.dts.v20211206.models.CompareObject`
         :param Conclusion: Comparison conclusion. Valid values: `same`, `different`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Conclusion: str
@@ -140,27 +146,60 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param SkippedTables: Number of skipped tables
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SkippedTables: int
+        :param NearlyTableCount: The estimated number of tables
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type NearlyTableCount: int
         :param DifferentRows: Number of inconsistent data rows
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DifferentRows: int
+        :param SrcSampleRows: Source database row count, which takes effect only when the comparison type is **Row count comparison**.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SrcSampleRows: int
+        :param DstSampleRows: Target database row count, which takes effect only when the comparison type is **Row count comparison**.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DstSampleRows: int
+        :param StartedAt: Start time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type StartedAt: str
+        :param FinishedAt: End time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FinishedAt: str
         """
+        self.Options = None
+        self.Objects = None
         self.Conclusion = None
         self.Status = None
         self.TotalTables = None
         self.CheckedTables = None
         self.DifferentTables = None
         self.SkippedTables = None
+        self.NearlyTableCount = None
         self.DifferentRows = None
+        self.SrcSampleRows = None
+        self.DstSampleRows = None
+        self.StartedAt = None
+        self.FinishedAt = None
 
 
     def _deserialize(self, params):
+        if params.get("Options") is not None:
+            self.Options = CompareOptions()
+            self.Options._deserialize(params.get("Options"))
+        if params.get("Objects") is not None:
+            self.Objects = CompareObject()
+            self.Objects._deserialize(params.get("Objects"))
         self.Conclusion = params.get("Conclusion")
         self.Status = params.get("Status")
         self.TotalTables = params.get("TotalTables")
         self.CheckedTables = params.get("CheckedTables")
         self.DifferentTables = params.get("DifferentTables")
         self.SkippedTables = params.get("SkippedTables")
+        self.NearlyTableCount = params.get("NearlyTableCount")
         self.DifferentRows = params.get("DifferentRows")
+        self.SrcSampleRows = params.get("SrcSampleRows")
+        self.DstSampleRows = params.get("DstSampleRows")
+        self.StartedAt = params.get("StartedAt")
+        self.FinishedAt = params.get("FinishedAt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -211,15 +250,19 @@ class CompareObject(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ObjectMode: Object migration mode. Valid values: `all`, `partial`.
+        :param ObjectMode: Data comparison object mode (`all`: Entire instance; `partial`: Some objects)
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ObjectMode: str
-        :param ObjectItems: Migration database/table configuration
+        :param ObjectItems: Object list
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ObjectItems: list of CompareObjectItem
+        :param AdvancedObjects: Advanced object type (`account`: Account; `index`: Index; `shardkey`: Shard key, which may be adjusted later; `schema`: Database/table structure)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AdvancedObjects: list of str
         """
         self.ObjectMode = None
         self.ObjectItems = None
+        self.AdvancedObjects = None
 
 
     def _deserialize(self, params):
@@ -230,6 +273,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = CompareObjectItem()
                 obj._deserialize(item)
                 self.ObjectItems.append(obj)
+        self.AdvancedObjects = params.get("AdvancedObjects")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -246,13 +290,13 @@ class CompareObjectItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DbName: The database to be migrated
+        :param DbName: Database name
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DbName: str
         :param DbMode: Database selection mode. Valid values: `all`, `partial`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DbMode: str
-        :param SchemaName: The schema to be migrated
+        :param SchemaName: Schema name
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SchemaName: str
         :param TableMode: Schema selection mode. Valid values: `all`, `partial`.
@@ -295,6 +339,41 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = CompareViewItem()
                 obj._deserialize(item)
                 self.Views.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CompareOptions(AbstractModel):
+    """Consistency check options
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Method: Comparison type: (`dataCheck`: Full data comparison; `sampleDataCheck`: Sampling data comparison; `rowsCount`: Row count comparison)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Method: str
+        :param SampleRate: Sampling rate. Value range: 0-100%.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SampleRate: int
+        :param ThreadCount: The number of threads, which defaults to 1. Value range: 1-5.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ThreadCount: int
+        """
+        self.Method = None
+        self.SampleRate = None
+        self.ThreadCount = None
+
+
+    def _deserialize(self, params):
+        self.Method = params.get("Method")
+        self.SampleRate = params.get("SampleRate")
+        self.ThreadCount = params.get("ThreadCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -366,7 +445,7 @@ class CompareTaskItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: Migration task ID
+        :param JobId: Task ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :type JobId: str
         :param CompareTaskId: Data consistency check task ID
@@ -399,6 +478,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param FinishedAt: Comparison end time
 Note: This field may return null, indicating that no valid values can be obtained.
         :type FinishedAt: str
+        :param Method: Comparison type: (`dataCheck`: Full data comparison; `sampleDataCheck`: Sampling data comparison; `rowsCount`: Row count comparison)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Method: str
+        :param Options: Configuration information of the comparison task
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Options: :class:`tencentcloud.dts.v20211206.models.CompareOptions`
+        :param Message: Consistency check prompt message
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Message: str
         """
         self.JobId = None
         self.CompareTaskId = None
@@ -411,6 +499,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.CreatedAt = None
         self.StartedAt = None
         self.FinishedAt = None
+        self.Method = None
+        self.Options = None
+        self.Message = None
 
 
     def _deserialize(self, params):
@@ -431,6 +522,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.CreatedAt = params.get("CreatedAt")
         self.StartedAt = params.get("StartedAt")
         self.FinishedAt = params.get("FinishedAt")
+        self.Method = params.get("Method")
+        if params.get("Options") is not None:
+            self.Options = CompareOptions()
+            self.Options._deserialize(params.get("Options"))
+        self.Message = params.get("Message")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -519,12 +615,10 @@ class ConfigureSyncJobRequest(AbstractModel):
         r"""
         :param JobId: Sync task instance ID in the format of `sync-werwfs23`, which is used to identify a sync task.
         :type JobId: str
-        :param SrcAccessType: Source database access type. Valid values: `cdb` (database); `cvm` (self-build on CVM); `vpc` (VPC); `extranet` (public network); `vpncloud` (VPN access); `dcg` (Direct Connect); `ccn` (CCN); `intranet` (intranet); `noProxy`. Note that the valid values are subject to the current link.
+        :param SrcAccessType: Source database access type. Valid values: `cdb` (database); `cvm` (self-build on CVM); `vpc` (VPC); `extranet` (public network); `vpncloud` (VPN access); `dcg` (Direct Connect); `ccn` (CCN); `intranet` (intranet). Note that the valid values are subject to the current link.
         :type SrcAccessType: str
-        :param DstAccessType: Target database access type. Valid values: `cdb` (database); `cvm` (self-build on CVM); `vpc` (VPC); `extranet` (public network); `vpncloud` (VPN access); `dcg` (Direct Connect); `ccn` (CCN); `intranet` (intranet); `noProxy`. Note that the valid values are subject to the current link.
+        :param DstAccessType: Target database access type. Valid values: `cdb` (database); `cvm` (self-build on CVM); `vpc` (VPC); `extranet` (public network); `vpncloud` (VPN access); `dcg` (Direct Connect); `ccn` (CCN); `intranet` (intranet); `ckafka` (CKafka instance). Note that the valid values are subject to the current link.
         :type DstAccessType: str
-        :param Options: Sync task options
-        :type Options: :class:`tencentcloud.dts.v20211206.models.Options`
         :param Objects: Information of synced database/table objects
         :type Objects: :class:`tencentcloud.dts.v20211206.models.Objects`
         :param JobName: Sync task name
@@ -535,17 +629,18 @@ class ConfigureSyncJobRequest(AbstractModel):
         :type RunMode: str
         :param ExpectRunTime: Expected start time in the format of "2006-01-02 15:04:05", which is required if `RunMode` is `Timed`.
         :type ExpectRunTime: str
-        :param SrcInfo: Source database information. This parameter is used by single-node databases.
+        :param SrcInfo: Source database information. This parameter only applies to single-node databases, and `SrcNodeType` must be `single`.
         :type SrcInfo: :class:`tencentcloud.dts.v20211206.models.Endpoint`
         :param DstInfo: Target database information. This parameter is used by single-node databases.
         :type DstInfo: :class:`tencentcloud.dts.v20211206.models.Endpoint`
+        :param Options: Sync task options
+        :type Options: :class:`tencentcloud.dts.v20211206.models.Options`
         :param AutoRetryTimeRangeMinutes: Automatic retry time, which can be set to 5-720 minutes. 0 indicates that retry is disabled.
         :type AutoRetryTimeRangeMinutes: int
         """
         self.JobId = None
         self.SrcAccessType = None
         self.DstAccessType = None
-        self.Options = None
         self.Objects = None
         self.JobName = None
         self.JobMode = None
@@ -553,6 +648,7 @@ class ConfigureSyncJobRequest(AbstractModel):
         self.ExpectRunTime = None
         self.SrcInfo = None
         self.DstInfo = None
+        self.Options = None
         self.AutoRetryTimeRangeMinutes = None
 
 
@@ -560,9 +656,6 @@ class ConfigureSyncJobRequest(AbstractModel):
         self.JobId = params.get("JobId")
         self.SrcAccessType = params.get("SrcAccessType")
         self.DstAccessType = params.get("DstAccessType")
-        if params.get("Options") is not None:
-            self.Options = Options()
-            self.Options._deserialize(params.get("Options"))
         if params.get("Objects") is not None:
             self.Objects = Objects()
             self.Objects._deserialize(params.get("Objects"))
@@ -576,6 +669,9 @@ class ConfigureSyncJobRequest(AbstractModel):
         if params.get("DstInfo") is not None:
             self.DstInfo = Endpoint()
             self.DstInfo._deserialize(params.get("DstInfo"))
+        if params.get("Options") is not None:
+            self.Options = Options()
+            self.Options._deserialize(params.get("Options"))
         self.AutoRetryTimeRangeMinutes = params.get("AutoRetryTimeRangeMinutes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -663,6 +759,88 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class ContinueMigrateJobRequest(AbstractModel):
+    """ContinueMigrateJob request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: Data migration task ID
+        :type JobId: str
+        """
+        self.JobId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ContinueMigrateJobResponse(AbstractModel):
+    """ContinueMigrateJob response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ContinueSyncJobRequest(AbstractModel):
+    """ContinueSyncJob request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: Sync task ID
+        :type JobId: str
+        """
+        self.JobId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ContinueSyncJobResponse(AbstractModel):
+    """ContinueSyncJob response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateCheckSyncJobRequest(AbstractModel):
     """CreateCheckSyncJob request structure.
 
@@ -711,7 +889,7 @@ class CreateCompareTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: Migration task ID
+        :param JobId: Task ID
         :type JobId: str
         :param TaskName: Data consistency check task name. If this parameter is left empty, the value of `CompareTaskId` will be assigned to it.
         :type TaskName: str
@@ -719,11 +897,14 @@ class CreateCompareTaskRequest(AbstractModel):
         :type ObjectMode: str
         :param Objects: Configuration of the data consistency check object
         :type Objects: :class:`tencentcloud.dts.v20211206.models.CompareObject`
+        :param Options: Consistency check options
+        :type Options: :class:`tencentcloud.dts.v20211206.models.CompareOptions`
         """
         self.JobId = None
         self.TaskName = None
         self.ObjectMode = None
         self.Objects = None
+        self.Options = None
 
 
     def _deserialize(self, params):
@@ -733,6 +914,9 @@ class CreateCompareTaskRequest(AbstractModel):
         if params.get("Objects") is not None:
             self.Objects = CompareObject()
             self.Objects._deserialize(params.get("Objects"))
+        if params.get("Options") is not None:
+            self.Options = CompareOptions()
+            self.Options._deserialize(params.get("Options"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1704,16 +1888,24 @@ class DescribeCompareTasksRequest(AbstractModel):
         :type Limit: int
         :param Offset: Pagination offset
         :type Offset: int
+        :param CompareTaskId: Check task ID
+        :type CompareTaskId: str
+        :param Status: Data consistency check task status. Valid values: `created`, `readyRun`, `running`, `success`, `stopping`, `failed`, `canceled`.
+        :type Status: list of str
         """
         self.JobId = None
         self.Limit = None
         self.Offset = None
+        self.CompareTaskId = None
+        self.Status = None
 
 
     def _deserialize(self, params):
         self.JobId = params.get("JobId")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        self.CompareTaskId = params.get("CompareTaskId")
+        self.Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2630,6 +2822,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param EncryptConn: Whether to enable encrypted transfer (`UnEncrypted`: No; `Encrypted`: Yes). Default value: `UnEncrypted`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type EncryptConn: str
+        :param DatabaseNetEnv: Network environment of the database. This parameter is required when `AccessType` is `ccn`. Valid values: `UserIDC` (user IDC), `TencentVPC` (Tencent Cloud VPC).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DatabaseNetEnv: str
         """
         self.Region = None
         self.Role = None
@@ -2656,6 +2851,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.TmpSecretKey = None
         self.TmpToken = None
         self.EncryptConn = None
+        self.DatabaseNetEnv = None
 
 
     def _deserialize(self, params):
@@ -2684,6 +2880,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.TmpSecretKey = params.get("TmpSecretKey")
         self.TmpToken = params.get("TmpToken")
         self.EncryptConn = params.get("EncryptConn")
+        self.DatabaseNetEnv = params.get("DatabaseNetEnv")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3217,22 +3414,25 @@ class ModifyCompareTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: Migration task ID
+        :param JobId: Task ID
         :type JobId: str
         :param CompareTaskId: Data consistency check task ID in the format of `dts-8yv4w2i1-cmp-37skmii9`
         :type CompareTaskId: str
         :param TaskName: Task name
         :type TaskName: str
-        :param ObjectMode: Data comparison object mode. Valid values: `sameAsMigrate` (all migration objects); `custom` (custom mode). Default value: `sameAsMigrate`.
+        :param ObjectMode: Data comparison object mode. Valid values: `sameAsMigrate` (All migration objects), `custom` (Custom mode. The custom comparison objects must be a subset of the migration objects). Default value: `sameAsMigrate`.
         :type ObjectMode: str
         :param Objects: Compared object, which is required if `CompareObjectMode` is `custom`.
         :type Objects: :class:`tencentcloud.dts.v20211206.models.CompareObject`
+        :param Options: Consistency check options
+        :type Options: :class:`tencentcloud.dts.v20211206.models.CompareOptions`
         """
         self.JobId = None
         self.CompareTaskId = None
         self.TaskName = None
         self.ObjectMode = None
         self.Objects = None
+        self.Options = None
 
 
     def _deserialize(self, params):
@@ -3243,6 +3443,9 @@ class ModifyCompareTaskRequest(AbstractModel):
         if params.get("Objects") is not None:
             self.Objects = CompareObject()
             self.Objects._deserialize(params.get("Objects"))
+        if params.get("Options") is not None:
+            self.Options = CompareOptions()
+            self.Options._deserialize(params.get("Options"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3459,7 +3662,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param AdvancedObjects: Advanced object type, such as function and procedure. If you need to sync advanced objects, the initialization type must include structure initialization; that is, `Options.InitType` must be `Structure` or `Full`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AdvancedObjects: list of str
-        :param OnlineDDL: 
+        :param OnlineDDL: A redundant field that specifies the online DDL type
+Note: This field may return null, indicating that no valid values can be obtained.
         :type OnlineDDL: :class:`tencentcloud.dts.v20211206.models.OnlineDDL`
         """
         self.Mode = None
@@ -3493,6 +3697,25 @@ class OnlineDDL(AbstractModel):
     """Online DDL type
 
     """
+
+    def __init__(self):
+        r"""
+        :param Status: Status
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Status: str
+        """
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Options(AbstractModel):
@@ -3555,6 +3778,88 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class PauseMigrateJobRequest(AbstractModel):
+    """PauseMigrateJob request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: Data migration task ID
+        :type JobId: str
+        """
+        self.JobId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PauseMigrateJobResponse(AbstractModel):
+    """PauseMigrateJob response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class PauseSyncJobRequest(AbstractModel):
+    """PauseSyncJob request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: Sync task ID
+        :type JobId: str
+        """
+        self.JobId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PauseSyncJobResponse(AbstractModel):
+    """PauseSyncJob response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class ProcessProgress(AbstractModel):
@@ -3783,7 +4088,7 @@ class ResumeMigrateJobRequest(AbstractModel):
         r"""
         :param JobId: Data migration task ID
         :type JobId: str
-        :param ResumeOption: Task resumption mode. Valid values: `clearData` (clear the target instance data); `overwrite` (execute the task in overwrite mode); `normal` (follow the normal process without performing additional operations).
+        :param ResumeOption: Task resumption mode. Valid values: `clearData` (Clearing the target instance data); `overwrite` (Executing the task in overwrite mode); `normal` (Following the normal process without additional operations). `clearData` and `overwrite` are only valid for Redis links and `normal` for non-Redis links.
         :type ResumeOption: str
         """
         self.JobId = None
@@ -3901,7 +4206,7 @@ class SkipCheckItemRequest(AbstractModel):
         :type JobId: str
         :param StepIds: ID of the check step to be skipped, which is obtained in the `StepInfo[i].StepId` field returned by the `DescribeMigrationCheckJob` API, such as "OptimizeCheck".
         :type StepIds: list of str
-        :param ForeignKeyFlag: 
+        :param ForeignKeyFlag: When the check fails due to foreign key dependency, you can use this field to specify whether to migrate the foreign key dependency. The foreign key dependency won’t be migrated when `StepIds` contains `ConstraintCheck` and the value of this field is `shield`, and will be migrated when `StepIds` contains `ConstraintCheck` and the value of this field is `migrate`.
         :type ForeignKeyFlag: str
         """
         self.JobId = None
@@ -3929,7 +4234,8 @@ class SkipCheckItemResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Message: 
+        :param Message: Message prompted for skipping the check item
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Message: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -4533,6 +4839,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param StepInfos: Step details
 Note: This field may return null, indicating that no valid values can be obtained.
         :type StepInfos: list of StepInfo
+        :param CauseOfCompareDisable: Cause of the failure of initiating data consistency check
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CauseOfCompareDisable: str
         """
         self.StepAll = None
         self.StepNow = None
@@ -4542,6 +4851,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.SecondsBehindMaster = None
         self.Message = None
         self.StepInfos = None
+        self.CauseOfCompareDisable = None
 
 
     def _deserialize(self, params):
@@ -4558,6 +4868,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = StepInfo()
                 obj._deserialize(item)
                 self.StepInfos.append(obj)
+        self.CauseOfCompareDisable = params.get("CauseOfCompareDisable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4768,16 +5079,26 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param FilterCondition: Filter condition
 Note: This field may return null, indicating that no valid values can be obtained.
         :type FilterCondition: str
+        :param TmpTables: The temp tables to be synced. This parameter is mutually exclusive with `NewTableName`. It is valid only when the configured sync objects are table-level ones and `TableEditMode` is `pt`. To sync temp tables generated when pt-osc or other tools are used during the sync process, you must configure this parameter first. For example, if you want to perform the pt-osc operation on a table named "t1", configure this parameter as ["\_t1\_new","\_t1\_old"]; to perform the gh-ost operation on t1, configure it as ["\_t1\_ghc","\_t1\_gho","\_t1\_del"]. Temp tables generated by pt-osc and gh-ost operations can be configured at the same time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TmpTables: list of str
+        :param TableEditMode: Table editing type. Valid values: `rename` (table mapping); `pt` (additional table sync).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TableEditMode: str
         """
         self.TableName = None
         self.NewTableName = None
         self.FilterCondition = None
+        self.TmpTables = None
+        self.TableEditMode = None
 
 
     def _deserialize(self, params):
         self.TableName = params.get("TableName")
         self.NewTableName = params.get("NewTableName")
         self.FilterCondition = params.get("FilterCondition")
+        self.TmpTables = params.get("TmpTables")
+        self.TableEditMode = params.get("TableEditMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4797,10 +5118,10 @@ class TableItem(AbstractModel):
         :param TableName: Name of the migrated table, which is case-sensitive
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TableName: str
-        :param NewTableName: Name of the table after migration, which is required if `TableEditMode` is `rename`.
+        :param NewTableName: New name of the migrated table. This parameter is required when `TableEditMode` is `rename`. It is mutually exclusive with `TmpTables`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type NewTableName: str
-        :param TmpTables: Temp table to be migrated, which is required if `TableEditMode` is `pt`. To sync temp tables that may be generated during migration by tools such as pt-online-schema-change, you can use this parameter to configure the temp table names.
+        :param TmpTables: The temp tables to be migrated. This parameter is mutually exclusive with `NewTableName`. It is valid only when the configured migration objects are table-level ones and `TableEditMode` is `pt`. To migrate temp tables generated when pt-osc or other tools are used during the migration process, you must configure this parameter first. For example, if you want to perform the pt-osc operation on a table named "t1", configure this parameter as ["_t1_new","_t1_old"]; to perform the gh-ost operation on t1, configure it as ["_t1_ghc","_t1_gho","_t1_del"]. Temp tables generated by pt-osc and gh-ost operations can be configured at the same time.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TmpTables: list of str
         :param TableEditMode: Table editing type. Valid values: `rename` (table mapping); `pt` (additional table sync).

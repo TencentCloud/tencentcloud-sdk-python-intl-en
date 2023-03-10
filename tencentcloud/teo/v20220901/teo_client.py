@@ -624,6 +624,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDDoSAttackData(self, request):
+        """This API is used to query the time-series data of DDoS attacks.
+
+        :param request: Request instance for DescribeDDoSAttackData.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeDDoSAttackDataRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeDDoSAttackDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDDoSAttackData", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDDoSAttackDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDDoSAttackTopData(self, request):
         """This API is used to query the top-ranked DDoS attack data.
 
@@ -799,6 +822,29 @@ class TeoClient(AbstractClient):
             body = self.call("DescribeOriginGroup", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeOriginGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeOriginProtection(self, request):
+        """This API is used to query the origin protection configuration.
+
+        :param request: Request instance for DescribeOriginProtection.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeOriginProtectionRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeOriginProtectionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOriginProtection", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOriginProtectionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1811,6 +1857,29 @@ class TeoClient(AbstractClient):
             body = self.call("ReclaimZone", params, headers=headers)
             response = json.loads(body)
             model = models.ReclaimZoneResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateOriginProtectionIPWhitelist(self, request):
+        """This API is used to update the list of intermediate IPs.
+
+        :param request: Request instance for UpdateOriginProtectionIPWhitelist.
+        :type request: :class:`tencentcloud.teo.v20220901.models.UpdateOriginProtectionIPWhitelistRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.UpdateOriginProtectionIPWhitelistResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateOriginProtectionIPWhitelist", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateOriginProtectionIPWhitelistResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

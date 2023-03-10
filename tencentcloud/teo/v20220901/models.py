@@ -62,6 +62,7 @@ class AclCondition(AbstractModel):
 <li>`accept`: Request content type</li>
 <li>`method`: Request method</li>
 <li>`header`: Request header</li>
+<li>`app_proto`: Application layer protocol</li>
 <li>`sip_proto`: Network layer protocol</li>
         :type MatchFrom: str
         :param MatchParam: The parameter of the field. When `MatchFrom = header`, the key contained in the header can be passed.
@@ -1354,9 +1355,8 @@ class CreateAliasDomainRequest(AbstractModel):
         :param TargetName: The target domain name.
         :type TargetName: str
         :param CertType: Certificate configuration. Values:
-<li>`none`: Off</li>
+<li>`none`: (Default) Do not configure</li>
 <li>`hosting`: Managed SSL certificate</li>
-<li>`apply`: Free certificate</li>Default value: none
         :type CertType: str
         :param CertId: The certificate ID. This field is required when `CertType=hosting`.
         :type CertId: list of str
@@ -2902,6 +2902,96 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDDoSAttackDataRequest(AbstractModel):
+    """DescribeDDoSAttackData request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: Start time of the query period.
+        :type StartTime: str
+        :param EndTime: End time of the query period.
+        :type EndTime: str
+        :param MetricNames: Statistical metrics.
+<li>`ddos_attackMaxBandwidth`: Peak attack bandwidth;</li>
+<li>`ddos_attackMaxPackageRate`: Peak attack packet rate;</li>
+<li>`ddos_attackBandwidth`: Time-series data of attack bandwidth;</li>
+<li>`ddos_attackPackageRate`: Time-series data of attack packet rate.</li>
+        :type MetricNames: list of str
+        :param ZoneIds: List of sites to be queried. All sites will be selected if this field is not specified.
+        :type ZoneIds: list of str
+        :param PolicyIds: IDs of DDoS policies to be queried. All policies will be selected if this field is not specified.
+        :type PolicyIds: list of int
+        :param Interval: The query granularity. Values:
+<li>`min`: 1 minute;</li>
+<li>`5min`: 5 minutes;</li>
+<li>`hour`: 1 hour;</li>
+<li>`day`: 1 day</li>If this field is not specified, the granularity is determined based on the query period. <br>Period ≤ 1 hour: `min`; <br>1 hour < Period ≤ 2 days: `5min`; <br>2 days < Period ≤ 7 days: `hour`; <br>Period > 7 days: `day`.
+        :type Interval: str
+        :param Area: Geolocation scope. Values:
+<li>`overseas`: Regions outside the Chinese mainland</li>
+<li>`mainland`: Chinese mainland</li>
+<li>`global`: Global </li>If this field is not specified, the default value `global` is used.
+        :type Area: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.MetricNames = None
+        self.ZoneIds = None
+        self.PolicyIds = None
+        self.Interval = None
+        self.Area = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.MetricNames = params.get("MetricNames")
+        self.ZoneIds = params.get("ZoneIds")
+        self.PolicyIds = params.get("PolicyIds")
+        self.Interval = params.get("Interval")
+        self.Area = params.get("Area")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDDoSAttackDataResponse(AbstractModel):
+    """DescribeDDoSAttackData response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Total number of query results.
+        :type TotalCount: int
+        :param Data: List of DDoS attack data.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Data: list of SecEntry
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = SecEntry()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDDoSAttackTopDataRequest(AbstractModel):
     """DescribeDDoSAttackTopData request structure.
 
@@ -3485,6 +3575,76 @@ class DescribeOriginGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeOriginProtectionRequest(AbstractModel):
+    """DescribeOriginProtection request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneIds: List of sites to be queried. All sites will be selected if this field is not specified.
+        :type ZoneIds: list of str
+        :param Filters: Filter conditions. Each filter condition can have up to 20 entries. See below for details:
+<li>`need-update`:<br>   Whether <strong>the intermediate IP update is needed for the site</strong>.<br>   Type: String<br>   Required: No<br>   Values:<br>   `true`: Update needed.<br>   `false`: Update not needed.<br></li>
+<li>`plan-support`:<br>   Whether <strong>origin protection is supported in the plan</strong>.<br>   Type: String<br>   Required: No<br>   Values:<br>   `true`: Origin protection supported.<br>   `false`: Origin protection not supported.<br></li>
+        :type Filters: list of Filter
+        :param Offset: Offset for paginated queries. Default value: 0.
+        :type Offset: int
+        :param Limit: Limit on paginated queries. Default value: 20. Maximum value: 1000.
+        :type Limit: int
+        """
+        self.ZoneIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.ZoneIds = params.get("ZoneIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOriginProtectionResponse(AbstractModel):
+    """DescribeOriginProtection response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OriginProtectionInfo: Origin protection configuration.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type OriginProtectionInfo: list of OriginProtectionInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.OriginProtectionInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("OriginProtectionInfo") is not None:
+            self.OriginProtectionInfo = []
+            for item in params.get("OriginProtectionInfo"):
+                obj = OriginProtectionInfo()
+                obj._deserialize(item)
+                self.OriginProtectionInfo.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeOverviewL7DataRequest(AbstractModel):
     """DescribeOverviewL7Data request structure.
 
@@ -3503,7 +3663,7 @@ class DescribeOverviewL7DataRequest(AbstractModel):
 <li>`l7Flow_hit_outFlux`: Cache hit traffic.</li>
         :type MetricNames: list of str
         :param ZoneIds: List of sites
-Enter the IDs of sites to query. The maximum query period is determined by the <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query period</a> of the bound plan. If it's not specified, all sites are selected by default, and the query period must be within the last 30 days. 
+Enter the IDs of sites to query. The maximum query period is determined by the <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query period</a> of the bound plan. If it’s not specified, all sites are selected by default, and the query period must be within the last 30 days. 
         :type ZoneIds: list of str
         :param Domains: List of subdomain names to be queried. All subdomain names will be selected if this field is not specified.
         :type Domains: list of str
@@ -3511,17 +3671,17 @@ Enter the IDs of sites to query. The maximum query period is determined by the <
 <li>`http`: HTTP protocol;</li>
 <li>`https`: HTTPS protocol;</li>
 <li>`http2`: HTTP2 protocol;</li>
-<li>`all`:   All protocols. </li>If it's not specified, `all` is used. This parameter is not yet available now.
+<li>`all`:   All protocols. </li>If it’s not specified, `all` is used. This parameter is not yet available now.
         :type Protocol: str
         :param Interval: The query granularity. Values:
 <li>`min`: 1 minute;</li>
 <li>`5min`: 5 minutes;</li>
 <li>`hour`: 1 hour;</li>
-<li>`day`: One day</li>If this field is not specified, the granularity will be determined based on the query period. <br>Period <= 1 hour: `min`; <br>1 hour < Period <= 2 days: `5min`; <br>2 days < period <= 7 days: `hour`; <br>Period > 7 days: `day`.
+<li>`day`: One day</li>If this field is not specified, the granularity will be determined based on the query period. <br>Period ≤ 1 hour: `min`; <br>1 hour < Period ≤ 2 days: `5min`; <br>2 days < period ≤ 7 days: `hour`; <br>Period > 7 days: `day`.
         :type Interval: str
         :param Filters: Filters
-<li>tagKey<br>   Filter by the specified <strong>tag key</strong></li>
-<li>tagValue<br>   Filter by the specified <strong>tag value</strong></li>
+<li>tagKey<br>   Filter by the specified <strong>tag key</strong></li>
+<li>tagValue<br>   Filter by the specified <strong>tag value</strong></li>
         :type Filters: list of QueryCondition
         :param Area: Geolocation scope. Values:
 <li>`overseas`: Regions outside the Chinese mainland</li>
@@ -3759,8 +3919,8 @@ class DescribeRulesRequest(AbstractModel):
         r"""
         :param ZoneId: ID of the site
         :type ZoneId: str
-        :param Filters: Filter criteria. Each filter criteria can have up to 20 entries.
-<li>`rule-id`:<br>   Filter by the <strong>rule ID</strong><br>   Type: string<br>   Required: No
+        :param Filters: Filter conditions. Each filter condition can have up to 20 entries. See below for details:
+<li>`rule-id`:<br>   Filter by the <strong>rule ID</strong><br>   Type: String<br>   Required: No</li>
         :type Filters: list of Filter
         """
         self.ZoneId = None
@@ -3861,21 +4021,21 @@ class DescribeSingleL7AnalysisDataRequest(AbstractModel):
 <li>`l7Flow_singleIpRequest`: Number of requests from a single IP.</li>
         :type MetricNames: list of str
         :param ZoneIds: List of sites
-If it's not specified, all sites are selected by default, and the query period must be within the last 30 days. 
+If it’s not specified, all sites are selected by default, and the query period must be within the last 30 days. 
 Enter the IDs of sites to query. The maximum query period is determined by the <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query period</a> of the bound plan. 
         :type ZoneIds: list of str
         :param Filters: Filters
-<li>`country`:<br>   Filter by the specified <strong>country code</strong>. <a href="https://en.wikipedia.org/wiki/ISO_3166-1">ISO 3166</a> country codes are used.</li>
-<li>`domain`<br>   Filter by the specified <strong>sub-domain name</strong>, such as `test.example.com`</li>
-<li>`protocol`:<br>   Filter by the specified <strong>HTTP protocol</strong><br>   Values:<br>   `HTTP/1.0`: HTTP 1.0<br>   `HTTP/1.1`: HTTP 1.1<br>   `HTTP/2.0`: HTTP 2.0<br>   `HTTP/3.0`: HTTP 3.0<br>   `WebSocket`: WebSocket</li>
-<li>tagKey<br>   Filter by the specified <strong>tag key</strong></li>
-<li>tagValue<br>   Filter by the specified <strong>tag value</strong></li>
+<li>`country`:<br>   Filter by the specified <strong>country code</strong>. <a href="https://en.wikipedia.org/wiki/ISO_3166-1">ISO 3166</a> country codes are used.</li>
+<li>`domain`<br>   Filter by the specified <strong>sub-domain name</strong>, such as `test.example.com`</li>
+<li>`protocol`:<br>   Filter by the specified <strong>HTTP protocol</strong><br>   Values:<br>   `HTTP/1.0`: HTTP 1.0<br>   `HTTP/1.1`: HTTP 1.1<br>   `HTTP/2.0`: HTTP 2.0<br>   `HTTP/3.0`: HTTP 3.0<br>   `WebSocket`: WebSocket</li>
+<li>tagKey<br>   Filter by the specified <strong>tag key</strong></li>
+<li>tagValue<br>   Filter by the specified <strong>tag value</strong></li>
         :type Filters: list of QueryCondition
         :param Interval: The query granularity. Values:
 <li>`min`: 1 minute;</li>
 <li>`5min`: 5 minutes;</li>
 <li>`hour`: 1 hour;</li>
-<li>`day`: 1 day.</li>If this field is not specified, the granularity will be determined based on the query period. <br>Period <= 1 hour: `min`; <br>1 hour < Period <= 2 days: `5min`; <br>2 days < period <= 7 days: `hour`; <br>Period > 7 days: `day`.
+<li>`day`: 1 day.</li>If this field is not specified, the granularity will be determined based on the query period. <br>Period ≤ 1 hour: `min`; <br>1 hour < Period ≤ 2 days: `5min`; <br>2 days < period ≤ 7 days: `hour`; <br>Period > 7 days: `day`.
         :type Interval: str
         :param Area: Geolocation scope. Values:
 <li>`overseas`: Regions outside the Chinese mainland</li>
@@ -4105,7 +4265,7 @@ class DescribeTimingL4DataRequest(AbstractModel):
 <li>`l4Flow_outPkt`: Outbound packets.</li>
         :type MetricNames: list of str
         :param ZoneIds: List of sites
-If it's not specified, all sites are selected by default, and the query period must be within the last 30 days. 
+If it’s not specified, all sites are selected by default, and the query period must be within the last 30 days. 
 Enter the IDs of sites to query. The maximum query period is determined by the <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query period</a> of the bound plan. 
         :type ZoneIds: list of str
         :param ProxyIds: List of L4 proxy IDs. All L4 proxies will be selected if this field is not specified.
@@ -4114,11 +4274,11 @@ Enter the IDs of sites to query. The maximum query period is determined by the <
 <li>`min`: 1 minute;</li>
 <li>`5min`: 5 minutes;</li>
 <li>`hour`: 1 hour;</li>
-<li>`day`: 1 day.</li>If this field is not specified, the granularity will be determined based on the query period. <br>Period <= 1 hour: `min`; <br>1 hour < Period <= 2 days: `5min`; <br>2 days < period <= 7 days: `hour`; <br>Period > 7 days: `day`.
+<li>`day`: 1 day.</li>If this field is not specified, the granularity will be determined based on the query period. <br>Period ≤ 1 hour: `min`; <br>1 hour < Period ≤ 2 days: `5min`; <br>2 days < period ≤ 7 days: `hour`; <br>Period > 7 days: `day`.
         :type Interval: str
         :param Filters: Filters
-<li>ruleId<br>   Filter by the specified <strong>forwarding rule ID</strong></li>
-<li>proxyId<br>   Filter by the specified <strong>L4 agent ID</strong></li>
+<li>ruleId<br>   Filter by the specified <strong>forwarding rule ID</strong></li>
+<li>proxyId<br>   Filter by the specified <strong>L4 agent ID</strong></li>
         :type Filters: list of QueryCondition
         :param Area: Geolocation scope. Values:
 <li>`overseas`: Regions outside the Chinese mainland</li>
@@ -4207,31 +4367,31 @@ class DescribeTimingL7AnalysisDataRequest(AbstractModel):
 <li>`l7Flow_outBandwidth`: Access bandwidth.</li>
         :type MetricNames: list of str
         :param ZoneIds: List of sites
-Enter the IDs of sites to query. The maximum query period is determined by the <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query period</a> of the bound plan. If it's not specified, all sites are selected by default, and the query period must be within the last 30 days. 
+Enter the IDs of sites to query. The maximum query period is determined by the <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query period</a> of the bound plan. If it’s not specified, all sites are selected by default, and the query period must be within the last 30 days. 
         :type ZoneIds: list of str
         :param Interval: The query granularity. Values:
 <li>`min`: 1 minute;</li>
 <li>`5min`: 5 minutes;</li>
 <li>`hour`: 1 hour;</li>
-<li>`day`: 1 day.</li>If this field is not specified, the granularity will be determined based on the query period. <br>Period <= 1 hour: `min`; <br>1 hour < Period <= 2 days: `5min`; <br>2 days < period <= 7 days: `hour`; <br>Period > 7 days: `day`.
+<li>`day`: 1 day.</li>If this field is not specified, the granularity will be determined based on the query period. <br>Period ≤ 1 hour: `min`; <br>1 hour < Period ≤ 2 days: `5min`; <br>2 days < period ≤ 7 days: `hour`; <br>Period > 7 days: `day`.
         :type Interval: str
         :param Filters: Filters
-<li>`country`:<br>   Filter by the specified <strong>country code</strong>. <a href="https://en.wikipedia.org/wiki/ISO_3166-1">ISO 3166</a> country codes are used.</li>
-<li>`province`<br>   Filter by the specified <strong>province name</strong>. It's only available when `Area` is `mainland`. </li>
-<li>`isp`<br>   Filter by the specified <strong>ISP</strong>. It's only available when `Area` is `mainland`.<br>   Values: <br>   `2`: CTCC; <br>   `26`: CUCC;<br>   `1046`: CMCC;<br>   `3947`: CTT; <br>   `38`: CERNET; <br>   `43`: GWBN;<br>   `0`: Others</li>
-<li>`domain`<br>   Filter by the specified <strong>sub-domain name</strong>, such as `test.example.com`</li>
-<li>`url`<br>   Filter by the specified <strong>URL Path</strong> (such as `/content` or `content/test.jpg`.<br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query period</a> stated when `Zonelds` is specified become invalid.</li>
-<li>`referer`<br>   Filter by the specified <strong>Referer header</strong>, such as `example.com`.<br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query period</a> stated when `Zonelds` is specified become invalid.</li>
-<li>`resourceType`<br>   Filter by the specified <strong>resource file type</strong>, such as `jpg`, `css`. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query period</a> stated when `Zonelds` is specified become invalid.</li>
-<li>`protocol`:<br>   Filter by the specified <strong>HTTP protocol</strong><br>   Values:<br>   `HTTP/1.0`: HTTP 1.0<br>   `HTTP/1.1`: HTTP 1.1<br>   `HTTP/2.0`: HTTP 2.0<br>   `HTTP/3.0`: HTTP 3.0<br>   `WebSocket`: WebSocket</li>
-<li>`statusCode`<br>   Filter by the specified <strong> status code</strong>. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query period</a> stated when `Zonelds` is specified become invalid.<br>   Values: <br>   `1XX`: All 1xx status codes;<br>   `100`: 100 status code;<br>   `101`: 101 status code;<br>   `102`: 102 status code;<br>   `2XX`: All 2xx status codes;<br>   `200`: 200 status code;<br>   `201`: 201 status code;<br>   `202`: 202 status code;<br>   `203`: 203 status code;<br>   `204`: 204 status code;<br>   `205`: 205 status code;<br>   `206`: 206 status code;<br>   `207`: 207 status code;<br>  `3XX`: All 3xx status codes;<br>   `300`: 300 status code;<br>   `301`: 301 status code;<br>   `302`: 302 status code;<br>   `303`: 303 status code;<br>   `304`: 304 status code;<br>   `305`: 305 status code;<br>   `307`: 307 status code;<br>   `4XX`: All 4xx status codes;<br>   `400`: 400 status code;<br>   `401`: 401 status code;<br>   `402`: 402 status code;<br>   `403`: 403 status code;<br>   `404`: 404 status code;<br>   `405`: 405 status code;<br>   `406`: 406 status code;<br>   `407`: 407 status code;<br>   `408`: 408 status code;<br>   `409`: 409 status code;<br>   `410`: 410 status code;<br>   `411`: 411 status code;<br>   `412`: 412 status code;<br>   `412`: 413 status code;<br>   `414`: 414 status code;<br>   `415`: 415 status code;<br>   `416`: 416 status code;<br>   `417`: 417 status code;<br>  `422`: 422 status code;<br>   `423`: 423 status code;<br>   `424`: 424 status code;<br>   `426`: 426 status code;<br>   `451`: 451 status code;<br>   `5XX`: All 5xx status codes;<br>   `500`: 500 status code;<br>   `501`: 501 status code;<br>   `502`: 502 status code;<br>   `503`: 503 status code;<br>   `504`: 504 status code;<br>   `505`: 505 status code;<br>   `506`: 506 status code;<br>   `507`: 507 status code;<br>   `510`: 510 status code;<br>   `514`: 514 status code;<br>   `544`: 544 status code.</li>
-<li>`browserType`<br>   Filter by the specified <strong>browser type</strong>. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query period</a> stated when `Zonelds` is specified become invalid.<br>   Values: <br>  `Firefox`: Firefox browser;<br>   `Chrome`: Chrome browser;<br>   `Safari`: Safari browser;<br>   `MicrosoftEdge`: Microsoft Edge browser;<br>   `IE`: IE browser;<br>   `Opera`: Opera browser;<br>   `QQBrowser`: QQ browser;<br>   `LBBrowser`: LB browser;<br>   `MaxthonBrowser`: Maxthon browser;<br>   `SouGouBrowser`: Sogou browser;<br>  `BIDUBrowser`: Baidu browser;<br>   `TaoBrowser`: Tao browser;<br>   `UBrowser`: UC browser;<br>   `Other`: Other browsers; <br>   `Empty`: The browser type is not specified; <br>   `Bot`: Web crawler.</li>
-<li>`deviceType`<br>   Filter by the <strong>device type</strong>. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query period</a> stated when `Zonelds` is specified become invalid.<br>   Values: <br>   `TV`: TV; <br>   `Tablet`: Tablet;<br>   `Mobile`: Mobile phone;<br>   `Desktop`: Desktop device; <br>   `Other`: Other device;<br>   `Empty`: Device type not specified.</li>
-<li>`operatingSystemType`<br>   Filter by the <strong>operating system</strong>. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query period</a> stated when `Zonelds` is specified become invalid.<br>   Values: <br>   `Linux`: Linux OS;<br>   `MacOS`: Mac OS;<br>   `Android`: Android OS;<br>   `IOS`: iOS OS;<br>   `Windows`: Windows OS;<br>   `NetBSD`: NetBSD OS;<br>   `ChromiumOS`: Chromium OS;<br>   `Bot`: Web crawler: <br>   `Other`: Other OS;<br>   `Empty`: The OS is not specified.</li>
-<li>`tlsVersion`<br>   Filter by the <strong>TLS version</strong>. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query period</a> stated when `Zonelds` is specified become invalid.<br>   Values:<br>   `TLS1.0`: TLS 1.0; <br>   `TLS1.1`: TLS 1.1;<br>   `TLS1.2`: TLS 1.2;<br>   `TLS1.3`: TLS 1.3.</li>
-<li>`ipVersion`<br>   Filter by the specified <strong>IP version</strong>.<br>   Values:<br>   `4`: IPv4;<br>   `6`: IPv6.</li>
-<li>tagKey<br>   Filter by the specified <strong>tag key</strong></li>
-<li>tagValue<br>   Filter by the specified <strong>tag value</strong></li>
+<li>`country`:<br>   Filter by the specified <strong>country code</strong>. <a href="https://en.wikipedia.org/wiki/ISO_3166-1">ISO 3166</a> country codes are used.</li>
+<li>`province`<br>   Filter by the specified <strong>province name</strong>. It’s only available when `Area` is `mainland`. </li>
+<li>`isp`<br>   Filter by the specified <strong>ISP</strong>. It’s only available when `Area` is `mainland`.<br>   Values: <br>   `2`: CTCC; <br>   `26`: CUCC;<br>   `1046`: CMCC;<br>   `3947`: CTT; <br>   `38`: CERNET; <br>   `43`: GWBN;<br>   `0`: Others</li>
+<li>`domain`<br>   Filter by the specified <strong>sub-domain name</strong>, such as `test.example.com`</li>
+<li>`url`<br>   Filter by the specified <strong>URL Path</strong> (such as `/content` or `content/test.jpg`.<br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query period</a> stated when `Zonelds` is specified become invalid.</li>
+<li>`referer`<br>   Filter by the specified <strong>Referer header</strong>, such as `example.com`.<br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query period</a> stated when `Zonelds` is specified become invalid.</li>
+<li>`resourceType`<br>   Filter by the specified <strong>resource file type</strong>, such as `jpg`, `css`. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query period</a> stated when `Zonelds` is specified become invalid.</li>
+<li>`protocol`:<br>   Filter by the specified <strong>HTTP protocol</strong><br>   Values:<br>   `HTTP/1.0`: HTTP 1.0<br>   `HTTP/1.1`: HTTP 1.1<br>   `HTTP/2.0`: HTTP 2.0<br>   `HTTP/3.0`: HTTP 3.0<br>   `WebSocket`: WebSocket</li>
+<li>`statusCode`<br>   Filter by the specified <strong> status code</strong>. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query period</a> stated when `Zonelds` is specified become invalid.<br>   Values: <br>   `1XX`: All 1xx status codes;<br>   `100`: 100 status code;<br>   `101`: 101 status code;<br>   `102`: 102 status code;<br>   `2XX`: All 2xx status codes;<br>   `200`: 200 status code;<br>   `201`: 201 status code;<br>   `202`: 202 status code;<br>   `203`: 203 status code;<br>   `204`: 204 status code;<br>   `205`: 205 status code;<br>   `206`: 206 status code;<br>   `207`: 207 status code;<br>  `3XX`: All 3xx status codes;<br>   `300`: 300 status code;<br>   `301`: 301 status code;<br>   `302`: 302 status code;<br>   `303`: 303 status code;<br>   `304`: 304 status code;<br>   `305`: 305 status code;<br>   `307`: 307 status code;<br>   `4XX`: All 4xx status codes;<br>   `400`: 400 status code;<br>   `401`: 401 status code;<br>   `402`: 402 status code;<br>   `403`: 403 status code;<br>   `404`: 404 status code;<br>   `405`: 405 status code;<br>   `406`: 406 status code;<br>   `407`: 407 status code;<br>   `408`: 408 status code;<br>   `409`: 409 status code;<br>   `410`: 410 status code;<br>   `411`: 411 status code;<br>   `412`: 412 status code;<br>   `412`: 413 status code;<br>   `414`: 414 status code;<br>   `415`: 415 status code;<br>   `416`: 416 status code;<br>   `417`: 417 status code;<br>  `422`: 422 status code;<br>   `423`: 423 status code;<br>   `424`: 424 status code;<br>   `426`: 426 status code;<br>   `451`: 451 status code;<br>   `5XX`: All 5xx status codes;<br>   `500`: 500 status code;<br>   `501`: 501 status code;<br>   `502`: 502 status code;<br>   `503`: 503 status code;<br>   `504`: 504 status code;<br>   `505`: 505 status code;<br>   `506`: 506 status code;<br>   `507`: 507 status code;<br>   `510`: 510 status code;<br>   `514`: 514 status code;<br>   `544`: 544 status code.</li>
+<li>`browserType`<br>   Filter by the specified <strong>browser type</strong>. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query period</a> stated when `Zonelds` is specified become invalid.<br>   Values: <br>  `Firefox`: Firefox browser;<br>   `Chrome`: Chrome browser;<br>   `Safari`: Safari browser;<br>   `MicrosoftEdge`: Microsoft Edge browser;<br>   `IE`: IE browser;<br>   `Opera`: Opera browser;<br>   `QQBrowser`: QQ browser;<br>   `LBBrowser`: LB browser;<br>   `MaxthonBrowser`: Maxthon browser;<br>   `SouGouBrowser`: Sogou browser;<br>  `BIDUBrowser`: Baidu browser;<br>   `TaoBrowser`: Tao browser;<br>   `UBrowser`: UC browser;<br>   `Other`: Other browsers; <br>   `Empty`: The browser type is not specified; <br>   `Bot`: Web crawler.</li>
+<li>`deviceType`<br>   Filter by the <strong>device type</strong>. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query period</a> stated when `Zonelds` is specified become invalid.<br>   Values: <br>   `TV`: TV; <br>   `Tablet`: Tablet;<br>   `Mobile`: Mobile phone;<br>   `Desktop`: Desktop device; <br>   `Other`: Other device;<br>   `Empty`: Device type not specified.</li>
+<li>`operatingSystemType`<br>   Filter by the <strong>operating system</strong>. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query period</a> stated when `Zonelds` is specified become invalid.<br>   Values: <br>   `Linux`: Linux OS;<br>   `MacOS`: Mac OS;<br>   `Android`: Android OS;<br>   `IOS`: iOS OS;<br>   `Windows`: Windows OS;<br>   `NetBSD`: NetBSD OS;<br>   `ChromiumOS`: Chromium OS;<br>   `Bot`: Web crawler: <br>   `Other`: Other OS;<br>   `Empty`: The OS is not specified.</li>
+<li>`tlsVersion`<br>   Filter by the <strong>TLS version</strong>. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query period</a> stated when `Zonelds` is specified become invalid.<br>   Values:<br>   `TLS1.0`: TLS 1.0; <br>   `TLS1.1`: TLS 1.1;<br>   `TLS1.2`: TLS 1.2;<br>   `TLS1.3`: TLS 1.3.</li>
+<li>`ipVersion`<br>   Filter by the specified <strong>IP version</strong>.<br>   Values:<br>   `4`: IPv4；<br>   `6`: IPv6.</li>
+<li>tagKey<br>   Filter by the specified <strong>tag key</strong></li>
+<li>tagValue<br>   Filter by the specified <strong>tag value</strong></li>
         :type Filters: list of QueryCondition
         :param Area: Geolocation scope. Values:
 <li>`overseas`: Regions outside the Chinese mainland</li>
@@ -4431,21 +4591,21 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
         :type Limit: int
         :param Filters: Filter conditions. See below for details: 
 <li>`country`:<br>   Filter by the <strong>country/region code</strong>. <a href="https://zh.wikipedia.org/wiki/ISO_3166-1">ISO 3166</a> country codes are used.<br>   Type: String<br>   Required: No</li>
-<li>`province`<br>   Filter by the <strong>province name</strong>. It’s only available when `Area` is `mainland`. <br>   Type: String<br>   Required: No</li>
-<li>`isp`<br>   Filter by the <strong>ISP</strong>. It’s only available when `Area` is `mainland`.<br>   Type: String<br>   Required: No<br>   Values: <br>   `2`: CTCC; <br>   `26`: CUCC;<br>   `1046`: CMCC;<br>   `3947`: CTT; <br>   `38`: CERNET; <br>   `43`: GWBN;<br>   `0`: Others</li>
-<li>`domain`<br>   Filter by the <strong>sub-domain name</strong>, such as `test.example.com`<br>   Type: String<br>   Required: No</li>
-<li>`url`<br>   Filter by the <strong>URL</strong>, such as `/content`. Separate multiple URLs with semicolons. The query period cannot exceed 30 days. <br>   Type: String<br>   Required: No</li>
-<li>`referer`<br>   Filter by the <strong>Referer header</strong>, such as `example.com`. The query period cannot exceed 30 days.<br>   Type: String<br>   Required: No</li>
-<li>`resourceType`<br>   Filter by the <strong>resource file type</strong>, such as `jpg`, `png`. The query period cannot exceed 30 days.<br>  Type: String<br>   Required: No</li>
-<li>`protocol`:<br>   Filter by the <strong>HTTP protocol</strong><br>   Type: String<br>   Required: No<br>   Values:<br>   `HTTP/1.0`: HTTP 1.0<br>   `HTTP/1.1`: HTTP 1.1<br>   `HTTP/2.0`: HTTP 2.0<br>   `HTTP/3.0`: HTTP 3.0<br>   `WebSocket`: WebSocket</li>
-<li>`statusCode`<br>   Filter by the <strong> status code</strong>. The query period  cannot exceed 30 days. <br>   Type: String<br>   Required: No<br>   Values: <br>   `1XX`: All 1xx status codes;<br>   `100`: 100 status code;<br>   `101`: 101 status code;<br>   `102`: 102 status code;<br>   `2XX`: All 2xx status codes;<br>   `200`: 200 status code;<br>   `201`: 201 status code;<br>   `202`: 202 status code;<br>   `203`: 203 status code;<br>   `204`: 204 status code;<br>   `205`: 205 status code;<br>   `206`: 206 status code;<br>   `207`: 207 status code;<br>   `3XX`: All 3xx status codes;<br>   `300`: 300 status code;<br>   `301`: 301 status code;<br>   `302`: 302 status code;<br>   `303`: 303 status code;<br>   `304`: 304 status code;<br>   `305`: 305 status code;<br>   `307`: 307 status code;<br>   `4XX`: All 4xx status codes;<br>   `400`: 400 status code;<br>   `401`: 401 status code;<br>   `402`: 402 status code;<br>   `403`: 403 status code;<br>   `404`: 404 status code;<br>   `405`: 405 status code;<br>   `406`: 406 status code;<br>   `407`: 407 status code;<br>   `408`: 408 status code;<br>   `409`: 409 status code;<br>   `410`: 410 status code;<br>   `411`: 411 status code;<br>   `412`: 412 status code;<br>   `412`: 413 status code;<br>   `414`: 414 status code;<br>   `415`: 415 status code;<br>   `416`: 416 status code;<br>   `417`: 417 status code;<br>  `422`: 422 status code;<br>   `423`: 423 status code;<br>   `424`: 424 status code;<br>   `426`: 426 status code;<br>   `451`: 451 status code;<br>   `5XX`: All 5xx status codes;<br>   `500`: 500 status code;<br>   `501`: 501 status code;<br>   `502`: 502 status code;<br>   `503`: 503 status code;<br>   `504`: 504 status code;<br>   `505`: 505 status code;<br>   `506`: 506 status code;<br>   `507`: 507 status code;<br>   `510`: 510 status code;<br>   `514`: 514 status code;<br>   `544`: 544 status code.</li>
-<li>`browserType`<br>   Filter by the <strong>browser type</strong>. The query period cannot exceed 30 days. <br>   Type:  String<br>   Required:  No<br>   Values: <br>  `Firefox`: Firefox browser;<br>   `Chrome`: Chrome browser;<br>   `Safari`: Safari browser;<br>   `MicrosoftEdge`: Microsoft Edge browser;<br>   `IE`: IE browser;<br>   `Opera`: Opera browser;<br>   `QQBrowser`: QQ browser;<br>   `LBBrowser`: LB browser;<br>   `MaxthonBrowser`: Maxthon browser;<br>   `SouGouBrowser`: Sogou browser;<br>  `BIDUBrowser`: Baidu browser;<br>   `TaoBrowser`: Tao browser;<br>   `UBrowser`: UC browser;<br>   `Other`: Other browsers; <br>   `Empty`: The browser type is not specified; <br>   `Bot`: Web crawler.</li>
-<li>`deviceType`<br>   Filter by the <strong>device type</strong>. The query period cannot exceed 30 days. <br>   Type: String<br>   Required: No<br>   Values: <br>   `TV`: TV; <br>   `Tablet`: Tablet;<br>   `Mobile`: Mobile phone;<br>   `Desktop`: Desktop device; <br>   `Other`: Other device;<br>   `Empty`: Device type not specified.</li>
-<li>`operatingSystemType`<br>   Filter by the <strong>operating system</strong>. The query period cannot exceed 30 days. <br>   Type: String<br>   Required: No<br>   Values: <br>   `Linux`: Linux OS;<br>   `MacOS`: Max OS;<br>   `Android`: Android OS;<br>   `IOS`: iOS OS;<br>   `Windows`: Windows OS;<br>   `NetBSD`: NetBSD OS;<br>   `ChromiumOS`: Chromium OS;<br>   `Bot`: Web crawler: <br>   `Other`: Other OS;<br>   `Empty`: The OS is not specified.</li>
-<li>`tlsVersion`<br>   Filter by the <strong>TLS version</strong>. The query period cannot exceed 30 days.<br>   Type: String<br>   Required: No<br>   Values:<br>   `TLS1.0`: TLS 1.0; <br>   `TLS1.1`: TLS 1.1;<br>   `TLS1.2`: TLS 1.2;<br>   `TLS1.3`: TLS 1.3.</li>
-<li>`ipVersion`<br>   Filter by the <strong>IP version</strong>.<br>   Type: String<br>   Required: No<br>   Values:<br>   `4`: IPv4；<br>   `6`: IPv6.</li>
-<li>`tagKey`:<br>   Filter by the <strong>tag key</strong><br>   Type: String<br>   Required: No</li>
-<li>`tagValue`<br>   Filter by the <strong>tag value</strong><br>   Type: String<br>   Required: No</li>
+<li>`province`:<br>   Filter by the <strong>province name</strong>. It’s only available when `Area` is `mainland`. <br>   Type: String<br>   Required: No</li>
+<li>`isp`:<br>   Filter by the <strong>ISP</strong>. It’s only available when `Area` is `mainland`.<br>   Type: String<br>   Required: No<br>   Values: <br>   `2`: CTCC; <br>   `26`: CUCC;<br>   `1046`: CMCC;<br>   `3947`: CTT; <br>   `38`: CERNET; <br>   `43`: GWBN;<br>   `0`: Others</li>
+<li>`domain`:<br>   Filter by the <strong>sub-domain name</strong>, such as `test.example.com`<br>   Type: String<br>   Required: No</li>
+<li>`url`:<br>   Filter by the <strong>URL</strong>, such as `/content`. Separate multiple URLs with semicolons. The query period cannot exceed 30 days. <br>   Type: String<br>   Required: No</li>
+<li>`referer`:<br>   Filter by the <strong>Referer header</strong>, such as `example.com`. The query period cannot exceed 30 days.<br>   Type: String<br>   Required: No</li>
+<li>`resourceType`:<br>   Filter by the <strong>resource file type</strong>, such as `jpg`, `png`. The query period cannot exceed 30 days.<br>  Type: String<br>   Required: No</li>
+<li>`protocol`:<br>   Filter by the <strong>HTTP protocol</strong><br>   Type: String<br>   Required: No<br>   Values:<br>   `HTTP/1.0`: HTTP 1.0<br>   `HTTP/1.1`: HTTP 1.1<br>   `HTTP/2.0`: HTTP 2.0<br>   `HTTP/3.0`: HTTP 3.0<br>   `WebSocket`: WebSocket</li>
+<li>`statusCode`:<br>   Filter by the <strong> status code</strong>. The query period  cannot exceed 30 days. <br>   Type: String<br>   Required: No<br>   Values: <br>   `1XX`: All 1xx status codes;<br>   `100`: 100 status code;<br>   `101`: 101 status code;<br>   `102`: 102 status code;<br>   `2XX`: All 2xx status codes;<br>   `200`: 200 status code;<br>   `201`: 201 status code;<br>   `202`: 202 status code;<br>   `203`: 203 status code;<br>   `204`: 204 status code;<br>   `205`: 205 status code;<br>   `206`: 206 status code;<br>   `207`: 207 status code;<br>  `3XX`: All 3xx status codes;<br>   `300`: 300 status code;<br>   `301`: 301 status code;<br>   `302`: 302 status code;<br>   `303`: 303 status code;<br>   `304`: 304 status code;<br>   `305`: 305 status code;<br>   `307`: 307 status code;<br>   `4XX`: All 4xx status codes;<br>   `400`: 400 status code;<br>   `401`: 401 status code;<br>   `402`: 402 status code;<br>   `403`: 403 status code;<br>   `404`: 404 status code;<br>   `405`: 405 status code;<br>   `406`: 406 status code;<br>   `407`: 407 status code;<br>   `408`: 408 status code;<br>   `409`: 409 status code;<br>   `410`: 410 status code;<br>   `411`: 411 status code;<br>   `412`: 412 status code;<br>   `412`: 413 status code;<br>   `414`: 414 status code;<br>   `415`: 415 status code;<br>   `416`: 416 status code;<br>   `417`: 417 status code;<br>  `422`: 422 status code;<br>   `423`: 423 status code;<br>   `424`: 424 status code;<br>   `426`: 426 status code;<br>   `451`: 451 status code;<br>   `5XX`: All 5xx status codes;<br>   `500`: 500 status code;<br>   `501`: 501 status code;<br>   `502`: 502 status code;<br>   `503`: 503 status code;<br>   `504`: 504 status code;<br>   `505`: 505 status code;<br>   `506`: 506 status code;<br>   `507`: 507 status code;<br>   `510`: 510 status code;<br>   `514`: 514 status code;<br>   `544`: 544 status code.</li>
+<li>`browserType`:<br>   Filter by the <strong>browser type</strong>. The query period cannot exceed 30 days. <br>   Type:  String<br>   Required:  No<br>   Values: <br>  `Firefox`: Firefox browser;<br>   `Chrome`: Chrome browser;<br>   `Safari`: Safari browser;<br>   `MicrosoftEdge`: Microsoft Edge browser;<br>   `IE`: IE browser;<br>   `Opera`: Opera browser;<br>   `QQBrowser`: QQ browser;<br>   `LBBrowser`: LB browser;<br>   `MaxthonBrowser`: Maxthon browser;<br>   `SouGouBrowser`: Sogou browser;<br>  `BIDUBrowser`: Baidu browser;<br>   `TaoBrowser`: Tao browser;<br>   `UBrowser`: UC browser;<br>   `Other`: Other browsers; <br>   `Empty`: The browser type is not specified; <br>   `Bot`: Web crawler.</li>
+<li>`deviceType`:<br>   Filter by the <strong>device type</strong>. The query period cannot exceed 30 days. <br>   Type: String<br>   Required: No<br>   Values: <br>   `TV`: TV; <br>   `Tablet`: Tablet;<br>   `Mobile`: Mobile phone;<br>   `Desktop`: Desktop device; <br>   `Other`: Other device;<br>   `Empty`: Device type not specified.</li>
+<li>`operatingSystemType`:<br>   Filter by the <strong>operating system</strong>. The query period cannot exceed 30 days. <br>   Type: String<br>   Required: No<br>   Values: <br>   `Linux`：Linux OS;<br>   `MacOS`: OS;<br>   `Android`: Android OS;<br>   `IOS`: iOS OS;<br>   `Windows`: Windows OS;<br>   `NetBSD`: NetBSD OS;<br>   `ChromiumOS`: Chromium OS;<br>   `Bot`: Web crawler: <br>   `Other`: Other OS;<br>   `Empty`: The OS is not specified.</li>
+<li>`tlsVersion`:<br>   Filter by the <strong>TLS version</strong>. The query period cannot exceed 30 days.<br>   Type: String<br>   Required: No<br>   Values:<br>   `TLS1.0`: TLS 1.0; <br>   `TLS1.1`: TLS 1.1;<br>   `TLS1.2`: TLS 1.2;<br>   `TLS1.3`: TLS 1.3.</li>
+<li>`ipVersion`:<br>   Filter by the <strong>IP version</strong>.<br>   Type: String<br>   Required: No<br>   Values:<br>   `4`: IPv4;<br>   `6`: IPv6.</li>
+<li>`tagKey`:<br>   Filter by the <strong>tag key</strong><br>   Type: String<br>   Required: No</li>
+<li>`tagValue`:<br>  Filter by the <strong>tag value</strong><br>   Type: String<br>   Required: No</li>
         :type Filters: list of QueryCondition
         :param Interval: The query time granularity. Values:
 <li>`min`: 1 minute;</li>
@@ -5619,6 +5779,50 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         
 
 
+class DiffIPWhitelist(AbstractModel):
+    """Differences between the newest and existing intermediate IPs
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LatestIPWhitelist: The latest intermediate IPs.
+        :type LatestIPWhitelist: :class:`tencentcloud.teo.v20220901.models.IPWhitelist`
+        :param AddedIPWhitelist: The intermediate IPs added to the existing list.
+        :type AddedIPWhitelist: :class:`tencentcloud.teo.v20220901.models.IPWhitelist`
+        :param RemovedIPWhitelist: The intermediate IPs removed from the existing list.
+        :type RemovedIPWhitelist: :class:`tencentcloud.teo.v20220901.models.IPWhitelist`
+        :param NoChangeIPWhitelist: The intermediate IPs that remain unchanged.
+        :type NoChangeIPWhitelist: :class:`tencentcloud.teo.v20220901.models.IPWhitelist`
+        """
+        self.LatestIPWhitelist = None
+        self.AddedIPWhitelist = None
+        self.RemovedIPWhitelist = None
+        self.NoChangeIPWhitelist = None
+
+
+    def _deserialize(self, params):
+        if params.get("LatestIPWhitelist") is not None:
+            self.LatestIPWhitelist = IPWhitelist()
+            self.LatestIPWhitelist._deserialize(params.get("LatestIPWhitelist"))
+        if params.get("AddedIPWhitelist") is not None:
+            self.AddedIPWhitelist = IPWhitelist()
+            self.AddedIPWhitelist._deserialize(params.get("AddedIPWhitelist"))
+        if params.get("RemovedIPWhitelist") is not None:
+            self.RemovedIPWhitelist = IPWhitelist()
+            self.RemovedIPWhitelist._deserialize(params.get("RemovedIPWhitelist"))
+        if params.get("NoChangeIPWhitelist") is not None:
+            self.NoChangeIPWhitelist = IPWhitelist()
+            self.NoChangeIPWhitelist._deserialize(params.get("NoChangeIPWhitelist"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DistrictStatistics(AbstractModel):
     """The site’s load speed across regions
 
@@ -6447,6 +6651,34 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         
 
 
+class IPWhitelist(AbstractModel):
+    """Intermediate IPs
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IPv4: List of IPv4 addresses
+        :type IPv4: list of str
+        :param IPv6: List of IPv6 addresses
+        :type IPv6: list of str
+        """
+        self.IPv4 = None
+        self.IPv6 = None
+
+
+    def _deserialize(self, params):
+        self.IPv4 = params.get("IPv4")
+        self.IPv6 = params.get("IPv6")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Identification(AbstractModel):
     """The site verification information
 
@@ -6674,8 +6906,16 @@ class IpTableRule(AbstractModel):
 <li>`ip`: Match by IP.</li>
 <li>`area`: Match by IP region.</li>
         :type MatchFrom: str
-        :param MatchContent: The matching content.
-        :type MatchContent: str
+        :param Operator: Matching method. It defaults to `equal` if it’s left empty.
+Values: 
+<li>`is_empty`: The field is empty.</li>
+<li>`not_exists`: The configuration item does not exist.</li>
+<li>`include`: Include</li>
+<li>`not_include`: Do not include</li>
+<li>`equal`: Equal to</li>
+<li>`not_equal`: Not equal to</li>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Operator: str
         :param RuleID: The rule ID, which is only used as an output parameter.
         :type RuleID: int
         :param UpdateTime: The update time, which is only used as an output parameter.
@@ -6685,22 +6925,31 @@ class IpTableRule(AbstractModel):
 <li>`off`: Disabled</li>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Status: str
+        :param RuleName: The rule name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RuleName: str
+        :param MatchContent: Matching content. It’s not required when `Operator` is `is_emty` or `not_exists`. 
+        :type MatchContent: str
         """
         self.Action = None
         self.MatchFrom = None
-        self.MatchContent = None
+        self.Operator = None
         self.RuleID = None
         self.UpdateTime = None
         self.Status = None
+        self.RuleName = None
+        self.MatchContent = None
 
 
     def _deserialize(self, params):
         self.Action = params.get("Action")
         self.MatchFrom = params.get("MatchFrom")
-        self.MatchContent = params.get("MatchContent")
+        self.Operator = params.get("Operator")
         self.RuleID = params.get("RuleID")
         self.UpdateTime = params.get("UpdateTime")
         self.Status = params.get("Status")
+        self.RuleName = params.get("RuleName")
+        self.MatchContent = params.get("MatchContent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8236,6 +8485,71 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         
 
 
+class OriginProtectionInfo(AbstractModel):
+    """Origin protection configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: ID of the site.
+        :type ZoneId: str
+        :param Hosts: List of domain names.
+        :type Hosts: list of str
+        :param ProxyIds: List of proxy IDs.
+        :type ProxyIds: list of str
+        :param CurrentIPWhitelist: The existing intermediate IPs.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type CurrentIPWhitelist: :class:`tencentcloud.teo.v20220901.models.IPWhitelist`
+        :param NeedUpdate: Whether the intermediate IP update is needed for the site. Values:
+<li>`true`: Update needed;</li>
+<li>`false`: Update not needed.</li>
+        :type NeedUpdate: bool
+        :param Status: Status of the origin protection configuration. Values:
+<li>`online`: Origin protection is activated;</li>
+<li>`offline`: Origin protection is disabled.</li>
+<li>`nonactivate`: Origin protection is not activated. This value is returned only when the feature is not activated before it’s used.</li>
+        :type Status: str
+        :param PlanSupport: Whether origin protection is supported in the plan. Values:
+<li>`true`: Origin protection supported;</li>
+<li>`false`: Origin protection not supported.</li>
+        :type PlanSupport: bool
+        :param DiffIPWhitelist: Differences between the latest and existing intermediate IPs.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type DiffIPWhitelist: :class:`tencentcloud.teo.v20220901.models.DiffIPWhitelist`
+        """
+        self.ZoneId = None
+        self.Hosts = None
+        self.ProxyIds = None
+        self.CurrentIPWhitelist = None
+        self.NeedUpdate = None
+        self.Status = None
+        self.PlanSupport = None
+        self.DiffIPWhitelist = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.Hosts = params.get("Hosts")
+        self.ProxyIds = params.get("ProxyIds")
+        if params.get("CurrentIPWhitelist") is not None:
+            self.CurrentIPWhitelist = IPWhitelist()
+            self.CurrentIPWhitelist._deserialize(params.get("CurrentIPWhitelist"))
+        self.NeedUpdate = params.get("NeedUpdate")
+        self.Status = params.get("Status")
+        self.PlanSupport = params.get("PlanSupport")
+        if params.get("DiffIPWhitelist") is not None:
+            self.DiffIPWhitelist = DiffIPWhitelist()
+            self.DiffIPWhitelist._deserialize(params.get("DiffIPWhitelist"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OriginRecord(AbstractModel):
     """Origin group record
 
@@ -8682,14 +8996,18 @@ class RateLimitIntelligence(AbstractModel):
 <li>`monitor`: Observe</li>
 <li>`alg`: Challenge</li>
         :type Action: str
+        :param RuleId: The rule ID, which is only used as a response parameter.
+        :type RuleId: int
         """
         self.Switch = None
         self.Action = None
+        self.RuleId = None
 
 
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
         self.Action = params.get("Action")
+        self.RuleId = params.get("RuleId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9719,10 +10037,20 @@ class SecHitRuleInfo(AbstractModel):
 
     def __init__(self):
         r"""
+        :param ZoneId: The site ID.
+        :type ZoneId: str
         :param RuleId: The rule ID.
         :type RuleId: int
         :param RuleTypeName: The rule type.
         :type RuleTypeName: str
+        :param HitTime: The hit time recorded in seconds using UNIX timestamp.
+        :type HitTime: int
+        :param RequestNum: The number of requests.
+        :type RequestNum: int
+        :param Description: The rule description.
+        :type Description: str
+        :param Domain: The subdomain name.
+        :type Domain: str
         :param Action: Action. Values:
 <li>`trans`: Allow;</li>
 <li>`alg`: Algorithm challenge;</li>
@@ -9732,14 +10060,6 @@ class SecHitRuleInfo(AbstractModel):
 <li>`page`: Return to the specified page;</li>
 <li>`monitor`: Observe.</li>
         :type Action: str
-        :param HitTime: The hit time recorded in seconds using UNIX timestamp.
-        :type HitTime: int
-        :param RequestNum: The number of requests.
-        :type RequestNum: int
-        :param Description: The rule description.
-        :type Description: str
-        :param Domain: The subdomain name.
-        :type Domain: str
         :param BotLabel: The bot tag. Values:
 <li>`evil_bot`: Malicious bot</li>
 <li>`suspect_bot`: Suspected bot</li>
@@ -9747,26 +10067,42 @@ class SecHitRuleInfo(AbstractModel):
 <li>`normal`: Normal request</li>
 <li>`none`: Uncategorized</li>
         :type BotLabel: str
+        :param RuleEnabled: Whether to enable the rule
+        :type RuleEnabled: bool
+        :param AlarmEnabled: Whether to enable alerting for this rule
+        :type AlarmEnabled: bool
+        :param RuleDeleted: Whether the rule is deleted. Values: 
+<li>`true`: The rule has been deleted (does not exist).</li>
+<li>`false`: The rule is not deleted (exists).</li>
+        :type RuleDeleted: bool
         """
+        self.ZoneId = None
         self.RuleId = None
         self.RuleTypeName = None
-        self.Action = None
         self.HitTime = None
         self.RequestNum = None
         self.Description = None
         self.Domain = None
+        self.Action = None
         self.BotLabel = None
+        self.RuleEnabled = None
+        self.AlarmEnabled = None
+        self.RuleDeleted = None
 
 
     def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
         self.RuleId = params.get("RuleId")
         self.RuleTypeName = params.get("RuleTypeName")
-        self.Action = params.get("Action")
         self.HitTime = params.get("HitTime")
         self.RequestNum = params.get("RequestNum")
         self.Description = params.get("Description")
         self.Domain = params.get("Domain")
+        self.Action = params.get("Action")
         self.BotLabel = params.get("BotLabel")
+        self.RuleEnabled = params.get("RuleEnabled")
+        self.AlarmEnabled = params.get("AlarmEnabled")
+        self.RuleDeleted = params.get("RuleDeleted")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9810,6 +10146,20 @@ class SecRuleRelatedInfo(AbstractModel):
         :param AttackContent: The attack content.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AttackContent: str
+        :param RuleType: The rule type. Values:
+<li>`waf`: Tencent Cloud-managed rule</li>
+<li>`acl`: Custom rule</li>
+<li>`rate`: Rate limiting rule</li>
+<li>`bot`: Bot rule</li>
+        :type RuleType: str
+        :param RuleEnabled: Whether to enable the rule
+        :type RuleEnabled: bool
+        :param RuleDeleted: Whether the rule is deleted. Values: 
+<li>`true`: The rule has been deleted (does not exist).</li>
+<li>`false`: The rule is not deleted (exists).</li>
+        :type RuleDeleted: bool
+        :param AlarmEnabled: Whether to enable alerting for this rule
+        :type AlarmEnabled: bool
         """
         self.RuleId = None
         self.Action = None
@@ -9818,6 +10168,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.Description = None
         self.RuleTypeName = None
         self.AttackContent = None
+        self.RuleType = None
+        self.RuleEnabled = None
+        self.RuleDeleted = None
+        self.AlarmEnabled = None
 
 
     def _deserialize(self, params):
@@ -9828,6 +10182,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.Description = params.get("Description")
         self.RuleTypeName = params.get("RuleTypeName")
         self.AttackContent = params.get("AttackContent")
+        self.RuleType = params.get("RuleType")
+        self.RuleEnabled = params.get("RuleEnabled")
+        self.RuleDeleted = params.get("RuleDeleted")
+        self.AlarmEnabled = params.get("AlarmEnabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10962,6 +11320,47 @@ class TopEntryValue(AbstractModel):
         
 
 
+class UpdateOriginProtectionIPWhitelistRequest(AbstractModel):
+    """UpdateOriginProtectionIPWhitelist request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: ID of the site.
+        :type ZoneId: str
+        """
+        self.ZoneId = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateOriginProtectionIPWhitelistResponse(AbstractModel):
+    """UpdateOriginProtectionIPWhitelist response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class UpstreamHttp2(AbstractModel):
     """HTTP2 origin-pull configuration
 
@@ -11214,56 +11613,69 @@ class WebLogs(AbstractModel):
         r"""
         :param EventId: The attack event ID.
         :type EventId: str
-        :param AttackIp: The attacker IP.
-        :type AttackIp: str
-        :param Domain: The attacked subdomain name.
-        :type Domain: str
         :param HttpLog: The HTTP log content.
         :type HttpLog: str
+        :param Domain: The attacked subdomain name.
+        :type Domain: str
+        :param AttackIp: The attacker IP.
+        :type AttackIp: str
         :param SipCountryCode: The country code of the attacker IP, which is defined in ISO-3166 alpha-2. For the list of country codes, see [ISO-3166](https://git.woa.com/edgeone/iso-3166/blob/master/all/all.json).
         :type SipCountryCode: str
+        :param RealClientIp: 
+        :type RealClientIp: str
+        :param RealClientIpCountryCode: 
+        :type RealClientIpCountryCode: str
         :param AttackTime: The attack time recorded in seconds using UNIX timestamp.
         :type AttackTime: int
         :param RequestUri: The request address.
         :type RequestUri: str
-        :param AttackContent: The attack content.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type AttackContent: str
-        :param RuleDetailList: The security rule information.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type RuleDetailList: list of SecRuleRelatedInfo
         :param ReqMethod: The request type.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ReqMethod: str
+        :param RuleDetailList: The security rule information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RuleDetailList: list of SecRuleRelatedInfo
+        :param AttackContent: The attack content.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AttackContent: str
+        :param Area: Log region
+Note: This field may return `null`, indicating that no valid value was found.
+        :type Area: str
         """
         self.EventId = None
-        self.AttackIp = None
-        self.Domain = None
         self.HttpLog = None
+        self.Domain = None
+        self.AttackIp = None
         self.SipCountryCode = None
+        self.RealClientIp = None
+        self.RealClientIpCountryCode = None
         self.AttackTime = None
         self.RequestUri = None
-        self.AttackContent = None
-        self.RuleDetailList = None
         self.ReqMethod = None
+        self.RuleDetailList = None
+        self.AttackContent = None
+        self.Area = None
 
 
     def _deserialize(self, params):
         self.EventId = params.get("EventId")
-        self.AttackIp = params.get("AttackIp")
-        self.Domain = params.get("Domain")
         self.HttpLog = params.get("HttpLog")
+        self.Domain = params.get("Domain")
+        self.AttackIp = params.get("AttackIp")
         self.SipCountryCode = params.get("SipCountryCode")
+        self.RealClientIp = params.get("RealClientIp")
+        self.RealClientIpCountryCode = params.get("RealClientIpCountryCode")
         self.AttackTime = params.get("AttackTime")
         self.RequestUri = params.get("RequestUri")
-        self.AttackContent = params.get("AttackContent")
+        self.ReqMethod = params.get("ReqMethod")
         if params.get("RuleDetailList") is not None:
             self.RuleDetailList = []
             for item in params.get("RuleDetailList"):
                 obj = SecRuleRelatedInfo()
                 obj._deserialize(item)
                 self.RuleDetailList.append(obj)
-        self.ReqMethod = params.get("ReqMethod")
+        self.AttackContent = params.get("AttackContent")
+        self.Area = params.get("Area")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

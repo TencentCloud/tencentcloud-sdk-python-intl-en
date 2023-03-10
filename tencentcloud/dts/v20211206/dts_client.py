@@ -74,6 +74,52 @@ class DtsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ContinueMigrateJob(self, request):
+        """This API is used to resume a paused migration task.
+
+        :param request: Request instance for ContinueMigrateJob.
+        :type request: :class:`tencentcloud.dts.v20211206.models.ContinueMigrateJobRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.ContinueMigrateJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ContinueMigrateJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.ContinueMigrateJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ContinueSyncJob(self, request):
+        """This API is used to resume a paused data sync task.
+
+        :param request: Request instance for ContinueSyncJob.
+        :type request: :class:`tencentcloud.dts.v20211206.models.ContinueSyncJobRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.ContinueSyncJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ContinueSyncJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.ContinueSyncJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateCheckSyncJob(self, request):
         """This API is used to verify a sync task by checking required parameters and peripheral configuration.
 
@@ -598,6 +644,52 @@ class DtsClient(AbstractClient):
             body = self.call("ModifyMigrationJob", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyMigrationJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def PauseMigrateJob(self, request):
+        """This API is used to pause a migration task.
+
+        :param request: Request instance for PauseMigrateJob.
+        :type request: :class:`tencentcloud.dts.v20211206.models.PauseMigrateJobRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.PauseMigrateJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("PauseMigrateJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.PauseMigrateJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def PauseSyncJob(self, request):
+        """This API is used to pause a data sync task.
+
+        :param request: Request instance for PauseSyncJob.
+        :type request: :class:`tencentcloud.dts.v20211206.models.PauseSyncJobRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.PauseSyncJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("PauseSyncJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.PauseSyncJobResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

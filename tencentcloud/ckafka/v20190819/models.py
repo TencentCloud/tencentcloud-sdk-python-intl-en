@@ -1499,6 +1499,54 @@ class CreateUserResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DatahubTopicDTO(AbstractModel):
+    """DataHub topic
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Name
+        :type Name: str
+        :param TopicName: Topic name
+        :type TopicName: str
+        :param TopicId: Topic ID
+        :type TopicId: str
+        :param PartitionNum: The number of partitions
+        :type PartitionNum: int
+        :param RetentionMs: Expiration time
+        :type RetentionMs: int
+        :param Note: Remarks
+        :type Note: str
+        :param Status: Status (`1`: In use; `2`: Deleting)
+        :type Status: int
+        """
+        self.Name = None
+        self.TopicName = None
+        self.TopicId = None
+        self.PartitionNum = None
+        self.RetentionMs = None
+        self.Note = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.TopicName = params.get("TopicName")
+        self.TopicId = params.get("TopicId")
+        self.PartitionNum = params.get("PartitionNum")
+        self.RetentionMs = params.get("RetentionMs")
+        self.Note = params.get("Note")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeleteAclRequest(AbstractModel):
     """DeleteAcl request structure.
 
@@ -2137,6 +2185,205 @@ class DescribeConsumerGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDatahubTopicRequest(AbstractModel):
+    """DescribeDatahubTopic request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Name
+        :type Name: str
+        """
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDatahubTopicResp(AbstractModel):
+    """DataHub topic details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Name
+        :type Name: str
+        :param TopicName: Topic name
+        :type TopicName: str
+        :param TopicId: Topic ID
+        :type TopicId: str
+        :param PartitionNum: The number of partitions
+        :type PartitionNum: int
+        :param RetentionMs: Expiration time
+        :type RetentionMs: int
+        :param Note: Remarks
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Note: str
+        :param UserName: Username
+        :type UserName: str
+        :param Password: Password
+        :type Password: str
+        :param Status: Status (`1`: In use; `2`: Deleting)
+        :type Status: int
+        :param Address: Service routing address
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Address: str
+        """
+        self.Name = None
+        self.TopicName = None
+        self.TopicId = None
+        self.PartitionNum = None
+        self.RetentionMs = None
+        self.Note = None
+        self.UserName = None
+        self.Password = None
+        self.Status = None
+        self.Address = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.TopicName = params.get("TopicName")
+        self.TopicId = params.get("TopicId")
+        self.PartitionNum = params.get("PartitionNum")
+        self.RetentionMs = params.get("RetentionMs")
+        self.Note = params.get("Note")
+        self.UserName = params.get("UserName")
+        self.Password = params.get("Password")
+        self.Status = params.get("Status")
+        self.Address = params.get("Address")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDatahubTopicResponse(AbstractModel):
+    """DescribeDatahubTopic response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Returned result object
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.DescribeDatahubTopicResp`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = DescribeDatahubTopicResp()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDatahubTopicsRequest(AbstractModel):
+    """DescribeDatahubTopics request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SearchWord: Keyword for query
+        :type SearchWord: str
+        :param Offset: Query offset, which defaults to `0`.
+        :type Offset: int
+        :param Limit: Maximum number of results to be returned in this request. Default value: `50`. Maximum value: `50`.
+        :type Limit: int
+        """
+        self.SearchWord = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.SearchWord = params.get("SearchWord")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDatahubTopicsResp(AbstractModel):
+    """DataHub topic list
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Total count
+        :type TotalCount: int
+        :param TopicList: Topic list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TopicList: list of DatahubTopicDTO
+        """
+        self.TotalCount = None
+        self.TopicList = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("TopicList") is not None:
+            self.TopicList = []
+            for item in params.get("TopicList"):
+                obj = DatahubTopicDTO()
+                obj._deserialize(item)
+                self.TopicList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDatahubTopicsResponse(AbstractModel):
+    """DescribeDatahubTopics response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Topic list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.DescribeDatahubTopicsResp`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = DescribeDatahubTopicsResp()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeGroup(AbstractModel):
     """`DescribeGroup` response entity
 
@@ -2418,6 +2665,8 @@ class DescribeInstancesDetailRequest(AbstractModel):
         :type InstanceIds: str
         :param InstanceIdList: Filter by instance ID.
         :type InstanceIdList: list of str
+        :param TagList: Filter instances by a set of tags
+        :type TagList: list of Tag
         """
         self.InstanceId = None
         self.SearchWord = None
@@ -2428,6 +2677,7 @@ class DescribeInstancesDetailRequest(AbstractModel):
         self.Filters = None
         self.InstanceIds = None
         self.InstanceIdList = None
+        self.TagList = None
 
 
     def _deserialize(self, params):
@@ -2445,6 +2695,12 @@ class DescribeInstancesDetailRequest(AbstractModel):
                 self.Filters.append(obj)
         self.InstanceIds = params.get("InstanceIds")
         self.InstanceIdList = params.get("InstanceIdList")
+        if params.get("TagList") is not None:
+            self.TagList = []
+            for item in params.get("TagList"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
