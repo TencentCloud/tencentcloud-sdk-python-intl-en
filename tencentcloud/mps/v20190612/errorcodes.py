@@ -23,11 +23,17 @@ FAILEDOPERATION_BUCKETNOTIFYALREADYEXIST = 'FailedOperation.BucketNotifyAlreadyE
 # Operation failed: COS service is suspended.
 FAILEDOPERATION_COSSTATUSINAVLID = 'FailedOperation.CosStatusInavlid'
 
+# Operation failed: Error getting the source notification.
+FAILEDOPERATION_GETSOURCENOTIFY = 'FailedOperation.GetSourceNotify'
+
 # Operation failed: unauthorized MPS user.
 FAILEDOPERATION_INVALIDMPSUSER = 'FailedOperation.InvalidMpsUser'
 
 # Operation failed: invalid user.
 FAILEDOPERATION_INVALIDUSER = 'FailedOperation.InvalidUser'
+
+# Operation failed: Error setting the source notification.
+FAILEDOPERATION_SETSOURCENOTIFY = 'FailedOperation.SetSourceNotify'
 
 # Internal error.
 INTERNALERROR = 'InternalError'

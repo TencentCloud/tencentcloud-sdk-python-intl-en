@@ -210,6 +210,40 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateSchedule(self, request):
+        """This API is used to create a scheme for media files uploaded to a specified COS bucket. A scheme may include the following tasks:
+        1. Video transcoding (with watermark)
+        2. Animated screenshot generating
+        3. Time point screencapturing
+        4. Sampled screencapturing
+        5. Image sprite generating
+        6. Adaptive bitrate streaming
+        7. Intelligent content moderation (detection of pornographic and sensitive content)
+        8. Intelligent content analysis (labeling, categorization, thumbnail generation, labeling by frame)
+        9. Intelligent content recognition (face, full text, text keyword, full speech, and speech keyword)
+
+        Note: A scheme is disabled upon creation. You need to manually enable it.
+
+        :param request: Request instance for CreateSchedule.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateScheduleRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateScheduleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSchedule", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateScheduleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateSnapshotByTimeOffsetTemplate(self, request):
         """This API is used to create a custom time point screencapturing template. Up to 16 templates can be created.
 
@@ -513,6 +547,29 @@ class MpsClient(AbstractClient):
             body = self.call("DeleteSampleSnapshotTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteSampleSnapshotTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteSchedule(self, request):
+        """This API is used to delete a scheme.
+
+        :param request: Request instance for DeleteSchedule.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteScheduleRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteScheduleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteSchedule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteScheduleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -844,6 +901,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeSchedules(self, request):
+        """This API is used to query a scheme.
+
+        :param request: Request instance for DescribeSchedules.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeSchedulesRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeSchedulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSchedules", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSchedulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeSnapshotByTimeOffsetTemplates(self, request):
         """This API is used to query the list of time point screencapturing templates and supports paged queries by filters.
 
@@ -1007,6 +1087,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DisableSchedule(self, request):
+        """This API is used to disable a scheme.
+
+        :param request: Request instance for DisableSchedule.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DisableScheduleRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DisableScheduleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisableSchedule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DisableScheduleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DisableWorkflow(self, request):
         """This API is used to disable a workflow.
 
@@ -1048,6 +1151,29 @@ class MpsClient(AbstractClient):
             body = self.call("EditMedia", params, headers=headers)
             response = json.loads(body)
             model = models.EditMediaResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def EnableSchedule(self, request):
+        """This API is used to enable a scheme.
+
+        :param request: Request instance for EnableSchedule.
+        :type request: :class:`tencentcloud.mps.v20190612.models.EnableScheduleRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.EnableScheduleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EnableSchedule", params, headers=headers)
+            response = json.loads(body)
+            model = models.EnableScheduleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1303,6 +1429,29 @@ class MpsClient(AbstractClient):
             body = self.call("ModifySampleSnapshotTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.ModifySampleSnapshotTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifySchedule(self, request):
+        """This API is used to modify a scheme.
+
+        :param request: Request instance for ModifySchedule.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ModifyScheduleRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifyScheduleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySchedule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyScheduleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

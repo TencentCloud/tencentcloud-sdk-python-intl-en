@@ -171,6 +171,125 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         
 
 
+class Activity(AbstractModel):
+    """A subtask of a scheme.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ActivityType: The subtask type.
+<li>`input`: The start.</li>
+<li>`output`: The end.</li>
+<li>`action-trans`: Transcoding.</li>
+<li>`action-samplesnapshot`: Sampled screencapturing.</li>
+<li>`action-AIAnalysis`: Content analysis.</li>
+<li>`action-AIRecognition`: Content recognition.</li>
+<li>`action-aiReview`: Content moderation.</li>
+<li>`action-animated-graphics`: Animated screenshot generation.</li>
+<li>`action-image-sprite`: Image sprite generation.</li>
+<li>`action-snapshotByTimeOffset`: Time point screencapturing.</li>
+<li>`action-adaptive-substream`: Adaptive bitrate streaming.</li>
+        :type ActivityType: str
+        :param ReardriveIndex: The indexes of the subsequent actions.
+        :type ReardriveIndex: list of int
+        :param ActivityPara: The parameters of a subtask.
+        :type ActivityPara: :class:`tencentcloud.mps.v20190612.models.ActivityPara`
+        """
+        self.ActivityType = None
+        self.ReardriveIndex = None
+        self.ActivityPara = None
+
+
+    def _deserialize(self, params):
+        self.ActivityType = params.get("ActivityType")
+        self.ReardriveIndex = params.get("ReardriveIndex")
+        if params.get("ActivityPara") is not None:
+            self.ActivityPara = ActivityPara()
+            self.ActivityPara._deserialize(params.get("ActivityPara"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ActivityPara(AbstractModel):
+    """A subtask of a scheme.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TranscodeTask: A transcoding task.
+        :type TranscodeTask: :class:`tencentcloud.mps.v20190612.models.TranscodeTaskInput`
+        :param AnimatedGraphicTask: An animated screenshot generation task.
+        :type AnimatedGraphicTask: :class:`tencentcloud.mps.v20190612.models.AnimatedGraphicTaskInput`
+        :param SnapshotByTimeOffsetTask: A time point screencapturing task.
+        :type SnapshotByTimeOffsetTask: :class:`tencentcloud.mps.v20190612.models.SnapshotByTimeOffsetTaskInput`
+        :param SampleSnapshotTask: A sampled screencapturing task.
+        :type SampleSnapshotTask: :class:`tencentcloud.mps.v20190612.models.SampleSnapshotTaskInput`
+        :param ImageSpriteTask: An image sprite generation task.
+        :type ImageSpriteTask: :class:`tencentcloud.mps.v20190612.models.ImageSpriteTaskInput`
+        :param AdaptiveDynamicStreamingTask: An adaptive bitrate streaming task.
+        :type AdaptiveDynamicStreamingTask: :class:`tencentcloud.mps.v20190612.models.AdaptiveDynamicStreamingTaskInput`
+        :param AiContentReviewTask: A content moderation task.
+        :type AiContentReviewTask: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
+        :param AiAnalysisTask: A content analysis task.
+        :type AiAnalysisTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
+        :param AiRecognitionTask: A content recognition task.
+        :type AiRecognitionTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
+        """
+        self.TranscodeTask = None
+        self.AnimatedGraphicTask = None
+        self.SnapshotByTimeOffsetTask = None
+        self.SampleSnapshotTask = None
+        self.ImageSpriteTask = None
+        self.AdaptiveDynamicStreamingTask = None
+        self.AiContentReviewTask = None
+        self.AiAnalysisTask = None
+        self.AiRecognitionTask = None
+
+
+    def _deserialize(self, params):
+        if params.get("TranscodeTask") is not None:
+            self.TranscodeTask = TranscodeTaskInput()
+            self.TranscodeTask._deserialize(params.get("TranscodeTask"))
+        if params.get("AnimatedGraphicTask") is not None:
+            self.AnimatedGraphicTask = AnimatedGraphicTaskInput()
+            self.AnimatedGraphicTask._deserialize(params.get("AnimatedGraphicTask"))
+        if params.get("SnapshotByTimeOffsetTask") is not None:
+            self.SnapshotByTimeOffsetTask = SnapshotByTimeOffsetTaskInput()
+            self.SnapshotByTimeOffsetTask._deserialize(params.get("SnapshotByTimeOffsetTask"))
+        if params.get("SampleSnapshotTask") is not None:
+            self.SampleSnapshotTask = SampleSnapshotTaskInput()
+            self.SampleSnapshotTask._deserialize(params.get("SampleSnapshotTask"))
+        if params.get("ImageSpriteTask") is not None:
+            self.ImageSpriteTask = ImageSpriteTaskInput()
+            self.ImageSpriteTask._deserialize(params.get("ImageSpriteTask"))
+        if params.get("AdaptiveDynamicStreamingTask") is not None:
+            self.AdaptiveDynamicStreamingTask = AdaptiveDynamicStreamingTaskInput()
+            self.AdaptiveDynamicStreamingTask._deserialize(params.get("AdaptiveDynamicStreamingTask"))
+        if params.get("AiContentReviewTask") is not None:
+            self.AiContentReviewTask = AiContentReviewTaskInput()
+            self.AiContentReviewTask._deserialize(params.get("AiContentReviewTask"))
+        if params.get("AiAnalysisTask") is not None:
+            self.AiAnalysisTask = AiAnalysisTaskInput()
+            self.AiAnalysisTask._deserialize(params.get("AiAnalysisTask"))
+        if params.get("AiRecognitionTask") is not None:
+            self.AiRecognitionTask = AiRecognitionTaskInput()
+            self.AiRecognitionTask._deserialize(params.get("AiRecognitionTask"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ActivityResItem(AbstractModel):
     """The execution results of the subtasks of a scheme.
 
@@ -4098,6 +4217,96 @@ When the media is packaged in audio format (FLAC, OGG, MP3, M4A), the sound chan
         
 
 
+class AwsS3FileUploadTrigger(AbstractModel):
+    """An AWS S3 file upload trigger.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param S3Bucket: The AWS S3 bucket bound to the scheme.
+        :type S3Bucket: str
+        :param S3Region: The region of the AWS S3 bucket.
+        :type S3Region: str
+        :param Dir: The bucket directory bound. It must be an absolute path that starts and ends with `/`, such as `/movie/201907/`. If you do not specify this, the root directory will be bound.	
+        :type Dir: str
+        :param Formats: The file formats that will trigger the scheme, such as ["mp4", "flv", "mov"]. If you do not specify this, the upload of files in any format will trigger the scheme.	
+        :type Formats: list of str
+        :param S3SecretId: The key ID of the AWS S3 bucket.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type S3SecretId: str
+        :param S3SecretKey: The key of the AWS S3 bucket.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type S3SecretKey: str
+        :param AwsSQS: The SQS queue of the AWS S3 bucket.
+Note: The queue must be in the same region as the bucket.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AwsSQS: :class:`tencentcloud.mps.v20190612.models.AwsSQS`
+        """
+        self.S3Bucket = None
+        self.S3Region = None
+        self.Dir = None
+        self.Formats = None
+        self.S3SecretId = None
+        self.S3SecretKey = None
+        self.AwsSQS = None
+
+
+    def _deserialize(self, params):
+        self.S3Bucket = params.get("S3Bucket")
+        self.S3Region = params.get("S3Region")
+        self.Dir = params.get("Dir")
+        self.Formats = params.get("Formats")
+        self.S3SecretId = params.get("S3SecretId")
+        self.S3SecretKey = params.get("S3SecretKey")
+        if params.get("AwsSQS") is not None:
+            self.AwsSQS = AwsSQS()
+            self.AwsSQS._deserialize(params.get("AwsSQS"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AwsSQS(AbstractModel):
+    """The information of an AWS SQS queue.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SQSRegion: The region of the SQS queue.
+        :type SQSRegion: str
+        :param SQSQueueName: The name of the SQS queue.
+        :type SQSQueueName: str
+        :param S3SecretId: The key ID required to read from/write to the SQS queue.
+        :type S3SecretId: str
+        :param S3SecretKey: The key required to read from/write to the SQS queue.
+        :type S3SecretKey: str
+        """
+        self.SQSRegion = None
+        self.SQSQueueName = None
+        self.S3SecretId = None
+        self.S3SecretKey = None
+
+
+    def _deserialize(self, params):
+        self.SQSRegion = params.get("SQSRegion")
+        self.SQSQueueName = params.get("SQSQueueName")
+        self.S3SecretId = params.get("S3SecretId")
+        self.S3SecretKey = params.get("S3SecretKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClassificationConfigureInfo(AbstractModel):
     """Control parameter of intelligent categorization task
 
@@ -5079,6 +5288,82 @@ class CreateSampleSnapshotTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateScheduleRequest(AbstractModel):
+    """CreateSchedule request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ScheduleName: The scheme name (max 128 characters). This name should be unique across your account.
+        :type ScheduleName: str
+        :param Trigger: The trigger of the scheme. If a file is uploaded to the specified bucket, the scheme will be triggered.
+        :type Trigger: :class:`tencentcloud.mps.v20190612.models.WorkflowTrigger`
+        :param Activities: The subtasks of the scheme.
+        :type Activities: list of Activity
+        :param OutputStorage: The bucket to save the output file. If you do not specify this parameter, the bucket in `Trigger` will be used.
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param OutputDir: The directory to save the output file, such as `/movie/201907/`. If you do not specify this parameter, the directory of the source file will be used.
+        :type OutputDir: str
+        :param TaskNotifyConfig: The notification configuration. If you do not specify this parameter, notifications will not be sent.
+        :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        """
+        self.ScheduleName = None
+        self.Trigger = None
+        self.Activities = None
+        self.OutputStorage = None
+        self.OutputDir = None
+        self.TaskNotifyConfig = None
+
+
+    def _deserialize(self, params):
+        self.ScheduleName = params.get("ScheduleName")
+        if params.get("Trigger") is not None:
+            self.Trigger = WorkflowTrigger()
+            self.Trigger._deserialize(params.get("Trigger"))
+        if params.get("Activities") is not None:
+            self.Activities = []
+            for item in params.get("Activities"):
+                obj = Activity()
+                obj._deserialize(item)
+                self.Activities.append(obj)
+        if params.get("OutputStorage") is not None:
+            self.OutputStorage = TaskOutputStorage()
+            self.OutputStorage._deserialize(params.get("OutputStorage"))
+        self.OutputDir = params.get("OutputDir")
+        if params.get("TaskNotifyConfig") is not None:
+            self.TaskNotifyConfig = TaskNotifyConfig()
+            self.TaskNotifyConfig._deserialize(params.get("TaskNotifyConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateScheduleResponse(AbstractModel):
+    """CreateSchedule response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ScheduleId: The scheme ID.
+        :type ScheduleId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ScheduleId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ScheduleId = params.get("ScheduleId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateSnapshotByTimeOffsetTemplateRequest(AbstractModel):
     """CreateSnapshotByTimeOffsetTemplate request structure.
 
@@ -5814,6 +6099,47 @@ class DeleteSampleSnapshotTemplateRequest(AbstractModel):
 
 class DeleteSampleSnapshotTemplateResponse(AbstractModel):
     """DeleteSampleSnapshotTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteScheduleRequest(AbstractModel):
+    """DeleteSchedule request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ScheduleId: The scheme ID.
+        :type ScheduleId: int
+        """
+        self.ScheduleId = None
+
+
+    def _deserialize(self, params):
+        self.ScheduleId = params.get("ScheduleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteScheduleResponse(AbstractModel):
+    """DeleteSchedule response structure.
 
     """
 
@@ -6638,6 +6964,75 @@ class DescribeSampleSnapshotTemplatesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSchedulesRequest(AbstractModel):
+    """DescribeSchedules request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ScheduleIds: The IDs of the schemes to query. Array length limit: 100.
+        :type ScheduleIds: list of int
+        :param Status: The scheme status. Valid values:
+<li>`Enabled`</li>
+<li>`Disabled`</li>
+If you do not specify this parameter, schemes in both statuses will be returned.
+        :type Status: str
+        :param Offset: The pagination offset. Default value: 0.
+        :type Offset: int
+        :param Limit: The maximum number of records to return. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        """
+        self.ScheduleIds = None
+        self.Status = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.ScheduleIds = params.get("ScheduleIds")
+        self.Status = params.get("Status")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSchedulesResponse(AbstractModel):
+    """DescribeSchedules response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: The total number of records that meet the conditions.
+        :type TotalCount: int
+        :param ScheduleInfoSet: The information of the schemes.
+        :type ScheduleInfoSet: list of SchedulesInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ScheduleInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ScheduleInfoSet") is not None:
+            self.ScheduleInfoSet = []
+            for item in params.get("ScheduleInfoSet"):
+                obj = SchedulesInfo()
+                obj._deserialize(item)
+                self.ScheduleInfoSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSnapshotByTimeOffsetTemplatesRequest(AbstractModel):
     """DescribeSnapshotByTimeOffsetTemplates request structure.
 
@@ -7197,6 +7592,47 @@ class DescribeWorkflowsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DisableScheduleRequest(AbstractModel):
+    """DisableSchedule request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ScheduleId: The scheme ID.
+        :type ScheduleId: int
+        """
+        self.ScheduleId = None
+
+
+    def _deserialize(self, params):
+        self.ScheduleId = params.get("ScheduleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisableScheduleResponse(AbstractModel):
+    """DisableSchedule response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DisableWorkflowRequest(AbstractModel):
     """DisableWorkflow request structure.
 
@@ -7493,6 +7929,47 @@ class EditMediaTaskOutput(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class EnableScheduleRequest(AbstractModel):
+    """EnableSchedule request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ScheduleId: The scheme ID.
+        :type ScheduleId: int
+        """
+        self.ScheduleId = None
+
+
+    def _deserialize(self, params):
+        self.ScheduleId = params.get("ScheduleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnableScheduleResponse(AbstractModel):
+    """EnableSchedule response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class EnableWorkflowRequest(AbstractModel):
@@ -9634,17 +10111,24 @@ class MediaInputInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: The input type, which can be `COS` or `URL`.
+        :param Type: The input type. Valid values:
+<li>`COS`: A COS bucket address.</li>
+<li> `URL`: A URL.</li>
+<li> `AWS-S3`: An AWS S3 bucket address. Currently, this type is only supported for transcoding tasks.</li>
         :type Type: str
         :param CosInputInfo: The information of the COS object to process. This parameter is valid and required when `Type` is `COS`.
         :type CosInputInfo: :class:`tencentcloud.mps.v20190612.models.CosInputInfo`
         :param UrlInputInfo: The URL of the object to process. This parameter is valid and required when `Type` is `URL`.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type UrlInputInfo: :class:`tencentcloud.mps.v20190612.models.UrlInputInfo`
+        :param S3InputInfo: The information of the AWS S3 object processed. This parameter is required if `Type` is `AWS-S3`.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type S3InputInfo: :class:`tencentcloud.mps.v20190612.models.S3InputInfo`
         """
         self.Type = None
         self.CosInputInfo = None
         self.UrlInputInfo = None
+        self.S3InputInfo = None
 
 
     def _deserialize(self, params):
@@ -9655,6 +10139,9 @@ Note: This field may return null, indicating that no valid value can be obtained
         if params.get("UrlInputInfo") is not None:
             self.UrlInputInfo = UrlInputInfo()
             self.UrlInputInfo._deserialize(params.get("UrlInputInfo"))
+        if params.get("S3InputInfo") is not None:
+            self.S3InputInfo = S3InputInfo()
+            self.S3InputInfo._deserialize(params.get("S3InputInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11114,6 +11601,84 @@ Default value: black.
 
 class ModifySampleSnapshotTemplateResponse(AbstractModel):
     """ModifySampleSnapshotTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyScheduleRequest(AbstractModel):
+    """ModifySchedule request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ScheduleId: The scheme ID.
+        :type ScheduleId: int
+        :param ScheduleName: The scheme name.
+        :type ScheduleName: str
+        :param Trigger: The trigger of the scheme.
+        :type Trigger: :class:`tencentcloud.mps.v20190612.models.WorkflowTrigger`
+        :param Activities: The subtasks of the scheme.
+Note: You need to pass in the full list of subtasks even if you want to change only some of the subtasks.
+        :type Activities: list of Activity
+        :param OutputStorage: The bucket to save the output file.
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param OutputDir: The directory to save the output file.
+Note: If this parameter is left empty, the current `OutputDir` value will be invalidated.
+        :type OutputDir: str
+        :param TaskNotifyConfig: The notification configuration.
+        :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        """
+        self.ScheduleId = None
+        self.ScheduleName = None
+        self.Trigger = None
+        self.Activities = None
+        self.OutputStorage = None
+        self.OutputDir = None
+        self.TaskNotifyConfig = None
+
+
+    def _deserialize(self, params):
+        self.ScheduleId = params.get("ScheduleId")
+        self.ScheduleName = params.get("ScheduleName")
+        if params.get("Trigger") is not None:
+            self.Trigger = WorkflowTrigger()
+            self.Trigger._deserialize(params.get("Trigger"))
+        if params.get("Activities") is not None:
+            self.Activities = []
+            for item in params.get("Activities"):
+                obj = Activity()
+                obj._deserialize(item)
+                self.Activities.append(obj)
+        if params.get("OutputStorage") is not None:
+            self.OutputStorage = TaskOutputStorage()
+            self.OutputStorage._deserialize(params.get("OutputStorage"))
+        self.OutputDir = params.get("OutputDir")
+        if params.get("TaskNotifyConfig") is not None:
+            self.TaskNotifyConfig = TaskNotifyConfig()
+            self.TaskNotifyConfig._deserialize(params.get("TaskNotifyConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyScheduleResponse(AbstractModel):
+    """ModifySchedule response structure.
 
     """
 
@@ -13127,6 +13692,82 @@ class ResetWorkflowResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class S3InputInfo(AbstractModel):
+    """The AWS S3 storage information of a source file.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param S3Bucket: The AWS S3 bucket.
+        :type S3Bucket: str
+        :param S3Region: The region of the AWS S3 bucket.
+        :type S3Region: str
+        :param S3Object: The path of the AWS S3 object.
+        :type S3Object: str
+        :param S3SecretId: The key ID required to access the AWS S3 object.
+        :type S3SecretId: str
+        :param S3SecretKey: The key required to access the AWS S3 object.
+        :type S3SecretKey: str
+        """
+        self.S3Bucket = None
+        self.S3Region = None
+        self.S3Object = None
+        self.S3SecretId = None
+        self.S3SecretKey = None
+
+
+    def _deserialize(self, params):
+        self.S3Bucket = params.get("S3Bucket")
+        self.S3Region = params.get("S3Region")
+        self.S3Object = params.get("S3Object")
+        self.S3SecretId = params.get("S3SecretId")
+        self.S3SecretKey = params.get("S3SecretKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class S3OutputStorage(AbstractModel):
+    """The AWS S3 storage information of an output file.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param S3Bucket: The AWS S3 bucket.
+        :type S3Bucket: str
+        :param S3Region: The region of the AWS S3 bucket.
+        :type S3Region: str
+        :param S3SecretId: The key ID required to upload files to the AWS S3 object.
+        :type S3SecretId: str
+        :param S3SecretKey: The key required to upload files to the AWS S3 object.
+        :type S3SecretKey: str
+        """
+        self.S3Bucket = None
+        self.S3Region = None
+        self.S3SecretId = None
+        self.S3SecretKey = None
+
+
+    def _deserialize(self, params):
+        self.S3Bucket = params.get("S3Bucket")
+        self.S3Region = params.get("S3Region")
+        self.S3SecretId = params.get("S3SecretId")
+        self.S3SecretKey = params.get("S3SecretKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SampleSnapshotTaskInput(AbstractModel):
     """Input parameter type of a sampled screencapturing task.
 
@@ -13472,6 +14113,88 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = ActivityResult()
                 obj._deserialize(item)
                 self.ActivityResultSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SchedulesInfo(AbstractModel):
+    """The details of a scheme.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ScheduleId: The scheme ID.
+        :type ScheduleId: int
+        :param ScheduleName: The scheme name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ScheduleName: str
+        :param Status: The scheme status. Valid values:
+`Enabled`
+`Disabled`
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Status: list of str
+        :param Trigger: The trigger of the scheme.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Trigger: :class:`tencentcloud.mps.v20190612.models.WorkflowTrigger`
+        :param Activities: The subtasks of the scheme.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Activities: list of Activity
+        :param OutputStorage: The bucket to save the output file.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param OutputDir: The directory to save the output file.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OutputDir: str
+        :param TaskNotifyConfig: The notification configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        :param CreateTime: The creation time in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CreateTime: str
+        :param UpdateTime: The last updated time in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UpdateTime: str
+        """
+        self.ScheduleId = None
+        self.ScheduleName = None
+        self.Status = None
+        self.Trigger = None
+        self.Activities = None
+        self.OutputStorage = None
+        self.OutputDir = None
+        self.TaskNotifyConfig = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.ScheduleId = params.get("ScheduleId")
+        self.ScheduleName = params.get("ScheduleName")
+        self.Status = params.get("Status")
+        if params.get("Trigger") is not None:
+            self.Trigger = WorkflowTrigger()
+            self.Trigger._deserialize(params.get("Trigger"))
+        if params.get("Activities") is not None:
+            self.Activities = []
+            for item in params.get("Activities"):
+                obj = Activity()
+                obj._deserialize(item)
+                self.Activities.append(obj)
+        if params.get("OutputStorage") is not None:
+            self.OutputStorage = TaskOutputStorage()
+            self.OutputStorage._deserialize(params.get("OutputStorage"))
+        self.OutputDir = params.get("OutputDir")
+        if params.get("TaskNotifyConfig") is not None:
+            self.TaskNotifyConfig = TaskNotifyConfig()
+            self.TaskNotifyConfig._deserialize(params.get("TaskNotifyConfig"))
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14010,10 +14733,15 @@ class TaskNotifyConfig(AbstractModel):
 <li>`TDMQ-CMQ`: Message queue</li>
 <li>`URL`: If `NotifyType` is set to `URL`, HTTP callbacks are sent to the URL specified by `NotifyUrl`. HTTP and JSON are used for the callbacks. The packet contains the response parameters of the `ParseNotification` API.</li>
 <li>`SCF`: This notification type is not recommended. You need to configure it in the SCF console.</li>
+<li>`AWS-SQS`: AWS queue. This type is only supported for AWS tasks, and the queue must be in the same region as the AWS bucket.</li>
 <font color="red">Note: If you do not pass this parameter or pass in an empty string, `CMQ` will be used. To use a different notification type, specify this parameter accordingly.</font>
         :type NotifyType: str
         :param NotifyUrl: HTTP callback URL, required if `NotifyType` is set to `URL`
         :type NotifyUrl: str
+        :param AwsSQS: The AWS SQS queue. This parameter is required if `NotifyType` is `AWS-SQS`.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AwsSQS: :class:`tencentcloud.mps.v20190612.models.AwsSQS`
         """
         self.CmqModel = None
         self.CmqRegion = None
@@ -14022,6 +14750,7 @@ class TaskNotifyConfig(AbstractModel):
         self.NotifyMode = None
         self.NotifyType = None
         self.NotifyUrl = None
+        self.AwsSQS = None
 
 
     def _deserialize(self, params):
@@ -14032,6 +14761,9 @@ class TaskNotifyConfig(AbstractModel):
         self.NotifyMode = params.get("NotifyMode")
         self.NotifyType = params.get("NotifyType")
         self.NotifyUrl = params.get("NotifyUrl")
+        if params.get("AwsSQS") is not None:
+            self.AwsSQS = AwsSQS()
+            self.AwsSQS._deserialize(params.get("AwsSQS"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14048,14 +14780,20 @@ class TaskOutputStorage(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: The type of storage location for the media processing output object. Only COS is supported currently.
+        :param Type: The storage type for a media processing output file. Valid values:
+<li>`COS`: Tencent Cloud COS</li>
+<li>`>AWS-S3`: AWS S3. This type is only supported for AWS tasks, and the output bucket must be in the same region as the bucket of the source file.</li>
         :type Type: str
         :param CosOutputStorage: The location to save the output object in COS. This parameter is valid and required when `Type` is COS.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type CosOutputStorage: :class:`tencentcloud.mps.v20190612.models.CosOutputStorage`
+        :param S3OutputStorage: The AWS S3 bucket to save the output file. This parameter is required if `Type` is `AWS-S3`.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type S3OutputStorage: :class:`tencentcloud.mps.v20190612.models.S3OutputStorage`
         """
         self.Type = None
         self.CosOutputStorage = None
+        self.S3OutputStorage = None
 
 
     def _deserialize(self, params):
@@ -14063,6 +14801,9 @@ Note: This field may return null, indicating that no valid value can be obtained
         if params.get("CosOutputStorage") is not None:
             self.CosOutputStorage = CosOutputStorage()
             self.CosOutputStorage._deserialize(params.get("CosOutputStorage"))
+        if params.get("S3OutputStorage") is not None:
+            self.S3OutputStorage = S3OutputStorage()
+            self.S3OutputStorage._deserialize(params.get("S3OutputStorage"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -15598,14 +16339,24 @@ class WorkflowTrigger(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: Trigger type. Only `CosFileUpload` is supported currently.
+        :param Type: The trigger type. Valid values:
+<li>`CosFileUpload`: Tencent Cloud COS trigger.</li>
+<li>`AwsS3FileUpload`: AWS S3 trigger. Currently, this type is only supported for transcoding tasks and schemes (not supported for workflows).</li>
+
+
         :type Type: str
         :param CosFileUploadTrigger: This parameter is required and valid when `Type` is `CosFileUpload`, indicating the COS trigger rule.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CosFileUploadTrigger: :class:`tencentcloud.mps.v20190612.models.CosFileUploadTrigger`
+        :param AwsS3FileUploadTrigger: The AWS S3 trigger. This parameter is valid and required if `Type` is `AwsS3FileUpload`.
+
+Note: Currently, the key for the AWS S3 bucket, the trigger SQS queue, and the callback SQS queue must be the same.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AwsS3FileUploadTrigger: :class:`tencentcloud.mps.v20190612.models.AwsS3FileUploadTrigger`
         """
         self.Type = None
         self.CosFileUploadTrigger = None
+        self.AwsS3FileUploadTrigger = None
 
 
     def _deserialize(self, params):
@@ -15613,6 +16364,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("CosFileUploadTrigger") is not None:
             self.CosFileUploadTrigger = CosFileUploadTrigger()
             self.CosFileUploadTrigger._deserialize(params.get("CosFileUploadTrigger"))
+        if params.get("AwsS3FileUploadTrigger") is not None:
+            self.AwsS3FileUploadTrigger = AwsS3FileUploadTrigger()
+            self.AwsS3FileUploadTrigger._deserialize(params.get("AwsS3FileUploadTrigger"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
