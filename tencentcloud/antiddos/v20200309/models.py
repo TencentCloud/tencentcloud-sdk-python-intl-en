@@ -488,6 +488,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Line: int
         :param ElasticServiceBandwidth: Whether to enable elastic bandwidth
         :type ElasticServiceBandwidth: int
+        :param GiftServiceBandWidth: Bandwidth quota given away by Tencent Cloud
+        :type GiftServiceBandWidth: int
         """
         self.InstanceDetail = None
         self.SpecificationLimit = None
@@ -507,6 +509,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.VitalityVersion = None
         self.Line = None
         self.ElasticServiceBandwidth = None
+        self.GiftServiceBandWidth = None
 
 
     def _deserialize(self, params):
@@ -548,6 +551,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.VitalityVersion = params.get("VitalityVersion")
         self.Line = params.get("Line")
         self.ElasticServiceBandwidth = params.get("ElasticServiceBandwidth")
+        self.GiftServiceBandWidth = params.get("GiftServiceBandWidth")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5847,6 +5851,8 @@ class L7RuleHealth(AbstractModel):
         :type FailedThreshold: int
         :param PassiveStatusCode: Status code that signals that the passive detection considers the status normal. Values: `1` (1xx), `2` (2xx), `4` (3xx), `8` (4xx), and `16` (5xx).
         :type PassiveStatusCode: int
+        :param PassiveStatus: Configuration status of the passive health check. Values: `0` (Normal), `1` (configuration in progress) and `2` (configuration failed).
+        :type PassiveStatus: int
         """
         self.Status = None
         self.Enable = None
@@ -5863,6 +5869,7 @@ class L7RuleHealth(AbstractModel):
         self.FailedCountInter = None
         self.FailedThreshold = None
         self.PassiveStatusCode = None
+        self.PassiveStatus = None
 
 
     def _deserialize(self, params):
@@ -5881,6 +5888,7 @@ class L7RuleHealth(AbstractModel):
         self.FailedCountInter = params.get("FailedCountInter")
         self.FailedThreshold = params.get("FailedThreshold")
         self.PassiveStatusCode = params.get("PassiveStatusCode")
+        self.PassiveStatus = params.get("PassiveStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5969,12 +5977,18 @@ class Layer7Rule(AbstractModel):
         :type InstanceDetails: list of InstanceRelation
         :param InstanceDetailRule: Information of the Anti-DDoS instance configured
         :type InstanceDetailRule: list of RuleInstanceRelation
+        :param Protocol: Protocol
+        :type Protocol: str
+        :param Vport: Port number
+        :type Vport: int
         """
         self.Domain = None
         self.ProxyTypeList = None
         self.RealServers = None
         self.InstanceDetails = None
         self.InstanceDetailRule = None
+        self.Protocol = None
+        self.Vport = None
 
 
     def _deserialize(self, params):
@@ -6003,6 +6017,8 @@ class Layer7Rule(AbstractModel):
                 obj = RuleInstanceRelation()
                 obj._deserialize(item)
                 self.InstanceDetailRule.append(obj)
+        self.Protocol = params.get("Protocol")
+        self.Vport = params.get("Vport")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7246,16 +7262,20 @@ class SourceServer(AbstractModel):
         :type RsType: int
         :param Weight: Forward weight of the real server. Value range: 1–100.
         :type Weight: int
+        :param Port: Port number. Value range: 0-65535.
+        :type Port: int
         """
         self.RealServer = None
         self.RsType = None
         self.Weight = None
+        self.Port = None
 
 
     def _deserialize(self, params):
         self.RealServer = params.get("RealServer")
         self.RsType = params.get("RsType")
         self.Weight = params.get("Weight")
+        self.Port = params.get("Port")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

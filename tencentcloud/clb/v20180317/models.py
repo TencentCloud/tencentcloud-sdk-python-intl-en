@@ -614,9 +614,9 @@ class CertInfo(AbstractModel):
         :type CertId: str
         :param CertName: Name of the uploaded certificate. It's required if `CertId` is not specified.
         :type CertName: str
-        :param CertContent: Public key of the uploaded certificate. It's required if `CertId` is not specified.
+        :param CertContent: Public key of the uploaded certificate. This is required if `CertId` is not specified.
         :type CertContent: str
-        :param CertKey: Private key of the uploaded server certificate. It's required if `CertId` is not specified.
+        :param CertKey: Private key of the uploaded server certificate. This is required if `CertId` is not specified.
         :type CertKey: str
         """
         self.CertId = None
@@ -705,16 +705,21 @@ class CertificateOutput(AbstractModel):
         :param CertCaId: Client certificate ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CertCaId: str
+        :param ExtCertIds: IDs of extra server certificates
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ExtCertIds: list of str
         """
         self.SSLMode = None
         self.CertId = None
         self.CertCaId = None
+        self.ExtCertIds = None
 
 
     def _deserialize(self, params):
         self.SSLMode = params.get("SSLMode")
         self.CertId = params.get("CertId")
         self.CertCaId = params.get("CertCaId")
+        self.ExtCertIds = params.get("ExtCertIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1266,9 +1271,9 @@ They represent weighted round robin and least connections, respectively. Default
         :type DeregisterTargetRst: bool
         :param MultiCertInfo: Certificate information. You can specify multiple server-side certificates with different algorithm types. This parameter is only applicable to HTTPS listeners with the SNI feature not enabled. `Certificate` and `MultiCertInfo` cannot be specified at the same time. 
         :type MultiCertInfo: :class:`tencentcloud.clb.v20180317.models.MultiCertInfo`
-        :param MaxConn: 
+        :param MaxConn: Maximum number of concurrent listener connections. It’s available for TCP/UDP/TCP_SSL/QUIC listeners. If it’s set to `-1` or not specified, the listener speed is not limited. 
         :type MaxConn: int
-        :param MaxCps: 
+        :param MaxCps: Maximum number of new listener connections. It’s available for TCP/UDP/TCP_SSL/QUIC listeners. If it’s set to `-1` or not specified, the listener speed is not limited. 
         :type MaxCps: int
         """
         self.LoadBalancerId = None
@@ -2121,6 +2126,72 @@ class DeleteTargetGroupsRequest(AbstractModel):
 
 class DeleteTargetGroupsResponse(AbstractModel):
     """DeleteTargetGroups response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeregisterFunctionTargetsRequest(AbstractModel):
+    """DeregisterFunctionTargets request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LoadBalancerId: CLB instance ID.
+        :type LoadBalancerId: str
+        :param ListenerId: CLB listener ID.
+        :type ListenerId: str
+        :param FunctionTargets: List of functions to be unbound
+        :type FunctionTargets: list of FunctionTarget
+        :param LocationId: The ID of target forwarding rule. To unbind a function from an L7 forwarding rule, either `LocationId` or `Domain+Url` is required. 
+        :type LocationId: str
+        :param Domain: Domain name of the target forwarding rule. It is ignored if `LocationId` is specified. 
+        :type Domain: str
+        :param Url: URL of the target forwarding rule. It is ignored if `LocationId` is specified. 
+        :type Url: str
+        """
+        self.LoadBalancerId = None
+        self.ListenerId = None
+        self.FunctionTargets = None
+        self.LocationId = None
+        self.Domain = None
+        self.Url = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.ListenerId = params.get("ListenerId")
+        if params.get("FunctionTargets") is not None:
+            self.FunctionTargets = []
+            for item in params.get("FunctionTargets"):
+                obj = FunctionTarget()
+                obj._deserialize(item)
+                self.FunctionTargets.append(obj)
+        self.LocationId = params.get("LocationId")
+        self.Domain = params.get("Domain")
+        self.Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeregisterFunctionTargetsResponse(AbstractModel):
+    """DeregisterFunctionTargets response structure.
 
     """
 
@@ -4117,6 +4188,74 @@ class Filter(AbstractModel):
         
 
 
+class FunctionInfo(AbstractModel):
+    """SCF related information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FunctionNamespace: Function namespace
+        :type FunctionNamespace: str
+        :param FunctionName: Function name
+        :type FunctionName: str
+        :param FunctionQualifier: Function version name or alias
+        :type FunctionQualifier: str
+        :param FunctionQualifierType: Function qualifier type. Values: `VERSION`, `ALIAS`.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type FunctionQualifierType: str
+        """
+        self.FunctionNamespace = None
+        self.FunctionName = None
+        self.FunctionQualifier = None
+        self.FunctionQualifierType = None
+
+
+    def _deserialize(self, params):
+        self.FunctionNamespace = params.get("FunctionNamespace")
+        self.FunctionName = params.get("FunctionName")
+        self.FunctionQualifier = params.get("FunctionQualifier")
+        self.FunctionQualifierType = params.get("FunctionQualifierType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FunctionTarget(AbstractModel):
+    """Whether to use SCF (Serverless Cloud Function) as the backend service
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Function: SCF related information
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Function: :class:`tencentcloud.clb.v20180317.models.FunctionInfo`
+        :param Weight: Weight
+        :type Weight: int
+        """
+        self.Function = None
+        self.Weight = None
+
+
+    def _deserialize(self, params):
+        if params.get("Function") is not None:
+            self.Function = FunctionInfo()
+            self.Function._deserialize(params.get("Function"))
+        self.Weight = params.get("Weight")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class HealthCheck(AbstractModel):
     """Health check information.
     Note: Custom check parameters are currently supported only in certain beta test regions.
@@ -4508,6 +4647,15 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param AttrFlags: Attribute of listener
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type AttrFlags: list of str
+        :param TargetGroupList: List of bound target groups
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type TargetGroupList: list of BasicTargetGroupInfo
+        :param MaxConn: Maximum number of concurrent listener connections. If it’s set to `-1`, the listener speed is not limited. 
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type MaxConn: int
+        :param MaxCps: Maximum number of new listener connections. If it’s set to `-1`, the listener speed is not limited. 
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type MaxCps: int
         """
         self.ListenerId = None
         self.Protocol = None
@@ -4528,6 +4676,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.Toa = None
         self.DeregisterTargetRst = None
         self.AttrFlags = None
+        self.TargetGroupList = None
+        self.MaxConn = None
+        self.MaxCps = None
 
 
     def _deserialize(self, params):
@@ -4561,6 +4712,14 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.Toa = params.get("Toa")
         self.DeregisterTargetRst = params.get("DeregisterTargetRst")
         self.AttrFlags = params.get("AttrFlags")
+        if params.get("TargetGroupList") is not None:
+            self.TargetGroupList = []
+            for item in params.get("TargetGroupList"):
+                obj = BasicTargetGroupInfo()
+                obj._deserialize(item)
+                self.TargetGroupList.append(obj)
+        self.MaxConn = params.get("MaxConn")
+        self.MaxCps = params.get("MaxCps")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5147,6 +5306,17 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param Domains: List o domain names associated with the forwarding rule
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Domains: str
+        :param SlaveZone: The secondary zone of multi-AZ CLB instance
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type SlaveZone: list of str
+        :param Zones: The AZ of private CLB instance. This is only available for beta users.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Zones: list of str
+        :param SniSwitch: Whether SNI is enabled. This parameter is only meaningful for HTTPS listeners.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type SniSwitch: int
+        :param LoadBalancerDomain: 
+        :type LoadBalancerDomain: str
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
@@ -5182,6 +5352,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.LoadBalancerPassToTarget = None
         self.TargetHealth = None
         self.Domains = None
+        self.SlaveZone = None
+        self.Zones = None
+        self.SniSwitch = None
+        self.LoadBalancerDomain = None
 
 
     def _deserialize(self, params):
@@ -5230,6 +5404,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.LoadBalancerPassToTarget = params.get("LoadBalancerPassToTarget")
         self.TargetHealth = params.get("TargetHealth")
         self.Domains = params.get("Domains")
+        self.SlaveZone = params.get("SlaveZone")
+        self.Zones = params.get("Zones")
+        self.SniSwitch = params.get("SniSwitch")
+        self.LoadBalancerDomain = params.get("LoadBalancerDomain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5662,9 +5840,9 @@ They represent weighted round robin and least connections, respectively. Default
         :type SessionType: str
         :param MultiCertInfo: Certificate information. You can specify multiple server-side certificates with different algorithm types. This parameter is only applicable to HTTPS listeners with the SNI feature not enabled. `Certificate` and `MultiCertInfo` cannot be specified at the same time. 
         :type MultiCertInfo: :class:`tencentcloud.clb.v20180317.models.MultiCertInfo`
-        :param MaxConn: 
+        :param MaxConn: Maximum number of listener connections. It’s available for TCP/UDP/TCP_SSL/QUIC listeners. If it’s set to `-1` or not specified, the listener speed is not limited. 
         :type MaxConn: int
-        :param MaxCps: 
+        :param MaxCps: Maximum number of listener connections. It’s available for TCP/UDP/TCP_SSL/QUIC listeners. If it’s set to `-1` or not specified, the listener speed is not limited. 
         :type MaxCps: int
         """
         self.LoadBalancerId = None
@@ -6294,6 +6472,72 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
+class RegisterFunctionTargetsRequest(AbstractModel):
+    """RegisterFunctionTargets request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LoadBalancerId: 
+        :type LoadBalancerId: str
+        :param ListenerId: 
+        :type ListenerId: str
+        :param FunctionTargets: 
+        :type FunctionTargets: list of FunctionTarget
+        :param LocationId: 
+        :type LocationId: str
+        :param Domain: 
+        :type Domain: str
+        :param Url: 
+        :type Url: str
+        """
+        self.LoadBalancerId = None
+        self.ListenerId = None
+        self.FunctionTargets = None
+        self.LocationId = None
+        self.Domain = None
+        self.Url = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.ListenerId = params.get("ListenerId")
+        if params.get("FunctionTargets") is not None:
+            self.FunctionTargets = []
+            for item in params.get("FunctionTargets"):
+                obj = FunctionTarget()
+                obj._deserialize(item)
+                self.FunctionTargets.append(obj)
+        self.LocationId = params.get("LocationId")
+        self.Domain = params.get("Domain")
+        self.Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RegisterFunctionTargetsResponse(AbstractModel):
+    """RegisterFunctionTargets response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class RegisterTargetGroupInstancesRequest(AbstractModel):
     """RegisterTargetGroupInstances request structure.
 
@@ -6518,14 +6762,52 @@ class Resource(AbstractModel):
         :type Type: list of str
         :param Isp: ISP information, such as `CMCC`, `CUCC`, `CTCC`, `BGP`, and `INTERNAL`.
         :type Isp: str
+        :param AvailabilitySet: Available resources
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type AvailabilitySet: list of ResourceAvailability
         """
         self.Type = None
         self.Isp = None
+        self.AvailabilitySet = None
 
 
     def _deserialize(self, params):
         self.Type = params.get("Type")
         self.Isp = params.get("Isp")
+        if params.get("AvailabilitySet") is not None:
+            self.AvailabilitySet = []
+            for item in params.get("AvailabilitySet"):
+                obj = ResourceAvailability()
+                obj._deserialize(item)
+                self.AvailabilitySet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResourceAvailability(AbstractModel):
+    """Resource availability
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: Specific ISP resource information. Values: `CMCC`, `CUCC`, `CTCC`, `BGP`.
+        :type Type: str
+        :param Availability: Whether the resource is available. Values: `Available`, `Unavailable`
+        :type Availability: str
+        """
+        self.Type = None
+        self.Availability = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Availability = params.get("Availability")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6864,6 +7146,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param Domains: List of domain names associated with the forwarding rule
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Domains: list of str
+        :param TargetGroupList: List of bound target groups
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type TargetGroupList: list of BasicTargetGroupInfo
         """
         self.LocationId = None
         self.Domain = None
@@ -6887,6 +7172,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.TrpcFunc = None
         self.QuicStatus = None
         self.Domains = None
+        self.TargetGroupList = None
 
 
     def _deserialize(self, params):
@@ -6920,6 +7206,12 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.TrpcFunc = params.get("TrpcFunc")
         self.QuicStatus = params.get("QuicStatus")
         self.Domains = params.get("Domains")
+        if params.get("TargetGroupList") is not None:
+            self.TargetGroupList = []
+            for item in params.get("TargetGroupList"):
+                obj = BasicTargetGroupInfo()
+                obj._deserialize(item)
+                self.TargetGroupList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7646,12 +7938,16 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         :param LocalZone: Whether the AZ is the `LocalZone`, e.g., false.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type LocalZone: bool
+        :param EdgeZone: Whether the AZ is an edge zone. Values: `true`, `false`.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type EdgeZone: bool
         """
         self.ZoneId = None
         self.Zone = None
         self.ZoneName = None
         self.ZoneRegion = None
         self.LocalZone = None
+        self.EdgeZone = None
 
 
     def _deserialize(self, params):
@@ -7660,6 +7956,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.ZoneName = params.get("ZoneName")
         self.ZoneRegion = params.get("ZoneRegion")
         self.LocalZone = params.get("LocalZone")
+        self.EdgeZone = params.get("EdgeZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7690,6 +7987,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type ZoneRegion: str
         :param LocalZone: Whether the AZ is a `LocalZone`. Values: `true`, `false`.
         :type LocalZone: bool
+        :param ZoneResourceType: Type of resources in the zone. Values: `SHARED`, `EXCLUSIVE`
+        :type ZoneResourceType: str
+        :param EdgeZone: Whether the AZ is an edge zone. Values: `true`, `false`.
+        :type EdgeZone: bool
         """
         self.MasterZone = None
         self.ResourceSet = None
@@ -7697,6 +7998,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.IPVersion = None
         self.ZoneRegion = None
         self.LocalZone = None
+        self.ZoneResourceType = None
+        self.EdgeZone = None
 
 
     def _deserialize(self, params):
@@ -7711,6 +8014,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.IPVersion = params.get("IPVersion")
         self.ZoneRegion = params.get("ZoneRegion")
         self.LocalZone = params.get("LocalZone")
+        self.ZoneResourceType = params.get("ZoneResourceType")
+        self.EdgeZone = params.get("EdgeZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
