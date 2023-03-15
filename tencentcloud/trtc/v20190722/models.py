@@ -131,7 +131,7 @@ class CloudStorage(AbstractModel):
     def __init__(self):
         r"""
         :param Vendor: The cloud storage provider.
-0: Tencent Cloud COS. The storage services of other providers are not supported currently.
+`0`: Tencent Cloud COS; `1`: AWS storage. Other vendors are not supported currently.
         :type Vendor: int
         :param Region: The region of cloud storage.
         :type Region: str
@@ -613,9 +613,9 @@ class McuFeedBackRoomParams(AbstractModel):
         :type RoomId: str
         :param RoomIdType: The ID type of the room to which streams are relayed. `0` indicates integer, and `1` indicates string.
         :type RoomIdType: int
-        :param UserId: The [user ID](https://intl.cloud.tencent.com/document/product/647/37714) of the relaying robot in the TRTC room, which cannot be the same as a user ID already in use. We recommend you include the room ID in this user ID.
+        :param UserId: The [user ID](https://www.tencentcloud.com/document/product/647/37714) of the relaying robot in the TRTC room, which cannot be the same as a user ID already in use. We recommend you include the room ID in this user ID.
         :type UserId: str
-        :param UserSig: The signature (similar to login password) required for the relaying robot to enter the room. For information on how to calculate the signature, see [What is UserSig?](https://intl.cloud.tencent.com/document/product/647/38104).
+        :param UserSig: The signature (similar to login password) required for the relaying robot to enter the room. For information on how to calculate the signature, see [What is UserSig?](https://www.tencentcloud.com/document/product/647/38104).
         :type UserSig: str
         """
         self.RoomId = None
@@ -764,14 +764,24 @@ class McuLayoutVolume(AbstractModel):
         :type AppData: str
         :param PayloadType: The payload type of the SEI message. The default is 100. Value range: 100-254 (244 is used internally by Tencent Cloud for timestamps).
         :type PayloadType: int
+        :param Interval: The SEI sending interval (milliseconds). The default value is 1000.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Interval: int
+        :param FollowIdr: Valid values: `1`: SEI is guaranteed when keyframes are sent; `0` (default): SEI is not guaranteed when keyframes are sent.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FollowIdr: int
         """
         self.AppData = None
         self.PayloadType = None
+        self.Interval = None
+        self.FollowIdr = None
 
 
     def _deserialize(self, params):
         self.AppData = params.get("AppData")
         self.PayloadType = params.get("PayloadType")
+        self.Interval = params.get("Interval")
+        self.FollowIdr = params.get("FollowIdr")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -794,16 +804,26 @@ class McuPassThrough(AbstractModel):
         :type PayloadType: int
         :param PayloadUuid: This parameter is required only if `PayloadType` is 5. It must be a 32-character hexadecimal string. If `PayloadType` is not 5, this parameter will be ignored.
         :type PayloadUuid: str
+        :param Interval: The SEI sending interval (milliseconds). The default value is 1000.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Interval: int
+        :param FollowIdr: Valid values: `1`: SEI is guaranteed when keyframes are sent; `0` (default): SEI is not guaranteed when keyframes are sent.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FollowIdr: int
         """
         self.PayloadContent = None
         self.PayloadType = None
         self.PayloadUuid = None
+        self.Interval = None
+        self.FollowIdr = None
 
 
     def _deserialize(self, params):
         self.PayloadContent = params.get("PayloadContent")
         self.PayloadType = params.get("PayloadType")
         self.PayloadUuid = params.get("PayloadUuid")
+        self.Interval = params.get("Interval")
+        self.FollowIdr = params.get("FollowIdr")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1062,7 +1082,7 @@ class MixLayout(AbstractModel):
         :type MediaId: int
         :param ImageLayer: The image layer. 0 is the default value and means the bottommost layer.
         :type ImageLayer: int
-        :param SubBackgroundImage: The download URL of the background image for a window. The image must be in JPG or PNG format and cannot be larger than 5 MB. If the image’s aspect ratio is different from that of the window, the image will be rendered according to the value of `RenderMode`.
+        :param SubBackgroundImage: The URL of the background image for a window. The image must be in JPG or PNG format and cannot be larger than 5 MB. If the image’s aspect ratio is different from that of the window, the image will be rendered according to the value of `RenderMode`.
         :type SubBackgroundImage: str
         """
         self.Top = None
@@ -1129,7 +1149,7 @@ Custom: Specify the layout of videos by using the `MixLayoutList` parameter.
 1: Substream (screen sharing stream)
 This parameter specifies the type of the stream displayed in the big window. If it appears in `MixLayoutList`, it indicates the type of the stream of a specified user.
         :type MediaId: int
-        :param BackgroundImageUrl: The download URL of the background image for the canvas, which must be in JPG or PNG format and cannot be larger than 5 MB.
+        :param BackgroundImageUrl: The URL of the background image, which cannot contain Chinese characters. The image must be in JPG or PNG format and cannot be larger than 5 MB.
         :type BackgroundImageUrl: str
         :param PlaceHolderMode: `1` means to use placeholders, and `0` (default) means to not use placeholders. If this parameter is set to `1`, when a user is not publishing video, a placeholder image will be displayed in the window reserved for the user.
         :type PlaceHolderMode: int

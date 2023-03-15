@@ -39,12 +39,15 @@ class AutomationAgentInfo(AbstractModel):
 <li> `Linux`: Linux instance
 <li> `Windows`: Windows instance
         :type Environment: str
+        :param SupportFeatures: Features supported by the TAT agent.
+        :type SupportFeatures: list of str
         """
         self.InstanceId = None
         self.Version = None
         self.LastHeartbeatTime = None
         self.AgentStatus = None
         self.Environment = None
+        self.SupportFeatures = None
 
 
     def _deserialize(self, params):
@@ -53,6 +56,7 @@ class AutomationAgentInfo(AbstractModel):
         self.LastHeartbeatTime = params.get("LastHeartbeatTime")
         self.AgentStatus = params.get("AgentStatus")
         self.Environment = params.get("Environment")
+        self.SupportFeatures = params.get("SupportFeatures")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -219,12 +223,18 @@ class CommandDocument(AbstractModel):
         :type WorkingDirectory: str
         :param Username: The user who executes the command.
         :type Username: str
+        :param OutputCOSBucketUrl: URL of the COS bucket to store the output
+        :type OutputCOSBucketUrl: str
+        :param OutputCOSKeyPrefix: Prefix of the output file name 
+        :type OutputCOSKeyPrefix: str
         """
         self.Content = None
         self.CommandType = None
         self.Timeout = None
         self.WorkingDirectory = None
         self.Username = None
+        self.OutputCOSBucketUrl = None
+        self.OutputCOSKeyPrefix = None
 
 
     def _deserialize(self, params):
@@ -233,6 +243,8 @@ class CommandDocument(AbstractModel):
         self.Timeout = params.get("Timeout")
         self.WorkingDirectory = params.get("WorkingDirectory")
         self.Username = params.get("Username")
+        self.OutputCOSBucketUrl = params.get("OutputCOSBucketUrl")
+        self.OutputCOSKeyPrefix = params.get("OutputCOSKeyPrefix")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

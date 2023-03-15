@@ -1199,6 +1199,29 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeRocketMQVipInstanceDetail(self, request):
+        """This API is used to get the information of a specific TDMQ for RocketMQ exclusive cluster.
+
+        :param request: Request instance for DescribeRocketMQVipInstanceDetail.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQVipInstanceDetailRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQVipInstanceDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRocketMQVipInstanceDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRocketMQVipInstanceDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRocketMQVipInstances(self, request):
         """This API is used to query the list of the purchased TDMQ for RocketMQ exclusive instances.
 

@@ -23,19 +23,22 @@ FAILEDOPERATION = 'FailedOperation'
 # Failed to create the image.
 FAILEDOPERATION_CREATEBLUEPRINTFAILED = 'FailedOperation.CreateBlueprintFailed'
 
+# Failed to create the instance.
+FAILEDOPERATION_CREATEINSTANCESFAILED = 'FailedOperation.CreateInstancesFailed'
+
 # Failed to create the key pair.
 FAILEDOPERATION_CREATEKEYPAIRFAILED = 'FailedOperation.CreateKeyPairFailed'
 
 # Failed to delete the key pair.
 FAILEDOPERATION_DELETEKEYPAIRFAILED = 'FailedOperation.DeleteKeyPairFailed'
 
-# 
+# Failed to query the image. Try again later.
 FAILEDOPERATION_DESCRIBEBLUEPRINTSFAILED = 'FailedOperation.DescribeBlueprintsFailed'
 
 # An error occurred when querying the instance status.
 FAILEDOPERATION_DESCRIBEINSTANCESTATUS = 'FailedOperation.DescribeInstanceStatus'
 
-# 
+# Failed to query the instance configuration adjustment.
 FAILEDOPERATION_DESCRIBEINSTANCESMODIFICATIONERROR = 'FailedOperation.DescribeInstancesModificationError'
 
 # An error occurred when querying whether the instance is returnable.
@@ -263,16 +266,16 @@ INVALIDPARAMETERVALUE_NOTALLOWTOCHANGEPLATFORMTYPE = 'InvalidParameterValue.NotA
 # Invalid parametric value: it is not within the valid range.
 INVALIDPARAMETERVALUE_OUTOFRANGE = 'InvalidParameterValue.OutOfRange'
 
-# 
+# The region does not exist.
 INVALIDPARAMETERVALUE_REGIONNOTFOUND = 'InvalidParameterValue.RegionNotFound'
 
-# 
+# The regions do not match.
 INVALIDPARAMETERVALUE_REGIONNOTMATCH = 'InvalidParameterValue.RegionNotMatch'
 
-# 
+# Unsupported region.
 INVALIDPARAMETERVALUE_REGIONNOTSUPPORTED = 'InvalidParameterValue.RegionNotSupported'
 
-# 
+# The region is unavailable.
 INVALIDPARAMETERVALUE_REGIONUNAVAILABLE = 'InvalidParameterValue.RegionUnavailable'
 
 # Invalid parametric value: the snapshot ID format is invalid.
@@ -371,7 +374,7 @@ RESOURCENOTFOUND_PRIVATEBLUEPRINTNOTFOUND = 'ResourceNotFound.PrivateBlueprintNo
 # The service role does not exist. Please add it to the account.
 RESOURCENOTFOUND_ROLENOTFOUND = 'ResourceNotFound.RoleNotFound'
 
-# 
+# Scene ID not found.
 RESOURCENOTFOUND_SCENEIDNOTFOUND = 'ResourceNotFound.SceneIdNotFound'
 
 # The snapshot ID does not exist.

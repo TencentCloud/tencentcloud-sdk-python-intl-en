@@ -567,12 +567,12 @@ class CreateEnvironmentRequest(AbstractModel):
         r"""
         :param EnvironmentName: Environment name
         :type EnvironmentName: str
+        :param Description: Environment description
+        :type Description: str
         :param Vpc: VPC name
         :type Vpc: str
         :param SubnetIds: List of subnets
         :type SubnetIds: list of str
-        :param Description: Environment description
-        :type Description: str
         :param K8sVersion: Kubernetes version
         :type K8sVersion: str
         :param SourceChannel: Source channel
@@ -585,24 +585,36 @@ class CreateEnvironmentRequest(AbstractModel):
         :type EnvType: str
         :param CreateRegion: The region to create the environment
         :type CreateRegion: str
+        :param SetupVpc: Whether to create a VPC
+        :type SetupVpc: bool
+        :param SetupPrometheus: Whether to create a TMP instance
+        :type SetupPrometheus: bool
+        :param PrometheusId: TMP instance ID
+        :type PrometheusId: str
+        :param ApmId: APM ID
+        :type ApmId: str
         """
         self.EnvironmentName = None
+        self.Description = None
         self.Vpc = None
         self.SubnetIds = None
-        self.Description = None
         self.K8sVersion = None
         self.SourceChannel = None
         self.EnableTswTraceService = None
         self.Tags = None
         self.EnvType = None
         self.CreateRegion = None
+        self.SetupVpc = None
+        self.SetupPrometheus = None
+        self.PrometheusId = None
+        self.ApmId = None
 
 
     def _deserialize(self, params):
         self.EnvironmentName = params.get("EnvironmentName")
+        self.Description = params.get("Description")
         self.Vpc = params.get("Vpc")
         self.SubnetIds = params.get("SubnetIds")
-        self.Description = params.get("Description")
         self.K8sVersion = params.get("K8sVersion")
         self.SourceChannel = params.get("SourceChannel")
         self.EnableTswTraceService = params.get("EnableTswTraceService")
@@ -614,6 +626,10 @@ class CreateEnvironmentRequest(AbstractModel):
                 self.Tags.append(obj)
         self.EnvType = params.get("EnvType")
         self.CreateRegion = params.get("CreateRegion")
+        self.SetupVpc = params.get("SetupVpc")
+        self.SetupPrometheus = params.get("SetupPrometheus")
+        self.PrometheusId = params.get("PrometheusId")
+        self.ApmId = params.get("ApmId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3476,6 +3492,12 @@ Note: This field may return `null`, indicating that no valid value was found.
         :param UnMatchedKey: Key of log failed to be parsed
 Note: This field may return `null`, indicating that no valid value was found.
         :type UnMatchedKey: str
+        :param Backtracking: tracking
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Backtracking: str
+        :param Delimiter: Separator
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Delimiter: str
         """
         self.BeginningRegex = None
         self.Keys = None
@@ -3486,6 +3508,8 @@ Note: This field may return `null`, indicating that no valid value was found.
         self.TimeFormat = None
         self.UnMatchUpload = None
         self.UnMatchedKey = None
+        self.Backtracking = None
+        self.Delimiter = None
 
 
     def _deserialize(self, params):
@@ -3498,6 +3522,8 @@ Note: This field may return `null`, indicating that no valid value was found.
         self.TimeFormat = params.get("TimeFormat")
         self.UnMatchUpload = params.get("UnMatchUpload")
         self.UnMatchedKey = params.get("UnMatchedKey")
+        self.Backtracking = params.get("Backtracking")
+        self.Delimiter = params.get("Delimiter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4898,6 +4924,9 @@ Note: This field may return `null`, indicating that no valid value was found.
         :param CreateDate: Creation time
 Note: This field may return `null`, indicating that no valid value was found.
         :type CreateDate: str
+        :param RegionId: Region ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RegionId: str
         """
         self.VersionName = None
         self.Status = None
@@ -4919,6 +4948,7 @@ Note: This field may return `null`, indicating that no valid value was found.
         self.PodList = None
         self.WorkloadInfo = None
         self.CreateDate = None
+        self.RegionId = None
 
 
     def _deserialize(self, params):
@@ -4953,6 +4983,7 @@ Note: This field may return `null`, indicating that no valid value was found.
             self.WorkloadInfo = WorkloadInfo()
             self.WorkloadInfo._deserialize(params.get("WorkloadInfo"))
         self.CreateDate = params.get("CreateDate")
+        self.RegionId = params.get("RegionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5147,14 +5178,19 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         :param StartedApplicationNum: Number of started applictions
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type StartedApplicationNum: int
+        :param StartFailedApplicationNum: Number of applications failed to be started
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type StartFailedApplicationNum: int
         """
         self.ApplicationNumNeedToStart = None
         self.StartedApplicationNum = None
+        self.StartFailedApplicationNum = None
 
 
     def _deserialize(self, params):
         self.ApplicationNumNeedToStart = params.get("ApplicationNumNeedToStart")
         self.StartedApplicationNum = params.get("StartedApplicationNum")
+        self.StartFailedApplicationNum = params.get("StartFailedApplicationNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5177,14 +5213,19 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         :param StoppedApplicationNum: Number of stopped applications
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type StoppedApplicationNum: int
+        :param StopFailedApplicationNum: Number of applications failed to be stopped
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type StopFailedApplicationNum: int
         """
         self.ApplicationNumNeedToStop = None
         self.StoppedApplicationNum = None
+        self.StopFailedApplicationNum = None
 
 
     def _deserialize(self, params):
         self.ApplicationNumNeedToStop = params.get("ApplicationNumNeedToStop")
         self.StoppedApplicationNum = params.get("StoppedApplicationNum")
+        self.StopFailedApplicationNum = params.get("StopFailedApplicationNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5695,6 +5736,12 @@ Note: This field may return `null`, indicating that no valid value was found.
         :param Tags: Tag
 Note: This field may return `null`, indicating that no valid value was found.
         :type Tags: list of Tag
+        :param PreStopEncoded: Whether to encode
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PreStopEncoded: str
+        :param PostStartEncoded: Whether to encode
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PostStartEncoded: str
         """
         self.VersionId = None
         self.ApplicationId = None
@@ -5782,6 +5829,8 @@ Note: This field may return `null`, indicating that no valid value was found.
         self.PodList = None
         self.ConfEdited = None
         self.Tags = None
+        self.PreStopEncoded = None
+        self.PostStartEncoded = None
 
 
     def _deserialize(self, params):
@@ -5936,6 +5985,8 @@ Note: This field may return `null`, indicating that no valid value was found.
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.PreStopEncoded = params.get("PreStopEncoded")
+        self.PostStartEncoded = params.get("PostStartEncoded")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

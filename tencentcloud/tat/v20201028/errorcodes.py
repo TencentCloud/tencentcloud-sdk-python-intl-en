@@ -35,6 +35,9 @@ INVALIDPARAMETER_CONFLICTPARAMETER = 'InvalidParameter.ConflictParameter'
 # Invalid username.
 INVALIDPARAMETER_INVALIDUSERNAME = 'InvalidParameter.InvalidUsername'
 
+# Duplicate parameter name.
+INVALIDPARAMETER_PARAMETERNAMEDUPLICATED = 'InvalidParameter.ParameterNameDuplicated'
+
 # Invalid parameter value.
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
@@ -86,8 +89,17 @@ INVALIDPARAMETERVALUE_INVALIDOUTPUTCOSBUCKETURL = 'InvalidParameterValue.Invalid
 # Invalid OutputCOSKeyPrefix.
 INVALIDPARAMETERVALUE_INVALIDOUTPUTCOSKEYPREFIX = 'InvalidParameterValue.InvalidOutputCOSKeyPrefix'
 
+# Invalid time format.
+INVALIDPARAMETERVALUE_INVALIDTIMEFORMAT = 'InvalidParameterValue.InvalidTimeFormat'
+
+# Invalid username.
+INVALIDPARAMETERVALUE_INVALIDUSERNAME = 'InvalidParameterValue.InvalidUsername'
+
 # Invalid command execution path.
 INVALIDPARAMETERVALUE_INVALIDWORKINGDIRECTORY = 'InvalidParameterValue.InvalidWorkingDirectory'
+
+# API invocation expired.
+INVALIDPARAMETERVALUE_INVOKETIMEEXPIRED = 'InvalidParameterValue.InvokeTimeExpired'
 
 # The custom parameter feature is enabled, but custom parameters are missing.
 INVALIDPARAMETERVALUE_LACKOFPARAMETERINFO = 'InvalidParameterValue.LackOfParameterInfo'
@@ -131,6 +143,9 @@ INVALIDPARAMETERVALUE_TOOLONG = 'InvalidParameterValue.TooLong'
 # Reached the quota limit.
 LIMITEXCEEDED = 'LimitExceeded'
 
+# Too many `Filter` values.
+LIMITEXCEEDED_FILTERVALUEEXCEEDED = 'LimitExceeded.FilterValueExceeded'
+
 # Missing parameter.
 MISSINGPARAMETER = 'MissingParameter'
 
@@ -146,6 +161,9 @@ RESOURCENOTFOUND_INSTANCENOTFOUND = 'ResourceNotFound.InstanceNotFound'
 # No execution activity found.
 RESOURCENOTFOUND_INVOCATIONNOTFOUND = 'ResourceNotFound.InvocationNotFound'
 
+# The role does not exist.
+RESOURCENOTFOUND_ROLENOTFOUND = 'ResourceNotFound.RoleNotFound'
+
 # TAT Agent is not installed.
 RESOURCEUNAVAILABLE_AGENTNOTINSTALLED = 'ResourceUnavailable.AgentNotInstalled'
 
@@ -160,6 +178,9 @@ RESOURCEUNAVAILABLE_COMMANDININVOKER = 'ResourceUnavailable.CommandInInvoker'
 
 # The instance is not running.
 RESOURCEUNAVAILABLE_INSTANCESTATENOTRUNNING = 'ResourceUnavailable.InstanceStateNotRunning'
+
+# Lighthouse is not supported in the region.
+RESOURCEUNAVAILABLE_LIGHTHOUSEUNSUPPORTEDREGION = 'ResourceUnavailable.LighthouseUnsupportedRegion'
 
 # CAM authentication failed.
 UNAUTHORIZEDOPERATION_CAMAUTHFAILED = 'UnauthorizedOperation.CamAuthFailed'

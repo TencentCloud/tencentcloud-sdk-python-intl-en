@@ -244,6 +244,7 @@ class Blueprint(AbstractModel):
         :param DisplayVersion: Image version to be displayed.
         :type DisplayVersion: str
         :param Description: Image description information.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Description: str
         :param OsName: OS name.
         :type OsName: str
@@ -279,6 +280,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param SceneIdSet: Array of IDs of scenes associated with an image
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type SceneIdSet: list of str
+        :param DockerVersion: Docker version.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type DockerVersion: str
         """
         self.BlueprintId = None
         self.DisplayTitle = None
@@ -299,6 +303,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.CommunityUrl = None
         self.GuideUrl = None
         self.SceneIdSet = None
+        self.DockerVersion = None
 
 
     def _deserialize(self, params):
@@ -321,6 +326,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.CommunityUrl = params.get("CommunityUrl")
         self.GuideUrl = params.get("GuideUrl")
         self.SceneIdSet = params.get("SceneIdSet")
+        self.DockerVersion = params.get("DockerVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1256,12 +1262,12 @@ class DescribeBlueprintsRequest(AbstractModel):
         :type Offset: int
         :param Limit: Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, please see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).
         :type Limit: int
-        :param Filters: Filter list
+        :param Filters: Filter list.
 <li>blueprint-id</li>Filter by the **image ID**.
 Type: String
 Required: no
 <li>blueprint-type</li>Filter by the **image type**.
-Valid values: `APP_OS` (application image); `PURE_OS` (system image); `PRIVATE` (custom image) and `SHARED` (shared image)
+Valid values: `APP_OS` (application image), `PURE_OS` (system image), `DOCKER` (Docker container image), `PRIVATE` (custom image), `SHARED` (shared image)
 Type: String
 Required: no
 <li>platform-type</li>Filter by the **image operating system**.
@@ -1278,7 +1284,7 @@ Required: no
 Type: String
 Required: no
 
-Each request can contain up to 10 `Filters`, each of which can contain up to 00 `Filter.Values`. `BlueprintIds` and `Filters` cannot be specified at the same time.
+Each request can contain up to 10 `Filters`, each of which can contain up to 100 `Filter.Values`. `BlueprintIds` and `Filters` cannot be specified at the same time.
         :type Filters: list of Filter
         """
         self.BlueprintIds = None
@@ -3236,6 +3242,7 @@ class Disk(AbstractModel):
         :type LatestOperationRequestId: str
         :param CreatedTime: Creation time according to ISO 8601 standard. UTC time is used. 
 Format: YYYY-MM-DDThh:mm:ssZ.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type CreatedTime: str
         :param ExpiredTime: Expiration time according to ISO 8601 standard. UTC time is used. 
 Format: YYYY-MM-DDThh:mm:ssZ.
@@ -3942,25 +3949,25 @@ class InquirePriceCreateInstancesRequest(AbstractModel):
         r"""
         :param BundleId: Instance package ID.
         :type BundleId: str
+        :param InstanceChargePrepaid: Parameter setting for prepaid mode. This parameter can specify the purchase period, whether to enable auto-renewal, and other attributes of the monthly subscribed instances.
+        :type InstanceChargePrepaid: :class:`tencentcloud.lighthouse.v20200324.models.InstanceChargePrepaid`
         :param InstanceCount: Number of instances to be created. Default value: 1.
         :type InstanceCount: int
-        :param InstanceChargePrepaid: Prepaid mode, i.e., monthly subscription. This parameter can specify the purchase period and other attributes such as auto-renewal. It is required for prepaid instances.
-        :type InstanceChargePrepaid: :class:`tencentcloud.lighthouse.v20200324.models.InstanceChargePrepaid`
         :param BlueprintId: Application image ID, which is required if a paid application image is used and can be obtained from the `BlueprintId` returned by the [DescribeBlueprints](https://intl.cloud.tencent.com/document/product/1207/47689?from_cn_redirect=1) API.
         :type BlueprintId: str
         """
         self.BundleId = None
-        self.InstanceCount = None
         self.InstanceChargePrepaid = None
+        self.InstanceCount = None
         self.BlueprintId = None
 
 
     def _deserialize(self, params):
         self.BundleId = params.get("BundleId")
-        self.InstanceCount = params.get("InstanceCount")
         if params.get("InstanceChargePrepaid") is not None:
             self.InstanceChargePrepaid = InstanceChargePrepaid()
             self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        self.InstanceCount = params.get("InstanceCount")
         self.BlueprintId = params.get("BlueprintId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -4056,7 +4063,7 @@ class InquirePriceRenewInstancesRequest(AbstractModel):
         r"""
         :param InstanceIds: IDs of the instances to be renewed. Each request can contain up to 50 instances at a time. You can get an instance ID from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.
         :type InstanceIds: list of str
-        :param InstanceChargePrepaid: Prepaid mode, i.e., monthly subscription. This parameter can specify the purchase period and other attributes such as auto-renewal. It is required for prepaid instances.
+        :param InstanceChargePrepaid: Parameter setting for prepaid mode. This parameter can specify the renewal period, whether to enable auto-renewal, and other attributes of the monthly subscribed instances.
         :type InstanceChargePrepaid: :class:`tencentcloud.lighthouse.v20200324.models.InstanceChargePrepaid`
         :param RenewDataDisk: Whether to renew the data disk. Default: `false`.
         :type RenewDataDisk: bool
@@ -5568,6 +5575,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 Note: this field may return null, indicating that no valid values can be obtained.
         :type LatestOperationRequestId: str
         :param CreatedTime: Snapshot creation time.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type CreatedTime: str
         """
         self.SnapshotId = None
