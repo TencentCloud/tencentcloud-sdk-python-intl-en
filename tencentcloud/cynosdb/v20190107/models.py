@@ -1710,6 +1710,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param ResourceTags: The resource tag
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ResourceTags: list of Tag
+        :param MasterZone: Source AZ
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type MasterZone: str
+        :param SlaveZones: Replica AZ
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type SlaveZones: list of str
+        :param InstanceNetInfo: 
+        :type InstanceNetInfo: list of InstanceNetInfo
         """
         self.Uin = None
         self.AppId = None
@@ -1758,6 +1766,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.Tasks = None
         self.IsFreeze = None
         self.ResourceTags = None
+        self.MasterZone = None
+        self.SlaveZones = None
+        self.InstanceNetInfo = None
 
 
     def _deserialize(self, params):
@@ -1818,6 +1829,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = Tag()
                 obj._deserialize(item)
                 self.ResourceTags.append(obj)
+        self.MasterZone = params.get("MasterZone")
+        self.SlaveZones = params.get("SlaveZones")
+        if params.get("InstanceNetInfo") is not None:
+            self.InstanceNetInfo = []
+            for item in params.get("InstanceNetInfo"):
+                obj = InstanceNetInfo()
+                obj._deserialize(item)
+                self.InstanceNetInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4183,6 +4202,70 @@ class InstanceInitInfo(AbstractModel):
         self.Memory = params.get("Memory")
         self.InstanceType = params.get("InstanceType")
         self.InstanceCount = params.get("InstanceCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceNetInfo(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceGroupType: 
+        :type InstanceGroupType: str
+        :param InstanceGroupId: 
+        :type InstanceGroupId: str
+        :param VpcId: 
+        :type VpcId: str
+        :param SubnetId: 
+        :type SubnetId: str
+        :param NetType: 
+        :type NetType: int
+        :param Vip: 
+        :type Vip: str
+        :param Vport: 
+        :type Vport: int
+        :param WanDomain: 
+        :type WanDomain: str
+        :param WanIP: 
+        :type WanIP: str
+        :param WanPort: 
+        :type WanPort: int
+        :param WanStatus: 
+        :type WanStatus: str
+        """
+        self.InstanceGroupType = None
+        self.InstanceGroupId = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.NetType = None
+        self.Vip = None
+        self.Vport = None
+        self.WanDomain = None
+        self.WanIP = None
+        self.WanPort = None
+        self.WanStatus = None
+
+
+    def _deserialize(self, params):
+        self.InstanceGroupType = params.get("InstanceGroupType")
+        self.InstanceGroupId = params.get("InstanceGroupId")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.NetType = params.get("NetType")
+        self.Vip = params.get("Vip")
+        self.Vport = params.get("Vport")
+        self.WanDomain = params.get("WanDomain")
+        self.WanIP = params.get("WanIP")
+        self.WanPort = params.get("WanPort")
+        self.WanStatus = params.get("WanStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

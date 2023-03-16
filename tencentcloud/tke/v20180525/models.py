@@ -525,6 +525,9 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         :param Total: Total number
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type Total: int
+        :param UnavailableVersionReason: Reason why the upgrade is not available
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type UnavailableVersionReason: list of UnavailableReason
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -532,6 +535,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         self.LatestVersion = None
         self.UpgradeAbleInstances = None
         self.Total = None
+        self.UnavailableVersionReason = None
         self.RequestId = None
 
 
@@ -545,6 +549,12 @@ Note: this field may return `null`, indicating that no valid value is obtained.
                 obj._deserialize(item)
                 self.UpgradeAbleInstances.append(obj)
         self.Total = params.get("Total")
+        if params.get("UnavailableVersionReason") is not None:
+            self.UnavailableVersionReason = []
+            for item in params.get("UnavailableVersionReason"):
+                obj = UnavailableReason()
+                obj._deserialize(item)
+                self.UnavailableVersionReason.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -7250,6 +7260,18 @@ class InstanceAdvancedSettings(AbstractModel):
 
     def __init__(self):
         r"""
+        :param DesiredPodNumber: When the custom PodCIDR mode is enabled for the cluster, you can specify the maximum number of pods per node.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type DesiredPodNumber: int
+        :param GPUArgs: GPU driver parameters
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type GPUArgs: :class:`tencentcloud.tke.v20180525.models.GPUArgs`
+        :param PreStartUserScript: Specifies the base64-encoded custom script to be executed before initialization of the node. It’s only valid for adding existing nodes for now.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type PreStartUserScript: str
+        :param Taints: Node taint
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type Taints: list of Taint
         :param MountTarget: Data disk mount point. By default, no data disk is mounted. Data disks in ext3, ext4, or XFS file system formats will be mounted directly, while data disks in other file systems and unformatted data disks will automatically be formatted as ext4 (xfs for tlinux system) and then mounted. Please back up your data in advance. This setting is only applicable to CVMs with a single data disk.
 Note: in multi-disk scenarios, use the DataDisks data structure below to set the corresponding information, such as cloud disk type, cloud disk size, mount path, and whether to perform formatting.
 Note: this field may return `null`, indicating that no valid values can be obtained.
@@ -7271,19 +7293,11 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param ExtraArgs: Information about node custom parameters
 Note: This field may return null, indicating that no valid value was found.
         :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.InstanceExtraArgs`
-        :param DesiredPodNumber: When the custom PodCIDR mode is enabled for the cluster, you can specify the maximum number of pods per node.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type DesiredPodNumber: int
-        :param GPUArgs: GPU driver parameters
-Note: This field may return `null`, indicating that no valid value can be obtained.
-        :type GPUArgs: :class:`tencentcloud.tke.v20180525.models.GPUArgs`
-        :param PreStartUserScript: Specifies the base64-encoded custom script to be executed before initialization of the node. It’s only valid for adding existing nodes for now.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type PreStartUserScript: str
-        :param Taints: Node taint
-Note: This field may return `null`, indicating that no valid value can be obtained.
-        :type Taints: list of Taint
         """
+        self.DesiredPodNumber = None
+        self.GPUArgs = None
+        self.PreStartUserScript = None
+        self.Taints = None
         self.MountTarget = None
         self.DockerGraphPath = None
         self.UserScript = None
@@ -7291,13 +7305,20 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self.Labels = None
         self.DataDisks = None
         self.ExtraArgs = None
-        self.DesiredPodNumber = None
-        self.GPUArgs = None
-        self.PreStartUserScript = None
-        self.Taints = None
 
 
     def _deserialize(self, params):
+        self.DesiredPodNumber = params.get("DesiredPodNumber")
+        if params.get("GPUArgs") is not None:
+            self.GPUArgs = GPUArgs()
+            self.GPUArgs._deserialize(params.get("GPUArgs"))
+        self.PreStartUserScript = params.get("PreStartUserScript")
+        if params.get("Taints") is not None:
+            self.Taints = []
+            for item in params.get("Taints"):
+                obj = Taint()
+                obj._deserialize(item)
+                self.Taints.append(obj)
         self.MountTarget = params.get("MountTarget")
         self.DockerGraphPath = params.get("DockerGraphPath")
         self.UserScript = params.get("UserScript")
@@ -7317,17 +7338,6 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         if params.get("ExtraArgs") is not None:
             self.ExtraArgs = InstanceExtraArgs()
             self.ExtraArgs._deserialize(params.get("ExtraArgs"))
-        self.DesiredPodNumber = params.get("DesiredPodNumber")
-        if params.get("GPUArgs") is not None:
-            self.GPUArgs = GPUArgs()
-            self.GPUArgs._deserialize(params.get("GPUArgs"))
-        self.PreStartUserScript = params.get("PreStartUserScript")
-        if params.get("Taints") is not None:
-            self.Taints = []
-            for item in params.get("Taints"):
-                obj = Taint()
-                obj._deserialize(item)
-                self.Taints.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9458,6 +9468,36 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         
 
 
+class UnavailableReason(AbstractModel):
+    """Reason for unavailability
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type InstanceId: str
+        :param Reason: Reason
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Reason: str
+        """
+        self.InstanceId = None
+        self.Reason = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Reason = params.get("Reason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UninstallEdgeLogAgentRequest(AbstractModel):
     """UninstallEdgeLogAgent request structure.
 
@@ -9625,16 +9665,24 @@ class UpgradeAbleInstancesItem(AbstractModel):
         :param LatestVersion: The latest minor version of the current version
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type LatestVersion: str
+        :param RuntimeVersion: RuntimeVersion
+        :type RuntimeVersion: str
+        :param RuntimeLatestVersion: RuntimeLatestVersion
+        :type RuntimeLatestVersion: str
         """
         self.InstanceId = None
         self.Version = None
         self.LatestVersion = None
+        self.RuntimeVersion = None
+        self.RuntimeLatestVersion = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.Version = params.get("Version")
         self.LatestVersion = params.get("LatestVersion")
+        self.RuntimeVersion = params.get("RuntimeVersion")
+        self.RuntimeLatestVersion = params.get("RuntimeLatestVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

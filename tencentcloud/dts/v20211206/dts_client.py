@@ -261,7 +261,7 @@ class DtsClient(AbstractClient):
 
 
     def DescribeCheckSyncJobResult(self, request):
-        """This API is used to query the result of a sync check task.
+        """This API is used to query the result of the sync check task and check the required parameters and peripheral configurations.
 
         :param request: Request instance for DescribeCheckSyncJobResult.
         :type request: :class:`tencentcloud.dts.v20211206.models.DescribeCheckSyncJobResultRequest`

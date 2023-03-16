@@ -142,7 +142,7 @@ class TkeClient(AbstractClient):
 
 
     def CheckInstancesUpgradeAble(self, request):
-        """This API is used to check which nodes can be upgraded in the given node list.
+        """This API is used to query nodes eligible for an upgrade in the given node list.
 
         :param request: Request instance for CheckInstancesUpgradeAble.
         :type request: :class:`tencentcloud.tke.v20180525.models.CheckInstancesUpgradeAbleRequest`
@@ -1016,7 +1016,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterInstances(self, request):
-        """This API is used to query information of one or more instances in a cluster.
+        """This API is used to query information of node instances in a cluster.
 
         :param request: Request instance for DescribeClusterInstances.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterInstancesRequest`
@@ -2166,7 +2166,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyPrometheusAlertRule(self, request):
-        """This API is used to modify an alarm rule.
+        """This API is used to modify an alert rule.
 
         :param request: Request instance for ModifyPrometheusAlertRule.
         :type request: :class:`tencentcloud.tke.v20180525.models.ModifyPrometheusAlertRuleRequest`

@@ -695,7 +695,7 @@ class CamClient(AbstractClient):
 
 
     def DescribeSafeAuthFlagColl(self, request):
-        """This API is used to query security settings.
+        """This API is used to get a sub-account’s security settings.
 
         :param request: Request instance for DescribeSafeAuthFlagColl.
         :type request: :class:`tencentcloud.cam.v20190116.models.DescribeSafeAuthFlagCollRequest`

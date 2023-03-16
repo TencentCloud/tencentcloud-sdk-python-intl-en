@@ -1157,6 +1157,61 @@ class DescribeAutoBackupConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBackupDownloadRestrictionRequest(AbstractModel):
+    """DescribeBackupDownloadRestriction request structure.
+
+    """
+
+
+class DescribeBackupDownloadRestrictionResponse(AbstractModel):
+    """DescribeBackupDownloadRestriction response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LimitType: Type of the network restrictions for downloading backup files. Valid values:
+
+- `NoLimit`: Backup files can be downloaded over both public and private networks.
+- `LimitOnlyIntranet`: Backup files can be downloaded only at private network addresses auto-assigned by Tencent Cloud.
+- `Customize`: Backup files can be downloaded only in the customized VPC.
+        :type LimitType: str
+        :param VpcComparisonSymbol: Only `In` can be passed in for this parameter, indicating that backup files can be downloaded in the custom `LimitVpc`.
+        :type VpcComparisonSymbol: str
+        :param IpComparisonSymbol: Whether backups can be downloaded at the custom `LimitIp` address.
+
+- `In`: Download is allowed for the custom IP.
+- `NotIn`: Download is not allowed for the custom IP.
+        :type IpComparisonSymbol: str
+        :param LimitVpc: VPC ID of the custom backup file download address, which will be displayed if `LimitType` is `Customize`.
+        :type LimitVpc: list of BackupLimitVpcItem
+        :param LimitIp: VPC ID of the custom backup file download address, which will be displayed if `LimitType` is `Customize`.
+        :type LimitIp: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.LimitType = None
+        self.VpcComparisonSymbol = None
+        self.IpComparisonSymbol = None
+        self.LimitVpc = None
+        self.LimitIp = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.LimitType = params.get("LimitType")
+        self.VpcComparisonSymbol = params.get("VpcComparisonSymbol")
+        self.IpComparisonSymbol = params.get("IpComparisonSymbol")
+        if params.get("LimitVpc") is not None:
+            self.LimitVpc = []
+            for item in params.get("LimitVpc"):
+                obj = BackupLimitVpcItem()
+                obj._deserialize(item)
+                self.LimitVpc.append(obj)
+        self.LimitIp = params.get("LimitIp")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeBackupUrlRequest(AbstractModel):
     """DescribeBackupUrl request structure.
 
@@ -5277,6 +5332,76 @@ class ModifyAutoBackupConfigResponse(AbstractModel):
         self.WeekDays = params.get("WeekDays")
         self.TimePeriod = params.get("TimePeriod")
         self.BackupStorageDays = params.get("BackupStorageDays")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyBackupDownloadRestrictionRequest(AbstractModel):
+    """ModifyBackupDownloadRestriction request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LimitType: Type of the network restrictions for downloading backup files. Valid values:
+
+- `NoLimit`: Backup files can be downloaded over both public and private networks.
+- `LimitOnlyIntranet`: Backup files can be downloaded only at private network addresses auto-assigned by Tencent Cloud.
+- `Customize`: Backup files can be downloaded only in the customized VPC.
+        :type LimitType: str
+        :param VpcComparisonSymbol: Only `In` can be passed in for this parameter, indicating that backup files can be downloaded in the custom `LimitVpc`.
+        :type VpcComparisonSymbol: str
+        :param IpComparisonSymbol: Whether backups can be downloaded at the custom `LimitIp` address.
+
+- `In`: Download is allowed for the custom IP.
+- `NotIn`: Download is not allowed for the custom IP.
+        :type IpComparisonSymbol: str
+        :param LimitVpc: VPC ID of the custom backup file download address, which is required if `LimitType` is `Customize`.
+        :type LimitVpc: list of BackupLimitVpcItem
+        :param LimitIp: VPC IP of the custom backup file download address, which is required if `LimitType` is `Customize`.
+
+        :type LimitIp: list of str
+        """
+        self.LimitType = None
+        self.VpcComparisonSymbol = None
+        self.IpComparisonSymbol = None
+        self.LimitVpc = None
+        self.LimitIp = None
+
+
+    def _deserialize(self, params):
+        self.LimitType = params.get("LimitType")
+        self.VpcComparisonSymbol = params.get("VpcComparisonSymbol")
+        self.IpComparisonSymbol = params.get("IpComparisonSymbol")
+        if params.get("LimitVpc") is not None:
+            self.LimitVpc = []
+            for item in params.get("LimitVpc"):
+                obj = BackupLimitVpcItem()
+                obj._deserialize(item)
+                self.LimitVpc.append(obj)
+        self.LimitIp = params.get("LimitIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBackupDownloadRestrictionResponse(AbstractModel):
+    """ModifyBackupDownloadRestriction response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 

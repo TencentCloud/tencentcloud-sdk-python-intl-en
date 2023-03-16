@@ -1191,6 +1191,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 'AuthFlag': "1",	'AuthMechanism':"SCRAM-SHA-1"]
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ExtraAttr: list of KeyValuePairOption
+        :param DatabaseNetEnv: Network environment of the database. This parameter is required when `AccessType` is `ccn`. Valid values: `UserIDC` (user IDC), `TencentVPC` (Tencent Cloud VPC).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DatabaseNetEnv: str
         """
         self.Region = None
         self.AccessType = None
@@ -1199,6 +1202,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.Info = None
         self.Supplier = None
         self.ExtraAttr = None
+        self.DatabaseNetEnv = None
 
 
     def _deserialize(self, params):
@@ -1219,6 +1223,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = KeyValuePairOption()
                 obj._deserialize(item)
                 self.ExtraAttr.append(obj)
+        self.DatabaseNetEnv = params.get("DatabaseNetEnv")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1496,7 +1501,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param NewDbName: Name of the database after migration or sync, which is the same as the source database name by default.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type NewDbName: str
-        :param DbMode: Database selection mode, which is required if `Mode` is `Partial`. Valid values: `All`, `Partial`. Note that the sync of advanced objects does not depend on this parameter.
+        :param DbMode: Database selection mode, which is required if `Mode` is `Partial`. Valid values: `All`, `Partial`. Note that the sync of advanced objects does not depend on this parameter. To sync an entire database, set this parameter to `All`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DbMode: str
         :param SchemaName: The schema to be migrated or synced
@@ -1505,37 +1510,37 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param NewSchemaName: Name of the schema after migration or sync
 Note: This field may return null, indicating that no valid values can be obtained.
         :type NewSchemaName: str
-        :param TableMode: Table selection mode, which is required if `DBMode` is `Partial`. Valid values: `All`, `Partial`.
+        :param TableMode: Table selection mode, which is required if `DBMode` is `Partial`. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TableMode: str
         :param Tables: The set of table objects, which is required if `TableMode` is `Partial`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Tables: list of Table
-        :param ViewMode: View selection mode. Valid values: `All`, `Partial`.
+        :param ViewMode: View selection mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ViewMode: str
         :param Views: The set of view objects, which is required if `ViewMode` is `Partial`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Views: list of View
-        :param FunctionMode: Sync mode. Valid values: `Partial`, `All`.
+        :param FunctionMode: Sync mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type FunctionMode: str
         :param Functions: This parameter is required if `FunctionMode` is `Partial`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Functions: list of str
-        :param ProcedureMode: Sync mode. Valid values: `Partial`, `All`.
+        :param ProcedureMode: Sync mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ProcedureMode: str
         :param Procedures: This parameter is required if `ProcedureMode` is `Partial`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Procedures: list of str
-        :param TriggerMode: Trigger migration mode (`all`: All objects; `partial`: Some objects)
+        :param TriggerMode: Trigger sync mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`. Currently, the advanced object “trigger” is not supported for data sync.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TriggerMode: str
         :param Triggers: This parameter is used to specify the names of the triggers to be migrated when the value of `TriggerMode` is `partial`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Triggers: list of str
-        :param EventMode: Event migration mode (`all`: All objects; `partial`: Some objects)
+        :param EventMode: Event sync mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`. Currently, the advanced object “event” is not supported for data sync.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type EventMode: str
         :param Events: This parameter is used to specify the names of the events to be migrated when the value of `EventMode` is `partial`.
@@ -1720,7 +1725,7 @@ class DescribeCheckSyncJobResultRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: Sync task ID
+        :param JobId: Sync task instance ID in the format of `sync-werwfs23`, which is used to identify a sync task. This parameter is required.
         :type JobId: str
         """
         self.JobId = None
@@ -1744,7 +1749,7 @@ class DescribeCheckSyncJobResultResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: Check result
+        :param Status: Execution status of the check task. Valid values: `notStarted`, `running`, `failed`, `success`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Status: str
         :param StepCount: Total number of steps
@@ -1753,7 +1758,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param StepCur: The current step
 Note: This field may return null, indicating that no valid values can be obtained.
         :type StepCur: int
-        :param Progress: Overall progress
+        :param Progress: Overall progress. Value range: 0-100.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Progress: int
         :param StepInfos: Step information
@@ -3653,7 +3658,7 @@ class Objects(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Mode: Migration object type, such as `Partial`.
+        :param Mode: Sync object type. Valid value: `Partial` (default).
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Mode: str
         :param Databases: Sync object, which is required if `Mode` is `Partial`.
@@ -4582,10 +4587,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param StepId: Step ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :type StepId: str
-        :param Status: Current status
+        :param Status: Status of the current step. Valid values: `notStarted`, `running`, `failed`, `finished, `skipped`, `paused`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Status: str
-        :param StartTime: Step start time
+        :param StartTime: Step start time, which may be null.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type StartTime: str
         :param Errors: Error message
@@ -4594,7 +4599,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param Warnings: Warning message
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Warnings: list of StepTip
-        :param Progress: Progress of the current step
+        :param Progress: Progress of the current step. Value range: 0-100.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Progress: int
         """

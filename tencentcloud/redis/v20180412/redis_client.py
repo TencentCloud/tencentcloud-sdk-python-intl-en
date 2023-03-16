@@ -371,6 +371,29 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBackupDownloadRestriction(self, request):
+        """This API is used to query the download address for a database backup file in the current region.
+
+        :param request: Request instance for DescribeBackupDownloadRestriction.
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeBackupDownloadRestrictionRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeBackupDownloadRestrictionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBackupDownloadRestriction", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBackupDownloadRestrictionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBackupUrl(self, request):
         """This API is used to query the download address of a backup RDB file.
 
@@ -1397,6 +1420,29 @@ class RedisClient(AbstractClient):
             body = self.call("ModifyAutoBackupConfig", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyAutoBackupConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyBackupDownloadRestriction(self, request):
+        """This API is used to modify the network information and address for downloading a backup file.
+
+        :param request: Request instance for ModifyBackupDownloadRestriction.
+        :type request: :class:`tencentcloud.redis.v20180412.models.ModifyBackupDownloadRestrictionRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ModifyBackupDownloadRestrictionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyBackupDownloadRestriction", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyBackupDownloadRestrictionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

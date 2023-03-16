@@ -2862,6 +2862,12 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         :type CountryCode: str
         :param Email: Email
         :type Email: str
+        :param RecentlyLoginIP: Last login IP
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RecentlyLoginIP: str
+        :param RecentlyLoginTime: Last login time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RecentlyLoginTime: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -2873,6 +2879,8 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.PhoneNum = None
         self.CountryCode = None
         self.Email = None
+        self.RecentlyLoginIP = None
+        self.RecentlyLoginTime = None
         self.RequestId = None
 
 
@@ -2885,6 +2893,8 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.PhoneNum = params.get("PhoneNum")
         self.CountryCode = params.get("CountryCode")
         self.Email = params.get("Email")
+        self.RecentlyLoginIP = params.get("RecentlyLoginIP")
+        self.RecentlyLoginTime = params.get("RecentlyLoginTime")
         self.RequestId = params.get("RequestId")
 
 

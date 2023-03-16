@@ -617,11 +617,7 @@ The current purchasable AZ needs be pulled through `DescribeDCDBSaleInfo` API.
         :type VpcId: str
         :param SubnetId: VPC subnet ID, which is required when `VpcId` is specified.
         :type SubnetId: str
-        :param DbVersionId: Database engine version. Valid values: 8.0.18, 10.1.9, 5.7.17.
-8.0.18 - MySQL 8.0.18；
-10.1.9: MariaDB 10.1.9;
-5.7.17: Percona 5.7.17.
-If this parameter is left empty, `5.7.17` will be used.
+        :param DbVersionId: Database engine version. Valid values: `5.7`, `8.0`, `10.0`, `10.1`.
         :type DbVersionId: str
         :param AutoVoucher: Whether to automatically use vouchers. This option is disabled by default.
         :type AutoVoucher: bool
@@ -768,11 +764,7 @@ class CreateHourDCDBInstanceRequest(AbstractModel):
         :param ShardCpu: The number of CPU cores per shard, which can be obtained through the `DescribeShardSpec` API.
   
         :type ShardCpu: int
-        :param DbVersionId: Database engine version. Valid values:
-10.0.10: MariaDB 10.0.10;
-10.1.9: MariaDB 10.1.9;
-5.7.17: Percona 5.7.17.
-If this parameter is left empty, `10.1.9` will be used.
+        :param DbVersionId: Database engine version. Valid values: `5.7`, `8.0`, `10.0`, `10.1`.
         :type DbVersionId: str
         :param Zones: AZs to deploy shard nodes. You can specify up to two AZs.
         :type Zones: list of str
@@ -3637,6 +3629,51 @@ class ModifyAccountPrivilegesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyDBEncryptAttributesRequest(AbstractModel):
+    """ModifyDBEncryptAttributes request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of `tdsqlshard-ow728lmc`
+        :type InstanceId: str
+        :param EncryptEnabled: Whether to enable the data encryption (Once enabled, it can’t be disabled). Valid values: `1` (Yes), `0` (No. Default).
+        :type EncryptEnabled: int
+        """
+        self.InstanceId = None
+        self.EncryptEnabled = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.EncryptEnabled = params.get("EncryptEnabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBEncryptAttributesResponse(AbstractModel):
+    """ModifyDBEncryptAttributes response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
