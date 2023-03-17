@@ -435,9 +435,9 @@ class CbsClient(AbstractClient):
     def DescribeDiskOperationLogs(self, request):
         """接口已废弃，切换至云审计接口。见https://tapd.woa.com/pro/prong/stories/view/1010114221880719007
 
-        This API (DescribeDiskOperationLogs) is used to query a list of cloud disk operation logs.
+        This API has been disused. Use the CloudAudit API instead, For more information, visit https://tapd.woa.com/pro/prong/stories/view/1010114221880719007.
 
-        This can be filtered according to the cloud disk ID. The format of cloud disk IDs is as follows: disk-a1kmcp13.
+        This API is used to query the operation logs of a cloud disk. It will be disused soon. Use [LookUpEvents](https://intl.cloud.tencent.com/document/product/629/12359?from_cn_redirect=1) instead.
 
         :param request: Request instance for DescribeDiskOperationLogs.
         :type request: :class:`tencentcloud.cbs.v20170312.models.DescribeDiskOperationLogsRequest`
@@ -512,6 +512,8 @@ class CbsClient(AbstractClient):
 
     def DescribeSnapshotOperationLogs(self, request):
         """接口已废弃，切换至云审计接口。见https://tapd.woa.com/pro/prong/stories/view/1010114221880719007
+
+        This API has been disused. Use the CloudAudit API instead, For more information, visit https://tapd.woa.com/pro/prong/stories/view/1010114221880719007.
 
         This API is used to query the operation logs of a snapshot. It will be disused soon. Use [LookUpEvents](https://intl.cloud.tencent.com/document/product/629/12359?from_cn_redirect=1) instead.
 

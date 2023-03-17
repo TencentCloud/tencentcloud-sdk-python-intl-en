@@ -107,6 +107,118 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeMixTranscodingUsage(self, request):
+        """This API is used to query your usage of TRTC’s On-Cloud MixTranscoding service.
+        - If the period queried is one day or shorter, the statistics returned are on a five-minute basis. If the period queried is longer than one day, the statistics returned are on a daily basis.
+        - The period queried per request cannot be longer than 31 days.
+        - If you query the statistics of the current day, the statistics returned may be inaccurate due to the delay in data collection.
+        - You can use this API to query your historical usage or to reconcile data, but we do not recommend you use it for crucial business logic.
+        - The rate limit of this API is five calls per second.
+
+        :param request: Request instance for DescribeMixTranscodingUsage.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeMixTranscodingUsageRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeMixTranscodingUsageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMixTranscodingUsage", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMixTranscodingUsageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRecordingUsage(self, request):
+        """This API is used to query your TRTC recording usage.
+        - If the period queried is one day or shorter, the statistics returned are on a five-minute basis. If the period queried is longer than one day, the statistics returned are on a daily basis.
+        - The period queried per request cannot be longer than 31 days.
+        - If you query the statistics of the current day, the statistics returned may be inaccurate due to the delay in data collection.
+        - You can use this API to query your historical usage or to reconcile data, but we do not recommend you use it for crucial business logic.
+        - The rate limit of this API is five calls per second.
+
+        :param request: Request instance for DescribeRecordingUsage.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeRecordingUsageRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeRecordingUsageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRecordingUsage", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRecordingUsageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRelayUsage(self, request):
+        """This API is used to query your usage of TRTC’s relay to CDN service.
+        - If the period queried is one day or shorter, the statistics returned are on a five-minute basis. If the period queried is longer than one day, the statistics returned are on a daily basis.
+        - The period queried per request cannot be longer than 31 days.
+        - If you query the statistics of the current day, the statistics returned may be inaccurate due to the delay in data collection.
+        - You can use this API to query your historical usage or to reconcile data, but we do not recommend you use it for crucial business logic.
+        - The rate limit of this API is five calls per second.
+
+        :param request: Request instance for DescribeRelayUsage.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeRelayUsageRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeRelayUsageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRelayUsage", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRelayUsageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTrtcUsage(self, request):
+        """This API is used to query your TRTC audio/video duration.
+        - If the period queried is one day or shorter, the statistics returned are on a five-minute basis. If the period queried is longer than one day, the statistics returned are on a daily basis.
+        - The period queried per request cannot be longer than 31 days.
+        - If you query the statistics of the current day, the statistics returned may be inaccurate due to the delay in data collection.
+        - You can use this API to query your historical usage or to reconcile data, but we do not recommend you use it for crucial business logic.
+        - The rate limit of this API is five calls per second.
+
+        :param request: Request instance for DescribeTrtcUsage.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeTrtcUsageRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeTrtcUsageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTrtcUsage", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTrtcUsageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DismissRoom(self, request):
         """This API is used to remove all users from a room and dismiss the room. It supports all platforms. For Android, iOS, Windows, and macOS, the TRTC SDK needs to be upgraded to v6.6 or above.
 

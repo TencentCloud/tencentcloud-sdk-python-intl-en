@@ -65,6 +65,9 @@ INVALIDPARAMETER = 'InvalidParameter'
 # Parameter value is out of range.
 INVALIDPARAMETER_OUTOFRANGE = 'InvalidParameter.OutOfRange'
 
+# The query period exceeds the limit.
+INVALIDPARAMETER_QUERYSCALEOVERSIZE = 'InvalidParameter.QueryScaleOversize'
+
 # `RoomId` is incorrect.
 INVALIDPARAMETER_ROOMID = 'InvalidParameter.RoomId'
 

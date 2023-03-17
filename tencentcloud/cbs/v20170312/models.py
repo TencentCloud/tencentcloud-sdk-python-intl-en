@@ -18,6 +18,46 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AdvancedRetentionPolicy(AbstractModel):
+    """Retention policy for scheduled snapshots. All four parameters are required.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Days: Retains one latest snapshot each day within `Days` days. Value range: [0, 100].
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Days: int
+        :param Weeks: Retains one latest snapshot each week within `Weeks` weeks. Value range: [0, 100].
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Weeks: int
+        :param Months: Retains one latest snapshot each month within `Months` months. Value range: [0, 100].
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Months: int
+        :param Years: Retains one latest snapshot each year within `Years` years. Value range: [0, 100].
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Years: int
+        """
+        self.Days = None
+        self.Weeks = None
+        self.Months = None
+        self.Years = None
+
+
+    def _deserialize(self, params):
+        self.Days = params.get("Days")
+        self.Weeks = params.get("Weeks")
+        self.Months = params.get("Months")
+        self.Years = params.get("Years")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ApplyDiskBackupRequest(AbstractModel):
     """ApplyDiskBackup request structure.
 
@@ -269,6 +309,19 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param InstanceIdSet: List of IDs of the instances associated with the scheduled snapshot policy.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type InstanceIdSet: list of str
+        :param RetentionMonths: The number of months for which the snapshots created by this scheduled snapshot policy can be retained.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RetentionMonths: int
+        :param RetentionAmount: The maximum number of snapshots created by this scheduled snapshot policy that can be retained.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RetentionAmount: int
+        :param AdvancedRetentionPolicy: Retention policy for scheduled snapshots.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AdvancedRetentionPolicy: :class:`tencentcloud.cbs.v20170312.models.AdvancedRetentionPolicy`
+        :param CopyFromAccountUin: 
+        :type CopyFromAccountUin: str
+        :param Tags: 
+        :type Tags: list of Tag
         """
         self.DiskIdSet = None
         self.IsActivated = None
@@ -283,6 +336,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.RetentionDays = None
         self.CopyToAccountUin = None
         self.InstanceIdSet = None
+        self.RetentionMonths = None
+        self.RetentionAmount = None
+        self.AdvancedRetentionPolicy = None
+        self.CopyFromAccountUin = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -304,6 +362,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.RetentionDays = params.get("RetentionDays")
         self.CopyToAccountUin = params.get("CopyToAccountUin")
         self.InstanceIdSet = params.get("InstanceIdSet")
+        self.RetentionMonths = params.get("RetentionMonths")
+        self.RetentionAmount = params.get("RetentionAmount")
+        if params.get("AdvancedRetentionPolicy") is not None:
+            self.AdvancedRetentionPolicy = AdvancedRetentionPolicy()
+            self.AdvancedRetentionPolicy._deserialize(params.get("AdvancedRetentionPolicy"))
+        self.CopyFromAccountUin = params.get("CopyFromAccountUin")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2740,14 +2810,22 @@ class Policy(AbstractModel):
         :type Hour: list of int non-negative
         :param DayOfWeek: Specifies the days of the week, from Monday to Sunday, on which a scheduled snapshot will be triggered. Value range: [0, 6]. 0 indicates triggering on Sunday, 1-6 indicate triggering on Monday-Saturday.
         :type DayOfWeek: list of int non-negative
+        :param DayOfMonth: Specifies the dates of the month on which a scheduled snapshot will be triggered. Value range: [1, 31]. `1` to `31` indicate the specific dates of the month; for example, `5` indicates the 5th day of the month. Note: If you set a date that does not exist in some months such as 29, 30, and 31, these months will be skipped for scheduled snapshot creation.
+        :type DayOfMonth: list of int non-negative
+        :param IntervalDays: Specifies the interval for creating scheduled snapshots in days. Value range: [1, 365]. For example, if it is set to `5`, scheduled snapshots will be created every 5 days. Note: If you choose to back up by day, the time for the first backup is theoretically the day when the backup policy is created. If the backup policy creation time on the current day is later than the set backup time, the first backup will be performed in the second backup cycle.
+        :type IntervalDays: int
         """
         self.Hour = None
         self.DayOfWeek = None
+        self.DayOfMonth = None
+        self.IntervalDays = None
 
 
     def _deserialize(self, params):
         self.Hour = params.get("Hour")
         self.DayOfWeek = params.get("DayOfWeek")
+        self.DayOfMonth = params.get("DayOfMonth")
+        self.IntervalDays = params.get("IntervalDays")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -1378,6 +1378,29 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyFunctionTargets(self, request):
+        """This API is used to modify the cloud functions associated with a load balancing forwarding rule.
+
+        :param request: Request instance for ModifyFunctionTargets.
+        :type request: :class:`tencentcloud.clb.v20180317.models.ModifyFunctionTargetsRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.ModifyFunctionTargetsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyFunctionTargets", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyFunctionTargetsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyListener(self, request):
         """This API (ModifyListener) is used to modify the attributes of a CLB listener, such as listener name, health check parameter, certificate information, and forwarding policy.
         This is an async API. After it is returned successfully, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.
@@ -1427,7 +1450,12 @@ class ClbClient(AbstractClient):
 
 
     def ModifyLoadBalancerSla(self, request):
-        """This API is used to upgrade shared CLB instances to LCU-supported CLB instances.
+        """This API is used to upgrade a pay-as-you-go shared CLB instance to an LCU-supported CLB instance.<br/>
+        Limits
+        - This API can be used to upgrade only a pay-as-you-go shared instance. A monthly subscription shared instance must be upgraded in the console.
+        - An LCU-supported instance cannot be rolled back to a shared instance.
+        - LCU-supported instances are in beta testing. To upgrade to an LCU-supported instance, [submit a ticket](https://intl.cloud.tencent.com/apply/p/hf45esx99lf?from_cn_redirect=1) for application.
+        - Classic CLB instances cannot be upgraded to LCU-supported instances.
 
         :param request: Request instance for ModifyLoadBalancerSla.
         :type request: :class:`tencentcloud.clb.v20180317.models.ModifyLoadBalancerSlaRequest`

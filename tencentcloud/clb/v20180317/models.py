@@ -1011,7 +1011,7 @@ Note: A secondary AZ will load traffic if the primary AZ is faulty. You can use 
         :type SnatIps: list of SnatIp
         :param ClusterIds: ID of the public network CLB dedicated cluster
         :type ClusterIds: list of str
-        :param SlaType: Guaranteed performance specification.
+        :param SlaType: Specification of the LCU-supported instance.
         :type SlaType: str
         :param ClusterTag: Tag of the STGW dedicated cluster
         :type ClusterTag: str
@@ -1244,7 +1244,7 @@ class CreateListenerRequest(AbstractModel):
         :type LoadBalancerId: str
         :param Ports: Specifies for which ports to create listeners. Each port corresponds to a new listener.
         :type Ports: list of int
-        :param Protocol: Listener protocol: TCP, UDP, HTTP, HTTPS, or TCP_SSL (which is currently in beta test. If you want to use it, please submit a ticket for application).
+        :param Protocol: Listener protocol. Values: TCP | UDP | HTTP | HTTPS | TCP_SSL | QUIC
         :type Protocol: str
         :param ListenerNames: List of names of the listeners to be created. The array of names and array of ports are in one-to-one correspondence. If you do not want to name them now, you do not need to provide this parameter.
         :type ListenerNames: list of str
@@ -1385,18 +1385,17 @@ Note: By default, the traffic goes to the primary AZ. The secondary AZs only car
         :type VipIsp: str
         :param Tags: Tags the CLB instance when purchasing it. Up to 20 tag key value pairs are supported.
         :type Tags: list of TagInfo
-        :param Vip: Specifies a VIP for the CLB instance.
-<ul><li>`VpcId` is optional for creating shared clusters of public network CLB instances. For IPv6 CLB instance type, `SubnetId` is required; for IPv4 and IPv6 NAT64 types, it can be left empty.</li>
-<li>`VpcId` is optional for creating shared clusters of public network CLB instances. For IPv6 CLB instance type, `SubnetId` is required; for IPv4 and IPv6 NAT64 types, it can be left empty.
-</li></ul>
+        :param Vip: Specifies the VIP for the application of a CLB instance. This parameter is optional. If you do not specify this parameter, the system automatically assigns a value for the parameter. IPv4 and IPv6 CLB instances support this parameter, but IPv6 NAT64 CLB instances do not.
+Note: If the specified VIP is occupied or is not within the IP range of the specified VPC subnet, you cannot use the VIP to create a CLB instance in a private network or an IPv6 BGP CLB instance in a public network.
         :type Vip: str
         :param BandwidthPackageId: Bandwidth package ID. If this parameter is specified, the network billing mode (`InternetAccessible.InternetChargeType`) will only support bill-by-bandwidth package (`BANDWIDTH_PACKAGE`).
         :type BandwidthPackageId: str
-        :param ExclusiveCluster: Exclusive cluster information. This parameter is required for creating exclusive clusters of CLB instances.
+        :param ExclusiveCluster: Information about the dedicated CLB instance. You must specify this parameter when you create a dedicated CLB instance in a private network.
         :type ExclusiveCluster: :class:`tencentcloud.clb.v20180317.models.ExclusiveCluster`
-        :param SlaType: Creates an LCU-supported CLB instance
-<ul><li>To create an LCU-supported CLB, this field is required and the value is `SLA`. LCU-supports CLBs adopt the pay-as-you-go model and their performance is guaranteed.</li>
-<li>It’s not required for a shared CLB instance.</li></ul>
+        :param SlaType: Creates an LCU-supported instance.
+<ul><li>To create an LCU-supported instance, set this parameter to `SLA`, which indicates that an LCU-supported instance is created with the default specification in pay-as-you-go mode.
+<ul><li>If you enable general LCU-supported instances, `SLA` corresponds to the Super Large 1 specification. General LCU-supported instances are in beta testing, [submit a ticket](https://intl.cloud.tencent.com/apply/p/hf45esx99lf?from_cn_redirect=1) for application.</li>
+<li>If you enable ultra-large LCU-supported instances, `SLA` corresponds to the Super Large 4 specification. Ultra-large LCU-supported instances are in beta testing, [submit a ticket](https://console.cloud.tencent.com/workorder/category) for application.</li></ul></li><li>This parameter is not required when you create a shared instance.</li></ul>
         :type SlaType: str
         :param ClientToken: A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
         :type ClientToken: str
@@ -3934,11 +3933,16 @@ class DescribeTargetsRequest(AbstractModel):
         :type Protocol: str
         :param Port: Listener port
         :type Port: int
+        :param Filters: Query the list of backend services associated with a load balancer
+<li> `location-id` - String - Optional - Rule ID, such as "loc-12345678".</li>
+<li> `private-ip-address` - String - Optional - Backend service private IP, such as `172.16.1.1`</li>
+        :type Filters: list of Filter
         """
         self.LoadBalancerId = None
         self.ListenerIds = None
         self.Protocol = None
         self.Port = None
+        self.Filters = None
 
 
     def _deserialize(self, params):
@@ -3946,6 +3950,12 @@ class DescribeTargetsRequest(AbstractModel):
         self.ListenerIds = params.get("ListenerIds")
         self.Protocol = params.get("Protocol")
         self.Port = params.get("Port")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4906,7 +4916,7 @@ OPEN: public network; INTERNAL: private network.
         :type LoadBalancerType: str
         :param Forward: CLB type identifier. Value range: 1 (CLB); 0 (classic CLB).
         :type Forward: int
-        :param Domain: CLB instance domain name. This field is provided only to public network classic CLB instance.
+        :param Domain: Domain name of the CLB instance. It is only available for public classic CLBs. This parameter will be discontinued soon. Please use `LoadBalancerDomain` instead.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Domain: str
         :param LoadBalancerVips: List of VIPs of a CLB instance.
@@ -5017,8 +5027,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param SnatIps: `SnatIp` list after SnatPro load balancing is enabled.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SnatIps: list of SnatIp
-        :param SlaType: Performance guarantee specification
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param SlaType: Specification of the LCU-supported instance.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type SlaType: str
         :param IsBlock: Whether VIP is blocked
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -5046,11 +5056,15 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param HealthLogTopicId: Health check log topic ID of CLB CLS
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type HealthLogTopicId: str
-        :param ClusterIds: 
+        :param ClusterIds: Cluster ID.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ClusterIds: list of str
         :param AttributeFlags: CLB attribute
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type AttributeFlags: list of str
+        :param LoadBalancerDomain: Domain name of the CLB instance.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LoadBalancerDomain: str
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
@@ -5105,6 +5119,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.HealthLogTopicId = None
         self.ClusterIds = None
         self.AttributeFlags = None
+        self.LoadBalancerDomain = None
 
 
     def _deserialize(self, params):
@@ -5188,6 +5203,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.HealthLogTopicId = params.get("HealthLogTopicId")
         self.ClusterIds = params.get("ClusterIds")
         self.AttributeFlags = params.get("AttributeFlags")
+        self.LoadBalancerDomain = params.get("LoadBalancerDomain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5255,8 +5271,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param ExtraInfo: Reserved field, which can be ignored generally.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ExtraInfo: :class:`tencentcloud.clb.v20180317.models.ExtraInfo`
-        :param ConfigId: Custom configuration ID at the CLB instance level.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param ConfigId: Custom configuration IDs of CLB instances. Multiple IDs must be separated by commas (,).
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ConfigId: str
         :param Tags: CLB instance tag information.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -5315,7 +5331,8 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         :param SniSwitch: Whether SNI is enabled. This parameter is only meaningful for HTTPS listeners.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type SniSwitch: int
-        :param LoadBalancerDomain: 
+        :param LoadBalancerDomain: Domain name of the CLB instance.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type LoadBalancerDomain: str
         """
         self.LoadBalancerId = None
@@ -5473,12 +5490,16 @@ class LoadBalancerTraffic(AbstractModel):
         :type Vip: str
         :param OutBandwidth: Maximum outbound bandwidth in Mbps
         :type OutBandwidth: float
+        :param Domain: CLB domain name
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Domain: str
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
         self.Region = None
         self.Vip = None
         self.OutBandwidth = None
+        self.Domain = None
 
 
     def _deserialize(self, params):
@@ -5487,6 +5508,7 @@ class LoadBalancerTraffic(AbstractModel):
         self.Region = params.get("Region")
         self.Vip = params.get("Vip")
         self.OutBandwidth = params.get("OutBandwidth")
+        self.Domain = params.get("Domain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5806,6 +5828,72 @@ class ModifyDomainResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyFunctionTargetsRequest(AbstractModel):
+    """ModifyFunctionTargets request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LoadBalancerId: CLB instance ID
+        :type LoadBalancerId: str
+        :param ListenerId: CLB listener ID
+        :type ListenerId: str
+        :param FunctionTargets: The backend cloud functions to modify
+        :type FunctionTargets: list of FunctionTarget
+        :param LocationId: Forwarding rule ID. When binding a real server to a layer-7 forwarding rule, you must provide either this parameter or `Domain`+`Url`.
+        :type LocationId: str
+        :param Domain: Target rule domain name. This parameter does not take effect if `LocationId` is specified.
+        :type Domain: str
+        :param Url: Target rule URL. This parameter does not take effect if `LocationId` is specified.
+        :type Url: str
+        """
+        self.LoadBalancerId = None
+        self.ListenerId = None
+        self.FunctionTargets = None
+        self.LocationId = None
+        self.Domain = None
+        self.Url = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.ListenerId = params.get("ListenerId")
+        if params.get("FunctionTargets") is not None:
+            self.FunctionTargets = []
+            for item in params.get("FunctionTargets"):
+                obj = FunctionTarget()
+                obj._deserialize(item)
+                self.FunctionTargets.append(obj)
+        self.LocationId = params.get("LocationId")
+        self.Domain = params.get("Domain")
+        self.Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyFunctionTargetsResponse(AbstractModel):
+    """ModifyFunctionTargets response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyListenerRequest(AbstractModel):
     """ModifyListener request structure.
 
@@ -5840,9 +5928,9 @@ They represent weighted round robin and least connections, respectively. Default
         :type SessionType: str
         :param MultiCertInfo: Certificate information. You can specify multiple server-side certificates with different algorithm types. This parameter is only applicable to HTTPS listeners with the SNI feature not enabled. `Certificate` and `MultiCertInfo` cannot be specified at the same time. 
         :type MultiCertInfo: :class:`tencentcloud.clb.v20180317.models.MultiCertInfo`
-        :param MaxConn: Maximum number of listener connections. It’s available for TCP/UDP/TCP_SSL/QUIC listeners. If it’s set to `-1` or not specified, the listener speed is not limited. 
+        :param MaxConn: The maximum number of concurrent connections at the listener level. This parameter takes effect only on LCU-supported instances and TCP/UDP/TCP_SSL/QUIC listeners. Value range: 1 to the maximum concurrency of the instance. -1 indicates that no limit is set on concurrent connections.
         :type MaxConn: int
-        :param MaxCps: Maximum number of listener connections. It’s available for TCP/UDP/TCP_SSL/QUIC listeners. If it’s set to `-1` or not specified, the listener speed is not limited. 
+        :param MaxCps: The maximum number of new connections at the listener level. This parameter takes effect only on LCU-supported instances and TCP/UDP/TCP_SSL/QUIC listeners. Value range: 1 to the maximum number of new connections of the instance. -1 indicates that no limit is set on concurrent connections.
         :type MaxCps: int
         """
         self.LoadBalancerId = None
@@ -5921,13 +6009,13 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
         :type LoadBalancerId: str
         :param LoadBalancerName: CLB instance name
         :type LoadBalancerName: str
-        :param TargetRegionInfo: Region information of the real server bound to a CLB.
+        :param TargetRegionInfo: The backend service information of cross-region binding 1.0
         :type TargetRegionInfo: :class:`tencentcloud.clb.v20180317.models.TargetRegionInfo`
         :param InternetChargeInfo: Network billing parameter
         :type InternetChargeInfo: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
         :param LoadBalancerPassToTarget: Whether the target opens traffic from CLB to the internet. If yes (true), only security groups on CLB will be verified; if no (false), security groups on both CLB and backend instance need to be verified.
         :type LoadBalancerPassToTarget: bool
-        :param SnatPro: Whether to enable SnatPro
+        :param SnatPro: Whether to enable cross-region binding 2.0
         :type SnatPro: bool
         :param DeleteProtect: Specifies whether to enable deletion protection.
         :type DeleteProtect: bool
@@ -5991,7 +6079,7 @@ class ModifyLoadBalancerSlaRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LoadBalancerSla: CLB instance information
+        :param LoadBalancerSla: CLB instance information.
         :type LoadBalancerSla: list of SlaUpdateParam
         """
         self.LoadBalancerSla = None
@@ -6479,17 +6567,17 @@ class RegisterFunctionTargetsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LoadBalancerId: 
+        :param LoadBalancerId: CLB instance ID.
         :type LoadBalancerId: str
-        :param ListenerId: 
+        :param ListenerId: CLB listener ID.
         :type ListenerId: str
-        :param FunctionTargets: 
+        :param FunctionTargets: SCF functions to be bound.
         :type FunctionTargets: list of FunctionTarget
-        :param LocationId: 
+        :param LocationId: ID of the target forwarding rule. To bind an SCF function to a L7 forwarding rule, this parameter or `Domain+Url` is required.
         :type LocationId: str
-        :param Domain: 
+        :param Domain: Domain name of the target forwarding rule. It is ignored if `LocationId` is specified.
         :type Domain: str
-        :param Url: 
+        :param Url: URL of the target forwarding rule. It is ignored if `LocationId` is specified.
         :type Url: str
         """
         self.LoadBalancerId = None
@@ -7237,11 +7325,15 @@ class RuleTargets(AbstractModel):
         :param Targets: Real server information
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Targets: list of Backend
+        :param FunctionTargets: Information about backend SCF functions.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FunctionTargets: list of FunctionTarget
         """
         self.LocationId = None
         self.Domain = None
         self.Url = None
         self.Targets = None
+        self.FunctionTargets = None
 
 
     def _deserialize(self, params):
@@ -7254,6 +7346,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = Backend()
                 obj._deserialize(item)
                 self.Targets.append(obj)
+        if params.get("FunctionTargets") is not None:
+            self.FunctionTargets = []
+            for item in params.get("FunctionTargets"):
+                obj = FunctionTarget()
+                obj._deserialize(item)
+                self.FunctionTargets.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7521,7 +7619,7 @@ class SetSecurityGroupForLoadbalancersResponse(AbstractModel):
 
 
 class SlaUpdateParam(AbstractModel):
-    """Instance specification adjustment parameters
+    """Parameters for upgrading to an LCU-supported instance
 
     """
 
@@ -7529,7 +7627,9 @@ class SlaUpdateParam(AbstractModel):
         r"""
         :param LoadBalancerId: ID of the CLB instance
         :type LoadBalancerId: str
-        :param SlaType: To upgrade to LCU-supported CLB instances. It must be `SLA`.
+        :param SlaType: This parameter is set to a fixed value of `SLA`, which specifies to upgrade to an LCU-supported instance of default specification.
+<ul><li>If you enable general LCU-supported instances, `SLA` corresponds to the Super Large 1 specification. General LCU-supported instances are in beta testing, [submit a ticket](https://intl.cloud.tencent.com/apply/p/hf45esx99lf?from_cn_redirect=1) for application.</li>
+<li>If you enable ultra-large LCU-supported instances, SLA corresponds to the Super Large 4 specification. Ultra-large LCU-supported instances are in beta testing, [submit a ticket](https://console.cloud.tencent.com/workorder/category) for application.</li></ul>
         :type SlaType: str
         """
         self.LoadBalancerId = None
@@ -7863,13 +7963,16 @@ class TargetHealth(AbstractModel):
         :type HealthStatus: bool
         :param TargetId: Instance ID of the target, such as ins-12345678
         :type TargetId: str
-        :param HealthStatusDetial: Detailed information of the current health status. Alive: healthy; Dead: exceptional; Unknown: check not started/checking/unknown status.
+        :param HealthStatusDetail: Detailed information about the current health status. Alive: healthy; Dead: exceptional; Unknown: check not started/checking/unknown status.
+        :type HealthStatusDetail: str
+        :param HealthStatusDetial: Detailed information about the current health status. Alive: healthy; Dead: exceptional; Unknown: check not started/checking/unknown status. This parameter will be discarded soon. We recommend that you use the HealthStatusDetail parameter.
         :type HealthStatusDetial: str
         """
         self.IP = None
         self.Port = None
         self.HealthStatus = None
         self.TargetId = None
+        self.HealthStatusDetail = None
         self.HealthStatusDetial = None
 
 
@@ -7878,6 +7981,7 @@ class TargetHealth(AbstractModel):
         self.Port = params.get("Port")
         self.HealthStatus = params.get("HealthStatus")
         self.TargetId = params.get("TargetId")
+        self.HealthStatusDetail = params.get("HealthStatusDetail")
         self.HealthStatusDetial = params.get("HealthStatusDetial")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

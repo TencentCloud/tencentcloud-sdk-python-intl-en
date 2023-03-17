@@ -404,6 +404,262 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.RequestId = params.get("RequestId")
 
 
+class DescribeMixTranscodingUsageRequest(AbstractModel):
+    """DescribeMixTranscodingUsage request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: The start date in the format of YYYY-MM-DD.
+        :type StartTime: str
+        :param EndTime: The end date in the format of YYYY-MM-DD.
+The period queried per request cannot be longer than 31 days.
+        :type EndTime: str
+        :param SdkAppId: The `SDKAppID` of the TRTC application to which the target room belongs. If you do not specify this parameter, the usage statistics of all TRTC applications under the current account will be returned.
+        :type SdkAppId: int
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.SdkAppId = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.SdkAppId = params.get("SdkAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMixTranscodingUsageResponse(AbstractModel):
+    """DescribeMixTranscodingUsage response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UsageKey: The usage type. Each element of this parameter corresponds to an element of `UsageValue` in the order they are listed.
+        :type UsageKey: list of str
+        :param UsageList: The usage data in each time unit.
+        :type UsageList: list of TrtcUsage
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.UsageKey = None
+        self.UsageList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.UsageKey = params.get("UsageKey")
+        if params.get("UsageList") is not None:
+            self.UsageList = []
+            for item in params.get("UsageList"):
+                obj = TrtcUsage()
+                obj._deserialize(item)
+                self.UsageList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRecordingUsageRequest(AbstractModel):
+    """DescribeRecordingUsage request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: The start date in the format of YYYY-MM-DD.
+        :type StartTime: str
+        :param EndTime: The end date in the format of YYYY-MM-DD.
+The period queried per request cannot be longer than 31 days.
+        :type EndTime: str
+        :param MixType: Whether to query single-stream or mixed-stream recording. Valid values: `single`, `multi`.
+        :type MixType: str
+        :param SdkAppId: The `SDKAppID` of the TRTC application to which the target room belongs. If you do not specify this parameter, the usage statistics of all TRTC applications under the current account will be returned.
+        :type SdkAppId: int
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.MixType = None
+        self.SdkAppId = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.MixType = params.get("MixType")
+        self.SdkAppId = params.get("SdkAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRecordingUsageResponse(AbstractModel):
+    """DescribeRecordingUsage response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UsageKey: The usage type. Each element of this parameter corresponds to an element of `UsageValue` in the order they are listed.
+        :type UsageKey: list of str
+        :param UsageList: The usage data in each time unit.
+        :type UsageList: list of TrtcUsage
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.UsageKey = None
+        self.UsageList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.UsageKey = params.get("UsageKey")
+        if params.get("UsageList") is not None:
+            self.UsageList = []
+            for item in params.get("UsageList"):
+                obj = TrtcUsage()
+                obj._deserialize(item)
+                self.UsageList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRelayUsageRequest(AbstractModel):
+    """DescribeRelayUsage request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: The start date in the format of YYYY-MM-DD.
+        :type StartTime: str
+        :param EndTime: The end date in the format of YYYY-MM-DD.
+The period queried per request cannot be longer than 31 days.
+        :type EndTime: str
+        :param SdkAppId: The `SDKAppID` of the TRTC application to which the target room belongs. If you do not specify this parameter, the usage statistics of all TRTC applications under the current account will be returned.
+        :type SdkAppId: int
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.SdkAppId = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.SdkAppId = params.get("SdkAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRelayUsageResponse(AbstractModel):
+    """DescribeRelayUsage response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UsageKey: The usage type. Each element of this parameter corresponds to an element of `UsageValue` in the order they are listed.
+        :type UsageKey: list of str
+        :param UsageList: The usage data in each time unit.
+        :type UsageList: list of TrtcUsage
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.UsageKey = None
+        self.UsageList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.UsageKey = params.get("UsageKey")
+        if params.get("UsageList") is not None:
+            self.UsageList = []
+            for item in params.get("UsageList"):
+                obj = TrtcUsage()
+                obj._deserialize(item)
+                self.UsageList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTrtcUsageRequest(AbstractModel):
+    """DescribeTrtcUsage request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: The start date in the format of YYYY-MM-DD.
+        :type StartTime: str
+        :param EndTime: The end date in the format of YYYY-MM-DD.
+The period queried per request cannot be longer than 31 days.
+        :type EndTime: str
+        :param SdkAppId: The `SDKAppID` of the TRTC application to which the target room belongs. If you do not specify this parameter, the usage statistics of all TRTC applications under the current account will be returned.
+        :type SdkAppId: int
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.SdkAppId = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.SdkAppId = params.get("SdkAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTrtcUsageResponse(AbstractModel):
+    """DescribeTrtcUsage response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UsageKey: The usage type. Each element of this parameter corresponds to an element of `UsageValue` in the order they are listed.
+        :type UsageKey: list of str
+        :param UsageList: The usage data in each time unit.
+        :type UsageList: list of TrtcUsage
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.UsageKey = None
+        self.UsageList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.UsageKey = params.get("UsageKey")
+        if params.get("UsageList") is not None:
+            self.UsageList = []
+            for item in params.get("UsageList"):
+                obj = TrtcUsage()
+                obj._deserialize(item)
+                self.UsageList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DismissRoomByStrRoomIdRequest(AbstractModel):
     """DismissRoomByStrRoomId request structure.
 
@@ -1026,13 +1282,17 @@ class McuWaterMarkParams(AbstractModel):
 
     def __init__(self):
         r"""
-        :param WaterMarkType: The watermark type. The default is 0, which indicates an image watermark.
+        :param WaterMarkType: The watermark type. Valid values: `0` (default): Image; `1`: Text.
         :type WaterMarkType: int
         :param WaterMarkImage: The watermark image information. This parameter is required if `WaterMarkType` is 0.
         :type WaterMarkImage: :class:`tencentcloud.trtc.v20190722.models.McuWaterMarkImage`
+        :param WaterMarkText: The text watermark configuration. This parameter is required if `WaterMarkType` is `1`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type WaterMarkText: :class:`tencentcloud.trtc.v20190722.models.McuWaterMarkText`
         """
         self.WaterMarkType = None
         self.WaterMarkImage = None
+        self.WaterMarkText = None
 
 
     def _deserialize(self, params):
@@ -1040,6 +1300,64 @@ class McuWaterMarkParams(AbstractModel):
         if params.get("WaterMarkImage") is not None:
             self.WaterMarkImage = McuWaterMarkImage()
             self.WaterMarkImage._deserialize(params.get("WaterMarkImage"))
+        if params.get("WaterMarkText") is not None:
+            self.WaterMarkText = McuWaterMarkText()
+            self.WaterMarkText._deserialize(params.get("WaterMarkText"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class McuWaterMarkText(AbstractModel):
+    """The text watermark configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Text: The text.
+        :type Text: str
+        :param WaterMarkWidth: The watermark width (pixels).
+        :type WaterMarkWidth: int
+        :param WaterMarkHeight: The watermark height (pixels).
+        :type WaterMarkHeight: int
+        :param LocationX: The horizontal offset (pixels) of the watermark.
+        :type LocationX: int
+        :param LocationY: The vertical offset (pixels) of the watermark.
+        :type LocationY: int
+        :param FontSize: The font size.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FontSize: int
+        :param FontColor: The text color. The default color is white. Values for some commonly used colors: Red: 0xcc0033; yellow: 0xcc9900; green: 0xcccc33; blue: 0x99CCFF; black: 0x000000; white: 0xFFFFFF; gray: 0x999999.	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FontColor: str
+        :param BackGroundColor: The text fill color. If you do not specify this parameter, the fill color will be transparent. Values for some commonly used colors: Red: 0xcc0033; yellow: 0xcc9900; green: 0xcccc33; blue: 0x99CCFF; black: 0x000000; white: 0xFFFFFF; gray: 0x999999.	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BackGroundColor: str
+        """
+        self.Text = None
+        self.WaterMarkWidth = None
+        self.WaterMarkHeight = None
+        self.LocationX = None
+        self.LocationY = None
+        self.FontSize = None
+        self.FontColor = None
+        self.BackGroundColor = None
+
+
+    def _deserialize(self, params):
+        self.Text = params.get("Text")
+        self.WaterMarkWidth = params.get("WaterMarkWidth")
+        self.WaterMarkHeight = params.get("WaterMarkHeight")
+        self.LocationX = params.get("LocationX")
+        self.LocationY = params.get("LocationY")
+        self.FontSize = params.get("FontSize")
+        self.FontColor = params.get("FontColor")
+        self.BackGroundColor = params.get("BackGroundColor")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1937,6 +2255,34 @@ The default value is `0`, which means others.
         self.SourceContext = params.get("SourceContext")
         self.MediaType = params.get("MediaType")
         self.UserDefineRecordId = params.get("UserDefineRecordId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TrtcUsage(AbstractModel):
+    """The TRTC audio/video duration generated in a certain time period.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TimeKey: The time point in the format of `YYYY-MM-DD HH:mm:ss`. If more than one day is queried, `HH:mm:ss` is `00:00:00`.
+        :type TimeKey: str
+        :param UsageValue: The usage (minutes). Each element of this parameter corresponds to an element of `UsageKey` in the order they are listed.
+        :type UsageValue: list of float
+        """
+        self.TimeKey = None
+        self.UsageValue = None
+
+
+    def _deserialize(self, params):
+        self.TimeKey = params.get("TimeKey")
+        self.UsageValue = params.get("UsageValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
