@@ -1131,7 +1131,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyIndex(self, request):
-        """This API is used to modify the index configuration.
+        """This API is used to modify the index configuration. It is subject to the default request frequency limit, and the number of concurrent requests to the same log topic cannot exceed 1, i.e., the index configuration of only one log topic can be modified at a time.
 
         :param request: Request instance for ModifyIndex.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyIndexRequest`
@@ -1339,9 +1339,9 @@ class ClsClient(AbstractClient):
 
     def UploadLog(self, request, body):
         """## Note
-        To ensure log data reliability and help you use CLS more efficiently, we recommend you use the optimized API [Uploading Structured Logs](https://intl.cloud.tencent.com/document/api/614/16873?from_cn_redirect=1) to upload logs.
+        To ensure log data reliability and help you use CLS more efficiently, we recommend you use the optimized API to upload logs. For more information about the API, see [Uploading Log via API](https://www.tencentcloud.com/document/product/614/50267).
 
-        For the optimized API, we have developed an SDK (available in multiple languages) that provides features including async sending, resource control, automatic retry, graceful shutdown, and detection-based reporting. For details, see [Collection via SDK](https://intl.cloud.tencent.com/document/product/614/45006).
+        For the optimized API, we have developed an SDK (available in multiple languages) that provides features including async sending, resource control, automatic retry, graceful shutdown, and detection-based reporting. For details, see [Uploading Log via SDK](https://intl.cloud.tencent.com/document/product/614/45006).
 
         `UploadLog` allows you to synchronously upload log data. If you still want to continue to use this API instead of the optimized one, read this document.
 
@@ -1375,7 +1375,7 @@ class ClsClient(AbstractClient):
         | contextFlow | No       | Unique `LogGroup` ID, which should be passed in if the context feature needs to be used. Format: "{context ID}-{LogGroupID}". <br>Context ID: Uniquely identifies the context (a series of log files that are continuously scrolling or a series of logs that need to be sequenced), which is a 64-bit integer hex string. <br>LogGroupID: A 64-bit integer hex string that continuously increases, such as `102700A66102516A-59F59`.                        |
         | filename    | No       | Log filename                                                   |
         | source      | No       | Log source, which is generally the machine IP                           |
-        | logTags     | No       | Tag list of logs                                               |
+        | logTags     | No       | List of log tags                                               |
 
         `Log` description:
 
@@ -1480,7 +1480,7 @@ class ClsClient(AbstractClient):
         protoc --cpp_out=./ ./cls.proto
         ```
 
-        > ?`--cpp_out=./ ` indicates that the file will be compiled in cpp format and output to the current directory. `./cls.proto` indicates the `cls.proto` description file in the current directory.
+        > ?`--cpp_out=./` indicates that the file will be compiled in cpp format and output to the current directory. `./cls.proto` indicates the `cls.proto` description file in the current directory.
 
         After the compilation succeeds, the code file in the corresponding programming language will be generated. This sample generates the `cls.pb.h` header file and [cls.pb.cc](http://cls.pb.cc) code implementation file as shown below:
 

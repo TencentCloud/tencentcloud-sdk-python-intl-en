@@ -49,6 +49,52 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateInternalTable(self, request):
+        """This API is used to create a managed internal table. It has been disused.
+
+        :param request: Request instance for CreateInternalTable.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CreateInternalTableRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CreateInternalTableResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateInternalTable", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateInternalTableResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateResultDownload(self, request):
+        """This API is used to create a query result download task.
+
+        :param request: Request instance for CreateResultDownload.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CreateResultDownloadRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CreateResultDownloadResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateResultDownload", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateResultDownloadResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateSparkApp(self, request):
         """This API is used to create a Spark application.
 
@@ -164,6 +210,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeResultDownload(self, request):
+        """This API is used to get a query result download task.
+
+        :param request: Request instance for DescribeResultDownload.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeResultDownloadRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeResultDownloadResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeResultDownload", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeResultDownloadResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeSparkAppJob(self, request):
         """This API is used to query a specific Spark application.
 
@@ -270,6 +339,52 @@ class DlcClient(AbstractClient):
             body = self.call("DescribeTasks", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GenerateCreateMangedTableSql(self, request):
+        """This API is used to generate SQL statements for creating a managed table.
+
+        :param request: Request instance for GenerateCreateMangedTableSql.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.GenerateCreateMangedTableSqlRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.GenerateCreateMangedTableSqlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GenerateCreateMangedTableSql", params, headers=headers)
+            response = json.loads(body)
+            model = models.GenerateCreateMangedTableSqlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyGovernEventRule(self, request):
+        """This API is used to change data governance event thresholds.
+
+        :param request: Request instance for ModifyGovernEventRule.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.ModifyGovernEventRuleRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.ModifyGovernEventRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyGovernEventRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyGovernEventRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

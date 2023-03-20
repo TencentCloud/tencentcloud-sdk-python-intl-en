@@ -1153,9 +1153,14 @@ class CreateIndexRequest(AbstractModel):
         :type Rule: :class:`tencentcloud.cls.v20201016.models.RuleInfo`
         :param Status: Whether to take effect. Default value: true
         :type Status: bool
-        :param IncludeInternalFields: Internal field marker of full-text index. Default value: `false`. Valid value: `false`: excluding internal fields; `true`: including internal fields
+        :param IncludeInternalFields: Whether full-text indexing includes internal fields (`__FILENAME__`, `__HOSTNAME__`, and `__SOURCE__`). Default value: `false`. Recommended value: `true`.
+* `false`: Full-text indexing does not include internal fields.
+* `true`: Full-text indexing includes internal fields.
         :type IncludeInternalFields: bool
-        :param MetadataFlag: Metadata flag. Default value: `0`. Valid value: `0`: full-text index (including the metadata field with key-value index enabled); `1`: full-text index (including all metadata fields); `2`: full-text index (excluding metadata fields).
+        :param MetadataFlag: Whether full-text indexing includes metadata fields (which are prefixed with `__TAG__`). Default value: `0`. Recommended value: `1`.
+* `0`: Full-text indexing includes only the metadata fields with key-value indexing enabled.
+* `1`: Full-text indexing includes all metadata fields.
+* `2`: Full-text indexing does not include metadata fields.
         :type MetadataFlag: int
         """
         self.TopicId = None
@@ -2539,11 +2544,16 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :type Rule: :class:`tencentcloud.cls.v20201016.models.RuleInfo`
         :param ModifyTime: Index modification time. The default value is the index creation time.
         :type ModifyTime: str
-        :param IncludeInternalFields: Internal field marker of full-text index. Default value: `false`. Valid value: `false`: excluding internal fields; `true`: including internal fields
-Note: This field may return `null`, indicating that no valid value was found.
+        :param IncludeInternalFields: Whether full-text indexing includes internal fields (`__FILENAME__`, `__HOSTNAME__`, and `__SOURCE__`)
+* `false`: Full-text indexing does not include internal fields.
+* `true`: Full-text indexing includes internal fields.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type IncludeInternalFields: bool
-        :param MetadataFlag: Metadata flag. Default value: `0`. Valid value: `0`: full-text index (including the metadata field with key-value index enabled); `1`: full-text index (including all metadata fields); `2`: full-text index (excluding metadata fields).
-Note: This field may return `null`, indicating that no valid value was found.
+        :param MetadataFlag: Whether full-text indexing includes metadata fields (which are prefixed with `__TAG__`)
+* `0`: Full-text indexing includes only the metadata fields with key-value indexing enabled.
+* `1`: Full-text indexing includes all metadata fields.
+* `2`: Full-text indexing does not include metadata fields.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type MetadataFlag: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -3812,7 +3822,13 @@ class KeyValueInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Key: When a key value or metafield index needs to be configured for a field, the metafield `Key` does not need to be prefixed with `__TAG__.` and is consistent with the one when logs are uploaded. `__TAG__.` will be prefixed automatically for display in the console.
+        :param Key: Name of the field for which you want to configure a key-value or metadata field index. The name can contain letters, digits, underscores, and symbols -./@ and cannot start with an underscore.
+
+Note:
+For a metadata field, set its `Key` to be consistent with the one for log uploading, without prefixing it with `__TAG__.`. `__TAG__.` will be prefixed automatically for display in the console.
+2. The total number of keys in key-value indexes (`KeyValue`) and metadata field indexes (`Tag`) cannot exceed 300.
+3. The number of levels in `Key` cannot exceed 10. Example: a.b.c.d.e.f.g.h.j.k
+4. JSON parent and child fields (such as “a” and “a.b”) cannot be contained at the same time.
         :type Key: str
         :param Value: Field index description information
         :type Value: :class:`tencentcloud.cls.v20201016.models.ValueInfo`
@@ -4579,9 +4595,14 @@ class ModifyIndexRequest(AbstractModel):
         :type Status: bool
         :param Rule: Index rule
         :type Rule: :class:`tencentcloud.cls.v20201016.models.RuleInfo`
-        :param IncludeInternalFields: Internal field marker of full-text index. Default value: `false`. Valid value: `false`: excluding internal fields; `true`: including internal fields
+        :param IncludeInternalFields: Whether full-text indexing includes internal fields (`__FILENAME__`, `__HOSTNAME__`, and `__SOURCE__`). Default value: `false`. Recommended value: `true`.
+* `false`: Full-text indexing does not include internal fields.
+* `true`: Full-text indexing includes internal fields.
         :type IncludeInternalFields: bool
-        :param MetadataFlag: Metadata flag. Default value: `0`. Valid value: `0`: full-text index (including the metadata field with key-value index enabled); `1`: full-text index (including all metadata fields); `2`: full-text index (excluding metadata fields).
+        :param MetadataFlag: Whether full-text indexing includes metadata fields (which are prefixed with `__TAG__`). Default value: `0`. Recommended value: `1`.
+* `0`: Full-text indexing includes only metadata fields with key-value indexing enabled.
+* `1`: Full-text indexing includes all metadata fields.
+* `2`: Full-text indexing does not include metadata fields.
         :type MetadataFlag: int
         """
         self.TopicId = None
@@ -5208,14 +5229,14 @@ class RuleInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FullText: Full-Text index configuration
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param FullText: Full-text index configuration. If the configuration is left empty, full-text indexing is not enabled.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type FullText: :class:`tencentcloud.cls.v20201016.models.FullTextInfo`
-        :param KeyValue: Key-Value index configuration
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param KeyValue: Key-value index configuration. If the configuration is left empty, key-value indexing is not enabled.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type KeyValue: :class:`tencentcloud.cls.v20201016.models.RuleKeyValueInfo`
-        :param Tag: Metafield index configuration
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param Tag: Metadata field index configuration. If the configuration is left empty, metadata field indexing is not enabled.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Tag: :class:`tencentcloud.cls.v20201016.models.RuleTagInfo`
         """
         self.FullText = None
@@ -5251,7 +5272,7 @@ class RuleKeyValueInfo(AbstractModel):
         r"""
         :param CaseSensitive: Case sensitivity
         :type CaseSensitive: bool
-        :param KeyValues: Key-Value pair information of the index to be created. Up to 100 key-value pairs can be configured.
+        :param KeyValues: Key-value pair information of the index to be created
         :type KeyValues: list of KeyValueInfo
         """
         self.CaseSensitive = None
@@ -5315,15 +5336,16 @@ class SearchLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TopicId: ID of the log topic to be searched
-        :type TopicId: str
         :param From: Start time of the log to be searched, which is a Unix timestamp in milliseconds
         :type From: int
         :param To: End time of the log to be searched, which is a Unix timestamp in milliseconds
         :type To: int
-        :param Query: Statement for search and analysis. Maximum length: 12 KB
-A statement is in the format of <a href="https://intl.cloud.tencent.com/document/product/614/47044?from_cn_redirect=1" target="_blank">[search rule]</a> | <a href="https://intl.cloud.tencent.com/document/product/614/44061?from_cn_redirect=1" target="_blank">[SQL statement]</a>. You can omit the pipe symbol <code> | </code> and SQL statement when log analysis is not required.
+        :param Query: Search and analysis statement. Maximum length: 12 KB
+A statement is in the format of <a href="https://intl.cloud.tencent.com/document/product/614/47044?from_cn_redirect=1" target="_blank">[search criteria]</a> | <a href="https://intl.cloud.tencent.com/document/product/614/44061?from_cn_redirect=1" target="_blank">[SQL statement]</a>. You can omit the pipe symbol <code> | </code> and SQL statement when log analysis is not required.
+Queries all logs using * or an empty string
         :type Query: str
+        :param TopicId: ID of the log topic to be searched
+        :type TopicId: str
         :param Limit: The number of raw logs returned by a single query. Maximum value: 1000. You need to use `Context` to continue to get logs.
 Notes:
 * This parameter is valid only when the query statement (`Query`) does not contain an SQL statement.
@@ -5351,10 +5373,10 @@ The two response methods differ slightly in terms of encoding format. You are ad
 Default value: `1`
         :type SamplingRate: float
         """
-        self.TopicId = None
         self.From = None
         self.To = None
         self.Query = None
+        self.TopicId = None
         self.Limit = None
         self.Context = None
         self.Sort = None
@@ -5363,10 +5385,10 @@ Default value: `1`
 
 
     def _deserialize(self, params):
-        self.TopicId = params.get("TopicId")
         self.From = params.get("From")
         self.To = params.get("To")
         self.Query = params.get("Query")
+        self.TopicId = params.get("TopicId")
         self.Limit = params.get("Limit")
         self.Context = params.get("Context")
         self.Sort = params.get("Sort")
@@ -5848,8 +5870,8 @@ Note: \n\t\r can be directly enclosed in double quotes as the input parameter wi
         :type Tokenizer: str
         :param SqlFlag: Whether the analysis feature is enabled for the field
         :type SqlFlag: bool
-        :param ContainZH: Whether Chinese characters are contained
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param ContainZH: Whether Chinese characters are contained. For `long` and `double` fields, set them to `false`.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ContainZH: bool
         """
         self.Type = None

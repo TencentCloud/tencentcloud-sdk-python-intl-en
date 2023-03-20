@@ -128,6 +128,133 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class CreateInternalTableRequest(AbstractModel):
+    """CreateInternalTable request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TableBaseInfo: The basic table information.
+        :type TableBaseInfo: :class:`tencentcloud.dlc.v20210125.models.TableBaseInfo`
+        :param Columns: The table fields.
+        :type Columns: list of TColumn
+        :param Partitions: The table partitions.
+        :type Partitions: list of TPartition
+        :param Properties: The table properties.
+        :type Properties: list of Property
+        """
+        self.TableBaseInfo = None
+        self.Columns = None
+        self.Partitions = None
+        self.Properties = None
+
+
+    def _deserialize(self, params):
+        if params.get("TableBaseInfo") is not None:
+            self.TableBaseInfo = TableBaseInfo()
+            self.TableBaseInfo._deserialize(params.get("TableBaseInfo"))
+        if params.get("Columns") is not None:
+            self.Columns = []
+            for item in params.get("Columns"):
+                obj = TColumn()
+                obj._deserialize(item)
+                self.Columns.append(obj)
+        if params.get("Partitions") is not None:
+            self.Partitions = []
+            for item in params.get("Partitions"):
+                obj = TPartition()
+                obj._deserialize(item)
+                self.Partitions.append(obj)
+        if params.get("Properties") is not None:
+            self.Properties = []
+            for item in params.get("Properties"):
+                obj = Property()
+                obj._deserialize(item)
+                self.Properties.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateInternalTableResponse(AbstractModel):
+    """CreateInternalTable response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Execution: The SQL statements for creating the managed internal table.
+        :type Execution: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Execution = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Execution = params.get("Execution")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateResultDownloadRequest(AbstractModel):
+    """CreateResultDownload request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: The result query task ID.
+        :type TaskId: str
+        :param Format: The result format.
+        :type Format: str
+        :param Force: Whether to re-generate a file to download. This parameter applies only when the last task is `timeout` or `error`.
+        :type Force: bool
+        """
+        self.TaskId = None
+        self.Format = None
+        self.Force = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Format = params.get("Format")
+        self.Force = params.get("Force")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateResultDownloadResponse(AbstractModel):
+    """CreateResultDownload response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DownloadId: The download task ID.
+        :type DownloadId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DownloadId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DownloadId = params.get("DownloadId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateSparkAppRequest(AbstractModel):
     """CreateSparkApp request structure.
 
@@ -181,6 +308,12 @@ class CreateSparkAppRequest(AbstractModel):
         :type IsLocalArchives: str
         :param AppArchives: Archives: Dependency resources
         :type AppArchives: str
+        :param SparkImage: The Spark image version.
+        :type SparkImage: str
+        :param SparkImageVersion: The Spark image version name.
+        :type SparkImageVersion: str
+        :param AppExecutorMaxNumbers: The specified executor count (max), which defaults to 1. This parameter applies if the "Dynamic" mode is selected. If the "Dynamic" mode is not selected, the executor count is equal to `AppExecutorNums`.
+        :type AppExecutorMaxNumbers: int
         """
         self.AppName = None
         self.AppType = None
@@ -205,6 +338,9 @@ class CreateSparkAppRequest(AbstractModel):
         self.AppPythonFiles = None
         self.IsLocalArchives = None
         self.AppArchives = None
+        self.SparkImage = None
+        self.SparkImageVersion = None
+        self.AppExecutorMaxNumbers = None
 
 
     def _deserialize(self, params):
@@ -231,6 +367,9 @@ class CreateSparkAppRequest(AbstractModel):
         self.AppPythonFiles = params.get("AppPythonFiles")
         self.IsLocalArchives = params.get("IsLocalArchives")
         self.AppArchives = params.get("AppArchives")
+        self.SparkImage = params.get("SparkImage")
+        self.SparkImageVersion = params.get("SparkImageVersion")
+        self.AppExecutorMaxNumbers = params.get("AppExecutorMaxNumbers")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -247,13 +386,18 @@ class CreateSparkAppResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param SparkAppId: The unique ID of the application.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SparkAppId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.SparkAppId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.SparkAppId = params.get("SparkAppId")
         self.RequestId = params.get("RequestId")
 
 
@@ -433,6 +577,12 @@ class CreateTasksResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DataGovernPolicy(AbstractModel):
+    """The data governance rules.
+
+    """
+
+
 class DeleteSparkAppRequest(AbstractModel):
     """DeleteSparkApp request structure.
 
@@ -471,6 +621,76 @@ class DeleteSparkAppResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeResultDownloadRequest(AbstractModel):
+    """DescribeResultDownload request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DownloadId: The query task ID.
+        :type DownloadId: str
+        """
+        self.DownloadId = None
+
+
+    def _deserialize(self, params):
+        self.DownloadId = params.get("DownloadId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResultDownloadResponse(AbstractModel):
+    """DescribeResultDownload response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Path: The file save path.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Path: str
+        :param Status: The task status. Valid values: `init`, `queue`, `format`, `compress`, `success`, `timeout`, and `error`.
+        :type Status: str
+        :param Reason: The task exception cause.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Reason: str
+        :param SecretId: The temporary secret ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SecretId: str
+        :param SecretKey: The temporary secret key.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SecretKey: str
+        :param Token: The temporary token.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Token: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Path = None
+        self.Status = None
+        self.Reason = None
+        self.SecretId = None
+        self.SecretKey = None
+        self.Token = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Path = params.get("Path")
+        self.Status = params.get("Status")
+        self.Reason = params.get("Reason")
+        self.SecretId = params.get("SecretId")
+        self.SecretKey = params.get("SecretKey")
+        self.Token = params.get("Token")
         self.RequestId = params.get("RequestId")
 
 
@@ -859,6 +1079,30 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class Execution(AbstractModel):
+    """SQL statement objects
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SQL: The automatically generated SQL statements.
+        :type SQL: str
+        """
+        self.SQL = None
+
+
+    def _deserialize(self, params):
+        self.SQL = params.get("SQL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Filter(AbstractModel):
     """Query list filter parameter
 
@@ -885,6 +1129,82 @@ class Filter(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class GenerateCreateMangedTableSqlRequest(AbstractModel):
+    """GenerateCreateMangedTableSql request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TableBaseInfo: The basic table information.
+        :type TableBaseInfo: :class:`tencentcloud.dlc.v20210125.models.TableBaseInfo`
+        :param Columns: The table fields.
+        :type Columns: list of TColumn
+        :param Partitions: The table partitions.
+        :type Partitions: list of TPartition
+        :param Properties: The table properties.
+        :type Properties: list of Property
+        """
+        self.TableBaseInfo = None
+        self.Columns = None
+        self.Partitions = None
+        self.Properties = None
+
+
+    def _deserialize(self, params):
+        if params.get("TableBaseInfo") is not None:
+            self.TableBaseInfo = TableBaseInfo()
+            self.TableBaseInfo._deserialize(params.get("TableBaseInfo"))
+        if params.get("Columns") is not None:
+            self.Columns = []
+            for item in params.get("Columns"):
+                obj = TColumn()
+                obj._deserialize(item)
+                self.Columns.append(obj)
+        if params.get("Partitions") is not None:
+            self.Partitions = []
+            for item in params.get("Partitions"):
+                obj = TPartition()
+                obj._deserialize(item)
+                self.Partitions.append(obj)
+        if params.get("Properties") is not None:
+            self.Properties = []
+            for item in params.get("Properties"):
+                obj = Property()
+                obj._deserialize(item)
+                self.Properties.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GenerateCreateMangedTableSqlResponse(AbstractModel):
+    """GenerateCreateMangedTableSql response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Execution: The SQL statements for creating the managed internal table.
+        :type Execution: :class:`tencentcloud.dlc.v20210125.models.Execution`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Execution = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Execution") is not None:
+            self.Execution = Execution()
+            self.Execution._deserialize(params.get("Execution"))
+        self.RequestId = params.get("RequestId")
 
 
 class KVPair(AbstractModel):
@@ -915,6 +1235,29 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyGovernEventRuleRequest(AbstractModel):
+    """ModifyGovernEventRule request structure.
+
+    """
+
+
+class ModifyGovernEventRuleResponse(AbstractModel):
+    """ModifyGovernEventRule response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class ModifySparkAppRequest(AbstractModel):
@@ -972,6 +1315,12 @@ class ModifySparkAppRequest(AbstractModel):
         :type IsLocalArchives: str
         :param AppArchives: Archives: Dependency resources
         :type AppArchives: str
+        :param SparkImage: The Spark image version.
+        :type SparkImage: str
+        :param SparkImageVersion: The Spark image version name.
+        :type SparkImageVersion: str
+        :param AppExecutorMaxNumbers: The specified executor count (max), which defaults to 1. This parameter applies if the "Dynamic" mode is selected. If the "Dynamic" mode is not selected, the executor count is equal to `AppExecutorNums`.
+        :type AppExecutorMaxNumbers: int
         """
         self.AppName = None
         self.AppType = None
@@ -997,6 +1346,9 @@ class ModifySparkAppRequest(AbstractModel):
         self.DataSource = None
         self.IsLocalArchives = None
         self.AppArchives = None
+        self.SparkImage = None
+        self.SparkImageVersion = None
+        self.AppExecutorMaxNumbers = None
 
 
     def _deserialize(self, params):
@@ -1024,6 +1376,9 @@ class ModifySparkAppRequest(AbstractModel):
         self.DataSource = params.get("DataSource")
         self.IsLocalArchives = params.get("IsLocalArchives")
         self.AppArchives = params.get("AppArchives")
+        self.SparkImage = params.get("SparkImage")
+        self.SparkImageVersion = params.get("SparkImageVersion")
+        self.AppExecutorMaxNumbers = params.get("AppExecutorMaxNumbers")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1048,6 +1403,34 @@ class ModifySparkAppResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class Property(AbstractModel):
+    """Properties of database and table
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: The property key name.
+        :type Key: str
+        :param Value: The property value.
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SQLTask(AbstractModel):
@@ -1156,6 +1539,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param JobArchives: Archives: Dependency resources
 Note: This field may return null, indicating that no valid values can be obtained.
         :type JobArchives: str
+        :param SparkImage: The Spark image version.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SparkImage: str
         :param JobPythonFiles: PySpark: Python dependency, which can be in .py, .zip, or .egg format. Multiple files should be separated by comma.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type JobPythonFiles: str
@@ -1165,6 +1551,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param DataEngineStatus: Engine status. -100 (default value): unknown; -2–11: normal.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DataEngineStatus: int
+        :param JobExecutorMaxNumbers: The specified executor count (max), which defaults to 1. This parameter applies if the "Dynamic" mode is selected. If the "Dynamic" mode is not selected, the executor count is equal to `JobExecutorNums`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type JobExecutorMaxNumbers: int
         """
         self.JobId = None
         self.JobName = None
@@ -1196,9 +1585,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.AppPythonFiles = None
         self.IsLocalArchives = None
         self.JobArchives = None
+        self.SparkImage = None
         self.JobPythonFiles = None
         self.TaskNum = None
         self.DataEngineStatus = None
+        self.JobExecutorMaxNumbers = None
 
 
     def _deserialize(self, params):
@@ -1234,9 +1625,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.AppPythonFiles = params.get("AppPythonFiles")
         self.IsLocalArchives = params.get("IsLocalArchives")
         self.JobArchives = params.get("JobArchives")
+        self.SparkImage = params.get("SparkImage")
         self.JobPythonFiles = params.get("JobPythonFiles")
         self.TaskNum = params.get("TaskNum")
         self.DataEngineStatus = params.get("DataEngineStatus")
+        self.JobExecutorMaxNumbers = params.get("JobExecutorMaxNumbers")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1357,6 +1750,163 @@ class SuspendResumeDataEngineResponse(AbstractModel):
     def _deserialize(self, params):
         self.DataEngineName = params.get("DataEngineName")
         self.RequestId = params.get("RequestId")
+
+
+class TColumn(AbstractModel):
+    """Table field information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: The field name.
+        :type Name: str
+        :param Type: The field type.
+        :type Type: str
+        :param Comment: The field description.
+        :type Comment: str
+        :param Default: The default field value.
+        :type Default: str
+        :param NotNull: Whether the field is not null.
+        :type NotNull: bool
+        """
+        self.Name = None
+        self.Type = None
+        self.Comment = None
+        self.Default = None
+        self.NotNull = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Type = params.get("Type")
+        self.Comment = params.get("Comment")
+        self.Default = params.get("Default")
+        self.NotNull = params.get("NotNull")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TPartition(AbstractModel):
+    """Table partition information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: The field name.
+        :type Name: str
+        :param Type: The field type.
+        :type Type: str
+        :param Comment: The field description.
+        :type Comment: str
+        :param PartitionType: The partition type.
+        :type PartitionType: str
+        :param PartitionFormat: The partition format.
+        :type PartitionFormat: str
+        :param PartitionDot: The separator count of the partition conversion policy.
+        :type PartitionDot: int
+        :param Transform: The partition conversion policy.
+        :type Transform: str
+        :param TransformArgs: The policy parameters.
+        :type TransformArgs: list of str
+        """
+        self.Name = None
+        self.Type = None
+        self.Comment = None
+        self.PartitionType = None
+        self.PartitionFormat = None
+        self.PartitionDot = None
+        self.Transform = None
+        self.TransformArgs = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Type = params.get("Type")
+        self.Comment = params.get("Comment")
+        self.PartitionType = params.get("PartitionType")
+        self.PartitionFormat = params.get("PartitionFormat")
+        self.PartitionDot = params.get("PartitionDot")
+        self.Transform = params.get("Transform")
+        self.TransformArgs = params.get("TransformArgs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TableBaseInfo(AbstractModel):
+    """Table configurations
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DatabaseName: The database name.
+        :type DatabaseName: str
+        :param TableName: The table name.
+        :type TableName: str
+        :param DatasourceConnectionName: The data source name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DatasourceConnectionName: str
+        :param TableComment: The table remarks.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TableComment: str
+        :param Type: The specific type: `table` or `view`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Type: str
+        :param TableFormat: The data format type, such as `hive` and `iceberg`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TableFormat: str
+        :param UserAlias: The table creator name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UserAlias: str
+        :param UserSubUin: The table creator ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UserSubUin: str
+        :param GovernPolicy: The data governance configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type GovernPolicy: :class:`tencentcloud.dlc.v20210125.models.DataGovernPolicy`
+        """
+        self.DatabaseName = None
+        self.TableName = None
+        self.DatasourceConnectionName = None
+        self.TableComment = None
+        self.Type = None
+        self.TableFormat = None
+        self.UserAlias = None
+        self.UserSubUin = None
+        self.GovernPolicy = None
+
+
+    def _deserialize(self, params):
+        self.DatabaseName = params.get("DatabaseName")
+        self.TableName = params.get("TableName")
+        self.DatasourceConnectionName = params.get("DatasourceConnectionName")
+        self.TableComment = params.get("TableComment")
+        self.Type = params.get("Type")
+        self.TableFormat = params.get("TableFormat")
+        self.UserAlias = params.get("UserAlias")
+        self.UserSubUin = params.get("UserSubUin")
+        if params.get("GovernPolicy") is not None:
+            self.GovernPolicy = DataGovernPolicy()
+            self.GovernPolicy._deserialize(params.get("GovernPolicy"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Task(AbstractModel):

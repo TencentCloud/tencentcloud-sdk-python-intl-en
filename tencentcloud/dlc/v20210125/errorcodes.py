@@ -14,6 +14,9 @@
 # limitations under the License.
 
 
+# CAM signature/authentication error.
+AUTHFAILURE = 'AuthFailure'
+
 # The operation failed.
 FAILEDOPERATION = 'FailedOperation'
 
@@ -22,6 +25,9 @@ FAILEDOPERATION_ANOTHERREQUESTPROCESSING = 'FailedOperation.AnotherRequestProces
 
 # The HTTP client request failed.
 FAILEDOPERATION_HTTPCLIENTDOREQUESTFAILED = 'FailedOperation.HttpClientDoRequestFailed'
+
+# No permission.
+FAILEDOPERATION_NOPERMISSION = 'FailedOperation.NoPermission'
 
 # An internal error occurred.
 INTERNALERROR = 'InternalError'
@@ -68,6 +74,12 @@ INVALIDPARAMETER_TASKALREADYFINISHED = 'InvalidParameter.TaskAlreadyFinished'
 # The parameter value is incorrect.
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
+# The quota limit is reached.
+LIMITEXCEEDED = 'LimitExceeded'
+
+# Operation denied.
+OPERATIONDENIED = 'OperationDenied'
+
 # The resource does not exist.
 RESOURCENOTFOUND = 'ResourceNotFound'
 
@@ -80,8 +92,17 @@ RESOURCEUNAVAILABLE = 'ResourceUnavailable'
 # The account balance is insufficient to run the SQL task.
 RESOURCEUNAVAILABLE_BALANCEINSUFFICIENT = 'ResourceUnavailable.BalanceInsufficient'
 
+# Unauthorized operation.
+UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
+
 # Unauthorized engine operation by a sub-user.
 UNAUTHORIZEDOPERATION_OPERATECOMPUTINGENGINE = 'UnauthorizedOperation.OperateComputingEngine'
 
 # The sub-user does not have permission to use the compute engine.
 UNAUTHORIZEDOPERATION_USECOMPUTINGENGINE = 'UnauthorizedOperation.UseComputingEngine'
+
+# Unknown parameter error.
+UNKNOWNPARAMETER = 'UnknownParameter'
+
+# Unsupported operation.
+UNSUPPORTEDOPERATION = 'UnsupportedOperation'
