@@ -122,7 +122,7 @@ FAILEDOPERATION_DIMQUERYREQUESTFAILED = 'FailedOperation.DimQueryRequestFailed'
 # The dividend is zero.
 FAILEDOPERATION_DIVISIONBYZERO = 'FailedOperation.DivisionByZero'
 
-# 
+# Backend service timed out.
 FAILEDOPERATION_DOHTTPTRANSFERFAILED = 'FailedOperation.DoHTTPTransferFailed'
 
 # Failed to query analysis data.

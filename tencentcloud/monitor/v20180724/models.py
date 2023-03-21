@@ -619,15 +619,19 @@ class AlarmPolicyCondition(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IsUnionRule: Metric trigger condition operator. Valid values: 0 (OR), 1 (AND)
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param IsUnionRule: Judgment condition of an alarm trigger condition (`0`: Any; `1`: All; `2`: Composite). When the value is set to `2` (i.e., composite trigger conditions), this parameter should be used together with `ComplexExpression`.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type IsUnionRule: int
         :param Rules: Alarm trigger condition list
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Rules: list of AlarmPolicyRule
+        :param ComplexExpression: The judgment expression of composite alarm trigger conditions, which is valid when the value of `IsUnionRule` is `2`. This parameter is used to determine that an alarm condition is met only when the expression values are `True` for multiple trigger conditions.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ComplexExpression: str
         """
         self.IsUnionRule = None
         self.Rules = None
+        self.ComplexExpression = None
 
 
     def _deserialize(self, params):
@@ -638,6 +642,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj = AlarmPolicyRule()
                 obj._deserialize(item)
                 self.Rules.append(obj)
+        self.ComplexExpression = params.get("ComplexExpression")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1929,7 +1934,7 @@ class CreatePolicyGroupCondition(AbstractModel):
         :type CalcPeriod: int
         :param ContinuePeriod: Number of consecutive periods after which an alarm will be triggered.
         :type ContinuePeriod: int
-        :param RuleId: If a metric is created based on a template, the RuleId of the metric in the template must be passed in.
+        :param RuleId: If a metric is created based on a template, the `RuleId` of the metric in the template must be passed in.
         :type RuleId: int
         """
         self.MetricId = None
@@ -1973,7 +1978,7 @@ class CreatePolicyGroupEventCondition(AbstractModel):
         :type AlarmNotifyType: int
         :param AlarmNotifyPeriod: Alarm sending period in seconds. The value <0 indicates that no alarm will be triggered. The value 0 indicates that an alarm is triggered only once. The value >0 indicates that an alarm is triggered at the interval of triggerTime.
         :type AlarmNotifyPeriod: int
-        :param RuleId: If a metric is created based on a template, the RuleId of the metric in the template must be passed in.
+        :param RuleId: If a metric is created based on a template, the `RuleId` of the metric in the template must be passed in.
         :type RuleId: int
         """
         self.EventId = None
@@ -2023,7 +2028,7 @@ class CreatePolicyGroupRequest(AbstractModel):
         :type Conditions: list of CreatePolicyGroupCondition
         :param EventConditions: Event alarm rules in the policy group.
         :type EventConditions: list of CreatePolicyGroupEventCondition
-        :param BackEndCall: Whether it is a backend call. If the value is 1, rules from the policy template will be used to fill in the `Conditions` and `EventConditions` fields.
+        :param BackEndCall: Whether it is a backend call. Rules pulled from the policy template will be used to fill in the `Conditions` and `EventConditions` fields only when the value of this parameter is `1`.
         :type BackEndCall: int
         :param IsUnionRule: The 'AND' and 'OR' rules for alarm metrics. The value 0 indicates 'OR', which means that an alarm will be triggered when any rule is met. The value 1 indicates 'AND', which means that an alarm will be triggered only when all rules are met.
         :type IsUnionRule: int
@@ -5894,6 +5899,9 @@ Note: This field may return null, indicating that no valid value was found.
         :param SupportRegions: List of regions that support this policy type.
 Note: This field may return null, indicating that no valid value was found.
         :type SupportRegions: list of str
+        :param DeprecatingInfo: Deprecated information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DeprecatingInfo: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListResponseDeprecatingInfo`
         """
         self.PolicyViewName = None
         self.EventMetrics = None
@@ -5903,6 +5911,7 @@ Note: This field may return null, indicating that no valid value was found.
         self.SortId = None
         self.SupportDefault = None
         self.SupportRegions = None
+        self.DeprecatingInfo = None
 
 
     def _deserialize(self, params):
@@ -5924,6 +5933,9 @@ Note: This field may return null, indicating that no valid value was found.
         self.SortId = params.get("SortId")
         self.SupportDefault = params.get("SupportDefault")
         self.SupportRegions = params.get("SupportRegions")
+        if params.get("DeprecatingInfo") is not None:
+            self.DeprecatingInfo = DescribePolicyConditionListResponseDeprecatingInfo()
+            self.DeprecatingInfo._deserialize(params.get("DeprecatingInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6353,6 +6365,41 @@ class DescribePolicyConditionListResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Conditions.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class DescribePolicyConditionListResponseDeprecatingInfo(AbstractModel):
+    """DescribePolicyConditionListResponseDeprecatingInfo
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Hidden: Whether to hide
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Hidden: bool
+        :param NewViewNames: Names of new views
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type NewViewNames: list of str
+        :param Description: Description
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Description: str
+        """
+        self.Hidden = None
+        self.NewViewNames = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.Hidden = params.get("Hidden")
+        self.NewViewNames = params.get("NewViewNames")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribePolicyGroupInfoCallback(AbstractModel):
@@ -7333,11 +7380,11 @@ class DescribeProductEventListRequest(AbstractModel):
         r"""
         :param Module: API component name. It is fixed to monitor.
         :type Module: str
-        :param ProductName: Filter by product type. For example, 'cvm' indicates Cloud Virtual Machine.
+        :param ProductName: Filter by product type. For example, "cvm" indicates Cloud Virtual Machine.
         :type ProductName: list of str
-        :param EventName: Filter by product name. For example, "guest_reboot" indicates server restart.
+        :param EventName: Filter by event name. For example, "guest_reboot" indicates instance restart.
         :type EventName: list of str
-        :param InstanceId: Affected object, such as "ins-19708ino"
+        :param InstanceId: Affected object, such as "ins-19708ino".
         :type InstanceId: list of str
         :param Dimensions: Filter by dimension, such as by public IP: 10.0.0.1.
         :type Dimensions: list of DescribeProductEventListDimensions
@@ -7739,13 +7786,53 @@ class DescribePrometheusConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Config: Global configuration
+        :type Config: str
+        :param ServiceMonitors: ServiceMonitor configuration
+        :type ServiceMonitors: list of PrometheusConfigItem
+        :param PodMonitors: PodMonitor configuration
+        :type PodMonitors: list of PrometheusConfigItem
+        :param RawJobs: Raw jobs
+        :type RawJobs: list of PrometheusConfigItem
+        :param Probes: 
+        :type Probes: list of PrometheusConfigItem
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.Config = None
+        self.ServiceMonitors = None
+        self.PodMonitors = None
+        self.RawJobs = None
+        self.Probes = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.Config = params.get("Config")
+        if params.get("ServiceMonitors") is not None:
+            self.ServiceMonitors = []
+            for item in params.get("ServiceMonitors"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.ServiceMonitors.append(obj)
+        if params.get("PodMonitors") is not None:
+            self.PodMonitors = []
+            for item in params.get("PodMonitors"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.PodMonitors.append(obj)
+        if params.get("RawJobs") is not None:
+            self.RawJobs = []
+            for item in params.get("RawJobs"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.RawJobs.append(obj)
+        if params.get("Probes") is not None:
+            self.Probes = []
+            for item in params.get("Probes"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.Probes.append(obj)
         self.RequestId = params.get("RequestId")
 
 

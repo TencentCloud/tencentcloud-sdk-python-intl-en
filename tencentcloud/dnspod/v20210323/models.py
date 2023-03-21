@@ -121,6 +121,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param MX: MX weight of the record
 Note: This field may return null, indicating that no valid values can be obtained.
         :type MX: int
+        :param Weight: The record weight.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Weight: int
         """
         self.RecordId = None
         self.SubDomain = None
@@ -134,6 +137,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.Id = None
         self.Enabled = None
         self.MX = None
+        self.Weight = None
 
 
     def _deserialize(self, params):
@@ -149,6 +153,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.Id = params.get("Id")
         self.Enabled = params.get("Enabled")
         self.MX = params.get("MX")
+        self.Weight = params.get("Weight")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
