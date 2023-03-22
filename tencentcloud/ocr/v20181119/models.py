@@ -751,6 +751,12 @@ class MLIDPassportOCRResponse(AbstractModel):
         :type CodeSet: str
         :param CodeCrc: The second row of the MRZ at the bottom
         :type CodeCrc: str
+        :param Surname: The surname.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Surname: str
+        :param GivenName: The given name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type GivenName: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -766,6 +772,8 @@ class MLIDPassportOCRResponse(AbstractModel):
         self.AdvancedInfo = None
         self.CodeSet = None
         self.CodeCrc = None
+        self.Surname = None
+        self.GivenName = None
         self.RequestId = None
 
 
@@ -782,6 +790,8 @@ class MLIDPassportOCRResponse(AbstractModel):
         self.AdvancedInfo = params.get("AdvancedInfo")
         self.CodeSet = params.get("CodeSet")
         self.CodeCrc = params.get("CodeCrc")
+        self.Surname = params.get("Surname")
+        self.GivenName = params.get("GivenName")
         self.RequestId = params.get("RequestId")
 
 
