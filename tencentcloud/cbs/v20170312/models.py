@@ -318,9 +318,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param AdvancedRetentionPolicy: Retention policy for scheduled snapshots.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AdvancedRetentionPolicy: :class:`tencentcloud.cbs.v20170312.models.AdvancedRetentionPolicy`
-        :param CopyFromAccountUin: 
+        :param CopyFromAccountUin: Source account ID of the copied snapshot policy
+Note: This field may return null, indicating that no valid values can be obtained.
         :type CopyFromAccountUin: str
-        :param Tags: 
+        :param Tags: Tag.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Tags: list of Tag
         """
         self.DiskIdSet = None
@@ -1647,6 +1649,80 @@ class DetachDisksResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DetailPrice(AbstractModel):
+    """Pricing details for the cloud disk.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PriceTitle: Name of the billable item.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PriceTitle: str
+        :param PriceName: Name of the billable item displayed in the console.
+        :type PriceName: str
+        :param OriginalPrice: Original price of a monthly subscribed cloud disk, in USD.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OriginalPrice: float
+        :param DiscountPrice: Discounted price of a monthly subscribed cloud disk, in USD.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DiscountPrice: float
+        :param UnitPrice: Original unit price of a pay-as-you-go cloud disk, in USD.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UnitPrice: float
+        :param UnitPriceDiscount: Discount unit price of a pay-as-you-go cloud disk, in USD.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UnitPriceDiscount: float
+        :param ChargeUnit: Billing unit for pay-as-you-go cloud disks. Valid value: `HOUR` (billed hourly).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ChargeUnit: str
+        :param OriginalPriceHigh: Original highly-precise price of a monthly subscribed cloud disk, in USD.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OriginalPriceHigh: str
+        :param DiscountPriceHigh: Discounted highly-precise price of a monthly subscribed cloud disk, in USD.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DiscountPriceHigh: str
+        :param UnitPriceHigh: Original highly-precise unit price of a pay-as-you-go cloud disk, in USD.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UnitPriceHigh: str
+        :param UnitPriceDiscountHigh: Discounted highly-precise unit price of a pay-as-you-go cloud disk, in USD.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UnitPriceDiscountHigh: str
+        """
+        self.PriceTitle = None
+        self.PriceName = None
+        self.OriginalPrice = None
+        self.DiscountPrice = None
+        self.UnitPrice = None
+        self.UnitPriceDiscount = None
+        self.ChargeUnit = None
+        self.OriginalPriceHigh = None
+        self.DiscountPriceHigh = None
+        self.UnitPriceHigh = None
+        self.UnitPriceDiscountHigh = None
+
+
+    def _deserialize(self, params):
+        self.PriceTitle = params.get("PriceTitle")
+        self.PriceName = params.get("PriceName")
+        self.OriginalPrice = params.get("OriginalPrice")
+        self.DiscountPrice = params.get("DiscountPrice")
+        self.UnitPrice = params.get("UnitPrice")
+        self.UnitPriceDiscount = params.get("UnitPriceDiscount")
+        self.ChargeUnit = params.get("ChargeUnit")
+        self.OriginalPriceHigh = params.get("OriginalPriceHigh")
+        self.DiscountPriceHigh = params.get("DiscountPriceHigh")
+        self.UnitPriceHigh = params.get("UnitPriceHigh")
+        self.UnitPriceDiscountHigh = params.get("UnitPriceDiscountHigh")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Disk(AbstractModel):
     """The details of a cloud disk
 
@@ -1745,9 +1821,11 @@ Note: This field may return null, indicating that no valid value was found.
         :type DiskBackupCount: int
         :param InstanceType: Type of the instance mounted to the cloud disk. Valid values: <br><li>CVM<br><li>EKS
         :type InstanceType: str
-        :param LastAttachInsId: 
+        :param LastAttachInsId: ID of the last instance to which the cloud disk is attached
+Note: This field may return null, indicating that no valid values can be obtained.
         :type LastAttachInsId: str
-        :param ErrorPrompt: 
+        :param ErrorPrompt: Error message for the last operation of the cloud disk
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ErrorPrompt: str
         """
         self.DeleteWithInstance = None
@@ -1972,6 +2050,9 @@ Note: This field may return null, indicating that no valid value was found.
         :type MinDiskSize: int
         :param MaxDiskSize: The maximum configurable cloud disk size (in GB).
         :type MaxDiskSize: int
+        :param Price: Price of a monthly subscribed or pay-as-you-go cloud disk.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Price: :class:`tencentcloud.cbs.v20170312.models.Price`
         """
         self.Available = None
         self.DiskChargeType = None
@@ -1984,6 +2065,7 @@ Note: This field may return null, indicating that no valid value was found.
         self.DiskUsage = None
         self.MinDiskSize = None
         self.MaxDiskSize = None
+        self.Price = None
 
 
     def _deserialize(self, params):
@@ -1998,6 +2080,9 @@ Note: This field may return null, indicating that no valid value was found.
         self.DiskUsage = params.get("DiskUsage")
         self.MinDiskSize = params.get("MinDiskSize")
         self.MaxDiskSize = params.get("MaxDiskSize")
+        if params.get("Price") is not None:
+            self.Price = Price()
+            self.Price._deserialize(params.get("Price"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2766,6 +2851,9 @@ Note: This field may return null, indicating that no valid value was found.
         :type CageId: str
         :param ProjectId: ID of the project to which the instance belongs. This parameter can be obtained from the projectId field in the returned values of [DescribeProject](https://intl.cloud.tencent.com/document/api/378/4400?from_cn_redirect=1). If this is left empty, default project is used.
         :type ProjectId: int
+        :param ProjectName: Project name of the instance.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProjectName: str
         :param CdcName: Dedicated cluster name. When it is an input parameter, it is ignored.  When it is an output parameter, it is the name of the dedicated cluster the cloud disk belongs to, and it can be left blank.
 Note: This field may return null, indicating that no valid value was found.
         :type CdcName: str
@@ -2778,6 +2866,7 @@ Note: This field may return null, indicating that no valid value was found.
         self.Zone = None
         self.CageId = None
         self.ProjectId = None
+        self.ProjectName = None
         self.CdcName = None
         self.CdcId = None
         self.DedicatedClusterId = None
@@ -2787,6 +2876,7 @@ Note: This field may return null, indicating that no valid value was found.
         self.Zone = params.get("Zone")
         self.CageId = params.get("CageId")
         self.ProjectId = params.get("ProjectId")
+        self.ProjectName = params.get("ProjectName")
         self.CdcName = params.get("CdcName")
         self.CdcId = params.get("CdcId")
         self.DedicatedClusterId = params.get("DedicatedClusterId")
@@ -2842,51 +2932,61 @@ class PrepayPrice(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OriginalPrice: Original payment of a monthly-subscribed cloud disk or a snapshot, in USD.
-        :type OriginalPrice: float
         :param DiscountPrice: Discounted price of a monthly-subscribed cloud disk or a snapshot, in USD.
         :type DiscountPrice: float
+        :param ChargeUnit: Billing unit for pay-as-you-go cloud disks. Valid value: <br><li>HOUR: billed hourly.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type ChargeUnit: str
+        :param UnitPriceHigh: Original unit price of a pay-as-you-go cloud disk, in USD, with six decimal places.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type UnitPriceHigh: str
         :param OriginalPriceHigh: Original payment of a monthly-subscribed cloud disk or a snapshot, in USD, with six decimal places.
         :type OriginalPriceHigh: str
+        :param OriginalPrice: Original payment of a monthly-subscribed cloud disk or a snapshot, in USD.
+        :type OriginalPrice: float
+        :param UnitPriceDiscount: Discount unit price of a pay-as-you-go cloud disk, in USD.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type UnitPriceDiscount: float
+        :param UnitPriceDiscountHigh: Discounted unit price of a pay-as-you-go cloud disk, in USD, with six decimal places.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type UnitPriceDiscountHigh: str
         :param DiscountPriceHigh: Discounted price of a monthly-subscribed cloud disk or a snapshot, in USD, with six decimal places.
         :type DiscountPriceHigh: str
         :param UnitPrice: Original unit price of a pay-as-you-go cloud disk, in USD.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type UnitPrice: float
-        :param ChargeUnit: Billing unit for pay-as-you-go cloud disks. Valid value: <br><li>HOUR: billed hourly.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type ChargeUnit: str
-        :param UnitPriceDiscount: Discount unit price of a pay-as-you-go cloud disk, in USD.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type UnitPriceDiscount: float
-        :param UnitPriceHigh: Original unit price of a pay-as-you-go cloud disk, in USD, with six decimal places.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type UnitPriceHigh: str
-        :param UnitPriceDiscountHigh: Discounted unit price of a pay-as-you-go cloud disk, in USD, with six decimal places.
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type UnitPriceDiscountHigh: str
+        :param DetailPrices: Detailed billing items
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DetailPrices: list of DetailPrice
         """
-        self.OriginalPrice = None
         self.DiscountPrice = None
+        self.ChargeUnit = None
+        self.UnitPriceHigh = None
         self.OriginalPriceHigh = None
+        self.OriginalPrice = None
+        self.UnitPriceDiscount = None
+        self.UnitPriceDiscountHigh = None
         self.DiscountPriceHigh = None
         self.UnitPrice = None
-        self.ChargeUnit = None
-        self.UnitPriceDiscount = None
-        self.UnitPriceHigh = None
-        self.UnitPriceDiscountHigh = None
+        self.DetailPrices = None
 
 
     def _deserialize(self, params):
-        self.OriginalPrice = params.get("OriginalPrice")
         self.DiscountPrice = params.get("DiscountPrice")
+        self.ChargeUnit = params.get("ChargeUnit")
+        self.UnitPriceHigh = params.get("UnitPriceHigh")
         self.OriginalPriceHigh = params.get("OriginalPriceHigh")
+        self.OriginalPrice = params.get("OriginalPrice")
+        self.UnitPriceDiscount = params.get("UnitPriceDiscount")
+        self.UnitPriceDiscountHigh = params.get("UnitPriceDiscountHigh")
         self.DiscountPriceHigh = params.get("DiscountPriceHigh")
         self.UnitPrice = params.get("UnitPrice")
-        self.ChargeUnit = params.get("ChargeUnit")
-        self.UnitPriceDiscount = params.get("UnitPriceDiscount")
-        self.UnitPriceHigh = params.get("UnitPriceHigh")
-        self.UnitPriceDiscountHigh = params.get("UnitPriceDiscountHigh")
+        if params.get("DetailPrices") is not None:
+            self.DetailPrices = []
+            for item in params.get("DetailPrices"):
+                obj = DetailPrice()
+                obj._deserialize(item)
+                self.DetailPrices.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

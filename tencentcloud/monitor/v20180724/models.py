@@ -7794,7 +7794,7 @@ class DescribePrometheusConfigResponse(AbstractModel):
         :type PodMonitors: list of PrometheusConfigItem
         :param RawJobs: Raw jobs
         :type RawJobs: list of PrometheusConfigItem
-        :param Probes: 
+        :param Probes: Probes
         :type Probes: list of PrometheusConfigItem
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -9038,7 +9038,7 @@ class DescribeStatisticDataRequest(AbstractModel):
         r"""
         :param Module: Module, whose value is fixed at `monitor`
         :type Module: str
-        :param Namespace: Namespace. Valid values: QCE/TKE
+        :param Namespace: Namespace. Valid values: `QCE`, `TKE2`.
         :type Namespace: str
         :param MetricNames: Metric name list
         :type MetricNames: list of str
@@ -10199,6 +10199,28 @@ class Label(AbstractModel):
     """Tags in K8s, which generally exist in the form of an array.
 
     """
+
+    def __init__(self):
+        r"""
+        :param Name: Label name
+        :type Name: str
+        :param Value: Label value
+        :type Value: str
+        """
+        self.Name = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class LogAlarmReq(AbstractModel):
@@ -12086,6 +12108,32 @@ class PrometheusAgentInfo(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param ClusterType: Cluster type
+        :type ClusterType: str
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param Describe: Remarks
+        :type Describe: str
+        """
+        self.ClusterType = None
+        self.ClusterId = None
+        self.Describe = None
+
+
+    def _deserialize(self, params):
+        self.ClusterType = params.get("ClusterType")
+        self.ClusterId = params.get("ClusterId")
+        self.Describe = params.get("Describe")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class PrometheusAgentOverview(AbstractModel):
     """Overview of managed Prometheus agent
@@ -12117,6 +12165,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param FailedReason: Recorded information of failed operations, such as association.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type FailedReason: str
+        :param Name: Agent name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Name: str
         """
         self.ClusterType = None
         self.ClusterId = None
@@ -12126,6 +12177,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.Region = None
         self.VpcId = None
         self.FailedReason = None
+        self.Name = None
 
 
     def _deserialize(self, params):
@@ -12142,6 +12194,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.Region = params.get("Region")
         self.VpcId = params.get("VpcId")
         self.FailedReason = params.get("FailedReason")
+        self.Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -5801,6 +5801,9 @@ Note: `null` may be returned for this field, indicating that no valid values can
         :param QuotaConfig: Traffic throttling policy in topic dimension.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type QuotaConfig: :class:`tencentcloud.ckafka.v20190819.models.InstanceQuotaConfigResp`
+        :param ReplicaNum: Number of replicas
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ReplicaNum: int
         """
         self.TopicId = None
         self.CreateTime = None
@@ -5813,6 +5816,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.EnableAclRule = None
         self.AclRuleList = None
         self.QuotaConfig = None
+        self.ReplicaNum = None
 
 
     def _deserialize(self, params):
@@ -5841,6 +5845,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         if params.get("QuotaConfig") is not None:
             self.QuotaConfig = InstanceQuotaConfigResp()
             self.QuotaConfig._deserialize(params.get("QuotaConfig"))
+        self.ReplicaNum = params.get("ReplicaNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5890,6 +5895,9 @@ Note: `null` may be returned for this field, indicating that no valid values can
         :param Status: `0`: normal, `1`: deleted, `2`: deleting
 Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :type Status: int
+        :param Tags: Tag list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Tags: list of Tag
         """
         self.TopicName = None
         self.TopicId = None
@@ -5905,6 +5913,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
         self.Config = None
         self.RetentionTimeConfig = None
         self.Status = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -5926,6 +5935,12 @@ Note: `null` may be returned for this field, indicating that no valid values can
             self.RetentionTimeConfig = TopicRetentionTimeConfigRsp()
             self.RetentionTimeConfig._deserialize(params.get("RetentionTimeConfig"))
         self.Status = params.get("Status")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
