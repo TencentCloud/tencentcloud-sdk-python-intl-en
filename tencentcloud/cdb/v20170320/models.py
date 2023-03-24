@@ -1174,6 +1174,10 @@ class CloneItem(AbstractModel):
         :type EndTime: str
         :param TaskStatus: Task status. Valid values: `initial`, `running`, `wait_complete`, `success`, `failed`.
         :type TaskStatus: str
+        :param NewRegionId: Clone instance region ID
+        :type NewRegionId: int
+        :param SrcRegionId: Source instance region ID
+        :type SrcRegionId: int
         """
         self.SrcInstanceId = None
         self.DstInstanceId = None
@@ -1183,6 +1187,8 @@ class CloneItem(AbstractModel):
         self.StartTime = None
         self.EndTime = None
         self.TaskStatus = None
+        self.NewRegionId = None
+        self.SrcRegionId = None
 
 
     def _deserialize(self, params):
@@ -1194,6 +1200,8 @@ class CloneItem(AbstractModel):
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
         self.TaskStatus = params.get("TaskStatus")
+        self.NewRegionId = params.get("NewRegionId")
+        self.SrcRegionId = params.get("SrcRegionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
