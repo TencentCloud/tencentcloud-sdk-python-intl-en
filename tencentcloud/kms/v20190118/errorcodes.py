@@ -134,7 +134,7 @@ RESOURCEUNAVAILABLE_TOKENEXPIRED = 'ResourceUnavailable.TokenExpired'
 # Unauthorized operation.
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
 
-# 
+# Unsupported operation.
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'
 
 # External CMKs cannot be rotated.

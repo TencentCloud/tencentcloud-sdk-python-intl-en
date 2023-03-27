@@ -84,7 +84,7 @@ class ImageModerationRequest(AbstractModel):
         :type DataId: str
         :param FileContent: This field indicates the Base64 encoding of the image to be detected. The image **size cannot exceed 5 MB**. **A resolution of 256x256 or higher is recommended**; otherwise, the recognition effect may be affected.<br>Note: **you must enter a value for either this field or `FileUrl`**.
         :type FileContent: str
-        :param FileUrl: This field indicates the access URL of the image to be detected in PNG, JPG, JPEG, BMP, GIF, or WEBP format and of **up to 5 MB in size**. **A resolution of 256x256 or higher** is recommended. The image download time should be limited to 3 seconds; otherwise, a download timeout will be returned.<br>Note: **you must enter a value for either this field or `FileContent`**.
+        :param FileUrl: URL of the image to moderate. It supports PNG, JPG, JPEG, BMP, GIF AND WEBP files. The file **cannot exceed 5 MB** and the resolution should not below **256*246**. The default timeout period is 3 seconds. Note that **redirection URLs may be blocked by security policies**. In this case, an error message will return. For example, if an HTTP request gets the 302 code, the error `ResourceUnavailable.ImageDownloadError` is returned. <br>**Either `FileUrl` or `FileContent` must be specified. 
         :type FileUrl: str
         :param Interval: **For GIF/long image detection only**. This field indicates the GIF frame capturing frequency (the image interval for capturing a frame for detection). For long images, you should round the width:height ratio as the total number of images to be split. The default value is 0, where only the first frame of the GIF image will be detected, and the long image will not be split.<br>Note: the `Interval` and `MaxFrames` parameters need to be used in combination; for example, if `Interval` is `3` and `MaxFrames` is `400`, the GIF/long image will be detected once every two frames for up to 400 frames.
         :type Interval: int
@@ -140,7 +140,7 @@ class ImageModerationResponse(AbstractModel):
         :type Label: str
         :param SubLabel: This field is used to return the subtag name under the maliciousness tag with the highest priority hit by the detection result, such as *Porn-SexBehavior*. If no subtag is hit, an empty string will be returned.
         :type SubLabel: str
-        :param Score: This field is used to return the confidence under the current tag (Label). Value range: 0 (**the lowest confidence**)–100 (**the highest confidence**), where a higher value indicates that the text is more likely to fall into the category of the current returned tag; for example, *Porn 99* indicates that the text is highly likely to be pornographic, while *Porn 0* indicates that the text is not pornographic.
+        :param Score: Confidence score of the under the current label. Value range: 0 (**the lowest confidence**) to 100 (**the highest confidence**). For example, *Porn 99* indicates that the image is highly likely to be pornographic, while *Porn 0* indicates that the image is not pornographic.
         :type Score: int
         :param LabelResults: This field is used to return the detailed recognition result for the maliciousness tag hit by the categorization model, such as porn, advertising, or any other offensive, unsafe, or inappropriate type of content.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -163,6 +163,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Extra: str
         :param FileMD5: This field is used to return the MD5 checksum of the detected object for easier verification of the file integrity.
         :type FileMD5: str
+        :param RecognitionResults: Image recognition result, including the hit tags, confidence and location.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type RecognitionResults: list of RecognitionResult
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -178,6 +181,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.BizType = None
         self.Extra = None
         self.FileMD5 = None
+        self.RecognitionResults = None
         self.RequestId = None
 
 
@@ -214,6 +218,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.BizType = params.get("BizType")
         self.Extra = params.get("Extra")
         self.FileMD5 = params.get("FileMD5")
+        if params.get("RecognitionResults") is not None:
+            self.RecognitionResults = []
+            for item in params.get("RecognitionResults"):
+                obj = RecognitionResult()
+                obj._deserialize(item)
+                self.RecognitionResults.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -267,7 +277,7 @@ class LabelResult(AbstractModel):
         :type Label: str
         :param SubLabel: This field is used to return the detection result for a subtag under the maliciousness tag, such as *Porn-SexBehavior*.
         :type SubLabel: str
-        :param Score: This field is used to return the confidence under the current tag (Label). Value range: 0 (**the lowest confidence**)–100 (**the highest confidence**), where a higher value indicates that the text is more likely to fall into the category of the current returned tag; for example, *Porn 99* indicates that the text is highly likely to be pornographic, while *Porn 0* indicates that the text is not pornographic.
+        :param Score: Confidence score of the under the current label. Value range: 0 (**the lowest confidence**) to 100 (**the highest confidence**). For example, *Porn 99* indicates that the image is highly likely to be pornographic, while *Porn 0* indicates that the image is not pornographic.
         :type Score: int
         :param Details: This field is used to return the details of the subtag hit by the categorization model, such as number, hit tag name, and score.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -648,6 +658,78 @@ class OcrTextDetail(AbstractModel):
             self.Location._deserialize(params.get("Location"))
         self.Rate = params.get("Rate")
         self.SubLabel = params.get("SubLabel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecognitionResult(AbstractModel):
+    """Label of the identification moderation result
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Label: Value: `Scene`
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Label: str
+        :param Tags: Hit tags under the `Label`
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Tags: list of RecognitionTag
+        """
+        self.Label = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.Label = params.get("Label")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = RecognitionTag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecognitionTag(AbstractModel):
+    """Recognition tag information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Tag name
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Name: str
+        :param Score: Confidence score. Value: 1 to 100. 
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Score: int
+        :param Location: Location information. It returns 0 if there is not location information.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Location: :class:`tencentcloud.ims.v20201229.models.Location`
+        """
+        self.Name = None
+        self.Score = None
+        self.Location = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Score = params.get("Score")
+        if params.get("Location") is not None:
+            self.Location = Location()
+            self.Location._deserialize(params.get("Location"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

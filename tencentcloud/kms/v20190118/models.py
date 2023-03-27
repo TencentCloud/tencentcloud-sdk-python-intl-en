@@ -1898,6 +1898,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         :param ExclusiveHSMEnabled: Whether to activate Exclusive KMS
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type ExclusiveHSMEnabled: bool
+        :param SubscriptionInfo: KMS subscription information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SubscriptionInfo: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -1909,6 +1912,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self.ProResourceId = None
         self.ExclusiveVSMEnabled = None
         self.ExclusiveHSMEnabled = None
+        self.SubscriptionInfo = None
         self.RequestId = None
 
 
@@ -1921,6 +1925,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self.ProResourceId = params.get("ProResourceId")
         self.ExclusiveVSMEnabled = params.get("ExclusiveVSMEnabled")
         self.ExclusiveHSMEnabled = params.get("ExclusiveHSMEnabled")
+        self.SubscriptionInfo = params.get("SubscriptionInfo")
         self.RequestId = params.get("RequestId")
 
 

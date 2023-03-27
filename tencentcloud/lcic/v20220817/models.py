@@ -69,6 +69,7 @@ class AddGroupMemberResponse(AbstractModel):
 
 class AppCustomContent(AbstractModel):
     """Custom application content
+    Used by actions: SetAppCustomContent.
 
     """
 
@@ -349,9 +350,9 @@ class BatchDeleteRecordRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RoomIds: The room IDs.	
+        :param RoomIds: The room IDs.
         :type RoomIds: list of int
-        :param SdkAppId: The SDKAppID assigned by LCIC.	
+        :param SdkAppId: The SDKAppID assigned by LCIC.
         :type SdkAppId: int
         """
         self.RoomIds = None
@@ -377,8 +378,7 @@ class BatchDeleteRecordResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RoomIds: The IDs of the rooms whose recordings are deleted.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param RoomIds: The IDs of the rooms whose recordings are deleted. Note: This field may return null, indicating that no valid values can be obtained.
         :type RoomIds: list of int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -428,8 +428,7 @@ class BatchRegisterResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Users: The information of the successfully registered users.	
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param Users: The information of the successfully registered users. Note: This field may return null, indicating that no valid values can be obtained.
         :type Users: list of BatchUserInfo
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -450,6 +449,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 class BatchUserInfo(AbstractModel):
     """The information of registered users.
+    Used by actions: BatchRegister.
 
     """
 
@@ -458,11 +458,9 @@ class BatchUserInfo(AbstractModel):
         :param SdkAppId: The SDKAppID assigned by LCIC.
 
         :type SdkAppId: int
-        :param UserId: The user ID.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param UserId: The user ID. Note: This field may return null, indicating that no valid values can be obtained
         :type UserId: str
-        :param OriginId: The user’s ID in your system. If the same request parameter is not specified, the value of this parameter will be the same as `UserId`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param OriginId: The user’s ID in your system. If the same request parameter is not specified, the value of this parameter will be the same as UserId. Note: This field may return null, indicating that no valid values can be obtained.
         :type OriginId: str
         """
         self.SdkAppId = None
@@ -485,26 +483,19 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 class BatchUserRequest(AbstractModel):
     """The information of the users to register.
+    Used by actions: BatchRegister.
 
     """
 
     def __init__(self):
         r"""
-        :param SdkAppId: The SDKAppID assigned by LCIC.
-
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param SdkAppId: The SDKAppID assigned by LCIC.  Note: This field may return null, indicating that no valid values can be obtained.
         :type SdkAppId: int
-        :param Name: The username.
-
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param Name: The username.  Note: This field may return null, indicating that no valid values can be obtained.
         :type Name: str
-        :param OriginId: The user’s ID in your system, which must be unique across the same application.
-
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param OriginId: The user’s ID in your system, which must be unique across the same application.  Note: This field may return null, indicating that no valid values can be obtained.
         :type OriginId: str
-        :param Avatar: The user’s profile photo.
-
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param Avatar: The user’s profile photo.  Note: This field may return null, indicating that no valid values can be obtained.
         :type Avatar: str
         """
         self.SdkAppId = None
@@ -778,19 +769,19 @@ class CreateRoomRequest(AbstractModel):
         :type EndTime: int
         :param SdkAppId: LCIC SdkAppId
         :type SdkAppId: int
-        :param Resolution: Resolution. Valid values: `1`: SD; `2`: HD; `3`: FHD
+        :param Resolution: 	Resolution. Valid values: 1: SD; 2: HD; 3: FHD
         :type Resolution: int
-        :param MaxMicNumber: Maximum number of mic-on users (excluding teachers). Value range: [0, 16]	
+        :param MaxMicNumber: Maximum number of mic-on users (excluding teachers). Value range: [0, 16]
         :type MaxMicNumber: int
-        :param SubType: The room subtype. Valid values: `videodoc`: Document + Video; `video`: Video only. 
+        :param SubType: The room subtype. Valid values: videodoc: Document + Video; video: Video only.
         :type SubType: str
         :param TeacherId: The user ID of the teacher. User IDs are returned by the user registration APIs. The user specified will have teacher permissions in the room created.
         :type TeacherId: str
-        :param AutoMic: Whether to automatically turn the mic on when the user enters a room. Valid values: `0`: No (default value); `1`: Yes.
+        :param AutoMic: Whether to automatically turn the mic on when the user enters a room. Valid values: 0: No (default value); 1: Yes.
         :type AutoMic: int
-        :param AudioQuality: Whether to enable the high audio quality mode. Valid values: `0`: No (default value); `1`: Yes.
+        :param AudioQuality: Whether to enable the high audio quality mode. Valid values: 0: No (default value); 1: Yes.
         :type AudioQuality: int
-        :param DisableRecord: Whether to disable auto recording. Valid values: `0`: No (default); `1`: Yes. If this parameter is `0`, recording will start when the class starts and stops when the class ends.
+        :param DisableRecord: Whether to disable auto recording. Valid values: 0: No (default); 1: Yes. If this parameter is 0, recording will start when the class starts and stops when the class ends.
         :type DisableRecord: int
         :param Assistants: The user IDs of the teaching assistants. User IDs are returned by the user registration APIs. The users specified will have teaching assistant permissions in the room created.
         :type Assistants: list of str
@@ -1025,7 +1016,7 @@ class DeleteRecordRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RoomId: The room ID.	
+        :param RoomId: The room ID.
         :type RoomId: int
         :param SdkAppId: The SDKAppID assigned by LCIC.
         :type SdkAppId: int
@@ -1115,7 +1106,7 @@ class DescribeCurrentMemberListRequest(AbstractModel):
         :type RoomId: int
         :param Page: The page to return records from. Pagination starts from 1.
         :type Page: int
-        :param Limit: The maximum number of records per page. The value of this parameter cannot exceed `1000`.
+        :param Limit: The maximum number of records per page. The value of this parameter cannot exceed 1000.
         :type Limit: int
         """
         self.RoomId = None
@@ -1215,7 +1206,7 @@ class DescribeDocumentResponse(AbstractModel):
         :type TranscodeType: int
         :param TranscodeProgress: The transcoding progress. Value range: 0-100.
         :type TranscodeProgress: int
-        :param TranscodeState: The transcoding status. `0`: The file is not transcoded. `1`: The file is being transcoded. `2`: Transcoding failed. `3`: Transcoding is successful.
+        :param TranscodeState: The transcoding status. 0: The file is not transcoded. 1: The file is being transcoded. 2: Transcoding failed. 3: Transcoding is successful.
         :type TranscodeState: int
         :param TranscodeInfo: The error message for failed transcoding.
         :type TranscodeInfo: str
@@ -1276,14 +1267,9 @@ class DescribeDocumentsByRoomRequest(AbstractModel):
         :type SdkAppId: int
         :param Page: The page to return records from. Pagination starts from 1, which is also the default value of this parameter.
         :type Page: int
-        :param Limit: The maximum number of records to return per page. The maximum value can be `1000`. The default value is `100`.
+        :param Limit: The maximum number of records to return per page. The maximum value can be 1000. The default value is 100.
         :type Limit: int
-        :param Permission: The document access type.
-[0]: The private documents of the owner.
-[1]: The public documents of the owner.
-[0,1]: The private and public documents of the owner.
-[2]: The private and public documents of all users (including the owner).
-Default value: [2].
+        :param Permission: The document access type. [0]: The private documents of the owner. [1]: The public documents of the owner. [0,1]: The private and public documents of the owner. [2]: The private and public documents of all users (including the owner). Default value: [2].
         :type Permission: list of int non-negative
         :param Owner: The user ID of the document owner. If you do not specify this, the information of all documents under the application will be returned.
         :type Owner: str
@@ -1319,8 +1305,7 @@ class DescribeDocumentsByRoomResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Documents: The information of the documents.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param Documents: The information of the documents. Note: This field may return null, indicating that no valid values can be obtained.
         :type Documents: list of DocumentInfo
         :param Total: The total number of records that meet the conditions.
         :type Total: int
@@ -1354,11 +1339,11 @@ class DescribeGroupListRequest(AbstractModel):
         :type SdkAppId: int
         :param Page: The page to return records from. Pagination starts from 1.
         :type Page: int
-        :param Limit: The maximum number of records per page. The value of this parameter cannot exceed `1000` and is `20` by default.
+        :param Limit: The maximum number of records per page. The value of this parameter cannot exceed 1000 and is 20 by default.
         :type Limit: int
-        :param TeacherId: The user ID of the teacher, which is used as the filter. This parameter and `MemberId` are mutually exclusive. If both are specified, only this parameter will take effect.
+        :param TeacherId: The user ID of the teacher, which is used as the filter. This parameter and MemberId are mutually exclusive. If both are specified, only this parameter will take effect.
         :type TeacherId: str
-        :param MemberId: The user ID of a member, which is used as the filter. This parameter and `TeacherId` are mutually exclusive.
+        :param MemberId: The user ID of a member, which is used as the filter. This parameter and TeacherId are mutually exclusive.
         :type MemberId: str
         """
         self.SdkAppId = None
@@ -1392,8 +1377,7 @@ class DescribeGroupListResponse(AbstractModel):
         r"""
         :param Total: The total number of groups that meet the conditions.
         :type Total: int
-        :param GroupInfos: The information of the groups.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param GroupInfos: The information of the groups. Note: This field may return null, indicating that no valid values can be obtained.
         :type GroupInfos: list of GroupInfo
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1425,9 +1409,9 @@ class DescribeGroupMemberListRequest(AbstractModel):
         :type GroupId: str
         :param SdkAppId: The SDKAppID assigned by LCIC.
         :type SdkAppId: int
-        :param Page: The page to return records from. The default value is `1`.
+        :param Page: The page to return records from. The default value is 1.
         :type Page: int
-        :param Limit: The maximum number of records per page. The value of this parameter cannot exceed `1000` and is `20` by default.
+        :param Limit: The maximum number of records per page. The value of this parameter cannot exceed 1000 and is 20 by default.
         :type Limit: int
         """
         self.GroupId = None
@@ -1459,8 +1443,7 @@ class DescribeGroupMemberListResponse(AbstractModel):
         r"""
         :param Total: The total number of records that meet the conditions.
         :type Total: int
-        :param MemberIds: The user IDs of the members.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param MemberIds: The user IDs of the members. Note: This field may return null, indicating that no valid values can be obtained.
         :type MemberIds: list of str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1515,15 +1498,11 @@ class DescribeGroupResponse(AbstractModel):
         :type GroupId: str
         :param GroupName: The group name.
         :type GroupName: str
-        :param TeacherId: The user ID of the group’s teacher.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param TeacherId: The user ID of the group’s teacher. Note: This field may return null, indicating that no valid values can be obtained.
         :type TeacherId: str
-        :param GroupType: The group type.
-`0`: Ordinary group.
-`1`: Merged group. If the group queried is a merged group, the IDs of the sub-groups will be returned.
+        :param GroupType: The group type. 0: Ordinary group. 1: Merged group. If the group queried is a merged group, the IDs of the sub-groups will be returned.
         :type GroupType: int
-        :param SubGroupIds: The IDs of the sub-groups.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param SubGroupIds: The IDs of the sub-groups. Note: This field may return null, indicating that no valid values can be obtained.
         :type SubGroupIds: list of str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1586,29 +1565,25 @@ class DescribeRoomResponse(AbstractModel):
         :type TeacherId: str
         :param SdkAppId: LCIC SdkAppId	
         :type SdkAppId: int
-        :param Resolution: Resolution. Valid values: `1`: SD; `2`: HD; `3`: FHD	
+        :param Resolution: Resolution. Valid values: 1: SD; 2: HD; 3: FHD
         :type Resolution: int
-        :param MaxMicNumber: Maximum number of mic-on users (excluding teachers). Value range: [0, 16]	
+        :param MaxMicNumber: Maximum number of mic-on users (excluding teachers). Value range: [0, 16]
         :type MaxMicNumber: int
-        :param AutoMic: Whether to automatically turn the mic on when the user enters a room. Valid values: `0`: No (default value); `1`: Yes.	
+        :param AutoMic: Whether to automatically turn the mic on when the user enters a room. Valid values: 0: No (default value); 1: Yes.
         :type AutoMic: int
-        :param AudioQuality: Whether to enable the high audio quality mode. Valid values: `0`: No (default value); `1`: Yes.	
+        :param AudioQuality: Whether to enable the high audio quality mode. Valid values: 0: No (default value); 1: Yes.
         :type AudioQuality: int
-        :param SubType: The room subtype. Valid values: `videodoc`: Document + Video; `video`: Video only.
+        :param SubType: The room subtype. Valid values: videodoc: Document + Video; video: Video only.
         :type SubType: str
-        :param DisableRecord: Whether to disable auto recording. Valid values: `0`: No (default); `1`: Yes. If this parameter is `0`, recording will start when the class starts and stops when the class ends.	
+        :param DisableRecord: Whether to disable auto recording. Valid values: 0: No (default); 1: Yes. If this parameter is 0, recording will start when the class starts and stops when the class ends.
         :type DisableRecord: int
-        :param Assistants: Assistant ID list	
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param Assistants: Assistant ID list Note: This field may return null, indicating that no valid values can be obtained.
         :type Assistants: list of str
-        :param RecordUrl: Recording URL. This parameter exists only after a room is ended.	
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param RecordUrl: Recording URL. This parameter exists only after a room is ended. Note: This field may return null, indicating that no valid values can be obtained.
         :type RecordUrl: str
-        :param Status: The class status. `0`: The class has not started. `1`: The class has started. `2`: The class ended. `3`: The class expired.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param Status: The class status. 0: The class has not started. 1: The class has started. 2: The class ended. 3: The class expired. Note: This field may return null, indicating that no valid values can be obtained.
         :type Status: int
-        :param GroupId: 
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param GroupId: Note: This field may return null, indicating that no valid values can be obtained.
         :type GroupId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1697,15 +1672,13 @@ class DescribeRoomStatisticsResponse(AbstractModel):
         :type Total: int
         :param MemberRecords: Member record list
         :type MemberRecords: list of MemberRecord
-        :param RealStartTime: The actual start time of the room, in Unix timestamp, accurate to seconds.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param RealStartTime: The actual start time of the room, in Unix timestamp, accurate to seconds. Note: This field may return null, indicating that no valid values can be obtained.
         :type RealStartTime: int
-        :param RealEndTime: The actual end time of the room, in Unix timestamp, accurate to seconds.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param RealEndTime: The actual end time of the room, in Unix timestamp, accurate to seconds. Note: This field may return null, indicating that no valid values can be obtained.
         :type RealEndTime: int
-        :param MessageCount: The total number of room messages.
+        :param MessageCount: The total message count of the room.
         :type MessageCount: int
-        :param MicCount: The total number of mics in the room.
+        :param MicCount: The total number of mic-on students in the room.
         :type MicCount: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1747,9 +1720,9 @@ class DescribeSdkAppIdUsersRequest(AbstractModel):
         r"""
         :param SdkAppId: The SDKAppID assigned by LCIC.
         :type SdkAppId: int
-        :param Page: The page to return records from. The default value is `1`.
+        :param Page: The page to return records from. The default value is 1.
         :type Page: int
-        :param Limit: The maximum number of records to return per page. The default value is `20`.
+        :param Limit: The maximum number of records to return per page. The default value is 20.
         :type Limit: int
         """
         self.SdkAppId = None
@@ -1779,8 +1752,7 @@ class DescribeSdkAppIdUsersResponse(AbstractModel):
         r"""
         :param Total: The total number of users.
         :type Total: int
-        :param Users: The information of the users.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param Users: The information of the users. Note: This field may return null, indicating that no valid values can be obtained.
         :type Users: list of UserInfo
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1860,52 +1832,39 @@ class DescribeUserResponse(AbstractModel):
 
 class DocumentInfo(AbstractModel):
     """Document Information.
+    Used by actions: DescribeDocumentsByRoom.
 
     """
 
     def __init__(self):
         r"""
-        :param DocumentId: The document ID.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param DocumentId: The document ID. Note: This field may return null, indicating that no valid values can be obtained.
         :type DocumentId: str
-        :param DocumentUrl: The document’s original URL.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param DocumentUrl: The document’s original URL. Note: This field may return null, indicating that no valid values can be obtained.
         :type DocumentUrl: str
-        :param DocumentName: The document title.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param DocumentName: The document title. Note: This field may return null, indicating that no valid values can be obtained.
         :type DocumentName: str
-        :param Owner: The user ID of the document’s owner.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param Owner: The user ID of the document’s owner. Note: This field may return null, indicating that no valid values can be obtained.
         :type Owner: str
-        :param SdkAppId: The application ID.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param SdkAppId: The application ID. Note: This field may return null, indicating that no valid values can be obtained.
         :type SdkAppId: int
-        :param Permission: The document access type. `0`: Private; `1`: Public.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param Permission: The document access type. 0: Private; 1: Public. Note: This field may return null, indicating that no valid values can be obtained.
         :type Permission: int
-        :param TranscodeResult: The transcoding result. If the file is not transcoded, this parameter will be empty. If it is successfully transcoded, this parameter will be the URL of the transcoded file. If transcoding fails, this parameter will indicate the error code.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param TranscodeResult: The transcoding result. If the file is not transcoded, this parameter will be empty. If it is successfully transcoded, this parameter will be the URL of the transcoded file. If transcoding fails, this parameter will indicate the error code. Note: This field may return null, indicating that no valid values can be obtained.
         :type TranscodeResult: str
-        :param TranscodeType: The transcoding type.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param TranscodeType: The transcoding type. Note: This field may return null, indicating that no valid values can be obtained.
         :type TranscodeType: int
-        :param TranscodeProgress: The transcoding progress. Value range: 0-100.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param TranscodeProgress: The transcoding progress. Value range: 0-100. Note: This field may return null, indicating that no valid values can be obtained.
         :type TranscodeProgress: int
-        :param TranscodeState: The transcoding status. `0`: The file is not transcoded. `1`: The file is being transcoded. `2`: Transcoding failed. `3`: Transcoding is successful.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param TranscodeState: The transcoding status. 0: The file is not transcoded. 1: The file is being transcoded. 2: Transcoding failed. 3: Transcoding is successful. Note: This field may return null, indicating that no valid values can be obtained.
         :type TranscodeState: int
-        :param TranscodeInfo: The error message for failed transcoding.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param TranscodeInfo: The error message for failed transcoding. Note: This field may return null, indicating that no valid values can be obtained.
         :type TranscodeInfo: str
-        :param DocumentType: The document type.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param DocumentType: The document type. Note: This field may return null, indicating that no valid values can be obtained.
         :type DocumentType: str
-        :param DocumentSize: The document size (bytes).
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param DocumentSize: The document size (bytes). Note: This field may return null, indicating that no valid values can be obtained.
         :type DocumentSize: int
-        :param UpdateTime: The time (Unix timestamp) when the document was last updated.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param UpdateTime: The time (Unix timestamp) when the document was last updated. Note: This field may return null, indicating that no valid values can be obtained.
         :type UpdateTime: int
         """
         self.DocumentId = None
@@ -1948,6 +1907,68 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class GetRoomMessageRequest(AbstractModel):
+    """GetRoomMessage request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: The SDKAppID assigned by LCIC.
+        :type SdkAppId: int
+        :param RoomId: The room ID.
+        :type RoomId: int
+        :param Seq: The starting message sequence. Messages before this sequence will be returned (not including the message whose sequence is `seq`).
+        :type Seq: int
+        :param Limit: The maximum number of messages to return. The value of this parameter cannot exceed the maximum message count allowed by your package.
+        :type Limit: int
+        """
+        self.SdkAppId = None
+        self.RoomId = None
+        self.Seq = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.RoomId = params.get("RoomId")
+        self.Seq = params.get("Seq")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetRoomMessageResponse(AbstractModel):
+    """GetRoomMessage response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Messages: The message list.
+        :type Messages: list of MessageList
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Messages = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Messages") is not None:
+            self.Messages = []
+            for item in params.get("Messages"):
+                obj = MessageList()
+                obj._deserialize(item)
+                self.Messages.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class GetWatermarkRequest(AbstractModel):
     """GetWatermark request structure.
 
@@ -1955,7 +1976,7 @@ class GetWatermarkRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SdkAppId: The SDKAppID assigned by LCIC.	
+        :param SdkAppId: The SDKAppID assigned by LCIC.
         :type SdkAppId: int
         """
         self.SdkAppId = None
@@ -1979,17 +2000,13 @@ class GetWatermarkResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TeacherLogo: The watermark settings for the teacher’s video.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param TeacherLogo: The watermark settings for the teacher’s video. Note: This field may return null, indicating that no valid values can be obtained.
         :type TeacherLogo: :class:`tencentcloud.lcic.v20220817.models.WatermarkConfig`
-        :param BoardLogo: The watermark settings for the whiteboard.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param BoardLogo: The watermark settings for the whiteboard. Note: This field may return null, indicating that no valid values can be obtained.
         :type BoardLogo: :class:`tencentcloud.lcic.v20220817.models.WatermarkConfig`
-        :param BackgroundPicture: The background image.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param BackgroundPicture: The background image. Note: This field may return null, indicating that no valid values can be obtained.
         :type BackgroundPicture: :class:`tencentcloud.lcic.v20220817.models.BackgroundPictureConfig`
-        :param Text: The watermark text.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param Text: The watermark text. Note: This field may return null, indicating that no valid values can be obtained.
         :type Text: :class:`tencentcloud.lcic.v20220817.models.TextMarkConfig`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -2019,16 +2036,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 class GroupBaseInfo(AbstractModel):
     """The information of the groups to create.
+    Used by actions: BatchCreateGroupWithMembers.
 
     """
 
     def __init__(self):
         r"""
-        :param GroupName: The group names.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param GroupName: The group names. Note: This field may return null, indicating that no valid values can be obtained.
         :type GroupName: str
-        :param TeacherId: The user ID of the teacher.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param TeacherId: The user ID of the teacher. Note: This field may return null, indicating that no valid values can be obtained.
         :type TeacherId: str
         """
         self.GroupName = None
@@ -2049,27 +2065,21 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 class GroupInfo(AbstractModel):
     """The information of the groups queried.
+    Used by actions: DescribeGroupList.
 
     """
 
     def __init__(self):
         r"""
-        :param GroupId: Group ID
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param GroupId: Group ID Note: This field may return null, indicating that no valid values can be obtained.
         :type GroupId: str
-        :param GroupName: The group name.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param GroupName: The group name. Note: This field may return null, indicating that no valid values can be obtained.
         :type GroupName: str
-        :param TeacherId: The user ID of the teacher.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param TeacherId: The user ID of the teacher. Note: This field may return null, indicating that no valid values can be obtained.
         :type TeacherId: str
-        :param GroupType: The group type. 
-`0`: Ordinary group. 
-`1`: Merged group. If the group queried is a merged group, the IDs of the sub-groups will be returned.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param GroupType: The group type. 0: Ordinary group. 1: Merged group. If the group queried is a merged group, the IDs of the sub-groups will be returned. Note: This field may return null, indicating that no valid values can be obtained.
         :type GroupType: int
-        :param SubGroupIds: The IDs of the sub-groups.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param SubGroupIds: The IDs of the sub-groups. Note: This field may return null, indicating that no valid values can be obtained.
         :type SubGroupIds: str
         """
         self.GroupId = None
@@ -2198,6 +2208,7 @@ class LoginUserResponse(AbstractModel):
 
 class MemberRecord(AbstractModel):
     """Member record information
+    Used by actions: DescribeCurrentMemberList, DescribeRoomStatistics.
 
     """
 
@@ -2229,11 +2240,11 @@ class MemberRecord(AbstractModel):
         :type IPAddress: str
         :param Location: The user’s location.
         :type Location: str
-        :param Device: The user’s device type. `0`: Unknown; `1`: Windows; `2`: macOS; `3`: Android; `4`: iOS; `5`: Web; `6`: Mobile webpage; `7`: Weixin Mini Program.
+        :param Device: The user’s device type. 0: Unknown; 1: Windows; 2: macOS; 3: Android; 4: iOS; 5: Web; 6: Mobile webpage; 7: Weixin Mini Program.
         :type Device: int
-        :param PerMemberMicCount: The number of times each member mics.
+        :param PerMemberMicCount: The number of times a user turned their mic on.
         :type PerMemberMicCount: int
-        :param PerMemberMessageCount: The number of messages sent by each member.
+        :param PerMemberMessageCount: The number of messages sent by a user.
         :type PerMemberMessageCount: int
         """
         self.UserId = None
@@ -2271,6 +2282,86 @@ class MemberRecord(AbstractModel):
         self.Device = params.get("Device")
         self.PerMemberMicCount = params.get("PerMemberMicCount")
         self.PerMemberMessageCount = params.get("PerMemberMessageCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MessageItem(AbstractModel):
+    """The information of a message.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MessageType: The message type. `0`: Text; `1`: Image.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MessageType: int
+        :param TextMessage: The text. This parameter is valid if `MessageType` is `0`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TextMessage: str
+        :param ImageMessage: The image URL. This parameter is valid if `MessageType` is `1`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ImageMessage: str
+        """
+        self.MessageType = None
+        self.TextMessage = None
+        self.ImageMessage = None
+
+
+    def _deserialize(self, params):
+        self.MessageType = params.get("MessageType")
+        self.TextMessage = params.get("TextMessage")
+        self.ImageMessage = params.get("ImageMessage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MessageList(AbstractModel):
+    """The list of historical messages.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Timestamp: The message timestamp.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Timestamp: int
+        :param FromAccount: The sender.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FromAccount: str
+        :param Seq: The message sequence, which is unique across a class. The earlier a message is sent, the lower the sequence.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Seq: int
+        :param MessageBody: The message content.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MessageBody: list of MessageItem
+        """
+        self.Timestamp = None
+        self.FromAccount = None
+        self.Seq = None
+        self.MessageBody = None
+
+
+    def _deserialize(self, params):
+        self.Timestamp = params.get("Timestamp")
+        self.FromAccount = params.get("FromAccount")
+        self.Seq = params.get("Seq")
+        if params.get("MessageBody") is not None:
+            self.MessageBody = []
+            for item in params.get("MessageBody"):
+                obj = MessageItem()
+                obj._deserialize(item)
+                self.MessageBody.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2401,17 +2492,17 @@ class ModifyRoomRequest(AbstractModel):
         :type TeacherId: str
         :param Name: The room name.
         :type Name: str
-        :param Resolution: The resolution. Valid values: `1`: SD; `2`: HD; `3`: FHD.
+        :param Resolution: The resolution. Valid values: 1: SD; 2: HD; 3: FHD.
         :type Resolution: int
         :param MaxMicNumber: The maximum number of mic-on users (excluding the teacher). Value range: 0-16.
         :type MaxMicNumber: int
-        :param AutoMic: Whether to automatically turn the mic on when a user enters the room. Valid values: `0`: No (default value); `1`: Yes.
+        :param AutoMic: Whether to automatically turn the mic on when a user enters the room. Valid values: 0: No (default value); 1: Yes.
         :type AutoMic: int
-        :param AudioQuality: Whether to enable the high audio quality mode. Valid values: `0`: No (default value); `1`: Yes.
+        :param AudioQuality: Whether to enable the high audio quality mode. Valid values: 0: No (default value); 1: Yes.
         :type AudioQuality: int
-        :param SubType: The room subtype. Valid values: `videodoc`: Document + Video; `video`: Video only; `coteaching`: Dual-teacher.
+        :param SubType: The room subtype. Valid values: videodoc: Document + Video; video: Video only; coteaching: Dual-teacher.
         :type SubType: str
-        :param DisableRecord: Whether to disable auto recording. Valid values: `0`: No (default); `1`: Yes. If this parameter is `0`, recording will start when the class starts and stops when the class ends.
+        :param DisableRecord: Whether to disable auto recording. Valid values: 0: No (default); 1: Yes. If this parameter is 0, recording will start when the class starts and stops when the class ends.
         :type DisableRecord: int
         :param Assistants: The user IDs of the teacher assistants. User IDs are returned by the user registration APIs.
         :type Assistants: list of str
@@ -2587,58 +2678,44 @@ class RegisterUserResponse(AbstractModel):
 
 class RoomInfo(AbstractModel):
     """The information of the room to create.
+    Used by actions: BatchCreateRoom.
 
     """
 
     def __init__(self):
         r"""
-        :param Name: The room name.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param Name: The room name. Note: This field may return null, indicating that no valid values can be obtained.
         :type Name: str
-        :param StartTime: The room start time (Unix timestamp).
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param StartTime: The room start time (Unix timestamp). Note: This field may return null, indicating that no valid values can be obtained.
         :type StartTime: int
-        :param EndTime: The room end time (Unix timestamp).
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param EndTime: The room end time (Unix timestamp). Note: This field may return null, indicating that no valid values can be obtained.
         :type EndTime: int
-        :param Resolution: The resolution. Valid values: `1`: SD; `2`: HD; `3`: FHD.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param Resolution: The resolution. Valid values: 1: SD; 2: HD; 3: FHD. Note: This field may return null, indicating that no valid values can be obtained.
         :type Resolution: int
-        :param MaxMicNumber: The maximum number of mic-on users (excluding the teacher). Value range: 0-16.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param MaxMicNumber: The maximum number of mic-on users (excluding the teacher). Value range: 0-16. Note: This field may return null, indicating that no valid values can be obtained.
         :type MaxMicNumber: int
         :param SubType: The room subtype. Valid values: `videodoc`: Document + Video; `video`: Video only; `coteaching`: Dual-teacher.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SubType: str
-        :param TeacherId: The user ID of the teacher. User IDs are returned by the user registration APIs.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param TeacherId: The user ID of the teacher. User IDs are returned by the user registration APIs. Note: This field may return null, indicating that no valid values can be obtained.
         :type TeacherId: str
-        :param AutoMic: Whether to automatically turn the mic on when a user enters the room. Valid values: `0`: No (default value); `1`: Yes.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param AutoMic: Whether to automatically turn the mic on when a user enters the room. Valid values: 0: No (default value); 1: Yes. Note: This field may return null, indicating that no valid values can be obtained.
         :type AutoMic: int
-        :param TurnOffMic: Whether to disconnect communication after audio/video permissions are revoked. Valid values: `0`: Yes (default value); `1`: No.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param TurnOffMic: Whether to disconnect communication after audio/video permissions are revoked. Valid values: 0: Yes (default value); 1: No. Note: This field may return null, indicating that no valid values can be obtained.
         :type TurnOffMic: int
-        :param AudioQuality: Whether to enable the high audio quality mode. Valid values: `0`: No (default value); `1`: Yes.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param AudioQuality: Whether to enable the high audio quality mode. Valid values: 0: No (default value); 1: Yes. Note: This field may return null, indicating that no valid values can be obtained.
         :type AudioQuality: int
-        :param DisableRecord: Whether to disable auto recording. Valid values: `0`: No (default); `1`: Yes. If this parameter is `0`, recording will start when the class starts and stops when the class ends.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param DisableRecord: Whether to disable auto recording. Valid values: 0: No (default); 1: Yes. If this parameter is 0, recording will start when the class starts and stops when the class ends. Note: This field may return null, indicating that no valid values can be obtained.
         :type DisableRecord: int
-        :param Assistants: The user IDs of the teacher assistants. User IDs are returned by the user registration APIs.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param Assistants: The user IDs of the teacher assistants. User IDs are returned by the user registration APIs. Note: This field may return null, indicating that no valid values can be obtained.
         :type Assistants: list of str
-        :param RTCAudienceNumber: The number of RTC users.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param RTCAudienceNumber: The number of RTC users. Note: This field may return null, indicating that no valid values can be obtained.
         :type RTCAudienceNumber: int
-        :param AudienceType: The audience type.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param AudienceType: The audience type. Note: This field may return null, indicating that no valid values can be obtained.
         :type AudienceType: int
-        :param RecordLayout: The recording layout.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param RecordLayout: The recording layout. Note: This field may return null, indicating that no valid values can be obtained.
         :type RecordLayout: int
-        :param GroupId: The ID of the group to bind.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param GroupId: The ID of the group to bind. Note: This field may return null, indicating that no valid values can be obtained.
         :type GroupId: str
         """
         self.Name = None
@@ -2742,7 +2819,7 @@ class SetWatermarkRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SdkAppId: The SDKAppID assigned by LCIC.	
+        :param SdkAppId: The SDKAppID assigned by LCIC.
         :type SdkAppId: int
         :param TeacherUrl: The URL of the watermark for the teacher’s video. If you pass in an empty string, the teacher’s video will not have a watermark.
         :type TeacherUrl: str
@@ -2750,21 +2827,21 @@ class SetWatermarkRequest(AbstractModel):
         :type BoardUrl: str
         :param VideoUrl: The image displayed when there is no video. If you pass in an empty string, no images will be displayed.
         :type VideoUrl: str
-        :param BoardW: The width of the whiteboard’s watermark, which is expressed as a percentage of the video width. The value range is 0-100, and the default value is `0`.
+        :param BoardW: The width of the whiteboard’s watermark, which is expressed as a percentage of the video width. The value range is 0-100, and the default value is 0.
         :type BoardW: float
-        :param BoardH: The height of the whiteboard’s watermark, which is expressed as a percentage of the video height. The value range is 0-100, and the default value is `0`.
+        :param BoardH: The height of the whiteboard’s watermark, which is expressed as a percentage of the video height. The value range is 0-100, and the default value is 0.
         :type BoardH: float
-        :param BoardX: The horizontal offset of the whiteboard’s watermark, which is expressed as a percentage of the video width. For example, `50` indicates that the watermark will appear in the middle horizontally. Value range: 0-100.
+        :param BoardX: The horizontal offset of the whiteboard’s watermark, which is expressed as a percentage of the video width. For example, 50 indicates that the watermark will appear in the middle horizontally. Value range: 0-100.
         :type BoardX: float
-        :param BoardY: The vertical offset of the whiteboard’s watermark, which is expressed as a percentage of the video width. For example, `50` indicates that the watermark will appear in the middle vertically. Value range: 0-100.
+        :param BoardY: The vertical offset of the whiteboard’s watermark, which is expressed as a percentage of the video width. For example, 50 indicates that the watermark will appear in the middle vertically. Value range: 0-100.
         :type BoardY: float
-        :param TeacherW: The width of the watermark for the teacher’s video, which is expressed as a percentage of the video width. The value range is 0-100, and the default value is `0`.
+        :param TeacherW: The width of the watermark for the teacher’s video, which is expressed as a percentage of the video width. The value range is 0-100, and the default value is 0.
         :type TeacherW: float
-        :param TeacherH: The height of the watermark for the teacher’s video, which is expressed as a percentage of the video height. The value range is 0-100, and the default value is `0`.
+        :param TeacherH: The height of the watermark for the teacher’s video, which is expressed as a percentage of the video height. The value range is 0-100, and the default value is 0.
         :type TeacherH: float
-        :param TeacherX: The horizontal offset of the watermark for the teacher’s video, which is expressed as a percentage of the video width. For example, `50` indicates that the watermark will appear in the middle horizontally. Value range: 0-100.
+        :param TeacherX: The horizontal offset of the watermark for the teacher’s video, which is expressed as a percentage of the video width. For example, 50 indicates that the watermark will appear in the middle horizontally. Value range: 0-100.
         :type TeacherX: float
-        :param TeacherY: The vertical offset of the watermark for the teacher’s video, which is expressed as a percentage of the video width. For example, `50` indicates that the watermark will appear in the middle vertically. Value range: 0-100.
+        :param TeacherY: The vertical offset of the watermark for the teacher’s video, which is expressed as a percentage of the video width. For example, 50 indicates that the watermark will appear in the middle vertically. Value range: 0-100.
         :type TeacherY: float
         :param Text: The watermark text. If you pass in an empty string, there will be no text.
         :type Text: str
@@ -2830,16 +2907,15 @@ class SetWatermarkResponse(AbstractModel):
 
 class TextMarkConfig(AbstractModel):
     """The watermark text.
+    Used by actions: GetWatermark.
 
     """
 
     def __init__(self):
         r"""
-        :param Text: The watermark text.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param Text: The watermark text. Note: This field may return null, indicating that no valid values can be obtained.
         :type Text: str
-        :param Color: The watermark text color.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param Color: The watermark text color. Note: This field may return null, indicating that no valid values can be obtained.
         :type Color: str
         """
         self.Text = None
@@ -2905,22 +2981,19 @@ class UnbindDocumentFromRoomResponse(AbstractModel):
 
 class UserInfo(AbstractModel):
     """The user information.
+    Used by actions: DescribeSdkAppIdUsers.
 
     """
 
     def __init__(self):
         r"""
-        :param SdkAppId: The application ID.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param SdkAppId: The application ID. Note: This field may return null, indicating that no valid values can be obtained.
         :type SdkAppId: int
-        :param UserId: The user ID.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param UserId: The user ID. Note: This field may return null, indicating that no valid values can be obtained.
         :type UserId: str
-        :param Name: The username.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param Name: The username. Note: This field may return null, indicating that no valid values can be obtained.
         :type Name: str
-        :param Avatar: The URL of profile photo.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param Avatar: The URL of profile photo. Note: This field may return null, indicating that no valid values can be obtained.
         :type Avatar: str
         """
         self.SdkAppId = None
@@ -2945,25 +3018,21 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 class WatermarkConfig(AbstractModel):
     """Watermark settings.
+    Used by actions: GetWatermark.
 
     """
 
     def __init__(self):
         r"""
-        :param Url: The URL of the watermark image.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param Url: The URL of the watermark image. Note: This field may return null, indicating that no valid values can be obtained.
         :type Url: str
-        :param Width: The watermark width, which is expressed as a percentage of the video width.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param Width: The watermark width, which is expressed as a percentage of the video width. Note: This field may return null, indicating that no valid values can be obtained.
         :type Width: float
-        :param Height: The watermark height, which is expressed as a percentage of the video height.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param Height: The watermark height, which is expressed as a percentage of the video height. Note: This field may return null, indicating that no valid values can be obtained.
         :type Height: float
-        :param LocationX: The horizontal offset of the watermark, which is expressed as a percentage of the video width. For example, `50` indicates that the watermark will appear in the middle horizontally. Value range: 0-100.	
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param LocationX: The horizontal offset of the watermark, which is expressed as a percentage of the video width. For example, 50 indicates that the watermark will appear in the middle horizontally. Value range: 0-100. Note: This field may return null, indicating that no valid values can be obtained.
         :type LocationX: float
-        :param LocationY: The vertical offset of the watermark, which is expressed as a percentage of the video width. For example, `50` indicates that the watermark will appear in the middle vertically. Value range: 0-100.	
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param LocationY: The vertical offset of the watermark, which is expressed as a percentage of the video width. For example, 50 indicates that the watermark will appear in the middle vertically. Value range: 0-100. Note: This field may return null, indicating that no valid values can be obtained.
         :type LocationY: float
         """
         self.Url = None

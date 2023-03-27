@@ -28,6 +28,7 @@ class LcicClient(AbstractClient):
 
     def AddGroupMember(self, request):
         """This API is used to add users to a group.
+        A maximum of 20 requests can be initiated per second for this API.
 
         :param request: Request instance for AddGroupMember.
         :type request: :class:`tencentcloud.lcic.v20220817.models.AddGroupMemberRequest`
@@ -51,6 +52,7 @@ class LcicClient(AbstractClient):
 
     def BatchAddGroupMember(self, request):
         """This API is used to add users to multiple groups at a time.
+        A maximum of 20 requests can be initiated per second for this API.
 
         :param request: Request instance for BatchAddGroupMember.
         :type request: :class:`tencentcloud.lcic.v20220817.models.BatchAddGroupMemberRequest`
@@ -74,6 +76,7 @@ class LcicClient(AbstractClient):
 
     def BatchCreateGroupWithMembers(self, request):
         """This API is used to create multiple groups at a time.
+        A maximum of 20 requests can be initiated per second for this API.
 
         :param request: Request instance for BatchCreateGroupWithMembers.
         :type request: :class:`tencentcloud.lcic.v20220817.models.BatchCreateGroupWithMembersRequest`
@@ -97,6 +100,7 @@ class LcicClient(AbstractClient):
 
     def BatchCreateRoom(self, request):
         """This API is used to create multiple rooms at a time.
+        A maximum of 20 requests can be initiated per second for this API.
 
         :param request: Request instance for BatchCreateRoom.
         :type request: :class:`tencentcloud.lcic.v20220817.models.BatchCreateRoomRequest`
@@ -120,6 +124,7 @@ class LcicClient(AbstractClient):
 
     def BatchDeleteGroupMember(self, request):
         """This API is used to remove users from multiple groups at a time.
+        A maximum of 20 requests can be initiated per second for this API.
 
         :param request: Request instance for BatchDeleteGroupMember.
         :type request: :class:`tencentcloud.lcic.v20220817.models.BatchDeleteGroupMemberRequest`
@@ -143,6 +148,7 @@ class LcicClient(AbstractClient):
 
     def BatchDeleteRecord(self, request):
         """This API is used to delete the recordings of multiple rooms.
+        A maximum of 20 requests can be initiated per second for this API.
 
         :param request: Request instance for BatchDeleteRecord.
         :type request: :class:`tencentcloud.lcic.v20220817.models.BatchDeleteRecordRequest`
@@ -166,6 +172,7 @@ class LcicClient(AbstractClient):
 
     def BatchRegister(self, request):
         """This API is used to register multiple users (up to 1,000) at a time. If a user ID already exists, the existing one will be overwritten.
+        A maximum of 20 requests can be initiated per second for this API.
 
         :param request: Request instance for BatchRegister.
         :type request: :class:`tencentcloud.lcic.v20220817.models.BatchRegisterRequest`
@@ -234,7 +241,8 @@ class LcicClient(AbstractClient):
 
 
     def CreateGroupWithMembers(self, request):
-        """This API is used to create a group and specify its members.
+        """his API is used to create a group and specify its members.
+        A maximum of 20 requests can be initiated per second for this API.
 
         :param request: Request instance for CreateGroupWithMembers.
         :type request: :class:`tencentcloud.lcic.v20220817.models.CreateGroupWithMembersRequest`
@@ -258,6 +266,7 @@ class LcicClient(AbstractClient):
 
     def CreateGroupWithSubGroup(self, request):
         """This API is used to merge groups.
+        A maximum of 20 requests can be initiated per second for this API.
 
         :param request: Request instance for CreateGroupWithSubGroup.
         :type request: :class:`tencentcloud.lcic.v20220817.models.CreateGroupWithSubGroupRequest`
@@ -281,6 +290,7 @@ class LcicClient(AbstractClient):
 
     def CreateRoom(self, request):
         """This API is used to create a room.
+        A maximum of 20 requests can be initiated per second for this API.
 
         :param request: Request instance for CreateRoom.
         :type request: :class:`tencentcloud.lcic.v20220817.models.CreateRoomRequest`
@@ -327,6 +337,7 @@ class LcicClient(AbstractClient):
 
     def DeleteDocument(self, request):
         """This API is used to delete a document.
+        A maximum of 20 requests can be initiated per second for this API.
 
         :param request: Request instance for DeleteDocument.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DeleteDocumentRequest`
@@ -350,6 +361,7 @@ class LcicClient(AbstractClient):
 
     def DeleteGroup(self, request):
         """This API is used to delete one or multiple groups.
+        A maximum of 20 requests can be initiated per second for this API.
 
         :param request: Request instance for DeleteGroup.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DeleteGroupRequest`
@@ -373,6 +385,7 @@ class LcicClient(AbstractClient):
 
     def DeleteGroupMember(self, request):
         """This API is used to remove users from a group.
+        A maximum of 20 requests can be initiated per second for this API.
 
         :param request: Request instance for DeleteGroupMember.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DeleteGroupMemberRequest`
@@ -396,6 +409,7 @@ class LcicClient(AbstractClient):
 
     def DeleteRecord(self, request):
         """This example shows you how to delete the recording files of a specific room.
+        A maximum of 20 requests can be initiated per second for this API.
 
         :param request: Request instance for DeleteRecord.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DeleteRecordRequest`
@@ -442,6 +456,7 @@ class LcicClient(AbstractClient):
 
     def DescribeCurrentMemberList(self, request):
         """This API is used to get the user list of a room. This API will not work if a room has ended or expired.
+        A maximum of 20 requests can be initiated per second for this API.
 
         :param request: Request instance for DescribeCurrentMemberList.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeCurrentMemberListRequest`
@@ -465,6 +480,7 @@ class LcicClient(AbstractClient):
 
     def DescribeDocument(self, request):
         """This API is used to get the information of a specific document.
+        A maximum of 20 requests can be initiated per second for this API.
 
         :param request: Request instance for DescribeDocument.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeDocumentRequest`
@@ -488,6 +504,7 @@ class LcicClient(AbstractClient):
 
     def DescribeDocumentsByRoom(self, request):
         """This API is used to get the document list of a specific room.
+        A maximum of 20 requests can be initiated per second for this API.
 
         :param request: Request instance for DescribeDocumentsByRoom.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeDocumentsByRoomRequest`
@@ -511,6 +528,7 @@ class LcicClient(AbstractClient):
 
     def DescribeGroup(self, request):
         """This API is used to get the details of a group.
+        A maximum of 20 requests can be initiated per second for this API.
 
         :param request: Request instance for DescribeGroup.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeGroupRequest`
@@ -534,6 +552,7 @@ class LcicClient(AbstractClient):
 
     def DescribeGroupList(self, request):
         """This API is used to query groups.
+        A maximum of 20 requests can be initiated per second for this API.
 
         :param request: Request instance for DescribeGroupList.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeGroupListRequest`
@@ -557,6 +576,7 @@ class LcicClient(AbstractClient):
 
     def DescribeGroupMemberList(self, request):
         """This API is used to get the members of a group.
+        A maximum of 20 requests can be initiated per second for this API.
 
         :param request: Request instance for DescribeGroupMemberList.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeGroupMemberListRequest`
@@ -580,6 +600,7 @@ class LcicClient(AbstractClient):
 
     def DescribeRoom(self, request):
         """This API is used to get room information.
+        A maximum of 20 requests can be initiated per second for this API.
 
         :param request: Request instance for DescribeRoom.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeRoomRequest`
@@ -603,6 +624,7 @@ class LcicClient(AbstractClient):
 
     def DescribeRoomStatistics(self, request):
         """This API is used to obtain the statistics of a room. It can be called only after the room is ended.
+        A maximum of 20 requests can be initiated per second for this API.
 
         :param request: Request instance for DescribeRoomStatistics.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeRoomStatisticsRequest`
@@ -626,6 +648,7 @@ class LcicClient(AbstractClient):
 
     def DescribeSdkAppIdUsers(self, request):
         """This API is used to get the user list of a specific application.
+        A maximum of 20 requests can be initiated per second for this API.
 
         :param request: Request instance for DescribeSdkAppIdUsers.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeSdkAppIdUsersRequest`
@@ -670,8 +693,32 @@ class LcicClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetRoomMessage(self, request):
+        """This API is used to get the message history of a room (room messages are retained for seven days).
+
+        :param request: Request instance for GetRoomMessage.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.GetRoomMessageRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.GetRoomMessageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetRoomMessage", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetRoomMessageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetWatermark(self, request):
         """This API is used to get watermark settings.
+        A maximum of 20 requests can be initiated per second for this API.
 
         :param request: Request instance for GetWatermark.
         :type request: :class:`tencentcloud.lcic.v20220817.models.GetWatermarkRequest`
@@ -741,6 +788,7 @@ class LcicClient(AbstractClient):
 
     def ModifyApp(self, request):
         """This API is used to modify an application.
+        A maximum of 20 requests can be initiated per second for this API.
 
         :param request: Request instance for ModifyApp.
         :type request: :class:`tencentcloud.lcic.v20220817.models.ModifyAppRequest`
@@ -764,6 +812,7 @@ class LcicClient(AbstractClient):
 
     def ModifyGroup(self, request):
         """This API is used to modify a group.
+        A maximum of 20 requests can be initiated per second for this API.
 
         :param request: Request instance for ModifyGroup.
         :type request: :class:`tencentcloud.lcic.v20220817.models.ModifyGroupRequest`
@@ -787,6 +836,7 @@ class LcicClient(AbstractClient):
 
     def ModifyRoom(self, request):
         """This API is used to modify a room.
+        A maximum of 20 requests can be initiated per second for this API.
 
         :param request: Request instance for ModifyRoom.
         :type request: :class:`tencentcloud.lcic.v20220817.models.ModifyRoomRequest`
@@ -810,6 +860,7 @@ class LcicClient(AbstractClient):
 
     def ModifyUserProfile(self, request):
         """This API is used to modify a user profile such as the nickname and profile photo.
+        A maximum of 20 requests can be initiated per second for this API.
 
         :param request: Request instance for ModifyUserProfile.
         :type request: :class:`tencentcloud.lcic.v20220817.models.ModifyUserProfileRequest`
@@ -879,6 +930,7 @@ class LcicClient(AbstractClient):
 
     def SetWatermark(self, request):
         """This API is used to configure watermarks.
+        A maximum of 20 requests can be initiated per second for this API.
 
         :param request: Request instance for SetWatermark.
         :type request: :class:`tencentcloud.lcic.v20220817.models.SetWatermarkRequest`

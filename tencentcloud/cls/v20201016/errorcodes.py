@@ -131,10 +131,10 @@ LIMITEXCEEDED = 'LimitExceeded'
 # The collection rule configuration exceeds the maximum value limit.
 LIMITEXCEEDED_CONFIG = 'LimitExceeded.Config'
 
-# The number of exported logs exceeds the limit.
+# The number of log export tasks has exceeded the limit.
 LIMITEXCEEDED_EXPORT = 'LimitExceeded.Export'
 
-# 
+# Index operations exceed the frequency limit.
 LIMITEXCEEDED_INDEXOPERATING = 'LimitExceeded.IndexOperating'
 
 # The number of concurrent queries exceeds the limit, which is 15 per topic.

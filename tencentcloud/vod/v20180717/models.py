@@ -237,7 +237,9 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
         r"""
         :param Definition: Adaptive bitrate streaming specification.
         :type Definition: int
-        :param Package: Container format. Valid values: hls, dash.
+        :param Package: The packaging format. Valid values:
+<li>`HLS`</li>
+<li>`DASH`</li>
         :type Package: str
         :param DrmType: Encryption type.
         :type DrmType: str
@@ -252,6 +254,8 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
 <li>Trace: Digital watermark</li>
 <li>None: Regular watermark</li>
         :type DigitalWatermarkType: str
+        :param SubStreamSet: The information of the streams.
+        :type SubStreamSet: list of MediaSubStreamInfoItem
         """
         self.Definition = None
         self.Package = None
@@ -259,6 +263,7 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
         self.Url = None
         self.Size = None
         self.DigitalWatermarkType = None
+        self.SubStreamSet = None
 
 
     def _deserialize(self, params):
@@ -268,6 +273,12 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
         self.Url = params.get("Url")
         self.Size = params.get("Size")
         self.DigitalWatermarkType = params.get("DigitalWatermarkType")
+        if params.get("SubStreamSet") is not None:
+            self.SubStreamSet = []
+            for item in params.get("SubStreamSet"):
+                obj = MediaSubStreamInfoItem()
+                obj._deserialize(item)
+                self.SubStreamSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11218,6 +11229,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 <li>`DescribeFileAttributesTask`: Getting file attributes</li>
 <li>`RebuildMedia`; Remastering audio/video</li>
 <li> `ReviewAudioVideo`: Moderation</li>
+<li>`ExtractTraceWatermark`: Digital watermark extraction</li>
         :type TaskType: str
         :param Status: Task status. Valid values:
 <li>WAITING: waiting;</li>
@@ -14449,9 +14461,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 <li>Audio: audio file</li>
 <li>Image: image file</li>
         :type Category: str
-        :param Status: File status. Valid values: Normal, Forbidden.
+        :param Status: The file status. Valid values: `Normal`, `Forbidden`.
 
-*Note: this field is not supported yet.
+*Note: This field is not supported yet.	
         :type Status: str
         :param StorageClass: Storage class of a media file:
 <li>STANDARD</li>
@@ -16124,6 +16136,45 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("TrtcRecordInfo") is not None:
             self.TrtcRecordInfo = TrtcRecordInfo()
             self.TrtcRecordInfo._deserialize(params.get("TrtcRecordInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MediaSubStreamInfoItem(AbstractModel):
+    """The stream information of adaptive bitrate streaming.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: The stream type. Valid values:
+<li>`audio`: Audio only</li>
+<li>`video`: Video (may include audio)</li>
+        :type Type: str
+        :param Width: The video width (px) if `Type` is `video`.
+        :type Width: int
+        :param Height: The video height (px) if `Type` is `video`.
+        :type Height: int
+        :param Size: The file size (bytes).
+<font color=red>Note:</font>For adaptive bitrate streaming files generated before 2023-02-09T16:00:00Z, the value of this parameter is `0`.
+        :type Size: int
+        """
+        self.Type = None
+        self.Width = None
+        self.Height = None
+        self.Size = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.Size = params.get("Size")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

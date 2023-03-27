@@ -2783,6 +2783,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         :param AllIpDone: Whether all the application IPs are ready
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type AllIpDone: bool
+        :param ExternalDomain: CLB domain name
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ExternalDomain: str
         """
         self.Name = None
         self.Ports = None
@@ -2800,6 +2803,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.EnableRegistryNextDeploy = None
         self.ApplicationId = None
         self.AllIpDone = None
+        self.ExternalDomain = None
 
 
     def _deserialize(self, params):
@@ -2829,6 +2833,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.EnableRegistryNextDeploy = params.get("EnableRegistryNextDeploy")
         self.ApplicationId = params.get("ApplicationId")
         self.AllIpDone = params.get("AllIpDone")
+        self.ExternalDomain = params.get("ExternalDomain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3173,6 +3178,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 - `NONE` (no redirection)
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type RewriteType: str
+        :param Domain: CLB domain name
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type Domain: str
         """
         self.EnvironmentId = None
         self.ClusterNamespace = None
@@ -3186,6 +3194,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self.CreateTime = None
         self.Mixed = None
         self.RewriteType = None
+        self.Domain = None
 
 
     def _deserialize(self, params):
@@ -3211,6 +3220,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self.CreateTime = params.get("CreateTime")
         self.Mixed = params.get("Mixed")
         self.RewriteType = params.get("RewriteType")
+        self.Domain = params.get("Domain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4789,6 +4799,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         :param PortMappingItemList: Port mapping array 
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type PortMappingItemList: list of ServicePortMappingItem
+        :param ExternalDomain: CLB domain name
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ExternalDomain: str
         """
         self.Type = None
         self.ServiceName = None
@@ -4800,6 +4813,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.Yaml = None
         self.Ports = None
         self.PortMappingItemList = None
+        self.ExternalDomain = None
 
 
     def _deserialize(self, params):
@@ -4818,6 +4832,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
                 obj = ServicePortMappingItem()
                 obj._deserialize(item)
                 self.PortMappingItemList.append(obj)
+        self.ExternalDomain = params.get("ExternalDomain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

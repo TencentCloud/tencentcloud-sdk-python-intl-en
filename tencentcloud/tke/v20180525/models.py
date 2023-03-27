@@ -237,16 +237,20 @@ class AddVpcCniSubnetsRequest(AbstractModel):
         :type SubnetIds: list of str
         :param VpcId: ID of the VPC where the cluster resides
         :type VpcId: str
+        :param SkipAddingNonMasqueradeCIDRs: Whether to skip adding the VPC IP range to `NonMasqueradeCIDRs` field of `ip-masq-agent-config`. Default value: `false`
+        :type SkipAddingNonMasqueradeCIDRs: bool
         """
         self.ClusterId = None
         self.SubnetIds = None
         self.VpcId = None
+        self.SkipAddingNonMasqueradeCIDRs = None
 
 
     def _deserialize(self, params):
         self.ClusterId = params.get("ClusterId")
         self.SubnetIds = params.get("SubnetIds")
         self.VpcId = params.get("VpcId")
+        self.SkipAddingNonMasqueradeCIDRs = params.get("SkipAddingNonMasqueradeCIDRs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6261,6 +6265,12 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         :param Level: TKE edge cluster level
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Level: str
+        :param AutoUpgradeClusterLevel: Whether to support auto upgrade of cluster spec level
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type AutoUpgradeClusterLevel: bool
+        :param ChargeType: Cluster billing mode. Valid values: `POSTPAID_BY_HOUR`, `PREPAID`
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ChargeType: str
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -6275,6 +6285,8 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.MaxNodePodNum = None
         self.ClusterAdvancedSettings = None
         self.Level = None
+        self.AutoUpgradeClusterLevel = None
+        self.ChargeType = None
 
 
     def _deserialize(self, params):
@@ -6293,6 +6305,8 @@ Note: This field may return `null`, indicating that no valid values can be obtai
             self.ClusterAdvancedSettings = EdgeClusterAdvancedSettings()
             self.ClusterAdvancedSettings._deserialize(params.get("ClusterAdvancedSettings"))
         self.Level = params.get("Level")
+        self.AutoUpgradeClusterLevel = params.get("AutoUpgradeClusterLevel")
+        self.ChargeType = params.get("ChargeType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

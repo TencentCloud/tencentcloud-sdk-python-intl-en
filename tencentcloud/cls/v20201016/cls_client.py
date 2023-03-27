@@ -187,6 +187,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateCosRecharge(self, request):
+        """This API is used to create a COS import task.
+
+        :param request: Request instance for CreateCosRecharge.
+        :type request: :class:`tencentcloud.cls.v20201016.models.CreateCosRechargeRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CreateCosRechargeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCosRecharge", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCosRechargeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateExport(self, request):
         """This API is used to create a download task. To get the returned download address, call `DescribeExports` to view the task list. The `CosPath` parameter is also included for download address. For more information, visit https://intl.cloud.tencent.com/document/product/614/56449.?from_cn_redirect=1
 
@@ -280,7 +303,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateShipper(self, request):
-        """This API is used to create a shipping rule. Note: To use this API, you need to check whether you have configured the role and permission for COS shipping tasks. If not, see **Viewing and Configuring Shipping Authorization** at https://intl.cloud.tencent.com/document/product/614/71623.?from_cn_redirect=1
+        """This API is used to create a task to ship to COS. Note: To use this API, you need to check whether you have configured the role and permission for shipping to COS. If not, see **Viewing and Configuring Shipping Authorization** at https://intl.cloud.tencent.com/document/product/614/71623.?from_cn_redirect=1
 
         :param request: Request instance for CreateShipper.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateShipperRequest`
@@ -716,6 +739,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCosRecharges(self, request):
+        """This API is used to get COS import configuration.
+
+        :param request: Request instance for DescribeCosRecharges.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeCosRechargesRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeCosRechargesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCosRecharges", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCosRechargesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeExports(self, request):
         """This API is used to get the list of log download tasks.
 
@@ -947,7 +993,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeShippers(self, request):
-        """This API is used to get the list of shipping rules.
+        """This API is used to get the configuration of the task of shipping to COS.
 
         :param request: Request instance for DescribeShippers.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeShippersRequest`
@@ -1121,6 +1167,29 @@ class ClsClient(AbstractClient):
             body = self.call("ModifyConsumer", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyConsumerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyCosRecharge(self, request):
+        """This API is used to modify a COS import task.
+
+        :param request: Request instance for ModifyCosRecharge.
+        :type request: :class:`tencentcloud.cls.v20201016.models.ModifyCosRechargeRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ModifyCosRechargeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCosRecharge", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCosRechargeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -765,6 +765,104 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         
 
 
+class CosRechargeInfo(AbstractModel):
+    """COS import configuration information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: COS import configuration ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Id: str
+        :param TopicId: ID of the log topic.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TopicId: str
+        :param LogsetId: ID of the logset.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LogsetId: str
+        :param Name: COS import task name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Name: str
+        :param Bucket: COS bucket.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Bucket: str
+        :param BucketRegion: COS bucket region.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BucketRegion: str
+        :param Prefix: The prefix of the folder where COS files are located.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Prefix: str
+        :param LogType: The type of log collected. `json_log`: JSON logs; `delimiter_log`: separator logs; `minimalist_log`: full text in a single line
+Default value: `minimalist_log`
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LogType: str
+        :param Status: Status. `0`: Created, `1`: Running, `2`: Stopped, `3`: Completed, `4`: Run failed
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Status: int
+        :param Enable: Whether the configuration is enabled. `0`: Not enabled, `1`: Enabled
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Enable: int
+        :param CreateTime: Creation time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CreateTime: str
+        :param UpdateTime: Update time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UpdateTime: str
+        :param Progress: Progress in percentage.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Progress: int
+        :param Compress: Valid values: "" (default), "gzip", "lzop", "snappy"
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Compress: str
+        :param ExtractRuleInfo: See the description of the `ExtractRuleInfo` structure.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExtractRuleInfo: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
+        """
+        self.Id = None
+        self.TopicId = None
+        self.LogsetId = None
+        self.Name = None
+        self.Bucket = None
+        self.BucketRegion = None
+        self.Prefix = None
+        self.LogType = None
+        self.Status = None
+        self.Enable = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.Progress = None
+        self.Compress = None
+        self.ExtractRuleInfo = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.TopicId = params.get("TopicId")
+        self.LogsetId = params.get("LogsetId")
+        self.Name = params.get("Name")
+        self.Bucket = params.get("Bucket")
+        self.BucketRegion = params.get("BucketRegion")
+        self.Prefix = params.get("Prefix")
+        self.LogType = params.get("LogType")
+        self.Status = params.get("Status")
+        self.Enable = params.get("Enable")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.Progress = params.get("Progress")
+        self.Compress = params.get("Compress")
+        if params.get("ExtractRuleInfo") is not None:
+            self.ExtractRuleInfo = ExtractRuleInfo()
+            self.ExtractRuleInfo._deserialize(params.get("ExtractRuleInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateAlarmNoticeRequest(AbstractModel):
     """CreateAlarmNotice request structure.
 
@@ -1056,6 +1154,82 @@ class CreateConsumerRequest(AbstractModel):
 
 class CreateConsumerResponse(AbstractModel):
     """CreateConsumer response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateCosRechargeRequest(AbstractModel):
+    """CreateCosRecharge request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopicId: ID of the log topic.
+        :type TopicId: str
+        :param LogsetId: ID of the logset.
+        :type LogsetId: str
+        :param Name: Shipping task name.
+        :type Name: str
+        :param Bucket: COS bucket.
+        :type Bucket: str
+        :param BucketRegion: Region where the COS bucket is located.
+        :type BucketRegion: str
+        :param Prefix: The prefix of the folder where COS files are located.
+        :type Prefix: str
+        :param LogType: The type of log collected. `json_log`: JSON logs; `delimiter_log`: separator logs; `minimalist_log`: full text in a single line
+Default value: `minimalist_log`
+        :type LogType: str
+        :param Compress: Valid values: "" (default), "gzip", "lzop", "snappy"
+        :type Compress: str
+        :param ExtractRuleInfo: Extraction rule. If `ExtractRule` is set, `LogType` must be set.
+        :type ExtractRuleInfo: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
+        """
+        self.TopicId = None
+        self.LogsetId = None
+        self.Name = None
+        self.Bucket = None
+        self.BucketRegion = None
+        self.Prefix = None
+        self.LogType = None
+        self.Compress = None
+        self.ExtractRuleInfo = None
+
+
+    def _deserialize(self, params):
+        self.TopicId = params.get("TopicId")
+        self.LogsetId = params.get("LogsetId")
+        self.Name = params.get("Name")
+        self.Bucket = params.get("Bucket")
+        self.BucketRegion = params.get("BucketRegion")
+        self.Prefix = params.get("Prefix")
+        self.LogType = params.get("LogType")
+        self.Compress = params.get("Compress")
+        if params.get("ExtractRuleInfo") is not None:
+            self.ExtractRuleInfo = ExtractRuleInfo()
+            self.ExtractRuleInfo._deserialize(params.get("ExtractRuleInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCosRechargeResponse(AbstractModel):
+    """CreateCosRecharge response structure.
 
     """
 
@@ -1414,7 +1588,7 @@ class CreateShipperResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ShipperId: Shipping rule ID
+        :param ShipperId: Shipping task ID.
         :type ShipperId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -2439,6 +2613,65 @@ Note: This field may return null, indicating that no valid values can be obtaine
             self.Ckafka = Ckafka()
             self.Ckafka._deserialize(params.get("Ckafka"))
         self.Compression = params.get("Compression")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCosRechargesRequest(AbstractModel):
+    """DescribeCosRecharges request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopicId: ID of the log topic.
+        :type TopicId: str
+        :param Status: Status. `0`: Created, `1`: Running, `2`: Stopped, `3`: Completed, `4`: Run failed
+        :type Status: int
+        :param Enable: Whether the configuration is enabled. `0`: Not enabled, `1`: Enabled
+        :type Enable: int
+        """
+        self.TopicId = None
+        self.Status = None
+        self.Enable = None
+
+
+    def _deserialize(self, params):
+        self.TopicId = params.get("TopicId")
+        self.Status = params.get("Status")
+        self.Enable = params.get("Enable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosRechargesResponse(AbstractModel):
+    """DescribeCosRecharges response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: See the description of the `CosRechargeInfo` structure.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Data: list of CosRechargeInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = CosRechargeInfo()
+                obj._deserialize(item)
+                self.Data.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -4582,6 +4815,59 @@ class ModifyConsumerResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyCosRechargeRequest(AbstractModel):
+    """ModifyCosRecharge request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: COS import configuration ID.
+        :type Id: str
+        :param TopicId: ID of the log topic.
+        :type TopicId: str
+        :param Name: COS import task name.
+        :type Name: str
+        :param Enable: Whether the configuration is enabled. `0`: Not enabled, `1`: Enabled
+        :type Enable: int
+        """
+        self.Id = None
+        self.TopicId = None
+        self.Name = None
+        self.Enable = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.TopicId = params.get("TopicId")
+        self.Name = params.get("Name")
+        self.Enable = params.get("Enable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCosRechargeResponse(AbstractModel):
+    """ModifyCosRecharge response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyIndexRequest(AbstractModel):
     """ModifyIndex request structure.
 
@@ -5691,9 +5977,11 @@ class Tag(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Key: Tag key
+        :param Key: The tag key.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Key: str
-        :param Value: Tag value
+        :param Value: The tag value.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Value: str
         """
         self.Key = None
@@ -5757,6 +6045,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param Describes: Log topic description
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Describes: str
+        :param HotPeriod: The lifecycle of hot storage when log transitioning is enabled. The value of `hotPeriod` is smaller than that of `Period`.
+The hot storage period is the value of `hotPeriod`, and the cold storage period is the value of `Period` minus the value of `hotPeriod`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type HotPeriod: int
         """
         self.LogsetId = None
         self.TopicId = None
@@ -5773,6 +6065,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.Period = None
         self.SubAssumerName = None
         self.Describes = None
+        self.HotPeriod = None
 
 
     def _deserialize(self, params):
@@ -5796,6 +6089,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.Period = params.get("Period")
         self.SubAssumerName = params.get("SubAssumerName")
         self.Describes = params.get("Describes")
+        self.HotPeriod = params.get("HotPeriod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

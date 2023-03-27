@@ -98,6 +98,9 @@ RESOURCESSOLDOUT = 'ResourcesSoldOut'
 # The operation is unauthorized.
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
 
+# Operation not authorized/No valid package/The account is overdue
+UNAUTHORIZEDOPERATION_UNAUTHORIZED = 'UnauthorizedOperation.Unauthorized'
+
 # The parameter is unknown.
 UNKNOWNPARAMETER = 'UnknownParameter'
 
