@@ -631,8 +631,16 @@ class ConfigureSyncJobRequest(AbstractModel):
         :type ExpectRunTime: str
         :param SrcInfo: Source database information. This parameter only applies to single-node databases, and `SrcNodeType` must be `single`.
         :type SrcInfo: :class:`tencentcloud.dts.v20211206.models.Endpoint`
+        :param SrcInfos: Source database information. This parameter is valid for multi-node databases, and the value of `SrcNodeType` must be `cluster`.
+        :type SrcInfos: :class:`tencentcloud.dts.v20211206.models.SyncDBEndpointInfos`
+        :param SrcNodeType: Enumerated values: `single` (for single-node source database), `cluster` (for multi-node source database).
+        :type SrcNodeType: str
         :param DstInfo: Target database information. This parameter is used by single-node databases.
         :type DstInfo: :class:`tencentcloud.dts.v20211206.models.Endpoint`
+        :param DstInfos: Target database information. This parameter is valid for multi-node databases, and the value of `DstNodeType` must be `cluster`.
+        :type DstInfos: :class:`tencentcloud.dts.v20211206.models.SyncDBEndpointInfos`
+        :param DstNodeType: Enumerated values: `single` (for single-node target database), `cluster` (for multi-node target database).
+        :type DstNodeType: str
         :param Options: Sync task options
         :type Options: :class:`tencentcloud.dts.v20211206.models.Options`
         :param AutoRetryTimeRangeMinutes: Automatic retry time, which can be set to 5-720 minutes. 0 indicates that retry is disabled.
@@ -647,7 +655,11 @@ class ConfigureSyncJobRequest(AbstractModel):
         self.RunMode = None
         self.ExpectRunTime = None
         self.SrcInfo = None
+        self.SrcInfos = None
+        self.SrcNodeType = None
         self.DstInfo = None
+        self.DstInfos = None
+        self.DstNodeType = None
         self.Options = None
         self.AutoRetryTimeRangeMinutes = None
 
@@ -666,9 +678,17 @@ class ConfigureSyncJobRequest(AbstractModel):
         if params.get("SrcInfo") is not None:
             self.SrcInfo = Endpoint()
             self.SrcInfo._deserialize(params.get("SrcInfo"))
+        if params.get("SrcInfos") is not None:
+            self.SrcInfos = SyncDBEndpointInfos()
+            self.SrcInfos._deserialize(params.get("SrcInfos"))
+        self.SrcNodeType = params.get("SrcNodeType")
         if params.get("DstInfo") is not None:
             self.DstInfo = Endpoint()
             self.DstInfo._deserialize(params.get("DstInfo"))
+        if params.get("DstInfos") is not None:
+            self.DstInfos = SyncDBEndpointInfos()
+            self.DstInfos._deserialize(params.get("DstInfos"))
+        self.DstNodeType = params.get("DstNodeType")
         if params.get("Options") is not None:
             self.Options = Options()
             self.Options._deserialize(params.get("Options"))
@@ -1081,7 +1101,7 @@ class CreateSyncJobRequest(AbstractModel):
         :type SrcDatabaseType: str
         :param SrcRegion: Source database region, such as `ap-guangzhou`.
         :type SrcRegion: str
-        :param DstDatabaseType: Target database type, such as `mysql`, `cynosdbmysql`, `tdapg`, `tdpg`, and `tdsqlmysql`.
+        :param DstDatabaseType: Target database type, such as `mysql`, `cynosdbmysql`, `tdapg`, `tdpg`, `tdsqlmysql`, and `kafka`.
         :type DstDatabaseType: str
         :param DstRegion: Target database region, such as `ap-guangzhou`.
         :type DstRegion: str
@@ -3144,6 +3164,47 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class KafkaOption(AbstractModel):
+    """Sync options configured when the target database is Kafka
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DataType: Type of data that is delivered to Kafka, such as `Avro` and `Json`.
+        :type DataType: str
+        :param TopicType: Topic sync policy, such as `Single` (deliver all data to a single topic), `Multi` (deliver data to multiple custom topics).
+        :type TopicType: str
+        :param DDLTopicName: Topic for DDL storage
+        :type DDLTopicName: str
+        :param TopicRules: Topic description
+        :type TopicRules: list of TopicRule
+        """
+        self.DataType = None
+        self.TopicType = None
+        self.DDLTopicName = None
+        self.TopicRules = None
+
+
+    def _deserialize(self, params):
+        self.DataType = params.get("DataType")
+        self.TopicType = params.get("TopicType")
+        self.DDLTopicName = params.get("DDLTopicName")
+        if params.get("TopicRules") is not None:
+            self.TopicRules = []
+            for item in params.get("TopicRules"):
+                obj = TopicRule()
+                obj._deserialize(item)
+                self.TopicRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class KeyValuePairOption(AbstractModel):
     """Additional configuration information
 
@@ -3751,6 +3812,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param DdlOptions: DDL statements to be synced
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DdlOptions: list of DdlOption
+        :param KafkaOption: Kafka sync options
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type KafkaOption: :class:`tencentcloud.dts.v20211206.models.KafkaOption`
         """
         self.InitType = None
         self.DealOfExistSameTable = None
@@ -3759,6 +3823,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.OpTypes = None
         self.ConflictHandleOption = None
         self.DdlOptions = None
+        self.KafkaOption = None
 
 
     def _deserialize(self, params):
@@ -3776,6 +3841,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = DdlOption()
                 obj._deserialize(item)
                 self.DdlOptions.append(obj)
+        if params.get("KafkaOption") is not None:
+            self.KafkaOption = KafkaOption()
+            self.KafkaOption._deserialize(params.get("KafkaOption"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4813,6 +4881,51 @@ class StopSyncJobResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SyncDBEndpointInfos(AbstractModel):
+    """Node information of multi-node databases configured for data sync. This data structure is valid for multi-node databases such as TDSQL for MySQL. For single-node databases such as MySQL, use `Endpoint` instead.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Region: Region of the database
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Region: str
+        :param AccessType: Instance network access type. Valid values: `extranet` (public network); `ipv6` (public IPv6); `cvm` (self-build on CVM); `dcg` (Direct Connect); `vpncloud` (VPN access); `cdb` (database); `ccn` (CCN); `intranet` (intranet); `vpc` (VPC). Note that the valid values are subject to the current link.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AccessType: str
+        :param DatabaseType: Database type, such as `mysql`, `redis`, `mongodb`, `postgresql`, `mariadb`, and `percona`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DatabaseType: str
+        :param Info: Database information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Info: list of Endpoint
+        """
+        self.Region = None
+        self.AccessType = None
+        self.DatabaseType = None
+        self.Info = None
+
+
+    def _deserialize(self, params):
+        self.Region = params.get("Region")
+        self.AccessType = params.get("AccessType")
+        self.DatabaseType = params.get("DatabaseType")
+        if params.get("Info") is not None:
+            self.Info = []
+            for item in params.get("Info"):
+                obj = Endpoint()
+                obj._deserialize(item)
+                self.Info.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SyncDetailInfo(AbstractModel):
     """Step information of the sync task
 
@@ -5202,6 +5315,50 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def _deserialize(self, params):
         self.TagKey = params.get("TagKey")
         self.TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TopicRule(AbstractModel):
+    """Topic description
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopicName: Topic name
+        :type TopicName: str
+        :param PartitionType: Topic partitioning policy. If the topic sync policy is delivering data to multiple custom topics (`TopicType` = `Multi`), the value of this parameter is `Random` (deliver to a random partition). If the topic sync policy is delivering all data to a single topic (`TopicType` = `Single`), this parameter has three valid values: `AllInPartitionZero` (deliver all data to partition0), `PartitionByTable` (partition by table name), `PartitionByTableAndKey` (partition by table name and primary key).
+        :type PartitionType: str
+        :param DbMatchMode: Database name matching rule. This parameter takes effect only when `TopicType` is `Multi`. Valid values: `Regular` (match by regex), `Default` (default rule for the remaining databases that cannot be matched by regex). The default rule must be included in the array of matching rules.
+        :type DbMatchMode: str
+        :param DbName: Database name, which can only be matched by regex when `TopicType` is `Multi` and `DbMatchMode` is `Regular`.
+        :type DbName: str
+        :param TableMatchMode: Table name matching rule. This parameter takes effect only when `TopicType` is `Multi`. Valid values: `Regular` (match by regex), `Default` (default rule for the remaining databases that cannot be matched by regex). The default rule must be included in the array of matching rules.
+        :type TableMatchMode: str
+        :param TableName: Table name, which can only be matched by regex when `TopicType` is `Multi` and `DbMatchMode` is `Regular`.
+        :type TableName: str
+        """
+        self.TopicName = None
+        self.PartitionType = None
+        self.DbMatchMode = None
+        self.DbName = None
+        self.TableMatchMode = None
+        self.TableName = None
+
+
+    def _deserialize(self, params):
+        self.TopicName = params.get("TopicName")
+        self.PartitionType = params.get("PartitionType")
+        self.DbMatchMode = params.get("DbMatchMode")
+        self.DbName = params.get("DbName")
+        self.TableMatchMode = params.get("TableMatchMode")
+        self.TableName = params.get("TableName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

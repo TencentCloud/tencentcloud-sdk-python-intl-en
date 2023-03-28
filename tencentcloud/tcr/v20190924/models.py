@@ -338,6 +338,8 @@ class CreateInstanceRequest(AbstractModel):
         :type RegistryChargePrepaid: :class:`tencentcloud.tcr.v20190924.models.RegistryChargePrepaid`
         :param SyncTag: Whether to sync TCR cloud tags to the COS bucket
         :type SyncTag: bool
+        :param EnableCosMAZ: Whether to enable the COS Multi-AZ feature
+        :type EnableCosMAZ: bool
         """
         self.RegistryName = None
         self.RegistryType = None
@@ -345,6 +347,7 @@ class CreateInstanceRequest(AbstractModel):
         self.RegistryChargeType = None
         self.RegistryChargePrepaid = None
         self.SyncTag = None
+        self.EnableCosMAZ = None
 
 
     def _deserialize(self, params):
@@ -358,6 +361,7 @@ class CreateInstanceRequest(AbstractModel):
             self.RegistryChargePrepaid = RegistryChargePrepaid()
             self.RegistryChargePrepaid._deserialize(params.get("RegistryChargePrepaid"))
         self.SyncTag = params.get("SyncTag")
+        self.EnableCosMAZ = params.get("EnableCosMAZ")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2233,83 +2237,6 @@ class DescribeInstanceAllNamespacesResponse(AbstractModel):
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeInstanceAllRequest(AbstractModel):
-    """DescribeInstanceAll request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Registryids: List of instance IDs (if it is empty,
-it indicates to get all instances under the current account)
-        :type Registryids: list of str
-        :param Offset: Offset. Default value: 0.
-        :type Offset: int
-        :param Limit: Maximum number of output entries. Default value: 20. Maximum value: 100.
-        :type Limit: int
-        :param Filters: Filters
-        :type Filters: list of Filter
-        :param AllRegion: Whether to get the instances in all regions. Default value: False.
-        :type AllRegion: bool
-        """
-        self.Registryids = None
-        self.Offset = None
-        self.Limit = None
-        self.Filters = None
-        self.AllRegion = None
-
-
-    def _deserialize(self, params):
-        self.Registryids = params.get("Registryids")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        if params.get("Filters") is not None:
-            self.Filters = []
-            for item in params.get("Filters"):
-                obj = Filter()
-                obj._deserialize(item)
-                self.Filters.append(obj)
-        self.AllRegion = params.get("AllRegion")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeInstanceAllResponse(AbstractModel):
-    """DescribeInstanceAll response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param TotalCount: Total number of instances
-        :type TotalCount: int
-        :param Registries: List of instances
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type Registries: list of Registry
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.TotalCount = None
-        self.Registries = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        if params.get("Registries") is not None:
-            self.Registries = []
-            for item in params.get("Registries"):
-                obj = Registry()
-                obj._deserialize(item)
-                self.Registries.append(obj)
         self.RequestId = params.get("RequestId")
 
 

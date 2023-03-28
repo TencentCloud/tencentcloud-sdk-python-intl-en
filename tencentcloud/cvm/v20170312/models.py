@@ -25,24 +25,24 @@ class ActionTimer(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Externals: Additional data
-        :type Externals: :class:`tencentcloud.cvm.v20170312.models.Externals`
         :param TimerAction: Timer name. Currently `TerminateInstances` is the only supported value.
         :type TimerAction: str
-        :param ActionTime: Execution time, which must be at least 5 minutes later than the current time. For example, 2018-5-29 11:26:40.
+        :param ActionTime: Execution time, which follows the ISO8601 standard and uses UTC time. It must be at least 5 minutes later than the current time. Format: YYYY-MM-DDThh:mm:ssZ. For example: 2018-05-29T11:26:40Z.
         :type ActionTime: str
+        :param Externals: Additional data
+        :type Externals: :class:`tencentcloud.cvm.v20170312.models.Externals`
         """
-        self.Externals = None
         self.TimerAction = None
         self.ActionTime = None
+        self.Externals = None
 
 
     def _deserialize(self, params):
+        self.TimerAction = params.get("TimerAction")
+        self.ActionTime = params.get("ActionTime")
         if params.get("Externals") is not None:
             self.Externals = Externals()
             self.Externals._deserialize(params.get("Externals"))
-        self.TimerAction = params.get("TimerAction")
-        self.ActionTime = params.get("ActionTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3209,6 +3209,8 @@ Valid values:
 `TencentCloud`: Tencent Cloud official license
 `BYOL`: Bring Your Own License
         :type LicenseType: str
+        :param BootMode: Boot mode
+        :type BootMode: str
         """
         self.Architecture = None
         self.OsType = None
@@ -3220,6 +3222,7 @@ Valid values:
         self.Force = None
         self.TagSpecification = None
         self.LicenseType = None
+        self.BootMode = None
 
 
     def _deserialize(self, params):
@@ -3238,6 +3241,7 @@ Valid values:
                 obj._deserialize(item)
                 self.TagSpecification.append(obj)
         self.LicenseType = params.get("LicenseType")
+        self.BootMode = params.get("BootMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7023,12 +7027,16 @@ class TerminateInstancesRequest(AbstractModel):
         r"""
         :param InstanceIds: Instance ID(s). To obtain the instance IDs, you can call [`DescribeInstances`](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and look for `InstanceId` in the response. The maximum number of instances in each request is 100.
         :type InstanceIds: list of str
+        :param ReleasePrepaidDataDisks: Release the monthly subscribed data disks attached to the instance
+        :type ReleasePrepaidDataDisks: bool
         """
         self.InstanceIds = None
+        self.ReleasePrepaidDataDisks = None
 
 
     def _deserialize(self, params):
         self.InstanceIds = params.get("InstanceIds")
+        self.ReleasePrepaidDataDisks = params.get("ReleasePrepaidDataDisks")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

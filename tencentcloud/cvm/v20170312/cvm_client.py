@@ -774,7 +774,7 @@ class CvmClient(AbstractClient):
 
 
     def DescribeRegions(self, request):
-        """This API is suspended. To query the information of regions, use [DescribeZones](https://intl.cloud.tencent.com/document/product/1596/77929?from_cn_redirect=1).
+        """This API is suspended. To query the information of regions, use [DescribeZones](https://intl.cloud.tencent.com/document/product/1596/77930?from_cn_redirect=1).
 
         :param request: Request instance for DescribeRegions.
         :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeRegionsRequest`
