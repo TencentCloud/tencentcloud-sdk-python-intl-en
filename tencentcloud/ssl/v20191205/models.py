@@ -182,12 +182,16 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param RenewOrder: Certificate ID of the new order
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RenewOrder: str
+        :param SMCert: Whether the certificate is a Chinese SM certificate.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SMCert: int
         """
         self.DomainNumber = None
         self.OriginCertificateId = None
         self.ReplacedBy = None
         self.ReplacedFor = None
         self.RenewOrder = None
+        self.SMCert = None
 
 
     def _deserialize(self, params):
@@ -196,6 +200,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self.ReplacedBy = params.get("ReplacedBy")
         self.ReplacedFor = params.get("ReplacedFor")
         self.RenewOrder = params.get("RenewOrder")
+        self.SMCert = params.get("SMCert")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -221,8 +226,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param From: Certificate source
 Note: this field may return null, indicating that no valid values can be obtained.
         :type From: str
-        :param PackageType: Certificate plan type. `1`: GeoTrust DV SSL CA - G3; `2`: TrustAsia TLS RSA CA; `3`: SecureSite EV Pro; `4`: SecureSite EV; `5`: SecureSite OV Pro; `6`: SecureSite OV; `7`: SecureSite OV wildcard; `8`: GeoTrust EV; `9`: GeoTrust OV; `10`: GeoTrust OV wildcard; `11`: TrustAsia DV multi-domain; `12`: TrustAsia DV wildcard; `13`: TrustAsia OV wildcard D3; `14`: TrustAsia OV D3; `15`: TrustAsia OV multi-domain D3; `16`: TrustAsia EV D3; `17`: TrustAsia EV multi-domain D3; `18`: GlobalSign OV; `19`: GlobalSign OV wildcard; `20`: GlobalSign EV; `21`: TrustAsia OV wildcard multi-domain D3; `22`: GlobalSign OV multi-domain; `23`: GlobalSign OV wildcard multi-domain; `24`: GlobalSign EV multi-domain
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param PackageType: The certificate plan type. Valid values:
+null: Certificates uploaded by users (no plan type)
+`1`: GeoTrust DV SSL CA - G3; `2`: TrustAsia TLS RSA CA; `3`: SecureSite EV Pro; `4`: SecureSite EV; `5`: SecureSite OV Pro; `6`: SecureSite OV; `7`: SecureSite OV wildcard; `8`: GeoTrust EV; `9`: GeoTrust OV; `10`: GeoTrust OV wildcard; `11`: TrustAsia DV multi-domain; `12`: TrustAsia DV wildcard; `13`: TrustAsia OV wildcard D3; `14`: TrustAsia OV D3; `15`: TrustAsia OV multi-domain D3; `16`: TrustAsia EV D3; `17`: TrustAsia EV multi-domain D3; `18`: GlobalSign OV; `19`: GlobalSign OV wildcard; `20`: GlobalSign EV; `21`: TrustAsia OV wildcard multi-domain D3; `22`: GlobalSign OV multi-domain; `23`: GlobalSign OV wildcard multi-domain; `24`: GlobalSign EV multi-domain
+Note: This field may return null, indicating that no valid values can be obtained.
         :type PackageType: str
         :param CertificateType: Certificate type. `CA`: client certificate; `SVR`: server certificate
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -1971,6 +1978,8 @@ class UploadCertificateRequest(AbstractModel):
         :type ProjectId: int
         :param CertificateUse: 
         :type CertificateUse: str
+        :param Repeatable: Whether a certificate can be repeatedly uploaded.
+        :type Repeatable: bool
         """
         self.CertificatePublicKey = None
         self.CertificatePrivateKey = None
@@ -1978,6 +1987,7 @@ class UploadCertificateRequest(AbstractModel):
         self.Alias = None
         self.ProjectId = None
         self.CertificateUse = None
+        self.Repeatable = None
 
 
     def _deserialize(self, params):
@@ -1987,6 +1997,7 @@ class UploadCertificateRequest(AbstractModel):
         self.Alias = params.get("Alias")
         self.ProjectId = params.get("ProjectId")
         self.CertificateUse = params.get("CertificateUse")
+        self.Repeatable = params.get("Repeatable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2005,13 +2016,18 @@ class UploadCertificateResponse(AbstractModel):
         r"""
         :param CertificateId: Certificate ID
         :type CertificateId: str
+        :param RepeatCertId: The ID of the repeatedly uploaded certificate.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RepeatCertId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.CertificateId = None
+        self.RepeatCertId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.CertificateId = params.get("CertificateId")
+        self.RepeatCertId = params.get("RepeatCertId")
         self.RequestId = params.get("RequestId")

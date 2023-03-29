@@ -179,6 +179,11 @@ def test_import_dnspod():
     from tencentcloud.dnspod.v20210323 import models
 
 
+def test_import_domain():
+    from tencentcloud.domain.v20180808 import domain_client
+    from tencentcloud.domain.v20180808 import models
+
+
 def test_import_dts():
     from tencentcloud.dts.v20180330 import dts_client
     from tencentcloud.dts.v20180330 import models

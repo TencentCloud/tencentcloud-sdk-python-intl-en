@@ -246,13 +246,23 @@ class CreateAccessRulesResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param AccessRules: List of permission rules
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AccessRules: list of AccessRule
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.AccessRules = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("AccessRules") is not None:
+            self.AccessRules = []
+            for item in params.get("AccessRules"):
+                obj = AccessRule()
+                obj._deserialize(item)
+                self.AccessRules.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -901,6 +911,12 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param DegradeCapacityUsed: Used STANDARD_IA capacity of COS, in bytes
 Note: this field may return `null`, indicating that no valid value was found.
         :type DegradeCapacityUsed: int
+        :param DeepArchiveCapacityUsed: COS DEEP ARCHIVE storage usage, in bytes
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DeepArchiveCapacityUsed: int
+        :param IntelligentCapacityUsed: COS INTELLIGENT TIERING storage usage, in bytes
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IntelligentCapacityUsed: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -909,6 +925,8 @@ Note: this field may return `null`, indicating that no valid value was found.
         self.ArchiveCapacityUsed = None
         self.StandardCapacityUsed = None
         self.DegradeCapacityUsed = None
+        self.DeepArchiveCapacityUsed = None
+        self.IntelligentCapacityUsed = None
         self.RequestId = None
 
 
@@ -920,6 +938,8 @@ Note: this field may return `null`, indicating that no valid value was found.
         self.ArchiveCapacityUsed = params.get("ArchiveCapacityUsed")
         self.StandardCapacityUsed = params.get("StandardCapacityUsed")
         self.DegradeCapacityUsed = params.get("DegradeCapacityUsed")
+        self.DeepArchiveCapacityUsed = params.get("DeepArchiveCapacityUsed")
+        self.IntelligentCapacityUsed = params.get("IntelligentCapacityUsed")
         self.RequestId = params.get("RequestId")
 
 
@@ -1814,7 +1834,7 @@ class Transition(AbstractModel):
         r"""
         :param Days: Trigger time (in days)
         :type Days: int
-        :param Type: Transition type (`1`: transition to ARCHIVE; `2`: delete; `3`: transition to STANDARD_IA)
+        :param Type: Transition type (`1`: ARCHIVE; `2`: Delete; `3`: STANDARD_IA; `4`: DEEP ARCHIVE; `5`: INTELLIGENT TIERING)
         :type Type: int
         """
         self.Days = None

@@ -33,7 +33,7 @@ class AutoSnapshotPolicyInfo(AbstractModel):
         :type CreationTime: str
         :param FileSystemNums: Number of bound file systems
         :type FileSystemNums: int
-        :param DayOfWeek: The day of the week on which to regularly back up the snapshot
+        :param DayOfWeek: The specific day of the week on which to create a snapshot. This parameter is mutually exclusive with `DayOfMonth` and `IntervalDays`.
         :type DayOfWeek: str
         :param Hour: The hour of a day at which to regularly back up the snapshot
         :type Hour: str
@@ -51,6 +51,12 @@ class AutoSnapshotPolicyInfo(AbstractModel):
         :type RegionName: str
         :param FileSystems: File system information
         :type FileSystems: list of FileSystemByPolicy
+        :param DayOfMonth: The specific day of the month on which to create a snapshot. This parameter is mutually exclusive with `DayOfWeek` and `IntervalDays`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DayOfMonth: str
+        :param IntervalDays: The snapshot interval (1 to 365 days). This parameter is mutually exclusive with `DayOfWeek` and `DayOfMonth`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IntervalDays: int
         """
         self.AutoSnapshotPolicyId = None
         self.PolicyName = None
@@ -65,6 +71,8 @@ class AutoSnapshotPolicyInfo(AbstractModel):
         self.AliveDays = None
         self.RegionName = None
         self.FileSystems = None
+        self.DayOfMonth = None
+        self.IntervalDays = None
 
 
     def _deserialize(self, params):
@@ -86,6 +94,8 @@ class AutoSnapshotPolicyInfo(AbstractModel):
                 obj = FileSystemByPolicy()
                 obj._deserialize(item)
                 self.FileSystems.append(obj)
+        self.DayOfMonth = params.get("DayOfMonth")
+        self.IntervalDays = params.get("IntervalDays")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -306,26 +316,34 @@ class CreateAutoSnapshotPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DayOfWeek: The day of the week on which to repeat the snapshot operation
-        :type DayOfWeek: str
         :param Hour: The time point when to repeat the snapshot operation
         :type Hour: str
         :param PolicyName: Policy name
         :type PolicyName: str
+        :param DayOfWeek: The day of the week on which to repeat the snapshot operation
+        :type DayOfWeek: str
         :param AliveDays: Snapshot retention period
         :type AliveDays: int
+        :param DayOfMonth: The specific day (day 1 to day 31) of the month on which to create a snapshot.
+        :type DayOfMonth: str
+        :param IntervalDays: The snapshot interval, in days.
+        :type IntervalDays: int
         """
-        self.DayOfWeek = None
         self.Hour = None
         self.PolicyName = None
+        self.DayOfWeek = None
         self.AliveDays = None
+        self.DayOfMonth = None
+        self.IntervalDays = None
 
 
     def _deserialize(self, params):
-        self.DayOfWeek = params.get("DayOfWeek")
         self.Hour = params.get("Hour")
         self.PolicyName = params.get("PolicyName")
+        self.DayOfWeek = params.get("DayOfWeek")
         self.AliveDays = params.get("AliveDays")
+        self.DayOfMonth = params.get("DayOfMonth")
+        self.IntervalDays = params.get("IntervalDays")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1678,6 +1696,11 @@ class FileSystemInfo(AbstractModel):
         :type Capacity: int
         :param Tags: File system tag list
         :type Tags: list of TagInfo
+        :param TieringState: The lifecycle management status of a file system.
+        :type TieringState: str
+        :param TieringDetail: The details about tiered storage.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TieringDetail: :class:`tencentcloud.cfs.v20190719.models.TieringDetailInfo`
         """
         self.CreationTime = None
         self.CreationToken = None
@@ -1699,6 +1722,8 @@ class FileSystemInfo(AbstractModel):
         self.BandwidthLimit = None
         self.Capacity = None
         self.Tags = None
+        self.TieringState = None
+        self.TieringDetail = None
 
 
     def _deserialize(self, params):
@@ -1729,6 +1754,10 @@ class FileSystemInfo(AbstractModel):
                 obj = TagInfo()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.TieringState = params.get("TieringState")
+        if params.get("TieringDetail") is not None:
+            self.TieringDetail = TieringDetailInfo()
+            self.TieringDetail._deserialize(params.get("TieringDetail"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2146,6 +2175,12 @@ class TagInfo(AbstractModel):
         
 
 
+class TieringDetailInfo(AbstractModel):
+    """The details about tiered storage.
+
+    """
+
+
 class UnbindAutoSnapshotPolicyRequest(AbstractModel):
     """UnbindAutoSnapshotPolicy request structure.
 
@@ -2214,6 +2249,10 @@ class UpdateAutoSnapshotPolicyRequest(AbstractModel):
         :type AliveDays: int
         :param IsActivated: Whether to activate the scheduled snapshot feature
         :type IsActivated: int
+        :param DayOfMonth: The specific day of the month on which to create a snapshot. This parameter is mutually exclusive with `DayOfWeek`.
+        :type DayOfMonth: str
+        :param IntervalDays: The snapshot interval. This parameter is mutually exclusive with `DayOfWeek` and `DayOfMonth`.
+        :type IntervalDays: int
         """
         self.AutoSnapshotPolicyId = None
         self.PolicyName = None
@@ -2221,6 +2260,8 @@ class UpdateAutoSnapshotPolicyRequest(AbstractModel):
         self.Hour = None
         self.AliveDays = None
         self.IsActivated = None
+        self.DayOfMonth = None
+        self.IntervalDays = None
 
 
     def _deserialize(self, params):
@@ -2230,6 +2271,8 @@ class UpdateAutoSnapshotPolicyRequest(AbstractModel):
         self.Hour = params.get("Hour")
         self.AliveDays = params.get("AliveDays")
         self.IsActivated = params.get("IsActivated")
+        self.DayOfMonth = params.get("DayOfMonth")
+        self.IntervalDays = params.get("IntervalDays")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
