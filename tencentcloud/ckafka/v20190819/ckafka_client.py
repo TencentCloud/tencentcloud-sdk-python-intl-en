@@ -141,6 +141,29 @@ class CkafkaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateDatahubTopic(self, request):
+        """This API is used to create a DataHub topic.
+
+        :param request: Request instance for CreateDatahubTopic.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateDatahubTopicRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.CreateDatahubTopicResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDatahubTopic", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDatahubTopicResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateInstancePost(self, request):
         """This API is used to create a pay-as-you-go instance.
 

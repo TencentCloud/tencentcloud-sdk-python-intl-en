@@ -1048,6 +1048,74 @@ class CreateConsumerResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateDatahubTopicRequest(AbstractModel):
+    """CreateDatahubTopic request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Topic name, which is a string of up to 128 characters. It can contain letters, digits, and hyphens (-) and must start with a letter.
+        :type Name: str
+        :param PartitionNum: Number of partitions, which should be greater than 0.
+        :type PartitionNum: int
+        :param RetentionMs: Message retention period in milliseconds. The current minimum value is 60,000 ms.
+        :type RetentionMs: int
+        :param Note: Topic remarks, which are a string of up to 128 characters. It can contain letters, digits, and hyphens (-) and must start with a letter.
+        :type Note: str
+        :param Tags: Tag list
+        :type Tags: list of Tag
+        """
+        self.Name = None
+        self.PartitionNum = None
+        self.RetentionMs = None
+        self.Note = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.PartitionNum = params.get("PartitionNum")
+        self.RetentionMs = params.get("RetentionMs")
+        self.Note = params.get("Note")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDatahubTopicResponse(AbstractModel):
+    """CreateDatahubTopic response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Returned creation result
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.DatahubTopicResp`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = DatahubTopicResp()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class CreateInstancePostRequest(AbstractModel):
     """CreateInstancePost request structure.
 
@@ -1538,6 +1606,30 @@ class DatahubTopicDTO(AbstractModel):
         self.RetentionMs = params.get("RetentionMs")
         self.Note = params.get("Note")
         self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DatahubTopicResp(AbstractModel):
+    """DataHub topic response
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopicName: Topic name
+        :type TopicName: str
+        """
+        self.TopicName = None
+
+
+    def _deserialize(self, params):
+        self.TopicName = params.get("TopicName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

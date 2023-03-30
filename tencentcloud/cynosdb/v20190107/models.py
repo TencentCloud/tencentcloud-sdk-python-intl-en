@@ -213,11 +213,11 @@ class AddInstancesRequest(AbstractModel):
         :type Memory: int
         :param ReadOnlyCount: Number of added read-only instances. Value range: (0,16].
         :type ReadOnlyCount: int
-        :param InstanceGrpId: Instance group ID, which is used when you add an instance to an existing RO group. If this parameter is left empty, an RO group will be created. We recommend you not pass in this value on the current version.
+        :param InstanceGrpId: Instance group ID, which will be used when you add an instance in an existing RO group. If this parameter is left empty, an RO group will be created. But it is not recommended to pass in this parameter for the current version, as this version has been disused.
         :type InstanceGrpId: str
-        :param VpcId: VPC ID. This parameter has been disused.
+        :param VpcId: VPC ID
         :type VpcId: str
-        :param SubnetId: Subnet ID. If `VpcId` is set, `SubnetId` is required. This parameter has been disused.
+        :param SubnetId: Subnet ID. If `VpcId` is set, `SubnetId` is required.
         :type SubnetId: str
         :param Port: The port used when adding an RO group. Value range: [0,65535).
         :type Port: int
@@ -236,6 +236,8 @@ class AddInstancesRequest(AbstractModel):
         :type ParamTemplateId: int
         :param InstanceParams: Parameter list, which is valid only if `InstanceParams` is passed in to `ParamTemplateId`.
         :type InstanceParams: list of ModifyParamItem
+        :param SecurityGroupIds: Security group ID. You can specify an security group when creating a read-only instance.
+        :type SecurityGroupIds: list of str
         """
         self.ClusterId = None
         self.Cpu = None
@@ -252,6 +254,7 @@ class AddInstancesRequest(AbstractModel):
         self.DealMode = None
         self.ParamTemplateId = None
         self.InstanceParams = None
+        self.SecurityGroupIds = None
 
 
     def _deserialize(self, params):
@@ -275,6 +278,7 @@ class AddInstancesRequest(AbstractModel):
                 obj = ModifyParamItem()
                 obj._deserialize(item)
                 self.InstanceParams.append(obj)
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1716,7 +1720,8 @@ Note: This field may return null, indicating that no valid value can be obtained
         :param SlaveZones: Replica AZ
 Note: This field may return null, indicating that no valid value can be obtained.
         :type SlaveZones: list of str
-        :param InstanceNetInfo: 
+        :param InstanceNetInfo: Instance network information
+Note: This field may return null, indicating that no valid value can be obtained.
         :type InstanceNetInfo: list of InstanceNetInfo
         """
         self.Uin = None
@@ -4212,33 +4217,43 @@ class InstanceInitInfo(AbstractModel):
 
 
 class InstanceNetInfo(AbstractModel):
-    """
+    """Instance network information
 
     """
 
     def __init__(self):
         r"""
-        :param InstanceGroupType: 
+        :param InstanceGroupType: Network type
+Note: This field may return null, indicating that no valid values can be obtained.
         :type InstanceGroupType: str
-        :param InstanceGroupId: 
+        :param InstanceGroupId: Instance group ID
+Note: This field may return null, indicating that no valid values can be obtained.
         :type InstanceGroupId: str
-        :param VpcId: 
+        :param VpcId: VPC ID
+Note: This field may return null, indicating that no valid values can be obtained.
         :type VpcId: str
-        :param SubnetId: 
+        :param SubnetId: Subnet ID
+Note: This field may return null, indicating that no valid values can be obtained.
         :type SubnetId: str
-        :param NetType: 
+        :param NetType: Network type
+Note: This field may return null, indicating that no valid values can be obtained.
         :type NetType: int
-        :param Vip: 
+        :param Vip: VPC IP
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Vip: str
-        :param Vport: 
+        :param Vport: VPC port
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Vport: int
-        :param WanDomain: 
+        :param WanDomain: Public network domain name
+Note: This field may return null, indicating that no valid values can be obtained.
         :type WanDomain: str
         :param WanIP: 
         :type WanIP: str
-        :param WanPort: 
+        :param WanPort: Public network port
+Note: This field may return null, indicating that no valid values can be obtained.
         :type WanPort: int
-        :param WanStatus: 
+        :param WanStatus: Public network status
+Note: This field may return null, indicating that no valid values can be obtained.
         :type WanStatus: str
         """
         self.InstanceGroupType = None

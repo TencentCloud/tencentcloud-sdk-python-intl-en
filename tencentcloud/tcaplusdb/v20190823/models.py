@@ -201,11 +201,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param ApiAccessIpv6: TcaplusDB SDK connection parameter for accessing IPv6 addresses
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApiAccessIpv6: str
-        :param ClusterType: Cluster type
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param ClusterType: Cluster type. Valid values: `0` and `1` (shared cluster), `2` (dedicated cluster).
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ClusterType: int
-        :param ClusterStatus: Cluster status
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param ClusterStatus: Cluster status. Valid values: `0` (Running), `1` (Isolated. This status is caused by overdue payments), `2` (To be repossessed. This status is caused when the cluster is actively deleted.),·`3` (To be released. The resources occupied by the table can be released in this status.), `4` (Modifying).
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ClusterStatus: int
         :param ReadCapacityUnit: Read CU
 Note: this field may return `null`, indicating that no valid values can be obtained.
@@ -242,6 +242,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         :param IsReadOnlyUlogBackupExpireDay: Whether the expiration policy of cluster Ulog backup file is read-only. `0`: Yes; `1`: No.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type IsReadOnlyUlogBackupExpireDay: int
+        :param RestProxyStatus: restproxy Status
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RestProxyStatus: int
         """
         self.ClusterName = None
         self.ClusterId = None
@@ -272,6 +275,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.TxhBackupExpireDay = None
         self.UlogBackupExpireDay = None
         self.IsReadOnlyUlogBackupExpireDay = None
+        self.RestProxyStatus = None
 
 
     def _deserialize(self, params):
@@ -316,6 +320,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.TxhBackupExpireDay = params.get("TxhBackupExpireDay")
         self.UlogBackupExpireDay = params.get("UlogBackupExpireDay")
         self.IsReadOnlyUlogBackupExpireDay = params.get("IsReadOnlyUlogBackupExpireDay")
+        self.RestProxyStatus = params.get("RestProxyStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3600,12 +3605,16 @@ class ProxyDetailInfo(AbstractModel):
         :type AverageProcessDelay: int
         :param SlowProcessSpeed: The speed of processing delayed request packets
         :type SlowProcessSpeed: int
+        :param Version: Version
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Version: str
         """
         self.ProxyUid = None
         self.MachineType = None
         self.ProcessSpeed = None
         self.AverageProcessDelay = None
         self.SlowProcessSpeed = None
+        self.Version = None
 
 
     def _deserialize(self, params):
@@ -3614,6 +3623,7 @@ class ProxyDetailInfo(AbstractModel):
         self.ProcessSpeed = params.get("ProcessSpeed")
         self.AverageProcessDelay = params.get("AverageProcessDelay")
         self.SlowProcessSpeed = params.get("SlowProcessSpeed")
+        self.Version = params.get("Version")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3979,6 +3989,9 @@ class ServerDetailInfo(AbstractModel):
         :type ReadNum: int
         :param WriteNum: The number of writes
         :type WriteNum: int
+        :param Version: Version
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Version: str
         """
         self.ServerUid = None
         self.MachineType = None
@@ -3986,6 +3999,7 @@ class ServerDetailInfo(AbstractModel):
         self.DiskRate = None
         self.ReadNum = None
         self.WriteNum = None
+        self.Version = None
 
 
     def _deserialize(self, params):
@@ -3995,6 +4009,7 @@ class ServerDetailInfo(AbstractModel):
         self.DiskRate = params.get("DiskRate")
         self.ReadNum = params.get("ReadNum")
         self.WriteNum = params.get("WriteNum")
+        self.Version = params.get("Version")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4425,12 +4440,27 @@ class TableGroupInfo(AbstractModel):
         :type TableCount: int
         :param TotalSize: Total table storage capacity in MB in table group
         :type TotalSize: int
+        :param TxhBackupExpireDay: The number of days before the backup files of the Txh tables expire and are deleted.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TxhBackupExpireDay: int
+        :param EnableMysql: Whether MySQL load rebalancing is enabled. Valid values: `0` (Disabled), `1` (Enabling), `2` (Enabled).
+        :type EnableMysql: int
+        :param MysqlConnIp: MySQL load rebalancing vip
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MysqlConnIp: str
+        :param MysqlConnPort: MySQL load rebalancing vport
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MysqlConnPort: int
         """
         self.TableGroupId = None
         self.TableGroupName = None
         self.CreatedTime = None
         self.TableCount = None
         self.TotalSize = None
+        self.TxhBackupExpireDay = None
+        self.EnableMysql = None
+        self.MysqlConnIp = None
+        self.MysqlConnPort = None
 
 
     def _deserialize(self, params):
@@ -4439,6 +4469,10 @@ class TableGroupInfo(AbstractModel):
         self.CreatedTime = params.get("CreatedTime")
         self.TableCount = params.get("TableCount")
         self.TotalSize = params.get("TotalSize")
+        self.TxhBackupExpireDay = params.get("TxhBackupExpireDay")
+        self.EnableMysql = params.get("EnableMysql")
+        self.MysqlConnIp = params.get("MysqlConnIp")
+        self.MysqlConnPort = params.get("MysqlConnPort")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
