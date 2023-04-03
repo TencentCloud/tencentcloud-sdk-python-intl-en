@@ -215,6 +215,9 @@ FAILEDOPERATION_VPCRESETSERVICEERROR = 'FailedOperation.VPCResetServiceError'
 # Failed to update VPC routes.
 FAILEDOPERATION_VPCUPDATEROUTEERROR = 'FailedOperation.VPCUpdateRouteError'
 
+# Failed to query the allowlist. Try again later. If the problem persists, contact customer service.
+FAILEDOPERATION_WHITELISTCONNECTERROR = 'FailedOperation.WhitelistConnectError'
+
 # Failed to create the task.
 FLOWERROR = 'FlowError'
 
@@ -370,6 +373,9 @@ INVALIDPARAMETERVALUE_INVALIDPID = 'InvalidParameterValue.InvalidPid'
 
 # RO group in incorrect status
 INVALIDPARAMETERVALUE_INVALIDREADONLYGROUPSTATUS = 'InvalidParameterValue.InvalidReadOnlyGroupStatus'
+
+# Invalid region
+INVALIDPARAMETERVALUE_INVALIDREGIONIDERROR = 'InvalidParameterValue.InvalidRegionIdError'
 
 # Invalid availability zone.
 INVALIDPARAMETERVALUE_INVALIDZONEIDERROR = 'InvalidParameterValue.InvalidZoneIdError'

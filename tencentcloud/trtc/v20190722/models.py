@@ -597,6 +597,55 @@ class DescribeRelayUsageResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTrtcRoomUsageRequest(AbstractModel):
+    """DescribeTrtcRoomUsage request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppid: 
+        :type SdkAppid: int
+        :param StartTime: 
+        :type StartTime: str
+        :param EndTime: 
+        :type EndTime: str
+        """
+        self.SdkAppid = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppid = params.get("SdkAppid")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTrtcRoomUsageResponse(AbstractModel):
+    """DescribeTrtcRoomUsage response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTrtcUsageRequest(AbstractModel):
     """DescribeTrtcUsage request structure.
 

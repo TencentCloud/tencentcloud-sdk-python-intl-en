@@ -50,6 +50,9 @@ INTERNALERROR = 'InternalError'
 # On-cloud recording internal error.
 INTERNALERROR_CRINTERNALERROR = 'InternalError.CRInternalError'
 
+# An error occurred while querying the database.
+INTERNALERROR_DBERROR = 'InternalError.DBError'
+
 # Failed to query the room.
 INTERNALERROR_GETROOMCACHEIPERROR = 'InternalError.GetRoomCacheIpError'
 

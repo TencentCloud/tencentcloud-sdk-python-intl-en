@@ -219,6 +219,166 @@ class BackupPlan(AbstractModel):
         
 
 
+class BackupSummary(AbstractModel):
+    """Instance backup statistics
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: Instance ID
+        :type DBInstanceId: str
+        :param LogBackupCount: Number of log backups of an instance
+        :type LogBackupCount: int
+        :param LogBackupSize: Size of log backups of an instance
+        :type LogBackupSize: int
+        :param ManualBaseBackupCount: Number of manually created full backups of an instance
+        :type ManualBaseBackupCount: int
+        :param ManualBaseBackupSize: Size of manually created full backups of an instance
+        :type ManualBaseBackupSize: int
+        :param AutoBaseBackupCount: Number of automatically created full backups of an instance
+        :type AutoBaseBackupCount: int
+        :param AutoBaseBackupSize: Size of automatically created full backups of an instance
+        :type AutoBaseBackupSize: int
+        :param TotalBackupCount: Total number of backups
+        :type TotalBackupCount: int
+        :param TotalBackupSize: Total backup size
+        :type TotalBackupSize: int
+        """
+        self.DBInstanceId = None
+        self.LogBackupCount = None
+        self.LogBackupSize = None
+        self.ManualBaseBackupCount = None
+        self.ManualBaseBackupSize = None
+        self.AutoBaseBackupCount = None
+        self.AutoBaseBackupSize = None
+        self.TotalBackupCount = None
+        self.TotalBackupSize = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.LogBackupCount = params.get("LogBackupCount")
+        self.LogBackupSize = params.get("LogBackupSize")
+        self.ManualBaseBackupCount = params.get("ManualBaseBackupCount")
+        self.ManualBaseBackupSize = params.get("ManualBaseBackupSize")
+        self.AutoBaseBackupCount = params.get("AutoBaseBackupCount")
+        self.AutoBaseBackupSize = params.get("AutoBaseBackupSize")
+        self.TotalBackupCount = params.get("TotalBackupCount")
+        self.TotalBackupSize = params.get("TotalBackupSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BaseBackup(AbstractModel):
+    """Full backup information of a database
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: Instance ID
+        :type DBInstanceId: str
+        :param Id: Unique ID of a backup file
+        :type Id: str
+        :param Name: Backup file name.
+        :type Name: str
+        :param BackupMethod: Backup method, including physical and logical.
+        :type BackupMethod: str
+        :param BackupMode: Backup mode, including automatic and manual.
+        :type BackupMode: str
+        :param State: Backup task status
+        :type State: str
+        :param Size: Backup set size in bytes
+        :type Size: int
+        :param StartTime: Backup start time
+        :type StartTime: str
+        :param FinishTime: Backup end time
+        :type FinishTime: str
+        :param ExpireTime: Backup expiration time
+        :type ExpireTime: str
+        """
+        self.DBInstanceId = None
+        self.Id = None
+        self.Name = None
+        self.BackupMethod = None
+        self.BackupMode = None
+        self.State = None
+        self.Size = None
+        self.StartTime = None
+        self.FinishTime = None
+        self.ExpireTime = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+        self.BackupMethod = params.get("BackupMethod")
+        self.BackupMode = params.get("BackupMode")
+        self.State = params.get("State")
+        self.Size = params.get("Size")
+        self.StartTime = params.get("StartTime")
+        self.FinishTime = params.get("FinishTime")
+        self.ExpireTime = params.get("ExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClassInfo(AbstractModel):
+    """Database instance specification
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SpecCode: Specification ID
+        :type SpecCode: str
+        :param CPU: Number of CPU cores
+        :type CPU: int
+        :param Memory: Memory size in MB
+        :type Memory: int
+        :param MaxStorage: Maximum storage capacity in GB supported by this specification
+        :type MaxStorage: int
+        :param MinStorage: Minimum storage capacity in GB supported by this specification
+        :type MinStorage: int
+        :param QPS: Estimated QPS for this specification
+        :type QPS: int
+        """
+        self.SpecCode = None
+        self.CPU = None
+        self.Memory = None
+        self.MaxStorage = None
+        self.MinStorage = None
+        self.QPS = None
+
+
+    def _deserialize(self, params):
+        self.SpecCode = params.get("SpecCode")
+        self.CPU = params.get("CPU")
+        self.Memory = params.get("Memory")
+        self.MaxStorage = params.get("MaxStorage")
+        self.MinStorage = params.get("MinStorage")
+        self.QPS = params.get("QPS")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CloneDBInstanceRequest(AbstractModel):
     """CloneDBInstance request structure.
 
@@ -432,6 +592,47 @@ class CloseServerlessDBExtranetAccessRequest(AbstractModel):
 
 class CloseServerlessDBExtranetAccessResponse(AbstractModel):
     """CloseServerlessDBExtranetAccess response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateBaseBackupRequest(AbstractModel):
+    """CreateBaseBackup request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: Instance ID
+        :type DBInstanceId: str
+        """
+        self.DBInstanceId = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBaseBackupResponse(AbstractModel):
+    """CreateBaseBackup response structure.
 
     """
 
@@ -1338,7 +1539,7 @@ class DBInstance(AbstractModel):
         :type DBInstanceId: str
         :param DBInstanceName: Instance name
         :type DBInstanceName: str
-        :param DBInstanceStatus: Instance status. Valid values: `applying`, `init` (to be initialized), `initing` (initializing), `running`, `limited run`, `isolated`, `recycling`, `recycled`, `job running`, `offline`, `migrating`, `expanding`, `waitSwitch` (waiting for switch), `switching`, `readonly`, `restarting`, `network changing`
+        :param DBInstanceStatus: Instance status. Valid values: `applying`, `init` (to be initialized), `initing` (initializing), `running`, `limited run`, `isolated`, `recycling`, `recycled`, `job running`, `offline`, `migrating`, `expanding`, `waitSwitch` (waiting for switch), `switching`, `readonly`, `restarting`, `network changing`, upgrading (upgrading kernel version).
         :type DBInstanceStatus: str
         :param DBInstanceMemory: Assigned instance memory size in GB
         :type DBInstanceMemory: int
@@ -1609,6 +1810,51 @@ class DBNode(AbstractModel):
         
 
 
+class DeleteBaseBackupRequest(AbstractModel):
+    """DeleteBaseBackup request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: Instance ID
+        :type DBInstanceId: str
+        :param BaseBackupId: Base backup ID
+        :type BaseBackupId: str
+        """
+        self.DBInstanceId = None
+        self.BaseBackupId = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.BaseBackupId = params.get("BaseBackupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteBaseBackupResponse(AbstractModel):
+    """DeleteBaseBackup response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteDBInstanceNetworkAccessRequest(AbstractModel):
     """DeleteDBInstanceNetworkAccess request structure.
 
@@ -1664,6 +1910,51 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteLogBackupRequest(AbstractModel):
+    """DeleteLogBackup request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: Instance ID
+        :type DBInstanceId: str
+        :param LogBackupId: Log backup ID
+        :type LogBackupId: str
+        """
+        self.DBInstanceId = None
+        self.LogBackupId = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.LogBackupId = params.get("LogBackupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLogBackupResponse(AbstractModel):
+    """DeleteLogBackup response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -1976,6 +2267,122 @@ class DescribeAvailableRecoveryTimeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBackupDownloadURLRequest(AbstractModel):
+    """DescribeBackupDownloadURL request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: Instance ID.
+        :type DBInstanceId: str
+        :param BackupType: Backup type. Valid values: `LogBackup`, `BaseBackup`.
+        :type BackupType: str
+        :param BackupId: Unique backup ID.
+        :type BackupId: str
+        :param URLExpireTime: Validity period of a URL, which is 12 hours by default.
+        :type URLExpireTime: int
+        """
+        self.DBInstanceId = None
+        self.BackupType = None
+        self.BackupId = None
+        self.URLExpireTime = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.BackupType = params.get("BackupType")
+        self.BackupId = params.get("BackupId")
+        self.URLExpireTime = params.get("URLExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackupDownloadURLResponse(AbstractModel):
+    """DescribeBackupDownloadURL response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BackupDownloadURL: Backup download URL
+        :type BackupDownloadURL: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.BackupDownloadURL = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BackupDownloadURL = params.get("BackupDownloadURL")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBackupOverviewRequest(AbstractModel):
+    """DescribeBackupOverview request structure.
+
+    """
+
+
+class DescribeBackupOverviewResponse(AbstractModel):
+    """DescribeBackupOverview response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalFreeSize: Total free space size in bytes
+        :type TotalFreeSize: int
+        :param UsedFreeSize: Used free space size in bytes
+        :type UsedFreeSize: int
+        :param UsedBillingSize: Used paid space size in bytes
+        :type UsedBillingSize: int
+        :param LogBackupCount: Number of log backups
+        :type LogBackupCount: int
+        :param LogBackupSize: Log backup size in bytes
+        :type LogBackupSize: int
+        :param ManualBaseBackupCount: Number of manually created full backups
+        :type ManualBaseBackupCount: int
+        :param ManualBaseBackupSize: Size of manually created full backups in bytes
+        :type ManualBaseBackupSize: int
+        :param AutoBaseBackupCount: Number of automatically created full backups
+        :type AutoBaseBackupCount: int
+        :param AutoBaseBackupSize: Size of automatically created full backups in bytes
+        :type AutoBaseBackupSize: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalFreeSize = None
+        self.UsedFreeSize = None
+        self.UsedBillingSize = None
+        self.LogBackupCount = None
+        self.LogBackupSize = None
+        self.ManualBaseBackupCount = None
+        self.ManualBaseBackupSize = None
+        self.AutoBaseBackupCount = None
+        self.AutoBaseBackupSize = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalFreeSize = params.get("TotalFreeSize")
+        self.UsedFreeSize = params.get("UsedFreeSize")
+        self.UsedBillingSize = params.get("UsedBillingSize")
+        self.LogBackupCount = params.get("LogBackupCount")
+        self.LogBackupSize = params.get("LogBackupSize")
+        self.ManualBaseBackupCount = params.get("ManualBaseBackupCount")
+        self.ManualBaseBackupSize = params.get("ManualBaseBackupSize")
+        self.AutoBaseBackupCount = params.get("AutoBaseBackupCount")
+        self.AutoBaseBackupSize = params.get("AutoBaseBackupSize")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeBackupPlansRequest(AbstractModel):
     """DescribeBackupPlans request structure.
 
@@ -2023,6 +2430,230 @@ class DescribeBackupPlansResponse(AbstractModel):
                 obj = BackupPlan()
                 obj._deserialize(item)
                 self.Plans.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBackupSummariesRequest(AbstractModel):
+    """DescribeBackupSummaries request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: The maximum number of results returned per page. Value range: 1-100. Default: `10`
+        :type Limit: int
+        :param Offset: Data offset, which starts from 0.
+        :type Offset: int
+        :param Filters: Filter instances using one or more criteria. Valid filter names:
+db-instance-id: Filter by instance ID (in string format).
+db-instance-name: Filter by instance name (in string format).
+db-instance-ip: Filter by instance VPC IP (in string format).
+        :type Filters: list of Filter
+        :param OrderBy: Sorting field. Valid values: `TotalBackupSize`, `LogBackupSize`, `ManualBaseBackupSize`, `AutoBaseBackupSize`.
+        :type OrderBy: str
+        :param OrderByType: Sorting order. Valid values: `asc` (ascending), `desc` (descending).
+        :type OrderByType: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+        self.OrderBy = None
+        self.OrderByType = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.OrderBy = params.get("OrderBy")
+        self.OrderByType = params.get("OrderByType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackupSummariesResponse(AbstractModel):
+    """DescribeBackupSummaries response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BackupSummarySet: Backup statistics list.
+        :type BackupSummarySet: list of BackupSummary
+        :param TotalCount: Number of all queried backups.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.BackupSummarySet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("BackupSummarySet") is not None:
+            self.BackupSummarySet = []
+            for item in params.get("BackupSummarySet"):
+                obj = BackupSummary()
+                obj._deserialize(item)
+                self.BackupSummarySet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBaseBackupsRequest(AbstractModel):
+    """DescribeBaseBackups request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MinFinishTime: Minimum end time of a backup in the format of `2018-01-01 00:00:00`. It is 7 days ago by default.
+        :type MinFinishTime: str
+        :param MaxFinishTime: Maximum end time of a backup in the format of `2018-01-01 00:00:00`. It is the current time by default.
+        :type MaxFinishTime: str
+        :param Filters: Filter instances using one or more criteria. Valid filter names:
+db-instance-id: Filter by instance ID (in string format).
+db-instance-name: Filter by instance name (in string format).
+db-instance-ip: Filter by instance VPC IP (in string format).
+        :type Filters: list of Filter
+        :param Limit: The maximum number of results returned per page. Value range: 1-100. Default: `10`
+        :type Limit: int
+        :param Offset: Data offset, which starts from 0.
+        :type Offset: int
+        :param OrderBy: Sorting field. Valid values: `StartTime`, `FinishTime`, `Size`.
+        :type OrderBy: str
+        :param OrderByType: Sorting order. Valid values: `asc` (ascending), `desc` (descending).
+        :type OrderByType: str
+        """
+        self.MinFinishTime = None
+        self.MaxFinishTime = None
+        self.Filters = None
+        self.Limit = None
+        self.Offset = None
+        self.OrderBy = None
+        self.OrderByType = None
+
+
+    def _deserialize(self, params):
+        self.MinFinishTime = params.get("MinFinishTime")
+        self.MaxFinishTime = params.get("MaxFinishTime")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderByType = params.get("OrderByType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBaseBackupsResponse(AbstractModel):
+    """DescribeBaseBackups response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Number of queried full backups
+        :type TotalCount: int
+        :param BaseBackupSet: List of full backup details
+        :type BaseBackupSet: list of BaseBackup
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.BaseBackupSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("BaseBackupSet") is not None:
+            self.BaseBackupSet = []
+            for item in params.get("BaseBackupSet"):
+                obj = BaseBackup()
+                obj._deserialize(item)
+                self.BaseBackupSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClassesRequest(AbstractModel):
+    """DescribeClasses request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Zone: AZ ID, which can be obtained through the `DescribeZones` API.
+        :type Zone: str
+        :param DBEngine: Database engines. Valid values:
+1. `postgresql` (TencentDB for PostgreSQL)
+2. `mssql_compatible` (MSSQL compatible-TencentDB for PostgreSQL)
+        :type DBEngine: str
+        :param DBMajorVersion: Major version of a database, such as 12 or 13, which can be obtained through the `DescribeDBVersions` API.
+        :type DBMajorVersion: str
+        """
+        self.Zone = None
+        self.DBEngine = None
+        self.DBMajorVersion = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.DBEngine = params.get("DBEngine")
+        self.DBMajorVersion = params.get("DBMajorVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClassesResponse(AbstractModel):
+    """DescribeClasses response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClassInfoSet: List of database specifications
+        :type ClassInfoSet: list of ClassInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ClassInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ClassInfoSet") is not None:
+            self.ClassInfoSet = []
+            for item in params.get("ClassInfoSet"):
+                obj = ClassInfo()
+                obj._deserialize(item)
+                self.ClassInfoSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2553,6 +3184,38 @@ class DescribeDBSlowlogsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDBVersionsRequest(AbstractModel):
+    """DescribeDBVersions request structure.
+
+    """
+
+
+class DescribeDBVersionsResponse(AbstractModel):
+    """DescribeDBVersions response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VersionSet: List of database versions
+        :type VersionSet: list of Version
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.VersionSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("VersionSet") is not None:
+            self.VersionSet = []
+            for item in params.get("VersionSet"):
+                obj = Version()
+                obj._deserialize(item)
+                self.VersionSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDBXlogsRequest(AbstractModel):
     """DescribeDBXlogs request structure.
 
@@ -2775,6 +3438,92 @@ Note: This field may return `null`, indicating that no valid value can be obtain
                 obj = EncryptionKey()
                 obj._deserialize(item)
                 self.EncryptionKeys.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLogBackupsRequest(AbstractModel):
+    """DescribeLogBackups request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MinFinishTime: Minimum end time of a backup in the format of `2018-01-01 00:00:00`. It is 7 days ago by default.
+        :type MinFinishTime: str
+        :param MaxFinishTime: Maximum end time of a backup in the format of `2018-01-01 00:00:00`. It is the current time by default.
+        :type MaxFinishTime: str
+        :param Filters: Filter instances using one or more criteria. Valid filter names:
+db-instance-id: Filter by instance ID (in string format).
+db-instance-name: Filter by instance name (in string format).
+db-instance-ip: Filter by instance VPC IP (in string format).
+        :type Filters: list of Filter
+        :param Limit: The maximum number of results returned per page. Value range: 1-100. Default: `10`.
+        :type Limit: int
+        :param Offset: Data offset, which starts from 0.
+        :type Offset: int
+        :param OrderBy: Sorting field. Valid values: `StartTime`, `FinishTime`, `Size`.
+        :type OrderBy: str
+        :param OrderByType: Sorting order. Valid values: `asc` (ascending), `desc` (descending).
+        :type OrderByType: str
+        """
+        self.MinFinishTime = None
+        self.MaxFinishTime = None
+        self.Filters = None
+        self.Limit = None
+        self.Offset = None
+        self.OrderBy = None
+        self.OrderByType = None
+
+
+    def _deserialize(self, params):
+        self.MinFinishTime = params.get("MinFinishTime")
+        self.MaxFinishTime = params.get("MaxFinishTime")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderByType = params.get("OrderByType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLogBackupsResponse(AbstractModel):
+    """DescribeLogBackups response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Number of queried log backups
+        :type TotalCount: int
+        :param LogBackupSet: List of log backup details
+        :type LogBackupSet: list of LogBackup
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.LogBackupSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("LogBackupSet") is not None:
+            self.LogBackupSet = []
+            for item in params.get("LogBackupSet"):
+                obj = LogBackup()
+                obj._deserialize(item)
+                self.LogBackupSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -4173,6 +4922,66 @@ class IsolateDBInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class LogBackup(AbstractModel):
+    """Log backup information of a database
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: Instance ID
+        :type DBInstanceId: str
+        :param Id: Unique ID of a backup file
+        :type Id: str
+        :param Name: Backup file name
+        :type Name: str
+        :param BackupMethod: Backup method, including physical and logical.
+        :type BackupMethod: str
+        :param BackupMode: Backup mode, including automatic and manual.
+        :type BackupMode: str
+        :param State: Backup task status
+        :type State: str
+        :param Size: Backup set size in bytes
+        :type Size: int
+        :param StartTime: Backup start time
+        :type StartTime: str
+        :param FinishTime: Backup end time
+        :type FinishTime: str
+        :param ExpireTime: Backup expiration time
+        :type ExpireTime: str
+        """
+        self.DBInstanceId = None
+        self.Id = None
+        self.Name = None
+        self.BackupMethod = None
+        self.BackupMode = None
+        self.State = None
+        self.Size = None
+        self.StartTime = None
+        self.FinishTime = None
+        self.ExpireTime = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+        self.BackupMethod = params.get("BackupMethod")
+        self.BackupMode = params.get("BackupMode")
+        self.State = params.get("State")
+        self.Size = params.get("Size")
+        self.StartTime = params.get("StartTime")
+        self.FinishTime = params.get("FinishTime")
+        self.ExpireTime = params.get("ExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyAccountRemarkRequest(AbstractModel):
     """ModifyAccountRemark request structure.
 
@@ -4264,6 +5073,55 @@ class ModifyBackupPlanRequest(AbstractModel):
 
 class ModifyBackupPlanResponse(AbstractModel):
     """ModifyBackupPlan response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyBaseBackupExpireTimeRequest(AbstractModel):
+    """ModifyBaseBackupExpireTime request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: Instance ID
+        :type DBInstanceId: str
+        :param BaseBackupId: Base backup ID
+        :type BaseBackupId: str
+        :param NewExpireTime: New expiration time
+        :type NewExpireTime: str
+        """
+        self.DBInstanceId = None
+        self.BaseBackupId = None
+        self.NewExpireTime = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.BaseBackupId = params.get("BaseBackupId")
+        self.NewExpireTime = params.get("NewExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBaseBackupExpireTimeResponse(AbstractModel):
+    """ModifyBaseBackupExpireTime response structure.
 
     """
 
@@ -6402,6 +7260,72 @@ class Tag(AbstractModel):
         
 
 
+class UpgradeDBInstanceKernelVersionRequest(AbstractModel):
+    """UpgradeDBInstanceKernelVersion request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: Instance ID
+        :type DBInstanceId: str
+        :param TargetDBKernelVersion: Target kernel version, which can be obtained in the `AvailableUpgradeTarget` field returned by the `DescribeDBVersions` API.
+        :type TargetDBKernelVersion: str
+        :param SwitchTag: Switch time after the kernel version upgrade. Valid values:
+`0` (default value): Switch now.
+`1`: Switch at the specified time.
+`2`: Switch in the maintenance time.
+        :type SwitchTag: int
+        :param SwitchStartTime: Switch start time in the format of `HH:MM:SS`, such as 01:00:00. When `SwitchTag` is `0` or `2`, this parameter is invalid.
+        :type SwitchStartTime: str
+        :param SwitchEndTime: Switch end time in the format of `HH:MM:SS`, such as 01:30:00. When `SwitchTag` is `0` or `2`, this parameter is invalid. The difference between `SwitchStartTime` and `SwitchEndTime` cannot be less than 30 minutes.
+        :type SwitchEndTime: str
+        :param DryRun: Whether to perform a precheck on the current operation of upgrading the instance kernel version. Valid values:
+`true`: Performs a precheck without upgrading the kernel version. Check items include request parameters, kernel version compatibility, and instance parameters.
+`false` (default value): Sends a normal request and upgrades the kernel version directly after the check is passed.
+        :type DryRun: bool
+        """
+        self.DBInstanceId = None
+        self.TargetDBKernelVersion = None
+        self.SwitchTag = None
+        self.SwitchStartTime = None
+        self.SwitchEndTime = None
+        self.DryRun = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.TargetDBKernelVersion = params.get("TargetDBKernelVersion")
+        self.SwitchTag = params.get("SwitchTag")
+        self.SwitchStartTime = params.get("SwitchStartTime")
+        self.SwitchEndTime = params.get("SwitchEndTime")
+        self.DryRun = params.get("DryRun")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpgradeDBInstanceKernelVersionResponse(AbstractModel):
+    """UpgradeDBInstanceKernelVersion response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class UpgradeDBInstanceRequest(AbstractModel):
     """UpgradeDBInstance request structure.
 
@@ -6483,6 +7407,59 @@ class UpgradeDBInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class Version(AbstractModel):
+    """Database version information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBEngine: Database engines. Valid values:
+1. `postgresql` (TencentDB for PostgreSQL)
+2. `mssql_compatible` (MSSQL compatible-TencentDB for PostgreSQL)
+        :type DBEngine: str
+        :param DBVersion: Database version, such as 12.4.
+        :type DBVersion: str
+        :param DBMajorVersion: Database major version, such as 12.
+        :type DBMajorVersion: str
+        :param DBKernelVersion: Database kernel version, such as v12.4_r1.3.
+        :type DBKernelVersion: str
+        :param SupportedFeatureNames: List of features supported by the database kernel, such as:
+TDE: Supports data encryption.
+        :type SupportedFeatureNames: list of str
+        :param Status: Database version status. Valid values:
+`AVAILABLE`.
+`DEPRECATED`.
+        :type Status: str
+        :param AvailableUpgradeTarget: List of versions to which this database version (`DBKernelVersion`) can be upgraded.
+        :type AvailableUpgradeTarget: list of str
+        """
+        self.DBEngine = None
+        self.DBVersion = None
+        self.DBMajorVersion = None
+        self.DBKernelVersion = None
+        self.SupportedFeatureNames = None
+        self.Status = None
+        self.AvailableUpgradeTarget = None
+
+
+    def _deserialize(self, params):
+        self.DBEngine = params.get("DBEngine")
+        self.DBVersion = params.get("DBVersion")
+        self.DBMajorVersion = params.get("DBMajorVersion")
+        self.DBKernelVersion = params.get("DBKernelVersion")
+        self.SupportedFeatureNames = params.get("SupportedFeatureNames")
+        self.Status = params.get("Status")
+        self.AvailableUpgradeTarget = params.get("AvailableUpgradeTarget")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Xlog(AbstractModel):
     """Database Xlog information
 
@@ -6540,7 +7517,11 @@ class ZoneInfo(AbstractModel):
         :type ZoneName: str
         :param ZoneId: AZ number
         :type ZoneId: int
-        :param ZoneState: Availability status. Valid values: `UNAVAILABLE`, `AVAILABLE`, `SELLOUT`
+        :param ZoneState: Availability status. Valid values:
+`UNAVAILABLE`.
+`AVAILABLE`.
+`SELLOUT`.
+`SUPPORTMODIFYONLY` (supports configuration adjustment).
         :type ZoneState: str
         :param ZoneSupportIpv6: Whether the AZ supports IPv6 address access
         :type ZoneSupportIpv6: int
