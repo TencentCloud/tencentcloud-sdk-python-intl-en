@@ -6057,6 +6057,12 @@ class CreateVirusScanTaskRequest(AbstractModel):
         :type ScanIds: list of str
         :param ScanPath: Specified path to be excluded or scanned
         :type ScanPath: list of str
+        :param ScanPathMode: Path scanning mode: 
+`SCAN_PATH_ALL`: Scan all paths
+`SCAN_PATH_DEFAULT`: Scan the default path
+`SCAN_PATH_USER_DEFINE`: Scan the custom path
+
+        :type ScanPathMode: str
         """
         self.ScanPathAll = None
         self.ScanRangeType = None
@@ -6065,6 +6071,7 @@ class CreateVirusScanTaskRequest(AbstractModel):
         self.ScanPathType = None
         self.ScanIds = None
         self.ScanPath = None
+        self.ScanPathMode = None
 
 
     def _deserialize(self, params):
@@ -6075,6 +6082,7 @@ class CreateVirusScanTaskRequest(AbstractModel):
         self.ScanPathType = params.get("ScanPathType")
         self.ScanIds = params.get("ScanIds")
         self.ScanPath = params.get("ScanPath")
+        self.ScanPathMode = params.get("ScanPathMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -18635,6 +18643,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 `5`: Threat intelligence.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CheckPlatform: list of str
+        :param FileAccessTime: File accessed time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FileAccessTime: str
+        :param FileModifyTime: File modified time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FileModifyTime: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -18685,6 +18699,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.ContainerNetSubStatus = None
         self.ContainerIsolateOperationSrc = None
         self.CheckPlatform = None
+        self.FileAccessTime = None
+        self.FileModifyTime = None
         self.RequestId = None
 
 
@@ -18736,6 +18752,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.ContainerNetSubStatus = params.get("ContainerNetSubStatus")
         self.ContainerIsolateOperationSrc = params.get("ContainerIsolateOperationSrc")
         self.CheckPlatform = params.get("CheckPlatform")
+        self.FileAccessTime = params.get("FileAccessTime")
+        self.FileModifyTime = params.get("FileModifyTime")
         self.RequestId = params.get("RequestId")
 
 
@@ -18959,6 +18977,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param ScanPath: Specified path to be excluded or scanned
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ScanPath: list of str
+        :param ScanPathMode: Path scanning mode: 
+`SCAN_PATH_ALL`: Scan all paths
+`SCAN_PATH_DEFAULT`: Scan the default path
+`SCAN_PATH_USER_DEFINE`: Scan the custom path
+
+        :type ScanPathMode: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -18966,6 +18990,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.ScanPathAll = None
         self.ScanPathType = None
         self.ScanPath = None
+        self.ScanPathMode = None
         self.RequestId = None
 
 
@@ -18974,6 +18999,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.ScanPathAll = params.get("ScanPathAll")
         self.ScanPathType = params.get("ScanPathType")
         self.ScanPath = params.get("ScanPath")
+        self.ScanPathMode = params.get("ScanPathMode")
         self.RequestId = params.get("RequestId")
 
 
@@ -19058,6 +19084,12 @@ class DescribeVirusScanSettingResponse(AbstractModel):
         :param ClickTimeout: Timeout settings of quick check
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ClickTimeout: int
+        :param ScanPathMode: Path scanning mode: 
+`SCAN_PATH_ALL`: Scan all paths
+`SCAN_PATH_DEFAULT`: Scan the default path
+`SCAN_PATH_USER_DEFINE`: Scan the custom path
+
+        :type ScanPathMode: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -19072,6 +19104,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.ScanIds = None
         self.ScanPath = None
         self.ClickTimeout = None
+        self.ScanPathMode = None
         self.RequestId = None
 
 
@@ -19087,6 +19120,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.ScanIds = params.get("ScanIds")
         self.ScanPath = params.get("ScanPath")
         self.ClickTimeout = params.get("ClickTimeout")
+        self.ScanPathMode = params.get("ScanPathMode")
         self.RequestId = params.get("RequestId")
 
 
@@ -24645,11 +24679,18 @@ class ModifyVirusMonitorSettingRequest(AbstractModel):
         :type ScanPathType: int
         :param ScanPath: Specified path to be excluded or scanned
         :type ScanPath: list of str
+        :param ScanPathMode: Path scanning mode: 
+`SCAN_PATH_ALL`: Scan all paths
+`SCAN_PATH_DEFAULT`: Scan the default path
+`SCAN_PATH_USER_DEFINE`: Scan the custom path
+
+        :type ScanPathMode: str
         """
         self.EnableScan = None
         self.ScanPathAll = None
         self.ScanPathType = None
         self.ScanPath = None
+        self.ScanPathMode = None
 
 
     def _deserialize(self, params):
@@ -24657,6 +24698,7 @@ class ModifyVirusMonitorSettingRequest(AbstractModel):
         self.ScanPathAll = params.get("ScanPathAll")
         self.ScanPathType = params.get("ScanPathType")
         self.ScanPath = params.get("ScanPath")
+        self.ScanPathMode = params.get("ScanPathMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -24710,6 +24752,12 @@ class ModifyVirusScanSettingRequest(AbstractModel):
         :type ScanIds: list of str
         :param ScanPath: Scanned path
         :type ScanPath: list of str
+        :param ScanPathMode: Path scanning mode: 
+`SCAN_PATH_ALL`: Scan all paths
+`SCAN_PATH_DEFAULT`: Scan the default path
+`SCAN_PATH_USER_DEFINE`: Scan the custom path
+
+        :type ScanPathMode: str
         """
         self.EnableScan = None
         self.Cycle = None
@@ -24721,6 +24769,7 @@ class ModifyVirusScanSettingRequest(AbstractModel):
         self.ScanRangeAll = None
         self.ScanIds = None
         self.ScanPath = None
+        self.ScanPathMode = None
 
 
     def _deserialize(self, params):
@@ -24734,6 +24783,7 @@ class ModifyVirusScanSettingRequest(AbstractModel):
         self.ScanRangeAll = params.get("ScanRangeAll")
         self.ScanIds = params.get("ScanIds")
         self.ScanPath = params.get("ScanPath")
+        self.ScanPathMode = params.get("ScanPathMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

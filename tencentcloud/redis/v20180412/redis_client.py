@@ -1084,6 +1084,29 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeSSLStatus(self, request):
+        """This API is used to query SSL status.
+
+        :param request: Request instance for DescribeSSLStatus.
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeSSLStatusRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeSSLStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSSLStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSSLStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeSlowLog(self, request):
         """This API is used to query the records of slow query.
 

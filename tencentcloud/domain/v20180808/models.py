@@ -506,6 +506,8 @@ class CreateIntlDomainBatchRequest(AbstractModel):
         :type TransferProhibition: bool
         :param UpdateProhibition: Whether to enable the update prohibition lock.
         :type UpdateProhibition: bool
+        :param CustomDns: The custom DNS servers
+        :type CustomDns: list of str
         """
         self.TemplateId = None
         self.Period = None
@@ -514,6 +516,7 @@ class CreateIntlDomainBatchRequest(AbstractModel):
         self.AutoRenewFlag = None
         self.TransferProhibition = None
         self.UpdateProhibition = None
+        self.CustomDns = None
 
 
     def _deserialize(self, params):
@@ -524,6 +527,7 @@ class CreateIntlDomainBatchRequest(AbstractModel):
         self.AutoRenewFlag = params.get("AutoRenewFlag")
         self.TransferProhibition = params.get("TransferProhibition")
         self.UpdateProhibition = params.get("UpdateProhibition")
+        self.CustomDns = params.get("CustomDns")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

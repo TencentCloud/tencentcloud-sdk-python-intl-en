@@ -3291,6 +3291,67 @@ class DescribeReplicationGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSSLStatusRequest(AbstractModel):
+    """DescribeSSLStatus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSSLStatusResponse(AbstractModel):
+    """DescribeSSLStatus response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CertDownloadUrl: Certificate download address
+        :type CertDownloadUrl: str
+        :param UrlExpiredTime: Expiration time of the certificate download address
+        :type UrlExpiredTime: str
+        :param SSLConfig: SSL configuration status of an instance. Valid values: `true` (enable), `false` (disable).
+        :type SSLConfig: bool
+        :param FeatureSupport: Whether the instance supports SSL. Valid values: `true` (Yes. When minor version is upgraded.), `false` (No).
+        :type FeatureSupport: bool
+        :param Status: SSL configuration status. Valid values: `1`(Configuring), `2` (Configured).
+        :type Status: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.CertDownloadUrl = None
+        self.UrlExpiredTime = None
+        self.SSLConfig = None
+        self.FeatureSupport = None
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CertDownloadUrl = params.get("CertDownloadUrl")
+        self.UrlExpiredTime = params.get("UrlExpiredTime")
+        self.SSLConfig = params.get("SSLConfig")
+        self.FeatureSupport = params.get("FeatureSupport")
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSlowLogRequest(AbstractModel):
     """DescribeSlowLog request structure.
 
