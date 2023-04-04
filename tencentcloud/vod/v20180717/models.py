@@ -20962,7 +20962,7 @@ If the value is `0`, the original video bitrate will be used.
 
 Default value: `open`.
         :type ResolutionAdaptive: str
-        :param Width: The maximum video width (or long side), in pixels. Value range: 0 and 128-8192.
+        :param Width: The maximum video width (or long side) in pixels. Value range: 0 and 128-4096.
 <li>If both `Width` and `Height` are `0`, the original resolution will be used.</li>
 <li>If `Width` is 0 and `Height` is not, the video width will be proportionally scaled.</li>
 <li>If `Width` is not 0 and `Height` is, the video height will be proportionally scaled.</li>
@@ -20970,7 +20970,7 @@ Default value: `open`.
 
 Default value: `0`.
         :type Width: int
-        :param Height: The maximum video height (or short side), in pixels. Value range: 0 and 128-8192.
+        :param Height: The maximum video width (or short side) in pixels. Value range: 0 and [128, 4096].
 <li>If both `Width` and `Height` are `0`, the original resolution will be used.</li>
 <li>If `Width` is 0 and `Height` is not, the video width will be proportionally scaled.</li>
 <li>If `Width` is not 0 and `Height` is, the video height will be proportionally scaled.</li>
@@ -22986,6 +22986,13 @@ class SearchMediaRequest(AbstractModel):
 <li>ARCHIVE</li>
 <li>DEEP_ARCHIVE</li>
         :type StorageClasses: list of str
+        :param MediaTypes: The file formats.
+<li>Array length limit: 10</li>
+        :type MediaTypes: list of str
+        :param Status: 
+        :type Status: list of str
+        :param ReviewResults: 
+        :type ReviewResults: list of str
         :param TrtcSdkAppIds: The TRTC application IDs. Any file that matches one of the application IDs will be returned.
 <li>Array length limit: 10</li>
         :type TrtcSdkAppIds: list of int non-negative
@@ -23037,6 +23044,9 @@ End time in the creation time range.
         self.Filters = None
         self.StorageRegions = None
         self.StorageClasses = None
+        self.MediaTypes = None
+        self.Status = None
+        self.ReviewResults = None
         self.TrtcSdkAppIds = None
         self.TrtcRoomIds = None
         self.Text = None
@@ -23073,6 +23083,9 @@ End time in the creation time range.
         self.Filters = params.get("Filters")
         self.StorageRegions = params.get("StorageRegions")
         self.StorageClasses = params.get("StorageClasses")
+        self.MediaTypes = params.get("MediaTypes")
+        self.Status = params.get("Status")
+        self.ReviewResults = params.get("ReviewResults")
         self.TrtcSdkAppIds = params.get("TrtcSdkAppIds")
         self.TrtcRoomIds = params.get("TrtcRoomIds")
         self.Text = params.get("Text")
@@ -25788,7 +25801,7 @@ class VideoFrameInterpolationInfo(AbstractModel):
 <li>`ON`</li>
 <li>`OFF`</li>
         :type Switch: str
-        :param Fps: The frame rate. Value range: (0, 60]. This parameter is valid only if `Switch` is `ON`. By default, the original frame rate will be used.
+        :param Fps: The frame rate. Value range: (0, 100]. This parameter is valid only if `Switch` is `ON`. By default, the original frame rate will be used.
         :type Fps: int
         """
         self.Switch = None

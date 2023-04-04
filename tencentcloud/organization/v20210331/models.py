@@ -466,9 +466,9 @@ class DescribeOrganizationMemberAuthIdentitiesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: Offset.
+        :param Offset: Offset, which is an integer multiple of the value of `Limit`. Default value: `0`.
         :type Offset: int
-        :param Limit: Maximum number of returned results. Maximum value: `50`.
+        :param Limit: Limit, which defaults to `10`. Value range: 1-50.
         :type Limit: int
         :param MemberUin: Organization member UIN.
         :type MemberUin: int
@@ -498,7 +498,7 @@ class DescribeOrganizationMemberAuthIdentitiesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Items: List.
+        :param Items: List of authorizable identities
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Items: list of OrgMemberAuthIdentity
         :param Total: Total number.
@@ -598,9 +598,9 @@ class DescribeOrganizationMembersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: Offset.
+        :param Offset: Offset, which is an integer multiple of the value of `Limit`. Default value: `0`.
         :type Offset: int
-        :param Limit: Maximum number of returned results. Maximum value: `50`.
+        :param Limit: Limit, which defaults to `10`. Value range: 1-50.
         :type Limit: int
         :param Lang: Valid values: `en` (Tencent Cloud International); `zh` (Tencent Cloud).
         :type Lang: str
@@ -1271,10 +1271,10 @@ class OrgMemberAuthIdentity(AbstractModel):
         :param IdentityId: Identity ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IdentityId: int
-        :param IdentityRoleName: Identity role name.
+        :param IdentityRoleName: Role name of an identity
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IdentityRoleName: str
-        :param IdentityRoleAliasName: Identity role alias.
+        :param IdentityRoleAliasName: Role alias of an identity
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IdentityRoleAliasName: str
         :param Description: Description
@@ -1286,6 +1286,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param UpdateTime: Update time.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type UpdateTime: str
+        :param IdentityType: Identity type (`1`: Preset; `2`: Custom)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IdentityType: int
         """
         self.IdentityId = None
         self.IdentityRoleName = None
@@ -1293,6 +1296,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.Description = None
         self.CreateTime = None
         self.UpdateTime = None
+        self.IdentityType = None
 
 
     def _deserialize(self, params):
@@ -1302,6 +1306,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.Description = params.get("Description")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+        self.IdentityType = params.get("IdentityType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

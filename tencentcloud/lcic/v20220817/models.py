@@ -458,9 +458,11 @@ class BatchUserInfo(AbstractModel):
         :param SdkAppId: The SDKAppID assigned by LCIC.
 
         :type SdkAppId: int
-        :param UserId: The user ID. Note: This field may return null, indicating that no valid values can be obtained
+        :param UserId: 
+Note: This field may return null, indicating that no valid values can be obtained.
         :type UserId: str
-        :param OriginId: The user’s ID in your system. If the same request parameter is not specified, the value of this parameter will be the same as UserId. Note: This field may return null, indicating that no valid values can be obtained.
+        :param OriginId: 
+Note: This field may return null, indicating that no valid values can be obtained.
         :type OriginId: str
         """
         self.SdkAppId = None
@@ -856,9 +858,76 @@ class CreateSupervisorRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param SdkAppId: The application ID.
+        :type SdkAppId: int
+        :param Users: The user IDs.
+        :type Users: list of str
+        """
+        self.SdkAppId = None
+        self.Users = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.Users = params.get("Users")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class CreateSupervisorResponse(AbstractModel):
     """CreateSupervisor response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteAppCustomContentRequest(AbstractModel):
+    """DeleteAppCustomContent request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: The application ID.
+        :type SdkAppId: int
+        :param Scenes: The custom elements (for which a scene has been configured) to delete. If this is empty, all custom elements will be deleted.
+        :type Scenes: list of str
+        """
+        self.SdkAppId = None
+        self.Scenes = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.Scenes = params.get("Scenes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAppCustomContentResponse(AbstractModel):
+    """DeleteAppCustomContent response structure.
 
     """
 
@@ -1157,6 +1226,33 @@ class DescribeCurrentMemberListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDeveloperRequest(AbstractModel):
+    """DescribeDeveloper request structure.
+
+    """
+
+
+class DescribeDeveloperResponse(AbstractModel):
+    """DescribeDeveloper response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeveloperId: 
+        :type DeveloperId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DeveloperId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DeveloperId = params.get("DeveloperId")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDocumentRequest(AbstractModel):
     """DescribeDocument request structure.
 
@@ -1305,7 +1401,8 @@ class DescribeDocumentsByRoomResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Documents: The information of the documents. Note: This field may return null, indicating that no valid values can be obtained.
+        :param Documents: 
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Documents: list of DocumentInfo
         :param Total: The total number of records that meet the conditions.
         :type Total: int
@@ -1377,7 +1474,8 @@ class DescribeGroupListResponse(AbstractModel):
         r"""
         :param Total: The total number of groups that meet the conditions.
         :type Total: int
-        :param GroupInfos: The information of the groups. Note: This field may return null, indicating that no valid values can be obtained.
+        :param GroupInfos: 
+Note: This field may return null, indicating that no valid values can be obtained.
         :type GroupInfos: list of GroupInfo
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1443,7 +1541,8 @@ class DescribeGroupMemberListResponse(AbstractModel):
         r"""
         :param Total: The total number of records that meet the conditions.
         :type Total: int
-        :param MemberIds: The user IDs of the members. Note: This field may return null, indicating that no valid values can be obtained.
+        :param MemberIds: 
+Note: This field may return null, indicating that no valid values can be obtained.
         :type MemberIds: list of str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1498,11 +1597,13 @@ class DescribeGroupResponse(AbstractModel):
         :type GroupId: str
         :param GroupName: The group name.
         :type GroupName: str
-        :param TeacherId: The user ID of the group’s teacher. Note: This field may return null, indicating that no valid values can be obtained.
+        :param TeacherId: 
+Note: This field may return null, indicating that no valid values can be obtained.
         :type TeacherId: str
         :param GroupType: The group type. 0: Ordinary group. 1: Merged group. If the group queried is a merged group, the IDs of the sub-groups will be returned.
         :type GroupType: int
-        :param SubGroupIds: The IDs of the sub-groups. Note: This field may return null, indicating that no valid values can be obtained.
+        :param SubGroupIds: 
+Note: This field may return null, indicating that no valid values can be obtained.
         :type SubGroupIds: list of str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1907,6 +2008,148 @@ class DocumentInfo(AbstractModel):
         
 
 
+class EventDataInfo(AbstractModel):
+    """The information of a room event.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RoomId: The room ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RoomId: int
+        :param UserId: The ID of the user to whom the event occurred.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UserId: str
+        """
+        self.RoomId = None
+        self.UserId = None
+
+
+    def _deserialize(self, params):
+        self.RoomId = params.get("RoomId")
+        self.UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EventInfo(AbstractModel):
+    """The event information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Timestamp: The Unix timestamp (seconds) when the event occurred.
+        :type Timestamp: int
+        :param EventType: The event type. Valid values:
+`RoomStart`: The class started. `RoomEnd`: The class ended. `MemberJoin`: A user joined. `MemberQuit`: A user left. `RecordFinish`: Recording is finished.
+        :type EventType: str
+        :param EventData: The details of the event, including the room ID and the user to whom the event occurred.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EventData: :class:`tencentcloud.lcic.v20220817.models.EventDataInfo`
+        """
+        self.Timestamp = None
+        self.EventType = None
+        self.EventData = None
+
+
+    def _deserialize(self, params):
+        self.Timestamp = params.get("Timestamp")
+        self.EventType = params.get("EventType")
+        if params.get("EventData") is not None:
+            self.EventData = EventDataInfo()
+            self.EventData._deserialize(params.get("EventData"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetRoomEventRequest(AbstractModel):
+    """GetRoomEvent request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RoomId: The room ID.
+        :type RoomId: int
+        :param SdkAppId: The application ID.
+        :type SdkAppId: int
+        :param Page: The starting page. Pagination starts from 1. This parameter is valid only if `keyword` is empty.
+        :type Page: int
+        :param Limit: The maximum number of records (up to 200) per page. This parameter is valid only if `keyword` is empty.
+        :type Limit: int
+        :param Keyword: The type of events to query. Valid values:
+`RoomStart`: The class started.
+`RoomEnd`: The class ended.
+`MemberJoin`: A user joined.
+`MemberQuit`: A user left.
+`RecordFinish`: Recording is finished.
+        :type Keyword: str
+        """
+        self.RoomId = None
+        self.SdkAppId = None
+        self.Page = None
+        self.Limit = None
+        self.Keyword = None
+
+
+    def _deserialize(self, params):
+        self.RoomId = params.get("RoomId")
+        self.SdkAppId = params.get("SdkAppId")
+        self.Page = params.get("Page")
+        self.Limit = params.get("Limit")
+        self.Keyword = params.get("Keyword")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetRoomEventResponse(AbstractModel):
+    """GetRoomEvent response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: The total number of events for the room. The value of this parameter is not affected by `keyword`.
+        :type Total: int
+        :param Events: The event details, including the type and time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Events: list of EventInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Total = None
+        self.Events = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("Events") is not None:
+            self.Events = []
+            for item in params.get("Events"):
+                obj = EventInfo()
+                obj._deserialize(item)
+                self.Events.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class GetRoomMessageRequest(AbstractModel):
     """GetRoomMessage request structure.
 
@@ -2071,15 +2314,20 @@ class GroupInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupId: Group ID Note: This field may return null, indicating that no valid values can be obtained.
+        :param GroupId: 
+Note: This field may return null, indicating that no valid values can be obtained.
         :type GroupId: str
-        :param GroupName: The group name. Note: This field may return null, indicating that no valid values can be obtained.
+        :param GroupName: 
+Note: This field may return null, indicating that no valid values can be obtained.
         :type GroupName: str
-        :param TeacherId: The user ID of the teacher. Note: This field may return null, indicating that no valid values can be obtained.
+        :param TeacherId: 
+Note: This field may return null, indicating that no valid values can be obtained.
         :type TeacherId: str
-        :param GroupType: The group type. 0: Ordinary group. 1: Merged group. If the group queried is a merged group, the IDs of the sub-groups will be returned. Note: This field may return null, indicating that no valid values can be obtained.
+        :param GroupType: 
+Note: This field may return null, indicating that no valid values can be obtained.
         :type GroupType: int
-        :param SubGroupIds: The IDs of the sub-groups. Note: This field may return null, indicating that no valid values can be obtained.
+        :param SubGroupIds: 
+Note: This field may return null, indicating that no valid values can be obtained.
         :type SubGroupIds: str
         """
         self.GroupId = None
@@ -2684,36 +2932,35 @@ class RoomInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: The room name. Note: This field may return null, indicating that no valid values can be obtained.
+        :param Name: The room name.
         :type Name: str
-        :param StartTime: The room start time (Unix timestamp). Note: This field may return null, indicating that no valid values can be obtained.
+        :param StartTime: The room start time (Unix timestamp).
         :type StartTime: int
-        :param EndTime: The room end time (Unix timestamp). Note: This field may return null, indicating that no valid values can be obtained.
+        :param EndTime: The room end time (Unix timestamp).
         :type EndTime: int
-        :param Resolution: The resolution. Valid values: 1: SD; 2: HD; 3: FHD. Note: This field may return null, indicating that no valid values can be obtained.
+        :param Resolution: The resolution. Valid values: `1`: SD; `2`: HD; `3`: FHD.
         :type Resolution: int
-        :param MaxMicNumber: The maximum number of mic-on users (excluding the teacher). Value range: 0-16. Note: This field may return null, indicating that no valid values can be obtained.
+        :param MaxMicNumber: The maximum number of mic-on users (excluding the teacher). Value range: 0-16.
         :type MaxMicNumber: int
         :param SubType: The room subtype. Valid values: `videodoc`: Document + Video; `video`: Video only; `coteaching`: Dual-teacher.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type SubType: str
-        :param TeacherId: The user ID of the teacher. User IDs are returned by the user registration APIs. Note: This field may return null, indicating that no valid values can be obtained.
+        :param TeacherId: The user ID of the teacher. User IDs are returned by the user registration APIs.
         :type TeacherId: str
-        :param AutoMic: Whether to automatically turn the mic on when a user enters the room. Valid values: 0: No (default value); 1: Yes. Note: This field may return null, indicating that no valid values can be obtained.
+        :param AutoMic: Whether to automatically turn the mic on when a user enters the room. Valid values: `0` (default): No; `1`: Yes.
         :type AutoMic: int
-        :param TurnOffMic: Whether to disconnect communication after audio/video permissions are revoked. Valid values: 0: Yes (default value); 1: No. Note: This field may return null, indicating that no valid values can be obtained.
+        :param TurnOffMic: Whether to disconnect communication after audio/video permissions are revoked. Valid values: `0` (default): Yes; `1`: No.
         :type TurnOffMic: int
-        :param AudioQuality: Whether to enable the high audio quality mode. Valid values: 0: No (default value); 1: Yes. Note: This field may return null, indicating that no valid values can be obtained.
+        :param AudioQuality: Whether to enable the high audio quality mode. Valid values: `0` (default): No; `1`: Yes.
         :type AudioQuality: int
-        :param DisableRecord: Whether to disable auto recording. Valid values: 0: No (default); 1: Yes. If this parameter is 0, recording will start when the class starts and stops when the class ends. Note: This field may return null, indicating that no valid values can be obtained.
+        :param DisableRecord: Whether to disable auto recording. Valid values: `0` (default): No; `1`: Yes. If this parameter is `0`, recording will start when the class starts and stops when the class ends.
         :type DisableRecord: int
-        :param Assistants: The user IDs of the teacher assistants. User IDs are returned by the user registration APIs. Note: This field may return null, indicating that no valid values can be obtained.
+        :param Assistants: The user IDs of the teacher assistants. User IDs are returned by the user registration APIs.
         :type Assistants: list of str
-        :param RTCAudienceNumber: The number of RTC users. Note: This field may return null, indicating that no valid values can be obtained.
+        :param RTCAudienceNumber: The number of RTC users.
         :type RTCAudienceNumber: int
-        :param AudienceType: The audience type. Note: This field may return null, indicating that no valid values can be obtained.
+        :param AudienceType: The audience type.
         :type AudienceType: int
-        :param RecordLayout: The recording layout. Note: This field may return null, indicating that no valid values can be obtained.
+        :param RecordLayout: The recording layout.
         :type RecordLayout: int
         :param GroupId: The ID of the group to bind. Note: This field may return null, indicating that no valid values can be obtained.
         :type GroupId: str
@@ -2987,13 +3234,17 @@ class UserInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SdkAppId: The application ID. Note: This field may return null, indicating that no valid values can be obtained.
+        :param SdkAppId: 
+Note: This field may return null, indicating that no valid values can be obtained.
         :type SdkAppId: int
-        :param UserId: The user ID. Note: This field may return null, indicating that no valid values can be obtained.
+        :param UserId: 
+Note: This field may return null, indicating that no valid values can be obtained.
         :type UserId: str
-        :param Name: The username. Note: This field may return null, indicating that no valid values can be obtained.
+        :param Name: 
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Name: str
-        :param Avatar: The URL of profile photo. Note: This field may return null, indicating that no valid values can be obtained.
+        :param Avatar: 
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Avatar: str
         """
         self.SdkAppId = None

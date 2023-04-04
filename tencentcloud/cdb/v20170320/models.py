@@ -212,6 +212,117 @@ Note: this field may return `null`, indicating that no valid value can be found.
         
 
 
+class AggregationCondition(AbstractModel):
+    """Aggregation condition for an audit log
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AggregationField: Aggregation field. Valid values: `host` (source IP), `user` （username), `dbName` (database name), `sqlType` (SQL type).
+        :type AggregationField: str
+        :param Offset: Offset
+        :type Offset: int
+        :param Limit: Number of buckets returned under this field. Maximum value: `100`.
+        :type Limit: int
+        """
+        self.AggregationField = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.AggregationField = params.get("AggregationField")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AnalyzeAuditLogsRequest(AbstractModel):
+    """AnalyzeAuditLogs request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param StartTime: Start time of the log to be analyzed in the format of `2023-02-16 00:00:20`.
+        :type StartTime: str
+        :param EndTime: End time of the log to be analyzed in the format of `2023-02-16 00:00:20`.
+        :type EndTime: str
+        :param AggregationConditions: Sorting conditions for aggregation dimension
+        :type AggregationConditions: list of AggregationCondition
+        :param AuditLogFilter: The result set of the audit log filtered by this condition is set as the analysis Log.
+        :type AuditLogFilter: :class:`tencentcloud.cdb.v20170320.models.AuditLogFilter`
+        """
+        self.InstanceId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.AggregationConditions = None
+        self.AuditLogFilter = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        if params.get("AggregationConditions") is not None:
+            self.AggregationConditions = []
+            for item in params.get("AggregationConditions"):
+                obj = AggregationCondition()
+                obj._deserialize(item)
+                self.AggregationConditions.append(obj)
+        if params.get("AuditLogFilter") is not None:
+            self.AuditLogFilter = AuditLogFilter()
+            self.AuditLogFilter._deserialize(params.get("AuditLogFilter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AnalyzeAuditLogsResponse(AbstractModel):
+    """AnalyzeAuditLogs response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Items: Information set of the aggregation bucket returned
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Items: list of AuditLogAggregationResult
+        :param TotalCount: Number of scanned logs
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Items = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = AuditLogAggregationResult()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class AssociateSecurityGroupsRequest(AbstractModel):
     """AssociateSecurityGroups request structure.
 
@@ -291,6 +402,129 @@ DB: Database name.
         self.Type = params.get("Type")
         self.Compare = params.get("Compare")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuditLogAggregationResult(AbstractModel):
+    """Analysis result of an audit log
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AggregationField: Aggregation dimension
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AggregationField: str
+        :param Buckets: Result set of an aggregation bucket
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Buckets: list of Bucket
+        """
+        self.AggregationField = None
+        self.Buckets = None
+
+
+    def _deserialize(self, params):
+        self.AggregationField = params.get("AggregationField")
+        if params.get("Buckets") is not None:
+            self.Buckets = []
+            for item in params.get("Buckets"):
+                obj = Bucket()
+                obj._deserialize(item)
+                self.Buckets.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuditLogFilter(AbstractModel):
+    """Filter condition for an audit log, which is used by users to filter the returned audit logs when querying them.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Host: Client address
+        :type Host: list of str
+        :param User: Username
+        :type User: list of str
+        :param DBName: 
+        :type DBName: list of str
+        :param TableName: Table name
+        :type TableName: list of str
+        :param PolicyName: Audit policy name
+        :type PolicyName: list of str
+        :param Sql: 
+        :type Sql: str
+        :param SqlType: 
+        :type SqlType: str
+        :param ExecTime: Execution time in ms, which is used to filter the audit log with execution time greater than this value.
+        :type ExecTime: int
+        :param AffectRows: Number of affected rows, which is used to filter the audit log with affected rows greater than this value.
+        :type AffectRows: int
+        :param SqlTypes: SQL type (Multiple types can be queried at same time). Valid values: `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `CREATE`, `DROP`, `ALTER`, `SET`, `REPLACE`, `EXECUTE`.
+        :type SqlTypes: list of str
+        :param Sqls: SQL statement. Multiple SQL statements can be passed in.
+        :type Sqls: list of str
+        :param AffectRowsSection: Number of rows affected in the format of M-N, such as 10-200.
+        :type AffectRowsSection: str
+        :param SentRowsSection: Number of rows returned in the format of M-N, such as 10-200.
+        :type SentRowsSection: str
+        :param ExecTimeSection: Execution time in the format of M-N, such as 10-200.
+        :type ExecTimeSection: str
+        :param LockWaitTimeSection: Lock wait time in the format of M-N, such as 10-200.
+        :type LockWaitTimeSection: str
+        :param IoWaitTimeSection: IO wait time in the format of M-N, such as 10-200.
+        :type IoWaitTimeSection: str
+        :param TransactionLivingTimeSection: Transaction duration in the format of M-N, such as 10-200.
+        :type TransactionLivingTimeSection: str
+        """
+        self.Host = None
+        self.User = None
+        self.DBName = None
+        self.TableName = None
+        self.PolicyName = None
+        self.Sql = None
+        self.SqlType = None
+        self.ExecTime = None
+        self.AffectRows = None
+        self.SqlTypes = None
+        self.Sqls = None
+        self.AffectRowsSection = None
+        self.SentRowsSection = None
+        self.ExecTimeSection = None
+        self.LockWaitTimeSection = None
+        self.IoWaitTimeSection = None
+        self.TransactionLivingTimeSection = None
+
+
+    def _deserialize(self, params):
+        self.Host = params.get("Host")
+        self.User = params.get("User")
+        self.DBName = params.get("DBName")
+        self.TableName = params.get("TableName")
+        self.PolicyName = params.get("PolicyName")
+        self.Sql = params.get("Sql")
+        self.SqlType = params.get("SqlType")
+        self.ExecTime = params.get("ExecTime")
+        self.AffectRows = params.get("AffectRows")
+        self.SqlTypes = params.get("SqlTypes")
+        self.Sqls = params.get("Sqls")
+        self.AffectRowsSection = params.get("AffectRowsSection")
+        self.SentRowsSection = params.get("SentRowsSection")
+        self.ExecTimeSection = params.get("ExecTimeSection")
+        self.LockWaitTimeSection = params.get("LockWaitTimeSection")
+        self.IoWaitTimeSection = params.get("IoWaitTimeSection")
+        self.TransactionLivingTimeSection = params.get("TransactionLivingTimeSection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -845,6 +1079,35 @@ class BinlogInfo(AbstractModel):
                 self.RemoteInfo.append(obj)
         self.CosStorageType = params.get("CosStorageType")
         self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Bucket(AbstractModel):
+    """Information of an aggregation bucket
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: None
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Key: str
+        :param Count: Number of keys in the statistic report
+        :type Count: int
+        """
+        self.Key = None
+        self.Count = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Count = params.get("Count")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4278,6 +4541,8 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type ProxyVips: list of str
         :param ProxyIds: Database proxy ID
         :type ProxyIds: list of str
+        :param EngineTypes: Database engine type
+        :type EngineTypes: list of str
         """
         self.ProjectId = None
         self.InstanceTypes = None
@@ -4313,6 +4578,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.Tags = None
         self.ProxyVips = None
         self.ProxyIds = None
+        self.EngineTypes = None
 
 
     def _deserialize(self, params):
@@ -4355,6 +4621,7 @@ class DescribeDBInstancesRequest(AbstractModel):
                 self.Tags.append(obj)
         self.ProxyVips = params.get("ProxyVips")
         self.ProxyIds = params.get("ProxyIds")
+        self.EngineTypes = params.get("EngineTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4777,18 +5044,22 @@ class DescribeDefaultParamsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EngineVersion: MySQL version. Currently, the supported versions are ["5.1", "5.5", "5.6", "5.7"].
+        :param EngineVersion: Engine version. Currently, the supported versions are `5.1`, `5.5`, `5.6`, `5.7`, and `8.0`.
         :type EngineVersion: str
         :param TemplateType: Type of the default parameter template. Valid values: `HIGH_STABILITY` (high-stability template), `HIGH_PERFORMANCE` (high-performance template).
         :type TemplateType: str
+        :param EngineType: Parameter template engine. Default value: `InnoDB`.
+        :type EngineType: str
         """
         self.EngineVersion = None
         self.TemplateType = None
+        self.EngineType = None
 
 
     def _deserialize(self, params):
         self.EngineVersion = params.get("EngineVersion")
         self.TemplateType = params.get("TemplateType")
+        self.EngineType = params.get("EngineType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6922,6 +7193,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param MaxDelayTime: Maximum delay threshold
 Note: This field may return null, indicating that no valid values can be obtained.
         :type MaxDelayTime: int
+        :param DiskType: Instance disk type, which is returned only for the instances of cloud disk edition. Valid values: `CLOUD_SSD` (SSD), `CLOUD_HSSD` (Enhanced SSD).
+        :type DiskType: str
         """
         self.WanStatus = None
         self.Zone = None
@@ -6968,6 +7241,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.TagList = None
         self.EngineType = None
         self.MaxDelayTime = None
+        self.DiskType = None
 
 
     def _deserialize(self, params):
@@ -7037,6 +7311,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 self.TagList.append(obj)
         self.EngineType = params.get("EngineType")
         self.MaxDelayTime = params.get("MaxDelayTime")
+        self.DiskType = params.get("DiskType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

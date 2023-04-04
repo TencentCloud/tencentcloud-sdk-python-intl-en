@@ -787,7 +787,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param Bucket: COS bucket.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Bucket: str
-        :param BucketRegion: COS bucket region.
+        :param BucketRegion: Region where the COS bucket is located.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type BucketRegion: str
         :param Prefix: The prefix of the folder where COS files are located.
@@ -3822,7 +3822,7 @@ class FullTextInfo(AbstractModel):
         :type CaseSensitive: bool
         :param Tokenizer: Separator of the full-text index. Each character represents a separator.
 Only symbols, \n\t\r, and escape character \ are supported.
-Note: \n\t\r can be directly enclosed in double quotes as the input parameter without escaping.
+Note: \n\t\r can be directly enclosed in double quotes as the input parameter without escaping. When debugging with API Explorer, use the JSON parameter input method to avoid repeated escaping of \n\t\r.
         :type Tokenizer: str
         :param ContainZH: Whether Chinese characters are contained
 Note: this field may return `null`, indicating that no valid values can be obtained.
@@ -4106,6 +4106,12 @@ class LogContextInfo(AbstractModel):
         :param HostName: Source host name of logs
 Note: This field may return `null`, indicating that no valid value was found.
         :type HostName: str
+        :param RawLog: Raw log (this parameter has a value only when an exception occurred while creating indexes for logs).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RawLog: str
+        :param IndexStatus: The cause of index creation exception (this parameter has a value only when an exception occurred while creating indexes for logs).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IndexStatus: str
         """
         self.Source = None
         self.Filename = None
@@ -4114,6 +4120,8 @@ Note: This field may return `null`, indicating that no valid value was found.
         self.PkgLogId = None
         self.BTime = None
         self.HostName = None
+        self.RawLog = None
+        self.IndexStatus = None
 
 
     def _deserialize(self, params):
@@ -4124,6 +4132,8 @@ Note: This field may return `null`, indicating that no valid value was found.
         self.PkgLogId = params.get("PkgLogId")
         self.BTime = params.get("BTime")
         self.HostName = params.get("HostName")
+        self.RawLog = params.get("RawLog")
+        self.IndexStatus = params.get("IndexStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4160,6 +4170,12 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param HostName: Source host name of logs
 Note: This field may return `null`, indicating that no valid value was found.
         :type HostName: str
+        :param RawLog: Raw log (this parameter has a value only when an exception occurred while creating indexes for logs).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RawLog: str
+        :param IndexStatus: The cause of index creation exception (this parameter has a value only when an exception occurred while creating indexes for logs).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IndexStatus: str
         """
         self.Time = None
         self.TopicId = None
@@ -4170,6 +4186,8 @@ Note: This field may return `null`, indicating that no valid value was found.
         self.PkgLogId = None
         self.LogJson = None
         self.HostName = None
+        self.RawLog = None
+        self.IndexStatus = None
 
 
     def _deserialize(self, params):
@@ -4182,6 +4200,8 @@ Note: This field may return `null`, indicating that no valid value was found.
         self.PkgLogId = params.get("PkgLogId")
         self.LogJson = params.get("LogJson")
         self.HostName = params.get("HostName")
+        self.RawLog = params.get("RawLog")
+        self.IndexStatus = params.get("IndexStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5658,6 +5678,10 @@ The two response methods differ slightly in terms of encoding format. You are ad
 `1`: Precise analysis without sampling.
 Default value: `1`
         :type SamplingRate: float
+        :param SyntaxRule: Search syntax.
+`0` (default): Lucene; `1`: CQL.
+For more information, visit https://intl.cloud.tencent.com/document/product/614/47044?from_cn_redirect=1#RetrievesConditionalRules.
+        :type SyntaxRule: int
         """
         self.From = None
         self.To = None
@@ -5668,6 +5692,7 @@ Default value: `1`
         self.Sort = None
         self.UseNewAnalysis = None
         self.SamplingRate = None
+        self.SyntaxRule = None
 
 
     def _deserialize(self, params):
@@ -5680,6 +5705,7 @@ Default value: `1`
         self.Sort = params.get("Sort")
         self.UseNewAnalysis = params.get("UseNewAnalysis")
         self.SamplingRate = params.get("SamplingRate")
+        self.SyntaxRule = params.get("SyntaxRule")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6160,7 +6186,7 @@ class ValueInfo(AbstractModel):
         :param Tokenizer: Separator of fields. Each character represents a separator.
 Only symbols, \n\t\r, and escape character \ are supported.
 `long` and `double` fields need to be null.
-Note: \n\t\r can be directly enclosed in double quotes as the input parameter without escaping.
+Note: \n\t\r can be directly enclosed in double quotes as the input parameter without escaping. When debugging with API Explorer, use the JSON parameter input method to avoid repeated escaping of \n\t\r.
         :type Tokenizer: str
         :param SqlFlag: Whether the analysis feature is enabled for the field
         :type SqlFlag: bool

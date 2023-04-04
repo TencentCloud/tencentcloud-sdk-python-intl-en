@@ -100,7 +100,6 @@ class LcicClient(AbstractClient):
 
     def BatchCreateRoom(self, request):
         """This API is used to create multiple rooms at a time.
-        A maximum of 20 requests can be initiated per second for this API.
 
         :param request: Request instance for BatchCreateRoom.
         :type request: :class:`tencentcloud.lcic.v20220817.models.BatchCreateRoomRequest`
@@ -335,6 +334,29 @@ class LcicClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteAppCustomContent(self, request):
+        """This API is used to delete the custom elements. The `Scenes` parameter specifies the custom elements to delete. If `Scenes` is empty, all custom elements will be deleted.
+
+        :param request: Request instance for DeleteAppCustomContent.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.DeleteAppCustomContentRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.DeleteAppCustomContentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAppCustomContent", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAppCustomContentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteDocument(self, request):
         """This API is used to delete a document.
         A maximum of 20 requests can be initiated per second for this API.
@@ -469,6 +491,29 @@ class LcicClient(AbstractClient):
             body = self.call("DescribeCurrentMemberList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeCurrentMemberListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDeveloper(self, request):
+        """This API is used to get the developer information.
+
+        :param request: Request instance for DescribeDeveloper.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeDeveloperRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.DescribeDeveloperResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDeveloper", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDeveloperResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -684,6 +729,29 @@ class LcicClient(AbstractClient):
             body = self.call("DescribeUser", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetRoomEvent(self, request):
+        """This API is used to get the events of a room. It only works within one hour after a class ends.
+
+        :param request: Request instance for GetRoomEvent.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.GetRoomEventRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.GetRoomEventResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetRoomEvent", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetRoomEventResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

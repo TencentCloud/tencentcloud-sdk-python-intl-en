@@ -5715,6 +5715,8 @@ class ModifyDomainAttributesRequest(AbstractModel):
         :type Http2: bool
         :param DefaultServer: Whether to set this domain name as the default domain name. Note: Only one default domain name can be set under one listener.
         :type DefaultServer: bool
+        :param Quic: Whether to enable QUIC. Note: QUIC can be enabled only for HTTPS domain names.
+        :type Quic: bool
         :param NewDefaultServerDomain: Specifies a new default domain name for the listener. This field is used when the original default domain name is disabled. If there are multiple domain names, specify one of them.
         :type NewDefaultServerDomain: str
         :param NewDomains: The new domain names to modify. `NewDomain` and `NewDomains` can not be both specified.
@@ -5729,6 +5731,7 @@ class ModifyDomainAttributesRequest(AbstractModel):
         self.Certificate = None
         self.Http2 = None
         self.DefaultServer = None
+        self.Quic = None
         self.NewDefaultServerDomain = None
         self.NewDomains = None
         self.MultiCertInfo = None
@@ -5744,6 +5747,7 @@ class ModifyDomainAttributesRequest(AbstractModel):
             self.Certificate._deserialize(params.get("Certificate"))
         self.Http2 = params.get("Http2")
         self.DefaultServer = params.get("DefaultServer")
+        self.Quic = params.get("Quic")
         self.NewDefaultServerDomain = params.get("NewDefaultServerDomain")
         self.NewDomains = params.get("NewDomains")
         if params.get("MultiCertInfo") is not None:
