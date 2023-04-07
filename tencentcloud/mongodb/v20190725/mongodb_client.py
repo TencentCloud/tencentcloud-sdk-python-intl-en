@@ -441,7 +441,7 @@ class MongodbClient(AbstractClient):
 
 
     def InquirePriceModifyDBInstanceSpec(self, request):
-        """This API is used to query price of instance specification adjustment.
+        """This API is used to query the price of instance specification adjustment.
 
         :param request: Request instance for InquirePriceModifyDBInstanceSpec.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.InquirePriceModifyDBInstanceSpecRequest`

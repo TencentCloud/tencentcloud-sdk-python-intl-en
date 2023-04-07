@@ -1099,34 +1099,34 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceIds: List of instance IDs in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page
+        :param InstanceIds: List of instance IDs in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB console page.
         :type InstanceIds: list of str
-        :param InstanceType: Instance type. Valid values: 0 (all instances), 1 (promoted), 2 (temp), 3 (read-only), -1 (promoted + read-only + disaster recovery)
+        :param InstanceType: Instance type. Valid values: <ul><li>`0`: All instances. </li><li>`1`: Regular instances. </li><li>`2`: Temp instances. </li><li>`3`: Read-only instances. </li><li>`-1`: Regular instances, read-only instances, disaster recovery instances.</li></ul>
         :type InstanceType: int
-        :param ClusterType: Cluster type. Valid values: 0 (replica set instance), 1 (sharding instance), -1 (all instances)
+        :param ClusterType: Cluster type. Valid values: <ul><li>`0`: Replica set instances. </li><li>`1`: Sharded cluster instances. </li><li>`-1`: All instances.</li></ul>
         :type ClusterType: int
-        :param Status: Instance status. Valid values: `0` (to be initialized), `1` (executing task), `2` (running), `-2` (isolated monthly-subscribed instance), `-3` (isolated pay-as-you-go instance)
+        :param Status: Instance status. Valid values: <ul><li>`0`: To be initialized. </li><li>`1`: In process. </li><li>`2`: Valid. </li><li>`-2`: Isolated (for monthly subscribed instances). </li><li>`-3`: Isolated (for pay-as-you-go instances).</li></ul>
         :type Status: list of int
-        :param VpcId: VPC ID. This parameter can be left empty for the basic network
+        :param VpcId: VPC ID. This parameter can be left empty for the classic network.
         :type VpcId: str
-        :param SubnetId: Subnet ID of VPC. This parameter can be left empty for the basic network. If it is passed in as an input parameter, the corresponding VpcId must be set
+        :param SubnetId: Subnet ID of VPC. This parameter can be left empty for the classic network. If it is passed in as an input parameter, the corresponding VpcId must be set.
         :type SubnetId: str
         :param PayMode: Billing type. Valid value: 0 (pay-as-you-go)
         :type PayMode: int
-        :param Limit: Number of results to be returned for a single request. Valid values: 1-100. Default value: 20
+        :param Limit: Number of results returned per request. Default value: `20`. Value range: [1,100].
         :type Limit: int
-        :param Offset: Offset. Default value: 0
+        :param Offset: Offset. Default value: `0`.
         :type Offset: int
-        :param OrderBy: Sort by field of the returned result set. Currently, supported values include "ProjectId", "InstanceName", and "CreateTime". The return results are sorted in ascending order by default.
+        :param OrderBy: Sort by field of the returned result set. Valid values: `ProjectId`, `InstanceName`, `CreateTime`. The return results are sorted in ascending order by default.
         :type OrderBy: str
-        :param OrderByType: Sorting method of the return result set. Currently, "ASC" or "DESC" is supported
+        :param OrderByType: Sorting method of the return result set. Valid values: `ASC`, `DESC`.
         :type OrderByType: str
         :param ProjectIds: Project ID
         :type ProjectIds: list of int non-negative
-        :param SearchKey: Search keyword, which can be instance ID, instance name, or complete IP
+        :param SearchKey: Search keyword, which can be instance ID, instance name, or complete IP.
         :type SearchKey: str
         :param Tags: Tag information
-        :type Tags: :class:`tencentcloud.mongodb.v20190725.models.TagInfo`
+        :type Tags: list of TagInfo
         """
         self.InstanceIds = None
         self.InstanceType = None
@@ -1159,8 +1159,11 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.ProjectIds = params.get("ProjectIds")
         self.SearchKey = params.get("SearchKey")
         if params.get("Tags") is not None:
-            self.Tags = TagInfo()
-            self.Tags._deserialize(params.get("Tags"))
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1177,7 +1180,7 @@ class DescribeDBInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Number of eligible instances.
+        :param TotalCount: Number of eligible instances
         :type TotalCount: int
         :param InstanceDetails: List of instance details
         :type InstanceDetails: list of InstanceDetail
@@ -1428,7 +1431,7 @@ class DescribeSlowLogsRequest(AbstractModel):
         :type Offset: int
         :param Limit: Number of entries per page. Minimum value: 1. Maximum value: 100. Default value: 20.
         :type Limit: int
-        :param Format: Slow log format, which can be JSON. If this parameter is left empty, the slow log will be returned in its native format.
+        :param Format: Return format of slow log. The original slow log format is returned by default, and the format can be set to JSON on versions 4.4 and later.
         :type Format: str
         """
         self.InstanceId = None
@@ -1691,15 +1694,15 @@ class InquirePriceModifyDBInstanceSpecRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed in the TencentDB Console.
+        :param InstanceId: Instance ID in the format of cmgo-p8vn****. It is the same as the instance ID displayed in the TencentDB console.
         :type InstanceId: str
         :param Memory: Instance memory size in GB after specification adjustment.
         :type Memory: int
         :param Volume: Instance disk size in GB after specification adjustment.
         :type Volume: int
-        :param NodeNum: Node quantity after configuration modification. The value range is subject to the response parameter of the `DescribeSpecInfo` API. If this parameter is left empty, the node quantity remains unchanged.
+        :param NodeNum: Number of instance nodes. The number of nodes is left unchanged by default and cannot be changed currently.
         :type NodeNum: int
-        :param ReplicateSetNum: Shard quantity after configuration modification, which can only be increased rather than decreased. The value range is subject to the response parameter of the `DescribeSpecInfo` API. If this parameter is left empty, the shard quantity remains unchanged.
+        :param ReplicateSetNum: Number of instance shards. The number of shards is left unchanged by default and cannot be changed currently.
         :type ReplicateSetNum: int
         """
         self.InstanceId = None
