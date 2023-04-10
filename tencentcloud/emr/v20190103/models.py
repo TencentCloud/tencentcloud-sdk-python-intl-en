@@ -1859,6 +1859,9 @@ Note: This field may return null, indicating that no valid value can be obtained
         :param OutSideSoftInfo: Client component information.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OutSideSoftInfo: list of SoftDependInfo
+        :param IsSupportOutsideCluster: Whether the current cluster supports external clients.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsSupportOutsideCluster: bool
         """
         self.ClusterId = None
         self.StatusDesc = None
@@ -1889,6 +1892,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.IsMultiZoneCluster = None
         self.IsHandsCluster = None
         self.OutSideSoftInfo = None
+        self.IsSupportOutsideCluster = None
 
 
     def _deserialize(self, params):
@@ -1931,6 +1935,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = SoftDependInfo()
                 obj._deserialize(item)
                 self.OutSideSoftInfo.append(obj)
+        self.IsSupportOutsideCluster = params.get("IsSupportOutsideCluster")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
