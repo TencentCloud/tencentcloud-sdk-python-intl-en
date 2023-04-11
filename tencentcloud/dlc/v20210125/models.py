@@ -128,6 +128,175 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class CreateDataEngineRequest(AbstractModel):
+    """CreateDataEngine request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EngineType: The engine type. Valid values: `spark` and `presto`.
+        :type EngineType: str
+        :param DataEngineName: The name of the virtual cluster.
+        :type DataEngineName: str
+        :param ClusterType: The cluster type. Valid values: `spark_private`, `presto_private`, `presto_cu`, and `spark_cu`.
+        :type ClusterType: str
+        :param Mode: The billing mode. Valid values: `0` (shared engine), `1` (pay-as-you-go), and `2` (monthly subscription).
+        :type Mode: int
+        :param AutoResume: Whether to automatically start the clusters.
+        :type AutoResume: bool
+        :param MinClusters: The minimum number of clusters.
+        :type MinClusters: int
+        :param MaxClusters: The maximum number of clusters.
+        :type MaxClusters: int
+        :param DefaultDataEngine: Whether the cluster is the default one.
+        :type DefaultDataEngine: bool
+        :param CidrBlock: The VPC CIDR block.
+        :type CidrBlock: str
+        :param Message: The description.
+        :type Message: str
+        :param Size: The cluster size.
+        :type Size: int
+        :param PayMode: The pay mode. Valid value: `0` (postpaid, default) and `1` (prepaid) (currently not available).
+        :type PayMode: int
+        :param TimeSpan: The resource period. For the postpaid mode, the value is 3600 (default); for the prepaid mode, the value must be in the range of 1–120, representing purchasing the resource for 1–120 months.
+        :type TimeSpan: int
+        :param TimeUnit: The unit of the resource period. Valid values: `s` (default) for the postpaid mode and `m` for the prepaid mode.
+        :type TimeUnit: str
+        :param AutoRenew: The auto-renewal status of the resource. For the postpaid mode, no renewal is required, and the value is fixed to `0`. For the prepaid mode, valid values are `0` (manual), `1` (auto), and `2` (no renewal). If this parameter is set to `0` for a key account in the prepaid mode, auto-renewal applies. It defaults to `0`.
+        :type AutoRenew: int
+        :param Tags: The tags to be set for the resource being created.
+        :type Tags: list of TagInfo
+        :param AutoSuspend: Whether to automatically suspend clusters. Valid values: `false` (default, no) and `true` (yes).
+        :type AutoSuspend: bool
+        :param CrontabResumeSuspend: Whether to enable scheduled start and suspension of clusters. Valid values: `0` (disable) and `1` (enable). Note: This policy and the auto-suspension policy are mutually exclusive.
+        :type CrontabResumeSuspend: int
+        :param CrontabResumeSuspendStrategy: The complex policy for scheduled start and suspension, including the start/suspension time and suspension policy.
+        :type CrontabResumeSuspendStrategy: :class:`tencentcloud.dlc.v20210125.models.CrontabResumeSuspendStrategy`
+        :param EngineExecType: The type of tasks to be executed by the engine, which defaults to SQL.
+        :type EngineExecType: str
+        :param MaxConcurrency: The max task concurrency of a cluster, which defaults to 5.
+        :type MaxConcurrency: int
+        :param TolerableQueueTime: The task queue time limit, which defaults to 0. When the actual queue time exceeds the value set here, scale-out may be triggered. Setting this parameter to 0 represents that scale-out may be triggered immediately after a task queues up.
+        :type TolerableQueueTime: int
+        :param AutoSuspendTime: The cluster auto-suspension time, which defaults to 10 min.
+        :type AutoSuspendTime: int
+        :param ResourceType: The resource type. Valid values: `Standard_CU` (standard) and `Memory_CU` (memory).
+        :type ResourceType: str
+        :param DataEngineConfigPairs: The advanced configurations of clusters.
+        :type DataEngineConfigPairs: list of DataEngineConfigPair
+        :param ImageVersionName: The version name of cluster image, such as SuperSQL-P 1.1 and SuperSQL-S 3.2. If no value is passed in, a cluster is created using the latest image version.
+        :type ImageVersionName: str
+        :param MainClusterName: The name of the primary cluster.
+        :type MainClusterName: str
+        :param ElasticSwitch: 
+        :type ElasticSwitch: bool
+        :param ElasticLimit: 
+        :type ElasticLimit: int
+        """
+        self.EngineType = None
+        self.DataEngineName = None
+        self.ClusterType = None
+        self.Mode = None
+        self.AutoResume = None
+        self.MinClusters = None
+        self.MaxClusters = None
+        self.DefaultDataEngine = None
+        self.CidrBlock = None
+        self.Message = None
+        self.Size = None
+        self.PayMode = None
+        self.TimeSpan = None
+        self.TimeUnit = None
+        self.AutoRenew = None
+        self.Tags = None
+        self.AutoSuspend = None
+        self.CrontabResumeSuspend = None
+        self.CrontabResumeSuspendStrategy = None
+        self.EngineExecType = None
+        self.MaxConcurrency = None
+        self.TolerableQueueTime = None
+        self.AutoSuspendTime = None
+        self.ResourceType = None
+        self.DataEngineConfigPairs = None
+        self.ImageVersionName = None
+        self.MainClusterName = None
+        self.ElasticSwitch = None
+        self.ElasticLimit = None
+
+
+    def _deserialize(self, params):
+        self.EngineType = params.get("EngineType")
+        self.DataEngineName = params.get("DataEngineName")
+        self.ClusterType = params.get("ClusterType")
+        self.Mode = params.get("Mode")
+        self.AutoResume = params.get("AutoResume")
+        self.MinClusters = params.get("MinClusters")
+        self.MaxClusters = params.get("MaxClusters")
+        self.DefaultDataEngine = params.get("DefaultDataEngine")
+        self.CidrBlock = params.get("CidrBlock")
+        self.Message = params.get("Message")
+        self.Size = params.get("Size")
+        self.PayMode = params.get("PayMode")
+        self.TimeSpan = params.get("TimeSpan")
+        self.TimeUnit = params.get("TimeUnit")
+        self.AutoRenew = params.get("AutoRenew")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.AutoSuspend = params.get("AutoSuspend")
+        self.CrontabResumeSuspend = params.get("CrontabResumeSuspend")
+        if params.get("CrontabResumeSuspendStrategy") is not None:
+            self.CrontabResumeSuspendStrategy = CrontabResumeSuspendStrategy()
+            self.CrontabResumeSuspendStrategy._deserialize(params.get("CrontabResumeSuspendStrategy"))
+        self.EngineExecType = params.get("EngineExecType")
+        self.MaxConcurrency = params.get("MaxConcurrency")
+        self.TolerableQueueTime = params.get("TolerableQueueTime")
+        self.AutoSuspendTime = params.get("AutoSuspendTime")
+        self.ResourceType = params.get("ResourceType")
+        if params.get("DataEngineConfigPairs") is not None:
+            self.DataEngineConfigPairs = []
+            for item in params.get("DataEngineConfigPairs"):
+                obj = DataEngineConfigPair()
+                obj._deserialize(item)
+                self.DataEngineConfigPairs.append(obj)
+        self.ImageVersionName = params.get("ImageVersionName")
+        self.MainClusterName = params.get("MainClusterName")
+        self.ElasticSwitch = params.get("ElasticSwitch")
+        self.ElasticLimit = params.get("ElasticLimit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDataEngineResponse(AbstractModel):
+    """CreateDataEngine response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DataEngineId: The ID of the virtual engine.
+        :type DataEngineId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DataEngineId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DataEngineId = params.get("DataEngineId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateInternalTableRequest(AbstractModel):
     """CreateInternalTable request structure.
 
@@ -577,6 +746,47 @@ class CreateTasksResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CrontabResumeSuspendStrategy(AbstractModel):
+    """Scheduled start and suspension information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResumeTime: The scheduled start time, such as 8:00 AM every Monday.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ResumeTime: str
+        :param SuspendTime: The scheduled suspension time, such as 8:00 PM every Monday.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SuspendTime: str
+        :param SuspendStrategy: The suspension setting. Valid values: `0` (suspension after task end, default) and `1` (force suspension).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SuspendStrategy: int
+        """
+        self.ResumeTime = None
+        self.SuspendTime = None
+        self.SuspendStrategy = None
+
+
+    def _deserialize(self, params):
+        self.ResumeTime = params.get("ResumeTime")
+        self.SuspendTime = params.get("SuspendTime")
+        self.SuspendStrategy = params.get("SuspendStrategy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DataEngineConfigPair(AbstractModel):
+    """Engine configurations
+
+    """
+
+
 class DataGovernPolicy(AbstractModel):
     """The data governance rules.
 
@@ -609,6 +819,128 @@ class DeleteSparkAppRequest(AbstractModel):
 
 class DeleteSparkAppResponse(AbstractModel):
     """DeleteSparkApp response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeEngineUsageInfoRequest(AbstractModel):
+    """DescribeEngineUsageInfo request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DataEngineId: The house ID.
+        :type DataEngineId: str
+        """
+        self.DataEngineId = None
+
+
+    def _deserialize(self, params):
+        self.DataEngineId = params.get("DataEngineId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEngineUsageInfoResponse(AbstractModel):
+    """DescribeEngineUsageInfo response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: The total cluster spec.
+        :type Total: int
+        :param Used: The used cluster spec.
+        :type Used: int
+        :param Available: The available cluster spec.
+        :type Available: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Total = None
+        self.Used = None
+        self.Available = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        self.Used = params.get("Used")
+        self.Available = params.get("Available")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeForbiddenTableProRequest(AbstractModel):
+    """DescribeForbiddenTablePro request structure.
+
+    """
+
+
+class DescribeForbiddenTableProResponse(AbstractModel):
+    """DescribeForbiddenTablePro response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLakeFsDirSummaryRequest(AbstractModel):
+    """DescribeLakeFsDirSummary request structure.
+
+    """
+
+
+class DescribeLakeFsDirSummaryResponse(AbstractModel):
+    """DescribeLakeFsDirSummary response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLakeFsInfoRequest(AbstractModel):
+    """DescribeLakeFsInfo request structure.
+
+    """
+
+
+class DescribeLakeFsInfoResponse(AbstractModel):
+    """DescribeLakeFsInfo response structure.
 
     """
 
@@ -1405,6 +1737,106 @@ class ModifySparkAppResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class Policy(AbstractModel):
+    """Permission objects
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Database: The name of the target database. `*` represents all databases in the current catalog. To grant admin permissions, it must be `*`; to grant data connection permissions, it must be null; to grant other permissions, it can be any database.
+        :type Database: str
+        :param Catalog: The name of the target data source. To grant admin permission, it must be `*` (all resources at this level); to grant data source and database permissions, it must be `COSDataCatalog` or `*`; to grant table permissions, it can be a custom data source; if it is left empty, `DataLakeCatalog` is used. Note: To grant permissions on a custom data source, the permissions that can be managed in the Data Lake Compute console are subsets of the account permissions granted when you connect the data source to the console.
+        :type Catalog: str
+        :param Table: The name of the target table. `*` represents all tables in the current database. To grant admin permissions, it must be `*`; to grant data connection and database permissions, it must be null; to grant other permissions, it can be any table.
+        :type Table: str
+        :param Operation: The target permissions, which vary by permission level. Admin: `ALL` (default); data connection: `CREATE`; database: `ALL`, `CREATE`, `ALTER`, and `DROP`; table: `ALL`, `SELECT`, `INSERT`, `ALTER`, `DELETE`, `DROP`, and `UPDATE`. Note: For table permissions, if a data source other than `COSDataCatalog` is specified, only the `SELECT` permission can be granted here.
+        :type Operation: str
+        :param PolicyType: The permission type. Valid values: `ADMIN`, `DATASOURCE`, `DATABASE`, `TABLE`, `VIEW`, `FUNCTION`, `COLUMN`, and `ENGINE`. Note: If it is left empty, `ADMIN` is used.
+        :type PolicyType: str
+        :param Function: The name of the target function. `*` represents all functions in the current catalog. To grant admin permissions, it must be `*`; to grant data connection permissions, it must be null; to grant other permissions, it can be any function.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Function: str
+        :param View: The name of the target view. `*` represents all views in the current database. To grant admin permissions, it must be `*`; to grant data connection and database permissions, it must be null; to grant other permissions, it can be any view.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type View: str
+        :param Column: The name of the target column. `*` represents all columns. To grant admin permissions, it must be `*`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Column: str
+        :param DataEngine: The name of the target data engine. `*` represents all engines. To grant admin permissions, it must be `*`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DataEngine: str
+        :param ReAuth: Whether the grantee is allowed to further grant the permissions. Valid values: `false` (default) and `true` (the grantee can grant permissions gained here to other sub-users).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ReAuth: bool
+        :param Source: The permission source, which is not required when input parameters are passed in. Valid values: `USER` (from the user) and `WORKGROUP` (from one or more associated work groups).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Source: str
+        :param Mode: The grant mode, which is not required as an input parameter. Valid values: `COMMON` and `SENIOR`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Mode: str
+        :param Operator: The operator, which is not required as an input parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Operator: str
+        :param CreateTime: The permission policy creation time, which is not required as an input parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CreateTime: str
+        :param SourceId: The ID of the work group, which applies only when the value of the `Source` field is `WORKGROUP`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SourceId: int
+        :param SourceName: The name of the work group, which applies only when the value of the `Source` field is `WORKGROUP`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SourceName: str
+        :param Id: The policy ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Id: int
+        """
+        self.Database = None
+        self.Catalog = None
+        self.Table = None
+        self.Operation = None
+        self.PolicyType = None
+        self.Function = None
+        self.View = None
+        self.Column = None
+        self.DataEngine = None
+        self.ReAuth = None
+        self.Source = None
+        self.Mode = None
+        self.Operator = None
+        self.CreateTime = None
+        self.SourceId = None
+        self.SourceName = None
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Database = params.get("Database")
+        self.Catalog = params.get("Catalog")
+        self.Table = params.get("Table")
+        self.Operation = params.get("Operation")
+        self.PolicyType = params.get("PolicyType")
+        self.Function = params.get("Function")
+        self.View = params.get("View")
+        self.Column = params.get("Column")
+        self.DataEngine = params.get("DataEngine")
+        self.ReAuth = params.get("ReAuth")
+        self.Source = params.get("Source")
+        self.Mode = params.get("Mode")
+        self.Operator = params.get("Operator")
+        self.CreateTime = params.get("CreateTime")
+        self.SourceId = params.get("SourceId")
+        self.SourceName = params.get("SourceName")
+        self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Property(AbstractModel):
     """Properties of database and table
 
@@ -1752,6 +2184,51 @@ class SuspendResumeDataEngineResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SwitchDataEngineRequest(AbstractModel):
+    """SwitchDataEngine request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DataEngineName: The name of the primary cluster.
+        :type DataEngineName: str
+        :param StartStandbyCluster: Whether to start the standby cluster.
+        :type StartStandbyCluster: bool
+        """
+        self.DataEngineName = None
+        self.StartStandbyCluster = None
+
+
+    def _deserialize(self, params):
+        self.DataEngineName = params.get("DataEngineName")
+        self.StartStandbyCluster = params.get("StartStandbyCluster")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SwitchDataEngineResponse(AbstractModel):
+    """SwitchDataEngine response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class TColumn(AbstractModel):
     """Table field information
 
@@ -1900,6 +2377,36 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("GovernPolicy") is not None:
             self.GovernPolicy = DataGovernPolicy()
             self.GovernPolicy._deserialize(params.get("GovernPolicy"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TagInfo(AbstractModel):
+    """Tag pair info
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TagKey: The tag key.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TagKey: str
+        :param TagValue: The tag value.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2295,3 +2802,50 @@ class TasksOverview(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UpdateRowFilterRequest(AbstractModel):
+    """UpdateRowFilter request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PolicyId: The ID of the row filter policy, which can be obtained using the `DescribeUserInfo` or `DescribeWorkGroupInfo` API.
+        :type PolicyId: int
+        :param Policy: The new filter policy.
+        :type Policy: :class:`tencentcloud.dlc.v20210125.models.Policy`
+        """
+        self.PolicyId = None
+        self.Policy = None
+
+
+    def _deserialize(self, params):
+        self.PolicyId = params.get("PolicyId")
+        if params.get("Policy") is not None:
+            self.Policy = Policy()
+            self.Policy._deserialize(params.get("Policy"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateRowFilterResponse(AbstractModel):
+    """UpdateRowFilter response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")

@@ -20,14 +20,92 @@ AUTHFAILURE = 'AuthFailure'
 # The operation failed.
 FAILEDOPERATION = 'FailedOperation'
 
+# Order status exception.
+FAILEDOPERATION_ABNORMALORDERSTATUS = 'FailedOperation.AbnormalOrderStatus'
+
+# Another data source is being created.
+FAILEDOPERATION_ANOTHERCREATEPROCESSRUNNING = 'FailedOperation.AnotherCreateProcessRunning'
+
+# Another operation is in progress. Please try again later.
+FAILEDOPERATION_ANOTHERPROCESSRUNNING = 'FailedOperation.AnotherProcessRunning'
+
 # Another request is being processed. Try again later.
 FAILEDOPERATION_ANOTHERREQUESTPROCESSING = 'FailedOperation.AnotherRequestProcessing'
+
+# Insufficient account balance.
+FAILEDOPERATION_BALANCENOTENOUGH = 'FailedOperation.BalanceNotEnough'
+
+# Billing system exception.
+FAILEDOPERATION_BILLINGSYSTEMERROR = 'FailedOperation.BillingSystemError'
+
+# The number of tags set reached the limit.
+FAILEDOPERATION_BINDTOOMANYTAGS = 'FailedOperation.BindTooManyTags'
+
+# Failed to create the engine.
+FAILEDOPERATION_CREATEDATAENGINEFAILED = 'FailedOperation.CreateDataEngineFailed'
+
+# Failed to deliver the goods.
+FAILEDOPERATION_DELIVERGOODSFAILED = 'FailedOperation.DeliverGoodsFailed'
+
+# Duplicate tag keys.
+FAILEDOPERATION_DUPLICATETAGKEY = 'FailedOperation.DuplicateTagKey'
+
+# Deduction failed.
+FAILEDOPERATION_FEEDEDUCTIONFAILED = 'FailedOperation.FeeDeductionFailed'
+
+# Failed to get product information.
+FAILEDOPERATION_GETPRODUCTINFORMATIONFAILED = 'FailedOperation.GetProductInformationFailed'
 
 # The HTTP client request failed.
 FAILEDOPERATION_HTTPCLIENTDOREQUESTFAILED = 'FailedOperation.HttpClientDoRequestFailed'
 
+# Invalid resources.
+FAILEDOPERATION_ILLEGALRESOURCE = 'FailedOperation.IllegalResource'
+
+# Invalid characters in the tag key.
+FAILEDOPERATION_ILLEGALTAGKEY = 'FailedOperation.IllegalTagKey'
+
+# Invalid characters in the tag value.
+FAILEDOPERATION_ILLEGALTAGVALUE = 'FailedOperation.IllegalTagValue'
+
+# Price query failed.
+FAILEDOPERATION_INQUIREPRICEFAILED = 'FailedOperation.InquirePriceFailed'
+
+# Failed to scale up/down the instance.
+FAILEDOPERATION_MODIFYINSTANCEFAILED = 'FailedOperation.ModifyInstanceFailed'
+
 # No permission.
 FAILEDOPERATION_NOPERMISSION = 'FailedOperation.NoPermission'
+
+# Unverified account.
+FAILEDOPERATION_NOREALNAMEAUTHENTICATION = 'FailedOperation.NoRealNameAuthentication'
+
+# Reached the allowed limit of engines.
+FAILEDOPERATION_NUMBEREXCEEDLIMIT = 'FailedOperation.NumberExceedLimit'
+
+# Failed to verify parameters.
+FAILEDOPERATION_PARAMETERVALIDATIONFAILED = 'FailedOperation.ParameterValidationFailed'
+
+# Refunding failed.
+FAILEDOPERATION_REFUNDDEPOSITFAILED = 'FailedOperation.RefundDepositFailed'
+
+# A tag key of the same name has been set for the resource.
+FAILEDOPERATION_TAGALREADYATTACHED = 'FailedOperation.TagAlreadyAttached'
+
+# The tag key exceeded the length limit.
+FAILEDOPERATION_TAGKEYTOOLONG = 'FailedOperation.TagKeyTooLong'
+
+# The tag does not exist.
+FAILEDOPERATION_TAGNOTEXIST = 'FailedOperation.TagNotExist'
+
+# The tag value exceeded the length limit.
+FAILEDOPERATION_TAGVALUETOOLONG = 'FailedOperation.TagValueTooLong'
+
+# The number of resources reached the limit.
+FAILEDOPERATION_TOOMANYRESOURCES = 'FailedOperation.TooManyResources'
+
+# The number of tags reached the limit.
+FAILEDOPERATION_TOOMANYTAGS = 'FailedOperation.TooManyTags'
 
 # An internal error occurred.
 INTERNALERROR = 'InternalError'
@@ -38,14 +116,29 @@ INTERNALERROR_DBERROR = 'InternalError.DBError'
 # The parameter is incorrect.
 INVALIDPARAMETER = 'InvalidParameter'
 
+# Duplicate engine name.
+INVALIDPARAMETER_DUPLICATEDATAENGINENAME = 'InvalidParameter.DuplicateDataEngineName'
+
+# Invalid data engine mode.
+INVALIDPARAMETER_INVALIDDATAENGINEMODE = 'InvalidParameter.InvalidDataEngineMode'
+
 # The data engine name is invalid.
 INVALIDPARAMETER_INVALIDDATAENGINENAME = 'InvalidParameter.InvalidDataEngineName'
+
+# Invalid data engine spec.
+INVALIDPARAMETER_INVALIDDATAENGINESPECS = 'InvalidParameter.InvalidDataEngineSpecs'
+
+# Invalid engine type.
+INVALIDPARAMETER_INVALIDENGINETYPE = 'InvalidParameter.InvalidEngineType'
 
 # The fault tolerance policy is invalid.
 INVALIDPARAMETER_INVALIDFAILURETOLERANCE = 'InvalidParameter.InvalidFailureTolerance'
 
 # Invalid maximum number of results.
 INVALIDPARAMETER_INVALIDMAXRESULTS = 'InvalidParameter.InvalidMaxResults'
+
+# Invalid billing mode.
+INVALIDPARAMETER_INVALIDPAYMODE = 'InvalidParameter.InvalidPayMode'
 
 # The CAM role arn is invalid.
 INVALIDPARAMETER_INVALIDROLEARN = 'InvalidParameter.InvalidRoleArn'
@@ -68,14 +161,26 @@ INVALIDPARAMETER_INVALIDTASKID = 'InvalidParameter.InvalidTaskId'
 # The task type is invalid.
 INVALIDPARAMETER_INVALIDTASKTYPE = 'InvalidParameter.InvalidTaskType'
 
+# Invalid billing period.
+INVALIDPARAMETER_INVALIDTIMESPAN = 'InvalidParameter.InvalidTimeSpan'
+
+# Invalid unit of billing period.
+INVALIDPARAMETER_INVALIDTIMEUNIT = 'InvalidParameter.InvalidTimeUnit'
+
 # The task has ended and cannot be canceled.
 INVALIDPARAMETER_TASKALREADYFINISHED = 'InvalidParameter.TaskAlreadyFinished'
+
+# Invalid VPC CIDR format.
+INVALIDPARAMETER_VPCCIDRFORMATERROR = 'InvalidParameter.VpcCidrFormatError'
 
 # The parameter value is incorrect.
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
 # The quota limit is reached.
 LIMITEXCEEDED = 'LimitExceeded'
+
+# Missing parameters.
+MISSINGPARAMETER = 'MissingParameter'
 
 # Operation denied.
 OPERATIONDENIED = 'OperationDenied'
@@ -94,6 +199,9 @@ RESOURCEUNAVAILABLE_BALANCEINSUFFICIENT = 'ResourceUnavailable.BalanceInsufficie
 
 # Unauthorized operation.
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
+
+# No permission to pay.
+UNAUTHORIZEDOPERATION_NOPAYMENTAUTHORITY = 'UnauthorizedOperation.NoPaymentAuthority'
 
 # Unauthorized engine operation by a sub-user.
 UNAUTHORIZEDOPERATION_OPERATECOMPUTINGENGINE = 'UnauthorizedOperation.OperateComputingEngine'
