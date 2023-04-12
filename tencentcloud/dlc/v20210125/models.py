@@ -1986,6 +1986,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param JobExecutorMaxNumbers: The specified executor count (max), which defaults to 1. This parameter applies if the "Dynamic" mode is selected. If the "Dynamic" mode is not selected, the executor count is equal to `JobExecutorNums`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type JobExecutorMaxNumbers: int
+        :param SparkImageVersion: The image version.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SparkImageVersion: str
         """
         self.JobId = None
         self.JobName = None
@@ -2022,6 +2025,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.TaskNum = None
         self.DataEngineStatus = None
         self.JobExecutorMaxNumbers = None
+        self.SparkImageVersion = None
 
 
     def _deserialize(self, params):
@@ -2062,6 +2066,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.TaskNum = params.get("TaskNum")
         self.DataEngineStatus = params.get("DataEngineStatus")
         self.JobExecutorMaxNumbers = params.get("JobExecutorMaxNumbers")
+        self.SparkImageVersion = params.get("SparkImageVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
