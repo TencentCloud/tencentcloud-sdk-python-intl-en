@@ -2637,14 +2637,19 @@ class InstanceConfs(AbstractModel):
         :type DailyInspection: str
         :param OverviewDisplay: Whether to enable instance overview. Valid values: Yes, No.
         :type OverviewDisplay: str
+        :param KeyDelimiters: Custom big key analysis separator for Redis only
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type KeyDelimiters: list of str
         """
         self.DailyInspection = None
         self.OverviewDisplay = None
+        self.KeyDelimiters = None
 
 
     def _deserialize(self, params):
         self.DailyInspection = params.get("DailyInspection")
         self.OverviewDisplay = params.get("OverviewDisplay")
+        self.KeyDelimiters = params.get("KeyDelimiters")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2717,6 +2722,14 @@ class InstanceInfo(AbstractModel):
         :type AuditPolicyStatus: str
         :param AuditRunningStatus: Running status of instance audit log. Valid values: normal (running), paused (suspension due to overdue payment).
         :type AuditRunningStatus: str
+        :param InternalVip: Private VIP
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InternalVip: str
+        :param InternalVport: Private network port
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InternalVport: int
+        :param CreateTime: Creation time
+        :type CreateTime: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -2746,6 +2759,9 @@ class InstanceInfo(AbstractModel):
         self.SecAuditStatus = None
         self.AuditPolicyStatus = None
         self.AuditRunningStatus = None
+        self.InternalVip = None
+        self.InternalVport = None
+        self.CreateTime = None
 
 
     def _deserialize(self, params):
@@ -2779,6 +2795,9 @@ class InstanceInfo(AbstractModel):
         self.SecAuditStatus = params.get("SecAuditStatus")
         self.AuditPolicyStatus = params.get("AuditPolicyStatus")
         self.AuditRunningStatus = params.get("AuditRunningStatus")
+        self.InternalVip = params.get("InternalVip")
+        self.InternalVport = params.get("InternalVport")
+        self.CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
