@@ -25,11 +25,14 @@ class ActionTimer(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TimerAction: Timer name. Currently `TerminateInstances` is the only supported value.
+        :param TimerAction: Timer action. Valid value: `TerminateInstances`.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type TimerAction: str
-        :param ActionTime: Execution time, which follows the ISO8601 standard and uses UTC time. It must be at least 5 minutes later than the current time. Format: YYYY-MM-DDThh:mm:ssZ. For example: 2018-05-29T11:26:40Z.
+        :param ActionTime: Action time, which follows the ISO8601 standard and uses UTC time. It must be 5 minutes later than the current time. Format: YYYY-MM-DDThh:mm:ssZ. For example: 2018-05-29T11:26:40Z.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type ActionTime: str
-        :param Externals: Additional data
+        :param Externals: Extended data
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Externals: :class:`tencentcloud.cvm.v20170312.models.Externals`
         """
         self.TimerAction = None
@@ -4003,9 +4006,11 @@ class InstanceChargePrepaid(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Period: Subscription period; unit: month; valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36.
+        :param Period: Subscription period (in month). Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`, `48’, `60`.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Period: int
-        :param RenewFlag: Auto renewal flag. Valid values: <br><li>NOTIFY_AND_AUTO_RENEW: notify upon expiration and renew automatically <br><li>NOTIFY_AND_MANUAL_RENEW: notify upon expiration but do not renew automatically <br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: neither notify upon expiration nor renew automatically <br><br>Default value: NOTIFY_AND_MANUAL_RENEW. If this parameter is specified as NOTIFY_AND_AUTO_RENEW, the instance will be automatically renewed on a monthly basis if the account balance is sufficient.
+        :param RenewFlag: Auto-renewal flag. Valid values: <br><li>NOTIFY_AND_AUTO_RENEW: Notify upon expiration and renew automatically <br><li>NOTIFY_AND_MANUAL_RENEW: Notify upon expiration but do not renew automatically <br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: Neither notify upon expiration nor renew automatically <br><br>Default value: `NOTIFY_AND_MANUAL_RENEW`. When `NOTIFY_AND_AUTO_RENEW` is specified, the instance is automatically renewed on a monthly basis if the account has sufficient balance.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type RenewFlag: str
         """
         self.Period = None
@@ -4060,9 +4065,11 @@ class InstanceMarketOptionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SpotOptions: Options related to bidding
+        :param SpotOptions: Spot-related options
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type SpotOptions: :class:`tencentcloud.cvm.v20170312.models.SpotMarketOptions`
-        :param MarketType: Market option type. Currently `spot` is the only supported value.
+        :param MarketType: Market type. Valid value: `spot`.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type MarketType: str
         """
         self.SpotOptions = None
@@ -4639,6 +4646,14 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         :param TagSpecification: List of tag description. By specifying this parameter, the tag can be bound to the corresponding CVM and CBS instances at the same time.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type TagSpecification: list of TagSpecification
+        :param DisableApiTermination: Whether to enable termination protection. Valid values:
+
+TRUE: Termination protection is enabled.
+FALSE: Termination protection is disabled.
+
+Default value: `FALSE`.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type DisableApiTermination: bool
         """
         self.Placement = None
         self.InstanceType = None
@@ -4663,6 +4678,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.ClientToken = None
         self.InstanceChargePrepaid = None
         self.TagSpecification = None
+        self.DisableApiTermination = None
 
 
     def _deserialize(self, params):
@@ -4717,6 +4733,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
                 obj = TagSpecification()
                 obj._deserialize(item)
                 self.TagSpecification.append(obj)
+        self.DisableApiTermination = params.get("DisableApiTermination")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6992,9 +7009,11 @@ class TagSpecification(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceType: The type of resource that the tag is bound to. Valid values: `instance` (for CVM), `host` (for CDH), `image` (for image), and `keypair` (for key).
+        :param ResourceType: Resource type. Valid values: `instance` (CVM), `host` (CDH), `image` (for image), and `keypair` (for key).
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type ResourceType: str
-        :param Tags: List of tags
+        :param Tags: Tag pairs
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Tags: list of Tag
         """
         self.ResourceType = None

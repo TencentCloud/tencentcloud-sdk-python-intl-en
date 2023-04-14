@@ -197,6 +197,9 @@ LIMITEXCEEDED_PERIODEXCEEDMAXLIMIT = 'LimitExceeded.PeriodExceedMaxLimit'
 # The length of purchase is invalid. It must be at least one month.
 LIMITEXCEEDED_PERIODLESSTHANMINLIMIT = 'LimitExceeded.PeriodLessThanMinLimit'
 
+# The quantity of requested Redis instances falls out of the limit range.
+LIMITEXCEEDED_REACHTHEAMOUNTLIMIT = 'LimitExceeded.ReachTheAmountLimit'
+
 # Replication group locked
 LIMITEXCEEDED_REPLICATIONGROUPLOCKED = 'LimitExceeded.ReplicationGroupLocked'
 
@@ -271,6 +274,9 @@ RESOURCEUNAVAILABLE_NOENOUGHVIPINVPC = 'ResourceUnavailable.NoEnoughVipInVPC'
 
 # The requested region currently does not provide the Redis service.
 RESOURCEUNAVAILABLE_NOREDISSERVICE = 'ResourceUnavailable.NoRedisService'
+
+# The requested `zoneId` doesn’t provide Redis service.
+RESOURCEUNAVAILABLE_NOSERVICEAVAILABLEFORTHISZONEID = 'ResourceUnavailable.NoServiceAvailableForThisZoneId'
 
 # The requested region currently does not provide the requested type of Redis service.
 RESOURCEUNAVAILABLE_NOTYPEIDREDISSERVICE = 'ResourceUnavailable.NoTypeIdRedisService'

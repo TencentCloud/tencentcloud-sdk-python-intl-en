@@ -600,6 +600,137 @@ class ClearInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CloneInstancesRequest(AbstractModel):
+    """CloneInstances request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: ID of the current instance
+        :type InstanceId: str
+        :param GoodsNum: Number of instance to be cloned each time. You can purchase up to 100 monthly subscribed instances or up to 30 pay-as-you-go instances at a time. You can purchase up to 100 instances in each region.
+        :type GoodsNum: int
+        :param ZoneId: ID of the AZ where the clone instance resides. For more information, see [Regions and AZs](https://intl.cloud.tencent.com/document/product/239/4106?from_cn_redirect=1).
+        :type ZoneId: int
+        :param BillingMode: Billing mode. Valid values: <ul><li>`0` (Pay-as-you-go) </li><li>`1` (Monthly subscription) </li></ul>
+        :type BillingMode: int
+        :param Period: Purchase duration of an instance. <ul><li>Unit: Month</li><li>Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`, `48`, `60` (for monthly subscription mode).</li><li> Valid value: `1` (for pay-as-you-go mode).</li></ul>
+        :type Period: int
+        :param SecurityGroupIdList: Security group ID, which can be obtained on the <b>Security Group</b> page in the console.
+        :type SecurityGroupIdList: list of str
+        :param BackupId: Backup ID of the clone instance, which can be obtained through the [DescribeInstanceBackups](https://intl.cloud.tencent.com/document/product/239/20011?from_cn_redirect=1) API.
+        :type BackupId: str
+        :param NoAuth: Whether the clone instance supports password-free access. Valid values: <ul><li>`true` (Yes)</li><li>`false` (No. When SSL or public network is enabled). Default value: `false`.</li></ul>
+        :type NoAuth: bool
+        :param VpcId: VPC ID. If this parameter is not passed in, the classic network will be selected by default.
+        :type VpcId: str
+        :param SubnetId: VPC subnet ID, which is not required for the classic network.
+        :type SubnetId: str
+        :param InstanceName: Name of the clone instance. <br>Enter up to 60 letters, digits, hyphens, and underscores.</br>
+        :type InstanceName: str
+        :param Password: The access password of the clone instance. <ul><li>When the input parameter <b>NoAuth</b> is <b>true</b>, this parameter is not required. </li><li>When the instance is Redis 2.8, 4.0, or 5.0, the password must contain 8–30 characters in at least two of the following types: lowercase letters, uppercase letters, digits, and special characters `()`~!@#$%^&*-+=_|{}[]:;<>,.?/` and cannot start with `/`.</li><li>When the instance is CKV 3.2, the password must and can only contain 8–30 letters and digits.</li></ul>
+        :type Password: str
+        :param AutoRenew: The auto-renewal flag. Valid values <ul><li>`0`: Manual renewal (default) </li><li>`1`: Auto-renewal. </li><li>`2`: Not auto-renewal (set by user)</ul>
+        :type AutoRenew: int
+        :param VPort: Customized port. Valid range: 1024-65535. Default value: `6379`.
+        :type VPort: int
+        :param NodeSet: Node information of an instance. <ul><li>Currently supported type and AZ information of a node to be configured (master node or replica node) For more information, see [RedisNodeInfo](https://intl.cloud.tencent.com/document/product/239/20022?from_cn_redirect=1#RedisNodeInfo).</li><li>This parameter is not required for single-AZ deployment.</li></ul>
+        :type NodeSet: list of RedisNodeInfo
+        :param ProjectId: Project ID, which can be obtained in <b>Account Center</b> > <b>Project Management</b> in the upper-right corner in the console.
+        :type ProjectId: int
+        :param ResourceTags: Tag to be bound for the clone instance
+        :type ResourceTags: list of ResourceTag
+        :param TemplateId: The ID of a parameter template to be applied to the clone instance, which can be obtained on <b>Parameter Template</b> page in the console. If this parameter is not configured, the default parameter template will be applied.
+        :type TemplateId: str
+        :param AlarmPolicyList: Alarm policy ID of the specified clone instance, which can be obtained on <b>Cloud Monitor</b> > <b>Alarm Configuration</b> > <b>Alarm Policy</b> in the console.
+        :type AlarmPolicyList: list of str
+        """
+        self.InstanceId = None
+        self.GoodsNum = None
+        self.ZoneId = None
+        self.BillingMode = None
+        self.Period = None
+        self.SecurityGroupIdList = None
+        self.BackupId = None
+        self.NoAuth = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.InstanceName = None
+        self.Password = None
+        self.AutoRenew = None
+        self.VPort = None
+        self.NodeSet = None
+        self.ProjectId = None
+        self.ResourceTags = None
+        self.TemplateId = None
+        self.AlarmPolicyList = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.GoodsNum = params.get("GoodsNum")
+        self.ZoneId = params.get("ZoneId")
+        self.BillingMode = params.get("BillingMode")
+        self.Period = params.get("Period")
+        self.SecurityGroupIdList = params.get("SecurityGroupIdList")
+        self.BackupId = params.get("BackupId")
+        self.NoAuth = params.get("NoAuth")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.InstanceName = params.get("InstanceName")
+        self.Password = params.get("Password")
+        self.AutoRenew = params.get("AutoRenew")
+        self.VPort = params.get("VPort")
+        if params.get("NodeSet") is not None:
+            self.NodeSet = []
+            for item in params.get("NodeSet"):
+                obj = RedisNodeInfo()
+                obj._deserialize(item)
+                self.NodeSet.append(obj)
+        self.ProjectId = params.get("ProjectId")
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = ResourceTag()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
+        self.TemplateId = params.get("TemplateId")
+        self.AlarmPolicyList = params.get("AlarmPolicyList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloneInstancesResponse(AbstractModel):
+    """CloneInstances response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DealId: Request task ID
+        :type DealId: str
+        :param InstanceIds: Clone instance ID
+        :type InstanceIds: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DealId = None
+        self.InstanceIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DealId = params.get("DealId")
+        self.InstanceIds = params.get("InstanceIds")
+        self.RequestId = params.get("RequestId")
+
+
 class CloseSSLRequest(AbstractModel):
     """CloseSSL request structure.
 
@@ -3238,7 +3369,7 @@ class DescribeReplicationGroupRequest(AbstractModel):
         :type Offset: int
         :param GroupId: Replication group ID
         :type GroupId: str
-        :param SearchKey: Keyword for fuzzy search, which can be an instance name or instance ID.
+        :param SearchKey: Key words for fuzzy query, which can be set as the ID or name of a replication group.
         :type SearchKey: str
         """
         self.Limit = None
@@ -3322,15 +3453,21 @@ class DescribeSSLStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CertDownloadUrl: Certificate download address
+        :param CertDownloadUrl: Download address for SSL certificate
         :type CertDownloadUrl: str
         :param UrlExpiredTime: Expiration time of the certificate download address
         :type UrlExpiredTime: str
-        :param SSLConfig: SSL configuration status of an instance. Valid values: `true` (enable), `false` (disable).
+        :param SSLConfig: Whether the SSL is enabled for the identified instance.
+- `true`: Enabled
+- `false`: Disabled
         :type SSLConfig: bool
-        :param FeatureSupport: Whether the instance supports SSL. Valid values: `true` (Yes. When minor version is upgraded.), `false` (No).
+        :param FeatureSupport: Whether SSL is supported for the identified instance.
+-`true`: Supported
+-`false`: Not supported
         :type FeatureSupport: bool
-        :param Status: SSL configuration status. Valid values: `1`(Configuring), `2` (Configured).
+        :param Status: Status of SSL configuration
+- `1`: Configuring
+- `2`: Configured successfully
         :type Status: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -3912,22 +4049,45 @@ class Groups(AbstractModel):
         r"""
         :param AppId: User App ID
         :type AppId: int
-        :param RegionId: Region ID. 1: Guangzhou; 4: Shanghai; 5: Hong Kong (China); 6: Toronto; 7: Shanghai Finance; 8: Beijing; 9: Singapore; 11: Shenzhen Finance; 15: West US (Silicon Valley); 16: Chengdu; 17: Germany; 18: South Korea; 19: Chongqing; 21: India; 22: East US (Virginia); 23: Thailand; 24: Russia; 25: Japan
+        :param RegionId: Region ID
+- `1`: Guangzhou 
+- `4`: Shanghai 
+- `5`: Hong Kong (China) 
+- `6`: Toronto 
+- `7`: Shanghai Finance 
+- `8`: Beijing 
+- `9`: Singapore
+- `11`: Shenzhen Finance
+- `15`: Silicon Valley (West US)
+- `16`: Chengdu 
+- `17`: Germany 
+- `18`: South Korea 
+- `19`: Chongqing 
+- `21`: India 
+- `22`: Virginia (East US)
+- `23`: Thailand 
+- `24`: Russia 
+- `25`: Japan
         :type RegionId: int
-        :param GroupId: Replication group info
+        :param GroupId: Replication group ID
         :type GroupId: str
         :param GroupName: Replication group name
-Note: This field may return `null`, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type GroupName: str
-        :param Status: Replication group status. Valid values: 37 (Associating replication group), 38 (Reconnecting to replication group), 51 (Disassociating the replication group), 52 (Switching primary instance in the replication group), 53 (Modifying roles)
+        :param Status: Status of replication group
+- `37`: Associating replication group
+- `38`: Reconnecting to replication group
+- `51`: Disassociating replication group
+- `52`: Switching with master instance in replication group
+- `53`: Modifying the roles
         :type Status: int
         :param InstanceCount: Number of replication groups
         :type InstanceCount: int
-        :param Instances: Instances in replication group
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        :param Instances: Instance information in replication groups
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Instances: list of Instances
         :param Remark: Remarks
-Note: This field may return `null`, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Remark: str
         """
         self.AppId = None
@@ -5285,7 +5445,10 @@ class ModfiyInstancePasswordRequest(AbstractModel):
         :type InstanceId: str
         :param OldPassword: Old password of an instance
         :type OldPassword: str
-        :param Password: New password of an instance
+        :param Password: New instance password, which has the following requirements:
+- It must contain 8-30 characters, preferably 12 or more.
+- It cannot start with a slash (/)
+- It must contain two of the following three types: lowercase letters, uppercase letters, and symbols (()~!@#$%^&*-+=_|{}[]:;<>,.?/)
         :type Password: str
         """
         self.InstanceId = None

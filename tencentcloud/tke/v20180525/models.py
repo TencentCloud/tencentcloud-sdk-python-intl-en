@@ -88,7 +88,7 @@ class AddExistedInstancesRequest(AbstractModel):
 
 The array length of `InstanceAdvancedSettingsOverride` should be the same as the array length of `InstanceIds`. If its array length is greater than the `InstanceIds` array length, an error will be reported. If its array length is less than the `InstanceIds` array length, the instance without corresponding configuration will use the default configuration.
         :type InstanceAdvancedSettingsOverrides: list of InstanceAdvancedSettings
-        :param ImageId: Node image (it is required when creating a node)
+        :param ImageId: Node image
         :type ImageId: str
         """
         self.ClusterId = None
@@ -589,7 +589,7 @@ class Cluster(AbstractModel):
         :type ProjectId: int
         :param TagSpecification: Tag description list.
         :type TagSpecification: list of TagSpecification
-        :param ClusterStatus: Cluster status (`Running`, `Creating`, `Idling` or `Abnormal`)
+        :param ClusterStatus: Cluster status. Values: `Trading` (Preparing), `Creating`, `Running`, `Deleting`, `Idling` (Idle), `Recovering`, `Scaling`, `Upgrading` (Upgrading the cluster), `WaittingForConnect` (Pending registration), `Pause` (Cluster upgrade paused), `NodeUpgrading` (Upgrading the node), `RuntimeUpgrading` (Upgrading the node runtime), `MasterScaling` (Scaling Master), `ClusterLevelUpgrading` (Adjusting cluster specification level), `ResourceIsolate` (Isolating), `ResourceIsolated` (Isolated), `ResourceReverse` (Overdue payment made. Recovering the cluster), and `Abnormal`.
         :type ClusterStatus: str
         :param Property: Cluster attributes (including a map of different cluster attributes, with attribute fields including NodeNameType (lan-ip mode and hostname mode, with lan-ip mode as default))
         :type Property: str
@@ -625,6 +625,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param RuntimeVersion: Runtime version
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type RuntimeVersion: str
+        :param ClusterEtcdNodeNum: Number of current etcd in the cluster
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ClusterEtcdNodeNum: int
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -649,6 +652,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self.AutoUpgradeClusterLevel = None
         self.QGPUShareEnable = None
         self.RuntimeVersion = None
+        self.ClusterEtcdNodeNum = None
 
 
     def _deserialize(self, params):
@@ -682,6 +686,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self.AutoUpgradeClusterLevel = params.get("AutoUpgradeClusterLevel")
         self.QGPUShareEnable = params.get("QGPUShareEnable")
         self.RuntimeVersion = params.get("RuntimeVersion")
+        self.ClusterEtcdNodeNum = params.get("ClusterEtcdNodeNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1352,6 +1357,10 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         :param Ipv6ServiceCIDR: It is used to automatically assign the IP ranges for the service.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type Ipv6ServiceCIDR: str
+        :param CiliumMode: Cluster Cilium Mode configuration
+- clusterIP
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type CiliumMode: str
         """
         self.ClusterCIDR = None
         self.IgnoreClusterCIDRConflict = None
@@ -1366,6 +1375,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self.IgnoreServiceCIDRConflict = None
         self.IsDualStack = None
         self.Ipv6ServiceCIDR = None
+        self.CiliumMode = None
 
 
     def _deserialize(self, params):
@@ -1382,6 +1392,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self.IgnoreServiceCIDRConflict = params.get("IgnoreServiceCIDRConflict")
         self.IsDualStack = params.get("IsDualStack")
         self.Ipv6ServiceCIDR = params.get("Ipv6ServiceCIDR")
+        self.CiliumMode = params.get("CiliumMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9251,6 +9262,9 @@ class ServiceAccountAuthenticationOptions(AbstractModel):
 
     def __init__(self):
         r"""
+        :param UseTKEDefault: Use TKE default issuer and jwksuri
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type UseTKEDefault: bool
         :param Issuer: service-account-issuer
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Issuer: str
@@ -9261,12 +9275,14 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type AutoCreateDiscoveryAnonymousAuth: bool
         """
+        self.UseTKEDefault = None
         self.Issuer = None
         self.JWKSURI = None
         self.AutoCreateDiscoveryAnonymousAuth = None
 
 
     def _deserialize(self, params):
+        self.UseTKEDefault = params.get("UseTKEDefault")
         self.Issuer = params.get("Issuer")
         self.JWKSURI = params.get("JWKSURI")
         self.AutoCreateDiscoveryAnonymousAuth = params.get("AutoCreateDiscoveryAnonymousAuth")

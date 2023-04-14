@@ -210,6 +210,29 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CloneInstances(self, request):
+        """This API is used to clone a complete instance based on the current instance backup file.
+
+        :param request: Request instance for CloneInstances.
+        :type request: :class:`tencentcloud.redis.v20180412.models.CloneInstancesRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.CloneInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CloneInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.CloneInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CloseSSL(self, request):
         """This API is used to disable SSL.
 
@@ -1085,7 +1108,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeSSLStatus(self, request):
-        """This API is used to query SSL status.
+        """This API is used to query the SSL authentication information of an instance, such as enablement status, configuration status, and certificate address.
 
         :param request: Request instance for DescribeSSLStatus.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeSSLStatusRequest`
@@ -1407,7 +1430,7 @@ class RedisClient(AbstractClient):
 
 
     def ModfiyInstancePassword(self, request):
-        """This API is used to change the Redis password.
+        """This API is used to modify the access password for an instance.
 
         :param request: Request instance for ModfiyInstancePassword.
         :type request: :class:`tencentcloud.redis.v20180412.models.ModfiyInstancePasswordRequest`
