@@ -419,6 +419,52 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def StartStopServiceOrMonitor(self, request):
+        """This API is used to start or stop the monitor or services.
+
+        :param request: Request instance for StartStopServiceOrMonitor.
+        :type request: :class:`tencentcloud.emr.v20190103.models.StartStopServiceOrMonitorRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.StartStopServiceOrMonitorResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartStopServiceOrMonitor", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartStopServiceOrMonitorResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def TerminateClusterNodes(self, request):
+        """This API is used to terminate cluster nodes.
+
+        :param request: Request instance for TerminateClusterNodes.
+        :type request: :class:`tencentcloud.emr.v20190103.models.TerminateClusterNodesRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.TerminateClusterNodesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TerminateClusterNodes", params, headers=headers)
+            response = json.loads(body)
+            model = models.TerminateClusterNodesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def TerminateInstance(self, request):
         """This API is used to terminate EMR instances. It is only supported in the official paid edition of EMR.
 

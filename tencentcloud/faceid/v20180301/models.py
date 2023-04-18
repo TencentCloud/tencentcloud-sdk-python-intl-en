@@ -77,7 +77,7 @@ class ApplySdkVerificationTokenRequest(AbstractModel):
         r"""
         :param NeedVerifyIdCard: Whether ID card authentication is required. If not, only document OCR will be performed. Currently, authentication is available only when the value of `IdCardType` is `HK`.
         :type NeedVerifyIdCard: bool
-        :param IdCardType: The card type. Valid values: `HK` (identity card of Hong Kong (China)) (default), `ML` (Malaysian identity card), `PhilippinesVoteID` (Philippine voters ID card), `PhilippinesDrivingLicense` (Philippine driver's license), and `IndonesiaIDCard` (Indonesian identity card).
+        :param IdCardType: The card type. Valid values: `HK` (identity card of Hong Kong (China)) (default), `ML` (Malaysian identity card), `PhilippinesVoteID` (Philippine voters ID card), `IndonesiaIDCard` (Indonesian identity card), `SingaporeIDCard` (Singapore identity card), and `PhilippinesDrivingLicense` (Philippine driver's license).
         :type IdCardType: str
         :param DisableChangeOcrResult: Disable the modification of the OCR result by the user. Default value: `false` (modification allowed).
         :type DisableChangeOcrResult: bool
@@ -622,6 +622,148 @@ class GenerateReflectSequenceResponse(AbstractModel):
     def _deserialize(self, params):
         self.ReflectSequenceUrl = params.get("ReflectSequenceUrl")
         self.ReflectSequenceMd5 = params.get("ReflectSequenceMd5")
+        self.RequestId = params.get("RequestId")
+
+
+class GetFaceIdResultIntlRequest(AbstractModel):
+    """GetFaceIdResultIntl request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkToken: The ID of the SDK-based liveness detection and face comparison process, which is generated when the `GetFaceIdTokenIntl` API is called.	
+        :type SdkToken: str
+        """
+        self.SdkToken = None
+
+
+    def _deserialize(self, params):
+        self.SdkToken = params.get("SdkToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetFaceIdResultIntlResponse(AbstractModel):
+    """GetFaceIdResultIntl response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: The return code of the verification result.
+0: Succeeded.
+1001: System error.
+1004: Liveness detection and face comparison failed.
+2004: The image passed in is too large or too small.
+2012: Several faces were detected.
+2013: No face was detected, or the face detected was incomplete.
+2014: The image resolution is too low or the quality does not meet the requirements.
+2015: Face comparison failed.
+2016: The similarity did not reach the standard passing threshold.
+-999: The verification process wasn't finished.
+        :type Result: str
+        :param Description: The description of the verification result.
+        :type Description: str
+        :param BestFrame: The best frame screenshot (in Base64) obtained during the verification.
+        :type BestFrame: str
+        :param Video: The video file (Base64) for verification.
+        :type Video: str
+        :param Similarity: The similarity, with a value range of 0-100. A greater value indicates higher similarity. This parameter is returned only in the `compare` (liveness detection and face comparison) mode.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Similarity: float
+        :param Extra: The pass-through parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Extra: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.Description = None
+        self.BestFrame = None
+        self.Video = None
+        self.Similarity = None
+        self.Extra = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.Description = params.get("Description")
+        self.BestFrame = params.get("BestFrame")
+        self.Video = params.get("Video")
+        self.Similarity = params.get("Similarity")
+        self.Extra = params.get("Extra")
+        self.RequestId = params.get("RequestId")
+
+
+class GetFaceIdTokenIntlRequest(AbstractModel):
+    """GetFaceIdTokenIntl request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CheckMode: The detection mode. Valid values:
+`liveness`: Liveness detection only.
+`compare`: Liveness detection and face comparison.
+Default value: `liveness`.
+        :type CheckMode: str
+        :param SecureLevel: The verification security level. Valid values:
+`1`: Video-based liveness detection.
+`2`: Motion-based liveness detection.
+`3`: Reflection-based liveness detection.
+`4`: Motion- and reflection-based liveness detection.
+Default value: `4`.
+        :type SecureLevel: str
+        :param Image: The image for comparison in the `compare` (liveness detection and face comparison) mode. This parameter is required when the value of `CheckMode` is `compare`.
+        :type Image: str
+        :param Extra: The pass-through parameter.
+        :type Extra: str
+        """
+        self.CheckMode = None
+        self.SecureLevel = None
+        self.Image = None
+        self.Extra = None
+
+
+    def _deserialize(self, params):
+        self.CheckMode = params.get("CheckMode")
+        self.SecureLevel = params.get("SecureLevel")
+        self.Image = params.get("Image")
+        self.Extra = params.get("Extra")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetFaceIdTokenIntlResponse(AbstractModel):
+    """GetFaceIdTokenIntl response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkToken: The SDK token, which is used throughout the verification process and to get the verification result.
+        :type SdkToken: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SdkToken = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SdkToken = params.get("SdkToken")
         self.RequestId = params.get("RequestId")
 
 

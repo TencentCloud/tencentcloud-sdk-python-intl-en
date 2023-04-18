@@ -167,6 +167,52 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetFaceIdResultIntl(self, request):
+        """This API is used to get the verification result with the corresponding SDK token after the identity verification process is completed. The SDK token is valid for two hours (2*3,600s) after generation and can be called multiple times.
+
+        :param request: Request instance for GetFaceIdResultIntl.
+        :type request: :class:`tencentcloud.faceid.v20180301.models.GetFaceIdResultIntlRequest`
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.GetFaceIdResultIntlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetFaceIdResultIntl", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetFaceIdResultIntlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetFaceIdTokenIntl(self, request):
+        """This API is used to apply for an SDK token before calling the liveness detection and face comparison SDK each time. The SDK token is used throughout the identity verification process and to get the verification result after the verification is completed. A token is valid for one identity verification process only.
+
+        :param request: Request instance for GetFaceIdTokenIntl.
+        :type request: :class:`tencentcloud.faceid.v20180301.models.GetFaceIdTokenIntlRequest`
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.GetFaceIdTokenIntlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetFaceIdTokenIntl", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetFaceIdTokenIntlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetLivenessResult(self, request):
         """This API is used to get the verification result with the corresponding token (SdkToken) after the liveness detection is completed. The token is valid for two hours after issuance and can be called multiple times.
 

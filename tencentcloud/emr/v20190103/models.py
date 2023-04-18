@@ -639,6 +639,36 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class ComponentBasicRestartInfo(AbstractModel):
+    """Target processes
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ComponentName: The process name (required), such as NameNode.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ComponentName: str
+        :param IpList: The target IP list.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IpList: list of str
+        """
+        self.ComponentName = None
+        self.IpList = None
+
+
+    def _deserialize(self, params):
+        self.ComponentName = params.get("ComponentName")
+        self.IpList = params.get("IpList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateClusterRequest(AbstractModel):
     """CreateCluster request structure.
 
@@ -3414,6 +3444,36 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class OpScope(AbstractModel):
+    """Operation scope
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ServiceInfoList: The information of the services to operate on.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ServiceInfoList: list of ServiceBasicRestartInfo
+        """
+        self.ServiceInfoList = None
+
+
+    def _deserialize(self, params):
+        if params.get("ServiceInfoList") is not None:
+            self.ServiceInfoList = []
+            for item in params.get("ServiceInfoList"):
+                obj = ServiceBasicRestartInfo()
+                obj._deserialize(item)
+                self.ServiceInfoList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OutterResource(AbstractModel):
     """Resource details
 
@@ -4876,6 +4936,39 @@ class SearchItem(AbstractModel):
         
 
 
+class ServiceBasicRestartInfo(AbstractModel):
+    """The services to operate on
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ServiceName: The service name (required), such as HDFS.
+        :type ServiceName: str
+        :param ComponentInfoList: If it is left empty, all processes will be operated on.
+        :type ComponentInfoList: list of ComponentBasicRestartInfo
+        """
+        self.ServiceName = None
+        self.ComponentInfoList = None
+
+
+    def _deserialize(self, params):
+        self.ServiceName = params.get("ServiceName")
+        if params.get("ComponentInfoList") is not None:
+            self.ComponentInfoList = []
+            for item in params.get("ComponentInfoList"):
+                obj = ComponentBasicRestartInfo()
+                obj._deserialize(item)
+                self.ComponentInfoList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ShortNodeInfo(AbstractModel):
     """Node information
 
@@ -4934,6 +5027,62 @@ class SoftDependInfo(AbstractModel):
         
 
 
+class StartStopServiceOrMonitorRequest(AbstractModel):
+    """StartStopServiceOrMonitor request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: The cluster ID.
+        :type InstanceId: str
+        :param OpType: The operation type. Valid values:
+<li>`StartService`: Start services.</li>
+<li>`StopService`: Stop services.</li>
+<li>`StartMonitor`: Start the monitor.</li>
+<li>`StopMonitor`: Stop the monitor.</li>
+
+        :type OpType: str
+        :param OpScope: The operation scope.
+        :type OpScope: :class:`tencentcloud.emr.v20190103.models.OpScope`
+        """
+        self.InstanceId = None
+        self.OpType = None
+        self.OpScope = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.OpType = params.get("OpType")
+        if params.get("OpScope") is not None:
+            self.OpScope = OpScope()
+            self.OpScope._deserialize(params.get("OpScope"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartStopServiceOrMonitorResponse(AbstractModel):
+    """StartStopServiceOrMonitor response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class SubnetInfo(AbstractModel):
     """Subnet information
 
@@ -4990,6 +5139,73 @@ class Tag(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class TerminateClusterNodesRequest(AbstractModel):
+    """TerminateClusterNodes request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: The instance ID.
+        :type InstanceId: str
+        :param CvmInstanceIds: The list of resources to be terminated.
+        :type CvmInstanceIds: list of str
+        :param NodeFlag: Valid values of node type:
+  <li>MASTER</li>
+  <li>TASK</li>
+  <li>CORE</li>
+  <li>ROUTER</li>
+        :type NodeFlag: str
+        :param GraceDownFlag: The graceful scale-in feature. Valid values:
+  <li>`true`: Enabled.</li>
+  <li>`false`: Disabled.</li>
+        :type GraceDownFlag: bool
+        :param GraceDownTime: The graceful scale-in wait time in seconds. Value range: 60–1800.
+        :type GraceDownTime: int
+        """
+        self.InstanceId = None
+        self.CvmInstanceIds = None
+        self.NodeFlag = None
+        self.GraceDownFlag = None
+        self.GraceDownTime = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.CvmInstanceIds = params.get("CvmInstanceIds")
+        self.NodeFlag = params.get("NodeFlag")
+        self.GraceDownFlag = params.get("GraceDownFlag")
+        self.GraceDownTime = params.get("GraceDownTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TerminateClusterNodesResponse(AbstractModel):
+    """TerminateClusterNodes response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: The scale-in process ID.
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
 
 
 class TerminateInstanceRequest(AbstractModel):
