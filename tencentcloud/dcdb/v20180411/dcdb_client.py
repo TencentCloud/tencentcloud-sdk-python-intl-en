@@ -304,6 +304,29 @@ class DcdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBackupFiles(self, request):
+        """This API is used to query the list of backup files.
+
+        :param request: Request instance for DescribeBackupFiles.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeBackupFilesRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.DescribeBackupFilesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBackupFiles", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBackupFilesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDBLogFiles(self, request):
         """This API is used to get the list of various logs of a database, including cold backups, binlogs, errlogs, and slowlogs.
 
@@ -410,6 +433,29 @@ class DcdbClient(AbstractClient):
             body = self.call("DescribeDBSyncMode", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDBSyncModeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDCDBInstanceDetail(self, request):
+        """This API is used to get the details of a TDSQL instance.
+
+        :param request: Request instance for DescribeDCDBInstanceDetail.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDCDBInstanceDetailRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.DescribeDCDBInstanceDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDCDBInstanceDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDCDBInstanceDetailResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

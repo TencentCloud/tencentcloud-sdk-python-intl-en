@@ -118,6 +118,29 @@ class CkafkaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateAclRule(self, request):
+        """This API shows you how to create an ACL rule.
+
+        :param request: Request instance for CreateAclRule.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateAclRuleRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.CreateAclRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAclRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAclRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateConsumer(self, request):
         """This API is used to create a consumer group.
 
@@ -454,6 +477,29 @@ class CkafkaClient(AbstractClient):
             body = self.call("DescribeACL", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeACLResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAclRule(self, request):
+        """This API is used to query the ACL rule list.
+
+        :param request: Request instance for DescribeAclRule.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeAclRuleRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DescribeAclRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAclRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAclRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -984,6 +1030,52 @@ class CkafkaClient(AbstractClient):
             body = self.call("InquireCkafkaPrice", params, headers=headers)
             response = json.loads(body)
             model = models.InquireCkafkaPriceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyAclRule(self, request):
+        """This API is used to modify an ACL policy, and currently only supports specifying whether to apply the preset rule to new topics.
+
+        :param request: Request instance for ModifyAclRule.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.ModifyAclRuleRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.ModifyAclRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAclRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAclRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyDatahubTopic(self, request):
+        """This API is used to modify the DataHub topic attributes.
+
+        :param request: Request instance for ModifyDatahubTopic.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.ModifyDatahubTopicRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.ModifyDatahubTopicResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDatahubTopic", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDatahubTopicResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

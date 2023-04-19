@@ -1803,6 +1803,92 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBackupFilesRequest(AbstractModel):
+    """DescribeBackupFiles request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Query by instance ID
+        :type InstanceId: str
+        :param ShardId: Query by shard ID
+        :type ShardId: str
+        :param BackupType: Backup type. Valid values: `Data` (data backup), `Binlog` (Binlog backup), `Errlog` (error log), `Slowlog` (slow log).
+        :type BackupType: str
+        :param StartTime: Query by start time
+        :type StartTime: str
+        :param EndTime: Query by end time
+        :type EndTime: str
+        :param Limit: Pagination parameter
+        :type Limit: int
+        :param Offset: Pagination parameter
+        :type Offset: int
+        :param OrderBy: Sorting dimension. Valid values: `Time`, `Size`.
+        :type OrderBy: str
+        :param OrderType: Sorting order. Valid values: `DESC`, `ASC`.
+        :type OrderType: str
+        """
+        self.InstanceId = None
+        self.ShardId = None
+        self.BackupType = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Limit = None
+        self.Offset = None
+        self.OrderBy = None
+        self.OrderType = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ShardId = params.get("ShardId")
+        self.BackupType = params.get("BackupType")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderType = params.get("OrderType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackupFilesResponse(AbstractModel):
+    """DescribeBackupFiles response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Files: List of backup files
+        :type Files: list of InstanceBackupFileItem
+        :param TotalCount: Total number
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Files = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Files") is not None:
+            self.Files = []
+            for item in params.get("Files"):
+                obj = InstanceBackupFileItem()
+                obj._deserialize(item)
+                self.Files.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDBLogFilesRequest(AbstractModel):
     """DescribeDBLogFiles request structure.
 
@@ -2155,6 +2241,274 @@ class DescribeDBSyncModeResponse(AbstractModel):
         self.SyncMode = params.get("SyncMode")
         self.IsModifying = params.get("IsModifying")
         self.CurrentSyncMode = params.get("CurrentSyncMode")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDCDBInstanceDetailRequest(AbstractModel):
+    """DescribeDCDBInstanceDetail request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID, such as dcdbt-7oaxtcb7.
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDCDBInstanceDetailResponse(AbstractModel):
+    """DescribeDCDBInstanceDetail response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID, such as dcdbt-7oaxtcb7.
+        :type InstanceId: str
+        :param InstanceName: Instance name
+        :type InstanceName: str
+        :param Status: Instance status. Valid values: `0` (creating), `1` (running task), `2` (running), `3` (uninitialized), `-1` (isolated).
+        :type Status: int
+        :param StatusDesc: Current status of the instance
+        :type StatusDesc: str
+        :param Vip: Instance private IP address
+        :type Vip: str
+        :param Vport: Private port of instance
+        :type Vport: int
+        :param NodeCount: Number of instance nodes. Valid values: `2` (1-source-1-replica), `3` (1-source-2-replica).
+        :type NodeCount: int
+        :param Region: Instance region, such as ap-guangzhou.
+        :type Region: str
+        :param VpcId: Instance VPC ID, such as vpc-r9jr0de3.
+        :type VpcId: str
+        :param SubnetId: VPC subnet ID of an instance, such as subnet-6rqs61o2.
+        :type SubnetId: str
+        :param WanStatus: Public network status. Valid values: `0` (not enabled), `1` (enabled), `2` (disabled), `3`: (enabling), `4` (disabling).
+        :type WanStatus: int
+        :param WanDomain: Domain name for public network access, which can be resolved by the public network.
+        :type WanDomain: str
+        :param WanVip: Public IP address, which can be accessed over the public network.
+        :type WanVip: str
+        :param WanPort: Public network access port
+        :type WanPort: int
+        :param ProjectId: Project ID of the instance
+        :type ProjectId: int
+        :param AutoRenewFlag: Automatic renewal flag for an instance. Valid values: `0` (normal renewal), `1` (auto-renewal), `3` (no renewal upon expiration).
+        :type AutoRenewFlag: int
+        :param ExclusterId: Dedicated cluster ID
+        :type ExclusterId: str
+        :param PayMode: Billing mode. Valid values: `prepaid` (monthly subscription), `postpaid` (pay-as-you-go).
+        :type PayMode: str
+        :param CreateTime: Creation time of the instance in the format of 2006-01-02 15:04:05
+        :type CreateTime: str
+        :param PeriodEndTime: Expiration time of the instance in the format of 2006-01-02 15:04:05
+        :type PeriodEndTime: str
+        :param DbVersion: Database version information
+        :type DbVersion: str
+        :param IsAuditSupported: Whether the instance supports audit. Valid values: `1` (yes), `0` (no).
+        :type IsAuditSupported: int
+        :param IsEncryptSupported: Whether data encryption is supported for an instance. Valid values: `1` (yes), `0` (no).
+        :type IsEncryptSupported: int
+        :param Machine: Instance machine model
+        :type Machine: str
+        :param Memory: Instance memory size in GB, which is the sum of the memory of all shards.
+        :type Memory: int
+        :param Storage: Instance disk storage size in GB, which is the sum of the disk size of all shards.
+        :type Storage: int
+        :param StorageUsage: Instance storage space utilization. It is calculated by dividing the sum of the used disk size of all shards by the total disk size of all shards.
+        :type StorageUsage: float
+        :param LogStorage: Size of log storage space in GB
+        :type LogStorage: int
+        :param Pid: Product type ID
+        :type Pid: int
+        :param MasterZone: Source AZ
+        :type MasterZone: str
+        :param SlaveZones: Replica AZ
+        :type SlaveZones: list of str
+        :param Shards: Shard information
+        :type Shards: list of ShardBriefInfo
+        :param Vip6: Private network IPv6 address
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Vip6: str
+        :param Cpu: Number of CPU cores of an instance.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Cpu: int
+        :param Qps: Instance QPS
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Qps: int
+        :param DbEngine: Database engine
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DbEngine: str
+        :param Ipv6Flag: Whether IPv6 is supported.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Ipv6Flag: int
+        :param WanVipv6: Public IPv6 address, which can be accessed over the public network
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type WanVipv6: str
+        :param WanStatusIpv6: Public network status. Valid values: `0` (not enabled), `1` (enabled), `2` (disabled), `3`: (enabling), `4` (disabling).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type WanStatusIpv6: int
+        :param WanPortIpv6: Public network IPv6 port
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type WanPortIpv6: int
+        :param ResourceTags: Tag information
+        :type ResourceTags: list of ResourceTag
+        :param DcnFlag: DCN type. Valid values: `0` (N/A), `1` (source instance), `2` (disaster recovery read-only instance)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DcnFlag: int
+        :param DcnStatus: DCN status. Valid values: `0` (N/A), `1` (creating), `2` (syncing), `3` (disconnected).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DcnStatus: int
+        :param DcnDstNum: The number of DCN disaster recovery instances
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DcnDstNum: int
+        :param InstanceType: Instance type. Valid values: `1` (dedicated primary instance), `2` (non-dedicated primary instance), `3` (non-dedicated disaster recovery read-only instance), `4` (dedicated disaster recovery read-only instance)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceType: int
+        :param IsMaxUserConnectionsSupported: Whether the instance supports setting the connection limit, which is not supported for kernel version 10.1.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsMaxUserConnectionsSupported: bool
+        :param DbVersionId: The displayed database version
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DbVersionId: str
+        :param EncryptStatus: Encryption status. Valid values: `0` (disabled), `1` (enabled).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EncryptStatus: int
+        :param ExclusterType: Type of dedicated cluster. Valid values: `0` (public cloud), `1` (finance cage), `2` (CDC cluster).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExclusterType: int
+        :param RsAccessStrategy: Nearby VPC access
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RsAccessStrategy: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.InstanceId = None
+        self.InstanceName = None
+        self.Status = None
+        self.StatusDesc = None
+        self.Vip = None
+        self.Vport = None
+        self.NodeCount = None
+        self.Region = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.WanStatus = None
+        self.WanDomain = None
+        self.WanVip = None
+        self.WanPort = None
+        self.ProjectId = None
+        self.AutoRenewFlag = None
+        self.ExclusterId = None
+        self.PayMode = None
+        self.CreateTime = None
+        self.PeriodEndTime = None
+        self.DbVersion = None
+        self.IsAuditSupported = None
+        self.IsEncryptSupported = None
+        self.Machine = None
+        self.Memory = None
+        self.Storage = None
+        self.StorageUsage = None
+        self.LogStorage = None
+        self.Pid = None
+        self.MasterZone = None
+        self.SlaveZones = None
+        self.Shards = None
+        self.Vip6 = None
+        self.Cpu = None
+        self.Qps = None
+        self.DbEngine = None
+        self.Ipv6Flag = None
+        self.WanVipv6 = None
+        self.WanStatusIpv6 = None
+        self.WanPortIpv6 = None
+        self.ResourceTags = None
+        self.DcnFlag = None
+        self.DcnStatus = None
+        self.DcnDstNum = None
+        self.InstanceType = None
+        self.IsMaxUserConnectionsSupported = None
+        self.DbVersionId = None
+        self.EncryptStatus = None
+        self.ExclusterType = None
+        self.RsAccessStrategy = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.Status = params.get("Status")
+        self.StatusDesc = params.get("StatusDesc")
+        self.Vip = params.get("Vip")
+        self.Vport = params.get("Vport")
+        self.NodeCount = params.get("NodeCount")
+        self.Region = params.get("Region")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.WanStatus = params.get("WanStatus")
+        self.WanDomain = params.get("WanDomain")
+        self.WanVip = params.get("WanVip")
+        self.WanPort = params.get("WanPort")
+        self.ProjectId = params.get("ProjectId")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.ExclusterId = params.get("ExclusterId")
+        self.PayMode = params.get("PayMode")
+        self.CreateTime = params.get("CreateTime")
+        self.PeriodEndTime = params.get("PeriodEndTime")
+        self.DbVersion = params.get("DbVersion")
+        self.IsAuditSupported = params.get("IsAuditSupported")
+        self.IsEncryptSupported = params.get("IsEncryptSupported")
+        self.Machine = params.get("Machine")
+        self.Memory = params.get("Memory")
+        self.Storage = params.get("Storage")
+        self.StorageUsage = params.get("StorageUsage")
+        self.LogStorage = params.get("LogStorage")
+        self.Pid = params.get("Pid")
+        self.MasterZone = params.get("MasterZone")
+        self.SlaveZones = params.get("SlaveZones")
+        if params.get("Shards") is not None:
+            self.Shards = []
+            for item in params.get("Shards"):
+                obj = ShardBriefInfo()
+                obj._deserialize(item)
+                self.Shards.append(obj)
+        self.Vip6 = params.get("Vip6")
+        self.Cpu = params.get("Cpu")
+        self.Qps = params.get("Qps")
+        self.DbEngine = params.get("DbEngine")
+        self.Ipv6Flag = params.get("Ipv6Flag")
+        self.WanVipv6 = params.get("WanVipv6")
+        self.WanStatusIpv6 = params.get("WanStatusIpv6")
+        self.WanPortIpv6 = params.get("WanPortIpv6")
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = ResourceTag()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
+        self.DcnFlag = params.get("DcnFlag")
+        self.DcnStatus = params.get("DcnStatus")
+        self.DcnDstNum = params.get("DcnDstNum")
+        self.InstanceType = params.get("InstanceType")
+        self.IsMaxUserConnectionsSupported = params.get("IsMaxUserConnectionsSupported")
+        self.DbVersionId = params.get("DbVersionId")
+        self.EncryptStatus = params.get("EncryptStatus")
+        self.ExclusterType = params.get("ExclusterType")
+        self.RsAccessStrategy = params.get("RsAccessStrategy")
         self.RequestId = params.get("RequestId")
 
 
@@ -3297,6 +3651,70 @@ class InitDCDBInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class InstanceBackupFileItem(AbstractModel):
+    """Backup file details of an instance
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param InstanceName: Instance name
+        :type InstanceName: str
+        :param InstanceStatus: Instance status
+        :type InstanceStatus: int
+        :param ShardId: Shard ID
+        :type ShardId: str
+        :param FilePath: File path
+        :type FilePath: str
+        :param FileName: File name
+        :type FileName: str
+        :param FileSize: File size
+        :type FileSize: int
+        :param BackupType: Backup type. Valid values: `Data` (data backup), `Binlog` (Binlog backup), `Errlog` (error log), `Slowlog` (slow log).
+        :type BackupType: str
+        :param ManualBackup: Manual backup. Valid values: `0` (no), `1` (yes).
+        :type ManualBackup: int
+        :param StartTime: Backup start time
+        :type StartTime: str
+        :param EndTime: Backup end time
+        :type EndTime: str
+        """
+        self.InstanceId = None
+        self.InstanceName = None
+        self.InstanceStatus = None
+        self.ShardId = None
+        self.FilePath = None
+        self.FileName = None
+        self.FileSize = None
+        self.BackupType = None
+        self.ManualBackup = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.InstanceStatus = params.get("InstanceStatus")
+        self.ShardId = params.get("ShardId")
+        self.FilePath = params.get("FilePath")
+        self.FileName = params.get("FileName")
+        self.FileSize = params.get("FileSize")
+        self.BackupType = params.get("BackupType")
+        self.ManualBackup = params.get("ManualBackup")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class IsolateDedicatedDBInstanceRequest(AbstractModel):
     """IsolateDedicatedDBInstance request structure.
 
@@ -4099,6 +4517,34 @@ class ModifyInstanceVportResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class NodeInfo(AbstractModel):
+    """Node information description
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NodeId: Node ID
+        :type NodeId: str
+        :param Role: Node role. Valid values: `master`, `slave`.
+        :type Role: str
+        """
+        self.NodeId = None
+        self.Role = None
+
+
+    def _deserialize(self, params):
+        self.NodeId = params.get("NodeId")
+        self.Role = params.get("Role")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ParamConstraint(AbstractModel):
     """Parameter constraint
 
@@ -4384,6 +4830,92 @@ class SecurityGroupBound(AbstractModel):
         self.CidrIp = params.get("CidrIp")
         self.PortRange = params.get("PortRange")
         self.IpProtocol = params.get("IpProtocol")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ShardBriefInfo(AbstractModel):
+    """TDSQL shard information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ShardSerialId: Shard serial ID
+        :type ShardSerialId: str
+        :param ShardInstanceId: Shard ID, such as shard-7vg1o339.
+        :type ShardInstanceId: str
+        :param Status: Shard running status
+        :type Status: int
+        :param StatusDesc: Description of shard running status
+        :type StatusDesc: str
+        :param CreateTime: Shard creation time
+        :type CreateTime: str
+        :param Memory: Shard memory size in GB
+        :type Memory: int
+        :param Storage: Shard disk size in GB
+        :type Storage: int
+        :param LogDisk: Log disk space size of a shard in GB
+        :type LogDisk: int
+        :param NodeCount: Number of shard nodes
+        :type NodeCount: int
+        :param StorageUsage: Disk space utilization of a shard
+        :type StorageUsage: float
+        :param ProxyVersion: Version information of the shard proxy
+        :type ProxyVersion: str
+        :param ShardMasterZone: Source AZ of a shard
+        :type ShardMasterZone: str
+        :param ShardSlaveZones: Replica AZ of a shard
+        :type ShardSlaveZones: list of str
+        :param Cpu: Number of CPU cores
+        :type Cpu: int
+        :param NodesInfo: Node information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type NodesInfo: list of NodeInfo
+        """
+        self.ShardSerialId = None
+        self.ShardInstanceId = None
+        self.Status = None
+        self.StatusDesc = None
+        self.CreateTime = None
+        self.Memory = None
+        self.Storage = None
+        self.LogDisk = None
+        self.NodeCount = None
+        self.StorageUsage = None
+        self.ProxyVersion = None
+        self.ShardMasterZone = None
+        self.ShardSlaveZones = None
+        self.Cpu = None
+        self.NodesInfo = None
+
+
+    def _deserialize(self, params):
+        self.ShardSerialId = params.get("ShardSerialId")
+        self.ShardInstanceId = params.get("ShardInstanceId")
+        self.Status = params.get("Status")
+        self.StatusDesc = params.get("StatusDesc")
+        self.CreateTime = params.get("CreateTime")
+        self.Memory = params.get("Memory")
+        self.Storage = params.get("Storage")
+        self.LogDisk = params.get("LogDisk")
+        self.NodeCount = params.get("NodeCount")
+        self.StorageUsage = params.get("StorageUsage")
+        self.ProxyVersion = params.get("ProxyVersion")
+        self.ShardMasterZone = params.get("ShardMasterZone")
+        self.ShardSlaveZones = params.get("ShardSlaveZones")
+        self.Cpu = params.get("Cpu")
+        if params.get("NodesInfo") is not None:
+            self.NodesInfo = []
+            for item in params.get("NodesInfo"):
+                obj = NodeInfo()
+                obj._deserialize(item)
+                self.NodesInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

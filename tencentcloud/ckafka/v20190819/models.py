@@ -219,6 +219,40 @@ class AclRuleInfo(AbstractModel):
         
 
 
+class AclRuleResp(AbstractModel):
+    """Results returned by the `AclRuleList` API
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Total number of data entries
+        :type TotalCount: int
+        :param AclRuleList: ACL rule list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AclRuleList: list of AclRule
+        """
+        self.TotalCount = None
+        self.AclRuleList = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("AclRuleList") is not None:
+            self.AclRuleList = []
+            for item in params.get("AclRuleList"):
+                obj = AclRule()
+                obj._deserialize(item)
+                self.AclRuleList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AppIdResponse(AbstractModel):
     """`AppId` query result
 
@@ -986,6 +1020,84 @@ class CreateAclResponse(AbstractModel):
         if params.get("Result") is not None:
             self.Result = JgwOperateResponse()
             self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateAclRuleRequest(AbstractModel):
+    """CreateAclRule request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param ResourceType: ACL resource type. Currently, the only valid value is `Topic`.
+        :type ResourceType: str
+        :param PatternType: Matching type. Valid values: `PREFIXED`(match by prefix), `PRESET` (match by preset policy).
+        :type PatternType: str
+        :param RuleName: Rule name
+        :type RuleName: str
+        :param RuleList: ACL rule list
+        :type RuleList: list of AclRuleInfo
+        :param Pattern: Prefix value for prefix match
+        :type Pattern: str
+        :param IsApplied: A parameter used to specify whether the preset ACL rule is applied to new topics
+        :type IsApplied: int
+        :param Comment: Remarks for ACL rules
+        :type Comment: str
+        """
+        self.InstanceId = None
+        self.ResourceType = None
+        self.PatternType = None
+        self.RuleName = None
+        self.RuleList = None
+        self.Pattern = None
+        self.IsApplied = None
+        self.Comment = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ResourceType = params.get("ResourceType")
+        self.PatternType = params.get("PatternType")
+        self.RuleName = params.get("RuleName")
+        if params.get("RuleList") is not None:
+            self.RuleList = []
+            for item in params.get("RuleList"):
+                obj = AclRuleInfo()
+                obj._deserialize(item)
+                self.RuleList.append(obj)
+        self.Pattern = params.get("Pattern")
+        self.IsApplied = params.get("IsApplied")
+        self.Comment = params.get("Comment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAclRuleResponse(AbstractModel):
+    """CreateAclRule response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Unique key of a rule
+        :type Result: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
 
 
@@ -2077,6 +2189,65 @@ class DescribeACLResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Result") is not None:
             self.Result = AclResponse()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAclRuleRequest(AbstractModel):
+    """DescribeAclRule request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param RuleName: ACL rule name
+        :type RuleName: str
+        :param PatternType: ACL rule matching type
+        :type PatternType: str
+        :param IsSimplified: Whether to read simplified ACL rules
+        :type IsSimplified: bool
+        """
+        self.InstanceId = None
+        self.RuleName = None
+        self.PatternType = None
+        self.IsSimplified = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.RuleName = params.get("RuleName")
+        self.PatternType = params.get("PatternType")
+        self.IsSimplified = params.get("IsSimplified")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAclRuleResponse(AbstractModel):
+    """DescribeAclRule response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: The set of returned ACL rules
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.AclRuleResp`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = AclRuleResp()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
 
@@ -4947,6 +5118,123 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyAclRuleRequest(AbstractModel):
+    """ModifyAclRule request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param RuleName: ACL policy name
+        :type RuleName: str
+        :param IsApplied: Whether to be applied to new topics
+        :type IsApplied: int
+        """
+        self.InstanceId = None
+        self.RuleName = None
+        self.IsApplied = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.RuleName = params.get("RuleName")
+        self.IsApplied = params.get("IsApplied")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAclRuleResponse(AbstractModel):
+    """ModifyAclRule response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Unique key of a rule
+        :type Result: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyDatahubTopicRequest(AbstractModel):
+    """ModifyDatahubTopic request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Name
+        :type Name: str
+        :param RetentionMs: Message retention period in ms. The current minimum value is 60,000 ms.
+        :type RetentionMs: int
+        :param Note: Topic remarks, which are a string of up to 64 characters. It can contain letters, digits, and hyphens (-) and must start with a letter.
+        :type Note: str
+        :param Tags: Tag list
+        :type Tags: list of Tag
+        """
+        self.Name = None
+        self.RetentionMs = None
+        self.Note = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.RetentionMs = params.get("RetentionMs")
+        self.Note = params.get("Note")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDatahubTopicResponse(AbstractModel):
+    """ModifyDatahubTopic response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Returned result set
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = JgwOperateResponse()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
 
 
 class ModifyGroupOffsetsRequest(AbstractModel):
