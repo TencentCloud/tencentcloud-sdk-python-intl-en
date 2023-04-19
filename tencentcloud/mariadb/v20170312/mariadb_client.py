@@ -281,6 +281,29 @@ class MariadbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBackupFiles(self, request):
+        """This API is used to query the list of backup files.
+
+        :param request: Request instance for DescribeBackupFiles.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.DescribeBackupFilesRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.DescribeBackupFilesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBackupFiles", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBackupFilesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDBEncryptAttributes(self, request):
         """This API is used to query the encryption status of the instance data.
 
@@ -295,6 +318,29 @@ class MariadbClient(AbstractClient):
             body = self.call("DescribeDBEncryptAttributes", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDBEncryptAttributesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDBInstanceDetail(self, request):
+        """This API is used to query the details of a specified instance.
+
+        :param request: Request instance for DescribeDBInstanceDetail.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.DescribeDBInstanceDetailRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.DescribeDBInstanceDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBInstanceDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBInstanceDetailResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

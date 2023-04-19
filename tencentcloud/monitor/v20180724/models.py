@@ -2463,14 +2463,18 @@ class CreatePrometheusRecordRuleYamlRequest(AbstractModel):
         :type InstanceId: str
         :param Content: YAML content
         :type Content: str
+        :param Name: Rule name
+        :type Name: str
         """
         self.InstanceId = None
         self.Content = None
+        self.Name = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.Content = params.get("Content")
+        self.Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10925,11 +10929,14 @@ class ModifyAlarmPolicyNoticeRequest(AbstractModel):
         :type NoticeIds: list of str
         :param PolicyIds: Alarm policy ID array, which can be used to associate notification templates with multiple alarm policies. Max value: 30.
         :type PolicyIds: list of str
+        :param HierarchicalNotices: Notification rules for different alarm levels
+        :type HierarchicalNotices: list of AlarmHierarchicalNotice
         """
         self.Module = None
         self.PolicyId = None
         self.NoticeIds = None
         self.PolicyIds = None
+        self.HierarchicalNotices = None
 
 
     def _deserialize(self, params):
@@ -10937,6 +10944,12 @@ class ModifyAlarmPolicyNoticeRequest(AbstractModel):
         self.PolicyId = params.get("PolicyId")
         self.NoticeIds = params.get("NoticeIds")
         self.PolicyIds = params.get("PolicyIds")
+        if params.get("HierarchicalNotices") is not None:
+            self.HierarchicalNotices = []
+            for item in params.get("HierarchicalNotices"):
+                obj = AlarmHierarchicalNotice()
+                obj._deserialize(item)
+                self.HierarchicalNotices.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12386,6 +12399,8 @@ class PrometheusClusterAgentBasic(AbstractModel):
         :type NotInstallBasicScrape: bool
         :param NotScrape: Whether to collect metrics (`true`: Drop all metrics; `false`: Collect default metrics)
         :type NotScrape: bool
+        :param OpenDefaultRecord: Whether to enable the default recording rule
+        :type OpenDefaultRecord: bool
         """
         self.Region = None
         self.ClusterType = None
@@ -12395,6 +12410,7 @@ class PrometheusClusterAgentBasic(AbstractModel):
         self.ExternalLabels = None
         self.NotInstallBasicScrape = None
         self.NotScrape = None
+        self.OpenDefaultRecord = None
 
 
     def _deserialize(self, params):
@@ -12413,6 +12429,7 @@ class PrometheusClusterAgentBasic(AbstractModel):
                 self.ExternalLabels.append(obj)
         self.NotInstallBasicScrape = params.get("NotInstallBasicScrape")
         self.NotScrape = params.get("NotScrape")
+        self.OpenDefaultRecord = params.get("OpenDefaultRecord")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13791,7 +13808,7 @@ class SendCustomAlarmMsgRequest(AbstractModel):
         r"""
         :param Module: API component name. The value for the current API is monitor.
         :type Module: str
-        :param PolicyId: Message policy ID, which is configured on the custom message page of Cloud Monitor.
+        :param PolicyId: Message policy ID, which is configured on the custom message page.
         :type PolicyId: str
         :param Msg: Custom message content that a user wants to send.
         :type Msg: str

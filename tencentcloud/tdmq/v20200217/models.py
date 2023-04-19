@@ -1354,6 +1354,93 @@ class CreateEnvironmentRoleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateRabbitMQVipInstanceRequest(AbstractModel):
+    """CreateRabbitMQVipInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneIds: AZ
+        :type ZoneIds: list of int
+        :param VpcId: VPC ID
+        :type VpcId: str
+        :param SubnetId: VPC subnet ID
+        :type SubnetId: str
+        :param ClusterName: Cluster name
+        :type ClusterName: str
+        :param NodeSpec: Node specification (`rabbit-vip-basic-1`: Basic; `rabbit-vip-basic-2`: Standard; `rabbit-vip-basic-3`: Advanced I; `rabbit-vip-basic-4`: Advanced II). If this parameter is left empty, the default value is `rabbit-vip-basic-1`.
+        :type NodeSpec: str
+        :param NodeNum: Number of nodes, which is at least three for multi-AZ deployment. If this parameter is left empty, the value will be set to 1 for single-AZ deployment and 3 for multi-AZ deployment by default.
+        :type NodeNum: int
+        :param StorageSize: Storage capacity of a single node, which is 200 GB by default.
+        :type StorageSize: int
+        :param EnableCreateDefaultHaMirrorQueue: Whether to enable mirrored queue. Default value: `false`.
+        :type EnableCreateDefaultHaMirrorQueue: bool
+        :param AutoRenewFlag: Whether to enable auto-renewal. Default value: `true`.
+        :type AutoRenewFlag: bool
+        :param TimeSpan: Validity period, which is one month by default.
+        :type TimeSpan: int
+        """
+        self.ZoneIds = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.ClusterName = None
+        self.NodeSpec = None
+        self.NodeNum = None
+        self.StorageSize = None
+        self.EnableCreateDefaultHaMirrorQueue = None
+        self.AutoRenewFlag = None
+        self.TimeSpan = None
+
+
+    def _deserialize(self, params):
+        self.ZoneIds = params.get("ZoneIds")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.ClusterName = params.get("ClusterName")
+        self.NodeSpec = params.get("NodeSpec")
+        self.NodeNum = params.get("NodeNum")
+        self.StorageSize = params.get("StorageSize")
+        self.EnableCreateDefaultHaMirrorQueue = params.get("EnableCreateDefaultHaMirrorQueue")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.TimeSpan = params.get("TimeSpan")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRabbitMQVipInstanceResponse(AbstractModel):
+    """CreateRabbitMQVipInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TranId: Order ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TranId: str
+        :param InstanceId: Instance ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TranId = None
+        self.InstanceId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TranId = params.get("TranId")
+        self.InstanceId = params.get("InstanceId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateRocketMQClusterRequest(AbstractModel):
     """CreateRocketMQCluster request structure.
 
