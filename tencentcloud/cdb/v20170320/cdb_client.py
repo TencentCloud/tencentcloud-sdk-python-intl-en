@@ -782,7 +782,9 @@ class CdbClient(AbstractClient):
 
 
     def DescribeCDBProxy(self, request):
-        """This API is used to query database proxy. It will be deprecated and replaced by the `QueryCDBProxy` API.
+        """接口已经废弃，请使用+DescribeCdbProxyInfo+进行替换。
+
+        This API is used to query database proxy. It will be deprecated and replaced by the `QueryCDBProxy` API.
 
         :param request: Request instance for DescribeCDBProxy.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeCDBProxyRequest`
@@ -1360,7 +1362,9 @@ class CdbClient(AbstractClient):
 
 
     def DescribeProxyConnectionPoolConf(self, request):
-        """This API is used to query the connection pool configuration of database proxy.
+        """当前接口已经废弃，请使用+DescribeCdbProxyInfo+替代。
+
+        This API is used to query the connection pool configuration of database proxy.
 
         :param request: Request instance for DescribeProxyConnectionPoolConf.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeProxyConnectionPoolConfRequest`
@@ -1966,7 +1970,9 @@ class CdbClient(AbstractClient):
 
 
     def ModifyCDBProxyConnectionPool(self, request):
-        """This API is used to configure the connection pool of database proxy. You can use the `DescribeProxyConnectionPoolConf` API to query the supported connection pool configurations.
+        """当前接口已经废弃，请使用+AdjustCdbProxyAddress+进行替代。
+
+        This API is used to configure the connection pool of database proxy. You can use the `DescribeProxyConnectionPoolConf` API to query the supported connection pool configurations.
 
         :param request: Request instance for ModifyCDBProxyConnectionPool.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyCDBProxyConnectionPoolRequest`
@@ -1989,7 +1995,9 @@ class CdbClient(AbstractClient):
 
 
     def ModifyCDBProxyDesc(self, request):
-        """This API is used to modify the description of database proxy.
+        """当前接口已经废弃，请使用+ModifyCdbProxyAddressDesc+进行替代。
+
+        This API is used to modify the description of database proxy.
 
         :param request: Request instance for ModifyCDBProxyDesc.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyCDBProxyDescRequest`
@@ -2012,7 +2020,9 @@ class CdbClient(AbstractClient):
 
 
     def ModifyCDBProxyVipVPort(self, request):
-        """This API is used to modify the VIP or port of database proxy.
+        """当前接口已经废弃，请使用+ModifyCdbProxyAddressVipAndVPort+进行替代。
+
+        This API is used to modify the VIP or port of database proxy.
 
         :param request: Request instance for ModifyCDBProxyVipVPort.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyCDBProxyVipVPortRequest`
@@ -2465,7 +2475,9 @@ class CdbClient(AbstractClient):
 
 
     def QueryCDBProxy(self, request):
-        """This API is used to query the proxy details.
+        """当前接口已经废弃，请使用+DescribeCdbProxyInfo+进行替代。
+
+        This API is used to query the proxy details.
 
         :param request: Request instance for QueryCDBProxy.
         :type request: :class:`tencentcloud.cdb.v20170320.models.QueryCDBProxyRequest`

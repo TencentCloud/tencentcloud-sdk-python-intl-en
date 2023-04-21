@@ -1098,7 +1098,7 @@ class Bucket(AbstractModel):
         :param Key: None
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Key: str
-        :param Count: Number of keys in the statistic report
+        :param Count: Number of occurrences of the key value
         :type Count: int
         """
         self.Key = None
@@ -11940,9 +11940,9 @@ class UpgradeDBInstanceRequest(AbstractModel):
         :type InstanceRole: str
         :param DeviceType: The resource isolation type after the instance is upgraded. Valid values: `UNIVERSAL` (general instance), `EXCLUSIVE` (dedicated instance), `BASIC` (basic instance). If this parameter is left empty, the resource isolation type will be the same as the original one.
         :type DeviceType: str
-        :param Cpu: The number of CPU cores after the instance is upgraded. If this parameter is left empty, the number of CPU cores will be automatically filled in according to the `Memory` value.
+        :param Cpu: The number of CPU cores after the instance is upgraded. If this parameter is left empty, it will be subject to the `Memory` value.
         :type Cpu: int
-        :param FastUpgrade: Whether to enable QuickChange. Valid values: `0` (no), `1` (yes), `2` (QuickChange preferred). After QuickChange is enabled, the required resources will be checked. QuickChange is performed only when the required resources support the feature; otherwise, an error message will be returned.
+        :param FastUpgrade: QuickChange options. Valid values: `0` (common upgrade), `1` (QuickChange), `2` (QuickChange first). After QuickChange is enabled, the required resources will be checked. QuickChange will be performed only when the required resources support the feature; otherwise, an error message will be returned.
         :type FastUpgrade: int
         :param MaxDelayTime: Delay threshold. Value range: 1-10. Default value: `10`.
         :type MaxDelayTime: int
@@ -11950,6 +11950,8 @@ class UpgradeDBInstanceRequest(AbstractModel):
         :type CrossCluster: int
         :param ZoneId: New AZ of the source node. This field is only valid when `CrossCluster` is `1`. Only migration across AZs in the same region is supported.
         :type ZoneId: str
+        :param RoTransType: Processing logic of the intra-AZ read-only instance for cross-cluster migration. Valid values: `together` (intra-AZ read-only instances will be migrated to the target AZ with the source instance by default.), `severally` (intra-AZ read-only instances will maintain the original deployment mode and will not be migrated to the target AZ.).
+        :type RoTransType: str
         """
         self.InstanceId = None
         self.Memory = None
@@ -11967,6 +11969,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
         self.MaxDelayTime = None
         self.CrossCluster = None
         self.ZoneId = None
+        self.RoTransType = None
 
 
     def _deserialize(self, params):
@@ -11986,6 +11989,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
         self.MaxDelayTime = params.get("MaxDelayTime")
         self.CrossCluster = params.get("CrossCluster")
         self.ZoneId = params.get("ZoneId")
+        self.RoTransType = params.get("RoTransType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -476,6 +476,29 @@ class LcicClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAnswerList(self, request):
+        """This API is used to get the answers to a quiz question in a room.
+
+        :param request: Request instance for DescribeAnswerList.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeAnswerListRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.DescribeAnswerListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAnswerList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAnswerListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCurrentMemberList(self, request):
         """This API is used to get the user list of a room. This API will not work if a room has ended or expired.
         A maximum of 20 requests can be initiated per second for this API.
@@ -643,6 +666,29 @@ class LcicClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeQuestionList(self, request):
+        """This API is used to get the quiz details of a room.
+
+        :param request: Request instance for DescribeQuestionList.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeQuestionListRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.DescribeQuestionListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeQuestionList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeQuestionListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRoom(self, request):
         """This API is used to get room information.
         A maximum of 20 requests can be initiated per second for this API.
@@ -715,6 +761,29 @@ class LcicClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeSupervisors(self, request):
+        """This API is used to get the spectators of a room.
+
+        :param request: Request instance for DescribeSupervisors.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeSupervisorsRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.DescribeSupervisorsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSupervisors", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSupervisorsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeUser(self, request):
         """This API is used to obtain user profile.
 
@@ -775,6 +844,29 @@ class LcicClient(AbstractClient):
             body = self.call("GetRoomMessage", params, headers=headers)
             response = json.loads(body)
             model = models.GetRoomMessageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetRooms(self, request):
+        """This API is used to get the room list.
+
+        :param request: Request instance for GetRooms.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.GetRoomsRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.GetRoomsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetRooms", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetRoomsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

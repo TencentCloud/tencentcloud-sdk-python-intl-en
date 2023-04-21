@@ -67,6 +67,74 @@ class AddGroupMemberResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AnswerInfo(AbstractModel):
+    """The answers to a quiz question in a room.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: The username.
+        :type Name: str
+        :param Answer: The answer. Bits are used to indicate the options chosen. For example, `0x1` indicates that option A is chosen; `0x11` indicates that A and B are chosen, and so on.
+        :type Answer: int
+        :param CostTime: The time used.
+        :type CostTime: int
+        :param UserId: The user ID.
+        :type UserId: str
+        :param IsCorrect: Whether the answer is correct. `1`: Correct; `0`: Incorrect.
+        :type IsCorrect: int
+        """
+        self.Name = None
+        self.Answer = None
+        self.CostTime = None
+        self.UserId = None
+        self.IsCorrect = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Answer = params.get("Answer")
+        self.CostTime = params.get("CostTime")
+        self.UserId = params.get("UserId")
+        self.IsCorrect = params.get("IsCorrect")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AnswerStat(AbstractModel):
+    """The statistics for each type of answer.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Answer: The answer. Bits are used to indicate the options chosen. For example, `0x1` indicates that option A is chosen; `0x11` indicates that A and B are chosen, and so on.
+        :type Answer: int
+        :param Count: The number of users that submitted the answer.
+        :type Count: int
+        """
+        self.Answer = None
+        self.Count = None
+
+
+    def _deserialize(self, params):
+        self.Answer = params.get("Answer")
+        self.Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AppCustomContent(AbstractModel):
     """Custom application content
     Used by actions: SetAppCustomContent.
@@ -781,12 +849,18 @@ class CreateRoomRequest(AbstractModel):
         :type TeacherId: str
         :param AutoMic: Whether to automatically turn the mic on when the user enters a room. Valid values: 0: No (default value); 1: Yes.
         :type AutoMic: int
+        :param TurnOffMic: Whether to disconnect communication after audio/video permissions are revoked. Valid values: `0` (default): Yes; `1`: No.
+        :type TurnOffMic: int
         :param AudioQuality: Whether to enable the high audio quality mode. Valid values: 0: No (default value); 1: Yes.
         :type AudioQuality: int
         :param DisableRecord: Whether to disable auto recording. Valid values: 0: No (default); 1: Yes. If this parameter is 0, recording will start when the class starts and stops when the class ends.
         :type DisableRecord: int
         :param Assistants: The user IDs of the teaching assistants. User IDs are returned by the user registration APIs. The users specified will have teaching assistant permissions in the room created.
         :type Assistants: list of str
+        :param RTCAudienceNumber: The number of RTC users.
+        :type RTCAudienceNumber: int
+        :param AudienceType: The audience type.
+        :type AudienceType: int
         :param RecordLayout: Recording layout
         :type RecordLayout: int
         :param GroupId: The ID of the group to bind. If you specify this parameter, only members of the group can enter this room.
@@ -801,9 +875,12 @@ class CreateRoomRequest(AbstractModel):
         self.SubType = None
         self.TeacherId = None
         self.AutoMic = None
+        self.TurnOffMic = None
         self.AudioQuality = None
         self.DisableRecord = None
         self.Assistants = None
+        self.RTCAudienceNumber = None
+        self.AudienceType = None
         self.RecordLayout = None
         self.GroupId = None
 
@@ -818,9 +895,12 @@ class CreateRoomRequest(AbstractModel):
         self.SubType = params.get("SubType")
         self.TeacherId = params.get("TeacherId")
         self.AutoMic = params.get("AutoMic")
+        self.TurnOffMic = params.get("TurnOffMic")
         self.AudioQuality = params.get("AudioQuality")
         self.DisableRecord = params.get("DisableRecord")
         self.Assistants = params.get("Assistants")
+        self.RTCAudienceNumber = params.get("RTCAudienceNumber")
+        self.AudienceType = params.get("AudienceType")
         self.RecordLayout = params.get("RecordLayout")
         self.GroupId = params.get("GroupId")
         memeber_set = set(params.keys())
@@ -1164,6 +1244,69 @@ class DeleteRoomResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeAnswerListRequest(AbstractModel):
+    """DescribeAnswerList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param QuestionId: The question ID.
+        :type QuestionId: str
+        :param Page: 1
+        :type Page: int
+        :param Limit: 100
+        :type Limit: int
+        """
+        self.QuestionId = None
+        self.Page = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.QuestionId = params.get("QuestionId")
+        self.Page = params.get("Page")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAnswerListResponse(AbstractModel):
+    """DescribeAnswerList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: The total number of answers.
+        :type Total: int
+        :param AnswerInfo: A list of the answers.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AnswerInfo: list of AnswerInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Total = None
+        self.AnswerInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("AnswerInfo") is not None:
+            self.AnswerInfo = []
+            for item in params.get("AnswerInfo"):
+                obj = AnswerInfo()
+                obj._deserialize(item)
+                self.AnswerInfo.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeCurrentMemberListRequest(AbstractModel):
     """DescribeCurrentMemberList request structure.
 
@@ -1239,7 +1382,7 @@ class DescribeDeveloperResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DeveloperId: 
+        :param DeveloperId: The developer ID.
         :type DeveloperId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1625,6 +1768,69 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class DescribeQuestionListRequest(AbstractModel):
+    """DescribeQuestionList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RoomId: The room ID.
+        :type RoomId: int
+        :param Page: The page to return records from. Pagination starts from 1, which is also the default value of this parameter.
+        :type Page: int
+        :param Limit: The page to return records from. Pagination starts from 1, which is also the default value of this parameter.
+        :type Limit: int
+        """
+        self.RoomId = None
+        self.Page = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.RoomId = params.get("RoomId")
+        self.Page = params.get("Page")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeQuestionListResponse(AbstractModel):
+    """DescribeQuestionList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: The total number of quiz questions.
+        :type Total: int
+        :param QuestionInfo: A list of the questions.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type QuestionInfo: list of QuestionInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Total = None
+        self.QuestionInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("QuestionInfo") is not None:
+            self.QuestionInfo = []
+            for item in params.get("QuestionInfo"):
+                obj = QuestionInfo()
+                obj._deserialize(item)
+                self.QuestionInfo.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRoomRequest(AbstractModel):
     """DescribeRoom request structure.
 
@@ -1871,6 +2077,72 @@ class DescribeSdkAppIdUsersResponse(AbstractModel):
                 obj = UserInfo()
                 obj._deserialize(item)
                 self.Users.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSupervisorsRequest(AbstractModel):
+    """DescribeSupervisors request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: The SDKAppID assigned by LCIC.
+
+        :type SdkAppId: int
+        :param Limit: The maximum number of records per page. The maximum value allowed is 100, and the default value is 20.
+        :type Limit: int
+        :param Page: The page to return records from. Pagination starts from 1, which is also the default value of this parameter.
+        :type Page: int
+        """
+        self.SdkAppId = None
+        self.Limit = None
+        self.Page = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.Limit = params.get("Limit")
+        self.Page = params.get("Page")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSupervisorsResponse(AbstractModel):
+    """DescribeSupervisors response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: The total number of spectators.
+        :type Total: int
+        :param Page: The current page number.
+        :type Page: int
+        :param Limit: The number of records on the current page.
+        :type Limit: int
+        :param UserIds: A list of the spectators.
+        :type UserIds: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Total = None
+        self.Page = None
+        self.Limit = None
+        self.UserIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        self.Page = params.get("Page")
+        self.Limit = params.get("Limit")
+        self.UserIds = params.get("UserIds")
         self.RequestId = params.get("RequestId")
 
 
@@ -2209,6 +2481,77 @@ class GetRoomMessageResponse(AbstractModel):
                 obj = MessageList()
                 obj._deserialize(item)
                 self.Messages.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class GetRoomsRequest(AbstractModel):
+    """GetRooms request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: The SDKAppID assigned by LCIC.
+
+        :type SdkAppId: int
+        :param StartTime: The start time. The default start time is 30 minutes before the current time.
+        :type StartTime: int
+        :param EndTime: The end time. The default end time is 30 minutes after the current time.
+        :type EndTime: int
+        :param Page: The page to return records from. Pagination starts from 1.
+        :type Page: int
+        :param Limit: The number of records per page. The default is 10.
+        :type Limit: int
+        """
+        self.SdkAppId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Page = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Page = params.get("Page")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetRoomsResponse(AbstractModel):
+    """GetRooms response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: The total number of rooms.
+        :type Total: int
+        :param Rooms: The room list.
+        :type Rooms: list of RoomItem
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Total = None
+        self.Rooms = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("Rooms") is not None:
+            self.Rooms = []
+            for item in params.get("Rooms"):
+                obj = RoomItem()
+                obj._deserialize(item)
+                self.Rooms.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2863,6 +3206,52 @@ class ModifyUserProfileResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class QuestionInfo(AbstractModel):
+    """The details of a quiz question.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param QuestionId: The question ID.
+        :type QuestionId: str
+        :param QuestionContent: The question.
+        :type QuestionContent: str
+        :param Duration: The time limit for the question. If you set this parameter to `0`, there will not be a time limit.
+        :type Duration: int
+        :param CorrectAnswer: The correct answer. Bits are used to indicate the options that should be chosen. For example, `0x1` indicates option A; `0x11` indicates A and B, and so on.
+        :type CorrectAnswer: int
+        :param AnswerStats: The statistics for each type of answer.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AnswerStats: list of AnswerStat
+        """
+        self.QuestionId = None
+        self.QuestionContent = None
+        self.Duration = None
+        self.CorrectAnswer = None
+        self.AnswerStats = None
+
+
+    def _deserialize(self, params):
+        self.QuestionId = params.get("QuestionId")
+        self.QuestionContent = params.get("QuestionContent")
+        self.Duration = params.get("Duration")
+        self.CorrectAnswer = params.get("CorrectAnswer")
+        if params.get("AnswerStats") is not None:
+            self.AnswerStats = []
+            for item in params.get("AnswerStats"):
+                obj = AnswerStat()
+                obj._deserialize(item)
+                self.AnswerStats.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RegisterUserRequest(AbstractModel):
     """RegisterUser request structure.
 
@@ -3000,6 +3389,83 @@ class RoomInfo(AbstractModel):
         self.AudienceType = params.get("AudienceType")
         self.RecordLayout = params.get("RecordLayout")
         self.GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RoomItem(AbstractModel):
+    """The room list.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: The name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Name: str
+        :param RoomId: The room ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RoomId: int
+        :param Status: The room status. `0`: Not started; `1`: Started; `2`: Ended.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Status: int
+        :param StartTime: The scheduled start time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type StartTime: int
+        :param EndTime: The scheduled end time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EndTime: int
+        :param RealStartTime: The actual start time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RealStartTime: int
+        :param RealEndTime: The actual end time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RealEndTime: int
+        :param Resolution: The resolution. `1`: SD.
+`2`: HD
+`3`: FHD
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Resolution: int
+        :param MaxRTCMember: The maximum number of mic-on users allowed.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MaxRTCMember: int
+        :param ReplayUrl: The URL of the room's recording. This parameter has been deprecated. Please use `RecordUrl` instead.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ReplayUrl: str
+        :param RecordUrl: The recording URL (HTTPS), which is generated only after a room ends.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RecordUrl: str
+        """
+        self.Name = None
+        self.RoomId = None
+        self.Status = None
+        self.StartTime = None
+        self.EndTime = None
+        self.RealStartTime = None
+        self.RealEndTime = None
+        self.Resolution = None
+        self.MaxRTCMember = None
+        self.ReplayUrl = None
+        self.RecordUrl = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.RoomId = params.get("RoomId")
+        self.Status = params.get("Status")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.RealStartTime = params.get("RealStartTime")
+        self.RealEndTime = params.get("RealEndTime")
+        self.Resolution = params.get("Resolution")
+        self.MaxRTCMember = params.get("MaxRTCMember")
+        self.ReplayUrl = params.get("ReplayUrl")
+        self.RecordUrl = params.get("RecordUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

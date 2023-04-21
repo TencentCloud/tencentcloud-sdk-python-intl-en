@@ -762,7 +762,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
         :type IsAllowArrears: bool
         :param IsCreditLimited: Whether you have a credit limit. Currently, this field is not applied.
         :type IsCreditLimited: bool
-        :param CreditAmount: Credit limit. Credit limit－available credit balance = consumption amount
+        :param CreditAmount: Credit limit in cents. Credit limit－available credit balance = consumption amount
         :type CreditAmount: float
         :param CreditBalance: Available credit balance in cents, which takes the same calculation rules as `Balance`, `RealBalance`, and `RealCreditBalance`.
         :type CreditBalance: float
@@ -819,9 +819,21 @@ class DescribeBillDetailRequest(AbstractModel):
         :type PeriodType: str
         :param Month: Month; format: yyyy-mm. You only have to enter either Month or BeginTime and EndTime. When you enter values for BeginTime and EndTime, Month becomes invalid. This value must be no earlier than the month when Bill 2.0 is activated; last 24 months data are available.
         :type Month: str
-        :param BeginTime: The start time of the period; format: Y-m-d H:i:s. You only have to enter either Month or BeginTime and EndTime. When you enter values for BeginTime and EndTime, Month becomes invalid. BeginTime and EndTime must be inputted as a pair. This value must be no earlier than the month when Bill 2.0 is activated; last 24 months data are available.
+        :param BeginTime: The start time of the query range, which should be in the format Y-m-d H:i:s . The query range must be in the last 18 months and cannot be earlier than May 2018 (when Bill 2.0 was introduced). The start time and end time must be in the same month.
+
+Example: tccli billing DescribeBillDetail --cli-unfold-argument --Offset 1 --Limit 100 --BeginTime '2023-04-01 12:05:15' --EndTime '2023-04-18 12:00:10' --ProjectId 1000000731  --version "2018-07-09"
+
+Alternatively, you can use Month to query the billing details of a month.
+Example:
+ccli billing DescribeBillDetail --cli-unfold-argument --Offset 1 --Limit 100 --Month 2023-04  --version "2018-07-09" --ResourceId "disk-oj9okstm"
         :type BeginTime: str
-        :param EndTime: The end time of the period; format: Y-m-d H:i:s. You only have to enter either Month or BeginTime and EndTime. When you enter values for BeginTime and EndTime, Month becomes invalid. BeginTime and EndTime must be inputted as a pair. This value must be no earlier than the month when Bill 2.0 is activated; last 24 months data are available.
+        :param EndTime: The end time of the query range, which should be in the format `Y-m-d H:i:s `. The query range must be in the last 18 months and cannot be earlier than May 2018 (when Bill 2.0 was introduced). The start time and end time must be in the same month.
+
+Example: tccli billing DescribeBillDetail --cli-unfold-argument --Offset 1 --Limit 100 --BeginTime '2023-04-01 12:05:15' --EndTime '2023-04-18 12:00:10' --ProjectId 1000000731  --version "2018-07-09"
+
+Alternatively, you can use `Month` to query the billing details of a month. 
+Example:
+ccli billing DescribeBillDetail --cli-unfold-argument --Offset 1 --Limit 100 --Month 2023-04  --version "2018-07-09" --ResourceId "disk-oj9okstm"
         :type EndTime: str
         :param NeedRecordNum: Indicates whether or not the total number of records of accessing the list is required, used for frontend pages.
 1 = yes, 0 = no
