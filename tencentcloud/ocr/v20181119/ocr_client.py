@@ -184,6 +184,125 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def RecognizeIndonesiaIDCardOCR(self, request):
+        """This API is used to recognize an Indonesian identity card.
+
+        The API request rate is limited to 20 requests/sec by default.
+
+        :param request: Request instance for RecognizeIndonesiaIDCardOCR.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizeIndonesiaIDCardOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.RecognizeIndonesiaIDCardOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RecognizeIndonesiaIDCardOCR", params, headers=headers)
+            response = json.loads(body)
+            model = models.RecognizeIndonesiaIDCardOCRResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RecognizePhilippinesDrivingLicenseOCR(self, request):
+        """This API is used to recognize a Philippine driver's license.
+
+        :param request: Request instance for RecognizePhilippinesDrivingLicenseOCR.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizePhilippinesDrivingLicenseOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.RecognizePhilippinesDrivingLicenseOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RecognizePhilippinesDrivingLicenseOCR", params, headers=headers)
+            response = json.loads(body)
+            model = models.RecognizePhilippinesDrivingLicenseOCRResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RecognizePhilippinesSssIDOCR(self, request):
+        """This API is used to recognize a Philippine SSSID/UMID card.
+
+        :param request: Request instance for RecognizePhilippinesSssIDOCR.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizePhilippinesSssIDOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.RecognizePhilippinesSssIDOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RecognizePhilippinesSssIDOCR", params, headers=headers)
+            response = json.loads(body)
+            model = models.RecognizePhilippinesSssIDOCRResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RecognizePhilippinesTinIDOCR(self, request):
+        """This API is used to recognize a Philippine TIN ID card.
+
+        :param request: Request instance for RecognizePhilippinesTinIDOCR.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizePhilippinesTinIDOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.RecognizePhilippinesTinIDOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RecognizePhilippinesTinIDOCR", params, headers=headers)
+            response = json.loads(body)
+            model = models.RecognizePhilippinesTinIDOCRResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RecognizePhilippinesVoteIDOCR(self, request):
+        """This API is used to recognize a Philippine voters ID card. It can recognize fields such as first name, family name, date of birth, civil status, citizenship, address, precinct, and voter's identification number (VIN).
+
+        The API request rate is limited to 20 requests/sec by default.
+
+        :param request: Request instance for RecognizePhilippinesVoteIDOCR.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizePhilippinesVoteIDOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.RecognizePhilippinesVoteIDOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RecognizePhilippinesVoteIDOCR", params, headers=headers)
+            response = json.loads(body)
+            model = models.RecognizePhilippinesVoteIDOCRResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def TableOCR(self, request):
         """This API is used to detect and recognize Chinese and English forms in images. It can return the text content of each cell and save the recognition result as Excel.
 

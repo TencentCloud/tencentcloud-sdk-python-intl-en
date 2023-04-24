@@ -5765,7 +5765,7 @@ Array length limit: 16.
         :type EventHandles: list of str
         :param ExtInfo: Reserved field for special purposes.
         :type ExtInfo: str
-        :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
         """
         self.EventHandles = None
@@ -6662,7 +6662,7 @@ class CreateImageProcessingTemplateRequest(AbstractModel):
     def __init__(self):
         r"""
         :param Operations: An array of image processing operations. The operations will be performed in the specified order.
-<li>Length limit: 3.</li>
+<li>Length limit: 10.</li>
         :type Operations: list of ImageOperation
         :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
@@ -7050,6 +7050,101 @@ class CreateProcedureTemplateResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateRebuildMediaTemplateRequest(AbstractModel):
+    """CreateRebuildMediaTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Container: The output container format. Valid values: `mp4`, `flv`, `hls`.
+        :type Container: str
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
+        :param Name: The remaster template name.
+        :type Name: str
+        :param Comment: The template description.
+        :type Comment: str
+        :param RebuildVideoInfo: The video remaster parameters.
+        :type RebuildVideoInfo: :class:`tencentcloud.vod.v20180717.models.RebuildVideoInfo`
+        :param RebuildAudioInfo: The audio remaster parameters.
+        :type RebuildAudioInfo: :class:`tencentcloud.vod.v20180717.models.RebuildAudioInfo`
+        :param TargetVideoInfo: The output video parameters.
+        :type TargetVideoInfo: :class:`tencentcloud.vod.v20180717.models.RebuildMediaTargetVideoStream`
+        :param TargetAudioInfo: The output audio parameters.
+        :type TargetAudioInfo: :class:`tencentcloud.vod.v20180717.models.RebuildMediaTargetAudioStream`
+        :param RemoveVideo: Whether to remove video data. Valid values:
+<li>`0`: No</li>
+<li>`1`: Yes</li>
+Default value: 0.
+        :type RemoveVideo: int
+        :param RemoveAudio: Whether to remove audio data. Valid values:
+<li>`0`: No</li>
+<li>`1`: Yes</li>
+Default value: 0.
+        :type RemoveAudio: str
+        """
+        self.Container = None
+        self.SubAppId = None
+        self.Name = None
+        self.Comment = None
+        self.RebuildVideoInfo = None
+        self.RebuildAudioInfo = None
+        self.TargetVideoInfo = None
+        self.TargetAudioInfo = None
+        self.RemoveVideo = None
+        self.RemoveAudio = None
+
+
+    def _deserialize(self, params):
+        self.Container = params.get("Container")
+        self.SubAppId = params.get("SubAppId")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        if params.get("RebuildVideoInfo") is not None:
+            self.RebuildVideoInfo = RebuildVideoInfo()
+            self.RebuildVideoInfo._deserialize(params.get("RebuildVideoInfo"))
+        if params.get("RebuildAudioInfo") is not None:
+            self.RebuildAudioInfo = RebuildAudioInfo()
+            self.RebuildAudioInfo._deserialize(params.get("RebuildAudioInfo"))
+        if params.get("TargetVideoInfo") is not None:
+            self.TargetVideoInfo = RebuildMediaTargetVideoStream()
+            self.TargetVideoInfo._deserialize(params.get("TargetVideoInfo"))
+        if params.get("TargetAudioInfo") is not None:
+            self.TargetAudioInfo = RebuildMediaTargetAudioStream()
+            self.TargetAudioInfo._deserialize(params.get("TargetAudioInfo"))
+        self.RemoveVideo = params.get("RemoveVideo")
+        self.RemoveAudio = params.get("RemoveAudio")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRebuildMediaTemplateResponse(AbstractModel):
+    """CreateRebuildMediaTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Definition: The remaster template ID.
+        :type Definition: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Definition = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
         self.RequestId = params.get("RequestId")
 
 
@@ -8389,6 +8484,51 @@ class DeleteProcedureTemplateRequest(AbstractModel):
 
 class DeleteProcedureTemplateResponse(AbstractModel):
     """DeleteProcedureTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteRebuildMediaTemplateRequest(AbstractModel):
+    """DeleteRebuildMediaTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Definition: The remaster template ID.
+        :type Definition: int
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
+        """
+        self.Definition = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRebuildMediaTemplateResponse(AbstractModel):
+    """DeleteRebuildMediaTemplate response structure.
 
     """
 
@@ -10261,17 +10401,18 @@ class DescribeMediaProcessUsageDataRequest(AbstractModel):
         :param SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
         :param Type: The type of media processing task. Valid values:
-<li>Transcoding: General transcoding</li>
-<li>Transcoding-TESHD: Top Speed Codec transcoding</li>
-<li>Editing: Video editing</li>
-<li>Editing-TESHD: Top Speed Codec editing</li>
-<li>AdaptiveBitrateStreaming: Adaptive bitrate streaming</li>
-<li>ContentAudit: Content moderation</li>
-<li> ContentRecognition: Content recognition</li>
-<li>RemoveWatermark: Watermark removal</li>
-<li> ExtractTraceWatermark: Digital watermark extraction</li>
-<li> AddTraceWatermark: Digital watermarking</li>
-<li>Transcode: Transcoding, including general transcoding, Top Speed Codec transcoding, and video editing. This value is not recommended.</li>
+<li>`Transcoding`: General transcoding</li>
+<li>`Transcoding-TESHD`: Top Speed Codec transcoding</li>
+<li>`Editing`: Video editing</li>
+<li>`Editing-TESHD`: Top Speed Codec editing</li>
+<li>`AdaptiveBitrateStreaming`: Adaptive bitrate streaming</li>
+<li>`ContentAudit`: Content moderation</li>
+<li>`ContentRecognition`: Content recognition</li>
+<li>`RemoveWatermark`: Watermark removal</li>
+<li>`ExtractTraceWatermark`: Digital watermark extraction</li>
+<li>`AddTraceWatermark`: Digital watermarking</li>
+<li>`RebuildMedia`: Remaster</li>
+<li>`Transcode` Transcoding, including general transcoding, Top Speed Codec transcoding, and video editing. This value is not recommended.</li>
         :type Type: str
         """
         self.StartTime = None
@@ -10472,6 +10613,78 @@ class DescribeProcedureTemplatesResponse(AbstractModel):
                 obj = ProcedureTemplate()
                 obj._deserialize(item)
                 self.ProcedureTemplateSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRebuildMediaTemplatesRequest(AbstractModel):
+    """DescribeRebuildMediaTemplates request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Definitions: The remaster template IDs.
+        :type Definitions: list of int
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
+        :param Type: The template type. Valid values:
+<li>`Preset`</li>
+<li>`Custom`</li>
+        :type Type: str
+        :param Offset: The pagination offset. Default value: 0.
+        :type Offset: int
+        :param Limit: The maximum number of records to return. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        """
+        self.Definitions = None
+        self.SubAppId = None
+        self.Type = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.Definitions = params.get("Definitions")
+        self.SubAppId = params.get("SubAppId")
+        self.Type = params.get("Type")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRebuildMediaTemplatesResponse(AbstractModel):
+    """DescribeRebuildMediaTemplates response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: The total number of records that meet the conditions.
+        :type TotalCount: int
+        :param RebuildMediaTemplateSet: The details of the remaster templates.
+        :type RebuildMediaTemplateSet: list of RebuildMediaTemplate
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.RebuildMediaTemplateSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("RebuildMediaTemplateSet") is not None:
+            self.RebuildMediaTemplateSet = []
+            for item in params.get("RebuildMediaTemplateSet"):
+                obj = RebuildMediaTemplate()
+                obj._deserialize(item)
+                self.RebuildMediaTemplateSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -13289,6 +13502,39 @@ class HighlightsConfigureInfoForUpdate(AbstractModel):
         
 
 
+class ImageBlur(AbstractModel):
+    """Image blurring parameters.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: The blur type. Valid values:
+<li>`Gaussian`</li>
+        :type Type: str
+        :param Radius: The radius of the blur. Value range: 1-50. This parameter is valid if `Type` is `Gaussian`.
+        :type Radius: int
+        :param Sigma: The standard deviation of the Gaussian distribution, which must be greater than 0. This parameter is valid if `Type` is `Gaussian`.
+        :type Sigma: int
+        """
+        self.Type = None
+        self.Radius = None
+        self.Sigma = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Radius = params.get("Radius")
+        self.Sigma = params.get("Sigma")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ImageCenterCut(AbstractModel):
     """Image cropping details.
 
@@ -13342,10 +13588,13 @@ class ImageOperation(AbstractModel):
         :type Scale: :class:`tencentcloud.vod.v20180717.models.ImageScale`
         :param CenterCut: The cropping details. This parameter is valid only if `Type` is `CenterCut`.
         :type CenterCut: :class:`tencentcloud.vod.v20180717.models.ImageCenterCut`
+        :param Blur: Image blurring. This parameter is valid only if `Type` is `Blur`.
+        :type Blur: :class:`tencentcloud.vod.v20180717.models.ImageBlur`
         """
         self.Type = None
         self.Scale = None
         self.CenterCut = None
+        self.Blur = None
 
 
     def _deserialize(self, params):
@@ -13356,6 +13605,9 @@ class ImageOperation(AbstractModel):
         if params.get("CenterCut") is not None:
             self.CenterCut = ImageCenterCut()
             self.CenterCut._deserialize(params.get("CenterCut"))
+        if params.get("Blur") is not None:
+            self.Blur = ImageBlur()
+            self.Blur._deserialize(params.get("Blur"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -17554,6 +17806,99 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.RequestId = params.get("RequestId")
 
 
+class ModifyRebuildMediaTemplateRequest(AbstractModel):
+    """ModifyRebuildMediaTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Definition: The remaster template ID.
+        :type Definition: int
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: str
+        :param Name: The remaster template name.
+        :type Name: str
+        :param Comment: The template description.
+        :type Comment: str
+        :param RebuildVideoInfo: The video remaster parameters.
+        :type RebuildVideoInfo: :class:`tencentcloud.vod.v20180717.models.RebuildVideoInfo`
+        :param RebuildAudioInfo: The audio remaster parameters.
+        :type RebuildAudioInfo: :class:`tencentcloud.vod.v20180717.models.RebuildAudioInfo`
+        :param TargetVideoInfo: The output video parameters.
+        :type TargetVideoInfo: :class:`tencentcloud.vod.v20180717.models.RebuildMediaTargetVideoStream`
+        :param TargetAudioInfo: The output audio parameters.
+        :type TargetAudioInfo: :class:`tencentcloud.vod.v20180717.models.RebuildMediaTargetAudioStream`
+        :param Container: The output container format. Valid values: `mp4`, `flv`, `hls`.
+        :type Container: str
+        :param RemoveVideo: Whether to remove video data. Valid values:
+<li>`0`: No</li>
+<li>`1`: Yes</li>
+        :type RemoveVideo: int
+        :param RemoveAudio: Whether to remove audio data. Valid values:
+<li>`0`: No</li>
+<li>`1`: Yes</li>
+        :type RemoveAudio: int
+        """
+        self.Definition = None
+        self.SubAppId = None
+        self.Name = None
+        self.Comment = None
+        self.RebuildVideoInfo = None
+        self.RebuildAudioInfo = None
+        self.TargetVideoInfo = None
+        self.TargetAudioInfo = None
+        self.Container = None
+        self.RemoveVideo = None
+        self.RemoveAudio = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.SubAppId = params.get("SubAppId")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        if params.get("RebuildVideoInfo") is not None:
+            self.RebuildVideoInfo = RebuildVideoInfo()
+            self.RebuildVideoInfo._deserialize(params.get("RebuildVideoInfo"))
+        if params.get("RebuildAudioInfo") is not None:
+            self.RebuildAudioInfo = RebuildAudioInfo()
+            self.RebuildAudioInfo._deserialize(params.get("RebuildAudioInfo"))
+        if params.get("TargetVideoInfo") is not None:
+            self.TargetVideoInfo = RebuildMediaTargetVideoStream()
+            self.TargetVideoInfo._deserialize(params.get("TargetVideoInfo"))
+        if params.get("TargetAudioInfo") is not None:
+            self.TargetAudioInfo = RebuildMediaTargetAudioStream()
+            self.TargetAudioInfo._deserialize(params.get("TargetAudioInfo"))
+        self.Container = params.get("Container")
+        self.RemoveVideo = params.get("RemoveVideo")
+        self.RemoveAudio = params.get("RemoveAudio")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRebuildMediaTemplateResponse(AbstractModel):
+    """ModifyRebuildMediaTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyReviewTemplateRequest(AbstractModel):
     """ModifyReviewTemplate request structure.
 
@@ -20447,6 +20792,9 @@ class PullUploadRequest(AbstractModel):
         :param MediaUrl: The URL of the media to pull, which can be in HLS format, but not DASH format.
 For more information about supported extensions, see [Media types](https://intl.cloud.tencent.com/document/product/266/9760#media-types). Please make sure the URL is accessible.
         :type MediaUrl: str
+        :param MediaType: The file format (extension). For information about supported extensions, see [Media Types](https://intl.cloud.tencent.com/document/product/266/9760?from_cn_redirect=1#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B).
+If you do not specify this parameter or pass in an empty string, the file obtained will have the same extension as `MediaUrl`.
+        :type MediaType: str
         :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
         :param MediaName: Media name.
@@ -20473,6 +20821,7 @@ For more information about supported extensions, see [Media types](https://intl.
         :type SourceContext: str
         """
         self.MediaUrl = None
+        self.MediaType = None
         self.SubAppId = None
         self.MediaName = None
         self.CoverUrl = None
@@ -20488,6 +20837,7 @@ For more information about supported extensions, see [Media types](https://intl.
 
     def _deserialize(self, params):
         self.MediaUrl = params.get("MediaUrl")
+        self.MediaType = params.get("MediaType")
         self.SubAppId = params.get("SubAppId")
         self.MediaName = params.get("MediaName")
         self.CoverUrl = params.get("CoverUrl")
@@ -20654,6 +21004,149 @@ class PushUrlCacheResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class RebuildAudioInfo(AbstractModel):
+    """The audio remaster parameters.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AudioDenoiseInfo: The noise removal parameters.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AudioDenoiseInfo: :class:`tencentcloud.vod.v20180717.models.AudioDenoiseInfo`
+        """
+        self.AudioDenoiseInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("AudioDenoiseInfo") is not None:
+            self.AudioDenoiseInfo = AudioDenoiseInfo()
+            self.AudioDenoiseInfo._deserialize(params.get("AudioDenoiseInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RebuildMediaByTemplateRequest(AbstractModel):
+    """RebuildMediaByTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileId: The file ID.
+        :type FileId: str
+        :param Definition: The remaster template ID.
+        :type Definition: int
+        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: str
+        :param StartTimeOffset: The start offset (seconds). If you do not specify this, the segment will start from the beginning of the video.
+        :type StartTimeOffset: float
+        :param EndTimeOffset: The end offset (seconds). If you do not specify this, the segment will end at the end of the video.
+        :type EndTimeOffset: float
+        :param OutputConfig: The parameters for the output file of remastering.
+        :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.RebuildMediaOutputConfig`
+        :param SessionId: The session ID, which is used for de-duplication. If there was a request with the same session ID in the last three days, an error will be returned for the current request. The session ID can contain up to 50 characters. If you do not pass this parameter or pass in an empty string, duplicate sessions will not be identified.
+        :type SessionId: str
+        :param SessionContext: The source context, which is used to pass through user request information. The `ProcedureStateChanged` callback will return the value of this parameter. It can contain up to 1,000 characters.
+        :type SessionContext: str
+        :param TasksPriority: The task priority, which can be a value from -10 to 10. The higher the value, the higher the priority. If this parameter is left empty, 0 will be used.
+        :type TasksPriority: int
+        :param ExtInfo: A reserved parameter.
+        :type ExtInfo: str
+        """
+        self.FileId = None
+        self.Definition = None
+        self.SubAppId = None
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
+        self.OutputConfig = None
+        self.SessionId = None
+        self.SessionContext = None
+        self.TasksPriority = None
+        self.ExtInfo = None
+
+
+    def _deserialize(self, params):
+        self.FileId = params.get("FileId")
+        self.Definition = params.get("Definition")
+        self.SubAppId = params.get("SubAppId")
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
+        if params.get("OutputConfig") is not None:
+            self.OutputConfig = RebuildMediaOutputConfig()
+            self.OutputConfig._deserialize(params.get("OutputConfig"))
+        self.SessionId = params.get("SessionId")
+        self.SessionContext = params.get("SessionContext")
+        self.TasksPriority = params.get("TasksPriority")
+        self.ExtInfo = params.get("ExtInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RebuildMediaByTemplateResponse(AbstractModel):
+    """RebuildMediaByTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: The ID of the remaster task. You need to provide this ID to query the task status.
+        :type TaskId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class RebuildMediaOutputConfig(AbstractModel):
+    """The parameters for the output file of a remaster task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MediaName: The filename. This parameter can contain up to 64 characters, and will be generated by the system if it is left empty.
+        :type MediaName: str
+        :param ClassId: The ID of the file's category. You can use the [CreateClass](https://intl.cloud.tencent.com/document/product/266/7812?from_cn_redirect=1) API to create a category and get the category ID.
+<li>The default value is `0`, which means the "Other" category.</li>
+        :type ClassId: int
+        :param ExpireTime: The expiration time of the output file, in [ISO date format](https://www.tencentcloud.com/document/product/266/11732?lang=en&pg=). The file will be deleted after the specified expiration time. By default, the file will never expire.
+        :type ExpireTime: str
+        """
+        self.MediaName = None
+        self.ClassId = None
+        self.ExpireTime = None
+
+
+    def _deserialize(self, params):
+        self.MediaName = params.get("MediaName")
+        self.ClassId = params.get("ClassId")
+        self.ExpireTime = params.get("ExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class RebuildMediaRequest(AbstractModel):
@@ -21107,6 +21600,8 @@ class RebuildMediaTaskInput(AbstractModel):
         :type StartTimeOffset: float
         :param EndTimeOffset: The end offset (seconds). If you do not specify this, the segment will end at the end of the video.
         :type EndTimeOffset: float
+        :param Definition: The ID of the remaster template.
+        :type Definition: int
         :param RepairInfo: The video quality remastering parameters.
         :type RepairInfo: :class:`tencentcloud.vod.v20180717.models.RepairInfo`
         :param VideoFrameInterpolationInfo: The smart frame interpolation parameters.
@@ -21137,6 +21632,7 @@ class RebuildMediaTaskInput(AbstractModel):
         self.FileId = None
         self.StartTimeOffset = None
         self.EndTimeOffset = None
+        self.Definition = None
         self.RepairInfo = None
         self.VideoFrameInterpolationInfo = None
         self.SuperResolutionInfo = None
@@ -21156,6 +21652,7 @@ class RebuildMediaTaskInput(AbstractModel):
         self.FileId = params.get("FileId")
         self.StartTimeOffset = params.get("StartTimeOffset")
         self.EndTimeOffset = params.get("EndTimeOffset")
+        self.Definition = params.get("Definition")
         if params.get("RepairInfo") is not None:
             self.RepairInfo = RepairInfo()
             self.RepairInfo._deserialize(params.get("RepairInfo"))
@@ -21240,6 +21737,195 @@ class RebuildMediaTaskOutput(AbstractModel):
         self.MediaName = params.get("MediaName")
         self.ClassId = params.get("ClassId")
         self.ExpireTime = params.get("ExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RebuildMediaTemplate(AbstractModel):
+    """The details of a remaster template.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Definition: The remaster template ID.
+        :type Definition: int
+        :param Type: The template type. Valid values:
+<li>`Preset`</li>
+<li>`Custom`</li>
+        :type Type: str
+        :param Name: The remaster template name.
+        :type Name: str
+        :param Comment: The template description.
+        :type Comment: str
+        :param RebuildVideoInfo: The video remaster parameters.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RebuildVideoInfo: :class:`tencentcloud.vod.v20180717.models.RebuildVideoInfo`
+        :param RebuildAudioInfo: The audio remaster parameters.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RebuildAudioInfo: :class:`tencentcloud.vod.v20180717.models.RebuildAudioInfo`
+        :param TargetVideoInfo: The output video parameters.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TargetVideoInfo: :class:`tencentcloud.vod.v20180717.models.RebuildMediaTargetVideoStream`
+        :param TargetAudioInfo: The output audio parameters.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TargetAudioInfo: :class:`tencentcloud.vod.v20180717.models.RebuildMediaTargetAudioStream`
+        :param Container: The output file format. Valid values: `mp4` (default), `hls`.
+        :type Container: str
+        :param RemoveVideo: Whether to remove video data. Valid values:
+<li>`0`: No</li>
+<li>`1`: Yes</li>
+Default value: 0.
+        :type RemoveVideo: int
+        :param RemoveAudio: Whether to remove audio data. Valid values:
+<li>`0`: No</li>
+<li>`1`: Yes</li>
+Default value: 0.
+        :type RemoveAudio: int
+        :param CreateTime: The template creation time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
+        :type CreateTime: str
+        :param UpdateTime: The last updated time of the template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
+        :type UpdateTime: str
+        """
+        self.Definition = None
+        self.Type = None
+        self.Name = None
+        self.Comment = None
+        self.RebuildVideoInfo = None
+        self.RebuildAudioInfo = None
+        self.TargetVideoInfo = None
+        self.TargetAudioInfo = None
+        self.Container = None
+        self.RemoveVideo = None
+        self.RemoveAudio = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Type = params.get("Type")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        if params.get("RebuildVideoInfo") is not None:
+            self.RebuildVideoInfo = RebuildVideoInfo()
+            self.RebuildVideoInfo._deserialize(params.get("RebuildVideoInfo"))
+        if params.get("RebuildAudioInfo") is not None:
+            self.RebuildAudioInfo = RebuildAudioInfo()
+            self.RebuildAudioInfo._deserialize(params.get("RebuildAudioInfo"))
+        if params.get("TargetVideoInfo") is not None:
+            self.TargetVideoInfo = RebuildMediaTargetVideoStream()
+            self.TargetVideoInfo._deserialize(params.get("TargetVideoInfo"))
+        if params.get("TargetAudioInfo") is not None:
+            self.TargetAudioInfo = RebuildMediaTargetAudioStream()
+            self.TargetAudioInfo._deserialize(params.get("TargetAudioInfo"))
+        self.Container = params.get("Container")
+        self.RemoveVideo = params.get("RemoveVideo")
+        self.RemoveAudio = params.get("RemoveAudio")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RebuildVideoInfo(AbstractModel):
+    """The video remaster parameters.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RepairInfo: The image restoration parameters.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RepairInfo: :class:`tencentcloud.vod.v20180717.models.RepairInfo`
+        :param VideoFrameInterpolationInfo: The smart frame interpolation parameters.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VideoFrameInterpolationInfo: :class:`tencentcloud.vod.v20180717.models.VideoFrameInterpolationInfo`
+        :param SuperResolutionInfo: The super resolution parameters.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SuperResolutionInfo: :class:`tencentcloud.vod.v20180717.models.SuperResolutionInfo`
+        :param HDRInfo: The high dynamic range (HDR) configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type HDRInfo: :class:`tencentcloud.vod.v20180717.models.HDRInfo`
+        :param VideoDenoiseInfo: The image noise removal parameters.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VideoDenoiseInfo: :class:`tencentcloud.vod.v20180717.models.VideoDenoiseInfo`
+        :param ColorInfo: The color enhancement parameters.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ColorInfo: :class:`tencentcloud.vod.v20180717.models.ColorEnhanceInfo`
+        :param SharpInfo: The detail enhancement parameters.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SharpInfo: :class:`tencentcloud.vod.v20180717.models.SharpEnhanceInfo`
+        :param FaceInfo: The face enhancement parameters.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FaceInfo: :class:`tencentcloud.vod.v20180717.models.FaceEnhanceInfo`
+        :param LowLightInfo: The low-light enhancement parameters.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LowLightInfo: :class:`tencentcloud.vod.v20180717.models.LowLightEnhanceInfo`
+        :param ScratchRepairInfo: The banding removal parameters.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ScratchRepairInfo: :class:`tencentcloud.vod.v20180717.models.ScratchRepairInfo`
+        :param ArtifactRepairInfo: The artifact removal parameters.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ArtifactRepairInfo: :class:`tencentcloud.vod.v20180717.models.ArtifactRepairInfo`
+        """
+        self.RepairInfo = None
+        self.VideoFrameInterpolationInfo = None
+        self.SuperResolutionInfo = None
+        self.HDRInfo = None
+        self.VideoDenoiseInfo = None
+        self.ColorInfo = None
+        self.SharpInfo = None
+        self.FaceInfo = None
+        self.LowLightInfo = None
+        self.ScratchRepairInfo = None
+        self.ArtifactRepairInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("RepairInfo") is not None:
+            self.RepairInfo = RepairInfo()
+            self.RepairInfo._deserialize(params.get("RepairInfo"))
+        if params.get("VideoFrameInterpolationInfo") is not None:
+            self.VideoFrameInterpolationInfo = VideoFrameInterpolationInfo()
+            self.VideoFrameInterpolationInfo._deserialize(params.get("VideoFrameInterpolationInfo"))
+        if params.get("SuperResolutionInfo") is not None:
+            self.SuperResolutionInfo = SuperResolutionInfo()
+            self.SuperResolutionInfo._deserialize(params.get("SuperResolutionInfo"))
+        if params.get("HDRInfo") is not None:
+            self.HDRInfo = HDRInfo()
+            self.HDRInfo._deserialize(params.get("HDRInfo"))
+        if params.get("VideoDenoiseInfo") is not None:
+            self.VideoDenoiseInfo = VideoDenoiseInfo()
+            self.VideoDenoiseInfo._deserialize(params.get("VideoDenoiseInfo"))
+        if params.get("ColorInfo") is not None:
+            self.ColorInfo = ColorEnhanceInfo()
+            self.ColorInfo._deserialize(params.get("ColorInfo"))
+        if params.get("SharpInfo") is not None:
+            self.SharpInfo = SharpEnhanceInfo()
+            self.SharpInfo._deserialize(params.get("SharpInfo"))
+        if params.get("FaceInfo") is not None:
+            self.FaceInfo = FaceEnhanceInfo()
+            self.FaceInfo._deserialize(params.get("FaceInfo"))
+        if params.get("LowLightInfo") is not None:
+            self.LowLightInfo = LowLightEnhanceInfo()
+            self.LowLightInfo._deserialize(params.get("LowLightInfo"))
+        if params.get("ScratchRepairInfo") is not None:
+            self.ScratchRepairInfo = ScratchRepairInfo()
+            self.ScratchRepairInfo._deserialize(params.get("ScratchRepairInfo"))
+        if params.get("ArtifactRepairInfo") is not None:
+            self.ArtifactRepairInfo = ArtifactRepairInfo()
+            self.ArtifactRepairInfo._deserialize(params.get("ArtifactRepairInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -22989,9 +23675,16 @@ class SearchMediaRequest(AbstractModel):
         :param MediaTypes: The file formats.
 <li>Array length limit: 10</li>
         :type MediaTypes: list of str
-        :param Status: 
+        :param Status: The file statuses.
+<li>`Normal`</li>
+<li>`SystemForbidden` (blocked by VOD)</li>
+<li>`Forbidden` (blocked by you)</li>
         :type Status: list of str
-        :param ReviewResults: 
+        :param ReviewResults: The types of moderation result.
+<li>`pass`</li>
+<li>`review` (the content may be non-compliant and needs to be reviewed)</li>
+<li>`block` (the content is non-compliant and should be blocked)</li>
+<li>`notModerated` (the file hasn't been moderated yet)</li>
         :type ReviewResults: list of str
         :param TrtcSdkAppIds: The TRTC application IDs. Any file that matches one of the application IDs will be returned.
 <li>Array length limit: 10</li>
@@ -24459,72 +25152,74 @@ class TaskStatData(AbstractModel):
     def __init__(self):
         r"""
         :param TaskType: The task type.
-<li>Transcoding: General transcoding</li>
-<li>Transcoding-TESHD: Top Speed Codec transcoding</li>
-<li>Editing: Video editing</li>
-<li>Editing-TESHD: Top Speed Codec editing</li>
-<li>AdaptiveBitrateStreaming: Adaptive bitrate streaming</li>
+<li>`Transcoding`: General transcoding</li>
+<li>`Transcoding-TESHD`: Top Speed Codec transcoding</li>
+<li>`Editing`: Video editing</li>
+<li>`Editing-TESHD`: Top Speed Codec editing</li>
+<li>`AdaptiveBitrateStreaming`: Adaptive bitrate streaming</li>
 <li>ContentAudit: Content moderation</li>
-<li> ContentRecognition: Content recognition</li>
+<li>`ContentRecognition`: Content recognition</li>
 <li>RemoveWatermark: Watermark removal</li>
-<li> ExtractTraceWatermark: Digital watermark extraction</li>
-<li> AddTraceWatermark: Digital watermarking</li>
-<li>Transcode: Transcoding, including general transcoding, Top Speed Codec transcoding, and video editing. This value is not recommended.</li>
+<li>`ExtractTraceWatermark`: Digital watermark extraction</li>
+<li>`AddTraceWatermark`: Digital watermarking</li>
+<li>`RebuildMedia`: Remaster</li>
+<li>`Transcode` Transcoding, including general transcoding, Top Speed Codec transcoding, and video editing. This value is not recommended.</li>
         :type TaskType: str
         :param Summary: Task statistics overview (usage unit: second).
         :type Summary: list of TaskStatDataItem
-        :param Details: The detailed statistics of different tasks.
+        :param Details: The usage statistics for different task types.
 Transcoding:
-<li>Remuxing</li>
-<li>Audio</li>
-<li>Standard.H264.SD</li>
-<li>Standard.H264.HD</li>
-<li>Standard.H264.FHD</li>
-<li>Standard.H264.2K</li>
-<li>Standard.H264.4K</li>
-<li>Standard.H265.SD</li>
-<li>Standard.H265.HD</li>
-<li>Standard.H265.FHD</li>
-<li>Standard.H265.2K</li>
-<li>Standard.H265.4K</li>
-<li>TESHD-10.H264.SD</li>
-<li>TESHD-10.H264.HD</li>
-<li>TESHD-10.H264.FHD</li>
-<li>TESHD-10.H264.2K</li>
-<li>TESHD-10.H264.4K</li>
-<li>TESHD-10.H265.SD</li>
-<li>TESHD-10.H265.HD</li>
-<li>TESHD-10.H265.FHD</li>
-<li>TESHD-10.H265.2K</li>
-<li>TESHD-10.H265.4K</li>
-<li>Edit.Audio</li>
-<li>Edit.H264.SD</li>
-<li>Edit.H264.HD</li>
-<li>Edit.H264.FHD</li>
-<li>Edit.H264.2K</li>
-<li>Edit.H264.4K</li>
-<li>Edit.H265.SD</li>
-<li>Edit.H265.HD</li>
-<li>Edit.H265.FHD</li>
-<li>Edit.H265.2K</li>
-<li>Edit.H265.4K</li>
-<li>Edit.TESHD-10.H264.SD</li>
-<li>Edit.TESHD-10.H264.HD</li>
-<li>Edit.TESHD-10.H264.FHD</li>
-<li>Edit.TESHD-10.H264.2K</li>
-<li>Edit.TESHD-10.H264.4K</li>
-<li>Edit.TESHD-10.H265.SD</li>
-<li>Edit.TESHD-10.H265.HD</li>
-<li>Edit.TESHD-10.H265.FHD</li>
-<li>Edit.TESHD-10.H265.2K</li>
-<li>Edit.TESHD-10.H265.4K</li>
-Watermark removal:
-<li>480P: 640 x 480 and below</li>
-<li>720P: 1280 x 720 and below</li>
-<li>1080P: 1920 x 1080 and below</li>
-<li>2K: 2560 x 1440 and below</li>
-<li>4K: 3840 x 2160 and below</li>
-<li>8K: 7680 x 4320 and below</li>
+<li>`Remuxing`</li>
+<li>`Audio` (audio transcoding)</li>
+<li>`Standard.H264.SD`</li>
+<li>`Standard.H264.HD`</li>
+<li>`Standard.H264.FHD`</li>
+<li>`Standard.H264.2K`</li>
+<li>`Standard.H264.4K`</li>
+<li>`Standard.H265.SD`</li>
+<li>`Standard.H265.HD`</li>
+<li>`Standard.H265.FHD`</li>
+<li>`Standard.H265.2K`</li>
+<li>`Standard.H265.4K`</li>
+<li>`TESHD-10.H264.SD` (H.264 SD Top Speed Codec transcoding)</li>
+<li>`TESHD-10.H264.HD` (H.264 HD Top Speed Codec transcoding)</li>
+<li>`TESHD-10.H264.FHD` (H.264 FHD Top Speed Codec transcoding)</li>
+<li>`TESHD-10.H264.2K` (H.264 2K Top Speed Codec transcoding)</li>
+<li>`TESHD-10.H264.4K` (H.264 4K Top Speed Codec transcoding)</li>
+<li>`TESHD-10.H265.SD` (H.265 SD Top Speed Codec transcoding)</li>
+<li>`TESHD-10.H265.HD` (H.265 HD Top Speed Codec transcoding)</li>
+<li>`TESHD-10.H265.FHD` (H.265 FHD Top Speed Codec transcoding)</li>
+<li>`TESHD-10.H265.2K` (H.265 2K Top Speed Codec transcoding)</li>
+<li>`TESHD-10.H265.4K` (H.265 4K Top Speed Codec transcoding)</li>
+<li>`Edit.Audio`</li>
+<li>`Edit.H264.SD` (H.264 SD video editing)</li>
+<li>`Edit.H264.HD` (H.264 HD video editing)</li>
+<li>`Edit.H264.FHD` (H.264 FHD video editing)</li>
+<li>`Edit.H264.2K` (H.264 2K video editing)</li>
+<li>`Edit.H264.4K` (H.264 4K video editing)</li>
+<li>`Edit.H265.SD` (H.265 SD video editing)</li>
+<li>`Edit.H265.HD` (H.265 HD video editing)</li>
+<li>`Edit.H265.FHD` (H.265 FHD video editing)</li>
+<li>`Edit.H265.2K` (H.265 2K video editing)</li>
+<li>`Edit.H265.4K` (H.265 4K video editing)</li>
+<li>`Edit.TESHD-10.H264.SD` (H.264 SD Top Speed Codec video editing)</li>
+<li>`Edit.TESHD-10.H264.HD` (H.264 HD Top Speed Codec video editing)</li>
+<li>`Edit.TESHD-10.H264.FHD` (H.264 FHD Top Speed Codec video editing)</li>
+<li>`Edit.TESHD-10.H264.2K` (H.264 2K Top Speed Codec video editing)</li>
+<li>`Edit.TESHD-10.H264.4K` (H.264 4K Top Speed Codec video editing)</li>
+<li>`Edit.TESHD-10.H265.SD` (H.265 SD Top Speed Codec video editing)</li>
+<li>`Edit.TESHD-10.H265.HD` (H.265 HD Top Speed Codec video editing)</li>
+<li>`Edit.TESHD-10.H265.FHD` (H.265 FHD Top Speed Codec video editing)</li>
+<li>`Edit.TESHD-10.H265.2K` (H.265 2K Top Speed Codec video editing)</li>
+<li>`Edit.TESHD-10.H265.4K` (H.265 4K Top Speed Codec video editing)</li>
+The watermark removal/remaster specifications. Valid values:
+<li>`480P` (short side ≤ 480 px)</li>
+<li>`720P` (short side ≤ 720 px)</li>
+<li>`1080P` (short side ≤ 1080 px)</li>
+<li>`2K` (short side ≤ 1440 px)</li>
+<li>`4K` (short side ≤ 2160 px)</li>
+<li>`8K` (short side ≤ 4320 px)</li>
+<li>`audio`</li>
         :type Details: list of SpecificationDataItem
         """
         self.TaskType = None

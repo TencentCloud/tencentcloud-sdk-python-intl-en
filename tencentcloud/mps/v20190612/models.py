@@ -190,10 +190,13 @@ class Activity(AbstractModel):
 <li>`action-image-sprite`: Image sprite generation.</li>
 <li>`action-snapshotByTimeOffset`: Time point screencapturing.</li>
 <li>`action-adaptive-substream`: Adaptive bitrate streaming.</li>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ActivityType: str
         :param ReardriveIndex: The indexes of the subsequent actions.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ReardriveIndex: list of int
         :param ActivityPara: The parameters of a subtask.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ActivityPara: :class:`tencentcloud.mps.v20190612.models.ActivityPara`
         """
         self.ActivityType = None
@@ -641,12 +644,16 @@ class AiAnalysisResult(AbstractModel):
         :type TagTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskTagResult`
         :param FrameTagTask: Query result of intelligent frame-specific tagging task in video content analysis, which is valid if task type is `FrameTag`.
         :type FrameTagTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskFrameTagResult`
+        :param HighlightTask: The result of a highlight generation task. This parameter is valid if `Type` is `Highlight`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type HighlightTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHighlightResult`
         """
         self.Type = None
         self.ClassificationTask = None
         self.CoverTask = None
         self.TagTask = None
         self.FrameTagTask = None
+        self.HighlightTask = None
 
 
     def _deserialize(self, params):
@@ -663,6 +670,9 @@ class AiAnalysisResult(AbstractModel):
         if params.get("FrameTagTask") is not None:
             self.FrameTagTask = AiAnalysisTaskFrameTagResult()
             self.FrameTagTask._deserialize(params.get("FrameTagTask"))
+        if params.get("HighlightTask") is not None:
+            self.HighlightTask = AiAnalysisTaskHighlightResult()
+            self.HighlightTask._deserialize(params.get("HighlightTask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -981,6 +991,110 @@ class AiAnalysisTaskFrameTagResult(AbstractModel):
         
 
 
+class AiAnalysisTaskHighlightInput(AbstractModel):
+    """The input of an intelligent highlight generation task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Definition: The ID of the intelligent highlight generation template.
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskHighlightOutput(AbstractModel):
+    """The output of an intelligent highlight generation task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param HighlightSet: A list of the highlight segments generated.
+        :type HighlightSet: list of MediaAiAnalysisHighlightItem
+        :param OutputStorage: The storage location of the highlight segments.
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        self.HighlightSet = None
+        self.OutputStorage = None
+
+
+    def _deserialize(self, params):
+        if params.get("HighlightSet") is not None:
+            self.HighlightSet = []
+            for item in params.get("HighlightSet"):
+                obj = MediaAiAnalysisHighlightItem()
+                obj._deserialize(item)
+                self.HighlightSet.append(obj)
+        if params.get("OutputStorage") is not None:
+            self.OutputStorage = TaskOutputStorage()
+            self.OutputStorage._deserialize(params.get("OutputStorage"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskHighlightResult(AbstractModel):
+    """The result of an intelligent highlight generation task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: The task status. Valid values: `PROCESSING`, `SUCCESS`, `FAIL`.
+        :type Status: str
+        :param ErrCode: Error code. `0`: The task succeeded; other values: The task failed.
+        :type ErrCode: int
+        :param Message: The error message.
+        :type Message: str
+        :param Input: The input of the intelligent highlight generation task.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHighlightInput`
+        :param Output: The output of the intelligent highlight generation task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHighlightOutput`
+        """
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiAnalysisTaskHighlightInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = AiAnalysisTaskHighlightOutput()
+            self.Output._deserialize(params.get("Output"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AiAnalysisTaskInput(AbstractModel):
     """AI video intelligent analysis input parameter types
 
@@ -1237,6 +1351,36 @@ class AiContentReviewTaskInput(AbstractModel):
 
     def _deserialize(self, params):
         self.Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiQualityControlTaskInput(AbstractModel):
+    """The parameters for a video quality control task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Definition: The ID of the quality control template.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Definition: int
+        :param ChannelExtPara: The channel extension parameter, which is a serialized JSON string.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ChannelExtPara: str
+        """
+        self.Definition = None
+        self.ChannelExtPara = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.ChannelExtPara = params.get("ChannelExtPara")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5303,7 +5447,8 @@ class CreateScheduleRequest(AbstractModel):
         :type Activities: list of Activity
         :param OutputStorage: The bucket to save the output file. If you do not specify this parameter, the bucket in `Trigger` will be used.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
-        :param OutputDir: The directory to save the output file, such as `/movie/201907/`. If you do not specify this parameter, the directory of the source file will be used.
+        :param OutputDir: The directory to save the media processing output file, which must start and end with `/`, such as `/movie/201907/`.
+If you do not specify this, the file will be saved to the trigger directory.
         :type OutputDir: str
         :param TaskNotifyConfig: The notification configuration. If you do not specify this parameter, notifications will not be sent.
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
@@ -5704,7 +5849,8 @@ class CreateWorkflowRequest(AbstractModel):
         :type Trigger: :class:`tencentcloud.mps.v20190612.models.WorkflowTrigger`
         :param OutputStorage: The location to save the output file of media processing. If this parameter is left empty, the storage location in `Trigger` will be inherited.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
-        :param OutputDir: The directory to save the media processing output file, such as `/movie/201907/`. If this parameter is left empty, the output file will be saved to the same directory where the source file is located.
+        :param OutputDir: The directory to save the media processing output file, which must start and end with `/`, such as `/movie/201907/`.
+If you do not specify this, the file will be saved to the trigger directory.
         :type OutputDir: str
         :param MediaProcessTask: The media processing parameters to use.
         :type MediaProcessTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskInput`
@@ -6973,10 +7119,15 @@ class DescribeSchedulesRequest(AbstractModel):
         r"""
         :param ScheduleIds: The IDs of the schemes to query. Array length limit: 100.
         :type ScheduleIds: list of int
+        :param TriggerType: The trigger type. Valid values:
+<li>`CosFileUpload`: The scheme is triggered when a file is uploaded to Tencent Cloud Object Storage (COS).</li>
+<li>`AwsS3FileUpload`: The scheme is triggered when a file is uploaded to AWS S3.</li>
+If you do not specify this parameter or leave it empty, all schemes will be returned regardless of the trigger type.
+        :type TriggerType: str
         :param Status: The scheme status. Valid values:
 <li>`Enabled`</li>
 <li>`Disabled`</li>
-If you do not specify this parameter, schemes in both statuses will be returned.
+If you do not specify this parameter, all schemes will be returned regardless of the status.
         :type Status: str
         :param Offset: The pagination offset. Default value: 0.
         :type Offset: int
@@ -6984,6 +7135,7 @@ If you do not specify this parameter, schemes in both statuses will be returned.
         :type Limit: int
         """
         self.ScheduleIds = None
+        self.TriggerType = None
         self.Status = None
         self.Offset = None
         self.Limit = None
@@ -6991,6 +7143,7 @@ If you do not specify this parameter, schemes in both statuses will be returned.
 
     def _deserialize(self, params):
         self.ScheduleIds = params.get("ScheduleIds")
+        self.TriggerType = params.get("TriggerType")
         self.Status = params.get("Status")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
@@ -8382,6 +8535,38 @@ class HeadTailParameter(AbstractModel):
         
 
 
+class HighlightSegmentItem(AbstractModel):
+    """The information of a highlight segment.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Confidence: The confidence score.
+        :type Confidence: float
+        :param StartTimeOffset: The start time offset of the segment.
+        :type StartTimeOffset: float
+        :param EndTimeOffset: The end time offset of the segment.
+        :type EndTimeOffset: float
+        """
+        self.Confidence = None
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ImageQualityEnhanceConfig(AbstractModel):
     """Overall enhancement configuration.
 
@@ -9017,11 +9202,11 @@ class LiveStreamAiReviewResultItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: The type of the moderation result. Valid values:
+        :param Type: The type of moderation result. Valid values:
 <li>ImagePorn</li>
 <li>ImageTerrorism</li>
 <li>ImagePolitical</li>
-<li>PornVoice (pornographic content in speech)</li>
+<li>VoicePorn</li>
         :type Type: str
         :param ImagePornResultSet: Result of porn information detection in image, which is valid when `Type` is `ImagePorn`.
         :type ImagePornResultSet: list of LiveStreamAiReviewImagePornResult
@@ -9029,7 +9214,7 @@ class LiveStreamAiReviewResultItem(AbstractModel):
         :type ImageTerrorismResultSet: list of LiveStreamAiReviewImageTerrorismResult
         :param ImagePoliticalResultSet: The result of detecting sensitive information in images, which is valid if `Type` is `ImagePolitical`.
         :type ImagePoliticalResultSet: list of LiveStreamAiReviewImagePoliticalResult
-        :param VoicePornResultSet: Result of porn information detection in speech, which is valid when `Type` is `PornVoice`.
+        :param VoicePornResultSet: The result for moderation of pornographic content in audio. This parameter is valid if `Type` is `VoicePorn`.
         :type VoicePornResultSet: list of LiveStreamAiReviewVoicePornResult
         """
         self.Type = None
@@ -9677,6 +9862,51 @@ class MediaAiAnalysisFrameTagSegmentItem(AbstractModel):
                 obj = MediaAiAnalysisFrameTagItem()
                 obj._deserialize(item)
                 self.TagSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MediaAiAnalysisHighlightItem(AbstractModel):
+    """The information of intelligently generated highlight segments.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param HighlightPath: The URL of the highlight segments.
+        :type HighlightPath: str
+        :param CovImgPath: The URL of the thumbnail.
+        :type CovImgPath: str
+        :param Confidence: The confidence score. Value range: 0-100.
+        :type Confidence: float
+        :param Duration: The duration of the highlights.
+        :type Duration: float
+        :param SegmentSet: A list of the highlight segments.
+        :type SegmentSet: list of HighlightSegmentItem
+        """
+        self.HighlightPath = None
+        self.CovImgPath = None
+        self.Confidence = None
+        self.Duration = None
+        self.SegmentSet = None
+
+
+    def _deserialize(self, params):
+        self.HighlightPath = params.get("HighlightPath")
+        self.CovImgPath = params.get("CovImgPath")
+        self.Confidence = params.get("Confidence")
+        self.Duration = params.get("Duration")
+        if params.get("SegmentSet") is not None:
+            self.SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = HighlightSegmentItem()
+                obj._deserialize(item)
+                self.SegmentSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11634,7 +11864,7 @@ Note: You need to pass in the full list of subtasks even if you want to change o
         :type Activities: list of Activity
         :param OutputStorage: The bucket to save the output file.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
-        :param OutputDir: The directory to save the output file.
+        :param OutputDir: The directory to save the media processing output file, which must start and end with `/`.
 Note: If this parameter is left empty, the current `OutputDir` value will be invalidated.
         :type OutputDir: str
         :param TaskNotifyConfig: The notification configuration.
@@ -12253,6 +12483,9 @@ class OverrideTranscodeParameter(AbstractModel):
         :type TEHDConfig: :class:`tencentcloud.mps.v20190612.models.TEHDConfigForUpdate`
         :param SubtitleTemplate: The subtitle settings.
         :type SubtitleTemplate: :class:`tencentcloud.mps.v20190612.models.SubtitleTemplate`
+        :param AddonAudioStream: The information of the external audio track to add.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AddonAudioStream: list of MediaInputInfo
         """
         self.Container = None
         self.RemoveVideo = None
@@ -12261,6 +12494,7 @@ class OverrideTranscodeParameter(AbstractModel):
         self.AudioTemplate = None
         self.TEHDConfig = None
         self.SubtitleTemplate = None
+        self.AddonAudioStream = None
 
 
     def _deserialize(self, params):
@@ -12279,6 +12513,12 @@ class OverrideTranscodeParameter(AbstractModel):
         if params.get("SubtitleTemplate") is not None:
             self.SubtitleTemplate = SubtitleTemplate()
             self.SubtitleTemplate._deserialize(params.get("SubtitleTemplate"))
+        if params.get("AddonAudioStream") is not None:
+            self.AddonAudioStream = []
+            for item in params.get("AddonAudioStream"):
+                obj = MediaInputInfo()
+                obj._deserialize(item)
+                self.AddonAudioStream.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13139,24 +13379,9 @@ class ProcessMediaRequest(AbstractModel):
         :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
         :param OutputStorage: The storage location of the media processing output file. If this parameter is left empty, the storage location in `InputInfo` will be inherited.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
-        :param OutputDir: The directory to save the media processing output file, such as `/movie/201907/`. If this parameter is left empty, the file will be saved to the directory in `InputInfo`.
+        :param OutputDir: The directory to save the media processing output file, which must start and end with `/`, such as `/movie/201907/`.
+If you do not specify this parameter, the file will be saved to the directory specified in `InputInfo`.
         :type OutputDir: str
-        :param MediaProcessTask: The media processing parameters to use.
-        :type MediaProcessTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskInput`
-        :param AiContentReviewTask: Type parameter of a video content audit task.
-        :type AiContentReviewTask: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
-        :param AiAnalysisTask: Video content analysis task parameter.
-        :type AiAnalysisTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
-        :param AiRecognitionTask: Type parameter of a video content recognition task.
-        :type AiRecognitionTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
-        :param TaskNotifyConfig: Event notification information of a task. If this parameter is left empty, no event notifications will be obtained.
-        :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
-        :param TasksPriority: Task flow priority. The higher the value, the higher the priority. Value range: [-10, 10]. If this parameter is left empty, 0 will be used.
-        :type TasksPriority: int
-        :param SessionId: The ID used for deduplication. If there was a request with the same ID in the last three days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or an empty string is entered, no deduplication will be performed.
-        :type SessionId: str
-        :param SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
-        :type SessionContext: str
         :param ScheduleId: The scheme ID.
 Note 1: About `OutputStorage` and `OutputDir`
 <li>If an output storage and directory are specified for a subtask of the scheme, those output settings will be applied.</li>
@@ -13165,6 +13390,24 @@ Note 2: If `TaskNotifyConfig` is specified, the specified settings will be used 
 
 Note 3: The trigger configured for a scheme is for automatically starting a scheme. It stops working when you manually call this API to start a scheme.
         :type ScheduleId: int
+        :param MediaProcessTask: The media processing parameters to use.
+        :type MediaProcessTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskInput`
+        :param AiContentReviewTask: Type parameter of a video content audit task.
+        :type AiContentReviewTask: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
+        :param AiAnalysisTask: Video content analysis task parameter.
+        :type AiAnalysisTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
+        :param AiRecognitionTask: Type parameter of a video content recognition task.
+        :type AiRecognitionTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
+        :param AiQualityControlTask: The parameters of a quality control task.
+        :type AiQualityControlTask: :class:`tencentcloud.mps.v20190612.models.AiQualityControlTaskInput`
+        :param TaskNotifyConfig: Event notification information of a task. If this parameter is left empty, no event notifications will be obtained.
+        :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        :param TasksPriority: Task flow priority. The higher the value, the higher the priority. Value range: [-10, 10]. If this parameter is left empty, 0 will be used.
+        :type TasksPriority: int
+        :param SessionId: The ID used for deduplication. If there was a request with the same ID in the last three days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or an empty string is entered, no deduplication will be performed.
+        :type SessionId: str
+        :param SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
+        :type SessionContext: str
         :param TaskType: The task type.
 <li> `Online` (default): A task that is executed immediately.</li>
 <li> `Offline`: A task that is executed when the system is idle (within three days by default).</li>
@@ -13173,15 +13416,16 @@ Note 3: The trigger configured for a scheme is for automatically starting a sche
         self.InputInfo = None
         self.OutputStorage = None
         self.OutputDir = None
+        self.ScheduleId = None
         self.MediaProcessTask = None
         self.AiContentReviewTask = None
         self.AiAnalysisTask = None
         self.AiRecognitionTask = None
+        self.AiQualityControlTask = None
         self.TaskNotifyConfig = None
         self.TasksPriority = None
         self.SessionId = None
         self.SessionContext = None
-        self.ScheduleId = None
         self.TaskType = None
 
 
@@ -13193,6 +13437,7 @@ Note 3: The trigger configured for a scheme is for automatically starting a sche
             self.OutputStorage = TaskOutputStorage()
             self.OutputStorage._deserialize(params.get("OutputStorage"))
         self.OutputDir = params.get("OutputDir")
+        self.ScheduleId = params.get("ScheduleId")
         if params.get("MediaProcessTask") is not None:
             self.MediaProcessTask = MediaProcessTaskInput()
             self.MediaProcessTask._deserialize(params.get("MediaProcessTask"))
@@ -13205,13 +13450,15 @@ Note 3: The trigger configured for a scheme is for automatically starting a sche
         if params.get("AiRecognitionTask") is not None:
             self.AiRecognitionTask = AiRecognitionTaskInput()
             self.AiRecognitionTask._deserialize(params.get("AiRecognitionTask"))
+        if params.get("AiQualityControlTask") is not None:
+            self.AiQualityControlTask = AiQualityControlTaskInput()
+            self.AiQualityControlTask._deserialize(params.get("AiQualityControlTask"))
         if params.get("TaskNotifyConfig") is not None:
             self.TaskNotifyConfig = TaskNotifyConfig()
             self.TaskNotifyConfig._deserialize(params.get("TaskNotifyConfig"))
         self.TasksPriority = params.get("TasksPriority")
         self.SessionId = params.get("SessionId")
         self.SessionContext = params.get("SessionContext")
-        self.ScheduleId = params.get("ScheduleId")
         self.TaskType = params.get("TaskType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -13434,6 +13681,138 @@ class ProhibitedOcrReviewTemplateInfoForUpdate(AbstractModel):
         self.Switch = params.get("Switch")
         self.BlockConfidence = params.get("BlockConfidence")
         self.ReviewConfidence = params.get("ReviewConfidence")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityControlData(AbstractModel):
+    """The quality check output.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NoAudio: Whether there is an audio track. `true` indicates that there isn't.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type NoAudio: bool
+        :param NoVideo: Whether there is a video track. `true` indicates that there isn't.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type NoVideo: bool
+        :param QualityEvaluationScore: The no-reference video quality score. Value range: 0-100.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type QualityEvaluationScore: int
+        :param QualityControlResultSet: The issues detected by quality control.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type QualityControlResultSet: list of QualityControlResult
+        """
+        self.NoAudio = None
+        self.NoVideo = None
+        self.QualityEvaluationScore = None
+        self.QualityControlResultSet = None
+
+
+    def _deserialize(self, params):
+        self.NoAudio = params.get("NoAudio")
+        self.NoVideo = params.get("NoVideo")
+        self.QualityEvaluationScore = params.get("QualityEvaluationScore")
+        if params.get("QualityControlResultSet") is not None:
+            self.QualityControlResultSet = []
+            for item in params.get("QualityControlResultSet"):
+                obj = QualityControlResult()
+                obj._deserialize(item)
+                self.QualityControlResultSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityControlItem(AbstractModel):
+    """The information of a checked segment in quality control.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Confidence: The confidence score. Value range: 0-100.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Confidence: int
+        :param StartTimeOffset: The start timestamp (second) of the segment.
+        :type StartTimeOffset: float
+        :param EndTimeOffset: The end timestamp (second) of the segment.
+        :type EndTimeOffset: float
+        :param AreaCoordSet: The coordinates (px) of the top left and bottom right corner.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AreaCoordSet: list of int
+        """
+        self.Confidence = None
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
+        self.AreaCoordSet = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
+        self.AreaCoordSet = params.get("AreaCoordSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityControlResult(AbstractModel):
+    """The issues detected by quality control.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: The issue type. Valid values:
+`Jitter`
+`Blur`
+`LowLighting`
+`HighLighting` (overexposure)
+`CrashScreen` (video corruption)
+`BlackWhiteEdge`
+`SolidColorScreen` (blank screen)
+`Noise`
+`Mosaic` (pixelation)
+`QRCode`
+`AppletCode` (Weixin Mini Program code)
+`BarCode`
+`LowVoice`
+`HighVoice`
+`NoVoice`
+`LowEvaluation` (low no-reference video quality score)
+        :type Type: str
+        :param QualityControlItems: The information of a checked segment in quality control.
+        :type QualityControlItems: list of QualityControlItem
+        """
+        self.Type = None
+        self.QualityControlItems = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        if params.get("QualityControlItems") is not None:
+            self.QualityControlItems = []
+            for item in params.get("QualityControlItems"):
+                obj = QualityControlItem()
+                obj._deserialize(item)
+                self.QualityControlItems.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13964,6 +14343,55 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class ScheduleQualityControlTaskResult(AbstractModel):
+    """The result of a quality control task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: The task status. Valid values: `PROCESSING`, `SUCCESS`, `FAIL`.
+        :type Status: str
+        :param ErrCodeExt: The error code. An empty string indicates the task is successful; any other value indicates the task has failed. For details, see [Error Codes](https://www.tencentcloud.com/document/product/1041/40249).
+        :type ErrCodeExt: str
+        :param ErrCode: The error code. `0` indicates the task is successful; other values indicate the task has failed. This parameter is not recommended. Please use `ErrCodeExt` instead.
+        :type ErrCode: int
+        :param Message: The error message.
+        :type Message: str
+        :param Input: The input of the quality control task.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiQualityControlTaskInput`
+        :param Output: The output of the quality control task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.QualityControlData`
+        """
+        self.Status = None
+        self.ErrCodeExt = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiQualityControlTaskInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = QualityControlData()
+            self.Output._deserialize(params.get("Output"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ScheduleRecognitionTaskResult(AbstractModel):
     """The result of a content recognition task of a scheme.
 
@@ -14081,6 +14509,10 @@ class ScheduleTask(AbstractModel):
 <li>PROCESSING</li>
 <li>FINISH</li>
         :type Status: str
+        :param ErrCode: If the value returned is not 0, there was a source error. If 0 is returned, refer to the error codes of the corresponding task type.
+        :type ErrCode: int
+        :param Message: If there was a source error, this parameter is the error message. For other errors, refer to the error messages of the corresponding task type.
+        :type Message: str
         :param InputInfo: The information of the file processed.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
@@ -14093,6 +14525,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         """
         self.TaskId = None
         self.Status = None
+        self.ErrCode = None
+        self.Message = None
         self.InputInfo = None
         self.MetaData = None
         self.ActivityResultSet = None
@@ -14101,6 +14535,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
         self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
         if params.get("InputInfo") is not None:
             self.InputInfo = MediaInputInfo()
             self.InputInfo._deserialize(params.get("InputInfo"))
@@ -16275,6 +16711,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type AiAnalysisResultSet: list of AiAnalysisResult
         :param AiRecognitionResultSet: Execution status and result of a video content recognition task.
         :type AiRecognitionResultSet: list of AiRecognitionResult
+        :param AiQualityControlTaskResult: The execution status and result of a quality control task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AiQualityControlTaskResult: :class:`tencentcloud.mps.v20190612.models.ScheduleQualityControlTaskResult`
         """
         self.TaskId = None
         self.Status = None
@@ -16286,6 +16725,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.AiContentReviewResultSet = None
         self.AiAnalysisResultSet = None
         self.AiRecognitionResultSet = None
+        self.AiQualityControlTaskResult = None
 
 
     def _deserialize(self, params):
@@ -16323,6 +16763,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = AiRecognitionResult()
                 obj._deserialize(item)
                 self.AiRecognitionResultSet.append(obj)
+        if params.get("AiQualityControlTaskResult") is not None:
+            self.AiQualityControlTaskResult = ScheduleQualityControlTaskResult()
+            self.AiQualityControlTaskResult._deserialize(params.get("AiQualityControlTaskResult"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

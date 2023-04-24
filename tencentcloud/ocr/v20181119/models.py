@@ -795,6 +795,551 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class RecognizeIndonesiaIDCardOCRRequest(AbstractModel):
+    """RecognizeIndonesiaIDCardOCR request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ImageBase64: The Base64-encoded value of an image.
+Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
+Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
+Either the `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` will be used.
+        :type ImageBase64: str
+        :param ImageUrl: The URL of the image.
+Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
+Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
+We recommend that you store the image in Tencent Cloud for higher download speed and stability.
+For a non-Tencent Cloud URL, the download speed and stability may be affected.
+        :type ImageUrl: str
+        :param ReturnHeadImage: Whether to return the identity photo.
+        :type ReturnHeadImage: bool
+        :param Scene: The scene, which defaults to `V1`.
+Valid values:
+V1
+V2
+        :type Scene: str
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+        self.ReturnHeadImage = None
+        self.Scene = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+        self.ReturnHeadImage = params.get("ReturnHeadImage")
+        self.Scene = params.get("Scene")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecognizeIndonesiaIDCardOCRResponse(AbstractModel):
+    """RecognizeIndonesiaIDCardOCR response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NIK: The Single Identity Number.
+        :type NIK: str
+        :param Nama: The full name.
+        :type Nama: str
+        :param TempatTglLahir: The place and date of birth.
+        :type TempatTglLahir: str
+        :param JenisKelamin: The gender.
+        :type JenisKelamin: str
+        :param GolDarah: The blood type.
+        :type GolDarah: str
+        :param Alamat: The address.
+        :type Alamat: str
+        :param RTRW: The street.
+        :type RTRW: str
+        :param KelDesa: The village.
+        :type KelDesa: str
+        :param Kecamatan: The region.
+        :type Kecamatan: str
+        :param Agama: The religion.
+        :type Agama: str
+        :param StatusPerkawinan: The marital status.
+        :type StatusPerkawinan: str
+        :param Perkerjaan: The occupation.
+        :type Perkerjaan: str
+        :param KewargaNegaraan: The nationality.
+        :type KewargaNegaraan: str
+        :param BerlakuHingga: The expiry date.
+        :type BerlakuHingga: str
+        :param IssuedDate: The issue date.
+        :type IssuedDate: str
+        :param Photo: The photo.
+        :type Photo: str
+        :param Provinsi: The province, which is supported when the value of `Scene` is `V2`.
+        :type Provinsi: str
+        :param Kota: The city, which is supported when the value of `Scene` is `V2`.
+        :type Kota: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.NIK = None
+        self.Nama = None
+        self.TempatTglLahir = None
+        self.JenisKelamin = None
+        self.GolDarah = None
+        self.Alamat = None
+        self.RTRW = None
+        self.KelDesa = None
+        self.Kecamatan = None
+        self.Agama = None
+        self.StatusPerkawinan = None
+        self.Perkerjaan = None
+        self.KewargaNegaraan = None
+        self.BerlakuHingga = None
+        self.IssuedDate = None
+        self.Photo = None
+        self.Provinsi = None
+        self.Kota = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.NIK = params.get("NIK")
+        self.Nama = params.get("Nama")
+        self.TempatTglLahir = params.get("TempatTglLahir")
+        self.JenisKelamin = params.get("JenisKelamin")
+        self.GolDarah = params.get("GolDarah")
+        self.Alamat = params.get("Alamat")
+        self.RTRW = params.get("RTRW")
+        self.KelDesa = params.get("KelDesa")
+        self.Kecamatan = params.get("Kecamatan")
+        self.Agama = params.get("Agama")
+        self.StatusPerkawinan = params.get("StatusPerkawinan")
+        self.Perkerjaan = params.get("Perkerjaan")
+        self.KewargaNegaraan = params.get("KewargaNegaraan")
+        self.BerlakuHingga = params.get("BerlakuHingga")
+        self.IssuedDate = params.get("IssuedDate")
+        self.Photo = params.get("Photo")
+        self.Provinsi = params.get("Provinsi")
+        self.Kota = params.get("Kota")
+        self.RequestId = params.get("RequestId")
+
+
+class RecognizePhilippinesDrivingLicenseOCRRequest(AbstractModel):
+    """RecognizePhilippinesDrivingLicenseOCR request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ImageBase64: The Base64-encoded value of an image.
+Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
+Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
+Either the `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` will be used.
+        :type ImageBase64: str
+        :param ImageUrl: The URL of the image.
+Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
+Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
+We recommend that you store the image in Tencent Cloud for higher download speed and stability.
+For a non-Tencent Cloud URL, the download speed and stability may be affected.
+        :type ImageUrl: str
+        :param ReturnHeadImage: Whether to return the identity photo.
+        :type ReturnHeadImage: bool
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+        self.ReturnHeadImage = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+        self.ReturnHeadImage = params.get("ReturnHeadImage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecognizePhilippinesDrivingLicenseOCRResponse(AbstractModel):
+    """RecognizePhilippinesDrivingLicenseOCR response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param HeadPortrait: The Base64-encoded identity photo.
+        :type HeadPortrait: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param Name: The full name.
+        :type Name: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param LastName: The last name.
+        :type LastName: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param FirstName: The first name.
+        :type FirstName: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param MiddleName: The middle name.
+        :type MiddleName: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param Nationality: The nationality.
+        :type Nationality: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param Sex: The gender.
+        :type Sex: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param Address: The address.
+        :type Address: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param LicenseNo: The license No.
+        :type LicenseNo: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param ExpiresDate: The expiration date.
+        :type ExpiresDate: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param AgencyCode: The agency code.
+        :type AgencyCode: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param Birthday: The date of birth.
+        :type Birthday: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.HeadPortrait = None
+        self.Name = None
+        self.LastName = None
+        self.FirstName = None
+        self.MiddleName = None
+        self.Nationality = None
+        self.Sex = None
+        self.Address = None
+        self.LicenseNo = None
+        self.ExpiresDate = None
+        self.AgencyCode = None
+        self.Birthday = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("HeadPortrait") is not None:
+            self.HeadPortrait = TextDetectionResult()
+            self.HeadPortrait._deserialize(params.get("HeadPortrait"))
+        if params.get("Name") is not None:
+            self.Name = TextDetectionResult()
+            self.Name._deserialize(params.get("Name"))
+        if params.get("LastName") is not None:
+            self.LastName = TextDetectionResult()
+            self.LastName._deserialize(params.get("LastName"))
+        if params.get("FirstName") is not None:
+            self.FirstName = TextDetectionResult()
+            self.FirstName._deserialize(params.get("FirstName"))
+        if params.get("MiddleName") is not None:
+            self.MiddleName = TextDetectionResult()
+            self.MiddleName._deserialize(params.get("MiddleName"))
+        if params.get("Nationality") is not None:
+            self.Nationality = TextDetectionResult()
+            self.Nationality._deserialize(params.get("Nationality"))
+        if params.get("Sex") is not None:
+            self.Sex = TextDetectionResult()
+            self.Sex._deserialize(params.get("Sex"))
+        if params.get("Address") is not None:
+            self.Address = TextDetectionResult()
+            self.Address._deserialize(params.get("Address"))
+        if params.get("LicenseNo") is not None:
+            self.LicenseNo = TextDetectionResult()
+            self.LicenseNo._deserialize(params.get("LicenseNo"))
+        if params.get("ExpiresDate") is not None:
+            self.ExpiresDate = TextDetectionResult()
+            self.ExpiresDate._deserialize(params.get("ExpiresDate"))
+        if params.get("AgencyCode") is not None:
+            self.AgencyCode = TextDetectionResult()
+            self.AgencyCode._deserialize(params.get("AgencyCode"))
+        if params.get("Birthday") is not None:
+            self.Birthday = TextDetectionResult()
+            self.Birthday._deserialize(params.get("Birthday"))
+        self.RequestId = params.get("RequestId")
+
+
+class RecognizePhilippinesSssIDOCRRequest(AbstractModel):
+    """RecognizePhilippinesSssIDOCR request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ReturnHeadImage: Whether to return the identity photo.
+        :type ReturnHeadImage: bool
+        :param ImageBase64: The Base64-encoded value of an image.
+Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
+Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
+Either the `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` will be used.
+        :type ImageBase64: str
+        :param ImageUrl: The URL of the image.
+Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
+Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
+We recommend that you store the image in Tencent Cloud for higher download speed and stability.
+For a non-Tencent Cloud URL, the download speed and stability may be affected.
+        :type ImageUrl: str
+        """
+        self.ReturnHeadImage = None
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.ReturnHeadImage = params.get("ReturnHeadImage")
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecognizePhilippinesSssIDOCRResponse(AbstractModel):
+    """RecognizePhilippinesSssIDOCR response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param HeadPortrait: The Base64-encoded identity photo.
+        :type HeadPortrait: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param LicenseNumber: The common reference number (CRN).
+        :type LicenseNumber: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param FullName: The full name.
+        :type FullName: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param Birthday: The date of birth.
+        :type Birthday: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.HeadPortrait = None
+        self.LicenseNumber = None
+        self.FullName = None
+        self.Birthday = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("HeadPortrait") is not None:
+            self.HeadPortrait = TextDetectionResult()
+            self.HeadPortrait._deserialize(params.get("HeadPortrait"))
+        if params.get("LicenseNumber") is not None:
+            self.LicenseNumber = TextDetectionResult()
+            self.LicenseNumber._deserialize(params.get("LicenseNumber"))
+        if params.get("FullName") is not None:
+            self.FullName = TextDetectionResult()
+            self.FullName._deserialize(params.get("FullName"))
+        if params.get("Birthday") is not None:
+            self.Birthday = TextDetectionResult()
+            self.Birthday._deserialize(params.get("Birthday"))
+        self.RequestId = params.get("RequestId")
+
+
+class RecognizePhilippinesTinIDOCRRequest(AbstractModel):
+    """RecognizePhilippinesTinIDOCR request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ReturnHeadImage: Whether to return the identity photo.
+        :type ReturnHeadImage: bool
+        :param ImageBase64: The Base64-encoded value of an image.
+Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
+Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
+Either the `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` will be used.
+        :type ImageBase64: str
+        :param ImageUrl: The URL of the image.
+Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
+Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
+We recommend that you store the image in Tencent Cloud for higher download speed and stability.
+For a non-Tencent Cloud URL, the download speed and stability may be affected.
+        :type ImageUrl: str
+        """
+        self.ReturnHeadImage = None
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.ReturnHeadImage = params.get("ReturnHeadImage")
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecognizePhilippinesTinIDOCRResponse(AbstractModel):
+    """RecognizePhilippinesTinIDOCR response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param HeadPortrait: The Base64-encoded identity photo.
+        :type HeadPortrait: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param LicenseNumber: The tax identification number (TIN).
+        :type LicenseNumber: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param FullName: The name.
+        :type FullName: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param Address: The address.
+        :type Address: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param Birthday: The birth date.
+        :type Birthday: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param IssueDate: The issue date.
+        :type IssueDate: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.HeadPortrait = None
+        self.LicenseNumber = None
+        self.FullName = None
+        self.Address = None
+        self.Birthday = None
+        self.IssueDate = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("HeadPortrait") is not None:
+            self.HeadPortrait = TextDetectionResult()
+            self.HeadPortrait._deserialize(params.get("HeadPortrait"))
+        if params.get("LicenseNumber") is not None:
+            self.LicenseNumber = TextDetectionResult()
+            self.LicenseNumber._deserialize(params.get("LicenseNumber"))
+        if params.get("FullName") is not None:
+            self.FullName = TextDetectionResult()
+            self.FullName._deserialize(params.get("FullName"))
+        if params.get("Address") is not None:
+            self.Address = TextDetectionResult()
+            self.Address._deserialize(params.get("Address"))
+        if params.get("Birthday") is not None:
+            self.Birthday = TextDetectionResult()
+            self.Birthday._deserialize(params.get("Birthday"))
+        if params.get("IssueDate") is not None:
+            self.IssueDate = TextDetectionResult()
+            self.IssueDate._deserialize(params.get("IssueDate"))
+        self.RequestId = params.get("RequestId")
+
+
+class RecognizePhilippinesVoteIDOCRRequest(AbstractModel):
+    """RecognizePhilippinesVoteIDOCR request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ReturnHeadImage: Whether to return the identity photo.
+        :type ReturnHeadImage: bool
+        :param ImageBase64: The Base64-encoded value of an image.
+Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
+Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
+Either the `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` will be used.
+        :type ImageBase64: str
+        :param ImageUrl: The URL of the image.
+Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
+Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
+We recommend that you store the image in Tencent Cloud for higher download speed and stability.
+For a non-Tencent Cloud URL, the download speed and stability may be affected.
+        :type ImageUrl: str
+        """
+        self.ReturnHeadImage = None
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.ReturnHeadImage = params.get("ReturnHeadImage")
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecognizePhilippinesVoteIDOCRResponse(AbstractModel):
+    """RecognizePhilippinesVoteIDOCR response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param HeadPortrait: The Base64-encoded identity photo.
+        :type HeadPortrait: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param VIN: The voter's identification number (VIN).
+        :type VIN: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param FirstName: The first name.
+        :type FirstName: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param LastName: The last name.
+        :type LastName: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param Birthday: The date of birth.
+        :type Birthday: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param CivilStatus: The civil status.
+        :type CivilStatus: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param Citizenship: The citizenship.
+        :type Citizenship: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param Address: The address.
+        :type Address: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param PrecinctNo: The precinct.
+        :type PrecinctNo: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.HeadPortrait = None
+        self.VIN = None
+        self.FirstName = None
+        self.LastName = None
+        self.Birthday = None
+        self.CivilStatus = None
+        self.Citizenship = None
+        self.Address = None
+        self.PrecinctNo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("HeadPortrait") is not None:
+            self.HeadPortrait = TextDetectionResult()
+            self.HeadPortrait._deserialize(params.get("HeadPortrait"))
+        if params.get("VIN") is not None:
+            self.VIN = TextDetectionResult()
+            self.VIN._deserialize(params.get("VIN"))
+        if params.get("FirstName") is not None:
+            self.FirstName = TextDetectionResult()
+            self.FirstName._deserialize(params.get("FirstName"))
+        if params.get("LastName") is not None:
+            self.LastName = TextDetectionResult()
+            self.LastName._deserialize(params.get("LastName"))
+        if params.get("Birthday") is not None:
+            self.Birthday = TextDetectionResult()
+            self.Birthday._deserialize(params.get("Birthday"))
+        if params.get("CivilStatus") is not None:
+            self.CivilStatus = TextDetectionResult()
+            self.CivilStatus._deserialize(params.get("CivilStatus"))
+        if params.get("Citizenship") is not None:
+            self.Citizenship = TextDetectionResult()
+            self.Citizenship._deserialize(params.get("Citizenship"))
+        if params.get("Address") is not None:
+            self.Address = TextDetectionResult()
+            self.Address._deserialize(params.get("Address"))
+        if params.get("PrecinctNo") is not None:
+            self.PrecinctNo = TextDetectionResult()
+            self.PrecinctNo._deserialize(params.get("PrecinctNo"))
+        self.RequestId = params.get("RequestId")
+
+
 class TableOCRRequest(AbstractModel):
     """TableOCR request structure.
 
@@ -918,6 +1463,39 @@ The paragraph information `Parag` returned by the `GeneralBasicOcr` API contains
                 obj = DetectedWordCoordPoint()
                 obj._deserialize(item)
                 self.WordCoordPoint.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TextDetectionResult(AbstractModel):
+    """Recognition result
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Value: The recognized text line content.
+        :type Value: str
+        :param Polygon: The coordinates, represented in the coordinates of the four points.
+        :type Polygon: list of Coord
+        """
+        self.Value = None
+        self.Polygon = None
+
+
+    def _deserialize(self, params):
+        self.Value = params.get("Value")
+        if params.get("Polygon") is not None:
+            self.Polygon = []
+            for item in params.get("Polygon"):
+                obj = Coord()
+                obj._deserialize(item)
+                self.Polygon.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -298,7 +298,7 @@ class VodClient(AbstractClient):
 
 
     def CreateImageProcessingTemplate(self, request):
-        """This API is used to create a custom image processing template. You can create up to 16 templates, and each template can contain up to three operations, for example, cropping, scaling, and cropping again.
+        """This API is used to create a custom image processing template. A template can include at most 10 operations, for example, crop-scale-crop-blur-scale-crop-scale-crop-blur-scale. You can have up to 16 image processing templates.
 
         :param request: Request instance for CreateImageProcessingTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.CreateImageProcessingTemplateRequest`
@@ -380,6 +380,29 @@ class VodClient(AbstractClient):
             body = self.call("CreateProcedureTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.CreateProcedureTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateRebuildMediaTemplate(self, request):
+        """This API is used to create a remaster template.
+
+        :param request: Request instance for CreateRebuildMediaTemplate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateRebuildMediaTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateRebuildMediaTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateRebuildMediaTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateRebuildMediaTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -899,6 +922,29 @@ class VodClient(AbstractClient):
             body = self.call("DeleteProcedureTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteProcedureTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteRebuildMediaTemplate(self, request):
+        """This API is used to delete a remaster template.
+
+        :param request: Request instance for DeleteRebuildMediaTemplate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DeleteRebuildMediaTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DeleteRebuildMediaTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRebuildMediaTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteRebuildMediaTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1661,6 +1707,29 @@ class VodClient(AbstractClient):
             body = self.call("DescribeProcedureTemplates", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeProcedureTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRebuildMediaTemplates(self, request):
+        """This API is used to query remaster templates.
+
+        :param request: Request instance for DescribeRebuildMediaTemplates.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeRebuildMediaTemplatesRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeRebuildMediaTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRebuildMediaTemplates", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRebuildMediaTemplatesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2460,6 +2529,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyRebuildMediaTemplate(self, request):
+        """This API is used to modify a remaster template.
+
+        :param request: Request instance for ModifyRebuildMediaTemplate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ModifyRebuildMediaTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ModifyRebuildMediaTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRebuildMediaTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyRebuildMediaTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyReviewTemplate(self, request):
         """This API is used to modify a custom moderation template.
         > The templates can only be used by the APIs [ReviewAudioVideo](https://intl.cloud.tencent.com/document/api/266/80283?from_cn_redirect=1) and [ReviewImage](https://intl.cloud.tencent.com/document/api/266/73217?from_cn_redirect=1).
@@ -2950,6 +3042,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def RebuildMediaByTemplate(self, request):
+        """This API is used to start a remaster task using a template.
+
+        :param request: Request instance for RebuildMediaByTemplate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.RebuildMediaByTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.RebuildMediaByTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RebuildMediaByTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.RebuildMediaByTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RefreshUrlCache(self, request):
         """1. This API is used to purge URLs.
         2. The URL domain names must have already been registered with VOD.
@@ -3103,6 +3218,8 @@ class VodClient(AbstractClient):
         - Specify the types (`Categories`) of media files. Any file that matches one of the types will be returned. There are three file types: `Video`, `Audio`, and `Image`. If `Categories` is set to `Video` and `Audio`, all audio and video files will be returned.
         - Specify the source types (`SourceTypes`). Any file that matches one of the source types specified will be returned. For example, if you set `SourceTypes` to `Record` (live recording) and `Upload` (upload), all recording files and uploaded files will be returned.
         - Specify the file formats (`MediaTypes`), such as MP4, AVI, and MP3. All files in the specified formats will be returned. For example, if you set `MediaTypes` to MP4 and MP3, all files in these two formats will be returned.
+        - Specify the file statuses (`Status`). Files in the specified statuses will be returned. Valid values: `Normal`, `SystemForbidden` (blocked by VOD), `Forbidden` (blocked by you). If you set `Status` to `Normal` and `Forbidden`, files in either status will be returned.
+        - Specify the types of moderation results (`ReviewResults`). Files that have the specified types of moderation results will be returned. Valid values include `pass`, `block`, and more. If you set `ReviewResults` to `pass` and `block`, files whose moderation result is "pass" or "block" will be returned.
         - Specify the stream IDs (`StreamIds`) of live recording files.
         - Specify a time range for search by file creation time.
         - Specify the TRTC application IDs.
