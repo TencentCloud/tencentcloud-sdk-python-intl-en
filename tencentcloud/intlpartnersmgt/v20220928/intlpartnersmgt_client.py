@@ -80,6 +80,75 @@ class IntlpartnersmgtClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBillSummaryByPayMode(self, request):
+        """This API is used to obtain the total amount of customer bills by payment mode.
+
+        :param request: Request instance for DescribeBillSummaryByPayMode.
+        :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeBillSummaryByPayModeRequest`
+        :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeBillSummaryByPayModeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBillSummaryByPayMode", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBillSummaryByPayModeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBillSummaryByProduct(self, request):
+        """This API is used to obtain the total amount of customer bills by product.
+
+        :param request: Request instance for DescribeBillSummaryByProduct.
+        :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeBillSummaryByProductRequest`
+        :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeBillSummaryByProductResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBillSummaryByProduct", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBillSummaryByProductResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBillSummaryByRegion(self, request):
+        """This API is used to obtain the total amount of customer bills by region.
+
+        :param request: Request instance for DescribeBillSummaryByRegion.
+        :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeBillSummaryByRegionRequest`
+        :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeBillSummaryByRegionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBillSummaryByRegion", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBillSummaryByRegionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCustomerBillDetail(self, request):
         """This API is used to query the customer bill details.
 

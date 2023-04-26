@@ -68,6 +68,9 @@ INVALIDPARAMETERVALUE_AREAEMPTY = 'InvalidParameterValue.AreaEmpty'
 # InvalidParameterValue.CountryCodeEmpty
 INVALIDPARAMETERVALUE_COUNTRYCODEEMPTY = 'InvalidParameterValue.CountryCodeEmpty'
 
+# Incorrect month value
+INVALIDPARAMETERVALUE_INVALIDMONTH = 'InvalidParameterValue.InvalidMonth'
+
 # InvalidParameterValue.MailEmpty
 INVALIDPARAMETERVALUE_MAILEMPTY = 'InvalidParameterValue.MailEmpty'
 
@@ -88,6 +91,9 @@ REQUESTLIMITEXCEEDED = 'RequestLimitExceeded'
 
 # Unauthorized operation.
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
+
+# The current user is not a customer.
+UNAUTHORIZEDOPERATION_NOTCUSTOMERUIN = 'UnauthorizedOperation.NotCustomerUin'
 
 # The current user doesn’t have permission for the operation.
 UNAUTHORIZEDOPERATION_UINNOAUTH = 'UnauthorizedOperation.UinNoAuth'

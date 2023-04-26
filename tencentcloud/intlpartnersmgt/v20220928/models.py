@@ -18,6 +18,51 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ActionSummaryOverviewItem(AbstractModel):
+    """Transaction type details in the customer bill data totaled by payment mode
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ActionType: Transaction type code
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ActionType: str
+        :param ActionTypeName: Transaction type name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ActionTypeName: str
+        :param OriginalCost: The actual total consumption amount accurate down to eight decimal places
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OriginalCost: str
+        :param VoucherPayAmount: The deducted voucher amount accurate down to eight decimal places
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VoucherPayAmount: str
+        :param TotalCost: Total consumption amount accurate down to eight decimal places
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TotalCost: str
+        """
+        self.ActionType = None
+        self.ActionTypeName = None
+        self.OriginalCost = None
+        self.VoucherPayAmount = None
+        self.TotalCost = None
+
+
+    def _deserialize(self, params):
+        self.ActionType = params.get("ActionType")
+        self.ActionTypeName = params.get("ActionTypeName")
+        self.OriginalCost = params.get("OriginalCost")
+        self.VoucherPayAmount = params.get("VoucherPayAmount")
+        self.TotalCost = params.get("TotalCost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AllocateCustomerCreditRequest(AbstractModel):
     """AllocateCustomerCredit request structure.
 
@@ -248,6 +293,51 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class BusinessSummaryOverviewItem(AbstractModel):
+    """Product details in the customer bill data totaled by product
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BusinessCode: Product code
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BusinessCode: str
+        :param BusinessCodeName: Product name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BusinessCodeName: str
+        :param OriginalCost: List price accurate down to eight decimal places
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OriginalCost: str
+        :param VoucherPayAmount: The deducted voucher amount accurate down to eight decimal places
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VoucherPayAmount: str
+        :param TotalCost: Consumption amount accurate down to eight decimal places
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TotalCost: str
+        """
+        self.BusinessCode = None
+        self.BusinessCodeName = None
+        self.OriginalCost = None
+        self.VoucherPayAmount = None
+        self.TotalCost = None
+
+
+    def _deserialize(self, params):
+        self.BusinessCode = params.get("BusinessCode")
+        self.BusinessCodeName = params.get("BusinessCodeName")
+        self.OriginalCost = params.get("OriginalCost")
+        self.VoucherPayAmount = params.get("VoucherPayAmount")
+        self.TotalCost = params.get("TotalCost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CountryCodeItem(AbstractModel):
     """Element type of the `GetCountryCodes` API
 
@@ -362,6 +452,171 @@ class CreateAccountResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Uin = params.get("Uin")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBillSummaryByPayModeRequest(AbstractModel):
+    """DescribeBillSummaryByPayMode request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BillMonth: Bill month in the format of "yyyy-MM"
+        :type BillMonth: str
+        :param CustomerUin: Customer UIN
+        :type CustomerUin: int
+        """
+        self.BillMonth = None
+        self.CustomerUin = None
+
+
+    def _deserialize(self, params):
+        self.BillMonth = params.get("BillMonth")
+        self.CustomerUin = params.get("CustomerUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBillSummaryByPayModeResponse(AbstractModel):
+    """DescribeBillSummaryByPayMode response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SummaryOverview: Payment mode details in the customer bill data totaled by payment mode
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SummaryOverview: list of PayModeSummaryOverviewItem
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SummaryOverview = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SummaryOverview") is not None:
+            self.SummaryOverview = []
+            for item in params.get("SummaryOverview"):
+                obj = PayModeSummaryOverviewItem()
+                obj._deserialize(item)
+                self.SummaryOverview.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBillSummaryByProductRequest(AbstractModel):
+    """DescribeBillSummaryByProduct request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BillMonth: Bill month in the format of "yyyy-MM"
+        :type BillMonth: str
+        :param CustomerUin: Customer UIN
+        :type CustomerUin: int
+        """
+        self.BillMonth = None
+        self.CustomerUin = None
+
+
+    def _deserialize(self, params):
+        self.BillMonth = params.get("BillMonth")
+        self.CustomerUin = params.get("CustomerUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBillSummaryByProductResponse(AbstractModel):
+    """DescribeBillSummaryByProduct response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SummaryOverview: Bill details from the product dimension
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SummaryOverview: list of BusinessSummaryOverviewItem
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SummaryOverview = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SummaryOverview") is not None:
+            self.SummaryOverview = []
+            for item in params.get("SummaryOverview"):
+                obj = BusinessSummaryOverviewItem()
+                obj._deserialize(item)
+                self.SummaryOverview.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBillSummaryByRegionRequest(AbstractModel):
+    """DescribeBillSummaryByRegion request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BillMonth: Bill month in the format of "yyyy-MM"
+        :type BillMonth: str
+        :param CustomerUin: Customer UIN
+        :type CustomerUin: int
+        """
+        self.BillMonth = None
+        self.CustomerUin = None
+
+
+    def _deserialize(self, params):
+        self.BillMonth = params.get("BillMonth")
+        self.CustomerUin = params.get("CustomerUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBillSummaryByRegionResponse(AbstractModel):
+    """DescribeBillSummaryByRegion response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SummaryOverview: Region details in the customer bill data totaled by region
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SummaryOverview: list of RegionSummaryOverviewItem
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SummaryOverview = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SummaryOverview") is not None:
+            self.SummaryOverview = []
+            for item in params.get("SummaryOverview"):
+                obj = RegionSummaryOverviewItem()
+                obj._deserialize(item)
+                self.SummaryOverview.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -595,6 +850,61 @@ class GetCountryCodesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Data.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class PayModeSummaryOverviewItem(AbstractModel):
+    """Payment mode details in the customer bill data totaled by payment mode
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PayMode: Billing mode
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PayMode: str
+        :param PayModeName: Billing mode name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PayModeName: str
+        :param OriginalCost: The actual total consumption amount accurate down to eight decimal places
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OriginalCost: str
+        :param Detail: Bill details in each payment mode
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Detail: list of ActionSummaryOverviewItem
+        :param VoucherPayAmount: The deducted voucher amount accurate down to eight decimal places
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VoucherPayAmount: str
+        :param TotalCost: Total consumption amount accurate down to eight decimal places
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TotalCost: str
+        """
+        self.PayMode = None
+        self.PayModeName = None
+        self.OriginalCost = None
+        self.Detail = None
+        self.VoucherPayAmount = None
+        self.TotalCost = None
+
+
+    def _deserialize(self, params):
+        self.PayMode = params.get("PayMode")
+        self.PayModeName = params.get("PayModeName")
+        self.OriginalCost = params.get("OriginalCost")
+        if params.get("Detail") is not None:
+            self.Detail = []
+            for item in params.get("Detail"):
+                obj = ActionSummaryOverviewItem()
+                obj._deserialize(item)
+                self.Detail.append(obj)
+        self.VoucherPayAmount = params.get("VoucherPayAmount")
+        self.TotalCost = params.get("TotalCost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class QueryCreditAllocationHistoryData(AbstractModel):
@@ -1239,3 +1549,48 @@ class QueryVoucherPoolResponse(AbstractModel):
         self.RemainingQuota = params.get("RemainingQuota")
         self.IssuedNum = params.get("IssuedNum")
         self.RequestId = params.get("RequestId")
+
+
+class RegionSummaryOverviewItem(AbstractModel):
+    """Region details in the customer bill data totaled by region
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RegionId: Region ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RegionId: str
+        :param RegionName: Region name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RegionName: str
+        :param OriginalCost: The actual total consumption amount accurate down to eight decimal places
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OriginalCost: str
+        :param VoucherPayAmount: The deducted voucher amount accurate down to eight decimal places
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VoucherPayAmount: str
+        :param TotalCost: Total consumption amount accurate down to eight decimal places
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TotalCost: str
+        """
+        self.RegionId = None
+        self.RegionName = None
+        self.OriginalCost = None
+        self.VoucherPayAmount = None
+        self.TotalCost = None
+
+
+    def _deserialize(self, params):
+        self.RegionId = params.get("RegionId")
+        self.RegionName = params.get("RegionName")
+        self.OriginalCost = params.get("OriginalCost")
+        self.VoucherPayAmount = params.get("VoucherPayAmount")
+        self.TotalCost = params.get("TotalCost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        

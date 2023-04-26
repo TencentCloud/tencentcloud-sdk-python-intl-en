@@ -165,7 +165,7 @@ class TagClient(AbstractClient):
 
 
     def DeleteTags(self, request):
-        """This API is used to delete multiple tag key-value pairs.
+        """This API is used to delete tag keys and tag values in batches.
 
         :param request: Request instance for DeleteTags.
         :type request: :class:`tencentcloud.tag.v20180813.models.DeleteTagsRequest`
@@ -178,6 +178,29 @@ class TagClient(AbstractClient):
             body = self.call("DeleteTags", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteTagsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeProjects(self, request):
+        """This API is used to get project lists.
+
+        :param request: Request instance for DescribeProjects.
+        :type request: :class:`tencentcloud.tag.v20180813.models.DescribeProjectsRequest`
+        :rtype: :class:`tencentcloud.tag.v20180813.models.DescribeProjectsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeProjects", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeProjectsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

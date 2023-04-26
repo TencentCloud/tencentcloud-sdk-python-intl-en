@@ -7732,11 +7732,14 @@ class DescribePrometheusClusterAgentsResponse(AbstractModel):
         :type Agents: list of PrometheusAgentOverview
         :param Total: The total number of the associated clusters
         :type Total: int
+        :param IsFirstBind: Whether the TMP instance is associated with the cluster for the first time. If so, you need to configure recording rules for it. This also applies if it has no default recording rule.
+        :type IsFirstBind: bool
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.Agents = None
         self.Total = None
+        self.IsFirstBind = None
         self.RequestId = None
 
 
@@ -7748,6 +7751,7 @@ class DescribePrometheusClusterAgentsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Agents.append(obj)
         self.Total = params.get("Total")
+        self.IsFirstBind = params.get("IsFirstBind")
         self.RequestId = params.get("RequestId")
 
 
@@ -9490,16 +9494,24 @@ class Filter(AbstractModel):
         :type Key: str
         :param Value: Filter value. For the `in` filter method, separate multiple values by comma.
         :type Value: str
+        :param Name: Filter name
+        :type Name: str
+        :param Values: Filter value range
+        :type Values: list of str
         """
         self.Type = None
         self.Key = None
         self.Value = None
+        self.Name = None
+        self.Values = None
 
 
     def _deserialize(self, params):
         self.Type = params.get("Type")
         self.Key = params.get("Key")
         self.Value = params.get("Value")
+        self.Name = params.get("Name")
+        self.Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12855,6 +12867,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type BoundTotal: int
         :param BoundNormal: Total number of bound clusters in the normal status
         :type BoundNormal: int
+        :param ResourcePackageStatus: Resource pack status (`0`: Unavailable; `1`: Available)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ResourcePackageStatus: int
+        :param ResourcePackageSpecName: Resource pack specification name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ResourcePackageSpecName: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -12871,6 +12889,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.AutoRenewFlag = None
         self.BoundTotal = None
         self.BoundNormal = None
+        self.ResourcePackageStatus = None
+        self.ResourcePackageSpecName = None
 
 
     def _deserialize(self, params):
@@ -12889,6 +12909,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.AutoRenewFlag = params.get("AutoRenewFlag")
         self.BoundTotal = params.get("BoundTotal")
         self.BoundNormal = params.get("BoundNormal")
+        self.ResourcePackageStatus = params.get("ResourcePackageStatus")
+        self.ResourcePackageSpecName = params.get("ResourcePackageSpecName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -14,6 +14,9 @@
 # limitations under the License.
 
 
+# Error with CAM signature/authentication.
+AUTHFAILURE = 'AuthFailure'
+
 # CAM authentication failed.
 AUTHFAILURE_UNAUTHORIZEDOPERATION = 'AuthFailure.UnauthorizedOperation'
 
@@ -25,6 +28,9 @@ FAILEDOPERATION_RESOURCEAPPIDNOTSAME = 'FailedOperation.ResourceAppIdNotSame'
 
 # The resource tag is being processed.
 FAILEDOPERATION_RESOURCETAGPROCESSING = 'FailedOperation.ResourceTagProcessing'
+
+# A quota has already been allocated to tags.
+FAILEDOPERATION_TAGATTACHEDQUOTA = 'FailedOperation.TagAttachedQuota'
 
 # Tags associated with resources cannot be deleted.
 FAILEDOPERATION_TAGATTACHEDRESOURCE = 'FailedOperation.TagAttachedResource'
@@ -101,6 +107,9 @@ INVALIDPARAMETERVALUE_UININVALID = 'InvalidParameterValue.UinInvalid'
 # The quota limit is exceeded.
 LIMITEXCEEDED = 'LimitExceeded'
 
+# The quota limit is reached.
+LIMITEXCEEDED_QUOTA = 'LimitExceeded.Quota'
+
 # The number of tags associated with the resource exceeds the limit.
 LIMITEXCEEDED_RESOURCEATTACHEDTAGS = 'LimitExceeded.ResourceAttachedTags'
 
@@ -133,3 +142,6 @@ RESOURCENOTFOUND_ATTACHEDTAGKEYNOTFOUND = 'ResourceNotFound.AttachedTagKeyNotFou
 
 # Tag does not exist.
 RESOURCENOTFOUND_TAGNONEXIST = 'ResourceNotFound.TagNonExist'
+
+# Unsupported operation.
+UNSUPPORTEDOPERATION = 'UnsupportedOperation'

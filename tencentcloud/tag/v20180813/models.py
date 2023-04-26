@@ -357,6 +357,68 @@ class DeleteTagsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeProjectsRequest(AbstractModel):
+    """DescribeProjects request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AllList: If this parameter is 1, all projects (including hidden ones) will be queried. If it is 0, only non-hidden projects will be queried.
+        :type AllList: int
+        :param Limit: Number of entries per page. Fixed value: 1,000.
+        :type Limit: int
+        :param Offset: Pagination offset.
+        :type Offset: int
+        """
+        self.AllList = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.AllList = params.get("AllList")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeProjectsResponse(AbstractModel):
+    """DescribeProjects response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: Total number of data entries.
+        :type Total: int
+        :param Projects: Project list.
+        :type Projects: list of Project
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Total = None
+        self.Projects = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("Projects") is not None:
+            self.Projects = []
+            for item in params.get("Projects"):
+                obj = Project()
+                obj._deserialize(item)
+                self.Projects.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeResourceTagsByResourceIdsRequest(AbstractModel):
     """DescribeResourceTagsByResourceIds request structure.
 
@@ -1754,6 +1816,46 @@ class ModifyResourcesTagValueResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class Project(AbstractModel):
+    """Project information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: Project ID.
+        :type ProjectId: int
+        :param ProjectName: Project name.
+        :type ProjectName: str
+        :param CreatorUin: Creator UIN.
+        :type CreatorUin: int
+        :param ProjectInfo: Project description.
+        :type ProjectInfo: str
+        :param CreateTime: Creation time.
+        :type CreateTime: str
+        """
+        self.ProjectId = None
+        self.ProjectName = None
+        self.CreatorUin = None
+        self.ProjectInfo = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.ProjectName = params.get("ProjectName")
+        self.CreatorUin = params.get("CreatorUin")
+        self.ProjectInfo = params.get("ProjectInfo")
+        self.CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ResourceIdTag(AbstractModel):
     """Resource tag key value
 
@@ -2006,7 +2108,7 @@ class TagResourcesRequest(AbstractModel):
     def __init__(self):
         r"""
         :param ResourceList: Six-segment resource description list. Tencent Cloud uses a six-segment value to describe a resource. For more information, see [CAM](https://intl.cloud.tencent.com/document/product/598/67350?from_cn_redirect=1) > Overview > API List > Six-Segment Resource Information.
-For example, ResourceList.1 = qcs::${ServiceType}:${Region}:${Account}:${ResourcePreifx}/${ResourceId}.
+For example: ResourceList.1 = qcs::${ServiceType}:${Region}:uin/${Account}:${ResourcePrefix}/${ResourceId}.
 Value range of N: 0–9
         :type ResourceList: list of str
         :param Tags: Tag key and value.
@@ -2105,7 +2207,7 @@ class UnTagResourcesRequest(AbstractModel):
     def __init__(self):
         r"""
         :param ResourceList: Six-segment resource description list. Tencent Cloud uses a six-segment value to describe a resource. For more information, see [CAM](https://intl.cloud.tencent.com/document/product/598/67350?from_cn_redirect=1) > Overview > API List > Six-Segment Resource Information.
-For example, ResourceList.1 = qcs::${ServiceType}:${Region}:${Account}:${ResourcePreifx}/${ResourceId}.
+For example: ResourceList.1 = qcs::${ServiceType}:${Region}:uin/${Account}:${ResourcePrefix}/${ResourceId}.
 Value range of N: 0–9
         :type ResourceList: list of str
         :param TagKeys: Tag key.

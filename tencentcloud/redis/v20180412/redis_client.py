@@ -211,7 +211,7 @@ class RedisClient(AbstractClient):
 
 
     def CloneInstances(self, request):
-        """This API is used to clone a complete instance based on the current instance backup file.
+        """This API is used to clone a complete new instance based on the current instance backup file.
 
         :param request: Request instance for CloneInstances.
         :type request: :class:`tencentcloud.redis.v20180412.models.CloneInstancesRequest`
@@ -280,7 +280,7 @@ class RedisClient(AbstractClient):
 
 
     def CreateInstances(self, request):
-        """This API is used to create a Redis instance.
+        """This API is used to create an TencentDB or Redis instance.
 
         :param request: Request instance for CreateInstances.
         :type request: :class:`tencentcloud.redis.v20180412.models.CreateInstancesRequest`
@@ -431,6 +431,29 @@ class RedisClient(AbstractClient):
             body = self.call("DescribeBackupUrl", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeBackupUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBandwidthRange(self, request):
+        """This API is used to query the information of instance bandwidth.
+
+        :param request: Request instance for DescribeBandwidthRange.
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeBandwidthRangeRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeBandwidthRangeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBandwidthRange", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBandwidthRangeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -947,7 +970,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeParamTemplateInfo(self, request):
-        """This API is used to query the parameter template details.
+        """This API is used to query the details of a parameter template.
 
         :param request: Request instance for DescribeParamTemplateInfo.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeParamTemplateInfoRequest`
@@ -1719,6 +1742,29 @@ class RedisClient(AbstractClient):
             body = self.call("ReleaseWanAddress", params, headers=headers)
             response = json.loads(body)
             model = models.ReleaseWanAddressResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RemoveReplicationInstance(self, request):
+        """This API is used to remove a member from a replication group.
+
+        :param request: Request instance for RemoveReplicationInstance.
+        :type request: :class:`tencentcloud.redis.v20180412.models.RemoveReplicationInstanceRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.RemoveReplicationInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RemoveReplicationInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.RemoveReplicationInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

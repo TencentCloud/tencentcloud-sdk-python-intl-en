@@ -252,15 +252,15 @@ class BackupDownloadInfo(AbstractModel):
 
 
 class BackupLimitVpcItem(AbstractModel):
-    """VPC information of the custom backup file download address.
+    """The VPC that corresponds to the configured download address of the backup file
 
     """
 
     def __init__(self):
         r"""
-        :param Region: Region of the VPC of the custom backup file download address.
+        :param Region: The region of the VPC that corresponds to the download address of the backup file
         :type Region: str
-        :param VpcList: VPC list of the custom backup file download address.
+        :param VpcList: The list of VPCs that correspond to the download addresses of the backup files
         :type VpcList: list of str
         """
         self.Region = None
@@ -607,9 +607,11 @@ class CloneInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: ID of the current instance
+        :param InstanceId: The ID of the source instance to be cloned, such as "crs-xjhsdj****". Log in to the [Redis console](https://console.cloud.tencent.com/redis) and copy the instance ID in the instance list.
         :type InstanceId: str
-        :param GoodsNum: Number of instance to be cloned each time. You can purchase up to 100 monthly subscribed instances or up to 30 pay-as-you-go instances at a time. You can purchase up to 100 instances in each region.
+        :param GoodsNum: The number of clone instances at a time
+- The maximum number of monthly subscribed instances is 100 for each purchase.
+- The maximum number of pay-as-you-go instances is 30 for each purchase.
         :type GoodsNum: int
         :param ZoneId: ID of the AZ where the clone instance resides. For more information, see [Regions and AZs](https://intl.cloud.tencent.com/document/product/239/4106?from_cn_redirect=1).
         :type ZoneId: int
@@ -623,27 +625,29 @@ class CloneInstancesRequest(AbstractModel):
         :type BackupId: str
         :param NoAuth: Whether the clone instance supports password-free access. Valid values: <ul><li>`true` (Yes)</li><li>`false` (No. When SSL or public network is enabled). Default value: `false`.</li></ul>
         :type NoAuth: bool
-        :param VpcId: VPC ID. If this parameter is not passed in, the classic network will be selected by default.
+        :param VpcId: The VPC ID of the clone instance. If this parameter is not passed in, the classic network will be selected by default.
         :type VpcId: str
-        :param SubnetId: VPC subnet ID, which is not required for the classic network.
+        :param SubnetId: The VPC subnet ID to which the clone instance belongs, which is not required for the classic network.
         :type SubnetId: str
         :param InstanceName: Name of the clone instance. <br>Enter up to 60 letters, digits, hyphens, and underscores.</br>
         :type InstanceName: str
         :param Password: The access password of the clone instance. <ul><li>When the input parameter <b>NoAuth</b> is <b>true</b>, this parameter is not required. </li><li>When the instance is Redis 2.8, 4.0, or 5.0, the password must contain 8–30 characters in at least two of the following types: lowercase letters, uppercase letters, digits, and special characters `()`~!@#$%^&*-+=_|{}[]:;<>,.?/` and cannot start with `/`.</li><li>When the instance is CKV 3.2, the password must and can only contain 8–30 letters and digits.</li></ul>
         :type Password: str
-        :param AutoRenew: The auto-renewal flag. Valid values <ul><li>`0`: Manual renewal (default) </li><li>`1`: Auto-renewal. </li><li>`2`: Not auto-renewal (set by user)</ul>
+        :param AutoRenew: The auto-renewal flag. Valid values <ul><li>`0`: Manual renewal (default). </li><li>`1`: Auto-renewal. </li><li>`2`: Not auto-renewal (set by user).</ul>
         :type AutoRenew: int
         :param VPort: Customized port. Valid range: 1024-65535. Default value: `6379`.
         :type VPort: int
         :param NodeSet: Node information of an instance. <ul><li>Currently supported type and AZ information of a node to be configured (master node or replica node) For more information, see [RedisNodeInfo](https://intl.cloud.tencent.com/document/product/239/20022?from_cn_redirect=1#RedisNodeInfo).</li><li>This parameter is not required for single-AZ deployment.</li></ul>
         :type NodeSet: list of RedisNodeInfo
-        :param ProjectId: Project ID, which can be obtained in <b>Account Center</b> > <b>Project Management</b> in the upper-right corner in the console.
+        :param ProjectId: Project ID. Log in to the [Redis console](https://console.cloud.tencent.com/redis#/), and find the project ID in <b>Account Center</b> > <b>Project Management</b> in the top-right corner.
         :type ProjectId: int
         :param ResourceTags: Tag to be bound for the clone instance
         :type ResourceTags: list of ResourceTag
-        :param TemplateId: The ID of a parameter template to be applied to the clone instance, which can be obtained on <b>Parameter Template</b> page in the console. If this parameter is not configured, the default parameter template will be applied.
+        :param TemplateId: The parameter template ID associated with the clone instance
+- If this parameter is not configured, the system will automatically adapt the corresponding default template based on the selected compatible version and architecture.
+- You can query the parameter template list of the instance to get the template ID through the [DescribeParamTemplates](https://intl.cloud.tencent.com/document/product/239/58750?from_cn_redirect=1) API.
         :type TemplateId: str
-        :param AlarmPolicyList: Alarm policy ID of the specified clone instance, which can be obtained on <b>Cloud Monitor</b> > <b>Alarm Configuration</b> > <b>Alarm Policy</b> in the console.
+        :param AlarmPolicyList: The alarm policy ID of the instance to be cloned. Log in to the [Tencent Cloud Observable Platform console](https://console.cloud.tencent.com/monitor/alarm2/policy), and get the policy ID in <b>Alarm Management</b> > <b>Policy Management</b>.
         :type AlarmPolicyList: list of str
         """
         self.InstanceId = None
@@ -882,58 +886,83 @@ class CreateInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TypeId: Instance type. Valid values: `2` (Redis 2.8 Memory Edition in standard architecture), `3` (CKV 3.2 Memory Edition in standard architecture), `4` (CKV 3.2 Memory Edition in cluster architecture), `6` (Redis 4.0 Memory Edition in standard architecture), `7` (Redis 4.0 Memory Edition in cluster architecture), `8` (Redis 5.0 Memory Edition in standard architecture), `9` (Redis 5.0 Memory Edition in cluster architecture), `15` (Redis 6.0 Memory Edition in standard architecture), `16` (Redis 6.0 Memory Edition in cluster architecture)
+        :param TypeId: Instance type
+<ul><li>`2`: Redis 2.8 Memory Edition (Standard Architecture). </li><li>`3`: CKV 3.2 Memory Edition (Standard Architecture). </li><li>`4`: CKV 3.2 Memory Edition (Cluster Architecture). </li><li>`6`: Redis 4.0 Memory Edition (Standard Architecture). </li><li>`7`: Redis 4.0 Memory Edition (Cluster Architecture). </li><li>`8`: Redis 5.0 Memory Edition (Standard Architecture). </li><li>`9`: Redis 5.0 Memory Edition (Cluster Architecture). </li><li>`15`: Redis 6.2 Memory Edition (Standard Architecture). </li><li>`16`: Redis 6.2 Memory Edition (Cluster Architecture).</li></ul>
         :type TypeId: int
-        :param MemSize: Memory capacity in MB, which must be a multiple of 1,024. It is subject to the purchasable specifications returned by the [DescribeProductInfo API](https://intl.cloud.tencent.com/document/api/239/30600?from_cn_redirect=1).
-If `TypeId` is the standard architecture, `MemSize` indicates the total memory capacity of the instance; if `TypeId` is the cluster architecture, `MemSize` indicates the memory capacity per shard.
+        :param MemSize: Memory capacity in MB, which must be an integer multiple of 1024. For specific specifications, query the sales specifications in all regions through the [DescribeProductInfo](https://intl.cloud.tencent.com/document/api/239/30600?from_cn_redirect=1) API.
+- When **TypeId** is a standard architecture, **MemSize** is the total memory capacity of the instance;
+- When **TypeId** is a cluster architecture, **MemSize** is the single-shard memory capacity.
         :type MemSize: int
-        :param GoodsNum: Number of instances. The actual quantity purchasable at a time is subject to the specifications returned by the [DescribeProductInfo API](https://intl.cloud.tencent.com/document/api/239/30600?from_cn_redirect=1).
+        :param GoodsNum: The number of instances for each purchase. For details, query the sales specifications in all regions through the [DescribeProductInfo](https://intl.cloud.tencent.com/document/api/239/30600?from_cn_redirect=1) API.
         :type GoodsNum: int
-        :param Period: Length of purchase in months, which is required when creating a monthly subscribed instance. Valid values: [1,2,3,4,5,6,7,8,9,10,11,12,24,36]. For pay-as-you-go instances, set the parameter to `1`.
+        :param Period: The purchase duration of an instance
+- If `BillingMode` is `1`, that is, when the billing mode is monthly subscription, you need to set this parameter to specify the duration of the purchased instance. Unit: month. Value range: [1,2,3,4,5,6,7,8,9,10,11,12,24,36].
+- If `BillingMode` is `0`, that is, when the billing mode is pay-as-you-go, you need to set this parameter to `1`.
         :type Period: int
         :param BillingMode: Billing mode. 0: pay-as-you-go
         :type BillingMode: int
         :param ZoneId: ID of the AZ where the instance resides. For more information, see [Regions and AZs](https://intl.cloud.tencent.com/document/product/239/4106?from_cn_redirect=1).
         :type ZoneId: int
-        :param Password: Instance password. If the input parameter `NoAuth` is `true` and a VPC is used, the `Password` is optional; otherwise, it is required.
-If the instance `TypeId` is Redis 2.8, 4.0, or 5.0, the password cannot start with "/" and must contain 8–30 characters in at least two of the following character types: lowercase letters, uppercase letters, digits, and special symbols (()`~!@#$%^&*-+=_|{}[]:;<>,.?/).
-If the instance `TypeId` is CKV 3.2, the password can contain 8–30 letters and digits.
+        :param Password: Instance access password
+- When the input parameter `NoAuth` is `true`, it means that the instance access is set to be password-free, and the `Password` field does not need to be configured; otherwise, `Password` is a required parameter.
+- When the instance type `TypeId` is Redis 2.8 Memory Edition (Standard Architecture), Redis 4.0, 5.0, 6.0 (regardless of architecture), the password must contains 8-30 characters in at least two of the following types: lowercase letters, uppercase letters, digits, and symbols (()`~!@#$%^&*-+=_|{}[]:;<>,.?/), and it cannot start with a slash (/).
+- When the instance type **TypeId** is CKV 3.2 Memory Edition (regardless of architecture), the password contains 8-30 letters and digits and excludes other characters.
         :type Password: str
-        :param VpcId: VPC ID such as vpc-sad23jfdfk. If this parameter is not passed in, the classic network will be selected by default. Use the VPC list querying API to query.
+        :param VpcId: VPC ID. If this parameter is not passed in, the classic network will be selected by default. You can query the specific VPC ID in the [VPC console](https://console.cloud.tencent.com/vpc).
         :type VpcId: str
-        :param SubnetId: In the classic network, `subnetId` is invalid. In a VPC subnet, the value is the subnet ID, such as subnet-fdj24n34j2.
+        :param SubnetId: VPC subnet ID. This parameter is not required for the classic network. You can get the specific subnet ID by querying the subnet list in the [VPC console](https://console.cloud.tencent.com/vpc).
         :type SubnetId: str
-        :param ProjectId: Project ID. The value is subject to the `projectId` returned by user account > user account querying APIs > project list.
+        :param ProjectId: Project ID. Log in to the [Redis console](https://console.cloud.tencent.com/redis#/), go to the account information menu in the top-right corner, and select **Project Management** to query the project ID.
         :type ProjectId: int
-        :param AutoRenew: Auto-renewal flag. 0: default status (manual renewal); 1: auto-renewal enabled; 2: auto-renewal disabled
+        :param AutoRenew: Auto-renewal flag
+- `0`: Manual renewal (default).
+- `1`: Auto-renewal.
+- `2`: Not auto-renewal (set by user).
         :type AutoRenew: int
-        :param SecurityGroupIdList: Array of security group IDs.
+        :param SecurityGroupIdList: Array of security group IDs. Get the security group ID of the instance through the [DescribeInstanceSecurityGroup](https://intl.cloud.tencent.com/document/product/239/34447?from_cn_redirect=1) API.
         :type SecurityGroupIdList: list of str
-        :param VPort: User-defined port. If this parameter is left empty, 6379 will be used by default. Value range: [1024,65535].
+        :param VPort: User-defined network port. Default value: `6379`. Range: [1024,65535].
         :type VPort: int
-        :param RedisShardNum: Number of shards in an instance. This parameter is required for Cluster Edition instances. Valid values: [3,5,8,12,16,24,32,64,96,128].
+        :param RedisShardNum: Quantity of instance shards
+- This parameter is not required for instances of Standard Edition.
+- For instances of Cluster Edition, the range of shard quantity is [1, 3, 5, 8, 12, 16, 24, 32, 40, 48, 64, 80, 96, 128].
         :type RedisShardNum: int
-        :param RedisReplicasNum: Number of replicas in the instance. Redis 2.8 Standard Edition and CKV Standard Edition support 1 replica. Standard/Cluster Edition 4.0 and 5.0 support 1–5 replicas.
+        :param RedisReplicasNum: Quantity of instance replicas
+- For Redis Memory Edition 4.0, 5.0, 6.2 (regardless of architecture), the range of replica quantity is [1,5].
+- For Redis 2.8 Standard Edition and CKV Standard Edition, the replica quantity is `1`.
         :type RedisReplicasNum: int
-        :param ReplicasReadonly: Whether to support read-only replicas. Neither Redis 2.8 Standard Edition nor CKV Standard Edition supports read-only replicas. Read/write separation will be automatically enabled for an instance after it enables read-only replicas. Write requests will be directed to the master node and read requests will be distributed to replica nodes. To enable read-only replicas, we recommend you create two or more replicas.
+        :param ReplicasReadonly: Whether to support read-only replicas.
+- Redis 2.8 Standard Edition and CKV Standard Edition don’t support read-only replicas.
+- If read-only replicas are enabled, read/write separation will be automatically enabled for an instance, with write requests routed to the master node and read requests to the replica node.
+- To enable read-only replicas, we recommend that you create two or more replicas.
         :type ReplicasReadonly: bool
-        :param InstanceName: Instance name, which can contain up to 60 letters, digits, underscores, or hyphens.
+        :param InstanceName: Instance name, which can contain up to 60 letters, digits, hyphens, and underscores.
         :type InstanceName: str
-        :param NoAuth: Whether to support the password-free feature. Valid values: true (password-free instance), false (password-enabled instance). Default value: false. Only instances in a VPC support the password-free access.
+        :param NoAuth: Whether to support password-free access for an instance
+- `true`: The instance access is password-free.
+- `false`: The instance access is password-enabled. Default value: `false`. Only instances in a VPC support the password-free access.
         :type NoAuth: bool
-        :param NodeSet: Node information of the instance. Currently, information about the node type (master or replica) and node AZ can be passed in. This parameter is not required for single-AZ deployed instances.
+        :param NodeSet: The node information of the instance, including node ID, type, and AZ. For more information, see [RedisNodeInfo](https://intl.cloud.tencent.com/document/product/239/20022?from_cn_redirect=1).
+Node information of an instance. Currently, information about the node type (master or replica) and node AZ can be passed in. This parameter is not required for instances deployed in a single AZ.
         :type NodeSet: list of RedisNodeInfo
-        :param ResourceTags: Tag bound to the instance to be purchased
+        :param ResourceTags: The tag for an instance
         :type ResourceTags: list of ResourceTag
         :param ZoneName: Name of the AZ where the instance resides. For more information, see [Regions and AZs](https://intl.cloud.tencent.com/document/product/239/4106?from_cn_redirect=1).
         :type ZoneName: str
-        :param TemplateId: ID of the parameter template applied to the created instance. If this parameter is left blank, the default parameter template will be applied.
+        :param TemplateId: The parameter template ID associated with the instance
+- If this parameter is not configured, the system will automatically adapt the corresponding default template based on the selected compatible version and architecture.
+- Query the list of parameter templates of an instance to get the template ID through the [DescribeParamTemplates](https://intl.cloud.tencent.com/document/product/239/58750?from_cn_redirect=1) API.
         :type TemplateId: str
-        :param DryRun: false: send a normal request and create an instance directly after the check is passed (default value); true: send a check request without creating an instance.
+        :param DryRun: An internal parameter used to indicate whether to check when creating an instance.
+- `false`: Default value. Send a normal request and create an instance if all the requirements are met.
+- `true`: Send a check request and create no instance.
         :type DryRun: bool
-        :param ProductVersion: Valid values: `local` (local disk edition), `cloud` (cloud disk edition), `cdc` (dedicated cluster edition). Default value: `local` (local disk edition)
+        :param ProductVersion: The product edition of the instance
+- `local`: Local Disk Edition.
+- `cloud`: Cloud Disk Edition.
+- `cdc`: Dedicated Cluster Edition. Default value: `local`.
         :type ProductVersion: str
-        :param RedisClusterId: Dedicated cluster ID, which is required when `ProductVersion` is "cdc".
+        :param RedisClusterId: Exclusive cluster ID. When `ProductVersion` is set to `cdc`, this parameter is required.
         :type RedisClusterId: str
         """
         self.TypeId = None
@@ -1440,6 +1469,63 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = BackupDownloadInfo()
                 obj._deserialize(item)
                 self.BackupInfos.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBandwidthRangeRequest(AbstractModel):
+    """DescribeBandwidthRange request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBandwidthRangeResponse(AbstractModel):
+    """DescribeBandwidthRange response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BaseBandwidth: Standard bandwidth, which is the bandwidth allocated by the system to each node when an instance is purchased.
+        :type BaseBandwidth: int
+        :param AddBandwidth: The additional bandwidth of the instance. If the standard bandwidth does not meet your needs, you can increase the bandwidth on your own. <ul><li>If read-only replica is enabled, the total instance bandwidth = additional bandwidth * shard quantity + standard bandwidth * shard quantity * Max ([read-only replica quantity, 1]). The shard quantity in the standard architecture is 1. </li><li>If read-only replica is not enabled, the total instance bandwidth = additional bandwidth * shard quantity + standard bandwidth * shard quantity. The shard quantity in the standard architecture is 1.</li></ul>
+        :type AddBandwidth: int
+        :param MinAddBandwidth: The lower limit for additional bandwidth
+        :type MinAddBandwidth: int
+        :param MaxAddBandwidth: The upper limit for additional bandwidth
+        :type MaxAddBandwidth: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.BaseBandwidth = None
+        self.AddBandwidth = None
+        self.MinAddBandwidth = None
+        self.MaxAddBandwidth = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BaseBandwidth = params.get("BaseBandwidth")
+        self.AddBandwidth = params.get("AddBandwidth")
+        self.MinAddBandwidth = params.get("MinAddBandwidth")
+        self.MaxAddBandwidth = params.get("MaxAddBandwidth")
         self.RequestId = params.get("RequestId")
 
 
@@ -3001,7 +3087,7 @@ class DescribeParamTemplateInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateId: Parameter template ID.
+        :param TemplateId: The parameter template ID for query. Get parameter template list information through the [DescribeParamTemplates](https://intl.cloud.tencent.com/document/product/239/58750?from_cn_redirect=1) API.
         :type TemplateId: str
         """
         self.TemplateId = None
@@ -3025,17 +3111,27 @@ class DescribeParamTemplateInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Number of instance parameters
+        :param TotalCount: Quantity of parameters in the parameter template
         :type TotalCount: int
         :param TemplateId: Parameter template ID.
         :type TemplateId: str
         :param Name: Parameter template name.
         :type Name: str
-        :param ProductType: Instance type. Valid values: `1` (Redis 2.8 Memory Edition in cluster architecture), `2` (Redis 2.8 Memory Edition in standard architecture), `3` (CKV 3.2 Memory Edition in standard architecture), `4` (CKV 3.2 Memory Edition in cluster architecture), `5` (Redis 2.8 Memory Edition in standalone architecture), `6` (Redis 4.0 Memory Edition in standard architecture), `7` (Redis 4.0 Memory Edition in cluster architecture), `8` (Redis 5.0 Memory Edition in standard architecture), `9` (Redis 5.0 Memory Edition in cluster architecture)
+        :param ProductType: Product type
+- `2`: Redis 2.8 Memory Edition (Standard Architecture).
+- `3`: CKV 3.2 Memory Edition (Standard Architecture).
+- `4`: CKV 3.2 Memory Edition (Cluster Architecture).
+- `5`: Redis 2.8 Memory Edition (Standalone).
+- `6`: Redis 4.0 Memory Edition (Standard Architecture).
+- `7`: Redis 4.0 Memory Edition (Cluster Architecture).
+- `8`: Redis 5.0 Memory Edition (Standard Architecture).
+- `9`: Redis 5.0 Memory Edition (Cluster Architecture).
+- `15`: Redis 6.2 Memory Edition (Standard Architecture).
+- `16`: Redis 6.2 Memory Edition (Cluster Architecture).
         :type ProductType: int
         :param Description: Parameter template description
         :type Description: str
-        :param Items: Parameter details
+        :param Items: Parameter details, including parameter name, current value, default value, maximum value, minimum value, enumeration value and other information.
         :type Items: list of ParameterDetail
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -4047,7 +4143,7 @@ class Groups(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AppId: User App ID
+        :param AppId: User APPID, which is the unique application ID that matches an account. Some Tencent Cloud products use this APPID.
         :type AppId: int
         :param RegionId: Region ID
 - `1`: Guangzhou 
@@ -4069,7 +4165,7 @@ class Groups(AbstractModel):
 - `24`: Russia 
 - `25`: Japan
         :type RegionId: int
-        :param GroupId: Replication group ID
+        :param GroupId: Replication group ID in the format of "crs-rpl-deind****"
         :type GroupId: str
         :param GroupName: Replication group name
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -4431,23 +4527,27 @@ class InstanceClusterShard(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ShardName: Shard node name
+        :param ShardName: The name of a shard node
         :type ShardName: str
-        :param ShardId: Shard node ID
+        :param ShardId: The serial number of a shard node
         :type ShardId: str
-        :param Role: Role
+        :param Role: The role of a shard node
+- `0`: Master node.
+- `1`: Replica node.
         :type Role: int
         :param Keys: Number of keys
         :type Keys: int
         :param Slots: Slot information
         :type Slots: str
-        :param Storage: Storage capacity
+        :param Storage: Used Capacity
         :type Storage: int
         :param StorageSlope: Capacity slope
         :type StorageSlope: float
-        :param Runid: ID of the runtime node of the instance
+        :param Runid: Instance runtime node ID
         :type Runid: str
-        :param Connected: Service status. 0: down; 1: on
+        :param Connected: Service status
+- `0`: Down.
+- `1`: On.
         :type Connected: int
         """
         self.ShardName = None
@@ -4715,11 +4815,14 @@ class InstanceParamHistory(AbstractModel):
         r"""
         :param ParamName: Parameter name
         :type ParamName: str
-        :param PreValue: Value before modification
+        :param PreValue: The value of the parameter before modification
         :type PreValue: str
-        :param NewValue: Value after modification
+        :param NewValue: The value of the parameter after modification
         :type NewValue: str
-        :param Status: Status. 1: modifying the parameter configuration; 2: modified the parameter configuration successfully; 3: failed to modify the parameter configuration
+        :param Status: Parameter configuration status
+- `1`: The parameter configuration is being modified.
+- `2`: The parameter configuration has been modified successfully.
+- `3`: Failed to modify the parameter configuration.
         :type Status: int
         :param ModifyTime: Modification time
         :type ModifyTime: str
@@ -4753,13 +4856,13 @@ class InstanceProxySlowlogDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Duration: Duration of the slow query in ms.
+        :param Duration: Slow query duration in milliseconds
         :type Duration: int
         :param Client: Client address
         :type Client: str
-        :param Command: Command
+        :param Command: Slow query command
         :type Command: str
-        :param CommandLine: Command line details
+        :param CommandLine: Detailed command line information of slow query
         :type CommandLine: str
         :param ExecuteTime: Execution time
         :type ExecuteTime: str
@@ -4830,7 +4933,8 @@ class InstanceSet(AbstractModel):
         :type InstanceName: str
         :param InstanceId: Instance ID
         :type InstanceId: str
-        :param Appid: User AppID
+        :param Appid: User APPID, which is the unique application ID that matches an account. Some Tencent Cloud products use this APPID.
+
         :type Appid: int
         :param ProjectId: Project ID
         :type ProjectId: int
@@ -4848,17 +4952,27 @@ class InstanceSet(AbstractModel):
         :type WanIp: str
         :param Port: Port number of an instance
         :type Port: int
-        :param Createtime: Instance creation time
+        :param Createtime: Instance creation time in the format of "2020-01-15 10:20:00"
         :type Createtime: str
-        :param Size: Instance capacity in MB
+        :param Size: Instance memory capacity in MB (1 MB = 1024 KB)
         :type Size: float
-        :param SizeUsed: This field has been disused. You can use the [GetMonitorData](https://intl.cloud.tencent.com/document/product/248/31014?from_cn_redirect=1) API to query the capacity used by the instance.
+        :param SizeUsed: This field has been disused. You can use the TCOP’s [GetMonitorData](https://intl.cloud.tencent.com/document/product/248/31014?from_cn_redirect=1) API to query the capacity used by the instance.
         :type SizeUsed: float
-        :param Type: Instance type. <ul><li>`1`: Redis 2.8 memory edition in cluster architecture. </li><li>`2`: Redis 2.8 memory edition in standard architecture. </li><li>`3`: CKV 3.2 memory edition in standard architecture. </li><li>`4`: CKV 3.2 memory edition in cluster architecture. </li><li>`5`: Redis 2.8 memory edition in standalone architecture. </li></li><li>`6`: Redis 4.0 memory edition in standard architecture. </li></li><li>`7`: Redis 4.0 memory edition in cluster architecture. </li></li><li>`8`: Redis 5.0 memory edition in standard architecture. </li></li><li>`9`: Redis 5.0 memory edition in cluster architecture. </li></ul>
+        :param Type: Instance type
+- `2`: Redis 2.8 Memory Edition (Standard Architecture).
+- `3`: CKV 3.2 Memory Edition (Standard Architecture).
+- `4`: CKV 3.2 Memory Edition (Cluster Architecture).
+- `5`: Redis 2.8 Memory Edition (Standalone).
+- `6`: Redis 4.0 Memory Edition (Standard Architecture).
+- `7`: Redis 4.0 Memory Edition (Cluster Architecture).
+- `8`: Redis 5.0 Memory Edition (Standard Architecture).
+- `9`: Redis 5.0 Memory Edition (Cluster Architecture).
+- `15`: Redis 6.2 Memory Edition (Standard Architecture).
+- `16`: Redis 6.2 Memory Edition (Cluster Architecture).
         :type Type: int
         :param AutoRenewFlag: Whether to set the auto-renewal flag for an instance. <ul><li>`1`: Auto-renewal set. </li><li>`0`: Auto-renewal not set.</li></ul>
         :type AutoRenewFlag: int
-        :param DeadlineTime: Instance expiration time
+        :param DeadlineTime: The time when a monthly subscribed instance expires
         :type DeadlineTime: str
         :param Engine: Engine: Redis community edition, Tencent Cloud CKV
         :type Engine: str
@@ -4872,7 +4986,7 @@ class InstanceSet(AbstractModel):
         :type BillingMode: int
         :param InstanceTitle: Description of an instance status, such as "Running".
         :type InstanceTitle: str
-        :param OfflineTime: Scheduled deactivation time
+        :param OfflineTime: The default termination time for isolated instances in the format of "2020-02-15 10:20:00". By default, a pay-as-you-go instance will be terminated after two hours of isolation, and a monthly subscribed instance will be terminated after seven days by default.
         :type OfflineTime: str
         :param SubStatus: Sub-status returned for an instance in process
         :type SubStatus: int
@@ -4888,7 +5002,7 @@ class InstanceSet(AbstractModel):
         :type RedisReplicasNum: int
         :param PriceId: Billing ID
         :type PriceId: int
-        :param CloseTime: Isolation time
+        :param CloseTime: The time when an instance start to be isolated
         :type CloseTime: str
         :param SlaveReadWeight: Read weight of a replica node
         :type SlaveReadWeight: int
@@ -4925,7 +5039,7 @@ Note: This field may return null, indicating that no valid value can be obtained
         :param DiskSize: This parameter can be ignored for Redis instance.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type DiskSize: int
-        :param MonitorVersion: Monitoring granularity type. <ul><li>`1m`: Monitoring at 1-minute granularity. </li><li>`5s`: Monitoring at 5-second granularity. </li></ul>
+        :param MonitorVersion: Monitoring granularity. <ul><li>`1m`: Monitoring at one-minute granularity. This granularity has been disused. For more information, see [1-Minute Granularity Will Be Disused](https://www.tencentcloud.com/document/product/239/50440).</li><li>`5s`: Monitoring at five-second granularity.</li></ul>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type MonitorVersion: str
         :param ClientLimitMin: The minimum number of max client connections
@@ -4943,8 +5057,8 @@ Note: This field may return null, indicating that no valid value can be obtained
         :param WanAddress: Public IP
 Note: This field may return null, indicating that no valid value can be obtained.
         :type WanAddress: str
-        :param PolarisServer: Polaris service address
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param PolarisServer: Polaris service address, which is for internal use.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type PolarisServer: str
         :param CurrentProxyVersion: The current proxy version of an instance
 Note: This field may return null, indicating that no valid value can be obtained.
@@ -5227,7 +5341,7 @@ class Instances(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AppId: User AppID
+        :param AppId: User APPID, which is the unique application ID that matches an account. Some Tencent Cloud products use this APPID.
         :type AppId: int
         :param InstanceId: Instance ID
         :type InstanceId: str
@@ -5263,7 +5377,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Status: int
         :param GrocerySysId: Repository ID
         :type GrocerySysId: int
-        :param ProductType: Instance type. <ul><li>`1`: Redis 2.8 Memory Edition (Cluster Architecture). </li><li>`2`: Redis 2.8 Memory Edition (Standard Architecture). </li><li>`3`: CKV 3.2 Memory Edition (Standard Architecture). </li><li>`4`: CKV 3.2 Memory Edition (Cluster Architecture). </li><li>`5`: Redis 2.8 Standalone Edition. </li><li>`6`: Redis 4.0 Memory Edition (Standard Architecture). </li><li>`7`: Redis 4.0 Memory Edition (Cluster Architecture). </li><li>`8`: Redis 5.0 Memory Edition (Standard Architecture). </li><li>`9`: Redis 5.0 Memory Edition (Cluster Architecture). </li></ul>
+        :param ProductType: Instance type
+- `2`: Redis 2.8 Memory Edition (Standard Architecture).
+- `3`: CKV 3.2 Memory Edition (Standard Architecture).
+- `4`: CKV 3.2 Memory Edition (Cluster Architecture)
+- `5`: Redis 2.8 Memory Edition (Standalone)
+- `6`: Redis 4.0 Memory Edition (Standard Architecture).
+- `7`: Redis 4.0 Memory Edition (Cluster Architecture)
+- `8`: Redis 5.0 Memory Edition (Standard Architecture).
+- `9`: Redis 5.0 Memory Edition (Cluster Architecture)
+- `15`: Redis 6.2 Memory Edition (Standard Architecture).
+- `16`: Redis 6.2 Memory Edition (Cluster Architecture)
         :type ProductType: int
         :param CreateTime: The time when the instance was added to the replication group.
         :type CreateTime: str
@@ -5441,7 +5565,7 @@ class ModfiyInstancePasswordRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance ID
+        :param InstanceId: Instance ID, such as "crs-xjhsdj****". Log in to the [Redis console](https://console.cloud.tencent.com/redis) and copy the instance ID in the instance list.
         :type InstanceId: str
         :param OldPassword: Old password of an instance
         :type OldPassword: str
@@ -6237,7 +6361,17 @@ class ParamTemplateInfo(AbstractModel):
         :type Name: str
         :param Description: Parameter template description
         :type Description: str
-        :param ProductType: Instance type. Valid values: `1` (Redis 2.8 Memory Edition in cluster architecture), `2` (Redis 2.8 Memory Edition in standard architecture), `3` (CKV 3.2 Memory Edition in standard architecture), `4` (CKV 3.2 Memory Edition in cluster architecture), `5` (Redis 2.8 Memory Edition in standalone architecture), `6` (Redis 4.0 Memory Edition in standard architecture), `7` (Redis 4.0 Memory Edition in cluster architecture), `8` (Redis 5.0 Memory Edition in standard architecture), `9` (Redis 5.0 Memory Edition in cluster architecture)
+        :param ProductType: Instance type
+- `2`: Redis 2.8 Memory Edition (Standard Architecture).
+- `3`: CKV 3.2 Memory Edition (Standard Architecture).
+- `4`: CKV 3.2 Memory Edition (Cluster Architecture).
+- `5`: Redis 2.8 Memory Edition (Standalone).
+- `6`: Redis 4.0 Memory Edition (Standard Architecture).
+- `7`: Redis 4.0 Memory Edition (Cluster Architecture).
+- `8`: Redis 5.0 Memory Edition (Standard Architecture).
+- `9`: Redis 5.0 Memory Edition (Cluster Architecture).
+- `15`: Redis 6.2 Memory Edition (Standard Architecture).
+- `16`: Redis 6.2 Memory Edition (Cluster Architecture).
         :type ProductType: int
         """
         self.TemplateId = None
@@ -6269,15 +6403,17 @@ class ParameterDetail(AbstractModel):
         r"""
         :param Name: Parameter name
         :type Name: str
-        :param ParamType: Data type of the parameter
+        :param ParamType: Parameter Type
         :type ParamType: str
         :param Default: Default value of the parameter
         :type Default: str
         :param Description: Parameter description
         :type Description: str
-        :param CurrentValue: Current value
+        :param CurrentValue: Current value of the parameter
         :type CurrentValue: str
-        :param NeedReboot: Whether the database needs to be restarted for the modified parameter to take effect. Valid values: 0 (no); 1 (yes).
+        :param NeedReboot: Whether to restart the database for the modified parameters to take effect
+- `0`: No restart.
+- `1`: Restart required.
         :type NeedReboot: int
         :param Max: Maximum value of the parameter
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -6285,7 +6421,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param Min: Minimum value of the parameter
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Min: str
-        :param EnumValue: Enumerated values of the parameter. It is null if the parameter is non-enumerated.
+        :param EnumValue: Enumerated values of the parameter. It is null if the parameter is non-enumerated
 Note: This field may return null, indicating that no valid values can be obtained.
         :type EnumValue: list of str
         """
@@ -6326,31 +6462,47 @@ class ProductConf(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: Product type. Valid values: `2` (Redis 2.8 Memory Edition in standard architecture), `3` (CKV 3.2 Memory Edition in standard architecture), `4` (CKV 3.2 Memory Edition in cluster architecture), `5` (Redis 2.8 Memory Edition in standalone architecture), `6` (Redis 4.0 Memory Edition in standard architecture), `7` (Redis 4.0 Memory Edition in cluster architecture), `8` (Redis 5.0 Memory Edition in standard architecture), `9` (Redis 5.0 Memory Edition in cluster architecture), `10` (Redis 4.0 Hybrid Storage Edition (Tendis)).
+        :param Type: Product type
+- `2`: Redis 2.8 Memory Edition (Standard Architecture).
+- `3`: CKV 3.2 Memory Edition (Standard Architecture).
+- `4`: CKV 3.2 Memory Edition (Cluster Architecture).
+- `5`: Redis 2.8 Memory Edition (Standalone).
+- `6`: Redis 4.0 Memory Edition (Standard Architecture).
+- `7`: Redis 4.0 Memory Edition (Cluster Architecture).
+- `8`: Redis 5.0 Memory Edition (Standard Architecture).
+- `9`: Redis 5.0 Memory Edition (Cluster Architecture).
+- `15`: Redis 6.2 Memory Edition (Standard Architecture).
+- `16`: Redis 6.2 Memory Edition (Cluster Architecture).
         :type Type: int
-        :param TypeName: Product name: Redis Master-Replica Edition, CKV Master-Replica Edition, CKV Cluster Edition, Redis Standalone Edition, Redis Cluster Edition, Tendis Hybrid Storage Edition
+        :param TypeName: Product names, including Redis Master-Replica Edition, Redis Standalone Edition, Redis 4.0 Cluster Edition, CKV Master-Replica Edition, and CKV Standalone Edition.
         :type TypeName: str
         :param MinBuyNum: Minimum purchasable quantity
         :type MinBuyNum: int
         :param MaxBuyNum: Maximum purchasable quantity
         :type MaxBuyNum: int
         :param Saleout: Whether a product is sold out
+- `true`: Sold out.
+- `false`: Not sold out.
         :type Saleout: bool
-        :param Engine: Product engine: Tencent Cloud CKV or Redis community edition
+        :param Engine: Product engines, including Tencent Cloud CKV and Redis Community Edition.
         :type Engine: str
-        :param Version: Compatible version: Redis 2.8, Redis 3.2, or Redis 4.0
+        :param Version: Compatible versions, including Redis 2.8, 3.2, 4.0, 5.0, and 6.2.
         :type Version: str
         :param TotalSize: Total capacity in GB
         :type TotalSize: list of str
         :param ShardSize: Shard size in GB
         :type ShardSize: list of str
-        :param ReplicaNum: Number of replicas
+        :param ReplicaNum: Quantity of replicas
         :type ReplicaNum: list of str
-        :param ShardNum: Number of shards
+        :param ShardNum: Quantity of shards
         :type ShardNum: list of str
-        :param PayMode: Supported billing method. 1: monthly subscription; 0: pay-as-you-go
+        :param PayMode: Supported billing modes
+- `1`: Monthly subscription.
+- `0`: Pay-as-you-go.
         :type PayMode: str
         :param EnableRepicaReadOnly: Whether to support read-only replicas
+- `true`: Supported.
+-`false`: Not supported.
         :type EnableRepicaReadOnly: bool
         """
         self.Type = None
@@ -6527,29 +6679,38 @@ class RedisCommonInstanceList(AbstractModel):
         :type InstanceName: str
         :param InstanceId: Instance ID
         :type InstanceId: str
-        :param AppId: User ID
+        :param AppId: User APPID, which is the unique application ID that matches an account. Some Tencent Cloud products use this APPID.
         :type AppId: int
-        :param ProjectId: Instance project ID
+        :param ProjectId: Project ID of the instance
         :type ProjectId: int
         :param Region: Instance region
         :type Region: str
         :param Zone: Instance AZ
         :type Zone: str
-        :param VpcId: Instance network ID
+        :param VpcId: Instance VPC ID
         :type VpcId: str
-        :param SubnetId: Subnet ID
+        :param SubnetId: VPC subnet ID
         :type SubnetId: str
-        :param Status: Instance status. 1: task running; 2: instance running; -2: instance isolated; -3: instance being eliminated; -4: instance eliminated
+        :param Status: Instance status information
+- `1`: Task running.
+- `2`: Instance running.
+- `-2`: Instance isolated.
+- `-3`: Instance being eliminated.
+- `-4`: Instance eliminated.
         :type Status: str
-        :param Vips: Instance network IP
+        :param Vips: Private network IP address of an instance
         :type Vips: list of str
         :param Vport: Instance network port
         :type Vport: int
         :param Createtime: Instance creation time
         :type Createtime: str
-        :param PayMode: Billing mode. 0: pay-as-you-go; 1: monthly subscription
+        :param PayMode: Billing type
+- `0`: Pay-as-you-go.
+- `1`: Monthly subscription.
         :type PayMode: int
-        :param NetType: Network type. Valid values: 0 (classic network); 1 (VPC).
+        :param NetType: Network Type
+- `0`: Classic network.
+- `1`: VPC.
         :type NetType: int
         """
         self.InstanceName = None
@@ -6798,6 +6959,59 @@ class ReleaseWanAddressResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RemoveReplicationInstanceRequest(AbstractModel):
+    """RemoveReplicationInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupId: Replication group ID
+        :type GroupId: str
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param SyncType: Data sync type. Valid values: `true` (strong sync is required), `false` (strong sync is not required, only the master instance can be deleted).
+        :type SyncType: bool
+        """
+        self.GroupId = None
+        self.InstanceId = None
+        self.SyncType = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.InstanceId = params.get("InstanceId")
+        self.SyncType = params.get("SyncType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemoveReplicationInstanceResponse(AbstractModel):
+    """RemoveReplicationInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: Async task ID
+        :type TaskId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class RenewInstanceRequest(AbstractModel):
     """RenewInstance request structure.
 
@@ -6958,7 +7172,7 @@ class ResourceTag(AbstractModel):
         r"""
         :param TagKey: Tag key
         :type TagKey: str
-        :param TagValue: Tag value
+        :param TagValue: The value corresponding to the tag key
         :type TagValue: str
         """
         self.TagKey = None

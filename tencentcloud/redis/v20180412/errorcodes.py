@@ -197,7 +197,7 @@ LIMITEXCEEDED_PERIODEXCEEDMAXLIMIT = 'LimitExceeded.PeriodExceedMaxLimit'
 # The length of purchase is invalid. It must be at least one month.
 LIMITEXCEEDED_PERIODLESSTHANMINLIMIT = 'LimitExceeded.PeriodLessThanMinLimit'
 
-# The quantity of requested Redis instances falls out of the limit range.
+# The quantity of requested TencentDB for Redis instances falls out of the limit range.
 LIMITEXCEEDED_REACHTHEAMOUNTLIMIT = 'LimitExceeded.ReachTheAmountLimit'
 
 # Replication group locked
