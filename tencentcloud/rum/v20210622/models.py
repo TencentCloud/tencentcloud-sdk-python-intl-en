@@ -3516,12 +3516,16 @@ class DescribeReleaseFileSignRequest(AbstractModel):
         r"""
         :param Timeout: Timeout period. If it is not set, it will be 5 minutes by default
         :type Timeout: int
+        :param FileType: Bucket type. Valid values: `1`: (Web, which is the default value), `2` (Application).
+        :type FileType: int
         """
         self.Timeout = None
+        self.FileType = None
 
 
     def _deserialize(self, params):
         self.Timeout = params.get("Timeout")
+        self.FileType = params.get("FileType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

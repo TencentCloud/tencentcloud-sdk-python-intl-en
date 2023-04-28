@@ -210,6 +210,29 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteDBDiagReportTasks(self, request):
+        """This API is used to delete health report generation tasks by task ID.
+
+        :param request: Request instance for DeleteDBDiagReportTasks.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.DeleteDBDiagReportTasksRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.DeleteDBDiagReportTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDBDiagReportTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDBDiagReportTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteSecurityAuditLogExportTasks(self, request):
         """This API is used to delete a security audit log export task.
 
@@ -661,6 +684,29 @@ class DbbrainClient(AbstractClient):
             body = self.call("DescribeSlowLogUserHostStats", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSlowLogUserHostStatsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSlowLogs(self, request):
+        """This API is used to obtain the slow query log details of a SQL template in a specified time period.
+
+        :param request: Request instance for DescribeSlowLogs.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeSlowLogsRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.DescribeSlowLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSlowLogs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSlowLogsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

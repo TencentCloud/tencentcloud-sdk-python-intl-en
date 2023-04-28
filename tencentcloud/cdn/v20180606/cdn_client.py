@@ -49,6 +49,29 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AddCdnDomain(self, request):
+        """This API is used to add a CDN acceleration domain name. Up to 100 domain names can be added per minute.
+
+        :param request: Request instance for AddCdnDomain.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.AddCdnDomainRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.AddCdnDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddCdnDomain", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddCdnDomainResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateClsLogTopic(self, request):
         """This API is used to create a log topic. Up to 10 log topics can be created under one logset.
 

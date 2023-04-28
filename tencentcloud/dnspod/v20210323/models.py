@@ -35,8 +35,7 @@ class AddRecordBatch(AbstractModel):
         :type RecordLine: str
         :param RecordLineId: Split zone ID of the DNS record. If both `RecordLine` and `RecordLineId` are specified, `RecordLineId` will be used.
         :type RecordLineId: str
-        :param Weight: Record weight (not supported).
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param Weight: The record weight (not supported).
         :type Weight: int
         :param MX: MX record value. It is `0` by default for non-MX records and required for MX records.
         :type MX: int
@@ -597,6 +596,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param MX: MX weight of the record
 Note: This field may return null, indicating that no valid values can be obtained.
         :type MX: int
+        :param Weight: The record weight.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Weight: int
         """
         self.SubDomain = None
         self.RecordType = None
@@ -608,6 +610,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.ErrMsg = None
         self.Id = None
         self.MX = None
+        self.Weight = None
 
 
     def _deserialize(self, params):
@@ -621,6 +624,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.ErrMsg = params.get("ErrMsg")
         self.Id = params.get("Id")
         self.MX = params.get("MX")
+        self.Weight = params.get("Weight")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1260,7 +1264,7 @@ class DescribeDomainListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: Domain group type. Valid values: `ALL`, `MINE`, `SHARE`, `ISMARK`, `PAUSE`, `VIP`, `RECENT`, `SHARE_OUT`. Default value: `ALL`.
+        :param Type: The domain group type. Valid values: `ALL` (default), `MINE`, `SHARE`, `ISMARK`, `PAUSE`, `VIP`, `RECENT`, `SHARE_OUT`, and `FREE`.
         :type Type: str
         :param Offset: Record offset starting from `0`. Default value: `0`.
         :type Offset: int

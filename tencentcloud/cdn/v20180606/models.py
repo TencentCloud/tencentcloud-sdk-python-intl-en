@@ -157,6 +157,288 @@ class AddCLSTopicDomainsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AddCdnDomainRequest(AbstractModel):
+    """AddCdnDomain request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: Domain name
+        :type Domain: str
+        :param ServiceType: Acceleration domain name service type
+`web`: Webpage file downloads
+`download`: Large file downloads
+`media`: Audio and video on demand acceleration
+`hybrid`: Dynamic and static content acceleration
+`dynamic`: Dynamic content acceleration
+        :type ServiceType: str
+        :param Origin: Origin server configuration
+        :type Origin: :class:`tencentcloud.cdn.v20180606.models.Origin`
+        :param ProjectId: Project ID. Default value: 0, indicating `Default Project`
+        :type ProjectId: int
+        :param IpFilter: IP blocklist/allowlist
+        :type IpFilter: :class:`tencentcloud.cdn.v20180606.models.IpFilter`
+        :param IpFreqLimit: IP rate limiting
+        :type IpFreqLimit: :class:`tencentcloud.cdn.v20180606.models.IpFreqLimit`
+        :param StatusCodeCache: Status code cache
+        :type StatusCodeCache: :class:`tencentcloud.cdn.v20180606.models.StatusCodeCache`
+        :param Compression: Smart compression
+        :type Compression: :class:`tencentcloud.cdn.v20180606.models.Compression`
+        :param BandwidthAlert: Bandwidth cap configuration
+        :type BandwidthAlert: :class:`tencentcloud.cdn.v20180606.models.BandwidthAlert`
+        :param RangeOriginPull: Range GETs configuration
+        :type RangeOriginPull: :class:`tencentcloud.cdn.v20180606.models.RangeOriginPull`
+        :param FollowRedirect: 301/302 origin-pull follow-redirect configuration
+        :type FollowRedirect: :class:`tencentcloud.cdn.v20180606.models.FollowRedirect`
+        :param ErrorPage: Error code redirection (in beta)
+        :type ErrorPage: :class:`tencentcloud.cdn.v20180606.models.ErrorPage`
+        :param RequestHeader: Request header configuration
+        :type RequestHeader: :class:`tencentcloud.cdn.v20180606.models.RequestHeader`
+        :param ResponseHeader: Response header configuration
+        :type ResponseHeader: :class:`tencentcloud.cdn.v20180606.models.ResponseHeader`
+        :param DownstreamCapping: Download speed configuration
+        :type DownstreamCapping: :class:`tencentcloud.cdn.v20180606.models.DownstreamCapping`
+        :param CacheKey: Node cache key configuration
+        :type CacheKey: :class:`tencentcloud.cdn.v20180606.models.CacheKey`
+        :param ResponseHeaderCache: Header cache configuration
+        :type ResponseHeaderCache: :class:`tencentcloud.cdn.v20180606.models.ResponseHeaderCache`
+        :param VideoSeek: Video dragging configuration
+        :type VideoSeek: :class:`tencentcloud.cdn.v20180606.models.VideoSeek`
+        :param Cache: Cache validity configuration
+        :type Cache: :class:`tencentcloud.cdn.v20180606.models.Cache`
+        :param OriginPullOptimization: Cross-MLC-border origin-pull optimization
+        :type OriginPullOptimization: :class:`tencentcloud.cdn.v20180606.models.OriginPullOptimization`
+        :param Https: HTTPS acceleration
+        :type Https: :class:`tencentcloud.cdn.v20180606.models.Https`
+        :param Authentication: Timestamp hotlink protection
+        :type Authentication: :class:`tencentcloud.cdn.v20180606.models.Authentication`
+        :param Seo: SEO optimization
+        :type Seo: :class:`tencentcloud.cdn.v20180606.models.Seo`
+        :param ForceRedirect: Force redirect by access protocol
+        :type ForceRedirect: :class:`tencentcloud.cdn.v20180606.models.ForceRedirect`
+        :param Referer: Referer hotlink protection
+        :type Referer: :class:`tencentcloud.cdn.v20180606.models.Referer`
+        :param MaxAge: Browser caching (in beta)
+        :type MaxAge: :class:`tencentcloud.cdn.v20180606.models.MaxAge`
+        :param Ipv6: IPv6 configuration (This feature is in beta and not generally available yet.)
+        :type Ipv6: :class:`tencentcloud.cdn.v20180606.models.Ipv6`
+        :param SpecificConfig: Specific region configuration
+Applicable to cases where the acceleration domain name configuration differs for regions in and outside mainland China.
+        :type SpecificConfig: :class:`tencentcloud.cdn.v20180606.models.SpecificConfig`
+        :param Area: Domain name acceleration region
+mainland: acceleration inside mainland China
+overseas: acceleration outside mainland China
+global: global acceleration
+Overseas acceleration service must be enabled to use overseas acceleration and global acceleration.
+        :type Area: str
+        :param OriginPullTimeout: Origin-pull timeout configuration
+        :type OriginPullTimeout: :class:`tencentcloud.cdn.v20180606.models.OriginPullTimeout`
+        :param Tag: Tag configuration
+        :type Tag: list of Tag
+        :param Ipv6Access: Ipv6 access configuration
+        :type Ipv6Access: :class:`tencentcloud.cdn.v20180606.models.Ipv6Access`
+        :param OfflineCache: Offline cache
+        :type OfflineCache: :class:`tencentcloud.cdn.v20180606.models.OfflineCache`
+        :param Quic: QUIC access, which is a paid service. You can check the product document and Billing Overview for more information.
+        :type Quic: :class:`tencentcloud.cdn.v20180606.models.Quic`
+        :param AwsPrivateAccess: Access authentication for S3 origin
+        :type AwsPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.AwsPrivateAccess`
+        :param OssPrivateAccess: Access authentication for OSS origin
+        :type OssPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.OssPrivateAccess`
+        :param HwPrivateAccess: Origin-pull authentication for Huawei Cloud OBS origin
+        :type HwPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.HwPrivateAccess`
+        :param QnPrivateAccess: Origin-pull authentication for Qiniu Cloud Kodo origin
+        :type QnPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.QnPrivateAccess`
+        :param OthersPrivateAccess: Origin-pull authentication for other origins
+        :type OthersPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.OthersPrivateAccess`
+        :param HttpsBilling: HTTPS (enabled by default), which is a paid service. You can check the product document and Billing Overview for more information.
+        :type HttpsBilling: :class:`tencentcloud.cdn.v20180606.models.HttpsBilling`
+        """
+        self.Domain = None
+        self.ServiceType = None
+        self.Origin = None
+        self.ProjectId = None
+        self.IpFilter = None
+        self.IpFreqLimit = None
+        self.StatusCodeCache = None
+        self.Compression = None
+        self.BandwidthAlert = None
+        self.RangeOriginPull = None
+        self.FollowRedirect = None
+        self.ErrorPage = None
+        self.RequestHeader = None
+        self.ResponseHeader = None
+        self.DownstreamCapping = None
+        self.CacheKey = None
+        self.ResponseHeaderCache = None
+        self.VideoSeek = None
+        self.Cache = None
+        self.OriginPullOptimization = None
+        self.Https = None
+        self.Authentication = None
+        self.Seo = None
+        self.ForceRedirect = None
+        self.Referer = None
+        self.MaxAge = None
+        self.Ipv6 = None
+        self.SpecificConfig = None
+        self.Area = None
+        self.OriginPullTimeout = None
+        self.Tag = None
+        self.Ipv6Access = None
+        self.OfflineCache = None
+        self.Quic = None
+        self.AwsPrivateAccess = None
+        self.OssPrivateAccess = None
+        self.HwPrivateAccess = None
+        self.QnPrivateAccess = None
+        self.OthersPrivateAccess = None
+        self.HttpsBilling = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.ServiceType = params.get("ServiceType")
+        if params.get("Origin") is not None:
+            self.Origin = Origin()
+            self.Origin._deserialize(params.get("Origin"))
+        self.ProjectId = params.get("ProjectId")
+        if params.get("IpFilter") is not None:
+            self.IpFilter = IpFilter()
+            self.IpFilter._deserialize(params.get("IpFilter"))
+        if params.get("IpFreqLimit") is not None:
+            self.IpFreqLimit = IpFreqLimit()
+            self.IpFreqLimit._deserialize(params.get("IpFreqLimit"))
+        if params.get("StatusCodeCache") is not None:
+            self.StatusCodeCache = StatusCodeCache()
+            self.StatusCodeCache._deserialize(params.get("StatusCodeCache"))
+        if params.get("Compression") is not None:
+            self.Compression = Compression()
+            self.Compression._deserialize(params.get("Compression"))
+        if params.get("BandwidthAlert") is not None:
+            self.BandwidthAlert = BandwidthAlert()
+            self.BandwidthAlert._deserialize(params.get("BandwidthAlert"))
+        if params.get("RangeOriginPull") is not None:
+            self.RangeOriginPull = RangeOriginPull()
+            self.RangeOriginPull._deserialize(params.get("RangeOriginPull"))
+        if params.get("FollowRedirect") is not None:
+            self.FollowRedirect = FollowRedirect()
+            self.FollowRedirect._deserialize(params.get("FollowRedirect"))
+        if params.get("ErrorPage") is not None:
+            self.ErrorPage = ErrorPage()
+            self.ErrorPage._deserialize(params.get("ErrorPage"))
+        if params.get("RequestHeader") is not None:
+            self.RequestHeader = RequestHeader()
+            self.RequestHeader._deserialize(params.get("RequestHeader"))
+        if params.get("ResponseHeader") is not None:
+            self.ResponseHeader = ResponseHeader()
+            self.ResponseHeader._deserialize(params.get("ResponseHeader"))
+        if params.get("DownstreamCapping") is not None:
+            self.DownstreamCapping = DownstreamCapping()
+            self.DownstreamCapping._deserialize(params.get("DownstreamCapping"))
+        if params.get("CacheKey") is not None:
+            self.CacheKey = CacheKey()
+            self.CacheKey._deserialize(params.get("CacheKey"))
+        if params.get("ResponseHeaderCache") is not None:
+            self.ResponseHeaderCache = ResponseHeaderCache()
+            self.ResponseHeaderCache._deserialize(params.get("ResponseHeaderCache"))
+        if params.get("VideoSeek") is not None:
+            self.VideoSeek = VideoSeek()
+            self.VideoSeek._deserialize(params.get("VideoSeek"))
+        if params.get("Cache") is not None:
+            self.Cache = Cache()
+            self.Cache._deserialize(params.get("Cache"))
+        if params.get("OriginPullOptimization") is not None:
+            self.OriginPullOptimization = OriginPullOptimization()
+            self.OriginPullOptimization._deserialize(params.get("OriginPullOptimization"))
+        if params.get("Https") is not None:
+            self.Https = Https()
+            self.Https._deserialize(params.get("Https"))
+        if params.get("Authentication") is not None:
+            self.Authentication = Authentication()
+            self.Authentication._deserialize(params.get("Authentication"))
+        if params.get("Seo") is not None:
+            self.Seo = Seo()
+            self.Seo._deserialize(params.get("Seo"))
+        if params.get("ForceRedirect") is not None:
+            self.ForceRedirect = ForceRedirect()
+            self.ForceRedirect._deserialize(params.get("ForceRedirect"))
+        if params.get("Referer") is not None:
+            self.Referer = Referer()
+            self.Referer._deserialize(params.get("Referer"))
+        if params.get("MaxAge") is not None:
+            self.MaxAge = MaxAge()
+            self.MaxAge._deserialize(params.get("MaxAge"))
+        if params.get("Ipv6") is not None:
+            self.Ipv6 = Ipv6()
+            self.Ipv6._deserialize(params.get("Ipv6"))
+        if params.get("SpecificConfig") is not None:
+            self.SpecificConfig = SpecificConfig()
+            self.SpecificConfig._deserialize(params.get("SpecificConfig"))
+        self.Area = params.get("Area")
+        if params.get("OriginPullTimeout") is not None:
+            self.OriginPullTimeout = OriginPullTimeout()
+            self.OriginPullTimeout._deserialize(params.get("OriginPullTimeout"))
+        if params.get("Tag") is not None:
+            self.Tag = []
+            for item in params.get("Tag"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tag.append(obj)
+        if params.get("Ipv6Access") is not None:
+            self.Ipv6Access = Ipv6Access()
+            self.Ipv6Access._deserialize(params.get("Ipv6Access"))
+        if params.get("OfflineCache") is not None:
+            self.OfflineCache = OfflineCache()
+            self.OfflineCache._deserialize(params.get("OfflineCache"))
+        if params.get("Quic") is not None:
+            self.Quic = Quic()
+            self.Quic._deserialize(params.get("Quic"))
+        if params.get("AwsPrivateAccess") is not None:
+            self.AwsPrivateAccess = AwsPrivateAccess()
+            self.AwsPrivateAccess._deserialize(params.get("AwsPrivateAccess"))
+        if params.get("OssPrivateAccess") is not None:
+            self.OssPrivateAccess = OssPrivateAccess()
+            self.OssPrivateAccess._deserialize(params.get("OssPrivateAccess"))
+        if params.get("HwPrivateAccess") is not None:
+            self.HwPrivateAccess = HwPrivateAccess()
+            self.HwPrivateAccess._deserialize(params.get("HwPrivateAccess"))
+        if params.get("QnPrivateAccess") is not None:
+            self.QnPrivateAccess = QnPrivateAccess()
+            self.QnPrivateAccess._deserialize(params.get("QnPrivateAccess"))
+        if params.get("OthersPrivateAccess") is not None:
+            self.OthersPrivateAccess = OthersPrivateAccess()
+            self.OthersPrivateAccess._deserialize(params.get("OthersPrivateAccess"))
+        if params.get("HttpsBilling") is not None:
+            self.HttpsBilling = HttpsBilling()
+            self.HttpsBilling._deserialize(params.get("HttpsBilling"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddCdnDomainResponse(AbstractModel):
+    """AddCdnDomain response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class AdvanceCacheRule(AbstractModel):
     """Advanced cache configuration rules
 
@@ -1626,7 +1908,8 @@ class BriefDomain(AbstractModel):
         :param Status: Acceleration service status
 `rejected`: The domain name is rejected due to expiration/deregistration of its ICP filing
 `processing`: Deploying
-`online`: Activated
+`closing`: Disabling
+`online`: Enabled
 `offline`: Disabled
         :type Status: str
         :param ProjectId: Project ID, which can be viewed on the Tencent Cloud project management page
@@ -4226,6 +4509,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param Status: Acceleration service status
 `rejected`: The domain name is rejected due to expiration/deregistration of its ICP filing
 `processing`: Deploying
+`closing`: Disabling
 `online`: Enabled
 `offline`: Disabled
         :type Status: str
@@ -4423,9 +4707,12 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         :param QnPrivateAccess: Access authentication for QiNiu Cloud Kodo origin
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type QnPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.QnPrivateAccess`
-        :param HttpsBilling: HTTPS service
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param HttpsBilling: HTTPS (enabled by default)
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type HttpsBilling: :class:`tencentcloud.cdn.v20180606.models.HttpsBilling`
+        :param OthersPrivateAccess: Origin-pull authentication for other origins
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type OthersPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.OthersPrivateAccess`
         """
         self.ResourceId = None
         self.AppId = None
@@ -4492,6 +4779,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.HwPrivateAccess = None
         self.QnPrivateAccess = None
         self.HttpsBilling = None
+        self.OthersPrivateAccess = None
 
 
     def _deserialize(self, params):
@@ -4666,6 +4954,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("HttpsBilling") is not None:
             self.HttpsBilling = HttpsBilling()
             self.HttpsBilling._deserialize(params.get("HttpsBilling"))
+        if params.get("OthersPrivateAccess") is not None:
+            self.OthersPrivateAccess = OthersPrivateAccess()
+            self.OthersPrivateAccess._deserialize(params.get("OthersPrivateAccess"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5635,13 +5926,13 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class HttpsBilling(AbstractModel):
-    """When it’s not enabled, HTTPS requests are blocked.
+    """HTTPS. When it’s disabled, HTTPS requests are blocked.
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: HTTPS Service
+        :param Switch: HTTPS (enabled by default), which will incur charges.
         :type Switch: str
         """
         self.Switch = None
@@ -5769,8 +6060,8 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         :param FilterRules: IP blocklist/allowlist path-based configuration. This feature is only available to selected beta customers.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type FilterRules: list of IpFilterPathRule
-        :param ReturnCode: [Unavailable soon] The code returned when the IP blocklist/allowlist verification fails.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param ReturnCode: (Disused) Expected HTTP code to return when the IP allowlist/blocklist verification fails. <br><font color=red>The 514 code is used instead.</font>
+Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ReturnCode: int
         """
         self.Switch = None
@@ -7158,6 +7449,50 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         :type Region: str
         :param Bucket: BucketName
 Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type Bucket: str
+        """
+        self.Switch = None
+        self.AccessKey = None
+        self.SecretKey = None
+        self.Region = None
+        self.Bucket = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.AccessKey = params.get("AccessKey")
+        self.SecretKey = params.get("SecretKey")
+        self.Region = params.get("Region")
+        self.Bucket = params.get("Bucket")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OthersPrivateAccess(AbstractModel):
+    """Origin-pull authentication for other origins
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: Whether to enable access authentication. Valid values: `on`, `off`.
+        :type Switch: str
+        :param AccessKey: Access ID.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type AccessKey: str
+        :param SecretKey: Key.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type SecretKey: str
+        :param Region: Region.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Region: str
+        :param Bucket: Bucket name
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Bucket: str
         """
         self.Switch = None
@@ -10253,7 +10588,9 @@ After switching to global acceleration, configurations of the domain name will b
         :type HwPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.HwPrivateAccess`
         :param QnPrivateAccess: Access authentication for QiNiu Cloud Kodo origin
         :type QnPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.QnPrivateAccess`
-        :param HttpsBilling: HTTPS service
+        :param OthersPrivateAccess: Origin-pull authentication for other origins
+        :type OthersPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.OthersPrivateAccess`
+        :param HttpsBilling: HTTPS, which is a paid service. You can check the product document and Billing Overview for more information.
         :type HttpsBilling: :class:`tencentcloud.cdn.v20180606.models.HttpsBilling`
         """
         self.Domain = None
@@ -10303,6 +10640,7 @@ After switching to global acceleration, configurations of the domain name will b
         self.ShareCname = None
         self.HwPrivateAccess = None
         self.QnPrivateAccess = None
+        self.OthersPrivateAccess = None
         self.HttpsBilling = None
 
 
@@ -10438,6 +10776,9 @@ After switching to global acceleration, configurations of the domain name will b
         if params.get("QnPrivateAccess") is not None:
             self.QnPrivateAccess = QnPrivateAccess()
             self.QnPrivateAccess._deserialize(params.get("QnPrivateAccess"))
+        if params.get("OthersPrivateAccess") is not None:
+            self.OthersPrivateAccess = OthersPrivateAccess()
+            self.OthersPrivateAccess._deserialize(params.get("OthersPrivateAccess"))
         if params.get("HttpsBilling") is not None:
             self.HttpsBilling = HttpsBilling()
             self.HttpsBilling._deserialize(params.get("HttpsBilling"))

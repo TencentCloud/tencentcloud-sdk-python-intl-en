@@ -670,6 +670,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAlertRecordHistory(self, request):
+        """This API is used to get alarm records, such as today's uncleared alarms.
+
+        :param request: Request instance for DescribeAlertRecordHistory.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeAlertRecordHistoryRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeAlertRecordHistoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAlertRecordHistory", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAlertRecordHistoryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeConfigMachineGroups(self, request):
         """This API is used to get the machine group bound to a collection rule configuration.
 

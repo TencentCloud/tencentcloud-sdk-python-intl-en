@@ -9169,7 +9169,7 @@ class DescribeAssetHostDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UUID: CWPP UUID
+        :param UUID: TCSS UUID
         :type UUID: str
         :param UpdateTime: Update time
         :type UpdateTime: str
@@ -12171,6 +12171,8 @@ class DescribeClusterDetailResponse(AbstractModel):
         :type ServiceCount: int
         :param IngressCount: Number of Ingresses
         :type IngressCount: int
+        :param MasterIps: IPs of the primary nodes
+        :type MasterIps: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -12198,6 +12200,7 @@ class DescribeClusterDetailResponse(AbstractModel):
         self.PodCount = None
         self.ServiceCount = None
         self.IngressCount = None
+        self.MasterIps = None
         self.RequestId = None
 
 
@@ -12226,6 +12229,7 @@ class DescribeClusterDetailResponse(AbstractModel):
         self.PodCount = params.get("PodCount")
         self.ServiceCount = params.get("ServiceCount")
         self.IngressCount = params.get("IngressCount")
+        self.MasterIps = params.get("MasterIps")
         self.RequestId = params.get("RequestId")
 
 
@@ -12262,6 +12266,8 @@ class DescribeClusterSummaryResponse(AbstractModel):
         :type ManualCheckClusterCount: int
         :param FailedClusterCount: Number of clusters that failed the check
         :type FailedClusterCount: int
+        :param NotImportedClusterCount: Number of clusters not imported
+        :type NotImportedClusterCount: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -12275,6 +12281,7 @@ class DescribeClusterSummaryResponse(AbstractModel):
         self.AutoCheckClusterCount = None
         self.ManualCheckClusterCount = None
         self.FailedClusterCount = None
+        self.NotImportedClusterCount = None
         self.RequestId = None
 
 
@@ -12289,6 +12296,7 @@ class DescribeClusterSummaryResponse(AbstractModel):
         self.AutoCheckClusterCount = params.get("AutoCheckClusterCount")
         self.ManualCheckClusterCount = params.get("ManualCheckClusterCount")
         self.FailedClusterCount = params.get("FailedClusterCount")
+        self.NotImportedClusterCount = params.get("NotImportedClusterCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -20588,6 +20596,16 @@ class DescribeVulSummaryResponse(AbstractModel):
         :type RemoteExpLevelVulCount: int
         :param SeriousVulNewestImageCount: Number of images on the latest version affected by critical or high-risk vulnerabilities
         :type SeriousVulNewestImageCount: int
+        :param SystemVulnerabilityFocusCount: Number of high-priority system vulnerabilities
+        :type SystemVulnerabilityFocusCount: int
+        :param WebVulnerabilityFocusCount: Number of high-priority web vulnerabilities
+        :type WebVulnerabilityFocusCount: int
+        :param SeriousVulnerabilityLocalImageCount: Number of affected local images
+        :type SeriousVulnerabilityLocalImageCount: int
+        :param SeriousVulnerabilityRegistryImageCount: Number of affected repository images
+        :type SeriousVulnerabilityRegistryImageCount: int
+        :param EmergencyVulnerabilityCount: Number of emergency vulnerabilities
+        :type EmergencyVulnerabilityCount: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -20597,6 +20615,11 @@ class DescribeVulSummaryResponse(AbstractModel):
         self.PocExpLevelVulCount = None
         self.RemoteExpLevelVulCount = None
         self.SeriousVulNewestImageCount = None
+        self.SystemVulnerabilityFocusCount = None
+        self.WebVulnerabilityFocusCount = None
+        self.SeriousVulnerabilityLocalImageCount = None
+        self.SeriousVulnerabilityRegistryImageCount = None
+        self.EmergencyVulnerabilityCount = None
         self.RequestId = None
 
 
@@ -20607,6 +20630,11 @@ class DescribeVulSummaryResponse(AbstractModel):
         self.PocExpLevelVulCount = params.get("PocExpLevelVulCount")
         self.RemoteExpLevelVulCount = params.get("RemoteExpLevelVulCount")
         self.SeriousVulNewestImageCount = params.get("SeriousVulNewestImageCount")
+        self.SystemVulnerabilityFocusCount = params.get("SystemVulnerabilityFocusCount")
+        self.WebVulnerabilityFocusCount = params.get("WebVulnerabilityFocusCount")
+        self.SeriousVulnerabilityLocalImageCount = params.get("SeriousVulnerabilityLocalImageCount")
+        self.SeriousVulnerabilityRegistryImageCount = params.get("SeriousVulnerabilityRegistryImageCount")
+        self.EmergencyVulnerabilityCount = params.get("EmergencyVulnerabilityCount")
         self.RequestId = params.get("RequestId")
 
 

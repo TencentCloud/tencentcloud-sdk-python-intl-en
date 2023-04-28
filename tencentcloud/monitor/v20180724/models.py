@@ -7890,6 +7890,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param RawJobs: List of raw jobs and the corresponding targets information
 Note: This field may return null, indicating that no valid values can be obtained.
         :type RawJobs: list of PrometheusConfigItem
+        :param Probes: List of probes and the corresponding targets information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Probes: list of PrometheusConfigItem
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -7897,6 +7900,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.ServiceMonitors = None
         self.PodMonitors = None
         self.RawJobs = None
+        self.Probes = None
         self.RequestId = None
 
 
@@ -7920,6 +7924,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = PrometheusConfigItem()
                 obj._deserialize(item)
                 self.RawJobs.append(obj)
+        if params.get("Probes") is not None:
+            self.Probes = []
+            for item in params.get("Probes"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.Probes.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -12389,7 +12399,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class PrometheusClusterAgentBasic(AbstractModel):
-    """Basic information of the cluster associated with a CM-integrated TMP instance.
+    """Basic information of the cluster associated with a Tencent Cloud Observability Platform (TCOP)-integrated TMP instance.
 
     """
 
@@ -12507,16 +12517,23 @@ class PrometheusConfigItem(AbstractModel):
         :param TemplateId: If the configuration comes from a template, this parameter is the template ID, which is used as an output parameter.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TemplateId: str
+        :param Targets: Number of targets
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Targets: :class:`tencentcloud.monitor.v20180724.models.Targets`
         """
         self.Name = None
         self.Config = None
         self.TemplateId = None
+        self.Targets = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Config = params.get("Config")
         self.TemplateId = params.get("TemplateId")
+        if params.get("Targets") is not None:
+            self.Targets = Targets()
+            self.Targets._deserialize(params.get("Targets"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13040,12 +13057,24 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param ClusterId: If the recording rule comes from the user cluster CRD resource definition, `ClusterId` is the cluster ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ClusterId: str
+        :param Status: Status
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Status: int
+        :param Id: id
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Id: str
+        :param Count: Number of rules
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Count: int
         """
         self.Name = None
         self.UpdateTime = None
         self.TemplateId = None
         self.Content = None
         self.ClusterId = None
+        self.Status = None
+        self.Id = None
+        self.Count = None
 
 
     def _deserialize(self, params):
@@ -13054,6 +13083,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.TemplateId = params.get("TemplateId")
         self.Content = params.get("Content")
         self.ClusterId = params.get("ClusterId")
+        self.Status = params.get("Status")
+        self.Id = params.get("Id")
+        self.Count = params.get("Count")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14099,6 +14131,46 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         
 
 
+class Targets(AbstractModel):
+    """Number of scrape targets
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: The total count
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Total: int
+        :param Up: Number of online targets
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Up: int
+        :param Down: Number of offline targets
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Down: int
+        :param Unknown: Number of unknown status
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Unknown: int
+        """
+        self.Total = None
+        self.Up = None
+        self.Down = None
+        self.Unknown = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        self.Up = params.get("Up")
+        self.Down = params.get("Down")
+        self.Unknown = params.get("Unknown")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TaskStepInfo(AbstractModel):
     """Task step information
 
@@ -14302,7 +14374,7 @@ class Toleration(AbstractModel):
 
 
 class URLNotice(AbstractModel):
-    """Cloud Monitor alarm notification template - callback notification details
+    """Alarm notification template – callback notification details
 
     """
 
@@ -15464,7 +15536,7 @@ class UpgradeGrafanaInstanceResponse(AbstractModel):
 
 
 class UserNotice(AbstractModel):
-    """Cloud Monitor alarm notification template - user notification details
+    """Alarm notification template – user notification details
 
     """
 

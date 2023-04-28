@@ -1736,12 +1736,17 @@ class DatahubTopicResp(AbstractModel):
         r"""
         :param TopicName: Topic name
         :type TopicName: str
+        :param TopicId: TopicId
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TopicId: str
         """
         self.TopicName = None
+        self.TopicId = None
 
 
     def _deserialize(self, params):
         self.TopicName = params.get("TopicName")
+        self.TopicId = params.get("TopicId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

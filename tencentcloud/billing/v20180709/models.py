@@ -161,6 +161,9 @@ Note: This field may return `null`, indicating that no valid value can be found.
         :type RegionId: str
         :param ProjectId: Project ID: ID of the project to which the resource belongs
         :type ProjectId: int
+        :param PriceInfo: Price attribute
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PriceInfo: list of str
         """
         self.BusinessCodeName = None
         self.ProductCodeName = None
@@ -186,6 +189,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
         self.ActionType = None
         self.RegionId = None
         self.ProjectId = None
+        self.PriceInfo = None
 
 
     def _deserialize(self, params):
@@ -223,6 +227,7 @@ Note: This field may return `null`, indicating that no valid value can be found.
         self.ActionType = params.get("ActionType")
         self.RegionId = params.get("RegionId")
         self.ProjectId = params.get("ProjectId")
+        self.PriceInfo = params.get("PriceInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -694,7 +699,7 @@ class CosDetailSets(AbstractModel):
         :type DosageBeginTime: str
         :param DosageEndTime: The end time of the usage
         :type DosageEndTime: str
-        :param SubProductCodeName: Sub-product name
+        :param SubProductCodeName: Subproduct name
         :type SubProductCodeName: str
         :param BillingItemCodeName: Billable item name
         :type BillingItemCodeName: str
@@ -1328,7 +1333,7 @@ class DescribeBillSummaryByTagRequest(AbstractModel):
         :type BeginTime: str
         :param EndTime: The value must be of the same month as `BeginTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
         :type EndTime: str
-        :param TagKey: Cost allocation tag key
+        :param TagKey: Cost allocation tag key, which can be customized.
         :type TagKey: str
         :param PayerUin: Payer UIN
         :type PayerUin: str
@@ -1402,9 +1407,9 @@ class DescribeDosageCosDetailByDateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartDate: The start date of the usage query
+        :param StartDate: The start date of the usage query, such as `2020-09-01`.
         :type StartDate: str
-        :param EndDate: The end date of the usage query (end date must be in the same month as the start date)
+        :param EndDate: The end date of the usage query (end date must be in the same month as the start date), such as `2020-09-30`.
         :type EndDate: str
         :param BucketName: Bucket name. You can use `Get Service` to query the list of all buckets under a requester account. For details, see [GET Service (List Buckets)](https://www.tencentcloud.com/document/product/436/8291).
         :type BucketName: str
@@ -1476,9 +1481,9 @@ class DescribeVoucherInfoRequest(AbstractModel):
         :type ActivityId: str
         :param VoucherName: The voucher name.
         :type VoucherName: str
-        :param TimeFrom: The start time of the promotional campaign.
+        :param TimeFrom: The start date of the voucher issuance, such as `2021-01-01`.
         :type TimeFrom: str
-        :param TimeTo: The end time of the promotional campaign.
+        :param TimeTo: The end date of the voucher issuance, such as `2021-01-01`.
         :type TimeTo: str
         :param SortField: The field used to sort the records. Valid values: BeginTime, EndTime, CreateTime.
         :type SortField: str

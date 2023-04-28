@@ -539,6 +539,60 @@ class CreateSecurityAuditLogExportTaskResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteDBDiagReportTasksRequest(AbstractModel):
+    """DeleteDBDiagReportTasks request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AsyncRequestIds: List of IDs of tasks to be deleted
+        :type AsyncRequestIds: list of int
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL).
+Default value: `mysql`.
+        :type Product: str
+        """
+        self.AsyncRequestIds = None
+        self.InstanceId = None
+        self.Product = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestIds = params.get("AsyncRequestIds")
+        self.InstanceId = params.get("InstanceId")
+        self.Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDBDiagReportTasksResponse(AbstractModel):
+    """DeleteDBDiagReportTasks response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: Task deletion status (`0`: Successful)
+        :type Status: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteSecurityAuditLogExportTasksRequest(AbstractModel):
     """DeleteSecurityAuditLogExportTasks request structure.
 
@@ -1938,6 +1992,104 @@ class DescribeSlowLogUserHostStatsResponse(AbstractModel):
                 obj = SlowLogHost()
                 obj._deserialize(item)
                 self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSlowLogsRequest(AbstractModel):
+    """DescribeSlowLogs request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL). Default value: `mysql`.
+        :type Product: str
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param Md5: MD5 value of a SQL template
+        :type Md5: str
+        :param StartTime: Start time in the format of "2019-09-10 12:13:14".
+        :type StartTime: str
+        :param EndTime: End time in the format of "2019-09-11 10:13:14". The interval between the end time and the start time can be up to 7 days.
+        :type EndTime: str
+        :param Offset: The offset. Default value: `0`.
+        :type Offset: int
+        :param Limit: The number of queried items. Default value: `20`. Max value: `100`.
+        :type Limit: int
+        :param DB: Database list
+        :type DB: list of str
+        :param Key: Keyword
+        :type Key: list of str
+        :param User: User
+        :type User: list of str
+        :param Ip: ip
+        :type Ip: list of str
+        :param Time: Duration range. The left and right borders of the range are the zeroth and first element of the array, respectively.
+        :type Time: list of int
+        """
+        self.Product = None
+        self.InstanceId = None
+        self.Md5 = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Offset = None
+        self.Limit = None
+        self.DB = None
+        self.Key = None
+        self.User = None
+        self.Ip = None
+        self.Time = None
+
+
+    def _deserialize(self, params):
+        self.Product = params.get("Product")
+        self.InstanceId = params.get("InstanceId")
+        self.Md5 = params.get("Md5")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.DB = params.get("DB")
+        self.Key = params.get("Key")
+        self.User = params.get("User")
+        self.Ip = params.get("Ip")
+        self.Time = params.get("Time")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSlowLogsResponse(AbstractModel):
+    """DescribeSlowLogs response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Number of eligible entries.
+        :type TotalCount: int
+        :param Rows: Slow log details
+        :type Rows: list of SlowLogInfoItem
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Rows = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Rows") is not None:
+            self.Rows = []
+            for item in params.get("Rows"):
+                obj = SlowLogInfoItem()
+                obj._deserialize(item)
+                self.Rows.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3610,6 +3762,67 @@ class SlowLogHost(AbstractModel):
         self.UserHost = params.get("UserHost")
         self.Ratio = params.get("Ratio")
         self.Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SlowLogInfoItem(AbstractModel):
+    """Slow log details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Timestamp: Slow log start time
+        :type Timestamp: str
+        :param SqlText: SQL statement
+        :type SqlText: str
+        :param Database: Database
+        :type Database: str
+        :param UserName: User source
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UserName: str
+        :param UserHost: IP source
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UserHost: str
+        :param QueryTime: Execution time in seconds
+        :type QueryTime: int
+        :param LockTime: Lock time in seconds
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LockTime: int
+        :param RowsExamined: Number of scanned rows
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RowsExamined: int
+        :param RowsSent: Number of returned rows
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RowsSent: int
+        """
+        self.Timestamp = None
+        self.SqlText = None
+        self.Database = None
+        self.UserName = None
+        self.UserHost = None
+        self.QueryTime = None
+        self.LockTime = None
+        self.RowsExamined = None
+        self.RowsSent = None
+
+
+    def _deserialize(self, params):
+        self.Timestamp = params.get("Timestamp")
+        self.SqlText = params.get("SqlText")
+        self.Database = params.get("Database")
+        self.UserName = params.get("UserName")
+        self.UserHost = params.get("UserHost")
+        self.QueryTime = params.get("QueryTime")
+        self.LockTime = params.get("LockTime")
+        self.RowsExamined = params.get("RowsExamined")
+        self.RowsSent = params.get("RowsSent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

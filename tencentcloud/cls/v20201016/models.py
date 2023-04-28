@@ -349,6 +349,132 @@ class AlarmTargetInfo(AbstractModel):
         
 
 
+class AlertHistoryNotice(AbstractModel):
+    """Details about an alarm notification group
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Notification group name
+        :type Name: str
+        :param AlarmNoticeId: Notification group ID
+        :type AlarmNoticeId: str
+        """
+        self.Name = None
+        self.AlarmNoticeId = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.AlarmNoticeId = params.get("AlarmNoticeId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AlertHistoryRecord(AbstractModel):
+    """Alarm record details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RecordId: Alarm record ID
+        :type RecordId: str
+        :param AlarmId: Alarm policy ID
+        :type AlarmId: str
+        :param AlarmName: Alarm policy name
+        :type AlarmName: str
+        :param TopicId: ID of the monitored object
+        :type TopicId: str
+        :param TopicName: Name of the monitored object
+        :type TopicName: str
+        :param Region: Region of the monitored object
+        :type Region: str
+        :param Trigger: Trigger condition
+        :type Trigger: str
+        :param TriggerCount: Number of cycles for which the alarm lasts. An alarm will be triggered only after the trigger condition is met for the number of cycles specified by `TriggerCount`.
+        :type TriggerCount: int
+        :param AlarmPeriod: Alarm notification frequency (minutes)
+        :type AlarmPeriod: int
+        :param Notices: Notification group
+        :type Notices: list of AlertHistoryNotice
+        :param Duration: Alarm duration (minutes)
+        :type Duration: int
+        :param Status: Alarm status. Valid values: `0` (uncleared), `1` (cleared), `2` (expired)
+        :type Status: int
+        :param CreateTime: Alarm generation time, which is a Unix timestamp in ms
+        :type CreateTime: int
+        :param GroupTriggerCondition: Group information corresponding to triggering by group
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type GroupTriggerCondition: list of GroupTriggerConditionInfo
+        :param AlarmLevel: Alarm severity. Valid values: `0` (Warn), `1` (Info), `2` (Critical)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AlarmLevel: int
+        :param MonitorObjectType: Type of the monitored object
+`0`: The same object is specified for all statements. `1`: An object is separately specified for each statement. 
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MonitorObjectType: int
+        """
+        self.RecordId = None
+        self.AlarmId = None
+        self.AlarmName = None
+        self.TopicId = None
+        self.TopicName = None
+        self.Region = None
+        self.Trigger = None
+        self.TriggerCount = None
+        self.AlarmPeriod = None
+        self.Notices = None
+        self.Duration = None
+        self.Status = None
+        self.CreateTime = None
+        self.GroupTriggerCondition = None
+        self.AlarmLevel = None
+        self.MonitorObjectType = None
+
+
+    def _deserialize(self, params):
+        self.RecordId = params.get("RecordId")
+        self.AlarmId = params.get("AlarmId")
+        self.AlarmName = params.get("AlarmName")
+        self.TopicId = params.get("TopicId")
+        self.TopicName = params.get("TopicName")
+        self.Region = params.get("Region")
+        self.Trigger = params.get("Trigger")
+        self.TriggerCount = params.get("TriggerCount")
+        self.AlarmPeriod = params.get("AlarmPeriod")
+        if params.get("Notices") is not None:
+            self.Notices = []
+            for item in params.get("Notices"):
+                obj = AlertHistoryNotice()
+                obj._deserialize(item)
+                self.Notices.append(obj)
+        self.Duration = params.get("Duration")
+        self.Status = params.get("Status")
+        self.CreateTime = params.get("CreateTime")
+        if params.get("GroupTriggerCondition") is not None:
+            self.GroupTriggerCondition = []
+            for item in params.get("GroupTriggerCondition"):
+                obj = GroupTriggerConditionInfo()
+                obj._deserialize(item)
+                self.GroupTriggerCondition.append(obj)
+        self.AlarmLevel = params.get("AlarmLevel")
+        self.MonitorObjectType = params.get("MonitorObjectType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AnalysisDimensional(AbstractModel):
     """Multi-Dimensional analysis dimension
 
@@ -357,12 +483,16 @@ class AnalysisDimensional(AbstractModel):
     def __init__(self):
         r"""
         :param Name: Analysis name
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Name: str
-        :param Type: Type of data being analyzed. Valid values: `query`; `field`; `original`
+        :param Type: Type of data being analyzed. Valid values: `query`, `field`, `original`
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Type: str
         :param Content: Analysis content
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Content: str
         :param ConfigInfo: Configuration
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ConfigInfo: list of AlarmAnalysisConfig
         """
         self.Name = None
@@ -1625,6 +1755,13 @@ class CreateTopicRequest(AbstractModel):
         :type StorageType: str
         :param Period: Lifecycle in days. Value range: 1–3600 (STANDARD storage); 7–3600 (IA storage). `3640` indicates permanent retention.
         :type Period: int
+        :param Describes: Log topic description
+        :type Describes: str
+        :param HotPeriod: `0`: Disable log transitioning.
+A value other than `0`: The number of STANDARD storage days after log transitioning is enabled (valid only if `StorageType` is `hot`). Note: `HotPeriod` should be greater than or equal to `7` and less than `Period`.
+        :type HotPeriod: int
+        :param IsWebTracking: Whether to enable web tracking. Valid values: `false` (disable); `true` (enable)
+        :type IsWebTracking: bool
         """
         self.LogsetId = None
         self.TopicName = None
@@ -1634,6 +1771,9 @@ class CreateTopicRequest(AbstractModel):
         self.MaxSplitPartitions = None
         self.StorageType = None
         self.Period = None
+        self.Describes = None
+        self.HotPeriod = None
+        self.IsWebTracking = None
 
 
     def _deserialize(self, params):
@@ -1650,6 +1790,9 @@ class CreateTopicRequest(AbstractModel):
         self.MaxSplitPartitions = params.get("MaxSplitPartitions")
         self.StorageType = params.get("StorageType")
         self.Period = params.get("Period")
+        self.Describes = params.get("Describes")
+        self.HotPeriod = params.get("HotPeriod")
+        self.IsWebTracking = params.get("IsWebTracking")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2405,6 +2548,86 @@ class DescribeAlarmsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Alarms.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAlertRecordHistoryRequest(AbstractModel):
+    """DescribeAlertRecordHistory request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param From: Start time of the query range, which is a Unix timestamp in ms
+        :type From: int
+        :param To: End time of the query range, which is a Unix timestamp in ms
+        :type To: int
+        :param Offset: Page offset. Default value: 0
+        :type Offset: int
+        :param Limit: Maximum number of entries per page. Maximum value: 100
+        :type Limit: int
+        :param Filters: - alertId: Filter by alarm policy ID. Type: String; optional
+- topicId: Filter by ID of monitored object. Type: String; optional
+- status: Filter by alarm status. Type: String, optional. Valid values: `0` (uncleared), `1` (cleared), `2` (expired)
+- alarmLevel: Filter by alarm severity. Type: String, optional. Valid values: `0` (Warn), `1` (Info), `2` (Critical)
+
+Each request can have up to 10 `Filters` and 100 `Filter.Values`.
+        :type Filters: list of Filter
+        """
+        self.From = None
+        self.To = None
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.From = params.get("From")
+        self.To = params.get("To")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAlertRecordHistoryResponse(AbstractModel):
+    """DescribeAlertRecordHistory response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: Total alarm records
+        :type TotalCount: int
+        :param Records: Alarm record details
+        :type Records: list of AlertHistoryRecord
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Records = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Records") is not None:
+            self.Records = []
+            for item in params.get("Records"):
+                obj = AlertHistoryRecord()
+                obj._deserialize(item)
+                self.Records.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3546,6 +3769,31 @@ class DescribeTopicsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DynamicIndex(AbstractModel):
+    """Dynamic index configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: Dynamic index configuration status
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Status: bool
+        """
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ExcludePathInfo(AbstractModel):
     """Blocklist path information
 
@@ -3961,6 +4209,34 @@ Note: this field may return `null`, indicating that no valid values can be obtai
                 obj._deserialize(item)
                 self.Columns.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class GroupTriggerConditionInfo(AbstractModel):
+    """Condition of triggering by group
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: Name of the field for triggering by group
+        :type Key: str
+        :param Value: Value of the field for triggering by group
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class HistogramInfo(AbstractModel):
@@ -5197,6 +5473,13 @@ class ModifyTopicRequest(AbstractModel):
         :type MaxSplitPartitions: int
         :param Period: Lifecycle in days. Value range: 1–3600 (STANDARD storage); 7–3600 (IA storage). `3640` indicates permanent retention.
         :type Period: int
+        :param Describes: Log topic description
+        :type Describes: str
+        :param HotPeriod: `0`: Disable log transitioning.
+A value other than `0`: The number of STANDARD storage days after log transitioning is enabled (valid only if `StorageType` is `hot`). Note: `HotPeriod` should be greater than or equal to `7` and less than `Period`.
+        :type HotPeriod: int
+        :param IsWebTracking: Whether to enable web tracking. Valid values: `false` (disable); `true` (enable)
+        :type IsWebTracking: bool
         """
         self.TopicId = None
         self.TopicName = None
@@ -5205,6 +5488,9 @@ class ModifyTopicRequest(AbstractModel):
         self.AutoSplit = None
         self.MaxSplitPartitions = None
         self.Period = None
+        self.Describes = None
+        self.HotPeriod = None
+        self.IsWebTracking = None
 
 
     def _deserialize(self, params):
@@ -5220,6 +5506,9 @@ class ModifyTopicRequest(AbstractModel):
         self.AutoSplit = params.get("AutoSplit")
         self.MaxSplitPartitions = params.get("MaxSplitPartitions")
         self.Period = params.get("Period")
+        self.Describes = params.get("Describes")
+        self.HotPeriod = params.get("HotPeriod")
+        self.IsWebTracking = params.get("IsWebTracking")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5544,10 +5833,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param Tag: Metadata field index configuration. If the configuration is left empty, metadata field indexing is not enabled.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Tag: :class:`tencentcloud.cls.v20201016.models.RuleTagInfo`
+        :param DynamicIndex: Dynamic index configuration. If the configuration is empty, dynamic indexing is not enabled.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DynamicIndex: :class:`tencentcloud.cls.v20201016.models.DynamicIndex`
         """
         self.FullText = None
         self.KeyValue = None
         self.Tag = None
+        self.DynamicIndex = None
 
 
     def _deserialize(self, params):
@@ -5560,6 +5853,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("Tag") is not None:
             self.Tag = RuleTagInfo()
             self.Tag._deserialize(params.get("Tag"))
+        if params.get("DynamicIndex") is not None:
+            self.DynamicIndex = DynamicIndex()
+            self.DynamicIndex._deserialize(params.get("DynamicIndex"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5678,9 +5974,9 @@ The two response methods differ slightly in terms of encoding format. You are ad
 `1`: Precise analysis without sampling.
 Default value: `1`
         :type SamplingRate: float
-        :param SyntaxRule: Search syntax.
+        :param SyntaxRule: Search syntax
 `0` (default): Lucene; `1`: CQL.
-For more information, visit https://intl.cloud.tencent.com/document/product/614/47044?from_cn_redirect=1#RetrievesConditionalRules.
+For more information, see <a href="https://intl.cloud.tencent.com/document/product/614/47044?from_cn_redirect=1#RetrievesConditionalRules" target="_blank">Syntax Rules</a>
         :type SyntaxRule: int
         """
         self.From = None
@@ -5748,6 +6044,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 This parameter is valid only when `UseNewAnalysis` is `true`.
 Note: This field may return `null`, indicating that no valid value was found.
         :type Columns: list of Column
+        :param SamplingRate: Sample rate used in this statistical analysis
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SamplingRate: float
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -5759,6 +6058,7 @@ Note: This field may return `null`, indicating that no valid value was found.
         self.AnalysisResults = None
         self.AnalysisRecords = None
         self.Columns = None
+        self.SamplingRate = None
         self.RequestId = None
 
 
@@ -5786,6 +6086,7 @@ Note: This field may return `null`, indicating that no valid value was found.
                 obj = Column()
                 obj._deserialize(item)
                 self.Columns.append(obj)
+        self.SamplingRate = params.get("SamplingRate")
         self.RequestId = params.get("RequestId")
 
 
