@@ -169,6 +169,29 @@ class LcicClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def BatchDescribeDocument(self, request):
+        """This API is used to get courseware information.
+
+        :param request: Request instance for BatchDescribeDocument.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.BatchDescribeDocumentRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.BatchDescribeDocumentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BatchDescribeDocument", params, headers=headers)
+            response = json.loads(body)
+            model = models.BatchDescribeDocumentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def BatchRegister(self, request):
         """This API is used to register multiple users (up to 1,000) at a time. If a user ID already exists, the existing one will be overwritten.
         A maximum of 20 requests can be initiated per second for this API.
@@ -476,6 +499,29 @@ class LcicClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteSupervisor(self, request):
+        """This API is used to delete spectators.
+
+        :param request: Request instance for DeleteSupervisor.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.DeleteSupervisorRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.DeleteSupervisorResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteSupervisor", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteSupervisorResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeAnswerList(self, request):
         """This API is used to get the answers to a quiz question in a room.
 
@@ -561,6 +607,33 @@ class LcicClient(AbstractClient):
             body = self.call("DescribeDocument", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDocumentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDocuments(self, request):
+        """有新接口替换
+
+        A new API is offered for this action now.
+
+        This API is used to query courseware. It has been deprecated. Please use `BatchDescribeDocument` instead.
+
+        :param request: Request instance for DescribeDocuments.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeDocumentsRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.DescribeDocumentsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDocuments", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDocumentsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -798,6 +871,29 @@ class LcicClient(AbstractClient):
             body = self.call("DescribeUser", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def EndRoom(self, request):
+        """This API is used to end a room.
+
+        :param request: Request instance for EndRoom.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.EndRoomRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.EndRoomResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EndRoom", params, headers=headers)
+            response = json.loads(body)
+            model = models.EndRoomResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1103,6 +1199,29 @@ class LcicClient(AbstractClient):
             body = self.call("SetWatermark", params, headers=headers)
             response = json.loads(body)
             model = models.SetWatermarkResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StartRoom(self, request):
+        """This API is used to start a room. Before you call this API, make sure a user has entered the room so that the class is initialized.
+
+        :param request: Request instance for StartRoom.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.StartRoomRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.StartRoomResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartRoom", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartRoomResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

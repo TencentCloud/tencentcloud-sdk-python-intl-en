@@ -68,7 +68,7 @@ class AddGroupMemberResponse(AbstractModel):
 
 
 class AnswerInfo(AbstractModel):
-    """The answers to a quiz question in a room.
+    """The answer to a quiz question.
 
     """
 
@@ -457,6 +457,85 @@ class BatchDeleteRecordResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RoomIds = params.get("RoomIds")
+        self.RequestId = params.get("RequestId")
+
+
+class BatchDescribeDocumentRequest(AbstractModel):
+    """BatchDescribeDocument request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: The SDKAppID assigned by LCIC.
+        :type SdkAppId: int
+        :param Page: The page to return records from. Pagination starts from 1.
+        :type Page: int
+        :param Limit: The maximum number of records per page. The value of this parameter cannot exceed `1000`.
+        :type Limit: int
+        :param Permission: The courseware access. [0]: The private courseware of the specified user (`Owner`) will be returned; [1]: The public courseware of the specified user will be returned; [0,1]: Both the private and public courseware of the specified user will be returned; [2]: The private courseware of the specified user and the public courseware of all users (including `Owner`) will be returned.
+        :type Permission: list of int non-negative
+        :param Owner: The user ID of the courseware owner. If you do not specify this, the information of all courseware under the application will be returned.
+        :type Owner: str
+        :param Keyword: The filename keyword.
+        :type Keyword: str
+        :param DocumentId: The courseware IDs. Non-existent IDs will be ignored.
+        :type DocumentId: list of str
+        """
+        self.SdkAppId = None
+        self.Page = None
+        self.Limit = None
+        self.Permission = None
+        self.Owner = None
+        self.Keyword = None
+        self.DocumentId = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.Page = params.get("Page")
+        self.Limit = params.get("Limit")
+        self.Permission = params.get("Permission")
+        self.Owner = params.get("Owner")
+        self.Keyword = params.get("Keyword")
+        self.DocumentId = params.get("DocumentId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchDescribeDocumentResponse(AbstractModel):
+    """BatchDescribeDocument response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: The total number of records that meet the conditions.
+        :type Total: int
+        :param Documents: The information of the courseware.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Documents: list of DocumentInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Total = None
+        self.Documents = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("Documents") is not None:
+            self.Documents = []
+            for item in params.get("Documents"):
+                obj = DocumentInfo()
+                obj._deserialize(item)
+                self.Documents.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1244,6 +1323,51 @@ class DeleteRoomResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteSupervisorRequest(AbstractModel):
+    """DeleteSupervisor request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: The application ID.
+        :type SdkAppId: int
+        :param Users: The user IDs.
+        :type Users: list of str
+        """
+        self.SdkAppId = None
+        self.Users = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.Users = params.get("Users")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteSupervisorResponse(AbstractModel):
+    """DeleteSupervisor response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAnswerListRequest(AbstractModel):
     """DescribeAnswerList request structure.
 
@@ -1565,6 +1689,85 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self.Documents.append(obj)
         self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDocumentsRequest(AbstractModel):
+    """DescribeDocuments request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SchoolId: The school ID.
+        :type SchoolId: int
+        :param Page: The page to return records from. Pagination starts from 1.
+        :type Page: int
+        :param Limit: The maximum number of records per page. The value of this parameter cannot exceed `1000`.
+        :type Limit: int
+        :param Permission: The courseware access. [0]: The private courseware of the specified user (`Owner`) will be returned; [1]: The public courseware of the specified user will be returned; [0,1]: Both the private and public courseware of the specified user will be returned; [2]: The private courseware of the specified user and the public courseware of all users (including `Owner`) will be returned.
+        :type Permission: list of int non-negative
+        :param Owner: The user ID of the courseware owner. If you do not specify this parameter, all courseware under the school ID will be returned.
+        :type Owner: str
+        :param Keyword: The filename keyword.
+        :type Keyword: str
+        :param DocumentId: The courseware IDs. Non-existent IDs will be ignored.
+        :type DocumentId: list of str
+        """
+        self.SchoolId = None
+        self.Page = None
+        self.Limit = None
+        self.Permission = None
+        self.Owner = None
+        self.Keyword = None
+        self.DocumentId = None
+
+
+    def _deserialize(self, params):
+        self.SchoolId = params.get("SchoolId")
+        self.Page = params.get("Page")
+        self.Limit = params.get("Limit")
+        self.Permission = params.get("Permission")
+        self.Owner = params.get("Owner")
+        self.Keyword = params.get("Keyword")
+        self.DocumentId = params.get("DocumentId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDocumentsResponse(AbstractModel):
+    """DescribeDocuments response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: The total number of records that meet the conditions.
+        :type Total: int
+        :param Documents: The information of the courseware.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Documents: list of DocumentInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Total = None
+        self.Documents = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("Documents") is not None:
+            self.Documents = []
+            for item in params.get("Documents"):
+                obj = DocumentInfo()
+                obj._deserialize(item)
+                self.Documents.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2239,6 +2442,18 @@ class DocumentInfo(AbstractModel):
         :type DocumentSize: int
         :param UpdateTime: The time (Unix timestamp) when the document was last updated. Note: This field may return null, indicating that no valid values can be obtained.
         :type UpdateTime: int
+        :param Pages: The number of pages.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Pages: int
+        :param Width: The width. This parameter is valid only if static document transcoding is used.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Width: int
+        :param Height: The height. This parameter is valid only if static document transcoding is used.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Height: int
+        :param Cover: The thumbnail. Only transcoded courseware has thumbnails.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Cover: str
         """
         self.DocumentId = None
         self.DocumentUrl = None
@@ -2254,6 +2469,10 @@ class DocumentInfo(AbstractModel):
         self.DocumentType = None
         self.DocumentSize = None
         self.UpdateTime = None
+        self.Pages = None
+        self.Width = None
+        self.Height = None
+        self.Cover = None
 
 
     def _deserialize(self, params):
@@ -2271,6 +2490,10 @@ class DocumentInfo(AbstractModel):
         self.DocumentType = params.get("DocumentType")
         self.DocumentSize = params.get("DocumentSize")
         self.UpdateTime = params.get("UpdateTime")
+        self.Pages = params.get("Pages")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.Cover = params.get("Cover")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2278,6 +2501,47 @@ class DocumentInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class EndRoomRequest(AbstractModel):
+    """EndRoom request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RoomId: The room ID.
+        :type RoomId: int
+        """
+        self.RoomId = None
+
+
+    def _deserialize(self, params):
+        self.RoomId = params.get("RoomId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EndRoomResponse(AbstractModel):
+    """EndRoom response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class EventDataInfo(AbstractModel):
@@ -2837,6 +3101,16 @@ class MemberRecord(AbstractModel):
         :type PerMemberMicCount: int
         :param PerMemberMessageCount: The number of messages sent by a user.
         :type PerMemberMessageCount: int
+        :param Role: The user role. `0`: Student; `1`: Teacher; `2`: Teaching Assistant; `3`: Spectator.
+        :type Role: int
+        :param GroupId: The class number.
+        :type GroupId: str
+        :param SubGroupId: The sub-class number.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SubGroupId: list of str
+        :param Stage: Whether the user is on the stage.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Stage: int
         """
         self.UserId = None
         self.UserName = None
@@ -2854,6 +3128,10 @@ class MemberRecord(AbstractModel):
         self.Device = None
         self.PerMemberMicCount = None
         self.PerMemberMessageCount = None
+        self.Role = None
+        self.GroupId = None
+        self.SubGroupId = None
+        self.Stage = None
 
 
     def _deserialize(self, params):
@@ -2873,6 +3151,10 @@ class MemberRecord(AbstractModel):
         self.Device = params.get("Device")
         self.PerMemberMicCount = params.get("PerMemberMicCount")
         self.PerMemberMessageCount = params.get("PerMemberMessageCount")
+        self.Role = params.get("Role")
+        self.GroupId = params.get("GroupId")
+        self.SubGroupId = params.get("SubGroupId")
+        self.Stage = params.get("Stage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3207,7 +3489,7 @@ class ModifyUserProfileResponse(AbstractModel):
 
 
 class QuestionInfo(AbstractModel):
-    """The details of a quiz question.
+    """A quiz question in a room.
 
     """
 
@@ -3603,6 +3885,47 @@ class SetWatermarkRequest(AbstractModel):
 
 class SetWatermarkResponse(AbstractModel):
     """SetWatermark response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class StartRoomRequest(AbstractModel):
+    """StartRoom request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RoomId: The room ID.
+        :type RoomId: int
+        """
+        self.RoomId = None
+
+
+    def _deserialize(self, params):
+        self.RoomId = params.get("RoomId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartRoomResponse(AbstractModel):
+    """StartRoom response structure.
 
     """
 

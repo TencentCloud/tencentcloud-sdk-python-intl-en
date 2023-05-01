@@ -3548,6 +3548,137 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.RequestId = params.get("RequestId")
 
 
+class DescribePulsarProInstanceDetailRequest(AbstractModel):
+    """DescribePulsarProInstanceDetail request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePulsarProInstanceDetailResponse(AbstractModel):
+    """DescribePulsarProInstanceDetail response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterInfo: Cluster information
+        :type ClusterInfo: :class:`tencentcloud.tdmq.v20200217.models.PulsarProClusterInfo`
+        :param NetworkAccessPointInfos: Cluster network access point information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type NetworkAccessPointInfos: list of PulsarNetworkAccessPointInfo
+        :param ClusterSpecInfo: Cluster specification information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ClusterSpecInfo: :class:`tencentcloud.tdmq.v20200217.models.PulsarProClusterSpecInfo`
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ClusterInfo = None
+        self.NetworkAccessPointInfos = None
+        self.ClusterSpecInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ClusterInfo") is not None:
+            self.ClusterInfo = PulsarProClusterInfo()
+            self.ClusterInfo._deserialize(params.get("ClusterInfo"))
+        if params.get("NetworkAccessPointInfos") is not None:
+            self.NetworkAccessPointInfos = []
+            for item in params.get("NetworkAccessPointInfos"):
+                obj = PulsarNetworkAccessPointInfo()
+                obj._deserialize(item)
+                self.NetworkAccessPointInfos.append(obj)
+        if params.get("ClusterSpecInfo") is not None:
+            self.ClusterSpecInfo = PulsarProClusterSpecInfo()
+            self.ClusterSpecInfo._deserialize(params.get("ClusterSpecInfo"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePulsarProInstancesRequest(AbstractModel):
+    """DescribePulsarProInstances request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Filters: Query condition filter
+        :type Filters: list of Filter
+        :param Limit: The maximum number of queried items, which defaults to `20`.
+        :type Limit: int
+        :param Offset: Start offset for query
+        :type Offset: int
+        """
+        self.Filters = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePulsarProInstancesResponse(AbstractModel):
+    """DescribePulsarProInstances response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: The total number of unpaginated items
+        :type TotalCount: int
+        :param Instances: Instance information list
+        :type Instances: list of PulsarProInstance
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Instances = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Instances") is not None:
+            self.Instances = []
+            for item in params.get("Instances"):
+                obj = PulsarProInstance()
+                obj._deserialize(item)
+                self.Instances.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRabbitMQNodeListRequest(AbstractModel):
     """DescribeRabbitMQNodeList request structure.
 
@@ -5608,6 +5739,242 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.AverageMsgSize = params.get("AverageMsgSize")
         self.ConnectedSince = params.get("ConnectedSince")
         self.Partition = params.get("Partition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PulsarNetworkAccessPointInfo(AbstractModel):
+    """TDMQ for Pulsar network access point information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VpcId: VPC ID. This field is left empty for supporting network and public network access points.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VpcId: str
+        :param SubnetId: Subnet ID. This field is left empty for supporting network and public network access points.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SubnetId: str
+        :param Endpoint: Access address
+        :type Endpoint: str
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param RouteType: Access point type: 
+`0`: Supporting network access point 
+`1`: VPC access point 
+`2`: Public network access point
+        :type RouteType: int
+        """
+        self.VpcId = None
+        self.SubnetId = None
+        self.Endpoint = None
+        self.InstanceId = None
+        self.RouteType = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.Endpoint = params.get("Endpoint")
+        self.InstanceId = params.get("InstanceId")
+        self.RouteType = params.get("RouteType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PulsarProClusterInfo(AbstractModel):
+    """TDMQ for Pulsar pro cluster information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+        :type ClusterId: str
+        :param ClusterName: Cluster name
+        :type ClusterName: str
+        :param Remark: Description
+        :type Remark: str
+        :param CreateTime: Creation time
+        :type CreateTime: str
+        :param Status: Cluster status. Valid values: `0` (Creating), `1` (Normal), `2` (Isolated).
+        :type Status: int
+        :param Version: Cluster version
+        :type Version: str
+        :param NodeDistribution: Node distribution
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type NodeDistribution: list of InstanceNodeDistribution
+        :param MaxStorage: Max storage capacity in MB
+        :type MaxStorage: int
+        """
+        self.ClusterId = None
+        self.ClusterName = None
+        self.Remark = None
+        self.CreateTime = None
+        self.Status = None
+        self.Version = None
+        self.NodeDistribution = None
+        self.MaxStorage = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterName = params.get("ClusterName")
+        self.Remark = params.get("Remark")
+        self.CreateTime = params.get("CreateTime")
+        self.Status = params.get("Status")
+        self.Version = params.get("Version")
+        if params.get("NodeDistribution") is not None:
+            self.NodeDistribution = []
+            for item in params.get("NodeDistribution"):
+                obj = InstanceNodeDistribution()
+                obj._deserialize(item)
+                self.NodeDistribution.append(obj)
+        self.MaxStorage = params.get("MaxStorage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PulsarProClusterSpecInfo(AbstractModel):
+    """TDMQ for Pulsar pro cluster specification information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SpecName: Cluster specification name
+        :type SpecName: str
+        :param MaxTps: Peak TPS
+        :type MaxTps: int
+        :param MaxBandWidth: Peak bandwidth in Mbps
+        :type MaxBandWidth: int
+        :param MaxNamespaces: Maximum number of namespaces
+        :type MaxNamespaces: int
+        :param MaxTopics: Maximum number of topic partitions
+        :type MaxTopics: int
+        :param ScalableTps: Elastic TPS beyond the specification
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ScalableTps: int
+        """
+        self.SpecName = None
+        self.MaxTps = None
+        self.MaxBandWidth = None
+        self.MaxNamespaces = None
+        self.MaxTopics = None
+        self.ScalableTps = None
+
+
+    def _deserialize(self, params):
+        self.SpecName = params.get("SpecName")
+        self.MaxTps = params.get("MaxTps")
+        self.MaxBandWidth = params.get("MaxBandWidth")
+        self.MaxNamespaces = params.get("MaxNamespaces")
+        self.MaxTopics = params.get("MaxTopics")
+        self.ScalableTps = params.get("ScalableTps")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PulsarProInstance(AbstractModel):
+    """TDMQ for Pulsar pro instance information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param InstanceName: Instance name
+        :type InstanceName: str
+        :param InstanceVersion: Instance version
+        :type InstanceVersion: str
+        :param Status: Instance status. Valid values: `0` (Creating), `1` (Normal), `2` (Isolated), `3` (Terminated), `4` (Abnormal), `5` (Delivery failed), `6` (Adjusting configuration), `7` (Configuration adjustment failed).
+        :type Status: int
+        :param ConfigDisplay: Instance specification name
+        :type ConfigDisplay: str
+        :param MaxTps: Peak TPS
+        :type MaxTps: int
+        :param MaxStorage: Storage capacity in GB
+        :type MaxStorage: int
+        :param ExpireTime: Instance expiration time in milliseconds
+        :type ExpireTime: int
+        :param AutoRenewFlag: Renewal mode. Valid values: `0` (Manual renewal, which is the default mode), `1` (Auto-renewal), `2` (Manual renewal, which is specified by users).
+        :type AutoRenewFlag: int
+        :param PayMode: Payment mode. Valid values: `0` (Pay-as-you-go), `1` (Monthly subscription).
+        :type PayMode: int
+        :param Remark: Remarks
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Remark: str
+        :param SpecName: Instance specification ID
+        :type SpecName: str
+        :param ScalableTps: Elastic TPS beyond the specification
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ScalableTps: int
+        :param VpcId: VPC ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VpcId: str
+        :param SubnetId: Subnet ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SubnetId: str
+        :param MaxBandWidth: Peak bandwidth in Mbps
+        :type MaxBandWidth: int
+        """
+        self.InstanceId = None
+        self.InstanceName = None
+        self.InstanceVersion = None
+        self.Status = None
+        self.ConfigDisplay = None
+        self.MaxTps = None
+        self.MaxStorage = None
+        self.ExpireTime = None
+        self.AutoRenewFlag = None
+        self.PayMode = None
+        self.Remark = None
+        self.SpecName = None
+        self.ScalableTps = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.MaxBandWidth = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.InstanceVersion = params.get("InstanceVersion")
+        self.Status = params.get("Status")
+        self.ConfigDisplay = params.get("ConfigDisplay")
+        self.MaxTps = params.get("MaxTps")
+        self.MaxStorage = params.get("MaxStorage")
+        self.ExpireTime = params.get("ExpireTime")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.PayMode = params.get("PayMode")
+        self.Remark = params.get("Remark")
+        self.SpecName = params.get("SpecName")
+        self.ScalableTps = params.get("ScalableTps")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.MaxBandWidth = params.get("MaxBandWidth")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

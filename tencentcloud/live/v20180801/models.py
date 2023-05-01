@@ -423,6 +423,9 @@ class CallBackTemplateInfo(AbstractModel):
         :param PushExceptionNotifyUrl: The push error callback URL.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PushExceptionNotifyUrl: str
+        :param AudioAuditNotifyUrl: The audio/video moderation callback URL.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AudioAuditNotifyUrl: str
         """
         self.TemplateId = None
         self.TemplateName = None
@@ -435,6 +438,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.PornCensorshipNotifyUrl = None
         self.CallbackKey = None
         self.PushExceptionNotifyUrl = None
+        self.AudioAuditNotifyUrl = None
 
 
     def _deserialize(self, params):
@@ -449,6 +453,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.PornCensorshipNotifyUrl = params.get("PornCensorshipNotifyUrl")
         self.CallbackKey = params.get("CallbackKey")
         self.PushExceptionNotifyUrl = params.get("PushExceptionNotifyUrl")
+        self.AudioAuditNotifyUrl = params.get("AudioAuditNotifyUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1888,7 +1893,7 @@ class CreateLiveTranscodeRuleRequest(AbstractModel):
         r"""
         :param DomainName: Playback domain name.
         :type DomainName: str
-        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default. If you only bind a domain name, leave this parameter empty.
+        :param AppName: The push path, which is the same as `AppName` in the push and playback addresses and is `live` by default. If you only want to bind the template to a domain, pass in an empty string.
         :type AppName: str
         :param StreamName: Stream name. If only the domain name or path is bound, leave this parameter blank.
         :type StreamName: str
@@ -2204,6 +2209,81 @@ class CreateRecordTaskResponse(AbstractModel):
     def __init__(self):
         r"""
         :param TaskId: A globally unique task ID. If `TaskId` is returned, the recording task has been successfully created.
+        :type TaskId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateScreenshotTaskRequest(AbstractModel):
+    """CreateScreenshotTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StreamName: The stream name.
+        :type StreamName: str
+        :param DomainName: The push domain.
+        :type DomainName: str
+        :param AppName: The push path.
+        :type AppName: str
+        :param EndTime: The task end time, which must be a Unix timestamp and later than `StartTime` and the current time. The end time and start time cannot be more than 24 hours apart.
+        :type EndTime: int
+        :param TemplateId: The ID of the screencapturing template, which is returned by `CreateLiveSnapshotTemplate`. If an incorrect template ID is passed in, the screencapturing task will fail.
+        :type TemplateId: int
+        :param StartTime: The task start time, which must be a Unix timestamp and cannot be later than six days from the current time. If you do not specify this parameter, the task will start immediately.
+        :type StartTime: int
+        :param StreamType: The publishing type. Valid values:
+`0` (default): Live stream
+`1`: Mixed stream
+        :type StreamType: int
+        :param Extension: An extension field, which is not defined currently and is empty by default.
+        :type Extension: str
+        """
+        self.StreamName = None
+        self.DomainName = None
+        self.AppName = None
+        self.EndTime = None
+        self.TemplateId = None
+        self.StartTime = None
+        self.StreamType = None
+        self.Extension = None
+
+
+    def _deserialize(self, params):
+        self.StreamName = params.get("StreamName")
+        self.DomainName = params.get("DomainName")
+        self.AppName = params.get("AppName")
+        self.EndTime = params.get("EndTime")
+        self.TemplateId = params.get("TemplateId")
+        self.StartTime = params.get("StartTime")
+        self.StreamType = params.get("StreamType")
+        self.Extension = params.get("Extension")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateScreenshotTaskResponse(AbstractModel):
+    """CreateScreenshotTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: A unique task ID. If this parameter is returned, the screencapturing task is created successfully.
         :type TaskId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -9440,7 +9520,8 @@ In UTC format, such as 2019-01-07T15:00:00Z.
         :type StopReason: str
         :param Duration: Push duration in seconds.
         :type Duration: int
-        :param ClientIp: Host IP.
+        :param ClientIp: The IP address of the host.
+If the stream is published from a private network, this parameter will be `-`.
         :type ClientIp: str
         :param Resolution: Resolution.
         :type Resolution: str

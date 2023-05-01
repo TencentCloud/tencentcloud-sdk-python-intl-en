@@ -1061,6 +1061,52 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePulsarProInstanceDetail(self, request):
+        """This API is used to obtain the information of a TDMQ for Pulsar pro cluster instance.
+
+        :param request: Request instance for DescribePulsarProInstanceDetail.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribePulsarProInstanceDetailRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribePulsarProInstanceDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePulsarProInstanceDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePulsarProInstanceDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePulsarProInstances(self, request):
+        """This API is used to query the list of the purchased TDMQ for Pulsar pro instances.
+
+        :param request: Request instance for DescribePulsarProInstances.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribePulsarProInstancesRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribePulsarProInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePulsarProInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePulsarProInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRabbitMQNodeList(self, request):
         """This API is used to query the list of TDMQ for RabbitMQ exclusive cluster nodes.
 

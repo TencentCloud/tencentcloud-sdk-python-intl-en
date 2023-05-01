@@ -189,9 +189,9 @@ class CreateDataEngineRequest(AbstractModel):
         :type ImageVersionName: str
         :param MainClusterName: The name of the primary cluster.
         :type MainClusterName: str
-        :param ElasticSwitch: 
+        :param ElasticSwitch: Whether to enable the scaling feature for a monthly subscribed Spark job cluster.
         :type ElasticSwitch: bool
-        :param ElasticLimit: 
+        :param ElasticLimit: The upper limit (in CUs) for scaling of the monthly subscribed Spark job cluster.
         :type ElasticLimit: int
         """
         self.EngineType = None
@@ -483,6 +483,8 @@ class CreateSparkAppRequest(AbstractModel):
         :type SparkImageVersion: str
         :param AppExecutorMaxNumbers: The specified executor count (max), which defaults to 1. This parameter applies if the "Dynamic" mode is selected. If the "Dynamic" mode is not selected, the executor count is equal to `AppExecutorNums`.
         :type AppExecutorMaxNumbers: int
+        :param SessionId: The ID of the associated Data Lake Compute query script.
+        :type SessionId: str
         """
         self.AppName = None
         self.AppType = None
@@ -510,6 +512,7 @@ class CreateSparkAppRequest(AbstractModel):
         self.SparkImage = None
         self.SparkImageVersion = None
         self.AppExecutorMaxNumbers = None
+        self.SessionId = None
 
 
     def _deserialize(self, params):
@@ -539,6 +542,7 @@ class CreateSparkAppRequest(AbstractModel):
         self.SparkImage = params.get("SparkImage")
         self.SparkImageVersion = params.get("SparkImageVersion")
         self.AppExecutorMaxNumbers = params.get("AppExecutorMaxNumbers")
+        self.SessionId = params.get("SessionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1095,13 +1099,13 @@ class DescribeSparkAppJobsRequest(AbstractModel):
         :type Sorting: str
         :param Filters: Filter by this parameter, which can be `spark-job-name`.
         :type Filters: list of Filter
-        :param StartTime: Update start time
+        :param StartTime: The update start time in the format of yyyy-mm-dd HH:MM:SS.
         :type StartTime: str
-        :param EndTime: Update end time
+        :param EndTime: The update end time in the format of yyyy-mm-dd HH:MM:SS.
         :type EndTime: str
-        :param Offset: Query list offset
+        :param Offset: The query list offset, which defaults to 0.
         :type Offset: int
-        :param Limit: Query list limit
+        :param Limit: The maximum number of queries allowed in the list, which defaults to 100.
         :type Limit: int
         """
         self.SortBy = None
@@ -1653,6 +1657,8 @@ class ModifySparkAppRequest(AbstractModel):
         :type SparkImageVersion: str
         :param AppExecutorMaxNumbers: The specified executor count (max), which defaults to 1. This parameter applies if the "Dynamic" mode is selected. If the "Dynamic" mode is not selected, the executor count is equal to `AppExecutorNums`.
         :type AppExecutorMaxNumbers: int
+        :param SessionId: The associated Data Lake Compute query script.
+        :type SessionId: str
         """
         self.AppName = None
         self.AppType = None
@@ -1681,6 +1687,7 @@ class ModifySparkAppRequest(AbstractModel):
         self.SparkImage = None
         self.SparkImageVersion = None
         self.AppExecutorMaxNumbers = None
+        self.SessionId = None
 
 
     def _deserialize(self, params):
@@ -1711,6 +1718,7 @@ class ModifySparkAppRequest(AbstractModel):
         self.SparkImage = params.get("SparkImage")
         self.SparkImageVersion = params.get("SparkImageVersion")
         self.AppExecutorMaxNumbers = params.get("AppExecutorMaxNumbers")
+        self.SessionId = params.get("SessionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1989,6 +1997,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param SparkImageVersion: The image version.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SparkImageVersion: str
+        :param SessionId: The ID of the associated Data Lake Compute query script.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SessionId: str
+        :param DataEngineClusterType: 
+        :type DataEngineClusterType: str
+        :param DataEngineImageVersion: 
+        :type DataEngineImageVersion: str
         """
         self.JobId = None
         self.JobName = None
@@ -2026,6 +2041,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.DataEngineStatus = None
         self.JobExecutorMaxNumbers = None
         self.SparkImageVersion = None
+        self.SessionId = None
+        self.DataEngineClusterType = None
+        self.DataEngineImageVersion = None
 
 
     def _deserialize(self, params):
@@ -2067,6 +2085,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.DataEngineStatus = params.get("DataEngineStatus")
         self.JobExecutorMaxNumbers = params.get("JobExecutorMaxNumbers")
         self.SparkImageVersion = params.get("SparkImageVersion")
+        self.SessionId = params.get("SessionId")
+        self.DataEngineClusterType = params.get("DataEngineClusterType")
+        self.DataEngineImageVersion = params.get("DataEngineImageVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

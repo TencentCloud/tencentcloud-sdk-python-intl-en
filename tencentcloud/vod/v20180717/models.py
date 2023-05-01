@@ -12029,6 +12029,9 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         :param CreateTime: The time when the domain name was added in the VOD system
 <li>The time is in [ISO 8601 date format](https://intl.cloud.tencent.com/document/product/266/11732).</li>
         :type CreateTime: str
+        :param QUICConfig: The QUIC configuration for the domain.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type QUICConfig: :class:`tencentcloud.vod.v20180717.models.DomainQUICConfig`
         """
         self.Domain = None
         self.AccelerateAreaInfos = None
@@ -12037,6 +12040,7 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         self.UrlSignatureAuthPolicy = None
         self.RefererAuthPolicy = None
         self.CreateTime = None
+        self.QUICConfig = None
 
 
     def _deserialize(self, params):
@@ -12058,6 +12062,9 @@ Note: this field may return `null`, indicating that no valid value is obtained.
             self.RefererAuthPolicy = RefererAuthPolicy()
             self.RefererAuthPolicy._deserialize(params.get("RefererAuthPolicy"))
         self.CreateTime = params.get("CreateTime")
+        if params.get("QUICConfig") is not None:
+            self.QUICConfig = DomainQUICConfig()
+            self.QUICConfig._deserialize(params.get("QUICConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12083,6 +12090,32 @@ class DomainHTTPSConfig(AbstractModel):
 
     def _deserialize(self, params):
         self.CertExpireTime = params.get("CertExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DomainQUICConfig(AbstractModel):
+    """The QUIC configuration of a domain.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: The QUIC status. Valid values:
+<li>`Enabled`</li>
+<li>`Disabled`</li>
+        :type Status: str
+        """
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -18581,11 +18614,14 @@ class ModifyVodDomainConfigRequest(AbstractModel):
         :type RefererAuthPolicy: :class:`tencentcloud.vod.v20180717.models.RefererAuthPolicy`
         :param UrlSignatureAuthPolicy: [Key hotlink protection](https://intl.cloud.tencent.com/document/product/266/14047?from_cn_redirect=1) policy
         :type UrlSignatureAuthPolicy: :class:`tencentcloud.vod.v20180717.models.UrlSignatureAuthPolicy`
+        :param QUICConfig: The QUIC configuration.
+        :type QUICConfig: :class:`tencentcloud.vod.v20180717.models.DomainQUICConfig`
         """
         self.Domain = None
         self.SubAppId = None
         self.RefererAuthPolicy = None
         self.UrlSignatureAuthPolicy = None
+        self.QUICConfig = None
 
 
     def _deserialize(self, params):
@@ -18597,6 +18633,9 @@ class ModifyVodDomainConfigRequest(AbstractModel):
         if params.get("UrlSignatureAuthPolicy") is not None:
             self.UrlSignatureAuthPolicy = UrlSignatureAuthPolicy()
             self.UrlSignatureAuthPolicy._deserialize(params.get("UrlSignatureAuthPolicy"))
+        if params.get("QUICConfig") is not None:
+            self.QUICConfig = DomainQUICConfig()
+            self.QUICConfig._deserialize(params.get("QUICConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -22272,17 +22311,29 @@ class RemoveWaterMarkTaskOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FileId: The file ID of the video.
+        :param FileId: The file ID.
         :type FileId: str
+        :param FileType: The file type, such as MP4 or MP3.
+        :type FileType: str
+        :param FileUrl: The playback URL of the output file.
+        :type FileUrl: str
+        :param MediaName: The filename, which can be up to 64 characters long.
+        :type MediaName: str
         :param MetaData: The metadata of the video, including size, duration, video stream information, and audio stream information.
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         """
         self.FileId = None
+        self.FileType = None
+        self.FileUrl = None
+        self.MediaName = None
         self.MetaData = None
 
 
     def _deserialize(self, params):
         self.FileId = params.get("FileId")
+        self.FileType = params.get("FileType")
+        self.FileUrl = params.get("FileUrl")
+        self.MediaName = params.get("MediaName")
         if params.get("MetaData") is not None:
             self.MetaData = MediaMetaData()
             self.MetaData._deserialize(params.get("MetaData"))
