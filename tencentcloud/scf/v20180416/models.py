@@ -811,7 +811,7 @@ class DeleteTriggerRequest(AbstractModel):
         :type Namespace: str
         :param TriggerDesc: This field is required if a COS trigger is to be deleted. It stores the data {"event":"cos:ObjectCreated:*"} in the JSON format. The data content of this field is in the same format as that of SetTrigger. This field is optional if a scheduled trigger or CMQ trigger is to be deleted.
         :type TriggerDesc: str
-        :param Qualifier: Function version information
+        :param Qualifier: Function version. It defaults to `$LATEST`. It’s recommended to use `[$DEFAULT](https://intl.cloud.tencent.com/document/product/583/36149?from_cn_redirect=1#.E9.BB.98.E8.AE.A4.E5.88.AB.E5.90.8D)` for canary release.
         :type Qualifier: str
         """
         self.FunctionName = None
@@ -1533,11 +1533,7 @@ class GetLayerVersionResponse(AbstractModel):
         :type LayerVersion: int
         :param LayerName: Layer name
         :type LayerName: str
-        :param Status: Current status of specific layer version. Valid values:
-Active: normal
-Publishing: publishing
-PublishFailed: publishing failed
-Deleted: deleted
+        :param Status: Current status of specific layer version. For the status values, [see here](https://intl.cloud.tencent.com/document/product/583/47175?from_cn_redirect=1#.E5.B1.82.EF.BC.88layer.EF.BC.89.E7.8A.B6.E6.80.81)
         :type Status: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1774,6 +1770,15 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param Args: The parameters to start up the container. Separate parameters with spaces, such as `u app.py`. If it’s not specified, `CMD in Dockerfile is used.
 Note: This field may return `null`, indicating that no valid value can be found.
         :type Args: str
+        :param ContainerImageAccelerate: Whether to enable image acceleration. It defaults to `False`.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ContainerImageAccelerate: bool
+        :param ImagePort: Image function port settings
+`-1`: No port-specific image functions
+`0`: Default port (Port 9000)
+Others: Special ports
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ImagePort: int
         """
         self.ImageType = None
         self.ImageUri = None
@@ -1781,6 +1786,8 @@ Note: This field may return `null`, indicating that no valid value can be found.
         self.EntryPoint = None
         self.Command = None
         self.Args = None
+        self.ContainerImageAccelerate = None
+        self.ImagePort = None
 
 
     def _deserialize(self, params):
@@ -1790,6 +1797,8 @@ Note: This field may return `null`, indicating that no valid value can be found.
         self.EntryPoint = params.get("EntryPoint")
         self.Command = params.get("Command")
         self.Args = params.get("Args")
+        self.ContainerImageAccelerate = params.get("ContainerImageAccelerate")
+        self.ImagePort = params.get("ImagePort")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1961,6 +1970,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type LayerName: str
         :param Status: Current status of specific layer version. For valid values, please see [here](https://intl.cloud.tencent.com/document/product/583/47175?from_cn_redirect=1#.E5.B1.82.EF.BC.88layer.EF.BC.89.E7.8A.B6.E6.80.81)
         :type Status: str
+        :param Stamp: Stamp
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Stamp: str
         """
         self.CompatibleRuntimes = None
         self.AddTime = None
@@ -1969,6 +1981,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.LayerVersion = None
         self.LayerName = None
         self.Status = None
+        self.Stamp = None
 
 
     def _deserialize(self, params):
@@ -1979,6 +1992,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.LayerVersion = params.get("LayerVersion")
         self.LayerName = params.get("LayerName")
         self.Status = params.get("Status")
+        self.Stamp = params.get("Stamp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3253,7 +3267,7 @@ class Result(AbstractModel):
         :type BillDuration: int
         :param FunctionRequestId: ID of the executed function
         :type FunctionRequestId: str
-        :param InvokeResult: `0` indicates successful execution. Null is returned for asynchronous invocations.
+        :param InvokeResult: The [status code](https://intl.cloud.tencent.com/document/product/583/42611?from_cn_redirect=1) of the request. It’s not available for `Invoke` API. 
         :type InvokeResult: int
         """
         self.Log = None
@@ -3648,6 +3662,9 @@ class TriggerCount(AbstractModel):
         :type Cm: int
         :param Vod: Number of VOD triggers
         :type Vod: int
+        :param Eb: Number of EventBridge triggers
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Eb: int
         """
         self.Cos = None
         self.Timer = None
@@ -3660,6 +3677,7 @@ class TriggerCount(AbstractModel):
         self.Mps = None
         self.Cm = None
         self.Vod = None
+        self.Eb = None
 
 
     def _deserialize(self, params):
@@ -3674,6 +3692,7 @@ class TriggerCount(AbstractModel):
         self.Mps = params.get("Mps")
         self.Cm = params.get("Cm")
         self.Vod = params.get("Vod")
+        self.Eb = params.get("Eb")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3983,6 +4002,71 @@ class UpdateNamespaceRequest(AbstractModel):
 
 class UpdateNamespaceResponse(AbstractModel):
     """UpdateNamespace response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateTriggerStatusRequest(AbstractModel):
+    """UpdateTriggerStatus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Enable: Initial status of the trigger. Values: `OPEN` (enabled); `CLOSE` disabled)
+        :type Enable: str
+        :param FunctionName: Function name.
+        :type FunctionName: str
+        :param TriggerName: Trigger name
+        :type TriggerName: str
+        :param Type: Trigger Type
+        :type Type: str
+        :param Qualifier: Function version. It defaults to `$LATEST`. It’s recommended to use `[$DEFAULT](https://intl.cloud.tencent.com/document/product/583/36149?from_cn_redirect=1#.E9.BB.98.E8.AE.A4.E5.88.AB.E5.90.8D)` for canary release.
+        :type Qualifier: str
+        :param Namespace: Function namespace
+        :type Namespace: str
+        :param TriggerDesc: To update a COS trigger, this field is required. It stores the data {"event":"cos:ObjectCreated:*"} in the JSON format. The data content of this field is in the same format as that of SetTrigger. This field is optional if a scheduled trigger or CMQ trigger is to be deleted.
+        :type TriggerDesc: str
+        """
+        self.Enable = None
+        self.FunctionName = None
+        self.TriggerName = None
+        self.Type = None
+        self.Qualifier = None
+        self.Namespace = None
+        self.TriggerDesc = None
+
+
+    def _deserialize(self, params):
+        self.Enable = params.get("Enable")
+        self.FunctionName = params.get("FunctionName")
+        self.TriggerName = params.get("TriggerName")
+        self.Type = params.get("Type")
+        self.Qualifier = params.get("Qualifier")
+        self.Namespace = params.get("Namespace")
+        self.TriggerDesc = params.get("TriggerDesc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateTriggerStatusResponse(AbstractModel):
+    """UpdateTriggerStatus response structure.
 
     """
 

@@ -1534,7 +1534,7 @@ class CreateRuleRequest(AbstractModel):
         :type Path: str
         :param RealServerType: The origin server type of the forwarding rule, which supports IP and DOMAIN types.
         :type RealServerType: str
-        :param Scheduler: The strategy used by the listener to access the origin server. Values: `rr` (round-robin), `wrr` (weighted round-robin), `lc` (the least-connections strategy), `lrtt` (the least-response-time strategy).
+        :param Scheduler: The strategy used by the listener to access the origin server. Values: `rr` (round-robin), `wrr` (weighted round-robin), `lc` (the least-connections strategy).
         :type Scheduler: str
         :param HealthCheck: Whether the health check is enabled for rules. 1: enabled; 0: disabled.
         :type HealthCheck: int
@@ -1545,7 +1545,7 @@ If this field is not passed in, it indicates that the ForwardProtocol of the cor
         :type ForwardProtocol: str
         :param ForwardHost: The host to which the acceleration connection forwards. If this parameter is not specified, the default host will be used, i.e., the host with which the client initiates HTTP requests.
         :type ForwardHost: str
-        :param ServerNameIndicationSwitch: Specifies whether to enable Server Name Indication (SNI). Valid values: `ON` (enable) and `OFF` (disable).
+        :param ServerNameIndicationSwitch: Whether to enable SNI. Values: `on` (enable), `off` (disable). For creation of HTTP listener forwarding rules, SNI is disabled by default.
         :type ServerNameIndicationSwitch: str
         :param ServerNameIndication: Server Name Indication (SNI). This field is required when `ServerNameIndicationSwitch` is `ON`.
         :type ServerNameIndication: str

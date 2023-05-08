@@ -294,6 +294,60 @@ class AddEnterpriseSecurityGroupRulesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AddNatAcRuleRequest(AbstractModel):
+    """AddNatAcRule request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Rules: NAT access control rules to be added.
+        :type Rules: list of CreateNatRuleItem
+        :param From: Source of the rules to be added. Generally, this parameter is not used. The value insert_rule indicates that rules in the specified location are inserted, and the value batch_import indicates that rules are imported in batches. If the parameter is left empty, rules defined in the API request are added.
+        :type From: str
+        """
+        self.Rules = None
+        self.From = None
+
+
+    def _deserialize(self, params):
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = CreateNatRuleItem()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+        self.From = params.get("From")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddNatAcRuleResponse(AbstractModel):
+    """AddNatAcRule response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleUuid: ID list of new rules.
+        :type RuleUuid: list of int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RuleUuid = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RuleUuid = params.get("RuleUuid")
+        self.RequestId = params.get("RequestId")
+
+
 class AssetZone(AbstractModel):
     """AssetZone
 
@@ -382,6 +436,140 @@ Note: This field may return `null`, indicating that no valid value was found.
         
 
 
+class BetaInfoByACL(AbstractModel):
+    """Canary publish information of the rule
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: Task ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TaskId: int
+        :param TaskName: Task name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TaskName: str
+        :param LastTime: Last execution time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LastTime: str
+        """
+        self.TaskId = None
+        self.TaskName = None
+        self.LastTime = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.TaskName = params.get("TaskName")
+        self.LastTime = params.get("LastTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BlockIgnoreRule(AbstractModel):
+    """Allowlist or blocklist for intrusion prevention
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: Domain name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Domain: str
+        :param Ioc: Rule IP.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Ioc: str
+        :param Level: Threat level.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Level: str
+        :param EventName: Source event name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EventName: str
+        :param Direction: Direction. Valid values: 0: outbound; 1: inbound.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Direction: int
+        :param Protocol: Protocol.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Protocol: str
+        :param Address: Address.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Address: str
+        :param Action: Rule type. Valid values: 1: block; 2: allow.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Action: int
+        :param StartTime: Time when a rule starts to take effect.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type StartTime: str
+        :param EndTime: Time when a rule expires.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EndTime: str
+        :param IgnoreReason: Reason for ignoring.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IgnoreReason: str
+        :param Source: Security event source.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Source: str
+        :param UniqueId: Rule ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UniqueId: str
+        :param MatchTimes: Number of rule matching times.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MatchTimes: int
+        :param Country: Country.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Country: str
+        :param Comment: 
+        :type Comment: str
+        """
+        self.Domain = None
+        self.Ioc = None
+        self.Level = None
+        self.EventName = None
+        self.Direction = None
+        self.Protocol = None
+        self.Address = None
+        self.Action = None
+        self.StartTime = None
+        self.EndTime = None
+        self.IgnoreReason = None
+        self.Source = None
+        self.UniqueId = None
+        self.MatchTimes = None
+        self.Country = None
+        self.Comment = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.Ioc = params.get("Ioc")
+        self.Level = params.get("Level")
+        self.EventName = params.get("EventName")
+        self.Direction = params.get("Direction")
+        self.Protocol = params.get("Protocol")
+        self.Address = params.get("Address")
+        self.Action = params.get("Action")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.IgnoreReason = params.get("IgnoreReason")
+        self.Source = params.get("Source")
+        self.UniqueId = params.get("UniqueId")
+        self.MatchTimes = params.get("MatchTimes")
+        self.Country = params.get("Country")
+        self.Comment = params.get("Comment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CfwNatDnatRule(AbstractModel):
     """NAT firewall DNAT rules
 
@@ -417,6 +605,66 @@ class CfwNatDnatRule(AbstractModel):
         self.PrivateIpAddress = params.get("PrivateIpAddress")
         self.PrivatePort = params.get("PrivatePort")
         self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CommonFilter(AbstractModel):
+    """Common filters for search
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Search key.
+        :type Name: str
+        :param Values: Search values.
+        :type Values: list of str
+        :param OperatorType: Enum of integers that represent relations between Name and Values.
+enum FilterOperatorType {
+    // Invalid
+    FILTER_OPERATOR_TYPE_INVALID = 0;
+    // Equal to
+    FILTER_OPERATOR_TYPE_EQUAL = 1;
+    // Greater than
+    FILTER_OPERATOR_TYPE_GREATER = 2;
+    // Less than
+    FILTER_OPERATOR_TYPE_LESS = 3;
+    // Greater than or equal to
+    FILTER_OPERATOR_TYPE_GREATER_EQ = 4;
+    // Less than or equal to
+    FILTER_OPERATOR_TYPE_LESS_EQ = 5;
+    // Not equal to
+    FILTER_OPERATOR_TYPE_NO_EQ = 6;
+    // In (contained in the array)
+    FILTER_OPERATOR_TYPE_IN = 7;
+    // Not in
+    FILTER_OPERATOR_TYPE_NOT_IN = 8;
+    // Fuzzily matched
+    FILTER_OPERATOR_TYPE_FUZZINESS = 9;
+    // Existing
+    FILTER_OPERATOR_TYPE_EXIST = 10;
+    // Not existing
+    FILTER_OPERATOR_TYPE_NOT_EXIST = 11;
+    // Regular
+    FILTER_OPERATOR_TYPE_REGULAR = 12;
+}
+        :type OperatorType: int
+        """
+        self.Name = None
+        self.Values = None
+        self.OperatorType = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Values = params.get("Values")
+        self.OperatorType = params.get("OperatorType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -532,6 +780,8 @@ class CreateNatFwInstanceRequest(AbstractModel):
         :type ZoneBak: str
         :param CrossAZone: Remote disaster recovery. 1: enable; 0: disable; empty: disable by default
         :type CrossAZone: int
+        :param FwCidrInfo: IP range of the firewall
+        :type FwCidrInfo: :class:`tencentcloud.cfw.v20190904.models.FwCidrInfo`
         """
         self.Name = None
         self.Width = None
@@ -541,6 +791,7 @@ class CreateNatFwInstanceRequest(AbstractModel):
         self.Zone = None
         self.ZoneBak = None
         self.CrossAZone = None
+        self.FwCidrInfo = None
 
 
     def _deserialize(self, params):
@@ -554,6 +805,9 @@ class CreateNatFwInstanceRequest(AbstractModel):
         self.Zone = params.get("Zone")
         self.ZoneBak = params.get("ZoneBak")
         self.CrossAZone = params.get("CrossAZone")
+        if params.get("FwCidrInfo") is not None:
+            self.FwCidrInfo = FwCidrInfo()
+            self.FwCidrInfo._deserialize(params.get("FwCidrInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -611,6 +865,8 @@ class CreateNatFwInstanceWithDomainRequest(AbstractModel):
         :type IsCreateDomain: int
         :param Domain: Required for creating a domain name
         :type Domain: str
+        :param FwCidrInfo: IP range of the firewall
+        :type FwCidrInfo: :class:`tencentcloud.cfw.v20190904.models.FwCidrInfo`
         """
         self.Name = None
         self.Width = None
@@ -622,6 +878,7 @@ class CreateNatFwInstanceWithDomainRequest(AbstractModel):
         self.CrossAZone = None
         self.IsCreateDomain = None
         self.Domain = None
+        self.FwCidrInfo = None
 
 
     def _deserialize(self, params):
@@ -637,6 +894,9 @@ class CreateNatFwInstanceWithDomainRequest(AbstractModel):
         self.CrossAZone = params.get("CrossAZone")
         self.IsCreateDomain = params.get("IsCreateDomain")
         self.Domain = params.get("Domain")
+        if params.get("FwCidrInfo") is not None:
+            self.FwCidrInfo = FwCidrInfo()
+            self.FwCidrInfo._deserialize(params.get("FwCidrInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -666,6 +926,74 @@ Note: This field may return `null`, indicating that no valid value was found.
     def _deserialize(self, params):
         self.CfwInsId = params.get("CfwInsId")
         self.RequestId = params.get("RequestId")
+
+
+class CreateNatRuleItem(AbstractModel):
+    """Parameters for creating an NAT access control rule
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SourceContent: Access source. Example: `net: IP/CIDR(192.168.0.2)`
+        :type SourceContent: str
+        :param SourceType: Access source type. Values for inbound rules: `ip`, `net`, `template`, and `location`. Values for outbound rules: `ip`, `net`, `template`, `instance`, `group`, and `tag`.
+        :type SourceType: str
+        :param TargetContent: Access target. Example: `net: IP/CIDR(192.168.0.2); domain: domain name rule, e.g., *.qq.com
+        :type TargetContent: str
+        :param TargetType: Access target type. Values for inbound rules: `ip`, `net`, `template`, `instance`, `group`, and `tag`. Values for outbound rules: `ip`, `net`, `domain`, `template`, and `location`.
+        :type TargetType: str
+        :param Protocol: Protocol. Values: `TCP`, `UDP`, `ICMP`, `ANY`, `HTTP`, `HTTPS`, `HTTP/HTTPS`, `SMTP`, `SMTPS`, `SMTP/SMTPS`, `FTP`, and `DNS`.
+        :type Protocol: str
+        :param RuleAction: Specify how the CFW instance deals with the traffic hit the access control rule. Values: `accept` (allow), `drop` (reject), and `log` (observe).
+        :type RuleAction: str
+        :param Port: The port of the access control rule. Values: `-1/-1` (all ports) and `80` (Port 80)
+        :type Port: str
+        :param Direction: Rule direction. Values: `1` (Inbound) and `0` (Outbound)
+        :type Direction: int
+        :param OrderIndex: Rule sequence number
+        :type OrderIndex: int
+        :param Enable: Rule status. `true` (Enabled); `false` (Disabled)
+        :type Enable: str
+        :param Uuid: The unique ID of the rule, which is not required when you create a rule.
+        :type Uuid: int
+        :param Description: Description
+        :type Description: str
+        """
+        self.SourceContent = None
+        self.SourceType = None
+        self.TargetContent = None
+        self.TargetType = None
+        self.Protocol = None
+        self.RuleAction = None
+        self.Port = None
+        self.Direction = None
+        self.OrderIndex = None
+        self.Enable = None
+        self.Uuid = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.SourceContent = params.get("SourceContent")
+        self.SourceType = params.get("SourceType")
+        self.TargetContent = params.get("TargetContent")
+        self.TargetType = params.get("TargetType")
+        self.Protocol = params.get("Protocol")
+        self.RuleAction = params.get("RuleAction")
+        self.Port = params.get("Port")
+        self.Direction = params.get("Direction")
+        self.OrderIndex = params.get("OrderIndex")
+        self.Enable = params.get("Enable")
+        self.Uuid = params.get("Uuid")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class CreateSecurityGroupRulesRequest(AbstractModel):
@@ -831,7 +1159,7 @@ class DeleteAllAccessControlRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: Status value. 0: modified successfully; !0: modification failed
+        :param Status: Status of the task. `0`: Modified successfully; Others: Modification failed
         :type Status: int
         :param Info: Number of access control rules deleted.
 Note: This field may return `null`, indicating that no valid value was found.
@@ -974,6 +1302,154 @@ class DeleteVpcInstanceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class DescAcItem(AbstractModel):
+    """Item in the access control list. Each item represents an access control rule.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SourceContent: Access source.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SourceContent: str
+        :param TargetContent: Access destination.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TargetContent: str
+        :param Protocol: Protocol.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Protocol: str
+        :param Port: Port.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Port: str
+        :param RuleAction: Action that Cloud Firewall performs on the traffic. Valid values: accept (allow), drop (reject), and log (monitor).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RuleAction: str
+        :param Description: Description.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Description: str
+        :param Count: Number of rule matching times.
+        :type Count: int
+        :param OrderIndex: Rule sequence number.
+        :type OrderIndex: int
+        :param SourceType: Access source type. Valid values for an inbound rule: ip, net, template, and location; valid values for an outbound rule: ip, net, template, instance, group, and tag.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SourceType: str
+        :param TargetType: Access destination type. Valid values for an inbound rule: ip, net, template, instance, group, and tag; valid values for an outbound rule: ip, net, domain, template, and location.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TargetType: str
+        :param Uuid: Unique ID of the rule.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Uuid: int
+        :param Invalid: Rule validity.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Invalid: int
+        :param IsRegion: Valid values: 0: common rules; 1: regional rules.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsRegion: int
+        :param CountryCode: Country ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CountryCode: int
+        :param CityCode: City ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CityCode: int
+        :param CountryName: Country name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CountryName: str
+        :param CityName: City name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CityName: str
+        :param CloudCode: Cloud provider code.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CloudCode: str
+        :param IsCloud: Valid values: 0: common rules; 1: cloud provider rules.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsCloud: int
+        :param Enable: Rule status. Valid values: true: enabled; false: disabled.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Enable: str
+        :param Direction: Rule direction. Valid values: 1: inbound; 0: outbound.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Direction: int
+        :param InstanceName: Instance name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceName: str
+        :param InternalUuid: UUID for internal use. Generally, this field is not required.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InternalUuid: int
+        :param Status: Rule status. This field is valid when you query rule matching details. Valid values: 0: new; 1: deleted; 2: edited and deleted.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Status: int
+        :param BetaList: Details of associated tasks
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type BetaList: list of BetaInfoByACL
+        """
+        self.SourceContent = None
+        self.TargetContent = None
+        self.Protocol = None
+        self.Port = None
+        self.RuleAction = None
+        self.Description = None
+        self.Count = None
+        self.OrderIndex = None
+        self.SourceType = None
+        self.TargetType = None
+        self.Uuid = None
+        self.Invalid = None
+        self.IsRegion = None
+        self.CountryCode = None
+        self.CityCode = None
+        self.CountryName = None
+        self.CityName = None
+        self.CloudCode = None
+        self.IsCloud = None
+        self.Enable = None
+        self.Direction = None
+        self.InstanceName = None
+        self.InternalUuid = None
+        self.Status = None
+        self.BetaList = None
+
+
+    def _deserialize(self, params):
+        self.SourceContent = params.get("SourceContent")
+        self.TargetContent = params.get("TargetContent")
+        self.Protocol = params.get("Protocol")
+        self.Port = params.get("Port")
+        self.RuleAction = params.get("RuleAction")
+        self.Description = params.get("Description")
+        self.Count = params.get("Count")
+        self.OrderIndex = params.get("OrderIndex")
+        self.SourceType = params.get("SourceType")
+        self.TargetType = params.get("TargetType")
+        self.Uuid = params.get("Uuid")
+        self.Invalid = params.get("Invalid")
+        self.IsRegion = params.get("IsRegion")
+        self.CountryCode = params.get("CountryCode")
+        self.CityCode = params.get("CityCode")
+        self.CountryName = params.get("CountryName")
+        self.CityName = params.get("CityName")
+        self.CloudCode = params.get("CloudCode")
+        self.IsCloud = params.get("IsCloud")
+        self.Enable = params.get("Enable")
+        self.Direction = params.get("Direction")
+        self.InstanceName = params.get("InstanceName")
+        self.InternalUuid = params.get("InternalUuid")
+        self.Status = params.get("Status")
+        if params.get("BetaList") is not None:
+            self.BetaList = []
+            for item in params.get("BetaList"):
+                obj = BetaInfoByACL()
+                obj._deserialize(item)
+                self.BetaList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeAcListsRequest(AbstractModel):
@@ -1234,6 +1710,92 @@ class DescribeBlockByIpTimesListResponse(AbstractModel):
                 obj = IpStatic()
                 obj._deserialize(item)
                 self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBlockIgnoreListRequest(AbstractModel):
+    """DescribeBlockIgnoreList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: Number of entries per page.
+        :type Limit: int
+        :param Offset: Page offset.
+        :type Offset: int
+        :param Direction: Direction. Valid values: 1: inbound public access; 0: outbound public access; 3: private network access; empty string: all access.
+        :type Direction: str
+        :param RuleType: Rule type. Valid values: 1: block; 2: allow.
+        :type RuleType: int
+        :param Order: Column by which rules are sorted. Valid values: EndTime: end time; StartTime: start time; MatchTimes: number of matching times.
+        :type Order: str
+        :param By: Sort order. Valid values: desc: descending; asc: ascending.
+        :type By: str
+        :param SearchValue: Search keys, in a JSON string. Valid values: {}: empty; domain: domain name; level: threat level; ignore_reason: reason for allowing access; rule_source: source of a security event; address: geographical location; common: fuzzy search.
+        :type SearchValue: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Direction = None
+        self.RuleType = None
+        self.Order = None
+        self.By = None
+        self.SearchValue = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.Direction = params.get("Direction")
+        self.RuleType = params.get("RuleType")
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        self.SearchValue = params.get("SearchValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBlockIgnoreListResponse(AbstractModel):
+    """DescribeBlockIgnoreList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: List data.
+        :type Data: list of BlockIgnoreRule
+        :param Total: Total number of results, which is used for pagination.
+        :type Total: int
+        :param ReturnCode: Status code. Valid values: 0: successful; others: failed.
+        :type ReturnCode: int
+        :param ReturnMsg: Status message. Valid values: success: successful query; fail: failed query.
+        :type ReturnMsg: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Data = None
+        self.Total = None
+        self.ReturnCode = None
+        self.ReturnMsg = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = BlockIgnoreRule()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.Total = params.get("Total")
+        self.ReturnCode = params.get("ReturnCode")
+        self.ReturnMsg = params.get("ReturnMsg")
         self.RequestId = params.get("RequestId")
 
 
@@ -1559,6 +2121,98 @@ class DescribeIPStatusListResponse(AbstractModel):
                 self.StatusList.append(obj)
         self.ReturnCode = params.get("ReturnCode")
         self.ReturnMsg = params.get("ReturnMsg")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeNatAcRuleRequest(AbstractModel):
+    """DescribeNatAcRule request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: Number of entries per page.
+        :type Limit: int
+        :param Offset: Page offset.
+        :type Offset: int
+        :param Index: Index to be queried. This parameter is optional, and is used only in specific cases.
+        :type Index: str
+        :param Filters: Filter condition combination.
+        :type Filters: list of CommonFilter
+        :param StartTime: Start time for search. This parameter is optional.
+        :type StartTime: str
+        :param EndTime: End time for search. This parameter is optional.
+        :type EndTime: str
+        :param Order: Valid values: desc: descending; asc: ascending. The returned results are sorted by the value of By. If this parameter is specified, By is also required.
+        :type Order: str
+        :param By: Field by which the returned results are sorted.
+        :type By: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Index = None
+        self.Filters = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Order = None
+        self.By = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.Index = params.get("Index")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = CommonFilter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNatAcRuleResponse(AbstractModel):
+    """DescribeNatAcRule response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: Total number of entries.
+        :type Total: int
+        :param Data: NAT access control list data.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Data: list of DescAcItem
+        :param AllTotal: Total number of entries returned without filtering.
+        :type AllTotal: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Total = None
+        self.Data = None
+        self.AllTotal = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = DescAcItem()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.AllTotal = params.get("AllTotal")
         self.RequestId = params.get("RequestId")
 
 
@@ -2252,7 +2906,12 @@ class DescribeTLogInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: None
+        :param Data: `NetworkNum`: Number of detected network scans
+ `HandleNum`: Number of pending processing events
+"BanNum": 
+  `VulNum`: Number of vulnerability exploits
+  "OutNum`: Number of compromised servers
+"BruteForceNum": 0
         :type Data: :class:`tencentcloud.cfw.v20190904.models.TLogInfo`
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -2531,6 +3190,71 @@ class ExpandCfwVerticalResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class FwCidrInfo(AbstractModel):
+    """Firewall IP range information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FwCidrType: The IP range type of the firewall. Values: `VpcSelf` (VPC IP range preferred); `Assis` (Secondary IP range preferred); `Custom` (Custom IP range)
+        :type FwCidrType: str
+        :param FwCidrLst: The IP segment assigned for each VPC.
+        :type FwCidrLst: list of FwVpcCidr
+        :param ComFwCidr: The IP segment used by other firewalls. Specify this if you want to assign a dedicated segment for the firewall.
+        :type ComFwCidr: str
+        """
+        self.FwCidrType = None
+        self.FwCidrLst = None
+        self.ComFwCidr = None
+
+
+    def _deserialize(self, params):
+        self.FwCidrType = params.get("FwCidrType")
+        if params.get("FwCidrLst") is not None:
+            self.FwCidrLst = []
+            for item in params.get("FwCidrLst"):
+                obj = FwVpcCidr()
+                obj._deserialize(item)
+                self.FwCidrLst.append(obj)
+        self.ComFwCidr = params.get("ComFwCidr")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FwVpcCidr(AbstractModel):
+    """Firewall IP range of the VPC
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VpcId: VPC ID
+        :type VpcId: str
+        :param FwCidr: IP range of the firewall. The mask must be at least /24.
+        :type FwCidr: str
+        """
+        self.VpcId = None
+        self.FwCidr = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.FwCidr = params.get("FwCidr")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class IPDefendStatus(AbstractModel):
@@ -3024,7 +3748,7 @@ class ModifyBlockIgnoreListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RuleType: 1: blocklist; 2: ignore list
+        :param RuleType: Type of the rule. Values: `1` (Blocklist); `2` (Allowlist)
         :type RuleType: int
         :param IOC: Either IP or Domain is required
         :type IOC: list of IocListData
@@ -3032,7 +3756,7 @@ class ModifyBlockIgnoreListRequest(AbstractModel):
         :type IocAction: str
         :param StartTime: Time format: yyyy-MM-dd HH:mm:ss. Required when IocAction is edit or add
         :type StartTime: str
-        :param EndTime: Time format: yyyy-MM-dd HH:mm:ss. Required when IocAction is edit or add
+        :param EndTime: End time of the period in the format of yyyy-MM-dd HH:mm:ss. It must be later than both the start time and the current time. It’s required when `IocAction` is `edit` or `add`. 
         :type EndTime: str
         """
         self.RuleType = None
@@ -3132,6 +3856,165 @@ class ModifyBlockTopResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyEnterpriseSecurityDispatchStatusRequest(AbstractModel):
+    """ModifyEnterpriseSecurityDispatchStatus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: Status. Values: `0` (Publish now), `1` (Stop publishing)
+        :type Status: int
+        """
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyEnterpriseSecurityDispatchStatusResponse(AbstractModel):
+    """ModifyEnterpriseSecurityDispatchStatus response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: `0`: Modified successfully; Others: Modification failed
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Status: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyEnterpriseSecurityGroupRuleRequest(AbstractModel):
+    """ModifyEnterpriseSecurityGroupRule request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleUuid: UUID of the rule, which can be obtained by querying the rule list
+        :type RuleUuid: int
+        :param ModifyType: Modification type. Values: `0` (Modify rule content), `1` (Toggle on/off a rule) and `2` (Toggle on/off all rules)
+        :type ModifyType: int
+        :param Data: The new rule content you want. It’s only required when you want to modify the rule content (`ModifyType=0`)
+        :type Data: :class:`tencentcloud.cfw.v20190904.models.SecurityGroupRule`
+        :param Enable: `0`: Do not enable; `1`: Enable
+        :type Enable: int
+        """
+        self.RuleUuid = None
+        self.ModifyType = None
+        self.Data = None
+        self.Enable = None
+
+
+    def _deserialize(self, params):
+        self.RuleUuid = params.get("RuleUuid")
+        self.ModifyType = params.get("ModifyType")
+        if params.get("Data") is not None:
+            self.Data = SecurityGroupRule()
+            self.Data._deserialize(params.get("Data"))
+        self.Enable = params.get("Enable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyEnterpriseSecurityGroupRuleResponse(AbstractModel):
+    """ModifyEnterpriseSecurityGroupRule response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: Status value. `0`: Edited successfully; Others: Failed to edit
+        :type Status: int
+        :param NewRuleUuid: ID of new rule generated after the modification
+        :type NewRuleUuid: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Status = None
+        self.NewRuleUuid = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.NewRuleUuid = params.get("NewRuleUuid")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyNatAcRuleRequest(AbstractModel):
+    """ModifyNatAcRule request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Rules: Array of rules to be modified.
+        :type Rules: list of CreateNatRuleItem
+        """
+        self.Rules = None
+
+
+    def _deserialize(self, params):
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = CreateNatRuleItem()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyNatAcRuleResponse(AbstractModel):
+    """ModifyNatAcRule response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleUuid: ID list of new rules that have been successfully modified.
+        :type RuleUuid: list of int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RuleUuid = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RuleUuid = params.get("RuleUuid")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyNatFwReSelectRequest(AbstractModel):
     """ModifyNatFwReSelect request structure.
 
@@ -3147,11 +4030,14 @@ class ModifyNatFwReSelectRequest(AbstractModel):
         :type NatGwList: list of str
         :param VpcList: List of VPCs reconnected for the Create New mode. Only one of NatGwList and VpcList can be passed.
         :type VpcList: list of str
+        :param FwCidrInfo: IP range of the firewall
+        :type FwCidrInfo: :class:`tencentcloud.cfw.v20190904.models.FwCidrInfo`
         """
         self.Mode = None
         self.CfwInstance = None
         self.NatGwList = None
         self.VpcList = None
+        self.FwCidrInfo = None
 
 
     def _deserialize(self, params):
@@ -3159,6 +4045,9 @@ class ModifyNatFwReSelectRequest(AbstractModel):
         self.CfwInstance = params.get("CfwInstance")
         self.NatGwList = params.get("NatGwList")
         self.VpcList = params.get("VpcList")
+        if params.get("FwCidrInfo") is not None:
+            self.FwCidrInfo = FwCidrInfo()
+            self.FwCidrInfo._deserialize(params.get("FwCidrInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3290,6 +4179,56 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     def _deserialize(self, params):
         self.ReturnMsg = params.get("ReturnMsg")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyNatSequenceRulesRequest(AbstractModel):
+    """ModifyNatSequenceRules request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleChangeItems: Rule sequence number. Values: `OrderIndex` (Original sequence number), `NewOrderIndex` (New sequence number)
+        :type RuleChangeItems: list of RuleChangeItem
+        :param Direction: Rule direction. Values: `1` (Inbound) and `0` (Outbound)
+        :type Direction: int
+        """
+        self.RuleChangeItems = None
+        self.Direction = None
+
+
+    def _deserialize(self, params):
+        if params.get("RuleChangeItems") is not None:
+            self.RuleChangeItems = []
+            for item in params.get("RuleChangeItems"):
+                obj = RuleChangeItem()
+                obj._deserialize(item)
+                self.RuleChangeItems.append(obj)
+        self.Direction = params.get("Direction")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyNatSequenceRulesResponse(AbstractModel):
+    """ModifyNatSequenceRules response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -3611,6 +4550,29 @@ Note: This field may return `null`, indicating that no valid value was found.
         self.RequestId = params.get("RequestId")
 
 
+class ModifyStorageSettingRequest(AbstractModel):
+    """ModifyStorageSetting request structure.
+
+    """
+
+
+class ModifyStorageSettingResponse(AbstractModel):
+    """ModifyStorageSetting response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyTableStatusRequest(AbstractModel):
     """ModifyTableStatus request structure.
 
@@ -3789,6 +4751,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param ZoneZhBak: Availability zone of the instance
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ZoneZhBak: str
+        :param RuleUsed: Number of used rules.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RuleUsed: int
+        :param RuleMax: The maximum number of rules allowed in the instance.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RuleMax: int
         """
         self.NatinsId = None
         self.NatinsName = None
@@ -3805,6 +4773,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.RegionDetail = None
         self.ZoneZh = None
         self.ZoneZhBak = None
+        self.RuleUsed = None
+        self.RuleMax = None
 
 
     def _deserialize(self, params):
@@ -3823,6 +4793,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.RegionDetail = params.get("RegionDetail")
         self.ZoneZh = params.get("ZoneZh")
         self.ZoneZhBak = params.get("ZoneZhBak")
+        self.RuleUsed = params.get("RuleUsed")
+        self.RuleMax = params.get("RuleMax")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3971,6 +4943,83 @@ Note: This field may return `null`, indicating that no valid value was found.
         self.RuleUuid = params.get("RuleUuid")
         self.Status = params.get("Status")
         self.RequestId = params.get("RequestId")
+
+
+class RemoveNatAcRuleRequest(AbstractModel):
+    """RemoveNatAcRule request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleUuid: UUIDs of the rules to delete, which can be obtained by querying the rule list. Note: If [-1] is passed in, all rules are deleted.
+        :type RuleUuid: list of int
+        :param Direction: Rule direction. Valid values: 1: inbound; 0: outbound.
+        :type Direction: int
+        """
+        self.RuleUuid = None
+        self.Direction = None
+
+
+    def _deserialize(self, params):
+        self.RuleUuid = params.get("RuleUuid")
+        self.Direction = params.get("Direction")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemoveNatAcRuleResponse(AbstractModel):
+    """RemoveNatAcRule response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleUuid: UUID list of the deleted rules.
+        :type RuleUuid: list of int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RuleUuid = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RuleUuid = params.get("RuleUuid")
+        self.RequestId = params.get("RequestId")
+
+
+class RuleChangeItem(AbstractModel):
+    """Changes of the rule sequence number.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OrderIndex: Original sequence number
+        :type OrderIndex: int
+        :param NewOrderIndex: New sequence number
+        :type NewOrderIndex: int
+        """
+        self.OrderIndex = None
+        self.NewOrderIndex = None
+
+
+    def _deserialize(self, params):
+        self.OrderIndex = params.get("OrderIndex")
+        self.NewOrderIndex = params.get("NewOrderIndex")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class RuleInfoData(AbstractModel):

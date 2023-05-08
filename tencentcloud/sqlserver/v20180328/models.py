@@ -1574,6 +1574,12 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         :param SlaveZones: Replica AZ information
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SlaveZones: :class:`tencentcloud.sqlserver.v20180328.models.SlaveZones`
+        :param Architecture: Architecture type. Valid values: `SINGLE` (single-node), `DOUBLE` (two-node), `TRIPLE` (three-node).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Architecture: str
+        :param Style: Instance type. Valid values: `EXCLUSIVE` (dedicated), `SHARED` (shared)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Style: str
         """
         self.InstanceId = None
         self.Name = None
@@ -1627,6 +1633,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.TimeZone = None
         self.IsDrZone = None
         self.SlaveZones = None
+        self.Architecture = None
+        self.Style = None
 
 
     def _deserialize(self, params):
@@ -1689,6 +1697,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("SlaveZones") is not None:
             self.SlaveZones = SlaveZones()
             self.SlaveZones._deserialize(params.get("SlaveZones"))
+        self.Architecture = params.get("Architecture")
+        self.Style = params.get("Style")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2924,6 +2934,79 @@ class DescribeDBInstanceInterResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDBInstancesAttributeRequest(AbstractModel):
+    """DescribeDBInstancesAttribute request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBInstancesAttributeResponse(AbstractModel):
+    """DescribeDBInstancesAttribute response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param RegularBackupEnable: Archive backup status. Valid values: `enable` (enabled), `disable` (disabled)
+        :type RegularBackupEnable: str
+        :param RegularBackupSaveDays: Archive backup retention period: [90-3650] days
+        :type RegularBackupSaveDays: int
+        :param RegularBackupStrategy: Archive backup policy. Valid values: `years` (yearly); `quarters (quarterly); `months` (monthly).
+        :type RegularBackupStrategy: str
+        :param RegularBackupCounts: The number of retained archive backups
+        :type RegularBackupCounts: int
+        :param RegularBackupStartTime: Archive backup start date in YYYY-MM-DD format, which is the current time by default.
+        :type RegularBackupStartTime: str
+        :param BlockedThreshold: Block process threshold in milliseconds
+        :type BlockedThreshold: int
+        :param EventSaveDays: Retention period for the files of slow SQL, blocking, deadlock, and extended events.
+        :type EventSaveDays: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.InstanceId = None
+        self.RegularBackupEnable = None
+        self.RegularBackupSaveDays = None
+        self.RegularBackupStrategy = None
+        self.RegularBackupCounts = None
+        self.RegularBackupStartTime = None
+        self.BlockedThreshold = None
+        self.EventSaveDays = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.RegularBackupEnable = params.get("RegularBackupEnable")
+        self.RegularBackupSaveDays = params.get("RegularBackupSaveDays")
+        self.RegularBackupStrategy = params.get("RegularBackupStrategy")
+        self.RegularBackupCounts = params.get("RegularBackupCounts")
+        self.RegularBackupStartTime = params.get("RegularBackupStartTime")
+        self.BlockedThreshold = params.get("BlockedThreshold")
+        self.EventSaveDays = params.get("EventSaveDays")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDBInstancesRequest(AbstractModel):
     """DescribeDBInstances request structure.
 
@@ -3950,6 +4033,80 @@ class DescribeUploadBackupInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeXEventsRequest(AbstractModel):
+    """DescribeXEvents request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param EventType: Event type. Valid values: `slow` (Slow SQL event), `blocked` (blocking event),  deadlock` (deadlock event).
+        :type EventType: str
+        :param StartTime: Generation start time of an extended file
+        :type StartTime: str
+        :param EndTime: Generation end time of an extended file
+        :type EndTime: str
+        :param Offset: Page number. Default value: `0`
+        :type Offset: int
+        :param Limit: Number of entries to be returned per page. Value range: 1-100. Default value: `20`
+        :type Limit: int
+        """
+        self.InstanceId = None
+        self.EventType = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.EventType = params.get("EventType")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeXEventsResponse(AbstractModel):
+    """DescribeXEvents response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Events: List of extended events
+        :type Events: list of Events
+        :param TotalCount: Total number of extended events
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Events = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Events") is not None:
+            self.Events = []
+            for item in params.get("Events"):
+                obj = Events()
+                obj._deserialize(item)
+                self.Events.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeZonesRequest(AbstractModel):
     """DescribeZones request structure.
 
@@ -3984,6 +4141,90 @@ class DescribeZonesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ZoneSet.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class EventConfig(AbstractModel):
+    """Threshold setting for an extended event
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EventType: Event type. Valid values: `slow` (set threshold for slow SQL ), `blocked` (set threshold for the blocking and deadlock).
+        :type EventType: str
+        :param Threshold: Threshold in milliseconds. Valid values: `0`(disable), `non-zero` (enable)
+        :type Threshold: int
+        """
+        self.EventType = None
+        self.Threshold = None
+
+
+    def _deserialize(self, params):
+        self.EventType = params.get("EventType")
+        self.Threshold = params.get("Threshold")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Events(AbstractModel):
+    """Details of an extended event
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: ID
+        :type Id: int
+        :param FileName: File name of an extended event
+        :type FileName: str
+        :param Size: File size of an extended event
+        :type Size: int
+        :param EventType: Event type. Valid values: `slow` (Slow SQL event), `blocked` (blocking event),  `deadlock` (deadlock event).
+        :type EventType: str
+        :param Status: Event record status. Valid values: `1` (succeeded), `2` (failed).
+        :type Status: int
+        :param StartTime: Generation start time of an extended file
+        :type StartTime: str
+        :param EndTime: Generation end time of an extended file
+        :type EndTime: str
+        :param InternalAddr: Download address on the private network
+        :type InternalAddr: str
+        :param ExternalAddr: Download address on the public network
+        :type ExternalAddr: str
+        """
+        self.Id = None
+        self.FileName = None
+        self.Size = None
+        self.EventType = None
+        self.Status = None
+        self.StartTime = None
+        self.EndTime = None
+        self.InternalAddr = None
+        self.ExternalAddr = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.FileName = params.get("FileName")
+        self.Size = params.get("Size")
+        self.EventType = params.get("EventType")
+        self.Status = params.get("Status")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.InternalAddr = params.get("InternalAddr")
+        self.ExternalAddr = params.get("ExternalAddr")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class FileAction(AbstractModel):
@@ -6024,13 +6265,19 @@ class RestoreInstanceRequest(AbstractModel):
         :type TargetInstanceId: str
         :param RenameRestore: Restore the databases listed in `ReNameRestoreDatabase` and rename them after restoration. If this parameter is left empty, all databases will be restored and renamed in the default format.
         :type RenameRestore: list of RenameRestoreDatabase
-        :param GroupId: Group ID of unarchived backup files grouped by backup task. This parameter is returned by the [DescribeBackups](https://intl.cloud.tencent.com/document/product/238/19943?from_cn_redirect=1) API.
+        :param Type: Rollback type. Valid values: `0` (overwriting), `1` (renaming).
+        :type Type: int
+        :param DBList: Database to be overwritten, which is required when overwriting a rollback database.
+        :type DBList: list of str
+        :param GroupId: Group ID of unarchived backup files grouped by backup task
         :type GroupId: str
         """
         self.InstanceId = None
         self.BackupId = None
         self.TargetInstanceId = None
         self.RenameRestore = None
+        self.Type = None
+        self.DBList = None
         self.GroupId = None
 
 
@@ -6044,6 +6291,8 @@ class RestoreInstanceRequest(AbstractModel):
                 obj = RenameRestoreDatabase()
                 obj._deserialize(item)
                 self.RenameRestore.append(obj)
+        self.Type = params.get("Type")
+        self.DBList = params.get("DBList")
         self.GroupId = params.get("GroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -6455,6 +6704,56 @@ class StartIncrementalMigrationResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class StartInstanceXEventRequest(AbstractModel):
+    """StartInstanceXEvent request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param EventConfig: Whether to start or stop an extended event
+        :type EventConfig: list of EventConfig
+        """
+        self.InstanceId = None
+        self.EventConfig = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("EventConfig") is not None:
+            self.EventConfig = []
+            for item in params.get("EventConfig"):
+                obj = EventConfig()
+                obj._deserialize(item)
+                self.EventConfig.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartInstanceXEventResponse(AbstractModel):
+    """StartInstanceXEvent response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 

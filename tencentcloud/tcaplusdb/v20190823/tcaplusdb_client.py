@@ -187,6 +187,29 @@ class TcaplusdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteBackupRecords(self, request):
+        """This API is used to delete a manual backup.
+
+        :param request: Request instance for DeleteBackupRecords.
+        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DeleteBackupRecordsRequest`
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.DeleteBackupRecordsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteBackupRecords", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteBackupRecordsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteCluster(self, request):
         """This API is used to delete a TcaplusDB cluster, which will succeed only after all resources (including table groups and tables) in the cluster are released.
 
@@ -339,6 +362,33 @@ class TcaplusdbClient(AbstractClient):
             body = self.call("DeleteTables", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteTablesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBackupRecords(self, request):
+        """This API is used to query backup records.
+
+        When querying the cluster level, set `TableGroupId` to `-1` and `TableName` to `-1`.
+        When querying the cluster and table group levels, set `TableName` to `-1`.
+        When querying the cluster, table group, and table levels, both `TableGroupId` and `TableName` cannot be set to `-1`.
+
+        :param request: Request instance for DescribeBackupRecords.
+        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DescribeBackupRecordsRequest`
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.DescribeBackupRecordsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBackupRecords", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBackupRecordsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1052,6 +1102,29 @@ class TcaplusdbClient(AbstractClient):
             body = self.call("RollbackTables", params, headers=headers)
             response = json.loads(body)
             model = models.RollbackTablesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SetBackupExpireRule(self, request):
+        """This API is used to add/delete/modify backup expiration policy. `ClusterId` must be a specific cluster ID (appid).
+
+        :param request: Request instance for SetBackupExpireRule.
+        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.SetBackupExpireRuleRequest`
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.SetBackupExpireRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SetBackupExpireRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.SetBackupExpireRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

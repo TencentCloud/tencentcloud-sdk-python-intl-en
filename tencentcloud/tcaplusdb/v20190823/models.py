@@ -99,6 +99,115 @@ class ApplyStatus(AbstractModel):
         
 
 
+class BackupExpireRuleInfo(AbstractModel):
+    """The details of backup retention policy
+    Policy for cluster: `ClusterId` = cluster ID, TableGroupId·= `-1`, `TableName`= `-1`.
+    Policy for cluster + table group: `ClusterId` = cluster ID, `TableGroupId` = table group ID, `TableName` = `-1`.
+    Policy for cluster + table group + table: ClusterId` = cluster ID, `TableGroupId` = table group ID, `TableName` = table name.
+
+    For `FileTag`, valid values: `0` (txh engine file), `1` (ulog file). When `FileTag` is set to `1`, `TableGroupId` = `-1` and `TableName` = `-1` remain unchanged.
+    `ExpireDay` is an integer number falling in the range of 1 (inclusive) to 999 (exclusive).
+    For `OperType, valid values: `0` (Add), `1` (Delete), `2` (Modify). The values `0` and `2` can be mixed, and the backend implementation is compatible.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TableGroupId: The ID of the table group where the table resides
+        :type TableGroupId: str
+        :param TableName: Table name
+        :type TableName: str
+        :param FileTag: file tag, which is described above.
+        :type FileTag: int
+        :param ExpireDay: Retention days, which is described above.
+        :type ExpireDay: int
+        :param OperType: Operation type, which is described above.
+        :type OperType: int
+        """
+        self.TableGroupId = None
+        self.TableName = None
+        self.FileTag = None
+        self.ExpireDay = None
+        self.OperType = None
+
+
+    def _deserialize(self, params):
+        self.TableGroupId = params.get("TableGroupId")
+        self.TableName = params.get("TableName")
+        self.FileTag = params.get("FileTag")
+        self.ExpireDay = params.get("ExpireDay")
+        self.OperType = params.get("OperType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BackupRecords(AbstractModel):
+    """Backup records
+    When it is used as an output parameter, each field will be filled.
+    When it is used as an input parameter, each field will be filled back into the structure as it is. This API can only be called if `FIleTag` = `OSDATA`.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: Table group ID
+        :type ZoneId: int
+        :param TableName: Table name
+        :type TableName: str
+        :param BackupType: Backup source
+        :type BackupType: str
+        :param FileTag: File tag: TCAPLUS_FULL or OSDATA
+        :type FileTag: str
+        :param ShardCount: Number of shards
+        :type ShardCount: int
+        :param BackupBatchTime: Backup batch date
+        :type BackupBatchTime: str
+        :param BackupFileSize: Total size of backup files
+        :type BackupFileSize: int
+        :param BackupSuccRate: Backup success rate
+        :type BackupSuccRate: str
+        :param BackupExpireTime: Backup file expiration time
+        :type BackupExpireTime: str
+        :param AppId: Business ID
+        :type AppId: int
+        """
+        self.ZoneId = None
+        self.TableName = None
+        self.BackupType = None
+        self.FileTag = None
+        self.ShardCount = None
+        self.BackupBatchTime = None
+        self.BackupFileSize = None
+        self.BackupSuccRate = None
+        self.BackupExpireTime = None
+        self.AppId = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.TableName = params.get("TableName")
+        self.BackupType = params.get("BackupType")
+        self.FileTag = params.get("FileTag")
+        self.ShardCount = params.get("ShardCount")
+        self.BackupBatchTime = params.get("BackupBatchTime")
+        self.BackupFileSize = params.get("BackupFileSize")
+        self.BackupSuccRate = params.get("BackupSuccRate")
+        self.BackupExpireTime = params.get("BackupExpireTime")
+        self.AppId = params.get("AppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClearTablesRequest(AbstractModel):
     """ClearTables request structure.
 
@@ -842,6 +951,61 @@ class CreateTablesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteBackupRecordsRequest(AbstractModel):
+    """DeleteBackupRecords request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID of the backup records to be deleted
+        :type ClusterId: str
+        :param BackupRecords: Details of the backup records to be deleted
+        :type BackupRecords: list of BackupRecords
+        """
+        self.ClusterId = None
+        self.BackupRecords = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("BackupRecords") is not None:
+            self.BackupRecords = []
+            for item in params.get("BackupRecords"):
+                obj = BackupRecords()
+                obj._deserialize(item)
+                self.BackupRecords.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteBackupRecordsResponse(AbstractModel):
+    """DeleteBackupRecords response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: `TaskId` is in the format of `AppInstanceId-taskId`, which is used to identify tasks of different clusters.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TaskId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteClusterRequest(AbstractModel):
     """DeleteCluster request structure.
 
@@ -1248,6 +1412,76 @@ class DeleteTablesResponse(AbstractModel):
                 obj = TableResultNew()
                 obj._deserialize(item)
                 self.TableResults.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBackupRecordsRequest(AbstractModel):
+    """DescribeBackupRecords request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID, which is used to query a specified cluster
+        :type ClusterId: str
+        :param Limit: Number of results per page
+        :type Limit: int
+        :param Offset: Page offset
+        :type Offset: int
+        :param TableGroupId: Table group ID used as a filter condition
+        :type TableGroupId: str
+        :param TableName: Table name used as a filter condition
+        :type TableName: str
+        """
+        self.ClusterId = None
+        self.Limit = None
+        self.Offset = None
+        self.TableGroupId = None
+        self.TableName = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.TableGroupId = params.get("TableGroupId")
+        self.TableName = params.get("TableName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackupRecordsResponse(AbstractModel):
+    """DescribeBackupRecords response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BackupRecords: Backup record details
+        :type BackupRecords: list of BackupRecords
+        :param TotalCount: Number of returned entries
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.BackupRecords = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("BackupRecords") is not None:
+            self.BackupRecords = []
+            for item in params.get("BackupRecords"):
+                obj = BackupRecords()
+                obj._deserialize(item)
+                self.BackupRecords.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -4045,6 +4279,61 @@ class ServerMachineInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class SetBackupExpireRuleRequest(AbstractModel):
+    """SetBackupExpireRule request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: The ID of the cluster where the tables reside
+        :type ClusterId: str
+        :param BackupExpireRules: Array of retention policies
+        :type BackupExpireRules: list of BackupExpireRuleInfo
+        """
+        self.ClusterId = None
+        self.BackupExpireRules = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("BackupExpireRules") is not None:
+            self.BackupExpireRules = []
+            for item in params.get("BackupExpireRules"):
+                obj = BackupExpireRuleInfo()
+                obj._deserialize(item)
+                self.BackupExpireRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetBackupExpireRuleResponse(AbstractModel):
+    """SetBackupExpireRule response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: `TaskId` is in the format of `AppInstanceId-taskId`, which is used to identify tasks of different clusters.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TaskId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
 
 
 class SetTableDataFlowRequest(AbstractModel):

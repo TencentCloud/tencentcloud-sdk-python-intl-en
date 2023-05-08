@@ -183,6 +183,46 @@ class AnalysisItems(AbstractModel):
         
 
 
+class BackupDownloadRestriction(AbstractModel):
+    """Restriction information for downloading a backup
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RestrictionType: Type of the network restrictions for downloading backup files. Valid values: `NONE` (backups can be downloaded over both private and public networks), `INTRANET` (backups can only be downloaded over the private network), `CUSTOMIZE` (backups can be downloaded over specified VPCs or at specified IPs).
+        :type RestrictionType: str
+        :param VpcRestrictionEffect: Whether VPC is allowed. Valid values: `ALLOW` (allow), `DENY` (deny).
+        :type VpcRestrictionEffect: str
+        :param VpcIdSet: Whether it is allowed to download the VPC ID list of the backup files.
+        :type VpcIdSet: list of str
+        :param IpRestrictionEffect: Whether IP is allowed. Valid values: `ALLOW` (allow), `DENY` (deny).
+        :type IpRestrictionEffect: str
+        :param IpSet: Whether it is allowed to download IP list of the backup files.
+        :type IpSet: list of str
+        """
+        self.RestrictionType = None
+        self.VpcRestrictionEffect = None
+        self.VpcIdSet = None
+        self.IpRestrictionEffect = None
+        self.IpSet = None
+
+
+    def _deserialize(self, params):
+        self.RestrictionType = params.get("RestrictionType")
+        self.VpcRestrictionEffect = params.get("VpcRestrictionEffect")
+        self.VpcIdSet = params.get("VpcIdSet")
+        self.IpRestrictionEffect = params.get("IpRestrictionEffect")
+        self.IpSet = params.get("IpSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BackupPlan(AbstractModel):
     """Backup plan
 
@@ -2282,11 +2322,14 @@ class DescribeBackupDownloadURLRequest(AbstractModel):
         :type BackupId: str
         :param URLExpireTime: Validity period of a URL, which is 12 hours by default.
         :type URLExpireTime: int
+        :param BackupDownloadRestriction: Backup download restriction
+        :type BackupDownloadRestriction: :class:`tencentcloud.postgres.v20170312.models.BackupDownloadRestriction`
         """
         self.DBInstanceId = None
         self.BackupType = None
         self.BackupId = None
         self.URLExpireTime = None
+        self.BackupDownloadRestriction = None
 
 
     def _deserialize(self, params):
@@ -2294,6 +2337,9 @@ class DescribeBackupDownloadURLRequest(AbstractModel):
         self.BackupType = params.get("BackupType")
         self.BackupId = params.get("BackupId")
         self.URLExpireTime = params.get("URLExpireTime")
+        if params.get("BackupDownloadRestriction") is not None:
+            self.BackupDownloadRestriction = BackupDownloadRestriction()
+            self.BackupDownloadRestriction._deserialize(params.get("BackupDownloadRestriction"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
