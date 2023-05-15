@@ -365,6 +365,64 @@ class AutoscalingAdded(AbstractModel):
         
 
 
+class BackupStorageLocation(AbstractModel):
+    """Storage repository information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Backup repository name	
+        :type Name: str
+        :param StorageRegion: Repository region, such as `ap-guangzhou`	
+        :type StorageRegion: str
+        :param Provider: The provider of storage service. It defaults to Tencent Cloud. 	
+Note: This parameter may return null, indicating that no valid values can be obtained.
+        :type Provider: str
+        :param Bucket: COS bucket name. For COS storage type, it must start with the prefix `tke-backup`. 	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Bucket: str
+        :param Path: COS bucket path 
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Path: str
+        :param State: Storage repository status 
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type State: str
+        :param Message: Status information 	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Message: str
+        :param LastValidationTime: Last checked time 	
+Note: This parameter may return null, indicating that no valid values can be obtained.
+        :type LastValidationTime: str
+        """
+        self.Name = None
+        self.StorageRegion = None
+        self.Provider = None
+        self.Bucket = None
+        self.Path = None
+        self.State = None
+        self.Message = None
+        self.LastValidationTime = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.StorageRegion = params.get("StorageRegion")
+        self.Provider = params.get("Provider")
+        self.Bucket = params.get("Bucket")
+        self.Path = params.get("Path")
+        self.State = params.get("State")
+        self.Message = params.get("Message")
+        self.LastValidationTime = params.get("LastValidationTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CUDNN(AbstractModel):
     """cuDNN version information
 
@@ -1526,6 +1584,63 @@ class CommonName(AbstractModel):
         
 
 
+class CreateBackupStorageLocationRequest(AbstractModel):
+    """CreateBackupStorageLocation request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StorageRegion: Repository region, such as `ap-guangzhou`
+        :type StorageRegion: str
+        :param Bucket: COS bucket name. For COS storage type, it must start with the prefix `tke-backup`.
+        :type Bucket: str
+        :param Name: Backup repository name
+        :type Name: str
+        :param Provider: The provider of storage service. It defaults to Tencent Cloud.
+        :type Provider: str
+        :param Path: COS bucket path
+        :type Path: str
+        """
+        self.StorageRegion = None
+        self.Bucket = None
+        self.Name = None
+        self.Provider = None
+        self.Path = None
+
+
+    def _deserialize(self, params):
+        self.StorageRegion = params.get("StorageRegion")
+        self.Bucket = params.get("Bucket")
+        self.Name = params.get("Name")
+        self.Provider = params.get("Provider")
+        self.Path = params.get("Path")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBackupStorageLocationResponse(AbstractModel):
+    """CreateBackupStorageLocation response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateClusterEndpointRequest(AbstractModel):
     """CreateClusterEndpoint request structure.
 
@@ -1543,7 +1658,12 @@ class CreateClusterEndpointRequest(AbstractModel):
         :type Domain: str
         :param SecurityGroup: The security group in use, which must be passed in when public access is enabled.
         :type SecurityGroup: str
-        :param ExtensiveParameters: The LB parameter. Required only for public network access.
+        :param ExtensiveParameters: Parameters used to create a CLB in JSON format. It’s only required for public network access. Example: `{"InternetAccessible":{"InternetChargeType":"TRAFFIC_POSTPAID_BY_HOUR","InternetMaxBandwidthOut":"200"},"VipIsp":"","BandwidthPackageId":""}`. 
+Parameters: 
+`InternetAccessible.InternetChargeType`: `TRAFFIC_POSTPAID_BY_HOUR`, `BANDWIDTH_POSTPAID_BY_HOUR`, `InternetAccessible.BANDWIDTH_PACKAGE` (Bill by the bandwidth package) 
+`InternetMaxBandwidthOut`: Outbound bandwidth cap in Mbps. Range: 0 - 2048. It defaults to 10. 
+`VipIsp`: The VIP provider. Values: `CMCC` (China Mobile), `CTCC` (China Telecom), `CUCC` (China Unicom). If this parameter is not specified, BGP will be used by default. ISPs supported in a region can be queried with the `DescribeSingleIsp` API. If an ISP is specified, only bill-by-bandwidth-package (BANDWIDTH_PACKAGE) can be used as the network billing mode. 
+`BandwidthPackageId`: Bandwidth package ID. If this parameter is specified, the network billing mode (`InternetAccessible.InternetChargeType`) will only support bill-by-bandwidth package (`BANDWIDTH_PACKAGE`).
         :type ExtensiveParameters: str
         """
         self.ClusterId = None
@@ -2568,6 +2688,47 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         
 
 
+class DeleteBackupStorageLocationRequest(AbstractModel):
+    """DeleteBackupStorageLocation request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Backup repository name
+        :type Name: str
+        """
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteBackupStorageLocationResponse(AbstractModel):
+    """DeleteBackupStorageLocation response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteClusterAsGroupsRequest(AbstractModel):
     """DeleteClusterAsGroups request structure.
 
@@ -3392,6 +3553,57 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self.Versions = params.get("Versions")
         self.EdgeVersionLatest = params.get("EdgeVersionLatest")
         self.EdgeVersionCurrent = params.get("EdgeVersionCurrent")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBackupStorageLocationsRequest(AbstractModel):
+    """DescribeBackupStorageLocations request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Names: Names of repositories. If it’s not specified, all storage repository names in the current region are returned.
+        :type Names: list of str
+        """
+        self.Names = None
+
+
+    def _deserialize(self, params):
+        self.Names = params.get("Names")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackupStorageLocationsResponse(AbstractModel):
+    """DescribeBackupStorageLocations response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BackupStorageLocationSet: Detailed information of the backup repository 
+Note: This parameter may return null, indicating that no valid values can be obtained.
+        :type BackupStorageLocationSet: list of BackupStorageLocation
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.BackupStorageLocationSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("BackupStorageLocationSet") is not None:
+            self.BackupStorageLocationSet = []
+            for item in params.get("BackupStorageLocationSet"):
+                obj = BackupStorageLocation()
+                obj._deserialize(item)
+                self.BackupStorageLocationSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -6282,6 +6494,11 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         :param ChargeType: Cluster billing mode. Valid values: `POSTPAID_BY_HOUR`, `PREPAID`
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type ChargeType: str
+        :param EdgeVersion: Edge cluster component version 
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EdgeVersion: str
+        :param TagSpecification: 
+        :type TagSpecification: :class:`tencentcloud.tke.v20180525.models.TagSpecification`
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -6298,6 +6515,8 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.Level = None
         self.AutoUpgradeClusterLevel = None
         self.ChargeType = None
+        self.EdgeVersion = None
+        self.TagSpecification = None
 
 
     def _deserialize(self, params):
@@ -6318,6 +6537,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self.Level = params.get("Level")
         self.AutoUpgradeClusterLevel = params.get("AutoUpgradeClusterLevel")
         self.ChargeType = params.get("ChargeType")
+        self.EdgeVersion = params.get("EdgeVersion")
+        if params.get("TagSpecification") is not None:
+            self.TagSpecification = TagSpecification()
+            self.TagSpecification._deserialize(params.get("TagSpecification"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6517,12 +6740,15 @@ class EnableVpcCniNetworkTypeRequest(AbstractModel):
         :type Subnets: list of str
         :param ExpiredSeconds: Specifies when to release the IP after the Pod termination in static IP mode. It must be longer than 300 seconds. If this parameter is left empty, the IP address will never be released.
         :type ExpiredSeconds: int
+        :param SkipAddingNonMasqueradeCIDRs: Whether to skip adding the VPC IP range to `NonMasqueradeCIDRs` field of `ip-masq-agent-config`. Default value: `false`
+        :type SkipAddingNonMasqueradeCIDRs: bool
         """
         self.ClusterId = None
         self.VpcCniType = None
         self.EnableStaticIp = None
         self.Subnets = None
         self.ExpiredSeconds = None
+        self.SkipAddingNonMasqueradeCIDRs = None
 
 
     def _deserialize(self, params):
@@ -6531,6 +6757,7 @@ class EnableVpcCniNetworkTypeRequest(AbstractModel):
         self.EnableStaticIp = params.get("EnableStaticIp")
         self.Subnets = params.get("Subnets")
         self.ExpiredSeconds = params.get("ExpiredSeconds")
+        self.SkipAddingNonMasqueradeCIDRs = params.get("SkipAddingNonMasqueradeCIDRs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9569,6 +9796,56 @@ class UninstallEdgeLogAgentResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class UpdateClusterKubeconfigRequest(AbstractModel):
+    """UpdateClusterKubeconfig request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: The cluster ID.
+        :type ClusterId: str
+        :param SubAccounts: List of sub-account UINs. If it’s not specified, the SubUin used to invoke this API is used.
+        :type SubAccounts: list of str
+        """
+        self.ClusterId = None
+        self.SubAccounts = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.SubAccounts = params.get("SubAccounts")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateClusterKubeconfigResponse(AbstractModel):
+    """UpdateClusterKubeconfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UpdatedSubAccounts: List of updated sub-account UINs 
+Note: This parameter may return null, indicating that no valid values can be obtained.
+        :type UpdatedSubAccounts: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.UpdatedSubAccounts = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.UpdatedSubAccounts = params.get("UpdatedSubAccounts")
+        self.RequestId = params.get("RequestId")
+
+
 class UpdateClusterVersionRequest(AbstractModel):
     """UpdateClusterVersion request structure.
 
@@ -9981,14 +10258,23 @@ class VirtualNodeSpec(AbstractModel):
         :type DisplayName: str
         :param SubnetId: Subnet ID
         :type SubnetId: str
+        :param Tags: Tencent Cloud tags
+        :type Tags: list of Tag
         """
         self.DisplayName = None
         self.SubnetId = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
         self.DisplayName = params.get("DisplayName")
         self.SubnetId = params.get("SubnetId")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

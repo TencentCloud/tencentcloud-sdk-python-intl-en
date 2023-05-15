@@ -164,6 +164,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateBackupStorageLocation(self, request):
+        """This API is used to create a backup repository. You can specify the storage type (such as COS), the bucket region and the name. Up to 100 repositories can be created. Note that the settings of this API apply globally. You only need to create one backup repository, and back up TKE clusters in different regions in it.
+
+        :param request: Request instance for CreateBackupStorageLocation.
+        :type request: :class:`tencentcloud.tke.v20180525.models.CreateBackupStorageLocationRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.CreateBackupStorageLocationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateBackupStorageLocation", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateBackupStorageLocationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateCluster(self, request):
         """This API is used to create a cluster.
 
@@ -454,6 +477,29 @@ class TkeClient(AbstractClient):
             body = self.call("CreateTKEEdgeCluster", params, headers=headers)
             response = json.loads(body)
             model = models.CreateTKEEdgeClusterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteBackupStorageLocation(self, request):
+        """This API is used to delete a backup repository.
+
+        :param request: Request instance for DeleteBackupStorageLocation.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DeleteBackupStorageLocationRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DeleteBackupStorageLocationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteBackupStorageLocation", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteBackupStorageLocationResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -845,6 +891,29 @@ class TkeClient(AbstractClient):
             body = self.call("DescribeAvailableTKEEdgeVersion", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAvailableTKEEdgeVersionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBackupStorageLocations(self, request):
+        """This API is used to query backup repositories.
+
+        :param request: Request instance for DescribeBackupStorageLocations.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeBackupStorageLocationsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeBackupStorageLocationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBackupStorageLocations", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBackupStorageLocationsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2248,6 +2317,29 @@ class TkeClient(AbstractClient):
             body = self.call("UninstallEdgeLogAgent", params, headers=headers)
             response = json.loads(body)
             model = models.UninstallEdgeLogAgentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateClusterKubeconfig(self, request):
+        """This API is used to update the Kubeconfig information of a cluster.
+
+        :param request: Request instance for UpdateClusterKubeconfig.
+        :type request: :class:`tencentcloud.tke.v20180525.models.UpdateClusterKubeconfigRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.UpdateClusterKubeconfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateClusterKubeconfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateClusterKubeconfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

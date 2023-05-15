@@ -32,13 +32,13 @@ class TrtcClient(AbstractClient):
 
         You can use this API to perform the following operations:
         * Specify the anchors whose streams you want or do not want to record by using the `RecordParams` parameter
-        * Specify the storage service you want to save recording files to by using the `StorageParams` parameter. Currently, you can only save recording files to VOD (`CloudVod`).
+        * Specify the storage service you want to save recording files to by using the `StorageParams` parameter. Currently, you can save recording files to Tencent Cloud VOD or COS.
         * Specify transcoding settings for mixed-stream recording, including video resolution, video bitrate, frame rate, and audio quality, by using `MixTranscodeParams`
         * Specify the layout of different videos in mixed-stream recording mode or select an auto-arranged layout template
 
         Key concepts:
-        * Single-stream recording: Record the audio and video of each subscribed user (`UserId`) in a room and save the recording files to VOD.
-        * Mixed-stream recording: Mix the audios and videos of subscribed users (`UserId`) in a room, record the mixed stream, and save the recording files to VOD. After a recording task ends, you can go to the VOD console (https://console.cloud.tencent.com/vod/media) to view the recording files.
+        * Single-stream recording: Record the audio and video of each subscribed user (`UserId`) in a room and save the recording files to the storage you specify.
+        Mixed-stream recording: Mix the audios and videos of subscribed users (`UserId`) in a room, record the mixed stream, and save the recording files to the storage you specify. After a recording task ends, you can go to the VOD console (https://console.tencentcloud.com/vod/media) or [COS console](https://console.cloud.tencent.com/cos/bucket) to view the recording files.
 
         :param request: Request instance for CreateCloudRecording.
         :type request: :class:`tencentcloud.trtc.v20190722.models.CreateCloudRecordingRequest`
@@ -74,6 +74,32 @@ class TrtcClient(AbstractClient):
             body = self.call("DeleteCloudRecording", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteCloudRecordingResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCallDetailInfo(self, request):
+        """This API (the old `DescribeCallDetail`) is used to query the user list and call quality data of a specified time range in the last 14 days. If `DataType` is not null, the data of up to six users during a period of up to one hour can be queried (the period can start and end on different days). If `DataType` is null, the data of up to 100 users can be returned per page (the value of `PageSize` cannot exceed 100). Six users are queried by default. The period queried cannot exceed four hours. This API is used to query call quality and is not recommended for billing purposes.
+        **Note**:
+        1. You can use this API to query historical data or for reconciliation purposes, but we do not recommend you use it for crucial business logic.
+        2. If you need to call this API, please upgrade the monitoring dashboard version to "Standard". For more details, please refer to: https://www.tencentcloud.com/document/product/647/54481.
+
+        :param request: Request instance for DescribeCallDetailInfo.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeCallDetailInfoRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeCallDetailInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCallDetailInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCallDetailInfoResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -191,6 +217,55 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeRoomInfo(self, request):
+        """This API (the old `DescribeRoomInformation`) is used to query the rooms of an application (`SDKAppID`) in the last 14 days. Up to 100 records can be returned per call (10 are returned by default).
+        **Note**:
+        1. You can use this API to query historical data or for reconciliation purposes, but we do not recommend you use it for crucial business logic.
+        2. If you need to call this API, please upgrade the monitoring dashboard version to "Standard". For more details, please refer to: https://www.tencentcloud.com/document/product/647/54481.
+
+        :param request: Request instance for DescribeRoomInfo.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeRoomInfoRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeRoomInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRoomInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRoomInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeScaleInfo(self, request):
+        """This API (the old `DescribeHistoryScale`) is used to query the daily number of rooms and users of an application (`SDKAppID`) in the last 14 days. Data for the current day cannot be queried.
+
+        :param request: Request instance for DescribeScaleInfo.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeScaleInfoRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeScaleInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeScaleInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeScaleInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTrtcRoomUsage(self, request):
         """This API is used to query usage data grouped by room.
         - The queried period cannot exceed 24 hours. If the period spans two different days, the data returned may not be accurate due to a delay in data collection. You can make multiple calls to query the usage on different days.
@@ -236,6 +311,85 @@ class TrtcClient(AbstractClient):
             body = self.call("DescribeTrtcUsage", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeTrtcUsageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeUnusualEvent(self, request):
+        """This API (the old `DescribeAbnormalEvent`) is used to query up to 20 random abnormal user experiences of an application (`SDKAppID`) in the last 14 days. The start and end time can be on two different days, but they cannot be more than one hour apart.
+        For details about the error events, see https://intl.cloud.tencent.com/document/product/647/44916?from_cn_redirect=1
+        **Note**:
+        1. You can use this API to query historical data or for reconciliation purposes, but we do not recommend you use it for crucial business logic.
+        2. If you need to call this API, please upgrade the monitoring dashboard version to "Standard". For more details, please refer to: https://www.tencentcloud.com/document/product/647/54481.
+
+        :param request: Request instance for DescribeUnusualEvent.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeUnusualEventRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeUnusualEventResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUnusualEvent", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUnusualEventResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeUserEvent(self, request):
+        """This API (the old `DescribeDetailEvent`) is used to query the events of a call in the last 14 days, including user entry and exit, turning the camera on/off, etc.
+        **Note**:
+        1. You can use this API to query historical data or for reconciliation purposes, but we do not recommend you use it for crucial business logic.
+        2. If you need to call this API, please upgrade the monitoring dashboard version to "Standard". For more details, please refer to: https://www.tencentcloud.com/document/product/647/54481.
+
+        :param request: Request instance for DescribeUserEvent.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeUserEventRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeUserEventResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserEvent", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUserEventResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeUserInfo(self, request):
+        """This API (the old `DescribeUserInformation`) is used to query the user list of a specified time range (up to four hours) in the last 14 days. The data of up to 100 users can be returned per page (six are returned by default).
+        **Note**:
+        1. You can use this API to query historical data or for reconciliation purposes, but we do not recommend you use it for crucial business logic.
+        2. If you need to call this API, please upgrade the monitoring dashboard version to "Standard". For more details, please refer to: https://www.tencentcloud.com/document/product/647/54481.
+
+        :param request: Request instance for DescribeUserInfo.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeUserInfoRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeUserInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUserInfoResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -408,7 +562,7 @@ class TrtcClient(AbstractClient):
 
     def StartPublishCdnStream(self, request):
         """This API is used to mix streams and relay the mixed stream to CDNs. You can use this API to do the following:
-        1. Publish (also known as “relay”) the audio/video stream of one anchor to CDNs. For details, see example 2 (starting a task to relay the audio and video of a stream) and example 3 (starting a task to relay only the audio of a stream).
+        1. Publish (also known as "relay") the audio/video stream of one anchor to CDNs. For details, see example 2 (starting a task to relay the audio and video of a stream) and example 3 (starting a task to relay only the audio of a stream).
         2. Mix the streams of multiple anchors in a room or in different rooms and publish the mixed stream to CDNs. You can use `AudioParams.SubscribeAudioList` to specify the users whose audios are mixed, and use `VideoParams.LayoutParams` to specify the layout of the anchors’ videos. For details, see example 1 (mixing streams and publishing the mixed stream to a CDN).
         3. Mix multiple streams in a room according to a template and publish the mixed stream to CDNs. The TRTC backend will detect the change of anchors in the room and adjust the video layout automatically according to the stream mixing template. The following template types are supported:
              - Floating: The entire screen is covered by the video of the first user who enters the room, and the videos of other users are displayed as small windows in rows in the bottom-left corner in room entry sequence. The screen allows up to 4 rows of 4 small videos, which float over the large video. Up to 1 large and 15 small videos can be displayed.
@@ -425,7 +579,7 @@ class TrtcClient(AbstractClient):
         Others:
         1. You need to first call `StartPublishCdnStream` to start a relay task and get the task ID before you can use the `UpdatePublishCdnStream` API to modify the task and `StopPublishCdnStream` to stop the task.
         2. To ensure the stability of relaying, you cannot switch between relaying audio only, relaying audio and video, and relaying video only for the same task.
-        3. To ensure the stability of relaying, you cannot change the video codec, audio codec, audio sample rate, audio bitrate, or sound channels using the `UpdatePublishCdnStream` API. We recommend you pass in all the other parameters.
+        3. To ensure the stability of relaying, you cannot change the video codec, audio codec, audio sample rate, audio bitrate, or sound channels using the `UpdatePublishCdnStream` API. We recommend you pass in all the other parameters when calling `UpdatePublishCdnStream`. If you only want to enable/disable transcoding, make sure you pass in all the other parameters.
         4. When you relay a single stream, specify both `AudioParams` and `VideoParams` to publish both audio and video, and specify only `AudioParams` to publish audio only. You cannot switch between the two modes during the relaying process. For `VideoParams`, set `Width`, `Height`, `Fps`, `Bitrate`, and `Gop` according to the actual settings used for publishing.
         5. The `SequenceNumber` parameter is required when you call `UpdatePublishCdnStream` to change the relaying parameters. It ensures that multiple requests for the same relaying task are in the correct order. The value of `SequenceNumber` increases each time a new request is made for the same task. If `InternalError` is returned, try again using the same `SequenceNumber`. You don’t need to handle the `FailedOperation.OutdateRequest` error.
         6. You can create a relay task before anchors enter a room, in which case you need to manually call `StopPublishCdnStream` to stop the task. If you don’t, after all the users whose streams are mixed leave the room, the TRTC backend will wait for the timeout period (`AgentParams.MaxIdleTime`) to elapse before stopping the relaying task.

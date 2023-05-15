@@ -53,11 +53,23 @@ INTERNALERROR_CRINTERNALERROR = 'InternalError.CRInternalError'
 # An error occurred while querying the database.
 INTERNALERROR_DBERROR = 'InternalError.DBError'
 
+# An error occurred during an ES query.
+INTERNALERROR_ESQUERYERROR = 'InternalError.EsQueryError'
+
 # Failed to query the room.
 INTERNALERROR_GETROOMCACHEIPERROR = 'InternalError.GetRoomCacheIpError'
 
 # Failed to get room information.
 INTERNALERROR_GETROOMFROMCACHEERROR = 'InternalError.GetRoomFromCacheError'
+
+# Failed to parse the HTTP request.
+INTERNALERROR_HTTPPARASEFALIED = 'InternalError.HttpParaseFalied'
+
+# API error.
+INTERNALERROR_INTERFACEERR = 'InternalError.InterfaceErr'
+
+# Unsupported method.
+INTERNALERROR_METHODERR = 'InternalError.MethodErr'
 
 # The user is not in the room.
 INTERNALERROR_USERNOTEXIST = 'InternalError.UserNotExist'
@@ -65,8 +77,26 @@ INTERNALERROR_USERNOTEXIST = 'InternalError.UserNotExist'
 # Parameter error.
 INVALIDPARAMETER = 'InvalidParameter'
 
+# Failed to parse body parameters.
+INVALIDPARAMETER_BODYPARAMSERROR = 'InvalidParameter.BodyParamsError'
+
+# Invalid `EncodeParams`.
+INVALIDPARAMETER_ENCODEPARAMS = 'InvalidParameter.EncodeParams'
+
+# Invalid `EndTs`.
+INVALIDPARAMETER_ENDTS = 'InvalidParameter.EndTs'
+
 # Parameter value is out of range.
 INVALIDPARAMETER_OUTOFRANGE = 'InvalidParameter.OutOfRange'
+
+# Invalid `PageNumber`.
+INVALIDPARAMETER_PAGENUMBER = 'InvalidParameter.PageNumber'
+
+# Invalid `PageSize`.
+INVALIDPARAMETER_PAGESIZE = 'InvalidParameter.PageSize'
+
+# The value of `PageSize` exceeds 100.
+INVALIDPARAMETER_PAGESIZEOVERSIZE = 'InvalidParameter.PageSizeOversize'
 
 # The query period exceeds the limit.
 INVALIDPARAMETER_QUERYSCALEOVERSIZE = 'InvalidParameter.QueryScaleOversize'
@@ -77,11 +107,29 @@ INVALIDPARAMETER_ROOMID = 'InvalidParameter.RoomId'
 # `SdkAppId` is incorrect.
 INVALIDPARAMETER_SDKAPPID = 'InvalidParameter.SdkAppId'
 
+# The start time for query exceeded the limit.
+INVALIDPARAMETER_STARTTIMEEXPIRE = 'InvalidParameter.StartTimeExpire'
+
+# The query start time exceeds the range allowed by the current dashboard edition. For details, see https://intl.cloud.tencent.com/document/product/647/81331?from_cn_redirect=1
+INVALIDPARAMETER_STARTTIMEOVERSIZE = 'InvalidParameter.StartTimeOversize'
+
+# Invalid `StartTs`.
+INVALIDPARAMETER_STARTTS = 'InvalidParameter.StartTs'
+
+# The start time for query exceeded the limit.
+INVALIDPARAMETER_STARTTSOVERSIZE = 'InvalidParameter.StartTsOversize'
+
+# Failed to parse URL parameters.
+INVALIDPARAMETER_URLPARAMSERROR = 'InvalidParameter.UrlParamsError'
+
 # Invalid `UserId`.
 INVALIDPARAMETER_USERID = 'InvalidParameter.UserId'
 
 # `UserIds` is incorrect.
 INVALIDPARAMETER_USERIDS = 'InvalidParameter.UserIds'
+
+# The number of users exceeds 6.
+INVALIDPARAMETER_USERIDSMORETHANSIX = 'InvalidParameter.UserIdsMorethanSix'
 
 # Invalid RoomId.
 INVALIDPARAMETERVALUE_ROOMID = 'InvalidParameterValue.RoomId'
@@ -101,6 +149,15 @@ MISSINGPARAMETER_BUCKET = 'MissingParameter.Bucket'
 # `CloudStorage` parameter missing.
 MISSINGPARAMETER_CLOUDSTORAGE = 'MissingParameter.CloudStorage'
 
+# `CommId` is missing.
+MISSINGPARAMETER_COMMID = 'MissingParameter.CommId'
+
+# `SdkAppId` or `CommID` missing.
+MISSINGPARAMETER_COMMIDORSDKAPPID = 'MissingParameter.CommIdOrSdkAppId'
+
+# `endTS_s` is missing.
+MISSINGPARAMETER_ENDTS = 'MissingParameter.EndTs'
+
 # `RecordMode` parameter missing.
 MISSINGPARAMETER_RECORDMODE = 'MissingParameter.RecordMode'
 
@@ -113,11 +170,17 @@ MISSINGPARAMETER_REGION = 'MissingParameter.Region'
 # `RoomId` is missing.
 MISSINGPARAMETER_ROOMID = 'MissingParameter.RoomId'
 
+# `RoomNum` is missing.
+MISSINGPARAMETER_ROOMNUM = 'MissingParameter.RoomNum'
+
 # `SdkAppId` is missing.
 MISSINGPARAMETER_SDKAPPID = 'MissingParameter.SdkAppId'
 
 # `SecretKey` parameter missing.
 MISSINGPARAMETER_SECRETKEY = 'MissingParameter.SecretKey'
+
+# `startTS_s` is missing.
+MISSINGPARAMETER_STARTTS = 'MissingParameter.StartTs'
 
 # `StorageParams` parameter missing.
 MISSINGPARAMETER_STORAGEPARAMS = 'MissingParameter.StorageParams'

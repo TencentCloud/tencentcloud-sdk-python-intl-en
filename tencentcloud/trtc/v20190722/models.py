@@ -18,6 +18,80 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AbnormalEvent(AbstractModel):
+    """The information of an error event (the possible cause of an abnormal user experience).
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AbnormalEventId: The error event ID. For details, see https://intl.cloud.tencent.com/document/product/647/44916?from_cn_redirect=1
+        :type AbnormalEventId: int
+        :param PeerId: The remote user ID. If this parameter is empty, it indicates that the error event is not associated with a remote user.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PeerId: str
+        """
+        self.AbnormalEventId = None
+        self.PeerId = None
+
+
+    def _deserialize(self, params):
+        self.AbnormalEventId = params.get("AbnormalEventId")
+        self.PeerId = params.get("PeerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AbnormalExperience(AbstractModel):
+    """The information of an abnormal user experience and the possible causes.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserId: The user ID.
+        :type UserId: str
+        :param ExperienceId: The abnormal experience ID.
+        :type ExperienceId: int
+        :param RoomId: The room ID (string).
+        :type RoomId: str
+        :param AbnormalEventList: The possible error events.
+        :type AbnormalEventList: list of AbnormalEvent
+        :param EventTime: The report time.
+        :type EventTime: int
+        """
+        self.UserId = None
+        self.ExperienceId = None
+        self.RoomId = None
+        self.AbnormalEventList = None
+        self.EventTime = None
+
+
+    def _deserialize(self, params):
+        self.UserId = params.get("UserId")
+        self.ExperienceId = params.get("ExperienceId")
+        self.RoomId = params.get("RoomId")
+        if params.get("AbnormalEventList") is not None:
+            self.AbnormalEventList = []
+            for item in params.get("AbnormalEventList"):
+                obj = AbnormalEvent()
+                obj._deserialize(item)
+                self.AbnormalEventList.append(obj)
+        self.EventTime = params.get("EventTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AgentParams(AbstractModel):
     """The information of the relaying robot in the room.
 
@@ -211,7 +285,7 @@ class CreateCloudRecordingRequest(AbstractModel):
         :type UserSig: str
         :param RecordParams: The on-cloud recording parameters.
         :type RecordParams: :class:`tencentcloud.trtc.v20190722.models.RecordParams`
-        :param StorageParams: The cloud storage information of the recording file. Currently, you can only save recording files to Tencent Cloud VOD.
+        :param StorageParams: The storage information of the recording file. Currently, you can save recording files to Tencent Cloud VOD or COS.
         :type StorageParams: :class:`tencentcloud.trtc.v20190722.models.StorageParams`
         :param RoomIdType: The type of the TRTC room ID, which must be the same as the ID type of the room whose streams are recorded.
 0: String
@@ -335,6 +409,118 @@ class DeleteCloudRecordingResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCallDetailInfoRequest(AbstractModel):
+    """DescribeCallDetailInfo request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CommId: The unique ID of a call, whose format is `SdkAppId_CreateTime`, such as `1400xxxxxx_218695_1590065777`. `createTime` is the UNIX timestamp (seconds) when the room was created. Its value can be obtained using the [DescribeRoomInfo](https://intl.cloud.tencent.com/document/product/647/44050?from_cn_redirect=1) API.
+        :type CommId: str
+        :param StartTime: The start time, which is a Unix timestamp (seconds) in local time, such as `1590065777`.
+Note: Only data in the last 14 days can be queried.
+        :type StartTime: int
+        :param EndTime: The end time, which is a Unix timestamp (seconds) in local time, such as `1590065877`.
+Note: If `DataType` is not null, the end time and start time cannot be more than one hour apart; if `DataType` is null, the end time and start time cannot be more than four hours apart.
+        :type EndTime: int
+        :param SdkAppId: The application ID, such as `1400xxxxxx`.
+        :type SdkAppId: int
+        :param UserIds: The users to query. If you do not specify this, the data of six users will be returned.
+        :type UserIds: list of str
+        :param DataType: The metrics to query. If you do not specify this, only the user list will be returned. If you pass in `all`, all metrics will be returned.
+`appCpu`: The CPU utilization of the application.
+`sysCpu`: The CPU utilization of the system.
+`aBit`: The upstream/downstream audio bitrate (bps).
+`aBlock`: The audio stutter duration (ms).
+`bigvBit`: The upstream/downstream video bitrate (bps).
+`bigvCapFps`: The frame rate for capturing videos.
+`bigvEncFps`: The frame rate for sending videos.
+`bigvDecFps`: The rendering frame rate.
+`bigvBlock`: The video stutter duration (ms).
+`aLoss`: The upstream/downstream audio packet loss.
+`bigvLoss`: The upstream/downstream video packet loss.
+`bigvWidth`: The upstream/downstream resolution (width).
+`bigvHeight`: The upstream/downstream resolution (height).
+        :type DataType: list of str
+        :param PageNumber: The page number. The default is 0.
+Note: If `PageNumber` or `PageSize` is not specified, six records will be returned.
+        :type PageNumber: int
+        :param PageSize: The number of records per page. The default is `6`.
+Value range: 1-100.
+Note: If `DataType` is not null, the length of the array `UserIds` and the value of `PageSize` cannot exceed `6`.
+If `DataType` is null, the length of the array `UserIds` and the value of `PageSize` cannot exceed `100`.
+        :type PageSize: int
+        """
+        self.CommId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.SdkAppId = None
+        self.UserIds = None
+        self.DataType = None
+        self.PageNumber = None
+        self.PageSize = None
+
+
+    def _deserialize(self, params):
+        self.CommId = params.get("CommId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.SdkAppId = params.get("SdkAppId")
+        self.UserIds = params.get("UserIds")
+        self.DataType = params.get("DataType")
+        self.PageNumber = params.get("PageNumber")
+        self.PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCallDetailInfoResponse(AbstractModel):
+    """DescribeCallDetailInfo response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: The number of records returned.
+        :type Total: int
+        :param UserList: The user information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UserList: list of UserInformation
+        :param Data: The call quality data.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Data: list of QualityData
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Total = None
+        self.UserList = None
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("UserList") is not None:
+            self.UserList = []
+            for item in params.get("UserList"):
+                obj = UserInformation()
+                obj._deserialize(item)
+                self.UserList.append(obj)
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = QualityData()
+                obj._deserialize(item)
+                self.Data.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -597,6 +783,149 @@ class DescribeRelayUsageResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeRoomInfoRequest(AbstractModel):
+    """DescribeRoomInfo request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: The application ID, such as `1400xxxxxx`.
+        :type SdkAppId: int
+        :param StartTime: The start time, which is a Unix timestamp (seconds) in local time, such as `1590065777`.
+Note: Only data in the last 14 days can be queried.
+        :type StartTime: int
+        :param EndTime: The end time, which is a Unix timestamp (seconds) in local time, such as `1590065877`.
+Note: The end and start time cannot be more than 24 hours apart.
+        :type EndTime: int
+        :param RoomId: The room ID, such as `223`.
+        :type RoomId: str
+        :param PageNumber: The page number. The default is 0.
+Note: If `PageNumber` or `PageSize` is not specified, 10 records will be returned.
+        :type PageNumber: int
+        :param PageSize: The number of records per page. The default is `10`.
+Value range: 1-100.
+        :type PageSize: int
+        """
+        self.SdkAppId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.RoomId = None
+        self.PageNumber = None
+        self.PageSize = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.RoomId = params.get("RoomId")
+        self.PageNumber = params.get("PageNumber")
+        self.PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRoomInfoResponse(AbstractModel):
+    """DescribeRoomInfo response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: The number of records returned.
+        :type Total: int
+        :param RoomList: The room information.
+        :type RoomList: list of RoomState
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Total = None
+        self.RoomList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("RoomList") is not None:
+            self.RoomList = []
+            for item in params.get("RoomList"):
+                obj = RoomState()
+                obj._deserialize(item)
+                self.RoomList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeScaleInfoRequest(AbstractModel):
+    """DescribeScaleInfo request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: The application ID, such as `1400xxxxxx`.
+        :type SdkAppId: int
+        :param StartTime: The start time, which is a Unix timestamp (seconds) in local time, such as `1590065777`.
+Note: Only data in the last 14 days can be queried.
+        :type StartTime: int
+        :param EndTime: The end time, which is a Unix timestamp (seconds) in local time, such as `1590065877`. The end time and start time should preferably be more than 24 hours apart.
+Note: Data is collected on a daily basis. To query the data of a day, make sure the end time is later than 00:00 on that day. Otherwise, no data will be returned. For example, to query the data on the 20th, the end time must be later than 00:00 on the 20th.
+        :type EndTime: int
+        """
+        self.SdkAppId = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeScaleInfoResponse(AbstractModel):
+    """DescribeScaleInfo response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: The number of records returned.
+        :type Total: int
+        :param ScaleList: The returned data.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ScaleList: list of ScaleInfomation
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Total = None
+        self.ScaleList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("ScaleList") is not None:
+            self.ScaleList = []
+            for item in params.get("ScaleList"):
+                obj = ScaleInfomation()
+                obj._deserialize(item)
+                self.ScaleList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTrtcRoomUsageRequest(AbstractModel):
     """DescribeTrtcRoomUsage request structure.
 
@@ -604,11 +933,11 @@ class DescribeTrtcRoomUsageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SdkAppid: 
+        :param SdkAppid: The `SDKAppID` of the room.
         :type SdkAppid: int
-        :param StartTime: 
+        :param StartTime: The start time in the format of `YYYY-MM-DD HH:MM` (accurate to the minute).
         :type StartTime: str
-        :param EndTime: 
+        :param EndTime: The end time in the format of `YYYY-MM-DD HH:MM`. The start and end time cannot be more than 24 hours apart.
         :type EndTime: str
         """
         self.SdkAppid = None
@@ -636,13 +965,17 @@ class DescribeTrtcRoomUsageResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Data: The usage data grouped by room, in CSV format.
+        :type Data: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.Data = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.Data = params.get("Data")
         self.RequestId = params.get("RequestId")
 
 
@@ -706,6 +1039,230 @@ class DescribeTrtcUsageResponse(AbstractModel):
                 obj = TrtcUsage()
                 obj._deserialize(item)
                 self.UsageList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeUnusualEventRequest(AbstractModel):
+    """DescribeUnusualEvent request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: The application ID, such as `1400xxxxxx`.
+        :type SdkAppId: int
+        :param StartTime: The start time, which is a Unix timestamp (seconds) in local time, such as `1590065777`.
+Note: Only data in the last 14 days can be queried.
+        :type StartTime: int
+        :param EndTime: The end time, which is a Unix timestamp (seconds) in local time, such as `1590065877`. The end time and start time cannot be more than one hour apart.
+        :type EndTime: int
+        :param RoomId: The room ID. Up to 20 random abnormal user experiences of the specified room will be returned.
+        :type RoomId: str
+        """
+        self.SdkAppId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.RoomId = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.RoomId = params.get("RoomId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUnusualEventResponse(AbstractModel):
+    """DescribeUnusualEvent response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: The number of records returned.
+Value range: 0-20.
+        :type Total: int
+        :param AbnormalExperienceList: The information of the abnormal user experiences.
+        :type AbnormalExperienceList: list of AbnormalExperience
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Total = None
+        self.AbnormalExperienceList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("AbnormalExperienceList") is not None:
+            self.AbnormalExperienceList = []
+            for item in params.get("AbnormalExperienceList"):
+                obj = AbnormalExperience()
+                obj._deserialize(item)
+                self.AbnormalExperienceList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeUserEventRequest(AbstractModel):
+    """DescribeUserEvent request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CommId: The unique ID of a call, whose format is `SdkAppId_CreateTime`, such as `1400xxxxxx_218695_1590065777`. `createTime` is the UNIX timestamp (seconds) when the room was created. Its value can be obtained using the [DescribeRoomInfo](https://intl.cloud.tencent.com/document/product/647/44050?from_cn_redirect=1) API.
+        :type CommId: str
+        :param StartTime: The start time, which is a Unix timestamp (seconds) in local time, such as `1590065777`.
+Note: Only data in the last 14 days can be queried.
+        :type StartTime: int
+        :param EndTime: The end time, which is a Unix timestamp (seconds) in local time, such as `1590065877`.
+Note: If you pass in an end time later than the room end time, the room end time will be used.
+        :type EndTime: int
+        :param UserId: The user ID.
+        :type UserId: str
+        :param RoomId: The room ID, such as `223`.
+        :type RoomId: str
+        :param SdkAppId: The application ID, such as `1400xxxxxx`.
+        :type SdkAppId: int
+        """
+        self.CommId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.UserId = None
+        self.RoomId = None
+        self.SdkAppId = None
+
+
+    def _deserialize(self, params):
+        self.CommId = params.get("CommId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.UserId = params.get("UserId")
+        self.RoomId = params.get("RoomId")
+        self.SdkAppId = params.get("SdkAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUserEventResponse(AbstractModel):
+    """DescribeUserEvent response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: The event list. An empty array will be returned if no data is obtained.
+        :type Data: list of EventList
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = EventList()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeUserInfoRequest(AbstractModel):
+    """DescribeUserInfo request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CommId: The unique ID of a call, whose format is `SdkAppId_CreateTime`, such as `1400xxxxxx_218695_1590065777`. `createTime` is the UNIX timestamp (seconds) when the room was created. Its value can be obtained using the [DescribeRoomInfo](https://intl.cloud.tencent.com/document/product/647/44050?from_cn_redirect=1) API.
+        :type CommId: str
+        :param StartTime: The start time, which is a Unix timestamp (seconds) in local time, such as `1590065777`.
+Note: Only data in the last 14 days can be queried.
+        :type StartTime: int
+        :param EndTime: The end time, which is a Unix timestamp (seconds) in local time, such as `1590065877`.
+Note: The end and start time cannot be more than four hours apart.
+        :type EndTime: int
+        :param SdkAppId: The application ID, such as `1400xxxxxx`.
+        :type SdkAppId: int
+        :param UserIds: The users to query. If you do not specify this, the information of six users will be returned.
+Array length: 1-100.
+        :type UserIds: list of str
+        :param PageNumber: The page number. The default is 0.
+Note: If `PageNumber` or `PageSize` is not specified, six records will be returned.
+        :type PageNumber: int
+        :param PageSize: The number of records per page. The default is `6`.
+Array length: 1-100.
+        :type PageSize: int
+        """
+        self.CommId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.SdkAppId = None
+        self.UserIds = None
+        self.PageNumber = None
+        self.PageSize = None
+
+
+    def _deserialize(self, params):
+        self.CommId = params.get("CommId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.SdkAppId = params.get("SdkAppId")
+        self.UserIds = params.get("UserIds")
+        self.PageNumber = params.get("PageNumber")
+        self.PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUserInfoResponse(AbstractModel):
+    """DescribeUserInfo response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: The number of records returned.
+        :type Total: int
+        :param UserList: The user information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UserList: list of UserInformation
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Total = None
+        self.UserList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("UserList") is not None:
+            self.UserList = []
+            for item in params.get("UserList"):
+                obj = UserInformation()
+                obj._deserialize(item)
+                self.UserList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -797,6 +1354,83 @@ class DismissRoomResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class EventList(AbstractModel):
+    """A list of SDK or WebRTC events.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Content: The event information.
+        :type Content: list of EventMessage
+        :param PeerId: The user ID of the sender.
+        :type PeerId: str
+        """
+        self.Content = None
+        self.PeerId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Content") is not None:
+            self.Content = []
+            for item in params.get("Content"):
+                obj = EventMessage()
+                obj._deserialize(item)
+                self.Content.append(obj)
+        self.PeerId = params.get("PeerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EventMessage(AbstractModel):
+    """The event information, including the timestamp and event ID.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: The video stream type. Valid values:
+`0`: A non-video event
+`2`: The big video
+`3`: The small video
+`7`: A relayed video
+        :type Type: int
+        :param Time: The event reporting time in the format of UNIX timestamp (milliseconds), such as `1589891188801`.
+        :type Time: int
+        :param EventId: The event ID. Events are classified into SDK events and WebRTC events. For more information, see https://intl.cloud.tencent.com/document/product/647/44916?from_cn_redirect=1
+        :type EventId: int
+        :param ParamOne: The first event parameter, such as the video width.
+        :type ParamOne: int
+        :param ParamTwo: The second event parameter, such as the video height.
+        :type ParamTwo: int
+        """
+        self.Type = None
+        self.Time = None
+        self.EventId = None
+        self.ParamOne = None
+        self.ParamTwo = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Time = params.get("Time")
+        self.EventId = params.get("EventId")
+        self.ParamOne = params.get("ParamOne")
+        self.ParamTwo = params.get("ParamTwo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class MaxVideoUser(AbstractModel):
@@ -964,14 +1598,14 @@ class McuLayout(AbstractModel):
         :type ZOrder: int
         :param RenderMode: The rendering mode of the video. 0 (the video is scaled and the excess parts are cropped), 1 (the video is scaled), 2 (the video is scaled and the blank spaces are filled with black bars). If you do not pass this parameter, 0 will be used.
         :type RenderMode: int
-        :param BackGroundColor: The background color of the video. Below are the values for some common colors:
-Red: 0xcc0033
-Yellow: 0xcc9900
-Green: 0xcccc33
-Blue: 0x99CCFF
-Black: 0x000000
-White: 0xFFFFFF
-Grey: 0x999999
+        :param BackGroundColor: (Not supported yet) The background color of a video. Below are the values for some commonly used colors:
+Red: `0xcc0033`
+Yellow: `0xcc9900`
+Green: `0xcccc33`
+Blue: `0x99CCFF`
+Black: `0x000000`
+White: `0xFFFFFF`
+Grey: `0x999999`
         :type BackGroundColor: str
         :param BackgroundImageUrl: The URL of the background image for the video. This parameter allows you to specify an image to display when the user’s camera is turned off or before the user enters the room. If the dimensions of the image specified are different from those of the video window, the image will be stretched to fit the space. This parameter has a higher priority than `BackGroundColor`.
         :type BackgroundImageUrl: str
@@ -1029,11 +1663,14 @@ class McuLayoutParams(AbstractModel):
         :type MixLayoutList: list of McuLayout
         :param MaxVideoUser: The information of the large video in screen sharing or floating layout mode.
         :type MaxVideoUser: :class:`tencentcloud.trtc.v20190722.models.MaxVideoUser`
+        :param RenderMode: The image fill mode. This parameter is valid if the layout mode is screen sharing, floating, or grid. `0`: The image will be cropped. `1`: The image will be scaled. `2`: The image will be scaled and there may be black bars.
+        :type RenderMode: int
         """
         self.MixLayoutMode = None
         self.PureAudioHoldPlaceMode = None
         self.MixLayoutList = None
         self.MaxVideoUser = None
+        self.RenderMode = None
 
 
     def _deserialize(self, params):
@@ -1048,6 +1685,7 @@ class McuLayoutParams(AbstractModel):
         if params.get("MaxVideoUser") is not None:
             self.MaxVideoUser = MaxVideoUser()
             self.MaxVideoUser._deserialize(params.get("MaxVideoUser"))
+        self.RenderMode = params.get("RenderMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1070,10 +1708,8 @@ class McuLayoutVolume(AbstractModel):
         :param PayloadType: The payload type of the SEI message. The default is 100. Value range: 100-254 (244 is used internally by Tencent Cloud for timestamps).
         :type PayloadType: int
         :param Interval: The SEI sending interval (milliseconds). The default value is 1000.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Interval: int
         :param FollowIdr: Valid values: `1`: SEI is guaranteed when keyframes are sent; `0` (default): SEI is not guaranteed when keyframes are sent.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type FollowIdr: int
         """
         self.AppData = None
@@ -1110,10 +1746,8 @@ class McuPassThrough(AbstractModel):
         :param PayloadUuid: This parameter is required only if `PayloadType` is 5. It must be a 32-character hexadecimal string. If `PayloadType` is not 5, this parameter will be ignored.
         :type PayloadUuid: str
         :param Interval: The SEI sending interval (milliseconds). The default value is 1000.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Interval: int
         :param FollowIdr: Valid values: `1`: SEI is guaranteed when keyframes are sent; `0` (default): SEI is not guaranteed when keyframes are sent.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type FollowIdr: int
         """
         self.PayloadContent = None
@@ -1336,7 +1970,6 @@ class McuWaterMarkParams(AbstractModel):
         :param WaterMarkImage: The watermark image information. This parameter is required if `WaterMarkType` is 0.
         :type WaterMarkImage: :class:`tencentcloud.trtc.v20190722.models.McuWaterMarkImage`
         :param WaterMarkText: The text watermark configuration. This parameter is required if `WaterMarkType` is `1`.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type WaterMarkText: :class:`tencentcloud.trtc.v20190722.models.McuWaterMarkText`
         """
         self.WaterMarkType = None
@@ -1379,13 +2012,10 @@ class McuWaterMarkText(AbstractModel):
         :param LocationY: The vertical offset (pixels) of the watermark.
         :type LocationY: int
         :param FontSize: The font size.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type FontSize: int
-        :param FontColor: The text color. The default color is white. Values for some commonly used colors: Red: 0xcc0033; yellow: 0xcc9900; green: 0xcccc33; blue: 0x99CCFF; black: 0x000000; white: 0xFFFFFF; gray: 0x999999.	
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param FontColor: The text color. The default color is white. Values for some commonly used colors: Red: `0xcc0033`; yellow: `0xcc9900`; green: `0xcccc33`; blue: `0x99CCFF`; black: `0x000000`; white: `0xFFFFFF`; gray: `0x999999`.	
         :type FontColor: str
-        :param BackGroundColor: The text fill color. If you do not specify this parameter, the fill color will be transparent. Values for some commonly used colors: Red: 0xcc0033; yellow: 0xcc9900; green: 0xcccc33; blue: 0x99CCFF; black: 0x000000; white: 0xFFFFFF; gray: 0x999999.	
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param BackGroundColor: The text fill color. If you do not specify this parameter, the fill color will be transparent. Values for some commonly used colors: Red: `0xcc0033`; yellow: `0xcc9900`; green: `0xcccc33`; blue: `0x99CCFF`; black: `0x000000`; white: `0xFFFFFF`; gray: `0x999999`.	
         :type BackGroundColor: str
         """
         self.Text = None
@@ -1702,6 +2332,48 @@ class ModifyCloudRecordingResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class QualityData(AbstractModel):
+    """The quality data returned by ES.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Content: The quality data.
+        :type Content: list of TimeValue
+        :param UserId: The user ID.
+        :type UserId: str
+        :param PeerId: The remote user ID. An empty string indicates that the data is upstream data.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PeerId: str
+        :param DataType: The data type.
+        :type DataType: str
+        """
+        self.Content = None
+        self.UserId = None
+        self.PeerId = None
+        self.DataType = None
+
+
+    def _deserialize(self, params):
+        if params.get("Content") is not None:
+            self.Content = []
+            for item in params.get("Content"):
+                obj = TimeValue()
+                obj._deserialize(item)
+                self.Content.append(obj)
+        self.UserId = params.get("UserId")
+        self.PeerId = params.get("PeerId")
+        self.DataType = params.get("DataType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RecordParams(AbstractModel):
     """The on-cloud recording parameters.
 
@@ -1729,8 +2401,7 @@ class RecordParams(AbstractModel):
         :param MaxMediaFileDuration: The maximum file duration allowed (minutes). If the output format is AAC or MP4, and the maximum file duration is exceeded, the file will be segmented. Value range: 1-1440. Default value: 1440 (24 hours). The maximum file size allowed is 2 GB. If the file size exceeds 2 GB, or the file duration exceeds 24 hours, the file will also be segmented.
 This parameter is invalid if the output format is HLS.
         :type MaxMediaFileDuration: int
-        :param MediaId: The type of stream to record. `0`: The primary stream and substream; `1`: The primary stream; `2`: The substream.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param MediaId: The type of stream to record. `0` (default): The primary stream and substream; `1`: The primary stream; `2`: The substream.
         :type MediaId: int
         """
         self.RecordMode = None
@@ -1859,6 +2530,89 @@ class RemoveUserResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class RoomState(AbstractModel):
+    """The room information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CommId: The call ID, which uniquely identifies a call.
+        :type CommId: str
+        :param RoomString: The room ID.
+        :type RoomString: str
+        :param CreateTime: The room creation time.
+        :type CreateTime: int
+        :param DestroyTime: The room termination time.
+        :type DestroyTime: int
+        :param IsFinished: Whether the room is terminated.
+        :type IsFinished: bool
+        :param UserId: The user ID of the room creator.
+        :type UserId: str
+        """
+        self.CommId = None
+        self.RoomString = None
+        self.CreateTime = None
+        self.DestroyTime = None
+        self.IsFinished = None
+        self.UserId = None
+
+
+    def _deserialize(self, params):
+        self.CommId = params.get("CommId")
+        self.RoomString = params.get("RoomString")
+        self.CreateTime = params.get("CreateTime")
+        self.DestroyTime = params.get("DestroyTime")
+        self.IsFinished = params.get("IsFinished")
+        self.UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScaleInfomation(AbstractModel):
+    """The room and user number.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Time: Start time for each day
+        :type Time: int
+        :param UserNumber: The number of users. If a user enters a room multiple times, it will be counted as one user.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UserNumber: int
+        :param UserCount: The number of room entries. Every time a user enters a room, it will be counted as one room entry.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UserCount: int
+        :param RoomNumbers: The total number of rooms of the application on a day.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RoomNumbers: int
+        """
+        self.Time = None
+        self.UserNumber = None
+        self.UserCount = None
+        self.RoomNumbers = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        self.UserNumber = params.get("UserNumber")
+        self.UserCount = params.get("UserCount")
+        self.RoomNumbers = params.get("RoomNumbers")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SetUserBlockedByStrRoomIdRequest(AbstractModel):
@@ -2008,19 +2762,19 @@ class StartPublishCdnStreamRequest(AbstractModel):
         :type RoomIdType: int
         :param AgentParams: The information of the relaying robot in the room.
         :type AgentParams: :class:`tencentcloud.trtc.v20190722.models.AgentParams`
-        :param WithTranscoding: Whether to transcode the streams. 0: No; 1: Yes.
+        :param WithTranscoding: Whether to transcode the streams. `0`: No. `1`: Yes. This parameter determines whether transcoding fees are charged. If it is `0`, streams will only be relayed, and no transcoding fees will be incurred. If it is `1`, streams will be transcoded before being relayed, and transcoding fees will be incurred.
         :type WithTranscoding: int
-        :param AudioParams: The audio encoding parameters for relaying.
+        :param AudioParams: The audio encoding parameters. Because audio is always transcoded (no fees are incurred), this parameter is required when you start a relay task.
         :type AudioParams: :class:`tencentcloud.trtc.v20190722.models.McuAudioParams`
         :param VideoParams: The video encoding parameters for relaying. If you do not pass this parameter, only audio will be relayed.
         :type VideoParams: :class:`tencentcloud.trtc.v20190722.models.McuVideoParams`
         :param SingleSubscribeParams: The information of a single stream relayed. When you relay a single stream, set `WithTranscoding` to 0.
         :type SingleSubscribeParams: :class:`tencentcloud.trtc.v20190722.models.SingleSubscribeParams`
-        :param PublishCdnParams: The CDN information.
+        :param PublishCdnParams: The information of the CDNs to relay to. You need to specify at least one between this parameter and `FeedBackRoomParams.N`.
         :type PublishCdnParams: list of McuPublishCdnParam
         :param SeiParams: The stream mixing SEI parameters.
         :type SeiParams: :class:`tencentcloud.trtc.v20190722.models.McuSeiParams`
-        :param FeedBackRoomParams: The information of the room to which streams are relayed.
+        :param FeedBackRoomParams: The information of the room to which streams are relayed. Between this parameter and `PublishCdnParams`, you must specify at least one. Please note that relaying to a TRTC room is only supported in some SDK versions. For details, please contact technical support.
         :type FeedBackRoomParams: list of McuFeedBackRoomParams
         """
         self.SdkAppId = None
@@ -2195,9 +2949,9 @@ class StorageParams(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CloudStorage: The account information for third-party cloud storage. This parameter is not available currently. Please use `CloudVod` instead to save files to Tencent Cloud VOD.
+        :param CloudStorage: The account information for third-party storage. Please note that if you save files to COS, a recording-to-COS fee will be incurred. For details, see the document "Billing of On-Cloud Recording". If you save files to VOD, there won't be such a fee.
         :type CloudStorage: :class:`tencentcloud.trtc.v20190722.models.CloudStorage`
-        :param CloudVod: The account information for saving files to Tencent Cloud VOD. This parameter is required. Currently, you can only save files to Tencent Cloud VOD.
+        :param CloudVod: The account information for VOD storage.
         :type CloudVod: :class:`tencentcloud.trtc.v20190722.models.CloudVod`
         """
         self.CloudStorage = None
@@ -2304,6 +3058,34 @@ The default value is `0`, which means others.
         self.SourceContext = params.get("SourceContext")
         self.MediaType = params.get("MediaType")
         self.UserDefineRecordId = params.get("UserDefineRecordId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TimeValue(AbstractModel):
+    """The quality data, which consists of the `time` and `value` parameters.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Time: The UNIX timestamp (seconds), such as `1590065877`.
+        :type Time: int
+        :param Value: The metric value. For example, if the video capturing frame rate (`bigvCapFps`) at the time `1590065877` is `0`, the value of this parameter will be `0`.
+        :type Value: float
+        """
+        self.Time = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        self.Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2440,6 +3222,58 @@ class UpdatePublishCdnStreamResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class UserInformation(AbstractModel):
+    """The user information, including when the user entered/left the room.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RoomStr: The room ID.
+        :type RoomStr: str
+        :param UserId: The user ID.
+        :type UserId: str
+        :param JoinTs: The time when the user entered the room.
+        :type JoinTs: int
+        :param LeaveTs: The time when the user left the room. If the user is still in the room, the current time will be returned.
+        :type LeaveTs: int
+        :param DeviceType: The device type.
+        :type DeviceType: str
+        :param SdkVersion: The SDK version number.
+        :type SdkVersion: str
+        :param ClientIp: The client IP address.
+        :type ClientIp: str
+        :param Finished: Whether a user has left the room.
+        :type Finished: bool
+        """
+        self.RoomStr = None
+        self.UserId = None
+        self.JoinTs = None
+        self.LeaveTs = None
+        self.DeviceType = None
+        self.SdkVersion = None
+        self.ClientIp = None
+        self.Finished = None
+
+
+    def _deserialize(self, params):
+        self.RoomStr = params.get("RoomStr")
+        self.UserId = params.get("UserId")
+        self.JoinTs = params.get("JoinTs")
+        self.LeaveTs = params.get("LeaveTs")
+        self.DeviceType = params.get("DeviceType")
+        self.SdkVersion = params.get("SdkVersion")
+        self.ClientIp = params.get("ClientIp")
+        self.Finished = params.get("Finished")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UserMediaStream(AbstractModel):
     """The stream information.
 
@@ -2561,9 +3395,15 @@ class WaterMark(AbstractModel):
         :type WaterMarkType: int
         :param WaterMarkImage: The information of watermark images. This parameter is required if the watermark type is image.
         :type WaterMarkImage: :class:`tencentcloud.trtc.v20190722.models.WaterMarkImage`
+        :param WaterMarkChar: The information of the text watermark. This parameter is required if `WaterMarkType` is `1`.
+        :type WaterMarkChar: :class:`tencentcloud.trtc.v20190722.models.WaterMarkChar`
+        :param WaterMarkTimestamp: The information of the timestamp watermark. This parameter is required if `WaterMarkType` is `2`.
+        :type WaterMarkTimestamp: :class:`tencentcloud.trtc.v20190722.models.WaterMarkTimestamp`
         """
         self.WaterMarkType = None
         self.WaterMarkImage = None
+        self.WaterMarkChar = None
+        self.WaterMarkTimestamp = None
 
 
     def _deserialize(self, params):
@@ -2571,6 +3411,64 @@ class WaterMark(AbstractModel):
         if params.get("WaterMarkImage") is not None:
             self.WaterMarkImage = WaterMarkImage()
             self.WaterMarkImage._deserialize(params.get("WaterMarkImage"))
+        if params.get("WaterMarkChar") is not None:
+            self.WaterMarkChar = WaterMarkChar()
+            self.WaterMarkChar._deserialize(params.get("WaterMarkChar"))
+        if params.get("WaterMarkTimestamp") is not None:
+            self.WaterMarkTimestamp = WaterMarkTimestamp()
+            self.WaterMarkTimestamp._deserialize(params.get("WaterMarkTimestamp"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WaterMarkChar(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Top: The Y coordinate of the text watermark from the top left.
+        :type Top: int
+        :param Left: The X coordinate of the text watermark from the top left.
+        :type Left: int
+        :param Width: The watermark width (pixels).
+        :type Width: int
+        :param Height: The watermark height (pixels).
+        :type Height: int
+        :param Chars: The text.
+        :type Chars: str
+        :param FontSize: The font size (pixels). The default value is `14`.
+        :type FontSize: int
+        :param FontColor: The text color. The default color is white.
+        :type FontColor: str
+        :param BackGroundColor: The background color. If this parameter is empty, the background will be transparent (default).
+        :type BackGroundColor: str
+        """
+        self.Top = None
+        self.Left = None
+        self.Width = None
+        self.Height = None
+        self.Chars = None
+        self.FontSize = None
+        self.FontColor = None
+        self.BackGroundColor = None
+
+
+    def _deserialize(self, params):
+        self.Top = params.get("Top")
+        self.Left = params.get("Left")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.Chars = params.get("Chars")
+        self.FontSize = params.get("FontSize")
+        self.FontColor = params.get("FontColor")
+        self.BackGroundColor = params.get("BackGroundColor")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2611,6 +3509,34 @@ class WaterMarkImage(AbstractModel):
         self.Left = params.get("Left")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WaterMarkTimestamp(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Pos: The position of the timestamp watermark. Valid values: `0` (top left), `1` (top right), `2` (bottom left), `3` (bottom right), `4` (top center), `5` (bottom center), `6` (center).
+        :type Pos: int
+        :param TimeZone: The time zone. The default is UTC+8.
+        :type TimeZone: int
+        """
+        self.Pos = None
+        self.TimeZone = None
+
+
+    def _deserialize(self, params):
+        self.Pos = params.get("Pos")
+        self.TimeZone = params.get("TimeZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
