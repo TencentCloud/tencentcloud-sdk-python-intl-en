@@ -351,6 +351,42 @@ class BatchDomainOperateErrors(AbstractModel):
         
 
 
+class BillDataInfo(AbstractModel):
+    """Bandwidth and traffic information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Time: Time point in the format of `yyyy-mm-dd HH:MM:SS`.
+        :type Time: str
+        :param Bandwidth: Bandwidth in Mbps.
+        :type Bandwidth: float
+        :param Flux: Traffic in MB.
+        :type Flux: float
+        :param PeakTime: Time point of peak value in the format of `yyyy-mm-dd HH:MM:SS`. As raw data is at a 5-minute granularity, if data at a 1-hour or 1-day granularity is queried, the time point of peak bandwidth value at the corresponding granularity will be returned.
+        :type PeakTime: str
+        """
+        self.Time = None
+        self.Bandwidth = None
+        self.Flux = None
+        self.PeakTime = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        self.Bandwidth = params.get("Bandwidth")
+        self.Flux = params.get("Flux")
+        self.PeakTime = params.get("PeakTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CallBackRuleInfo(AbstractModel):
     """Rule information
 
@@ -3175,6 +3211,117 @@ class DescribeAllStreamPlayInfoListResponse(AbstractModel):
             self.DataInfoList = []
             for item in params.get("DataInfoList"):
                 obj = MonitorStreamPlayInfo()
+                obj._deserialize(item)
+                self.DataInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBillBandwidthAndFluxListRequest(AbstractModel):
+    """DescribeBillBandwidthAndFluxList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: Start time point in the format of `yyyy-mm-dd HH:MM:SS`.
+        :type StartTime: str
+        :param EndTime: End time point in the format of yyyy-mm-dd HH:MM:SS. The difference between the start time and end time cannot be greater than 31 days. Data in the last 3 years can be queried.
+        :type EndTime: str
+        :param PlayDomains: LVB playback domain name. If this parameter is left empty, full data will be queried.
+        :type PlayDomains: list of str
+        :param MainlandOrOversea: Valid values:
+Mainland: query data for Mainland China,
+Oversea: query data for regions outside Mainland China,
+Default: query data for all regions.
+Note: LEB only supports querying data for all regions.
+        :type MainlandOrOversea: str
+        :param Granularity: Data granularity. Valid values:
+5: 5-minute granularity (the query time span should be within 1 day),
+60: 1-hour granularity (the query time span should be within one month),
+1440: 1-day granularity (the query time span should be within one month).
+Default value: 5.
+        :type Granularity: int
+        :param ServiceName: Service name. Valid values: LVB, LEB. The sum of LVB and LEB usage will be returned if this parameter is left empty.
+        :type ServiceName: str
+        :param RegionNames: Region. Valid values:
+China Mainland
+Asia Pacific I
+Asia Pacific II
+Asia Pacific III
+Europe
+North America
+South America
+Middle East
+Africa
+        :type RegionNames: list of str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.PlayDomains = None
+        self.MainlandOrOversea = None
+        self.Granularity = None
+        self.ServiceName = None
+        self.RegionNames = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.PlayDomains = params.get("PlayDomains")
+        self.MainlandOrOversea = params.get("MainlandOrOversea")
+        self.Granularity = params.get("Granularity")
+        self.ServiceName = params.get("ServiceName")
+        self.RegionNames = params.get("RegionNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBillBandwidthAndFluxListResponse(AbstractModel):
+    """DescribeBillBandwidthAndFluxList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PeakBandwidthTime: Time point of peak bandwidth value in the format of `yyyy-mm-dd HH:MM:SS`.
+        :type PeakBandwidthTime: str
+        :param PeakBandwidth: Peak bandwidth in Mbps.
+        :type PeakBandwidth: float
+        :param P95PeakBandwidthTime: Time point of 95th percentile bandwidth value in the format of `yyyy-mm-dd HH:MM:SS`.
+        :type P95PeakBandwidthTime: str
+        :param P95PeakBandwidth: 95th percentile bandwidth in Mbps.
+        :type P95PeakBandwidth: float
+        :param SumFlux: Total traffic in MB.
+        :type SumFlux: float
+        :param DataInfoList: Detailed data information.
+        :type DataInfoList: list of BillDataInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.PeakBandwidthTime = None
+        self.PeakBandwidth = None
+        self.P95PeakBandwidthTime = None
+        self.P95PeakBandwidth = None
+        self.SumFlux = None
+        self.DataInfoList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PeakBandwidthTime = params.get("PeakBandwidthTime")
+        self.PeakBandwidth = params.get("PeakBandwidth")
+        self.P95PeakBandwidthTime = params.get("P95PeakBandwidthTime")
+        self.P95PeakBandwidth = params.get("P95PeakBandwidth")
+        self.SumFlux = params.get("SumFlux")
+        if params.get("DataInfoList") is not None:
+            self.DataInfoList = []
+            for item in params.get("DataInfoList"):
+                obj = BillDataInfo()
                 obj._deserialize(item)
                 self.DataInfoList.append(obj)
         self.RequestId = params.get("RequestId")

@@ -957,6 +957,29 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBillBandwidthAndFluxList(self, request):
+        """This API is used to query the data of billable LVB bandwidth and traffic.
+
+        :param request: Request instance for DescribeBillBandwidthAndFluxList.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeBillBandwidthAndFluxListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeBillBandwidthAndFluxListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBillBandwidthAndFluxList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBillBandwidthAndFluxListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeConcurrentRecordStreamNum(self, request):
         """This API is used to query the number of concurrent recording channels, which is applicable to LCB and LVB.
 
