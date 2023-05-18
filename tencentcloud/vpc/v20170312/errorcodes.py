@@ -86,6 +86,9 @@ INVALIDNETWORKINTERFACEID_NOTFOUND = 'InvalidNetworkInterfaceId.NotFound'
 # A parameter error occurred.
 INVALIDPARAMETER = 'InvalidParameter'
 
+# 
+INVALIDPARAMETER_ACLTYPEMISMATCH = 'InvalidParameter.AclTypeMismatch'
+
 # The parameters cannot be specified at the same time.
 INVALIDPARAMETER_COEXIST = 'InvalidParameter.Coexist'
 
@@ -233,6 +236,18 @@ INVALIDPARAMETERVALUE_LIMITEXCEEDED = 'InvalidParameterValue.LimitExceeded'
 # Invalid input parameter format.
 INVALIDPARAMETERVALUE_MALFORMED = 'InvalidParameterValue.Malformed'
 
+# 
+INVALIDPARAMETERVALUE_MEMBERAPPROVALAPPLICATIONIDMISMATCH = 'InvalidParameterValue.MemberApprovalApplicationIdMismatch'
+
+# 
+INVALIDPARAMETERVALUE_MEMBERAPPROVALAPPLICATIONNOTAPPROVED = 'InvalidParameterValue.MemberApprovalApplicationNotApproved'
+
+# 
+INVALIDPARAMETERVALUE_MEMBERAPPROVALAPPLICATIONREJECTED = 'InvalidParameterValue.MemberApprovalApplicationRejected'
+
+# 
+INVALIDPARAMETERVALUE_MEMBERAPPROVALAPPLICATIONSTARTED = 'InvalidParameterValue.MemberApprovalApplicationStarted'
+
 # The bound instance is missing.
 INVALIDPARAMETERVALUE_MISSINGASSOCIATEENTITY = 'InvalidParameterValue.MissingAssociateEntity'
 
@@ -247,6 +262,9 @@ INVALIDPARAMETERVALUE_NATGATEWAYDNATRULENOTEXISTS = 'InvalidParameterValue.NatGa
 
 # The private IP of the DNAT translation rule must be an IP used by the ENI of the virtual machine.
 INVALIDPARAMETERVALUE_NATGATEWAYDNATRULEPIPNEEDVM = 'InvalidParameterValue.NatGatewayDnatRulePipNeedVm'
+
+# 
+INVALIDPARAMETERVALUE_NATGATEWAYDNATRULEREPEATED = 'InvalidParameterValue.NatGatewayDnatRuleRepeated'
 
 # The SNAT forwarding rule of the NAT gateway does not exist.
 INVALIDPARAMETERVALUE_NATGATEWAYSNATRULENOTEXISTS = 'InvalidParameterValue.NatGatewaySnatRuleNotExists'
@@ -271,6 +289,9 @@ INVALIDPARAMETERVALUE_NETWORKINTERFACENOTFOUND = 'InvalidParameterValue.NetworkI
 
 # This operation is only available for primary ENIs.
 INVALIDPARAMETERVALUE_ONLYSUPPORTEDFORMASTERNETWORKCARD = 'InvalidParameterValue.OnlySupportedForMasterNetworkCard'
+
+# Invalid parameter format
+INVALIDPARAMETERVALUE_PARAMETERMISMATCH = 'InvalidParameterValue.ParameterMismatch'
 
 # The parameter value is not in the specified range.
 INVALIDPARAMETERVALUE_RANGE = 'InvalidParameterValue.Range'
@@ -404,11 +425,17 @@ LIMITEXCEEDED = 'LimitExceeded'
 # Ran out of the quota for returning under this account.
 LIMITEXCEEDED_ACCOUNTRETURNQUOTA = 'LimitExceeded.AccountReturnQuota'
 
+# 
+LIMITEXCEEDED_ACTIONLIMITED = 'LimitExceeded.ActionLimited'
+
 # The number of assigned IP addresses has reached the upper limit.
 LIMITEXCEEDED_ADDRESS = 'LimitExceeded.Address'
 
 # The number of EIPs applied for exceeds the upper limit.
 LIMITEXCEEDED_ADDRESSQUOTALIMITEXCEEDED = 'LimitExceeded.AddressQuotaLimitExceeded'
+
+# 
+LIMITEXCEEDED_ATTACHEDSNAPSHOTPOLICYEXCEEDED = 'LimitExceeded.AttachedSnapshotPolicyExceeded'
 
 # Exceeded the upper limit of the bandwidth package quota.
 LIMITEXCEEDED_BANDWIDTHPACKAGEQUOTA = 'LimitExceeded.BandwidthPackageQuota'
@@ -418,6 +445,9 @@ LIMITEXCEEDED_CHANGEADDRESSQUOTA = 'LimitExceeded.ChangeAddressQuota'
 
 # The number of assigned IP ranges of the VPC has reached the upper limit.
 LIMITEXCEEDED_CIDRBLOCK = 'LimitExceeded.CidrBlock'
+
+# 
+LIMITEXCEEDED_CURRENTINSTANCEATTACHEDCCNINSTANCES = 'LimitExceeded.CurrentInstanceAttachedCcnInstances'
 
 # The number of EIPs applied for per day exceeds the upper limit.
 LIMITEXCEEDED_DAILYALLOCATEADDRESSQUOTALIMITEXCEEDED = 'LimitExceeded.DailyAllocateAddressQuotaLimitExceeded'
@@ -533,6 +563,9 @@ UNKNOWNPARAMETER_WITHGUESS = 'UnknownParameter.WithGuess'
 # Unsupported operation.
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'
 
+# 
+UNSUPPORTEDOPERATION_ACCOUNTNOTSUPPORTED = 'UnsupportedOperation.AccountNotSupported'
+
 # The port does not exist.
 UNSUPPORTEDOPERATION_ACTIONNOTFOUND = 'UnsupportedOperation.ActionNotFound'
 
@@ -544,6 +577,9 @@ UNSUPPORTEDOPERATION_APPIDMISMATCH = 'UnsupportedOperation.AppIdMismatch'
 
 # The APPId doesn't exist.
 UNSUPPORTEDOPERATION_APPIDNOTFOUND = 'UnsupportedOperation.AppIdNotFound'
+
+# 
+UNSUPPORTEDOPERATION_ASSOCIATEDVPCOFCCNHADNATROUTE = 'UnsupportedOperation.AssociatedVpcOfCcnHadNatRoute'
 
 # The EIP is already bound to a CVM.
 UNSUPPORTEDOPERATION_ATTACHMENTALREADYEXISTS = 'UnsupportedOperation.AttachmentAlreadyExists'
@@ -566,6 +602,9 @@ UNSUPPORTEDOPERATION_CIDRUNSUPPORTEDCLASSICLINK = 'UnsupportedOperation.CIDRUnSu
 # The instance is already associated with a CCN.
 UNSUPPORTEDOPERATION_CCNATTACHED = 'UnsupportedOperation.CcnAttached'
 
+# 
+UNSUPPORTEDOPERATION_CCNCROSSACCOUNT = 'UnsupportedOperation.CcnCrossAccount'
+
 # This CCN instance cannot be deleted as it has flow logs.
 UNSUPPORTEDOPERATION_CCNHASFLOWLOG = 'UnsupportedOperation.CcnHasFlowLog'
 
@@ -583,6 +622,9 @@ UNSUPPORTEDOPERATION_CDCSUBNETNOTSUPPORTUNLOCALGATEWAY = 'UnsupportedOperation.C
 
 # The instance has already been bound to the VPC.
 UNSUPPORTEDOPERATION_CLASSICINSTANCEIDALREADYEXISTS = 'UnsupportedOperation.ClassicInstanceIdAlreadyExists'
+
+# 
+UNSUPPORTEDOPERATION_CLBPOLICYEXCEEDLIMIT = 'UnsupportedOperation.ClbPolicyExceedLimit'
 
 # Public network CLB does not support this policy.
 UNSUPPORTEDOPERATION_CLBPOLICYLIMIT = 'UnsupportedOperation.ClbPolicyLimit'
@@ -602,11 +644,17 @@ UNSUPPORTEDOPERATION_DELDEFAULTROUTE = 'UnsupportedOperation.DelDefaultRoute'
 # Unable to delete: This is a route table associated with a subnet.
 UNSUPPORTEDOPERATION_DELROUTEWITHSUBNET = 'UnsupportedOperation.DelRouteWithSubnet'
 
+# 
+UNSUPPORTEDOPERATION_DELETEVPNCONNINVALIDSTATE = 'UnsupportedOperation.DeleteVpnConnInvalidState'
+
 # Direct connect gateway is updating the BGP Community attribute.
 UNSUPPORTEDOPERATION_DIRECTCONNECTGATEWAYISUPDATINGCOMMUNITY = 'UnsupportedOperation.DirectConnectGatewayIsUpdatingCommunity'
 
 # The specified routing policy cannot be re-published to CCN. Please first withdraw it from CCN.
 UNSUPPORTEDOPERATION_DISABLEDNOTIFYCCN = 'UnsupportedOperation.DisabledNotifyCcn'
+
+# 
+UNSUPPORTEDOPERATION_DPDKNATFLOWLOGONLYSUPPORTALLTRAFFICTYPE = 'UnsupportedOperation.DpdkNatFlowLogOnlySupportAllTrafficType'
 
 # The security group policies are repeated.
 UNSUPPORTEDOPERATION_DUPLICATEPOLICY = 'UnsupportedOperation.DuplicatePolicy'
@@ -619,6 +667,9 @@ UNSUPPORTEDOPERATION_ECMPWITHCCNROUTE = 'UnsupportedOperation.EcmpWithCcnRoute'
 
 # Form an ECMP with the user’s custom routes.
 UNSUPPORTEDOPERATION_ECMPWITHUSERROUTE = 'UnsupportedOperation.EcmpWithUserRoute'
+
+# 
+UNSUPPORTEDOPERATION_ENABLEMULTICAST = 'UnsupportedOperation.EnableMulticast'
 
 # The endpoint service itself cannot be set as the endpoint.
 UNSUPPORTEDOPERATION_ENDPOINTSERVICE = 'UnsupportedOperation.EndPointService'
@@ -680,6 +731,9 @@ UNSUPPORTEDOPERATION_ISPNOTSUPPORTED = 'UnsupportedOperation.IspNotSupported'
 # The specified CDC instance already has a local gateway.
 UNSUPPORTEDOPERATION_LOCALGATEWAYALREADYEXISTS = 'UnsupportedOperation.LocalGatewayAlreadyExists'
 
+# 
+UNSUPPORTEDOPERATION_LOCKEDRESOURCES = 'UnsupportedOperation.LockedResources'
+
 # The account does not support modifying this attribute of the public IP.
 UNSUPPORTEDOPERATION_MODIFYADDRESSATTRIBUTE = 'UnsupportedOperation.ModifyAddressAttribute'
 
@@ -689,11 +743,17 @@ UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = 'UnsupportedOperation.MutexOper
 # The public IP of the NAT gateway does not exist. 
 UNSUPPORTEDOPERATION_NATGATEWAYEIPNOTEXISTS = 'UnsupportedOperation.NatGatewayEipNotExists'
 
+# 
+UNSUPPORTEDOPERATION_NATGATEWAYHADEIPUNASSOCIATE = 'UnsupportedOperation.NatGatewayHadEipUnassociate'
+
 # The private IP specified in the SNAT/DNAT forwarding rule has been bound with another rule.
 UNSUPPORTEDOPERATION_NATGATEWAYRULEPIPEXISTS = 'UnsupportedOperation.NatGatewayRulePipExists'
 
 # The private IP of the SNAT translation rule must be within the IP range of the VM ENI.
 UNSUPPORTEDOPERATION_NATGATEWAYSNATPIPNEEDVM = 'UnsupportedOperation.NatGatewaySnatPipNeedVm'
+
+# 
+UNSUPPORTEDOPERATION_NATGATEWAYSNATRULENOTEXISTS = 'UnsupportedOperation.NatGatewaySnatRuleNotExists'
 
 # The specified NAT Gateway type does not support configuring a SNAT rule.
 UNSUPPORTEDOPERATION_NATGATEWAYTYPENOTSUPPORTSNAT = 'UnsupportedOperation.NatGatewayTypeNotSupportSNAT'
@@ -707,7 +767,7 @@ UNSUPPORTEDOPERATION_NORMALSUBNETNOTSUPPORTLOCALGATEWAY = 'UnsupportedOperation.
 # This operation is not allowed because the current instance is blocked.
 UNSUPPORTEDOPERATION_NOTLOCKEDINSTANCEOPERATION = 'UnsupportedOperation.NotLockedInstanceOperation'
 
-# 
+# The target service specified does not match the one specified in the IP application.
 UNSUPPORTEDOPERATION_NOTMATCHTARGETSERVICE = 'UnsupportedOperation.NotMatchTargetService'
 
 # Unsupported operation: the current CCN instance is not in “Applying” status.
@@ -724,6 +784,9 @@ UNSUPPORTEDOPERATION_NOTSUPPORTDELETEDEFAULTROUTETABLE = 'UnsupportedOperation.N
 
 # This type of addresses cannot be released.
 UNSUPPORTEDOPERATION_NOTSUPPORTEDADDRESSIPSCHARGETYPE = 'UnsupportedOperation.NotSupportedAddressIpsChargeType'
+
+# 
+UNSUPPORTEDOPERATION_NOTSUPPORTEDPURCHASECENTEREGRESSRESOURCE = 'UnsupportedOperation.NotSupportedPurchaseCenterEgressResource'
 
 # The current CCN instance does not support publishing update routes.
 UNSUPPORTEDOPERATION_NOTSUPPORTEDUPDATECCNROUTEPUBLISH = 'UnsupportedOperation.NotSupportedUpdateCcnRoutePublish'
@@ -764,6 +827,9 @@ UNSUPPORTEDOPERATION_RECORDEXISTS = 'UnsupportedOperation.RecordExists'
 # The record does not exist.
 UNSUPPORTEDOPERATION_RECORDNOTEXISTS = 'UnsupportedOperation.RecordNotExists'
 
+# 
+UNSUPPORTEDOPERATION_RESOURCEISINVALIDSTATE = 'UnsupportedOperation.ResourceIsInvalidState'
+
 # The resource ID entered does not match with any resource bound with the IP. Check and try again.
 UNSUPPORTEDOPERATION_RESOURCEMISMATCH = 'UnsupportedOperation.ResourceMismatch'
 
@@ -772,6 +838,27 @@ UNSUPPORTEDOPERATION_ROLENOTFOUND = 'UnsupportedOperation.RoleNotFound'
 
 # The routing table is bound to a subnet.
 UNSUPPORTEDOPERATION_ROUTETABLEHASSUBNETRULE = 'UnsupportedOperation.RouteTableHasSubnetRule'
+
+# This instance is already associated with a snapshot policy. 
+UNSUPPORTEDOPERATION_SNAPSHOTATTACHED = 'UnsupportedOperation.SnapshotAttached'
+
+# Snapshot backup policy cannot be modified. 
+UNSUPPORTEDOPERATION_SNAPSHOTBACKUPTYPEMODIFY = 'UnsupportedOperation.SnapshotBackupTypeModify'
+
+# Failed to generate the snapshot file.
+UNSUPPORTEDOPERATION_SNAPSHOTFILEFAILED = 'UnsupportedOperation.SnapshotFileFailed'
+
+# The snapshot file is expired or has been deleted.
+UNSUPPORTEDOPERATION_SNAPSHOTFILENOEXIST = 'UnsupportedOperation.SnapshotFileNoExist'
+
+# Generating the snapshot file…Please check again later.
+UNSUPPORTEDOPERATION_SNAPSHOTFILEPROCESSING = 'UnsupportedOperation.SnapshotFileProcessing'
+
+# Batch association only supports instances in the same region.
+UNSUPPORTEDOPERATION_SNAPSHOTINSTANCEREGIONDIFF = 'UnsupportedOperation.SnapshotInstanceRegionDiff'
+
+# The instance is not associated with any snapshot policy.
+UNSUPPORTEDOPERATION_SNAPSHOTNOTATTACHED = 'UnsupportedOperation.SnapshotNotAttached'
 
 # The SNAT subnet does not support assigning IPs.
 UNSUPPORTEDOPERATION_SNATSUBNET = 'UnsupportedOperation.SnatSubnet'
@@ -832,6 +919,12 @@ UNSUPPORTEDOPERATION_VERSIONMISMATCH = 'UnsupportedOperation.VersionMismatch'
 
 # The resources are not in the same VPC.
 UNSUPPORTEDOPERATION_VPCMISMATCH = 'UnsupportedOperation.VpcMismatch'
+
+# 
+UNSUPPORTEDOPERATION_VPNCONNINVALIDSTATE = 'UnsupportedOperation.VpnConnInvalidState'
+
+# 
+UNSUPPORTEDOPERATION_VPNGWVPCIDMUSTHAVE = 'UnsupportedOperation.VpnGwVpcIdMustHave'
 
 # The specified resources are not in the same availability zone.
 UNSUPPORTEDOPERATION_ZONEMISMATCH = 'UnsupportedOperation.ZoneMismatch'

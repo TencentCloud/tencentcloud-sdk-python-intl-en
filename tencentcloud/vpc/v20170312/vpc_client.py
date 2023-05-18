@@ -429,6 +429,29 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AttachSnapshotInstances(self, request):
+        """This API is used to associate a snapshot policy with specified instances.
+
+        :param request: Request instance for AttachSnapshotInstances.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.AttachSnapshotInstancesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.AttachSnapshotInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AttachSnapshotInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.AttachSnapshotInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AuditCrossBorderCompliance(self, request):
         """This API is used by the service provider to perform a compliance audit.
         * This API is only provided for service providers to audit compliance review requests received. Tencent Cloud will verify the identity of the service provider by the `APPID`.
@@ -1197,6 +1220,29 @@ class VpcClient(AbstractClient):
             body = self.call("CreateServiceTemplateGroup", params, headers=headers)
             response = json.loads(body)
             model = models.CreateServiceTemplateGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateSnapshotPolicies(self, request):
+        """This API is used to create snapshot policies.
+
+        :param request: Request instance for CreateSnapshotPolicies.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateSnapshotPoliciesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateSnapshotPoliciesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSnapshotPolicies", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSnapshotPoliciesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1988,6 +2034,29 @@ class VpcClient(AbstractClient):
             body = self.call("DeleteServiceTemplateGroup", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteServiceTemplateGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteSnapshotPolicies(self, request):
+        """This API is used to delete snapshot policies.
+
+        :param request: Request instance for DeleteSnapshotPolicies.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteSnapshotPoliciesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteSnapshotPoliciesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteSnapshotPolicies", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteSnapshotPoliciesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3225,6 +3294,98 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeSgSnapshotFileContent(self, request):
+        """This API is used to query the snapshot file contents.
+
+        :param request: Request instance for DescribeSgSnapshotFileContent.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeSgSnapshotFileContentRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeSgSnapshotFileContentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSgSnapshotFileContent", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSgSnapshotFileContentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSnapshotAttachedInstances(self, request):
+        """This API is used to query instances associated with a snapshot policy.
+
+        :param request: Request instance for DescribeSnapshotAttachedInstances.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeSnapshotAttachedInstancesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeSnapshotAttachedInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSnapshotAttachedInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSnapshotAttachedInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSnapshotFiles(self, request):
+        """This API is used to query snapshot files.
+
+        :param request: Request instance for DescribeSnapshotFiles.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeSnapshotFilesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeSnapshotFilesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSnapshotFiles", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSnapshotFilesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSnapshotPolicies(self, request):
+        """This API is used to query snapshot policies.
+
+        :param request: Request instance for DescribeSnapshotPolicies.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeSnapshotPoliciesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeSnapshotPoliciesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSnapshotPolicies", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSnapshotPoliciesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeSubnets(self, request):
         """This API (DescribeSubnets) is used to query the list of subnets.
 
@@ -3668,6 +3829,29 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DetachSnapshotInstances(self, request):
+        """This API is used to disassociate a snapshot policy with instances.
+
+        :param request: Request instance for DetachSnapshotInstances.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DetachSnapshotInstancesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DetachSnapshotInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DetachSnapshotInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DetachSnapshotInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DisableCcnRoutes(self, request):
         """This API (DisableCcnRoutes) is used to disable CCN routes that are already enabled.
 
@@ -3728,6 +3912,29 @@ class VpcClient(AbstractClient):
             body = self.call("DisableGatewayFlowMonitor", params, headers=headers)
             response = json.loads(body)
             model = models.DisableGatewayFlowMonitorResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DisableSnapshotPolicies(self, request):
+        """This API is used to disable specified snapshot policies.
+
+        :param request: Request instance for DisableSnapshotPolicies.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DisableSnapshotPoliciesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DisableSnapshotPoliciesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisableSnapshotPolicies", params, headers=headers)
+            response = json.loads(body)
+            model = models.DisableSnapshotPoliciesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3963,6 +4170,29 @@ class VpcClient(AbstractClient):
             body = self.call("EnableGatewayFlowMonitor", params, headers=headers)
             response = json.loads(body)
             model = models.EnableGatewayFlowMonitorResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def EnableSnapshotPolicies(self, request):
+        """This API is used to enable specified snapshot policies.
+
+        :param request: Request instance for EnableSnapshotPolicies.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.EnableSnapshotPoliciesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.EnableSnapshotPoliciesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EnableSnapshotPolicies", params, headers=headers)
+            response = json.loads(body)
+            model = models.EnableSnapshotPoliciesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4918,6 +5148,29 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifySnapshotPolicies(self, request):
+        """This API is used to modify specified snapshot policies.
+
+        :param request: Request instance for ModifySnapshotPolicies.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifySnapshotPoliciesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifySnapshotPoliciesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySnapshotPolicies", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySnapshotPoliciesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifySubnetAttribute(self, request):
         """This API (ModifySubnetAttribute) is used to modify subnet attributes.
 
@@ -5467,6 +5720,29 @@ class VpcClient(AbstractClient):
             body = self.call("ResetVpnGatewayInternetMaxBandwidth", params, headers=headers)
             response = json.loads(body)
             model = models.ResetVpnGatewayInternetMaxBandwidthResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ResumeSnapshotInstance(self, request):
+        """This API is used to restore security group policies with a backup.
+
+        :param request: Request instance for ResumeSnapshotInstance.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ResumeSnapshotInstanceRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ResumeSnapshotInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResumeSnapshotInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResumeSnapshotInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

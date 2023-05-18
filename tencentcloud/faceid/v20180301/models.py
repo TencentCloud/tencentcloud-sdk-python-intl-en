@@ -721,9 +721,9 @@ Default value: `liveness`.
 `4`: Motion- and reflection-based liveness detection.
 Default value: `4`.
         :type SecureLevel: str
-        :param Image: The image for comparison in the `compare` (liveness detection and face comparison) mode. This parameter is required when the value of `CheckMode` is `compare`.
+        :param Image: The photo (in Base64) to compare. This parameter is required when the value of `CheckMode` is `compare`.
         :type Image: str
-        :param Extra: The pass-through parameter.
+        :param Extra: The pass-through parameter, which can be omitted if there are no special requirements.
         :type Extra: str
         """
         self.CheckMode = None

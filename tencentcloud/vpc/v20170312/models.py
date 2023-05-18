@@ -1353,6 +1353,56 @@ class AttachNetworkInterfaceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AttachSnapshotInstancesRequest(AbstractModel):
+    """AttachSnapshotInstances request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SnapshotPolicyId: Snapshot policy IDs
+        :type SnapshotPolicyId: str
+        :param Instances: Information of associated instances
+        :type Instances: list of SnapshotInstance
+        """
+        self.SnapshotPolicyId = None
+        self.Instances = None
+
+
+    def _deserialize(self, params):
+        self.SnapshotPolicyId = params.get("SnapshotPolicyId")
+        if params.get("Instances") is not None:
+            self.Instances = []
+            for item in params.get("Instances"):
+                obj = SnapshotInstance()
+                obj._deserialize(item)
+                self.Instances.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AttachSnapshotInstancesResponse(AbstractModel):
+    """AttachSnapshotInstances response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class AuditCrossBorderComplianceRequest(AbstractModel):
     """AuditCrossBorderCompliance request structure.
 
@@ -1402,6 +1452,34 @@ class AuditCrossBorderComplianceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class BackupPolicy(AbstractModel):
+    """Details of scheduled snapshot policy
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BackupDay: Scheduled backup day. Values: `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`.
+        :type BackupDay: str
+        :param BackupTime: Backup point in time. Format: HH:mm:ss.
+        :type BackupTime: str
+        """
+        self.BackupDay = None
+        self.BackupTime = None
+
+
+    def _deserialize(self, params):
+        self.BackupDay = params.get("BackupDay")
+        self.BackupTime = params.get("BackupTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BandwidthPackage(AbstractModel):
     """The structure of information of the bandwidth package.
 
@@ -1411,7 +1489,7 @@ class BandwidthPackage(AbstractModel):
         r"""
         :param BandwidthPackageId: The unique ID of the bandwidth package.
         :type BandwidthPackageId: str
-        :param NetworkType: The bandwidth package type. Valid values: 'BGP', 'SINGLEISP', and 'ANYCAST'
+        :param NetworkType: Bandwidth package type. Values: `BGP`, `SINGLEISP`, `ANYCAST`, `SINGLEISP_CMCC`, `SINGLEISP_CTCC`, `SINGLEISP_CUCC`
         :type NetworkType: str
         :param ChargeType: The bandwidth package billing mode. Valid values: 'TOP5_POSTPAID_BY_MONTH' and 'PERCENT95_POSTPAID_BY_MONTH'
         :type ChargeType: str
@@ -1483,6 +1561,47 @@ class BandwidthPackageBillBandwidth(AbstractModel):
         
 
 
+class BatchModifySnapshotPolicy(AbstractModel):
+    """Modify attributes of a scheduled snapshot policy
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SnapshotPolicyId: Snapshot policy IDs
+        :type SnapshotPolicyId: str
+        :param SnapshotPolicyName: Snapshot policy name
+        :type SnapshotPolicyName: str
+        :param BackupPolicies: Backup policy
+        :type BackupPolicies: list of BackupPolicy
+        :param KeepTime: Snapshot retention period. Range: 1 to 365 days
+        :type KeepTime: int
+        """
+        self.SnapshotPolicyId = None
+        self.SnapshotPolicyName = None
+        self.BackupPolicies = None
+        self.KeepTime = None
+
+
+    def _deserialize(self, params):
+        self.SnapshotPolicyId = params.get("SnapshotPolicyId")
+        self.SnapshotPolicyName = params.get("SnapshotPolicyName")
+        if params.get("BackupPolicies") is not None:
+            self.BackupPolicies = []
+            for item in params.get("BackupPolicies"):
+                obj = BackupPolicy()
+                obj._deserialize(item)
+                self.BackupPolicies.append(obj)
+        self.KeepTime = params.get("KeepTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CCN(AbstractModel):
     """The CCN object
 
@@ -1520,6 +1639,11 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param RouteTableFlag: Whether the multiple route tables feature is enabled for the CCN instance. Valid values: `False`: no; `True`: yes. Default value: `False`.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type RouteTableFlag: bool
+        :param IsSecurityLock: 
+        :type IsSecurityLock: bool
+        :param RouteBroadcastPolicyFlag: Status of CCN route broadcasting policy. Values: `False` (Disabled), `True` (Enabled)
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type RouteBroadcastPolicyFlag: bool
         """
         self.CcnId = None
         self.CcnName = None
@@ -1534,6 +1658,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.RoutePriorityFlag = None
         self.RouteTableCount = None
         self.RouteTableFlag = None
+        self.IsSecurityLock = None
+        self.RouteBroadcastPolicyFlag = None
 
 
     def _deserialize(self, params):
@@ -1555,6 +1681,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self.RoutePriorityFlag = params.get("RoutePriorityFlag")
         self.RouteTableCount = params.get("RouteTableCount")
         self.RouteTableFlag = params.get("RouteTableFlag")
+        self.IsSecurityLock = params.get("IsSecurityLock")
+        self.RouteBroadcastPolicyFlag = params.get("RouteBroadcastPolicyFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3951,6 +4079,61 @@ class CreateServiceTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateSnapshotPoliciesRequest(AbstractModel):
+    """CreateSnapshotPolicies request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SnapshotPolicies: Details of a snapshot policy
+        :type SnapshotPolicies: list of SnapshotPolicy
+        """
+        self.SnapshotPolicies = None
+
+
+    def _deserialize(self, params):
+        if params.get("SnapshotPolicies") is not None:
+            self.SnapshotPolicies = []
+            for item in params.get("SnapshotPolicies"):
+                obj = SnapshotPolicy()
+                obj._deserialize(item)
+                self.SnapshotPolicies.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSnapshotPoliciesResponse(AbstractModel):
+    """CreateSnapshotPolicies response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SnapshotPolicies: Snapshot policies
+        :type SnapshotPolicies: list of SnapshotPolicy
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SnapshotPolicies = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SnapshotPolicies") is not None:
+            self.SnapshotPolicies = []
+            for item in params.get("SnapshotPolicies"):
+                obj = SnapshotPolicy()
+                obj._deserialize(item)
+                self.SnapshotPolicies.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class CreateSubnetRequest(AbstractModel):
     """CreateSubnet request structure.
 
@@ -5944,6 +6127,47 @@ class DeleteServiceTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteSnapshotPoliciesRequest(AbstractModel):
+    """DeleteSnapshotPolicies request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SnapshotPolicyIds: Snapshot policy IDs
+        :type SnapshotPolicyIds: list of str
+        """
+        self.SnapshotPolicyIds = None
+
+
+    def _deserialize(self, params):
+        self.SnapshotPolicyIds = params.get("SnapshotPolicyIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteSnapshotPoliciesResponse(AbstractModel):
+    """DeleteSnapshotPolicies response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteSubnetRequest(AbstractModel):
     """DeleteSubnet request structure.
 
@@ -6821,9 +7045,9 @@ class DescribeBandwidthPackagesRequest(AbstractModel):
 <li> tag-value - String - Required: No - (Filter condition) Filter by tag value.</li>
 <li> tag:tag-key - String - Required: No - (Filter condition) Filter by tag key-value pair. Use a specific tag key to replace `tag-key`.</li>
         :type Filters: list of Filter
-        :param Offset: Offset of the query results
+        :param Offset: Offset. This value defaults to 0. For more information, see the relevant sections in API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :type Offset: int
-        :param Limit: Max number of the bandwidth packages to be returned.
+        :param Limit: Number of bandwidth packages returned. This value defaults to 20. The maximum is 100. For more information, see the relevant sections in API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :type Limit: int
         """
         self.BandwidthPackageIds = None
@@ -9407,6 +9631,314 @@ class DescribeServiceTemplatesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSgSnapshotFileContentRequest(AbstractModel):
+    """DescribeSgSnapshotFileContent request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SnapshotPolicyId: Snapshot policy IDs
+        :type SnapshotPolicyId: str
+        :param SnapshotFileId: Snapshot file ID
+        :type SnapshotFileId: str
+        :param SecurityGroupId: Security group ID
+        :type SecurityGroupId: str
+        """
+        self.SnapshotPolicyId = None
+        self.SnapshotFileId = None
+        self.SecurityGroupId = None
+
+
+    def _deserialize(self, params):
+        self.SnapshotPolicyId = params.get("SnapshotPolicyId")
+        self.SnapshotFileId = params.get("SnapshotFileId")
+        self.SecurityGroupId = params.get("SecurityGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSgSnapshotFileContentResponse(AbstractModel):
+    """DescribeSgSnapshotFileContent response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Security group ID
+        :type InstanceId: str
+        :param SnapshotPolicyId: Snapshot policy IDs
+        :type SnapshotPolicyId: str
+        :param SnapshotFileId: Snapshot file ID
+        :type SnapshotFileId: str
+        :param BackupTime: Backup time
+        :type BackupTime: str
+        :param Operator: Operator
+        :type Operator: str
+        :param OriginalData: Original data
+        :type OriginalData: list of SecurityGroupPolicy
+        :param BackupData: Backup data
+        :type BackupData: list of SecurityGroupPolicy
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.InstanceId = None
+        self.SnapshotPolicyId = None
+        self.SnapshotFileId = None
+        self.BackupTime = None
+        self.Operator = None
+        self.OriginalData = None
+        self.BackupData = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.SnapshotPolicyId = params.get("SnapshotPolicyId")
+        self.SnapshotFileId = params.get("SnapshotFileId")
+        self.BackupTime = params.get("BackupTime")
+        self.Operator = params.get("Operator")
+        if params.get("OriginalData") is not None:
+            self.OriginalData = []
+            for item in params.get("OriginalData"):
+                obj = SecurityGroupPolicy()
+                obj._deserialize(item)
+                self.OriginalData.append(obj)
+        if params.get("BackupData") is not None:
+            self.BackupData = []
+            for item in params.get("BackupData"):
+                obj = SecurityGroupPolicy()
+                obj._deserialize(item)
+                self.BackupData.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSnapshotAttachedInstancesRequest(AbstractModel):
+    """DescribeSnapshotAttachedInstances request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SnapshotPolicyId: Snapshot policy IDs
+        :type SnapshotPolicyId: str
+        :param Filters: Filters
+Values:
+<li>`instance-id`: Instance ID</li>
+<li>`instance-region`: Instance region</li>
+        :type Filters: list of Filter
+        :param Offset: Offset. Default value: `0`.
+        :type Offset: int
+        :param Limit: Number of returned results. Default value: 20. Maximum value: 200.
+        :type Limit: int
+        """
+        self.SnapshotPolicyId = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.SnapshotPolicyId = params.get("SnapshotPolicyId")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSnapshotAttachedInstancesResponse(AbstractModel):
+    """DescribeSnapshotAttachedInstances response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceSet: List of instances
+        :type InstanceSet: list of SnapshotInstance
+        :param TotalCount: The number of eligible objects.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.InstanceSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceSet") is not None:
+            self.InstanceSet = []
+            for item in params.get("InstanceSet"):
+                obj = SnapshotInstance()
+                obj._deserialize(item)
+                self.InstanceSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSnapshotFilesRequest(AbstractModel):
+    """DescribeSnapshotFiles request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BusinessType: Type of associated resource. Values: `securitygroup`
+        :type BusinessType: str
+        :param InstanceId: ID of the instance.
+        :type InstanceId: str
+        :param StartDate: Start time. Format: %Y-%m-%d %H:%M:%S
+        :type StartDate: str
+        :param EndDate: End time. Format: %Y-%m-%d %H:%M:%S
+        :type EndDate: str
+        :param Offset: Offset. Default value: `0`.
+        :type Offset: int
+        :param Limit: Number of returned results. Default value: 20. Maximum value: 200.
+        :type Limit: int
+        """
+        self.BusinessType = None
+        self.InstanceId = None
+        self.StartDate = None
+        self.EndDate = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.BusinessType = params.get("BusinessType")
+        self.InstanceId = params.get("InstanceId")
+        self.StartDate = params.get("StartDate")
+        self.EndDate = params.get("EndDate")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSnapshotFilesResponse(AbstractModel):
+    """DescribeSnapshotFiles response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SnapshotFileSet: Snapshot files
+        :type SnapshotFileSet: list of SnapshotFileInfo
+        :param TotalCount: The number of eligible objects.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SnapshotFileSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SnapshotFileSet") is not None:
+            self.SnapshotFileSet = []
+            for item in params.get("SnapshotFileSet"):
+                obj = SnapshotFileInfo()
+                obj._deserialize(item)
+                self.SnapshotFileSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSnapshotPoliciesRequest(AbstractModel):
+    """DescribeSnapshotPolicies request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SnapshotPolicyIds: Snapshot policy IDs
+        :type SnapshotPolicyIds: list of str
+        :param Filters: Filter conditions. `SnapshotPolicyIds` and `Filters` cannot be both specified.
+<li>`snapshot-policy-id` - String - Snapshot policy ID</li>
+<li>`snapshot-policy-name` - String - Snapshot policy name</li>
+        :type Filters: list of Filter
+        :param Offset: Offset. Default value: `0`.
+        :type Offset: int
+        :param Limit: Number of returned results. Default value: 20. Maximum value: 200.
+        :type Limit: int
+        """
+        self.SnapshotPolicyIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.SnapshotPolicyIds = params.get("SnapshotPolicyIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSnapshotPoliciesResponse(AbstractModel):
+    """DescribeSnapshotPolicies response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SnapshotPolicySet: Snapshot policies
+        :type SnapshotPolicySet: list of SnapshotPolicy
+        :param TotalCount: The number of eligible objects.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SnapshotPolicySet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SnapshotPolicySet") is not None:
+            self.SnapshotPolicySet = []
+            for item in params.get("SnapshotPolicySet"):
+                obj = SnapshotPolicy()
+                obj._deserialize(item)
+                self.SnapshotPolicySet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSubnetsRequest(AbstractModel):
     """DescribeSubnets request structure.
 
@@ -10109,17 +10641,27 @@ class DescribeVpcTaskResultResponse(AbstractModel):
         :type Status: str
         :param Output: Output of the async task execution result
         :type Output: str
+        :param Result: Detailed result of an async task, such as the result of batch deleting ENIs.
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type Result: list of VpcTaskResultDetailInfo
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.Status = None
         self.Output = None
+        self.Result = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
         self.Output = params.get("Output")
+        if params.get("Result") is not None:
+            self.Result = []
+            for item in params.get("Result"):
+                obj = VpcTaskResultDetailInfo()
+                obj._deserialize(item)
+                self.Result.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -10669,6 +11211,56 @@ class DetachNetworkInterfaceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DetachSnapshotInstancesRequest(AbstractModel):
+    """DetachSnapshotInstances request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SnapshotPolicyId: Snapshot policy IDs
+        :type SnapshotPolicyId: str
+        :param Instances: Information of instances
+        :type Instances: list of SnapshotInstance
+        """
+        self.SnapshotPolicyId = None
+        self.Instances = None
+
+
+    def _deserialize(self, params):
+        self.SnapshotPolicyId = params.get("SnapshotPolicyId")
+        if params.get("Instances") is not None:
+            self.Instances = []
+            for item in params.get("Instances"):
+                obj = SnapshotInstance()
+                obj._deserialize(item)
+                self.Instances.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DetachSnapshotInstancesResponse(AbstractModel):
+    """DetachSnapshotInstances response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DirectConnectGateway(AbstractModel):
     """Direct Connect gateway object.
 
@@ -10986,6 +11578,47 @@ VPN gateway instance, such as `vpn-ltjahce6`.
 
 class DisableGatewayFlowMonitorResponse(AbstractModel):
     """DisableGatewayFlowMonitor response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DisableSnapshotPoliciesRequest(AbstractModel):
+    """DisableSnapshotPolicies request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SnapshotPolicyIds: Snapshot policy IDs
+        :type SnapshotPolicyIds: list of str
+        """
+        self.SnapshotPolicyIds = None
+
+
+    def _deserialize(self, params):
+        self.SnapshotPolicyIds = params.get("SnapshotPolicyIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisableSnapshotPoliciesResponse(AbstractModel):
+    """DisableSnapshotPolicies response structure.
 
     """
 
@@ -11453,6 +12086,47 @@ VPN gateway instance, such as `vpn-ltjahce6`.
 
 class EnableGatewayFlowMonitorResponse(AbstractModel):
     """EnableGatewayFlowMonitor response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class EnableSnapshotPoliciesRequest(AbstractModel):
+    """EnableSnapshotPolicies request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SnapshotPolicyIds: Snapshot policy IDs
+        :type SnapshotPolicyIds: list of str
+        """
+        self.SnapshotPolicyIds = None
+
+
+    def _deserialize(self, params):
+        self.SnapshotPolicyIds = params.get("SnapshotPolicyIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnableSnapshotPoliciesResponse(AbstractModel):
+    """EnableSnapshotPolicies response structure.
 
     """
 
@@ -14429,6 +15103,52 @@ class ModifyServiceTemplateGroupAttributeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifySnapshotPoliciesRequest(AbstractModel):
+    """ModifySnapshotPolicies request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SnapshotPoliciesInfo: Modify snapshot policies
+        :type SnapshotPoliciesInfo: list of BatchModifySnapshotPolicy
+        """
+        self.SnapshotPoliciesInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("SnapshotPoliciesInfo") is not None:
+            self.SnapshotPoliciesInfo = []
+            for item in params.get("SnapshotPoliciesInfo"):
+                obj = BatchModifySnapshotPolicy()
+                obj._deserialize(item)
+                self.SnapshotPoliciesInfo.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySnapshotPoliciesResponse(AbstractModel):
+    """ModifySnapshotPolicies response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifySubnetAttributeRequest(AbstractModel):
     """ModifySubnetAttribute request structure.
 
@@ -16918,6 +17638,55 @@ class ResourceDashboard(AbstractModel):
         
 
 
+class ResumeSnapshotInstanceRequest(AbstractModel):
+    """ResumeSnapshotInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SnapshotPolicyId: Snapshot policy IDs
+        :type SnapshotPolicyId: str
+        :param SnapshotFileId: Snapshot file ID
+        :type SnapshotFileId: str
+        :param InstanceId: ID of the instance.
+        :type InstanceId: str
+        """
+        self.SnapshotPolicyId = None
+        self.SnapshotFileId = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.SnapshotPolicyId = params.get("SnapshotPolicyId")
+        self.SnapshotFileId = params.get("SnapshotFileId")
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResumeSnapshotInstanceResponse(AbstractModel):
+    """ResumeSnapshotInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ReturnNormalAddressesRequest(AbstractModel):
     """ReturnNormalAddresses request structure.
 
@@ -16925,7 +17694,7 @@ class ReturnNormalAddressesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AddressIps: 1
+        :param AddressIps: EIP addresses. Example: 101.35.139.183
         :type AddressIps: list of str
         """
         self.AddressIps = None
@@ -17652,6 +18421,154 @@ class SetVpnGatewaysRenewFlagResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SnapshotFileInfo(AbstractModel):
+    """Snapshot file information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SnapshotPolicyId: Snapshot policy ID
+        :type SnapshotPolicyId: str
+        :param InstanceId: ID of the instance.
+        :type InstanceId: str
+        :param SnapshotFileId: Snapshot file ID
+        :type SnapshotFileId: str
+        :param BackupTime: Backup time
+        :type BackupTime: str
+        :param Operator: Operator UIN
+        :type Operator: str
+        """
+        self.SnapshotPolicyId = None
+        self.InstanceId = None
+        self.SnapshotFileId = None
+        self.BackupTime = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.SnapshotPolicyId = params.get("SnapshotPolicyId")
+        self.InstanceId = params.get("InstanceId")
+        self.SnapshotFileId = params.get("SnapshotFileId")
+        self.BackupTime = params.get("BackupTime")
+        self.Operator = params.get("Operator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SnapshotInstance(AbstractModel):
+    """Information of instance associated with the snapshot policy
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: ID of the instance.
+        :type InstanceId: str
+        :param InstanceType: Type of associated resource. Values: `securitygroup`
+        :type InstanceType: str
+        :param InstanceRegion: Instance region
+        :type InstanceRegion: str
+        :param SnapshotPolicyId: Snapshot policy IDs
+        :type SnapshotPolicyId: str
+        :param InstanceName: The instance name.
+        :type InstanceName: str
+        """
+        self.InstanceId = None
+        self.InstanceType = None
+        self.InstanceRegion = None
+        self.SnapshotPolicyId = None
+        self.InstanceName = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceType = params.get("InstanceType")
+        self.InstanceRegion = params.get("InstanceRegion")
+        self.SnapshotPolicyId = params.get("SnapshotPolicyId")
+        self.InstanceName = params.get("InstanceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SnapshotPolicy(AbstractModel):
+    """Snapshot policy
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SnapshotPolicyName: Snapshot policy name
+        :type SnapshotPolicyName: str
+        :param BackupType: Backup policy type. Values: `operate` (Manual backup); `time` (Scheduled backup)
+        :type BackupType: str
+        :param KeepTime: Snapshot retention period in days. Range: 1 to 365.
+        :type KeepTime: int
+        :param CreateNewCos: Whether to create a new COS bucket. It defaults to `False`.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type CreateNewCos: bool
+        :param CosRegion: Region of the COS bucket
+        :type CosRegion: str
+        :param CosBucket: COS bucket
+        :type CosBucket: str
+        :param SnapshotPolicyId: Snapshot policy ID
+        :type SnapshotPolicyId: str
+        :param BackupPolicies: Scheduled backup policies
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type BackupPolicies: list of BackupPolicy
+        :param Enable: Whether to enable the policy. Values: `True` (default), `False`
+        :type Enable: bool
+        :param CreateTime: Creation time
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type CreateTime: str
+        """
+        self.SnapshotPolicyName = None
+        self.BackupType = None
+        self.KeepTime = None
+        self.CreateNewCos = None
+        self.CosRegion = None
+        self.CosBucket = None
+        self.SnapshotPolicyId = None
+        self.BackupPolicies = None
+        self.Enable = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.SnapshotPolicyName = params.get("SnapshotPolicyName")
+        self.BackupType = params.get("BackupType")
+        self.KeepTime = params.get("KeepTime")
+        self.CreateNewCos = params.get("CreateNewCos")
+        self.CosRegion = params.get("CosRegion")
+        self.CosBucket = params.get("CosBucket")
+        self.SnapshotPolicyId = params.get("SnapshotPolicyId")
+        if params.get("BackupPolicies") is not None:
+            self.BackupPolicies = []
+            for item in params.get("BackupPolicies"):
+                obj = BackupPolicy()
+                obj._deserialize(item)
+                self.BackupPolicies.append(obj)
+        self.Enable = params.get("Enable")
+        self.CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SourceIpTranslationNatRule(AbstractModel):
     """SNAT rule of a NAT Gateway
 
@@ -17971,9 +18888,9 @@ class TransformAddressResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 
+        :param TaskId: The async task ID. You can use the [DescribeTaskResult](https://intl.cloud.tencent.com/document/api/215/36271?from_cn_redirect=1) API to query the task status.
         :type TaskId: int
-        :param AddressId: 
+        :param AddressId: The unique ID after converting to EIP
         :type AddressId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -18383,6 +19300,36 @@ class VpcPrivateIpAddress(AbstractModel):
         
 
 
+class VpcTaskResultDetailInfo(AbstractModel):
+    """Result of a VPC-related task
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceId: Resource ID 
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :type ResourceId: str
+        :param Status: Status
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Status: str
+        """
+        self.ResourceId = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.ResourceId = params.get("ResourceId")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class VpnConnection(AbstractModel):
     """VPN tunnel object.
 
@@ -18751,14 +19698,18 @@ class VpngwCcnRoutes(AbstractModel):
 ENABLE: enable the route
 DISABLE: do not enable the route
         :type Status: str
+        :param DestinationCidrBlock: Route CIDR block
+        :type DestinationCidrBlock: str
         """
         self.RouteId = None
         self.Status = None
+        self.DestinationCidrBlock = None
 
 
     def _deserialize(self, params):
         self.RouteId = params.get("RouteId")
         self.Status = params.get("Status")
+        self.DestinationCidrBlock = params.get("DestinationCidrBlock")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
