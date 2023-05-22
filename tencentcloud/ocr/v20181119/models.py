@@ -415,6 +415,35 @@ class GeneralBasicOCRResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GroupInfo(AbstractModel):
+    """The sequence number of an element group in the image
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Groups: The elements in each line.
+        :type Groups: list of LineInfo
+        """
+        self.Groups = None
+
+
+    def _deserialize(self, params):
+        if params.get("Groups") is not None:
+            self.Groups = []
+            for item in params.get("Groups"):
+                obj = LineInfo()
+                obj._deserialize(item)
+                self.Groups.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class HKIDCardOCRRequest(AbstractModel):
     """HKIDCardOCR request structure.
 
@@ -564,6 +593,93 @@ class ItemCoord(AbstractModel):
         self.Y = params.get("Y")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ItemInfo(AbstractModel):
+    """Structured element group
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: The key information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Key: :class:`tencentcloud.ocr.v20181119.models.Key`
+        :param Value: The value information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Value: :class:`tencentcloud.ocr.v20181119.models.Value`
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        if params.get("Key") is not None:
+            self.Key = Key()
+            self.Key._deserialize(params.get("Key"))
+        if params.get("Value") is not None:
+            self.Value = Value()
+            self.Value._deserialize(params.get("Value"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Key(AbstractModel):
+    """Key information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AutoName: The name of the recognized field.
+        :type AutoName: str
+        """
+        self.AutoName = None
+
+
+    def _deserialize(self, params):
+        self.AutoName = params.get("AutoName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LineInfo(AbstractModel):
+    """Line number
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Lines: The elements in a line
+        :type Lines: list of ItemInfo
+        """
+        self.Lines = None
+
+
+    def _deserialize(self, params):
+        if params.get("Lines") is not None:
+            self.Lines = []
+            for item in params.get("Lines"):
+                obj = ItemInfo()
+                obj._deserialize(item)
+                self.Lines.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -793,6 +909,51 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.Surname = params.get("Surname")
         self.GivenName = params.get("GivenName")
         self.RequestId = params.get("RequestId")
+
+
+class Polygon(AbstractModel):
+    """The coordinates of the four vertices of the text
+    Note: This field may return null, indicating that no valid values can be obtained.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LeftTop: The coordinates of the upper-left vertex.
+        :type LeftTop: :class:`tencentcloud.ocr.v20181119.models.Coord`
+        :param RightTop: The coordinates of the upper-right vertex.
+        :type RightTop: :class:`tencentcloud.ocr.v20181119.models.Coord`
+        :param RightBottom: The coordinates of the lower-left vertex.
+        :type RightBottom: :class:`tencentcloud.ocr.v20181119.models.Coord`
+        :param LeftBottom: The coordinates of the lower-right vertex.
+        :type LeftBottom: :class:`tencentcloud.ocr.v20181119.models.Coord`
+        """
+        self.LeftTop = None
+        self.RightTop = None
+        self.RightBottom = None
+        self.LeftBottom = None
+
+
+    def _deserialize(self, params):
+        if params.get("LeftTop") is not None:
+            self.LeftTop = Coord()
+            self.LeftTop._deserialize(params.get("LeftTop"))
+        if params.get("RightTop") is not None:
+            self.RightTop = Coord()
+            self.RightTop._deserialize(params.get("RightTop"))
+        if params.get("RightBottom") is not None:
+            self.RightBottom = Coord()
+            self.RightBottom._deserialize(params.get("RightBottom"))
+        if params.get("LeftBottom") is not None:
+            self.LeftBottom = Coord()
+            self.LeftBottom._deserialize(params.get("LeftBottom"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class RecognizeIndonesiaIDCardOCRRequest(AbstractModel):
@@ -1340,6 +1501,98 @@ class RecognizePhilippinesVoteIDOCRResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SmartStructuralOCRV2Request(AbstractModel):
+    """SmartStructuralOCRV2 request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ImageUrl: The URL of the image.
+Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
+Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
+We recommend that you store the image in Tencent Cloud for higher download speed and stability.
+The download speed and stability of non-Tencent Cloud URLs may be low.
+        :type ImageUrl: str
+        :param ImageBase64: The Base64-encoded value of the image.
+Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
+Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
+Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` is used.
+        :type ImageBase64: str
+        :param IsPdf: Whether to enable PDF recognition. Default value: `false`. If you enable this feature, both images and PDF files can be recognized.
+        :type IsPdf: bool
+        :param PdfPageNumber: The number of the PDF page that needs to be recognized. Only one single PDF page can be recognized. This parameter is valid if the uploaded file is a PDF and the value of `IsPdf` is `true`. Default value: `1`.
+        :type PdfPageNumber: int
+        :param ItemNames: The names of the fields you want to return for the structured information recognition.
+For example, if you want to return only the recognition result of the "Name" and "Gender" fields, set this parameter as follows:
+ItemNames=["Name","Gender"]
+        :type ItemNames: list of str
+        :param ReturnFullText: Whether to enable recognition of all fields.
+        :type ReturnFullText: bool
+        """
+        self.ImageUrl = None
+        self.ImageBase64 = None
+        self.IsPdf = None
+        self.PdfPageNumber = None
+        self.ItemNames = None
+        self.ReturnFullText = None
+
+
+    def _deserialize(self, params):
+        self.ImageUrl = params.get("ImageUrl")
+        self.ImageBase64 = params.get("ImageBase64")
+        self.IsPdf = params.get("IsPdf")
+        self.PdfPageNumber = params.get("PdfPageNumber")
+        self.ItemNames = params.get("ItemNames")
+        self.ReturnFullText = params.get("ReturnFullText")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SmartStructuralOCRV2Response(AbstractModel):
+    """SmartStructuralOCRV2 response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Angle: The rotation angle (degrees) of the text on the image. 0: The text is horizontal. Positive value: The text is rotated clockwise. Negative value: The text is rotated counterclockwise.
+        :type Angle: float
+        :param StructuralList: The structural information (key-value).
+        :type StructuralList: list of GroupInfo
+        :param WordList: The recognized text information.
+        :type WordList: list of WordItem
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Angle = None
+        self.StructuralList = None
+        self.WordList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Angle = params.get("Angle")
+        if params.get("StructuralList") is not None:
+            self.StructuralList = []
+            for item in params.get("StructuralList"):
+                obj = GroupInfo()
+                obj._deserialize(item)
+                self.StructuralList.append(obj)
+        if params.get("WordList") is not None:
+            self.WordList = []
+            for item in params.get("WordList"):
+                obj = WordItem()
+                obj._deserialize(item)
+                self.WordList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class TableOCRRequest(AbstractModel):
     """TableOCR request structure.
 
@@ -1557,6 +1810,67 @@ class TextTable(AbstractModel):
                 obj._deserialize(item)
                 self.Polygon.append(obj)
         self.AdvancedInfo = params.get("AdvancedInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Value(AbstractModel):
+    """Value information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AutoContent: The value of the recognized field.
+        :type AutoContent: str
+        :param Coord: The coordinates of the four vertices.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Coord: :class:`tencentcloud.ocr.v20181119.models.Polygon`
+        """
+        self.AutoContent = None
+        self.Coord = None
+
+
+    def _deserialize(self, params):
+        self.AutoContent = params.get("AutoContent")
+        if params.get("Coord") is not None:
+            self.Coord = Polygon()
+            self.Coord._deserialize(params.get("Coord"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WordItem(AbstractModel):
+    """The recognized text information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DetectedText: The text content.
+        :type DetectedText: str
+        :param Coord: The coordinates of the four vertices.
+        :type Coord: :class:`tencentcloud.ocr.v20181119.models.Polygon`
+        """
+        self.DetectedText = None
+        self.Coord = None
+
+
+    def _deserialize(self, params):
+        self.DetectedText = params.get("DetectedText")
+        if params.get("Coord") is not None:
+            self.Coord = Polygon()
+            self.Coord._deserialize(params.get("Coord"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -848,10 +848,13 @@ class AssignPrivateIpAddressesRequest(AbstractModel):
         :type PrivateIpAddresses: list of PrivateIpAddressSpecification
         :param SecondaryPrivateIpAddressCount: The number of newly-applied private IP addresses. You should provide either this parameter or PrivateIpAddresses, or both. The total number of private IP addresses cannot exceed the quota. For more information, see<a href="/document/product/576/18527">ENI Use Limits</a>.
         :type SecondaryPrivateIpAddressCount: int
+        :param QosLevel: IP service level. It’s used in combination with `SecondaryPrivateIpAddressCount`. Values: `PT` (Gold), `AU` (Silver), `AG` (Bronze) and `DEFAULT`
+        :type QosLevel: str
         """
         self.NetworkInterfaceId = None
         self.PrivateIpAddresses = None
         self.SecondaryPrivateIpAddressCount = None
+        self.QosLevel = None
 
 
     def _deserialize(self, params):
@@ -863,6 +866,7 @@ class AssignPrivateIpAddressesRequest(AbstractModel):
                 obj._deserialize(item)
                 self.PrivateIpAddresses.append(obj)
         self.SecondaryPrivateIpAddressCount = params.get("SecondaryPrivateIpAddressCount")
+        self.QosLevel = params.get("QosLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2455,6 +2459,8 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
         :type PrivateIpAddresses: list of PrivateIpAddressSpecification
         :param SecondaryPrivateIpAddressCount: The number of private IP addresses you can apply for. The total number of private IP addresses cannot exceed the quota.
         :type SecondaryPrivateIpAddressCount: int
+        :param QosLevel: IP service level. It’s used in combination with `SecondaryPrivateIpAddressCount`. Values: `PT` (Gold), `AU` (Silver), `AG` (Bronze) and `DEFAULT`
+        :type QosLevel: str
         :param SecurityGroupIds: The security group to be bound with, such as ['sg-1dd51d'].
         :type SecurityGroupIds: list of str
         :param NetworkInterfaceDescription: The ENI description. You can enter any information within 60 characters.
@@ -2470,6 +2476,7 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
         self.InstanceId = None
         self.PrivateIpAddresses = None
         self.SecondaryPrivateIpAddressCount = None
+        self.QosLevel = None
         self.SecurityGroupIds = None
         self.NetworkInterfaceDescription = None
         self.Tags = None
@@ -2488,6 +2495,7 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
                 obj._deserialize(item)
                 self.PrivateIpAddresses.append(obj)
         self.SecondaryPrivateIpAddressCount = params.get("SecondaryPrivateIpAddressCount")
+        self.QosLevel = params.get("QosLevel")
         self.SecurityGroupIds = params.get("SecurityGroupIds")
         self.NetworkInterfaceDescription = params.get("NetworkInterfaceDescription")
         if params.get("Tags") is not None:
@@ -3601,6 +3609,8 @@ class CreateNetworkInterfaceRequest(AbstractModel):
         :type NetworkInterfaceDescription: str
         :param SecondaryPrivateIpAddressCount: The number of private IP addresses that is newly applied for. The total number of private IP addresses cannot exceed the quota.
         :type SecondaryPrivateIpAddressCount: int
+        :param QosLevel: IP service level. It’s used in combination with `SecondaryPrivateIpAddressCount`. Values: `PT` (Gold), `AU` (Silver), `AG` (Bronze) and `DEFAULT`
+        :type QosLevel: str
         :param SecurityGroupIds: Specifies the security group to be bound with, such as ['sg-1dd51d'].
         :type SecurityGroupIds: list of str
         :param PrivateIpAddresses: The information of the specified private IPs. You can specify a maximum of 10 each time.
@@ -3615,6 +3625,7 @@ class CreateNetworkInterfaceRequest(AbstractModel):
         self.SubnetId = None
         self.NetworkInterfaceDescription = None
         self.SecondaryPrivateIpAddressCount = None
+        self.QosLevel = None
         self.SecurityGroupIds = None
         self.PrivateIpAddresses = None
         self.Tags = None
@@ -3627,6 +3638,7 @@ class CreateNetworkInterfaceRequest(AbstractModel):
         self.SubnetId = params.get("SubnetId")
         self.NetworkInterfaceDescription = params.get("NetworkInterfaceDescription")
         self.SecondaryPrivateIpAddressCount = params.get("SecondaryPrivateIpAddressCount")
+        self.QosLevel = params.get("QosLevel")
         self.SecurityGroupIds = params.get("SecurityGroupIds")
         if params.get("PrivateIpAddresses") is not None:
             self.PrivateIpAddresses = []
@@ -4542,7 +4554,7 @@ class CreateVpnConnectionRequest(AbstractModel):
         r"""
         :param VpnGatewayId: The ID of the VPN gateway instance.
         :type VpnGatewayId: str
-        :param CustomerGatewayId: The ID of the customer gateway, such as `cgw-2wqq41m9`. You can query the customer gateway by using the `DescribeCustomerGateways` API.
+        :param CustomerGatewayId: The ID of the customer gateway, such as `cgw-2wqq41m9`. You can query the customer gateway by using the [DescribeCustomerGateways](https://intl.cloud.tencent.com/document/product/215/17516?from_cn_redirect=1) API.
         :type CustomerGatewayId: str
         :param VpnConnectionName: Gateway can be named freely, but the maximum length is 60 characters.
         :type VpnConnectionName: str
@@ -4559,11 +4571,11 @@ This parameter is optional for a CCN-based VPN tunnel.
         :type IPSECOptionsSpecification: :class:`tencentcloud.vpc.v20170312.models.IPSECOptionsSpecification`
         :param Tags: Bound tags, such as [{"Key": "city", "Value": "shanghai"}].
         :type Tags: list of Tag
-        :param EnableHealthCheck: Whether the tunnel health check is supported.
+        :param EnableHealthCheck: Whether the tunnel health check is supported. The default value is `False`.
         :type EnableHealthCheck: bool
-        :param HealthCheckLocalIp: Local IP address for the health check
+        :param HealthCheckLocalIp: Local IP of health check. It defaults to a random IP within 169.254.128.0/17.
         :type HealthCheckLocalIp: str
-        :param HealthCheckRemoteIp: Peer IP address for the health check
+        :param HealthCheckRemoteIp: Peer IP of health check. It defaults to a random IP within 169.254.128.0/17.
         :type HealthCheckRemoteIp: str
         :param RouteType: Tunnel type. Valid values: `STATIC`, `StaticRoute`, and `Policy`.
         :type RouteType: str
@@ -5296,7 +5308,7 @@ class DeleteCustomerGatewayRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CustomerGatewayId: The ID of the customer gateway, such as `cgw-2wqq41m9`. You can query the customer gateway by using the `DescribeCustomerGateways` API.
+        :param CustomerGatewayId: The ID of the customer gateway, such as `cgw-2wqq41m9`. You can query the customer gateway by using the [DescribeCustomerGateways](https://intl.cloud.tencent.com/document/api/215/17516?from_cn_redirect=1) API.
         :type CustomerGatewayId: str
         """
         self.CustomerGatewayId = None
@@ -7854,7 +7866,7 @@ class DescribeFlowLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpcId: ID of the VPC instance
+        :param VpcId: ID of the VPC instance.
         :type VpcId: str
         :param FlowLogId: The unique ID of the flow log.
         :type FlowLogId: str
@@ -9939,6 +9951,56 @@ class DescribeSnapshotPoliciesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSubnetResourceDashboardRequest(AbstractModel):
+    """DescribeSubnetResourceDashboard request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SubnetIds: Subnet instance ID, such as `subnet-f1xjkw1b`.
+        :type SubnetIds: list of str
+        """
+        self.SubnetIds = None
+
+
+    def _deserialize(self, params):
+        self.SubnetIds = params.get("SubnetIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSubnetResourceDashboardResponse(AbstractModel):
+    """DescribeSubnetResourceDashboard response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceStatisticsSet: Information of resources returned
+        :type ResourceStatisticsSet: list of ResourceStatistics
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ResourceStatisticsSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ResourceStatisticsSet") is not None:
+            self.ResourceStatisticsSet = []
+            for item in params.get("ResourceStatisticsSet"):
+                obj = ResourceStatistics()
+                obj._deserialize(item)
+                self.ResourceStatisticsSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSubnetsRequest(AbstractModel):
     """DescribeSubnets request structure.
 
@@ -10145,6 +10207,78 @@ class DescribeTrafficPackagesResponse(AbstractModel):
                 obj = TrafficPackage()
                 obj._deserialize(item)
                 self.TrafficPackageSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeUsedIpAddressRequest(AbstractModel):
+    """DescribeUsedIpAddress request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VpcId: VPC instance ID.
+        :type VpcId: str
+        :param SubnetId: Subnet instance ID
+        :type SubnetId: str
+        :param IpAddresses: IPs to query
+        :type IpAddresses: list of str
+        :param Offset: Offset
+        :type Offset: int
+        :param Limit: The number of requested objects.
+        :type Limit: int
+        """
+        self.VpcId = None
+        self.SubnetId = None
+        self.IpAddresses = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.IpAddresses = params.get("IpAddresses")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUsedIpAddressResponse(AbstractModel):
+    """DescribeUsedIpAddress response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IpAddressStates: Information of resources bound with the queried IPs 
+Note: This parameter may return null, indicating that no valid values can be obtained.
+        :type IpAddressStates: list of IpAddressStates
+        :param TotalCount: Number of taken IPs 
+Note: This parameter may return null, indicating that no valid values can be obtained.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.IpAddressStates = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("IpAddressStates") is not None:
+            self.IpAddressStates = []
+            for item in params.get("IpAddressStates"):
+                obj = IpAddressStates()
+                obj._deserialize(item)
+                self.IpAddressStates.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -12344,7 +12478,7 @@ class Filter(AbstractModel):
         r"""
         :param Name: The attribute name. If more than one Filter exists, the logical relation between these Filters is `AND`.
         :type Name: str
-        :param Values: The attribute value. If there are multiple Values for one Filter, the logical relation between these Values under the same Filter is `OR`.
+        :param Values: Attribute value. If multiple values exist in one filter, the logical relationship between these values is `OR`. For a `bool` parameter, the valid values include `TRUE` and `FALSE`.
         :type Values: list of str
         """
         self.Name = None
@@ -13113,6 +13247,46 @@ class InstanceStatistic(AbstractModel):
     def _deserialize(self, params):
         self.InstanceType = params.get("InstanceType")
         self.InstanceCount = params.get("InstanceCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IpAddressStates(AbstractModel):
+    """Information of resources bound with the queried IPs
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VpcId: VPC instance ID
+        :type VpcId: str
+        :param SubnetId: Subnet instance ID
+        :type SubnetId: str
+        :param IpAddress: IP address
+        :type IpAddress: str
+        :param ResourceType: Resource type
+        :type ResourceType: str
+        :param ResourceId: Resource ID
+        :type ResourceId: str
+        """
+        self.VpcId = None
+        self.SubnetId = None
+        self.IpAddress = None
+        self.ResourceType = None
+        self.ResourceId = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.IpAddress = params.get("IpAddress")
+        self.ResourceType = params.get("ResourceType")
+        self.ResourceId = params.get("ResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14025,7 +14199,7 @@ class ModifyCustomerGatewayAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CustomerGatewayId: The ID of the customer gateway, such as `cgw-2wqq41m9`. You can query the customer gateway by using the `DescribeCustomerGateways` API.
+        :param CustomerGatewayId: The ID of the customer gateway, such as `cgw-2wqq41m9`. You can query the customer gateway by using the [DescribeCustomerGateways](https://intl.cloud.tencent.com/document/api/215/17516?from_cn_redirect=1) API.
         :type CustomerGatewayId: str
         :param CustomerGatewayName: Customer gateway can be named freely, but the maximum length is 60 characters.
         :type CustomerGatewayName: str
@@ -14127,7 +14301,7 @@ class ModifyFlowLogAttributeRequest(AbstractModel):
         :type FlowLogId: str
         :param VpcId: The VPC ID or unique ID of the resource. We recommend using the unique ID. This parameter is required unless the attributes of a CCN flow log is modified.
         :type VpcId: str
-        :param FlowLogName: The name of the flow log.
+        :param FlowLogName: The name of the flow log instance.
         :type FlowLogName: str
         :param FlowLogDescription: The description of the flow log.
         :type FlowLogDescription: str
@@ -15423,13 +15597,13 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
         :type VpnConnectionName: str
         :param PreShareKey: The pre-shared key.
         :type PreShareKey: str
-        :param SecurityPolicyDatabases: The SPD policy group, for example: {"10.0.0.5/24":["172.123.10.5/16"]}. 10.0.0.5/24 is the VPC internal IP range, and 172.123.10.5/16 is the IDC IP range. The user specifies the IP range in the VPC that can communicate with the IP range in the IDC.
+        :param SecurityPolicyDatabases: SPD policy group. Taking {"10.0.0.5/24":["172.123.10.5/16"]} as an example, 10.0.0.5/24 is the VPC private IP range, and 172.123.10.5/16 is the IDC IP range. The user specifies the IP range in the VPC that can communicate with the IP range in the IDC.
         :type SecurityPolicyDatabases: list of SecurityPolicyDatabase
         :param IKEOptionsSpecification: IKE (Internet Key Exchange) configuration. IKE comes with a self-protection mechanism. The network security protocol is configured by the user.
         :type IKEOptionsSpecification: :class:`tencentcloud.vpc.v20170312.models.IKEOptionsSpecification`
         :param IPSECOptionsSpecification: IPSec configuration. The IPSec secure session configuration is provided by Tencent Cloud.
         :type IPSECOptionsSpecification: :class:`tencentcloud.vpc.v20170312.models.IPSECOptionsSpecification`
-        :param EnableHealthCheck: Whether to enable the tunnel health check.
+        :param EnableHealthCheck: Whether to enable the tunnel health check. The default value is `False`.
         :type EnableHealthCheck: bool
         :param HealthCheckLocalIp: Local IP address for the tunnel health check
         :type HealthCheckLocalIp: str
@@ -15443,6 +15617,8 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
         :type DpdTimeout: str
         :param DpdAction: The action after DPD timeout. Valid values: `clear` (disconnect) and `restart` (try again). It’s valid when `DpdEnable` is `1`. 
         :type DpdAction: str
+        :param CustomerGatewayId: Peer gateway ID. You can update tunnels of V4.0 and later gateways.
+        :type CustomerGatewayId: str
         """
         self.VpnConnectionId = None
         self.VpnConnectionName = None
@@ -15457,6 +15633,7 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
         self.DpdEnable = None
         self.DpdTimeout = None
         self.DpdAction = None
+        self.CustomerGatewayId = None
 
 
     def _deserialize(self, params):
@@ -15482,6 +15659,7 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
         self.DpdEnable = params.get("DpdEnable")
         self.DpdTimeout = params.get("DpdTimeout")
         self.DpdAction = params.get("DpdAction")
+        self.CustomerGatewayId = params.get("CustomerGatewayId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -16575,7 +16753,7 @@ class Price(AbstractModel):
         r"""
         :param InstancePrice: Instance price.
         :type InstancePrice: :class:`tencentcloud.vpc.v20170312.models.ItemPrice`
-        :param BandwidthPrice: Network price.
+        :param BandwidthPrice: Bandwidth price
         :type BandwidthPrice: :class:`tencentcloud.vpc.v20170312.models.ItemPrice`
         """
         self.InstancePrice = None
@@ -16623,6 +16801,8 @@ MIGRATING: Migrating
 DELETING: Deleting
 AVAILABLE: Available
         :type State: str
+        :param QosLevel: IP service level. Values: `PT` (Gold), `AU` (Silver), `AG` (Bronze) and `DEFAULT`
+        :type QosLevel: str
         """
         self.PrivateIpAddress = None
         self.Primary = None
@@ -16631,6 +16811,7 @@ AVAILABLE: Available
         self.Description = None
         self.IsWanIpBlocked = None
         self.State = None
+        self.QosLevel = None
 
 
     def _deserialize(self, params):
@@ -16641,6 +16822,7 @@ AVAILABLE: Available
         self.Description = params.get("Description")
         self.IsWanIpBlocked = params.get("IsWanIpBlocked")
         self.State = params.get("State")
+        self.QosLevel = params.get("QosLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -17382,7 +17564,7 @@ class ResetVpnGatewayInternetMaxBandwidthRequest(AbstractModel):
         r"""
         :param VpnGatewayId: The ID of the VPN gateway instance.
         :type VpnGatewayId: str
-        :param InternetMaxBandwidthOut: The public network bandwidth configuration. Available bandwidth specifications: 5, 10, 20, 50, and 100. Unit: Mbps.
+        :param InternetMaxBandwidthOut: The new bandwidth cap in Mbps. Values: `5`, `10`, `20`, `50`, `100`, `200`, `500` and `1000`. The adjustment of the VPN gateway bandwidth is limited to [5,100] Mbps and [200,1000] Mbps.
         :type InternetMaxBandwidthOut: int
         """
         self.VpnGatewayId = None
@@ -17638,6 +17820,79 @@ class ResourceDashboard(AbstractModel):
         
 
 
+class ResourceStatistics(AbstractModel):
+    """Information of associated resources
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VpcId: VPC instance ID, such as vpc-f1xjkw1b.
+        :type VpcId: str
+        :param SubnetId: Subnet instance ID, such as `subnet-bthucmmy`.
+        :type SubnetId: str
+        :param Ip: The total number of used IP addresses.
+        :type Ip: int
+        :param ResourceStatisticsItemSet: Information of associated resources
+        :type ResourceStatisticsItemSet: list of ResourceStatisticsItem
+        """
+        self.VpcId = None
+        self.SubnetId = None
+        self.Ip = None
+        self.ResourceStatisticsItemSet = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.Ip = params.get("Ip")
+        if params.get("ResourceStatisticsItemSet") is not None:
+            self.ResourceStatisticsItemSet = []
+            for item in params.get("ResourceStatisticsItemSet"):
+                obj = ResourceStatisticsItem()
+                obj._deserialize(item)
+                self.ResourceStatisticsItemSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResourceStatisticsItem(AbstractModel):
+    """Resource statistical items
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceType: Resource type, such as CVM, ENI
+        :type ResourceType: str
+        :param ResourceName: Resource name.
+        :type ResourceName: str
+        :param ResourceCount: Number of resources
+        :type ResourceCount: int
+        """
+        self.ResourceType = None
+        self.ResourceName = None
+        self.ResourceCount = None
+
+
+    def _deserialize(self, params):
+        self.ResourceType = params.get("ResourceType")
+        self.ResourceName = params.get("ResourceName")
+        self.ResourceCount = params.get("ResourceCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ResumeSnapshotInstanceRequest(AbstractModel):
     """ResumeSnapshotInstance request structure.
 
@@ -17748,7 +18003,8 @@ class Route(AbstractModel):
 `EIP`: public IP address of the CVM;
 `LOCAL_GATEWAY`: local gateway.
         :type GatewayType: str
-        :param GatewayId: Next hop address. You simply need to specify the gateway ID of a different next hop type, and the system will automatically match the next hop address.
+        :param GatewayId: Next hop address. You simply need to specify the gateway ID of a different next hop type, and the system will automatically match the next hop address. 
+Note: If `GatewayType` is set to `NORMAL_CVM`, `GatewayId` should be the private IP of the instance.
         :type GatewayId: str
         :param RouteId: Routing policy ID. The IPv4 routing policy will have a meaningful value, while the IPv6 routing policy is always 0. We recommend using the unique ID `RouteItemId` for the routing policy.
 This field is required when you want to delete a routing policy.
@@ -18047,7 +18303,7 @@ Note: If the `Protocol` value is set to `ALL`, the `Port` value also needs to be
         :type Port: str
         :param ServiceTemplate: Protocol port ID or protocol port group ID. ServiceTemplate and Protocol+Port are mutually exclusive.
         :type ServiceTemplate: :class:`tencentcloud.vpc.v20170312.models.ServiceTemplateSpecification`
-        :param CidrBlock: IP range or IP (mutually exclusive).
+        :param CidrBlock: Either `CidrBlock` or `Ipv6CidrBlock can be specified. Note that if `0.0.0.0/n` is entered, it is mapped to 0.0.0.0/0.
         :type CidrBlock: str
         :param Ipv6CidrBlock: The CIDR block or IPv6 (mutually exclusive).
         :type Ipv6CidrBlock: str
@@ -18107,11 +18363,14 @@ class SecurityGroupPolicySet(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Version: The version of the security group policy. The version number is automatically increased by one each time users update the security policy, to prevent the expiration of updated routing policies. Conflict is ignored if it is left empty.
+        :param Version: The version number of the security group policy, which will automatically increase by one each time you update the security group policy, so as to prevent expiration of the updated routing policies. If it is left empty, any conflicts will be ignored. 
+Note: This parameter may return null, indicating that no valid values can be obtained.
         :type Version: str
-        :param Egress: Outbound policy.
+        :param Egress: Outbound rule. 
+Note: This parameter may return null, indicating that no valid values can be obtained.
         :type Egress: list of SecurityGroupPolicy
-        :param Ingress: Inbound policy.
+        :param Ingress: Inbound rule. 
+Note: This parameter may return null, indicating that no valid values can be obtained.
         :type Ingress: list of SecurityGroupPolicy
         """
         self.Version = None
