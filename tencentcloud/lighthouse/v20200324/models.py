@@ -444,10 +444,20 @@ Valid values:
         :type InternetChargeType: str
         :param BundleSalesState: Package sale status. Valid values: AVAILABLE, SOLD_OUT
         :type BundleSalesState: str
-        :param BundleType: Package type.
-Valid values:
-<li> GENERAL_BUNDLE: general</li><li> STORAGE_BUNDLE: Storage</li>
+        :param BundleType: Bundle type. 
+Valid values: 
+<li>STARTER_BUNDLE: Starter bundle</li>
+<li>GENERAL_BUNDLE: General bundle</li>
+<li>ENTERPRISE_BUNDLE: Enterprise bundle</li>
+<li>STORAGE_BUNDLE: Storage-optimized bundle</li>
+<li>EXCLUSIVE_BUNDLE: Dedicated bundle</li>
+<li>HK_EXCLUSIVE_BUNDLE: Hong Kong-dedicated bundle </li>
+<li>CAREFREE_BUNDLE: Lighthouse Care bundle</li>
+<li>BEFAST_BUNDLE: BeFast bundle </li>
         :type BundleType: str
+        :param BundleTypeDescription: Bundle type description 
+Note: This parameter may return null, indicating that no valid values can be obtained.
+        :type BundleTypeDescription: str
         :param BundleDisplayLabel: Package tag.
 Valid values:
 "ACTIVITY": promotional package
@@ -468,6 +478,7 @@ Valid values:
         self.InternetChargeType = None
         self.BundleSalesState = None
         self.BundleType = None
+        self.BundleTypeDescription = None
         self.BundleDisplayLabel = None
 
 
@@ -487,6 +498,7 @@ Valid values:
         self.InternetChargeType = params.get("InternetChargeType")
         self.BundleSalesState = params.get("BundleSalesState")
         self.BundleType = params.get("BundleType")
+        self.BundleTypeDescription = params.get("BundleTypeDescription")
         self.BundleDisplayLabel = params.get("BundleDisplayLabel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -589,16 +601,25 @@ class CreateBlueprintRequest(AbstractModel):
         :type Description: str
         :param InstanceId: ID of the instance for which to make an image.
         :type InstanceId: str
+        :param ForcePowerOff: Whether to forcibly shut down the instance before creating the image 
+Valid values: 
+`True`: Shut down and instance first 
+`False`: Create the image when the instance is running 
+Default: `True` 
+Note that if you create an image when the instance is running, there might be data loss.
+        :type ForcePowerOff: bool
         """
         self.BlueprintName = None
         self.Description = None
         self.InstanceId = None
+        self.ForcePowerOff = None
 
 
     def _deserialize(self, params):
         self.BlueprintName = params.get("BlueprintName")
         self.Description = params.get("Description")
         self.InstanceId = params.get("InstanceId")
+        self.ForcePowerOff = params.get("ForcePowerOff")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -739,9 +760,9 @@ class CreateInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BundleId: Bundle ID.
+        :param BundleId: Bundle ID. You can get it via the [DescribeBundles](https://intl.cloud.tencent.com/document/api/1207/47575?from_cn_redirect=1) API.
         :type BundleId: str
-        :param BlueprintId: Image ID
+        :param BlueprintId: Image ID. You can get it via the [DescribeBlueprints](https://intl.cloud.tencent.com/document/api/1207/47689?from_cn_redirect=1) API.
         :type BlueprintId: str
         :param InstanceChargePrepaid: Monthly subscription information for the instance, including the purchase period, setting of auto-renewal, etc.
         :type InstanceChargePrepaid: :class:`tencentcloud.lighthouse.v20200324.models.InstanceChargePrepaid`
@@ -2224,22 +2245,31 @@ class DescribeInstancesRequest(AbstractModel):
         r"""
         :param InstanceIds: Instance ID list. Each request can contain up to 100 instances at a time.
         :type InstanceIds: list of str
-        :param Filters: Filter list.
-<li>instance-name</li>Filter by **instance name**.
-Type: String
-Required: no
-<li>private-ip-address</li>Filter by **private IP of instance primary ENI**.
-Type: String
-Required: no
-<li>public-ip-address</li>Filter by **public IP of instance primary ENI**.
-Type: String
-Required: no
-<li>zone</li>Filter by the availability zone
-Type: String
-Required: no
-<li>instance-state</li>Filter by **instance status**.
-Type: String
-Required: no
+        :param Filters: Filter list. 
+<li>instance-name</li>Filter by the **instance name**. 
+Type: String 
+Required: No 
+<li>private-ip-address</li>Filter by the **private IP of instance primary ENI**. 
+Type: String 
+Required: No 
+<li>public-ip-address</li>Filter by the **public IP of instance primary ENI**. 
+Type: String 
+Required: No 
+<li>zone</li>Filter by the availability zone. 
+Type: String 
+Required: No 
+<li>instance-state</li>Filter by the **instance status**. 
+Type: String 
+Required: No 
+<li>tag-key</li>Filter by the **tag key**. 
+Type: String 
+Required: No 
+<li>tag-value</li>Filter by the **tag value**. 
+Type: String 
+Required: No 
+<li> tag:tag-key</li>Filter by tag key-value pair. The `tag-key` should be replaced with a specific tag key. 
+Type: String 
+Required: No 
 Each request can contain up to 10 `Filters` and 100 `Filter.Values`. You cannot specify both `InstanceIds` and `Filters` at the same time.
         :type Filters: list of Filter
         :param Offset: Offset. Default value: 0. For more information on `Offset`, please see the relevant section in [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).
@@ -4546,6 +4576,54 @@ class InternetAccessible(AbstractModel):
         
 
 
+class IsolateInstancesRequest(AbstractModel):
+    """IsolateInstances request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceIds: IDs of target instances. You can get the IDs from the `InstanceId` parameter returned by the `DescribeInstances` API. Up to 20 instances can be specified at the same time.
+        :type InstanceIds: list of str
+        :param IsolateDataDisk: Whether to return data disks mounted on the instance together with the instance. Valid values: 
+`TRUE`: Return the mounted data disks at the same time 
+`FALSE`: Do not return the mounted data disks at the same time 
+Default value: `TRUE`.
+        :type IsolateDataDisk: bool
+        """
+        self.InstanceIds = None
+        self.IsolateDataDisk = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        self.IsolateDataDisk = params.get("IsolateDataDisk")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IsolateInstancesResponse(AbstractModel):
+    """IsolateInstances response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class KeyPair(AbstractModel):
     """Key pair information.
 
@@ -4969,6 +5047,58 @@ class ModifyInstancesAttributeRequest(AbstractModel):
 
 class ModifyInstancesAttributeResponse(AbstractModel):
     """ModifyInstancesAttribute response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyInstancesBundleRequest(AbstractModel):
+    """ModifyInstancesBundle request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceIds: IDs of target instances. You can get the IDs from the `InstanceId` parameter returned by the `DescribeInstances` API. Up to 15 instances can be specified at the same time.
+        :type InstanceIds: list of str
+        :param BundleId: ID of bundles to change. You can get the IDs from the `BundleId` returned by the [DescribeBundles](https://intl.cloud.tencent.com/document/api/1207/47575?from_cn_redirect=1).
+        :type BundleId: str
+        :param AutoVoucher: Whether to use existing vouchers under the current account automatically. Valid values: 
+`true`: Deduct from existing vouchers automatically 
+`false`: Do not deduct from existing vouchers automatically 
+Default value: `false`.
+        :type AutoVoucher: bool
+        """
+        self.InstanceIds = None
+        self.BundleId = None
+        self.AutoVoucher = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        self.BundleId = params.get("BundleId")
+        self.AutoVoucher = params.get("AutoVoucher")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstancesBundleResponse(AbstractModel):
+    """ModifyInstancesBundle response structure.
 
     """
 

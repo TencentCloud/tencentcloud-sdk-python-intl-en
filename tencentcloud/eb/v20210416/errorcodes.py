@@ -245,7 +245,7 @@ OPERATIONDENIED_DEFAULTCLSRESOURCEUNSUPPORTED = 'OperationDenied.DefaultCLSResou
 # The current ES version is not supported.
 OPERATIONDENIED_ESVERSIONUNSUPPORTED = 'OperationDenied.ESVersionUnsupported'
 
-# 
+# Due to service upgrade, this resource is locked. It may last for about 3-5 minutes. Event pushing is not affected.
 OPERATIONDENIED_EVENTBUSRESOURCEISLOCKED = 'OperationDenied.EventBusResourceIsLocked'
 
 # The operation failed, as the resource could not be modified or deleted.

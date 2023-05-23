@@ -1251,6 +1251,33 @@ class LighthouseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def IsolateInstances(self, request):
+        """This API is used to return one or more Lighthouse instances.
+        * Only `RUNNING` and `STOPPED` instances can be returned.
+        * The instance status goes to `SHUTDOWN` after the API is called successfully.
+        * Batch operations are supported. Up to 20 resources (including instances and data disks) can be returned in each request.
+        * This API is async. After the request is sent successfully, a `RequestId` will be returned. At this time, the operation is not completed immediately. The result of the instance operation can be queried by calling the `DescribeInstances` API. If the latest operation status (LatestOperationState) of the instance is `SUCCESS`, the operation is successful.
+
+        :param request: Request instance for IsolateInstances.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.IsolateInstancesRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.IsolateInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("IsolateInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.IsolateInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyBlueprintAttribute(self, request):
         """This API is used to modify an image attribute.
 
@@ -1387,10 +1414,9 @@ class LighthouseClient(AbstractClient):
 
 
     def ModifyInstancesAttribute(self, request):
-        """This API is used to modify the attributes of instances.
+        """This API is used to modify an instance attribute.
         * The instance name is used only for users’ convenience.
-        * Batch operations are supported. Each request can contain up to 100 instances at a time.
-        * This API is async. A successful request will return a `RequestId`, it does not mean the operation is completed. You can call the `DescribeInstances` API to query the operation result. If the latest operation status (LatestOperationState) of the instance is `SUCCESS`, the operation is successful.
+        * Batch operations are supported. The maximum number of instances in each request is 100.
 
         :param request: Request instance for ModifyInstancesAttribute.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.ModifyInstancesAttributeRequest`
@@ -1403,6 +1429,32 @@ class LighthouseClient(AbstractClient):
             body = self.call("ModifyInstancesAttribute", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyInstancesAttributeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyInstancesBundle(self, request):
+        """This API is used change one or more Lighthouse instance bundles.
+        * Only `RUNNING` and `STOPPED` instances can be changed.
+        * Batch operations are supported. The maximum number of instances in each request is 30.
+        * This API is async. After the request is sent successfully, a `RequestId` will be returned. At this time, the operation is not completed immediately. The result of the instance operation can be queried by calling the `DescribeInstances` API. If the latest operation status (LatestOperationState) of the instance is `SUCCESS`, the operation is successful.
+
+        :param request: Request instance for ModifyInstancesBundle.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.ModifyInstancesBundleRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.ModifyInstancesBundleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstancesBundle", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstancesBundleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1437,11 +1489,10 @@ class LighthouseClient(AbstractClient):
 
 
     def ModifyInstancesRenewFlag(self, request):
-        """This API is used to modify the renewal flags of monthly subscribed instances.
+        """This API is used to change the auto-renewal setting of monthly-subscribed instances.
 
-        * Instances marked with "auto-renewal" will be automatically renewed for one month when they expire.
-        * Batch operations are supported. The maximum number of instances in each request is 100.
-        * The result of the instance operation can be queried by calling the `DescribeInstances` API. If the latest operation status (LatestOperationState) of the instance is `SUCCESS`, the operation is successful.
+        * Instances with auto-renewal enabled are automatically renewed on a monthly basis upon the expiration.
+        * Batch operations are supported. Up to 100 instances per request is allowed.
 
         :param request: Request instance for ModifyInstancesRenewFlag.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.ModifyInstancesRenewFlagRequest`

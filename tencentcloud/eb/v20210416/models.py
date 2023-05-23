@@ -271,6 +271,36 @@ class Connection(AbstractModel):
         
 
 
+class ConnectionBrief(AbstractModel):
+    """Connector basic information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: Connector type
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Type: str
+        :param Status: Connector status
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Status: str
+        """
+        self.Type = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ConnectionDescription(AbstractModel):
     """Connection description
 
@@ -286,10 +316,14 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param CkafkaParams: CKafka parameters
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CkafkaParams: :class:`tencentcloud.eb.v20210416.models.CkafkaParams`
+        :param DTSParams: Data Transfer Service (DTS) connector information
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type DTSParams: :class:`tencentcloud.eb.v20210416.models.DTSParams`
         """
         self.ResourceDescription = None
         self.APIGWParams = None
         self.CkafkaParams = None
+        self.DTSParams = None
 
 
     def _deserialize(self, params):
@@ -300,6 +334,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("CkafkaParams") is not None:
             self.CkafkaParams = CkafkaParams()
             self.CkafkaParams._deserialize(params.get("CkafkaParams"))
+        if params.get("DTSParams") is not None:
+            self.DTSParams = DTSParams()
+            self.DTSParams._deserialize(params.get("DTSParams"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -387,14 +424,22 @@ class CreateEventBusRequest(AbstractModel):
         :type EventBusName: str
         :param Description: Event bus description, which can contain up to 200 characters of any type.
         :type Description: str
+        :param SaveDays: Log retention period
+        :type SaveDays: int
+        :param EnableStore: Whether to enable log storage
+        :type EnableStore: bool
         """
         self.EventBusName = None
         self.Description = None
+        self.SaveDays = None
+        self.EnableStore = None
 
 
     def _deserialize(self, params):
         self.EventBusName = params.get("EventBusName")
         self.Description = params.get("Description")
+        self.SaveDays = params.get("SaveDays")
+        self.EnableStore = params.get("EnableStore")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -601,6 +646,12 @@ class CreateTransformationResponse(AbstractModel):
     def _deserialize(self, params):
         self.TransformationId = params.get("TransformationId")
         self.RequestId = params.get("RequestId")
+
+
+class DTSParams(AbstractModel):
+    """Data Transfer Service (DTS) connector information
+
+    """
 
 
 class DeadLetterConfig(AbstractModel):
@@ -950,6 +1001,15 @@ class EventBus(AbstractModel):
         :type EventBusId: str
         :param Type: Event bus type
         :type Type: str
+        :param PayMode: Billing Mode
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type PayMode: str
+        :param ConnectionBriefs: Connector basic information
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ConnectionBriefs: list of ConnectionBrief
+        :param TargetBriefs: Target information
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type TargetBriefs: list of TargetBrief
         """
         self.ModTime = None
         self.Description = None
@@ -957,6 +1017,9 @@ class EventBus(AbstractModel):
         self.EventBusName = None
         self.EventBusId = None
         self.Type = None
+        self.PayMode = None
+        self.ConnectionBriefs = None
+        self.TargetBriefs = None
 
 
     def _deserialize(self, params):
@@ -966,6 +1029,19 @@ class EventBus(AbstractModel):
         self.EventBusName = params.get("EventBusName")
         self.EventBusId = params.get("EventBusId")
         self.Type = params.get("Type")
+        self.PayMode = params.get("PayMode")
+        if params.get("ConnectionBriefs") is not None:
+            self.ConnectionBriefs = []
+            for item in params.get("ConnectionBriefs"):
+                obj = ConnectionBrief()
+                obj._deserialize(item)
+                self.ConnectionBriefs.append(obj)
+        if params.get("TargetBriefs") is not None:
+            self.TargetBriefs = []
+            for item in params.get("TargetBriefs"):
+                obj = TargetBrief()
+                obj._deserialize(item)
+                self.TargetBriefs.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1087,6 +1163,20 @@ class GetEventBusResponse(AbstractModel):
         :type EventBusId: str
         :param Type: (Disused) Event bus type
         :type Type: str
+        :param PayMode: Billing mode
+        :type PayMode: str
+        :param SaveDays: EventBridge log storage period
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type SaveDays: int
+        :param LogTopicId: EventBridge log topic ID
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type LogTopicId: str
+        :param EnableStore: Whether to enable log storage
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type EnableStore: bool
+        :param LinkMode: Whether to sort the message
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type LinkMode: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -1098,6 +1188,11 @@ class GetEventBusResponse(AbstractModel):
         self.EventBusName = None
         self.EventBusId = None
         self.Type = None
+        self.PayMode = None
+        self.SaveDays = None
+        self.LogTopicId = None
+        self.EnableStore = None
+        self.LinkMode = None
         self.RequestId = None
 
 
@@ -1110,6 +1205,11 @@ class GetEventBusResponse(AbstractModel):
         self.EventBusName = params.get("EventBusName")
         self.EventBusId = params.get("EventBusId")
         self.Type = params.get("Type")
+        self.PayMode = params.get("PayMode")
+        self.SaveDays = params.get("SaveDays")
+        self.LogTopicId = params.get("LogTopicId")
+        self.EnableStore = params.get("EnableStore")
+        self.LinkMode = params.get("LinkMode")
         self.RequestId = params.get("RequestId")
 
 
@@ -1999,16 +2099,28 @@ class UpdateEventBusRequest(AbstractModel):
         :type Description: str
         :param EventBusName: Event bus name: it can contain 2-60 letters, digits, underscores, and hyphens and must start with a letter and end with a digit or letter.
         :type EventBusName: str
+        :param SaveDays: Log retention period
+        :type SaveDays: int
+        :param LogTopicId: EventBridge log topic ID
+        :type LogTopicId: str
+        :param EnableStore: Whether to enable log retention
+        :type EnableStore: bool
         """
         self.EventBusId = None
         self.Description = None
         self.EventBusName = None
+        self.SaveDays = None
+        self.LogTopicId = None
+        self.EnableStore = None
 
 
     def _deserialize(self, params):
         self.EventBusId = params.get("EventBusId")
         self.Description = params.get("Description")
         self.EventBusName = params.get("EventBusName")
+        self.SaveDays = params.get("SaveDays")
+        self.LogTopicId = params.get("LogTopicId")
+        self.EnableStore = params.get("EnableStore")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
