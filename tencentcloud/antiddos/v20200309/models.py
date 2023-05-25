@@ -597,6 +597,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param ElasticLimit: Elastic bandwidth threshold of the Anti-DDoS Pro Enterprise edition.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ElasticLimit: int
+        :param DownGradeProtect: Protection bandwidth after the plan downgrade, in Gbps. 
+Note: This field may return `null`, indicating that no valid value was found.
+        :type DownGradeProtect: int
         """
         self.ProtectBandwidth = None
         self.ProtectCountLimit = None
@@ -608,6 +611,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.ChannelEditionFlag = None
         self.EnterpriseFlag = None
         self.ElasticLimit = None
+        self.DownGradeProtect = None
 
 
     def _deserialize(self, params):
@@ -621,6 +625,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.ChannelEditionFlag = params.get("ChannelEditionFlag")
         self.EnterpriseFlag = params.get("EnterpriseFlag")
         self.ElasticLimit = params.get("ElasticLimit")
+        self.DownGradeProtect = params.get("DownGradeProtect")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
