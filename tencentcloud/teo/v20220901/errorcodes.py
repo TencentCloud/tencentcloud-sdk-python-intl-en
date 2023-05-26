@@ -35,6 +35,9 @@ INTERNALERROR = 'InternalError'
 # Server error.
 INTERNALERROR_BACKENDERROR = 'InternalError.BackendError'
 
+# The configuration is locked. Please unlock and try again.
+INTERNALERROR_CONFIGLOCKED = 'InternalError.ConfigLocked'
+
 # Database error.
 INTERNALERROR_DBERROR = 'InternalError.DBError'
 
@@ -110,8 +113,14 @@ INVALIDPARAMETER_CERTTOOSHORTKEYSIZE = 'InvalidParameter.CertTooShortKeySize'
 # Certificate error.
 INVALIDPARAMETER_CERTUNSUPPORTEDTYPE = 'InvalidParameter.CertUnsupportedType'
 
+# 
+INVALIDPARAMETER_CLIENTIPCOUNTRYCONFLICTSWITHIPV6 = 'InvalidParameter.ClientIpCountryConflictsWithIpv6'
+
 # Unable to apply for a wildcard certificate under CNAME mode.
 INVALIDPARAMETER_CNAMEWILDHOSTNOTALLOWAPPLYCERTIFICATE = 'InvalidParameter.CnameWildHostNotAllowApplyCertificate'
+
+# 
+INVALIDPARAMETER_CONFLICTHOSTORIGIN = 'InvalidParameter.ConflictHostOrigin'
 
 # The domain name does not exist or is not belong to this account.
 INVALIDPARAMETER_DOMAINNOTFOUND = 'InvalidParameter.DomainNotFound'
@@ -137,7 +146,7 @@ INVALIDPARAMETER_ERRINVALIDACTIONPARAMBADVALUETYPE = 'InvalidParameter.ErrInvali
 # Invalid parameter: Duplicate parameter names.
 INVALIDPARAMETER_ERRINVALIDACTIONPARAMDUPLICATENAME = 'InvalidParameter.ErrInvalidActionParamDuplicateName'
 
-# 
+# Invalid value type for the parameter "action".
 INVALIDPARAMETER_ERRINVALIDACTIONPARAMNAME = 'InvalidParameter.ErrInvalidActionParamName'
 
 # Invalid parameter: The parameter has too many values.
@@ -149,7 +158,7 @@ INVALIDPARAMETER_ERRINVALIDACTIONTYPE = 'InvalidParameter.ErrInvalidActionType'
 # Invalid condition: The letter case is ignored.
 INVALIDPARAMETER_ERRINVALIDCONDITIONIGNORECASE = 'InvalidParameter.ErrInvalidConditionIgnoreCase'
 
-# 
+# Invalid condition: Invalid parameter name.
 INVALIDPARAMETER_ERRINVALIDCONDITIONNAMEBADNAME = 'InvalidParameter.ErrInvalidConditionNameBadName'
 
 # Invalid condition: The match type is not supported by this parameter.
@@ -173,6 +182,9 @@ INVALIDPARAMETER_ERRINVALIDCONDITIONVALUETOOLONGVALUE = 'InvalidParameter.ErrInv
 # The condition has too many regular expressions.
 INVALIDPARAMETER_ERRINVALIDCONDITIONVALUETOOMANYREGULAR = 'InvalidParameter.ErrInvalidConditionValueTooManyRegular'
 
+# 
+INVALIDPARAMETER_ERRINVALIDCONDITIONVALUETOOMANYVALUES = 'InvalidParameter.ErrInvalidConditionValueTooManyValues'
+
 # Invalid condition: Too many wildcards in the parameter.
 INVALIDPARAMETER_ERRINVALIDCONDITIONVALUETOOMANYWILDCARD = 'InvalidParameter.ErrInvalidConditionValueTooManyWildcard'
 
@@ -194,7 +206,7 @@ INVALIDPARAMETER_INVALIDACCELERATETYPE = 'InvalidParameter.InvalidAccelerateType
 # Invalid token authentication.
 INVALIDPARAMETER_INVALIDAUTHENTICATION = 'InvalidParameter.InvalidAuthentication'
 
-# 
+# Invalid key for token authentication.
 INVALIDPARAMETER_INVALIDAUTHENTICATIONTYPESECRETKEY = 'InvalidParameter.InvalidAuthenticationTypeSecretKey'
 
 # Invalid token authentication parameter.
@@ -212,8 +224,14 @@ INVALIDPARAMETER_INVALIDCACHECONFIGFOLLOWORIGIN = 'InvalidParameter.InvalidCache
 # Invalid cache key.
 INVALIDPARAMETER_INVALIDCACHEKEY = 'InvalidParameter.InvalidCacheKey'
 
+# Cases are ignored in the cache key.
+INVALIDPARAMETER_INVALIDCACHEKEYIGNORECASE = 'InvalidParameter.InvalidCacheKeyIgnoreCase'
+
 # Invalid query string.
 INVALIDPARAMETER_INVALIDCACHEKEYQUERYSTRINGVALUE = 'InvalidParameter.InvalidCacheKeyQueryStringValue'
+
+# Invalid cache key scheme.
+INVALIDPARAMETER_INVALIDCACHEKEYSCHEME = 'InvalidParameter.InvalidCacheKeyScheme'
 
 # Invalid node cache.
 INVALIDPARAMETER_INVALIDCACHEONLYONSWITCH = 'InvalidParameter.InvalidCacheOnlyOnSwitch'
@@ -227,17 +245,29 @@ INVALIDPARAMETER_INVALIDCERTINFO = 'InvalidParameter.InvalidCertInfo'
 # Invalid client IP request header.
 INVALIDPARAMETER_INVALIDCLIENTIPHEADERNAME = 'InvalidParameter.InvalidClientIpHeaderName'
 
+# Invalid origin for region-specific origin-pull.
+INVALIDPARAMETER_INVALIDCLIENTIPORIGIN = 'InvalidParameter.InvalidClientIpOrigin'
+
 # Invalid smart acceleration.
 INVALIDPARAMETER_INVALIDDYNAMICROUTINE = 'InvalidParameter.InvalidDynamicRoutine'
 
 # The package does not support Smart Acceleration.
 INVALIDPARAMETER_INVALIDDYNAMICROUTINEBILLING = 'InvalidParameter.InvalidDynamicRoutineBilling'
 
+# 
+INVALIDPARAMETER_INVALIDERRORPAGE = 'InvalidParameter.InvalidErrorPage'
+
 # Invalid custom error page.
 INVALIDPARAMETER_INVALIDERRORPAGEREDIRECTURL = 'InvalidParameter.InvalidErrorPageRedirectUrl'
 
-# 
+# Invalid parameter "https".
 INVALIDPARAMETER_INVALIDHTTPS = 'InvalidParameter.InvalidHttps'
+
+# 
+INVALIDPARAMETER_INVALIDHTTPSCERTINFO = 'InvalidParameter.InvalidHttpsCertInfo'
+
+# The cipher suite does not match the TLS version.
+INVALIDPARAMETER_INVALIDHTTPSCIPHERSUITEANDTLSVERSION = 'InvalidParameter.InvalidHttpsCipherSuiteAndTlsVersion'
 
 # Invalid HTTPS HSTS.
 INVALIDPARAMETER_INVALIDHTTPSHSTSMAXAGE = 'InvalidParameter.InvalidHttpsHstsMaxAge'
@@ -260,8 +290,11 @@ INVALIDPARAMETER_INVALIDPOSTMAXSIZEBILLING = 'InvalidParameter.InvalidPostMaxSiz
 # Invalid POST request size.
 INVALIDPARAMETER_INVALIDPOSTSIZEVALUE = 'InvalidParameter.InvalidPostSizeValue'
 
-# 
+# The plan does not support QUIC.
 INVALIDPARAMETER_INVALIDQUICBILLING = 'InvalidParameter.InvalidQuicBilling'
+
+# Invalid Range GETs.
+INVALIDPARAMETER_INVALIDRANGEORIGINPULL = 'InvalidParameter.InvalidRangeOriginPull'
 
 # Invalid request header.
 INVALIDPARAMETER_INVALIDREQUESTHEADERNAME = 'InvalidParameter.InvalidRequestHeaderName'
@@ -269,7 +302,7 @@ INVALIDPARAMETER_INVALIDREQUESTHEADERNAME = 'InvalidParameter.InvalidRequestHead
 # Invalid request header x-forwarded-for.
 INVALIDPARAMETER_INVALIDREQUESTHEADERNAMEXFF = 'InvalidParameter.InvalidRequestHeaderNameXff'
 
-# 
+# Invalid request header.
 INVALIDPARAMETER_INVALIDREQUESTHEADERVALUE = 'InvalidParameter.InvalidRequestHeaderValue'
 
 # You have not purchased a plan yet.
@@ -302,6 +335,9 @@ INVALIDPARAMETER_INVALIDRULEENGINETARGETSURL = 'InvalidParameter.InvalidRuleEngi
 # Invalid origin domain.
 INVALIDPARAMETER_INVALIDSERVERNAME = 'InvalidParameter.InvalidServerName'
 
+# Origin-pull request configuration error: Invalid query string.
+INVALIDPARAMETER_INVALIDUPSTREAMREQUESTQUERYSTRINGVALUE = 'InvalidParameter.InvalidUpstreamRequestQueryStringValue'
+
 # Invalid target host in the URL rewriting rule.
 INVALIDPARAMETER_INVALIDURLREDIRECTHOST = 'InvalidParameter.InvalidUrlRedirectHost'
 
@@ -323,13 +359,13 @@ INVALIDPARAMETER_ORIGINISINNERIP = 'InvalidParameter.OriginIsInnerIp'
 # The origin group ID is required.
 INVALIDPARAMETER_ORIGINORIGINGROUPIDISREQUIRED = 'InvalidParameter.OriginOriginGroupIdIsRequired'
 
-# Parameter error.
+# Parameter error: Invalid “End time”. The interval between the start and end time cannot exceed 7 days.
 INVALIDPARAMETER_PARAMETERERROR = 'InvalidParameter.ParameterError'
 
 # The plan doesn’t exist.
 INVALIDPARAMETER_PLANNOTFOUND = 'InvalidParameter.PlanNotFound'
 
-# 
+# Maximum upload size exceeded.
 INVALIDPARAMETER_POSTMAXSIZELIMITEXCEEDED = 'InvalidParameter.PostMaxSizeLimitExceeded'
 
 # Invalid parameter.
@@ -359,6 +395,9 @@ INVALIDPARAMETER_ZONENOTFOUND = 'InvalidParameter.ZoneNotFound'
 # Invalid parameter value.
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
+# It conflicts with existing records.
+INVALIDPARAMETERVALUE_CONFLICTRECORD = 'InvalidParameterValue.ConflictRecord'
+
 # DNS records conflict with DNSSEC.
 INVALIDPARAMETERVALUE_CONFLICTWITHDNSSEC = 'InvalidParameterValue.ConflictWithDNSSEC'
 
@@ -368,7 +407,7 @@ INVALIDPARAMETERVALUE_CONTENTSAMEASNAME = 'InvalidParameterValue.ContentSameAsNa
 # The specified domain name does not match the site. 
 INVALIDPARAMETERVALUE_DOMAINNOTMATCHZONE = 'InvalidParameterValue.DomainNotMatchZone'
 
-# Incorrect DNS record
+# Incorrect DNS record.
 INVALIDPARAMETERVALUE_INVALIDDNSCONTENT = 'InvalidParameterValue.InvalidDNSContent'
 
 # Incorrect DNS record name.
@@ -398,6 +437,12 @@ LIMITEXCEEDED_RATELIMITEXCEEDED = 'LimitExceeded.RateLimitExceeded'
 # Operation denied.
 OPERATIONDENIED = 'OperationDenied'
 
+# 
+OPERATIONDENIED_ACCELERATEMAINLANDDISABLE = 'OperationDenied.AccelerateMainlandDisable'
+
+# Switch failed: There are domain names in the shared CNAME group.
+OPERATIONDENIED_DOMAININSHARECNAMEGROUP = 'OperationDenied.DomainInShareCnameGroup'
+
 # Unable to use the domain name when it’s blocked.
 OPERATIONDENIED_DOMAINISBLOCKED = 'OperationDenied.DomainIsBlocked'
 
@@ -419,14 +464,20 @@ OPERATIONDENIED_MULTIPLECNAMEZONE = 'OperationDenied.MultipleCnameZone'
 # Domain traffic scheduling is not supported in NS access mode.
 OPERATIONDENIED_NSNOTALLOWTRAFFICSTRATEGY = 'OperationDenied.NSNotAllowTrafficStrategy'
 
-# 
+# The DNS record cannot be added.
 OPERATIONDENIED_RECORDISFORBIDDEN = 'OperationDenied.RecordIsForbidden'
+
+# This operation conflicts with concurrent operations. Try again later.
+OPERATIONDENIED_RESOURCELOCKEDTEMPORARY = 'OperationDenied.ResourceLockedTemporary'
 
 # The resource is occupied.
 RESOURCEINUSE = 'ResourceInUse'
 
 # Resources occupied by the alias domain names under this account.
 RESOURCEINUSE_ALIASDOMAIN = 'ResourceInUse.AliasDomain'
+
+# The alias domain name already exists.
+RESOURCEINUSE_ALIASNAME = 'ResourceInUse.AliasName'
 
 # Resources occupied by this account via CNAME.
 RESOURCEINUSE_CNAME = 'ResourceInUse.Cname'
@@ -476,6 +527,9 @@ RESOURCEINSUFFICIENT = 'ResourceInsufficient'
 # The resource doesn’t exist.
 RESOURCENOTFOUND = 'ResourceNotFound'
 
+# 
+RESOURCENOTFOUND_POSTMAXSIZEQUOTANOTFOUND = 'ResourceNotFound.PostMaxSizeQuotaNotFound'
+
 # The resource is unavailable.
 RESOURCEUNAVAILABLE = 'ResourceUnavailable'
 
@@ -517,3 +571,6 @@ UNAUTHORIZEDOPERATION_UNKNOWN = 'UnauthorizedOperation.Unknown'
 
 # Unsupported operation.
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'
+
+# 
+UNSUPPORTEDOPERATION_TARGETNAMEORIGINTYPECOS = 'UnsupportedOperation.TargetNameOriginTypeCos'

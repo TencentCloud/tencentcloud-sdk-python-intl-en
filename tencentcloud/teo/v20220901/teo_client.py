@@ -716,6 +716,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDDoSAttackEvent(self, request):
+        """This API is used to query DDoS attack events.
+
+        :param request: Request instance for DescribeDDoSAttackEvent.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeDDoSAttackEventRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeDDoSAttackEventResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDDoSAttackEvent", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDDoSAttackEventResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDDoSAttackTopData(self, request):
         """This API is used to query the top-ranked DDoS attack data.
 

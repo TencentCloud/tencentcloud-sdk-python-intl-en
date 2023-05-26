@@ -18,6 +18,30 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AccelerateMainland(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AccelerateType(AbstractModel):
     """Acceleration type
 
@@ -71,7 +95,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type DomainStatus: str
         :param Cname: The CNAME address.
         :type Cname: str
-        :param IdentificationStatus: 
+        :param IdentificationStatus: Ownership verification status. Values: <li>`pending`: Pending verification</li> <li>`finished`: Verified</li>	
+Note: This field may return null, indicating that no valid values can be obtained.
         :type IdentificationStatus: str
         """
         self.OriginDetail = None
@@ -124,6 +149,11 @@ class AclCondition(AbstractModel):
 <li>`header`: Request header</li>
 <li>`app_proto`: Application layer protocol</li>
 <li>`sip_proto`: Network layer protocol</li>
+<li>`uabot`: UA rules (only available in custom bot rules)</li>
+<li>`idcid`: IDC rules (only available in custom bot rules)</li>
+<li>`sipbot`: Search engine rules (only available in custom bot rules)</li>
+<li>`portrait`: Client reputation (only available in custom bot rules)</li>
+<li>`header_seq`: Header sequence (only available in custom bot rules)</li>
         :type MatchFrom: str
         :param MatchParam: The parameter of the field. When `MatchFrom = header`, the key contained in the header can be passed.
         :type MatchParam: str
@@ -317,7 +347,7 @@ class Action(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NormalAction: Common feature operation. Values:
+        :param NormalAction: Common operation. Values:
 <li>`AccessUrlRedirect`: Access URL rewrite</li>
 <li>`UpstreamUrlRedirect`: Origin-pull URL rewrite</li>
 <li>`QUIC`: QUIC</li>
@@ -338,7 +368,7 @@ class Action(AbstractModel):
 <li>`Compression`: Smart compression</li>
 <li>`Hsts`</li>
 <li>`ClientIpHeader`</li>
-<li>`TlsVersion`</li>
+<li>`SslTlsSecureConf`</li>
 <li>`OcspStapling`</li>
 <li>`Http2`: HTTP/2 access</li>
 <li>`UpstreamFollowRedirect`: Follow origin redirect</li>
@@ -432,6 +462,223 @@ class AiRule(AbstractModel):
 
     def _deserialize(self, params):
         self.Mode = params.get("Mode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AlgDetectJS(AbstractModel):
+    """Validate client behavior.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Method to validate client behavior.
+        :type Name: str
+        :param WorkLevel: Proof-of-work strength. Values:
+<li>`low` (default): Low</li>
+<li>`middle`: Medium</li>
+<li>`high`: High</li>
+        :type WorkLevel: str
+        :param ExecuteMode: Implement a delay before executing JS in milliseconds. Value range: 0-1000. Default value: 500.
+        :type ExecuteMode: int
+        :param InvalidStatTime: The period threshold for validating the result "Client JS disabled" in seconds. Value range: 5-3600. Default value: 10.
+        :type InvalidStatTime: int
+        :param InvalidThreshold: The number of times for the result "Client JS disabled" occurred in the specified period. Value range: 1-100000000. Default value: 30.
+        :type InvalidThreshold: int
+        :param AlgDetectResults: Client behavior validation results.
+        :type AlgDetectResults: list of AlgDetectResult
+        """
+        self.Name = None
+        self.WorkLevel = None
+        self.ExecuteMode = None
+        self.InvalidStatTime = None
+        self.InvalidThreshold = None
+        self.AlgDetectResults = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.WorkLevel = params.get("WorkLevel")
+        self.ExecuteMode = params.get("ExecuteMode")
+        self.InvalidStatTime = params.get("InvalidStatTime")
+        self.InvalidThreshold = params.get("InvalidThreshold")
+        if params.get("AlgDetectResults") is not None:
+            self.AlgDetectResults = []
+            for item in params.get("AlgDetectResults"):
+                obj = AlgDetectResult()
+                obj._deserialize(item)
+                self.AlgDetectResults.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AlgDetectResult(AbstractModel):
+    """Active bot detection results.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: The validation result. Values:
+<li>`invalid`: Invalid Cookie</li>
+<li>`cookie_empty`: No Cookie/Cookie expired</li>
+<li>`js_empty`: Client JS disabled</li>
+<li>`low`: Low-risk session</li>
+<li>`middle`: Medium-risk session</li>
+<li>`high`: High-risk session</li>
+<li>`timeout`: JS validation timed out</li>
+<li>`not_browser`: Invalid browser</li>
+<li>`is_bot`: Bot client</li>
+        :type Result: str
+        :param Action: The action. Values:
+<li>`drop`: Block</li>
+<li>`monitor`: Observe</li>
+<li>`silence`: Drop w/o response</li>
+<li>`shortdelay`: Add short latency</li>
+<li>`longdelay`: Add long latency</li>
+        :type Action: str
+        """
+        self.Result = None
+        self.Action = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.Action = params.get("Action")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AlgDetectRule(AbstractModel):
+    """Active bot detection rule.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleID: ID of the rule.
+        :type RuleID: int
+        :param RuleName: Name of the rule.
+        :type RuleName: str
+        :param Switch: Whether to enable the rule.
+        :type Switch: str
+        :param AlgConditions: Condition specified for the rule.
+        :type AlgConditions: list of AclCondition
+        :param AlgDetectSession: Validate Cookie when the condition is satisfied.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type AlgDetectSession: :class:`tencentcloud.teo.v20220901.models.AlgDetectSession`
+        :param AlgDetectJS: Validate client behavior when the condition is satisfied.
+        :type AlgDetectJS: list of AlgDetectJS
+        :param UpdateTime: The update time, which is only used as an output parameter.
+        :type UpdateTime: str
+        """
+        self.RuleID = None
+        self.RuleName = None
+        self.Switch = None
+        self.AlgConditions = None
+        self.AlgDetectSession = None
+        self.AlgDetectJS = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.RuleID = params.get("RuleID")
+        self.RuleName = params.get("RuleName")
+        self.Switch = params.get("Switch")
+        if params.get("AlgConditions") is not None:
+            self.AlgConditions = []
+            for item in params.get("AlgConditions"):
+                obj = AclCondition()
+                obj._deserialize(item)
+                self.AlgConditions.append(obj)
+        if params.get("AlgDetectSession") is not None:
+            self.AlgDetectSession = AlgDetectSession()
+            self.AlgDetectSession._deserialize(params.get("AlgDetectSession"))
+        if params.get("AlgDetectJS") is not None:
+            self.AlgDetectJS = []
+            for item in params.get("AlgDetectJS"):
+                obj = AlgDetectJS()
+                obj._deserialize(item)
+                self.AlgDetectJS.append(obj)
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AlgDetectSession(AbstractModel):
+    """Validate Cookie.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Method to validate Cookie.
+        :type Name: str
+        :param DetectMode: The validation mode. Values:
+<li>`detect`: Validate only</li>
+<li>`update_detect` (default): Update Cookie and validate</li>
+        :type DetectMode: str
+        :param SessionAnalyzeSwitch: Whether to enable Cookie-based session check. The default value is `off`. Values:
+<li>`off`: Disable</li>
+<li>`on`: Enable</li>
+        :type SessionAnalyzeSwitch: str
+        :param InvalidStatTime: The period threshold for validating the result "No Cookie/Cookie expired" in seconds. Value range: 5-3600. Default value: 10.
+        :type InvalidStatTime: int
+        :param InvalidThreshold: The number of times for the result "No Cookie/Cookie expired" occurred in the specified period. Value range: 1-100000000. Default value: 300.
+        :type InvalidThreshold: int
+        :param AlgDetectResults: Cookie validation results.
+        :type AlgDetectResults: list of AlgDetectResult
+        :param SessionBehaviors: Cookie-based session check results.
+        :type SessionBehaviors: list of AlgDetectResult
+        """
+        self.Name = None
+        self.DetectMode = None
+        self.SessionAnalyzeSwitch = None
+        self.InvalidStatTime = None
+        self.InvalidThreshold = None
+        self.AlgDetectResults = None
+        self.SessionBehaviors = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.DetectMode = params.get("DetectMode")
+        self.SessionAnalyzeSwitch = params.get("SessionAnalyzeSwitch")
+        self.InvalidStatTime = params.get("InvalidStatTime")
+        self.InvalidThreshold = params.get("InvalidThreshold")
+        if params.get("AlgDetectResults") is not None:
+            self.AlgDetectResults = []
+            for item in params.get("AlgDetectResults"):
+                obj = AlgDetectResult()
+                obj._deserialize(item)
+                self.AlgDetectResults.append(obj)
+        if params.get("SessionBehaviors") is not None:
+            self.SessionBehaviors = []
+            for item in params.get("SessionBehaviors"):
+                obj = AlgDetectResult()
+                obj._deserialize(item)
+                self.SessionBehaviors.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -786,11 +1033,21 @@ class BotConfig(AbstractModel):
         :param IntelligenceRule: The bot intelligence settings. If it is null, the settings that were last configured will be used.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IntelligenceRule: :class:`tencentcloud.teo.v20220901.models.IntelligenceRule`
+        :param BotUserRules: Settings of the custom bot rule. If it is null, the settings that were last configured will be used.
+        :type BotUserRules: list of BotUserRule
+        :param AlgDetectRule: Active bot detection rule.
+        :type AlgDetectRule: list of AlgDetectRule
+        :param Customizes: Settings of the bot managed rule. It is only used for output.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Customizes: list of BotUserRule
         """
         self.Switch = None
         self.BotManagedRule = None
         self.BotPortraitRule = None
         self.IntelligenceRule = None
+        self.BotUserRules = None
+        self.AlgDetectRule = None
+        self.Customizes = None
 
 
     def _deserialize(self, params):
@@ -804,6 +1061,61 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("IntelligenceRule") is not None:
             self.IntelligenceRule = IntelligenceRule()
             self.IntelligenceRule._deserialize(params.get("IntelligenceRule"))
+        if params.get("BotUserRules") is not None:
+            self.BotUserRules = []
+            for item in params.get("BotUserRules"):
+                obj = BotUserRule()
+                obj._deserialize(item)
+                self.BotUserRules.append(obj)
+        if params.get("AlgDetectRule") is not None:
+            self.AlgDetectRule = []
+            for item in params.get("AlgDetectRule"):
+                obj = AlgDetectRule()
+                obj._deserialize(item)
+                self.AlgDetectRule.append(obj)
+        if params.get("Customizes") is not None:
+            self.Customizes = []
+            for item in params.get("Customizes"):
+                obj = BotUserRule()
+                obj._deserialize(item)
+                self.Customizes.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BotExtendAction(AbstractModel):
+    """Bot extended actions
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Action: The action. Values:
+<li>`monitor`: Observe</li>
+<li>`trans`: Allow</li>
+<li>`alg`: JavaScript challenge</li>
+<li>`captcha`: Managed challenge</li>
+<li>`random`: Weighted random. Actions are executed based on the percentage specified in `ExtendActions`.</li>
+<li>`silence`: Drop w/o response</li>
+<li>`shortdelay`: Add short latency</li>
+<li>`longdelay`: Add long latency</li>
+        :type Action: str
+        :param Percent: The probability for triggering the action. Value range: 0-100.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Percent: int
+        """
+        self.Action = None
+        self.Percent = None
+
+
+    def _deserialize(self, params):
+        self.Action = params.get("Action")
+        self.Percent = params.get("Percent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -911,6 +1223,93 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.CapManagedIds = params.get("CapManagedIds")
         self.MonManagedIds = params.get("MonManagedIds")
         self.DropManagedIds = params.get("DropManagedIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BotUserRule(AbstractModel):
+    """Custom bot rules
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleName: 
+        :type RuleName: str
+        :param Action: The action. Values:
+<li>`drop`: Block</li>
+<li>`monitor`: Observe</li>
+<li>`trans`: Allow</li>
+<li>`alg`: JavaScript challenge</li>
+<li>`captcha`: Managed challenge</li>
+<li>`silence`: Drop w/o response</li>
+<li>`shortdelay`: Add short latency</li>
+<li>`longdelay`: Add long latency</li>
+        :type Action: str
+        :param RuleStatus: The rule status. Values:
+<li>`on`: Enabled</li>
+<li>`off`: Disabled</li>Default value: `on`
+        :type RuleStatus: str
+        :param AclConditions: Details of the rule.
+        :type AclConditions: list of AclCondition
+        :param RulePriority: The rule weight. Value range: 0-100.
+        :type RulePriority: int
+        :param RuleID: The rule ID, which is only used as an output parameter.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type RuleID: int
+        :param ExtendActions: [Currently unavailable] Specify the random action and percentage.
+        :type ExtendActions: list of BotExtendAction
+        :param FreqFields: The filter. Values:
+<li>`sip`: Client IP</li>
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type FreqFields: list of str
+        :param UpdateTime: Updated time
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type UpdateTime: str
+        :param FreqScope: The statistical dimension. Values:
+<li>`source_to_eo`: Responses from the origin server to EdgeOne</li>
+<li>`client_to_eo`: Requests from the client to EdgeOne</li>
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type FreqScope: list of str
+        """
+        self.RuleName = None
+        self.Action = None
+        self.RuleStatus = None
+        self.AclConditions = None
+        self.RulePriority = None
+        self.RuleID = None
+        self.ExtendActions = None
+        self.FreqFields = None
+        self.UpdateTime = None
+        self.FreqScope = None
+
+
+    def _deserialize(self, params):
+        self.RuleName = params.get("RuleName")
+        self.Action = params.get("Action")
+        self.RuleStatus = params.get("RuleStatus")
+        if params.get("AclConditions") is not None:
+            self.AclConditions = []
+            for item in params.get("AclConditions"):
+                obj = AclCondition()
+                obj._deserialize(item)
+                self.AclConditions.append(obj)
+        self.RulePriority = params.get("RulePriority")
+        self.RuleID = params.get("RuleID")
+        if params.get("ExtendActions") is not None:
+            self.ExtendActions = []
+            for item in params.get("ExtendActions"):
+                obj = BotExtendAction()
+                obj._deserialize(item)
+                self.ExtendActions.append(obj)
+        self.FreqFields = params.get("FreqFields")
+        self.UpdateTime = params.get("UpdateTime")
+        self.FreqScope = params.get("FreqScope")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1831,7 +2230,7 @@ class CreatePlanForZoneRequest(AbstractModel):
 <li>`ent_cm`: Enterprise plan that supports content delivery network inside the Chinese mainland.</li>
 <li>`ent_cm_with_bot`: Enterprise plan that supports content delivery network inside the Chinese mainland and bot management.</li>
 <li>`ent_global`: Enterprise plan that supports content delivery network over the globe.</li>
-<li>`ent_global_with_bot`: Enterprise plan that supports content delivery network over the globe and bot management.</li>To get the available plan options for your account, view the output from <a href="https://tcloud4api.woa.com/document/product/1657/80124?!preview&!document=1">DescribeAvailablePlans</a>.
+<li>`ent_global_with_bot`: Enterprise plan that supports content delivery network over the globe and bot management.</li>To get the available plan options for your account, view the output from <a href="https://intl.cloud.tencent.com/document/product/1552/80606?from_cn_redirect=1">DescribeAvailablePlans</a>.
         :type PlanType: str
         """
         self.ZoneId = None
@@ -2298,6 +2697,113 @@ class DDoS(AbstractModel):
         
 
 
+class DDoSAttackEvent(AbstractModel):
+    """Information of the DDoS attacker
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EventId: The event ID.
+        :type EventId: str
+        :param AttackType: The attack type.
+        :type AttackType: str
+        :param AttackStatus: The attack status.
+        :type AttackStatus: int
+        :param AttackMaxBandWidth: The maximum attack bandwidth.
+        :type AttackMaxBandWidth: int
+        :param AttackPacketMaxRate: The peak attack packet rate.
+        :type AttackPacketMaxRate: int
+        :param AttackStartTime: The attack start time recorded in seconds.
+        :type AttackStartTime: int
+        :param AttackEndTime: The attack end time recorded in seconds.
+        :type AttackEndTime: int
+        :param PolicyId: The DDoS policy ID. 
+Note: This field may return `null`, indicating that no valid value was found.
+        :type PolicyId: int
+        :param ZoneId: The site ID. 
+Note: This field may return `null`, indicating that no valid value was found.
+        :type ZoneId: str
+        :param Area: Geolocation scope. Values: 
+<li>`overseas`: Regions outside the Chinese mainland</li>
+<li>`mainland`: Chinese mainland</li>
+Note: This field may return `null`, indicating that no valid value was found.
+        :type Area: str
+        :param DDoSBlockData: The blocking time of a DDoS attack. 
+Note: This field may return `null`, indicating that no valid value was found.
+        :type DDoSBlockData: list of DDoSBlockData
+        """
+        self.EventId = None
+        self.AttackType = None
+        self.AttackStatus = None
+        self.AttackMaxBandWidth = None
+        self.AttackPacketMaxRate = None
+        self.AttackStartTime = None
+        self.AttackEndTime = None
+        self.PolicyId = None
+        self.ZoneId = None
+        self.Area = None
+        self.DDoSBlockData = None
+
+
+    def _deserialize(self, params):
+        self.EventId = params.get("EventId")
+        self.AttackType = params.get("AttackType")
+        self.AttackStatus = params.get("AttackStatus")
+        self.AttackMaxBandWidth = params.get("AttackMaxBandWidth")
+        self.AttackPacketMaxRate = params.get("AttackPacketMaxRate")
+        self.AttackStartTime = params.get("AttackStartTime")
+        self.AttackEndTime = params.get("AttackEndTime")
+        self.PolicyId = params.get("PolicyId")
+        self.ZoneId = params.get("ZoneId")
+        self.Area = params.get("Area")
+        if params.get("DDoSBlockData") is not None:
+            self.DDoSBlockData = []
+            for item in params.get("DDoSBlockData"):
+                obj = DDoSBlockData()
+                obj._deserialize(item)
+                self.DDoSBlockData.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DDoSBlockData(AbstractModel):
+    """DDoS blocking details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: The start time recorded in UNIX timestamp.
+        :type StartTime: int
+        :param EndTime: The end time recorded in UNIX timestamp. `0` indicates the blocking is ongoing.
+        :type EndTime: int
+        :param BlockArea: The regions blocked.
+        :type BlockArea: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.BlockArea = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.BlockArea = params.get("BlockArea")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DefaultServerCertInfo(AbstractModel):
     """HTTPS server certificate configuration
 
@@ -2704,11 +3210,13 @@ class DescribeAccelerationDomainsRequest(AbstractModel):
         r"""
         :param ZoneId: Site ID of the accelerated domain name. If it’s not specified, all accelerated domain names under the site are returned.
         :type ZoneId: str
-        :param Filters: Filter criteria. Each filter criteria can have up to 20 entries. Values:
-<li>`domain-name`:<br>   <strong>Accelerated domain name</strong><br>   Type: String<br>Required: No
-<li>`origin-type`:<br>   <strong>Type of the origin</strong><br>   Type: String<br>   Required: No
-<li>`origin`:<br>   <strong>Primary origin</strong><br>   Type: String<br>   Required: No
-<li>`backup-origin`<br>   <strong>Secondary origin</strong><br>   Type: String<br>   Required: No
+        :param Filters: Filters. Each filter can have up to 20 entries. See below for details: 
+<li>`domain-name`:<br>   <strong>Accelerated domain name</strong><br>   Type: String<br>Required: No 
+<li>`origin-type`:<br>   <strong>Type of the origin</strong><br>   Type: String<br>   Required: No 
+<li>`origin`:<br>   <strong>Primary origin</strong><br>   Type: String<br>   Required: No 
+<li>`backup-origin`:<br>   <strong>Secondary origin</strong><br>   Type: String<br>   Required: No 
+<li>`domain-cname`:<br>   <strong>Accelerated CNAME</strong><br>   Type: String<br>   Required: No 
+<li>`share-cname`:<br>   <strong> Shared CNAME</strong><br>   Type: String<br>   Required: No
         :type Filters: list of AdvancedFilter
         :param Direction: The sorting order. Values:
 <li>`asc`: Ascending order.</li>
@@ -3265,6 +3773,104 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDDoSAttackEventRequest(AbstractModel):
+    """DescribeDDoSAttackEvent request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: Start time of the query period.
+        :type StartTime: str
+        :param EndTime: End time of the query period.
+        :type EndTime: str
+        :param PolicyIds: List of DDoS policy IDs. All policies are selected if this field is not specified.
+        :type PolicyIds: list of int
+        :param ZoneIds: (Required) List of sites. No query results are returned if this field is not specified.
+        :type ZoneIds: list of str
+        :param Limit: Limit on paginated queries. Default value: 20. Maximum value: 1000.
+        :type Limit: int
+        :param Offset: The page offset. Default value: 0.
+        :type Offset: int
+        :param ShowDetail: Whether to display the details.
+        :type ShowDetail: bool
+        :param Area: Geolocation scope. Values: 
+<li>`overseas`: Regions outside the Chinese mainland</li>
+<li>`mainland`: Chinese mainland</li>
+<li>`global`: Global</li>If this field is not specified, the default value `global` is used.
+        :type Area: str
+        :param OrderBy: The sorting field. Values: 
+<li>`MaxBandWidth`: Peak bandwidth</li>
+<li>`AttackStartTime` Start time of the attack</li>If this field is not specified, the default value `AttackStartTime` is used.
+        :type OrderBy: str
+        :param OrderType: The sorting method. Values: 
+<Li>`asc`: Ascending</li>
+<li>`desc`: Descending</li>If this field is not specified, the default value `desc` is used.
+        :type OrderType: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.PolicyIds = None
+        self.ZoneIds = None
+        self.Limit = None
+        self.Offset = None
+        self.ShowDetail = None
+        self.Area = None
+        self.OrderBy = None
+        self.OrderType = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.PolicyIds = params.get("PolicyIds")
+        self.ZoneIds = params.get("ZoneIds")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.ShowDetail = params.get("ShowDetail")
+        self.Area = params.get("Area")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderType = params.get("OrderType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDDoSAttackEventResponse(AbstractModel):
+    """DescribeDDoSAttackEvent response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: List of DDoS attack data. 
+Note: This field may return `null`, indicating that no valid value was found.
+        :type Data: list of DDoSAttackEvent
+        :param TotalCount: Total number of query results.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Data = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = DDoSAttackEvent()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDDoSAttackTopDataRequest(AbstractModel):
     """DescribeDDoSAttackTopData request structure.
 
@@ -3791,8 +4397,8 @@ class DescribeOriginGroupRequest(AbstractModel):
         :type Offset: int
         :param Limit: Limit on paginated queries. Value range: 1-1000. Default value: 10.
         :type Limit: int
-        :param Filters: Filter criteria. Each filter criteria can have up to 20 entries.
-<li>`zone-id`<br>   Filter by <strong>site ID</strong>, such as zone-20hzkd4rdmy0<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported<li>`origin-group-id`:<br>   Filter by <strong>origin group ID</strong>, such as origin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported<li>`origin-group-name`:<br>   Filter by <strong>origin group name</strong><br>   Type: String<br>   Required: No<br>   Fuzzy query: Supported (only one origin group name allowed in a query)
+        :param Filters: Filters. Each filter can have up to 20 entries. See below for details:
+<li>`zone-id`<br>   Filter by the specified <strong>site ID</strong>, such as zone-20hzkd4rdmy0<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported</li><li>`origin-group-id`:<br>   Filter by the specified <strong>origin group ID</strong>, such as origin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported</li><li>`origin-group-name`:<br>   Filter by the specified <strong>origin group name</strong><br>   Type: String<br>   Required: No<br>   Fuzzy query: Supported (only one origin group name allowed in a query)</li>
         :type Filters: list of AdvancedFilter
         """
         self.Offset = None
@@ -3929,11 +4535,15 @@ class DescribeOverviewL7DataRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: The end time.
         :type EndTime: str
-        :param MetricNames: The query metric. Values:
-<li>`l7Flow_outFlux`: Access traffic;</li>
-<li>`l7Flow_request`: Access requests;</li>
-<li>`l7Flow_outBandwidth`: Access bandwidth.</li>
-<li>`l7Flow_hit_outFlux`: Cache hit traffic.</li>
+        :param MetricNames: The metric to query. Values:
+<li>`l7Flow_outFlux`: Traffic used for EdegOne responses</li>
+<li>`l7Flow_inFlux`: Traffic used for EdegOne requests</li>
+<li>`l7Flow_outBandwidth`: Bandwidth used for EdegOne responses</li>
+<li>`l7Flow_inBandwidth`: Bandwidth used for EdegOne requests</li>
+<li>`l7Flow_hit_outFlux`: Traffic used for cache hit</li>
+<li>`l7Flow_request`: Access requests</li>
+<li>`l7Flow_flux`: Upstream and downstream traffic used for client access</li>
+<li>`l7Flow_bandwidth`: Upstream and downstream bandwidth used for client access</li>
         :type MetricNames: list of str
         :param ZoneIds: List of sites
 Enter the IDs of sites to query. The maximum query period is determined by the <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query period</a> of the bound plan. If it’s not specified, all sites are selected by default, and the query period must be within the last 30 days. 
@@ -3953,8 +4563,9 @@ Enter the IDs of sites to query. The maximum query period is determined by the <
 <li>`day`: One day</li>If this field is not specified, the granularity will be determined based on the query period. <br>Period ≤ 1 hour: `min`; <br>1 hour < Period ≤ 2 days: `5min`; <br>2 days < period ≤ 7 days: `hour`; <br>Period > 7 days: `day`.
         :type Interval: str
         :param Filters: Filters
-<li>tagKey<br>   Filter by the specified <strong>tag key</strong></li>
-<li>tagValue<br>   Filter by the specified <strong>tag value</strong></li>
+<li>`socket`:<br>u2003u2003 Filter by the specified <strong>HTTP protocol type</strong><br>u2003u2003 Values:<br>u2003u2003 `HTTP`: HTTP protocol;<br>u2003u2003 `HTTPS`: HTTPS protocol;<br>u2003u2003 `QUIC`: QUIC protocol.</li>
+<li>`tagKey`:<br>u2003u2003 Filter by the specified <strong>tag key</strong></li>
+<li>`tagValue`<br>u2003u2003 Filter by the specified <strong>tag value</strong></li>
         :type Filters: list of QueryCondition
         :param Area: Geolocation scope. Values:
 <li>`overseas`: Regions outside the Chinese mainland</li>
@@ -4298,11 +4909,12 @@ If it’s not specified, all sites are selected by default, and the query period
 Enter the IDs of sites to query. The maximum query period is determined by the <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query period</a> of the bound plan. 
         :type ZoneIds: list of str
         :param Filters: Filters
-<li>`country`:<br>   Filter by the specified <strong>country code</strong>. <a href="https://en.wikipedia.org/wiki/ISO_3166-1">ISO 3166</a> country codes are used.</li>
-<li>`domain`<br>   Filter by the specified <strong>sub-domain name</strong>, such as `test.example.com`</li>
-<li>`protocol`:<br>   Filter by the specified <strong>HTTP protocol</strong><br>   Values:<br>   `HTTP/1.0`: HTTP 1.0<br>   `HTTP/1.1`: HTTP 1.1<br>   `HTTP/2.0`: HTTP 2.0<br>   `HTTP/3.0`: HTTP 3.0<br>   `WebSocket`: WebSocket</li>
-<li>tagKey<br>   Filter by the specified <strong>tag key</strong></li>
-<li>tagValue<br>   Filter by the specified <strong>tag value</strong></li>
+<li>`country`:<br>   Filter by the specified <strong>country code</strong>. <a href="https://en.wikipedia.org/wiki/ISO_3166-1">ISO 3166</a> country codes are used.</li>
+<li>`domain`:<br>u2003u2003 Filter by the specified <strong>sub-domain name</strong>, such as `test.example.com`</li>
+<li>`protocol`:<br>   Filter by the specified <strong>HTTP protocol version</strong><br>   Values:<br>u2003u2003 `HTTP/1.0`: HTTP 1.0;<br>   `HTTP/1.1`: HTTP 1.1;<br>   `HTTP/2.0`: HTTP 2.0;<br>   `HTTP/3.0`: HTTP 3.0;<br>   `WebSocket`: WebSocket.</li>
+<li>`socket`:<br>u2003u2003 Filter by the specified <strong>HTTP protocol type</strong><br>u2003u2003 Values:<br>u2003u2003 `HTTP`: HTTP protocol;<br>u2003u2003 `HTTPS`: HTTPS protocol;<br>u2003u2003 `QUIC`: QUIC protocol.</li>
+<li>`tagKey`:<br>u2003u2003 Filter by the specified <strong>tag key</strong></li>
+<li>`tagValue`:<br>u2003u2003 Filter by the specified <strong>tag value</strong></li>
         :type Filters: list of QueryCondition
         :param Interval: The query granularity. Values:
 <li>`min`: 1 minute;</li>
@@ -4634,10 +5246,14 @@ class DescribeTimingL7AnalysisDataRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: The end time.
         :type EndTime: str
-        :param MetricNames: The list of metrics. Values:
-<li>`l7Flow_outFlux`: Access traffic;</li>
-<li>`l7Flow_request`: Access requests;</li>
-<li>`l7Flow_outBandwidth`: Access bandwidth.</li>
+        :param MetricNames: The metric to query. Values:
+<li>`l7Flow_outFlux`: Traffic used for EdgeOne responses</li>
+<li>`l7Flow_inFlux`: Traffic used for EdgeOne requests</li>
+<li>`l7Flow_outBandwidth`: Bandwidth used for EdgeOne responses</li>
+<li>`l7Flow_inBandwidth`: Bandwidth used for EdgeOne requests</li>
+<li>`l7Flow_request`: Access requests</li>
+<li>`l7Flow_flux`: Upstream and downstream traffic used for client access</li>
+<li>`l7Flow_bandwidth`: Upstream and downstream bandwidth used for client access</li>
         :type MetricNames: list of str
         :param ZoneIds: List of sites
 Enter the IDs of sites to query. The maximum query period is determined by the <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query period</a> of the bound plan. If it’s not specified, all sites are selected by default, and the query period must be within the last 30 days. 
@@ -4947,19 +5563,30 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: The end time.
         :type EndTime: str
-        :param MetricName: The query metric. Values:
-<li>`l7Flow_outFlux_country`: Country the request came from;</li>
-<li>`l7Flow_outFlux_statusCode`: Status code of the request;</li>
-<li>`l7Flow_outFlux_domain`: Domain name of the request;</li>
-<li>`l7Flow_outFlux_url`: URL of the request;</li>
-<li>`l7Flow_outFlux_resourceType`: Resource type;</li>
-<li>`l7Flow_outFlux_sip`: Client IP;</li>
-<li>`l7Flow_outFlux_referers`: Refer header;</li>
-<li>`l7Flow_outFlux_ua_device`: Device type;</li>
-<li>`l7Flow_outFlux_ua_browser`: Browser type;</li>
-<li>`l7Flow_outFlux_us_os`: OS type;</li>
+        :param MetricName: The metric to query. Values: 
+<li>`l7Flow_outFlux_country`: Traffic by country/region</li>
+<li>`l7Flow_outFlux_statusCode`: Traffic by status code</li>
+<li>`l7Flow_outFlux_domain`: Traffic by domain name</li>
+<li>`l7Flow_outFlux_url`: Traffic by URL</li>
+<li>`l7Flow_outFlux_resourceType`: Traffic by resource type</li>
+<li>`l7Flow_outFlux_sip`: Traffic by client IP</li>
+<li>`l7Flow_outFlux_referers`: Traffic by referer</li>
+<li>`l7Flow_outFlux_ua_device`: Traffic by device</li>
+<li>`l7Flow_outFlux_ua_browser`: Traffic by browser</li>
+<li>`l7Flow_outFlux_us_os`: Traffic by operating system</li>
+<li>`l7Flow_request_country`: Requests by country/region</li>
+<li>`l7Flow_request_statusCode`: Requests by status code</li>
+<li>`l7Flow_request_domain`: Requests by domain name</li>
+<li>`l7Flow_request_url`: Requests by URL</li>
+<li>`l7Flow_request_resourceType`: Requests by resource type</li>
+<li>`l7Flow_request_sip`: Requests by client IP</li>
+<li>`l7Flow_request_referer`: Requests by referer</li>
+<li>`l7Flow_request_ua_device`: Requests by device</li>
+<li>`l7Flow_request_ua_browser`: Requests by browser</li>
+<li>`l7Flow_request_us_os`: Requests by operating system</li>
+
         :type MetricName: str
-        :param ZoneIds: List of sites to be queried. All sites will be selected if this field is not specified.
+        :param ZoneIds: (Required) List of sites. No query results are returned if this field is not specified.
         :type ZoneIds: list of str
         :param Limit: Queries the top n rows of data. Maximum value: 1000. Top 10 rows of data will be queried if this field is not specified.
         :type Limit: int
@@ -5077,7 +5704,7 @@ class DescribeTopL7CacheDataRequest(AbstractModel):
         :type MetricName: str
         :param ZoneIds: Specifies sites by ID. All sites will be selected if this field is not specified.
         :type ZoneIds: list of str
-        :param Limit: Queries the top rows of data. Top 10 rows of data will be queried if this field is not specified.
+        :param Limit: Top rows of data to query. Maximum value: 1000. Top 10 rows of data are queried if this field is not specified.
         :type Limit: int
         :param Filters: Filter conditions. See below for details: 
 <li>`domain`<br>   Filter by the <strong>sub-domain name</strong>, such as `test.example.com`<br>   Type: String<br>   Required: No</li>
@@ -6659,10 +7286,12 @@ class ExceptUserRuleScope(AbstractModel):
 <li>`partial`: Skip the exception rule for partial requests.</li>
         :type Type: str
         :param Modules: The module to be activated. Values:
-<li>`waf`: Managed rules</li>
-<li>`cc`: Rate limiting rules</li>
-<li>`bot`: bot protection</li>
-Note: This field may return `null`, indicating that no valid value can be obtained.
+<li>`waf`: Tencent Cloud-managed rules</li>
+<li>`rate`: Rate limiting rules</li>
+<li>`acl`: Custom rule</li>
+<li>`cc`: CC attack defense</li>
+<li>`bot`: Bot protection</li>
+Note: this field may return `null`, indicating that no valid value is obtained.
         :type Modules: list of str
         :param PartialModules: Module settings of the exception rule. If it is null, the settings that were last configured will be used.
 Note: This field may return `null`, indicating that no valid value can be obtained.
@@ -7027,6 +7656,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 <li>`none`: Not managed by EdgeOne.</li>If it is left empty, the default value `none` is used.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type ApplyType: str
+        :param CipherSuite: Cipher suite. Values:
+<li>`loose-v2023`: Offer the highest compatibility but relatively lower security. It supports TLS 1.0-1.3.</li>
+<li>`general-v2023`: Keep a balance between the compatibility and security. It supports TLS 1.2-1.3.</li>
+<li>`strict-v2023`: Provides high security, disabling all insecure cipher suites. It supports TLS 1.2-1.3.
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :type CipherSuite: str
         """
         self.Http2 = None
         self.OcspStapling = None
@@ -7034,6 +7669,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self.Hsts = None
         self.CertInfo = None
         self.ApplyType = None
+        self.CipherSuite = None
 
 
     def _deserialize(self, params):
@@ -7050,6 +7686,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
                 obj._deserialize(item)
                 self.CertInfo.append(obj)
         self.ApplyType = params.get("ApplyType")
+        self.CipherSuite = params.get("CipherSuite")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7096,6 +7733,9 @@ class Identification(AbstractModel):
         r"""
         :param ZoneName: The site name.
         :type ZoneName: str
+        :param Domain: The subdomain name to be verified. To verify the ownership of a site, leave it blank.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Domain: str
         :param Status: The verification status. Values:
 <li>`pending`: The verification is ongoing.</li>
 <li>`finished`: The verification completed.</li>
@@ -7109,6 +7749,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type FileAscription: :class:`tencentcloud.teo.v20220901.models.FileAscriptionInfo`
         """
         self.ZoneName = None
+        self.Domain = None
         self.Status = None
         self.Ascription = None
         self.OriginalNameServers = None
@@ -7117,6 +7758,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.ZoneName = params.get("ZoneName")
+        self.Domain = params.get("Domain")
         self.Status = params.get("Status")
         if params.get("Ascription") is not None:
             self.Ascription = AscriptionInfo()
@@ -7143,12 +7785,17 @@ class IdentifyZoneRequest(AbstractModel):
         r"""
         :param ZoneName: The site name.
         :type ZoneName: str
+        :param Domain: A subdomain name under the site. Specify this field if you want to verify the ownership of a subdomain name. Otherwise you can leave it blank.
+
+        :type Domain: str
         """
         self.ZoneName = None
+        self.Domain = None
 
 
     def _deserialize(self, params):
         self.ZoneName = params.get("ZoneName")
+        self.Domain = params.get("Domain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7185,6 +7832,32 @@ class IdentifyZoneResponse(AbstractModel):
             self.FileAscription = FileAscriptionInfo()
             self.FileAscription._deserialize(params.get("FileAscription"))
         self.RequestId = params.get("RequestId")
+
+
+class ImageOptimize(AbstractModel):
+    """Image optimization configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: Whether to enable configuration. Values: 
+<li>`on`: Enable</li>
+<li>`off`: Disable</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class IntelligenceRule(AbstractModel):
@@ -9069,26 +9742,21 @@ class OriginInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OriginType: The origin type. Values:
+        :param OriginType: The origin type. Values: 
 <li>`IP_DOMAIN`: IPv4/IPv6 address or domain name</li>
 <li>`COS`: COS bucket address</li>
 <li>`ORIGIN_GROUP`: Origin group</li>
 <li>`AWS_S3`: AWS S3 bucket address</li>
-Note: This field may return null, indicating that no valid values can be obtained.
         :type OriginType: str
         :param Origin: The origin address. Enter the origin group ID if `OriginType=ORIGIN_GROUP`.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Origin: str
         :param BackupOrigin: ID of the secondary origin group (valid when `OriginType=ORIGIN_GROUP`). If it’s not specified, it indicates that secondary origins are not used.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type BackupOrigin: str
-        :param PrivateAccess: Whether to authenticate access to the private object storage origin (valid when `OriginType=COS/AWS_S3`). Values:
+        :param PrivateAccess: Whether to authenticate access to the private object storage origin (valid when `OriginType=COS/AWS_S3`). Values: 
 <li>`on`: Enable private authentication.</li>
 <li>`off`: Disable private authentication.</li>If this field is not specified, the default value `off` is used.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type PrivateAccess: str
         :param PrivateParameters: The private authentication parameters. This field is valid when `PrivateAccess=on`.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type PrivateParameters: list of PrivateParameter
         """
         self.OriginType = None
@@ -12320,9 +12988,9 @@ class WafRule(AbstractModel):
 <li>`on`: Enable</li>
 <li>`off`: Disable</li>
         :type Switch: str
-        :param BlockRuleIDs: IDs of the managed rules in the Block mode. You can obtain more details from [DescribeSecurityGroupManagedRules](https://tcloud4api.woa.com/document/product/1657/80807?!preview&!document=1).
+        :param BlockRuleIDs: IDs of the rules to be disabled.
         :type BlockRuleIDs: list of int
-        :param ObserveRuleIDs: IDs of the managed rules in the Observe mode. You can obtain more details from [DescribeSecurityGroupManagedRules](https://tcloud4api.woa.com/document/product/1657/80807?!preview&!document=1).
+        :param ObserveRuleIDs: IDs of the rules to be executed in Observe mode.
         :type ObserveRuleIDs: list of int
         """
         self.Switch = None
@@ -12656,6 +13324,11 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         :param Grpc: Configuration of gRPC support
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type Grpc: :class:`tencentcloud.teo.v20220901.models.Grpc`
+        :param ImageOptimize: Image optimization configuration. 
+Note: This field may return `null`, indicating that no valid value was found.
+        :type ImageOptimize: :class:`tencentcloud.teo.v20220901.models.ImageOptimize`
+        :param AccelerateMainland: 
+        :type AccelerateMainland: :class:`tencentcloud.teo.v20220901.models.AccelerateMainland`
         """
         self.ZoneName = None
         self.Area = None
@@ -12677,6 +13350,8 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self.Https = None
         self.ClientIpCountry = None
         self.Grpc = None
+        self.ImageOptimize = None
+        self.AccelerateMainland = None
 
 
     def _deserialize(self, params):
@@ -12736,6 +13411,12 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         if params.get("Grpc") is not None:
             self.Grpc = Grpc()
             self.Grpc._deserialize(params.get("Grpc"))
+        if params.get("ImageOptimize") is not None:
+            self.ImageOptimize = ImageOptimize()
+            self.ImageOptimize._deserialize(params.get("ImageOptimize"))
+        if params.get("AccelerateMainland") is not None:
+            self.AccelerateMainland = AccelerateMainland()
+            self.AccelerateMainland._deserialize(params.get("AccelerateMainland"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
