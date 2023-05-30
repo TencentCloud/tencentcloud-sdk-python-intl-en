@@ -645,12 +645,17 @@ class Key(AbstractModel):
         r"""
         :param AutoName: The name of the recognized field.
         :type AutoName: str
+        :param ConfigName: The name of a defined field (the key passed in).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ConfigName: str
         """
         self.AutoName = None
+        self.ConfigName = None
 
 
     def _deserialize(self, params):
         self.AutoName = params.get("AutoName")
+        self.ConfigName = params.get("ConfigName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1088,6 +1093,190 @@ class RecognizeIndonesiaIDCardOCRResponse(AbstractModel):
         self.Photo = params.get("Photo")
         self.Provinsi = params.get("Provinsi")
         self.Kota = params.get("Kota")
+        self.RequestId = params.get("RequestId")
+
+
+class RecognizeKoreanDrivingLicenseOCRRequest(AbstractModel):
+    """RecognizeKoreanDrivingLicenseOCR request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ImageBase64: The Base64-encoded value of the image.
+Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
+Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
+Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` is used.
+        :type ImageBase64: str
+        :param ImageUrl: The URL of the image.
+Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
+Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
+We recommend that you store the image in Tencent Cloud for higher download speed and stability.
+The download speed and stability of non-Tencent Cloud URLs may be low.
+        :type ImageUrl: str
+        :param ReturnHeadImage: Whether to return the identity photo.
+        :type ReturnHeadImage: bool
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+        self.ReturnHeadImage = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+        self.ReturnHeadImage = params.get("ReturnHeadImage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecognizeKoreanDrivingLicenseOCRResponse(AbstractModel):
+    """RecognizeKoreanDrivingLicenseOCR response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ID: The ID card number.
+        :type ID: str
+        :param LicenseNumber: The license number.
+        :type LicenseNumber: str
+        :param Number: The resident registration number.
+        :type Number: str
+        :param Type: The license class type.
+        :type Type: str
+        :param Address: The address.
+        :type Address: str
+        :param Name: The name.
+        :type Name: str
+        :param AptitudeTesDate: The renewal period.
+        :type AptitudeTesDate: str
+        :param DateOfIssue: The issue date.
+        :type DateOfIssue: str
+        :param Photo: The Base64-encoded identity photo.
+        :type Photo: str
+        :param Sex: The gender.
+        :type Sex: str
+        :param Birthday: The birth date in the format of dd/mm/yyyy.
+        :type Birthday: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ID = None
+        self.LicenseNumber = None
+        self.Number = None
+        self.Type = None
+        self.Address = None
+        self.Name = None
+        self.AptitudeTesDate = None
+        self.DateOfIssue = None
+        self.Photo = None
+        self.Sex = None
+        self.Birthday = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ID = params.get("ID")
+        self.LicenseNumber = params.get("LicenseNumber")
+        self.Number = params.get("Number")
+        self.Type = params.get("Type")
+        self.Address = params.get("Address")
+        self.Name = params.get("Name")
+        self.AptitudeTesDate = params.get("AptitudeTesDate")
+        self.DateOfIssue = params.get("DateOfIssue")
+        self.Photo = params.get("Photo")
+        self.Sex = params.get("Sex")
+        self.Birthday = params.get("Birthday")
+        self.RequestId = params.get("RequestId")
+
+
+class RecognizeKoreanIDCardOCRRequest(AbstractModel):
+    """RecognizeKoreanIDCardOCR request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ImageBase64: The Base64-encoded value of the image.
+Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
+Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
+Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` is used.
+        :type ImageBase64: str
+        :param ImageUrl: The URL of the image.
+Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
+Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
+We recommend that you store the image in Tencent Cloud for higher download speed and stability.
+The download speed and stability of non-Tencent Cloud URLs may be low.
+        :type ImageUrl: str
+        :param ReturnHeadImage: Whether to return the identity photo.
+        :type ReturnHeadImage: bool
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+        self.ReturnHeadImage = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+        self.ReturnHeadImage = params.get("ReturnHeadImage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecognizeKoreanIDCardOCRResponse(AbstractModel):
+    """RecognizeKoreanIDCardOCR response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ID: The ID card number.
+        :type ID: str
+        :param Address: The address.
+        :type Address: str
+        :param Name: The name.
+        :type Name: str
+        :param DateOfIssue: The issue date.
+        :type DateOfIssue: str
+        :param Photo: The Base64-encoded identity photo.
+        :type Photo: str
+        :param Sex: The gender.
+        :type Sex: str
+        :param Birthday: The birth date in the format of dd/mm/yyyy.
+        :type Birthday: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ID = None
+        self.Address = None
+        self.Name = None
+        self.DateOfIssue = None
+        self.Photo = None
+        self.Sex = None
+        self.Birthday = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ID = params.get("ID")
+        self.Address = params.get("Address")
+        self.Name = params.get("Name")
+        self.DateOfIssue = params.get("DateOfIssue")
+        self.Photo = params.get("Photo")
+        self.Sex = params.get("Sex")
+        self.Birthday = params.get("Birthday")
         self.RequestId = params.get("RequestId")
 
 
