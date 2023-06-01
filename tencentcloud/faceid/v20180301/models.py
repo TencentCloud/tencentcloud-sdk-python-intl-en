@@ -77,11 +77,11 @@ class ApplySdkVerificationTokenRequest(AbstractModel):
         r"""
         :param NeedVerifyIdCard: Whether ID card authentication is required. If not, only document OCR will be performed. Currently, authentication is available only when the value of `IdCardType` is `HK`.
         :type NeedVerifyIdCard: bool
-        :param IdCardType: The card type. Valid values: `HK` (identity card of Hong Kong (China)) (default), `ML` (Malaysian identity card), `PhilippinesVoteID` (Philippine voters ID card), `IndonesiaIDCard` (Indonesian identity card), `SingaporeIDCard` (Singapore identity card), and `PhilippinesDrivingLicense` (Philippine driver's license).
+        :param IdCardType: The identity document type. Valid values: `HK` (identity card of Hong Kong (China)) (default), `ML` (Malaysian identity card), `IndonesiaIDCard` (Indonesian identity card), `PhilippinesVoteID` (Philippine voters ID card), `PhilippinesDrivingLicense` (Philippine driver's license), `PhilippinesTinID` (Philippine TIN ID card), `PhilippinesSSSID` (Philippine SSS ID card), and `MLIDPassport` (passport issued in Hong Kong/Macao/Taiwan (China) or other countries/regions).
         :type IdCardType: str
-        :param DisableChangeOcrResult: Disable the modification of the OCR result by the user. Default value: `false` (modification allowed).
+        :param DisableChangeOcrResult: Whether to forbid the modification of the OCR result by users. Default value: `false` (modification allowed).
         :type DisableChangeOcrResult: bool
-        :param DisableCheckOcrWarnings: Disable the OCR warnings. Default value: `false` (not disable), where OCR warnings are enabled and the OCR result will not be returned based on the warnings. If the value of `NeedVerifyIdCard` is `true`, the value of this field will also be `true`.
+        :param DisableCheckOcrWarnings: Whether to disable the OCR warnings. Default value: `false` (not disable), where OCR warnings are enabled and the OCR result will not be returned if there is a warning. If `NeedVerifyIdCard` is set to `true`, this parameter must also be set to `true`.
         :type DisableCheckOcrWarnings: bool
         :param Extra: A passthrough field, which is returned together with the verification result and can contain up to 1,024 bits.
         :type Extra: str
@@ -189,7 +189,7 @@ class ApplyWebVerificationTokenResponse(AbstractModel):
 
 
 class CardVerifyResult(AbstractModel):
-    """The result of a single authentication or OCR process during the identity verification.
+    """The OCR result of a user's identity document during the eKYC verification process.
 
     """
 
@@ -197,60 +197,76 @@ class CardVerifyResult(AbstractModel):
         r"""
         :param IsPass: Whether the authentication or OCR process is successful.
         :type IsPass: bool
-        :param CardVideo: The video for ID card authentication. This field is returned only if the video-based ID card authentication is enabled. The URL is valid for 10 minutes.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param CardVideo: The download URL of the video used for identity document verification, which is valid for 10 minutes. This parameter is returned only if video-based identity document verification is enabled.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type CardVideo: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
-        :param CardImage: The identity document image. The URL is valid for 10 minutes.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param CardImage: The download URL of the identity document image, which is valid for 10 minutes.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type CardImage: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
-        :param CardInfoOcrJson: The OCR result (in JSON) of the identity document image. If authentication or OCR fails, this parameter is left empty. The URL is valid for 10 minutes.
+        :param CardInfoOcrJson: The OCR result (in JSON) of the identity document image. If verification or OCR fails, this parameter is left empty. The URL is valid for 10 minutes.
+(1) Hong Kong (China) identity card
 When the value of `IdCardType` is `HK`:
-- CnName (string): Chinese name.
-- EnName (string): English name.
-- TelexCode (string): The code corresponding to the Chinese name.
+- CnName (string): Name in Chinese.
+- EnName (string): Name in English.
+- TelexCode (string): The code corresponding to the name in Chinese.
 - Sex (string): Gender. Valid values: `M` (male) and `F` (female).
 - Birthday (string): Date of birth.
 - Permanent (int): Whether it is a permanent residence identity card. Valid values: `0` (non-permanent), `1` (permanent), and `-1` (unknown).
-- IdNum (string): ID number.
+- IdNum (string): Identity card number.
 - Symbol (string): The ID symbol below the date of birth, such as "***AZ".
-- FirstIssueDate (string): The date of first issuance.
+- FirstIssueDate (string): Month and year of first registration.
 - CurrentIssueDate (string): The date of latest issuance.
 
+(2) Malaysian identity card
 When the value of `IdCardType` is `ML`:
-- Sex (string): `LELAKI` (male) and `PEREMPUAN` (female).
+- Sex (string): Gender. Valid values: `LELAKI` (male) and `PEREMPUAN` (female).
 - Birthday (string): Date of birth.
-- ID (string): ID number.
+- ID (string): Identity card number.
 - Name (string): Name.
 - Address (string): Address.
 - Type (string): Identity document type.
 
+(3) Philippine identity document
 When the value of `IdCardType` is `PhilippinesVoteID`:
 - Birthday (string): Date of birth.
 - Address (string): Address.
-- LastName (string): Family name.
+- LastName (string): Last name.
 - FirstName (string): First name.
-- VIN (string): VIN number.
-- CivilStatus (string): Marital status.
+- VIN (string): Voter's identification number (VIN).
+- CivilStatus (string): Civil status.
 - Citizenship (string): Citizenship.
-- PrecinctNo (string): Region.
+- PrecinctNo (string): Precinct.
 
 When the value of `IdCardType` is `PhilippinesDrivingLicense`:
 - Sex (string): Gender.
 - Birthday (string): Date of birth.
 - Name (string): Name.
 - Address (string): Address.
-- LastName (string): Family name.
+- LastName (string): Last name.
 - FirstName (string): First name.
 - MiddleName (string): Middle name.
 - Nationality (string): Nationality.
 - LicenseNo (string): License number.
-- ExpiresDate (string): Validity period.
+- ExpiresDate (string): Expiration date.
 - AgencyCode (string): Agency code.
 
+When the value of `IdCardType` is `PhilippinesTinID`:
+- LicenseNumber (string): Tax identification number (TIN).
+- FullName (string): Full name.
+- Address (string): Address.
+- Birthday (string): Date of birth.
+- IssueDate (string): Issue date.
+
+When the value of `IdCardType` is `PhilippinesSSSID`:
+- LicenseNumber (string): Common reference number (CRN).
+- FullName (string): Full name.
+- Birthday (string): Date of birth.
+
+(4) Indonesian identity card
 When the value of `IdCardType` is `IndonesiaIDCard`:
-- NIK (string): Identity document No.
-- Nama (string): Name.
-- TempatTglLahir (string): Place/Date of birth.
+- NIK (string): Single Identity Number.
+- Nama (string): Full name.
+- TempatTglLahir (string): Place and date of birth.
 - JenisKelamin (string): Gender.
 - GolDarah (string): Blood type.
 - Alamat (string): Address.
@@ -259,12 +275,22 @@ When the value of `IdCardType` is `IndonesiaIDCard`:
 - Kecamatan (string): Region.
 - Agama (string): Religion.
 - StatusPerkawinan (string): Marital status.
-- Perkerjaan (string): Profession.
+- Perkerjaan (string): Occupation.
 - KewargaNegaraan (string): Nationality.
-- BerlakuHingga (string): Expiry date of the identity document.
-- IssuedDate (string): Date of issuance.
+- BerlakuHingga (string): Expiry date.
+- IssuedDate (string): Issue date.
 
-Note: This field may return null, indicating that no valid values can be obtained.
+(5) A passport issued in Hong Kong/Macao/Taiwan (China) or other countries/regions
+When the value of `IdCardType` is `MLIDPassport`:
+- FullName (string): Full name.
+- Surname (string): Surname.
+- GivenName (string): Given name.
+- Birthday (string): Date of birth.
+- Sex (string): Gender. Valid values: `F` (female) and `M` (male).
+- DateOfExpiration (string): Expiration date.
+- IssuingCountry (string): Issuing country.
+- NationalityCode (string): Country/region code.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type CardInfoOcrJson: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
         :param RequestId: The request ID of a single process.
         :type RequestId: str
@@ -304,31 +330,50 @@ class CompareResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ErrorCode: The final comparison result.
+        :param ErrorCode: The final verification result code.
+0: Success.
+1001: Failed to call the liveness detection engine.
+1004: Face detection failed.
+2004: The uploaded face image is too large or too small.
+2012: The face is not fully exposed.
+2013: No face is detected.
+2014: The resolution of the uploaded image is too low . Please upload a new one.
+2015: Face comparison failed.
+2016: The similarity did not reach the passing standard.
         :type ErrorCode: str
-        :param ErrorMsg: The description of the final comparison result.
+        :param ErrorMsg: The description of the final verification result.
         :type ErrorMsg: str
         :param LiveData: 
         :type LiveData: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
-        :param LiveVideo: The video for this liveness detection process. The URL is valid for 10 minutes.
+        :param LiveVideo: The download URL of the video used for verification, which is valid for 10 minutes.
         :type LiveVideo: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
-        :param LiveErrorCode: The code of the liveness detection result.
+        :param LiveErrorCode: The liveness detection result code.
+0: Success.
+1001: Failed to call the liveness detection engine.
+1004: Face detection failed.
         :type LiveErrorCode: str
         :param LiveErrorMsg: The description of the liveness detection result.
         :type LiveErrorMsg: str
-        :param BestFrame: The best face screenshot in this liveness detection. The URL is valid for 10 minutes.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param BestFrame: The download URL of the face screenshot during verification, which is valid for 10 minutes.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type BestFrame: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
-        :param ProfileImage: The profile photo screenshot from the identity document. The URL is valid for 10 minutes.
+        :param ProfileImage: The download URL of the profile photo screenshot from the identity document, which is valid for 10 minutes.
         :type ProfileImage: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
-        :param CompareErrorCode: The code of the face comparison result.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param CompareErrorCode: The face comparison result code.
+0: Success.
+2004: The uploaded face image is too large or too small.
+2012: The face is not fully exposed.
+2013: No face is detected.
+2014: The resolution of the uploaded image is too low . Please upload a new one.
+2015: Face comparison failed.
+2016: The similarity did not reach the passing standard.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type CompareErrorCode: str
         :param CompareErrorMsg: The description of the face comparison result.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CompareErrorMsg: str
-        :param Sim: Similarity
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param Sim: The similarity score of face comparison.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type Sim: float
         :param IsNeedCharge: This field is disused.
         :type IsNeedCharge: bool
