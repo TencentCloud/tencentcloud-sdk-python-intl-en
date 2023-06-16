@@ -73,6 +73,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CloneCDNDomain(self, request):
+        """CloneCDNDomain.
+
+        :param request: Request instance for CloneCDNDomain.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CloneCDNDomainRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CloneCDNDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CloneCDNDomain", params, headers=headers)
+            response = json.loads(body)
+            model = models.CloneCDNDomainResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CommitUpload(self, request):
         """This API is used to confirm the result of uploading a media file (and cover file) to VOD, store the media information, and return the playback address and ID of the file.
 
@@ -238,6 +261,29 @@ class VodClient(AbstractClient):
             body = self.call("CreateAnimatedGraphicsTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.CreateAnimatedGraphicsTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateCDNDomain(self, request):
+        """This interface is used to add domain names to VOD, and a user can add at most 20 domains. 1. After the domain name is successfully added, VOD will deploy the domain name. It takes about 2 minutes for the domain name to change from the deployed state to the online state.
+
+        :param request: Request instance for CreateCDNDomain.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateCDNDomainRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateCDNDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCDNDomain", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCDNDomainResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -766,6 +812,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteCDNDomain(self, request):
+        """DeleteCDNDomain.
+
+        :param request: Request instance for DeleteCDNDomain.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DeleteCDNDomainRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DeleteCDNDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCDNDomain", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCDNDomainResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteClass(self, request):
         """* A category can be deleted only if it has no subcategories and associated media files;
         * Otherwise, [delete the media files](https://intl.cloud.tencent.com/document/product/266/31764?from_cn_redirect=1) and subcategories first before deleting the category.
@@ -1271,6 +1340,29 @@ class VodClient(AbstractClient):
             body = self.call("DescribeAnimatedGraphicsTemplates", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAnimatedGraphicsTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCDNDomains(self, request):
+        """DescribeCDNDomains.
+
+        :param request: Request instance for DescribeCDNDomains.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeCDNDomainsRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeCDNDomainsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCDNDomains", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCDNDomainsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2355,6 +2447,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyCDNDomainConfig(self, request):
+        """ModifyCDNDomainConfig.
+
+        :param request: Request instance for ModifyCDNDomainConfig.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ModifyCDNDomainConfigRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ModifyCDNDomainConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCDNDomainConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCDNDomainConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyClass(self, request):
         """This API is used to modify the category of a media file.
 
@@ -3326,6 +3441,29 @@ class VodClient(AbstractClient):
             body = self.call("SimpleHlsClip", params, headers=headers)
             response = json.loads(body)
             model = models.SimpleHlsClipResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StartCDNDomain(self, request):
+        """This interface is used to enable/disable CDN accelerated domain names.
+
+        :param request: Request instance for StartCDNDomain.
+        :type request: :class:`tencentcloud.vod.v20180717.models.StartCDNDomainRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.StartCDNDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartCDNDomain", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartCDNDomainResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

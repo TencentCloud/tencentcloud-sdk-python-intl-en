@@ -5065,6 +5065,743 @@ Default value: 0.
         
 
 
+class Authentication(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 
+        :type Switch: str
+        :param TypeA: 
+        :type TypeA: :class:`tencentcloud.vod.v20180717.models.AuthenticationTypeA`
+        :param TypeB: 
+        :type TypeB: :class:`tencentcloud.vod.v20180717.models.AuthenticationTypeB`
+        :param TypeC: 
+        :type TypeC: :class:`tencentcloud.vod.v20180717.models.AuthenticationTypeC`
+        :param TypeD: 
+        :type TypeD: :class:`tencentcloud.vod.v20180717.models.AuthenticationTypeD`
+        """
+        self.Switch = None
+        self.TypeA = None
+        self.TypeB = None
+        self.TypeC = None
+        self.TypeD = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("TypeA") is not None:
+            self.TypeA = AuthenticationTypeA()
+            self.TypeA._deserialize(params.get("TypeA"))
+        if params.get("TypeB") is not None:
+            self.TypeB = AuthenticationTypeB()
+            self.TypeB._deserialize(params.get("TypeB"))
+        if params.get("TypeC") is not None:
+            self.TypeC = AuthenticationTypeC()
+            self.TypeC._deserialize(params.get("TypeC"))
+        if params.get("TypeD") is not None:
+            self.TypeD = AuthenticationTypeD()
+            self.TypeD._deserialize(params.get("TypeD"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuthenticationTypeA(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SecretKey: 
+        :type SecretKey: str
+        :param SignParam: 
+        :type SignParam: str
+        :param ExpireTime: 
+        :type ExpireTime: int
+        :param FileExtensions: 
+        :type FileExtensions: list of str
+        :param FilterType: 
+        :type FilterType: str
+        :param BackupSecretKey: 
+        :type BackupSecretKey: str
+        """
+        self.SecretKey = None
+        self.SignParam = None
+        self.ExpireTime = None
+        self.FileExtensions = None
+        self.FilterType = None
+        self.BackupSecretKey = None
+
+
+    def _deserialize(self, params):
+        self.SecretKey = params.get("SecretKey")
+        self.SignParam = params.get("SignParam")
+        self.ExpireTime = params.get("ExpireTime")
+        self.FileExtensions = params.get("FileExtensions")
+        self.FilterType = params.get("FilterType")
+        self.BackupSecretKey = params.get("BackupSecretKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuthenticationTypeB(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SecretKey: 
+        :type SecretKey: str
+        :param ExpireTime: 
+        :type ExpireTime: int
+        :param FileExtensions: 
+        :type FileExtensions: list of str
+        :param FilterType: 
+        :type FilterType: str
+        :param BackupSecretKey: 
+        :type BackupSecretKey: str
+        """
+        self.SecretKey = None
+        self.ExpireTime = None
+        self.FileExtensions = None
+        self.FilterType = None
+        self.BackupSecretKey = None
+
+
+    def _deserialize(self, params):
+        self.SecretKey = params.get("SecretKey")
+        self.ExpireTime = params.get("ExpireTime")
+        self.FileExtensions = params.get("FileExtensions")
+        self.FilterType = params.get("FilterType")
+        self.BackupSecretKey = params.get("BackupSecretKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuthenticationTypeC(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SecretKey: 
+        :type SecretKey: str
+        :param ExpireTime: 
+        :type ExpireTime: int
+        :param FileExtensions: 
+        :type FileExtensions: list of str
+        :param FilterType: 
+        :type FilterType: str
+        :param TimeFormat: 
+        :type TimeFormat: str
+        :param BackupSecretKey: 
+        :type BackupSecretKey: str
+        """
+        self.SecretKey = None
+        self.ExpireTime = None
+        self.FileExtensions = None
+        self.FilterType = None
+        self.TimeFormat = None
+        self.BackupSecretKey = None
+
+
+    def _deserialize(self, params):
+        self.SecretKey = params.get("SecretKey")
+        self.ExpireTime = params.get("ExpireTime")
+        self.FileExtensions = params.get("FileExtensions")
+        self.FilterType = params.get("FilterType")
+        self.TimeFormat = params.get("TimeFormat")
+        self.BackupSecretKey = params.get("BackupSecretKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuthenticationTypeD(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SecretKey: 
+        :type SecretKey: str
+        :param ExpireTime: 
+        :type ExpireTime: int
+        :param FileExtensions: 
+        :type FileExtensions: list of str
+        :param FilterType: 
+        :type FilterType: str
+        :param SignParam: 
+        :type SignParam: str
+        :param TimeParam: 
+        :type TimeParam: str
+        :param TimeFormat: 
+        :type TimeFormat: str
+        :param BackupSecretKey: 
+        :type BackupSecretKey: str
+        """
+        self.SecretKey = None
+        self.ExpireTime = None
+        self.FileExtensions = None
+        self.FilterType = None
+        self.SignParam = None
+        self.TimeParam = None
+        self.TimeFormat = None
+        self.BackupSecretKey = None
+
+
+    def _deserialize(self, params):
+        self.SecretKey = params.get("SecretKey")
+        self.ExpireTime = params.get("ExpireTime")
+        self.FileExtensions = params.get("FileExtensions")
+        self.FilterType = params.get("FilterType")
+        self.SignParam = params.get("SignParam")
+        self.TimeParam = params.get("TimeParam")
+        self.TimeFormat = params.get("TimeFormat")
+        self.BackupSecretKey = params.get("BackupSecretKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AwsPrivateAccess(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 
+        :type Switch: str
+        :param AccessKey: 
+        :type AccessKey: str
+        :param SecretKey: 
+        :type SecretKey: str
+        :param Region: 
+        :type Region: str
+        :param Bucket: 
+        :type Bucket: str
+        """
+        self.Switch = None
+        self.AccessKey = None
+        self.SecretKey = None
+        self.Region = None
+        self.Bucket = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.AccessKey = params.get("AccessKey")
+        self.SecretKey = params.get("SecretKey")
+        self.Region = params.get("Region")
+        self.Bucket = params.get("Bucket")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CDNCertInfo(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CertId: 
+        :type CertId: str
+        :param Certificate: 
+        :type Certificate: str
+        :param PrivateKey: 
+        :type PrivateKey: str
+        :param ExpireTime: 
+        :type ExpireTime: str
+        """
+        self.CertId = None
+        self.Certificate = None
+        self.PrivateKey = None
+        self.ExpireTime = None
+
+
+    def _deserialize(self, params):
+        self.CertId = params.get("CertId")
+        self.Certificate = params.get("Certificate")
+        self.PrivateKey = params.get("PrivateKey")
+        self.ExpireTime = params.get("ExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CDNDomainConfig(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Area: 
+        :type Area: str
+        :param Origin: 
+        :type Origin: :class:`tencentcloud.vod.v20180717.models.Origin`
+        :param IpFilter: 
+        :type IpFilter: :class:`tencentcloud.vod.v20180717.models.IpFilter`
+        :param UserAgentFilter: 
+        :type UserAgentFilter: :class:`tencentcloud.vod.v20180717.models.UserAgentFilter`
+        :param FollowRedirect: 
+        :type FollowRedirect: :class:`tencentcloud.vod.v20180717.models.FollowRedirect`
+        :param RequestHeader: 
+        :type RequestHeader: :class:`tencentcloud.vod.v20180717.models.RequestHeader`
+        :param ResponseHeader: 
+        :type ResponseHeader: :class:`tencentcloud.vod.v20180717.models.ResponseHeader`
+        :param Cache: 
+        :type Cache: :class:`tencentcloud.vod.v20180717.models.Cache`
+        :param Https: 
+        :type Https: :class:`tencentcloud.vod.v20180717.models.Https`
+        :param Authentication: 
+        :type Authentication: :class:`tencentcloud.vod.v20180717.models.Authentication`
+        :param ForceRedirect: 
+        :type ForceRedirect: :class:`tencentcloud.vod.v20180717.models.ForceRedirect`
+        :param Referer: 
+        :type Referer: :class:`tencentcloud.vod.v20180717.models.Referer`
+        :param MaxAge: 
+        :type MaxAge: :class:`tencentcloud.vod.v20180717.models.MaxAge`
+        :param Ipv6Access: 
+        :type Ipv6Access: :class:`tencentcloud.vod.v20180717.models.Ipv6Access`
+        :param Quic: 
+        :type Quic: :class:`tencentcloud.vod.v20180717.models.Quic`
+        :param AwsPrivateAccess: 
+        :type AwsPrivateAccess: :class:`tencentcloud.vod.v20180717.models.AwsPrivateAccess`
+        :param OssPrivateAccess: 
+        :type OssPrivateAccess: :class:`tencentcloud.vod.v20180717.models.OssPrivateAccess`
+        :param HwPrivateAccess: 
+        :type HwPrivateAccess: :class:`tencentcloud.vod.v20180717.models.HwPrivateAccess`
+        :param OthersPrivateAccess: 
+        :type OthersPrivateAccess: :class:`tencentcloud.vod.v20180717.models.OthersPrivateAccess`
+        """
+        self.Area = None
+        self.Origin = None
+        self.IpFilter = None
+        self.UserAgentFilter = None
+        self.FollowRedirect = None
+        self.RequestHeader = None
+        self.ResponseHeader = None
+        self.Cache = None
+        self.Https = None
+        self.Authentication = None
+        self.ForceRedirect = None
+        self.Referer = None
+        self.MaxAge = None
+        self.Ipv6Access = None
+        self.Quic = None
+        self.AwsPrivateAccess = None
+        self.OssPrivateAccess = None
+        self.HwPrivateAccess = None
+        self.OthersPrivateAccess = None
+
+
+    def _deserialize(self, params):
+        self.Area = params.get("Area")
+        if params.get("Origin") is not None:
+            self.Origin = Origin()
+            self.Origin._deserialize(params.get("Origin"))
+        if params.get("IpFilter") is not None:
+            self.IpFilter = IpFilter()
+            self.IpFilter._deserialize(params.get("IpFilter"))
+        if params.get("UserAgentFilter") is not None:
+            self.UserAgentFilter = UserAgentFilter()
+            self.UserAgentFilter._deserialize(params.get("UserAgentFilter"))
+        if params.get("FollowRedirect") is not None:
+            self.FollowRedirect = FollowRedirect()
+            self.FollowRedirect._deserialize(params.get("FollowRedirect"))
+        if params.get("RequestHeader") is not None:
+            self.RequestHeader = RequestHeader()
+            self.RequestHeader._deserialize(params.get("RequestHeader"))
+        if params.get("ResponseHeader") is not None:
+            self.ResponseHeader = ResponseHeader()
+            self.ResponseHeader._deserialize(params.get("ResponseHeader"))
+        if params.get("Cache") is not None:
+            self.Cache = Cache()
+            self.Cache._deserialize(params.get("Cache"))
+        if params.get("Https") is not None:
+            self.Https = Https()
+            self.Https._deserialize(params.get("Https"))
+        if params.get("Authentication") is not None:
+            self.Authentication = Authentication()
+            self.Authentication._deserialize(params.get("Authentication"))
+        if params.get("ForceRedirect") is not None:
+            self.ForceRedirect = ForceRedirect()
+            self.ForceRedirect._deserialize(params.get("ForceRedirect"))
+        if params.get("Referer") is not None:
+            self.Referer = Referer()
+            self.Referer._deserialize(params.get("Referer"))
+        if params.get("MaxAge") is not None:
+            self.MaxAge = MaxAge()
+            self.MaxAge._deserialize(params.get("MaxAge"))
+        if params.get("Ipv6Access") is not None:
+            self.Ipv6Access = Ipv6Access()
+            self.Ipv6Access._deserialize(params.get("Ipv6Access"))
+        if params.get("Quic") is not None:
+            self.Quic = Quic()
+            self.Quic._deserialize(params.get("Quic"))
+        if params.get("AwsPrivateAccess") is not None:
+            self.AwsPrivateAccess = AwsPrivateAccess()
+            self.AwsPrivateAccess._deserialize(params.get("AwsPrivateAccess"))
+        if params.get("OssPrivateAccess") is not None:
+            self.OssPrivateAccess = OssPrivateAccess()
+            self.OssPrivateAccess._deserialize(params.get("OssPrivateAccess"))
+        if params.get("HwPrivateAccess") is not None:
+            self.HwPrivateAccess = HwPrivateAccess()
+            self.HwPrivateAccess._deserialize(params.get("HwPrivateAccess"))
+        if params.get("OthersPrivateAccess") is not None:
+            self.OthersPrivateAccess = OthersPrivateAccess()
+            self.OthersPrivateAccess._deserialize(params.get("OthersPrivateAccess"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CDNDomainConfigForUpdate(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Area: 
+        :type Area: str
+        :param Origin: 
+        :type Origin: :class:`tencentcloud.vod.v20180717.models.Origin`
+        :param IpFilter: 
+        :type IpFilter: :class:`tencentcloud.vod.v20180717.models.IpFilter`
+        :param UserAgentFilter: 
+        :type UserAgentFilter: :class:`tencentcloud.vod.v20180717.models.UserAgentFilter`
+        :param FollowRedirect: 
+        :type FollowRedirect: :class:`tencentcloud.vod.v20180717.models.FollowRedirect`
+        :param RequestHeader: 
+        :type RequestHeader: :class:`tencentcloud.vod.v20180717.models.RequestHeader`
+        :param ResponseHeader: 
+        :type ResponseHeader: :class:`tencentcloud.vod.v20180717.models.ResponseHeader`
+        :param Cache: 
+        :type Cache: :class:`tencentcloud.vod.v20180717.models.Cache`
+        :param Https: 
+        :type Https: :class:`tencentcloud.vod.v20180717.models.Https`
+        :param Authentication: 
+        :type Authentication: :class:`tencentcloud.vod.v20180717.models.Authentication`
+        :param ForceRedirect: 
+        :type ForceRedirect: :class:`tencentcloud.vod.v20180717.models.ForceRedirect`
+        :param Referer: 
+        :type Referer: :class:`tencentcloud.vod.v20180717.models.Referer`
+        :param MaxAge: 
+        :type MaxAge: :class:`tencentcloud.vod.v20180717.models.MaxAge`
+        :param Ipv6Access: 
+        :type Ipv6Access: :class:`tencentcloud.vod.v20180717.models.Ipv6Access`
+        :param Quic: 
+        :type Quic: :class:`tencentcloud.vod.v20180717.models.Quic`
+        :param AwsPrivateAccess: 
+        :type AwsPrivateAccess: :class:`tencentcloud.vod.v20180717.models.AwsPrivateAccess`
+        :param OssPrivateAccess: 
+        :type OssPrivateAccess: :class:`tencentcloud.vod.v20180717.models.OssPrivateAccess`
+        :param HwPrivateAccess: 
+        :type HwPrivateAccess: :class:`tencentcloud.vod.v20180717.models.HwPrivateAccess`
+        :param OthersPrivateAccess: 
+        :type OthersPrivateAccess: :class:`tencentcloud.vod.v20180717.models.OthersPrivateAccess`
+        """
+        self.Area = None
+        self.Origin = None
+        self.IpFilter = None
+        self.UserAgentFilter = None
+        self.FollowRedirect = None
+        self.RequestHeader = None
+        self.ResponseHeader = None
+        self.Cache = None
+        self.Https = None
+        self.Authentication = None
+        self.ForceRedirect = None
+        self.Referer = None
+        self.MaxAge = None
+        self.Ipv6Access = None
+        self.Quic = None
+        self.AwsPrivateAccess = None
+        self.OssPrivateAccess = None
+        self.HwPrivateAccess = None
+        self.OthersPrivateAccess = None
+
+
+    def _deserialize(self, params):
+        self.Area = params.get("Area")
+        if params.get("Origin") is not None:
+            self.Origin = Origin()
+            self.Origin._deserialize(params.get("Origin"))
+        if params.get("IpFilter") is not None:
+            self.IpFilter = IpFilter()
+            self.IpFilter._deserialize(params.get("IpFilter"))
+        if params.get("UserAgentFilter") is not None:
+            self.UserAgentFilter = UserAgentFilter()
+            self.UserAgentFilter._deserialize(params.get("UserAgentFilter"))
+        if params.get("FollowRedirect") is not None:
+            self.FollowRedirect = FollowRedirect()
+            self.FollowRedirect._deserialize(params.get("FollowRedirect"))
+        if params.get("RequestHeader") is not None:
+            self.RequestHeader = RequestHeader()
+            self.RequestHeader._deserialize(params.get("RequestHeader"))
+        if params.get("ResponseHeader") is not None:
+            self.ResponseHeader = ResponseHeader()
+            self.ResponseHeader._deserialize(params.get("ResponseHeader"))
+        if params.get("Cache") is not None:
+            self.Cache = Cache()
+            self.Cache._deserialize(params.get("Cache"))
+        if params.get("Https") is not None:
+            self.Https = Https()
+            self.Https._deserialize(params.get("Https"))
+        if params.get("Authentication") is not None:
+            self.Authentication = Authentication()
+            self.Authentication._deserialize(params.get("Authentication"))
+        if params.get("ForceRedirect") is not None:
+            self.ForceRedirect = ForceRedirect()
+            self.ForceRedirect._deserialize(params.get("ForceRedirect"))
+        if params.get("Referer") is not None:
+            self.Referer = Referer()
+            self.Referer._deserialize(params.get("Referer"))
+        if params.get("MaxAge") is not None:
+            self.MaxAge = MaxAge()
+            self.MaxAge._deserialize(params.get("MaxAge"))
+        if params.get("Ipv6Access") is not None:
+            self.Ipv6Access = Ipv6Access()
+            self.Ipv6Access._deserialize(params.get("Ipv6Access"))
+        if params.get("Quic") is not None:
+            self.Quic = Quic()
+            self.Quic._deserialize(params.get("Quic"))
+        if params.get("AwsPrivateAccess") is not None:
+            self.AwsPrivateAccess = AwsPrivateAccess()
+            self.AwsPrivateAccess._deserialize(params.get("AwsPrivateAccess"))
+        if params.get("OssPrivateAccess") is not None:
+            self.OssPrivateAccess = OssPrivateAccess()
+            self.OssPrivateAccess._deserialize(params.get("OssPrivateAccess"))
+        if params.get("HwPrivateAccess") is not None:
+            self.HwPrivateAccess = HwPrivateAccess()
+            self.HwPrivateAccess._deserialize(params.get("HwPrivateAccess"))
+        if params.get("OthersPrivateAccess") is not None:
+            self.OthersPrivateAccess = OthersPrivateAccess()
+            self.OthersPrivateAccess._deserialize(params.get("OthersPrivateAccess"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CDNDomainInfo(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 
+        :type Domain: str
+        :param DeployStatus: 
+        :type DeployStatus: str
+        :param Cname: 
+        :type Cname: str
+        :param CreateTime: 
+        :type CreateTime: str
+        :param Config: 
+        :type Config: :class:`tencentcloud.vod.v20180717.models.CDNDomainConfig`
+        """
+        self.Domain = None
+        self.DeployStatus = None
+        self.Cname = None
+        self.CreateTime = None
+        self.Config = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.DeployStatus = params.get("DeployStatus")
+        self.Cname = params.get("Cname")
+        self.CreateTime = params.get("CreateTime")
+        if params.get("Config") is not None:
+            self.Config = CDNDomainConfig()
+            self.Config._deserialize(params.get("Config"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Cache(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleCache: 
+        :type RuleCache: list of RuleCache
+        """
+        self.RuleCache = None
+
+
+    def _deserialize(self, params):
+        if params.get("RuleCache") is not None:
+            self.RuleCache = []
+            for item in params.get("RuleCache"):
+                obj = RuleCache()
+                obj._deserialize(item)
+                self.RuleCache.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CacheConfigCache(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 
+        :type Switch: str
+        :param CacheTime: 
+        :type CacheTime: int
+        :param CompareMaxAge: 
+        :type CompareMaxAge: str
+        :param IgnoreCacheControl: 
+        :type IgnoreCacheControl: str
+        :param IgnoreSetCookie: 
+        :type IgnoreSetCookie: str
+        """
+        self.Switch = None
+        self.CacheTime = None
+        self.CompareMaxAge = None
+        self.IgnoreCacheControl = None
+        self.IgnoreSetCookie = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.CacheTime = params.get("CacheTime")
+        self.CompareMaxAge = params.get("CompareMaxAge")
+        self.IgnoreCacheControl = params.get("IgnoreCacheControl")
+        self.IgnoreSetCookie = params.get("IgnoreSetCookie")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CacheConfigFollowOrigin(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 
+        :type Switch: str
+        :param HeuristicCache: 
+        :type HeuristicCache: :class:`tencentcloud.vod.v20180717.models.HeuristicCache`
+        """
+        self.Switch = None
+        self.HeuristicCache = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("HeuristicCache") is not None:
+            self.HeuristicCache = HeuristicCache()
+            self.HeuristicCache._deserialize(params.get("HeuristicCache"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CacheConfigNoCache(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 
+        :type Switch: str
+        :param Revalidate: 
+        :type Revalidate: str
+        """
+        self.Switch = None
+        self.Revalidate = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Revalidate = params.get("Revalidate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Canvas(AbstractModel):
     """Canvas information. When a video is composed, if the source material (video or image) cannot fill the output video window, the background will be drawn with the set canvas.
 
@@ -5274,6 +6011,55 @@ class ClipTask2017(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CloneCDNDomainRequest(AbstractModel):
+    """CloneCDNDomain request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: Domain name.
+        :type Domain: str
+        :param ReferenceDomain: The cloned domain name.
+        :type ReferenceDomain: str
+        :param SubAppId: VOD[Subapplication](/document/product/266/14574) ID。If you want to access resources in a Subapplication, fill this field with the Subapplication ID; otherwise, you don't need to fill in this field.
+        :type SubAppId: int
+        """
+        self.Domain = None
+        self.ReferenceDomain = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.ReferenceDomain = params.get("ReferenceDomain")
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloneCDNDomainResponse(AbstractModel):
+    """CloneCDNDomain response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class ColorEnhanceInfo(AbstractModel):
@@ -6503,6 +7289,57 @@ class CreateAnimatedGraphicsTemplateResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Definition = params.get("Definition")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateCDNDomainRequest(AbstractModel):
+    """CreateCDNDomain request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: Domain name.
+        :type Domain: str
+        :param Config: Domain configuration.
+        :type Config: :class:`tencentcloud.vod.v20180717.models.CDNDomainConfig`
+        :param SubAppId: VOD[Subapplication](/document/product/266/14574) ID。If you want to access resources in a Subapplication, fill this field with the Subapplication ID; otherwise, you don't need to fill in this field.
+        :type SubAppId: int
+        """
+        self.Domain = None
+        self.Config = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        if params.get("Config") is not None:
+            self.Config = CDNDomainConfig()
+            self.Config._deserialize(params.get("Config"))
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCDNDomainResponse(AbstractModel):
+    """CreateCDNDomain response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -8175,6 +9012,51 @@ class DeleteAnimatedGraphicsTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteCDNDomainRequest(AbstractModel):
+    """DeleteCDNDomain request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: Domain name.
+        :type Domain: str
+        :param SubAppId: VOD[Subapplication](/document/product/266/14574) ID。If you want to access resources in a Subapplication, fill this field with the Subapplication ID; otherwise, you don't need to fill in this field.
+        :type SubAppId: int
+        """
+        self.Domain = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCDNDomainResponse(AbstractModel):
+    """DeleteCDNDomain response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteClassRequest(AbstractModel):
     """DeleteClass request structure.
 
@@ -9273,6 +10155,72 @@ class DescribeAnimatedGraphicsTemplatesResponse(AbstractModel):
                 obj = AnimatedGraphicsTemplate()
                 obj._deserialize(item)
                 self.AnimatedGraphicsTemplateSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCDNDomainsRequest(AbstractModel):
+    """DescribeCDNDomains request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domains: List of domain names. If this field is left blank, all domain name information will be listed by default.
+        :type Domains: list of str
+        :param Limit: The maximum number of returned results for pagination fetching. Default value: 20.
+        :type Limit: int
+        :param Offset: The starting offset for page fetching. Default value: 0.
+        :type Offset: int
+        :param SubAppId: VOD[Subapplication](/document/product/266/14574) ID。If you want to access resources in a Subapplication, fill this field with the Subapplication ID; otherwise, you don't need to fill in this field.
+        :type SubAppId: int
+        """
+        self.Domains = None
+        self.Limit = None
+        self.Offset = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Domains = params.get("Domains")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCDNDomainsResponse(AbstractModel):
+    """DescribeCDNDomains response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DomainSet: List of domain name information.
+        :type DomainSet: list of CDNDomainInfo
+        :param TotalCount: The total number of CDN domain names under the current application.
+        :type TotalCount: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DomainSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DomainSet") is not None:
+            self.DomainSet = []
+            for item in params.get("DomainSet"):
+                obj = CDNDomainInfo()
+                obj._deserialize(item)
+                self.DomainSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -13226,6 +14174,30 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
+class FollowRedirect(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ForbidMediaDistributionRequest(AbstractModel):
     """ForbidMediaDistribution request structure.
 
@@ -13277,6 +14249,42 @@ class ForbidMediaDistributionResponse(AbstractModel):
     def _deserialize(self, params):
         self.NotExistFileIdSet = params.get("NotExistFileIdSet")
         self.RequestId = params.get("RequestId")
+
+
+class ForceRedirect(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 
+        :type Switch: str
+        :param RedirectType: 
+        :type RedirectType: str
+        :param RedirectStatusCode: 
+        :type RedirectStatusCode: int
+        :param CarryHeaders: 
+        :type CarryHeaders: str
+        """
+        self.Switch = None
+        self.RedirectType = None
+        self.RedirectStatusCode = None
+        self.CarryHeaders = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.RedirectType = params.get("RedirectType")
+        self.RedirectStatusCode = params.get("RedirectStatusCode")
+        self.CarryHeaders = params.get("CarryHeaders")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class FrameTagConfigureInfo(AbstractModel):
@@ -13451,6 +14459,64 @@ class HeadTailTaskInput(AbstractModel):
         
 
 
+class HeuristicCache(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 
+        :type Switch: str
+        :param CacheConfig: 
+        :type CacheConfig: :class:`tencentcloud.vod.v20180717.models.HeuristicCacheConfig`
+        """
+        self.Switch = None
+        self.CacheConfig = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("CacheConfig") is not None:
+            self.CacheConfig = HeuristicCacheConfig()
+            self.CacheConfig._deserialize(params.get("CacheConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HeuristicCacheConfig(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param HeuristicCacheTimeSwitch: 
+        :type HeuristicCacheTimeSwitch: str
+        :param HeuristicCacheTime: 
+        :type HeuristicCacheTime: int
+        """
+        self.HeuristicCacheTimeSwitch = None
+        self.HeuristicCacheTime = None
+
+
+    def _deserialize(self, params):
+        self.HeuristicCacheTimeSwitch = params.get("HeuristicCacheTimeSwitch")
+        self.HeuristicCacheTime = params.get("HeuristicCacheTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class HighlightSegmentItem(AbstractModel):
     """List of intelligently generated highlights.
 
@@ -13526,6 +14592,116 @@ class HighlightsConfigureInfoForUpdate(AbstractModel):
 
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HttpHeaderPathRule(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param HeaderMode: 
+        :type HeaderMode: str
+        :param HeaderName: 
+        :type HeaderName: str
+        :param HeaderValue: 
+        :type HeaderValue: str
+        :param RuleType: 
+        :type RuleType: str
+        :param RulePaths: 
+        :type RulePaths: list of str
+        """
+        self.HeaderMode = None
+        self.HeaderName = None
+        self.HeaderValue = None
+        self.RuleType = None
+        self.RulePaths = None
+
+
+    def _deserialize(self, params):
+        self.HeaderMode = params.get("HeaderMode")
+        self.HeaderName = params.get("HeaderName")
+        self.HeaderValue = params.get("HeaderValue")
+        self.RuleType = params.get("RuleType")
+        self.RulePaths = params.get("RulePaths")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Https(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 
+        :type Switch: str
+        :param Http2: 
+        :type Http2: str
+        :param CertInfo: 
+        :type CertInfo: :class:`tencentcloud.vod.v20180717.models.CDNCertInfo`
+        """
+        self.Switch = None
+        self.Http2 = None
+        self.CertInfo = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Http2 = params.get("Http2")
+        if params.get("CertInfo") is not None:
+            self.CertInfo = CDNCertInfo()
+            self.CertInfo._deserialize(params.get("CertInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HwPrivateAccess(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 
+        :type Switch: str
+        :param AccessKey: 
+        :type AccessKey: str
+        :param SecretKey: 
+        :type SecretKey: str
+        :param Bucket: 
+        :type Bucket: str
+        """
+        self.Switch = None
+        self.AccessKey = None
+        self.SecretKey = None
+        self.Bucket = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.AccessKey = params.get("AccessKey")
+        self.SecretKey = params.get("SecretKey")
+        self.Bucket = params.get("Bucket")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14066,6 +15242,107 @@ class ImageWatermarkTemplate(AbstractModel):
         
 
 
+class IpFilter(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 
+        :type Switch: str
+        :param FilterType: 
+        :type FilterType: str
+        :param Filters: 
+        :type Filters: list of str
+        :param FilterRules: 
+        :type FilterRules: list of IpFilterPathRule
+        """
+        self.Switch = None
+        self.FilterType = None
+        self.Filters = None
+        self.FilterRules = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.FilterType = params.get("FilterType")
+        self.Filters = params.get("Filters")
+        if params.get("FilterRules") is not None:
+            self.FilterRules = []
+            for item in params.get("FilterRules"):
+                obj = IpFilterPathRule()
+                obj._deserialize(item)
+                self.FilterRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IpFilterPathRule(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FilterType: 
+        :type FilterType: str
+        :param Filters: 
+        :type Filters: list of str
+        :param RuleType: 
+        :type RuleType: str
+        :param RulePaths: 
+        :type RulePaths: list of str
+        """
+        self.FilterType = None
+        self.Filters = None
+        self.RuleType = None
+        self.RulePaths = None
+
+
+    def _deserialize(self, params):
+        self.FilterType = params.get("FilterType")
+        self.Filters = params.get("Filters")
+        self.RuleType = params.get("RuleType")
+        self.RulePaths = params.get("RulePaths")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Ipv6Access(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LicenseUsageDataItem(AbstractModel):
     """The license request statistics.
 
@@ -14325,6 +15602,71 @@ class ManageTaskResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class MaxAge(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MaxAgeRules: 
+        :type MaxAgeRules: list of MaxAgeRule
+        """
+        self.MaxAgeRules = None
+
+
+    def _deserialize(self, params):
+        if params.get("MaxAgeRules") is not None:
+            self.MaxAgeRules = []
+            for item in params.get("MaxAgeRules"):
+                obj = MaxAgeRule()
+                obj._deserialize(item)
+                self.MaxAgeRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MaxAgeRule(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MaxAgeType: 
+        :type MaxAgeType: str
+        :param MaxAgeContents: 
+        :type MaxAgeContents: list of str
+        :param MaxAgeTime: 
+        :type MaxAgeTime: int
+        :param FollowOrigin: 
+        :type FollowOrigin: str
+        """
+        self.MaxAgeType = None
+        self.MaxAgeContents = None
+        self.MaxAgeTime = None
+        self.FollowOrigin = None
+
+
+    def _deserialize(self, params):
+        self.MaxAgeType = params.get("MaxAgeType")
+        self.MaxAgeContents = params.get("MaxAgeContents")
+        self.MaxAgeTime = params.get("MaxAgeTime")
+        self.FollowOrigin = params.get("FollowOrigin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class MediaAdaptiveDynamicStreamingInfo(AbstractModel):
@@ -17268,6 +18610,57 @@ class ModifyAnimatedGraphicsTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyCDNDomainConfigRequest(AbstractModel):
+    """ModifyCDNDomainConfig request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: Domain name.
+        :type Domain: str
+        :param Config: Domain configuration.
+        :type Config: :class:`tencentcloud.vod.v20180717.models.CDNDomainConfigForUpdate`
+        :param SubAppId: VOD[Subapplication](/document/product/266/14574) ID。If you want to access resources in a Subapplication, fill this field with the Subapplication ID; otherwise, you don't need to fill in this field.
+        :type SubAppId: int
+        """
+        self.Domain = None
+        self.Config = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        if params.get("Config") is not None:
+            self.Config = CDNDomainConfigForUpdate()
+            self.Config._deserialize(params.get("Config"))
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCDNDomainConfigResponse(AbstractModel):
+    """ModifyCDNDomainConfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyClassRequest(AbstractModel):
     """ModifyClass request structure.
 
@@ -19061,6 +20454,138 @@ There can be up to 10 tags, each with a length limit of 16 characters.
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
         self.LabelSet = params.get("LabelSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Origin(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Origins: 
+        :type Origins: list of str
+        :param OriginType: 
+        :type OriginType: str
+        :param ServerName: 
+        :type ServerName: str
+        :param OriginPullProtocol: 
+        :type OriginPullProtocol: str
+        :param BackupOrigins: 
+        :type BackupOrigins: list of str
+        :param BackupOriginType: 
+        :type BackupOriginType: str
+        :param BackupServerName: 
+        :type BackupServerName: str
+        :param OriginCompany: 
+        :type OriginCompany: str
+        """
+        self.Origins = None
+        self.OriginType = None
+        self.ServerName = None
+        self.OriginPullProtocol = None
+        self.BackupOrigins = None
+        self.BackupOriginType = None
+        self.BackupServerName = None
+        self.OriginCompany = None
+
+
+    def _deserialize(self, params):
+        self.Origins = params.get("Origins")
+        self.OriginType = params.get("OriginType")
+        self.ServerName = params.get("ServerName")
+        self.OriginPullProtocol = params.get("OriginPullProtocol")
+        self.BackupOrigins = params.get("BackupOrigins")
+        self.BackupOriginType = params.get("BackupOriginType")
+        self.BackupServerName = params.get("BackupServerName")
+        self.OriginCompany = params.get("OriginCompany")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OssPrivateAccess(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 
+        :type Switch: str
+        :param AccessKey: 
+        :type AccessKey: str
+        :param SecretKey: 
+        :type SecretKey: str
+        :param Region: 
+        :type Region: str
+        :param Bucket: 
+        :type Bucket: str
+        """
+        self.Switch = None
+        self.AccessKey = None
+        self.SecretKey = None
+        self.Region = None
+        self.Bucket = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.AccessKey = params.get("AccessKey")
+        self.SecretKey = params.get("SecretKey")
+        self.Region = params.get("Region")
+        self.Bucket = params.get("Bucket")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OthersPrivateAccess(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 
+        :type Switch: str
+        :param AccessKey: 
+        :type AccessKey: str
+        :param SecretKey: 
+        :type SecretKey: str
+        :param Region: 
+        :type Region: str
+        :param Bucket: 
+        :type Bucket: str
+        """
+        self.Switch = None
+        self.AccessKey = None
+        self.SecretKey = None
+        self.Region = None
+        self.Bucket = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.AccessKey = params.get("AccessKey")
+        self.SecretKey = params.get("SecretKey")
+        self.Region = params.get("Region")
+        self.Bucket = params.get("Bucket")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -21045,6 +22570,30 @@ class PushUrlCacheResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class Quic(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RebuildAudioInfo(AbstractModel):
     """The audio remaster parameters.
 
@@ -22191,6 +23740,39 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class Referer(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 
+        :type Switch: str
+        :param RefererRules: 
+        :type RefererRules: list of RefererRule
+        """
+        self.Switch = None
+        self.RefererRules = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("RefererRules") is not None:
+            self.RefererRules = []
+            for item in params.get("RefererRules"):
+                obj = RefererRule()
+                obj._deserialize(item)
+                self.RefererRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RefererAuthPolicy(AbstractModel):
     """Referer hotlink protection configuration
 
@@ -22226,6 +23808,46 @@ When `Status` is set to `Enabled`, `BlankRefererAllowed` must be specified.
         self.AuthType = params.get("AuthType")
         self.Referers = params.get("Referers")
         self.BlankRefererAllowed = params.get("BlankRefererAllowed")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RefererRule(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleType: 
+        :type RuleType: str
+        :param RulePaths: 
+        :type RulePaths: list of str
+        :param RefererType: 
+        :type RefererType: str
+        :param Referers: 
+        :type Referers: list of str
+        :param AllowEmpty: 
+        :type AllowEmpty: bool
+        """
+        self.RuleType = None
+        self.RulePaths = None
+        self.RefererType = None
+        self.Referers = None
+        self.AllowEmpty = None
+
+
+    def _deserialize(self, params):
+        self.RuleType = params.get("RuleType")
+        self.RulePaths = params.get("RulePaths")
+        self.RefererType = params.get("RefererType")
+        self.Referers = params.get("Referers")
+        self.AllowEmpty = params.get("AllowEmpty")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -22512,6 +24134,39 @@ Default value: `weak`.
         
 
 
+class RequestHeader(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 
+        :type Switch: str
+        :param HeaderRules: 
+        :type HeaderRules: list of HttpHeaderPathRule
+        """
+        self.Switch = None
+        self.HeaderRules = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("HeaderRules") is not None:
+            self.HeaderRules = []
+            for item in params.get("HeaderRules"):
+                obj = HttpHeaderPathRule()
+                obj._deserialize(item)
+                self.HeaderRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ResetProcedureTemplateRequest(AbstractModel):
     """ResetProcedureTemplate request structure.
 
@@ -22639,6 +24294,39 @@ class ResourceTag(AbstractModel):
     def _deserialize(self, params):
         self.TagKey = params.get("TagKey")
         self.TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResponseHeader(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 
+        :type Switch: str
+        :param HeaderRules: 
+        :type HeaderRules: list of HttpHeaderPathRule
+        """
+        self.Switch = None
+        self.HeaderRules = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("HeaderRules") is not None:
+            self.HeaderRules = []
+            for item in params.get("HeaderRules"):
+                obj = HttpHeaderPathRule()
+                obj._deserialize(item)
+                self.HeaderRules.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -23434,6 +25122,78 @@ The file must be in HLS format.
         self.FileId = params.get("FileId")
         self.AudioVideoType = params.get("AudioVideoType")
         self.Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleCache(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleType: 
+        :type RuleType: str
+        :param RulePaths: 
+        :type RulePaths: list of str
+        :param CacheConfig: 
+        :type CacheConfig: :class:`tencentcloud.vod.v20180717.models.RuleCacheConfig`
+        """
+        self.RuleType = None
+        self.RulePaths = None
+        self.CacheConfig = None
+
+
+    def _deserialize(self, params):
+        self.RuleType = params.get("RuleType")
+        self.RulePaths = params.get("RulePaths")
+        if params.get("CacheConfig") is not None:
+            self.CacheConfig = RuleCacheConfig()
+            self.CacheConfig._deserialize(params.get("CacheConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleCacheConfig(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Cache: 
+        :type Cache: :class:`tencentcloud.vod.v20180717.models.CacheConfigCache`
+        :param NoCache: 
+        :type NoCache: :class:`tencentcloud.vod.v20180717.models.CacheConfigNoCache`
+        :param FollowOrigin: 
+        :type FollowOrigin: :class:`tencentcloud.vod.v20180717.models.CacheConfigFollowOrigin`
+        """
+        self.Cache = None
+        self.NoCache = None
+        self.FollowOrigin = None
+
+
+    def _deserialize(self, params):
+        if params.get("Cache") is not None:
+            self.Cache = CacheConfigCache()
+            self.Cache._deserialize(params.get("Cache"))
+        if params.get("NoCache") is not None:
+            self.NoCache = CacheConfigNoCache()
+            self.NoCache._deserialize(params.get("NoCache"))
+        if params.get("FollowOrigin") is not None:
+            self.FollowOrigin = CacheConfigFollowOrigin()
+            self.FollowOrigin._deserialize(params.get("FollowOrigin"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -24561,6 +26321,55 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class StartCDNDomainRequest(AbstractModel):
+    """StartCDNDomain request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: Domain name.
+        :type Domain: str
+        :param Operation: Domain name operation, value: <li>start: enable;</li> <li>stop: disable. </li>
+        :type Operation: str
+        :param SubAppId: VOD[Subapplication](/document/product/266/14574) ID。If you want to access resources in a Subapplication, fill this field with the Subapplication ID; otherwise, you don't need to fill in this field.
+        :type SubAppId: int
+        """
+        self.Domain = None
+        self.Operation = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.Operation = params.get("Operation")
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartCDNDomainResponse(AbstractModel):
+    """StartCDNDomain response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class StatDataItem(AbstractModel):
@@ -26181,6 +27990,75 @@ class UrlSignatureAuthPolicy(AbstractModel):
     def _deserialize(self, params):
         self.Status = params.get("Status")
         self.EncryptedKey = params.get("EncryptedKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserAgentFilter(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 
+        :type Switch: str
+        :param FilterRules: 
+        :type FilterRules: list of UserAgentFilterRule
+        """
+        self.Switch = None
+        self.FilterRules = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("FilterRules") is not None:
+            self.FilterRules = []
+            for item in params.get("FilterRules"):
+                obj = UserAgentFilterRule()
+                obj._deserialize(item)
+                self.FilterRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserAgentFilterRule(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FilterType: 
+        :type FilterType: str
+        :param UserAgents: 
+        :type UserAgents: list of str
+        :param RuleType: 
+        :type RuleType: str
+        :param RulePaths: 
+        :type RulePaths: list of str
+        """
+        self.FilterType = None
+        self.UserAgents = None
+        self.RuleType = None
+        self.RulePaths = None
+
+
+    def _deserialize(self, params):
+        self.FilterType = params.get("FilterType")
+        self.UserAgents = params.get("UserAgents")
+        self.RuleType = params.get("RuleType")
+        self.RulePaths = params.get("RulePaths")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
