@@ -5066,21 +5066,21 @@ Default value: 0.
 
 
 class Authentication(AbstractModel):
-    """
+    """Timestamp hotlink protection configuration
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: 
+        :param Switch: Hotlink protection configuration switch: <li>on:Enable;</li> <li>off:Disable.</li>
         :type Switch: str
-        :param TypeA: 
+        :param TypeA: Timestamp hotlink protection mode A configuration
         :type TypeA: :class:`tencentcloud.vod.v20180717.models.AuthenticationTypeA`
-        :param TypeB: 
+        :param TypeB: Timestamp hotlink protection mode B configuration
         :type TypeB: :class:`tencentcloud.vod.v20180717.models.AuthenticationTypeB`
-        :param TypeC: 
+        :param TypeC: Timestamp hotlink protection mode C configuration
         :type TypeC: :class:`tencentcloud.vod.v20180717.models.AuthenticationTypeC`
-        :param TypeD: 
+        :param TypeD: Timestamp hotlink protection mode D configuration
         :type TypeD: :class:`tencentcloud.vod.v20180717.models.AuthenticationTypeD`
         """
         self.Switch = None
@@ -5114,23 +5114,28 @@ class Authentication(AbstractModel):
 
 
 class AuthenticationTypeA(AbstractModel):
-    """
+    """Timestamp hotlink protection mode A configuration
+    The access URL format of timestamp hotlink protection mode A is as follows: http://DomainName/Filename?sign=timestamp-rand-uid-md5hash
+    Here, timestamp is a decimal timestamp in Unix format;
+    rand is a random string composed of 0-100 characters, including digits, upper and lower-case letters.
+    uid is 0;
+    md5hash: MD5 (file path-timestamp-rand-uid-custom key)
 
     """
 
     def __init__(self):
         r"""
-        :param SecretKey: 
+        :param SecretKey: The key for signature calculation 6-32 characters. Only digits and letters are allowed.
         :type SecretKey: str
-        :param SignParam: 
+        :param SignParam: Signature parameter name Only upper and lower-case letters, digits, and underscores (_) are allowed. It cannot start with a digit. Length limit: 1-100 characters.
         :type SignParam: str
-        :param ExpireTime: 
+        :param ExpireTime: Signature expiration time;Unit: second. The maximum value is 630720000.
         :type ExpireTime: int
-        :param FileExtensions: 
+        :param FileExtensions: File extension list settings determining if authentication should be performed;If it contains an asterisk (*), this indicates all files.
         :type FileExtensions: list of str
-        :param FilterType: 
+        :param FilterType: whitelist: All file types apart from the FileExtensions list are authenticated;blacklist: Only the file types in the FileExtensions list are authenticated.
         :type FilterType: str
-        :param BackupSecretKey: 
+        :param BackupSecretKey: Backup key, which is used to calculate a signature. 6-32 characters. Only digits and letters are allowed.
         :type BackupSecretKey: str
         """
         self.SecretKey = None
@@ -5158,21 +5163,21 @@ class AuthenticationTypeA(AbstractModel):
 
 
 class AuthenticationTypeB(AbstractModel):
-    """
+    """Timestamp hotlink protection mode B configuration
 
     """
 
     def __init__(self):
         r"""
-        :param SecretKey: 
+        :param SecretKey: The key for signature calculation 6-32 characters. Only digits and letters are allowed.
         :type SecretKey: str
-        :param ExpireTime: 
+        :param ExpireTime: Signature parameter name Only upper and lower-case letters, digits, and underscores (_) are allowed. It cannot start with a digit. Length limit: 1-100 characters.
         :type ExpireTime: int
-        :param FileExtensions: 
+        :param FileExtensions: File extension list settings determining if authentication should be performed;If it contains an asterisk (*), this indicates all files.
         :type FileExtensions: list of str
-        :param FilterType: 
+        :param FilterType: whitelist: All file types apart from the FileExtensions list are authenticated;blacklist: Only the file types in the FileExtensions list are authenticated.
         :type FilterType: str
-        :param BackupSecretKey: 
+        :param BackupSecretKey: Backup key, which is used to calculate a signature. 6-32 characters. Only digits and letters are allowed.
         :type BackupSecretKey: str
         """
         self.SecretKey = None
@@ -5198,23 +5203,26 @@ class AuthenticationTypeB(AbstractModel):
 
 
 class AuthenticationTypeC(AbstractModel):
-    """
+    """Timestamp hotlink protection mode C configuration
+    The access URL format of timestamp hotlink protection mode C is as follows: http://DomainName/md5hash/timestamp/FileName
+    Here, timestamp is a hexadecimal timestamp in Unix format;
+    md5hash: MD5 (custom key + file path + timestamp)
 
     """
 
     def __init__(self):
         r"""
-        :param SecretKey: 
+        :param SecretKey: The key for signature calculation 6-32 characters. Only digits and letters are allowed.
         :type SecretKey: str
-        :param ExpireTime: 
+        :param ExpireTime: Signature expiration time;Unit: second. The maximum value is 630720000.
         :type ExpireTime: int
-        :param FileExtensions: 
+        :param FileExtensions: File extension list settings determining if authentication should be performed;If it contains an asterisk (*), this indicates all files.
         :type FileExtensions: list of str
-        :param FilterType: 
+        :param FilterType: whitelist: All file types apart from the FileExtensions list are authenticated;blacklist: Only the file types in the FileExtensions list are authenticated.
         :type FilterType: str
-        :param TimeFormat: 
+        :param TimeFormat: Timestamp settings:<li>dec: Decimal</li> <li>hex: Hexadecimal</li>
         :type TimeFormat: str
-        :param BackupSecretKey: 
+        :param BackupSecretKey: Backup key, which is used to calculate a signature. 6-32 characters. Only digits and letters are allowed.
         :type BackupSecretKey: str
         """
         self.SecretKey = None
@@ -5242,27 +5250,30 @@ class AuthenticationTypeC(AbstractModel):
 
 
 class AuthenticationTypeD(AbstractModel):
-    """
+    """Timestamp hotlink protection mode D configuration
+    The access URL format of timestamp hotlink protection mode D is as follows: http://DomainName/FileName?sign=md5hash&t=timestamp
+    Here, timestamp is a decimal or hexadecimal timestamp in Unix format;
+    md5hash: MD5 (custom key + file path + timestamp)
 
     """
 
     def __init__(self):
         r"""
-        :param SecretKey: 
+        :param SecretKey: The key for signature calculation 6-32 characters. Only digits and letters are allowed.
         :type SecretKey: str
-        :param ExpireTime: 
+        :param ExpireTime: Signature expiration time;Unit: second. The maximum value is 630720000.
         :type ExpireTime: int
-        :param FileExtensions: 
+        :param FileExtensions: File extension list settings determining if authentication should be performed;If it contains an asterisk (*), this indicates all files.
         :type FileExtensions: list of str
-        :param FilterType: 
+        :param FilterType: whitelist: All file types apart from the FileExtensions list are authenticated;blacklist: Only the file types in the FileExtensions list are authenticated.
         :type FilterType: str
-        :param SignParam: 
+        :param SignParam: Signature parameter name Only upper and lower-case letters, digits, and underscores (_) are allowed. It cannot start with a digit. Length limit: 1-100 characters.
         :type SignParam: str
-        :param TimeParam: 
+        :param TimeParam: Timestamp parameter name;Only upper and lower-case letters, digits, and underscores (_) are allowed. It cannot start with a digit. Length limit: 1-100 characters.
         :type TimeParam: str
-        :param TimeFormat: 
+        :param TimeFormat: Timestamp settings: <li>dec: Decimal</li> <li>hex: Hexadecimal</li>
         :type TimeFormat: str
-        :param BackupSecretKey: 
+        :param BackupSecretKey: Backup key, which is used to calculate a signature. 6-32 characters. Only digits and letters are allowed.
         :type BackupSecretKey: str
         """
         self.SecretKey = None
@@ -5294,21 +5305,21 @@ class AuthenticationTypeD(AbstractModel):
 
 
 class AwsPrivateAccess(AbstractModel):
-    """
+    """Origin access authentication for S3 bucket.
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: 
+        :param Switch:  Aws S3 back-to-origin authentication configuration switch, the values are: <li>on:Enable;</li> <li>off: Disable.</li>
         :type Switch: str
-        :param AccessKey: 
+        :param AccessKey: Access ID.
         :type AccessKey: str
-        :param SecretKey: 
+        :param SecretKey: Key.
         :type SecretKey: str
-        :param Region: 
+        :param Region: Region.
         :type Region: str
-        :param Bucket: 
+        :param Bucket: BucketName.
         :type Bucket: str
         """
         self.Switch = None
@@ -5334,19 +5345,19 @@ class AwsPrivateAccess(AbstractModel):
 
 
 class CDNCertInfo(AbstractModel):
-    """
+    """Domain https acceleration configuration, the default is off
 
     """
 
     def __init__(self):
         r"""
-        :param CertId: 
+        :param CertId: Server certificate ID, which is auto-generated when the certificate is being managed by the SSL Certificate Service
         :type CertId: str
-        :param Certificate: 
+        :param Certificate: Server certificate information.
         :type Certificate: str
-        :param PrivateKey: 
+        :param PrivateKey: Server key information.
         :type PrivateKey: str
-        :param ExpireTime: 
+        :param ExpireTime: Time when the certificate expires;Can be left blank when used as an input parameter.
         :type ExpireTime: str
         """
         self.CertId = None
@@ -5370,49 +5381,49 @@ class CDNCertInfo(AbstractModel):
 
 
 class CDNDomainConfig(AbstractModel):
-    """
+    """CDN Domain Config
 
     """
 
     def __init__(self):
         r"""
-        :param Area: 
+        :param Area: Acceleration region:<li>mainland:Acceleration inside the Chinese mainland;</li> <li>overseas: Acceleration outside the Chinese mainland;</li> <li>Acceleration over the globe.</li>
         :type Area: str
-        :param Origin: 
+        :param Origin: Origin Server Configuration
         :type Origin: :class:`tencentcloud.vod.v20180717.models.Origin`
-        :param IpFilter: 
+        :param IpFilter: IP blocklist/allowlist configuration. This is disabled by default.
         :type IpFilter: :class:`tencentcloud.vod.v20180717.models.IpFilter`
-        :param UserAgentFilter: 
+        :param UserAgentFilter: UserAgent:blacklist/whitelist configuration.
         :type UserAgentFilter: :class:`tencentcloud.vod.v20180717.models.UserAgentFilter`
-        :param FollowRedirect: 
+        :param FollowRedirect: Back to the source 301/302 status code automatically follows the configuration, the default is off
         :type FollowRedirect: :class:`tencentcloud.vod.v20180717.models.FollowRedirect`
-        :param RequestHeader: 
+        :param RequestHeader: Custom request header configuration. This is disabled by default.
         :type RequestHeader: :class:`tencentcloud.vod.v20180717.models.RequestHeader`
-        :param ResponseHeader: 
+        :param ResponseHeader: Custom response header configuration. This is disabled by default.
         :type ResponseHeader: :class:`tencentcloud.vod.v20180717.models.ResponseHeader`
-        :param Cache: 
+        :param Cache: Node cache expiration time configuration.
         :type Cache: :class:`tencentcloud.vod.v20180717.models.Cache`
-        :param Https: 
+        :param Https: Domain name HTTPS acceleration configuration. This is disabled by default.
         :type Https: :class:`tencentcloud.vod.v20180717.models.Https`
-        :param Authentication: 
+        :param Authentication: Timestamp hotlink protection configuration.
         :type Authentication: :class:`tencentcloud.vod.v20180717.models.Authentication`
-        :param ForceRedirect: 
+        :param ForceRedirect: Access protocol forced redirect configuration. This is disabled by default.
         :type ForceRedirect: :class:`tencentcloud.vod.v20180717.models.ForceRedirect`
-        :param Referer: 
+        :param Referer: Referer blacklist/whitelist configuration. This is disabled by default.
         :type Referer: :class:`tencentcloud.vod.v20180717.models.Referer`
-        :param MaxAge: 
+        :param MaxAge: Browser cache rule configuration, which is used to set the default value of MaxAge and is disabled by default.
         :type MaxAge: :class:`tencentcloud.vod.v20180717.models.MaxAge`
-        :param Ipv6Access: 
+        :param Ipv6Access: IPv6 access configuration.
         :type Ipv6Access: :class:`tencentcloud.vod.v20180717.models.Ipv6Access`
-        :param Quic: 
+        :param Quic: QUIC configuration item.
         :type Quic: :class:`tencentcloud.vod.v20180717.models.Quic`
-        :param AwsPrivateAccess: 
+        :param AwsPrivateAccess: Origin access authentication for S3 bucket.
         :type AwsPrivateAccess: :class:`tencentcloud.vod.v20180717.models.AwsPrivateAccess`
-        :param OssPrivateAccess: 
+        :param OssPrivateAccess: Access authentication configuration for OSS origin.
         :type OssPrivateAccess: :class:`tencentcloud.vod.v20180717.models.OssPrivateAccess`
-        :param HwPrivateAccess: 
+        :param HwPrivateAccess: Access authentication for Huawei Cloud OBS origin
         :type HwPrivateAccess: :class:`tencentcloud.vod.v20180717.models.HwPrivateAccess`
-        :param OthersPrivateAccess: 
+        :param OthersPrivateAccess: Origin-pull authentication for other origins.
         :type OthersPrivateAccess: :class:`tencentcloud.vod.v20180717.models.OthersPrivateAccess`
         """
         self.Area = None
@@ -5502,49 +5513,49 @@ class CDNDomainConfig(AbstractModel):
 
 
 class CDNDomainConfigForUpdate(AbstractModel):
-    """
+    """CDN domain config for update
 
     """
 
     def __init__(self):
         r"""
-        :param Area: 
+        :param Area: Acceleration region:<li>mainland:Acceleration inside the Chinese mainland;</li> <li>overseas: Acceleration outside the Chinese mainland;</li> <li>Acceleration over the globe.</li>
         :type Area: str
-        :param Origin: 
+        :param Origin: Origin Server Configuration.
         :type Origin: :class:`tencentcloud.vod.v20180717.models.Origin`
-        :param IpFilter: 
+        :param IpFilter: IP blocklist/allowlist configuration. This is disabled by default.
         :type IpFilter: :class:`tencentcloud.vod.v20180717.models.IpFilter`
-        :param UserAgentFilter: 
+        :param UserAgentFilter: UserAgent:blacklist/whitelist configuration.
         :type UserAgentFilter: :class:`tencentcloud.vod.v20180717.models.UserAgentFilter`
-        :param FollowRedirect: 
+        :param FollowRedirect: Back to the source 301/302 status code automatically follows the configuration, the default is off
         :type FollowRedirect: :class:`tencentcloud.vod.v20180717.models.FollowRedirect`
-        :param RequestHeader: 
+        :param RequestHeader: Custom request header configuration. This is disabled by default.
         :type RequestHeader: :class:`tencentcloud.vod.v20180717.models.RequestHeader`
-        :param ResponseHeader: 
+        :param ResponseHeader: Custom response header configuration. This is disabled by default.
         :type ResponseHeader: :class:`tencentcloud.vod.v20180717.models.ResponseHeader`
-        :param Cache: 
+        :param Cache: Node cache expiration time configuration.
         :type Cache: :class:`tencentcloud.vod.v20180717.models.Cache`
-        :param Https: 
+        :param Https: Domain name HTTPS acceleration configuration. This is disabled by default.
         :type Https: :class:`tencentcloud.vod.v20180717.models.Https`
-        :param Authentication: 
+        :param Authentication: Timestamp hotlink protection configuration.
         :type Authentication: :class:`tencentcloud.vod.v20180717.models.Authentication`
-        :param ForceRedirect: 
+        :param ForceRedirect: Access protocol forced redirect configuration. This is disabled by default.
         :type ForceRedirect: :class:`tencentcloud.vod.v20180717.models.ForceRedirect`
-        :param Referer: 
+        :param Referer: Referer blacklist/whitelist configuration. This is disabled by default.
         :type Referer: :class:`tencentcloud.vod.v20180717.models.Referer`
-        :param MaxAge: 
+        :param MaxAge: Browser cache rule configuration, which is used to set the default value of MaxAge and is disabled by default.
         :type MaxAge: :class:`tencentcloud.vod.v20180717.models.MaxAge`
-        :param Ipv6Access: 
+        :param Ipv6Access: IPv6 access configuration.
         :type Ipv6Access: :class:`tencentcloud.vod.v20180717.models.Ipv6Access`
-        :param Quic: 
+        :param Quic: QUIC configuration item.
         :type Quic: :class:`tencentcloud.vod.v20180717.models.Quic`
-        :param AwsPrivateAccess: 
+        :param AwsPrivateAccess: Origin access authentication for S3 bucket.
         :type AwsPrivateAccess: :class:`tencentcloud.vod.v20180717.models.AwsPrivateAccess`
-        :param OssPrivateAccess: 
+        :param OssPrivateAccess: Access authentication configuration for OSS origin.
         :type OssPrivateAccess: :class:`tencentcloud.vod.v20180717.models.OssPrivateAccess`
-        :param HwPrivateAccess: 
+        :param HwPrivateAccess: Access authentication for Huawei Cloud OBS origin
         :type HwPrivateAccess: :class:`tencentcloud.vod.v20180717.models.HwPrivateAccess`
-        :param OthersPrivateAccess: 
+        :param OthersPrivateAccess: Origin-pull authentication for other origins.
         :type OthersPrivateAccess: :class:`tencentcloud.vod.v20180717.models.OthersPrivateAccess`
         """
         self.Area = None
@@ -5634,21 +5645,21 @@ class CDNDomainConfigForUpdate(AbstractModel):
 
 
 class CDNDomainInfo(AbstractModel):
-    """
+    """CDN DomainInfo
 
     """
 
     def __init__(self):
         r"""
-        :param Domain: 
+        :param Domain: Domain.
         :type Domain: str
-        :param DeployStatus: 
+        :param DeployStatus: Deployment status.
         :type DeployStatus: str
-        :param Cname: 
+        :param Cname: CNAME record.
         :type Cname: str
-        :param CreateTime: 
+        :param CreateTime: Creation time.
         :type CreateTime: str
-        :param Config: 
+        :param Config: CDN domain configuration information.
         :type Config: :class:`tencentcloud.vod.v20180717.models.CDNDomainConfig`
         """
         self.Domain = None
@@ -5676,13 +5687,13 @@ class CDNDomainInfo(AbstractModel):
 
 
 class Cache(AbstractModel):
-    """
+    """Node cache expiration time configuration.
 
     """
 
     def __init__(self):
         r"""
-        :param RuleCache: 
+        :param RuleCache: Advanced path cache configuration.
         :type RuleCache: list of RuleCache
         """
         self.RuleCache = None
@@ -5705,21 +5716,21 @@ class Cache(AbstractModel):
 
 
 class CacheConfigCache(AbstractModel):
-    """
+    """Path cache configuration
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: 
+        :param Switch: Cache configuration switch: <li>on:enable；</li> <li>off: disable.</li>
         :type Switch: str
-        :param CacheTime: 
+        :param CacheTime: Cache expiration time settings<li>Unit: second. The maximum value is 365 days.</li>
         :type CacheTime: int
-        :param CompareMaxAge: 
+        :param CompareMaxAge: Advanced cache expiration configuration. If this is enabled, the max-age value returned by the origin server will be compared with the cache expiration time set in CacheRules, and the smallest value will be cached on the node: <li>on: Enable;</li> <li>off: Disable.</li>
         :type CompareMaxAge: str
-        :param IgnoreCacheControl: 
+        :param IgnoreCacheControl: Force cache: <li>on: Enable;</li> <li>off: Disable.</li>
         :type IgnoreCacheControl: str
-        :param IgnoreSetCookie: 
+        :param IgnoreSetCookie: Whether to ignore the header and body on cache nodes if the origin server returns the header Set-Cookie. <li>on: Ignore; do not cache the header and body.</li> <li>off: Do not ignore; follow the custom cache rules of cache nodes.</li>
         :type IgnoreSetCookie: str
         """
         self.Switch = None
@@ -5745,15 +5756,15 @@ class CacheConfigCache(AbstractModel):
 
 
 class CacheConfigFollowOrigin(AbstractModel):
-    """
+    """Path cache configuration follows the origin server configuration.
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: 
+        :param Switch: Follow origin server switch configuration: <li>on: Enable.</li> <li>off: Disable.</li>
         :type Switch: str
-        :param HeuristicCache: 
+        :param HeuristicCache: Heuristic cache configuration
         :type HeuristicCache: :class:`tencentcloud.vod.v20180717.models.HeuristicCache`
         """
         self.Switch = None
@@ -5775,15 +5786,15 @@ class CacheConfigFollowOrigin(AbstractModel):
 
 
 class CacheConfigNoCache(AbstractModel):
-    """
+    """Path cache/no cache configuration.
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: 
+        :param Switch: No-cache configuration switch: <li>on: Enable;</li> <li>off: Disable.</li>
         :type Switch: str
-        :param Revalidate: 
+        :param Revalidate: Always forwards to the origin server for verification:<li>on: Enable;</li> <li>off: Disable.</li>
         :type Revalidate: str
         """
         self.Switch = None
@@ -6020,9 +6031,9 @@ class CloneCDNDomainRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Domain: Domain name.
+        :param Domain: Domain
         :type Domain: str
-        :param ReferenceDomain: The cloned domain name.
+        :param ReferenceDomain: The cloned domain.
         :type ReferenceDomain: str
         :param SubAppId: VOD[Subapplication](/document/product/266/14574) ID。If you want to access resources in a Subapplication, fill this field with the Subapplication ID; otherwise, you don't need to fill in this field.
         :type SubAppId: int
@@ -7299,7 +7310,7 @@ class CreateCDNDomainRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Domain: Domain name.
+        :param Domain: Domain.
         :type Domain: str
         :param Config: Domain configuration.
         :type Config: :class:`tencentcloud.vod.v20180717.models.CDNDomainConfig`
@@ -9019,7 +9030,7 @@ class DeleteCDNDomainRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Domain: Domain name.
+        :param Domain: Domain.
         :type Domain: str
         :param SubAppId: VOD[Subapplication](/document/product/266/14574) ID。If you want to access resources in a Subapplication, fill this field with the Subapplication ID; otherwise, you don't need to fill in this field.
         :type SubAppId: int
@@ -10165,7 +10176,7 @@ class DescribeCDNDomainsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Domains: List of domain names. If this field is left blank, all domain name information will be listed by default.
+        :param Domains: List of domain. If this field is left blank, all domain information will be listed by default.
         :type Domains: list of str
         :param Limit: The maximum number of returned results for pagination fetching. Default value: 20.
         :type Limit: int
@@ -10201,9 +10212,9 @@ class DescribeCDNDomainsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainSet: List of domain name information.
+        :param DomainSet: List of domain information.
         :type DomainSet: list of CDNDomainInfo
-        :param TotalCount: The total number of CDN domain names under the current application.
+        :param TotalCount: The total number of CDN domain under the current application.
         :type TotalCount: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -14175,13 +14186,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class FollowRedirect(AbstractModel):
-    """
+    """Back to the source 301/302 status code automatically follows the configuration, the default is off
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: 
+        :param Switch: Access forced redirect configuration switch <li>on：Enable;</li> <li>off：Disable.</li>
         :type Switch: str
         """
         self.Switch = None
@@ -14252,19 +14263,19 @@ class ForbidMediaDistributionResponse(AbstractModel):
 
 
 class ForceRedirect(AbstractModel):
-    """
+    """Access protocol forced redirect configuration. This is disabled by default.
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: 
+        :param Switch: Access forced redirect configuration switch:<li>on:Enable;</li> <li>off:Disable.</li>
         :type Switch: str
-        :param RedirectType: 
+        :param RedirectType: Access forced redirect types: <li>http:forced HTTP redirect</li> <li>https: forced HTTPS redirect</li>
         :type RedirectType: str
-        :param RedirectStatusCode: 
+        :param RedirectStatusCode: Status code returned for forced redirect Supports 301, 302.
         :type RedirectStatusCode: int
-        :param CarryHeaders: 
+        :param CarryHeaders: Whether to return the newly added header during force redirection.
         :type CarryHeaders: str
         """
         self.Switch = None
@@ -14490,15 +14501,15 @@ class HeuristicCache(AbstractModel):
 
 
 class HeuristicCacheConfig(AbstractModel):
-    """
+    """Heuristic cache configuration
 
     """
 
     def __init__(self):
         r"""
-        :param HeuristicCacheTimeSwitch: 
+        :param HeuristicCacheTimeSwitch: Heuristic cache configuration switch:<li>on:Enable.</li> <li>off: Disable.</li>
         :type HeuristicCacheTimeSwitch: str
-        :param HeuristicCacheTime: 
+        :param HeuristicCacheTime: Unit: seconds.
         :type HeuristicCacheTime: int
         """
         self.HeuristicCacheTimeSwitch = None
@@ -14602,21 +14613,21 @@ class HighlightsConfigureInfoForUpdate(AbstractModel):
 
 
 class HttpHeaderPathRule(AbstractModel):
-    """
+    """HTTP header setting rules. Up to 100 entries can be set.
 
     """
 
     def __init__(self):
         r"""
-        :param HeaderMode: 
+        :param HeaderMode: HTTP header setting methods: <li>set: sets a value for an existing header parameter, a new header parameter, or multiple header parameters. Multiple header parameters will be merged into one.</li> <li>del: deletes a header parameter.</li> <li>add: adds a header parameter. By default, you can repeat the same action to add the same header parameter, which may affect browser response. Please consider the set operation first.</li>
         :type HeaderMode: str
-        :param HeaderName: 
+        :param HeaderName: HTTP header name. Up to 100 characters can be set.
         :type HeaderName: str
-        :param HeaderValue: 
+        :param HeaderValue: HTTP header value. Up to 1000 characters can be set.<li>Not required when Mode is del.</li> <li>Required when Mode is add/set.</li>
         :type HeaderValue: str
-        :param RuleType: 
+        :param RuleType: Rule types:<li>all: Apply to all files.</li> <li>file: Apply to files with the specified suffixes.</li> <li>directory: Apply to specified paths.</li> <li>path: Apply to specified absolute paths.</li>
         :type RuleType: str
-        :param RulePaths: 
+        :param RulePaths: Content for each RuleType:<li>For all, enter a wildcard *.</li> <li>For file, enter a suffix, e.g., jpg or txt.</li> <li>For directory, enter a path, e.g., /xxx/test/.</li> <li>For path, enter an absolute path, e.g., /xxx/test.html.</li>
         :type RulePaths: list of str
         """
         self.HeaderMode = None
@@ -14642,17 +14653,17 @@ class HttpHeaderPathRule(AbstractModel):
 
 
 class Https(AbstractModel):
-    """
+    """Domain name HTTPS acceleration configuration. This is disabled by default.
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: 
+        :param Switch: HTTPS configuration switch: <li>on:Enable;</li> <li>off:Disable.</li>
         :type Switch: str
-        :param Http2: 
+        :param Http2: Whether to enable HTTP2: <li>on:Enable;</li> <li>off:Disable.</li>
         :type Http2: str
-        :param CertInfo: 
+        :param CertInfo: Server certificate configuration information
         :type CertInfo: :class:`tencentcloud.vod.v20180717.models.CDNCertInfo`
         """
         self.Switch = None
@@ -14676,19 +14687,19 @@ class Https(AbstractModel):
 
 
 class HwPrivateAccess(AbstractModel):
-    """
+    """Access authentication for Huawei Cloud OBS origin
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: 
+        :param Switch: Huawei Cloud OBS origin authentication configuration switch, the values are: <li>on:Enable;</li> <li>off: Disable.</li>
         :type Switch: str
-        :param AccessKey: 
+        :param AccessKey: Access ID
         :type AccessKey: str
-        :param SecretKey: 
+        :param SecretKey: Key
         :type SecretKey: str
-        :param Bucket: 
+        :param Bucket: BucketName
         :type Bucket: str
         """
         self.Switch = None
@@ -15243,19 +15254,19 @@ class ImageWatermarkTemplate(AbstractModel):
 
 
 class IpFilter(AbstractModel):
-    """
+    """IP blocklist/allowlist configuration. This is disabled by default.
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: 
+        :param Switch: IP blocklist/allowlist configuration switch :<li>on：Enable;</li> <li>off：Disable.</li>
         :type Switch: str
-        :param FilterType: 
+        :param FilterType: IP blocklist/allowlist type <li>whitelist: IP allowlist;</li> <li>blacklist:IP blocklist.</li>
         :type FilterType: str
-        :param Filters: 
+        :param Filters: IP blocklist/allowlist Supports IPs in X.X.X.X format, or IP ranges in /8, /16, /24 format. Up to 50 whitelists or blacklists can be entered
         :type Filters: list of str
-        :param FilterRules: 
+        :param FilterRules: IP blocklist/allowlist path-based configuration. This feature is only available to selected beta customers.
         :type FilterRules: list of IpFilterPathRule
         """
         self.Switch = None
@@ -15284,19 +15295,19 @@ class IpFilter(AbstractModel):
 
 
 class IpFilterPathRule(AbstractModel):
-    """
+    """IP blocklist/allowlist path-based configuration
 
     """
 
     def __init__(self):
         r"""
-        :param FilterType: 
+        :param FilterType: IP blocklist/allowlist type: <li>whitelist: allowlist IPs;</li> <li>blacklist: blocklist IPs.</li>
         :type FilterType: str
-        :param Filters: 
+        :param Filters: IP blocklist/allowlist list Supports IPs in X.X.X.X format, or /8, /16, /24 format IP ranges. Up to 50 allowlists or blocklists can be entered.
         :type Filters: list of str
-        :param RuleType: 
+        :param RuleType: Rule types: <li>all: Effective for all files;</li> <li>file: Effective for specified file suffixes;</li> <li>directory: Effective for specified paths;</li> <li>path: Effective for specified absolute paths.</li>
         :type RuleType: str
-        :param RulePaths: 
+        :param RulePaths: Content for each RuleType: <li>For all, enter an asterisk (*).</li> <li>For file, enter the suffix, such as jpg, txt.</li> <li>For directory, enter the path, such as /xxx/test/.</li> <li>For path, enter the corresponding absolute path, such as /xxx/test.html.</li>
         :type RulePaths: list of str
         """
         self.FilterType = None
@@ -15320,13 +15331,13 @@ class IpFilterPathRule(AbstractModel):
 
 
 class Ipv6Access(AbstractModel):
-    """
+    """IPv6 access configuration
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: 
+        :param Switch: Enable the ipv6 access configuration switch for the domain name, the values are:<li>on:Enable;</li> <li>off: Disable.</li>
         :type Switch: str
         """
         self.Switch = None
@@ -15605,13 +15616,13 @@ class ManageTaskResponse(AbstractModel):
 
 
 class MaxAge(AbstractModel):
-    """
+    """Browser cache rule configuration, which is used to set the default value of MaxAge and is disabled by default.
 
     """
 
     def __init__(self):
         r"""
-        :param MaxAgeRules: 
+        :param MaxAgeRules: MaxAge rule.
         :type MaxAgeRules: list of MaxAgeRule
         """
         self.MaxAgeRules = None
@@ -15634,19 +15645,19 @@ class MaxAge(AbstractModel):
 
 
 class MaxAgeRule(AbstractModel):
-    """
+    """MaxAge rules configuration
 
     """
 
     def __init__(self):
         r"""
-        :param MaxAgeType: 
+        :param MaxAgeType: Rule types: <li>all: effective for all files.</li> <li>file: effective for specified file suffixes.</li> <li>directory: effective for specified paths.</li> <li>path: effective for specified absolute paths.</li>
         :type MaxAgeType: str
-        :param MaxAgeContents: 
+        :param MaxAgeContents: Content for each MaxAgeType: <li>For all, enter a wildcard *.</li> <li>For file, enter the suffix, e.g., jpg or txt.</li> <li>For directory, enter the path, e.g., /xxx/test/.</li> <li>For path, enter the absolute path, e.g., /xxx/test.html.</li> <b>Note: the all rule cannot be deleted, and it follows the origin site by default, which can be modified.</b>
         :type MaxAgeContents: list of str
-        :param MaxAgeTime: 
+        :param MaxAgeTime: Note: The value 0 means not to cache. <b>Note: The value 0 means not to cache.</b>
         :type MaxAgeTime: int
-        :param FollowOrigin: 
+        :param FollowOrigin: Whether to follow the origin server. Valid values: on and off. If it's on, MaxAgeTime is ignored.
         :type FollowOrigin: str
         """
         self.MaxAgeType = None
@@ -18617,7 +18628,7 @@ class ModifyCDNDomainConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Domain: Domain name.
+        :param Domain: Domain.
         :type Domain: str
         :param Config: Domain configuration.
         :type Config: :class:`tencentcloud.vod.v20180717.models.CDNDomainConfigForUpdate`
@@ -20464,27 +20475,27 @@ There can be up to 10 tags, each with a length limit of 16 characters.
 
 
 class Origin(AbstractModel):
-    """
+    """Origin Server Configuration
 
     """
 
     def __init__(self):
         r"""
-        :param Origins: 
+        :param Origins: Primary origin server list When modifying the origin server, you need to enter the corresponding OriginType. Note: This field may return null, indicating that no valid value was found.
         :type Origins: list of str
-        :param OriginType: 
+        :param OriginType: Primary origin server type The following types are supported for input parameters: <li> domain:domain；</li> <li>ip：IP address；</li> <li>third_party：third-party object storage origin.</li>
         :type OriginType: str
-        :param ServerName: 
+        :param ServerName: Host header used when accessing the primary origin server. If it is left empty, the acceleration domain name will be used by default.When the origin server type is object storage, the ServerName field is required.
         :type ServerName: str
-        :param OriginPullProtocol: 
+        :param OriginPullProtocol: Origin-pull protocol configuration http: forced HTTP origin-pull follow: protocol follow origin-pull https: forced HTTPS origin-pull. This only supports origin server port 443 for origin-pull. Note: This field may return null, indicating that no valid value can be obtained.
         :type OriginPullProtocol: str
-        :param BackupOrigins: 
+        :param BackupOrigins: Backup origin server list When modifying the backup origin server, you need to enter the corresponding BackupOriginType. Note: This field may return null, indicating that no valid value can be obtained.
         :type BackupOrigins: list of str
-        :param BackupOriginType: 
+        :param BackupOriginType:  Backup origin server type, which supports the following types: <li>domain：Domain；</li> <li>ip：IP address；</li> <li>third_party：third-party object storage origin.</li>
         :type BackupOriginType: str
-        :param BackupServerName: 
+        :param BackupServerName: Host header used when accessing the backup origin server. If it is left empty, the ServerName of primary origin server will be used by default. Note: This field may return null, indicating that no valid value can be obtained.
         :type BackupServerName: str
-        :param OriginCompany: 
+        :param OriginCompany: The object storage returns to the source vendor. It is required when the source site type is a third-party storage source site (third_party). The optional values include the following:<li>aws_s3：AWS S3;</li> <li>ali_oss：Alibaba Cloud OSS;</li> <li>hw_obs：Huawei OBS;</li> <li>others：Object storage from other vendors only supports object storage compatible with the AWS signature algorithm, such as Tencent Cloud COS.</li>
         :type OriginCompany: str
         """
         self.Origins = None
@@ -20516,21 +20527,21 @@ class Origin(AbstractModel):
 
 
 class OssPrivateAccess(AbstractModel):
-    """
+    """Access authentication configuration for OSS origin
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: 
+        :param Switch: Alibaba Cloud OSS back-to-origin authentication configuration switch, the values are:<li>on:Enable;</li> <li>off: Disable.</li>
         :type Switch: str
-        :param AccessKey: 
+        :param AccessKey: Access ID.
         :type AccessKey: str
-        :param SecretKey: 
+        :param SecretKey: Key.
         :type SecretKey: str
-        :param Region: 
+        :param Region: Region.
         :type Region: str
-        :param Bucket: 
+        :param Bucket: BucketName.
         :type Bucket: str
         """
         self.Switch = None
@@ -20556,21 +20567,21 @@ class OssPrivateAccess(AbstractModel):
 
 
 class OthersPrivateAccess(AbstractModel):
-    """
+    """Origin-pull authentication for other origins
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: 
+        :param Switch: Other vendor object storage back-to-source authentication configuration switches, the values are:<li>on:Enable;</li> <li>off: Disable.</li>
         :type Switch: str
-        :param AccessKey: 
+        :param AccessKey: Access ID.
         :type AccessKey: str
-        :param SecretKey: 
+        :param SecretKey: Key.
         :type SecretKey: str
-        :param Region: 
+        :param Region: Region.
         :type Region: str
-        :param Bucket: 
+        :param Bucket: Bucket name
         :type Bucket: str
         """
         self.Switch = None
@@ -21995,100 +22006,6 @@ class ProcessMediaByUrlResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class ProcessMediaRequest(AbstractModel):
-    """ProcessMedia request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param FileId: Media file ID, i.e., the globally unique ID of a file in VOD assigned by the VOD backend after successful upload. This field can be obtained through the [video upload completion event notification](https://intl.cloud.tencent.com/document/product/266/7830?from_cn_redirect=1) or [VOD Console](https://console.cloud.tencent.com/vod/media).
-        :type FileId: str
-        :param SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
-        :type SubAppId: int
-        :param MediaProcessTask: Parameter of video processing task.
-        :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
-        :param AiContentReviewTask: The information of the audio/video moderation task\*.
-This parameter is <font color=red>\*no longer recommended</font>. Please use [ReviewAudioVideo](https://intl.cloud.tencent.com/document/api/266/80283?from_cn_redirect=1) or [ReviewImage](https://intl.cloud.tencent.com/document/api/266/73217?from_cn_redirect=1) instead.
-        :type AiContentReviewTask: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`
-        :param AiAnalysisTask: Video content analysis task parameter.
-        :type AiAnalysisTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`
-        :param AiRecognitionTask: Type parameter of video content recognition task.
-        :type AiRecognitionTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`
-        :param TasksPriority: Task flow priority. The higher the value, the higher the priority. Value range: -10-10. If this parameter is left empty, 0 will be used.
-        :type TasksPriority: int
-        :param TasksNotifyMode: Notification mode for task flow status change. Valid values: Finish, Change, None. If this parameter is left empty, `Finish` will be used.
-        :type TasksNotifyMode: str
-        :param SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
-        :type SessionContext: str
-        :param SessionId: Used to identify duplicate requests. After you send a request, if any request with the same `SessionId` has already been sent in the last three days (72 hours), an error message will be returned. `SessionId` contains up to 50 characters. If this parameter is not carried or is an empty string, no deduplication will be performed.
-        :type SessionId: str
-        :param ExtInfo: Reserved field for special purposes.
-        :type ExtInfo: str
-        """
-        self.FileId = None
-        self.SubAppId = None
-        self.MediaProcessTask = None
-        self.AiContentReviewTask = None
-        self.AiAnalysisTask = None
-        self.AiRecognitionTask = None
-        self.TasksPriority = None
-        self.TasksNotifyMode = None
-        self.SessionContext = None
-        self.SessionId = None
-        self.ExtInfo = None
-
-
-    def _deserialize(self, params):
-        self.FileId = params.get("FileId")
-        self.SubAppId = params.get("SubAppId")
-        if params.get("MediaProcessTask") is not None:
-            self.MediaProcessTask = MediaProcessTaskInput()
-            self.MediaProcessTask._deserialize(params.get("MediaProcessTask"))
-        if params.get("AiContentReviewTask") is not None:
-            self.AiContentReviewTask = AiContentReviewTaskInput()
-            self.AiContentReviewTask._deserialize(params.get("AiContentReviewTask"))
-        if params.get("AiAnalysisTask") is not None:
-            self.AiAnalysisTask = AiAnalysisTaskInput()
-            self.AiAnalysisTask._deserialize(params.get("AiAnalysisTask"))
-        if params.get("AiRecognitionTask") is not None:
-            self.AiRecognitionTask = AiRecognitionTaskInput()
-            self.AiRecognitionTask._deserialize(params.get("AiRecognitionTask"))
-        self.TasksPriority = params.get("TasksPriority")
-        self.TasksNotifyMode = params.get("TasksNotifyMode")
-        self.SessionContext = params.get("SessionContext")
-        self.SessionId = params.get("SessionId")
-        self.ExtInfo = params.get("ExtInfo")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ProcessMediaResponse(AbstractModel):
-    """ProcessMedia response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param TaskId: Task ID
-        :type TaskId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self.TaskId = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
-
-
 class ProhibitedAsrReviewTemplateInfo(AbstractModel):
     """Control parameter of prohibited information detection in speech task
 
@@ -22571,13 +22488,13 @@ class PushUrlCacheResponse(AbstractModel):
 
 
 class Quic(AbstractModel):
-    """
+    """QUIC configuration item
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: 
+        :param Switch: Quic function configuration switch, the values are: <li>on:Enable;</li> <li>off: Disable.</li>
         :type Switch: str
         """
         self.Switch = None
@@ -23741,15 +23658,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class Referer(AbstractModel):
-    """
+    """Referer blacklist/whitelist configuration. This is disabled by default.
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: 
+        :param Switch: Referer blacklist/whitelist configuration switch:<li>on:Enable;</li> <li>off:Disable.</li>
         :type Switch: str
-        :param RefererRules: 
+        :param RefererRules: Referer blacklist/whitelist configuration rule
         :type RefererRules: list of RefererRule
         """
         self.Switch = None
@@ -23818,21 +23735,21 @@ When `Status` is set to `Enabled`, `BlankRefererAllowed` must be specified.
 
 
 class RefererRule(AbstractModel):
-    """
+    """Referer blacklist/whitelist configuration rules, which is effective for specific resources.
 
     """
 
     def __init__(self):
         r"""
-        :param RuleType: 
+        :param RuleType: Rule types: <li>all: Apply to all files.</li> <li>file: Apply to files with the specified suffixes.</li> <li>directory: Apply to specified paths.</li> <li>path: Apply to specified absolute paths.</li>
         :type RuleType: str
-        :param RulePaths: 
+        :param RulePaths: Content for each RuleType:<li>For all, enter a wildcard *.</li> <li>For file, enter a suffix, e.g., jpg or txt.</li> <li>For directory, enter a path, e.g., /xxx/test/.</li> <li>For path, enter an absolute path, e.g., /xxx/test.html.</li>
         :type RulePaths: list of str
-        :param RefererType: 
+        :param RefererType: Referer configuration types:<li>whitelist：Allowlist;</li> <li>blacklist:Blocklist.</li>
         :type RefererType: str
-        :param Referers: 
+        :param Referers: Referer content list
         :type Referers: list of str
-        :param AllowEmpty: 
+        :param AllowEmpty: Whether to allow empty referer：true: Allow empty referer when RefererType = whitelist; false: Reject empty refer when RefererType = blacklist.
         :type AllowEmpty: bool
         """
         self.RuleType = None
@@ -24135,15 +24052,15 @@ Default value: `weak`.
 
 
 class RequestHeader(AbstractModel):
-    """
+    """Custom request header configuration. This is disabled by default.
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: 
+        :param Switch: Custom request header configuration switch: <li>on：Enable;</li> <li>off：Disable.</li>
         :type Switch: str
-        :param HeaderRules: 
+        :param HeaderRules: Custom request header configuration rules
         :type HeaderRules: list of HttpHeaderPathRule
         """
         self.Switch = None
@@ -24304,15 +24221,15 @@ class ResourceTag(AbstractModel):
 
 
 class ResponseHeader(AbstractModel):
-    """
+    """Custom response header configuration. This is disabled by default.
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: 
+        :param Switch: Custom response header switch: <li>on：Enable;</li> <li>off：Disable.</li>
         :type Switch: str
-        :param HeaderRules: 
+        :param HeaderRules: Custom response header rules
         :type HeaderRules: list of HttpHeaderPathRule
         """
         self.Switch = None
@@ -25132,17 +25049,18 @@ The file must be in HLS format.
 
 
 class RuleCache(AbstractModel):
-    """
+    """ath-based cache rule configuration
+    The cache expiration time for all files is 30 days by default.
 
     """
 
     def __init__(self):
         r"""
-        :param RuleType: 
+        :param RuleType: Rule types:<li>all: effective for all files.</li> <li>file: effective for specified file suffixes.</li> <li>directory: effective for specified paths.</li> <li>path: effective for specified absolute paths.</li>
         :type RuleType: str
-        :param RulePaths: 
+        :param RulePaths: Content for each CacheType: <li>For all, enter a wildcard *.</li> <li>For file, enter the suffix, e.g., jpg or txt.</li> <li>For directory, enter the path, e.g., /xxx/test/.</li> <li>For path, enter the absolute path, e.g., /xxx/test.html.</li>
         :type RulePaths: list of str
-        :param CacheConfig: 
+        :param CacheConfig: Cache configuration
         :type CacheConfig: :class:`tencentcloud.vod.v20180717.models.RuleCacheConfig`
         """
         self.RuleType = None
@@ -25166,17 +25084,17 @@ class RuleCache(AbstractModel):
 
 
 class RuleCacheConfig(AbstractModel):
-    """
+    """Path cache configuration, choose one from the following three cache modes.
 
     """
 
     def __init__(self):
         r"""
-        :param Cache: 
+        :param Cache: Cache configuration
         :type Cache: :class:`tencentcloud.vod.v20180717.models.CacheConfigCache`
-        :param NoCache: 
+        :param NoCache: No cache configuration
         :type NoCache: :class:`tencentcloud.vod.v20180717.models.CacheConfigNoCache`
-        :param FollowOrigin: 
+        :param FollowOrigin: Follows the origin server configuration
         :type FollowOrigin: :class:`tencentcloud.vod.v20180717.models.CacheConfigFollowOrigin`
         """
         self.Cache = None
@@ -26330,9 +26248,9 @@ class StartCDNDomainRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Domain: Domain name.
+        :param Domain: Domain.
         :type Domain: str
-        :param Operation: Domain name operation, value: <li>start: enable;</li> <li>stop: disable. </li>
+        :param Operation: Domain operation, value: <li>start: enable;</li> <li>stop: disable. </li>
         :type Operation: str
         :param SubAppId: VOD[Subapplication](/document/product/266/14574) ID。If you want to access resources in a Subapplication, fill this field with the Subapplication ID; otherwise, you don't need to fill in this field.
         :type SubAppId: int
@@ -28000,15 +27918,15 @@ class UrlSignatureAuthPolicy(AbstractModel):
 
 
 class UserAgentFilter(AbstractModel):
-    """
+    """UserAgent:blacklist/whitelist configuration
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: 
+        :param Switch: UserAgent blacklist and whitelist configuration switches, the values are: <li>on:Enable; </li> <li>off: Disable. </li>
         :type Switch: str
-        :param FilterRules: 
+        :param FilterRules: UA blacklist/whitelist effect rule list
         :type FilterRules: list of UserAgentFilterRule
         """
         self.Switch = None
@@ -28033,19 +27951,19 @@ class UserAgentFilter(AbstractModel):
 
 
 class UserAgentFilterRule(AbstractModel):
-    """
+    """UserAgent blacklist/whitelist rule configuration
 
     """
 
     def __init__(self):
         r"""
-        :param FilterType: 
+        :param FilterType: UserAgent blacklist/whitelist type: <li>whitelist:whitelist;</li> <li>blacklist:blacklist.</li>
         :type FilterType: str
-        :param UserAgents: 
+        :param UserAgents: UserAgent list.
         :type UserAgents: list of str
-        :param RuleType: 
+        :param RuleType: Rule type: <li>all: All files take effect;</li> <li>file: The specified file suffix takes effect;</li> <li>directory: The specified path takes effect;</li> <li>path: The specified absolute path takes effect.</li>
         :type RuleType: str
-        :param RulePaths: 
+        :param RulePaths: Matching content under the corresponding type of RuleType:<li>For `all`, enter an asterisk (*).</li> <li>For `file`, enter the suffix, such as jpg, txt.</li> <li>For `directory`, enter the path, such as /xxx/test/.</li> <li>For `path`, enter the corresponding absolute path, such as /xxx/test.html.</li>
         :type RulePaths: list of str
         """
         self.FilterType = None
