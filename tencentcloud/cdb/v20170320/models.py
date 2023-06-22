@@ -212,6 +212,166 @@ Note: this field may return `null`, indicating that no valid value can be found.
         
 
 
+class AdjustCdbProxyAddressRequest(AbstractModel):
+    """AdjustCdbProxyAddress request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProxyGroupId: Proxy group ID
+        :type ProxyGroupId: str
+        :param WeightMode: Assignment mode of weights. Valid values: `system` (auto-assigned), `custom`.
+        :type WeightMode: str
+        :param IsKickOut: Whether to remove delayed read-only instances from the proxy group Valid values: `true`, `false`.
+        :type IsKickOut: bool
+        :param MinCount: Least read-only instances. Minimum value:  `0`
+        :type MinCount: int
+        :param MaxDelay: The delay threshold. Minimum value:  `0`
+        :type MaxDelay: int
+        :param FailOver: Whether to enable failover. Valid values: `true`, `false`.
+        :type FailOver: bool
+        :param AutoAddRo: Whether to automatically add newly created read-only instances. Valid values: `true`, `false`.
+        :type AutoAddRo: bool
+        :param ReadOnly: Whether it is read-only. Valid values: `true`, `false`.
+        :type ReadOnly: bool
+        :param ProxyAddressId: Address ID of the proxy group
+        :type ProxyAddressId: str
+        :param TransSplit: Whether to enable transaction splitting. Valid values: `true`, `false`.
+        :type TransSplit: bool
+        :param ConnectionPool: Whether to enable the connection pool
+        :type ConnectionPool: bool
+        :param ProxyAllocation: Assignment of read/write weights If `system` is passed in for `WeightMode`, only the default weight assigned by the system will take effect.
+        :type ProxyAllocation: list of ProxyAllocation
+        """
+        self.ProxyGroupId = None
+        self.WeightMode = None
+        self.IsKickOut = None
+        self.MinCount = None
+        self.MaxDelay = None
+        self.FailOver = None
+        self.AutoAddRo = None
+        self.ReadOnly = None
+        self.ProxyAddressId = None
+        self.TransSplit = None
+        self.ConnectionPool = None
+        self.ProxyAllocation = None
+
+
+    def _deserialize(self, params):
+        self.ProxyGroupId = params.get("ProxyGroupId")
+        self.WeightMode = params.get("WeightMode")
+        self.IsKickOut = params.get("IsKickOut")
+        self.MinCount = params.get("MinCount")
+        self.MaxDelay = params.get("MaxDelay")
+        self.FailOver = params.get("FailOver")
+        self.AutoAddRo = params.get("AutoAddRo")
+        self.ReadOnly = params.get("ReadOnly")
+        self.ProxyAddressId = params.get("ProxyAddressId")
+        self.TransSplit = params.get("TransSplit")
+        self.ConnectionPool = params.get("ConnectionPool")
+        if params.get("ProxyAllocation") is not None:
+            self.ProxyAllocation = []
+            for item in params.get("ProxyAllocation"):
+                obj = ProxyAllocation()
+                obj._deserialize(item)
+                self.ProxyAllocation.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AdjustCdbProxyAddressResponse(AbstractModel):
+    """AdjustCdbProxyAddress response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AsyncRequestId: Async task ID Note: This field may return null, indicating that no valid values can be obtained.
+        :type AsyncRequestId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+
+
+class AdjustCdbProxyRequest(AbstractModel):
+    """AdjustCdbProxy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param ProxyGroupId: Proxy group ID
+        :type ProxyGroupId: str
+        :param ProxyNodeCustom: The specification configuration of a node
+        :type ProxyNodeCustom: list of ProxyNodeCustom
+        :param ReloadBalance: Rebalance. Valid values:  `auto` (automatic), `manual` (manual).
+        :type ReloadBalance: str
+        :param UpgradeTime: The upgrade switch time. Valid values:  `nowTime` (upgrade immediately), `timeWindow` (upgrade during instance maintenance time).
+        :type UpgradeTime: str
+        """
+        self.InstanceId = None
+        self.ProxyGroupId = None
+        self.ProxyNodeCustom = None
+        self.ReloadBalance = None
+        self.UpgradeTime = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ProxyGroupId = params.get("ProxyGroupId")
+        if params.get("ProxyNodeCustom") is not None:
+            self.ProxyNodeCustom = []
+            for item in params.get("ProxyNodeCustom"):
+                obj = ProxyNodeCustom()
+                obj._deserialize(item)
+                self.ProxyNodeCustom.append(obj)
+        self.ReloadBalance = params.get("ReloadBalance")
+        self.UpgradeTime = params.get("UpgradeTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AdjustCdbProxyResponse(AbstractModel):
+    """AdjustCdbProxy response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AsyncRequestId: Async task ID Note: This field may return null, indicating that no valid values can be obtained.
+        :type AsyncRequestId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+
+
 class AggregationCondition(AbstractModel):
     """Aggregation condition for an audit log
 
@@ -487,6 +647,12 @@ class AuditLogFilter(AbstractModel):
         :type IoWaitTimeSection: str
         :param TransactionLivingTimeSection: Transaction duration in the format of M-N, such as 10-200.
         :type TransactionLivingTimeSection: str
+        :param ThreadId: Thread ID
+        :type ThreadId: list of str
+        :param SentRows: Number of returned rows,  which is used to filter the audit log with affected rows greater than this value.
+        :type SentRows: int
+        :param ErrCode: MySQL error codes
+        :type ErrCode: list of int
         """
         self.Host = None
         self.User = None
@@ -505,6 +671,9 @@ class AuditLogFilter(AbstractModel):
         self.LockWaitTimeSection = None
         self.IoWaitTimeSection = None
         self.TransactionLivingTimeSection = None
+        self.ThreadId = None
+        self.SentRows = None
+        self.ErrCode = None
 
 
     def _deserialize(self, params):
@@ -525,6 +694,9 @@ class AuditLogFilter(AbstractModel):
         self.LockWaitTimeSection = params.get("LockWaitTimeSection")
         self.IoWaitTimeSection = params.get("IoWaitTimeSection")
         self.TransactionLivingTimeSection = params.get("TransactionLivingTimeSection")
+        self.ThreadId = params.get("ThreadId")
+        self.SentRows = params.get("SentRows")
+        self.ErrCode = params.get("ErrCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -643,6 +815,36 @@ Note: This field may return `null`, indicating that no valid value was found.
                 obj._deserialize(item)
                 self.RuleFilters.append(obj)
         self.AuditAll = params.get("AuditAll")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuditRuleFilters(AbstractModel):
+    """Filter of rule audit
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleFilters: Audit rule 
+Note:  This field may return null, indicating that no valid values can be obtained.
+        :type RuleFilters: list of RuleFilters
+        """
+        self.RuleFilters = None
+
+
+    def _deserialize(self, params):
+        if params.get("RuleFilters") is not None:
+            self.RuleFilters = []
+            for item in params.get("RuleFilters"):
+                obj = RuleFilters()
+                obj._deserialize(item)
+                self.RuleFilters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1523,6 +1725,51 @@ class CloseCDBProxyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CloseCdbProxyAddressRequest(AbstractModel):
+    """CloseCdbProxyAddress request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProxyGroupId: Proxy group ID
+        :type ProxyGroupId: str
+        :param ProxyAddressId: Address ID of the proxy group
+        :type ProxyAddressId: str
+        """
+        self.ProxyGroupId = None
+        self.ProxyAddressId = None
+
+
+    def _deserialize(self, params):
+        self.ProxyGroupId = params.get("ProxyGroupId")
+        self.ProxyAddressId = params.get("ProxyAddressId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloseCdbProxyAddressResponse(AbstractModel):
+    """CloseCdbProxyAddress response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CloseWanServiceRequest(AbstractModel):
     """CloseWanService request structure.
 
@@ -1892,6 +2139,198 @@ class CreateBackupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateCdbProxyAddressRequest(AbstractModel):
+    """CreateCdbProxyAddress request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProxyGroupId: Proxy group ID
+        :type ProxyGroupId: str
+        :param WeightMode: Assignment mode of weights. Valid values: `system` (auto-assigned), `custom`.
+        :type WeightMode: str
+        :param IsKickOut: Whether to remove delayed read-only instances from the proxy group. Valid values: `true`, `false`.
+        :type IsKickOut: bool
+        :param MinCount: Least read-only instances. Minimum value:  `0`
+        :type MinCount: int
+        :param MaxDelay: The delay threshold. Minimum value:  `0`
+        :type MaxDelay: int
+        :param FailOver: Whether to enable failover. Valid values: `true`, `false`.
+        :type FailOver: bool
+        :param AutoAddRo: Whether to automatically add newly created read-only instances. Valid values: `true`, `false`.
+        :type AutoAddRo: bool
+        :param ReadOnly: Whether it is read-only. Valid values: `true`, `false`.
+        :type ReadOnly: bool
+        :param TransSplit: Whether to enable transaction splitting. Valid values: `true`, `false`.
+        :type TransSplit: bool
+        :param ProxyAllocation: Assignment of read/write weights
+        :type ProxyAllocation: list of ProxyAllocation
+        :param UniqVpcId: VPC ID
+        :type UniqVpcId: str
+        :param UniqSubnetId: VPC subnet ID
+        :type UniqSubnetId: str
+        :param ConnectionPool: Whether to enable the connection pool. Valid values: 
+        :type ConnectionPool: bool
+        :param Desc: Description
+        :type Desc: str
+        :param Vip: IP address
+        :type Vip: str
+        :param VPort: Port
+        :type VPort: int
+        :param SecurityGroup: Security group
+        :type SecurityGroup: list of str
+        :param ConnectionPoolType: 
+        :type ConnectionPoolType: str
+        """
+        self.ProxyGroupId = None
+        self.WeightMode = None
+        self.IsKickOut = None
+        self.MinCount = None
+        self.MaxDelay = None
+        self.FailOver = None
+        self.AutoAddRo = None
+        self.ReadOnly = None
+        self.TransSplit = None
+        self.ProxyAllocation = None
+        self.UniqVpcId = None
+        self.UniqSubnetId = None
+        self.ConnectionPool = None
+        self.Desc = None
+        self.Vip = None
+        self.VPort = None
+        self.SecurityGroup = None
+        self.ConnectionPoolType = None
+
+
+    def _deserialize(self, params):
+        self.ProxyGroupId = params.get("ProxyGroupId")
+        self.WeightMode = params.get("WeightMode")
+        self.IsKickOut = params.get("IsKickOut")
+        self.MinCount = params.get("MinCount")
+        self.MaxDelay = params.get("MaxDelay")
+        self.FailOver = params.get("FailOver")
+        self.AutoAddRo = params.get("AutoAddRo")
+        self.ReadOnly = params.get("ReadOnly")
+        self.TransSplit = params.get("TransSplit")
+        if params.get("ProxyAllocation") is not None:
+            self.ProxyAllocation = []
+            for item in params.get("ProxyAllocation"):
+                obj = ProxyAllocation()
+                obj._deserialize(item)
+                self.ProxyAllocation.append(obj)
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.UniqSubnetId = params.get("UniqSubnetId")
+        self.ConnectionPool = params.get("ConnectionPool")
+        self.Desc = params.get("Desc")
+        self.Vip = params.get("Vip")
+        self.VPort = params.get("VPort")
+        self.SecurityGroup = params.get("SecurityGroup")
+        self.ConnectionPoolType = params.get("ConnectionPoolType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCdbProxyAddressResponse(AbstractModel):
+    """CreateCdbProxyAddress response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AsyncRequestId: Async task ID Note: This field may return null, indicating that no valid values can be obtained.
+        :type AsyncRequestId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateCdbProxyRequest(AbstractModel):
+    """CreateCdbProxy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param UniqVpcId: VPC ID
+        :type UniqVpcId: str
+        :param UniqSubnetId: VPC subnet ID
+        :type UniqSubnetId: str
+        :param ProxyNodeCustom: The specification configuration of a node
+        :type ProxyNodeCustom: list of ProxyNodeCustom
+        :param SecurityGroup: Security group
+        :type SecurityGroup: list of str
+        :param Desc: Description
+        :type Desc: str
+        :param ConnectionPoolLimit: Connection pool threshold
+        :type ConnectionPoolLimit: int
+        """
+        self.InstanceId = None
+        self.UniqVpcId = None
+        self.UniqSubnetId = None
+        self.ProxyNodeCustom = None
+        self.SecurityGroup = None
+        self.Desc = None
+        self.ConnectionPoolLimit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.UniqSubnetId = params.get("UniqSubnetId")
+        if params.get("ProxyNodeCustom") is not None:
+            self.ProxyNodeCustom = []
+            for item in params.get("ProxyNodeCustom"):
+                obj = ProxyNodeCustom()
+                obj._deserialize(item)
+                self.ProxyNodeCustom.append(obj)
+        self.SecurityGroup = params.get("SecurityGroup")
+        self.Desc = params.get("Desc")
+        self.ConnectionPoolLimit = params.get("ConnectionPoolLimit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCdbProxyResponse(AbstractModel):
+    """CreateCdbProxy response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AsyncRequestId: Async task ID Note: This field may return null, indicating that no valid values can be obtained.
+        :type AsyncRequestId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateCloneInstanceRequest(AbstractModel):
     """CreateCloneInstance request structure.
 
@@ -2115,7 +2554,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type MasterInstanceId: str
         :param InstanceRole: Instance type. Valid values: master (primary instance), dr (disaster recovery instance), ro (read-only instance). Default value: master.
         :type InstanceRole: str
-        :param MasterRegion: AZ information of the source instance, which is required for purchasing disaster recovery instances and read-only instances.
+        :param MasterRegion: Region information of the source instance, which is required when purchasing a read-only or disaster recovery instance.
         :type MasterRegion: str
         :param Port: Custom port. Value range: [1024-65535].
         :type Port: int
@@ -2137,7 +2576,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type RoGroup: :class:`tencentcloud.cdb.v20170320.models.RoGroup`
         :param AutoRenewFlag: This field is meaningless when purchasing pay-as-you-go instances.
         :type AutoRenewFlag: int
-        :param InstanceName: Instance name. For multiple instances purchased at one time, they will be distinguished by the name suffix number, such as instnaceName=db and goodsNum=3, their instance name is db1, db2 respectively.
+        :param InstanceName: Instance name For multiple instances purchased at one time, they will be distinguished by the name suffix number, such as instnaceName=db and goodsNum=3, and their instance names are db1, db2, and db3, respectively.
         :type InstanceName: str
         :param ResourceTags: Instance tag information.
         :type ResourceTags: list of TagInfo
@@ -2149,7 +2588,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type DeviceType: str
         :param ParamTemplateId: Parameter template ID.
         :type ParamTemplateId: int
-        :param AlarmPolicyList: Array of alarm policy IDs, which is `OriginId` obtained through the `DescribeAlarmPolicy` API.
+        :param AlarmPolicyList: Array of alarm policy IDs,  which is `OriginId` obtained through the `DescribeAlarmPolicy` API.
         :type AlarmPolicyList: list of int
         :param InstanceNodes: The number of nodes of the instance. To purchase a read-only replica or a basic instance, set this parameter to `1` or leave it empty. To purchase a three-node instance, set this parameter to `3` or specify the `BackupZone` parameter. If the instance to be purchased is a source instance and both `BackupZone` and this parameter are left empty, the value `2` will be used, which indicates the source instance will have two nodes.
         :type InstanceNodes: int
@@ -3418,6 +3857,55 @@ class DescribeBackupConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBackupDecryptionKeyRequest(AbstractModel):
+    """DescribeBackupDecryptionKey request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of  cdb-XXXX,  which is the same as the instance ID displayed in the TencentDB console.
+        :type InstanceId: str
+        :param BackupId: Instance backup ID, which can be obtained by the `DescribeBackups` API.
+        :type BackupId: int
+        """
+        self.InstanceId = None
+        self.BackupId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.BackupId = params.get("BackupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackupDecryptionKeyResponse(AbstractModel):
+    """DescribeBackupDecryptionKey response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DecryptionKey: The decryption key of a backup file
+        :type DecryptionKey: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DecryptionKey = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DecryptionKey = params.get("DecryptionKey")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeBackupDownloadRestrictionRequest(AbstractModel):
     """DescribeBackupDownloadRestriction request structure.
 
@@ -3801,16 +4289,24 @@ class DescribeBinlogsRequest(AbstractModel):
         :type Offset: int
         :param Limit: Number of entries per page. Value range: 1-100. Default value: 20.
         :type Limit: int
+        :param MinStartTime: Earliest Binlog start time in the format of  2016-03-17 02:10:37
+        :type MinStartTime: str
+        :param MaxStartTime: Latest binlog start time in the format of  2016-03-17 02:10:37
+        :type MaxStartTime: str
         """
         self.InstanceId = None
         self.Offset = None
         self.Limit = None
+        self.MinStartTime = None
+        self.MaxStartTime = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.MinStartTime = params.get("MinStartTime")
+        self.MaxStartTime = params.get("MaxStartTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3942,6 +4438,64 @@ Note: this field may return `null`, indicating that no valid value can be found.
                 obj = ProxyGroup()
                 obj._deserialize(item)
                 self.ProxyGroup.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCdbProxyInfoRequest(AbstractModel):
+    """DescribeCdbProxyInfo request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param ProxyGroupId: Proxy group ID
+        :type ProxyGroupId: str
+        """
+        self.InstanceId = None
+        self.ProxyGroupId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ProxyGroupId = params.get("ProxyGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCdbProxyInfoResponse(AbstractModel):
+    """DescribeCdbProxyInfo response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Count: Number of proxy groups Note: This field may return null, indicating that no valid values can be obtained.
+        :type Count: int
+        :param ProxyInfos: Proxy group information Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProxyInfos: list of ProxyGroupInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Count = None
+        self.ProxyInfos = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Count = params.get("Count")
+        if params.get("ProxyInfos") is not None:
+            self.ProxyInfos = []
+            for item in params.get("ProxyInfos"):
+                obj = ProxyGroupInfo()
+                obj._deserialize(item)
+                self.ProxyInfos.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -4684,7 +5238,7 @@ class DescribeDBPriceRequest(AbstractModel):
         :type PayType: str
         :param ProtectMode: Data replication mode. Valid values: `0` (async), 1 (semi-sync), `2` (strong sync). Default value: `0`.
         :type ProtectMode: int
-        :param DeviceType: Instance isolation type. Valid values: `UNIVERSAL` (general instance), `EXCLUSIVE` (dedicated instance), `BASIC` (basic instance). Default value: `UNIVERSAL`.
+        :param DeviceType: Instance isolation types Valid values: `UNIVERSAL` (general instance), `EXCLUSIVE` (dedicated instance), `BASIC` (basic instance). Default value: `UNIVERSAL`.  Default value: `UNIVERSAL`.
         :type DeviceType: str
         :param InstanceNodes: The number of the instance. Valid values: `1` (for read-only and basic instances), `2` (for other source instances). To query the price of a three-node instance, set this value to `3`.
         :type InstanceNodes: int
@@ -5461,6 +6015,9 @@ class DescribeParamTemplateInfoResponse(AbstractModel):
         :type Description: str
         :param TemplateType: Type of the parameter template. Valid values: `HIGH_STABILITY` (high-stability template), `HIGH_PERFORMANCE` (high-performance template).
         :type TemplateType: str
+        :param EngineType: Parameter template engine.  Valid values: `InnoDB`, `RocksDB`. 
+Note:  This field may return null, indicating that no valid values can be obtained.
+        :type EngineType: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -5471,6 +6028,7 @@ class DescribeParamTemplateInfoResponse(AbstractModel):
         self.Items = None
         self.Description = None
         self.TemplateType = None
+        self.EngineType = None
         self.RequestId = None
 
 
@@ -5487,6 +6045,7 @@ class DescribeParamTemplateInfoResponse(AbstractModel):
                 self.Items.append(obj)
         self.Description = params.get("Description")
         self.TemplateType = params.get("TemplateType")
+        self.EngineType = params.get("EngineType")
         self.RequestId = params.get("RequestId")
 
 
@@ -5739,6 +6298,79 @@ Note: this field may return `null`, indicating that no valid value can be found.
         self.RequestId = params.get("RequestId")
 
 
+class DescribeProxySupportParamRequest(AbstractModel):
+    """DescribeProxySupportParam request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeProxySupportParamResponse(AbstractModel):
+    """DescribeProxySupportParam response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProxyVersion: The supported maximum proxy version Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProxyVersion: str
+        :param SupportPool: Whether to support the connection pool Note: This field may return null, indicating that no valid values can be obtained.
+        :type SupportPool: bool
+        :param PoolMin: Minimum connections in the connection pool Note: This field may return null, indicating that no valid values can be obtained.
+        :type PoolMin: int
+        :param PoolMax: Maximum connections in the connection pool Note: This field may return null, indicating that no valid values can be obtained.
+        :type PoolMax: int
+        :param SupportTransSplit: Whether to support transaction splitting Note: This field may return null, indicating that no valid values can be obtained.
+        :type SupportTransSplit: bool
+        :param SupportPoolMinVersion: Minimum proxy version supporting connection pool Note: This field may return null, indicating that no valid values can be obtained.
+        :type SupportPoolMinVersion: str
+        :param SupportTransSplitMinVersion: Minimum proxy version supporting transaction splitting Note: This field may return null, indicating that no valid values can be obtained.
+        :type SupportTransSplitMinVersion: str
+        :param SupportReadOnly: Whether read-only mode is supported Note: This field may return null, indicating that no valid values can be obtained.
+        :type SupportReadOnly: bool
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.ProxyVersion = None
+        self.SupportPool = None
+        self.PoolMin = None
+        self.PoolMax = None
+        self.SupportTransSplit = None
+        self.SupportPoolMinVersion = None
+        self.SupportTransSplitMinVersion = None
+        self.SupportReadOnly = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ProxyVersion = params.get("ProxyVersion")
+        self.SupportPool = params.get("SupportPool")
+        self.PoolMin = params.get("PoolMin")
+        self.PoolMax = params.get("PoolMax")
+        self.SupportTransSplit = params.get("SupportTransSplit")
+        self.SupportPoolMinVersion = params.get("SupportPoolMinVersion")
+        self.SupportTransSplitMinVersion = params.get("SupportTransSplitMinVersion")
+        self.SupportReadOnly = params.get("SupportReadOnly")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRemoteBackupConfigRequest(AbstractModel):
     """DescribeRemoteBackupConfig request structure.
 
@@ -5912,12 +6544,20 @@ class DescribeRollbackRangeTimeRequest(AbstractModel):
         r"""
         :param InstanceIds: Instance ID list. An instance ID is in the format of cdb-c1nl9rpv, which is the same as the instance ID displayed on the TencentDB Console page.
         :type InstanceIds: list of str
+        :param IsRemoteZone: Whether the clone instance and the source instance are in one AZ. Valid values: `true` (yes), `false` (no).
+        :type IsRemoteZone: str
+        :param BackupRegion: The region of the clone instance, such as `ap-guangzhou`.
+        :type BackupRegion: str
         """
         self.InstanceIds = None
+        self.IsRemoteZone = None
+        self.BackupRegion = None
 
 
     def _deserialize(self, params):
         self.InstanceIds = params.get("InstanceIds")
+        self.IsRemoteZone = params.get("IsRemoteZone")
+        self.BackupRegion = params.get("BackupRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6996,6 +7636,8 @@ class Inbound(AbstractModel):
         :type IpProtocol: str
         :param Dir: The direction of the rule, which is INPUT for inbound rules
         :type Dir: str
+        :param AddressModule: Address module
+        :type AddressModule: str
         :param Desc: Rule description
         :type Desc: str
         """
@@ -7004,6 +7646,7 @@ class Inbound(AbstractModel):
         self.PortRange = None
         self.IpProtocol = None
         self.Dir = None
+        self.AddressModule = None
         self.Desc = None
 
 
@@ -7013,6 +7656,7 @@ class Inbound(AbstractModel):
         self.PortRange = params.get("PortRange")
         self.IpProtocol = params.get("IpProtocol")
         self.Dir = params.get("Dir")
+        self.AddressModule = params.get("AddressModule")
         self.Desc = params.get("Desc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -8292,6 +8936,169 @@ class ModifyCDBProxyVipVPortResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyCdbProxyAddressDescRequest(AbstractModel):
+    """ModifyCdbProxyAddressDesc request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProxyGroupId: Proxy group ID
+        :type ProxyGroupId: str
+        :param ProxyAddressId: Address ID of the proxy group
+        :type ProxyAddressId: str
+        :param Desc: Description
+        :type Desc: str
+        """
+        self.ProxyGroupId = None
+        self.ProxyAddressId = None
+        self.Desc = None
+
+
+    def _deserialize(self, params):
+        self.ProxyGroupId = params.get("ProxyGroupId")
+        self.ProxyAddressId = params.get("ProxyAddressId")
+        self.Desc = params.get("Desc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCdbProxyAddressDescResponse(AbstractModel):
+    """ModifyCdbProxyAddressDesc response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyCdbProxyAddressVipAndVPortRequest(AbstractModel):
+    """ModifyCdbProxyAddressVipAndVPort request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProxyGroupId: Proxy group ID
+        :type ProxyGroupId: str
+        :param ProxyAddressId: Address ID of the proxy group
+        :type ProxyAddressId: str
+        :param UniqVpcId: VPC ID
+        :type UniqVpcId: str
+        :param UniqSubnetId: VPC subnet ID
+        :type UniqSubnetId: str
+        :param Vip: IP address
+        :type Vip: str
+        :param VPort: Port
+        :type VPort: int
+        :param ReleaseDuration: Valid Hours of Old IP
+        :type ReleaseDuration: int
+        """
+        self.ProxyGroupId = None
+        self.ProxyAddressId = None
+        self.UniqVpcId = None
+        self.UniqSubnetId = None
+        self.Vip = None
+        self.VPort = None
+        self.ReleaseDuration = None
+
+
+    def _deserialize(self, params):
+        self.ProxyGroupId = params.get("ProxyGroupId")
+        self.ProxyAddressId = params.get("ProxyAddressId")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.UniqSubnetId = params.get("UniqSubnetId")
+        self.Vip = params.get("Vip")
+        self.VPort = params.get("VPort")
+        self.ReleaseDuration = params.get("ReleaseDuration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCdbProxyAddressVipAndVPortResponse(AbstractModel):
+    """ModifyCdbProxyAddressVipAndVPort response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyCdbProxyParamRequest(AbstractModel):
+    """ModifyCdbProxyParam request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID
+        :type InstanceId: str
+        :param ProxyGroupId: Proxy group ID
+        :type ProxyGroupId: str
+        :param ConnectionPoolLimit: Connection pool threshold
+        :type ConnectionPoolLimit: int
+        """
+        self.InstanceId = None
+        self.ProxyGroupId = None
+        self.ConnectionPoolLimit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ProxyGroupId = params.get("ProxyGroupId")
+        self.ConnectionPoolLimit = params.get("ConnectionPoolLimit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCdbProxyParamResponse(AbstractModel):
+    """ModifyCdbProxyParam response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyDBInstanceNameRequest(AbstractModel):
     """ModifyDBInstanceName request structure.
 
@@ -9065,32 +9872,33 @@ class OpenAuditServiceRequest(AbstractModel):
         r"""
         :param InstanceId: TencentDB for MySQL instance ID
         :type InstanceId: str
-        :param LogExpireDay: Retention period of audit logs. Valid values:
-7: seven days (a week);
-30: 30 days (a month);
-180: 180 days (six months);
-365: 365 days (a year);
-1095: 1095 days (three years);
-1825: 1825 days (five years).
+        :param LogExpireDay: Retention period of the audit log. Valid values:  `7` (one week), `30` (one month), `90` (three months), `180` (six months), `365` (one year), `1095` (three years), `1825` (five years).
         :type LogExpireDay: int
-        :param HighLogExpireDay: Retention period of high-frequency audit logs. Valid values:
-7: seven days (a week);
-30: 30 days (a month);
-180: 180 days (six months);
-365: 365 days (a year);
-1095: 1095 days (three years);
-1825: 1825 days (five years).
+        :param HighLogExpireDay: Retention period of high-frequency audit logs. Valid values:  `7` (one week), `30` (one month).
         :type HighLogExpireDay: int
+        :param AuditRuleFilters: Audit rule If both this parameter and `RuleTemplateIds` are left empty, full audit will be applied.
+        :type AuditRuleFilters: list of AuditRuleFilters
+        :param RuleTemplateIds: Rule template ID If both this parameter and `AuditRuleFilters` are left empty, full audit will be applied.
+        :type RuleTemplateIds: list of str
         """
         self.InstanceId = None
         self.LogExpireDay = None
         self.HighLogExpireDay = None
+        self.AuditRuleFilters = None
+        self.RuleTemplateIds = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.LogExpireDay = params.get("LogExpireDay")
         self.HighLogExpireDay = params.get("HighLogExpireDay")
+        if params.get("AuditRuleFilters") is not None:
+            self.AuditRuleFilters = []
+            for item in params.get("AuditRuleFilters"):
+                obj = AuditRuleFilters()
+                obj._deserialize(item)
+                self.AuditRuleFilters.append(obj)
+        self.RuleTemplateIds = params.get("RuleTemplateIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9273,6 +10081,8 @@ class Outbound(AbstractModel):
         :type IpProtocol: str
         :param Dir: The direction of the rule, which is OUTPUT for inbound rules
         :type Dir: str
+        :param AddressModule: Address module
+        :type AddressModule: str
         :param Desc: Rule description
         :type Desc: str
         """
@@ -9281,6 +10091,7 @@ class Outbound(AbstractModel):
         self.PortRange = None
         self.IpProtocol = None
         self.Dir = None
+        self.AddressModule = None
         self.Desc = None
 
 
@@ -9290,6 +10101,7 @@ class Outbound(AbstractModel):
         self.PortRange = params.get("PortRange")
         self.IpProtocol = params.get("IpProtocol")
         self.Dir = params.get("Dir")
+        self.AddressModule = params.get("AddressModule")
         self.Desc = params.get("Desc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -9389,12 +10201,15 @@ class ParamTemplateInfo(AbstractModel):
         :type EngineVersion: str
         :param TemplateType: Parameter template type
         :type TemplateType: str
+        :param EngineType: Parameter template engine Note: This field may return null, indicating that no valid values can be obtained.
+        :type EngineType: str
         """
         self.TemplateId = None
         self.Name = None
         self.Description = None
         self.EngineVersion = None
         self.TemplateType = None
+        self.EngineType = None
 
 
     def _deserialize(self, params):
@@ -9403,6 +10218,7 @@ class ParamTemplateInfo(AbstractModel):
         self.Description = params.get("Description")
         self.EngineVersion = params.get("EngineVersion")
         self.TemplateType = params.get("TemplateType")
+        self.EngineType = params.get("EngineType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9469,6 +10285,8 @@ class ParameterDetail(AbstractModel):
         :type MaxFunc: str
         :param MinFunc: Minimum parameter value, which is valid only when `ParamType` is set to `func`
         :type MinFunc: str
+        :param IsNotSupportEdit: Whether the parameter can be modified Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsNotSupportEdit: bool
         """
         self.Name = None
         self.ParamType = None
@@ -9481,6 +10299,7 @@ class ParameterDetail(AbstractModel):
         self.EnumValue = None
         self.MaxFunc = None
         self.MinFunc = None
+        self.IsNotSupportEdit = None
 
 
     def _deserialize(self, params):
@@ -9495,6 +10314,7 @@ class ParameterDetail(AbstractModel):
         self.EnumValue = params.get("EnumValue")
         self.MaxFunc = params.get("MaxFunc")
         self.MinFunc = params.get("MinFunc")
+        self.IsNotSupportEdit = params.get("IsNotSupportEdit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9530,6 +10350,132 @@ Note: this field may return `null`, indicating that no valid value can be found.
         self.ConnectionPoolType = params.get("ConnectionPoolType")
         self.MaxPoolConnectionTimeOut = params.get("MaxPoolConnectionTimeOut")
         self.MinPoolConnectionTimeOut = params.get("MinPoolConnectionTimeOut")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProxyAddress(AbstractModel):
+    """Information of the database proxy address
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProxyAddressId: Address ID of the proxy group
+        :type ProxyAddressId: str
+        :param UniqVpcId: VPC ID
+        :type UniqVpcId: str
+        :param UniqSubnetId: VPC subnet ID
+        :type UniqSubnetId: str
+        :param Vip: IP address
+        :type Vip: str
+        :param VPort: Port
+        :type VPort: int
+        :param WeightMode: Assignment mode of weights. Valid values: `system` (auto-assigned), `custom`. Note: This field may return null, indicating that no valid values can be obtained.
+        :type WeightMode: str
+        :param IsKickOut: Whether to remove delayed read-only instances from the proxy group Valid values: `true`, `false`. Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsKickOut: bool
+        :param MinCount: Least read-only instances. Minimum value:  `0`. Note: This field may return null, indicating that no valid values can be obtained.
+        :type MinCount: int
+        :param MaxDelay: The delay threshold. Minimum value:  `0`. Note: This field may return null, indicating that no valid values can be obtained.
+        :type MaxDelay: int
+        :param AutoAddRo: Whether to automatically add newly created read-only instances. Valid values: `true`, `false`. Note: This field may return null, indicating that no valid values can be obtained.
+        :type AutoAddRo: bool
+        :param ReadOnly: Whether it is read-only. Valid values: `true`, `false`. Note: This field may return null, indicating that no valid values can be obtained.
+        :type ReadOnly: bool
+        :param TransSplit: Whether to enable transaction splitting Note: This field may return null, indicating that no valid values can be obtained.
+        :type TransSplit: bool
+        :param FailOver: Whether to enable failover Note: This field may return null, indicating that no valid values can be obtained.
+        :type FailOver: bool
+        :param ConnectionPool: Whether to enable the connection pool Note: This field may return null, indicating that no valid values can be obtained.
+        :type ConnectionPool: bool
+        :param Desc: Note:  This field may return null, indicating that no valid values can be obtained.
+        :type Desc: str
+        :param ProxyAllocation: Read weight assignment for an instance Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProxyAllocation: list of ProxyAllocation
+        """
+        self.ProxyAddressId = None
+        self.UniqVpcId = None
+        self.UniqSubnetId = None
+        self.Vip = None
+        self.VPort = None
+        self.WeightMode = None
+        self.IsKickOut = None
+        self.MinCount = None
+        self.MaxDelay = None
+        self.AutoAddRo = None
+        self.ReadOnly = None
+        self.TransSplit = None
+        self.FailOver = None
+        self.ConnectionPool = None
+        self.Desc = None
+        self.ProxyAllocation = None
+
+
+    def _deserialize(self, params):
+        self.ProxyAddressId = params.get("ProxyAddressId")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.UniqSubnetId = params.get("UniqSubnetId")
+        self.Vip = params.get("Vip")
+        self.VPort = params.get("VPort")
+        self.WeightMode = params.get("WeightMode")
+        self.IsKickOut = params.get("IsKickOut")
+        self.MinCount = params.get("MinCount")
+        self.MaxDelay = params.get("MaxDelay")
+        self.AutoAddRo = params.get("AutoAddRo")
+        self.ReadOnly = params.get("ReadOnly")
+        self.TransSplit = params.get("TransSplit")
+        self.FailOver = params.get("FailOver")
+        self.ConnectionPool = params.get("ConnectionPool")
+        self.Desc = params.get("Desc")
+        if params.get("ProxyAllocation") is not None:
+            self.ProxyAllocation = []
+            for item in params.get("ProxyAllocation"):
+                obj = ProxyAllocation()
+                obj._deserialize(item)
+                self.ProxyAllocation.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProxyAllocation(AbstractModel):
+    """Weight allocation for a proxy node
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Region: Proxy node region
+        :type Region: str
+        :param Zone: AZ of proxy node region
+        :type Zone: str
+        :param ProxyInstance: Proxy instance allocation
+        :type ProxyInstance: list of ProxyInst
+        """
+        self.Region = None
+        self.Zone = None
+        self.ProxyInstance = None
+
+
+    def _deserialize(self, params):
+        self.Region = params.get("Region")
+        self.Zone = params.get("Zone")
+        if params.get("ProxyInstance") is not None:
+            self.ProxyInstance = []
+            for item in params.get("ProxyInstance"):
+                obj = ProxyInst()
+                obj._deserialize(item)
+                self.ProxyInstance.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9600,6 +10546,76 @@ Note: this field may return `null`, indicating that no valid value can be found.
         
 
 
+class ProxyGroupInfo(AbstractModel):
+    """Details of proxy group
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProxyGroupId: Proxy group ID
+        :type ProxyGroupId: str
+        :param ProxyVersion: Proxy version Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProxyVersion: str
+        :param SupportUpgradeProxyVersion: Supported proxy upgrade version Note: This field may return null, indicating that no valid values can be obtained.
+        :type SupportUpgradeProxyVersion: str
+        :param Status: Proxy status Note: This field may return null, indicating that no valid values can be obtained.
+        :type Status: str
+        :param TaskStatus: Proxy task status Note: This field may return null, indicating that no valid values can be obtained.
+        :type TaskStatus: str
+        :param ProxyNode: Node information of the proxy group Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProxyNode: list of ProxyNode
+        :param ProxyAddress: Address information of the proxy group Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProxyAddress: list of ProxyAddress
+        :param ConnectionPoolLimit: Connection pool threshold Note: This field may return null, indicating that no valid values can be obtained.
+        :type ConnectionPoolLimit: int
+        :param SupportCreateProxyAddress: Whether to support address creation Note: This field may return null, indicating that no valid values can be obtained.
+        :type SupportCreateProxyAddress: bool
+        :param SupportUpgradeProxyMysqlVersion: TencentDB versions supporting proxy versions upgrade Note: This field may return null, indicating that no valid values can be obtained.
+        :type SupportUpgradeProxyMysqlVersion: str
+        """
+        self.ProxyGroupId = None
+        self.ProxyVersion = None
+        self.SupportUpgradeProxyVersion = None
+        self.Status = None
+        self.TaskStatus = None
+        self.ProxyNode = None
+        self.ProxyAddress = None
+        self.ConnectionPoolLimit = None
+        self.SupportCreateProxyAddress = None
+        self.SupportUpgradeProxyMysqlVersion = None
+
+
+    def _deserialize(self, params):
+        self.ProxyGroupId = params.get("ProxyGroupId")
+        self.ProxyVersion = params.get("ProxyVersion")
+        self.SupportUpgradeProxyVersion = params.get("SupportUpgradeProxyVersion")
+        self.Status = params.get("Status")
+        self.TaskStatus = params.get("TaskStatus")
+        if params.get("ProxyNode") is not None:
+            self.ProxyNode = []
+            for item in params.get("ProxyNode"):
+                obj = ProxyNode()
+                obj._deserialize(item)
+                self.ProxyNode.append(obj)
+        if params.get("ProxyAddress") is not None:
+            self.ProxyAddress = []
+            for item in params.get("ProxyAddress"):
+                obj = ProxyAddress()
+                obj._deserialize(item)
+                self.ProxyAddress.append(obj)
+        self.ConnectionPoolLimit = params.get("ConnectionPoolLimit")
+        self.SupportCreateProxyAddress = params.get("SupportCreateProxyAddress")
+        self.SupportUpgradeProxyMysqlVersion = params.get("SupportUpgradeProxyMysqlVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ProxyGroups(AbstractModel):
     """Database proxy group information
 
@@ -9652,6 +10668,142 @@ Note: this field may return `null`, indicating that no valid value can be found.
         if params.get("RWInstInfo") is not None:
             self.RWInstInfo = RWInfos()
             self.RWInstInfo._deserialize(params.get("RWInstInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProxyInst(AbstractModel):
+    """Proxy instance
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceId: str
+        :param InstanceName: Instance name Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceName: str
+        :param InstanceType: Instance type Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceType: str
+        :param Status: Instance status. Valid values:  `0` (creating), `1` (running), `4` (isolating), `5` (isolated). Note: This field may return null, indicating that no valid values can be obtained.
+        :type Status: int
+        :param Weight: Read weight. If it is assigned by the system automatically, the modification will not take effect but represents whether the instance is enabled. Note: This field may return null, indicating that no valid values can be obtained.
+        :type Weight: int
+        :param Region: Instance region Note: This field may return null, indicating that no valid values can be obtained.
+        :type Region: str
+        :param Zone: Instance AZ Note: This field may return null, indicating that no valid values can be obtained.
+        :type Zone: str
+        """
+        self.InstanceId = None
+        self.InstanceName = None
+        self.InstanceType = None
+        self.Status = None
+        self.Weight = None
+        self.Region = None
+        self.Zone = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.InstanceType = params.get("InstanceType")
+        self.Status = params.get("Status")
+        self.Weight = params.get("Weight")
+        self.Region = params.get("Region")
+        self.Zone = params.get("Zone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProxyNode(AbstractModel):
+    """Proxy node
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProxyId: Proxy node ID Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProxyId: str
+        :param Cpu: Number of CPU cores Note: This field may return null, indicating that no valid values can be obtained.
+        :type Cpu: int
+        :param Mem: Memory size Note: This field may return null, indicating that no valid values can be obtained.
+        :type Mem: int
+        :param Status: Node status Note: This field may return null, indicating that no valid values can be obtained.
+        :type Status: str
+        :param Zone: Proxy node AZ Note: This field may return null, indicating that no valid values can be obtained.
+        :type Zone: str
+        :param Region: Proxy node region Note: This field may return null, indicating that no valid values can be obtained.
+        :type Region: str
+        :param Connection: Connections Note: This field may return null, indicating that no valid values can be obtained.
+        :type Connection: int
+        """
+        self.ProxyId = None
+        self.Cpu = None
+        self.Mem = None
+        self.Status = None
+        self.Zone = None
+        self.Region = None
+        self.Connection = None
+
+
+    def _deserialize(self, params):
+        self.ProxyId = params.get("ProxyId")
+        self.Cpu = params.get("Cpu")
+        self.Mem = params.get("Mem")
+        self.Status = params.get("Status")
+        self.Zone = params.get("Zone")
+        self.Region = params.get("Region")
+        self.Connection = params.get("Connection")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProxyNodeCustom(AbstractModel):
+    """The specification configuration of a node
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NodeCount: Number of nodes
+        :type NodeCount: int
+        :param Cpu: Number of CPU cores
+        :type Cpu: int
+        :param Mem: Memory size
+        :type Mem: int
+        :param Region: Region
+        :type Region: str
+        :param Zone: AZ
+        :type Zone: str
+        """
+        self.NodeCount = None
+        self.Cpu = None
+        self.Mem = None
+        self.Region = None
+        self.Zone = None
+
+
+    def _deserialize(self, params):
+        self.NodeCount = params.get("NodeCount")
+        self.Cpu = params.get("Cpu")
+        self.Mem = params.get("Mem")
+        self.Region = params.get("Region")
+        self.Zone = params.get("Zone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10238,7 +11390,7 @@ class RoGroup(AbstractModel):
         :type MinRoInGroup: int
         :param WeightMode: Read/write weight distribution mode. Valid values: `system` (weights are assigned by the system automatically), `custom` (weights are customized)
         :type WeightMode: str
-        :param Weight: Weight value.
+        :param Weight: This field has been disused. To view the weight of a read-only instance, check the `Weight` value in the `RoInstances` field.
         :type Weight: int
         :param RoInstances: Details of read-only instances in read-only group
         :type RoInstances: list of RoInstanceInfo
@@ -10782,6 +11934,38 @@ Note: this field may return `null`, indicating that no valid value can be found.
     def _deserialize(self, params):
         self.LessThan = params.get("LessThan")
         self.Weight = params.get("Weight")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleFilters(AbstractModel):
+    """Filter of the audit rule
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: Parameter name of the audit rule filter.  Valid values:  `host` (client IP), `user` (database account), `dbName` (database name), `sqlType` (SQL type), `sql` (SQL statement), `affectRows` (affected rows), `sentRows` (returned rows), `checkRows` (scanned rows), `execTime` (execution rows).
+        :type Type: str
+        :param Compare: Filter match value of the audit rule Valid values:  `INC` (including), `EXC` (excluding), `EQS` (equal to), `NEQ` (not equal to), `REG` (regex), `GT` (greater than), `LT` (less than).
+        :type Compare: str
+        :param Value: Filter match value of the audit rule Valid values for `sqlType`: `alter`, `changeuser`, `create`, `delete`, `drop`, `execute`, `insert`, `login`, `logout`, `other`, `replace`, `select`, `set, `update`.
+        :type Value: list of str
+        """
+        self.Type = None
+        self.Compare = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Compare = params.get("Compare")
+        self.Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11861,7 +13045,7 @@ class UpgradeDBInstanceEngineVersionRequest(AbstractModel):
         :type InstanceId: str
         :param EngineVersion: Version of primary instance database engine. Value range: 5.6, 5.7
         :type EngineVersion: str
-        :param WaitSwitch: Mode of switch to a new instance. Value range: 0 (switch immediately), 1 (switch within a time window). Default value: 0. If the value is 1, the switch process will be performed within a time window. Or, you can call the [switching to new instance API](https://intl.cloud.tencent.com/document/product/236/15864?from_cn_redirect=1) to trigger the process.
+        :param WaitSwitch: Switch mode for accessing the new instance.  Valid values:  `0` (switch immediately), `1` (switch within a time window). Default value: `0`. If the value is `1`, the switch process will be performed within a time window. Or, you can call the [SwitchForUpgrade](https://intl.cloud.tencent.com/document/product/236/15864?from_cn_redirect=1) API to trigger the process.
         :type WaitSwitch: int
         :param UpgradeSubversion: Whether to upgrade kernel minor version. Valid values: 1 (upgrade kernel minor version), 0 (upgrade database engine).
         :type UpgradeSubversion: int
@@ -11932,7 +13116,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
         :type SlaveZone: str
         :param EngineVersion: Version of primary instance database engine. Valid values: 5.5, 5.6, 5.7.
         :type EngineVersion: str
-        :param WaitSwitch: Mode of switch to new instance. Valid values: 0 (switch immediately), 1 (switch within a time window). Default value: 0. If the value is 1, the switch process will be performed within a time window. Or, you can call the [SwitchForUpgrade](https://intl.cloud.tencent.com/document/product/236/15864?from_cn_redirect=1) API to trigger the process.
+        :param WaitSwitch: Switch mode for accessing the new instance.  Valid values:  `0` (switch immediately), `1` (switch within a time window). Default value: `0`. If the value is `1`, the switch process will be performed within a time window. Or, you can call the [SwitchForUpgrade](https://intl.cloud.tencent.com/document/product/236/15864?from_cn_redirect=1) API to trigger the process.
         :type WaitSwitch: int
         :param BackupZone: AZ information of secondary database 2, which is empty by default. This parameter can be specified when upgrading primary instances and is meaningless for read-only or disaster recovery instances.
         :type BackupZone: str

@@ -944,6 +944,10 @@ class CreateRoomRequest(AbstractModel):
         :type RecordLayout: int
         :param GroupId: The ID of the group to bind. If you specify this parameter, only members of the group can enter this room.
         :type GroupId: str
+        :param EnableDirectControl: Whether the teacher/teaching assistant can control students' cameras/microphones without the students' consent. Valid values: 
+`0` (default): No (consent required)
+`1`: Yes (no consent required)
+        :type EnableDirectControl: int
         """
         self.Name = None
         self.StartTime = None
@@ -962,6 +966,7 @@ class CreateRoomRequest(AbstractModel):
         self.AudienceType = None
         self.RecordLayout = None
         self.GroupId = None
+        self.EnableDirectControl = None
 
 
     def _deserialize(self, params):
@@ -982,6 +987,7 @@ class CreateRoomRequest(AbstractModel):
         self.AudienceType = params.get("AudienceType")
         self.RecordLayout = params.get("RecordLayout")
         self.GroupId = params.get("GroupId")
+        self.EnableDirectControl = params.get("EnableDirectControl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2095,6 +2101,8 @@ class DescribeRoomResponse(AbstractModel):
         :type Status: int
         :param GroupId: Note: This field may return null, indicating that no valid values can be obtained.
         :type GroupId: str
+        :param EnableDirectControl: Whether the students' consent is required to control their cameras/microphones.
+        :type EnableDirectControl: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -2113,6 +2121,7 @@ class DescribeRoomResponse(AbstractModel):
         self.RecordUrl = None
         self.Status = None
         self.GroupId = None
+        self.EnableDirectControl = None
         self.RequestId = None
 
 
@@ -2132,6 +2141,7 @@ class DescribeRoomResponse(AbstractModel):
         self.RecordUrl = params.get("RecordUrl")
         self.Status = params.get("Status")
         self.GroupId = params.get("GroupId")
+        self.EnableDirectControl = params.get("EnableDirectControl")
         self.RequestId = params.get("RequestId")
 
 
@@ -2583,8 +2593,16 @@ class EventInfo(AbstractModel):
         r"""
         :param Timestamp: The Unix timestamp (seconds) when the event occurred.
         :type Timestamp: int
-        :param EventType: The event type. Valid values:
+        :param EventType: The event type. Valid values: 
 `RoomStart`: The class started. `RoomEnd`: The class ended. `MemberJoin`: A user joined. `MemberQuit`: A user left. `RecordFinish`: Recording is finished.
+·Camera0n·: The camera is turned on.
+`Camera0ff`: The camera is turned off.
+`MicOn`: The mic is turned on.
+`MicOff`: The mic is turned off.
+`ScreenOn`: Screen sharing is enabled.
+`ScreenOff`: Screen sharing is disabled.
+`VisibleOn`: The page is visible.
+`VisibleOff`: The page is invisible.
         :type EventType: str
         :param EventData: The details of the event, including the room ID and the user to whom the event occurred.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -2957,6 +2975,65 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class KickUserFromRoomRequest(AbstractModel):
+    """KickUserFromRoom request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RoomId: The room ID.
+        :type RoomId: int
+        :param SdkAppId: The SDKAppID assigned by LCIC.
+        :type SdkAppId: int
+        :param UserId: The ID of the user to be removed.
+        :type UserId: str
+        :param KickType: The removal type: 
+`1`: Keep the user out temporarily. The `Duration` parameter specifies the ban duration, during which the user is banned from entering the room. 
+`2`: Remove the user permanently.
+        :type KickType: int
+        :param Duration: The ban duration (seconds). This parameter is valid if `KickType` is `1`. The default value is `0`.
+        :type Duration: int
+        """
+        self.RoomId = None
+        self.SdkAppId = None
+        self.UserId = None
+        self.KickType = None
+        self.Duration = None
+
+
+    def _deserialize(self, params):
+        self.RoomId = params.get("RoomId")
+        self.SdkAppId = params.get("SdkAppId")
+        self.UserId = params.get("UserId")
+        self.KickType = params.get("KickType")
+        self.Duration = params.get("Duration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KickUserFromRoomResponse(AbstractModel):
+    """KickUserFromRoom response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class LoginOriginIdRequest(AbstractModel):
@@ -3381,6 +3458,8 @@ class ModifyRoomRequest(AbstractModel):
         :type Assistants: list of str
         :param GroupId: The ID of the group to bind.
         :type GroupId: str
+        :param EnableDirectControl: Whether the students' consent is required to control their cameras/microphones.
+        :type EnableDirectControl: int
         """
         self.RoomId = None
         self.SdkAppId = None
@@ -3396,6 +3475,7 @@ class ModifyRoomRequest(AbstractModel):
         self.DisableRecord = None
         self.Assistants = None
         self.GroupId = None
+        self.EnableDirectControl = None
 
 
     def _deserialize(self, params):
@@ -3413,6 +3493,7 @@ class ModifyRoomRequest(AbstractModel):
         self.DisableRecord = params.get("DisableRecord")
         self.Assistants = params.get("Assistants")
         self.GroupId = params.get("GroupId")
+        self.EnableDirectControl = params.get("EnableDirectControl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3635,6 +3716,8 @@ class RoomInfo(AbstractModel):
         :type RecordLayout: int
         :param GroupId: The ID of the group to bind. Note: This field may return null, indicating that no valid values can be obtained.
         :type GroupId: str
+        :param EnableDirectControl: Whether the students' consent is required to control their cameras/microphones.
+        :type EnableDirectControl: int
         """
         self.Name = None
         self.StartTime = None
@@ -3652,6 +3735,7 @@ class RoomInfo(AbstractModel):
         self.AudienceType = None
         self.RecordLayout = None
         self.GroupId = None
+        self.EnableDirectControl = None
 
 
     def _deserialize(self, params):
@@ -3671,6 +3755,7 @@ class RoomInfo(AbstractModel):
         self.AudienceType = params.get("AudienceType")
         self.RecordLayout = params.get("RecordLayout")
         self.GroupId = params.get("GroupId")
+        self.EnableDirectControl = params.get("EnableDirectControl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3722,6 +3807,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param RecordUrl: The recording URL (HTTPS), which is generated only after a room ends.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type RecordUrl: str
+        :param MaxMicNumber: The maximum number of users allowed (including teachers) in the room. The default value is `0`, which indicates that no limit is set. 
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MaxMicNumber: int
+        :param EnableDirectControl: Whether the students' consent is required to control their cameras/microphones.
+Note: This field may return null, indicating that no valid value was found.
+        :type EnableDirectControl: int
         """
         self.Name = None
         self.RoomId = None
@@ -3734,6 +3825,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.MaxRTCMember = None
         self.ReplayUrl = None
         self.RecordUrl = None
+        self.MaxMicNumber = None
+        self.EnableDirectControl = None
 
 
     def _deserialize(self, params):
@@ -3748,6 +3841,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.MaxRTCMember = params.get("MaxRTCMember")
         self.ReplayUrl = params.get("ReplayUrl")
         self.RecordUrl = params.get("RecordUrl")
+        self.MaxMicNumber = params.get("MaxMicNumber")
+        self.EnableDirectControl = params.get("EnableDirectControl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

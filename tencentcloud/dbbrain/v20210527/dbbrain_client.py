@@ -694,7 +694,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeSlowLogs(self, request):
-        """This API is used to obtain the slow query log details of a SQL template in a specified time period.
+        """This API is used to obtain the slow log details of a SQL template in a specified time period.
 
         :param request: Request instance for DescribeSlowLogs.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeSlowLogsRequest`

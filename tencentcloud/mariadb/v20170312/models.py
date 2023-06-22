@@ -512,7 +512,7 @@ class CreateDBInstanceRequest(AbstractModel):
         :type SecurityGroupIds: list of str
         :param AutoRenewFlag: Auto-renewal flag. Valid values: `1` (auto-renewal), `2` (no renewal upon expiration).
         :type AutoRenewFlag: int
-        :param Ipv6Flag: Whether IPv6 is supported.
+        :param Ipv6Flag: Whether IPv6 is supported. Valid values: `0` (unsupported), `1` (supported).
         :type Ipv6Flag: int
         :param ResourceTags: Array of tag key-value pairs
         :type ResourceTags: list of ResourceTag
@@ -641,7 +641,7 @@ class CreateHourDBInstanceRequest(AbstractModel):
         :type InstanceName: str
         :param SecurityGroupIds: Security group ID. If this parameter is not passed in, no security groups will be associated when the instance is created.
         :type SecurityGroupIds: list of str
-        :param Ipv6Flag: Whether IPv6 is supported.
+        :param Ipv6Flag: Whether IPv6 is supported. Valid values: `0` (unsupported), `1` (supported).
         :type Ipv6Flag: int
         :param ResourceTags: Array of tag key-value pairs.
         :type ResourceTags: list of ResourceTag
@@ -653,7 +653,7 @@ class CreateHourDBInstanceRequest(AbstractModel):
 `character_set_server` (character set; required); `lower_case_table_names` (table name case sensitivity; required; 0: case-sensitive; 1: case-insensitive);
 `innodb_page_size` (innoDB data page size; default size: 16 KB); `sync_mode` (sync mode; 0: async; 1: strong sync; 2: downgradable strong sync; default value: 2).
         :type InitParams: list of DBParamValue
-        :param RollbackInstanceId: ID of the instance whose backup data will be rolled back to the new instance you create.
+        :param RollbackInstanceId: ID of the instance to be rolled back, such as “2021-11-22 00:00:00”.
         :type RollbackInstanceId: str
         :param RollbackTime: Rollback time.
         :type RollbackTime: str
@@ -772,6 +772,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type DelayThresh: int
         :param SlaveConst: Whether to specify a replica server for read-only account. Valid values: `0` (No replica server is specified, which means that the proxy will select another available replica server to keep connection with the client if the current replica server doesn’t meet the requirement). `1` (The replica server is specified, which means that the connection will be disconnected if the specified replica server doesn’t meet the requirement.)
         :type SlaveConst: int
+        :param MaxUserConnections: Maximum number of connections. `0` indicates no limit.
+        :type MaxUserConnections: int
         """
         self.UserName = None
         self.Host = None
@@ -781,6 +783,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.ReadOnly = None
         self.DelayThresh = None
         self.SlaveConst = None
+        self.MaxUserConnections = None
 
 
     def _deserialize(self, params):
@@ -792,6 +795,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.ReadOnly = params.get("ReadOnly")
         self.DelayThresh = params.get("DelayThresh")
         self.SlaveConst = params.get("SlaveConst")
+        self.MaxUserConnections = params.get("MaxUserConnections")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1929,6 +1933,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param RsAccessStrategy: Nearby VPC access
 Note: This field may return null, indicating that no valid values can be obtained.
         :type RsAccessStrategy: int
+        :param ReservedNetResources: Unclaimed network resource
+        :type ReservedNetResources: list of ReservedNetResource
+        :param IsPhysicalReplicationSupported: 
+        :type IsPhysicalReplicationSupported: bool
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -1987,6 +1995,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.ReplicaStatus = None
         self.ExclusterType = None
         self.RsAccessStrategy = None
+        self.ReservedNetResources = None
+        self.IsPhysicalReplicationSupported = None
         self.RequestId = None
 
 
@@ -2060,6 +2070,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
             self.ReplicaStatus._deserialize(params.get("ReplicaStatus"))
         self.ExclusterType = params.get("ExclusterType")
         self.RsAccessStrategy = params.get("RsAccessStrategy")
+        if params.get("ReservedNetResources") is not None:
+            self.ReservedNetResources = []
+            for item in params.get("ReservedNetResources"):
+                obj = ReservedNetResource()
+                obj._deserialize(item)
+                self.ReservedNetResources.append(obj)
+        self.IsPhysicalReplicationSupported = params.get("IsPhysicalReplicationSupported")
         self.RequestId = params.get("RequestId")
 
 
@@ -4357,6 +4374,46 @@ class ProcedurePrivilege(AbstractModel):
         
 
 
+class ReservedNetResource(AbstractModel):
+    """Information of the reserved network resource
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VpcId: VPC
+        :type VpcId: str
+        :param SubnetId: Subnet
+        :type SubnetId: str
+        :param Vip: Reserved private network IP under `VpcId` and `SubnetId`
+        :type Vip: str
+        :param Vports: Port under `Vip`
+        :type Vports: list of int
+        :param RecycleTime: Valid hours of VIP
+        :type RecycleTime: str
+        """
+        self.VpcId = None
+        self.SubnetId = None
+        self.Vip = None
+        self.Vports = None
+        self.RecycleTime = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.Vip = params.get("Vip")
+        self.Vports = params.get("Vports")
+        self.RecycleTime = params.get("RecycleTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ResetAccountPasswordRequest(AbstractModel):
     """ResetAccountPassword request structure.
 
@@ -4715,6 +4772,71 @@ class TerminateDedicatedDBInstanceRequest(AbstractModel):
 
 class TerminateDedicatedDBInstanceResponse(AbstractModel):
     """TerminateDedicatedDBInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: Async task ID
+        :type FlowId: int
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class UpgradeDedicatedDBInstanceRequest(AbstractModel):
+    """UpgradeDedicatedDBInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: ID of the instance to be upgraded.  It is in the form of  `tdsql-ow728lmc`, which can be obtained by querying the instance details through the `DescribeDBInstances` API.
+        :type InstanceId: str
+        :param Memory: Memory size in GB,  which can be obtained through the `DescribeFenceDBInstanceSpecs` API.
+        :type Memory: int
+        :param Storage: Storage space size in GB.  You can obtain the disk space limits by querying instance specification through the `DescribeDBInstanceSpecs` API.
+        :type Storage: int
+        :param SwitchAutoRetry: Whether to retry again when missing the switch time window. Valid values: `0` (no), `1` (yes).
+        :type SwitchAutoRetry: int
+        :param SwitchStartTime: Switch start time
+        :type SwitchStartTime: str
+        :param SwitchEndTime: Switch end time
+        :type SwitchEndTime: str
+        """
+        self.InstanceId = None
+        self.Memory = None
+        self.Storage = None
+        self.SwitchAutoRetry = None
+        self.SwitchStartTime = None
+        self.SwitchEndTime = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Memory = params.get("Memory")
+        self.Storage = params.get("Storage")
+        self.SwitchAutoRetry = params.get("SwitchAutoRetry")
+        self.SwitchStartTime = params.get("SwitchStartTime")
+        self.SwitchEndTime = params.get("SwitchEndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpgradeDedicatedDBInstanceResponse(AbstractModel):
+    """UpgradeDedicatedDBInstance response structure.
 
     """
 

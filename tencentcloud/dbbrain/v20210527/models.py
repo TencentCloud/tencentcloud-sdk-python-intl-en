@@ -550,8 +550,7 @@ class DeleteDBDiagReportTasksRequest(AbstractModel):
         :type AsyncRequestIds: list of int
         :param InstanceId: Instance ID
         :type InstanceId: str
-        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL).
-Default value: `mysql`.
+        :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL). Default value: `mysql`.
         :type Product: str
         """
         self.AsyncRequestIds = None
@@ -1976,11 +1975,17 @@ class DescribeSlowLogUserHostStatsResponse(AbstractModel):
         :type TotalCount: int
         :param Items: Detailed list of the proportion of slow logs from each source address.
         :type Items: list of SlowLogHost
+        :param UserNameItems: Detailed list of the percentages of slow logs from different source usernames
+        :type UserNameItems: list of SlowLogUser
+        :param UserTotalCount: The number of source users
+        :type UserTotalCount: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.TotalCount = None
         self.Items = None
+        self.UserNameItems = None
+        self.UserTotalCount = None
         self.RequestId = None
 
 
@@ -1992,6 +1997,13 @@ class DescribeSlowLogUserHostStatsResponse(AbstractModel):
                 obj = SlowLogHost()
                 obj._deserialize(item)
                 self.Items.append(obj)
+        if params.get("UserNameItems") is not None:
+            self.UserNameItems = []
+            for item in params.get("UserNameItems"):
+                obj = SlowLogUser()
+                obj._deserialize(item)
+                self.UserNameItems.append(obj)
+        self.UserTotalCount = params.get("UserTotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -2022,7 +2034,7 @@ class DescribeSlowLogsRequest(AbstractModel):
         :type Key: list of str
         :param User: User
         :type User: list of str
-        :param Ip: ip
+        :param Ip: IP
         :type Ip: list of str
         :param Time: Duration range. The left and right borders of the range are the zeroth and first element of the array, respectively.
         :type Time: list of int
@@ -2874,14 +2886,20 @@ class InstanceInfo(AbstractModel):
         :type AuditPolicyStatus: str
         :param AuditRunningStatus: Running status of instance audit log. Valid values: normal (running), paused (suspension due to overdue payment).
         :type AuditRunningStatus: str
-        :param InternalVip: Private VIP
+        :param InternalVip: Private VIP 
 Note: This field may return null, indicating that no valid values can be obtained.
         :type InternalVip: str
-        :param InternalVport: Private network port
+        :param InternalVport: Private network port 
 Note: This field may return null, indicating that no valid values can be obtained.
         :type InternalVport: int
         :param CreateTime: Creation time
         :type CreateTime: str
+        :param ClusterId: Cluster ID. This field is only required for cluster database products like TDSQL-C. 
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ClusterId: str
+        :param ClusterName: Cluster name. This field is only required for cluster database products like TDSQL-C. 
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ClusterName: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -2914,6 +2932,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.InternalVip = None
         self.InternalVport = None
         self.CreateTime = None
+        self.ClusterId = None
+        self.ClusterName = None
 
 
     def _deserialize(self, params):
@@ -2950,6 +2970,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.InternalVip = params.get("InternalVip")
         self.InternalVport = params.get("InternalVport")
         self.CreateTime = params.get("CreateTime")
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterName = params.get("ClusterName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3013,12 +3035,15 @@ class KillMySqlThreadsRequest(AbstractModel):
         :type SqlExecId: str
         :param Product: Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL). Default value: `mysql`.
         :type Product: str
+        :param RecordHistory: Whether to record the thread killing history. The default value is `true`, indicating “yes”. You can set it to `false` (“no”) to speed up the killing process.
+        :type RecordHistory: bool
         """
         self.InstanceId = None
         self.Stage = None
         self.Threads = None
         self.SqlExecId = None
         self.Product = None
+        self.RecordHistory = None
 
 
     def _deserialize(self, params):
@@ -3027,6 +3052,7 @@ class KillMySqlThreadsRequest(AbstractModel):
         self.Threads = params.get("Threads")
         self.SqlExecId = params.get("SqlExecId")
         self.Product = params.get("Product")
+        self.RecordHistory = params.get("RecordHistory")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3943,6 +3969,38 @@ class SlowLogTopSqlItem(AbstractModel):
         self.LockTimeAvg = params.get("LockTimeAvg")
         self.RowsExaminedAvg = params.get("RowsExaminedAvg")
         self.Md5 = params.get("Md5")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SlowLogUser(AbstractModel):
+    """Details of the source users of slow logs
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserName: Source username
+        :type UserName: str
+        :param Ratio: Percentage of the number of slow logs from this source username to the total number of slow logs
+        :type Ratio: float
+        :param Count: Number of slow logs from this source username
+        :type Count: int
+        """
+        self.UserName = None
+        self.Ratio = None
+        self.Count = None
+
+
+    def _deserialize(self, params):
+        self.UserName = params.get("UserName")
+        self.Ratio = params.get("Ratio")
+        self.Count = params.get("Count")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -166,7 +166,7 @@ class MariadbClient(AbstractClient):
 
 
     def CreateDBInstance(self, request):
-        """This API is used to create a monthly subscribed TencentDB instance by passing in information such as instance specifications, database version number, validity period, and quantity.
+        """This API is used to create a monthly subscribed TencentDB for MariaDB instance by passing in information such as instance specifications, database version number, validity period, and quantity.
 
         :param request: Request instance for CreateDBInstance.
         :type request: :class:`tencentcloud.mariadb.v20170312.models.CreateDBInstanceRequest`
@@ -189,7 +189,7 @@ class MariadbClient(AbstractClient):
 
 
     def CreateHourDBInstance(self, request):
-        """This API is used to create pay-as-you-go instances.
+        """This API is used to create a pay-as-you-go TencentDB for MariaDB instance.
 
         :param request: Request instance for CreateHourDBInstance.
         :type request: :class:`tencentcloud.mariadb.v20170312.models.CreateHourDBInstanceRequest`
@@ -720,7 +720,7 @@ class MariadbClient(AbstractClient):
 
 
     def DestroyHourDBInstance(self, request):
-        """This API is used to terminate a pay-as-you-go instance.
+        """This API is used to terminate a pay-as-you-go TencentDB for MariaDB instance.
 
         :param request: Request instance for DestroyHourDBInstance.
         :type request: :class:`tencentcloud.mariadb.v20170312.models.DestroyHourDBInstanceRequest`
@@ -790,7 +790,7 @@ class MariadbClient(AbstractClient):
 
 
     def IsolateDBInstance(self, request):
-        """This API is used to isolate a monthly subscribed TencentDB instance, which will no longer be accessible via IP and port. The isolated instance can be started up in the recycle bin. If it is isolated due to overdue payments, top up your account as soon as possible.
+        """This API is used to isolate a monthly subscribed TencentDB for MariaDB instance, which will no longer be accessible via IP and port.  The isolated instance can be started up in the recycle bin.  If it is isolated due to overdue payments, top up your account as soon as possible.
 
         :param request: Request instance for IsolateDBInstance.
         :type request: :class:`tencentcloud.mariadb.v20170312.models.IsolateDBInstanceRequest`
@@ -883,12 +883,7 @@ class MariadbClient(AbstractClient):
 
 
     def ModifyAccountPrivileges(self, request):
-        """This API is used to modify the permissions of a TencentDB instance account.
-
-        **Notes**
-        - Only the SELECT permission (that is, set the permission parameter to `["SELECT"]`) of the system database `mysql` can be granted.
-        - An error will be reported if read-write permissions are granted to a read-only account.
-        - If the parameter of permissions at a level is left empty, no change will be made to the permissions at the level that have been granted. To clear granted permissions at a level, set `GlobalPrivileges.N` or `Privileges` to an empty array.
+        """This API is used to modify the permissions of a TencentDB instance account. \n\n**Note**\n-Only the SELECT permission (that is, set the permission parameter to `["SELECT"]`) of the system database `mysql` can be granted.An error will be reported if read-write permissions are granted to a read-only account. If the parameter is not passed in, no change will be made to the granted table permissions. To clear the granted view permissions, set `Privileges` to an empty array.
 
         :param request: Request instance for ModifyAccountPrivileges.
         :type request: :class:`tencentcloud.mariadb.v20170312.models.ModifyAccountPrivilegesRequest`
@@ -1132,6 +1127,29 @@ class MariadbClient(AbstractClient):
             body = self.call("TerminateDedicatedDBInstance", params, headers=headers)
             response = json.loads(body)
             model = models.TerminateDedicatedDBInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpgradeDedicatedDBInstance(self, request):
+        """This API is used to expand the dedicated TencentDB instance.
+
+        :param request: Request instance for UpgradeDedicatedDBInstance.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.UpgradeDedicatedDBInstanceRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.UpgradeDedicatedDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpgradeDedicatedDBInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpgradeDedicatedDBInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

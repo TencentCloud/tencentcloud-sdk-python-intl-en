@@ -650,6 +650,8 @@ class CreateDisksRequest(AbstractModel):
         :type AutoMountConfiguration: :class:`tencentcloud.cbs.v20170312.models.AutoMountConfiguration`
         :param DiskBackupQuota: Specifies the cloud disk backup point quota.
         :type DiskBackupQuota: int
+        :param BurstPerformance: Specifies whether to enable disk bursting.
+        :type BurstPerformance: bool
         """
         self.Placement = None
         self.DiskChargeType = None
@@ -667,6 +669,7 @@ class CreateDisksRequest(AbstractModel):
         self.DeleteSnapshot = None
         self.AutoMountConfiguration = None
         self.DiskBackupQuota = None
+        self.BurstPerformance = None
 
 
     def _deserialize(self, params):
@@ -697,6 +700,7 @@ class CreateDisksRequest(AbstractModel):
             self.AutoMountConfiguration = AutoMountConfiguration()
             self.AutoMountConfiguration._deserialize(params.get("AutoMountConfiguration"))
         self.DiskBackupQuota = params.get("DiskBackupQuota")
+        self.BurstPerformance = params.get("BurstPerformance")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -713,7 +717,7 @@ class CreateDisksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiskIdSet: List of IDs of the created cloud disks.
+        :param DiskIdSet: ID list of the created cloud disks. Note: This field may return null, indicating that no valid values can be obtained.
         :type DiskIdSet: list of str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -738,7 +742,7 @@ class CreateSnapshotRequest(AbstractModel):
         :type DiskId: str
         :param SnapshotName: Snapshot name. If it is not specified, "Unnamed" will be used by default.
         :type SnapshotName: str
-        :param Deadline: Expiration time of the snapshot. It must be in UTC ISO-8601 format, such as 2022-01-08T09:47:55+00:00. The snapshot will be automatically deleted when it expires.
+        :param Deadline: Expiration time of the snapshot. It must be in UTC ISO-8601 format, eg. 2022-01-08T09:47:55+00:00. The snapshot will be automatically deleted when it expires.
         :type Deadline: str
         :param DiskBackupId: ID of the cloud disk backup point. When this parameter is specified, the snapshot will be created from the backup point.
         :type DiskBackupId: str
@@ -779,7 +783,7 @@ class CreateSnapshotResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SnapshotId: ID of the new snapshot.
+        :param SnapshotId: ID of the created snapshot <br/>Note: This field may return null, indicating that no valid values can be obtained.
         :type SnapshotId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1827,6 +1831,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param ErrorPrompt: Error message for the last operation of the cloud disk
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ErrorPrompt: str
+        :param BurstPerformance: Whether the cloud disk has enabled disk bursting. Note: This field may return null, indicating that no valid values can be obtained.
+        :type BurstPerformance: bool
         """
         self.DeleteWithInstance = None
         self.RenewFlag = None
@@ -1869,6 +1875,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.InstanceType = None
         self.LastAttachInsId = None
         self.ErrorPrompt = None
+        self.BurstPerformance = None
 
 
     def _deserialize(self, params):
@@ -1920,6 +1927,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.InstanceType = params.get("InstanceType")
         self.LastAttachInsId = params.get("LastAttachInsId")
         self.ErrorPrompt = params.get("ErrorPrompt")
+        self.BurstPerformance = params.get("BurstPerformance")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2593,32 +2601,36 @@ class ModifyDiskAttributesRequest(AbstractModel):
         r"""
         :param DiskIds: IDs of one or more cloud disks to be operated. If multiple cloud disk IDs are selected, it only supports modifying all cloud disks with the same attributes.
         :type DiskIds: list of str
-        :param ProjectId: The new project ID of the cloud disk. Only the project ID of elastic cloud disk can be modified. The available projects and their IDs can be queried via the API [DescribeProject](https://intl.cloud.tencent.com/document/api/378/4400?from_cn_redirect=1).
-        :type ProjectId: int
         :param DiskName: Name of new cloud disk.
         :type DiskName: str
         :param Portable: Whether it is an elastic cloud disk. FALSE: non-elastic cloud disk; TRUE: elastic cloud disk. You can only modify non-elastic cloud disks to elastic cloud disks.
         :type Portable: bool
+        :param ProjectId: The new project ID of the cloud disk. Only the project ID of elastic cloud disk can be modified. The available projects and their IDs can be queried via the API [DescribeProject](https://intl.cloud.tencent.com/document/api/378/4400?from_cn_redirect=1).
+        :type ProjectId: int
         :param DeleteWithInstance: Whether the cloud disk is terminated with the CVM after it has been successfully mounted. `TRUE` indicates that it is terminated with the CVM. `FALSE` indicates that it is not terminated with the CVM. This is only supported for cloud disks and data disks that are pay-as-you-go.
         :type DeleteWithInstance: bool
         :param DiskType: When changing the type of a cloud disk, this parameter can be passed to indicate the desired cloud disk type. Value range: <br><li>CLOUD_PREMIUM: Premium cloud storage.  <br><li>CLOUD_SSD: SSD cloud disk. <br>Currently, batch operations are not supported for changing type. That is, when `DiskType` is passed, only one cloud disk can be passed through `DiskIds`. <br>When the cloud disk type is changed, the changing of other attributes is not supported concurrently.
         :type DiskType: str
+        :param BurstPerformanceOperation: Enable/disable disk bursting.
+        :type BurstPerformanceOperation: str
         """
         self.DiskIds = None
-        self.ProjectId = None
         self.DiskName = None
         self.Portable = None
+        self.ProjectId = None
         self.DeleteWithInstance = None
         self.DiskType = None
+        self.BurstPerformanceOperation = None
 
 
     def _deserialize(self, params):
         self.DiskIds = params.get("DiskIds")
-        self.ProjectId = params.get("ProjectId")
         self.DiskName = params.get("DiskName")
         self.Portable = params.get("Portable")
+        self.ProjectId = params.get("ProjectId")
         self.DeleteWithInstance = params.get("DeleteWithInstance")
         self.DiskType = params.get("DiskType")
+        self.BurstPerformanceOperation = params.get("BurstPerformanceOperation")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

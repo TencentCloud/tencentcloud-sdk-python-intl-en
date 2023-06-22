@@ -77,17 +77,45 @@ class ApplySdkVerificationTokenRequest(AbstractModel):
         r"""
         :param NeedVerifyIdCard: Whether ID card authentication is required. If not, only document OCR will be performed. Currently, authentication is available only when the value of `IdCardType` is `HK`.
         :type NeedVerifyIdCard: bool
-        :param IdCardType: The identity document type. Valid values: `HK` (identity card of Hong Kong (China)) (default), `ML` (Malaysian identity card), `IndonesiaIDCard` (Indonesian identity card), `PhilippinesVoteID` (Philippine voters ID card), `PhilippinesDrivingLicense` (Philippine driver's license), `PhilippinesTinID` (Philippine TIN ID card), `PhilippinesSSSID` (Philippine SSS ID card), and `MLIDPassport` (passport issued in Hong Kong/Macao/Taiwan (China) or other countries/regions).
+        :param CheckMode: The verification mode. Valid values:
+1: OCR + liveness detection + face comparison
+2: Liveness detection + face comparison
+3: Liveness detection
+Default value: 1
+        :type CheckMode: int
+        :param SecurityLevel: The security level of the verification. Valid values:
+1: Video-based liveness detection
+2: Motion-based liveness detection
+3: Reflection-based liveness detection
+4: Motion- and reflection-based liveness detection
+Default value: 4
+        :type SecurityLevel: int
+        :param IdCardType: The identity document type. Valid values: 
+1. `HK` (default): Identity card of Hong Kong (China)
+2. `ML`: Malaysian identity card
+3. `IndonesiaIDCard`: Indonesian identity card
+4. `PhilippinesVoteID`: Philippine voters ID card
+5. `PhilippinesDrivingLicense`: Philippine driver's license
+6. `PhilippinesTinID`: Philippine TIN ID card
+7. `PhilippinesSSSID`: Philippine SSS ID card
+8. `PhilippinesUMID`: Philippine UMID card
+9. `MLIDPassport`: Passport issued in Hong Kong/Macao/Taiwan (China) or other countries/regions
         :type IdCardType: str
-        :param DisableChangeOcrResult: Whether to forbid the modification of the OCR result by users. Default value: `false` (modification allowed).
+        :param CompareImage: The Base64-encoded value of the photo to compare, which is required only when `CheckMode` is set to `2`.
+        :type CompareImage: str
+        :param DisableChangeOcrResult: Whether to forbid the modification of the OCR result by users. Default value: `false` (modification allowed). (Currently, this parameter is not applied.)
         :type DisableChangeOcrResult: bool
-        :param DisableCheckOcrWarnings: Whether to disable the OCR warnings. Default value: `false` (not disable), where OCR warnings are enabled and the OCR result will not be returned if there is a warning. If `NeedVerifyIdCard` is set to `true`, this parameter must also be set to `true`.
+        :param DisableCheckOcrWarnings: Whether to disable the OCR warnings. Default value: `false` (not disable), where OCR warnings are enabled and the OCR result will not be returned if there is a warning.
+This feature applies only to Hong Kong (China) identity cards, Malaysian identity cards, and passports.
         :type DisableCheckOcrWarnings: bool
         :param Extra: A passthrough field, which is returned together with the verification result and can contain up to 1,024 bits.
         :type Extra: str
         """
         self.NeedVerifyIdCard = None
+        self.CheckMode = None
+        self.SecurityLevel = None
         self.IdCardType = None
+        self.CompareImage = None
         self.DisableChangeOcrResult = None
         self.DisableCheckOcrWarnings = None
         self.Extra = None
@@ -95,7 +123,10 @@ class ApplySdkVerificationTokenRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.NeedVerifyIdCard = params.get("NeedVerifyIdCard")
+        self.CheckMode = params.get("CheckMode")
+        self.SecurityLevel = params.get("SecurityLevel")
         self.IdCardType = params.get("IdCardType")
+        self.CompareImage = params.get("CompareImage")
         self.DisableChangeOcrResult = params.get("DisableChangeOcrResult")
         self.DisableCheckOcrWarnings = params.get("DisableCheckOcrWarnings")
         self.Extra = params.get("Extra")
@@ -262,6 +293,15 @@ When the value of `IdCardType` is `PhilippinesSSSID`:
 - FullName (string): Full name.
 - Birthday (string): Date of birth.
 
+When the value of `IdCardType` is `PhilippinesUMID`:
+- Surname (string): Surname.
+- MiddleName (string):Middle name.
+- GivenName (string): Given name.
+- Sex (string): Gender.
+- Birthday (string): Date of birth.
+- Address (string): Address.
+- CRN (string): Common reference number (CRN).
+
 (4) Indonesian identity card
 When the value of `IdCardType` is `IndonesiaIDCard`:
 - NIK (string): Single Identity Number.
@@ -290,7 +330,7 @@ When the value of `IdCardType` is `MLIDPassport`:
 - DateOfExpiration (string): Expiration date.
 - IssuingCountry (string): Issuing country.
 - NationalityCode (string): Country/region code.
-Note: This field may return null, indicating that no valid value can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type CardInfoOcrJson: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
         :param RequestId: The request ID of a single process.
         :type RequestId: str
@@ -343,7 +383,7 @@ class CompareResult(AbstractModel):
         :type ErrorCode: str
         :param ErrorMsg: The description of the final verification result.
         :type ErrorMsg: str
-        :param LiveData: 
+        :param LiveData: The liveness algorithm package generated during this SDK-based liveness detection.
         :type LiveData: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
         :param LiveVideo: The download URL of the video used for verification, which is valid for 10 minutes.
         :type LiveVideo: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
@@ -373,30 +413,11 @@ Note: This field may return null, indicating that no valid value can be obtained
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CompareErrorMsg: str
         :param Sim: The similarity score of face comparison.
-Note: This field may return null, indicating that no valid value can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Sim: float
-        :param IsNeedCharge: This field is disused.
+        :param IsNeedCharge: This parameter is disused.
         :type IsNeedCharge: bool
-        :param CardInfoInputJson: The identity document photo info edited by the user in JSON. If the value of `DisableChangeOcrResult` is `true`, the editing feature is disabled and this field does not exist. The URL is valid for 10 minutes.
-When the value of `IdCardType` is `HK`:
-- CnName string: Chinese name
-- EnName string: English name
-- TelexCode string: The code corresponding to the Chinese name
-- Sex string: Gender. Valid values: `M` (male) and `F` (female).
-- Birthday string: Date of birth.
-- Permanent int: Whether it is a permanent residence identity card. Valid values: `0` (non-permanent), `1` (permanent), and `-1` (unknown).
-- IdNum string: ID number.
-- Symbol string: The ID symbol below the date of birth, such as "***AZ".
-- FirstIssueDate string: The date of first issuance.
-- CurrentIssueDate string: The date of latest issuance.
-
-When the value of `IdCardType` is `ML`:
-- Sex string: `LELAKI` (male) and `PEREMPUAN` (female).
-- Birthday string
-- ID string
-- Name string
-- Address string
-- Type string: Identity document type.
+        :param CardInfoInputJson: The identity document photo info edited by the user. Currently, this parameter is not applied.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CardInfoInputJson: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
         :param RequestId: The request ID of this verification process.
@@ -904,17 +925,17 @@ class GetSdkVerificationResultResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: The result of the entire verification process.
+        :param Result: The result code of the verification result.
         :type Result: str
-        :param Description: The result description.
+        :param Description: The verification result description.
         :type Description: str
         :param ChargeCount: The charge count.
         :type ChargeCount: int
-        :param CardVerifyResults: The results of multiple OCR processes (in order). The result of the final process is taken as the valid result.
+        :param CardVerifyResults: The results of multiple OCR processes (in order). The result of the final process is used as the valid result.
         :type CardVerifyResults: list of CardVerifyResult
-        :param CompareResults: The results of multiple liveness detection processes (in order). The result of the final process is taken as the valid result.
+        :param CompareResults: The results of multiple liveness detection processes (in order). The result of the final process is used as the valid result.
         :type CompareResults: list of CompareResult
-        :param Extra: Info passed in the process of getting the token.
+        :param Extra: Data passed through in the process of getting the token.
         :type Extra: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str

@@ -50,7 +50,7 @@ class FaceidClient(AbstractClient):
 
 
     def ApplySdkVerificationToken(self, request):
-        """This API is used to apply for a token before calling the SDK-based verification service each time. This token is required for initiating the verification process and getting the result after the verification is completed.
+        """This API is used to apply for a token before calling the Identity Verification SDK service each time. This token is required for initiating the verification process and getting the result after the verification is completed.
 
         :param request: Request instance for ApplySdkVerificationToken.
         :type request: :class:`tencentcloud.faceid.v20180301.models.ApplySdkVerificationTokenRequest`

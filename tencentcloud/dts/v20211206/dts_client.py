@@ -214,6 +214,29 @@ class DtsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateModifyCheckSyncJob(self, request):
+        """This API is used to check whether the current data sync task supports object modification after the task configuration is modified.
+
+        :param request: Request instance for CreateModifyCheckSyncJob.
+        :type request: :class:`tencentcloud.dts.v20211206.models.CreateModifyCheckSyncJobRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.CreateModifyCheckSyncJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateModifyCheckSyncJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateModifyCheckSyncJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateSyncJob(self, request):
         """This API is used to create a sync task.
 
@@ -414,6 +437,29 @@ class DtsClient(AbstractClient):
             body = self.call("DescribeMigrationJobs", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeMigrationJobsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeModifyCheckSyncJobResult(self, request):
+        """This API is used to query the result of the created check task for object modification.
+
+        :param request: Request instance for DescribeModifyCheckSyncJobResult.
+        :type request: :class:`tencentcloud.dts.v20211206.models.DescribeModifyCheckSyncJobResultRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.DescribeModifyCheckSyncJobResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeModifyCheckSyncJobResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeModifyCheckSyncJobResultResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -644,6 +690,29 @@ class DtsClient(AbstractClient):
             body = self.call("ModifyMigrationJob", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyMigrationJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifySyncJobConfig(self, request):
+        """This API is used to modify the configuration of a data sync task after the task is started.\n Configuration modification steps:  Modify sync task configuration -> Create a modification check task -> Query the check task result -> Start the configuration modification check task
+
+        :param request: Request instance for ModifySyncJobConfig.
+        :type request: :class:`tencentcloud.dts.v20211206.models.ModifySyncJobConfigRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.ModifySyncJobConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySyncJobConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySyncJobConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -897,6 +966,29 @@ class DtsClient(AbstractClient):
             body = self.call("StartMigrateJob", params, headers=headers)
             response = json.loads(body)
             model = models.StartMigrateJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StartModifySyncJob(self, request):
+        """This API is used to start the configuration modification process when the modification check task status becomes “success”.
+
+        :param request: Request instance for StartModifySyncJob.
+        :type request: :class:`tencentcloud.dts.v20211206.models.StartModifySyncJobRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.StartModifySyncJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartModifySyncJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartModifySyncJobResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

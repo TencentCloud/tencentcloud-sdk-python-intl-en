@@ -1016,9 +1016,9 @@ class CreateMigrationServiceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SrcDatabaseType: Source database type. Valid values: `mysql`, `redis`, `percona`, `mongodb`, `postgresql`, `sqlserver`, `mariadb`.
+        :param SrcDatabaseType: Source database type. Valid values: `mysql`, `redis`, `percona`, `mongodb`, `postgresql`, `sqlserver`, `mariadb`, and `cynosdbmysql`.
         :type SrcDatabaseType: str
-        :param DstDatabaseType: Target database type. Valid values: `mysql`, `redis`, `percona`, `mongodb`, `postgresql`, `sqlserver`, `mariadb`.
+        :param DstDatabaseType: Target database type. Valid values: `mysql`, `redis`, `percona`, `mongodb` ,`postgresql`, `sqlserver`, `mariadb`, and `cynosdbmysql`.
         :type DstDatabaseType: str
         :param SrcRegion: Source instance region, such as `ap-guangzhou`.
         :type SrcRegion: str
@@ -1085,6 +1085,47 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self.JobIds = params.get("JobIds")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateModifyCheckSyncJobRequest(AbstractModel):
+    """CreateModifyCheckSyncJob request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: Sync task ID
+        :type JobId: str
+        """
+        self.JobId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateModifyCheckSyncJobResponse(AbstractModel):
+    """CreateModifyCheckSyncJob response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -2181,8 +2222,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param BriefMsg: Migration task error message
 Note: This field may return null, indicating that no valid values can be obtained.
         :type BriefMsg: str
-        :param Status: Task status. Valid values: `created`, `checking`, `checkPass`, `checkNotPass`, `readyRun`, `running`, `readyComplete`, `success`, `failed`, `stopping`, `completing`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param Status: Task status. Valid values: `created`(Created), `checking` (Checking), `checkPass` (Check passed), `checkNotPass` (Check not passed), `readyRun` (Ready for running), `running` (Running), `readyComplete` (Preparation completed), `success` (Successful), `failed` (Failed), `stopping` (Stopping), `completing` (Completing), `pausing` (Pausing), `manualPaused` (Paused). Note: This field may return null, indicating that no valid values can be obtained.
         :type Status: str
         :param Action: Task operation information
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -2414,6 +2454,72 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = JobItem()
                 obj._deserialize(item)
                 self.JobList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeModifyCheckSyncJobResultRequest(AbstractModel):
+    """DescribeModifyCheckSyncJobResult request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: Sync task ID
+        :type JobId: str
+        """
+        self.JobId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeModifyCheckSyncJobResultResponse(AbstractModel):
+    """DescribeModifyCheckSyncJobResult response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: Execution status of the check task Valid values: `notStarted` (Not started), `running` (Running), `failed` (Failed), `success` (Successful).
+        :type Status: str
+        :param StepCount: Number of check steps Note: This field may return null, indicating that no valid values can be obtained.
+        :type StepCount: int
+        :param StepCur: Current step Note: This field may return null, indicating that no valid values can be obtained.
+        :type StepCur: int
+        :param Progress: Overall progress. Value range: 0-100. Note: This field may return null, indicating that no valid values can be obtained.
+        :type Progress: int
+        :param StepInfos: Step details Note: This field may return null, indicating that no valid values can be obtained.
+        :type StepInfos: list of StepInfo
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Status = None
+        self.StepCount = None
+        self.StepCur = None
+        self.Progress = None
+        self.StepInfos = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.StepCount = params.get("StepCount")
+        self.StepCur = params.get("StepCur")
+        self.Progress = params.get("Progress")
+        if params.get("StepInfos") is not None:
+            self.StepInfos = []
+            for item in params.get("StepInfos"):
+                obj = StepInfo()
+                obj._deserialize(item)
+                self.StepInfos.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2765,6 +2871,49 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class DynamicOptions(AbstractModel):
+    """Data sync options
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OpTypes: DML and DDL options to be synced. Valid values: `Insert` (INSERT), `Update` (UPDATE), `Delete` (DELETE), `DDL` (structure sync), `PartialDDL` (custom option, which is used together with `DdlOptions`). This parameter is required, and its value will overwrite the previous value. Note: This field may return null, indicating that no valid values can be obtained.
+        :type OpTypes: list of str
+        :param DdlOptions: DDL options to be synced. This parameter is required when `OpTypes` is `PartialDDL`, and its value will overwrite the previous value. Note: This field may return null, indicating that no valid values can be obtained.
+        :type DdlOptions: list of DdlOption
+        :param ConflictHandleType: Conflict resolution method. Valid values: `ReportError` (Report error), `Ignore` (Ignore), `Cover` (Overwrite), `ConditionCover` (Conditionally overwrite). Currently, this parameter cannot be modified if the target of the link is Kafka. Note: This field may return null, indicating that no valid values can be obtained.
+        :type ConflictHandleType: str
+        :param ConflictHandleOption: Detailed options of the conflict resolution method, such as the conditionally overwritten rows and condition operations for the “conditionally overwrite” method. The internal field of this parameter cannot be modified separately. If this parameter needs to be updated, update it fully. Note: This field may return null, indicating that no valid values can be obtained.
+        :type ConflictHandleOption: :class:`tencentcloud.dts.v20211206.models.ConflictHandleOption`
+        """
+        self.OpTypes = None
+        self.DdlOptions = None
+        self.ConflictHandleType = None
+        self.ConflictHandleOption = None
+
+
+    def _deserialize(self, params):
+        self.OpTypes = params.get("OpTypes")
+        if params.get("DdlOptions") is not None:
+            self.DdlOptions = []
+            for item in params.get("DdlOptions"):
+                obj = DdlOption()
+                obj._deserialize(item)
+                self.DdlOptions.append(obj)
+        self.ConflictHandleType = params.get("ConflictHandleType")
+        if params.get("ConflictHandleOption") is not None:
+            self.ConflictHandleOption = ConflictHandleOption()
+            self.ConflictHandleOption._deserialize(params.get("ConflictHandleOption"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Endpoint(AbstractModel):
     """Information of the source and target databases in data sync
 
@@ -3065,8 +3214,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param BriefMsg: Migration task error message
 Note: This field may return null, indicating that no valid values can be obtained.
         :type BriefMsg: str
-        :param Status: Task status. Valid values: `creating`, `created`, `checking`, `checkPass`, `checkNotPass`, `readyRun`, `running`, `readyComplete`, `success`, `failed`, `stopping`, `completing`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param Status: Task status. Valid values: `creating` (Creating), `created`(Created), `checking` (Checking), `checkPass` (Check passed), `checkNotPass` (Check not passed), `readyRun` (Ready for running), `running` (Running), `readyComplete` (Preparation completed), `success` (Successful), `failed` (Failed), `stopping` (Stopping), `completing` (Completing), `pausing` (Pausing), `manualPaused` (Paused). Note: This field may return null, indicating that no valid values can be obtained.
         :type Status: str
         :param RunMode: Task running mode. Valid values: `immediate`, `timed`.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -3712,6 +3860,59 @@ class ModifyMigrationJobResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifySyncJobConfigRequest(AbstractModel):
+    """ModifySyncJobConfig request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: Sync task ID
+        :type JobId: str
+        :param DynamicObjects: The modified sync objects
+        :type DynamicObjects: :class:`tencentcloud.dts.v20211206.models.Objects`
+        :param DynamicOptions: The modified sync task options
+        :type DynamicOptions: :class:`tencentcloud.dts.v20211206.models.DynamicOptions`
+        """
+        self.JobId = None
+        self.DynamicObjects = None
+        self.DynamicOptions = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        if params.get("DynamicObjects") is not None:
+            self.DynamicObjects = Objects()
+            self.DynamicObjects._deserialize(params.get("DynamicObjects"))
+        if params.get("DynamicOptions") is not None:
+            self.DynamicOptions = DynamicOptions()
+            self.DynamicOptions._deserialize(params.get("DynamicOptions"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySyncJobConfigResponse(AbstractModel):
+    """ModifySyncJobConfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class Objects(AbstractModel):
     """Description of synced database objects
 
@@ -3719,14 +3920,12 @@ class Objects(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Mode: Sync object type. Valid value: `Partial` (default).
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param Mode: Sync object type. Valid value: `Partial` (Partial objects). Note: This field may return null, indicating that no valid values can be obtained.
         :type Mode: str
         :param Databases: Sync object, which is required if `Mode` is `Partial`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Databases: list of Database
-        :param AdvancedObjects: Advanced object type, such as function and procedure. If you need to sync advanced objects, the initialization type must include structure initialization; that is, `Options.InitType` must be `Structure` or `Full`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param AdvancedObjects: Advanced object type, such as functions and procedures. If you need to sync advanced objects, the initialization type must include structure initialization, that is, `Options.InitType` must be `Structure` or `Full`. Note: This field may return null, indicating that no valid values can be obtained.
         :type AdvancedObjects: list of str
         :param OnlineDDL: A redundant field that specifies the online DDL type
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -4523,6 +4722,47 @@ class StartMigrateJobResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class StartModifySyncJobRequest(AbstractModel):
+    """StartModifySyncJob request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: Sync task ID
+        :type JobId: str
+        """
+        self.JobId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartModifySyncJobResponse(AbstractModel):
+    """StartModifySyncJob response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class StartSyncJobRequest(AbstractModel):
     """StartSyncJob request structure.
 
@@ -4667,8 +4907,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param Warnings: Warning message
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Warnings: list of StepTip
-        :param Progress: Progress of the current step. Value range: 0-100.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param Progress: Current step progress. Value range: 0-100. The value `-1` indicates that the progress of the current step is unavailable. Note: This field may return null, indicating that no valid values can be obtained.
         :type Progress: int
         """
         self.StepNo = None
@@ -5453,8 +5692,7 @@ class View(AbstractModel):
         :param ViewName: View name
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ViewName: str
-        :param NewViewName: New view name
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param NewViewName: Reserved field. Currently, a view cannot be renamed. Note: This field may return null, indicating that no valid values can be obtained.
         :type NewViewName: str
         """
         self.ViewName = None

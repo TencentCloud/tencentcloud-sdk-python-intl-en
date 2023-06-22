@@ -326,6 +326,9 @@ INVALIDPARAMETERVALUE_SPECIDILLEGAL = 'InvalidParameterValue.SpecIdIllegal'
 # Operations by a system user are not allowed.
 INVALIDPARAMETERVALUE_SUPERUSERFORBIDDEN = 'InvalidParameterValue.SuperUserForbidden'
 
+# Resources are insufficient.
+RESOURCEINSUFFICIENT = 'ResourceInsufficient'
+
 # The specified account does not exist.
 RESOURCENOTFOUND_ACCOUNTDOESNOTEXIST = 'ResourceNotFound.AccountDoesNotExist'
 
@@ -361,6 +364,9 @@ RESOURCEUNAVAILABLE_SGCHECKFAIL = 'ResourceUnavailable.SGCheckFail'
 
 # You have no permission to manipulate this API or resource.
 UNAUTHORIZEDOPERATION_PERMISSIONDENIED = 'UnauthorizedOperation.PermissionDenied'
+
+# 
+UNSUPPORTEDOPERATION_DBVERSIONNOTSUPPORTED = 'UnsupportedOperation.DbVersionNotSupported'
 
 # The operation is not supported.
 UNSUPPORTEDOPERATION_INVALIDOPERATION = 'UnsupportedOperation.InvalidOperation'
