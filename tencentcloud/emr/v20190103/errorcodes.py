@@ -29,6 +29,15 @@ FAILEDOPERATION_GETCAMROLEFAILED = 'FailedOperation.GetCamRoleFailed'
 # Failed to call the CAM service.
 FAILEDOPERATION_GETCAMSERVERFAILED = 'FailedOperation.GetCamServerFailed'
 
+# 
+FAILEDOPERATION_GETCVMCONFIGQUOTAFAILED = 'FailedOperation.GetCvmConfigQuotaFailed'
+
+# 
+FAILEDOPERATION_GETCVMSERVERFAILED = 'FailedOperation.GetCvmServerFailed'
+
+# 
+FAILEDOPERATION_GETTRADESERVERFAILED = 'FailedOperation.GetTradeServerFailed'
+
 # Operation failed. The pods are not supported.
 FAILEDOPERATION_NOTSUPPORTPOD = 'FailedOperation.NotSupportPod'
 
@@ -100,6 +109,9 @@ INTERNALERROR_WOODSERVERERROR = 'InternalError.WoodServerError'
 
 # Invalid parameter.
 INVALIDPARAMETER = 'InvalidParameter'
+
+# Parameter error.
+INVALIDPARAMETER_APPIDRESOURCENOTMATCH = 'InvalidParameter.AppIdResourceNotMatch'
 
 # Incorrect display policy.
 INVALIDPARAMETER_DISPLAYSTRATEGYNOTMATCH = 'InvalidParameter.DisplayStrategyNotMatch'
@@ -328,6 +340,9 @@ RESOURCEINSUFFICIENT_INSTANCEINSUFFICIENT = 'ResourceInsufficient.InstanceInsuff
 
 # The instance was not found.
 RESOURCENOTFOUND_CLUSTERNOTFOUND = 'ResourceNotFound.ClusterNotFound'
+
+# Unable to find the specified CVM instance.
+RESOURCENOTFOUND_CVMINSTANCENOTFOUND = 'ResourceNotFound.CvmInstanceNotFound'
 
 # No hardware information found.
 RESOURCENOTFOUND_HARDWAREINFONOTFOUND = 'ResourceNotFound.HardwareInfoNotFound'

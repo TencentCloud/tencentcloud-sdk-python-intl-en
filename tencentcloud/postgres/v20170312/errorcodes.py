@@ -134,6 +134,9 @@ FAILEDOPERATION_PAYORDERFAILED = 'FailedOperation.PayOrderFailed'
 # Failed to unfreeze the account of a pay-as-you-go instance. Please try again later. If the problem persists, please contact customer service.
 FAILEDOPERATION_POSTPAIDUNBLOCKERROR = 'FailedOperation.PostPaidUnblockError'
 
+# 
+FAILEDOPERATION_PRECHECKERROR = 'FailedOperation.PreCheckError'
+
 # An error occurred while getting the pre-signed authorization URL.
 FAILEDOPERATION_PRESIGNEDURLGETERROR = 'FailedOperation.PresignedURLGetError'
 

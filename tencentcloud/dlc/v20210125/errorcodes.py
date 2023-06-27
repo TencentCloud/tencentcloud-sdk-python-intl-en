@@ -188,8 +188,17 @@ OPERATIONDENIED = 'OperationDenied'
 # The resource does not exist.
 RESOURCENOTFOUND = 'ResourceNotFound'
 
+# No resources are available to create a session currently. Please try again later or use a monthly subscription cluster.
+RESOURCENOTFOUND_RESOURCENOTFOUNDCODE_SESSIONINSUFFICIENTRESOURCES = 'ResourceNotFound.ResourceNotFoundCode_SessionInsufficientResources'
+
 # The result path was not found.
 RESOURCENOTFOUND_RESULTOUTPUTPATHNOTFOUND = 'ResourceNotFound.ResultOutputPathNotFound'
+
+# The session does not exist.
+RESOURCENOTFOUND_SESSIONNOTFOUND = 'ResourceNotFound.SessionNotFound'
+
+# The session has expired.
+RESOURCENOTFOUND_SESSIONSTATEDEAD = 'ResourceNotFound.SessionStateDead'
 
 # The resource is unavailable.
 RESOURCEUNAVAILABLE = 'ResourceUnavailable'

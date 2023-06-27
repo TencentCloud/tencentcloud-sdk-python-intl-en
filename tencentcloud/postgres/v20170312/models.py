@@ -678,13 +678,17 @@ class CreateBaseBackupResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param BaseBackupId: Full backup set ID
+        :type BaseBackupId: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self.BaseBackupId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.BaseBackupId = params.get("BaseBackupId")
         self.RequestId = params.get("RequestId")
 
 
@@ -1579,7 +1583,7 @@ class DBInstance(AbstractModel):
         :type DBInstanceId: str
         :param DBInstanceName: Instance name
         :type DBInstanceName: str
-        :param DBInstanceStatus: Instance status. Valid values: `applying`, `init` (to be initialized), `initing` (initializing), `running`, `limited run`, `isolated`, `recycling`, `recycled`, `job running`, `offline`, `migrating`, `expanding`, `waitSwitch` (waiting for switch), `switching`, `readonly`, `restarting`, `network changing`, upgrading (upgrading kernel version).
+        :param DBInstanceStatus: Instance status.  Valid values: `applying`, `init` (to be initialized), `initing` (initializing), `running`, `limited run`, `isolating`, `isolated`, `recycling`, `recycled`, `job running`, `offline`, `migrating`, `expanding`, `waitSwitch` (waiting for switch), `switching`, `readonly`, `restarting`, `network changing`, `upgrading` (upgrading kernel version).
         :type DBInstanceStatus: str
         :param DBInstanceMemory: Assigned instance memory size in GB
         :type DBInstanceMemory: int
@@ -2307,6 +2311,53 @@ class DescribeAvailableRecoveryTimeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBackupDownloadRestrictionRequest(AbstractModel):
+    """DescribeBackupDownloadRestriction request structure.
+
+    """
+
+
+class DescribeBackupDownloadRestrictionResponse(AbstractModel):
+    """DescribeBackupDownloadRestriction response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RestrictionType: Type of the network restrictions for downloading a backup file. Valid values: `NONE` (backups can be downloaded over both private and public networks), `INTRANET` (backups can only be downloaded over the private network), `CUSTOMIZE` (backups can be downloaded over specified VPCs or at specified IPs).
+        :type RestrictionType: str
+        :param VpcRestrictionEffect: Whether VPC is allowed. Valid values: `ALLOW` (allow), `DENY` (deny). 
+Note:  This field may return null, indicating that no valid values can be obtained.
+        :type VpcRestrictionEffect: str
+        :param VpcIdSet: Whether it is allowed to download the VPC ID list of the backup files. 
+Note:  This field may return null, indicating that no valid values can be obtained.
+        :type VpcIdSet: list of str
+        :param IpRestrictionEffect: Whether IP is allowed. Valid values: `ALLOW` (allow), `DENY` (deny). 
+Note: Note: This field may return null, indicating that no valid values can be obtained.
+        :type IpRestrictionEffect: str
+        :param IpSet: Whether it is allowed to download the IP list of the backup files. 
+Note:  This field may return null, indicating that no valid values can be obtained.
+        :type IpSet: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RestrictionType = None
+        self.VpcRestrictionEffect = None
+        self.VpcIdSet = None
+        self.IpRestrictionEffect = None
+        self.IpSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RestrictionType = params.get("RestrictionType")
+        self.VpcRestrictionEffect = params.get("VpcRestrictionEffect")
+        self.VpcIdSet = params.get("VpcIdSet")
+        self.IpRestrictionEffect = params.get("IpRestrictionEffect")
+        self.IpSet = params.get("IpSet")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeBackupDownloadURLRequest(AbstractModel):
     """DescribeBackupDownloadURL request structure.
 
@@ -2568,10 +2619,7 @@ class DescribeBaseBackupsRequest(AbstractModel):
         :type MinFinishTime: str
         :param MaxFinishTime: Maximum end time of a backup in the format of `2018-01-01 00:00:00`. It is the current time by default.
         :type MaxFinishTime: str
-        :param Filters: Filter instances using one or more criteria. Valid filter names:
-db-instance-id: Filter by instance ID (in string format).
-db-instance-name: Filter by instance name (in string format).
-db-instance-ip: Filter by instance VPC IP (in string format).
+        :param Filters: Filter instances by using one or more filters. Valid values:  `db-instance-idFilter` (filter by instance ID in string),  `db-instance-name` (filter by instance name in string),  `db-instance-ip` (filter by instance VPC IP address in string),  `base-backup-id` (filter by backup set ID in string), 
         :type Filters: list of Filter
         :param Limit: The maximum number of results returned per page. Value range: 1-100. Default: `10`
         :type Limit: int
@@ -3901,7 +3949,7 @@ class DescribeReadOnlyGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Filters: Filter condition. The primary ID must be specified in the format of `db-master-instance-id` to filter results, or else `null` will be returned.
+        :param Filters: Filter instances by using one or more filters. Valid values:  `db-master-instance-id` (filter by the primary instance ID in string), `read-only-group-id` (filter by the read-only group ID in string),
         :type Filters: list of Filter
         :param PageSize: The number of results per page. Default value: 10.
         :type PageSize: int
@@ -5077,6 +5125,63 @@ class ModifyAccountRemarkResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyBackupDownloadRestrictionRequest(AbstractModel):
+    """ModifyBackupDownloadRestriction request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RestrictionType: Type of the network restrictions for downloading a backup file. Valid values: `NONE` (backups can be downloaded over both private and public networks), `INTRANET` (backups can only be downloaded over the private network), `CUSTOMIZE` (backups can be downloaded over specified VPCs or at specified IPs).
+        :type RestrictionType: str
+        :param VpcRestrictionEffect: Whether VPC is allowed. Valid values: `ALLOW` (allow), `DENY` (deny).
+        :type VpcRestrictionEffect: str
+        :param VpcIdSet: Whether it is allowed to download the VPC ID list of the backup files.
+        :type VpcIdSet: list of str
+        :param IpRestrictionEffect: Whether IP is allowed. Valid values: `ALLOW` (allow), `DENY` (deny).
+        :type IpRestrictionEffect: str
+        :param IpSet: Whether it is allowed to download the IP list of the backup files.
+        :type IpSet: list of str
+        """
+        self.RestrictionType = None
+        self.VpcRestrictionEffect = None
+        self.VpcIdSet = None
+        self.IpRestrictionEffect = None
+        self.IpSet = None
+
+
+    def _deserialize(self, params):
+        self.RestrictionType = params.get("RestrictionType")
+        self.VpcRestrictionEffect = params.get("VpcRestrictionEffect")
+        self.VpcIdSet = params.get("VpcIdSet")
+        self.IpRestrictionEffect = params.get("IpRestrictionEffect")
+        self.IpSet = params.get("IpSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBackupDownloadRestrictionResponse(AbstractModel):
+    """ModifyBackupDownloadRestriction response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyBackupPlanRequest(AbstractModel):
     """ModifyBackupPlan request structure.
 
@@ -5180,6 +5285,67 @@ class ModifyBaseBackupExpireTimeResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyDBInstanceChargeTypeRequest(AbstractModel):
+    """ModifyDBInstanceChargeType request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: Instance ID in the format of `postgres-6fego161`
+        :type DBInstanceId: str
+        :param InstanceChargeType: Instance billing mode.  Valid values:  `PREPAID` (monthly subscription), `POSTPAID_BY_HOUR` (pay-as-you-go). Default value:  `PREPAID`.
+        :type InstanceChargeType: str
+        :param Period: Validity period  in months. Valid values:  Valid period in months of the purchased instance. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`. This parameter is set to `1` when the pay-as-you-go billing mode is used.
+        :type Period: int
+        :param AutoRenewFlag: Renewal flag. Valid values；  Valid values: `0` (manual renewal), `1` (auto-renewal).
+        :type AutoRenewFlag: int
+        :param AutoVoucher: Whether to automatically use vouchers. Valid values: `1` (yes), `0` (no). Default value: `0`.
+        :type AutoVoucher: int
+        """
+        self.DBInstanceId = None
+        self.InstanceChargeType = None
+        self.Period = None
+        self.AutoRenewFlag = None
+        self.AutoVoucher = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        self.Period = params.get("Period")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.AutoVoucher = params.get("AutoVoucher")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBInstanceChargeTypeResponse(AbstractModel):
+    """ModifyDBInstanceChargeType response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DealName: Order name
+        :type DealName: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DealName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DealName = params.get("DealName")
         self.RequestId = params.get("RequestId")
 
 

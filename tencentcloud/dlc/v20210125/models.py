@@ -18,6 +18,47 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class CancelSparkSessionBatchSQLRequest(AbstractModel):
+    """CancelSparkSessionBatchSQL request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BatchId: The unique identifier of a batch task.
+        :type BatchId: str
+        """
+        self.BatchId = None
+
+
+    def _deserialize(self, params):
+        self.BatchId = params.get("BatchId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CancelSparkSessionBatchSQLResponse(AbstractModel):
+    """CancelSparkSessionBatchSQL response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CancelTaskRequest(AbstractModel):
     """CancelTask request structure.
 
@@ -128,6 +169,70 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class CommonMetrics(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CreateTaskTime: 
+        :type CreateTaskTime: float
+        :param ProcessTime: 
+        :type ProcessTime: float
+        :param QueueTime: 
+        :type QueueTime: float
+        :param ExecutionTime: 
+        :type ExecutionTime: float
+        :param IsResultCacheHit: 
+        :type IsResultCacheHit: bool
+        :param MatchedMVBytes: 
+        :type MatchedMVBytes: int
+        :param MatchedMVs: 
+        :type MatchedMVs: str
+        :param AffectedBytes: 
+        :type AffectedBytes: str
+        :param AffectedRows: 
+        :type AffectedRows: int
+        :param ProcessedBytes: 
+        :type ProcessedBytes: int
+        :param ProcessedRows: 
+        :type ProcessedRows: int
+        """
+        self.CreateTaskTime = None
+        self.ProcessTime = None
+        self.QueueTime = None
+        self.ExecutionTime = None
+        self.IsResultCacheHit = None
+        self.MatchedMVBytes = None
+        self.MatchedMVs = None
+        self.AffectedBytes = None
+        self.AffectedRows = None
+        self.ProcessedBytes = None
+        self.ProcessedRows = None
+
+
+    def _deserialize(self, params):
+        self.CreateTaskTime = params.get("CreateTaskTime")
+        self.ProcessTime = params.get("ProcessTime")
+        self.QueueTime = params.get("QueueTime")
+        self.ExecutionTime = params.get("ExecutionTime")
+        self.IsResultCacheHit = params.get("IsResultCacheHit")
+        self.MatchedMVBytes = params.get("MatchedMVBytes")
+        self.MatchedMVs = params.get("MatchedMVs")
+        self.AffectedBytes = params.get("AffectedBytes")
+        self.AffectedRows = params.get("AffectedRows")
+        self.ProcessedBytes = params.get("ProcessedBytes")
+        self.ProcessedRows = params.get("ProcessedRows")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateDataEngineRequest(AbstractModel):
     """CreateDataEngine request structure.
 
@@ -193,6 +298,8 @@ class CreateDataEngineRequest(AbstractModel):
         :type ElasticSwitch: bool
         :param ElasticLimit: The upper limit (in CUs) for scaling of the monthly subscribed Spark job cluster.
         :type ElasticLimit: int
+        :param SessionResourceTemplate: The session resource configuration template for a Spark job cluster.
+        :type SessionResourceTemplate: :class:`tencentcloud.dlc.v20210125.models.SessionResourceTemplate`
         """
         self.EngineType = None
         self.DataEngineName = None
@@ -223,6 +330,7 @@ class CreateDataEngineRequest(AbstractModel):
         self.MainClusterName = None
         self.ElasticSwitch = None
         self.ElasticLimit = None
+        self.SessionResourceTemplate = None
 
 
     def _deserialize(self, params):
@@ -267,6 +375,9 @@ class CreateDataEngineRequest(AbstractModel):
         self.MainClusterName = params.get("MainClusterName")
         self.ElasticSwitch = params.get("ElasticSwitch")
         self.ElasticLimit = params.get("ElasticLimit")
+        if params.get("SessionResourceTemplate") is not None:
+            self.SessionResourceTemplate = SessionResourceTemplate()
+            self.SessionResourceTemplate._deserialize(params.get("SessionResourceTemplate"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -485,6 +596,8 @@ class CreateSparkAppRequest(AbstractModel):
         :type AppExecutorMaxNumbers: int
         :param SessionId: The ID of the associated Data Lake Compute query script.
         :type SessionId: str
+        :param IsInherit: Whether to inherit the task resource configuration from the cluster template. Valid values: `0` (default): No; `1`: Yes.
+        :type IsInherit: int
         """
         self.AppName = None
         self.AppType = None
@@ -513,6 +626,7 @@ class CreateSparkAppRequest(AbstractModel):
         self.SparkImageVersion = None
         self.AppExecutorMaxNumbers = None
         self.SessionId = None
+        self.IsInherit = None
 
 
     def _deserialize(self, params):
@@ -543,6 +657,7 @@ class CreateSparkAppRequest(AbstractModel):
         self.SparkImageVersion = params.get("SparkImageVersion")
         self.AppExecutorMaxNumbers = params.get("AppExecutorMaxNumbers")
         self.SessionId = params.get("SessionId")
+        self.IsInherit = params.get("IsInherit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -624,6 +739,92 @@ class CreateSparkAppTaskResponse(AbstractModel):
     def _deserialize(self, params):
         self.BatchId = params.get("BatchId")
         self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateSparkSessionBatchSQLRequest(AbstractModel):
+    """CreateSparkSessionBatchSQL request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DataEngineName: The name of the engine for executing the Spark job.
+        :type DataEngineName: str
+        :param ExecuteSQL: The SQL statement to execute.
+        :type ExecuteSQL: str
+        :param DriverSize: The driver size. Valid values: `small` (default, 1 CU), `medium` (2 CUs), `large` (4 CUs), and `xlarge` (8 CUs).
+        :type DriverSize: str
+        :param ExecutorSize: The executor size. Valid values: `small` (default, 1 CU), `medium` (2 CUs), `large` (4 CUs), and `xlarge` (8 CUs).
+        :type ExecutorSize: str
+        :param ExecutorNumbers: The executor count, which defaults to 1.
+        :type ExecutorNumbers: int
+        :param ExecutorMaxNumbers: The maximum executor count, which defaults to 1. This parameter applies if the "Dynamic" mode is selected. If the "Dynamic" mode is not selected, the value of this parameter is the same as that of `ExecutorNumbers`.
+        :type ExecutorMaxNumbers: int
+        :param TimeoutInSecond: The session timeout period in seconds. Default value: 3600
+        :type TimeoutInSecond: int
+        :param SessionId: The unique ID of a session. If this parameter is specified, the task will be run using the specified session.
+        :type SessionId: str
+        :param SessionName: The name of the session to create.
+        :type SessionName: str
+        :param Arguments: Session configurations. `dlc.eni`, `dlc.role.arn`, `dlc.sql.set.config`, and user-defined configurations are supported.
+        :type Arguments: list of KVPair
+        """
+        self.DataEngineName = None
+        self.ExecuteSQL = None
+        self.DriverSize = None
+        self.ExecutorSize = None
+        self.ExecutorNumbers = None
+        self.ExecutorMaxNumbers = None
+        self.TimeoutInSecond = None
+        self.SessionId = None
+        self.SessionName = None
+        self.Arguments = None
+
+
+    def _deserialize(self, params):
+        self.DataEngineName = params.get("DataEngineName")
+        self.ExecuteSQL = params.get("ExecuteSQL")
+        self.DriverSize = params.get("DriverSize")
+        self.ExecutorSize = params.get("ExecutorSize")
+        self.ExecutorNumbers = params.get("ExecutorNumbers")
+        self.ExecutorMaxNumbers = params.get("ExecutorMaxNumbers")
+        self.TimeoutInSecond = params.get("TimeoutInSecond")
+        self.SessionId = params.get("SessionId")
+        self.SessionName = params.get("SessionName")
+        if params.get("Arguments") is not None:
+            self.Arguments = []
+            for item in params.get("Arguments"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self.Arguments.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSparkSessionBatchSQLResponse(AbstractModel):
+    """CreateSparkSessionBatchSQL response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BatchId: The unique identifier of a batch task.
+        :type BatchId: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.BatchId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BatchId = params.get("BatchId")
         self.RequestId = params.get("RequestId")
 
 
@@ -795,6 +996,30 @@ class DataGovernPolicy(AbstractModel):
     """The data governance rules.
 
     """
+
+    def __init__(self):
+        r"""
+        :param RuleType: Governance rule type. Valid values: `Customize` (custom) and `Intelligence` (intelligent).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RuleType: str
+        :param GovernEngine: The governance engine.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type GovernEngine: str
+        """
+        self.RuleType = None
+        self.GovernEngine = None
+
+
+    def _deserialize(self, params):
+        self.RuleType = params.get("RuleType")
+        self.GovernEngine = params.get("GovernEngine")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DeleteSparkAppRequest(AbstractModel):
@@ -1260,6 +1485,61 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSparkSessionBatchSqlLogRequest(AbstractModel):
+    """DescribeSparkSessionBatchSqlLog request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BatchId: The unique ID of a Spark SQL job.
+        :type BatchId: str
+        """
+        self.BatchId = None
+
+
+    def _deserialize(self, params):
+        self.BatchId = params.get("BatchId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSparkSessionBatchSqlLogResponse(AbstractModel):
+    """DescribeSparkSessionBatchSqlLog response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param State: The status. Valid values: `0` (initializing), `1` (successful), `2` (failed), `3` (canceled), and `4` (exception).
+        :type State: int
+        :param LogSet: The log information list.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LogSet: list of SparkSessionBatchLog
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.State = None
+        self.LogSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.State = params.get("State")
+        if params.get("LogSet") is not None:
+            self.LogSet = []
+            for item in params.get("LogSet"):
+                obj = SparkSessionBatchLog()
+                obj._deserialize(item)
+                self.LogSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTaskResultRequest(AbstractModel):
     """DescribeTaskResult request structure.
 
@@ -1482,11 +1762,14 @@ class GenerateCreateMangedTableSqlRequest(AbstractModel):
         :type Partitions: list of TPartition
         :param Properties: The table properties.
         :type Properties: list of Property
+        :param UpsertKeys: The Upsert key for a v2 table (in Upsert mode).
+        :type UpsertKeys: list of str
         """
         self.TableBaseInfo = None
         self.Columns = None
         self.Partitions = None
         self.Properties = None
+        self.UpsertKeys = None
 
 
     def _deserialize(self, params):
@@ -1511,6 +1794,7 @@ class GenerateCreateMangedTableSqlRequest(AbstractModel):
                 obj = Property()
                 obj._deserialize(item)
                 self.Properties.append(obj)
+        self.UpsertKeys = params.get("UpsertKeys")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1596,6 +1880,75 @@ class ModifyGovernEventRuleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifySparkAppBatchRequest(AbstractModel):
+    """ModifySparkAppBatch request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SparkAppId: The list of the IDs of the Spark job tasks to be modified in batches.
+        :type SparkAppId: list of str
+        :param DataEngine: The engine ID.
+        :type DataEngine: str
+        :param AppDriverSize: The driver size.
+Valid values for the standard resource type: `small`, `medium`, `large`, and `xlarge`.
+Valid values for the memory resource type: `m.small`, `m.medium`, `m.large`, and `m.xlarge`.
+        :type AppDriverSize: str
+        :param AppExecutorSize: The executor size.
+Valid values for the standard resource type: `small`, `medium`, `large`, and `xlarge`.
+Valid values for the memory resource type: `m.small`, `m.medium`, `m.large`, and `m.xlarge`.
+        :type AppExecutorSize: str
+        :param AppExecutorNums: The executor count. The minimum value is 1 and the maximum value is less than the cluster specification.
+        :type AppExecutorNums: int
+        :param AppExecutorMaxNumbers: The maximum executor count (in dynamic configuration scenarios). The minimum value is 1 and the maximum value is less than the cluster specification. If you set `ExecutorMaxNumbers` to a value smaller than that of `ExecutorNums`, the value of `ExecutorMaxNumbers` is automatically changed to that of `ExecutorNums`.
+        :type AppExecutorMaxNumbers: int
+        :param IsInherit: Whether to inherit the task resource configuration from the cluster template. Valid values: `0` (default): No; `1`: Yes.
+        :type IsInherit: int
+        """
+        self.SparkAppId = None
+        self.DataEngine = None
+        self.AppDriverSize = None
+        self.AppExecutorSize = None
+        self.AppExecutorNums = None
+        self.AppExecutorMaxNumbers = None
+        self.IsInherit = None
+
+
+    def _deserialize(self, params):
+        self.SparkAppId = params.get("SparkAppId")
+        self.DataEngine = params.get("DataEngine")
+        self.AppDriverSize = params.get("AppDriverSize")
+        self.AppExecutorSize = params.get("AppExecutorSize")
+        self.AppExecutorNums = params.get("AppExecutorNums")
+        self.AppExecutorMaxNumbers = params.get("AppExecutorMaxNumbers")
+        self.IsInherit = params.get("IsInherit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySparkAppBatchResponse(AbstractModel):
+    """ModifySparkAppBatch response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifySparkAppRequest(AbstractModel):
     """ModifySparkApp request structure.
 
@@ -1659,6 +2012,8 @@ class ModifySparkAppRequest(AbstractModel):
         :type AppExecutorMaxNumbers: int
         :param SessionId: The associated Data Lake Compute query script.
         :type SessionId: str
+        :param IsInherit: Whether to inherit the task resource configuration from the cluster configuration template. Valid values: `0` (default): No; `1`: Yes.
+        :type IsInherit: int
         """
         self.AppName = None
         self.AppType = None
@@ -1688,6 +2043,7 @@ class ModifySparkAppRequest(AbstractModel):
         self.SparkImageVersion = None
         self.AppExecutorMaxNumbers = None
         self.SessionId = None
+        self.IsInherit = None
 
 
     def _deserialize(self, params):
@@ -1719,6 +2075,7 @@ class ModifySparkAppRequest(AbstractModel):
         self.SparkImageVersion = params.get("SparkImageVersion")
         self.AppExecutorMaxNumbers = params.get("AppExecutorMaxNumbers")
         self.SessionId = params.get("SessionId")
+        self.IsInherit = params.get("IsInherit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1845,6 +2202,34 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class PrestoMonitorMetrics(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LocalCacheHitRate: 
+        :type LocalCacheHitRate: float
+        :param FragmentCacheHitRate: 
+        :type FragmentCacheHitRate: float
+        """
+        self.LocalCacheHitRate = None
+        self.FragmentCacheHitRate = None
+
+
+    def _deserialize(self, params):
+        self.LocalCacheHitRate = params.get("LocalCacheHitRate")
+        self.FragmentCacheHitRate = params.get("FragmentCacheHitRate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Property(AbstractModel):
     """Properties of database and table
 
@@ -1897,6 +2282,50 @@ class SQLTask(AbstractModel):
                 obj = KVPair()
                 obj._deserialize(item)
                 self.Config.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SessionResourceTemplate(AbstractModel):
+    """The session resource configuration template for a Spark cluster.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DriverSize: The driver size.
+Valid values for the standard resource type: `small`, `medium`, `large`, and `xlarge`.
+Valid values for the memory resource type: `m.small`, `m.medium`, `m.large`, and `m.xlarge`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DriverSize: str
+        :param ExecutorSize: The executor size.
+Valid values for the standard resource type: `small`, `medium`, `large`, and `xlarge`.
+Valid values for the memory resource type: `m.small`, `m.medium`, `m.large`, and `m.xlarge`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExecutorSize: str
+        :param ExecutorNums: The executor count. The minimum value is 1 and the maximum value is less than the cluster specification.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExecutorNums: int
+        :param ExecutorMaxNumbers: The maximum executor count (in dynamic mode). The minimum value is 1 and the maximum value is less than the cluster specification. If you set `ExecutorMaxNumbers` to a value smaller than that of `ExecutorNums`, the value of `ExecutorMaxNumbers` is automatically changed to that of `ExecutorNums`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExecutorMaxNumbers: int
+        """
+        self.DriverSize = None
+        self.ExecutorSize = None
+        self.ExecutorNums = None
+        self.ExecutorMaxNumbers = None
+
+
+    def _deserialize(self, params):
+        self.DriverSize = params.get("DriverSize")
+        self.ExecutorSize = params.get("ExecutorSize")
+        self.ExecutorNums = params.get("ExecutorNums")
+        self.ExecutorMaxNumbers = params.get("ExecutorMaxNumbers")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2000,10 +2429,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param SessionId: The ID of the associated Data Lake Compute query script.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SessionId: str
-        :param DataEngineClusterType: 
+        :param DataEngineClusterType: `spark_emr_livy` indicates to create an EMR cluster.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type DataEngineClusterType: str
-        :param DataEngineImageVersion: 
+        :param DataEngineImageVersion: `Spark 3.2-EMR` indicates to use the Spark 3.2 image.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type DataEngineImageVersion: str
+        :param IsInherit: Whether the task resource configuration is inherited from the cluster template. Valid values: `0` (default): No; `1`: Yes.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsInherit: int
         """
         self.JobId = None
         self.JobName = None
@@ -2044,6 +2478,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.SessionId = None
         self.DataEngineClusterType = None
         self.DataEngineImageVersion = None
+        self.IsInherit = None
 
 
     def _deserialize(self, params):
@@ -2088,6 +2523,120 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.SessionId = params.get("SessionId")
         self.DataEngineClusterType = params.get("DataEngineClusterType")
         self.DataEngineImageVersion = params.get("DataEngineImageVersion")
+        self.IsInherit = params.get("IsInherit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SparkMonitorMetrics(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ShuffleWriteBytesCos: 
+        :type ShuffleWriteBytesCos: int
+        :param ShuffleWriteBytesTotal: 
+        :type ShuffleWriteBytesTotal: int
+        """
+        self.ShuffleWriteBytesCos = None
+        self.ShuffleWriteBytesTotal = None
+
+
+    def _deserialize(self, params):
+        self.ShuffleWriteBytesCos = params.get("ShuffleWriteBytesCos")
+        self.ShuffleWriteBytesTotal = params.get("ShuffleWriteBytesTotal")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SparkSessionBatchLog(AbstractModel):
+    """Running logs of a Spark SQL batch job
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Step: The log step. Valid values: `BEG`, `CS`, `DS`, `DSS`, `DSF`, `FINF`, `RTO`, `CANCEL`, `CT`, `DT`, `DTS`, `DTF`, `FINT`, and `EXCE`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Step: str
+        :param Time: Time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Time: str
+        :param Message: The log message.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Message: str
+        :param Operate: The operation.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Operate: list of SparkSessionBatchLogOperate
+        """
+        self.Step = None
+        self.Time = None
+        self.Message = None
+        self.Operate = None
+
+
+    def _deserialize(self, params):
+        self.Step = params.get("Step")
+        self.Time = params.get("Time")
+        self.Message = params.get("Message")
+        if params.get("Operate") is not None:
+            self.Operate = []
+            for item in params.get("Operate"):
+                obj = SparkSessionBatchLogOperate()
+                obj._deserialize(item)
+                self.Operate.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SparkSessionBatchLogOperate(AbstractModel):
+    """Operation information in the logs of a Spark SQL batch job
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Text: The operation message.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Text: str
+        :param Operate: The operation type. Valid values: `COPY`, `LOG`, `UI`, `RESULT`, `List`, and `TAB`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Operate: str
+        :param Supplement: Additional information, such as taskid, sessionid, and sparkui.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Supplement: list of KVPair
+        """
+        self.Text = None
+        self.Operate = None
+        self.Supplement = None
+
+
+    def _deserialize(self, params):
+        self.Text = params.get("Text")
+        self.Operate = params.get("Operate")
+        if params.get("Supplement") is not None:
+            self.Supplement = []
+            for item in params.get("Supplement"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self.Supplement.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2379,6 +2928,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param GovernPolicy: The data governance configuration.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type GovernPolicy: :class:`tencentcloud.dlc.v20210125.models.DataGovernPolicy`
+        :param DbGovernPolicyIsDisable: Whether database data governance is disabled. Valid values: `true` (disabled) and `false` (not disabled).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DbGovernPolicyIsDisable: str
         """
         self.DatabaseName = None
         self.TableName = None
@@ -2389,6 +2941,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.UserAlias = None
         self.UserSubUin = None
         self.GovernPolicy = None
+        self.DbGovernPolicyIsDisable = None
 
 
     def _deserialize(self, params):
@@ -2403,6 +2956,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("GovernPolicy") is not None:
             self.GovernPolicy = DataGovernPolicy()
             self.GovernPolicy._deserialize(params.get("GovernPolicy"))
+        self.DbGovernPolicyIsDisable = params.get("DbGovernPolicyIsDisable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2562,6 +3116,31 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param CmdArgs: The program entry parameter for running a task under a Spark job.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CmdArgs: str
+        :param ImageVersion: The image version of the cluster.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ImageVersion: str
+        :param DriverSize: The driver size.
+Valid values for the standard resource type: `small`, `medium`, `large`, and `xlarge`.
+Valid values for the memory resource type: `m.small`, `m.medium`, `m.large`, and `m.xlarge`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DriverSize: str
+        :param ExecutorSize: The executor size.
+Valid values for the standard resource type: `small`, `medium`, `large`, and `xlarge`.
+Valid values for the memory resource type: `m.small`, `m.medium`, `m.large`, and `m.xlarge`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExecutorSize: str
+        :param ExecutorNums: The executor count. The minimum value is 1 and the maximum value is less than the cluster specification.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExecutorNums: int
+        :param ExecutorMaxNumbers: The maximum executor count (in dynamic mode). The minimum value is 1 and the maximum value is less than the cluster specification. If you set `ExecutorMaxNumbers` to a value smaller than that of `ExecutorNums`, the value of `ExecutorMaxNumbers` is automatically changed to that of `ExecutorNums`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExecutorMaxNumbers: int
+        :param CommonMetrics: 
+        :type CommonMetrics: :class:`tencentcloud.dlc.v20210125.models.CommonMetrics`
+        :param SparkMonitorMetrics: 
+        :type SparkMonitorMetrics: :class:`tencentcloud.dlc.v20210125.models.SparkMonitorMetrics`
+        :param PrestoMonitorMetrics: 
+        :type PrestoMonitorMetrics: :class:`tencentcloud.dlc.v20210125.models.PrestoMonitorMetrics`
         """
         self.DatabaseName = None
         self.DataAmount = None
@@ -2595,6 +3174,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.UiUrl = None
         self.TotalTime = None
         self.CmdArgs = None
+        self.ImageVersion = None
+        self.DriverSize = None
+        self.ExecutorSize = None
+        self.ExecutorNums = None
+        self.ExecutorMaxNumbers = None
+        self.CommonMetrics = None
+        self.SparkMonitorMetrics = None
+        self.PrestoMonitorMetrics = None
 
 
     def _deserialize(self, params):
@@ -2630,6 +3217,20 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.UiUrl = params.get("UiUrl")
         self.TotalTime = params.get("TotalTime")
         self.CmdArgs = params.get("CmdArgs")
+        self.ImageVersion = params.get("ImageVersion")
+        self.DriverSize = params.get("DriverSize")
+        self.ExecutorSize = params.get("ExecutorSize")
+        self.ExecutorNums = params.get("ExecutorNums")
+        self.ExecutorMaxNumbers = params.get("ExecutorMaxNumbers")
+        if params.get("CommonMetrics") is not None:
+            self.CommonMetrics = CommonMetrics()
+            self.CommonMetrics._deserialize(params.get("CommonMetrics"))
+        if params.get("SparkMonitorMetrics") is not None:
+            self.SparkMonitorMetrics = SparkMonitorMetrics()
+            self.SparkMonitorMetrics._deserialize(params.get("SparkMonitorMetrics"))
+        if params.get("PrestoMonitorMetrics") is not None:
+            self.PrestoMonitorMetrics = PrestoMonitorMetrics()
+            self.PrestoMonitorMetrics._deserialize(params.get("PrestoMonitorMetrics"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

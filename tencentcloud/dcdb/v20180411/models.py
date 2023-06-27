@@ -403,6 +403,34 @@ class ColumnPrivilege(AbstractModel):
         
 
 
+class ConfigValue(AbstractModel):
+    """Configuration information,  which contains `Config` and `Value`.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Config: Configuration name, which supports `max_user_connections`.
+        :type Config: str
+        :param Value: Configuration value
+        :type Value: str
+        """
+        self.Config = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Config = params.get("Config")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ConstraintRange(AbstractModel):
     """Range of constraint type values
 
@@ -627,7 +655,7 @@ The current purchasable AZ needs be pulled through `DescribeDCDBSaleInfo` API.
         :type SecurityGroupId: str
         :param InstanceName: Custom name of the instance
         :type InstanceName: str
-        :param Ipv6Flag: Whether IPv6 is supported
+        :param Ipv6Flag: Whether IPv6 is supported. Valid values: `0` (unsupported), `1` (supported).
         :type Ipv6Flag: int
         :param ResourceTags: Array of tag key-value pairs
         :type ResourceTags: list of ResourceTag
@@ -637,7 +665,7 @@ The current purchasable AZ needs be pulled through `DescribeDCDBSaleInfo` API.
         :type DcnRegion: str
         :param DcnInstanceId: DCN source instance ID
         :type DcnInstanceId: str
-        :param AutoRenewFlag: Renewal mode. Valid values: `0` (Manual renewal, which is the default mode), `1` (Auto-renewal), `2` (Manual renewal, which is specified by users). If no renewal is required, set it to `0`.
+        :param AutoRenewFlag: Renewal mode. Valid values: `0` (manual renewal, which is the default mode), `1` (auto-renewal), `2` (manual renewal, which is specified by users).  If no renewal is required, set it to `0`.
         :type AutoRenewFlag: int
         :param SecurityGroupIds: Security group IDs in array. This parameter is compatible with the old parameter `SecurityGroupId`.
         :type SecurityGroupIds: list of str
@@ -772,7 +800,7 @@ class CreateHourDCDBInstanceRequest(AbstractModel):
         :type SecurityGroupId: str
         :param InstanceName: Custom name of the instance
         :type InstanceName: str
-        :param Ipv6Flag: Whether IPv6 is supported
+        :param Ipv6Flag: Whether IPv6 is supported. Valid values: `0` (unsupported), `1` (supported).
         :type Ipv6Flag: int
         :param ResourceTags: Array of tag key-value pairs
         :type ResourceTags: list of ResourceTag
@@ -784,7 +812,7 @@ class CreateHourDCDBInstanceRequest(AbstractModel):
         :type InitParams: list of DBParamValue
         :param RollbackInstanceId: ID of the instance to be rolled back
         :type RollbackInstanceId: str
-        :param RollbackTime: Rollback time
+        :param RollbackTime: Rollback time, such as "2021-11-22 00:00:00".
         :type RollbackTime: str
         :param SecurityGroupIds: Array of security group IDs (this parameter is compatible with the old parameter `SecurityGroupId`)
         :type SecurityGroupIds: list of str
@@ -907,6 +935,8 @@ Set this parameter to a value above 10. This parameter takes effect when `ReadOn
         :type DelayThresh: int
         :param SlaveConst: Whether to specify a replica server for read-only account. Valid values: `0` (No replica server is specified, which means that the proxy will select another available replica server to keep connection with the client if the current replica server doesn’t meet the requirement). `1` (The replica server is specified, which means that the connection will be disconnected if the specified replica server doesn’t meet the requirement.)
         :type SlaveConst: int
+        :param MaxUserConnections: Maximum number of connections. `0` indicates no limit.	
+        :type MaxUserConnections: int
         """
         self.UserName = None
         self.Host = None
@@ -916,6 +946,7 @@ Set this parameter to a value above 10. This parameter takes effect when `ReadOn
         self.ReadOnly = None
         self.DelayThresh = None
         self.SlaveConst = None
+        self.MaxUserConnections = None
 
 
     def _deserialize(self, params):
@@ -927,6 +958,7 @@ Set this parameter to a value above 10. This parameter takes effect when `ReadOn
         self.ReadOnly = params.get("ReadOnly")
         self.DelayThresh = params.get("DelayThresh")
         self.SlaveConst = params.get("SlaveConst")
+        self.MaxUserConnections = params.get("MaxUserConnections")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1889,6 +1921,59 @@ class DescribeBackupFilesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDBEncryptAttributesRequest(AbstractModel):
+    """DescribeDBEncryptAttributes request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of  `tdsqlshard-ow728lmc`
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBEncryptAttributesResponse(AbstractModel):
+    """DescribeDBEncryptAttributes response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EncryptStatus: Whether encryption is enabled. Valid values: `1` (enabled), `2` (disabled).
+        :type EncryptStatus: int
+        :param CipherText: DEK
+        :type CipherText: str
+        :param ExpireDate: DEK expiration date
+        :type ExpireDate: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.EncryptStatus = None
+        self.CipherText = None
+        self.ExpireDate = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.EncryptStatus = params.get("EncryptStatus")
+        self.CipherText = params.get("CipherText")
+        self.ExpireDate = params.get("ExpireDate")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDBLogFilesRequest(AbstractModel):
     """DescribeDBLogFiles request structure.
 
@@ -2392,6 +2477,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param RsAccessStrategy: Nearby VPC access
 Note: This field may return null, indicating that no valid values can be obtained.
         :type RsAccessStrategy: int
+        :param ReservedNetResources: Unclaimed network resource
+        :type ReservedNetResources: list of ReservedNetResource
+        :param IsPhysicalReplicationSupported: 
+        :type IsPhysicalReplicationSupported: bool
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -2445,6 +2534,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.EncryptStatus = None
         self.ExclusterType = None
         self.RsAccessStrategy = None
+        self.ReservedNetResources = None
+        self.IsPhysicalReplicationSupported = None
         self.RequestId = None
 
 
@@ -2509,6 +2600,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self.EncryptStatus = params.get("EncryptStatus")
         self.ExclusterType = params.get("ExclusterType")
         self.RsAccessStrategy = params.get("RsAccessStrategy")
+        if params.get("ReservedNetResources") is not None:
+            self.ReservedNetResources = []
+            for item in params.get("ReservedNetResources"):
+                obj = ReservedNetResource()
+                obj._deserialize(item)
+                self.ReservedNetResources.append(obj)
+        self.IsPhysicalReplicationSupported = params.get("IsPhysicalReplicationSupported")
         self.RequestId = params.get("RequestId")
 
 
@@ -3715,6 +3813,55 @@ class InstanceBackupFileItem(AbstractModel):
         
 
 
+class IsolateDCDBInstanceRequest(AbstractModel):
+    """IsolateDCDBInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceIds: Instance ID in the format of `tdsqlshard-avw0207d`,  which is the same as the instance ID displayed on the TencentDB console and can be queried through the `DescribeDBInstances` API.
+        :type InstanceIds: list of str
+        """
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IsolateDCDBInstanceResponse(AbstractModel):
+    """IsolateDCDBInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SuccessInstanceIds: IDs of isolated instances
+        :type SuccessInstanceIds: list of str
+        :param FailedInstanceIds: IDs of instances failed to be isolated
+        :type FailedInstanceIds: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.SuccessInstanceIds = None
+        self.FailedInstanceIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SuccessInstanceIds = params.get("SuccessInstanceIds")
+        self.FailedInstanceIds = params.get("FailedInstanceIds")
+        self.RequestId = params.get("RequestId")
+
+
 class IsolateDedicatedDBInstanceRequest(AbstractModel):
     """IsolateDedicatedDBInstance request structure.
 
@@ -3763,7 +3910,7 @@ class IsolateHourDCDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceIds: Instance uuid list
+        :param InstanceIds: ID list of the instances to be upgraded  in the format of  `dcdbt-ow728lmc`, which can be obtained through the `DescribeDCDBInstances` API.
         :type InstanceIds: list of str
         """
         self.InstanceIds = None
@@ -3896,6 +4043,64 @@ class LogFileInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyAccountConfigRequest(AbstractModel):
+    """ModifyAccountConfig request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of  `tdsqlshard-kpkvq5oj`, which is the same as the one displayed in the TencentDB console.
+        :type InstanceId: str
+        :param UserName: Account name
+        :type UserName: str
+        :param Host: Account domain name
+        :type Host: str
+        :param Configs: Configuration list. Each element in the list is a pair of `Config` and `Value`.
+        :type Configs: list of ConfigValue
+        """
+        self.InstanceId = None
+        self.UserName = None
+        self.Host = None
+        self.Configs = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.UserName = params.get("UserName")
+        self.Host = params.get("Host")
+        if params.get("Configs") is not None:
+            self.Configs = []
+            for item in params.get("Configs"):
+                obj = ConfigValue()
+                obj._deserialize(item)
+                self.Configs.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAccountConfigResponse(AbstractModel):
+    """ModifyAccountConfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class ModifyAccountDescriptionRequest(AbstractModel):
@@ -4655,6 +4860,46 @@ class ParamModifyResult(AbstractModel):
     def _deserialize(self, params):
         self.Param = params.get("Param")
         self.Code = params.get("Code")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReservedNetResource(AbstractModel):
+    """Information of the reserved network resource
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VpcId: VPC
+        :type VpcId: str
+        :param SubnetId: Subnet
+        :type SubnetId: str
+        :param Vip: Reserved private network IP under `VpcId` and `SubnetId`
+        :type Vip: str
+        :param Vports: Port under `Vip`
+        :type Vports: list of int
+        :param RecycleTime: Valid hours of VIP	
+        :type RecycleTime: str
+        """
+        self.VpcId = None
+        self.SubnetId = None
+        self.Vip = None
+        self.Vports = None
+        self.RecycleTime = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.Vip = params.get("Vip")
+        self.Vports = params.get("Vports")
+        self.RecycleTime = params.get("RecycleTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

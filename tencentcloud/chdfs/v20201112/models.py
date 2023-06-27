@@ -1369,6 +1369,10 @@ class LifeCycleRule(AbstractModel):
         :type Status: int
         :param CreateTime: Creation time
         :type CreateTime: str
+        :param Summary: Detailed storage usage of the current lifecycle rule path
+        :type Summary: :class:`tencentcloud.chdfs.v20201112.models.Summary`
+        :param LastSummaryTime: Update time of `Summary`
+        :type LastSummaryTime: str
         """
         self.LifeCycleRuleId = None
         self.LifeCycleRuleName = None
@@ -1376,6 +1380,8 @@ class LifeCycleRule(AbstractModel):
         self.Transitions = None
         self.Status = None
         self.CreateTime = None
+        self.Summary = None
+        self.LastSummaryTime = None
 
 
     def _deserialize(self, params):
@@ -1390,6 +1396,10 @@ class LifeCycleRule(AbstractModel):
                 self.Transitions.append(obj)
         self.Status = params.get("Status")
         self.CreateTime = params.get("CreateTime")
+        if params.get("Summary") is not None:
+            self.Summary = Summary()
+            self.Summary._deserialize(params.get("Summary"))
+        self.LastSummaryTime = params.get("LastSummaryTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1788,6 +1798,56 @@ class RestoreTask(AbstractModel):
         self.Days = params.get("Days")
         self.Status = params.get("Status")
         self.CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Summary(AbstractModel):
+    """Details about the storage usage of the current lifecycle rule path
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CapacityUsed: Capacity usage in bytes
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CapacityUsed: int
+        :param StandardCapacityUsed: COS STANDARD storage usage in bytes
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type StandardCapacityUsed: int
+        :param DegradeCapacityUsed: COS STANDARD_IA storage usage in bytes
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DegradeCapacityUsed: int
+        :param ArchiveCapacityUsed: COS ARCHIVE storage usage in bytes
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ArchiveCapacityUsed: int
+        :param DeepArchiveCapacityUsed: COS DEEP ARCHIVE storage usage in bytes
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DeepArchiveCapacityUsed: int
+        :param IntelligentCapacityUsed: COS INTELLIGENT TIERING storage usage in bytes
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IntelligentCapacityUsed: int
+        """
+        self.CapacityUsed = None
+        self.StandardCapacityUsed = None
+        self.DegradeCapacityUsed = None
+        self.ArchiveCapacityUsed = None
+        self.DeepArchiveCapacityUsed = None
+        self.IntelligentCapacityUsed = None
+
+
+    def _deserialize(self, params):
+        self.CapacityUsed = params.get("CapacityUsed")
+        self.StandardCapacityUsed = params.get("StandardCapacityUsed")
+        self.DegradeCapacityUsed = params.get("DegradeCapacityUsed")
+        self.ArchiveCapacityUsed = params.get("ArchiveCapacityUsed")
+        self.DeepArchiveCapacityUsed = params.get("DeepArchiveCapacityUsed")
+        self.IntelligentCapacityUsed = params.get("IntelligentCapacityUsed")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -5037,18 +5037,21 @@ class StartStopServiceOrMonitorRequest(AbstractModel):
         :param InstanceId: The cluster ID.
         :type InstanceId: str
         :param OpType: The operation type. Valid values:
-<li>`StartService`: Start services.</li>
-<li>`StopService`: Stop services.</li>
-<li>`StartMonitor`: Start the monitor.</li>
-<li>`StopMonitor`: Stop the monitor.</li>
-
+<li>StartService: Start service</li>
+<li>StopService: Stop service</li>
+<li>StartMonitor: Start maintenance</li>
+<li>StopMonitor: Stop maintenance</li>
+<li>RestartService: Restart service. If this type is selected, "StrategyConfig" is required.</li>
         :type OpType: str
         :param OpScope: The operation scope.
         :type OpScope: :class:`tencentcloud.emr.v20190103.models.OpScope`
+        :param StrategyConfig: The operation policy.
+        :type StrategyConfig: :class:`tencentcloud.emr.v20190103.models.StrategyConfig`
         """
         self.InstanceId = None
         self.OpType = None
         self.OpScope = None
+        self.StrategyConfig = None
 
 
     def _deserialize(self, params):
@@ -5057,6 +5060,9 @@ class StartStopServiceOrMonitorRequest(AbstractModel):
         if params.get("OpScope") is not None:
             self.OpScope = OpScope()
             self.OpScope._deserialize(params.get("OpScope"))
+        if params.get("StrategyConfig") is not None:
+            self.StrategyConfig = StrategyConfig()
+            self.StrategyConfig._deserialize(params.get("StrategyConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5081,6 +5087,47 @@ class StartStopServiceOrMonitorResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class StrategyConfig(AbstractModel):
+    """Restart, stop, or start of service/monitoring configurations
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RollingRestartSwitch: `0`: Disable rolling restart
+`1`: Enable rolling restart
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RollingRestartSwitch: int
+        :param BatchSize: The number of nodes to be restarted per batch in rolling restart, with a maximum value of 99,999.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BatchSize: int
+        :param TimeWait: The wait time (in seconds) per batch in rolling restart, with a maximum value of 5 minutes.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TimeWait: int
+        :param DealOnFail: The failure handling policy. Valid values: `0` (blocks the process) and `1` (skips).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DealOnFail: int
+        """
+        self.RollingRestartSwitch = None
+        self.BatchSize = None
+        self.TimeWait = None
+        self.DealOnFail = None
+
+
+    def _deserialize(self, params):
+        self.RollingRestartSwitch = params.get("RollingRestartSwitch")
+        self.BatchSize = params.get("BatchSize")
+        self.TimeWait = params.get("TimeWait")
+        self.DealOnFail = params.get("DealOnFail")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SubnetInfo(AbstractModel):

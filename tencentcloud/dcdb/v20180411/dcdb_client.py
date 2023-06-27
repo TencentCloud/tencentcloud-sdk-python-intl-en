@@ -27,7 +27,7 @@ class DcdbClient(AbstractClient):
 
 
     def ActiveHourDCDBInstance(self, request):
-        """This API is used to remove the isolation of a pay-as-you-go TDSQL for MySQL instance.
+        """This API is used to remove a pay-as-you-go TDSQL instance from isolation.
 
         :param request: Request instance for ActiveHourDCDBInstance.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.ActiveHourDCDBInstanceRequest`
@@ -189,7 +189,7 @@ class DcdbClient(AbstractClient):
 
 
     def CreateDCDBInstance(self, request):
-        """This API is used to create a monthly subscribed TencentDB instance by passing in information such as instance specifications, database version number, and purchased duration.
+        """This API is used to create a monthly subscribed TDSQL instance by passing in information such as instance specifications, database version number, and purchased duration.
 
         :param request: Request instance for CreateDCDBInstance.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.CreateDCDBInstanceRequest`
@@ -212,7 +212,7 @@ class DcdbClient(AbstractClient):
 
 
     def CreateHourDCDBInstance(self, request):
-        """This API is used to create pay-as-you-go TDSQL for MySQL instances.
+        """This API is used to create a pay-as-you-go TDSQL instance.
 
         :param request: Request instance for CreateHourDCDBInstance.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.CreateHourDCDBInstanceRequest`
@@ -318,6 +318,29 @@ class DcdbClient(AbstractClient):
             body = self.call("DescribeBackupFiles", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeBackupFilesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDBEncryptAttributes(self, request):
+        """This API is used to query the encryption status of the instance data.
+
+        :param request: Request instance for DescribeDBEncryptAttributes.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDBEncryptAttributesRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.DescribeDBEncryptAttributesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBEncryptAttributes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBEncryptAttributesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -743,7 +766,7 @@ class DcdbClient(AbstractClient):
 
 
     def DestroyDCDBInstance(self, request):
-        """This API is used to terminate an isolated monthly-subscribed instance.
+        """This API is used to terminate an isolated monthly subscribed TDSQL instance.
 
         :param request: Request instance for DestroyDCDBInstance.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DestroyDCDBInstanceRequest`
@@ -766,7 +789,7 @@ class DcdbClient(AbstractClient):
 
 
     def DestroyHourDCDBInstance(self, request):
-        """This API is used to terminate a pay-as-you-go instance.
+        """This API is used to terminate a pay-as-you-go TDSQL instance.
 
         :param request: Request instance for DestroyHourDCDBInstance.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DestroyHourDCDBInstanceRequest`
@@ -858,6 +881,29 @@ class DcdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def IsolateDCDBInstance(self, request):
+        """This API is used to isolate a monthly subscribed TDSQL instance, which will no longer be accessible via IP and port.  The isolated instance can be started up in the recycle bin.  If it is isolated due to overdue payments, top up your account as soon as possible.
+
+        :param request: Request instance for IsolateDCDBInstance.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.IsolateDCDBInstanceRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.IsolateDCDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("IsolateDCDBInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.IsolateDCDBInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def IsolateDedicatedDBInstance(self, request):
         """This API is used to isolate a dedicated TencentDB instance.
 
@@ -882,7 +928,7 @@ class DcdbClient(AbstractClient):
 
 
     def IsolateHourDCDBInstance(self, request):
-        """This API is used to isolate pay-as-you-go TDSQL for MySQL instances.
+        """This API is used to isolate a pay-as-you-go TDSQL instance.
 
         :param request: Request instance for IsolateHourDCDBInstance.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.IsolateHourDCDBInstanceRequest`
@@ -927,6 +973,29 @@ class DcdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyAccountConfig(self, request):
+        """This API is used to modify the configurations of an account, such as `max_user_connections`.
+
+        :param request: Request instance for ModifyAccountConfig.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.ModifyAccountConfigRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.ModifyAccountConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAccountConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAccountConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyAccountDescription(self, request):
         """This API is used to modify the remarks of a TencentDB account.
         Note: accounts with the same username but different hosts are different accounts.
@@ -952,12 +1021,7 @@ class DcdbClient(AbstractClient):
 
 
     def ModifyAccountPrivileges(self, request):
-        """This API is used to modify the permissions of a TencentDB instance account.
-
-        **Notes**
-        - Only the SELECT permission (that is, set the permission parameter to `["SELECT"]`) of the system database `mysql` can be granted.
-        - An error will be reported if read-write permissions are granted to a read-only account.
-        - If the parameter is not passed in, no change will be made to the granted table permissions. To clear the granted table permissions, set `Privileges` to an empty array.
+        """This API is used to modify the permissions of a TencentDB instance account. \n\n**Note**\n-Only the SELECT permission (that is, set the permission parameter to `["SELECT"]`) of the system database `mysql` can be granted. An error will be reported if read-write permissions are granted to a read-only account. If the parameter is not passed in, no change will be made to the granted table permissions. To clear the granted view permissions, set `Privileges` to an empty array.
 
         :param request: Request instance for ModifyAccountPrivileges.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.ModifyAccountPrivilegesRequest`
@@ -1257,7 +1321,7 @@ class DcdbClient(AbstractClient):
 
 
     def UpgradeHourDCDBInstance(self, request):
-        """This API is used to upgrade a pay-as-you-go TDSQL for MySQL instance.
+        """This API is used to upgrade a pay-as-you-go TDSQL instance.
 
         :param request: Request instance for UpgradeHourDCDBInstance.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.UpgradeHourDCDBInstanceRequest`

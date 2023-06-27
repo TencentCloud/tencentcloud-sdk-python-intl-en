@@ -26,6 +26,29 @@ class DlcClient(AbstractClient):
     _service = 'dlc'
 
 
+    def CancelSparkSessionBatchSQL(self, request):
+        """This API is used to cancel a Spark SQL batch task.
+
+        :param request: Request instance for CancelSparkSessionBatchSQL.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CancelSparkSessionBatchSQLRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CancelSparkSessionBatchSQLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CancelSparkSessionBatchSQL", params, headers=headers)
+            response = json.loads(body)
+            model = models.CancelSparkSessionBatchSQLResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CancelTask(self, request):
         """This API is used to cancel a task.
 
@@ -155,6 +178,29 @@ class DlcClient(AbstractClient):
             body = self.call("CreateSparkAppTask", params, headers=headers)
             response = json.loads(body)
             model = models.CreateSparkAppTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateSparkSessionBatchSQL(self, request):
+        """This API is used to submit a Spark SQL batch task.
+
+        :param request: Request instance for CreateSparkSessionBatchSQL.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CreateSparkSessionBatchSQLRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CreateSparkSessionBatchSQLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSparkSessionBatchSQL", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSparkSessionBatchSQLResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -417,6 +463,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeSparkSessionBatchSqlLog(self, request):
+        """This API is used to obtain the logs of a Spark SQL batch task.
+
+        :param request: Request instance for DescribeSparkSessionBatchSqlLog.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeSparkSessionBatchSqlLogRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeSparkSessionBatchSqlLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSparkSessionBatchSqlLog", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSparkSessionBatchSqlLogResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTaskResult(self, request):
         """This API is used to query the result of a task.
 
@@ -523,6 +592,29 @@ class DlcClient(AbstractClient):
             body = self.call("ModifySparkApp", params, headers=headers)
             response = json.loads(body)
             model = models.ModifySparkAppResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifySparkAppBatch(self, request):
+        """This API is used to modify Spark job parameters in batches.
+
+        :param request: Request instance for ModifySparkAppBatch.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.ModifySparkAppBatchRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.ModifySparkAppBatchResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySparkAppBatch", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySparkAppBatchResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -532,6 +532,29 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBackupDownloadRestriction(self, request):
+        """This API is used to query the backup download restrictions.
+
+        :param request: Request instance for DescribeBackupDownloadRestriction.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeBackupDownloadRestrictionRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeBackupDownloadRestrictionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBackupDownloadRestriction", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBackupDownloadRestrictionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBackupDownloadURL(self, request):
         """This API is used to get the download URL of a backup.
 
@@ -1429,6 +1452,29 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyBackupDownloadRestriction(self, request):
+        """This API is used to modify the backup download restrictions.
+
+        :param request: Request instance for ModifyBackupDownloadRestriction.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyBackupDownloadRestrictionRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.ModifyBackupDownloadRestrictionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyBackupDownloadRestriction", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyBackupDownloadRestrictionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyBackupPlan(self, request):
         """This API is used to modify the backup plan of an instance, such as modifying the backup start time. By default, a full backup starts at midnight every day and the generated backup files will be retained for seven days.
 
@@ -1466,6 +1512,29 @@ class PostgresClient(AbstractClient):
             body = self.call("ModifyBaseBackupExpireTime", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyBaseBackupExpireTimeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyDBInstanceChargeType(self, request):
+        """This API is used to switch the instance billing mode from pay-as-you-go to monthly subscription.
+
+        :param request: Request instance for ModifyDBInstanceChargeType.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyDBInstanceChargeTypeRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.ModifyDBInstanceChargeTypeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDBInstanceChargeType", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDBInstanceChargeTypeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

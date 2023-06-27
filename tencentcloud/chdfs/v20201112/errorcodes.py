@@ -20,10 +20,10 @@ FAILEDOPERATION = 'FailedOperation'
 # The permission group has been bound.
 FAILEDOPERATION_ACCESSGROUPBOUND = 'FailedOperation.AccessGroupBound'
 
-# 
+# The account balance is insufficient.
 FAILEDOPERATION_ACCOUNTINSUFFICIENTBALANCE = 'FailedOperation.AccountInsufficientBalance'
 
-# 
+# The account identity is not verified.
 FAILEDOPERATION_ACCOUNTUNAUTHENTICATED = 'FailedOperation.AccountUnauthenticated'
 
 # The file system is not empty.
