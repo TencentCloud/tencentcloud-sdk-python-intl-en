@@ -900,15 +900,23 @@ class CreateBusinessDBInstancesResponse(AbstractModel):
         r"""
         :param DealName: Order name
         :type DealName: str
+        :param FlowId: Process ID Note: This field may return null, indicating that no valid values can be obtained.
+        :type FlowId: int
+        :param InstanceIdSet: IDs of instances Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceIdSet: list of str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.DealName = None
+        self.FlowId = None
+        self.InstanceIdSet = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.DealName = params.get("DealName")
+        self.FlowId = params.get("FlowId")
+        self.InstanceIdSet = params.get("InstanceIdSet")
         self.RequestId = params.get("RequestId")
 
 
@@ -966,6 +974,286 @@ class CreateBusinessIntelligenceFileResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.FileTaskId = params.get("FileTaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateCloudDBInstancesRequest(AbstractModel):
+    """CreateCloudDBInstances request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Zone: Instance AZ, such as `ap-guangzhou-1` (Guangzhou Zone 1). Purchasable AZs for an instance can be obtained through the`DescribeZones` API.
+        :type Zone: str
+        :param Memory: Instance memory size in GB
+        :type Memory: int
+        :param Storage: Instance disk size in GB
+        :type Storage: int
+        :param Cpu: Number of CPU cores
+        :type Cpu: int
+        :param MachineType: The host type of the purchased instance. Valid values: `CLOUD_HSSD` (virtual machine with enhanced SSD), `CLOUD_TSSD` (virtual machine with ulTra SSD), `CLOUD_BSSD` (virtual machine with balanced SSD).
+        :type MachineType: str
+        :param InstanceChargeType: Billing mode. Valid values: `PREPAID` (monthly subscription), `POSTPAID` (pay-as-you-go).
+        :type InstanceChargeType: str
+        :param ProjectId: Project ID
+        :type ProjectId: int
+        :param GoodsNum: Number of instances purchased this time. Default value: `1`.  Maximum value: `10`.
+        :type GoodsNum: int
+        :param SubnetId: VPC subnet ID in the format of `subnet-bdoe83fa`. Both `SubnetId` and `VpcId` need to be set or unset at the same time.
+        :type SubnetId: str
+        :param VpcId: VPC ID in the format of `vpc-dsp338hz`. Both `SubnetId` and `VpcId` need to be set or unset at the same time.
+        :type VpcId: str
+        :param Period: The purchase period of an instance. Default value: `1` (one month).  Maximum value: `48`.
+        :type Period: int
+        :param AutoVoucher: Whether to automatically use voucher. Valid values: `0` (no, default), `1` (yes).
+        :type AutoVoucher: int
+        :param VoucherIds: Array of voucher IDs (currently, only one voucher can be used per order)
+        :type VoucherIds: list of str
+        :param DBVersion: SQL Server version. Valid values:  `2008R2` (SQL Server 2008 R2 Enterprise), `2012SP3` (SQL Server 2012 Enterprise), `201202` (SQL Server 2012 Standard), `2014SP2` (SQL Server 2014 Enterprise), 201402 (SQL Server 2014 Standard), `2016SP1` (SQL Server 2016 Enterprise), `201602` (SQL Server 2016 Standard), `2017` (SQL Server 2017 Enterprise), `201702` (SQL Server 2017 Standard), `2019` (SQL Server 2019 Enterprise), `201902` (SQL Server 2019 Standard).  Default value: `2008R2`.  The available version varies by region, and you can pull the version information through the `DescribeProductConfig` API.
+        :type DBVersion: str
+        :param AutoRenewFlag: Auto-renewal flag, which takes effect only when purchasing a monthly subscribed instance.  Valid values:  `0` (auto-renewal disabled), `1` (auto-renewal enabled). Default value: `0`.
+        :type AutoRenewFlag: int
+        :param SecurityGroupList: Security group list, which contains security group IDs in the format of `sg-xxx`.
+        :type SecurityGroupList: list of str
+        :param Weekly: Configuration of the maintenance window, which specifies the day of the week when maintenance can be performed. Valid values: `1` (Monday), `2` (Tuesday), `3` (Wednesday), `4` (Thursday), `5` (Friday), `6` (Saturday), `7` (Sunday).
+        :type Weekly: list of int
+        :param StartTime: Configuration of the maintenance window, which specifies the start time of daily maintenance.
+        :type StartTime: str
+        :param Span: Configuration of the maintenance window, which specifies the maintenance duration in hours. Hour
+        :type Span: int
+        :param MultiZones: Whether to deploy across AZs. Default value: `false`.
+        :type MultiZones: bool
+        :param ResourceTags: Tags associated with the instances to be created
+        :type ResourceTags: list of ResourceTag
+        :param Collation: Collation of system character sets. Default value:  `Chinese_PRC_CI_AS`.
+        :type Collation: str
+        :param TimeZone: System time zone. Default value:  `China Standard Time`.
+        :type TimeZone: str
+        """
+        self.Zone = None
+        self.Memory = None
+        self.Storage = None
+        self.Cpu = None
+        self.MachineType = None
+        self.InstanceChargeType = None
+        self.ProjectId = None
+        self.GoodsNum = None
+        self.SubnetId = None
+        self.VpcId = None
+        self.Period = None
+        self.AutoVoucher = None
+        self.VoucherIds = None
+        self.DBVersion = None
+        self.AutoRenewFlag = None
+        self.SecurityGroupList = None
+        self.Weekly = None
+        self.StartTime = None
+        self.Span = None
+        self.MultiZones = None
+        self.ResourceTags = None
+        self.Collation = None
+        self.TimeZone = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.Memory = params.get("Memory")
+        self.Storage = params.get("Storage")
+        self.Cpu = params.get("Cpu")
+        self.MachineType = params.get("MachineType")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        self.ProjectId = params.get("ProjectId")
+        self.GoodsNum = params.get("GoodsNum")
+        self.SubnetId = params.get("SubnetId")
+        self.VpcId = params.get("VpcId")
+        self.Period = params.get("Period")
+        self.AutoVoucher = params.get("AutoVoucher")
+        self.VoucherIds = params.get("VoucherIds")
+        self.DBVersion = params.get("DBVersion")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.SecurityGroupList = params.get("SecurityGroupList")
+        self.Weekly = params.get("Weekly")
+        self.StartTime = params.get("StartTime")
+        self.Span = params.get("Span")
+        self.MultiZones = params.get("MultiZones")
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = ResourceTag()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
+        self.Collation = params.get("Collation")
+        self.TimeZone = params.get("TimeZone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCloudDBInstancesResponse(AbstractModel):
+    """CreateCloudDBInstances response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DealName: Order name
+        :type DealName: str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DealName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DealName = params.get("DealName")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
+    """CreateCloudReadOnlyDBInstances request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Instance ID in the format of  `mssql-3l3fgqn7`.
+        :type InstanceId: str
+        :param Zone: Instance AZ, such as `ap-guangzhou-1` (Guangzhou Zone 1). Purchasable AZs for an instance can be obtained through the`DescribeZones` API.
+        :type Zone: str
+        :param ReadOnlyGroupType: Read-only group types. Valid values: `1` (each read-only replica is placed in one auto-created read-only group), `2` (all read-only replicas are placed in one auto-created read-only group), `3` (all read-only replicas are placed in one existing read-only group).
+        :type ReadOnlyGroupType: int
+        :param Memory: Instance memory size in GB
+        :type Memory: int
+        :param Storage: Instance disk size in GB
+        :type Storage: int
+        :param Cpu: Number of instance cores
+        :type Cpu: int
+        :param MachineType: The host type of purchased instance. Valid values: `CLOUD_HSSD` (virtual machine with enhanced SSD), `CLOUD_TSSD` (virtual machine with ulTra SSD), `CLOUD_BSSD` (virtual machine with balanced SSD).
+        :type MachineType: str
+        :param ReadOnlyGroupForcedUpgrade: Valid values: `0` (not upgrade the primary instance by default), `1` (upgrade the primary instance to complete the RO deployment).  You need to pass in `1` for this parameter and upgrade the primary instance to cluster edition.
+        :type ReadOnlyGroupForcedUpgrade: int
+        :param ReadOnlyGroupId: Existing read-only group ID, which is required when `ReadOnlyGroupType` is `3`.
+        :type ReadOnlyGroupId: str
+        :param ReadOnlyGroupName: New read-only group ID, which is required when `ReadOnlyGroupType` is `2`.
+        :type ReadOnlyGroupName: str
+        :param ReadOnlyGroupIsOfflineDelay: Whether delayed read-only instance removal is enabled in a new read-only group, which is required when `ReadOnlyGroupType` is `2`. Valid values: `1` (enabled), `0` (disabled).  The read-only replica will be automatically removed when the delay between it and the primary instance exceeds the threshold.
+        :type ReadOnlyGroupIsOfflineDelay: int
+        :param ReadOnlyGroupMaxDelayTime: The delay threshold for a new read-only group, which is required when `ReadOnlyGroupType` is `2` and `ReadOnlyGroupIsOfflineDelay` is `1`.
+        :type ReadOnlyGroupMaxDelayTime: int
+        :param ReadOnlyGroupMinInGroup: Minimum number of reserved read-only replicas when the delayed removal is enabled for the new read-only group, which is required when `ReadOnlyGroupType` is `2` and `ReadOnlyGroupIsOfflineDelay` is `1`.
+        :type ReadOnlyGroupMinInGroup: int
+        :param InstanceChargeType: Billing mode. Valid values: `PREPAID` (monthly subscription), `POSTPAID` (pay-as-you-go).
+        :type InstanceChargeType: str
+        :param GoodsNum: Number of instances purchased this time. Default value: `1`.
+        :type GoodsNum: int
+        :param SubnetId: VPC subnet ID in the format of `subnet-bdoe83fa`. Both `SubnetId` and `VpcId` need to be set or unset at the same time.
+        :type SubnetId: str
+        :param VpcId: VPC ID in the format of `vpc-dsp338hz`. Both `SubnetId` and `VpcId` need to be set or unset at the same time.
+        :type VpcId: str
+        :param Period: The purchase period of an instance. Default value: `1` (one month).  Maximum value: `48`.
+        :type Period: int
+        :param SecurityGroupList: Security group list, which contains security group IDs in the format of `sg-xxx`.
+        :type SecurityGroupList: list of str
+        :param AutoVoucher: Whether to automatically use voucher. Valid values: `0` (no, default), `1` (yes).
+        :type AutoVoucher: int
+        :param VoucherIds: Array of voucher IDs (currently, only one voucher can be used per order)
+        :type VoucherIds: list of str
+        :param ResourceTags: Tags associated with the instances to be created
+        :type ResourceTags: list of ResourceTag
+        :param Collation: Collation of system character sets. Default value:  Chinese_PRC_CI_AS
+        :type Collation: str
+        :param TimeZone: System time zone. Default value:  `China Standard Time`
+        :type TimeZone: str
+        """
+        self.InstanceId = None
+        self.Zone = None
+        self.ReadOnlyGroupType = None
+        self.Memory = None
+        self.Storage = None
+        self.Cpu = None
+        self.MachineType = None
+        self.ReadOnlyGroupForcedUpgrade = None
+        self.ReadOnlyGroupId = None
+        self.ReadOnlyGroupName = None
+        self.ReadOnlyGroupIsOfflineDelay = None
+        self.ReadOnlyGroupMaxDelayTime = None
+        self.ReadOnlyGroupMinInGroup = None
+        self.InstanceChargeType = None
+        self.GoodsNum = None
+        self.SubnetId = None
+        self.VpcId = None
+        self.Period = None
+        self.SecurityGroupList = None
+        self.AutoVoucher = None
+        self.VoucherIds = None
+        self.ResourceTags = None
+        self.Collation = None
+        self.TimeZone = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Zone = params.get("Zone")
+        self.ReadOnlyGroupType = params.get("ReadOnlyGroupType")
+        self.Memory = params.get("Memory")
+        self.Storage = params.get("Storage")
+        self.Cpu = params.get("Cpu")
+        self.MachineType = params.get("MachineType")
+        self.ReadOnlyGroupForcedUpgrade = params.get("ReadOnlyGroupForcedUpgrade")
+        self.ReadOnlyGroupId = params.get("ReadOnlyGroupId")
+        self.ReadOnlyGroupName = params.get("ReadOnlyGroupName")
+        self.ReadOnlyGroupIsOfflineDelay = params.get("ReadOnlyGroupIsOfflineDelay")
+        self.ReadOnlyGroupMaxDelayTime = params.get("ReadOnlyGroupMaxDelayTime")
+        self.ReadOnlyGroupMinInGroup = params.get("ReadOnlyGroupMinInGroup")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        self.GoodsNum = params.get("GoodsNum")
+        self.SubnetId = params.get("SubnetId")
+        self.VpcId = params.get("VpcId")
+        self.Period = params.get("Period")
+        self.SecurityGroupList = params.get("SecurityGroupList")
+        self.AutoVoucher = params.get("AutoVoucher")
+        self.VoucherIds = params.get("VoucherIds")
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = ResourceTag()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
+        self.Collation = params.get("Collation")
+        self.TimeZone = params.get("TimeZone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCloudReadOnlyDBInstancesResponse(AbstractModel):
+    """CreateCloudReadOnlyDBInstances response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DealNames: Order name in array
+        :type DealNames: list of str
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.DealNames = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DealNames = params.get("DealNames")
         self.RequestId = params.get("RequestId")
 
 

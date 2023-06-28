@@ -25,20 +25,22 @@ class ActionSummaryOverviewItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ActionType: Transaction type
+        :param ActionType: Transaction type code
         :type ActionType: str
-        :param ActionTypeName: Transaction type name
+        :param ActionTypeName: Transaction type,  which can be monthly subscription purchase, monthly subscription renewal, or pay-as-you-go deduction.
         :type ActionTypeName: str
-        :param RealTotalCost: Actual cost
-        :type RealTotalCost: str
         :param RealTotalCostRatio: Cost ratio, to two decimal points
         :type RealTotalCostRatio: str
-        :param CashPayAmount: Cash amount
+        :param RealTotalCost: Total amount after discount
+        :type RealTotalCost: str
+        :param CashPayAmount: Cash credit:  The amount paid from the user’s cash account
         :type CashPayAmount: str
-        :param IncentivePayAmount: Trial credit amount
+        :param IncentivePayAmount: Free credit:  The amount paid by the user’s free credit
         :type IncentivePayAmount: str
-        :param VoucherPayAmount: Voucher amount
+        :param VoucherPayAmount: Voucher payment:  The voucher deduction amount
         :type VoucherPayAmount: str
+        :param TransferPayAmount: Commission credit:  The amount paid by the user’s commission credit. Note:  This field may return null, indicating that no valid values can be obtained.
+        :type TransferPayAmount: str
         :param BillMonth: Billing month, e.g. `2019-08`
         :type BillMonth: str
         :param TotalCost: The original cost in USD. This parameter has become valid since v3.0 bills took effect in May 2021, and before that `-` was returned for this parameter. If a customer uses a contract price different from the published price, `-` will also be returned for this parameter.
@@ -46,11 +48,12 @@ class ActionSummaryOverviewItem(AbstractModel):
         """
         self.ActionType = None
         self.ActionTypeName = None
-        self.RealTotalCost = None
         self.RealTotalCostRatio = None
+        self.RealTotalCost = None
         self.CashPayAmount = None
         self.IncentivePayAmount = None
         self.VoucherPayAmount = None
+        self.TransferPayAmount = None
         self.BillMonth = None
         self.TotalCost = None
 
@@ -58,11 +61,12 @@ class ActionSummaryOverviewItem(AbstractModel):
     def _deserialize(self, params):
         self.ActionType = params.get("ActionType")
         self.ActionTypeName = params.get("ActionTypeName")
-        self.RealTotalCost = params.get("RealTotalCost")
         self.RealTotalCostRatio = params.get("RealTotalCostRatio")
+        self.RealTotalCost = params.get("RealTotalCost")
         self.CashPayAmount = params.get("CashPayAmount")
         self.IncentivePayAmount = params.get("IncentivePayAmount")
         self.VoucherPayAmount = params.get("VoucherPayAmount")
+        self.TransferPayAmount = params.get("TransferPayAmount")
         self.BillMonth = params.get("BillMonth")
         self.TotalCost = params.get("TotalCost")
         memeber_set = set(params.keys())
@@ -109,57 +113,53 @@ class BillDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BusinessCodeName: Product name: major categories of Tencent Cloud services, e.g. CVM and TencentDB for MySQL
+        :param BusinessCodeName: Product name:  The name of a Tencent Cloud product purchased by the user, such as  CVM.
         :type BusinessCodeName: str
-        :param ProductCodeName: Sub-product name: sub-categories of Tencent Cloud services, such as CVM-Standard S1
+        :param ProductCodeName: Subproduct name:  The subcategory of a Tencent Cloud product purchased by the user, such as  CVM – Standard S1.
         :type ProductCodeName: str
-        :param PayModeName: Billing mode
+        :param PayModeName: Billing mode,  which can be monthly subscription or pay-as-you-go.
         :type PayModeName: str
-        :param ProjectName: Project: project of a resource
+        :param ProjectName: Project name:  The project to which a resource belongs, which is user-designated. If a resource has not been assigned to a project, it will automatically belong to the default project.
         :type ProjectName: str
-        :param RegionName: Region: region of a resource, e.g. South China (Guangzhou)
+        :param RegionName: Region:  The region to which a resource belongs, such as South China (Guangzhou).
         :type RegionName: str
         :param ZoneName: Availability zone: availability zone of a resource, e.g. Guangzhou Zone 3
         :type ZoneName: str
-        :param ResourceId: Instance ID
+        :param ResourceId: Instance ID:  The object ID of a billed resource, such as a CVM instance ID. This object ID may vary due to various forms and contents of resources in different products.
         :type ResourceId: str
-        :param ResourceName: Instance name
+        :param ResourceName: Instance name:  The resource name set by the user in the console. If it is not set, it will be empty by default.
         :type ResourceName: str
-        :param ActionTypeName: Transaction type
+        :param ActionTypeName: Transaction type, which can be monthly subscription purchase, monthly subscription renewal, or pay-as-you-go deduction.
         :type ActionTypeName: str
-        :param OrderId: Order ID
+        :param OrderId: Order ID:  The order number for a monthly subscription purchase
         :type OrderId: str
-        :param BillId: Transaction ID
+        :param BillId: Transaction ID:  The bill number for a deducted payment
         :type BillId: str
-        :param PayTime: Payment time
+        :param PayTime: Transaction time:  The time at which a payment was deducted
         :type PayTime: str
-        :param FeeBeginTime: Service start time
+        :param FeeBeginTime: Usage start time:  The time at which product or service usage starts
         :type FeeBeginTime: str
-        :param FeeEndTime: Service end time
+        :param FeeEndTime: Usage end time:  The time at which product or service usage ends
         :type FeeEndTime: str
         :param ComponentSet: Component list
         :type ComponentSet: list of BillDetailComponent
-        :param PayerUin: Payer's UIN
+        :param PayerUin: Payer account ID:  The account ID of the payer, which is the unique identifier of a Tencent Cloud user.
         :type PayerUin: str
-        :param OwnerUin: User's UIN
+        :param OwnerUin: Owner account ID:  The account ID of the actual resource user
         :type OwnerUin: str
-        :param OperateUin: Operator's UIN
+        :param OperateUin: Operator account ID:  The account or role ID of the operator who purchases or activates a resource
         :type OperateUin: str
-        :param Tags: Tag information
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param Tags: Tag information. Note:  This field may return null, indicating that no valid values can be obtained.
         :type Tags: list of BillTagInfo
-        :param BusinessCode: Product code
-Note: This field may return `null`, indicating that no valid value can be found.
+        :param BusinessCode: Product code. Note:  This field may return null, indicating that no valid values can be obtained.
         :type BusinessCode: str
-        :param ProductCode: Subproduct code
-Note: This field may return `null`, indicating that no valid value can be found.
+        :param ProductCode: Subproduct code. Note:  This field may return null, indicating that no valid values can be obtained.
         :type ProductCode: str
-        :param ActionType: Transaction type
-Note: This field may return `null`, indicating that no valid value can be found.
+        :param ActionType: Transaction type code. Note:  This field may return null, indicating that no valid values can be obtained.
         :type ActionType: str
-        :param RegionId: 
+        :param RegionId: Region ID. Note:  This field may return null, indicating that no valid values can be obtained.
         :type RegionId: str
-        :param ProjectId: Project ID: ID of the project to which the resource belongs
+        :param ProjectId: Project ID
         :type ProjectId: int
         :param PriceInfo: Price attribute
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -244,66 +244,59 @@ class BillDetailComponent(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ComponentCodeName: Component type: type of a resource component, e.g. memory, disk, etc.
+        :param ComponentCodeName: Component type:  The component type of a product or service purchased, such as  CVM instance components including  CPU and memory.
         :type ComponentCodeName: str
-        :param ItemCodeName: Component name: name of a resource component, e.g. TencentDB for MySQL-memory
+        :param ItemCodeName: Component name:  The specific component of a product or service purchased
         :type ItemCodeName: str
-        :param SinglePrice: Component published price: original price of a resource component with the original granularity
+        :param SinglePrice: Component list price:  The listed unit price of a component. If a customer has applied for a fixed preferential price or contract price, this parameter will not be displayed by default.
         :type SinglePrice: str
-        :param SpecifiedPrice: Specified price of the component
+        :param SpecifiedPrice: Specified price of a component. This parameter has been deprecated.
         :type SpecifiedPrice: str
-        :param PriceUnit: Price unit
+        :param PriceUnit: Component price measurement unit:  The unit of measurement for a component price, which is composed of  USD, usage unit, and duration unit.
         :type PriceUnit: str
-        :param UsedAmount: Component usage
+        :param UsedAmount: Component usage:  The actually settled usage of a component, which is "Raw usage - Deducted usage (including packages)".
         :type UsedAmount: str
-        :param UsedAmountUnit: Component usage unit
+        :param UsedAmountUnit: Component usage unit:  The unit of measurement for component usage
         :type UsedAmountUnit: str
-        :param TimeSpan: Usage period
+        :param TimeSpan: Usage duration:  The resource usage duration
         :type TimeSpan: str
-        :param TimeUnitName: Time unit
+        :param TimeUnitName: Duration unit:  The unit of measurement for usage duration
         :type TimeUnitName: str
-        :param Cost: Original price of the component
+        :param Cost: Original cost:  The original cost of a resource, which is "List price x Usage x Usage duration". If a customer has applied for a fixed preferential price or contract price or is in a refund scenario, this parameter will not be displayed by default.
         :type Cost: str
-        :param Discount: Discount rate
+        :param Discount: Discount multiplier:  The discount multiplier applied to the cost of the resource. If a customer has applied for a fixed preferential price or contract price or is in a refund scenario, this parameter will not be displayed by default.
         :type Discount: str
         :param ReduceType: Offer type
         :type ReduceType: str
-        :param RealCost: Total discounted price
+        :param RealCost: Total amount after discount:   Total amount after discount = (Original cost - RI deduction (cost) - SP deduction (cost)) x Discount multiplier
         :type RealCost: str
-        :param VoucherPayAmount: Amount paid in voucher
+        :param VoucherPayAmount: Voucher payment:  The voucher deduction amount
         :type VoucherPayAmount: str
-        :param CashPayAmount: Amount paid in cash
+        :param CashPayAmount: Cash credit:  The amount paid from the user’s cash account
         :type CashPayAmount: str
-        :param IncentivePayAmount: Amount paid in trial credit
+        :param IncentivePayAmount: Free credit:  The amount paid by the user’s free credit
         :type IncentivePayAmount: str
-        :param ItemCode: Component type code
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param TransferPayAmount: Commission credit:  The amount paid by the user’s commission credit. Note:  This field may return null, indicating that no valid values can be obtained.
+        :type TransferPayAmount: str
+        :param ItemCode: Component type code. Note:  This field may return null, indicating that no valid values can be obtained.
         :type ItemCode: str
-        :param ComponentCode: Component code
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param ComponentCode: Component name code. Note:  This field may return null, indicating that no valid values can be obtained.
         :type ComponentCode: str
-        :param ContractPrice: Contract price
+        :param ContractPrice: Component contracted price:  The contracted unit price of a component, which is "List price x Discount". Note:  This field may return null, indicating that no valid values can be obtained.
         :type ContractPrice: str
-        :param InstanceType: The special instance (resource pack, reserved instance, savings plan, or spot instance) that is applied to deduction. Valid values:
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param InstanceType: Instance type:  The instance type of a product or service purchased, which can be resource package, RI, SP, or spot instance. Other instance types are not displayed by default. Note:  This field may return null, indicating that no valid values can be obtained.
         :type InstanceType: str
-        :param RiTimeSpan: The usage duration deducted by a reserved instance. The unit of measurement for deduction is the same as that for usage duration.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param RiTimeSpan: RI deduction (duration):  The usage duration deducted by RI. Note:  This field may return null, indicating that no valid values can be obtained.
         :type RiTimeSpan: str
-        :param OriginalCostWithRI: The amount deducted by a reserved instance based on the original component cost.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param OriginalCostWithRI: RI deduction (cost):  The amount deducted from the original cost by RI. Note:  This field may return null, indicating that no valid values can be obtained.
         :type OriginalCostWithRI: str
-        :param SPDeductionRate: The discount multiplier that applies to the component based on the remaining commitment of the savings plan.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param SPDeductionRate: Savings plan deduction rate:  The discount multiplier that applies to the component based on the remaining commitment of the savings plan. Note:  This field may return null, indicating that no valid values can be obtained.
         :type SPDeductionRate: str
-        :param SPDeduction: The savings plan deduction amount.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param SPDeduction: Cost deduction by SP. This parameter has been deprecated. Note:  This field may return null, indicating that no valid values can be obtained.
         :type SPDeduction: str
-        :param OriginalCostWithSP: The amount deducted by a savings plan based on the original component cost.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param OriginalCostWithSP: SP deduction (cost):  SP deduction (cost) = Cost deduction by SP / SP deduction rate. Note:  This field may return null, indicating that no valid values can be obtained.
         :type OriginalCostWithSP: str
-        :param BlendedDiscount: The blended discount multiplier that combines the official website discount, reserved instance discount, and savings plan discount. If no reserved instance and savings plan discounts are available, the blended discount multiplier equals the discount multiplier.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param BlendedDiscount: Blended discount multiplier:  The final discount multiplier that is applied after combining multiple discount types, which is "Total amount after discount / Original cost". Note:  This field may return null, indicating that no valid values can be obtained.
         :type BlendedDiscount: str
         """
         self.ComponentCodeName = None
@@ -322,6 +315,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self.VoucherPayAmount = None
         self.CashPayAmount = None
         self.IncentivePayAmount = None
+        self.TransferPayAmount = None
         self.ItemCode = None
         self.ComponentCode = None
         self.ContractPrice = None
@@ -351,6 +345,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self.VoucherPayAmount = params.get("VoucherPayAmount")
         self.CashPayAmount = params.get("CashPayAmount")
         self.IncentivePayAmount = params.get("IncentivePayAmount")
+        self.TransferPayAmount = params.get("TransferPayAmount")
         self.ItemCode = params.get("ItemCode")
         self.ComponentCode = params.get("ComponentCode")
         self.ContractPrice = params.get("ContractPrice")
@@ -377,89 +372,81 @@ class BillResourceSummary(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BusinessCodeName: Product name: major categories of Tencent Cloud services, e.g. CVM and TencentDB for MySQL
+        :param BusinessCodeName: Product name:  The name of a Tencent Cloud product purchased by the user, such as  CVM.
         :type BusinessCodeName: str
-        :param ProductCodeName: Subproduct name, which is the subcategory of a Tencent Cloud product, such as CVM-Standard S1. If no subproduct name can be obtained, `-` is returned.
+        :param ProductCodeName: Subproduct name:  The subcategory of a Tencent Cloud product purchased by the user, such as  CVM – Standard S1.
         :type ProductCodeName: str
-        :param PayModeName: Billing mode
+        :param PayModeName: Billing mode,  which can be monthly subscription or pay-as-you-go.
         :type PayModeName: str
-        :param ProjectName: Project
+        :param ProjectName: Project name:  The project to which a resource belongs, which is user-designated. If a resource has not been assigned to a project, it will automatically belong to the default project.
         :type ProjectName: str
-        :param RegionName: Region
+        :param RegionName: Region:  The region to which a resource belongs, such as South China (Guangzhou).
         :type RegionName: str
-        :param ZoneName: Availability zone
+        :param ZoneName: Availability zone:  The availability zone to which a resource belongs, such as Guangzhou Zone 3.
         :type ZoneName: str
-        :param ResourceId: Instance ID
+        :param ResourceId: Instance ID:  The object ID of a billed resource, such as a CVM instance ID. This object ID may vary due to various forms and contents of resources in different products.	
         :type ResourceId: str
-        :param ResourceName: Resource instance namDeduction timee
+        :param ResourceName: Instance name:  The resource name set by the user in the console. If it is not set, it will be empty by default.
         :type ResourceName: str
-        :param ActionTypeName: Transaction type
+        :param ActionTypeName: Transaction type,  which can be monthly subscription purchase, monthly subscription renewal, or pay-as-you-go deduction.
         :type ActionTypeName: str
-        :param OrderId: Order ID
+        :param OrderId: Order ID:  The order number for a monthly subscription purchase
         :type OrderId: str
-        :param PayTime: Payment time
+        :param PayTime: Transaction time:  The time at which a payment was deducted
         :type PayTime: str
-        :param FeeBeginTime: Service start time
+        :param FeeBeginTime: Usage start time:  The time at which product or service usage starts
         :type FeeBeginTime: str
-        :param FeeEndTime: Service end time
+        :param FeeEndTime: Usage end time:  The time at which product or service usage ends
         :type FeeEndTime: str
-        :param ConfigDesc: Configuration description
+        :param ConfigDesc: Configuration description:  The billable item names and usage of a resource, which are displayed on the resource bill only.
         :type ConfigDesc: str
-        :param ExtendField1: Extension field 1
+        :param ExtendField1: Extended field 1:  Extended attribute information of a product, which is displayed on the resource bill only.
         :type ExtendField1: str
-        :param ExtendField2: Extension field 2
+        :param ExtendField2: Extended field 2:  Extended attribute information of a product, which is displayed on the resource bill only.
         :type ExtendField2: str
-        :param TotalCost: Cost, in USD
+        :param TotalCost: Original cost:  The original cost of a resource, which is "List price x Usage x Usage duration". If a customer has applied for a fixed preferential price or contract price or is in a refund scenario, this parameter will not be displayed by default.
         :type TotalCost: str
-        :param Discount: Discount
-If different discounts or contract prices are applied, `-` will be returned for this parameter.
+        :param Discount: Discount multiplier:  The discount multiplier applied to the cost of the resource. If a customer has applied for a fixed preferential price or contract price or is in a refund scenario, this parameter will not be displayed by default.
         :type Discount: str
         :param ReduceType: Offer type
         :type ReduceType: str
-        :param RealTotalCost: Total cost after discount, in USD
+        :param RealTotalCost: Total amount after discount
         :type RealTotalCost: str
-        :param VoucherPayAmount: Amount paid in voucher, in USD
+        :param VoucherPayAmount: Voucher payment:  The voucher deduction amount
         :type VoucherPayAmount: str
-        :param CashPayAmount: Amount paid in cash, in USD
+        :param CashPayAmount: Cash credit:  The amount paid from the user’s cash account
         :type CashPayAmount: str
-        :param IncentivePayAmount: Amount paid in trial credit, in USD
+        :param IncentivePayAmount: Free credit:  The amount paid by the user’s free credit
         :type IncentivePayAmount: str
-        :param ExtendField3: Extension field 3
+        :param TransferPayAmount: Commission credit:  The amount paid by the user’s commission credit. Note:  This field may return null, indicating that no valid values can be obtained.
+        :type TransferPayAmount: str
+        :param ExtendField3: Extended field 3:  Extended attribute information of a product, which is displayed on the resource bill only.
         :type ExtendField3: str
-        :param ExtendField4: Extension field 4
+        :param ExtendField4: Extended field 4:  Extended attribute information of a product, which is displayed on the resource bill only.
         :type ExtendField4: str
-        :param ExtendField5: Extension field 5
+        :param ExtendField5: Extended field 5:  Extended attribute information of a product, which is displayed on the resource bill only.
         :type ExtendField5: str
-        :param Tags: Tag information
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param Tags: Tag information. Note:  This field may return null, indicating that no valid values can be obtained.
         :type Tags: list of BillTagInfo
-        :param PayerUin: Payer UIN
+        :param PayerUin: Payer account ID:  The account ID of the payer, which is the unique identifier of a Tencent Cloud user.
         :type PayerUin: str
-        :param OwnerUin: Resource owner UIN; '-' is returned if no value is obtained
+        :param OwnerUin: Owner account ID:  The account ID of the actual resource user
         :type OwnerUin: str
-        :param OperateUin: Operator UIN; '-' is returned if no value is obtained
+        :param OperateUin: Operator account ID:  The account or role ID of the operator who purchases or activates a resource.
         :type OperateUin: str
         :param BusinessCode: Product code
         :type BusinessCode: str
         :param ProductCode: Subproduct code
         :type ProductCode: str
-        :param RegionId: 
+        :param RegionId: Region ID
         :type RegionId: int
-        :param InstanceType: The special instance (resource pack, reserved instance, savings plan, or spot instance) that is applied to deduction. Valid values:
-
-ri=Standard RI
-
-svp=Savings Plan
-
-si=Spot Instances
-
-rp=Resource Pack
+        :param InstanceType: Instance type:  The instance type of a product or service purchased, which can be resource package, RI, SP, or spot instance. Other instance types are not displayed by default.
         :type InstanceType: str
-        :param OriginalCostWithRI: The amount deducted by a reserved instance based on the original component cost.
+        :param OriginalCostWithRI: RI deduction (cost):  The amount deducted from the original cost by RI	
         :type OriginalCostWithRI: str
-        :param SPDeduction: The savings plan deduction amount.
+        :param SPDeduction: Cost deduction by SP. This parameter has been deprecated.
         :type SPDeduction: str
-        :param OriginalCostWithSP: The amount deducted by a savings plan based on the original component cost.
+        :param OriginalCostWithSP: SP deduction (cost):  SP deduction (cost) = Cost deduction by SP / SP deduction rate	
         :type OriginalCostWithSP: str
         """
         self.BusinessCodeName = None
@@ -485,6 +472,7 @@ rp=Resource Pack
         self.VoucherPayAmount = None
         self.CashPayAmount = None
         self.IncentivePayAmount = None
+        self.TransferPayAmount = None
         self.ExtendField3 = None
         self.ExtendField4 = None
         self.ExtendField5 = None
@@ -525,6 +513,7 @@ rp=Resource Pack
         self.VoucherPayAmount = params.get("VoucherPayAmount")
         self.CashPayAmount = params.get("CashPayAmount")
         self.IncentivePayAmount = params.get("IncentivePayAmount")
+        self.TransferPayAmount = params.get("TransferPayAmount")
         self.ExtendField3 = params.get("ExtendField3")
         self.ExtendField4 = params.get("ExtendField4")
         self.ExtendField5 = params.get("ExtendField5")
@@ -581,6 +570,59 @@ class BillTagInfo(AbstractModel):
         
 
 
+class BusinessSummaryInfo(AbstractModel):
+    """Detailed summary of products
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BusinessCode: Product code
+        :type BusinessCode: str
+        :param BusinessCodeName: Product name:  The name of a Tencent Cloud product purchased by the user, such as  CVM.
+        :type BusinessCodeName: str
+        :param TotalCost: Original cost in USD.  This parameter has become valid since Bill 3.0 took effect in May 2021, and before that `-` was returned for this parameter. If a customer has applied for a contract price different from the prices listed on the official website, `-` will also be returned for this parameter. 
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TotalCost: str
+        :param RealTotalCost: Total amount after discount
+        :type RealTotalCost: str
+        :param CashPayAmount: Cash credit:  The amount paid from the user’s cash account
+        :type CashPayAmount: str
+        :param IncentivePayAmount: Free credit:  The amount paid by the user’s free credit
+        :type IncentivePayAmount: str
+        :param VoucherPayAmount: Voucher payment:  The voucher deduction amount
+        :type VoucherPayAmount: str
+        :param TransferPayAmount: Commission credit:  The amount paid by the user’s commission credit. Note:  This field may return null, indicating that no valid values can be obtained.
+        :type TransferPayAmount: str
+        """
+        self.BusinessCode = None
+        self.BusinessCodeName = None
+        self.TotalCost = None
+        self.RealTotalCost = None
+        self.CashPayAmount = None
+        self.IncentivePayAmount = None
+        self.VoucherPayAmount = None
+        self.TransferPayAmount = None
+
+
+    def _deserialize(self, params):
+        self.BusinessCode = params.get("BusinessCode")
+        self.BusinessCodeName = params.get("BusinessCodeName")
+        self.TotalCost = params.get("TotalCost")
+        self.RealTotalCost = params.get("RealTotalCost")
+        self.CashPayAmount = params.get("CashPayAmount")
+        self.IncentivePayAmount = params.get("IncentivePayAmount")
+        self.VoucherPayAmount = params.get("VoucherPayAmount")
+        self.TransferPayAmount = params.get("TransferPayAmount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BusinessSummaryOverviewItem(AbstractModel):
     """Summarize product details by product
 
@@ -588,51 +630,50 @@ class BusinessSummaryOverviewItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BusinessCode: Product code
-Note: This field may return `null`, indicating that no valid value can be found.
+        :param BusinessCode: Product code. Note:  This field may return null, indicating that no valid values can be obtained.
         :type BusinessCode: str
-        :param BusinessCodeName: Product name: major categories of Tencent Cloud services, e.g. CVM and TencentDB for MySQL
+        :param BusinessCodeName: Product name:  The name of a Tencent Cloud product purchased by the user, such as  CVM.
         :type BusinessCodeName: str
-        :param RealTotalCost: Actual cost
-        :type RealTotalCost: str
         :param RealTotalCostRatio: Cost ratio, to two decimal points
         :type RealTotalCostRatio: str
-        :param CashPayAmount: Cash amount
+        :param RealTotalCost: Total amount after discount
+        :type RealTotalCost: str
+        :param CashPayAmount: Cash credit:  The amount paid from the user’s cash account
         :type CashPayAmount: str
-        :param IncentivePayAmount: Trial credit amount
+        :param IncentivePayAmount: Free credit:  The amount paid by the user’s free credit
         :type IncentivePayAmount: str
-        :param VoucherPayAmount: Voucher amount
+        :param VoucherPayAmount: Voucher payment:  The voucher deduction amount
         :type VoucherPayAmount: str
+        :param TransferPayAmount: Commission credit:  The amount paid by the user’s commission credit.
+        :type TransferPayAmount: str
         :param BillMonth: Billing month, e.g. `2019-08`
         :type BillMonth: str
         :param TotalCost: The original cost in USD. This parameter has become valid since v3.0 bills took effect in May 2021, and before that `-` was returned for this parameter. If a customer uses a contract price different from the published price, `-` will also be returned for this parameter.
         :type TotalCost: str
-        :param TransferPayAmount: Payment by commission credits
-        :type TransferPayAmount: str
         """
         self.BusinessCode = None
         self.BusinessCodeName = None
-        self.RealTotalCost = None
         self.RealTotalCostRatio = None
+        self.RealTotalCost = None
         self.CashPayAmount = None
         self.IncentivePayAmount = None
         self.VoucherPayAmount = None
+        self.TransferPayAmount = None
         self.BillMonth = None
         self.TotalCost = None
-        self.TransferPayAmount = None
 
 
     def _deserialize(self, params):
         self.BusinessCode = params.get("BusinessCode")
         self.BusinessCodeName = params.get("BusinessCodeName")
-        self.RealTotalCost = params.get("RealTotalCost")
         self.RealTotalCostRatio = params.get("RealTotalCostRatio")
+        self.RealTotalCost = params.get("RealTotalCost")
         self.CashPayAmount = params.get("CashPayAmount")
         self.IncentivePayAmount = params.get("IncentivePayAmount")
         self.VoucherPayAmount = params.get("VoucherPayAmount")
+        self.TransferPayAmount = params.get("TransferPayAmount")
         self.BillMonth = params.get("BillMonth")
         self.TotalCost = params.get("TotalCost")
-        self.TransferPayAmount = params.get("TransferPayAmount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -649,25 +690,26 @@ class BusinessSummaryTotal(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RealTotalCost: Total cost
+        :param RealTotalCost: Total amount after discount
+
         :type RealTotalCost: str
-        :param VoucherPayAmount: Voucher amount
+        :param VoucherPayAmount: Voucher payment:  The voucher deduction amount
         :type VoucherPayAmount: str
-        :param IncentivePayAmount: Trial credit amount
+        :param IncentivePayAmount: Free credit:  The amount paid by the user’s free credit
         :type IncentivePayAmount: str
-        :param CashPayAmount: Cash amount
+        :param CashPayAmount: Cash credit:  The amount paid from the user’s cash account
         :type CashPayAmount: str
+        :param TransferPayAmount: Commission credit:  The amount paid by the user’s commission credit.
+        :type TransferPayAmount: str
         :param TotalCost: The original cost in USD. This parameter has become valid since v3.0 bills took effect in May 2021, and before that `-` was returned for this parameter. If a customer uses a contract price different from the published price, `-` will also be returned for this parameter.
         :type TotalCost: str
-        :param TransferPayAmount: Payment by commission credits
-        :type TransferPayAmount: str
         """
         self.RealTotalCost = None
         self.VoucherPayAmount = None
         self.IncentivePayAmount = None
         self.CashPayAmount = None
-        self.TotalCost = None
         self.TransferPayAmount = None
+        self.TotalCost = None
 
 
     def _deserialize(self, params):
@@ -675,8 +717,8 @@ class BusinessSummaryTotal(AbstractModel):
         self.VoucherPayAmount = params.get("VoucherPayAmount")
         self.IncentivePayAmount = params.get("IncentivePayAmount")
         self.CashPayAmount = params.get("CashPayAmount")
-        self.TotalCost = params.get("TotalCost")
         self.TransferPayAmount = params.get("TransferPayAmount")
+        self.TotalCost = params.get("TotalCost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -876,6 +918,10 @@ Monthly subscription refund
         :param BusinessCode: Product code
 Note: To query the product codes used in the current month, call <a href="https://intl.cloud.tencent.com/document/product/555/35761?from_cn_redirect=1">DescribeBillSummaryByProduct</a>.
         :type BusinessCode: str
+        :param Context: Context information returned by the last request. You can set `Month` to `2023-05` for query by page to accelerate queries. We recommend users whose data volume is over 100 thousand entries use the paginated query feature, which can help greatly speed up your queries.
+        :type Context: str
+        :param PayerUin: 
+        :type PayerUin: str
         """
         self.Offset = None
         self.Limit = None
@@ -890,6 +936,8 @@ Note: To query the product codes used in the current month, call <a href="https:
         self.ActionType = None
         self.ProjectId = None
         self.BusinessCode = None
+        self.Context = None
+        self.PayerUin = None
 
 
     def _deserialize(self, params):
@@ -906,6 +954,8 @@ Note: To query the product codes used in the current month, call <a href="https:
         self.ActionType = params.get("ActionType")
         self.ProjectId = params.get("ProjectId")
         self.BusinessCode = params.get("BusinessCode")
+        self.Context = params.get("Context")
+        self.PayerUin = params.get("PayerUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -924,14 +974,17 @@ class DescribeBillDetailResponse(AbstractModel):
         r"""
         :param DetailSet: Details list
         :type DetailSet: list of BillDetail
-        :param Total: Total number of records
-Note: This field may return null, indicating that no valid value was found.
+        :param Total: 
+Note:  This field may return null, indicating that no valid values can be obtained.
         :type Total: int
+        :param Context: Context information returned by this request, and the value can be passed in as the value of parameters in the next request to accelerate queries. Note:  This field may return null, indicating that no valid values can be obtained.
+        :type Context: str
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self.DetailSet = None
         self.Total = None
+        self.Context = None
         self.RequestId = None
 
 
@@ -943,6 +996,7 @@ Note: This field may return null, indicating that no valid value was found.
                 obj._deserialize(item)
                 self.DetailSet.append(obj)
         self.Total = params.get("Total")
+        self.Context = params.get("Context")
         self.RequestId = params.get("RequestId")
 
 
@@ -953,11 +1007,11 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: Offset
+        :param Offset: Pagination offset. If `Offset` is `0`, it indicates the first page. If `Limit` is `100`, "`Offset` = `100`" indicates the second page, then "`Offset` = `200`" indicates the third page, and so on.
         :type Offset: int
         :param Limit: Quantity, maximum is 1000
         :type Limit: int
-        :param Month: Month; format: yyyy-mm. This value cannot be earlier than the month when Bill 2.0 is enabled. Last 24 months data are available.
+        :param Month: Bill month in the format of "yyyy-mm".  This value must be no earlier than March 2019, when Bill 2.0 was launched.
         :type Month: str
         :param PeriodType: The period type. byUsedTime: By usage period; byPayTime: by payment period. Must be the same as the period of the current monthly bill of the Billing Center. You can check your bill statistics period type at the top of the [Bill Overview](https://console.cloud.tencent.com/expense/bill/overview) page.
         :type PeriodType: str
@@ -992,6 +1046,8 @@ Monthly subscription refund
         :param BusinessCode: Product code
 Note: To query the product codes used in the current month, call <a href="https://intl.cloud.tencent.com/document/product/555/35761?from_cn_redirect=1">DescribeBillSummaryByProduct</a>.
         :type BusinessCode: str
+        :param PayerUin: 
+        :type PayerUin: str
         """
         self.Offset = None
         self.Limit = None
@@ -1002,6 +1058,7 @@ Note: To query the product codes used in the current month, call <a href="https:
         self.ResourceId = None
         self.PayMode = None
         self.BusinessCode = None
+        self.PayerUin = None
 
 
     def _deserialize(self, params):
@@ -1014,6 +1071,7 @@ Note: To query the product codes used in the current month, call <a href="https:
         self.ResourceId = params.get("ResourceId")
         self.PayMode = params.get("PayMode")
         self.BusinessCode = params.get("BusinessCode")
+        self.PayerUin = params.get("PayerUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1032,8 +1090,7 @@ class DescribeBillResourceSummaryResponse(AbstractModel):
         r"""
         :param ResourceSummarySet: Resource summary list
         :type ResourceSummarySet: list of BillResourceSummary
-        :param Total: Total number of resource summary lists
-Note: This field may return null, indicating that no valid value was found.
+        :param Total: Total number of resource summary lists, which will not be returned when `NeedRecordNum` is `0`. This field may return null, indicating that no valid values can be obtained.
         :type Total: int
         :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1093,7 +1150,7 @@ class DescribeBillSummaryByPayModeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Ready: Indicates whether or not the data is ready. 0 = not ready, 1 = ready.
+        :param Ready: Indicates whether the data is ready. `0`: Not ready. `1`: Ready. If `Ready` is `0`, it indicates the current UIN is initializing for the first billing. Wait for 5-10 minutes and try again.
         :type Ready: int
         :param SummaryOverview: Detailed cost distribution for all billing modes
 Note: This field may return null, indicating that no valid value was found.
@@ -1165,7 +1222,7 @@ class DescribeBillSummaryByProductResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Ready: Indicates whether or not the data is ready. 0 = not ready, 1 = ready.
+        :param Ready: Indicates whether the data is ready. `0`: Not ready. `1`: Ready. If `Ready` is `0`, it indicates the current UIN is initializing for the first billing. Wait for 5-10 minutes and try again.
         :type Ready: int
         :param SummaryTotal: Total cost details
 Note: This field may return null, indicating that no valid value was found.
@@ -1235,7 +1292,7 @@ class DescribeBillSummaryByProjectResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Ready: Indicates whether or not the data is ready. 0 = not ready, 1 = ready.
+        :param Ready: Indicates whether the data is ready. `0`: Not ready. `1`: Ready. If `Ready` is `0`, it indicates the current UIN is initializing for the first billing. Wait for 5-10 minutes and try again.
         :type Ready: int
         :param SummaryOverview: Detailed cost distribution for all projects
 Note: This field may return null, indicating that no valid value was found.
@@ -1298,7 +1355,7 @@ class DescribeBillSummaryByRegionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Ready: Indicates whether or not the data is ready. 0 = not ready, 1 = ready.
+        :param Ready: Indicates whether the data is ready. `0`: Not ready. `1`: Ready. If `Ready` is `0`, it indicates the current UIN is initializing for the first billing. Wait for 5-10 minutes and try again.
         :type Ready: int
         :param SummaryOverview: Detailed cost distribution for all regions
 Note: This field may return null, indicating that no valid value was found.
@@ -1369,7 +1426,7 @@ class DescribeBillSummaryByTagResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Ready: Indicates whether or not the data is ready. `0`: not ready; `1`: ready.
+        :param Ready: Indicates whether the data is ready. `0`: Not ready. `1`: Ready. If `Ready` is `0`, it indicates the current UIN is initializing for the first billing. Wait for 5-10 minutes and try again.
         :type Ready: int
         :param SummaryOverview: Details about cost distribution over different tags
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -1397,6 +1454,68 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         if params.get("SummaryTotal") is not None:
             self.SummaryTotal = SummaryTotal()
             self.SummaryTotal._deserialize(params.get("SummaryTotal"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBillSummaryRequest(AbstractModel):
+    """DescribeBillSummary request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Month: Bill month in the format of "2023-04"
+        :type Month: str
+        :param GroupType: Bill dimension. Valid values:  `business`, `project`, `region`, `payMode`, and `tag`
+        :type GroupType: str
+        :param TagKey: Tag key, which is used when `GroupType` is `tag`.
+        :type TagKey: list of str
+        """
+        self.Month = None
+        self.GroupType = None
+        self.TagKey = None
+
+
+    def _deserialize(self, params):
+        self.Month = params.get("Month")
+        self.GroupType = params.get("GroupType")
+        self.TagKey = params.get("TagKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBillSummaryResponse(AbstractModel):
+    """DescribeBillSummary response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Ready: Indicates whether the data is ready. `0`: Not ready. `1`: Ready.  If `Ready` is `0`, it indicates the current UIN is initializing for the first billing. Wait for 5-10 minutes and try again.
+        :type Ready: int
+        :param SummaryDetail: Detailed summary of costs by multiple dimensions
+        :type SummaryDetail: list of SummaryDetail
+        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self.Ready = None
+        self.SummaryDetail = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Ready = params.get("Ready")
+        if params.get("SummaryDetail") is not None:
+            self.SummaryDetail = []
+            for item in params.get("SummaryDetail"):
+                obj = SummaryDetail()
+                obj._deserialize(item)
+                self.SummaryDetail.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1673,61 +1792,61 @@ class ExcludedProducts(AbstractModel):
 
 
 class PayModeSummaryOverviewItem(AbstractModel):
-    """Detailed summary of purchases by billing mode
+    """Detailed summary of costs by billing mode
 
     """
 
     def __init__(self):
         r"""
-        :param PayMode: Billing mode
+        :param PayMode: Billing mode code
         :type PayMode: str
-        :param PayModeName: Billing mode name
+        :param PayModeName: Billing mode,  which can be monthly subscription or pay-as-you-go.
         :type PayModeName: str
-        :param RealTotalCost: Actual cost
-        :type RealTotalCost: str
         :param RealTotalCostRatio: Cost ratio, to two decimal points
         :type RealTotalCostRatio: str
-        :param Detail: Detailed summary of purchases by transaction type
-        :type Detail: list of ActionSummaryOverviewItem
-        :param CashPayAmount: Cash amount
+        :param RealTotalCost: Total amount after discount
+        :type RealTotalCost: str
+        :param CashPayAmount: Cash credit:  The amount paid from the user’s cash account
         :type CashPayAmount: str
-        :param IncentivePayAmount: Trial credit amount
+        :param IncentivePayAmount: Free credit:  The amount paid by the user’s free credit
         :type IncentivePayAmount: str
-        :param VoucherPayAmount: Voucher amount
+        :param VoucherPayAmount: Voucher payment:  The voucher deduction amount
         :type VoucherPayAmount: str
+        :param TransferPayAmount: Commission credit:  The amount paid by the user’s commission credit.
+        :type TransferPayAmount: str
         :param TotalCost: The original cost in USD. This parameter has become valid since v3.0 bills took effect in May 2021, and before that `-` was returned for this parameter. If a customer uses a contract price different from the published price, `-` will also be returned for this parameter.
         :type TotalCost: str
-        :param TransferPayAmount: Payment by commission credits
-        :type TransferPayAmount: str
+        :param Detail: Detailed summary of costs by transaction type
+        :type Detail: list of ActionSummaryOverviewItem
         """
         self.PayMode = None
         self.PayModeName = None
-        self.RealTotalCost = None
         self.RealTotalCostRatio = None
-        self.Detail = None
+        self.RealTotalCost = None
         self.CashPayAmount = None
         self.IncentivePayAmount = None
         self.VoucherPayAmount = None
-        self.TotalCost = None
         self.TransferPayAmount = None
+        self.TotalCost = None
+        self.Detail = None
 
 
     def _deserialize(self, params):
         self.PayMode = params.get("PayMode")
         self.PayModeName = params.get("PayModeName")
-        self.RealTotalCost = params.get("RealTotalCost")
         self.RealTotalCostRatio = params.get("RealTotalCostRatio")
+        self.RealTotalCost = params.get("RealTotalCost")
+        self.CashPayAmount = params.get("CashPayAmount")
+        self.IncentivePayAmount = params.get("IncentivePayAmount")
+        self.VoucherPayAmount = params.get("VoucherPayAmount")
+        self.TransferPayAmount = params.get("TransferPayAmount")
+        self.TotalCost = params.get("TotalCost")
         if params.get("Detail") is not None:
             self.Detail = []
             for item in params.get("Detail"):
                 obj = ActionSummaryOverviewItem()
                 obj._deserialize(item)
                 self.Detail.append(obj)
-        self.CashPayAmount = params.get("CashPayAmount")
-        self.IncentivePayAmount = params.get("IncentivePayAmount")
-        self.VoucherPayAmount = params.get("VoucherPayAmount")
-        self.TotalCost = params.get("TotalCost")
-        self.TransferPayAmount = params.get("TransferPayAmount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1746,48 +1865,48 @@ class ProjectSummaryOverviewItem(AbstractModel):
         r"""
         :param ProjectId: Project ID
         :type ProjectId: str
-        :param ProjectName: Project name
+        :param ProjectName: Project name:  The project to which a resource belongs, which is user-designated. If a resource has not been assigned to a project, it will automatically belong to the default project.
         :type ProjectName: str
-        :param RealTotalCost: Actual cost
-        :type RealTotalCost: str
         :param RealTotalCostRatio: Cost ratio, to two decimal points
         :type RealTotalCostRatio: str
-        :param CashPayAmount: Cash amount
+        :param RealTotalCost: Total amount after discount
+        :type RealTotalCost: str
+        :param CashPayAmount: Cash credit:  The amount paid from the user’s cash account
         :type CashPayAmount: str
-        :param IncentivePayAmount: Trial credit amount
+        :param IncentivePayAmount: Free credit:  The amount paid by the user’s free credit
         :type IncentivePayAmount: str
-        :param VoucherPayAmount: Voucher amount
+        :param VoucherPayAmount: Voucher payment:  The voucher deduction amount
         :type VoucherPayAmount: str
+        :param TransferPayAmount: Commission credit:  The amount paid by the user’s commission credit.
+        :type TransferPayAmount: str
         :param BillMonth: Billing month, e.g. `2019-08`
         :type BillMonth: str
         :param TotalCost: The original cost in USD. This parameter has become valid since v3.0 bills took effect in May 2021, and before that `-` was returned for this parameter. If a customer uses a contract price different from the published price, `-` will also be returned for this parameter.
         :type TotalCost: str
-        :param TransferPayAmount: Payment by commission credits
-        :type TransferPayAmount: str
         """
         self.ProjectId = None
         self.ProjectName = None
-        self.RealTotalCost = None
         self.RealTotalCostRatio = None
+        self.RealTotalCost = None
         self.CashPayAmount = None
         self.IncentivePayAmount = None
         self.VoucherPayAmount = None
+        self.TransferPayAmount = None
         self.BillMonth = None
         self.TotalCost = None
-        self.TransferPayAmount = None
 
 
     def _deserialize(self, params):
         self.ProjectId = params.get("ProjectId")
         self.ProjectName = params.get("ProjectName")
-        self.RealTotalCost = params.get("RealTotalCost")
         self.RealTotalCostRatio = params.get("RealTotalCostRatio")
+        self.RealTotalCost = params.get("RealTotalCost")
         self.CashPayAmount = params.get("CashPayAmount")
         self.IncentivePayAmount = params.get("IncentivePayAmount")
         self.VoucherPayAmount = params.get("VoucherPayAmount")
+        self.TransferPayAmount = params.get("TransferPayAmount")
         self.BillMonth = params.get("BillMonth")
         self.TotalCost = params.get("TotalCost")
-        self.TransferPayAmount = params.get("TransferPayAmount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1807,48 +1926,109 @@ class RegionSummaryOverviewItem(AbstractModel):
         :param RegionId: Region ID
 Note: This field may return null, indicating that no valid value was found.
         :type RegionId: str
-        :param RegionName: Region name
+        :param RegionName: Region:  The region to which a resource belongs, such as South China (Guangzhou).
         :type RegionName: str
-        :param RealTotalCost: Actual cost
-        :type RealTotalCost: str
         :param RealTotalCostRatio: Cost ratio, to two decimal points
         :type RealTotalCostRatio: str
-        :param CashPayAmount: Cash amount
+        :param RealTotalCost: Total amount after discount
+        :type RealTotalCost: str
+        :param CashPayAmount: Cash credit:  The amount paid from the user’s cash account
         :type CashPayAmount: str
-        :param IncentivePayAmount: Trial credit amount
+        :param IncentivePayAmount: Free credit:  The amount paid by the user’s free credit
         :type IncentivePayAmount: str
-        :param VoucherPayAmount: Voucher amount
+        :param VoucherPayAmount: Voucher payment:  The voucher deduction amount
         :type VoucherPayAmount: str
+        :param TransferPayAmount: Commission credit:  The amount paid by the user’s commission credit.
+        :type TransferPayAmount: str
         :param BillMonth: Billing month, e.g. `2019-08`
         :type BillMonth: str
         :param TotalCost: The original cost in USD. This parameter has become valid since v3.0 bills took effect in May 2021, and before that `-` was returned for this parameter. If a customer uses a contract price different from the published price, `-` will also be returned for this parameter.
         :type TotalCost: str
-        :param TransferPayAmount: Payment by commission credits
-        :type TransferPayAmount: str
         """
         self.RegionId = None
         self.RegionName = None
-        self.RealTotalCost = None
         self.RealTotalCostRatio = None
+        self.RealTotalCost = None
         self.CashPayAmount = None
         self.IncentivePayAmount = None
         self.VoucherPayAmount = None
+        self.TransferPayAmount = None
         self.BillMonth = None
         self.TotalCost = None
-        self.TransferPayAmount = None
 
 
     def _deserialize(self, params):
         self.RegionId = params.get("RegionId")
         self.RegionName = params.get("RegionName")
-        self.RealTotalCost = params.get("RealTotalCost")
         self.RealTotalCostRatio = params.get("RealTotalCostRatio")
+        self.RealTotalCost = params.get("RealTotalCost")
         self.CashPayAmount = params.get("CashPayAmount")
         self.IncentivePayAmount = params.get("IncentivePayAmount")
         self.VoucherPayAmount = params.get("VoucherPayAmount")
+        self.TransferPayAmount = params.get("TransferPayAmount")
         self.BillMonth = params.get("BillMonth")
         self.TotalCost = params.get("TotalCost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SummaryDetail(AbstractModel):
+    """Detailed summary of costs by multiple dimensions
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupKey: Bill dimension code. Note:  This field may return null, indicating that no valid values can be obtained.
+        :type GroupKey: str
+        :param GroupValue: Bill dimension value. Note:  This field may return null, indicating that no valid values can be obtained.
+        :type GroupValue: str
+        :param TotalCost: Original cost in USD. This parameter has become valid since Bill 3.0 took effect in May 2021, and before that `-` was returned for this parameter. If a customer has applied for a contract price different from the prices listed on the official website, `-` will also be returned for this parameter.
+        :type TotalCost: str
+        :param RealTotalCost: Total amount after discount
+        :type RealTotalCost: str
+        :param CashPayAmount: Cash credit:  The amount paid from the user’s cash account
+        :type CashPayAmount: str
+        :param IncentivePayAmount: Free credit:  The amount paid by the user’s free credit
+        :type IncentivePayAmount: str
+        :param VoucherPayAmount: Voucher payment:  The voucher deduction amount
+        :type VoucherPayAmount: str
+        :param TransferPayAmount: Commission credit:  The amount paid by the user’s commission credit. Note:  This field may return null, indicating that no valid values can be obtained.
+        :type TransferPayAmount: str
+        :param Business: Detailed summary of products. Note:  This field may return null, indicating that no valid values can be obtained.
+        :type Business: list of BusinessSummaryInfo
+        """
+        self.GroupKey = None
+        self.GroupValue = None
+        self.TotalCost = None
+        self.RealTotalCost = None
+        self.CashPayAmount = None
+        self.IncentivePayAmount = None
+        self.VoucherPayAmount = None
+        self.TransferPayAmount = None
+        self.Business = None
+
+
+    def _deserialize(self, params):
+        self.GroupKey = params.get("GroupKey")
+        self.GroupValue = params.get("GroupValue")
+        self.TotalCost = params.get("TotalCost")
+        self.RealTotalCost = params.get("RealTotalCost")
+        self.CashPayAmount = params.get("CashPayAmount")
+        self.IncentivePayAmount = params.get("IncentivePayAmount")
+        self.VoucherPayAmount = params.get("VoucherPayAmount")
         self.TransferPayAmount = params.get("TransferPayAmount")
+        if params.get("Business") is not None:
+            self.Business = []
+            for item in params.get("Business"):
+                obj = BusinessSummaryInfo()
+                obj._deserialize(item)
+                self.Business.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1865,8 +2045,7 @@ class SummaryTotal(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RealTotalCost: Total cost
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param RealTotalCost: Total amount after discount. Note:  This field may return null, indicating that no valid values can be obtained.
         :type RealTotalCost: str
         :param TotalCost: The original cost in USD. This parameter has become valid since v3.0 bills took effect in May 2021, and before that `-` was returned for this parameter. If a customer uses a contract price different from the published price, `-` will also be returned for this parameter.
 Note: this field may return `null`, indicating that no valid values can be obtained.
@@ -1898,47 +2077,42 @@ class TagSummaryOverviewItem(AbstractModel):
         :param TagValue: Tag value
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TagValue: str
-        :param RealTotalCost: Actual cost
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type RealTotalCost: str
         :param RealTotalCostRatio: Cost percentage rounded to two decimal places
 Note: This field may return null, indicating that no valid values can be obtained.
         :type RealTotalCostRatio: str
+        :param RealTotalCost: Total amount after discount. Note:  This field may return null, indicating that no valid values can be obtained.
+        :type RealTotalCost: str
+        :param CashPayAmount: Cash credit:  The amount paid from the user’s cash account. Note:  This field may return null, indicating that no valid values can be obtained.
+        :type CashPayAmount: str
+        :param IncentivePayAmount: Free credit:  The amount paid by the user’s free credit. Note:  This field may return null, indicating that no valid values can be obtained.
+        :type IncentivePayAmount: str
+        :param VoucherPayAmount: Voucher payment:  The voucher deduction amount. Note:  This field may return null, indicating that no valid values can be obtained.
+        :type VoucherPayAmount: str
+        :param TransferPayAmount: Commission credit:  The amount paid by the user’s commission credit. Note:  This field may return null, indicating that no valid values can be obtained.
+        :type TransferPayAmount: str
         :param TotalCost: The original cost in USD. This parameter has become valid since v3.0 bills took effect in May 2021, and before that `-` was returned for this parameter. If a customer uses a contract price different from the published price, `-` will also be returned for this parameter.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type TotalCost: str
-        :param CashPayAmount: Payment by cash credits
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type CashPayAmount: str
-        :param IncentivePayAmount: Payment by free credits
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type IncentivePayAmount: str
-        :param VoucherPayAmount: Payment by vouchers
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type VoucherPayAmount: str
-        :param TransferPayAmount: Payment by commission credits
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type TransferPayAmount: str
         """
         self.TagValue = None
-        self.RealTotalCost = None
         self.RealTotalCostRatio = None
-        self.TotalCost = None
+        self.RealTotalCost = None
         self.CashPayAmount = None
         self.IncentivePayAmount = None
         self.VoucherPayAmount = None
         self.TransferPayAmount = None
+        self.TotalCost = None
 
 
     def _deserialize(self, params):
         self.TagValue = params.get("TagValue")
-        self.RealTotalCost = params.get("RealTotalCost")
         self.RealTotalCostRatio = params.get("RealTotalCostRatio")
-        self.TotalCost = params.get("TotalCost")
+        self.RealTotalCost = params.get("RealTotalCost")
         self.CashPayAmount = params.get("CashPayAmount")
         self.IncentivePayAmount = params.get("IncentivePayAmount")
         self.VoucherPayAmount = params.get("VoucherPayAmount")
         self.TransferPayAmount = params.get("TransferPayAmount")
+        self.TotalCost = params.get("TotalCost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

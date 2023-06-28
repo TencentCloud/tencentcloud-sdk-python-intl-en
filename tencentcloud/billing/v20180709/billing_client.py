@@ -50,7 +50,8 @@ class BillingClient(AbstractClient):
 
 
     def DescribeBillDetail(self, request):
-        """This API is used to query bill details.
+        """This API is used to get bill details.
+        Notes: 1. The API request may fail due to network instability or other exceptions. In this case, we recommend you manually retry the request when the API request fails. 2. If the volume of your bill data is high (for example, if over 200 thousand bill entries are generated for a month), bill data query via APIs may be slow. We recommend you enable bill storage so that you can obtain bill files from COS buckets for analysis. For details, see [Saving Bills to COS](https://intl.cloud.tencent.com/document/product/555/61275?from_cn_redirect=1).
 
         :param request: Request instance for DescribeBillDetail.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillDetailRequest`
@@ -95,8 +96,31 @@ class BillingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBillSummary(self, request):
+        """This API is used to get bill details by product, project, region, billing mode, and tag through passing in parameters.
+
+        :param request: Request instance for DescribeBillSummary.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillSummaryRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeBillSummaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBillSummary", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBillSummaryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBillSummaryByPayMode(self, request):
-        """Gets the bill summarized according to billing mode
+        """This API is used to get the bill summarized by billing mode.
 
         :param request: Request instance for DescribeBillSummaryByPayMode.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillSummaryByPayModeRequest`

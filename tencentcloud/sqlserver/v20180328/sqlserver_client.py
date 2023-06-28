@@ -187,6 +187,52 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateCloudDBInstances(self, request):
+        """This API is used to create a high-availability instance of cloud disk edition.
+
+        :param request: Request instance for CreateCloudDBInstances.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.CreateCloudDBInstancesRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.CreateCloudDBInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCloudDBInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCloudDBInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateCloudReadOnlyDBInstances(self, request):
+        """This API is used to add a read-only replica instance of cloud disk edition.
+
+        :param request: Request instance for CreateCloudReadOnlyDBInstances.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.CreateCloudReadOnlyDBInstancesRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.CreateCloudReadOnlyDBInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCloudReadOnlyDBInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCloudReadOnlyDBInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateDB(self, request):
         """This API is used to create a database.
 

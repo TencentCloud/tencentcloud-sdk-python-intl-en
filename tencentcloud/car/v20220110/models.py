@@ -86,17 +86,31 @@ class CreateSessionRequest(AbstractModel):
         :type UserId: str
         :param UserIp: Public IP of user’s application client, which is used for nearby scheduling.
         :type UserIp: str
-        :param ClientSession: The client-side session data, which is obtained from the SDK.
+        :param ClientSession: The client-side session data, which is obtained from the SDK. If `RunMode` is `RunWithoutClient`, this parameter can be null.
         :type ClientSession: str
         :param RunMode: The on-cloud running mode.
 `RunWithoutClient`: Keep the application running on the cloud even when there are no client connections.
 Empty string (default): Keep the application running on the cloud only when there are client connections.
         :type RunMode: str
+        :param ApplicationParameters: Application startup parameter.
+If the user requests a multi-application project or a prelaunch-disabled single-application project, this parameter takes effect.
+If the user requests a prelaunch-enabled single-application project, this parameter is invalid.
+        :type ApplicationParameters: str
+        :param HostUserId: The user ID of the host in **multi-person interaction** scenarios, which is required.
+If the current user is the host, `HostUserId` must be the same as their `UserId`; otherwise, `HostUserId` should be the host's `UserId`.
+        :type HostUserId: str
+        :param Role: The role in **multi-person interaction** scenarios. Valid values:
+`Player`: A user who can operate an application by using a keyboard and mouse
+`Viewer`: A user who can only watch the video in the room but cannot operate the application
+        :type Role: str
         """
         self.UserId = None
         self.UserIp = None
         self.ClientSession = None
         self.RunMode = None
+        self.ApplicationParameters = None
+        self.HostUserId = None
+        self.Role = None
 
 
     def _deserialize(self, params):
@@ -104,6 +118,9 @@ Empty string (default): Keep the application running on the cloud only when ther
         self.UserIp = params.get("UserIp")
         self.ClientSession = params.get("ClientSession")
         self.RunMode = params.get("RunMode")
+        self.ApplicationParameters = params.get("ApplicationParameters")
+        self.HostUserId = params.get("HostUserId")
+        self.Role = params.get("Role")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
