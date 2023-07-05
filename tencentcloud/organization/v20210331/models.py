@@ -25,26 +25,51 @@ class AddOrganizationNodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ParentNodeId: Parent node ID, which can be obtained through the `DescribeOrganizationNodes` API.
+        :param _ParentNodeId: Parent node ID, which can be obtained through the `DescribeOrganizationNodes` API.
         :type ParentNodeId: int
-        :param Name: Node name, which can contain up to 40 letters, digits, and symbols `+@&._[]-`.
+        :param _Name: Node name, which can contain up to 40 letters, digits, and symbols `+@&._[]-`.
         :type Name: str
-        :param Remark: Remarks.
+        :param _Remark: Remarks.
         :type Remark: str
         """
-        self.ParentNodeId = None
-        self.Name = None
-        self.Remark = None
+        self._ParentNodeId = None
+        self._Name = None
+        self._Remark = None
+
+    @property
+    def ParentNodeId(self):
+        return self._ParentNodeId
+
+    @ParentNodeId.setter
+    def ParentNodeId(self, ParentNodeId):
+        self._ParentNodeId = ParentNodeId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
 
 
     def _deserialize(self, params):
-        self.ParentNodeId = params.get("ParentNodeId")
-        self.Name = params.get("Name")
-        self.Remark = params.get("Remark")
+        self._ParentNodeId = params.get("ParentNodeId")
+        self._Name = params.get("Name")
+        self._Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -57,18 +82,34 @@ class AddOrganizationNodeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NodeId: Node ID.
+        :param _NodeId: Node ID.
         :type NodeId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.NodeId = None
-        self.RequestId = None
+        self._NodeId = None
+        self._RequestId = None
+
+    @property
+    def NodeId(self):
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.NodeId = params.get("NodeId")
-        self.RequestId = params.get("RequestId")
+        self._NodeId = params.get("NodeId")
+        self._RequestId = params.get("RequestId")
 
 
 class BindOrganizationMemberAuthAccountRequest(AbstractModel):
@@ -78,26 +119,51 @@ class BindOrganizationMemberAuthAccountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MemberUin: Member UIN.
+        :param _MemberUin: Member UIN.
         :type MemberUin: int
-        :param PolicyId: Policy ID, which can be obtained through the `DescribeOrganizationMemberPolicies` API.
+        :param _PolicyId: Policy ID, which can be obtained through the `DescribeOrganizationMemberPolicies` API.
         :type PolicyId: int
-        :param OrgSubAccountUins: List of sub-account UINs of the organization admin, which can contain up to five UINs.
+        :param _OrgSubAccountUins: List of sub-account UINs of the organization admin, which can contain up to five UINs.
         :type OrgSubAccountUins: list of int
         """
-        self.MemberUin = None
-        self.PolicyId = None
-        self.OrgSubAccountUins = None
+        self._MemberUin = None
+        self._PolicyId = None
+        self._OrgSubAccountUins = None
+
+    @property
+    def MemberUin(self):
+        return self._MemberUin
+
+    @MemberUin.setter
+    def MemberUin(self, MemberUin):
+        self._MemberUin = MemberUin
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def OrgSubAccountUins(self):
+        return self._OrgSubAccountUins
+
+    @OrgSubAccountUins.setter
+    def OrgSubAccountUins(self, OrgSubAccountUins):
+        self._OrgSubAccountUins = OrgSubAccountUins
 
 
     def _deserialize(self, params):
-        self.MemberUin = params.get("MemberUin")
-        self.PolicyId = params.get("PolicyId")
-        self.OrgSubAccountUins = params.get("OrgSubAccountUins")
+        self._MemberUin = params.get("MemberUin")
+        self._PolicyId = params.get("PolicyId")
+        self._OrgSubAccountUins = params.get("OrgSubAccountUins")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -110,14 +176,22 @@ class BindOrganizationMemberAuthAccountResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CancelOrganizationMemberAuthAccountRequest(AbstractModel):
@@ -127,26 +201,51 @@ class CancelOrganizationMemberAuthAccountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MemberUin: Member UIN.
+        :param _MemberUin: Member UIN.
         :type MemberUin: int
-        :param PolicyId: Policy ID.
+        :param _PolicyId: Policy ID.
         :type PolicyId: int
-        :param OrgSubAccountUin: Organization sub-account UIN.
+        :param _OrgSubAccountUin: Organization sub-account UIN.
         :type OrgSubAccountUin: int
         """
-        self.MemberUin = None
-        self.PolicyId = None
-        self.OrgSubAccountUin = None
+        self._MemberUin = None
+        self._PolicyId = None
+        self._OrgSubAccountUin = None
+
+    @property
+    def MemberUin(self):
+        return self._MemberUin
+
+    @MemberUin.setter
+    def MemberUin(self, MemberUin):
+        self._MemberUin = MemberUin
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def OrgSubAccountUin(self):
+        return self._OrgSubAccountUin
+
+    @OrgSubAccountUin.setter
+    def OrgSubAccountUin(self, OrgSubAccountUin):
+        self._OrgSubAccountUin = OrgSubAccountUin
 
 
     def _deserialize(self, params):
-        self.MemberUin = params.get("MemberUin")
-        self.PolicyId = params.get("PolicyId")
-        self.OrgSubAccountUin = params.get("OrgSubAccountUin")
+        self._MemberUin = params.get("MemberUin")
+        self._PolicyId = params.get("PolicyId")
+        self._OrgSubAccountUin = params.get("OrgSubAccountUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -159,14 +258,22 @@ class CancelOrganizationMemberAuthAccountResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateOrganizationMemberPolicyRequest(AbstractModel):
@@ -176,30 +283,63 @@ class CreateOrganizationMemberPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MemberUin: Member UIN.
+        :param _MemberUin: Member UIN.
         :type MemberUin: int
-        :param PolicyName: Policy name, which can contain up to 128 letters, digits, and symbols `+=,.@_-`.
+        :param _PolicyName: Policy name, which can contain up to 128 letters, digits, and symbols `+=,.@_-`.
         :type PolicyName: str
-        :param IdentityId: Member access identity ID, which can be obtained through the `DescribeOrganizationMemberAuthIdentities` API.
+        :param _IdentityId: Member access identity ID, which can be obtained through the `DescribeOrganizationMemberAuthIdentities` API.
         :type IdentityId: int
-        :param Description: Description.
+        :param _Description: Description.
         :type Description: str
         """
-        self.MemberUin = None
-        self.PolicyName = None
-        self.IdentityId = None
-        self.Description = None
+        self._MemberUin = None
+        self._PolicyName = None
+        self._IdentityId = None
+        self._Description = None
+
+    @property
+    def MemberUin(self):
+        return self._MemberUin
+
+    @MemberUin.setter
+    def MemberUin(self, MemberUin):
+        self._MemberUin = MemberUin
+
+    @property
+    def PolicyName(self):
+        return self._PolicyName
+
+    @PolicyName.setter
+    def PolicyName(self, PolicyName):
+        self._PolicyName = PolicyName
+
+    @property
+    def IdentityId(self):
+        return self._IdentityId
+
+    @IdentityId.setter
+    def IdentityId(self, IdentityId):
+        self._IdentityId = IdentityId
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
 
     def _deserialize(self, params):
-        self.MemberUin = params.get("MemberUin")
-        self.PolicyName = params.get("PolicyName")
-        self.IdentityId = params.get("IdentityId")
-        self.Description = params.get("Description")
+        self._MemberUin = params.get("MemberUin")
+        self._PolicyName = params.get("PolicyName")
+        self._IdentityId = params.get("IdentityId")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -212,19 +352,35 @@ class CreateOrganizationMemberPolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PolicyId: Policy ID.
+        :param _PolicyId: Policy ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PolicyId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.PolicyId = None
-        self.RequestId = None
+        self._PolicyId = None
+        self._RequestId = None
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.PolicyId = params.get("PolicyId")
-        self.RequestId = params.get("RequestId")
+        self._PolicyId = params.get("PolicyId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateOrganizationMemberRequest(AbstractModel):
@@ -234,54 +390,135 @@ class CreateOrganizationMemberRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: Member name, which can contain up to 25 letters, digits, and symbols `+@&._[]-:,`.
+        :param _Name: Member name, which can contain up to 25 letters, digits, and symbols `+@&._[]-:,`.
         :type Name: str
-        :param PolicyType: Relationship policy. Valid value: `Financial`.
+        :param _PolicyType: Relationship policy. Valid value: `Financial`.
         :type PolicyType: str
-        :param PermissionIds: List of member financial permission IDs. `7` indicates paying, which is the default value.
+        :param _PermissionIds: List of member financial permission IDs. `7` indicates paying, which is the default value.
         :type PermissionIds: list of int non-negative
-        :param NodeId: ID of the node of the member's department, which can be obtained through the `DescribeOrganizationNodes` API.
+        :param _NodeId: ID of the node of the member's department, which can be obtained through the `DescribeOrganizationNodes` API.
         :type NodeId: int
-        :param AccountName: Account name, which can contain up to 25 letters, digits, and symbols `+@&._[]-:,`.
+        :param _AccountName: Account name, which can contain up to 25 letters, digits, and symbols `+@&._[]-:,`.
         :type AccountName: str
-        :param Remark: Remarks.
+        :param _Remark: Remarks.
         :type Remark: str
-        :param RecordId: Member creation record ID, which is required during retry upon creation exception.
+        :param _RecordId: Member creation record ID, which is required during retry upon creation exception.
         :type RecordId: int
-        :param PayUin: Payer UIN, which is required during paying for a member.
+        :param _PayUin: Payer UIN, which is required during paying for a member.
         :type PayUin: str
-        :param IdentityRoleID: List of member access identity IDs, which can be obtained through the `ListOrganizationIdentity` API. `1` indicates supported, which is the default value.
+        :param _IdentityRoleID: List of member access identity IDs, which can be obtained through the `ListOrganizationIdentity` API. `1` indicates supported, which is the default value.
         :type IdentityRoleID: list of int non-negative
-        :param AuthRelationId: Verified entity relationship ID, which is required during creating members for different entities.
+        :param _AuthRelationId: Verified entity relationship ID, which is required during creating members for different entities.
         :type AuthRelationId: int
         """
-        self.Name = None
-        self.PolicyType = None
-        self.PermissionIds = None
-        self.NodeId = None
-        self.AccountName = None
-        self.Remark = None
-        self.RecordId = None
-        self.PayUin = None
-        self.IdentityRoleID = None
-        self.AuthRelationId = None
+        self._Name = None
+        self._PolicyType = None
+        self._PermissionIds = None
+        self._NodeId = None
+        self._AccountName = None
+        self._Remark = None
+        self._RecordId = None
+        self._PayUin = None
+        self._IdentityRoleID = None
+        self._AuthRelationId = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def PolicyType(self):
+        return self._PolicyType
+
+    @PolicyType.setter
+    def PolicyType(self, PolicyType):
+        self._PolicyType = PolicyType
+
+    @property
+    def PermissionIds(self):
+        return self._PermissionIds
+
+    @PermissionIds.setter
+    def PermissionIds(self, PermissionIds):
+        self._PermissionIds = PermissionIds
+
+    @property
+    def NodeId(self):
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def AccountName(self):
+        return self._AccountName
+
+    @AccountName.setter
+    def AccountName(self, AccountName):
+        self._AccountName = AccountName
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def RecordId(self):
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+    @property
+    def PayUin(self):
+        return self._PayUin
+
+    @PayUin.setter
+    def PayUin(self, PayUin):
+        self._PayUin = PayUin
+
+    @property
+    def IdentityRoleID(self):
+        return self._IdentityRoleID
+
+    @IdentityRoleID.setter
+    def IdentityRoleID(self, IdentityRoleID):
+        self._IdentityRoleID = IdentityRoleID
+
+    @property
+    def AuthRelationId(self):
+        return self._AuthRelationId
+
+    @AuthRelationId.setter
+    def AuthRelationId(self, AuthRelationId):
+        self._AuthRelationId = AuthRelationId
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.PolicyType = params.get("PolicyType")
-        self.PermissionIds = params.get("PermissionIds")
-        self.NodeId = params.get("NodeId")
-        self.AccountName = params.get("AccountName")
-        self.Remark = params.get("Remark")
-        self.RecordId = params.get("RecordId")
-        self.PayUin = params.get("PayUin")
-        self.IdentityRoleID = params.get("IdentityRoleID")
-        self.AuthRelationId = params.get("AuthRelationId")
+        self._Name = params.get("Name")
+        self._PolicyType = params.get("PolicyType")
+        self._PermissionIds = params.get("PermissionIds")
+        self._NodeId = params.get("NodeId")
+        self._AccountName = params.get("AccountName")
+        self._Remark = params.get("Remark")
+        self._RecordId = params.get("RecordId")
+        self._PayUin = params.get("PayUin")
+        self._IdentityRoleID = params.get("IdentityRoleID")
+        self._AuthRelationId = params.get("AuthRelationId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -294,19 +531,35 @@ class CreateOrganizationMemberResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Uin: Member UIN.
+        :param _Uin: Member UIN.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Uin: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Uin = None
-        self.RequestId = None
+        self._Uin = None
+        self._RequestId = None
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Uin = params.get("Uin")
-        self.RequestId = params.get("RequestId")
+        self._Uin = params.get("Uin")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteOrganizationMembersRequest(AbstractModel):
@@ -316,18 +569,27 @@ class DeleteOrganizationMembersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MemberUin: List of UINs of the members to be deleted.
+        :param _MemberUin: List of UINs of the members to be deleted.
         :type MemberUin: list of int
         """
-        self.MemberUin = None
+        self._MemberUin = None
+
+    @property
+    def MemberUin(self):
+        return self._MemberUin
+
+    @MemberUin.setter
+    def MemberUin(self, MemberUin):
+        self._MemberUin = MemberUin
 
 
     def _deserialize(self, params):
-        self.MemberUin = params.get("MemberUin")
+        self._MemberUin = params.get("MemberUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -340,14 +602,22 @@ class DeleteOrganizationMembersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteOrganizationNodesRequest(AbstractModel):
@@ -357,18 +627,27 @@ class DeleteOrganizationNodesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NodeId: List of node IDs.
+        :param _NodeId: List of node IDs.
         :type NodeId: list of int
         """
-        self.NodeId = None
+        self._NodeId = None
+
+    @property
+    def NodeId(self):
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
 
 
     def _deserialize(self, params):
-        self.NodeId = params.get("NodeId")
+        self._NodeId = params.get("NodeId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -381,14 +660,22 @@ class DeleteOrganizationNodesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeOrganizationMemberAuthAccountsRequest(AbstractModel):
@@ -398,30 +685,63 @@ class DescribeOrganizationMemberAuthAccountsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: Offset.
+        :param _Offset: Offset.
         :type Offset: int
-        :param Limit: Maximum number of returned results.
+        :param _Limit: Maximum number of returned results.
         :type Limit: int
-        :param MemberUin: Member UIN.
+        :param _MemberUin: Member UIN.
         :type MemberUin: int
-        :param PolicyId: Policy ID.
+        :param _PolicyId: Policy ID.
         :type PolicyId: int
         """
-        self.Offset = None
-        self.Limit = None
-        self.MemberUin = None
-        self.PolicyId = None
+        self._Offset = None
+        self._Limit = None
+        self._MemberUin = None
+        self._PolicyId = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def MemberUin(self):
+        return self._MemberUin
+
+    @MemberUin.setter
+    def MemberUin(self, MemberUin):
+        self._MemberUin = MemberUin
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
 
 
     def _deserialize(self, params):
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.MemberUin = params.get("MemberUin")
-        self.PolicyId = params.get("PolicyId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._MemberUin = params.get("MemberUin")
+        self._PolicyId = params.get("PolicyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -434,29 +754,53 @@ class DescribeOrganizationMemberAuthAccountsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Items: List
+        :param _Items: List
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Items: list of OrgMemberAuthAccount
-        :param Total: Total number
+        :param _Total: Total number
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Total: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Items = None
-        self.Total = None
-        self.RequestId = None
+        self._Items = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Items") is not None:
-            self.Items = []
+            self._Items = []
             for item in params.get("Items"):
                 obj = OrgMemberAuthAccount()
                 obj._deserialize(item)
-                self.Items.append(obj)
-        self.Total = params.get("Total")
-        self.RequestId = params.get("RequestId")
+                self._Items.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeOrganizationMemberAuthIdentitiesRequest(AbstractModel):
@@ -466,26 +810,51 @@ class DescribeOrganizationMemberAuthIdentitiesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: Offset, which is an integer multiple of the value of `Limit`. Default value: `0`.
+        :param _Offset: Offset, which is an integer multiple of the value of `Limit`. Default value: `0`.
         :type Offset: int
-        :param Limit: Limit, which defaults to `10`. Value range: 1-50.
+        :param _Limit: Limit, which defaults to `10`. Value range: 1-50.
         :type Limit: int
-        :param MemberUin: Organization member UIN.
+        :param _MemberUin: Organization member UIN.
         :type MemberUin: int
         """
-        self.Offset = None
-        self.Limit = None
-        self.MemberUin = None
+        self._Offset = None
+        self._Limit = None
+        self._MemberUin = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def MemberUin(self):
+        return self._MemberUin
+
+    @MemberUin.setter
+    def MemberUin(self, MemberUin):
+        self._MemberUin = MemberUin
 
 
     def _deserialize(self, params):
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.MemberUin = params.get("MemberUin")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._MemberUin = params.get("MemberUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -498,29 +867,53 @@ class DescribeOrganizationMemberAuthIdentitiesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Items: List of authorizable identities
+        :param _Items: List of authorizable identities
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Items: list of OrgMemberAuthIdentity
-        :param Total: Total number.
+        :param _Total: Total number.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Total: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Items = None
-        self.Total = None
-        self.RequestId = None
+        self._Items = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Items") is not None:
-            self.Items = []
+            self._Items = []
             for item in params.get("Items"):
                 obj = OrgMemberAuthIdentity()
                 obj._deserialize(item)
-                self.Items.append(obj)
-        self.Total = params.get("Total")
-        self.RequestId = params.get("RequestId")
+                self._Items.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeOrganizationMemberPoliciesRequest(AbstractModel):
@@ -530,30 +923,63 @@ class DescribeOrganizationMemberPoliciesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: Offset.
+        :param _Offset: Offset.
         :type Offset: int
-        :param Limit: Maximum number of returned results. Maximum value: `50`.
+        :param _Limit: Maximum number of returned results. Maximum value: `50`.
         :type Limit: int
-        :param MemberUin: Member UIN.
+        :param _MemberUin: Member UIN.
         :type MemberUin: int
-        :param SearchKey: Search keyword, which can be the policy name or description.
+        :param _SearchKey: Search keyword, which can be the policy name or description.
         :type SearchKey: str
         """
-        self.Offset = None
-        self.Limit = None
-        self.MemberUin = None
-        self.SearchKey = None
+        self._Offset = None
+        self._Limit = None
+        self._MemberUin = None
+        self._SearchKey = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def MemberUin(self):
+        return self._MemberUin
+
+    @MemberUin.setter
+    def MemberUin(self, MemberUin):
+        self._MemberUin = MemberUin
+
+    @property
+    def SearchKey(self):
+        return self._SearchKey
+
+    @SearchKey.setter
+    def SearchKey(self, SearchKey):
+        self._SearchKey = SearchKey
 
 
     def _deserialize(self, params):
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.MemberUin = params.get("MemberUin")
-        self.SearchKey = params.get("SearchKey")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._MemberUin = params.get("MemberUin")
+        self._SearchKey = params.get("SearchKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -566,29 +992,53 @@ class DescribeOrganizationMemberPoliciesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Items: List.
+        :param _Items: List.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Items: list of OrgMemberPolicy
-        :param Total: Total number.
+        :param _Total: Total number.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Total: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Items = None
-        self.Total = None
-        self.RequestId = None
+        self._Items = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Items") is not None:
-            self.Items = []
+            self._Items = []
             for item in params.get("Items"):
                 obj = OrgMemberPolicy()
                 obj._deserialize(item)
-                self.Items.append(obj)
-        self.Total = params.get("Total")
-        self.RequestId = params.get("RequestId")
+                self._Items.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeOrganizationMembersRequest(AbstractModel):
@@ -598,38 +1048,87 @@ class DescribeOrganizationMembersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: Offset, which is an integer multiple of the value of `Limit`. Default value: `0`.
+        :param _Offset: Offset, which is an integer multiple of the value of `Limit`. Default value: `0`.
         :type Offset: int
-        :param Limit: Limit, which defaults to `10`. Value range: 1-50.
+        :param _Limit: Limit, which defaults to `10`. Value range: 1-50.
         :type Limit: int
-        :param Lang: Valid values: `en` (Tencent Cloud International); `zh` (Tencent Cloud).
+        :param _Lang: Valid values: `en` (Tencent Cloud International); `zh` (Tencent Cloud).
         :type Lang: str
-        :param SearchKey: Search by member name or ID.
+        :param _SearchKey: Search by member name or ID.
         :type SearchKey: str
-        :param AuthName: Entity name.
+        :param _AuthName: Entity name.
         :type AuthName: str
-        :param Product: Abbreviation of the trusted service, which is required during querying the trusted service admin.
+        :param _Product: Abbreviation of the trusted service, which is required during querying the trusted service admin.
         :type Product: str
         """
-        self.Offset = None
-        self.Limit = None
-        self.Lang = None
-        self.SearchKey = None
-        self.AuthName = None
-        self.Product = None
+        self._Offset = None
+        self._Limit = None
+        self._Lang = None
+        self._SearchKey = None
+        self._AuthName = None
+        self._Product = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Lang(self):
+        return self._Lang
+
+    @Lang.setter
+    def Lang(self, Lang):
+        self._Lang = Lang
+
+    @property
+    def SearchKey(self):
+        return self._SearchKey
+
+    @SearchKey.setter
+    def SearchKey(self, SearchKey):
+        self._SearchKey = SearchKey
+
+    @property
+    def AuthName(self):
+        return self._AuthName
+
+    @AuthName.setter
+    def AuthName(self, AuthName):
+        self._AuthName = AuthName
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
 
 
     def _deserialize(self, params):
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.Lang = params.get("Lang")
-        self.SearchKey = params.get("SearchKey")
-        self.AuthName = params.get("AuthName")
-        self.Product = params.get("Product")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Lang = params.get("Lang")
+        self._SearchKey = params.get("SearchKey")
+        self._AuthName = params.get("AuthName")
+        self._Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -642,27 +1141,51 @@ class DescribeOrganizationMembersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Items: Member list.
+        :param _Items: Member list.
         :type Items: list of OrgMember
-        :param Total: Total number.
+        :param _Total: Total number.
         :type Total: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Items = None
-        self.Total = None
-        self.RequestId = None
+        self._Items = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Items") is not None:
-            self.Items = []
+            self._Items = []
             for item in params.get("Items"):
                 obj = OrgMember()
                 obj._deserialize(item)
-                self.Items.append(obj)
-        self.Total = params.get("Total")
-        self.RequestId = params.get("RequestId")
+                self._Items.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeOrganizationNodesRequest(AbstractModel):
@@ -672,22 +1195,39 @@ class DescribeOrganizationNodesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: Maximum number of returned results. Maximum value: `50`.
+        :param _Limit: Maximum number of returned results. Maximum value: `50`.
         :type Limit: int
-        :param Offset: Offset.
+        :param _Offset: Offset.
         :type Offset: int
         """
-        self.Limit = None
-        self.Offset = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -700,29 +1240,53 @@ class DescribeOrganizationNodesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Total: Total number.
+        :param _Total: Total number.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Total: int
-        :param Items: List details.
+        :param _Items: List details.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Items: list of OrgNode
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Total = None
-        self.Items = None
-        self.RequestId = None
+        self._Total = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Total = params.get("Total")
+        self._Total = params.get("Total")
         if params.get("Items") is not None:
-            self.Items = []
+            self._Items = []
             for item in params.get("Items"):
                 obj = OrgNode()
                 obj._deserialize(item)
-                self.Items.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeOrganizationRequest(AbstractModel):
@@ -732,22 +1296,39 @@ class DescribeOrganizationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Lang: Valid values: `en` (Tencent Cloud International); `zh` (Tencent Cloud).
+        :param _Lang: Valid values: `en` (Tencent Cloud International); `zh` (Tencent Cloud).
         :type Lang: str
-        :param Product: Abbreviation of the trusted service, which is required during querying the trusted service admin.
+        :param _Product: Abbreviation of the trusted service, which is required during querying the trusted service admin.
         :type Product: str
         """
-        self.Lang = None
-        self.Product = None
+        self._Lang = None
+        self._Product = None
+
+    @property
+    def Lang(self):
+        return self._Lang
+
+    @Lang.setter
+    def Lang(self, Lang):
+        self._Lang = Lang
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
 
 
     def _deserialize(self, params):
-        self.Lang = params.get("Lang")
-        self.Product = params.get("Product")
+        self._Lang = params.get("Lang")
+        self._Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -760,99 +1341,235 @@ class DescribeOrganizationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OrgId: Organization ID.
+        :param _OrgId: Organization ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OrgId: int
-        :param HostUin: Creator UIN.
+        :param _HostUin: Creator UIN.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type HostUin: int
-        :param NickName: Creator name.
+        :param _NickName: Creator name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type NickName: str
-        :param OrgType: Organization type.
+        :param _OrgType: Organization type.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OrgType: int
-        :param IsManager: Whether the member is the organization admin. Valid values: `true` (yes); `false` (no).
+        :param _IsManager: Whether the member is the organization admin. Valid values: `true` (yes); `false` (no).
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IsManager: bool
-        :param OrgPolicyType: Policy type. Valid values: `Financial` (finance management).
+        :param _OrgPolicyType: Policy type. Valid values: `Financial` (finance management).
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OrgPolicyType: str
-        :param OrgPolicyName: Policy name.
+        :param _OrgPolicyName: Policy name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OrgPolicyName: str
-        :param OrgPermission: List of member financial permissions.
+        :param _OrgPermission: List of member financial permissions.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OrgPermission: list of OrgPermission
-        :param RootNodeId: Organization root node ID.
+        :param _RootNodeId: Organization root node ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type RootNodeId: int
-        :param CreateTime: Organization creation time.
+        :param _CreateTime: Organization creation time.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CreateTime: str
-        :param JoinTime: Member joining time.
+        :param _JoinTime: Member joining time.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type JoinTime: str
-        :param IsAllowQuit: Whether the member is allowed to leave. Valid values: `Allow`, `Denied`.
+        :param _IsAllowQuit: Whether the member is allowed to leave. Valid values: `Allow`, `Denied`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IsAllowQuit: str
-        :param PayUin: Payer UIN.
+        :param _PayUin: Payer UIN.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PayUin: str
-        :param PayName: Payer name.
+        :param _PayName: Payer name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PayName: str
-        :param IsAssignManager: Whether the member is the trusted service admin. Valid values: `true` (yes); `false` (no).
+        :param _IsAssignManager: Whether the member is the trusted service admin. Valid values: `true` (yes); `false` (no).
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IsAssignManager: bool
-        :param IsAuthManager: Whether the member is the verified entity admin. Valid values: `true` (yes); `false` (no).
+        :param _IsAuthManager: Whether the member is the verified entity admin. Valid values: `true` (yes); `false` (no).
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IsAuthManager: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.OrgId = None
-        self.HostUin = None
-        self.NickName = None
-        self.OrgType = None
-        self.IsManager = None
-        self.OrgPolicyType = None
-        self.OrgPolicyName = None
-        self.OrgPermission = None
-        self.RootNodeId = None
-        self.CreateTime = None
-        self.JoinTime = None
-        self.IsAllowQuit = None
-        self.PayUin = None
-        self.PayName = None
-        self.IsAssignManager = None
-        self.IsAuthManager = None
-        self.RequestId = None
+        self._OrgId = None
+        self._HostUin = None
+        self._NickName = None
+        self._OrgType = None
+        self._IsManager = None
+        self._OrgPolicyType = None
+        self._OrgPolicyName = None
+        self._OrgPermission = None
+        self._RootNodeId = None
+        self._CreateTime = None
+        self._JoinTime = None
+        self._IsAllowQuit = None
+        self._PayUin = None
+        self._PayName = None
+        self._IsAssignManager = None
+        self._IsAuthManager = None
+        self._RequestId = None
+
+    @property
+    def OrgId(self):
+        return self._OrgId
+
+    @OrgId.setter
+    def OrgId(self, OrgId):
+        self._OrgId = OrgId
+
+    @property
+    def HostUin(self):
+        return self._HostUin
+
+    @HostUin.setter
+    def HostUin(self, HostUin):
+        self._HostUin = HostUin
+
+    @property
+    def NickName(self):
+        return self._NickName
+
+    @NickName.setter
+    def NickName(self, NickName):
+        self._NickName = NickName
+
+    @property
+    def OrgType(self):
+        return self._OrgType
+
+    @OrgType.setter
+    def OrgType(self, OrgType):
+        self._OrgType = OrgType
+
+    @property
+    def IsManager(self):
+        return self._IsManager
+
+    @IsManager.setter
+    def IsManager(self, IsManager):
+        self._IsManager = IsManager
+
+    @property
+    def OrgPolicyType(self):
+        return self._OrgPolicyType
+
+    @OrgPolicyType.setter
+    def OrgPolicyType(self, OrgPolicyType):
+        self._OrgPolicyType = OrgPolicyType
+
+    @property
+    def OrgPolicyName(self):
+        return self._OrgPolicyName
+
+    @OrgPolicyName.setter
+    def OrgPolicyName(self, OrgPolicyName):
+        self._OrgPolicyName = OrgPolicyName
+
+    @property
+    def OrgPermission(self):
+        return self._OrgPermission
+
+    @OrgPermission.setter
+    def OrgPermission(self, OrgPermission):
+        self._OrgPermission = OrgPermission
+
+    @property
+    def RootNodeId(self):
+        return self._RootNodeId
+
+    @RootNodeId.setter
+    def RootNodeId(self, RootNodeId):
+        self._RootNodeId = RootNodeId
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def JoinTime(self):
+        return self._JoinTime
+
+    @JoinTime.setter
+    def JoinTime(self, JoinTime):
+        self._JoinTime = JoinTime
+
+    @property
+    def IsAllowQuit(self):
+        return self._IsAllowQuit
+
+    @IsAllowQuit.setter
+    def IsAllowQuit(self, IsAllowQuit):
+        self._IsAllowQuit = IsAllowQuit
+
+    @property
+    def PayUin(self):
+        return self._PayUin
+
+    @PayUin.setter
+    def PayUin(self, PayUin):
+        self._PayUin = PayUin
+
+    @property
+    def PayName(self):
+        return self._PayName
+
+    @PayName.setter
+    def PayName(self, PayName):
+        self._PayName = PayName
+
+    @property
+    def IsAssignManager(self):
+        return self._IsAssignManager
+
+    @IsAssignManager.setter
+    def IsAssignManager(self, IsAssignManager):
+        self._IsAssignManager = IsAssignManager
+
+    @property
+    def IsAuthManager(self):
+        return self._IsAuthManager
+
+    @IsAuthManager.setter
+    def IsAuthManager(self, IsAuthManager):
+        self._IsAuthManager = IsAuthManager
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.OrgId = params.get("OrgId")
-        self.HostUin = params.get("HostUin")
-        self.NickName = params.get("NickName")
-        self.OrgType = params.get("OrgType")
-        self.IsManager = params.get("IsManager")
-        self.OrgPolicyType = params.get("OrgPolicyType")
-        self.OrgPolicyName = params.get("OrgPolicyName")
+        self._OrgId = params.get("OrgId")
+        self._HostUin = params.get("HostUin")
+        self._NickName = params.get("NickName")
+        self._OrgType = params.get("OrgType")
+        self._IsManager = params.get("IsManager")
+        self._OrgPolicyType = params.get("OrgPolicyType")
+        self._OrgPolicyName = params.get("OrgPolicyName")
         if params.get("OrgPermission") is not None:
-            self.OrgPermission = []
+            self._OrgPermission = []
             for item in params.get("OrgPermission"):
                 obj = OrgPermission()
                 obj._deserialize(item)
-                self.OrgPermission.append(obj)
-        self.RootNodeId = params.get("RootNodeId")
-        self.CreateTime = params.get("CreateTime")
-        self.JoinTime = params.get("JoinTime")
-        self.IsAllowQuit = params.get("IsAllowQuit")
-        self.PayUin = params.get("PayUin")
-        self.PayName = params.get("PayName")
-        self.IsAssignManager = params.get("IsAssignManager")
-        self.IsAuthManager = params.get("IsAuthManager")
-        self.RequestId = params.get("RequestId")
+                self._OrgPermission.append(obj)
+        self._RootNodeId = params.get("RootNodeId")
+        self._CreateTime = params.get("CreateTime")
+        self._JoinTime = params.get("JoinTime")
+        self._IsAllowQuit = params.get("IsAllowQuit")
+        self._PayUin = params.get("PayUin")
+        self._PayName = params.get("PayName")
+        self._IsAssignManager = params.get("IsAssignManager")
+        self._IsAuthManager = params.get("IsAuthManager")
+        self._RequestId = params.get("RequestId")
 
 
 class IdentityPolicy(AbstractModel):
@@ -862,22 +1579,39 @@ class IdentityPolicy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PolicyId: Policy ID
+        :param _PolicyId: Policy ID
         :type PolicyId: int
-        :param PolicyName: Policy name
+        :param _PolicyName: Policy name
         :type PolicyName: str
         """
-        self.PolicyId = None
-        self.PolicyName = None
+        self._PolicyId = None
+        self._PolicyName = None
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def PolicyName(self):
+        return self._PolicyName
+
+    @PolicyName.setter
+    def PolicyName(self, PolicyName):
+        self._PolicyName = PolicyName
 
 
     def _deserialize(self, params):
-        self.PolicyId = params.get("PolicyId")
-        self.PolicyName = params.get("PolicyName")
+        self._PolicyId = params.get("PolicyId")
+        self._PolicyName = params.get("PolicyName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -890,30 +1624,63 @@ class ListOrganizationIdentityRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: Offset.
+        :param _Offset: Offset.
         :type Offset: int
-        :param Limit: Maximum number of returned results. Maximum value: `50`.
+        :param _Limit: Maximum number of returned results. Maximum value: `50`.
         :type Limit: int
-        :param SearchKey: Search by name.
+        :param _SearchKey: Search by name.
         :type SearchKey: str
-        :param IdentityId: Search by identity ID.
+        :param _IdentityId: Search by identity ID.
         :type IdentityId: int
         """
-        self.Offset = None
-        self.Limit = None
-        self.SearchKey = None
-        self.IdentityId = None
+        self._Offset = None
+        self._Limit = None
+        self._SearchKey = None
+        self._IdentityId = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def SearchKey(self):
+        return self._SearchKey
+
+    @SearchKey.setter
+    def SearchKey(self, SearchKey):
+        self._SearchKey = SearchKey
+
+    @property
+    def IdentityId(self):
+        return self._IdentityId
+
+    @IdentityId.setter
+    def IdentityId(self, IdentityId):
+        self._IdentityId = IdentityId
 
 
     def _deserialize(self, params):
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.SearchKey = params.get("SearchKey")
-        self.IdentityId = params.get("IdentityId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._SearchKey = params.get("SearchKey")
+        self._IdentityId = params.get("IdentityId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -926,29 +1693,53 @@ class ListOrganizationIdentityResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Total: Total number.
+        :param _Total: Total number.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Total: int
-        :param Items: Item details.
+        :param _Items: Item details.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Items: list of OrgIdentity
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Total = None
-        self.Items = None
-        self.RequestId = None
+        self._Total = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Total = params.get("Total")
+        self._Total = params.get("Total")
         if params.get("Items") is not None:
-            self.Items = []
+            self._Items = []
             for item in params.get("Items"):
                 obj = OrgIdentity()
                 obj._deserialize(item)
-                self.Items.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class MemberIdentity(AbstractModel):
@@ -958,24 +1749,41 @@ class MemberIdentity(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IdentityId: Identity ID.
+        :param _IdentityId: Identity ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IdentityId: int
-        :param IdentityAliasName: Identity name.
+        :param _IdentityAliasName: Identity name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IdentityAliasName: str
         """
-        self.IdentityId = None
-        self.IdentityAliasName = None
+        self._IdentityId = None
+        self._IdentityAliasName = None
+
+    @property
+    def IdentityId(self):
+        return self._IdentityId
+
+    @IdentityId.setter
+    def IdentityId(self, IdentityId):
+        self._IdentityId = IdentityId
+
+    @property
+    def IdentityAliasName(self):
+        return self._IdentityAliasName
+
+    @IdentityAliasName.setter
+    def IdentityAliasName(self, IdentityAliasName):
+        self._IdentityAliasName = IdentityAliasName
 
 
     def _deserialize(self, params):
-        self.IdentityId = params.get("IdentityId")
-        self.IdentityAliasName = params.get("IdentityAliasName")
+        self._IdentityId = params.get("IdentityId")
+        self._IdentityAliasName = params.get("IdentityAliasName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -988,22 +1796,39 @@ class MoveOrganizationNodeMembersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NodeId: Organization node ID.
+        :param _NodeId: Organization node ID.
         :type NodeId: int
-        :param MemberUin: Member UIN list.
+        :param _MemberUin: Member UIN list.
         :type MemberUin: list of int
         """
-        self.NodeId = None
-        self.MemberUin = None
+        self._NodeId = None
+        self._MemberUin = None
+
+    @property
+    def NodeId(self):
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def MemberUin(self):
+        return self._MemberUin
+
+    @MemberUin.setter
+    def MemberUin(self, MemberUin):
+        self._MemberUin = MemberUin
 
 
     def _deserialize(self, params):
-        self.NodeId = params.get("NodeId")
-        self.MemberUin = params.get("MemberUin")
+        self._NodeId = params.get("NodeId")
+        self._MemberUin = params.get("MemberUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1016,14 +1841,22 @@ class MoveOrganizationNodeMembersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class OrgIdentity(AbstractModel):
@@ -1033,49 +1866,98 @@ class OrgIdentity(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IdentityId: Identity ID.
+        :param _IdentityId: Identity ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IdentityId: int
-        :param IdentityAliasName: Identity name.
+        :param _IdentityAliasName: Identity name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IdentityAliasName: str
-        :param Description: Description.
+        :param _Description: Description.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Description: str
-        :param IdentityPolicy: Identity policy.
+        :param _IdentityPolicy: Identity policy.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IdentityPolicy: list of IdentityPolicy
-        :param IdentityType: Identity type. Valid values: `1` (preset); `2` (custom).
+        :param _IdentityType: Identity type. Valid values: `1` (preset); `2` (custom).
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IdentityType: int
-        :param UpdateTime: Update time.
+        :param _UpdateTime: Update time.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type UpdateTime: str
         """
-        self.IdentityId = None
-        self.IdentityAliasName = None
-        self.Description = None
-        self.IdentityPolicy = None
-        self.IdentityType = None
-        self.UpdateTime = None
+        self._IdentityId = None
+        self._IdentityAliasName = None
+        self._Description = None
+        self._IdentityPolicy = None
+        self._IdentityType = None
+        self._UpdateTime = None
+
+    @property
+    def IdentityId(self):
+        return self._IdentityId
+
+    @IdentityId.setter
+    def IdentityId(self, IdentityId):
+        self._IdentityId = IdentityId
+
+    @property
+    def IdentityAliasName(self):
+        return self._IdentityAliasName
+
+    @IdentityAliasName.setter
+    def IdentityAliasName(self, IdentityAliasName):
+        self._IdentityAliasName = IdentityAliasName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def IdentityPolicy(self):
+        return self._IdentityPolicy
+
+    @IdentityPolicy.setter
+    def IdentityPolicy(self, IdentityPolicy):
+        self._IdentityPolicy = IdentityPolicy
+
+    @property
+    def IdentityType(self):
+        return self._IdentityType
+
+    @IdentityType.setter
+    def IdentityType(self, IdentityType):
+        self._IdentityType = IdentityType
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
 
 
     def _deserialize(self, params):
-        self.IdentityId = params.get("IdentityId")
-        self.IdentityAliasName = params.get("IdentityAliasName")
-        self.Description = params.get("Description")
+        self._IdentityId = params.get("IdentityId")
+        self._IdentityAliasName = params.get("IdentityAliasName")
+        self._Description = params.get("Description")
         if params.get("IdentityPolicy") is not None:
-            self.IdentityPolicy = []
+            self._IdentityPolicy = []
             for item in params.get("IdentityPolicy"):
                 obj = IdentityPolicy()
                 obj._deserialize(item)
-                self.IdentityPolicy.append(obj)
-        self.IdentityType = params.get("IdentityType")
-        self.UpdateTime = params.get("UpdateTime")
+                self._IdentityPolicy.append(obj)
+        self._IdentityType = params.get("IdentityType")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1088,109 +1970,246 @@ class OrgMember(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MemberUin: Member UIN
+        :param _MemberUin: Member UIN
 Note: This field may return null, indicating that no valid values can be obtained.
         :type MemberUin: int
-        :param Name: Member name
+        :param _Name: Member name
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Name: str
-        :param MemberType: Member type. Valid values: `Invite` (invited); `Create` (created).
+        :param _MemberType: Member type. Valid values: `Invite` (invited); `Create` (created).
 Note: This field may return null, indicating that no valid values can be obtained.
         :type MemberType: str
-        :param OrgPolicyType: Relationship policy type
+        :param _OrgPolicyType: Relationship policy type
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OrgPolicyType: str
-        :param OrgPolicyName: Relationship policy name
+        :param _OrgPolicyName: Relationship policy name
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OrgPolicyName: str
-        :param OrgPermission: Relationship policy permission
+        :param _OrgPermission: Relationship policy permission
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OrgPermission: list of OrgPermission
-        :param NodeId: Node ID
+        :param _NodeId: Node ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :type NodeId: int
-        :param NodeName: Node name
+        :param _NodeName: Node name
 Note: This field may return null, indicating that no valid values can be obtained.
         :type NodeName: str
-        :param Remark: Remarks
+        :param _Remark: Remarks
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Remark: str
-        :param CreateTime: Creation time
+        :param _CreateTime: Creation time
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CreateTime: str
-        :param UpdateTime: Update time
+        :param _UpdateTime: Update time
 Note: This field may return null, indicating that no valid values can be obtained.
         :type UpdateTime: str
-        :param IsAllowQuit: Whether the member is allowed to leave. Valid values: `Allow`, `Denied`.
+        :param _IsAllowQuit: Whether the member is allowed to leave. Valid values: `Allow`, `Denied`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IsAllowQuit: str
-        :param PayUin: Payer UIN
+        :param _PayUin: Payer UIN
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PayUin: str
-        :param PayName: Payer name
+        :param _PayName: Payer name
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PayName: str
-        :param OrgIdentity: Management identity
+        :param _OrgIdentity: Management identity
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OrgIdentity: list of MemberIdentity
-        :param BindStatus: Security information binding status. Valid values: `Unbound`, `Valid`, `Success`, `Failed`.
+        :param _BindStatus: Security information binding status. Valid values: `Unbound`, `Valid`, `Success`, `Failed`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type BindStatus: str
-        :param PermissionStatus: Member permission status. Valid values: `Confirmed`, `UnConfirmed`.
+        :param _PermissionStatus: Member permission status. Valid values: `Confirmed`, `UnConfirmed`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PermissionStatus: str
         """
-        self.MemberUin = None
-        self.Name = None
-        self.MemberType = None
-        self.OrgPolicyType = None
-        self.OrgPolicyName = None
-        self.OrgPermission = None
-        self.NodeId = None
-        self.NodeName = None
-        self.Remark = None
-        self.CreateTime = None
-        self.UpdateTime = None
-        self.IsAllowQuit = None
-        self.PayUin = None
-        self.PayName = None
-        self.OrgIdentity = None
-        self.BindStatus = None
-        self.PermissionStatus = None
+        self._MemberUin = None
+        self._Name = None
+        self._MemberType = None
+        self._OrgPolicyType = None
+        self._OrgPolicyName = None
+        self._OrgPermission = None
+        self._NodeId = None
+        self._NodeName = None
+        self._Remark = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._IsAllowQuit = None
+        self._PayUin = None
+        self._PayName = None
+        self._OrgIdentity = None
+        self._BindStatus = None
+        self._PermissionStatus = None
+
+    @property
+    def MemberUin(self):
+        return self._MemberUin
+
+    @MemberUin.setter
+    def MemberUin(self, MemberUin):
+        self._MemberUin = MemberUin
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def MemberType(self):
+        return self._MemberType
+
+    @MemberType.setter
+    def MemberType(self, MemberType):
+        self._MemberType = MemberType
+
+    @property
+    def OrgPolicyType(self):
+        return self._OrgPolicyType
+
+    @OrgPolicyType.setter
+    def OrgPolicyType(self, OrgPolicyType):
+        self._OrgPolicyType = OrgPolicyType
+
+    @property
+    def OrgPolicyName(self):
+        return self._OrgPolicyName
+
+    @OrgPolicyName.setter
+    def OrgPolicyName(self, OrgPolicyName):
+        self._OrgPolicyName = OrgPolicyName
+
+    @property
+    def OrgPermission(self):
+        return self._OrgPermission
+
+    @OrgPermission.setter
+    def OrgPermission(self, OrgPermission):
+        self._OrgPermission = OrgPermission
+
+    @property
+    def NodeId(self):
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def NodeName(self):
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def IsAllowQuit(self):
+        return self._IsAllowQuit
+
+    @IsAllowQuit.setter
+    def IsAllowQuit(self, IsAllowQuit):
+        self._IsAllowQuit = IsAllowQuit
+
+    @property
+    def PayUin(self):
+        return self._PayUin
+
+    @PayUin.setter
+    def PayUin(self, PayUin):
+        self._PayUin = PayUin
+
+    @property
+    def PayName(self):
+        return self._PayName
+
+    @PayName.setter
+    def PayName(self, PayName):
+        self._PayName = PayName
+
+    @property
+    def OrgIdentity(self):
+        return self._OrgIdentity
+
+    @OrgIdentity.setter
+    def OrgIdentity(self, OrgIdentity):
+        self._OrgIdentity = OrgIdentity
+
+    @property
+    def BindStatus(self):
+        return self._BindStatus
+
+    @BindStatus.setter
+    def BindStatus(self, BindStatus):
+        self._BindStatus = BindStatus
+
+    @property
+    def PermissionStatus(self):
+        return self._PermissionStatus
+
+    @PermissionStatus.setter
+    def PermissionStatus(self, PermissionStatus):
+        self._PermissionStatus = PermissionStatus
 
 
     def _deserialize(self, params):
-        self.MemberUin = params.get("MemberUin")
-        self.Name = params.get("Name")
-        self.MemberType = params.get("MemberType")
-        self.OrgPolicyType = params.get("OrgPolicyType")
-        self.OrgPolicyName = params.get("OrgPolicyName")
+        self._MemberUin = params.get("MemberUin")
+        self._Name = params.get("Name")
+        self._MemberType = params.get("MemberType")
+        self._OrgPolicyType = params.get("OrgPolicyType")
+        self._OrgPolicyName = params.get("OrgPolicyName")
         if params.get("OrgPermission") is not None:
-            self.OrgPermission = []
+            self._OrgPermission = []
             for item in params.get("OrgPermission"):
                 obj = OrgPermission()
                 obj._deserialize(item)
-                self.OrgPermission.append(obj)
-        self.NodeId = params.get("NodeId")
-        self.NodeName = params.get("NodeName")
-        self.Remark = params.get("Remark")
-        self.CreateTime = params.get("CreateTime")
-        self.UpdateTime = params.get("UpdateTime")
-        self.IsAllowQuit = params.get("IsAllowQuit")
-        self.PayUin = params.get("PayUin")
-        self.PayName = params.get("PayName")
+                self._OrgPermission.append(obj)
+        self._NodeId = params.get("NodeId")
+        self._NodeName = params.get("NodeName")
+        self._Remark = params.get("Remark")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._IsAllowQuit = params.get("IsAllowQuit")
+        self._PayUin = params.get("PayUin")
+        self._PayName = params.get("PayName")
         if params.get("OrgIdentity") is not None:
-            self.OrgIdentity = []
+            self._OrgIdentity = []
             for item in params.get("OrgIdentity"):
                 obj = MemberIdentity()
                 obj._deserialize(item)
-                self.OrgIdentity.append(obj)
-        self.BindStatus = params.get("BindStatus")
-        self.PermissionStatus = params.get("PermissionStatus")
+                self._OrgIdentity.append(obj)
+        self._BindStatus = params.get("BindStatus")
+        self._PermissionStatus = params.get("PermissionStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1203,59 +2222,132 @@ class OrgMemberAuthAccount(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OrgSubAccountUin: Organization sub-account UIN.
+        :param _OrgSubAccountUin: Organization sub-account UIN.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OrgSubAccountUin: int
-        :param PolicyId: Policy ID.
+        :param _PolicyId: Policy ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PolicyId: int
-        :param PolicyName: Policy name.
+        :param _PolicyName: Policy name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PolicyName: str
-        :param IdentityId: Identity ID.
+        :param _IdentityId: Identity ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IdentityId: int
-        :param IdentityRoleName: Identity role name.
+        :param _IdentityRoleName: Identity role name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IdentityRoleName: str
-        :param IdentityRoleAliasName: Identity role alias.
+        :param _IdentityRoleAliasName: Identity role alias.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IdentityRoleAliasName: str
-        :param CreateTime: Creation time.
+        :param _CreateTime: Creation time.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CreateTime: str
-        :param UpdateTime: Update time.
+        :param _UpdateTime: Update time.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type UpdateTime: str
-        :param OrgSubAccountName: Sub-account name
+        :param _OrgSubAccountName: Sub-account name
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OrgSubAccountName: str
         """
-        self.OrgSubAccountUin = None
-        self.PolicyId = None
-        self.PolicyName = None
-        self.IdentityId = None
-        self.IdentityRoleName = None
-        self.IdentityRoleAliasName = None
-        self.CreateTime = None
-        self.UpdateTime = None
-        self.OrgSubAccountName = None
+        self._OrgSubAccountUin = None
+        self._PolicyId = None
+        self._PolicyName = None
+        self._IdentityId = None
+        self._IdentityRoleName = None
+        self._IdentityRoleAliasName = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._OrgSubAccountName = None
+
+    @property
+    def OrgSubAccountUin(self):
+        return self._OrgSubAccountUin
+
+    @OrgSubAccountUin.setter
+    def OrgSubAccountUin(self, OrgSubAccountUin):
+        self._OrgSubAccountUin = OrgSubAccountUin
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def PolicyName(self):
+        return self._PolicyName
+
+    @PolicyName.setter
+    def PolicyName(self, PolicyName):
+        self._PolicyName = PolicyName
+
+    @property
+    def IdentityId(self):
+        return self._IdentityId
+
+    @IdentityId.setter
+    def IdentityId(self, IdentityId):
+        self._IdentityId = IdentityId
+
+    @property
+    def IdentityRoleName(self):
+        return self._IdentityRoleName
+
+    @IdentityRoleName.setter
+    def IdentityRoleName(self, IdentityRoleName):
+        self._IdentityRoleName = IdentityRoleName
+
+    @property
+    def IdentityRoleAliasName(self):
+        return self._IdentityRoleAliasName
+
+    @IdentityRoleAliasName.setter
+    def IdentityRoleAliasName(self, IdentityRoleAliasName):
+        self._IdentityRoleAliasName = IdentityRoleAliasName
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def OrgSubAccountName(self):
+        return self._OrgSubAccountName
+
+    @OrgSubAccountName.setter
+    def OrgSubAccountName(self, OrgSubAccountName):
+        self._OrgSubAccountName = OrgSubAccountName
 
 
     def _deserialize(self, params):
-        self.OrgSubAccountUin = params.get("OrgSubAccountUin")
-        self.PolicyId = params.get("PolicyId")
-        self.PolicyName = params.get("PolicyName")
-        self.IdentityId = params.get("IdentityId")
-        self.IdentityRoleName = params.get("IdentityRoleName")
-        self.IdentityRoleAliasName = params.get("IdentityRoleAliasName")
-        self.CreateTime = params.get("CreateTime")
-        self.UpdateTime = params.get("UpdateTime")
-        self.OrgSubAccountName = params.get("OrgSubAccountName")
+        self._OrgSubAccountUin = params.get("OrgSubAccountUin")
+        self._PolicyId = params.get("PolicyId")
+        self._PolicyName = params.get("PolicyName")
+        self._IdentityId = params.get("IdentityId")
+        self._IdentityRoleName = params.get("IdentityRoleName")
+        self._IdentityRoleAliasName = params.get("IdentityRoleAliasName")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._OrgSubAccountName = params.get("OrgSubAccountName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1268,49 +2360,106 @@ class OrgMemberAuthIdentity(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IdentityId: Identity ID.
+        :param _IdentityId: Identity ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IdentityId: int
-        :param IdentityRoleName: Role name of an identity
+        :param _IdentityRoleName: Role name of an identity
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IdentityRoleName: str
-        :param IdentityRoleAliasName: Role alias of an identity
+        :param _IdentityRoleAliasName: Role alias of an identity
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IdentityRoleAliasName: str
-        :param Description: Description
+        :param _Description: Description
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Description: str
-        :param CreateTime: Creation time.
+        :param _CreateTime: Creation time.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CreateTime: str
-        :param UpdateTime: Update time.
+        :param _UpdateTime: Update time.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type UpdateTime: str
-        :param IdentityType: Identity type (`1`: Preset; `2`: Custom)
+        :param _IdentityType: Identity type (`1`: Preset; `2`: Custom)
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IdentityType: int
         """
-        self.IdentityId = None
-        self.IdentityRoleName = None
-        self.IdentityRoleAliasName = None
-        self.Description = None
-        self.CreateTime = None
-        self.UpdateTime = None
-        self.IdentityType = None
+        self._IdentityId = None
+        self._IdentityRoleName = None
+        self._IdentityRoleAliasName = None
+        self._Description = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._IdentityType = None
+
+    @property
+    def IdentityId(self):
+        return self._IdentityId
+
+    @IdentityId.setter
+    def IdentityId(self, IdentityId):
+        self._IdentityId = IdentityId
+
+    @property
+    def IdentityRoleName(self):
+        return self._IdentityRoleName
+
+    @IdentityRoleName.setter
+    def IdentityRoleName(self, IdentityRoleName):
+        self._IdentityRoleName = IdentityRoleName
+
+    @property
+    def IdentityRoleAliasName(self):
+        return self._IdentityRoleAliasName
+
+    @IdentityRoleAliasName.setter
+    def IdentityRoleAliasName(self, IdentityRoleAliasName):
+        self._IdentityRoleAliasName = IdentityRoleAliasName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def IdentityType(self):
+        return self._IdentityType
+
+    @IdentityType.setter
+    def IdentityType(self, IdentityType):
+        self._IdentityType = IdentityType
 
 
     def _deserialize(self, params):
-        self.IdentityId = params.get("IdentityId")
-        self.IdentityRoleName = params.get("IdentityRoleName")
-        self.IdentityRoleAliasName = params.get("IdentityRoleAliasName")
-        self.Description = params.get("Description")
-        self.CreateTime = params.get("CreateTime")
-        self.UpdateTime = params.get("UpdateTime")
-        self.IdentityType = params.get("IdentityType")
+        self._IdentityId = params.get("IdentityId")
+        self._IdentityRoleName = params.get("IdentityRoleName")
+        self._IdentityRoleAliasName = params.get("IdentityRoleAliasName")
+        self._Description = params.get("Description")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._IdentityType = params.get("IdentityType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1323,54 +2472,119 @@ class OrgMemberPolicy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PolicyId: Policy ID.
+        :param _PolicyId: Policy ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PolicyId: int
-        :param PolicyName: Policy name.
+        :param _PolicyName: Policy name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PolicyName: str
-        :param IdentityId: Identity ID.
+        :param _IdentityId: Identity ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IdentityId: int
-        :param IdentityRoleName: Identity role name.
+        :param _IdentityRoleName: Identity role name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IdentityRoleName: str
-        :param IdentityRoleAliasName: Identity role alias.
+        :param _IdentityRoleAliasName: Identity role alias.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IdentityRoleAliasName: str
-        :param Description: Description.
+        :param _Description: Description.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Description: str
-        :param CreateTime: Creation time.
+        :param _CreateTime: Creation time.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CreateTime: str
-        :param UpdateTime: Update time.
+        :param _UpdateTime: Update time.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type UpdateTime: str
         """
-        self.PolicyId = None
-        self.PolicyName = None
-        self.IdentityId = None
-        self.IdentityRoleName = None
-        self.IdentityRoleAliasName = None
-        self.Description = None
-        self.CreateTime = None
-        self.UpdateTime = None
+        self._PolicyId = None
+        self._PolicyName = None
+        self._IdentityId = None
+        self._IdentityRoleName = None
+        self._IdentityRoleAliasName = None
+        self._Description = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def PolicyName(self):
+        return self._PolicyName
+
+    @PolicyName.setter
+    def PolicyName(self, PolicyName):
+        self._PolicyName = PolicyName
+
+    @property
+    def IdentityId(self):
+        return self._IdentityId
+
+    @IdentityId.setter
+    def IdentityId(self, IdentityId):
+        self._IdentityId = IdentityId
+
+    @property
+    def IdentityRoleName(self):
+        return self._IdentityRoleName
+
+    @IdentityRoleName.setter
+    def IdentityRoleName(self, IdentityRoleName):
+        self._IdentityRoleName = IdentityRoleName
+
+    @property
+    def IdentityRoleAliasName(self):
+        return self._IdentityRoleAliasName
+
+    @IdentityRoleAliasName.setter
+    def IdentityRoleAliasName(self, IdentityRoleAliasName):
+        self._IdentityRoleAliasName = IdentityRoleAliasName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
 
 
     def _deserialize(self, params):
-        self.PolicyId = params.get("PolicyId")
-        self.PolicyName = params.get("PolicyName")
-        self.IdentityId = params.get("IdentityId")
-        self.IdentityRoleName = params.get("IdentityRoleName")
-        self.IdentityRoleAliasName = params.get("IdentityRoleAliasName")
-        self.Description = params.get("Description")
-        self.CreateTime = params.get("CreateTime")
-        self.UpdateTime = params.get("UpdateTime")
+        self._PolicyId = params.get("PolicyId")
+        self._PolicyName = params.get("PolicyName")
+        self._IdentityId = params.get("IdentityId")
+        self._IdentityRoleName = params.get("IdentityRoleName")
+        self._IdentityRoleAliasName = params.get("IdentityRoleAliasName")
+        self._Description = params.get("Description")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1383,44 +2597,93 @@ class OrgNode(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NodeId: Organization node ID
+        :param _NodeId: Organization node ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :type NodeId: int
-        :param Name: Name
+        :param _Name: Name
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Name: str
-        :param ParentNodeId: Parent node ID
+        :param _ParentNodeId: Parent node ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ParentNodeId: int
-        :param Remark: Remarks
+        :param _Remark: Remarks
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Remark: str
-        :param CreateTime: Creation time
+        :param _CreateTime: Creation time
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CreateTime: str
-        :param UpdateTime: Update time
+        :param _UpdateTime: Update time
 Note: This field may return null, indicating that no valid values can be obtained.
         :type UpdateTime: str
         """
-        self.NodeId = None
-        self.Name = None
-        self.ParentNodeId = None
-        self.Remark = None
-        self.CreateTime = None
-        self.UpdateTime = None
+        self._NodeId = None
+        self._Name = None
+        self._ParentNodeId = None
+        self._Remark = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def NodeId(self):
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ParentNodeId(self):
+        return self._ParentNodeId
+
+    @ParentNodeId.setter
+    def ParentNodeId(self, ParentNodeId):
+        self._ParentNodeId = ParentNodeId
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
 
 
     def _deserialize(self, params):
-        self.NodeId = params.get("NodeId")
-        self.Name = params.get("Name")
-        self.ParentNodeId = params.get("ParentNodeId")
-        self.Remark = params.get("Remark")
-        self.CreateTime = params.get("CreateTime")
-        self.UpdateTime = params.get("UpdateTime")
+        self._NodeId = params.get("NodeId")
+        self._Name = params.get("Name")
+        self._ParentNodeId = params.get("ParentNodeId")
+        self._Remark = params.get("Remark")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1433,22 +2696,39 @@ class OrgPermission(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: Permission ID
+        :param _Id: Permission ID
         :type Id: int
-        :param Name: Permission name
+        :param _Name: Permission name
         :type Name: str
         """
-        self.Id = None
-        self.Name = None
+        self._Id = None
+        self._Name = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.Name = params.get("Name")
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1461,26 +2741,51 @@ class UpdateOrganizationNodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NodeId: Node ID.
+        :param _NodeId: Node ID.
         :type NodeId: int
-        :param Name: Node name, which can contain up to 40 letters, digits, and symbols `+@&._[]-`.
+        :param _Name: Node name, which can contain up to 40 letters, digits, and symbols `+@&._[]-`.
         :type Name: str
-        :param Remark: Remarks.
+        :param _Remark: Remarks.
         :type Remark: str
         """
-        self.NodeId = None
-        self.Name = None
-        self.Remark = None
+        self._NodeId = None
+        self._Name = None
+        self._Remark = None
+
+    @property
+    def NodeId(self):
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
 
 
     def _deserialize(self, params):
-        self.NodeId = params.get("NodeId")
-        self.Name = params.get("Name")
-        self.Remark = params.get("Remark")
+        self._NodeId = params.get("NodeId")
+        self._Name = params.get("Name")
+        self._Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1493,11 +2798,19 @@ class UpdateOrganizationNodeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")

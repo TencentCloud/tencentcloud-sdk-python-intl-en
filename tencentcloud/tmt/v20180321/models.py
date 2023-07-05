@@ -25,9 +25,9 @@ class TextTranslateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SourceText: The texts to be translated, which must be encoded in UTF-8 and can contain up to 2,000 characters in a request. For non-pure texts such as those with HTML tags, the translation may fail.
+        :param _SourceText: The texts to be translated, which must be encoded in UTF-8 and can contain up to 2,000 characters in a request. For non-pure texts such as those with HTML tags, the translation may fail.
         :type SourceText: str
-        :param Source: Supported source languages:
+        :param _Source: Supported source languages:
 auto: Automatic language detection
 zh: Simplified Chinese
 zh_TW: Traditional Chinese
@@ -48,7 +48,7 @@ ms: Malay
 ar: Arabic
 hi: Hindi
         :type Source: str
-        :param Target: Supported target languages for the above source languages:
+        :param _Target: Supported target languages for the above source languages:
 
 <li> zh (Simplified Chinese): en (English), ja (Japanese), ko (Korean), fr (French), es (Spanish), it (Italian), de (German), tr (Turkish), ru (Russian), pt (Portuguese), vi (Vietnamese), id (Bahasa Indonesian), th (Thai), and ms (Malay)</li>
 <li> zh-TW (Traditional Chinese): en (English), ja (Japanese), ko (Korean), fr (French), es (Spanish), it (Italian), de (German), tr (Turkish), ru (Russian), pt (Portuguese), vi (Vietnamese), id (Bahasa Indonesian), th (Thai), and ms (Malay)</li>
@@ -69,28 +69,69 @@ hi: Hindi
 <li>ar (Arabic): en (English)</li>
 <li>hi (Hindi): en (English)</li
         :type Target: str
-        :param ProjectId: The project ID, which can be obtained from **Console -> Account Center -> Project Management**. If no one is set, enter the default project ID `0`.
+        :param _ProjectId: The project ID, which can be obtained from **Console -> Account Center -> Project Management**. If no one is set, enter the default project ID `0`.
         :type ProjectId: int
-        :param UntranslatedText: The parameter used to mark the text content that needs to remain untranslated, such as special symbols and names of people and places. You can set only one word for this parameter in each request. Only nouns (like names of people and places) are supported, and verbs or phrases may cause poor translation outcomes.
+        :param _UntranslatedText: The parameter used to mark the text content that needs to remain untranslated, such as special symbols and names of people and places. You can set only one word for this parameter in each request. Only nouns (like names of people and places) are supported, and verbs or phrases may cause poor translation outcomes.
         :type UntranslatedText: str
         """
-        self.SourceText = None
-        self.Source = None
-        self.Target = None
-        self.ProjectId = None
-        self.UntranslatedText = None
+        self._SourceText = None
+        self._Source = None
+        self._Target = None
+        self._ProjectId = None
+        self._UntranslatedText = None
+
+    @property
+    def SourceText(self):
+        return self._SourceText
+
+    @SourceText.setter
+    def SourceText(self, SourceText):
+        self._SourceText = SourceText
+
+    @property
+    def Source(self):
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Target(self):
+        return self._Target
+
+    @Target.setter
+    def Target(self, Target):
+        self._Target = Target
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def UntranslatedText(self):
+        return self._UntranslatedText
+
+    @UntranslatedText.setter
+    def UntranslatedText(self, UntranslatedText):
+        self._UntranslatedText = UntranslatedText
 
 
     def _deserialize(self, params):
-        self.SourceText = params.get("SourceText")
-        self.Source = params.get("Source")
-        self.Target = params.get("Target")
-        self.ProjectId = params.get("ProjectId")
-        self.UntranslatedText = params.get("UntranslatedText")
+        self._SourceText = params.get("SourceText")
+        self._Source = params.get("Source")
+        self._Target = params.get("Target")
+        self._ProjectId = params.get("ProjectId")
+        self._UntranslatedText = params.get("UntranslatedText")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -103,23 +144,55 @@ class TextTranslateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TargetText: The translation outcome.
+        :param _TargetText: The translation outcome.
         :type TargetText: str
-        :param Source: The source language. See the request parameter `Source` for details.
+        :param _Source: The source language. See the request parameter `Source` for details.
         :type Source: str
-        :param Target: The target language. See the request parameter `Target` for details.
+        :param _Target: The target language. See the request parameter `Target` for details.
         :type Target: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TargetText = None
-        self.Source = None
-        self.Target = None
-        self.RequestId = None
+        self._TargetText = None
+        self._Source = None
+        self._Target = None
+        self._RequestId = None
+
+    @property
+    def TargetText(self):
+        return self._TargetText
+
+    @TargetText.setter
+    def TargetText(self, TargetText):
+        self._TargetText = TargetText
+
+    @property
+    def Source(self):
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Target(self):
+        return self._Target
+
+    @Target.setter
+    def Target(self, Target):
+        self._Target = Target
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TargetText = params.get("TargetText")
-        self.Source = params.get("Source")
-        self.Target = params.get("Target")
-        self.RequestId = params.get("RequestId")
+        self._TargetText = params.get("TargetText")
+        self._Source = params.get("Source")
+        self._Target = params.get("Target")
+        self._RequestId = params.get("RequestId")

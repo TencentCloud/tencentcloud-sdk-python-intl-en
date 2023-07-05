@@ -25,30 +25,63 @@ class AccountGroupInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AccountGroupId: Account group ID.
+        :param _AccountGroupId: Account group ID.
         :type AccountGroupId: str
-        :param GroupName: Account group name.
+        :param _GroupName: Account group name.
         :type GroupName: str
-        :param Description: Remarks.
+        :param _Description: Remarks.
         :type Description: str
-        :param CreatedDate: Creation time.
+        :param _CreatedDate: Creation time.
         :type CreatedDate: str
         """
-        self.AccountGroupId = None
-        self.GroupName = None
-        self.Description = None
-        self.CreatedDate = None
+        self._AccountGroupId = None
+        self._GroupName = None
+        self._Description = None
+        self._CreatedDate = None
+
+    @property
+    def AccountGroupId(self):
+        return self._AccountGroupId
+
+    @AccountGroupId.setter
+    def AccountGroupId(self, AccountGroupId):
+        self._AccountGroupId = AccountGroupId
+
+    @property
+    def GroupName(self):
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CreatedDate(self):
+        return self._CreatedDate
+
+    @CreatedDate.setter
+    def CreatedDate(self, CreatedDate):
+        self._CreatedDate = CreatedDate
 
 
     def _deserialize(self, params):
-        self.AccountGroupId = params.get("AccountGroupId")
-        self.GroupName = params.get("GroupName")
-        self.Description = params.get("Description")
-        self.CreatedDate = params.get("CreatedDate")
+        self._AccountGroupId = params.get("AccountGroupId")
+        self._GroupName = params.get("GroupName")
+        self._Description = params.get("Description")
+        self._CreatedDate = params.get("CreatedDate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -61,18 +94,27 @@ class AccountGroupSearchCriteria(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Keyword: Keyword
+        :param _Keyword: Keyword
         :type Keyword: str
         """
-        self.Keyword = None
+        self._Keyword = None
+
+    @property
+    def Keyword(self):
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
 
 
     def _deserialize(self, params):
-        self.Keyword = params.get("Keyword")
+        self._Keyword = params.get("Keyword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -85,22 +127,39 @@ class AddAccountToAccountGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AccountGroupId: Account group ID
+        :param _AccountGroupId: Account group ID
         :type AccountGroupId: str
-        :param AccountIds: List of IDs of the accounts to be added to the account group.
+        :param _AccountIds: List of IDs of the accounts to be added to the account group.
         :type AccountIds: list of str
         """
-        self.AccountGroupId = None
-        self.AccountIds = None
+        self._AccountGroupId = None
+        self._AccountIds = None
+
+    @property
+    def AccountGroupId(self):
+        return self._AccountGroupId
+
+    @AccountGroupId.setter
+    def AccountGroupId(self, AccountGroupId):
+        self._AccountGroupId = AccountGroupId
+
+    @property
+    def AccountIds(self):
+        return self._AccountIds
+
+    @AccountIds.setter
+    def AccountIds(self, AccountIds):
+        self._AccountIds = AccountIds
 
 
     def _deserialize(self, params):
-        self.AccountGroupId = params.get("AccountGroupId")
-        self.AccountIds = params.get("AccountIds")
+        self._AccountGroupId = params.get("AccountGroupId")
+        self._AccountIds = params.get("AccountIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -113,14 +172,22 @@ class AddAccountToAccountGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class AddUserToUserGroupRequest(AbstractModel):
@@ -130,22 +197,39 @@ class AddUserToUserGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserIds: List of IDs of the users to be added to the user group.
+        :param _UserIds: List of IDs of the users to be added to the user group.
         :type UserIds: list of str
-        :param UserGroupId: User group ID, which is globally unique.
+        :param _UserGroupId: User group ID, which is globally unique.
         :type UserGroupId: str
         """
-        self.UserIds = None
-        self.UserGroupId = None
+        self._UserIds = None
+        self._UserGroupId = None
+
+    @property
+    def UserIds(self):
+        return self._UserIds
+
+    @UserIds.setter
+    def UserIds(self, UserIds):
+        self._UserIds = UserIds
+
+    @property
+    def UserGroupId(self):
+        return self._UserGroupId
+
+    @UserGroupId.setter
+    def UserGroupId(self, UserGroupId):
+        self._UserGroupId = UserGroupId
 
 
     def _deserialize(self, params):
-        self.UserIds = params.get("UserIds")
-        self.UserGroupId = params.get("UserGroupId")
+        self._UserIds = params.get("UserIds")
+        self._UserGroupId = params.get("UserGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -158,19 +242,35 @@ class AddUserToUserGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FailedItems: List of IDs of the users failed to be added to the user group.
+        :param _FailedItems: List of IDs of the users failed to be added to the user group.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type FailedItems: list of str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.FailedItems = None
-        self.RequestId = None
+        self._FailedItems = None
+        self._RequestId = None
+
+    @property
+    def FailedItems(self):
+        return self._FailedItems
+
+    @FailedItems.setter
+    def FailedItems(self, FailedItems):
+        self._FailedItems = FailedItems
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.FailedItems = params.get("FailedItems")
-        self.RequestId = params.get("RequestId")
+        self._FailedItems = params.get("FailedItems")
+        self._RequestId = params.get("RequestId")
 
 
 class AppAccountInfo(AbstractModel):
@@ -180,43 +280,84 @@ class AppAccountInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AccountId: Account ID.
+        :param _AccountId: Account ID.
         :type AccountId: str
-        :param AccountName: Account name.
+        :param _AccountName: Account name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AccountName: str
-        :param UserList: User information list.
+        :param _UserList: User information list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UserList: list of LinkUserInfo
-        :param Description: Description.
+        :param _Description: Description.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Description: str
-        :param CreatedDate: Creation time.
+        :param _CreatedDate: Creation time.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CreatedDate: str
         """
-        self.AccountId = None
-        self.AccountName = None
-        self.UserList = None
-        self.Description = None
-        self.CreatedDate = None
+        self._AccountId = None
+        self._AccountName = None
+        self._UserList = None
+        self._Description = None
+        self._CreatedDate = None
+
+    @property
+    def AccountId(self):
+        return self._AccountId
+
+    @AccountId.setter
+    def AccountId(self, AccountId):
+        self._AccountId = AccountId
+
+    @property
+    def AccountName(self):
+        return self._AccountName
+
+    @AccountName.setter
+    def AccountName(self, AccountName):
+        self._AccountName = AccountName
+
+    @property
+    def UserList(self):
+        return self._UserList
+
+    @UserList.setter
+    def UserList(self, UserList):
+        self._UserList = UserList
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CreatedDate(self):
+        return self._CreatedDate
+
+    @CreatedDate.setter
+    def CreatedDate(self, CreatedDate):
+        self._CreatedDate = CreatedDate
 
 
     def _deserialize(self, params):
-        self.AccountId = params.get("AccountId")
-        self.AccountName = params.get("AccountName")
+        self._AccountId = params.get("AccountId")
+        self._AccountName = params.get("AccountName")
         if params.get("UserList") is not None:
-            self.UserList = []
+            self._UserList = []
             for item in params.get("UserList"):
                 obj = LinkUserInfo()
                 obj._deserialize(item)
-                self.UserList.append(obj)
-        self.Description = params.get("Description")
-        self.CreatedDate = params.get("CreatedDate")
+                self._UserList.append(obj)
+        self._Description = params.get("Description")
+        self._CreatedDate = params.get("CreatedDate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -229,18 +370,27 @@ class AppAccountSearchCriteria(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Keyword: Keyword
+        :param _Keyword: Keyword
         :type Keyword: str
         """
-        self.Keyword = None
+        self._Keyword = None
+
+    @property
+    def Keyword(self):
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
 
 
     def _deserialize(self, params):
-        self.Keyword = params.get("Keyword")
+        self._Keyword = params.get("Keyword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -253,41 +403,82 @@ class ApplicationAuthorizationInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApplicationAccounts: List of the user's accounts under authorized applications
+        :param _ApplicationAccounts: List of the user's accounts under authorized applications
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApplicationAccounts: list of str
-        :param ApplicationId: Application ID, which is globally unique.
+        :param _ApplicationId: Application ID, which is globally unique.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApplicationId: str
-        :param InheritedForm: List of IDs of the user's user groups and organization nodes that have access to the application.
+        :param _InheritedForm: List of IDs of the user's user groups and organization nodes that have access to the application.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type InheritedForm: :class:`tencentcloud.eiam.v20210420.models.InheritedForm`
-        :param ApplicationName: Application name.
+        :param _ApplicationName: Application name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApplicationName: str
-        :param CreatedDate: Application creation time.
+        :param _CreatedDate: Application creation time.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CreatedDate: str
         """
-        self.ApplicationAccounts = None
-        self.ApplicationId = None
-        self.InheritedForm = None
-        self.ApplicationName = None
-        self.CreatedDate = None
+        self._ApplicationAccounts = None
+        self._ApplicationId = None
+        self._InheritedForm = None
+        self._ApplicationName = None
+        self._CreatedDate = None
+
+    @property
+    def ApplicationAccounts(self):
+        return self._ApplicationAccounts
+
+    @ApplicationAccounts.setter
+    def ApplicationAccounts(self, ApplicationAccounts):
+        self._ApplicationAccounts = ApplicationAccounts
+
+    @property
+    def ApplicationId(self):
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
+    def InheritedForm(self):
+        return self._InheritedForm
+
+    @InheritedForm.setter
+    def InheritedForm(self, InheritedForm):
+        self._InheritedForm = InheritedForm
+
+    @property
+    def ApplicationName(self):
+        return self._ApplicationName
+
+    @ApplicationName.setter
+    def ApplicationName(self, ApplicationName):
+        self._ApplicationName = ApplicationName
+
+    @property
+    def CreatedDate(self):
+        return self._CreatedDate
+
+    @CreatedDate.setter
+    def CreatedDate(self, CreatedDate):
+        self._CreatedDate = CreatedDate
 
 
     def _deserialize(self, params):
-        self.ApplicationAccounts = params.get("ApplicationAccounts")
-        self.ApplicationId = params.get("ApplicationId")
+        self._ApplicationAccounts = params.get("ApplicationAccounts")
+        self._ApplicationId = params.get("ApplicationId")
         if params.get("InheritedForm") is not None:
-            self.InheritedForm = InheritedForm()
-            self.InheritedForm._deserialize(params.get("InheritedForm"))
-        self.ApplicationName = params.get("ApplicationName")
-        self.CreatedDate = params.get("CreatedDate")
+            self._InheritedForm = InheritedForm()
+            self._InheritedForm._deserialize(params.get("InheritedForm"))
+        self._ApplicationName = params.get("ApplicationName")
+        self._CreatedDate = params.get("CreatedDate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -300,22 +491,39 @@ class ApplicationInfoSearchCriteria(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Keyword: Application search keyword, which can be application name or ID.
+        :param _Keyword: Application search keyword, which can be application name or ID.
         :type Keyword: str
-        :param ApplicationType: Application type. Valid values: OAUTH2, JWT, CAS, SAML2, FORM, OIDC, APIGW
+        :param _ApplicationType: Application type. Valid values: OAUTH2, JWT, CAS, SAML2, FORM, OIDC, APIGW
         :type ApplicationType: str
         """
-        self.Keyword = None
-        self.ApplicationType = None
+        self._Keyword = None
+        self._ApplicationType = None
+
+    @property
+    def Keyword(self):
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def ApplicationType(self):
+        return self._ApplicationType
+
+    @ApplicationType.setter
+    def ApplicationType(self, ApplicationType):
+        self._ApplicationType = ApplicationType
 
 
     def _deserialize(self, params):
-        self.Keyword = params.get("Keyword")
-        self.ApplicationType = params.get("ApplicationType")
+        self._Keyword = params.get("Keyword")
+        self._ApplicationType = params.get("ApplicationType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -328,53 +536,118 @@ class ApplicationInformation(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApplicationId: Application ID, which is globally unique.
+        :param _ApplicationId: Application ID, which is globally unique.
         :type ApplicationId: str
-        :param DisplayName: Displayed application name, which can contain up to 64 characters and is the same as the application name by default.
+        :param _DisplayName: Displayed application name, which can contain up to 64 characters and is the same as the application name by default.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DisplayName: str
-        :param CreatedDate: Application creation time in ISO 8601 format.
+        :param _CreatedDate: Application creation time in ISO 8601 format.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CreatedDate: str
-        :param LastModifiedDate: Last update time in ISO 8601 format.
+        :param _LastModifiedDate: Last update time in ISO 8601 format.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type LastModifiedDate: str
-        :param AppStatus: Application status.
+        :param _AppStatus: Application status.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AppStatus: bool
-        :param Icon: Application icon.
+        :param _Icon: Application icon.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Icon: str
-        :param ApplicationType: Application type.
+        :param _ApplicationType: Application type.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApplicationType: str
-        :param ClientId: Client ID.
+        :param _ClientId: Client ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ClientId: str
         """
-        self.ApplicationId = None
-        self.DisplayName = None
-        self.CreatedDate = None
-        self.LastModifiedDate = None
-        self.AppStatus = None
-        self.Icon = None
-        self.ApplicationType = None
-        self.ClientId = None
+        self._ApplicationId = None
+        self._DisplayName = None
+        self._CreatedDate = None
+        self._LastModifiedDate = None
+        self._AppStatus = None
+        self._Icon = None
+        self._ApplicationType = None
+        self._ClientId = None
+
+    @property
+    def ApplicationId(self):
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
+    def DisplayName(self):
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def CreatedDate(self):
+        return self._CreatedDate
+
+    @CreatedDate.setter
+    def CreatedDate(self, CreatedDate):
+        self._CreatedDate = CreatedDate
+
+    @property
+    def LastModifiedDate(self):
+        return self._LastModifiedDate
+
+    @LastModifiedDate.setter
+    def LastModifiedDate(self, LastModifiedDate):
+        self._LastModifiedDate = LastModifiedDate
+
+    @property
+    def AppStatus(self):
+        return self._AppStatus
+
+    @AppStatus.setter
+    def AppStatus(self, AppStatus):
+        self._AppStatus = AppStatus
+
+    @property
+    def Icon(self):
+        return self._Icon
+
+    @Icon.setter
+    def Icon(self, Icon):
+        self._Icon = Icon
+
+    @property
+    def ApplicationType(self):
+        return self._ApplicationType
+
+    @ApplicationType.setter
+    def ApplicationType(self, ApplicationType):
+        self._ApplicationType = ApplicationType
+
+    @property
+    def ClientId(self):
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
 
 
     def _deserialize(self, params):
-        self.ApplicationId = params.get("ApplicationId")
-        self.DisplayName = params.get("DisplayName")
-        self.CreatedDate = params.get("CreatedDate")
-        self.LastModifiedDate = params.get("LastModifiedDate")
-        self.AppStatus = params.get("AppStatus")
-        self.Icon = params.get("Icon")
-        self.ApplicationType = params.get("ApplicationType")
-        self.ClientId = params.get("ClientId")
+        self._ApplicationId = params.get("ApplicationId")
+        self._DisplayName = params.get("DisplayName")
+        self._CreatedDate = params.get("CreatedDate")
+        self._LastModifiedDate = params.get("LastModifiedDate")
+        self._AppStatus = params.get("AppStatus")
+        self._Icon = params.get("Icon")
+        self._ApplicationType = params.get("ApplicationType")
+        self._ClientId = params.get("ClientId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -387,38 +660,87 @@ class AuthorizationInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AppId: Unique application ID.
+        :param _AppId: Unique application ID.
         :type AppId: str
-        :param AppName: Application name.
+        :param _AppName: Application name.
         :type AppName: str
-        :param EntityName: Type name.
+        :param _EntityName: Type name.
         :type EntityName: str
-        :param EntityId: Unique type ID.
+        :param _EntityId: Unique type ID.
         :type EntityId: str
-        :param LastModifiedDate: Last update time in ISO 8601 format.
+        :param _LastModifiedDate: Last update time in ISO 8601 format.
         :type LastModifiedDate: str
-        :param AuthorizationId: Unique authorization type ID.
+        :param _AuthorizationId: Unique authorization type ID.
         :type AuthorizationId: str
         """
-        self.AppId = None
-        self.AppName = None
-        self.EntityName = None
-        self.EntityId = None
-        self.LastModifiedDate = None
-        self.AuthorizationId = None
+        self._AppId = None
+        self._AppName = None
+        self._EntityName = None
+        self._EntityId = None
+        self._LastModifiedDate = None
+        self._AuthorizationId = None
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def EntityName(self):
+        return self._EntityName
+
+    @EntityName.setter
+    def EntityName(self, EntityName):
+        self._EntityName = EntityName
+
+    @property
+    def EntityId(self):
+        return self._EntityId
+
+    @EntityId.setter
+    def EntityId(self, EntityId):
+        self._EntityId = EntityId
+
+    @property
+    def LastModifiedDate(self):
+        return self._LastModifiedDate
+
+    @LastModifiedDate.setter
+    def LastModifiedDate(self, LastModifiedDate):
+        self._LastModifiedDate = LastModifiedDate
+
+    @property
+    def AuthorizationId(self):
+        return self._AuthorizationId
+
+    @AuthorizationId.setter
+    def AuthorizationId(self, AuthorizationId):
+        self._AuthorizationId = AuthorizationId
 
 
     def _deserialize(self, params):
-        self.AppId = params.get("AppId")
-        self.AppName = params.get("AppName")
-        self.EntityName = params.get("EntityName")
-        self.EntityId = params.get("EntityId")
-        self.LastModifiedDate = params.get("LastModifiedDate")
-        self.AuthorizationId = params.get("AuthorizationId")
+        self._AppId = params.get("AppId")
+        self._AppName = params.get("AppName")
+        self._EntityName = params.get("EntityName")
+        self._EntityId = params.get("EntityId")
+        self._LastModifiedDate = params.get("LastModifiedDate")
+        self._AuthorizationId = params.get("AuthorizationId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -431,18 +753,27 @@ class AuthorizationInfoSearchCriteria(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Keyword: Search by name. When the query type is user, the match criteria include username and application name. When the query type is user group, the match criteria include user group name and application name. When the query type is organization, the match criteria include organization name and application name.
+        :param _Keyword: Search by name. When the query type is user, the match criteria include username and application name. When the query type is user group, the match criteria include user group name and application name. When the query type is organization, the match criteria include organization name and application name.
         :type Keyword: str
         """
-        self.Keyword = None
+        self._Keyword = None
+
+    @property
+    def Keyword(self):
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
 
 
     def _deserialize(self, params):
-        self.Keyword = params.get("Keyword")
+        self._Keyword = params.get("Keyword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -455,46 +786,95 @@ class AuthorizationUserResouceInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceId: Resource ID
+        :param _ResourceId: Resource ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ResourceId: str
-        :param ResourceType: Resource type
+        :param _ResourceType: Resource type
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ResourceType: str
-        :param Resource: Authorized resource
+        :param _Resource: Authorized resource
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Resource: str
-        :param InheritedForm: Inheritance relationship
+        :param _InheritedForm: Inheritance relationship
 Note: this field may return null, indicating that no valid values can be obtained.
         :type InheritedForm: :class:`tencentcloud.eiam.v20210420.models.InheritedForm`
-        :param ApplicationAccounts: Application account
+        :param _ApplicationAccounts: Application account
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApplicationAccounts: list of str
-        :param ResourceName: Resource name
+        :param _ResourceName: Resource name
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ResourceName: str
         """
-        self.ResourceId = None
-        self.ResourceType = None
-        self.Resource = None
-        self.InheritedForm = None
-        self.ApplicationAccounts = None
-        self.ResourceName = None
+        self._ResourceId = None
+        self._ResourceType = None
+        self._Resource = None
+        self._InheritedForm = None
+        self._ApplicationAccounts = None
+        self._ResourceName = None
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ResourceType(self):
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def Resource(self):
+        return self._Resource
+
+    @Resource.setter
+    def Resource(self, Resource):
+        self._Resource = Resource
+
+    @property
+    def InheritedForm(self):
+        return self._InheritedForm
+
+    @InheritedForm.setter
+    def InheritedForm(self, InheritedForm):
+        self._InheritedForm = InheritedForm
+
+    @property
+    def ApplicationAccounts(self):
+        return self._ApplicationAccounts
+
+    @ApplicationAccounts.setter
+    def ApplicationAccounts(self, ApplicationAccounts):
+        self._ApplicationAccounts = ApplicationAccounts
+
+    @property
+    def ResourceName(self):
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
 
 
     def _deserialize(self, params):
-        self.ResourceId = params.get("ResourceId")
-        self.ResourceType = params.get("ResourceType")
-        self.Resource = params.get("Resource")
+        self._ResourceId = params.get("ResourceId")
+        self._ResourceType = params.get("ResourceType")
+        self._Resource = params.get("Resource")
         if params.get("InheritedForm") is not None:
-            self.InheritedForm = InheritedForm()
-            self.InheritedForm._deserialize(params.get("InheritedForm"))
-        self.ApplicationAccounts = params.get("ApplicationAccounts")
-        self.ResourceName = params.get("ResourceName")
+            self._InheritedForm = InheritedForm()
+            self._InheritedForm._deserialize(params.get("InheritedForm"))
+        self._ApplicationAccounts = params.get("ApplicationAccounts")
+        self._ResourceName = params.get("ResourceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -507,26 +887,51 @@ class CreateAccountGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApplicationId: Application ID.
+        :param _ApplicationId: Application ID.
         :type ApplicationId: str
-        :param GroupName: Account group name.
+        :param _GroupName: Account group name.
         :type GroupName: str
-        :param Description: Description.
+        :param _Description: Description.
         :type Description: str
         """
-        self.ApplicationId = None
-        self.GroupName = None
-        self.Description = None
+        self._ApplicationId = None
+        self._GroupName = None
+        self._Description = None
+
+    @property
+    def ApplicationId(self):
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
+    def GroupName(self):
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
 
     def _deserialize(self, params):
-        self.ApplicationId = params.get("ApplicationId")
-        self.GroupName = params.get("GroupName")
-        self.Description = params.get("Description")
+        self._ApplicationId = params.get("ApplicationId")
+        self._GroupName = params.get("GroupName")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -539,19 +944,35 @@ class CreateAccountGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AccountGroupId: Account group ID.
+        :param _AccountGroupId: Account group ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AccountGroupId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.AccountGroupId = None
-        self.RequestId = None
+        self._AccountGroupId = None
+        self._RequestId = None
+
+    @property
+    def AccountGroupId(self):
+        return self._AccountGroupId
+
+    @AccountGroupId.setter
+    def AccountGroupId(self, AccountGroupId):
+        self._AccountGroupId = AccountGroupId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.AccountGroupId = params.get("AccountGroupId")
-        self.RequestId = params.get("RequestId")
+        self._AccountGroupId = params.get("AccountGroupId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateAppAccountRequest(AbstractModel):
@@ -561,30 +982,63 @@ class CreateAppAccountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApplicationId: Application ID
+        :param _ApplicationId: Application ID
         :type ApplicationId: str
-        :param AccountName: Account name
+        :param _AccountName: Account name
         :type AccountName: str
-        :param Password: Account password
+        :param _Password: Account password
         :type Password: str
-        :param Description: Description
+        :param _Description: Description
         :type Description: str
         """
-        self.ApplicationId = None
-        self.AccountName = None
-        self.Password = None
-        self.Description = None
+        self._ApplicationId = None
+        self._AccountName = None
+        self._Password = None
+        self._Description = None
+
+    @property
+    def ApplicationId(self):
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
+    def AccountName(self):
+        return self._AccountName
+
+    @AccountName.setter
+    def AccountName(self, AccountName):
+        self._AccountName = AccountName
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
 
     def _deserialize(self, params):
-        self.ApplicationId = params.get("ApplicationId")
-        self.AccountName = params.get("AccountName")
-        self.Password = params.get("Password")
-        self.Description = params.get("Description")
+        self._ApplicationId = params.get("ApplicationId")
+        self._AccountName = params.get("AccountName")
+        self._Password = params.get("Password")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -597,19 +1051,35 @@ class CreateAppAccountResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AccountId: Account ID
+        :param _AccountId: Account ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AccountId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.AccountId = None
-        self.RequestId = None
+        self._AccountId = None
+        self._RequestId = None
+
+    @property
+    def AccountId(self):
+        return self._AccountId
+
+    @AccountId.setter
+    def AccountId(self, AccountId):
+        self._AccountId = AccountId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.AccountId = params.get("AccountId")
-        self.RequestId = params.get("RequestId")
+        self._AccountId = params.get("AccountId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateOrgNodeRequest(AbstractModel):
@@ -619,30 +1089,63 @@ class CreateOrgNodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DisplayName: Organization node name, which can contain up to 64 characters.
+        :param _DisplayName: Organization node name, which can contain up to 64 characters.
         :type DisplayName: str
-        :param ParentOrgNodeId: Parent organization node ID. If this parameter is left empty, the organization will be created under the root organization node by default.
+        :param _ParentOrgNodeId: Parent organization node ID. If this parameter is left empty, the organization will be created under the root organization node by default.
         :type ParentOrgNodeId: str
-        :param Description: Organization node description.
+        :param _Description: Organization node description.
         :type Description: str
-        :param CustomizedOrgNodeId: External ID of the organization node, which is optional and customizable. If this parameter is specified, its uniqueness will be verified.
+        :param _CustomizedOrgNodeId: External ID of the organization node, which is optional and customizable. If this parameter is specified, its uniqueness will be verified.
         :type CustomizedOrgNodeId: str
         """
-        self.DisplayName = None
-        self.ParentOrgNodeId = None
-        self.Description = None
-        self.CustomizedOrgNodeId = None
+        self._DisplayName = None
+        self._ParentOrgNodeId = None
+        self._Description = None
+        self._CustomizedOrgNodeId = None
+
+    @property
+    def DisplayName(self):
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def ParentOrgNodeId(self):
+        return self._ParentOrgNodeId
+
+    @ParentOrgNodeId.setter
+    def ParentOrgNodeId(self, ParentOrgNodeId):
+        self._ParentOrgNodeId = ParentOrgNodeId
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CustomizedOrgNodeId(self):
+        return self._CustomizedOrgNodeId
+
+    @CustomizedOrgNodeId.setter
+    def CustomizedOrgNodeId(self, CustomizedOrgNodeId):
+        self._CustomizedOrgNodeId = CustomizedOrgNodeId
 
 
     def _deserialize(self, params):
-        self.DisplayName = params.get("DisplayName")
-        self.ParentOrgNodeId = params.get("ParentOrgNodeId")
-        self.Description = params.get("Description")
-        self.CustomizedOrgNodeId = params.get("CustomizedOrgNodeId")
+        self._DisplayName = params.get("DisplayName")
+        self._ParentOrgNodeId = params.get("ParentOrgNodeId")
+        self._Description = params.get("Description")
+        self._CustomizedOrgNodeId = params.get("CustomizedOrgNodeId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -655,19 +1158,35 @@ class CreateOrgNodeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OrgNodeId: Organization node ID, which is globally unique.
+        :param _OrgNodeId: Organization node ID, which is globally unique.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OrgNodeId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.OrgNodeId = None
-        self.RequestId = None
+        self._OrgNodeId = None
+        self._RequestId = None
+
+    @property
+    def OrgNodeId(self):
+        return self._OrgNodeId
+
+    @OrgNodeId.setter
+    def OrgNodeId(self, OrgNodeId):
+        self._OrgNodeId = OrgNodeId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.OrgNodeId = params.get("OrgNodeId")
-        self.RequestId = params.get("RequestId")
+        self._OrgNodeId = params.get("OrgNodeId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateUserGroupRequest(AbstractModel):
@@ -677,22 +1196,39 @@ class CreateUserGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DisplayName: User group nickname, which is unique and can contain up to 64 characters.
+        :param _DisplayName: User group nickname, which is unique and can contain up to 64 characters.
         :type DisplayName: str
-        :param Description: User group remarks, which can contain up to 512 characters.
+        :param _Description: User group remarks, which can contain up to 512 characters.
         :type Description: str
         """
-        self.DisplayName = None
-        self.Description = None
+        self._DisplayName = None
+        self._Description = None
+
+    @property
+    def DisplayName(self):
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
 
     def _deserialize(self, params):
-        self.DisplayName = params.get("DisplayName")
-        self.Description = params.get("Description")
+        self._DisplayName = params.get("DisplayName")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -705,19 +1241,35 @@ class CreateUserGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserGroupId: User group ID, which is globally unique.
+        :param _UserGroupId: User group ID, which is globally unique.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UserGroupId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.UserGroupId = None
-        self.RequestId = None
+        self._UserGroupId = None
+        self._RequestId = None
+
+    @property
+    def UserGroupId(self):
+        return self._UserGroupId
+
+    @UserGroupId.setter
+    def UserGroupId(self, UserGroupId):
+        self._UserGroupId = UserGroupId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.UserGroupId = params.get("UserGroupId")
-        self.RequestId = params.get("RequestId")
+        self._UserGroupId = params.get("UserGroupId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateUserRequest(AbstractModel):
@@ -727,58 +1279,147 @@ class CreateUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserName: Username, which can contain up to 64 characters.
+        :param _UserName: Username, which can contain up to 64 characters.
         :type UserName: str
-        :param Password: User password, which needs to be configured according to the password policy.
+        :param _Password: User password, which needs to be configured according to the password policy.
         :type Password: str
-        :param DisplayName: Nickname, which can contain up to 64 characters and is the same as the username by default.
+        :param _DisplayName: Nickname, which can contain up to 64 characters and is the same as the username by default.
         :type DisplayName: str
-        :param Description: User remarks, which can contain up to 512 characters.
+        :param _Description: User remarks, which can contain up to 512 characters.
         :type Description: str
-        :param UserGroupIds: List of IDs of the user's user groups.
+        :param _UserGroupIds: List of IDs of the user's user groups.
         :type UserGroupIds: list of str
-        :param Phone: User's mobile number, such as `+86-1xxxxxxxxxx`.
+        :param _Phone: User's mobile number, such as `+86-1xxxxxxxxxx`.
         :type Phone: str
-        :param OrgNodeId: Unique ID of the user's primary organization. If this parameter is left empty, the user will be created under the root node by default.
+        :param _OrgNodeId: Unique ID of the user's primary organization. If this parameter is left empty, the user will be created under the root node by default.
         :type OrgNodeId: str
-        :param ExpirationTime: User expiration time in ISO 8601 format.
+        :param _ExpirationTime: User expiration time in ISO 8601 format.
         :type ExpirationTime: str
-        :param Email: User's email address.
+        :param _Email: User's email address.
         :type Email: str
-        :param PwdNeedReset: Whether the password needs to be reset. Default value: false (no).
+        :param _PwdNeedReset: Whether the password needs to be reset. Default value: false (no).
         :type PwdNeedReset: bool
-        :param SecondaryOrgNodeIdList: List of IDs of the user's secondary organizations.
+        :param _SecondaryOrgNodeIdList: List of IDs of the user's secondary organizations.
         :type SecondaryOrgNodeIdList: list of str
         """
-        self.UserName = None
-        self.Password = None
-        self.DisplayName = None
-        self.Description = None
-        self.UserGroupIds = None
-        self.Phone = None
-        self.OrgNodeId = None
-        self.ExpirationTime = None
-        self.Email = None
-        self.PwdNeedReset = None
-        self.SecondaryOrgNodeIdList = None
+        self._UserName = None
+        self._Password = None
+        self._DisplayName = None
+        self._Description = None
+        self._UserGroupIds = None
+        self._Phone = None
+        self._OrgNodeId = None
+        self._ExpirationTime = None
+        self._Email = None
+        self._PwdNeedReset = None
+        self._SecondaryOrgNodeIdList = None
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def DisplayName(self):
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def UserGroupIds(self):
+        return self._UserGroupIds
+
+    @UserGroupIds.setter
+    def UserGroupIds(self, UserGroupIds):
+        self._UserGroupIds = UserGroupIds
+
+    @property
+    def Phone(self):
+        return self._Phone
+
+    @Phone.setter
+    def Phone(self, Phone):
+        self._Phone = Phone
+
+    @property
+    def OrgNodeId(self):
+        return self._OrgNodeId
+
+    @OrgNodeId.setter
+    def OrgNodeId(self, OrgNodeId):
+        self._OrgNodeId = OrgNodeId
+
+    @property
+    def ExpirationTime(self):
+        return self._ExpirationTime
+
+    @ExpirationTime.setter
+    def ExpirationTime(self, ExpirationTime):
+        self._ExpirationTime = ExpirationTime
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def PwdNeedReset(self):
+        return self._PwdNeedReset
+
+    @PwdNeedReset.setter
+    def PwdNeedReset(self, PwdNeedReset):
+        self._PwdNeedReset = PwdNeedReset
+
+    @property
+    def SecondaryOrgNodeIdList(self):
+        return self._SecondaryOrgNodeIdList
+
+    @SecondaryOrgNodeIdList.setter
+    def SecondaryOrgNodeIdList(self, SecondaryOrgNodeIdList):
+        self._SecondaryOrgNodeIdList = SecondaryOrgNodeIdList
 
 
     def _deserialize(self, params):
-        self.UserName = params.get("UserName")
-        self.Password = params.get("Password")
-        self.DisplayName = params.get("DisplayName")
-        self.Description = params.get("Description")
-        self.UserGroupIds = params.get("UserGroupIds")
-        self.Phone = params.get("Phone")
-        self.OrgNodeId = params.get("OrgNodeId")
-        self.ExpirationTime = params.get("ExpirationTime")
-        self.Email = params.get("Email")
-        self.PwdNeedReset = params.get("PwdNeedReset")
-        self.SecondaryOrgNodeIdList = params.get("SecondaryOrgNodeIdList")
+        self._UserName = params.get("UserName")
+        self._Password = params.get("Password")
+        self._DisplayName = params.get("DisplayName")
+        self._Description = params.get("Description")
+        self._UserGroupIds = params.get("UserGroupIds")
+        self._Phone = params.get("Phone")
+        self._OrgNodeId = params.get("OrgNodeId")
+        self._ExpirationTime = params.get("ExpirationTime")
+        self._Email = params.get("Email")
+        self._PwdNeedReset = params.get("PwdNeedReset")
+        self._SecondaryOrgNodeIdList = params.get("SecondaryOrgNodeIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -791,19 +1432,35 @@ class CreateUserResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserId: Returned ID of the newly created user, which is globally unique.
+        :param _UserId: Returned ID of the newly created user, which is globally unique.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UserId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.UserId = None
-        self.RequestId = None
+        self._UserId = None
+        self._RequestId = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.UserId = params.get("UserId")
-        self.RequestId = params.get("RequestId")
+        self._UserId = params.get("UserId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteAccountGroupRequest(AbstractModel):
@@ -813,18 +1470,27 @@ class DeleteAccountGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AccountGroupIdList: Array of account group IDs.
+        :param _AccountGroupIdList: Array of account group IDs.
         :type AccountGroupIdList: list of str
         """
-        self.AccountGroupIdList = None
+        self._AccountGroupIdList = None
+
+    @property
+    def AccountGroupIdList(self):
+        return self._AccountGroupIdList
+
+    @AccountGroupIdList.setter
+    def AccountGroupIdList(self, AccountGroupIdList):
+        self._AccountGroupIdList = AccountGroupIdList
 
 
     def _deserialize(self, params):
-        self.AccountGroupIdList = params.get("AccountGroupIdList")
+        self._AccountGroupIdList = params.get("AccountGroupIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -837,14 +1503,22 @@ class DeleteAccountGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteAppAccountRequest(AbstractModel):
@@ -854,18 +1528,27 @@ class DeleteAppAccountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AccountIdList: Array of account IDs .
+        :param _AccountIdList: Array of account IDs .
         :type AccountIdList: list of str
         """
-        self.AccountIdList = None
+        self._AccountIdList = None
+
+    @property
+    def AccountIdList(self):
+        return self._AccountIdList
+
+    @AccountIdList.setter
+    def AccountIdList(self, AccountIdList):
+        self._AccountIdList = AccountIdList
 
 
     def _deserialize(self, params):
-        self.AccountIdList = params.get("AccountIdList")
+        self._AccountIdList = params.get("AccountIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -878,14 +1561,22 @@ class DeleteAppAccountResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteOrgNodeRequest(AbstractModel):
@@ -895,18 +1586,27 @@ class DeleteOrgNodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OrgNodeId: Organization node ID, which is globally unique.
+        :param _OrgNodeId: Organization node ID, which is globally unique.
         :type OrgNodeId: str
         """
-        self.OrgNodeId = None
+        self._OrgNodeId = None
+
+    @property
+    def OrgNodeId(self):
+        return self._OrgNodeId
+
+    @OrgNodeId.setter
+    def OrgNodeId(self, OrgNodeId):
+        self._OrgNodeId = OrgNodeId
 
 
     def _deserialize(self, params):
-        self.OrgNodeId = params.get("OrgNodeId")
+        self._OrgNodeId = params.get("OrgNodeId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -919,14 +1619,22 @@ class DeleteOrgNodeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteUserGroupRequest(AbstractModel):
@@ -936,18 +1644,27 @@ class DeleteUserGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserGroupId: User group ID, which is globally unique.
+        :param _UserGroupId: User group ID, which is globally unique.
         :type UserGroupId: str
         """
-        self.UserGroupId = None
+        self._UserGroupId = None
+
+    @property
+    def UserGroupId(self):
+        return self._UserGroupId
+
+    @UserGroupId.setter
+    def UserGroupId(self, UserGroupId):
+        self._UserGroupId = UserGroupId
 
 
     def _deserialize(self, params):
-        self.UserGroupId = params.get("UserGroupId")
+        self._UserGroupId = params.get("UserGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -960,14 +1677,22 @@ class DeleteUserGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteUserRequest(AbstractModel):
@@ -977,22 +1702,39 @@ class DeleteUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserName: Username, which can contain up to 32 characters. You need to select either `UserName` or `UserId` as the search criterion; if both are selected, `UserName` will be used by default.
+        :param _UserName: Username, which can contain up to 32 characters. You need to select either `UserName` or `UserId` as the search criterion; if both are selected, `UserName` will be used by default.
         :type UserName: str
-        :param UserId: User ID. You need to select either `UserName` or `UserId` as the search criterion. If both are selected, `UserName` will be used by default.
+        :param _UserId: User ID. You need to select either `UserName` or `UserId` as the search criterion. If both are selected, `UserName` will be used by default.
         :type UserId: str
         """
-        self.UserName = None
-        self.UserId = None
+        self._UserName = None
+        self._UserId = None
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
 
 
     def _deserialize(self, params):
-        self.UserName = params.get("UserName")
-        self.UserId = params.get("UserId")
+        self._UserName = params.get("UserName")
+        self._UserId = params.get("UserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1005,14 +1747,22 @@ class DeleteUserResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteUsersRequest(AbstractModel):
@@ -1022,22 +1772,39 @@ class DeleteUsersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DeleteIdList: List of IDs of the users to be deleted. You need to specify at least `DeleteIdList` or `DeleteNameList`. If both are specified, `DeleteNameList` will be used first.
+        :param _DeleteIdList: List of IDs of the users to be deleted. You need to specify at least `DeleteIdList` or `DeleteNameList`. If both are specified, `DeleteNameList` will be used first.
         :type DeleteIdList: list of str
-        :param DeleteNameList: List of usernames of the users to be deleted. You need to specify at least `DeleteIdList` or `DeleteNameList`. If both are specified, `DeleteNameList` will be used first.
+        :param _DeleteNameList: List of usernames of the users to be deleted. You need to specify at least `DeleteIdList` or `DeleteNameList`. If both are specified, `DeleteNameList` will be used first.
         :type DeleteNameList: list of str
         """
-        self.DeleteIdList = None
-        self.DeleteNameList = None
+        self._DeleteIdList = None
+        self._DeleteNameList = None
+
+    @property
+    def DeleteIdList(self):
+        return self._DeleteIdList
+
+    @DeleteIdList.setter
+    def DeleteIdList(self, DeleteIdList):
+        self._DeleteIdList = DeleteIdList
+
+    @property
+    def DeleteNameList(self):
+        return self._DeleteNameList
+
+    @DeleteNameList.setter
+    def DeleteNameList(self, DeleteNameList):
+        self._DeleteNameList = DeleteNameList
 
 
     def _deserialize(self, params):
-        self.DeleteIdList = params.get("DeleteIdList")
-        self.DeleteNameList = params.get("DeleteNameList")
+        self._DeleteIdList = params.get("DeleteIdList")
+        self._DeleteNameList = params.get("DeleteNameList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1050,19 +1817,35 @@ class DeleteUsersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FailedItems: Information of the users failed to be deleted. When the business parameter is `DeleteIdList`, this field will return the list of IDs of the users failed to be deleted. When the business parameter is `DeleteNameList`, this field will return the list of usernames of the users failed to be deleted.
+        :param _FailedItems: Information of the users failed to be deleted. When the business parameter is `DeleteIdList`, this field will return the list of IDs of the users failed to be deleted. When the business parameter is `DeleteNameList`, this field will return the list of usernames of the users failed to be deleted.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type FailedItems: list of str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.FailedItems = None
-        self.RequestId = None
+        self._FailedItems = None
+        self._RequestId = None
+
+    @property
+    def FailedItems(self):
+        return self._FailedItems
+
+    @FailedItems.setter
+    def FailedItems(self, FailedItems):
+        self._FailedItems = FailedItems
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.FailedItems = params.get("FailedItems")
-        self.RequestId = params.get("RequestId")
+        self._FailedItems = params.get("FailedItems")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeAccountGroupRequest(AbstractModel):
@@ -1072,32 +1855,65 @@ class DescribeAccountGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApplicationId: Application ID.
+        :param _ApplicationId: Application ID.
         :type ApplicationId: str
-        :param SearchCondition: Search criterion. You can combine multiple search criteria and search in multiple data ranges. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks ("") indicate full match, an asterisk (*) at the end of the field indicates partial match, and an empty field indicates to query the full table by default.
+        :param _SearchCondition: Search criterion. You can combine multiple search criteria and search in multiple data ranges. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks ("") indicate full match, an asterisk (*) at the end of the field indicates partial match, and an empty field indicates to query the full table by default.
         :type SearchCondition: :class:`tencentcloud.eiam.v20210420.models.AccountGroupSearchCriteria`
-        :param Offset: Offset. Default value: 0.
+        :param _Offset: Offset. Default value: 0.
         :type Offset: int
-        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
+        :param _Limit: Number of returned results. Default value: 20. Maximum value: 100.
         :type Limit: int
         """
-        self.ApplicationId = None
-        self.SearchCondition = None
-        self.Offset = None
-        self.Limit = None
+        self._ApplicationId = None
+        self._SearchCondition = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def ApplicationId(self):
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
+    def SearchCondition(self):
+        return self._SearchCondition
+
+    @SearchCondition.setter
+    def SearchCondition(self, SearchCondition):
+        self._SearchCondition = SearchCondition
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.ApplicationId = params.get("ApplicationId")
+        self._ApplicationId = params.get("ApplicationId")
         if params.get("SearchCondition") is not None:
-            self.SearchCondition = AccountGroupSearchCriteria()
-            self.SearchCondition._deserialize(params.get("SearchCondition"))
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+            self._SearchCondition = AccountGroupSearchCriteria()
+            self._SearchCondition._deserialize(params.get("SearchCondition"))
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1110,34 +1926,66 @@ class DescribeAccountGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Total number of records returned for the query.
+        :param _TotalCount: Total number of records returned for the query.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TotalCount: int
-        :param ApplicationId: Application ID.
+        :param _ApplicationId: Application ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApplicationId: str
-        :param AccountGroupList: Returned list of eligible data.
+        :param _AccountGroupList: Returned list of eligible data.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AccountGroupList: list of AccountGroupInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.ApplicationId = None
-        self.AccountGroupList = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._ApplicationId = None
+        self._AccountGroupList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ApplicationId(self):
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
+    def AccountGroupList(self):
+        return self._AccountGroupList
+
+    @AccountGroupList.setter
+    def AccountGroupList(self, AccountGroupList):
+        self._AccountGroupList = AccountGroupList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        self.ApplicationId = params.get("ApplicationId")
+        self._TotalCount = params.get("TotalCount")
+        self._ApplicationId = params.get("ApplicationId")
         if params.get("AccountGroupList") is not None:
-            self.AccountGroupList = []
+            self._AccountGroupList = []
             for item in params.get("AccountGroupList"):
                 obj = AccountGroupInfo()
                 obj._deserialize(item)
-                self.AccountGroupList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._AccountGroupList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeAppAccountRequest(AbstractModel):
@@ -1147,32 +1995,65 @@ class DescribeAppAccountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApplicationId: Application ID.
+        :param _ApplicationId: Application ID.
         :type ApplicationId: str
-        :param SearchCondition: Search criterion. You can combine multiple search criteria and search in multiple data ranges. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks ("") indicate full match, an asterisk (*) at the end of the field indicates partial match, and an empty field indicates to query the full table by default.
+        :param _SearchCondition: Search criterion. You can combine multiple search criteria and search in multiple data ranges. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks ("") indicate full match, an asterisk (*) at the end of the field indicates partial match, and an empty field indicates to query the full table by default.
         :type SearchCondition: :class:`tencentcloud.eiam.v20210420.models.AppAccountSearchCriteria`
-        :param Offset: Offset. Default value: 0.
+        :param _Offset: Offset. Default value: 0.
         :type Offset: int
-        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
+        :param _Limit: Number of returned results. Default value: 20. Maximum value: 100.
         :type Limit: int
         """
-        self.ApplicationId = None
-        self.SearchCondition = None
-        self.Offset = None
-        self.Limit = None
+        self._ApplicationId = None
+        self._SearchCondition = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def ApplicationId(self):
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
+    def SearchCondition(self):
+        return self._SearchCondition
+
+    @SearchCondition.setter
+    def SearchCondition(self, SearchCondition):
+        self._SearchCondition = SearchCondition
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.ApplicationId = params.get("ApplicationId")
+        self._ApplicationId = params.get("ApplicationId")
         if params.get("SearchCondition") is not None:
-            self.SearchCondition = AppAccountSearchCriteria()
-            self.SearchCondition._deserialize(params.get("SearchCondition"))
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+            self._SearchCondition = AppAccountSearchCriteria()
+            self._SearchCondition._deserialize(params.get("SearchCondition"))
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1185,34 +2066,66 @@ class DescribeAppAccountResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Total number of records returned for the query.
+        :param _TotalCount: Total number of records returned for the query.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TotalCount: int
-        :param ApplicationId: Application ID.
+        :param _ApplicationId: Application ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApplicationId: str
-        :param AppAccountList: Returned list of eligible data.
+        :param _AppAccountList: Returned list of eligible data.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AppAccountList: list of AppAccountInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.ApplicationId = None
-        self.AppAccountList = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._ApplicationId = None
+        self._AppAccountList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ApplicationId(self):
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
+    def AppAccountList(self):
+        return self._AppAccountList
+
+    @AppAccountList.setter
+    def AppAccountList(self, AppAccountList):
+        self._AppAccountList = AppAccountList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        self.ApplicationId = params.get("ApplicationId")
+        self._TotalCount = params.get("TotalCount")
+        self._ApplicationId = params.get("ApplicationId")
         if params.get("AppAccountList") is not None:
-            self.AppAccountList = []
+            self._AppAccountList = []
             for item in params.get("AppAccountList"):
                 obj = AppAccountInfo()
                 obj._deserialize(item)
-                self.AppAccountList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._AppAccountList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeApplicationRequest(AbstractModel):
@@ -1222,22 +2135,39 @@ class DescribeApplicationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApplicationId: Application ID, which is globally unique. You must specify at least this parameter or `ClientId`.
+        :param _ApplicationId: Application ID, which is globally unique. You must specify at least this parameter or `ClientId`.
         :type ApplicationId: str
-        :param ClientId: Client ID. You must specify at least this parameter or `ApplicationId`.
+        :param _ClientId: Client ID. You must specify at least this parameter or `ApplicationId`.
         :type ClientId: str
         """
-        self.ApplicationId = None
-        self.ClientId = None
+        self._ApplicationId = None
+        self._ClientId = None
+
+    @property
+    def ApplicationId(self):
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
+    def ClientId(self):
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
 
 
     def _deserialize(self, params):
-        self.ApplicationId = params.get("ApplicationId")
-        self.ClientId = params.get("ClientId")
+        self._ApplicationId = params.get("ApplicationId")
+        self._ClientId = params.get("ClientId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1250,89 +2180,217 @@ class DescribeApplicationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param KeyId: Key ID.
+        :param _KeyId: Key ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type KeyId: str
-        :param DisplayName: Displayed application name, which can contain up to 64 characters and is the same as the application name by default.
+        :param _DisplayName: Displayed application name, which can contain up to 64 characters and is the same as the application name by default.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DisplayName: str
-        :param LastModifiedDate: Last modification time of the application in ISO 8601 format.
+        :param _LastModifiedDate: Last modification time of the application in ISO 8601 format.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type LastModifiedDate: str
-        :param ClientId: Client ID.
+        :param _ClientId: Client ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ClientId: str
-        :param ApplicationType: Application type, i.e., the application template type selected during application creation.
+        :param _ApplicationType: Application type, i.e., the application template type selected during application creation.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApplicationType: str
-        :param CreatedDate: Application creation time in ISO 8601 format.
+        :param _CreatedDate: Application creation time in ISO 8601 format.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CreatedDate: str
-        :param ApplicationId: Application ID, which is globally unique.
+        :param _ApplicationId: Application ID, which is globally unique.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApplicationId: str
-        :param TokenExpired: Token validity period in seconds.
+        :param _TokenExpired: Token validity period in seconds.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TokenExpired: int
-        :param ClientSecret: Client secret.
+        :param _ClientSecret: Client secret.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ClientSecret: str
-        :param PublicKey: Public key information.
+        :param _PublicKey: Public key information.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type PublicKey: str
-        :param AuthorizeUrl: Authorization address.
+        :param _AuthorizeUrl: Authorization address.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AuthorizeUrl: str
-        :param IconUrl: Access address of the application icon image.
+        :param _IconUrl: Access address of the application icon image.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IconUrl: str
-        :param SecureLevel: Security level.
+        :param _SecureLevel: Security level.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SecureLevel: str
-        :param AppStatus: Application status.
+        :param _AppStatus: Application status.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AppStatus: bool
-        :param Description: Description.
+        :param _Description: Description.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Description: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.KeyId = None
-        self.DisplayName = None
-        self.LastModifiedDate = None
-        self.ClientId = None
-        self.ApplicationType = None
-        self.CreatedDate = None
-        self.ApplicationId = None
-        self.TokenExpired = None
-        self.ClientSecret = None
-        self.PublicKey = None
-        self.AuthorizeUrl = None
-        self.IconUrl = None
-        self.SecureLevel = None
-        self.AppStatus = None
-        self.Description = None
-        self.RequestId = None
+        self._KeyId = None
+        self._DisplayName = None
+        self._LastModifiedDate = None
+        self._ClientId = None
+        self._ApplicationType = None
+        self._CreatedDate = None
+        self._ApplicationId = None
+        self._TokenExpired = None
+        self._ClientSecret = None
+        self._PublicKey = None
+        self._AuthorizeUrl = None
+        self._IconUrl = None
+        self._SecureLevel = None
+        self._AppStatus = None
+        self._Description = None
+        self._RequestId = None
+
+    @property
+    def KeyId(self):
+        return self._KeyId
+
+    @KeyId.setter
+    def KeyId(self, KeyId):
+        self._KeyId = KeyId
+
+    @property
+    def DisplayName(self):
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def LastModifiedDate(self):
+        return self._LastModifiedDate
+
+    @LastModifiedDate.setter
+    def LastModifiedDate(self, LastModifiedDate):
+        self._LastModifiedDate = LastModifiedDate
+
+    @property
+    def ClientId(self):
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
+
+    @property
+    def ApplicationType(self):
+        return self._ApplicationType
+
+    @ApplicationType.setter
+    def ApplicationType(self, ApplicationType):
+        self._ApplicationType = ApplicationType
+
+    @property
+    def CreatedDate(self):
+        return self._CreatedDate
+
+    @CreatedDate.setter
+    def CreatedDate(self, CreatedDate):
+        self._CreatedDate = CreatedDate
+
+    @property
+    def ApplicationId(self):
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
+    def TokenExpired(self):
+        return self._TokenExpired
+
+    @TokenExpired.setter
+    def TokenExpired(self, TokenExpired):
+        self._TokenExpired = TokenExpired
+
+    @property
+    def ClientSecret(self):
+        return self._ClientSecret
+
+    @ClientSecret.setter
+    def ClientSecret(self, ClientSecret):
+        self._ClientSecret = ClientSecret
+
+    @property
+    def PublicKey(self):
+        return self._PublicKey
+
+    @PublicKey.setter
+    def PublicKey(self, PublicKey):
+        self._PublicKey = PublicKey
+
+    @property
+    def AuthorizeUrl(self):
+        return self._AuthorizeUrl
+
+    @AuthorizeUrl.setter
+    def AuthorizeUrl(self, AuthorizeUrl):
+        self._AuthorizeUrl = AuthorizeUrl
+
+    @property
+    def IconUrl(self):
+        return self._IconUrl
+
+    @IconUrl.setter
+    def IconUrl(self, IconUrl):
+        self._IconUrl = IconUrl
+
+    @property
+    def SecureLevel(self):
+        return self._SecureLevel
+
+    @SecureLevel.setter
+    def SecureLevel(self, SecureLevel):
+        self._SecureLevel = SecureLevel
+
+    @property
+    def AppStatus(self):
+        return self._AppStatus
+
+    @AppStatus.setter
+    def AppStatus(self, AppStatus):
+        self._AppStatus = AppStatus
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.KeyId = params.get("KeyId")
-        self.DisplayName = params.get("DisplayName")
-        self.LastModifiedDate = params.get("LastModifiedDate")
-        self.ClientId = params.get("ClientId")
-        self.ApplicationType = params.get("ApplicationType")
-        self.CreatedDate = params.get("CreatedDate")
-        self.ApplicationId = params.get("ApplicationId")
-        self.TokenExpired = params.get("TokenExpired")
-        self.ClientSecret = params.get("ClientSecret")
-        self.PublicKey = params.get("PublicKey")
-        self.AuthorizeUrl = params.get("AuthorizeUrl")
-        self.IconUrl = params.get("IconUrl")
-        self.SecureLevel = params.get("SecureLevel")
-        self.AppStatus = params.get("AppStatus")
-        self.Description = params.get("Description")
-        self.RequestId = params.get("RequestId")
+        self._KeyId = params.get("KeyId")
+        self._DisplayName = params.get("DisplayName")
+        self._LastModifiedDate = params.get("LastModifiedDate")
+        self._ClientId = params.get("ClientId")
+        self._ApplicationType = params.get("ApplicationType")
+        self._CreatedDate = params.get("CreatedDate")
+        self._ApplicationId = params.get("ApplicationId")
+        self._TokenExpired = params.get("TokenExpired")
+        self._ClientSecret = params.get("ClientSecret")
+        self._PublicKey = params.get("PublicKey")
+        self._AuthorizeUrl = params.get("AuthorizeUrl")
+        self._IconUrl = params.get("IconUrl")
+        self._SecureLevel = params.get("SecureLevel")
+        self._AppStatus = params.get("AppStatus")
+        self._Description = params.get("Description")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeOrgNodeRequest(AbstractModel):
@@ -1342,22 +2400,39 @@ class DescribeOrgNodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OrgNodeId: Organization node ID, which is globally unique and can contain up to 64 characters. If this parameter is left empty, the information of the root organization node will be read by default.
+        :param _OrgNodeId: Organization node ID, which is globally unique and can contain up to 64 characters. If this parameter is left empty, the information of the root organization node will be read by default.
         :type OrgNodeId: str
-        :param IncludeOrgNodeChildInfo: Whether to read the information of its sub-nodes. When this parameter is left empty or specified as `false`, only the information of the current organization node will be read by default. When it is specified as `true`, the information of the current organization node and its level-1 sub-nodes will be read.
+        :param _IncludeOrgNodeChildInfo: Whether to read the information of its sub-nodes. When this parameter is left empty or specified as `false`, only the information of the current organization node will be read by default. When it is specified as `true`, the information of the current organization node and its level-1 sub-nodes will be read.
         :type IncludeOrgNodeChildInfo: bool
         """
-        self.OrgNodeId = None
-        self.IncludeOrgNodeChildInfo = None
+        self._OrgNodeId = None
+        self._IncludeOrgNodeChildInfo = None
+
+    @property
+    def OrgNodeId(self):
+        return self._OrgNodeId
+
+    @OrgNodeId.setter
+    def OrgNodeId(self, OrgNodeId):
+        self._OrgNodeId = OrgNodeId
+
+    @property
+    def IncludeOrgNodeChildInfo(self):
+        return self._IncludeOrgNodeChildInfo
+
+    @IncludeOrgNodeChildInfo.setter
+    def IncludeOrgNodeChildInfo(self, IncludeOrgNodeChildInfo):
+        self._IncludeOrgNodeChildInfo = IncludeOrgNodeChildInfo
 
 
     def _deserialize(self, params):
-        self.OrgNodeId = params.get("OrgNodeId")
-        self.IncludeOrgNodeChildInfo = params.get("IncludeOrgNodeChildInfo")
+        self._OrgNodeId = params.get("OrgNodeId")
+        self._IncludeOrgNodeChildInfo = params.get("IncludeOrgNodeChildInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1370,64 +2445,144 @@ class DescribeOrgNodeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DisplayName: Displayed organization node name, which can contain up to 64 characters and is the same as the organization name by default.
+        :param _DisplayName: Displayed organization node name, which can contain up to 64 characters and is the same as the organization name by default.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DisplayName: str
-        :param LastModifiedDate: Last modification time of the organization node in ISO 8601 format.
+        :param _LastModifiedDate: Last modification time of the organization node in ISO 8601 format.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type LastModifiedDate: str
-        :param CustomizedOrgNodeId: External ID of the organization node.
+        :param _CustomizedOrgNodeId: External ID of the organization node.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CustomizedOrgNodeId: str
-        :param ParentOrgNodeId: Parent node ID of the current organization node.
+        :param _ParentOrgNodeId: Parent node ID of the current organization node.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ParentOrgNodeId: str
-        :param OrgNodeId: Organization node ID, which is globally unique.
+        :param _OrgNodeId: Organization node ID, which is globally unique.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OrgNodeId: str
-        :param DataSource: Data source.
+        :param _DataSource: Data source.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DataSource: str
-        :param CreatedDate: Organization node creation time in ISO 8601 format.
+        :param _CreatedDate: Organization node creation time in ISO 8601 format.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CreatedDate: str
-        :param OrgNodeChildInfo: List of sub-nodes under the current organization node.
+        :param _OrgNodeChildInfo: List of sub-nodes under the current organization node.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OrgNodeChildInfo: list of OrgNodeChildInfo
-        :param Description: Organization node description.
+        :param _Description: Organization node description.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Description: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.DisplayName = None
-        self.LastModifiedDate = None
-        self.CustomizedOrgNodeId = None
-        self.ParentOrgNodeId = None
-        self.OrgNodeId = None
-        self.DataSource = None
-        self.CreatedDate = None
-        self.OrgNodeChildInfo = None
-        self.Description = None
-        self.RequestId = None
+        self._DisplayName = None
+        self._LastModifiedDate = None
+        self._CustomizedOrgNodeId = None
+        self._ParentOrgNodeId = None
+        self._OrgNodeId = None
+        self._DataSource = None
+        self._CreatedDate = None
+        self._OrgNodeChildInfo = None
+        self._Description = None
+        self._RequestId = None
+
+    @property
+    def DisplayName(self):
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def LastModifiedDate(self):
+        return self._LastModifiedDate
+
+    @LastModifiedDate.setter
+    def LastModifiedDate(self, LastModifiedDate):
+        self._LastModifiedDate = LastModifiedDate
+
+    @property
+    def CustomizedOrgNodeId(self):
+        return self._CustomizedOrgNodeId
+
+    @CustomizedOrgNodeId.setter
+    def CustomizedOrgNodeId(self, CustomizedOrgNodeId):
+        self._CustomizedOrgNodeId = CustomizedOrgNodeId
+
+    @property
+    def ParentOrgNodeId(self):
+        return self._ParentOrgNodeId
+
+    @ParentOrgNodeId.setter
+    def ParentOrgNodeId(self, ParentOrgNodeId):
+        self._ParentOrgNodeId = ParentOrgNodeId
+
+    @property
+    def OrgNodeId(self):
+        return self._OrgNodeId
+
+    @OrgNodeId.setter
+    def OrgNodeId(self, OrgNodeId):
+        self._OrgNodeId = OrgNodeId
+
+    @property
+    def DataSource(self):
+        return self._DataSource
+
+    @DataSource.setter
+    def DataSource(self, DataSource):
+        self._DataSource = DataSource
+
+    @property
+    def CreatedDate(self):
+        return self._CreatedDate
+
+    @CreatedDate.setter
+    def CreatedDate(self, CreatedDate):
+        self._CreatedDate = CreatedDate
+
+    @property
+    def OrgNodeChildInfo(self):
+        return self._OrgNodeChildInfo
+
+    @OrgNodeChildInfo.setter
+    def OrgNodeChildInfo(self, OrgNodeChildInfo):
+        self._OrgNodeChildInfo = OrgNodeChildInfo
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.DisplayName = params.get("DisplayName")
-        self.LastModifiedDate = params.get("LastModifiedDate")
-        self.CustomizedOrgNodeId = params.get("CustomizedOrgNodeId")
-        self.ParentOrgNodeId = params.get("ParentOrgNodeId")
-        self.OrgNodeId = params.get("OrgNodeId")
-        self.DataSource = params.get("DataSource")
-        self.CreatedDate = params.get("CreatedDate")
+        self._DisplayName = params.get("DisplayName")
+        self._LastModifiedDate = params.get("LastModifiedDate")
+        self._CustomizedOrgNodeId = params.get("CustomizedOrgNodeId")
+        self._ParentOrgNodeId = params.get("ParentOrgNodeId")
+        self._OrgNodeId = params.get("OrgNodeId")
+        self._DataSource = params.get("DataSource")
+        self._CreatedDate = params.get("CreatedDate")
         if params.get("OrgNodeChildInfo") is not None:
-            self.OrgNodeChildInfo = []
+            self._OrgNodeChildInfo = []
             for item in params.get("OrgNodeChildInfo"):
                 obj = OrgNodeChildInfo()
                 obj._deserialize(item)
-                self.OrgNodeChildInfo.append(obj)
-        self.Description = params.get("Description")
-        self.RequestId = params.get("RequestId")
+                self._OrgNodeChildInfo.append(obj)
+        self._Description = params.get("Description")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribePublicKeyRequest(AbstractModel):
@@ -1437,18 +2592,27 @@ class DescribePublicKeyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApplicationId: Application ID, which is globally unique.
+        :param _ApplicationId: Application ID, which is globally unique.
         :type ApplicationId: str
         """
-        self.ApplicationId = None
+        self._ApplicationId = None
+
+    @property
+    def ApplicationId(self):
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
 
 
     def _deserialize(self, params):
-        self.ApplicationId = params.get("ApplicationId")
+        self._ApplicationId = params.get("ApplicationId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1461,29 +2625,61 @@ class DescribePublicKeyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PublicKey: Public key information used for JWT signature verification.
+        :param _PublicKey: Public key information used for JWT signature verification.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type PublicKey: str
-        :param KeyId: JWT key ID.
+        :param _KeyId: JWT key ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type KeyId: str
-        :param ApplicationId: Application ID, which is globally unique.
+        :param _ApplicationId: Application ID, which is globally unique.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApplicationId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.PublicKey = None
-        self.KeyId = None
-        self.ApplicationId = None
-        self.RequestId = None
+        self._PublicKey = None
+        self._KeyId = None
+        self._ApplicationId = None
+        self._RequestId = None
+
+    @property
+    def PublicKey(self):
+        return self._PublicKey
+
+    @PublicKey.setter
+    def PublicKey(self, PublicKey):
+        self._PublicKey = PublicKey
+
+    @property
+    def KeyId(self):
+        return self._KeyId
+
+    @KeyId.setter
+    def KeyId(self, KeyId):
+        self._KeyId = KeyId
+
+    @property
+    def ApplicationId(self):
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.PublicKey = params.get("PublicKey")
-        self.KeyId = params.get("KeyId")
-        self.ApplicationId = params.get("ApplicationId")
-        self.RequestId = params.get("RequestId")
+        self._PublicKey = params.get("PublicKey")
+        self._KeyId = params.get("KeyId")
+        self._ApplicationId = params.get("ApplicationId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeUserGroupRequest(AbstractModel):
@@ -1493,18 +2689,27 @@ class DescribeUserGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserGroupId: User group ID, which is globally unique.
+        :param _UserGroupId: User group ID, which is globally unique.
         :type UserGroupId: str
         """
-        self.UserGroupId = None
+        self._UserGroupId = None
+
+    @property
+    def UserGroupId(self):
+        return self._UserGroupId
+
+    @UserGroupId.setter
+    def UserGroupId(self, UserGroupId):
+        self._UserGroupId = UserGroupId
 
 
     def _deserialize(self, params):
-        self.UserGroupId = params.get("UserGroupId")
+        self._UserGroupId = params.get("UserGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1517,29 +2722,61 @@ class DescribeUserGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DisplayName: User group nickname, which is not unique and can contain up to 64 characters.
+        :param _DisplayName: User group nickname, which is not unique and can contain up to 64 characters.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DisplayName: str
-        :param Description: User group remarks, which can contain up to 512 characters.
+        :param _Description: User group remarks, which can contain up to 512 characters.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Description: str
-        :param UserGroupId: User group ID, which is globally unique.
+        :param _UserGroupId: User group ID, which is globally unique.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UserGroupId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.DisplayName = None
-        self.Description = None
-        self.UserGroupId = None
-        self.RequestId = None
+        self._DisplayName = None
+        self._Description = None
+        self._UserGroupId = None
+        self._RequestId = None
+
+    @property
+    def DisplayName(self):
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def UserGroupId(self):
+        return self._UserGroupId
+
+    @UserGroupId.setter
+    def UserGroupId(self, UserGroupId):
+        self._UserGroupId = UserGroupId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.DisplayName = params.get("DisplayName")
-        self.Description = params.get("Description")
-        self.UserGroupId = params.get("UserGroupId")
-        self.RequestId = params.get("RequestId")
+        self._DisplayName = params.get("DisplayName")
+        self._Description = params.get("Description")
+        self._UserGroupId = params.get("UserGroupId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeUserInfoRequest(AbstractModel):
@@ -1549,22 +2786,39 @@ class DescribeUserInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserName: Username, which can contain up to 64 characters. You need to specify at least `UserName` or `UserId`. If both are specified, `UserName` will be used first.
+        :param _UserName: Username, which can contain up to 64 characters. You need to specify at least `UserName` or `UserId`. If both are specified, `UserName` will be used first.
         :type UserName: str
-        :param UserId: User ID, which can contain up to 64 characters. You need to specify at least `UserName` or `UserId`. If both are specified, `UserName` will be used first.
+        :param _UserId: User ID, which can contain up to 64 characters. You need to specify at least `UserName` or `UserId`. If both are specified, `UserName` will be used first.
         :type UserId: str
         """
-        self.UserName = None
-        self.UserId = None
+        self._UserName = None
+        self._UserId = None
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
 
 
     def _deserialize(self, params):
-        self.UserName = params.get("UserName")
-        self.UserId = params.get("UserId")
+        self._UserName = params.get("UserName")
+        self._UserId = params.get("UserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1577,89 +2831,217 @@ class DescribeUserInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserName: Username.
+        :param _UserName: Username.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UserName: str
-        :param Status: User status. Valid values: NORMAL: normal; FREEZE: frozen; LOCKED: locked; NOT_ENABLED: disabled.
+        :param _Status: User status. Valid values: NORMAL: normal; FREEZE: frozen; LOCKED: locked; NOT_ENABLED: disabled.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Status: str
-        :param DisplayName: Nickname
+        :param _DisplayName: Nickname
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DisplayName: str
-        :param Description: User remarks.
+        :param _Description: User remarks.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Description: str
-        :param UserGroupIds: List of IDs of the user's user groups.
+        :param _UserGroupIds: List of IDs of the user's user groups.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UserGroupIds: list of str
-        :param UserId: User ID, which can contain up to 64 characters.
+        :param _UserId: User ID, which can contain up to 64 characters.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UserId: str
-        :param Email: User's email address.
+        :param _Email: User's email address.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Email: str
-        :param Phone: User's mobile number.
+        :param _Phone: User's mobile number.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Phone: str
-        :param OrgNodeId: Unique ID of the user's primary organization.
+        :param _OrgNodeId: Unique ID of the user's primary organization.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OrgNodeId: str
-        :param DataSource: Data source
+        :param _DataSource: Data source
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DataSource: str
-        :param ExpirationTime: User expiration time in ISO 8601 format.
+        :param _ExpirationTime: User expiration time in ISO 8601 format.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ExpirationTime: str
-        :param ActivationTime: User activation time in ISO 8601 format.
+        :param _ActivationTime: User activation time in ISO 8601 format.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ActivationTime: str
-        :param PwdNeedReset: Whether the password of the current user needs to be reset. `false` indicates no.
+        :param _PwdNeedReset: Whether the password of the current user needs to be reset. `false` indicates no.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type PwdNeedReset: bool
-        :param SecondaryOrgNodeIdList: List of IDs of the user's secondary organizations.
+        :param _SecondaryOrgNodeIdList: List of IDs of the user's secondary organizations.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SecondaryOrgNodeIdList: list of str
-        :param AdminFlag: Whether the user is an admin. Valid values: 0: no; 1: yes.
+        :param _AdminFlag: Whether the user is an admin. Valid values: 0: no; 1: yes.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AdminFlag: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.UserName = None
-        self.Status = None
-        self.DisplayName = None
-        self.Description = None
-        self.UserGroupIds = None
-        self.UserId = None
-        self.Email = None
-        self.Phone = None
-        self.OrgNodeId = None
-        self.DataSource = None
-        self.ExpirationTime = None
-        self.ActivationTime = None
-        self.PwdNeedReset = None
-        self.SecondaryOrgNodeIdList = None
-        self.AdminFlag = None
-        self.RequestId = None
+        self._UserName = None
+        self._Status = None
+        self._DisplayName = None
+        self._Description = None
+        self._UserGroupIds = None
+        self._UserId = None
+        self._Email = None
+        self._Phone = None
+        self._OrgNodeId = None
+        self._DataSource = None
+        self._ExpirationTime = None
+        self._ActivationTime = None
+        self._PwdNeedReset = None
+        self._SecondaryOrgNodeIdList = None
+        self._AdminFlag = None
+        self._RequestId = None
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def DisplayName(self):
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def UserGroupIds(self):
+        return self._UserGroupIds
+
+    @UserGroupIds.setter
+    def UserGroupIds(self, UserGroupIds):
+        self._UserGroupIds = UserGroupIds
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def Phone(self):
+        return self._Phone
+
+    @Phone.setter
+    def Phone(self, Phone):
+        self._Phone = Phone
+
+    @property
+    def OrgNodeId(self):
+        return self._OrgNodeId
+
+    @OrgNodeId.setter
+    def OrgNodeId(self, OrgNodeId):
+        self._OrgNodeId = OrgNodeId
+
+    @property
+    def DataSource(self):
+        return self._DataSource
+
+    @DataSource.setter
+    def DataSource(self, DataSource):
+        self._DataSource = DataSource
+
+    @property
+    def ExpirationTime(self):
+        return self._ExpirationTime
+
+    @ExpirationTime.setter
+    def ExpirationTime(self, ExpirationTime):
+        self._ExpirationTime = ExpirationTime
+
+    @property
+    def ActivationTime(self):
+        return self._ActivationTime
+
+    @ActivationTime.setter
+    def ActivationTime(self, ActivationTime):
+        self._ActivationTime = ActivationTime
+
+    @property
+    def PwdNeedReset(self):
+        return self._PwdNeedReset
+
+    @PwdNeedReset.setter
+    def PwdNeedReset(self, PwdNeedReset):
+        self._PwdNeedReset = PwdNeedReset
+
+    @property
+    def SecondaryOrgNodeIdList(self):
+        return self._SecondaryOrgNodeIdList
+
+    @SecondaryOrgNodeIdList.setter
+    def SecondaryOrgNodeIdList(self, SecondaryOrgNodeIdList):
+        self._SecondaryOrgNodeIdList = SecondaryOrgNodeIdList
+
+    @property
+    def AdminFlag(self):
+        return self._AdminFlag
+
+    @AdminFlag.setter
+    def AdminFlag(self, AdminFlag):
+        self._AdminFlag = AdminFlag
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.UserName = params.get("UserName")
-        self.Status = params.get("Status")
-        self.DisplayName = params.get("DisplayName")
-        self.Description = params.get("Description")
-        self.UserGroupIds = params.get("UserGroupIds")
-        self.UserId = params.get("UserId")
-        self.Email = params.get("Email")
-        self.Phone = params.get("Phone")
-        self.OrgNodeId = params.get("OrgNodeId")
-        self.DataSource = params.get("DataSource")
-        self.ExpirationTime = params.get("ExpirationTime")
-        self.ActivationTime = params.get("ActivationTime")
-        self.PwdNeedReset = params.get("PwdNeedReset")
-        self.SecondaryOrgNodeIdList = params.get("SecondaryOrgNodeIdList")
-        self.AdminFlag = params.get("AdminFlag")
-        self.RequestId = params.get("RequestId")
+        self._UserName = params.get("UserName")
+        self._Status = params.get("Status")
+        self._DisplayName = params.get("DisplayName")
+        self._Description = params.get("Description")
+        self._UserGroupIds = params.get("UserGroupIds")
+        self._UserId = params.get("UserId")
+        self._Email = params.get("Email")
+        self._Phone = params.get("Phone")
+        self._OrgNodeId = params.get("OrgNodeId")
+        self._DataSource = params.get("DataSource")
+        self._ExpirationTime = params.get("ExpirationTime")
+        self._ActivationTime = params.get("ActivationTime")
+        self._PwdNeedReset = params.get("PwdNeedReset")
+        self._SecondaryOrgNodeIdList = params.get("SecondaryOrgNodeIdList")
+        self._AdminFlag = params.get("AdminFlag")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeUserResourcesAuthorizationRequest(AbstractModel):
@@ -1669,30 +3051,63 @@ class DescribeUserResourcesAuthorizationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApplicationId: Application ID.
+        :param _ApplicationId: Application ID.
         :type ApplicationId: str
-        :param UserId: User ID. You need to specify at least `UserName` or `UserId`. If both are specified, `UserName` will be used first.
+        :param _UserId: User ID. You need to specify at least `UserName` or `UserId`. If both are specified, `UserName` will be used first.
         :type UserId: str
-        :param UserName: Username. You need to specify at least `UserName` or `UserId`. If both are specified, `UserName` will be used first.
+        :param _UserName: Username. You need to specify at least `UserName` or `UserId`. If both are specified, `UserName` will be used first.
         :type UserName: str
-        :param IncludeInheritedAuthorizations: Whether the query scope includes the application access of the user groups and organizations associated with the user. Valid values: false: no; true: yes. Default value: false.
+        :param _IncludeInheritedAuthorizations: Whether the query scope includes the application access of the user groups and organizations associated with the user. Valid values: false: no; true: yes. Default value: false.
         :type IncludeInheritedAuthorizations: bool
         """
-        self.ApplicationId = None
-        self.UserId = None
-        self.UserName = None
-        self.IncludeInheritedAuthorizations = None
+        self._ApplicationId = None
+        self._UserId = None
+        self._UserName = None
+        self._IncludeInheritedAuthorizations = None
+
+    @property
+    def ApplicationId(self):
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def IncludeInheritedAuthorizations(self):
+        return self._IncludeInheritedAuthorizations
+
+    @IncludeInheritedAuthorizations.setter
+    def IncludeInheritedAuthorizations(self, IncludeInheritedAuthorizations):
+        self._IncludeInheritedAuthorizations = IncludeInheritedAuthorizations
 
 
     def _deserialize(self, params):
-        self.ApplicationId = params.get("ApplicationId")
-        self.UserId = params.get("UserId")
-        self.UserName = params.get("UserName")
-        self.IncludeInheritedAuthorizations = params.get("IncludeInheritedAuthorizations")
+        self._ApplicationId = params.get("ApplicationId")
+        self._UserId = params.get("UserId")
+        self._UserName = params.get("UserName")
+        self._IncludeInheritedAuthorizations = params.get("IncludeInheritedAuthorizations")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1705,43 +3120,91 @@ class DescribeUserResourcesAuthorizationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApplicationId: Unique application ID.
+        :param _ApplicationId: Unique application ID.
         :type ApplicationId: str
-        :param ApplicationAccounts: Application account.
+        :param _ApplicationAccounts: Application account.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApplicationAccounts: list of str
-        :param UserId: Unique ID of the authorized user.
+        :param _UserId: Unique ID of the authorized user.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UserId: str
-        :param UserName: Username of the authorized user.
+        :param _UserName: Username of the authorized user.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UserName: str
-        :param AuthorizationUserResourceList: Returned resource list.
+        :param _AuthorizationUserResourceList: Returned resource list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AuthorizationUserResourceList: list of AuthorizationUserResouceInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.ApplicationId = None
-        self.ApplicationAccounts = None
-        self.UserId = None
-        self.UserName = None
-        self.AuthorizationUserResourceList = None
-        self.RequestId = None
+        self._ApplicationId = None
+        self._ApplicationAccounts = None
+        self._UserId = None
+        self._UserName = None
+        self._AuthorizationUserResourceList = None
+        self._RequestId = None
+
+    @property
+    def ApplicationId(self):
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
+    def ApplicationAccounts(self):
+        return self._ApplicationAccounts
+
+    @ApplicationAccounts.setter
+    def ApplicationAccounts(self, ApplicationAccounts):
+        self._ApplicationAccounts = ApplicationAccounts
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def AuthorizationUserResourceList(self):
+        return self._AuthorizationUserResourceList
+
+    @AuthorizationUserResourceList.setter
+    def AuthorizationUserResourceList(self, AuthorizationUserResourceList):
+        self._AuthorizationUserResourceList = AuthorizationUserResourceList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ApplicationId = params.get("ApplicationId")
-        self.ApplicationAccounts = params.get("ApplicationAccounts")
-        self.UserId = params.get("UserId")
-        self.UserName = params.get("UserName")
+        self._ApplicationId = params.get("ApplicationId")
+        self._ApplicationAccounts = params.get("ApplicationAccounts")
+        self._UserId = params.get("UserId")
+        self._UserName = params.get("UserName")
         if params.get("AuthorizationUserResourceList") is not None:
-            self.AuthorizationUserResourceList = []
+            self._AuthorizationUserResourceList = []
             for item in params.get("AuthorizationUserResourceList"):
                 obj = AuthorizationUserResouceInfo()
                 obj._deserialize(item)
-                self.AuthorizationUserResourceList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._AuthorizationUserResourceList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeUserThirdPartyAccountInfoRequest(AbstractModel):
@@ -1751,22 +3214,39 @@ class DescribeUserThirdPartyAccountInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserName: Username. You need to specify at least `Username` or `UserId`. If both are specified, `Username` will be used first.
+        :param _UserName: Username. You need to specify at least `Username` or `UserId`. If both are specified, `Username` will be used first.
         :type UserName: str
-        :param UserId: User ID. You need to specify at least `Username` or `UserId`. If both are specified, `Username` will be used first.
+        :param _UserId: User ID. You need to specify at least `Username` or `UserId`. If both are specified, `Username` will be used first.
         :type UserId: str
         """
-        self.UserName = None
-        self.UserId = None
+        self._UserName = None
+        self._UserId = None
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
 
 
     def _deserialize(self, params):
-        self.UserName = params.get("UserName")
-        self.UserId = params.get("UserId")
+        self._UserName = params.get("UserName")
+        self._UserId = params.get("UserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1779,32 +3259,64 @@ class DescribeUserThirdPartyAccountInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserId: User ID.
+        :param _UserId: User ID.
         :type UserId: str
-        :param UserName: Username.
+        :param _UserName: Username.
         :type UserName: str
-        :param ThirdPartyAccounts: Third-Party account binding information.
+        :param _ThirdPartyAccounts: Third-Party account binding information.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ThirdPartyAccounts: list of ThirdPartyAccountInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.UserId = None
-        self.UserName = None
-        self.ThirdPartyAccounts = None
-        self.RequestId = None
+        self._UserId = None
+        self._UserName = None
+        self._ThirdPartyAccounts = None
+        self._RequestId = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def ThirdPartyAccounts(self):
+        return self._ThirdPartyAccounts
+
+    @ThirdPartyAccounts.setter
+    def ThirdPartyAccounts(self, ThirdPartyAccounts):
+        self._ThirdPartyAccounts = ThirdPartyAccounts
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.UserId = params.get("UserId")
-        self.UserName = params.get("UserName")
+        self._UserId = params.get("UserId")
+        self._UserName = params.get("UserName")
         if params.get("ThirdPartyAccounts") is not None:
-            self.ThirdPartyAccounts = []
+            self._ThirdPartyAccounts = []
             for item in params.get("ThirdPartyAccounts"):
                 obj = ThirdPartyAccountInfo()
                 obj._deserialize(item)
-                self.ThirdPartyAccounts.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._ThirdPartyAccounts.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class InheritedForm(AbstractModel):
@@ -1814,24 +3326,41 @@ class InheritedForm(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserGroupIds: List of IDs of the user's user groups.
+        :param _UserGroupIds: List of IDs of the user's user groups.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UserGroupIds: list of str
-        :param OrgNodeIds: List of IDs of the user's organization nodes.
+        :param _OrgNodeIds: List of IDs of the user's organization nodes.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OrgNodeIds: list of str
         """
-        self.UserGroupIds = None
-        self.OrgNodeIds = None
+        self._UserGroupIds = None
+        self._OrgNodeIds = None
+
+    @property
+    def UserGroupIds(self):
+        return self._UserGroupIds
+
+    @UserGroupIds.setter
+    def UserGroupIds(self, UserGroupIds):
+        self._UserGroupIds = UserGroupIds
+
+    @property
+    def OrgNodeIds(self):
+        return self._OrgNodeIds
+
+    @OrgNodeIds.setter
+    def OrgNodeIds(self, OrgNodeIds):
+        self._OrgNodeIds = OrgNodeIds
 
 
     def _deserialize(self, params):
-        self.UserGroupIds = params.get("UserGroupIds")
-        self.OrgNodeIds = params.get("OrgNodeIds")
+        self._UserGroupIds = params.get("UserGroupIds")
+        self._OrgNodeIds = params.get("OrgNodeIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1844,24 +3373,41 @@ class LinkUserInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserId: User ID, which is globally unique and can contain up to 64 characters.
+        :param _UserId: User ID, which is globally unique and can contain up to 64 characters.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UserId: str
-        :param UserName: Username.
+        :param _UserName: Username.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UserName: str
         """
-        self.UserId = None
-        self.UserName = None
+        self._UserId = None
+        self._UserName = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
 
 
     def _deserialize(self, params):
-        self.UserId = params.get("UserId")
-        self.UserName = params.get("UserName")
+        self._UserId = params.get("UserId")
+        self._UserName = params.get("UserName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1874,32 +3420,65 @@ class ListAccountInAccountGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AccountGroupId: Account group ID.
+        :param _AccountGroupId: Account group ID.
         :type AccountGroupId: str
-        :param SearchCondition: Search criterion. You can combine multiple search criteria and search in multiple data ranges.
+        :param _SearchCondition: Search criterion. You can combine multiple search criteria and search in multiple data ranges.
         :type SearchCondition: :class:`tencentcloud.eiam.v20210420.models.AccountGroupSearchCriteria`
-        :param Offset: Offset. Default value: 0.
+        :param _Offset: Offset. Default value: 0.
         :type Offset: int
-        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
+        :param _Limit: Number of returned results. Default value: 20. Maximum value: 100.
         :type Limit: int
         """
-        self.AccountGroupId = None
-        self.SearchCondition = None
-        self.Offset = None
-        self.Limit = None
+        self._AccountGroupId = None
+        self._SearchCondition = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def AccountGroupId(self):
+        return self._AccountGroupId
+
+    @AccountGroupId.setter
+    def AccountGroupId(self, AccountGroupId):
+        self._AccountGroupId = AccountGroupId
+
+    @property
+    def SearchCondition(self):
+        return self._SearchCondition
+
+    @SearchCondition.setter
+    def SearchCondition(self, SearchCondition):
+        self._SearchCondition = SearchCondition
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.AccountGroupId = params.get("AccountGroupId")
+        self._AccountGroupId = params.get("AccountGroupId")
         if params.get("SearchCondition") is not None:
-            self.SearchCondition = AccountGroupSearchCriteria()
-            self.SearchCondition._deserialize(params.get("SearchCondition"))
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+            self._SearchCondition = AccountGroupSearchCriteria()
+            self._SearchCondition._deserialize(params.get("SearchCondition"))
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1912,34 +3491,66 @@ class ListAccountInAccountGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AccountList: List of accounts returned for the query.
+        :param _AccountList: List of accounts returned for the query.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AccountList: list of AppAccountInfo
-        :param TotalCount: Total number of accounts returned for the query.
+        :param _TotalCount: Total number of accounts returned for the query.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TotalCount: int
-        :param AccountGroupId: Account group ID.
+        :param _AccountGroupId: Account group ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AccountGroupId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.AccountList = None
-        self.TotalCount = None
-        self.AccountGroupId = None
-        self.RequestId = None
+        self._AccountList = None
+        self._TotalCount = None
+        self._AccountGroupId = None
+        self._RequestId = None
+
+    @property
+    def AccountList(self):
+        return self._AccountList
+
+    @AccountList.setter
+    def AccountList(self, AccountList):
+        self._AccountList = AccountList
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def AccountGroupId(self):
+        return self._AccountGroupId
+
+    @AccountGroupId.setter
+    def AccountGroupId(self, AccountGroupId):
+        self._AccountGroupId = AccountGroupId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("AccountList") is not None:
-            self.AccountList = []
+            self._AccountList = []
             for item in params.get("AccountList"):
                 obj = AppAccountInfo()
                 obj._deserialize(item)
-                self.AccountList.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.AccountGroupId = params.get("AccountGroupId")
-        self.RequestId = params.get("RequestId")
+                self._AccountList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._AccountGroupId = params.get("AccountGroupId")
+        self._RequestId = params.get("RequestId")
 
 
 class ListApplicationAuthorizationsRequest(AbstractModel):
@@ -1949,38 +3560,79 @@ class ListApplicationAuthorizationsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EntityType: Query type. Valid values: User: user; UserGroup: user group; OrgNode: organization.
+        :param _EntityType: Query type. Valid values: User: user; UserGroup: user group; OrgNode: organization.
         :type EntityType: str
-        :param SearchCondition: Search criterion. You can combine multiple search criteria and search in multiple data ranges. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks ("") indicate full match, an asterisk (*) at the end of the field indicates partial match, and an empty field indicates to query the full table by default.
+        :param _SearchCondition: Search criterion. You can combine multiple search criteria and search in multiple data ranges. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks ("") indicate full match, an asterisk (*) at the end of the field indicates partial match, and an empty field indicates to query the full table by default.
         :type SearchCondition: :class:`tencentcloud.eiam.v20210420.models.AuthorizationInfoSearchCriteria`
-        :param Sort: Set of sort criteria. You can sort the results by last modification time (lastModifiedDate). If this field is left empty, the results will be sorted in alphabetical order by application name.
+        :param _Sort: Set of sort criteria. You can sort the results by last modification time (lastModifiedDate). If this field is left empty, the results will be sorted in alphabetical order by application name.
         :type Sort: :class:`tencentcloud.eiam.v20210420.models.SortCondition`
-        :param Offset: Pagination offset. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated.
+        :param _Offset: Pagination offset. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated.
         :type Offset: int
-        :param Limit: Number of results read per page. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated.
+        :param _Limit: Number of results read per page. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated.
         :type Limit: int
         """
-        self.EntityType = None
-        self.SearchCondition = None
-        self.Sort = None
-        self.Offset = None
-        self.Limit = None
+        self._EntityType = None
+        self._SearchCondition = None
+        self._Sort = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def EntityType(self):
+        return self._EntityType
+
+    @EntityType.setter
+    def EntityType(self, EntityType):
+        self._EntityType = EntityType
+
+    @property
+    def SearchCondition(self):
+        return self._SearchCondition
+
+    @SearchCondition.setter
+    def SearchCondition(self, SearchCondition):
+        self._SearchCondition = SearchCondition
+
+    @property
+    def Sort(self):
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.EntityType = params.get("EntityType")
+        self._EntityType = params.get("EntityType")
         if params.get("SearchCondition") is not None:
-            self.SearchCondition = AuthorizationInfoSearchCriteria()
-            self.SearchCondition._deserialize(params.get("SearchCondition"))
+            self._SearchCondition = AuthorizationInfoSearchCriteria()
+            self._SearchCondition._deserialize(params.get("SearchCondition"))
         if params.get("Sort") is not None:
-            self.Sort = SortCondition()
-            self.Sort._deserialize(params.get("Sort"))
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+            self._Sort = SortCondition()
+            self._Sort._deserialize(params.get("Sort"))
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1993,29 +3645,53 @@ class ListApplicationAuthorizationsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AuthorizationInfoList: Returned list of application authorization information.
+        :param _AuthorizationInfoList: Returned list of application authorization information.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AuthorizationInfoList: list of AuthorizationInfo
-        :param TotalCount: Total number of returned application information items.
+        :param _TotalCount: Total number of returned application information items.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.AuthorizationInfoList = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._AuthorizationInfoList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def AuthorizationInfoList(self):
+        return self._AuthorizationInfoList
+
+    @AuthorizationInfoList.setter
+    def AuthorizationInfoList(self, AuthorizationInfoList):
+        self._AuthorizationInfoList = AuthorizationInfoList
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("AuthorizationInfoList") is not None:
-            self.AuthorizationInfoList = []
+            self._AuthorizationInfoList = []
             for item in params.get("AuthorizationInfoList"):
                 obj = AuthorizationInfo()
                 obj._deserialize(item)
-                self.AuthorizationInfoList.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._AuthorizationInfoList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class ListApplicationsRequest(AbstractModel):
@@ -2025,38 +3701,79 @@ class ListApplicationsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SearchCondition: Fuzzy match search criterion. You can combine multiple search criteria and search in multiple data ranges. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks ("") indicate full match, and an asterisk (*) at the end of the field indicates partial match. The fuzzy match search feature and the exact match query feature will not take effect at the same time. If both `SearchCondition` and `ApplicationIdList` are specified, `ApplicationIdList` will take effect by default for exact match query; otherwise, the information of all applications will be returned by default.
+        :param _SearchCondition: Fuzzy match search criterion. You can combine multiple search criteria and search in multiple data ranges. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks ("") indicate full match, and an asterisk (*) at the end of the field indicates partial match. The fuzzy match search feature and the exact match query feature will not take effect at the same time. If both `SearchCondition` and `ApplicationIdList` are specified, `ApplicationIdList` will take effect by default for exact match query; otherwise, the information of all applications will be returned by default.
         :type SearchCondition: :class:`tencentcloud.eiam.v20210420.models.ApplicationInfoSearchCriteria`
-        :param Sort: Set of sort criteria. Valid values: DisplayName: application name; CreatedDate: creation time; LastModifiedDate: last modification time. If this field is left empty, the results will be sorted in alphabetical order by application name.
+        :param _Sort: Set of sort criteria. Valid values: DisplayName: application name; CreatedDate: creation time; LastModifiedDate: last modification time. If this field is left empty, the results will be sorted in alphabetical order by application name.
         :type Sort: :class:`tencentcloud.eiam.v20210420.models.SortCondition`
-        :param Offset: Set of sort criteria. Valid values: DisplayName: application name; CreatedDate: creation time; LastModifiedDate: last modification time. If this field is left empty, the results will be sorted in alphabetical order by application name.
+        :param _Offset: Set of sort criteria. Valid values: DisplayName: application name; CreatedDate: creation time; LastModifiedDate: last modification time. If this field is left empty, the results will be sorted in alphabetical order by application name.
         :type Offset: int
-        :param Limit: Number of results read per page. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated.
+        :param _Limit: Number of results read per page. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated.
         :type Limit: int
-        :param ApplicationIdList: Application ID list, through which the corresponding application information will be matched exactly. The fuzzy match search feature and the exact match query feature will not take effect at the same time. If both `SearchCondition` and `ApplicationIdList` are specified, `ApplicationIdList` will take effect by default for exact match query; otherwise, the information of all applications will be returned by default.
+        :param _ApplicationIdList: Application ID list, through which the corresponding application information will be matched exactly. The fuzzy match search feature and the exact match query feature will not take effect at the same time. If both `SearchCondition` and `ApplicationIdList` are specified, `ApplicationIdList` will take effect by default for exact match query; otherwise, the information of all applications will be returned by default.
         :type ApplicationIdList: list of str
         """
-        self.SearchCondition = None
-        self.Sort = None
-        self.Offset = None
-        self.Limit = None
-        self.ApplicationIdList = None
+        self._SearchCondition = None
+        self._Sort = None
+        self._Offset = None
+        self._Limit = None
+        self._ApplicationIdList = None
+
+    @property
+    def SearchCondition(self):
+        return self._SearchCondition
+
+    @SearchCondition.setter
+    def SearchCondition(self, SearchCondition):
+        self._SearchCondition = SearchCondition
+
+    @property
+    def Sort(self):
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def ApplicationIdList(self):
+        return self._ApplicationIdList
+
+    @ApplicationIdList.setter
+    def ApplicationIdList(self, ApplicationIdList):
+        self._ApplicationIdList = ApplicationIdList
 
 
     def _deserialize(self, params):
         if params.get("SearchCondition") is not None:
-            self.SearchCondition = ApplicationInfoSearchCriteria()
-            self.SearchCondition._deserialize(params.get("SearchCondition"))
+            self._SearchCondition = ApplicationInfoSearchCriteria()
+            self._SearchCondition._deserialize(params.get("SearchCondition"))
         if params.get("Sort") is not None:
-            self.Sort = SortCondition()
-            self.Sort._deserialize(params.get("Sort"))
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.ApplicationIdList = params.get("ApplicationIdList")
+            self._Sort = SortCondition()
+            self._Sort._deserialize(params.get("Sort"))
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._ApplicationIdList = params.get("ApplicationIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2069,29 +3786,53 @@ class ListApplicationsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Total number of returned application information items.
+        :param _TotalCount: Total number of returned application information items.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TotalCount: int
-        :param ApplicationInfoList: Returned application information list.
+        :param _ApplicationInfoList: Returned application information list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApplicationInfoList: list of ApplicationInformation
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.ApplicationInfoList = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._ApplicationInfoList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ApplicationInfoList(self):
+        return self._ApplicationInfoList
+
+    @ApplicationInfoList.setter
+    def ApplicationInfoList(self, ApplicationInfoList):
+        self._ApplicationInfoList = ApplicationInfoList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("ApplicationInfoList") is not None:
-            self.ApplicationInfoList = []
+            self._ApplicationInfoList = []
             for item in params.get("ApplicationInfoList"):
                 obj = ApplicationInformation()
                 obj._deserialize(item)
-                self.ApplicationInfoList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._ApplicationInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ListAuthorizedApplicationsToOrgNodeRequest(AbstractModel):
@@ -2101,18 +3842,27 @@ class ListAuthorizedApplicationsToOrgNodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OrgNodeId: Organization node ID.
+        :param _OrgNodeId: Organization node ID.
         :type OrgNodeId: str
         """
-        self.OrgNodeId = None
+        self._OrgNodeId = None
+
+    @property
+    def OrgNodeId(self):
+        return self._OrgNodeId
+
+    @OrgNodeId.setter
+    def OrgNodeId(self, OrgNodeId):
+        self._OrgNodeId = OrgNodeId
 
 
     def _deserialize(self, params):
-        self.OrgNodeId = params.get("OrgNodeId")
+        self._OrgNodeId = params.get("OrgNodeId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2125,19 +3875,35 @@ class ListAuthorizedApplicationsToOrgNodeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApplicationIds: List of IDs of the applications accessible to the organization node.
+        :param _ApplicationIds: List of IDs of the applications accessible to the organization node.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApplicationIds: list of str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.ApplicationIds = None
-        self.RequestId = None
+        self._ApplicationIds = None
+        self._RequestId = None
+
+    @property
+    def ApplicationIds(self):
+        return self._ApplicationIds
+
+    @ApplicationIds.setter
+    def ApplicationIds(self, ApplicationIds):
+        self._ApplicationIds = ApplicationIds
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ApplicationIds = params.get("ApplicationIds")
-        self.RequestId = params.get("RequestId")
+        self._ApplicationIds = params.get("ApplicationIds")
+        self._RequestId = params.get("RequestId")
 
 
 class ListAuthorizedApplicationsToUserGroupRequest(AbstractModel):
@@ -2147,18 +3913,27 @@ class ListAuthorizedApplicationsToUserGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserGroupId: User group ID.
+        :param _UserGroupId: User group ID.
         :type UserGroupId: str
         """
-        self.UserGroupId = None
+        self._UserGroupId = None
+
+    @property
+    def UserGroupId(self):
+        return self._UserGroupId
+
+    @UserGroupId.setter
+    def UserGroupId(self, UserGroupId):
+        self._UserGroupId = UserGroupId
 
 
     def _deserialize(self, params):
-        self.UserGroupId = params.get("UserGroupId")
+        self._UserGroupId = params.get("UserGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2171,19 +3946,35 @@ class ListAuthorizedApplicationsToUserGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApplicationIds: List of IDs of the applications accessible to the user group.
+        :param _ApplicationIds: List of IDs of the applications accessible to the user group.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApplicationIds: list of str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.ApplicationIds = None
-        self.RequestId = None
+        self._ApplicationIds = None
+        self._RequestId = None
+
+    @property
+    def ApplicationIds(self):
+        return self._ApplicationIds
+
+    @ApplicationIds.setter
+    def ApplicationIds(self, ApplicationIds):
+        self._ApplicationIds = ApplicationIds
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ApplicationIds = params.get("ApplicationIds")
-        self.RequestId = params.get("RequestId")
+        self._ApplicationIds = params.get("ApplicationIds")
+        self._RequestId = params.get("RequestId")
 
 
 class ListAuthorizedApplicationsToUserRequest(AbstractModel):
@@ -2193,22 +3984,39 @@ class ListAuthorizedApplicationsToUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserId: User ID.
+        :param _UserId: User ID.
         :type UserId: str
-        :param IncludeInheritedAuthorizations: Whether the query scope includes the application access of the user groups and organizations associated with the user. Valid values: false: no; true: yes. Default value: false.
+        :param _IncludeInheritedAuthorizations: Whether the query scope includes the application access of the user groups and organizations associated with the user. Valid values: false: no; true: yes. Default value: false.
         :type IncludeInheritedAuthorizations: bool
         """
-        self.UserId = None
-        self.IncludeInheritedAuthorizations = None
+        self._UserId = None
+        self._IncludeInheritedAuthorizations = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def IncludeInheritedAuthorizations(self):
+        return self._IncludeInheritedAuthorizations
+
+    @IncludeInheritedAuthorizations.setter
+    def IncludeInheritedAuthorizations(self, IncludeInheritedAuthorizations):
+        self._IncludeInheritedAuthorizations = IncludeInheritedAuthorizations
 
 
     def _deserialize(self, params):
-        self.UserId = params.get("UserId")
-        self.IncludeInheritedAuthorizations = params.get("IncludeInheritedAuthorizations")
+        self._UserId = params.get("UserId")
+        self._IncludeInheritedAuthorizations = params.get("IncludeInheritedAuthorizations")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2221,24 +4029,40 @@ class ListAuthorizedApplicationsToUserResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApplicationAuthorizationInfo: List of information of the applications accessible to the user.
+        :param _ApplicationAuthorizationInfo: List of information of the applications accessible to the user.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApplicationAuthorizationInfo: list of ApplicationAuthorizationInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.ApplicationAuthorizationInfo = None
-        self.RequestId = None
+        self._ApplicationAuthorizationInfo = None
+        self._RequestId = None
+
+    @property
+    def ApplicationAuthorizationInfo(self):
+        return self._ApplicationAuthorizationInfo
+
+    @ApplicationAuthorizationInfo.setter
+    def ApplicationAuthorizationInfo(self, ApplicationAuthorizationInfo):
+        self._ApplicationAuthorizationInfo = ApplicationAuthorizationInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("ApplicationAuthorizationInfo") is not None:
-            self.ApplicationAuthorizationInfo = []
+            self._ApplicationAuthorizationInfo = []
             for item in params.get("ApplicationAuthorizationInfo"):
                 obj = ApplicationAuthorizationInfo()
                 obj._deserialize(item)
-                self.ApplicationAuthorizationInfo.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._ApplicationAuthorizationInfo.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ListUserGroupsOfUserRequest(AbstractModel):
@@ -2248,38 +4072,79 @@ class ListUserGroupsOfUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserId: User ID, which is globally unique.
+        :param _UserId: User ID, which is globally unique.
         :type UserId: str
-        :param SearchCondition: Fuzzy search criterion. You can search by user group name (DisplayName). If this field is left empty, all of the user's user groups will be displayed by default.
+        :param _SearchCondition: Fuzzy search criterion. You can search by user group name (DisplayName). If this field is left empty, all of the user's user groups will be displayed by default.
         :type SearchCondition: :class:`tencentcloud.eiam.v20210420.models.UserGroupInformationSearchCriteria`
-        :param Sort: Set of sort criteria. Valid values: DisplayName: user group name; UserGroupId: user group ID; CreatedDate: creation time. If this field is left empty, the results will be sorted in alphabetical order by user group name.
+        :param _Sort: Set of sort criteria. Valid values: DisplayName: user group name; UserGroupId: user group ID; CreatedDate: creation time. If this field is left empty, the results will be sorted in alphabetical order by user group name.
         :type Sort: :class:`tencentcloud.eiam.v20210420.models.SortCondition`
-        :param Offset: Pagination offset. Default value: 0. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 50 user groups will be returned.
+        :param _Offset: Pagination offset. Default value: 0. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 50 user groups will be returned.
         :type Offset: int
-        :param Limit: Number of results read per page. Default value: 50. Maximum value: 100. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 50 user groups will be returned.
+        :param _Limit: Number of results read per page. Default value: 50. Maximum value: 100. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 50 user groups will be returned.
         :type Limit: int
         """
-        self.UserId = None
-        self.SearchCondition = None
-        self.Sort = None
-        self.Offset = None
-        self.Limit = None
+        self._UserId = None
+        self._SearchCondition = None
+        self._Sort = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def SearchCondition(self):
+        return self._SearchCondition
+
+    @SearchCondition.setter
+    def SearchCondition(self, SearchCondition):
+        self._SearchCondition = SearchCondition
+
+    @property
+    def Sort(self):
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.UserId = params.get("UserId")
+        self._UserId = params.get("UserId")
         if params.get("SearchCondition") is not None:
-            self.SearchCondition = UserGroupInformationSearchCriteria()
-            self.SearchCondition._deserialize(params.get("SearchCondition"))
+            self._SearchCondition = UserGroupInformationSearchCriteria()
+            self._SearchCondition._deserialize(params.get("SearchCondition"))
         if params.get("Sort") is not None:
-            self.Sort = SortCondition()
-            self.Sort._deserialize(params.get("Sort"))
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+            self._Sort = SortCondition()
+            self._Sort._deserialize(params.get("Sort"))
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2292,39 +4157,79 @@ class ListUserGroupsOfUserResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserGroupIds: List of IDs of the user's user groups.
+        :param _UserGroupIds: List of IDs of the user's user groups.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UserGroupIds: list of str
-        :param UserId: User ID, which is globally unique.
+        :param _UserId: User ID, which is globally unique.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UserId: str
-        :param UserGroupInfoList: List of information of the user's user groups.
+        :param _UserGroupInfoList: List of information of the user's user groups.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UserGroupInfoList: list of UserGroupInfo
-        :param TotalCount: Total number of returned user group information items.
+        :param _TotalCount: Total number of returned user group information items.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.UserGroupIds = None
-        self.UserId = None
-        self.UserGroupInfoList = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._UserGroupIds = None
+        self._UserId = None
+        self._UserGroupInfoList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def UserGroupIds(self):
+        return self._UserGroupIds
+
+    @UserGroupIds.setter
+    def UserGroupIds(self, UserGroupIds):
+        self._UserGroupIds = UserGroupIds
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserGroupInfoList(self):
+        return self._UserGroupInfoList
+
+    @UserGroupInfoList.setter
+    def UserGroupInfoList(self, UserGroupInfoList):
+        self._UserGroupInfoList = UserGroupInfoList
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.UserGroupIds = params.get("UserGroupIds")
-        self.UserId = params.get("UserId")
+        self._UserGroupIds = params.get("UserGroupIds")
+        self._UserId = params.get("UserId")
         if params.get("UserGroupInfoList") is not None:
-            self.UserGroupInfoList = []
+            self._UserGroupInfoList = []
             for item in params.get("UserGroupInfoList"):
                 obj = UserGroupInfo()
                 obj._deserialize(item)
-                self.UserGroupInfoList.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._UserGroupInfoList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class ListUserGroupsRequest(AbstractModel):
@@ -2334,34 +4239,67 @@ class ListUserGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SearchCondition: Search criterion. You can combine multiple search criteria and search in multiple data ranges. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks ("") indicate full match, an asterisk (*) at the end of the field indicates partial match, and an empty field indicates to query the full table by default.
+        :param _SearchCondition: Search criterion. You can combine multiple search criteria and search in multiple data ranges. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks ("") indicate full match, an asterisk (*) at the end of the field indicates partial match, and an empty field indicates to query the full table by default.
         :type SearchCondition: :class:`tencentcloud.eiam.v20210420.models.UserGroupInfoSearchCriteria`
-        :param Sort: Set of sort criteria. The supported attributes for sorting include user group name (DisplayName), user group ID (UserGroupId), and last modification time (LastModifiedDate). If this field is left empty, the results will be sorted in alphabetical order by user group name.
+        :param _Sort: Set of sort criteria. The supported attributes for sorting include user group name (DisplayName), user group ID (UserGroupId), and last modification time (LastModifiedDate). If this field is left empty, the results will be sorted in alphabetical order by user group name.
         :type Sort: :class:`tencentcloud.eiam.v20210420.models.SortCondition`
-        :param Offset: Pagination offset. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated.
+        :param _Offset: Pagination offset. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated.
         :type Offset: int
-        :param Limit: Number of results read per page. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated.
+        :param _Limit: Number of results read per page. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated.
         :type Limit: int
         """
-        self.SearchCondition = None
-        self.Sort = None
-        self.Offset = None
-        self.Limit = None
+        self._SearchCondition = None
+        self._Sort = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def SearchCondition(self):
+        return self._SearchCondition
+
+    @SearchCondition.setter
+    def SearchCondition(self, SearchCondition):
+        self._SearchCondition = SearchCondition
+
+    @property
+    def Sort(self):
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
         if params.get("SearchCondition") is not None:
-            self.SearchCondition = UserGroupInfoSearchCriteria()
-            self.SearchCondition._deserialize(params.get("SearchCondition"))
+            self._SearchCondition = UserGroupInfoSearchCriteria()
+            self._SearchCondition._deserialize(params.get("SearchCondition"))
         if params.get("Sort") is not None:
-            self.Sort = SortCondition()
-            self.Sort._deserialize(params.get("Sort"))
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+            self._Sort = SortCondition()
+            self._Sort._deserialize(params.get("Sort"))
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2374,29 +4312,53 @@ class ListUserGroupsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserGroupList: Returned user group list.
+        :param _UserGroupList: Returned user group list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UserGroupList: list of UserGroupInformation
-        :param TotalCount: Total number of returned user group information items.
+        :param _TotalCount: Total number of returned user group information items.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.UserGroupList = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._UserGroupList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def UserGroupList(self):
+        return self._UserGroupList
+
+    @UserGroupList.setter
+    def UserGroupList(self, UserGroupList):
+        self._UserGroupList = UserGroupList
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("UserGroupList") is not None:
-            self.UserGroupList = []
+            self._UserGroupList = []
             for item in params.get("UserGroupList"):
                 obj = UserGroupInformation()
                 obj._deserialize(item)
-                self.UserGroupList.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._UserGroupList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class ListUsersInOrgNodeRequest(AbstractModel):
@@ -2406,42 +4368,91 @@ class ListUsersInOrgNodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OrgNodeId: Organization node ID, which is globally unique and can contain up to 64 characters. If this parameter is left empty, the user information under the root organization node will be read by default.
+        :param _OrgNodeId: Organization node ID, which is globally unique and can contain up to 64 characters. If this parameter is left empty, the user information under the root organization node will be read by default.
         :type OrgNodeId: str
-        :param IncludeOrgNodeChildInfo: Whether to read the information of its sub-nodes. When this parameter is left empty or specified as `false`, only the information of the current organization node will be read by default. When it is specified as `true`, the information of the current organization node and its level-1 sub-nodes will be read.
+        :param _IncludeOrgNodeChildInfo: Whether to read the information of its sub-nodes. When this parameter is left empty or specified as `false`, only the information of the current organization node will be read by default. When it is specified as `true`, the information of the current organization node and its level-1 sub-nodes will be read.
         :type IncludeOrgNodeChildInfo: bool
-        :param SearchCondition: User attribute search criterion. The supported search criteria include username, mobile number, email address, user locking status, user freezing status, creation time, and last modification time, which can also be combined. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks ("") indicate full match, an asterisk (*) at the end of the field indicates partial match, brackets separated by a comma ([Min,Max]) indicate query within a closed interval, braces separated by a comma ({Min,Max}) indicate query within an open interval, and a bracket and a brace can be used together (for example, {Min,Max] indicates that the minimum value is excluded and the maximum value is included in the query). Range query supports using an asterisk (for example, {20,*] indicates an interval including all data greater than 20) and querying by time period. The supported attributes include creation time (CreationTime) and last modification time (LastUpdateTime) in ISO 8601 format, such as `2021-01-13T09:44:07.182+0000`.
+        :param _SearchCondition: User attribute search criterion. The supported search criteria include username, mobile number, email address, user locking status, user freezing status, creation time, and last modification time, which can also be combined. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks ("") indicate full match, an asterisk (*) at the end of the field indicates partial match, brackets separated by a comma ([Min,Max]) indicate query within a closed interval, braces separated by a comma ({Min,Max}) indicate query within an open interval, and a bracket and a brace can be used together (for example, {Min,Max] indicates that the minimum value is excluded and the maximum value is included in the query). Range query supports using an asterisk (for example, {20,*] indicates an interval including all data greater than 20) and querying by time period. The supported attributes include creation time (CreationTime) and last modification time (LastUpdateTime) in ISO 8601 format, such as `2021-01-13T09:44:07.182+0000`.
         :type SearchCondition: :class:`tencentcloud.eiam.v20210420.models.ListUsersInOrgNodeSearchCriteria`
-        :param Sort: Set of sort criteria. The supported attributes for sorting include username (UserName), mobile number (Phone), email address (Email), user status (Status), creation time (CreatedDate), and last modification time (LastModifiedDate). If this field is left empty, the results will be sorted in alphabetical order by nickname (DisplayName).
+        :param _Sort: Set of sort criteria. The supported attributes for sorting include username (UserName), mobile number (Phone), email address (Email), user status (Status), creation time (CreatedDate), and last modification time (LastModifiedDate). If this field is left empty, the results will be sorted in alphabetical order by nickname (DisplayName).
         :type Sort: :class:`tencentcloud.eiam.v20210420.models.SortCondition`
-        :param Offset: Pagination offset. Default value: 0. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 50 users will be returned.
+        :param _Offset: Pagination offset. Default value: 0. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 50 users will be returned.
         :type Offset: int
-        :param Limit: Number of results read per page. Default value: 50. Maximum value: 100. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 50 users will be returned.
+        :param _Limit: Number of results read per page. Default value: 50. Maximum value: 100. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 50 users will be returned.
         :type Limit: int
         """
-        self.OrgNodeId = None
-        self.IncludeOrgNodeChildInfo = None
-        self.SearchCondition = None
-        self.Sort = None
-        self.Offset = None
-        self.Limit = None
+        self._OrgNodeId = None
+        self._IncludeOrgNodeChildInfo = None
+        self._SearchCondition = None
+        self._Sort = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def OrgNodeId(self):
+        return self._OrgNodeId
+
+    @OrgNodeId.setter
+    def OrgNodeId(self, OrgNodeId):
+        self._OrgNodeId = OrgNodeId
+
+    @property
+    def IncludeOrgNodeChildInfo(self):
+        return self._IncludeOrgNodeChildInfo
+
+    @IncludeOrgNodeChildInfo.setter
+    def IncludeOrgNodeChildInfo(self, IncludeOrgNodeChildInfo):
+        self._IncludeOrgNodeChildInfo = IncludeOrgNodeChildInfo
+
+    @property
+    def SearchCondition(self):
+        return self._SearchCondition
+
+    @SearchCondition.setter
+    def SearchCondition(self, SearchCondition):
+        self._SearchCondition = SearchCondition
+
+    @property
+    def Sort(self):
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.OrgNodeId = params.get("OrgNodeId")
-        self.IncludeOrgNodeChildInfo = params.get("IncludeOrgNodeChildInfo")
+        self._OrgNodeId = params.get("OrgNodeId")
+        self._IncludeOrgNodeChildInfo = params.get("IncludeOrgNodeChildInfo")
         if params.get("SearchCondition") is not None:
-            self.SearchCondition = ListUsersInOrgNodeSearchCriteria()
-            self.SearchCondition._deserialize(params.get("SearchCondition"))
+            self._SearchCondition = ListUsersInOrgNodeSearchCriteria()
+            self._SearchCondition._deserialize(params.get("SearchCondition"))
         if params.get("Sort") is not None:
-            self.Sort = SortCondition()
-            self.Sort._deserialize(params.get("Sort"))
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+            self._Sort = SortCondition()
+            self._Sort._deserialize(params.get("Sort"))
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2454,54 +4465,110 @@ class ListUsersInOrgNodeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OrgNodeChildUserInfo: User information list under the organization sub-node.
+        :param _OrgNodeChildUserInfo: User information list under the organization sub-node.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OrgNodeChildUserInfo: list of OrgNodeChildUserInfo
-        :param OrgNodeId: Organization node ID, which is globally unique and can contain up to 64 characters.
+        :param _OrgNodeId: Organization node ID, which is globally unique and can contain up to 64 characters.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OrgNodeId: str
-        :param UserInfo: User information list.
+        :param _UserInfo: User information list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UserInfo: list of UserInfo
-        :param TotalUserNum: Total number of users under the current organization node.
+        :param _TotalUserNum: Total number of users under the current organization node.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TotalUserNum: int
-        :param OrgNodeIdPath: Organization ID path.
+        :param _OrgNodeIdPath: Organization ID path.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OrgNodeIdPath: str
-        :param OrgNodeNamePath: Organization name path.
+        :param _OrgNodeNamePath: Organization name path.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OrgNodeNamePath: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.OrgNodeChildUserInfo = None
-        self.OrgNodeId = None
-        self.UserInfo = None
-        self.TotalUserNum = None
-        self.OrgNodeIdPath = None
-        self.OrgNodeNamePath = None
-        self.RequestId = None
+        self._OrgNodeChildUserInfo = None
+        self._OrgNodeId = None
+        self._UserInfo = None
+        self._TotalUserNum = None
+        self._OrgNodeIdPath = None
+        self._OrgNodeNamePath = None
+        self._RequestId = None
+
+    @property
+    def OrgNodeChildUserInfo(self):
+        return self._OrgNodeChildUserInfo
+
+    @OrgNodeChildUserInfo.setter
+    def OrgNodeChildUserInfo(self, OrgNodeChildUserInfo):
+        self._OrgNodeChildUserInfo = OrgNodeChildUserInfo
+
+    @property
+    def OrgNodeId(self):
+        return self._OrgNodeId
+
+    @OrgNodeId.setter
+    def OrgNodeId(self, OrgNodeId):
+        self._OrgNodeId = OrgNodeId
+
+    @property
+    def UserInfo(self):
+        return self._UserInfo
+
+    @UserInfo.setter
+    def UserInfo(self, UserInfo):
+        self._UserInfo = UserInfo
+
+    @property
+    def TotalUserNum(self):
+        return self._TotalUserNum
+
+    @TotalUserNum.setter
+    def TotalUserNum(self, TotalUserNum):
+        self._TotalUserNum = TotalUserNum
+
+    @property
+    def OrgNodeIdPath(self):
+        return self._OrgNodeIdPath
+
+    @OrgNodeIdPath.setter
+    def OrgNodeIdPath(self, OrgNodeIdPath):
+        self._OrgNodeIdPath = OrgNodeIdPath
+
+    @property
+    def OrgNodeNamePath(self):
+        return self._OrgNodeNamePath
+
+    @OrgNodeNamePath.setter
+    def OrgNodeNamePath(self, OrgNodeNamePath):
+        self._OrgNodeNamePath = OrgNodeNamePath
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("OrgNodeChildUserInfo") is not None:
-            self.OrgNodeChildUserInfo = []
+            self._OrgNodeChildUserInfo = []
             for item in params.get("OrgNodeChildUserInfo"):
                 obj = OrgNodeChildUserInfo()
                 obj._deserialize(item)
-                self.OrgNodeChildUserInfo.append(obj)
-        self.OrgNodeId = params.get("OrgNodeId")
+                self._OrgNodeChildUserInfo.append(obj)
+        self._OrgNodeId = params.get("OrgNodeId")
         if params.get("UserInfo") is not None:
-            self.UserInfo = []
+            self._UserInfo = []
             for item in params.get("UserInfo"):
                 obj = UserInfo()
                 obj._deserialize(item)
-                self.UserInfo.append(obj)
-        self.TotalUserNum = params.get("TotalUserNum")
-        self.OrgNodeIdPath = params.get("OrgNodeIdPath")
-        self.OrgNodeNamePath = params.get("OrgNodeNamePath")
-        self.RequestId = params.get("RequestId")
+                self._UserInfo.append(obj)
+        self._TotalUserNum = params.get("TotalUserNum")
+        self._OrgNodeIdPath = params.get("OrgNodeIdPath")
+        self._OrgNodeNamePath = params.get("OrgNodeNamePath")
+        self._RequestId = params.get("RequestId")
 
 
 class ListUsersInOrgNodeSearchCriteria(AbstractModel):
@@ -2511,42 +4578,99 @@ class ListUsersInOrgNodeSearchCriteria(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserName: Username, which can contain up to 64 characters.
+        :param _UserName: Username, which can contain up to 64 characters.
         :type UserName: str
-        :param Phone: User's mobile number.
+        :param _Phone: User's mobile number.
         :type Phone: str
-        :param Email: User's email address.
+        :param _Email: User's email address.
         :type Email: str
-        :param Status: User status. Valid values: NORMAL: normal; FREEZE: frozen; LOCKED: locked; NOT_ENABLED: disabled.
+        :param _Status: User status. Valid values: NORMAL: normal; FREEZE: frozen; LOCKED: locked; NOT_ENABLED: disabled.
         :type Status: str
-        :param CreationTime: User creation time in ISO 8601 format.
+        :param _CreationTime: User creation time in ISO 8601 format.
         :type CreationTime: str
-        :param LastUpdateTime: Last update time of the user.
+        :param _LastUpdateTime: Last update time of the user.
         :type LastUpdateTime: str
-        :param Keyword: Search by name. The match criteria include username and user's mobile number.
+        :param _Keyword: Search by name. The match criteria include username and user's mobile number.
         :type Keyword: str
         """
-        self.UserName = None
-        self.Phone = None
-        self.Email = None
-        self.Status = None
-        self.CreationTime = None
-        self.LastUpdateTime = None
-        self.Keyword = None
+        self._UserName = None
+        self._Phone = None
+        self._Email = None
+        self._Status = None
+        self._CreationTime = None
+        self._LastUpdateTime = None
+        self._Keyword = None
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Phone(self):
+        return self._Phone
+
+    @Phone.setter
+    def Phone(self, Phone):
+        self._Phone = Phone
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreationTime(self):
+        return self._CreationTime
+
+    @CreationTime.setter
+    def CreationTime(self, CreationTime):
+        self._CreationTime = CreationTime
+
+    @property
+    def LastUpdateTime(self):
+        return self._LastUpdateTime
+
+    @LastUpdateTime.setter
+    def LastUpdateTime(self, LastUpdateTime):
+        self._LastUpdateTime = LastUpdateTime
+
+    @property
+    def Keyword(self):
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
 
 
     def _deserialize(self, params):
-        self.UserName = params.get("UserName")
-        self.Phone = params.get("Phone")
-        self.Email = params.get("Email")
-        self.Status = params.get("Status")
-        self.CreationTime = params.get("CreationTime")
-        self.LastUpdateTime = params.get("LastUpdateTime")
-        self.Keyword = params.get("Keyword")
+        self._UserName = params.get("UserName")
+        self._Phone = params.get("Phone")
+        self._Email = params.get("Email")
+        self._Status = params.get("Status")
+        self._CreationTime = params.get("CreationTime")
+        self._LastUpdateTime = params.get("LastUpdateTime")
+        self._Keyword = params.get("Keyword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2559,38 +4683,79 @@ class ListUsersInUserGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserGroupId: User group ID, which is globally unique.
+        :param _UserGroupId: User group ID, which is globally unique.
         :type UserGroupId: str
-        :param SearchCondition: User attribute search criterion. The supported search criteria include username, mobile number, email address, user locking status, user freezing status, creation time, and last modification time, which can also be combined. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks ("") indicate full match, an asterisk (*) at the end of the field indicates partial match, brackets separated by a comma ([Min,Max]) indicate query within a closed interval, braces separated by a comma ({Min,Max}) indicate query within an open interval, and a bracket and a brace can be used together (for example, {Min,Max] indicates that the minimum value is excluded and the maximum value is included in the query). Range query supports using an asterisk (for example, {20,*] indicates an interval including all data greater than 20) and querying by time period. The supported attributes include creation time (CreationTime) and last modification time (LastUpdateTime) in ISO 8601 format, such as `2021-01-13T09:44:07.182+0000`.
+        :param _SearchCondition: User attribute search criterion. The supported search criteria include username, mobile number, email address, user locking status, user freezing status, creation time, and last modification time, which can also be combined. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks ("") indicate full match, an asterisk (*) at the end of the field indicates partial match, brackets separated by a comma ([Min,Max]) indicate query within a closed interval, braces separated by a comma ({Min,Max}) indicate query within an open interval, and a bracket and a brace can be used together (for example, {Min,Max] indicates that the minimum value is excluded and the maximum value is included in the query). Range query supports using an asterisk (for example, {20,*] indicates an interval including all data greater than 20) and querying by time period. The supported attributes include creation time (CreationTime) and last modification time (LastUpdateTime) in ISO 8601 format, such as `2021-01-13T09:44:07.182+0000`.
         :type SearchCondition: :class:`tencentcloud.eiam.v20210420.models.UserSearchCriteria`
-        :param Sort: Set of sort criteria. The supported attributes for sorting include username (UserName), nickname (DisplayName), mobile number (Phone), email address (Email), user status (Status), creation time (CreatedDate), and last modification time (LastModifiedDate). If this field is left empty, the results will be sorted in alphabetical order by nickname (DisplayName).
+        :param _Sort: Set of sort criteria. The supported attributes for sorting include username (UserName), nickname (DisplayName), mobile number (Phone), email address (Email), user status (Status), creation time (CreatedDate), and last modification time (LastModifiedDate). If this field is left empty, the results will be sorted in alphabetical order by nickname (DisplayName).
         :type Sort: :class:`tencentcloud.eiam.v20210420.models.SortCondition`
-        :param Offset: Pagination offset. Default value: 0. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 50 users will be returned.
+        :param _Offset: Pagination offset. Default value: 0. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 50 users will be returned.
         :type Offset: int
-        :param Limit: Number of results read per page. Default value: 50. Maximum value: 100. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 50 users will be returned.
+        :param _Limit: Number of results read per page. Default value: 50. Maximum value: 100. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 50 users will be returned.
         :type Limit: int
         """
-        self.UserGroupId = None
-        self.SearchCondition = None
-        self.Sort = None
-        self.Offset = None
-        self.Limit = None
+        self._UserGroupId = None
+        self._SearchCondition = None
+        self._Sort = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def UserGroupId(self):
+        return self._UserGroupId
+
+    @UserGroupId.setter
+    def UserGroupId(self, UserGroupId):
+        self._UserGroupId = UserGroupId
+
+    @property
+    def SearchCondition(self):
+        return self._SearchCondition
+
+    @SearchCondition.setter
+    def SearchCondition(self, SearchCondition):
+        self._SearchCondition = SearchCondition
+
+    @property
+    def Sort(self):
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.UserGroupId = params.get("UserGroupId")
+        self._UserGroupId = params.get("UserGroupId")
         if params.get("SearchCondition") is not None:
-            self.SearchCondition = UserSearchCriteria()
-            self.SearchCondition._deserialize(params.get("SearchCondition"))
+            self._SearchCondition = UserSearchCriteria()
+            self._SearchCondition._deserialize(params.get("SearchCondition"))
         if params.get("Sort") is not None:
-            self.Sort = SortCondition()
-            self.Sort._deserialize(params.get("Sort"))
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+            self._Sort = SortCondition()
+            self._Sort._deserialize(params.get("Sort"))
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2603,34 +4768,66 @@ class ListUsersInUserGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserGroupId: User group ID, which is globally unique.
+        :param _UserGroupId: User group ID, which is globally unique.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UserGroupId: str
-        :param UserInfo: Returned user information list.
+        :param _UserInfo: Returned user information list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UserInfo: list of UserInfo
-        :param TotalNum: Total number of returned user information items.
+        :param _TotalNum: Total number of returned user information items.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TotalNum: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.UserGroupId = None
-        self.UserInfo = None
-        self.TotalNum = None
-        self.RequestId = None
+        self._UserGroupId = None
+        self._UserInfo = None
+        self._TotalNum = None
+        self._RequestId = None
+
+    @property
+    def UserGroupId(self):
+        return self._UserGroupId
+
+    @UserGroupId.setter
+    def UserGroupId(self, UserGroupId):
+        self._UserGroupId = UserGroupId
+
+    @property
+    def UserInfo(self):
+        return self._UserInfo
+
+    @UserInfo.setter
+    def UserInfo(self, UserInfo):
+        self._UserInfo = UserInfo
+
+    @property
+    def TotalNum(self):
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.UserGroupId = params.get("UserGroupId")
+        self._UserGroupId = params.get("UserGroupId")
         if params.get("UserInfo") is not None:
-            self.UserInfo = []
+            self._UserInfo = []
             for item in params.get("UserInfo"):
                 obj = UserInfo()
                 obj._deserialize(item)
-                self.UserInfo.append(obj)
-        self.TotalNum = params.get("TotalNum")
-        self.RequestId = params.get("RequestId")
+                self._UserInfo.append(obj)
+        self._TotalNum = params.get("TotalNum")
+        self._RequestId = params.get("RequestId")
 
 
 class ListUsersRequest(AbstractModel):
@@ -2640,42 +4837,91 @@ class ListUsersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SearchCondition: User attribute search criterion. The supported search criteria include username, mobile number, email address, user locking status, user freezing status, creation time, and last modification time, which can also be combined. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks ("") indicate full match, an asterisk (*) at the end of the field indicates partial match, brackets separated by a comma ([Min,Max]) indicate query within a closed interval, braces separated by a comma ({Min,Max}) indicate query within an open interval, and a bracket and a brace can be used together (for example, {Min,Max] indicates that the minimum value is excluded and the maximum value is included in the query). Range query supports using an asterisk (for example, {20,*] indicates an interval including all data greater than 20) and querying by time period. The supported attributes include creation time (CreationTime) and last modification time (LastUpdateTime) in ISO 8601 format, such as `2021-01-13T09:44:07.182+0000`.
+        :param _SearchCondition: User attribute search criterion. The supported search criteria include username, mobile number, email address, user locking status, user freezing status, creation time, and last modification time, which can also be combined. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks ("") indicate full match, an asterisk (*) at the end of the field indicates partial match, brackets separated by a comma ([Min,Max]) indicate query within a closed interval, braces separated by a comma ({Min,Max}) indicate query within an open interval, and a bracket and a brace can be used together (for example, {Min,Max] indicates that the minimum value is excluded and the maximum value is included in the query). Range query supports using an asterisk (for example, {20,*] indicates an interval including all data greater than 20) and querying by time period. The supported attributes include creation time (CreationTime) and last modification time (LastUpdateTime) in ISO 8601 format, such as `2021-01-13T09:44:07.182+0000`.
         :type SearchCondition: :class:`tencentcloud.eiam.v20210420.models.UserSearchCriteria`
-        :param ExpectedFields: User attributes expected to be returned. All built-in user attributes will be returned by default, including user UUID (UserId), nickname (DisplayName), username (UserName), mobile number (Phone), email address (Email), status (Status), user group (SubjectGroups), organization path (OrgPath), remarks (Description), creation time (CreationTime), last modification time (LastUpdateTime), and last login time (LastLoginTime).
+        :param _ExpectedFields: User attributes expected to be returned. All built-in user attributes will be returned by default, including user UUID (UserId), nickname (DisplayName), username (UserName), mobile number (Phone), email address (Email), status (Status), user group (SubjectGroups), organization path (OrgPath), remarks (Description), creation time (CreationTime), last modification time (LastUpdateTime), and last login time (LastLoginTime).
         :type ExpectedFields: list of str
-        :param Sort: Set of sort criteria. The supported attributes for sorting include username (UserName), nickname (DisplayName), mobile number (Phone), email address (Email), user status (Status), creation time (CreatedDate), last modification time (LastUpdateTime), and last login time (LastLoginTime). If this field is left empty, the results will be sorted in alphabetical order by nickname (DisplayName).
+        :param _Sort: Set of sort criteria. The supported attributes for sorting include username (UserName), nickname (DisplayName), mobile number (Phone), email address (Email), user status (Status), creation time (CreatedDate), last modification time (LastUpdateTime), and last login time (LastLoginTime). If this field is left empty, the results will be sorted in alphabetical order by nickname (DisplayName).
         :type Sort: :class:`tencentcloud.eiam.v20210420.models.SortCondition`
-        :param Offset: Pagination offset. Default value: 0. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 1,000 users will be returned.
+        :param _Offset: Pagination offset. Default value: 0. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 1,000 users will be returned.
         :type Offset: int
-        :param Limit: Number of results read per page. Default value: 50. Maximum value: 100. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 1,000 users will be returned.
+        :param _Limit: Number of results read per page. Default value: 50. Maximum value: 100. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 1,000 users will be returned.
         :type Limit: int
-        :param IncludeTotal: Whether to view the total number of search results. Default value: false (no).
+        :param _IncludeTotal: Whether to view the total number of search results. Default value: false (no).
         :type IncludeTotal: bool
         """
-        self.SearchCondition = None
-        self.ExpectedFields = None
-        self.Sort = None
-        self.Offset = None
-        self.Limit = None
-        self.IncludeTotal = None
+        self._SearchCondition = None
+        self._ExpectedFields = None
+        self._Sort = None
+        self._Offset = None
+        self._Limit = None
+        self._IncludeTotal = None
+
+    @property
+    def SearchCondition(self):
+        return self._SearchCondition
+
+    @SearchCondition.setter
+    def SearchCondition(self, SearchCondition):
+        self._SearchCondition = SearchCondition
+
+    @property
+    def ExpectedFields(self):
+        return self._ExpectedFields
+
+    @ExpectedFields.setter
+    def ExpectedFields(self, ExpectedFields):
+        self._ExpectedFields = ExpectedFields
+
+    @property
+    def Sort(self):
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def IncludeTotal(self):
+        return self._IncludeTotal
+
+    @IncludeTotal.setter
+    def IncludeTotal(self, IncludeTotal):
+        self._IncludeTotal = IncludeTotal
 
 
     def _deserialize(self, params):
         if params.get("SearchCondition") is not None:
-            self.SearchCondition = UserSearchCriteria()
-            self.SearchCondition._deserialize(params.get("SearchCondition"))
-        self.ExpectedFields = params.get("ExpectedFields")
+            self._SearchCondition = UserSearchCriteria()
+            self._SearchCondition._deserialize(params.get("SearchCondition"))
+        self._ExpectedFields = params.get("ExpectedFields")
         if params.get("Sort") is not None:
-            self.Sort = SortCondition()
-            self.Sort._deserialize(params.get("Sort"))
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.IncludeTotal = params.get("IncludeTotal")
+            self._Sort = SortCondition()
+            self._Sort._deserialize(params.get("Sort"))
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._IncludeTotal = params.get("IncludeTotal")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2688,29 +4934,53 @@ class ListUsersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserList: List of users returned for the query.
+        :param _UserList: List of users returned for the query.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UserList: list of UserInformation
-        :param TotalCount: Total number of users returned for the query, which will be returned only when the `IncludeTotal` input parameter is set to `true`.
+        :param _TotalCount: Total number of users returned for the query, which will be returned only when the `IncludeTotal` input parameter is set to `true`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.UserList = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._UserList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def UserList(self):
+        return self._UserList
+
+    @UserList.setter
+    def UserList(self, UserList):
+        self._UserList = UserList
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("UserList") is not None:
-            self.UserList = []
+            self._UserList = []
             for item in params.get("UserList"):
                 obj = UserInformation()
                 obj._deserialize(item)
-                self.UserList.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._UserList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyAccountGroupRequest(AbstractModel):
@@ -2720,26 +4990,51 @@ class ModifyAccountGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AccountGroupId: Account group ID.
+        :param _AccountGroupId: Account group ID.
         :type AccountGroupId: str
-        :param GroupName: Account group name. When this parameter is not specified, the name will not be modified.
+        :param _GroupName: Account group name. When this parameter is not specified, the name will not be modified.
         :type GroupName: str
-        :param Description: Description. When this parameter is not specified, the description will not be modified.
+        :param _Description: Description. When this parameter is not specified, the description will not be modified.
         :type Description: str
         """
-        self.AccountGroupId = None
-        self.GroupName = None
-        self.Description = None
+        self._AccountGroupId = None
+        self._GroupName = None
+        self._Description = None
+
+    @property
+    def AccountGroupId(self):
+        return self._AccountGroupId
+
+    @AccountGroupId.setter
+    def AccountGroupId(self, AccountGroupId):
+        self._AccountGroupId = AccountGroupId
+
+    @property
+    def GroupName(self):
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
 
     def _deserialize(self, params):
-        self.AccountGroupId = params.get("AccountGroupId")
-        self.GroupName = params.get("GroupName")
-        self.Description = params.get("Description")
+        self._AccountGroupId = params.get("AccountGroupId")
+        self._GroupName = params.get("GroupName")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2752,14 +5047,22 @@ class ModifyAccountGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyAppAccountRequest(AbstractModel):
@@ -2769,30 +5072,63 @@ class ModifyAppAccountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AccountId: Account ID.
+        :param _AccountId: Account ID.
         :type AccountId: str
-        :param AccountName: Account name. When this parameter is not specified, the name will not be modified.
+        :param _AccountName: Account name. When this parameter is not specified, the name will not be modified.
         :type AccountName: str
-        :param Password: Account password. When this parameter is not specified, the password will not be changed.
+        :param _Password: Account password. When this parameter is not specified, the password will not be changed.
         :type Password: str
-        :param Description: Description. When this parameter is not specified, the description will not be modified.
+        :param _Description: Description. When this parameter is not specified, the description will not be modified.
         :type Description: str
         """
-        self.AccountId = None
-        self.AccountName = None
-        self.Password = None
-        self.Description = None
+        self._AccountId = None
+        self._AccountName = None
+        self._Password = None
+        self._Description = None
+
+    @property
+    def AccountId(self):
+        return self._AccountId
+
+    @AccountId.setter
+    def AccountId(self, AccountId):
+        self._AccountId = AccountId
+
+    @property
+    def AccountName(self):
+        return self._AccountName
+
+    @AccountName.setter
+    def AccountName(self, AccountName):
+        self._AccountName = AccountName
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
 
     def _deserialize(self, params):
-        self.AccountId = params.get("AccountId")
-        self.AccountName = params.get("AccountName")
-        self.Password = params.get("Password")
-        self.Description = params.get("Description")
+        self._AccountId = params.get("AccountId")
+        self._AccountName = params.get("AccountName")
+        self._Password = params.get("Password")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2805,14 +5141,22 @@ class ModifyAppAccountResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyApplicationRequest(AbstractModel):
@@ -2822,38 +5166,87 @@ class ModifyApplicationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApplicationId: Application ID, which is globally unique.
+        :param _ApplicationId: Application ID, which is globally unique.
         :type ApplicationId: str
-        :param SecureLevel: Security level.
+        :param _SecureLevel: Security level.
         :type SecureLevel: str
-        :param DisplayName: Displayed application name, which can contain up to 32 characters and is the same as the application name by default.
+        :param _DisplayName: Displayed application name, which can contain up to 32 characters and is the same as the application name by default.
         :type DisplayName: str
-        :param AppStatus: Application status. Valid values: true: enabled; false: disabled.
+        :param _AppStatus: Application status. Valid values: true: enabled; false: disabled.
         :type AppStatus: bool
-        :param IconUrl: Access address of the application icon image.
+        :param _IconUrl: Access address of the application icon image.
         :type IconUrl: str
-        :param Description: Description, which can contain up to 128 characters.
+        :param _Description: Description, which can contain up to 128 characters.
         :type Description: str
         """
-        self.ApplicationId = None
-        self.SecureLevel = None
-        self.DisplayName = None
-        self.AppStatus = None
-        self.IconUrl = None
-        self.Description = None
+        self._ApplicationId = None
+        self._SecureLevel = None
+        self._DisplayName = None
+        self._AppStatus = None
+        self._IconUrl = None
+        self._Description = None
+
+    @property
+    def ApplicationId(self):
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
+    def SecureLevel(self):
+        return self._SecureLevel
+
+    @SecureLevel.setter
+    def SecureLevel(self, SecureLevel):
+        self._SecureLevel = SecureLevel
+
+    @property
+    def DisplayName(self):
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def AppStatus(self):
+        return self._AppStatus
+
+    @AppStatus.setter
+    def AppStatus(self, AppStatus):
+        self._AppStatus = AppStatus
+
+    @property
+    def IconUrl(self):
+        return self._IconUrl
+
+    @IconUrl.setter
+    def IconUrl(self, IconUrl):
+        self._IconUrl = IconUrl
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
 
     def _deserialize(self, params):
-        self.ApplicationId = params.get("ApplicationId")
-        self.SecureLevel = params.get("SecureLevel")
-        self.DisplayName = params.get("DisplayName")
-        self.AppStatus = params.get("AppStatus")
-        self.IconUrl = params.get("IconUrl")
-        self.Description = params.get("Description")
+        self._ApplicationId = params.get("ApplicationId")
+        self._SecureLevel = params.get("SecureLevel")
+        self._DisplayName = params.get("DisplayName")
+        self._AppStatus = params.get("AppStatus")
+        self._IconUrl = params.get("IconUrl")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2866,14 +5259,22 @@ class ModifyApplicationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyUserInfoRequest(AbstractModel):
@@ -2883,62 +5284,159 @@ class ModifyUserInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserName: Username, which can contain up to 32 characters. You need to select either `Username` or `UserId` as the search criterion; if both are selected, `Username` will be used by default.
+        :param _UserName: Username, which can contain up to 32 characters. You need to select either `Username` or `UserId` as the search criterion; if both are selected, `Username` will be used by default.
         :type UserName: str
-        :param DisplayName: Nickname, which can contain up to 64 characters and is the same as the username by default.
+        :param _DisplayName: Nickname, which can contain up to 64 characters and is the same as the username by default.
         :type DisplayName: str
-        :param Description: User remarks, which can contain up to 512 characters.
+        :param _Description: User remarks, which can contain up to 512 characters.
         :type Description: str
-        :param UserGroupIds: List of IDs of the user's user groups.
+        :param _UserGroupIds: List of IDs of the user's user groups.
         :type UserGroupIds: list of str
-        :param UserId: User ID. You need to select either `UserName` or `UserId` as the search criterion. If both are selected, `UserName` will be used by default.
+        :param _UserId: User ID. You need to select either `UserName` or `UserId` as the search criterion. If both are selected, `UserName` will be used by default.
         :type UserId: str
-        :param Phone: User's mobile number.
+        :param _Phone: User's mobile number.
         :type Phone: str
-        :param ExpirationTime: User expiration time in ISO 8601 format.
+        :param _ExpirationTime: User expiration time in ISO 8601 format.
         :type ExpirationTime: str
-        :param Password: User password, which needs to be configured according to the password policy.
+        :param _Password: User password, which needs to be configured according to the password policy.
         :type Password: str
-        :param Email: User's email address.
+        :param _Email: User's email address.
         :type Email: str
-        :param PwdNeedReset: Whether the password needs to be reset. Default value: false (no).
+        :param _PwdNeedReset: Whether the password needs to be reset. Default value: false (no).
         :type PwdNeedReset: bool
-        :param OrgNodeId: Unique ID of the user's primary organization. If this parameter is left empty, the user will be created under the root node by default.
+        :param _OrgNodeId: Unique ID of the user's primary organization. If this parameter is left empty, the user will be created under the root node by default.
         :type OrgNodeId: str
-        :param SecondaryOrgNodeIdList: List of IDs of the user's secondary organizations.
+        :param _SecondaryOrgNodeIdList: List of IDs of the user's secondary organizations.
         :type SecondaryOrgNodeIdList: list of str
         """
-        self.UserName = None
-        self.DisplayName = None
-        self.Description = None
-        self.UserGroupIds = None
-        self.UserId = None
-        self.Phone = None
-        self.ExpirationTime = None
-        self.Password = None
-        self.Email = None
-        self.PwdNeedReset = None
-        self.OrgNodeId = None
-        self.SecondaryOrgNodeIdList = None
+        self._UserName = None
+        self._DisplayName = None
+        self._Description = None
+        self._UserGroupIds = None
+        self._UserId = None
+        self._Phone = None
+        self._ExpirationTime = None
+        self._Password = None
+        self._Email = None
+        self._PwdNeedReset = None
+        self._OrgNodeId = None
+        self._SecondaryOrgNodeIdList = None
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def DisplayName(self):
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def UserGroupIds(self):
+        return self._UserGroupIds
+
+    @UserGroupIds.setter
+    def UserGroupIds(self, UserGroupIds):
+        self._UserGroupIds = UserGroupIds
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def Phone(self):
+        return self._Phone
+
+    @Phone.setter
+    def Phone(self, Phone):
+        self._Phone = Phone
+
+    @property
+    def ExpirationTime(self):
+        return self._ExpirationTime
+
+    @ExpirationTime.setter
+    def ExpirationTime(self, ExpirationTime):
+        self._ExpirationTime = ExpirationTime
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def PwdNeedReset(self):
+        return self._PwdNeedReset
+
+    @PwdNeedReset.setter
+    def PwdNeedReset(self, PwdNeedReset):
+        self._PwdNeedReset = PwdNeedReset
+
+    @property
+    def OrgNodeId(self):
+        return self._OrgNodeId
+
+    @OrgNodeId.setter
+    def OrgNodeId(self, OrgNodeId):
+        self._OrgNodeId = OrgNodeId
+
+    @property
+    def SecondaryOrgNodeIdList(self):
+        return self._SecondaryOrgNodeIdList
+
+    @SecondaryOrgNodeIdList.setter
+    def SecondaryOrgNodeIdList(self, SecondaryOrgNodeIdList):
+        self._SecondaryOrgNodeIdList = SecondaryOrgNodeIdList
 
 
     def _deserialize(self, params):
-        self.UserName = params.get("UserName")
-        self.DisplayName = params.get("DisplayName")
-        self.Description = params.get("Description")
-        self.UserGroupIds = params.get("UserGroupIds")
-        self.UserId = params.get("UserId")
-        self.Phone = params.get("Phone")
-        self.ExpirationTime = params.get("ExpirationTime")
-        self.Password = params.get("Password")
-        self.Email = params.get("Email")
-        self.PwdNeedReset = params.get("PwdNeedReset")
-        self.OrgNodeId = params.get("OrgNodeId")
-        self.SecondaryOrgNodeIdList = params.get("SecondaryOrgNodeIdList")
+        self._UserName = params.get("UserName")
+        self._DisplayName = params.get("DisplayName")
+        self._Description = params.get("Description")
+        self._UserGroupIds = params.get("UserGroupIds")
+        self._UserId = params.get("UserId")
+        self._Phone = params.get("Phone")
+        self._ExpirationTime = params.get("ExpirationTime")
+        self._Password = params.get("Password")
+        self._Email = params.get("Email")
+        self._PwdNeedReset = params.get("PwdNeedReset")
+        self._OrgNodeId = params.get("OrgNodeId")
+        self._SecondaryOrgNodeIdList = params.get("SecondaryOrgNodeIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2951,14 +5449,22 @@ class ModifyUserInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class OrgNodeChildInfo(AbstractModel):
@@ -2968,54 +5474,119 @@ class OrgNodeChildInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DisplayName: Displayed organization node name, which can contain up to 64 characters and is the same as the organization name by default.
+        :param _DisplayName: Displayed organization node name, which can contain up to 64 characters and is the same as the organization name by default.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DisplayName: str
-        :param LastModifiedDate: Last modification time of the organization node in ISO 8601 format.
+        :param _LastModifiedDate: Last modification time of the organization node in ISO 8601 format.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type LastModifiedDate: str
-        :param CustomizedOrgNodeId: External ID of the organization node, which is optional and customizable.
+        :param _CustomizedOrgNodeId: External ID of the organization node, which is optional and customizable.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CustomizedOrgNodeId: str
-        :param ParentOrgNodeId: Parent node ID of the current organization node.
+        :param _ParentOrgNodeId: Parent node ID of the current organization node.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ParentOrgNodeId: str
-        :param OrgNodeId: Organization node ID, which is globally unique.
+        :param _OrgNodeId: Organization node ID, which is globally unique.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OrgNodeId: str
-        :param DataSource: Data source.
+        :param _DataSource: Data source.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DataSource: str
-        :param CreatedDate: Organization node creation time in ISO 8601 format.
+        :param _CreatedDate: Organization node creation time in ISO 8601 format.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CreatedDate: str
-        :param Description: Organization node description.
+        :param _Description: Organization node description.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Description: str
         """
-        self.DisplayName = None
-        self.LastModifiedDate = None
-        self.CustomizedOrgNodeId = None
-        self.ParentOrgNodeId = None
-        self.OrgNodeId = None
-        self.DataSource = None
-        self.CreatedDate = None
-        self.Description = None
+        self._DisplayName = None
+        self._LastModifiedDate = None
+        self._CustomizedOrgNodeId = None
+        self._ParentOrgNodeId = None
+        self._OrgNodeId = None
+        self._DataSource = None
+        self._CreatedDate = None
+        self._Description = None
+
+    @property
+    def DisplayName(self):
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def LastModifiedDate(self):
+        return self._LastModifiedDate
+
+    @LastModifiedDate.setter
+    def LastModifiedDate(self, LastModifiedDate):
+        self._LastModifiedDate = LastModifiedDate
+
+    @property
+    def CustomizedOrgNodeId(self):
+        return self._CustomizedOrgNodeId
+
+    @CustomizedOrgNodeId.setter
+    def CustomizedOrgNodeId(self, CustomizedOrgNodeId):
+        self._CustomizedOrgNodeId = CustomizedOrgNodeId
+
+    @property
+    def ParentOrgNodeId(self):
+        return self._ParentOrgNodeId
+
+    @ParentOrgNodeId.setter
+    def ParentOrgNodeId(self, ParentOrgNodeId):
+        self._ParentOrgNodeId = ParentOrgNodeId
+
+    @property
+    def OrgNodeId(self):
+        return self._OrgNodeId
+
+    @OrgNodeId.setter
+    def OrgNodeId(self, OrgNodeId):
+        self._OrgNodeId = OrgNodeId
+
+    @property
+    def DataSource(self):
+        return self._DataSource
+
+    @DataSource.setter
+    def DataSource(self, DataSource):
+        self._DataSource = DataSource
+
+    @property
+    def CreatedDate(self):
+        return self._CreatedDate
+
+    @CreatedDate.setter
+    def CreatedDate(self, CreatedDate):
+        self._CreatedDate = CreatedDate
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
 
     def _deserialize(self, params):
-        self.DisplayName = params.get("DisplayName")
-        self.LastModifiedDate = params.get("LastModifiedDate")
-        self.CustomizedOrgNodeId = params.get("CustomizedOrgNodeId")
-        self.ParentOrgNodeId = params.get("ParentOrgNodeId")
-        self.OrgNodeId = params.get("OrgNodeId")
-        self.DataSource = params.get("DataSource")
-        self.CreatedDate = params.get("CreatedDate")
-        self.Description = params.get("Description")
+        self._DisplayName = params.get("DisplayName")
+        self._LastModifiedDate = params.get("LastModifiedDate")
+        self._CustomizedOrgNodeId = params.get("CustomizedOrgNodeId")
+        self._ParentOrgNodeId = params.get("ParentOrgNodeId")
+        self._OrgNodeId = params.get("OrgNodeId")
+        self._DataSource = params.get("DataSource")
+        self._CreatedDate = params.get("CreatedDate")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3028,44 +5599,85 @@ class OrgNodeChildUserInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OrgNodeId: Organization node ID, which is globally unique and can contain up to 64 characters.
+        :param _OrgNodeId: Organization node ID, which is globally unique and can contain up to 64 characters.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OrgNodeId: str
-        :param UserInfo: User information list.
+        :param _UserInfo: User information list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UserInfo: list of UserInfo
-        :param TotalUserNum: Total number of users under the current organization node.
+        :param _TotalUserNum: Total number of users under the current organization node.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TotalUserNum: int
-        :param OrgNodeIdPath: Organization ID path.
+        :param _OrgNodeIdPath: Organization ID path.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OrgNodeIdPath: str
-        :param OrgNodeNamePath: Organization name path.
+        :param _OrgNodeNamePath: Organization name path.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OrgNodeNamePath: str
         """
-        self.OrgNodeId = None
-        self.UserInfo = None
-        self.TotalUserNum = None
-        self.OrgNodeIdPath = None
-        self.OrgNodeNamePath = None
+        self._OrgNodeId = None
+        self._UserInfo = None
+        self._TotalUserNum = None
+        self._OrgNodeIdPath = None
+        self._OrgNodeNamePath = None
+
+    @property
+    def OrgNodeId(self):
+        return self._OrgNodeId
+
+    @OrgNodeId.setter
+    def OrgNodeId(self, OrgNodeId):
+        self._OrgNodeId = OrgNodeId
+
+    @property
+    def UserInfo(self):
+        return self._UserInfo
+
+    @UserInfo.setter
+    def UserInfo(self, UserInfo):
+        self._UserInfo = UserInfo
+
+    @property
+    def TotalUserNum(self):
+        return self._TotalUserNum
+
+    @TotalUserNum.setter
+    def TotalUserNum(self, TotalUserNum):
+        self._TotalUserNum = TotalUserNum
+
+    @property
+    def OrgNodeIdPath(self):
+        return self._OrgNodeIdPath
+
+    @OrgNodeIdPath.setter
+    def OrgNodeIdPath(self, OrgNodeIdPath):
+        self._OrgNodeIdPath = OrgNodeIdPath
+
+    @property
+    def OrgNodeNamePath(self):
+        return self._OrgNodeNamePath
+
+    @OrgNodeNamePath.setter
+    def OrgNodeNamePath(self, OrgNodeNamePath):
+        self._OrgNodeNamePath = OrgNodeNamePath
 
 
     def _deserialize(self, params):
-        self.OrgNodeId = params.get("OrgNodeId")
+        self._OrgNodeId = params.get("OrgNodeId")
         if params.get("UserInfo") is not None:
-            self.UserInfo = []
+            self._UserInfo = []
             for item in params.get("UserInfo"):
                 obj = UserInfo()
                 obj._deserialize(item)
-                self.UserInfo.append(obj)
-        self.TotalUserNum = params.get("TotalUserNum")
-        self.OrgNodeIdPath = params.get("OrgNodeIdPath")
-        self.OrgNodeNamePath = params.get("OrgNodeNamePath")
+                self._UserInfo.append(obj)
+        self._TotalUserNum = params.get("TotalUserNum")
+        self._OrgNodeIdPath = params.get("OrgNodeIdPath")
+        self._OrgNodeNamePath = params.get("OrgNodeNamePath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3078,22 +5690,39 @@ class RemoveAccountFromAccountGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AccountGroupId: Account group ID
+        :param _AccountGroupId: Account group ID
         :type AccountGroupId: str
-        :param AccountIds: List of IDs of the accounts to be removed.
+        :param _AccountIds: List of IDs of the accounts to be removed.
         :type AccountIds: list of str
         """
-        self.AccountGroupId = None
-        self.AccountIds = None
+        self._AccountGroupId = None
+        self._AccountIds = None
+
+    @property
+    def AccountGroupId(self):
+        return self._AccountGroupId
+
+    @AccountGroupId.setter
+    def AccountGroupId(self, AccountGroupId):
+        self._AccountGroupId = AccountGroupId
+
+    @property
+    def AccountIds(self):
+        return self._AccountIds
+
+    @AccountIds.setter
+    def AccountIds(self, AccountIds):
+        self._AccountIds = AccountIds
 
 
     def _deserialize(self, params):
-        self.AccountGroupId = params.get("AccountGroupId")
-        self.AccountIds = params.get("AccountIds")
+        self._AccountGroupId = params.get("AccountGroupId")
+        self._AccountIds = params.get("AccountIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3106,14 +5735,22 @@ class RemoveAccountFromAccountGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class RemoveUserFromUserGroupRequest(AbstractModel):
@@ -3123,22 +5760,39 @@ class RemoveUserFromUserGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserIds: List of IDs of the users to be added to the user group.
+        :param _UserIds: List of IDs of the users to be added to the user group.
         :type UserIds: list of str
-        :param UserGroupId: User group ID, which is globally unique.
+        :param _UserGroupId: User group ID, which is globally unique.
         :type UserGroupId: str
         """
-        self.UserIds = None
-        self.UserGroupId = None
+        self._UserIds = None
+        self._UserGroupId = None
+
+    @property
+    def UserIds(self):
+        return self._UserIds
+
+    @UserIds.setter
+    def UserIds(self, UserIds):
+        self._UserIds = UserIds
+
+    @property
+    def UserGroupId(self):
+        return self._UserGroupId
+
+    @UserGroupId.setter
+    def UserGroupId(self, UserGroupId):
+        self._UserGroupId = UserGroupId
 
 
     def _deserialize(self, params):
-        self.UserIds = params.get("UserIds")
-        self.UserGroupId = params.get("UserGroupId")
+        self._UserIds = params.get("UserIds")
+        self._UserGroupId = params.get("UserGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3151,14 +5805,22 @@ class RemoveUserFromUserGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class SortCondition(AbstractModel):
@@ -3168,22 +5830,39 @@ class SortCondition(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SortKey: Sorting attribute.
+        :param _SortKey: Sorting attribute.
         :type SortKey: str
-        :param SortOrder: Sorting order. Valid values: ASC: ascending order; DESC: descending order.
+        :param _SortOrder: Sorting order. Valid values: ASC: ascending order; DESC: descending order.
         :type SortOrder: str
         """
-        self.SortKey = None
-        self.SortOrder = None
+        self._SortKey = None
+        self._SortOrder = None
+
+    @property
+    def SortKey(self):
+        return self._SortKey
+
+    @SortKey.setter
+    def SortKey(self, SortKey):
+        self._SortKey = SortKey
+
+    @property
+    def SortOrder(self):
+        return self._SortOrder
+
+    @SortOrder.setter
+    def SortOrder(self, SortOrder):
+        self._SortOrder = SortOrder
 
 
     def _deserialize(self, params):
-        self.SortKey = params.get("SortKey")
-        self.SortOrder = params.get("SortOrder")
+        self._SortKey = params.get("SortKey")
+        self._SortOrder = params.get("SortOrder")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3196,24 +5875,41 @@ class ThirdPartyAccountInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AccountCode: Third-Party account code. `2` indicates WeCom account.
+        :param _AccountCode: Third-Party account code. `2` indicates WeCom account.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AccountCode: str
-        :param AccountName: Username of the account.
+        :param _AccountName: Username of the account.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AccountName: str
         """
-        self.AccountCode = None
-        self.AccountName = None
+        self._AccountCode = None
+        self._AccountName = None
+
+    @property
+    def AccountCode(self):
+        return self._AccountCode
+
+    @AccountCode.setter
+    def AccountCode(self, AccountCode):
+        self._AccountCode = AccountCode
+
+    @property
+    def AccountName(self):
+        return self._AccountName
+
+    @AccountName.setter
+    def AccountName(self, AccountName):
+        self._AccountName = AccountName
 
 
     def _deserialize(self, params):
-        self.AccountCode = params.get("AccountCode")
-        self.AccountName = params.get("AccountName")
+        self._AccountCode = params.get("AccountCode")
+        self._AccountName = params.get("AccountName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3226,30 +5922,63 @@ class UpdateOrgNodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OrgNodeId: Organization node ID, which is globally unique.
+        :param _OrgNodeId: Organization node ID, which is globally unique.
         :type OrgNodeId: str
-        :param DisplayName: Organization node name, which can contain up to 64 characters.
+        :param _DisplayName: Organization node name, which can contain up to 64 characters.
         :type DisplayName: str
-        :param Description: Organization node description.
+        :param _Description: Organization node description.
         :type Description: str
-        :param CustomizedOrgNodeId: External ID of the organization node, which is optional and customizable. If this parameter is specified, its uniqueness will be verified.
+        :param _CustomizedOrgNodeId: External ID of the organization node, which is optional and customizable. If this parameter is specified, its uniqueness will be verified.
         :type CustomizedOrgNodeId: str
         """
-        self.OrgNodeId = None
-        self.DisplayName = None
-        self.Description = None
-        self.CustomizedOrgNodeId = None
+        self._OrgNodeId = None
+        self._DisplayName = None
+        self._Description = None
+        self._CustomizedOrgNodeId = None
+
+    @property
+    def OrgNodeId(self):
+        return self._OrgNodeId
+
+    @OrgNodeId.setter
+    def OrgNodeId(self, OrgNodeId):
+        self._OrgNodeId = OrgNodeId
+
+    @property
+    def DisplayName(self):
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CustomizedOrgNodeId(self):
+        return self._CustomizedOrgNodeId
+
+    @CustomizedOrgNodeId.setter
+    def CustomizedOrgNodeId(self, CustomizedOrgNodeId):
+        self._CustomizedOrgNodeId = CustomizedOrgNodeId
 
 
     def _deserialize(self, params):
-        self.OrgNodeId = params.get("OrgNodeId")
-        self.DisplayName = params.get("DisplayName")
-        self.Description = params.get("Description")
-        self.CustomizedOrgNodeId = params.get("CustomizedOrgNodeId")
+        self._OrgNodeId = params.get("OrgNodeId")
+        self._DisplayName = params.get("DisplayName")
+        self._Description = params.get("Description")
+        self._CustomizedOrgNodeId = params.get("CustomizedOrgNodeId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3262,14 +5991,22 @@ class UpdateOrgNodeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class UserGroupInfo(AbstractModel):
@@ -3279,34 +6016,67 @@ class UserGroupInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DisplayName: Nickname, which can contain up to 64 characters and is the same as the username by default.
+        :param _DisplayName: Nickname, which can contain up to 64 characters and is the same as the username by default.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DisplayName: str
-        :param UserGroupId: User group ID, which is globally unique and can contain up to 64 characters.
+        :param _UserGroupId: User group ID, which is globally unique and can contain up to 64 characters.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UserGroupId: str
-        :param Description: User group remarks.
+        :param _Description: User group remarks.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Description: str
-        :param CreatedDate: Creation time.
+        :param _CreatedDate: Creation time.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CreatedDate: str
         """
-        self.DisplayName = None
-        self.UserGroupId = None
-        self.Description = None
-        self.CreatedDate = None
+        self._DisplayName = None
+        self._UserGroupId = None
+        self._Description = None
+        self._CreatedDate = None
+
+    @property
+    def DisplayName(self):
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def UserGroupId(self):
+        return self._UserGroupId
+
+    @UserGroupId.setter
+    def UserGroupId(self, UserGroupId):
+        self._UserGroupId = UserGroupId
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CreatedDate(self):
+        return self._CreatedDate
+
+    @CreatedDate.setter
+    def CreatedDate(self, CreatedDate):
+        self._CreatedDate = CreatedDate
 
 
     def _deserialize(self, params):
-        self.DisplayName = params.get("DisplayName")
-        self.UserGroupId = params.get("UserGroupId")
-        self.Description = params.get("Description")
-        self.CreatedDate = params.get("CreatedDate")
+        self._DisplayName = params.get("DisplayName")
+        self._UserGroupId = params.get("UserGroupId")
+        self._Description = params.get("Description")
+        self._CreatedDate = params.get("CreatedDate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3319,18 +6089,27 @@ class UserGroupInfoSearchCriteria(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Keyword: Search by name. The match criteria include user group name and user group ID.
+        :param _Keyword: Search by name. The match criteria include user group name and user group ID.
         :type Keyword: str
         """
-        self.Keyword = None
+        self._Keyword = None
+
+    @property
+    def Keyword(self):
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
 
 
     def _deserialize(self, params):
-        self.Keyword = params.get("Keyword")
+        self._Keyword = params.get("Keyword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3343,27 +6122,52 @@ class UserGroupInformation(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserGroupId: User group ID.
+        :param _UserGroupId: User group ID.
         :type UserGroupId: str
-        :param UserGroupName: User group name.
+        :param _UserGroupName: User group name.
         :type UserGroupName: str
-        :param LastModifiedDate: Last update time in ISO 8601 format.
+        :param _LastModifiedDate: Last update time in ISO 8601 format.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type LastModifiedDate: str
         """
-        self.UserGroupId = None
-        self.UserGroupName = None
-        self.LastModifiedDate = None
+        self._UserGroupId = None
+        self._UserGroupName = None
+        self._LastModifiedDate = None
+
+    @property
+    def UserGroupId(self):
+        return self._UserGroupId
+
+    @UserGroupId.setter
+    def UserGroupId(self, UserGroupId):
+        self._UserGroupId = UserGroupId
+
+    @property
+    def UserGroupName(self):
+        return self._UserGroupName
+
+    @UserGroupName.setter
+    def UserGroupName(self, UserGroupName):
+        self._UserGroupName = UserGroupName
+
+    @property
+    def LastModifiedDate(self):
+        return self._LastModifiedDate
+
+    @LastModifiedDate.setter
+    def LastModifiedDate(self, LastModifiedDate):
+        self._LastModifiedDate = LastModifiedDate
 
 
     def _deserialize(self, params):
-        self.UserGroupId = params.get("UserGroupId")
-        self.UserGroupName = params.get("UserGroupName")
-        self.LastModifiedDate = params.get("LastModifiedDate")
+        self._UserGroupId = params.get("UserGroupId")
+        self._UserGroupName = params.get("UserGroupName")
+        self._LastModifiedDate = params.get("LastModifiedDate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3376,18 +6180,27 @@ class UserGroupInformationSearchCriteria(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Keyword: Search by name. The match criteria include user group name.
+        :param _Keyword: Search by name. The match criteria include user group name.
         :type Keyword: str
         """
-        self.Keyword = None
+        self._Keyword = None
+
+    @property
+    def Keyword(self):
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
 
 
     def _deserialize(self, params):
-        self.Keyword = params.get("Keyword")
+        self._Keyword = params.get("Keyword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3400,49 +6213,106 @@ class UserInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserId: User ID, which is globally unique and can contain up to 64 characters.
+        :param _UserId: User ID, which is globally unique and can contain up to 64 characters.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UserId: str
-        :param DisplayName: Nickname, which can contain up to 64 characters and is the same as the username by default.
+        :param _DisplayName: Nickname, which can contain up to 64 characters and is the same as the username by default.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DisplayName: str
-        :param UserName: Username.
+        :param _UserName: Username.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UserName: str
-        :param Phone: User's mobile number.
+        :param _Phone: User's mobile number.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Phone: str
-        :param Email: Email address.
+        :param _Email: Email address.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Email: str
-        :param Status: User status.
+        :param _Status: User status.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Status: str
-        :param DataSource: Data source.
+        :param _DataSource: Data source.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DataSource: str
         """
-        self.UserId = None
-        self.DisplayName = None
-        self.UserName = None
-        self.Phone = None
-        self.Email = None
-        self.Status = None
-        self.DataSource = None
+        self._UserId = None
+        self._DisplayName = None
+        self._UserName = None
+        self._Phone = None
+        self._Email = None
+        self._Status = None
+        self._DataSource = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def DisplayName(self):
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Phone(self):
+        return self._Phone
+
+    @Phone.setter
+    def Phone(self, Phone):
+        self._Phone = Phone
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def DataSource(self):
+        return self._DataSource
+
+    @DataSource.setter
+    def DataSource(self, DataSource):
+        self._DataSource = DataSource
 
 
     def _deserialize(self, params):
-        self.UserId = params.get("UserId")
-        self.DisplayName = params.get("DisplayName")
-        self.UserName = params.get("UserName")
-        self.Phone = params.get("Phone")
-        self.Email = params.get("Email")
-        self.Status = params.get("Status")
-        self.DataSource = params.get("DataSource")
+        self._UserId = params.get("UserId")
+        self._DisplayName = params.get("DisplayName")
+        self._UserName = params.get("UserName")
+        self._Phone = params.get("Phone")
+        self._Email = params.get("Email")
+        self._Status = params.get("Status")
+        self._DataSource = params.get("DataSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3455,74 +6325,171 @@ class UserInformation(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserName: Username, which can contain up to 32 characters.
+        :param _UserName: Username, which can contain up to 32 characters.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UserName: str
-        :param Status: User status.
+        :param _Status: User status.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Status: str
-        :param DisplayName: Nickname, which can contain up to 64 characters and is the same as the username by default.
+        :param _DisplayName: Nickname, which can contain up to 64 characters and is the same as the username by default.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DisplayName: str
-        :param Description: User remarks, which can contain up to 512 characters.
+        :param _Description: User remarks, which can contain up to 512 characters.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Description: str
-        :param LastUpdateTime: Last update time of the user in ISO 8601 format.
+        :param _LastUpdateTime: Last update time of the user in ISO 8601 format.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type LastUpdateTime: str
-        :param CreationTime: User creation time in ISO 8601 format.
+        :param _CreationTime: User creation time in ISO 8601 format.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CreationTime: str
-        :param OrgPath: Path ID of the user's primary organization.
+        :param _OrgPath: Path ID of the user's primary organization.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OrgPath: str
-        :param Phone: User's mobile number with country code, such as `+86-00000000000`.
+        :param _Phone: User's mobile number with country code, such as `+86-00000000000`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Phone: str
-        :param SubjectGroups: List of IDs of the user's user groups.
+        :param _SubjectGroups: List of IDs of the user's user groups.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SubjectGroups: list of str
-        :param Email: User's email address.
+        :param _Email: User's email address.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Email: str
-        :param LastLoginTime: Last login time of the user in ISO 8601 format.
+        :param _LastLoginTime: Last login time of the user in ISO 8601 format.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type LastLoginTime: str
-        :param UserId: User ID, which is globally unique and can contain up to 64 characters.
+        :param _UserId: User ID, which is globally unique and can contain up to 64 characters.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UserId: str
         """
-        self.UserName = None
-        self.Status = None
-        self.DisplayName = None
-        self.Description = None
-        self.LastUpdateTime = None
-        self.CreationTime = None
-        self.OrgPath = None
-        self.Phone = None
-        self.SubjectGroups = None
-        self.Email = None
-        self.LastLoginTime = None
-        self.UserId = None
+        self._UserName = None
+        self._Status = None
+        self._DisplayName = None
+        self._Description = None
+        self._LastUpdateTime = None
+        self._CreationTime = None
+        self._OrgPath = None
+        self._Phone = None
+        self._SubjectGroups = None
+        self._Email = None
+        self._LastLoginTime = None
+        self._UserId = None
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def DisplayName(self):
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def LastUpdateTime(self):
+        return self._LastUpdateTime
+
+    @LastUpdateTime.setter
+    def LastUpdateTime(self, LastUpdateTime):
+        self._LastUpdateTime = LastUpdateTime
+
+    @property
+    def CreationTime(self):
+        return self._CreationTime
+
+    @CreationTime.setter
+    def CreationTime(self, CreationTime):
+        self._CreationTime = CreationTime
+
+    @property
+    def OrgPath(self):
+        return self._OrgPath
+
+    @OrgPath.setter
+    def OrgPath(self, OrgPath):
+        self._OrgPath = OrgPath
+
+    @property
+    def Phone(self):
+        return self._Phone
+
+    @Phone.setter
+    def Phone(self, Phone):
+        self._Phone = Phone
+
+    @property
+    def SubjectGroups(self):
+        return self._SubjectGroups
+
+    @SubjectGroups.setter
+    def SubjectGroups(self, SubjectGroups):
+        self._SubjectGroups = SubjectGroups
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def LastLoginTime(self):
+        return self._LastLoginTime
+
+    @LastLoginTime.setter
+    def LastLoginTime(self, LastLoginTime):
+        self._LastLoginTime = LastLoginTime
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
 
 
     def _deserialize(self, params):
-        self.UserName = params.get("UserName")
-        self.Status = params.get("Status")
-        self.DisplayName = params.get("DisplayName")
-        self.Description = params.get("Description")
-        self.LastUpdateTime = params.get("LastUpdateTime")
-        self.CreationTime = params.get("CreationTime")
-        self.OrgPath = params.get("OrgPath")
-        self.Phone = params.get("Phone")
-        self.SubjectGroups = params.get("SubjectGroups")
-        self.Email = params.get("Email")
-        self.LastLoginTime = params.get("LastLoginTime")
-        self.UserId = params.get("UserId")
+        self._UserName = params.get("UserName")
+        self._Status = params.get("Status")
+        self._DisplayName = params.get("DisplayName")
+        self._Description = params.get("Description")
+        self._LastUpdateTime = params.get("LastUpdateTime")
+        self._CreationTime = params.get("CreationTime")
+        self._OrgPath = params.get("OrgPath")
+        self._Phone = params.get("Phone")
+        self._SubjectGroups = params.get("SubjectGroups")
+        self._Email = params.get("Email")
+        self._LastLoginTime = params.get("LastLoginTime")
+        self._UserId = params.get("UserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3535,42 +6502,99 @@ class UserSearchCriteria(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserName: Username, which can contain up to 64 characters.
+        :param _UserName: Username, which can contain up to 64 characters.
         :type UserName: str
-        :param Phone: User's mobile number.
+        :param _Phone: User's mobile number.
         :type Phone: str
-        :param Email: User's email address.
+        :param _Email: User's email address.
         :type Email: str
-        :param Status: User status. Valid values: NORMAL: normal; FREEZE: frozen; LOCKED: locked; NOT_ENABLED: disabled.
+        :param _Status: User status. Valid values: NORMAL: normal; FREEZE: frozen; LOCKED: locked; NOT_ENABLED: disabled.
         :type Status: str
-        :param CreationTime: User creation time in ISO 8601 format.
+        :param _CreationTime: User creation time in ISO 8601 format.
         :type CreationTime: str
-        :param LastUpdateTime: The user's last update time.
+        :param _LastUpdateTime: The user's last update time.
         :type LastUpdateTime: str
-        :param Keyword: Search by name. The match criteria include username and user ID.
+        :param _Keyword: Search by name. The match criteria include username and user ID.
         :type Keyword: str
         """
-        self.UserName = None
-        self.Phone = None
-        self.Email = None
-        self.Status = None
-        self.CreationTime = None
-        self.LastUpdateTime = None
-        self.Keyword = None
+        self._UserName = None
+        self._Phone = None
+        self._Email = None
+        self._Status = None
+        self._CreationTime = None
+        self._LastUpdateTime = None
+        self._Keyword = None
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Phone(self):
+        return self._Phone
+
+    @Phone.setter
+    def Phone(self, Phone):
+        self._Phone = Phone
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreationTime(self):
+        return self._CreationTime
+
+    @CreationTime.setter
+    def CreationTime(self, CreationTime):
+        self._CreationTime = CreationTime
+
+    @property
+    def LastUpdateTime(self):
+        return self._LastUpdateTime
+
+    @LastUpdateTime.setter
+    def LastUpdateTime(self, LastUpdateTime):
+        self._LastUpdateTime = LastUpdateTime
+
+    @property
+    def Keyword(self):
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
 
 
     def _deserialize(self, params):
-        self.UserName = params.get("UserName")
-        self.Phone = params.get("Phone")
-        self.Email = params.get("Email")
-        self.Status = params.get("Status")
-        self.CreationTime = params.get("CreationTime")
-        self.LastUpdateTime = params.get("LastUpdateTime")
-        self.Keyword = params.get("Keyword")
+        self._UserName = params.get("UserName")
+        self._Phone = params.get("Phone")
+        self._Email = params.get("Email")
+        self._Status = params.get("Status")
+        self._CreationTime = params.get("CreationTime")
+        self._LastUpdateTime = params.get("LastUpdateTime")
+        self._Keyword = params.get("Keyword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

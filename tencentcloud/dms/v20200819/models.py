@@ -25,42 +25,99 @@ class SendEmailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FromAddress: Sender
+        :param _FromAddress: Sender
         :type FromAddress: str
-        :param ToAddress: Recipient
+        :param _ToAddress: Recipient
         :type ToAddress: str
-        :param Subject: Email summary
+        :param _Subject: Email summary
         :type Subject: str
-        :param FromName: Sender name
+        :param _FromName: Sender name
         :type FromName: str
-        :param ReplyAddress: Reply-to address
+        :param _ReplyAddress: Reply-to address
         :type ReplyAddress: str
-        :param HtmlContent: The body of an HTML email
+        :param _HtmlContent: The body of an HTML email
         :type HtmlContent: str
-        :param TextContent: The body of a plain-text email
+        :param _TextContent: The body of a plain-text email
         :type TextContent: str
         """
-        self.FromAddress = None
-        self.ToAddress = None
-        self.Subject = None
-        self.FromName = None
-        self.ReplyAddress = None
-        self.HtmlContent = None
-        self.TextContent = None
+        self._FromAddress = None
+        self._ToAddress = None
+        self._Subject = None
+        self._FromName = None
+        self._ReplyAddress = None
+        self._HtmlContent = None
+        self._TextContent = None
+
+    @property
+    def FromAddress(self):
+        return self._FromAddress
+
+    @FromAddress.setter
+    def FromAddress(self, FromAddress):
+        self._FromAddress = FromAddress
+
+    @property
+    def ToAddress(self):
+        return self._ToAddress
+
+    @ToAddress.setter
+    def ToAddress(self, ToAddress):
+        self._ToAddress = ToAddress
+
+    @property
+    def Subject(self):
+        return self._Subject
+
+    @Subject.setter
+    def Subject(self, Subject):
+        self._Subject = Subject
+
+    @property
+    def FromName(self):
+        return self._FromName
+
+    @FromName.setter
+    def FromName(self, FromName):
+        self._FromName = FromName
+
+    @property
+    def ReplyAddress(self):
+        return self._ReplyAddress
+
+    @ReplyAddress.setter
+    def ReplyAddress(self, ReplyAddress):
+        self._ReplyAddress = ReplyAddress
+
+    @property
+    def HtmlContent(self):
+        return self._HtmlContent
+
+    @HtmlContent.setter
+    def HtmlContent(self, HtmlContent):
+        self._HtmlContent = HtmlContent
+
+    @property
+    def TextContent(self):
+        return self._TextContent
+
+    @TextContent.setter
+    def TextContent(self, TextContent):
+        self._TextContent = TextContent
 
 
     def _deserialize(self, params):
-        self.FromAddress = params.get("FromAddress")
-        self.ToAddress = params.get("ToAddress")
-        self.Subject = params.get("Subject")
-        self.FromName = params.get("FromName")
-        self.ReplyAddress = params.get("ReplyAddress")
-        self.HtmlContent = params.get("HtmlContent")
-        self.TextContent = params.get("TextContent")
+        self._FromAddress = params.get("FromAddress")
+        self._ToAddress = params.get("ToAddress")
+        self._Subject = params.get("Subject")
+        self._FromName = params.get("FromName")
+        self._ReplyAddress = params.get("ReplyAddress")
+        self._HtmlContent = params.get("HtmlContent")
+        self._TextContent = params.get("TextContent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -73,18 +130,34 @@ class SendEmailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: The result of creating an email task
+        :param _Result: The result of creating an email task
         :type Result: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
 
 
 class SendTemplatedEmailRequest(AbstractModel):
@@ -94,38 +167,87 @@ class SendTemplatedEmailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FromAddress: Sender address.
+        :param _FromAddress: Sender address.
         :type FromAddress: str
-        :param ToAddress: Recipient address. Up to 100 recipient addresses are supported. Multiple addresses should be separated by semicolons (;).
+        :param _ToAddress: Recipient address. Up to 100 recipient addresses are supported. Multiple addresses should be separated by semicolons (;).
         :type ToAddress: str
-        :param TemplateName: The name of the template created in advance.
+        :param _TemplateName: The name of the template created in advance.
         :type TemplateName: str
-        :param TemplateValue: Template variable value, which is a JSON string.
+        :param _TemplateValue: Template variable value, which is a JSON string.
         :type TemplateValue: str
-        :param FromName: Sender name.
+        :param _FromName: Sender name.
         :type FromName: str
-        :param ReplyAddress: Reply-to address.
+        :param _ReplyAddress: Reply-to address.
         :type ReplyAddress: str
         """
-        self.FromAddress = None
-        self.ToAddress = None
-        self.TemplateName = None
-        self.TemplateValue = None
-        self.FromName = None
-        self.ReplyAddress = None
+        self._FromAddress = None
+        self._ToAddress = None
+        self._TemplateName = None
+        self._TemplateValue = None
+        self._FromName = None
+        self._ReplyAddress = None
+
+    @property
+    def FromAddress(self):
+        return self._FromAddress
+
+    @FromAddress.setter
+    def FromAddress(self, FromAddress):
+        self._FromAddress = FromAddress
+
+    @property
+    def ToAddress(self):
+        return self._ToAddress
+
+    @ToAddress.setter
+    def ToAddress(self, ToAddress):
+        self._ToAddress = ToAddress
+
+    @property
+    def TemplateName(self):
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+    @property
+    def TemplateValue(self):
+        return self._TemplateValue
+
+    @TemplateValue.setter
+    def TemplateValue(self, TemplateValue):
+        self._TemplateValue = TemplateValue
+
+    @property
+    def FromName(self):
+        return self._FromName
+
+    @FromName.setter
+    def FromName(self, FromName):
+        self._FromName = FromName
+
+    @property
+    def ReplyAddress(self):
+        return self._ReplyAddress
+
+    @ReplyAddress.setter
+    def ReplyAddress(self, ReplyAddress):
+        self._ReplyAddress = ReplyAddress
 
 
     def _deserialize(self, params):
-        self.FromAddress = params.get("FromAddress")
-        self.ToAddress = params.get("ToAddress")
-        self.TemplateName = params.get("TemplateName")
-        self.TemplateValue = params.get("TemplateValue")
-        self.FromName = params.get("FromName")
-        self.ReplyAddress = params.get("ReplyAddress")
+        self._FromAddress = params.get("FromAddress")
+        self._ToAddress = params.get("ToAddress")
+        self._TemplateName = params.get("TemplateName")
+        self._TemplateValue = params.get("TemplateValue")
+        self._FromName = params.get("FromName")
+        self._ReplyAddress = params.get("ReplyAddress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -138,15 +260,31 @@ class SendTemplatedEmailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: The result of creating a template email task
+        :param _Result: The result of creating a template email task
         :type Result: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")

@@ -25,22 +25,39 @@ class BindNewLVBDomainWithChannelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ChannelId: Channel ID
+        :param _ChannelId: Channel ID
         :type ChannelId: str
-        :param LVBDomain: The LVB domain name to bind
+        :param _LVBDomain: The LVB domain name to bind
         :type LVBDomain: str
         """
-        self.ChannelId = None
-        self.LVBDomain = None
+        self._ChannelId = None
+        self._LVBDomain = None
+
+    @property
+    def ChannelId(self):
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def LVBDomain(self):
+        return self._LVBDomain
+
+    @LVBDomain.setter
+    def LVBDomain(self, LVBDomain):
+        self._LVBDomain = LVBDomain
 
 
     def _deserialize(self, params):
-        self.ChannelId = params.get("ChannelId")
-        self.LVBDomain = params.get("LVBDomain")
+        self._ChannelId = params.get("ChannelId")
+        self._LVBDomain = params.get("LVBDomain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -53,18 +70,34 @@ class BindNewLVBDomainWithChannelResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LVBDomain: The LVB domain name bound successfully
+        :param _LVBDomain: The LVB domain name bound successfully
         :type LVBDomain: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.LVBDomain = None
-        self.RequestId = None
+        self._LVBDomain = None
+        self._RequestId = None
+
+    @property
+    def LVBDomain(self):
+        return self._LVBDomain
+
+    @LVBDomain.setter
+    def LVBDomain(self, LVBDomain):
+        self._LVBDomain = LVBDomain
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.LVBDomain = params.get("LVBDomain")
-        self.RequestId = params.get("RequestId")
+        self._LVBDomain = params.get("LVBDomain")
+        self._RequestId = params.get("RequestId")
 
 
 class CacheInfo(AbstractModel):
@@ -74,24 +107,33 @@ class CacheInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Info: List of timeout parameter configuration
+        :param _Info: List of timeout parameter configuration
 Note: this field may return `null`, indicating that no valid value was found.
         :type Info: list of CacheInfoInfo
         """
-        self.Info = None
+        self._Info = None
+
+    @property
+    def Info(self):
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
 
 
     def _deserialize(self, params):
         if params.get("Info") is not None:
-            self.Info = []
+            self._Info = []
             for item in params.get("Info"):
                 obj = CacheInfoInfo()
                 obj._deserialize(item)
-                self.Info.append(obj)
+                self._Info.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -104,25 +146,42 @@ class CacheInfoInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Timeout: Timeout period (ms), which must be an integer multiple of 1000
+        :param _Timeout: Timeout period (ms), which must be an integer multiple of 1000
 .m3u8/.mpd: [1000, 60000]
 .ts/.m4s/.mp4: [10000, 1800000]
         :type Timeout: int
-        :param Ext: File extension. Valid values: .m3u8, .ts, .mpd, .m4s, .mp4
+        :param _Ext: File extension. Valid values: .m3u8, .ts, .mpd, .m4s, .mp4
 Note: this field may return `null`, indicating that no valid value was found.
         :type Ext: str
         """
-        self.Timeout = None
-        self.Ext = None
+        self._Timeout = None
+        self._Ext = None
+
+    @property
+    def Timeout(self):
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def Ext(self):
+        return self._Ext
+
+    @Ext.setter
+    def Ext(self, Ext):
+        self._Ext = Ext
 
 
     def _deserialize(self, params):
-        self.Timeout = params.get("Timeout")
-        self.Ext = params.get("Ext")
+        self._Timeout = params.get("Timeout")
+        self._Ext = params.get("Ext")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -135,39 +194,80 @@ class ChannelInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: Channel ID.
+        :param _Id: Channel ID.
         :type Id: str
-        :param Name: Channel name.
+        :param _Name: Channel name.
         :type Name: str
-        :param Protocol: Channel protocol.
+        :param _Protocol: Channel protocol.
         :type Protocol: str
-        :param Points: Channel input and output.
+        :param _Points: Channel input and output.
         :type Points: :class:`tencentcloud.mdp.v20200527.models.PointInfo`
-        :param CacheInfo: Cache configuration
+        :param _CacheInfo: Cache configuration
 Note: this field may return `null`, indicating that no valid value was found.
         :type CacheInfo: :class:`tencentcloud.mdp.v20200527.models.CacheInfo`
         """
-        self.Id = None
-        self.Name = None
-        self.Protocol = None
-        self.Points = None
-        self.CacheInfo = None
+        self._Id = None
+        self._Name = None
+        self._Protocol = None
+        self._Points = None
+        self._CacheInfo = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def Points(self):
+        return self._Points
+
+    @Points.setter
+    def Points(self, Points):
+        self._Points = Points
+
+    @property
+    def CacheInfo(self):
+        return self._CacheInfo
+
+    @CacheInfo.setter
+    def CacheInfo(self, CacheInfo):
+        self._CacheInfo = CacheInfo
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.Name = params.get("Name")
-        self.Protocol = params.get("Protocol")
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Protocol = params.get("Protocol")
         if params.get("Points") is not None:
-            self.Points = PointInfo()
-            self.Points._deserialize(params.get("Points"))
+            self._Points = PointInfo()
+            self._Points._deserialize(params.get("Points"))
         if params.get("CacheInfo") is not None:
-            self.CacheInfo = CacheInfo()
-            self.CacheInfo._deserialize(params.get("CacheInfo"))
+            self._CacheInfo = CacheInfo()
+            self._CacheInfo._deserialize(params.get("CacheInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -180,28 +280,53 @@ class CreateStreamPackageChannelEndpointRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: Channel ID
+        :param _Id: Channel ID
         :type Id: str
-        :param Name: Endpoint name, which must contain 1 to 32 characters and supports digits, letters, and underscores
+        :param _Name: Endpoint name, which must contain 1 to 32 characters and supports digits, letters, and underscores
         :type Name: str
-        :param AuthInfo: Authentication information
+        :param _AuthInfo: Authentication information
         :type AuthInfo: :class:`tencentcloud.mdp.v20200527.models.EndpointAuthInfo`
         """
-        self.Id = None
-        self.Name = None
-        self.AuthInfo = None
+        self._Id = None
+        self._Name = None
+        self._AuthInfo = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def AuthInfo(self):
+        return self._AuthInfo
+
+    @AuthInfo.setter
+    def AuthInfo(self, AuthInfo):
+        self._AuthInfo = AuthInfo
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.Name = params.get("Name")
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
         if params.get("AuthInfo") is not None:
-            self.AuthInfo = EndpointAuthInfo()
-            self.AuthInfo._deserialize(params.get("AuthInfo"))
+            self._AuthInfo = EndpointAuthInfo()
+            self._AuthInfo._deserialize(params.get("AuthInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -214,20 +339,36 @@ class CreateStreamPackageChannelEndpointResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Info: Information of the created channel endpoint
+        :param _Info: Information of the created channel endpoint
         :type Info: :class:`tencentcloud.mdp.v20200527.models.EndpointInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Info = None
-        self.RequestId = None
+        self._Info = None
+        self._RequestId = None
+
+    @property
+    def Info(self):
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Info") is not None:
-            self.Info = EndpointInfo()
-            self.Info._deserialize(params.get("Info"))
-        self.RequestId = params.get("RequestId")
+            self._Info = EndpointInfo()
+            self._Info._deserialize(params.get("Info"))
+        self._RequestId = params.get("RequestId")
 
 
 class CreateStreamPackageChannelRequest(AbstractModel):
@@ -237,28 +378,53 @@ class CreateStreamPackageChannelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: Channel name
+        :param _Name: Channel name
         :type Name: str
-        :param Protocol: Channel protocol. Valid values: HLS, DASH
+        :param _Protocol: Channel protocol. Valid values: HLS, DASH
         :type Protocol: str
-        :param CacheInfo: Cache configuration
+        :param _CacheInfo: Cache configuration
         :type CacheInfo: :class:`tencentcloud.mdp.v20200527.models.CacheInfo`
         """
-        self.Name = None
-        self.Protocol = None
-        self.CacheInfo = None
+        self._Name = None
+        self._Protocol = None
+        self._CacheInfo = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def CacheInfo(self):
+        return self._CacheInfo
+
+    @CacheInfo.setter
+    def CacheInfo(self, CacheInfo):
+        self._CacheInfo = CacheInfo
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Protocol = params.get("Protocol")
+        self._Name = params.get("Name")
+        self._Protocol = params.get("Protocol")
         if params.get("CacheInfo") is not None:
-            self.CacheInfo = CacheInfo()
-            self.CacheInfo._deserialize(params.get("CacheInfo"))
+            self._CacheInfo = CacheInfo()
+            self._CacheInfo._deserialize(params.get("CacheInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -271,20 +437,36 @@ class CreateStreamPackageChannelResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Info: Channel information
+        :param _Info: Channel information
         :type Info: :class:`tencentcloud.mdp.v20200527.models.ChannelInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Info = None
-        self.RequestId = None
+        self._Info = None
+        self._RequestId = None
+
+    @property
+    def Info(self):
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Info") is not None:
-            self.Info = ChannelInfo()
-            self.Info._deserialize(params.get("Info"))
-        self.RequestId = params.get("RequestId")
+            self._Info = ChannelInfo()
+            self._Info._deserialize(params.get("Info"))
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteStreamPackageChannelEndpointsRequest(AbstractModel):
@@ -294,22 +476,39 @@ class DeleteStreamPackageChannelEndpointsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: Channel ID
+        :param _Id: Channel ID
         :type Id: str
-        :param Urls: List of the URLs of the endpoints to delete
+        :param _Urls: List of the URLs of the endpoints to delete
         :type Urls: list of str
         """
-        self.Id = None
-        self.Urls = None
+        self._Id = None
+        self._Urls = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Urls(self):
+        return self._Urls
+
+    @Urls.setter
+    def Urls(self, Urls):
+        self._Urls = Urls
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.Urls = params.get("Urls")
+        self._Id = params.get("Id")
+        self._Urls = params.get("Urls")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -322,14 +521,22 @@ class DeleteStreamPackageChannelEndpointsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteStreamPackageChannelsRequest(AbstractModel):
@@ -339,18 +546,27 @@ class DeleteStreamPackageChannelsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Ids: List of the IDs of the channels to delete
+        :param _Ids: List of the IDs of the channels to delete
         :type Ids: list of str
         """
-        self.Ids = None
+        self._Ids = None
+
+    @property
+    def Ids(self):
+        return self._Ids
+
+    @Ids.setter
+    def Ids(self, Ids):
+        self._Ids = Ids
 
 
     def _deserialize(self, params):
-        self.Ids = params.get("Ids")
+        self._Ids = params.get("Ids")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -363,32 +579,56 @@ class DeleteStreamPackageChannelsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SuccessInfos: List of the information of successfully deleted channels
+        :param _SuccessInfos: List of the information of successfully deleted channels
         :type SuccessInfos: list of ChannelInfo
-        :param FailInfos: List of the information of the channels that failed to be deleted
+        :param _FailInfos: List of the information of the channels that failed to be deleted
         :type FailInfos: list of ChannelInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.SuccessInfos = None
-        self.FailInfos = None
-        self.RequestId = None
+        self._SuccessInfos = None
+        self._FailInfos = None
+        self._RequestId = None
+
+    @property
+    def SuccessInfos(self):
+        return self._SuccessInfos
+
+    @SuccessInfos.setter
+    def SuccessInfos(self, SuccessInfos):
+        self._SuccessInfos = SuccessInfos
+
+    @property
+    def FailInfos(self):
+        return self._FailInfos
+
+    @FailInfos.setter
+    def FailInfos(self, FailInfos):
+        self._FailInfos = FailInfos
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("SuccessInfos") is not None:
-            self.SuccessInfos = []
+            self._SuccessInfos = []
             for item in params.get("SuccessInfos"):
                 obj = ChannelInfo()
                 obj._deserialize(item)
-                self.SuccessInfos.append(obj)
+                self._SuccessInfos.append(obj)
         if params.get("FailInfos") is not None:
-            self.FailInfos = []
+            self._FailInfos = []
             for item in params.get("FailInfos"):
                 obj = ChannelInfo()
                 obj._deserialize(item)
-                self.FailInfos.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._FailInfos.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeStreamPackageChannelRequest(AbstractModel):
@@ -398,18 +638,27 @@ class DescribeStreamPackageChannelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: Channel ID
+        :param _Id: Channel ID
         :type Id: str
         """
-        self.Id = None
+        self._Id = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
+        self._Id = params.get("Id")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -422,20 +671,36 @@ class DescribeStreamPackageChannelResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Info: Channel information
+        :param _Info: Channel information
         :type Info: :class:`tencentcloud.mdp.v20200527.models.ChannelInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Info = None
-        self.RequestId = None
+        self._Info = None
+        self._RequestId = None
+
+    @property
+    def Info(self):
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Info") is not None:
-            self.Info = ChannelInfo()
-            self.Info._deserialize(params.get("Info"))
-        self.RequestId = params.get("RequestId")
+            self._Info = ChannelInfo()
+            self._Info._deserialize(params.get("Info"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeStreamPackageChannelsRequest(AbstractModel):
@@ -445,22 +710,39 @@ class DescribeStreamPackageChannelsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PageNum: Page number. Value range: [1, 1000]
+        :param _PageNum: Page number. Value range: [1, 1000]
         :type PageNum: int
-        :param PageSize: Number of entries per page. Value range: [1, 1000]
+        :param _PageSize: Number of entries per page. Value range: [1, 1000]
         :type PageSize: int
         """
-        self.PageNum = None
-        self.PageSize = None
+        self._PageNum = None
+        self._PageSize = None
+
+    @property
+    def PageNum(self):
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
 
 
     def _deserialize(self, params):
-        self.PageNum = params.get("PageNum")
-        self.PageSize = params.get("PageSize")
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -473,40 +755,88 @@ class DescribeStreamPackageChannelsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Infos: List of channel information
+        :param _Infos: List of channel information
 Note: this field may return `null`, indicating that no valid value was found.
         :type Infos: list of ChannelInfo
-        :param PageNum: Page number
+        :param _PageNum: Page number
         :type PageNum: int
-        :param PageSize: Number of entries per page
+        :param _PageSize: Number of entries per page
         :type PageSize: int
-        :param TotalNum: Total number of entries
+        :param _TotalNum: Total number of entries
         :type TotalNum: int
-        :param TotalPage: Total number of pages
+        :param _TotalPage: Total number of pages
         :type TotalPage: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Infos = None
-        self.PageNum = None
-        self.PageSize = None
-        self.TotalNum = None
-        self.TotalPage = None
-        self.RequestId = None
+        self._Infos = None
+        self._PageNum = None
+        self._PageSize = None
+        self._TotalNum = None
+        self._TotalPage = None
+        self._RequestId = None
+
+    @property
+    def Infos(self):
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+    @property
+    def PageNum(self):
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalNum(self):
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def TotalPage(self):
+        return self._TotalPage
+
+    @TotalPage.setter
+    def TotalPage(self, TotalPage):
+        self._TotalPage = TotalPage
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Infos") is not None:
-            self.Infos = []
+            self._Infos = []
             for item in params.get("Infos"):
                 obj = ChannelInfo()
                 obj._deserialize(item)
-                self.Infos.append(obj)
-        self.PageNum = params.get("PageNum")
-        self.PageSize = params.get("PageSize")
-        self.TotalNum = params.get("TotalNum")
-        self.TotalPage = params.get("TotalPage")
-        self.RequestId = params.get("RequestId")
+                self._Infos.append(obj)
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        self._TotalNum = params.get("TotalNum")
+        self._TotalPage = params.get("TotalPage")
+        self._RequestId = params.get("RequestId")
 
 
 class EndpointAuthInfo(AbstractModel):
@@ -516,29 +846,54 @@ class EndpointAuthInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param WhiteIpList: The security group allowlist in CIDR format.
+        :param _WhiteIpList: The security group allowlist in CIDR format.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type WhiteIpList: list of str
-        :param BlackIpList: The security group blocklist in CIDR format.
+        :param _BlackIpList: The security group blocklist in CIDR format.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type BlackIpList: list of str
-        :param AuthKey: The authentication key. Its value is same as `X-TENCENT-PACKAGE` set in the HTTP request header.
+        :param _AuthKey: The authentication key. Its value is same as `X-TENCENT-PACKAGE` set in the HTTP request header.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AuthKey: str
         """
-        self.WhiteIpList = None
-        self.BlackIpList = None
-        self.AuthKey = None
+        self._WhiteIpList = None
+        self._BlackIpList = None
+        self._AuthKey = None
+
+    @property
+    def WhiteIpList(self):
+        return self._WhiteIpList
+
+    @WhiteIpList.setter
+    def WhiteIpList(self, WhiteIpList):
+        self._WhiteIpList = WhiteIpList
+
+    @property
+    def BlackIpList(self):
+        return self._BlackIpList
+
+    @BlackIpList.setter
+    def BlackIpList(self, BlackIpList):
+        self._BlackIpList = BlackIpList
+
+    @property
+    def AuthKey(self):
+        return self._AuthKey
+
+    @AuthKey.setter
+    def AuthKey(self, AuthKey):
+        self._AuthKey = AuthKey
 
 
     def _deserialize(self, params):
-        self.WhiteIpList = params.get("WhiteIpList")
-        self.BlackIpList = params.get("BlackIpList")
-        self.AuthKey = params.get("AuthKey")
+        self._WhiteIpList = params.get("WhiteIpList")
+        self._BlackIpList = params.get("BlackIpList")
+        self._AuthKey = params.get("AuthKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -551,28 +906,53 @@ class EndpointInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: Endpoint name.
+        :param _Name: Endpoint name.
         :type Name: str
-        :param Url: Endpoint URL.
+        :param _Url: Endpoint URL.
         :type Url: str
-        :param AuthInfo: Endpoint authentication information.
+        :param _AuthInfo: Endpoint authentication information.
         :type AuthInfo: :class:`tencentcloud.mdp.v20200527.models.EndpointAuthInfo`
         """
-        self.Name = None
-        self.Url = None
-        self.AuthInfo = None
+        self._Name = None
+        self._Url = None
+        self._AuthInfo = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def AuthInfo(self):
+        return self._AuthInfo
+
+    @AuthInfo.setter
+    def AuthInfo(self, AuthInfo):
+        self._AuthInfo = AuthInfo
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Url = params.get("Url")
+        self._Name = params.get("Name")
+        self._Url = params.get("Url")
         if params.get("AuthInfo") is not None:
-            self.AuthInfo = EndpointAuthInfo()
-            self.AuthInfo._deserialize(params.get("AuthInfo"))
+            self._AuthInfo = EndpointAuthInfo()
+            self._AuthInfo._deserialize(params.get("AuthInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -585,24 +965,41 @@ class InputAuthInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Username: Username.
+        :param _Username: Username.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Username: str
-        :param Password: Password.
+        :param _Password: Password.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Password: str
         """
-        self.Username = None
-        self.Password = None
+        self._Username = None
+        self._Password = None
+
+    @property
+    def Username(self):
+        return self._Username
+
+    @Username.setter
+    def Username(self, Username):
+        self._Username = Username
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
 
 
     def _deserialize(self, params):
-        self.Username = params.get("Username")
-        self.Password = params.get("Password")
+        self._Username = params.get("Username")
+        self._Password = params.get("Password")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -615,25 +1012,42 @@ class InputInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Url: Channel input URL.
+        :param _Url: Channel input URL.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Url: str
-        :param AuthInfo: Channel input authentication information.
+        :param _AuthInfo: Channel input authentication information.
         :type AuthInfo: :class:`tencentcloud.mdp.v20200527.models.InputAuthInfo`
         """
-        self.Url = None
-        self.AuthInfo = None
+        self._Url = None
+        self._AuthInfo = None
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def AuthInfo(self):
+        return self._AuthInfo
+
+    @AuthInfo.setter
+    def AuthInfo(self, AuthInfo):
+        self._AuthInfo = AuthInfo
 
 
     def _deserialize(self, params):
-        self.Url = params.get("Url")
+        self._Url = params.get("Url")
         if params.get("AuthInfo") is not None:
-            self.AuthInfo = InputAuthInfo()
-            self.AuthInfo._deserialize(params.get("AuthInfo"))
+            self._AuthInfo = InputAuthInfo()
+            self._AuthInfo._deserialize(params.get("AuthInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -646,32 +1060,65 @@ class ModifyStreamPackageChannelEndpointRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: Channel ID
+        :param _Id: Channel ID
         :type Id: str
-        :param Url: Channel endpoint URL
+        :param _Url: Channel endpoint URL
         :type Url: str
-        :param Name: New endpoint name
+        :param _Name: New endpoint name
         :type Name: str
-        :param AuthInfo: New channel authentication information
+        :param _AuthInfo: New channel authentication information
         :type AuthInfo: :class:`tencentcloud.mdp.v20200527.models.EndpointAuthInfo`
         """
-        self.Id = None
-        self.Url = None
-        self.Name = None
-        self.AuthInfo = None
+        self._Id = None
+        self._Url = None
+        self._Name = None
+        self._AuthInfo = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def AuthInfo(self):
+        return self._AuthInfo
+
+    @AuthInfo.setter
+    def AuthInfo(self, AuthInfo):
+        self._AuthInfo = AuthInfo
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.Url = params.get("Url")
-        self.Name = params.get("Name")
+        self._Id = params.get("Id")
+        self._Url = params.get("Url")
+        self._Name = params.get("Name")
         if params.get("AuthInfo") is not None:
-            self.AuthInfo = EndpointAuthInfo()
-            self.AuthInfo._deserialize(params.get("AuthInfo"))
+            self._AuthInfo = EndpointAuthInfo()
+            self._AuthInfo._deserialize(params.get("AuthInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -684,14 +1131,22 @@ class ModifyStreamPackageChannelEndpointResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyStreamPackageChannelInputAuthInfoRequest(AbstractModel):
@@ -701,28 +1156,53 @@ class ModifyStreamPackageChannelInputAuthInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: Channel ID
+        :param _Id: Channel ID
         :type Id: str
-        :param Url: Channel input URL
+        :param _Url: Channel input URL
         :type Url: str
-        :param ActionType: Authentication configuration. Valid values: `CLOSE`, `UPDATE`
+        :param _ActionType: Authentication configuration. Valid values: `CLOSE`, `UPDATE`
 `CLOSE`: disable authentication
 `UPDATE`: update authentication information
         :type ActionType: str
         """
-        self.Id = None
-        self.Url = None
-        self.ActionType = None
+        self._Id = None
+        self._Url = None
+        self._ActionType = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def ActionType(self):
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.Url = params.get("Url")
-        self.ActionType = params.get("ActionType")
+        self._Id = params.get("Id")
+        self._Url = params.get("Url")
+        self._ActionType = params.get("ActionType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -735,20 +1215,36 @@ class ModifyStreamPackageChannelInputAuthInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AuthInfo: Channel input authentication information
+        :param _AuthInfo: Channel input authentication information
         :type AuthInfo: :class:`tencentcloud.mdp.v20200527.models.InputAuthInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.AuthInfo = None
-        self.RequestId = None
+        self._AuthInfo = None
+        self._RequestId = None
+
+    @property
+    def AuthInfo(self):
+        return self._AuthInfo
+
+    @AuthInfo.setter
+    def AuthInfo(self, AuthInfo):
+        self._AuthInfo = AuthInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("AuthInfo") is not None:
-            self.AuthInfo = InputAuthInfo()
-            self.AuthInfo._deserialize(params.get("AuthInfo"))
-        self.RequestId = params.get("RequestId")
+            self._AuthInfo = InputAuthInfo()
+            self._AuthInfo._deserialize(params.get("AuthInfo"))
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyStreamPackageChannelRequest(AbstractModel):
@@ -758,32 +1254,65 @@ class ModifyStreamPackageChannelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: Channel ID
+        :param _Id: Channel ID
         :type Id: str
-        :param Name: New channel name
+        :param _Name: New channel name
         :type Name: str
-        :param Protocol: New channel protocol. Valid values: HLS, DASH
+        :param _Protocol: New channel protocol. Valid values: HLS, DASH
         :type Protocol: str
-        :param CacheInfo: Cache configuration
+        :param _CacheInfo: Cache configuration
         :type CacheInfo: :class:`tencentcloud.mdp.v20200527.models.CacheInfo`
         """
-        self.Id = None
-        self.Name = None
-        self.Protocol = None
-        self.CacheInfo = None
+        self._Id = None
+        self._Name = None
+        self._Protocol = None
+        self._CacheInfo = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def CacheInfo(self):
+        return self._CacheInfo
+
+    @CacheInfo.setter
+    def CacheInfo(self, CacheInfo):
+        self._CacheInfo = CacheInfo
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.Name = params.get("Name")
-        self.Protocol = params.get("Protocol")
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Protocol = params.get("Protocol")
         if params.get("CacheInfo") is not None:
-            self.CacheInfo = CacheInfo()
-            self.CacheInfo._deserialize(params.get("CacheInfo"))
+            self._CacheInfo = CacheInfo()
+            self._CacheInfo._deserialize(params.get("CacheInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -796,14 +1325,22 @@ class ModifyStreamPackageChannelResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class PointInfo(AbstractModel):
@@ -813,33 +1350,50 @@ class PointInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Inputs: Channel input list.
+        :param _Inputs: Channel input list.
         :type Inputs: list of InputInfo
-        :param Endpoints: Channel output list.
+        :param _Endpoints: Channel output list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Endpoints: list of EndpointInfo
         """
-        self.Inputs = None
-        self.Endpoints = None
+        self._Inputs = None
+        self._Endpoints = None
+
+    @property
+    def Inputs(self):
+        return self._Inputs
+
+    @Inputs.setter
+    def Inputs(self, Inputs):
+        self._Inputs = Inputs
+
+    @property
+    def Endpoints(self):
+        return self._Endpoints
+
+    @Endpoints.setter
+    def Endpoints(self, Endpoints):
+        self._Endpoints = Endpoints
 
 
     def _deserialize(self, params):
         if params.get("Inputs") is not None:
-            self.Inputs = []
+            self._Inputs = []
             for item in params.get("Inputs"):
                 obj = InputInfo()
                 obj._deserialize(item)
-                self.Inputs.append(obj)
+                self._Inputs.append(obj)
         if params.get("Endpoints") is not None:
-            self.Endpoints = []
+            self._Endpoints = []
             for item in params.get("Endpoints"):
                 obj = EndpointInfo()
                 obj._deserialize(item)
-                self.Endpoints.append(obj)
+                self._Endpoints.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -852,22 +1406,39 @@ class UnbindCdnDomainWithChannelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ChannelId: Channel ID
+        :param _ChannelId: Channel ID
         :type ChannelId: str
-        :param CdnDomain: CDN playback domain name
+        :param _CdnDomain: CDN playback domain name
         :type CdnDomain: str
         """
-        self.ChannelId = None
-        self.CdnDomain = None
+        self._ChannelId = None
+        self._CdnDomain = None
+
+    @property
+    def ChannelId(self):
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def CdnDomain(self):
+        return self._CdnDomain
+
+    @CdnDomain.setter
+    def CdnDomain(self, CdnDomain):
+        self._CdnDomain = CdnDomain
 
 
     def _deserialize(self, params):
-        self.ChannelId = params.get("ChannelId")
-        self.CdnDomain = params.get("CdnDomain")
+        self._ChannelId = params.get("ChannelId")
+        self._CdnDomain = params.get("CdnDomain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -880,11 +1451,19 @@ class UnbindCdnDomainWithChannelResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")

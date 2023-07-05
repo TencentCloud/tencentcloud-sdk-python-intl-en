@@ -25,46 +25,103 @@ class CreateInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InputName: Input name, which can contain 1 to 32 letters, digits, and underscores.
+        :param _InputName: Input name, which can contain 1 to 32 letters, digits, and underscores.
         :type InputName: str
-        :param Protocol: Input protocol. Valid values: `SRT`, `RTP`, `RTMP`
+        :param _Protocol: Input protocol. Valid values: `SRT`, `RTP`, `RTMP`
         :type Protocol: str
-        :param Description: Input description. Length: [0, 255].
+        :param _Description: Input description. Length: [0, 255].
         :type Description: str
-        :param AllowIpList: Allowlist of input IPs in CIDR format.
+        :param _AllowIpList: Allowlist of input IPs in CIDR format.
         :type AllowIpList: list of str
-        :param SRTSettings: SRT configuration information of input.
+        :param _SRTSettings: SRT configuration information of input.
         :type SRTSettings: :class:`tencentcloud.mdc.v20200828.models.CreateInputSRTSettings`
-        :param RTPSettings: RTP configuration information of input.
+        :param _RTPSettings: RTP configuration information of input.
         :type RTPSettings: :class:`tencentcloud.mdc.v20200828.models.CreateInputRTPSettings`
-        :param FailOver: Input failover. Valid values: `OPEN`, `CLOSE` (default)
+        :param _FailOver: Input failover. Valid values: `OPEN`, `CLOSE` (default)
         :type FailOver: str
         """
-        self.InputName = None
-        self.Protocol = None
-        self.Description = None
-        self.AllowIpList = None
-        self.SRTSettings = None
-        self.RTPSettings = None
-        self.FailOver = None
+        self._InputName = None
+        self._Protocol = None
+        self._Description = None
+        self._AllowIpList = None
+        self._SRTSettings = None
+        self._RTPSettings = None
+        self._FailOver = None
+
+    @property
+    def InputName(self):
+        return self._InputName
+
+    @InputName.setter
+    def InputName(self, InputName):
+        self._InputName = InputName
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def AllowIpList(self):
+        return self._AllowIpList
+
+    @AllowIpList.setter
+    def AllowIpList(self, AllowIpList):
+        self._AllowIpList = AllowIpList
+
+    @property
+    def SRTSettings(self):
+        return self._SRTSettings
+
+    @SRTSettings.setter
+    def SRTSettings(self, SRTSettings):
+        self._SRTSettings = SRTSettings
+
+    @property
+    def RTPSettings(self):
+        return self._RTPSettings
+
+    @RTPSettings.setter
+    def RTPSettings(self, RTPSettings):
+        self._RTPSettings = RTPSettings
+
+    @property
+    def FailOver(self):
+        return self._FailOver
+
+    @FailOver.setter
+    def FailOver(self, FailOver):
+        self._FailOver = FailOver
 
 
     def _deserialize(self, params):
-        self.InputName = params.get("InputName")
-        self.Protocol = params.get("Protocol")
-        self.Description = params.get("Description")
-        self.AllowIpList = params.get("AllowIpList")
+        self._InputName = params.get("InputName")
+        self._Protocol = params.get("Protocol")
+        self._Description = params.get("Description")
+        self._AllowIpList = params.get("AllowIpList")
         if params.get("SRTSettings") is not None:
-            self.SRTSettings = CreateInputSRTSettings()
-            self.SRTSettings._deserialize(params.get("SRTSettings"))
+            self._SRTSettings = CreateInputSRTSettings()
+            self._SRTSettings._deserialize(params.get("SRTSettings"))
         if params.get("RTPSettings") is not None:
-            self.RTPSettings = CreateInputRTPSettings()
-            self.RTPSettings._deserialize(params.get("RTPSettings"))
-        self.FailOver = params.get("FailOver")
+            self._RTPSettings = CreateInputRTPSettings()
+            self._RTPSettings._deserialize(params.get("RTPSettings"))
+        self._FailOver = params.get("FailOver")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -77,22 +134,39 @@ class CreateInputRTPSettings(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FEC: Default value: none. Valid values: ['none'].
+        :param _FEC: Default value: none. Valid values: ['none'].
         :type FEC: str
-        :param IdleTimeout: Idle timeout period in ms. Default value: 5000. Value range: [1000, 10000].
+        :param _IdleTimeout: Idle timeout period in ms. Default value: 5000. Value range: [1000, 10000].
         :type IdleTimeout: int
         """
-        self.FEC = None
-        self.IdleTimeout = None
+        self._FEC = None
+        self._IdleTimeout = None
+
+    @property
+    def FEC(self):
+        return self._FEC
+
+    @FEC.setter
+    def FEC(self, FEC):
+        self._FEC = FEC
+
+    @property
+    def IdleTimeout(self):
+        return self._IdleTimeout
+
+    @IdleTimeout.setter
+    def IdleTimeout(self, IdleTimeout):
+        self._IdleTimeout = IdleTimeout
 
 
     def _deserialize(self, params):
-        self.FEC = params.get("FEC")
-        self.IdleTimeout = params.get("IdleTimeout")
+        self._FEC = params.get("FEC")
+        self._IdleTimeout = params.get("IdleTimeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -105,55 +179,128 @@ class CreateInputSRTSettings(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Mode: The SRT mode. Valid values: LISTENER (default), CALLER.
+        :param _Mode: The SRT mode. Valid values: LISTENER (default), CALLER.
         :type Mode: str
-        :param StreamId: Stream ID, which can contain 0 to 512 letters, digits, and special characters (.#!:&,=_-).
+        :param _StreamId: Stream ID, which can contain 0 to 512 letters, digits, and special characters (.#!:&,=_-).
         :type StreamId: str
-        :param Latency: Latency in ms. Default value: 0. Value range: [0, 3000].
+        :param _Latency: Latency in ms. Default value: 0. Value range: [0, 3000].
         :type Latency: int
-        :param RecvLatency: Receive latency in ms. Default value: 120. Value range: [0, 3000].
+        :param _RecvLatency: Receive latency in ms. Default value: 120. Value range: [0, 3000].
         :type RecvLatency: int
-        :param PeerLatency: Peer latency in ms. Default value: 0. Value range: [0, 3000].
+        :param _PeerLatency: Peer latency in ms. Default value: 0. Value range: [0, 3000].
         :type PeerLatency: int
-        :param PeerIdleTimeout: Peer timeout period in ms. Default value: 5000. Value range: [1000, 10000].
+        :param _PeerIdleTimeout: Peer timeout period in ms. Default value: 5000. Value range: [1000, 10000].
         :type PeerIdleTimeout: int
-        :param Passphrase: Decryption key, which is empty by default, indicating not to encrypt. Only ASCII codes can be filled. Length: [10, 79].
+        :param _Passphrase: Decryption key, which is empty by default, indicating not to encrypt. Only ASCII codes can be filled. Length: [10, 79].
         :type Passphrase: str
-        :param PbKeyLen: Key length. Default value: 0. Valid values: 0, 16, 24, 32.
+        :param _PbKeyLen: Key length. Default value: 0. Valid values: 0, 16, 24, 32.
         :type PbKeyLen: int
-        :param SourceAddresses: The SRT peer address, which is required if `Mode` is `CALLER`. Only one address is allowed.
+        :param _SourceAddresses: The SRT peer address, which is required if `Mode` is `CALLER`. Only one address is allowed.
         :type SourceAddresses: list of SRTSourceAddressReq
         """
-        self.Mode = None
-        self.StreamId = None
-        self.Latency = None
-        self.RecvLatency = None
-        self.PeerLatency = None
-        self.PeerIdleTimeout = None
-        self.Passphrase = None
-        self.PbKeyLen = None
-        self.SourceAddresses = None
+        self._Mode = None
+        self._StreamId = None
+        self._Latency = None
+        self._RecvLatency = None
+        self._PeerLatency = None
+        self._PeerIdleTimeout = None
+        self._Passphrase = None
+        self._PbKeyLen = None
+        self._SourceAddresses = None
+
+    @property
+    def Mode(self):
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def StreamId(self):
+        return self._StreamId
+
+    @StreamId.setter
+    def StreamId(self, StreamId):
+        self._StreamId = StreamId
+
+    @property
+    def Latency(self):
+        return self._Latency
+
+    @Latency.setter
+    def Latency(self, Latency):
+        self._Latency = Latency
+
+    @property
+    def RecvLatency(self):
+        return self._RecvLatency
+
+    @RecvLatency.setter
+    def RecvLatency(self, RecvLatency):
+        self._RecvLatency = RecvLatency
+
+    @property
+    def PeerLatency(self):
+        return self._PeerLatency
+
+    @PeerLatency.setter
+    def PeerLatency(self, PeerLatency):
+        self._PeerLatency = PeerLatency
+
+    @property
+    def PeerIdleTimeout(self):
+        return self._PeerIdleTimeout
+
+    @PeerIdleTimeout.setter
+    def PeerIdleTimeout(self, PeerIdleTimeout):
+        self._PeerIdleTimeout = PeerIdleTimeout
+
+    @property
+    def Passphrase(self):
+        return self._Passphrase
+
+    @Passphrase.setter
+    def Passphrase(self, Passphrase):
+        self._Passphrase = Passphrase
+
+    @property
+    def PbKeyLen(self):
+        return self._PbKeyLen
+
+    @PbKeyLen.setter
+    def PbKeyLen(self, PbKeyLen):
+        self._PbKeyLen = PbKeyLen
+
+    @property
+    def SourceAddresses(self):
+        return self._SourceAddresses
+
+    @SourceAddresses.setter
+    def SourceAddresses(self, SourceAddresses):
+        self._SourceAddresses = SourceAddresses
 
 
     def _deserialize(self, params):
-        self.Mode = params.get("Mode")
-        self.StreamId = params.get("StreamId")
-        self.Latency = params.get("Latency")
-        self.RecvLatency = params.get("RecvLatency")
-        self.PeerLatency = params.get("PeerLatency")
-        self.PeerIdleTimeout = params.get("PeerIdleTimeout")
-        self.Passphrase = params.get("Passphrase")
-        self.PbKeyLen = params.get("PbKeyLen")
+        self._Mode = params.get("Mode")
+        self._StreamId = params.get("StreamId")
+        self._Latency = params.get("Latency")
+        self._RecvLatency = params.get("RecvLatency")
+        self._PeerLatency = params.get("PeerLatency")
+        self._PeerIdleTimeout = params.get("PeerIdleTimeout")
+        self._Passphrase = params.get("Passphrase")
+        self._PbKeyLen = params.get("PbKeyLen")
         if params.get("SourceAddresses") is not None:
-            self.SourceAddresses = []
+            self._SourceAddresses = []
             for item in params.get("SourceAddresses"):
                 obj = SRTSourceAddressReq()
                 obj._deserialize(item)
-                self.SourceAddresses.append(obj)
+                self._SourceAddresses.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -166,53 +313,118 @@ class CreateOutputInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OutputName: The output name.
+        :param _OutputName: The output name.
         :type OutputName: str
-        :param Description: Description of the output.
+        :param _Description: Description of the output.
         :type Description: str
-        :param Protocol: The output protocol. Valid values: SRT, RTP, RTMP, RTMP_PULL.
+        :param _Protocol: The output protocol. Valid values: SRT, RTP, RTMP, RTMP_PULL.
         :type Protocol: str
-        :param OutputRegion: The output region.
+        :param _OutputRegion: The output region.
         :type OutputRegion: str
-        :param SRTSettings: The SRT configuration.
+        :param _SRTSettings: The SRT configuration.
         :type SRTSettings: :class:`tencentcloud.mdc.v20200828.models.CreateOutputSrtSettings`
-        :param RTMPSettings: The RTMP configuration.
+        :param _RTMPSettings: The RTMP configuration.
         :type RTMPSettings: :class:`tencentcloud.mdc.v20200828.models.CreateOutputRTMPSettings`
-        :param RTPSettings: The RTP configuration.
+        :param _RTPSettings: The RTP configuration.
         :type RTPSettings: :class:`tencentcloud.mdc.v20200828.models.CreateOutputInfoRTPSettings`
-        :param AllowIpList: The IP allowlist. The address must be in CIDR format, such as `0.0.0.0/0`.
+        :param _AllowIpList: The IP allowlist. The address must be in CIDR format, such as `0.0.0.0/0`.
 This parameter is valid if `Protocol` is set to `RTMP_PULL`. If it is left empty, there is no restriction on clients’ IP addresses.
         :type AllowIpList: list of str
         """
-        self.OutputName = None
-        self.Description = None
-        self.Protocol = None
-        self.OutputRegion = None
-        self.SRTSettings = None
-        self.RTMPSettings = None
-        self.RTPSettings = None
-        self.AllowIpList = None
+        self._OutputName = None
+        self._Description = None
+        self._Protocol = None
+        self._OutputRegion = None
+        self._SRTSettings = None
+        self._RTMPSettings = None
+        self._RTPSettings = None
+        self._AllowIpList = None
+
+    @property
+    def OutputName(self):
+        return self._OutputName
+
+    @OutputName.setter
+    def OutputName(self, OutputName):
+        self._OutputName = OutputName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def OutputRegion(self):
+        return self._OutputRegion
+
+    @OutputRegion.setter
+    def OutputRegion(self, OutputRegion):
+        self._OutputRegion = OutputRegion
+
+    @property
+    def SRTSettings(self):
+        return self._SRTSettings
+
+    @SRTSettings.setter
+    def SRTSettings(self, SRTSettings):
+        self._SRTSettings = SRTSettings
+
+    @property
+    def RTMPSettings(self):
+        return self._RTMPSettings
+
+    @RTMPSettings.setter
+    def RTMPSettings(self, RTMPSettings):
+        self._RTMPSettings = RTMPSettings
+
+    @property
+    def RTPSettings(self):
+        return self._RTPSettings
+
+    @RTPSettings.setter
+    def RTPSettings(self, RTPSettings):
+        self._RTPSettings = RTPSettings
+
+    @property
+    def AllowIpList(self):
+        return self._AllowIpList
+
+    @AllowIpList.setter
+    def AllowIpList(self, AllowIpList):
+        self._AllowIpList = AllowIpList
 
 
     def _deserialize(self, params):
-        self.OutputName = params.get("OutputName")
-        self.Description = params.get("Description")
-        self.Protocol = params.get("Protocol")
-        self.OutputRegion = params.get("OutputRegion")
+        self._OutputName = params.get("OutputName")
+        self._Description = params.get("Description")
+        self._Protocol = params.get("Protocol")
+        self._OutputRegion = params.get("OutputRegion")
         if params.get("SRTSettings") is not None:
-            self.SRTSettings = CreateOutputSrtSettings()
-            self.SRTSettings._deserialize(params.get("SRTSettings"))
+            self._SRTSettings = CreateOutputSrtSettings()
+            self._SRTSettings._deserialize(params.get("SRTSettings"))
         if params.get("RTMPSettings") is not None:
-            self.RTMPSettings = CreateOutputRTMPSettings()
-            self.RTMPSettings._deserialize(params.get("RTMPSettings"))
+            self._RTMPSettings = CreateOutputRTMPSettings()
+            self._RTMPSettings._deserialize(params.get("RTMPSettings"))
         if params.get("RTPSettings") is not None:
-            self.RTPSettings = CreateOutputInfoRTPSettings()
-            self.RTPSettings._deserialize(params.get("RTPSettings"))
-        self.AllowIpList = params.get("AllowIpList")
+            self._RTPSettings = CreateOutputInfoRTPSettings()
+            self._RTPSettings._deserialize(params.get("RTPSettings"))
+        self._AllowIpList = params.get("AllowIpList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -225,31 +437,56 @@ class CreateOutputInfoRTPSettings(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Destinations: The relay destination addresses. One or two addresses are allowed.
+        :param _Destinations: The relay destination addresses. One or two addresses are allowed.
         :type Destinations: list of CreateOutputRTPSettingsDestinations
-        :param FEC: This parameter must be set to `none`.
+        :param _FEC: This parameter must be set to `none`.
         :type FEC: str
-        :param IdleTimeout: The timeout period (ms).
+        :param _IdleTimeout: The timeout period (ms).
         :type IdleTimeout: int
         """
-        self.Destinations = None
-        self.FEC = None
-        self.IdleTimeout = None
+        self._Destinations = None
+        self._FEC = None
+        self._IdleTimeout = None
+
+    @property
+    def Destinations(self):
+        return self._Destinations
+
+    @Destinations.setter
+    def Destinations(self, Destinations):
+        self._Destinations = Destinations
+
+    @property
+    def FEC(self):
+        return self._FEC
+
+    @FEC.setter
+    def FEC(self, FEC):
+        self._FEC = FEC
+
+    @property
+    def IdleTimeout(self):
+        return self._IdleTimeout
+
+    @IdleTimeout.setter
+    def IdleTimeout(self, IdleTimeout):
+        self._IdleTimeout = IdleTimeout
 
 
     def _deserialize(self, params):
         if params.get("Destinations") is not None:
-            self.Destinations = []
+            self._Destinations = []
             for item in params.get("Destinations"):
                 obj = CreateOutputRTPSettingsDestinations()
                 obj._deserialize(item)
-                self.Destinations.append(obj)
-        self.FEC = params.get("FEC")
-        self.IdleTimeout = params.get("IdleTimeout")
+                self._Destinations.append(obj)
+        self._FEC = params.get("FEC")
+        self._IdleTimeout = params.get("IdleTimeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -262,27 +499,44 @@ class CreateOutputRTMPSettings(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Destinations: The relay destination addresses. One or two addresses are allowed.
+        :param _Destinations: The relay destination addresses. One or two addresses are allowed.
         :type Destinations: list of CreateOutputRtmpSettingsDestinations
-        :param ChunkSize: The RTMP chunk size. Value range: [4096, 40960].
+        :param _ChunkSize: The RTMP chunk size. Value range: [4096, 40960].
         :type ChunkSize: int
         """
-        self.Destinations = None
-        self.ChunkSize = None
+        self._Destinations = None
+        self._ChunkSize = None
+
+    @property
+    def Destinations(self):
+        return self._Destinations
+
+    @Destinations.setter
+    def Destinations(self, Destinations):
+        self._Destinations = Destinations
+
+    @property
+    def ChunkSize(self):
+        return self._ChunkSize
+
+    @ChunkSize.setter
+    def ChunkSize(self, ChunkSize):
+        self._ChunkSize = ChunkSize
 
 
     def _deserialize(self, params):
         if params.get("Destinations") is not None:
-            self.Destinations = []
+            self._Destinations = []
             for item in params.get("Destinations"):
                 obj = CreateOutputRtmpSettingsDestinations()
                 obj._deserialize(item)
-                self.Destinations.append(obj)
-        self.ChunkSize = params.get("ChunkSize")
+                self._Destinations.append(obj)
+        self._ChunkSize = params.get("ChunkSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -295,22 +549,39 @@ class CreateOutputRTPSettingsDestinations(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Ip: The relay destination IP.
+        :param _Ip: The relay destination IP.
         :type Ip: str
-        :param Port: The relay destination port.
+        :param _Port: The relay destination port.
         :type Port: int
         """
-        self.Ip = None
-        self.Port = None
+        self._Ip = None
+        self._Port = None
+
+    @property
+    def Ip(self):
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
 
 
     def _deserialize(self, params):
-        self.Ip = params.get("Ip")
-        self.Port = params.get("Port")
+        self._Ip = params.get("Ip")
+        self._Port = params.get("Port")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -323,22 +594,39 @@ class CreateOutputRtmpSettingsDestinations(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Url: The relay URL. Format: `rtmp://domain/live`.
+        :param _Url: The relay URL. Format: `rtmp://domain/live`.
         :type Url: str
-        :param StreamKey: The `StreamKey` for relay. Format: `stream?key=value`.
+        :param _StreamKey: The `StreamKey` for relay. Format: `stream?key=value`.
         :type StreamKey: str
         """
-        self.Url = None
-        self.StreamKey = None
+        self._Url = None
+        self._StreamKey = None
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def StreamKey(self):
+        return self._StreamKey
+
+    @StreamKey.setter
+    def StreamKey(self, StreamKey):
+        self._StreamKey = StreamKey
 
 
     def _deserialize(self, params):
-        self.Url = params.get("Url")
-        self.StreamKey = params.get("StreamKey")
+        self._Url = params.get("Url")
+        self._StreamKey = params.get("StreamKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -351,55 +639,128 @@ class CreateOutputSrtSettings(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Destinations: The relay destination address, which is required if `Mode` is `CALLER`. Only one address is allowed.
+        :param _Destinations: The relay destination address, which is required if `Mode` is `CALLER`. Only one address is allowed.
         :type Destinations: list of CreateOutputSrtSettingsDestinations
-        :param StreamId: The stream ID for relay, which can contain 0 to 512 letters, digits, and special characters (.#!:&,=_-).
+        :param _StreamId: The stream ID for relay, which can contain 0 to 512 letters, digits, and special characters (.#!:&,=_-).
         :type StreamId: str
-        :param Latency: The total latency (ms) of SRT relay. Value range: [0, 3000]. Default: 0.
+        :param _Latency: The total latency (ms) of SRT relay. Value range: [0, 3000]. Default: 0.
         :type Latency: int
-        :param RecvLatency: The receive latency (ms) of SRT relay. Value range: [0, 3000]. Default: 120.
+        :param _RecvLatency: The receive latency (ms) of SRT relay. Value range: [0, 3000]. Default: 120.
         :type RecvLatency: int
-        :param PeerLatency: The peer-to-peer latency (ms) of SRT relay. Value range: [0, 3000]. Default: 0.
+        :param _PeerLatency: The peer-to-peer latency (ms) of SRT relay. Value range: [0, 3000]. Default: 0.
         :type PeerLatency: int
-        :param PeerIdleTimeout: The timeout period (ms) for the SRT relay peer. Value range: [1000, 10000]. Default: 5000.
+        :param _PeerIdleTimeout: The timeout period (ms) for the SRT relay peer. Value range: [1000, 10000]. Default: 5000.
         :type PeerIdleTimeout: int
-        :param Passphrase: The encryption key for SRT relay, which is empty by default, indicating not to encrypt. Only ASCII codes are allowed. Length: [10, 79].
+        :param _Passphrase: The encryption key for SRT relay, which is empty by default, indicating not to encrypt. Only ASCII codes are allowed. Length: [10, 79].
         :type Passphrase: str
-        :param PbKeyLen: The key length for SRT relay. Valid values: 0 (default), 16, 24, 32.
+        :param _PbKeyLen: The key length for SRT relay. Valid values: 0 (default), 16, 24, 32.
         :type PbKeyLen: int
-        :param Mode: The SRT mode. Valid values: LISTENER, CALLER (default).
+        :param _Mode: The SRT mode. Valid values: LISTENER, CALLER (default).
         :type Mode: str
         """
-        self.Destinations = None
-        self.StreamId = None
-        self.Latency = None
-        self.RecvLatency = None
-        self.PeerLatency = None
-        self.PeerIdleTimeout = None
-        self.Passphrase = None
-        self.PbKeyLen = None
-        self.Mode = None
+        self._Destinations = None
+        self._StreamId = None
+        self._Latency = None
+        self._RecvLatency = None
+        self._PeerLatency = None
+        self._PeerIdleTimeout = None
+        self._Passphrase = None
+        self._PbKeyLen = None
+        self._Mode = None
+
+    @property
+    def Destinations(self):
+        return self._Destinations
+
+    @Destinations.setter
+    def Destinations(self, Destinations):
+        self._Destinations = Destinations
+
+    @property
+    def StreamId(self):
+        return self._StreamId
+
+    @StreamId.setter
+    def StreamId(self, StreamId):
+        self._StreamId = StreamId
+
+    @property
+    def Latency(self):
+        return self._Latency
+
+    @Latency.setter
+    def Latency(self, Latency):
+        self._Latency = Latency
+
+    @property
+    def RecvLatency(self):
+        return self._RecvLatency
+
+    @RecvLatency.setter
+    def RecvLatency(self, RecvLatency):
+        self._RecvLatency = RecvLatency
+
+    @property
+    def PeerLatency(self):
+        return self._PeerLatency
+
+    @PeerLatency.setter
+    def PeerLatency(self, PeerLatency):
+        self._PeerLatency = PeerLatency
+
+    @property
+    def PeerIdleTimeout(self):
+        return self._PeerIdleTimeout
+
+    @PeerIdleTimeout.setter
+    def PeerIdleTimeout(self, PeerIdleTimeout):
+        self._PeerIdleTimeout = PeerIdleTimeout
+
+    @property
+    def Passphrase(self):
+        return self._Passphrase
+
+    @Passphrase.setter
+    def Passphrase(self, Passphrase):
+        self._Passphrase = Passphrase
+
+    @property
+    def PbKeyLen(self):
+        return self._PbKeyLen
+
+    @PbKeyLen.setter
+    def PbKeyLen(self, PbKeyLen):
+        self._PbKeyLen = PbKeyLen
+
+    @property
+    def Mode(self):
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
 
 
     def _deserialize(self, params):
         if params.get("Destinations") is not None:
-            self.Destinations = []
+            self._Destinations = []
             for item in params.get("Destinations"):
                 obj = CreateOutputSrtSettingsDestinations()
                 obj._deserialize(item)
-                self.Destinations.append(obj)
-        self.StreamId = params.get("StreamId")
-        self.Latency = params.get("Latency")
-        self.RecvLatency = params.get("RecvLatency")
-        self.PeerLatency = params.get("PeerLatency")
-        self.PeerIdleTimeout = params.get("PeerIdleTimeout")
-        self.Passphrase = params.get("Passphrase")
-        self.PbKeyLen = params.get("PbKeyLen")
-        self.Mode = params.get("Mode")
+                self._Destinations.append(obj)
+        self._StreamId = params.get("StreamId")
+        self._Latency = params.get("Latency")
+        self._RecvLatency = params.get("RecvLatency")
+        self._PeerLatency = params.get("PeerLatency")
+        self._PeerIdleTimeout = params.get("PeerIdleTimeout")
+        self._Passphrase = params.get("Passphrase")
+        self._PbKeyLen = params.get("PbKeyLen")
+        self._Mode = params.get("Mode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -412,22 +773,39 @@ class CreateOutputSrtSettingsDestinations(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Ip: The output IP.
+        :param _Ip: The output IP.
         :type Ip: str
-        :param Port: The output port.
+        :param _Port: The output port.
         :type Port: int
         """
-        self.Ip = None
-        self.Port = None
+        self._Ip = None
+        self._Port = None
+
+    @property
+    def Ip(self):
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
 
 
     def _deserialize(self, params):
-        self.Ip = params.get("Ip")
-        self.Port = params.get("Port")
+        self._Ip = params.get("Ip")
+        self._Port = params.get("Port")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -440,31 +818,56 @@ class CreateStreamLinkFlowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowName: Flow name
+        :param _FlowName: Flow name
         :type FlowName: str
-        :param MaxBandwidth: Maximum bandwidth in bps. Valid values: `10000000`, `20000000`, `50000000`
+        :param _MaxBandwidth: Maximum bandwidth in bps. Valid values: `10000000`, `20000000`, `50000000`
         :type MaxBandwidth: int
-        :param InputGroup: Flow input group
+        :param _InputGroup: Flow input group
         :type InputGroup: list of CreateInput
         """
-        self.FlowName = None
-        self.MaxBandwidth = None
-        self.InputGroup = None
+        self._FlowName = None
+        self._MaxBandwidth = None
+        self._InputGroup = None
+
+    @property
+    def FlowName(self):
+        return self._FlowName
+
+    @FlowName.setter
+    def FlowName(self, FlowName):
+        self._FlowName = FlowName
+
+    @property
+    def MaxBandwidth(self):
+        return self._MaxBandwidth
+
+    @MaxBandwidth.setter
+    def MaxBandwidth(self, MaxBandwidth):
+        self._MaxBandwidth = MaxBandwidth
+
+    @property
+    def InputGroup(self):
+        return self._InputGroup
+
+    @InputGroup.setter
+    def InputGroup(self, InputGroup):
+        self._InputGroup = InputGroup
 
 
     def _deserialize(self, params):
-        self.FlowName = params.get("FlowName")
-        self.MaxBandwidth = params.get("MaxBandwidth")
+        self._FlowName = params.get("FlowName")
+        self._MaxBandwidth = params.get("MaxBandwidth")
         if params.get("InputGroup") is not None:
-            self.InputGroup = []
+            self._InputGroup = []
             for item in params.get("InputGroup"):
                 obj = CreateInput()
                 obj._deserialize(item)
-                self.InputGroup.append(obj)
+                self._InputGroup.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -477,20 +880,36 @@ class CreateStreamLinkFlowResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Info: Information of the created flow
+        :param _Info: Information of the created flow
         :type Info: :class:`tencentcloud.mdc.v20200828.models.DescribeFlow`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Info = None
-        self.RequestId = None
+        self._Info = None
+        self._RequestId = None
+
+    @property
+    def Info(self):
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Info") is not None:
-            self.Info = DescribeFlow()
-            self.Info._deserialize(params.get("Info"))
-        self.RequestId = params.get("RequestId")
+            self._Info = DescribeFlow()
+            self._Info._deserialize(params.get("Info"))
+        self._RequestId = params.get("RequestId")
 
 
 class CreateStreamLinkOutputInfoRequest(AbstractModel):
@@ -500,24 +919,41 @@ class CreateStreamLinkOutputInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowId: The flow ID.
+        :param _FlowId: The flow ID.
         :type FlowId: str
-        :param Output: The output configuration of the flow.
+        :param _Output: The output configuration of the flow.
         :type Output: :class:`tencentcloud.mdc.v20200828.models.CreateOutputInfo`
         """
-        self.FlowId = None
-        self.Output = None
+        self._FlowId = None
+        self._Output = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def Output(self):
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
 
 
     def _deserialize(self, params):
-        self.FlowId = params.get("FlowId")
+        self._FlowId = params.get("FlowId")
         if params.get("Output") is not None:
-            self.Output = CreateOutputInfo()
-            self.Output._deserialize(params.get("Output"))
+            self._Output = CreateOutputInfo()
+            self._Output._deserialize(params.get("Output"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -530,20 +966,36 @@ class CreateStreamLinkOutputInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Info: The information of the created output.
+        :param _Info: The information of the created output.
         :type Info: :class:`tencentcloud.mdc.v20200828.models.DescribeOutput`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Info = None
-        self.RequestId = None
+        self._Info = None
+        self._RequestId = None
+
+    @property
+    def Info(self):
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Info") is not None:
-            self.Info = DescribeOutput()
-            self.Info._deserialize(params.get("Info"))
-        self.RequestId = params.get("RequestId")
+            self._Info = DescribeOutput()
+            self._Info._deserialize(params.get("Info"))
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteStreamLinkFlowRequest(AbstractModel):
@@ -553,18 +1005,27 @@ class DeleteStreamLinkFlowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowId: Flow ID
+        :param _FlowId: Flow ID
         :type FlowId: str
         """
-        self.FlowId = None
+        self._FlowId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
 
 
     def _deserialize(self, params):
-        self.FlowId = params.get("FlowId")
+        self._FlowId = params.get("FlowId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -577,14 +1038,22 @@ class DeleteStreamLinkFlowResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteStreamLinkOutputRequest(AbstractModel):
@@ -594,22 +1063,39 @@ class DeleteStreamLinkOutputRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowId: Flow ID
+        :param _FlowId: Flow ID
         :type FlowId: str
-        :param OutputId: Output ID
+        :param _OutputId: Output ID
         :type OutputId: str
         """
-        self.FlowId = None
-        self.OutputId = None
+        self._FlowId = None
+        self._OutputId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def OutputId(self):
+        return self._OutputId
+
+    @OutputId.setter
+    def OutputId(self, OutputId):
+        self._OutputId = OutputId
 
 
     def _deserialize(self, params):
-        self.FlowId = params.get("FlowId")
-        self.OutputId = params.get("OutputId")
+        self._FlowId = params.get("FlowId")
+        self._OutputId = params.get("OutputId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -622,14 +1108,22 @@ class DeleteStreamLinkOutputResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeFlow(AbstractModel):
@@ -639,49 +1133,98 @@ class DescribeFlow(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowId: Flow ID.
+        :param _FlowId: Flow ID.
         :type FlowId: str
-        :param FlowName: Flow name.
+        :param _FlowName: Flow name.
         :type FlowName: str
-        :param State: Flow status. Valid values: `IDLE`, `RUNNING`
+        :param _State: Flow status. Valid values: `IDLE`, `RUNNING`
         :type State: str
-        :param MaxBandwidth: Maximum bandwidth value.
+        :param _MaxBandwidth: Maximum bandwidth value.
         :type MaxBandwidth: int
-        :param InputGroup: Input group.
+        :param _InputGroup: Input group.
         :type InputGroup: list of DescribeInput
-        :param OutputGroup: Output group.
+        :param _OutputGroup: Output group.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OutputGroup: list of DescribeOutput
         """
-        self.FlowId = None
-        self.FlowName = None
-        self.State = None
-        self.MaxBandwidth = None
-        self.InputGroup = None
-        self.OutputGroup = None
+        self._FlowId = None
+        self._FlowName = None
+        self._State = None
+        self._MaxBandwidth = None
+        self._InputGroup = None
+        self._OutputGroup = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def FlowName(self):
+        return self._FlowName
+
+    @FlowName.setter
+    def FlowName(self, FlowName):
+        self._FlowName = FlowName
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def MaxBandwidth(self):
+        return self._MaxBandwidth
+
+    @MaxBandwidth.setter
+    def MaxBandwidth(self, MaxBandwidth):
+        self._MaxBandwidth = MaxBandwidth
+
+    @property
+    def InputGroup(self):
+        return self._InputGroup
+
+    @InputGroup.setter
+    def InputGroup(self, InputGroup):
+        self._InputGroup = InputGroup
+
+    @property
+    def OutputGroup(self):
+        return self._OutputGroup
+
+    @OutputGroup.setter
+    def OutputGroup(self, OutputGroup):
+        self._OutputGroup = OutputGroup
 
 
     def _deserialize(self, params):
-        self.FlowId = params.get("FlowId")
-        self.FlowName = params.get("FlowName")
-        self.State = params.get("State")
-        self.MaxBandwidth = params.get("MaxBandwidth")
+        self._FlowId = params.get("FlowId")
+        self._FlowName = params.get("FlowName")
+        self._State = params.get("State")
+        self._MaxBandwidth = params.get("MaxBandwidth")
         if params.get("InputGroup") is not None:
-            self.InputGroup = []
+            self._InputGroup = []
             for item in params.get("InputGroup"):
                 obj = DescribeInput()
                 obj._deserialize(item)
-                self.InputGroup.append(obj)
+                self._InputGroup.append(obj)
         if params.get("OutputGroup") is not None:
-            self.OutputGroup = []
+            self._OutputGroup = []
             for item in params.get("OutputGroup"):
                 obj = DescribeOutput()
                 obj._deserialize(item)
-                self.OutputGroup.append(obj)
+                self._OutputGroup.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -694,73 +1237,162 @@ class DescribeInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InputId: Input ID.
+        :param _InputId: Input ID.
         :type InputId: str
-        :param InputName: Input name.
+        :param _InputName: Input name.
         :type InputName: str
-        :param Description: Input description.
+        :param _Description: Input description.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Description: str
-        :param Protocol: Input protocol.
+        :param _Protocol: Input protocol.
         :type Protocol: str
-        :param InputAddressList: Input address list.
+        :param _InputAddressList: Input address list.
         :type InputAddressList: list of InputAddress
-        :param AllowIpList: Input IP allowlist.
+        :param _AllowIpList: Input IP allowlist.
         :type AllowIpList: list of str
-        :param SRTSettings: SRT configuration information of input.
+        :param _SRTSettings: SRT configuration information of input.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SRTSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeInputSRTSettings`
-        :param RTPSettings: RTP configuration information of input.
+        :param _RTPSettings: RTP configuration information of input.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RTPSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeInputRTPSettings`
-        :param InputRegion: Input region.
+        :param _InputRegion: Input region.
         :type InputRegion: str
-        :param RTMPSettings: RTMP configuration information of an input
+        :param _RTMPSettings: RTMP configuration information of an input
         :type RTMPSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeInputRTMPSettings`
-        :param FailOver: Input failover
+        :param _FailOver: Input failover
 Note: this field may return `null`, indicating that no valid value was found.
         :type FailOver: str
         """
-        self.InputId = None
-        self.InputName = None
-        self.Description = None
-        self.Protocol = None
-        self.InputAddressList = None
-        self.AllowIpList = None
-        self.SRTSettings = None
-        self.RTPSettings = None
-        self.InputRegion = None
-        self.RTMPSettings = None
-        self.FailOver = None
+        self._InputId = None
+        self._InputName = None
+        self._Description = None
+        self._Protocol = None
+        self._InputAddressList = None
+        self._AllowIpList = None
+        self._SRTSettings = None
+        self._RTPSettings = None
+        self._InputRegion = None
+        self._RTMPSettings = None
+        self._FailOver = None
+
+    @property
+    def InputId(self):
+        return self._InputId
+
+    @InputId.setter
+    def InputId(self, InputId):
+        self._InputId = InputId
+
+    @property
+    def InputName(self):
+        return self._InputName
+
+    @InputName.setter
+    def InputName(self, InputName):
+        self._InputName = InputName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def InputAddressList(self):
+        return self._InputAddressList
+
+    @InputAddressList.setter
+    def InputAddressList(self, InputAddressList):
+        self._InputAddressList = InputAddressList
+
+    @property
+    def AllowIpList(self):
+        return self._AllowIpList
+
+    @AllowIpList.setter
+    def AllowIpList(self, AllowIpList):
+        self._AllowIpList = AllowIpList
+
+    @property
+    def SRTSettings(self):
+        return self._SRTSettings
+
+    @SRTSettings.setter
+    def SRTSettings(self, SRTSettings):
+        self._SRTSettings = SRTSettings
+
+    @property
+    def RTPSettings(self):
+        return self._RTPSettings
+
+    @RTPSettings.setter
+    def RTPSettings(self, RTPSettings):
+        self._RTPSettings = RTPSettings
+
+    @property
+    def InputRegion(self):
+        return self._InputRegion
+
+    @InputRegion.setter
+    def InputRegion(self, InputRegion):
+        self._InputRegion = InputRegion
+
+    @property
+    def RTMPSettings(self):
+        return self._RTMPSettings
+
+    @RTMPSettings.setter
+    def RTMPSettings(self, RTMPSettings):
+        self._RTMPSettings = RTMPSettings
+
+    @property
+    def FailOver(self):
+        return self._FailOver
+
+    @FailOver.setter
+    def FailOver(self, FailOver):
+        self._FailOver = FailOver
 
 
     def _deserialize(self, params):
-        self.InputId = params.get("InputId")
-        self.InputName = params.get("InputName")
-        self.Description = params.get("Description")
-        self.Protocol = params.get("Protocol")
+        self._InputId = params.get("InputId")
+        self._InputName = params.get("InputName")
+        self._Description = params.get("Description")
+        self._Protocol = params.get("Protocol")
         if params.get("InputAddressList") is not None:
-            self.InputAddressList = []
+            self._InputAddressList = []
             for item in params.get("InputAddressList"):
                 obj = InputAddress()
                 obj._deserialize(item)
-                self.InputAddressList.append(obj)
-        self.AllowIpList = params.get("AllowIpList")
+                self._InputAddressList.append(obj)
+        self._AllowIpList = params.get("AllowIpList")
         if params.get("SRTSettings") is not None:
-            self.SRTSettings = DescribeInputSRTSettings()
-            self.SRTSettings._deserialize(params.get("SRTSettings"))
+            self._SRTSettings = DescribeInputSRTSettings()
+            self._SRTSettings._deserialize(params.get("SRTSettings"))
         if params.get("RTPSettings") is not None:
-            self.RTPSettings = DescribeInputRTPSettings()
-            self.RTPSettings._deserialize(params.get("RTPSettings"))
-        self.InputRegion = params.get("InputRegion")
+            self._RTPSettings = DescribeInputRTPSettings()
+            self._RTPSettings._deserialize(params.get("RTPSettings"))
+        self._InputRegion = params.get("InputRegion")
         if params.get("RTMPSettings") is not None:
-            self.RTMPSettings = DescribeInputRTMPSettings()
-            self.RTMPSettings._deserialize(params.get("RTMPSettings"))
-        self.FailOver = params.get("FailOver")
+            self._RTMPSettings = DescribeInputRTMPSettings()
+            self._RTMPSettings._deserialize(params.get("RTMPSettings"))
+        self._FailOver = params.get("FailOver")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -773,24 +1405,41 @@ class DescribeInputRTMPSettings(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AppName: Path for RTMP stream pushing
+        :param _AppName: Path for RTMP stream pushing
 Note: this field may return `null`, indicating that no valid value was found.
         :type AppName: str
-        :param StreamKey: StreamKey for RTMP stream pushing
+        :param _StreamKey: StreamKey for RTMP stream pushing
 Format of an RTMP stream pushing URL: rtmp://IP address:1935/AppName/StreamKey
         :type StreamKey: str
         """
-        self.AppName = None
-        self.StreamKey = None
+        self._AppName = None
+        self._StreamKey = None
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def StreamKey(self):
+        return self._StreamKey
+
+    @StreamKey.setter
+    def StreamKey(self, StreamKey):
+        self._StreamKey = StreamKey
 
 
     def _deserialize(self, params):
-        self.AppName = params.get("AppName")
-        self.StreamKey = params.get("StreamKey")
+        self._AppName = params.get("AppName")
+        self._StreamKey = params.get("StreamKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -803,22 +1452,39 @@ class DescribeInputRTPSettings(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FEC: Whether it is FEC.
+        :param _FEC: Whether it is FEC.
         :type FEC: str
-        :param IdleTimeout: Idle timeout period.
+        :param _IdleTimeout: Idle timeout period.
         :type IdleTimeout: int
         """
-        self.FEC = None
-        self.IdleTimeout = None
+        self._FEC = None
+        self._IdleTimeout = None
+
+    @property
+    def FEC(self):
+        return self._FEC
+
+    @FEC.setter
+    def FEC(self, FEC):
+        self._FEC = FEC
+
+    @property
+    def IdleTimeout(self):
+        return self._IdleTimeout
+
+    @IdleTimeout.setter
+    def IdleTimeout(self, IdleTimeout):
+        self._IdleTimeout = IdleTimeout
 
 
     def _deserialize(self, params):
-        self.FEC = params.get("FEC")
-        self.IdleTimeout = params.get("IdleTimeout")
+        self._FEC = params.get("FEC")
+        self._IdleTimeout = params.get("IdleTimeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -831,57 +1497,130 @@ class DescribeInputSRTSettings(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Mode: The SRT mode.
+        :param _Mode: The SRT mode.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type Mode: str
-        :param StreamId: Stream ID.
+        :param _StreamId: Stream ID.
         :type StreamId: str
-        :param Latency: Latency.
+        :param _Latency: Latency.
         :type Latency: int
-        :param RecvLatency: Receive latency.
+        :param _RecvLatency: Receive latency.
         :type RecvLatency: int
-        :param PeerLatency: Peer latency.
+        :param _PeerLatency: Peer latency.
         :type PeerLatency: int
-        :param PeerIdleTimeout: Peer idle timeout period.
+        :param _PeerIdleTimeout: Peer idle timeout period.
         :type PeerIdleTimeout: int
-        :param Passphrase: Decryption key.
+        :param _Passphrase: Decryption key.
         :type Passphrase: str
-        :param PbKeyLen: Key length.
+        :param _PbKeyLen: Key length.
         :type PbKeyLen: int
-        :param SourceAddresses: The SRT peer address.
+        :param _SourceAddresses: The SRT peer address.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type SourceAddresses: list of SRTSourceAddressResp
         """
-        self.Mode = None
-        self.StreamId = None
-        self.Latency = None
-        self.RecvLatency = None
-        self.PeerLatency = None
-        self.PeerIdleTimeout = None
-        self.Passphrase = None
-        self.PbKeyLen = None
-        self.SourceAddresses = None
+        self._Mode = None
+        self._StreamId = None
+        self._Latency = None
+        self._RecvLatency = None
+        self._PeerLatency = None
+        self._PeerIdleTimeout = None
+        self._Passphrase = None
+        self._PbKeyLen = None
+        self._SourceAddresses = None
+
+    @property
+    def Mode(self):
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def StreamId(self):
+        return self._StreamId
+
+    @StreamId.setter
+    def StreamId(self, StreamId):
+        self._StreamId = StreamId
+
+    @property
+    def Latency(self):
+        return self._Latency
+
+    @Latency.setter
+    def Latency(self, Latency):
+        self._Latency = Latency
+
+    @property
+    def RecvLatency(self):
+        return self._RecvLatency
+
+    @RecvLatency.setter
+    def RecvLatency(self, RecvLatency):
+        self._RecvLatency = RecvLatency
+
+    @property
+    def PeerLatency(self):
+        return self._PeerLatency
+
+    @PeerLatency.setter
+    def PeerLatency(self, PeerLatency):
+        self._PeerLatency = PeerLatency
+
+    @property
+    def PeerIdleTimeout(self):
+        return self._PeerIdleTimeout
+
+    @PeerIdleTimeout.setter
+    def PeerIdleTimeout(self, PeerIdleTimeout):
+        self._PeerIdleTimeout = PeerIdleTimeout
+
+    @property
+    def Passphrase(self):
+        return self._Passphrase
+
+    @Passphrase.setter
+    def Passphrase(self, Passphrase):
+        self._Passphrase = Passphrase
+
+    @property
+    def PbKeyLen(self):
+        return self._PbKeyLen
+
+    @PbKeyLen.setter
+    def PbKeyLen(self, PbKeyLen):
+        self._PbKeyLen = PbKeyLen
+
+    @property
+    def SourceAddresses(self):
+        return self._SourceAddresses
+
+    @SourceAddresses.setter
+    def SourceAddresses(self, SourceAddresses):
+        self._SourceAddresses = SourceAddresses
 
 
     def _deserialize(self, params):
-        self.Mode = params.get("Mode")
-        self.StreamId = params.get("StreamId")
-        self.Latency = params.get("Latency")
-        self.RecvLatency = params.get("RecvLatency")
-        self.PeerLatency = params.get("PeerLatency")
-        self.PeerIdleTimeout = params.get("PeerIdleTimeout")
-        self.Passphrase = params.get("Passphrase")
-        self.PbKeyLen = params.get("PbKeyLen")
+        self._Mode = params.get("Mode")
+        self._StreamId = params.get("StreamId")
+        self._Latency = params.get("Latency")
+        self._RecvLatency = params.get("RecvLatency")
+        self._PeerLatency = params.get("PeerLatency")
+        self._PeerIdleTimeout = params.get("PeerIdleTimeout")
+        self._Passphrase = params.get("Passphrase")
+        self._PbKeyLen = params.get("PbKeyLen")
         if params.get("SourceAddresses") is not None:
-            self.SourceAddresses = []
+            self._SourceAddresses = []
             for item in params.get("SourceAddresses"):
                 obj = SRTSourceAddressResp()
                 obj._deserialize(item)
-                self.SourceAddresses.append(obj)
+                self._SourceAddresses.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -894,83 +1633,180 @@ class DescribeOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OutputId: Output ID.
+        :param _OutputId: Output ID.
         :type OutputId: str
-        :param OutputName: Output name.
+        :param _OutputName: Output name.
         :type OutputName: str
-        :param OutputType: Output type.
+        :param _OutputType: Output type.
         :type OutputType: str
-        :param Description: Output description.
+        :param _Description: Output description.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Description: str
-        :param Protocol: Output protocol.
+        :param _Protocol: Output protocol.
         :type Protocol: str
-        :param OutputAddressList: Output destination address information list.
+        :param _OutputAddressList: Output destination address information list.
         :type OutputAddressList: list of OutputAddress
-        :param OutputRegion: Output region.
+        :param _OutputRegion: Output region.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OutputRegion: str
-        :param SRTSettings: SRT configuration information of output.
+        :param _SRTSettings: SRT configuration information of output.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SRTSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeOutputSRTSettings`
-        :param RTPSettings: RTP configuration information of output.
+        :param _RTPSettings: RTP configuration information of output.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RTPSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeOutputRTPSettings`
-        :param RTMPSettings: RTMP configuration information of output.
+        :param _RTMPSettings: RTMP configuration information of output.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RTMPSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeOutputRTMPSettings`
-        :param RTMPPullSettings: RTMP pull configuration of the output
+        :param _RTMPPullSettings: RTMP pull configuration of the output
 Note: This field may return `null`, indicating that no valid value was found.
         :type RTMPPullSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeOutputRTMPPullSettings`
-        :param AllowIpList: CIDR allowlist
+        :param _AllowIpList: CIDR allowlist
 This parameter is valid if `Protocol` is set to `RTMP_PULL`. If this parameter is left empty, there is no restriction on clients’ IP addresses.
 Note: This field may return `null`, indicating that no valid value was found.
         :type AllowIpList: list of str
         """
-        self.OutputId = None
-        self.OutputName = None
-        self.OutputType = None
-        self.Description = None
-        self.Protocol = None
-        self.OutputAddressList = None
-        self.OutputRegion = None
-        self.SRTSettings = None
-        self.RTPSettings = None
-        self.RTMPSettings = None
-        self.RTMPPullSettings = None
-        self.AllowIpList = None
+        self._OutputId = None
+        self._OutputName = None
+        self._OutputType = None
+        self._Description = None
+        self._Protocol = None
+        self._OutputAddressList = None
+        self._OutputRegion = None
+        self._SRTSettings = None
+        self._RTPSettings = None
+        self._RTMPSettings = None
+        self._RTMPPullSettings = None
+        self._AllowIpList = None
+
+    @property
+    def OutputId(self):
+        return self._OutputId
+
+    @OutputId.setter
+    def OutputId(self, OutputId):
+        self._OutputId = OutputId
+
+    @property
+    def OutputName(self):
+        return self._OutputName
+
+    @OutputName.setter
+    def OutputName(self, OutputName):
+        self._OutputName = OutputName
+
+    @property
+    def OutputType(self):
+        return self._OutputType
+
+    @OutputType.setter
+    def OutputType(self, OutputType):
+        self._OutputType = OutputType
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def OutputAddressList(self):
+        return self._OutputAddressList
+
+    @OutputAddressList.setter
+    def OutputAddressList(self, OutputAddressList):
+        self._OutputAddressList = OutputAddressList
+
+    @property
+    def OutputRegion(self):
+        return self._OutputRegion
+
+    @OutputRegion.setter
+    def OutputRegion(self, OutputRegion):
+        self._OutputRegion = OutputRegion
+
+    @property
+    def SRTSettings(self):
+        return self._SRTSettings
+
+    @SRTSettings.setter
+    def SRTSettings(self, SRTSettings):
+        self._SRTSettings = SRTSettings
+
+    @property
+    def RTPSettings(self):
+        return self._RTPSettings
+
+    @RTPSettings.setter
+    def RTPSettings(self, RTPSettings):
+        self._RTPSettings = RTPSettings
+
+    @property
+    def RTMPSettings(self):
+        return self._RTMPSettings
+
+    @RTMPSettings.setter
+    def RTMPSettings(self, RTMPSettings):
+        self._RTMPSettings = RTMPSettings
+
+    @property
+    def RTMPPullSettings(self):
+        return self._RTMPPullSettings
+
+    @RTMPPullSettings.setter
+    def RTMPPullSettings(self, RTMPPullSettings):
+        self._RTMPPullSettings = RTMPPullSettings
+
+    @property
+    def AllowIpList(self):
+        return self._AllowIpList
+
+    @AllowIpList.setter
+    def AllowIpList(self, AllowIpList):
+        self._AllowIpList = AllowIpList
 
 
     def _deserialize(self, params):
-        self.OutputId = params.get("OutputId")
-        self.OutputName = params.get("OutputName")
-        self.OutputType = params.get("OutputType")
-        self.Description = params.get("Description")
-        self.Protocol = params.get("Protocol")
+        self._OutputId = params.get("OutputId")
+        self._OutputName = params.get("OutputName")
+        self._OutputType = params.get("OutputType")
+        self._Description = params.get("Description")
+        self._Protocol = params.get("Protocol")
         if params.get("OutputAddressList") is not None:
-            self.OutputAddressList = []
+            self._OutputAddressList = []
             for item in params.get("OutputAddressList"):
                 obj = OutputAddress()
                 obj._deserialize(item)
-                self.OutputAddressList.append(obj)
-        self.OutputRegion = params.get("OutputRegion")
+                self._OutputAddressList.append(obj)
+        self._OutputRegion = params.get("OutputRegion")
         if params.get("SRTSettings") is not None:
-            self.SRTSettings = DescribeOutputSRTSettings()
-            self.SRTSettings._deserialize(params.get("SRTSettings"))
+            self._SRTSettings = DescribeOutputSRTSettings()
+            self._SRTSettings._deserialize(params.get("SRTSettings"))
         if params.get("RTPSettings") is not None:
-            self.RTPSettings = DescribeOutputRTPSettings()
-            self.RTPSettings._deserialize(params.get("RTPSettings"))
+            self._RTPSettings = DescribeOutputRTPSettings()
+            self._RTPSettings._deserialize(params.get("RTPSettings"))
         if params.get("RTMPSettings") is not None:
-            self.RTMPSettings = DescribeOutputRTMPSettings()
-            self.RTMPSettings._deserialize(params.get("RTMPSettings"))
+            self._RTMPSettings = DescribeOutputRTMPSettings()
+            self._RTMPSettings._deserialize(params.get("RTMPSettings"))
         if params.get("RTMPPullSettings") is not None:
-            self.RTMPPullSettings = DescribeOutputRTMPPullSettings()
-            self.RTMPPullSettings._deserialize(params.get("RTMPPullSettings"))
-        self.AllowIpList = params.get("AllowIpList")
+            self._RTMPPullSettings = DescribeOutputRTMPPullSettings()
+            self._RTMPPullSettings._deserialize(params.get("RTMPPullSettings"))
+        self._AllowIpList = params.get("AllowIpList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -983,22 +1819,39 @@ class DescribeOutputRTMPPullServerUrl(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TcUrl: `tcUrl` of the RTMP pull URL
+        :param _TcUrl: `tcUrl` of the RTMP pull URL
         :type TcUrl: str
-        :param StreamKey: Stream key of the RTMP pull URL
+        :param _StreamKey: Stream key of the RTMP pull URL
         :type StreamKey: str
         """
-        self.TcUrl = None
-        self.StreamKey = None
+        self._TcUrl = None
+        self._StreamKey = None
+
+    @property
+    def TcUrl(self):
+        return self._TcUrl
+
+    @TcUrl.setter
+    def TcUrl(self, TcUrl):
+        self._TcUrl = TcUrl
+
+    @property
+    def StreamKey(self):
+        return self._StreamKey
+
+    @StreamKey.setter
+    def StreamKey(self, StreamKey):
+        self._StreamKey = StreamKey
 
 
     def _deserialize(self, params):
-        self.TcUrl = params.get("TcUrl")
-        self.StreamKey = params.get("StreamKey")
+        self._TcUrl = params.get("TcUrl")
+        self._StreamKey = params.get("StreamKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1011,24 +1864,33 @@ class DescribeOutputRTMPPullSettings(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServerUrls: List of pull URLs
+        :param _ServerUrls: List of pull URLs
 Note: This field may return `null`, indicating that no valid value was found.
         :type ServerUrls: list of DescribeOutputRTMPPullServerUrl
         """
-        self.ServerUrls = None
+        self._ServerUrls = None
+
+    @property
+    def ServerUrls(self):
+        return self._ServerUrls
+
+    @ServerUrls.setter
+    def ServerUrls(self, ServerUrls):
+        self._ServerUrls = ServerUrls
 
 
     def _deserialize(self, params):
         if params.get("ServerUrls") is not None:
-            self.ServerUrls = []
+            self._ServerUrls = []
             for item in params.get("ServerUrls"):
                 obj = DescribeOutputRTMPPullServerUrl()
                 obj._deserialize(item)
-                self.ServerUrls.append(obj)
+                self._ServerUrls.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1041,34 +1903,59 @@ class DescribeOutputRTMPSettings(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IdleTimeout: Idle timeout period.
+        :param _IdleTimeout: Idle timeout period.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IdleTimeout: int
-        :param ChunkSize: Chunk size.
+        :param _ChunkSize: Chunk size.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ChunkSize: int
-        :param Destinations: Destination address information list of RTMP push.
+        :param _Destinations: Destination address information list of RTMP push.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Destinations: list of RTMPAddressDestination
         """
-        self.IdleTimeout = None
-        self.ChunkSize = None
-        self.Destinations = None
+        self._IdleTimeout = None
+        self._ChunkSize = None
+        self._Destinations = None
+
+    @property
+    def IdleTimeout(self):
+        return self._IdleTimeout
+
+    @IdleTimeout.setter
+    def IdleTimeout(self, IdleTimeout):
+        self._IdleTimeout = IdleTimeout
+
+    @property
+    def ChunkSize(self):
+        return self._ChunkSize
+
+    @ChunkSize.setter
+    def ChunkSize(self, ChunkSize):
+        self._ChunkSize = ChunkSize
+
+    @property
+    def Destinations(self):
+        return self._Destinations
+
+    @Destinations.setter
+    def Destinations(self, Destinations):
+        self._Destinations = Destinations
 
 
     def _deserialize(self, params):
-        self.IdleTimeout = params.get("IdleTimeout")
-        self.ChunkSize = params.get("ChunkSize")
+        self._IdleTimeout = params.get("IdleTimeout")
+        self._ChunkSize = params.get("ChunkSize")
         if params.get("Destinations") is not None:
-            self.Destinations = []
+            self._Destinations = []
             for item in params.get("Destinations"):
                 obj = RTMPAddressDestination()
                 obj._deserialize(item)
-                self.Destinations.append(obj)
+                self._Destinations.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1081,34 +1968,59 @@ class DescribeOutputRTPSettings(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Destinations: Destination address information list of RTP push.
+        :param _Destinations: Destination address information list of RTP push.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Destinations: list of RTPAddressDestination
-        :param FEC: Whether it is FEC.
+        :param _FEC: Whether it is FEC.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type FEC: str
-        :param IdleTimeout: Idle timeout period.
+        :param _IdleTimeout: Idle timeout period.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IdleTimeout: int
         """
-        self.Destinations = None
-        self.FEC = None
-        self.IdleTimeout = None
+        self._Destinations = None
+        self._FEC = None
+        self._IdleTimeout = None
+
+    @property
+    def Destinations(self):
+        return self._Destinations
+
+    @Destinations.setter
+    def Destinations(self, Destinations):
+        self._Destinations = Destinations
+
+    @property
+    def FEC(self):
+        return self._FEC
+
+    @FEC.setter
+    def FEC(self, FEC):
+        self._FEC = FEC
+
+    @property
+    def IdleTimeout(self):
+        return self._IdleTimeout
+
+    @IdleTimeout.setter
+    def IdleTimeout(self, IdleTimeout):
+        self._IdleTimeout = IdleTimeout
 
 
     def _deserialize(self, params):
         if params.get("Destinations") is not None:
-            self.Destinations = []
+            self._Destinations = []
             for item in params.get("Destinations"):
                 obj = RTPAddressDestination()
                 obj._deserialize(item)
-                self.Destinations.append(obj)
-        self.FEC = params.get("FEC")
-        self.IdleTimeout = params.get("IdleTimeout")
+                self._Destinations.append(obj)
+        self._FEC = params.get("FEC")
+        self._IdleTimeout = params.get("IdleTimeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1121,74 +2033,155 @@ class DescribeOutputSRTSettings(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Destinations: A list of the destination addresses for relay. This parameter is valid if `Mode` is `CALLER`.
+        :param _Destinations: A list of the destination addresses for relay. This parameter is valid if `Mode` is `CALLER`.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type Destinations: list of SRTAddressDestination
-        :param StreamId: Stream ID.
+        :param _StreamId: Stream ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type StreamId: str
-        :param Latency: Latency.
+        :param _Latency: Latency.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Latency: int
-        :param RecvLatency: Receive latency.
+        :param _RecvLatency: Receive latency.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RecvLatency: int
-        :param PeerLatency: Peer latency.
+        :param _PeerLatency: Peer latency.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type PeerLatency: int
-        :param PeerIdleTimeout: Peer idle timeout period.
+        :param _PeerIdleTimeout: Peer idle timeout period.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type PeerIdleTimeout: int
-        :param Passphrase: Encryption key.
+        :param _Passphrase: Encryption key.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Passphrase: str
-        :param PbKeyLen: Encryption key length.
+        :param _PbKeyLen: Encryption key length.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type PbKeyLen: int
-        :param Mode: The SRT mode.
+        :param _Mode: The SRT mode.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type Mode: str
-        :param SourceAddresses: The server’s listen address, which is valid if `Mode` is `LISTENER`.
+        :param _SourceAddresses: The server’s listen address, which is valid if `Mode` is `LISTENER`.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type SourceAddresses: list of OutputSRTSourceAddressResp
         """
-        self.Destinations = None
-        self.StreamId = None
-        self.Latency = None
-        self.RecvLatency = None
-        self.PeerLatency = None
-        self.PeerIdleTimeout = None
-        self.Passphrase = None
-        self.PbKeyLen = None
-        self.Mode = None
-        self.SourceAddresses = None
+        self._Destinations = None
+        self._StreamId = None
+        self._Latency = None
+        self._RecvLatency = None
+        self._PeerLatency = None
+        self._PeerIdleTimeout = None
+        self._Passphrase = None
+        self._PbKeyLen = None
+        self._Mode = None
+        self._SourceAddresses = None
+
+    @property
+    def Destinations(self):
+        return self._Destinations
+
+    @Destinations.setter
+    def Destinations(self, Destinations):
+        self._Destinations = Destinations
+
+    @property
+    def StreamId(self):
+        return self._StreamId
+
+    @StreamId.setter
+    def StreamId(self, StreamId):
+        self._StreamId = StreamId
+
+    @property
+    def Latency(self):
+        return self._Latency
+
+    @Latency.setter
+    def Latency(self, Latency):
+        self._Latency = Latency
+
+    @property
+    def RecvLatency(self):
+        return self._RecvLatency
+
+    @RecvLatency.setter
+    def RecvLatency(self, RecvLatency):
+        self._RecvLatency = RecvLatency
+
+    @property
+    def PeerLatency(self):
+        return self._PeerLatency
+
+    @PeerLatency.setter
+    def PeerLatency(self, PeerLatency):
+        self._PeerLatency = PeerLatency
+
+    @property
+    def PeerIdleTimeout(self):
+        return self._PeerIdleTimeout
+
+    @PeerIdleTimeout.setter
+    def PeerIdleTimeout(self, PeerIdleTimeout):
+        self._PeerIdleTimeout = PeerIdleTimeout
+
+    @property
+    def Passphrase(self):
+        return self._Passphrase
+
+    @Passphrase.setter
+    def Passphrase(self, Passphrase):
+        self._Passphrase = Passphrase
+
+    @property
+    def PbKeyLen(self):
+        return self._PbKeyLen
+
+    @PbKeyLen.setter
+    def PbKeyLen(self, PbKeyLen):
+        self._PbKeyLen = PbKeyLen
+
+    @property
+    def Mode(self):
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def SourceAddresses(self):
+        return self._SourceAddresses
+
+    @SourceAddresses.setter
+    def SourceAddresses(self, SourceAddresses):
+        self._SourceAddresses = SourceAddresses
 
 
     def _deserialize(self, params):
         if params.get("Destinations") is not None:
-            self.Destinations = []
+            self._Destinations = []
             for item in params.get("Destinations"):
                 obj = SRTAddressDestination()
                 obj._deserialize(item)
-                self.Destinations.append(obj)
-        self.StreamId = params.get("StreamId")
-        self.Latency = params.get("Latency")
-        self.RecvLatency = params.get("RecvLatency")
-        self.PeerLatency = params.get("PeerLatency")
-        self.PeerIdleTimeout = params.get("PeerIdleTimeout")
-        self.Passphrase = params.get("Passphrase")
-        self.PbKeyLen = params.get("PbKeyLen")
-        self.Mode = params.get("Mode")
+                self._Destinations.append(obj)
+        self._StreamId = params.get("StreamId")
+        self._Latency = params.get("Latency")
+        self._RecvLatency = params.get("RecvLatency")
+        self._PeerLatency = params.get("PeerLatency")
+        self._PeerIdleTimeout = params.get("PeerIdleTimeout")
+        self._Passphrase = params.get("Passphrase")
+        self._PbKeyLen = params.get("PbKeyLen")
+        self._Mode = params.get("Mode")
         if params.get("SourceAddresses") is not None:
-            self.SourceAddresses = []
+            self._SourceAddresses = []
             for item in params.get("SourceAddresses"):
                 obj = OutputSRTSourceAddressResp()
                 obj._deserialize(item)
-                self.SourceAddresses.append(obj)
+                self._SourceAddresses.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1201,48 +2194,113 @@ class DescribeStreamLinkFlowLogsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowId: The flow ID.
+        :param _FlowId: The flow ID.
         :type FlowId: str
-        :param StartTime: The start time for query, which is 1 hour ago by default. You can query statistics in the last 7 days.
+        :param _StartTime: The start time for query, which is 1 hour ago by default. You can query statistics in the last 7 days.
 It must be in UTC format, such as `2020-01-01T12:00:00Z`.
         :type StartTime: str
-        :param EndTime: The end time for query, which is 1 hour after the start time by default. The longest time range allowed for query is 24 hours.
+        :param _EndTime: The end time for query, which is 1 hour after the start time by default. The longest time range allowed for query is 24 hours.
 It must be in UTC format, such as `2020-01-01T12:00:00Z`.
         :type EndTime: str
-        :param Type: Whether to query the inputs or outputs. Valid values: input, output.
+        :param _Type: Whether to query the inputs or outputs. Valid values: input, output.
         :type Type: list of str
-        :param Pipeline: Whether to query the primary or backup pipeline. Valid values: 0, 1.
+        :param _Pipeline: Whether to query the primary or backup pipeline. Valid values: 0, 1.
         :type Pipeline: list of str
-        :param PageSize: The page size. Value range: [1, 1000]. Default: 100.
+        :param _PageSize: The page size. Value range: [1, 1000]. Default: 100.
         :type PageSize: int
-        :param SortType: Whether to sort the records by timestamp in descending or ascending order. Valid values: desc (default), asc.
+        :param _SortType: Whether to sort the records by timestamp in descending or ascending order. Valid values: desc (default), asc.
         :type SortType: str
-        :param PageNum: The page number. Value range: [1, 1000]. Default: 1.
+        :param _PageNum: The page number. Value range: [1, 1000]. Default: 1.
         :type PageNum: int
         """
-        self.FlowId = None
-        self.StartTime = None
-        self.EndTime = None
-        self.Type = None
-        self.Pipeline = None
-        self.PageSize = None
-        self.SortType = None
-        self.PageNum = None
+        self._FlowId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Type = None
+        self._Pipeline = None
+        self._PageSize = None
+        self._SortType = None
+        self._PageNum = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Pipeline(self):
+        return self._Pipeline
+
+    @Pipeline.setter
+    def Pipeline(self, Pipeline):
+        self._Pipeline = Pipeline
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def SortType(self):
+        return self._SortType
+
+    @SortType.setter
+    def SortType(self, SortType):
+        self._SortType = SortType
+
+    @property
+    def PageNum(self):
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
 
 
     def _deserialize(self, params):
-        self.FlowId = params.get("FlowId")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.Type = params.get("Type")
-        self.Pipeline = params.get("Pipeline")
-        self.PageSize = params.get("PageSize")
-        self.SortType = params.get("SortType")
-        self.PageNum = params.get("PageNum")
+        self._FlowId = params.get("FlowId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Type = params.get("Type")
+        self._Pipeline = params.get("Pipeline")
+        self._PageSize = params.get("PageSize")
+        self._SortType = params.get("SortType")
+        self._PageNum = params.get("PageNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1255,39 +2313,87 @@ class DescribeStreamLinkFlowLogsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Infos: A list of the logs.
+        :param _Infos: A list of the logs.
         :type Infos: list of FlowLogInfo
-        :param PageNum: The current page number.
+        :param _PageNum: The current page number.
         :type PageNum: int
-        :param PageSize: The number of records per page.
+        :param _PageSize: The number of records per page.
         :type PageSize: int
-        :param TotalNum: The total number of records.
+        :param _TotalNum: The total number of records.
         :type TotalNum: int
-        :param TotalPage: The total number of pages.
+        :param _TotalPage: The total number of pages.
         :type TotalPage: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Infos = None
-        self.PageNum = None
-        self.PageSize = None
-        self.TotalNum = None
-        self.TotalPage = None
-        self.RequestId = None
+        self._Infos = None
+        self._PageNum = None
+        self._PageSize = None
+        self._TotalNum = None
+        self._TotalPage = None
+        self._RequestId = None
+
+    @property
+    def Infos(self):
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+    @property
+    def PageNum(self):
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalNum(self):
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def TotalPage(self):
+        return self._TotalPage
+
+    @TotalPage.setter
+    def TotalPage(self, TotalPage):
+        self._TotalPage = TotalPage
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Infos") is not None:
-            self.Infos = []
+            self._Infos = []
             for item in params.get("Infos"):
                 obj = FlowLogInfo()
                 obj._deserialize(item)
-                self.Infos.append(obj)
-        self.PageNum = params.get("PageNum")
-        self.PageSize = params.get("PageSize")
-        self.TotalNum = params.get("TotalNum")
-        self.TotalPage = params.get("TotalPage")
-        self.RequestId = params.get("RequestId")
+                self._Infos.append(obj)
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        self._TotalNum = params.get("TotalNum")
+        self._TotalPage = params.get("TotalPage")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeStreamLinkFlowMediaStatisticsRequest(AbstractModel):
@@ -1297,44 +2403,101 @@ class DescribeStreamLinkFlowMediaStatisticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowId: The flow ID.
+        :param _FlowId: The flow ID.
         :type FlowId: str
-        :param Type: Whether to query the inputs or outputs. Valid values: input, output.
+        :param _Type: Whether to query the inputs or outputs. Valid values: input, output.
         :type Type: str
-        :param InputOutputId: The input or output ID.
+        :param _InputOutputId: The input or output ID.
         :type InputOutputId: str
-        :param Pipeline: Whether to query the primary or backup pipeline. Valid values: 0, 1.
+        :param _Pipeline: Whether to query the primary or backup pipeline. Valid values: 0, 1.
         :type Pipeline: str
-        :param Period: The query interval. Valid values: 5s, 1min, 5min, 15min.
+        :param _Period: The query interval. Valid values: 5s, 1min, 5min, 15min.
         :type Period: str
-        :param StartTime: The start time for query, which is 1 hour ago by default. You can query statistics in the last 7 days.
+        :param _StartTime: The start time for query, which is 1 hour ago by default. You can query statistics in the last 7 days.
 It must be in UTC format, such as `2020-01-01T12:00:00Z`.
         :type StartTime: str
-        :param EndTime: The end time for query, which is 1 hour after the start time by default. The longest time range allowed for query is 24 hours.
+        :param _EndTime: The end time for query, which is 1 hour after the start time by default. The longest time range allowed for query is 24 hours.
 It must be in UTC format, such as `2020-01-01T12:00:00Z`.
         :type EndTime: str
         """
-        self.FlowId = None
-        self.Type = None
-        self.InputOutputId = None
-        self.Pipeline = None
-        self.Period = None
-        self.StartTime = None
-        self.EndTime = None
+        self._FlowId = None
+        self._Type = None
+        self._InputOutputId = None
+        self._Pipeline = None
+        self._Period = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def InputOutputId(self):
+        return self._InputOutputId
+
+    @InputOutputId.setter
+    def InputOutputId(self, InputOutputId):
+        self._InputOutputId = InputOutputId
+
+    @property
+    def Pipeline(self):
+        return self._Pipeline
+
+    @Pipeline.setter
+    def Pipeline(self, Pipeline):
+        self._Pipeline = Pipeline
+
+    @property
+    def Period(self):
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
 
 
     def _deserialize(self, params):
-        self.FlowId = params.get("FlowId")
-        self.Type = params.get("Type")
-        self.InputOutputId = params.get("InputOutputId")
-        self.Pipeline = params.get("Pipeline")
-        self.Period = params.get("Period")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
+        self._FlowId = params.get("FlowId")
+        self._Type = params.get("Type")
+        self._InputOutputId = params.get("InputOutputId")
+        self._Pipeline = params.get("Pipeline")
+        self._Period = params.get("Period")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1347,23 +2510,39 @@ class DescribeStreamLinkFlowMediaStatisticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Infos: A list of the media data.
+        :param _Infos: A list of the media data.
         :type Infos: list of FlowMediaInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Infos = None
-        self.RequestId = None
+        self._Infos = None
+        self._RequestId = None
+
+    @property
+    def Infos(self):
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Infos") is not None:
-            self.Infos = []
+            self._Infos = []
             for item in params.get("Infos"):
                 obj = FlowMediaInfo()
                 obj._deserialize(item)
-                self.Infos.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Infos.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeStreamLinkFlowRealtimeStatusRequest(AbstractModel):
@@ -1373,26 +2552,51 @@ class DescribeStreamLinkFlowRealtimeStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowId: The flow ID.
+        :param _FlowId: The flow ID.
         :type FlowId: str
-        :param InputIds: The IDs of the inputs to query. If this parameter and `OutputIds` are both empty, all inputs and outputs are queried.
+        :param _InputIds: The IDs of the inputs to query. If this parameter and `OutputIds` are both empty, all inputs and outputs are queried.
         :type InputIds: list of str
-        :param OutputIds: The IDs of the outputs to query. If this parameter and `OutputIds` are both empty, all inputs and outputs are queried.
+        :param _OutputIds: The IDs of the outputs to query. If this parameter and `OutputIds` are both empty, all inputs and outputs are queried.
         :type OutputIds: list of str
         """
-        self.FlowId = None
-        self.InputIds = None
-        self.OutputIds = None
+        self._FlowId = None
+        self._InputIds = None
+        self._OutputIds = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def InputIds(self):
+        return self._InputIds
+
+    @InputIds.setter
+    def InputIds(self, InputIds):
+        self._InputIds = InputIds
+
+    @property
+    def OutputIds(self):
+        return self._OutputIds
+
+    @OutputIds.setter
+    def OutputIds(self, OutputIds):
+        self._OutputIds = OutputIds
 
 
     def _deserialize(self, params):
-        self.FlowId = params.get("FlowId")
-        self.InputIds = params.get("InputIds")
-        self.OutputIds = params.get("OutputIds")
+        self._FlowId = params.get("FlowId")
+        self._InputIds = params.get("InputIds")
+        self._OutputIds = params.get("OutputIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1405,27 +2609,51 @@ class DescribeStreamLinkFlowRealtimeStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Timestamp: The timestamp (seconds) of the query.
+        :param _Timestamp: The timestamp (seconds) of the query.
         :type Timestamp: int
-        :param Datas: A list of the real-time data.
+        :param _Datas: A list of the real-time data.
         :type Datas: list of FlowRealtimeStatusItem
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Timestamp = None
-        self.Datas = None
-        self.RequestId = None
+        self._Timestamp = None
+        self._Datas = None
+        self._RequestId = None
+
+    @property
+    def Timestamp(self):
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def Datas(self):
+        return self._Datas
+
+    @Datas.setter
+    def Datas(self, Datas):
+        self._Datas = Datas
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Timestamp = params.get("Timestamp")
+        self._Timestamp = params.get("Timestamp")
         if params.get("Datas") is not None:
-            self.Datas = []
+            self._Datas = []
             for item in params.get("Datas"):
                 obj = FlowRealtimeStatusItem()
                 obj._deserialize(item)
-                self.Datas.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Datas.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeStreamLinkFlowRequest(AbstractModel):
@@ -1435,18 +2663,27 @@ class DescribeStreamLinkFlowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowId: Flow ID
+        :param _FlowId: Flow ID
         :type FlowId: str
         """
-        self.FlowId = None
+        self._FlowId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
 
 
     def _deserialize(self, params):
-        self.FlowId = params.get("FlowId")
+        self._FlowId = params.get("FlowId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1459,20 +2696,36 @@ class DescribeStreamLinkFlowResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Info: Configuration information of a flow
+        :param _Info: Configuration information of a flow
         :type Info: :class:`tencentcloud.mdc.v20200828.models.DescribeFlow`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Info = None
-        self.RequestId = None
+        self._Info = None
+        self._RequestId = None
+
+    @property
+    def Info(self):
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Info") is not None:
-            self.Info = DescribeFlow()
-            self.Info._deserialize(params.get("Info"))
-        self.RequestId = params.get("RequestId")
+            self._Info = DescribeFlow()
+            self._Info._deserialize(params.get("Info"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeStreamLinkFlowSRTStatisticsRequest(AbstractModel):
@@ -1482,44 +2735,101 @@ class DescribeStreamLinkFlowSRTStatisticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowId: The flow ID.
+        :param _FlowId: The flow ID.
         :type FlowId: str
-        :param Type: Whether to query the inputs or outputs. Valid values: input, output.
+        :param _Type: Whether to query the inputs or outputs. Valid values: input, output.
         :type Type: str
-        :param InputOutputId: The input or output ID.
+        :param _InputOutputId: The input or output ID.
         :type InputOutputId: str
-        :param Pipeline: Whether to query the primary or backup pipeline. Valid values: 0, 1.
+        :param _Pipeline: Whether to query the primary or backup pipeline. Valid values: 0, 1.
         :type Pipeline: str
-        :param StartTime: The start time for query, which is 1 hour ago by default. You can query statistics in the last 7 days.
+        :param _StartTime: The start time for query, which is 1 hour ago by default. You can query statistics in the last 7 days.
 It must be in UTC format, such as `2020-01-01T12:00:00Z`.
         :type StartTime: str
-        :param EndTime: The end time for query, which is 1 hour after the start time by default. The longest time range allowed for query is 24 hours.
+        :param _EndTime: The end time for query, which is 1 hour after the start time by default. The longest time range allowed for query is 24 hours.
 It must be in UTC format, such as `2020-01-01T12:00:00Z`.
         :type EndTime: str
-        :param Period: The query interval. Valid values: 5s, 1min, 5min, 15min.
+        :param _Period: The query interval. Valid values: 5s, 1min, 5min, 15min.
         :type Period: str
         """
-        self.FlowId = None
-        self.Type = None
-        self.InputOutputId = None
-        self.Pipeline = None
-        self.StartTime = None
-        self.EndTime = None
-        self.Period = None
+        self._FlowId = None
+        self._Type = None
+        self._InputOutputId = None
+        self._Pipeline = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Period = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def InputOutputId(self):
+        return self._InputOutputId
+
+    @InputOutputId.setter
+    def InputOutputId(self, InputOutputId):
+        self._InputOutputId = InputOutputId
+
+    @property
+    def Pipeline(self):
+        return self._Pipeline
+
+    @Pipeline.setter
+    def Pipeline(self, Pipeline):
+        self._Pipeline = Pipeline
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Period(self):
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
 
 
     def _deserialize(self, params):
-        self.FlowId = params.get("FlowId")
-        self.Type = params.get("Type")
-        self.InputOutputId = params.get("InputOutputId")
-        self.Pipeline = params.get("Pipeline")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.Period = params.get("Period")
+        self._FlowId = params.get("FlowId")
+        self._Type = params.get("Type")
+        self._InputOutputId = params.get("InputOutputId")
+        self._Pipeline = params.get("Pipeline")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Period = params.get("Period")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1532,23 +2842,39 @@ class DescribeStreamLinkFlowSRTStatisticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Infos: A list of the SRT streaming performance data.
+        :param _Infos: A list of the SRT streaming performance data.
         :type Infos: list of FlowSRTInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Infos = None
-        self.RequestId = None
+        self._Infos = None
+        self._RequestId = None
+
+    @property
+    def Infos(self):
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Infos") is not None:
-            self.Infos = []
+            self._Infos = []
             for item in params.get("Infos"):
                 obj = FlowSRTInfo()
                 obj._deserialize(item)
-                self.Infos.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Infos.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeStreamLinkFlowStatisticsRequest(AbstractModel):
@@ -1558,44 +2884,101 @@ class DescribeStreamLinkFlowStatisticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowId: The flow ID.
+        :param _FlowId: The flow ID.
         :type FlowId: str
-        :param Type: Whether to query the inputs or outputs. Valid values: input, output.
+        :param _Type: Whether to query the inputs or outputs. Valid values: input, output.
         :type Type: str
-        :param InputOutputId: The input or output ID.
+        :param _InputOutputId: The input or output ID.
         :type InputOutputId: str
-        :param Pipeline: Whether to query the primary or backup pipeline. Valid values: 0, 1.
+        :param _Pipeline: Whether to query the primary or backup pipeline. Valid values: 0, 1.
         :type Pipeline: str
-        :param Period: The query interval. Valid values: 5s, 1min, 5min, 15min.
+        :param _Period: The query interval. Valid values: 5s, 1min, 5min, 15min.
         :type Period: str
-        :param StartTime: The start time for query, which is 1 hour ago by default. You can query statistics in the last 7 days.
+        :param _StartTime: The start time for query, which is 1 hour ago by default. You can query statistics in the last 7 days.
 It must be in UTC format, such as `2020-01-01T12:00:00Z`.
         :type StartTime: str
-        :param EndTime: The end time for query, which is 1 hour after the start time by default. The longest time range allowed for query is 24 hours.
+        :param _EndTime: The end time for query, which is 1 hour after the start time by default. The longest time range allowed for query is 24 hours.
 It must be in UTC format, such as `2020-01-01T12:00:00Z`.
         :type EndTime: str
         """
-        self.FlowId = None
-        self.Type = None
-        self.InputOutputId = None
-        self.Pipeline = None
-        self.Period = None
-        self.StartTime = None
-        self.EndTime = None
+        self._FlowId = None
+        self._Type = None
+        self._InputOutputId = None
+        self._Pipeline = None
+        self._Period = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def InputOutputId(self):
+        return self._InputOutputId
+
+    @InputOutputId.setter
+    def InputOutputId(self, InputOutputId):
+        self._InputOutputId = InputOutputId
+
+    @property
+    def Pipeline(self):
+        return self._Pipeline
+
+    @Pipeline.setter
+    def Pipeline(self, Pipeline):
+        self._Pipeline = Pipeline
+
+    @property
+    def Period(self):
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
 
 
     def _deserialize(self, params):
-        self.FlowId = params.get("FlowId")
-        self.Type = params.get("Type")
-        self.InputOutputId = params.get("InputOutputId")
-        self.Pipeline = params.get("Pipeline")
-        self.Period = params.get("Period")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
+        self._FlowId = params.get("FlowId")
+        self._Type = params.get("Type")
+        self._InputOutputId = params.get("InputOutputId")
+        self._Pipeline = params.get("Pipeline")
+        self._Period = params.get("Period")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1608,23 +2991,39 @@ class DescribeStreamLinkFlowStatisticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Infos: A list of the media data.
+        :param _Infos: A list of the media data.
         :type Infos: list of FlowStatisticsArray
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Infos = None
-        self.RequestId = None
+        self._Infos = None
+        self._RequestId = None
+
+    @property
+    def Infos(self):
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Infos") is not None:
-            self.Infos = []
+            self._Infos = []
             for item in params.get("Infos"):
                 obj = FlowStatisticsArray()
                 obj._deserialize(item)
-                self.Infos.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Infos.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeStreamLinkFlowsRequest(AbstractModel):
@@ -1634,22 +3033,39 @@ class DescribeStreamLinkFlowsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PageNum: Number of the current page. Default value: `1`
+        :param _PageNum: Number of the current page. Default value: `1`
         :type PageNum: int
-        :param PageSize: Number of entries per page. Default value: `10`
+        :param _PageSize: Number of entries per page. Default value: `10`
         :type PageSize: int
         """
-        self.PageNum = None
-        self.PageSize = None
+        self._PageNum = None
+        self._PageSize = None
+
+    @property
+    def PageNum(self):
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
 
 
     def _deserialize(self, params):
-        self.PageNum = params.get("PageNum")
-        self.PageSize = params.get("PageSize")
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1662,39 +3078,87 @@ class DescribeStreamLinkFlowsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Infos: List of the configuration information of the flows
+        :param _Infos: List of the configuration information of the flows
         :type Infos: list of DescribeFlow
-        :param PageNum: Number of the current page
+        :param _PageNum: Number of the current page
         :type PageNum: int
-        :param PageSize: Number of entries per page
+        :param _PageSize: Number of entries per page
         :type PageSize: int
-        :param TotalNum: Total number of entries
+        :param _TotalNum: Total number of entries
         :type TotalNum: int
-        :param TotalPage: Total number of pages
+        :param _TotalPage: Total number of pages
         :type TotalPage: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Infos = None
-        self.PageNum = None
-        self.PageSize = None
-        self.TotalNum = None
-        self.TotalPage = None
-        self.RequestId = None
+        self._Infos = None
+        self._PageNum = None
+        self._PageSize = None
+        self._TotalNum = None
+        self._TotalPage = None
+        self._RequestId = None
+
+    @property
+    def Infos(self):
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+    @property
+    def PageNum(self):
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalNum(self):
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def TotalPage(self):
+        return self._TotalPage
+
+    @TotalPage.setter
+    def TotalPage(self, TotalPage):
+        self._TotalPage = TotalPage
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Infos") is not None:
-            self.Infos = []
+            self._Infos = []
             for item in params.get("Infos"):
                 obj = DescribeFlow()
                 obj._deserialize(item)
-                self.Infos.append(obj)
-        self.PageNum = params.get("PageNum")
-        self.PageSize = params.get("PageSize")
-        self.TotalNum = params.get("TotalNum")
-        self.TotalPage = params.get("TotalPage")
-        self.RequestId = params.get("RequestId")
+                self._Infos.append(obj)
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        self._TotalNum = params.get("TotalNum")
+        self._TotalPage = params.get("TotalPage")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeStreamLinkRegionsRequest(AbstractModel):
@@ -1710,20 +3174,36 @@ class DescribeStreamLinkRegionsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Info: StreamLink region information
+        :param _Info: StreamLink region information
         :type Info: :class:`tencentcloud.mdc.v20200828.models.StreamLinkRegionInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Info = None
-        self.RequestId = None
+        self._Info = None
+        self._RequestId = None
+
+    @property
+    def Info(self):
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Info") is not None:
-            self.Info = StreamLinkRegionInfo()
-            self.Info._deserialize(params.get("Info"))
-        self.RequestId = params.get("RequestId")
+            self._Info = StreamLinkRegionInfo()
+            self._Info._deserialize(params.get("Info"))
+        self._RequestId = params.get("RequestId")
 
 
 class FlowAudio(AbstractModel):
@@ -1733,26 +3213,51 @@ class FlowAudio(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Fps: The frame rate.
+        :param _Fps: The frame rate.
         :type Fps: int
-        :param Rate: The bitrate (bps).
+        :param _Rate: The bitrate (bps).
         :type Rate: int
-        :param Pid: The audio PID.
+        :param _Pid: The audio PID.
         :type Pid: int
         """
-        self.Fps = None
-        self.Rate = None
-        self.Pid = None
+        self._Fps = None
+        self._Rate = None
+        self._Pid = None
+
+    @property
+    def Fps(self):
+        return self._Fps
+
+    @Fps.setter
+    def Fps(self, Fps):
+        self._Fps = Fps
+
+    @property
+    def Rate(self):
+        return self._Rate
+
+    @Rate.setter
+    def Rate(self, Rate):
+        self._Rate = Rate
+
+    @property
+    def Pid(self):
+        return self._Pid
+
+    @Pid.setter
+    def Pid(self, Pid):
+        self._Pid = Pid
 
 
     def _deserialize(self, params):
-        self.Fps = params.get("Fps")
-        self.Rate = params.get("Rate")
-        self.Pid = params.get("Pid")
+        self._Fps = params.get("Fps")
+        self._Rate = params.get("Rate")
+        self._Pid = params.get("Pid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1765,54 +3270,135 @@ class FlowLogInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Timestamp: The timestamp (seconds).
+        :param _Timestamp: The timestamp (seconds).
         :type Timestamp: int
-        :param Type: Whether it is an input or output.
+        :param _Type: Whether it is an input or output.
         :type Type: str
-        :param InputOutputId: The input or output ID.
+        :param _InputOutputId: The input or output ID.
         :type InputOutputId: str
-        :param Protocol: The protocol.
+        :param _Protocol: The protocol.
         :type Protocol: str
-        :param EventCode: The event code.
+        :param _EventCode: The event code.
         :type EventCode: str
-        :param EventMessage: The event information.
+        :param _EventMessage: The event information.
         :type EventMessage: str
-        :param RemoteIp: The peer IP.
+        :param _RemoteIp: The peer IP.
         :type RemoteIp: str
-        :param RemotePort: The peer port.
+        :param _RemotePort: The peer port.
         :type RemotePort: str
-        :param Pipeline: Whether it is a primary or backup pipeline. Valid values: 0 (primary), 1 (backup).
+        :param _Pipeline: Whether it is a primary or backup pipeline. Valid values: 0 (primary), 1 (backup).
         :type Pipeline: str
-        :param InputOutputName: The input or output name.
+        :param _InputOutputName: The input or output name.
         :type InputOutputName: str
         """
-        self.Timestamp = None
-        self.Type = None
-        self.InputOutputId = None
-        self.Protocol = None
-        self.EventCode = None
-        self.EventMessage = None
-        self.RemoteIp = None
-        self.RemotePort = None
-        self.Pipeline = None
-        self.InputOutputName = None
+        self._Timestamp = None
+        self._Type = None
+        self._InputOutputId = None
+        self._Protocol = None
+        self._EventCode = None
+        self._EventMessage = None
+        self._RemoteIp = None
+        self._RemotePort = None
+        self._Pipeline = None
+        self._InputOutputName = None
+
+    @property
+    def Timestamp(self):
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def InputOutputId(self):
+        return self._InputOutputId
+
+    @InputOutputId.setter
+    def InputOutputId(self, InputOutputId):
+        self._InputOutputId = InputOutputId
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def EventCode(self):
+        return self._EventCode
+
+    @EventCode.setter
+    def EventCode(self, EventCode):
+        self._EventCode = EventCode
+
+    @property
+    def EventMessage(self):
+        return self._EventMessage
+
+    @EventMessage.setter
+    def EventMessage(self, EventMessage):
+        self._EventMessage = EventMessage
+
+    @property
+    def RemoteIp(self):
+        return self._RemoteIp
+
+    @RemoteIp.setter
+    def RemoteIp(self, RemoteIp):
+        self._RemoteIp = RemoteIp
+
+    @property
+    def RemotePort(self):
+        return self._RemotePort
+
+    @RemotePort.setter
+    def RemotePort(self, RemotePort):
+        self._RemotePort = RemotePort
+
+    @property
+    def Pipeline(self):
+        return self._Pipeline
+
+    @Pipeline.setter
+    def Pipeline(self, Pipeline):
+        self._Pipeline = Pipeline
+
+    @property
+    def InputOutputName(self):
+        return self._InputOutputName
+
+    @InputOutputName.setter
+    def InputOutputName(self, InputOutputName):
+        self._InputOutputName = InputOutputName
 
 
     def _deserialize(self, params):
-        self.Timestamp = params.get("Timestamp")
-        self.Type = params.get("Type")
-        self.InputOutputId = params.get("InputOutputId")
-        self.Protocol = params.get("Protocol")
-        self.EventCode = params.get("EventCode")
-        self.EventMessage = params.get("EventMessage")
-        self.RemoteIp = params.get("RemoteIp")
-        self.RemotePort = params.get("RemotePort")
-        self.Pipeline = params.get("Pipeline")
-        self.InputOutputName = params.get("InputOutputName")
+        self._Timestamp = params.get("Timestamp")
+        self._Type = params.get("Type")
+        self._InputOutputId = params.get("InputOutputId")
+        self._Protocol = params.get("Protocol")
+        self._EventCode = params.get("EventCode")
+        self._EventMessage = params.get("EventMessage")
+        self._RemoteIp = params.get("RemoteIp")
+        self._RemotePort = params.get("RemotePort")
+        self._Pipeline = params.get("Pipeline")
+        self._InputOutputName = params.get("InputOutputName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1825,30 +3411,63 @@ class FlowMediaAudio(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Fps: The frame rate.
+        :param _Fps: The frame rate.
         :type Fps: int
-        :param Rate: The bitrate (bps).
+        :param _Rate: The bitrate (bps).
         :type Rate: int
-        :param Pid: The audio PID.
+        :param _Pid: The audio PID.
         :type Pid: int
-        :param SessionId: The ID of a push session.
+        :param _SessionId: The ID of a push session.
         :type SessionId: str
         """
-        self.Fps = None
-        self.Rate = None
-        self.Pid = None
-        self.SessionId = None
+        self._Fps = None
+        self._Rate = None
+        self._Pid = None
+        self._SessionId = None
+
+    @property
+    def Fps(self):
+        return self._Fps
+
+    @Fps.setter
+    def Fps(self, Fps):
+        self._Fps = Fps
+
+    @property
+    def Rate(self):
+        return self._Rate
+
+    @Rate.setter
+    def Rate(self, Rate):
+        self._Rate = Rate
+
+    @property
+    def Pid(self):
+        return self._Pid
+
+    @Pid.setter
+    def Pid(self, Pid):
+        self._Pid = Pid
+
+    @property
+    def SessionId(self):
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
 
 
     def _deserialize(self, params):
-        self.Fps = params.get("Fps")
-        self.Rate = params.get("Rate")
-        self.Pid = params.get("Pid")
-        self.SessionId = params.get("SessionId")
+        self._Fps = params.get("Fps")
+        self._Rate = params.get("Rate")
+        self._Pid = params.get("Pid")
+        self._SessionId = params.get("SessionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1861,48 +3480,97 @@ class FlowMediaInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Timestamp: The timestamp (seconds).
+        :param _Timestamp: The timestamp (seconds).
         :type Timestamp: int
-        :param Network: The total bandwidth.
+        :param _Network: The total bandwidth.
         :type Network: int
-        :param Video: The video data of the flow.
+        :param _Video: The video data of the flow.
         :type Video: list of FlowMediaVideo
-        :param Audio: The audio data of the flow.
+        :param _Audio: The audio data of the flow.
         :type Audio: list of FlowMediaAudio
-        :param SessionId: The ID of a push session.
+        :param _SessionId: The ID of a push session.
         :type SessionId: str
-        :param ClientIp: The client IP.
+        :param _ClientIp: The client IP.
         :type ClientIp: str
         """
-        self.Timestamp = None
-        self.Network = None
-        self.Video = None
-        self.Audio = None
-        self.SessionId = None
-        self.ClientIp = None
+        self._Timestamp = None
+        self._Network = None
+        self._Video = None
+        self._Audio = None
+        self._SessionId = None
+        self._ClientIp = None
+
+    @property
+    def Timestamp(self):
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def Network(self):
+        return self._Network
+
+    @Network.setter
+    def Network(self, Network):
+        self._Network = Network
+
+    @property
+    def Video(self):
+        return self._Video
+
+    @Video.setter
+    def Video(self, Video):
+        self._Video = Video
+
+    @property
+    def Audio(self):
+        return self._Audio
+
+    @Audio.setter
+    def Audio(self, Audio):
+        self._Audio = Audio
+
+    @property
+    def SessionId(self):
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def ClientIp(self):
+        return self._ClientIp
+
+    @ClientIp.setter
+    def ClientIp(self, ClientIp):
+        self._ClientIp = ClientIp
 
 
     def _deserialize(self, params):
-        self.Timestamp = params.get("Timestamp")
-        self.Network = params.get("Network")
+        self._Timestamp = params.get("Timestamp")
+        self._Network = params.get("Network")
         if params.get("Video") is not None:
-            self.Video = []
+            self._Video = []
             for item in params.get("Video"):
                 obj = FlowMediaVideo()
                 obj._deserialize(item)
-                self.Video.append(obj)
+                self._Video.append(obj)
         if params.get("Audio") is not None:
-            self.Audio = []
+            self._Audio = []
             for item in params.get("Audio"):
                 obj = FlowMediaAudio()
                 obj._deserialize(item)
-                self.Audio.append(obj)
-        self.SessionId = params.get("SessionId")
-        self.ClientIp = params.get("ClientIp")
+                self._Audio.append(obj)
+        self._SessionId = params.get("SessionId")
+        self._ClientIp = params.get("ClientIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1915,30 +3583,63 @@ class FlowMediaVideo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Fps: The frame rate.
+        :param _Fps: The frame rate.
         :type Fps: int
-        :param Rate: The bitrate (bps).
+        :param _Rate: The bitrate (bps).
         :type Rate: int
-        :param Pid: The video PID.
+        :param _Pid: The video PID.
         :type Pid: int
-        :param SessionId: The ID of a push session.
+        :param _SessionId: The ID of a push session.
         :type SessionId: str
         """
-        self.Fps = None
-        self.Rate = None
-        self.Pid = None
-        self.SessionId = None
+        self._Fps = None
+        self._Rate = None
+        self._Pid = None
+        self._SessionId = None
+
+    @property
+    def Fps(self):
+        return self._Fps
+
+    @Fps.setter
+    def Fps(self, Fps):
+        self._Fps = Fps
+
+    @property
+    def Rate(self):
+        return self._Rate
+
+    @Rate.setter
+    def Rate(self, Rate):
+        self._Rate = Rate
+
+    @property
+    def Pid(self):
+        return self._Pid
+
+    @Pid.setter
+    def Pid(self, Pid):
+        self._Pid = Pid
+
+    @property
+    def SessionId(self):
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
 
 
     def _deserialize(self, params):
-        self.Fps = params.get("Fps")
-        self.Rate = params.get("Rate")
-        self.Pid = params.get("Pid")
-        self.SessionId = params.get("SessionId")
+        self._Fps = params.get("Fps")
+        self._Rate = params.get("Rate")
+        self._Pid = params.get("Pid")
+        self._SessionId = params.get("SessionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1951,34 +3652,75 @@ class FlowRealtimeStatusCommon(AbstractModel):
 
     def __init__(self):
         r"""
-        :param State: The connection status. Valid values: Connected, Waiting, Idle.
+        :param _State: The connection status. Valid values: Connected, Waiting, Idle.
         :type State: str
-        :param Mode: The connection mode. Valid values: Listener, Caller.
+        :param _Mode: The connection mode. Valid values: Listener, Caller.
         :type Mode: str
-        :param ConnectedTime: The connected time.
+        :param _ConnectedTime: The connected time.
         :type ConnectedTime: int
-        :param Bitrate: The real-time bitrate (bps).
+        :param _Bitrate: The real-time bitrate (bps).
         :type Bitrate: int
-        :param Reconnections: The number of retries.
+        :param _Reconnections: The number of retries.
         :type Reconnections: int
         """
-        self.State = None
-        self.Mode = None
-        self.ConnectedTime = None
-        self.Bitrate = None
-        self.Reconnections = None
+        self._State = None
+        self._Mode = None
+        self._ConnectedTime = None
+        self._Bitrate = None
+        self._Reconnections = None
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def Mode(self):
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def ConnectedTime(self):
+        return self._ConnectedTime
+
+    @ConnectedTime.setter
+    def ConnectedTime(self, ConnectedTime):
+        self._ConnectedTime = ConnectedTime
+
+    @property
+    def Bitrate(self):
+        return self._Bitrate
+
+    @Bitrate.setter
+    def Bitrate(self, Bitrate):
+        self._Bitrate = Bitrate
+
+    @property
+    def Reconnections(self):
+        return self._Reconnections
+
+    @Reconnections.setter
+    def Reconnections(self, Reconnections):
+        self._Reconnections = Reconnections
 
 
     def _deserialize(self, params):
-        self.State = params.get("State")
-        self.Mode = params.get("Mode")
-        self.ConnectedTime = params.get("ConnectedTime")
-        self.Bitrate = params.get("Bitrate")
-        self.Reconnections = params.get("Reconnections")
+        self._State = params.get("State")
+        self._Mode = params.get("Mode")
+        self._ConnectedTime = params.get("ConnectedTime")
+        self._Bitrate = params.get("Bitrate")
+        self._Reconnections = params.get("Reconnections")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1991,65 +3733,146 @@ class FlowRealtimeStatusItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: Whether it is an input or output. Valid values: Input, Output.
+        :param _Type: Whether it is an input or output. Valid values: Input, Output.
         :type Type: str
-        :param InputId: The input ID, which is not empty if `Type` is `Input`.
+        :param _InputId: The input ID, which is not empty if `Type` is `Input`.
         :type InputId: str
-        :param OutputId: The output ID, which is not empty if `Type` is `Output`.
+        :param _OutputId: The output ID, which is not empty if `Type` is `Output`.
         :type OutputId: str
-        :param FlowId: The flow ID.
+        :param _FlowId: The flow ID.
         :type FlowId: str
-        :param Protocol: The protocol used. Valid values: SRT, RTP, RTMP.
+        :param _Protocol: The protocol used. Valid values: SRT, RTP, RTMP.
         :type Protocol: str
-        :param CommonStatus: The common status information.
+        :param _CommonStatus: The common status information.
         :type CommonStatus: :class:`tencentcloud.mdc.v20200828.models.FlowRealtimeStatusCommon`
-        :param SRTStatus: This parameter is returned if `Protocol` is `SRT`.
+        :param _SRTStatus: This parameter is returned if `Protocol` is `SRT`.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type SRTStatus: :class:`tencentcloud.mdc.v20200828.models.FlowRealtimeStatusSRT`
-        :param RTMPStatus: This parameter is returned if `Protocol` is `RTMP`.
+        :param _RTMPStatus: This parameter is returned if `Protocol` is `RTMP`.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type RTMPStatus: :class:`tencentcloud.mdc.v20200828.models.FlowRealtimeStatusRTMP`
-        :param ConnectServerIP: The server IP.
+        :param _ConnectServerIP: The server IP.
         :type ConnectServerIP: str
-        :param RTPStatus: This parameter is returned if the RTP protocol is used.
+        :param _RTPStatus: This parameter is returned if the RTP protocol is used.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type RTPStatus: :class:`tencentcloud.mdc.v20200828.models.FlowRealtimeStatusRTP`
         """
-        self.Type = None
-        self.InputId = None
-        self.OutputId = None
-        self.FlowId = None
-        self.Protocol = None
-        self.CommonStatus = None
-        self.SRTStatus = None
-        self.RTMPStatus = None
-        self.ConnectServerIP = None
-        self.RTPStatus = None
+        self._Type = None
+        self._InputId = None
+        self._OutputId = None
+        self._FlowId = None
+        self._Protocol = None
+        self._CommonStatus = None
+        self._SRTStatus = None
+        self._RTMPStatus = None
+        self._ConnectServerIP = None
+        self._RTPStatus = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def InputId(self):
+        return self._InputId
+
+    @InputId.setter
+    def InputId(self, InputId):
+        self._InputId = InputId
+
+    @property
+    def OutputId(self):
+        return self._OutputId
+
+    @OutputId.setter
+    def OutputId(self, OutputId):
+        self._OutputId = OutputId
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def CommonStatus(self):
+        return self._CommonStatus
+
+    @CommonStatus.setter
+    def CommonStatus(self, CommonStatus):
+        self._CommonStatus = CommonStatus
+
+    @property
+    def SRTStatus(self):
+        return self._SRTStatus
+
+    @SRTStatus.setter
+    def SRTStatus(self, SRTStatus):
+        self._SRTStatus = SRTStatus
+
+    @property
+    def RTMPStatus(self):
+        return self._RTMPStatus
+
+    @RTMPStatus.setter
+    def RTMPStatus(self, RTMPStatus):
+        self._RTMPStatus = RTMPStatus
+
+    @property
+    def ConnectServerIP(self):
+        return self._ConnectServerIP
+
+    @ConnectServerIP.setter
+    def ConnectServerIP(self, ConnectServerIP):
+        self._ConnectServerIP = ConnectServerIP
+
+    @property
+    def RTPStatus(self):
+        return self._RTPStatus
+
+    @RTPStatus.setter
+    def RTPStatus(self, RTPStatus):
+        self._RTPStatus = RTPStatus
 
 
     def _deserialize(self, params):
-        self.Type = params.get("Type")
-        self.InputId = params.get("InputId")
-        self.OutputId = params.get("OutputId")
-        self.FlowId = params.get("FlowId")
-        self.Protocol = params.get("Protocol")
+        self._Type = params.get("Type")
+        self._InputId = params.get("InputId")
+        self._OutputId = params.get("OutputId")
+        self._FlowId = params.get("FlowId")
+        self._Protocol = params.get("Protocol")
         if params.get("CommonStatus") is not None:
-            self.CommonStatus = FlowRealtimeStatusCommon()
-            self.CommonStatus._deserialize(params.get("CommonStatus"))
+            self._CommonStatus = FlowRealtimeStatusCommon()
+            self._CommonStatus._deserialize(params.get("CommonStatus"))
         if params.get("SRTStatus") is not None:
-            self.SRTStatus = FlowRealtimeStatusSRT()
-            self.SRTStatus._deserialize(params.get("SRTStatus"))
+            self._SRTStatus = FlowRealtimeStatusSRT()
+            self._SRTStatus._deserialize(params.get("SRTStatus"))
         if params.get("RTMPStatus") is not None:
-            self.RTMPStatus = FlowRealtimeStatusRTMP()
-            self.RTMPStatus._deserialize(params.get("RTMPStatus"))
-        self.ConnectServerIP = params.get("ConnectServerIP")
+            self._RTMPStatus = FlowRealtimeStatusRTMP()
+            self._RTMPStatus._deserialize(params.get("RTMPStatus"))
+        self._ConnectServerIP = params.get("ConnectServerIP")
         if params.get("RTPStatus") is not None:
-            self.RTPStatus = FlowRealtimeStatusRTP()
-            self.RTPStatus._deserialize(params.get("RTPStatus"))
+            self._RTPStatus = FlowRealtimeStatusRTP()
+            self._RTPStatus._deserialize(params.get("RTPStatus"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2062,22 +3885,39 @@ class FlowRealtimeStatusRTMP(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VideoFPS: The video frame rate.
+        :param _VideoFPS: The video frame rate.
         :type VideoFPS: int
-        :param AudioFPS: The audio frame rate.
+        :param _AudioFPS: The audio frame rate.
         :type AudioFPS: int
         """
-        self.VideoFPS = None
-        self.AudioFPS = None
+        self._VideoFPS = None
+        self._AudioFPS = None
+
+    @property
+    def VideoFPS(self):
+        return self._VideoFPS
+
+    @VideoFPS.setter
+    def VideoFPS(self, VideoFPS):
+        self._VideoFPS = VideoFPS
+
+    @property
+    def AudioFPS(self):
+        return self._AudioFPS
+
+    @AudioFPS.setter
+    def AudioFPS(self, AudioFPS):
+        self._AudioFPS = AudioFPS
 
 
     def _deserialize(self, params):
-        self.VideoFPS = params.get("VideoFPS")
-        self.AudioFPS = params.get("AudioFPS")
+        self._VideoFPS = params.get("VideoFPS")
+        self._AudioFPS = params.get("AudioFPS")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2090,18 +3930,27 @@ class FlowRealtimeStatusRTP(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Packets: The number of packets transmitted.
+        :param _Packets: The number of packets transmitted.
         :type Packets: int
         """
-        self.Packets = None
+        self._Packets = None
+
+    @property
+    def Packets(self):
+        return self._Packets
+
+    @Packets.setter
+    def Packets(self, Packets):
+        self._Packets = Packets
 
 
     def _deserialize(self, params):
-        self.Packets = params.get("Packets")
+        self._Packets = params.get("Packets")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2114,42 +3963,99 @@ class FlowRealtimeStatusSRT(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Latency: The latency (ms).
+        :param _Latency: The latency (ms).
         :type Latency: int
-        :param RTT: RTT (ms).
+        :param _RTT: RTT (ms).
         :type RTT: int
-        :param Packets: The number of packets sent or received.
+        :param _Packets: The number of packets sent or received.
         :type Packets: int
-        :param PacketLossRate: The packet loss rate.
+        :param _PacketLossRate: The packet loss rate.
         :type PacketLossRate: float
-        :param RetransmitRate: The retransmission rate.
+        :param _RetransmitRate: The retransmission rate.
         :type RetransmitRate: float
-        :param DroppedPackets: The number of packets dropped.
+        :param _DroppedPackets: The number of packets dropped.
         :type DroppedPackets: int
-        :param Encryption: Whether to encrypt the stream. Valid values: On, Off.
+        :param _Encryption: Whether to encrypt the stream. Valid values: On, Off.
         :type Encryption: str
         """
-        self.Latency = None
-        self.RTT = None
-        self.Packets = None
-        self.PacketLossRate = None
-        self.RetransmitRate = None
-        self.DroppedPackets = None
-        self.Encryption = None
+        self._Latency = None
+        self._RTT = None
+        self._Packets = None
+        self._PacketLossRate = None
+        self._RetransmitRate = None
+        self._DroppedPackets = None
+        self._Encryption = None
+
+    @property
+    def Latency(self):
+        return self._Latency
+
+    @Latency.setter
+    def Latency(self, Latency):
+        self._Latency = Latency
+
+    @property
+    def RTT(self):
+        return self._RTT
+
+    @RTT.setter
+    def RTT(self, RTT):
+        self._RTT = RTT
+
+    @property
+    def Packets(self):
+        return self._Packets
+
+    @Packets.setter
+    def Packets(self, Packets):
+        self._Packets = Packets
+
+    @property
+    def PacketLossRate(self):
+        return self._PacketLossRate
+
+    @PacketLossRate.setter
+    def PacketLossRate(self, PacketLossRate):
+        self._PacketLossRate = PacketLossRate
+
+    @property
+    def RetransmitRate(self):
+        return self._RetransmitRate
+
+    @RetransmitRate.setter
+    def RetransmitRate(self, RetransmitRate):
+        self._RetransmitRate = RetransmitRate
+
+    @property
+    def DroppedPackets(self):
+        return self._DroppedPackets
+
+    @DroppedPackets.setter
+    def DroppedPackets(self, DroppedPackets):
+        self._DroppedPackets = DroppedPackets
+
+    @property
+    def Encryption(self):
+        return self._Encryption
+
+    @Encryption.setter
+    def Encryption(self, Encryption):
+        self._Encryption = Encryption
 
 
     def _deserialize(self, params):
-        self.Latency = params.get("Latency")
-        self.RTT = params.get("RTT")
-        self.Packets = params.get("Packets")
-        self.PacketLossRate = params.get("PacketLossRate")
-        self.RetransmitRate = params.get("RetransmitRate")
-        self.DroppedPackets = params.get("DroppedPackets")
-        self.Encryption = params.get("Encryption")
+        self._Latency = params.get("Latency")
+        self._RTT = params.get("RTT")
+        self._Packets = params.get("Packets")
+        self._PacketLossRate = params.get("PacketLossRate")
+        self._RetransmitRate = params.get("RetransmitRate")
+        self._DroppedPackets = params.get("DroppedPackets")
+        self._Encryption = params.get("Encryption")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2162,50 +4068,123 @@ class FlowSRTInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Timestamp: The timestamp (seconds).
+        :param _Timestamp: The timestamp (seconds).
         :type Timestamp: int
-        :param SendPacketLossRate: The packet loss rate for sending.
+        :param _SendPacketLossRate: The packet loss rate for sending.
         :type SendPacketLossRate: int
-        :param SendRetransmissionRate: The retry rate for sending.
+        :param _SendRetransmissionRate: The retry rate for sending.
         :type SendRetransmissionRate: int
-        :param RecvPacketLossRate: The packet loss rate for receiving.
+        :param _RecvPacketLossRate: The packet loss rate for receiving.
         :type RecvPacketLossRate: int
-        :param RecvRetransmissionRate: The retry rate for receiving.
+        :param _RecvRetransmissionRate: The retry rate for receiving.
         :type RecvRetransmissionRate: int
-        :param RTT: The peer RTT.
+        :param _RTT: The peer RTT.
         :type RTT: int
-        :param SessionId: The ID of a push session.
+        :param _SessionId: The ID of a push session.
         :type SessionId: str
-        :param SendPacketDropNumber: The number of dropped packets for sending.
+        :param _SendPacketDropNumber: The number of dropped packets for sending.
         :type SendPacketDropNumber: int
-        :param RecvPacketDropNumber: The number of dropped packets for receiving.
+        :param _RecvPacketDropNumber: The number of dropped packets for receiving.
         :type RecvPacketDropNumber: int
         """
-        self.Timestamp = None
-        self.SendPacketLossRate = None
-        self.SendRetransmissionRate = None
-        self.RecvPacketLossRate = None
-        self.RecvRetransmissionRate = None
-        self.RTT = None
-        self.SessionId = None
-        self.SendPacketDropNumber = None
-        self.RecvPacketDropNumber = None
+        self._Timestamp = None
+        self._SendPacketLossRate = None
+        self._SendRetransmissionRate = None
+        self._RecvPacketLossRate = None
+        self._RecvRetransmissionRate = None
+        self._RTT = None
+        self._SessionId = None
+        self._SendPacketDropNumber = None
+        self._RecvPacketDropNumber = None
+
+    @property
+    def Timestamp(self):
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def SendPacketLossRate(self):
+        return self._SendPacketLossRate
+
+    @SendPacketLossRate.setter
+    def SendPacketLossRate(self, SendPacketLossRate):
+        self._SendPacketLossRate = SendPacketLossRate
+
+    @property
+    def SendRetransmissionRate(self):
+        return self._SendRetransmissionRate
+
+    @SendRetransmissionRate.setter
+    def SendRetransmissionRate(self, SendRetransmissionRate):
+        self._SendRetransmissionRate = SendRetransmissionRate
+
+    @property
+    def RecvPacketLossRate(self):
+        return self._RecvPacketLossRate
+
+    @RecvPacketLossRate.setter
+    def RecvPacketLossRate(self, RecvPacketLossRate):
+        self._RecvPacketLossRate = RecvPacketLossRate
+
+    @property
+    def RecvRetransmissionRate(self):
+        return self._RecvRetransmissionRate
+
+    @RecvRetransmissionRate.setter
+    def RecvRetransmissionRate(self, RecvRetransmissionRate):
+        self._RecvRetransmissionRate = RecvRetransmissionRate
+
+    @property
+    def RTT(self):
+        return self._RTT
+
+    @RTT.setter
+    def RTT(self, RTT):
+        self._RTT = RTT
+
+    @property
+    def SessionId(self):
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def SendPacketDropNumber(self):
+        return self._SendPacketDropNumber
+
+    @SendPacketDropNumber.setter
+    def SendPacketDropNumber(self, SendPacketDropNumber):
+        self._SendPacketDropNumber = SendPacketDropNumber
+
+    @property
+    def RecvPacketDropNumber(self):
+        return self._RecvPacketDropNumber
+
+    @RecvPacketDropNumber.setter
+    def RecvPacketDropNumber(self, RecvPacketDropNumber):
+        self._RecvPacketDropNumber = RecvPacketDropNumber
 
 
     def _deserialize(self, params):
-        self.Timestamp = params.get("Timestamp")
-        self.SendPacketLossRate = params.get("SendPacketLossRate")
-        self.SendRetransmissionRate = params.get("SendRetransmissionRate")
-        self.RecvPacketLossRate = params.get("RecvPacketLossRate")
-        self.RecvRetransmissionRate = params.get("RecvRetransmissionRate")
-        self.RTT = params.get("RTT")
-        self.SessionId = params.get("SessionId")
-        self.SendPacketDropNumber = params.get("SendPacketDropNumber")
-        self.RecvPacketDropNumber = params.get("RecvPacketDropNumber")
+        self._Timestamp = params.get("Timestamp")
+        self._SendPacketLossRate = params.get("SendPacketLossRate")
+        self._SendRetransmissionRate = params.get("SendRetransmissionRate")
+        self._RecvPacketLossRate = params.get("RecvPacketLossRate")
+        self._RecvRetransmissionRate = params.get("RecvRetransmissionRate")
+        self._RTT = params.get("RTT")
+        self._SessionId = params.get("SessionId")
+        self._SendPacketDropNumber = params.get("SendPacketDropNumber")
+        self._RecvPacketDropNumber = params.get("RecvPacketDropNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2218,44 +4197,85 @@ class FlowStatistics(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SessionId: The session ID.
+        :param _SessionId: The session ID.
         :type SessionId: str
-        :param ClientIp: The peer IP.
+        :param _ClientIp: The peer IP.
         :type ClientIp: str
-        :param Network: The total bandwidth.
+        :param _Network: The total bandwidth.
         :type Network: int
-        :param Video: The video data.
+        :param _Video: The video data.
         :type Video: list of FlowVideo
-        :param Audio: The audio data.
+        :param _Audio: The audio data.
         :type Audio: list of FlowAudio
         """
-        self.SessionId = None
-        self.ClientIp = None
-        self.Network = None
-        self.Video = None
-        self.Audio = None
+        self._SessionId = None
+        self._ClientIp = None
+        self._Network = None
+        self._Video = None
+        self._Audio = None
+
+    @property
+    def SessionId(self):
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def ClientIp(self):
+        return self._ClientIp
+
+    @ClientIp.setter
+    def ClientIp(self, ClientIp):
+        self._ClientIp = ClientIp
+
+    @property
+    def Network(self):
+        return self._Network
+
+    @Network.setter
+    def Network(self, Network):
+        self._Network = Network
+
+    @property
+    def Video(self):
+        return self._Video
+
+    @Video.setter
+    def Video(self, Video):
+        self._Video = Video
+
+    @property
+    def Audio(self):
+        return self._Audio
+
+    @Audio.setter
+    def Audio(self, Audio):
+        self._Audio = Audio
 
 
     def _deserialize(self, params):
-        self.SessionId = params.get("SessionId")
-        self.ClientIp = params.get("ClientIp")
-        self.Network = params.get("Network")
+        self._SessionId = params.get("SessionId")
+        self._ClientIp = params.get("ClientIp")
+        self._Network = params.get("Network")
         if params.get("Video") is not None:
-            self.Video = []
+            self._Video = []
             for item in params.get("Video"):
                 obj = FlowVideo()
                 obj._deserialize(item)
-                self.Video.append(obj)
+                self._Video.append(obj)
         if params.get("Audio") is not None:
-            self.Audio = []
+            self._Audio = []
             for item in params.get("Audio"):
                 obj = FlowAudio()
                 obj._deserialize(item)
-                self.Audio.append(obj)
+                self._Audio.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2268,27 +4288,44 @@ class FlowStatisticsArray(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Timestamp: The timestamp.
+        :param _Timestamp: The timestamp.
         :type Timestamp: int
-        :param FlowStatistics: The statistics of all the sessions.
+        :param _FlowStatistics: The statistics of all the sessions.
         :type FlowStatistics: list of FlowStatistics
         """
-        self.Timestamp = None
-        self.FlowStatistics = None
+        self._Timestamp = None
+        self._FlowStatistics = None
+
+    @property
+    def Timestamp(self):
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def FlowStatistics(self):
+        return self._FlowStatistics
+
+    @FlowStatistics.setter
+    def FlowStatistics(self, FlowStatistics):
+        self._FlowStatistics = FlowStatistics
 
 
     def _deserialize(self, params):
-        self.Timestamp = params.get("Timestamp")
+        self._Timestamp = params.get("Timestamp")
         if params.get("FlowStatistics") is not None:
-            self.FlowStatistics = []
+            self._FlowStatistics = []
             for item in params.get("FlowStatistics"):
                 obj = FlowStatistics()
                 obj._deserialize(item)
-                self.FlowStatistics.append(obj)
+                self._FlowStatistics.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2301,26 +4338,51 @@ class FlowVideo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Fps: The frame rate.
+        :param _Fps: The frame rate.
         :type Fps: int
-        :param Rate: The bitrate (bps).
+        :param _Rate: The bitrate (bps).
         :type Rate: int
-        :param Pid: The audio PID.
+        :param _Pid: The audio PID.
         :type Pid: int
         """
-        self.Fps = None
-        self.Rate = None
-        self.Pid = None
+        self._Fps = None
+        self._Rate = None
+        self._Pid = None
+
+    @property
+    def Fps(self):
+        return self._Fps
+
+    @Fps.setter
+    def Fps(self, Fps):
+        self._Fps = Fps
+
+    @property
+    def Rate(self):
+        return self._Rate
+
+    @Rate.setter
+    def Rate(self, Rate):
+        self._Rate = Rate
+
+    @property
+    def Pid(self):
+        return self._Pid
+
+    @Pid.setter
+    def Pid(self, Pid):
+        self._Pid = Pid
 
 
     def _deserialize(self, params):
-        self.Fps = params.get("Fps")
-        self.Rate = params.get("Rate")
-        self.Pid = params.get("Pid")
+        self._Fps = params.get("Fps")
+        self._Rate = params.get("Rate")
+        self._Pid = params.get("Pid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2333,22 +4395,39 @@ class InputAddress(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Ip: Input address IP.
+        :param _Ip: Input address IP.
         :type Ip: str
-        :param Port: Input address port.
+        :param _Port: Input address port.
         :type Port: int
         """
-        self.Ip = None
-        self.Port = None
+        self._Ip = None
+        self._Port = None
+
+    @property
+    def Ip(self):
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
 
 
     def _deserialize(self, params):
-        self.Ip = params.get("Ip")
-        self.Port = params.get("Port")
+        self._Ip = params.get("Ip")
+        self._Port = params.get("Port")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2361,53 +4440,118 @@ class ModifyInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InputId: The input ID.
+        :param _InputId: The input ID.
         :type InputId: str
-        :param InputName: The input name.
+        :param _InputName: The input name.
         :type InputName: str
-        :param Description: The description of the input.
+        :param _Description: The description of the input.
         :type Description: str
-        :param AllowIpList: The IP addresses (CIDR) allowed to push streams.
+        :param _AllowIpList: The IP addresses (CIDR) allowed to push streams.
         :type AllowIpList: list of str
-        :param SRTSettings: The SRT configuration information.
+        :param _SRTSettings: The SRT configuration information.
         :type SRTSettings: :class:`tencentcloud.mdc.v20200828.models.CreateInputSRTSettings`
-        :param RTPSettings: The RTP configuration information.
+        :param _RTPSettings: The RTP configuration information.
         :type RTPSettings: :class:`tencentcloud.mdc.v20200828.models.CreateInputRTPSettings`
-        :param Protocol: The input protocol. Valid values: SRT, RTP, RTMP.
+        :param _Protocol: The input protocol. Valid values: SRT, RTP, RTMP.
 If there is an RTP input, the output must be RTP.
 If there is an RTMP input, the output must be SRT or RTMP.
 If there is an SRT input, the output must be SRT.
         :type Protocol: str
-        :param FailOver: Whether to enable input failover. Valid values: OPEN, CLOSE.
+        :param _FailOver: Whether to enable input failover. Valid values: OPEN, CLOSE.
         :type FailOver: str
         """
-        self.InputId = None
-        self.InputName = None
-        self.Description = None
-        self.AllowIpList = None
-        self.SRTSettings = None
-        self.RTPSettings = None
-        self.Protocol = None
-        self.FailOver = None
+        self._InputId = None
+        self._InputName = None
+        self._Description = None
+        self._AllowIpList = None
+        self._SRTSettings = None
+        self._RTPSettings = None
+        self._Protocol = None
+        self._FailOver = None
+
+    @property
+    def InputId(self):
+        return self._InputId
+
+    @InputId.setter
+    def InputId(self, InputId):
+        self._InputId = InputId
+
+    @property
+    def InputName(self):
+        return self._InputName
+
+    @InputName.setter
+    def InputName(self, InputName):
+        self._InputName = InputName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def AllowIpList(self):
+        return self._AllowIpList
+
+    @AllowIpList.setter
+    def AllowIpList(self, AllowIpList):
+        self._AllowIpList = AllowIpList
+
+    @property
+    def SRTSettings(self):
+        return self._SRTSettings
+
+    @SRTSettings.setter
+    def SRTSettings(self, SRTSettings):
+        self._SRTSettings = SRTSettings
+
+    @property
+    def RTPSettings(self):
+        return self._RTPSettings
+
+    @RTPSettings.setter
+    def RTPSettings(self, RTPSettings):
+        self._RTPSettings = RTPSettings
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def FailOver(self):
+        return self._FailOver
+
+    @FailOver.setter
+    def FailOver(self, FailOver):
+        self._FailOver = FailOver
 
 
     def _deserialize(self, params):
-        self.InputId = params.get("InputId")
-        self.InputName = params.get("InputName")
-        self.Description = params.get("Description")
-        self.AllowIpList = params.get("AllowIpList")
+        self._InputId = params.get("InputId")
+        self._InputName = params.get("InputName")
+        self._Description = params.get("Description")
+        self._AllowIpList = params.get("AllowIpList")
         if params.get("SRTSettings") is not None:
-            self.SRTSettings = CreateInputSRTSettings()
-            self.SRTSettings._deserialize(params.get("SRTSettings"))
+            self._SRTSettings = CreateInputSRTSettings()
+            self._SRTSettings._deserialize(params.get("SRTSettings"))
         if params.get("RTPSettings") is not None:
-            self.RTPSettings = CreateInputRTPSettings()
-            self.RTPSettings._deserialize(params.get("RTPSettings"))
-        self.Protocol = params.get("Protocol")
-        self.FailOver = params.get("FailOver")
+            self._RTPSettings = CreateInputRTPSettings()
+            self._RTPSettings._deserialize(params.get("RTPSettings"))
+        self._Protocol = params.get("Protocol")
+        self._FailOver = params.get("FailOver")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2420,53 +4564,118 @@ class ModifyOutputInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OutputId: The ID of the output to modify.
+        :param _OutputId: The ID of the output to modify.
         :type OutputId: str
-        :param OutputName: The output name.
+        :param _OutputName: The output name.
         :type OutputName: str
-        :param Description: The description of the output.
+        :param _Description: The description of the output.
         :type Description: str
-        :param Protocol: The output protocol. Valid values: SRT, RTP, RTMP.
+        :param _Protocol: The output protocol. Valid values: SRT, RTP, RTMP.
         :type Protocol: str
-        :param SRTSettings: The SRT relay configuration.
+        :param _SRTSettings: The SRT relay configuration.
         :type SRTSettings: :class:`tencentcloud.mdc.v20200828.models.CreateOutputSrtSettings`
-        :param RTPSettings: The RTP relay configuration.
+        :param _RTPSettings: The RTP relay configuration.
         :type RTPSettings: :class:`tencentcloud.mdc.v20200828.models.CreateOutputInfoRTPSettings`
-        :param RTMPSettings: The RTMP relay configuration.
+        :param _RTMPSettings: The RTMP relay configuration.
         :type RTMPSettings: :class:`tencentcloud.mdc.v20200828.models.CreateOutputRTMPSettings`
-        :param AllowIpList: The IP allowlist. The address must be in CIDR format, such as `0.0.0.0/0`.
+        :param _AllowIpList: The IP allowlist. The address must be in CIDR format, such as `0.0.0.0/0`.
 This parameter is valid if `Protocol` is set to `RTMP_PULL`. If it is left empty, there is no restriction on clients’ IP addresses.
         :type AllowIpList: list of str
         """
-        self.OutputId = None
-        self.OutputName = None
-        self.Description = None
-        self.Protocol = None
-        self.SRTSettings = None
-        self.RTPSettings = None
-        self.RTMPSettings = None
-        self.AllowIpList = None
+        self._OutputId = None
+        self._OutputName = None
+        self._Description = None
+        self._Protocol = None
+        self._SRTSettings = None
+        self._RTPSettings = None
+        self._RTMPSettings = None
+        self._AllowIpList = None
+
+    @property
+    def OutputId(self):
+        return self._OutputId
+
+    @OutputId.setter
+    def OutputId(self, OutputId):
+        self._OutputId = OutputId
+
+    @property
+    def OutputName(self):
+        return self._OutputName
+
+    @OutputName.setter
+    def OutputName(self, OutputName):
+        self._OutputName = OutputName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def SRTSettings(self):
+        return self._SRTSettings
+
+    @SRTSettings.setter
+    def SRTSettings(self, SRTSettings):
+        self._SRTSettings = SRTSettings
+
+    @property
+    def RTPSettings(self):
+        return self._RTPSettings
+
+    @RTPSettings.setter
+    def RTPSettings(self, RTPSettings):
+        self._RTPSettings = RTPSettings
+
+    @property
+    def RTMPSettings(self):
+        return self._RTMPSettings
+
+    @RTMPSettings.setter
+    def RTMPSettings(self, RTMPSettings):
+        self._RTMPSettings = RTMPSettings
+
+    @property
+    def AllowIpList(self):
+        return self._AllowIpList
+
+    @AllowIpList.setter
+    def AllowIpList(self, AllowIpList):
+        self._AllowIpList = AllowIpList
 
 
     def _deserialize(self, params):
-        self.OutputId = params.get("OutputId")
-        self.OutputName = params.get("OutputName")
-        self.Description = params.get("Description")
-        self.Protocol = params.get("Protocol")
+        self._OutputId = params.get("OutputId")
+        self._OutputName = params.get("OutputName")
+        self._Description = params.get("Description")
+        self._Protocol = params.get("Protocol")
         if params.get("SRTSettings") is not None:
-            self.SRTSettings = CreateOutputSrtSettings()
-            self.SRTSettings._deserialize(params.get("SRTSettings"))
+            self._SRTSettings = CreateOutputSrtSettings()
+            self._SRTSettings._deserialize(params.get("SRTSettings"))
         if params.get("RTPSettings") is not None:
-            self.RTPSettings = CreateOutputInfoRTPSettings()
-            self.RTPSettings._deserialize(params.get("RTPSettings"))
+            self._RTPSettings = CreateOutputInfoRTPSettings()
+            self._RTPSettings._deserialize(params.get("RTPSettings"))
         if params.get("RTMPSettings") is not None:
-            self.RTMPSettings = CreateOutputRTMPSettings()
-            self.RTMPSettings._deserialize(params.get("RTMPSettings"))
-        self.AllowIpList = params.get("AllowIpList")
+            self._RTMPSettings = CreateOutputRTMPSettings()
+            self._RTMPSettings._deserialize(params.get("RTMPSettings"))
+        self._AllowIpList = params.get("AllowIpList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2479,22 +4688,39 @@ class ModifyStreamLinkFlowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowId: Flow ID
+        :param _FlowId: Flow ID
         :type FlowId: str
-        :param FlowName: Name of the flow to modify
+        :param _FlowName: Name of the flow to modify
         :type FlowName: str
         """
-        self.FlowId = None
-        self.FlowName = None
+        self._FlowId = None
+        self._FlowName = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def FlowName(self):
+        return self._FlowName
+
+    @FlowName.setter
+    def FlowName(self, FlowName):
+        self._FlowName = FlowName
 
 
     def _deserialize(self, params):
-        self.FlowId = params.get("FlowId")
-        self.FlowName = params.get("FlowName")
+        self._FlowId = params.get("FlowId")
+        self._FlowName = params.get("FlowName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2507,14 +4733,22 @@ class ModifyStreamLinkFlowResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyStreamLinkInputRequest(AbstractModel):
@@ -2524,24 +4758,41 @@ class ModifyStreamLinkInputRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowId: The flow ID.
+        :param _FlowId: The flow ID.
         :type FlowId: str
-        :param Input: The input information to modify.
+        :param _Input: The input information to modify.
         :type Input: :class:`tencentcloud.mdc.v20200828.models.ModifyInput`
         """
-        self.FlowId = None
-        self.Input = None
+        self._FlowId = None
+        self._Input = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def Input(self):
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
 
 
     def _deserialize(self, params):
-        self.FlowId = params.get("FlowId")
+        self._FlowId = params.get("FlowId")
         if params.get("Input") is not None:
-            self.Input = ModifyInput()
-            self.Input._deserialize(params.get("Input"))
+            self._Input = ModifyInput()
+            self._Input._deserialize(params.get("Input"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2554,20 +4805,36 @@ class ModifyStreamLinkInputResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Info: The input information after modification.
+        :param _Info: The input information after modification.
         :type Info: :class:`tencentcloud.mdc.v20200828.models.DescribeInput`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Info = None
-        self.RequestId = None
+        self._Info = None
+        self._RequestId = None
+
+    @property
+    def Info(self):
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Info") is not None:
-            self.Info = DescribeInput()
-            self.Info._deserialize(params.get("Info"))
-        self.RequestId = params.get("RequestId")
+            self._Info = DescribeInput()
+            self._Info._deserialize(params.get("Info"))
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyStreamLinkOutputInfoRequest(AbstractModel):
@@ -2577,24 +4844,41 @@ class ModifyStreamLinkOutputInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowId: The flow ID.
+        :param _FlowId: The flow ID.
         :type FlowId: str
-        :param Output: The output configuration to modify.
+        :param _Output: The output configuration to modify.
         :type Output: :class:`tencentcloud.mdc.v20200828.models.ModifyOutputInfo`
         """
-        self.FlowId = None
-        self.Output = None
+        self._FlowId = None
+        self._Output = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def Output(self):
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
 
 
     def _deserialize(self, params):
-        self.FlowId = params.get("FlowId")
+        self._FlowId = params.get("FlowId")
         if params.get("Output") is not None:
-            self.Output = ModifyOutputInfo()
-            self.Output._deserialize(params.get("Output"))
+            self._Output = ModifyOutputInfo()
+            self._Output._deserialize(params.get("Output"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2607,20 +4891,36 @@ class ModifyStreamLinkOutputInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Info: The output configuration after modification.
+        :param _Info: The output configuration after modification.
         :type Info: :class:`tencentcloud.mdc.v20200828.models.DescribeOutput`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Info = None
-        self.RequestId = None
+        self._Info = None
+        self._RequestId = None
+
+    @property
+    def Info(self):
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Info") is not None:
-            self.Info = DescribeOutput()
-            self.Info._deserialize(params.get("Info"))
-        self.RequestId = params.get("RequestId")
+            self._Info = DescribeOutput()
+            self._Info._deserialize(params.get("Info"))
+        self._RequestId = params.get("RequestId")
 
 
 class OutputAddress(AbstractModel):
@@ -2630,18 +4930,27 @@ class OutputAddress(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Ip: Output destination IP.
+        :param _Ip: Output destination IP.
         :type Ip: str
         """
-        self.Ip = None
+        self._Ip = None
+
+    @property
+    def Ip(self):
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
 
 
     def _deserialize(self, params):
-        self.Ip = params.get("Ip")
+        self._Ip = params.get("Ip")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2654,22 +4963,39 @@ class OutputSRTSourceAddressResp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Ip: The listen IP.
+        :param _Ip: The listen IP.
         :type Ip: str
-        :param Port: The listen port.
+        :param _Port: The listen port.
         :type Port: int
         """
-        self.Ip = None
-        self.Port = None
+        self._Ip = None
+        self._Port = None
+
+    @property
+    def Ip(self):
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
 
 
     def _deserialize(self, params):
-        self.Ip = params.get("Ip")
-        self.Port = params.get("Port")
+        self._Ip = params.get("Ip")
+        self._Port = params.get("Port")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2682,22 +5008,39 @@ class RTMPAddressDestination(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Url: Destination URL of RTMP push in the format of 'rtmp://domain/live'.
+        :param _Url: Destination URL of RTMP push in the format of 'rtmp://domain/live'.
         :type Url: str
-        :param StreamKey: Destination `StreamKey` of RTMP push in the format of 'streamid?key=value'.
+        :param _StreamKey: Destination `StreamKey` of RTMP push in the format of 'streamid?key=value'.
         :type StreamKey: str
         """
-        self.Url = None
-        self.StreamKey = None
+        self._Url = None
+        self._StreamKey = None
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def StreamKey(self):
+        return self._StreamKey
+
+    @StreamKey.setter
+    def StreamKey(self, StreamKey):
+        self._StreamKey = StreamKey
 
 
     def _deserialize(self, params):
-        self.Url = params.get("Url")
-        self.StreamKey = params.get("StreamKey")
+        self._Url = params.get("Url")
+        self._StreamKey = params.get("StreamKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2710,22 +5053,39 @@ class RTPAddressDestination(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Ip: Push destination address IP.
+        :param _Ip: Push destination address IP.
         :type Ip: str
-        :param Port: Push destination address port.
+        :param _Port: Push destination address port.
         :type Port: int
         """
-        self.Ip = None
-        self.Port = None
+        self._Ip = None
+        self._Port = None
+
+    @property
+    def Ip(self):
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
 
 
     def _deserialize(self, params):
-        self.Ip = params.get("Ip")
-        self.Port = params.get("Port")
+        self._Ip = params.get("Ip")
+        self._Port = params.get("Port")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2738,18 +5098,27 @@ class RegionInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: Region name
+        :param _Name: Region name
         :type Name: str
         """
-        self.Name = None
+        self._Name = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2762,22 +5131,39 @@ class SRTAddressDestination(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Ip: Destination address IP.
+        :param _Ip: Destination address IP.
         :type Ip: str
-        :param Port: Destination address port.
+        :param _Port: Destination address port.
         :type Port: int
         """
-        self.Ip = None
-        self.Port = None
+        self._Ip = None
+        self._Port = None
+
+    @property
+    def Ip(self):
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
 
 
     def _deserialize(self, params):
-        self.Ip = params.get("Ip")
-        self.Port = params.get("Port")
+        self._Ip = params.get("Ip")
+        self._Port = params.get("Port")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2790,22 +5176,39 @@ class SRTSourceAddressReq(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Ip: The peer IP.
+        :param _Ip: The peer IP.
         :type Ip: str
-        :param Port: The peer port.
+        :param _Port: The peer port.
         :type Port: int
         """
-        self.Ip = None
-        self.Port = None
+        self._Ip = None
+        self._Port = None
+
+    @property
+    def Ip(self):
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
 
 
     def _deserialize(self, params):
-        self.Ip = params.get("Ip")
-        self.Port = params.get("Port")
+        self._Ip = params.get("Ip")
+        self._Port = params.get("Port")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2818,22 +5221,39 @@ class SRTSourceAddressResp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Ip: The peer IP.
+        :param _Ip: The peer IP.
         :type Ip: str
-        :param Port: The peer port.
+        :param _Port: The peer port.
         :type Port: int
         """
-        self.Ip = None
-        self.Port = None
+        self._Ip = None
+        self._Port = None
+
+    @property
+    def Ip(self):
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
 
 
     def _deserialize(self, params):
-        self.Ip = params.get("Ip")
-        self.Port = params.get("Port")
+        self._Ip = params.get("Ip")
+        self._Port = params.get("Port")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2846,18 +5266,27 @@ class StartStreamLinkFlowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowId: Flow ID
+        :param _FlowId: Flow ID
         :type FlowId: str
         """
-        self.FlowId = None
+        self._FlowId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
 
 
     def _deserialize(self, params):
-        self.FlowId = params.get("FlowId")
+        self._FlowId = params.get("FlowId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2870,14 +5299,22 @@ class StartStreamLinkFlowResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class StopStreamLinkFlowRequest(AbstractModel):
@@ -2887,18 +5324,27 @@ class StopStreamLinkFlowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowId: Flow ID
+        :param _FlowId: Flow ID
         :type FlowId: str
         """
-        self.FlowId = None
+        self._FlowId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
 
 
     def _deserialize(self, params):
-        self.FlowId = params.get("FlowId")
+        self._FlowId = params.get("FlowId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2911,14 +5357,22 @@ class StopStreamLinkFlowResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class StreamLinkRegionInfo(AbstractModel):
@@ -2928,23 +5382,32 @@ class StreamLinkRegionInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Regions: List of StreamLink regions
+        :param _Regions: List of StreamLink regions
         :type Regions: list of RegionInfo
         """
-        self.Regions = None
+        self._Regions = None
+
+    @property
+    def Regions(self):
+        return self._Regions
+
+    @Regions.setter
+    def Regions(self, Regions):
+        self._Regions = Regions
 
 
     def _deserialize(self, params):
         if params.get("Regions") is not None:
-            self.Regions = []
+            self._Regions = []
             for item in params.get("Regions"):
                 obj = RegionInfo()
                 obj._deserialize(item)
-                self.Regions.append(obj)
+                self._Regions.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

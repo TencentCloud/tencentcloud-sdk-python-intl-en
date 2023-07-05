@@ -25,27 +25,44 @@ class AddUsersForUserManagerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Cluster string ID
+        :param _InstanceId: Cluster string ID
         :type InstanceId: str
-        :param UserManagerUserList: User information list
+        :param _UserManagerUserList: User information list
         :type UserManagerUserList: list of UserInfoForUserManager
         """
-        self.InstanceId = None
-        self.UserManagerUserList = None
+        self._InstanceId = None
+        self._UserManagerUserList = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def UserManagerUserList(self):
+        return self._UserManagerUserList
+
+    @UserManagerUserList.setter
+    def UserManagerUserList(self, UserManagerUserList):
+        self._UserManagerUserList = UserManagerUserList
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
+        self._InstanceId = params.get("InstanceId")
         if params.get("UserManagerUserList") is not None:
-            self.UserManagerUserList = []
+            self._UserManagerUserList = []
             for item in params.get("UserManagerUserList"):
                 obj = UserInfoForUserManager()
                 obj._deserialize(item)
-                self.UserManagerUserList.append(obj)
+                self._UserManagerUserList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -58,24 +75,48 @@ class AddUsersForUserManagerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SuccessUserList: The user list that is successfully added
+        :param _SuccessUserList: The user list that is successfully added
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type SuccessUserList: list of str
-        :param FailedUserList: The user list that is not successfully added
+        :param _FailedUserList: The user list that is not successfully added
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type FailedUserList: list of str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.SuccessUserList = None
-        self.FailedUserList = None
-        self.RequestId = None
+        self._SuccessUserList = None
+        self._FailedUserList = None
+        self._RequestId = None
+
+    @property
+    def SuccessUserList(self):
+        return self._SuccessUserList
+
+    @SuccessUserList.setter
+    def SuccessUserList(self, SuccessUserList):
+        self._SuccessUserList = SuccessUserList
+
+    @property
+    def FailedUserList(self):
+        return self._FailedUserList
+
+    @FailedUserList.setter
+    def FailedUserList(self, FailedUserList):
+        self._FailedUserList = FailedUserList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SuccessUserList = params.get("SuccessUserList")
-        self.FailedUserList = params.get("FailedUserList")
-        self.RequestId = params.get("RequestId")
+        self._SuccessUserList = params.get("SuccessUserList")
+        self._FailedUserList = params.get("FailedUserList")
+        self._RequestId = params.get("RequestId")
 
 
 class AllNodeResourceSpec(AbstractModel):
@@ -85,62 +126,127 @@ class AllNodeResourceSpec(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MasterResourceSpec: The description of master nodes.
+        :param _MasterResourceSpec: The description of master nodes.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type MasterResourceSpec: :class:`tencentcloud.emr.v20190103.models.NodeResourceSpec`
-        :param CoreResourceSpec: The description of core nodes.
+        :param _CoreResourceSpec: The description of core nodes.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CoreResourceSpec: :class:`tencentcloud.emr.v20190103.models.NodeResourceSpec`
-        :param TaskResourceSpec: The description of task nodes.
+        :param _TaskResourceSpec: The description of task nodes.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TaskResourceSpec: :class:`tencentcloud.emr.v20190103.models.NodeResourceSpec`
-        :param CommonResourceSpec: The description of common nodes.
+        :param _CommonResourceSpec: The description of common nodes.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CommonResourceSpec: :class:`tencentcloud.emr.v20190103.models.NodeResourceSpec`
-        :param MasterCount: The number of master nodes.
+        :param _MasterCount: The number of master nodes.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type MasterCount: int
-        :param CoreCount: The number of core nodes.
+        :param _CoreCount: The number of core nodes.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CoreCount: int
-        :param TaskCount: The number of task nodes.
+        :param _TaskCount: The number of task nodes.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TaskCount: int
-        :param CommonCount: The number of common nodes.
+        :param _CommonCount: The number of common nodes.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CommonCount: int
         """
-        self.MasterResourceSpec = None
-        self.CoreResourceSpec = None
-        self.TaskResourceSpec = None
-        self.CommonResourceSpec = None
-        self.MasterCount = None
-        self.CoreCount = None
-        self.TaskCount = None
-        self.CommonCount = None
+        self._MasterResourceSpec = None
+        self._CoreResourceSpec = None
+        self._TaskResourceSpec = None
+        self._CommonResourceSpec = None
+        self._MasterCount = None
+        self._CoreCount = None
+        self._TaskCount = None
+        self._CommonCount = None
+
+    @property
+    def MasterResourceSpec(self):
+        return self._MasterResourceSpec
+
+    @MasterResourceSpec.setter
+    def MasterResourceSpec(self, MasterResourceSpec):
+        self._MasterResourceSpec = MasterResourceSpec
+
+    @property
+    def CoreResourceSpec(self):
+        return self._CoreResourceSpec
+
+    @CoreResourceSpec.setter
+    def CoreResourceSpec(self, CoreResourceSpec):
+        self._CoreResourceSpec = CoreResourceSpec
+
+    @property
+    def TaskResourceSpec(self):
+        return self._TaskResourceSpec
+
+    @TaskResourceSpec.setter
+    def TaskResourceSpec(self, TaskResourceSpec):
+        self._TaskResourceSpec = TaskResourceSpec
+
+    @property
+    def CommonResourceSpec(self):
+        return self._CommonResourceSpec
+
+    @CommonResourceSpec.setter
+    def CommonResourceSpec(self, CommonResourceSpec):
+        self._CommonResourceSpec = CommonResourceSpec
+
+    @property
+    def MasterCount(self):
+        return self._MasterCount
+
+    @MasterCount.setter
+    def MasterCount(self, MasterCount):
+        self._MasterCount = MasterCount
+
+    @property
+    def CoreCount(self):
+        return self._CoreCount
+
+    @CoreCount.setter
+    def CoreCount(self, CoreCount):
+        self._CoreCount = CoreCount
+
+    @property
+    def TaskCount(self):
+        return self._TaskCount
+
+    @TaskCount.setter
+    def TaskCount(self, TaskCount):
+        self._TaskCount = TaskCount
+
+    @property
+    def CommonCount(self):
+        return self._CommonCount
+
+    @CommonCount.setter
+    def CommonCount(self, CommonCount):
+        self._CommonCount = CommonCount
 
 
     def _deserialize(self, params):
         if params.get("MasterResourceSpec") is not None:
-            self.MasterResourceSpec = NodeResourceSpec()
-            self.MasterResourceSpec._deserialize(params.get("MasterResourceSpec"))
+            self._MasterResourceSpec = NodeResourceSpec()
+            self._MasterResourceSpec._deserialize(params.get("MasterResourceSpec"))
         if params.get("CoreResourceSpec") is not None:
-            self.CoreResourceSpec = NodeResourceSpec()
-            self.CoreResourceSpec._deserialize(params.get("CoreResourceSpec"))
+            self._CoreResourceSpec = NodeResourceSpec()
+            self._CoreResourceSpec._deserialize(params.get("CoreResourceSpec"))
         if params.get("TaskResourceSpec") is not None:
-            self.TaskResourceSpec = NodeResourceSpec()
-            self.TaskResourceSpec._deserialize(params.get("TaskResourceSpec"))
+            self._TaskResourceSpec = NodeResourceSpec()
+            self._TaskResourceSpec._deserialize(params.get("TaskResourceSpec"))
         if params.get("CommonResourceSpec") is not None:
-            self.CommonResourceSpec = NodeResourceSpec()
-            self.CommonResourceSpec._deserialize(params.get("CommonResourceSpec"))
-        self.MasterCount = params.get("MasterCount")
-        self.CoreCount = params.get("CoreCount")
-        self.TaskCount = params.get("TaskCount")
-        self.CommonCount = params.get("CommonCount")
+            self._CommonResourceSpec = NodeResourceSpec()
+            self._CommonResourceSpec._deserialize(params.get("CommonResourceSpec"))
+        self._MasterCount = params.get("MasterCount")
+        self._CoreCount = params.get("CoreCount")
+        self._TaskCount = params.get("TaskCount")
+        self._CommonCount = params.get("CommonCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -153,46 +259,111 @@ class ApplicationStatics(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Queue: Queue name
+        :param _Queue: Queue name
         :type Queue: str
-        :param User: Username
+        :param _User: Username
         :type User: str
-        :param ApplicationType: Application type
+        :param _ApplicationType: Application type
         :type ApplicationType: str
-        :param SumMemorySeconds: `SumMemorySeconds` meaning
+        :param _SumMemorySeconds: `SumMemorySeconds` meaning
         :type SumMemorySeconds: int
-        :param SumVCoreSeconds: 
+        :param _SumVCoreSeconds: 
         :type SumVCoreSeconds: int
-        :param SumHDFSBytesWritten: SumHDFSBytesWritten (with unit)
+        :param _SumHDFSBytesWritten: SumHDFSBytesWritten (with unit)
         :type SumHDFSBytesWritten: str
-        :param SumHDFSBytesRead: SumHDFSBytesRead (with unit)
+        :param _SumHDFSBytesRead: SumHDFSBytesRead (with unit)
         :type SumHDFSBytesRead: str
-        :param CountApps: Application count
+        :param _CountApps: Application count
         :type CountApps: int
         """
-        self.Queue = None
-        self.User = None
-        self.ApplicationType = None
-        self.SumMemorySeconds = None
-        self.SumVCoreSeconds = None
-        self.SumHDFSBytesWritten = None
-        self.SumHDFSBytesRead = None
-        self.CountApps = None
+        self._Queue = None
+        self._User = None
+        self._ApplicationType = None
+        self._SumMemorySeconds = None
+        self._SumVCoreSeconds = None
+        self._SumHDFSBytesWritten = None
+        self._SumHDFSBytesRead = None
+        self._CountApps = None
+
+    @property
+    def Queue(self):
+        return self._Queue
+
+    @Queue.setter
+    def Queue(self, Queue):
+        self._Queue = Queue
+
+    @property
+    def User(self):
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def ApplicationType(self):
+        return self._ApplicationType
+
+    @ApplicationType.setter
+    def ApplicationType(self, ApplicationType):
+        self._ApplicationType = ApplicationType
+
+    @property
+    def SumMemorySeconds(self):
+        return self._SumMemorySeconds
+
+    @SumMemorySeconds.setter
+    def SumMemorySeconds(self, SumMemorySeconds):
+        self._SumMemorySeconds = SumMemorySeconds
+
+    @property
+    def SumVCoreSeconds(self):
+        return self._SumVCoreSeconds
+
+    @SumVCoreSeconds.setter
+    def SumVCoreSeconds(self, SumVCoreSeconds):
+        self._SumVCoreSeconds = SumVCoreSeconds
+
+    @property
+    def SumHDFSBytesWritten(self):
+        return self._SumHDFSBytesWritten
+
+    @SumHDFSBytesWritten.setter
+    def SumHDFSBytesWritten(self, SumHDFSBytesWritten):
+        self._SumHDFSBytesWritten = SumHDFSBytesWritten
+
+    @property
+    def SumHDFSBytesRead(self):
+        return self._SumHDFSBytesRead
+
+    @SumHDFSBytesRead.setter
+    def SumHDFSBytesRead(self, SumHDFSBytesRead):
+        self._SumHDFSBytesRead = SumHDFSBytesRead
+
+    @property
+    def CountApps(self):
+        return self._CountApps
+
+    @CountApps.setter
+    def CountApps(self, CountApps):
+        self._CountApps = CountApps
 
 
     def _deserialize(self, params):
-        self.Queue = params.get("Queue")
-        self.User = params.get("User")
-        self.ApplicationType = params.get("ApplicationType")
-        self.SumMemorySeconds = params.get("SumMemorySeconds")
-        self.SumVCoreSeconds = params.get("SumVCoreSeconds")
-        self.SumHDFSBytesWritten = params.get("SumHDFSBytesWritten")
-        self.SumHDFSBytesRead = params.get("SumHDFSBytesRead")
-        self.CountApps = params.get("CountApps")
+        self._Queue = params.get("Queue")
+        self._User = params.get("User")
+        self._ApplicationType = params.get("ApplicationType")
+        self._SumMemorySeconds = params.get("SumMemorySeconds")
+        self._SumVCoreSeconds = params.get("SumVCoreSeconds")
+        self._SumHDFSBytesWritten = params.get("SumHDFSBytesWritten")
+        self._SumHDFSBytesRead = params.get("SumHDFSBytesRead")
+        self._CountApps = params.get("CountApps")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -205,26 +376,51 @@ class COSSettings(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CosSecretId: COS `SecretId`
+        :param _CosSecretId: COS `SecretId`
         :type CosSecretId: str
-        :param CosSecretKey: COS `SecrectKey`
+        :param _CosSecretKey: COS `SecrectKey`
         :type CosSecretKey: str
-        :param LogOnCosPath: COS path to log
+        :param _LogOnCosPath: COS path to log
         :type LogOnCosPath: str
         """
-        self.CosSecretId = None
-        self.CosSecretKey = None
-        self.LogOnCosPath = None
+        self._CosSecretId = None
+        self._CosSecretKey = None
+        self._LogOnCosPath = None
+
+    @property
+    def CosSecretId(self):
+        return self._CosSecretId
+
+    @CosSecretId.setter
+    def CosSecretId(self, CosSecretId):
+        self._CosSecretId = CosSecretId
+
+    @property
+    def CosSecretKey(self):
+        return self._CosSecretKey
+
+    @CosSecretKey.setter
+    def CosSecretKey(self, CosSecretKey):
+        self._CosSecretKey = CosSecretKey
+
+    @property
+    def LogOnCosPath(self):
+        return self._LogOnCosPath
+
+    @LogOnCosPath.setter
+    def LogOnCosPath(self, LogOnCosPath):
+        self._LogOnCosPath = LogOnCosPath
 
 
     def _deserialize(self, params):
-        self.CosSecretId = params.get("CosSecretId")
-        self.CosSecretKey = params.get("CosSecretKey")
-        self.LogOnCosPath = params.get("LogOnCosPath")
+        self._CosSecretId = params.get("CosSecretId")
+        self._CosSecretKey = params.get("CosSecretKey")
+        self._LogOnCosPath = params.get("LogOnCosPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -237,89 +433,210 @@ class CdbInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceName: Database instance
+        :param _InstanceName: Database instance
 Note: this field may return null, indicating that no valid values can be obtained.
         :type InstanceName: str
-        :param Ip: Database IP
+        :param _Ip: Database IP
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Ip: str
-        :param Port: Database port
+        :param _Port: Database port
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Port: int
-        :param MemSize: Database memory specification
+        :param _MemSize: Database memory specification
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MemSize: int
-        :param Volume: Database disk specification
+        :param _Volume: Database disk specification
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Volume: int
-        :param Service: Service flag
+        :param _Service: Service flag
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Service: str
-        :param ExpireTime: Expiration time
+        :param _ExpireTime: Expiration time
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ExpireTime: str
-        :param ApplyTime: Application time
+        :param _ApplyTime: Application time
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApplyTime: str
-        :param PayType: Payment type
+        :param _PayType: Payment type
 Note: this field may return null, indicating that no valid values can be obtained.
         :type PayType: int
-        :param ExpireFlag: Expiration flag
+        :param _ExpireFlag: Expiration flag
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ExpireFlag: bool
-        :param Status: Database status
+        :param _Status: Database status
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Status: int
-        :param IsAutoRenew: Renewal flag
+        :param _IsAutoRenew: Renewal flag
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IsAutoRenew: int
-        :param SerialNo: Database string
+        :param _SerialNo: Database string
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SerialNo: str
-        :param ZoneId: ZoneId
+        :param _ZoneId: ZoneId
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ZoneId: int
-        :param RegionId: RegionId
+        :param _RegionId: RegionId
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RegionId: int
         """
-        self.InstanceName = None
-        self.Ip = None
-        self.Port = None
-        self.MemSize = None
-        self.Volume = None
-        self.Service = None
-        self.ExpireTime = None
-        self.ApplyTime = None
-        self.PayType = None
-        self.ExpireFlag = None
-        self.Status = None
-        self.IsAutoRenew = None
-        self.SerialNo = None
-        self.ZoneId = None
-        self.RegionId = None
+        self._InstanceName = None
+        self._Ip = None
+        self._Port = None
+        self._MemSize = None
+        self._Volume = None
+        self._Service = None
+        self._ExpireTime = None
+        self._ApplyTime = None
+        self._PayType = None
+        self._ExpireFlag = None
+        self._Status = None
+        self._IsAutoRenew = None
+        self._SerialNo = None
+        self._ZoneId = None
+        self._RegionId = None
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def Ip(self):
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def MemSize(self):
+        return self._MemSize
+
+    @MemSize.setter
+    def MemSize(self, MemSize):
+        self._MemSize = MemSize
+
+    @property
+    def Volume(self):
+        return self._Volume
+
+    @Volume.setter
+    def Volume(self, Volume):
+        self._Volume = Volume
+
+    @property
+    def Service(self):
+        return self._Service
+
+    @Service.setter
+    def Service(self, Service):
+        self._Service = Service
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def ApplyTime(self):
+        return self._ApplyTime
+
+    @ApplyTime.setter
+    def ApplyTime(self, ApplyTime):
+        self._ApplyTime = ApplyTime
+
+    @property
+    def PayType(self):
+        return self._PayType
+
+    @PayType.setter
+    def PayType(self, PayType):
+        self._PayType = PayType
+
+    @property
+    def ExpireFlag(self):
+        return self._ExpireFlag
+
+    @ExpireFlag.setter
+    def ExpireFlag(self, ExpireFlag):
+        self._ExpireFlag = ExpireFlag
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def IsAutoRenew(self):
+        return self._IsAutoRenew
+
+    @IsAutoRenew.setter
+    def IsAutoRenew(self, IsAutoRenew):
+        self._IsAutoRenew = IsAutoRenew
+
+    @property
+    def SerialNo(self):
+        return self._SerialNo
+
+    @SerialNo.setter
+    def SerialNo(self, SerialNo):
+        self._SerialNo = SerialNo
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def RegionId(self):
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
 
 
     def _deserialize(self, params):
-        self.InstanceName = params.get("InstanceName")
-        self.Ip = params.get("Ip")
-        self.Port = params.get("Port")
-        self.MemSize = params.get("MemSize")
-        self.Volume = params.get("Volume")
-        self.Service = params.get("Service")
-        self.ExpireTime = params.get("ExpireTime")
-        self.ApplyTime = params.get("ApplyTime")
-        self.PayType = params.get("PayType")
-        self.ExpireFlag = params.get("ExpireFlag")
-        self.Status = params.get("Status")
-        self.IsAutoRenew = params.get("IsAutoRenew")
-        self.SerialNo = params.get("SerialNo")
-        self.ZoneId = params.get("ZoneId")
-        self.RegionId = params.get("RegionId")
+        self._InstanceName = params.get("InstanceName")
+        self._Ip = params.get("Ip")
+        self._Port = params.get("Port")
+        self._MemSize = params.get("MemSize")
+        self._Volume = params.get("Volume")
+        self._Service = params.get("Service")
+        self._ExpireTime = params.get("ExpireTime")
+        self._ApplyTime = params.get("ApplyTime")
+        self._PayType = params.get("PayType")
+        self._ExpireFlag = params.get("ExpireFlag")
+        self._Status = params.get("Status")
+        self._IsAutoRenew = params.get("IsAutoRenew")
+        self._SerialNo = params.get("SerialNo")
+        self._ZoneId = params.get("ZoneId")
+        self._RegionId = params.get("RegionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -332,34 +649,67 @@ class ClusterExternalServiceInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DependType: Dependency. `0`: Other clusters depend on the current cluster. `1`: The current cluster depends on other clusters.
+        :param _DependType: Dependency. `0`: Other clusters depend on the current cluster. `1`: The current cluster depends on other clusters.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type DependType: int
-        :param Service: Shared component
+        :param _Service: Shared component
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Service: str
-        :param ClusterId: Sharing cluster
+        :param _ClusterId: Sharing cluster
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type ClusterId: str
-        :param ClusterStatus: Sharing cluster status
+        :param _ClusterStatus: Sharing cluster status
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type ClusterStatus: int
         """
-        self.DependType = None
-        self.Service = None
-        self.ClusterId = None
-        self.ClusterStatus = None
+        self._DependType = None
+        self._Service = None
+        self._ClusterId = None
+        self._ClusterStatus = None
+
+    @property
+    def DependType(self):
+        return self._DependType
+
+    @DependType.setter
+    def DependType(self, DependType):
+        self._DependType = DependType
+
+    @property
+    def Service(self):
+        return self._Service
+
+    @Service.setter
+    def Service(self, Service):
+        self._Service = Service
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterStatus(self):
+        return self._ClusterStatus
+
+    @ClusterStatus.setter
+    def ClusterStatus(self, ClusterStatus):
+        self._ClusterStatus = ClusterStatus
 
 
     def _deserialize(self, params):
-        self.DependType = params.get("DependType")
-        self.Service = params.get("Service")
-        self.ClusterId = params.get("ClusterId")
-        self.ClusterStatus = params.get("ClusterStatus")
+        self._DependType = params.get("DependType")
+        self._Service = params.get("Service")
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterStatus = params.get("ClusterStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -372,40 +722,40 @@ class ClusterInstancesInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: ID
+        :param _Id: ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Id: int
-        :param ClusterId: Cluster ID
+        :param _ClusterId: Cluster ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ClusterId: str
-        :param Ftitle: Title
+        :param _Ftitle: Title
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Ftitle: str
-        :param ClusterName: Cluster name
+        :param _ClusterName: Cluster name
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ClusterName: str
-        :param RegionId: Region ID
+        :param _RegionId: Region ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RegionId: int
-        :param ZoneId: Region ID
+        :param _ZoneId: Region ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ZoneId: int
-        :param AppId: User APPID
+        :param _AppId: User APPID
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AppId: int
-        :param Uin: User UIN
+        :param _Uin: User UIN
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Uin: str
-        :param ProjectId: Project ID
+        :param _ProjectId: Project ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ProjectId: int
-        :param VpcId: Cluster `VPCID`
+        :param _VpcId: Cluster `VPCID`
 Note: this field may return null, indicating that no valid values can be obtained.
         :type VpcId: int
-        :param SubnetId: Subnet ID
+        :param _SubnetId: Subnet ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SubnetId: int
-        :param Status: Instance status code. Value range:
+        :param _Status: Instance status code. Value range:
 <li>2: cluster running</li>
 <li>3: creating cluster.</li>
 <li>4: scaling out cluster.</li>
@@ -435,205 +785,542 @@ Note: this field may return null, indicating that no valid values can be obtaine
 <li>302: scale-out failed.</li>
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Status: int
-        :param AddTime: Creation time
+        :param _AddTime: Creation time
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AddTime: str
-        :param RunTime: Execution duration
+        :param _RunTime: Execution duration
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RunTime: str
-        :param Config: Cluster product configuration information
+        :param _Config: Cluster product configuration information
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Config: :class:`tencentcloud.emr.v20190103.models.EmrProductConfigOutter`
-        :param MasterIp: Public IP of master node
+        :param _MasterIp: Public IP of master node
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MasterIp: str
-        :param EmrVersion: EMR version
+        :param _EmrVersion: EMR version
 Note: this field may return null, indicating that no valid values can be obtained.
         :type EmrVersion: str
-        :param ChargeType: Billing mode
+        :param _ChargeType: Billing mode
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ChargeType: int
-        :param TradeVersion: Transaction version
+        :param _TradeVersion: Transaction version
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TradeVersion: int
-        :param ResourceOrderId: Resource order ID
+        :param _ResourceOrderId: Resource order ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ResourceOrderId: int
-        :param IsTradeCluster: Whether this is a paid cluster
+        :param _IsTradeCluster: Whether this is a paid cluster
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IsTradeCluster: int
-        :param AlarmInfo: Alarm information for cluster error
+        :param _AlarmInfo: Alarm information for cluster error
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AlarmInfo: str
-        :param IsWoodpeckerCluster: Whether the new architecture is used
+        :param _IsWoodpeckerCluster: Whether the new architecture is used
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IsWoodpeckerCluster: int
-        :param MetaDb: Metadatabase information
+        :param _MetaDb: Metadatabase information
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MetaDb: str
-        :param Tags: Tag information
+        :param _Tags: Tag information
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Tags: list of Tag
-        :param HiveMetaDb: Hive metadata
+        :param _HiveMetaDb: Hive metadata
 Note: this field may return null, indicating that no valid values can be obtained.
         :type HiveMetaDb: str
-        :param ServiceClass: Cluster type: EMR, CLICKHOUSE, DRUID
+        :param _ServiceClass: Cluster type: EMR, CLICKHOUSE, DRUID
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceClass: str
-        :param AliasInfo: Alias serialization of all nodes in cluster
+        :param _AliasInfo: Alias serialization of all nodes in cluster
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AliasInfo: str
-        :param ProductId: Cluster version ID
+        :param _ProductId: Cluster version ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ProductId: int
-        :param Zone: Availability zone
+        :param _Zone: Availability zone
 Note: this field may return `null`, indicating that no valid value can be obtained.
         :type Zone: str
-        :param SceneName: Scenario name
+        :param _SceneName: Scenario name
 Note: This field may return `null`, indicating that no valid value was found.
         :type SceneName: str
-        :param SceneServiceClass: Scenario-based cluster type
+        :param _SceneServiceClass: Scenario-based cluster type
 Note: This field may return `null`, indicating that no valid value was found.
         :type SceneServiceClass: str
-        :param SceneEmrVersion: Scenario-based EMR version
+        :param _SceneEmrVersion: Scenario-based EMR version
 Note: This field may return `null`, indicating that no valid value was found.
         :type SceneEmrVersion: str
-        :param DisplayName: Scenario-based cluster type
+        :param _DisplayName: Scenario-based cluster type
 Note: This field may return `null`, indicating that no valid value was found.
         :type DisplayName: str
-        :param VpcName: VPC name
+        :param _VpcName: VPC name
 Note: This field may return `null`, indicating that no valid value was found.
         :type VpcName: str
-        :param SubnetName: Subnet name
+        :param _SubnetName: Subnet name
 Note: This field may return `null`, indicating that no valid value was found.
         :type SubnetName: str
-        :param ClusterExternalServiceInfo: Cluster dependency
+        :param _ClusterExternalServiceInfo: Cluster dependency
 Note: This field may return `null`, indicating that no valid value was found.
         :type ClusterExternalServiceInfo: list of ClusterExternalServiceInfo
-        :param UniqVpcId: The VPC ID string type of the cluster
+        :param _UniqVpcId: The VPC ID string type of the cluster
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type UniqVpcId: str
-        :param UniqSubnetId: The subnet ID string type of the cluster
+        :param _UniqSubnetId: The subnet ID string type of the cluster
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type UniqSubnetId: str
-        :param TopologyInfoList: Node information
+        :param _TopologyInfoList: Node information
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type TopologyInfoList: list of TopologyInfo
-        :param IsMultiZoneCluster: Multi-AZ cluster
+        :param _IsMultiZoneCluster: Multi-AZ cluster
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type IsMultiZoneCluster: bool
-        :param IsCvmReplace: Whether the feature of automatic abnormal node replacement is enabled.
+        :param _IsCvmReplace: Whether the feature of automatic abnormal node replacement is enabled.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IsCvmReplace: bool
         """
-        self.Id = None
-        self.ClusterId = None
-        self.Ftitle = None
-        self.ClusterName = None
-        self.RegionId = None
-        self.ZoneId = None
-        self.AppId = None
-        self.Uin = None
-        self.ProjectId = None
-        self.VpcId = None
-        self.SubnetId = None
-        self.Status = None
-        self.AddTime = None
-        self.RunTime = None
-        self.Config = None
-        self.MasterIp = None
-        self.EmrVersion = None
-        self.ChargeType = None
-        self.TradeVersion = None
-        self.ResourceOrderId = None
-        self.IsTradeCluster = None
-        self.AlarmInfo = None
-        self.IsWoodpeckerCluster = None
-        self.MetaDb = None
-        self.Tags = None
-        self.HiveMetaDb = None
-        self.ServiceClass = None
-        self.AliasInfo = None
-        self.ProductId = None
-        self.Zone = None
-        self.SceneName = None
-        self.SceneServiceClass = None
-        self.SceneEmrVersion = None
-        self.DisplayName = None
-        self.VpcName = None
-        self.SubnetName = None
-        self.ClusterExternalServiceInfo = None
-        self.UniqVpcId = None
-        self.UniqSubnetId = None
-        self.TopologyInfoList = None
-        self.IsMultiZoneCluster = None
-        self.IsCvmReplace = None
+        self._Id = None
+        self._ClusterId = None
+        self._Ftitle = None
+        self._ClusterName = None
+        self._RegionId = None
+        self._ZoneId = None
+        self._AppId = None
+        self._Uin = None
+        self._ProjectId = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._Status = None
+        self._AddTime = None
+        self._RunTime = None
+        self._Config = None
+        self._MasterIp = None
+        self._EmrVersion = None
+        self._ChargeType = None
+        self._TradeVersion = None
+        self._ResourceOrderId = None
+        self._IsTradeCluster = None
+        self._AlarmInfo = None
+        self._IsWoodpeckerCluster = None
+        self._MetaDb = None
+        self._Tags = None
+        self._HiveMetaDb = None
+        self._ServiceClass = None
+        self._AliasInfo = None
+        self._ProductId = None
+        self._Zone = None
+        self._SceneName = None
+        self._SceneServiceClass = None
+        self._SceneEmrVersion = None
+        self._DisplayName = None
+        self._VpcName = None
+        self._SubnetName = None
+        self._ClusterExternalServiceInfo = None
+        self._UniqVpcId = None
+        self._UniqSubnetId = None
+        self._TopologyInfoList = None
+        self._IsMultiZoneCluster = None
+        self._IsCvmReplace = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Ftitle(self):
+        return self._Ftitle
+
+    @Ftitle.setter
+    def Ftitle(self, Ftitle):
+        self._Ftitle = Ftitle
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def RegionId(self):
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def AddTime(self):
+        return self._AddTime
+
+    @AddTime.setter
+    def AddTime(self, AddTime):
+        self._AddTime = AddTime
+
+    @property
+    def RunTime(self):
+        return self._RunTime
+
+    @RunTime.setter
+    def RunTime(self, RunTime):
+        self._RunTime = RunTime
+
+    @property
+    def Config(self):
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+    @property
+    def MasterIp(self):
+        return self._MasterIp
+
+    @MasterIp.setter
+    def MasterIp(self, MasterIp):
+        self._MasterIp = MasterIp
+
+    @property
+    def EmrVersion(self):
+        return self._EmrVersion
+
+    @EmrVersion.setter
+    def EmrVersion(self, EmrVersion):
+        self._EmrVersion = EmrVersion
+
+    @property
+    def ChargeType(self):
+        return self._ChargeType
+
+    @ChargeType.setter
+    def ChargeType(self, ChargeType):
+        self._ChargeType = ChargeType
+
+    @property
+    def TradeVersion(self):
+        return self._TradeVersion
+
+    @TradeVersion.setter
+    def TradeVersion(self, TradeVersion):
+        self._TradeVersion = TradeVersion
+
+    @property
+    def ResourceOrderId(self):
+        return self._ResourceOrderId
+
+    @ResourceOrderId.setter
+    def ResourceOrderId(self, ResourceOrderId):
+        self._ResourceOrderId = ResourceOrderId
+
+    @property
+    def IsTradeCluster(self):
+        return self._IsTradeCluster
+
+    @IsTradeCluster.setter
+    def IsTradeCluster(self, IsTradeCluster):
+        self._IsTradeCluster = IsTradeCluster
+
+    @property
+    def AlarmInfo(self):
+        return self._AlarmInfo
+
+    @AlarmInfo.setter
+    def AlarmInfo(self, AlarmInfo):
+        self._AlarmInfo = AlarmInfo
+
+    @property
+    def IsWoodpeckerCluster(self):
+        return self._IsWoodpeckerCluster
+
+    @IsWoodpeckerCluster.setter
+    def IsWoodpeckerCluster(self, IsWoodpeckerCluster):
+        self._IsWoodpeckerCluster = IsWoodpeckerCluster
+
+    @property
+    def MetaDb(self):
+        return self._MetaDb
+
+    @MetaDb.setter
+    def MetaDb(self, MetaDb):
+        self._MetaDb = MetaDb
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def HiveMetaDb(self):
+        return self._HiveMetaDb
+
+    @HiveMetaDb.setter
+    def HiveMetaDb(self, HiveMetaDb):
+        self._HiveMetaDb = HiveMetaDb
+
+    @property
+    def ServiceClass(self):
+        return self._ServiceClass
+
+    @ServiceClass.setter
+    def ServiceClass(self, ServiceClass):
+        self._ServiceClass = ServiceClass
+
+    @property
+    def AliasInfo(self):
+        return self._AliasInfo
+
+    @AliasInfo.setter
+    def AliasInfo(self, AliasInfo):
+        self._AliasInfo = AliasInfo
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def SceneName(self):
+        return self._SceneName
+
+    @SceneName.setter
+    def SceneName(self, SceneName):
+        self._SceneName = SceneName
+
+    @property
+    def SceneServiceClass(self):
+        return self._SceneServiceClass
+
+    @SceneServiceClass.setter
+    def SceneServiceClass(self, SceneServiceClass):
+        self._SceneServiceClass = SceneServiceClass
+
+    @property
+    def SceneEmrVersion(self):
+        return self._SceneEmrVersion
+
+    @SceneEmrVersion.setter
+    def SceneEmrVersion(self, SceneEmrVersion):
+        self._SceneEmrVersion = SceneEmrVersion
+
+    @property
+    def DisplayName(self):
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def VpcName(self):
+        return self._VpcName
+
+    @VpcName.setter
+    def VpcName(self, VpcName):
+        self._VpcName = VpcName
+
+    @property
+    def SubnetName(self):
+        return self._SubnetName
+
+    @SubnetName.setter
+    def SubnetName(self, SubnetName):
+        self._SubnetName = SubnetName
+
+    @property
+    def ClusterExternalServiceInfo(self):
+        return self._ClusterExternalServiceInfo
+
+    @ClusterExternalServiceInfo.setter
+    def ClusterExternalServiceInfo(self, ClusterExternalServiceInfo):
+        self._ClusterExternalServiceInfo = ClusterExternalServiceInfo
+
+    @property
+    def UniqVpcId(self):
+        return self._UniqVpcId
+
+    @UniqVpcId.setter
+    def UniqVpcId(self, UniqVpcId):
+        self._UniqVpcId = UniqVpcId
+
+    @property
+    def UniqSubnetId(self):
+        return self._UniqSubnetId
+
+    @UniqSubnetId.setter
+    def UniqSubnetId(self, UniqSubnetId):
+        self._UniqSubnetId = UniqSubnetId
+
+    @property
+    def TopologyInfoList(self):
+        return self._TopologyInfoList
+
+    @TopologyInfoList.setter
+    def TopologyInfoList(self, TopologyInfoList):
+        self._TopologyInfoList = TopologyInfoList
+
+    @property
+    def IsMultiZoneCluster(self):
+        return self._IsMultiZoneCluster
+
+    @IsMultiZoneCluster.setter
+    def IsMultiZoneCluster(self, IsMultiZoneCluster):
+        self._IsMultiZoneCluster = IsMultiZoneCluster
+
+    @property
+    def IsCvmReplace(self):
+        return self._IsCvmReplace
+
+    @IsCvmReplace.setter
+    def IsCvmReplace(self, IsCvmReplace):
+        self._IsCvmReplace = IsCvmReplace
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.ClusterId = params.get("ClusterId")
-        self.Ftitle = params.get("Ftitle")
-        self.ClusterName = params.get("ClusterName")
-        self.RegionId = params.get("RegionId")
-        self.ZoneId = params.get("ZoneId")
-        self.AppId = params.get("AppId")
-        self.Uin = params.get("Uin")
-        self.ProjectId = params.get("ProjectId")
-        self.VpcId = params.get("VpcId")
-        self.SubnetId = params.get("SubnetId")
-        self.Status = params.get("Status")
-        self.AddTime = params.get("AddTime")
-        self.RunTime = params.get("RunTime")
+        self._Id = params.get("Id")
+        self._ClusterId = params.get("ClusterId")
+        self._Ftitle = params.get("Ftitle")
+        self._ClusterName = params.get("ClusterName")
+        self._RegionId = params.get("RegionId")
+        self._ZoneId = params.get("ZoneId")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._ProjectId = params.get("ProjectId")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._Status = params.get("Status")
+        self._AddTime = params.get("AddTime")
+        self._RunTime = params.get("RunTime")
         if params.get("Config") is not None:
-            self.Config = EmrProductConfigOutter()
-            self.Config._deserialize(params.get("Config"))
-        self.MasterIp = params.get("MasterIp")
-        self.EmrVersion = params.get("EmrVersion")
-        self.ChargeType = params.get("ChargeType")
-        self.TradeVersion = params.get("TradeVersion")
-        self.ResourceOrderId = params.get("ResourceOrderId")
-        self.IsTradeCluster = params.get("IsTradeCluster")
-        self.AlarmInfo = params.get("AlarmInfo")
-        self.IsWoodpeckerCluster = params.get("IsWoodpeckerCluster")
-        self.MetaDb = params.get("MetaDb")
+            self._Config = EmrProductConfigOutter()
+            self._Config._deserialize(params.get("Config"))
+        self._MasterIp = params.get("MasterIp")
+        self._EmrVersion = params.get("EmrVersion")
+        self._ChargeType = params.get("ChargeType")
+        self._TradeVersion = params.get("TradeVersion")
+        self._ResourceOrderId = params.get("ResourceOrderId")
+        self._IsTradeCluster = params.get("IsTradeCluster")
+        self._AlarmInfo = params.get("AlarmInfo")
+        self._IsWoodpeckerCluster = params.get("IsWoodpeckerCluster")
+        self._MetaDb = params.get("MetaDb")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.HiveMetaDb = params.get("HiveMetaDb")
-        self.ServiceClass = params.get("ServiceClass")
-        self.AliasInfo = params.get("AliasInfo")
-        self.ProductId = params.get("ProductId")
-        self.Zone = params.get("Zone")
-        self.SceneName = params.get("SceneName")
-        self.SceneServiceClass = params.get("SceneServiceClass")
-        self.SceneEmrVersion = params.get("SceneEmrVersion")
-        self.DisplayName = params.get("DisplayName")
-        self.VpcName = params.get("VpcName")
-        self.SubnetName = params.get("SubnetName")
+                self._Tags.append(obj)
+        self._HiveMetaDb = params.get("HiveMetaDb")
+        self._ServiceClass = params.get("ServiceClass")
+        self._AliasInfo = params.get("AliasInfo")
+        self._ProductId = params.get("ProductId")
+        self._Zone = params.get("Zone")
+        self._SceneName = params.get("SceneName")
+        self._SceneServiceClass = params.get("SceneServiceClass")
+        self._SceneEmrVersion = params.get("SceneEmrVersion")
+        self._DisplayName = params.get("DisplayName")
+        self._VpcName = params.get("VpcName")
+        self._SubnetName = params.get("SubnetName")
         if params.get("ClusterExternalServiceInfo") is not None:
-            self.ClusterExternalServiceInfo = []
+            self._ClusterExternalServiceInfo = []
             for item in params.get("ClusterExternalServiceInfo"):
                 obj = ClusterExternalServiceInfo()
                 obj._deserialize(item)
-                self.ClusterExternalServiceInfo.append(obj)
-        self.UniqVpcId = params.get("UniqVpcId")
-        self.UniqSubnetId = params.get("UniqSubnetId")
+                self._ClusterExternalServiceInfo.append(obj)
+        self._UniqVpcId = params.get("UniqVpcId")
+        self._UniqSubnetId = params.get("UniqSubnetId")
         if params.get("TopologyInfoList") is not None:
-            self.TopologyInfoList = []
+            self._TopologyInfoList = []
             for item in params.get("TopologyInfoList"):
                 obj = TopologyInfo()
                 obj._deserialize(item)
-                self.TopologyInfoList.append(obj)
-        self.IsMultiZoneCluster = params.get("IsMultiZoneCluster")
-        self.IsCvmReplace = params.get("IsCvmReplace")
+                self._TopologyInfoList.append(obj)
+        self._IsMultiZoneCluster = params.get("IsMultiZoneCluster")
+        self._IsCvmReplace = params.get("IsCvmReplace")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -646,24 +1333,41 @@ class ComponentBasicRestartInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ComponentName: The process name (required), such as NameNode.
+        :param _ComponentName: The process name (required), such as NameNode.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ComponentName: str
-        :param IpList: The target IP list.
+        :param _IpList: The target IP list.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IpList: list of str
         """
-        self.ComponentName = None
-        self.IpList = None
+        self._ComponentName = None
+        self._IpList = None
+
+    @property
+    def ComponentName(self):
+        return self._ComponentName
+
+    @ComponentName.setter
+    def ComponentName(self, ComponentName):
+        self._ComponentName = ComponentName
+
+    @property
+    def IpList(self):
+        return self._IpList
+
+    @IpList.setter
+    def IpList(self, IpList):
+        self._IpList = IpList
 
 
     def _deserialize(self, params):
-        self.ComponentName = params.get("ComponentName")
-        self.IpList = params.get("IpList")
+        self._ComponentName = params.get("ComponentName")
+        self._IpList = params.get("IpList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -676,140 +1380,301 @@ class CreateClusterRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProductVersion: The EMR version, such as `EMR-V2.3.0` that indicates the version 2.3.0 of EMR. You can query the EMR version [here](https://intl.cloud.tencent.com/document/product/589/66338?from_cn_redirect=1).
+        :param _ProductVersion: The EMR version, such as `EMR-V2.3.0` that indicates the version 2.3.0 of EMR. You can query the EMR version [here](https://intl.cloud.tencent.com/document/product/589/66338?from_cn_redirect=1).
         :type ProductVersion: str
-        :param EnableSupportHAFlag: Whether to enable high availability for nodes. Valid values:
+        :param _EnableSupportHAFlag: Whether to enable high availability for nodes. Valid values:
 <li>`true`: Enable</li>
 <li>`false`: Disable</li>
         :type EnableSupportHAFlag: bool
-        :param InstanceName: The instance name.
+        :param _InstanceName: The instance name.
 <li>Length limit: 6–36 characters.</li>
 <li>Can contain only Chinese characters, letters, digits, hyphens (-), and underscores (_).</li>
         :type InstanceName: str
-        :param InstanceChargeType: The instance billing mode. Valid values:
+        :param _InstanceChargeType: The instance billing mode. Valid values:
 <li>`POSTPAID_BY_HOUR`: The postpaid mode by hour.</li>
         :type InstanceChargeType: str
-        :param LoginSettings: The instance login setting. This parameter allows you to set a login password or key for your purchased node.
+        :param _LoginSettings: The instance login setting. This parameter allows you to set a login password or key for your purchased node.
 <li>If a key is set, the password will be used for login to the native component WebUI only.</li>
 <li>If no key is set, the password will be used for login to all purchased nodes and the native component WebUI.</li>
         :type LoginSettings: :class:`tencentcloud.emr.v20190103.models.LoginSettings`
-        :param SceneSoftwareConfig: The configuration of cluster application scenario and supported components.
+        :param _SceneSoftwareConfig: The configuration of cluster application scenario and supported components.
         :type SceneSoftwareConfig: :class:`tencentcloud.emr.v20190103.models.SceneSoftwareConfig`
-        :param InstanceChargePrepaid: The details of the monthly subscription, including the instance period and auto-renewal. It is required if `InstanceChargeType` is `PREPAID`.
+        :param _InstanceChargePrepaid: The details of the monthly subscription, including the instance period and auto-renewal. It is required if `InstanceChargeType` is `PREPAID`.
         :type InstanceChargePrepaid: :class:`tencentcloud.emr.v20190103.models.InstanceChargePrepaid`
-        :param SecurityGroupIds: The ID of the security group to which the instance belongs, in the format of `sg-xxxxxxxx`. You can call the [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1) API and obtain this parameter from the `SecurityGroupId` field in the response.
+        :param _SecurityGroupIds: The ID of the security group to which the instance belongs, in the format of `sg-xxxxxxxx`. You can call the [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1) API and obtain this parameter from the `SecurityGroupId` field in the response.
         :type SecurityGroupIds: list of str
-        :param ScriptBootstrapActionConfig: The [Bootstrap action](https://intl.cloud.tencent.com/document/product/589/35656?from_cn_redirect=1) script settings.
+        :param _ScriptBootstrapActionConfig: The [Bootstrap action](https://intl.cloud.tencent.com/document/product/589/35656?from_cn_redirect=1) script settings.
         :type ScriptBootstrapActionConfig: list of ScriptBootstrapActionConfig
-        :param ClientToken: A unique random token, which is valid for 5 minutes and needs to be specified by the caller to prevent the client from repeatedly creating resources. An example value is `a9a90aa6-751a-41b6-aad6-fae360632808`.
+        :param _ClientToken: A unique random token, which is valid for 5 minutes and needs to be specified by the caller to prevent the client from repeatedly creating resources. An example value is `a9a90aa6-751a-41b6-aad6-fae360632808`.
         :type ClientToken: str
-        :param NeedMasterWan: Whether to enable public IP access for master nodes. Valid values:
+        :param _NeedMasterWan: Whether to enable public IP access for master nodes. Valid values:
 <li>`NEED_MASTER_WAN`: Enable public IP for master nodes.</li>
 <li>`NOT_NEED_MASTER_WAN`: Disable.</li>The public IP is enabled for master nodes by default.
         :type NeedMasterWan: str
-        :param EnableRemoteLoginFlag: Whether to enable remote login over the public network. It is invalid if `SecurityGroupId` is passed in. It is disabled by default. Valid values:
+        :param _EnableRemoteLoginFlag: Whether to enable remote login over the public network. It is invalid if `SecurityGroupId` is passed in. It is disabled by default. Valid values:
 <li>`true`: Enable</li>
 <li>`false`: Disable</li>
         :type EnableRemoteLoginFlag: bool
-        :param EnableKerberosFlag: Whether to enable Kerberos authentication. Valid values:
+        :param _EnableKerberosFlag: Whether to enable Kerberos authentication. Valid values:
 <li>`true`: Enable</li>
 <li>`false` (default): Disable</li>
         :type EnableKerberosFlag: bool
-        :param CustomConf: [Custom software configuration](https://intl.cloud.tencent.com/document/product/589/35655?from_cn_redirect=1?from_cn_redirect=1)
+        :param _CustomConf: [Custom software configuration](https://intl.cloud.tencent.com/document/product/589/35655?from_cn_redirect=1?from_cn_redirect=1)
         :type CustomConf: str
-        :param Tags: The tag description list. This parameter is used to bind a tag to a resource instance.
+        :param _Tags: The tag description list. This parameter is used to bind a tag to a resource instance.
         :type Tags: list of Tag
-        :param DisasterRecoverGroupIds: The list of spread placement group IDs. Only one can be specified.
+        :param _DisasterRecoverGroupIds: The list of spread placement group IDs. Only one can be specified.
 You can call the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/document/product/213/17810?from_cn_redirect=1) API and obtain this parameter from the `DisasterRecoverGroupId` field in the response.
         :type DisasterRecoverGroupIds: list of str
-        :param EnableCbsEncryptFlag: Whether to enable the cluster-level CBS encryption. Valid values:
+        :param _EnableCbsEncryptFlag: Whether to enable the cluster-level CBS encryption. Valid values:
 <li>`true`: Enable</li>
 <li>`false` (default): Disable</li>
         :type EnableCbsEncryptFlag: bool
-        :param MetaDBInfo: The metadatabase information. If `MetaType` is `EMR_NEW_META`, `MetaDataJdbcUrl`, `MetaDataUser`, `MetaDataPass`, and `UnifyMetaInstanceId` are not required.
+        :param _MetaDBInfo: The metadatabase information. If `MetaType` is `EMR_NEW_META`, `MetaDataJdbcUrl`, `MetaDataUser`, `MetaDataPass`, and `UnifyMetaInstanceId` are not required.
 If `MetaType` is `EMR_EXIT_META`, `UnifyMetaInstanceId` is required.
 If `MetaType` is `USER_CUSTOM_META`, `MetaDataJdbcUrl`, `MetaDataUser`, and `MetaDataPass` are required.
         :type MetaDBInfo: :class:`tencentcloud.emr.v20190103.models.CustomMetaDBInfo`
-        :param DependService: The shared component information.
+        :param _DependService: The shared component information.
         :type DependService: list of DependService
-        :param ZoneResourceConfiguration: The node resource specs. A spec is specified for each AZ, with the first spec for the primary AZ, the second for the backup AZ, and the third for the arbitrator AZ. If the multi-AZ mode is not enabled, only one spec is required.
+        :param _ZoneResourceConfiguration: The node resource specs. A spec is specified for each AZ, with the first spec for the primary AZ, the second for the backup AZ, and the third for the arbitrator AZ. If the multi-AZ mode is not enabled, only one spec is required.
         :type ZoneResourceConfiguration: list of ZoneResourceConfiguration
         """
-        self.ProductVersion = None
-        self.EnableSupportHAFlag = None
-        self.InstanceName = None
-        self.InstanceChargeType = None
-        self.LoginSettings = None
-        self.SceneSoftwareConfig = None
-        self.InstanceChargePrepaid = None
-        self.SecurityGroupIds = None
-        self.ScriptBootstrapActionConfig = None
-        self.ClientToken = None
-        self.NeedMasterWan = None
-        self.EnableRemoteLoginFlag = None
-        self.EnableKerberosFlag = None
-        self.CustomConf = None
-        self.Tags = None
-        self.DisasterRecoverGroupIds = None
-        self.EnableCbsEncryptFlag = None
-        self.MetaDBInfo = None
-        self.DependService = None
-        self.ZoneResourceConfiguration = None
+        self._ProductVersion = None
+        self._EnableSupportHAFlag = None
+        self._InstanceName = None
+        self._InstanceChargeType = None
+        self._LoginSettings = None
+        self._SceneSoftwareConfig = None
+        self._InstanceChargePrepaid = None
+        self._SecurityGroupIds = None
+        self._ScriptBootstrapActionConfig = None
+        self._ClientToken = None
+        self._NeedMasterWan = None
+        self._EnableRemoteLoginFlag = None
+        self._EnableKerberosFlag = None
+        self._CustomConf = None
+        self._Tags = None
+        self._DisasterRecoverGroupIds = None
+        self._EnableCbsEncryptFlag = None
+        self._MetaDBInfo = None
+        self._DependService = None
+        self._ZoneResourceConfiguration = None
+
+    @property
+    def ProductVersion(self):
+        return self._ProductVersion
+
+    @ProductVersion.setter
+    def ProductVersion(self, ProductVersion):
+        self._ProductVersion = ProductVersion
+
+    @property
+    def EnableSupportHAFlag(self):
+        return self._EnableSupportHAFlag
+
+    @EnableSupportHAFlag.setter
+    def EnableSupportHAFlag(self, EnableSupportHAFlag):
+        self._EnableSupportHAFlag = EnableSupportHAFlag
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def InstanceChargeType(self):
+        return self._InstanceChargeType
+
+    @InstanceChargeType.setter
+    def InstanceChargeType(self, InstanceChargeType):
+        self._InstanceChargeType = InstanceChargeType
+
+    @property
+    def LoginSettings(self):
+        return self._LoginSettings
+
+    @LoginSettings.setter
+    def LoginSettings(self, LoginSettings):
+        self._LoginSettings = LoginSettings
+
+    @property
+    def SceneSoftwareConfig(self):
+        return self._SceneSoftwareConfig
+
+    @SceneSoftwareConfig.setter
+    def SceneSoftwareConfig(self, SceneSoftwareConfig):
+        self._SceneSoftwareConfig = SceneSoftwareConfig
+
+    @property
+    def InstanceChargePrepaid(self):
+        return self._InstanceChargePrepaid
+
+    @InstanceChargePrepaid.setter
+    def InstanceChargePrepaid(self, InstanceChargePrepaid):
+        self._InstanceChargePrepaid = InstanceChargePrepaid
+
+    @property
+    def SecurityGroupIds(self):
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
+    @property
+    def ScriptBootstrapActionConfig(self):
+        return self._ScriptBootstrapActionConfig
+
+    @ScriptBootstrapActionConfig.setter
+    def ScriptBootstrapActionConfig(self, ScriptBootstrapActionConfig):
+        self._ScriptBootstrapActionConfig = ScriptBootstrapActionConfig
+
+    @property
+    def ClientToken(self):
+        return self._ClientToken
+
+    @ClientToken.setter
+    def ClientToken(self, ClientToken):
+        self._ClientToken = ClientToken
+
+    @property
+    def NeedMasterWan(self):
+        return self._NeedMasterWan
+
+    @NeedMasterWan.setter
+    def NeedMasterWan(self, NeedMasterWan):
+        self._NeedMasterWan = NeedMasterWan
+
+    @property
+    def EnableRemoteLoginFlag(self):
+        return self._EnableRemoteLoginFlag
+
+    @EnableRemoteLoginFlag.setter
+    def EnableRemoteLoginFlag(self, EnableRemoteLoginFlag):
+        self._EnableRemoteLoginFlag = EnableRemoteLoginFlag
+
+    @property
+    def EnableKerberosFlag(self):
+        return self._EnableKerberosFlag
+
+    @EnableKerberosFlag.setter
+    def EnableKerberosFlag(self, EnableKerberosFlag):
+        self._EnableKerberosFlag = EnableKerberosFlag
+
+    @property
+    def CustomConf(self):
+        return self._CustomConf
+
+    @CustomConf.setter
+    def CustomConf(self, CustomConf):
+        self._CustomConf = CustomConf
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def DisasterRecoverGroupIds(self):
+        return self._DisasterRecoverGroupIds
+
+    @DisasterRecoverGroupIds.setter
+    def DisasterRecoverGroupIds(self, DisasterRecoverGroupIds):
+        self._DisasterRecoverGroupIds = DisasterRecoverGroupIds
+
+    @property
+    def EnableCbsEncryptFlag(self):
+        return self._EnableCbsEncryptFlag
+
+    @EnableCbsEncryptFlag.setter
+    def EnableCbsEncryptFlag(self, EnableCbsEncryptFlag):
+        self._EnableCbsEncryptFlag = EnableCbsEncryptFlag
+
+    @property
+    def MetaDBInfo(self):
+        return self._MetaDBInfo
+
+    @MetaDBInfo.setter
+    def MetaDBInfo(self, MetaDBInfo):
+        self._MetaDBInfo = MetaDBInfo
+
+    @property
+    def DependService(self):
+        return self._DependService
+
+    @DependService.setter
+    def DependService(self, DependService):
+        self._DependService = DependService
+
+    @property
+    def ZoneResourceConfiguration(self):
+        return self._ZoneResourceConfiguration
+
+    @ZoneResourceConfiguration.setter
+    def ZoneResourceConfiguration(self, ZoneResourceConfiguration):
+        self._ZoneResourceConfiguration = ZoneResourceConfiguration
 
 
     def _deserialize(self, params):
-        self.ProductVersion = params.get("ProductVersion")
-        self.EnableSupportHAFlag = params.get("EnableSupportHAFlag")
-        self.InstanceName = params.get("InstanceName")
-        self.InstanceChargeType = params.get("InstanceChargeType")
+        self._ProductVersion = params.get("ProductVersion")
+        self._EnableSupportHAFlag = params.get("EnableSupportHAFlag")
+        self._InstanceName = params.get("InstanceName")
+        self._InstanceChargeType = params.get("InstanceChargeType")
         if params.get("LoginSettings") is not None:
-            self.LoginSettings = LoginSettings()
-            self.LoginSettings._deserialize(params.get("LoginSettings"))
+            self._LoginSettings = LoginSettings()
+            self._LoginSettings._deserialize(params.get("LoginSettings"))
         if params.get("SceneSoftwareConfig") is not None:
-            self.SceneSoftwareConfig = SceneSoftwareConfig()
-            self.SceneSoftwareConfig._deserialize(params.get("SceneSoftwareConfig"))
+            self._SceneSoftwareConfig = SceneSoftwareConfig()
+            self._SceneSoftwareConfig._deserialize(params.get("SceneSoftwareConfig"))
         if params.get("InstanceChargePrepaid") is not None:
-            self.InstanceChargePrepaid = InstanceChargePrepaid()
-            self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
-        self.SecurityGroupIds = params.get("SecurityGroupIds")
+            self._InstanceChargePrepaid = InstanceChargePrepaid()
+            self._InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
         if params.get("ScriptBootstrapActionConfig") is not None:
-            self.ScriptBootstrapActionConfig = []
+            self._ScriptBootstrapActionConfig = []
             for item in params.get("ScriptBootstrapActionConfig"):
                 obj = ScriptBootstrapActionConfig()
                 obj._deserialize(item)
-                self.ScriptBootstrapActionConfig.append(obj)
-        self.ClientToken = params.get("ClientToken")
-        self.NeedMasterWan = params.get("NeedMasterWan")
-        self.EnableRemoteLoginFlag = params.get("EnableRemoteLoginFlag")
-        self.EnableKerberosFlag = params.get("EnableKerberosFlag")
-        self.CustomConf = params.get("CustomConf")
+                self._ScriptBootstrapActionConfig.append(obj)
+        self._ClientToken = params.get("ClientToken")
+        self._NeedMasterWan = params.get("NeedMasterWan")
+        self._EnableRemoteLoginFlag = params.get("EnableRemoteLoginFlag")
+        self._EnableKerberosFlag = params.get("EnableKerberosFlag")
+        self._CustomConf = params.get("CustomConf")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
-        self.EnableCbsEncryptFlag = params.get("EnableCbsEncryptFlag")
+                self._Tags.append(obj)
+        self._DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
+        self._EnableCbsEncryptFlag = params.get("EnableCbsEncryptFlag")
         if params.get("MetaDBInfo") is not None:
-            self.MetaDBInfo = CustomMetaDBInfo()
-            self.MetaDBInfo._deserialize(params.get("MetaDBInfo"))
+            self._MetaDBInfo = CustomMetaDBInfo()
+            self._MetaDBInfo._deserialize(params.get("MetaDBInfo"))
         if params.get("DependService") is not None:
-            self.DependService = []
+            self._DependService = []
             for item in params.get("DependService"):
                 obj = DependService()
                 obj._deserialize(item)
-                self.DependService.append(obj)
+                self._DependService.append(obj)
         if params.get("ZoneResourceConfiguration") is not None:
-            self.ZoneResourceConfiguration = []
+            self._ZoneResourceConfiguration = []
             for item in params.get("ZoneResourceConfiguration"):
                 obj = ZoneResourceConfiguration()
                 obj._deserialize(item)
-                self.ZoneResourceConfiguration.append(obj)
+                self._ZoneResourceConfiguration.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -822,19 +1687,35 @@ class CreateClusterResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: The instance ID.
+        :param _InstanceId: The instance ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type InstanceId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.InstanceId = None
-        self.RequestId = None
+        self._InstanceId = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.RequestId = params.get("RequestId")
+        self._InstanceId = params.get("InstanceId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateInstanceRequest(AbstractModel):
@@ -844,7 +1725,7 @@ class CreateInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProductId: The product ID. Different product IDs represent different EMR product versions. Valid values:
+        :param _ProductId: The product ID. Different product IDs represent different EMR product versions. Valid values:
 <li>16: EMR v2.3.0</li>
 <li>20: EMR v2.5.0</li>
 <li>25: EMR v3.1.0</li>
@@ -858,196 +1739,453 @@ class CreateInstanceRequest(AbstractModel):
 <li>39: StarRocks v1.1.0</li>
 <li>41: Druid v1.1.0</li>
         :type ProductId: int
-        :param Software: List of deployed components. The list of component options varies by EMR product ID (i.e., `ProductId`; for specific meanings, please see the `ProductId` input parameter). For more information, please see [Component Version](https://intl.cloud.tencent.com/document/product/589/20279?from_cn_redirect=1).
+        :param _Software: List of deployed components. The list of component options varies by EMR product ID (i.e., `ProductId`; for specific meanings, please see the `ProductId` input parameter). For more information, please see [Component Version](https://intl.cloud.tencent.com/document/product/589/20279?from_cn_redirect=1).
 Enter an instance value: `hive` or `flink`.
         :type Software: list of str
-        :param SupportHA: Whether to enable high node availability. Valid values:
+        :param _SupportHA: Whether to enable high node availability. Valid values:
 <li>0: does not enable high availability of node.</li>
 <li>1: enables high availability of node.</li>
         :type SupportHA: int
-        :param InstanceName: Instance name.
+        :param _InstanceName: Instance name.
 <li>Length limit: 6-36 characters.</li>
 <li>Only letters, numbers, dashes (-), and underscores (_) are supported.</li>
         :type InstanceName: str
-        :param PayMode: Instance billing mode. Valid values:
+        :param _PayMode: Instance billing mode. Valid values:
 <li>0: pay-as-you-go.</li>
         :type PayMode: int
-        :param TimeSpan: Purchase duration of instance, which needs to be used together with `TimeUnit`.
+        :param _TimeSpan: Purchase duration of instance, which needs to be used together with `TimeUnit`.
 <li>When `TimeUnit` is `s`, this parameter can only be filled with 3600, indicating a pay-as-you-go instance.</li>
 <li>When `TimeUnit` is `m`, the number entered in this parameter indicates the purchase duration of the monthly-subscription instance; for example, 1 means one month</li>
         :type TimeSpan: int
-        :param TimeUnit: Time unit of instance purchase duration. Valid values:
+        :param _TimeUnit: Time unit of instance purchase duration. Valid values:
 <li>s: seconds. When `PayMode` is 0, `TimeUnit` can only be `s`.</li>
 <li>m: month. When `PayMode` is 1, `TimeUnit` can only be `m`.</li>
         :type TimeUnit: str
-        :param LoginSettings: Instance login settings. This parameter allows you to set the login password or key for your purchased node.
+        :param _LoginSettings: Instance login settings. This parameter allows you to set the login password or key for your purchased node.
 <li>If the key is set, the password will be only used for login to the native component WebUI.</li>
 <li>If the key is not set, the password will be used for login to all purchased nodes and the native component WebUI.</li>
         :type LoginSettings: :class:`tencentcloud.emr.v20190103.models.LoginSettings`
-        :param VPCSettings: Configuration information of VPC. This parameter is used to specify the VPC ID, subnet ID, etc.
+        :param _VPCSettings: Configuration information of VPC. This parameter is used to specify the VPC ID, subnet ID, etc.
         :type VPCSettings: :class:`tencentcloud.emr.v20190103.models.VPCSettings`
-        :param ResourceSpec: Node resource specification.
+        :param _ResourceSpec: Node resource specification.
         :type ResourceSpec: :class:`tencentcloud.emr.v20190103.models.NewResourceSpec`
-        :param COSSettings: Parameter required for enabling COS access.
+        :param _COSSettings: Parameter required for enabling COS access.
         :type COSSettings: :class:`tencentcloud.emr.v20190103.models.COSSettings`
-        :param Placement: Instance location. This parameter is used to specify the AZ, project, and other attributes of the instance.
+        :param _Placement: Instance location. This parameter is used to specify the AZ, project, and other attributes of the instance.
         :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`
-        :param SgId: Security group to which an instance belongs in the format of `sg-xxxxxxxx`. This parameter can be obtained from the `SecurityGroupId` field in the return value of the [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808) API.
+        :param _SgId: Security group to which an instance belongs in the format of `sg-xxxxxxxx`. This parameter can be obtained from the `SecurityGroupId` field in the return value of the [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808) API.
         :type SgId: str
-        :param PreExecutedFileSettings: [Bootstrap action](https://intl.cloud.tencent.com/document/product/589/35656?from_cn_redirect=1) script settings
+        :param _PreExecutedFileSettings: [Bootstrap action](https://intl.cloud.tencent.com/document/product/589/35656?from_cn_redirect=1) script settings
         :type PreExecutedFileSettings: list of PreExecuteFileSettings
-        :param AutoRenew: Whether auto-renewal is enabled. Valid values:
+        :param _AutoRenew: Whether auto-renewal is enabled. Valid values:
 <li>0: auto-renewal not enabled.</li>
 <li>1: auto-renewal enabled.</li>
         :type AutoRenew: int
-        :param ClientToken: Client token.
+        :param _ClientToken: Client token.
         :type ClientToken: str
-        :param NeedMasterWan: Whether to enable public IP access for master node. Valid values:
+        :param _NeedMasterWan: Whether to enable public IP access for master node. Valid values:
 <li>NEED_MASTER_WAN: enables public IP for master node.</li>
 <li>NOT_NEED_MASTER_WAN: does not enable.</li>Public IP is enabled for master node by default.
         :type NeedMasterWan: str
-        :param RemoteLoginAtCreate: Whether to enable remote public network login, i.e., port 22. When `SgId` is not empty, this parameter does not take effect.
+        :param _RemoteLoginAtCreate: Whether to enable remote public network login, i.e., port 22. When `SgId` is not empty, this parameter does not take effect.
         :type RemoteLoginAtCreate: int
-        :param CheckSecurity: Whether to enable secure cluster. 0: no; other values: yes.
+        :param _CheckSecurity: Whether to enable secure cluster. 0: no; other values: yes.
         :type CheckSecurity: int
-        :param ExtendFsField: Accesses to external file system.
+        :param _ExtendFsField: Accesses to external file system.
         :type ExtendFsField: str
-        :param Tags: Tag description list. This parameter is used to bind a tag to a resource instance.
+        :param _Tags: Tag description list. This parameter is used to bind a tag to a resource instance.
         :type Tags: list of Tag
-        :param DisasterRecoverGroupIds: List of spread placement group IDs. Only one can be specified currently.
+        :param _DisasterRecoverGroupIds: List of spread placement group IDs. Only one can be specified currently.
 This parameter can be obtained in the `SecurityGroupId` field in the return value of the [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/product/213/15486?from_cn_redirect=1) API.
         :type DisasterRecoverGroupIds: list of str
-        :param CbsEncrypt: CBS disk encryption at the cluster level. 0: not encrypted, 1: encrypted
+        :param _CbsEncrypt: CBS disk encryption at the cluster level. 0: not encrypted, 1: encrypted
         :type CbsEncrypt: int
-        :param MetaType: Hive-shared metadatabase type. Valid values:
+        :param _MetaType: Hive-shared metadatabase type. Valid values:
 <li>EMR_DEFAULT_META: the cluster creates one by default.</li>
 <li>EMR_EXIST_META: the cluster uses the specified EMR-MetaDB instance.</li>
 <li>USER_CUSTOM_META: the cluster uses a custom MetaDB instance.</li>
         :type MetaType: str
-        :param UnifyMetaInstanceId: EMR-MetaDB instance
+        :param _UnifyMetaInstanceId: EMR-MetaDB instance
         :type UnifyMetaInstanceId: str
-        :param MetaDBInfo: Custom MetaDB instance information
+        :param _MetaDBInfo: Custom MetaDB instance information
         :type MetaDBInfo: :class:`tencentcloud.emr.v20190103.models.CustomMetaInfo`
-        :param ApplicationRole: Custom application role.
+        :param _ApplicationRole: Custom application role.
         :type ApplicationRole: str
-        :param SceneName: Scenario-based values:
+        :param _SceneName: Scenario-based values:
 Hadoop-Kudu
 Hadoop-Zookeeper
 Hadoop-Presto
 Hadoop-Hbase
         :type SceneName: str
-        :param ExternalService: Shared component information
+        :param _ExternalService: Shared component information
         :type ExternalService: list of ExternalService
-        :param VersionID: 
+        :param _VersionID: 
         :type VersionID: int
-        :param MultiZone: `true` indicates that the multi-AZ deployment mode is enabled. This parameter is available only in cluster creation and cannot be changed after setting.
+        :param _MultiZone: `true` indicates that the multi-AZ deployment mode is enabled. This parameter is available only in cluster creation and cannot be changed after setting.
         :type MultiZone: bool
-        :param MultiZoneSettings: Node resource specs. The actual number of AZs is set, with the first AZ as the primary AZ, the second as the backup AZ, and the third as the arbitrator AZ. If the multi-AZ mode is not enabled, set the value to `1`.
+        :param _MultiZoneSettings: Node resource specs. The actual number of AZs is set, with the first AZ as the primary AZ, the second as the backup AZ, and the third as the arbitrator AZ. If the multi-AZ mode is not enabled, set the value to `1`.
         :type MultiZoneSettings: list of MultiZoneSetting
         """
-        self.ProductId = None
-        self.Software = None
-        self.SupportHA = None
-        self.InstanceName = None
-        self.PayMode = None
-        self.TimeSpan = None
-        self.TimeUnit = None
-        self.LoginSettings = None
-        self.VPCSettings = None
-        self.ResourceSpec = None
-        self.COSSettings = None
-        self.Placement = None
-        self.SgId = None
-        self.PreExecutedFileSettings = None
-        self.AutoRenew = None
-        self.ClientToken = None
-        self.NeedMasterWan = None
-        self.RemoteLoginAtCreate = None
-        self.CheckSecurity = None
-        self.ExtendFsField = None
-        self.Tags = None
-        self.DisasterRecoverGroupIds = None
-        self.CbsEncrypt = None
-        self.MetaType = None
-        self.UnifyMetaInstanceId = None
-        self.MetaDBInfo = None
-        self.ApplicationRole = None
-        self.SceneName = None
-        self.ExternalService = None
-        self.VersionID = None
-        self.MultiZone = None
-        self.MultiZoneSettings = None
+        self._ProductId = None
+        self._Software = None
+        self._SupportHA = None
+        self._InstanceName = None
+        self._PayMode = None
+        self._TimeSpan = None
+        self._TimeUnit = None
+        self._LoginSettings = None
+        self._VPCSettings = None
+        self._ResourceSpec = None
+        self._COSSettings = None
+        self._Placement = None
+        self._SgId = None
+        self._PreExecutedFileSettings = None
+        self._AutoRenew = None
+        self._ClientToken = None
+        self._NeedMasterWan = None
+        self._RemoteLoginAtCreate = None
+        self._CheckSecurity = None
+        self._ExtendFsField = None
+        self._Tags = None
+        self._DisasterRecoverGroupIds = None
+        self._CbsEncrypt = None
+        self._MetaType = None
+        self._UnifyMetaInstanceId = None
+        self._MetaDBInfo = None
+        self._ApplicationRole = None
+        self._SceneName = None
+        self._ExternalService = None
+        self._VersionID = None
+        self._MultiZone = None
+        self._MultiZoneSettings = None
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def Software(self):
+        return self._Software
+
+    @Software.setter
+    def Software(self, Software):
+        self._Software = Software
+
+    @property
+    def SupportHA(self):
+        return self._SupportHA
+
+    @SupportHA.setter
+    def SupportHA(self, SupportHA):
+        self._SupportHA = SupportHA
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def TimeSpan(self):
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def TimeUnit(self):
+        return self._TimeUnit
+
+    @TimeUnit.setter
+    def TimeUnit(self, TimeUnit):
+        self._TimeUnit = TimeUnit
+
+    @property
+    def LoginSettings(self):
+        return self._LoginSettings
+
+    @LoginSettings.setter
+    def LoginSettings(self, LoginSettings):
+        self._LoginSettings = LoginSettings
+
+    @property
+    def VPCSettings(self):
+        return self._VPCSettings
+
+    @VPCSettings.setter
+    def VPCSettings(self, VPCSettings):
+        self._VPCSettings = VPCSettings
+
+    @property
+    def ResourceSpec(self):
+        return self._ResourceSpec
+
+    @ResourceSpec.setter
+    def ResourceSpec(self, ResourceSpec):
+        self._ResourceSpec = ResourceSpec
+
+    @property
+    def COSSettings(self):
+        return self._COSSettings
+
+    @COSSettings.setter
+    def COSSettings(self, COSSettings):
+        self._COSSettings = COSSettings
+
+    @property
+    def Placement(self):
+        return self._Placement
+
+    @Placement.setter
+    def Placement(self, Placement):
+        self._Placement = Placement
+
+    @property
+    def SgId(self):
+        return self._SgId
+
+    @SgId.setter
+    def SgId(self, SgId):
+        self._SgId = SgId
+
+    @property
+    def PreExecutedFileSettings(self):
+        return self._PreExecutedFileSettings
+
+    @PreExecutedFileSettings.setter
+    def PreExecutedFileSettings(self, PreExecutedFileSettings):
+        self._PreExecutedFileSettings = PreExecutedFileSettings
+
+    @property
+    def AutoRenew(self):
+        return self._AutoRenew
+
+    @AutoRenew.setter
+    def AutoRenew(self, AutoRenew):
+        self._AutoRenew = AutoRenew
+
+    @property
+    def ClientToken(self):
+        return self._ClientToken
+
+    @ClientToken.setter
+    def ClientToken(self, ClientToken):
+        self._ClientToken = ClientToken
+
+    @property
+    def NeedMasterWan(self):
+        return self._NeedMasterWan
+
+    @NeedMasterWan.setter
+    def NeedMasterWan(self, NeedMasterWan):
+        self._NeedMasterWan = NeedMasterWan
+
+    @property
+    def RemoteLoginAtCreate(self):
+        return self._RemoteLoginAtCreate
+
+    @RemoteLoginAtCreate.setter
+    def RemoteLoginAtCreate(self, RemoteLoginAtCreate):
+        self._RemoteLoginAtCreate = RemoteLoginAtCreate
+
+    @property
+    def CheckSecurity(self):
+        return self._CheckSecurity
+
+    @CheckSecurity.setter
+    def CheckSecurity(self, CheckSecurity):
+        self._CheckSecurity = CheckSecurity
+
+    @property
+    def ExtendFsField(self):
+        return self._ExtendFsField
+
+    @ExtendFsField.setter
+    def ExtendFsField(self, ExtendFsField):
+        self._ExtendFsField = ExtendFsField
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def DisasterRecoverGroupIds(self):
+        return self._DisasterRecoverGroupIds
+
+    @DisasterRecoverGroupIds.setter
+    def DisasterRecoverGroupIds(self, DisasterRecoverGroupIds):
+        self._DisasterRecoverGroupIds = DisasterRecoverGroupIds
+
+    @property
+    def CbsEncrypt(self):
+        return self._CbsEncrypt
+
+    @CbsEncrypt.setter
+    def CbsEncrypt(self, CbsEncrypt):
+        self._CbsEncrypt = CbsEncrypt
+
+    @property
+    def MetaType(self):
+        return self._MetaType
+
+    @MetaType.setter
+    def MetaType(self, MetaType):
+        self._MetaType = MetaType
+
+    @property
+    def UnifyMetaInstanceId(self):
+        return self._UnifyMetaInstanceId
+
+    @UnifyMetaInstanceId.setter
+    def UnifyMetaInstanceId(self, UnifyMetaInstanceId):
+        self._UnifyMetaInstanceId = UnifyMetaInstanceId
+
+    @property
+    def MetaDBInfo(self):
+        return self._MetaDBInfo
+
+    @MetaDBInfo.setter
+    def MetaDBInfo(self, MetaDBInfo):
+        self._MetaDBInfo = MetaDBInfo
+
+    @property
+    def ApplicationRole(self):
+        return self._ApplicationRole
+
+    @ApplicationRole.setter
+    def ApplicationRole(self, ApplicationRole):
+        self._ApplicationRole = ApplicationRole
+
+    @property
+    def SceneName(self):
+        return self._SceneName
+
+    @SceneName.setter
+    def SceneName(self, SceneName):
+        self._SceneName = SceneName
+
+    @property
+    def ExternalService(self):
+        return self._ExternalService
+
+    @ExternalService.setter
+    def ExternalService(self, ExternalService):
+        self._ExternalService = ExternalService
+
+    @property
+    def VersionID(self):
+        return self._VersionID
+
+    @VersionID.setter
+    def VersionID(self, VersionID):
+        self._VersionID = VersionID
+
+    @property
+    def MultiZone(self):
+        return self._MultiZone
+
+    @MultiZone.setter
+    def MultiZone(self, MultiZone):
+        self._MultiZone = MultiZone
+
+    @property
+    def MultiZoneSettings(self):
+        return self._MultiZoneSettings
+
+    @MultiZoneSettings.setter
+    def MultiZoneSettings(self, MultiZoneSettings):
+        self._MultiZoneSettings = MultiZoneSettings
 
 
     def _deserialize(self, params):
-        self.ProductId = params.get("ProductId")
-        self.Software = params.get("Software")
-        self.SupportHA = params.get("SupportHA")
-        self.InstanceName = params.get("InstanceName")
-        self.PayMode = params.get("PayMode")
-        self.TimeSpan = params.get("TimeSpan")
-        self.TimeUnit = params.get("TimeUnit")
+        self._ProductId = params.get("ProductId")
+        self._Software = params.get("Software")
+        self._SupportHA = params.get("SupportHA")
+        self._InstanceName = params.get("InstanceName")
+        self._PayMode = params.get("PayMode")
+        self._TimeSpan = params.get("TimeSpan")
+        self._TimeUnit = params.get("TimeUnit")
         if params.get("LoginSettings") is not None:
-            self.LoginSettings = LoginSettings()
-            self.LoginSettings._deserialize(params.get("LoginSettings"))
+            self._LoginSettings = LoginSettings()
+            self._LoginSettings._deserialize(params.get("LoginSettings"))
         if params.get("VPCSettings") is not None:
-            self.VPCSettings = VPCSettings()
-            self.VPCSettings._deserialize(params.get("VPCSettings"))
+            self._VPCSettings = VPCSettings()
+            self._VPCSettings._deserialize(params.get("VPCSettings"))
         if params.get("ResourceSpec") is not None:
-            self.ResourceSpec = NewResourceSpec()
-            self.ResourceSpec._deserialize(params.get("ResourceSpec"))
+            self._ResourceSpec = NewResourceSpec()
+            self._ResourceSpec._deserialize(params.get("ResourceSpec"))
         if params.get("COSSettings") is not None:
-            self.COSSettings = COSSettings()
-            self.COSSettings._deserialize(params.get("COSSettings"))
+            self._COSSettings = COSSettings()
+            self._COSSettings._deserialize(params.get("COSSettings"))
         if params.get("Placement") is not None:
-            self.Placement = Placement()
-            self.Placement._deserialize(params.get("Placement"))
-        self.SgId = params.get("SgId")
+            self._Placement = Placement()
+            self._Placement._deserialize(params.get("Placement"))
+        self._SgId = params.get("SgId")
         if params.get("PreExecutedFileSettings") is not None:
-            self.PreExecutedFileSettings = []
+            self._PreExecutedFileSettings = []
             for item in params.get("PreExecutedFileSettings"):
                 obj = PreExecuteFileSettings()
                 obj._deserialize(item)
-                self.PreExecutedFileSettings.append(obj)
-        self.AutoRenew = params.get("AutoRenew")
-        self.ClientToken = params.get("ClientToken")
-        self.NeedMasterWan = params.get("NeedMasterWan")
-        self.RemoteLoginAtCreate = params.get("RemoteLoginAtCreate")
-        self.CheckSecurity = params.get("CheckSecurity")
-        self.ExtendFsField = params.get("ExtendFsField")
+                self._PreExecutedFileSettings.append(obj)
+        self._AutoRenew = params.get("AutoRenew")
+        self._ClientToken = params.get("ClientToken")
+        self._NeedMasterWan = params.get("NeedMasterWan")
+        self._RemoteLoginAtCreate = params.get("RemoteLoginAtCreate")
+        self._CheckSecurity = params.get("CheckSecurity")
+        self._ExtendFsField = params.get("ExtendFsField")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
-        self.CbsEncrypt = params.get("CbsEncrypt")
-        self.MetaType = params.get("MetaType")
-        self.UnifyMetaInstanceId = params.get("UnifyMetaInstanceId")
+                self._Tags.append(obj)
+        self._DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
+        self._CbsEncrypt = params.get("CbsEncrypt")
+        self._MetaType = params.get("MetaType")
+        self._UnifyMetaInstanceId = params.get("UnifyMetaInstanceId")
         if params.get("MetaDBInfo") is not None:
-            self.MetaDBInfo = CustomMetaInfo()
-            self.MetaDBInfo._deserialize(params.get("MetaDBInfo"))
-        self.ApplicationRole = params.get("ApplicationRole")
-        self.SceneName = params.get("SceneName")
+            self._MetaDBInfo = CustomMetaInfo()
+            self._MetaDBInfo._deserialize(params.get("MetaDBInfo"))
+        self._ApplicationRole = params.get("ApplicationRole")
+        self._SceneName = params.get("SceneName")
         if params.get("ExternalService") is not None:
-            self.ExternalService = []
+            self._ExternalService = []
             for item in params.get("ExternalService"):
                 obj = ExternalService()
                 obj._deserialize(item)
-                self.ExternalService.append(obj)
-        self.VersionID = params.get("VersionID")
-        self.MultiZone = params.get("MultiZone")
+                self._ExternalService.append(obj)
+        self._VersionID = params.get("VersionID")
+        self._MultiZone = params.get("MultiZone")
         if params.get("MultiZoneSettings") is not None:
-            self.MultiZoneSettings = []
+            self._MultiZoneSettings = []
             for item in params.get("MultiZoneSettings"):
                 obj = MultiZoneSetting()
                 obj._deserialize(item)
-                self.MultiZoneSettings.append(obj)
+                self._MultiZoneSettings.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1060,19 +2198,35 @@ class CreateInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance ID
+        :param _InstanceId: Instance ID
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type InstanceId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.InstanceId = None
-        self.RequestId = None
+        self._InstanceId = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.RequestId = params.get("RequestId")
+        self._InstanceId = params.get("InstanceId")
+        self._RequestId = params.get("RequestId")
 
 
 class CustomMetaDBInfo(AbstractModel):
@@ -1082,37 +2236,78 @@ class CustomMetaDBInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MetaDataJdbcUrl: The JDBC URL of the custom metadatabase instance. Example: jdbc:mysql://10.10.10.10:3306/dbname
+        :param _MetaDataJdbcUrl: The JDBC URL of the custom metadatabase instance. Example: jdbc:mysql://10.10.10.10:3306/dbname
         :type MetaDataJdbcUrl: str
-        :param MetaDataUser: The custom metadatabase instance username.
+        :param _MetaDataUser: The custom metadatabase instance username.
         :type MetaDataUser: str
-        :param MetaDataPass: The custom metadatabase instance password.
+        :param _MetaDataPass: The custom metadatabase instance password.
         :type MetaDataPass: str
-        :param MetaType: The Hive-shared metadatabase type. Valid values:
+        :param _MetaType: The Hive-shared metadatabase type. Valid values:
 <li>`EMR_DEFAULT_META`: The cluster creates one by default.</li>
 <li>`EMR_EXIST_META`: The cluster uses the specified EMR metadatabase instance.</li>
 <li>`USER_CUSTOM_META`: The cluster uses a custom metadatabase instance.</li>
         :type MetaType: str
-        :param UnifyMetaInstanceId: The EMR-MetaDB instance.
+        :param _UnifyMetaInstanceId: The EMR-MetaDB instance.
         :type UnifyMetaInstanceId: str
         """
-        self.MetaDataJdbcUrl = None
-        self.MetaDataUser = None
-        self.MetaDataPass = None
-        self.MetaType = None
-        self.UnifyMetaInstanceId = None
+        self._MetaDataJdbcUrl = None
+        self._MetaDataUser = None
+        self._MetaDataPass = None
+        self._MetaType = None
+        self._UnifyMetaInstanceId = None
+
+    @property
+    def MetaDataJdbcUrl(self):
+        return self._MetaDataJdbcUrl
+
+    @MetaDataJdbcUrl.setter
+    def MetaDataJdbcUrl(self, MetaDataJdbcUrl):
+        self._MetaDataJdbcUrl = MetaDataJdbcUrl
+
+    @property
+    def MetaDataUser(self):
+        return self._MetaDataUser
+
+    @MetaDataUser.setter
+    def MetaDataUser(self, MetaDataUser):
+        self._MetaDataUser = MetaDataUser
+
+    @property
+    def MetaDataPass(self):
+        return self._MetaDataPass
+
+    @MetaDataPass.setter
+    def MetaDataPass(self, MetaDataPass):
+        self._MetaDataPass = MetaDataPass
+
+    @property
+    def MetaType(self):
+        return self._MetaType
+
+    @MetaType.setter
+    def MetaType(self, MetaType):
+        self._MetaType = MetaType
+
+    @property
+    def UnifyMetaInstanceId(self):
+        return self._UnifyMetaInstanceId
+
+    @UnifyMetaInstanceId.setter
+    def UnifyMetaInstanceId(self, UnifyMetaInstanceId):
+        self._UnifyMetaInstanceId = UnifyMetaInstanceId
 
 
     def _deserialize(self, params):
-        self.MetaDataJdbcUrl = params.get("MetaDataJdbcUrl")
-        self.MetaDataUser = params.get("MetaDataUser")
-        self.MetaDataPass = params.get("MetaDataPass")
-        self.MetaType = params.get("MetaType")
-        self.UnifyMetaInstanceId = params.get("UnifyMetaInstanceId")
+        self._MetaDataJdbcUrl = params.get("MetaDataJdbcUrl")
+        self._MetaDataUser = params.get("MetaDataUser")
+        self._MetaDataPass = params.get("MetaDataPass")
+        self._MetaType = params.get("MetaType")
+        self._UnifyMetaInstanceId = params.get("UnifyMetaInstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1125,26 +2320,51 @@ class CustomMetaInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MetaDataJdbcUrl: JDBC connection to custom MetaDB instance beginning with `jdbc:mysql://`
+        :param _MetaDataJdbcUrl: JDBC connection to custom MetaDB instance beginning with `jdbc:mysql://`
         :type MetaDataJdbcUrl: str
-        :param MetaDataUser: Custom MetaDB instance username
+        :param _MetaDataUser: Custom MetaDB instance username
         :type MetaDataUser: str
-        :param MetaDataPass: Custom MetaDB instance password
+        :param _MetaDataPass: Custom MetaDB instance password
         :type MetaDataPass: str
         """
-        self.MetaDataJdbcUrl = None
-        self.MetaDataUser = None
-        self.MetaDataPass = None
+        self._MetaDataJdbcUrl = None
+        self._MetaDataUser = None
+        self._MetaDataPass = None
+
+    @property
+    def MetaDataJdbcUrl(self):
+        return self._MetaDataJdbcUrl
+
+    @MetaDataJdbcUrl.setter
+    def MetaDataJdbcUrl(self, MetaDataJdbcUrl):
+        self._MetaDataJdbcUrl = MetaDataJdbcUrl
+
+    @property
+    def MetaDataUser(self):
+        return self._MetaDataUser
+
+    @MetaDataUser.setter
+    def MetaDataUser(self, MetaDataUser):
+        self._MetaDataUser = MetaDataUser
+
+    @property
+    def MetaDataPass(self):
+        return self._MetaDataPass
+
+    @MetaDataPass.setter
+    def MetaDataPass(self, MetaDataPass):
+        self._MetaDataPass = MetaDataPass
 
 
     def _deserialize(self, params):
-        self.MetaDataJdbcUrl = params.get("MetaDataJdbcUrl")
-        self.MetaDataUser = params.get("MetaDataUser")
-        self.MetaDataPass = params.get("MetaDataPass")
+        self._MetaDataJdbcUrl = params.get("MetaDataJdbcUrl")
+        self._MetaDataUser = params.get("MetaDataUser")
+        self._MetaDataPass = params.get("MetaDataPass")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1157,22 +2377,39 @@ class CustomServiceDefine(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: Custom parameter key
+        :param _Name: Custom parameter key
         :type Name: str
-        :param Value: Custom parameter value
+        :param _Value: Custom parameter value
         :type Value: str
         """
-        self.Name = None
-        self.Value = None
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Value = params.get("Value")
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1185,22 +2422,39 @@ class DependService(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceName: The shared component name.
+        :param _ServiceName: The shared component name.
         :type ServiceName: str
-        :param InstanceId: The cluster to which the shared component belongs.
+        :param _InstanceId: The cluster to which the shared component belongs.
         :type InstanceId: str
         """
-        self.ServiceName = None
-        self.InstanceId = None
+        self._ServiceName = None
+        self._InstanceId = None
+
+    @property
+    def ServiceName(self):
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
 
     def _deserialize(self, params):
-        self.ServiceName = params.get("ServiceName")
-        self.InstanceId = params.get("InstanceId")
+        self._ServiceName = params.get("ServiceName")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1213,9 +2467,9 @@ class DescribeClusterNodesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Cluster instance ID in the format of emr-xxxxxxxx
+        :param _InstanceId: Cluster instance ID in the format of emr-xxxxxxxx
         :type InstanceId: str
-        :param NodeFlag: Node flag. Valid values:
+        :param _NodeFlag: Node flag. Valid values:
 <li>all: gets the information of nodes in all types except TencentDB information.</li>
 <li>master: gets master node information.</li>
 <li>core: gets core node information.</li>
@@ -1225,47 +2479,112 @@ class DescribeClusterNodesRequest(AbstractModel):
 <li>db: gets TencentDB information in normal status.</li>
 Note: only the above values are supported for the time being. Entering other values will cause errors.
         :type NodeFlag: str
-        :param Offset: Page number. Default value: 0, indicating the first page.
+        :param _Offset: Page number. Default value: 0, indicating the first page.
         :type Offset: int
-        :param Limit: Number of returned results per page. Default value: 100. Maximum value: 100
+        :param _Limit: Number of returned results per page. Default value: 100. Maximum value: 100
         :type Limit: int
-        :param HardwareResourceType: Resource type. Valid values: all, host, pod. Default value: all
+        :param _HardwareResourceType: Resource type. Valid values: all, host, pod. Default value: all
         :type HardwareResourceType: str
-        :param SearchFields: Searchable field
+        :param _SearchFields: Searchable field
         :type SearchFields: list of SearchItem
-        :param OrderField: None
+        :param _OrderField: None
         :type OrderField: str
-        :param Asc: None
+        :param _Asc: None
         :type Asc: int
         """
-        self.InstanceId = None
-        self.NodeFlag = None
-        self.Offset = None
-        self.Limit = None
-        self.HardwareResourceType = None
-        self.SearchFields = None
-        self.OrderField = None
-        self.Asc = None
+        self._InstanceId = None
+        self._NodeFlag = None
+        self._Offset = None
+        self._Limit = None
+        self._HardwareResourceType = None
+        self._SearchFields = None
+        self._OrderField = None
+        self._Asc = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def NodeFlag(self):
+        return self._NodeFlag
+
+    @NodeFlag.setter
+    def NodeFlag(self, NodeFlag):
+        self._NodeFlag = NodeFlag
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def HardwareResourceType(self):
+        return self._HardwareResourceType
+
+    @HardwareResourceType.setter
+    def HardwareResourceType(self, HardwareResourceType):
+        self._HardwareResourceType = HardwareResourceType
+
+    @property
+    def SearchFields(self):
+        return self._SearchFields
+
+    @SearchFields.setter
+    def SearchFields(self, SearchFields):
+        self._SearchFields = SearchFields
+
+    @property
+    def OrderField(self):
+        return self._OrderField
+
+    @OrderField.setter
+    def OrderField(self, OrderField):
+        self._OrderField = OrderField
+
+    @property
+    def Asc(self):
+        return self._Asc
+
+    @Asc.setter
+    def Asc(self, Asc):
+        self._Asc = Asc
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.NodeFlag = params.get("NodeFlag")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.HardwareResourceType = params.get("HardwareResourceType")
+        self._InstanceId = params.get("InstanceId")
+        self._NodeFlag = params.get("NodeFlag")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._HardwareResourceType = params.get("HardwareResourceType")
         if params.get("SearchFields") is not None:
-            self.SearchFields = []
+            self._SearchFields = []
             for item in params.get("SearchFields"):
                 obj = SearchItem()
                 obj._deserialize(item)
-                self.SearchFields.append(obj)
-        self.OrderField = params.get("OrderField")
-        self.Asc = params.get("Asc")
+                self._SearchFields.append(obj)
+        self._OrderField = params.get("OrderField")
+        self._Asc = params.get("Asc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1278,38 +2597,78 @@ class DescribeClusterNodesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCnt: Total number of queried nodes
+        :param _TotalCnt: Total number of queried nodes
         :type TotalCnt: int
-        :param NodeList: List of node details
+        :param _NodeList: List of node details
 Note: this field may return null, indicating that no valid values can be obtained.
         :type NodeList: list of NodeHardwareInfo
-        :param TagKeys: List of tag keys owned by user
+        :param _TagKeys: List of tag keys owned by user
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TagKeys: list of str
-        :param HardwareResourceTypeList: Resource type list
+        :param _HardwareResourceTypeList: Resource type list
 Note: this field may return null, indicating that no valid values can be obtained.
         :type HardwareResourceTypeList: list of str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TotalCnt = None
-        self.NodeList = None
-        self.TagKeys = None
-        self.HardwareResourceTypeList = None
-        self.RequestId = None
+        self._TotalCnt = None
+        self._NodeList = None
+        self._TagKeys = None
+        self._HardwareResourceTypeList = None
+        self._RequestId = None
+
+    @property
+    def TotalCnt(self):
+        return self._TotalCnt
+
+    @TotalCnt.setter
+    def TotalCnt(self, TotalCnt):
+        self._TotalCnt = TotalCnt
+
+    @property
+    def NodeList(self):
+        return self._NodeList
+
+    @NodeList.setter
+    def NodeList(self, NodeList):
+        self._NodeList = NodeList
+
+    @property
+    def TagKeys(self):
+        return self._TagKeys
+
+    @TagKeys.setter
+    def TagKeys(self, TagKeys):
+        self._TagKeys = TagKeys
+
+    @property
+    def HardwareResourceTypeList(self):
+        return self._HardwareResourceTypeList
+
+    @HardwareResourceTypeList.setter
+    def HardwareResourceTypeList(self, HardwareResourceTypeList):
+        self._HardwareResourceTypeList = HardwareResourceTypeList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCnt = params.get("TotalCnt")
+        self._TotalCnt = params.get("TotalCnt")
         if params.get("NodeList") is not None:
-            self.NodeList = []
+            self._NodeList = []
             for item in params.get("NodeList"):
                 obj = NodeHardwareInfo()
                 obj._deserialize(item)
-                self.NodeList.append(obj)
-        self.TagKeys = params.get("TagKeys")
-        self.HardwareResourceTypeList = params.get("HardwareResourceTypeList")
-        self.RequestId = params.get("RequestId")
+                self._NodeList.append(obj)
+        self._TagKeys = params.get("TagKeys")
+        self._HardwareResourceTypeList = params.get("HardwareResourceTypeList")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeEmrApplicationStaticsRequest(AbstractModel):
@@ -1319,58 +2678,147 @@ class DescribeEmrApplicationStaticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Cluster ID
+        :param _InstanceId: Cluster ID
         :type InstanceId: str
-        :param StartTime: Start time in the format of timestamp. Unit: seconds.
+        :param _StartTime: Start time in the format of timestamp. Unit: seconds.
         :type StartTime: int
-        :param EndTime: End time in the format of timestamp. Unit: seconds.
+        :param _EndTime: End time in the format of timestamp. Unit: seconds.
         :type EndTime: int
-        :param Queues: Queue name used for filtering
+        :param _Queues: Queue name used for filtering
         :type Queues: list of str
-        :param Users: Username used for filtering
+        :param _Users: Username used for filtering
         :type Users: list of str
-        :param ApplicationTypes: Application type used for filtering
+        :param _ApplicationTypes: Application type used for filtering
         :type ApplicationTypes: list of str
-        :param GroupBy: Group field. Valid values: `queue`, `user`, and `applicationType`.
+        :param _GroupBy: Group field. Valid values: `queue`, `user`, and `applicationType`.
         :type GroupBy: list of str
-        :param OrderBy: Sorting field. Valid values: `sumMemorySeconds`, `sumVCoreSeconds`, `sumHDFSBytesWritten`, and `sumHDFSBytesRead`.
+        :param _OrderBy: Sorting field. Valid values: `sumMemorySeconds`, `sumVCoreSeconds`, `sumHDFSBytesWritten`, and `sumHDFSBytesRead`.
         :type OrderBy: str
-        :param IsAsc: Order type. Valid values: `0` (descending) and `1`(ascending).
+        :param _IsAsc: Order type. Valid values: `0` (descending) and `1`(ascending).
         :type IsAsc: int
-        :param Offset: Page number
+        :param _Offset: Page number
         :type Offset: int
-        :param Limit: Page limit
+        :param _Limit: Page limit
         :type Limit: int
         """
-        self.InstanceId = None
-        self.StartTime = None
-        self.EndTime = None
-        self.Queues = None
-        self.Users = None
-        self.ApplicationTypes = None
-        self.GroupBy = None
-        self.OrderBy = None
-        self.IsAsc = None
-        self.Offset = None
-        self.Limit = None
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Queues = None
+        self._Users = None
+        self._ApplicationTypes = None
+        self._GroupBy = None
+        self._OrderBy = None
+        self._IsAsc = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Queues(self):
+        return self._Queues
+
+    @Queues.setter
+    def Queues(self, Queues):
+        self._Queues = Queues
+
+    @property
+    def Users(self):
+        return self._Users
+
+    @Users.setter
+    def Users(self, Users):
+        self._Users = Users
+
+    @property
+    def ApplicationTypes(self):
+        return self._ApplicationTypes
+
+    @ApplicationTypes.setter
+    def ApplicationTypes(self, ApplicationTypes):
+        self._ApplicationTypes = ApplicationTypes
+
+    @property
+    def GroupBy(self):
+        return self._GroupBy
+
+    @GroupBy.setter
+    def GroupBy(self, GroupBy):
+        self._GroupBy = GroupBy
+
+    @property
+    def OrderBy(self):
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def IsAsc(self):
+        return self._IsAsc
+
+    @IsAsc.setter
+    def IsAsc(self, IsAsc):
+        self._IsAsc = IsAsc
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.Queues = params.get("Queues")
-        self.Users = params.get("Users")
-        self.ApplicationTypes = params.get("ApplicationTypes")
-        self.GroupBy = params.get("GroupBy")
-        self.OrderBy = params.get("OrderBy")
-        self.IsAsc = params.get("IsAsc")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Queues = params.get("Queues")
+        self._Users = params.get("Users")
+        self._ApplicationTypes = params.get("ApplicationTypes")
+        self._GroupBy = params.get("GroupBy")
+        self._OrderBy = params.get("OrderBy")
+        self._IsAsc = params.get("IsAsc")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1383,39 +2831,87 @@ class DescribeEmrApplicationStaticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Statics: Application statistics
+        :param _Statics: Application statistics
         :type Statics: list of ApplicationStatics
-        :param TotalCount: Total count
+        :param _TotalCount: Total count
         :type TotalCount: int
-        :param Queues: Available queue name
+        :param _Queues: Available queue name
         :type Queues: list of str
-        :param Users: Available usernames
+        :param _Users: Available usernames
         :type Users: list of str
-        :param ApplicationTypes: Available application type
+        :param _ApplicationTypes: Available application type
         :type ApplicationTypes: list of str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Statics = None
-        self.TotalCount = None
-        self.Queues = None
-        self.Users = None
-        self.ApplicationTypes = None
-        self.RequestId = None
+        self._Statics = None
+        self._TotalCount = None
+        self._Queues = None
+        self._Users = None
+        self._ApplicationTypes = None
+        self._RequestId = None
+
+    @property
+    def Statics(self):
+        return self._Statics
+
+    @Statics.setter
+    def Statics(self, Statics):
+        self._Statics = Statics
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Queues(self):
+        return self._Queues
+
+    @Queues.setter
+    def Queues(self, Queues):
+        self._Queues = Queues
+
+    @property
+    def Users(self):
+        return self._Users
+
+    @Users.setter
+    def Users(self, Users):
+        self._Users = Users
+
+    @property
+    def ApplicationTypes(self):
+        return self._ApplicationTypes
+
+    @ApplicationTypes.setter
+    def ApplicationTypes(self, ApplicationTypes):
+        self._ApplicationTypes = ApplicationTypes
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Statics") is not None:
-            self.Statics = []
+            self._Statics = []
             for item in params.get("Statics"):
                 obj = ApplicationStatics()
                 obj._deserialize(item)
-                self.Statics.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.Queues = params.get("Queues")
-        self.Users = params.get("Users")
-        self.ApplicationTypes = params.get("ApplicationTypes")
-        self.RequestId = params.get("RequestId")
+                self._Statics.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._Queues = params.get("Queues")
+        self._Users = params.get("Users")
+        self._ApplicationTypes = params.get("ApplicationTypes")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeInstancesListRequest(AbstractModel):
@@ -1425,43 +2921,92 @@ class DescribeInstancesListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DisplayStrategy: Cluster filtering policy. Valid values: <li>clusterList: Queries the list of clusters excluding terminated ones.</li><li>monitorManage: Queries the list of clusters excluding those terminated, under creation and not successfully created.</li><li>cloudHardwareManage/componentManage: Two reserved values, which have the same implications as those of `monitorManage`.</li>
+        :param _DisplayStrategy: Cluster filtering policy. Valid values: <li>clusterList: Queries the list of clusters excluding terminated ones.</li><li>monitorManage: Queries the list of clusters excluding those terminated, under creation and not successfully created.</li><li>cloudHardwareManage/componentManage: Two reserved values, which have the same implications as those of `monitorManage`.</li>
         :type DisplayStrategy: str
-        :param Offset: Page number. Default value: `0`, indicating the first page.
+        :param _Offset: Page number. Default value: `0`, indicating the first page.
         :type Offset: int
-        :param Limit: Number of returned results per page. Default value: `10`; maximum value: `100`.
+        :param _Limit: Number of returned results per page. Default value: `10`; maximum value: `100`.
         :type Limit: int
-        :param OrderField: Sorting field. Valid values: <li>clusterId: Sorting by instance ID. </li><li>addTime: Sorting by instance creation time.</li><li>status: Sorting by instance status code.</li>
+        :param _OrderField: Sorting field. Valid values: <li>clusterId: Sorting by instance ID. </li><li>addTime: Sorting by instance creation time.</li><li>status: Sorting by instance status code.</li>
         :type OrderField: str
-        :param Asc: Sort ascending or descending based on `OrderField`. Valid values:<li>0: Descending.</li><li>1: Ascending.</li>Default value: `0`.
+        :param _Asc: Sort ascending or descending based on `OrderField`. Valid values:<li>0: Descending.</li><li>1: Ascending.</li>Default value: `0`.
         :type Asc: int
-        :param Filters: Custom query
+        :param _Filters: Custom query
         :type Filters: list of Filters
         """
-        self.DisplayStrategy = None
-        self.Offset = None
-        self.Limit = None
-        self.OrderField = None
-        self.Asc = None
-        self.Filters = None
+        self._DisplayStrategy = None
+        self._Offset = None
+        self._Limit = None
+        self._OrderField = None
+        self._Asc = None
+        self._Filters = None
+
+    @property
+    def DisplayStrategy(self):
+        return self._DisplayStrategy
+
+    @DisplayStrategy.setter
+    def DisplayStrategy(self, DisplayStrategy):
+        self._DisplayStrategy = DisplayStrategy
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def OrderField(self):
+        return self._OrderField
+
+    @OrderField.setter
+    def OrderField(self, OrderField):
+        self._OrderField = OrderField
+
+    @property
+    def Asc(self):
+        return self._Asc
+
+    @Asc.setter
+    def Asc(self, Asc):
+        self._Asc = Asc
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
 
     def _deserialize(self, params):
-        self.DisplayStrategy = params.get("DisplayStrategy")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.OrderField = params.get("OrderField")
-        self.Asc = params.get("Asc")
+        self._DisplayStrategy = params.get("DisplayStrategy")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._OrderField = params.get("OrderField")
+        self._Asc = params.get("Asc")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filters()
                 obj._deserialize(item)
-                self.Filters.append(obj)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1474,27 +3019,51 @@ class DescribeInstancesListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCnt: Number of eligible instances.
+        :param _TotalCnt: Number of eligible instances.
         :type TotalCnt: int
-        :param InstancesList: Cluster instance list.
+        :param _InstancesList: Cluster instance list.
         :type InstancesList: list of EmrListInstance
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TotalCnt = None
-        self.InstancesList = None
-        self.RequestId = None
+        self._TotalCnt = None
+        self._InstancesList = None
+        self._RequestId = None
+
+    @property
+    def TotalCnt(self):
+        return self._TotalCnt
+
+    @TotalCnt.setter
+    def TotalCnt(self, TotalCnt):
+        self._TotalCnt = TotalCnt
+
+    @property
+    def InstancesList(self):
+        return self._InstancesList
+
+    @InstancesList.setter
+    def InstancesList(self, InstancesList):
+        self._InstancesList = InstancesList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCnt = params.get("TotalCnt")
+        self._TotalCnt = params.get("TotalCnt")
         if params.get("InstancesList") is not None:
-            self.InstancesList = []
+            self._InstancesList = []
             for item in params.get("InstancesList"):
                 obj = EmrListInstance()
                 obj._deserialize(item)
-                self.InstancesList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._InstancesList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeInstancesRequest(AbstractModel):
@@ -1504,50 +3073,107 @@ class DescribeInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DisplayStrategy: Cluster filtering policy. Valid values:
+        :param _DisplayStrategy: Cluster filtering policy. Valid values:
 <li>clusterList: queries the list of clusters except terminated ones.</li>
 <li>monitorManage: queries the list of clusters except those that have been terminated, are being created, or failed to be created.</li>
 <li>cloudHardwareManage/componentManage: reserved fields with the same meaning as `monitorManage`.</li>
         :type DisplayStrategy: str
-        :param InstanceIds: Queries by one or more instance IDs in the format of `emr-xxxxxxxx`. For the format of this parameter, please see the `id.N` section in [API Overview](https://intl.cloud.tencent.com/document/api/213/15688). If no instance ID is entered, the list of all instances under this `APPID` will be returned.
+        :param _InstanceIds: Queries by one or more instance IDs in the format of `emr-xxxxxxxx`. For the format of this parameter, please see the `id.N` section in [API Overview](https://intl.cloud.tencent.com/document/api/213/15688). If no instance ID is entered, the list of all instances under this `APPID` will be returned.
         :type InstanceIds: list of str
-        :param Offset: Page number. Default value: 0, indicating the first page.
+        :param _Offset: Page number. Default value: 0, indicating the first page.
         :type Offset: int
-        :param Limit: Number of returned results per page. Default value: 10. Maximum value: 100
+        :param _Limit: Number of returned results per page. Default value: 10. Maximum value: 100
         :type Limit: int
-        :param ProjectId: ID of the project to which the instance belongs. This parameter can be obtained from the `projectId` field in the return value of the `DescribeProject` API. If this value is -1, the list of all instances will be returned.
+        :param _ProjectId: ID of the project to which the instance belongs. This parameter can be obtained from the `projectId` field in the return value of the `DescribeProject` API. If this value is -1, the list of all instances will be returned.
         :type ProjectId: int
-        :param OrderField: Sorting field. Valid values:
+        :param _OrderField: Sorting field. Valid values:
 <li>clusterId: sorts by cluster ID.</li>
 <li>addTime: sorts by instance creation time.</li>
 <li>status: sorts by instance status code.</li>
         :type OrderField: str
-        :param Asc: Sorts according to `OrderField` in ascending or descending order. Valid values:
+        :param _Asc: Sorts according to `OrderField` in ascending or descending order. Valid values:
 <li>0: descending order.</li>
 <li>1: ascending order.</li>Default value: 0.
         :type Asc: int
         """
-        self.DisplayStrategy = None
-        self.InstanceIds = None
-        self.Offset = None
-        self.Limit = None
-        self.ProjectId = None
-        self.OrderField = None
-        self.Asc = None
+        self._DisplayStrategy = None
+        self._InstanceIds = None
+        self._Offset = None
+        self._Limit = None
+        self._ProjectId = None
+        self._OrderField = None
+        self._Asc = None
+
+    @property
+    def DisplayStrategy(self):
+        return self._DisplayStrategy
+
+    @DisplayStrategy.setter
+    def DisplayStrategy(self, DisplayStrategy):
+        self._DisplayStrategy = DisplayStrategy
+
+    @property
+    def InstanceIds(self):
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def OrderField(self):
+        return self._OrderField
+
+    @OrderField.setter
+    def OrderField(self, OrderField):
+        self._OrderField = OrderField
+
+    @property
+    def Asc(self):
+        return self._Asc
+
+    @Asc.setter
+    def Asc(self, Asc):
+        self._Asc = Asc
 
 
     def _deserialize(self, params):
-        self.DisplayStrategy = params.get("DisplayStrategy")
-        self.InstanceIds = params.get("InstanceIds")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.ProjectId = params.get("ProjectId")
-        self.OrderField = params.get("OrderField")
-        self.Asc = params.get("Asc")
+        self._DisplayStrategy = params.get("DisplayStrategy")
+        self._InstanceIds = params.get("InstanceIds")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._ProjectId = params.get("ProjectId")
+        self._OrderField = params.get("OrderField")
+        self._Asc = params.get("Asc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1560,33 +3186,65 @@ class DescribeInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCnt: Number of eligible instances.
+        :param _TotalCnt: Number of eligible instances.
         :type TotalCnt: int
-        :param ClusterList: List of EMR instance details.
+        :param _ClusterList: List of EMR instance details.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ClusterList: list of ClusterInstancesInfo
-        :param TagKeys: List of tag keys associated to an instance.
+        :param _TagKeys: List of tag keys associated to an instance.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TagKeys: list of str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TotalCnt = None
-        self.ClusterList = None
-        self.TagKeys = None
-        self.RequestId = None
+        self._TotalCnt = None
+        self._ClusterList = None
+        self._TagKeys = None
+        self._RequestId = None
+
+    @property
+    def TotalCnt(self):
+        return self._TotalCnt
+
+    @TotalCnt.setter
+    def TotalCnt(self, TotalCnt):
+        self._TotalCnt = TotalCnt
+
+    @property
+    def ClusterList(self):
+        return self._ClusterList
+
+    @ClusterList.setter
+    def ClusterList(self, ClusterList):
+        self._ClusterList = ClusterList
+
+    @property
+    def TagKeys(self):
+        return self._TagKeys
+
+    @TagKeys.setter
+    def TagKeys(self, TagKeys):
+        self._TagKeys = TagKeys
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCnt = params.get("TotalCnt")
+        self._TotalCnt = params.get("TotalCnt")
         if params.get("ClusterList") is not None:
-            self.ClusterList = []
+            self._ClusterList = []
             for item in params.get("ClusterList"):
                 obj = ClusterInstancesInfo()
                 obj._deserialize(item)
-                self.ClusterList.append(obj)
-        self.TagKeys = params.get("TagKeys")
-        self.RequestId = params.get("RequestId")
+                self._ClusterList.append(obj)
+        self._TagKeys = params.get("TagKeys")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeResourceScheduleRequest(AbstractModel):
@@ -1596,18 +3254,27 @@ class DescribeResourceScheduleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: EMR cluster ID
+        :param _InstanceId: EMR cluster ID
         :type InstanceId: str
         """
-        self.InstanceId = None
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1620,30 +3287,70 @@ class DescribeResourceScheduleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OpenSwitch: Whether to enable the resource scheduling feature
+        :param _OpenSwitch: Whether to enable the resource scheduling feature
         :type OpenSwitch: bool
-        :param Scheduler: The resource scheduler in service
+        :param _Scheduler: The resource scheduler in service
         :type Scheduler: str
-        :param FSInfo: Fair Scheduler information
+        :param _FSInfo: Fair Scheduler information
         :type FSInfo: str
-        :param CSInfo: Capacity Scheduler information
+        :param _CSInfo: Capacity Scheduler information
         :type CSInfo: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.OpenSwitch = None
-        self.Scheduler = None
-        self.FSInfo = None
-        self.CSInfo = None
-        self.RequestId = None
+        self._OpenSwitch = None
+        self._Scheduler = None
+        self._FSInfo = None
+        self._CSInfo = None
+        self._RequestId = None
+
+    @property
+    def OpenSwitch(self):
+        return self._OpenSwitch
+
+    @OpenSwitch.setter
+    def OpenSwitch(self, OpenSwitch):
+        self._OpenSwitch = OpenSwitch
+
+    @property
+    def Scheduler(self):
+        return self._Scheduler
+
+    @Scheduler.setter
+    def Scheduler(self, Scheduler):
+        self._Scheduler = Scheduler
+
+    @property
+    def FSInfo(self):
+        return self._FSInfo
+
+    @FSInfo.setter
+    def FSInfo(self, FSInfo):
+        self._FSInfo = FSInfo
+
+    @property
+    def CSInfo(self):
+        return self._CSInfo
+
+    @CSInfo.setter
+    def CSInfo(self, CSInfo):
+        self._CSInfo = CSInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.OpenSwitch = params.get("OpenSwitch")
-        self.Scheduler = params.get("Scheduler")
-        self.FSInfo = params.get("FSInfo")
-        self.CSInfo = params.get("CSInfo")
-        self.RequestId = params.get("RequestId")
+        self._OpenSwitch = params.get("OpenSwitch")
+        self._Scheduler = params.get("Scheduler")
+        self._FSInfo = params.get("FSInfo")
+        self._CSInfo = params.get("CSInfo")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeUsersForUserManagerRequest(AbstractModel):
@@ -1653,36 +3360,77 @@ class DescribeUsersForUserManagerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Cluster instance ID
+        :param _InstanceId: Cluster instance ID
         :type InstanceId: str
-        :param PageNo: Page number
+        :param _PageNo: Page number
         :type PageNo: int
-        :param PageSize: Page size
+        :param _PageSize: Page size
         :type PageSize: int
-        :param UserManagerFilter: User list query filter
+        :param _UserManagerFilter: User list query filter
         :type UserManagerFilter: :class:`tencentcloud.emr.v20190103.models.UserManagerFilter`
-        :param NeedKeytabInfo: Whether the Keytab file information is required. This field is only valid for clusters with Kerberos enabled and defaults to `false`.
+        :param _NeedKeytabInfo: Whether the Keytab file information is required. This field is only valid for clusters with Kerberos enabled and defaults to `false`.
         :type NeedKeytabInfo: bool
         """
-        self.InstanceId = None
-        self.PageNo = None
-        self.PageSize = None
-        self.UserManagerFilter = None
-        self.NeedKeytabInfo = None
+        self._InstanceId = None
+        self._PageNo = None
+        self._PageSize = None
+        self._UserManagerFilter = None
+        self._NeedKeytabInfo = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def PageNo(self):
+        return self._PageNo
+
+    @PageNo.setter
+    def PageNo(self, PageNo):
+        self._PageNo = PageNo
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def UserManagerFilter(self):
+        return self._UserManagerFilter
+
+    @UserManagerFilter.setter
+    def UserManagerFilter(self, UserManagerFilter):
+        self._UserManagerFilter = UserManagerFilter
+
+    @property
+    def NeedKeytabInfo(self):
+        return self._NeedKeytabInfo
+
+    @NeedKeytabInfo.setter
+    def NeedKeytabInfo(self, NeedKeytabInfo):
+        self._NeedKeytabInfo = NeedKeytabInfo
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.PageNo = params.get("PageNo")
-        self.PageSize = params.get("PageSize")
+        self._InstanceId = params.get("InstanceId")
+        self._PageNo = params.get("PageNo")
+        self._PageSize = params.get("PageSize")
         if params.get("UserManagerFilter") is not None:
-            self.UserManagerFilter = UserManagerFilter()
-            self.UserManagerFilter._deserialize(params.get("UserManagerFilter"))
-        self.NeedKeytabInfo = params.get("NeedKeytabInfo")
+            self._UserManagerFilter = UserManagerFilter()
+            self._UserManagerFilter._deserialize(params.get("UserManagerFilter"))
+        self._NeedKeytabInfo = params.get("NeedKeytabInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1695,28 +3443,52 @@ class DescribeUsersForUserManagerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCnt: Total number
+        :param _TotalCnt: Total number
         :type TotalCnt: int
-        :param UserManagerUserList: User information list
+        :param _UserManagerUserList: User information list
 Note: This field may return null, indicating that no valid value can be obtained.
         :type UserManagerUserList: list of UserManagerUserBriefInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TotalCnt = None
-        self.UserManagerUserList = None
-        self.RequestId = None
+        self._TotalCnt = None
+        self._UserManagerUserList = None
+        self._RequestId = None
+
+    @property
+    def TotalCnt(self):
+        return self._TotalCnt
+
+    @TotalCnt.setter
+    def TotalCnt(self, TotalCnt):
+        self._TotalCnt = TotalCnt
+
+    @property
+    def UserManagerUserList(self):
+        return self._UserManagerUserList
+
+    @UserManagerUserList.setter
+    def UserManagerUserList(self, UserManagerUserList):
+        self._UserManagerUserList = UserManagerUserList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCnt = params.get("TotalCnt")
+        self._TotalCnt = params.get("TotalCnt")
         if params.get("UserManagerUserList") is not None:
-            self.UserManagerUserList = []
+            self._UserManagerUserList = []
             for item in params.get("UserManagerUserList"):
                 obj = UserManagerUserBriefInfo()
                 obj._deserialize(item)
-                self.UserManagerUserList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._UserManagerUserList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DiskSpecInfo(AbstractModel):
@@ -1726,10 +3498,10 @@ class DiskSpecInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Count: The number of disks.
+        :param _Count: The number of disks.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Count: int
-        :param DiskType: The system disk type. Valid values:
+        :param _DiskType: The system disk type. Valid values:
 <li>`CLOUD_SSD`: Cloud SSD</li>
 <li>`CLOUD_PREMIUM`: Premium cloud disk</li>
 <li>`CLOUD_BASIC`: Cloud HDD</li>
@@ -1747,23 +3519,48 @@ The data disk type. Valid values:
 <li>CLOUD_TSSD: ulTra SSD</li>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DiskType: str
-        :param DiskSize: The disk capacity in GB.
+        :param _DiskSize: The disk capacity in GB.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DiskSize: int
         """
-        self.Count = None
-        self.DiskType = None
-        self.DiskSize = None
+        self._Count = None
+        self._DiskType = None
+        self._DiskSize = None
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def DiskType(self):
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def DiskSize(self):
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
 
 
     def _deserialize(self, params):
-        self.Count = params.get("Count")
-        self.DiskType = params.get("DiskType")
-        self.DiskSize = params.get("DiskSize")
+        self._Count = params.get("Count")
+        self._DiskType = params.get("DiskType")
+        self._DiskSize = params.get("DiskSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1776,30 +3573,63 @@ class DynamicPodSpec(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestCpu: Minimum number of CPUs
+        :param _RequestCpu: Minimum number of CPUs
         :type RequestCpu: float
-        :param LimitCpu: Maximum number of CPUs
+        :param _LimitCpu: Maximum number of CPUs
         :type LimitCpu: float
-        :param RequestMemory: Minimum memory in MB
+        :param _RequestMemory: Minimum memory in MB
         :type RequestMemory: float
-        :param LimitMemory: Maximum memory in MB
+        :param _LimitMemory: Maximum memory in MB
         :type LimitMemory: float
         """
-        self.RequestCpu = None
-        self.LimitCpu = None
-        self.RequestMemory = None
-        self.LimitMemory = None
+        self._RequestCpu = None
+        self._LimitCpu = None
+        self._RequestMemory = None
+        self._LimitMemory = None
+
+    @property
+    def RequestCpu(self):
+        return self._RequestCpu
+
+    @RequestCpu.setter
+    def RequestCpu(self, RequestCpu):
+        self._RequestCpu = RequestCpu
+
+    @property
+    def LimitCpu(self):
+        return self._LimitCpu
+
+    @LimitCpu.setter
+    def LimitCpu(self, LimitCpu):
+        self._LimitCpu = LimitCpu
+
+    @property
+    def RequestMemory(self):
+        return self._RequestMemory
+
+    @RequestMemory.setter
+    def RequestMemory(self, RequestMemory):
+        self._RequestMemory = RequestMemory
+
+    @property
+    def LimitMemory(self):
+        return self._LimitMemory
+
+    @LimitMemory.setter
+    def LimitMemory(self, LimitMemory):
+        self._LimitMemory = LimitMemory
 
 
     def _deserialize(self, params):
-        self.RequestCpu = params.get("RequestCpu")
-        self.LimitCpu = params.get("LimitCpu")
-        self.RequestMemory = params.get("RequestMemory")
-        self.LimitMemory = params.get("LimitMemory")
+        self._RequestCpu = params.get("RequestCpu")
+        self._LimitCpu = params.get("LimitCpu")
+        self._RequestMemory = params.get("RequestMemory")
+        self._LimitMemory = params.get("LimitMemory")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1812,164 +3642,405 @@ class EmrListInstance(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: Cluster ID
+        :param _ClusterId: Cluster ID
         :type ClusterId: str
-        :param StatusDesc: Status description
+        :param _StatusDesc: Status description
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type StatusDesc: str
-        :param ClusterName: Cluster name
+        :param _ClusterName: Cluster name
         :type ClusterName: str
-        :param ZoneId: Cluster region
+        :param _ZoneId: Cluster region
         :type ZoneId: int
-        :param AppId: User APPID
+        :param _AppId: User APPID
         :type AppId: int
-        :param AddTime: Creation time
+        :param _AddTime: Creation time
         :type AddTime: str
-        :param RunTime: Running time
+        :param _RunTime: Running time
         :type RunTime: str
-        :param MasterIp: Cluster IP
+        :param _MasterIp: Cluster IP
         :type MasterIp: str
-        :param EmrVersion: Cluster version
+        :param _EmrVersion: Cluster version
         :type EmrVersion: str
-        :param ChargeType: Cluster billing mode
+        :param _ChargeType: Cluster billing mode
         :type ChargeType: int
-        :param Id: EMR ID
+        :param _Id: EMR ID
         :type Id: int
-        :param ProductId: Product ID
+        :param _ProductId: Product ID
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type ProductId: int
-        :param ProjectId: Project ID
+        :param _ProjectId: Project ID
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type ProjectId: int
-        :param RegionId: Region
+        :param _RegionId: Region
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type RegionId: int
-        :param SubnetId: Subnet ID
+        :param _SubnetId: Subnet ID
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type SubnetId: int
-        :param VpcId: VPC ID
+        :param _VpcId: VPC ID
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type VpcId: int
-        :param Zone: Region
+        :param _Zone: Region
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type Zone: str
-        :param Status: Status code
+        :param _Status: Status code
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type Status: int
-        :param Tags: Instance tag
+        :param _Tags: Instance tag
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type Tags: list of Tag
-        :param AlarmInfo: Alarm information
+        :param _AlarmInfo: Alarm information
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type AlarmInfo: str
-        :param IsWoodpeckerCluster: Whether it is a Woodpecker cluster
+        :param _IsWoodpeckerCluster: Whether it is a Woodpecker cluster
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type IsWoodpeckerCluster: int
-        :param VpcName: VPC name
+        :param _VpcName: VPC name
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type VpcName: str
-        :param SubnetName: Subnet name
+        :param _SubnetName: Subnet name
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type SubnetName: str
-        :param UniqVpcId: VPC ID string
+        :param _UniqVpcId: VPC ID string
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type UniqVpcId: str
-        :param UniqSubnetId: Subnet ID string
+        :param _UniqSubnetId: Subnet ID string
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type UniqSubnetId: str
-        :param ClusterClass: Cluster type
+        :param _ClusterClass: Cluster type
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type ClusterClass: str
-        :param IsMultiZoneCluster: Whether it is a multi-AZ cluster
+        :param _IsMultiZoneCluster: Whether it is a multi-AZ cluster
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type IsMultiZoneCluster: bool
-        :param IsHandsCluster: Whether it is a manually deployed cluster
+        :param _IsHandsCluster: Whether it is a manually deployed cluster
 Note: This field may return null, indicating that no valid value can be obtained. 
         :type IsHandsCluster: bool
-        :param OutSideSoftInfo: Client component information.
+        :param _OutSideSoftInfo: Client component information.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OutSideSoftInfo: list of SoftDependInfo
-        :param IsSupportOutsideCluster: Whether the current cluster supports external clients.
+        :param _IsSupportOutsideCluster: Whether the current cluster supports external clients.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IsSupportOutsideCluster: bool
         """
-        self.ClusterId = None
-        self.StatusDesc = None
-        self.ClusterName = None
-        self.ZoneId = None
-        self.AppId = None
-        self.AddTime = None
-        self.RunTime = None
-        self.MasterIp = None
-        self.EmrVersion = None
-        self.ChargeType = None
-        self.Id = None
-        self.ProductId = None
-        self.ProjectId = None
-        self.RegionId = None
-        self.SubnetId = None
-        self.VpcId = None
-        self.Zone = None
-        self.Status = None
-        self.Tags = None
-        self.AlarmInfo = None
-        self.IsWoodpeckerCluster = None
-        self.VpcName = None
-        self.SubnetName = None
-        self.UniqVpcId = None
-        self.UniqSubnetId = None
-        self.ClusterClass = None
-        self.IsMultiZoneCluster = None
-        self.IsHandsCluster = None
-        self.OutSideSoftInfo = None
-        self.IsSupportOutsideCluster = None
+        self._ClusterId = None
+        self._StatusDesc = None
+        self._ClusterName = None
+        self._ZoneId = None
+        self._AppId = None
+        self._AddTime = None
+        self._RunTime = None
+        self._MasterIp = None
+        self._EmrVersion = None
+        self._ChargeType = None
+        self._Id = None
+        self._ProductId = None
+        self._ProjectId = None
+        self._RegionId = None
+        self._SubnetId = None
+        self._VpcId = None
+        self._Zone = None
+        self._Status = None
+        self._Tags = None
+        self._AlarmInfo = None
+        self._IsWoodpeckerCluster = None
+        self._VpcName = None
+        self._SubnetName = None
+        self._UniqVpcId = None
+        self._UniqSubnetId = None
+        self._ClusterClass = None
+        self._IsMultiZoneCluster = None
+        self._IsHandsCluster = None
+        self._OutSideSoftInfo = None
+        self._IsSupportOutsideCluster = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def StatusDesc(self):
+        return self._StatusDesc
+
+    @StatusDesc.setter
+    def StatusDesc(self, StatusDesc):
+        self._StatusDesc = StatusDesc
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def AddTime(self):
+        return self._AddTime
+
+    @AddTime.setter
+    def AddTime(self, AddTime):
+        self._AddTime = AddTime
+
+    @property
+    def RunTime(self):
+        return self._RunTime
+
+    @RunTime.setter
+    def RunTime(self, RunTime):
+        self._RunTime = RunTime
+
+    @property
+    def MasterIp(self):
+        return self._MasterIp
+
+    @MasterIp.setter
+    def MasterIp(self, MasterIp):
+        self._MasterIp = MasterIp
+
+    @property
+    def EmrVersion(self):
+        return self._EmrVersion
+
+    @EmrVersion.setter
+    def EmrVersion(self, EmrVersion):
+        self._EmrVersion = EmrVersion
+
+    @property
+    def ChargeType(self):
+        return self._ChargeType
+
+    @ChargeType.setter
+    def ChargeType(self, ChargeType):
+        self._ChargeType = ChargeType
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def RegionId(self):
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def AlarmInfo(self):
+        return self._AlarmInfo
+
+    @AlarmInfo.setter
+    def AlarmInfo(self, AlarmInfo):
+        self._AlarmInfo = AlarmInfo
+
+    @property
+    def IsWoodpeckerCluster(self):
+        return self._IsWoodpeckerCluster
+
+    @IsWoodpeckerCluster.setter
+    def IsWoodpeckerCluster(self, IsWoodpeckerCluster):
+        self._IsWoodpeckerCluster = IsWoodpeckerCluster
+
+    @property
+    def VpcName(self):
+        return self._VpcName
+
+    @VpcName.setter
+    def VpcName(self, VpcName):
+        self._VpcName = VpcName
+
+    @property
+    def SubnetName(self):
+        return self._SubnetName
+
+    @SubnetName.setter
+    def SubnetName(self, SubnetName):
+        self._SubnetName = SubnetName
+
+    @property
+    def UniqVpcId(self):
+        return self._UniqVpcId
+
+    @UniqVpcId.setter
+    def UniqVpcId(self, UniqVpcId):
+        self._UniqVpcId = UniqVpcId
+
+    @property
+    def UniqSubnetId(self):
+        return self._UniqSubnetId
+
+    @UniqSubnetId.setter
+    def UniqSubnetId(self, UniqSubnetId):
+        self._UniqSubnetId = UniqSubnetId
+
+    @property
+    def ClusterClass(self):
+        return self._ClusterClass
+
+    @ClusterClass.setter
+    def ClusterClass(self, ClusterClass):
+        self._ClusterClass = ClusterClass
+
+    @property
+    def IsMultiZoneCluster(self):
+        return self._IsMultiZoneCluster
+
+    @IsMultiZoneCluster.setter
+    def IsMultiZoneCluster(self, IsMultiZoneCluster):
+        self._IsMultiZoneCluster = IsMultiZoneCluster
+
+    @property
+    def IsHandsCluster(self):
+        return self._IsHandsCluster
+
+    @IsHandsCluster.setter
+    def IsHandsCluster(self, IsHandsCluster):
+        self._IsHandsCluster = IsHandsCluster
+
+    @property
+    def OutSideSoftInfo(self):
+        return self._OutSideSoftInfo
+
+    @OutSideSoftInfo.setter
+    def OutSideSoftInfo(self, OutSideSoftInfo):
+        self._OutSideSoftInfo = OutSideSoftInfo
+
+    @property
+    def IsSupportOutsideCluster(self):
+        return self._IsSupportOutsideCluster
+
+    @IsSupportOutsideCluster.setter
+    def IsSupportOutsideCluster(self, IsSupportOutsideCluster):
+        self._IsSupportOutsideCluster = IsSupportOutsideCluster
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
-        self.StatusDesc = params.get("StatusDesc")
-        self.ClusterName = params.get("ClusterName")
-        self.ZoneId = params.get("ZoneId")
-        self.AppId = params.get("AppId")
-        self.AddTime = params.get("AddTime")
-        self.RunTime = params.get("RunTime")
-        self.MasterIp = params.get("MasterIp")
-        self.EmrVersion = params.get("EmrVersion")
-        self.ChargeType = params.get("ChargeType")
-        self.Id = params.get("Id")
-        self.ProductId = params.get("ProductId")
-        self.ProjectId = params.get("ProjectId")
-        self.RegionId = params.get("RegionId")
-        self.SubnetId = params.get("SubnetId")
-        self.VpcId = params.get("VpcId")
-        self.Zone = params.get("Zone")
-        self.Status = params.get("Status")
+        self._ClusterId = params.get("ClusterId")
+        self._StatusDesc = params.get("StatusDesc")
+        self._ClusterName = params.get("ClusterName")
+        self._ZoneId = params.get("ZoneId")
+        self._AppId = params.get("AppId")
+        self._AddTime = params.get("AddTime")
+        self._RunTime = params.get("RunTime")
+        self._MasterIp = params.get("MasterIp")
+        self._EmrVersion = params.get("EmrVersion")
+        self._ChargeType = params.get("ChargeType")
+        self._Id = params.get("Id")
+        self._ProductId = params.get("ProductId")
+        self._ProjectId = params.get("ProjectId")
+        self._RegionId = params.get("RegionId")
+        self._SubnetId = params.get("SubnetId")
+        self._VpcId = params.get("VpcId")
+        self._Zone = params.get("Zone")
+        self._Status = params.get("Status")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.AlarmInfo = params.get("AlarmInfo")
-        self.IsWoodpeckerCluster = params.get("IsWoodpeckerCluster")
-        self.VpcName = params.get("VpcName")
-        self.SubnetName = params.get("SubnetName")
-        self.UniqVpcId = params.get("UniqVpcId")
-        self.UniqSubnetId = params.get("UniqSubnetId")
-        self.ClusterClass = params.get("ClusterClass")
-        self.IsMultiZoneCluster = params.get("IsMultiZoneCluster")
-        self.IsHandsCluster = params.get("IsHandsCluster")
+                self._Tags.append(obj)
+        self._AlarmInfo = params.get("AlarmInfo")
+        self._IsWoodpeckerCluster = params.get("IsWoodpeckerCluster")
+        self._VpcName = params.get("VpcName")
+        self._SubnetName = params.get("SubnetName")
+        self._UniqVpcId = params.get("UniqVpcId")
+        self._UniqSubnetId = params.get("UniqSubnetId")
+        self._ClusterClass = params.get("ClusterClass")
+        self._IsMultiZoneCluster = params.get("IsMultiZoneCluster")
+        self._IsHandsCluster = params.get("IsHandsCluster")
         if params.get("OutSideSoftInfo") is not None:
-            self.OutSideSoftInfo = []
+            self._OutSideSoftInfo = []
             for item in params.get("OutSideSoftInfo"):
                 obj = SoftDependInfo()
                 obj._deserialize(item)
-                self.OutSideSoftInfo.append(obj)
-        self.IsSupportOutsideCluster = params.get("IsSupportOutsideCluster")
+                self._OutSideSoftInfo.append(obj)
+        self._IsSupportOutsideCluster = params.get("IsSupportOutsideCluster")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1982,41 +4053,82 @@ class EmrPrice(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OriginalCost: The published price.
+        :param _OriginalCost: The published price.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OriginalCost: str
-        :param DiscountCost: The discounted price.
+        :param _DiscountCost: The discounted price.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DiscountCost: str
-        :param Unit: The unit of the billable item.
+        :param _Unit: The unit of the billable item.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Unit: str
-        :param PriceSpec: The queried spec.
+        :param _PriceSpec: The queried spec.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PriceSpec: :class:`tencentcloud.emr.v20190103.models.PriceResource`
-        :param SupportSpotPaid: Whether spot instances are supported.
+        :param _SupportSpotPaid: Whether spot instances are supported.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SupportSpotPaid: bool
         """
-        self.OriginalCost = None
-        self.DiscountCost = None
-        self.Unit = None
-        self.PriceSpec = None
-        self.SupportSpotPaid = None
+        self._OriginalCost = None
+        self._DiscountCost = None
+        self._Unit = None
+        self._PriceSpec = None
+        self._SupportSpotPaid = None
+
+    @property
+    def OriginalCost(self):
+        return self._OriginalCost
+
+    @OriginalCost.setter
+    def OriginalCost(self, OriginalCost):
+        self._OriginalCost = OriginalCost
+
+    @property
+    def DiscountCost(self):
+        return self._DiscountCost
+
+    @DiscountCost.setter
+    def DiscountCost(self, DiscountCost):
+        self._DiscountCost = DiscountCost
+
+    @property
+    def Unit(self):
+        return self._Unit
+
+    @Unit.setter
+    def Unit(self, Unit):
+        self._Unit = Unit
+
+    @property
+    def PriceSpec(self):
+        return self._PriceSpec
+
+    @PriceSpec.setter
+    def PriceSpec(self, PriceSpec):
+        self._PriceSpec = PriceSpec
+
+    @property
+    def SupportSpotPaid(self):
+        return self._SupportSpotPaid
+
+    @SupportSpotPaid.setter
+    def SupportSpotPaid(self, SupportSpotPaid):
+        self._SupportSpotPaid = SupportSpotPaid
 
 
     def _deserialize(self, params):
-        self.OriginalCost = params.get("OriginalCost")
-        self.DiscountCost = params.get("DiscountCost")
-        self.Unit = params.get("Unit")
+        self._OriginalCost = params.get("OriginalCost")
+        self._DiscountCost = params.get("DiscountCost")
+        self._Unit = params.get("Unit")
         if params.get("PriceSpec") is not None:
-            self.PriceSpec = PriceResource()
-            self.PriceSpec._deserialize(params.get("PriceSpec"))
-        self.SupportSpotPaid = params.get("SupportSpotPaid")
+            self._PriceSpec = PriceResource()
+            self._PriceSpec._deserialize(params.get("PriceSpec"))
+        self._SupportSpotPaid = params.get("SupportSpotPaid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2029,117 +4141,270 @@ class EmrProductConfigOutter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SoftInfo: Software information
+        :param _SoftInfo: Software information
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SoftInfo: list of str
-        :param MasterNodeSize: Number of master nodes
+        :param _MasterNodeSize: Number of master nodes
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MasterNodeSize: int
-        :param CoreNodeSize: Number of core nodes
+        :param _CoreNodeSize: Number of core nodes
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CoreNodeSize: int
-        :param TaskNodeSize: Number of task nodes
+        :param _TaskNodeSize: Number of task nodes
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TaskNodeSize: int
-        :param ComNodeSize: Number of common nodes
+        :param _ComNodeSize: Number of common nodes
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ComNodeSize: int
-        :param MasterResource: Master node resource
+        :param _MasterResource: Master node resource
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MasterResource: :class:`tencentcloud.emr.v20190103.models.OutterResource`
-        :param CoreResource: Core node resource
+        :param _CoreResource: Core node resource
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CoreResource: :class:`tencentcloud.emr.v20190103.models.OutterResource`
-        :param TaskResource: Task node resource
+        :param _TaskResource: Task node resource
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TaskResource: :class:`tencentcloud.emr.v20190103.models.OutterResource`
-        :param ComResource: Common node resource
+        :param _ComResource: Common node resource
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ComResource: :class:`tencentcloud.emr.v20190103.models.OutterResource`
-        :param OnCos: Whether COS is used
+        :param _OnCos: Whether COS is used
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OnCos: bool
-        :param ChargeType: Billing mode
+        :param _ChargeType: Billing mode
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ChargeType: int
-        :param RouterNodeSize: Number of router nodes
+        :param _RouterNodeSize: Number of router nodes
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RouterNodeSize: int
-        :param SupportHA: Whether HA is supported
+        :param _SupportHA: Whether HA is supported
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SupportHA: bool
-        :param SecurityOn: Whether secure mode is supported
+        :param _SecurityOn: Whether secure mode is supported
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SecurityOn: bool
-        :param SecurityGroup: Security group name
+        :param _SecurityGroup: Security group name
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SecurityGroup: str
-        :param CbsEncrypt: Whether to enable CBS encryption
+        :param _CbsEncrypt: Whether to enable CBS encryption
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CbsEncrypt: int
-        :param ApplicationRole: Custom application role
+        :param _ApplicationRole: Custom application role
 Note: this field may return `null`, indicating that no valid value can be obtained.
         :type ApplicationRole: str
-        :param SecurityGroups: Security groups
+        :param _SecurityGroups: Security groups
 Note: this field may return `null`, indicating that no valid value can be obtained.
         :type SecurityGroups: list of str
-        :param PublicKeyId: SSH key ID
+        :param _PublicKeyId: SSH key ID
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type PublicKeyId: str
         """
-        self.SoftInfo = None
-        self.MasterNodeSize = None
-        self.CoreNodeSize = None
-        self.TaskNodeSize = None
-        self.ComNodeSize = None
-        self.MasterResource = None
-        self.CoreResource = None
-        self.TaskResource = None
-        self.ComResource = None
-        self.OnCos = None
-        self.ChargeType = None
-        self.RouterNodeSize = None
-        self.SupportHA = None
-        self.SecurityOn = None
-        self.SecurityGroup = None
-        self.CbsEncrypt = None
-        self.ApplicationRole = None
-        self.SecurityGroups = None
-        self.PublicKeyId = None
+        self._SoftInfo = None
+        self._MasterNodeSize = None
+        self._CoreNodeSize = None
+        self._TaskNodeSize = None
+        self._ComNodeSize = None
+        self._MasterResource = None
+        self._CoreResource = None
+        self._TaskResource = None
+        self._ComResource = None
+        self._OnCos = None
+        self._ChargeType = None
+        self._RouterNodeSize = None
+        self._SupportHA = None
+        self._SecurityOn = None
+        self._SecurityGroup = None
+        self._CbsEncrypt = None
+        self._ApplicationRole = None
+        self._SecurityGroups = None
+        self._PublicKeyId = None
+
+    @property
+    def SoftInfo(self):
+        return self._SoftInfo
+
+    @SoftInfo.setter
+    def SoftInfo(self, SoftInfo):
+        self._SoftInfo = SoftInfo
+
+    @property
+    def MasterNodeSize(self):
+        return self._MasterNodeSize
+
+    @MasterNodeSize.setter
+    def MasterNodeSize(self, MasterNodeSize):
+        self._MasterNodeSize = MasterNodeSize
+
+    @property
+    def CoreNodeSize(self):
+        return self._CoreNodeSize
+
+    @CoreNodeSize.setter
+    def CoreNodeSize(self, CoreNodeSize):
+        self._CoreNodeSize = CoreNodeSize
+
+    @property
+    def TaskNodeSize(self):
+        return self._TaskNodeSize
+
+    @TaskNodeSize.setter
+    def TaskNodeSize(self, TaskNodeSize):
+        self._TaskNodeSize = TaskNodeSize
+
+    @property
+    def ComNodeSize(self):
+        return self._ComNodeSize
+
+    @ComNodeSize.setter
+    def ComNodeSize(self, ComNodeSize):
+        self._ComNodeSize = ComNodeSize
+
+    @property
+    def MasterResource(self):
+        return self._MasterResource
+
+    @MasterResource.setter
+    def MasterResource(self, MasterResource):
+        self._MasterResource = MasterResource
+
+    @property
+    def CoreResource(self):
+        return self._CoreResource
+
+    @CoreResource.setter
+    def CoreResource(self, CoreResource):
+        self._CoreResource = CoreResource
+
+    @property
+    def TaskResource(self):
+        return self._TaskResource
+
+    @TaskResource.setter
+    def TaskResource(self, TaskResource):
+        self._TaskResource = TaskResource
+
+    @property
+    def ComResource(self):
+        return self._ComResource
+
+    @ComResource.setter
+    def ComResource(self, ComResource):
+        self._ComResource = ComResource
+
+    @property
+    def OnCos(self):
+        return self._OnCos
+
+    @OnCos.setter
+    def OnCos(self, OnCos):
+        self._OnCos = OnCos
+
+    @property
+    def ChargeType(self):
+        return self._ChargeType
+
+    @ChargeType.setter
+    def ChargeType(self, ChargeType):
+        self._ChargeType = ChargeType
+
+    @property
+    def RouterNodeSize(self):
+        return self._RouterNodeSize
+
+    @RouterNodeSize.setter
+    def RouterNodeSize(self, RouterNodeSize):
+        self._RouterNodeSize = RouterNodeSize
+
+    @property
+    def SupportHA(self):
+        return self._SupportHA
+
+    @SupportHA.setter
+    def SupportHA(self, SupportHA):
+        self._SupportHA = SupportHA
+
+    @property
+    def SecurityOn(self):
+        return self._SecurityOn
+
+    @SecurityOn.setter
+    def SecurityOn(self, SecurityOn):
+        self._SecurityOn = SecurityOn
+
+    @property
+    def SecurityGroup(self):
+        return self._SecurityGroup
+
+    @SecurityGroup.setter
+    def SecurityGroup(self, SecurityGroup):
+        self._SecurityGroup = SecurityGroup
+
+    @property
+    def CbsEncrypt(self):
+        return self._CbsEncrypt
+
+    @CbsEncrypt.setter
+    def CbsEncrypt(self, CbsEncrypt):
+        self._CbsEncrypt = CbsEncrypt
+
+    @property
+    def ApplicationRole(self):
+        return self._ApplicationRole
+
+    @ApplicationRole.setter
+    def ApplicationRole(self, ApplicationRole):
+        self._ApplicationRole = ApplicationRole
+
+    @property
+    def SecurityGroups(self):
+        return self._SecurityGroups
+
+    @SecurityGroups.setter
+    def SecurityGroups(self, SecurityGroups):
+        self._SecurityGroups = SecurityGroups
+
+    @property
+    def PublicKeyId(self):
+        return self._PublicKeyId
+
+    @PublicKeyId.setter
+    def PublicKeyId(self, PublicKeyId):
+        self._PublicKeyId = PublicKeyId
 
 
     def _deserialize(self, params):
-        self.SoftInfo = params.get("SoftInfo")
-        self.MasterNodeSize = params.get("MasterNodeSize")
-        self.CoreNodeSize = params.get("CoreNodeSize")
-        self.TaskNodeSize = params.get("TaskNodeSize")
-        self.ComNodeSize = params.get("ComNodeSize")
+        self._SoftInfo = params.get("SoftInfo")
+        self._MasterNodeSize = params.get("MasterNodeSize")
+        self._CoreNodeSize = params.get("CoreNodeSize")
+        self._TaskNodeSize = params.get("TaskNodeSize")
+        self._ComNodeSize = params.get("ComNodeSize")
         if params.get("MasterResource") is not None:
-            self.MasterResource = OutterResource()
-            self.MasterResource._deserialize(params.get("MasterResource"))
+            self._MasterResource = OutterResource()
+            self._MasterResource._deserialize(params.get("MasterResource"))
         if params.get("CoreResource") is not None:
-            self.CoreResource = OutterResource()
-            self.CoreResource._deserialize(params.get("CoreResource"))
+            self._CoreResource = OutterResource()
+            self._CoreResource._deserialize(params.get("CoreResource"))
         if params.get("TaskResource") is not None:
-            self.TaskResource = OutterResource()
-            self.TaskResource._deserialize(params.get("TaskResource"))
+            self._TaskResource = OutterResource()
+            self._TaskResource._deserialize(params.get("TaskResource"))
         if params.get("ComResource") is not None:
-            self.ComResource = OutterResource()
-            self.ComResource._deserialize(params.get("ComResource"))
-        self.OnCos = params.get("OnCos")
-        self.ChargeType = params.get("ChargeType")
-        self.RouterNodeSize = params.get("RouterNodeSize")
-        self.SupportHA = params.get("SupportHA")
-        self.SecurityOn = params.get("SecurityOn")
-        self.SecurityGroup = params.get("SecurityGroup")
-        self.CbsEncrypt = params.get("CbsEncrypt")
-        self.ApplicationRole = params.get("ApplicationRole")
-        self.SecurityGroups = params.get("SecurityGroups")
-        self.PublicKeyId = params.get("PublicKeyId")
+            self._ComResource = OutterResource()
+            self._ComResource._deserialize(params.get("ComResource"))
+        self._OnCos = params.get("OnCos")
+        self._ChargeType = params.get("ChargeType")
+        self._RouterNodeSize = params.get("RouterNodeSize")
+        self._SupportHA = params.get("SupportHA")
+        self._SecurityOn = params.get("SecurityOn")
+        self._SecurityGroup = params.get("SecurityGroup")
+        self._CbsEncrypt = params.get("CbsEncrypt")
+        self._ApplicationRole = params.get("ApplicationRole")
+        self._SecurityGroups = params.get("SecurityGroups")
+        self._PublicKeyId = params.get("PublicKeyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2152,35 +4417,68 @@ class ExternalService(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ShareType: Shared component type, which can be EMR or CUSTOM
+        :param _ShareType: Shared component type, which can be EMR or CUSTOM
         :type ShareType: str
-        :param CustomServiceDefineList: Custom parameters
+        :param _CustomServiceDefineList: Custom parameters
         :type CustomServiceDefineList: list of CustomServiceDefine
-        :param Service: Shared component name
+        :param _Service: Shared component name
         :type Service: str
-        :param InstanceId: Shared component cluster
+        :param _InstanceId: Shared component cluster
         :type InstanceId: str
         """
-        self.ShareType = None
-        self.CustomServiceDefineList = None
-        self.Service = None
-        self.InstanceId = None
+        self._ShareType = None
+        self._CustomServiceDefineList = None
+        self._Service = None
+        self._InstanceId = None
+
+    @property
+    def ShareType(self):
+        return self._ShareType
+
+    @ShareType.setter
+    def ShareType(self, ShareType):
+        self._ShareType = ShareType
+
+    @property
+    def CustomServiceDefineList(self):
+        return self._CustomServiceDefineList
+
+    @CustomServiceDefineList.setter
+    def CustomServiceDefineList(self, CustomServiceDefineList):
+        self._CustomServiceDefineList = CustomServiceDefineList
+
+    @property
+    def Service(self):
+        return self._Service
+
+    @Service.setter
+    def Service(self, Service):
+        self._Service = Service
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
 
     def _deserialize(self, params):
-        self.ShareType = params.get("ShareType")
+        self._ShareType = params.get("ShareType")
         if params.get("CustomServiceDefineList") is not None:
-            self.CustomServiceDefineList = []
+            self._CustomServiceDefineList = []
             for item in params.get("CustomServiceDefineList"):
                 obj = CustomServiceDefine()
                 obj._deserialize(item)
-                self.CustomServiceDefineList.append(obj)
-        self.Service = params.get("Service")
-        self.InstanceId = params.get("InstanceId")
+                self._CustomServiceDefineList.append(obj)
+        self._Service = params.get("Service")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2193,22 +4491,39 @@ class Filters(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: Field name
+        :param _Name: Field name
         :type Name: str
-        :param Values: Filters by the field value
+        :param _Values: Filters by the field value
         :type Values: list of str
         """
-        self.Name = None
-        self.Values = None
+        self._Name = None
+        self._Values = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Values = params.get("Values")
+        self._Name = params.get("Name")
+        self._Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2221,19 +4536,28 @@ class HostVolumeContext(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VolumePath: The directory for mounting the host in the pod, which is the mount point of the host in the resource. A specified mount point corresponds to the host path and is used as the data storage directory in the pod.
+        :param _VolumePath: The directory for mounting the host in the pod, which is the mount point of the host in the resource. A specified mount point corresponds to the host path and is used as the data storage directory in the pod.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type VolumePath: str
         """
-        self.VolumePath = None
+        self._VolumePath = None
+
+    @property
+    def VolumePath(self):
+        return self._VolumePath
+
+    @VolumePath.setter
+    def VolumePath(self, VolumePath):
+        self._VolumePath = VolumePath
 
 
     def _deserialize(self, params):
-        self.VolumePath = params.get("VolumePath")
+        self._VolumePath = params.get("VolumePath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2246,121 +4570,258 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TimeUnit: Time unit of instance purchase duration. Valid values:
+        :param _TimeUnit: Time unit of instance purchase duration. Valid values:
 <li>s: seconds. When `PayMode` is 0, `TimeUnit` can only be `s`.</li>
         :type TimeUnit: str
-        :param TimeSpan: Purchase duration of instance, which needs to be used together with `TimeUnit`.
+        :param _TimeSpan: Purchase duration of instance, which needs to be used together with `TimeUnit`.
 <li>When `TimeUnit` is `s`, this parameter can only be filled with 3600, indicating a pay-as-you-go instance.</li>
 <li>When `TimeUnit` is `m`, the number entered in this parameter indicates the purchase duration of the monthly-subscription instance; for example, 1 means one month</li>
         :type TimeSpan: int
-        :param Currency: Currency.
+        :param _Currency: Currency.
         :type Currency: str
-        :param PayMode: Instance billing mode. Valid values:
+        :param _PayMode: Instance billing mode. Valid values:
 <li>0: pay-as-you-go.</li>
         :type PayMode: int
-        :param SupportHA: Whether to enable high availability of node. Valid values:
+        :param _SupportHA: Whether to enable high availability of node. Valid values:
 <li>0: does not enable high availability of node.</li>
 <li>1: enables high availability of node.</li>
         :type SupportHA: int
-        :param Software: List of deployed components. Different required components need to be selected for different EMR product IDs (i.e., `ProductId`; for specific meanings, please see the `ProductId` field in the input parameter):
+        :param _Software: List of deployed components. Different required components need to be selected for different EMR product IDs (i.e., `ProductId`; for specific meanings, please see the `ProductId` field in the input parameter):
 <li>When `ProductId` is 1, the required components include hadoop-2.7.3, knox-1.2.0, and zookeeper-3.4.9</li>
 <li>When `ProductId` is 2, the required components include hadoop-2.7.3, knox-1.2.0, and zookeeper-3.4.9</li>
 <li>When `ProductId` is 4, the required components include hadoop-2.8.4, knox-1.2.0, and zookeeper-3.4.9</li>
 <li>When `ProductId` is 7, the required components include hadoop-3.1.2, knox-1.2.0, and zookeeper-3.4.9</li>
         :type Software: list of str
-        :param ResourceSpec: Node specification queried for price.
+        :param _ResourceSpec: Node specification queried for price.
         :type ResourceSpec: :class:`tencentcloud.emr.v20190103.models.NewResourceSpec`
-        :param Placement: Instance location. This parameter is used to specify the AZ, project, and other attributes of the instance.
+        :param _Placement: Instance location. This parameter is used to specify the AZ, project, and other attributes of the instance.
         :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`
-        :param VPCSettings: Configuration information of VPC. This parameter is used to specify the VPC ID, subnet ID, etc.
+        :param _VPCSettings: Configuration information of VPC. This parameter is used to specify the VPC ID, subnet ID, etc.
         :type VPCSettings: :class:`tencentcloud.emr.v20190103.models.VPCSettings`
-        :param MetaType: Hive-shared metadatabase type. Valid values:
+        :param _MetaType: Hive-shared metadatabase type. Valid values:
 <li>EMR_DEFAULT_META: the cluster creates one by default.</li>
 <li>EMR_EXIST_META: the cluster uses the specified EMR-MetaDB instance.</li>
 <li>USER_CUSTOM_META: the cluster uses a custom MetaDB instance.</li>
         :type MetaType: str
-        :param UnifyMetaInstanceId: EMR-MetaDB instance
+        :param _UnifyMetaInstanceId: EMR-MetaDB instance
         :type UnifyMetaInstanceId: str
-        :param MetaDBInfo: Custom MetaDB instance information
+        :param _MetaDBInfo: Custom MetaDB instance information
         :type MetaDBInfo: :class:`tencentcloud.emr.v20190103.models.CustomMetaInfo`
-        :param ProductId: Product ID. Different product IDs represent different EMR product versions. Valid values:
+        :param _ProductId: Product ID. Different product IDs represent different EMR product versions. Valid values:
 <li>1: EMR v1.3.1.</li>
 <li>2: EMR v2.0.1.</li>
 <li>4: EMR v2.1.0.</li>
 <li>7: EMR v3.0.0.</li>
         :type ProductId: int
-        :param SceneName: Scenario-based values:
+        :param _SceneName: Scenario-based values:
 Hadoop-Kudu
 Hadoop-Zookeeper
 Hadoop-Presto
 Hadoop-Hbase
         :type SceneName: str
-        :param ExternalService: Shared component information
+        :param _ExternalService: Shared component information
         :type ExternalService: list of ExternalService
-        :param VersionID: 
+        :param _VersionID: 
         :type VersionID: int
-        :param MultiZoneSettings: AZ specs
+        :param _MultiZoneSettings: AZ specs
         :type MultiZoneSettings: list of MultiZoneSetting
         """
-        self.TimeUnit = None
-        self.TimeSpan = None
-        self.Currency = None
-        self.PayMode = None
-        self.SupportHA = None
-        self.Software = None
-        self.ResourceSpec = None
-        self.Placement = None
-        self.VPCSettings = None
-        self.MetaType = None
-        self.UnifyMetaInstanceId = None
-        self.MetaDBInfo = None
-        self.ProductId = None
-        self.SceneName = None
-        self.ExternalService = None
-        self.VersionID = None
-        self.MultiZoneSettings = None
+        self._TimeUnit = None
+        self._TimeSpan = None
+        self._Currency = None
+        self._PayMode = None
+        self._SupportHA = None
+        self._Software = None
+        self._ResourceSpec = None
+        self._Placement = None
+        self._VPCSettings = None
+        self._MetaType = None
+        self._UnifyMetaInstanceId = None
+        self._MetaDBInfo = None
+        self._ProductId = None
+        self._SceneName = None
+        self._ExternalService = None
+        self._VersionID = None
+        self._MultiZoneSettings = None
+
+    @property
+    def TimeUnit(self):
+        return self._TimeUnit
+
+    @TimeUnit.setter
+    def TimeUnit(self, TimeUnit):
+        self._TimeUnit = TimeUnit
+
+    @property
+    def TimeSpan(self):
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def Currency(self):
+        return self._Currency
+
+    @Currency.setter
+    def Currency(self, Currency):
+        self._Currency = Currency
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def SupportHA(self):
+        return self._SupportHA
+
+    @SupportHA.setter
+    def SupportHA(self, SupportHA):
+        self._SupportHA = SupportHA
+
+    @property
+    def Software(self):
+        return self._Software
+
+    @Software.setter
+    def Software(self, Software):
+        self._Software = Software
+
+    @property
+    def ResourceSpec(self):
+        return self._ResourceSpec
+
+    @ResourceSpec.setter
+    def ResourceSpec(self, ResourceSpec):
+        self._ResourceSpec = ResourceSpec
+
+    @property
+    def Placement(self):
+        return self._Placement
+
+    @Placement.setter
+    def Placement(self, Placement):
+        self._Placement = Placement
+
+    @property
+    def VPCSettings(self):
+        return self._VPCSettings
+
+    @VPCSettings.setter
+    def VPCSettings(self, VPCSettings):
+        self._VPCSettings = VPCSettings
+
+    @property
+    def MetaType(self):
+        return self._MetaType
+
+    @MetaType.setter
+    def MetaType(self, MetaType):
+        self._MetaType = MetaType
+
+    @property
+    def UnifyMetaInstanceId(self):
+        return self._UnifyMetaInstanceId
+
+    @UnifyMetaInstanceId.setter
+    def UnifyMetaInstanceId(self, UnifyMetaInstanceId):
+        self._UnifyMetaInstanceId = UnifyMetaInstanceId
+
+    @property
+    def MetaDBInfo(self):
+        return self._MetaDBInfo
+
+    @MetaDBInfo.setter
+    def MetaDBInfo(self, MetaDBInfo):
+        self._MetaDBInfo = MetaDBInfo
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def SceneName(self):
+        return self._SceneName
+
+    @SceneName.setter
+    def SceneName(self, SceneName):
+        self._SceneName = SceneName
+
+    @property
+    def ExternalService(self):
+        return self._ExternalService
+
+    @ExternalService.setter
+    def ExternalService(self, ExternalService):
+        self._ExternalService = ExternalService
+
+    @property
+    def VersionID(self):
+        return self._VersionID
+
+    @VersionID.setter
+    def VersionID(self, VersionID):
+        self._VersionID = VersionID
+
+    @property
+    def MultiZoneSettings(self):
+        return self._MultiZoneSettings
+
+    @MultiZoneSettings.setter
+    def MultiZoneSettings(self, MultiZoneSettings):
+        self._MultiZoneSettings = MultiZoneSettings
 
 
     def _deserialize(self, params):
-        self.TimeUnit = params.get("TimeUnit")
-        self.TimeSpan = params.get("TimeSpan")
-        self.Currency = params.get("Currency")
-        self.PayMode = params.get("PayMode")
-        self.SupportHA = params.get("SupportHA")
-        self.Software = params.get("Software")
+        self._TimeUnit = params.get("TimeUnit")
+        self._TimeSpan = params.get("TimeSpan")
+        self._Currency = params.get("Currency")
+        self._PayMode = params.get("PayMode")
+        self._SupportHA = params.get("SupportHA")
+        self._Software = params.get("Software")
         if params.get("ResourceSpec") is not None:
-            self.ResourceSpec = NewResourceSpec()
-            self.ResourceSpec._deserialize(params.get("ResourceSpec"))
+            self._ResourceSpec = NewResourceSpec()
+            self._ResourceSpec._deserialize(params.get("ResourceSpec"))
         if params.get("Placement") is not None:
-            self.Placement = Placement()
-            self.Placement._deserialize(params.get("Placement"))
+            self._Placement = Placement()
+            self._Placement._deserialize(params.get("Placement"))
         if params.get("VPCSettings") is not None:
-            self.VPCSettings = VPCSettings()
-            self.VPCSettings._deserialize(params.get("VPCSettings"))
-        self.MetaType = params.get("MetaType")
-        self.UnifyMetaInstanceId = params.get("UnifyMetaInstanceId")
+            self._VPCSettings = VPCSettings()
+            self._VPCSettings._deserialize(params.get("VPCSettings"))
+        self._MetaType = params.get("MetaType")
+        self._UnifyMetaInstanceId = params.get("UnifyMetaInstanceId")
         if params.get("MetaDBInfo") is not None:
-            self.MetaDBInfo = CustomMetaInfo()
-            self.MetaDBInfo._deserialize(params.get("MetaDBInfo"))
-        self.ProductId = params.get("ProductId")
-        self.SceneName = params.get("SceneName")
+            self._MetaDBInfo = CustomMetaInfo()
+            self._MetaDBInfo._deserialize(params.get("MetaDBInfo"))
+        self._ProductId = params.get("ProductId")
+        self._SceneName = params.get("SceneName")
         if params.get("ExternalService") is not None:
-            self.ExternalService = []
+            self._ExternalService = []
             for item in params.get("ExternalService"):
                 obj = ExternalService()
                 obj._deserialize(item)
-                self.ExternalService.append(obj)
-        self.VersionID = params.get("VersionID")
+                self._ExternalService.append(obj)
+        self._VersionID = params.get("VersionID")
         if params.get("MultiZoneSettings") is not None:
-            self.MultiZoneSettings = []
+            self._MultiZoneSettings = []
             for item in params.get("MultiZoneSettings"):
                 obj = MultiZoneSetting()
                 obj._deserialize(item)
-                self.MultiZoneSettings.append(obj)
+                self._MultiZoneSettings.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2373,45 +4834,93 @@ class InquiryPriceCreateInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OriginalCost: Original price.
+        :param _OriginalCost: Original price.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OriginalCost: float
-        :param DiscountCost: Discounted price.
+        :param _DiscountCost: Discounted price.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DiscountCost: float
-        :param TimeUnit: Time unit of instance purchase duration. Valid values:
+        :param _TimeUnit: Time unit of instance purchase duration. Valid values:
 <li>s: seconds.</li>
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TimeUnit: str
-        :param TimeSpan: Purchase duration of instance.
+        :param _TimeSpan: Purchase duration of instance.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TimeSpan: int
-        :param PriceList: The price list.
+        :param _PriceList: The price list.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PriceList: list of ZoneDetailPriceResult
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.OriginalCost = None
-        self.DiscountCost = None
-        self.TimeUnit = None
-        self.TimeSpan = None
-        self.PriceList = None
-        self.RequestId = None
+        self._OriginalCost = None
+        self._DiscountCost = None
+        self._TimeUnit = None
+        self._TimeSpan = None
+        self._PriceList = None
+        self._RequestId = None
+
+    @property
+    def OriginalCost(self):
+        return self._OriginalCost
+
+    @OriginalCost.setter
+    def OriginalCost(self, OriginalCost):
+        self._OriginalCost = OriginalCost
+
+    @property
+    def DiscountCost(self):
+        return self._DiscountCost
+
+    @DiscountCost.setter
+    def DiscountCost(self, DiscountCost):
+        self._DiscountCost = DiscountCost
+
+    @property
+    def TimeUnit(self):
+        return self._TimeUnit
+
+    @TimeUnit.setter
+    def TimeUnit(self, TimeUnit):
+        self._TimeUnit = TimeUnit
+
+    @property
+    def TimeSpan(self):
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def PriceList(self):
+        return self._PriceList
+
+    @PriceList.setter
+    def PriceList(self, PriceList):
+        self._PriceList = PriceList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.OriginalCost = params.get("OriginalCost")
-        self.DiscountCost = params.get("DiscountCost")
-        self.TimeUnit = params.get("TimeUnit")
-        self.TimeSpan = params.get("TimeSpan")
+        self._OriginalCost = params.get("OriginalCost")
+        self._DiscountCost = params.get("DiscountCost")
+        self._TimeUnit = params.get("TimeUnit")
+        self._TimeSpan = params.get("TimeSpan")
         if params.get("PriceList") is not None:
-            self.PriceList = []
+            self._PriceList = []
             for item in params.get("PriceList"):
                 obj = ZoneDetailPriceResult()
                 obj._deserialize(item)
-                self.PriceList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._PriceList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class InquiryPriceRenewInstanceRequest(AbstractModel):
@@ -2421,44 +4930,101 @@ class InquiryPriceRenewInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TimeSpan: How long the instance will be renewed for, which needs to be used together with `TimeUnit`.
+        :param _TimeSpan: How long the instance will be renewed for, which needs to be used together with `TimeUnit`.
         :type TimeSpan: int
-        :param ResourceIds: List of resource IDs of the node to be renewed. The resource ID is in the format of `emr-vm-xxxxxxxx`. A valid resource ID can be queried in the [console](https://console.cloud.tencent.com/emr/static/hardware).
+        :param _ResourceIds: List of resource IDs of the node to be renewed. The resource ID is in the format of `emr-vm-xxxxxxxx`. A valid resource ID can be queried in the [console](https://console.cloud.tencent.com/emr/static/hardware).
         :type ResourceIds: list of str
-        :param Placement: Location of the instance. This parameter is used to specify the AZ, project, and other attributes of the instance.
+        :param _Placement: Location of the instance. This parameter is used to specify the AZ, project, and other attributes of the instance.
         :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`
-        :param PayMode: Instance billing mode.
+        :param _PayMode: Instance billing mode.
         :type PayMode: int
-        :param TimeUnit: Unit of time for instance renewal.
+        :param _TimeUnit: Unit of time for instance renewal.
         :type TimeUnit: str
-        :param Currency: Currency.
+        :param _Currency: Currency.
         :type Currency: str
-        :param ModifyPayMode: Whether to change from pay-as-you-go billing to monthly subscription billing. `0`: no; `1`: yes
+        :param _ModifyPayMode: Whether to change from pay-as-you-go billing to monthly subscription billing. `0`: no; `1`: yes
         :type ModifyPayMode: int
         """
-        self.TimeSpan = None
-        self.ResourceIds = None
-        self.Placement = None
-        self.PayMode = None
-        self.TimeUnit = None
-        self.Currency = None
-        self.ModifyPayMode = None
+        self._TimeSpan = None
+        self._ResourceIds = None
+        self._Placement = None
+        self._PayMode = None
+        self._TimeUnit = None
+        self._Currency = None
+        self._ModifyPayMode = None
+
+    @property
+    def TimeSpan(self):
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def ResourceIds(self):
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
+
+    @property
+    def Placement(self):
+        return self._Placement
+
+    @Placement.setter
+    def Placement(self, Placement):
+        self._Placement = Placement
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def TimeUnit(self):
+        return self._TimeUnit
+
+    @TimeUnit.setter
+    def TimeUnit(self, TimeUnit):
+        self._TimeUnit = TimeUnit
+
+    @property
+    def Currency(self):
+        return self._Currency
+
+    @Currency.setter
+    def Currency(self, Currency):
+        self._Currency = Currency
+
+    @property
+    def ModifyPayMode(self):
+        return self._ModifyPayMode
+
+    @ModifyPayMode.setter
+    def ModifyPayMode(self, ModifyPayMode):
+        self._ModifyPayMode = ModifyPayMode
 
 
     def _deserialize(self, params):
-        self.TimeSpan = params.get("TimeSpan")
-        self.ResourceIds = params.get("ResourceIds")
+        self._TimeSpan = params.get("TimeSpan")
+        self._ResourceIds = params.get("ResourceIds")
         if params.get("Placement") is not None:
-            self.Placement = Placement()
-            self.Placement._deserialize(params.get("Placement"))
-        self.PayMode = params.get("PayMode")
-        self.TimeUnit = params.get("TimeUnit")
-        self.Currency = params.get("Currency")
-        self.ModifyPayMode = params.get("ModifyPayMode")
+            self._Placement = Placement()
+            self._Placement._deserialize(params.get("Placement"))
+        self._PayMode = params.get("PayMode")
+        self._TimeUnit = params.get("TimeUnit")
+        self._Currency = params.get("Currency")
+        self._ModifyPayMode = params.get("ModifyPayMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2471,34 +5037,74 @@ class InquiryPriceRenewInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OriginalCost: Original price.
+        :param _OriginalCost: Original price.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OriginalCost: float
-        :param DiscountCost: Discounted price.
+        :param _DiscountCost: Discounted price.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DiscountCost: float
-        :param TimeUnit: Unit of time for instance renewal.
+        :param _TimeUnit: Unit of time for instance renewal.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TimeUnit: str
-        :param TimeSpan: How long the instance will be renewed for.
+        :param _TimeSpan: How long the instance will be renewed for.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TimeSpan: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.OriginalCost = None
-        self.DiscountCost = None
-        self.TimeUnit = None
-        self.TimeSpan = None
-        self.RequestId = None
+        self._OriginalCost = None
+        self._DiscountCost = None
+        self._TimeUnit = None
+        self._TimeSpan = None
+        self._RequestId = None
+
+    @property
+    def OriginalCost(self):
+        return self._OriginalCost
+
+    @OriginalCost.setter
+    def OriginalCost(self, OriginalCost):
+        self._OriginalCost = OriginalCost
+
+    @property
+    def DiscountCost(self):
+        return self._DiscountCost
+
+    @DiscountCost.setter
+    def DiscountCost(self, DiscountCost):
+        self._DiscountCost = DiscountCost
+
+    @property
+    def TimeUnit(self):
+        return self._TimeUnit
+
+    @TimeUnit.setter
+    def TimeUnit(self, TimeUnit):
+        self._TimeUnit = TimeUnit
+
+    @property
+    def TimeSpan(self):
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.OriginalCost = params.get("OriginalCost")
-        self.DiscountCost = params.get("DiscountCost")
-        self.TimeUnit = params.get("TimeUnit")
-        self.TimeSpan = params.get("TimeSpan")
-        self.RequestId = params.get("RequestId")
+        self._OriginalCost = params.get("OriginalCost")
+        self._DiscountCost = params.get("DiscountCost")
+        self._TimeUnit = params.get("TimeUnit")
+        self._TimeSpan = params.get("TimeSpan")
+        self._RequestId = params.get("RequestId")
 
 
 class InquiryPriceScaleOutInstanceRequest(AbstractModel):
@@ -2508,57 +5114,138 @@ class InquiryPriceScaleOutInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TimeUnit: Time unit of scale-out. Valid value:
+        :param _TimeUnit: Time unit of scale-out. Valid value:
 <li>s: Second. When `PayMode` is 0, `TimeUnit` can only be `s`.</li>
         :type TimeUnit: str
-        :param TimeSpan: Time span of scale-out, which needs to be used together with `TimeUnit`.
+        :param _TimeSpan: Time span of scale-out, which needs to be used together with `TimeUnit`.
 <li>When `PayMode` is 0, `TimeSpan` can only be 3,600.</li>
         :type TimeSpan: int
-        :param ZoneId: ID of the AZ where an instance resides.
+        :param _ZoneId: ID of the AZ where an instance resides.
         :type ZoneId: int
-        :param PayMode: Instance billing mode. Valid value:
+        :param _PayMode: Instance billing mode. Valid value:
 <li>0: Pay-as-you-go.</li>
         :type PayMode: int
-        :param InstanceId: Instance ID.
+        :param _InstanceId: Instance ID.
         :type InstanceId: str
-        :param CoreCount: Number of core nodes to be added.
+        :param _CoreCount: Number of core nodes to be added.
         :type CoreCount: int
-        :param TaskCount: Number of task nodes to be added.
+        :param _TaskCount: Number of task nodes to be added.
         :type TaskCount: int
-        :param Currency: Currency.
+        :param _Currency: Currency.
         :type Currency: str
-        :param RouterCount: Number of router nodes to be added.
+        :param _RouterCount: Number of router nodes to be added.
         :type RouterCount: int
-        :param MasterCount: Number of master nodes to be added.
+        :param _MasterCount: Number of master nodes to be added.
         :type MasterCount: int
         """
-        self.TimeUnit = None
-        self.TimeSpan = None
-        self.ZoneId = None
-        self.PayMode = None
-        self.InstanceId = None
-        self.CoreCount = None
-        self.TaskCount = None
-        self.Currency = None
-        self.RouterCount = None
-        self.MasterCount = None
+        self._TimeUnit = None
+        self._TimeSpan = None
+        self._ZoneId = None
+        self._PayMode = None
+        self._InstanceId = None
+        self._CoreCount = None
+        self._TaskCount = None
+        self._Currency = None
+        self._RouterCount = None
+        self._MasterCount = None
+
+    @property
+    def TimeUnit(self):
+        return self._TimeUnit
+
+    @TimeUnit.setter
+    def TimeUnit(self, TimeUnit):
+        self._TimeUnit = TimeUnit
+
+    @property
+    def TimeSpan(self):
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def CoreCount(self):
+        return self._CoreCount
+
+    @CoreCount.setter
+    def CoreCount(self, CoreCount):
+        self._CoreCount = CoreCount
+
+    @property
+    def TaskCount(self):
+        return self._TaskCount
+
+    @TaskCount.setter
+    def TaskCount(self, TaskCount):
+        self._TaskCount = TaskCount
+
+    @property
+    def Currency(self):
+        return self._Currency
+
+    @Currency.setter
+    def Currency(self, Currency):
+        self._Currency = Currency
+
+    @property
+    def RouterCount(self):
+        return self._RouterCount
+
+    @RouterCount.setter
+    def RouterCount(self, RouterCount):
+        self._RouterCount = RouterCount
+
+    @property
+    def MasterCount(self):
+        return self._MasterCount
+
+    @MasterCount.setter
+    def MasterCount(self, MasterCount):
+        self._MasterCount = MasterCount
 
 
     def _deserialize(self, params):
-        self.TimeUnit = params.get("TimeUnit")
-        self.TimeSpan = params.get("TimeSpan")
-        self.ZoneId = params.get("ZoneId")
-        self.PayMode = params.get("PayMode")
-        self.InstanceId = params.get("InstanceId")
-        self.CoreCount = params.get("CoreCount")
-        self.TaskCount = params.get("TaskCount")
-        self.Currency = params.get("Currency")
-        self.RouterCount = params.get("RouterCount")
-        self.MasterCount = params.get("MasterCount")
+        self._TimeUnit = params.get("TimeUnit")
+        self._TimeSpan = params.get("TimeSpan")
+        self._ZoneId = params.get("ZoneId")
+        self._PayMode = params.get("PayMode")
+        self._InstanceId = params.get("InstanceId")
+        self._CoreCount = params.get("CoreCount")
+        self._TaskCount = params.get("TaskCount")
+        self._Currency = params.get("Currency")
+        self._RouterCount = params.get("RouterCount")
+        self._MasterCount = params.get("MasterCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2571,47 +5258,95 @@ class InquiryPriceScaleOutInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OriginalCost: Original price.
+        :param _OriginalCost: Original price.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OriginalCost: str
-        :param DiscountCost: Discounted price.
+        :param _DiscountCost: Discounted price.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DiscountCost: str
-        :param Unit: Time unit of scale-out. Valid value:
+        :param _Unit: Time unit of scale-out. Valid value:
 <li>s: Second.</li>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Unit: str
-        :param PriceSpec: Node spec queried for price.
+        :param _PriceSpec: Node spec queried for price.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PriceSpec: :class:`tencentcloud.emr.v20190103.models.PriceResource`
-        :param MultipleEmrPrice: The inquiry results corresponding to the specs specified by the input parameter `MultipleResources`, with the result of the first spec returned by other output parameters.
+        :param _MultipleEmrPrice: The inquiry results corresponding to the specs specified by the input parameter `MultipleResources`, with the result of the first spec returned by other output parameters.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type MultipleEmrPrice: list of EmrPrice
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.OriginalCost = None
-        self.DiscountCost = None
-        self.Unit = None
-        self.PriceSpec = None
-        self.MultipleEmrPrice = None
-        self.RequestId = None
+        self._OriginalCost = None
+        self._DiscountCost = None
+        self._Unit = None
+        self._PriceSpec = None
+        self._MultipleEmrPrice = None
+        self._RequestId = None
+
+    @property
+    def OriginalCost(self):
+        return self._OriginalCost
+
+    @OriginalCost.setter
+    def OriginalCost(self, OriginalCost):
+        self._OriginalCost = OriginalCost
+
+    @property
+    def DiscountCost(self):
+        return self._DiscountCost
+
+    @DiscountCost.setter
+    def DiscountCost(self, DiscountCost):
+        self._DiscountCost = DiscountCost
+
+    @property
+    def Unit(self):
+        return self._Unit
+
+    @Unit.setter
+    def Unit(self, Unit):
+        self._Unit = Unit
+
+    @property
+    def PriceSpec(self):
+        return self._PriceSpec
+
+    @PriceSpec.setter
+    def PriceSpec(self, PriceSpec):
+        self._PriceSpec = PriceSpec
+
+    @property
+    def MultipleEmrPrice(self):
+        return self._MultipleEmrPrice
+
+    @MultipleEmrPrice.setter
+    def MultipleEmrPrice(self, MultipleEmrPrice):
+        self._MultipleEmrPrice = MultipleEmrPrice
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.OriginalCost = params.get("OriginalCost")
-        self.DiscountCost = params.get("DiscountCost")
-        self.Unit = params.get("Unit")
+        self._OriginalCost = params.get("OriginalCost")
+        self._DiscountCost = params.get("DiscountCost")
+        self._Unit = params.get("Unit")
         if params.get("PriceSpec") is not None:
-            self.PriceSpec = PriceResource()
-            self.PriceSpec._deserialize(params.get("PriceSpec"))
+            self._PriceSpec = PriceResource()
+            self._PriceSpec._deserialize(params.get("PriceSpec"))
         if params.get("MultipleEmrPrice") is not None:
-            self.MultipleEmrPrice = []
+            self._MultipleEmrPrice = []
             for item in params.get("MultipleEmrPrice"):
                 obj = EmrPrice()
                 obj._deserialize(item)
-                self.MultipleEmrPrice.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._MultipleEmrPrice.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class InquiryPriceUpdateInstanceRequest(AbstractModel):
@@ -2621,49 +5356,106 @@ class InquiryPriceUpdateInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TimeUnit: Time unit of scaling. Valid values:
+        :param _TimeUnit: Time unit of scaling. Valid values:
 <li>s: seconds. When `PayMode` is 0, `TimeUnit` can only be `s`.</li>
         :type TimeUnit: str
-        :param TimeSpan: Duration of scaling, which needs to be used together with `TimeUnit`.
+        :param _TimeSpan: Duration of scaling, which needs to be used together with `TimeUnit`.
 <li>When `PayMode` is 0, `TimeSpan` can only be 3,600.</li>
         :type TimeSpan: int
-        :param UpdateSpec: Target node specification.
+        :param _UpdateSpec: Target node specification.
         :type UpdateSpec: :class:`tencentcloud.emr.v20190103.models.UpdateInstanceSettings`
-        :param PayMode: Instance billing mode. Valid values:
+        :param _PayMode: Instance billing mode. Valid values:
 <li>0: pay-as-you-go.</li>
         :type PayMode: int
-        :param Placement: Instance location. This parameter is used to specify the AZ, project, and other attributes of the instance.
+        :param _Placement: Instance location. This parameter is used to specify the AZ, project, and other attributes of the instance.
         :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`
-        :param Currency: Currency.
+        :param _Currency: Currency.
         :type Currency: str
-        :param ResourceIdList: The resource ID list for batch configuration change.
+        :param _ResourceIdList: The resource ID list for batch configuration change.
         :type ResourceIdList: list of str
         """
-        self.TimeUnit = None
-        self.TimeSpan = None
-        self.UpdateSpec = None
-        self.PayMode = None
-        self.Placement = None
-        self.Currency = None
-        self.ResourceIdList = None
+        self._TimeUnit = None
+        self._TimeSpan = None
+        self._UpdateSpec = None
+        self._PayMode = None
+        self._Placement = None
+        self._Currency = None
+        self._ResourceIdList = None
+
+    @property
+    def TimeUnit(self):
+        return self._TimeUnit
+
+    @TimeUnit.setter
+    def TimeUnit(self, TimeUnit):
+        self._TimeUnit = TimeUnit
+
+    @property
+    def TimeSpan(self):
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def UpdateSpec(self):
+        return self._UpdateSpec
+
+    @UpdateSpec.setter
+    def UpdateSpec(self, UpdateSpec):
+        self._UpdateSpec = UpdateSpec
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def Placement(self):
+        return self._Placement
+
+    @Placement.setter
+    def Placement(self, Placement):
+        self._Placement = Placement
+
+    @property
+    def Currency(self):
+        return self._Currency
+
+    @Currency.setter
+    def Currency(self, Currency):
+        self._Currency = Currency
+
+    @property
+    def ResourceIdList(self):
+        return self._ResourceIdList
+
+    @ResourceIdList.setter
+    def ResourceIdList(self, ResourceIdList):
+        self._ResourceIdList = ResourceIdList
 
 
     def _deserialize(self, params):
-        self.TimeUnit = params.get("TimeUnit")
-        self.TimeSpan = params.get("TimeSpan")
+        self._TimeUnit = params.get("TimeUnit")
+        self._TimeSpan = params.get("TimeSpan")
         if params.get("UpdateSpec") is not None:
-            self.UpdateSpec = UpdateInstanceSettings()
-            self.UpdateSpec._deserialize(params.get("UpdateSpec"))
-        self.PayMode = params.get("PayMode")
+            self._UpdateSpec = UpdateInstanceSettings()
+            self._UpdateSpec._deserialize(params.get("UpdateSpec"))
+        self._PayMode = params.get("PayMode")
         if params.get("Placement") is not None:
-            self.Placement = Placement()
-            self.Placement._deserialize(params.get("Placement"))
-        self.Currency = params.get("Currency")
-        self.ResourceIdList = params.get("ResourceIdList")
+            self._Placement = Placement()
+            self._Placement._deserialize(params.get("Placement"))
+        self._Currency = params.get("Currency")
+        self._ResourceIdList = params.get("ResourceIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2676,45 +5468,93 @@ class InquiryPriceUpdateInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OriginalCost: Original price.
+        :param _OriginalCost: Original price.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OriginalCost: float
-        :param DiscountCost: Discounted price.
+        :param _DiscountCost: Discounted price.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DiscountCost: float
-        :param TimeUnit: Time unit of scaling. Valid values:
+        :param _TimeUnit: Time unit of scaling. Valid values:
 <li>s: seconds.</li>
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TimeUnit: str
-        :param TimeSpan: Duration of scaling.
+        :param _TimeSpan: Duration of scaling.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TimeSpan: int
-        :param PriceDetail: Pricing details
+        :param _PriceDetail: Pricing details
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PriceDetail: list of PriceDetail
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.OriginalCost = None
-        self.DiscountCost = None
-        self.TimeUnit = None
-        self.TimeSpan = None
-        self.PriceDetail = None
-        self.RequestId = None
+        self._OriginalCost = None
+        self._DiscountCost = None
+        self._TimeUnit = None
+        self._TimeSpan = None
+        self._PriceDetail = None
+        self._RequestId = None
+
+    @property
+    def OriginalCost(self):
+        return self._OriginalCost
+
+    @OriginalCost.setter
+    def OriginalCost(self, OriginalCost):
+        self._OriginalCost = OriginalCost
+
+    @property
+    def DiscountCost(self):
+        return self._DiscountCost
+
+    @DiscountCost.setter
+    def DiscountCost(self, DiscountCost):
+        self._DiscountCost = DiscountCost
+
+    @property
+    def TimeUnit(self):
+        return self._TimeUnit
+
+    @TimeUnit.setter
+    def TimeUnit(self, TimeUnit):
+        self._TimeUnit = TimeUnit
+
+    @property
+    def TimeSpan(self):
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def PriceDetail(self):
+        return self._PriceDetail
+
+    @PriceDetail.setter
+    def PriceDetail(self, PriceDetail):
+        self._PriceDetail = PriceDetail
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.OriginalCost = params.get("OriginalCost")
-        self.DiscountCost = params.get("DiscountCost")
-        self.TimeUnit = params.get("TimeUnit")
-        self.TimeSpan = params.get("TimeSpan")
+        self._OriginalCost = params.get("OriginalCost")
+        self._DiscountCost = params.get("DiscountCost")
+        self._TimeUnit = params.get("TimeUnit")
+        self._TimeSpan = params.get("TimeSpan")
         if params.get("PriceDetail") is not None:
-            self.PriceDetail = []
+            self._PriceDetail = []
             for item in params.get("PriceDetail"):
                 obj = PriceDetail()
                 obj._deserialize(item)
-                self.PriceDetail.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._PriceDetail.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class InstanceChargePrepaid(AbstractModel):
@@ -2724,25 +5564,42 @@ class InstanceChargePrepaid(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Period: The period of monthly subscription, which defaults to 1 and is expressed in month.
+        :param _Period: The period of monthly subscription, which defaults to 1 and is expressed in month.
 Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60.
         :type Period: int
-        :param RenewFlag: Whether to enable auto-renewal. Valid values:
+        :param _RenewFlag: Whether to enable auto-renewal. Valid values:
 <li>`true`: Enable</li>
 <li>`false` (default): Disable</li>
         :type RenewFlag: bool
         """
-        self.Period = None
-        self.RenewFlag = None
+        self._Period = None
+        self._RenewFlag = None
+
+    @property
+    def Period(self):
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def RenewFlag(self):
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
 
 
     def _deserialize(self, params):
-        self.Period = params.get("Period")
-        self.RenewFlag = params.get("RenewFlag")
+        self._Period = params.get("Period")
+        self._RenewFlag = params.get("RenewFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2755,22 +5612,39 @@ class LoginSettings(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Password: The login password of the instance, which contains 8 to 16 uppercase letters, lowercase letters, digits, and special characters (only !@%^*) and cannot start with a special character.
+        :param _Password: The login password of the instance, which contains 8 to 16 uppercase letters, lowercase letters, digits, and special characters (only !@%^*) and cannot start with a special character.
         :type Password: str
-        :param PublicKeyId: The key ID. After an instance is associated with a key, you can access it with the private key in the key pair. You can call [DescribeKeyPairs](https://intl.cloud.tencent.com/document/api/213/15699?from_cn_redirect=1) to obtain `PublicKeyId`.
+        :param _PublicKeyId: The key ID. After an instance is associated with a key, you can access it with the private key in the key pair. You can call [DescribeKeyPairs](https://intl.cloud.tencent.com/document/api/213/15699?from_cn_redirect=1) to obtain `PublicKeyId`.
         :type PublicKeyId: str
         """
-        self.Password = None
-        self.PublicKeyId = None
+        self._Password = None
+        self._PublicKeyId = None
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def PublicKeyId(self):
+        return self._PublicKeyId
+
+    @PublicKeyId.setter
+    def PublicKeyId(self, PublicKeyId):
+        self._PublicKeyId = PublicKeyId
 
 
     def _deserialize(self, params):
-        self.Password = params.get("Password")
-        self.PublicKeyId = params.get("PublicKeyId")
+        self._Password = params.get("Password")
+        self._PublicKeyId = params.get("PublicKeyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2783,26 +5657,51 @@ class ModifyResourceScheduleConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: EMR cluster ID
+        :param _InstanceId: EMR cluster ID
         :type InstanceId: str
-        :param Key: Business identifier. `fair`: Edit fair configuration items; `fairPlan`: Edit the execution plan; `capacity`: Edit capacity configuration items.
+        :param _Key: Business identifier. `fair`: Edit fair configuration items; `fairPlan`: Edit the execution plan; `capacity`: Edit capacity configuration items.
         :type Key: str
-        :param Value: Modified module information
+        :param _Value: Modified module information
         :type Value: str
         """
-        self.InstanceId = None
-        self.Key = None
-        self.Value = None
+        self._InstanceId = None
+        self._Key = None
+        self._Value = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.Key = params.get("Key")
-        self.Value = params.get("Value")
+        self._InstanceId = params.get("InstanceId")
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2815,28 +5714,60 @@ class ModifyResourceScheduleConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IsDraft: `true`: Draft, indicating the resource pool is not refreshed.
+        :param _IsDraft: `true`: Draft, indicating the resource pool is not refreshed.
         :type IsDraft: bool
-        :param ErrorMsg: Verification error information. If it is not null, the verification fails and thus the configuration fails.
+        :param _ErrorMsg: Verification error information. If it is not null, the verification fails and thus the configuration fails.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type ErrorMsg: str
-        :param Data: The response data.
+        :param _Data: The response data.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.IsDraft = None
-        self.ErrorMsg = None
-        self.Data = None
-        self.RequestId = None
+        self._IsDraft = None
+        self._ErrorMsg = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def IsDraft(self):
+        return self._IsDraft
+
+    @IsDraft.setter
+    def IsDraft(self, IsDraft):
+        self._IsDraft = IsDraft
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.IsDraft = params.get("IsDraft")
-        self.ErrorMsg = params.get("ErrorMsg")
-        self.Data = params.get("Data")
-        self.RequestId = params.get("RequestId")
+        self._IsDraft = params.get("IsDraft")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyResourceSchedulerRequest(AbstractModel):
@@ -2846,26 +5777,51 @@ class ModifyResourceSchedulerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: EMR cluster ID
+        :param _InstanceId: EMR cluster ID
         :type InstanceId: str
-        :param OldValue: The original scheduler: `fair`
+        :param _OldValue: The original scheduler: `fair`
         :type OldValue: str
-        :param NewValue: The new scheduler: `capacity`
+        :param _NewValue: The new scheduler: `capacity`
         :type NewValue: str
         """
-        self.InstanceId = None
-        self.OldValue = None
-        self.NewValue = None
+        self._InstanceId = None
+        self._OldValue = None
+        self._NewValue = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def OldValue(self):
+        return self._OldValue
+
+    @OldValue.setter
+    def OldValue(self, OldValue):
+        self._OldValue = OldValue
+
+    @property
+    def NewValue(self):
+        return self._NewValue
+
+    @NewValue.setter
+    def NewValue(self, NewValue):
+        self._NewValue = NewValue
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.OldValue = params.get("OldValue")
-        self.NewValue = params.get("NewValue")
+        self._InstanceId = params.get("InstanceId")
+        self._OldValue = params.get("OldValue")
+        self._NewValue = params.get("NewValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2878,14 +5834,22 @@ class ModifyResourceSchedulerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class MultiDisk(AbstractModel):
@@ -2895,29 +5859,54 @@ class MultiDisk(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiskType: Cloud disk type
+        :param _DiskType: Cloud disk type
 <li>`CLOUD_SSD`: SSD</li>
 <li>`CLOUD_PREMIUM`: Premium Cloud Storage</li>
 <li>`CLOUD_HSSD`: Enhanced SSD</li>
         :type DiskType: str
-        :param Volume: Cloud disk size
+        :param _Volume: Cloud disk size
         :type Volume: int
-        :param Count: Number of cloud disks of this type
+        :param _Count: Number of cloud disks of this type
         :type Count: int
         """
-        self.DiskType = None
-        self.Volume = None
-        self.Count = None
+        self._DiskType = None
+        self._Volume = None
+        self._Count = None
+
+    @property
+    def DiskType(self):
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def Volume(self):
+        return self._Volume
+
+    @Volume.setter
+    def Volume(self, Volume):
+        self._Volume = Volume
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
 
 
     def _deserialize(self, params):
-        self.DiskType = params.get("DiskType")
-        self.Volume = params.get("Volume")
-        self.Count = params.get("Count")
+        self._DiskType = params.get("DiskType")
+        self._Volume = params.get("Volume")
+        self._Count = params.get("Count")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2930,29 +5919,54 @@ class MultiDiskMC(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Count: Number of cloud disks in this type
+        :param _Count: Number of cloud disks in this type
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Count: int
-        :param Type: Disk type
+        :param _Type: Disk type
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Type: int
-        :param Volume: Cloud disk size
+        :param _Volume: Cloud disk size
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Volume: int
         """
-        self.Count = None
-        self.Type = None
-        self.Volume = None
+        self._Count = None
+        self._Type = None
+        self._Volume = None
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Volume(self):
+        return self._Volume
+
+    @Volume.setter
+    def Volume(self, Volume):
+        self._Volume = Volume
 
 
     def _deserialize(self, params):
-        self.Count = params.get("Count")
-        self.Type = params.get("Type")
-        self.Volume = params.get("Volume")
+        self._Count = params.get("Count")
+        self._Type = params.get("Type")
+        self._Volume = params.get("Volume")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2965,37 +5979,70 @@ class MultiZoneSetting(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ZoneTag: "master", "standby", "third-party"
+        :param _ZoneTag: "master", "standby", "third-party"
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type ZoneTag: str
-        :param VPCSettings: None
+        :param _VPCSettings: None
         :type VPCSettings: :class:`tencentcloud.emr.v20190103.models.VPCSettings`
-        :param Placement: None
+        :param _Placement: None
         :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`
-        :param ResourceSpec: None
+        :param _ResourceSpec: None
         :type ResourceSpec: :class:`tencentcloud.emr.v20190103.models.NewResourceSpec`
         """
-        self.ZoneTag = None
-        self.VPCSettings = None
-        self.Placement = None
-        self.ResourceSpec = None
+        self._ZoneTag = None
+        self._VPCSettings = None
+        self._Placement = None
+        self._ResourceSpec = None
+
+    @property
+    def ZoneTag(self):
+        return self._ZoneTag
+
+    @ZoneTag.setter
+    def ZoneTag(self, ZoneTag):
+        self._ZoneTag = ZoneTag
+
+    @property
+    def VPCSettings(self):
+        return self._VPCSettings
+
+    @VPCSettings.setter
+    def VPCSettings(self, VPCSettings):
+        self._VPCSettings = VPCSettings
+
+    @property
+    def Placement(self):
+        return self._Placement
+
+    @Placement.setter
+    def Placement(self, Placement):
+        self._Placement = Placement
+
+    @property
+    def ResourceSpec(self):
+        return self._ResourceSpec
+
+    @ResourceSpec.setter
+    def ResourceSpec(self, ResourceSpec):
+        self._ResourceSpec = ResourceSpec
 
 
     def _deserialize(self, params):
-        self.ZoneTag = params.get("ZoneTag")
+        self._ZoneTag = params.get("ZoneTag")
         if params.get("VPCSettings") is not None:
-            self.VPCSettings = VPCSettings()
-            self.VPCSettings._deserialize(params.get("VPCSettings"))
+            self._VPCSettings = VPCSettings()
+            self._VPCSettings._deserialize(params.get("VPCSettings"))
         if params.get("Placement") is not None:
-            self.Placement = Placement()
-            self.Placement._deserialize(params.get("Placement"))
+            self._Placement = Placement()
+            self._Placement._deserialize(params.get("Placement"))
         if params.get("ResourceSpec") is not None:
-            self.ResourceSpec = NewResourceSpec()
-            self.ResourceSpec._deserialize(params.get("ResourceSpec"))
+            self._ResourceSpec = NewResourceSpec()
+            self._ResourceSpec._deserialize(params.get("ResourceSpec"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3008,54 +6055,119 @@ class NewResourceSpec(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MasterResourceSpec: Describes master node resource
+        :param _MasterResourceSpec: Describes master node resource
         :type MasterResourceSpec: :class:`tencentcloud.emr.v20190103.models.Resource`
-        :param CoreResourceSpec: Describes core node resource
+        :param _CoreResourceSpec: Describes core node resource
         :type CoreResourceSpec: :class:`tencentcloud.emr.v20190103.models.Resource`
-        :param TaskResourceSpec: Describes task node resource
+        :param _TaskResourceSpec: Describes task node resource
         :type TaskResourceSpec: :class:`tencentcloud.emr.v20190103.models.Resource`
-        :param MasterCount: Number of master nodes
+        :param _MasterCount: Number of master nodes
         :type MasterCount: int
-        :param CoreCount: Number of core nodes
+        :param _CoreCount: Number of core nodes
         :type CoreCount: int
-        :param TaskCount: Number of task nodes
+        :param _TaskCount: Number of task nodes
         :type TaskCount: int
-        :param CommonResourceSpec: Describes common node resource
+        :param _CommonResourceSpec: Describes common node resource
         :type CommonResourceSpec: :class:`tencentcloud.emr.v20190103.models.Resource`
-        :param CommonCount: Number of common nodes
+        :param _CommonCount: Number of common nodes
         :type CommonCount: int
         """
-        self.MasterResourceSpec = None
-        self.CoreResourceSpec = None
-        self.TaskResourceSpec = None
-        self.MasterCount = None
-        self.CoreCount = None
-        self.TaskCount = None
-        self.CommonResourceSpec = None
-        self.CommonCount = None
+        self._MasterResourceSpec = None
+        self._CoreResourceSpec = None
+        self._TaskResourceSpec = None
+        self._MasterCount = None
+        self._CoreCount = None
+        self._TaskCount = None
+        self._CommonResourceSpec = None
+        self._CommonCount = None
+
+    @property
+    def MasterResourceSpec(self):
+        return self._MasterResourceSpec
+
+    @MasterResourceSpec.setter
+    def MasterResourceSpec(self, MasterResourceSpec):
+        self._MasterResourceSpec = MasterResourceSpec
+
+    @property
+    def CoreResourceSpec(self):
+        return self._CoreResourceSpec
+
+    @CoreResourceSpec.setter
+    def CoreResourceSpec(self, CoreResourceSpec):
+        self._CoreResourceSpec = CoreResourceSpec
+
+    @property
+    def TaskResourceSpec(self):
+        return self._TaskResourceSpec
+
+    @TaskResourceSpec.setter
+    def TaskResourceSpec(self, TaskResourceSpec):
+        self._TaskResourceSpec = TaskResourceSpec
+
+    @property
+    def MasterCount(self):
+        return self._MasterCount
+
+    @MasterCount.setter
+    def MasterCount(self, MasterCount):
+        self._MasterCount = MasterCount
+
+    @property
+    def CoreCount(self):
+        return self._CoreCount
+
+    @CoreCount.setter
+    def CoreCount(self, CoreCount):
+        self._CoreCount = CoreCount
+
+    @property
+    def TaskCount(self):
+        return self._TaskCount
+
+    @TaskCount.setter
+    def TaskCount(self, TaskCount):
+        self._TaskCount = TaskCount
+
+    @property
+    def CommonResourceSpec(self):
+        return self._CommonResourceSpec
+
+    @CommonResourceSpec.setter
+    def CommonResourceSpec(self, CommonResourceSpec):
+        self._CommonResourceSpec = CommonResourceSpec
+
+    @property
+    def CommonCount(self):
+        return self._CommonCount
+
+    @CommonCount.setter
+    def CommonCount(self, CommonCount):
+        self._CommonCount = CommonCount
 
 
     def _deserialize(self, params):
         if params.get("MasterResourceSpec") is not None:
-            self.MasterResourceSpec = Resource()
-            self.MasterResourceSpec._deserialize(params.get("MasterResourceSpec"))
+            self._MasterResourceSpec = Resource()
+            self._MasterResourceSpec._deserialize(params.get("MasterResourceSpec"))
         if params.get("CoreResourceSpec") is not None:
-            self.CoreResourceSpec = Resource()
-            self.CoreResourceSpec._deserialize(params.get("CoreResourceSpec"))
+            self._CoreResourceSpec = Resource()
+            self._CoreResourceSpec._deserialize(params.get("CoreResourceSpec"))
         if params.get("TaskResourceSpec") is not None:
-            self.TaskResourceSpec = Resource()
-            self.TaskResourceSpec._deserialize(params.get("TaskResourceSpec"))
-        self.MasterCount = params.get("MasterCount")
-        self.CoreCount = params.get("CoreCount")
-        self.TaskCount = params.get("TaskCount")
+            self._TaskResourceSpec = Resource()
+            self._TaskResourceSpec._deserialize(params.get("TaskResourceSpec"))
+        self._MasterCount = params.get("MasterCount")
+        self._CoreCount = params.get("CoreCount")
+        self._TaskCount = params.get("TaskCount")
         if params.get("CommonResourceSpec") is not None:
-            self.CommonResourceSpec = Resource()
-            self.CommonResourceSpec._deserialize(params.get("CommonResourceSpec"))
-        self.CommonCount = params.get("CommonCount")
+            self._CommonResourceSpec = Resource()
+            self._CommonResourceSpec._deserialize(params.get("CommonResourceSpec"))
+        self._CommonCount = params.get("CommonCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3068,28 +6180,45 @@ class NodeDetailPriceResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NodeType: The node type. Valid values: `master`, `core`, `task`, `common`, `router`, `mysql`
+        :param _NodeType: The node type. Valid values: `master`, `core`, `task`, `common`, `router`, `mysql`
 Note: This field may return null, indicating that no valid values can be obtained.
         :type NodeType: str
-        :param PartDetailPrice: Price details by node part
+        :param _PartDetailPrice: Price details by node part
         :type PartDetailPrice: list of PartDetailPriceItem
         """
-        self.NodeType = None
-        self.PartDetailPrice = None
+        self._NodeType = None
+        self._PartDetailPrice = None
+
+    @property
+    def NodeType(self):
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def PartDetailPrice(self):
+        return self._PartDetailPrice
+
+    @PartDetailPrice.setter
+    def PartDetailPrice(self, PartDetailPrice):
+        self._PartDetailPrice = PartDetailPrice
 
 
     def _deserialize(self, params):
-        self.NodeType = params.get("NodeType")
+        self._NodeType = params.get("NodeType")
         if params.get("PartDetailPrice") is not None:
-            self.PartDetailPrice = []
+            self._PartDetailPrice = []
             for item in params.get("PartDetailPrice"):
                 obj = PartDetailPriceItem()
                 obj._deserialize(item)
-                self.PartDetailPrice.append(obj)
+                self._PartDetailPrice.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3102,278 +6231,679 @@ class NodeHardwareInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AppId: User `APPID`
+        :param _AppId: User `APPID`
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AppId: int
-        :param SerialNo: Serial number
+        :param _SerialNo: Serial number
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SerialNo: str
-        :param OrderNo: Machine instance ID
+        :param _OrderNo: Machine instance ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OrderNo: str
-        :param WanIp: Public IP bound to master node
+        :param _WanIp: Public IP bound to master node
 Note: this field may return null, indicating that no valid values can be obtained.
         :type WanIp: str
-        :param Flag: Node type. 0: common node; 1: master node;
+        :param _Flag: Node type. 0: common node; 1: master node;
 2: core node; 3: task node
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Flag: int
-        :param Spec: Node specification
+        :param _Spec: Node specification
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Spec: str
-        :param CpuNum: Number of node cores
+        :param _CpuNum: Number of node cores
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CpuNum: int
-        :param MemSize: Node memory size
+        :param _MemSize: Node memory size
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MemSize: int
-        :param MemDesc: Node memory description
+        :param _MemDesc: Node memory description
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MemDesc: str
-        :param RegionId: Node region
+        :param _RegionId: Node region
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RegionId: int
-        :param ZoneId: Node AZ
+        :param _ZoneId: Node AZ
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ZoneId: int
-        :param ApplyTime: Application time
+        :param _ApplyTime: Application time
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApplyTime: str
-        :param FreeTime: Release time
+        :param _FreeTime: Release time
 Note: this field may return null, indicating that no valid values can be obtained.
         :type FreeTime: str
-        :param DiskSize: Disk size
+        :param _DiskSize: Disk size
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DiskSize: str
-        :param NameTag: Node description
+        :param _NameTag: Node description
 Note: this field may return null, indicating that no valid values can be obtained.
         :type NameTag: str
-        :param Services: Services deployed on node
+        :param _Services: Services deployed on node
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Services: str
-        :param StorageType: Disk type
+        :param _StorageType: Disk type
 Note: this field may return null, indicating that no valid values can be obtained.
         :type StorageType: int
-        :param RootSize: System disk size
+        :param _RootSize: System disk size
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RootSize: int
-        :param ChargeType: Payment type
+        :param _ChargeType: Payment type
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ChargeType: int
-        :param CdbIp: Database IP
+        :param _CdbIp: Database IP
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CdbIp: str
-        :param CdbPort: Database port
+        :param _CdbPort: Database port
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CdbPort: int
-        :param HwDiskSize: Disk capacity
+        :param _HwDiskSize: Disk capacity
 Note: this field may return null, indicating that no valid values can be obtained.
         :type HwDiskSize: int
-        :param HwDiskSizeDesc: Disk capacity description
+        :param _HwDiskSizeDesc: Disk capacity description
 Note: this field may return null, indicating that no valid values can be obtained.
         :type HwDiskSizeDesc: str
-        :param HwMemSize: Memory capacity
+        :param _HwMemSize: Memory capacity
 Note: this field may return null, indicating that no valid values can be obtained.
         :type HwMemSize: int
-        :param HwMemSizeDesc: Memory capacity description
+        :param _HwMemSizeDesc: Memory capacity description
 Note: this field may return null, indicating that no valid values can be obtained.
         :type HwMemSizeDesc: str
-        :param ExpireTime: Expiration time
+        :param _ExpireTime: Expiration time
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ExpireTime: str
-        :param EmrResourceId: Node resource ID
+        :param _EmrResourceId: Node resource ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :type EmrResourceId: str
-        :param IsAutoRenew: Renewal flag
+        :param _IsAutoRenew: Renewal flag
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IsAutoRenew: int
-        :param DeviceClass: Device flag
+        :param _DeviceClass: Device flag
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DeviceClass: str
-        :param Mutable: Support for configuration adjustment
+        :param _Mutable: Support for configuration adjustment
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Mutable: int
-        :param MCMultiDisk: Multi-cloud disk
+        :param _MCMultiDisk: Multi-cloud disk
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MCMultiDisk: list of MultiDiskMC
-        :param CdbNodeInfo: Database information
+        :param _CdbNodeInfo: Database information
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CdbNodeInfo: :class:`tencentcloud.emr.v20190103.models.CdbInfo`
-        :param Ip: Private IP
+        :param _Ip: Private IP
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Ip: str
-        :param Destroyable: Whether this node can be terminated. 1: yes, 0: no
+        :param _Destroyable: Whether this node can be terminated. 1: yes, 0: no
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Destroyable: int
-        :param Tags: Tags bound to node
+        :param _Tags: Tags bound to node
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Tags: list of Tag
-        :param AutoFlag: Wether the node is auto-scaling. 0 means common node. 1 means auto-scaling node.
+        :param _AutoFlag: Wether the node is auto-scaling. 0 means common node. 1 means auto-scaling node.
         :type AutoFlag: int
-        :param HardwareResourceType: Resource type. Valid values: host, pod
+        :param _HardwareResourceType: Resource type. Valid values: host, pod
 Note: this field may return null, indicating that no valid values can be obtained.
         :type HardwareResourceType: str
-        :param IsDynamicSpec: Whether floating specification is used. `1`: yes; `0`: no
+        :param _IsDynamicSpec: Whether floating specification is used. `1`: yes; `0`: no
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type IsDynamicSpec: int
-        :param DynamicPodSpec: Floating specification in JSON string
+        :param _DynamicPodSpec: Floating specification in JSON string
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type DynamicPodSpec: str
-        :param SupportModifyPayMode: Whether to support billing mode change. `0`: no; `1`: yes
+        :param _SupportModifyPayMode: Whether to support billing mode change. `0`: no; `1`: yes
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type SupportModifyPayMode: int
-        :param RootStorageType: System disk type
+        :param _RootStorageType: System disk type
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type RootStorageType: int
-        :param Zone: AZ information
+        :param _Zone: AZ information
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Zone: str
-        :param SubnetInfo: Subnet
+        :param _SubnetInfo: Subnet
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type SubnetInfo: :class:`tencentcloud.emr.v20190103.models.SubnetInfo`
-        :param Clients: Client
+        :param _Clients: Client
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type Clients: str
-        :param CurrentTime: The current system time.
+        :param _CurrentTime: The current system time.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CurrentTime: str
-        :param IsFederation: Whether it is used in a federation. Valid values: `0` (no), `1` (yes).
+        :param _IsFederation: Whether it is used in a federation. Valid values: `0` (no), `1` (yes).
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IsFederation: int
-        :param DeviceName: Device name
+        :param _DeviceName: Device name
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DeviceName: str
-        :param ServiceClient: Service
+        :param _ServiceClient: Service
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ServiceClient: str
-        :param DisableApiTermination: Enabling instance protection for this instance. Valid values: `true` (enable) and `false` (disable).
+        :param _DisableApiTermination: Enabling instance protection for this instance. Valid values: `true` (enable) and `false` (disable).
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DisableApiTermination: bool
-        :param TradeVersion: The billing version. Valid values: `0` (original billing) and `1` (new billing)
+        :param _TradeVersion: The billing version. Valid values: `0` (original billing) and `1` (new billing)
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TradeVersion: int
         """
-        self.AppId = None
-        self.SerialNo = None
-        self.OrderNo = None
-        self.WanIp = None
-        self.Flag = None
-        self.Spec = None
-        self.CpuNum = None
-        self.MemSize = None
-        self.MemDesc = None
-        self.RegionId = None
-        self.ZoneId = None
-        self.ApplyTime = None
-        self.FreeTime = None
-        self.DiskSize = None
-        self.NameTag = None
-        self.Services = None
-        self.StorageType = None
-        self.RootSize = None
-        self.ChargeType = None
-        self.CdbIp = None
-        self.CdbPort = None
-        self.HwDiskSize = None
-        self.HwDiskSizeDesc = None
-        self.HwMemSize = None
-        self.HwMemSizeDesc = None
-        self.ExpireTime = None
-        self.EmrResourceId = None
-        self.IsAutoRenew = None
-        self.DeviceClass = None
-        self.Mutable = None
-        self.MCMultiDisk = None
-        self.CdbNodeInfo = None
-        self.Ip = None
-        self.Destroyable = None
-        self.Tags = None
-        self.AutoFlag = None
-        self.HardwareResourceType = None
-        self.IsDynamicSpec = None
-        self.DynamicPodSpec = None
-        self.SupportModifyPayMode = None
-        self.RootStorageType = None
-        self.Zone = None
-        self.SubnetInfo = None
-        self.Clients = None
-        self.CurrentTime = None
-        self.IsFederation = None
-        self.DeviceName = None
-        self.ServiceClient = None
-        self.DisableApiTermination = None
-        self.TradeVersion = None
+        self._AppId = None
+        self._SerialNo = None
+        self._OrderNo = None
+        self._WanIp = None
+        self._Flag = None
+        self._Spec = None
+        self._CpuNum = None
+        self._MemSize = None
+        self._MemDesc = None
+        self._RegionId = None
+        self._ZoneId = None
+        self._ApplyTime = None
+        self._FreeTime = None
+        self._DiskSize = None
+        self._NameTag = None
+        self._Services = None
+        self._StorageType = None
+        self._RootSize = None
+        self._ChargeType = None
+        self._CdbIp = None
+        self._CdbPort = None
+        self._HwDiskSize = None
+        self._HwDiskSizeDesc = None
+        self._HwMemSize = None
+        self._HwMemSizeDesc = None
+        self._ExpireTime = None
+        self._EmrResourceId = None
+        self._IsAutoRenew = None
+        self._DeviceClass = None
+        self._Mutable = None
+        self._MCMultiDisk = None
+        self._CdbNodeInfo = None
+        self._Ip = None
+        self._Destroyable = None
+        self._Tags = None
+        self._AutoFlag = None
+        self._HardwareResourceType = None
+        self._IsDynamicSpec = None
+        self._DynamicPodSpec = None
+        self._SupportModifyPayMode = None
+        self._RootStorageType = None
+        self._Zone = None
+        self._SubnetInfo = None
+        self._Clients = None
+        self._CurrentTime = None
+        self._IsFederation = None
+        self._DeviceName = None
+        self._ServiceClient = None
+        self._DisableApiTermination = None
+        self._TradeVersion = None
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def SerialNo(self):
+        return self._SerialNo
+
+    @SerialNo.setter
+    def SerialNo(self, SerialNo):
+        self._SerialNo = SerialNo
+
+    @property
+    def OrderNo(self):
+        return self._OrderNo
+
+    @OrderNo.setter
+    def OrderNo(self, OrderNo):
+        self._OrderNo = OrderNo
+
+    @property
+    def WanIp(self):
+        return self._WanIp
+
+    @WanIp.setter
+    def WanIp(self, WanIp):
+        self._WanIp = WanIp
+
+    @property
+    def Flag(self):
+        return self._Flag
+
+    @Flag.setter
+    def Flag(self, Flag):
+        self._Flag = Flag
+
+    @property
+    def Spec(self):
+        return self._Spec
+
+    @Spec.setter
+    def Spec(self, Spec):
+        self._Spec = Spec
+
+    @property
+    def CpuNum(self):
+        return self._CpuNum
+
+    @CpuNum.setter
+    def CpuNum(self, CpuNum):
+        self._CpuNum = CpuNum
+
+    @property
+    def MemSize(self):
+        return self._MemSize
+
+    @MemSize.setter
+    def MemSize(self, MemSize):
+        self._MemSize = MemSize
+
+    @property
+    def MemDesc(self):
+        return self._MemDesc
+
+    @MemDesc.setter
+    def MemDesc(self, MemDesc):
+        self._MemDesc = MemDesc
+
+    @property
+    def RegionId(self):
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ApplyTime(self):
+        return self._ApplyTime
+
+    @ApplyTime.setter
+    def ApplyTime(self, ApplyTime):
+        self._ApplyTime = ApplyTime
+
+    @property
+    def FreeTime(self):
+        return self._FreeTime
+
+    @FreeTime.setter
+    def FreeTime(self, FreeTime):
+        self._FreeTime = FreeTime
+
+    @property
+    def DiskSize(self):
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+    @property
+    def NameTag(self):
+        return self._NameTag
+
+    @NameTag.setter
+    def NameTag(self, NameTag):
+        self._NameTag = NameTag
+
+    @property
+    def Services(self):
+        return self._Services
+
+    @Services.setter
+    def Services(self, Services):
+        self._Services = Services
+
+    @property
+    def StorageType(self):
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
+    @property
+    def RootSize(self):
+        return self._RootSize
+
+    @RootSize.setter
+    def RootSize(self, RootSize):
+        self._RootSize = RootSize
+
+    @property
+    def ChargeType(self):
+        return self._ChargeType
+
+    @ChargeType.setter
+    def ChargeType(self, ChargeType):
+        self._ChargeType = ChargeType
+
+    @property
+    def CdbIp(self):
+        return self._CdbIp
+
+    @CdbIp.setter
+    def CdbIp(self, CdbIp):
+        self._CdbIp = CdbIp
+
+    @property
+    def CdbPort(self):
+        return self._CdbPort
+
+    @CdbPort.setter
+    def CdbPort(self, CdbPort):
+        self._CdbPort = CdbPort
+
+    @property
+    def HwDiskSize(self):
+        return self._HwDiskSize
+
+    @HwDiskSize.setter
+    def HwDiskSize(self, HwDiskSize):
+        self._HwDiskSize = HwDiskSize
+
+    @property
+    def HwDiskSizeDesc(self):
+        return self._HwDiskSizeDesc
+
+    @HwDiskSizeDesc.setter
+    def HwDiskSizeDesc(self, HwDiskSizeDesc):
+        self._HwDiskSizeDesc = HwDiskSizeDesc
+
+    @property
+    def HwMemSize(self):
+        return self._HwMemSize
+
+    @HwMemSize.setter
+    def HwMemSize(self, HwMemSize):
+        self._HwMemSize = HwMemSize
+
+    @property
+    def HwMemSizeDesc(self):
+        return self._HwMemSizeDesc
+
+    @HwMemSizeDesc.setter
+    def HwMemSizeDesc(self, HwMemSizeDesc):
+        self._HwMemSizeDesc = HwMemSizeDesc
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def EmrResourceId(self):
+        return self._EmrResourceId
+
+    @EmrResourceId.setter
+    def EmrResourceId(self, EmrResourceId):
+        self._EmrResourceId = EmrResourceId
+
+    @property
+    def IsAutoRenew(self):
+        return self._IsAutoRenew
+
+    @IsAutoRenew.setter
+    def IsAutoRenew(self, IsAutoRenew):
+        self._IsAutoRenew = IsAutoRenew
+
+    @property
+    def DeviceClass(self):
+        return self._DeviceClass
+
+    @DeviceClass.setter
+    def DeviceClass(self, DeviceClass):
+        self._DeviceClass = DeviceClass
+
+    @property
+    def Mutable(self):
+        return self._Mutable
+
+    @Mutable.setter
+    def Mutable(self, Mutable):
+        self._Mutable = Mutable
+
+    @property
+    def MCMultiDisk(self):
+        return self._MCMultiDisk
+
+    @MCMultiDisk.setter
+    def MCMultiDisk(self, MCMultiDisk):
+        self._MCMultiDisk = MCMultiDisk
+
+    @property
+    def CdbNodeInfo(self):
+        return self._CdbNodeInfo
+
+    @CdbNodeInfo.setter
+    def CdbNodeInfo(self, CdbNodeInfo):
+        self._CdbNodeInfo = CdbNodeInfo
+
+    @property
+    def Ip(self):
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def Destroyable(self):
+        return self._Destroyable
+
+    @Destroyable.setter
+    def Destroyable(self, Destroyable):
+        self._Destroyable = Destroyable
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def AutoFlag(self):
+        return self._AutoFlag
+
+    @AutoFlag.setter
+    def AutoFlag(self, AutoFlag):
+        self._AutoFlag = AutoFlag
+
+    @property
+    def HardwareResourceType(self):
+        return self._HardwareResourceType
+
+    @HardwareResourceType.setter
+    def HardwareResourceType(self, HardwareResourceType):
+        self._HardwareResourceType = HardwareResourceType
+
+    @property
+    def IsDynamicSpec(self):
+        return self._IsDynamicSpec
+
+    @IsDynamicSpec.setter
+    def IsDynamicSpec(self, IsDynamicSpec):
+        self._IsDynamicSpec = IsDynamicSpec
+
+    @property
+    def DynamicPodSpec(self):
+        return self._DynamicPodSpec
+
+    @DynamicPodSpec.setter
+    def DynamicPodSpec(self, DynamicPodSpec):
+        self._DynamicPodSpec = DynamicPodSpec
+
+    @property
+    def SupportModifyPayMode(self):
+        return self._SupportModifyPayMode
+
+    @SupportModifyPayMode.setter
+    def SupportModifyPayMode(self, SupportModifyPayMode):
+        self._SupportModifyPayMode = SupportModifyPayMode
+
+    @property
+    def RootStorageType(self):
+        return self._RootStorageType
+
+    @RootStorageType.setter
+    def RootStorageType(self, RootStorageType):
+        self._RootStorageType = RootStorageType
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def SubnetInfo(self):
+        return self._SubnetInfo
+
+    @SubnetInfo.setter
+    def SubnetInfo(self, SubnetInfo):
+        self._SubnetInfo = SubnetInfo
+
+    @property
+    def Clients(self):
+        return self._Clients
+
+    @Clients.setter
+    def Clients(self, Clients):
+        self._Clients = Clients
+
+    @property
+    def CurrentTime(self):
+        return self._CurrentTime
+
+    @CurrentTime.setter
+    def CurrentTime(self, CurrentTime):
+        self._CurrentTime = CurrentTime
+
+    @property
+    def IsFederation(self):
+        return self._IsFederation
+
+    @IsFederation.setter
+    def IsFederation(self, IsFederation):
+        self._IsFederation = IsFederation
+
+    @property
+    def DeviceName(self):
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def ServiceClient(self):
+        return self._ServiceClient
+
+    @ServiceClient.setter
+    def ServiceClient(self, ServiceClient):
+        self._ServiceClient = ServiceClient
+
+    @property
+    def DisableApiTermination(self):
+        return self._DisableApiTermination
+
+    @DisableApiTermination.setter
+    def DisableApiTermination(self, DisableApiTermination):
+        self._DisableApiTermination = DisableApiTermination
+
+    @property
+    def TradeVersion(self):
+        return self._TradeVersion
+
+    @TradeVersion.setter
+    def TradeVersion(self, TradeVersion):
+        self._TradeVersion = TradeVersion
 
 
     def _deserialize(self, params):
-        self.AppId = params.get("AppId")
-        self.SerialNo = params.get("SerialNo")
-        self.OrderNo = params.get("OrderNo")
-        self.WanIp = params.get("WanIp")
-        self.Flag = params.get("Flag")
-        self.Spec = params.get("Spec")
-        self.CpuNum = params.get("CpuNum")
-        self.MemSize = params.get("MemSize")
-        self.MemDesc = params.get("MemDesc")
-        self.RegionId = params.get("RegionId")
-        self.ZoneId = params.get("ZoneId")
-        self.ApplyTime = params.get("ApplyTime")
-        self.FreeTime = params.get("FreeTime")
-        self.DiskSize = params.get("DiskSize")
-        self.NameTag = params.get("NameTag")
-        self.Services = params.get("Services")
-        self.StorageType = params.get("StorageType")
-        self.RootSize = params.get("RootSize")
-        self.ChargeType = params.get("ChargeType")
-        self.CdbIp = params.get("CdbIp")
-        self.CdbPort = params.get("CdbPort")
-        self.HwDiskSize = params.get("HwDiskSize")
-        self.HwDiskSizeDesc = params.get("HwDiskSizeDesc")
-        self.HwMemSize = params.get("HwMemSize")
-        self.HwMemSizeDesc = params.get("HwMemSizeDesc")
-        self.ExpireTime = params.get("ExpireTime")
-        self.EmrResourceId = params.get("EmrResourceId")
-        self.IsAutoRenew = params.get("IsAutoRenew")
-        self.DeviceClass = params.get("DeviceClass")
-        self.Mutable = params.get("Mutable")
+        self._AppId = params.get("AppId")
+        self._SerialNo = params.get("SerialNo")
+        self._OrderNo = params.get("OrderNo")
+        self._WanIp = params.get("WanIp")
+        self._Flag = params.get("Flag")
+        self._Spec = params.get("Spec")
+        self._CpuNum = params.get("CpuNum")
+        self._MemSize = params.get("MemSize")
+        self._MemDesc = params.get("MemDesc")
+        self._RegionId = params.get("RegionId")
+        self._ZoneId = params.get("ZoneId")
+        self._ApplyTime = params.get("ApplyTime")
+        self._FreeTime = params.get("FreeTime")
+        self._DiskSize = params.get("DiskSize")
+        self._NameTag = params.get("NameTag")
+        self._Services = params.get("Services")
+        self._StorageType = params.get("StorageType")
+        self._RootSize = params.get("RootSize")
+        self._ChargeType = params.get("ChargeType")
+        self._CdbIp = params.get("CdbIp")
+        self._CdbPort = params.get("CdbPort")
+        self._HwDiskSize = params.get("HwDiskSize")
+        self._HwDiskSizeDesc = params.get("HwDiskSizeDesc")
+        self._HwMemSize = params.get("HwMemSize")
+        self._HwMemSizeDesc = params.get("HwMemSizeDesc")
+        self._ExpireTime = params.get("ExpireTime")
+        self._EmrResourceId = params.get("EmrResourceId")
+        self._IsAutoRenew = params.get("IsAutoRenew")
+        self._DeviceClass = params.get("DeviceClass")
+        self._Mutable = params.get("Mutable")
         if params.get("MCMultiDisk") is not None:
-            self.MCMultiDisk = []
+            self._MCMultiDisk = []
             for item in params.get("MCMultiDisk"):
                 obj = MultiDiskMC()
                 obj._deserialize(item)
-                self.MCMultiDisk.append(obj)
+                self._MCMultiDisk.append(obj)
         if params.get("CdbNodeInfo") is not None:
-            self.CdbNodeInfo = CdbInfo()
-            self.CdbNodeInfo._deserialize(params.get("CdbNodeInfo"))
-        self.Ip = params.get("Ip")
-        self.Destroyable = params.get("Destroyable")
+            self._CdbNodeInfo = CdbInfo()
+            self._CdbNodeInfo._deserialize(params.get("CdbNodeInfo"))
+        self._Ip = params.get("Ip")
+        self._Destroyable = params.get("Destroyable")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.AutoFlag = params.get("AutoFlag")
-        self.HardwareResourceType = params.get("HardwareResourceType")
-        self.IsDynamicSpec = params.get("IsDynamicSpec")
-        self.DynamicPodSpec = params.get("DynamicPodSpec")
-        self.SupportModifyPayMode = params.get("SupportModifyPayMode")
-        self.RootStorageType = params.get("RootStorageType")
-        self.Zone = params.get("Zone")
+                self._Tags.append(obj)
+        self._AutoFlag = params.get("AutoFlag")
+        self._HardwareResourceType = params.get("HardwareResourceType")
+        self._IsDynamicSpec = params.get("IsDynamicSpec")
+        self._DynamicPodSpec = params.get("DynamicPodSpec")
+        self._SupportModifyPayMode = params.get("SupportModifyPayMode")
+        self._RootStorageType = params.get("RootStorageType")
+        self._Zone = params.get("Zone")
         if params.get("SubnetInfo") is not None:
-            self.SubnetInfo = SubnetInfo()
-            self.SubnetInfo._deserialize(params.get("SubnetInfo"))
-        self.Clients = params.get("Clients")
-        self.CurrentTime = params.get("CurrentTime")
-        self.IsFederation = params.get("IsFederation")
-        self.DeviceName = params.get("DeviceName")
-        self.ServiceClient = params.get("ServiceClient")
-        self.DisableApiTermination = params.get("DisableApiTermination")
-        self.TradeVersion = params.get("TradeVersion")
+            self._SubnetInfo = SubnetInfo()
+            self._SubnetInfo._deserialize(params.get("SubnetInfo"))
+        self._Clients = params.get("Clients")
+        self._CurrentTime = params.get("CurrentTime")
+        self._IsFederation = params.get("IsFederation")
+        self._DeviceName = params.get("DeviceName")
+        self._ServiceClient = params.get("ServiceClient")
+        self._DisableApiTermination = params.get("DisableApiTermination")
+        self._TradeVersion = params.get("TradeVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3386,59 +6916,100 @@ class NodeResourceSpec(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceType: The spec type, such as `S2.MEDIUM8`.
+        :param _InstanceType: The spec type, such as `S2.MEDIUM8`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type InstanceType: str
-        :param SystemDisk: The system disk, which can be up to 1 PCS.
+        :param _SystemDisk: The system disk, which can be up to 1 PCS.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SystemDisk: list of DiskSpecInfo
-        :param Tags: The list of tags to be bound.
+        :param _Tags: The list of tags to be bound.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Tags: list of Tag
-        :param DataDisk: The cloud data disk, which can be up to 15 PCS.
+        :param _DataDisk: The cloud data disk, which can be up to 15 PCS.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DataDisk: list of DiskSpecInfo
-        :param LocalDataDisk: The local data disk.
+        :param _LocalDataDisk: The local data disk.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type LocalDataDisk: list of DiskSpecInfo
         """
-        self.InstanceType = None
-        self.SystemDisk = None
-        self.Tags = None
-        self.DataDisk = None
-        self.LocalDataDisk = None
+        self._InstanceType = None
+        self._SystemDisk = None
+        self._Tags = None
+        self._DataDisk = None
+        self._LocalDataDisk = None
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def SystemDisk(self):
+        return self._SystemDisk
+
+    @SystemDisk.setter
+    def SystemDisk(self, SystemDisk):
+        self._SystemDisk = SystemDisk
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def DataDisk(self):
+        return self._DataDisk
+
+    @DataDisk.setter
+    def DataDisk(self, DataDisk):
+        self._DataDisk = DataDisk
+
+    @property
+    def LocalDataDisk(self):
+        return self._LocalDataDisk
+
+    @LocalDataDisk.setter
+    def LocalDataDisk(self, LocalDataDisk):
+        self._LocalDataDisk = LocalDataDisk
 
 
     def _deserialize(self, params):
-        self.InstanceType = params.get("InstanceType")
+        self._InstanceType = params.get("InstanceType")
         if params.get("SystemDisk") is not None:
-            self.SystemDisk = []
+            self._SystemDisk = []
             for item in params.get("SystemDisk"):
                 obj = DiskSpecInfo()
                 obj._deserialize(item)
-                self.SystemDisk.append(obj)
+                self._SystemDisk.append(obj)
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
+                self._Tags.append(obj)
         if params.get("DataDisk") is not None:
-            self.DataDisk = []
+            self._DataDisk = []
             for item in params.get("DataDisk"):
                 obj = DiskSpecInfo()
                 obj._deserialize(item)
-                self.DataDisk.append(obj)
+                self._DataDisk.append(obj)
         if params.get("LocalDataDisk") is not None:
-            self.LocalDataDisk = []
+            self._LocalDataDisk = []
             for item in params.get("LocalDataDisk"):
                 obj = DiskSpecInfo()
                 obj._deserialize(item)
-                self.LocalDataDisk.append(obj)
+                self._LocalDataDisk.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3451,24 +7022,33 @@ class OpScope(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceInfoList: The information of the services to operate on.
+        :param _ServiceInfoList: The information of the services to operate on.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ServiceInfoList: list of ServiceBasicRestartInfo
         """
-        self.ServiceInfoList = None
+        self._ServiceInfoList = None
+
+    @property
+    def ServiceInfoList(self):
+        return self._ServiceInfoList
+
+    @ServiceInfoList.setter
+    def ServiceInfoList(self, ServiceInfoList):
+        self._ServiceInfoList = ServiceInfoList
 
 
     def _deserialize(self, params):
         if params.get("ServiceInfoList") is not None:
-            self.ServiceInfoList = []
+            self._ServiceInfoList = []
             for item in params.get("ServiceInfoList"):
                 obj = ServiceBasicRestartInfo()
                 obj._deserialize(item)
-                self.ServiceInfoList.append(obj)
+                self._ServiceInfoList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3481,59 +7061,132 @@ class OutterResource(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Spec: Specification
+        :param _Spec: Specification
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Spec: str
-        :param SpecName: Specification name
+        :param _SpecName: Specification name
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SpecName: str
-        :param StorageType: Disk type
+        :param _StorageType: Disk type
 Note: this field may return null, indicating that no valid values can be obtained.
         :type StorageType: int
-        :param DiskType: Disk type
+        :param _DiskType: Disk type
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DiskType: str
-        :param RootSize: System disk size
+        :param _RootSize: System disk size
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RootSize: int
-        :param MemSize: Memory size
+        :param _MemSize: Memory size
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MemSize: int
-        :param Cpu: Number of CPUs
+        :param _Cpu: Number of CPUs
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Cpu: int
-        :param DiskSize: Disk size
+        :param _DiskSize: Disk size
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DiskSize: int
-        :param InstanceType: Specification
+        :param _InstanceType: Specification
 Note: this field may return null, indicating that no valid values can be obtained.
         :type InstanceType: str
         """
-        self.Spec = None
-        self.SpecName = None
-        self.StorageType = None
-        self.DiskType = None
-        self.RootSize = None
-        self.MemSize = None
-        self.Cpu = None
-        self.DiskSize = None
-        self.InstanceType = None
+        self._Spec = None
+        self._SpecName = None
+        self._StorageType = None
+        self._DiskType = None
+        self._RootSize = None
+        self._MemSize = None
+        self._Cpu = None
+        self._DiskSize = None
+        self._InstanceType = None
+
+    @property
+    def Spec(self):
+        return self._Spec
+
+    @Spec.setter
+    def Spec(self, Spec):
+        self._Spec = Spec
+
+    @property
+    def SpecName(self):
+        return self._SpecName
+
+    @SpecName.setter
+    def SpecName(self, SpecName):
+        self._SpecName = SpecName
+
+    @property
+    def StorageType(self):
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
+    @property
+    def DiskType(self):
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def RootSize(self):
+        return self._RootSize
+
+    @RootSize.setter
+    def RootSize(self, RootSize):
+        self._RootSize = RootSize
+
+    @property
+    def MemSize(self):
+        return self._MemSize
+
+    @MemSize.setter
+    def MemSize(self, MemSize):
+        self._MemSize = MemSize
+
+    @property
+    def Cpu(self):
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def DiskSize(self):
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
 
 
     def _deserialize(self, params):
-        self.Spec = params.get("Spec")
-        self.SpecName = params.get("SpecName")
-        self.StorageType = params.get("StorageType")
-        self.DiskType = params.get("DiskType")
-        self.RootSize = params.get("RootSize")
-        self.MemSize = params.get("MemSize")
-        self.Cpu = params.get("Cpu")
-        self.DiskSize = params.get("DiskSize")
-        self.InstanceType = params.get("InstanceType")
+        self._Spec = params.get("Spec")
+        self._SpecName = params.get("SpecName")
+        self._StorageType = params.get("StorageType")
+        self._DiskType = params.get("DiskType")
+        self._RootSize = params.get("RootSize")
+        self._MemSize = params.get("MemSize")
+        self._Cpu = params.get("Cpu")
+        self._DiskSize = params.get("DiskSize")
+        self._InstanceType = params.get("InstanceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3546,44 +7199,93 @@ class PartDetailPriceItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceType: The type. Valid values: `node` (node); `rootDisk` (system disk); `dataDisk` and `metaDB` (cloud data disk)
+        :param _InstanceType: The type. Valid values: `node` (node); `rootDisk` (system disk); `dataDisk` and `metaDB` (cloud data disk)
 Note: This field may return null, indicating that no valid values can be obtained.
         :type InstanceType: str
-        :param Price: Rate (original)
+        :param _Price: Rate (original)
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Price: float
-        :param RealCost: Rate (discounted)
+        :param _RealCost: Rate (discounted)
 Note: This field may return null, indicating that no valid values can be obtained.
         :type RealCost: float
-        :param RealTotalCost: Total price (discounted)
+        :param _RealTotalCost: Total price (discounted)
 Note: This field may return null, indicating that no valid values can be obtained.
         :type RealTotalCost: float
-        :param Policy: Discount
+        :param _Policy: Discount
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Policy: float
-        :param GoodsNum: Quantity
+        :param _GoodsNum: Quantity
 Note: This field may return null, indicating that no valid values can be obtained.
         :type GoodsNum: int
         """
-        self.InstanceType = None
-        self.Price = None
-        self.RealCost = None
-        self.RealTotalCost = None
-        self.Policy = None
-        self.GoodsNum = None
+        self._InstanceType = None
+        self._Price = None
+        self._RealCost = None
+        self._RealTotalCost = None
+        self._Policy = None
+        self._GoodsNum = None
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def Price(self):
+        return self._Price
+
+    @Price.setter
+    def Price(self, Price):
+        self._Price = Price
+
+    @property
+    def RealCost(self):
+        return self._RealCost
+
+    @RealCost.setter
+    def RealCost(self, RealCost):
+        self._RealCost = RealCost
+
+    @property
+    def RealTotalCost(self):
+        return self._RealTotalCost
+
+    @RealTotalCost.setter
+    def RealTotalCost(self, RealTotalCost):
+        self._RealTotalCost = RealTotalCost
+
+    @property
+    def Policy(self):
+        return self._Policy
+
+    @Policy.setter
+    def Policy(self, Policy):
+        self._Policy = Policy
+
+    @property
+    def GoodsNum(self):
+        return self._GoodsNum
+
+    @GoodsNum.setter
+    def GoodsNum(self, GoodsNum):
+        self._GoodsNum = GoodsNum
 
 
     def _deserialize(self, params):
-        self.InstanceType = params.get("InstanceType")
-        self.Price = params.get("Price")
-        self.RealCost = params.get("RealCost")
-        self.RealTotalCost = params.get("RealTotalCost")
-        self.Policy = params.get("Policy")
-        self.GoodsNum = params.get("GoodsNum")
+        self._InstanceType = params.get("InstanceType")
+        self._Price = params.get("Price")
+        self._RealCost = params.get("RealCost")
+        self._RealTotalCost = params.get("RealTotalCost")
+        self._Policy = params.get("Policy")
+        self._GoodsNum = params.get("GoodsNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3596,29 +7298,54 @@ class PersistentVolumeContext(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiskSize: Disk size in GB.
+        :param _DiskSize: Disk size in GB.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DiskSize: int
-        :param DiskType: Disk type. Valid values: `CLOUD_PREMIUM` and `CLOUD_SSD`.
+        :param _DiskType: Disk type. Valid values: `CLOUD_PREMIUM` and `CLOUD_SSD`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DiskType: str
-        :param DiskNum: Number of disks.
+        :param _DiskNum: Number of disks.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DiskNum: int
         """
-        self.DiskSize = None
-        self.DiskType = None
-        self.DiskNum = None
+        self._DiskSize = None
+        self._DiskType = None
+        self._DiskNum = None
+
+    @property
+    def DiskSize(self):
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+    @property
+    def DiskType(self):
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def DiskNum(self):
+        return self._DiskNum
+
+    @DiskNum.setter
+    def DiskNum(self, DiskNum):
+        self._DiskNum = DiskNum
 
 
     def _deserialize(self, params):
-        self.DiskSize = params.get("DiskSize")
-        self.DiskType = params.get("DiskType")
-        self.DiskNum = params.get("DiskNum")
+        self._DiskSize = params.get("DiskSize")
+        self._DiskType = params.get("DiskType")
+        self._DiskNum = params.get("DiskNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3631,22 +7358,39 @@ class Placement(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Zone: The ID of the availability zone where the instance resides, such as `ap-guangzhou-1`. You can call the [DescribeZones](https://intl.cloud.tencent.com/document/product/213/15707?from_cn_redirect=1) API and obtain this ID from the `Zone` field in the response.
+        :param _Zone: The ID of the availability zone where the instance resides, such as `ap-guangzhou-1`. You can call the [DescribeZones](https://intl.cloud.tencent.com/document/product/213/15707?from_cn_redirect=1) API and obtain this ID from the `Zone` field in the response.
         :type Zone: str
-        :param ProjectId: Project ID of the instance. If no ID is passed in, the default project ID is used.
+        :param _ProjectId: Project ID of the instance. If no ID is passed in, the default project ID is used.
         :type ProjectId: int
         """
-        self.Zone = None
-        self.ProjectId = None
+        self._Zone = None
+        self._ProjectId = None
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
 
 
     def _deserialize(self, params):
-        self.Zone = params.get("Zone")
-        self.ProjectId = params.get("ProjectId")
+        self._Zone = params.get("Zone")
+        self._ProjectId = params.get("ProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3659,9 +7403,9 @@ class PodNewParameter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: The TKE or EKS cluster ID.
+        :param _InstanceId: The TKE or EKS cluster ID.
         :type InstanceId: str
-        :param Config: Custom permissions
+        :param _Config: Custom permissions
 Examples:
 {
   "apiVersion": "v1",
@@ -3697,7 +7441,7 @@ Examples:
   ]
 }
         :type Config: str
-        :param Parameter: Custom parameters
+        :param _Parameter: Custom parameters
 Examples:
 {
     "apiVersion": "apps/v1",
@@ -3774,19 +7518,44 @@ Examples:
   }
         :type Parameter: str
         """
-        self.InstanceId = None
-        self.Config = None
-        self.Parameter = None
+        self._InstanceId = None
+        self._Config = None
+        self._Parameter = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Config(self):
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+    @property
+    def Parameter(self):
+        return self._Parameter
+
+    @Parameter.setter
+    def Parameter(self, Parameter):
+        self._Parameter = Parameter
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.Config = params.get("Config")
-        self.Parameter = params.get("Parameter")
+        self._InstanceId = params.get("InstanceId")
+        self._Config = params.get("Config")
+        self._Parameter = params.get("Parameter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3799,75 +7568,172 @@ class PodNewSpec(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceProviderIdentifier: The identifier of an external resource provider, such as "cls-a1cd23fa".
+        :param _ResourceProviderIdentifier: The identifier of an external resource provider, such as "cls-a1cd23fa".
         :type ResourceProviderIdentifier: str
-        :param ResourceProviderType: The type of the external resource provider, such as "tke". Currently, only "tke" is supported.
+        :param _ResourceProviderType: The type of the external resource provider, such as "tke". Currently, only "tke" is supported.
         :type ResourceProviderType: str
-        :param NodeFlag: The purpose of the resource, which means the node type and can only be "TASK".
+        :param _NodeFlag: The purpose of the resource, which means the node type and can only be "TASK".
         :type NodeFlag: str
-        :param Cpu: The number of CPUs.
+        :param _Cpu: The number of CPUs.
         :type Cpu: int
-        :param Memory: The memory size in GB.
+        :param _Memory: The memory size in GB.
         :type Memory: int
-        :param CpuType: The EKS cluster - CPU type. Valid values: `intel` and `amd`.
+        :param _CpuType: The EKS cluster - CPU type. Valid values: `intel` and `amd`.
         :type CpuType: str
-        :param PodVolumes: The data directory mounting information of the pod node.
+        :param _PodVolumes: The data directory mounting information of the pod node.
         :type PodVolumes: list of PodVolume
-        :param EnableDynamicSpecFlag: Whether the dynamic spec is used. Valid values:
+        :param _EnableDynamicSpecFlag: Whether the dynamic spec is used. Valid values:
 <li>`true`: Yes</li>
 <li>`false` (default): No</li>
         :type EnableDynamicSpecFlag: bool
-        :param DynamicPodSpec: The dynamic spec.
+        :param _DynamicPodSpec: The dynamic spec.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DynamicPodSpec: :class:`tencentcloud.emr.v20190103.models.DynamicPodSpec`
-        :param VpcId: The unique VPC ID.
+        :param _VpcId: The unique VPC ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type VpcId: str
-        :param SubnetId: The unique VPC subnet ID.
+        :param _SubnetId: The unique VPC subnet ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SubnetId: str
-        :param PodName: The pod name.
+        :param _PodName: The pod name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PodName: str
         """
-        self.ResourceProviderIdentifier = None
-        self.ResourceProviderType = None
-        self.NodeFlag = None
-        self.Cpu = None
-        self.Memory = None
-        self.CpuType = None
-        self.PodVolumes = None
-        self.EnableDynamicSpecFlag = None
-        self.DynamicPodSpec = None
-        self.VpcId = None
-        self.SubnetId = None
-        self.PodName = None
+        self._ResourceProviderIdentifier = None
+        self._ResourceProviderType = None
+        self._NodeFlag = None
+        self._Cpu = None
+        self._Memory = None
+        self._CpuType = None
+        self._PodVolumes = None
+        self._EnableDynamicSpecFlag = None
+        self._DynamicPodSpec = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._PodName = None
+
+    @property
+    def ResourceProviderIdentifier(self):
+        return self._ResourceProviderIdentifier
+
+    @ResourceProviderIdentifier.setter
+    def ResourceProviderIdentifier(self, ResourceProviderIdentifier):
+        self._ResourceProviderIdentifier = ResourceProviderIdentifier
+
+    @property
+    def ResourceProviderType(self):
+        return self._ResourceProviderType
+
+    @ResourceProviderType.setter
+    def ResourceProviderType(self, ResourceProviderType):
+        self._ResourceProviderType = ResourceProviderType
+
+    @property
+    def NodeFlag(self):
+        return self._NodeFlag
+
+    @NodeFlag.setter
+    def NodeFlag(self, NodeFlag):
+        self._NodeFlag = NodeFlag
+
+    @property
+    def Cpu(self):
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def CpuType(self):
+        return self._CpuType
+
+    @CpuType.setter
+    def CpuType(self, CpuType):
+        self._CpuType = CpuType
+
+    @property
+    def PodVolumes(self):
+        return self._PodVolumes
+
+    @PodVolumes.setter
+    def PodVolumes(self, PodVolumes):
+        self._PodVolumes = PodVolumes
+
+    @property
+    def EnableDynamicSpecFlag(self):
+        return self._EnableDynamicSpecFlag
+
+    @EnableDynamicSpecFlag.setter
+    def EnableDynamicSpecFlag(self, EnableDynamicSpecFlag):
+        self._EnableDynamicSpecFlag = EnableDynamicSpecFlag
+
+    @property
+    def DynamicPodSpec(self):
+        return self._DynamicPodSpec
+
+    @DynamicPodSpec.setter
+    def DynamicPodSpec(self, DynamicPodSpec):
+        self._DynamicPodSpec = DynamicPodSpec
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def PodName(self):
+        return self._PodName
+
+    @PodName.setter
+    def PodName(self, PodName):
+        self._PodName = PodName
 
 
     def _deserialize(self, params):
-        self.ResourceProviderIdentifier = params.get("ResourceProviderIdentifier")
-        self.ResourceProviderType = params.get("ResourceProviderType")
-        self.NodeFlag = params.get("NodeFlag")
-        self.Cpu = params.get("Cpu")
-        self.Memory = params.get("Memory")
-        self.CpuType = params.get("CpuType")
+        self._ResourceProviderIdentifier = params.get("ResourceProviderIdentifier")
+        self._ResourceProviderType = params.get("ResourceProviderType")
+        self._NodeFlag = params.get("NodeFlag")
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._CpuType = params.get("CpuType")
         if params.get("PodVolumes") is not None:
-            self.PodVolumes = []
+            self._PodVolumes = []
             for item in params.get("PodVolumes"):
                 obj = PodVolume()
                 obj._deserialize(item)
-                self.PodVolumes.append(obj)
-        self.EnableDynamicSpecFlag = params.get("EnableDynamicSpecFlag")
+                self._PodVolumes.append(obj)
+        self._EnableDynamicSpecFlag = params.get("EnableDynamicSpecFlag")
         if params.get("DynamicPodSpec") is not None:
-            self.DynamicPodSpec = DynamicPodSpec()
-            self.DynamicPodSpec._deserialize(params.get("DynamicPodSpec"))
-        self.VpcId = params.get("VpcId")
-        self.SubnetId = params.get("SubnetId")
-        self.PodName = params.get("PodName")
+            self._DynamicPodSpec = DynamicPodSpec()
+            self._DynamicPodSpec._deserialize(params.get("DynamicPodSpec"))
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._PodName = params.get("PodName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3880,9 +7746,9 @@ class PodParameter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: ID of TKE or EKS cluster
+        :param _ClusterId: ID of TKE or EKS cluster
         :type ClusterId: str
-        :param Config: Custom permissions
+        :param _Config: Custom permissions
 Example:
 {
   "apiVersion": "v1",
@@ -3918,7 +7784,7 @@ Example:
   ]
 }
         :type Config: str
-        :param Parameter: Custom parameters
+        :param _Parameter: Custom parameters
 Example:
 {
     "apiVersion": "apps/v1",
@@ -3995,19 +7861,44 @@ Example:
   }
         :type Parameter: str
         """
-        self.ClusterId = None
-        self.Config = None
-        self.Parameter = None
+        self._ClusterId = None
+        self._Config = None
+        self._Parameter = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Config(self):
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+    @property
+    def Parameter(self):
+        return self._Parameter
+
+    @Parameter.setter
+    def Parameter(self, Parameter):
+        self._Parameter = Parameter
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
-        self.Config = params.get("Config")
-        self.Parameter = params.get("Parameter")
+        self._ClusterId = params.get("ClusterId")
+        self._Config = params.get("Config")
+        self._Parameter = params.get("Parameter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4020,77 +7911,182 @@ class PodSpec(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceProviderIdentifier: Identifier of external resource provider, such as "cls-a1cd23fa".
+        :param _ResourceProviderIdentifier: Identifier of external resource provider, such as "cls-a1cd23fa".
         :type ResourceProviderIdentifier: str
-        :param ResourceProviderType: Type of external resource provider, such as "tke". Currently, only "tke" is supported.
+        :param _ResourceProviderType: Type of external resource provider, such as "tke". Currently, only "tke" is supported.
         :type ResourceProviderType: str
-        :param NodeType: Purpose of the resource, which means the node type and can only be "TASK".
+        :param _NodeType: Purpose of the resource, which means the node type and can only be "TASK".
         :type NodeType: str
-        :param Cpu: Number of CPUs
+        :param _Cpu: Number of CPUs
         :type Cpu: int
-        :param Memory: Memory size in GB.
+        :param _Memory: Memory size in GB.
         :type Memory: int
-        :param DataVolumes: Mount point of resources for the host. A specified mount point corresponds to the host path and is used as the data storage directory in the pod. (This parameter has been disused)
+        :param _DataVolumes: Mount point of resources for the host. A specified mount point corresponds to the host path and is used as the data storage directory in the pod. (This parameter has been disused)
         :type DataVolumes: list of str
-        :param CpuType: EKS cluster - CPU type. Valid values: `intel` and `amd`.
+        :param _CpuType: EKS cluster - CPU type. Valid values: `intel` and `amd`.
         :type CpuType: str
-        :param PodVolumes: Data directory mounting information of the pod node.
+        :param _PodVolumes: Data directory mounting information of the pod node.
         :type PodVolumes: list of PodVolume
-        :param IsDynamicSpec: Whether floating specification is used. `1`: Yes; `0`: No.
+        :param _IsDynamicSpec: Whether floating specification is used. `1`: Yes; `0`: No.
         :type IsDynamicSpec: int
-        :param DynamicPodSpec: Floating specification
+        :param _DynamicPodSpec: Floating specification
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DynamicPodSpec: :class:`tencentcloud.emr.v20190103.models.DynamicPodSpec`
-        :param VpcId: Unique VPC ID
+        :param _VpcId: Unique VPC ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :type VpcId: str
-        :param SubnetId: Unique VPC subnet ID
+        :param _SubnetId: Unique VPC subnet ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SubnetId: str
-        :param PodName: pod name
+        :param _PodName: pod name
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PodName: str
         """
-        self.ResourceProviderIdentifier = None
-        self.ResourceProviderType = None
-        self.NodeType = None
-        self.Cpu = None
-        self.Memory = None
-        self.DataVolumes = None
-        self.CpuType = None
-        self.PodVolumes = None
-        self.IsDynamicSpec = None
-        self.DynamicPodSpec = None
-        self.VpcId = None
-        self.SubnetId = None
-        self.PodName = None
+        self._ResourceProviderIdentifier = None
+        self._ResourceProviderType = None
+        self._NodeType = None
+        self._Cpu = None
+        self._Memory = None
+        self._DataVolumes = None
+        self._CpuType = None
+        self._PodVolumes = None
+        self._IsDynamicSpec = None
+        self._DynamicPodSpec = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._PodName = None
+
+    @property
+    def ResourceProviderIdentifier(self):
+        return self._ResourceProviderIdentifier
+
+    @ResourceProviderIdentifier.setter
+    def ResourceProviderIdentifier(self, ResourceProviderIdentifier):
+        self._ResourceProviderIdentifier = ResourceProviderIdentifier
+
+    @property
+    def ResourceProviderType(self):
+        return self._ResourceProviderType
+
+    @ResourceProviderType.setter
+    def ResourceProviderType(self, ResourceProviderType):
+        self._ResourceProviderType = ResourceProviderType
+
+    @property
+    def NodeType(self):
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def Cpu(self):
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def DataVolumes(self):
+        return self._DataVolumes
+
+    @DataVolumes.setter
+    def DataVolumes(self, DataVolumes):
+        self._DataVolumes = DataVolumes
+
+    @property
+    def CpuType(self):
+        return self._CpuType
+
+    @CpuType.setter
+    def CpuType(self, CpuType):
+        self._CpuType = CpuType
+
+    @property
+    def PodVolumes(self):
+        return self._PodVolumes
+
+    @PodVolumes.setter
+    def PodVolumes(self, PodVolumes):
+        self._PodVolumes = PodVolumes
+
+    @property
+    def IsDynamicSpec(self):
+        return self._IsDynamicSpec
+
+    @IsDynamicSpec.setter
+    def IsDynamicSpec(self, IsDynamicSpec):
+        self._IsDynamicSpec = IsDynamicSpec
+
+    @property
+    def DynamicPodSpec(self):
+        return self._DynamicPodSpec
+
+    @DynamicPodSpec.setter
+    def DynamicPodSpec(self, DynamicPodSpec):
+        self._DynamicPodSpec = DynamicPodSpec
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def PodName(self):
+        return self._PodName
+
+    @PodName.setter
+    def PodName(self, PodName):
+        self._PodName = PodName
 
 
     def _deserialize(self, params):
-        self.ResourceProviderIdentifier = params.get("ResourceProviderIdentifier")
-        self.ResourceProviderType = params.get("ResourceProviderType")
-        self.NodeType = params.get("NodeType")
-        self.Cpu = params.get("Cpu")
-        self.Memory = params.get("Memory")
-        self.DataVolumes = params.get("DataVolumes")
-        self.CpuType = params.get("CpuType")
+        self._ResourceProviderIdentifier = params.get("ResourceProviderIdentifier")
+        self._ResourceProviderType = params.get("ResourceProviderType")
+        self._NodeType = params.get("NodeType")
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._DataVolumes = params.get("DataVolumes")
+        self._CpuType = params.get("CpuType")
         if params.get("PodVolumes") is not None:
-            self.PodVolumes = []
+            self._PodVolumes = []
             for item in params.get("PodVolumes"):
                 obj = PodVolume()
                 obj._deserialize(item)
-                self.PodVolumes.append(obj)
-        self.IsDynamicSpec = params.get("IsDynamicSpec")
+                self._PodVolumes.append(obj)
+        self._IsDynamicSpec = params.get("IsDynamicSpec")
         if params.get("DynamicPodSpec") is not None:
-            self.DynamicPodSpec = DynamicPodSpec()
-            self.DynamicPodSpec._deserialize(params.get("DynamicPodSpec"))
-        self.VpcId = params.get("VpcId")
-        self.SubnetId = params.get("SubnetId")
-        self.PodName = params.get("PodName")
+            self._DynamicPodSpec = DynamicPodSpec()
+            self._DynamicPodSpec._deserialize(params.get("DynamicPodSpec"))
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._PodName = params.get("PodName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4103,26 +8099,43 @@ class PodSpecInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PodSpec: The specified information such as pod spec and source for scale-out with pod resources.
+        :param _PodSpec: The specified information such as pod spec and source for scale-out with pod resources.
         :type PodSpec: :class:`tencentcloud.emr.v20190103.models.PodNewSpec`
-        :param PodParameter: The custom pod permission and parameter.
+        :param _PodParameter: The custom pod permission and parameter.
         :type PodParameter: :class:`tencentcloud.emr.v20190103.models.PodNewParameter`
         """
-        self.PodSpec = None
-        self.PodParameter = None
+        self._PodSpec = None
+        self._PodParameter = None
+
+    @property
+    def PodSpec(self):
+        return self._PodSpec
+
+    @PodSpec.setter
+    def PodSpec(self, PodSpec):
+        self._PodSpec = PodSpec
+
+    @property
+    def PodParameter(self):
+        return self._PodParameter
+
+    @PodParameter.setter
+    def PodParameter(self, PodParameter):
+        self._PodParameter = PodParameter
 
 
     def _deserialize(self, params):
         if params.get("PodSpec") is not None:
-            self.PodSpec = PodNewSpec()
-            self.PodSpec._deserialize(params.get("PodSpec"))
+            self._PodSpec = PodNewSpec()
+            self._PodSpec._deserialize(params.get("PodSpec"))
         if params.get("PodParameter") is not None:
-            self.PodParameter = PodNewParameter()
-            self.PodParameter._deserialize(params.get("PodParameter"))
+            self._PodParameter = PodNewParameter()
+            self._PodParameter._deserialize(params.get("PodParameter"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4135,33 +8148,58 @@ class PodVolume(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VolumeType: Storage type. Valid values: `pvc` and `hostpath`.
+        :param _VolumeType: Storage type. Valid values: `pvc` and `hostpath`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type VolumeType: str
-        :param PVCVolume: This field will take effect if `VolumeType` is `pvc`.
+        :param _PVCVolume: This field will take effect if `VolumeType` is `pvc`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PVCVolume: :class:`tencentcloud.emr.v20190103.models.PersistentVolumeContext`
-        :param HostVolume: This field will take effect if `VolumeType` is `hostpath`.
+        :param _HostVolume: This field will take effect if `VolumeType` is `hostpath`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type HostVolume: :class:`tencentcloud.emr.v20190103.models.HostVolumeContext`
         """
-        self.VolumeType = None
-        self.PVCVolume = None
-        self.HostVolume = None
+        self._VolumeType = None
+        self._PVCVolume = None
+        self._HostVolume = None
+
+    @property
+    def VolumeType(self):
+        return self._VolumeType
+
+    @VolumeType.setter
+    def VolumeType(self, VolumeType):
+        self._VolumeType = VolumeType
+
+    @property
+    def PVCVolume(self):
+        return self._PVCVolume
+
+    @PVCVolume.setter
+    def PVCVolume(self, PVCVolume):
+        self._PVCVolume = PVCVolume
+
+    @property
+    def HostVolume(self):
+        return self._HostVolume
+
+    @HostVolume.setter
+    def HostVolume(self, HostVolume):
+        self._HostVolume = HostVolume
 
 
     def _deserialize(self, params):
-        self.VolumeType = params.get("VolumeType")
+        self._VolumeType = params.get("VolumeType")
         if params.get("PVCVolume") is not None:
-            self.PVCVolume = PersistentVolumeContext()
-            self.PVCVolume._deserialize(params.get("PVCVolume"))
+            self._PVCVolume = PersistentVolumeContext()
+            self._PVCVolume._deserialize(params.get("PVCVolume"))
         if params.get("HostVolume") is not None:
-            self.HostVolume = HostVolumeContext()
-            self.HostVolume._deserialize(params.get("HostVolume"))
+            self._HostVolume = HostVolumeContext()
+            self._HostVolume._deserialize(params.get("HostVolume"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4174,62 +8212,159 @@ class PreExecuteFileSettings(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Path: COS path to script, which has been disused
+        :param _Path: COS path to script, which has been disused
         :type Path: str
-        :param Args: Execution script parameter
+        :param _Args: Execution script parameter
         :type Args: list of str
-        :param Bucket: COS bucket name, which has been disused
+        :param _Bucket: COS bucket name, which has been disused
         :type Bucket: str
-        :param Region: COS region name, which has been disused
+        :param _Region: COS region name, which has been disused
         :type Region: str
-        :param Domain: COS domain data, which has been disused
+        :param _Domain: COS domain data, which has been disused
         :type Domain: str
-        :param RunOrder: Execution sequence
+        :param _RunOrder: Execution sequence
         :type RunOrder: int
-        :param WhenRun: `resourceAfter` or `clusterAfter`
+        :param _WhenRun: `resourceAfter` or `clusterAfter`
         :type WhenRun: str
-        :param CosFileName: Script name, which has been disused
+        :param _CosFileName: Script name, which has been disused
         :type CosFileName: str
-        :param CosFileURI: COS address of script
+        :param _CosFileURI: COS address of script
         :type CosFileURI: str
-        :param CosSecretId: COS `SecretId`
+        :param _CosSecretId: COS `SecretId`
         :type CosSecretId: str
-        :param CosSecretKey: COS `SecretKey`
+        :param _CosSecretKey: COS `SecretKey`
         :type CosSecretKey: str
-        :param AppId: COS `appid`, which has been disused
+        :param _AppId: COS `appid`, which has been disused
         :type AppId: str
         """
-        self.Path = None
-        self.Args = None
-        self.Bucket = None
-        self.Region = None
-        self.Domain = None
-        self.RunOrder = None
-        self.WhenRun = None
-        self.CosFileName = None
-        self.CosFileURI = None
-        self.CosSecretId = None
-        self.CosSecretKey = None
-        self.AppId = None
+        self._Path = None
+        self._Args = None
+        self._Bucket = None
+        self._Region = None
+        self._Domain = None
+        self._RunOrder = None
+        self._WhenRun = None
+        self._CosFileName = None
+        self._CosFileURI = None
+        self._CosSecretId = None
+        self._CosSecretKey = None
+        self._AppId = None
+
+    @property
+    def Path(self):
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Args(self):
+        return self._Args
+
+    @Args.setter
+    def Args(self, Args):
+        self._Args = Args
+
+    @property
+    def Bucket(self):
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def RunOrder(self):
+        return self._RunOrder
+
+    @RunOrder.setter
+    def RunOrder(self, RunOrder):
+        self._RunOrder = RunOrder
+
+    @property
+    def WhenRun(self):
+        return self._WhenRun
+
+    @WhenRun.setter
+    def WhenRun(self, WhenRun):
+        self._WhenRun = WhenRun
+
+    @property
+    def CosFileName(self):
+        return self._CosFileName
+
+    @CosFileName.setter
+    def CosFileName(self, CosFileName):
+        self._CosFileName = CosFileName
+
+    @property
+    def CosFileURI(self):
+        return self._CosFileURI
+
+    @CosFileURI.setter
+    def CosFileURI(self, CosFileURI):
+        self._CosFileURI = CosFileURI
+
+    @property
+    def CosSecretId(self):
+        return self._CosSecretId
+
+    @CosSecretId.setter
+    def CosSecretId(self, CosSecretId):
+        self._CosSecretId = CosSecretId
+
+    @property
+    def CosSecretKey(self):
+        return self._CosSecretKey
+
+    @CosSecretKey.setter
+    def CosSecretKey(self, CosSecretKey):
+        self._CosSecretKey = CosSecretKey
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
 
 
     def _deserialize(self, params):
-        self.Path = params.get("Path")
-        self.Args = params.get("Args")
-        self.Bucket = params.get("Bucket")
-        self.Region = params.get("Region")
-        self.Domain = params.get("Domain")
-        self.RunOrder = params.get("RunOrder")
-        self.WhenRun = params.get("WhenRun")
-        self.CosFileName = params.get("CosFileName")
-        self.CosFileURI = params.get("CosFileURI")
-        self.CosSecretId = params.get("CosSecretId")
-        self.CosSecretKey = params.get("CosSecretKey")
-        self.AppId = params.get("AppId")
+        self._Path = params.get("Path")
+        self._Args = params.get("Args")
+        self._Bucket = params.get("Bucket")
+        self._Region = params.get("Region")
+        self._Domain = params.get("Domain")
+        self._RunOrder = params.get("RunOrder")
+        self._WhenRun = params.get("WhenRun")
+        self._CosFileName = params.get("CosFileName")
+        self._CosFileURI = params.get("CosFileURI")
+        self._CosSecretId = params.get("CosSecretId")
+        self._CosSecretKey = params.get("CosSecretKey")
+        self._AppId = params.get("AppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4242,30 +8377,63 @@ class PriceDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceId: The node ID
+        :param _ResourceId: The node ID
         :type ResourceId: str
-        :param Formula: The price formula
+        :param _Formula: The price formula
         :type Formula: str
-        :param OriginalCost: The original price
+        :param _OriginalCost: The original price
         :type OriginalCost: float
-        :param DiscountCost: The discount price
+        :param _DiscountCost: The discount price
         :type DiscountCost: float
         """
-        self.ResourceId = None
-        self.Formula = None
-        self.OriginalCost = None
-        self.DiscountCost = None
+        self._ResourceId = None
+        self._Formula = None
+        self._OriginalCost = None
+        self._DiscountCost = None
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def Formula(self):
+        return self._Formula
+
+    @Formula.setter
+    def Formula(self, Formula):
+        self._Formula = Formula
+
+    @property
+    def OriginalCost(self):
+        return self._OriginalCost
+
+    @OriginalCost.setter
+    def OriginalCost(self, OriginalCost):
+        self._OriginalCost = OriginalCost
+
+    @property
+    def DiscountCost(self):
+        return self._DiscountCost
+
+    @DiscountCost.setter
+    def DiscountCost(self, DiscountCost):
+        self._DiscountCost = DiscountCost
 
 
     def _deserialize(self, params):
-        self.ResourceId = params.get("ResourceId")
-        self.Formula = params.get("Formula")
-        self.OriginalCost = params.get("OriginalCost")
-        self.DiscountCost = params.get("DiscountCost")
+        self._ResourceId = params.get("ResourceId")
+        self._Formula = params.get("Formula")
+        self._OriginalCost = params.get("OriginalCost")
+        self._DiscountCost = params.get("DiscountCost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4278,89 +8446,194 @@ class PriceResource(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Spec: Target specification
+        :param _Spec: Target specification
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Spec: str
-        :param StorageType: Disk type.
+        :param _StorageType: Disk type.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type StorageType: int
-        :param DiskType: Disk type.
+        :param _DiskType: Disk type.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DiskType: str
-        :param RootSize: System disk size
+        :param _RootSize: System disk size
 Note: This field may return null, indicating that no valid values can be obtained.
         :type RootSize: int
-        :param MemSize: Memory size.
+        :param _MemSize: Memory size.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type MemSize: int
-        :param Cpu: Number of CPUs.
+        :param _Cpu: Number of CPUs.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Cpu: int
-        :param DiskSize: Disk size.
+        :param _DiskSize: Disk size.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DiskSize: int
-        :param MultiDisks: List of cloud disks.
+        :param _MultiDisks: List of cloud disks.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type MultiDisks: list of MultiDisk
-        :param DiskCnt: Number of disks.
+        :param _DiskCnt: Number of disks.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DiskCnt: int
-        :param InstanceType: Specification
+        :param _InstanceType: Specification
 Note: This field may return null, indicating that no valid values can be obtained.
         :type InstanceType: str
-        :param Tags: Tag
+        :param _Tags: Tag
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Tags: list of Tag
-        :param DiskNum: Number of disks.
+        :param _DiskNum: Number of disks.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DiskNum: int
-        :param LocalDiskNum: Number of local disks.
+        :param _LocalDiskNum: Number of local disks.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type LocalDiskNum: int
         """
-        self.Spec = None
-        self.StorageType = None
-        self.DiskType = None
-        self.RootSize = None
-        self.MemSize = None
-        self.Cpu = None
-        self.DiskSize = None
-        self.MultiDisks = None
-        self.DiskCnt = None
-        self.InstanceType = None
-        self.Tags = None
-        self.DiskNum = None
-        self.LocalDiskNum = None
+        self._Spec = None
+        self._StorageType = None
+        self._DiskType = None
+        self._RootSize = None
+        self._MemSize = None
+        self._Cpu = None
+        self._DiskSize = None
+        self._MultiDisks = None
+        self._DiskCnt = None
+        self._InstanceType = None
+        self._Tags = None
+        self._DiskNum = None
+        self._LocalDiskNum = None
+
+    @property
+    def Spec(self):
+        return self._Spec
+
+    @Spec.setter
+    def Spec(self, Spec):
+        self._Spec = Spec
+
+    @property
+    def StorageType(self):
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
+    @property
+    def DiskType(self):
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def RootSize(self):
+        return self._RootSize
+
+    @RootSize.setter
+    def RootSize(self, RootSize):
+        self._RootSize = RootSize
+
+    @property
+    def MemSize(self):
+        return self._MemSize
+
+    @MemSize.setter
+    def MemSize(self, MemSize):
+        self._MemSize = MemSize
+
+    @property
+    def Cpu(self):
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def DiskSize(self):
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+    @property
+    def MultiDisks(self):
+        return self._MultiDisks
+
+    @MultiDisks.setter
+    def MultiDisks(self, MultiDisks):
+        self._MultiDisks = MultiDisks
+
+    @property
+    def DiskCnt(self):
+        return self._DiskCnt
+
+    @DiskCnt.setter
+    def DiskCnt(self, DiskCnt):
+        self._DiskCnt = DiskCnt
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def DiskNum(self):
+        return self._DiskNum
+
+    @DiskNum.setter
+    def DiskNum(self, DiskNum):
+        self._DiskNum = DiskNum
+
+    @property
+    def LocalDiskNum(self):
+        return self._LocalDiskNum
+
+    @LocalDiskNum.setter
+    def LocalDiskNum(self, LocalDiskNum):
+        self._LocalDiskNum = LocalDiskNum
 
 
     def _deserialize(self, params):
-        self.Spec = params.get("Spec")
-        self.StorageType = params.get("StorageType")
-        self.DiskType = params.get("DiskType")
-        self.RootSize = params.get("RootSize")
-        self.MemSize = params.get("MemSize")
-        self.Cpu = params.get("Cpu")
-        self.DiskSize = params.get("DiskSize")
+        self._Spec = params.get("Spec")
+        self._StorageType = params.get("StorageType")
+        self._DiskType = params.get("DiskType")
+        self._RootSize = params.get("RootSize")
+        self._MemSize = params.get("MemSize")
+        self._Cpu = params.get("Cpu")
+        self._DiskSize = params.get("DiskSize")
         if params.get("MultiDisks") is not None:
-            self.MultiDisks = []
+            self._MultiDisks = []
             for item in params.get("MultiDisks"):
                 obj = MultiDisk()
                 obj._deserialize(item)
-                self.MultiDisks.append(obj)
-        self.DiskCnt = params.get("DiskCnt")
-        self.InstanceType = params.get("InstanceType")
+                self._MultiDisks.append(obj)
+        self._DiskCnt = params.get("DiskCnt")
+        self._InstanceType = params.get("InstanceType")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.DiskNum = params.get("DiskNum")
-        self.LocalDiskNum = params.get("LocalDiskNum")
+                self._Tags.append(obj)
+        self._DiskNum = params.get("DiskNum")
+        self._LocalDiskNum = params.get("LocalDiskNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4373,10 +8646,10 @@ class Resource(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Spec: Node specification description, such as CVM.SA2
+        :param _Spec: Node specification description, such as CVM.SA2
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Spec: str
-        :param StorageType: Storage type
+        :param _StorageType: Storage type
 Valid values:
 <li>4: SSD</li>
 <li>5: Premium Cloud Storage</li>
@@ -4385,82 +8658,179 @@ Valid values:
 <li>12: Tremendous SSD</li>
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type StorageType: int
-        :param DiskType: Disk type
+        :param _DiskType: Disk type
 Valid values:
 <li>`CLOUD_SSD`: SSD</li>
 <li>`CLOUD_PREMIUM`: Premium Cloud Storage</li>
 <li>`CLOUD_BASIC`: HDD</li>
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type DiskType: str
-        :param MemSize: Memory capacity in MB
+        :param _MemSize: Memory capacity in MB
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MemSize: int
-        :param Cpu: Number of CPU cores
+        :param _Cpu: Number of CPU cores
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Cpu: int
-        :param DiskSize: Data disk capacity
+        :param _DiskSize: Data disk capacity
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DiskSize: int
-        :param RootSize: System disk capacity
+        :param _RootSize: System disk capacity
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RootSize: int
-        :param MultiDisks: List of cloud disks. When the data disk is a cloud disk, `DiskType` and `DiskSize` are used directly; `MultiDisks` will be used for the excessive part
+        :param _MultiDisks: List of cloud disks. When the data disk is a cloud disk, `DiskType` and `DiskSize` are used directly; `MultiDisks` will be used for the excessive part
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MultiDisks: list of MultiDisk
-        :param Tags: List of tags to be bound
+        :param _Tags: List of tags to be bound
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Tags: list of Tag
-        :param InstanceType: Specification type, such as S2.MEDIUM8
+        :param _InstanceType: Specification type, such as S2.MEDIUM8
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type InstanceType: str
-        :param LocalDiskNum: Number of local disks. This field has been disused.
+        :param _LocalDiskNum: Number of local disks. This field has been disused.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type LocalDiskNum: int
-        :param DiskNum: Number of local disks, such as 2
+        :param _DiskNum: Number of local disks, such as 2
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type DiskNum: int
         """
-        self.Spec = None
-        self.StorageType = None
-        self.DiskType = None
-        self.MemSize = None
-        self.Cpu = None
-        self.DiskSize = None
-        self.RootSize = None
-        self.MultiDisks = None
-        self.Tags = None
-        self.InstanceType = None
-        self.LocalDiskNum = None
-        self.DiskNum = None
+        self._Spec = None
+        self._StorageType = None
+        self._DiskType = None
+        self._MemSize = None
+        self._Cpu = None
+        self._DiskSize = None
+        self._RootSize = None
+        self._MultiDisks = None
+        self._Tags = None
+        self._InstanceType = None
+        self._LocalDiskNum = None
+        self._DiskNum = None
+
+    @property
+    def Spec(self):
+        return self._Spec
+
+    @Spec.setter
+    def Spec(self, Spec):
+        self._Spec = Spec
+
+    @property
+    def StorageType(self):
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
+    @property
+    def DiskType(self):
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def MemSize(self):
+        return self._MemSize
+
+    @MemSize.setter
+    def MemSize(self, MemSize):
+        self._MemSize = MemSize
+
+    @property
+    def Cpu(self):
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def DiskSize(self):
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+    @property
+    def RootSize(self):
+        return self._RootSize
+
+    @RootSize.setter
+    def RootSize(self, RootSize):
+        self._RootSize = RootSize
+
+    @property
+    def MultiDisks(self):
+        return self._MultiDisks
+
+    @MultiDisks.setter
+    def MultiDisks(self, MultiDisks):
+        self._MultiDisks = MultiDisks
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def LocalDiskNum(self):
+        return self._LocalDiskNum
+
+    @LocalDiskNum.setter
+    def LocalDiskNum(self, LocalDiskNum):
+        self._LocalDiskNum = LocalDiskNum
+
+    @property
+    def DiskNum(self):
+        return self._DiskNum
+
+    @DiskNum.setter
+    def DiskNum(self, DiskNum):
+        self._DiskNum = DiskNum
 
 
     def _deserialize(self, params):
-        self.Spec = params.get("Spec")
-        self.StorageType = params.get("StorageType")
-        self.DiskType = params.get("DiskType")
-        self.MemSize = params.get("MemSize")
-        self.Cpu = params.get("Cpu")
-        self.DiskSize = params.get("DiskSize")
-        self.RootSize = params.get("RootSize")
+        self._Spec = params.get("Spec")
+        self._StorageType = params.get("StorageType")
+        self._DiskType = params.get("DiskType")
+        self._MemSize = params.get("MemSize")
+        self._Cpu = params.get("Cpu")
+        self._DiskSize = params.get("DiskSize")
+        self._RootSize = params.get("RootSize")
         if params.get("MultiDisks") is not None:
-            self.MultiDisks = []
+            self._MultiDisks = []
             for item in params.get("MultiDisks"):
                 obj = MultiDisk()
                 obj._deserialize(item)
-                self.MultiDisks.append(obj)
+                self._MultiDisks.append(obj)
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.InstanceType = params.get("InstanceType")
-        self.LocalDiskNum = params.get("LocalDiskNum")
-        self.DiskNum = params.get("DiskNum")
+                self._Tags.append(obj)
+        self._InstanceType = params.get("InstanceType")
+        self._LocalDiskNum = params.get("LocalDiskNum")
+        self._DiskNum = params.get("DiskNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4473,113 +8843,266 @@ class ScaleOutClusterRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceChargeType: The node billing mode. Valid values:
+        :param _InstanceChargeType: The node billing mode. Valid values:
 <li>`POSTPAID_BY_HOUR`: The postpaid mode by hour.</li>
 <li>`SPOTPAID`: The spot instance mode (for task nodes only).</li>
         :type InstanceChargeType: str
-        :param InstanceId: The cluster instance ID.
+        :param _InstanceId: The cluster instance ID.
         :type InstanceId: str
-        :param ScaleOutNodeConfig: The type and number of nodes to be added.
+        :param _ScaleOutNodeConfig: The type and number of nodes to be added.
         :type ScaleOutNodeConfig: :class:`tencentcloud.emr.v20190103.models.ScaleOutNodeConfig`
-        :param ClientToken: A unique random token, which is valid for 5 minutes and needs to be specified by the caller to prevent the client from repeatedly creating resources. An example value is `a9a90aa6-751a-41b6-aad6-fae36063280`.
+        :param _ClientToken: A unique random token, which is valid for 5 minutes and needs to be specified by the caller to prevent the client from repeatedly creating resources. An example value is `a9a90aa6-751a-41b6-aad6-fae36063280`.
         :type ClientToken: str
-        :param InstanceChargePrepaid: The details of the monthly subscription, including the instance period and auto-renewal. It is required if the `InstanceChargeType` is `PREPAID`.
+        :param _InstanceChargePrepaid: The details of the monthly subscription, including the instance period and auto-renewal. It is required if the `InstanceChargeType` is `PREPAID`.
         :type InstanceChargePrepaid: :class:`tencentcloud.emr.v20190103.models.InstanceChargePrepaid`
-        :param ScriptBootstrapActionConfig: The [Bootstrap action](https://intl.cloud.tencent.com/document/product/589/35656?from_cn_redirect=1) script settings.
+        :param _ScriptBootstrapActionConfig: The [Bootstrap action](https://intl.cloud.tencent.com/document/product/589/35656?from_cn_redirect=1) script settings.
         :type ScriptBootstrapActionConfig: list of ScriptBootstrapActionConfig
-        :param SoftDeployInfo: The services to be deployed for new nodes. By default, new nodes will inherit all services deployed for the current node type. Deployed services include default optional services. This parameter only supports optional services. For example, if `HDFS`, `YARN`, and `Impala` have been deployed for existing task nodes, only `HDFS` and `YARN` are passed in with this parameter if `Impala` is not deployed during the task node scale-out with API.
+        :param _SoftDeployInfo: The services to be deployed for new nodes. By default, new nodes will inherit all services deployed for the current node type. Deployed services include default optional services. This parameter only supports optional services. For example, if `HDFS`, `YARN`, and `Impala` have been deployed for existing task nodes, only `HDFS` and `YARN` are passed in with this parameter if `Impala` is not deployed during the task node scale-out with API.
         :type SoftDeployInfo: list of int
-        :param ServiceNodeInfo: The processes to be deployed. All processes for services to be added are deployed by default. Deployed processes can be changed. For example, `HDFS`, `YARN`, and `Impala` have been deployed for current task nodes, and default services are `DataNode`, `NodeManager`, and `ImpalaServer`; if you want to change deployed processes, you can set this parameter to `DataNode,NodeManager,ImpalaServerCoordinator` or `DataNode,NodeManager,ImpalaServerExecutor`.
+        :param _ServiceNodeInfo: The processes to be deployed. All processes for services to be added are deployed by default. Deployed processes can be changed. For example, `HDFS`, `YARN`, and `Impala` have been deployed for current task nodes, and default services are `DataNode`, `NodeManager`, and `ImpalaServer`; if you want to change deployed processes, you can set this parameter to `DataNode,NodeManager,ImpalaServerCoordinator` or `DataNode,NodeManager,ImpalaServerExecutor`.
         :type ServiceNodeInfo: list of int
-        :param DisasterRecoverGroupIds: The list of spread placement group IDs. Only one can be specified.
+        :param _DisasterRecoverGroupIds: The list of spread placement group IDs. Only one can be specified.
 You can call the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/document/product/213/17810?from_cn_redirect=1) API and obtain this parameter from the `DisasterRecoverGroupId` field in the response.
         :type DisasterRecoverGroupIds: list of str
-        :param Tags: The list of tags bound to added nodes.
+        :param _Tags: The list of tags bound to added nodes.
         :type Tags: list of Tag
-        :param HardwareSourceType: The type of resources to add. Valid values: `host` (general CVM resources) and `pod` (resources provided by a TKE or EKS cluster).
+        :param _HardwareSourceType: The type of resources to add. Valid values: `host` (general CVM resources) and `pod` (resources provided by a TKE or EKS cluster).
         :type HardwareSourceType: str
-        :param PodSpecInfo: The pod resource information.
+        :param _PodSpecInfo: The pod resource information.
         :type PodSpecInfo: :class:`tencentcloud.emr.v20190103.models.PodSpecInfo`
-        :param ClickHouseClusterName: The server group name selected for ClickHouse cluster scale-out.
+        :param _ClickHouseClusterName: The server group name selected for ClickHouse cluster scale-out.
         :type ClickHouseClusterName: str
-        :param ClickHouseClusterType: The server group type selected for ClickHouse cluster scale-out. Valid values: `new` (create a group) and `old` (select an existing group).
+        :param _ClickHouseClusterType: The server group type selected for ClickHouse cluster scale-out. Valid values: `new` (create a group) and `old` (select an existing group).
         :type ClickHouseClusterType: str
-        :param YarnNodeLabel: The YARN node label specified for scale-out.
+        :param _YarnNodeLabel: The YARN node label specified for scale-out.
         :type YarnNodeLabel: str
-        :param EnableStartServiceFlag: Whether to start services after scale-out.
+        :param _EnableStartServiceFlag: Whether to start services after scale-out.
 <li>`true`: Yes</li>
 <li>`false` (default): No</li>
         :type EnableStartServiceFlag: bool
-        :param ResourceSpec: The spec settings.
+        :param _ResourceSpec: The spec settings.
         :type ResourceSpec: :class:`tencentcloud.emr.v20190103.models.NodeResourceSpec`
-        :param Zone: The ID of the AZ where the instance resides, such as `ap-guangzhou-1`. You can call the [DescribeZones](https://intl.cloud.tencent.com/document/product/213/15707?from_cn_redirect=1) API and obtain this ID from the `Zone` field in the response.
+        :param _Zone: The ID of the AZ where the instance resides, such as `ap-guangzhou-1`. You can call the [DescribeZones](https://intl.cloud.tencent.com/document/product/213/15707?from_cn_redirect=1) API and obtain this ID from the `Zone` field in the response.
         :type Zone: str
-        :param SubnetId: The subnet, which defaults to the subnet used when the cluster is created.
+        :param _SubnetId: The subnet, which defaults to the subnet used when the cluster is created.
         :type SubnetId: str
         """
-        self.InstanceChargeType = None
-        self.InstanceId = None
-        self.ScaleOutNodeConfig = None
-        self.ClientToken = None
-        self.InstanceChargePrepaid = None
-        self.ScriptBootstrapActionConfig = None
-        self.SoftDeployInfo = None
-        self.ServiceNodeInfo = None
-        self.DisasterRecoverGroupIds = None
-        self.Tags = None
-        self.HardwareSourceType = None
-        self.PodSpecInfo = None
-        self.ClickHouseClusterName = None
-        self.ClickHouseClusterType = None
-        self.YarnNodeLabel = None
-        self.EnableStartServiceFlag = None
-        self.ResourceSpec = None
-        self.Zone = None
-        self.SubnetId = None
+        self._InstanceChargeType = None
+        self._InstanceId = None
+        self._ScaleOutNodeConfig = None
+        self._ClientToken = None
+        self._InstanceChargePrepaid = None
+        self._ScriptBootstrapActionConfig = None
+        self._SoftDeployInfo = None
+        self._ServiceNodeInfo = None
+        self._DisasterRecoverGroupIds = None
+        self._Tags = None
+        self._HardwareSourceType = None
+        self._PodSpecInfo = None
+        self._ClickHouseClusterName = None
+        self._ClickHouseClusterType = None
+        self._YarnNodeLabel = None
+        self._EnableStartServiceFlag = None
+        self._ResourceSpec = None
+        self._Zone = None
+        self._SubnetId = None
+
+    @property
+    def InstanceChargeType(self):
+        return self._InstanceChargeType
+
+    @InstanceChargeType.setter
+    def InstanceChargeType(self, InstanceChargeType):
+        self._InstanceChargeType = InstanceChargeType
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ScaleOutNodeConfig(self):
+        return self._ScaleOutNodeConfig
+
+    @ScaleOutNodeConfig.setter
+    def ScaleOutNodeConfig(self, ScaleOutNodeConfig):
+        self._ScaleOutNodeConfig = ScaleOutNodeConfig
+
+    @property
+    def ClientToken(self):
+        return self._ClientToken
+
+    @ClientToken.setter
+    def ClientToken(self, ClientToken):
+        self._ClientToken = ClientToken
+
+    @property
+    def InstanceChargePrepaid(self):
+        return self._InstanceChargePrepaid
+
+    @InstanceChargePrepaid.setter
+    def InstanceChargePrepaid(self, InstanceChargePrepaid):
+        self._InstanceChargePrepaid = InstanceChargePrepaid
+
+    @property
+    def ScriptBootstrapActionConfig(self):
+        return self._ScriptBootstrapActionConfig
+
+    @ScriptBootstrapActionConfig.setter
+    def ScriptBootstrapActionConfig(self, ScriptBootstrapActionConfig):
+        self._ScriptBootstrapActionConfig = ScriptBootstrapActionConfig
+
+    @property
+    def SoftDeployInfo(self):
+        return self._SoftDeployInfo
+
+    @SoftDeployInfo.setter
+    def SoftDeployInfo(self, SoftDeployInfo):
+        self._SoftDeployInfo = SoftDeployInfo
+
+    @property
+    def ServiceNodeInfo(self):
+        return self._ServiceNodeInfo
+
+    @ServiceNodeInfo.setter
+    def ServiceNodeInfo(self, ServiceNodeInfo):
+        self._ServiceNodeInfo = ServiceNodeInfo
+
+    @property
+    def DisasterRecoverGroupIds(self):
+        return self._DisasterRecoverGroupIds
+
+    @DisasterRecoverGroupIds.setter
+    def DisasterRecoverGroupIds(self, DisasterRecoverGroupIds):
+        self._DisasterRecoverGroupIds = DisasterRecoverGroupIds
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def HardwareSourceType(self):
+        return self._HardwareSourceType
+
+    @HardwareSourceType.setter
+    def HardwareSourceType(self, HardwareSourceType):
+        self._HardwareSourceType = HardwareSourceType
+
+    @property
+    def PodSpecInfo(self):
+        return self._PodSpecInfo
+
+    @PodSpecInfo.setter
+    def PodSpecInfo(self, PodSpecInfo):
+        self._PodSpecInfo = PodSpecInfo
+
+    @property
+    def ClickHouseClusterName(self):
+        return self._ClickHouseClusterName
+
+    @ClickHouseClusterName.setter
+    def ClickHouseClusterName(self, ClickHouseClusterName):
+        self._ClickHouseClusterName = ClickHouseClusterName
+
+    @property
+    def ClickHouseClusterType(self):
+        return self._ClickHouseClusterType
+
+    @ClickHouseClusterType.setter
+    def ClickHouseClusterType(self, ClickHouseClusterType):
+        self._ClickHouseClusterType = ClickHouseClusterType
+
+    @property
+    def YarnNodeLabel(self):
+        return self._YarnNodeLabel
+
+    @YarnNodeLabel.setter
+    def YarnNodeLabel(self, YarnNodeLabel):
+        self._YarnNodeLabel = YarnNodeLabel
+
+    @property
+    def EnableStartServiceFlag(self):
+        return self._EnableStartServiceFlag
+
+    @EnableStartServiceFlag.setter
+    def EnableStartServiceFlag(self, EnableStartServiceFlag):
+        self._EnableStartServiceFlag = EnableStartServiceFlag
+
+    @property
+    def ResourceSpec(self):
+        return self._ResourceSpec
+
+    @ResourceSpec.setter
+    def ResourceSpec(self, ResourceSpec):
+        self._ResourceSpec = ResourceSpec
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
 
 
     def _deserialize(self, params):
-        self.InstanceChargeType = params.get("InstanceChargeType")
-        self.InstanceId = params.get("InstanceId")
+        self._InstanceChargeType = params.get("InstanceChargeType")
+        self._InstanceId = params.get("InstanceId")
         if params.get("ScaleOutNodeConfig") is not None:
-            self.ScaleOutNodeConfig = ScaleOutNodeConfig()
-            self.ScaleOutNodeConfig._deserialize(params.get("ScaleOutNodeConfig"))
-        self.ClientToken = params.get("ClientToken")
+            self._ScaleOutNodeConfig = ScaleOutNodeConfig()
+            self._ScaleOutNodeConfig._deserialize(params.get("ScaleOutNodeConfig"))
+        self._ClientToken = params.get("ClientToken")
         if params.get("InstanceChargePrepaid") is not None:
-            self.InstanceChargePrepaid = InstanceChargePrepaid()
-            self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+            self._InstanceChargePrepaid = InstanceChargePrepaid()
+            self._InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
         if params.get("ScriptBootstrapActionConfig") is not None:
-            self.ScriptBootstrapActionConfig = []
+            self._ScriptBootstrapActionConfig = []
             for item in params.get("ScriptBootstrapActionConfig"):
                 obj = ScriptBootstrapActionConfig()
                 obj._deserialize(item)
-                self.ScriptBootstrapActionConfig.append(obj)
-        self.SoftDeployInfo = params.get("SoftDeployInfo")
-        self.ServiceNodeInfo = params.get("ServiceNodeInfo")
-        self.DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
+                self._ScriptBootstrapActionConfig.append(obj)
+        self._SoftDeployInfo = params.get("SoftDeployInfo")
+        self._ServiceNodeInfo = params.get("ServiceNodeInfo")
+        self._DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.HardwareSourceType = params.get("HardwareSourceType")
+                self._Tags.append(obj)
+        self._HardwareSourceType = params.get("HardwareSourceType")
         if params.get("PodSpecInfo") is not None:
-            self.PodSpecInfo = PodSpecInfo()
-            self.PodSpecInfo._deserialize(params.get("PodSpecInfo"))
-        self.ClickHouseClusterName = params.get("ClickHouseClusterName")
-        self.ClickHouseClusterType = params.get("ClickHouseClusterType")
-        self.YarnNodeLabel = params.get("YarnNodeLabel")
-        self.EnableStartServiceFlag = params.get("EnableStartServiceFlag")
+            self._PodSpecInfo = PodSpecInfo()
+            self._PodSpecInfo._deserialize(params.get("PodSpecInfo"))
+        self._ClickHouseClusterName = params.get("ClickHouseClusterName")
+        self._ClickHouseClusterType = params.get("ClickHouseClusterType")
+        self._YarnNodeLabel = params.get("YarnNodeLabel")
+        self._EnableStartServiceFlag = params.get("EnableStartServiceFlag")
         if params.get("ResourceSpec") is not None:
-            self.ResourceSpec = NodeResourceSpec()
-            self.ResourceSpec._deserialize(params.get("ResourceSpec"))
-        self.Zone = params.get("Zone")
-        self.SubnetId = params.get("SubnetId")
+            self._ResourceSpec = NodeResourceSpec()
+            self._ResourceSpec._deserialize(params.get("ResourceSpec"))
+        self._Zone = params.get("Zone")
+        self._SubnetId = params.get("SubnetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4592,28 +9115,60 @@ class ScaleOutClusterResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: The instance ID.
+        :param _InstanceId: The instance ID.
         :type InstanceId: str
-        :param ClientToken: The client token.
+        :param _ClientToken: The client token.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ClientToken: str
-        :param FlowId: The scale-out workflow ID.
+        :param _FlowId: The scale-out workflow ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type FlowId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.InstanceId = None
-        self.ClientToken = None
-        self.FlowId = None
-        self.RequestId = None
+        self._InstanceId = None
+        self._ClientToken = None
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ClientToken(self):
+        return self._ClientToken
+
+    @ClientToken.setter
+    def ClientToken(self, ClientToken):
+        self._ClientToken = ClientToken
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.ClientToken = params.get("ClientToken")
-        self.FlowId = params.get("FlowId")
-        self.RequestId = params.get("RequestId")
+        self._InstanceId = params.get("InstanceId")
+        self._ClientToken = params.get("ClientToken")
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
 
 
 class ScaleOutInstanceRequest(AbstractModel):
@@ -4623,140 +9178,349 @@ class ScaleOutInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TimeUnit: Time unit of scale-out. Valid values:
+        :param _TimeUnit: Time unit of scale-out. Valid values:
 <li>s: Second. When `PayMode` is 0, `TimeUnit` can only be `s`.</li>
 <li>m: Month. When `PayMode` is 1, `TimeUnit` can only be `m`.</li>
         :type TimeUnit: str
-        :param TimeSpan: Time span of scale-out, which needs to be used together with `TimeUnit`.
+        :param _TimeSpan: Time span of scale-out, which needs to be used together with `TimeUnit`.
         :type TimeSpan: int
-        :param InstanceId: Instance ID.
+        :param _InstanceId: Instance ID.
         :type InstanceId: str
-        :param PayMode: Instance billing mode. Valid value:
+        :param _PayMode: Instance billing mode. Valid value:
 <li>0: Pay-as-you-go.</li>
         :type PayMode: int
-        :param ClientToken: Client token.
+        :param _ClientToken: Client token.
         :type ClientToken: str
-        :param PreExecutedFileSettings: Bootstrap script settings.
+        :param _PreExecutedFileSettings: Bootstrap script settings.
         :type PreExecutedFileSettings: list of PreExecuteFileSettings
-        :param TaskCount: Number of task nodes to be added.
+        :param _TaskCount: Number of task nodes to be added.
         :type TaskCount: int
-        :param CoreCount: Number of core nodes to be added.
+        :param _CoreCount: Number of core nodes to be added.
         :type CoreCount: int
-        :param UnNecessaryNodeList: Processes unnecessary for scale-out.
+        :param _UnNecessaryNodeList: Processes unnecessary for scale-out.
         :type UnNecessaryNodeList: list of int non-negative
-        :param RouterCount: Number of router nodes to be added.
+        :param _RouterCount: Number of router nodes to be added.
         :type RouterCount: int
-        :param SoftDeployInfo: Deployed service.
+        :param _SoftDeployInfo: Deployed service.
 <li>`SoftDeployInfo` and `ServiceNodeInfo` are in the same group and mutually exclusive with `UnNecessaryNodeList`.</li>
 <li>The combination of `SoftDeployInfo` and `ServiceNodeInfo` is recommended.</li>
         :type SoftDeployInfo: list of int non-negative
-        :param ServiceNodeInfo: Started process.
+        :param _ServiceNodeInfo: Started process.
         :type ServiceNodeInfo: list of int non-negative
-        :param DisasterRecoverGroupIds: List of spread placement group IDs. Only one can be specified currently.
+        :param _DisasterRecoverGroupIds: List of spread placement group IDs. Only one can be specified currently.
         :type DisasterRecoverGroupIds: list of str
-        :param Tags: List of tags bound to added nodes.
+        :param _Tags: List of tags bound to added nodes.
         :type Tags: list of Tag
-        :param HardwareResourceType: Resource type selected for scaling. Valid values: `host` (general CVM resource) and `pod` (resource provided by TKE or EKS cluster).
+        :param _HardwareResourceType: Resource type selected for scaling. Valid values: `host` (general CVM resource) and `pod` (resource provided by TKE or EKS cluster).
         :type HardwareResourceType: str
-        :param PodSpec: Specified information such as pod specification and source for scale-out with pod resources.
+        :param _PodSpec: Specified information such as pod specification and source for scale-out with pod resources.
         :type PodSpec: :class:`tencentcloud.emr.v20190103.models.PodSpec`
-        :param ClickHouseClusterName: Server group name selected for ClickHouse cluster scale-out.
+        :param _ClickHouseClusterName: Server group name selected for ClickHouse cluster scale-out.
         :type ClickHouseClusterName: str
-        :param ClickHouseClusterType: Server group type selected for ClickHouse cluster scale-out. Valid values: `new` (create a group) and `old` (select an existing group).
+        :param _ClickHouseClusterType: Server group type selected for ClickHouse cluster scale-out. Valid values: `new` (create a group) and `old` (select an existing group).
         :type ClickHouseClusterType: str
-        :param YarnNodeLabel: Yarn node label specified for rule-based scale-out.
+        :param _YarnNodeLabel: Yarn node label specified for rule-based scale-out.
         :type YarnNodeLabel: str
-        :param PodParameter: Custom pod permission and parameter
+        :param _PodParameter: Custom pod permission and parameter
         :type PodParameter: :class:`tencentcloud.emr.v20190103.models.PodParameter`
-        :param MasterCount: Number of master nodes to be added.
+        :param _MasterCount: Number of master nodes to be added.
 When a ClickHouse cluster is scaled, this parameter does not take effect.
 When a Kafka cluster is scaled, this parameter does not take effect.
 When `HardwareResourceType` is `pod`, this parameter does not take effect.
         :type MasterCount: int
-        :param StartServiceAfterScaleOut: Whether to start the service after scale-out. `true`: Yes; `false`: No.
+        :param _StartServiceAfterScaleOut: Whether to start the service after scale-out. `true`: Yes; `false`: No.
         :type StartServiceAfterScaleOut: str
-        :param ZoneId: AZ, which defaults to the primary AZ of the cluster.
+        :param _ZoneId: AZ, which defaults to the primary AZ of the cluster.
         :type ZoneId: int
-        :param SubnetId: Subnet, which defaults to the subnet used when the cluster is created.
+        :param _SubnetId: Subnet, which defaults to the subnet used when the cluster is created.
         :type SubnetId: str
-        :param ScaleOutServiceConfAssign: Pre-defined configuration set
+        :param _ScaleOutServiceConfAssign: Pre-defined configuration set
         :type ScaleOutServiceConfAssign: str
-        :param AutoRenew: Whether to enable auto-renewal. Valid values: `0` (no), `1` (yes).
+        :param _AutoRenew: Whether to enable auto-renewal. Valid values: `0` (no), `1` (yes).
         :type AutoRenew: int
         """
-        self.TimeUnit = None
-        self.TimeSpan = None
-        self.InstanceId = None
-        self.PayMode = None
-        self.ClientToken = None
-        self.PreExecutedFileSettings = None
-        self.TaskCount = None
-        self.CoreCount = None
-        self.UnNecessaryNodeList = None
-        self.RouterCount = None
-        self.SoftDeployInfo = None
-        self.ServiceNodeInfo = None
-        self.DisasterRecoverGroupIds = None
-        self.Tags = None
-        self.HardwareResourceType = None
-        self.PodSpec = None
-        self.ClickHouseClusterName = None
-        self.ClickHouseClusterType = None
-        self.YarnNodeLabel = None
-        self.PodParameter = None
-        self.MasterCount = None
-        self.StartServiceAfterScaleOut = None
-        self.ZoneId = None
-        self.SubnetId = None
-        self.ScaleOutServiceConfAssign = None
-        self.AutoRenew = None
+        self._TimeUnit = None
+        self._TimeSpan = None
+        self._InstanceId = None
+        self._PayMode = None
+        self._ClientToken = None
+        self._PreExecutedFileSettings = None
+        self._TaskCount = None
+        self._CoreCount = None
+        self._UnNecessaryNodeList = None
+        self._RouterCount = None
+        self._SoftDeployInfo = None
+        self._ServiceNodeInfo = None
+        self._DisasterRecoverGroupIds = None
+        self._Tags = None
+        self._HardwareResourceType = None
+        self._PodSpec = None
+        self._ClickHouseClusterName = None
+        self._ClickHouseClusterType = None
+        self._YarnNodeLabel = None
+        self._PodParameter = None
+        self._MasterCount = None
+        self._StartServiceAfterScaleOut = None
+        self._ZoneId = None
+        self._SubnetId = None
+        self._ScaleOutServiceConfAssign = None
+        self._AutoRenew = None
+
+    @property
+    def TimeUnit(self):
+        return self._TimeUnit
+
+    @TimeUnit.setter
+    def TimeUnit(self, TimeUnit):
+        self._TimeUnit = TimeUnit
+
+    @property
+    def TimeSpan(self):
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def ClientToken(self):
+        return self._ClientToken
+
+    @ClientToken.setter
+    def ClientToken(self, ClientToken):
+        self._ClientToken = ClientToken
+
+    @property
+    def PreExecutedFileSettings(self):
+        return self._PreExecutedFileSettings
+
+    @PreExecutedFileSettings.setter
+    def PreExecutedFileSettings(self, PreExecutedFileSettings):
+        self._PreExecutedFileSettings = PreExecutedFileSettings
+
+    @property
+    def TaskCount(self):
+        return self._TaskCount
+
+    @TaskCount.setter
+    def TaskCount(self, TaskCount):
+        self._TaskCount = TaskCount
+
+    @property
+    def CoreCount(self):
+        return self._CoreCount
+
+    @CoreCount.setter
+    def CoreCount(self, CoreCount):
+        self._CoreCount = CoreCount
+
+    @property
+    def UnNecessaryNodeList(self):
+        return self._UnNecessaryNodeList
+
+    @UnNecessaryNodeList.setter
+    def UnNecessaryNodeList(self, UnNecessaryNodeList):
+        self._UnNecessaryNodeList = UnNecessaryNodeList
+
+    @property
+    def RouterCount(self):
+        return self._RouterCount
+
+    @RouterCount.setter
+    def RouterCount(self, RouterCount):
+        self._RouterCount = RouterCount
+
+    @property
+    def SoftDeployInfo(self):
+        return self._SoftDeployInfo
+
+    @SoftDeployInfo.setter
+    def SoftDeployInfo(self, SoftDeployInfo):
+        self._SoftDeployInfo = SoftDeployInfo
+
+    @property
+    def ServiceNodeInfo(self):
+        return self._ServiceNodeInfo
+
+    @ServiceNodeInfo.setter
+    def ServiceNodeInfo(self, ServiceNodeInfo):
+        self._ServiceNodeInfo = ServiceNodeInfo
+
+    @property
+    def DisasterRecoverGroupIds(self):
+        return self._DisasterRecoverGroupIds
+
+    @DisasterRecoverGroupIds.setter
+    def DisasterRecoverGroupIds(self, DisasterRecoverGroupIds):
+        self._DisasterRecoverGroupIds = DisasterRecoverGroupIds
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def HardwareResourceType(self):
+        return self._HardwareResourceType
+
+    @HardwareResourceType.setter
+    def HardwareResourceType(self, HardwareResourceType):
+        self._HardwareResourceType = HardwareResourceType
+
+    @property
+    def PodSpec(self):
+        return self._PodSpec
+
+    @PodSpec.setter
+    def PodSpec(self, PodSpec):
+        self._PodSpec = PodSpec
+
+    @property
+    def ClickHouseClusterName(self):
+        return self._ClickHouseClusterName
+
+    @ClickHouseClusterName.setter
+    def ClickHouseClusterName(self, ClickHouseClusterName):
+        self._ClickHouseClusterName = ClickHouseClusterName
+
+    @property
+    def ClickHouseClusterType(self):
+        return self._ClickHouseClusterType
+
+    @ClickHouseClusterType.setter
+    def ClickHouseClusterType(self, ClickHouseClusterType):
+        self._ClickHouseClusterType = ClickHouseClusterType
+
+    @property
+    def YarnNodeLabel(self):
+        return self._YarnNodeLabel
+
+    @YarnNodeLabel.setter
+    def YarnNodeLabel(self, YarnNodeLabel):
+        self._YarnNodeLabel = YarnNodeLabel
+
+    @property
+    def PodParameter(self):
+        return self._PodParameter
+
+    @PodParameter.setter
+    def PodParameter(self, PodParameter):
+        self._PodParameter = PodParameter
+
+    @property
+    def MasterCount(self):
+        return self._MasterCount
+
+    @MasterCount.setter
+    def MasterCount(self, MasterCount):
+        self._MasterCount = MasterCount
+
+    @property
+    def StartServiceAfterScaleOut(self):
+        return self._StartServiceAfterScaleOut
+
+    @StartServiceAfterScaleOut.setter
+    def StartServiceAfterScaleOut(self, StartServiceAfterScaleOut):
+        self._StartServiceAfterScaleOut = StartServiceAfterScaleOut
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def ScaleOutServiceConfAssign(self):
+        return self._ScaleOutServiceConfAssign
+
+    @ScaleOutServiceConfAssign.setter
+    def ScaleOutServiceConfAssign(self, ScaleOutServiceConfAssign):
+        self._ScaleOutServiceConfAssign = ScaleOutServiceConfAssign
+
+    @property
+    def AutoRenew(self):
+        return self._AutoRenew
+
+    @AutoRenew.setter
+    def AutoRenew(self, AutoRenew):
+        self._AutoRenew = AutoRenew
 
 
     def _deserialize(self, params):
-        self.TimeUnit = params.get("TimeUnit")
-        self.TimeSpan = params.get("TimeSpan")
-        self.InstanceId = params.get("InstanceId")
-        self.PayMode = params.get("PayMode")
-        self.ClientToken = params.get("ClientToken")
+        self._TimeUnit = params.get("TimeUnit")
+        self._TimeSpan = params.get("TimeSpan")
+        self._InstanceId = params.get("InstanceId")
+        self._PayMode = params.get("PayMode")
+        self._ClientToken = params.get("ClientToken")
         if params.get("PreExecutedFileSettings") is not None:
-            self.PreExecutedFileSettings = []
+            self._PreExecutedFileSettings = []
             for item in params.get("PreExecutedFileSettings"):
                 obj = PreExecuteFileSettings()
                 obj._deserialize(item)
-                self.PreExecutedFileSettings.append(obj)
-        self.TaskCount = params.get("TaskCount")
-        self.CoreCount = params.get("CoreCount")
-        self.UnNecessaryNodeList = params.get("UnNecessaryNodeList")
-        self.RouterCount = params.get("RouterCount")
-        self.SoftDeployInfo = params.get("SoftDeployInfo")
-        self.ServiceNodeInfo = params.get("ServiceNodeInfo")
-        self.DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
+                self._PreExecutedFileSettings.append(obj)
+        self._TaskCount = params.get("TaskCount")
+        self._CoreCount = params.get("CoreCount")
+        self._UnNecessaryNodeList = params.get("UnNecessaryNodeList")
+        self._RouterCount = params.get("RouterCount")
+        self._SoftDeployInfo = params.get("SoftDeployInfo")
+        self._ServiceNodeInfo = params.get("ServiceNodeInfo")
+        self._DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.HardwareResourceType = params.get("HardwareResourceType")
+                self._Tags.append(obj)
+        self._HardwareResourceType = params.get("HardwareResourceType")
         if params.get("PodSpec") is not None:
-            self.PodSpec = PodSpec()
-            self.PodSpec._deserialize(params.get("PodSpec"))
-        self.ClickHouseClusterName = params.get("ClickHouseClusterName")
-        self.ClickHouseClusterType = params.get("ClickHouseClusterType")
-        self.YarnNodeLabel = params.get("YarnNodeLabel")
+            self._PodSpec = PodSpec()
+            self._PodSpec._deserialize(params.get("PodSpec"))
+        self._ClickHouseClusterName = params.get("ClickHouseClusterName")
+        self._ClickHouseClusterType = params.get("ClickHouseClusterType")
+        self._YarnNodeLabel = params.get("YarnNodeLabel")
         if params.get("PodParameter") is not None:
-            self.PodParameter = PodParameter()
-            self.PodParameter._deserialize(params.get("PodParameter"))
-        self.MasterCount = params.get("MasterCount")
-        self.StartServiceAfterScaleOut = params.get("StartServiceAfterScaleOut")
-        self.ZoneId = params.get("ZoneId")
-        self.SubnetId = params.get("SubnetId")
-        self.ScaleOutServiceConfAssign = params.get("ScaleOutServiceConfAssign")
-        self.AutoRenew = params.get("AutoRenew")
+            self._PodParameter = PodParameter()
+            self._PodParameter._deserialize(params.get("PodParameter"))
+        self._MasterCount = params.get("MasterCount")
+        self._StartServiceAfterScaleOut = params.get("StartServiceAfterScaleOut")
+        self._ZoneId = params.get("ZoneId")
+        self._SubnetId = params.get("SubnetId")
+        self._ScaleOutServiceConfAssign = params.get("ScaleOutServiceConfAssign")
+        self._AutoRenew = params.get("AutoRenew")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4769,38 +9533,86 @@ class ScaleOutInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance ID.
+        :param _InstanceId: Instance ID.
         :type InstanceId: str
-        :param DealNames: Order number.
+        :param _DealNames: Order number.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DealNames: list of str
-        :param ClientToken: Client token.
+        :param _ClientToken: Client token.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ClientToken: str
-        :param FlowId: Scale-out workflow ID.
+        :param _FlowId: Scale-out workflow ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type FlowId: int
-        :param BillId: Big order ID.
+        :param _BillId: Big order ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type BillId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.InstanceId = None
-        self.DealNames = None
-        self.ClientToken = None
-        self.FlowId = None
-        self.BillId = None
-        self.RequestId = None
+        self._InstanceId = None
+        self._DealNames = None
+        self._ClientToken = None
+        self._FlowId = None
+        self._BillId = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DealNames(self):
+        return self._DealNames
+
+    @DealNames.setter
+    def DealNames(self, DealNames):
+        self._DealNames = DealNames
+
+    @property
+    def ClientToken(self):
+        return self._ClientToken
+
+    @ClientToken.setter
+    def ClientToken(self, ClientToken):
+        self._ClientToken = ClientToken
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def BillId(self):
+        return self._BillId
+
+    @BillId.setter
+    def BillId(self, BillId):
+        self._BillId = BillId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.DealNames = params.get("DealNames")
-        self.ClientToken = params.get("ClientToken")
-        self.FlowId = params.get("FlowId")
-        self.BillId = params.get("BillId")
-        self.RequestId = params.get("RequestId")
+        self._InstanceId = params.get("InstanceId")
+        self._DealNames = params.get("DealNames")
+        self._ClientToken = params.get("ClientToken")
+        self._FlowId = params.get("FlowId")
+        self._BillId = params.get("BillId")
+        self._RequestId = params.get("RequestId")
 
 
 class ScaleOutNodeConfig(AbstractModel):
@@ -4810,26 +9622,43 @@ class ScaleOutNodeConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NodeFlag: Valid values of node type:
+        :param _NodeFlag: Valid values of node type:
   <li>MASTER</li>
   <li>TASK</li>
   <li>CORE</li>
   <li>ROUTER</li>
         :type NodeFlag: str
-        :param NodeCount: The number of nodes.
+        :param _NodeCount: The number of nodes.
         :type NodeCount: int
         """
-        self.NodeFlag = None
-        self.NodeCount = None
+        self._NodeFlag = None
+        self._NodeCount = None
+
+    @property
+    def NodeFlag(self):
+        return self._NodeFlag
+
+    @NodeFlag.setter
+    def NodeFlag(self, NodeFlag):
+        self._NodeFlag = NodeFlag
+
+    @property
+    def NodeCount(self):
+        return self._NodeCount
+
+    @NodeCount.setter
+    def NodeCount(self, NodeCount):
+        self._NodeCount = NodeCount
 
 
     def _deserialize(self, params):
-        self.NodeFlag = params.get("NodeFlag")
-        self.NodeCount = params.get("NodeCount")
+        self._NodeFlag = params.get("NodeFlag")
+        self._NodeCount = params.get("NodeCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4842,10 +9671,10 @@ class SceneSoftwareConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Software: The list of deployed components. The list of component options varies by `ProductVersion` (EMR version). For more information, see [Component Version](https://intl.cloud.tencent.com/document/product/589/20279?from_cn_redirect=1).
+        :param _Software: The list of deployed components. The list of component options varies by `ProductVersion` (EMR version). For more information, see [Component Version](https://intl.cloud.tencent.com/document/product/589/20279?from_cn_redirect=1).
 The instance type, `hive` or `flink`.
         :type Software: list of str
-        :param SceneName: The scenario name, which defaults to `Hadoop-Default`. For more details, see [here](https://intl.cloud.tencent.com/document/product/589/14624?from_cn_redirect=1). Valid values:
+        :param _SceneName: The scenario name, which defaults to `Hadoop-Default`. For more details, see [here](https://intl.cloud.tencent.com/document/product/589/14624?from_cn_redirect=1). Valid values:
 Hadoop-Kudu
 Hadoop-Zookeeper
 Hadoop-Presto
@@ -4853,17 +9682,34 @@ Hadoop-Hbase
 Hadoop-Default
         :type SceneName: str
         """
-        self.Software = None
-        self.SceneName = None
+        self._Software = None
+        self._SceneName = None
+
+    @property
+    def Software(self):
+        return self._Software
+
+    @Software.setter
+    def Software(self, Software):
+        self._Software = Software
+
+    @property
+    def SceneName(self):
+        return self._SceneName
+
+    @SceneName.setter
+    def SceneName(self, SceneName):
+        self._SceneName = SceneName
 
 
     def _deserialize(self, params):
-        self.Software = params.get("Software")
-        self.SceneName = params.get("SceneName")
+        self._Software = params.get("Software")
+        self._SceneName = params.get("SceneName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4876,33 +9722,66 @@ class ScriptBootstrapActionConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CosFileURI: The COS URL of the script, in the format of `https://beijing-111111.cos.ap-beijing.myqcloud.com/data/test.sh`. For the COS bucket list, see [Bucket List](https://console.cloud.tencent.com/cos/bucket).
+        :param _CosFileURI: The COS URL of the script, in the format of `https://beijing-111111.cos.ap-beijing.myqcloud.com/data/test.sh`. For the COS bucket list, see [Bucket List](https://console.cloud.tencent.com/cos/bucket).
         :type CosFileURI: str
-        :param ExecutionMoment: The execution time of the bootstrap action script. Valid values:
+        :param _ExecutionMoment: The execution time of the bootstrap action script. Valid values:
 <li>`resourceAfter`: After node initialization</li>
 <li>`clusterAfter`: After cluster start</li>
 <li>`clusterBefore`: Before cluster start</li>
         :type ExecutionMoment: str
-        :param Args: The execution script parameter. The parameter format must comply with standard shell specifications.
+        :param _Args: The execution script parameter. The parameter format must comply with standard shell specifications.
         :type Args: list of str
-        :param CosFileName: The script file name.
+        :param _CosFileName: The script file name.
         :type CosFileName: str
         """
-        self.CosFileURI = None
-        self.ExecutionMoment = None
-        self.Args = None
-        self.CosFileName = None
+        self._CosFileURI = None
+        self._ExecutionMoment = None
+        self._Args = None
+        self._CosFileName = None
+
+    @property
+    def CosFileURI(self):
+        return self._CosFileURI
+
+    @CosFileURI.setter
+    def CosFileURI(self, CosFileURI):
+        self._CosFileURI = CosFileURI
+
+    @property
+    def ExecutionMoment(self):
+        return self._ExecutionMoment
+
+    @ExecutionMoment.setter
+    def ExecutionMoment(self, ExecutionMoment):
+        self._ExecutionMoment = ExecutionMoment
+
+    @property
+    def Args(self):
+        return self._Args
+
+    @Args.setter
+    def Args(self, Args):
+        self._Args = Args
+
+    @property
+    def CosFileName(self):
+        return self._CosFileName
+
+    @CosFileName.setter
+    def CosFileName(self, CosFileName):
+        self._CosFileName = CosFileName
 
 
     def _deserialize(self, params):
-        self.CosFileURI = params.get("CosFileURI")
-        self.ExecutionMoment = params.get("ExecutionMoment")
-        self.Args = params.get("Args")
-        self.CosFileName = params.get("CosFileName")
+        self._CosFileURI = params.get("CosFileURI")
+        self._ExecutionMoment = params.get("ExecutionMoment")
+        self._Args = params.get("Args")
+        self._CosFileName = params.get("CosFileName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4915,22 +9794,39 @@ class SearchItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SearchType: Searchable type
+        :param _SearchType: Searchable type
         :type SearchType: str
-        :param SearchValue: Searchable value
+        :param _SearchValue: Searchable value
         :type SearchValue: str
         """
-        self.SearchType = None
-        self.SearchValue = None
+        self._SearchType = None
+        self._SearchValue = None
+
+    @property
+    def SearchType(self):
+        return self._SearchType
+
+    @SearchType.setter
+    def SearchType(self, SearchType):
+        self._SearchType = SearchType
+
+    @property
+    def SearchValue(self):
+        return self._SearchValue
+
+    @SearchValue.setter
+    def SearchValue(self, SearchValue):
+        self._SearchValue = SearchValue
 
 
     def _deserialize(self, params):
-        self.SearchType = params.get("SearchType")
-        self.SearchValue = params.get("SearchValue")
+        self._SearchType = params.get("SearchType")
+        self._SearchValue = params.get("SearchValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4943,27 +9839,44 @@ class ServiceBasicRestartInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceName: The service name (required), such as HDFS.
+        :param _ServiceName: The service name (required), such as HDFS.
         :type ServiceName: str
-        :param ComponentInfoList: If it is left empty, all processes will be operated on.
+        :param _ComponentInfoList: If it is left empty, all processes will be operated on.
         :type ComponentInfoList: list of ComponentBasicRestartInfo
         """
-        self.ServiceName = None
-        self.ComponentInfoList = None
+        self._ServiceName = None
+        self._ComponentInfoList = None
+
+    @property
+    def ServiceName(self):
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def ComponentInfoList(self):
+        return self._ComponentInfoList
+
+    @ComponentInfoList.setter
+    def ComponentInfoList(self, ComponentInfoList):
+        self._ComponentInfoList = ComponentInfoList
 
 
     def _deserialize(self, params):
-        self.ServiceName = params.get("ServiceName")
+        self._ServiceName = params.get("ServiceName")
         if params.get("ComponentInfoList") is not None:
-            self.ComponentInfoList = []
+            self._ComponentInfoList = []
             for item in params.get("ComponentInfoList"):
                 obj = ComponentBasicRestartInfo()
                 obj._deserialize(item)
-                self.ComponentInfoList.append(obj)
+                self._ComponentInfoList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4976,24 +9889,41 @@ class ShortNodeInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NodeType: Node type: Master/Core/Task/Router/Common
+        :param _NodeType: Node type: Master/Core/Task/Router/Common
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type NodeType: str
-        :param NodeSize: Number of nodes
+        :param _NodeSize: Number of nodes
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type NodeSize: int
         """
-        self.NodeType = None
-        self.NodeSize = None
+        self._NodeType = None
+        self._NodeSize = None
+
+    @property
+    def NodeType(self):
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def NodeSize(self):
+        return self._NodeSize
+
+    @NodeSize.setter
+    def NodeSize(self, NodeSize):
+        self._NodeSize = NodeSize
 
 
     def _deserialize(self, params):
-        self.NodeType = params.get("NodeType")
-        self.NodeSize = params.get("NodeSize")
+        self._NodeType = params.get("NodeType")
+        self._NodeSize = params.get("NodeSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5006,22 +9936,39 @@ class SoftDependInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SoftName: The component name.
+        :param _SoftName: The component name.
         :type SoftName: str
-        :param Required: Whether the component is required.
+        :param _Required: Whether the component is required.
         :type Required: bool
         """
-        self.SoftName = None
-        self.Required = None
+        self._SoftName = None
+        self._Required = None
+
+    @property
+    def SoftName(self):
+        return self._SoftName
+
+    @SoftName.setter
+    def SoftName(self, SoftName):
+        self._SoftName = SoftName
+
+    @property
+    def Required(self):
+        return self._Required
+
+    @Required.setter
+    def Required(self, Required):
+        self._Required = Required
 
 
     def _deserialize(self, params):
-        self.SoftName = params.get("SoftName")
-        self.Required = params.get("Required")
+        self._SoftName = params.get("SoftName")
+        self._Required = params.get("Required")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5034,39 +9981,72 @@ class StartStopServiceOrMonitorRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: The cluster ID.
+        :param _InstanceId: The cluster ID.
         :type InstanceId: str
-        :param OpType: The operation type. Valid values:
+        :param _OpType: The operation type. Valid values:
 <li>StartService: Start service</li>
 <li>StopService: Stop service</li>
 <li>StartMonitor: Start maintenance</li>
 <li>StopMonitor: Stop maintenance</li>
 <li>RestartService: Restart service. If this type is selected, "StrategyConfig" is required.</li>
         :type OpType: str
-        :param OpScope: The operation scope.
+        :param _OpScope: The operation scope.
         :type OpScope: :class:`tencentcloud.emr.v20190103.models.OpScope`
-        :param StrategyConfig: The operation policy.
+        :param _StrategyConfig: The operation policy.
         :type StrategyConfig: :class:`tencentcloud.emr.v20190103.models.StrategyConfig`
         """
-        self.InstanceId = None
-        self.OpType = None
-        self.OpScope = None
-        self.StrategyConfig = None
+        self._InstanceId = None
+        self._OpType = None
+        self._OpScope = None
+        self._StrategyConfig = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def OpType(self):
+        return self._OpType
+
+    @OpType.setter
+    def OpType(self, OpType):
+        self._OpType = OpType
+
+    @property
+    def OpScope(self):
+        return self._OpScope
+
+    @OpScope.setter
+    def OpScope(self, OpScope):
+        self._OpScope = OpScope
+
+    @property
+    def StrategyConfig(self):
+        return self._StrategyConfig
+
+    @StrategyConfig.setter
+    def StrategyConfig(self, StrategyConfig):
+        self._StrategyConfig = StrategyConfig
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.OpType = params.get("OpType")
+        self._InstanceId = params.get("InstanceId")
+        self._OpType = params.get("OpType")
         if params.get("OpScope") is not None:
-            self.OpScope = OpScope()
-            self.OpScope._deserialize(params.get("OpScope"))
+            self._OpScope = OpScope()
+            self._OpScope._deserialize(params.get("OpScope"))
         if params.get("StrategyConfig") is not None:
-            self.StrategyConfig = StrategyConfig()
-            self.StrategyConfig._deserialize(params.get("StrategyConfig"))
+            self._StrategyConfig = StrategyConfig()
+            self._StrategyConfig._deserialize(params.get("StrategyConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5079,14 +10059,22 @@ class StartStopServiceOrMonitorResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class StrategyConfig(AbstractModel):
@@ -5096,35 +10084,68 @@ class StrategyConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RollingRestartSwitch: `0`: Disable rolling restart
+        :param _RollingRestartSwitch: `0`: Disable rolling restart
 `1`: Enable rolling restart
 Note: This field may return null, indicating that no valid values can be obtained.
         :type RollingRestartSwitch: int
-        :param BatchSize: The number of nodes to be restarted per batch in rolling restart, with a maximum value of 99,999.
+        :param _BatchSize: The number of nodes to be restarted per batch in rolling restart, with a maximum value of 99,999.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type BatchSize: int
-        :param TimeWait: The wait time (in seconds) per batch in rolling restart, with a maximum value of 5 minutes.
+        :param _TimeWait: The wait time (in seconds) per batch in rolling restart, with a maximum value of 5 minutes.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TimeWait: int
-        :param DealOnFail: The failure handling policy. Valid values: `0` (blocks the process) and `1` (skips).
+        :param _DealOnFail: The failure handling policy. Valid values: `0` (blocks the process) and `1` (skips).
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DealOnFail: int
         """
-        self.RollingRestartSwitch = None
-        self.BatchSize = None
-        self.TimeWait = None
-        self.DealOnFail = None
+        self._RollingRestartSwitch = None
+        self._BatchSize = None
+        self._TimeWait = None
+        self._DealOnFail = None
+
+    @property
+    def RollingRestartSwitch(self):
+        return self._RollingRestartSwitch
+
+    @RollingRestartSwitch.setter
+    def RollingRestartSwitch(self, RollingRestartSwitch):
+        self._RollingRestartSwitch = RollingRestartSwitch
+
+    @property
+    def BatchSize(self):
+        return self._BatchSize
+
+    @BatchSize.setter
+    def BatchSize(self, BatchSize):
+        self._BatchSize = BatchSize
+
+    @property
+    def TimeWait(self):
+        return self._TimeWait
+
+    @TimeWait.setter
+    def TimeWait(self, TimeWait):
+        self._TimeWait = TimeWait
+
+    @property
+    def DealOnFail(self):
+        return self._DealOnFail
+
+    @DealOnFail.setter
+    def DealOnFail(self, DealOnFail):
+        self._DealOnFail = DealOnFail
 
 
     def _deserialize(self, params):
-        self.RollingRestartSwitch = params.get("RollingRestartSwitch")
-        self.BatchSize = params.get("BatchSize")
-        self.TimeWait = params.get("TimeWait")
-        self.DealOnFail = params.get("DealOnFail")
+        self._RollingRestartSwitch = params.get("RollingRestartSwitch")
+        self._BatchSize = params.get("BatchSize")
+        self._TimeWait = params.get("TimeWait")
+        self._DealOnFail = params.get("DealOnFail")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5137,24 +10158,41 @@ class SubnetInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubnetName: Subnet information (name)
+        :param _SubnetName: Subnet information (name)
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type SubnetName: str
-        :param SubnetId: Subnet information (ID)
+        :param _SubnetId: Subnet information (ID)
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type SubnetId: str
         """
-        self.SubnetName = None
-        self.SubnetId = None
+        self._SubnetName = None
+        self._SubnetId = None
+
+    @property
+    def SubnetName(self):
+        return self._SubnetName
+
+    @SubnetName.setter
+    def SubnetName(self, SubnetName):
+        self._SubnetName = SubnetName
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
 
 
     def _deserialize(self, params):
-        self.SubnetName = params.get("SubnetName")
-        self.SubnetId = params.get("SubnetId")
+        self._SubnetName = params.get("SubnetName")
+        self._SubnetId = params.get("SubnetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5167,22 +10205,39 @@ class Tag(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TagKey: Tag key
+        :param _TagKey: Tag key
         :type TagKey: str
-        :param TagValue: Tag value
+        :param _TagValue: Tag value
         :type TagValue: str
         """
-        self.TagKey = None
-        self.TagValue = None
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
 
 
     def _deserialize(self, params):
-        self.TagKey = params.get("TagKey")
-        self.TagValue = params.get("TagValue")
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5195,40 +10250,81 @@ class TerminateClusterNodesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: The instance ID.
+        :param _InstanceId: The instance ID.
         :type InstanceId: str
-        :param CvmInstanceIds: The list of resources to be terminated.
+        :param _CvmInstanceIds: The list of resources to be terminated.
         :type CvmInstanceIds: list of str
-        :param NodeFlag: Valid values of node type:
+        :param _NodeFlag: Valid values of node type:
   <li>MASTER</li>
   <li>TASK</li>
   <li>CORE</li>
   <li>ROUTER</li>
         :type NodeFlag: str
-        :param GraceDownFlag: The graceful scale-in feature. Valid values:
+        :param _GraceDownFlag: The graceful scale-in feature. Valid values:
   <li>`true`: Enabled.</li>
   <li>`false`: Disabled.</li>
         :type GraceDownFlag: bool
-        :param GraceDownTime: The graceful scale-in wait time in seconds. Value range: 60–1800.
+        :param _GraceDownTime: The graceful scale-in wait time in seconds. Value range: 60–1800.
         :type GraceDownTime: int
         """
-        self.InstanceId = None
-        self.CvmInstanceIds = None
-        self.NodeFlag = None
-        self.GraceDownFlag = None
-        self.GraceDownTime = None
+        self._InstanceId = None
+        self._CvmInstanceIds = None
+        self._NodeFlag = None
+        self._GraceDownFlag = None
+        self._GraceDownTime = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def CvmInstanceIds(self):
+        return self._CvmInstanceIds
+
+    @CvmInstanceIds.setter
+    def CvmInstanceIds(self, CvmInstanceIds):
+        self._CvmInstanceIds = CvmInstanceIds
+
+    @property
+    def NodeFlag(self):
+        return self._NodeFlag
+
+    @NodeFlag.setter
+    def NodeFlag(self, NodeFlag):
+        self._NodeFlag = NodeFlag
+
+    @property
+    def GraceDownFlag(self):
+        return self._GraceDownFlag
+
+    @GraceDownFlag.setter
+    def GraceDownFlag(self, GraceDownFlag):
+        self._GraceDownFlag = GraceDownFlag
+
+    @property
+    def GraceDownTime(self):
+        return self._GraceDownTime
+
+    @GraceDownTime.setter
+    def GraceDownTime(self, GraceDownTime):
+        self._GraceDownTime = GraceDownTime
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.CvmInstanceIds = params.get("CvmInstanceIds")
-        self.NodeFlag = params.get("NodeFlag")
-        self.GraceDownFlag = params.get("GraceDownFlag")
-        self.GraceDownTime = params.get("GraceDownTime")
+        self._InstanceId = params.get("InstanceId")
+        self._CvmInstanceIds = params.get("CvmInstanceIds")
+        self._NodeFlag = params.get("NodeFlag")
+        self._GraceDownFlag = params.get("GraceDownFlag")
+        self._GraceDownTime = params.get("GraceDownTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5241,18 +10337,34 @@ class TerminateClusterNodesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowId: The scale-in process ID.
+        :param _FlowId: The scale-in process ID.
         :type FlowId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.FlowId = None
-        self.RequestId = None
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.FlowId = params.get("FlowId")
-        self.RequestId = params.get("RequestId")
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
 
 
 class TerminateInstanceRequest(AbstractModel):
@@ -5262,22 +10374,39 @@ class TerminateInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance ID.
+        :param _InstanceId: Instance ID.
         :type InstanceId: str
-        :param ResourceIds: ID of terminated node. This parameter is reserved and does not need to be configured.
+        :param _ResourceIds: ID of terminated node. This parameter is reserved and does not need to be configured.
         :type ResourceIds: list of str
         """
-        self.InstanceId = None
-        self.ResourceIds = None
+        self._InstanceId = None
+        self._ResourceIds = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ResourceIds(self):
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.ResourceIds = params.get("ResourceIds")
+        self._InstanceId = params.get("InstanceId")
+        self._ResourceIds = params.get("ResourceIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5290,14 +10419,22 @@ class TerminateInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class TerminateTasksRequest(AbstractModel):
@@ -5307,22 +10444,39 @@ class TerminateTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance ID.
+        :param _InstanceId: Instance ID.
         :type InstanceId: str
-        :param ResourceIds: List of resource IDs of the node to be terminated. The resource ID is in the format of `emr-vm-xxxxxxxx`. A valid resource ID can be queried in the [console](https://console.cloud.tencent.com/emr/static/hardware).
+        :param _ResourceIds: List of resource IDs of the node to be terminated. The resource ID is in the format of `emr-vm-xxxxxxxx`. A valid resource ID can be queried in the [console](https://console.cloud.tencent.com/emr/static/hardware).
         :type ResourceIds: list of str
         """
-        self.InstanceId = None
-        self.ResourceIds = None
+        self._InstanceId = None
+        self._ResourceIds = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ResourceIds(self):
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.ResourceIds = params.get("ResourceIds")
+        self._InstanceId = params.get("InstanceId")
+        self._ResourceIds = params.get("ResourceIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5335,14 +10489,22 @@ class TerminateTasksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class TopologyInfo(AbstractModel):
@@ -5352,44 +10514,77 @@ class TopologyInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ZoneId: AZ ID
+        :param _ZoneId: AZ ID
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type ZoneId: int
-        :param Zone: AZ information
+        :param _Zone: AZ information
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type Zone: str
-        :param SubnetInfoList: Subnet information
+        :param _SubnetInfoList: Subnet information
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type SubnetInfoList: list of SubnetInfo
-        :param NodeInfoList: Node information
+        :param _NodeInfoList: Node information
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type NodeInfoList: list of ShortNodeInfo
         """
-        self.ZoneId = None
-        self.Zone = None
-        self.SubnetInfoList = None
-        self.NodeInfoList = None
+        self._ZoneId = None
+        self._Zone = None
+        self._SubnetInfoList = None
+        self._NodeInfoList = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def SubnetInfoList(self):
+        return self._SubnetInfoList
+
+    @SubnetInfoList.setter
+    def SubnetInfoList(self, SubnetInfoList):
+        self._SubnetInfoList = SubnetInfoList
+
+    @property
+    def NodeInfoList(self):
+        return self._NodeInfoList
+
+    @NodeInfoList.setter
+    def NodeInfoList(self, NodeInfoList):
+        self._NodeInfoList = NodeInfoList
 
 
     def _deserialize(self, params):
-        self.ZoneId = params.get("ZoneId")
-        self.Zone = params.get("Zone")
+        self._ZoneId = params.get("ZoneId")
+        self._Zone = params.get("Zone")
         if params.get("SubnetInfoList") is not None:
-            self.SubnetInfoList = []
+            self._SubnetInfoList = []
             for item in params.get("SubnetInfoList"):
                 obj = SubnetInfo()
                 obj._deserialize(item)
-                self.SubnetInfoList.append(obj)
+                self._SubnetInfoList.append(obj)
         if params.get("NodeInfoList") is not None:
-            self.NodeInfoList = []
+            self._NodeInfoList = []
             for item in params.get("NodeInfoList"):
                 obj = ShortNodeInfo()
                 obj._deserialize(item)
-                self.NodeInfoList.append(obj)
+                self._NodeInfoList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5402,30 +10597,63 @@ class UpdateInstanceSettings(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Memory: Memory capacity in GB
+        :param _Memory: Memory capacity in GB
         :type Memory: int
-        :param CPUCores: Number of CPU cores
+        :param _CPUCores: Number of CPU cores
         :type CPUCores: int
-        :param ResourceId: Machine resource ID (EMR resource identifier)
+        :param _ResourceId: Machine resource ID (EMR resource identifier)
         :type ResourceId: str
-        :param InstanceType: Target machine specification
+        :param _InstanceType: Target machine specification
         :type InstanceType: str
         """
-        self.Memory = None
-        self.CPUCores = None
-        self.ResourceId = None
-        self.InstanceType = None
+        self._Memory = None
+        self._CPUCores = None
+        self._ResourceId = None
+        self._InstanceType = None
+
+    @property
+    def Memory(self):
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def CPUCores(self):
+        return self._CPUCores
+
+    @CPUCores.setter
+    def CPUCores(self, CPUCores):
+        self._CPUCores = CPUCores
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
 
 
     def _deserialize(self, params):
-        self.Memory = params.get("Memory")
-        self.CPUCores = params.get("CPUCores")
-        self.ResourceId = params.get("ResourceId")
-        self.InstanceType = params.get("InstanceType")
+        self._Memory = params.get("Memory")
+        self._CPUCores = params.get("CPUCores")
+        self._ResourceId = params.get("ResourceId")
+        self._InstanceType = params.get("InstanceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5438,30 +10666,63 @@ class UserInfoForUserManager(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserName: Username
+        :param _UserName: Username
         :type UserName: str
-        :param UserGroup: The group to which the user belongs
+        :param _UserGroup: The group to which the user belongs
         :type UserGroup: str
-        :param PassWord: 
+        :param _PassWord: 
         :type PassWord: str
-        :param ReMark: 
+        :param _ReMark: 
         :type ReMark: str
         """
-        self.UserName = None
-        self.UserGroup = None
-        self.PassWord = None
-        self.ReMark = None
+        self._UserName = None
+        self._UserGroup = None
+        self._PassWord = None
+        self._ReMark = None
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def UserGroup(self):
+        return self._UserGroup
+
+    @UserGroup.setter
+    def UserGroup(self, UserGroup):
+        self._UserGroup = UserGroup
+
+    @property
+    def PassWord(self):
+        return self._PassWord
+
+    @PassWord.setter
+    def PassWord(self, PassWord):
+        self._PassWord = PassWord
+
+    @property
+    def ReMark(self):
+        return self._ReMark
+
+    @ReMark.setter
+    def ReMark(self, ReMark):
+        self._ReMark = ReMark
 
 
     def _deserialize(self, params):
-        self.UserName = params.get("UserName")
-        self.UserGroup = params.get("UserGroup")
-        self.PassWord = params.get("PassWord")
-        self.ReMark = params.get("ReMark")
+        self._UserName = params.get("UserName")
+        self._UserGroup = params.get("UserGroup")
+        self._PassWord = params.get("PassWord")
+        self._ReMark = params.get("ReMark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5474,19 +10735,28 @@ class UserManagerFilter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserName: Username
+        :param _UserName: Username
 Note: This field may return null, indicating that no valid value can be obtained.
         :type UserName: str
         """
-        self.UserName = None
+        self._UserName = None
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
 
 
     def _deserialize(self, params):
-        self.UserName = params.get("UserName")
+        self._UserName = params.get("UserName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5499,40 +10769,89 @@ class UserManagerUserBriefInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserName: Username
+        :param _UserName: Username
         :type UserName: str
-        :param UserGroup: The group to which the user belongs
+        :param _UserGroup: The group to which the user belongs
         :type UserGroup: str
-        :param UserType: `Manager` represents an admin, and `NormalUser` represents a general user.
+        :param _UserType: `Manager` represents an admin, and `NormalUser` represents a general user.
         :type UserType: str
-        :param CreateTime: Account creation time
+        :param _CreateTime: Account creation time
 Note: This field may return null, indicating that no valid value can be obtained.
         :type CreateTime: str
-        :param SupportDownLoadKeyTab: Whether the corresponding Keytab file of the user is available for download. This parameter applies only to a Kerberos-enabled cluster.
+        :param _SupportDownLoadKeyTab: Whether the corresponding Keytab file of the user is available for download. This parameter applies only to a Kerberos-enabled cluster.
         :type SupportDownLoadKeyTab: bool
-        :param DownLoadKeyTabUrl: Download link of the Keytab file
+        :param _DownLoadKeyTabUrl: Download link of the Keytab file
 Note: This field may return null, indicating that no valid value can be obtained.
         :type DownLoadKeyTabUrl: str
         """
-        self.UserName = None
-        self.UserGroup = None
-        self.UserType = None
-        self.CreateTime = None
-        self.SupportDownLoadKeyTab = None
-        self.DownLoadKeyTabUrl = None
+        self._UserName = None
+        self._UserGroup = None
+        self._UserType = None
+        self._CreateTime = None
+        self._SupportDownLoadKeyTab = None
+        self._DownLoadKeyTabUrl = None
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def UserGroup(self):
+        return self._UserGroup
+
+    @UserGroup.setter
+    def UserGroup(self, UserGroup):
+        self._UserGroup = UserGroup
+
+    @property
+    def UserType(self):
+        return self._UserType
+
+    @UserType.setter
+    def UserType(self, UserType):
+        self._UserType = UserType
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def SupportDownLoadKeyTab(self):
+        return self._SupportDownLoadKeyTab
+
+    @SupportDownLoadKeyTab.setter
+    def SupportDownLoadKeyTab(self, SupportDownLoadKeyTab):
+        self._SupportDownLoadKeyTab = SupportDownLoadKeyTab
+
+    @property
+    def DownLoadKeyTabUrl(self):
+        return self._DownLoadKeyTabUrl
+
+    @DownLoadKeyTabUrl.setter
+    def DownLoadKeyTabUrl(self, DownLoadKeyTabUrl):
+        self._DownLoadKeyTabUrl = DownLoadKeyTabUrl
 
 
     def _deserialize(self, params):
-        self.UserName = params.get("UserName")
-        self.UserGroup = params.get("UserGroup")
-        self.UserType = params.get("UserType")
-        self.CreateTime = params.get("CreateTime")
-        self.SupportDownLoadKeyTab = params.get("SupportDownLoadKeyTab")
-        self.DownLoadKeyTabUrl = params.get("DownLoadKeyTabUrl")
+        self._UserName = params.get("UserName")
+        self._UserGroup = params.get("UserGroup")
+        self._UserType = params.get("UserType")
+        self._CreateTime = params.get("CreateTime")
+        self._SupportDownLoadKeyTab = params.get("SupportDownLoadKeyTab")
+        self._DownLoadKeyTabUrl = params.get("DownLoadKeyTabUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5545,22 +10864,39 @@ class VPCSettings(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpcId: VPC ID
+        :param _VpcId: VPC ID
         :type VpcId: str
-        :param SubnetId: Subnet ID
+        :param _SubnetId: Subnet ID
         :type SubnetId: str
         """
-        self.VpcId = None
-        self.SubnetId = None
+        self._VpcId = None
+        self._SubnetId = None
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
 
 
     def _deserialize(self, params):
-        self.VpcId = params.get("VpcId")
-        self.SubnetId = params.get("SubnetId")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5573,22 +10909,39 @@ class VirtualPrivateCloud(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpcId: The VPC ID.
+        :param _VpcId: The VPC ID.
         :type VpcId: str
-        :param SubnetId: The subnet ID.
+        :param _SubnetId: The subnet ID.
         :type SubnetId: str
         """
-        self.VpcId = None
-        self.SubnetId = None
+        self._VpcId = None
+        self._SubnetId = None
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
 
 
     def _deserialize(self, params):
-        self.VpcId = params.get("VpcId")
-        self.SubnetId = params.get("SubnetId")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5601,28 +10954,45 @@ class ZoneDetailPriceResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ZoneId: AZ ID
+        :param _ZoneId: AZ ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ZoneId: str
-        :param NodeDetailPrice: Price details by node
+        :param _NodeDetailPrice: Price details by node
         :type NodeDetailPrice: list of NodeDetailPriceResult
         """
-        self.ZoneId = None
-        self.NodeDetailPrice = None
+        self._ZoneId = None
+        self._NodeDetailPrice = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def NodeDetailPrice(self):
+        return self._NodeDetailPrice
+
+    @NodeDetailPrice.setter
+    def NodeDetailPrice(self, NodeDetailPrice):
+        self._NodeDetailPrice = NodeDetailPrice
 
 
     def _deserialize(self, params):
-        self.ZoneId = params.get("ZoneId")
+        self._ZoneId = params.get("ZoneId")
         if params.get("NodeDetailPrice") is not None:
-            self.NodeDetailPrice = []
+            self._NodeDetailPrice = []
             for item in params.get("NodeDetailPrice"):
                 obj = NodeDetailPriceResult()
                 obj._deserialize(item)
-                self.NodeDetailPrice.append(obj)
+                self._NodeDetailPrice.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5635,43 +11005,76 @@ class ZoneResourceConfiguration(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VirtualPrivateCloud: The VPC configuration information. This parameter is used to specify the VPC ID, subnet ID and other information.
+        :param _VirtualPrivateCloud: The VPC configuration information. This parameter is used to specify the VPC ID, subnet ID and other information.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type VirtualPrivateCloud: :class:`tencentcloud.emr.v20190103.models.VirtualPrivateCloud`
-        :param Placement: The instance location. This parameter is used to specify the AZ, project, and other attributes of the instance.
+        :param _Placement: The instance location. This parameter is used to specify the AZ, project, and other attributes of the instance.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`
-        :param AllNodeResourceSpec: The specs of all nodes.
+        :param _AllNodeResourceSpec: The specs of all nodes.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AllNodeResourceSpec: :class:`tencentcloud.emr.v20190103.models.AllNodeResourceSpec`
-        :param ZoneTag: For a single AZ, `ZoneTag` can be left out. For a double-AZ mode, `ZoneTag` is set to `master` and `standby` for the first and second AZs, respectively. If there are three AZs, `ZoneTag` is set to `master`, `standby`, and `third-party` for the first, second, and third AZs, respectively. Valid values:
+        :param _ZoneTag: For a single AZ, `ZoneTag` can be left out. For a double-AZ mode, `ZoneTag` is set to `master` and `standby` for the first and second AZs, respectively. If there are three AZs, `ZoneTag` is set to `master`, `standby`, and `third-party` for the first, second, and third AZs, respectively. Valid values:
   <li>master</li>
   <li>standby</li>
   <li>third-party</li>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ZoneTag: str
         """
-        self.VirtualPrivateCloud = None
-        self.Placement = None
-        self.AllNodeResourceSpec = None
-        self.ZoneTag = None
+        self._VirtualPrivateCloud = None
+        self._Placement = None
+        self._AllNodeResourceSpec = None
+        self._ZoneTag = None
+
+    @property
+    def VirtualPrivateCloud(self):
+        return self._VirtualPrivateCloud
+
+    @VirtualPrivateCloud.setter
+    def VirtualPrivateCloud(self, VirtualPrivateCloud):
+        self._VirtualPrivateCloud = VirtualPrivateCloud
+
+    @property
+    def Placement(self):
+        return self._Placement
+
+    @Placement.setter
+    def Placement(self, Placement):
+        self._Placement = Placement
+
+    @property
+    def AllNodeResourceSpec(self):
+        return self._AllNodeResourceSpec
+
+    @AllNodeResourceSpec.setter
+    def AllNodeResourceSpec(self, AllNodeResourceSpec):
+        self._AllNodeResourceSpec = AllNodeResourceSpec
+
+    @property
+    def ZoneTag(self):
+        return self._ZoneTag
+
+    @ZoneTag.setter
+    def ZoneTag(self, ZoneTag):
+        self._ZoneTag = ZoneTag
 
 
     def _deserialize(self, params):
         if params.get("VirtualPrivateCloud") is not None:
-            self.VirtualPrivateCloud = VirtualPrivateCloud()
-            self.VirtualPrivateCloud._deserialize(params.get("VirtualPrivateCloud"))
+            self._VirtualPrivateCloud = VirtualPrivateCloud()
+            self._VirtualPrivateCloud._deserialize(params.get("VirtualPrivateCloud"))
         if params.get("Placement") is not None:
-            self.Placement = Placement()
-            self.Placement._deserialize(params.get("Placement"))
+            self._Placement = Placement()
+            self._Placement._deserialize(params.get("Placement"))
         if params.get("AllNodeResourceSpec") is not None:
-            self.AllNodeResourceSpec = AllNodeResourceSpec()
-            self.AllNodeResourceSpec._deserialize(params.get("AllNodeResourceSpec"))
-        self.ZoneTag = params.get("ZoneTag")
+            self._AllNodeResourceSpec = AllNodeResourceSpec()
+            self._AllNodeResourceSpec._deserialize(params.get("AllNodeResourceSpec"))
+        self._ZoneTag = params.get("ZoneTag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

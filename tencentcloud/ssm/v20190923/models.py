@@ -25,9 +25,9 @@ class CreateProductSecretRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecretName: Credential name, which must be unique in the same region. It can contain 128 bytes of letters, digits, hyphens, and underscores and must begin with a letter or digit.
+        :param _SecretName: Credential name, which must be unique in the same region. It can contain 128 bytes of letters, digits, hyphens, and underscores and must begin with a letter or digit.
         :type SecretName: str
-        :param UserNamePrefix: Prefix of the user account name, which is specified by you and can contain up to 8 characters.
+        :param _UserNamePrefix: Prefix of the user account name, which is specified by you and can contain up to 8 characters.
 Supported character sets include:
 Digits: [0, 9].
 Lowercase letters: [a, z].
@@ -35,74 +35,171 @@ Uppercase letters: [A, Z].
 Special symbols: underscore.
 The prefix must begin with a letter.
         :type UserNamePrefix: str
-        :param ProductName: Name of the Tencent Cloud service bound to the credential, such as `Mysql`. The `DescribeSupportedProducts` API can be used to get the names of the supported Tencent Cloud services.
+        :param _ProductName: Name of the Tencent Cloud service bound to the credential, such as `Mysql`. The `DescribeSupportedProducts` API can be used to get the names of the supported Tencent Cloud services.
         :type ProductName: str
-        :param InstanceID: Tencent Cloud service instance ID.
+        :param _InstanceID: Tencent Cloud service instance ID.
         :type InstanceID: str
-        :param Domains: Domain name of the account in the form of IP. You can enter `%`.
+        :param _Domains: Domain name of the account in the form of IP. You can enter `%`.
         :type Domains: list of str
-        :param PrivilegesList: List of permissions that need to be granted when the credential is bound to a Tencent Cloud service.
+        :param _PrivilegesList: List of permissions that need to be granted when the credential is bound to a Tencent Cloud service.
         :type PrivilegesList: list of ProductPrivilegeUnit
-        :param Description: Description, which is used to describe the purpose in detail and can contain up to 2,048 bytes.
+        :param _Description: Description, which is used to describe the purpose in detail and can contain up to 2,048 bytes.
         :type Description: str
-        :param KmsKeyId: Specifies the KMS CMK that encrypts the credential.
+        :param _KmsKeyId: Specifies the KMS CMK that encrypts the credential.
 If this parameter is left empty, the CMK created by Secrets Manager by default will be used for encryption.
 You can also specify a custom KMS CMK created in the same region for encryption.
         :type KmsKeyId: str
-        :param Tags: List of tags.
+        :param _Tags: List of tags.
         :type Tags: list of Tag
-        :param RotationBeginTime: User-Defined rotation start time in the format of 2006-01-02 15:04:05.
+        :param _RotationBeginTime: User-Defined rotation start time in the format of 2006-01-02 15:04:05.
 When `EnableRotation` is `True`, this parameter is required.
         :type RotationBeginTime: str
-        :param EnableRotation: Specifies whether to enable rotation
+        :param _EnableRotation: Specifies whether to enable rotation
 True - enable
 False - do not enable
 If this parameter is not specified, `False` will be used by default.
         :type EnableRotation: bool
-        :param RotationFrequency: Rotation frequency in days. Default value: 1 day.
+        :param _RotationFrequency: Rotation frequency in days. Default value: 1 day.
         :type RotationFrequency: int
         """
-        self.SecretName = None
-        self.UserNamePrefix = None
-        self.ProductName = None
-        self.InstanceID = None
-        self.Domains = None
-        self.PrivilegesList = None
-        self.Description = None
-        self.KmsKeyId = None
-        self.Tags = None
-        self.RotationBeginTime = None
-        self.EnableRotation = None
-        self.RotationFrequency = None
+        self._SecretName = None
+        self._UserNamePrefix = None
+        self._ProductName = None
+        self._InstanceID = None
+        self._Domains = None
+        self._PrivilegesList = None
+        self._Description = None
+        self._KmsKeyId = None
+        self._Tags = None
+        self._RotationBeginTime = None
+        self._EnableRotation = None
+        self._RotationFrequency = None
+
+    @property
+    def SecretName(self):
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
+
+    @property
+    def UserNamePrefix(self):
+        return self._UserNamePrefix
+
+    @UserNamePrefix.setter
+    def UserNamePrefix(self, UserNamePrefix):
+        self._UserNamePrefix = UserNamePrefix
+
+    @property
+    def ProductName(self):
+        return self._ProductName
+
+    @ProductName.setter
+    def ProductName(self, ProductName):
+        self._ProductName = ProductName
+
+    @property
+    def InstanceID(self):
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+    @property
+    def Domains(self):
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+    @property
+    def PrivilegesList(self):
+        return self._PrivilegesList
+
+    @PrivilegesList.setter
+    def PrivilegesList(self, PrivilegesList):
+        self._PrivilegesList = PrivilegesList
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def KmsKeyId(self):
+        return self._KmsKeyId
+
+    @KmsKeyId.setter
+    def KmsKeyId(self, KmsKeyId):
+        self._KmsKeyId = KmsKeyId
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def RotationBeginTime(self):
+        return self._RotationBeginTime
+
+    @RotationBeginTime.setter
+    def RotationBeginTime(self, RotationBeginTime):
+        self._RotationBeginTime = RotationBeginTime
+
+    @property
+    def EnableRotation(self):
+        return self._EnableRotation
+
+    @EnableRotation.setter
+    def EnableRotation(self, EnableRotation):
+        self._EnableRotation = EnableRotation
+
+    @property
+    def RotationFrequency(self):
+        return self._RotationFrequency
+
+    @RotationFrequency.setter
+    def RotationFrequency(self, RotationFrequency):
+        self._RotationFrequency = RotationFrequency
 
 
     def _deserialize(self, params):
-        self.SecretName = params.get("SecretName")
-        self.UserNamePrefix = params.get("UserNamePrefix")
-        self.ProductName = params.get("ProductName")
-        self.InstanceID = params.get("InstanceID")
-        self.Domains = params.get("Domains")
+        self._SecretName = params.get("SecretName")
+        self._UserNamePrefix = params.get("UserNamePrefix")
+        self._ProductName = params.get("ProductName")
+        self._InstanceID = params.get("InstanceID")
+        self._Domains = params.get("Domains")
         if params.get("PrivilegesList") is not None:
-            self.PrivilegesList = []
+            self._PrivilegesList = []
             for item in params.get("PrivilegesList"):
                 obj = ProductPrivilegeUnit()
                 obj._deserialize(item)
-                self.PrivilegesList.append(obj)
-        self.Description = params.get("Description")
-        self.KmsKeyId = params.get("KmsKeyId")
+                self._PrivilegesList.append(obj)
+        self._Description = params.get("Description")
+        self._KmsKeyId = params.get("KmsKeyId")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.RotationBeginTime = params.get("RotationBeginTime")
-        self.EnableRotation = params.get("EnableRotation")
-        self.RotationFrequency = params.get("RotationFrequency")
+                self._Tags.append(obj)
+        self._RotationBeginTime = params.get("RotationBeginTime")
+        self._EnableRotation = params.get("EnableRotation")
+        self._RotationFrequency = params.get("RotationFrequency")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -115,33 +212,73 @@ class CreateProductSecretResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecretName: Name of the created credential.
+        :param _SecretName: Name of the created credential.
         :type SecretName: str
-        :param TagCode: Tag operation return code. 0: success; 1: internal error; 2: business processing error.
+        :param _TagCode: Tag operation return code. 0: success; 1: internal error; 2: business processing error.
 Note: this field may return null, indicating that no valid values can be obtained.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TagCode: int
-        :param TagMsg: Tag operation return message.
+        :param _TagMsg: Tag operation return message.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TagMsg: str
-        :param FlowID: ID of the created Tencent Cloud service credential async task.
+        :param _FlowID: ID of the created Tencent Cloud service credential async task.
         :type FlowID: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.SecretName = None
-        self.TagCode = None
-        self.TagMsg = None
-        self.FlowID = None
-        self.RequestId = None
+        self._SecretName = None
+        self._TagCode = None
+        self._TagMsg = None
+        self._FlowID = None
+        self._RequestId = None
+
+    @property
+    def SecretName(self):
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
+
+    @property
+    def TagCode(self):
+        return self._TagCode
+
+    @TagCode.setter
+    def TagCode(self, TagCode):
+        self._TagCode = TagCode
+
+    @property
+    def TagMsg(self):
+        return self._TagMsg
+
+    @TagMsg.setter
+    def TagMsg(self, TagMsg):
+        self._TagMsg = TagMsg
+
+    @property
+    def FlowID(self):
+        return self._FlowID
+
+    @FlowID.setter
+    def FlowID(self, FlowID):
+        self._FlowID = FlowID
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SecretName = params.get("SecretName")
-        self.TagCode = params.get("TagCode")
-        self.TagMsg = params.get("TagMsg")
-        self.FlowID = params.get("FlowID")
-        self.RequestId = params.get("RequestId")
+        self._SecretName = params.get("SecretName")
+        self._TagCode = params.get("TagCode")
+        self._TagMsg = params.get("TagMsg")
+        self._FlowID = params.get("FlowID")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateSSHKeyPairSecretRequest(AbstractModel):
@@ -151,45 +288,94 @@ class CreateSSHKeyPairSecretRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecretName: Secret name, which must be unique in the same region. It can contain 128 bytes of letters, digits, hyphens and underscores and must begin with a letter or digit.
+        :param _SecretName: Secret name, which must be unique in the same region. It can contain 128 bytes of letters, digits, hyphens and underscores and must begin with a letter or digit.
         :type SecretName: str
-        :param ProjectId: ID of the project to which the created SSH key belongs.
+        :param _ProjectId: ID of the project to which the created SSH key belongs.
         :type ProjectId: int
-        :param Description: Description, such as what it is used for. It contains up to 2,048 bytes.
+        :param _Description: Description, such as what it is used for. It contains up to 2,048 bytes.
         :type Description: str
-        :param KmsKeyId: Specifies a KMS CMK to encrypt the secret.
+        :param _KmsKeyId: Specifies a KMS CMK to encrypt the secret.
 If this parameter is left empty, the CMK created by Secrets Manager by default will be used for encryption.
 You can also specify a custom KMS CMK created in the same region for encryption.
         :type KmsKeyId: str
-        :param Tags: List of tags.
+        :param _Tags: List of tags.
         :type Tags: list of Tag
-        :param SSHKeyName: Name of the SSH key pair, which only contains digits, letters and underscores and must start with a digit or letter. The maximum length is 25 characters.
+        :param _SSHKeyName: Name of the SSH key pair, which only contains digits, letters and underscores and must start with a digit or letter. The maximum length is 25 characters.
         :type SSHKeyName: str
         """
-        self.SecretName = None
-        self.ProjectId = None
-        self.Description = None
-        self.KmsKeyId = None
-        self.Tags = None
-        self.SSHKeyName = None
+        self._SecretName = None
+        self._ProjectId = None
+        self._Description = None
+        self._KmsKeyId = None
+        self._Tags = None
+        self._SSHKeyName = None
+
+    @property
+    def SecretName(self):
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def KmsKeyId(self):
+        return self._KmsKeyId
+
+    @KmsKeyId.setter
+    def KmsKeyId(self, KmsKeyId):
+        self._KmsKeyId = KmsKeyId
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def SSHKeyName(self):
+        return self._SSHKeyName
+
+    @SSHKeyName.setter
+    def SSHKeyName(self, SSHKeyName):
+        self._SSHKeyName = SSHKeyName
 
 
     def _deserialize(self, params):
-        self.SecretName = params.get("SecretName")
-        self.ProjectId = params.get("ProjectId")
-        self.Description = params.get("Description")
-        self.KmsKeyId = params.get("KmsKeyId")
+        self._SecretName = params.get("SecretName")
+        self._ProjectId = params.get("ProjectId")
+        self._Description = params.get("Description")
+        self._KmsKeyId = params.get("KmsKeyId")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.SSHKeyName = params.get("SSHKeyName")
+                self._Tags.append(obj)
+        self._SSHKeyName = params.get("SSHKeyName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -202,36 +388,84 @@ class CreateSSHKeyPairSecretResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecretName: Name of the created secret.
+        :param _SecretName: Name of the created secret.
         :type SecretName: str
-        :param SSHKeyID: ID of the created SSH key.
+        :param _SSHKeyID: ID of the created SSH key.
         :type SSHKeyID: str
-        :param SSHKeyName: Name of the created SSH key.
+        :param _SSHKeyName: Name of the created SSH key.
         :type SSHKeyName: str
-        :param TagCode: Tag return code. `0`: success; `1`: internal error; `2`: business processing error.
+        :param _TagCode: Tag return code. `0`: success; `1`: internal error; `2`: business processing error.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type TagCode: int
-        :param TagMsg: Tag return message.
+        :param _TagMsg: Tag return message.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type TagMsg: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.SecretName = None
-        self.SSHKeyID = None
-        self.SSHKeyName = None
-        self.TagCode = None
-        self.TagMsg = None
-        self.RequestId = None
+        self._SecretName = None
+        self._SSHKeyID = None
+        self._SSHKeyName = None
+        self._TagCode = None
+        self._TagMsg = None
+        self._RequestId = None
+
+    @property
+    def SecretName(self):
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
+
+    @property
+    def SSHKeyID(self):
+        return self._SSHKeyID
+
+    @SSHKeyID.setter
+    def SSHKeyID(self, SSHKeyID):
+        self._SSHKeyID = SSHKeyID
+
+    @property
+    def SSHKeyName(self):
+        return self._SSHKeyName
+
+    @SSHKeyName.setter
+    def SSHKeyName(self, SSHKeyName):
+        self._SSHKeyName = SSHKeyName
+
+    @property
+    def TagCode(self):
+        return self._TagCode
+
+    @TagCode.setter
+    def TagCode(self, TagCode):
+        self._TagCode = TagCode
+
+    @property
+    def TagMsg(self):
+        return self._TagMsg
+
+    @TagMsg.setter
+    def TagMsg(self, TagMsg):
+        self._TagMsg = TagMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SecretName = params.get("SecretName")
-        self.SSHKeyID = params.get("SSHKeyID")
-        self.SSHKeyName = params.get("SSHKeyName")
-        self.TagCode = params.get("TagCode")
-        self.TagMsg = params.get("TagMsg")
-        self.RequestId = params.get("RequestId")
+        self._SecretName = params.get("SecretName")
+        self._SSHKeyID = params.get("SSHKeyID")
+        self._SSHKeyName = params.get("SSHKeyName")
+        self._TagCode = params.get("TagCode")
+        self._TagMsg = params.get("TagMsg")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateSecretRequest(AbstractModel):
@@ -241,47 +475,104 @@ class CreateSecretRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecretName: Secret name, which must be unique within a region. The name can be up to 128 bytes, contain letters, digits, hyphens (-), and underscores (_), and must begin with a letter or digit.
+        :param _SecretName: Secret name, which must be unique within a region. The name can be up to 128 bytes, contain letters, digits, hyphens (-), and underscores (_), and must begin with a letter or digit.
         :type SecretName: str
-        :param VersionId: Secret version. It can be up to 64 bytes, contain letters, digits, hyphens (-), and underscores (_), and must begin with a letter or digit. `SecretName` and `VersionId` are used to query the Secret information.
+        :param _VersionId: Secret version. It can be up to 64 bytes, contain letters, digits, hyphens (-), and underscores (_), and must begin with a letter or digit. `SecretName` and `VersionId` are used to query the Secret information.
         :type VersionId: str
-        :param Description: Description information, such as the detailed use cases. It can be up to 2048 bytes.
+        :param _Description: Description information, such as the detailed use cases. It can be up to 2048 bytes.
         :type Description: str
-        :param KmsKeyId: KMS CMK used for Secret encryption. If this parameter is left empty, SecretsManager will create a CMK by default. You can also specify a KMS CMK that is created in the same region.
+        :param _KmsKeyId: KMS CMK used for Secret encryption. If this parameter is left empty, SecretsManager will create a CMK by default. You can also specify a KMS CMK that is created in the same region.
         :type KmsKeyId: str
-        :param SecretBinary: Base64-encoded plaintext of a binary Secret. Either `SecretBinary` or `SecretString` must be set. A maximum of 4096 bytes is supported.
+        :param _SecretBinary: Base64-encoded plaintext of a binary Secret. Either `SecretBinary` or `SecretString` must be set. A maximum of 4096 bytes is supported.
         :type SecretBinary: str
-        :param SecretString: Plaintext of a Secret, in text format. Base64 encoding is not required. Either `SecretBinary` or `SecretString` must be set. A maximum of 4096 bytes is supported.
+        :param _SecretString: Plaintext of a Secret, in text format. Base64 encoding is not required. Either `SecretBinary` or `SecretString` must be set. A maximum of 4096 bytes is supported.
         :type SecretString: str
-        :param Tags: List of tags.
+        :param _Tags: List of tags.
         :type Tags: list of Tag
         """
-        self.SecretName = None
-        self.VersionId = None
-        self.Description = None
-        self.KmsKeyId = None
-        self.SecretBinary = None
-        self.SecretString = None
-        self.Tags = None
+        self._SecretName = None
+        self._VersionId = None
+        self._Description = None
+        self._KmsKeyId = None
+        self._SecretBinary = None
+        self._SecretString = None
+        self._Tags = None
+
+    @property
+    def SecretName(self):
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
+
+    @property
+    def VersionId(self):
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def KmsKeyId(self):
+        return self._KmsKeyId
+
+    @KmsKeyId.setter
+    def KmsKeyId(self, KmsKeyId):
+        self._KmsKeyId = KmsKeyId
+
+    @property
+    def SecretBinary(self):
+        return self._SecretBinary
+
+    @SecretBinary.setter
+    def SecretBinary(self, SecretBinary):
+        self._SecretBinary = SecretBinary
+
+    @property
+    def SecretString(self):
+        return self._SecretString
+
+    @SecretString.setter
+    def SecretString(self, SecretString):
+        self._SecretString = SecretString
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
-        self.SecretName = params.get("SecretName")
-        self.VersionId = params.get("VersionId")
-        self.Description = params.get("Description")
-        self.KmsKeyId = params.get("KmsKeyId")
-        self.SecretBinary = params.get("SecretBinary")
-        self.SecretString = params.get("SecretString")
+        self._SecretName = params.get("SecretName")
+        self._VersionId = params.get("VersionId")
+        self._Description = params.get("Description")
+        self._KmsKeyId = params.get("KmsKeyId")
+        self._SecretBinary = params.get("SecretBinary")
+        self._SecretString = params.get("SecretString")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -294,32 +585,72 @@ class CreateSecretResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecretName: Name of the new Secret.
+        :param _SecretName: Name of the new Secret.
         :type SecretName: str
-        :param VersionId: ID of the new Secret version.
+        :param _VersionId: ID of the new Secret version.
         :type VersionId: str
-        :param TagCode: Return code of tag operation. `0`: success; `1`: internal error; `2`: business processing error
+        :param _TagCode: Return code of tag operation. `0`: success; `1`: internal error; `2`: business processing error
 Note: This field may return `null`, indicating that no valid value was found.
         :type TagCode: int
-        :param TagMsg: Return message of tag operation.
+        :param _TagMsg: Return message of tag operation.
 Note: This field may return `null`, indicating that no valid value was found.
         :type TagMsg: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.SecretName = None
-        self.VersionId = None
-        self.TagCode = None
-        self.TagMsg = None
-        self.RequestId = None
+        self._SecretName = None
+        self._VersionId = None
+        self._TagCode = None
+        self._TagMsg = None
+        self._RequestId = None
+
+    @property
+    def SecretName(self):
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
+
+    @property
+    def VersionId(self):
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+    @property
+    def TagCode(self):
+        return self._TagCode
+
+    @TagCode.setter
+    def TagCode(self, TagCode):
+        self._TagCode = TagCode
+
+    @property
+    def TagMsg(self):
+        return self._TagMsg
+
+    @TagMsg.setter
+    def TagMsg(self, TagMsg):
+        self._TagMsg = TagMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SecretName = params.get("SecretName")
-        self.VersionId = params.get("VersionId")
-        self.TagCode = params.get("TagCode")
-        self.TagMsg = params.get("TagMsg")
-        self.RequestId = params.get("RequestId")
+        self._SecretName = params.get("SecretName")
+        self._VersionId = params.get("VersionId")
+        self._TagCode = params.get("TagCode")
+        self._TagMsg = params.get("TagMsg")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteSecretRequest(AbstractModel):
@@ -329,29 +660,54 @@ class DeleteSecretRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecretName: Name of the Secret to be deleted.
+        :param _SecretName: Name of the Secret to be deleted.
         :type SecretName: str
-        :param RecoveryWindowInDays: Scheduled deletion time (in days), indicating the number of retention days for the secret. Value range: 0-30. If it is `0`, the secret is deleted immediately.
+        :param _RecoveryWindowInDays: Scheduled deletion time (in days), indicating the number of retention days for the secret. Value range: 0-30. If it is `0`, the secret is deleted immediately.
 For an SSH key secret, this field can only be `0`.
         :type RecoveryWindowInDays: int
-        :param CleanSSHKey: Specifies whether to delete the SSH key from both the secret and the SSH key list in the CVM console. This field is only valid for SSH key secrets. Valid values:
+        :param _CleanSSHKey: Specifies whether to delete the SSH key from both the secret and the SSH key list in the CVM console. This field is only valid for SSH key secrets. Valid values:
 `True`: deletes SSH key from both the secret and SSH key list in the CVM console. Note that the deletion will fail if the SSH key is already bound to a CVM instance.
 `False`: only deletes the SSH key information in the secret.
         :type CleanSSHKey: bool
         """
-        self.SecretName = None
-        self.RecoveryWindowInDays = None
-        self.CleanSSHKey = None
+        self._SecretName = None
+        self._RecoveryWindowInDays = None
+        self._CleanSSHKey = None
+
+    @property
+    def SecretName(self):
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
+
+    @property
+    def RecoveryWindowInDays(self):
+        return self._RecoveryWindowInDays
+
+    @RecoveryWindowInDays.setter
+    def RecoveryWindowInDays(self, RecoveryWindowInDays):
+        self._RecoveryWindowInDays = RecoveryWindowInDays
+
+    @property
+    def CleanSSHKey(self):
+        return self._CleanSSHKey
+
+    @CleanSSHKey.setter
+    def CleanSSHKey(self, CleanSSHKey):
+        self._CleanSSHKey = CleanSSHKey
 
 
     def _deserialize(self, params):
-        self.SecretName = params.get("SecretName")
-        self.RecoveryWindowInDays = params.get("RecoveryWindowInDays")
-        self.CleanSSHKey = params.get("CleanSSHKey")
+        self._SecretName = params.get("SecretName")
+        self._RecoveryWindowInDays = params.get("RecoveryWindowInDays")
+        self._CleanSSHKey = params.get("CleanSSHKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -364,22 +720,46 @@ class DeleteSecretResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecretName: Name of deleted Secret.
+        :param _SecretName: Name of deleted Secret.
         :type SecretName: str
-        :param DeleteTime: Secret deletion time, formatted as a Unix timestamp.
+        :param _DeleteTime: Secret deletion time, formatted as a Unix timestamp.
         :type DeleteTime: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.SecretName = None
-        self.DeleteTime = None
-        self.RequestId = None
+        self._SecretName = None
+        self._DeleteTime = None
+        self._RequestId = None
+
+    @property
+    def SecretName(self):
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
+
+    @property
+    def DeleteTime(self):
+        return self._DeleteTime
+
+    @DeleteTime.setter
+    def DeleteTime(self, DeleteTime):
+        self._DeleteTime = DeleteTime
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SecretName = params.get("SecretName")
-        self.DeleteTime = params.get("DeleteTime")
-        self.RequestId = params.get("RequestId")
+        self._SecretName = params.get("SecretName")
+        self._DeleteTime = params.get("DeleteTime")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteSecretVersionRequest(AbstractModel):
@@ -389,22 +769,39 @@ class DeleteSecretVersionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecretName: Name of the Secret.
+        :param _SecretName: Name of the Secret.
         :type SecretName: str
-        :param VersionId: ID of the Secret version to be deleted.
+        :param _VersionId: ID of the Secret version to be deleted.
         :type VersionId: str
         """
-        self.SecretName = None
-        self.VersionId = None
+        self._SecretName = None
+        self._VersionId = None
+
+    @property
+    def SecretName(self):
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
+
+    @property
+    def VersionId(self):
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
 
 
     def _deserialize(self, params):
-        self.SecretName = params.get("SecretName")
-        self.VersionId = params.get("VersionId")
+        self._SecretName = params.get("SecretName")
+        self._VersionId = params.get("VersionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -417,22 +814,46 @@ class DeleteSecretVersionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecretName: Name of the Secret.
+        :param _SecretName: Name of the Secret.
         :type SecretName: str
-        :param VersionId: Version ID of the Secret.
+        :param _VersionId: Version ID of the Secret.
         :type VersionId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.SecretName = None
-        self.VersionId = None
-        self.RequestId = None
+        self._SecretName = None
+        self._VersionId = None
+        self._RequestId = None
+
+    @property
+    def SecretName(self):
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
+
+    @property
+    def VersionId(self):
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SecretName = params.get("SecretName")
-        self.VersionId = params.get("VersionId")
-        self.RequestId = params.get("RequestId")
+        self._SecretName = params.get("SecretName")
+        self._VersionId = params.get("VersionId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeAsyncRequestInfoRequest(AbstractModel):
@@ -442,18 +863,27 @@ class DescribeAsyncRequestInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowID: Async task ID.
+        :param _FlowID: Async task ID.
         :type FlowID: int
         """
-        self.FlowID = None
+        self._FlowID = None
+
+    @property
+    def FlowID(self):
+        return self._FlowID
+
+    @FlowID.setter
+    def FlowID(self, FlowID):
+        self._FlowID = FlowID
 
 
     def _deserialize(self, params):
-        self.FlowID = params.get("FlowID")
+        self._FlowID = params.get("FlowID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -466,22 +896,46 @@ class DescribeAsyncRequestInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskStatus: 0: processing, 1: processing succeeded, 2: processing failed
+        :param _TaskStatus: 0: processing, 1: processing succeeded, 2: processing failed
         :type TaskStatus: int
-        :param Description: Task description.
+        :param _Description: Task description.
         :type Description: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TaskStatus = None
-        self.Description = None
-        self.RequestId = None
+        self._TaskStatus = None
+        self._Description = None
+        self._RequestId = None
+
+    @property
+    def TaskStatus(self):
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TaskStatus = params.get("TaskStatus")
-        self.Description = params.get("Description")
-        self.RequestId = params.get("RequestId")
+        self._TaskStatus = params.get("TaskStatus")
+        self._Description = params.get("Description")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeRotationDetailRequest(AbstractModel):
@@ -491,18 +945,27 @@ class DescribeRotationDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecretName: Specifies the name of the credential for which to get the credential rotation details.
+        :param _SecretName: Specifies the name of the credential for which to get the credential rotation details.
         :type SecretName: str
         """
-        self.SecretName = None
+        self._SecretName = None
+
+    @property
+    def SecretName(self):
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
 
 
     def _deserialize(self, params):
-        self.SecretName = params.get("SecretName")
+        self._SecretName = params.get("SecretName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -515,33 +978,73 @@ class DescribeRotationDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EnableRotation: Whether to enable rotation. `true`: enabled; `false`: disabled.
+        :param _EnableRotation: Whether to enable rotation. `true`: enabled; `false`: disabled.
         :type EnableRotation: bool
-        :param Frequency: Rotation frequency in days. Default value: 1 day.
+        :param _Frequency: Rotation frequency in days. Default value: 1 day.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Frequency: int
-        :param LatestRotateTime: Last rotation time, which is an explicitly visible time string in the format of 2006-01-02 15:04:05.
+        :param _LatestRotateTime: Last rotation time, which is an explicitly visible time string in the format of 2006-01-02 15:04:05.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type LatestRotateTime: str
-        :param NextRotateBeginTime: Next rotation start time, which is an explicitly visible time string in the format of 2006-01-02 15:04:05.
+        :param _NextRotateBeginTime: Next rotation start time, which is an explicitly visible time string in the format of 2006-01-02 15:04:05.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type NextRotateBeginTime: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.EnableRotation = None
-        self.Frequency = None
-        self.LatestRotateTime = None
-        self.NextRotateBeginTime = None
-        self.RequestId = None
+        self._EnableRotation = None
+        self._Frequency = None
+        self._LatestRotateTime = None
+        self._NextRotateBeginTime = None
+        self._RequestId = None
+
+    @property
+    def EnableRotation(self):
+        return self._EnableRotation
+
+    @EnableRotation.setter
+    def EnableRotation(self, EnableRotation):
+        self._EnableRotation = EnableRotation
+
+    @property
+    def Frequency(self):
+        return self._Frequency
+
+    @Frequency.setter
+    def Frequency(self, Frequency):
+        self._Frequency = Frequency
+
+    @property
+    def LatestRotateTime(self):
+        return self._LatestRotateTime
+
+    @LatestRotateTime.setter
+    def LatestRotateTime(self, LatestRotateTime):
+        self._LatestRotateTime = LatestRotateTime
+
+    @property
+    def NextRotateBeginTime(self):
+        return self._NextRotateBeginTime
+
+    @NextRotateBeginTime.setter
+    def NextRotateBeginTime(self, NextRotateBeginTime):
+        self._NextRotateBeginTime = NextRotateBeginTime
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.EnableRotation = params.get("EnableRotation")
-        self.Frequency = params.get("Frequency")
-        self.LatestRotateTime = params.get("LatestRotateTime")
-        self.NextRotateBeginTime = params.get("NextRotateBeginTime")
-        self.RequestId = params.get("RequestId")
+        self._EnableRotation = params.get("EnableRotation")
+        self._Frequency = params.get("Frequency")
+        self._LatestRotateTime = params.get("LatestRotateTime")
+        self._NextRotateBeginTime = params.get("NextRotateBeginTime")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeRotationHistoryRequest(AbstractModel):
@@ -551,18 +1054,27 @@ class DescribeRotationHistoryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecretName: Specifies the name of the credential for which to get the credential rotation records.
+        :param _SecretName: Specifies the name of the credential for which to get the credential rotation records.
         :type SecretName: str
         """
-        self.SecretName = None
+        self._SecretName = None
+
+    @property
+    def SecretName(self):
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
 
 
     def _deserialize(self, params):
-        self.SecretName = params.get("SecretName")
+        self._SecretName = params.get("SecretName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -575,22 +1087,46 @@ class DescribeRotationHistoryResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VersionIDs: List of version numbers.
+        :param _VersionIDs: List of version numbers.
         :type VersionIDs: list of str
-        :param TotalCount: Number of version numbers. The maximum number of version numbers that can be shown to users is 10.
+        :param _TotalCount: Number of version numbers. The maximum number of version numbers that can be shown to users is 10.
         :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.VersionIDs = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._VersionIDs = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def VersionIDs(self):
+        return self._VersionIDs
+
+    @VersionIDs.setter
+    def VersionIDs(self, VersionIDs):
+        self._VersionIDs = VersionIDs
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.VersionIDs = params.get("VersionIDs")
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+        self._VersionIDs = params.get("VersionIDs")
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSecretRequest(AbstractModel):
@@ -600,18 +1136,27 @@ class DescribeSecretRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecretName: Name of a Secret whose detailed information is to be obtained.
+        :param _SecretName: Name of a Secret whose detailed information is to be obtained.
         :type SecretName: str
         """
-        self.SecretName = None
+        self._SecretName = None
+
+    @property
+    def SecretName(self):
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
 
 
     def _deserialize(self, params):
-        self.SecretName = params.get("SecretName")
+        self._SecretName = params.get("SecretName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -624,87 +1169,223 @@ class DescribeSecretResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecretName: Name of the Secret.
+        :param _SecretName: Name of the Secret.
         :type SecretName: str
-        :param Description: Description of the Secret.
+        :param _Description: Description of the Secret.
         :type Description: str
-        :param KmsKeyId: ID of the KMS CMK used for encryption.
+        :param _KmsKeyId: ID of the KMS CMK used for encryption.
         :type KmsKeyId: str
-        :param CreateUin: Creator UIN.
+        :param _CreateUin: Creator UIN.
         :type CreateUin: int
-        :param Status: Credential status: Enabled, Disabled, PendingDelete, Creating, Failed.
+        :param _Status: Credential status: Enabled, Disabled, PendingDelete, Creating, Failed.
         :type Status: str
-        :param DeleteTime: Deletion time, formatted as a Unix timestamp. For a Secret that is not in `PendingDelete` status, this value is 0.
+        :param _DeleteTime: Deletion time, formatted as a Unix timestamp. For a Secret that is not in `PendingDelete` status, this value is 0.
         :type DeleteTime: int
-        :param CreateTime: Creation time.
+        :param _CreateTime: Creation time.
         :type CreateTime: int
-        :param SecretType: `0`: user-defined secret; `1`: database credential; `2`: SSH key secret.
+        :param _SecretType: `0`: user-defined secret; `1`: database credential; `2`: SSH key secret.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type SecretType: int
-        :param ProductName: Tencent Cloud service name.
+        :param _ProductName: Tencent Cloud service name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ProductName: str
-        :param ResourceID: Tencent Cloud service instance ID.
+        :param _ResourceID: Tencent Cloud service instance ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ResourceID: str
-        :param RotationStatus: Whether to enable rotation. `True`: enable rotation; `False`: disable rotation.
+        :param _RotationStatus: Whether to enable rotation. `True`: enable rotation; `False`: disable rotation.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type RotationStatus: bool
-        :param RotationFrequency: Rotation frequency in days by default.
+        :param _RotationFrequency: Rotation frequency in days by default.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RotationFrequency: int
-        :param ResourceName: Secret name. This field is only valid when the `SecretType` is set to `2` (SSH key secret).
+        :param _ResourceName: Secret name. This field is only valid when the `SecretType` is set to `2` (SSH key secret).
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ResourceName: str
-        :param ProjectID: Project ID. This field is only valid when the `SecretType` is set to `2` (SSH key secret).
+        :param _ProjectID: Project ID. This field is only valid when the `SecretType` is set to `2` (SSH key secret).
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ProjectID: int
-        :param AssociatedInstanceIDs: ID of the CVM instance associated with the SSH key. ID. This field is only valid when the `SecretType` is set to `2` (SSH key secret).
+        :param _AssociatedInstanceIDs: ID of the CVM instance associated with the SSH key. ID. This field is only valid when the `SecretType` is set to `2` (SSH key secret).
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AssociatedInstanceIDs: list of str
-        :param TargetUin: UIN of the Tencent Cloud API key. This field is valid when the secret type is Tencent Cloud API key secret.
+        :param _TargetUin: UIN of the Tencent Cloud API key. This field is valid when the secret type is Tencent Cloud API key secret.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TargetUin: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.SecretName = None
-        self.Description = None
-        self.KmsKeyId = None
-        self.CreateUin = None
-        self.Status = None
-        self.DeleteTime = None
-        self.CreateTime = None
-        self.SecretType = None
-        self.ProductName = None
-        self.ResourceID = None
-        self.RotationStatus = None
-        self.RotationFrequency = None
-        self.ResourceName = None
-        self.ProjectID = None
-        self.AssociatedInstanceIDs = None
-        self.TargetUin = None
-        self.RequestId = None
+        self._SecretName = None
+        self._Description = None
+        self._KmsKeyId = None
+        self._CreateUin = None
+        self._Status = None
+        self._DeleteTime = None
+        self._CreateTime = None
+        self._SecretType = None
+        self._ProductName = None
+        self._ResourceID = None
+        self._RotationStatus = None
+        self._RotationFrequency = None
+        self._ResourceName = None
+        self._ProjectID = None
+        self._AssociatedInstanceIDs = None
+        self._TargetUin = None
+        self._RequestId = None
+
+    @property
+    def SecretName(self):
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def KmsKeyId(self):
+        return self._KmsKeyId
+
+    @KmsKeyId.setter
+    def KmsKeyId(self, KmsKeyId):
+        self._KmsKeyId = KmsKeyId
+
+    @property
+    def CreateUin(self):
+        return self._CreateUin
+
+    @CreateUin.setter
+    def CreateUin(self, CreateUin):
+        self._CreateUin = CreateUin
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def DeleteTime(self):
+        return self._DeleteTime
+
+    @DeleteTime.setter
+    def DeleteTime(self, DeleteTime):
+        self._DeleteTime = DeleteTime
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def SecretType(self):
+        return self._SecretType
+
+    @SecretType.setter
+    def SecretType(self, SecretType):
+        self._SecretType = SecretType
+
+    @property
+    def ProductName(self):
+        return self._ProductName
+
+    @ProductName.setter
+    def ProductName(self, ProductName):
+        self._ProductName = ProductName
+
+    @property
+    def ResourceID(self):
+        return self._ResourceID
+
+    @ResourceID.setter
+    def ResourceID(self, ResourceID):
+        self._ResourceID = ResourceID
+
+    @property
+    def RotationStatus(self):
+        return self._RotationStatus
+
+    @RotationStatus.setter
+    def RotationStatus(self, RotationStatus):
+        self._RotationStatus = RotationStatus
+
+    @property
+    def RotationFrequency(self):
+        return self._RotationFrequency
+
+    @RotationFrequency.setter
+    def RotationFrequency(self, RotationFrequency):
+        self._RotationFrequency = RotationFrequency
+
+    @property
+    def ResourceName(self):
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
+
+    @property
+    def ProjectID(self):
+        return self._ProjectID
+
+    @ProjectID.setter
+    def ProjectID(self, ProjectID):
+        self._ProjectID = ProjectID
+
+    @property
+    def AssociatedInstanceIDs(self):
+        return self._AssociatedInstanceIDs
+
+    @AssociatedInstanceIDs.setter
+    def AssociatedInstanceIDs(self, AssociatedInstanceIDs):
+        self._AssociatedInstanceIDs = AssociatedInstanceIDs
+
+    @property
+    def TargetUin(self):
+        return self._TargetUin
+
+    @TargetUin.setter
+    def TargetUin(self, TargetUin):
+        self._TargetUin = TargetUin
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SecretName = params.get("SecretName")
-        self.Description = params.get("Description")
-        self.KmsKeyId = params.get("KmsKeyId")
-        self.CreateUin = params.get("CreateUin")
-        self.Status = params.get("Status")
-        self.DeleteTime = params.get("DeleteTime")
-        self.CreateTime = params.get("CreateTime")
-        self.SecretType = params.get("SecretType")
-        self.ProductName = params.get("ProductName")
-        self.ResourceID = params.get("ResourceID")
-        self.RotationStatus = params.get("RotationStatus")
-        self.RotationFrequency = params.get("RotationFrequency")
-        self.ResourceName = params.get("ResourceName")
-        self.ProjectID = params.get("ProjectID")
-        self.AssociatedInstanceIDs = params.get("AssociatedInstanceIDs")
-        self.TargetUin = params.get("TargetUin")
-        self.RequestId = params.get("RequestId")
+        self._SecretName = params.get("SecretName")
+        self._Description = params.get("Description")
+        self._KmsKeyId = params.get("KmsKeyId")
+        self._CreateUin = params.get("CreateUin")
+        self._Status = params.get("Status")
+        self._DeleteTime = params.get("DeleteTime")
+        self._CreateTime = params.get("CreateTime")
+        self._SecretType = params.get("SecretType")
+        self._ProductName = params.get("ProductName")
+        self._ResourceID = params.get("ResourceID")
+        self._RotationStatus = params.get("RotationStatus")
+        self._RotationFrequency = params.get("RotationFrequency")
+        self._ResourceName = params.get("ResourceName")
+        self._ProjectID = params.get("ProjectID")
+        self._AssociatedInstanceIDs = params.get("AssociatedInstanceIDs")
+        self._TargetUin = params.get("TargetUin")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSupportedProductsRequest(AbstractModel):
@@ -720,22 +1401,46 @@ class DescribeSupportedProductsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Products: List of supported services.
+        :param _Products: List of supported services.
         :type Products: list of str
-        :param TotalCount: Number of supported services
+        :param _TotalCount: Number of supported services
         :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Products = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._Products = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Products(self):
+        return self._Products
+
+    @Products.setter
+    def Products(self, Products):
+        self._Products = Products
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Products = params.get("Products")
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+        self._Products = params.get("Products")
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DisableSecretRequest(AbstractModel):
@@ -745,18 +1450,27 @@ class DisableSecretRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecretName: Name of the Secret to be disabled.
+        :param _SecretName: Name of the Secret to be disabled.
         :type SecretName: str
         """
-        self.SecretName = None
+        self._SecretName = None
+
+    @property
+    def SecretName(self):
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
 
 
     def _deserialize(self, params):
-        self.SecretName = params.get("SecretName")
+        self._SecretName = params.get("SecretName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -769,18 +1483,34 @@ class DisableSecretResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecretName: Name of the disabled Secret.
+        :param _SecretName: Name of the disabled Secret.
         :type SecretName: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.SecretName = None
-        self.RequestId = None
+        self._SecretName = None
+        self._RequestId = None
+
+    @property
+    def SecretName(self):
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SecretName = params.get("SecretName")
-        self.RequestId = params.get("RequestId")
+        self._SecretName = params.get("SecretName")
+        self._RequestId = params.get("RequestId")
 
 
 class EnableSecretRequest(AbstractModel):
@@ -790,18 +1520,27 @@ class EnableSecretRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecretName: Name of the Secret to be enabled.
+        :param _SecretName: Name of the Secret to be enabled.
         :type SecretName: str
         """
-        self.SecretName = None
+        self._SecretName = None
+
+    @property
+    def SecretName(self):
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
 
 
     def _deserialize(self, params):
-        self.SecretName = params.get("SecretName")
+        self._SecretName = params.get("SecretName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -814,18 +1553,34 @@ class EnableSecretResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecretName: Name of the enabled Secret.
+        :param _SecretName: Name of the enabled Secret.
         :type SecretName: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.SecretName = None
-        self.RequestId = None
+        self._SecretName = None
+        self._RequestId = None
+
+    @property
+    def SecretName(self):
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SecretName = params.get("SecretName")
-        self.RequestId = params.get("RequestId")
+        self._SecretName = params.get("SecretName")
+        self._RequestId = params.get("RequestId")
 
 
 class GetRegionsRequest(AbstractModel):
@@ -841,18 +1596,34 @@ class GetRegionsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Regions: List of regions.
+        :param _Regions: List of regions.
         :type Regions: list of str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Regions = None
-        self.RequestId = None
+        self._Regions = None
+        self._RequestId = None
+
+    @property
+    def Regions(self):
+        return self._Regions
+
+    @Regions.setter
+    def Regions(self, Regions):
+        self._Regions = Regions
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Regions = params.get("Regions")
-        self.RequestId = params.get("RequestId")
+        self._Regions = params.get("Regions")
+        self._RequestId = params.get("RequestId")
 
 
 class GetSSHKeyPairValueRequest(AbstractModel):
@@ -862,22 +1633,39 @@ class GetSSHKeyPairValueRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecretName: Secret name. This field is only valid for SSH key secrets.
+        :param _SecretName: Secret name. This field is only valid for SSH key secrets.
         :type SecretName: str
-        :param SSHKeyId: ID of the key pair, which is the unique identifier of the key pair in the CVM.
+        :param _SSHKeyId: ID of the key pair, which is the unique identifier of the key pair in the CVM.
         :type SSHKeyId: str
         """
-        self.SecretName = None
-        self.SSHKeyId = None
+        self._SecretName = None
+        self._SSHKeyId = None
+
+    @property
+    def SecretName(self):
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
+
+    @property
+    def SSHKeyId(self):
+        return self._SSHKeyId
+
+    @SSHKeyId.setter
+    def SSHKeyId(self, SSHKeyId):
+        self._SSHKeyId = SSHKeyId
 
 
     def _deserialize(self, params):
-        self.SecretName = params.get("SecretName")
-        self.SSHKeyId = params.get("SSHKeyId")
+        self._SecretName = params.get("SecretName")
+        self._SSHKeyId = params.get("SSHKeyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -890,40 +1678,96 @@ class GetSSHKeyPairValueResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SSHKeyID: ID of the SSH key.
+        :param _SSHKeyID: ID of the SSH key.
         :type SSHKeyID: str
-        :param PublicKey: Plaintext value of the Base64-encoded public key.
+        :param _PublicKey: Plaintext value of the Base64-encoded public key.
         :type PublicKey: str
-        :param PrivateKey: Plaintext value of the Base64-encoded private key.
+        :param _PrivateKey: Plaintext value of the Base64-encoded private key.
         :type PrivateKey: str
-        :param ProjectID: ID of the project to which the SSH key belongs.
+        :param _ProjectID: ID of the project to which the SSH key belongs.
         :type ProjectID: int
-        :param SSHKeyDescription: Description of the SSH key.
+        :param _SSHKeyDescription: Description of the SSH key.
 The description can be modified in the CVM console.
         :type SSHKeyDescription: str
-        :param SSHKeyName: Name of the SSH key.
+        :param _SSHKeyName: Name of the SSH key.
 The name can be modified in the CVM console.
         :type SSHKeyName: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.SSHKeyID = None
-        self.PublicKey = None
-        self.PrivateKey = None
-        self.ProjectID = None
-        self.SSHKeyDescription = None
-        self.SSHKeyName = None
-        self.RequestId = None
+        self._SSHKeyID = None
+        self._PublicKey = None
+        self._PrivateKey = None
+        self._ProjectID = None
+        self._SSHKeyDescription = None
+        self._SSHKeyName = None
+        self._RequestId = None
+
+    @property
+    def SSHKeyID(self):
+        return self._SSHKeyID
+
+    @SSHKeyID.setter
+    def SSHKeyID(self, SSHKeyID):
+        self._SSHKeyID = SSHKeyID
+
+    @property
+    def PublicKey(self):
+        return self._PublicKey
+
+    @PublicKey.setter
+    def PublicKey(self, PublicKey):
+        self._PublicKey = PublicKey
+
+    @property
+    def PrivateKey(self):
+        return self._PrivateKey
+
+    @PrivateKey.setter
+    def PrivateKey(self, PrivateKey):
+        self._PrivateKey = PrivateKey
+
+    @property
+    def ProjectID(self):
+        return self._ProjectID
+
+    @ProjectID.setter
+    def ProjectID(self, ProjectID):
+        self._ProjectID = ProjectID
+
+    @property
+    def SSHKeyDescription(self):
+        return self._SSHKeyDescription
+
+    @SSHKeyDescription.setter
+    def SSHKeyDescription(self, SSHKeyDescription):
+        self._SSHKeyDescription = SSHKeyDescription
+
+    @property
+    def SSHKeyName(self):
+        return self._SSHKeyName
+
+    @SSHKeyName.setter
+    def SSHKeyName(self, SSHKeyName):
+        self._SSHKeyName = SSHKeyName
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SSHKeyID = params.get("SSHKeyID")
-        self.PublicKey = params.get("PublicKey")
-        self.PrivateKey = params.get("PrivateKey")
-        self.ProjectID = params.get("ProjectID")
-        self.SSHKeyDescription = params.get("SSHKeyDescription")
-        self.SSHKeyName = params.get("SSHKeyName")
-        self.RequestId = params.get("RequestId")
+        self._SSHKeyID = params.get("SSHKeyID")
+        self._PublicKey = params.get("PublicKey")
+        self._PrivateKey = params.get("PrivateKey")
+        self._ProjectID = params.get("ProjectID")
+        self._SSHKeyDescription = params.get("SSHKeyDescription")
+        self._SSHKeyName = params.get("SSHKeyName")
+        self._RequestId = params.get("RequestId")
 
 
 class GetSecretValueRequest(AbstractModel):
@@ -933,23 +1777,40 @@ class GetSecretValueRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecretName: Name of a Secret.
+        :param _SecretName: Name of a Secret.
         :type SecretName: str
-        :param VersionId: Specifies the version number of the corresponding credential.
+        :param _VersionId: Specifies the version number of the corresponding credential.
 For Tencent Cloud service credentials such as MySQL credentials, this API is used to get the plaintext information of a previously rotated credential by specifying the credential name and historical version number. If you want to get the plaintext of the credential version currently in use, you need to specify the version number as `SSM_Current`.
         :type VersionId: str
         """
-        self.SecretName = None
-        self.VersionId = None
+        self._SecretName = None
+        self._VersionId = None
+
+    @property
+    def SecretName(self):
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
+
+    @property
+    def VersionId(self):
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
 
 
     def _deserialize(self, params):
-        self.SecretName = params.get("SecretName")
-        self.VersionId = params.get("VersionId")
+        self._SecretName = params.get("SecretName")
+        self._VersionId = params.get("VersionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -962,32 +1823,72 @@ class GetSecretValueResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecretName: Name of the Secret.
+        :param _SecretName: Name of the Secret.
         :type SecretName: str
-        :param VersionId: ID of the Secret version.
+        :param _VersionId: ID of the Secret version.
         :type VersionId: str
-        :param SecretBinary: When creating a credential (CreateSecret), if you specify binary data, this field will be the Base64-encoded returned result. The application needs to Base64-decode the result to get the original data.
+        :param _SecretBinary: When creating a credential (CreateSecret), if you specify binary data, this field will be the Base64-encoded returned result. The application needs to Base64-decode the result to get the original data.
 Either `SecretBinary` or `SecretString` cannot be empty.
         :type SecretBinary: str
-        :param SecretString: When creating a credential (CreateSecret), if you specify general text data, this field will be the returned result.
+        :param _SecretString: When creating a credential (CreateSecret), if you specify general text data, this field will be the returned result.
 Either `SecretBinary` or `SecretString` cannot be empty.
         :type SecretString: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.SecretName = None
-        self.VersionId = None
-        self.SecretBinary = None
-        self.SecretString = None
-        self.RequestId = None
+        self._SecretName = None
+        self._VersionId = None
+        self._SecretBinary = None
+        self._SecretString = None
+        self._RequestId = None
+
+    @property
+    def SecretName(self):
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
+
+    @property
+    def VersionId(self):
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+    @property
+    def SecretBinary(self):
+        return self._SecretBinary
+
+    @SecretBinary.setter
+    def SecretBinary(self, SecretBinary):
+        self._SecretBinary = SecretBinary
+
+    @property
+    def SecretString(self):
+        return self._SecretString
+
+    @SecretString.setter
+    def SecretString(self, SecretString):
+        self._SecretString = SecretString
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SecretName = params.get("SecretName")
-        self.VersionId = params.get("VersionId")
-        self.SecretBinary = params.get("SecretBinary")
-        self.SecretString = params.get("SecretString")
-        self.RequestId = params.get("RequestId")
+        self._SecretName = params.get("SecretName")
+        self._VersionId = params.get("VersionId")
+        self._SecretBinary = params.get("SecretBinary")
+        self._SecretString = params.get("SecretString")
+        self._RequestId = params.get("RequestId")
 
 
 class GetServiceStatusRequest(AbstractModel):
@@ -1003,27 +1904,59 @@ class GetServiceStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceEnabled: `true`: The service is activated; `false`: The service is not activated.
+        :param _ServiceEnabled: `true`: The service is activated; `false`: The service is not activated.
         :type ServiceEnabled: bool
-        :param InvalidType: Invalid service type. `0`: not purchased; `1`: normal; `2`: suspended due to arrears; `3`: resource released
+        :param _InvalidType: Invalid service type. `0`: not purchased; `1`: normal; `2`: suspended due to arrears; `3`: resource released
         :type InvalidType: int
-        :param AccessKeyEscrowEnabled: `true`: Allow SSM to manage Tencent Cloud API key secrets.
+        :param _AccessKeyEscrowEnabled: `true`: Allow SSM to manage Tencent Cloud API key secrets.
 `false`: Forbid SSM to manage Tencent Cloud API key secrets.
         :type AccessKeyEscrowEnabled: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.ServiceEnabled = None
-        self.InvalidType = None
-        self.AccessKeyEscrowEnabled = None
-        self.RequestId = None
+        self._ServiceEnabled = None
+        self._InvalidType = None
+        self._AccessKeyEscrowEnabled = None
+        self._RequestId = None
+
+    @property
+    def ServiceEnabled(self):
+        return self._ServiceEnabled
+
+    @ServiceEnabled.setter
+    def ServiceEnabled(self, ServiceEnabled):
+        self._ServiceEnabled = ServiceEnabled
+
+    @property
+    def InvalidType(self):
+        return self._InvalidType
+
+    @InvalidType.setter
+    def InvalidType(self, InvalidType):
+        self._InvalidType = InvalidType
+
+    @property
+    def AccessKeyEscrowEnabled(self):
+        return self._AccessKeyEscrowEnabled
+
+    @AccessKeyEscrowEnabled.setter
+    def AccessKeyEscrowEnabled(self, AccessKeyEscrowEnabled):
+        self._AccessKeyEscrowEnabled = AccessKeyEscrowEnabled
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ServiceEnabled = params.get("ServiceEnabled")
-        self.InvalidType = params.get("InvalidType")
-        self.AccessKeyEscrowEnabled = params.get("AccessKeyEscrowEnabled")
-        self.RequestId = params.get("RequestId")
+        self._ServiceEnabled = params.get("ServiceEnabled")
+        self._InvalidType = params.get("InvalidType")
+        self._AccessKeyEscrowEnabled = params.get("AccessKeyEscrowEnabled")
+        self._RequestId = params.get("RequestId")
 
 
 class ListSecretVersionIdsRequest(AbstractModel):
@@ -1033,18 +1966,27 @@ class ListSecretVersionIdsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecretName: Name of the Secret.
+        :param _SecretName: Name of the Secret.
         :type SecretName: str
         """
-        self.SecretName = None
+        self._SecretName = None
+
+    @property
+    def SecretName(self):
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
 
 
     def _deserialize(self, params):
-        self.SecretName = params.get("SecretName")
+        self._SecretName = params.get("SecretName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1057,28 +1999,52 @@ class ListSecretVersionIdsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecretName: Name of the Secret.
+        :param _SecretName: Name of the Secret.
         :type SecretName: str
-        :param Versions: `VersionId` list.
+        :param _Versions: `VersionId` list.
 Note: This field may return `null`, indicating that no valid value was found.
         :type Versions: list of VersionInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.SecretName = None
-        self.Versions = None
-        self.RequestId = None
+        self._SecretName = None
+        self._Versions = None
+        self._RequestId = None
+
+    @property
+    def SecretName(self):
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
+
+    @property
+    def Versions(self):
+        return self._Versions
+
+    @Versions.setter
+    def Versions(self, Versions):
+        self._Versions = Versions
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SecretName = params.get("SecretName")
+        self._SecretName = params.get("SecretName")
         if params.get("Versions") is not None:
-            self.Versions = []
+            self._Versions = []
             for item in params.get("Versions"):
                 obj = VersionInfo()
                 obj._deserialize(item)
-                self.Versions.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Versions.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ListSecretsRequest(AbstractModel):
@@ -1088,13 +2054,13 @@ class ListSecretsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: Starting position of the list, starting at 0. If not specified, 0 is used by default.
+        :param _Offset: Starting position of the list, starting at 0. If not specified, 0 is used by default.
         :type Offset: int
-        :param Limit: Maximum number of returned Secrets in a query. If not set or set to 0, 20 is used by default.
+        :param _Limit: Maximum number of returned Secrets in a query. If not set or set to 0, 20 is used by default.
         :type Limit: int
-        :param OrderType: Sorting order according to the creation time. If not set or set to 0, descending order is used; if set to 1, ascending order is used.
+        :param _OrderType: Sorting order according to the creation time. If not set or set to 0, descending order is used; if set to 1, ascending order is used.
         :type OrderType: int
-        :param State: Filter based on credential status.
+        :param _State: Filter based on credential status.
 The default value is 0, indicating to query all.
 1: query the list of credentials in `Enabled` status.
 2: query the list of credentials in `Disabled` status.
@@ -1103,50 +2069,115 @@ The default value is 0, indicating to query all.
 5: query the list of credentials in `CreateFailed` status.
 The `PendingCreate` and `CreateFailed` status only take effect when `SecretType` is Tencent Cloud service credential
         :type State: int
-        :param SearchSecretName: Filter according to Secret names. If left empty, this filter is not applied.
+        :param _SearchSecretName: Filter according to Secret names. If left empty, this filter is not applied.
         :type SearchSecretName: str
-        :param TagFilters: Tag filter.
+        :param _TagFilters: Tag filter.
         :type TagFilters: list of TagFilter
-        :param SecretType: `0` (default): user-defined secret.
+        :param _SecretType: `0` (default): user-defined secret.
 `1`: Tencent Cloud services secret.
 `2`: SSH key secret.
 `3`: Tencent Cloud API key secret.
         :type SecretType: int
-        :param ProductName: This parameter is valid only when SecretType is `1`.
+        :param _ProductName: This parameter is valid only when SecretType is `1`.
  
 An empty value indicates querying all types of Tencent Cloud service secrets.
 `Mysql`: queries MySQL database credentials.
 `Tdsql-mysql`: queries TDSQL MySQL database credentials.
         :type ProductName: str
         """
-        self.Offset = None
-        self.Limit = None
-        self.OrderType = None
-        self.State = None
-        self.SearchSecretName = None
-        self.TagFilters = None
-        self.SecretType = None
-        self.ProductName = None
+        self._Offset = None
+        self._Limit = None
+        self._OrderType = None
+        self._State = None
+        self._SearchSecretName = None
+        self._TagFilters = None
+        self._SecretType = None
+        self._ProductName = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def OrderType(self):
+        return self._OrderType
+
+    @OrderType.setter
+    def OrderType(self, OrderType):
+        self._OrderType = OrderType
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def SearchSecretName(self):
+        return self._SearchSecretName
+
+    @SearchSecretName.setter
+    def SearchSecretName(self, SearchSecretName):
+        self._SearchSecretName = SearchSecretName
+
+    @property
+    def TagFilters(self):
+        return self._TagFilters
+
+    @TagFilters.setter
+    def TagFilters(self, TagFilters):
+        self._TagFilters = TagFilters
+
+    @property
+    def SecretType(self):
+        return self._SecretType
+
+    @SecretType.setter
+    def SecretType(self, SecretType):
+        self._SecretType = SecretType
+
+    @property
+    def ProductName(self):
+        return self._ProductName
+
+    @ProductName.setter
+    def ProductName(self, ProductName):
+        self._ProductName = ProductName
 
 
     def _deserialize(self, params):
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.OrderType = params.get("OrderType")
-        self.State = params.get("State")
-        self.SearchSecretName = params.get("SearchSecretName")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._OrderType = params.get("OrderType")
+        self._State = params.get("State")
+        self._SearchSecretName = params.get("SearchSecretName")
         if params.get("TagFilters") is not None:
-            self.TagFilters = []
+            self._TagFilters = []
             for item in params.get("TagFilters"):
                 obj = TagFilter()
                 obj._deserialize(item)
-                self.TagFilters.append(obj)
-        self.SecretType = params.get("SecretType")
-        self.ProductName = params.get("ProductName")
+                self._TagFilters.append(obj)
+        self._SecretType = params.get("SecretType")
+        self._ProductName = params.get("ProductName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1159,27 +2190,51 @@ class ListSecretsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Number of filtered Secrets according to `State` and `SearchSecretName`.
+        :param _TotalCount: Number of filtered Secrets according to `State` and `SearchSecretName`.
         :type TotalCount: int
-        :param SecretMetadatas: List of Secret information.
+        :param _SecretMetadatas: List of Secret information.
         :type SecretMetadatas: list of SecretMetadata
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.SecretMetadatas = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._SecretMetadatas = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def SecretMetadatas(self):
+        return self._SecretMetadatas
+
+    @SecretMetadatas.setter
+    def SecretMetadatas(self, SecretMetadatas):
+        self._SecretMetadatas = SecretMetadatas
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("SecretMetadatas") is not None:
-            self.SecretMetadatas = []
+            self._SecretMetadatas = []
             for item in params.get("SecretMetadatas"):
                 obj = SecretMetadata()
                 obj._deserialize(item)
-                self.SecretMetadatas.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._SecretMetadatas.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ProductPrivilegeUnit(AbstractModel):
@@ -1189,7 +2244,7 @@ class ProductPrivilegeUnit(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PrivilegeName: Permission name. Valid values:
+        :param _PrivilegeName: Permission name. Valid values:
 GlobalPrivileges
 DatabasePrivileges
 TablePrivileges
@@ -1201,7 +2256,7 @@ When the permission is `TablePrivileges`, the database name and the table name i
 
 When the permission is `ColumnPrivileges`, the database name, table name in the database, and column name in the table must be specified by the `Database`, `TableName`, and `ColumnName` parameters.
         :type PrivilegeName: str
-        :param Privileges: Permission list.
+        :param _Privileges: Permission list.
 For the `Mysql` service, optional permission values are:
 
 1. Valid values of `GlobalPrivileges`: "SELECT","INSERT","UPDATE","DELETE","CREATE", "PROCESS", "DROP","REFERENCES","INDEX","ALTER","SHOW DATABASES","CREATE TEMPORARY TABLES","LOCK TABLES","EXECUTE","CREATE VIEW","SHOW VIEW","CREATE ROUTINE","ALTER ROUTINE","EVENT","TRIGGER".
@@ -1216,32 +2271,73 @@ Note: if this parameter is not passed in, it means to clear the permission.
 4. Valid values of `ColumnPrivileges`: "SELECT","INSERT","UPDATE","REFERENCES".
 Note: if this parameter is not passed in, it means to clear the permission.
         :type Privileges: list of str
-        :param Database: This value takes effect only when `PrivilegeName` is `DatabasePrivileges`.
+        :param _Database: This value takes effect only when `PrivilegeName` is `DatabasePrivileges`.
         :type Database: str
-        :param TableName: This value takes effect only when `PrivilegeName` is `TablePrivileges`, and the `Database` parameter is required in this case to explicitly indicate the database instance.
+        :param _TableName: This value takes effect only when `PrivilegeName` is `TablePrivileges`, and the `Database` parameter is required in this case to explicitly indicate the database instance.
         :type TableName: str
-        :param ColumnName: This value takes effect only when `PrivilegeName` is `ColumnPrivileges`, and the following parameters are required in this case:
+        :param _ColumnName: This value takes effect only when `PrivilegeName` is `ColumnPrivileges`, and the following parameters are required in this case:
 Database: explicitly indicate the database instance.
 TableName: explicitly indicate the table
         :type ColumnName: str
         """
-        self.PrivilegeName = None
-        self.Privileges = None
-        self.Database = None
-        self.TableName = None
-        self.ColumnName = None
+        self._PrivilegeName = None
+        self._Privileges = None
+        self._Database = None
+        self._TableName = None
+        self._ColumnName = None
+
+    @property
+    def PrivilegeName(self):
+        return self._PrivilegeName
+
+    @PrivilegeName.setter
+    def PrivilegeName(self, PrivilegeName):
+        self._PrivilegeName = PrivilegeName
+
+    @property
+    def Privileges(self):
+        return self._Privileges
+
+    @Privileges.setter
+    def Privileges(self, Privileges):
+        self._Privileges = Privileges
+
+    @property
+    def Database(self):
+        return self._Database
+
+    @Database.setter
+    def Database(self, Database):
+        self._Database = Database
+
+    @property
+    def TableName(self):
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def ColumnName(self):
+        return self._ColumnName
+
+    @ColumnName.setter
+    def ColumnName(self, ColumnName):
+        self._ColumnName = ColumnName
 
 
     def _deserialize(self, params):
-        self.PrivilegeName = params.get("PrivilegeName")
-        self.Privileges = params.get("Privileges")
-        self.Database = params.get("Database")
-        self.TableName = params.get("TableName")
-        self.ColumnName = params.get("ColumnName")
+        self._PrivilegeName = params.get("PrivilegeName")
+        self._Privileges = params.get("Privileges")
+        self._Database = params.get("Database")
+        self._TableName = params.get("TableName")
+        self._ColumnName = params.get("ColumnName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1254,31 +2350,64 @@ class PutSecretValueRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecretName: Name of a Secret where the version is added to.
+        :param _SecretName: Name of a Secret where the version is added to.
         :type SecretName: str
-        :param VersionId: ID of the new Secret version. It can be up to 64 bytes, contain letters, digits, hyphens (-), and underscores (_), and must begin with a letter or digit.
+        :param _VersionId: ID of the new Secret version. It can be up to 64 bytes, contain letters, digits, hyphens (-), and underscores (_), and must begin with a letter or digit.
         :type VersionId: str
-        :param SecretBinary: Base64-encoded binary credential information.
+        :param _SecretBinary: Base64-encoded binary credential information.
 Either `SecretBinary` or `SecretString` must be set.
         :type SecretBinary: str
-        :param SecretString: Secret information plaintext in text format, base64 encoding is not needed. Either `SecretBinary` or `SecretString` must be set.
+        :param _SecretString: Secret information plaintext in text format, base64 encoding is not needed. Either `SecretBinary` or `SecretString` must be set.
         :type SecretString: str
         """
-        self.SecretName = None
-        self.VersionId = None
-        self.SecretBinary = None
-        self.SecretString = None
+        self._SecretName = None
+        self._VersionId = None
+        self._SecretBinary = None
+        self._SecretString = None
+
+    @property
+    def SecretName(self):
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
+
+    @property
+    def VersionId(self):
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+    @property
+    def SecretBinary(self):
+        return self._SecretBinary
+
+    @SecretBinary.setter
+    def SecretBinary(self, SecretBinary):
+        self._SecretBinary = SecretBinary
+
+    @property
+    def SecretString(self):
+        return self._SecretString
+
+    @SecretString.setter
+    def SecretString(self, SecretString):
+        self._SecretString = SecretString
 
 
     def _deserialize(self, params):
-        self.SecretName = params.get("SecretName")
-        self.VersionId = params.get("VersionId")
-        self.SecretBinary = params.get("SecretBinary")
-        self.SecretString = params.get("SecretString")
+        self._SecretName = params.get("SecretName")
+        self._VersionId = params.get("VersionId")
+        self._SecretBinary = params.get("SecretBinary")
+        self._SecretString = params.get("SecretString")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1291,22 +2420,46 @@ class PutSecretValueResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecretName: Name of the Secret.
+        :param _SecretName: Name of the Secret.
         :type SecretName: str
-        :param VersionId: Version ID that is newly added.
+        :param _VersionId: Version ID that is newly added.
         :type VersionId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.SecretName = None
-        self.VersionId = None
-        self.RequestId = None
+        self._SecretName = None
+        self._VersionId = None
+        self._RequestId = None
+
+    @property
+    def SecretName(self):
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
+
+    @property
+    def VersionId(self):
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SecretName = params.get("SecretName")
-        self.VersionId = params.get("VersionId")
-        self.RequestId = params.get("RequestId")
+        self._SecretName = params.get("SecretName")
+        self._VersionId = params.get("VersionId")
+        self._RequestId = params.get("RequestId")
 
 
 class RestoreSecretRequest(AbstractModel):
@@ -1316,18 +2469,27 @@ class RestoreSecretRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecretName: Name of the Secret to be restored.
+        :param _SecretName: Name of the Secret to be restored.
         :type SecretName: str
         """
-        self.SecretName = None
+        self._SecretName = None
+
+    @property
+    def SecretName(self):
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
 
 
     def _deserialize(self, params):
-        self.SecretName = params.get("SecretName")
+        self._SecretName = params.get("SecretName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1340,18 +2502,34 @@ class RestoreSecretResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecretName: Name of the Secret.
+        :param _SecretName: Name of the Secret.
         :type SecretName: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.SecretName = None
-        self.RequestId = None
+        self._SecretName = None
+        self._RequestId = None
+
+    @property
+    def SecretName(self):
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SecretName = params.get("SecretName")
-        self.RequestId = params.get("RequestId")
+        self._SecretName = params.get("SecretName")
+        self._RequestId = params.get("RequestId")
 
 
 class RotateProductSecretRequest(AbstractModel):
@@ -1361,18 +2539,27 @@ class RotateProductSecretRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecretName: Name of the credential to be rotated.
+        :param _SecretName: Name of the credential to be rotated.
         :type SecretName: str
         """
-        self.SecretName = None
+        self._SecretName = None
+
+    @property
+    def SecretName(self):
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
 
 
     def _deserialize(self, params):
-        self.SecretName = params.get("SecretName")
+        self._SecretName = params.get("SecretName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1385,18 +2572,34 @@ class RotateProductSecretResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowID: Asynchronous rotation task ID. This field is valid when `SecretType` is `1` (i.e., the secret type is Tencent Cloud services secret, such as MySQL/TDSQL credentials).
+        :param _FlowID: Asynchronous rotation task ID. This field is valid when `SecretType` is `1` (i.e., the secret type is Tencent Cloud services secret, such as MySQL/TDSQL credentials).
         :type FlowID: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.FlowID = None
-        self.RequestId = None
+        self._FlowID = None
+        self._RequestId = None
+
+    @property
+    def FlowID(self):
+        return self._FlowID
+
+    @FlowID.setter
+    def FlowID(self, FlowID):
+        self._FlowID = FlowID
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.FlowID = params.get("FlowID")
-        self.RequestId = params.get("RequestId")
+        self._FlowID = params.get("FlowID")
+        self._RequestId = params.get("RequestId")
 
 
 class SecretMetadata(AbstractModel):
@@ -1406,89 +2609,218 @@ class SecretMetadata(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecretName: Credential name
+        :param _SecretName: Credential name
         :type SecretName: str
-        :param Description: Credential description
+        :param _Description: Credential description
         :type Description: str
-        :param KmsKeyId: KMS `KeyId` used to encrypt the credential
+        :param _KmsKeyId: KMS `KeyId` used to encrypt the credential
         :type KmsKeyId: str
-        :param CreateUin: Creator UIN
+        :param _CreateUin: Creator UIN
         :type CreateUin: int
-        :param Status: Credential status: Enabled, Disabled, PendingDelete, Creating, Failed.
+        :param _Status: Credential status: Enabled, Disabled, PendingDelete, Creating, Failed.
         :type Status: str
-        :param DeleteTime: Credential deletion date, which takes effect for credentials in `PendingDelete` status and is in UNIX timestamp format
+        :param _DeleteTime: Credential deletion date, which takes effect for credentials in `PendingDelete` status and is in UNIX timestamp format
         :type DeleteTime: int
-        :param CreateTime: Credential creation time in UNIX timestamp format
+        :param _CreateTime: Credential creation time in UNIX timestamp format
         :type CreateTime: int
-        :param KmsKeyType: Type of the KMS CMK used to encrypt the credential. `DEFAULT` represents the default key created by Secrets Manager, and `CUSTOMER` represents the user-specified key
+        :param _KmsKeyType: Type of the KMS CMK used to encrypt the credential. `DEFAULT` represents the default key created by Secrets Manager, and `CUSTOMER` represents the user-specified key
         :type KmsKeyType: str
-        :param RotationStatus: 1: enable rotation; 0: disable rotation
+        :param _RotationStatus: 1: enable rotation; 0: disable rotation
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RotationStatus: int
-        :param NextRotationTime: Start time of the next rotation in UNIX timestamp format
+        :param _NextRotationTime: Start time of the next rotation in UNIX timestamp format
 Note: this field may return null, indicating that no valid values can be obtained.
         :type NextRotationTime: int
-        :param SecretType: `0`: user-defined secret.
+        :param _SecretType: `0`: user-defined secret.
 `1`: Tencent Cloud services secret.
 `2`: SSH key secret.
 `3`: Tencent Cloud API key secret.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type SecretType: int
-        :param ProductName: Tencent Cloud service name, which takes effect only when `SecretType` is 1 (Tencent Cloud service credential)
+        :param _ProductName: Tencent Cloud service name, which takes effect only when `SecretType` is 1 (Tencent Cloud service credential)
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ProductName: str
-        :param ResourceName: Secret name. This field is only valid when the `SecretType` is set to `2` (SSH key secret).
+        :param _ResourceName: Secret name. This field is only valid when the `SecretType` is set to `2` (SSH key secret).
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ResourceName: str
-        :param ProjectID: Project ID. This field is only valid when the `SecretType` is set to `2` (SSH key secret).
+        :param _ProjectID: Project ID. This field is only valid when the `SecretType` is set to `2` (SSH key secret).
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ProjectID: int
-        :param AssociatedInstanceIDs: ID of the CVM instance associated with the SSH key. ID. This field is only valid when the `SecretType` is set to `2` (SSH key secret).
+        :param _AssociatedInstanceIDs: ID of the CVM instance associated with the SSH key. ID. This field is only valid when the `SecretType` is set to `2` (SSH key secret).
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type AssociatedInstanceIDs: list of str
-        :param TargetUin: UIN of the Tencent Cloud API key. This field is valid when the secret type is Tencent Cloud API key secret.
+        :param _TargetUin: UIN of the Tencent Cloud API key. This field is valid when the secret type is Tencent Cloud API key secret.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type TargetUin: int
         """
-        self.SecretName = None
-        self.Description = None
-        self.KmsKeyId = None
-        self.CreateUin = None
-        self.Status = None
-        self.DeleteTime = None
-        self.CreateTime = None
-        self.KmsKeyType = None
-        self.RotationStatus = None
-        self.NextRotationTime = None
-        self.SecretType = None
-        self.ProductName = None
-        self.ResourceName = None
-        self.ProjectID = None
-        self.AssociatedInstanceIDs = None
-        self.TargetUin = None
+        self._SecretName = None
+        self._Description = None
+        self._KmsKeyId = None
+        self._CreateUin = None
+        self._Status = None
+        self._DeleteTime = None
+        self._CreateTime = None
+        self._KmsKeyType = None
+        self._RotationStatus = None
+        self._NextRotationTime = None
+        self._SecretType = None
+        self._ProductName = None
+        self._ResourceName = None
+        self._ProjectID = None
+        self._AssociatedInstanceIDs = None
+        self._TargetUin = None
+
+    @property
+    def SecretName(self):
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def KmsKeyId(self):
+        return self._KmsKeyId
+
+    @KmsKeyId.setter
+    def KmsKeyId(self, KmsKeyId):
+        self._KmsKeyId = KmsKeyId
+
+    @property
+    def CreateUin(self):
+        return self._CreateUin
+
+    @CreateUin.setter
+    def CreateUin(self, CreateUin):
+        self._CreateUin = CreateUin
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def DeleteTime(self):
+        return self._DeleteTime
+
+    @DeleteTime.setter
+    def DeleteTime(self, DeleteTime):
+        self._DeleteTime = DeleteTime
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def KmsKeyType(self):
+        return self._KmsKeyType
+
+    @KmsKeyType.setter
+    def KmsKeyType(self, KmsKeyType):
+        self._KmsKeyType = KmsKeyType
+
+    @property
+    def RotationStatus(self):
+        return self._RotationStatus
+
+    @RotationStatus.setter
+    def RotationStatus(self, RotationStatus):
+        self._RotationStatus = RotationStatus
+
+    @property
+    def NextRotationTime(self):
+        return self._NextRotationTime
+
+    @NextRotationTime.setter
+    def NextRotationTime(self, NextRotationTime):
+        self._NextRotationTime = NextRotationTime
+
+    @property
+    def SecretType(self):
+        return self._SecretType
+
+    @SecretType.setter
+    def SecretType(self, SecretType):
+        self._SecretType = SecretType
+
+    @property
+    def ProductName(self):
+        return self._ProductName
+
+    @ProductName.setter
+    def ProductName(self, ProductName):
+        self._ProductName = ProductName
+
+    @property
+    def ResourceName(self):
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
+
+    @property
+    def ProjectID(self):
+        return self._ProjectID
+
+    @ProjectID.setter
+    def ProjectID(self, ProjectID):
+        self._ProjectID = ProjectID
+
+    @property
+    def AssociatedInstanceIDs(self):
+        return self._AssociatedInstanceIDs
+
+    @AssociatedInstanceIDs.setter
+    def AssociatedInstanceIDs(self, AssociatedInstanceIDs):
+        self._AssociatedInstanceIDs = AssociatedInstanceIDs
+
+    @property
+    def TargetUin(self):
+        return self._TargetUin
+
+    @TargetUin.setter
+    def TargetUin(self, TargetUin):
+        self._TargetUin = TargetUin
 
 
     def _deserialize(self, params):
-        self.SecretName = params.get("SecretName")
-        self.Description = params.get("Description")
-        self.KmsKeyId = params.get("KmsKeyId")
-        self.CreateUin = params.get("CreateUin")
-        self.Status = params.get("Status")
-        self.DeleteTime = params.get("DeleteTime")
-        self.CreateTime = params.get("CreateTime")
-        self.KmsKeyType = params.get("KmsKeyType")
-        self.RotationStatus = params.get("RotationStatus")
-        self.NextRotationTime = params.get("NextRotationTime")
-        self.SecretType = params.get("SecretType")
-        self.ProductName = params.get("ProductName")
-        self.ResourceName = params.get("ResourceName")
-        self.ProjectID = params.get("ProjectID")
-        self.AssociatedInstanceIDs = params.get("AssociatedInstanceIDs")
-        self.TargetUin = params.get("TargetUin")
+        self._SecretName = params.get("SecretName")
+        self._Description = params.get("Description")
+        self._KmsKeyId = params.get("KmsKeyId")
+        self._CreateUin = params.get("CreateUin")
+        self._Status = params.get("Status")
+        self._DeleteTime = params.get("DeleteTime")
+        self._CreateTime = params.get("CreateTime")
+        self._KmsKeyType = params.get("KmsKeyType")
+        self._RotationStatus = params.get("RotationStatus")
+        self._NextRotationTime = params.get("NextRotationTime")
+        self._SecretType = params.get("SecretType")
+        self._ProductName = params.get("ProductName")
+        self._ResourceName = params.get("ResourceName")
+        self._ProjectID = params.get("ProjectID")
+        self._AssociatedInstanceIDs = params.get("AssociatedInstanceIDs")
+        self._TargetUin = params.get("TargetUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1501,22 +2833,39 @@ class Tag(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TagKey: Tag key
+        :param _TagKey: Tag key
         :type TagKey: str
-        :param TagValue: Tag value
+        :param _TagValue: Tag value
         :type TagValue: str
         """
-        self.TagKey = None
-        self.TagValue = None
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
 
 
     def _deserialize(self, params):
-        self.TagKey = params.get("TagKey")
-        self.TagValue = params.get("TagValue")
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1529,22 +2878,39 @@ class TagFilter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TagKey: Tag key
+        :param _TagKey: Tag key
         :type TagKey: str
-        :param TagValue: Tag value
+        :param _TagValue: Tag value
         :type TagValue: list of str
         """
-        self.TagKey = None
-        self.TagValue = None
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
 
 
     def _deserialize(self, params):
-        self.TagKey = params.get("TagKey")
-        self.TagValue = params.get("TagValue")
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1557,22 +2923,39 @@ class UpdateDescriptionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecretName: Name of a Secret whose description is to be updated.
+        :param _SecretName: Name of a Secret whose description is to be updated.
         :type SecretName: str
-        :param Description: New description information, which can be up to 2048 bytes.
+        :param _Description: New description information, which can be up to 2048 bytes.
         :type Description: str
         """
-        self.SecretName = None
-        self.Description = None
+        self._SecretName = None
+        self._Description = None
+
+    @property
+    def SecretName(self):
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
 
     def _deserialize(self, params):
-        self.SecretName = params.get("SecretName")
-        self.Description = params.get("Description")
+        self._SecretName = params.get("SecretName")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1585,18 +2968,34 @@ class UpdateDescriptionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecretName: Name of the Secret.
+        :param _SecretName: Name of the Secret.
         :type SecretName: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.SecretName = None
-        self.RequestId = None
+        self._SecretName = None
+        self._RequestId = None
+
+    @property
+    def SecretName(self):
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SecretName = params.get("SecretName")
-        self.RequestId = params.get("RequestId")
+        self._SecretName = params.get("SecretName")
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateRotationStatusRequest(AbstractModel):
@@ -1606,33 +3005,66 @@ class UpdateRotationStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecretName: Tencent Cloud service credential name.
+        :param _SecretName: Tencent Cloud service credential name.
         :type SecretName: str
-        :param EnableRotation: Specifies whether to enable rotation.
+        :param _EnableRotation: Specifies whether to enable rotation.
 `true`: enables rotation.
 `false`: disables rotation.
         :type EnableRotation: bool
-        :param Frequency: Rotation frequency in days. Value range: 30–365.
+        :param _Frequency: Rotation frequency in days. Value range: 30–365.
         :type Frequency: int
-        :param RotationBeginTime: User-defined rotation start time in the format of 2006-01-02 15:04:05.
+        :param _RotationBeginTime: User-defined rotation start time in the format of 2006-01-02 15:04:05.
 When `EnableRotation` is `true` and `RotationBeginTime` is left empty, the current time will be entered by default.
         :type RotationBeginTime: str
         """
-        self.SecretName = None
-        self.EnableRotation = None
-        self.Frequency = None
-        self.RotationBeginTime = None
+        self._SecretName = None
+        self._EnableRotation = None
+        self._Frequency = None
+        self._RotationBeginTime = None
+
+    @property
+    def SecretName(self):
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
+
+    @property
+    def EnableRotation(self):
+        return self._EnableRotation
+
+    @EnableRotation.setter
+    def EnableRotation(self, EnableRotation):
+        self._EnableRotation = EnableRotation
+
+    @property
+    def Frequency(self):
+        return self._Frequency
+
+    @Frequency.setter
+    def Frequency(self, Frequency):
+        self._Frequency = Frequency
+
+    @property
+    def RotationBeginTime(self):
+        return self._RotationBeginTime
+
+    @RotationBeginTime.setter
+    def RotationBeginTime(self, RotationBeginTime):
+        self._RotationBeginTime = RotationBeginTime
 
 
     def _deserialize(self, params):
-        self.SecretName = params.get("SecretName")
-        self.EnableRotation = params.get("EnableRotation")
-        self.Frequency = params.get("Frequency")
-        self.RotationBeginTime = params.get("RotationBeginTime")
+        self._SecretName = params.get("SecretName")
+        self._EnableRotation = params.get("EnableRotation")
+        self._Frequency = params.get("Frequency")
+        self._RotationBeginTime = params.get("RotationBeginTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1645,14 +3077,22 @@ class UpdateRotationStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateSecretRequest(AbstractModel):
@@ -1662,31 +3102,64 @@ class UpdateSecretRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecretName: Name of a Secret whose content is to be updated.
+        :param _SecretName: Name of a Secret whose content is to be updated.
         :type SecretName: str
-        :param VersionId: ID of the Secret version whose content is to be updated.
+        :param _VersionId: ID of the Secret version whose content is to be updated.
         :type VersionId: str
-        :param SecretBinary: This field should be used and Base64-encoded if the content of the new credential is binary.
+        :param _SecretBinary: This field should be used and Base64-encoded if the content of the new credential is binary.
 Either `SecretBinary` or `SecretString` cannot be empty.
         :type SecretBinary: str
-        :param SecretString: This field should be used without being Base64-encoded if the content of the new credential is text. Either `SecretBinary` or `SecretString` cannot be empty.
+        :param _SecretString: This field should be used without being Base64-encoded if the content of the new credential is text. Either `SecretBinary` or `SecretString` cannot be empty.
         :type SecretString: str
         """
-        self.SecretName = None
-        self.VersionId = None
-        self.SecretBinary = None
-        self.SecretString = None
+        self._SecretName = None
+        self._VersionId = None
+        self._SecretBinary = None
+        self._SecretString = None
+
+    @property
+    def SecretName(self):
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
+
+    @property
+    def VersionId(self):
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+    @property
+    def SecretBinary(self):
+        return self._SecretBinary
+
+    @SecretBinary.setter
+    def SecretBinary(self, SecretBinary):
+        self._SecretBinary = SecretBinary
+
+    @property
+    def SecretString(self):
+        return self._SecretString
+
+    @SecretString.setter
+    def SecretString(self, SecretString):
+        self._SecretString = SecretString
 
 
     def _deserialize(self, params):
-        self.SecretName = params.get("SecretName")
-        self.VersionId = params.get("VersionId")
-        self.SecretBinary = params.get("SecretBinary")
-        self.SecretString = params.get("SecretString")
+        self._SecretName = params.get("SecretName")
+        self._VersionId = params.get("VersionId")
+        self._SecretBinary = params.get("SecretBinary")
+        self._SecretString = params.get("SecretString")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1699,22 +3172,46 @@ class UpdateSecretResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecretName: Name of the Secret.
+        :param _SecretName: Name of the Secret.
         :type SecretName: str
-        :param VersionId: Version ID of the Secret.
+        :param _VersionId: Version ID of the Secret.
         :type VersionId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.SecretName = None
-        self.VersionId = None
-        self.RequestId = None
+        self._SecretName = None
+        self._VersionId = None
+        self._RequestId = None
+
+    @property
+    def SecretName(self):
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
+
+    @property
+    def VersionId(self):
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SecretName = params.get("SecretName")
-        self.VersionId = params.get("VersionId")
-        self.RequestId = params.get("RequestId")
+        self._SecretName = params.get("SecretName")
+        self._VersionId = params.get("VersionId")
+        self._RequestId = params.get("RequestId")
 
 
 class VersionInfo(AbstractModel):
@@ -1724,22 +3221,39 @@ class VersionInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VersionId: Version ID.
+        :param _VersionId: Version ID.
         :type VersionId: str
-        :param CreateTime: Creation time, formatted as a Unix timestamp.
+        :param _CreateTime: Creation time, formatted as a Unix timestamp.
         :type CreateTime: int
         """
-        self.VersionId = None
-        self.CreateTime = None
+        self._VersionId = None
+        self._CreateTime = None
+
+    @property
+    def VersionId(self):
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
 
 
     def _deserialize(self, params):
-        self.VersionId = params.get("VersionId")
-        self.CreateTime = params.get("CreateTime")
+        self._VersionId = params.get("VersionId")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

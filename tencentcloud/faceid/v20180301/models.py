@@ -25,7 +25,7 @@ class ApplyLivenessTokenRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecureLevel: Enumerated value. Valid values: `1`, `2`, `3`, and `4`.
+        :param _SecureLevel: Enumerated value. Valid values: `1`, `2`, `3`, and `4`.
 Their meanings are as follows:
 1 - silent
 2 - blinking
@@ -33,15 +33,24 @@ Their meanings are as follows:
 4 - blinking + light (default)
         :type SecureLevel: str
         """
-        self.SecureLevel = None
+        self._SecureLevel = None
+
+    @property
+    def SecureLevel(self):
+        return self._SecureLevel
+
+    @SecureLevel.setter
+    def SecureLevel(self, SecureLevel):
+        self._SecureLevel = SecureLevel
 
 
     def _deserialize(self, params):
-        self.SecureLevel = params.get("SecureLevel")
+        self._SecureLevel = params.get("SecureLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -54,18 +63,34 @@ class ApplyLivenessTokenResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SdkToken: The token used to identify an SDK-based verification process. It is valid for 10 minutes and can be used to get the verification result after the process is completed.
+        :param _SdkToken: The token used to identify an SDK-based verification process. It is valid for 10 minutes and can be used to get the verification result after the process is completed.
         :type SdkToken: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.SdkToken = None
-        self.RequestId = None
+        self._SdkToken = None
+        self._RequestId = None
+
+    @property
+    def SdkToken(self):
+        return self._SdkToken
+
+    @SdkToken.setter
+    def SdkToken(self, SdkToken):
+        self._SdkToken = SdkToken
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SdkToken = params.get("SdkToken")
-        self.RequestId = params.get("RequestId")
+        self._SdkToken = params.get("SdkToken")
+        self._RequestId = params.get("RequestId")
 
 
 class ApplySdkVerificationTokenRequest(AbstractModel):
@@ -75,22 +100,22 @@ class ApplySdkVerificationTokenRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NeedVerifyIdCard: Whether ID card authentication is required. If not, only document OCR will be performed. Currently, authentication is available only when the value of `IdCardType` is `HK`.
+        :param _NeedVerifyIdCard: Whether ID card authentication is required. If not, only document OCR will be performed. Currently, authentication is available only when the value of `IdCardType` is `HK`.
         :type NeedVerifyIdCard: bool
-        :param CheckMode: The verification mode. Valid values:
+        :param _CheckMode: The verification mode. Valid values:
 1: OCR + liveness detection + face comparison
 2: Liveness detection + face comparison
 3: Liveness detection
 Default value: 1
         :type CheckMode: int
-        :param SecurityLevel: The security level of the verification. Valid values:
+        :param _SecurityLevel: The security level of the verification. Valid values:
 1: Video-based liveness detection
 2: Motion-based liveness detection
 3: Reflection-based liveness detection
 4: Motion- and reflection-based liveness detection
 Default value: 4
         :type SecurityLevel: int
-        :param IdCardType: The identity document type. Valid values: 
+        :param _IdCardType: The identity document type. Valid values: 
 1. `HK` (default): Identity card of Hong Kong (China)
 2. `ML`: Malaysian identity card
 3. `IndonesiaIDCard`: Indonesian identity card
@@ -101,39 +126,104 @@ Default value: 4
 8. `PhilippinesUMID`: Philippine UMID card
 9. `MLIDPassport`: Passport issued in Hong Kong/Macao/Taiwan (China) or other countries/regions
         :type IdCardType: str
-        :param CompareImage: The Base64-encoded value of the photo to compare, which is required only when `CheckMode` is set to `2`.
+        :param _CompareImage: The Base64-encoded value of the photo to compare, which is required only when `CheckMode` is set to `2`.
         :type CompareImage: str
-        :param DisableChangeOcrResult: Whether to forbid the modification of the OCR result by users. Default value: `false` (modification allowed). (Currently, this parameter is not applied.)
+        :param _DisableChangeOcrResult: Whether to forbid the modification of the OCR result by users. Default value: `false` (modification allowed). (Currently, this parameter is not applied.)
         :type DisableChangeOcrResult: bool
-        :param DisableCheckOcrWarnings: Whether to disable the OCR warnings. Default value: `false` (not disable), where OCR warnings are enabled and the OCR result will not be returned if there is a warning.
+        :param _DisableCheckOcrWarnings: Whether to disable the OCR warnings. Default value: `false` (not disable), where OCR warnings are enabled and the OCR result will not be returned if there is a warning.
 This feature applies only to Hong Kong (China) identity cards, Malaysian identity cards, and passports.
         :type DisableCheckOcrWarnings: bool
-        :param Extra: A passthrough field, which is returned together with the verification result and can contain up to 1,024 bits.
+        :param _Extra: A passthrough field, which is returned together with the verification result and can contain up to 1,024 bits.
         :type Extra: str
         """
-        self.NeedVerifyIdCard = None
-        self.CheckMode = None
-        self.SecurityLevel = None
-        self.IdCardType = None
-        self.CompareImage = None
-        self.DisableChangeOcrResult = None
-        self.DisableCheckOcrWarnings = None
-        self.Extra = None
+        self._NeedVerifyIdCard = None
+        self._CheckMode = None
+        self._SecurityLevel = None
+        self._IdCardType = None
+        self._CompareImage = None
+        self._DisableChangeOcrResult = None
+        self._DisableCheckOcrWarnings = None
+        self._Extra = None
+
+    @property
+    def NeedVerifyIdCard(self):
+        return self._NeedVerifyIdCard
+
+    @NeedVerifyIdCard.setter
+    def NeedVerifyIdCard(self, NeedVerifyIdCard):
+        self._NeedVerifyIdCard = NeedVerifyIdCard
+
+    @property
+    def CheckMode(self):
+        return self._CheckMode
+
+    @CheckMode.setter
+    def CheckMode(self, CheckMode):
+        self._CheckMode = CheckMode
+
+    @property
+    def SecurityLevel(self):
+        return self._SecurityLevel
+
+    @SecurityLevel.setter
+    def SecurityLevel(self, SecurityLevel):
+        self._SecurityLevel = SecurityLevel
+
+    @property
+    def IdCardType(self):
+        return self._IdCardType
+
+    @IdCardType.setter
+    def IdCardType(self, IdCardType):
+        self._IdCardType = IdCardType
+
+    @property
+    def CompareImage(self):
+        return self._CompareImage
+
+    @CompareImage.setter
+    def CompareImage(self, CompareImage):
+        self._CompareImage = CompareImage
+
+    @property
+    def DisableChangeOcrResult(self):
+        return self._DisableChangeOcrResult
+
+    @DisableChangeOcrResult.setter
+    def DisableChangeOcrResult(self, DisableChangeOcrResult):
+        self._DisableChangeOcrResult = DisableChangeOcrResult
+
+    @property
+    def DisableCheckOcrWarnings(self):
+        return self._DisableCheckOcrWarnings
+
+    @DisableCheckOcrWarnings.setter
+    def DisableCheckOcrWarnings(self, DisableCheckOcrWarnings):
+        self._DisableCheckOcrWarnings = DisableCheckOcrWarnings
+
+    @property
+    def Extra(self):
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
 
 
     def _deserialize(self, params):
-        self.NeedVerifyIdCard = params.get("NeedVerifyIdCard")
-        self.CheckMode = params.get("CheckMode")
-        self.SecurityLevel = params.get("SecurityLevel")
-        self.IdCardType = params.get("IdCardType")
-        self.CompareImage = params.get("CompareImage")
-        self.DisableChangeOcrResult = params.get("DisableChangeOcrResult")
-        self.DisableCheckOcrWarnings = params.get("DisableCheckOcrWarnings")
-        self.Extra = params.get("Extra")
+        self._NeedVerifyIdCard = params.get("NeedVerifyIdCard")
+        self._CheckMode = params.get("CheckMode")
+        self._SecurityLevel = params.get("SecurityLevel")
+        self._IdCardType = params.get("IdCardType")
+        self._CompareImage = params.get("CompareImage")
+        self._DisableChangeOcrResult = params.get("DisableChangeOcrResult")
+        self._DisableCheckOcrWarnings = params.get("DisableCheckOcrWarnings")
+        self._Extra = params.get("Extra")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -146,18 +236,34 @@ class ApplySdkVerificationTokenResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SdkToken: The token used to identify an SDK-based verification process. It is valid for 7,200s and can be used to get the verification result after the process is completed.
+        :param _SdkToken: The token used to identify an SDK-based verification process. It is valid for 7,200s and can be used to get the verification result after the process is completed.
         :type SdkToken: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.SdkToken = None
-        self.RequestId = None
+        self._SdkToken = None
+        self._RequestId = None
+
+    @property
+    def SdkToken(self):
+        return self._SdkToken
+
+    @SdkToken.setter
+    def SdkToken(self, SdkToken):
+        self._SdkToken = SdkToken
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SdkToken = params.get("SdkToken")
-        self.RequestId = params.get("RequestId")
+        self._SdkToken = params.get("SdkToken")
+        self._RequestId = params.get("RequestId")
 
 
 class ApplyWebVerificationTokenRequest(AbstractModel):
@@ -167,28 +273,53 @@ class ApplyWebVerificationTokenRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RedirectUrl: The web redirect URL after the verification is completed.
+        :param _RedirectUrl: The web redirect URL after the verification is completed.
         :type RedirectUrl: str
-        :param CompareImageUrl: The COS URL of the image for face comparison, which can be obtained with one of the following methods:
+        :param _CompareImageUrl: The COS URL of the image for face comparison, which can be obtained with one of the following methods:
 1. Call the `CreateUploadUrl` API to generate a URL and call it again after the image is successfully uploaded.
 2. Use an existing COS URL. For a private bucket, grant the download permission with a pre-signed URL. The corresponding COS bucket must be in the same region as the input parameter `Region`.
         :type CompareImageUrl: str
-        :param CompareImageMd5: The MD5 hash values of the image for face comparison (CompareImageUrl).
+        :param _CompareImageMd5: The MD5 hash values of the image for face comparison (CompareImageUrl).
         :type CompareImageMd5: str
         """
-        self.RedirectUrl = None
-        self.CompareImageUrl = None
-        self.CompareImageMd5 = None
+        self._RedirectUrl = None
+        self._CompareImageUrl = None
+        self._CompareImageMd5 = None
+
+    @property
+    def RedirectUrl(self):
+        return self._RedirectUrl
+
+    @RedirectUrl.setter
+    def RedirectUrl(self, RedirectUrl):
+        self._RedirectUrl = RedirectUrl
+
+    @property
+    def CompareImageUrl(self):
+        return self._CompareImageUrl
+
+    @CompareImageUrl.setter
+    def CompareImageUrl(self, CompareImageUrl):
+        self._CompareImageUrl = CompareImageUrl
+
+    @property
+    def CompareImageMd5(self):
+        return self._CompareImageMd5
+
+    @CompareImageMd5.setter
+    def CompareImageMd5(self, CompareImageMd5):
+        self._CompareImageMd5 = CompareImageMd5
 
 
     def _deserialize(self, params):
-        self.RedirectUrl = params.get("RedirectUrl")
-        self.CompareImageUrl = params.get("CompareImageUrl")
-        self.CompareImageMd5 = params.get("CompareImageMd5")
+        self._RedirectUrl = params.get("RedirectUrl")
+        self._CompareImageUrl = params.get("CompareImageUrl")
+        self._CompareImageMd5 = params.get("CompareImageMd5")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -201,22 +332,46 @@ class ApplyWebVerificationTokenResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VerificationUrl: The verification URL to be opened with a browser to start the verification process.
+        :param _VerificationUrl: The verification URL to be opened with a browser to start the verification process.
         :type VerificationUrl: str
-        :param BizToken: The token used to identify a web-based verification process. It is valid for 7,200s and can be used to get the verification result after the process is completed.
+        :param _BizToken: The token used to identify a web-based verification process. It is valid for 7,200s and can be used to get the verification result after the process is completed.
         :type BizToken: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.VerificationUrl = None
-        self.BizToken = None
-        self.RequestId = None
+        self._VerificationUrl = None
+        self._BizToken = None
+        self._RequestId = None
+
+    @property
+    def VerificationUrl(self):
+        return self._VerificationUrl
+
+    @VerificationUrl.setter
+    def VerificationUrl(self, VerificationUrl):
+        self._VerificationUrl = VerificationUrl
+
+    @property
+    def BizToken(self):
+        return self._BizToken
+
+    @BizToken.setter
+    def BizToken(self, BizToken):
+        self._BizToken = BizToken
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.VerificationUrl = params.get("VerificationUrl")
-        self.BizToken = params.get("BizToken")
-        self.RequestId = params.get("RequestId")
+        self._VerificationUrl = params.get("VerificationUrl")
+        self._BizToken = params.get("BizToken")
+        self._RequestId = params.get("RequestId")
 
 
 class CardVerifyResult(AbstractModel):
@@ -226,15 +381,15 @@ class CardVerifyResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IsPass: Whether the authentication or OCR process is successful.
+        :param _IsPass: Whether the authentication or OCR process is successful.
         :type IsPass: bool
-        :param CardVideo: The download URL of the video used for identity document verification, which is valid for 10 minutes. This parameter is returned only if video-based identity document verification is enabled.
+        :param _CardVideo: The download URL of the video used for identity document verification, which is valid for 10 minutes. This parameter is returned only if video-based identity document verification is enabled.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type CardVideo: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
-        :param CardImage: The download URL of the identity document image, which is valid for 10 minutes.
+        :param _CardImage: The download URL of the identity document image, which is valid for 10 minutes.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type CardImage: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
-        :param CardInfoOcrJson: The OCR result (in JSON) of the identity document image. If verification or OCR fails, this parameter is left empty. The URL is valid for 10 minutes.
+        :param _CardInfoOcrJson: The OCR result (in JSON) of the identity document image. If verification or OCR fails, this parameter is left empty. The URL is valid for 10 minutes.
 (1) Hong Kong (China) identity card
 When the value of `IdCardType` is `HK`:
 - CnName (string): Name in Chinese.
@@ -332,32 +487,73 @@ When the value of `IdCardType` is `MLIDPassport`:
 - NationalityCode (string): Country/region code.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CardInfoOcrJson: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
-        :param RequestId: The request ID of a single process.
+        :param _RequestId: The request ID of a single process.
         :type RequestId: str
         """
-        self.IsPass = None
-        self.CardVideo = None
-        self.CardImage = None
-        self.CardInfoOcrJson = None
-        self.RequestId = None
+        self._IsPass = None
+        self._CardVideo = None
+        self._CardImage = None
+        self._CardInfoOcrJson = None
+        self._RequestId = None
+
+    @property
+    def IsPass(self):
+        return self._IsPass
+
+    @IsPass.setter
+    def IsPass(self, IsPass):
+        self._IsPass = IsPass
+
+    @property
+    def CardVideo(self):
+        return self._CardVideo
+
+    @CardVideo.setter
+    def CardVideo(self, CardVideo):
+        self._CardVideo = CardVideo
+
+    @property
+    def CardImage(self):
+        return self._CardImage
+
+    @CardImage.setter
+    def CardImage(self, CardImage):
+        self._CardImage = CardImage
+
+    @property
+    def CardInfoOcrJson(self):
+        return self._CardInfoOcrJson
+
+    @CardInfoOcrJson.setter
+    def CardInfoOcrJson(self, CardInfoOcrJson):
+        self._CardInfoOcrJson = CardInfoOcrJson
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.IsPass = params.get("IsPass")
+        self._IsPass = params.get("IsPass")
         if params.get("CardVideo") is not None:
-            self.CardVideo = FileInfo()
-            self.CardVideo._deserialize(params.get("CardVideo"))
+            self._CardVideo = FileInfo()
+            self._CardVideo._deserialize(params.get("CardVideo"))
         if params.get("CardImage") is not None:
-            self.CardImage = FileInfo()
-            self.CardImage._deserialize(params.get("CardImage"))
+            self._CardImage = FileInfo()
+            self._CardImage._deserialize(params.get("CardImage"))
         if params.get("CardInfoOcrJson") is not None:
-            self.CardInfoOcrJson = FileInfo()
-            self.CardInfoOcrJson._deserialize(params.get("CardInfoOcrJson"))
-        self.RequestId = params.get("RequestId")
+            self._CardInfoOcrJson = FileInfo()
+            self._CardInfoOcrJson._deserialize(params.get("CardInfoOcrJson"))
+        self._RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -370,7 +566,7 @@ class CompareResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ErrorCode: The final verification result code.
+        :param _ErrorCode: The final verification result code.
 0: Success.
 1001: Failed to call the liveness detection engine.
 1004: Face detection failed.
@@ -381,25 +577,25 @@ class CompareResult(AbstractModel):
 2015: Face comparison failed.
 2016: The similarity did not reach the passing standard.
         :type ErrorCode: str
-        :param ErrorMsg: The description of the final verification result.
+        :param _ErrorMsg: The description of the final verification result.
         :type ErrorMsg: str
-        :param LiveData: The liveness algorithm package generated during this SDK-based liveness detection.
+        :param _LiveData: The liveness algorithm package generated during this SDK-based liveness detection.
         :type LiveData: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
-        :param LiveVideo: The download URL of the video used for verification, which is valid for 10 minutes.
+        :param _LiveVideo: The download URL of the video used for verification, which is valid for 10 minutes.
         :type LiveVideo: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
-        :param LiveErrorCode: The liveness detection result code.
+        :param _LiveErrorCode: The liveness detection result code.
 0: Success.
 1001: Failed to call the liveness detection engine.
 1004: Face detection failed.
         :type LiveErrorCode: str
-        :param LiveErrorMsg: The description of the liveness detection result.
+        :param _LiveErrorMsg: The description of the liveness detection result.
         :type LiveErrorMsg: str
-        :param BestFrame: The download URL of the face screenshot during verification, which is valid for 10 minutes.
+        :param _BestFrame: The download URL of the face screenshot during verification, which is valid for 10 minutes.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type BestFrame: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
-        :param ProfileImage: The download URL of the profile photo screenshot from the identity document, which is valid for 10 minutes.
+        :param _ProfileImage: The download URL of the profile photo screenshot from the identity document, which is valid for 10 minutes.
         :type ProfileImage: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
-        :param CompareErrorCode: The face comparison result code.
+        :param _CompareErrorCode: The face comparison result code.
 0: Success.
 2004: The uploaded face image is too large or too small.
 2012: The face is not fully exposed.
@@ -409,65 +605,178 @@ Note: This field may return null, indicating that no valid value can be obtained
 2016: The similarity did not reach the passing standard.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type CompareErrorCode: str
-        :param CompareErrorMsg: The description of the face comparison result.
+        :param _CompareErrorMsg: The description of the face comparison result.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CompareErrorMsg: str
-        :param Sim: The similarity score of face comparison.
+        :param _Sim: The similarity score of face comparison.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Sim: float
-        :param IsNeedCharge: This parameter is disused.
+        :param _IsNeedCharge: This parameter is disused.
         :type IsNeedCharge: bool
-        :param CardInfoInputJson: The identity document photo info edited by the user. Currently, this parameter is not applied.
+        :param _CardInfoInputJson: The identity document photo info edited by the user. Currently, this parameter is not applied.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CardInfoInputJson: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
-        :param RequestId: The request ID of this verification process.
+        :param _RequestId: The request ID of this verification process.
         :type RequestId: str
         """
-        self.ErrorCode = None
-        self.ErrorMsg = None
-        self.LiveData = None
-        self.LiveVideo = None
-        self.LiveErrorCode = None
-        self.LiveErrorMsg = None
-        self.BestFrame = None
-        self.ProfileImage = None
-        self.CompareErrorCode = None
-        self.CompareErrorMsg = None
-        self.Sim = None
-        self.IsNeedCharge = None
-        self.CardInfoInputJson = None
-        self.RequestId = None
+        self._ErrorCode = None
+        self._ErrorMsg = None
+        self._LiveData = None
+        self._LiveVideo = None
+        self._LiveErrorCode = None
+        self._LiveErrorMsg = None
+        self._BestFrame = None
+        self._ProfileImage = None
+        self._CompareErrorCode = None
+        self._CompareErrorMsg = None
+        self._Sim = None
+        self._IsNeedCharge = None
+        self._CardInfoInputJson = None
+        self._RequestId = None
+
+    @property
+    def ErrorCode(self):
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def LiveData(self):
+        return self._LiveData
+
+    @LiveData.setter
+    def LiveData(self, LiveData):
+        self._LiveData = LiveData
+
+    @property
+    def LiveVideo(self):
+        return self._LiveVideo
+
+    @LiveVideo.setter
+    def LiveVideo(self, LiveVideo):
+        self._LiveVideo = LiveVideo
+
+    @property
+    def LiveErrorCode(self):
+        return self._LiveErrorCode
+
+    @LiveErrorCode.setter
+    def LiveErrorCode(self, LiveErrorCode):
+        self._LiveErrorCode = LiveErrorCode
+
+    @property
+    def LiveErrorMsg(self):
+        return self._LiveErrorMsg
+
+    @LiveErrorMsg.setter
+    def LiveErrorMsg(self, LiveErrorMsg):
+        self._LiveErrorMsg = LiveErrorMsg
+
+    @property
+    def BestFrame(self):
+        return self._BestFrame
+
+    @BestFrame.setter
+    def BestFrame(self, BestFrame):
+        self._BestFrame = BestFrame
+
+    @property
+    def ProfileImage(self):
+        return self._ProfileImage
+
+    @ProfileImage.setter
+    def ProfileImage(self, ProfileImage):
+        self._ProfileImage = ProfileImage
+
+    @property
+    def CompareErrorCode(self):
+        return self._CompareErrorCode
+
+    @CompareErrorCode.setter
+    def CompareErrorCode(self, CompareErrorCode):
+        self._CompareErrorCode = CompareErrorCode
+
+    @property
+    def CompareErrorMsg(self):
+        return self._CompareErrorMsg
+
+    @CompareErrorMsg.setter
+    def CompareErrorMsg(self, CompareErrorMsg):
+        self._CompareErrorMsg = CompareErrorMsg
+
+    @property
+    def Sim(self):
+        return self._Sim
+
+    @Sim.setter
+    def Sim(self, Sim):
+        self._Sim = Sim
+
+    @property
+    def IsNeedCharge(self):
+        return self._IsNeedCharge
+
+    @IsNeedCharge.setter
+    def IsNeedCharge(self, IsNeedCharge):
+        self._IsNeedCharge = IsNeedCharge
+
+    @property
+    def CardInfoInputJson(self):
+        return self._CardInfoInputJson
+
+    @CardInfoInputJson.setter
+    def CardInfoInputJson(self, CardInfoInputJson):
+        self._CardInfoInputJson = CardInfoInputJson
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ErrorCode = params.get("ErrorCode")
-        self.ErrorMsg = params.get("ErrorMsg")
+        self._ErrorCode = params.get("ErrorCode")
+        self._ErrorMsg = params.get("ErrorMsg")
         if params.get("LiveData") is not None:
-            self.LiveData = FileInfo()
-            self.LiveData._deserialize(params.get("LiveData"))
+            self._LiveData = FileInfo()
+            self._LiveData._deserialize(params.get("LiveData"))
         if params.get("LiveVideo") is not None:
-            self.LiveVideo = FileInfo()
-            self.LiveVideo._deserialize(params.get("LiveVideo"))
-        self.LiveErrorCode = params.get("LiveErrorCode")
-        self.LiveErrorMsg = params.get("LiveErrorMsg")
+            self._LiveVideo = FileInfo()
+            self._LiveVideo._deserialize(params.get("LiveVideo"))
+        self._LiveErrorCode = params.get("LiveErrorCode")
+        self._LiveErrorMsg = params.get("LiveErrorMsg")
         if params.get("BestFrame") is not None:
-            self.BestFrame = FileInfo()
-            self.BestFrame._deserialize(params.get("BestFrame"))
+            self._BestFrame = FileInfo()
+            self._BestFrame._deserialize(params.get("BestFrame"))
         if params.get("ProfileImage") is not None:
-            self.ProfileImage = FileInfo()
-            self.ProfileImage._deserialize(params.get("ProfileImage"))
-        self.CompareErrorCode = params.get("CompareErrorCode")
-        self.CompareErrorMsg = params.get("CompareErrorMsg")
-        self.Sim = params.get("Sim")
-        self.IsNeedCharge = params.get("IsNeedCharge")
+            self._ProfileImage = FileInfo()
+            self._ProfileImage._deserialize(params.get("ProfileImage"))
+        self._CompareErrorCode = params.get("CompareErrorCode")
+        self._CompareErrorMsg = params.get("CompareErrorMsg")
+        self._Sim = params.get("Sim")
+        self._IsNeedCharge = params.get("IsNeedCharge")
         if params.get("CardInfoInputJson") is not None:
-            self.CardInfoInputJson = FileInfo()
-            self.CardInfoInputJson._deserialize(params.get("CardInfoInputJson"))
-        self.RequestId = params.get("RequestId")
+            self._CardInfoInputJson = FileInfo()
+            self._CardInfoInputJson._deserialize(params.get("CardInfoInputJson"))
+        self._RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -480,18 +789,27 @@ class CreateUploadUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TargetAction: Target API
+        :param _TargetAction: Target API
         :type TargetAction: str
         """
-        self.TargetAction = None
+        self._TargetAction = None
+
+    @property
+    def TargetAction(self):
+        return self._TargetAction
+
+    @TargetAction.setter
+    def TargetAction(self, TargetAction):
+        self._TargetAction = TargetAction
 
 
     def _deserialize(self, params):
-        self.TargetAction = params.get("TargetAction")
+        self._TargetAction = params.get("TargetAction")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -504,26 +822,58 @@ class CreateUploadUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UploadUrl: The URL for uploading contents with the `HTTP PUT` method.
+        :param _UploadUrl: The URL for uploading contents with the `HTTP PUT` method.
         :type UploadUrl: str
-        :param ResourceUrl: The resource URL obtained after this upload is completed and to be passed in where it is required later.
+        :param _ResourceUrl: The resource URL obtained after this upload is completed and to be passed in where it is required later.
         :type ResourceUrl: str
-        :param ExpiredTimestamp: The point in time when the upload/download link expires, which is a 10-bit Unix timestamp.
+        :param _ExpiredTimestamp: The point in time when the upload/download link expires, which is a 10-bit Unix timestamp.
         :type ExpiredTimestamp: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.UploadUrl = None
-        self.ResourceUrl = None
-        self.ExpiredTimestamp = None
-        self.RequestId = None
+        self._UploadUrl = None
+        self._ResourceUrl = None
+        self._ExpiredTimestamp = None
+        self._RequestId = None
+
+    @property
+    def UploadUrl(self):
+        return self._UploadUrl
+
+    @UploadUrl.setter
+    def UploadUrl(self, UploadUrl):
+        self._UploadUrl = UploadUrl
+
+    @property
+    def ResourceUrl(self):
+        return self._ResourceUrl
+
+    @ResourceUrl.setter
+    def ResourceUrl(self, ResourceUrl):
+        self._ResourceUrl = ResourceUrl
+
+    @property
+    def ExpiredTimestamp(self):
+        return self._ExpiredTimestamp
+
+    @ExpiredTimestamp.setter
+    def ExpiredTimestamp(self, ExpiredTimestamp):
+        self._ExpiredTimestamp = ExpiredTimestamp
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.UploadUrl = params.get("UploadUrl")
-        self.ResourceUrl = params.get("ResourceUrl")
-        self.ExpiredTimestamp = params.get("ExpiredTimestamp")
-        self.RequestId = params.get("RequestId")
+        self._UploadUrl = params.get("UploadUrl")
+        self._ResourceUrl = params.get("ResourceUrl")
+        self._ExpiredTimestamp = params.get("ExpiredTimestamp")
+        self._RequestId = params.get("RequestId")
 
 
 class DetectReflectLivenessAndCompareRequest(AbstractModel):
@@ -533,30 +883,63 @@ class DetectReflectLivenessAndCompareRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LiveDataUrl: URL of the liveness detection data package generated by the SDK
+        :param _LiveDataUrl: URL of the liveness detection data package generated by the SDK
         :type LiveDataUrl: str
-        :param LiveDataMd5: MD5 hash value (32-bit) of the liveness detection data package generated by the SDK, which is used to verify the LiveData consistency.
+        :param _LiveDataMd5: MD5 hash value (32-bit) of the liveness detection data package generated by the SDK, which is used to verify the LiveData consistency.
         :type LiveDataMd5: str
-        :param ImageUrl: URL of the target image for comparison
+        :param _ImageUrl: URL of the target image for comparison
         :type ImageUrl: str
-        :param ImageMd5: MD5 hash value (32-bit) of the target image for comparison, which is used to verify the `Image` consistency.
+        :param _ImageMd5: MD5 hash value (32-bit) of the target image for comparison, which is used to verify the `Image` consistency.
         :type ImageMd5: str
         """
-        self.LiveDataUrl = None
-        self.LiveDataMd5 = None
-        self.ImageUrl = None
-        self.ImageMd5 = None
+        self._LiveDataUrl = None
+        self._LiveDataMd5 = None
+        self._ImageUrl = None
+        self._ImageMd5 = None
+
+    @property
+    def LiveDataUrl(self):
+        return self._LiveDataUrl
+
+    @LiveDataUrl.setter
+    def LiveDataUrl(self, LiveDataUrl):
+        self._LiveDataUrl = LiveDataUrl
+
+    @property
+    def LiveDataMd5(self):
+        return self._LiveDataMd5
+
+    @LiveDataMd5.setter
+    def LiveDataMd5(self, LiveDataMd5):
+        self._LiveDataMd5 = LiveDataMd5
+
+    @property
+    def ImageUrl(self):
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ImageMd5(self):
+        return self._ImageMd5
+
+    @ImageMd5.setter
+    def ImageMd5(self, ImageMd5):
+        self._ImageMd5 = ImageMd5
 
 
     def _deserialize(self, params):
-        self.LiveDataUrl = params.get("LiveDataUrl")
-        self.LiveDataMd5 = params.get("LiveDataMd5")
-        self.ImageUrl = params.get("ImageUrl")
-        self.ImageMd5 = params.get("ImageMd5")
+        self._LiveDataUrl = params.get("LiveDataUrl")
+        self._LiveDataMd5 = params.get("LiveDataMd5")
+        self._ImageUrl = params.get("ImageUrl")
+        self._ImageMd5 = params.get("ImageMd5")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -569,34 +952,82 @@ class DetectReflectLivenessAndCompareResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BestFrameUrl: Temporary URL of the best screenshot (.jpg) of the video after successful verification. Both the screenshot and the URL are valid for two hours only, so you need to download the screenshot within this period.
+        :param _BestFrameUrl: Temporary URL of the best screenshot (.jpg) of the video after successful verification. Both the screenshot and the URL are valid for two hours only, so you need to download the screenshot within this period.
         :type BestFrameUrl: str
-        :param BestFrameMd5: MD5 hash value (32-bit) of the best screenshot of the video after successful verification, which is used to verify the `BestFrame` consistency.
+        :param _BestFrameMd5: MD5 hash value (32-bit) of the best screenshot of the video after successful verification, which is used to verify the `BestFrame` consistency.
         :type BestFrameMd5: str
-        :param Result: Service error code. `Success` will be returned for success. For error information, see the `FailedOperation` section in the error code list below.
+        :param _Result: Service error code. `Success` will be returned for success. For error information, see the `FailedOperation` section in the error code list below.
         :type Result: str
-        :param Description: Service result description
+        :param _Description: Service result description
         :type Description: str
-        :param Sim: Similarity. Value range: [0.00, 100.00]. As a recommendation, when the similarity is greater than or equal to 70, it can be determined that the two faces are of the same person. You can adjust the threshold according to your specific scenario (the FAR at the threshold of 70 is 0.1%, and FAR at the threshold of 80 is 0.01%).
+        :param _Sim: Similarity. Value range: [0.00, 100.00]. As a recommendation, when the similarity is greater than or equal to 70, it can be determined that the two faces are of the same person. You can adjust the threshold according to your specific scenario (the FAR at the threshold of 70 is 0.1%, and FAR at the threshold of 80 is 0.01%).
         :type Sim: float
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.BestFrameUrl = None
-        self.BestFrameMd5 = None
-        self.Result = None
-        self.Description = None
-        self.Sim = None
-        self.RequestId = None
+        self._BestFrameUrl = None
+        self._BestFrameMd5 = None
+        self._Result = None
+        self._Description = None
+        self._Sim = None
+        self._RequestId = None
+
+    @property
+    def BestFrameUrl(self):
+        return self._BestFrameUrl
+
+    @BestFrameUrl.setter
+    def BestFrameUrl(self, BestFrameUrl):
+        self._BestFrameUrl = BestFrameUrl
+
+    @property
+    def BestFrameMd5(self):
+        return self._BestFrameMd5
+
+    @BestFrameMd5.setter
+    def BestFrameMd5(self, BestFrameMd5):
+        self._BestFrameMd5 = BestFrameMd5
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Sim(self):
+        return self._Sim
+
+    @Sim.setter
+    def Sim(self, Sim):
+        self._Sim = Sim
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.BestFrameUrl = params.get("BestFrameUrl")
-        self.BestFrameMd5 = params.get("BestFrameMd5")
-        self.Result = params.get("Result")
-        self.Description = params.get("Description")
-        self.Sim = params.get("Sim")
-        self.RequestId = params.get("RequestId")
+        self._BestFrameUrl = params.get("BestFrameUrl")
+        self._BestFrameMd5 = params.get("BestFrameMd5")
+        self._Result = params.get("Result")
+        self._Description = params.get("Description")
+        self._Sim = params.get("Sim")
+        self._RequestId = params.get("RequestId")
 
 
 class FileInfo(AbstractModel):
@@ -606,26 +1037,51 @@ class FileInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Url: The URL for downloading the file
+        :param _Url: The URL for downloading the file
         :type Url: str
-        :param MD5: The 32-bit MD5 checksum of the file
+        :param _MD5: The 32-bit MD5 checksum of the file
         :type MD5: str
-        :param Size: The file size
+        :param _Size: The file size
         :type Size: int
         """
-        self.Url = None
-        self.MD5 = None
-        self.Size = None
+        self._Url = None
+        self._MD5 = None
+        self._Size = None
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def MD5(self):
+        return self._MD5
+
+    @MD5.setter
+    def MD5(self, MD5):
+        self._MD5 = MD5
+
+    @property
+    def Size(self):
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
 
 
     def _deserialize(self, params):
-        self.Url = params.get("Url")
-        self.MD5 = params.get("MD5")
-        self.Size = params.get("Size")
+        self._Url = params.get("Url")
+        self._MD5 = params.get("MD5")
+        self._Size = params.get("Size")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -638,29 +1094,54 @@ class GenerateReflectSequenceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DeviceDataUrl: The resource URL of the data package generated by the SDK.
+        :param _DeviceDataUrl: The resource URL of the data package generated by the SDK.
         :type DeviceDataUrl: str
-        :param DeviceDataMd5: The MD5 hash value of the data package generated by the SDK.
+        :param _DeviceDataMd5: The MD5 hash value of the data package generated by the SDK.
         :type DeviceDataMd5: str
-        :param SecurityLevel: 1 - silent
+        :param _SecurityLevel: 1 - silent
 2 - blinking
 3 - light
 4 - blinking + light (default)
         :type SecurityLevel: str
         """
-        self.DeviceDataUrl = None
-        self.DeviceDataMd5 = None
-        self.SecurityLevel = None
+        self._DeviceDataUrl = None
+        self._DeviceDataMd5 = None
+        self._SecurityLevel = None
+
+    @property
+    def DeviceDataUrl(self):
+        return self._DeviceDataUrl
+
+    @DeviceDataUrl.setter
+    def DeviceDataUrl(self, DeviceDataUrl):
+        self._DeviceDataUrl = DeviceDataUrl
+
+    @property
+    def DeviceDataMd5(self):
+        return self._DeviceDataMd5
+
+    @DeviceDataMd5.setter
+    def DeviceDataMd5(self, DeviceDataMd5):
+        self._DeviceDataMd5 = DeviceDataMd5
+
+    @property
+    def SecurityLevel(self):
+        return self._SecurityLevel
+
+    @SecurityLevel.setter
+    def SecurityLevel(self, SecurityLevel):
+        self._SecurityLevel = SecurityLevel
 
 
     def _deserialize(self, params):
-        self.DeviceDataUrl = params.get("DeviceDataUrl")
-        self.DeviceDataMd5 = params.get("DeviceDataMd5")
-        self.SecurityLevel = params.get("SecurityLevel")
+        self._DeviceDataUrl = params.get("DeviceDataUrl")
+        self._DeviceDataMd5 = params.get("DeviceDataMd5")
+        self._SecurityLevel = params.get("SecurityLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -673,22 +1154,46 @@ class GenerateReflectSequenceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ReflectSequenceUrl: The resource URL of the light sequence, which needs to be downloaded and passed through to the SDK to start the identity verification process.
+        :param _ReflectSequenceUrl: The resource URL of the light sequence, which needs to be downloaded and passed through to the SDK to start the identity verification process.
         :type ReflectSequenceUrl: str
-        :param ReflectSequenceMd5: The MD5 hash value of the light sequence, which is used to check whether the light sequence is altered.
+        :param _ReflectSequenceMd5: The MD5 hash value of the light sequence, which is used to check whether the light sequence is altered.
         :type ReflectSequenceMd5: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.ReflectSequenceUrl = None
-        self.ReflectSequenceMd5 = None
-        self.RequestId = None
+        self._ReflectSequenceUrl = None
+        self._ReflectSequenceMd5 = None
+        self._RequestId = None
+
+    @property
+    def ReflectSequenceUrl(self):
+        return self._ReflectSequenceUrl
+
+    @ReflectSequenceUrl.setter
+    def ReflectSequenceUrl(self, ReflectSequenceUrl):
+        self._ReflectSequenceUrl = ReflectSequenceUrl
+
+    @property
+    def ReflectSequenceMd5(self):
+        return self._ReflectSequenceMd5
+
+    @ReflectSequenceMd5.setter
+    def ReflectSequenceMd5(self, ReflectSequenceMd5):
+        self._ReflectSequenceMd5 = ReflectSequenceMd5
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ReflectSequenceUrl = params.get("ReflectSequenceUrl")
-        self.ReflectSequenceMd5 = params.get("ReflectSequenceMd5")
-        self.RequestId = params.get("RequestId")
+        self._ReflectSequenceUrl = params.get("ReflectSequenceUrl")
+        self._ReflectSequenceMd5 = params.get("ReflectSequenceMd5")
+        self._RequestId = params.get("RequestId")
 
 
 class GetFaceIdResultIntlRequest(AbstractModel):
@@ -698,18 +1203,27 @@ class GetFaceIdResultIntlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SdkToken: The ID of the SDK-based liveness detection and face comparison process, which is generated when the `GetFaceIdTokenIntl` API is called.	
+        :param _SdkToken: The ID of the SDK-based liveness detection and face comparison process, which is generated when the `GetFaceIdTokenIntl` API is called.	
         :type SdkToken: str
         """
-        self.SdkToken = None
+        self._SdkToken = None
+
+    @property
+    def SdkToken(self):
+        return self._SdkToken
+
+    @SdkToken.setter
+    def SdkToken(self, SdkToken):
+        self._SdkToken = SdkToken
 
 
     def _deserialize(self, params):
-        self.SdkToken = params.get("SdkToken")
+        self._SdkToken = params.get("SdkToken")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -722,7 +1236,7 @@ class GetFaceIdResultIntlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: The return code of the verification result.
+        :param _Result: The return code of the verification result.
 0: Succeeded.
 1001: System error.
 1004: Liveness detection and face comparison failed.
@@ -734,38 +1248,94 @@ class GetFaceIdResultIntlResponse(AbstractModel):
 2016: The similarity did not reach the standard passing threshold.
 -999: The verification process wasn't finished.
         :type Result: str
-        :param Description: The description of the verification result.
+        :param _Description: The description of the verification result.
         :type Description: str
-        :param BestFrame: The best frame screenshot (in Base64) obtained during the verification.
+        :param _BestFrame: The best frame screenshot (in Base64) obtained during the verification.
         :type BestFrame: str
-        :param Video: The video file (Base64) for verification.
+        :param _Video: The video file (Base64) for verification.
         :type Video: str
-        :param Similarity: The similarity, with a value range of 0-100. A greater value indicates higher similarity. This parameter is returned only in the `compare` (liveness detection and face comparison) mode.
+        :param _Similarity: The similarity, with a value range of 0-100. A greater value indicates higher similarity. This parameter is returned only in the `compare` (liveness detection and face comparison) mode.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Similarity: float
-        :param Extra: The pass-through parameter.
+        :param _Extra: The pass-through parameter.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Extra: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.Description = None
-        self.BestFrame = None
-        self.Video = None
-        self.Similarity = None
-        self.Extra = None
-        self.RequestId = None
+        self._Result = None
+        self._Description = None
+        self._BestFrame = None
+        self._Video = None
+        self._Similarity = None
+        self._Extra = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def BestFrame(self):
+        return self._BestFrame
+
+    @BestFrame.setter
+    def BestFrame(self, BestFrame):
+        self._BestFrame = BestFrame
+
+    @property
+    def Video(self):
+        return self._Video
+
+    @Video.setter
+    def Video(self, Video):
+        self._Video = Video
+
+    @property
+    def Similarity(self):
+        return self._Similarity
+
+    @Similarity.setter
+    def Similarity(self, Similarity):
+        self._Similarity = Similarity
+
+    @property
+    def Extra(self):
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.Description = params.get("Description")
-        self.BestFrame = params.get("BestFrame")
-        self.Video = params.get("Video")
-        self.Similarity = params.get("Similarity")
-        self.Extra = params.get("Extra")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._Description = params.get("Description")
+        self._BestFrame = params.get("BestFrame")
+        self._Video = params.get("Video")
+        self._Similarity = params.get("Similarity")
+        self._Extra = params.get("Extra")
+        self._RequestId = params.get("RequestId")
 
 
 class GetFaceIdTokenIntlRequest(AbstractModel):
@@ -775,38 +1345,71 @@ class GetFaceIdTokenIntlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CheckMode: The detection mode. Valid values:
+        :param _CheckMode: The detection mode. Valid values:
 `liveness`: Liveness detection only.
 `compare`: Liveness detection and face comparison.
 Default value: `liveness`.
         :type CheckMode: str
-        :param SecureLevel: The verification security level. Valid values:
+        :param _SecureLevel: The verification security level. Valid values:
 `1`: Video-based liveness detection.
 `2`: Motion-based liveness detection.
 `3`: Reflection-based liveness detection.
 `4`: Motion- and reflection-based liveness detection.
 Default value: `4`.
         :type SecureLevel: str
-        :param Image: The photo (in Base64) to compare. This parameter is required when the value of `CheckMode` is `compare`.
+        :param _Image: The photo (in Base64) to compare. This parameter is required when the value of `CheckMode` is `compare`.
         :type Image: str
-        :param Extra: The pass-through parameter, which can be omitted if there are no special requirements.
+        :param _Extra: The pass-through parameter, which can be omitted if there are no special requirements.
         :type Extra: str
         """
-        self.CheckMode = None
-        self.SecureLevel = None
-        self.Image = None
-        self.Extra = None
+        self._CheckMode = None
+        self._SecureLevel = None
+        self._Image = None
+        self._Extra = None
+
+    @property
+    def CheckMode(self):
+        return self._CheckMode
+
+    @CheckMode.setter
+    def CheckMode(self, CheckMode):
+        self._CheckMode = CheckMode
+
+    @property
+    def SecureLevel(self):
+        return self._SecureLevel
+
+    @SecureLevel.setter
+    def SecureLevel(self, SecureLevel):
+        self._SecureLevel = SecureLevel
+
+    @property
+    def Image(self):
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def Extra(self):
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
 
 
     def _deserialize(self, params):
-        self.CheckMode = params.get("CheckMode")
-        self.SecureLevel = params.get("SecureLevel")
-        self.Image = params.get("Image")
-        self.Extra = params.get("Extra")
+        self._CheckMode = params.get("CheckMode")
+        self._SecureLevel = params.get("SecureLevel")
+        self._Image = params.get("Image")
+        self._Extra = params.get("Extra")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -819,18 +1422,34 @@ class GetFaceIdTokenIntlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SdkToken: The SDK token, which is used throughout the verification process and to get the verification result.
+        :param _SdkToken: The SDK token, which is used throughout the verification process and to get the verification result.
         :type SdkToken: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.SdkToken = None
-        self.RequestId = None
+        self._SdkToken = None
+        self._RequestId = None
+
+    @property
+    def SdkToken(self):
+        return self._SdkToken
+
+    @SdkToken.setter
+    def SdkToken(self, SdkToken):
+        self._SdkToken = SdkToken
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.SdkToken = params.get("SdkToken")
-        self.RequestId = params.get("RequestId")
+        self._SdkToken = params.get("SdkToken")
+        self._RequestId = params.get("RequestId")
 
 
 class GetLivenessResultRequest(AbstractModel):
@@ -840,18 +1459,27 @@ class GetLivenessResultRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SdkToken: The token used to identify an SDK-based verification process.
+        :param _SdkToken: The token used to identify an SDK-based verification process.
         :type SdkToken: str
         """
-        self.SdkToken = None
+        self._SdkToken = None
+
+    @property
+    def SdkToken(self):
+        return self._SdkToken
+
+    @SdkToken.setter
+    def SdkToken(self, SdkToken):
+        self._SdkToken = SdkToken
 
 
     def _deserialize(self, params):
-        self.SdkToken = params.get("SdkToken")
+        self._SdkToken = params.get("SdkToken")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -864,34 +1492,74 @@ class GetLivenessResultResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: The final verification result.
+        :param _Result: The final verification result.
         :type Result: str
-        :param Description: The description of the final verification result.
+        :param _Description: The description of the final verification result.
         :type Description: str
-        :param BestFrame: The face screenshot.
+        :param _BestFrame: The face screenshot.
         :type BestFrame: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
-        :param Video: The video for the detection.
+        :param _Video: The video for the detection.
         :type Video: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.Description = None
-        self.BestFrame = None
-        self.Video = None
-        self.RequestId = None
+        self._Result = None
+        self._Description = None
+        self._BestFrame = None
+        self._Video = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def BestFrame(self):
+        return self._BestFrame
+
+    @BestFrame.setter
+    def BestFrame(self, BestFrame):
+        self._BestFrame = BestFrame
+
+    @property
+    def Video(self):
+        return self._Video
+
+    @Video.setter
+    def Video(self, Video):
+        self._Video = Video
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.Description = params.get("Description")
+        self._Result = params.get("Result")
+        self._Description = params.get("Description")
         if params.get("BestFrame") is not None:
-            self.BestFrame = FileInfo()
-            self.BestFrame._deserialize(params.get("BestFrame"))
+            self._BestFrame = FileInfo()
+            self._BestFrame._deserialize(params.get("BestFrame"))
         if params.get("Video") is not None:
-            self.Video = FileInfo()
-            self.Video._deserialize(params.get("Video"))
-        self.RequestId = params.get("RequestId")
+            self._Video = FileInfo()
+            self._Video._deserialize(params.get("Video"))
+        self._RequestId = params.get("RequestId")
 
 
 class GetSdkVerificationResultRequest(AbstractModel):
@@ -901,18 +1569,27 @@ class GetSdkVerificationResultRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SdkToken: The token used to identify an SDK-based verification process.
+        :param _SdkToken: The token used to identify an SDK-based verification process.
         :type SdkToken: str
         """
-        self.SdkToken = None
+        self._SdkToken = None
+
+    @property
+    def SdkToken(self):
+        return self._SdkToken
+
+    @SdkToken.setter
+    def SdkToken(self, SdkToken):
+        self._SdkToken = SdkToken
 
 
     def _deserialize(self, params):
-        self.SdkToken = params.get("SdkToken")
+        self._SdkToken = params.get("SdkToken")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -925,48 +1602,104 @@ class GetSdkVerificationResultResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: The result code of the verification result.
+        :param _Result: The result code of the verification result.
         :type Result: str
-        :param Description: The verification result description.
+        :param _Description: The verification result description.
         :type Description: str
-        :param ChargeCount: The charge count.
+        :param _ChargeCount: The charge count.
         :type ChargeCount: int
-        :param CardVerifyResults: The results of multiple OCR processes (in order). The result of the final process is used as the valid result.
+        :param _CardVerifyResults: The results of multiple OCR processes (in order). The result of the final process is used as the valid result.
         :type CardVerifyResults: list of CardVerifyResult
-        :param CompareResults: The results of multiple liveness detection processes (in order). The result of the final process is used as the valid result.
+        :param _CompareResults: The results of multiple liveness detection processes (in order). The result of the final process is used as the valid result.
         :type CompareResults: list of CompareResult
-        :param Extra: Data passed through in the process of getting the token.
+        :param _Extra: Data passed through in the process of getting the token.
         :type Extra: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.Description = None
-        self.ChargeCount = None
-        self.CardVerifyResults = None
-        self.CompareResults = None
-        self.Extra = None
-        self.RequestId = None
+        self._Result = None
+        self._Description = None
+        self._ChargeCount = None
+        self._CardVerifyResults = None
+        self._CompareResults = None
+        self._Extra = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ChargeCount(self):
+        return self._ChargeCount
+
+    @ChargeCount.setter
+    def ChargeCount(self, ChargeCount):
+        self._ChargeCount = ChargeCount
+
+    @property
+    def CardVerifyResults(self):
+        return self._CardVerifyResults
+
+    @CardVerifyResults.setter
+    def CardVerifyResults(self, CardVerifyResults):
+        self._CardVerifyResults = CardVerifyResults
+
+    @property
+    def CompareResults(self):
+        return self._CompareResults
+
+    @CompareResults.setter
+    def CompareResults(self, CompareResults):
+        self._CompareResults = CompareResults
+
+    @property
+    def Extra(self):
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.Description = params.get("Description")
-        self.ChargeCount = params.get("ChargeCount")
+        self._Result = params.get("Result")
+        self._Description = params.get("Description")
+        self._ChargeCount = params.get("ChargeCount")
         if params.get("CardVerifyResults") is not None:
-            self.CardVerifyResults = []
+            self._CardVerifyResults = []
             for item in params.get("CardVerifyResults"):
                 obj = CardVerifyResult()
                 obj._deserialize(item)
-                self.CardVerifyResults.append(obj)
+                self._CardVerifyResults.append(obj)
         if params.get("CompareResults") is not None:
-            self.CompareResults = []
+            self._CompareResults = []
             for item in params.get("CompareResults"):
                 obj = CompareResult()
                 obj._deserialize(item)
-                self.CompareResults.append(obj)
-        self.Extra = params.get("Extra")
-        self.RequestId = params.get("RequestId")
+                self._CompareResults.append(obj)
+        self._Extra = params.get("Extra")
+        self._RequestId = params.get("RequestId")
 
 
 class GetWebVerificationResultRequest(AbstractModel):
@@ -976,18 +1709,27 @@ class GetWebVerificationResultRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BizToken: The token for the web-based verification, which is generated with the `ApplyWebVerificationToken` API.
+        :param _BizToken: The token for the web-based verification, which is generated with the `ApplyWebVerificationToken` API.
         :type BizToken: str
         """
-        self.BizToken = None
+        self._BizToken = None
+
+    @property
+    def BizToken(self):
+        return self._BizToken
+
+    @BizToken.setter
+    def BizToken(self, BizToken):
+        self._BizToken = BizToken
 
 
     def _deserialize(self, params):
-        self.BizToken = params.get("BizToken")
+        self._BizToken = params.get("BizToken")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1000,54 +1742,118 @@ class GetWebVerificationResultResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ErrorCode: The final result of this verification. `0` indicates that the person is the same as that in the photo.
+        :param _ErrorCode: The final result of this verification. `0` indicates that the person is the same as that in the photo.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ErrorCode: int
-        :param ErrorMsg: The description of the final verification result.
+        :param _ErrorMsg: The description of the final verification result.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ErrorMsg: str
-        :param VideoBestFrameUrl: The temporary URL of the best face screenshot collected from the video stream. It is valid for 10 minutes. Download the image if needed.
+        :param _VideoBestFrameUrl: The temporary URL of the best face screenshot collected from the video stream. It is valid for 10 minutes. Download the image if needed.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type VideoBestFrameUrl: str
-        :param VideoBestFrameMd5: The MD5 hash value of the best face screenshot collected from the video stream. It can be used to check whether the image content is consistent with the file content.
+        :param _VideoBestFrameMd5: The MD5 hash value of the best face screenshot collected from the video stream. It can be used to check whether the image content is consistent with the file content.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type VideoBestFrameMd5: str
-        :param VerificationDetailList: The details list of this verification process.
+        :param _VerificationDetailList: The details list of this verification process.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type VerificationDetailList: list of VerificationDetail
-        :param VideoUrl: The temporary URL of the video collected from the video stream. It is valid for 10 minutes. Download the video if needed.
+        :param _VideoUrl: The temporary URL of the video collected from the video stream. It is valid for 10 minutes. Download the video if needed.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type VideoUrl: str
-        :param VideoMd5: The MD5 hash value of the video collected from the video stream. It can be used to check whether the video content is consistent with the file content.
+        :param _VideoMd5: The MD5 hash value of the video collected from the video stream. It can be used to check whether the video content is consistent with the file content.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type VideoMd5: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.ErrorCode = None
-        self.ErrorMsg = None
-        self.VideoBestFrameUrl = None
-        self.VideoBestFrameMd5 = None
-        self.VerificationDetailList = None
-        self.VideoUrl = None
-        self.VideoMd5 = None
-        self.RequestId = None
+        self._ErrorCode = None
+        self._ErrorMsg = None
+        self._VideoBestFrameUrl = None
+        self._VideoBestFrameMd5 = None
+        self._VerificationDetailList = None
+        self._VideoUrl = None
+        self._VideoMd5 = None
+        self._RequestId = None
+
+    @property
+    def ErrorCode(self):
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def VideoBestFrameUrl(self):
+        return self._VideoBestFrameUrl
+
+    @VideoBestFrameUrl.setter
+    def VideoBestFrameUrl(self, VideoBestFrameUrl):
+        self._VideoBestFrameUrl = VideoBestFrameUrl
+
+    @property
+    def VideoBestFrameMd5(self):
+        return self._VideoBestFrameMd5
+
+    @VideoBestFrameMd5.setter
+    def VideoBestFrameMd5(self, VideoBestFrameMd5):
+        self._VideoBestFrameMd5 = VideoBestFrameMd5
+
+    @property
+    def VerificationDetailList(self):
+        return self._VerificationDetailList
+
+    @VerificationDetailList.setter
+    def VerificationDetailList(self, VerificationDetailList):
+        self._VerificationDetailList = VerificationDetailList
+
+    @property
+    def VideoUrl(self):
+        return self._VideoUrl
+
+    @VideoUrl.setter
+    def VideoUrl(self, VideoUrl):
+        self._VideoUrl = VideoUrl
+
+    @property
+    def VideoMd5(self):
+        return self._VideoMd5
+
+    @VideoMd5.setter
+    def VideoMd5(self, VideoMd5):
+        self._VideoMd5 = VideoMd5
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ErrorCode = params.get("ErrorCode")
-        self.ErrorMsg = params.get("ErrorMsg")
-        self.VideoBestFrameUrl = params.get("VideoBestFrameUrl")
-        self.VideoBestFrameMd5 = params.get("VideoBestFrameMd5")
+        self._ErrorCode = params.get("ErrorCode")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._VideoBestFrameUrl = params.get("VideoBestFrameUrl")
+        self._VideoBestFrameMd5 = params.get("VideoBestFrameMd5")
         if params.get("VerificationDetailList") is not None:
-            self.VerificationDetailList = []
+            self._VerificationDetailList = []
             for item in params.get("VerificationDetailList"):
                 obj = VerificationDetail()
                 obj._deserialize(item)
-                self.VerificationDetailList.append(obj)
-        self.VideoUrl = params.get("VideoUrl")
-        self.VideoMd5 = params.get("VideoMd5")
-        self.RequestId = params.get("RequestId")
+                self._VerificationDetailList.append(obj)
+        self._VideoUrl = params.get("VideoUrl")
+        self._VideoMd5 = params.get("VideoMd5")
+        self._RequestId = params.get("RequestId")
 
 
 class LivenessCompareRequest(AbstractModel):
@@ -1057,64 +1863,121 @@ class LivenessCompareRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LivenessType: Liveness detection type. Valid values: LIP/ACTION/SILENT.
+        :param _LivenessType: Liveness detection type. Valid values: LIP/ACTION/SILENT.
 LIP: numeric mode; ACTION: motion mode; SILENT: silent mode. You need to select a mode to input.
         :type LivenessType: str
-        :param ImageBase64: Base64 string of the image for face comparison.
+        :param _ImageBase64: Base64 string of the image for face comparison.
 The size of the Base64-encoded image data can be up to 3 MB. JPG and PNG formats are supported.
 Please use the standard Base64 encoding scheme (with the "=" padding). For the encoding conventions, please see RFC 4648.
 
 Either the `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageBase64` will be used.
         :type ImageBase64: str
-        :param ImageUrl: URL of the image for face comparison. The size of the downloaded image after Base64 encoding can be up to 3 MB. JPG and PNG formats are supported.
+        :param _ImageUrl: URL of the image for face comparison. The size of the downloaded image after Base64 encoding can be up to 3 MB. JPG and PNG formats are supported.
 
 Either the `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageBase64` will be used.
 
 We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.
         :type ImageUrl: str
-        :param ValidateData: Lip mode: set this parameter to a custom 4-digit verification code.
+        :param _ValidateData: Lip mode: set this parameter to a custom 4-digit verification code.
 Action mode: set this parameter to a custom action sequence (e.g., `2,1` or `1,2`).
 Silent mode: do not pass in this parameter.
         :type ValidateData: str
-        :param Optional: Optional configuration (a JSON string)
+        :param _Optional: Optional configuration (a JSON string)
 {
 "BestFrameNum": 2  // Return multiple best screenshots. Value range: 2−10
 }
         :type Optional: str
-        :param VideoBase64: Base64 string of the video for liveness detection.
+        :param _VideoBase64: Base64 string of the video for liveness detection.
 The size of the Base64-encoded video data can be up to 8 MB. MP4, AVI, and FLV formats are supported.
 Please use the standard Base64 encoding scheme (with the "=" padding). For the encoding conventions, please see RFC 4648.
 
 Either the `VideoUrl` or `VideoBase64` of the video must be provided. If both are provided, only `VideoBase64` will be used.
         :type VideoBase64: str
-        :param VideoUrl: URL of the video for liveness detection. The size of the downloaded video after Base64 encoding can be up to 8 MB. It takes no more than 4 seconds to download. MP4, AVI, and FLV formats are supported.
+        :param _VideoUrl: URL of the video for liveness detection. The size of the downloaded video after Base64 encoding can be up to 8 MB. It takes no more than 4 seconds to download. MP4, AVI, and FLV formats are supported.
 
 Either the `VideoUrl` or `VideoBase64` of the video must be provided. If both are provided, only `VideoBase64` will be used.
 
 We recommend you store the video in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.
         :type VideoUrl: str
         """
-        self.LivenessType = None
-        self.ImageBase64 = None
-        self.ImageUrl = None
-        self.ValidateData = None
-        self.Optional = None
-        self.VideoBase64 = None
-        self.VideoUrl = None
+        self._LivenessType = None
+        self._ImageBase64 = None
+        self._ImageUrl = None
+        self._ValidateData = None
+        self._Optional = None
+        self._VideoBase64 = None
+        self._VideoUrl = None
+
+    @property
+    def LivenessType(self):
+        return self._LivenessType
+
+    @LivenessType.setter
+    def LivenessType(self, LivenessType):
+        self._LivenessType = LivenessType
+
+    @property
+    def ImageBase64(self):
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+    @property
+    def ImageUrl(self):
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ValidateData(self):
+        return self._ValidateData
+
+    @ValidateData.setter
+    def ValidateData(self, ValidateData):
+        self._ValidateData = ValidateData
+
+    @property
+    def Optional(self):
+        return self._Optional
+
+    @Optional.setter
+    def Optional(self, Optional):
+        self._Optional = Optional
+
+    @property
+    def VideoBase64(self):
+        return self._VideoBase64
+
+    @VideoBase64.setter
+    def VideoBase64(self, VideoBase64):
+        self._VideoBase64 = VideoBase64
+
+    @property
+    def VideoUrl(self):
+        return self._VideoUrl
+
+    @VideoUrl.setter
+    def VideoUrl(self, VideoUrl):
+        self._VideoUrl = VideoUrl
 
 
     def _deserialize(self, params):
-        self.LivenessType = params.get("LivenessType")
-        self.ImageBase64 = params.get("ImageBase64")
-        self.ImageUrl = params.get("ImageUrl")
-        self.ValidateData = params.get("ValidateData")
-        self.Optional = params.get("Optional")
-        self.VideoBase64 = params.get("VideoBase64")
-        self.VideoUrl = params.get("VideoUrl")
+        self._LivenessType = params.get("LivenessType")
+        self._ImageBase64 = params.get("ImageBase64")
+        self._ImageUrl = params.get("ImageUrl")
+        self._ValidateData = params.get("ValidateData")
+        self._Optional = params.get("Optional")
+        self._VideoBase64 = params.get("VideoBase64")
+        self._VideoUrl = params.get("VideoUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1127,34 +1990,82 @@ class LivenessCompareResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BestFrameBase64: The best screenshot of the video after successful verification. The photo is Base64-encoded and in JPG format.
+        :param _BestFrameBase64: The best screenshot of the video after successful verification. The photo is Base64-encoded and in JPG format.
         :type BestFrameBase64: str
-        :param Sim: Similarity. Value range: [0.00, 100.00]. As a recommendation, when the similarity is greater than or equal to 70, it can be determined that the two faces are of the same person. You can adjust the threshold according to your specific scenario (the FAR at the threshold of 70 is 0.1%, and FAR at the threshold of 80 is 0.01%).
+        :param _Sim: Similarity. Value range: [0.00, 100.00]. As a recommendation, when the similarity is greater than or equal to 70, it can be determined that the two faces are of the same person. You can adjust the threshold according to your specific scenario (the FAR at the threshold of 70 is 0.1%, and FAR at the threshold of 80 is 0.01%).
         :type Sim: float
-        :param Result: Service error code. `Success` will be returned for success. For error information, please see the `FailedOperation` section in the error code list below.
+        :param _Result: Service error code. `Success` will be returned for success. For error information, please see the `FailedOperation` section in the error code list below.
         :type Result: str
-        :param Description: Service result description.
+        :param _Description: Service result description.
         :type Description: str
-        :param BestFrameList: 
+        :param _BestFrameList: 
         :type BestFrameList: list of str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.BestFrameBase64 = None
-        self.Sim = None
-        self.Result = None
-        self.Description = None
-        self.BestFrameList = None
-        self.RequestId = None
+        self._BestFrameBase64 = None
+        self._Sim = None
+        self._Result = None
+        self._Description = None
+        self._BestFrameList = None
+        self._RequestId = None
+
+    @property
+    def BestFrameBase64(self):
+        return self._BestFrameBase64
+
+    @BestFrameBase64.setter
+    def BestFrameBase64(self, BestFrameBase64):
+        self._BestFrameBase64 = BestFrameBase64
+
+    @property
+    def Sim(self):
+        return self._Sim
+
+    @Sim.setter
+    def Sim(self, Sim):
+        self._Sim = Sim
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def BestFrameList(self):
+        return self._BestFrameList
+
+    @BestFrameList.setter
+    def BestFrameList(self, BestFrameList):
+        self._BestFrameList = BestFrameList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.BestFrameBase64 = params.get("BestFrameBase64")
-        self.Sim = params.get("Sim")
-        self.Result = params.get("Result")
-        self.Description = params.get("Description")
-        self.BestFrameList = params.get("BestFrameList")
-        self.RequestId = params.get("RequestId")
+        self._BestFrameBase64 = params.get("BestFrameBase64")
+        self._Sim = params.get("Sim")
+        self._Result = params.get("Result")
+        self._Description = params.get("Description")
+        self._BestFrameList = params.get("BestFrameList")
+        self._RequestId = params.get("RequestId")
 
 
 class VerificationDetail(AbstractModel):
@@ -1164,59 +2075,132 @@ class VerificationDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ErrorCode: The final result of this verification. `0` indicates that the person is the same as that in the photo.
+        :param _ErrorCode: The final result of this verification. `0` indicates that the person is the same as that in the photo.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ErrorCode: int
-        :param ErrorMsg: The description of the final verification result.
+        :param _ErrorMsg: The description of the final verification result.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ErrorMsg: str
-        :param LivenessErrorCode: The result of this liveness detection process. `0` indicates success.
+        :param _LivenessErrorCode: The result of this liveness detection process. `0` indicates success.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type LivenessErrorCode: int
-        :param LivenessErrorMsg: The result description of this liveness detection process.
+        :param _LivenessErrorMsg: The result description of this liveness detection process.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type LivenessErrorMsg: str
-        :param CompareErrorCode: The result of this comparison process. `0` indicates that the person in the best face screenshot collected from the video stream is the same as that in the uploaded image for comparison.
+        :param _CompareErrorCode: The result of this comparison process. `0` indicates that the person in the best face screenshot collected from the video stream is the same as that in the uploaded image for comparison.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CompareErrorCode: int
-        :param CompareErrorMsg: The result description of this comparison process.
+        :param _CompareErrorMsg: The result description of this comparison process.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CompareErrorMsg: str
-        :param ReqTimestamp: The timestamp (ms) of this verification process.
+        :param _ReqTimestamp: The timestamp (ms) of this verification process.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ReqTimestamp: int
-        :param Similarity: The similarity of the best face screenshot collected from the video stream and the uploaded image for comparison in this verification process. Valid range: [0.00, 100.00]. By default, the person in the screenshot is judged as the same person in the image if the similarity is greater than or equal to 70.
+        :param _Similarity: The similarity of the best face screenshot collected from the video stream and the uploaded image for comparison in this verification process. Valid range: [0.00, 100.00]. By default, the person in the screenshot is judged as the same person in the image if the similarity is greater than or equal to 70.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Similarity: float
-        :param Seq: Unique ID of this verification process.
+        :param _Seq: Unique ID of this verification process.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Seq: str
         """
-        self.ErrorCode = None
-        self.ErrorMsg = None
-        self.LivenessErrorCode = None
-        self.LivenessErrorMsg = None
-        self.CompareErrorCode = None
-        self.CompareErrorMsg = None
-        self.ReqTimestamp = None
-        self.Similarity = None
-        self.Seq = None
+        self._ErrorCode = None
+        self._ErrorMsg = None
+        self._LivenessErrorCode = None
+        self._LivenessErrorMsg = None
+        self._CompareErrorCode = None
+        self._CompareErrorMsg = None
+        self._ReqTimestamp = None
+        self._Similarity = None
+        self._Seq = None
+
+    @property
+    def ErrorCode(self):
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def LivenessErrorCode(self):
+        return self._LivenessErrorCode
+
+    @LivenessErrorCode.setter
+    def LivenessErrorCode(self, LivenessErrorCode):
+        self._LivenessErrorCode = LivenessErrorCode
+
+    @property
+    def LivenessErrorMsg(self):
+        return self._LivenessErrorMsg
+
+    @LivenessErrorMsg.setter
+    def LivenessErrorMsg(self, LivenessErrorMsg):
+        self._LivenessErrorMsg = LivenessErrorMsg
+
+    @property
+    def CompareErrorCode(self):
+        return self._CompareErrorCode
+
+    @CompareErrorCode.setter
+    def CompareErrorCode(self, CompareErrorCode):
+        self._CompareErrorCode = CompareErrorCode
+
+    @property
+    def CompareErrorMsg(self):
+        return self._CompareErrorMsg
+
+    @CompareErrorMsg.setter
+    def CompareErrorMsg(self, CompareErrorMsg):
+        self._CompareErrorMsg = CompareErrorMsg
+
+    @property
+    def ReqTimestamp(self):
+        return self._ReqTimestamp
+
+    @ReqTimestamp.setter
+    def ReqTimestamp(self, ReqTimestamp):
+        self._ReqTimestamp = ReqTimestamp
+
+    @property
+    def Similarity(self):
+        return self._Similarity
+
+    @Similarity.setter
+    def Similarity(self, Similarity):
+        self._Similarity = Similarity
+
+    @property
+    def Seq(self):
+        return self._Seq
+
+    @Seq.setter
+    def Seq(self, Seq):
+        self._Seq = Seq
 
 
     def _deserialize(self, params):
-        self.ErrorCode = params.get("ErrorCode")
-        self.ErrorMsg = params.get("ErrorMsg")
-        self.LivenessErrorCode = params.get("LivenessErrorCode")
-        self.LivenessErrorMsg = params.get("LivenessErrorMsg")
-        self.CompareErrorCode = params.get("CompareErrorCode")
-        self.CompareErrorMsg = params.get("CompareErrorMsg")
-        self.ReqTimestamp = params.get("ReqTimestamp")
-        self.Similarity = params.get("Similarity")
-        self.Seq = params.get("Seq")
+        self._ErrorCode = params.get("ErrorCode")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._LivenessErrorCode = params.get("LivenessErrorCode")
+        self._LivenessErrorMsg = params.get("LivenessErrorMsg")
+        self._CompareErrorCode = params.get("CompareErrorCode")
+        self._CompareErrorMsg = params.get("CompareErrorMsg")
+        self._ReqTimestamp = params.get("ReqTimestamp")
+        self._Similarity = params.get("Similarity")
+        self._Seq = params.get("Seq")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1229,45 +2213,94 @@ class VideoLivenessCompareRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageUrl: The URL of the photo for face comparison. The downloaded image after Base64 encoding can be up to 3 MB and must be in JPG or PNG.
+        :param _ImageUrl: The URL of the photo for face comparison. The downloaded image after Base64 encoding can be up to 3 MB and must be in JPG or PNG.
 
 The image must be stored in a COS bucket in the region where the FaceID service resides to ensure a higher download speed and better stability. You can generate an image URL by using `CreateUploadUrl` or purchase the COS service.
         :type ImageUrl: str
-        :param ImageMd5: The 32-bit MD5 checksum of the image for comparison
+        :param _ImageMd5: The 32-bit MD5 checksum of the image for comparison
         :type ImageMd5: str
-        :param VideoUrl: The URL of the video for liveness detection. The downloaded video after Base64 encoding can be up to 8 MB and must be in MP4, AVI, or FLV. It takes no more than 4s to download the video.
+        :param _VideoUrl: The URL of the video for liveness detection. The downloaded video after Base64 encoding can be up to 8 MB and must be in MP4, AVI, or FLV. It takes no more than 4s to download the video.
 
 The video must be stored in a COS bucket in the region where the FaceID service resides to ensure a higher download speed and better stability. You can generate a video URL by using `CreateUploadUrl` or purchase the COS service.
         :type VideoUrl: str
-        :param VideoMd5: The 32-bit MD5 checksum of the video
+        :param _VideoMd5: The 32-bit MD5 checksum of the video
         :type VideoMd5: str
-        :param LivenessType: The liveness detection type. Valid values: `LIP`, `ACTION`, and `SILENT`.
+        :param _LivenessType: The liveness detection type. Valid values: `LIP`, `ACTION`, and `SILENT`.
 `LIP`: Numeric mode; `ACTION`: Motion mode; `SILENT`: silent mode. Select one of them.
         :type LivenessType: str
-        :param ValidateData: LIP parameter: Pass in a custom 4-digit verification code.
+        :param _ValidateData: LIP parameter: Pass in a custom 4-digit verification code.
 ACTION parameter: Pass in a custom action sequence (`2,1` or `1,2`).
 SILENT parameter: Null.
         :type ValidateData: str
         """
-        self.ImageUrl = None
-        self.ImageMd5 = None
-        self.VideoUrl = None
-        self.VideoMd5 = None
-        self.LivenessType = None
-        self.ValidateData = None
+        self._ImageUrl = None
+        self._ImageMd5 = None
+        self._VideoUrl = None
+        self._VideoMd5 = None
+        self._LivenessType = None
+        self._ValidateData = None
+
+    @property
+    def ImageUrl(self):
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ImageMd5(self):
+        return self._ImageMd5
+
+    @ImageMd5.setter
+    def ImageMd5(self, ImageMd5):
+        self._ImageMd5 = ImageMd5
+
+    @property
+    def VideoUrl(self):
+        return self._VideoUrl
+
+    @VideoUrl.setter
+    def VideoUrl(self, VideoUrl):
+        self._VideoUrl = VideoUrl
+
+    @property
+    def VideoMd5(self):
+        return self._VideoMd5
+
+    @VideoMd5.setter
+    def VideoMd5(self, VideoMd5):
+        self._VideoMd5 = VideoMd5
+
+    @property
+    def LivenessType(self):
+        return self._LivenessType
+
+    @LivenessType.setter
+    def LivenessType(self, LivenessType):
+        self._LivenessType = LivenessType
+
+    @property
+    def ValidateData(self):
+        return self._ValidateData
+
+    @ValidateData.setter
+    def ValidateData(self, ValidateData):
+        self._ValidateData = ValidateData
 
 
     def _deserialize(self, params):
-        self.ImageUrl = params.get("ImageUrl")
-        self.ImageMd5 = params.get("ImageMd5")
-        self.VideoUrl = params.get("VideoUrl")
-        self.VideoMd5 = params.get("VideoMd5")
-        self.LivenessType = params.get("LivenessType")
-        self.ValidateData = params.get("ValidateData")
+        self._ImageUrl = params.get("ImageUrl")
+        self._ImageMd5 = params.get("ImageMd5")
+        self._VideoUrl = params.get("VideoUrl")
+        self._VideoMd5 = params.get("VideoMd5")
+        self._LivenessType = params.get("LivenessType")
+        self._ValidateData = params.get("ValidateData")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1280,30 +2313,70 @@ class VideoLivenessCompareResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Sim: The similarity. Value range: [0.00, 100.00]. As a recommendation, when the similarity is greater than or equal to 70, it can be determined that the two persons are of the same person. You can adjust the threshold according to your specific scenario (the FARs at the thresholds of 70 and 80 are 0.1% and 0.01%, respectively).
+        :param _Sim: The similarity. Value range: [0.00, 100.00]. As a recommendation, when the similarity is greater than or equal to 70, it can be determined that the two persons are of the same person. You can adjust the threshold according to your specific scenario (the FARs at the thresholds of 70 and 80 are 0.1% and 0.01%, respectively).
         :type Sim: float
-        :param Result: The service error code. `Success` will be returned for success. For error information, see the `FailedOperation` section in the error code list below.
+        :param _Result: The service error code. `Success` will be returned for success. For error information, see the `FailedOperation` section in the error code list below.
         :type Result: str
-        :param Description: The service result description
+        :param _Description: The service result description
         :type Description: str
-        :param BestFrame: The best video screenshot after successful verification
+        :param _BestFrame: The best video screenshot after successful verification
 Note: This field may return null, indicating that no valid values can be obtained.
         :type BestFrame: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Sim = None
-        self.Result = None
-        self.Description = None
-        self.BestFrame = None
-        self.RequestId = None
+        self._Sim = None
+        self._Result = None
+        self._Description = None
+        self._BestFrame = None
+        self._RequestId = None
+
+    @property
+    def Sim(self):
+        return self._Sim
+
+    @Sim.setter
+    def Sim(self, Sim):
+        self._Sim = Sim
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def BestFrame(self):
+        return self._BestFrame
+
+    @BestFrame.setter
+    def BestFrame(self, BestFrame):
+        self._BestFrame = BestFrame
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Sim = params.get("Sim")
-        self.Result = params.get("Result")
-        self.Description = params.get("Description")
+        self._Sim = params.get("Sim")
+        self._Result = params.get("Result")
+        self._Description = params.get("Description")
         if params.get("BestFrame") is not None:
-            self.BestFrame = FileInfo()
-            self.BestFrame._deserialize(params.get("BestFrame"))
-        self.RequestId = params.get("RequestId")
+            self._BestFrame = FileInfo()
+            self._BestFrame._deserialize(params.get("BestFrame"))
+        self._RequestId = params.get("RequestId")

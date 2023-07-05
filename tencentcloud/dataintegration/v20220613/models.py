@@ -25,22 +25,39 @@ class BatchContent(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Body: Message body
+        :param _Body: Message body
         :type Body: str
-        :param Key: Key of a message
+        :param _Key: Key of a message
         :type Key: str
         """
-        self.Body = None
-        self.Key = None
+        self._Body = None
+        self._Key = None
+
+    @property
+    def Body(self):
+        return self._Body
+
+    @Body.setter
+    def Body(self, Body):
+        self._Body = Body
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
 
 
     def _deserialize(self, params):
-        self.Body = params.get("Body")
-        self.Key = params.get("Key")
+        self._Body = params.get("Body")
+        self._Key = params.get("Key")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -53,27 +70,44 @@ class SendMessageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DataHubId: ID of the integrated resource
+        :param _DataHubId: ID of the integrated resource
         :type DataHubId: str
-        :param Message: A batch of messages
+        :param _Message: A batch of messages
         :type Message: list of BatchContent
         """
-        self.DataHubId = None
-        self.Message = None
+        self._DataHubId = None
+        self._Message = None
+
+    @property
+    def DataHubId(self):
+        return self._DataHubId
+
+    @DataHubId.setter
+    def DataHubId(self, DataHubId):
+        self._DataHubId = DataHubId
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
 
 
     def _deserialize(self, params):
-        self.DataHubId = params.get("DataHubId")
+        self._DataHubId = params.get("DataHubId")
         if params.get("Message") is not None:
-            self.Message = []
+            self._Message = []
             for item in params.get("Message"):
                 obj = BatchContent()
                 obj._deserialize(item)
-                self.Message.append(obj)
+                self._Message.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -86,15 +120,31 @@ class SendMessageResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MessageId: Message ID
+        :param _MessageId: Message ID
         :type MessageId: list of str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.MessageId = None
-        self.RequestId = None
+        self._MessageId = None
+        self._RequestId = None
+
+    @property
+    def MessageId(self):
+        return self._MessageId
+
+    @MessageId.setter
+    def MessageId(self, MessageId):
+        self._MessageId = MessageId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.MessageId = params.get("MessageId")
-        self.RequestId = params.get("RequestId")
+        self._MessageId = params.get("MessageId")
+        self._RequestId = params.get("RequestId")

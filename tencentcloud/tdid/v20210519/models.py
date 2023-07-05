@@ -25,22 +25,39 @@ class AddLabelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LabelId: The label ID.
+        :param _LabelId: The label ID.
         :type LabelId: int
-        :param Did: 
+        :param _Did: 
         :type Did: str
         """
-        self.LabelId = None
-        self.Did = None
+        self._LabelId = None
+        self._Did = None
+
+    @property
+    def LabelId(self):
+        return self._LabelId
+
+    @LabelId.setter
+    def LabelId(self, LabelId):
+        self._LabelId = LabelId
+
+    @property
+    def Did(self):
+        return self._Did
+
+    @Did.setter
+    def Did(self, Did):
+        self._Did = Did
 
 
     def _deserialize(self, params):
-        self.LabelId = params.get("LabelId")
-        self.Did = params.get("Did")
+        self._LabelId = params.get("LabelId")
+        self._Did = params.get("Did")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -53,14 +70,22 @@ class AddLabelResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class Authority(AbstractModel):
@@ -70,82 +95,211 @@ class Authority(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: The authority ID.
+        :param _Id: The authority ID.
         :type Id: int
-        :param DidId: The DID.
+        :param _DidId: The DID.
         :type DidId: int
-        :param Did: The details of the DID.
+        :param _Did: The details of the DID.
         :type Did: str
-        :param Name: The authority name.
+        :param _Name: The authority name.
         :type Name: str
-        :param Status: Whether the authority is certified. `1`: Yes; `2`: No.
+        :param _Status: Whether the authority is certified. `1`: Yes; `2`: No.
         :type Status: int
-        :param DidServiceId: The DID service ID.
+        :param _DidServiceId: The DID service ID.
         :type DidServiceId: int
-        :param ContractAppId: The application ID.
+        :param _ContractAppId: The application ID.
         :type ContractAppId: int
-        :param Remark: Remarks
+        :param _Remark: Remarks
         :type Remark: str
-        :param RegisterTime: The registration time.
+        :param _RegisterTime: The registration time.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type RegisterTime: str
-        :param RecognizeTime: The recognition time.
+        :param _RecognizeTime: The recognition time.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type RecognizeTime: str
-        :param CreateTime: The creation time.
+        :param _CreateTime: The creation time.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type CreateTime: str
-        :param UpdateTime: The last updated time.
+        :param _UpdateTime: The last updated time.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type UpdateTime: str
-        :param ClusterId: The network ID.
+        :param _ClusterId: The network ID.
         :type ClusterId: str
-        :param GroupId: The group ID.
+        :param _GroupId: The group ID.
         :type GroupId: int
-        :param AppName: The application name.
+        :param _AppName: The application name.
         :type AppName: str
-        :param LabelName: The on-chain label.
+        :param _LabelName: The on-chain label.
         :type LabelName: str
         """
-        self.Id = None
-        self.DidId = None
-        self.Did = None
-        self.Name = None
-        self.Status = None
-        self.DidServiceId = None
-        self.ContractAppId = None
-        self.Remark = None
-        self.RegisterTime = None
-        self.RecognizeTime = None
-        self.CreateTime = None
-        self.UpdateTime = None
-        self.ClusterId = None
-        self.GroupId = None
-        self.AppName = None
-        self.LabelName = None
+        self._Id = None
+        self._DidId = None
+        self._Did = None
+        self._Name = None
+        self._Status = None
+        self._DidServiceId = None
+        self._ContractAppId = None
+        self._Remark = None
+        self._RegisterTime = None
+        self._RecognizeTime = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._ClusterId = None
+        self._GroupId = None
+        self._AppName = None
+        self._LabelName = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def DidId(self):
+        return self._DidId
+
+    @DidId.setter
+    def DidId(self, DidId):
+        self._DidId = DidId
+
+    @property
+    def Did(self):
+        return self._Did
+
+    @Did.setter
+    def Did(self, Did):
+        self._Did = Did
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def DidServiceId(self):
+        return self._DidServiceId
+
+    @DidServiceId.setter
+    def DidServiceId(self, DidServiceId):
+        self._DidServiceId = DidServiceId
+
+    @property
+    def ContractAppId(self):
+        return self._ContractAppId
+
+    @ContractAppId.setter
+    def ContractAppId(self, ContractAppId):
+        self._ContractAppId = ContractAppId
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def RegisterTime(self):
+        return self._RegisterTime
+
+    @RegisterTime.setter
+    def RegisterTime(self, RegisterTime):
+        self._RegisterTime = RegisterTime
+
+    @property
+    def RecognizeTime(self):
+        return self._RecognizeTime
+
+    @RecognizeTime.setter
+    def RecognizeTime(self, RecognizeTime):
+        self._RecognizeTime = RecognizeTime
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def LabelName(self):
+        return self._LabelName
+
+    @LabelName.setter
+    def LabelName(self, LabelName):
+        self._LabelName = LabelName
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.DidId = params.get("DidId")
-        self.Did = params.get("Did")
-        self.Name = params.get("Name")
-        self.Status = params.get("Status")
-        self.DidServiceId = params.get("DidServiceId")
-        self.ContractAppId = params.get("ContractAppId")
-        self.Remark = params.get("Remark")
-        self.RegisterTime = params.get("RegisterTime")
-        self.RecognizeTime = params.get("RecognizeTime")
-        self.CreateTime = params.get("CreateTime")
-        self.UpdateTime = params.get("UpdateTime")
-        self.ClusterId = params.get("ClusterId")
-        self.GroupId = params.get("GroupId")
-        self.AppName = params.get("AppName")
-        self.LabelName = params.get("LabelName")
+        self._Id = params.get("Id")
+        self._DidId = params.get("DidId")
+        self._Did = params.get("Did")
+        self._Name = params.get("Name")
+        self._Status = params.get("Status")
+        self._DidServiceId = params.get("DidServiceId")
+        self._ContractAppId = params.get("ContractAppId")
+        self._Remark = params.get("Remark")
+        self._RegisterTime = params.get("RegisterTime")
+        self._RecognizeTime = params.get("RecognizeTime")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._ClusterId = params.get("ClusterId")
+        self._GroupId = params.get("GroupId")
+        self._AppName = params.get("AppName")
+        self._LabelName = params.get("LabelName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -158,74 +312,195 @@ class BcosClusterItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ChainId: The network ID.
+        :param _ChainId: The network ID.
         :type ChainId: int
-        :param ChainName: The network name.
+        :param _ChainName: The network name.
         :type ChainName: str
-        :param AgencyCount: The number of organizations.
+        :param _AgencyCount: The number of organizations.
         :type AgencyCount: int
-        :param ConsortiumId: The consortium ID.
+        :param _ConsortiumId: The consortium ID.
         :type ConsortiumId: int
-        :param CreateTime: The creation time.
+        :param _CreateTime: The creation time.
         :type CreateTime: str
-        :param ExpireTime: The expiration time.
+        :param _ExpireTime: The expiration time.
         :type ExpireTime: str
-        :param ChainStatus: The network status.
+        :param _ChainStatus: The network status.
         :type ChainStatus: int
-        :param ResourceId: The resource ID.
+        :param _ResourceId: The resource ID.
         :type ResourceId: str
-        :param ClusterId: The cluster ID.
+        :param _ClusterId: The cluster ID.
         :type ClusterId: str
-        :param ConsortiumName: The consortium name.
+        :param _ConsortiumName: The consortium name.
         :type ConsortiumName: str
-        :param AgencyId: The organization ID.
+        :param _AgencyId: The organization ID.
         :type AgencyId: int
-        :param AutoRenewFlag: The renewal status.
+        :param _AutoRenewFlag: The renewal status.
         :type AutoRenewFlag: int
-        :param TotalNetworkNode: The network mode.
+        :param _TotalNetworkNode: The network mode.
         :type TotalNetworkNode: int
-        :param TotalCreateNode: The number of nodes created.
+        :param _TotalCreateNode: The number of nodes created.
         :type TotalCreateNode: int
-        :param TotalGroups: The total number of groups.
+        :param _TotalGroups: The total number of groups.
         :type TotalGroups: int
         """
-        self.ChainId = None
-        self.ChainName = None
-        self.AgencyCount = None
-        self.ConsortiumId = None
-        self.CreateTime = None
-        self.ExpireTime = None
-        self.ChainStatus = None
-        self.ResourceId = None
-        self.ClusterId = None
-        self.ConsortiumName = None
-        self.AgencyId = None
-        self.AutoRenewFlag = None
-        self.TotalNetworkNode = None
-        self.TotalCreateNode = None
-        self.TotalGroups = None
+        self._ChainId = None
+        self._ChainName = None
+        self._AgencyCount = None
+        self._ConsortiumId = None
+        self._CreateTime = None
+        self._ExpireTime = None
+        self._ChainStatus = None
+        self._ResourceId = None
+        self._ClusterId = None
+        self._ConsortiumName = None
+        self._AgencyId = None
+        self._AutoRenewFlag = None
+        self._TotalNetworkNode = None
+        self._TotalCreateNode = None
+        self._TotalGroups = None
+
+    @property
+    def ChainId(self):
+        return self._ChainId
+
+    @ChainId.setter
+    def ChainId(self, ChainId):
+        self._ChainId = ChainId
+
+    @property
+    def ChainName(self):
+        return self._ChainName
+
+    @ChainName.setter
+    def ChainName(self, ChainName):
+        self._ChainName = ChainName
+
+    @property
+    def AgencyCount(self):
+        return self._AgencyCount
+
+    @AgencyCount.setter
+    def AgencyCount(self, AgencyCount):
+        self._AgencyCount = AgencyCount
+
+    @property
+    def ConsortiumId(self):
+        return self._ConsortiumId
+
+    @ConsortiumId.setter
+    def ConsortiumId(self, ConsortiumId):
+        self._ConsortiumId = ConsortiumId
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def ChainStatus(self):
+        return self._ChainStatus
+
+    @ChainStatus.setter
+    def ChainStatus(self, ChainStatus):
+        self._ChainStatus = ChainStatus
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ConsortiumName(self):
+        return self._ConsortiumName
+
+    @ConsortiumName.setter
+    def ConsortiumName(self, ConsortiumName):
+        self._ConsortiumName = ConsortiumName
+
+    @property
+    def AgencyId(self):
+        return self._AgencyId
+
+    @AgencyId.setter
+    def AgencyId(self, AgencyId):
+        self._AgencyId = AgencyId
+
+    @property
+    def AutoRenewFlag(self):
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def TotalNetworkNode(self):
+        return self._TotalNetworkNode
+
+    @TotalNetworkNode.setter
+    def TotalNetworkNode(self, TotalNetworkNode):
+        self._TotalNetworkNode = TotalNetworkNode
+
+    @property
+    def TotalCreateNode(self):
+        return self._TotalCreateNode
+
+    @TotalCreateNode.setter
+    def TotalCreateNode(self, TotalCreateNode):
+        self._TotalCreateNode = TotalCreateNode
+
+    @property
+    def TotalGroups(self):
+        return self._TotalGroups
+
+    @TotalGroups.setter
+    def TotalGroups(self, TotalGroups):
+        self._TotalGroups = TotalGroups
 
 
     def _deserialize(self, params):
-        self.ChainId = params.get("ChainId")
-        self.ChainName = params.get("ChainName")
-        self.AgencyCount = params.get("AgencyCount")
-        self.ConsortiumId = params.get("ConsortiumId")
-        self.CreateTime = params.get("CreateTime")
-        self.ExpireTime = params.get("ExpireTime")
-        self.ChainStatus = params.get("ChainStatus")
-        self.ResourceId = params.get("ResourceId")
-        self.ClusterId = params.get("ClusterId")
-        self.ConsortiumName = params.get("ConsortiumName")
-        self.AgencyId = params.get("AgencyId")
-        self.AutoRenewFlag = params.get("AutoRenewFlag")
-        self.TotalNetworkNode = params.get("TotalNetworkNode")
-        self.TotalCreateNode = params.get("TotalCreateNode")
-        self.TotalGroups = params.get("TotalGroups")
+        self._ChainId = params.get("ChainId")
+        self._ChainName = params.get("ChainName")
+        self._AgencyCount = params.get("AgencyCount")
+        self._ConsortiumId = params.get("ConsortiumId")
+        self._CreateTime = params.get("CreateTime")
+        self._ExpireTime = params.get("ExpireTime")
+        self._ChainStatus = params.get("ChainStatus")
+        self._ResourceId = params.get("ResourceId")
+        self._ClusterId = params.get("ClusterId")
+        self._ConsortiumName = params.get("ConsortiumName")
+        self._AgencyId = params.get("AgencyId")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._TotalNetworkNode = params.get("TotalNetworkNode")
+        self._TotalCreateNode = params.get("TotalCreateNode")
+        self._TotalGroups = params.get("TotalGroups")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -238,18 +513,27 @@ class CancelAuthorityIssuerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Did: The details of the DID.
+        :param _Did: The details of the DID.
         :type Did: str
         """
-        self.Did = None
+        self._Did = None
+
+    @property
+    def Did(self):
+        return self._Did
+
+    @Did.setter
+    def Did(self, Did):
+        self._Did = Did
 
 
     def _deserialize(self, params):
-        self.Did = params.get("Did")
+        self._Did = params.get("Did")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -262,14 +546,22 @@ class CancelAuthorityIssuerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CheckChainRequest(AbstractModel):
@@ -279,26 +571,51 @@ class CheckChainRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupId: The group ID.
+        :param _GroupId: The group ID.
         :type GroupId: int
-        :param ClusterId: The network ID.
+        :param _ClusterId: The network ID.
         :type ClusterId: str
-        :param AgencyName: The name of the DID organization.
+        :param _AgencyName: The name of the DID organization.
         :type AgencyName: str
         """
-        self.GroupId = None
-        self.ClusterId = None
-        self.AgencyName = None
+        self._GroupId = None
+        self._ClusterId = None
+        self._AgencyName = None
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def AgencyName(self):
+        return self._AgencyName
+
+    @AgencyName.setter
+    def AgencyName(self, AgencyName):
+        self._AgencyName = AgencyName
 
 
     def _deserialize(self, params):
-        self.GroupId = params.get("GroupId")
-        self.ClusterId = params.get("ClusterId")
-        self.AgencyName = params.get("AgencyName")
+        self._GroupId = params.get("GroupId")
+        self._ClusterId = params.get("ClusterId")
+        self._AgencyName = params.get("AgencyName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -311,26 +628,58 @@ class CheckChainResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RoleType: Whether you are the owner of the consortium. `1`: Yes; `0`: No.
+        :param _RoleType: Whether you are the owner of the consortium. `1`: Yes; `0`: No.
         :type RoleType: int
-        :param ChainId: The chain ID.
+        :param _ChainId: The chain ID.
         :type ChainId: str
-        :param AppName: The application name.
+        :param _AppName: The application name.
         :type AppName: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RoleType = None
-        self.ChainId = None
-        self.AppName = None
-        self.RequestId = None
+        self._RoleType = None
+        self._ChainId = None
+        self._AppName = None
+        self._RequestId = None
+
+    @property
+    def RoleType(self):
+        return self._RoleType
+
+    @RoleType.setter
+    def RoleType(self, RoleType):
+        self._RoleType = RoleType
+
+    @property
+    def ChainId(self):
+        return self._ChainId
+
+    @ChainId.setter
+    def ChainId(self, ChainId):
+        self._ChainId = ChainId
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RoleType = params.get("RoleType")
-        self.ChainId = params.get("ChainId")
-        self.AppName = params.get("AppName")
-        self.RequestId = params.get("RequestId")
+        self._RoleType = params.get("RoleType")
+        self._ChainId = params.get("ChainId")
+        self._AppName = params.get("AppName")
+        self._RequestId = params.get("RequestId")
 
 
 class CheckDidDeployRequest(AbstractModel):
@@ -340,18 +689,27 @@ class CheckDidDeployRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: The task ID.
+        :param _TaskId: The task ID.
         :type TaskId: int
         """
-        self.TaskId = None
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
+        self._TaskId = params.get("TaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -364,20 +722,36 @@ class CheckDidDeployResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Task: The service information.
+        :param _Task: The service information.
         :type Task: :class:`tencentcloud.tdid.v20210519.models.Task`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Task = None
-        self.RequestId = None
+        self._Task = None
+        self._RequestId = None
+
+    @property
+    def Task(self):
+        return self._Task
+
+    @Task.setter
+    def Task(self, Task):
+        self._Task = Task
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Task") is not None:
-            self.Task = Task()
-            self.Task._deserialize(params.get("Task"))
-        self.RequestId = params.get("RequestId")
+            self._Task = Task()
+            self._Task._deserialize(params.get("Task"))
+        self._RequestId = params.get("RequestId")
 
 
 class ConsortiumItem(AbstractModel):
@@ -387,22 +761,39 @@ class ConsortiumItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: The consortium ID.
+        :param _Id: The consortium ID.
         :type Id: int
-        :param Name: The consortium name.
+        :param _Name: The consortium name.
         :type Name: str
         """
-        self.Id = None
-        self.Name = None
+        self._Id = None
+        self._Name = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.Name = params.get("Name")
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -415,46 +806,111 @@ class Contract(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApplyName: The application name.
+        :param _ApplyName: The application name.
         :type ApplyName: str
-        :param Enable: The contract status. `true`: Enabled; `false`: Not enabled.
+        :param _Enable: The contract status. `true`: Enabled; `false`: Not enabled.
         :type Enable: bool
-        :param Hash: The CNS address of the contract.
+        :param _Hash: The CNS address of the contract.
         :type Hash: str
-        :param HashShow: The desensitized CNS address.
+        :param _HashShow: The desensitized CNS address.
         :type HashShow: str
-        :param WeId: The DID of the organization that deployed the contract.
+        :param _WeId: The DID of the organization that deployed the contract.
         :type WeId: str
-        :param DeployName: The name of the organization that deployed the contract.
+        :param _DeployName: The name of the organization that deployed the contract.
         :type DeployName: str
-        :param GroupId: The group.
+        :param _GroupId: The group.
         :type GroupId: str
-        :param CreateTime: The deployment time.
+        :param _CreateTime: The deployment time.
         :type CreateTime: str
         """
-        self.ApplyName = None
-        self.Enable = None
-        self.Hash = None
-        self.HashShow = None
-        self.WeId = None
-        self.DeployName = None
-        self.GroupId = None
-        self.CreateTime = None
+        self._ApplyName = None
+        self._Enable = None
+        self._Hash = None
+        self._HashShow = None
+        self._WeId = None
+        self._DeployName = None
+        self._GroupId = None
+        self._CreateTime = None
+
+    @property
+    def ApplyName(self):
+        return self._ApplyName
+
+    @ApplyName.setter
+    def ApplyName(self, ApplyName):
+        self._ApplyName = ApplyName
+
+    @property
+    def Enable(self):
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def Hash(self):
+        return self._Hash
+
+    @Hash.setter
+    def Hash(self, Hash):
+        self._Hash = Hash
+
+    @property
+    def HashShow(self):
+        return self._HashShow
+
+    @HashShow.setter
+    def HashShow(self, HashShow):
+        self._HashShow = HashShow
+
+    @property
+    def WeId(self):
+        return self._WeId
+
+    @WeId.setter
+    def WeId(self, WeId):
+        self._WeId = WeId
+
+    @property
+    def DeployName(self):
+        return self._DeployName
+
+    @DeployName.setter
+    def DeployName(self, DeployName):
+        self._DeployName = DeployName
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
 
 
     def _deserialize(self, params):
-        self.ApplyName = params.get("ApplyName")
-        self.Enable = params.get("Enable")
-        self.Hash = params.get("Hash")
-        self.HashShow = params.get("HashShow")
-        self.WeId = params.get("WeId")
-        self.DeployName = params.get("DeployName")
-        self.GroupId = params.get("GroupId")
-        self.CreateTime = params.get("CreateTime")
+        self._ApplyName = params.get("ApplyName")
+        self._Enable = params.get("Enable")
+        self._Hash = params.get("Hash")
+        self._HashShow = params.get("HashShow")
+        self._WeId = params.get("WeId")
+        self._DeployName = params.get("DeployName")
+        self._GroupId = params.get("GroupId")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -467,34 +923,75 @@ class CptIssueRank(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CptName: The (claim protocol type) CPT name.
+        :param _CptName: The (claim protocol type) CPT name.
         :type CptName: str
-        :param Rank: The ranking.
+        :param _Rank: The ranking.
         :type Rank: int
-        :param Count: The number of credentials issued.
+        :param _Count: The number of credentials issued.
         :type Count: int
-        :param ApplyName: The application name.
+        :param _ApplyName: The application name.
         :type ApplyName: str
-        :param ApplyId: The application ID.
+        :param _ApplyId: The application ID.
         :type ApplyId: int
         """
-        self.CptName = None
-        self.Rank = None
-        self.Count = None
-        self.ApplyName = None
-        self.ApplyId = None
+        self._CptName = None
+        self._Rank = None
+        self._Count = None
+        self._ApplyName = None
+        self._ApplyId = None
+
+    @property
+    def CptName(self):
+        return self._CptName
+
+    @CptName.setter
+    def CptName(self, CptName):
+        self._CptName = CptName
+
+    @property
+    def Rank(self):
+        return self._Rank
+
+    @Rank.setter
+    def Rank(self, Rank):
+        self._Rank = Rank
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def ApplyName(self):
+        return self._ApplyName
+
+    @ApplyName.setter
+    def ApplyName(self, ApplyName):
+        self._ApplyName = ApplyName
+
+    @property
+    def ApplyId(self):
+        return self._ApplyId
+
+    @ApplyId.setter
+    def ApplyId(self, ApplyId):
+        self._ApplyId = ApplyId
 
 
     def _deserialize(self, params):
-        self.CptName = params.get("CptName")
-        self.Rank = params.get("Rank")
-        self.Count = params.get("Count")
-        self.ApplyName = params.get("ApplyName")
-        self.ApplyId = params.get("ApplyId")
+        self._CptName = params.get("CptName")
+        self._Rank = params.get("Rank")
+        self._Count = params.get("Count")
+        self._ApplyName = params.get("ApplyName")
+        self._ApplyId = params.get("ApplyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -507,70 +1004,183 @@ class CptListData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: The CPT ID.
+        :param _Id: The CPT ID.
         :type Id: int
-        :param Name: The name of the claim protocol type (CPT).
+        :param _Name: The name of the claim protocol type (CPT).
         :type Name: str
-        :param ClusterId: The network ID.
+        :param _ClusterId: The network ID.
         :type ClusterId: str
-        :param GroupId: The group ID.
+        :param _GroupId: The group ID.
         :type GroupId: int
-        :param ServiceId: The service ID.
+        :param _ServiceId: The service ID.
         :type ServiceId: int
-        :param ContractAppId: The application ID of the contract.
+        :param _ContractAppId: The application ID of the contract.
         :type ContractAppId: int
-        :param CptId: The claim protocol type (CPT) ID.
+        :param _CptId: The claim protocol type (CPT) ID.
         :type CptId: int
-        :param CptType: The type. `1`: System CPTs; `2`: Authorization CPTs; `3`: General CPTs
+        :param _CptType: The type. `1`: System CPTs; `2`: Authorization CPTs; `3`: General CPTs
         :type CptType: int
-        :param Description: The description of the claim protocol type (CPT).
+        :param _Description: The description of the claim protocol type (CPT).
         :type Description: str
-        :param CptJson: The JSON file of the claim protocol type (CPT).
+        :param _CptJson: The JSON file of the claim protocol type (CPT).
         :type CptJson: str
-        :param CreateTime: The creation time.
+        :param _CreateTime: The creation time.
         :type CreateTime: str
-        :param UpdateTime: The last updated time.
+        :param _UpdateTime: The last updated time.
         :type UpdateTime: str
-        :param CreatorDid: The DID of the creator.
+        :param _CreatorDid: The DID of the creator.
         :type CreatorDid: str
-        :param AppName: The application name.
+        :param _AppName: The application name.
         :type AppName: str
         """
-        self.Id = None
-        self.Name = None
-        self.ClusterId = None
-        self.GroupId = None
-        self.ServiceId = None
-        self.ContractAppId = None
-        self.CptId = None
-        self.CptType = None
-        self.Description = None
-        self.CptJson = None
-        self.CreateTime = None
-        self.UpdateTime = None
-        self.CreatorDid = None
-        self.AppName = None
+        self._Id = None
+        self._Name = None
+        self._ClusterId = None
+        self._GroupId = None
+        self._ServiceId = None
+        self._ContractAppId = None
+        self._CptId = None
+        self._CptType = None
+        self._Description = None
+        self._CptJson = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._CreatorDid = None
+        self._AppName = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def ContractAppId(self):
+        return self._ContractAppId
+
+    @ContractAppId.setter
+    def ContractAppId(self, ContractAppId):
+        self._ContractAppId = ContractAppId
+
+    @property
+    def CptId(self):
+        return self._CptId
+
+    @CptId.setter
+    def CptId(self, CptId):
+        self._CptId = CptId
+
+    @property
+    def CptType(self):
+        return self._CptType
+
+    @CptType.setter
+    def CptType(self, CptType):
+        self._CptType = CptType
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CptJson(self):
+        return self._CptJson
+
+    @CptJson.setter
+    def CptJson(self, CptJson):
+        self._CptJson = CptJson
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def CreatorDid(self):
+        return self._CreatorDid
+
+    @CreatorDid.setter
+    def CreatorDid(self, CreatorDid):
+        self._CreatorDid = CreatorDid
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.Name = params.get("Name")
-        self.ClusterId = params.get("ClusterId")
-        self.GroupId = params.get("GroupId")
-        self.ServiceId = params.get("ServiceId")
-        self.ContractAppId = params.get("ContractAppId")
-        self.CptId = params.get("CptId")
-        self.CptType = params.get("CptType")
-        self.Description = params.get("Description")
-        self.CptJson = params.get("CptJson")
-        self.CreateTime = params.get("CreateTime")
-        self.UpdateTime = params.get("UpdateTime")
-        self.CreatorDid = params.get("CreatorDid")
-        self.AppName = params.get("AppName")
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._ClusterId = params.get("ClusterId")
+        self._GroupId = params.get("GroupId")
+        self._ServiceId = params.get("ServiceId")
+        self._ContractAppId = params.get("ContractAppId")
+        self._CptId = params.get("CptId")
+        self._CptType = params.get("CptType")
+        self._Description = params.get("Description")
+        self._CptJson = params.get("CptJson")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._CreatorDid = params.get("CreatorDid")
+        self._AppName = params.get("AppName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -583,34 +1193,67 @@ class CreateCredentialRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FunctionArg: A parameter set. For details, see the example.
+        :param _FunctionArg: A parameter set. For details, see the example.
         :type FunctionArg: :class:`tencentcloud.tdid.v20210519.models.FunctionArg`
-        :param TransactionArg: A parameter set. For details, see the example.
+        :param _TransactionArg: A parameter set. For details, see the example.
         :type TransactionArg: :class:`tencentcloud.tdid.v20210519.models.TransactionArg`
-        :param VersionCredential: The version.
+        :param _VersionCredential: The version.
         :type VersionCredential: str
-        :param UnSigned: Whether the credential is unsigned.
+        :param _UnSigned: Whether the credential is unsigned.
         :type UnSigned: bool
         """
-        self.FunctionArg = None
-        self.TransactionArg = None
-        self.VersionCredential = None
-        self.UnSigned = None
+        self._FunctionArg = None
+        self._TransactionArg = None
+        self._VersionCredential = None
+        self._UnSigned = None
+
+    @property
+    def FunctionArg(self):
+        return self._FunctionArg
+
+    @FunctionArg.setter
+    def FunctionArg(self, FunctionArg):
+        self._FunctionArg = FunctionArg
+
+    @property
+    def TransactionArg(self):
+        return self._TransactionArg
+
+    @TransactionArg.setter
+    def TransactionArg(self, TransactionArg):
+        self._TransactionArg = TransactionArg
+
+    @property
+    def VersionCredential(self):
+        return self._VersionCredential
+
+    @VersionCredential.setter
+    def VersionCredential(self, VersionCredential):
+        self._VersionCredential = VersionCredential
+
+    @property
+    def UnSigned(self):
+        return self._UnSigned
+
+    @UnSigned.setter
+    def UnSigned(self, UnSigned):
+        self._UnSigned = UnSigned
 
 
     def _deserialize(self, params):
         if params.get("FunctionArg") is not None:
-            self.FunctionArg = FunctionArg()
-            self.FunctionArg._deserialize(params.get("FunctionArg"))
+            self._FunctionArg = FunctionArg()
+            self._FunctionArg._deserialize(params.get("FunctionArg"))
         if params.get("TransactionArg") is not None:
-            self.TransactionArg = TransactionArg()
-            self.TransactionArg._deserialize(params.get("TransactionArg"))
-        self.VersionCredential = params.get("VersionCredential")
-        self.UnSigned = params.get("UnSigned")
+            self._TransactionArg = TransactionArg()
+            self._TransactionArg._deserialize(params.get("TransactionArg"))
+        self._VersionCredential = params.get("VersionCredential")
+        self._UnSigned = params.get("UnSigned")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -623,18 +1266,34 @@ class CreateCredentialResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CredentialData: The information of the credential.
+        :param _CredentialData: The information of the credential.
         :type CredentialData: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.CredentialData = None
-        self.RequestId = None
+        self._CredentialData = None
+        self._RequestId = None
+
+    @property
+    def CredentialData(self):
+        return self._CredentialData
+
+    @CredentialData.setter
+    def CredentialData(self, CredentialData):
+        self._CredentialData = CredentialData
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.CredentialData = params.get("CredentialData")
-        self.RequestId = params.get("RequestId")
+        self._CredentialData = params.get("CredentialData")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateDidServiceRequest(AbstractModel):
@@ -644,42 +1303,99 @@ class CreateDidServiceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ConsortiumName: The consortium name.
+        :param _ConsortiumName: The consortium name.
         :type ConsortiumName: str
-        :param ConsortiumId: The consortium ID.
+        :param _ConsortiumId: The consortium ID.
         :type ConsortiumId: int
-        :param GroupId: The group ID.
+        :param _GroupId: The group ID.
         :type GroupId: int
-        :param AgencyName: The organization name.
+        :param _AgencyName: The organization name.
         :type AgencyName: str
-        :param AppName: The application name.
+        :param _AppName: The application name.
         :type AppName: str
-        :param ClusterId: The network ID.
+        :param _ClusterId: The network ID.
         :type ClusterId: str
-        :param GroupName: The group name.
+        :param _GroupName: The group name.
         :type GroupName: str
         """
-        self.ConsortiumName = None
-        self.ConsortiumId = None
-        self.GroupId = None
-        self.AgencyName = None
-        self.AppName = None
-        self.ClusterId = None
-        self.GroupName = None
+        self._ConsortiumName = None
+        self._ConsortiumId = None
+        self._GroupId = None
+        self._AgencyName = None
+        self._AppName = None
+        self._ClusterId = None
+        self._GroupName = None
+
+    @property
+    def ConsortiumName(self):
+        return self._ConsortiumName
+
+    @ConsortiumName.setter
+    def ConsortiumName(self, ConsortiumName):
+        self._ConsortiumName = ConsortiumName
+
+    @property
+    def ConsortiumId(self):
+        return self._ConsortiumId
+
+    @ConsortiumId.setter
+    def ConsortiumId(self, ConsortiumId):
+        self._ConsortiumId = ConsortiumId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def AgencyName(self):
+        return self._AgencyName
+
+    @AgencyName.setter
+    def AgencyName(self, AgencyName):
+        self._AgencyName = AgencyName
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def GroupName(self):
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
 
 
     def _deserialize(self, params):
-        self.ConsortiumName = params.get("ConsortiumName")
-        self.ConsortiumId = params.get("ConsortiumId")
-        self.GroupId = params.get("GroupId")
-        self.AgencyName = params.get("AgencyName")
-        self.AppName = params.get("AppName")
-        self.ClusterId = params.get("ClusterId")
-        self.GroupName = params.get("GroupName")
+        self._ConsortiumName = params.get("ConsortiumName")
+        self._ConsortiumId = params.get("ConsortiumId")
+        self._GroupId = params.get("GroupId")
+        self._AgencyName = params.get("AgencyName")
+        self._AppName = params.get("AppName")
+        self._ClusterId = params.get("ClusterId")
+        self._GroupName = params.get("GroupName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -692,20 +1408,36 @@ class CreateDidServiceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Task: The service information.
+        :param _Task: The service information.
         :type Task: :class:`tencentcloud.tdid.v20210519.models.Task`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Task = None
-        self.RequestId = None
+        self._Task = None
+        self._RequestId = None
+
+    @property
+    def Task(self):
+        return self._Task
+
+    @Task.setter
+    def Task(self, Task):
+        self._Task = Task
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Task") is not None:
-            self.Task = Task()
-            self.Task._deserialize(params.get("Task"))
-        self.RequestId = params.get("RequestId")
+            self._Task = Task()
+            self._Task._deserialize(params.get("Task"))
+        self._RequestId = params.get("RequestId")
 
 
 class CreateLabelRequest(AbstractModel):
@@ -715,26 +1447,51 @@ class CreateLabelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LabelName: The label name.
+        :param _LabelName: The label name.
         :type LabelName: str
-        :param ClusterId: The network ID.
+        :param _ClusterId: The network ID.
         :type ClusterId: str
-        :param GroupId: The group ID.
+        :param _GroupId: The group ID.
         :type GroupId: int
         """
-        self.LabelName = None
-        self.ClusterId = None
-        self.GroupId = None
+        self._LabelName = None
+        self._ClusterId = None
+        self._GroupId = None
+
+    @property
+    def LabelName(self):
+        return self._LabelName
+
+    @LabelName.setter
+    def LabelName(self, LabelName):
+        self._LabelName = LabelName
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
 
 
     def _deserialize(self, params):
-        self.LabelName = params.get("LabelName")
-        self.ClusterId = params.get("ClusterId")
-        self.GroupId = params.get("GroupId")
+        self._LabelName = params.get("LabelName")
+        self._ClusterId = params.get("ClusterId")
+        self._GroupId = params.get("GroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -747,14 +1504,22 @@ class CreateLabelResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateSelectiveCredentialRequest(AbstractModel):
@@ -764,24 +1529,41 @@ class CreateSelectiveCredentialRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FunctionArg: A parameter set.
+        :param _FunctionArg: A parameter set.
         :type FunctionArg: :class:`tencentcloud.tdid.v20210519.models.VerifyFunctionArg`
-        :param PolicyId: The disclosure policy ID.
+        :param _PolicyId: The disclosure policy ID.
         :type PolicyId: int
         """
-        self.FunctionArg = None
-        self.PolicyId = None
+        self._FunctionArg = None
+        self._PolicyId = None
+
+    @property
+    def FunctionArg(self):
+        return self._FunctionArg
+
+    @FunctionArg.setter
+    def FunctionArg(self, FunctionArg):
+        self._FunctionArg = FunctionArg
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
 
 
     def _deserialize(self, params):
         if params.get("FunctionArg") is not None:
-            self.FunctionArg = VerifyFunctionArg()
-            self.FunctionArg._deserialize(params.get("FunctionArg"))
-        self.PolicyId = params.get("PolicyId")
+            self._FunctionArg = VerifyFunctionArg()
+            self._FunctionArg._deserialize(params.get("FunctionArg"))
+        self._PolicyId = params.get("PolicyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -794,18 +1576,34 @@ class CreateSelectiveCredentialResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CredentialData: The credential string.
+        :param _CredentialData: The credential string.
         :type CredentialData: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.CredentialData = None
-        self.RequestId = None
+        self._CredentialData = None
+        self._RequestId = None
+
+    @property
+    def CredentialData(self):
+        return self._CredentialData
+
+    @CredentialData.setter
+    def CredentialData(self, CredentialData):
+        self._CredentialData = CredentialData
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.CredentialData = params.get("CredentialData")
-        self.RequestId = params.get("RequestId")
+        self._CredentialData = params.get("CredentialData")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateTDidByPrivateKeyRequest(AbstractModel):
@@ -815,26 +1613,51 @@ class CreateTDidByPrivateKeyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: The network ID.
+        :param _ClusterId: The network ID.
         :type ClusterId: str
-        :param GroupId: The group ID.
+        :param _GroupId: The group ID.
         :type GroupId: int
-        :param PrivateKey: The private key.
+        :param _PrivateKey: The private key.
         :type PrivateKey: str
         """
-        self.ClusterId = None
-        self.GroupId = None
-        self.PrivateKey = None
+        self._ClusterId = None
+        self._GroupId = None
+        self._PrivateKey = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def PrivateKey(self):
+        return self._PrivateKey
+
+    @PrivateKey.setter
+    def PrivateKey(self, PrivateKey):
+        self._PrivateKey = PrivateKey
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
-        self.GroupId = params.get("GroupId")
-        self.PrivateKey = params.get("PrivateKey")
+        self._ClusterId = params.get("ClusterId")
+        self._GroupId = params.get("GroupId")
+        self._PrivateKey = params.get("PrivateKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -847,18 +1670,34 @@ class CreateTDidByPrivateKeyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Did: The DID.
+        :param _Did: The DID.
         :type Did: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Did = None
-        self.RequestId = None
+        self._Did = None
+        self._RequestId = None
+
+    @property
+    def Did(self):
+        return self._Did
+
+    @Did.setter
+    def Did(self, Did):
+        self._Did = Did
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Did = params.get("Did")
-        self.RequestId = params.get("RequestId")
+        self._Did = params.get("Did")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateTDidByPublicKeyRequest(AbstractModel):
@@ -868,30 +1707,63 @@ class CreateTDidByPublicKeyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: The network ID.
+        :param _ClusterId: The network ID.
         :type ClusterId: str
-        :param GroupId: The group ID.
+        :param _GroupId: The group ID.
         :type GroupId: int
-        :param PublicKey: The public key.
+        :param _PublicKey: The public key.
         :type PublicKey: str
-        :param EncryptPubKey: The encrypted public key.
+        :param _EncryptPubKey: The encrypted public key.
         :type EncryptPubKey: str
         """
-        self.ClusterId = None
-        self.GroupId = None
-        self.PublicKey = None
-        self.EncryptPubKey = None
+        self._ClusterId = None
+        self._GroupId = None
+        self._PublicKey = None
+        self._EncryptPubKey = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def PublicKey(self):
+        return self._PublicKey
+
+    @PublicKey.setter
+    def PublicKey(self, PublicKey):
+        self._PublicKey = PublicKey
+
+    @property
+    def EncryptPubKey(self):
+        return self._EncryptPubKey
+
+    @EncryptPubKey.setter
+    def EncryptPubKey(self, EncryptPubKey):
+        self._EncryptPubKey = EncryptPubKey
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
-        self.GroupId = params.get("GroupId")
-        self.PublicKey = params.get("PublicKey")
-        self.EncryptPubKey = params.get("EncryptPubKey")
+        self._ClusterId = params.get("ClusterId")
+        self._GroupId = params.get("GroupId")
+        self._PublicKey = params.get("PublicKey")
+        self._EncryptPubKey = params.get("EncryptPubKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -904,18 +1776,34 @@ class CreateTDidByPublicKeyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Did: The DID.
+        :param _Did: The DID.
         :type Did: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Did = None
-        self.RequestId = None
+        self._Did = None
+        self._RequestId = None
+
+    @property
+    def Did(self):
+        return self._Did
+
+    @Did.setter
+    def Did(self, Did):
+        self._Did = Did
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Did = params.get("Did")
-        self.RequestId = params.get("RequestId")
+        self._Did = params.get("Did")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateTDidRequest(AbstractModel):
@@ -925,26 +1813,51 @@ class CreateTDidRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupId: The group ID.
+        :param _GroupId: The group ID.
         :type GroupId: int
-        :param ClusterId: The network ID.
+        :param _ClusterId: The network ID.
         :type ClusterId: str
-        :param Relegation:  
+        :param _Relegation:  
         :type Relegation: int
         """
-        self.GroupId = None
-        self.ClusterId = None
-        self.Relegation = None
+        self._GroupId = None
+        self._ClusterId = None
+        self._Relegation = None
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Relegation(self):
+        return self._Relegation
+
+    @Relegation.setter
+    def Relegation(self, Relegation):
+        self._Relegation = Relegation
 
 
     def _deserialize(self, params):
-        self.GroupId = params.get("GroupId")
-        self.ClusterId = params.get("ClusterId")
-        self.Relegation = params.get("Relegation")
+        self._GroupId = params.get("GroupId")
+        self._ClusterId = params.get("ClusterId")
+        self._Relegation = params.get("Relegation")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -957,18 +1870,34 @@ class CreateTDidResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Did: The DID.
+        :param _Did: The DID.
         :type Did: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Did = None
-        self.RequestId = None
+        self._Did = None
+        self._RequestId = None
+
+    @property
+    def Did(self):
+        return self._Did
+
+    @Did.setter
+    def Did(self, Did):
+        self._Did = Did
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Did = params.get("Did")
-        self.RequestId = params.get("RequestId")
+        self._Did = params.get("Did")
+        self._RequestId = params.get("RequestId")
 
 
 class CredentialStatus(AbstractModel):
@@ -978,41 +1907,90 @@ class CredentialStatus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CredentialId: The credential ID.
+        :param _CredentialId: The credential ID.
         :type CredentialId: str
-        :param Status: The credential status. `0`: Invalid; `1`: Valid.
+        :param _Status: The credential status. `0`: Invalid; `1`: Valid.
         :type Status: int
-        :param Issuer: The DID of the issuer.
+        :param _Issuer: The DID of the issuer.
         :type Issuer: str
-        :param Digest: A summary of the credential.
+        :param _Digest: A summary of the credential.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Digest: str
-        :param Signature: The credential signature.
+        :param _Signature: The credential signature.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Signature: str
-        :param TimeStamp: The last updated timestamp.
+        :param _TimeStamp: The last updated timestamp.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type TimeStamp: int
         """
-        self.CredentialId = None
-        self.Status = None
-        self.Issuer = None
-        self.Digest = None
-        self.Signature = None
-        self.TimeStamp = None
+        self._CredentialId = None
+        self._Status = None
+        self._Issuer = None
+        self._Digest = None
+        self._Signature = None
+        self._TimeStamp = None
+
+    @property
+    def CredentialId(self):
+        return self._CredentialId
+
+    @CredentialId.setter
+    def CredentialId(self, CredentialId):
+        self._CredentialId = CredentialId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Issuer(self):
+        return self._Issuer
+
+    @Issuer.setter
+    def Issuer(self, Issuer):
+        self._Issuer = Issuer
+
+    @property
+    def Digest(self):
+        return self._Digest
+
+    @Digest.setter
+    def Digest(self, Digest):
+        self._Digest = Digest
+
+    @property
+    def Signature(self):
+        return self._Signature
+
+    @Signature.setter
+    def Signature(self, Signature):
+        self._Signature = Signature
+
+    @property
+    def TimeStamp(self):
+        return self._TimeStamp
+
+    @TimeStamp.setter
+    def TimeStamp(self, TimeStamp):
+        self._TimeStamp = TimeStamp
 
 
     def _deserialize(self, params):
-        self.CredentialId = params.get("CredentialId")
-        self.Status = params.get("Status")
-        self.Issuer = params.get("Issuer")
-        self.Digest = params.get("Digest")
-        self.Signature = params.get("Signature")
-        self.TimeStamp = params.get("TimeStamp")
+        self._CredentialId = params.get("CredentialId")
+        self._Status = params.get("Status")
+        self._Issuer = params.get("Issuer")
+        self._Digest = params.get("Digest")
+        self._Signature = params.get("Signature")
+        self._TimeStamp = params.get("TimeStamp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1025,26 +2003,51 @@ class DeployByNameRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApplicationName: The application name.
+        :param _ApplicationName: The application name.
         :type ApplicationName: str
-        :param ClusterId: The network ID.
+        :param _ClusterId: The network ID.
         :type ClusterId: str
-        :param GroupId: The group ID.
+        :param _GroupId: The group ID.
         :type GroupId: int
         """
-        self.ApplicationName = None
-        self.ClusterId = None
-        self.GroupId = None
+        self._ApplicationName = None
+        self._ClusterId = None
+        self._GroupId = None
+
+    @property
+    def ApplicationName(self):
+        return self._ApplicationName
+
+    @ApplicationName.setter
+    def ApplicationName(self, ApplicationName):
+        self._ApplicationName = ApplicationName
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
 
 
     def _deserialize(self, params):
-        self.ApplicationName = params.get("ApplicationName")
-        self.ClusterId = params.get("ClusterId")
-        self.GroupId = params.get("GroupId")
+        self._ApplicationName = params.get("ApplicationName")
+        self._ClusterId = params.get("ClusterId")
+        self._GroupId = params.get("GroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1057,18 +2060,34 @@ class DeployByNameResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Hash: The hash value.
+        :param _Hash: The hash value.
         :type Hash: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Hash = None
-        self.RequestId = None
+        self._Hash = None
+        self._RequestId = None
+
+    @property
+    def Hash(self):
+        return self._Hash
+
+    @Hash.setter
+    def Hash(self, Hash):
+        self._Hash = Hash
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Hash = params.get("Hash")
-        self.RequestId = params.get("RequestId")
+        self._Hash = params.get("Hash")
+        self._RequestId = params.get("RequestId")
 
 
 class DidCluster(AbstractModel):
@@ -1078,78 +2097,207 @@ class DidCluster(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ChainId: The chain ID.
+        :param _ChainId: The chain ID.
         :type ChainId: int
-        :param ChainName: The chain name.
+        :param _ChainName: The chain name.
         :type ChainName: str
-        :param AgencyCount: The number of organizations.
+        :param _AgencyCount: The number of organizations.
         :type AgencyCount: int
-        :param ConsortiumId: The consortium ID.
+        :param _ConsortiumId: The consortium ID.
         :type ConsortiumId: int
-        :param CreateTime: The creation time.
+        :param _CreateTime: The creation time.
         :type CreateTime: str
-        :param ExpireTime: The expiration time.
+        :param _ExpireTime: The expiration time.
         :type ExpireTime: str
-        :param ChainStatus: The network status.
+        :param _ChainStatus: The network status.
         :type ChainStatus: int
-        :param ResourceId: The resource ID.
+        :param _ResourceId: The resource ID.
         :type ResourceId: str
-        :param ClusterId: The network ID.
+        :param _ClusterId: The network ID.
         :type ClusterId: str
-        :param ConsortiumName: The consortium name.
+        :param _ConsortiumName: The consortium name.
         :type ConsortiumName: str
-        :param AgencyId: The organization ID.
+        :param _AgencyId: The organization ID.
         :type AgencyId: int
-        :param AutoRenewFlag: Whether auto-renewal is enabled.
+        :param _AutoRenewFlag: Whether auto-renewal is enabled.
         :type AutoRenewFlag: int
-        :param TotalNetworkNode: The total number of network nodes.
+        :param _TotalNetworkNode: The total number of network nodes.
         :type TotalNetworkNode: int
-        :param TotalCreateNode: The number of nodes of the current organization.
+        :param _TotalCreateNode: The number of nodes of the current organization.
         :type TotalCreateNode: int
-        :param TotalGroups: The total number of groups.
+        :param _TotalGroups: The total number of groups.
         :type TotalGroups: int
-        :param DidCount: The total number of DIDs.
+        :param _DidCount: The total number of DIDs.
         :type DidCount: int
         """
-        self.ChainId = None
-        self.ChainName = None
-        self.AgencyCount = None
-        self.ConsortiumId = None
-        self.CreateTime = None
-        self.ExpireTime = None
-        self.ChainStatus = None
-        self.ResourceId = None
-        self.ClusterId = None
-        self.ConsortiumName = None
-        self.AgencyId = None
-        self.AutoRenewFlag = None
-        self.TotalNetworkNode = None
-        self.TotalCreateNode = None
-        self.TotalGroups = None
-        self.DidCount = None
+        self._ChainId = None
+        self._ChainName = None
+        self._AgencyCount = None
+        self._ConsortiumId = None
+        self._CreateTime = None
+        self._ExpireTime = None
+        self._ChainStatus = None
+        self._ResourceId = None
+        self._ClusterId = None
+        self._ConsortiumName = None
+        self._AgencyId = None
+        self._AutoRenewFlag = None
+        self._TotalNetworkNode = None
+        self._TotalCreateNode = None
+        self._TotalGroups = None
+        self._DidCount = None
+
+    @property
+    def ChainId(self):
+        return self._ChainId
+
+    @ChainId.setter
+    def ChainId(self, ChainId):
+        self._ChainId = ChainId
+
+    @property
+    def ChainName(self):
+        return self._ChainName
+
+    @ChainName.setter
+    def ChainName(self, ChainName):
+        self._ChainName = ChainName
+
+    @property
+    def AgencyCount(self):
+        return self._AgencyCount
+
+    @AgencyCount.setter
+    def AgencyCount(self, AgencyCount):
+        self._AgencyCount = AgencyCount
+
+    @property
+    def ConsortiumId(self):
+        return self._ConsortiumId
+
+    @ConsortiumId.setter
+    def ConsortiumId(self, ConsortiumId):
+        self._ConsortiumId = ConsortiumId
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def ChainStatus(self):
+        return self._ChainStatus
+
+    @ChainStatus.setter
+    def ChainStatus(self, ChainStatus):
+        self._ChainStatus = ChainStatus
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ConsortiumName(self):
+        return self._ConsortiumName
+
+    @ConsortiumName.setter
+    def ConsortiumName(self, ConsortiumName):
+        self._ConsortiumName = ConsortiumName
+
+    @property
+    def AgencyId(self):
+        return self._AgencyId
+
+    @AgencyId.setter
+    def AgencyId(self, AgencyId):
+        self._AgencyId = AgencyId
+
+    @property
+    def AutoRenewFlag(self):
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def TotalNetworkNode(self):
+        return self._TotalNetworkNode
+
+    @TotalNetworkNode.setter
+    def TotalNetworkNode(self, TotalNetworkNode):
+        self._TotalNetworkNode = TotalNetworkNode
+
+    @property
+    def TotalCreateNode(self):
+        return self._TotalCreateNode
+
+    @TotalCreateNode.setter
+    def TotalCreateNode(self, TotalCreateNode):
+        self._TotalCreateNode = TotalCreateNode
+
+    @property
+    def TotalGroups(self):
+        return self._TotalGroups
+
+    @TotalGroups.setter
+    def TotalGroups(self, TotalGroups):
+        self._TotalGroups = TotalGroups
+
+    @property
+    def DidCount(self):
+        return self._DidCount
+
+    @DidCount.setter
+    def DidCount(self, DidCount):
+        self._DidCount = DidCount
 
 
     def _deserialize(self, params):
-        self.ChainId = params.get("ChainId")
-        self.ChainName = params.get("ChainName")
-        self.AgencyCount = params.get("AgencyCount")
-        self.ConsortiumId = params.get("ConsortiumId")
-        self.CreateTime = params.get("CreateTime")
-        self.ExpireTime = params.get("ExpireTime")
-        self.ChainStatus = params.get("ChainStatus")
-        self.ResourceId = params.get("ResourceId")
-        self.ClusterId = params.get("ClusterId")
-        self.ConsortiumName = params.get("ConsortiumName")
-        self.AgencyId = params.get("AgencyId")
-        self.AutoRenewFlag = params.get("AutoRenewFlag")
-        self.TotalNetworkNode = params.get("TotalNetworkNode")
-        self.TotalCreateNode = params.get("TotalCreateNode")
-        self.TotalGroups = params.get("TotalGroups")
-        self.DidCount = params.get("DidCount")
+        self._ChainId = params.get("ChainId")
+        self._ChainName = params.get("ChainName")
+        self._AgencyCount = params.get("AgencyCount")
+        self._ConsortiumId = params.get("ConsortiumId")
+        self._CreateTime = params.get("CreateTime")
+        self._ExpireTime = params.get("ExpireTime")
+        self._ChainStatus = params.get("ChainStatus")
+        self._ResourceId = params.get("ResourceId")
+        self._ClusterId = params.get("ClusterId")
+        self._ConsortiumName = params.get("ConsortiumName")
+        self._AgencyId = params.get("AgencyId")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._TotalNetworkNode = params.get("TotalNetworkNode")
+        self._TotalCreateNode = params.get("TotalCreateNode")
+        self._TotalGroups = params.get("TotalGroups")
+        self._DidCount = params.get("DidCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1162,58 +2310,147 @@ class DidData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: The service ID.
+        :param _ServiceId: The service ID.
         :type ServiceId: int
-        :param GroupId: The group ID.
+        :param _GroupId: The group ID.
         :type GroupId: int
-        :param AppName: The application name.
+        :param _AppName: The application name.
         :type AppName: str
-        :param Did: The DID.
+        :param _Did: The DID.
         :type Did: str
-        :param Remark: Remarks
+        :param _Remark: Remarks
         :type Remark: str
-        :param AuthorityState: The status of the authority. `1`: Not registered; `2`: Not certified; `3`: Certified.
+        :param _AuthorityState: The status of the authority. `1`: Not registered; `2`: Not certified; `3`: Certified.
         :type AuthorityState: int
-        :param LabelName: The label of the DID.
+        :param _LabelName: The label of the DID.
         :type LabelName: str
-        :param CreatedAt: The DID creation time.
+        :param _CreatedAt: The DID creation time.
         :type CreatedAt: str
-        :param ClusterId: The network ID.
+        :param _ClusterId: The network ID.
         :type ClusterId: str
-        :param AllianceName: The consortium name.
+        :param _AllianceName: The consortium name.
         :type AllianceName: str
-        :param LabelId: The label ID.
+        :param _LabelId: The label ID.
         :type LabelId: int
         """
-        self.ServiceId = None
-        self.GroupId = None
-        self.AppName = None
-        self.Did = None
-        self.Remark = None
-        self.AuthorityState = None
-        self.LabelName = None
-        self.CreatedAt = None
-        self.ClusterId = None
-        self.AllianceName = None
-        self.LabelId = None
+        self._ServiceId = None
+        self._GroupId = None
+        self._AppName = None
+        self._Did = None
+        self._Remark = None
+        self._AuthorityState = None
+        self._LabelName = None
+        self._CreatedAt = None
+        self._ClusterId = None
+        self._AllianceName = None
+        self._LabelId = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def Did(self):
+        return self._Did
+
+    @Did.setter
+    def Did(self, Did):
+        self._Did = Did
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def AuthorityState(self):
+        return self._AuthorityState
+
+    @AuthorityState.setter
+    def AuthorityState(self, AuthorityState):
+        self._AuthorityState = AuthorityState
+
+    @property
+    def LabelName(self):
+        return self._LabelName
+
+    @LabelName.setter
+    def LabelName(self, LabelName):
+        self._LabelName = LabelName
+
+    @property
+    def CreatedAt(self):
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def AllianceName(self):
+        return self._AllianceName
+
+    @AllianceName.setter
+    def AllianceName(self, AllianceName):
+        self._AllianceName = AllianceName
+
+    @property
+    def LabelId(self):
+        return self._LabelId
+
+    @LabelId.setter
+    def LabelId(self, LabelId):
+        self._LabelId = LabelId
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.GroupId = params.get("GroupId")
-        self.AppName = params.get("AppName")
-        self.Did = params.get("Did")
-        self.Remark = params.get("Remark")
-        self.AuthorityState = params.get("AuthorityState")
-        self.LabelName = params.get("LabelName")
-        self.CreatedAt = params.get("CreatedAt")
-        self.ClusterId = params.get("ClusterId")
-        self.AllianceName = params.get("AllianceName")
-        self.LabelId = params.get("LabelId")
+        self._ServiceId = params.get("ServiceId")
+        self._GroupId = params.get("GroupId")
+        self._AppName = params.get("AppName")
+        self._Did = params.get("Did")
+        self._Remark = params.get("Remark")
+        self._AuthorityState = params.get("AuthorityState")
+        self._LabelName = params.get("LabelName")
+        self._CreatedAt = params.get("CreatedAt")
+        self._ClusterId = params.get("ClusterId")
+        self._AllianceName = params.get("AllianceName")
+        self._LabelId = params.get("LabelId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1226,74 +2463,195 @@ class DidServiceInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: The DID service ID.
+        :param _Id: The DID service ID.
         :type Id: int
-        :param Appid: The application ID.
+        :param _Appid: The application ID.
         :type Appid: int
-        :param Uin: The account ID.
+        :param _Uin: The account ID.
         :type Uin: str
-        :param ConsortiumId: The consortium ID.
+        :param _ConsortiumId: The consortium ID.
         :type ConsortiumId: int
-        :param ConsortiumName: The consortium name.
+        :param _ConsortiumName: The consortium name.
         :type ConsortiumName: str
-        :param ClusterId: The network ID.
+        :param _ClusterId: The network ID.
         :type ClusterId: str
-        :param GroupId: The group ID.
+        :param _GroupId: The group ID.
         :type GroupId: int
-        :param ChainId: The chain ID.
+        :param _ChainId: The chain ID.
         :type ChainId: str
-        :param RoleType: Whether you are the owner of the consortium. `1`: Yes; `0`: No.
+        :param _RoleType: Whether you are the owner of the consortium. `1`: Yes; `0`: No.
         :type RoleType: int
-        :param AgencyDid: The organization DID.
+        :param _AgencyDid: The organization DID.
         :type AgencyDid: str
-        :param CreateOrg: The organization name.
+        :param _CreateOrg: The organization name.
         :type CreateOrg: str
-        :param Endpoint: The endpoint.
+        :param _Endpoint: The endpoint.
         :type Endpoint: str
-        :param CreateTime: The creation time.
+        :param _CreateTime: The creation time.
         :type CreateTime: str
-        :param UpdateTime: The last updated time.
+        :param _UpdateTime: The last updated time.
         :type UpdateTime: str
-        :param GroupName: The group name.
+        :param _GroupName: The group name.
         :type GroupName: str
         """
-        self.Id = None
-        self.Appid = None
-        self.Uin = None
-        self.ConsortiumId = None
-        self.ConsortiumName = None
-        self.ClusterId = None
-        self.GroupId = None
-        self.ChainId = None
-        self.RoleType = None
-        self.AgencyDid = None
-        self.CreateOrg = None
-        self.Endpoint = None
-        self.CreateTime = None
-        self.UpdateTime = None
-        self.GroupName = None
+        self._Id = None
+        self._Appid = None
+        self._Uin = None
+        self._ConsortiumId = None
+        self._ConsortiumName = None
+        self._ClusterId = None
+        self._GroupId = None
+        self._ChainId = None
+        self._RoleType = None
+        self._AgencyDid = None
+        self._CreateOrg = None
+        self._Endpoint = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._GroupName = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Appid(self):
+        return self._Appid
+
+    @Appid.setter
+    def Appid(self, Appid):
+        self._Appid = Appid
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def ConsortiumId(self):
+        return self._ConsortiumId
+
+    @ConsortiumId.setter
+    def ConsortiumId(self, ConsortiumId):
+        self._ConsortiumId = ConsortiumId
+
+    @property
+    def ConsortiumName(self):
+        return self._ConsortiumName
+
+    @ConsortiumName.setter
+    def ConsortiumName(self, ConsortiumName):
+        self._ConsortiumName = ConsortiumName
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def ChainId(self):
+        return self._ChainId
+
+    @ChainId.setter
+    def ChainId(self, ChainId):
+        self._ChainId = ChainId
+
+    @property
+    def RoleType(self):
+        return self._RoleType
+
+    @RoleType.setter
+    def RoleType(self, RoleType):
+        self._RoleType = RoleType
+
+    @property
+    def AgencyDid(self):
+        return self._AgencyDid
+
+    @AgencyDid.setter
+    def AgencyDid(self, AgencyDid):
+        self._AgencyDid = AgencyDid
+
+    @property
+    def CreateOrg(self):
+        return self._CreateOrg
+
+    @CreateOrg.setter
+    def CreateOrg(self, CreateOrg):
+        self._CreateOrg = CreateOrg
+
+    @property
+    def Endpoint(self):
+        return self._Endpoint
+
+    @Endpoint.setter
+    def Endpoint(self, Endpoint):
+        self._Endpoint = Endpoint
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def GroupName(self):
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.Appid = params.get("Appid")
-        self.Uin = params.get("Uin")
-        self.ConsortiumId = params.get("ConsortiumId")
-        self.ConsortiumName = params.get("ConsortiumName")
-        self.ClusterId = params.get("ClusterId")
-        self.GroupId = params.get("GroupId")
-        self.ChainId = params.get("ChainId")
-        self.RoleType = params.get("RoleType")
-        self.AgencyDid = params.get("AgencyDid")
-        self.CreateOrg = params.get("CreateOrg")
-        self.Endpoint = params.get("Endpoint")
-        self.CreateTime = params.get("CreateTime")
-        self.UpdateTime = params.get("UpdateTime")
-        self.GroupName = params.get("GroupName")
+        self._Id = params.get("Id")
+        self._Appid = params.get("Appid")
+        self._Uin = params.get("Uin")
+        self._ConsortiumId = params.get("ConsortiumId")
+        self._ConsortiumName = params.get("ConsortiumName")
+        self._ClusterId = params.get("ClusterId")
+        self._GroupId = params.get("GroupId")
+        self._ChainId = params.get("ChainId")
+        self._RoleType = params.get("RoleType")
+        self._AgencyDid = params.get("AgencyDid")
+        self._CreateOrg = params.get("CreateOrg")
+        self._Endpoint = params.get("Endpoint")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._GroupName = params.get("GroupName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1306,18 +2664,27 @@ class DownCptRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CptIndex: The claim protocol type (CPT) index.
+        :param _CptIndex: The claim protocol type (CPT) index.
         :type CptIndex: int
         """
-        self.CptIndex = None
+        self._CptIndex = None
+
+    @property
+    def CptIndex(self):
+        return self._CptIndex
+
+    @CptIndex.setter
+    def CptIndex(self, CptIndex):
+        self._CptIndex = CptIndex
 
 
     def _deserialize(self, params):
-        self.CptIndex = params.get("CptIndex")
+        self._CptIndex = params.get("CptIndex")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1330,14 +2697,22 @@ class DownCptResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class EnableHashRequest(AbstractModel):
@@ -1347,18 +2722,27 @@ class EnableHashRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Hash: The CNS address of the contract.
+        :param _Hash: The CNS address of the contract.
         :type Hash: str
         """
-        self.Hash = None
+        self._Hash = None
+
+    @property
+    def Hash(self):
+        return self._Hash
+
+    @Hash.setter
+    def Hash(self, Hash):
+        self._Hash = Hash
 
 
     def _deserialize(self, params):
-        self.Hash = params.get("Hash")
+        self._Hash = params.get("Hash")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1371,14 +2755,22 @@ class EnableHashResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class FunctionArg(AbstractModel):
@@ -1388,30 +2780,63 @@ class FunctionArg(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CptId: The claim protocol type (CPT) ID.
+        :param _CptId: The claim protocol type (CPT) ID.
         :type CptId: int
-        :param Issuer: The DID of the issuer.
+        :param _Issuer: The DID of the issuer.
         :type Issuer: str
-        :param ExpirationDate: The expiration time.
+        :param _ExpirationDate: The expiration time.
         :type ExpirationDate: str
-        :param ClaimJson: The claim.
+        :param _ClaimJson: The claim.
         :type ClaimJson: str
         """
-        self.CptId = None
-        self.Issuer = None
-        self.ExpirationDate = None
-        self.ClaimJson = None
+        self._CptId = None
+        self._Issuer = None
+        self._ExpirationDate = None
+        self._ClaimJson = None
+
+    @property
+    def CptId(self):
+        return self._CptId
+
+    @CptId.setter
+    def CptId(self, CptId):
+        self._CptId = CptId
+
+    @property
+    def Issuer(self):
+        return self._Issuer
+
+    @Issuer.setter
+    def Issuer(self, Issuer):
+        self._Issuer = Issuer
+
+    @property
+    def ExpirationDate(self):
+        return self._ExpirationDate
+
+    @ExpirationDate.setter
+    def ExpirationDate(self, ExpirationDate):
+        self._ExpirationDate = ExpirationDate
+
+    @property
+    def ClaimJson(self):
+        return self._ClaimJson
+
+    @ClaimJson.setter
+    def ClaimJson(self, ClaimJson):
+        self._ClaimJson = ClaimJson
 
 
     def _deserialize(self, params):
-        self.CptId = params.get("CptId")
-        self.Issuer = params.get("Issuer")
-        self.ExpirationDate = params.get("ExpirationDate")
-        self.ClaimJson = params.get("ClaimJson")
+        self._CptId = params.get("CptId")
+        self._Issuer = params.get("Issuer")
+        self._ExpirationDate = params.get("ExpirationDate")
+        self._ClaimJson = params.get("ClaimJson")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1424,18 +2849,27 @@ class GetAgencyTDidRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: The network ID.
+        :param _ClusterId: The network ID.
         :type ClusterId: str
         """
-        self.ClusterId = None
+        self._ClusterId = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
+        self._ClusterId = params.get("ClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1448,27 +2882,51 @@ class GetAgencyTDidResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Prefix: The prefix (fixed).
+        :param _Prefix: The prefix (fixed).
         :type Prefix: str
-        :param Identity: The details of the DID.
+        :param _Identity: The details of the DID.
         :type Identity: list of Identity
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Prefix = None
-        self.Identity = None
-        self.RequestId = None
+        self._Prefix = None
+        self._Identity = None
+        self._RequestId = None
+
+    @property
+    def Prefix(self):
+        return self._Prefix
+
+    @Prefix.setter
+    def Prefix(self, Prefix):
+        self._Prefix = Prefix
+
+    @property
+    def Identity(self):
+        return self._Identity
+
+    @Identity.setter
+    def Identity(self, Identity):
+        self._Identity = Identity
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Prefix = params.get("Prefix")
+        self._Prefix = params.get("Prefix")
         if params.get("Identity") is not None:
-            self.Identity = []
+            self._Identity = []
             for item in params.get("Identity"):
                 obj = Identity()
                 obj._deserialize(item)
-                self.Identity.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Identity.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class GetAuthoritiesListRequest(AbstractModel):
@@ -1478,30 +2936,63 @@ class GetAuthoritiesListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PageNumber: The page number, beginning from 1.
+        :param _PageNumber: The page number, beginning from 1.
         :type PageNumber: int
-        :param PageSize: The number of records per page.
+        :param _PageSize: The number of records per page.
         :type PageSize: int
-        :param Did: The DID.
+        :param _Did: The DID.
         :type Did: str
-        :param Status: Whether to query certified or uncertified authorities. `1`: Certified; `2`: Uncertified.
+        :param _Status: Whether to query certified or uncertified authorities. `1`: Certified; `2`: Uncertified.
         :type Status: int
         """
-        self.PageNumber = None
-        self.PageSize = None
-        self.Did = None
-        self.Status = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._Did = None
+        self._Status = None
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Did(self):
+        return self._Did
+
+    @Did.setter
+    def Did(self, Did):
+        self._Did = Did
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
 
     def _deserialize(self, params):
-        self.PageNumber = params.get("PageNumber")
-        self.PageSize = params.get("PageSize")
-        self.Did = params.get("Did")
-        self.Status = params.get("Status")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._Did = params.get("Did")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1514,27 +3005,51 @@ class GetAuthoritiesListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResultList: A data set.
+        :param _ResultList: A data set.
         :type ResultList: list of Authority
-        :param AllCount: The total number of records.
+        :param _AllCount: The total number of records.
         :type AllCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.ResultList = None
-        self.AllCount = None
-        self.RequestId = None
+        self._ResultList = None
+        self._AllCount = None
+        self._RequestId = None
+
+    @property
+    def ResultList(self):
+        return self._ResultList
+
+    @ResultList.setter
+    def ResultList(self, ResultList):
+        self._ResultList = ResultList
+
+    @property
+    def AllCount(self):
+        return self._AllCount
+
+    @AllCount.setter
+    def AllCount(self, AllCount):
+        self._AllCount = AllCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("ResultList") is not None:
-            self.ResultList = []
+            self._ResultList = []
             for item in params.get("ResultList"):
                 obj = Authority()
                 obj._deserialize(item)
-                self.ResultList.append(obj)
-        self.AllCount = params.get("AllCount")
-        self.RequestId = params.get("RequestId")
+                self._ResultList.append(obj)
+        self._AllCount = params.get("AllCount")
+        self._RequestId = params.get("RequestId")
 
 
 class GetAuthorityIssuerRequest(AbstractModel):
@@ -1544,18 +3059,27 @@ class GetAuthorityIssuerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Did: The DID.
+        :param _Did: The DID.
         :type Did: str
         """
-        self.Did = None
+        self._Did = None
+
+    @property
+    def Did(self):
+        return self._Did
+
+    @Did.setter
+    def Did(self, Did):
+        self._Did = Did
 
 
     def _deserialize(self, params):
-        self.Did = params.get("Did")
+        self._Did = params.get("Did")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1568,42 +3092,106 @@ class GetAuthorityIssuerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: The authority name.
+        :param _Name: The authority name.
         :type Name: str
-        :param ClusterId: The blockchain network ID.
+        :param _ClusterId: The blockchain network ID.
         :type ClusterId: str
-        :param GroupId: The blockchain group ID.
+        :param _GroupId: The blockchain group ID.
         :type GroupId: int
-        :param Did: The DID of the authority.
+        :param _Did: The DID of the authority.
         :type Did: str
-        :param Remark: Remarks.
+        :param _Remark: Remarks.
         :type Remark: str
-        :param RegisterTime: The registration time.
+        :param _RegisterTime: The registration time.
         :type RegisterTime: str
-        :param RecognizeTime: The recognition time.
+        :param _RecognizeTime: The recognition time.
         :type RecognizeTime: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Name = None
-        self.ClusterId = None
-        self.GroupId = None
-        self.Did = None
-        self.Remark = None
-        self.RegisterTime = None
-        self.RecognizeTime = None
-        self.RequestId = None
+        self._Name = None
+        self._ClusterId = None
+        self._GroupId = None
+        self._Did = None
+        self._Remark = None
+        self._RegisterTime = None
+        self._RecognizeTime = None
+        self._RequestId = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def Did(self):
+        return self._Did
+
+    @Did.setter
+    def Did(self, Did):
+        self._Did = Did
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def RegisterTime(self):
+        return self._RegisterTime
+
+    @RegisterTime.setter
+    def RegisterTime(self, RegisterTime):
+        self._RegisterTime = RegisterTime
+
+    @property
+    def RecognizeTime(self):
+        return self._RecognizeTime
+
+    @RecognizeTime.setter
+    def RecognizeTime(self, RecognizeTime):
+        self._RecognizeTime = RecognizeTime
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.ClusterId = params.get("ClusterId")
-        self.GroupId = params.get("GroupId")
-        self.Did = params.get("Did")
-        self.Remark = params.get("Remark")
-        self.RegisterTime = params.get("RegisterTime")
-        self.RecognizeTime = params.get("RecognizeTime")
-        self.RequestId = params.get("RequestId")
+        self._Name = params.get("Name")
+        self._ClusterId = params.get("ClusterId")
+        self._GroupId = params.get("GroupId")
+        self._Did = params.get("Did")
+        self._Remark = params.get("Remark")
+        self._RegisterTime = params.get("RegisterTime")
+        self._RecognizeTime = params.get("RecognizeTime")
+        self._RequestId = params.get("RequestId")
 
 
 class GetConsortiumClusterListRequest(AbstractModel):
@@ -1613,18 +3201,27 @@ class GetConsortiumClusterListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ConsortiumId: The consortium ID.
+        :param _ConsortiumId: The consortium ID.
         :type ConsortiumId: int
         """
-        self.ConsortiumId = None
+        self._ConsortiumId = None
+
+    @property
+    def ConsortiumId(self):
+        return self._ConsortiumId
+
+    @ConsortiumId.setter
+    def ConsortiumId(self, ConsortiumId):
+        self._ConsortiumId = ConsortiumId
 
 
     def _deserialize(self, params):
-        self.ConsortiumId = params.get("ConsortiumId")
+        self._ConsortiumId = params.get("ConsortiumId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1637,23 +3234,39 @@ class GetConsortiumClusterListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterList: A list of networks.
+        :param _ClusterList: A list of networks.
         :type ClusterList: list of BcosClusterItem
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.ClusterList = None
-        self.RequestId = None
+        self._ClusterList = None
+        self._RequestId = None
+
+    @property
+    def ClusterList(self):
+        return self._ClusterList
+
+    @ClusterList.setter
+    def ClusterList(self, ClusterList):
+        self._ClusterList = ClusterList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("ClusterList") is not None:
-            self.ClusterList = []
+            self._ClusterList = []
             for item in params.get("ClusterList"):
                 obj = BcosClusterItem()
                 obj._deserialize(item)
-                self.ClusterList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._ClusterList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class GetConsortiumListRequest(AbstractModel):
@@ -1669,23 +3282,39 @@ class GetConsortiumListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ConsortiumList: A list of the consortiums.
+        :param _ConsortiumList: A list of the consortiums.
         :type ConsortiumList: list of ConsortiumItem
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.ConsortiumList = None
-        self.RequestId = None
+        self._ConsortiumList = None
+        self._RequestId = None
+
+    @property
+    def ConsortiumList(self):
+        return self._ConsortiumList
+
+    @ConsortiumList.setter
+    def ConsortiumList(self, ConsortiumList):
+        self._ConsortiumList = ConsortiumList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("ConsortiumList") is not None:
-            self.ConsortiumList = []
+            self._ConsortiumList = []
             for item in params.get("ConsortiumList"):
                 obj = ConsortiumItem()
                 obj._deserialize(item)
-                self.ConsortiumList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._ConsortiumList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class GetCptInfoRequest(AbstractModel):
@@ -1695,18 +3324,27 @@ class GetCptInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CptIndex: The claim protocol type (CPT) index.
+        :param _CptIndex: The claim protocol type (CPT) index.
         :type CptIndex: int
         """
-        self.CptIndex = None
+        self._CptIndex = None
+
+    @property
+    def CptIndex(self):
+        return self._CptIndex
+
+    @CptIndex.setter
+    def CptIndex(self, CptIndex):
+        self._CptIndex = CptIndex
 
 
     def _deserialize(self, params):
-        self.CptIndex = params.get("CptIndex")
+        self._CptIndex = params.get("CptIndex")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1719,18 +3357,34 @@ class GetCptInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CptJsonData: The JSON data of the claim protocol type (CPT).
+        :param _CptJsonData: The JSON data of the claim protocol type (CPT).
         :type CptJsonData: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.CptJsonData = None
-        self.RequestId = None
+        self._CptJsonData = None
+        self._RequestId = None
+
+    @property
+    def CptJsonData(self):
+        return self._CptJsonData
+
+    @CptJsonData.setter
+    def CptJsonData(self, CptJsonData):
+        self._CptJsonData = CptJsonData
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.CptJsonData = params.get("CptJsonData")
-        self.RequestId = params.get("RequestId")
+        self._CptJsonData = params.get("CptJsonData")
+        self._RequestId = params.get("RequestId")
 
 
 class GetCptListRequest(AbstractModel):
@@ -1740,26 +3394,51 @@ class GetCptListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DisplayStart: The start.
+        :param _DisplayStart: The start.
         :type DisplayStart: int
-        :param DisplayLength: The maximum number of records to return.
+        :param _DisplayLength: The maximum number of records to return.
         :type DisplayLength: int
-        :param CptType: The type. `0`: All CPTs; `1`: System CPTs; `2`: Authorization CPTs; `3`: General CPTs
+        :param _CptType: The type. `0`: All CPTs; `1`: System CPTs; `2`: Authorization CPTs; `3`: General CPTs
         :type CptType: int
         """
-        self.DisplayStart = None
-        self.DisplayLength = None
-        self.CptType = None
+        self._DisplayStart = None
+        self._DisplayLength = None
+        self._CptType = None
+
+    @property
+    def DisplayStart(self):
+        return self._DisplayStart
+
+    @DisplayStart.setter
+    def DisplayStart(self, DisplayStart):
+        self._DisplayStart = DisplayStart
+
+    @property
+    def DisplayLength(self):
+        return self._DisplayLength
+
+    @DisplayLength.setter
+    def DisplayLength(self, DisplayLength):
+        self._DisplayLength = DisplayLength
+
+    @property
+    def CptType(self):
+        return self._CptType
+
+    @CptType.setter
+    def CptType(self, CptType):
+        self._CptType = CptType
 
 
     def _deserialize(self, params):
-        self.DisplayStart = params.get("DisplayStart")
-        self.DisplayLength = params.get("DisplayLength")
-        self.CptType = params.get("CptType")
+        self._DisplayStart = params.get("DisplayStart")
+        self._DisplayLength = params.get("DisplayLength")
+        self._CptType = params.get("CptType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1772,27 +3451,51 @@ class GetCptListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CptDataList: The information of claim protocol types (CPT).
+        :param _CptDataList: The information of claim protocol types (CPT).
         :type CptDataList: list of CptListData
-        :param AllCount: The total number of claim protocol types (CPT).
+        :param _AllCount: The total number of claim protocol types (CPT).
         :type AllCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.CptDataList = None
-        self.AllCount = None
-        self.RequestId = None
+        self._CptDataList = None
+        self._AllCount = None
+        self._RequestId = None
+
+    @property
+    def CptDataList(self):
+        return self._CptDataList
+
+    @CptDataList.setter
+    def CptDataList(self, CptDataList):
+        self._CptDataList = CptDataList
+
+    @property
+    def AllCount(self):
+        return self._AllCount
+
+    @AllCount.setter
+    def AllCount(self, AllCount):
+        self._AllCount = AllCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("CptDataList") is not None:
-            self.CptDataList = []
+            self._CptDataList = []
             for item in params.get("CptDataList"):
                 obj = CptListData()
                 obj._deserialize(item)
-                self.CptDataList.append(obj)
-        self.AllCount = params.get("AllCount")
-        self.RequestId = params.get("RequestId")
+                self._CptDataList.append(obj)
+        self._AllCount = params.get("AllCount")
+        self._RequestId = params.get("RequestId")
 
 
 class GetCredentialCptRankRequest(AbstractModel):
@@ -1802,26 +3505,51 @@ class GetCredentialCptRankRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: The start date (as early as 2021-4-23).
+        :param _StartTime: The start date (as early as 2021-4-23).
         :type StartTime: str
-        :param EndTime: The end date (as early as 2021-4-23).
+        :param _EndTime: The end date (as early as 2021-4-23).
         :type EndTime: str
-        :param ClusterId: The network ID.
+        :param _ClusterId: The network ID.
         :type ClusterId: str
         """
-        self.StartTime = None
-        self.EndTime = None
-        self.ClusterId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._ClusterId = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
 
 
     def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.ClusterId = params.get("ClusterId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._ClusterId = params.get("ClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1834,23 +3562,39 @@ class GetCredentialCptRankResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RankIssueResult: The rankings.
+        :param _RankIssueResult: The rankings.
         :type RankIssueResult: list of CptIssueRank
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RankIssueResult = None
-        self.RequestId = None
+        self._RankIssueResult = None
+        self._RequestId = None
+
+    @property
+    def RankIssueResult(self):
+        return self._RankIssueResult
+
+    @RankIssueResult.setter
+    def RankIssueResult(self, RankIssueResult):
+        self._RankIssueResult = RankIssueResult
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("RankIssueResult") is not None:
-            self.RankIssueResult = []
+            self._RankIssueResult = []
             for item in params.get("RankIssueResult"):
                 obj = CptIssueRank()
                 obj._deserialize(item)
-                self.RankIssueResult.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._RankIssueResult.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class GetCredentialIssueRankRequest(AbstractModel):
@@ -1860,26 +3604,51 @@ class GetCredentialIssueRankRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: The start date (as early as 2021-4-23).
+        :param _StartTime: The start date (as early as 2021-4-23).
         :type StartTime: str
-        :param EndTime: The end date (as early as 2021-4-23).
+        :param _EndTime: The end date (as early as 2021-4-23).
         :type EndTime: str
-        :param ClusterId: The network ID.
+        :param _ClusterId: The network ID.
         :type ClusterId: str
         """
-        self.StartTime = None
-        self.EndTime = None
-        self.ClusterId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._ClusterId = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
 
 
     def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.ClusterId = params.get("ClusterId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._ClusterId = params.get("ClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1892,23 +3661,39 @@ class GetCredentialIssueRankResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RankIssueResult: The rankings.
+        :param _RankIssueResult: The rankings.
         :type RankIssueResult: list of CptIssueRank
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RankIssueResult = None
-        self.RequestId = None
+        self._RankIssueResult = None
+        self._RequestId = None
+
+    @property
+    def RankIssueResult(self):
+        return self._RankIssueResult
+
+    @RankIssueResult.setter
+    def RankIssueResult(self, RankIssueResult):
+        self._RankIssueResult = RankIssueResult
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("RankIssueResult") is not None:
-            self.RankIssueResult = []
+            self._RankIssueResult = []
             for item in params.get("RankIssueResult"):
                 obj = CptIssueRank()
                 obj._deserialize(item)
-                self.RankIssueResult.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._RankIssueResult.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class GetCredentialIssueTrendRequest(AbstractModel):
@@ -1918,26 +3703,51 @@ class GetCredentialIssueTrendRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: The start date (as early as 2021-4-23).
+        :param _StartTime: The start date (as early as 2021-4-23).
         :type StartTime: str
-        :param EndTime: The end date (as early as 2021-4-23).
+        :param _EndTime: The end date (as early as 2021-4-23).
         :type EndTime: str
-        :param ClusterId: The network ID.
+        :param _ClusterId: The network ID.
         :type ClusterId: str
         """
-        self.StartTime = None
-        self.EndTime = None
-        self.ClusterId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._ClusterId = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
 
 
     def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.ClusterId = params.get("ClusterId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._ClusterId = params.get("ClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1950,23 +3760,39 @@ class GetCredentialIssueTrendResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Trend: The trend information.
+        :param _Trend: The trend information.
         :type Trend: list of Trend
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Trend = None
-        self.RequestId = None
+        self._Trend = None
+        self._RequestId = None
+
+    @property
+    def Trend(self):
+        return self._Trend
+
+    @Trend.setter
+    def Trend(self, Trend):
+        self._Trend = Trend
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Trend") is not None:
-            self.Trend = []
+            self._Trend = []
             for item in params.get("Trend"):
                 obj = Trend()
                 obj._deserialize(item)
-                self.Trend.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Trend.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class GetCredentialStatusRequest(AbstractModel):
@@ -1976,18 +3802,27 @@ class GetCredentialStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CredentialId: The credential ID.
+        :param _CredentialId: The credential ID.
         :type CredentialId: str
         """
-        self.CredentialId = None
+        self._CredentialId = None
+
+    @property
+    def CredentialId(self):
+        return self._CredentialId
+
+    @CredentialId.setter
+    def CredentialId(self, CredentialId):
+        self._CredentialId = CredentialId
 
 
     def _deserialize(self, params):
-        self.CredentialId = params.get("CredentialId")
+        self._CredentialId = params.get("CredentialId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2000,20 +3835,36 @@ class GetCredentialStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CredentialStatus: The credential status.
+        :param _CredentialStatus: The credential status.
         :type CredentialStatus: :class:`tencentcloud.tdid.v20210519.models.CredentialStatus`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.CredentialStatus = None
-        self.RequestId = None
+        self._CredentialStatus = None
+        self._RequestId = None
+
+    @property
+    def CredentialStatus(self):
+        return self._CredentialStatus
+
+    @CredentialStatus.setter
+    def CredentialStatus(self, CredentialStatus):
+        self._CredentialStatus = CredentialStatus
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("CredentialStatus") is not None:
-            self.CredentialStatus = CredentialStatus()
-            self.CredentialStatus._deserialize(params.get("CredentialStatus"))
-        self.RequestId = params.get("RequestId")
+            self._CredentialStatus = CredentialStatus()
+            self._CredentialStatus._deserialize(params.get("CredentialStatus"))
+        self._RequestId = params.get("RequestId")
 
 
 class GetDataPanelRequest(AbstractModel):
@@ -2023,18 +3874,27 @@ class GetDataPanelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: The network ID.
+        :param _ClusterId: The network ID.
         :type ClusterId: str
         """
-        self.ClusterId = None
+        self._ClusterId = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
+        self._ClusterId = params.get("ClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2047,62 +3907,166 @@ class GetDataPanelResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BlockNetworkCount: The number of blockchain networks.
+        :param _BlockNetworkCount: The number of blockchain networks.
         :type BlockNetworkCount: int
-        :param BlockNetworkName: The blockchain network name.
+        :param _BlockNetworkName: The blockchain network name.
         :type BlockNetworkName: str
-        :param BlockHeight: The current block height.
+        :param _BlockHeight: The current block height.
         :type BlockHeight: int
-        :param BlockNetworkType: The blockchain network type.
+        :param _BlockNetworkType: The blockchain network type.
         :type BlockNetworkType: int
-        :param DidCount: The number of DIDs.
+        :param _DidCount: The number of DIDs.
         :type DidCount: int
-        :param CptCount: The number of claim protocol types (CPT).
+        :param _CptCount: The number of claim protocol types (CPT).
         :type CptCount: int
-        :param CertificatedAuthCount: The number of certified authorities.
+        :param _CertificatedAuthCount: The number of certified authorities.
         :type CertificatedAuthCount: int
-        :param IssueCptCount: The number of credentials issued.
+        :param _IssueCptCount: The number of credentials issued.
         :type IssueCptCount: int
-        :param NewDidCount: The number of new DIDs in the current week.
+        :param _NewDidCount: The number of new DIDs in the current week.
         :type NewDidCount: int
-        :param BcosCount: The number of BCOS networks.
+        :param _BcosCount: The number of BCOS networks.
         :type BcosCount: int
-        :param FabricCount: The number of Fabric networks.
+        :param _FabricCount: The number of Fabric networks.
         :type FabricCount: int
-        :param ChainMakerCount: The number of ChainMaker networks.
+        :param _ChainMakerCount: The number of ChainMaker networks.
         :type ChainMakerCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.BlockNetworkCount = None
-        self.BlockNetworkName = None
-        self.BlockHeight = None
-        self.BlockNetworkType = None
-        self.DidCount = None
-        self.CptCount = None
-        self.CertificatedAuthCount = None
-        self.IssueCptCount = None
-        self.NewDidCount = None
-        self.BcosCount = None
-        self.FabricCount = None
-        self.ChainMakerCount = None
-        self.RequestId = None
+        self._BlockNetworkCount = None
+        self._BlockNetworkName = None
+        self._BlockHeight = None
+        self._BlockNetworkType = None
+        self._DidCount = None
+        self._CptCount = None
+        self._CertificatedAuthCount = None
+        self._IssueCptCount = None
+        self._NewDidCount = None
+        self._BcosCount = None
+        self._FabricCount = None
+        self._ChainMakerCount = None
+        self._RequestId = None
+
+    @property
+    def BlockNetworkCount(self):
+        return self._BlockNetworkCount
+
+    @BlockNetworkCount.setter
+    def BlockNetworkCount(self, BlockNetworkCount):
+        self._BlockNetworkCount = BlockNetworkCount
+
+    @property
+    def BlockNetworkName(self):
+        return self._BlockNetworkName
+
+    @BlockNetworkName.setter
+    def BlockNetworkName(self, BlockNetworkName):
+        self._BlockNetworkName = BlockNetworkName
+
+    @property
+    def BlockHeight(self):
+        return self._BlockHeight
+
+    @BlockHeight.setter
+    def BlockHeight(self, BlockHeight):
+        self._BlockHeight = BlockHeight
+
+    @property
+    def BlockNetworkType(self):
+        return self._BlockNetworkType
+
+    @BlockNetworkType.setter
+    def BlockNetworkType(self, BlockNetworkType):
+        self._BlockNetworkType = BlockNetworkType
+
+    @property
+    def DidCount(self):
+        return self._DidCount
+
+    @DidCount.setter
+    def DidCount(self, DidCount):
+        self._DidCount = DidCount
+
+    @property
+    def CptCount(self):
+        return self._CptCount
+
+    @CptCount.setter
+    def CptCount(self, CptCount):
+        self._CptCount = CptCount
+
+    @property
+    def CertificatedAuthCount(self):
+        return self._CertificatedAuthCount
+
+    @CertificatedAuthCount.setter
+    def CertificatedAuthCount(self, CertificatedAuthCount):
+        self._CertificatedAuthCount = CertificatedAuthCount
+
+    @property
+    def IssueCptCount(self):
+        return self._IssueCptCount
+
+    @IssueCptCount.setter
+    def IssueCptCount(self, IssueCptCount):
+        self._IssueCptCount = IssueCptCount
+
+    @property
+    def NewDidCount(self):
+        return self._NewDidCount
+
+    @NewDidCount.setter
+    def NewDidCount(self, NewDidCount):
+        self._NewDidCount = NewDidCount
+
+    @property
+    def BcosCount(self):
+        return self._BcosCount
+
+    @BcosCount.setter
+    def BcosCount(self, BcosCount):
+        self._BcosCount = BcosCount
+
+    @property
+    def FabricCount(self):
+        return self._FabricCount
+
+    @FabricCount.setter
+    def FabricCount(self, FabricCount):
+        self._FabricCount = FabricCount
+
+    @property
+    def ChainMakerCount(self):
+        return self._ChainMakerCount
+
+    @ChainMakerCount.setter
+    def ChainMakerCount(self, ChainMakerCount):
+        self._ChainMakerCount = ChainMakerCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.BlockNetworkCount = params.get("BlockNetworkCount")
-        self.BlockNetworkName = params.get("BlockNetworkName")
-        self.BlockHeight = params.get("BlockHeight")
-        self.BlockNetworkType = params.get("BlockNetworkType")
-        self.DidCount = params.get("DidCount")
-        self.CptCount = params.get("CptCount")
-        self.CertificatedAuthCount = params.get("CertificatedAuthCount")
-        self.IssueCptCount = params.get("IssueCptCount")
-        self.NewDidCount = params.get("NewDidCount")
-        self.BcosCount = params.get("BcosCount")
-        self.FabricCount = params.get("FabricCount")
-        self.ChainMakerCount = params.get("ChainMakerCount")
-        self.RequestId = params.get("RequestId")
+        self._BlockNetworkCount = params.get("BlockNetworkCount")
+        self._BlockNetworkName = params.get("BlockNetworkName")
+        self._BlockHeight = params.get("BlockHeight")
+        self._BlockNetworkType = params.get("BlockNetworkType")
+        self._DidCount = params.get("DidCount")
+        self._CptCount = params.get("CptCount")
+        self._CertificatedAuthCount = params.get("CertificatedAuthCount")
+        self._IssueCptCount = params.get("IssueCptCount")
+        self._NewDidCount = params.get("NewDidCount")
+        self._BcosCount = params.get("BcosCount")
+        self._FabricCount = params.get("FabricCount")
+        self._ChainMakerCount = params.get("ChainMakerCount")
+        self._RequestId = params.get("RequestId")
 
 
 class GetDeployInfoRequest(AbstractModel):
@@ -2112,18 +4076,27 @@ class GetDeployInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Hash: The CNS address of the contract.
+        :param _Hash: The CNS address of the contract.
         :type Hash: str
         """
-        self.Hash = None
+        self._Hash = None
+
+    @property
+    def Hash(self):
+        return self._Hash
+
+    @Hash.setter
+    def Hash(self, Hash):
+        self._Hash = Hash
 
 
     def _deserialize(self, params):
-        self.Hash = params.get("Hash")
+        self._Hash = params.get("Hash")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2136,66 +4109,178 @@ class GetDeployInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Hash: The CNS address of the contract.
+        :param _Hash: The CNS address of the contract.
         :type Hash: str
-        :param GroupId: The main group ID of the contract.
+        :param _GroupId: The main group ID of the contract.
         :type GroupId: str
-        :param DeployDid: The DID of the organization that deployed the contract.
+        :param _DeployDid: The DID of the organization that deployed the contract.
         :type DeployDid: str
-        :param SdkVersion: The TDID SDK version.
+        :param _SdkVersion: The TDID SDK version.
         :type SdkVersion: str
-        :param ContractVersion: The TDID contract version.
+        :param _ContractVersion: The TDID contract version.
         :type ContractVersion: str
-        :param BlockVersion: The blockchain node version.
+        :param _BlockVersion: The blockchain node version.
         :type BlockVersion: str
-        :param BlockIp: The IP address of the blockchain node.
+        :param _BlockIp: The IP address of the blockchain node.
         :type BlockIp: str
-        :param DidAddress: The address of the DID contract.
+        :param _DidAddress: The address of the DID contract.
         :type DidAddress: str
-        :param CptAddress: The address of the claim protocol type (CPT) contract.
+        :param _CptAddress: The address of the claim protocol type (CPT) contract.
         :type CptAddress: str
-        :param AuthorityAddress: The address of the authority.
+        :param _AuthorityAddress: The address of the authority.
         :type AuthorityAddress: str
-        :param EvidenceAddress: The evidence contract address.
+        :param _EvidenceAddress: The evidence contract address.
         :type EvidenceAddress: str
-        :param SpecificAddress: The contract address of the specific issuer.
+        :param _SpecificAddress: The contract address of the specific issuer.
         :type SpecificAddress: str
-        :param ChainId: The chain ID.
+        :param _ChainId: The chain ID.
         :type ChainId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Hash = None
-        self.GroupId = None
-        self.DeployDid = None
-        self.SdkVersion = None
-        self.ContractVersion = None
-        self.BlockVersion = None
-        self.BlockIp = None
-        self.DidAddress = None
-        self.CptAddress = None
-        self.AuthorityAddress = None
-        self.EvidenceAddress = None
-        self.SpecificAddress = None
-        self.ChainId = None
-        self.RequestId = None
+        self._Hash = None
+        self._GroupId = None
+        self._DeployDid = None
+        self._SdkVersion = None
+        self._ContractVersion = None
+        self._BlockVersion = None
+        self._BlockIp = None
+        self._DidAddress = None
+        self._CptAddress = None
+        self._AuthorityAddress = None
+        self._EvidenceAddress = None
+        self._SpecificAddress = None
+        self._ChainId = None
+        self._RequestId = None
+
+    @property
+    def Hash(self):
+        return self._Hash
+
+    @Hash.setter
+    def Hash(self, Hash):
+        self._Hash = Hash
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def DeployDid(self):
+        return self._DeployDid
+
+    @DeployDid.setter
+    def DeployDid(self, DeployDid):
+        self._DeployDid = DeployDid
+
+    @property
+    def SdkVersion(self):
+        return self._SdkVersion
+
+    @SdkVersion.setter
+    def SdkVersion(self, SdkVersion):
+        self._SdkVersion = SdkVersion
+
+    @property
+    def ContractVersion(self):
+        return self._ContractVersion
+
+    @ContractVersion.setter
+    def ContractVersion(self, ContractVersion):
+        self._ContractVersion = ContractVersion
+
+    @property
+    def BlockVersion(self):
+        return self._BlockVersion
+
+    @BlockVersion.setter
+    def BlockVersion(self, BlockVersion):
+        self._BlockVersion = BlockVersion
+
+    @property
+    def BlockIp(self):
+        return self._BlockIp
+
+    @BlockIp.setter
+    def BlockIp(self, BlockIp):
+        self._BlockIp = BlockIp
+
+    @property
+    def DidAddress(self):
+        return self._DidAddress
+
+    @DidAddress.setter
+    def DidAddress(self, DidAddress):
+        self._DidAddress = DidAddress
+
+    @property
+    def CptAddress(self):
+        return self._CptAddress
+
+    @CptAddress.setter
+    def CptAddress(self, CptAddress):
+        self._CptAddress = CptAddress
+
+    @property
+    def AuthorityAddress(self):
+        return self._AuthorityAddress
+
+    @AuthorityAddress.setter
+    def AuthorityAddress(self, AuthorityAddress):
+        self._AuthorityAddress = AuthorityAddress
+
+    @property
+    def EvidenceAddress(self):
+        return self._EvidenceAddress
+
+    @EvidenceAddress.setter
+    def EvidenceAddress(self, EvidenceAddress):
+        self._EvidenceAddress = EvidenceAddress
+
+    @property
+    def SpecificAddress(self):
+        return self._SpecificAddress
+
+    @SpecificAddress.setter
+    def SpecificAddress(self, SpecificAddress):
+        self._SpecificAddress = SpecificAddress
+
+    @property
+    def ChainId(self):
+        return self._ChainId
+
+    @ChainId.setter
+    def ChainId(self, ChainId):
+        self._ChainId = ChainId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Hash = params.get("Hash")
-        self.GroupId = params.get("GroupId")
-        self.DeployDid = params.get("DeployDid")
-        self.SdkVersion = params.get("SdkVersion")
-        self.ContractVersion = params.get("ContractVersion")
-        self.BlockVersion = params.get("BlockVersion")
-        self.BlockIp = params.get("BlockIp")
-        self.DidAddress = params.get("DidAddress")
-        self.CptAddress = params.get("CptAddress")
-        self.AuthorityAddress = params.get("AuthorityAddress")
-        self.EvidenceAddress = params.get("EvidenceAddress")
-        self.SpecificAddress = params.get("SpecificAddress")
-        self.ChainId = params.get("ChainId")
-        self.RequestId = params.get("RequestId")
+        self._Hash = params.get("Hash")
+        self._GroupId = params.get("GroupId")
+        self._DeployDid = params.get("DeployDid")
+        self._SdkVersion = params.get("SdkVersion")
+        self._ContractVersion = params.get("ContractVersion")
+        self._BlockVersion = params.get("BlockVersion")
+        self._BlockIp = params.get("BlockIp")
+        self._DidAddress = params.get("DidAddress")
+        self._CptAddress = params.get("CptAddress")
+        self._AuthorityAddress = params.get("AuthorityAddress")
+        self._EvidenceAddress = params.get("EvidenceAddress")
+        self._SpecificAddress = params.get("SpecificAddress")
+        self._ChainId = params.get("ChainId")
+        self._RequestId = params.get("RequestId")
 
 
 class GetDeployListRequest(AbstractModel):
@@ -2205,30 +4290,63 @@ class GetDeployListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: The network ID.
+        :param _ClusterId: The network ID.
         :type ClusterId: str
-        :param GroupId: The group ID.
+        :param _GroupId: The group ID.
         :type GroupId: int
-        :param DisplayStart: The start.
+        :param _DisplayStart: The start.
         :type DisplayStart: int
-        :param DisplayLength: The maximum number of records to return.
+        :param _DisplayLength: The maximum number of records to return.
         :type DisplayLength: int
         """
-        self.ClusterId = None
-        self.GroupId = None
-        self.DisplayStart = None
-        self.DisplayLength = None
+        self._ClusterId = None
+        self._GroupId = None
+        self._DisplayStart = None
+        self._DisplayLength = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def DisplayStart(self):
+        return self._DisplayStart
+
+    @DisplayStart.setter
+    def DisplayStart(self, DisplayStart):
+        self._DisplayStart = DisplayStart
+
+    @property
+    def DisplayLength(self):
+        return self._DisplayLength
+
+    @DisplayLength.setter
+    def DisplayLength(self, DisplayLength):
+        self._DisplayLength = DisplayLength
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
-        self.GroupId = params.get("GroupId")
-        self.DisplayStart = params.get("DisplayStart")
-        self.DisplayLength = params.get("DisplayLength")
+        self._ClusterId = params.get("ClusterId")
+        self._GroupId = params.get("GroupId")
+        self._DisplayStart = params.get("DisplayStart")
+        self._DisplayLength = params.get("DisplayLength")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2241,27 +4359,51 @@ class GetDeployListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AllCount: The total number of contracts.
+        :param _AllCount: The total number of contracts.
         :type AllCount: int
-        :param Result: A list of deployed contracts.
+        :param _Result: A list of deployed contracts.
         :type Result: list of Contract
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.AllCount = None
-        self.Result = None
-        self.RequestId = None
+        self._AllCount = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def AllCount(self):
+        return self._AllCount
+
+    @AllCount.setter
+    def AllCount(self, AllCount):
+        self._AllCount = AllCount
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.AllCount = params.get("AllCount")
+        self._AllCount = params.get("AllCount")
         if params.get("Result") is not None:
-            self.Result = []
+            self._Result = []
             for item in params.get("Result"):
                 obj = Contract()
                 obj._deserialize(item)
-                self.Result.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Result.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class GetDidClusterDetailRequest(AbstractModel):
@@ -2271,18 +4413,27 @@ class GetDidClusterDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: The DID network ID.
+        :param _ClusterId: The DID network ID.
         :type ClusterId: str
         """
-        self.ClusterId = None
+        self._ClusterId = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
+        self._ClusterId = params.get("ClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2295,26 +4446,58 @@ class GetDidClusterDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: The network ID.
+        :param _ClusterId: The network ID.
         :type ClusterId: str
-        :param ConsortiumName: The consortium name.
+        :param _ConsortiumName: The consortium name.
         :type ConsortiumName: str
-        :param ChainAgency: The name of the blockchain organization.
+        :param _ChainAgency: The name of the blockchain organization.
         :type ChainAgency: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.ClusterId = None
-        self.ConsortiumName = None
-        self.ChainAgency = None
-        self.RequestId = None
+        self._ClusterId = None
+        self._ConsortiumName = None
+        self._ChainAgency = None
+        self._RequestId = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ConsortiumName(self):
+        return self._ConsortiumName
+
+    @ConsortiumName.setter
+    def ConsortiumName(self, ConsortiumName):
+        self._ConsortiumName = ConsortiumName
+
+    @property
+    def ChainAgency(self):
+        return self._ChainAgency
+
+    @ChainAgency.setter
+    def ChainAgency(self, ChainAgency):
+        self._ChainAgency = ChainAgency
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
-        self.ConsortiumName = params.get("ConsortiumName")
-        self.ChainAgency = params.get("ChainAgency")
-        self.RequestId = params.get("RequestId")
+        self._ClusterId = params.get("ClusterId")
+        self._ConsortiumName = params.get("ConsortiumName")
+        self._ChainAgency = params.get("ChainAgency")
+        self._RequestId = params.get("RequestId")
 
 
 class GetDidClusterListRequest(AbstractModel):
@@ -2330,23 +4513,39 @@ class GetDidClusterListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DidClusterList: A list of the DID networks.
+        :param _DidClusterList: A list of the DID networks.
         :type DidClusterList: list of DidCluster
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.DidClusterList = None
-        self.RequestId = None
+        self._DidClusterList = None
+        self._RequestId = None
+
+    @property
+    def DidClusterList(self):
+        return self._DidClusterList
+
+    @DidClusterList.setter
+    def DidClusterList(self, DidClusterList):
+        self._DidClusterList = DidClusterList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DidClusterList") is not None:
-            self.DidClusterList = []
+            self._DidClusterList = []
             for item in params.get("DidClusterList"):
                 obj = DidCluster()
                 obj._deserialize(item)
-                self.DidClusterList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._DidClusterList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class GetDidDetailRequest(AbstractModel):
@@ -2356,18 +4555,27 @@ class GetDidDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Did: The DID.
+        :param _Did: The DID.
         :type Did: str
         """
-        self.Did = None
+        self._Did = None
+
+    @property
+    def Did(self):
+        return self._Did
+
+    @Did.setter
+    def Did(self, Did):
+        self._Did = Did
 
 
     def _deserialize(self, params):
-        self.Did = params.get("Did")
+        self._Did = params.get("Did")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2380,54 +4588,142 @@ class GetDidDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Did: The DID.
+        :param _Did: The DID.
         :type Did: str
-        :param Remark: Remarks
+        :param _Remark: Remarks
         :type Remark: str
-        :param PublicKey: The public key.
+        :param _PublicKey: The public key.
         :type PublicKey: str
-        :param AuthorityState: Whether the DID is a certified authority.
+        :param _AuthorityState: Whether the DID is a certified authority.
         :type AuthorityState: int
-        :param ConsortiumId: The consortium ID.
+        :param _ConsortiumId: The consortium ID.
         :type ConsortiumId: int
-        :param ConsortiumName: The consortium name.
+        :param _ConsortiumName: The consortium name.
         :type ConsortiumName: str
-        :param GroupId: The group ID.
+        :param _GroupId: The group ID.
         :type GroupId: int
-        :param ClusterId: The network ID.
+        :param _ClusterId: The network ID.
         :type ClusterId: str
-        :param ResChainId: The BCOS resource ID.
+        :param _ResChainId: The BCOS resource ID.
         :type ResChainId: str
-        :param CreateTime: The creation time.
+        :param _CreateTime: The creation time.
         :type CreateTime: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Did = None
-        self.Remark = None
-        self.PublicKey = None
-        self.AuthorityState = None
-        self.ConsortiumId = None
-        self.ConsortiumName = None
-        self.GroupId = None
-        self.ClusterId = None
-        self.ResChainId = None
-        self.CreateTime = None
-        self.RequestId = None
+        self._Did = None
+        self._Remark = None
+        self._PublicKey = None
+        self._AuthorityState = None
+        self._ConsortiumId = None
+        self._ConsortiumName = None
+        self._GroupId = None
+        self._ClusterId = None
+        self._ResChainId = None
+        self._CreateTime = None
+        self._RequestId = None
+
+    @property
+    def Did(self):
+        return self._Did
+
+    @Did.setter
+    def Did(self, Did):
+        self._Did = Did
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def PublicKey(self):
+        return self._PublicKey
+
+    @PublicKey.setter
+    def PublicKey(self, PublicKey):
+        self._PublicKey = PublicKey
+
+    @property
+    def AuthorityState(self):
+        return self._AuthorityState
+
+    @AuthorityState.setter
+    def AuthorityState(self, AuthorityState):
+        self._AuthorityState = AuthorityState
+
+    @property
+    def ConsortiumId(self):
+        return self._ConsortiumId
+
+    @ConsortiumId.setter
+    def ConsortiumId(self, ConsortiumId):
+        self._ConsortiumId = ConsortiumId
+
+    @property
+    def ConsortiumName(self):
+        return self._ConsortiumName
+
+    @ConsortiumName.setter
+    def ConsortiumName(self, ConsortiumName):
+        self._ConsortiumName = ConsortiumName
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ResChainId(self):
+        return self._ResChainId
+
+    @ResChainId.setter
+    def ResChainId(self, ResChainId):
+        self._ResChainId = ResChainId
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Did = params.get("Did")
-        self.Remark = params.get("Remark")
-        self.PublicKey = params.get("PublicKey")
-        self.AuthorityState = params.get("AuthorityState")
-        self.ConsortiumId = params.get("ConsortiumId")
-        self.ConsortiumName = params.get("ConsortiumName")
-        self.GroupId = params.get("GroupId")
-        self.ClusterId = params.get("ClusterId")
-        self.ResChainId = params.get("ResChainId")
-        self.CreateTime = params.get("CreateTime")
-        self.RequestId = params.get("RequestId")
+        self._Did = params.get("Did")
+        self._Remark = params.get("Remark")
+        self._PublicKey = params.get("PublicKey")
+        self._AuthorityState = params.get("AuthorityState")
+        self._ConsortiumId = params.get("ConsortiumId")
+        self._ConsortiumName = params.get("ConsortiumName")
+        self._GroupId = params.get("GroupId")
+        self._ClusterId = params.get("ClusterId")
+        self._ResChainId = params.get("ResChainId")
+        self._CreateTime = params.get("CreateTime")
+        self._RequestId = params.get("RequestId")
 
 
 class GetDidDocumentRequest(AbstractModel):
@@ -2437,18 +4733,27 @@ class GetDidDocumentRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Did: The DID.
+        :param _Did: The DID.
         :type Did: str
         """
-        self.Did = None
+        self._Did = None
+
+    @property
+    def Did(self):
+        return self._Did
+
+    @Did.setter
+    def Did(self, Did):
+        self._Did = Did
 
 
     def _deserialize(self, params):
-        self.Did = params.get("Did")
+        self._Did = params.get("Did")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2461,22 +4766,46 @@ class GetDidDocumentResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: The name.
+        :param _Name: The name.
         :type Name: str
-        :param Document: The DID document.
+        :param _Document: The DID document.
         :type Document: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Name = None
-        self.Document = None
-        self.RequestId = None
+        self._Name = None
+        self._Document = None
+        self._RequestId = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Document(self):
+        return self._Document
+
+    @Document.setter
+    def Document(self, Document):
+        self._Document = Document
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Document = params.get("Document")
-        self.RequestId = params.get("RequestId")
+        self._Name = params.get("Name")
+        self._Document = params.get("Document")
+        self._RequestId = params.get("RequestId")
 
 
 class GetDidListRequest(AbstractModel):
@@ -2486,34 +4815,75 @@ class GetDidListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PageSize: The number of records per page.
+        :param _PageSize: The number of records per page.
         :type PageSize: int
-        :param PageNumber: The page number, beginning from 1.
+        :param _PageNumber: The page number, beginning from 1.
         :type PageNumber: int
-        :param Did: The DID.
+        :param _Did: The DID.
         :type Did: str
-        :param ClusterId: The network ID.
+        :param _ClusterId: The network ID.
         :type ClusterId: str
-        :param GroupId: The group ID.
+        :param _GroupId: The group ID.
         :type GroupId: int
         """
-        self.PageSize = None
-        self.PageNumber = None
-        self.Did = None
-        self.ClusterId = None
-        self.GroupId = None
+        self._PageSize = None
+        self._PageNumber = None
+        self._Did = None
+        self._ClusterId = None
+        self._GroupId = None
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def Did(self):
+        return self._Did
+
+    @Did.setter
+    def Did(self, Did):
+        self._Did = Did
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
 
 
     def _deserialize(self, params):
-        self.PageSize = params.get("PageSize")
-        self.PageNumber = params.get("PageNumber")
-        self.Did = params.get("Did")
-        self.ClusterId = params.get("ClusterId")
-        self.GroupId = params.get("GroupId")
+        self._PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
+        self._Did = params.get("Did")
+        self._ClusterId = params.get("ClusterId")
+        self._GroupId = params.get("GroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2526,27 +4896,51 @@ class GetDidListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DataList: A list of DIDs.
+        :param _DataList: A list of DIDs.
         :type DataList: list of DidData
-        :param AllCount: The total number of records.
+        :param _AllCount: The total number of records.
         :type AllCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.DataList = None
-        self.AllCount = None
-        self.RequestId = None
+        self._DataList = None
+        self._AllCount = None
+        self._RequestId = None
+
+    @property
+    def DataList(self):
+        return self._DataList
+
+    @DataList.setter
+    def DataList(self, DataList):
+        self._DataList = DataList
+
+    @property
+    def AllCount(self):
+        return self._AllCount
+
+    @AllCount.setter
+    def AllCount(self, AllCount):
+        self._AllCount = AllCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DataList") is not None:
-            self.DataList = []
+            self._DataList = []
             for item in params.get("DataList"):
                 obj = DidData()
                 obj._deserialize(item)
-                self.DataList.append(obj)
-        self.AllCount = params.get("AllCount")
-        self.RequestId = params.get("RequestId")
+                self._DataList.append(obj)
+        self._AllCount = params.get("AllCount")
+        self._RequestId = params.get("RequestId")
 
 
 class GetDidRegisterTrendRequest(AbstractModel):
@@ -2556,26 +4950,51 @@ class GetDidRegisterTrendRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: The start date (as early as 2021-4-23).
+        :param _StartTime: The start date (as early as 2021-4-23).
         :type StartTime: str
-        :param EndTime: The end date (as early as 2021-4-23).
+        :param _EndTime: The end date (as early as 2021-4-23).
         :type EndTime: str
-        :param ClusterId: The network ID.
+        :param _ClusterId: The network ID.
         :type ClusterId: str
         """
-        self.StartTime = None
-        self.EndTime = None
-        self.ClusterId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._ClusterId = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
 
 
     def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.ClusterId = params.get("ClusterId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._ClusterId = params.get("ClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2588,23 +5007,39 @@ class GetDidRegisterTrendResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Trend: The trend information.
+        :param _Trend: The trend information.
         :type Trend: list of Trend
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Trend = None
-        self.RequestId = None
+        self._Trend = None
+        self._RequestId = None
+
+    @property
+    def Trend(self):
+        return self._Trend
+
+    @Trend.setter
+    def Trend(self, Trend):
+        self._Trend = Trend
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Trend") is not None:
-            self.Trend = []
+            self._Trend = []
             for item in params.get("Trend"):
                 obj = Trend()
                 obj._deserialize(item)
-                self.Trend.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Trend.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class GetDidServiceDetailRequest(AbstractModel):
@@ -2614,18 +5049,27 @@ class GetDidServiceDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: The DID service ID.
+        :param _ServiceId: The DID service ID.
         :type ServiceId: int
         """
-        self.ServiceId = None
+        self._ServiceId = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
+        self._ServiceId = params.get("ServiceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2638,20 +5082,36 @@ class GetDidServiceDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DidService: The DID service information.
+        :param _DidService: The DID service information.
         :type DidService: :class:`tencentcloud.tdid.v20210519.models.DidServiceInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.DidService = None
-        self.RequestId = None
+        self._DidService = None
+        self._RequestId = None
+
+    @property
+    def DidService(self):
+        return self._DidService
+
+    @DidService.setter
+    def DidService(self, DidService):
+        self._DidService = DidService
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DidService") is not None:
-            self.DidService = DidServiceInfo()
-            self.DidService._deserialize(params.get("DidService"))
-        self.RequestId = params.get("RequestId")
+            self._DidService = DidServiceInfo()
+            self._DidService._deserialize(params.get("DidService"))
+        self._RequestId = params.get("RequestId")
 
 
 class GetDidServiceListRequest(AbstractModel):
@@ -2661,18 +5121,27 @@ class GetDidServiceListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: `1`: Return results at the network level; `0`: Return results at the service level.
+        :param _Type: `1`: Return results at the network level; `0`: Return results at the service level.
         :type Type: int
         """
-        self.Type = None
+        self._Type = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
 
 
     def _deserialize(self, params):
-        self.Type = params.get("Type")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2685,23 +5154,39 @@ class GetDidServiceListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DidServiceList: A list of DID services.
+        :param _DidServiceList: A list of DID services.
         :type DidServiceList: list of DidServiceInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.DidServiceList = None
-        self.RequestId = None
+        self._DidServiceList = None
+        self._RequestId = None
+
+    @property
+    def DidServiceList(self):
+        return self._DidServiceList
+
+    @DidServiceList.setter
+    def DidServiceList(self, DidServiceList):
+        self._DidServiceList = DidServiceList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DidServiceList") is not None:
-            self.DidServiceList = []
+            self._DidServiceList = []
             for item in params.get("DidServiceList"):
                 obj = DidServiceInfo()
                 obj._deserialize(item)
-                self.DidServiceList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._DidServiceList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class GetGroupListRequest(AbstractModel):
@@ -2711,22 +5196,39 @@ class GetGroupListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: `0`: Groups with no DID services; `1`: Groups with DID services.
+        :param _Status: `0`: Groups with no DID services; `1`: Groups with DID services.
         :type Status: int
-        :param ClusterId: The network ID.
+        :param _ClusterId: The network ID.
         :type ClusterId: str
         """
-        self.Status = None
-        self.ClusterId = None
+        self._Status = None
+        self._ClusterId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
 
 
     def _deserialize(self, params):
-        self.Status = params.get("Status")
-        self.ClusterId = params.get("ClusterId")
+        self._Status = params.get("Status")
+        self._ClusterId = params.get("ClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2739,23 +5241,39 @@ class GetGroupListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: A list of groups.
+        :param _Result: A list of groups.
         :type Result: list of Group
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = []
+            self._Result = []
             for item in params.get("Result"):
                 obj = Group()
                 obj._deserialize(item)
-                self.Result.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Result.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class GetLabelListRequest(AbstractModel):
@@ -2765,30 +5283,63 @@ class GetLabelListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PageSize: The number of records per page.
+        :param _PageSize: The number of records per page.
         :type PageSize: int
-        :param PageNumber: The page number, beginning from 1.
+        :param _PageNumber: The page number, beginning from 1.
         :type PageNumber: int
-        :param ClusterId: The network ID.
+        :param _ClusterId: The network ID.
         :type ClusterId: str
-        :param GroupId: The group ID.
+        :param _GroupId: The group ID.
         :type GroupId: int
         """
-        self.PageSize = None
-        self.PageNumber = None
-        self.ClusterId = None
-        self.GroupId = None
+        self._PageSize = None
+        self._PageNumber = None
+        self._ClusterId = None
+        self._GroupId = None
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
 
 
     def _deserialize(self, params):
-        self.PageSize = params.get("PageSize")
-        self.PageNumber = params.get("PageNumber")
-        self.ClusterId = params.get("ClusterId")
-        self.GroupId = params.get("GroupId")
+        self._PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
+        self._ClusterId = params.get("ClusterId")
+        self._GroupId = params.get("GroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2801,27 +5352,51 @@ class GetLabelListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: A data set.
+        :param _Result: A data set.
         :type Result: list of Label
-        :param TotalCount: The total number of records.
+        :param _TotalCount: The total number of records.
         :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._Result = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = []
+            self._Result = []
             for item in params.get("Result"):
                 obj = Label()
                 obj._deserialize(item)
-                self.Result.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._Result.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class GetPolicyListRequest(AbstractModel):
@@ -2831,22 +5406,39 @@ class GetPolicyListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DisplayStart: The start.
+        :param _DisplayStart: The start.
         :type DisplayStart: int
-        :param DisplayLength: The maximum number of records to return.
+        :param _DisplayLength: The maximum number of records to return.
         :type DisplayLength: int
         """
-        self.DisplayStart = None
-        self.DisplayLength = None
+        self._DisplayStart = None
+        self._DisplayLength = None
+
+    @property
+    def DisplayStart(self):
+        return self._DisplayStart
+
+    @DisplayStart.setter
+    def DisplayStart(self, DisplayStart):
+        self._DisplayStart = DisplayStart
+
+    @property
+    def DisplayLength(self):
+        return self._DisplayLength
+
+    @DisplayLength.setter
+    def DisplayLength(self, DisplayLength):
+        self._DisplayLength = DisplayLength
 
 
     def _deserialize(self, params):
-        self.DisplayStart = params.get("DisplayStart")
-        self.DisplayLength = params.get("DisplayLength")
+        self._DisplayStart = params.get("DisplayStart")
+        self._DisplayLength = params.get("DisplayLength")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2859,27 +5451,51 @@ class GetPolicyListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PolicyDataList: A list of disclosure policies.
+        :param _PolicyDataList: A list of disclosure policies.
         :type PolicyDataList: list of Policy
-        :param AllCount: The total number of records.
+        :param _AllCount: The total number of records.
         :type AllCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.PolicyDataList = None
-        self.AllCount = None
-        self.RequestId = None
+        self._PolicyDataList = None
+        self._AllCount = None
+        self._RequestId = None
+
+    @property
+    def PolicyDataList(self):
+        return self._PolicyDataList
+
+    @PolicyDataList.setter
+    def PolicyDataList(self, PolicyDataList):
+        self._PolicyDataList = PolicyDataList
+
+    @property
+    def AllCount(self):
+        return self._AllCount
+
+    @AllCount.setter
+    def AllCount(self, AllCount):
+        self._AllCount = AllCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("PolicyDataList") is not None:
-            self.PolicyDataList = []
+            self._PolicyDataList = []
             for item in params.get("PolicyDataList"):
                 obj = Policy()
                 obj._deserialize(item)
-                self.PolicyDataList.append(obj)
-        self.AllCount = params.get("AllCount")
-        self.RequestId = params.get("RequestId")
+                self._PolicyDataList.append(obj)
+        self._AllCount = params.get("AllCount")
+        self._RequestId = params.get("RequestId")
 
 
 class GetPublicKeyRequest(AbstractModel):
@@ -2889,18 +5505,27 @@ class GetPublicKeyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Did: The DID.
+        :param _Did: The DID.
         :type Did: str
         """
-        self.Did = None
+        self._Did = None
+
+    @property
+    def Did(self):
+        return self._Did
+
+    @Did.setter
+    def Did(self, Did):
+        self._Did = Did
 
 
     def _deserialize(self, params):
-        self.Did = params.get("Did")
+        self._Did = params.get("Did")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2913,22 +5538,46 @@ class GetPublicKeyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Did: The DID.
+        :param _Did: The DID.
         :type Did: str
-        :param PublicKey: The public key.
+        :param _PublicKey: The public key.
         :type PublicKey: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Did = None
-        self.PublicKey = None
-        self.RequestId = None
+        self._Did = None
+        self._PublicKey = None
+        self._RequestId = None
+
+    @property
+    def Did(self):
+        return self._Did
+
+    @Did.setter
+    def Did(self, Did):
+        self._Did = Did
+
+    @property
+    def PublicKey(self):
+        return self._PublicKey
+
+    @PublicKey.setter
+    def PublicKey(self, PublicKey):
+        self._PublicKey = PublicKey
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Did = params.get("Did")
-        self.PublicKey = params.get("PublicKey")
-        self.RequestId = params.get("RequestId")
+        self._Did = params.get("Did")
+        self._PublicKey = params.get("PublicKey")
+        self._RequestId = params.get("RequestId")
 
 
 class Group(AbstractModel):
@@ -2938,38 +5587,87 @@ class Group(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupId: The group ID.
+        :param _GroupId: The group ID.
         :type GroupId: int
-        :param NodeCount: The number of nodes.
+        :param _NodeCount: The number of nodes.
         :type NodeCount: int
-        :param NodeCountOfAgency: The number of nodes of the organization.
+        :param _NodeCountOfAgency: The number of nodes of the organization.
         :type NodeCountOfAgency: int
-        :param Description: The description of the group.
+        :param _Description: The description of the group.
         :type Description: str
-        :param RoleType: Whether you are the owner of the consortium or not.
+        :param _RoleType: Whether you are the owner of the consortium or not.
         :type RoleType: int
-        :param ChainId: The chain ID.
+        :param _ChainId: The chain ID.
         :type ChainId: str
         """
-        self.GroupId = None
-        self.NodeCount = None
-        self.NodeCountOfAgency = None
-        self.Description = None
-        self.RoleType = None
-        self.ChainId = None
+        self._GroupId = None
+        self._NodeCount = None
+        self._NodeCountOfAgency = None
+        self._Description = None
+        self._RoleType = None
+        self._ChainId = None
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def NodeCount(self):
+        return self._NodeCount
+
+    @NodeCount.setter
+    def NodeCount(self, NodeCount):
+        self._NodeCount = NodeCount
+
+    @property
+    def NodeCountOfAgency(self):
+        return self._NodeCountOfAgency
+
+    @NodeCountOfAgency.setter
+    def NodeCountOfAgency(self, NodeCountOfAgency):
+        self._NodeCountOfAgency = NodeCountOfAgency
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def RoleType(self):
+        return self._RoleType
+
+    @RoleType.setter
+    def RoleType(self, RoleType):
+        self._RoleType = RoleType
+
+    @property
+    def ChainId(self):
+        return self._ChainId
+
+    @ChainId.setter
+    def ChainId(self, ChainId):
+        self._ChainId = ChainId
 
 
     def _deserialize(self, params):
-        self.GroupId = params.get("GroupId")
-        self.NodeCount = params.get("NodeCount")
-        self.NodeCountOfAgency = params.get("NodeCountOfAgency")
-        self.Description = params.get("Description")
-        self.RoleType = params.get("RoleType")
-        self.ChainId = params.get("ChainId")
+        self._GroupId = params.get("GroupId")
+        self._NodeCount = params.get("NodeCount")
+        self._NodeCountOfAgency = params.get("NodeCountOfAgency")
+        self._Description = params.get("Description")
+        self._RoleType = params.get("RoleType")
+        self._ChainId = params.get("ChainId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2982,34 +5680,75 @@ class Identity(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AccountIdentifier: The account identifier.
+        :param _AccountIdentifier: The account identifier.
         :type AccountIdentifier: str
-        :param ChainID: The chain ID.
+        :param _ChainID: The chain ID.
         :type ChainID: str
-        :param Did: The DID.
+        :param _Did: The DID.
         :type Did: str
-        :param GroupId: The group ID.
+        :param _GroupId: The group ID.
         :type GroupId: int
-        :param GroupName: The group name.
+        :param _GroupName: The group name.
         :type GroupName: str
         """
-        self.AccountIdentifier = None
-        self.ChainID = None
-        self.Did = None
-        self.GroupId = None
-        self.GroupName = None
+        self._AccountIdentifier = None
+        self._ChainID = None
+        self._Did = None
+        self._GroupId = None
+        self._GroupName = None
+
+    @property
+    def AccountIdentifier(self):
+        return self._AccountIdentifier
+
+    @AccountIdentifier.setter
+    def AccountIdentifier(self, AccountIdentifier):
+        self._AccountIdentifier = AccountIdentifier
+
+    @property
+    def ChainID(self):
+        return self._ChainID
+
+    @ChainID.setter
+    def ChainID(self, ChainID):
+        self._ChainID = ChainID
+
+    @property
+    def Did(self):
+        return self._Did
+
+    @Did.setter
+    def Did(self, Did):
+        self._Did = Did
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
 
 
     def _deserialize(self, params):
-        self.AccountIdentifier = params.get("AccountIdentifier")
-        self.ChainID = params.get("ChainID")
-        self.Did = params.get("Did")
-        self.GroupId = params.get("GroupId")
-        self.GroupName = params.get("GroupName")
+        self._AccountIdentifier = params.get("AccountIdentifier")
+        self._ChainID = params.get("ChainID")
+        self._Did = params.get("Did")
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3022,42 +5761,99 @@ class Label(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LabelId: The label ID.
+        :param _LabelId: The label ID.
         :type LabelId: int
-        :param LabelName: The label name.
+        :param _LabelName: The label name.
         :type LabelName: str
-        :param DidCount: The number of DIDs.
+        :param _DidCount: The number of DIDs.
         :type DidCount: int
-        :param Did: The DID of the creator.
+        :param _Did: The DID of the creator.
         :type Did: str
-        :param ClusterId: The network ID.
+        :param _ClusterId: The network ID.
         :type ClusterId: str
-        :param CreateTime: The creation time.
+        :param _CreateTime: The creation time.
         :type CreateTime: str
-        :param GroupId: The group ID.
+        :param _GroupId: The group ID.
         :type GroupId: int
         """
-        self.LabelId = None
-        self.LabelName = None
-        self.DidCount = None
-        self.Did = None
-        self.ClusterId = None
-        self.CreateTime = None
-        self.GroupId = None
+        self._LabelId = None
+        self._LabelName = None
+        self._DidCount = None
+        self._Did = None
+        self._ClusterId = None
+        self._CreateTime = None
+        self._GroupId = None
+
+    @property
+    def LabelId(self):
+        return self._LabelId
+
+    @LabelId.setter
+    def LabelId(self, LabelId):
+        self._LabelId = LabelId
+
+    @property
+    def LabelName(self):
+        return self._LabelName
+
+    @LabelName.setter
+    def LabelName(self, LabelName):
+        self._LabelName = LabelName
+
+    @property
+    def DidCount(self):
+        return self._DidCount
+
+    @DidCount.setter
+    def DidCount(self, DidCount):
+        self._DidCount = DidCount
+
+    @property
+    def Did(self):
+        return self._Did
+
+    @Did.setter
+    def Did(self, Did):
+        self._Did = Did
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
 
 
     def _deserialize(self, params):
-        self.LabelId = params.get("LabelId")
-        self.LabelName = params.get("LabelName")
-        self.DidCount = params.get("DidCount")
-        self.Did = params.get("Did")
-        self.ClusterId = params.get("ClusterId")
-        self.CreateTime = params.get("CreateTime")
-        self.GroupId = params.get("GroupId")
+        self._LabelId = params.get("LabelId")
+        self._LabelName = params.get("LabelName")
+        self._DidCount = params.get("DidCount")
+        self._Did = params.get("Did")
+        self._ClusterId = params.get("ClusterId")
+        self._CreateTime = params.get("CreateTime")
+        self._GroupId = params.get("GroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3070,70 +5866,183 @@ class Policy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: The policy index.
+        :param _Id: The policy index.
         :type Id: int
-        :param Name: The policy name.
+        :param _Name: The policy name.
         :type Name: str
-        :param ClusterId: The network ID.
+        :param _ClusterId: The network ID.
         :type ClusterId: str
-        :param GroupId: The group ID.
+        :param _GroupId: The group ID.
         :type GroupId: int
-        :param ServiceId: The service ID.
+        :param _ServiceId: The service ID.
         :type ServiceId: int
-        :param ContractAppId: The application ID of the contract.
+        :param _ContractAppId: The application ID of the contract.
         :type ContractAppId: int
-        :param PolicyId: The policy ID.
+        :param _PolicyId: The policy ID.
         :type PolicyId: int
-        :param CptId: The claim protocol type (CPT) ID.
+        :param _CptId: The claim protocol type (CPT) ID.
         :type CptId: int
-        :param PolicyJson: The JSON data.
+        :param _PolicyJson: The JSON data.
         :type PolicyJson: str
-        :param CreateTime: The creation time.
+        :param _CreateTime: The creation time.
         :type CreateTime: str
-        :param UpdateTime: The last updated time.
+        :param _UpdateTime: The last updated time.
         :type UpdateTime: str
-        :param CreatorDid: The DID of the creator.
+        :param _CreatorDid: The DID of the creator.
         :type CreatorDid: str
-        :param AppName: The application name.
+        :param _AppName: The application name.
         :type AppName: str
-        :param CptIndex: The claim protocol type (CPT) index.
+        :param _CptIndex: The claim protocol type (CPT) index.
         :type CptIndex: int
         """
-        self.Id = None
-        self.Name = None
-        self.ClusterId = None
-        self.GroupId = None
-        self.ServiceId = None
-        self.ContractAppId = None
-        self.PolicyId = None
-        self.CptId = None
-        self.PolicyJson = None
-        self.CreateTime = None
-        self.UpdateTime = None
-        self.CreatorDid = None
-        self.AppName = None
-        self.CptIndex = None
+        self._Id = None
+        self._Name = None
+        self._ClusterId = None
+        self._GroupId = None
+        self._ServiceId = None
+        self._ContractAppId = None
+        self._PolicyId = None
+        self._CptId = None
+        self._PolicyJson = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._CreatorDid = None
+        self._AppName = None
+        self._CptIndex = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def ContractAppId(self):
+        return self._ContractAppId
+
+    @ContractAppId.setter
+    def ContractAppId(self, ContractAppId):
+        self._ContractAppId = ContractAppId
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def CptId(self):
+        return self._CptId
+
+    @CptId.setter
+    def CptId(self, CptId):
+        self._CptId = CptId
+
+    @property
+    def PolicyJson(self):
+        return self._PolicyJson
+
+    @PolicyJson.setter
+    def PolicyJson(self, PolicyJson):
+        self._PolicyJson = PolicyJson
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def CreatorDid(self):
+        return self._CreatorDid
+
+    @CreatorDid.setter
+    def CreatorDid(self, CreatorDid):
+        self._CreatorDid = CreatorDid
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def CptIndex(self):
+        return self._CptIndex
+
+    @CptIndex.setter
+    def CptIndex(self, CptIndex):
+        self._CptIndex = CptIndex
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.Name = params.get("Name")
-        self.ClusterId = params.get("ClusterId")
-        self.GroupId = params.get("GroupId")
-        self.ServiceId = params.get("ServiceId")
-        self.ContractAppId = params.get("ContractAppId")
-        self.PolicyId = params.get("PolicyId")
-        self.CptId = params.get("CptId")
-        self.PolicyJson = params.get("PolicyJson")
-        self.CreateTime = params.get("CreateTime")
-        self.UpdateTime = params.get("UpdateTime")
-        self.CreatorDid = params.get("CreatorDid")
-        self.AppName = params.get("AppName")
-        self.CptIndex = params.get("CptIndex")
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._ClusterId = params.get("ClusterId")
+        self._GroupId = params.get("GroupId")
+        self._ServiceId = params.get("ServiceId")
+        self._ContractAppId = params.get("ContractAppId")
+        self._PolicyId = params.get("PolicyId")
+        self._CptId = params.get("CptId")
+        self._PolicyJson = params.get("PolicyJson")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._CreatorDid = params.get("CreatorDid")
+        self._AppName = params.get("AppName")
+        self._CptIndex = params.get("CptIndex")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3146,34 +6055,75 @@ class Proof(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Created: The creation time.
+        :param _Created: The creation time.
         :type Created: int
-        :param Creator: The DID of the creator.
+        :param _Creator: The DID of the creator.
         :type Creator: str
-        :param SaltJson: The salt value.
+        :param _SaltJson: The salt value.
         :type SaltJson: str
-        :param SignatureValue: The signature.
+        :param _SignatureValue: The signature.
         :type SignatureValue: str
-        :param Type: The type.
+        :param _Type: The type.
         :type Type: str
         """
-        self.Created = None
-        self.Creator = None
-        self.SaltJson = None
-        self.SignatureValue = None
-        self.Type = None
+        self._Created = None
+        self._Creator = None
+        self._SaltJson = None
+        self._SignatureValue = None
+        self._Type = None
+
+    @property
+    def Created(self):
+        return self._Created
+
+    @Created.setter
+    def Created(self, Created):
+        self._Created = Created
+
+    @property
+    def Creator(self):
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
+    @property
+    def SaltJson(self):
+        return self._SaltJson
+
+    @SaltJson.setter
+    def SaltJson(self, SaltJson):
+        self._SaltJson = SaltJson
+
+    @property
+    def SignatureValue(self):
+        return self._SignatureValue
+
+    @SignatureValue.setter
+    def SignatureValue(self, SignatureValue):
+        self._SignatureValue = SignatureValue
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
 
 
     def _deserialize(self, params):
-        self.Created = params.get("Created")
-        self.Creator = params.get("Creator")
-        self.SaltJson = params.get("SaltJson")
-        self.SignatureValue = params.get("SignatureValue")
-        self.Type = params.get("Type")
+        self._Created = params.get("Created")
+        self._Creator = params.get("Creator")
+        self._SaltJson = params.get("SaltJson")
+        self._SignatureValue = params.get("SignatureValue")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3186,18 +6136,27 @@ class QueryPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PolicyIndex: The policy index.
+        :param _PolicyIndex: The policy index.
         :type PolicyIndex: int
         """
-        self.PolicyIndex = None
+        self._PolicyIndex = None
+
+    @property
+    def PolicyIndex(self):
+        return self._PolicyIndex
+
+    @PolicyIndex.setter
+    def PolicyIndex(self, PolicyIndex):
+        self._PolicyIndex = PolicyIndex
 
 
     def _deserialize(self, params):
-        self.PolicyIndex = params.get("PolicyIndex")
+        self._PolicyIndex = params.get("PolicyIndex")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3210,30 +6169,70 @@ class QueryPolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: The policy index.
+        :param _Id: The policy index.
         :type Id: int
-        :param PolicyId: The policy ID.
+        :param _PolicyId: The policy ID.
         :type PolicyId: int
-        :param CptId: The claim protocol type (CPT) ID.
+        :param _CptId: The claim protocol type (CPT) ID.
         :type CptId: int
-        :param PolicyData: The content of the policy.
+        :param _PolicyData: The content of the policy.
         :type PolicyData: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Id = None
-        self.PolicyId = None
-        self.CptId = None
-        self.PolicyData = None
-        self.RequestId = None
+        self._Id = None
+        self._PolicyId = None
+        self._CptId = None
+        self._PolicyData = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def CptId(self):
+        return self._CptId
+
+    @CptId.setter
+    def CptId(self, CptId):
+        self._CptId = CptId
+
+    @property
+    def PolicyData(self):
+        return self._PolicyData
+
+    @PolicyData.setter
+    def PolicyData(self, PolicyData):
+        self._PolicyData = PolicyData
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.PolicyId = params.get("PolicyId")
-        self.CptId = params.get("CptId")
-        self.PolicyData = params.get("PolicyData")
-        self.RequestId = params.get("RequestId")
+        self._Id = params.get("Id")
+        self._PolicyId = params.get("PolicyId")
+        self._CptId = params.get("CptId")
+        self._PolicyData = params.get("PolicyData")
+        self._RequestId = params.get("RequestId")
 
 
 class RecognizeAuthorityIssuerRequest(AbstractModel):
@@ -3243,18 +6242,27 @@ class RecognizeAuthorityIssuerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Did: The DID.
+        :param _Did: The DID.
         :type Did: str
         """
-        self.Did = None
+        self._Did = None
+
+    @property
+    def Did(self):
+        return self._Did
+
+    @Did.setter
+    def Did(self, Did):
+        self._Did = Did
 
 
     def _deserialize(self, params):
-        self.Did = params.get("Did")
+        self._Did = params.get("Did")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3267,14 +6275,22 @@ class RecognizeAuthorityIssuerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class RegisterClaimPolicyRequest(AbstractModel):
@@ -3284,22 +6300,39 @@ class RegisterClaimPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CptIndex: The claim protocol type (CPT) index.
+        :param _CptIndex: The claim protocol type (CPT) index.
         :type CptIndex: int
-        :param Policy: The disclosure policy.
+        :param _Policy: The disclosure policy.
         :type Policy: str
         """
-        self.CptIndex = None
-        self.Policy = None
+        self._CptIndex = None
+        self._Policy = None
+
+    @property
+    def CptIndex(self):
+        return self._CptIndex
+
+    @CptIndex.setter
+    def CptIndex(self, CptIndex):
+        self._CptIndex = CptIndex
+
+    @property
+    def Policy(self):
+        return self._Policy
+
+    @Policy.setter
+    def Policy(self, Policy):
+        self._Policy = Policy
 
 
     def _deserialize(self, params):
-        self.CptIndex = params.get("CptIndex")
-        self.Policy = params.get("Policy")
+        self._CptIndex = params.get("CptIndex")
+        self._Policy = params.get("Policy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3312,22 +6345,46 @@ class RegisterClaimPolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: The policy index.
+        :param _Id: The policy index.
         :type Id: int
-        :param PolicyId: The policy ID.
+        :param _PolicyId: The policy ID.
         :type PolicyId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Id = None
-        self.PolicyId = None
-        self.RequestId = None
+        self._Id = None
+        self._PolicyId = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.PolicyId = params.get("PolicyId")
-        self.RequestId = params.get("RequestId")
+        self._Id = params.get("Id")
+        self._PolicyId = params.get("PolicyId")
+        self._RequestId = params.get("RequestId")
 
 
 class RegisterCptRequest(AbstractModel):
@@ -3337,30 +6394,63 @@ class RegisterCptRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupId: The group ID.
+        :param _GroupId: The group ID.
         :type GroupId: int
-        :param ClusterId: The network ID.
+        :param _ClusterId: The network ID.
         :type ClusterId: str
-        :param CptJson: The JSON data of the credential claim type (CPT).
+        :param _CptJson: The JSON data of the credential claim type (CPT).
         :type CptJson: str
-        :param CptId: If you do not specify this, the ID will auto increment.
+        :param _CptId: If you do not specify this, the ID will auto increment.
         :type CptId: int
         """
-        self.GroupId = None
-        self.ClusterId = None
-        self.CptJson = None
-        self.CptId = None
+        self._GroupId = None
+        self._ClusterId = None
+        self._CptJson = None
+        self._CptId = None
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def CptJson(self):
+        return self._CptJson
+
+    @CptJson.setter
+    def CptJson(self, CptJson):
+        self._CptJson = CptJson
+
+    @property
+    def CptId(self):
+        return self._CptId
+
+    @CptId.setter
+    def CptId(self, CptId):
+        self._CptId = CptId
 
 
     def _deserialize(self, params):
-        self.GroupId = params.get("GroupId")
-        self.ClusterId = params.get("ClusterId")
-        self.CptJson = params.get("CptJson")
-        self.CptId = params.get("CptId")
+        self._GroupId = params.get("GroupId")
+        self._ClusterId = params.get("ClusterId")
+        self._CptJson = params.get("CptJson")
+        self._CptId = params.get("CptId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3373,22 +6463,46 @@ class RegisterCptResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: The claim protocol type (CPT) index.
+        :param _Id: The claim protocol type (CPT) index.
         :type Id: int
-        :param CptId: The claim protocol type (CPT) ID.
+        :param _CptId: The claim protocol type (CPT) ID.
         :type CptId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Id = None
-        self.CptId = None
-        self.RequestId = None
+        self._Id = None
+        self._CptId = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def CptId(self):
+        return self._CptId
+
+    @CptId.setter
+    def CptId(self, CptId):
+        self._CptId = CptId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.CptId = params.get("CptId")
-        self.RequestId = params.get("RequestId")
+        self._Id = params.get("Id")
+        self._CptId = params.get("CptId")
+        self._RequestId = params.get("RequestId")
 
 
 class RegisterIssuerRequest(AbstractModel):
@@ -3398,26 +6512,51 @@ class RegisterIssuerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Did: The DID.
+        :param _Did: The DID.
         :type Did: str
-        :param Name: The issuing authority name.
+        :param _Name: The issuing authority name.
         :type Name: str
-        :param Description: Remarks
+        :param _Description: Remarks
         :type Description: str
         """
-        self.Did = None
-        self.Name = None
-        self.Description = None
+        self._Did = None
+        self._Name = None
+        self._Description = None
+
+    @property
+    def Did(self):
+        return self._Did
+
+    @Did.setter
+    def Did(self, Did):
+        self._Did = Did
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
 
     def _deserialize(self, params):
-        self.Did = params.get("Did")
-        self.Name = params.get("Name")
-        self.Description = params.get("Description")
+        self._Did = params.get("Did")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3430,14 +6569,22 @@ class RegisterIssuerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class RemoveHashRequest(AbstractModel):
@@ -3447,18 +6594,27 @@ class RemoveHashRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Hash: The CNS address of the contract.
+        :param _Hash: The CNS address of the contract.
         :type Hash: str
         """
-        self.Hash = None
+        self._Hash = None
+
+    @property
+    def Hash(self):
+        return self._Hash
+
+    @Hash.setter
+    def Hash(self, Hash):
+        self._Hash = Hash
 
 
     def _deserialize(self, params):
-        self.Hash = params.get("Hash")
+        self._Hash = params.get("Hash")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3471,14 +6627,22 @@ class RemoveHashResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class SetCredentialStatusRequest(AbstractModel):
@@ -3488,20 +6652,29 @@ class SetCredentialStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CredentialStatus: The credential status.
+        :param _CredentialStatus: The credential status.
         :type CredentialStatus: :class:`tencentcloud.tdid.v20210519.models.CredentialStatus`
         """
-        self.CredentialStatus = None
+        self._CredentialStatus = None
+
+    @property
+    def CredentialStatus(self):
+        return self._CredentialStatus
+
+    @CredentialStatus.setter
+    def CredentialStatus(self, CredentialStatus):
+        self._CredentialStatus = CredentialStatus
 
 
     def _deserialize(self, params):
         if params.get("CredentialStatus") is not None:
-            self.CredentialStatus = CredentialStatus()
-            self.CredentialStatus._deserialize(params.get("CredentialStatus"))
+            self._CredentialStatus = CredentialStatus()
+            self._CredentialStatus._deserialize(params.get("CredentialStatus"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3514,14 +6687,22 @@ class SetCredentialStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class Task(AbstractModel):
@@ -3531,54 +6712,135 @@ class Task(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: The task ID.
+        :param _Id: The task ID.
         :type Id: int
-        :param AppId: The application ID.
+        :param _AppId: The application ID.
         :type AppId: int
-        :param ClusterId: The network ID.
+        :param _ClusterId: The network ID.
         :type ClusterId: str
-        :param GroupId: The group ID.
+        :param _GroupId: The group ID.
         :type GroupId: int
-        :param ServiceId: The service ID.
+        :param _ServiceId: The service ID.
         :type ServiceId: int
-        :param Status: `0`: Under deployment; `1`: Deployed successfully; other values: Deployment failed.
+        :param _Status: `0`: Under deployment; `1`: Deployed successfully; other values: Deployment failed.
         :type Status: int
-        :param ErrorCode: The error code.
+        :param _ErrorCode: The error code.
         :type ErrorCode: str
-        :param ErrorMsg: The error message.
+        :param _ErrorMsg: The error message.
         :type ErrorMsg: str
-        :param CreateTime: The creation time.
+        :param _CreateTime: The creation time.
         :type CreateTime: str
-        :param UpdateTime: The last updated time.
+        :param _UpdateTime: The last updated time.
         :type UpdateTime: str
         """
-        self.Id = None
-        self.AppId = None
-        self.ClusterId = None
-        self.GroupId = None
-        self.ServiceId = None
-        self.Status = None
-        self.ErrorCode = None
-        self.ErrorMsg = None
-        self.CreateTime = None
-        self.UpdateTime = None
+        self._Id = None
+        self._AppId = None
+        self._ClusterId = None
+        self._GroupId = None
+        self._ServiceId = None
+        self._Status = None
+        self._ErrorCode = None
+        self._ErrorMsg = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrorCode(self):
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.AppId = params.get("AppId")
-        self.ClusterId = params.get("ClusterId")
-        self.GroupId = params.get("GroupId")
-        self.ServiceId = params.get("ServiceId")
-        self.Status = params.get("Status")
-        self.ErrorCode = params.get("ErrorCode")
-        self.ErrorMsg = params.get("ErrorMsg")
-        self.CreateTime = params.get("CreateTime")
-        self.UpdateTime = params.get("UpdateTime")
+        self._Id = params.get("Id")
+        self._AppId = params.get("AppId")
+        self._ClusterId = params.get("ClusterId")
+        self._GroupId = params.get("GroupId")
+        self._ServiceId = params.get("ServiceId")
+        self._Status = params.get("Status")
+        self._ErrorCode = params.get("ErrorCode")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3591,18 +6853,27 @@ class TransactionArg(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InvokerTDid: The credential ID.
+        :param _InvokerTDid: The credential ID.
         :type InvokerTDid: str
         """
-        self.InvokerTDid = None
+        self._InvokerTDid = None
+
+    @property
+    def InvokerTDid(self):
+        return self._InvokerTDid
+
+    @InvokerTDid.setter
+    def InvokerTDid(self, InvokerTDid):
+        self._InvokerTDid = InvokerTDid
 
 
     def _deserialize(self, params):
-        self.InvokerTDid = params.get("InvokerTDid")
+        self._InvokerTDid = params.get("InvokerTDid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3615,22 +6886,39 @@ class Trend(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Time: The time point.
+        :param _Time: The time point.
         :type Time: str
-        :param Count: The count.
+        :param _Count: The count.
         :type Count: int
         """
-        self.Time = None
-        self.Count = None
+        self._Time = None
+        self._Count = None
+
+    @property
+    def Time(self):
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
 
 
     def _deserialize(self, params):
-        self.Time = params.get("Time")
-        self.Count = params.get("Count")
+        self._Time = params.get("Time")
+        self._Count = params.get("Count")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3643,20 +6931,29 @@ class VerifyCredentialRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FunctionArg: A parameter set.
+        :param _FunctionArg: A parameter set.
         :type FunctionArg: :class:`tencentcloud.tdid.v20210519.models.VerifyFunctionArg`
         """
-        self.FunctionArg = None
+        self._FunctionArg = None
+
+    @property
+    def FunctionArg(self):
+        return self._FunctionArg
+
+    @FunctionArg.setter
+    def FunctionArg(self, FunctionArg):
+        self._FunctionArg = FunctionArg
 
 
     def _deserialize(self, params):
         if params.get("FunctionArg") is not None:
-            self.FunctionArg = VerifyFunctionArg()
-            self.FunctionArg._deserialize(params.get("FunctionArg"))
+            self._FunctionArg = VerifyFunctionArg()
+            self._FunctionArg._deserialize(params.get("FunctionArg"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3669,26 +6966,58 @@ class VerifyCredentialResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Whether the verification is successful.
+        :param _Result: Whether the verification is successful.
         :type Result: bool
-        :param VerifyCode: The verification code.
+        :param _VerifyCode: The verification code.
         :type VerifyCode: int
-        :param VerifyMessage: The verification message.
+        :param _VerifyMessage: The verification message.
         :type VerifyMessage: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.VerifyCode = None
-        self.VerifyMessage = None
-        self.RequestId = None
+        self._Result = None
+        self._VerifyCode = None
+        self._VerifyMessage = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def VerifyCode(self):
+        return self._VerifyCode
+
+    @VerifyCode.setter
+    def VerifyCode(self, VerifyCode):
+        self._VerifyCode = VerifyCode
+
+    @property
+    def VerifyMessage(self):
+        return self._VerifyMessage
+
+    @VerifyMessage.setter
+    def VerifyMessage(self, VerifyMessage):
+        self._VerifyMessage = VerifyMessage
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.VerifyCode = params.get("VerifyCode")
-        self.VerifyMessage = params.get("VerifyMessage")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._VerifyCode = params.get("VerifyCode")
+        self._VerifyMessage = params.get("VerifyMessage")
+        self._RequestId = params.get("RequestId")
 
 
 class VerifyFunctionArg(AbstractModel):
@@ -3698,52 +7027,125 @@ class VerifyFunctionArg(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CptId: The claim protocol type (CPT) ID.
+        :param _CptId: The claim protocol type (CPT) ID.
         :type CptId: int
-        :param Issuer: The issuer DID.
+        :param _Issuer: The issuer DID.
         :type Issuer: str
-        :param ExpirationDate: The expiration time.
+        :param _ExpirationDate: The expiration time.
         :type ExpirationDate: int
-        :param ClaimJson: The claim.
+        :param _ClaimJson: The claim.
         :type ClaimJson: str
-        :param IssuanceDate: The time when the credential was issued.
+        :param _IssuanceDate: The time when the credential was issued.
         :type IssuanceDate: int
-        :param Context: The context.
+        :param _Context: The context.
         :type Context: str
-        :param Id: The ID.
+        :param _Id: The ID.
         :type Id: str
-        :param Proof: The signature.
+        :param _Proof: The signature.
         :type Proof: :class:`tencentcloud.tdid.v20210519.models.Proof`
-        :param Type: The type.
+        :param _Type: The type.
         :type Type: list of str
         """
-        self.CptId = None
-        self.Issuer = None
-        self.ExpirationDate = None
-        self.ClaimJson = None
-        self.IssuanceDate = None
-        self.Context = None
-        self.Id = None
-        self.Proof = None
-        self.Type = None
+        self._CptId = None
+        self._Issuer = None
+        self._ExpirationDate = None
+        self._ClaimJson = None
+        self._IssuanceDate = None
+        self._Context = None
+        self._Id = None
+        self._Proof = None
+        self._Type = None
+
+    @property
+    def CptId(self):
+        return self._CptId
+
+    @CptId.setter
+    def CptId(self, CptId):
+        self._CptId = CptId
+
+    @property
+    def Issuer(self):
+        return self._Issuer
+
+    @Issuer.setter
+    def Issuer(self, Issuer):
+        self._Issuer = Issuer
+
+    @property
+    def ExpirationDate(self):
+        return self._ExpirationDate
+
+    @ExpirationDate.setter
+    def ExpirationDate(self, ExpirationDate):
+        self._ExpirationDate = ExpirationDate
+
+    @property
+    def ClaimJson(self):
+        return self._ClaimJson
+
+    @ClaimJson.setter
+    def ClaimJson(self, ClaimJson):
+        self._ClaimJson = ClaimJson
+
+    @property
+    def IssuanceDate(self):
+        return self._IssuanceDate
+
+    @IssuanceDate.setter
+    def IssuanceDate(self, IssuanceDate):
+        self._IssuanceDate = IssuanceDate
+
+    @property
+    def Context(self):
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Proof(self):
+        return self._Proof
+
+    @Proof.setter
+    def Proof(self, Proof):
+        self._Proof = Proof
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
 
 
     def _deserialize(self, params):
-        self.CptId = params.get("CptId")
-        self.Issuer = params.get("Issuer")
-        self.ExpirationDate = params.get("ExpirationDate")
-        self.ClaimJson = params.get("ClaimJson")
-        self.IssuanceDate = params.get("IssuanceDate")
-        self.Context = params.get("Context")
-        self.Id = params.get("Id")
+        self._CptId = params.get("CptId")
+        self._Issuer = params.get("Issuer")
+        self._ExpirationDate = params.get("ExpirationDate")
+        self._ClaimJson = params.get("ClaimJson")
+        self._IssuanceDate = params.get("IssuanceDate")
+        self._Context = params.get("Context")
+        self._Id = params.get("Id")
         if params.get("Proof") is not None:
-            self.Proof = Proof()
-            self.Proof._deserialize(params.get("Proof"))
-        self.Type = params.get("Type")
+            self._Proof = Proof()
+            self._Proof._deserialize(params.get("Proof"))
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

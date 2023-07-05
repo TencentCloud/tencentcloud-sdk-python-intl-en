@@ -25,89 +25,194 @@ class AddEcdnDomainRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Domain: Domain name.
+        :param _Domain: Domain name.
         :type Domain: str
-        :param Origin: Origin server configuration.
+        :param _Origin: Origin server configuration.
         :type Origin: :class:`tencentcloud.ecdn.v20191012.models.Origin`
-        :param Area: Domain name acceleration region. Valid values: mainland (acceleration in Mainland China), overseas (acceleration outside Mainland China), global (global acceleration).
+        :param _Area: Domain name acceleration region. Valid values: mainland (acceleration in Mainland China), overseas (acceleration outside Mainland China), global (global acceleration).
         :type Area: str
-        :param ProjectId: Project ID. Default value: 0.
+        :param _ProjectId: Project ID. Default value: 0.
         :type ProjectId: int
-        :param IpFilter: IP block/allowlist configuration.
+        :param _IpFilter: IP block/allowlist configuration.
         :type IpFilter: :class:`tencentcloud.ecdn.v20191012.models.IpFilter`
-        :param IpFreqLimit: IP access limit configuration.
+        :param _IpFreqLimit: IP access limit configuration.
         :type IpFreqLimit: :class:`tencentcloud.ecdn.v20191012.models.IpFreqLimit`
-        :param ResponseHeader: Origin server response header configuration.
+        :param _ResponseHeader: Origin server response header configuration.
         :type ResponseHeader: :class:`tencentcloud.ecdn.v20191012.models.ResponseHeader`
-        :param CacheKey: Node caching configuration.
+        :param _CacheKey: Node caching configuration.
         :type CacheKey: :class:`tencentcloud.ecdn.v20191012.models.CacheKey`
-        :param Cache: Caching rule configuration.
+        :param _Cache: Caching rule configuration.
         :type Cache: :class:`tencentcloud.ecdn.v20191012.models.Cache`
-        :param Https: HTTPS configuration.
+        :param _Https: HTTPS configuration.
         :type Https: :class:`tencentcloud.ecdn.v20191012.models.Https`
-        :param ForceRedirect: Forced access protocol redirection configuration.
+        :param _ForceRedirect: Forced access protocol redirection configuration.
         :type ForceRedirect: :class:`tencentcloud.ecdn.v20191012.models.ForceRedirect`
-        :param Tag: Tag bound to a domain name.
+        :param _Tag: Tag bound to a domain name.
         :type Tag: list of Tag
-        :param WebSocket: WebSocket configuration.
+        :param _WebSocket: WebSocket configuration.
         :type WebSocket: :class:`tencentcloud.ecdn.v20191012.models.WebSocket`
         """
-        self.Domain = None
-        self.Origin = None
-        self.Area = None
-        self.ProjectId = None
-        self.IpFilter = None
-        self.IpFreqLimit = None
-        self.ResponseHeader = None
-        self.CacheKey = None
-        self.Cache = None
-        self.Https = None
-        self.ForceRedirect = None
-        self.Tag = None
-        self.WebSocket = None
+        self._Domain = None
+        self._Origin = None
+        self._Area = None
+        self._ProjectId = None
+        self._IpFilter = None
+        self._IpFreqLimit = None
+        self._ResponseHeader = None
+        self._CacheKey = None
+        self._Cache = None
+        self._Https = None
+        self._ForceRedirect = None
+        self._Tag = None
+        self._WebSocket = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Origin(self):
+        return self._Origin
+
+    @Origin.setter
+    def Origin(self, Origin):
+        self._Origin = Origin
+
+    @property
+    def Area(self):
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def IpFilter(self):
+        return self._IpFilter
+
+    @IpFilter.setter
+    def IpFilter(self, IpFilter):
+        self._IpFilter = IpFilter
+
+    @property
+    def IpFreqLimit(self):
+        return self._IpFreqLimit
+
+    @IpFreqLimit.setter
+    def IpFreqLimit(self, IpFreqLimit):
+        self._IpFreqLimit = IpFreqLimit
+
+    @property
+    def ResponseHeader(self):
+        return self._ResponseHeader
+
+    @ResponseHeader.setter
+    def ResponseHeader(self, ResponseHeader):
+        self._ResponseHeader = ResponseHeader
+
+    @property
+    def CacheKey(self):
+        return self._CacheKey
+
+    @CacheKey.setter
+    def CacheKey(self, CacheKey):
+        self._CacheKey = CacheKey
+
+    @property
+    def Cache(self):
+        return self._Cache
+
+    @Cache.setter
+    def Cache(self, Cache):
+        self._Cache = Cache
+
+    @property
+    def Https(self):
+        return self._Https
+
+    @Https.setter
+    def Https(self, Https):
+        self._Https = Https
+
+    @property
+    def ForceRedirect(self):
+        return self._ForceRedirect
+
+    @ForceRedirect.setter
+    def ForceRedirect(self, ForceRedirect):
+        self._ForceRedirect = ForceRedirect
+
+    @property
+    def Tag(self):
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def WebSocket(self):
+        return self._WebSocket
+
+    @WebSocket.setter
+    def WebSocket(self, WebSocket):
+        self._WebSocket = WebSocket
 
 
     def _deserialize(self, params):
-        self.Domain = params.get("Domain")
+        self._Domain = params.get("Domain")
         if params.get("Origin") is not None:
-            self.Origin = Origin()
-            self.Origin._deserialize(params.get("Origin"))
-        self.Area = params.get("Area")
-        self.ProjectId = params.get("ProjectId")
+            self._Origin = Origin()
+            self._Origin._deserialize(params.get("Origin"))
+        self._Area = params.get("Area")
+        self._ProjectId = params.get("ProjectId")
         if params.get("IpFilter") is not None:
-            self.IpFilter = IpFilter()
-            self.IpFilter._deserialize(params.get("IpFilter"))
+            self._IpFilter = IpFilter()
+            self._IpFilter._deserialize(params.get("IpFilter"))
         if params.get("IpFreqLimit") is not None:
-            self.IpFreqLimit = IpFreqLimit()
-            self.IpFreqLimit._deserialize(params.get("IpFreqLimit"))
+            self._IpFreqLimit = IpFreqLimit()
+            self._IpFreqLimit._deserialize(params.get("IpFreqLimit"))
         if params.get("ResponseHeader") is not None:
-            self.ResponseHeader = ResponseHeader()
-            self.ResponseHeader._deserialize(params.get("ResponseHeader"))
+            self._ResponseHeader = ResponseHeader()
+            self._ResponseHeader._deserialize(params.get("ResponseHeader"))
         if params.get("CacheKey") is not None:
-            self.CacheKey = CacheKey()
-            self.CacheKey._deserialize(params.get("CacheKey"))
+            self._CacheKey = CacheKey()
+            self._CacheKey._deserialize(params.get("CacheKey"))
         if params.get("Cache") is not None:
-            self.Cache = Cache()
-            self.Cache._deserialize(params.get("Cache"))
+            self._Cache = Cache()
+            self._Cache._deserialize(params.get("Cache"))
         if params.get("Https") is not None:
-            self.Https = Https()
-            self.Https._deserialize(params.get("Https"))
+            self._Https = Https()
+            self._Https._deserialize(params.get("Https"))
         if params.get("ForceRedirect") is not None:
-            self.ForceRedirect = ForceRedirect()
-            self.ForceRedirect._deserialize(params.get("ForceRedirect"))
+            self._ForceRedirect = ForceRedirect()
+            self._ForceRedirect._deserialize(params.get("ForceRedirect"))
         if params.get("Tag") is not None:
-            self.Tag = []
+            self._Tag = []
             for item in params.get("Tag"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tag.append(obj)
+                self._Tag.append(obj)
         if params.get("WebSocket") is not None:
-            self.WebSocket = WebSocket()
-            self.WebSocket._deserialize(params.get("WebSocket"))
+            self._WebSocket = WebSocket()
+            self._WebSocket._deserialize(params.get("WebSocket"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -120,14 +225,22 @@ class AddEcdnDomainResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class AdvanceHttps(AbstractModel):
@@ -137,51 +250,100 @@ class AdvanceHttps(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CustomTlsStatus: Custom TLS data switch
+        :param _CustomTlsStatus: Custom TLS data switch
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type CustomTlsStatus: str
-        :param TlsVersion: TLS version settings. Valid values: `TLSv1`, `TLSV1.1`, `TLSV1.2`, and `TLSv1.3`. Only consecutive versions can be enabled at the same time.
+        :param _TlsVersion: TLS version settings. Valid values: `TLSv1`, `TLSV1.1`, `TLSV1.2`, and `TLSv1.3`. Only consecutive versions can be enabled at the same time.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type TlsVersion: list of str
-        :param Cipher: Custom encryption suite
+        :param _Cipher: Custom encryption suite
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Cipher: str
-        :param VerifyOriginType: Origin-pull verification status
+        :param _VerifyOriginType: Origin-pull verification status
 `off`: Disables origin-pull verification
 `oneWay`: Only verify the origin
 `twoWay`: Enables two-way origin-pull verification
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type VerifyOriginType: str
-        :param CertInfo: Configuration information of the origin-pull certificate
+        :param _CertInfo: Configuration information of the origin-pull certificate
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type CertInfo: :class:`tencentcloud.ecdn.v20191012.models.ServerCert`
-        :param OriginCertInfo: Configuration information of the origin server certificate
+        :param _OriginCertInfo: Configuration information of the origin server certificate
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type OriginCertInfo: :class:`tencentcloud.ecdn.v20191012.models.ClientCert`
         """
-        self.CustomTlsStatus = None
-        self.TlsVersion = None
-        self.Cipher = None
-        self.VerifyOriginType = None
-        self.CertInfo = None
-        self.OriginCertInfo = None
+        self._CustomTlsStatus = None
+        self._TlsVersion = None
+        self._Cipher = None
+        self._VerifyOriginType = None
+        self._CertInfo = None
+        self._OriginCertInfo = None
+
+    @property
+    def CustomTlsStatus(self):
+        return self._CustomTlsStatus
+
+    @CustomTlsStatus.setter
+    def CustomTlsStatus(self, CustomTlsStatus):
+        self._CustomTlsStatus = CustomTlsStatus
+
+    @property
+    def TlsVersion(self):
+        return self._TlsVersion
+
+    @TlsVersion.setter
+    def TlsVersion(self, TlsVersion):
+        self._TlsVersion = TlsVersion
+
+    @property
+    def Cipher(self):
+        return self._Cipher
+
+    @Cipher.setter
+    def Cipher(self, Cipher):
+        self._Cipher = Cipher
+
+    @property
+    def VerifyOriginType(self):
+        return self._VerifyOriginType
+
+    @VerifyOriginType.setter
+    def VerifyOriginType(self, VerifyOriginType):
+        self._VerifyOriginType = VerifyOriginType
+
+    @property
+    def CertInfo(self):
+        return self._CertInfo
+
+    @CertInfo.setter
+    def CertInfo(self, CertInfo):
+        self._CertInfo = CertInfo
+
+    @property
+    def OriginCertInfo(self):
+        return self._OriginCertInfo
+
+    @OriginCertInfo.setter
+    def OriginCertInfo(self, OriginCertInfo):
+        self._OriginCertInfo = OriginCertInfo
 
 
     def _deserialize(self, params):
-        self.CustomTlsStatus = params.get("CustomTlsStatus")
-        self.TlsVersion = params.get("TlsVersion")
-        self.Cipher = params.get("Cipher")
-        self.VerifyOriginType = params.get("VerifyOriginType")
+        self._CustomTlsStatus = params.get("CustomTlsStatus")
+        self._TlsVersion = params.get("TlsVersion")
+        self._Cipher = params.get("Cipher")
+        self._VerifyOriginType = params.get("VerifyOriginType")
         if params.get("CertInfo") is not None:
-            self.CertInfo = ServerCert()
-            self.CertInfo._deserialize(params.get("CertInfo"))
+            self._CertInfo = ServerCert()
+            self._CertInfo._deserialize(params.get("CertInfo"))
         if params.get("OriginCertInfo") is not None:
-            self.OriginCertInfo = ClientCert()
-            self.OriginCertInfo._deserialize(params.get("OriginCertInfo"))
+            self._OriginCertInfo = ClientCert()
+            self._OriginCertInfo._deserialize(params.get("OriginCertInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -194,31 +356,48 @@ class Cache(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CacheRules: Caching configuration rule array.
+        :param _CacheRules: Caching configuration rule array.
         :type CacheRules: list of CacheRule
-        :param FollowOrigin: Whether to follow the `Cache-Control: max-age` configuration on the origin server (this feature is only available to users on the allowlist).
+        :param _FollowOrigin: Whether to follow the `Cache-Control: max-age` configuration on the origin server (this feature is only available to users on the allowlist).
 on: enable
 off: disable
 If it is enabled, resources that do not match `CacheRules` will be cached on node according to the `max-age` value returned by the origin server, while resources that match `CacheRules` will be cached on node according to the cache expiration time set in `CacheRules`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type FollowOrigin: str
         """
-        self.CacheRules = None
-        self.FollowOrigin = None
+        self._CacheRules = None
+        self._FollowOrigin = None
+
+    @property
+    def CacheRules(self):
+        return self._CacheRules
+
+    @CacheRules.setter
+    def CacheRules(self, CacheRules):
+        self._CacheRules = CacheRules
+
+    @property
+    def FollowOrigin(self):
+        return self._FollowOrigin
+
+    @FollowOrigin.setter
+    def FollowOrigin(self, FollowOrigin):
+        self._FollowOrigin = FollowOrigin
 
 
     def _deserialize(self, params):
         if params.get("CacheRules") is not None:
-            self.CacheRules = []
+            self._CacheRules = []
             for item in params.get("CacheRules"):
                 obj = CacheRule()
                 obj._deserialize(item)
-                self.CacheRules.append(obj)
-        self.FollowOrigin = params.get("FollowOrigin")
+                self._CacheRules.append(obj)
+        self._FollowOrigin = params.get("FollowOrigin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -231,18 +410,27 @@ class CacheKey(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FullUrlCache: Whether to enable full path cache. Valid values: on, off.
+        :param _FullUrlCache: Whether to enable full path cache. Valid values: on, off.
         :type FullUrlCache: str
         """
-        self.FullUrlCache = None
+        self._FullUrlCache = None
+
+    @property
+    def FullUrlCache(self):
+        return self._FullUrlCache
+
+    @FullUrlCache.setter
+    def FullUrlCache(self, FullUrlCache):
+        self._FullUrlCache = FullUrlCache
 
 
     def _deserialize(self, params):
-        self.FullUrlCache = params.get("FullUrlCache")
+        self._FullUrlCache = params.get("FullUrlCache")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -255,26 +443,51 @@ class CacheRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CacheType: Cache type. Valid values: all (all files), file (extension type), directory (directory), path (full path), index (homepage).
+        :param _CacheType: Cache type. Valid values: all (all files), file (extension type), directory (directory), path (full path), index (homepage).
         :type CacheType: str
-        :param CacheContents: Cached content list.
+        :param _CacheContents: Cached content list.
         :type CacheContents: list of str
-        :param CacheTime: Cache time in seconds.
+        :param _CacheTime: Cache time in seconds.
         :type CacheTime: int
         """
-        self.CacheType = None
-        self.CacheContents = None
-        self.CacheTime = None
+        self._CacheType = None
+        self._CacheContents = None
+        self._CacheTime = None
+
+    @property
+    def CacheType(self):
+        return self._CacheType
+
+    @CacheType.setter
+    def CacheType(self, CacheType):
+        self._CacheType = CacheType
+
+    @property
+    def CacheContents(self):
+        return self._CacheContents
+
+    @CacheContents.setter
+    def CacheContents(self, CacheContents):
+        self._CacheContents = CacheContents
+
+    @property
+    def CacheTime(self):
+        return self._CacheTime
+
+    @CacheTime.setter
+    def CacheTime(self, CacheTime):
+        self._CacheTime = CacheTime
 
 
     def _deserialize(self, params):
-        self.CacheType = params.get("CacheType")
-        self.CacheContents = params.get("CacheContents")
-        self.CacheTime = params.get("CacheTime")
+        self._CacheType = params.get("CacheType")
+        self._CacheContents = params.get("CacheContents")
+        self._CacheTime = params.get("CacheTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -287,34 +500,67 @@ class ClientCert(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Certificate: Client certificate in PEM format.
+        :param _Certificate: Client certificate in PEM format.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Certificate: str
-        :param CertName: Client certificate name.
+        :param _CertName: Client certificate name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CertName: str
-        :param ExpireTime: Certificate expiration time.
+        :param _ExpireTime: Certificate expiration time.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ExpireTime: str
-        :param DeployTime: Certificate issuance time.
+        :param _DeployTime: Certificate issuance time.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DeployTime: str
         """
-        self.Certificate = None
-        self.CertName = None
-        self.ExpireTime = None
-        self.DeployTime = None
+        self._Certificate = None
+        self._CertName = None
+        self._ExpireTime = None
+        self._DeployTime = None
+
+    @property
+    def Certificate(self):
+        return self._Certificate
+
+    @Certificate.setter
+    def Certificate(self, Certificate):
+        self._Certificate = Certificate
+
+    @property
+    def CertName(self):
+        return self._CertName
+
+    @CertName.setter
+    def CertName(self, CertName):
+        self._CertName = CertName
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def DeployTime(self):
+        return self._DeployTime
+
+    @DeployTime.setter
+    def DeployTime(self, DeployTime):
+        self._DeployTime = DeployTime
 
 
     def _deserialize(self, params):
-        self.Certificate = params.get("Certificate")
-        self.CertName = params.get("CertName")
-        self.ExpireTime = params.get("ExpireTime")
-        self.DeployTime = params.get("DeployTime")
+        self._Certificate = params.get("Certificate")
+        self._CertName = params.get("CertName")
+        self._ExpireTime = params.get("ExpireTime")
+        self._DeployTime = params.get("DeployTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -327,18 +573,27 @@ class DeleteEcdnDomainRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Domain: Domain name to be deleted.
+        :param _Domain: Domain name to be deleted.
         :type Domain: str
         """
-        self.Domain = None
+        self._Domain = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
 
 
     def _deserialize(self, params):
-        self.Domain = params.get("Domain")
+        self._Domain = params.get("Domain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -351,14 +606,22 @@ class DeleteEcdnDomainResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeDomainsConfigRequest(AbstractModel):
@@ -368,37 +631,70 @@ class DescribeDomainsConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: Pagination offset address. Default value: 0.
+        :param _Offset: Pagination offset address. Default value: 0.
         :type Offset: int
-        :param Limit: Number of domain names per page. Default value: 100.
+        :param _Limit: Number of domain names per page. Default value: 100.
         :type Limit: int
-        :param Filters: Query filter.
+        :param _Filters: Query filter.
         :type Filters: list of DomainFilter
-        :param Sort: Query result sorting rule.
+        :param _Sort: Query result sorting rule.
         :type Sort: :class:`tencentcloud.ecdn.v20191012.models.Sort`
         """
-        self.Offset = None
-        self.Limit = None
-        self.Filters = None
-        self.Sort = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+        self._Sort = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Sort(self):
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
 
 
     def _deserialize(self, params):
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = DomainFilter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
+                self._Filters.append(obj)
         if params.get("Sort") is not None:
-            self.Sort = Sort()
-            self.Sort._deserialize(params.get("Sort"))
+            self._Sort = Sort()
+            self._Sort._deserialize(params.get("Sort"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -411,27 +707,51 @@ class DescribeDomainsConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Domains: Domain name list.
+        :param _Domains: Domain name list.
         :type Domains: list of DomainDetailInfo
-        :param TotalCount: Number of matched domain names. This is used for paginated query.
+        :param _TotalCount: Number of matched domain names. This is used for paginated query.
         :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Domains = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._Domains = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Domains(self):
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Domains") is not None:
-            self.Domains = []
+            self._Domains = []
             for item in params.get("Domains"):
                 obj = DomainDetailInfo()
                 obj._deserialize(item)
-                self.Domains.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._Domains.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeDomainsRequest(AbstractModel):
@@ -441,31 +761,56 @@ class DescribeDomainsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: Pagination offset address. Default value: 0.
+        :param _Offset: Pagination offset address. Default value: 0.
         :type Offset: int
-        :param Limit: Number of domain names per page. Default value: 100. Maximum value: 1000.
+        :param _Limit: Number of domain names per page. Default value: 100. Maximum value: 1000.
         :type Limit: int
-        :param Filters: Query filter.
+        :param _Filters: Query filter.
         :type Filters: list of DomainFilter
         """
-        self.Offset = None
-        self.Limit = None
-        self.Filters = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
 
     def _deserialize(self, params):
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = DomainFilter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -478,27 +823,51 @@ class DescribeDomainsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Domains: Domain name information list.
+        :param _Domains: Domain name information list.
         :type Domains: list of DomainBriefInfo
-        :param TotalCount: Total number of domain names.
+        :param _TotalCount: Total number of domain names.
         :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Domains = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._Domains = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Domains(self):
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Domains") is not None:
-            self.Domains = []
+            self._Domains = []
             for item in params.get("Domains"):
                 obj = DomainBriefInfo()
                 obj._deserialize(item)
-                self.Domains.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._Domains.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeEcdnDomainLogsRequest(AbstractModel):
@@ -508,34 +877,75 @@ class DescribeEcdnDomainLogsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Domain: Domain name to be queried.
+        :param _Domain: Domain name to be queried.
         :type Domain: str
-        :param StartTime: Log start time, such as 2019-10-01 00:00:00
+        :param _StartTime: Log start time, such as 2019-10-01 00:00:00
         :type StartTime: str
-        :param EndTime: Log end time, such as 2019-10-02 00:00:00. Only logs for the last 30 days can be queried.
+        :param _EndTime: Log end time, such as 2019-10-02 00:00:00. Only logs for the last 30 days can be queried.
         :type EndTime: str
-        :param Offset: Pagination offset for log link list. Default value: 0.
+        :param _Offset: Pagination offset for log link list. Default value: 0.
         :type Offset: int
-        :param Limit: Number of log links per page. Default value: 100. Maximum value: 1000.
+        :param _Limit: Number of log links per page. Default value: 100. Maximum value: 1000.
         :type Limit: int
         """
-        self.Domain = None
-        self.StartTime = None
-        self.EndTime = None
-        self.Offset = None
-        self.Limit = None
+        self._Domain = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.Domain = params.get("Domain")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+        self._Domain = params.get("Domain")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -548,28 +958,52 @@ class DescribeEcdnDomainLogsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainLogs: Log link list.
+        :param _DomainLogs: Log link list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DomainLogs: list of DomainLogs
-        :param TotalCount: Total number of log links.
+        :param _TotalCount: Total number of log links.
         :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.DomainLogs = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._DomainLogs = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def DomainLogs(self):
+        return self._DomainLogs
+
+    @DomainLogs.setter
+    def DomainLogs(self, DomainLogs):
+        self._DomainLogs = DomainLogs
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DomainLogs") is not None:
-            self.DomainLogs = []
+            self._DomainLogs = []
             for item in params.get("DomainLogs"):
                 obj = DomainLogs()
                 obj._deserialize(item)
-                self.DomainLogs.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._DomainLogs.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeEcdnDomainStatisticsRequest(AbstractModel):
@@ -579,56 +1013,121 @@ class DescribeEcdnDomainStatisticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: Query start time, such as 2019-12-13 00:00:00.
+        :param _StartTime: Query start time, such as 2019-12-13 00:00:00.
 The time span cannot exceed 90 days.
         :type StartTime: str
-        :param EndTime: Query end time, such as 2019-12-13 23:59:59.
+        :param _EndTime: Query end time, such as 2019-12-13 23:59:59.
 The time span cannot exceed 90 days.
         :type EndTime: str
-        :param Metrics: Statistical metric names:
+        :param _Metrics: Statistical metric names:
 flux: traffic (in bytes)
 bandwidth: bandwidth (in bps)
 request: number of requests
         :type Metrics: list of str
-        :param Domains: Specifies the list of domain names to be queried
+        :param _Domains: Specifies the list of domain names to be queried
         :type Domains: list of str
-        :param Projects: Specifies the project ID to be queried, which can be viewed [here](https://console.cloud.tencent.com/project)
+        :param _Projects: Specifies the project ID to be queried, which can be viewed [here](https://console.cloud.tencent.com/project)
 If no domain name is entered, the specified project will be queried; otherwise, the domain name will prevail
         :type Projects: list of int
-        :param Offset: Pagination offset. Default value: 0.
+        :param _Offset: Pagination offset. Default value: 0.
         :type Offset: int
-        :param Limit: Number of entries per page. Default value: 1000. Maximum value: 3,000.
+        :param _Limit: Number of entries per page. Default value: 1000. Maximum value: 3,000.
         :type Limit: int
-        :param Area: Statistical areas:
+        :param _Area: Statistical areas:
 mainland: Chinese mainland
 oversea: outside the Chinese mainland
 global: global
 Default value: global
         :type Area: str
         """
-        self.StartTime = None
-        self.EndTime = None
-        self.Metrics = None
-        self.Domains = None
-        self.Projects = None
-        self.Offset = None
-        self.Limit = None
-        self.Area = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Metrics = None
+        self._Domains = None
+        self._Projects = None
+        self._Offset = None
+        self._Limit = None
+        self._Area = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Metrics(self):
+        return self._Metrics
+
+    @Metrics.setter
+    def Metrics(self, Metrics):
+        self._Metrics = Metrics
+
+    @property
+    def Domains(self):
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+    @property
+    def Projects(self):
+        return self._Projects
+
+    @Projects.setter
+    def Projects(self, Projects):
+        self._Projects = Projects
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Area(self):
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
 
 
     def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.Metrics = params.get("Metrics")
-        self.Domains = params.get("Domains")
-        self.Projects = params.get("Projects")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.Area = params.get("Area")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Metrics = params.get("Metrics")
+        self._Domains = params.get("Domains")
+        self._Projects = params.get("Projects")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Area = params.get("Area")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -641,27 +1140,51 @@ class DescribeEcdnDomainStatisticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: Domain name data
+        :param _Data: Domain name data
         :type Data: list of DomainData
-        :param TotalCount: Quantity
+        :param _TotalCount: Quantity
         :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Data = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._Data = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = []
+            self._Data = []
             for item in params.get("Data"):
                 obj = DomainData()
                 obj._deserialize(item)
-                self.Data.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._Data.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeEcdnStatisticsRequest(AbstractModel):
@@ -671,11 +1194,11 @@ class DescribeEcdnStatisticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: Query start time, such as 2019-12-13 00:00:00
+        :param _StartTime: Query start time, such as 2019-12-13 00:00:00
         :type StartTime: str
-        :param EndTime: Query end time, such as 2019-12-13 23:59:59
+        :param _EndTime: Query end time, such as 2019-12-13 23:59:59
         :type EndTime: str
-        :param Metrics: Specifies the query metric, which can be:
+        :param _Metrics: Specifies the query metric, which can be:
 flux: traffic (in bytes)
 bandwidth: bandwidth (in bps)
 request: number of requests
@@ -684,47 +1207,104 @@ request: number of requests
 4xx: returns the number of 4xx status codes or details of status codes starting with 4
 5xx: returns the number of 5xx status codes or details of status codes starting with 5
         :type Metrics: list of str
-        :param Interval: Sampling interval in minutes. The available options vary for different query period. See below: 
+        :param _Interval: Sampling interval in minutes. The available options vary for different query period. See below: 
 1 day: `1`, `5`, `15`, `30`, `60`, `120`, `240`, `1440` 
 2 to 3 days: `15`, `30`, `60`, `120`, `240`, `1440`
 4 to 7 days: `30`, `60`, `120`, `240`, `1440`
 8 to 31 days: `60`, `120`, `240`, `1440`
         :type Interval: int
-        :param Domains: Specifies the list of domain names to be queried
+        :param _Domains: Specifies the list of domain names to be queried
 
 Up to 30 acceleration domain names can be queried at a time.
         :type Domains: list of str
-        :param Projects: Specifies the project ID to be queried, which can be viewed [here](https://console.cloud.tencent.com/project)
+        :param _Projects: Specifies the project ID to be queried, which can be viewed [here](https://console.cloud.tencent.com/project)
 If no domain name is entered, the specified project will be queried; otherwise, the domain name will prevail
         :type Projects: list of int
-        :param Area: Statistical areas:
+        :param _Area: Statistical areas:
 mainland: Chinese mainland
 oversea: outside the Chinese mainland
 global: global
 Default value: global
         :type Area: str
         """
-        self.StartTime = None
-        self.EndTime = None
-        self.Metrics = None
-        self.Interval = None
-        self.Domains = None
-        self.Projects = None
-        self.Area = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Metrics = None
+        self._Interval = None
+        self._Domains = None
+        self._Projects = None
+        self._Area = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Metrics(self):
+        return self._Metrics
+
+    @Metrics.setter
+    def Metrics(self, Metrics):
+        self._Metrics = Metrics
+
+    @property
+    def Interval(self):
+        return self._Interval
+
+    @Interval.setter
+    def Interval(self, Interval):
+        self._Interval = Interval
+
+    @property
+    def Domains(self):
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+    @property
+    def Projects(self):
+        return self._Projects
+
+    @Projects.setter
+    def Projects(self, Projects):
+        self._Projects = Projects
+
+    @property
+    def Area(self):
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
 
 
     def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.Metrics = params.get("Metrics")
-        self.Interval = params.get("Interval")
-        self.Domains = params.get("Domains")
-        self.Projects = params.get("Projects")
-        self.Area = params.get("Area")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Metrics = params.get("Metrics")
+        self._Interval = params.get("Interval")
+        self._Domains = params.get("Domains")
+        self._Projects = params.get("Projects")
+        self._Area = params.get("Area")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -737,23 +1317,39 @@ class DescribeEcdnStatisticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: Returned data details of the specified conditional query
+        :param _Data: Returned data details of the specified conditional query
         :type Data: list of ResourceData
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = []
+            self._Data = []
             for item in params.get("Data"):
                 obj = ResourceData()
                 obj._deserialize(item)
-                self.Data.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeIpStatusRequest(AbstractModel):
@@ -763,25 +1359,42 @@ class DescribeIpStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Domain: Acceleration domain name
+        :param _Domain: Acceleration domain name
         :type Domain: str
-        :param Area: Target region of the query:
+        :param _Area: Target region of the query:
 mainland: nodes in Mainland China
 overseas: nodes outside Mainland China
 global: global nodes
         :type Area: str
         """
-        self.Domain = None
-        self.Area = None
+        self._Domain = None
+        self._Area = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Area(self):
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
 
 
     def _deserialize(self, params):
-        self.Domain = params.get("Domain")
-        self.Area = params.get("Area")
+        self._Domain = params.get("Domain")
+        self._Area = params.get("Area")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -794,27 +1407,51 @@ class DescribeIpStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Ips: Node list
+        :param _Ips: Node list
         :type Ips: list of IpStatus
-        :param TotalCount: Total number of nodes
+        :param _TotalCount: Total number of nodes
         :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Ips = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._Ips = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Ips(self):
+        return self._Ips
+
+    @Ips.setter
+    def Ips(self, Ips):
+        self._Ips = Ips
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Ips") is not None:
-            self.Ips = []
+            self._Ips = []
             for item in params.get("Ips"):
                 obj = IpStatus()
                 obj._deserialize(item)
-                self.Ips.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._Ips.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribePurgeQuotaRequest(AbstractModel):
@@ -830,26 +1467,50 @@ class DescribePurgeQuotaResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UrlPurge: URL purge usage and quota.
+        :param _UrlPurge: URL purge usage and quota.
         :type UrlPurge: :class:`tencentcloud.ecdn.v20191012.models.Quota`
-        :param PathPurge: Directory purge usage and quota.
+        :param _PathPurge: Directory purge usage and quota.
         :type PathPurge: :class:`tencentcloud.ecdn.v20191012.models.Quota`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.UrlPurge = None
-        self.PathPurge = None
-        self.RequestId = None
+        self._UrlPurge = None
+        self._PathPurge = None
+        self._RequestId = None
+
+    @property
+    def UrlPurge(self):
+        return self._UrlPurge
+
+    @UrlPurge.setter
+    def UrlPurge(self, UrlPurge):
+        self._UrlPurge = UrlPurge
+
+    @property
+    def PathPurge(self):
+        return self._PathPurge
+
+    @PathPurge.setter
+    def PathPurge(self, PathPurge):
+        self._PathPurge = PathPurge
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("UrlPurge") is not None:
-            self.UrlPurge = Quota()
-            self.UrlPurge._deserialize(params.get("UrlPurge"))
+            self._UrlPurge = Quota()
+            self._UrlPurge._deserialize(params.get("UrlPurge"))
         if params.get("PathPurge") is not None:
-            self.PathPurge = Quota()
-            self.PathPurge._deserialize(params.get("PathPurge"))
-        self.RequestId = params.get("RequestId")
+            self._PathPurge = Quota()
+            self._PathPurge._deserialize(params.get("PathPurge"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribePurgeTasksRequest(AbstractModel):
@@ -859,46 +1520,111 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PurgeType: Purge type to be queried. url: query URL purge records; path: query directory purge records.
+        :param _PurgeType: Purge type to be queried. url: query URL purge records; path: query directory purge records.
         :type PurgeType: str
-        :param StartTime: Start time, such as 2018-08-08 00:00:00
+        :param _StartTime: Start time, such as 2018-08-08 00:00:00
         :type StartTime: str
-        :param EndTime: End time, such as 2018-08-08 23:59:59
+        :param _EndTime: End time, such as 2018-08-08 23:59:59
         :type EndTime: str
-        :param TaskId: Task ID returned during submission. Either `TaskId` or start time must be specified for a query.
+        :param _TaskId: Task ID returned during submission. Either `TaskId` or start time must be specified for a query.
         :type TaskId: str
-        :param Offset: Pagination offset. Default value: 0 (starting from entry 0).
+        :param _Offset: Pagination offset. Default value: 0 (starting from entry 0).
         :type Offset: int
-        :param Limit: Pagination limit. Default value: 20.
+        :param _Limit: Pagination limit. Default value: 20.
         :type Limit: int
-        :param Keyword: Query keyword. Please enter a domain name or full URL beginning with `http(s)://`.
+        :param _Keyword: Query keyword. Please enter a domain name or full URL beginning with `http(s)://`.
         :type Keyword: str
-        :param Status: Specified task status to be queried. fail: failed, done: succeeded, process: purging.
+        :param _Status: Specified task status to be queried. fail: failed, done: succeeded, process: purging.
         :type Status: str
         """
-        self.PurgeType = None
-        self.StartTime = None
-        self.EndTime = None
-        self.TaskId = None
-        self.Offset = None
-        self.Limit = None
-        self.Keyword = None
-        self.Status = None
+        self._PurgeType = None
+        self._StartTime = None
+        self._EndTime = None
+        self._TaskId = None
+        self._Offset = None
+        self._Limit = None
+        self._Keyword = None
+        self._Status = None
+
+    @property
+    def PurgeType(self):
+        return self._PurgeType
+
+    @PurgeType.setter
+    def PurgeType(self, PurgeType):
+        self._PurgeType = PurgeType
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Keyword(self):
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
 
     def _deserialize(self, params):
-        self.PurgeType = params.get("PurgeType")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.TaskId = params.get("TaskId")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.Keyword = params.get("Keyword")
-        self.Status = params.get("Status")
+        self._PurgeType = params.get("PurgeType")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._TaskId = params.get("TaskId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Keyword = params.get("Keyword")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -911,27 +1637,51 @@ class DescribePurgeTasksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PurgeLogs: Purge history.
+        :param _PurgeLogs: Purge history.
         :type PurgeLogs: list of PurgeTask
-        :param TotalCount: Total number of tasks, which is used for pagination.
+        :param _TotalCount: Total number of tasks, which is used for pagination.
         :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.PurgeLogs = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._PurgeLogs = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def PurgeLogs(self):
+        return self._PurgeLogs
+
+    @PurgeLogs.setter
+    def PurgeLogs(self, PurgeLogs):
+        self._PurgeLogs = PurgeLogs
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("PurgeLogs") is not None:
-            self.PurgeLogs = []
+            self._PurgeLogs = []
             for item in params.get("PurgeLogs"):
                 obj = PurgeTask()
                 obj._deserialize(item)
-                self.PurgeLogs.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._PurgeLogs.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DetailData(AbstractModel):
@@ -941,22 +1691,39 @@ class DetailData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: Data type name
+        :param _Name: Data type name
         :type Name: str
-        :param Value: Data value
+        :param _Value: Data value
         :type Value: float
         """
-        self.Name = None
-        self.Value = None
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Value = params.get("Value")
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -969,74 +1736,179 @@ class DomainBriefInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceId: Domain name ID.
+        :param _ResourceId: Domain name ID.
         :type ResourceId: str
-        :param AppId: Tencent Cloud account ID.
+        :param _AppId: Tencent Cloud account ID.
         :type AppId: int
-        :param Domain: CDN acceleration domain name.
+        :param _Domain: CDN acceleration domain name.
         :type Domain: str
-        :param Cname: Domain name CNAME.
+        :param _Cname: Domain name CNAME.
         :type Cname: str
-        :param Status: Domain name status. Valid values: pending (reviewing), rejected (rejected), processing (deploying after approval), online (enabled), offline (disabled), deleted (deleted).
+        :param _Status: Domain name status. Valid values: pending (reviewing), rejected (rejected), processing (deploying after approval), online (enabled), offline (disabled), deleted (deleted).
         :type Status: str
-        :param ProjectId: Project ID.
+        :param _ProjectId: Project ID.
         :type ProjectId: int
-        :param CreateTime: Domain name creation time.
+        :param _CreateTime: Domain name creation time.
         :type CreateTime: str
-        :param UpdateTime: Domain name update time.
+        :param _UpdateTime: Domain name update time.
         :type UpdateTime: str
-        :param Origin: Origin server configuration details.
+        :param _Origin: Origin server configuration details.
         :type Origin: :class:`tencentcloud.ecdn.v20191012.models.Origin`
-        :param Disable: Domain name blockage status. Valid values: normal (normal), overdue (service is suspended due to arrears), quota (trial traffic package is used up), malicious (malicious user), ddos (DDoS attack), idle (no traffic), unlicensed (no ICP filing), capping (bandwidth cap reached), readonly (read-only)
+        :param _Disable: Domain name blockage status. Valid values: normal (normal), overdue (service is suspended due to arrears), quota (trial traffic package is used up), malicious (malicious user), ddos (DDoS attack), idle (no traffic), unlicensed (no ICP filing), capping (bandwidth cap reached), readonly (read-only)
         :type Disable: str
-        :param Area: Acceleration region. Valid values: mainland, oversea, global.
+        :param _Area: Acceleration region. Valid values: mainland, oversea, global.
         :type Area: str
-        :param Readonly: Domain name lock status. normal: not locked; global: globally locked
+        :param _Readonly: Domain name lock status. normal: not locked; global: globally locked
         :type Readonly: str
-        :param Tag: Domain name tag
+        :param _Tag: Domain name tag
 Note: This field may return `null`, indicating that no valid value can be found.
         :type Tag: list of Tag
         """
-        self.ResourceId = None
-        self.AppId = None
-        self.Domain = None
-        self.Cname = None
-        self.Status = None
-        self.ProjectId = None
-        self.CreateTime = None
-        self.UpdateTime = None
-        self.Origin = None
-        self.Disable = None
-        self.Area = None
-        self.Readonly = None
-        self.Tag = None
+        self._ResourceId = None
+        self._AppId = None
+        self._Domain = None
+        self._Cname = None
+        self._Status = None
+        self._ProjectId = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Origin = None
+        self._Disable = None
+        self._Area = None
+        self._Readonly = None
+        self._Tag = None
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Cname(self):
+        return self._Cname
+
+    @Cname.setter
+    def Cname(self, Cname):
+        self._Cname = Cname
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Origin(self):
+        return self._Origin
+
+    @Origin.setter
+    def Origin(self, Origin):
+        self._Origin = Origin
+
+    @property
+    def Disable(self):
+        return self._Disable
+
+    @Disable.setter
+    def Disable(self, Disable):
+        self._Disable = Disable
+
+    @property
+    def Area(self):
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def Readonly(self):
+        return self._Readonly
+
+    @Readonly.setter
+    def Readonly(self, Readonly):
+        self._Readonly = Readonly
+
+    @property
+    def Tag(self):
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
 
 
     def _deserialize(self, params):
-        self.ResourceId = params.get("ResourceId")
-        self.AppId = params.get("AppId")
-        self.Domain = params.get("Domain")
-        self.Cname = params.get("Cname")
-        self.Status = params.get("Status")
-        self.ProjectId = params.get("ProjectId")
-        self.CreateTime = params.get("CreateTime")
-        self.UpdateTime = params.get("UpdateTime")
+        self._ResourceId = params.get("ResourceId")
+        self._AppId = params.get("AppId")
+        self._Domain = params.get("Domain")
+        self._Cname = params.get("Cname")
+        self._Status = params.get("Status")
+        self._ProjectId = params.get("ProjectId")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         if params.get("Origin") is not None:
-            self.Origin = Origin()
-            self.Origin._deserialize(params.get("Origin"))
-        self.Disable = params.get("Disable")
-        self.Area = params.get("Area")
-        self.Readonly = params.get("Readonly")
+            self._Origin = Origin()
+            self._Origin._deserialize(params.get("Origin"))
+        self._Disable = params.get("Disable")
+        self._Area = params.get("Area")
+        self._Readonly = params.get("Readonly")
         if params.get("Tag") is not None:
-            self.Tag = []
+            self._Tag = []
             for item in params.get("Tag"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tag.append(obj)
+                self._Tag.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1049,27 +1921,44 @@ class DomainData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Resource: Domain name
+        :param _Resource: Domain name
         :type Resource: str
-        :param DetailData: Result details.
+        :param _DetailData: Result details.
         :type DetailData: list of DetailData
         """
-        self.Resource = None
-        self.DetailData = None
+        self._Resource = None
+        self._DetailData = None
+
+    @property
+    def Resource(self):
+        return self._Resource
+
+    @Resource.setter
+    def Resource(self, Resource):
+        self._Resource = Resource
+
+    @property
+    def DetailData(self):
+        return self._DetailData
+
+    @DetailData.setter
+    def DetailData(self, DetailData):
+        self._DetailData = DetailData
 
 
     def _deserialize(self, params):
-        self.Resource = params.get("Resource")
+        self._Resource = params.get("Resource")
         if params.get("DetailData") is not None:
-            self.DetailData = []
+            self._DetailData = []
             for item in params.get("DetailData"):
                 obj = DetailData()
                 obj._deserialize(item)
-                self.DetailData.append(obj)
+                self._DetailData.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1082,134 +1971,303 @@ class DomainDetailInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceId: Domain name ID.
+        :param _ResourceId: Domain name ID.
         :type ResourceId: str
-        :param AppId: Tencent Cloud account ID.
+        :param _AppId: Tencent Cloud account ID.
         :type AppId: int
-        :param Domain: Acceleration domain name.
+        :param _Domain: Acceleration domain name.
         :type Domain: str
-        :param Cname: Domain name CNAME.
+        :param _Cname: Domain name CNAME.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Cname: str
-        :param Status: Domain name status. Valid values: pending (reviewing), rejected (rejected), processing (deploying after approval), online (enabled), offline (disabled), deleted (deleted).
+        :param _Status: Domain name status. Valid values: pending (reviewing), rejected (rejected), processing (deploying after approval), online (enabled), offline (disabled), deleted (deleted).
         :type Status: str
-        :param ProjectId: Project ID.
+        :param _ProjectId: Project ID.
         :type ProjectId: int
-        :param CreateTime: Domain name creation time.
+        :param _CreateTime: Domain name creation time.
         :type CreateTime: str
-        :param UpdateTime: Domain name update time.
+        :param _UpdateTime: Domain name update time.
         :type UpdateTime: str
-        :param Origin: Origin server configuration.
+        :param _Origin: Origin server configuration.
         :type Origin: :class:`tencentcloud.ecdn.v20191012.models.Origin`
-        :param IpFilter: IP blocklist/allowlist configuration.
+        :param _IpFilter: IP blocklist/allowlist configuration.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IpFilter: :class:`tencentcloud.ecdn.v20191012.models.IpFilter`
-        :param IpFreqLimit: IP access limit configuration.
+        :param _IpFreqLimit: IP access limit configuration.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IpFreqLimit: :class:`tencentcloud.ecdn.v20191012.models.IpFreqLimit`
-        :param ResponseHeader: Origin server response header configuration.
+        :param _ResponseHeader: Origin server response header configuration.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ResponseHeader: :class:`tencentcloud.ecdn.v20191012.models.ResponseHeader`
-        :param CacheKey: Node caching configuration.
+        :param _CacheKey: Node caching configuration.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CacheKey: :class:`tencentcloud.ecdn.v20191012.models.CacheKey`
-        :param Cache: Caching rule configuration.
+        :param _Cache: Caching rule configuration.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Cache: :class:`tencentcloud.ecdn.v20191012.models.Cache`
-        :param Https: HTTPS configuration.
+        :param _Https: HTTPS configuration.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Https: :class:`tencentcloud.ecdn.v20191012.models.Https`
-        :param Disable: Domain name blockage status. Valid values: normal (normal), overdue (service is suspended due to arrears), quota (trial traffic package is used up), malicious (malicious user), ddos (DDoS attack), idle (no traffic), unlicensed (no ICP filing), capping (bandwidth cap reached), readonly (read-only).
+        :param _Disable: Domain name blockage status. Valid values: normal (normal), overdue (service is suspended due to arrears), quota (trial traffic package is used up), malicious (malicious user), ddos (DDoS attack), idle (no traffic), unlicensed (no ICP filing), capping (bandwidth cap reached), readonly (read-only).
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Disable: str
-        :param ForceRedirect: Forced access protocol redirection configuration.
+        :param _ForceRedirect: Forced access protocol redirection configuration.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ForceRedirect: :class:`tencentcloud.ecdn.v20191012.models.ForceRedirect`
-        :param Area: Acceleration region. Valid values: mainland, overseas, global.
+        :param _Area: Acceleration region. Valid values: mainland, overseas, global.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Area: str
-        :param Readonly: Domain name lock status. normal: not locked; global: globally locked.
+        :param _Readonly: Domain name lock status. normal: not locked; global: globally locked.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Readonly: str
-        :param Tag: Domain name tag
+        :param _Tag: Domain name tag
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type Tag: list of Tag
-        :param WebSocket: WebSocket configuration.
+        :param _WebSocket: WebSocket configuration.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type WebSocket: :class:`tencentcloud.ecdn.v20191012.models.WebSocket`
         """
-        self.ResourceId = None
-        self.AppId = None
-        self.Domain = None
-        self.Cname = None
-        self.Status = None
-        self.ProjectId = None
-        self.CreateTime = None
-        self.UpdateTime = None
-        self.Origin = None
-        self.IpFilter = None
-        self.IpFreqLimit = None
-        self.ResponseHeader = None
-        self.CacheKey = None
-        self.Cache = None
-        self.Https = None
-        self.Disable = None
-        self.ForceRedirect = None
-        self.Area = None
-        self.Readonly = None
-        self.Tag = None
-        self.WebSocket = None
+        self._ResourceId = None
+        self._AppId = None
+        self._Domain = None
+        self._Cname = None
+        self._Status = None
+        self._ProjectId = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Origin = None
+        self._IpFilter = None
+        self._IpFreqLimit = None
+        self._ResponseHeader = None
+        self._CacheKey = None
+        self._Cache = None
+        self._Https = None
+        self._Disable = None
+        self._ForceRedirect = None
+        self._Area = None
+        self._Readonly = None
+        self._Tag = None
+        self._WebSocket = None
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Cname(self):
+        return self._Cname
+
+    @Cname.setter
+    def Cname(self, Cname):
+        self._Cname = Cname
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Origin(self):
+        return self._Origin
+
+    @Origin.setter
+    def Origin(self, Origin):
+        self._Origin = Origin
+
+    @property
+    def IpFilter(self):
+        return self._IpFilter
+
+    @IpFilter.setter
+    def IpFilter(self, IpFilter):
+        self._IpFilter = IpFilter
+
+    @property
+    def IpFreqLimit(self):
+        return self._IpFreqLimit
+
+    @IpFreqLimit.setter
+    def IpFreqLimit(self, IpFreqLimit):
+        self._IpFreqLimit = IpFreqLimit
+
+    @property
+    def ResponseHeader(self):
+        return self._ResponseHeader
+
+    @ResponseHeader.setter
+    def ResponseHeader(self, ResponseHeader):
+        self._ResponseHeader = ResponseHeader
+
+    @property
+    def CacheKey(self):
+        return self._CacheKey
+
+    @CacheKey.setter
+    def CacheKey(self, CacheKey):
+        self._CacheKey = CacheKey
+
+    @property
+    def Cache(self):
+        return self._Cache
+
+    @Cache.setter
+    def Cache(self, Cache):
+        self._Cache = Cache
+
+    @property
+    def Https(self):
+        return self._Https
+
+    @Https.setter
+    def Https(self, Https):
+        self._Https = Https
+
+    @property
+    def Disable(self):
+        return self._Disable
+
+    @Disable.setter
+    def Disable(self, Disable):
+        self._Disable = Disable
+
+    @property
+    def ForceRedirect(self):
+        return self._ForceRedirect
+
+    @ForceRedirect.setter
+    def ForceRedirect(self, ForceRedirect):
+        self._ForceRedirect = ForceRedirect
+
+    @property
+    def Area(self):
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def Readonly(self):
+        return self._Readonly
+
+    @Readonly.setter
+    def Readonly(self, Readonly):
+        self._Readonly = Readonly
+
+    @property
+    def Tag(self):
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def WebSocket(self):
+        return self._WebSocket
+
+    @WebSocket.setter
+    def WebSocket(self, WebSocket):
+        self._WebSocket = WebSocket
 
 
     def _deserialize(self, params):
-        self.ResourceId = params.get("ResourceId")
-        self.AppId = params.get("AppId")
-        self.Domain = params.get("Domain")
-        self.Cname = params.get("Cname")
-        self.Status = params.get("Status")
-        self.ProjectId = params.get("ProjectId")
-        self.CreateTime = params.get("CreateTime")
-        self.UpdateTime = params.get("UpdateTime")
+        self._ResourceId = params.get("ResourceId")
+        self._AppId = params.get("AppId")
+        self._Domain = params.get("Domain")
+        self._Cname = params.get("Cname")
+        self._Status = params.get("Status")
+        self._ProjectId = params.get("ProjectId")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         if params.get("Origin") is not None:
-            self.Origin = Origin()
-            self.Origin._deserialize(params.get("Origin"))
+            self._Origin = Origin()
+            self._Origin._deserialize(params.get("Origin"))
         if params.get("IpFilter") is not None:
-            self.IpFilter = IpFilter()
-            self.IpFilter._deserialize(params.get("IpFilter"))
+            self._IpFilter = IpFilter()
+            self._IpFilter._deserialize(params.get("IpFilter"))
         if params.get("IpFreqLimit") is not None:
-            self.IpFreqLimit = IpFreqLimit()
-            self.IpFreqLimit._deserialize(params.get("IpFreqLimit"))
+            self._IpFreqLimit = IpFreqLimit()
+            self._IpFreqLimit._deserialize(params.get("IpFreqLimit"))
         if params.get("ResponseHeader") is not None:
-            self.ResponseHeader = ResponseHeader()
-            self.ResponseHeader._deserialize(params.get("ResponseHeader"))
+            self._ResponseHeader = ResponseHeader()
+            self._ResponseHeader._deserialize(params.get("ResponseHeader"))
         if params.get("CacheKey") is not None:
-            self.CacheKey = CacheKey()
-            self.CacheKey._deserialize(params.get("CacheKey"))
+            self._CacheKey = CacheKey()
+            self._CacheKey._deserialize(params.get("CacheKey"))
         if params.get("Cache") is not None:
-            self.Cache = Cache()
-            self.Cache._deserialize(params.get("Cache"))
+            self._Cache = Cache()
+            self._Cache._deserialize(params.get("Cache"))
         if params.get("Https") is not None:
-            self.Https = Https()
-            self.Https._deserialize(params.get("Https"))
-        self.Disable = params.get("Disable")
+            self._Https = Https()
+            self._Https._deserialize(params.get("Https"))
+        self._Disable = params.get("Disable")
         if params.get("ForceRedirect") is not None:
-            self.ForceRedirect = ForceRedirect()
-            self.ForceRedirect._deserialize(params.get("ForceRedirect"))
-        self.Area = params.get("Area")
-        self.Readonly = params.get("Readonly")
+            self._ForceRedirect = ForceRedirect()
+            self._ForceRedirect._deserialize(params.get("ForceRedirect"))
+        self._Area = params.get("Area")
+        self._Readonly = params.get("Readonly")
         if params.get("Tag") is not None:
-            self.Tag = []
+            self._Tag = []
             for item in params.get("Tag"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tag.append(obj)
+                self._Tag.append(obj)
         if params.get("WebSocket") is not None:
-            self.WebSocket = WebSocket()
-            self.WebSocket._deserialize(params.get("WebSocket"))
+            self._WebSocket = WebSocket()
+            self._WebSocket._deserialize(params.get("WebSocket"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1222,7 +2280,7 @@ class DomainFilter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: Filters by the field name, which includes:
+        :param _Name: Filters by the field name, which includes:
 - `origin`: Primary origin server.
 - `domain`: Domain name.
 - `resourceId`: Domain name ID.
@@ -1235,24 +2293,49 @@ class DomainFilter(AbstractModel):
 - `area`: Acceleration region, which can be `mainland`，`overseas` or `global`.
 - `tagKey`: Tag key.
         :type Name: str
-        :param Value: Filter field value.
+        :param _Value: Filter field value.
         :type Value: list of str
-        :param Fuzzy: Whether to enable fuzzy query, which is supported only for filter fields `origin` and `domain`.
+        :param _Fuzzy: Whether to enable fuzzy query, which is supported only for filter fields `origin` and `domain`.
         :type Fuzzy: bool
         """
-        self.Name = None
-        self.Value = None
-        self.Fuzzy = None
+        self._Name = None
+        self._Value = None
+        self._Fuzzy = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Fuzzy(self):
+        return self._Fuzzy
+
+    @Fuzzy.setter
+    def Fuzzy(self, Fuzzy):
+        self._Fuzzy = Fuzzy
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Value = params.get("Value")
-        self.Fuzzy = params.get("Fuzzy")
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
+        self._Fuzzy = params.get("Fuzzy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1265,26 +2348,51 @@ class DomainLogs(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: Log start time.
+        :param _StartTime: Log start time.
         :type StartTime: str
-        :param EndTime: Log end time.
+        :param _EndTime: Log end time.
         :type EndTime: str
-        :param LogPath: Log download path.
+        :param _LogPath: Log download path.
         :type LogPath: str
         """
-        self.StartTime = None
-        self.EndTime = None
-        self.LogPath = None
+        self._StartTime = None
+        self._EndTime = None
+        self._LogPath = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def LogPath(self):
+        return self._LogPath
+
+    @LogPath.setter
+    def LogPath(self, LogPath):
+        self._LogPath = LogPath
 
 
     def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.LogPath = params.get("LogPath")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._LogPath = params.get("LogPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1297,27 +2405,44 @@ class EcdnData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Metrics: Queries the specified metric. Valid values: Bandwidth, Flux, Request, Delay, status code, LogBandwidth, LogFlux, LogRequest
+        :param _Metrics: Queries the specified metric. Valid values: Bandwidth, Flux, Request, Delay, status code, LogBandwidth, LogFlux, LogRequest
         :type Metrics: list of str
-        :param DetailData: Detailed data collection
+        :param _DetailData: Detailed data collection
         :type DetailData: list of TimestampData
         """
-        self.Metrics = None
-        self.DetailData = None
+        self._Metrics = None
+        self._DetailData = None
+
+    @property
+    def Metrics(self):
+        return self._Metrics
+
+    @Metrics.setter
+    def Metrics(self, Metrics):
+        self._Metrics = Metrics
+
+    @property
+    def DetailData(self):
+        return self._DetailData
+
+    @DetailData.setter
+    def DetailData(self, DetailData):
+        self._DetailData = DetailData
 
 
     def _deserialize(self, params):
-        self.Metrics = params.get("Metrics")
+        self._Metrics = params.get("Metrics")
         if params.get("DetailData") is not None:
-            self.DetailData = []
+            self._DetailData = []
             for item in params.get("DetailData"):
                 obj = TimestampData()
                 obj._deserialize(item)
-                self.DetailData.append(obj)
+                self._DetailData.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1330,29 +2455,54 @@ class ForceRedirect(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: Forced access protocol redirection configuration switch. Valid values: on, off.
+        :param _Switch: Forced access protocol redirection configuration switch. Valid values: on, off.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Switch: str
-        :param RedirectType: Access protocol type for forced redirection. Valid values: http (forced redirection to HTTP protocol), https (forced redirection to HTTPS protocol).
+        :param _RedirectType: Access protocol type for forced redirection. Valid values: http (forced redirection to HTTP protocol), https (forced redirection to HTTPS protocol).
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RedirectType: str
-        :param RedirectStatusCode: HTTP status code returned when forced redirection is enabled. Valid values: 301, 302.
+        :param _RedirectStatusCode: HTTP status code returned when forced redirection is enabled. Valid values: 301, 302.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RedirectStatusCode: int
         """
-        self.Switch = None
-        self.RedirectType = None
-        self.RedirectStatusCode = None
+        self._Switch = None
+        self._RedirectType = None
+        self._RedirectStatusCode = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def RedirectType(self):
+        return self._RedirectType
+
+    @RedirectType.setter
+    def RedirectType(self, RedirectType):
+        self._RedirectType = RedirectType
+
+    @property
+    def RedirectStatusCode(self):
+        return self._RedirectStatusCode
+
+    @RedirectStatusCode.setter
+    def RedirectStatusCode(self, RedirectStatusCode):
+        self._RedirectStatusCode = RedirectStatusCode
 
 
     def _deserialize(self, params):
-        self.Switch = params.get("Switch")
-        self.RedirectType = params.get("RedirectType")
-        self.RedirectStatusCode = params.get("RedirectStatusCode")
+        self._Switch = params.get("Switch")
+        self._RedirectType = params.get("RedirectType")
+        self._RedirectStatusCode = params.get("RedirectStatusCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1365,28 +2515,53 @@ class Hsts(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: Whether to enable. Valid values: on, off.
+        :param _Switch: Whether to enable. Valid values: on, off.
         :type Switch: str
-        :param MaxAge: `MaxAge` value.
+        :param _MaxAge: `MaxAge` value.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MaxAge: int
-        :param IncludeSubDomains: Whether to include subdomain names. Valid values: on, off.
+        :param _IncludeSubDomains: Whether to include subdomain names. Valid values: on, off.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IncludeSubDomains: str
         """
-        self.Switch = None
-        self.MaxAge = None
-        self.IncludeSubDomains = None
+        self._Switch = None
+        self._MaxAge = None
+        self._IncludeSubDomains = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def MaxAge(self):
+        return self._MaxAge
+
+    @MaxAge.setter
+    def MaxAge(self, MaxAge):
+        self._MaxAge = MaxAge
+
+    @property
+    def IncludeSubDomains(self):
+        return self._IncludeSubDomains
+
+    @IncludeSubDomains.setter
+    def IncludeSubDomains(self, IncludeSubDomains):
+        self._IncludeSubDomains = IncludeSubDomains
 
 
     def _deserialize(self, params):
-        self.Switch = params.get("Switch")
-        self.MaxAge = params.get("MaxAge")
-        self.IncludeSubDomains = params.get("IncludeSubDomains")
+        self._Switch = params.get("Switch")
+        self._MaxAge = params.get("MaxAge")
+        self._IncludeSubDomains = params.get("IncludeSubDomains")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1399,40 +2574,81 @@ class HttpHeaderPathRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param HeaderMode: HTTP header setting method. Valid values: add (add header), set (set header), del (delete header).
+        :param _HeaderMode: HTTP header setting method. Valid values: add (add header), set (set header), del (delete header).
 Request header currently does not support `set`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type HeaderMode: str
-        :param HeaderName: HTTP header name.
+        :param _HeaderName: HTTP header name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type HeaderName: str
-        :param HeaderValue: HTTP header value, which is optional when it is `del`.
+        :param _HeaderValue: HTTP header value, which is optional when it is `del`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type HeaderValue: str
-        :param RuleType: Type of effective URL path rule. Valid values: all (all paths), file (file extension), directory (directory), path (absolute path).
+        :param _RuleType: Type of effective URL path rule. Valid values: all (all paths), file (file extension), directory (directory), path (absolute path).
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RuleType: str
-        :param RulePaths: URL path or file type list
+        :param _RulePaths: URL path or file type list
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RulePaths: list of str
         """
-        self.HeaderMode = None
-        self.HeaderName = None
-        self.HeaderValue = None
-        self.RuleType = None
-        self.RulePaths = None
+        self._HeaderMode = None
+        self._HeaderName = None
+        self._HeaderValue = None
+        self._RuleType = None
+        self._RulePaths = None
+
+    @property
+    def HeaderMode(self):
+        return self._HeaderMode
+
+    @HeaderMode.setter
+    def HeaderMode(self, HeaderMode):
+        self._HeaderMode = HeaderMode
+
+    @property
+    def HeaderName(self):
+        return self._HeaderName
+
+    @HeaderName.setter
+    def HeaderName(self, HeaderName):
+        self._HeaderName = HeaderName
+
+    @property
+    def HeaderValue(self):
+        return self._HeaderValue
+
+    @HeaderValue.setter
+    def HeaderValue(self, HeaderValue):
+        self._HeaderValue = HeaderValue
+
+    @property
+    def RuleType(self):
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+    @property
+    def RulePaths(self):
+        return self._RulePaths
+
+    @RulePaths.setter
+    def RulePaths(self, RulePaths):
+        self._RulePaths = RulePaths
 
 
     def _deserialize(self, params):
-        self.HeaderMode = params.get("HeaderMode")
-        self.HeaderName = params.get("HeaderName")
-        self.HeaderValue = params.get("HeaderValue")
-        self.RuleType = params.get("RuleType")
-        self.RulePaths = params.get("RulePaths")
+        self._HeaderMode = params.get("HeaderMode")
+        self._HeaderName = params.get("HeaderName")
+        self._HeaderValue = params.get("HeaderValue")
+        self._RuleType = params.get("RuleType")
+        self._RulePaths = params.get("RulePaths")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1445,65 +2661,138 @@ class Https(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: HTTPS configuration switch. Valid values: on, off. If the domain name with HTTPS configuration enabled is being deployed, this switch will be `off`.
+        :param _Switch: HTTPS configuration switch. Valid values: on, off. If the domain name with HTTPS configuration enabled is being deployed, this switch will be `off`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Switch: str
-        :param Http2: Whether to enable HTTP2. Valid values: on, off.
+        :param _Http2: Whether to enable HTTP2. Valid values: on, off.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Http2: str
-        :param OcspStapling: Whether to enable the OCSP feature. Valid values: on, off.
+        :param _OcspStapling: Whether to enable the OCSP feature. Valid values: on, off.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OcspStapling: str
-        :param VerifyClient: Whether to enable the client certificate verification feature. Valid values: on, off. The client certificate information must be uploaded if this feature is enabled.
+        :param _VerifyClient: Whether to enable the client certificate verification feature. Valid values: on, off. The client certificate information must be uploaded if this feature is enabled.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type VerifyClient: str
-        :param CertInfo: Server certificate configuration information.
+        :param _CertInfo: Server certificate configuration information.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CertInfo: :class:`tencentcloud.ecdn.v20191012.models.ServerCert`
-        :param ClientCertInfo: Client certificate configuration information.
+        :param _ClientCertInfo: Client certificate configuration information.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ClientCertInfo: :class:`tencentcloud.ecdn.v20191012.models.ClientCert`
-        :param Spdy: Whether to enable SPDY. Valid values: on, off.
+        :param _Spdy: Whether to enable SPDY. Valid values: on, off.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Spdy: str
-        :param SslStatus: HTTPS certificate deployment status. Valid values: closed (disabled), deploying (deploying), deployed (deployment succeeded), failed (deployment failed). This parameter cannot be used as an input parameter.
+        :param _SslStatus: HTTPS certificate deployment status. Valid values: closed (disabled), deploying (deploying), deployed (deployment succeeded), failed (deployment failed). This parameter cannot be used as an input parameter.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SslStatus: str
-        :param Hsts: HSTS configuration
+        :param _Hsts: HSTS configuration
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Hsts: :class:`tencentcloud.ecdn.v20191012.models.Hsts`
         """
-        self.Switch = None
-        self.Http2 = None
-        self.OcspStapling = None
-        self.VerifyClient = None
-        self.CertInfo = None
-        self.ClientCertInfo = None
-        self.Spdy = None
-        self.SslStatus = None
-        self.Hsts = None
+        self._Switch = None
+        self._Http2 = None
+        self._OcspStapling = None
+        self._VerifyClient = None
+        self._CertInfo = None
+        self._ClientCertInfo = None
+        self._Spdy = None
+        self._SslStatus = None
+        self._Hsts = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Http2(self):
+        return self._Http2
+
+    @Http2.setter
+    def Http2(self, Http2):
+        self._Http2 = Http2
+
+    @property
+    def OcspStapling(self):
+        return self._OcspStapling
+
+    @OcspStapling.setter
+    def OcspStapling(self, OcspStapling):
+        self._OcspStapling = OcspStapling
+
+    @property
+    def VerifyClient(self):
+        return self._VerifyClient
+
+    @VerifyClient.setter
+    def VerifyClient(self, VerifyClient):
+        self._VerifyClient = VerifyClient
+
+    @property
+    def CertInfo(self):
+        return self._CertInfo
+
+    @CertInfo.setter
+    def CertInfo(self, CertInfo):
+        self._CertInfo = CertInfo
+
+    @property
+    def ClientCertInfo(self):
+        return self._ClientCertInfo
+
+    @ClientCertInfo.setter
+    def ClientCertInfo(self, ClientCertInfo):
+        self._ClientCertInfo = ClientCertInfo
+
+    @property
+    def Spdy(self):
+        return self._Spdy
+
+    @Spdy.setter
+    def Spdy(self, Spdy):
+        self._Spdy = Spdy
+
+    @property
+    def SslStatus(self):
+        return self._SslStatus
+
+    @SslStatus.setter
+    def SslStatus(self, SslStatus):
+        self._SslStatus = SslStatus
+
+    @property
+    def Hsts(self):
+        return self._Hsts
+
+    @Hsts.setter
+    def Hsts(self, Hsts):
+        self._Hsts = Hsts
 
 
     def _deserialize(self, params):
-        self.Switch = params.get("Switch")
-        self.Http2 = params.get("Http2")
-        self.OcspStapling = params.get("OcspStapling")
-        self.VerifyClient = params.get("VerifyClient")
+        self._Switch = params.get("Switch")
+        self._Http2 = params.get("Http2")
+        self._OcspStapling = params.get("OcspStapling")
+        self._VerifyClient = params.get("VerifyClient")
         if params.get("CertInfo") is not None:
-            self.CertInfo = ServerCert()
-            self.CertInfo._deserialize(params.get("CertInfo"))
+            self._CertInfo = ServerCert()
+            self._CertInfo._deserialize(params.get("CertInfo"))
         if params.get("ClientCertInfo") is not None:
-            self.ClientCertInfo = ClientCert()
-            self.ClientCertInfo._deserialize(params.get("ClientCertInfo"))
-        self.Spdy = params.get("Spdy")
-        self.SslStatus = params.get("SslStatus")
+            self._ClientCertInfo = ClientCert()
+            self._ClientCertInfo._deserialize(params.get("ClientCertInfo"))
+        self._Spdy = params.get("Spdy")
+        self._SslStatus = params.get("SslStatus")
         if params.get("Hsts") is not None:
-            self.Hsts = Hsts()
-            self.Hsts._deserialize(params.get("Hsts"))
+            self._Hsts = Hsts()
+            self._Hsts._deserialize(params.get("Hsts"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1516,28 +2805,53 @@ class IpFilter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: IP blocklist/allowlist switch. Valid values: on, off.
+        :param _Switch: IP blocklist/allowlist switch. Valid values: on, off.
         :type Switch: str
-        :param FilterType: IP blocklist/allowlist type. Valid values: whitelist, blacklist.
+        :param _FilterType: IP blocklist/allowlist type. Valid values: whitelist, blacklist.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type FilterType: str
-        :param Filters: IP blocklist/allowlist list.
+        :param _Filters: IP blocklist/allowlist list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Filters: list of str
         """
-        self.Switch = None
-        self.FilterType = None
-        self.Filters = None
+        self._Switch = None
+        self._FilterType = None
+        self._Filters = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def FilterType(self):
+        return self._FilterType
+
+    @FilterType.setter
+    def FilterType(self, FilterType):
+        self._FilterType = FilterType
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
 
     def _deserialize(self, params):
-        self.Switch = params.get("Switch")
-        self.FilterType = params.get("FilterType")
-        self.Filters = params.get("Filters")
+        self._Switch = params.get("Switch")
+        self._FilterType = params.get("FilterType")
+        self._Filters = params.get("Filters")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1550,23 +2864,40 @@ class IpFreqLimit(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: IP access limit switch. Valid values: on, off.
+        :param _Switch: IP access limit switch. Valid values: on, off.
         :type Switch: str
-        :param Qps: Number of requests per second.
+        :param _Qps: Number of requests per second.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Qps: int
         """
-        self.Switch = None
-        self.Qps = None
+        self._Switch = None
+        self._Qps = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Qps(self):
+        return self._Qps
+
+    @Qps.setter
+    def Qps(self, Qps):
+        self._Qps = Qps
 
 
     def _deserialize(self, params):
-        self.Switch = params.get("Switch")
-        self.Qps = params.get("Qps")
+        self._Switch = params.get("Switch")
+        self._Qps = params.get("Qps")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1579,40 +2910,89 @@ class IpStatus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Ip: Node IP
+        :param _Ip: Node IP
         :type Ip: str
-        :param District: Node region
+        :param _District: Node region
         :type District: str
-        :param Isp: Node ISP
+        :param _Isp: Node ISP
         :type Isp: str
-        :param City: Node city
+        :param _City: Node city
         :type City: str
-        :param Status: Node status
+        :param _Status: Node status
 online: the node is online and scheduling normally
 offline: the node is offline
         :type Status: str
-        :param CreateTime: Node IP creation time
+        :param _CreateTime: Node IP creation time
         :type CreateTime: str
         """
-        self.Ip = None
-        self.District = None
-        self.Isp = None
-        self.City = None
-        self.Status = None
-        self.CreateTime = None
+        self._Ip = None
+        self._District = None
+        self._Isp = None
+        self._City = None
+        self._Status = None
+        self._CreateTime = None
+
+    @property
+    def Ip(self):
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def District(self):
+        return self._District
+
+    @District.setter
+    def District(self, District):
+        self._District = District
+
+    @property
+    def Isp(self):
+        return self._Isp
+
+    @Isp.setter
+    def Isp(self, Isp):
+        self._Isp = Isp
+
+    @property
+    def City(self):
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
 
 
     def _deserialize(self, params):
-        self.Ip = params.get("Ip")
-        self.District = params.get("District")
-        self.Isp = params.get("Isp")
-        self.City = params.get("City")
-        self.Status = params.get("Status")
-        self.CreateTime = params.get("CreateTime")
+        self._Ip = params.get("Ip")
+        self._District = params.get("District")
+        self._Isp = params.get("Isp")
+        self._City = params.get("City")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1625,52 +3005,109 @@ class Origin(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Origins: Primary origin server list. IP and the domain name of the origin server cannot be entered at the same time. Configure origin server port in the format of ["origin1:port1", "origin2:port2"]. Configure origin-pull weight in the format of ["origin1::weight1", "origin2::weight2"]. Configure both port and weight in the format of ["origin1:port1:weight1", "origin2:port2:weight2"]. Valid range of weight value: 0 - 100.
+        :param _Origins: Primary origin server list. IP and the domain name of the origin server cannot be entered at the same time. Configure origin server port in the format of ["origin1:port1", "origin2:port2"]. Configure origin-pull weight in the format of ["origin1::weight1", "origin2::weight2"]. Configure both port and weight in the format of ["origin1:port1:weight1", "origin2:port2:weight2"]. Valid range of weight value: 0 - 100.
         :type Origins: list of str
-        :param OriginType: Primary origin server type. Valid values: domain (domain name origin server), ip (IP origin server).
+        :param _OriginType: Primary origin server type. Valid values: domain (domain name origin server), ip (IP origin server).
 This is required when setting `Origins`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OriginType: str
-        :param ServerName: Host header value during origin-pull.
+        :param _ServerName: Host header value during origin-pull.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServerName: str
-        :param OriginPullProtocol: Origin-pull protocol type. Valid values: http (forced HTTP origin-pull), follow (protocol follow), https (HTTPS origin-pull).
+        :param _OriginPullProtocol: Origin-pull protocol type. Valid values: http (forced HTTP origin-pull), follow (protocol follow), https (HTTPS origin-pull).
 If this parameter is left empty, HTTP origin-pull will be used by default.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type OriginPullProtocol: str
-        :param BackupOrigins: Secondary origin server list.
+        :param _BackupOrigins: Secondary origin server list.
         :type BackupOrigins: list of str
-        :param BackupOriginType: Secondary origin server type, which is the same as `OriginType`.
+        :param _BackupOriginType: Secondary origin server type, which is the same as `OriginType`.
 This is required when setting `BackupOrigins`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type BackupOriginType: str
-        :param AdvanceHttps: HTTPS advanced origin-pull configuration
+        :param _AdvanceHttps: HTTPS advanced origin-pull configuration
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type AdvanceHttps: :class:`tencentcloud.ecdn.v20191012.models.AdvanceHttps`
         """
-        self.Origins = None
-        self.OriginType = None
-        self.ServerName = None
-        self.OriginPullProtocol = None
-        self.BackupOrigins = None
-        self.BackupOriginType = None
-        self.AdvanceHttps = None
+        self._Origins = None
+        self._OriginType = None
+        self._ServerName = None
+        self._OriginPullProtocol = None
+        self._BackupOrigins = None
+        self._BackupOriginType = None
+        self._AdvanceHttps = None
+
+    @property
+    def Origins(self):
+        return self._Origins
+
+    @Origins.setter
+    def Origins(self, Origins):
+        self._Origins = Origins
+
+    @property
+    def OriginType(self):
+        return self._OriginType
+
+    @OriginType.setter
+    def OriginType(self, OriginType):
+        self._OriginType = OriginType
+
+    @property
+    def ServerName(self):
+        return self._ServerName
+
+    @ServerName.setter
+    def ServerName(self, ServerName):
+        self._ServerName = ServerName
+
+    @property
+    def OriginPullProtocol(self):
+        return self._OriginPullProtocol
+
+    @OriginPullProtocol.setter
+    def OriginPullProtocol(self, OriginPullProtocol):
+        self._OriginPullProtocol = OriginPullProtocol
+
+    @property
+    def BackupOrigins(self):
+        return self._BackupOrigins
+
+    @BackupOrigins.setter
+    def BackupOrigins(self, BackupOrigins):
+        self._BackupOrigins = BackupOrigins
+
+    @property
+    def BackupOriginType(self):
+        return self._BackupOriginType
+
+    @BackupOriginType.setter
+    def BackupOriginType(self, BackupOriginType):
+        self._BackupOriginType = BackupOriginType
+
+    @property
+    def AdvanceHttps(self):
+        return self._AdvanceHttps
+
+    @AdvanceHttps.setter
+    def AdvanceHttps(self, AdvanceHttps):
+        self._AdvanceHttps = AdvanceHttps
 
 
     def _deserialize(self, params):
-        self.Origins = params.get("Origins")
-        self.OriginType = params.get("OriginType")
-        self.ServerName = params.get("ServerName")
-        self.OriginPullProtocol = params.get("OriginPullProtocol")
-        self.BackupOrigins = params.get("BackupOrigins")
-        self.BackupOriginType = params.get("BackupOriginType")
+        self._Origins = params.get("Origins")
+        self._OriginType = params.get("OriginType")
+        self._ServerName = params.get("ServerName")
+        self._OriginPullProtocol = params.get("OriginPullProtocol")
+        self._BackupOrigins = params.get("BackupOrigins")
+        self._BackupOriginType = params.get("BackupOriginType")
         if params.get("AdvanceHttps") is not None:
-            self.AdvanceHttps = AdvanceHttps()
-            self.AdvanceHttps._deserialize(params.get("AdvanceHttps"))
+            self._AdvanceHttps = AdvanceHttps()
+            self._AdvanceHttps._deserialize(params.get("AdvanceHttps"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1683,22 +3120,39 @@ class PurgePathCacheRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Paths: List of directories to be purged. The protocol header must be included.
+        :param _Paths: List of directories to be purged. The protocol header must be included.
         :type Paths: list of str
-        :param FlushType: Purge type. flush: purges updated resources, delete: purges all resources.
+        :param _FlushType: Purge type. flush: purges updated resources, delete: purges all resources.
         :type FlushType: str
         """
-        self.Paths = None
-        self.FlushType = None
+        self._Paths = None
+        self._FlushType = None
+
+    @property
+    def Paths(self):
+        return self._Paths
+
+    @Paths.setter
+    def Paths(self, Paths):
+        self._Paths = Paths
+
+    @property
+    def FlushType(self):
+        return self._FlushType
+
+    @FlushType.setter
+    def FlushType(self, FlushType):
+        self._FlushType = FlushType
 
 
     def _deserialize(self, params):
-        self.Paths = params.get("Paths")
-        self.FlushType = params.get("FlushType")
+        self._Paths = params.get("Paths")
+        self._FlushType = params.get("FlushType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1711,18 +3165,34 @@ class PurgePathCacheResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: Purge task ID
+        :param _TaskId: Purge task ID
         :type TaskId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TaskId = None
-        self.RequestId = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class PurgeTask(AbstractModel):
@@ -1732,38 +3202,87 @@ class PurgeTask(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: Purge task ID.
+        :param _TaskId: Purge task ID.
         :type TaskId: str
-        :param Url: Purged URL.
+        :param _Url: Purged URL.
         :type Url: str
-        :param Status: Purge task status. fail: failed, done: succeeded, process: purging.
+        :param _Status: Purge task status. fail: failed, done: succeeded, process: purging.
         :type Status: str
-        :param PurgeType: Purge type. url: URL purge; path: directory purge.
+        :param _PurgeType: Purge type. url: URL purge; path: directory purge.
         :type PurgeType: str
-        :param FlushType: Resource purge method. flush: purges updated resources, delete: purges all resources.
+        :param _FlushType: Resource purge method. flush: purges updated resources, delete: purges all resources.
         :type FlushType: str
-        :param CreateTime: Purge task submission time
+        :param _CreateTime: Purge task submission time
         :type CreateTime: str
         """
-        self.TaskId = None
-        self.Url = None
-        self.Status = None
-        self.PurgeType = None
-        self.FlushType = None
-        self.CreateTime = None
+        self._TaskId = None
+        self._Url = None
+        self._Status = None
+        self._PurgeType = None
+        self._FlushType = None
+        self._CreateTime = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def PurgeType(self):
+        return self._PurgeType
+
+    @PurgeType.setter
+    def PurgeType(self, PurgeType):
+        self._PurgeType = PurgeType
+
+    @property
+    def FlushType(self):
+        return self._FlushType
+
+    @FlushType.setter
+    def FlushType(self, FlushType):
+        self._FlushType = FlushType
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.Url = params.get("Url")
-        self.Status = params.get("Status")
-        self.PurgeType = params.get("PurgeType")
-        self.FlushType = params.get("FlushType")
-        self.CreateTime = params.get("CreateTime")
+        self._TaskId = params.get("TaskId")
+        self._Url = params.get("Url")
+        self._Status = params.get("Status")
+        self._PurgeType = params.get("PurgeType")
+        self._FlushType = params.get("FlushType")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1776,18 +3295,27 @@ class PurgeUrlsCacheRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Urls: List of URLs to be purged. The protocol header must be included.
+        :param _Urls: List of URLs to be purged. The protocol header must be included.
         :type Urls: list of str
         """
-        self.Urls = None
+        self._Urls = None
+
+    @property
+    def Urls(self):
+        return self._Urls
+
+    @Urls.setter
+    def Urls(self, Urls):
+        self._Urls = Urls
 
 
     def _deserialize(self, params):
-        self.Urls = params.get("Urls")
+        self._Urls = params.get("Urls")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1800,18 +3328,34 @@ class PurgeUrlsCacheResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: Purge task ID
+        :param _TaskId: Purge task ID
         :type TaskId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TaskId = None
-        self.RequestId = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class Quota(AbstractModel):
@@ -1821,26 +3365,51 @@ class Quota(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Batch: Quota limit for one batch submission request.
+        :param _Batch: Quota limit for one batch submission request.
         :type Batch: int
-        :param Total: Daily submission quota limit.
+        :param _Total: Daily submission quota limit.
         :type Total: int
-        :param Available: Remaining daily submission quota.
+        :param _Available: Remaining daily submission quota.
         :type Available: int
         """
-        self.Batch = None
-        self.Total = None
-        self.Available = None
+        self._Batch = None
+        self._Total = None
+        self._Available = None
+
+    @property
+    def Batch(self):
+        return self._Batch
+
+    @Batch.setter
+    def Batch(self, Batch):
+        self._Batch = Batch
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Available(self):
+        return self._Available
+
+    @Available.setter
+    def Available(self, Available):
+        self._Available = Available
 
 
     def _deserialize(self, params):
-        self.Batch = params.get("Batch")
-        self.Total = params.get("Total")
-        self.Available = params.get("Available")
+        self._Batch = params.get("Batch")
+        self._Total = params.get("Total")
+        self._Available = params.get("Available")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1853,28 +3422,45 @@ class ResourceData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Resource: Resource name, which is categorized as follows based on different query conditions:
+        :param _Resource: Resource name, which is categorized as follows based on different query conditions:
 Specific domain name: indicates the details of the specific domain name
 multiDomains: indicates aggregated details of multiple domain names
 Project ID: displays the ID of the specified project to be queried
 all: details at the account level
         :type Resource: str
-        :param EcdnData: Data details of resource
+        :param _EcdnData: Data details of resource
         :type EcdnData: :class:`tencentcloud.ecdn.v20191012.models.EcdnData`
         """
-        self.Resource = None
-        self.EcdnData = None
+        self._Resource = None
+        self._EcdnData = None
+
+    @property
+    def Resource(self):
+        return self._Resource
+
+    @Resource.setter
+    def Resource(self, Resource):
+        self._Resource = Resource
+
+    @property
+    def EcdnData(self):
+        return self._EcdnData
+
+    @EcdnData.setter
+    def EcdnData(self, EcdnData):
+        self._EcdnData = EcdnData
 
 
     def _deserialize(self, params):
-        self.Resource = params.get("Resource")
+        self._Resource = params.get("Resource")
         if params.get("EcdnData") is not None:
-            self.EcdnData = EcdnData()
-            self.EcdnData._deserialize(params.get("EcdnData"))
+            self._EcdnData = EcdnData()
+            self._EcdnData._deserialize(params.get("EcdnData"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1887,28 +3473,45 @@ class ResponseHeader(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: Custom response header switch. Valid values: on, off.
+        :param _Switch: Custom response header switch. Valid values: on, off.
         :type Switch: str
-        :param HeaderRules: Custom response header rule array.
+        :param _HeaderRules: Custom response header rule array.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type HeaderRules: list of HttpHeaderPathRule
         """
-        self.Switch = None
-        self.HeaderRules = None
+        self._Switch = None
+        self._HeaderRules = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def HeaderRules(self):
+        return self._HeaderRules
+
+    @HeaderRules.setter
+    def HeaderRules(self, HeaderRules):
+        self._HeaderRules = HeaderRules
 
 
     def _deserialize(self, params):
-        self.Switch = params.get("Switch")
+        self._Switch = params.get("Switch")
         if params.get("HeaderRules") is not None:
-            self.HeaderRules = []
+            self._HeaderRules = []
             for item in params.get("HeaderRules"):
                 obj = HttpHeaderPathRule()
                 obj._deserialize(item)
-                self.HeaderRules.append(obj)
+                self._HeaderRules.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1921,49 +3524,106 @@ class ServerCert(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CertId: Server certificate ID, which is required if the certificate is a Tencent Cloud-hosted certificate.
+        :param _CertId: Server certificate ID, which is required if the certificate is a Tencent Cloud-hosted certificate.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CertId: str
-        :param CertName: Server certificate name, which is required if the certificate is a Tencent Cloud-hosted certificate.
+        :param _CertName: Server certificate name, which is required if the certificate is a Tencent Cloud-hosted certificate.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CertName: str
-        :param Certificate: Server certificate information, which is required when uploading your own certificate and must contain complete certificate chain information.
+        :param _Certificate: Server certificate information, which is required when uploading your own certificate and must contain complete certificate chain information.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Certificate: str
-        :param PrivateKey: Server key information, which is required when uploading your own certificate.
+        :param _PrivateKey: Server key information, which is required when uploading your own certificate.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type PrivateKey: str
-        :param ExpireTime: Certificate expiration time.
+        :param _ExpireTime: Certificate expiration time.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ExpireTime: str
-        :param DeployTime: Certificate issuance time.
+        :param _DeployTime: Certificate issuance time.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DeployTime: str
-        :param Message: Certificate remarks.
+        :param _Message: Certificate remarks.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Message: str
         """
-        self.CertId = None
-        self.CertName = None
-        self.Certificate = None
-        self.PrivateKey = None
-        self.ExpireTime = None
-        self.DeployTime = None
-        self.Message = None
+        self._CertId = None
+        self._CertName = None
+        self._Certificate = None
+        self._PrivateKey = None
+        self._ExpireTime = None
+        self._DeployTime = None
+        self._Message = None
+
+    @property
+    def CertId(self):
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
+
+    @property
+    def CertName(self):
+        return self._CertName
+
+    @CertName.setter
+    def CertName(self, CertName):
+        self._CertName = CertName
+
+    @property
+    def Certificate(self):
+        return self._Certificate
+
+    @Certificate.setter
+    def Certificate(self, Certificate):
+        self._Certificate = Certificate
+
+    @property
+    def PrivateKey(self):
+        return self._PrivateKey
+
+    @PrivateKey.setter
+    def PrivateKey(self, PrivateKey):
+        self._PrivateKey = PrivateKey
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def DeployTime(self):
+        return self._DeployTime
+
+    @DeployTime.setter
+    def DeployTime(self, DeployTime):
+        self._DeployTime = DeployTime
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
 
 
     def _deserialize(self, params):
-        self.CertId = params.get("CertId")
-        self.CertName = params.get("CertName")
-        self.Certificate = params.get("Certificate")
-        self.PrivateKey = params.get("PrivateKey")
-        self.ExpireTime = params.get("ExpireTime")
-        self.DeployTime = params.get("DeployTime")
-        self.Message = params.get("Message")
+        self._CertId = params.get("CertId")
+        self._CertName = params.get("CertName")
+        self._Certificate = params.get("Certificate")
+        self._PrivateKey = params.get("PrivateKey")
+        self._ExpireTime = params.get("ExpireTime")
+        self._DeployTime = params.get("DeployTime")
+        self._Message = params.get("Message")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1976,24 +3636,41 @@ class Sort(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Key: Sort by field. Valid values:
+        :param _Key: Sort by field. Valid values:
 createTime: domain name creation time
 certExpireTime: certificate expiration time
         :type Key: str
-        :param Sequence: asc/desc. Default value: desc.
+        :param _Sequence: asc/desc. Default value: desc.
         :type Sequence: str
         """
-        self.Key = None
-        self.Sequence = None
+        self._Key = None
+        self._Sequence = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Sequence(self):
+        return self._Sequence
+
+    @Sequence.setter
+    def Sequence(self, Sequence):
+        self._Sequence = Sequence
 
 
     def _deserialize(self, params):
-        self.Key = params.get("Key")
-        self.Sequence = params.get("Sequence")
+        self._Key = params.get("Key")
+        self._Sequence = params.get("Sequence")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2006,18 +3683,27 @@ class StartEcdnDomainRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Domain: Domain name to be enabled.
+        :param _Domain: Domain name to be enabled.
         :type Domain: str
         """
-        self.Domain = None
+        self._Domain = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
 
 
     def _deserialize(self, params):
-        self.Domain = params.get("Domain")
+        self._Domain = params.get("Domain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2030,14 +3716,22 @@ class StartEcdnDomainResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class StopEcdnDomainRequest(AbstractModel):
@@ -2047,18 +3741,27 @@ class StopEcdnDomainRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Domain: Domain name to be disabled.
+        :param _Domain: Domain name to be disabled.
         :type Domain: str
         """
-        self.Domain = None
+        self._Domain = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
 
 
     def _deserialize(self, params):
-        self.Domain = params.get("Domain")
+        self._Domain = params.get("Domain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2071,14 +3774,22 @@ class StopEcdnDomainResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class Tag(AbstractModel):
@@ -2088,24 +3799,41 @@ class Tag(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TagKey: Tag key.
+        :param _TagKey: Tag key.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type TagKey: str
-        :param TagValue: Tag value.
+        :param _TagValue: Tag value.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type TagValue: str
         """
-        self.TagKey = None
-        self.TagValue = None
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
 
 
     def _deserialize(self, params):
-        self.TagKey = params.get("TagKey")
-        self.TagValue = params.get("TagValue")
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2118,23 +3846,40 @@ class TimestampData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Time: Statistical time point in forward rounding mode
+        :param _Time: Statistical time point in forward rounding mode
 Taking the 5-minute granularity as an example, 13:35:00 indicates that the statistical interval is between 13:35:00 and 13:39:59
         :type Time: str
-        :param Value: Data value
+        :param _Value: Data value
         :type Value: list of float
         """
-        self.Time = None
-        self.Value = None
+        self._Time = None
+        self._Value = None
+
+    @property
+    def Time(self):
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
 
 
     def _deserialize(self, params):
-        self.Time = params.get("Time")
-        self.Value = params.get("Value")
+        self._Time = params.get("Time")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2147,80 +3892,177 @@ class UpdateDomainConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Domain: Domain name.
+        :param _Domain: Domain name.
         :type Domain: str
-        :param Origin: Origin server configuration.
+        :param _Origin: Origin server configuration.
         :type Origin: :class:`tencentcloud.ecdn.v20191012.models.Origin`
-        :param ProjectId: Project ID.
+        :param _ProjectId: Project ID.
         :type ProjectId: int
-        :param IpFilter: IP blocklist/allowlist configuration.
+        :param _IpFilter: IP blocklist/allowlist configuration.
         :type IpFilter: :class:`tencentcloud.ecdn.v20191012.models.IpFilter`
-        :param IpFreqLimit: IP access limit configuration.
+        :param _IpFreqLimit: IP access limit configuration.
         :type IpFreqLimit: :class:`tencentcloud.ecdn.v20191012.models.IpFreqLimit`
-        :param ResponseHeader: Origin server response header configuration.
+        :param _ResponseHeader: Origin server response header configuration.
         :type ResponseHeader: :class:`tencentcloud.ecdn.v20191012.models.ResponseHeader`
-        :param CacheKey: Node caching configuration.
+        :param _CacheKey: Node caching configuration.
         :type CacheKey: :class:`tencentcloud.ecdn.v20191012.models.CacheKey`
-        :param Cache: Caching rule configuration.
+        :param _Cache: Caching rule configuration.
         :type Cache: :class:`tencentcloud.ecdn.v20191012.models.Cache`
-        :param Https: HTTPS configuration.
+        :param _Https: HTTPS configuration.
         :type Https: :class:`tencentcloud.ecdn.v20191012.models.Https`
-        :param ForceRedirect: Forced access protocol redirection configuration.
+        :param _ForceRedirect: Forced access protocol redirection configuration.
         :type ForceRedirect: :class:`tencentcloud.ecdn.v20191012.models.ForceRedirect`
-        :param Area: Domain name acceleration region. Valid values: mainland (acceleration in Mainland China), overseas (acceleration outside Mainland China), global (global acceleration).
+        :param _Area: Domain name acceleration region. Valid values: mainland (acceleration in Mainland China), overseas (acceleration outside Mainland China), global (global acceleration).
         :type Area: str
-        :param WebSocket: WebSocket configuration.
+        :param _WebSocket: WebSocket configuration.
         :type WebSocket: :class:`tencentcloud.ecdn.v20191012.models.WebSocket`
         """
-        self.Domain = None
-        self.Origin = None
-        self.ProjectId = None
-        self.IpFilter = None
-        self.IpFreqLimit = None
-        self.ResponseHeader = None
-        self.CacheKey = None
-        self.Cache = None
-        self.Https = None
-        self.ForceRedirect = None
-        self.Area = None
-        self.WebSocket = None
+        self._Domain = None
+        self._Origin = None
+        self._ProjectId = None
+        self._IpFilter = None
+        self._IpFreqLimit = None
+        self._ResponseHeader = None
+        self._CacheKey = None
+        self._Cache = None
+        self._Https = None
+        self._ForceRedirect = None
+        self._Area = None
+        self._WebSocket = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Origin(self):
+        return self._Origin
+
+    @Origin.setter
+    def Origin(self, Origin):
+        self._Origin = Origin
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def IpFilter(self):
+        return self._IpFilter
+
+    @IpFilter.setter
+    def IpFilter(self, IpFilter):
+        self._IpFilter = IpFilter
+
+    @property
+    def IpFreqLimit(self):
+        return self._IpFreqLimit
+
+    @IpFreqLimit.setter
+    def IpFreqLimit(self, IpFreqLimit):
+        self._IpFreqLimit = IpFreqLimit
+
+    @property
+    def ResponseHeader(self):
+        return self._ResponseHeader
+
+    @ResponseHeader.setter
+    def ResponseHeader(self, ResponseHeader):
+        self._ResponseHeader = ResponseHeader
+
+    @property
+    def CacheKey(self):
+        return self._CacheKey
+
+    @CacheKey.setter
+    def CacheKey(self, CacheKey):
+        self._CacheKey = CacheKey
+
+    @property
+    def Cache(self):
+        return self._Cache
+
+    @Cache.setter
+    def Cache(self, Cache):
+        self._Cache = Cache
+
+    @property
+    def Https(self):
+        return self._Https
+
+    @Https.setter
+    def Https(self, Https):
+        self._Https = Https
+
+    @property
+    def ForceRedirect(self):
+        return self._ForceRedirect
+
+    @ForceRedirect.setter
+    def ForceRedirect(self, ForceRedirect):
+        self._ForceRedirect = ForceRedirect
+
+    @property
+    def Area(self):
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def WebSocket(self):
+        return self._WebSocket
+
+    @WebSocket.setter
+    def WebSocket(self, WebSocket):
+        self._WebSocket = WebSocket
 
 
     def _deserialize(self, params):
-        self.Domain = params.get("Domain")
+        self._Domain = params.get("Domain")
         if params.get("Origin") is not None:
-            self.Origin = Origin()
-            self.Origin._deserialize(params.get("Origin"))
-        self.ProjectId = params.get("ProjectId")
+            self._Origin = Origin()
+            self._Origin._deserialize(params.get("Origin"))
+        self._ProjectId = params.get("ProjectId")
         if params.get("IpFilter") is not None:
-            self.IpFilter = IpFilter()
-            self.IpFilter._deserialize(params.get("IpFilter"))
+            self._IpFilter = IpFilter()
+            self._IpFilter._deserialize(params.get("IpFilter"))
         if params.get("IpFreqLimit") is not None:
-            self.IpFreqLimit = IpFreqLimit()
-            self.IpFreqLimit._deserialize(params.get("IpFreqLimit"))
+            self._IpFreqLimit = IpFreqLimit()
+            self._IpFreqLimit._deserialize(params.get("IpFreqLimit"))
         if params.get("ResponseHeader") is not None:
-            self.ResponseHeader = ResponseHeader()
-            self.ResponseHeader._deserialize(params.get("ResponseHeader"))
+            self._ResponseHeader = ResponseHeader()
+            self._ResponseHeader._deserialize(params.get("ResponseHeader"))
         if params.get("CacheKey") is not None:
-            self.CacheKey = CacheKey()
-            self.CacheKey._deserialize(params.get("CacheKey"))
+            self._CacheKey = CacheKey()
+            self._CacheKey._deserialize(params.get("CacheKey"))
         if params.get("Cache") is not None:
-            self.Cache = Cache()
-            self.Cache._deserialize(params.get("Cache"))
+            self._Cache = Cache()
+            self._Cache._deserialize(params.get("Cache"))
         if params.get("Https") is not None:
-            self.Https = Https()
-            self.Https._deserialize(params.get("Https"))
+            self._Https = Https()
+            self._Https._deserialize(params.get("Https"))
         if params.get("ForceRedirect") is not None:
-            self.ForceRedirect = ForceRedirect()
-            self.ForceRedirect._deserialize(params.get("ForceRedirect"))
-        self.Area = params.get("Area")
+            self._ForceRedirect = ForceRedirect()
+            self._ForceRedirect._deserialize(params.get("ForceRedirect"))
+        self._Area = params.get("Area")
         if params.get("WebSocket") is not None:
-            self.WebSocket = WebSocket()
-            self.WebSocket._deserialize(params.get("WebSocket"))
+            self._WebSocket = WebSocket()
+            self._WebSocket._deserialize(params.get("WebSocket"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2233,14 +4075,22 @@ class UpdateDomainConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class WebSocket(AbstractModel):
@@ -2250,25 +4100,42 @@ class WebSocket(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: Whether to enable custom WebSocket timeout setting. When it’s `off`: WebSocket connection is supported, and the default timeout period is 15 seconds. To change the timeout period, please set it to `on`.
+        :param _Switch: Whether to enable custom WebSocket timeout setting. When it’s `off`: WebSocket connection is supported, and the default timeout period is 15 seconds. To change the timeout period, please set it to `on`.
 
 * WebSocket is now only available for beta users. To use it, please submit a ticket.
         :type Switch: str
-        :param Timeout: Sets timeout period in seconds. Maximum value: 65
+        :param _Timeout: Sets timeout period in seconds. Maximum value: 65
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Timeout: int
         """
-        self.Switch = None
-        self.Timeout = None
+        self._Switch = None
+        self._Timeout = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Timeout(self):
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
 
 
     def _deserialize(self, params):
-        self.Switch = params.get("Switch")
-        self.Timeout = params.get("Timeout")
+        self._Switch = params.get("Switch")
+        self._Timeout = params.get("Timeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

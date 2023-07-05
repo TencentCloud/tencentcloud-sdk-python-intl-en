@@ -25,56 +25,137 @@ class Activity(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ActivityId: Activity ID
+        :param _ActivityId: Activity ID
         :type ActivityId: str
-        :param ComputeNodeId: Compute node ID
+        :param _ComputeNodeId: Compute node ID
         :type ComputeNodeId: str
-        :param ComputeNodeActivityType: Activity type. Values: `CREATE_COMPUTE_NODE`, `TERMINATE_COMPUTE_NODE`
+        :param _ComputeNodeActivityType: Activity type. Values: `CREATE_COMPUTE_NODE`, `TERMINATE_COMPUTE_NODE`
         :type ComputeNodeActivityType: str
-        :param EnvId: Compute environment ID
+        :param _EnvId: Compute environment ID
         :type EnvId: str
-        :param Cause: Cause of the activity
+        :param _Cause: Cause of the activity
         :type Cause: str
-        :param ActivityState: Activity state
+        :param _ActivityState: Activity state
         :type ActivityState: str
-        :param StateReason: Reason of going to this state
+        :param _StateReason: Reason of going to this state
         :type StateReason: str
-        :param StartTime: Activity start time
+        :param _StartTime: Activity start time
         :type StartTime: str
-        :param EndTime: Activity end time
+        :param _EndTime: Activity end time
 Note: This field may return `null`, indicating that no valid value was found.
         :type EndTime: str
-        :param InstanceId: CVM instance ID
+        :param _InstanceId: CVM instance ID
 Note: This field may return `null`, indicating that no valid value was found.
         :type InstanceId: str
         """
-        self.ActivityId = None
-        self.ComputeNodeId = None
-        self.ComputeNodeActivityType = None
-        self.EnvId = None
-        self.Cause = None
-        self.ActivityState = None
-        self.StateReason = None
-        self.StartTime = None
-        self.EndTime = None
-        self.InstanceId = None
+        self._ActivityId = None
+        self._ComputeNodeId = None
+        self._ComputeNodeActivityType = None
+        self._EnvId = None
+        self._Cause = None
+        self._ActivityState = None
+        self._StateReason = None
+        self._StartTime = None
+        self._EndTime = None
+        self._InstanceId = None
+
+    @property
+    def ActivityId(self):
+        return self._ActivityId
+
+    @ActivityId.setter
+    def ActivityId(self, ActivityId):
+        self._ActivityId = ActivityId
+
+    @property
+    def ComputeNodeId(self):
+        return self._ComputeNodeId
+
+    @ComputeNodeId.setter
+    def ComputeNodeId(self, ComputeNodeId):
+        self._ComputeNodeId = ComputeNodeId
+
+    @property
+    def ComputeNodeActivityType(self):
+        return self._ComputeNodeActivityType
+
+    @ComputeNodeActivityType.setter
+    def ComputeNodeActivityType(self, ComputeNodeActivityType):
+        self._ComputeNodeActivityType = ComputeNodeActivityType
+
+    @property
+    def EnvId(self):
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def Cause(self):
+        return self._Cause
+
+    @Cause.setter
+    def Cause(self, Cause):
+        self._Cause = Cause
+
+    @property
+    def ActivityState(self):
+        return self._ActivityState
+
+    @ActivityState.setter
+    def ActivityState(self, ActivityState):
+        self._ActivityState = ActivityState
+
+    @property
+    def StateReason(self):
+        return self._StateReason
+
+    @StateReason.setter
+    def StateReason(self, StateReason):
+        self._StateReason = StateReason
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
 
     def _deserialize(self, params):
-        self.ActivityId = params.get("ActivityId")
-        self.ComputeNodeId = params.get("ComputeNodeId")
-        self.ComputeNodeActivityType = params.get("ComputeNodeActivityType")
-        self.EnvId = params.get("EnvId")
-        self.Cause = params.get("Cause")
-        self.ActivityState = params.get("ActivityState")
-        self.StateReason = params.get("StateReason")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.InstanceId = params.get("InstanceId")
+        self._ActivityId = params.get("ActivityId")
+        self._ComputeNodeId = params.get("ComputeNodeId")
+        self._ComputeNodeActivityType = params.get("ComputeNodeActivityType")
+        self._EnvId = params.get("EnvId")
+        self._Cause = params.get("Cause")
+        self._ActivityState = params.get("ActivityState")
+        self._StateReason = params.get("StateReason")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -87,26 +168,51 @@ class AgentRunningMode(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Scene: Scenario type. Windows is supported
+        :param _Scene: Scenario type. Windows is supported
         :type Scene: str
-        :param User: The user that runs the Agent
+        :param _User: The user that runs the Agent
         :type User: str
-        :param Session: The session that runs the Agent
+        :param _Session: The session that runs the Agent
         :type Session: str
         """
-        self.Scene = None
-        self.User = None
-        self.Session = None
+        self._Scene = None
+        self._User = None
+        self._Session = None
+
+    @property
+    def Scene(self):
+        return self._Scene
+
+    @Scene.setter
+    def Scene(self, Scene):
+        self._Scene = Scene
+
+    @property
+    def User(self):
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Session(self):
+        return self._Session
+
+    @Session.setter
+    def Session(self, Session):
+        self._Session = Session
 
 
     def _deserialize(self, params):
-        self.Scene = params.get("Scene")
-        self.User = params.get("User")
-        self.Session = params.get("Session")
+        self._Scene = params.get("Scene")
+        self._User = params.get("User")
+        self._Session = params.get("Session")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -119,39 +225,72 @@ class AnonymousComputeEnv(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EnvType: Compute environment management type
+        :param _EnvType: Compute environment management type
         :type EnvType: str
-        :param EnvData: Compute environment's parameters
+        :param _EnvData: Compute environment's parameters
         :type EnvData: :class:`tencentcloud.batch.v20170312.models.EnvData`
-        :param MountDataDisks: Data disk mounting option
+        :param _MountDataDisks: Data disk mounting option
         :type MountDataDisks: list of MountDataDisk
-        :param AgentRunningMode: Agent running mode; applicable for Windows
+        :param _AgentRunningMode: Agent running mode; applicable for Windows
         :type AgentRunningMode: :class:`tencentcloud.batch.v20170312.models.AgentRunningMode`
         """
-        self.EnvType = None
-        self.EnvData = None
-        self.MountDataDisks = None
-        self.AgentRunningMode = None
+        self._EnvType = None
+        self._EnvData = None
+        self._MountDataDisks = None
+        self._AgentRunningMode = None
+
+    @property
+    def EnvType(self):
+        return self._EnvType
+
+    @EnvType.setter
+    def EnvType(self, EnvType):
+        self._EnvType = EnvType
+
+    @property
+    def EnvData(self):
+        return self._EnvData
+
+    @EnvData.setter
+    def EnvData(self, EnvData):
+        self._EnvData = EnvData
+
+    @property
+    def MountDataDisks(self):
+        return self._MountDataDisks
+
+    @MountDataDisks.setter
+    def MountDataDisks(self, MountDataDisks):
+        self._MountDataDisks = MountDataDisks
+
+    @property
+    def AgentRunningMode(self):
+        return self._AgentRunningMode
+
+    @AgentRunningMode.setter
+    def AgentRunningMode(self, AgentRunningMode):
+        self._AgentRunningMode = AgentRunningMode
 
 
     def _deserialize(self, params):
-        self.EnvType = params.get("EnvType")
+        self._EnvType = params.get("EnvType")
         if params.get("EnvData") is not None:
-            self.EnvData = EnvData()
-            self.EnvData._deserialize(params.get("EnvData"))
+            self._EnvData = EnvData()
+            self._EnvData._deserialize(params.get("EnvData"))
         if params.get("MountDataDisks") is not None:
-            self.MountDataDisks = []
+            self._MountDataDisks = []
             for item in params.get("MountDataDisks"):
                 obj = MountDataDisk()
                 obj._deserialize(item)
-                self.MountDataDisks.append(obj)
+                self._MountDataDisks.append(obj)
         if params.get("AgentRunningMode") is not None:
-            self.AgentRunningMode = AgentRunningMode()
-            self.AgentRunningMode._deserialize(params.get("AgentRunningMode"))
+            self._AgentRunningMode = AgentRunningMode()
+            self._AgentRunningMode._deserialize(params.get("AgentRunningMode"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -164,32 +303,65 @@ class Application(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Command: Task execution command
+        :param _Command: Task execution command
         :type Command: str
-        :param DeliveryForm: Delivery form of the application. Values: `PACKAGE` (package stored in a remote location), `LOCAL` (local computer).
+        :param _DeliveryForm: Delivery form of the application. Values: `PACKAGE` (package stored in a remote location), `LOCAL` (local computer).
         :type DeliveryForm: str
-        :param PackagePath: Remote storage path of the application package
+        :param _PackagePath: Remote storage path of the application package
         :type PackagePath: str
-        :param Docker: Relevant configuration of the Docker used by the application. In case that the Docker configuration is used, "LOCAL" DeliveryForm means that the application software inside the Docker image is used directly and run in Docker mode; "PACKAGE" DeliveryForm means that the remote application package is run in Docker mode after being injected into the Docker image. To avoid compatibility issues with different versions of Docker, the Docker installation package and relevant dependencies are taken care of by BatchCompute. For custom images where Docker has already been installed, uninstall Docker first and then use the Docker feature.
+        :param _Docker: Relevant configuration of the Docker used by the application. In case that the Docker configuration is used, "LOCAL" DeliveryForm means that the application software inside the Docker image is used directly and run in Docker mode; "PACKAGE" DeliveryForm means that the remote application package is run in Docker mode after being injected into the Docker image. To avoid compatibility issues with different versions of Docker, the Docker installation package and relevant dependencies are taken care of by BatchCompute. For custom images where Docker has already been installed, uninstall Docker first and then use the Docker feature.
         :type Docker: :class:`tencentcloud.batch.v20170312.models.Docker`
         """
-        self.Command = None
-        self.DeliveryForm = None
-        self.PackagePath = None
-        self.Docker = None
+        self._Command = None
+        self._DeliveryForm = None
+        self._PackagePath = None
+        self._Docker = None
+
+    @property
+    def Command(self):
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
+
+    @property
+    def DeliveryForm(self):
+        return self._DeliveryForm
+
+    @DeliveryForm.setter
+    def DeliveryForm(self, DeliveryForm):
+        self._DeliveryForm = DeliveryForm
+
+    @property
+    def PackagePath(self):
+        return self._PackagePath
+
+    @PackagePath.setter
+    def PackagePath(self, PackagePath):
+        self._PackagePath = PackagePath
+
+    @property
+    def Docker(self):
+        return self._Docker
+
+    @Docker.setter
+    def Docker(self, Docker):
+        self._Docker = Docker
 
 
     def _deserialize(self, params):
-        self.Command = params.get("Command")
-        self.DeliveryForm = params.get("DeliveryForm")
-        self.PackagePath = params.get("PackagePath")
+        self._Command = params.get("Command")
+        self._DeliveryForm = params.get("DeliveryForm")
+        self._PackagePath = params.get("PackagePath")
         if params.get("Docker") is not None:
-            self.Docker = Docker()
-            self.Docker._deserialize(params.get("Docker"))
+            self._Docker = Docker()
+            self._Docker._deserialize(params.get("Docker"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -202,27 +374,44 @@ class AttachInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EnvId: Compute environment ID
+        :param _EnvId: Compute environment ID
         :type EnvId: str
-        :param Instances: List of instances that added to the compute environment
+        :param _Instances: List of instances that added to the compute environment
         :type Instances: list of Instance
         """
-        self.EnvId = None
-        self.Instances = None
+        self._EnvId = None
+        self._Instances = None
+
+    @property
+    def EnvId(self):
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def Instances(self):
+        return self._Instances
+
+    @Instances.setter
+    def Instances(self, Instances):
+        self._Instances = Instances
 
 
     def _deserialize(self, params):
-        self.EnvId = params.get("EnvId")
+        self._EnvId = params.get("EnvId")
         if params.get("Instances") is not None:
-            self.Instances = []
+            self._Instances = []
             for item in params.get("Instances"):
                 obj = Instance()
                 obj._deserialize(item)
-                self.Instances.append(obj)
+                self._Instances.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -235,14 +424,22 @@ class AttachInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class Authentication(AbstractModel):
@@ -252,26 +449,51 @@ class Authentication(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Scene: Authentication scenario such as COS
+        :param _Scene: Authentication scenario such as COS
         :type Scene: str
-        :param SecretId: SecretId
+        :param _SecretId: SecretId
         :type SecretId: str
-        :param SecretKey: SecretKey
+        :param _SecretKey: SecretKey
         :type SecretKey: str
         """
-        self.Scene = None
-        self.SecretId = None
-        self.SecretKey = None
+        self._Scene = None
+        self._SecretId = None
+        self._SecretKey = None
+
+    @property
+    def Scene(self):
+        return self._Scene
+
+    @Scene.setter
+    def Scene(self, Scene):
+        self._Scene = Scene
+
+    @property
+    def SecretId(self):
+        return self._SecretId
+
+    @SecretId.setter
+    def SecretId(self, SecretId):
+        self._SecretId = SecretId
+
+    @property
+    def SecretKey(self):
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
 
 
     def _deserialize(self, params):
-        self.Scene = params.get("Scene")
-        self.SecretId = params.get("SecretId")
-        self.SecretKey = params.get("SecretKey")
+        self._Scene = params.get("Scene")
+        self._SecretId = params.get("SecretId")
+        self._SecretKey = params.get("SecretKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -284,92 +506,181 @@ class ComputeEnvCreateInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EnvId: Compute environment ID
+        :param _EnvId: Compute environment ID
         :type EnvId: str
-        :param EnvName: Compute environment name
+        :param _EnvName: Compute environment name
 Note: This field may return `null`, indicating that no valid value was found.
         :type EnvName: str
-        :param EnvDescription: Compute environment description
+        :param _EnvDescription: Compute environment description
 Note: This field may return `null`, indicating that no valid value was found.
         :type EnvDescription: str
-        :param EnvType: Compute environment type. Only "MANAGED" type is supported
+        :param _EnvType: Compute environment type. Only "MANAGED" type is supported
         :type EnvType: str
-        :param EnvData: Compute environment parameter
+        :param _EnvData: Compute environment parameter
         :type EnvData: :class:`tencentcloud.batch.v20170312.models.EnvData`
-        :param MountDataDisks: Data disk mounting option
+        :param _MountDataDisks: Data disk mounting option
 Note: This field may return `null`, indicating that no valid value was found.
         :type MountDataDisks: list of MountDataDisk
-        :param InputMappings: Input mapping
+        :param _InputMappings: Input mapping
 Note: This field may return `null`, indicating that no valid value was found.
         :type InputMappings: list of InputMapping
-        :param Authentications: Authorization information
+        :param _Authentications: Authorization information
 Note: This field may return `null`, indicating that no valid value was found.
         :type Authentications: list of Authentication
-        :param Notifications: Notification information
+        :param _Notifications: Notification information
 Note: This field may return `null`, indicating that no valid value was found.
         :type Notifications: list of Notification
-        :param DesiredComputeNodeCount: Number of desired compute nodes
+        :param _DesiredComputeNodeCount: Number of desired compute nodes
         :type DesiredComputeNodeCount: int
-        :param Tags: Tag list of the compute environment.
+        :param _Tags: Tag list of the compute environment.
 Note: This field may return `null`, indicating that no valid value was found.
         :type Tags: list of Tag
         """
-        self.EnvId = None
-        self.EnvName = None
-        self.EnvDescription = None
-        self.EnvType = None
-        self.EnvData = None
-        self.MountDataDisks = None
-        self.InputMappings = None
-        self.Authentications = None
-        self.Notifications = None
-        self.DesiredComputeNodeCount = None
-        self.Tags = None
+        self._EnvId = None
+        self._EnvName = None
+        self._EnvDescription = None
+        self._EnvType = None
+        self._EnvData = None
+        self._MountDataDisks = None
+        self._InputMappings = None
+        self._Authentications = None
+        self._Notifications = None
+        self._DesiredComputeNodeCount = None
+        self._Tags = None
+
+    @property
+    def EnvId(self):
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def EnvName(self):
+        return self._EnvName
+
+    @EnvName.setter
+    def EnvName(self, EnvName):
+        self._EnvName = EnvName
+
+    @property
+    def EnvDescription(self):
+        return self._EnvDescription
+
+    @EnvDescription.setter
+    def EnvDescription(self, EnvDescription):
+        self._EnvDescription = EnvDescription
+
+    @property
+    def EnvType(self):
+        return self._EnvType
+
+    @EnvType.setter
+    def EnvType(self, EnvType):
+        self._EnvType = EnvType
+
+    @property
+    def EnvData(self):
+        return self._EnvData
+
+    @EnvData.setter
+    def EnvData(self, EnvData):
+        self._EnvData = EnvData
+
+    @property
+    def MountDataDisks(self):
+        return self._MountDataDisks
+
+    @MountDataDisks.setter
+    def MountDataDisks(self, MountDataDisks):
+        self._MountDataDisks = MountDataDisks
+
+    @property
+    def InputMappings(self):
+        return self._InputMappings
+
+    @InputMappings.setter
+    def InputMappings(self, InputMappings):
+        self._InputMappings = InputMappings
+
+    @property
+    def Authentications(self):
+        return self._Authentications
+
+    @Authentications.setter
+    def Authentications(self, Authentications):
+        self._Authentications = Authentications
+
+    @property
+    def Notifications(self):
+        return self._Notifications
+
+    @Notifications.setter
+    def Notifications(self, Notifications):
+        self._Notifications = Notifications
+
+    @property
+    def DesiredComputeNodeCount(self):
+        return self._DesiredComputeNodeCount
+
+    @DesiredComputeNodeCount.setter
+    def DesiredComputeNodeCount(self, DesiredComputeNodeCount):
+        self._DesiredComputeNodeCount = DesiredComputeNodeCount
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
-        self.EnvId = params.get("EnvId")
-        self.EnvName = params.get("EnvName")
-        self.EnvDescription = params.get("EnvDescription")
-        self.EnvType = params.get("EnvType")
+        self._EnvId = params.get("EnvId")
+        self._EnvName = params.get("EnvName")
+        self._EnvDescription = params.get("EnvDescription")
+        self._EnvType = params.get("EnvType")
         if params.get("EnvData") is not None:
-            self.EnvData = EnvData()
-            self.EnvData._deserialize(params.get("EnvData"))
+            self._EnvData = EnvData()
+            self._EnvData._deserialize(params.get("EnvData"))
         if params.get("MountDataDisks") is not None:
-            self.MountDataDisks = []
+            self._MountDataDisks = []
             for item in params.get("MountDataDisks"):
                 obj = MountDataDisk()
                 obj._deserialize(item)
-                self.MountDataDisks.append(obj)
+                self._MountDataDisks.append(obj)
         if params.get("InputMappings") is not None:
-            self.InputMappings = []
+            self._InputMappings = []
             for item in params.get("InputMappings"):
                 obj = InputMapping()
                 obj._deserialize(item)
-                self.InputMappings.append(obj)
+                self._InputMappings.append(obj)
         if params.get("Authentications") is not None:
-            self.Authentications = []
+            self._Authentications = []
             for item in params.get("Authentications"):
                 obj = Authentication()
                 obj._deserialize(item)
-                self.Authentications.append(obj)
+                self._Authentications.append(obj)
         if params.get("Notifications") is not None:
-            self.Notifications = []
+            self._Notifications = []
             for item in params.get("Notifications"):
                 obj = Notification()
                 obj._deserialize(item)
-                self.Notifications.append(obj)
-        self.DesiredComputeNodeCount = params.get("DesiredComputeNodeCount")
+                self._Notifications.append(obj)
+        self._DesiredComputeNodeCount = params.get("DesiredComputeNodeCount")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -382,18 +693,27 @@ class ComputeEnvData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceTypes: List of CVM instance types
+        :param _InstanceTypes: List of CVM instance types
         :type InstanceTypes: list of str
         """
-        self.InstanceTypes = None
+        self._InstanceTypes = None
+
+    @property
+    def InstanceTypes(self):
+        return self._InstanceTypes
+
+    @InstanceTypes.setter
+    def InstanceTypes(self, InstanceTypes):
+        self._InstanceTypes = InstanceTypes
 
 
     def _deserialize(self, params):
-        self.InstanceTypes = params.get("InstanceTypes")
+        self._InstanceTypes = params.get("InstanceTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -406,68 +726,157 @@ class ComputeEnvView(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EnvId: Compute environment ID
+        :param _EnvId: Compute environment ID
         :type EnvId: str
-        :param EnvName: Compute environment name
+        :param _EnvName: Compute environment name
         :type EnvName: str
-        :param Placement: Location information
+        :param _Placement: Location information
         :type Placement: :class:`tencentcloud.batch.v20170312.models.Placement`
-        :param CreateTime: Creation time
+        :param _CreateTime: Creation time
         :type CreateTime: str
-        :param ComputeNodeMetrics: Compute node statistical metrics
+        :param _ComputeNodeMetrics: Compute node statistical metrics
         :type ComputeNodeMetrics: :class:`tencentcloud.batch.v20170312.models.ComputeNodeMetrics`
-        :param EnvType: Compute environment type
+        :param _EnvType: Compute environment type
         :type EnvType: str
-        :param DesiredComputeNodeCount: Number of desired compute nodes
+        :param _DesiredComputeNodeCount: Number of desired compute nodes
         :type DesiredComputeNodeCount: int
-        :param ResourceType: Compute environment resource type. Values: `CVM`, `CPM` (Bare Metal)
+        :param _ResourceType: Compute environment resource type. Values: `CVM`, `CPM` (Bare Metal)
         :type ResourceType: str
-        :param NextAction: Next action
+        :param _NextAction: Next action
         :type NextAction: str
-        :param AttachedComputeNodeCount: Number of compute nodes added to the compute environment
+        :param _AttachedComputeNodeCount: Number of compute nodes added to the compute environment
         :type AttachedComputeNodeCount: int
-        :param Tags: Tag list bound to the compute environment.
+        :param _Tags: Tag list bound to the compute environment.
 Note: This field may return `null`, indicating that no valid value was found.
         :type Tags: list of Tag
         """
-        self.EnvId = None
-        self.EnvName = None
-        self.Placement = None
-        self.CreateTime = None
-        self.ComputeNodeMetrics = None
-        self.EnvType = None
-        self.DesiredComputeNodeCount = None
-        self.ResourceType = None
-        self.NextAction = None
-        self.AttachedComputeNodeCount = None
-        self.Tags = None
+        self._EnvId = None
+        self._EnvName = None
+        self._Placement = None
+        self._CreateTime = None
+        self._ComputeNodeMetrics = None
+        self._EnvType = None
+        self._DesiredComputeNodeCount = None
+        self._ResourceType = None
+        self._NextAction = None
+        self._AttachedComputeNodeCount = None
+        self._Tags = None
+
+    @property
+    def EnvId(self):
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def EnvName(self):
+        return self._EnvName
+
+    @EnvName.setter
+    def EnvName(self, EnvName):
+        self._EnvName = EnvName
+
+    @property
+    def Placement(self):
+        return self._Placement
+
+    @Placement.setter
+    def Placement(self, Placement):
+        self._Placement = Placement
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ComputeNodeMetrics(self):
+        return self._ComputeNodeMetrics
+
+    @ComputeNodeMetrics.setter
+    def ComputeNodeMetrics(self, ComputeNodeMetrics):
+        self._ComputeNodeMetrics = ComputeNodeMetrics
+
+    @property
+    def EnvType(self):
+        return self._EnvType
+
+    @EnvType.setter
+    def EnvType(self, EnvType):
+        self._EnvType = EnvType
+
+    @property
+    def DesiredComputeNodeCount(self):
+        return self._DesiredComputeNodeCount
+
+    @DesiredComputeNodeCount.setter
+    def DesiredComputeNodeCount(self, DesiredComputeNodeCount):
+        self._DesiredComputeNodeCount = DesiredComputeNodeCount
+
+    @property
+    def ResourceType(self):
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def NextAction(self):
+        return self._NextAction
+
+    @NextAction.setter
+    def NextAction(self, NextAction):
+        self._NextAction = NextAction
+
+    @property
+    def AttachedComputeNodeCount(self):
+        return self._AttachedComputeNodeCount
+
+    @AttachedComputeNodeCount.setter
+    def AttachedComputeNodeCount(self, AttachedComputeNodeCount):
+        self._AttachedComputeNodeCount = AttachedComputeNodeCount
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
-        self.EnvId = params.get("EnvId")
-        self.EnvName = params.get("EnvName")
+        self._EnvId = params.get("EnvId")
+        self._EnvName = params.get("EnvName")
         if params.get("Placement") is not None:
-            self.Placement = Placement()
-            self.Placement._deserialize(params.get("Placement"))
-        self.CreateTime = params.get("CreateTime")
+            self._Placement = Placement()
+            self._Placement._deserialize(params.get("Placement"))
+        self._CreateTime = params.get("CreateTime")
         if params.get("ComputeNodeMetrics") is not None:
-            self.ComputeNodeMetrics = ComputeNodeMetrics()
-            self.ComputeNodeMetrics._deserialize(params.get("ComputeNodeMetrics"))
-        self.EnvType = params.get("EnvType")
-        self.DesiredComputeNodeCount = params.get("DesiredComputeNodeCount")
-        self.ResourceType = params.get("ResourceType")
-        self.NextAction = params.get("NextAction")
-        self.AttachedComputeNodeCount = params.get("AttachedComputeNodeCount")
+            self._ComputeNodeMetrics = ComputeNodeMetrics()
+            self._ComputeNodeMetrics._deserialize(params.get("ComputeNodeMetrics"))
+        self._EnvType = params.get("EnvType")
+        self._DesiredComputeNodeCount = params.get("DesiredComputeNodeCount")
+        self._ResourceType = params.get("ResourceType")
+        self._NextAction = params.get("NextAction")
+        self._AttachedComputeNodeCount = params.get("AttachedComputeNodeCount")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -480,63 +889,160 @@ class ComputeNode(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ComputeNodeId: Compute node ID
+        :param _ComputeNodeId: Compute node ID
         :type ComputeNodeId: str
-        :param ComputeNodeInstanceId: Compute node instance ID. In a CVM scenario, this parameter is the CVM InstanceId
+        :param _ComputeNodeInstanceId: Compute node instance ID. In a CVM scenario, this parameter is the CVM InstanceId
         :type ComputeNodeInstanceId: str
-        :param ComputeNodeState: Compute node state
+        :param _ComputeNodeState: Compute node state
         :type ComputeNodeState: str
-        :param Cpu: Number of CPU cores
+        :param _Cpu: Number of CPU cores
         :type Cpu: int
-        :param Mem: Memory size in GiB
+        :param _Mem: Memory size in GiB
         :type Mem: int
-        :param ResourceCreatedTime: Resource creation time
+        :param _ResourceCreatedTime: Resource creation time
         :type ResourceCreatedTime: str
-        :param TaskInstanceNumAvailable: Available capacity of the compute node when running TaskInstance. 0 means that the compute node is busy.
+        :param _TaskInstanceNumAvailable: Available capacity of the compute node when running TaskInstance. 0 means that the compute node is busy.
         :type TaskInstanceNumAvailable: int
-        :param AgentVersion: BatchCompute Agent version
+        :param _AgentVersion: BatchCompute Agent version
         :type AgentVersion: str
-        :param PrivateIpAddresses: Private IP of the instance
+        :param _PrivateIpAddresses: Private IP of the instance
         :type PrivateIpAddresses: list of str
-        :param PublicIpAddresses: Public IP of the instance
+        :param _PublicIpAddresses: Public IP of the instance
         :type PublicIpAddresses: list of str
-        :param ResourceType: Compute environment resource type. Values: `CVM`, `CPM` (Bare Metal)
+        :param _ResourceType: Compute environment resource type. Values: `CVM`, `CPM` (Bare Metal)
         :type ResourceType: str
-        :param ResourceOrigin: Source of compute environment resources. <br>`BATCH_CREATED`: Instances created by BatchCompute.<br>
+        :param _ResourceOrigin: Source of compute environment resources. <br>`BATCH_CREATED`: Instances created by BatchCompute.<br>
 `USER_ATTACHED`: Instances added to the compute environment by the user.
         :type ResourceOrigin: str
         """
-        self.ComputeNodeId = None
-        self.ComputeNodeInstanceId = None
-        self.ComputeNodeState = None
-        self.Cpu = None
-        self.Mem = None
-        self.ResourceCreatedTime = None
-        self.TaskInstanceNumAvailable = None
-        self.AgentVersion = None
-        self.PrivateIpAddresses = None
-        self.PublicIpAddresses = None
-        self.ResourceType = None
-        self.ResourceOrigin = None
+        self._ComputeNodeId = None
+        self._ComputeNodeInstanceId = None
+        self._ComputeNodeState = None
+        self._Cpu = None
+        self._Mem = None
+        self._ResourceCreatedTime = None
+        self._TaskInstanceNumAvailable = None
+        self._AgentVersion = None
+        self._PrivateIpAddresses = None
+        self._PublicIpAddresses = None
+        self._ResourceType = None
+        self._ResourceOrigin = None
+
+    @property
+    def ComputeNodeId(self):
+        return self._ComputeNodeId
+
+    @ComputeNodeId.setter
+    def ComputeNodeId(self, ComputeNodeId):
+        self._ComputeNodeId = ComputeNodeId
+
+    @property
+    def ComputeNodeInstanceId(self):
+        return self._ComputeNodeInstanceId
+
+    @ComputeNodeInstanceId.setter
+    def ComputeNodeInstanceId(self, ComputeNodeInstanceId):
+        self._ComputeNodeInstanceId = ComputeNodeInstanceId
+
+    @property
+    def ComputeNodeState(self):
+        return self._ComputeNodeState
+
+    @ComputeNodeState.setter
+    def ComputeNodeState(self, ComputeNodeState):
+        self._ComputeNodeState = ComputeNodeState
+
+    @property
+    def Cpu(self):
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Mem(self):
+        return self._Mem
+
+    @Mem.setter
+    def Mem(self, Mem):
+        self._Mem = Mem
+
+    @property
+    def ResourceCreatedTime(self):
+        return self._ResourceCreatedTime
+
+    @ResourceCreatedTime.setter
+    def ResourceCreatedTime(self, ResourceCreatedTime):
+        self._ResourceCreatedTime = ResourceCreatedTime
+
+    @property
+    def TaskInstanceNumAvailable(self):
+        return self._TaskInstanceNumAvailable
+
+    @TaskInstanceNumAvailable.setter
+    def TaskInstanceNumAvailable(self, TaskInstanceNumAvailable):
+        self._TaskInstanceNumAvailable = TaskInstanceNumAvailable
+
+    @property
+    def AgentVersion(self):
+        return self._AgentVersion
+
+    @AgentVersion.setter
+    def AgentVersion(self, AgentVersion):
+        self._AgentVersion = AgentVersion
+
+    @property
+    def PrivateIpAddresses(self):
+        return self._PrivateIpAddresses
+
+    @PrivateIpAddresses.setter
+    def PrivateIpAddresses(self, PrivateIpAddresses):
+        self._PrivateIpAddresses = PrivateIpAddresses
+
+    @property
+    def PublicIpAddresses(self):
+        return self._PublicIpAddresses
+
+    @PublicIpAddresses.setter
+    def PublicIpAddresses(self, PublicIpAddresses):
+        self._PublicIpAddresses = PublicIpAddresses
+
+    @property
+    def ResourceType(self):
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def ResourceOrigin(self):
+        return self._ResourceOrigin
+
+    @ResourceOrigin.setter
+    def ResourceOrigin(self, ResourceOrigin):
+        self._ResourceOrigin = ResourceOrigin
 
 
     def _deserialize(self, params):
-        self.ComputeNodeId = params.get("ComputeNodeId")
-        self.ComputeNodeInstanceId = params.get("ComputeNodeInstanceId")
-        self.ComputeNodeState = params.get("ComputeNodeState")
-        self.Cpu = params.get("Cpu")
-        self.Mem = params.get("Mem")
-        self.ResourceCreatedTime = params.get("ResourceCreatedTime")
-        self.TaskInstanceNumAvailable = params.get("TaskInstanceNumAvailable")
-        self.AgentVersion = params.get("AgentVersion")
-        self.PrivateIpAddresses = params.get("PrivateIpAddresses")
-        self.PublicIpAddresses = params.get("PublicIpAddresses")
-        self.ResourceType = params.get("ResourceType")
-        self.ResourceOrigin = params.get("ResourceOrigin")
+        self._ComputeNodeId = params.get("ComputeNodeId")
+        self._ComputeNodeInstanceId = params.get("ComputeNodeInstanceId")
+        self._ComputeNodeState = params.get("ComputeNodeState")
+        self._Cpu = params.get("Cpu")
+        self._Mem = params.get("Mem")
+        self._ResourceCreatedTime = params.get("ResourceCreatedTime")
+        self._TaskInstanceNumAvailable = params.get("TaskInstanceNumAvailable")
+        self._AgentVersion = params.get("AgentVersion")
+        self._PrivateIpAddresses = params.get("PrivateIpAddresses")
+        self._PublicIpAddresses = params.get("PublicIpAddresses")
+        self._ResourceType = params.get("ResourceType")
+        self._ResourceOrigin = params.get("ResourceOrigin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -549,42 +1055,99 @@ class ComputeNodeMetrics(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubmittedCount: Number of compute nodes that have been submitted
+        :param _SubmittedCount: Number of compute nodes that have been submitted
         :type SubmittedCount: int
-        :param CreatingCount: Number of compute nodes that are being created
+        :param _CreatingCount: Number of compute nodes that are being created
         :type CreatingCount: int
-        :param CreationFailedCount: Number of compute nodes that failed to be created
+        :param _CreationFailedCount: Number of compute nodes that failed to be created
         :type CreationFailedCount: int
-        :param CreatedCount: Number of compute nodes that have been created
+        :param _CreatedCount: Number of compute nodes that have been created
         :type CreatedCount: int
-        :param RunningCount: Number of running compute nodes
+        :param _RunningCount: Number of running compute nodes
         :type RunningCount: int
-        :param DeletingCount: Number of compute nodes that are being terminated
+        :param _DeletingCount: Number of compute nodes that are being terminated
         :type DeletingCount: int
-        :param AbnormalCount: Number of exceptional compute nodes
+        :param _AbnormalCount: Number of exceptional compute nodes
         :type AbnormalCount: int
         """
-        self.SubmittedCount = None
-        self.CreatingCount = None
-        self.CreationFailedCount = None
-        self.CreatedCount = None
-        self.RunningCount = None
-        self.DeletingCount = None
-        self.AbnormalCount = None
+        self._SubmittedCount = None
+        self._CreatingCount = None
+        self._CreationFailedCount = None
+        self._CreatedCount = None
+        self._RunningCount = None
+        self._DeletingCount = None
+        self._AbnormalCount = None
+
+    @property
+    def SubmittedCount(self):
+        return self._SubmittedCount
+
+    @SubmittedCount.setter
+    def SubmittedCount(self, SubmittedCount):
+        self._SubmittedCount = SubmittedCount
+
+    @property
+    def CreatingCount(self):
+        return self._CreatingCount
+
+    @CreatingCount.setter
+    def CreatingCount(self, CreatingCount):
+        self._CreatingCount = CreatingCount
+
+    @property
+    def CreationFailedCount(self):
+        return self._CreationFailedCount
+
+    @CreationFailedCount.setter
+    def CreationFailedCount(self, CreationFailedCount):
+        self._CreationFailedCount = CreationFailedCount
+
+    @property
+    def CreatedCount(self):
+        return self._CreatedCount
+
+    @CreatedCount.setter
+    def CreatedCount(self, CreatedCount):
+        self._CreatedCount = CreatedCount
+
+    @property
+    def RunningCount(self):
+        return self._RunningCount
+
+    @RunningCount.setter
+    def RunningCount(self, RunningCount):
+        self._RunningCount = RunningCount
+
+    @property
+    def DeletingCount(self):
+        return self._DeletingCount
+
+    @DeletingCount.setter
+    def DeletingCount(self, DeletingCount):
+        self._DeletingCount = DeletingCount
+
+    @property
+    def AbnormalCount(self):
+        return self._AbnormalCount
+
+    @AbnormalCount.setter
+    def AbnormalCount(self, AbnormalCount):
+        self._AbnormalCount = AbnormalCount
 
 
     def _deserialize(self, params):
-        self.SubmittedCount = params.get("SubmittedCount")
-        self.CreatingCount = params.get("CreatingCount")
-        self.CreationFailedCount = params.get("CreationFailedCount")
-        self.CreatedCount = params.get("CreatedCount")
-        self.RunningCount = params.get("RunningCount")
-        self.DeletingCount = params.get("DeletingCount")
-        self.AbnormalCount = params.get("AbnormalCount")
+        self._SubmittedCount = params.get("SubmittedCount")
+        self._CreatingCount = params.get("CreatingCount")
+        self._CreationFailedCount = params.get("CreationFailedCount")
+        self._CreatedCount = params.get("CreatedCount")
+        self._RunningCount = params.get("RunningCount")
+        self._DeletingCount = params.get("DeletingCount")
+        self._AbnormalCount = params.get("AbnormalCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -597,30 +1160,55 @@ class CreateComputeEnvRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ComputeEnv: Compute environment information
+        :param _ComputeEnv: Compute environment information
         :type ComputeEnv: :class:`tencentcloud.batch.v20170312.models.NamedComputeEnv`
-        :param Placement: Location information
+        :param _Placement: Location information
         :type Placement: :class:`tencentcloud.batch.v20170312.models.Placement`
-        :param ClientToken: The string used to guarantee the idempotency of the request, which is generated by the user and must be unique for different requests. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
+        :param _ClientToken: The string used to guarantee the idempotency of the request, which is generated by the user and must be unique for different requests. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
         :type ClientToken: str
         """
-        self.ComputeEnv = None
-        self.Placement = None
-        self.ClientToken = None
+        self._ComputeEnv = None
+        self._Placement = None
+        self._ClientToken = None
+
+    @property
+    def ComputeEnv(self):
+        return self._ComputeEnv
+
+    @ComputeEnv.setter
+    def ComputeEnv(self, ComputeEnv):
+        self._ComputeEnv = ComputeEnv
+
+    @property
+    def Placement(self):
+        return self._Placement
+
+    @Placement.setter
+    def Placement(self, Placement):
+        self._Placement = Placement
+
+    @property
+    def ClientToken(self):
+        return self._ClientToken
+
+    @ClientToken.setter
+    def ClientToken(self, ClientToken):
+        self._ClientToken = ClientToken
 
 
     def _deserialize(self, params):
         if params.get("ComputeEnv") is not None:
-            self.ComputeEnv = NamedComputeEnv()
-            self.ComputeEnv._deserialize(params.get("ComputeEnv"))
+            self._ComputeEnv = NamedComputeEnv()
+            self._ComputeEnv._deserialize(params.get("ComputeEnv"))
         if params.get("Placement") is not None:
-            self.Placement = Placement()
-            self.Placement._deserialize(params.get("Placement"))
-        self.ClientToken = params.get("ClientToken")
+            self._Placement = Placement()
+            self._Placement._deserialize(params.get("Placement"))
+        self._ClientToken = params.get("ClientToken")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -633,18 +1221,34 @@ class CreateComputeEnvResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EnvId: Compute environment ID
+        :param _EnvId: Compute environment ID
         :type EnvId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.EnvId = None
-        self.RequestId = None
+        self._EnvId = None
+        self._RequestId = None
+
+    @property
+    def EnvId(self):
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.EnvId = params.get("EnvId")
-        self.RequestId = params.get("RequestId")
+        self._EnvId = params.get("EnvId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateTaskTemplateRequest(AbstractModel):
@@ -654,37 +1258,70 @@ class CreateTaskTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskTemplateName: Task template name
+        :param _TaskTemplateName: Task template name
         :type TaskTemplateName: str
-        :param TaskTemplateInfo: Task template content with the same parameter requirements as the task
+        :param _TaskTemplateInfo: Task template content with the same parameter requirements as the task
         :type TaskTemplateInfo: :class:`tencentcloud.batch.v20170312.models.Task`
-        :param TaskTemplateDescription: Task template description
+        :param _TaskTemplateDescription: Task template description
         :type TaskTemplateDescription: str
-        :param Tags: Specifies the tags you want to bind to a task template. Each task template supports up to 10 tags.
+        :param _Tags: Specifies the tags you want to bind to a task template. Each task template supports up to 10 tags.
         :type Tags: list of Tag
         """
-        self.TaskTemplateName = None
-        self.TaskTemplateInfo = None
-        self.TaskTemplateDescription = None
-        self.Tags = None
+        self._TaskTemplateName = None
+        self._TaskTemplateInfo = None
+        self._TaskTemplateDescription = None
+        self._Tags = None
+
+    @property
+    def TaskTemplateName(self):
+        return self._TaskTemplateName
+
+    @TaskTemplateName.setter
+    def TaskTemplateName(self, TaskTemplateName):
+        self._TaskTemplateName = TaskTemplateName
+
+    @property
+    def TaskTemplateInfo(self):
+        return self._TaskTemplateInfo
+
+    @TaskTemplateInfo.setter
+    def TaskTemplateInfo(self, TaskTemplateInfo):
+        self._TaskTemplateInfo = TaskTemplateInfo
+
+    @property
+    def TaskTemplateDescription(self):
+        return self._TaskTemplateDescription
+
+    @TaskTemplateDescription.setter
+    def TaskTemplateDescription(self, TaskTemplateDescription):
+        self._TaskTemplateDescription = TaskTemplateDescription
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
-        self.TaskTemplateName = params.get("TaskTemplateName")
+        self._TaskTemplateName = params.get("TaskTemplateName")
         if params.get("TaskTemplateInfo") is not None:
-            self.TaskTemplateInfo = Task()
-            self.TaskTemplateInfo._deserialize(params.get("TaskTemplateInfo"))
-        self.TaskTemplateDescription = params.get("TaskTemplateDescription")
+            self._TaskTemplateInfo = Task()
+            self._TaskTemplateInfo._deserialize(params.get("TaskTemplateInfo"))
+        self._TaskTemplateDescription = params.get("TaskTemplateDescription")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -697,18 +1334,34 @@ class CreateTaskTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskTemplateId: Task template ID
+        :param _TaskTemplateId: Task template ID
         :type TaskTemplateId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TaskTemplateId = None
-        self.RequestId = None
+        self._TaskTemplateId = None
+        self._RequestId = None
+
+    @property
+    def TaskTemplateId(self):
+        return self._TaskTemplateId
+
+    @TaskTemplateId.setter
+    def TaskTemplateId(self, TaskTemplateId):
+        self._TaskTemplateId = TaskTemplateId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TaskTemplateId = params.get("TaskTemplateId")
-        self.RequestId = params.get("RequestId")
+        self._TaskTemplateId = params.get("TaskTemplateId")
+        self._RequestId = params.get("RequestId")
 
 
 class DataDisk(AbstractModel):
@@ -718,67 +1371,140 @@ class DataDisk(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiskSize: Data disk size (in GB). The minimum adjustment increment is 10 GB. The value range varies by data disk type. For more information on limits, see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). The default value is 0, indicating that no data disk is purchased. For more information, see the product documentation.
+        :param _DiskSize: Data disk size (in GB). The minimum adjustment increment is 10 GB. The value range varies by data disk type. For more information on limits, see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). The default value is 0, indicating that no data disk is purchased. For more information, see the product documentation.
         :type DiskSize: int
-        :param DiskType: Data disk type. For more information about limits on different data disk types, see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Valid values: <br><li>LOCAL_BASIC: local disk<br><li>LOCAL_SSD: local SSD disk<br><li>LOCAL_NVME: local NVME disk, specified in the `InstanceType`<br><li>LOCAL_PRO: local HDD disk, specified in the `InstanceType`<br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD<br><li>CLOUD_TSSD: Tremendous SSD<br><li>CLOUD_BSSD: Balanced SSD<br><br>Default value: LOCAL_BASIC.<br><br>This parameter is invalid for the `ResizeInstanceDisk` API.
+        :param _DiskType: Data disk type. For more information about limits on different data disk types, see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Valid values: <br><li>LOCAL_BASIC: local disk<br><li>LOCAL_SSD: local SSD disk<br><li>LOCAL_NVME: local NVME disk, specified in the `InstanceType`<br><li>LOCAL_PRO: local HDD disk, specified in the `InstanceType`<br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD<br><li>CLOUD_TSSD: Tremendous SSD<br><li>CLOUD_BSSD: Balanced SSD<br><br>Default value: LOCAL_BASIC.<br><br>This parameter is invalid for the `ResizeInstanceDisk` API.
         :type DiskType: str
-        :param DiskId: Data disk ID. Note that it’s not available for `LOCAL_BASIC` and `LOCAL_SSD` disks.
+        :param _DiskId: Data disk ID. Note that it’s not available for `LOCAL_BASIC` and `LOCAL_SSD` disks.
 It is only used as a response parameter for APIs such as `DescribeInstances`, and cannot be used as a request parameter for APIs such as `RunInstances`.
         :type DiskId: str
-        :param DeleteWithInstance: Whether to terminate the data disk when its CVM is terminated. Valid values:
+        :param _DeleteWithInstance: Whether to terminate the data disk when its CVM is terminated. Valid values:
 <li>TRUE: terminate the data disk when its CVM is terminated. This value only supports pay-as-you-go cloud disks billed on an hourly basis.
 <li>FALSE: retain the data disk when its CVM is terminated.<br>
 Default value: TRUE<br>
 Currently this parameter is only used in the `RunInstances` API.
 Note: This field may return null, indicating that no valid value is found.
         :type DeleteWithInstance: bool
-        :param SnapshotId: Data disk snapshot ID. The size of the selected data disk snapshot must be smaller than that of the data disk.
+        :param _SnapshotId: Data disk snapshot ID. The size of the selected data disk snapshot must be smaller than that of the data disk.
 Note: This field may return null, indicating that no valid value is found.
         :type SnapshotId: str
-        :param Encrypt: Specifies whether the data disk is encrypted. Valid values: 
+        :param _Encrypt: Specifies whether the data disk is encrypted. Valid values: 
 <li>TRUE: encrypted
 <li>FALSE: not encrypted<br>
 Default value: FALSE<br>
 This parameter is only used with `RunInstances`.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type Encrypt: bool
-        :param KmsKeyId: ID of the custom CMK in the format of UUID or “kms-abcd1234”. This parameter is used to encrypt cloud disks.
+        :param _KmsKeyId: ID of the custom CMK in the format of UUID or “kms-abcd1234”. This parameter is used to encrypt cloud disks.
 
 Currently, this parameter is only used in the `RunInstances` API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type KmsKeyId: str
-        :param ThroughputPerformance: Cloud disk performance, in MB/s
+        :param _ThroughputPerformance: Cloud disk performance, in MB/s
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ThroughputPerformance: int
-        :param CdcId: ID of the dedicated cluster to which the instance belongs.
+        :param _CdcId: ID of the dedicated cluster to which the instance belongs.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type CdcId: str
         """
-        self.DiskSize = None
-        self.DiskType = None
-        self.DiskId = None
-        self.DeleteWithInstance = None
-        self.SnapshotId = None
-        self.Encrypt = None
-        self.KmsKeyId = None
-        self.ThroughputPerformance = None
-        self.CdcId = None
+        self._DiskSize = None
+        self._DiskType = None
+        self._DiskId = None
+        self._DeleteWithInstance = None
+        self._SnapshotId = None
+        self._Encrypt = None
+        self._KmsKeyId = None
+        self._ThroughputPerformance = None
+        self._CdcId = None
+
+    @property
+    def DiskSize(self):
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+    @property
+    def DiskType(self):
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def DiskId(self):
+        return self._DiskId
+
+    @DiskId.setter
+    def DiskId(self, DiskId):
+        self._DiskId = DiskId
+
+    @property
+    def DeleteWithInstance(self):
+        return self._DeleteWithInstance
+
+    @DeleteWithInstance.setter
+    def DeleteWithInstance(self, DeleteWithInstance):
+        self._DeleteWithInstance = DeleteWithInstance
+
+    @property
+    def SnapshotId(self):
+        return self._SnapshotId
+
+    @SnapshotId.setter
+    def SnapshotId(self, SnapshotId):
+        self._SnapshotId = SnapshotId
+
+    @property
+    def Encrypt(self):
+        return self._Encrypt
+
+    @Encrypt.setter
+    def Encrypt(self, Encrypt):
+        self._Encrypt = Encrypt
+
+    @property
+    def KmsKeyId(self):
+        return self._KmsKeyId
+
+    @KmsKeyId.setter
+    def KmsKeyId(self, KmsKeyId):
+        self._KmsKeyId = KmsKeyId
+
+    @property
+    def ThroughputPerformance(self):
+        return self._ThroughputPerformance
+
+    @ThroughputPerformance.setter
+    def ThroughputPerformance(self, ThroughputPerformance):
+        self._ThroughputPerformance = ThroughputPerformance
+
+    @property
+    def CdcId(self):
+        return self._CdcId
+
+    @CdcId.setter
+    def CdcId(self, CdcId):
+        self._CdcId = CdcId
 
 
     def _deserialize(self, params):
-        self.DiskSize = params.get("DiskSize")
-        self.DiskType = params.get("DiskType")
-        self.DiskId = params.get("DiskId")
-        self.DeleteWithInstance = params.get("DeleteWithInstance")
-        self.SnapshotId = params.get("SnapshotId")
-        self.Encrypt = params.get("Encrypt")
-        self.KmsKeyId = params.get("KmsKeyId")
-        self.ThroughputPerformance = params.get("ThroughputPerformance")
-        self.CdcId = params.get("CdcId")
+        self._DiskSize = params.get("DiskSize")
+        self._DiskType = params.get("DiskType")
+        self._DiskId = params.get("DiskId")
+        self._DeleteWithInstance = params.get("DeleteWithInstance")
+        self._SnapshotId = params.get("SnapshotId")
+        self._Encrypt = params.get("Encrypt")
+        self._KmsKeyId = params.get("KmsKeyId")
+        self._ThroughputPerformance = params.get("ThroughputPerformance")
+        self._CdcId = params.get("CdcId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -791,18 +1517,27 @@ class DeleteComputeEnvRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EnvId: Compute environment ID
+        :param _EnvId: Compute environment ID
         :type EnvId: str
         """
-        self.EnvId = None
+        self._EnvId = None
+
+    @property
+    def EnvId(self):
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
 
 
     def _deserialize(self, params):
-        self.EnvId = params.get("EnvId")
+        self._EnvId = params.get("EnvId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -815,14 +1550,22 @@ class DeleteComputeEnvResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteJobRequest(AbstractModel):
@@ -832,18 +1575,27 @@ class DeleteJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: Job ID
+        :param _JobId: Job ID
         :type JobId: str
         """
-        self.JobId = None
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
+        self._JobId = params.get("JobId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -856,14 +1608,22 @@ class DeleteJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteTaskTemplatesRequest(AbstractModel):
@@ -873,18 +1633,27 @@ class DeleteTaskTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskTemplateIds: This API is used to delete task template information.
+        :param _TaskTemplateIds: This API is used to delete task template information.
         :type TaskTemplateIds: list of str
         """
-        self.TaskTemplateIds = None
+        self._TaskTemplateIds = None
+
+    @property
+    def TaskTemplateIds(self):
+        return self._TaskTemplateIds
+
+    @TaskTemplateIds.setter
+    def TaskTemplateIds(self, TaskTemplateIds):
+        self._TaskTemplateIds = TaskTemplateIds
 
 
     def _deserialize(self, params):
-        self.TaskTemplateIds = params.get("TaskTemplateIds")
+        self._TaskTemplateIds = params.get("TaskTemplateIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -897,14 +1666,22 @@ class DeleteTaskTemplatesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class Dependence(AbstractModel):
@@ -914,22 +1691,39 @@ class Dependence(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTask: Dependency start task name 
+        :param _StartTask: Dependency start task name 
         :type StartTask: str
-        :param EndTask: Dependency end task name 
+        :param _EndTask: Dependency end task name 
         :type EndTask: str
         """
-        self.StartTask = None
-        self.EndTask = None
+        self._StartTask = None
+        self._EndTask = None
+
+    @property
+    def StartTask(self):
+        return self._StartTask
+
+    @StartTask.setter
+    def StartTask(self, StartTask):
+        self._StartTask = StartTask
+
+    @property
+    def EndTask(self):
+        return self._EndTask
+
+    @EndTask.setter
+    def EndTask(self, EndTask):
+        self._EndTask = EndTask
 
 
     def _deserialize(self, params):
-        self.StartTask = params.get("StartTask")
-        self.EndTask = params.get("EndTask")
+        self._StartTask = params.get("StartTask")
+        self._EndTask = params.get("EndTask")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -942,25 +1736,34 @@ class DescribeAvailableCvmInstanceTypesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Filters: Filter.
+        :param _Filters: Filter.
 <li> zone - String - Required: No - (Filter) Filter by availability zone.</li>
 <li> instance-family - String - Required: No - (Filter) Filter by model family such as S1, I1, and M1.</li>
         :type Filters: list of Filter
         """
-        self.Filters = None
+        self._Filters = None
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
 
     def _deserialize(self, params):
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -973,23 +1776,39 @@ class DescribeAvailableCvmInstanceTypesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceTypeConfigSet: Array of model configurations
+        :param _InstanceTypeConfigSet: Array of model configurations
         :type InstanceTypeConfigSet: list of InstanceTypeConfig
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.InstanceTypeConfigSet = None
-        self.RequestId = None
+        self._InstanceTypeConfigSet = None
+        self._RequestId = None
+
+    @property
+    def InstanceTypeConfigSet(self):
+        return self._InstanceTypeConfigSet
+
+    @InstanceTypeConfigSet.setter
+    def InstanceTypeConfigSet(self, InstanceTypeConfigSet):
+        self._InstanceTypeConfigSet = InstanceTypeConfigSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("InstanceTypeConfigSet") is not None:
-            self.InstanceTypeConfigSet = []
+            self._InstanceTypeConfigSet = []
             for item in params.get("InstanceTypeConfigSet"):
                 obj = InstanceTypeConfig()
                 obj._deserialize(item)
-                self.InstanceTypeConfigSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._InstanceTypeConfigSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeComputeEnvActivitiesRequest(AbstractModel):
@@ -999,33 +1818,66 @@ class DescribeComputeEnvActivitiesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EnvId: Compute environment ID
+        :param _EnvId: Compute environment ID
         :type EnvId: str
-        :param Offset: Offset
+        :param _Offset: Offset
         :type Offset: int
-        :param Limit: Maximum number of returned items
+        :param _Limit: Maximum number of returned items
         :type Limit: int
-        :param Filters: Filter
+        :param _Filters: Filter
 <li> `compute-node-id` - String - Optional - Filter by the compute node ID.</li>
         :type Filters: :class:`tencentcloud.batch.v20170312.models.Filter`
         """
-        self.EnvId = None
-        self.Offset = None
-        self.Limit = None
-        self.Filters = None
+        self._EnvId = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def EnvId(self):
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
 
     def _deserialize(self, params):
-        self.EnvId = params.get("EnvId")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+        self._EnvId = params.get("EnvId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         if params.get("Filters") is not None:
-            self.Filters = Filter()
-            self.Filters._deserialize(params.get("Filters"))
+            self._Filters = Filter()
+            self._Filters._deserialize(params.get("Filters"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1038,27 +1890,51 @@ class DescribeComputeEnvActivitiesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ActivitySet: List of activities in the compute environment
+        :param _ActivitySet: List of activities in the compute environment
         :type ActivitySet: list of Activity
-        :param TotalCount: Number of activities
+        :param _TotalCount: Number of activities
         :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.ActivitySet = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._ActivitySet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ActivitySet(self):
+        return self._ActivitySet
+
+    @ActivitySet.setter
+    def ActivitySet(self, ActivitySet):
+        self._ActivitySet = ActivitySet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("ActivitySet") is not None:
-            self.ActivitySet = []
+            self._ActivitySet = []
             for item in params.get("ActivitySet"):
                 obj = Activity()
                 obj._deserialize(item)
-                self.ActivitySet.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._ActivitySet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeComputeEnvCreateInfoRequest(AbstractModel):
@@ -1068,18 +1944,27 @@ class DescribeComputeEnvCreateInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EnvId: Compute environment ID
+        :param _EnvId: Compute environment ID
         :type EnvId: str
         """
-        self.EnvId = None
+        self._EnvId = None
+
+    @property
+    def EnvId(self):
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
 
 
     def _deserialize(self, params):
-        self.EnvId = params.get("EnvId")
+        self._EnvId = params.get("EnvId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1092,87 +1977,183 @@ class DescribeComputeEnvCreateInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EnvId: Compute environment ID
+        :param _EnvId: Compute environment ID
         :type EnvId: str
-        :param EnvName: Compute environment name
+        :param _EnvName: Compute environment name
         :type EnvName: str
-        :param EnvDescription: Compute environment description
+        :param _EnvDescription: Compute environment description
 Note: This field may return `null`, indicating that no valid value was found.
         :type EnvDescription: str
-        :param EnvType: Compute environment type. Only `MANAGED` is supported
+        :param _EnvType: Compute environment type. Only `MANAGED` is supported
         :type EnvType: str
-        :param EnvData: Compute environment parameter
+        :param _EnvData: Compute environment parameter
         :type EnvData: :class:`tencentcloud.batch.v20170312.models.EnvData`
-        :param MountDataDisks: Data disk mounting option
+        :param _MountDataDisks: Data disk mounting option
         :type MountDataDisks: list of MountDataDisk
-        :param InputMappings: Input mapping
+        :param _InputMappings: Input mapping
         :type InputMappings: list of InputMapping
-        :param Authentications: Authorization information
+        :param _Authentications: Authorization information
         :type Authentications: list of Authentication
-        :param Notifications: Notification information
+        :param _Notifications: Notification information
         :type Notifications: list of Notification
-        :param DesiredComputeNodeCount: Number of desired compute nodes
+        :param _DesiredComputeNodeCount: Number of desired compute nodes
         :type DesiredComputeNodeCount: int
-        :param Tags: Tag list bound to the compute environment.
+        :param _Tags: Tag list bound to the compute environment.
 Note: This field may return `null`, indicating that no valid value was found.
         :type Tags: list of Tag
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.EnvId = None
-        self.EnvName = None
-        self.EnvDescription = None
-        self.EnvType = None
-        self.EnvData = None
-        self.MountDataDisks = None
-        self.InputMappings = None
-        self.Authentications = None
-        self.Notifications = None
-        self.DesiredComputeNodeCount = None
-        self.Tags = None
-        self.RequestId = None
+        self._EnvId = None
+        self._EnvName = None
+        self._EnvDescription = None
+        self._EnvType = None
+        self._EnvData = None
+        self._MountDataDisks = None
+        self._InputMappings = None
+        self._Authentications = None
+        self._Notifications = None
+        self._DesiredComputeNodeCount = None
+        self._Tags = None
+        self._RequestId = None
+
+    @property
+    def EnvId(self):
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def EnvName(self):
+        return self._EnvName
+
+    @EnvName.setter
+    def EnvName(self, EnvName):
+        self._EnvName = EnvName
+
+    @property
+    def EnvDescription(self):
+        return self._EnvDescription
+
+    @EnvDescription.setter
+    def EnvDescription(self, EnvDescription):
+        self._EnvDescription = EnvDescription
+
+    @property
+    def EnvType(self):
+        return self._EnvType
+
+    @EnvType.setter
+    def EnvType(self, EnvType):
+        self._EnvType = EnvType
+
+    @property
+    def EnvData(self):
+        return self._EnvData
+
+    @EnvData.setter
+    def EnvData(self, EnvData):
+        self._EnvData = EnvData
+
+    @property
+    def MountDataDisks(self):
+        return self._MountDataDisks
+
+    @MountDataDisks.setter
+    def MountDataDisks(self, MountDataDisks):
+        self._MountDataDisks = MountDataDisks
+
+    @property
+    def InputMappings(self):
+        return self._InputMappings
+
+    @InputMappings.setter
+    def InputMappings(self, InputMappings):
+        self._InputMappings = InputMappings
+
+    @property
+    def Authentications(self):
+        return self._Authentications
+
+    @Authentications.setter
+    def Authentications(self, Authentications):
+        self._Authentications = Authentications
+
+    @property
+    def Notifications(self):
+        return self._Notifications
+
+    @Notifications.setter
+    def Notifications(self, Notifications):
+        self._Notifications = Notifications
+
+    @property
+    def DesiredComputeNodeCount(self):
+        return self._DesiredComputeNodeCount
+
+    @DesiredComputeNodeCount.setter
+    def DesiredComputeNodeCount(self, DesiredComputeNodeCount):
+        self._DesiredComputeNodeCount = DesiredComputeNodeCount
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.EnvId = params.get("EnvId")
-        self.EnvName = params.get("EnvName")
-        self.EnvDescription = params.get("EnvDescription")
-        self.EnvType = params.get("EnvType")
+        self._EnvId = params.get("EnvId")
+        self._EnvName = params.get("EnvName")
+        self._EnvDescription = params.get("EnvDescription")
+        self._EnvType = params.get("EnvType")
         if params.get("EnvData") is not None:
-            self.EnvData = EnvData()
-            self.EnvData._deserialize(params.get("EnvData"))
+            self._EnvData = EnvData()
+            self._EnvData._deserialize(params.get("EnvData"))
         if params.get("MountDataDisks") is not None:
-            self.MountDataDisks = []
+            self._MountDataDisks = []
             for item in params.get("MountDataDisks"):
                 obj = MountDataDisk()
                 obj._deserialize(item)
-                self.MountDataDisks.append(obj)
+                self._MountDataDisks.append(obj)
         if params.get("InputMappings") is not None:
-            self.InputMappings = []
+            self._InputMappings = []
             for item in params.get("InputMappings"):
                 obj = InputMapping()
                 obj._deserialize(item)
-                self.InputMappings.append(obj)
+                self._InputMappings.append(obj)
         if params.get("Authentications") is not None:
-            self.Authentications = []
+            self._Authentications = []
             for item in params.get("Authentications"):
                 obj = Authentication()
                 obj._deserialize(item)
-                self.Authentications.append(obj)
+                self._Authentications.append(obj)
         if params.get("Notifications") is not None:
-            self.Notifications = []
+            self._Notifications = []
             for item in params.get("Notifications"):
                 obj = Notification()
                 obj._deserialize(item)
-                self.Notifications.append(obj)
-        self.DesiredComputeNodeCount = params.get("DesiredComputeNodeCount")
+                self._Notifications.append(obj)
+        self._DesiredComputeNodeCount = params.get("DesiredComputeNodeCount")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Tags.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeComputeEnvCreateInfosRequest(AbstractModel):
@@ -1182,39 +2163,72 @@ class DescribeComputeEnvCreateInfosRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EnvIds: List of compute environment IDs, which cannot be specified together with the `Filters` parameter.
+        :param _EnvIds: List of compute environment IDs, which cannot be specified together with the `Filters` parameter.
         :type EnvIds: list of str
-        :param Filters: Filter conditions
+        :param _Filters: Filter conditions
 <li> `zone` - String - Optional - Filter by the availability zone.</li>
 <li> `env-id` - String - Optional - Filter by the compute environment ID.</li>
 <li> `env-name` - String - Optional - Filter by the compute environment name.</li>
 It cannot be specified together with `EnvIds`.
         :type Filters: list of Filter
-        :param Offset: Offset
+        :param _Offset: Offset
         :type Offset: int
-        :param Limit: Maximum number of returned items
+        :param _Limit: Maximum number of returned items
         :type Limit: int
         """
-        self.EnvIds = None
-        self.Filters = None
-        self.Offset = None
-        self.Limit = None
+        self._EnvIds = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def EnvIds(self):
+        return self._EnvIds
+
+    @EnvIds.setter
+    def EnvIds(self, EnvIds):
+        self._EnvIds = EnvIds
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.EnvIds = params.get("EnvIds")
+        self._EnvIds = params.get("EnvIds")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1227,27 +2241,51 @@ class DescribeComputeEnvCreateInfosResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Number of compute environments
+        :param _TotalCount: Number of compute environments
         :type TotalCount: int
-        :param ComputeEnvCreateInfoSet: List of compute environment creation information
+        :param _ComputeEnvCreateInfoSet: List of compute environment creation information
         :type ComputeEnvCreateInfoSet: list of ComputeEnvCreateInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.ComputeEnvCreateInfoSet = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._ComputeEnvCreateInfoSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ComputeEnvCreateInfoSet(self):
+        return self._ComputeEnvCreateInfoSet
+
+    @ComputeEnvCreateInfoSet.setter
+    def ComputeEnvCreateInfoSet(self, ComputeEnvCreateInfoSet):
+        self._ComputeEnvCreateInfoSet = ComputeEnvCreateInfoSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("ComputeEnvCreateInfoSet") is not None:
-            self.ComputeEnvCreateInfoSet = []
+            self._ComputeEnvCreateInfoSet = []
             for item in params.get("ComputeEnvCreateInfoSet"):
                 obj = ComputeEnvCreateInfo()
                 obj._deserialize(item)
-                self.ComputeEnvCreateInfoSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._ComputeEnvCreateInfoSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeComputeEnvRequest(AbstractModel):
@@ -1257,18 +2295,27 @@ class DescribeComputeEnvRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EnvId: Compute environment ID
+        :param _EnvId: Compute environment ID
         :type EnvId: str
         """
-        self.EnvId = None
+        self._EnvId = None
+
+    @property
+    def EnvId(self):
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
 
 
     def _deserialize(self, params):
-        self.EnvId = params.get("EnvId")
+        self._EnvId = params.get("EnvId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1281,77 +2328,181 @@ class DescribeComputeEnvResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EnvId: Compute environment ID
+        :param _EnvId: Compute environment ID
         :type EnvId: str
-        :param EnvName: Compute environment name
+        :param _EnvName: Compute environment name
         :type EnvName: str
-        :param Placement: Location information
+        :param _Placement: Location information
         :type Placement: :class:`tencentcloud.batch.v20170312.models.Placement`
-        :param CreateTime: Compute environment creation time
+        :param _CreateTime: Compute environment creation time
         :type CreateTime: str
-        :param ComputeNodeSet: List of compute nodes
+        :param _ComputeNodeSet: List of compute nodes
         :type ComputeNodeSet: list of ComputeNode
-        :param ComputeNodeMetrics: Compute node statistical metrics
+        :param _ComputeNodeMetrics: Compute node statistical metrics
         :type ComputeNodeMetrics: :class:`tencentcloud.batch.v20170312.models.ComputeNodeMetrics`
-        :param DesiredComputeNodeCount: Number of desired compute nodes
+        :param _DesiredComputeNodeCount: Number of desired compute nodes
         :type DesiredComputeNodeCount: int
-        :param EnvType: Compute environment type
+        :param _EnvType: Compute environment type
         :type EnvType: str
-        :param ResourceType: Compute environment resource type. Values: `CVM`, `CPM` (Bare Metal)
+        :param _ResourceType: Compute environment resource type. Values: `CVM`, `CPM` (Bare Metal)
         :type ResourceType: str
-        :param NextAction: Next action
+        :param _NextAction: Next action
         :type NextAction: str
-        :param AttachedComputeNodeCount: Number of compute nodes added to the compute environment
+        :param _AttachedComputeNodeCount: Number of compute nodes added to the compute environment
         :type AttachedComputeNodeCount: int
-        :param Tags: Tag list bound to the compute environment.
+        :param _Tags: Tag list bound to the compute environment.
 Note: This field may return `null`, indicating that no valid value was found.
         :type Tags: list of Tag
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.EnvId = None
-        self.EnvName = None
-        self.Placement = None
-        self.CreateTime = None
-        self.ComputeNodeSet = None
-        self.ComputeNodeMetrics = None
-        self.DesiredComputeNodeCount = None
-        self.EnvType = None
-        self.ResourceType = None
-        self.NextAction = None
-        self.AttachedComputeNodeCount = None
-        self.Tags = None
-        self.RequestId = None
+        self._EnvId = None
+        self._EnvName = None
+        self._Placement = None
+        self._CreateTime = None
+        self._ComputeNodeSet = None
+        self._ComputeNodeMetrics = None
+        self._DesiredComputeNodeCount = None
+        self._EnvType = None
+        self._ResourceType = None
+        self._NextAction = None
+        self._AttachedComputeNodeCount = None
+        self._Tags = None
+        self._RequestId = None
+
+    @property
+    def EnvId(self):
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def EnvName(self):
+        return self._EnvName
+
+    @EnvName.setter
+    def EnvName(self, EnvName):
+        self._EnvName = EnvName
+
+    @property
+    def Placement(self):
+        return self._Placement
+
+    @Placement.setter
+    def Placement(self, Placement):
+        self._Placement = Placement
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ComputeNodeSet(self):
+        return self._ComputeNodeSet
+
+    @ComputeNodeSet.setter
+    def ComputeNodeSet(self, ComputeNodeSet):
+        self._ComputeNodeSet = ComputeNodeSet
+
+    @property
+    def ComputeNodeMetrics(self):
+        return self._ComputeNodeMetrics
+
+    @ComputeNodeMetrics.setter
+    def ComputeNodeMetrics(self, ComputeNodeMetrics):
+        self._ComputeNodeMetrics = ComputeNodeMetrics
+
+    @property
+    def DesiredComputeNodeCount(self):
+        return self._DesiredComputeNodeCount
+
+    @DesiredComputeNodeCount.setter
+    def DesiredComputeNodeCount(self, DesiredComputeNodeCount):
+        self._DesiredComputeNodeCount = DesiredComputeNodeCount
+
+    @property
+    def EnvType(self):
+        return self._EnvType
+
+    @EnvType.setter
+    def EnvType(self, EnvType):
+        self._EnvType = EnvType
+
+    @property
+    def ResourceType(self):
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def NextAction(self):
+        return self._NextAction
+
+    @NextAction.setter
+    def NextAction(self, NextAction):
+        self._NextAction = NextAction
+
+    @property
+    def AttachedComputeNodeCount(self):
+        return self._AttachedComputeNodeCount
+
+    @AttachedComputeNodeCount.setter
+    def AttachedComputeNodeCount(self, AttachedComputeNodeCount):
+        self._AttachedComputeNodeCount = AttachedComputeNodeCount
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.EnvId = params.get("EnvId")
-        self.EnvName = params.get("EnvName")
+        self._EnvId = params.get("EnvId")
+        self._EnvName = params.get("EnvName")
         if params.get("Placement") is not None:
-            self.Placement = Placement()
-            self.Placement._deserialize(params.get("Placement"))
-        self.CreateTime = params.get("CreateTime")
+            self._Placement = Placement()
+            self._Placement._deserialize(params.get("Placement"))
+        self._CreateTime = params.get("CreateTime")
         if params.get("ComputeNodeSet") is not None:
-            self.ComputeNodeSet = []
+            self._ComputeNodeSet = []
             for item in params.get("ComputeNodeSet"):
                 obj = ComputeNode()
                 obj._deserialize(item)
-                self.ComputeNodeSet.append(obj)
+                self._ComputeNodeSet.append(obj)
         if params.get("ComputeNodeMetrics") is not None:
-            self.ComputeNodeMetrics = ComputeNodeMetrics()
-            self.ComputeNodeMetrics._deserialize(params.get("ComputeNodeMetrics"))
-        self.DesiredComputeNodeCount = params.get("DesiredComputeNodeCount")
-        self.EnvType = params.get("EnvType")
-        self.ResourceType = params.get("ResourceType")
-        self.NextAction = params.get("NextAction")
-        self.AttachedComputeNodeCount = params.get("AttachedComputeNodeCount")
+            self._ComputeNodeMetrics = ComputeNodeMetrics()
+            self._ComputeNodeMetrics._deserialize(params.get("ComputeNodeMetrics"))
+        self._DesiredComputeNodeCount = params.get("DesiredComputeNodeCount")
+        self._EnvType = params.get("EnvType")
+        self._ResourceType = params.get("ResourceType")
+        self._NextAction = params.get("NextAction")
+        self._AttachedComputeNodeCount = params.get("AttachedComputeNodeCount")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Tags.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeComputeEnvsRequest(AbstractModel):
@@ -1361,9 +2512,9 @@ class DescribeComputeEnvsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EnvIds: List of compute environment IDs, which cannot be specified together with the `Filters` parameter.
+        :param _EnvIds: List of compute environment IDs, which cannot be specified together with the `Filters` parameter.
         :type EnvIds: list of str
-        :param Filters: Filters
+        :param _Filters: Filters
 <li> `zone` - String - Optional - Availability zone.</li>
 <li> `env-id` - String - Optional - Compute environment ID.</li>
 <li> `env-name` - String - Optional - Compute environment name.</li>
@@ -1373,31 +2524,64 @@ class DescribeComputeEnvsRequest(AbstractModel):
 <li> `tag:tag-key` - String - Optional - Tag key-value pair. Replace `tag-key` with the actual tag key.</li>
 It cannot be specified together with `EnvIds`.
         :type Filters: list of Filter
-        :param Offset: Offset
+        :param _Offset: Offset
         :type Offset: int
-        :param Limit: Maximum number of returned items
+        :param _Limit: Maximum number of returned items
         :type Limit: int
         """
-        self.EnvIds = None
-        self.Filters = None
-        self.Offset = None
-        self.Limit = None
+        self._EnvIds = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def EnvIds(self):
+        return self._EnvIds
+
+    @EnvIds.setter
+    def EnvIds(self, EnvIds):
+        self._EnvIds = EnvIds
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.EnvIds = params.get("EnvIds")
+        self._EnvIds = params.get("EnvIds")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1410,27 +2594,51 @@ class DescribeComputeEnvsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ComputeEnvSet: List of compute environments
+        :param _ComputeEnvSet: List of compute environments
         :type ComputeEnvSet: list of ComputeEnvView
-        :param TotalCount: Number of compute environments
+        :param _TotalCount: Number of compute environments
         :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.ComputeEnvSet = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._ComputeEnvSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ComputeEnvSet(self):
+        return self._ComputeEnvSet
+
+    @ComputeEnvSet.setter
+    def ComputeEnvSet(self, ComputeEnvSet):
+        self._ComputeEnvSet = ComputeEnvSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("ComputeEnvSet") is not None:
-            self.ComputeEnvSet = []
+            self._ComputeEnvSet = []
             for item in params.get("ComputeEnvSet"):
                 obj = ComputeEnvView()
                 obj._deserialize(item)
-                self.ComputeEnvSet.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._ComputeEnvSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeCvmZoneInstanceConfigInfosRequest(AbstractModel):
@@ -1440,27 +2648,36 @@ class DescribeCvmZoneInstanceConfigInfosRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Filters: Filter.
+        :param _Filters: Filter.
 <li> zone - String - Required: No - (Filter) Filter by availability zone.</li>
 <li> instance-family - String - Required: No - (Filter) Filter by model family such as S1, I1, and M1.</li>
 <li> instance-type - String - Required: No - (Filter) Filter by model.</li>
 <li> instance-charge-type - String - Required: No - (Filter) Filter by instance billing method. ( POSTPAID_BY_HOUR: pay-as-you-go | SPOTPAID: bidding.)  </li>
         :type Filters: list of Filter
         """
-        self.Filters = None
+        self._Filters = None
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
 
     def _deserialize(self, params):
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1473,23 +2690,39 @@ class DescribeCvmZoneInstanceConfigInfosResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceTypeQuotaSet: List of model configurations in the availability zone.
+        :param _InstanceTypeQuotaSet: List of model configurations in the availability zone.
         :type InstanceTypeQuotaSet: list of InstanceTypeQuotaItem
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.InstanceTypeQuotaSet = None
-        self.RequestId = None
+        self._InstanceTypeQuotaSet = None
+        self._RequestId = None
+
+    @property
+    def InstanceTypeQuotaSet(self):
+        return self._InstanceTypeQuotaSet
+
+    @InstanceTypeQuotaSet.setter
+    def InstanceTypeQuotaSet(self, InstanceTypeQuotaSet):
+        self._InstanceTypeQuotaSet = InstanceTypeQuotaSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("InstanceTypeQuotaSet") is not None:
-            self.InstanceTypeQuotaSet = []
+            self._InstanceTypeQuotaSet = []
             for item in params.get("InstanceTypeQuotaSet"):
                 obj = InstanceTypeQuotaItem()
                 obj._deserialize(item)
-                self.InstanceTypeQuotaSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._InstanceTypeQuotaSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeInstanceCategoriesRequest(AbstractModel):
@@ -1505,23 +2738,39 @@ class DescribeInstanceCategoriesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceCategorySet: List of CVM instance categories
+        :param _InstanceCategorySet: List of CVM instance categories
         :type InstanceCategorySet: list of InstanceCategoryItem
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.InstanceCategorySet = None
-        self.RequestId = None
+        self._InstanceCategorySet = None
+        self._RequestId = None
+
+    @property
+    def InstanceCategorySet(self):
+        return self._InstanceCategorySet
+
+    @InstanceCategorySet.setter
+    def InstanceCategorySet(self, InstanceCategorySet):
+        self._InstanceCategorySet = InstanceCategorySet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("InstanceCategorySet") is not None:
-            self.InstanceCategorySet = []
+            self._InstanceCategorySet = []
             for item in params.get("InstanceCategorySet"):
                 obj = InstanceCategoryItem()
                 obj._deserialize(item)
-                self.InstanceCategorySet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._InstanceCategorySet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeJobRequest(AbstractModel):
@@ -1531,18 +2780,27 @@ class DescribeJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: Job ID
+        :param _JobId: Job ID
         :type JobId: str
         """
-        self.JobId = None
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
+        self._JobId = params.get("JobId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1555,91 +2813,211 @@ class DescribeJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: Job ID
+        :param _JobId: Job ID
         :type JobId: str
-        :param JobName: Job name
+        :param _JobName: Job name
         :type JobName: str
-        :param Zone: Availability zone information
+        :param _Zone: Availability zone information
         :type Zone: str
-        :param Priority: Job priority
+        :param _Priority: Job priority
         :type Priority: int
-        :param JobState: Job state
+        :param _JobState: Job state
         :type JobState: str
-        :param CreateTime: Creation Date
+        :param _CreateTime: Creation Date
         :type CreateTime: str
-        :param EndTime: End time
+        :param _EndTime: End time
         :type EndTime: str
-        :param TaskSet: Task view information
+        :param _TaskSet: Task view information
         :type TaskSet: list of TaskView
-        :param DependenceSet: Information of the dependency among tasks
+        :param _DependenceSet: Information of the dependency among tasks
         :type DependenceSet: list of Dependence
-        :param TaskMetrics: Task statistical metrics
+        :param _TaskMetrics: Task statistical metrics
         :type TaskMetrics: :class:`tencentcloud.batch.v20170312.models.TaskMetrics`
-        :param TaskInstanceMetrics: Task instance statistical metrics
+        :param _TaskInstanceMetrics: Task instance statistical metrics
         :type TaskInstanceMetrics: :class:`tencentcloud.batch.v20170312.models.TaskInstanceMetrics`
-        :param StateReason: Job failure reason
+        :param _StateReason: Job failure reason
         :type StateReason: str
-        :param Tags: List of tags bound with the job.
+        :param _Tags: List of tags bound with the job.
 Note: This field may return `null`, indicating that no valid value was found.
         :type Tags: list of Tag
-        :param NextAction: Next action
+        :param _NextAction: Next action
 Note: This field may return `null`, indicating that no valid value was found.
         :type NextAction: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.JobId = None
-        self.JobName = None
-        self.Zone = None
-        self.Priority = None
-        self.JobState = None
-        self.CreateTime = None
-        self.EndTime = None
-        self.TaskSet = None
-        self.DependenceSet = None
-        self.TaskMetrics = None
-        self.TaskInstanceMetrics = None
-        self.StateReason = None
-        self.Tags = None
-        self.NextAction = None
-        self.RequestId = None
+        self._JobId = None
+        self._JobName = None
+        self._Zone = None
+        self._Priority = None
+        self._JobState = None
+        self._CreateTime = None
+        self._EndTime = None
+        self._TaskSet = None
+        self._DependenceSet = None
+        self._TaskMetrics = None
+        self._TaskInstanceMetrics = None
+        self._StateReason = None
+        self._Tags = None
+        self._NextAction = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def JobName(self):
+        return self._JobName
+
+    @JobName.setter
+    def JobName(self, JobName):
+        self._JobName = JobName
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def Priority(self):
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def JobState(self):
+        return self._JobState
+
+    @JobState.setter
+    def JobState(self, JobState):
+        self._JobState = JobState
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def TaskSet(self):
+        return self._TaskSet
+
+    @TaskSet.setter
+    def TaskSet(self, TaskSet):
+        self._TaskSet = TaskSet
+
+    @property
+    def DependenceSet(self):
+        return self._DependenceSet
+
+    @DependenceSet.setter
+    def DependenceSet(self, DependenceSet):
+        self._DependenceSet = DependenceSet
+
+    @property
+    def TaskMetrics(self):
+        return self._TaskMetrics
+
+    @TaskMetrics.setter
+    def TaskMetrics(self, TaskMetrics):
+        self._TaskMetrics = TaskMetrics
+
+    @property
+    def TaskInstanceMetrics(self):
+        return self._TaskInstanceMetrics
+
+    @TaskInstanceMetrics.setter
+    def TaskInstanceMetrics(self, TaskInstanceMetrics):
+        self._TaskInstanceMetrics = TaskInstanceMetrics
+
+    @property
+    def StateReason(self):
+        return self._StateReason
+
+    @StateReason.setter
+    def StateReason(self, StateReason):
+        self._StateReason = StateReason
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def NextAction(self):
+        return self._NextAction
+
+    @NextAction.setter
+    def NextAction(self, NextAction):
+        self._NextAction = NextAction
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.JobName = params.get("JobName")
-        self.Zone = params.get("Zone")
-        self.Priority = params.get("Priority")
-        self.JobState = params.get("JobState")
-        self.CreateTime = params.get("CreateTime")
-        self.EndTime = params.get("EndTime")
+        self._JobId = params.get("JobId")
+        self._JobName = params.get("JobName")
+        self._Zone = params.get("Zone")
+        self._Priority = params.get("Priority")
+        self._JobState = params.get("JobState")
+        self._CreateTime = params.get("CreateTime")
+        self._EndTime = params.get("EndTime")
         if params.get("TaskSet") is not None:
-            self.TaskSet = []
+            self._TaskSet = []
             for item in params.get("TaskSet"):
                 obj = TaskView()
                 obj._deserialize(item)
-                self.TaskSet.append(obj)
+                self._TaskSet.append(obj)
         if params.get("DependenceSet") is not None:
-            self.DependenceSet = []
+            self._DependenceSet = []
             for item in params.get("DependenceSet"):
                 obj = Dependence()
                 obj._deserialize(item)
-                self.DependenceSet.append(obj)
+                self._DependenceSet.append(obj)
         if params.get("TaskMetrics") is not None:
-            self.TaskMetrics = TaskMetrics()
-            self.TaskMetrics._deserialize(params.get("TaskMetrics"))
+            self._TaskMetrics = TaskMetrics()
+            self._TaskMetrics._deserialize(params.get("TaskMetrics"))
         if params.get("TaskInstanceMetrics") is not None:
-            self.TaskInstanceMetrics = TaskInstanceMetrics()
-            self.TaskInstanceMetrics._deserialize(params.get("TaskInstanceMetrics"))
-        self.StateReason = params.get("StateReason")
+            self._TaskInstanceMetrics = TaskInstanceMetrics()
+            self._TaskInstanceMetrics._deserialize(params.get("TaskInstanceMetrics"))
+        self._StateReason = params.get("StateReason")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.NextAction = params.get("NextAction")
-        self.RequestId = params.get("RequestId")
+                self._Tags.append(obj)
+        self._NextAction = params.get("NextAction")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeJobSubmitInfoRequest(AbstractModel):
@@ -1649,18 +3027,27 @@ class DescribeJobSubmitInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: Job ID
+        :param _JobId: Job ID
         :type JobId: str
         """
-        self.JobId = None
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
+        self._JobId = params.get("JobId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1673,58 +3060,122 @@ class DescribeJobSubmitInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: Job ID
+        :param _JobId: Job ID
         :type JobId: str
-        :param JobName: Job name
+        :param _JobName: Job name
         :type JobName: str
-        :param JobDescription: Job description
+        :param _JobDescription: Job description
         :type JobDescription: str
-        :param Priority: Job priority. Tasks (Task) and task instances (TaskInstance) inherit the job priority
+        :param _Priority: Job priority. Tasks (Task) and task instances (TaskInstance) inherit the job priority
         :type Priority: int
-        :param Tasks: Information of tasks in the job
+        :param _Tasks: Information of tasks in the job
         :type Tasks: list of Task
-        :param Dependences: Dependency information
+        :param _Dependences: Dependency information
         :type Dependences: list of Dependence
-        :param Tags: List of tags bound with the job.
+        :param _Tags: List of tags bound with the job.
 Note: This field may return `null`, indicating that no valid value was found.
         :type Tags: list of Tag
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.JobId = None
-        self.JobName = None
-        self.JobDescription = None
-        self.Priority = None
-        self.Tasks = None
-        self.Dependences = None
-        self.Tags = None
-        self.RequestId = None
+        self._JobId = None
+        self._JobName = None
+        self._JobDescription = None
+        self._Priority = None
+        self._Tasks = None
+        self._Dependences = None
+        self._Tags = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def JobName(self):
+        return self._JobName
+
+    @JobName.setter
+    def JobName(self, JobName):
+        self._JobName = JobName
+
+    @property
+    def JobDescription(self):
+        return self._JobDescription
+
+    @JobDescription.setter
+    def JobDescription(self, JobDescription):
+        self._JobDescription = JobDescription
+
+    @property
+    def Priority(self):
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def Tasks(self):
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def Dependences(self):
+        return self._Dependences
+
+    @Dependences.setter
+    def Dependences(self, Dependences):
+        self._Dependences = Dependences
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.JobName = params.get("JobName")
-        self.JobDescription = params.get("JobDescription")
-        self.Priority = params.get("Priority")
+        self._JobId = params.get("JobId")
+        self._JobName = params.get("JobName")
+        self._JobDescription = params.get("JobDescription")
+        self._Priority = params.get("Priority")
         if params.get("Tasks") is not None:
-            self.Tasks = []
+            self._Tasks = []
             for item in params.get("Tasks"):
                 obj = Task()
                 obj._deserialize(item)
-                self.Tasks.append(obj)
+                self._Tasks.append(obj)
         if params.get("Dependences") is not None:
-            self.Dependences = []
+            self._Dependences = []
             for item in params.get("Dependences"):
                 obj = Dependence()
                 obj._deserialize(item)
-                self.Dependences.append(obj)
+                self._Dependences.append(obj)
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Tags.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeJobsRequest(AbstractModel):
@@ -1734,9 +3185,9 @@ class DescribeJobsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobIds: List of job IDs. It cannot be specified together with `Filters`.
+        :param _JobIds: List of job IDs. It cannot be specified together with `Filters`.
         :type JobIds: list of str
-        :param Filters: Filter
+        :param _Filters: Filter
 <li> `job-id` - String - Optional - Filter by the job ID.</li>
 <li> `job-name` - String - Optional - Filter by the job name.</li>
 <li> `job-state` - String - Optional - Filter by the job state.</li>
@@ -1746,31 +3197,64 @@ class DescribeJobsRequest(AbstractModel):
 <li> `tag:tag-key` - String - Optional - Filter by the tag key-value pair. The tag-key should be replaced by a specified tag key.</li>
 It cannot be specified together with `JobIds`.
         :type Filters: list of Filter
-        :param Offset: Offset
+        :param _Offset: Offset
         :type Offset: int
-        :param Limit: Maximum number of returned items
+        :param _Limit: Maximum number of returned items
         :type Limit: int
         """
-        self.JobIds = None
-        self.Filters = None
-        self.Offset = None
-        self.Limit = None
+        self._JobIds = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def JobIds(self):
+        return self._JobIds
+
+    @JobIds.setter
+    def JobIds(self, JobIds):
+        self._JobIds = JobIds
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.JobIds = params.get("JobIds")
+        self._JobIds = params.get("JobIds")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1783,27 +3267,51 @@ class DescribeJobsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobSet: List of jobs
+        :param _JobSet: List of jobs
         :type JobSet: list of JobView
-        :param TotalCount: Number of matched jobs
+        :param _TotalCount: Number of matched jobs
         :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.JobSet = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._JobSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def JobSet(self):
+        return self._JobSet
+
+    @JobSet.setter
+    def JobSet(self, JobSet):
+        self._JobSet = JobSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("JobSet") is not None:
-            self.JobSet = []
+            self._JobSet = []
             for item in params.get("JobSet"):
                 obj = JobView()
                 obj._deserialize(item)
-                self.JobSet.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._JobSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeTaskLogsRequest(AbstractModel):
@@ -1813,34 +3321,75 @@ class DescribeTaskLogsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: Job ID
+        :param _JobId: Job ID
         :type JobId: str
-        :param TaskName: Task name
+        :param _TaskName: Task name
         :type TaskName: str
-        :param TaskInstanceIndexes: Set of task instances
+        :param _TaskInstanceIndexes: Set of task instances
         :type TaskInstanceIndexes: list of int non-negative
-        :param Offset: The start point of query
+        :param _Offset: The start point of query
         :type Offset: int
-        :param Limit: Maximum number of task instances returned
+        :param _Limit: Maximum number of task instances returned
         :type Limit: int
         """
-        self.JobId = None
-        self.TaskName = None
-        self.TaskInstanceIndexes = None
-        self.Offset = None
-        self.Limit = None
+        self._JobId = None
+        self._TaskName = None
+        self._TaskInstanceIndexes = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def TaskName(self):
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def TaskInstanceIndexes(self):
+        return self._TaskInstanceIndexes
+
+    @TaskInstanceIndexes.setter
+    def TaskInstanceIndexes(self, TaskInstanceIndexes):
+        self._TaskInstanceIndexes = TaskInstanceIndexes
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.TaskName = params.get("TaskName")
-        self.TaskInstanceIndexes = params.get("TaskInstanceIndexes")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+        self._JobId = params.get("JobId")
+        self._TaskName = params.get("TaskName")
+        self._TaskInstanceIndexes = params.get("TaskInstanceIndexes")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1853,27 +3402,51 @@ class DescribeTaskLogsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Total number of task instances
+        :param _TotalCount: Total number of task instances
         :type TotalCount: int
-        :param TaskInstanceLogSet: Set of task instance log details
+        :param _TaskInstanceLogSet: Set of task instance log details
         :type TaskInstanceLogSet: list of TaskInstanceLog
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.TaskInstanceLogSet = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._TaskInstanceLogSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TaskInstanceLogSet(self):
+        return self._TaskInstanceLogSet
+
+    @TaskInstanceLogSet.setter
+    def TaskInstanceLogSet(self, TaskInstanceLogSet):
+        self._TaskInstanceLogSet = TaskInstanceLogSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("TaskInstanceLogSet") is not None:
-            self.TaskInstanceLogSet = []
+            self._TaskInstanceLogSet = []
             for item in params.get("TaskInstanceLogSet"):
                 obj = TaskInstanceLog()
                 obj._deserialize(item)
-                self.TaskInstanceLogSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._TaskInstanceLogSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeTaskRequest(AbstractModel):
@@ -1883,40 +3456,81 @@ class DescribeTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: Job ID
+        :param _JobId: Job ID
         :type JobId: str
-        :param TaskName: Task name
+        :param _TaskName: Task name
         :type TaskName: str
-        :param Offset: Offset
+        :param _Offset: Offset
         :type Offset: int
-        :param Limit: Number of returned results. Default value: 100. Maximum value: 1,000.
+        :param _Limit: Number of returned results. Default value: 100. Maximum value: 1,000.
         :type Limit: int
-        :param Filters: Filter as detailed below:
+        :param _Filters: Filter as detailed below:
 <li> `task-instance-type` - String - Optional - Filter by the task instance state. (`SUBMITTED`, `PENDING`, `RUNNABLE`, `STARTING`, `RUNNING`, `SUCCEED`, `FAILED`, `FAILED_INTERRUPTED`).</li>
         :type Filters: list of Filter
         """
-        self.JobId = None
-        self.TaskName = None
-        self.Offset = None
-        self.Limit = None
-        self.Filters = None
+        self._JobId = None
+        self._TaskName = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def TaskName(self):
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.TaskName = params.get("TaskName")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+        self._JobId = params.get("JobId")
+        self._TaskName = params.get("TaskName")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1929,53 +3543,125 @@ class DescribeTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: Job ID
+        :param _JobId: Job ID
         :type JobId: str
-        :param TaskName: Task name
+        :param _TaskName: Task name
         :type TaskName: str
-        :param TaskState: Task status
+        :param _TaskState: Task status
         :type TaskState: str
-        :param CreateTime: Creation time
+        :param _CreateTime: Creation time
         :type CreateTime: str
-        :param EndTime: End time
+        :param _EndTime: End time
         :type EndTime: str
-        :param TaskInstanceTotalCount: Total number of task instances
+        :param _TaskInstanceTotalCount: Total number of task instances
         :type TaskInstanceTotalCount: int
-        :param TaskInstanceSet: Task instance information
+        :param _TaskInstanceSet: Task instance information
         :type TaskInstanceSet: list of TaskInstanceView
-        :param TaskInstanceMetrics: Task instance statistical metrics
+        :param _TaskInstanceMetrics: Task instance statistical metrics
         :type TaskInstanceMetrics: :class:`tencentcloud.batch.v20170312.models.TaskInstanceMetrics`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.JobId = None
-        self.TaskName = None
-        self.TaskState = None
-        self.CreateTime = None
-        self.EndTime = None
-        self.TaskInstanceTotalCount = None
-        self.TaskInstanceSet = None
-        self.TaskInstanceMetrics = None
-        self.RequestId = None
+        self._JobId = None
+        self._TaskName = None
+        self._TaskState = None
+        self._CreateTime = None
+        self._EndTime = None
+        self._TaskInstanceTotalCount = None
+        self._TaskInstanceSet = None
+        self._TaskInstanceMetrics = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def TaskName(self):
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def TaskState(self):
+        return self._TaskState
+
+    @TaskState.setter
+    def TaskState(self, TaskState):
+        self._TaskState = TaskState
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def TaskInstanceTotalCount(self):
+        return self._TaskInstanceTotalCount
+
+    @TaskInstanceTotalCount.setter
+    def TaskInstanceTotalCount(self, TaskInstanceTotalCount):
+        self._TaskInstanceTotalCount = TaskInstanceTotalCount
+
+    @property
+    def TaskInstanceSet(self):
+        return self._TaskInstanceSet
+
+    @TaskInstanceSet.setter
+    def TaskInstanceSet(self, TaskInstanceSet):
+        self._TaskInstanceSet = TaskInstanceSet
+
+    @property
+    def TaskInstanceMetrics(self):
+        return self._TaskInstanceMetrics
+
+    @TaskInstanceMetrics.setter
+    def TaskInstanceMetrics(self, TaskInstanceMetrics):
+        self._TaskInstanceMetrics = TaskInstanceMetrics
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.TaskName = params.get("TaskName")
-        self.TaskState = params.get("TaskState")
-        self.CreateTime = params.get("CreateTime")
-        self.EndTime = params.get("EndTime")
-        self.TaskInstanceTotalCount = params.get("TaskInstanceTotalCount")
+        self._JobId = params.get("JobId")
+        self._TaskName = params.get("TaskName")
+        self._TaskState = params.get("TaskState")
+        self._CreateTime = params.get("CreateTime")
+        self._EndTime = params.get("EndTime")
+        self._TaskInstanceTotalCount = params.get("TaskInstanceTotalCount")
         if params.get("TaskInstanceSet") is not None:
-            self.TaskInstanceSet = []
+            self._TaskInstanceSet = []
             for item in params.get("TaskInstanceSet"):
                 obj = TaskInstanceView()
                 obj._deserialize(item)
-                self.TaskInstanceSet.append(obj)
+                self._TaskInstanceSet.append(obj)
         if params.get("TaskInstanceMetrics") is not None:
-            self.TaskInstanceMetrics = TaskInstanceMetrics()
-            self.TaskInstanceMetrics._deserialize(params.get("TaskInstanceMetrics"))
-        self.RequestId = params.get("RequestId")
+            self._TaskInstanceMetrics = TaskInstanceMetrics()
+            self._TaskInstanceMetrics._deserialize(params.get("TaskInstanceMetrics"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeTaskTemplatesRequest(AbstractModel):
@@ -1985,40 +3671,73 @@ class DescribeTaskTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskTemplateIds: List of task template IDs. It cannot be specified together with `Filters`.
+        :param _TaskTemplateIds: List of task template IDs. It cannot be specified together with `Filters`.
         :type TaskTemplateIds: list of str
-        :param Filters: Filter
+        :param _Filters: Filter
 <li> `task-template-name` - String - Optional - Task template name.</li>
 <li> `tag-key` - String - Optional - Tag key.</li>
 <li> `tag-value` - String - Optional - Tag value.</li>
 <li> `tag:tag-key` - String - Optional - Tag key-value pair. The tag-key should be replaced by a specified tag key.</li>
 It cannot be specified together with `TaskTemplateIds`.
         :type Filters: list of Filter
-        :param Offset: Offset
+        :param _Offset: Offset
         :type Offset: int
-        :param Limit: Maximum number of returned items
+        :param _Limit: Maximum number of returned items
         :type Limit: int
         """
-        self.TaskTemplateIds = None
-        self.Filters = None
-        self.Offset = None
-        self.Limit = None
+        self._TaskTemplateIds = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def TaskTemplateIds(self):
+        return self._TaskTemplateIds
+
+    @TaskTemplateIds.setter
+    def TaskTemplateIds(self, TaskTemplateIds):
+        self._TaskTemplateIds = TaskTemplateIds
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.TaskTemplateIds = params.get("TaskTemplateIds")
+        self._TaskTemplateIds = params.get("TaskTemplateIds")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2031,27 +3750,51 @@ class DescribeTaskTemplatesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskTemplateSet: List of task templates
+        :param _TaskTemplateSet: List of task templates
         :type TaskTemplateSet: list of TaskTemplateView
-        :param TotalCount: Number of task templates
+        :param _TotalCount: Number of task templates
         :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TaskTemplateSet = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._TaskTemplateSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def TaskTemplateSet(self):
+        return self._TaskTemplateSet
+
+    @TaskTemplateSet.setter
+    def TaskTemplateSet(self, TaskTemplateSet):
+        self._TaskTemplateSet = TaskTemplateSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("TaskTemplateSet") is not None:
-            self.TaskTemplateSet = []
+            self._TaskTemplateSet = []
             for item in params.get("TaskTemplateSet"):
                 obj = TaskTemplateView()
                 obj._deserialize(item)
-                self.TaskTemplateSet.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._TaskTemplateSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DetachInstancesRequest(AbstractModel):
@@ -2061,22 +3804,39 @@ class DetachInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EnvId: Compute environment ID
+        :param _EnvId: Compute environment ID
         :type EnvId: str
-        :param InstanceIds: List of instance IDs
+        :param _InstanceIds: List of instance IDs
         :type InstanceIds: list of str
         """
-        self.EnvId = None
-        self.InstanceIds = None
+        self._EnvId = None
+        self._InstanceIds = None
+
+    @property
+    def EnvId(self):
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def InstanceIds(self):
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
 
 
     def _deserialize(self, params):
-        self.EnvId = params.get("EnvId")
-        self.InstanceIds = params.get("InstanceIds")
+        self._EnvId = params.get("EnvId")
+        self._InstanceIds = params.get("InstanceIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2089,14 +3849,22 @@ class DetachInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class Docker(AbstractModel):
@@ -2106,43 +3874,100 @@ class Docker(AbstractModel):
 
     def __init__(self):
         r"""
-        :param User: Docker Hub username or Tencent Registry username
+        :param _User: Docker Hub username or Tencent Registry username
         :type User: str
-        :param Password: Docker Hub password or Tencent Registry password
+        :param _Password: Docker Hub password or Tencent Registry password
         :type Password: str
-        :param Image: For Docker Hub, enter "[user/repo]:[tag]"; for Tencent Registry, enter "ccr.ccs.tencentyun.com/[namespace/repo]:[tag]"
+        :param _Image: For Docker Hub, enter "[user/repo]:[tag]"; for Tencent Registry, enter "ccr.ccs.tencentyun.com/[namespace/repo]:[tag]"
         :type Image: str
-        :param Server: For Docker Hub, this can be left blank, but please ensure public network access is present. For Tencent Registry, the server address is "ccr.ccs.tencentyun.com"
+        :param _Server: For Docker Hub, this can be left blank, but please ensure public network access is present. For Tencent Registry, the server address is "ccr.ccs.tencentyun.com"
         :type Server: str
-        :param MaxRetryCount: Maximum retry attempts to load docket images. Range: 0 - 10. Default: `0`
+        :param _MaxRetryCount: Maximum retry attempts to load docket images. Range: 0 - 10. Default: `0`
         :type MaxRetryCount: int
-        :param DelayOnRetry: Docker image loading timeout period (in seconds). Range: 1 - 360
+        :param _DelayOnRetry: Docker image loading timeout period (in seconds). Range: 1 - 360
         :type DelayOnRetry: int
-        :param DockerRunOption: Docker command execution parameter
+        :param _DockerRunOption: Docker command execution parameter
 Note: This field may return `null`, indicating that no valid value was found.
         :type DockerRunOption: str
         """
-        self.User = None
-        self.Password = None
-        self.Image = None
-        self.Server = None
-        self.MaxRetryCount = None
-        self.DelayOnRetry = None
-        self.DockerRunOption = None
+        self._User = None
+        self._Password = None
+        self._Image = None
+        self._Server = None
+        self._MaxRetryCount = None
+        self._DelayOnRetry = None
+        self._DockerRunOption = None
+
+    @property
+    def User(self):
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def Image(self):
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def Server(self):
+        return self._Server
+
+    @Server.setter
+    def Server(self, Server):
+        self._Server = Server
+
+    @property
+    def MaxRetryCount(self):
+        return self._MaxRetryCount
+
+    @MaxRetryCount.setter
+    def MaxRetryCount(self, MaxRetryCount):
+        self._MaxRetryCount = MaxRetryCount
+
+    @property
+    def DelayOnRetry(self):
+        return self._DelayOnRetry
+
+    @DelayOnRetry.setter
+    def DelayOnRetry(self, DelayOnRetry):
+        self._DelayOnRetry = DelayOnRetry
+
+    @property
+    def DockerRunOption(self):
+        return self._DockerRunOption
+
+    @DockerRunOption.setter
+    def DockerRunOption(self, DockerRunOption):
+        self._DockerRunOption = DockerRunOption
 
 
     def _deserialize(self, params):
-        self.User = params.get("User")
-        self.Password = params.get("Password")
-        self.Image = params.get("Image")
-        self.Server = params.get("Server")
-        self.MaxRetryCount = params.get("MaxRetryCount")
-        self.DelayOnRetry = params.get("DelayOnRetry")
-        self.DockerRunOption = params.get("DockerRunOption")
+        self._User = params.get("User")
+        self._Password = params.get("Password")
+        self._Image = params.get("Image")
+        self._Server = params.get("Server")
+        self._MaxRetryCount = params.get("MaxRetryCount")
+        self._DelayOnRetry = params.get("DelayOnRetry")
+        self._DockerRunOption = params.get("DockerRunOption")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2155,32 +3980,57 @@ class EnhancedService(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecurityService: Enables cloud security service. If this parameter is not specified, the cloud security service will be enabled by default.
+        :param _SecurityService: Enables cloud security service. If this parameter is not specified, the cloud security service will be enabled by default.
         :type SecurityService: :class:`tencentcloud.batch.v20170312.models.RunSecurityServiceEnabled`
-        :param MonitorService: Enables cloud monitor service. If this parameter is not specified, the cloud monitor service will be enabled by default.
+        :param _MonitorService: Enables cloud monitor service. If this parameter is not specified, the cloud monitor service will be enabled by default.
         :type MonitorService: :class:`tencentcloud.batch.v20170312.models.RunMonitorServiceEnabled`
-        :param AutomationService: Whether to enable the TAT service. If this parameter is not specified, the TAT service is enabled for public images and disabled for other images by default.
+        :param _AutomationService: Whether to enable the TAT service. If this parameter is not specified, the TAT service is enabled for public images and disabled for other images by default.
         :type AutomationService: :class:`tencentcloud.batch.v20170312.models.RunAutomationServiceEnabled`
         """
-        self.SecurityService = None
-        self.MonitorService = None
-        self.AutomationService = None
+        self._SecurityService = None
+        self._MonitorService = None
+        self._AutomationService = None
+
+    @property
+    def SecurityService(self):
+        return self._SecurityService
+
+    @SecurityService.setter
+    def SecurityService(self, SecurityService):
+        self._SecurityService = SecurityService
+
+    @property
+    def MonitorService(self):
+        return self._MonitorService
+
+    @MonitorService.setter
+    def MonitorService(self, MonitorService):
+        self._MonitorService = MonitorService
+
+    @property
+    def AutomationService(self):
+        return self._AutomationService
+
+    @AutomationService.setter
+    def AutomationService(self, AutomationService):
+        self._AutomationService = AutomationService
 
 
     def _deserialize(self, params):
         if params.get("SecurityService") is not None:
-            self.SecurityService = RunSecurityServiceEnabled()
-            self.SecurityService._deserialize(params.get("SecurityService"))
+            self._SecurityService = RunSecurityServiceEnabled()
+            self._SecurityService._deserialize(params.get("SecurityService"))
         if params.get("MonitorService") is not None:
-            self.MonitorService = RunMonitorServiceEnabled()
-            self.MonitorService._deserialize(params.get("MonitorService"))
+            self._MonitorService = RunMonitorServiceEnabled()
+            self._MonitorService._deserialize(params.get("MonitorService"))
         if params.get("AutomationService") is not None:
-            self.AutomationService = RunAutomationServiceEnabled()
-            self.AutomationService._deserialize(params.get("AutomationService"))
+            self._AutomationService = RunAutomationServiceEnabled()
+            self._AutomationService._deserialize(params.get("AutomationService"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2193,102 +4043,231 @@ class EnvData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceType: CVM instance type. It cannot be specified together with `InstanceTypes` or `InstanceTypeOptions`.
+        :param _InstanceType: CVM instance type. It cannot be specified together with `InstanceTypes` or `InstanceTypeOptions`.
         :type InstanceType: str
-        :param ImageId: CVM image ID
+        :param _ImageId: CVM image ID
         :type ImageId: str
-        :param SystemDisk: System disk configuration of the instance
+        :param _SystemDisk: System disk configuration of the instance
         :type SystemDisk: :class:`tencentcloud.batch.v20170312.models.SystemDisk`
-        :param DataDisks: Data disk configuration of the instance
+        :param _DataDisks: Data disk configuration of the instance
         :type DataDisks: list of DataDisk
-        :param VirtualPrivateCloud: Information of the VPC configuration. It cannot be specified together with `Zones` and `VirtualPrivateClouds`.
+        :param _VirtualPrivateCloud: Information of the VPC configuration. It cannot be specified together with `Zones` and `VirtualPrivateClouds`.
         :type VirtualPrivateCloud: :class:`tencentcloud.batch.v20170312.models.VirtualPrivateCloud`
-        :param InternetAccessible: Public network bandwidth configuration
+        :param _InternetAccessible: Public network bandwidth configuration
         :type InternetAccessible: :class:`tencentcloud.batch.v20170312.models.InternetAccessible`
-        :param InstanceName: CVM instance display name
+        :param _InstanceName: CVM instance display name
         :type InstanceName: str
-        :param LoginSettings: Instance login settings
+        :param _LoginSettings: Instance login settings
         :type LoginSettings: :class:`tencentcloud.batch.v20170312.models.LoginSettings`
-        :param SecurityGroupIds: Security groups associated with the instance
+        :param _SecurityGroupIds: Security groups associated with the instance
         :type SecurityGroupIds: list of str
-        :param EnhancedService: Whether to activate CWPP agent and Cloud Monitor. CWPP agent and Cloud Monitor are activated by default.
+        :param _EnhancedService: Whether to activate CWPP agent and Cloud Monitor. CWPP agent and Cloud Monitor are activated by default.
         :type EnhancedService: :class:`tencentcloud.batch.v20170312.models.EnhancedService`
-        :param InstanceChargeType: CVM instance billing method <br><li>`POSTPAID_BY_HOUR` (default): Hourly-billed pay-as-you-go <br><li>`SPOTPAID`: Spot instance <br>
+        :param _InstanceChargeType: CVM instance billing method <br><li>`POSTPAID_BY_HOUR` (default): Hourly-billed pay-as-you-go <br><li>`SPOTPAID`: Spot instance <br>
         :type InstanceChargeType: str
-        :param InstanceMarketOptions: Market-related options for instances, such as parameters related to spot instances.
+        :param _InstanceMarketOptions: Market-related options for instances, such as parameters related to spot instances.
         :type InstanceMarketOptions: :class:`tencentcloud.batch.v20170312.models.InstanceMarketOptionsRequest`
-        :param InstanceTypes: Types of CVM instances to create (up to 10). The system creates compute nodes of types specified in this list from top to down till the creation is successful. It cannot be specified together with `InstanceType` or `InstanceTypeOptions`. 
+        :param _InstanceTypes: Types of CVM instances to create (up to 10). The system creates compute nodes of types specified in this list from top to down till the creation is successful. It cannot be specified together with `InstanceType` or `InstanceTypeOptions`. 
         :type InstanceTypes: list of str
-        :param InstanceTypeOptions: CVM instance model configuration. It cannot be specified together with `InstanceType` or `InstanceTypes`.
+        :param _InstanceTypeOptions: CVM instance model configuration. It cannot be specified together with `InstanceType` or `InstanceTypes`.
         :type InstanceTypeOptions: :class:`tencentcloud.batch.v20170312.models.InstanceTypeOptions`
-        :param Zones: List of availability zones. You can create CVM cross AZs in the same region. It cannot be specified together with `VirtualPrivateCloud` or `VirtualPrivateClouds`.
+        :param _Zones: List of availability zones. You can create CVM cross AZs in the same region. It cannot be specified together with `VirtualPrivateCloud` or `VirtualPrivateClouds`.
         :type Zones: list of str
-        :param VirtualPrivateClouds: List of VPCs (creation of CVM instances across VPCs is supported). It cannot be specified together with `VirtualPrivateCloud` or `Zones`.
+        :param _VirtualPrivateClouds: List of VPCs (creation of CVM instances across VPCs is supported). It cannot be specified together with `VirtualPrivateCloud` or `Zones`.
         :type VirtualPrivateClouds: list of VirtualPrivateCloud
         """
-        self.InstanceType = None
-        self.ImageId = None
-        self.SystemDisk = None
-        self.DataDisks = None
-        self.VirtualPrivateCloud = None
-        self.InternetAccessible = None
-        self.InstanceName = None
-        self.LoginSettings = None
-        self.SecurityGroupIds = None
-        self.EnhancedService = None
-        self.InstanceChargeType = None
-        self.InstanceMarketOptions = None
-        self.InstanceTypes = None
-        self.InstanceTypeOptions = None
-        self.Zones = None
-        self.VirtualPrivateClouds = None
+        self._InstanceType = None
+        self._ImageId = None
+        self._SystemDisk = None
+        self._DataDisks = None
+        self._VirtualPrivateCloud = None
+        self._InternetAccessible = None
+        self._InstanceName = None
+        self._LoginSettings = None
+        self._SecurityGroupIds = None
+        self._EnhancedService = None
+        self._InstanceChargeType = None
+        self._InstanceMarketOptions = None
+        self._InstanceTypes = None
+        self._InstanceTypeOptions = None
+        self._Zones = None
+        self._VirtualPrivateClouds = None
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def ImageId(self):
+        return self._ImageId
+
+    @ImageId.setter
+    def ImageId(self, ImageId):
+        self._ImageId = ImageId
+
+    @property
+    def SystemDisk(self):
+        return self._SystemDisk
+
+    @SystemDisk.setter
+    def SystemDisk(self, SystemDisk):
+        self._SystemDisk = SystemDisk
+
+    @property
+    def DataDisks(self):
+        return self._DataDisks
+
+    @DataDisks.setter
+    def DataDisks(self, DataDisks):
+        self._DataDisks = DataDisks
+
+    @property
+    def VirtualPrivateCloud(self):
+        return self._VirtualPrivateCloud
+
+    @VirtualPrivateCloud.setter
+    def VirtualPrivateCloud(self, VirtualPrivateCloud):
+        self._VirtualPrivateCloud = VirtualPrivateCloud
+
+    @property
+    def InternetAccessible(self):
+        return self._InternetAccessible
+
+    @InternetAccessible.setter
+    def InternetAccessible(self, InternetAccessible):
+        self._InternetAccessible = InternetAccessible
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def LoginSettings(self):
+        return self._LoginSettings
+
+    @LoginSettings.setter
+    def LoginSettings(self, LoginSettings):
+        self._LoginSettings = LoginSettings
+
+    @property
+    def SecurityGroupIds(self):
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
+    @property
+    def EnhancedService(self):
+        return self._EnhancedService
+
+    @EnhancedService.setter
+    def EnhancedService(self, EnhancedService):
+        self._EnhancedService = EnhancedService
+
+    @property
+    def InstanceChargeType(self):
+        return self._InstanceChargeType
+
+    @InstanceChargeType.setter
+    def InstanceChargeType(self, InstanceChargeType):
+        self._InstanceChargeType = InstanceChargeType
+
+    @property
+    def InstanceMarketOptions(self):
+        return self._InstanceMarketOptions
+
+    @InstanceMarketOptions.setter
+    def InstanceMarketOptions(self, InstanceMarketOptions):
+        self._InstanceMarketOptions = InstanceMarketOptions
+
+    @property
+    def InstanceTypes(self):
+        return self._InstanceTypes
+
+    @InstanceTypes.setter
+    def InstanceTypes(self, InstanceTypes):
+        self._InstanceTypes = InstanceTypes
+
+    @property
+    def InstanceTypeOptions(self):
+        return self._InstanceTypeOptions
+
+    @InstanceTypeOptions.setter
+    def InstanceTypeOptions(self, InstanceTypeOptions):
+        self._InstanceTypeOptions = InstanceTypeOptions
+
+    @property
+    def Zones(self):
+        return self._Zones
+
+    @Zones.setter
+    def Zones(self, Zones):
+        self._Zones = Zones
+
+    @property
+    def VirtualPrivateClouds(self):
+        return self._VirtualPrivateClouds
+
+    @VirtualPrivateClouds.setter
+    def VirtualPrivateClouds(self, VirtualPrivateClouds):
+        self._VirtualPrivateClouds = VirtualPrivateClouds
 
 
     def _deserialize(self, params):
-        self.InstanceType = params.get("InstanceType")
-        self.ImageId = params.get("ImageId")
+        self._InstanceType = params.get("InstanceType")
+        self._ImageId = params.get("ImageId")
         if params.get("SystemDisk") is not None:
-            self.SystemDisk = SystemDisk()
-            self.SystemDisk._deserialize(params.get("SystemDisk"))
+            self._SystemDisk = SystemDisk()
+            self._SystemDisk._deserialize(params.get("SystemDisk"))
         if params.get("DataDisks") is not None:
-            self.DataDisks = []
+            self._DataDisks = []
             for item in params.get("DataDisks"):
                 obj = DataDisk()
                 obj._deserialize(item)
-                self.DataDisks.append(obj)
+                self._DataDisks.append(obj)
         if params.get("VirtualPrivateCloud") is not None:
-            self.VirtualPrivateCloud = VirtualPrivateCloud()
-            self.VirtualPrivateCloud._deserialize(params.get("VirtualPrivateCloud"))
+            self._VirtualPrivateCloud = VirtualPrivateCloud()
+            self._VirtualPrivateCloud._deserialize(params.get("VirtualPrivateCloud"))
         if params.get("InternetAccessible") is not None:
-            self.InternetAccessible = InternetAccessible()
-            self.InternetAccessible._deserialize(params.get("InternetAccessible"))
-        self.InstanceName = params.get("InstanceName")
+            self._InternetAccessible = InternetAccessible()
+            self._InternetAccessible._deserialize(params.get("InternetAccessible"))
+        self._InstanceName = params.get("InstanceName")
         if params.get("LoginSettings") is not None:
-            self.LoginSettings = LoginSettings()
-            self.LoginSettings._deserialize(params.get("LoginSettings"))
-        self.SecurityGroupIds = params.get("SecurityGroupIds")
+            self._LoginSettings = LoginSettings()
+            self._LoginSettings._deserialize(params.get("LoginSettings"))
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
         if params.get("EnhancedService") is not None:
-            self.EnhancedService = EnhancedService()
-            self.EnhancedService._deserialize(params.get("EnhancedService"))
-        self.InstanceChargeType = params.get("InstanceChargeType")
+            self._EnhancedService = EnhancedService()
+            self._EnhancedService._deserialize(params.get("EnhancedService"))
+        self._InstanceChargeType = params.get("InstanceChargeType")
         if params.get("InstanceMarketOptions") is not None:
-            self.InstanceMarketOptions = InstanceMarketOptionsRequest()
-            self.InstanceMarketOptions._deserialize(params.get("InstanceMarketOptions"))
-        self.InstanceTypes = params.get("InstanceTypes")
+            self._InstanceMarketOptions = InstanceMarketOptionsRequest()
+            self._InstanceMarketOptions._deserialize(params.get("InstanceMarketOptions"))
+        self._InstanceTypes = params.get("InstanceTypes")
         if params.get("InstanceTypeOptions") is not None:
-            self.InstanceTypeOptions = InstanceTypeOptions()
-            self.InstanceTypeOptions._deserialize(params.get("InstanceTypeOptions"))
-        self.Zones = params.get("Zones")
+            self._InstanceTypeOptions = InstanceTypeOptions()
+            self._InstanceTypeOptions._deserialize(params.get("InstanceTypeOptions"))
+        self._Zones = params.get("Zones")
         if params.get("VirtualPrivateClouds") is not None:
-            self.VirtualPrivateClouds = []
+            self._VirtualPrivateClouds = []
             for item in params.get("VirtualPrivateClouds"):
                 obj = VirtualPrivateCloud()
                 obj._deserialize(item)
-                self.VirtualPrivateClouds.append(obj)
+                self._VirtualPrivateClouds.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2301,22 +4280,39 @@ class EnvVar(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: Environment variable name
+        :param _Name: Environment variable name
         :type Name: str
-        :param Value: Environment variable value
+        :param _Value: Environment variable value
         :type Value: str
         """
-        self.Name = None
-        self.Value = None
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Value = params.get("Value")
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2329,27 +4325,44 @@ class EventConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EventName: Event type. Value range: <br/><li>`JOB_RUNNING`: The job is running, applicable to `SubmitJob`. </li><li>`JOB_SUCCEED`: The job succeeded, applicable to `SubmitJob`. </li><li>`JOB_FAILED`: The job failed, applicable to `SubmitJob`. </li><li>`JOB_FAILED_INTERRUPTED`: The job failed and the instance is retained, applicable to `SubmitJob`. </li><li>`TASK_RUNNING`: The task is running, applicable to `SubmitJob`. </li><li>`TASK_SUCCEED`: The task succeeded, applicable to `SubmitJob`. </li><li>`TASK_FAILED`: The task failed, applicable to `SubmitJob`. </li><li>`TASK_FAILED_INTERRUPTED`: The task failed and the instance is retained, applicable to `SubmitJob`. </li><li>`TASK_INSTANCE_RUNNING`: The task instance is running, applicable to `SubmitJob`. </li><li>`TASK_INSTANCE_SUCCEED`: The task instance succeeded, applicable to `SubmitJob`. </li><li>`TASK_INSTANCE_FAILED`: The task instance failed, applicable to `SubmitJob`. </li><li>`TASK_INSTANCE_FAILED_INTERRUPTED`: The task instance failed and the instance is retained, applicable to `SubmitJob`. </li><li>`COMPUTE_ENV_CREATED`: the compute environment has been created, applicable to "CreateComputeEnv". </li><li>`COMPUTE_ENV_DELETED`: The compute environment has been deleted, applicable to `CreateComputeEnv`. </li><li>`COMPUTE_NODE_CREATED`: The compute node has been created, applicable to `CreateComputeEnv` and `SubmitJob`. </li><li>`COMPUTE_NODE_CREATION_FAILED`: The compute node creation failed, applicable to `CreateComputeEnv` and `SubmitJob`. </li><li>`COMPUTE_NODE_RUNNING`: The compute node is running, applicable to `CreateComputeEnv` and `SubmitJob`. </li><li>`COMPUTE_NODE_ABNORMAL`: The compute node is exceptional, applicable to "CreateComputeEnv" and "SubmitJob". </li><li>`COMPUTE_NODE_DELETING`: The compute node has been deleted, applicable to `CreateComputeEnv` and `SubmitJob`. </li>
+        :param _EventName: Event type. Value range: <br/><li>`JOB_RUNNING`: The job is running, applicable to `SubmitJob`. </li><li>`JOB_SUCCEED`: The job succeeded, applicable to `SubmitJob`. </li><li>`JOB_FAILED`: The job failed, applicable to `SubmitJob`. </li><li>`JOB_FAILED_INTERRUPTED`: The job failed and the instance is retained, applicable to `SubmitJob`. </li><li>`TASK_RUNNING`: The task is running, applicable to `SubmitJob`. </li><li>`TASK_SUCCEED`: The task succeeded, applicable to `SubmitJob`. </li><li>`TASK_FAILED`: The task failed, applicable to `SubmitJob`. </li><li>`TASK_FAILED_INTERRUPTED`: The task failed and the instance is retained, applicable to `SubmitJob`. </li><li>`TASK_INSTANCE_RUNNING`: The task instance is running, applicable to `SubmitJob`. </li><li>`TASK_INSTANCE_SUCCEED`: The task instance succeeded, applicable to `SubmitJob`. </li><li>`TASK_INSTANCE_FAILED`: The task instance failed, applicable to `SubmitJob`. </li><li>`TASK_INSTANCE_FAILED_INTERRUPTED`: The task instance failed and the instance is retained, applicable to `SubmitJob`. </li><li>`COMPUTE_ENV_CREATED`: the compute environment has been created, applicable to "CreateComputeEnv". </li><li>`COMPUTE_ENV_DELETED`: The compute environment has been deleted, applicable to `CreateComputeEnv`. </li><li>`COMPUTE_NODE_CREATED`: The compute node has been created, applicable to `CreateComputeEnv` and `SubmitJob`. </li><li>`COMPUTE_NODE_CREATION_FAILED`: The compute node creation failed, applicable to `CreateComputeEnv` and `SubmitJob`. </li><li>`COMPUTE_NODE_RUNNING`: The compute node is running, applicable to `CreateComputeEnv` and `SubmitJob`. </li><li>`COMPUTE_NODE_ABNORMAL`: The compute node is exceptional, applicable to "CreateComputeEnv" and "SubmitJob". </li><li>`COMPUTE_NODE_DELETING`: The compute node has been deleted, applicable to `CreateComputeEnv` and `SubmitJob`. </li>
         :type EventName: str
-        :param EventVars: Custom key-value pair
+        :param _EventVars: Custom key-value pair
         :type EventVars: list of EventVar
         """
-        self.EventName = None
-        self.EventVars = None
+        self._EventName = None
+        self._EventVars = None
+
+    @property
+    def EventName(self):
+        return self._EventName
+
+    @EventName.setter
+    def EventName(self, EventName):
+        self._EventName = EventName
+
+    @property
+    def EventVars(self):
+        return self._EventVars
+
+    @EventVars.setter
+    def EventVars(self, EventVars):
+        self._EventVars = EventVars
 
 
     def _deserialize(self, params):
-        self.EventName = params.get("EventName")
+        self._EventName = params.get("EventName")
         if params.get("EventVars") is not None:
-            self.EventVars = []
+            self._EventVars = []
             for item in params.get("EventVars"):
                 obj = EventVar()
                 obj._deserialize(item)
-                self.EventVars.append(obj)
+                self._EventVars.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2362,22 +4375,39 @@ class EventVar(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: Custom key
+        :param _Name: Custom key
         :type Name: str
-        :param Value: Custom value
+        :param _Value: Custom value
         :type Value: str
         """
-        self.Name = None
-        self.Value = None
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Value = params.get("Value")
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2390,31 +4420,56 @@ class Externals(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ReleaseAddress: Release address
+        :param _ReleaseAddress: Release address
 Note: This field may return null, indicating that no valid value is found.
         :type ReleaseAddress: bool
-        :param UnsupportNetworks: Not supported network. Value: <br><li>BASIC: classic network<br><li>VPC1.0: VPC1.0
+        :param _UnsupportNetworks: Not supported network. Value: <br><li>BASIC: classic network<br><li>VPC1.0: VPC1.0
 Note: This field may return null, indicating that no valid value was found.
         :type UnsupportNetworks: list of str
-        :param StorageBlockAttr: Attributes of local HDD storage
+        :param _StorageBlockAttr: Attributes of local HDD storage
 Note: This field may return null, indicating that no valid value is found.
         :type StorageBlockAttr: :class:`tencentcloud.batch.v20170312.models.StorageBlock`
         """
-        self.ReleaseAddress = None
-        self.UnsupportNetworks = None
-        self.StorageBlockAttr = None
+        self._ReleaseAddress = None
+        self._UnsupportNetworks = None
+        self._StorageBlockAttr = None
+
+    @property
+    def ReleaseAddress(self):
+        return self._ReleaseAddress
+
+    @ReleaseAddress.setter
+    def ReleaseAddress(self, ReleaseAddress):
+        self._ReleaseAddress = ReleaseAddress
+
+    @property
+    def UnsupportNetworks(self):
+        return self._UnsupportNetworks
+
+    @UnsupportNetworks.setter
+    def UnsupportNetworks(self, UnsupportNetworks):
+        self._UnsupportNetworks = UnsupportNetworks
+
+    @property
+    def StorageBlockAttr(self):
+        return self._StorageBlockAttr
+
+    @StorageBlockAttr.setter
+    def StorageBlockAttr(self, StorageBlockAttr):
+        self._StorageBlockAttr = StorageBlockAttr
 
 
     def _deserialize(self, params):
-        self.ReleaseAddress = params.get("ReleaseAddress")
-        self.UnsupportNetworks = params.get("UnsupportNetworks")
+        self._ReleaseAddress = params.get("ReleaseAddress")
+        self._UnsupportNetworks = params.get("UnsupportNetworks")
         if params.get("StorageBlockAttr") is not None:
-            self.StorageBlockAttr = StorageBlock()
-            self.StorageBlockAttr._deserialize(params.get("StorageBlockAttr"))
+            self._StorageBlockAttr = StorageBlock()
+            self._StorageBlockAttr._deserialize(params.get("StorageBlockAttr"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2437,22 +4492,39 @@ class Filter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: Filters.
+        :param _Name: Filters.
         :type Name: str
-        :param Values: Filter values.
+        :param _Values: Filter values.
         :type Values: list of str
         """
-        self.Name = None
-        self.Values = None
+        self._Name = None
+        self._Values = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Values = params.get("Values")
+        self._Name = params.get("Name")
+        self._Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2465,26 +4537,51 @@ class InputMapping(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SourcePath: Source path
+        :param _SourcePath: Source path
         :type SourcePath: str
-        :param DestinationPath: Destination path
+        :param _DestinationPath: Destination path
         :type DestinationPath: str
-        :param MountOptionParameter: Mounting configuration item parameter
+        :param _MountOptionParameter: Mounting configuration item parameter
         :type MountOptionParameter: str
         """
-        self.SourcePath = None
-        self.DestinationPath = None
-        self.MountOptionParameter = None
+        self._SourcePath = None
+        self._DestinationPath = None
+        self._MountOptionParameter = None
+
+    @property
+    def SourcePath(self):
+        return self._SourcePath
+
+    @SourcePath.setter
+    def SourcePath(self, SourcePath):
+        self._SourcePath = SourcePath
+
+    @property
+    def DestinationPath(self):
+        return self._DestinationPath
+
+    @DestinationPath.setter
+    def DestinationPath(self, DestinationPath):
+        self._DestinationPath = DestinationPath
+
+    @property
+    def MountOptionParameter(self):
+        return self._MountOptionParameter
+
+    @MountOptionParameter.setter
+    def MountOptionParameter(self, MountOptionParameter):
+        self._MountOptionParameter = MountOptionParameter
 
 
     def _deserialize(self, params):
-        self.SourcePath = params.get("SourcePath")
-        self.DestinationPath = params.get("DestinationPath")
-        self.MountOptionParameter = params.get("MountOptionParameter")
+        self._SourcePath = params.get("SourcePath")
+        self._DestinationPath = params.get("DestinationPath")
+        self._MountOptionParameter = params.get("MountOptionParameter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2497,28 +4594,53 @@ class Instance(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance ID.
+        :param _InstanceId: Instance ID.
         :type InstanceId: str
-        :param ImageId: Image ID
+        :param _ImageId: Image ID
         :type ImageId: str
-        :param LoginSettings: Instance login settings.
+        :param _LoginSettings: Instance login settings.
         :type LoginSettings: :class:`tencentcloud.batch.v20170312.models.LoginSettings`
         """
-        self.InstanceId = None
-        self.ImageId = None
-        self.LoginSettings = None
+        self._InstanceId = None
+        self._ImageId = None
+        self._LoginSettings = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ImageId(self):
+        return self._ImageId
+
+    @ImageId.setter
+    def ImageId(self, ImageId):
+        self._ImageId = ImageId
+
+    @property
+    def LoginSettings(self):
+        return self._LoginSettings
+
+    @LoginSettings.setter
+    def LoginSettings(self, LoginSettings):
+        self._LoginSettings = LoginSettings
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.ImageId = params.get("ImageId")
+        self._InstanceId = params.get("InstanceId")
+        self._ImageId = params.get("ImageId")
         if params.get("LoginSettings") is not None:
-            self.LoginSettings = LoginSettings()
-            self.LoginSettings._deserialize(params.get("LoginSettings"))
+            self._LoginSettings = LoginSettings()
+            self._LoginSettings._deserialize(params.get("LoginSettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2531,22 +4653,39 @@ class InstanceCategoryItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceCategory: Instance type name
+        :param _InstanceCategory: Instance type name
         :type InstanceCategory: str
-        :param InstanceFamilySet: List of instance families
+        :param _InstanceFamilySet: List of instance families
         :type InstanceFamilySet: list of str
         """
-        self.InstanceCategory = None
-        self.InstanceFamilySet = None
+        self._InstanceCategory = None
+        self._InstanceFamilySet = None
+
+    @property
+    def InstanceCategory(self):
+        return self._InstanceCategory
+
+    @InstanceCategory.setter
+    def InstanceCategory(self, InstanceCategory):
+        self._InstanceCategory = InstanceCategory
+
+    @property
+    def InstanceFamilySet(self):
+        return self._InstanceFamilySet
+
+    @InstanceFamilySet.setter
+    def InstanceFamilySet(self, InstanceFamilySet):
+        self._InstanceFamilySet = InstanceFamilySet
 
 
     def _deserialize(self, params):
-        self.InstanceCategory = params.get("InstanceCategory")
-        self.InstanceFamilySet = params.get("InstanceFamilySet")
+        self._InstanceCategory = params.get("InstanceCategory")
+        self._InstanceFamilySet = params.get("InstanceFamilySet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2559,26 +4698,43 @@ class InstanceMarketOptionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SpotOptions: Spot-related options
+        :param _SpotOptions: Spot-related options
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type SpotOptions: :class:`tencentcloud.batch.v20170312.models.SpotMarketOptions`
-        :param MarketType: Market type. Valid value: `spot`.
+        :param _MarketType: Market type. Valid value: `spot`.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type MarketType: str
         """
-        self.SpotOptions = None
-        self.MarketType = None
+        self._SpotOptions = None
+        self._MarketType = None
+
+    @property
+    def SpotOptions(self):
+        return self._SpotOptions
+
+    @SpotOptions.setter
+    def SpotOptions(self, SpotOptions):
+        self._SpotOptions = SpotOptions
+
+    @property
+    def MarketType(self):
+        return self._MarketType
+
+    @MarketType.setter
+    def MarketType(self, MarketType):
+        self._MarketType = MarketType
 
 
     def _deserialize(self, params):
         if params.get("SpotOptions") is not None:
-            self.SpotOptions = SpotMarketOptions()
-            self.SpotOptions._deserialize(params.get("SpotOptions"))
-        self.MarketType = params.get("MarketType")
+            self._SpotOptions = SpotMarketOptions()
+            self._SpotOptions._deserialize(params.get("SpotOptions"))
+        self._MarketType = params.get("MarketType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2591,34 +4747,75 @@ class InstanceTypeConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Mem: Memory size in GB.
+        :param _Mem: Memory size in GB.
         :type Mem: int
-        :param Cpu: Number of CPU cores.
+        :param _Cpu: Number of CPU cores.
         :type Cpu: int
-        :param InstanceType: Instance model.
+        :param _InstanceType: Instance model.
         :type InstanceType: str
-        :param Zone: Availability zone.
+        :param _Zone: Availability zone.
         :type Zone: str
-        :param InstanceFamily: Instance model family.
+        :param _InstanceFamily: Instance model family.
         :type InstanceFamily: str
         """
-        self.Mem = None
-        self.Cpu = None
-        self.InstanceType = None
-        self.Zone = None
-        self.InstanceFamily = None
+        self._Mem = None
+        self._Cpu = None
+        self._InstanceType = None
+        self._Zone = None
+        self._InstanceFamily = None
+
+    @property
+    def Mem(self):
+        return self._Mem
+
+    @Mem.setter
+    def Mem(self, Mem):
+        self._Mem = Mem
+
+    @property
+    def Cpu(self):
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def InstanceFamily(self):
+        return self._InstanceFamily
+
+    @InstanceFamily.setter
+    def InstanceFamily(self, InstanceFamily):
+        self._InstanceFamily = InstanceFamily
 
 
     def _deserialize(self, params):
-        self.Mem = params.get("Mem")
-        self.Cpu = params.get("Cpu")
-        self.InstanceType = params.get("InstanceType")
-        self.Zone = params.get("Zone")
-        self.InstanceFamily = params.get("InstanceFamily")
+        self._Mem = params.get("Mem")
+        self._Cpu = params.get("Cpu")
+        self._InstanceType = params.get("InstanceType")
+        self._Zone = params.get("Zone")
+        self._InstanceFamily = params.get("InstanceFamily")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2631,26 +4828,51 @@ class InstanceTypeOptions(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CPU: Number of CPU cores
+        :param _CPU: Number of CPU cores
         :type CPU: int
-        :param Memory: Memory size in GB.
+        :param _Memory: Memory size in GB.
         :type Memory: int
-        :param InstanceCategories: Instance model category. Values: `ALL` (default), `GENERAL`, `GENERAL_2`, `GENERAL_3`, `COMPUTE`, `COMPUTE_2`, and `COMPUTE_3`. 
+        :param _InstanceCategories: Instance model category. Values: `ALL` (default), `GENERAL`, `GENERAL_2`, `GENERAL_3`, `COMPUTE`, `COMPUTE_2`, and `COMPUTE_3`. 
         :type InstanceCategories: list of str
         """
-        self.CPU = None
-        self.Memory = None
-        self.InstanceCategories = None
+        self._CPU = None
+        self._Memory = None
+        self._InstanceCategories = None
+
+    @property
+    def CPU(self):
+        return self._CPU
+
+    @CPU.setter
+    def CPU(self, CPU):
+        self._CPU = CPU
+
+    @property
+    def Memory(self):
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def InstanceCategories(self):
+        return self._InstanceCategories
+
+    @InstanceCategories.setter
+    def InstanceCategories(self, InstanceCategories):
+        self._InstanceCategories = InstanceCategories
 
 
     def _deserialize(self, params):
-        self.CPU = params.get("CPU")
-        self.Memory = params.get("Memory")
-        self.InstanceCategories = params.get("InstanceCategories")
+        self._CPU = params.get("CPU")
+        self._Memory = params.get("Memory")
+        self._InstanceCategories = params.get("InstanceCategories")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2663,113 +4885,290 @@ class InstanceTypeQuotaItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Zone: Availability zone.
+        :param _Zone: Availability zone.
         :type Zone: str
-        :param InstanceType: Instance model.
+        :param _InstanceType: Instance model.
         :type InstanceType: str
-        :param InstanceChargeType: Instance billing plan. Valid values: <br><li>POSTPAID_BY_HOUR: pay after use. You are billed for your traffic by the hour.<br><li>`CDHPAID`: [`CDH`](https://intl.cloud.tencent.com/document/product/416?from_cn_redirect=1) billing plan. Applicable to `CDH` only, not the instances on the host.
+        :param _InstanceChargeType: Instance billing plan. Valid values: <br><li>POSTPAID_BY_HOUR: pay after use. You are billed for your traffic by the hour.<br><li>`CDHPAID`: [`CDH`](https://intl.cloud.tencent.com/document/product/416?from_cn_redirect=1) billing plan. Applicable to `CDH` only, not the instances on the host.
         :type InstanceChargeType: str
-        :param NetworkCard: ENI type. For example, 25 represents an ENI of 25 GB.
+        :param _NetworkCard: ENI type. For example, 25 represents an ENI of 25 GB.
         :type NetworkCard: int
-        :param Externals: Additional data.
+        :param _Externals: Additional data.
 Note: This field may return null, indicating that no valid value is found.
         :type Externals: :class:`tencentcloud.batch.v20170312.models.Externals`
-        :param Cpu: Number of CPU cores of an instance model.
+        :param _Cpu: Number of CPU cores of an instance model.
         :type Cpu: int
-        :param Memory: Instance memory capacity; unit: `GB`.
+        :param _Memory: Instance memory capacity; unit: `GB`.
         :type Memory: int
-        :param InstanceFamily: Instance model family.
+        :param _InstanceFamily: Instance model family.
         :type InstanceFamily: str
-        :param TypeName: Model name.
+        :param _TypeName: Model name.
         :type TypeName: str
-        :param LocalDiskTypeList: List of local disk specifications. If the parameter returns null, it means that local disks cannot be created.
+        :param _LocalDiskTypeList: List of local disk specifications. If the parameter returns null, it means that local disks cannot be created.
         :type LocalDiskTypeList: list of LocalDiskType
-        :param Status: Whether an instance model is available. Valid values: <br><li>SELL: available <br><li>SOLD_OUT: sold out
+        :param _Status: Whether an instance model is available. Valid values: <br><li>SELL: available <br><li>SOLD_OUT: sold out
         :type Status: str
-        :param Price: Price of an instance model.
+        :param _Price: Price of an instance model.
         :type Price: :class:`tencentcloud.batch.v20170312.models.ItemPrice`
-        :param SoldOutReason: Details of out-of-stock items
+        :param _SoldOutReason: Details of out-of-stock items
 Note: this field may return null, indicating that no valid value is obtained.
         :type SoldOutReason: str
-        :param InstanceBandwidth: Private network bandwidth, in Gbps.
+        :param _InstanceBandwidth: Private network bandwidth, in Gbps.
         :type InstanceBandwidth: float
-        :param InstancePps: The max packet sending and receiving capability (in 10k PPS).
+        :param _InstancePps: The max packet sending and receiving capability (in 10k PPS).
         :type InstancePps: int
-        :param StorageBlockAmount: Number of local storage blocks.
+        :param _StorageBlockAmount: Number of local storage blocks.
         :type StorageBlockAmount: int
-        :param CpuType: CPU type.
+        :param _CpuType: CPU type.
         :type CpuType: str
-        :param Gpu: Number of GPUs of the instance.
+        :param _Gpu: Number of GPUs of the instance.
         :type Gpu: int
-        :param Fpga: Number of FPGAs of the instance.
+        :param _Fpga: Number of FPGAs of the instance.
         :type Fpga: int
-        :param Remark: Descriptive information of the instance.
+        :param _Remark: Descriptive information of the instance.
         :type Remark: str
-        :param GpuCount: 
+        :param _GpuCount: 
         :type GpuCount: float
-        :param Frequency: CPU clock rate of the instance
+        :param _Frequency: CPU clock rate of the instance
         :type Frequency: str
         """
-        self.Zone = None
-        self.InstanceType = None
-        self.InstanceChargeType = None
-        self.NetworkCard = None
-        self.Externals = None
-        self.Cpu = None
-        self.Memory = None
-        self.InstanceFamily = None
-        self.TypeName = None
-        self.LocalDiskTypeList = None
-        self.Status = None
-        self.Price = None
-        self.SoldOutReason = None
-        self.InstanceBandwidth = None
-        self.InstancePps = None
-        self.StorageBlockAmount = None
-        self.CpuType = None
-        self.Gpu = None
-        self.Fpga = None
-        self.Remark = None
-        self.GpuCount = None
-        self.Frequency = None
+        self._Zone = None
+        self._InstanceType = None
+        self._InstanceChargeType = None
+        self._NetworkCard = None
+        self._Externals = None
+        self._Cpu = None
+        self._Memory = None
+        self._InstanceFamily = None
+        self._TypeName = None
+        self._LocalDiskTypeList = None
+        self._Status = None
+        self._Price = None
+        self._SoldOutReason = None
+        self._InstanceBandwidth = None
+        self._InstancePps = None
+        self._StorageBlockAmount = None
+        self._CpuType = None
+        self._Gpu = None
+        self._Fpga = None
+        self._Remark = None
+        self._GpuCount = None
+        self._Frequency = None
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceChargeType(self):
+        return self._InstanceChargeType
+
+    @InstanceChargeType.setter
+    def InstanceChargeType(self, InstanceChargeType):
+        self._InstanceChargeType = InstanceChargeType
+
+    @property
+    def NetworkCard(self):
+        return self._NetworkCard
+
+    @NetworkCard.setter
+    def NetworkCard(self, NetworkCard):
+        self._NetworkCard = NetworkCard
+
+    @property
+    def Externals(self):
+        return self._Externals
+
+    @Externals.setter
+    def Externals(self, Externals):
+        self._Externals = Externals
+
+    @property
+    def Cpu(self):
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def InstanceFamily(self):
+        return self._InstanceFamily
+
+    @InstanceFamily.setter
+    def InstanceFamily(self, InstanceFamily):
+        self._InstanceFamily = InstanceFamily
+
+    @property
+    def TypeName(self):
+        return self._TypeName
+
+    @TypeName.setter
+    def TypeName(self, TypeName):
+        self._TypeName = TypeName
+
+    @property
+    def LocalDiskTypeList(self):
+        return self._LocalDiskTypeList
+
+    @LocalDiskTypeList.setter
+    def LocalDiskTypeList(self, LocalDiskTypeList):
+        self._LocalDiskTypeList = LocalDiskTypeList
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Price(self):
+        return self._Price
+
+    @Price.setter
+    def Price(self, Price):
+        self._Price = Price
+
+    @property
+    def SoldOutReason(self):
+        return self._SoldOutReason
+
+    @SoldOutReason.setter
+    def SoldOutReason(self, SoldOutReason):
+        self._SoldOutReason = SoldOutReason
+
+    @property
+    def InstanceBandwidth(self):
+        return self._InstanceBandwidth
+
+    @InstanceBandwidth.setter
+    def InstanceBandwidth(self, InstanceBandwidth):
+        self._InstanceBandwidth = InstanceBandwidth
+
+    @property
+    def InstancePps(self):
+        return self._InstancePps
+
+    @InstancePps.setter
+    def InstancePps(self, InstancePps):
+        self._InstancePps = InstancePps
+
+    @property
+    def StorageBlockAmount(self):
+        return self._StorageBlockAmount
+
+    @StorageBlockAmount.setter
+    def StorageBlockAmount(self, StorageBlockAmount):
+        self._StorageBlockAmount = StorageBlockAmount
+
+    @property
+    def CpuType(self):
+        return self._CpuType
+
+    @CpuType.setter
+    def CpuType(self, CpuType):
+        self._CpuType = CpuType
+
+    @property
+    def Gpu(self):
+        return self._Gpu
+
+    @Gpu.setter
+    def Gpu(self, Gpu):
+        self._Gpu = Gpu
+
+    @property
+    def Fpga(self):
+        return self._Fpga
+
+    @Fpga.setter
+    def Fpga(self, Fpga):
+        self._Fpga = Fpga
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def GpuCount(self):
+        return self._GpuCount
+
+    @GpuCount.setter
+    def GpuCount(self, GpuCount):
+        self._GpuCount = GpuCount
+
+    @property
+    def Frequency(self):
+        return self._Frequency
+
+    @Frequency.setter
+    def Frequency(self, Frequency):
+        self._Frequency = Frequency
 
 
     def _deserialize(self, params):
-        self.Zone = params.get("Zone")
-        self.InstanceType = params.get("InstanceType")
-        self.InstanceChargeType = params.get("InstanceChargeType")
-        self.NetworkCard = params.get("NetworkCard")
+        self._Zone = params.get("Zone")
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceChargeType = params.get("InstanceChargeType")
+        self._NetworkCard = params.get("NetworkCard")
         if params.get("Externals") is not None:
-            self.Externals = Externals()
-            self.Externals._deserialize(params.get("Externals"))
-        self.Cpu = params.get("Cpu")
-        self.Memory = params.get("Memory")
-        self.InstanceFamily = params.get("InstanceFamily")
-        self.TypeName = params.get("TypeName")
+            self._Externals = Externals()
+            self._Externals._deserialize(params.get("Externals"))
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._InstanceFamily = params.get("InstanceFamily")
+        self._TypeName = params.get("TypeName")
         if params.get("LocalDiskTypeList") is not None:
-            self.LocalDiskTypeList = []
+            self._LocalDiskTypeList = []
             for item in params.get("LocalDiskTypeList"):
                 obj = LocalDiskType()
                 obj._deserialize(item)
-                self.LocalDiskTypeList.append(obj)
-        self.Status = params.get("Status")
+                self._LocalDiskTypeList.append(obj)
+        self._Status = params.get("Status")
         if params.get("Price") is not None:
-            self.Price = ItemPrice()
-            self.Price._deserialize(params.get("Price"))
-        self.SoldOutReason = params.get("SoldOutReason")
-        self.InstanceBandwidth = params.get("InstanceBandwidth")
-        self.InstancePps = params.get("InstancePps")
-        self.StorageBlockAmount = params.get("StorageBlockAmount")
-        self.CpuType = params.get("CpuType")
-        self.Gpu = params.get("Gpu")
-        self.Fpga = params.get("Fpga")
-        self.Remark = params.get("Remark")
-        self.GpuCount = params.get("GpuCount")
-        self.Frequency = params.get("Frequency")
+            self._Price = ItemPrice()
+            self._Price._deserialize(params.get("Price"))
+        self._SoldOutReason = params.get("SoldOutReason")
+        self._InstanceBandwidth = params.get("InstanceBandwidth")
+        self._InstancePps = params.get("InstancePps")
+        self._StorageBlockAmount = params.get("StorageBlockAmount")
+        self._CpuType = params.get("CpuType")
+        self._Gpu = params.get("Gpu")
+        self._Fpga = params.get("Fpga")
+        self._Remark = params.get("Remark")
+        self._GpuCount = params.get("GpuCount")
+        self._Frequency = params.get("Frequency")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2782,30 +5181,63 @@ class InternetAccessible(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InternetChargeType: Network connection billing plan. Valid value: <br><li>TRAFFIC_POSTPAID_BY_HOUR: pay after use. You are billed for your traffic, by the hour.
+        :param _InternetChargeType: Network connection billing plan. Valid value: <br><li>TRAFFIC_POSTPAID_BY_HOUR: pay after use. You are billed for your traffic, by the hour.
         :type InternetChargeType: str
-        :param InternetMaxBandwidthOut: The maximum outbound bandwidth of the public network, in Mbps. The default value is 0 Mbps. The upper limit of bandwidth varies for different models. For more information, see [Purchase Network Bandwidth](https://intl.cloud.tencent.com/document/product/213/12523?from_cn_redirect=1).
+        :param _InternetMaxBandwidthOut: The maximum outbound bandwidth of the public network, in Mbps. The default value is 0 Mbps. The upper limit of bandwidth varies for different models. For more information, see [Purchase Network Bandwidth](https://intl.cloud.tencent.com/document/product/213/12523?from_cn_redirect=1).
         :type InternetMaxBandwidthOut: int
-        :param PublicIpAssigned: Whether to assign a public IP. Valid values: <br><li>TRUE: Assign a public IP <br><li>FALSE: Do not assign a public IP <br><br>If the public network bandwidth is greater than 0 Mbps, you can choose whether to assign a public IP; by default a public IP will be assigned. If the public network bandwidth is 0 Mbps, you will not be able to assign a public IP.
+        :param _PublicIpAssigned: Whether to assign a public IP. Valid values: <br><li>TRUE: Assign a public IP <br><li>FALSE: Do not assign a public IP <br><br>If the public network bandwidth is greater than 0 Mbps, you can choose whether to assign a public IP; by default a public IP will be assigned. If the public network bandwidth is 0 Mbps, you will not be able to assign a public IP.
         :type PublicIpAssigned: bool
-        :param BandwidthPackageId: Bandwidth package ID. To obatin the IDs, you can call [`DescribeBandwidthPackages`](https://intl.cloud.tencent.com/document/api/215/19209?from_cn_redirect=1) and look for the `BandwidthPackageId` fields in the response.
+        :param _BandwidthPackageId: Bandwidth package ID. To obatin the IDs, you can call [`DescribeBandwidthPackages`](https://intl.cloud.tencent.com/document/api/215/19209?from_cn_redirect=1) and look for the `BandwidthPackageId` fields in the response.
         :type BandwidthPackageId: str
         """
-        self.InternetChargeType = None
-        self.InternetMaxBandwidthOut = None
-        self.PublicIpAssigned = None
-        self.BandwidthPackageId = None
+        self._InternetChargeType = None
+        self._InternetMaxBandwidthOut = None
+        self._PublicIpAssigned = None
+        self._BandwidthPackageId = None
+
+    @property
+    def InternetChargeType(self):
+        return self._InternetChargeType
+
+    @InternetChargeType.setter
+    def InternetChargeType(self, InternetChargeType):
+        self._InternetChargeType = InternetChargeType
+
+    @property
+    def InternetMaxBandwidthOut(self):
+        return self._InternetMaxBandwidthOut
+
+    @InternetMaxBandwidthOut.setter
+    def InternetMaxBandwidthOut(self, InternetMaxBandwidthOut):
+        self._InternetMaxBandwidthOut = InternetMaxBandwidthOut
+
+    @property
+    def PublicIpAssigned(self):
+        return self._PublicIpAssigned
+
+    @PublicIpAssigned.setter
+    def PublicIpAssigned(self, PublicIpAssigned):
+        self._PublicIpAssigned = PublicIpAssigned
+
+    @property
+    def BandwidthPackageId(self):
+        return self._BandwidthPackageId
+
+    @BandwidthPackageId.setter
+    def BandwidthPackageId(self, BandwidthPackageId):
+        self._BandwidthPackageId = BandwidthPackageId
 
 
     def _deserialize(self, params):
-        self.InternetChargeType = params.get("InternetChargeType")
-        self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
-        self.PublicIpAssigned = params.get("PublicIpAssigned")
-        self.BandwidthPackageId = params.get("BandwidthPackageId")
+        self._InternetChargeType = params.get("InternetChargeType")
+        self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        self._PublicIpAssigned = params.get("PublicIpAssigned")
+        self._BandwidthPackageId = params.get("BandwidthPackageId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2818,118 +5250,271 @@ class ItemPrice(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UnitPrice: The original unit price for pay-as-you-go mode in USD. <br><li>When a billing tier is returned, it indicates the price fo the returned billing tier. For example, if `UnitPriceSecondStep` is returned, it refers to the unit price for the usage between 0 to 96 hours. Otherwise, it refers to that the unit price for unlimited usage.
+        :param _UnitPrice: The original unit price for pay-as-you-go mode in USD. <br><li>When a billing tier is returned, it indicates the price fo the returned billing tier. For example, if `UnitPriceSecondStep` is returned, it refers to the unit price for the usage between 0 to 96 hours. Otherwise, it refers to that the unit price for unlimited usage.
 Note: this field may return null, indicating that no valid value is obtained.
         :type UnitPrice: float
-        :param ChargeUnit: Billing unit for pay-as-you-go mode. Valid values: <br><li>HOUR: billed on an hourly basis. It's used for hourly postpaid instances (`POSTPAID_BY_HOUR`). <br><li>GB: bill by traffic in GB. It's used for postpaid products that are billed by the hourly traffic (`TRAFFIC_POSTPAID_BY_HOUR`).
+        :param _ChargeUnit: Billing unit for pay-as-you-go mode. Valid values: <br><li>HOUR: billed on an hourly basis. It's used for hourly postpaid instances (`POSTPAID_BY_HOUR`). <br><li>GB: bill by traffic in GB. It's used for postpaid products that are billed by the hourly traffic (`TRAFFIC_POSTPAID_BY_HOUR`).
 Note: this field may return null, indicating that no valid value is obtained.
         :type ChargeUnit: str
-        :param OriginalPrice: The original price of a pay-in-advance instance, in USD.
+        :param _OriginalPrice: The original price of a pay-in-advance instance, in USD.
 Note: this field may return null, indicating that no valid value is obtained.
         :type OriginalPrice: float
-        :param DiscountPrice: Discount price of a prepaid instance, in USD.
+        :param _DiscountPrice: Discount price of a prepaid instance, in USD.
 Note: this field may return null, indicating that no valid value is obtained.
         :type DiscountPrice: float
-        :param Discount: Percentage of the original price. For example, if you enter "20.0", the discounted price will be 20% of the original price.
+        :param _Discount: Percentage of the original price. For example, if you enter "20.0", the discounted price will be 20% of the original price.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Discount: float
-        :param UnitPriceDiscount: The discounted unit price for pay-as-you-go mode in USD. <br><li>When a billing tier is returned, it indicates the price fo the returned billing tier. For example, if `UnitPriceSecondStep` is returned, it refers to the unit price for the usage between 0 to 96 hours. Otherwise, it refers to that the unit price for unlimited usage.
+        :param _UnitPriceDiscount: The discounted unit price for pay-as-you-go mode in USD. <br><li>When a billing tier is returned, it indicates the price fo the returned billing tier. For example, if `UnitPriceSecondStep` is returned, it refers to the unit price for the usage between 0 to 96 hours. Otherwise, it refers to that the unit price for unlimited usage.
 Note: this field may return null, indicating that no valid value is obtained.
         :type UnitPriceDiscount: float
-        :param UnitPriceSecondStep: Original unit price for the usage between 96 to 360 hours in USD. It's applicable to pay-as-you-go mode.
+        :param _UnitPriceSecondStep: Original unit price for the usage between 96 to 360 hours in USD. It's applicable to pay-as-you-go mode.
 Note: this field may return null, indicating that no valid value is obtained.
         :type UnitPriceSecondStep: float
-        :param UnitPriceDiscountSecondStep: Discounted unit price for the usage between 96 to 360 hours in USD. It's applicable to pay-as-you-go mode.
+        :param _UnitPriceDiscountSecondStep: Discounted unit price for the usage between 96 to 360 hours in USD. It's applicable to pay-as-you-go mode.
 Note: this field may return null, indicating that no valid value is obtained.
         :type UnitPriceDiscountSecondStep: float
-        :param UnitPriceThirdStep: Original unit price for the usage after 360 hours in USD. It's applicable to pay-as-you-go mode.
+        :param _UnitPriceThirdStep: Original unit price for the usage after 360 hours in USD. It's applicable to pay-as-you-go mode.
 Note: this field may return null, indicating that no valid value is obtained.
         :type UnitPriceThirdStep: float
-        :param UnitPriceDiscountThirdStep: Discounted unit price for the usage after 360 hours in USD. It's applicable to pay-as-you-go mode.
+        :param _UnitPriceDiscountThirdStep: Discounted unit price for the usage after 360 hours in USD. It's applicable to pay-as-you-go mode.
 Note: this field may return null, indicating that no valid value is obtained.
         :type UnitPriceDiscountThirdStep: float
-        :param OriginalPriceThreeYear: Original 3-year payment, in USD. This parameter is only available to upfront payment mode.
+        :param _OriginalPriceThreeYear: Original 3-year payment, in USD. This parameter is only available to upfront payment mode.
 Note: this field may return `null`, indicating that no valid value was found.
 Note: this field may return `null`, indicating that no valid value was found.
         :type OriginalPriceThreeYear: float
-        :param DiscountPriceThreeYear: Discounted 3-year upfront payment, in USD. This parameter is only available to upfront payment mode.
+        :param _DiscountPriceThreeYear: Discounted 3-year upfront payment, in USD. This parameter is only available to upfront payment mode.
 Note: this field may return `null`, indicating that no valid value was found.
 Note: this field may return `null`, indicating that no valid value was found.
         :type DiscountPriceThreeYear: float
-        :param DiscountThreeYear: Discount for 3-year upfront payment. For example, 20.0 indicates 80% off.
+        :param _DiscountThreeYear: Discount for 3-year upfront payment. For example, 20.0 indicates 80% off.
 Note: this field may return `null`, indicating that no valid value was found.
 Note: this field may return `null`, indicating that no valid value was found.
         :type DiscountThreeYear: float
-        :param OriginalPriceFiveYear: Original 5-year payment, in USD. This parameter is only available to upfront payment mode.
+        :param _OriginalPriceFiveYear: Original 5-year payment, in USD. This parameter is only available to upfront payment mode.
 Note: this field may return `null`, indicating that no valid value was found.
 Note: this field may return `null`, indicating that no valid value was found.
         :type OriginalPriceFiveYear: float
-        :param DiscountPriceFiveYear: Discounted 5-year upfront payment, in USD. This parameter is only available to upfront payment mode.
+        :param _DiscountPriceFiveYear: Discounted 5-year upfront payment, in USD. This parameter is only available to upfront payment mode.
 Note: this field may return `null`, indicating that no valid value was found.
 Note: this field may return `null`, indicating that no valid value was found.
         :type DiscountPriceFiveYear: float
-        :param DiscountFiveYear: Discount for 5-year upfront payment. For example, 20.0 indicates 80% off.
+        :param _DiscountFiveYear: Discount for 5-year upfront payment. For example, 20.0 indicates 80% off.
 Note: this field may return `null`, indicating that no valid value was found.
 Note: this field may return `null`, indicating that no valid value was found.
         :type DiscountFiveYear: float
-        :param OriginalPriceOneYear: Original 1-year payment, in USD. This parameter is only available to upfront payment mode.
+        :param _OriginalPriceOneYear: Original 1-year payment, in USD. This parameter is only available to upfront payment mode.
 Note: this field may return `null`, indicating that no valid value was found.
 Note: this field may return `null`, indicating that no valid value was found.
         :type OriginalPriceOneYear: float
-        :param DiscountPriceOneYear: Discounted 1-year payment, in USD. This parameter is only available to upfront payment mode.
+        :param _DiscountPriceOneYear: Discounted 1-year payment, in USD. This parameter is only available to upfront payment mode.
 Note: this field may return `null`, indicating that no valid value was found.
 Note: this field may return `null`, indicating that no valid value was found.
         :type DiscountPriceOneYear: float
-        :param DiscountOneYear: Discount for 1-year upfront payment. For example, 20.0 indicates 80% off.
+        :param _DiscountOneYear: Discount for 1-year upfront payment. For example, 20.0 indicates 80% off.
 Note: this field may return `null`, indicating that no valid value was found.
 Note: this field may return `null`, indicating that no valid value was found.
         :type DiscountOneYear: float
         """
-        self.UnitPrice = None
-        self.ChargeUnit = None
-        self.OriginalPrice = None
-        self.DiscountPrice = None
-        self.Discount = None
-        self.UnitPriceDiscount = None
-        self.UnitPriceSecondStep = None
-        self.UnitPriceDiscountSecondStep = None
-        self.UnitPriceThirdStep = None
-        self.UnitPriceDiscountThirdStep = None
-        self.OriginalPriceThreeYear = None
-        self.DiscountPriceThreeYear = None
-        self.DiscountThreeYear = None
-        self.OriginalPriceFiveYear = None
-        self.DiscountPriceFiveYear = None
-        self.DiscountFiveYear = None
-        self.OriginalPriceOneYear = None
-        self.DiscountPriceOneYear = None
-        self.DiscountOneYear = None
+        self._UnitPrice = None
+        self._ChargeUnit = None
+        self._OriginalPrice = None
+        self._DiscountPrice = None
+        self._Discount = None
+        self._UnitPriceDiscount = None
+        self._UnitPriceSecondStep = None
+        self._UnitPriceDiscountSecondStep = None
+        self._UnitPriceThirdStep = None
+        self._UnitPriceDiscountThirdStep = None
+        self._OriginalPriceThreeYear = None
+        self._DiscountPriceThreeYear = None
+        self._DiscountThreeYear = None
+        self._OriginalPriceFiveYear = None
+        self._DiscountPriceFiveYear = None
+        self._DiscountFiveYear = None
+        self._OriginalPriceOneYear = None
+        self._DiscountPriceOneYear = None
+        self._DiscountOneYear = None
+
+    @property
+    def UnitPrice(self):
+        return self._UnitPrice
+
+    @UnitPrice.setter
+    def UnitPrice(self, UnitPrice):
+        self._UnitPrice = UnitPrice
+
+    @property
+    def ChargeUnit(self):
+        return self._ChargeUnit
+
+    @ChargeUnit.setter
+    def ChargeUnit(self, ChargeUnit):
+        self._ChargeUnit = ChargeUnit
+
+    @property
+    def OriginalPrice(self):
+        return self._OriginalPrice
+
+    @OriginalPrice.setter
+    def OriginalPrice(self, OriginalPrice):
+        self._OriginalPrice = OriginalPrice
+
+    @property
+    def DiscountPrice(self):
+        return self._DiscountPrice
+
+    @DiscountPrice.setter
+    def DiscountPrice(self, DiscountPrice):
+        self._DiscountPrice = DiscountPrice
+
+    @property
+    def Discount(self):
+        return self._Discount
+
+    @Discount.setter
+    def Discount(self, Discount):
+        self._Discount = Discount
+
+    @property
+    def UnitPriceDiscount(self):
+        return self._UnitPriceDiscount
+
+    @UnitPriceDiscount.setter
+    def UnitPriceDiscount(self, UnitPriceDiscount):
+        self._UnitPriceDiscount = UnitPriceDiscount
+
+    @property
+    def UnitPriceSecondStep(self):
+        return self._UnitPriceSecondStep
+
+    @UnitPriceSecondStep.setter
+    def UnitPriceSecondStep(self, UnitPriceSecondStep):
+        self._UnitPriceSecondStep = UnitPriceSecondStep
+
+    @property
+    def UnitPriceDiscountSecondStep(self):
+        return self._UnitPriceDiscountSecondStep
+
+    @UnitPriceDiscountSecondStep.setter
+    def UnitPriceDiscountSecondStep(self, UnitPriceDiscountSecondStep):
+        self._UnitPriceDiscountSecondStep = UnitPriceDiscountSecondStep
+
+    @property
+    def UnitPriceThirdStep(self):
+        return self._UnitPriceThirdStep
+
+    @UnitPriceThirdStep.setter
+    def UnitPriceThirdStep(self, UnitPriceThirdStep):
+        self._UnitPriceThirdStep = UnitPriceThirdStep
+
+    @property
+    def UnitPriceDiscountThirdStep(self):
+        return self._UnitPriceDiscountThirdStep
+
+    @UnitPriceDiscountThirdStep.setter
+    def UnitPriceDiscountThirdStep(self, UnitPriceDiscountThirdStep):
+        self._UnitPriceDiscountThirdStep = UnitPriceDiscountThirdStep
+
+    @property
+    def OriginalPriceThreeYear(self):
+        return self._OriginalPriceThreeYear
+
+    @OriginalPriceThreeYear.setter
+    def OriginalPriceThreeYear(self, OriginalPriceThreeYear):
+        self._OriginalPriceThreeYear = OriginalPriceThreeYear
+
+    @property
+    def DiscountPriceThreeYear(self):
+        return self._DiscountPriceThreeYear
+
+    @DiscountPriceThreeYear.setter
+    def DiscountPriceThreeYear(self, DiscountPriceThreeYear):
+        self._DiscountPriceThreeYear = DiscountPriceThreeYear
+
+    @property
+    def DiscountThreeYear(self):
+        return self._DiscountThreeYear
+
+    @DiscountThreeYear.setter
+    def DiscountThreeYear(self, DiscountThreeYear):
+        self._DiscountThreeYear = DiscountThreeYear
+
+    @property
+    def OriginalPriceFiveYear(self):
+        return self._OriginalPriceFiveYear
+
+    @OriginalPriceFiveYear.setter
+    def OriginalPriceFiveYear(self, OriginalPriceFiveYear):
+        self._OriginalPriceFiveYear = OriginalPriceFiveYear
+
+    @property
+    def DiscountPriceFiveYear(self):
+        return self._DiscountPriceFiveYear
+
+    @DiscountPriceFiveYear.setter
+    def DiscountPriceFiveYear(self, DiscountPriceFiveYear):
+        self._DiscountPriceFiveYear = DiscountPriceFiveYear
+
+    @property
+    def DiscountFiveYear(self):
+        return self._DiscountFiveYear
+
+    @DiscountFiveYear.setter
+    def DiscountFiveYear(self, DiscountFiveYear):
+        self._DiscountFiveYear = DiscountFiveYear
+
+    @property
+    def OriginalPriceOneYear(self):
+        return self._OriginalPriceOneYear
+
+    @OriginalPriceOneYear.setter
+    def OriginalPriceOneYear(self, OriginalPriceOneYear):
+        self._OriginalPriceOneYear = OriginalPriceOneYear
+
+    @property
+    def DiscountPriceOneYear(self):
+        return self._DiscountPriceOneYear
+
+    @DiscountPriceOneYear.setter
+    def DiscountPriceOneYear(self, DiscountPriceOneYear):
+        self._DiscountPriceOneYear = DiscountPriceOneYear
+
+    @property
+    def DiscountOneYear(self):
+        return self._DiscountOneYear
+
+    @DiscountOneYear.setter
+    def DiscountOneYear(self, DiscountOneYear):
+        self._DiscountOneYear = DiscountOneYear
 
 
     def _deserialize(self, params):
-        self.UnitPrice = params.get("UnitPrice")
-        self.ChargeUnit = params.get("ChargeUnit")
-        self.OriginalPrice = params.get("OriginalPrice")
-        self.DiscountPrice = params.get("DiscountPrice")
-        self.Discount = params.get("Discount")
-        self.UnitPriceDiscount = params.get("UnitPriceDiscount")
-        self.UnitPriceSecondStep = params.get("UnitPriceSecondStep")
-        self.UnitPriceDiscountSecondStep = params.get("UnitPriceDiscountSecondStep")
-        self.UnitPriceThirdStep = params.get("UnitPriceThirdStep")
-        self.UnitPriceDiscountThirdStep = params.get("UnitPriceDiscountThirdStep")
-        self.OriginalPriceThreeYear = params.get("OriginalPriceThreeYear")
-        self.DiscountPriceThreeYear = params.get("DiscountPriceThreeYear")
-        self.DiscountThreeYear = params.get("DiscountThreeYear")
-        self.OriginalPriceFiveYear = params.get("OriginalPriceFiveYear")
-        self.DiscountPriceFiveYear = params.get("DiscountPriceFiveYear")
-        self.DiscountFiveYear = params.get("DiscountFiveYear")
-        self.OriginalPriceOneYear = params.get("OriginalPriceOneYear")
-        self.DiscountPriceOneYear = params.get("DiscountPriceOneYear")
-        self.DiscountOneYear = params.get("DiscountOneYear")
+        self._UnitPrice = params.get("UnitPrice")
+        self._ChargeUnit = params.get("ChargeUnit")
+        self._OriginalPrice = params.get("OriginalPrice")
+        self._DiscountPrice = params.get("DiscountPrice")
+        self._Discount = params.get("Discount")
+        self._UnitPriceDiscount = params.get("UnitPriceDiscount")
+        self._UnitPriceSecondStep = params.get("UnitPriceSecondStep")
+        self._UnitPriceDiscountSecondStep = params.get("UnitPriceDiscountSecondStep")
+        self._UnitPriceThirdStep = params.get("UnitPriceThirdStep")
+        self._UnitPriceDiscountThirdStep = params.get("UnitPriceDiscountThirdStep")
+        self._OriginalPriceThreeYear = params.get("OriginalPriceThreeYear")
+        self._DiscountPriceThreeYear = params.get("DiscountPriceThreeYear")
+        self._DiscountThreeYear = params.get("DiscountThreeYear")
+        self._OriginalPriceFiveYear = params.get("OriginalPriceFiveYear")
+        self._DiscountPriceFiveYear = params.get("DiscountPriceFiveYear")
+        self._DiscountFiveYear = params.get("DiscountFiveYear")
+        self._OriginalPriceOneYear = params.get("OriginalPriceOneYear")
+        self._DiscountPriceOneYear = params.get("DiscountPriceOneYear")
+        self._DiscountOneYear = params.get("DiscountOneYear")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2942,62 +5527,135 @@ class JobView(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: Job ID
+        :param _JobId: Job ID
         :type JobId: str
-        :param JobName: Job name
+        :param _JobName: Job name
         :type JobName: str
-        :param JobState: Job state
+        :param _JobState: Job state
         :type JobState: str
-        :param Priority: Job priority
+        :param _Priority: Job priority
         :type Priority: int
-        :param Placement: Location information
+        :param _Placement: Location information
 Note: This field may return `null`, indicating that no valid value was found.
         :type Placement: :class:`tencentcloud.batch.v20170312.models.Placement`
-        :param CreateTime: Creation time
+        :param _CreateTime: Creation time
         :type CreateTime: str
-        :param EndTime: End time
+        :param _EndTime: End time
 Note: This field may return `null`, indicating that no valid value was found.
         :type EndTime: str
-        :param TaskMetrics: Task statistical metrics
+        :param _TaskMetrics: Task statistical metrics
         :type TaskMetrics: :class:`tencentcloud.batch.v20170312.models.TaskMetrics`
-        :param Tags: List of tags bound with the job.
+        :param _Tags: List of tags bound with the job.
 Note: This field may return `null`, indicating that no valid value was found.
         :type Tags: list of Tag
         """
-        self.JobId = None
-        self.JobName = None
-        self.JobState = None
-        self.Priority = None
-        self.Placement = None
-        self.CreateTime = None
-        self.EndTime = None
-        self.TaskMetrics = None
-        self.Tags = None
+        self._JobId = None
+        self._JobName = None
+        self._JobState = None
+        self._Priority = None
+        self._Placement = None
+        self._CreateTime = None
+        self._EndTime = None
+        self._TaskMetrics = None
+        self._Tags = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def JobName(self):
+        return self._JobName
+
+    @JobName.setter
+    def JobName(self, JobName):
+        self._JobName = JobName
+
+    @property
+    def JobState(self):
+        return self._JobState
+
+    @JobState.setter
+    def JobState(self, JobState):
+        self._JobState = JobState
+
+    @property
+    def Priority(self):
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def Placement(self):
+        return self._Placement
+
+    @Placement.setter
+    def Placement(self, Placement):
+        self._Placement = Placement
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def TaskMetrics(self):
+        return self._TaskMetrics
+
+    @TaskMetrics.setter
+    def TaskMetrics(self, TaskMetrics):
+        self._TaskMetrics = TaskMetrics
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.JobName = params.get("JobName")
-        self.JobState = params.get("JobState")
-        self.Priority = params.get("Priority")
+        self._JobId = params.get("JobId")
+        self._JobName = params.get("JobName")
+        self._JobState = params.get("JobState")
+        self._Priority = params.get("Priority")
         if params.get("Placement") is not None:
-            self.Placement = Placement()
-            self.Placement._deserialize(params.get("Placement"))
-        self.CreateTime = params.get("CreateTime")
-        self.EndTime = params.get("EndTime")
+            self._Placement = Placement()
+            self._Placement._deserialize(params.get("Placement"))
+        self._CreateTime = params.get("CreateTime")
+        self._EndTime = params.get("EndTime")
         if params.get("TaskMetrics") is not None:
-            self.TaskMetrics = TaskMetrics()
-            self.TaskMetrics._deserialize(params.get("TaskMetrics"))
+            self._TaskMetrics = TaskMetrics()
+            self._TaskMetrics._deserialize(params.get("TaskMetrics"))
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3010,34 +5668,75 @@ class LocalDiskType(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: Type of a local disk.
+        :param _Type: Type of a local disk.
         :type Type: str
-        :param PartitionType: Attributes of a local disk.
+        :param _PartitionType: Attributes of a local disk.
         :type PartitionType: str
-        :param MinSize: Minimum size of a local disk.
+        :param _MinSize: Minimum size of a local disk.
         :type MinSize: int
-        :param MaxSize: Maximum size of a local disk.
+        :param _MaxSize: Maximum size of a local disk.
         :type MaxSize: int
-        :param Required: Whether a local disk is required during purchase. Valid values:<br><li>REQUIRED: required<br><li>OPTIONAL: optional
+        :param _Required: Whether a local disk is required during purchase. Valid values:<br><li>REQUIRED: required<br><li>OPTIONAL: optional
         :type Required: str
         """
-        self.Type = None
-        self.PartitionType = None
-        self.MinSize = None
-        self.MaxSize = None
-        self.Required = None
+        self._Type = None
+        self._PartitionType = None
+        self._MinSize = None
+        self._MaxSize = None
+        self._Required = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def PartitionType(self):
+        return self._PartitionType
+
+    @PartitionType.setter
+    def PartitionType(self, PartitionType):
+        self._PartitionType = PartitionType
+
+    @property
+    def MinSize(self):
+        return self._MinSize
+
+    @MinSize.setter
+    def MinSize(self, MinSize):
+        self._MinSize = MinSize
+
+    @property
+    def MaxSize(self):
+        return self._MaxSize
+
+    @MaxSize.setter
+    def MaxSize(self, MaxSize):
+        self._MaxSize = MaxSize
+
+    @property
+    def Required(self):
+        return self._Required
+
+    @Required.setter
+    def Required(self, Required):
+        self._Required = Required
 
 
     def _deserialize(self, params):
-        self.Type = params.get("Type")
-        self.PartitionType = params.get("PartitionType")
-        self.MinSize = params.get("MinSize")
-        self.MaxSize = params.get("MaxSize")
-        self.Required = params.get("Required")
+        self._Type = params.get("Type")
+        self._PartitionType = params.get("PartitionType")
+        self._MinSize = params.get("MinSize")
+        self._MaxSize = params.get("MaxSize")
+        self._Required = params.get("Required")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3050,26 +5749,51 @@ class LoginSettings(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Password: Login password of the instance. <br><li>Linux instances: 8-16 characters, containing at least two of the following categories: [a-z, A-Z], [0-9] and [()`~!@#$%^&*-+=|{}[]:;',.?/]. <br><li>Windows instances: 12-16 characters, containing at least three of the following categories: [a-z], [A-Z], [0-9] and [()`~!@#$%^&*-+={}[]:;',.?/]. <br><br>If this parameter is not specified, a random password will be generated and sent to you via the Message Center.
+        :param _Password: Login password of the instance. <br><li>Linux instances: 8-16 characters, containing at least two of the following categories: [a-z, A-Z], [0-9] and [()`~!@#$%^&*-+=|{}[]:;',.?/]. <br><li>Windows instances: 12-16 characters, containing at least three of the following categories: [a-z], [A-Z], [0-9] and [()`~!@#$%^&*-+={}[]:;',.?/]. <br><br>If this parameter is not specified, a random password will be generated and sent to you via the Message Center.
         :type Password: str
-        :param KeyIds: List of key IDs. After an instance is associated with a key, you can access the instance with the private key in the key pair. You can call `DescribeKeyPairs` to obtain `KeyId`. Key and password cannot be specified at the same time. Windows instances do not support keys. Currently, you can only specify one key when purchasing an instance.
+        :param _KeyIds: List of key IDs. After an instance is associated with a key, you can access the instance with the private key in the key pair. You can call `DescribeKeyPairs` to obtain `KeyId`. Key and password cannot be specified at the same time. Windows instances do not support keys. Currently, you can only specify one key when purchasing an instance.
         :type KeyIds: list of str
-        :param KeepImageLogin: Whether to keep the original settings of an image. Values: `TRUE` (default), `FALSE`. It cannot be specified together with `Password` or `KeyIds.N`. You can specify this parameter as `TRUE` only when you create an instance using a custom image, a shared image, or an imported image. 
+        :param _KeepImageLogin: Whether to keep the original settings of an image. Values: `TRUE` (default), `FALSE`. It cannot be specified together with `Password` or `KeyIds.N`. You can specify this parameter as `TRUE` only when you create an instance using a custom image, a shared image, or an imported image. 
         :type KeepImageLogin: str
         """
-        self.Password = None
-        self.KeyIds = None
-        self.KeepImageLogin = None
+        self._Password = None
+        self._KeyIds = None
+        self._KeepImageLogin = None
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def KeyIds(self):
+        return self._KeyIds
+
+    @KeyIds.setter
+    def KeyIds(self, KeyIds):
+        self._KeyIds = KeyIds
+
+    @property
+    def KeepImageLogin(self):
+        return self._KeepImageLogin
+
+    @KeepImageLogin.setter
+    def KeepImageLogin(self, KeepImageLogin):
+        self._KeepImageLogin = KeepImageLogin
 
 
     def _deserialize(self, params):
-        self.Password = params.get("Password")
-        self.KeyIds = params.get("KeyIds")
-        self.KeepImageLogin = params.get("KeepImageLogin")
+        self._Password = params.get("Password")
+        self._KeyIds = params.get("KeyIds")
+        self._KeepImageLogin = params.get("KeepImageLogin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3082,36 +5806,77 @@ class ModifyComputeEnvRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EnvId: Compute environment ID
+        :param _EnvId: Compute environment ID
         :type EnvId: str
-        :param DesiredComputeNodeCount: Number of desired compute nodes
+        :param _DesiredComputeNodeCount: Number of desired compute nodes
         :type DesiredComputeNodeCount: int
-        :param EnvName: Compute environment name
+        :param _EnvName: Compute environment name
         :type EnvName: str
-        :param EnvDescription: Compute environment description
+        :param _EnvDescription: Compute environment description
         :type EnvDescription: str
-        :param EnvData: Compute environment attributes
+        :param _EnvData: Compute environment attributes
         :type EnvData: :class:`tencentcloud.batch.v20170312.models.ComputeEnvData`
         """
-        self.EnvId = None
-        self.DesiredComputeNodeCount = None
-        self.EnvName = None
-        self.EnvDescription = None
-        self.EnvData = None
+        self._EnvId = None
+        self._DesiredComputeNodeCount = None
+        self._EnvName = None
+        self._EnvDescription = None
+        self._EnvData = None
+
+    @property
+    def EnvId(self):
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def DesiredComputeNodeCount(self):
+        return self._DesiredComputeNodeCount
+
+    @DesiredComputeNodeCount.setter
+    def DesiredComputeNodeCount(self, DesiredComputeNodeCount):
+        self._DesiredComputeNodeCount = DesiredComputeNodeCount
+
+    @property
+    def EnvName(self):
+        return self._EnvName
+
+    @EnvName.setter
+    def EnvName(self, EnvName):
+        self._EnvName = EnvName
+
+    @property
+    def EnvDescription(self):
+        return self._EnvDescription
+
+    @EnvDescription.setter
+    def EnvDescription(self, EnvDescription):
+        self._EnvDescription = EnvDescription
+
+    @property
+    def EnvData(self):
+        return self._EnvData
+
+    @EnvData.setter
+    def EnvData(self, EnvData):
+        self._EnvData = EnvData
 
 
     def _deserialize(self, params):
-        self.EnvId = params.get("EnvId")
-        self.DesiredComputeNodeCount = params.get("DesiredComputeNodeCount")
-        self.EnvName = params.get("EnvName")
-        self.EnvDescription = params.get("EnvDescription")
+        self._EnvId = params.get("EnvId")
+        self._DesiredComputeNodeCount = params.get("DesiredComputeNodeCount")
+        self._EnvName = params.get("EnvName")
+        self._EnvDescription = params.get("EnvDescription")
         if params.get("EnvData") is not None:
-            self.EnvData = ComputeEnvData()
-            self.EnvData._deserialize(params.get("EnvData"))
+            self._EnvData = ComputeEnvData()
+            self._EnvData._deserialize(params.get("EnvData"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3124,14 +5889,22 @@ class ModifyComputeEnvResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyTaskTemplateRequest(AbstractModel):
@@ -3141,32 +5914,65 @@ class ModifyTaskTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskTemplateId: Task template ID
+        :param _TaskTemplateId: Task template ID
         :type TaskTemplateId: str
-        :param TaskTemplateName: Task template name
+        :param _TaskTemplateName: Task template name
         :type TaskTemplateName: str
-        :param TaskTemplateDescription: Task template description
+        :param _TaskTemplateDescription: Task template description
         :type TaskTemplateDescription: str
-        :param TaskTemplateInfo: Task template information
+        :param _TaskTemplateInfo: Task template information
         :type TaskTemplateInfo: :class:`tencentcloud.batch.v20170312.models.Task`
         """
-        self.TaskTemplateId = None
-        self.TaskTemplateName = None
-        self.TaskTemplateDescription = None
-        self.TaskTemplateInfo = None
+        self._TaskTemplateId = None
+        self._TaskTemplateName = None
+        self._TaskTemplateDescription = None
+        self._TaskTemplateInfo = None
+
+    @property
+    def TaskTemplateId(self):
+        return self._TaskTemplateId
+
+    @TaskTemplateId.setter
+    def TaskTemplateId(self, TaskTemplateId):
+        self._TaskTemplateId = TaskTemplateId
+
+    @property
+    def TaskTemplateName(self):
+        return self._TaskTemplateName
+
+    @TaskTemplateName.setter
+    def TaskTemplateName(self, TaskTemplateName):
+        self._TaskTemplateName = TaskTemplateName
+
+    @property
+    def TaskTemplateDescription(self):
+        return self._TaskTemplateDescription
+
+    @TaskTemplateDescription.setter
+    def TaskTemplateDescription(self, TaskTemplateDescription):
+        self._TaskTemplateDescription = TaskTemplateDescription
+
+    @property
+    def TaskTemplateInfo(self):
+        return self._TaskTemplateInfo
+
+    @TaskTemplateInfo.setter
+    def TaskTemplateInfo(self, TaskTemplateInfo):
+        self._TaskTemplateInfo = TaskTemplateInfo
 
 
     def _deserialize(self, params):
-        self.TaskTemplateId = params.get("TaskTemplateId")
-        self.TaskTemplateName = params.get("TaskTemplateName")
-        self.TaskTemplateDescription = params.get("TaskTemplateDescription")
+        self._TaskTemplateId = params.get("TaskTemplateId")
+        self._TaskTemplateName = params.get("TaskTemplateName")
+        self._TaskTemplateDescription = params.get("TaskTemplateDescription")
         if params.get("TaskTemplateInfo") is not None:
-            self.TaskTemplateInfo = Task()
-            self.TaskTemplateInfo._deserialize(params.get("TaskTemplateInfo"))
+            self._TaskTemplateInfo = Task()
+            self._TaskTemplateInfo._deserialize(params.get("TaskTemplateInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3179,14 +5985,22 @@ class ModifyTaskTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class MountDataDisk(AbstractModel):
@@ -3196,22 +6010,39 @@ class MountDataDisk(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LocalPath: Mounting point. A valid path (for Linux) for a drive (for Windows, such as "H:\\")
+        :param _LocalPath: Mounting point. A valid path (for Linux) for a drive (for Windows, such as "H:\\")
         :type LocalPath: str
-        :param FileSystemType: File system type. Linux: `EXT3` (default) and `EXT4`. Windows: `NTFS`
+        :param _FileSystemType: File system type. Linux: `EXT3` (default) and `EXT4`. Windows: `NTFS`
         :type FileSystemType: str
         """
-        self.LocalPath = None
-        self.FileSystemType = None
+        self._LocalPath = None
+        self._FileSystemType = None
+
+    @property
+    def LocalPath(self):
+        return self._LocalPath
+
+    @LocalPath.setter
+    def LocalPath(self, LocalPath):
+        self._LocalPath = LocalPath
+
+    @property
+    def FileSystemType(self):
+        return self._FileSystemType
+
+    @FileSystemType.setter
+    def FileSystemType(self, FileSystemType):
+        self._FileSystemType = FileSystemType
 
 
     def _deserialize(self, params):
-        self.LocalPath = params.get("LocalPath")
-        self.FileSystemType = params.get("FileSystemType")
+        self._LocalPath = params.get("LocalPath")
+        self._FileSystemType = params.get("FileSystemType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3224,102 +6055,215 @@ class NamedComputeEnv(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EnvName: Compute environment name
+        :param _EnvName: Compute environment name
         :type EnvName: str
-        :param DesiredComputeNodeCount: Number of desired compute nodes
+        :param _DesiredComputeNodeCount: Number of desired compute nodes
         :type DesiredComputeNodeCount: int
-        :param EnvDescription: Compute environment description
+        :param _EnvDescription: Compute environment description
         :type EnvDescription: str
-        :param EnvType: Compute environment management type
+        :param _EnvType: Compute environment management type
         :type EnvType: str
-        :param EnvData: Compute environment's specific parameters
+        :param _EnvData: Compute environment's specific parameters
         :type EnvData: :class:`tencentcloud.batch.v20170312.models.EnvData`
-        :param MountDataDisks: Data disk mounting option
+        :param _MountDataDisks: Data disk mounting option
         :type MountDataDisks: list of MountDataDisk
-        :param Authentications: Authorization information
+        :param _Authentications: Authorization information
         :type Authentications: list of Authentication
-        :param InputMappings: Input mapping information
+        :param _InputMappings: Input mapping information
         :type InputMappings: list of InputMapping
-        :param AgentRunningMode: Agent running mode; applicable for Windows
+        :param _AgentRunningMode: Agent running mode; applicable for Windows
         :type AgentRunningMode: :class:`tencentcloud.batch.v20170312.models.AgentRunningMode`
-        :param Notifications: Notification information
+        :param _Notifications: Notification information
         :type Notifications: list of Notification
-        :param ActionIfComputeNodeInactive: Policy for inactive nodes. Default: `RECREATE`, which means that instance resources will be re-created periodically for compute nodes where instance creation fails or is abnormally returned.
+        :param _ActionIfComputeNodeInactive: Policy for inactive nodes. Default: `RECREATE`, which means that instance resources will be re-created periodically for compute nodes where instance creation fails or is abnormally returned.
         :type ActionIfComputeNodeInactive: str
-        :param ResourceMaxRetryCount: When the instances are failed to be created or returned because of exceptions, the related compute node will retry to create instances periodically. This parameter specifies the maximum retry attempts. The max value is 100 and the default value is `7`.
+        :param _ResourceMaxRetryCount: When the instances are failed to be created or returned because of exceptions, the related compute node will retry to create instances periodically. This parameter specifies the maximum retry attempts. The max value is 100 and the default value is `7`.
         :type ResourceMaxRetryCount: int
-        :param Tags: List of tags to bind with a compute environment. Each compute environment can have up to 10 tags.
+        :param _Tags: List of tags to bind with a compute environment. Each compute environment can have up to 10 tags.
         :type Tags: list of Tag
-        :param NotificationTarget: Target of the notification
+        :param _NotificationTarget: Target of the notification
 Values: `CMQ`, `TDMQ_CMQ`
 `CMQ`: Tencent Cloud CMQ (default)
 `TDMQ_CMQ`: Tencent Cloud TDMQ_CMQ.<br/>Note: CMQ has been discontinued. Please use `TDMQ_CMQ`. See [CMQ Queue Migration to TDMQ for CMQ](https://intl.cloud.tencent.com/document/product/406/60860?from_cn_redirect=1)
         :type NotificationTarget: str
         """
-        self.EnvName = None
-        self.DesiredComputeNodeCount = None
-        self.EnvDescription = None
-        self.EnvType = None
-        self.EnvData = None
-        self.MountDataDisks = None
-        self.Authentications = None
-        self.InputMappings = None
-        self.AgentRunningMode = None
-        self.Notifications = None
-        self.ActionIfComputeNodeInactive = None
-        self.ResourceMaxRetryCount = None
-        self.Tags = None
-        self.NotificationTarget = None
+        self._EnvName = None
+        self._DesiredComputeNodeCount = None
+        self._EnvDescription = None
+        self._EnvType = None
+        self._EnvData = None
+        self._MountDataDisks = None
+        self._Authentications = None
+        self._InputMappings = None
+        self._AgentRunningMode = None
+        self._Notifications = None
+        self._ActionIfComputeNodeInactive = None
+        self._ResourceMaxRetryCount = None
+        self._Tags = None
+        self._NotificationTarget = None
+
+    @property
+    def EnvName(self):
+        return self._EnvName
+
+    @EnvName.setter
+    def EnvName(self, EnvName):
+        self._EnvName = EnvName
+
+    @property
+    def DesiredComputeNodeCount(self):
+        return self._DesiredComputeNodeCount
+
+    @DesiredComputeNodeCount.setter
+    def DesiredComputeNodeCount(self, DesiredComputeNodeCount):
+        self._DesiredComputeNodeCount = DesiredComputeNodeCount
+
+    @property
+    def EnvDescription(self):
+        return self._EnvDescription
+
+    @EnvDescription.setter
+    def EnvDescription(self, EnvDescription):
+        self._EnvDescription = EnvDescription
+
+    @property
+    def EnvType(self):
+        return self._EnvType
+
+    @EnvType.setter
+    def EnvType(self, EnvType):
+        self._EnvType = EnvType
+
+    @property
+    def EnvData(self):
+        return self._EnvData
+
+    @EnvData.setter
+    def EnvData(self, EnvData):
+        self._EnvData = EnvData
+
+    @property
+    def MountDataDisks(self):
+        return self._MountDataDisks
+
+    @MountDataDisks.setter
+    def MountDataDisks(self, MountDataDisks):
+        self._MountDataDisks = MountDataDisks
+
+    @property
+    def Authentications(self):
+        return self._Authentications
+
+    @Authentications.setter
+    def Authentications(self, Authentications):
+        self._Authentications = Authentications
+
+    @property
+    def InputMappings(self):
+        return self._InputMappings
+
+    @InputMappings.setter
+    def InputMappings(self, InputMappings):
+        self._InputMappings = InputMappings
+
+    @property
+    def AgentRunningMode(self):
+        return self._AgentRunningMode
+
+    @AgentRunningMode.setter
+    def AgentRunningMode(self, AgentRunningMode):
+        self._AgentRunningMode = AgentRunningMode
+
+    @property
+    def Notifications(self):
+        return self._Notifications
+
+    @Notifications.setter
+    def Notifications(self, Notifications):
+        self._Notifications = Notifications
+
+    @property
+    def ActionIfComputeNodeInactive(self):
+        return self._ActionIfComputeNodeInactive
+
+    @ActionIfComputeNodeInactive.setter
+    def ActionIfComputeNodeInactive(self, ActionIfComputeNodeInactive):
+        self._ActionIfComputeNodeInactive = ActionIfComputeNodeInactive
+
+    @property
+    def ResourceMaxRetryCount(self):
+        return self._ResourceMaxRetryCount
+
+    @ResourceMaxRetryCount.setter
+    def ResourceMaxRetryCount(self, ResourceMaxRetryCount):
+        self._ResourceMaxRetryCount = ResourceMaxRetryCount
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def NotificationTarget(self):
+        return self._NotificationTarget
+
+    @NotificationTarget.setter
+    def NotificationTarget(self, NotificationTarget):
+        self._NotificationTarget = NotificationTarget
 
 
     def _deserialize(self, params):
-        self.EnvName = params.get("EnvName")
-        self.DesiredComputeNodeCount = params.get("DesiredComputeNodeCount")
-        self.EnvDescription = params.get("EnvDescription")
-        self.EnvType = params.get("EnvType")
+        self._EnvName = params.get("EnvName")
+        self._DesiredComputeNodeCount = params.get("DesiredComputeNodeCount")
+        self._EnvDescription = params.get("EnvDescription")
+        self._EnvType = params.get("EnvType")
         if params.get("EnvData") is not None:
-            self.EnvData = EnvData()
-            self.EnvData._deserialize(params.get("EnvData"))
+            self._EnvData = EnvData()
+            self._EnvData._deserialize(params.get("EnvData"))
         if params.get("MountDataDisks") is not None:
-            self.MountDataDisks = []
+            self._MountDataDisks = []
             for item in params.get("MountDataDisks"):
                 obj = MountDataDisk()
                 obj._deserialize(item)
-                self.MountDataDisks.append(obj)
+                self._MountDataDisks.append(obj)
         if params.get("Authentications") is not None:
-            self.Authentications = []
+            self._Authentications = []
             for item in params.get("Authentications"):
                 obj = Authentication()
                 obj._deserialize(item)
-                self.Authentications.append(obj)
+                self._Authentications.append(obj)
         if params.get("InputMappings") is not None:
-            self.InputMappings = []
+            self._InputMappings = []
             for item in params.get("InputMappings"):
                 obj = InputMapping()
                 obj._deserialize(item)
-                self.InputMappings.append(obj)
+                self._InputMappings.append(obj)
         if params.get("AgentRunningMode") is not None:
-            self.AgentRunningMode = AgentRunningMode()
-            self.AgentRunningMode._deserialize(params.get("AgentRunningMode"))
+            self._AgentRunningMode = AgentRunningMode()
+            self._AgentRunningMode._deserialize(params.get("AgentRunningMode"))
         if params.get("Notifications") is not None:
-            self.Notifications = []
+            self._Notifications = []
             for item in params.get("Notifications"):
                 obj = Notification()
                 obj._deserialize(item)
-                self.Notifications.append(obj)
-        self.ActionIfComputeNodeInactive = params.get("ActionIfComputeNodeInactive")
-        self.ResourceMaxRetryCount = params.get("ResourceMaxRetryCount")
+                self._Notifications.append(obj)
+        self._ActionIfComputeNodeInactive = params.get("ActionIfComputeNodeInactive")
+        self._ResourceMaxRetryCount = params.get("ResourceMaxRetryCount")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.NotificationTarget = params.get("NotificationTarget")
+                self._Tags.append(obj)
+        self._NotificationTarget = params.get("NotificationTarget")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3332,27 +6276,44 @@ class Notification(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TopicName: CMQ topic name which should be valid and associated with a subscription
+        :param _TopicName: CMQ topic name which should be valid and associated with a subscription
         :type TopicName: str
-        :param EventConfigs: Event configuration
+        :param _EventConfigs: Event configuration
         :type EventConfigs: list of EventConfig
         """
-        self.TopicName = None
-        self.EventConfigs = None
+        self._TopicName = None
+        self._EventConfigs = None
+
+    @property
+    def TopicName(self):
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def EventConfigs(self):
+        return self._EventConfigs
+
+    @EventConfigs.setter
+    def EventConfigs(self, EventConfigs):
+        self._EventConfigs = EventConfigs
 
 
     def _deserialize(self, params):
-        self.TopicName = params.get("TopicName")
+        self._TopicName = params.get("TopicName")
         if params.get("EventConfigs") is not None:
-            self.EventConfigs = []
+            self._EventConfigs = []
             for item in params.get("EventConfigs"):
                 obj = EventConfig()
                 obj._deserialize(item)
-                self.EventConfigs.append(obj)
+                self._EventConfigs.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3365,29 +6326,54 @@ class OutputMapping(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SourcePath: Source path
+        :param _SourcePath: Source path
         :type SourcePath: str
-        :param DestinationPath: Destination path
+        :param _DestinationPath: Destination path
         :type DestinationPath: str
-        :param OutputMappingOption: Output mapping options
+        :param _OutputMappingOption: Output mapping options
 Note: This field may return `null`, indicating that no valid value was found.
         :type OutputMappingOption: :class:`tencentcloud.batch.v20170312.models.OutputMappingOption`
         """
-        self.SourcePath = None
-        self.DestinationPath = None
-        self.OutputMappingOption = None
+        self._SourcePath = None
+        self._DestinationPath = None
+        self._OutputMappingOption = None
+
+    @property
+    def SourcePath(self):
+        return self._SourcePath
+
+    @SourcePath.setter
+    def SourcePath(self, SourcePath):
+        self._SourcePath = SourcePath
+
+    @property
+    def DestinationPath(self):
+        return self._DestinationPath
+
+    @DestinationPath.setter
+    def DestinationPath(self, DestinationPath):
+        self._DestinationPath = DestinationPath
+
+    @property
+    def OutputMappingOption(self):
+        return self._OutputMappingOption
+
+    @OutputMappingOption.setter
+    def OutputMappingOption(self, OutputMappingOption):
+        self._OutputMappingOption = OutputMappingOption
 
 
     def _deserialize(self, params):
-        self.SourcePath = params.get("SourcePath")
-        self.DestinationPath = params.get("DestinationPath")
+        self._SourcePath = params.get("SourcePath")
+        self._DestinationPath = params.get("DestinationPath")
         if params.get("OutputMappingOption") is not None:
-            self.OutputMappingOption = OutputMappingOption()
-            self.OutputMappingOption._deserialize(params.get("OutputMappingOption"))
+            self._OutputMappingOption = OutputMappingOption()
+            self._OutputMappingOption._deserialize(params.get("OutputMappingOption"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3400,26 +6386,51 @@ class OutputMappingConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Scene: Storage type. Only `COS` is supported.
+        :param _Scene: Storage type. Only `COS` is supported.
         :type Scene: str
-        :param WorkerNum: Number of concurrent workers
+        :param _WorkerNum: Number of concurrent workers
         :type WorkerNum: int
-        :param WorkerPartSize: Size of a worker part, in MB.
+        :param _WorkerPartSize: Size of a worker part, in MB.
         :type WorkerPartSize: int
         """
-        self.Scene = None
-        self.WorkerNum = None
-        self.WorkerPartSize = None
+        self._Scene = None
+        self._WorkerNum = None
+        self._WorkerPartSize = None
+
+    @property
+    def Scene(self):
+        return self._Scene
+
+    @Scene.setter
+    def Scene(self, Scene):
+        self._Scene = Scene
+
+    @property
+    def WorkerNum(self):
+        return self._WorkerNum
+
+    @WorkerNum.setter
+    def WorkerNum(self, WorkerNum):
+        self._WorkerNum = WorkerNum
+
+    @property
+    def WorkerPartSize(self):
+        return self._WorkerPartSize
+
+    @WorkerPartSize.setter
+    def WorkerPartSize(self, WorkerPartSize):
+        self._WorkerPartSize = WorkerPartSize
 
 
     def _deserialize(self, params):
-        self.Scene = params.get("Scene")
-        self.WorkerNum = params.get("WorkerNum")
-        self.WorkerPartSize = params.get("WorkerPartSize")
+        self._Scene = params.get("Scene")
+        self._WorkerNum = params.get("WorkerNum")
+        self._WorkerPartSize = params.get("WorkerPartSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3432,21 +6443,30 @@ class OutputMappingOption(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Workspace: The mapped output workspace on the container side for the instance.
+        :param _Workspace: The mapped output workspace on the container side for the instance.
 `BATCH_WORKSPACE` (Default): The workspace is the workspace defined for the usage of Batch Compute. Batch Compute ensures the isolation between jobs.
 `GLOBAL_WORKSPACE`: The workspace is the instance OS space..
 Note: This field may return `null`, indicating that no valid value was found.
         :type Workspace: str
         """
-        self.Workspace = None
+        self._Workspace = None
+
+    @property
+    def Workspace(self):
+        return self._Workspace
+
+    @Workspace.setter
+    def Workspace(self, Workspace):
+        self._Workspace = Workspace
 
 
     def _deserialize(self, params):
-        self.Workspace = params.get("Workspace")
+        self._Workspace = params.get("Workspace")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3459,34 +6479,75 @@ class Placement(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Zone: ID of the availability zone where the instance resides. You can call the [DescribeZones](https://intl.cloud.tencent.com/document/product/213/35071) API and obtain the ID in the returned `Zone` field.
+        :param _Zone: ID of the availability zone where the instance resides. You can call the [DescribeZones](https://intl.cloud.tencent.com/document/product/213/35071) API and obtain the ID in the returned `Zone` field.
         :type Zone: str
-        :param ProjectId: ID of the project to which the instance belongs. This parameter can be obtained from the `projectId` returned by [DescribeProject](https://intl.cloud.tencent.com/document/api/651/78725?from_cn_redirect=1). If this is left empty, the default project is used.
+        :param _ProjectId: ID of the project to which the instance belongs. This parameter can be obtained from the `projectId` returned by [DescribeProject](https://intl.cloud.tencent.com/document/api/651/78725?from_cn_redirect=1). If this is left empty, the default project is used.
         :type ProjectId: int
-        :param HostIds: ID list of CDHs from which the instance can be created. If you have purchased CDHs and specify this parameter, the instances you purchase will be randomly deployed on the CDHs.
+        :param _HostIds: ID list of CDHs from which the instance can be created. If you have purchased CDHs and specify this parameter, the instances you purchase will be randomly deployed on the CDHs.
         :type HostIds: list of str
-        :param HostIps: IPs of the hosts to create CVMs
+        :param _HostIps: IPs of the hosts to create CVMs
         :type HostIps: list of str
-        :param HostId: The ID of the CDH to which the instance belongs, only used as an output parameter.
+        :param _HostId: The ID of the CDH to which the instance belongs, only used as an output parameter.
         :type HostId: str
         """
-        self.Zone = None
-        self.ProjectId = None
-        self.HostIds = None
-        self.HostIps = None
-        self.HostId = None
+        self._Zone = None
+        self._ProjectId = None
+        self._HostIds = None
+        self._HostIps = None
+        self._HostId = None
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def HostIds(self):
+        return self._HostIds
+
+    @HostIds.setter
+    def HostIds(self, HostIds):
+        self._HostIds = HostIds
+
+    @property
+    def HostIps(self):
+        return self._HostIps
+
+    @HostIps.setter
+    def HostIps(self, HostIps):
+        self._HostIps = HostIps
+
+    @property
+    def HostId(self):
+        return self._HostId
+
+    @HostId.setter
+    def HostId(self, HostId):
+        self._HostId = HostId
 
 
     def _deserialize(self, params):
-        self.Zone = params.get("Zone")
-        self.ProjectId = params.get("ProjectId")
-        self.HostIds = params.get("HostIds")
-        self.HostIps = params.get("HostIps")
-        self.HostId = params.get("HostId")
+        self._Zone = params.get("Zone")
+        self._ProjectId = params.get("ProjectId")
+        self._HostIds = params.get("HostIds")
+        self._HostIps = params.get("HostIps")
+        self._HostId = params.get("HostId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3499,30 +6560,63 @@ class RedirectInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StdoutRedirectPath: Standard output redirection path
+        :param _StdoutRedirectPath: Standard output redirection path
         :type StdoutRedirectPath: str
-        :param StderrRedirectPath: Standard error redirection path
+        :param _StderrRedirectPath: Standard error redirection path
         :type StderrRedirectPath: str
-        :param StdoutRedirectFileName: Standard output redirection file name, which supports three placeholders: `${BATCH_JOB_ID}`, `${BATCH_TASK_NAME}`, and `${BATCH_TASK_INSTANCE_INDEX}`
+        :param _StdoutRedirectFileName: Standard output redirection file name, which supports three placeholders: `${BATCH_JOB_ID}`, `${BATCH_TASK_NAME}`, and `${BATCH_TASK_INSTANCE_INDEX}`
         :type StdoutRedirectFileName: str
-        :param StderrRedirectFileName: Standard error redirection file name, which supports three placeholders: `${BATCH_JOB_ID}`, `${BATCH_TASK_NAME}`, and `${BATCH_TASK_INSTANCE_INDEX}`
+        :param _StderrRedirectFileName: Standard error redirection file name, which supports three placeholders: `${BATCH_JOB_ID}`, `${BATCH_TASK_NAME}`, and `${BATCH_TASK_INSTANCE_INDEX}`
         :type StderrRedirectFileName: str
         """
-        self.StdoutRedirectPath = None
-        self.StderrRedirectPath = None
-        self.StdoutRedirectFileName = None
-        self.StderrRedirectFileName = None
+        self._StdoutRedirectPath = None
+        self._StderrRedirectPath = None
+        self._StdoutRedirectFileName = None
+        self._StderrRedirectFileName = None
+
+    @property
+    def StdoutRedirectPath(self):
+        return self._StdoutRedirectPath
+
+    @StdoutRedirectPath.setter
+    def StdoutRedirectPath(self, StdoutRedirectPath):
+        self._StdoutRedirectPath = StdoutRedirectPath
+
+    @property
+    def StderrRedirectPath(self):
+        return self._StderrRedirectPath
+
+    @StderrRedirectPath.setter
+    def StderrRedirectPath(self, StderrRedirectPath):
+        self._StderrRedirectPath = StderrRedirectPath
+
+    @property
+    def StdoutRedirectFileName(self):
+        return self._StdoutRedirectFileName
+
+    @StdoutRedirectFileName.setter
+    def StdoutRedirectFileName(self, StdoutRedirectFileName):
+        self._StdoutRedirectFileName = StdoutRedirectFileName
+
+    @property
+    def StderrRedirectFileName(self):
+        return self._StderrRedirectFileName
+
+    @StderrRedirectFileName.setter
+    def StderrRedirectFileName(self, StderrRedirectFileName):
+        self._StderrRedirectFileName = StderrRedirectFileName
 
 
     def _deserialize(self, params):
-        self.StdoutRedirectPath = params.get("StdoutRedirectPath")
-        self.StderrRedirectPath = params.get("StderrRedirectPath")
-        self.StdoutRedirectFileName = params.get("StdoutRedirectFileName")
-        self.StderrRedirectFileName = params.get("StderrRedirectFileName")
+        self._StdoutRedirectPath = params.get("StdoutRedirectPath")
+        self._StderrRedirectPath = params.get("StderrRedirectPath")
+        self._StdoutRedirectFileName = params.get("StdoutRedirectFileName")
+        self._StderrRedirectFileName = params.get("StderrRedirectFileName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3535,30 +6629,63 @@ class RedirectLocalInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StdoutLocalPath: Standard output redirection local path
+        :param _StdoutLocalPath: Standard output redirection local path
         :type StdoutLocalPath: str
-        :param StderrLocalPath: Standard error redirection local path
+        :param _StderrLocalPath: Standard error redirection local path
         :type StderrLocalPath: str
-        :param StdoutLocalFileName: Standard output redirection local file name, which supports three placeholders: `${BATCH_JOB_ID}`, `${BATCH_TASK_NAME}`, and `${BATCH_TASK_INSTANCE_INDEX}`
+        :param _StdoutLocalFileName: Standard output redirection local file name, which supports three placeholders: `${BATCH_JOB_ID}`, `${BATCH_TASK_NAME}`, and `${BATCH_TASK_INSTANCE_INDEX}`
         :type StdoutLocalFileName: str
-        :param StderrLocalFileName: Standard error redirection local file name, which supports three placeholders: `${BATCH_JOB_ID}`, `${BATCH_TASK_NAME}`, and `${BATCH_TASK_INSTANCE_INDEX}`
+        :param _StderrLocalFileName: Standard error redirection local file name, which supports three placeholders: `${BATCH_JOB_ID}`, `${BATCH_TASK_NAME}`, and `${BATCH_TASK_INSTANCE_INDEX}`
         :type StderrLocalFileName: str
         """
-        self.StdoutLocalPath = None
-        self.StderrLocalPath = None
-        self.StdoutLocalFileName = None
-        self.StderrLocalFileName = None
+        self._StdoutLocalPath = None
+        self._StderrLocalPath = None
+        self._StdoutLocalFileName = None
+        self._StderrLocalFileName = None
+
+    @property
+    def StdoutLocalPath(self):
+        return self._StdoutLocalPath
+
+    @StdoutLocalPath.setter
+    def StdoutLocalPath(self, StdoutLocalPath):
+        self._StdoutLocalPath = StdoutLocalPath
+
+    @property
+    def StderrLocalPath(self):
+        return self._StderrLocalPath
+
+    @StderrLocalPath.setter
+    def StderrLocalPath(self, StderrLocalPath):
+        self._StderrLocalPath = StderrLocalPath
+
+    @property
+    def StdoutLocalFileName(self):
+        return self._StdoutLocalFileName
+
+    @StdoutLocalFileName.setter
+    def StdoutLocalFileName(self, StdoutLocalFileName):
+        self._StdoutLocalFileName = StdoutLocalFileName
+
+    @property
+    def StderrLocalFileName(self):
+        return self._StderrLocalFileName
+
+    @StderrLocalFileName.setter
+    def StderrLocalFileName(self, StderrLocalFileName):
+        self._StderrLocalFileName = StderrLocalFileName
 
 
     def _deserialize(self, params):
-        self.StdoutLocalPath = params.get("StdoutLocalPath")
-        self.StderrLocalPath = params.get("StderrLocalPath")
-        self.StdoutLocalFileName = params.get("StdoutLocalFileName")
-        self.StderrLocalFileName = params.get("StderrLocalFileName")
+        self._StdoutLocalPath = params.get("StdoutLocalPath")
+        self._StderrLocalPath = params.get("StderrLocalPath")
+        self._StdoutLocalFileName = params.get("StdoutLocalFileName")
+        self._StderrLocalFileName = params.get("StderrLocalFileName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3571,18 +6698,27 @@ class RetryJobsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobIds: List of job IDs.
+        :param _JobIds: List of job IDs.
         :type JobIds: list of str
         """
-        self.JobIds = None
+        self._JobIds = None
+
+    @property
+    def JobIds(self):
+        return self._JobIds
+
+    @JobIds.setter
+    def JobIds(self, JobIds):
+        self._JobIds = JobIds
 
 
     def _deserialize(self, params):
-        self.JobIds = params.get("JobIds")
+        self._JobIds = params.get("JobIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3595,14 +6731,22 @@ class RetryJobsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class RunAutomationServiceEnabled(AbstractModel):
@@ -3612,18 +6756,27 @@ class RunAutomationServiceEnabled(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Enabled: Whether to enable the TAT service. Valid values: <br><li>`TRUE`: yes;<br><li>`FALSE`: no<br><br>Default: `FALSE`.
+        :param _Enabled: Whether to enable the TAT service. Valid values: <br><li>`TRUE`: yes;<br><li>`FALSE`: no<br><br>Default: `FALSE`.
         :type Enabled: bool
         """
-        self.Enabled = None
+        self._Enabled = None
+
+    @property
+    def Enabled(self):
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
 
 
     def _deserialize(self, params):
-        self.Enabled = params.get("Enabled")
+        self._Enabled = params.get("Enabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3636,18 +6789,27 @@ class RunMonitorServiceEnabled(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Enabled: Whether to enable [Cloud Monitor](https://intl.cloud.tencent.com/document/product/248?from_cn_redirect=1). Valid values: <br><li>TRUE: enable Cloud Monitor <br><li>FALSE: do not enable Cloud Monitor <br><br>Default value: TRUE.
+        :param _Enabled: Whether to enable [Cloud Monitor](https://intl.cloud.tencent.com/document/product/248?from_cn_redirect=1). Valid values: <br><li>TRUE: enable Cloud Monitor <br><li>FALSE: do not enable Cloud Monitor <br><br>Default value: TRUE.
         :type Enabled: bool
         """
-        self.Enabled = None
+        self._Enabled = None
+
+    @property
+    def Enabled(self):
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
 
 
     def _deserialize(self, params):
-        self.Enabled = params.get("Enabled")
+        self._Enabled = params.get("Enabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3660,18 +6822,27 @@ class RunSecurityServiceEnabled(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Enabled: Whether to enable [Cloud Security](https://intl.cloud.tencent.com/document/product/296?from_cn_redirect=1). Valid values: <br><li>TRUE: enable Cloud Security <br><li>FALSE: do not enable Cloud Security <br><br>Default value: TRUE.
+        :param _Enabled: Whether to enable [Cloud Security](https://intl.cloud.tencent.com/document/product/296?from_cn_redirect=1). Valid values: <br><li>TRUE: enable Cloud Security <br><li>FALSE: do not enable Cloud Security <br><br>Default value: TRUE.
         :type Enabled: bool
         """
-        self.Enabled = None
+        self._Enabled = None
+
+    @property
+    def Enabled(self):
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
 
 
     def _deserialize(self, params):
-        self.Enabled = params.get("Enabled")
+        self._Enabled = params.get("Enabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3684,22 +6855,39 @@ class SpotMarketOptions(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MaxPrice: Bidding price
+        :param _MaxPrice: Bidding price
         :type MaxPrice: str
-        :param SpotInstanceType: Bidding request type. Currently only "one-time" is supported.
+        :param _SpotInstanceType: Bidding request type. Currently only "one-time" is supported.
         :type SpotInstanceType: str
         """
-        self.MaxPrice = None
-        self.SpotInstanceType = None
+        self._MaxPrice = None
+        self._SpotInstanceType = None
+
+    @property
+    def MaxPrice(self):
+        return self._MaxPrice
+
+    @MaxPrice.setter
+    def MaxPrice(self, MaxPrice):
+        self._MaxPrice = MaxPrice
+
+    @property
+    def SpotInstanceType(self):
+        return self._SpotInstanceType
+
+    @SpotInstanceType.setter
+    def SpotInstanceType(self, SpotInstanceType):
+        self._SpotInstanceType = SpotInstanceType
 
 
     def _deserialize(self, params):
-        self.MaxPrice = params.get("MaxPrice")
-        self.SpotInstanceType = params.get("SpotInstanceType")
+        self._MaxPrice = params.get("MaxPrice")
+        self._SpotInstanceType = params.get("SpotInstanceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3712,29 +6900,54 @@ class StorageBlock(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: Local HDD storage type. Value: LOCAL_PRO.
+        :param _Type: Local HDD storage type. Value: LOCAL_PRO.
 Note: This field may return null, indicating that no valid value is found.
         :type Type: str
-        :param MinSize: Minimum capacity of local HDD storage
+        :param _MinSize: Minimum capacity of local HDD storage
 Note: This field may return null, indicating that no valid value is found.
         :type MinSize: int
-        :param MaxSize: Maximum capacity of local HDD storage
+        :param _MaxSize: Maximum capacity of local HDD storage
 Note: This field may return null, indicating that no valid value is found.
         :type MaxSize: int
         """
-        self.Type = None
-        self.MinSize = None
-        self.MaxSize = None
+        self._Type = None
+        self._MinSize = None
+        self._MaxSize = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def MinSize(self):
+        return self._MinSize
+
+    @MinSize.setter
+    def MinSize(self, MinSize):
+        self._MinSize = MinSize
+
+    @property
+    def MaxSize(self):
+        return self._MaxSize
+
+    @MaxSize.setter
+    def MaxSize(self, MaxSize):
+        self._MaxSize = MaxSize
 
 
     def _deserialize(self, params):
-        self.Type = params.get("Type")
-        self.MinSize = params.get("MinSize")
-        self.MaxSize = params.get("MaxSize")
+        self._Type = params.get("Type")
+        self._MinSize = params.get("MinSize")
+        self._MaxSize = params.get("MaxSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3747,31 +6960,64 @@ class SystemDisk(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiskType: System disk type. For more information about the limits of system disk types, please see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Valid values:<br><li>LOCAL_BASIC: local disk<br><li>LOCAL_SSD: local SSD disk<br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_SSD: SSD cloud disk<br><li>CLOUD_PREMIUM: Premium cloud storage<br><li>CLOUD_BSSD: Balanced SSD<br><br>The disk currently in stock will be used by default.
+        :param _DiskType: System disk type. For more information about the limits of system disk types, please see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Valid values:<br><li>LOCAL_BASIC: local disk<br><li>LOCAL_SSD: local SSD disk<br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_SSD: SSD cloud disk<br><li>CLOUD_PREMIUM: Premium cloud storage<br><li>CLOUD_BSSD: Balanced SSD<br><br>The disk currently in stock will be used by default.
         :type DiskType: str
-        :param DiskId: System disk ID. System disks whose type is `LOCAL_BASIC` or `LOCAL_SSD` do not have an ID and do not support this parameter.
+        :param _DiskId: System disk ID. System disks whose type is `LOCAL_BASIC` or `LOCAL_SSD` do not have an ID and do not support this parameter.
 It is only used as a response parameter for APIs such as `DescribeInstances`, and cannot be used as a request parameter for APIs such as `RunInstances`.
         :type DiskId: str
-        :param DiskSize: System disk size; unit: GB; default value: 50 GB.
+        :param _DiskSize: System disk size; unit: GB; default value: 50 GB.
         :type DiskSize: int
-        :param CdcId: ID of the dedicated cluster to which the instance belongs.
+        :param _CdcId: ID of the dedicated cluster to which the instance belongs.
         :type CdcId: str
         """
-        self.DiskType = None
-        self.DiskId = None
-        self.DiskSize = None
-        self.CdcId = None
+        self._DiskType = None
+        self._DiskId = None
+        self._DiskSize = None
+        self._CdcId = None
+
+    @property
+    def DiskType(self):
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def DiskId(self):
+        return self._DiskId
+
+    @DiskId.setter
+    def DiskId(self, DiskId):
+        self._DiskId = DiskId
+
+    @property
+    def DiskSize(self):
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+    @property
+    def CdcId(self):
+        return self._CdcId
+
+    @CdcId.setter
+    def CdcId(self, CdcId):
+        self._CdcId = CdcId
 
 
     def _deserialize(self, params):
-        self.DiskType = params.get("DiskType")
-        self.DiskId = params.get("DiskId")
-        self.DiskSize = params.get("DiskSize")
-        self.CdcId = params.get("CdcId")
+        self._DiskType = params.get("DiskType")
+        self._DiskId = params.get("DiskId")
+        self._DiskSize = params.get("DiskSize")
+        self._CdcId = params.get("CdcId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3784,24 +7030,41 @@ class Tag(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Key: Tag key
+        :param _Key: Tag key
 Note: This field may return `null`, indicating that no valid value was found.
         :type Key: str
-        :param Value: Tag value
+        :param _Value: Tag value
 Note: This field may return `null`, indicating that no valid value was found.
         :type Value: str
         """
-        self.Key = None
-        self.Value = None
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
 
 
     def _deserialize(self, params):
-        self.Key = params.get("Key")
-        self.Value = params.get("Value")
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3814,119 +7077,264 @@ class Task(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Application: Application information
+        :param _Application: Application information
         :type Application: :class:`tencentcloud.batch.v20170312.models.Application`
-        :param TaskName: Task name, which should be unique within a job
+        :param _TaskName: Task name, which should be unique within a job
         :type TaskName: str
-        :param TaskInstanceNum: Number of running task instances
+        :param _TaskInstanceNum: Number of running task instances
         :type TaskInstanceNum: int
-        :param ComputeEnv: Compute environment information. One (and only one) parameter must be specified for ComputeEnv and EnvId.
+        :param _ComputeEnv: Compute environment information. One (and only one) parameter must be specified for ComputeEnv and EnvId.
         :type ComputeEnv: :class:`tencentcloud.batch.v20170312.models.AnonymousComputeEnv`
-        :param EnvId: Compute environment ID. One (and only one) parameter must be specified for ComputeEnv and EnvId.
+        :param _EnvId: Compute environment ID. One (and only one) parameter must be specified for ComputeEnv and EnvId.
         :type EnvId: str
-        :param RedirectInfo: Redirection information
+        :param _RedirectInfo: Redirection information
         :type RedirectInfo: :class:`tencentcloud.batch.v20170312.models.RedirectInfo`
-        :param RedirectLocalInfo: Local redirection information
+        :param _RedirectLocalInfo: Local redirection information
         :type RedirectLocalInfo: :class:`tencentcloud.batch.v20170312.models.RedirectLocalInfo`
-        :param InputMappings: Input mapping
+        :param _InputMappings: Input mapping
         :type InputMappings: list of InputMapping
-        :param OutputMappings: Output mapping
+        :param _OutputMappings: Output mapping
         :type OutputMappings: list of OutputMapping
-        :param OutputMappingConfigs: Output mapping configuration
+        :param _OutputMappingConfigs: Output mapping configuration
         :type OutputMappingConfigs: list of OutputMappingConfig
-        :param EnvVars: Custom environment variable
+        :param _EnvVars: Custom environment variable
         :type EnvVars: list of EnvVar
-        :param Authentications: Authorization information
+        :param _Authentications: Authorization information
         :type Authentications: list of Authentication
-        :param FailedAction: The processing method after the TaskInstance fails; Value range: `TERMINATE` (default), `INTERRUPT`, `FAST_INTERRUPT`.
+        :param _FailedAction: The processing method after the TaskInstance fails; Value range: `TERMINATE` (default), `INTERRUPT`, `FAST_INTERRUPT`.
         :type FailedAction: str
-        :param MaxRetryCount: The maximum number of retries after the task fails. Range: 0 - 5. Default value: 0
+        :param _MaxRetryCount: The maximum number of retries after the task fails. Range: 0 - 5. Default value: 0
         :type MaxRetryCount: int
-        :param Timeout: Timeout period of the task in seconds. Defaults value: 86400
+        :param _Timeout: Timeout period of the task in seconds. Defaults value: 86400
         :type Timeout: int
-        :param MaxConcurrentNum: The maximum number of concurrent tasks. Range: 0 - 200000. There is no limit by default.
+        :param _MaxConcurrentNum: The maximum number of concurrent tasks. Range: 0 - 200000. There is no limit by default.
         :type MaxConcurrentNum: int
-        :param RestartComputeNode: Restarts the compute node after the task is completed. This is suitable for specifying the compute environment for task execution.
+        :param _RestartComputeNode: Restarts the compute node after the task is completed. This is suitable for specifying the compute environment for task execution.
         :type RestartComputeNode: bool
-        :param ResourceMaxRetryCount: Maximum number of retry attempts after failing to create computing resources such as the CVM in the task launch process. Default: `0`; Maximum: `100`.
+        :param _ResourceMaxRetryCount: Maximum number of retry attempts after failing to create computing resources such as the CVM in the task launch process. Default: `0`; Maximum: `100`.
         :type ResourceMaxRetryCount: int
         """
-        self.Application = None
-        self.TaskName = None
-        self.TaskInstanceNum = None
-        self.ComputeEnv = None
-        self.EnvId = None
-        self.RedirectInfo = None
-        self.RedirectLocalInfo = None
-        self.InputMappings = None
-        self.OutputMappings = None
-        self.OutputMappingConfigs = None
-        self.EnvVars = None
-        self.Authentications = None
-        self.FailedAction = None
-        self.MaxRetryCount = None
-        self.Timeout = None
-        self.MaxConcurrentNum = None
-        self.RestartComputeNode = None
-        self.ResourceMaxRetryCount = None
+        self._Application = None
+        self._TaskName = None
+        self._TaskInstanceNum = None
+        self._ComputeEnv = None
+        self._EnvId = None
+        self._RedirectInfo = None
+        self._RedirectLocalInfo = None
+        self._InputMappings = None
+        self._OutputMappings = None
+        self._OutputMappingConfigs = None
+        self._EnvVars = None
+        self._Authentications = None
+        self._FailedAction = None
+        self._MaxRetryCount = None
+        self._Timeout = None
+        self._MaxConcurrentNum = None
+        self._RestartComputeNode = None
+        self._ResourceMaxRetryCount = None
+
+    @property
+    def Application(self):
+        return self._Application
+
+    @Application.setter
+    def Application(self, Application):
+        self._Application = Application
+
+    @property
+    def TaskName(self):
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def TaskInstanceNum(self):
+        return self._TaskInstanceNum
+
+    @TaskInstanceNum.setter
+    def TaskInstanceNum(self, TaskInstanceNum):
+        self._TaskInstanceNum = TaskInstanceNum
+
+    @property
+    def ComputeEnv(self):
+        return self._ComputeEnv
+
+    @ComputeEnv.setter
+    def ComputeEnv(self, ComputeEnv):
+        self._ComputeEnv = ComputeEnv
+
+    @property
+    def EnvId(self):
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def RedirectInfo(self):
+        return self._RedirectInfo
+
+    @RedirectInfo.setter
+    def RedirectInfo(self, RedirectInfo):
+        self._RedirectInfo = RedirectInfo
+
+    @property
+    def RedirectLocalInfo(self):
+        return self._RedirectLocalInfo
+
+    @RedirectLocalInfo.setter
+    def RedirectLocalInfo(self, RedirectLocalInfo):
+        self._RedirectLocalInfo = RedirectLocalInfo
+
+    @property
+    def InputMappings(self):
+        return self._InputMappings
+
+    @InputMappings.setter
+    def InputMappings(self, InputMappings):
+        self._InputMappings = InputMappings
+
+    @property
+    def OutputMappings(self):
+        return self._OutputMappings
+
+    @OutputMappings.setter
+    def OutputMappings(self, OutputMappings):
+        self._OutputMappings = OutputMappings
+
+    @property
+    def OutputMappingConfigs(self):
+        return self._OutputMappingConfigs
+
+    @OutputMappingConfigs.setter
+    def OutputMappingConfigs(self, OutputMappingConfigs):
+        self._OutputMappingConfigs = OutputMappingConfigs
+
+    @property
+    def EnvVars(self):
+        return self._EnvVars
+
+    @EnvVars.setter
+    def EnvVars(self, EnvVars):
+        self._EnvVars = EnvVars
+
+    @property
+    def Authentications(self):
+        return self._Authentications
+
+    @Authentications.setter
+    def Authentications(self, Authentications):
+        self._Authentications = Authentications
+
+    @property
+    def FailedAction(self):
+        return self._FailedAction
+
+    @FailedAction.setter
+    def FailedAction(self, FailedAction):
+        self._FailedAction = FailedAction
+
+    @property
+    def MaxRetryCount(self):
+        return self._MaxRetryCount
+
+    @MaxRetryCount.setter
+    def MaxRetryCount(self, MaxRetryCount):
+        self._MaxRetryCount = MaxRetryCount
+
+    @property
+    def Timeout(self):
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def MaxConcurrentNum(self):
+        return self._MaxConcurrentNum
+
+    @MaxConcurrentNum.setter
+    def MaxConcurrentNum(self, MaxConcurrentNum):
+        self._MaxConcurrentNum = MaxConcurrentNum
+
+    @property
+    def RestartComputeNode(self):
+        return self._RestartComputeNode
+
+    @RestartComputeNode.setter
+    def RestartComputeNode(self, RestartComputeNode):
+        self._RestartComputeNode = RestartComputeNode
+
+    @property
+    def ResourceMaxRetryCount(self):
+        return self._ResourceMaxRetryCount
+
+    @ResourceMaxRetryCount.setter
+    def ResourceMaxRetryCount(self, ResourceMaxRetryCount):
+        self._ResourceMaxRetryCount = ResourceMaxRetryCount
 
 
     def _deserialize(self, params):
         if params.get("Application") is not None:
-            self.Application = Application()
-            self.Application._deserialize(params.get("Application"))
-        self.TaskName = params.get("TaskName")
-        self.TaskInstanceNum = params.get("TaskInstanceNum")
+            self._Application = Application()
+            self._Application._deserialize(params.get("Application"))
+        self._TaskName = params.get("TaskName")
+        self._TaskInstanceNum = params.get("TaskInstanceNum")
         if params.get("ComputeEnv") is not None:
-            self.ComputeEnv = AnonymousComputeEnv()
-            self.ComputeEnv._deserialize(params.get("ComputeEnv"))
-        self.EnvId = params.get("EnvId")
+            self._ComputeEnv = AnonymousComputeEnv()
+            self._ComputeEnv._deserialize(params.get("ComputeEnv"))
+        self._EnvId = params.get("EnvId")
         if params.get("RedirectInfo") is not None:
-            self.RedirectInfo = RedirectInfo()
-            self.RedirectInfo._deserialize(params.get("RedirectInfo"))
+            self._RedirectInfo = RedirectInfo()
+            self._RedirectInfo._deserialize(params.get("RedirectInfo"))
         if params.get("RedirectLocalInfo") is not None:
-            self.RedirectLocalInfo = RedirectLocalInfo()
-            self.RedirectLocalInfo._deserialize(params.get("RedirectLocalInfo"))
+            self._RedirectLocalInfo = RedirectLocalInfo()
+            self._RedirectLocalInfo._deserialize(params.get("RedirectLocalInfo"))
         if params.get("InputMappings") is not None:
-            self.InputMappings = []
+            self._InputMappings = []
             for item in params.get("InputMappings"):
                 obj = InputMapping()
                 obj._deserialize(item)
-                self.InputMappings.append(obj)
+                self._InputMappings.append(obj)
         if params.get("OutputMappings") is not None:
-            self.OutputMappings = []
+            self._OutputMappings = []
             for item in params.get("OutputMappings"):
                 obj = OutputMapping()
                 obj._deserialize(item)
-                self.OutputMappings.append(obj)
+                self._OutputMappings.append(obj)
         if params.get("OutputMappingConfigs") is not None:
-            self.OutputMappingConfigs = []
+            self._OutputMappingConfigs = []
             for item in params.get("OutputMappingConfigs"):
                 obj = OutputMappingConfig()
                 obj._deserialize(item)
-                self.OutputMappingConfigs.append(obj)
+                self._OutputMappingConfigs.append(obj)
         if params.get("EnvVars") is not None:
-            self.EnvVars = []
+            self._EnvVars = []
             for item in params.get("EnvVars"):
                 obj = EnvVar()
                 obj._deserialize(item)
-                self.EnvVars.append(obj)
+                self._EnvVars.append(obj)
         if params.get("Authentications") is not None:
-            self.Authentications = []
+            self._Authentications = []
             for item in params.get("Authentications"):
                 obj = Authentication()
                 obj._deserialize(item)
-                self.Authentications.append(obj)
-        self.FailedAction = params.get("FailedAction")
-        self.MaxRetryCount = params.get("MaxRetryCount")
-        self.Timeout = params.get("Timeout")
-        self.MaxConcurrentNum = params.get("MaxConcurrentNum")
-        self.RestartComputeNode = params.get("RestartComputeNode")
-        self.ResourceMaxRetryCount = params.get("ResourceMaxRetryCount")
+                self._Authentications.append(obj)
+        self._FailedAction = params.get("FailedAction")
+        self._MaxRetryCount = params.get("MaxRetryCount")
+        self._Timeout = params.get("Timeout")
+        self._MaxConcurrentNum = params.get("MaxConcurrentNum")
+        self._RestartComputeNode = params.get("RestartComputeNode")
+        self._ResourceMaxRetryCount = params.get("ResourceMaxRetryCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3939,48 +7347,105 @@ class TaskInstanceLog(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskInstanceIndex: Task instance
+        :param _TaskInstanceIndex: Task instance
         :type TaskInstanceIndex: int
-        :param StdoutLog: Standard output log (Base64-encoded, up to 2048 bytes after decompression)
+        :param _StdoutLog: Standard output log (Base64-encoded, up to 2048 bytes after decompression)
 Note: This field may return `null`, indicating that no valid value was found.
         :type StdoutLog: str
-        :param StderrLog: Standard error log (Base64-encoded, up to 2048 bytes after decompression)
+        :param _StderrLog: Standard error log (Base64-encoded, up to 2048 bytes after decompression)
 Note: This field may return `null`, indicating that no valid value was found.
         :type StderrLog: str
-        :param StdoutRedirectPath: Standard output redirection path
+        :param _StdoutRedirectPath: Standard output redirection path
 Note: This field may return `null`, indicating that no valid value was found.
         :type StdoutRedirectPath: str
-        :param StderrRedirectPath: Standard error redirection path
+        :param _StderrRedirectPath: Standard error redirection path
 Note: This field may return `null`, indicating that no valid value was found.
         :type StderrRedirectPath: str
-        :param StdoutRedirectFileName: Standard output redirection file name
+        :param _StdoutRedirectFileName: Standard output redirection file name
 Note: This field may return `null`, indicating that no valid value was found.
         :type StdoutRedirectFileName: str
-        :param StderrRedirectFileName: Standard error redirection file name
+        :param _StderrRedirectFileName: Standard error redirection file name
 Note: This field may return `null`, indicating that no valid value was found.
         :type StderrRedirectFileName: str
         """
-        self.TaskInstanceIndex = None
-        self.StdoutLog = None
-        self.StderrLog = None
-        self.StdoutRedirectPath = None
-        self.StderrRedirectPath = None
-        self.StdoutRedirectFileName = None
-        self.StderrRedirectFileName = None
+        self._TaskInstanceIndex = None
+        self._StdoutLog = None
+        self._StderrLog = None
+        self._StdoutRedirectPath = None
+        self._StderrRedirectPath = None
+        self._StdoutRedirectFileName = None
+        self._StderrRedirectFileName = None
+
+    @property
+    def TaskInstanceIndex(self):
+        return self._TaskInstanceIndex
+
+    @TaskInstanceIndex.setter
+    def TaskInstanceIndex(self, TaskInstanceIndex):
+        self._TaskInstanceIndex = TaskInstanceIndex
+
+    @property
+    def StdoutLog(self):
+        return self._StdoutLog
+
+    @StdoutLog.setter
+    def StdoutLog(self, StdoutLog):
+        self._StdoutLog = StdoutLog
+
+    @property
+    def StderrLog(self):
+        return self._StderrLog
+
+    @StderrLog.setter
+    def StderrLog(self, StderrLog):
+        self._StderrLog = StderrLog
+
+    @property
+    def StdoutRedirectPath(self):
+        return self._StdoutRedirectPath
+
+    @StdoutRedirectPath.setter
+    def StdoutRedirectPath(self, StdoutRedirectPath):
+        self._StdoutRedirectPath = StdoutRedirectPath
+
+    @property
+    def StderrRedirectPath(self):
+        return self._StderrRedirectPath
+
+    @StderrRedirectPath.setter
+    def StderrRedirectPath(self, StderrRedirectPath):
+        self._StderrRedirectPath = StderrRedirectPath
+
+    @property
+    def StdoutRedirectFileName(self):
+        return self._StdoutRedirectFileName
+
+    @StdoutRedirectFileName.setter
+    def StdoutRedirectFileName(self, StdoutRedirectFileName):
+        self._StdoutRedirectFileName = StdoutRedirectFileName
+
+    @property
+    def StderrRedirectFileName(self):
+        return self._StderrRedirectFileName
+
+    @StderrRedirectFileName.setter
+    def StderrRedirectFileName(self, StderrRedirectFileName):
+        self._StderrRedirectFileName = StderrRedirectFileName
 
 
     def _deserialize(self, params):
-        self.TaskInstanceIndex = params.get("TaskInstanceIndex")
-        self.StdoutLog = params.get("StdoutLog")
-        self.StderrLog = params.get("StderrLog")
-        self.StdoutRedirectPath = params.get("StdoutRedirectPath")
-        self.StderrRedirectPath = params.get("StderrRedirectPath")
-        self.StdoutRedirectFileName = params.get("StdoutRedirectFileName")
-        self.StderrRedirectFileName = params.get("StderrRedirectFileName")
+        self._TaskInstanceIndex = params.get("TaskInstanceIndex")
+        self._StdoutLog = params.get("StdoutLog")
+        self._StderrLog = params.get("StderrLog")
+        self._StdoutRedirectPath = params.get("StdoutRedirectPath")
+        self._StderrRedirectPath = params.get("StderrRedirectPath")
+        self._StdoutRedirectFileName = params.get("StdoutRedirectFileName")
+        self._StderrRedirectFileName = params.get("StderrRedirectFileName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3993,46 +7458,111 @@ class TaskInstanceMetrics(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubmittedCount: Number of submitted tasks
+        :param _SubmittedCount: Number of submitted tasks
         :type SubmittedCount: int
-        :param PendingCount: Number of pending tasks
+        :param _PendingCount: Number of pending tasks
         :type PendingCount: int
-        :param RunnableCount: Number of Runnable tasks
+        :param _RunnableCount: Number of Runnable tasks
         :type RunnableCount: int
-        :param StartingCount: Number of starting tasks
+        :param _StartingCount: Number of starting tasks
         :type StartingCount: int
-        :param RunningCount: Number of running tasks
+        :param _RunningCount: Number of running tasks
         :type RunningCount: int
-        :param SucceedCount: Number of successful tasks
+        :param _SucceedCount: Number of successful tasks
         :type SucceedCount: int
-        :param FailedInterruptedCount: Number of failed and interrupted tasks
+        :param _FailedInterruptedCount: Number of failed and interrupted tasks
         :type FailedInterruptedCount: int
-        :param FailedCount: Number of failed tasks
+        :param _FailedCount: Number of failed tasks
         :type FailedCount: int
         """
-        self.SubmittedCount = None
-        self.PendingCount = None
-        self.RunnableCount = None
-        self.StartingCount = None
-        self.RunningCount = None
-        self.SucceedCount = None
-        self.FailedInterruptedCount = None
-        self.FailedCount = None
+        self._SubmittedCount = None
+        self._PendingCount = None
+        self._RunnableCount = None
+        self._StartingCount = None
+        self._RunningCount = None
+        self._SucceedCount = None
+        self._FailedInterruptedCount = None
+        self._FailedCount = None
+
+    @property
+    def SubmittedCount(self):
+        return self._SubmittedCount
+
+    @SubmittedCount.setter
+    def SubmittedCount(self, SubmittedCount):
+        self._SubmittedCount = SubmittedCount
+
+    @property
+    def PendingCount(self):
+        return self._PendingCount
+
+    @PendingCount.setter
+    def PendingCount(self, PendingCount):
+        self._PendingCount = PendingCount
+
+    @property
+    def RunnableCount(self):
+        return self._RunnableCount
+
+    @RunnableCount.setter
+    def RunnableCount(self, RunnableCount):
+        self._RunnableCount = RunnableCount
+
+    @property
+    def StartingCount(self):
+        return self._StartingCount
+
+    @StartingCount.setter
+    def StartingCount(self, StartingCount):
+        self._StartingCount = StartingCount
+
+    @property
+    def RunningCount(self):
+        return self._RunningCount
+
+    @RunningCount.setter
+    def RunningCount(self, RunningCount):
+        self._RunningCount = RunningCount
+
+    @property
+    def SucceedCount(self):
+        return self._SucceedCount
+
+    @SucceedCount.setter
+    def SucceedCount(self, SucceedCount):
+        self._SucceedCount = SucceedCount
+
+    @property
+    def FailedInterruptedCount(self):
+        return self._FailedInterruptedCount
+
+    @FailedInterruptedCount.setter
+    def FailedInterruptedCount(self, FailedInterruptedCount):
+        self._FailedInterruptedCount = FailedInterruptedCount
+
+    @property
+    def FailedCount(self):
+        return self._FailedCount
+
+    @FailedCount.setter
+    def FailedCount(self, FailedCount):
+        self._FailedCount = FailedCount
 
 
     def _deserialize(self, params):
-        self.SubmittedCount = params.get("SubmittedCount")
-        self.PendingCount = params.get("PendingCount")
-        self.RunnableCount = params.get("RunnableCount")
-        self.StartingCount = params.get("StartingCount")
-        self.RunningCount = params.get("RunningCount")
-        self.SucceedCount = params.get("SucceedCount")
-        self.FailedInterruptedCount = params.get("FailedInterruptedCount")
-        self.FailedCount = params.get("FailedCount")
+        self._SubmittedCount = params.get("SubmittedCount")
+        self._PendingCount = params.get("PendingCount")
+        self._RunnableCount = params.get("RunnableCount")
+        self._StartingCount = params.get("StartingCount")
+        self._RunningCount = params.get("RunningCount")
+        self._SucceedCount = params.get("SucceedCount")
+        self._FailedInterruptedCount = params.get("FailedInterruptedCount")
+        self._FailedCount = params.get("FailedCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4045,65 +7575,154 @@ class TaskInstanceView(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskInstanceIndex: Task instance index
+        :param _TaskInstanceIndex: Task instance index
         :type TaskInstanceIndex: int
-        :param TaskInstanceState: Task instance state
+        :param _TaskInstanceState: Task instance state
         :type TaskInstanceState: str
-        :param ExitCode: Exit code after application execution is completed
+        :param _ExitCode: Exit code after application execution is completed
 Note: This field may return `null`, indicating that no valid value was found.
         :type ExitCode: int
-        :param StateReason: Task instance state reason. If the task instance fails, the reason for the failure will be logged.
+        :param _StateReason: Task instance state reason. If the task instance fails, the reason for the failure will be logged.
         :type StateReason: str
-        :param ComputeNodeInstanceId: The `InstanceId` of the compute node (e.g., CVM instance) where the task instance is running. This field is empty if the task instance is not running or has already been completed and will change when the task instance is retried.
+        :param _ComputeNodeInstanceId: The `InstanceId` of the compute node (e.g., CVM instance) where the task instance is running. This field is empty if the task instance is not running or has already been completed and will change when the task instance is retried.
 Note: This field may return `null`, indicating that no valid value was found.
         :type ComputeNodeInstanceId: str
-        :param CreateTime: Creation time
+        :param _CreateTime: Creation time
         :type CreateTime: str
-        :param LaunchTime: Start time
+        :param _LaunchTime: Start time
 Note: This field may return `null`, indicating that no valid value was found.
         :type LaunchTime: str
-        :param RunningTime: Running start time
+        :param _RunningTime: Running start time
 Note: This field may return `null`, indicating that no valid value was found.
         :type RunningTime: str
-        :param EndTime: Task end time
+        :param _EndTime: Task end time
 Note: This field may return `null`, indicating that no valid value was found.
         :type EndTime: str
-        :param RedirectInfo: Redirection information
+        :param _RedirectInfo: Redirection information
         :type RedirectInfo: :class:`tencentcloud.batch.v20170312.models.RedirectInfo`
-        :param StateDetailedReason: Task instance state reason details. If the task instance fails, the reason for the failure will be logged
+        :param _StateDetailedReason: Task instance state reason details. If the task instance fails, the reason for the failure will be logged
         :type StateDetailedReason: str
         """
-        self.TaskInstanceIndex = None
-        self.TaskInstanceState = None
-        self.ExitCode = None
-        self.StateReason = None
-        self.ComputeNodeInstanceId = None
-        self.CreateTime = None
-        self.LaunchTime = None
-        self.RunningTime = None
-        self.EndTime = None
-        self.RedirectInfo = None
-        self.StateDetailedReason = None
+        self._TaskInstanceIndex = None
+        self._TaskInstanceState = None
+        self._ExitCode = None
+        self._StateReason = None
+        self._ComputeNodeInstanceId = None
+        self._CreateTime = None
+        self._LaunchTime = None
+        self._RunningTime = None
+        self._EndTime = None
+        self._RedirectInfo = None
+        self._StateDetailedReason = None
+
+    @property
+    def TaskInstanceIndex(self):
+        return self._TaskInstanceIndex
+
+    @TaskInstanceIndex.setter
+    def TaskInstanceIndex(self, TaskInstanceIndex):
+        self._TaskInstanceIndex = TaskInstanceIndex
+
+    @property
+    def TaskInstanceState(self):
+        return self._TaskInstanceState
+
+    @TaskInstanceState.setter
+    def TaskInstanceState(self, TaskInstanceState):
+        self._TaskInstanceState = TaskInstanceState
+
+    @property
+    def ExitCode(self):
+        return self._ExitCode
+
+    @ExitCode.setter
+    def ExitCode(self, ExitCode):
+        self._ExitCode = ExitCode
+
+    @property
+    def StateReason(self):
+        return self._StateReason
+
+    @StateReason.setter
+    def StateReason(self, StateReason):
+        self._StateReason = StateReason
+
+    @property
+    def ComputeNodeInstanceId(self):
+        return self._ComputeNodeInstanceId
+
+    @ComputeNodeInstanceId.setter
+    def ComputeNodeInstanceId(self, ComputeNodeInstanceId):
+        self._ComputeNodeInstanceId = ComputeNodeInstanceId
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def LaunchTime(self):
+        return self._LaunchTime
+
+    @LaunchTime.setter
+    def LaunchTime(self, LaunchTime):
+        self._LaunchTime = LaunchTime
+
+    @property
+    def RunningTime(self):
+        return self._RunningTime
+
+    @RunningTime.setter
+    def RunningTime(self, RunningTime):
+        self._RunningTime = RunningTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def RedirectInfo(self):
+        return self._RedirectInfo
+
+    @RedirectInfo.setter
+    def RedirectInfo(self, RedirectInfo):
+        self._RedirectInfo = RedirectInfo
+
+    @property
+    def StateDetailedReason(self):
+        return self._StateDetailedReason
+
+    @StateDetailedReason.setter
+    def StateDetailedReason(self, StateDetailedReason):
+        self._StateDetailedReason = StateDetailedReason
 
 
     def _deserialize(self, params):
-        self.TaskInstanceIndex = params.get("TaskInstanceIndex")
-        self.TaskInstanceState = params.get("TaskInstanceState")
-        self.ExitCode = params.get("ExitCode")
-        self.StateReason = params.get("StateReason")
-        self.ComputeNodeInstanceId = params.get("ComputeNodeInstanceId")
-        self.CreateTime = params.get("CreateTime")
-        self.LaunchTime = params.get("LaunchTime")
-        self.RunningTime = params.get("RunningTime")
-        self.EndTime = params.get("EndTime")
+        self._TaskInstanceIndex = params.get("TaskInstanceIndex")
+        self._TaskInstanceState = params.get("TaskInstanceState")
+        self._ExitCode = params.get("ExitCode")
+        self._StateReason = params.get("StateReason")
+        self._ComputeNodeInstanceId = params.get("ComputeNodeInstanceId")
+        self._CreateTime = params.get("CreateTime")
+        self._LaunchTime = params.get("LaunchTime")
+        self._RunningTime = params.get("RunningTime")
+        self._EndTime = params.get("EndTime")
         if params.get("RedirectInfo") is not None:
-            self.RedirectInfo = RedirectInfo()
-            self.RedirectInfo._deserialize(params.get("RedirectInfo"))
-        self.StateDetailedReason = params.get("StateDetailedReason")
+            self._RedirectInfo = RedirectInfo()
+            self._RedirectInfo._deserialize(params.get("RedirectInfo"))
+        self._StateDetailedReason = params.get("StateDetailedReason")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4116,46 +7735,111 @@ class TaskMetrics(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubmittedCount: Number of submitted tasks
+        :param _SubmittedCount: Number of submitted tasks
         :type SubmittedCount: int
-        :param PendingCount: Number of pending tasks
+        :param _PendingCount: Number of pending tasks
         :type PendingCount: int
-        :param RunnableCount: Number of Runnable tasks
+        :param _RunnableCount: Number of Runnable tasks
         :type RunnableCount: int
-        :param StartingCount: Number of starting tasks
+        :param _StartingCount: Number of starting tasks
         :type StartingCount: int
-        :param RunningCount: Number of running tasks
+        :param _RunningCount: Number of running tasks
         :type RunningCount: int
-        :param SucceedCount: Number of successful tasks
+        :param _SucceedCount: Number of successful tasks
         :type SucceedCount: int
-        :param FailedInterruptedCount: Number of failed and interrupted tasks
+        :param _FailedInterruptedCount: Number of failed and interrupted tasks
         :type FailedInterruptedCount: int
-        :param FailedCount: Failed count
+        :param _FailedCount: Failed count
         :type FailedCount: int
         """
-        self.SubmittedCount = None
-        self.PendingCount = None
-        self.RunnableCount = None
-        self.StartingCount = None
-        self.RunningCount = None
-        self.SucceedCount = None
-        self.FailedInterruptedCount = None
-        self.FailedCount = None
+        self._SubmittedCount = None
+        self._PendingCount = None
+        self._RunnableCount = None
+        self._StartingCount = None
+        self._RunningCount = None
+        self._SucceedCount = None
+        self._FailedInterruptedCount = None
+        self._FailedCount = None
+
+    @property
+    def SubmittedCount(self):
+        return self._SubmittedCount
+
+    @SubmittedCount.setter
+    def SubmittedCount(self, SubmittedCount):
+        self._SubmittedCount = SubmittedCount
+
+    @property
+    def PendingCount(self):
+        return self._PendingCount
+
+    @PendingCount.setter
+    def PendingCount(self, PendingCount):
+        self._PendingCount = PendingCount
+
+    @property
+    def RunnableCount(self):
+        return self._RunnableCount
+
+    @RunnableCount.setter
+    def RunnableCount(self, RunnableCount):
+        self._RunnableCount = RunnableCount
+
+    @property
+    def StartingCount(self):
+        return self._StartingCount
+
+    @StartingCount.setter
+    def StartingCount(self, StartingCount):
+        self._StartingCount = StartingCount
+
+    @property
+    def RunningCount(self):
+        return self._RunningCount
+
+    @RunningCount.setter
+    def RunningCount(self, RunningCount):
+        self._RunningCount = RunningCount
+
+    @property
+    def SucceedCount(self):
+        return self._SucceedCount
+
+    @SucceedCount.setter
+    def SucceedCount(self, SucceedCount):
+        self._SucceedCount = SucceedCount
+
+    @property
+    def FailedInterruptedCount(self):
+        return self._FailedInterruptedCount
+
+    @FailedInterruptedCount.setter
+    def FailedInterruptedCount(self, FailedInterruptedCount):
+        self._FailedInterruptedCount = FailedInterruptedCount
+
+    @property
+    def FailedCount(self):
+        return self._FailedCount
+
+    @FailedCount.setter
+    def FailedCount(self, FailedCount):
+        self._FailedCount = FailedCount
 
 
     def _deserialize(self, params):
-        self.SubmittedCount = params.get("SubmittedCount")
-        self.PendingCount = params.get("PendingCount")
-        self.RunnableCount = params.get("RunnableCount")
-        self.StartingCount = params.get("StartingCount")
-        self.RunningCount = params.get("RunningCount")
-        self.SucceedCount = params.get("SucceedCount")
-        self.FailedInterruptedCount = params.get("FailedInterruptedCount")
-        self.FailedCount = params.get("FailedCount")
+        self._SubmittedCount = params.get("SubmittedCount")
+        self._PendingCount = params.get("PendingCount")
+        self._RunnableCount = params.get("RunnableCount")
+        self._StartingCount = params.get("StartingCount")
+        self._RunningCount = params.get("RunningCount")
+        self._SucceedCount = params.get("SucceedCount")
+        self._FailedInterruptedCount = params.get("FailedInterruptedCount")
+        self._FailedCount = params.get("FailedCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4168,46 +7852,95 @@ class TaskTemplateView(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskTemplateId: Task template ID
+        :param _TaskTemplateId: Task template ID
         :type TaskTemplateId: str
-        :param TaskTemplateName: Task template name
+        :param _TaskTemplateName: Task template name
         :type TaskTemplateName: str
-        :param TaskTemplateDescription: Task template description
+        :param _TaskTemplateDescription: Task template description
         :type TaskTemplateDescription: str
-        :param TaskTemplateInfo: Task template information
+        :param _TaskTemplateInfo: Task template information
         :type TaskTemplateInfo: :class:`tencentcloud.batch.v20170312.models.Task`
-        :param CreateTime: Creation time
+        :param _CreateTime: Creation time
         :type CreateTime: str
-        :param Tags: Tag list bound to the task template.
+        :param _Tags: Tag list bound to the task template.
 Note: This field may return `null`, indicating that no valid value was found.
         :type Tags: list of Tag
         """
-        self.TaskTemplateId = None
-        self.TaskTemplateName = None
-        self.TaskTemplateDescription = None
-        self.TaskTemplateInfo = None
-        self.CreateTime = None
-        self.Tags = None
+        self._TaskTemplateId = None
+        self._TaskTemplateName = None
+        self._TaskTemplateDescription = None
+        self._TaskTemplateInfo = None
+        self._CreateTime = None
+        self._Tags = None
+
+    @property
+    def TaskTemplateId(self):
+        return self._TaskTemplateId
+
+    @TaskTemplateId.setter
+    def TaskTemplateId(self, TaskTemplateId):
+        self._TaskTemplateId = TaskTemplateId
+
+    @property
+    def TaskTemplateName(self):
+        return self._TaskTemplateName
+
+    @TaskTemplateName.setter
+    def TaskTemplateName(self, TaskTemplateName):
+        self._TaskTemplateName = TaskTemplateName
+
+    @property
+    def TaskTemplateDescription(self):
+        return self._TaskTemplateDescription
+
+    @TaskTemplateDescription.setter
+    def TaskTemplateDescription(self, TaskTemplateDescription):
+        self._TaskTemplateDescription = TaskTemplateDescription
+
+    @property
+    def TaskTemplateInfo(self):
+        return self._TaskTemplateInfo
+
+    @TaskTemplateInfo.setter
+    def TaskTemplateInfo(self, TaskTemplateInfo):
+        self._TaskTemplateInfo = TaskTemplateInfo
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
-        self.TaskTemplateId = params.get("TaskTemplateId")
-        self.TaskTemplateName = params.get("TaskTemplateName")
-        self.TaskTemplateDescription = params.get("TaskTemplateDescription")
+        self._TaskTemplateId = params.get("TaskTemplateId")
+        self._TaskTemplateName = params.get("TaskTemplateName")
+        self._TaskTemplateDescription = params.get("TaskTemplateDescription")
         if params.get("TaskTemplateInfo") is not None:
-            self.TaskTemplateInfo = Task()
-            self.TaskTemplateInfo._deserialize(params.get("TaskTemplateInfo"))
-        self.CreateTime = params.get("CreateTime")
+            self._TaskTemplateInfo = Task()
+            self._TaskTemplateInfo._deserialize(params.get("TaskTemplateInfo"))
+        self._CreateTime = params.get("CreateTime")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4220,31 +7953,64 @@ class TaskView(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskName: Task name
+        :param _TaskName: Task name
         :type TaskName: str
-        :param TaskState: Task status
+        :param _TaskState: Task status
         :type TaskState: str
-        :param CreateTime: Start time
+        :param _CreateTime: Start time
         :type CreateTime: str
-        :param EndTime: End time
+        :param _EndTime: End time
 Note: This field may return `null`, indicating that no valid value was found.
         :type EndTime: str
         """
-        self.TaskName = None
-        self.TaskState = None
-        self.CreateTime = None
-        self.EndTime = None
+        self._TaskName = None
+        self._TaskState = None
+        self._CreateTime = None
+        self._EndTime = None
+
+    @property
+    def TaskName(self):
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def TaskState(self):
+        return self._TaskState
+
+    @TaskState.setter
+    def TaskState(self, TaskState):
+        self._TaskState = TaskState
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
 
 
     def _deserialize(self, params):
-        self.TaskName = params.get("TaskName")
-        self.TaskState = params.get("TaskState")
-        self.CreateTime = params.get("CreateTime")
-        self.EndTime = params.get("EndTime")
+        self._TaskName = params.get("TaskName")
+        self._TaskState = params.get("TaskState")
+        self._CreateTime = params.get("CreateTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4257,22 +8023,39 @@ class TerminateComputeNodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EnvId: Compute environment ID
+        :param _EnvId: Compute environment ID
         :type EnvId: str
-        :param ComputeNodeId: Compute node ID
+        :param _ComputeNodeId: Compute node ID
         :type ComputeNodeId: str
         """
-        self.EnvId = None
-        self.ComputeNodeId = None
+        self._EnvId = None
+        self._ComputeNodeId = None
+
+    @property
+    def EnvId(self):
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def ComputeNodeId(self):
+        return self._ComputeNodeId
+
+    @ComputeNodeId.setter
+    def ComputeNodeId(self, ComputeNodeId):
+        self._ComputeNodeId = ComputeNodeId
 
 
     def _deserialize(self, params):
-        self.EnvId = params.get("EnvId")
-        self.ComputeNodeId = params.get("ComputeNodeId")
+        self._EnvId = params.get("EnvId")
+        self._ComputeNodeId = params.get("ComputeNodeId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4285,14 +8068,22 @@ class TerminateComputeNodeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class TerminateComputeNodesRequest(AbstractModel):
@@ -4302,22 +8093,39 @@ class TerminateComputeNodesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EnvId: Compute environment ID
+        :param _EnvId: Compute environment ID
         :type EnvId: str
-        :param ComputeNodeIds: List of compute node IDs
+        :param _ComputeNodeIds: List of compute node IDs
         :type ComputeNodeIds: list of str
         """
-        self.EnvId = None
-        self.ComputeNodeIds = None
+        self._EnvId = None
+        self._ComputeNodeIds = None
+
+    @property
+    def EnvId(self):
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def ComputeNodeIds(self):
+        return self._ComputeNodeIds
+
+    @ComputeNodeIds.setter
+    def ComputeNodeIds(self, ComputeNodeIds):
+        self._ComputeNodeIds = ComputeNodeIds
 
 
     def _deserialize(self, params):
-        self.EnvId = params.get("EnvId")
-        self.ComputeNodeIds = params.get("ComputeNodeIds")
+        self._EnvId = params.get("EnvId")
+        self._ComputeNodeIds = params.get("ComputeNodeIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4330,14 +8138,22 @@ class TerminateComputeNodesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class TerminateJobRequest(AbstractModel):
@@ -4347,18 +8163,27 @@ class TerminateJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: Job ID
+        :param _JobId: Job ID
         :type JobId: str
         """
-        self.JobId = None
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
+        self._JobId = params.get("JobId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4371,14 +8196,22 @@ class TerminateJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class TerminateTaskInstanceRequest(AbstractModel):
@@ -4388,26 +8221,51 @@ class TerminateTaskInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: Job ID
+        :param _JobId: Job ID
         :type JobId: str
-        :param TaskName: Task name
+        :param _TaskName: Task name
         :type TaskName: str
-        :param TaskInstanceIndex: Task instance index
+        :param _TaskInstanceIndex: Task instance index
         :type TaskInstanceIndex: int
         """
-        self.JobId = None
-        self.TaskName = None
-        self.TaskInstanceIndex = None
+        self._JobId = None
+        self._TaskName = None
+        self._TaskInstanceIndex = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def TaskName(self):
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def TaskInstanceIndex(self):
+        return self._TaskInstanceIndex
+
+    @TaskInstanceIndex.setter
+    def TaskInstanceIndex(self, TaskInstanceIndex):
+        self._TaskInstanceIndex = TaskInstanceIndex
 
 
     def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.TaskName = params.get("TaskName")
-        self.TaskInstanceIndex = params.get("TaskInstanceIndex")
+        self._JobId = params.get("JobId")
+        self._TaskName = params.get("TaskName")
+        self._TaskInstanceIndex = params.get("TaskInstanceIndex")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4420,14 +8278,22 @@ class TerminateTaskInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class VirtualPrivateCloud(AbstractModel):
@@ -4437,34 +8303,75 @@ class VirtualPrivateCloud(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpcId: VPC ID in the format of `vpc-xxx`. To obtain valid VPC IDs, you can log in to the [console](https://console.cloud.tencent.com/vpc/vpc?rid=1) or call the [DescribeVpcEx](https://intl.cloud.tencent.com/document/api/215/1372?from_cn_redirect=1) API and look for the `unVpcId` fields in the response. If you specify `DEFAULT` for both `VpcId` and `SubnetId` when creating an instance, the default VPC will be used.
+        :param _VpcId: VPC ID in the format of `vpc-xxx`. To obtain valid VPC IDs, you can log in to the [console](https://console.cloud.tencent.com/vpc/vpc?rid=1) or call the [DescribeVpcEx](https://intl.cloud.tencent.com/document/api/215/1372?from_cn_redirect=1) API and look for the `unVpcId` fields in the response. If you specify `DEFAULT` for both `VpcId` and `SubnetId` when creating an instance, the default VPC will be used.
         :type VpcId: str
-        :param SubnetId: VPC subnet ID in the format `subnet-xxx`. To obtain valid subnet IDs, you can log in to the [console](https://console.cloud.tencent.com/vpc/subnet?rid=1) or call [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) and look for the `unSubnetId` fields in the response. If you specify `DEFAULT` for both `SubnetId` and `VpcId` when creating an instance, the default VPC will be used.
+        :param _SubnetId: VPC subnet ID in the format `subnet-xxx`. To obtain valid subnet IDs, you can log in to the [console](https://console.cloud.tencent.com/vpc/subnet?rid=1) or call [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) and look for the `unSubnetId` fields in the response. If you specify `DEFAULT` for both `SubnetId` and `VpcId` when creating an instance, the default VPC will be used.
         :type SubnetId: str
-        :param AsVpcGateway: Whether to use a CVM instance as a public gateway. The public gateway is only available when the instance has a public IP and resides in a VPC. Valid values: <br><li>`TRUE`: yes;<br><li>`FALSE`: no<br><br>Default: `FALSE`.
+        :param _AsVpcGateway: Whether to use a CVM instance as a public gateway. The public gateway is only available when the instance has a public IP and resides in a VPC. Valid values: <br><li>`TRUE`: yes;<br><li>`FALSE`: no<br><br>Default: `FALSE`.
         :type AsVpcGateway: bool
-        :param PrivateIpAddresses: Array of VPC subnet IPs. You can use this parameter when creating instances or modifying VPC attributes of instances. Currently you can specify multiple IPs in one subnet only when creating multiple instances at the same time.
+        :param _PrivateIpAddresses: Array of VPC subnet IPs. You can use this parameter when creating instances or modifying VPC attributes of instances. Currently you can specify multiple IPs in one subnet only when creating multiple instances at the same time.
         :type PrivateIpAddresses: list of str
-        :param Ipv6AddressCount: Number of IPv6 addresses randomly generated for the ENI.
+        :param _Ipv6AddressCount: Number of IPv6 addresses randomly generated for the ENI.
         :type Ipv6AddressCount: int
         """
-        self.VpcId = None
-        self.SubnetId = None
-        self.AsVpcGateway = None
-        self.PrivateIpAddresses = None
-        self.Ipv6AddressCount = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._AsVpcGateway = None
+        self._PrivateIpAddresses = None
+        self._Ipv6AddressCount = None
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def AsVpcGateway(self):
+        return self._AsVpcGateway
+
+    @AsVpcGateway.setter
+    def AsVpcGateway(self, AsVpcGateway):
+        self._AsVpcGateway = AsVpcGateway
+
+    @property
+    def PrivateIpAddresses(self):
+        return self._PrivateIpAddresses
+
+    @PrivateIpAddresses.setter
+    def PrivateIpAddresses(self, PrivateIpAddresses):
+        self._PrivateIpAddresses = PrivateIpAddresses
+
+    @property
+    def Ipv6AddressCount(self):
+        return self._Ipv6AddressCount
+
+    @Ipv6AddressCount.setter
+    def Ipv6AddressCount(self, Ipv6AddressCount):
+        self._Ipv6AddressCount = Ipv6AddressCount
 
 
     def _deserialize(self, params):
-        self.VpcId = params.get("VpcId")
-        self.SubnetId = params.get("SubnetId")
-        self.AsVpcGateway = params.get("AsVpcGateway")
-        self.PrivateIpAddresses = params.get("PrivateIpAddresses")
-        self.Ipv6AddressCount = params.get("Ipv6AddressCount")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._AsVpcGateway = params.get("AsVpcGateway")
+        self._PrivateIpAddresses = params.get("PrivateIpAddresses")
+        self._Ipv6AddressCount = params.get("Ipv6AddressCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

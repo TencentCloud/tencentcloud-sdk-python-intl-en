@@ -25,22 +25,39 @@ class AddSignStatus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SignId: Signature ID.
+        :param _SignId: Signature ID.
         :type SignId: int
-        :param SignApplyId: Signature application ID.
+        :param _SignApplyId: Signature application ID.
         :type SignApplyId: int
         """
-        self.SignId = None
-        self.SignApplyId = None
+        self._SignId = None
+        self._SignApplyId = None
+
+    @property
+    def SignId(self):
+        return self._SignId
+
+    @SignId.setter
+    def SignId(self, SignId):
+        self._SignId = SignId
+
+    @property
+    def SignApplyId(self):
+        return self._SignApplyId
+
+    @SignApplyId.setter
+    def SignApplyId(self, SignApplyId):
+        self._SignApplyId = SignApplyId
 
 
     def _deserialize(self, params):
-        self.SignId = params.get("SignId")
-        self.SignApplyId = params.get("SignApplyId")
+        self._SignId = params.get("SignId")
+        self._SignApplyId = params.get("SignApplyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -53,9 +70,9 @@ class AddSmsSignRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SignName: Signature name.
+        :param _SignName: Signature name.
         :type SignName: str
-        :param SignType: Signature type. Each of these types is followed by their `DocumentType` (identity document type) option:
+        :param _SignType: Signature type. Each of these types is followed by their `DocumentType` (identity document type) option:
 0: company (0, 1, 2, 3).
 1: app (0, 1, 2, 3, 4).
 2: website (0, 1, 2, 3, 5).
@@ -64,7 +81,7 @@ class AddSmsSignRequest(AbstractModel):
 5: governmental/public institution or others (2, 3).
 Note: the identity document type must be selected according to the correspondence; otherwise, the review will fail.
         :type SignType: int
-        :param DocumentType: Identity document type:
+        :param _DocumentType: Identity document type:
 0: 3-in-1 license.
 1: business license.
 2: organization code certificate.
@@ -74,46 +91,111 @@ Note: the identity document type must be selected according to the correspondenc
 6: screenshot of WeChat Mini Program settings page (for personal WeChat Mini Program).
 7: trademark registration certificate.
         :type DocumentType: int
-        :param International: Whether it is Global SMS:
+        :param _International: Whether it is Global SMS:
 0: Mainland China SMS.
 1: Global SMS.
         :type International: int
-        :param UsedMethod: Signature use:
+        :param _UsedMethod: Signature use:
 0: for self-use.
 1: for others.
         :type UsedMethod: int
-        :param ProofImage: You should Base64-encode the image of the identity document corresponding to the signature first, remove the prefix `data:image/jpeg;base64,` from the resulted string, and then use it as the value of this parameter.
+        :param _ProofImage: You should Base64-encode the image of the identity document corresponding to the signature first, remove the prefix `data:image/jpeg;base64,` from the resulted string, and then use it as the value of this parameter.
         :type ProofImage: str
-        :param CommissionImage: Authorization letter, which should be submitted if `UsedMethod` is for others.
+        :param _CommissionImage: Authorization letter, which should be submitted if `UsedMethod` is for others.
 You should Base64-encode the image first, remove the prefix `data:image/jpeg;base64,` from the resulted string, and then use it as the value of this parameter.
 Note: this field will take effect only when `UsedMethod` is 1 (for others).
         :type CommissionImage: str
-        :param Remark: Signature application remarks.
+        :param _Remark: Signature application remarks.
         :type Remark: str
         """
-        self.SignName = None
-        self.SignType = None
-        self.DocumentType = None
-        self.International = None
-        self.UsedMethod = None
-        self.ProofImage = None
-        self.CommissionImage = None
-        self.Remark = None
+        self._SignName = None
+        self._SignType = None
+        self._DocumentType = None
+        self._International = None
+        self._UsedMethod = None
+        self._ProofImage = None
+        self._CommissionImage = None
+        self._Remark = None
+
+    @property
+    def SignName(self):
+        return self._SignName
+
+    @SignName.setter
+    def SignName(self, SignName):
+        self._SignName = SignName
+
+    @property
+    def SignType(self):
+        return self._SignType
+
+    @SignType.setter
+    def SignType(self, SignType):
+        self._SignType = SignType
+
+    @property
+    def DocumentType(self):
+        return self._DocumentType
+
+    @DocumentType.setter
+    def DocumentType(self, DocumentType):
+        self._DocumentType = DocumentType
+
+    @property
+    def International(self):
+        return self._International
+
+    @International.setter
+    def International(self, International):
+        self._International = International
+
+    @property
+    def UsedMethod(self):
+        return self._UsedMethod
+
+    @UsedMethod.setter
+    def UsedMethod(self, UsedMethod):
+        self._UsedMethod = UsedMethod
+
+    @property
+    def ProofImage(self):
+        return self._ProofImage
+
+    @ProofImage.setter
+    def ProofImage(self, ProofImage):
+        self._ProofImage = ProofImage
+
+    @property
+    def CommissionImage(self):
+        return self._CommissionImage
+
+    @CommissionImage.setter
+    def CommissionImage(self, CommissionImage):
+        self._CommissionImage = CommissionImage
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
 
 
     def _deserialize(self, params):
-        self.SignName = params.get("SignName")
-        self.SignType = params.get("SignType")
-        self.DocumentType = params.get("DocumentType")
-        self.International = params.get("International")
-        self.UsedMethod = params.get("UsedMethod")
-        self.ProofImage = params.get("ProofImage")
-        self.CommissionImage = params.get("CommissionImage")
-        self.Remark = params.get("Remark")
+        self._SignName = params.get("SignName")
+        self._SignType = params.get("SignType")
+        self._DocumentType = params.get("DocumentType")
+        self._International = params.get("International")
+        self._UsedMethod = params.get("UsedMethod")
+        self._ProofImage = params.get("ProofImage")
+        self._CommissionImage = params.get("CommissionImage")
+        self._Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -126,20 +208,36 @@ class AddSmsSignResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AddSignStatus: Signature addition response
+        :param _AddSignStatus: Signature addition response
         :type AddSignStatus: :class:`tencentcloud.sms.v20190711.models.AddSignStatus`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.AddSignStatus = None
-        self.RequestId = None
+        self._AddSignStatus = None
+        self._RequestId = None
+
+    @property
+    def AddSignStatus(self):
+        return self._AddSignStatus
+
+    @AddSignStatus.setter
+    def AddSignStatus(self, AddSignStatus):
+        self._AddSignStatus = AddSignStatus
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("AddSignStatus") is not None:
-            self.AddSignStatus = AddSignStatus()
-            self.AddSignStatus._deserialize(params.get("AddSignStatus"))
-        self.RequestId = params.get("RequestId")
+            self._AddSignStatus = AddSignStatus()
+            self._AddSignStatus._deserialize(params.get("AddSignStatus"))
+        self._RequestId = params.get("RequestId")
 
 
 class AddSmsTemplateRequest(AbstractModel):
@@ -149,36 +247,77 @@ class AddSmsTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateName: Template name.
+        :param _TemplateName: Template name.
         :type TemplateName: str
-        :param TemplateContent: Template content.
+        :param _TemplateContent: Template content.
         :type TemplateContent: str
-        :param SmsType: SMS type. 0: ordinary SMS, 1: marketing SMS.
+        :param _SmsType: SMS type. 0: ordinary SMS, 1: marketing SMS.
         :type SmsType: int
-        :param International: Whether it is Global SMS:
+        :param _International: Whether it is Global SMS:
 0: Mainland China SMS.
 1: Global SMS.
         :type International: int
-        :param Remark: Template remarks, such as reason for application and use case.
+        :param _Remark: Template remarks, such as reason for application and use case.
         :type Remark: str
         """
-        self.TemplateName = None
-        self.TemplateContent = None
-        self.SmsType = None
-        self.International = None
-        self.Remark = None
+        self._TemplateName = None
+        self._TemplateContent = None
+        self._SmsType = None
+        self._International = None
+        self._Remark = None
+
+    @property
+    def TemplateName(self):
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+    @property
+    def TemplateContent(self):
+        return self._TemplateContent
+
+    @TemplateContent.setter
+    def TemplateContent(self, TemplateContent):
+        self._TemplateContent = TemplateContent
+
+    @property
+    def SmsType(self):
+        return self._SmsType
+
+    @SmsType.setter
+    def SmsType(self, SmsType):
+        self._SmsType = SmsType
+
+    @property
+    def International(self):
+        return self._International
+
+    @International.setter
+    def International(self, International):
+        self._International = International
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
 
 
     def _deserialize(self, params):
-        self.TemplateName = params.get("TemplateName")
-        self.TemplateContent = params.get("TemplateContent")
-        self.SmsType = params.get("SmsType")
-        self.International = params.get("International")
-        self.Remark = params.get("Remark")
+        self._TemplateName = params.get("TemplateName")
+        self._TemplateContent = params.get("TemplateContent")
+        self._SmsType = params.get("SmsType")
+        self._International = params.get("International")
+        self._Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -191,20 +330,36 @@ class AddSmsTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AddTemplateStatus: SMS template addition response packet body
+        :param _AddTemplateStatus: SMS template addition response packet body
         :type AddTemplateStatus: :class:`tencentcloud.sms.v20190711.models.AddTemplateStatus`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.AddTemplateStatus = None
-        self.RequestId = None
+        self._AddTemplateStatus = None
+        self._RequestId = None
+
+    @property
+    def AddTemplateStatus(self):
+        return self._AddTemplateStatus
+
+    @AddTemplateStatus.setter
+    def AddTemplateStatus(self, AddTemplateStatus):
+        self._AddTemplateStatus = AddTemplateStatus
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("AddTemplateStatus") is not None:
-            self.AddTemplateStatus = AddTemplateStatus()
-            self.AddTemplateStatus._deserialize(params.get("AddTemplateStatus"))
-        self.RequestId = params.get("RequestId")
+            self._AddTemplateStatus = AddTemplateStatus()
+            self._AddTemplateStatus._deserialize(params.get("AddTemplateStatus"))
+        self._RequestId = params.get("RequestId")
 
 
 class AddTemplateStatus(AbstractModel):
@@ -214,18 +369,27 @@ class AddTemplateStatus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateId: Template parameter
+        :param _TemplateId: Template parameter
         :type TemplateId: str
         """
-        self.TemplateId = None
+        self._TemplateId = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
 
 
     def _deserialize(self, params):
-        self.TemplateId = params.get("TemplateId")
+        self._TemplateId = params.get("TemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -238,50 +402,123 @@ class CallbackStatusStatistics(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CallbackCount: SMS receipts.
+        :param _CallbackCount: SMS receipts.
         :type CallbackCount: int
-        :param RequestSuccessCount: Successfully submitted SMS messages.
+        :param _RequestSuccessCount: Successfully submitted SMS messages.
         :type RequestSuccessCount: int
-        :param CallbackFailCount: Failed SMS receipts.
+        :param _CallbackFailCount: Failed SMS receipts.
         :type CallbackFailCount: int
-        :param CallbackSuccessCount: Successful SMS receipts.
+        :param _CallbackSuccessCount: Successful SMS receipts.
         :type CallbackSuccessCount: int
-        :param InternalErrorCount: Internal carrier errors.
+        :param _InternalErrorCount: Internal carrier errors.
         :type InternalErrorCount: int
-        :param InvalidNumberCount: Invalid or empty mobile numbers.
+        :param _InvalidNumberCount: Invalid or empty mobile numbers.
         :type InvalidNumberCount: int
-        :param ShutdownErrorCount: Errors such as out-of-service or power-off.
+        :param _ShutdownErrorCount: Errors such as out-of-service or power-off.
         :type ShutdownErrorCount: int
-        :param BlackListCount: Blacklisted mobile numbers.
+        :param _BlackListCount: Blacklisted mobile numbers.
         :type BlackListCount: int
-        :param FrequencyLimitCount: Carrier frequency limit hits.
+        :param _FrequencyLimitCount: Carrier frequency limit hits.
         :type FrequencyLimitCount: int
         """
-        self.CallbackCount = None
-        self.RequestSuccessCount = None
-        self.CallbackFailCount = None
-        self.CallbackSuccessCount = None
-        self.InternalErrorCount = None
-        self.InvalidNumberCount = None
-        self.ShutdownErrorCount = None
-        self.BlackListCount = None
-        self.FrequencyLimitCount = None
+        self._CallbackCount = None
+        self._RequestSuccessCount = None
+        self._CallbackFailCount = None
+        self._CallbackSuccessCount = None
+        self._InternalErrorCount = None
+        self._InvalidNumberCount = None
+        self._ShutdownErrorCount = None
+        self._BlackListCount = None
+        self._FrequencyLimitCount = None
+
+    @property
+    def CallbackCount(self):
+        return self._CallbackCount
+
+    @CallbackCount.setter
+    def CallbackCount(self, CallbackCount):
+        self._CallbackCount = CallbackCount
+
+    @property
+    def RequestSuccessCount(self):
+        return self._RequestSuccessCount
+
+    @RequestSuccessCount.setter
+    def RequestSuccessCount(self, RequestSuccessCount):
+        self._RequestSuccessCount = RequestSuccessCount
+
+    @property
+    def CallbackFailCount(self):
+        return self._CallbackFailCount
+
+    @CallbackFailCount.setter
+    def CallbackFailCount(self, CallbackFailCount):
+        self._CallbackFailCount = CallbackFailCount
+
+    @property
+    def CallbackSuccessCount(self):
+        return self._CallbackSuccessCount
+
+    @CallbackSuccessCount.setter
+    def CallbackSuccessCount(self, CallbackSuccessCount):
+        self._CallbackSuccessCount = CallbackSuccessCount
+
+    @property
+    def InternalErrorCount(self):
+        return self._InternalErrorCount
+
+    @InternalErrorCount.setter
+    def InternalErrorCount(self, InternalErrorCount):
+        self._InternalErrorCount = InternalErrorCount
+
+    @property
+    def InvalidNumberCount(self):
+        return self._InvalidNumberCount
+
+    @InvalidNumberCount.setter
+    def InvalidNumberCount(self, InvalidNumberCount):
+        self._InvalidNumberCount = InvalidNumberCount
+
+    @property
+    def ShutdownErrorCount(self):
+        return self._ShutdownErrorCount
+
+    @ShutdownErrorCount.setter
+    def ShutdownErrorCount(self, ShutdownErrorCount):
+        self._ShutdownErrorCount = ShutdownErrorCount
+
+    @property
+    def BlackListCount(self):
+        return self._BlackListCount
+
+    @BlackListCount.setter
+    def BlackListCount(self, BlackListCount):
+        self._BlackListCount = BlackListCount
+
+    @property
+    def FrequencyLimitCount(self):
+        return self._FrequencyLimitCount
+
+    @FrequencyLimitCount.setter
+    def FrequencyLimitCount(self, FrequencyLimitCount):
+        self._FrequencyLimitCount = FrequencyLimitCount
 
 
     def _deserialize(self, params):
-        self.CallbackCount = params.get("CallbackCount")
-        self.RequestSuccessCount = params.get("RequestSuccessCount")
-        self.CallbackFailCount = params.get("CallbackFailCount")
-        self.CallbackSuccessCount = params.get("CallbackSuccessCount")
-        self.InternalErrorCount = params.get("InternalErrorCount")
-        self.InvalidNumberCount = params.get("InvalidNumberCount")
-        self.ShutdownErrorCount = params.get("ShutdownErrorCount")
-        self.BlackListCount = params.get("BlackListCount")
-        self.FrequencyLimitCount = params.get("FrequencyLimitCount")
+        self._CallbackCount = params.get("CallbackCount")
+        self._RequestSuccessCount = params.get("RequestSuccessCount")
+        self._CallbackFailCount = params.get("CallbackFailCount")
+        self._CallbackSuccessCount = params.get("CallbackSuccessCount")
+        self._InternalErrorCount = params.get("InternalErrorCount")
+        self._InvalidNumberCount = params.get("InvalidNumberCount")
+        self._ShutdownErrorCount = params.get("ShutdownErrorCount")
+        self._BlackListCount = params.get("BlackListCount")
+        self._FrequencyLimitCount = params.get("FrequencyLimitCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -294,37 +531,78 @@ class CallbackStatusStatisticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartDateTime: Start time of pull in the format of `yyyymmddhh` accurate to the hour.
+        :param _StartDateTime: Start time of pull in the format of `yyyymmddhh` accurate to the hour.
         :type StartDateTime: int
-        :param EndDataTime: End time of pull in the format of `yyyymmddhh` accurate to the hour.
+        :param _EndDataTime: End time of pull in the format of `yyyymmddhh` accurate to the hour.
 Note: `EndDataTime` must be later than `StartDateTime`.
         :type EndDataTime: int
-        :param SmsSdkAppid: SMS `SdkAppid` actually generated after an application is added in the [SMS Console](https://console.cloud.tencent.com/sms/smslist), such as 1400006666.
+        :param _SmsSdkAppid: SMS `SdkAppid` actually generated after an application is added in the [SMS Console](https://console.cloud.tencent.com/sms/smslist), such as 1400006666.
         :type SmsSdkAppid: str
-        :param Limit: Upper limit.
+        :param _Limit: Upper limit.
 Note: this parameter is currently fixed at 0.
         :type Limit: int
-        :param Offset: Offset.
+        :param _Offset: Offset.
 Note: this parameter is currently fixed at 0.
         :type Offset: int
         """
-        self.StartDateTime = None
-        self.EndDataTime = None
-        self.SmsSdkAppid = None
-        self.Limit = None
-        self.Offset = None
+        self._StartDateTime = None
+        self._EndDataTime = None
+        self._SmsSdkAppid = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def StartDateTime(self):
+        return self._StartDateTime
+
+    @StartDateTime.setter
+    def StartDateTime(self, StartDateTime):
+        self._StartDateTime = StartDateTime
+
+    @property
+    def EndDataTime(self):
+        return self._EndDataTime
+
+    @EndDataTime.setter
+    def EndDataTime(self, EndDataTime):
+        self._EndDataTime = EndDataTime
+
+    @property
+    def SmsSdkAppid(self):
+        return self._SmsSdkAppid
+
+    @SmsSdkAppid.setter
+    def SmsSdkAppid(self, SmsSdkAppid):
+        self._SmsSdkAppid = SmsSdkAppid
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.StartDateTime = params.get("StartDateTime")
-        self.EndDataTime = params.get("EndDataTime")
-        self.SmsSdkAppid = params.get("SmsSdkAppid")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._StartDateTime = params.get("StartDateTime")
+        self._EndDataTime = params.get("EndDataTime")
+        self._SmsSdkAppid = params.get("SmsSdkAppid")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -337,20 +615,36 @@ class CallbackStatusStatisticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CallbackStatusStatistics: Receipt statistics response packet body.
+        :param _CallbackStatusStatistics: Receipt statistics response packet body.
         :type CallbackStatusStatistics: :class:`tencentcloud.sms.v20190711.models.CallbackStatusStatistics`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.CallbackStatusStatistics = None
-        self.RequestId = None
+        self._CallbackStatusStatistics = None
+        self._RequestId = None
+
+    @property
+    def CallbackStatusStatistics(self):
+        return self._CallbackStatusStatistics
+
+    @CallbackStatusStatistics.setter
+    def CallbackStatusStatistics(self, CallbackStatusStatistics):
+        self._CallbackStatusStatistics = CallbackStatusStatistics
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("CallbackStatusStatistics") is not None:
-            self.CallbackStatusStatistics = CallbackStatusStatistics()
-            self.CallbackStatusStatistics._deserialize(params.get("CallbackStatusStatistics"))
-        self.RequestId = params.get("RequestId")
+            self._CallbackStatusStatistics = CallbackStatusStatistics()
+            self._CallbackStatusStatistics._deserialize(params.get("CallbackStatusStatistics"))
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteSignStatus(AbstractModel):
@@ -360,22 +654,39 @@ class DeleteSignStatus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DeleteStatus: Deletion status information.
+        :param _DeleteStatus: Deletion status information.
         :type DeleteStatus: str
-        :param DeleteTime: Deletion time in seconds in the format of UNIX timestamp.
+        :param _DeleteTime: Deletion time in seconds in the format of UNIX timestamp.
         :type DeleteTime: int
         """
-        self.DeleteStatus = None
-        self.DeleteTime = None
+        self._DeleteStatus = None
+        self._DeleteTime = None
+
+    @property
+    def DeleteStatus(self):
+        return self._DeleteStatus
+
+    @DeleteStatus.setter
+    def DeleteStatus(self, DeleteStatus):
+        self._DeleteStatus = DeleteStatus
+
+    @property
+    def DeleteTime(self):
+        return self._DeleteTime
+
+    @DeleteTime.setter
+    def DeleteTime(self, DeleteTime):
+        self._DeleteTime = DeleteTime
 
 
     def _deserialize(self, params):
-        self.DeleteStatus = params.get("DeleteStatus")
-        self.DeleteTime = params.get("DeleteTime")
+        self._DeleteStatus = params.get("DeleteStatus")
+        self._DeleteTime = params.get("DeleteTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -388,18 +699,27 @@ class DeleteSmsSignRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SignId: ID of signature to be deleted.
+        :param _SignId: ID of signature to be deleted.
         :type SignId: int
         """
-        self.SignId = None
+        self._SignId = None
+
+    @property
+    def SignId(self):
+        return self._SignId
+
+    @SignId.setter
+    def SignId(self, SignId):
+        self._SignId = SignId
 
 
     def _deserialize(self, params):
-        self.SignId = params.get("SignId")
+        self._SignId = params.get("SignId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -412,20 +732,36 @@ class DeleteSmsSignResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DeleteSignStatus: Signature deletion response.
+        :param _DeleteSignStatus: Signature deletion response.
         :type DeleteSignStatus: :class:`tencentcloud.sms.v20190711.models.DeleteSignStatus`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.DeleteSignStatus = None
-        self.RequestId = None
+        self._DeleteSignStatus = None
+        self._RequestId = None
+
+    @property
+    def DeleteSignStatus(self):
+        return self._DeleteSignStatus
+
+    @DeleteSignStatus.setter
+    def DeleteSignStatus(self, DeleteSignStatus):
+        self._DeleteSignStatus = DeleteSignStatus
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DeleteSignStatus") is not None:
-            self.DeleteSignStatus = DeleteSignStatus()
-            self.DeleteSignStatus._deserialize(params.get("DeleteSignStatus"))
-        self.RequestId = params.get("RequestId")
+            self._DeleteSignStatus = DeleteSignStatus()
+            self._DeleteSignStatus._deserialize(params.get("DeleteSignStatus"))
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteSmsTemplateRequest(AbstractModel):
@@ -435,18 +771,27 @@ class DeleteSmsTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateId: ID of template to be deleted.
+        :param _TemplateId: ID of template to be deleted.
         :type TemplateId: int
         """
-        self.TemplateId = None
+        self._TemplateId = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
 
 
     def _deserialize(self, params):
-        self.TemplateId = params.get("TemplateId")
+        self._TemplateId = params.get("TemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -459,20 +804,36 @@ class DeleteSmsTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DeleteTemplateStatus: Template deletion response.
+        :param _DeleteTemplateStatus: Template deletion response.
         :type DeleteTemplateStatus: :class:`tencentcloud.sms.v20190711.models.DeleteTemplateStatus`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.DeleteTemplateStatus = None
-        self.RequestId = None
+        self._DeleteTemplateStatus = None
+        self._RequestId = None
+
+    @property
+    def DeleteTemplateStatus(self):
+        return self._DeleteTemplateStatus
+
+    @DeleteTemplateStatus.setter
+    def DeleteTemplateStatus(self, DeleteTemplateStatus):
+        self._DeleteTemplateStatus = DeleteTemplateStatus
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DeleteTemplateStatus") is not None:
-            self.DeleteTemplateStatus = DeleteTemplateStatus()
-            self.DeleteTemplateStatus._deserialize(params.get("DeleteTemplateStatus"))
-        self.RequestId = params.get("RequestId")
+            self._DeleteTemplateStatus = DeleteTemplateStatus()
+            self._DeleteTemplateStatus._deserialize(params.get("DeleteTemplateStatus"))
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteTemplateStatus(AbstractModel):
@@ -482,22 +843,39 @@ class DeleteTemplateStatus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DeleteStatus: Deletion status information.
+        :param _DeleteStatus: Deletion status information.
         :type DeleteStatus: str
-        :param DeleteTime: Deletion time in seconds in the format of UNIX timestamp.
+        :param _DeleteTime: Deletion time in seconds in the format of UNIX timestamp.
         :type DeleteTime: int
         """
-        self.DeleteStatus = None
-        self.DeleteTime = None
+        self._DeleteStatus = None
+        self._DeleteTime = None
+
+    @property
+    def DeleteStatus(self):
+        return self._DeleteStatus
+
+    @DeleteStatus.setter
+    def DeleteStatus(self, DeleteStatus):
+        self._DeleteStatus = DeleteStatus
+
+    @property
+    def DeleteTime(self):
+        return self._DeleteTime
+
+    @DeleteTime.setter
+    def DeleteTime(self, DeleteTime):
+        self._DeleteTime = DeleteTime
 
 
     def _deserialize(self, params):
-        self.DeleteStatus = params.get("DeleteStatus")
-        self.DeleteTime = params.get("DeleteTime")
+        self._DeleteStatus = params.get("DeleteStatus")
+        self._DeleteTime = params.get("DeleteTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -510,42 +888,91 @@ class DescribeSignListStatus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SignId: Signature ID
+        :param _SignId: Signature ID
         :type SignId: int
-        :param International: Whether it is Global SMS. Valid values:
+        :param _International: Whether it is Global SMS. Valid values:
 0: Mainland China SMS.
 1: Global SMS
         :type International: int
-        :param StatusCode: Signature application status. Valid values:
+        :param _StatusCode: Signature application status. Valid values:
 0: approved.
 -1: rejected or failed.
         :type StatusCode: int
-        :param ReviewReply: Review reply, i.e., response given by the reviewer, which is usually the reason for rejection.
+        :param _ReviewReply: Review reply, i.e., response given by the reviewer, which is usually the reason for rejection.
         :type ReviewReply: str
-        :param SignName: Signature name.
+        :param _SignName: Signature name.
         :type SignName: str
-        :param CreateTime: Application submission time in the format of UNIX timestamp in seconds.
+        :param _CreateTime: Application submission time in the format of UNIX timestamp in seconds.
         :type CreateTime: int
         """
-        self.SignId = None
-        self.International = None
-        self.StatusCode = None
-        self.ReviewReply = None
-        self.SignName = None
-        self.CreateTime = None
+        self._SignId = None
+        self._International = None
+        self._StatusCode = None
+        self._ReviewReply = None
+        self._SignName = None
+        self._CreateTime = None
+
+    @property
+    def SignId(self):
+        return self._SignId
+
+    @SignId.setter
+    def SignId(self, SignId):
+        self._SignId = SignId
+
+    @property
+    def International(self):
+        return self._International
+
+    @International.setter
+    def International(self, International):
+        self._International = International
+
+    @property
+    def StatusCode(self):
+        return self._StatusCode
+
+    @StatusCode.setter
+    def StatusCode(self, StatusCode):
+        self._StatusCode = StatusCode
+
+    @property
+    def ReviewReply(self):
+        return self._ReviewReply
+
+    @ReviewReply.setter
+    def ReviewReply(self, ReviewReply):
+        self._ReviewReply = ReviewReply
+
+    @property
+    def SignName(self):
+        return self._SignName
+
+    @SignName.setter
+    def SignName(self, SignName):
+        self._SignName = SignName
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
 
 
     def _deserialize(self, params):
-        self.SignId = params.get("SignId")
-        self.International = params.get("International")
-        self.StatusCode = params.get("StatusCode")
-        self.ReviewReply = params.get("ReviewReply")
-        self.SignName = params.get("SignName")
-        self.CreateTime = params.get("CreateTime")
+        self._SignId = params.get("SignId")
+        self._International = params.get("International")
+        self._StatusCode = params.get("StatusCode")
+        self._ReviewReply = params.get("ReviewReply")
+        self._SignName = params.get("SignName")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -558,24 +985,41 @@ class DescribeSmsSignListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SignIdSet: Signature ID array.
+        :param _SignIdSet: Signature ID array.
         :type SignIdSet: list of int non-negative
-        :param International: Whether it is Global SMS:
+        :param _International: Whether it is Global SMS:
 0: Mainland China SMS.
 1: Global SMS.
         :type International: int
         """
-        self.SignIdSet = None
-        self.International = None
+        self._SignIdSet = None
+        self._International = None
+
+    @property
+    def SignIdSet(self):
+        return self._SignIdSet
+
+    @SignIdSet.setter
+    def SignIdSet(self, SignIdSet):
+        self._SignIdSet = SignIdSet
+
+    @property
+    def International(self):
+        return self._International
+
+    @International.setter
+    def International(self, International):
+        self._International = International
 
 
     def _deserialize(self, params):
-        self.SignIdSet = params.get("SignIdSet")
-        self.International = params.get("International")
+        self._SignIdSet = params.get("SignIdSet")
+        self._International = params.get("International")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -588,23 +1032,39 @@ class DescribeSmsSignListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DescribeSignListStatusSet: Response for getting signature information
+        :param _DescribeSignListStatusSet: Response for getting signature information
         :type DescribeSignListStatusSet: list of DescribeSignListStatus
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.DescribeSignListStatusSet = None
-        self.RequestId = None
+        self._DescribeSignListStatusSet = None
+        self._RequestId = None
+
+    @property
+    def DescribeSignListStatusSet(self):
+        return self._DescribeSignListStatusSet
+
+    @DescribeSignListStatusSet.setter
+    def DescribeSignListStatusSet(self, DescribeSignListStatusSet):
+        self._DescribeSignListStatusSet = DescribeSignListStatusSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DescribeSignListStatusSet") is not None:
-            self.DescribeSignListStatusSet = []
+            self._DescribeSignListStatusSet = []
             for item in params.get("DescribeSignListStatusSet"):
                 obj = DescribeSignListStatus()
                 obj._deserialize(item)
-                self.DescribeSignListStatusSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._DescribeSignListStatusSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSmsTemplateListRequest(AbstractModel):
@@ -614,24 +1074,41 @@ class DescribeSmsTemplateListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateIdSet: Template ID array.
+        :param _TemplateIdSet: Template ID array.
         :type TemplateIdSet: list of int non-negative
-        :param International: Whether it is Global SMS:
+        :param _International: Whether it is Global SMS:
 0: Mainland China SMS.
 1: Global SMS.
         :type International: int
         """
-        self.TemplateIdSet = None
-        self.International = None
+        self._TemplateIdSet = None
+        self._International = None
+
+    @property
+    def TemplateIdSet(self):
+        return self._TemplateIdSet
+
+    @TemplateIdSet.setter
+    def TemplateIdSet(self, TemplateIdSet):
+        self._TemplateIdSet = TemplateIdSet
+
+    @property
+    def International(self):
+        return self._International
+
+    @International.setter
+    def International(self, International):
+        self._International = International
 
 
     def _deserialize(self, params):
-        self.TemplateIdSet = params.get("TemplateIdSet")
-        self.International = params.get("International")
+        self._TemplateIdSet = params.get("TemplateIdSet")
+        self._International = params.get("International")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -644,23 +1121,39 @@ class DescribeSmsTemplateListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DescribeTemplateStatusSet: Response for getting SMS signature information
+        :param _DescribeTemplateStatusSet: Response for getting SMS signature information
         :type DescribeTemplateStatusSet: list of DescribeTemplateListStatus
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.DescribeTemplateStatusSet = None
-        self.RequestId = None
+        self._DescribeTemplateStatusSet = None
+        self._RequestId = None
+
+    @property
+    def DescribeTemplateStatusSet(self):
+        return self._DescribeTemplateStatusSet
+
+    @DescribeTemplateStatusSet.setter
+    def DescribeTemplateStatusSet(self, DescribeTemplateStatusSet):
+        self._DescribeTemplateStatusSet = DescribeTemplateStatusSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DescribeTemplateStatusSet") is not None:
-            self.DescribeTemplateStatusSet = []
+            self._DescribeTemplateStatusSet = []
             for item in params.get("DescribeTemplateStatusSet"):
                 obj = DescribeTemplateListStatus()
                 obj._deserialize(item)
-                self.DescribeTemplateStatusSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._DescribeTemplateStatusSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeTemplateListStatus(AbstractModel):
@@ -670,42 +1163,91 @@ class DescribeTemplateListStatus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateId: Template ID
+        :param _TemplateId: Template ID
         :type TemplateId: int
-        :param International: Whether it is Global SMS. Valid values:
+        :param _International: Whether it is Global SMS. Valid values:
 0: Mainland China SMS.
 1: Global SMS
         :type International: int
-        :param StatusCode: Signature application status. Valid values:
+        :param _StatusCode: Signature application status. Valid values:
 0: approved.
 -1: rejected or failed.
         :type StatusCode: int
-        :param ReviewReply: Review reply, i.e., response given by the reviewer, which is usually the reason for rejection.
+        :param _ReviewReply: Review reply, i.e., response given by the reviewer, which is usually the reason for rejection.
         :type ReviewReply: str
-        :param TemplateName: Template name.
+        :param _TemplateName: Template name.
         :type TemplateName: str
-        :param CreateTime: Application submission time in the format of UNIX timestamp in seconds.
+        :param _CreateTime: Application submission time in the format of UNIX timestamp in seconds.
         :type CreateTime: int
         """
-        self.TemplateId = None
-        self.International = None
-        self.StatusCode = None
-        self.ReviewReply = None
-        self.TemplateName = None
-        self.CreateTime = None
+        self._TemplateId = None
+        self._International = None
+        self._StatusCode = None
+        self._ReviewReply = None
+        self._TemplateName = None
+        self._CreateTime = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def International(self):
+        return self._International
+
+    @International.setter
+    def International(self, International):
+        self._International = International
+
+    @property
+    def StatusCode(self):
+        return self._StatusCode
+
+    @StatusCode.setter
+    def StatusCode(self, StatusCode):
+        self._StatusCode = StatusCode
+
+    @property
+    def ReviewReply(self):
+        return self._ReviewReply
+
+    @ReviewReply.setter
+    def ReviewReply(self, ReviewReply):
+        self._ReviewReply = ReviewReply
+
+    @property
+    def TemplateName(self):
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
 
 
     def _deserialize(self, params):
-        self.TemplateId = params.get("TemplateId")
-        self.International = params.get("International")
-        self.StatusCode = params.get("StatusCode")
-        self.ReviewReply = params.get("ReviewReply")
-        self.TemplateName = params.get("TemplateName")
-        self.CreateTime = params.get("CreateTime")
+        self._TemplateId = params.get("TemplateId")
+        self._International = params.get("International")
+        self._StatusCode = params.get("StatusCode")
+        self._ReviewReply = params.get("ReviewReply")
+        self._TemplateName = params.get("TemplateName")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -718,22 +1260,39 @@ class ModifySignStatus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SignId: Signature ID
+        :param _SignId: Signature ID
         :type SignId: int
-        :param SignApplyId: Signature modification application ID
+        :param _SignApplyId: Signature modification application ID
         :type SignApplyId: str
         """
-        self.SignId = None
-        self.SignApplyId = None
+        self._SignId = None
+        self._SignApplyId = None
+
+    @property
+    def SignId(self):
+        return self._SignId
+
+    @SignId.setter
+    def SignId(self, SignId):
+        self._SignId = SignId
+
+    @property
+    def SignApplyId(self):
+        return self._SignApplyId
+
+    @SignApplyId.setter
+    def SignApplyId(self, SignApplyId):
+        self._SignApplyId = SignApplyId
 
 
     def _deserialize(self, params):
-        self.SignId = params.get("SignId")
-        self.SignApplyId = params.get("SignApplyId")
+        self._SignId = params.get("SignId")
+        self._SignApplyId = params.get("SignApplyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -746,11 +1305,11 @@ class ModifySmsSignRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SignId: ID of signature to be modified.
+        :param _SignId: ID of signature to be modified.
         :type SignId: int
-        :param SignName: Signature name.
+        :param _SignName: Signature name.
         :type SignName: str
-        :param SignType: Signature type. Each of these types is followed by their `DocumentType` (identity document type) option:
+        :param _SignType: Signature type. Each of these types is followed by their `DocumentType` (identity document type) option:
 0: company (0, 1, 2, 3).
 1: app (0, 1, 2, 3, 4).
 2: website (0, 1, 2, 3, 5).
@@ -759,7 +1318,7 @@ class ModifySmsSignRequest(AbstractModel):
 5: governmental/public institution or others (2, 3).
 Note: the identity document type must be selected according to the correspondence; otherwise, the review will fail.
         :type SignType: int
-        :param DocumentType: Identity document type:
+        :param _DocumentType: Identity document type:
 0: 3-in-1 license.
 1: business license.
 2: organization code certificate.
@@ -769,48 +1328,121 @@ Note: the identity document type must be selected according to the correspondenc
 6: screenshot of WeChat Mini Program settings page (for personal WeChat Mini Program).
 7: trademark registration certificate.
         :type DocumentType: int
-        :param International: Whether it is Global SMS:
+        :param _International: Whether it is Global SMS:
 0: Mainland China SMS.
 1: Global SMS.
         :type International: int
-        :param UsedMethod: Signature use:
+        :param _UsedMethod: Signature use:
 0: for self-use.
 1: for others.
         :type UsedMethod: int
-        :param ProofImage: You should Base64-encode the image of the identity document corresponding to the signature first, remove the prefix `data:image/jpeg;base64,` from the resulted string, and then use it as the value of this parameter.
+        :param _ProofImage: You should Base64-encode the image of the identity document corresponding to the signature first, remove the prefix `data:image/jpeg;base64,` from the resulted string, and then use it as the value of this parameter.
         :type ProofImage: str
-        :param CommissionImage: Authorization letter, which should be submitted if `UsedMethod` is for others.
+        :param _CommissionImage: Authorization letter, which should be submitted if `UsedMethod` is for others.
 You should Base64-encode the image first, remove the prefix `data:image/jpeg;base64,` from the resulted string, and then use it as the value of this parameter.
 Note: this field will take effect only when `UsedMethod` is 1 (for others).
         :type CommissionImage: str
-        :param Remark: Signature application remarks.
+        :param _Remark: Signature application remarks.
         :type Remark: str
         """
-        self.SignId = None
-        self.SignName = None
-        self.SignType = None
-        self.DocumentType = None
-        self.International = None
-        self.UsedMethod = None
-        self.ProofImage = None
-        self.CommissionImage = None
-        self.Remark = None
+        self._SignId = None
+        self._SignName = None
+        self._SignType = None
+        self._DocumentType = None
+        self._International = None
+        self._UsedMethod = None
+        self._ProofImage = None
+        self._CommissionImage = None
+        self._Remark = None
+
+    @property
+    def SignId(self):
+        return self._SignId
+
+    @SignId.setter
+    def SignId(self, SignId):
+        self._SignId = SignId
+
+    @property
+    def SignName(self):
+        return self._SignName
+
+    @SignName.setter
+    def SignName(self, SignName):
+        self._SignName = SignName
+
+    @property
+    def SignType(self):
+        return self._SignType
+
+    @SignType.setter
+    def SignType(self, SignType):
+        self._SignType = SignType
+
+    @property
+    def DocumentType(self):
+        return self._DocumentType
+
+    @DocumentType.setter
+    def DocumentType(self, DocumentType):
+        self._DocumentType = DocumentType
+
+    @property
+    def International(self):
+        return self._International
+
+    @International.setter
+    def International(self, International):
+        self._International = International
+
+    @property
+    def UsedMethod(self):
+        return self._UsedMethod
+
+    @UsedMethod.setter
+    def UsedMethod(self, UsedMethod):
+        self._UsedMethod = UsedMethod
+
+    @property
+    def ProofImage(self):
+        return self._ProofImage
+
+    @ProofImage.setter
+    def ProofImage(self, ProofImage):
+        self._ProofImage = ProofImage
+
+    @property
+    def CommissionImage(self):
+        return self._CommissionImage
+
+    @CommissionImage.setter
+    def CommissionImage(self, CommissionImage):
+        self._CommissionImage = CommissionImage
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
 
 
     def _deserialize(self, params):
-        self.SignId = params.get("SignId")
-        self.SignName = params.get("SignName")
-        self.SignType = params.get("SignType")
-        self.DocumentType = params.get("DocumentType")
-        self.International = params.get("International")
-        self.UsedMethod = params.get("UsedMethod")
-        self.ProofImage = params.get("ProofImage")
-        self.CommissionImage = params.get("CommissionImage")
-        self.Remark = params.get("Remark")
+        self._SignId = params.get("SignId")
+        self._SignName = params.get("SignName")
+        self._SignType = params.get("SignType")
+        self._DocumentType = params.get("DocumentType")
+        self._International = params.get("International")
+        self._UsedMethod = params.get("UsedMethod")
+        self._ProofImage = params.get("ProofImage")
+        self._CommissionImage = params.get("CommissionImage")
+        self._Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -823,20 +1455,36 @@ class ModifySmsSignResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ModifySignStatus: Signature modification response
+        :param _ModifySignStatus: Signature modification response
         :type ModifySignStatus: :class:`tencentcloud.sms.v20190711.models.ModifySignStatus`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.ModifySignStatus = None
-        self.RequestId = None
+        self._ModifySignStatus = None
+        self._RequestId = None
+
+    @property
+    def ModifySignStatus(self):
+        return self._ModifySignStatus
+
+    @ModifySignStatus.setter
+    def ModifySignStatus(self, ModifySignStatus):
+        self._ModifySignStatus = ModifySignStatus
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("ModifySignStatus") is not None:
-            self.ModifySignStatus = ModifySignStatus()
-            self.ModifySignStatus._deserialize(params.get("ModifySignStatus"))
-        self.RequestId = params.get("RequestId")
+            self._ModifySignStatus = ModifySignStatus()
+            self._ModifySignStatus._deserialize(params.get("ModifySignStatus"))
+        self._RequestId = params.get("RequestId")
 
 
 class ModifySmsTemplateRequest(AbstractModel):
@@ -846,40 +1494,89 @@ class ModifySmsTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateId: ID of template to be modified.
+        :param _TemplateId: ID of template to be modified.
         :type TemplateId: int
-        :param TemplateName: New template name.
+        :param _TemplateName: New template name.
         :type TemplateName: str
-        :param TemplateContent: New template content.
+        :param _TemplateContent: New template content.
         :type TemplateContent: str
-        :param SmsType: SMS type. 0: ordinary SMS, 1: marketing SMS.
+        :param _SmsType: SMS type. 0: ordinary SMS, 1: marketing SMS.
         :type SmsType: int
-        :param International: Whether it is Global SMS:
+        :param _International: Whether it is Global SMS:
 0: Mainland China SMS.
 1: Global SMS.
         :type International: int
-        :param Remark: Template remarks, such as reason for application and use case.
+        :param _Remark: Template remarks, such as reason for application and use case.
         :type Remark: str
         """
-        self.TemplateId = None
-        self.TemplateName = None
-        self.TemplateContent = None
-        self.SmsType = None
-        self.International = None
-        self.Remark = None
+        self._TemplateId = None
+        self._TemplateName = None
+        self._TemplateContent = None
+        self._SmsType = None
+        self._International = None
+        self._Remark = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def TemplateName(self):
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+    @property
+    def TemplateContent(self):
+        return self._TemplateContent
+
+    @TemplateContent.setter
+    def TemplateContent(self, TemplateContent):
+        self._TemplateContent = TemplateContent
+
+    @property
+    def SmsType(self):
+        return self._SmsType
+
+    @SmsType.setter
+    def SmsType(self, SmsType):
+        self._SmsType = SmsType
+
+    @property
+    def International(self):
+        return self._International
+
+    @International.setter
+    def International(self, International):
+        self._International = International
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
 
 
     def _deserialize(self, params):
-        self.TemplateId = params.get("TemplateId")
-        self.TemplateName = params.get("TemplateName")
-        self.TemplateContent = params.get("TemplateContent")
-        self.SmsType = params.get("SmsType")
-        self.International = params.get("International")
-        self.Remark = params.get("Remark")
+        self._TemplateId = params.get("TemplateId")
+        self._TemplateName = params.get("TemplateName")
+        self._TemplateContent = params.get("TemplateContent")
+        self._SmsType = params.get("SmsType")
+        self._International = params.get("International")
+        self._Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -892,20 +1589,36 @@ class ModifySmsTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ModifyTemplateStatus: Template parameter modification response
+        :param _ModifyTemplateStatus: Template parameter modification response
         :type ModifyTemplateStatus: :class:`tencentcloud.sms.v20190711.models.ModifyTemplateStatus`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.ModifyTemplateStatus = None
-        self.RequestId = None
+        self._ModifyTemplateStatus = None
+        self._RequestId = None
+
+    @property
+    def ModifyTemplateStatus(self):
+        return self._ModifyTemplateStatus
+
+    @ModifyTemplateStatus.setter
+    def ModifyTemplateStatus(self, ModifyTemplateStatus):
+        self._ModifyTemplateStatus = ModifyTemplateStatus
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("ModifyTemplateStatus") is not None:
-            self.ModifyTemplateStatus = ModifyTemplateStatus()
-            self.ModifyTemplateStatus._deserialize(params.get("ModifyTemplateStatus"))
-        self.RequestId = params.get("RequestId")
+            self._ModifyTemplateStatus = ModifyTemplateStatus()
+            self._ModifyTemplateStatus._deserialize(params.get("ModifyTemplateStatus"))
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyTemplateStatus(AbstractModel):
@@ -915,18 +1628,27 @@ class ModifyTemplateStatus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateId: Template parameter
+        :param _TemplateId: Template parameter
         :type TemplateId: int
         """
-        self.TemplateId = None
+        self._TemplateId = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
 
 
     def _deserialize(self, params):
-        self.TemplateId = params.get("TemplateId")
+        self._TemplateId = params.get("TemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -939,42 +1661,99 @@ class PullSmsReplyStatus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ExtendCode: SMS code number extension, which is not activated by default. If you need to activate it, please contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1).
+        :param _ExtendCode: SMS code number extension, which is not activated by default. If you need to activate it, please contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1).
         :type ExtendCode: str
-        :param NationCode: Country (or region) code.
+        :param _NationCode: Country (or region) code.
         :type NationCode: str
-        :param PhoneNumber: Mobile number in the e.164 standard (+[country/region code][mobile number]), such as +8613711112222, which has a + sign followed by 86 (country/region code) and then by 13711112222 (mobile number).
+        :param _PhoneNumber: Mobile number in the e.164 standard (+[country/region code][mobile number]), such as +8613711112222, which has a + sign followed by 86 (country/region code) and then by 13711112222 (mobile number).
         :type PhoneNumber: str
-        :param Sign: SMS signature.
+        :param _Sign: SMS signature.
         :type Sign: str
-        :param ReplyContent: User reply.
+        :param _ReplyContent: User reply.
         :type ReplyContent: str
-        :param ReplyTime: Reply time (e.g., 2019-10-08 17:18:37).
+        :param _ReplyTime: Reply time (e.g., 2019-10-08 17:18:37).
         :type ReplyTime: str
-        :param ReplyUnixTime: Reply time in seconds in the format of UNIX timestamp.
+        :param _ReplyUnixTime: Reply time in seconds in the format of UNIX timestamp.
         :type ReplyUnixTime: int
         """
-        self.ExtendCode = None
-        self.NationCode = None
-        self.PhoneNumber = None
-        self.Sign = None
-        self.ReplyContent = None
-        self.ReplyTime = None
-        self.ReplyUnixTime = None
+        self._ExtendCode = None
+        self._NationCode = None
+        self._PhoneNumber = None
+        self._Sign = None
+        self._ReplyContent = None
+        self._ReplyTime = None
+        self._ReplyUnixTime = None
+
+    @property
+    def ExtendCode(self):
+        return self._ExtendCode
+
+    @ExtendCode.setter
+    def ExtendCode(self, ExtendCode):
+        self._ExtendCode = ExtendCode
+
+    @property
+    def NationCode(self):
+        return self._NationCode
+
+    @NationCode.setter
+    def NationCode(self, NationCode):
+        self._NationCode = NationCode
+
+    @property
+    def PhoneNumber(self):
+        return self._PhoneNumber
+
+    @PhoneNumber.setter
+    def PhoneNumber(self, PhoneNumber):
+        self._PhoneNumber = PhoneNumber
+
+    @property
+    def Sign(self):
+        return self._Sign
+
+    @Sign.setter
+    def Sign(self, Sign):
+        self._Sign = Sign
+
+    @property
+    def ReplyContent(self):
+        return self._ReplyContent
+
+    @ReplyContent.setter
+    def ReplyContent(self, ReplyContent):
+        self._ReplyContent = ReplyContent
+
+    @property
+    def ReplyTime(self):
+        return self._ReplyTime
+
+    @ReplyTime.setter
+    def ReplyTime(self, ReplyTime):
+        self._ReplyTime = ReplyTime
+
+    @property
+    def ReplyUnixTime(self):
+        return self._ReplyUnixTime
+
+    @ReplyUnixTime.setter
+    def ReplyUnixTime(self, ReplyUnixTime):
+        self._ReplyUnixTime = ReplyUnixTime
 
 
     def _deserialize(self, params):
-        self.ExtendCode = params.get("ExtendCode")
-        self.NationCode = params.get("NationCode")
-        self.PhoneNumber = params.get("PhoneNumber")
-        self.Sign = params.get("Sign")
-        self.ReplyContent = params.get("ReplyContent")
-        self.ReplyTime = params.get("ReplyTime")
-        self.ReplyUnixTime = params.get("ReplyUnixTime")
+        self._ExtendCode = params.get("ExtendCode")
+        self._NationCode = params.get("NationCode")
+        self._PhoneNumber = params.get("PhoneNumber")
+        self._Sign = params.get("Sign")
+        self._ReplyContent = params.get("ReplyContent")
+        self._ReplyTime = params.get("ReplyTime")
+        self._ReplyUnixTime = params.get("ReplyUnixTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -987,39 +1766,88 @@ class PullSmsReplyStatusByPhoneNumberRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SendDateTime: Pull start time in seconds in the format of UNIX timestamp.
+        :param _SendDateTime: Pull start time in seconds in the format of UNIX timestamp.
         :type SendDateTime: int
-        :param Offset: Offset.
+        :param _Offset: Offset.
 Note: this parameter is currently fixed at 0.
         :type Offset: int
-        :param Limit: Maximum number of pulled entries. Maximum value: 100.
+        :param _Limit: Maximum number of pulled entries. Maximum value: 100.
         :type Limit: int
-        :param PhoneNumber: Target mobile number in the e.164 standard (+[country/region code][mobile number]), such as +8613711112222, which has a + sign followed by 86 (country/region code) and then by 13711112222 (mobile number).
+        :param _PhoneNumber: Target mobile number in the e.164 standard (+[country/region code][mobile number]), such as +8613711112222, which has a + sign followed by 86 (country/region code) and then by 13711112222 (mobile number).
         :type PhoneNumber: str
-        :param SmsSdkAppid: SMS `SdkAppid` actually generated after an application is added in the [SMS Console](https://console.cloud.tencent.com/sms/smslist), such as 1400006666.
+        :param _SmsSdkAppid: SMS `SdkAppid` actually generated after an application is added in the [SMS Console](https://console.cloud.tencent.com/sms/smslist), such as 1400006666.
         :type SmsSdkAppid: str
-        :param EndDateTime: Pull end time in UNIX timestamp accurate to seconds.
+        :param _EndDateTime: Pull end time in UNIX timestamp accurate to seconds.
         :type EndDateTime: int
         """
-        self.SendDateTime = None
-        self.Offset = None
-        self.Limit = None
-        self.PhoneNumber = None
-        self.SmsSdkAppid = None
-        self.EndDateTime = None
+        self._SendDateTime = None
+        self._Offset = None
+        self._Limit = None
+        self._PhoneNumber = None
+        self._SmsSdkAppid = None
+        self._EndDateTime = None
+
+    @property
+    def SendDateTime(self):
+        return self._SendDateTime
+
+    @SendDateTime.setter
+    def SendDateTime(self, SendDateTime):
+        self._SendDateTime = SendDateTime
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def PhoneNumber(self):
+        return self._PhoneNumber
+
+    @PhoneNumber.setter
+    def PhoneNumber(self, PhoneNumber):
+        self._PhoneNumber = PhoneNumber
+
+    @property
+    def SmsSdkAppid(self):
+        return self._SmsSdkAppid
+
+    @SmsSdkAppid.setter
+    def SmsSdkAppid(self, SmsSdkAppid):
+        self._SmsSdkAppid = SmsSdkAppid
+
+    @property
+    def EndDateTime(self):
+        return self._EndDateTime
+
+    @EndDateTime.setter
+    def EndDateTime(self, EndDateTime):
+        self._EndDateTime = EndDateTime
 
 
     def _deserialize(self, params):
-        self.SendDateTime = params.get("SendDateTime")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.PhoneNumber = params.get("PhoneNumber")
-        self.SmsSdkAppid = params.get("SmsSdkAppid")
-        self.EndDateTime = params.get("EndDateTime")
+        self._SendDateTime = params.get("SendDateTime")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._PhoneNumber = params.get("PhoneNumber")
+        self._SmsSdkAppid = params.get("SmsSdkAppid")
+        self._EndDateTime = params.get("EndDateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1032,23 +1860,39 @@ class PullSmsReplyStatusByPhoneNumberResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PullSmsReplyStatusSet: Reply status response set.
+        :param _PullSmsReplyStatusSet: Reply status response set.
         :type PullSmsReplyStatusSet: list of PullSmsReplyStatus
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.PullSmsReplyStatusSet = None
-        self.RequestId = None
+        self._PullSmsReplyStatusSet = None
+        self._RequestId = None
+
+    @property
+    def PullSmsReplyStatusSet(self):
+        return self._PullSmsReplyStatusSet
+
+    @PullSmsReplyStatusSet.setter
+    def PullSmsReplyStatusSet(self, PullSmsReplyStatusSet):
+        self._PullSmsReplyStatusSet = PullSmsReplyStatusSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("PullSmsReplyStatusSet") is not None:
-            self.PullSmsReplyStatusSet = []
+            self._PullSmsReplyStatusSet = []
             for item in params.get("PullSmsReplyStatusSet"):
                 obj = PullSmsReplyStatus()
                 obj._deserialize(item)
-                self.PullSmsReplyStatusSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._PullSmsReplyStatusSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class PullSmsReplyStatusRequest(AbstractModel):
@@ -1058,22 +1902,39 @@ class PullSmsReplyStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: Maximum number of pulled entries. Maximum value: 100.
+        :param _Limit: Maximum number of pulled entries. Maximum value: 100.
         :type Limit: int
-        :param SmsSdkAppid: SMS `SdkAppid` actually generated after an application is added in the [SMS Console](https://console.cloud.tencent.com/sms/smslist), such as 1400006666.
+        :param _SmsSdkAppid: SMS `SdkAppid` actually generated after an application is added in the [SMS Console](https://console.cloud.tencent.com/sms/smslist), such as 1400006666.
         :type SmsSdkAppid: str
         """
-        self.Limit = None
-        self.SmsSdkAppid = None
+        self._Limit = None
+        self._SmsSdkAppid = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def SmsSdkAppid(self):
+        return self._SmsSdkAppid
+
+    @SmsSdkAppid.setter
+    def SmsSdkAppid(self, SmsSdkAppid):
+        self._SmsSdkAppid = SmsSdkAppid
 
 
     def _deserialize(self, params):
-        self.Limit = params.get("Limit")
-        self.SmsSdkAppid = params.get("SmsSdkAppid")
+        self._Limit = params.get("Limit")
+        self._SmsSdkAppid = params.get("SmsSdkAppid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1086,23 +1947,39 @@ class PullSmsReplyStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PullSmsReplyStatusSet: Reply status response set.
+        :param _PullSmsReplyStatusSet: Reply status response set.
         :type PullSmsReplyStatusSet: list of PullSmsReplyStatus
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.PullSmsReplyStatusSet = None
-        self.RequestId = None
+        self._PullSmsReplyStatusSet = None
+        self._RequestId = None
+
+    @property
+    def PullSmsReplyStatusSet(self):
+        return self._PullSmsReplyStatusSet
+
+    @PullSmsReplyStatusSet.setter
+    def PullSmsReplyStatusSet(self, PullSmsReplyStatusSet):
+        self._PullSmsReplyStatusSet = PullSmsReplyStatusSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("PullSmsReplyStatusSet") is not None:
-            self.PullSmsReplyStatusSet = []
+            self._PullSmsReplyStatusSet = []
             for item in params.get("PullSmsReplyStatusSet"):
                 obj = PullSmsReplyStatus()
                 obj._deserialize(item)
-                self.PullSmsReplyStatusSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._PullSmsReplyStatusSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class PullSmsSendStatus(AbstractModel):
@@ -1112,46 +1989,111 @@ class PullSmsSendStatus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserReceiveTime: Actual time of SMS receipt by user.
+        :param _UserReceiveTime: Actual time of SMS receipt by user.
         :type UserReceiveTime: str
-        :param UserReceiveUnixTime: Actual time of SMS receipt by user in seconds in the format of UNIX timestamp.
+        :param _UserReceiveUnixTime: Actual time of SMS receipt by user in seconds in the format of UNIX timestamp.
         :type UserReceiveUnixTime: int
-        :param NationCode: Country (or region) code.
+        :param _NationCode: Country (or region) code.
         :type NationCode: str
-        :param PurePhoneNumber: Mobile number in the e.164 standard (+[country/region code][mobile number]), such as +8613711112222, which has a + sign followed by 86 (country/region code) and then by 13711112222 (mobile number).
+        :param _PurePhoneNumber: Mobile number in the e.164 standard (+[country/region code][mobile number]), such as +8613711112222, which has a + sign followed by 86 (country/region code) and then by 13711112222 (mobile number).
         :type PurePhoneNumber: str
-        :param PhoneNumber: Mobile number in a common format such as 13711112222.
+        :param _PhoneNumber: Mobile number in a common format such as 13711112222.
         :type PhoneNumber: str
-        :param SerialNo: ID of the current delivery.
+        :param _SerialNo: ID of the current delivery.
         :type SerialNo: str
-        :param ReportStatus: Whether the SMS message is actually received. Valid values: SUCCESS (success), FAIL (failure).
+        :param _ReportStatus: Whether the SMS message is actually received. Valid values: SUCCESS (success), FAIL (failure).
         :type ReportStatus: str
-        :param Description: Description of SMS receipt by user.
+        :param _Description: Description of SMS receipt by user.
         :type Description: str
         """
-        self.UserReceiveTime = None
-        self.UserReceiveUnixTime = None
-        self.NationCode = None
-        self.PurePhoneNumber = None
-        self.PhoneNumber = None
-        self.SerialNo = None
-        self.ReportStatus = None
-        self.Description = None
+        self._UserReceiveTime = None
+        self._UserReceiveUnixTime = None
+        self._NationCode = None
+        self._PurePhoneNumber = None
+        self._PhoneNumber = None
+        self._SerialNo = None
+        self._ReportStatus = None
+        self._Description = None
+
+    @property
+    def UserReceiveTime(self):
+        return self._UserReceiveTime
+
+    @UserReceiveTime.setter
+    def UserReceiveTime(self, UserReceiveTime):
+        self._UserReceiveTime = UserReceiveTime
+
+    @property
+    def UserReceiveUnixTime(self):
+        return self._UserReceiveUnixTime
+
+    @UserReceiveUnixTime.setter
+    def UserReceiveUnixTime(self, UserReceiveUnixTime):
+        self._UserReceiveUnixTime = UserReceiveUnixTime
+
+    @property
+    def NationCode(self):
+        return self._NationCode
+
+    @NationCode.setter
+    def NationCode(self, NationCode):
+        self._NationCode = NationCode
+
+    @property
+    def PurePhoneNumber(self):
+        return self._PurePhoneNumber
+
+    @PurePhoneNumber.setter
+    def PurePhoneNumber(self, PurePhoneNumber):
+        self._PurePhoneNumber = PurePhoneNumber
+
+    @property
+    def PhoneNumber(self):
+        return self._PhoneNumber
+
+    @PhoneNumber.setter
+    def PhoneNumber(self, PhoneNumber):
+        self._PhoneNumber = PhoneNumber
+
+    @property
+    def SerialNo(self):
+        return self._SerialNo
+
+    @SerialNo.setter
+    def SerialNo(self, SerialNo):
+        self._SerialNo = SerialNo
+
+    @property
+    def ReportStatus(self):
+        return self._ReportStatus
+
+    @ReportStatus.setter
+    def ReportStatus(self, ReportStatus):
+        self._ReportStatus = ReportStatus
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
 
     def _deserialize(self, params):
-        self.UserReceiveTime = params.get("UserReceiveTime")
-        self.UserReceiveUnixTime = params.get("UserReceiveUnixTime")
-        self.NationCode = params.get("NationCode")
-        self.PurePhoneNumber = params.get("PurePhoneNumber")
-        self.PhoneNumber = params.get("PhoneNumber")
-        self.SerialNo = params.get("SerialNo")
-        self.ReportStatus = params.get("ReportStatus")
-        self.Description = params.get("Description")
+        self._UserReceiveTime = params.get("UserReceiveTime")
+        self._UserReceiveUnixTime = params.get("UserReceiveUnixTime")
+        self._NationCode = params.get("NationCode")
+        self._PurePhoneNumber = params.get("PurePhoneNumber")
+        self._PhoneNumber = params.get("PhoneNumber")
+        self._SerialNo = params.get("SerialNo")
+        self._ReportStatus = params.get("ReportStatus")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1164,39 +2106,88 @@ class PullSmsSendStatusByPhoneNumberRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SendDateTime: Pull start time in seconds in the format of UNIX timestamp.
+        :param _SendDateTime: Pull start time in seconds in the format of UNIX timestamp.
         :type SendDateTime: int
-        :param Offset: Offset.
+        :param _Offset: Offset.
 Note: this parameter is currently fixed at 0.
         :type Offset: int
-        :param Limit: Maximum number of pulled entries. Maximum value: 100.
+        :param _Limit: Maximum number of pulled entries. Maximum value: 100.
         :type Limit: int
-        :param PhoneNumber: Target mobile number in the e.164 standard (+[country/region code][mobile number]), such as +8613711112222, which has a + sign followed by 86 (country/region code) and then by 13711112222 (mobile number).
+        :param _PhoneNumber: Target mobile number in the e.164 standard (+[country/region code][mobile number]), such as +8613711112222, which has a + sign followed by 86 (country/region code) and then by 13711112222 (mobile number).
         :type PhoneNumber: str
-        :param SmsSdkAppid: SMS `SdkAppid` actually generated after an application is added in the [SMS Console](https://console.cloud.tencent.com/sms/smslist), such as 1400006666.
+        :param _SmsSdkAppid: SMS `SdkAppid` actually generated after an application is added in the [SMS Console](https://console.cloud.tencent.com/sms/smslist), such as 1400006666.
         :type SmsSdkAppid: str
-        :param EndDateTime: Pull end time in UNIX timestamp accurate to seconds.
+        :param _EndDateTime: Pull end time in UNIX timestamp accurate to seconds.
         :type EndDateTime: int
         """
-        self.SendDateTime = None
-        self.Offset = None
-        self.Limit = None
-        self.PhoneNumber = None
-        self.SmsSdkAppid = None
-        self.EndDateTime = None
+        self._SendDateTime = None
+        self._Offset = None
+        self._Limit = None
+        self._PhoneNumber = None
+        self._SmsSdkAppid = None
+        self._EndDateTime = None
+
+    @property
+    def SendDateTime(self):
+        return self._SendDateTime
+
+    @SendDateTime.setter
+    def SendDateTime(self, SendDateTime):
+        self._SendDateTime = SendDateTime
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def PhoneNumber(self):
+        return self._PhoneNumber
+
+    @PhoneNumber.setter
+    def PhoneNumber(self, PhoneNumber):
+        self._PhoneNumber = PhoneNumber
+
+    @property
+    def SmsSdkAppid(self):
+        return self._SmsSdkAppid
+
+    @SmsSdkAppid.setter
+    def SmsSdkAppid(self, SmsSdkAppid):
+        self._SmsSdkAppid = SmsSdkAppid
+
+    @property
+    def EndDateTime(self):
+        return self._EndDateTime
+
+    @EndDateTime.setter
+    def EndDateTime(self, EndDateTime):
+        self._EndDateTime = EndDateTime
 
 
     def _deserialize(self, params):
-        self.SendDateTime = params.get("SendDateTime")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.PhoneNumber = params.get("PhoneNumber")
-        self.SmsSdkAppid = params.get("SmsSdkAppid")
-        self.EndDateTime = params.get("EndDateTime")
+        self._SendDateTime = params.get("SendDateTime")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._PhoneNumber = params.get("PhoneNumber")
+        self._SmsSdkAppid = params.get("SmsSdkAppid")
+        self._EndDateTime = params.get("EndDateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1209,23 +2200,39 @@ class PullSmsSendStatusByPhoneNumberResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PullSmsSendStatusSet: Delivery status response set.
+        :param _PullSmsSendStatusSet: Delivery status response set.
         :type PullSmsSendStatusSet: list of PullSmsSendStatus
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.PullSmsSendStatusSet = None
-        self.RequestId = None
+        self._PullSmsSendStatusSet = None
+        self._RequestId = None
+
+    @property
+    def PullSmsSendStatusSet(self):
+        return self._PullSmsSendStatusSet
+
+    @PullSmsSendStatusSet.setter
+    def PullSmsSendStatusSet(self, PullSmsSendStatusSet):
+        self._PullSmsSendStatusSet = PullSmsSendStatusSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("PullSmsSendStatusSet") is not None:
-            self.PullSmsSendStatusSet = []
+            self._PullSmsSendStatusSet = []
             for item in params.get("PullSmsSendStatusSet"):
                 obj = PullSmsSendStatus()
                 obj._deserialize(item)
-                self.PullSmsSendStatusSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._PullSmsSendStatusSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class PullSmsSendStatusRequest(AbstractModel):
@@ -1235,22 +2242,39 @@ class PullSmsSendStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: Maximum number of pulled entries. Maximum value: 100.
+        :param _Limit: Maximum number of pulled entries. Maximum value: 100.
         :type Limit: int
-        :param SmsSdkAppid: SMS `SdkAppid` actually generated after an application is added in the [SMS Console](https://console.cloud.tencent.com/sms/smslist), such as 1400006666.
+        :param _SmsSdkAppid: SMS `SdkAppid` actually generated after an application is added in the [SMS Console](https://console.cloud.tencent.com/sms/smslist), such as 1400006666.
         :type SmsSdkAppid: str
         """
-        self.Limit = None
-        self.SmsSdkAppid = None
+        self._Limit = None
+        self._SmsSdkAppid = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def SmsSdkAppid(self):
+        return self._SmsSdkAppid
+
+    @SmsSdkAppid.setter
+    def SmsSdkAppid(self, SmsSdkAppid):
+        self._SmsSdkAppid = SmsSdkAppid
 
 
     def _deserialize(self, params):
-        self.Limit = params.get("Limit")
-        self.SmsSdkAppid = params.get("SmsSdkAppid")
+        self._Limit = params.get("Limit")
+        self._SmsSdkAppid = params.get("SmsSdkAppid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1263,23 +2287,39 @@ class PullSmsSendStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PullSmsSendStatusSet: Delivery status response set.
+        :param _PullSmsSendStatusSet: Delivery status response set.
         :type PullSmsSendStatusSet: list of PullSmsSendStatus
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.PullSmsSendStatusSet = None
-        self.RequestId = None
+        self._PullSmsSendStatusSet = None
+        self._RequestId = None
+
+    @property
+    def PullSmsSendStatusSet(self):
+        return self._PullSmsSendStatusSet
+
+    @PullSmsSendStatusSet.setter
+    def PullSmsSendStatusSet(self, PullSmsSendStatusSet):
+        self._PullSmsSendStatusSet = PullSmsSendStatusSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("PullSmsSendStatusSet") is not None:
-            self.PullSmsSendStatusSet = []
+            self._PullSmsSendStatusSet = []
             for item in params.get("PullSmsSendStatusSet"):
                 obj = PullSmsSendStatus()
                 obj._deserialize(item)
-                self.PullSmsSendStatusSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._PullSmsSendStatusSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class SendSmsRequest(AbstractModel):
@@ -1289,47 +2329,112 @@ class SendSmsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PhoneNumberSet: Target mobile number in the e.164 standard in the format of +[country/region code][mobile number]. Up to 200 mobile numbers are supported in one request (which should be all Mainland China mobile numbers or all global mobile numbers).
+        :param _PhoneNumberSet: Target mobile number in the e.164 standard in the format of +[country/region code][mobile number]. Up to 200 mobile numbers are supported in one request (which should be all Mainland China mobile numbers or all global mobile numbers).
 Example: +8613711112222, which has a + sign followed by 86 (country/region code) and then by 13711112222 (mobile number).
         :type PhoneNumberSet: list of str
-        :param TemplateID: Template ID. You must enter the ID of an approved template, which can be viewed in the [SMS Console](https://console.cloud.tencent.com/sms/smslist).
+        :param _TemplateID: Template ID. You must enter the ID of an approved template, which can be viewed in the [SMS Console](https://console.cloud.tencent.com/sms/smslist).
         :type TemplateID: str
-        :param SmsSdkAppid: SMS `SdkAppid` actually generated after an application is added in the [SMS Console](https://console.cloud.tencent.com/sms/smslist), such as 1400006666.
+        :param _SmsSdkAppid: SMS `SdkAppid` actually generated after an application is added in the [SMS Console](https://console.cloud.tencent.com/sms/smslist), such as 1400006666.
         :type SmsSdkAppid: str
-        :param Sign: The content of SMS signature should be encoded in UTF-8. You must enter an approved signature, which can be viewed in the [SMS Console](https://console.cloud.tencent.com/sms/smslist). Note: this parameter is required for Mainland China SMS.
+        :param _Sign: The content of SMS signature should be encoded in UTF-8. You must enter an approved signature, which can be viewed in the [SMS Console](https://console.cloud.tencent.com/sms/smslist). Note: this parameter is required for Mainland China SMS.
         :type Sign: str
-        :param TemplateParamSet: Template parameter. If there is no template parameter, leave this parameter blank.
+        :param _TemplateParamSet: Template parameter. If there is no template parameter, leave this parameter blank.
         :type TemplateParamSet: list of str
-        :param ExtendCode: SMS code number extension, which is not activated by default. If you need to activate it, please contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1).
+        :param _ExtendCode: SMS code number extension, which is not activated by default. If you need to activate it, please contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1).
         :type ExtendCode: str
-        :param SessionContext: User session content, which can carry context information such as user-side ID and will be returned as-is by the server.
+        :param _SessionContext: User session content, which can carry context information such as user-side ID and will be returned as-is by the server.
         :type SessionContext: str
-        :param SenderId: `senderid` for Global SMS, which is not activated by default. If you need to activate it, please contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1) for assistance. This parameter should be empty for Mainland China SMS.
+        :param _SenderId: `senderid` for Global SMS, which is not activated by default. If you need to activate it, please contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1) for assistance. This parameter should be empty for Mainland China SMS.
         :type SenderId: str
         """
-        self.PhoneNumberSet = None
-        self.TemplateID = None
-        self.SmsSdkAppid = None
-        self.Sign = None
-        self.TemplateParamSet = None
-        self.ExtendCode = None
-        self.SessionContext = None
-        self.SenderId = None
+        self._PhoneNumberSet = None
+        self._TemplateID = None
+        self._SmsSdkAppid = None
+        self._Sign = None
+        self._TemplateParamSet = None
+        self._ExtendCode = None
+        self._SessionContext = None
+        self._SenderId = None
+
+    @property
+    def PhoneNumberSet(self):
+        return self._PhoneNumberSet
+
+    @PhoneNumberSet.setter
+    def PhoneNumberSet(self, PhoneNumberSet):
+        self._PhoneNumberSet = PhoneNumberSet
+
+    @property
+    def TemplateID(self):
+        return self._TemplateID
+
+    @TemplateID.setter
+    def TemplateID(self, TemplateID):
+        self._TemplateID = TemplateID
+
+    @property
+    def SmsSdkAppid(self):
+        return self._SmsSdkAppid
+
+    @SmsSdkAppid.setter
+    def SmsSdkAppid(self, SmsSdkAppid):
+        self._SmsSdkAppid = SmsSdkAppid
+
+    @property
+    def Sign(self):
+        return self._Sign
+
+    @Sign.setter
+    def Sign(self, Sign):
+        self._Sign = Sign
+
+    @property
+    def TemplateParamSet(self):
+        return self._TemplateParamSet
+
+    @TemplateParamSet.setter
+    def TemplateParamSet(self, TemplateParamSet):
+        self._TemplateParamSet = TemplateParamSet
+
+    @property
+    def ExtendCode(self):
+        return self._ExtendCode
+
+    @ExtendCode.setter
+    def ExtendCode(self, ExtendCode):
+        self._ExtendCode = ExtendCode
+
+    @property
+    def SessionContext(self):
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+    @property
+    def SenderId(self):
+        return self._SenderId
+
+    @SenderId.setter
+    def SenderId(self, SenderId):
+        self._SenderId = SenderId
 
 
     def _deserialize(self, params):
-        self.PhoneNumberSet = params.get("PhoneNumberSet")
-        self.TemplateID = params.get("TemplateID")
-        self.SmsSdkAppid = params.get("SmsSdkAppid")
-        self.Sign = params.get("Sign")
-        self.TemplateParamSet = params.get("TemplateParamSet")
-        self.ExtendCode = params.get("ExtendCode")
-        self.SessionContext = params.get("SessionContext")
-        self.SenderId = params.get("SenderId")
+        self._PhoneNumberSet = params.get("PhoneNumberSet")
+        self._TemplateID = params.get("TemplateID")
+        self._SmsSdkAppid = params.get("SmsSdkAppid")
+        self._Sign = params.get("Sign")
+        self._TemplateParamSet = params.get("TemplateParamSet")
+        self._ExtendCode = params.get("ExtendCode")
+        self._SessionContext = params.get("SessionContext")
+        self._SenderId = params.get("SenderId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1342,23 +2447,39 @@ class SendSmsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SendStatusSet: SMS delivery status.
+        :param _SendStatusSet: SMS delivery status.
         :type SendStatusSet: list of SendStatus
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.SendStatusSet = None
-        self.RequestId = None
+        self._SendStatusSet = None
+        self._RequestId = None
+
+    @property
+    def SendStatusSet(self):
+        return self._SendStatusSet
+
+    @SendStatusSet.setter
+    def SendStatusSet(self, SendStatusSet):
+        self._SendStatusSet = SendStatusSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("SendStatusSet") is not None:
-            self.SendStatusSet = []
+            self._SendStatusSet = []
             for item in params.get("SendStatusSet"):
                 obj = SendStatus()
                 obj._deserialize(item)
-                self.SendStatusSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._SendStatusSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class SendStatus(AbstractModel):
@@ -1368,42 +2489,99 @@ class SendStatus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SerialNo: Delivery serial number.
+        :param _SerialNo: Delivery serial number.
         :type SerialNo: str
-        :param PhoneNumber: Mobile number in the e.164 standard (+[country/region code][mobile number]), such as +8613711112222, which has a + sign followed by 86 (country/region code) and then by 13711112222 (mobile number).
+        :param _PhoneNumber: Mobile number in the e.164 standard (+[country/region code][mobile number]), such as +8613711112222, which has a + sign followed by 86 (country/region code) and then by 13711112222 (mobile number).
         :type PhoneNumber: str
-        :param Fee: Number of billable SMS messages. For billing rules, please see [Billing Policy](https://intl.cloud.tencent.com/document/product/382/36135?from_cn_redirect=1).
+        :param _Fee: Number of billable SMS messages. For billing rules, please see [Billing Policy](https://intl.cloud.tencent.com/document/product/382/36135?from_cn_redirect=1).
         :type Fee: int
-        :param SessionContext: User session content.
+        :param _SessionContext: User session content.
         :type SessionContext: str
-        :param Code: SMS request error code. For specific meanings, please see Error Codes.
+        :param _Code: SMS request error code. For specific meanings, please see Error Codes.
         :type Code: str
-        :param Message: SMS request error message.
+        :param _Message: SMS request error message.
         :type Message: str
-        :param IsoCode: Country code or region code, such as CN and US. If the country code or region code is not obtained, the returned value will be 'DEF' by default. For more information on the supported list, see price overview for non-Mainland China regions.
+        :param _IsoCode: Country code or region code, such as CN and US. If the country code or region code is not obtained, the returned value will be 'DEF' by default. For more information on the supported list, see price overview for non-Mainland China regions.
         :type IsoCode: str
         """
-        self.SerialNo = None
-        self.PhoneNumber = None
-        self.Fee = None
-        self.SessionContext = None
-        self.Code = None
-        self.Message = None
-        self.IsoCode = None
+        self._SerialNo = None
+        self._PhoneNumber = None
+        self._Fee = None
+        self._SessionContext = None
+        self._Code = None
+        self._Message = None
+        self._IsoCode = None
+
+    @property
+    def SerialNo(self):
+        return self._SerialNo
+
+    @SerialNo.setter
+    def SerialNo(self, SerialNo):
+        self._SerialNo = SerialNo
+
+    @property
+    def PhoneNumber(self):
+        return self._PhoneNumber
+
+    @PhoneNumber.setter
+    def PhoneNumber(self, PhoneNumber):
+        self._PhoneNumber = PhoneNumber
+
+    @property
+    def Fee(self):
+        return self._Fee
+
+    @Fee.setter
+    def Fee(self, Fee):
+        self._Fee = Fee
+
+    @property
+    def SessionContext(self):
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def IsoCode(self):
+        return self._IsoCode
+
+    @IsoCode.setter
+    def IsoCode(self, IsoCode):
+        self._IsoCode = IsoCode
 
 
     def _deserialize(self, params):
-        self.SerialNo = params.get("SerialNo")
-        self.PhoneNumber = params.get("PhoneNumber")
-        self.Fee = params.get("Fee")
-        self.SessionContext = params.get("SessionContext")
-        self.Code = params.get("Code")
-        self.Message = params.get("Message")
-        self.IsoCode = params.get("IsoCode")
+        self._SerialNo = params.get("SerialNo")
+        self._PhoneNumber = params.get("PhoneNumber")
+        self._Fee = params.get("Fee")
+        self._SessionContext = params.get("SessionContext")
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
+        self._IsoCode = params.get("IsoCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1416,26 +2594,51 @@ class SendStatusStatistics(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FeeCount: Billable SMS message quantity; for example, in 100 successfully submitted SMS messages, if 20 are long messages (over 80 characters) and split into two messages each, then the billable quantity will be 80 * 1 + 20 * 2 = 120.
+        :param _FeeCount: Billable SMS message quantity; for example, in 100 successfully submitted SMS messages, if 20 are long messages (over 80 characters) and split into two messages each, then the billable quantity will be 80 * 1 + 20 * 2 = 120.
         :type FeeCount: int
-        :param RequestCount: Submitted SMS messages.
+        :param _RequestCount: Submitted SMS messages.
         :type RequestCount: int
-        :param RequestSuccessCount: Successfully submitted SMS messages.
+        :param _RequestSuccessCount: Successfully submitted SMS messages.
         :type RequestSuccessCount: int
         """
-        self.FeeCount = None
-        self.RequestCount = None
-        self.RequestSuccessCount = None
+        self._FeeCount = None
+        self._RequestCount = None
+        self._RequestSuccessCount = None
+
+    @property
+    def FeeCount(self):
+        return self._FeeCount
+
+    @FeeCount.setter
+    def FeeCount(self, FeeCount):
+        self._FeeCount = FeeCount
+
+    @property
+    def RequestCount(self):
+        return self._RequestCount
+
+    @RequestCount.setter
+    def RequestCount(self, RequestCount):
+        self._RequestCount = RequestCount
+
+    @property
+    def RequestSuccessCount(self):
+        return self._RequestSuccessCount
+
+    @RequestSuccessCount.setter
+    def RequestSuccessCount(self, RequestSuccessCount):
+        self._RequestSuccessCount = RequestSuccessCount
 
 
     def _deserialize(self, params):
-        self.FeeCount = params.get("FeeCount")
-        self.RequestCount = params.get("RequestCount")
-        self.RequestSuccessCount = params.get("RequestSuccessCount")
+        self._FeeCount = params.get("FeeCount")
+        self._RequestCount = params.get("RequestCount")
+        self._RequestSuccessCount = params.get("RequestSuccessCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1448,37 +2651,78 @@ class SendStatusStatisticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartDateTime: Start time of pull in the format of `yyyymmddhh` accurate to the hour.
+        :param _StartDateTime: Start time of pull in the format of `yyyymmddhh` accurate to the hour.
         :type StartDateTime: int
-        :param EndDataTime: End time of pull in the format of `yyyymmddhh` accurate to the hour
+        :param _EndDataTime: End time of pull in the format of `yyyymmddhh` accurate to the hour
 Note: `EndDataTime` must be later than `StartDateTime`.
         :type EndDataTime: int
-        :param SmsSdkAppid: SMS `SdkAppid` actually generated after an application is added in the [SMS Console](https://console.cloud.tencent.com/sms/smslist), such as 1400006666.
+        :param _SmsSdkAppid: SMS `SdkAppid` actually generated after an application is added in the [SMS Console](https://console.cloud.tencent.com/sms/smslist), such as 1400006666.
         :type SmsSdkAppid: str
-        :param Limit: Upper limit.
+        :param _Limit: Upper limit.
 Note: this parameter is currently fixed at 0.
         :type Limit: int
-        :param Offset: Offset.
+        :param _Offset: Offset.
 Note: this parameter is currently fixed at 0.
         :type Offset: int
         """
-        self.StartDateTime = None
-        self.EndDataTime = None
-        self.SmsSdkAppid = None
-        self.Limit = None
-        self.Offset = None
+        self._StartDateTime = None
+        self._EndDataTime = None
+        self._SmsSdkAppid = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def StartDateTime(self):
+        return self._StartDateTime
+
+    @StartDateTime.setter
+    def StartDateTime(self, StartDateTime):
+        self._StartDateTime = StartDateTime
+
+    @property
+    def EndDataTime(self):
+        return self._EndDataTime
+
+    @EndDataTime.setter
+    def EndDataTime(self, EndDataTime):
+        self._EndDataTime = EndDataTime
+
+    @property
+    def SmsSdkAppid(self):
+        return self._SmsSdkAppid
+
+    @SmsSdkAppid.setter
+    def SmsSdkAppid(self, SmsSdkAppid):
+        self._SmsSdkAppid = SmsSdkAppid
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.StartDateTime = params.get("StartDateTime")
-        self.EndDataTime = params.get("EndDataTime")
-        self.SmsSdkAppid = params.get("SmsSdkAppid")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._StartDateTime = params.get("StartDateTime")
+        self._EndDataTime = params.get("EndDataTime")
+        self._SmsSdkAppid = params.get("SmsSdkAppid")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1491,20 +2735,36 @@ class SendStatusStatisticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SendStatusStatistics: Delivery statistics response packet.
+        :param _SendStatusStatistics: Delivery statistics response packet.
         :type SendStatusStatistics: :class:`tencentcloud.sms.v20190711.models.SendStatusStatistics`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.SendStatusStatistics = None
-        self.RequestId = None
+        self._SendStatusStatistics = None
+        self._RequestId = None
+
+    @property
+    def SendStatusStatistics(self):
+        return self._SendStatusStatistics
+
+    @SendStatusStatistics.setter
+    def SendStatusStatistics(self, SendStatusStatistics):
+        self._SendStatusStatistics = SendStatusStatistics
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("SendStatusStatistics") is not None:
-            self.SendStatusStatistics = SendStatusStatistics()
-            self.SendStatusStatistics._deserialize(params.get("SendStatusStatistics"))
-        self.RequestId = params.get("RequestId")
+            self._SendStatusStatistics = SendStatusStatistics()
+            self._SendStatusStatistics._deserialize(params.get("SendStatusStatistics"))
+        self._RequestId = params.get("RequestId")
 
 
 class SmsPackagesStatistics(AbstractModel):
@@ -1514,54 +2774,135 @@ class SmsPackagesStatistics(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PackageCreateTime: Package creation time in standard time format, such as 2019-10-08 17:18:37.
+        :param _PackageCreateTime: Package creation time in standard time format, such as 2019-10-08 17:18:37.
         :type PackageCreateTime: str
-        :param PackageCreateUnixTime: Package creation time in seconds in the format of UNIX timestamp.
+        :param _PackageCreateUnixTime: Package creation time in seconds in the format of UNIX timestamp.
         :type PackageCreateUnixTime: int
-        :param PackageEffectiveTime: Package effective time in standard time format, such as 2019-10-08 17:18:37.
+        :param _PackageEffectiveTime: Package effective time in standard time format, such as 2019-10-08 17:18:37.
         :type PackageEffectiveTime: str
-        :param PackageEffectiveUnixTime: Package effective time in seconds in the format of UNIX timestamp.
+        :param _PackageEffectiveUnixTime: Package effective time in seconds in the format of UNIX timestamp.
         :type PackageEffectiveUnixTime: int
-        :param PackageExpiredTime: Package expiration time in standard time format, such as 2019-10-08 17:18:37.
+        :param _PackageExpiredTime: Package expiration time in standard time format, such as 2019-10-08 17:18:37.
         :type PackageExpiredTime: str
-        :param PackageExpiredUnixTime: Package expiration time in seconds in the format of UNIX timestamp.
+        :param _PackageExpiredUnixTime: Package expiration time in seconds in the format of UNIX timestamp.
         :type PackageExpiredUnixTime: int
-        :param AmountOfPackage: Number of SMS messages in package.
+        :param _AmountOfPackage: Number of SMS messages in package.
         :type AmountOfPackage: int
-        :param TypeOfPackage: 0: gifted package. 1: purchased package.
+        :param _TypeOfPackage: 0: gifted package. 1: purchased package.
         :type TypeOfPackage: int
-        :param PackageId: Package ID.
+        :param _PackageId: Package ID.
         :type PackageId: int
-        :param CurrentUsage: Current usage.
+        :param _CurrentUsage: Current usage.
         :type CurrentUsage: int
         """
-        self.PackageCreateTime = None
-        self.PackageCreateUnixTime = None
-        self.PackageEffectiveTime = None
-        self.PackageEffectiveUnixTime = None
-        self.PackageExpiredTime = None
-        self.PackageExpiredUnixTime = None
-        self.AmountOfPackage = None
-        self.TypeOfPackage = None
-        self.PackageId = None
-        self.CurrentUsage = None
+        self._PackageCreateTime = None
+        self._PackageCreateUnixTime = None
+        self._PackageEffectiveTime = None
+        self._PackageEffectiveUnixTime = None
+        self._PackageExpiredTime = None
+        self._PackageExpiredUnixTime = None
+        self._AmountOfPackage = None
+        self._TypeOfPackage = None
+        self._PackageId = None
+        self._CurrentUsage = None
+
+    @property
+    def PackageCreateTime(self):
+        return self._PackageCreateTime
+
+    @PackageCreateTime.setter
+    def PackageCreateTime(self, PackageCreateTime):
+        self._PackageCreateTime = PackageCreateTime
+
+    @property
+    def PackageCreateUnixTime(self):
+        return self._PackageCreateUnixTime
+
+    @PackageCreateUnixTime.setter
+    def PackageCreateUnixTime(self, PackageCreateUnixTime):
+        self._PackageCreateUnixTime = PackageCreateUnixTime
+
+    @property
+    def PackageEffectiveTime(self):
+        return self._PackageEffectiveTime
+
+    @PackageEffectiveTime.setter
+    def PackageEffectiveTime(self, PackageEffectiveTime):
+        self._PackageEffectiveTime = PackageEffectiveTime
+
+    @property
+    def PackageEffectiveUnixTime(self):
+        return self._PackageEffectiveUnixTime
+
+    @PackageEffectiveUnixTime.setter
+    def PackageEffectiveUnixTime(self, PackageEffectiveUnixTime):
+        self._PackageEffectiveUnixTime = PackageEffectiveUnixTime
+
+    @property
+    def PackageExpiredTime(self):
+        return self._PackageExpiredTime
+
+    @PackageExpiredTime.setter
+    def PackageExpiredTime(self, PackageExpiredTime):
+        self._PackageExpiredTime = PackageExpiredTime
+
+    @property
+    def PackageExpiredUnixTime(self):
+        return self._PackageExpiredUnixTime
+
+    @PackageExpiredUnixTime.setter
+    def PackageExpiredUnixTime(self, PackageExpiredUnixTime):
+        self._PackageExpiredUnixTime = PackageExpiredUnixTime
+
+    @property
+    def AmountOfPackage(self):
+        return self._AmountOfPackage
+
+    @AmountOfPackage.setter
+    def AmountOfPackage(self, AmountOfPackage):
+        self._AmountOfPackage = AmountOfPackage
+
+    @property
+    def TypeOfPackage(self):
+        return self._TypeOfPackage
+
+    @TypeOfPackage.setter
+    def TypeOfPackage(self, TypeOfPackage):
+        self._TypeOfPackage = TypeOfPackage
+
+    @property
+    def PackageId(self):
+        return self._PackageId
+
+    @PackageId.setter
+    def PackageId(self, PackageId):
+        self._PackageId = PackageId
+
+    @property
+    def CurrentUsage(self):
+        return self._CurrentUsage
+
+    @CurrentUsage.setter
+    def CurrentUsage(self, CurrentUsage):
+        self._CurrentUsage = CurrentUsage
 
 
     def _deserialize(self, params):
-        self.PackageCreateTime = params.get("PackageCreateTime")
-        self.PackageCreateUnixTime = params.get("PackageCreateUnixTime")
-        self.PackageEffectiveTime = params.get("PackageEffectiveTime")
-        self.PackageEffectiveUnixTime = params.get("PackageEffectiveUnixTime")
-        self.PackageExpiredTime = params.get("PackageExpiredTime")
-        self.PackageExpiredUnixTime = params.get("PackageExpiredUnixTime")
-        self.AmountOfPackage = params.get("AmountOfPackage")
-        self.TypeOfPackage = params.get("TypeOfPackage")
-        self.PackageId = params.get("PackageId")
-        self.CurrentUsage = params.get("CurrentUsage")
+        self._PackageCreateTime = params.get("PackageCreateTime")
+        self._PackageCreateUnixTime = params.get("PackageCreateUnixTime")
+        self._PackageEffectiveTime = params.get("PackageEffectiveTime")
+        self._PackageEffectiveUnixTime = params.get("PackageEffectiveUnixTime")
+        self._PackageExpiredTime = params.get("PackageExpiredTime")
+        self._PackageExpiredUnixTime = params.get("PackageExpiredUnixTime")
+        self._AmountOfPackage = params.get("AmountOfPackage")
+        self._TypeOfPackage = params.get("TypeOfPackage")
+        self._PackageId = params.get("PackageId")
+        self._CurrentUsage = params.get("CurrentUsage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1574,27 +2915,52 @@ class SmsPackagesStatisticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SmsSdkAppid: SMS `SdkAppid` actually generated after an application is added in the [SMS Console](https://console.cloud.tencent.com/sms/smslist), such as 1400006666.
+        :param _SmsSdkAppid: SMS `SdkAppid` actually generated after an application is added in the [SMS Console](https://console.cloud.tencent.com/sms/smslist), such as 1400006666.
         :type SmsSdkAppid: str
-        :param Limit: Upper limit (number of packages to be pulled).
+        :param _Limit: Upper limit (number of packages to be pulled).
         :type Limit: int
-        :param Offset: Offset.
+        :param _Offset: Offset.
 Note: this parameter is currently fixed at 0.
         :type Offset: int
         """
-        self.SmsSdkAppid = None
-        self.Limit = None
-        self.Offset = None
+        self._SmsSdkAppid = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def SmsSdkAppid(self):
+        return self._SmsSdkAppid
+
+    @SmsSdkAppid.setter
+    def SmsSdkAppid(self, SmsSdkAppid):
+        self._SmsSdkAppid = SmsSdkAppid
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.SmsSdkAppid = params.get("SmsSdkAppid")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._SmsSdkAppid = params.get("SmsSdkAppid")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1607,20 +2973,36 @@ class SmsPackagesStatisticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SmsPackagesStatisticsSet: Delivery statistics response packet body.
+        :param _SmsPackagesStatisticsSet: Delivery statistics response packet body.
         :type SmsPackagesStatisticsSet: list of SmsPackagesStatistics
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.SmsPackagesStatisticsSet = None
-        self.RequestId = None
+        self._SmsPackagesStatisticsSet = None
+        self._RequestId = None
+
+    @property
+    def SmsPackagesStatisticsSet(self):
+        return self._SmsPackagesStatisticsSet
+
+    @SmsPackagesStatisticsSet.setter
+    def SmsPackagesStatisticsSet(self, SmsPackagesStatisticsSet):
+        self._SmsPackagesStatisticsSet = SmsPackagesStatisticsSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("SmsPackagesStatisticsSet") is not None:
-            self.SmsPackagesStatisticsSet = []
+            self._SmsPackagesStatisticsSet = []
             for item in params.get("SmsPackagesStatisticsSet"):
                 obj = SmsPackagesStatistics()
                 obj._deserialize(item)
-                self.SmsPackagesStatisticsSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._SmsPackagesStatisticsSet.append(obj)
+        self._RequestId = params.get("RequestId")

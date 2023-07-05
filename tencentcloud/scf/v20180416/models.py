@@ -25,44 +25,93 @@ class Alias(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FunctionVersion: Master version pointed to by the alias
+        :param _FunctionVersion: Master version pointed to by the alias
         :type FunctionVersion: str
-        :param Name: Alias name
+        :param _Name: Alias name
         :type Name: str
-        :param RoutingConfig: Routing information of alias
+        :param _RoutingConfig: Routing information of alias
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RoutingConfig: :class:`tencentcloud.scf.v20180416.models.RoutingConfig`
-        :param Description: Description
+        :param _Description: Description
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Description: str
-        :param AddTime: Creation time
+        :param _AddTime: Creation time
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AddTime: str
-        :param ModTime: Update time
+        :param _ModTime: Update time
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ModTime: str
         """
-        self.FunctionVersion = None
-        self.Name = None
-        self.RoutingConfig = None
-        self.Description = None
-        self.AddTime = None
-        self.ModTime = None
+        self._FunctionVersion = None
+        self._Name = None
+        self._RoutingConfig = None
+        self._Description = None
+        self._AddTime = None
+        self._ModTime = None
+
+    @property
+    def FunctionVersion(self):
+        return self._FunctionVersion
+
+    @FunctionVersion.setter
+    def FunctionVersion(self, FunctionVersion):
+        self._FunctionVersion = FunctionVersion
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def RoutingConfig(self):
+        return self._RoutingConfig
+
+    @RoutingConfig.setter
+    def RoutingConfig(self, RoutingConfig):
+        self._RoutingConfig = RoutingConfig
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def AddTime(self):
+        return self._AddTime
+
+    @AddTime.setter
+    def AddTime(self, AddTime):
+        self._AddTime = AddTime
+
+    @property
+    def ModTime(self):
+        return self._ModTime
+
+    @ModTime.setter
+    def ModTime(self, ModTime):
+        self._ModTime = ModTime
 
 
     def _deserialize(self, params):
-        self.FunctionVersion = params.get("FunctionVersion")
-        self.Name = params.get("Name")
+        self._FunctionVersion = params.get("FunctionVersion")
+        self._Name = params.get("Name")
         if params.get("RoutingConfig") is not None:
-            self.RoutingConfig = RoutingConfig()
-            self.RoutingConfig._deserialize(params.get("RoutingConfig"))
-        self.Description = params.get("Description")
-        self.AddTime = params.get("AddTime")
-        self.ModTime = params.get("ModTime")
+            self._RoutingConfig = RoutingConfig()
+            self._RoutingConfig._deserialize(params.get("RoutingConfig"))
+        self._Description = params.get("Description")
+        self._AddTime = params.get("AddTime")
+        self._ModTime = params.get("ModTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -75,38 +124,87 @@ class AsyncEvent(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InvokeRequestId: Invocation request ID
+        :param _InvokeRequestId: Invocation request ID
         :type InvokeRequestId: str
-        :param InvokeType: Invocation type
+        :param _InvokeType: Invocation type
         :type InvokeType: str
-        :param Qualifier: Function version
+        :param _Qualifier: Function version
         :type Qualifier: str
-        :param Status: Event status. Values: `RUNNING`; `FINISHED` (invoked successfully); `ABORTED` (invocation ended); `FAILED` (invocation failed)
+        :param _Status: Event status. Values: `RUNNING`; `FINISHED` (invoked successfully); `ABORTED` (invocation ended); `FAILED` (invocation failed)
         :type Status: str
-        :param StartTime: Invocation start time in the format of "%Y-%m-%d %H:%M:%S.%f"
+        :param _StartTime: Invocation start time in the format of "%Y-%m-%d %H:%M:%S.%f"
         :type StartTime: str
-        :param EndTime: Invocation end time in the format of "%Y-%m-%d %H:%M:%S.%f"
+        :param _EndTime: Invocation end time in the format of "%Y-%m-%d %H:%M:%S.%f"
         :type EndTime: str
         """
-        self.InvokeRequestId = None
-        self.InvokeType = None
-        self.Qualifier = None
-        self.Status = None
-        self.StartTime = None
-        self.EndTime = None
+        self._InvokeRequestId = None
+        self._InvokeType = None
+        self._Qualifier = None
+        self._Status = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def InvokeRequestId(self):
+        return self._InvokeRequestId
+
+    @InvokeRequestId.setter
+    def InvokeRequestId(self, InvokeRequestId):
+        self._InvokeRequestId = InvokeRequestId
+
+    @property
+    def InvokeType(self):
+        return self._InvokeType
+
+    @InvokeType.setter
+    def InvokeType(self, InvokeType):
+        self._InvokeType = InvokeType
+
+    @property
+    def Qualifier(self):
+        return self._Qualifier
+
+    @Qualifier.setter
+    def Qualifier(self, Qualifier):
+        self._Qualifier = Qualifier
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
 
 
     def _deserialize(self, params):
-        self.InvokeRequestId = params.get("InvokeRequestId")
-        self.InvokeType = params.get("InvokeType")
-        self.Qualifier = params.get("Qualifier")
-        self.Status = params.get("Status")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
+        self._InvokeRequestId = params.get("InvokeRequestId")
+        self._InvokeType = params.get("InvokeType")
+        self._Qualifier = params.get("Qualifier")
+        self._Status = params.get("Status")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -119,26 +217,51 @@ class AsyncEventStatus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: Async event status. Values: `RUNNING` (running); `FINISHED` (invoked successfully); `ABORTED` (invocation ended); `FAILED` (invocation failed).
+        :param _Status: Async event status. Values: `RUNNING` (running); `FINISHED` (invoked successfully); `ABORTED` (invocation ended); `FAILED` (invocation failed).
         :type Status: str
-        :param StatusCode: Request status code
+        :param _StatusCode: Request status code
         :type StatusCode: int
-        :param InvokeRequestId: Async execution request ID
+        :param _InvokeRequestId: Async execution request ID
         :type InvokeRequestId: str
         """
-        self.Status = None
-        self.StatusCode = None
-        self.InvokeRequestId = None
+        self._Status = None
+        self._StatusCode = None
+        self._InvokeRequestId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StatusCode(self):
+        return self._StatusCode
+
+    @StatusCode.setter
+    def StatusCode(self, StatusCode):
+        self._StatusCode = StatusCode
+
+    @property
+    def InvokeRequestId(self):
+        return self._InvokeRequestId
+
+    @InvokeRequestId.setter
+    def InvokeRequestId(self, InvokeRequestId):
+        self._InvokeRequestId = InvokeRequestId
 
 
     def _deserialize(self, params):
-        self.Status = params.get("Status")
-        self.StatusCode = params.get("StatusCode")
-        self.InvokeRequestId = params.get("InvokeRequestId")
+        self._Status = params.get("Status")
+        self._StatusCode = params.get("StatusCode")
+        self._InvokeRequestId = params.get("InvokeRequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -151,27 +274,44 @@ class AsyncTriggerConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RetryConfig: Async retry configuration of function upon user error
+        :param _RetryConfig: Async retry configuration of function upon user error
         :type RetryConfig: list of RetryConfig
-        :param MsgTTL: Message retention period
+        :param _MsgTTL: Message retention period
         :type MsgTTL: int
         """
-        self.RetryConfig = None
-        self.MsgTTL = None
+        self._RetryConfig = None
+        self._MsgTTL = None
+
+    @property
+    def RetryConfig(self):
+        return self._RetryConfig
+
+    @RetryConfig.setter
+    def RetryConfig(self, RetryConfig):
+        self._RetryConfig = RetryConfig
+
+    @property
+    def MsgTTL(self):
+        return self._MsgTTL
+
+    @MsgTTL.setter
+    def MsgTTL(self, MsgTTL):
+        self._MsgTTL = MsgTTL
 
 
     def _deserialize(self, params):
         if params.get("RetryConfig") is not None:
-            self.RetryConfig = []
+            self._RetryConfig = []
             for item in params.get("RetryConfig"):
                 obj = RetryConfig()
                 obj._deserialize(item)
-                self.RetryConfig.append(obj)
-        self.MsgTTL = params.get("MsgTTL")
+                self._RetryConfig.append(obj)
+        self._MsgTTL = params.get("MsgTTL")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -184,76 +324,197 @@ class Code(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CosBucketName: Object bucket name (enter the custom part of the bucket name without `-appid`)
+        :param _CosBucketName: Object bucket name (enter the custom part of the bucket name without `-appid`)
         :type CosBucketName: str
-        :param CosObjectName: File path of code package stored in COS, which should start with “/”
+        :param _CosObjectName: File path of code package stored in COS, which should start with “/”
         :type CosObjectName: str
-        :param ZipFile: This parameter contains a .zip file (up to 50 MB) of the function code file and its dependencies. When this API is used, the content of the .zip file needs to be Base64-encoded
+        :param _ZipFile: This parameter contains a .zip file (up to 50 MB) of the function code file and its dependencies. When this API is used, the content of the .zip file needs to be Base64-encoded
         :type ZipFile: str
-        :param CosBucketRegion: COS region. For Beijing regions, you need to import `ap-beijing`. For Beijing Region 1, you need to input `ap-beijing-1`. For other regions, no import is required.
+        :param _CosBucketRegion: COS region. For Beijing regions, you need to import `ap-beijing`. For Beijing Region 1, you need to input `ap-beijing-1`. For other regions, no import is required.
         :type CosBucketRegion: str
-        :param DemoId: `DemoId` is required if Demo is used for the creation.
+        :param _DemoId: `DemoId` is required if Demo is used for the creation.
         :type DemoId: str
-        :param TempCosObjectName: `TempCosObjectName` is required if TempCos is used for the creation.
+        :param _TempCosObjectName: `TempCosObjectName` is required if TempCos is used for the creation.
         :type TempCosObjectName: str
-        :param GitUrl: (Disused) Git address
+        :param _GitUrl: (Disused) Git address
         :type GitUrl: str
-        :param GitUserName: (Disused) Git username
+        :param _GitUserName: (Disused) Git username
         :type GitUserName: str
-        :param GitPassword: (Disused) Git password
+        :param _GitPassword: (Disused) Git password
         :type GitPassword: str
-        :param GitPasswordSecret: (Disused) Git password after encryption. It’s usually not required.
+        :param _GitPasswordSecret: (Disused) Git password after encryption. It’s usually not required.
         :type GitPasswordSecret: str
-        :param GitBranch: (Disused) Git branch
+        :param _GitBranch: (Disused) Git branch
         :type GitBranch: str
-        :param GitDirectory: (Disused) Directory to the codes in the Git repository. 
+        :param _GitDirectory: (Disused) Directory to the codes in the Git repository. 
         :type GitDirectory: str
-        :param GitCommitId: (Disused) 
+        :param _GitCommitId: (Disused) 
         :type GitCommitId: str
-        :param GitUserNameSecret: (Disused) Git username after encryption. It’s usually not required.
+        :param _GitUserNameSecret: (Disused) Git username after encryption. It’s usually not required.
         :type GitUserNameSecret: str
-        :param ImageConfig: TCR image configurations
+        :param _ImageConfig: TCR image configurations
         :type ImageConfig: :class:`tencentcloud.scf.v20180416.models.ImageConfig`
         """
-        self.CosBucketName = None
-        self.CosObjectName = None
-        self.ZipFile = None
-        self.CosBucketRegion = None
-        self.DemoId = None
-        self.TempCosObjectName = None
-        self.GitUrl = None
-        self.GitUserName = None
-        self.GitPassword = None
-        self.GitPasswordSecret = None
-        self.GitBranch = None
-        self.GitDirectory = None
-        self.GitCommitId = None
-        self.GitUserNameSecret = None
-        self.ImageConfig = None
+        self._CosBucketName = None
+        self._CosObjectName = None
+        self._ZipFile = None
+        self._CosBucketRegion = None
+        self._DemoId = None
+        self._TempCosObjectName = None
+        self._GitUrl = None
+        self._GitUserName = None
+        self._GitPassword = None
+        self._GitPasswordSecret = None
+        self._GitBranch = None
+        self._GitDirectory = None
+        self._GitCommitId = None
+        self._GitUserNameSecret = None
+        self._ImageConfig = None
+
+    @property
+    def CosBucketName(self):
+        return self._CosBucketName
+
+    @CosBucketName.setter
+    def CosBucketName(self, CosBucketName):
+        self._CosBucketName = CosBucketName
+
+    @property
+    def CosObjectName(self):
+        return self._CosObjectName
+
+    @CosObjectName.setter
+    def CosObjectName(self, CosObjectName):
+        self._CosObjectName = CosObjectName
+
+    @property
+    def ZipFile(self):
+        return self._ZipFile
+
+    @ZipFile.setter
+    def ZipFile(self, ZipFile):
+        self._ZipFile = ZipFile
+
+    @property
+    def CosBucketRegion(self):
+        return self._CosBucketRegion
+
+    @CosBucketRegion.setter
+    def CosBucketRegion(self, CosBucketRegion):
+        self._CosBucketRegion = CosBucketRegion
+
+    @property
+    def DemoId(self):
+        return self._DemoId
+
+    @DemoId.setter
+    def DemoId(self, DemoId):
+        self._DemoId = DemoId
+
+    @property
+    def TempCosObjectName(self):
+        return self._TempCosObjectName
+
+    @TempCosObjectName.setter
+    def TempCosObjectName(self, TempCosObjectName):
+        self._TempCosObjectName = TempCosObjectName
+
+    @property
+    def GitUrl(self):
+        return self._GitUrl
+
+    @GitUrl.setter
+    def GitUrl(self, GitUrl):
+        self._GitUrl = GitUrl
+
+    @property
+    def GitUserName(self):
+        return self._GitUserName
+
+    @GitUserName.setter
+    def GitUserName(self, GitUserName):
+        self._GitUserName = GitUserName
+
+    @property
+    def GitPassword(self):
+        return self._GitPassword
+
+    @GitPassword.setter
+    def GitPassword(self, GitPassword):
+        self._GitPassword = GitPassword
+
+    @property
+    def GitPasswordSecret(self):
+        return self._GitPasswordSecret
+
+    @GitPasswordSecret.setter
+    def GitPasswordSecret(self, GitPasswordSecret):
+        self._GitPasswordSecret = GitPasswordSecret
+
+    @property
+    def GitBranch(self):
+        return self._GitBranch
+
+    @GitBranch.setter
+    def GitBranch(self, GitBranch):
+        self._GitBranch = GitBranch
+
+    @property
+    def GitDirectory(self):
+        return self._GitDirectory
+
+    @GitDirectory.setter
+    def GitDirectory(self, GitDirectory):
+        self._GitDirectory = GitDirectory
+
+    @property
+    def GitCommitId(self):
+        return self._GitCommitId
+
+    @GitCommitId.setter
+    def GitCommitId(self, GitCommitId):
+        self._GitCommitId = GitCommitId
+
+    @property
+    def GitUserNameSecret(self):
+        return self._GitUserNameSecret
+
+    @GitUserNameSecret.setter
+    def GitUserNameSecret(self, GitUserNameSecret):
+        self._GitUserNameSecret = GitUserNameSecret
+
+    @property
+    def ImageConfig(self):
+        return self._ImageConfig
+
+    @ImageConfig.setter
+    def ImageConfig(self, ImageConfig):
+        self._ImageConfig = ImageConfig
 
 
     def _deserialize(self, params):
-        self.CosBucketName = params.get("CosBucketName")
-        self.CosObjectName = params.get("CosObjectName")
-        self.ZipFile = params.get("ZipFile")
-        self.CosBucketRegion = params.get("CosBucketRegion")
-        self.DemoId = params.get("DemoId")
-        self.TempCosObjectName = params.get("TempCosObjectName")
-        self.GitUrl = params.get("GitUrl")
-        self.GitUserName = params.get("GitUserName")
-        self.GitPassword = params.get("GitPassword")
-        self.GitPasswordSecret = params.get("GitPasswordSecret")
-        self.GitBranch = params.get("GitBranch")
-        self.GitDirectory = params.get("GitDirectory")
-        self.GitCommitId = params.get("GitCommitId")
-        self.GitUserNameSecret = params.get("GitUserNameSecret")
+        self._CosBucketName = params.get("CosBucketName")
+        self._CosObjectName = params.get("CosObjectName")
+        self._ZipFile = params.get("ZipFile")
+        self._CosBucketRegion = params.get("CosBucketRegion")
+        self._DemoId = params.get("DemoId")
+        self._TempCosObjectName = params.get("TempCosObjectName")
+        self._GitUrl = params.get("GitUrl")
+        self._GitUserName = params.get("GitUserName")
+        self._GitPassword = params.get("GitPassword")
+        self._GitPasswordSecret = params.get("GitPasswordSecret")
+        self._GitBranch = params.get("GitBranch")
+        self._GitDirectory = params.get("GitDirectory")
+        self._GitCommitId = params.get("GitCommitId")
+        self._GitUserNameSecret = params.get("GitUserNameSecret")
         if params.get("ImageConfig") is not None:
-            self.ImageConfig = ImageConfig()
-            self.ImageConfig._deserialize(params.get("ImageConfig"))
+            self._ImageConfig = ImageConfig()
+            self._ImageConfig._deserialize(params.get("ImageConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -266,51 +527,116 @@ class CopyFunctionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FunctionName: Name of the function to be replicated
+        :param _FunctionName: Name of the function to be replicated
         :type FunctionName: str
-        :param NewFunctionName: Name of the new function
+        :param _NewFunctionName: Name of the new function
         :type NewFunctionName: str
-        :param Namespace: Namespace of the function to be replicated. The default value is `default`.
+        :param _Namespace: Namespace of the function to be replicated. The default value is `default`.
         :type Namespace: str
-        :param TargetNamespace: Namespace of the replicated function. The default value is default.
+        :param _TargetNamespace: Namespace of the replicated function. The default value is default.
         :type TargetNamespace: str
-        :param Description: Description of the new function
+        :param _Description: Description of the new function
         :type Description: str
-        :param TargetRegion: Region of the target of the function replication. If the value is not set, the current region is used by default.
+        :param _TargetRegion: Region of the target of the function replication. If the value is not set, the current region is used by default.
         :type TargetRegion: str
-        :param Override: It specifies whether to replace the function with the same name in the target namespace. The default option is `FALSE`.
+        :param _Override: It specifies whether to replace the function with the same name in the target namespace. The default option is `FALSE`.
 (Note: The `TRUE` option results in deletion of the function in the target namespace. Please operate with caution.)
 TRUE: Replaces the function.
 FALSE: Does not replace the function.
         :type Override: bool
-        :param CopyConfiguration: It specifies whether to replicate the function attributes, including environment variables, memory, timeout, function description, labels, and VPC. The default value is `TRUE`.
+        :param _CopyConfiguration: It specifies whether to replicate the function attributes, including environment variables, memory, timeout, function description, labels, and VPC. The default value is `TRUE`.
 TRUE: Replicates the function configuration.
 FALSE: Does not replicate the function configuration.
         :type CopyConfiguration: bool
         """
-        self.FunctionName = None
-        self.NewFunctionName = None
-        self.Namespace = None
-        self.TargetNamespace = None
-        self.Description = None
-        self.TargetRegion = None
-        self.Override = None
-        self.CopyConfiguration = None
+        self._FunctionName = None
+        self._NewFunctionName = None
+        self._Namespace = None
+        self._TargetNamespace = None
+        self._Description = None
+        self._TargetRegion = None
+        self._Override = None
+        self._CopyConfiguration = None
+
+    @property
+    def FunctionName(self):
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def NewFunctionName(self):
+        return self._NewFunctionName
+
+    @NewFunctionName.setter
+    def NewFunctionName(self, NewFunctionName):
+        self._NewFunctionName = NewFunctionName
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def TargetNamespace(self):
+        return self._TargetNamespace
+
+    @TargetNamespace.setter
+    def TargetNamespace(self, TargetNamespace):
+        self._TargetNamespace = TargetNamespace
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def TargetRegion(self):
+        return self._TargetRegion
+
+    @TargetRegion.setter
+    def TargetRegion(self, TargetRegion):
+        self._TargetRegion = TargetRegion
+
+    @property
+    def Override(self):
+        return self._Override
+
+    @Override.setter
+    def Override(self, Override):
+        self._Override = Override
+
+    @property
+    def CopyConfiguration(self):
+        return self._CopyConfiguration
+
+    @CopyConfiguration.setter
+    def CopyConfiguration(self, CopyConfiguration):
+        self._CopyConfiguration = CopyConfiguration
 
 
     def _deserialize(self, params):
-        self.FunctionName = params.get("FunctionName")
-        self.NewFunctionName = params.get("NewFunctionName")
-        self.Namespace = params.get("Namespace")
-        self.TargetNamespace = params.get("TargetNamespace")
-        self.Description = params.get("Description")
-        self.TargetRegion = params.get("TargetRegion")
-        self.Override = params.get("Override")
-        self.CopyConfiguration = params.get("CopyConfiguration")
+        self._FunctionName = params.get("FunctionName")
+        self._NewFunctionName = params.get("NewFunctionName")
+        self._Namespace = params.get("Namespace")
+        self._TargetNamespace = params.get("TargetNamespace")
+        self._Description = params.get("Description")
+        self._TargetRegion = params.get("TargetRegion")
+        self._Override = params.get("Override")
+        self._CopyConfiguration = params.get("CopyConfiguration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -323,14 +649,22 @@ class CopyFunctionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateAliasRequest(AbstractModel):
@@ -340,40 +674,89 @@ class CreateAliasRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: Alias name, which must be unique in the function, can contain 1 to 64 letters, digits, `_`, and `-`, and must begin with a letter
+        :param _Name: Alias name, which must be unique in the function, can contain 1 to 64 letters, digits, `_`, and `-`, and must begin with a letter
         :type Name: str
-        :param FunctionName: Function name
+        :param _FunctionName: Function name
         :type FunctionName: str
-        :param FunctionVersion: Master version pointed to by the alias
+        :param _FunctionVersion: Master version pointed to by the alias
         :type FunctionVersion: str
-        :param Namespace: Function namespace
+        :param _Namespace: Function namespace
         :type Namespace: str
-        :param RoutingConfig: Request routing configuration of alias
+        :param _RoutingConfig: Request routing configuration of alias
         :type RoutingConfig: :class:`tencentcloud.scf.v20180416.models.RoutingConfig`
-        :param Description: Alias description
+        :param _Description: Alias description
         :type Description: str
         """
-        self.Name = None
-        self.FunctionName = None
-        self.FunctionVersion = None
-        self.Namespace = None
-        self.RoutingConfig = None
-        self.Description = None
+        self._Name = None
+        self._FunctionName = None
+        self._FunctionVersion = None
+        self._Namespace = None
+        self._RoutingConfig = None
+        self._Description = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def FunctionName(self):
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def FunctionVersion(self):
+        return self._FunctionVersion
+
+    @FunctionVersion.setter
+    def FunctionVersion(self, FunctionVersion):
+        self._FunctionVersion = FunctionVersion
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def RoutingConfig(self):
+        return self._RoutingConfig
+
+    @RoutingConfig.setter
+    def RoutingConfig(self, RoutingConfig):
+        self._RoutingConfig = RoutingConfig
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.FunctionName = params.get("FunctionName")
-        self.FunctionVersion = params.get("FunctionVersion")
-        self.Namespace = params.get("Namespace")
+        self._Name = params.get("Name")
+        self._FunctionName = params.get("FunctionName")
+        self._FunctionVersion = params.get("FunctionVersion")
+        self._Namespace = params.get("Namespace")
         if params.get("RoutingConfig") is not None:
-            self.RoutingConfig = RoutingConfig()
-            self.RoutingConfig._deserialize(params.get("RoutingConfig"))
-        self.Description = params.get("Description")
+            self._RoutingConfig = RoutingConfig()
+            self._RoutingConfig._deserialize(params.get("RoutingConfig"))
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -386,14 +769,22 @@ class CreateAliasResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateNamespaceRequest(AbstractModel):
@@ -403,22 +794,39 @@ class CreateNamespaceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Namespace: Namespace name
+        :param _Namespace: Namespace name
         :type Namespace: str
-        :param Description: Namespace description
+        :param _Description: Namespace description
         :type Description: str
         """
-        self.Namespace = None
-        self.Description = None
+        self._Namespace = None
+        self._Description = None
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
 
     def _deserialize(self, params):
-        self.Namespace = params.get("Namespace")
-        self.Description = params.get("Description")
+        self._Namespace = params.get("Namespace")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -431,14 +839,22 @@ class CreateNamespaceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateTriggerRequest(AbstractModel):
@@ -448,46 +864,111 @@ class CreateTriggerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FunctionName: Name of the function bound to the new trigger
+        :param _FunctionName: Name of the function bound to the new trigger
         :type FunctionName: str
-        :param TriggerName: Name of a new trigger. For a timer trigger, the name can contain up to 100 letters, digits, dashes, and underscores; for a COS trigger, it should be an access domain name of the corresponding COS bucket applicable to the XML API (e.g., 5401-5ff414-12345.cos.ap-shanghai.myqcloud.com); for other triggers, please see the descriptions of parameters bound to the specific trigger.
+        :param _TriggerName: Name of a new trigger. For a timer trigger, the name can contain up to 100 letters, digits, dashes, and underscores; for a COS trigger, it should be an access domain name of the corresponding COS bucket applicable to the XML API (e.g., 5401-5ff414-12345.cos.ap-shanghai.myqcloud.com); for other triggers, please see the descriptions of parameters bound to the specific trigger.
         :type TriggerName: str
-        :param Type: Type of trigger. Values: `cos`, `cmq`, `timer`, `ckafka` and `apigw`. To create a CLS trigger, please refer to [Creating Shipping Task (SCF)](https://intl.cloud.tencent.com/document/product/614/61096?from_cn_redirect=1).
+        :param _Type: Type of trigger. Values: `cos`, `cmq`, `timer`, `ckafka` and `apigw`. To create a CLS trigger, please refer to [Creating Shipping Task (SCF)](https://intl.cloud.tencent.com/document/product/614/61096?from_cn_redirect=1).
         :type Type: str
-        :param TriggerDesc: For parameters of triggers, see [Trigger Description](https://intl.cloud.tencent.com/document/product/583/39901?from_cn_redirect=1)
+        :param _TriggerDesc: For parameters of triggers, see [Trigger Description](https://intl.cloud.tencent.com/document/product/583/39901?from_cn_redirect=1)
         :type TriggerDesc: str
-        :param Namespace: Function namespace
+        :param _Namespace: Function namespace
         :type Namespace: str
-        :param Qualifier: Function version. It defaults to `$LATEST`. It’s recommended to use `[$DEFAULT](https://intl.cloud.tencent.com/document/product/583/36149?from_cn_redirect=1#.E9.BB.98.E8.AE.A4.E5.88.AB.E5.90.8D)` for canary release.
+        :param _Qualifier: Function version. It defaults to `$LATEST`. It’s recommended to use `[$DEFAULT](https://intl.cloud.tencent.com/document/product/583/36149?from_cn_redirect=1#.E9.BB.98.E8.AE.A4.E5.88.AB.E5.90.8D)` for canary release.
         :type Qualifier: str
-        :param Enable: Initial enabling status of the trigger. `OPEN` indicates enabled, and `CLOSE` indicates disabled.
+        :param _Enable: Initial enabling status of the trigger. `OPEN` indicates enabled, and `CLOSE` indicates disabled.
         :type Enable: str
-        :param CustomArgument: Custom argument, supporting only the timer trigger.
+        :param _CustomArgument: Custom argument, supporting only the timer trigger.
         :type CustomArgument: str
         """
-        self.FunctionName = None
-        self.TriggerName = None
-        self.Type = None
-        self.TriggerDesc = None
-        self.Namespace = None
-        self.Qualifier = None
-        self.Enable = None
-        self.CustomArgument = None
+        self._FunctionName = None
+        self._TriggerName = None
+        self._Type = None
+        self._TriggerDesc = None
+        self._Namespace = None
+        self._Qualifier = None
+        self._Enable = None
+        self._CustomArgument = None
+
+    @property
+    def FunctionName(self):
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def TriggerName(self):
+        return self._TriggerName
+
+    @TriggerName.setter
+    def TriggerName(self, TriggerName):
+        self._TriggerName = TriggerName
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def TriggerDesc(self):
+        return self._TriggerDesc
+
+    @TriggerDesc.setter
+    def TriggerDesc(self, TriggerDesc):
+        self._TriggerDesc = TriggerDesc
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Qualifier(self):
+        return self._Qualifier
+
+    @Qualifier.setter
+    def Qualifier(self, Qualifier):
+        self._Qualifier = Qualifier
+
+    @property
+    def Enable(self):
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def CustomArgument(self):
+        return self._CustomArgument
+
+    @CustomArgument.setter
+    def CustomArgument(self, CustomArgument):
+        self._CustomArgument = CustomArgument
 
 
     def _deserialize(self, params):
-        self.FunctionName = params.get("FunctionName")
-        self.TriggerName = params.get("TriggerName")
-        self.Type = params.get("Type")
-        self.TriggerDesc = params.get("TriggerDesc")
-        self.Namespace = params.get("Namespace")
-        self.Qualifier = params.get("Qualifier")
-        self.Enable = params.get("Enable")
-        self.CustomArgument = params.get("CustomArgument")
+        self._FunctionName = params.get("FunctionName")
+        self._TriggerName = params.get("TriggerName")
+        self._Type = params.get("Type")
+        self._TriggerDesc = params.get("TriggerDesc")
+        self._Namespace = params.get("Namespace")
+        self._Qualifier = params.get("Qualifier")
+        self._Enable = params.get("Enable")
+        self._CustomArgument = params.get("CustomArgument")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -500,20 +981,36 @@ class CreateTriggerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TriggerInfo: Trigger information
+        :param _TriggerInfo: Trigger information
         :type TriggerInfo: :class:`tencentcloud.scf.v20180416.models.Trigger`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TriggerInfo = None
-        self.RequestId = None
+        self._TriggerInfo = None
+        self._RequestId = None
+
+    @property
+    def TriggerInfo(self):
+        return self._TriggerInfo
+
+    @TriggerInfo.setter
+    def TriggerInfo(self, TriggerInfo):
+        self._TriggerInfo = TriggerInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("TriggerInfo") is not None:
-            self.TriggerInfo = Trigger()
-            self.TriggerInfo._deserialize(params.get("TriggerInfo"))
-        self.RequestId = params.get("RequestId")
+            self._TriggerInfo = Trigger()
+            self._TriggerInfo._deserialize(params.get("TriggerInfo"))
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteAliasRequest(AbstractModel):
@@ -523,26 +1020,51 @@ class DeleteAliasRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FunctionName: Function name
+        :param _FunctionName: Function name
         :type FunctionName: str
-        :param Name: Alias name
+        :param _Name: Alias name
         :type Name: str
-        :param Namespace: Function namespace
+        :param _Namespace: Function namespace
         :type Namespace: str
         """
-        self.FunctionName = None
-        self.Name = None
-        self.Namespace = None
+        self._FunctionName = None
+        self._Name = None
+        self._Namespace = None
+
+    @property
+    def FunctionName(self):
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
 
 
     def _deserialize(self, params):
-        self.FunctionName = params.get("FunctionName")
-        self.Name = params.get("Name")
-        self.Namespace = params.get("Namespace")
+        self._FunctionName = params.get("FunctionName")
+        self._Name = params.get("Name")
+        self._Namespace = params.get("Namespace")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -555,14 +1077,22 @@ class DeleteAliasResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteFunctionRequest(AbstractModel):
@@ -572,26 +1102,51 @@ class DeleteFunctionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FunctionName: Name of the function to be deleted
+        :param _FunctionName: Name of the function to be deleted
         :type FunctionName: str
-        :param Namespace: Function namespace
+        :param _Namespace: Function namespace
         :type Namespace: str
-        :param Qualifier: ID of the version to delete. All versions are deleted if it’s left empty.
+        :param _Qualifier: ID of the version to delete. All versions are deleted if it’s left empty.
         :type Qualifier: str
         """
-        self.FunctionName = None
-        self.Namespace = None
-        self.Qualifier = None
+        self._FunctionName = None
+        self._Namespace = None
+        self._Qualifier = None
+
+    @property
+    def FunctionName(self):
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Qualifier(self):
+        return self._Qualifier
+
+    @Qualifier.setter
+    def Qualifier(self, Qualifier):
+        self._Qualifier = Qualifier
 
 
     def _deserialize(self, params):
-        self.FunctionName = params.get("FunctionName")
-        self.Namespace = params.get("Namespace")
-        self.Qualifier = params.get("Qualifier")
+        self._FunctionName = params.get("FunctionName")
+        self._Namespace = params.get("Namespace")
+        self._Qualifier = params.get("Qualifier")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -604,14 +1159,22 @@ class DeleteFunctionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteLayerVersionRequest(AbstractModel):
@@ -621,22 +1184,39 @@ class DeleteLayerVersionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LayerName: Layer name
+        :param _LayerName: Layer name
         :type LayerName: str
-        :param LayerVersion: Version number
+        :param _LayerVersion: Version number
         :type LayerVersion: int
         """
-        self.LayerName = None
-        self.LayerVersion = None
+        self._LayerName = None
+        self._LayerVersion = None
+
+    @property
+    def LayerName(self):
+        return self._LayerName
+
+    @LayerName.setter
+    def LayerName(self, LayerName):
+        self._LayerName = LayerName
+
+    @property
+    def LayerVersion(self):
+        return self._LayerVersion
+
+    @LayerVersion.setter
+    def LayerVersion(self, LayerVersion):
+        self._LayerVersion = LayerVersion
 
 
     def _deserialize(self, params):
-        self.LayerName = params.get("LayerName")
-        self.LayerVersion = params.get("LayerVersion")
+        self._LayerName = params.get("LayerName")
+        self._LayerVersion = params.get("LayerVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -649,14 +1229,22 @@ class DeleteLayerVersionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteNamespaceRequest(AbstractModel):
@@ -666,18 +1254,27 @@ class DeleteNamespaceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Namespace: Namespace name
+        :param _Namespace: Namespace name
         :type Namespace: str
         """
-        self.Namespace = None
+        self._Namespace = None
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
 
 
     def _deserialize(self, params):
-        self.Namespace = params.get("Namespace")
+        self._Namespace = params.get("Namespace")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -690,14 +1287,22 @@ class DeleteNamespaceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteProvisionedConcurrencyConfigRequest(AbstractModel):
@@ -707,26 +1312,51 @@ class DeleteProvisionedConcurrencyConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FunctionName: Name of the function for which to delete the provisioned concurrency
+        :param _FunctionName: Name of the function for which to delete the provisioned concurrency
         :type FunctionName: str
-        :param Qualifier: Function version number
+        :param _Qualifier: Function version number
         :type Qualifier: str
-        :param Namespace: Function namespace. Default value: `default`
+        :param _Namespace: Function namespace. Default value: `default`
         :type Namespace: str
         """
-        self.FunctionName = None
-        self.Qualifier = None
-        self.Namespace = None
+        self._FunctionName = None
+        self._Qualifier = None
+        self._Namespace = None
+
+    @property
+    def FunctionName(self):
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def Qualifier(self):
+        return self._Qualifier
+
+    @Qualifier.setter
+    def Qualifier(self, Qualifier):
+        self._Qualifier = Qualifier
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
 
 
     def _deserialize(self, params):
-        self.FunctionName = params.get("FunctionName")
-        self.Qualifier = params.get("Qualifier")
-        self.Namespace = params.get("Namespace")
+        self._FunctionName = params.get("FunctionName")
+        self._Qualifier = params.get("Qualifier")
+        self._Namespace = params.get("Namespace")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -739,14 +1369,22 @@ class DeleteProvisionedConcurrencyConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteReservedConcurrencyConfigRequest(AbstractModel):
@@ -756,22 +1394,39 @@ class DeleteReservedConcurrencyConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FunctionName: Specifies the function of which you want to delete the reserved quota
+        :param _FunctionName: Specifies the function of which you want to delete the reserved quota
         :type FunctionName: str
-        :param Namespace: Function namespace. Default value: `default`
+        :param _Namespace: Function namespace. Default value: `default`
         :type Namespace: str
         """
-        self.FunctionName = None
-        self.Namespace = None
+        self._FunctionName = None
+        self._Namespace = None
+
+    @property
+    def FunctionName(self):
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
 
 
     def _deserialize(self, params):
-        self.FunctionName = params.get("FunctionName")
-        self.Namespace = params.get("Namespace")
+        self._FunctionName = params.get("FunctionName")
+        self._Namespace = params.get("Namespace")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -784,14 +1439,22 @@ class DeleteReservedConcurrencyConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteTriggerRequest(AbstractModel):
@@ -801,38 +1464,87 @@ class DeleteTriggerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FunctionName: Function name
+        :param _FunctionName: Function name
         :type FunctionName: str
-        :param TriggerName: Name of the trigger to be deleted
+        :param _TriggerName: Name of the trigger to be deleted
         :type TriggerName: str
-        :param Type: Type of the trigger to be deleted. Currently, COS, CMQ, timer, and ckafka triggers are supported.
+        :param _Type: Type of the trigger to be deleted. Currently, COS, CMQ, timer, and ckafka triggers are supported.
         :type Type: str
-        :param Namespace: Function namespace
+        :param _Namespace: Function namespace
         :type Namespace: str
-        :param TriggerDesc: This field is required if a COS trigger is to be deleted. It stores the data {"event":"cos:ObjectCreated:*"} in the JSON format. The data content of this field is in the same format as that of SetTrigger. This field is optional if a scheduled trigger or CMQ trigger is to be deleted.
+        :param _TriggerDesc: This field is required if a COS trigger is to be deleted. It stores the data {"event":"cos:ObjectCreated:*"} in the JSON format. The data content of this field is in the same format as that of SetTrigger. This field is optional if a scheduled trigger or CMQ trigger is to be deleted.
         :type TriggerDesc: str
-        :param Qualifier: Function version. It defaults to `$LATEST`. It’s recommended to use `[$DEFAULT](https://intl.cloud.tencent.com/document/product/583/36149?from_cn_redirect=1#.E9.BB.98.E8.AE.A4.E5.88.AB.E5.90.8D)` for canary release.
+        :param _Qualifier: Function version. It defaults to `$LATEST`. It’s recommended to use `[$DEFAULT](https://intl.cloud.tencent.com/document/product/583/36149?from_cn_redirect=1#.E9.BB.98.E8.AE.A4.E5.88.AB.E5.90.8D)` for canary release.
         :type Qualifier: str
         """
-        self.FunctionName = None
-        self.TriggerName = None
-        self.Type = None
-        self.Namespace = None
-        self.TriggerDesc = None
-        self.Qualifier = None
+        self._FunctionName = None
+        self._TriggerName = None
+        self._Type = None
+        self._Namespace = None
+        self._TriggerDesc = None
+        self._Qualifier = None
+
+    @property
+    def FunctionName(self):
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def TriggerName(self):
+        return self._TriggerName
+
+    @TriggerName.setter
+    def TriggerName(self, TriggerName):
+        self._TriggerName = TriggerName
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def TriggerDesc(self):
+        return self._TriggerDesc
+
+    @TriggerDesc.setter
+    def TriggerDesc(self, TriggerDesc):
+        self._TriggerDesc = TriggerDesc
+
+    @property
+    def Qualifier(self):
+        return self._Qualifier
+
+    @Qualifier.setter
+    def Qualifier(self, Qualifier):
+        self._Qualifier = Qualifier
 
 
     def _deserialize(self, params):
-        self.FunctionName = params.get("FunctionName")
-        self.TriggerName = params.get("TriggerName")
-        self.Type = params.get("Type")
-        self.Namespace = params.get("Namespace")
-        self.TriggerDesc = params.get("TriggerDesc")
-        self.Qualifier = params.get("Qualifier")
+        self._FunctionName = params.get("FunctionName")
+        self._TriggerName = params.get("TriggerName")
+        self._Type = params.get("Type")
+        self._Namespace = params.get("Namespace")
+        self._TriggerDesc = params.get("TriggerDesc")
+        self._Qualifier = params.get("Qualifier")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -845,14 +1557,22 @@ class DeleteTriggerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class Filter(AbstractModel):
@@ -864,25 +1584,42 @@ class Filter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: Fields to be filtered. Up to 10 conditions allowed.
+        :param _Name: Fields to be filtered. Up to 10 conditions allowed.
 Values of `Name`: `VpcId`, `SubnetId`, `ClsTopicId`, `ClsLogsetId`, `Role`, `CfsId`, `CfsMountInsId`, `Eip`. Values limit: 1.
 Name options: Status, Runtime, FunctionType, PublicNetStatus, AsyncRunEnable, TraceEnable. Values limit: 20.
 When `Name` is `Runtime`, `CustomImage` refers to the image type function 
         :type Name: str
-        :param Values: Filter values of the field
+        :param _Values: Filter values of the field
         :type Values: list of str
         """
-        self.Name = None
-        self.Values = None
+        self._Name = None
+        self._Values = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Values = params.get("Values")
+        self._Name = params.get("Name")
+        self._Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -895,90 +1632,219 @@ class Function(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ModTime: Modification time
+        :param _ModTime: Modification time
         :type ModTime: str
-        :param AddTime: Creation time
+        :param _AddTime: Creation time
         :type AddTime: str
-        :param Runtime: Running
+        :param _Runtime: Running
         :type Runtime: str
-        :param FunctionName: Function name
+        :param _FunctionName: Function name
         :type FunctionName: str
-        :param FunctionId: Function ID
+        :param _FunctionId: Function ID
         :type FunctionId: str
-        :param Namespace: Namespace
+        :param _Namespace: Namespace
         :type Namespace: str
-        :param Status: Function status. For valid values and status change process, please see [here](https://intl.cloud.tencent.com/document/product/583/47175?from_cn_redirect=1)
+        :param _Status: Function status. For valid values and status change process, please see [here](https://intl.cloud.tencent.com/document/product/583/47175?from_cn_redirect=1)
         :type Status: str
-        :param StatusDesc: Function status details
+        :param _StatusDesc: Function status details
         :type StatusDesc: str
-        :param Description: Function description
+        :param _Description: Function description
         :type Description: str
-        :param Tags: Function tag
+        :param _Tags: Function tag
         :type Tags: list of Tag
-        :param Type: Function type. The value is `HTTP` or `Event`.
+        :param _Type: Function type. The value is `HTTP` or `Event`.
         :type Type: str
-        :param StatusReasons: Cause of function failure
+        :param _StatusReasons: Cause of function failure
         :type StatusReasons: list of StatusReason
-        :param TotalProvisionedConcurrencyMem: Sum of provisioned concurrence memory for all function versions
+        :param _TotalProvisionedConcurrencyMem: Sum of provisioned concurrence memory for all function versions
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TotalProvisionedConcurrencyMem: int
-        :param ReservedConcurrencyMem: Reserved memory for function concurrence
+        :param _ReservedConcurrencyMem: Reserved memory for function concurrence
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ReservedConcurrencyMem: int
-        :param AsyncRunEnable: Asynchronization attribute of the function. Values: `TRUE` and `FALSE`.
+        :param _AsyncRunEnable: Asynchronization attribute of the function. Values: `TRUE` and `FALSE`.
         :type AsyncRunEnable: str
-        :param TraceEnable: Whether to enable call tracing for ansynchronized functions. Values: `TRUE` and `FALSE`.
+        :param _TraceEnable: Whether to enable call tracing for ansynchronized functions. Values: `TRUE` and `FALSE`.
         :type TraceEnable: str
         """
-        self.ModTime = None
-        self.AddTime = None
-        self.Runtime = None
-        self.FunctionName = None
-        self.FunctionId = None
-        self.Namespace = None
-        self.Status = None
-        self.StatusDesc = None
-        self.Description = None
-        self.Tags = None
-        self.Type = None
-        self.StatusReasons = None
-        self.TotalProvisionedConcurrencyMem = None
-        self.ReservedConcurrencyMem = None
-        self.AsyncRunEnable = None
-        self.TraceEnable = None
+        self._ModTime = None
+        self._AddTime = None
+        self._Runtime = None
+        self._FunctionName = None
+        self._FunctionId = None
+        self._Namespace = None
+        self._Status = None
+        self._StatusDesc = None
+        self._Description = None
+        self._Tags = None
+        self._Type = None
+        self._StatusReasons = None
+        self._TotalProvisionedConcurrencyMem = None
+        self._ReservedConcurrencyMem = None
+        self._AsyncRunEnable = None
+        self._TraceEnable = None
+
+    @property
+    def ModTime(self):
+        return self._ModTime
+
+    @ModTime.setter
+    def ModTime(self, ModTime):
+        self._ModTime = ModTime
+
+    @property
+    def AddTime(self):
+        return self._AddTime
+
+    @AddTime.setter
+    def AddTime(self, AddTime):
+        self._AddTime = AddTime
+
+    @property
+    def Runtime(self):
+        return self._Runtime
+
+    @Runtime.setter
+    def Runtime(self, Runtime):
+        self._Runtime = Runtime
+
+    @property
+    def FunctionName(self):
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def FunctionId(self):
+        return self._FunctionId
+
+    @FunctionId.setter
+    def FunctionId(self, FunctionId):
+        self._FunctionId = FunctionId
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StatusDesc(self):
+        return self._StatusDesc
+
+    @StatusDesc.setter
+    def StatusDesc(self, StatusDesc):
+        self._StatusDesc = StatusDesc
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def StatusReasons(self):
+        return self._StatusReasons
+
+    @StatusReasons.setter
+    def StatusReasons(self, StatusReasons):
+        self._StatusReasons = StatusReasons
+
+    @property
+    def TotalProvisionedConcurrencyMem(self):
+        return self._TotalProvisionedConcurrencyMem
+
+    @TotalProvisionedConcurrencyMem.setter
+    def TotalProvisionedConcurrencyMem(self, TotalProvisionedConcurrencyMem):
+        self._TotalProvisionedConcurrencyMem = TotalProvisionedConcurrencyMem
+
+    @property
+    def ReservedConcurrencyMem(self):
+        return self._ReservedConcurrencyMem
+
+    @ReservedConcurrencyMem.setter
+    def ReservedConcurrencyMem(self, ReservedConcurrencyMem):
+        self._ReservedConcurrencyMem = ReservedConcurrencyMem
+
+    @property
+    def AsyncRunEnable(self):
+        return self._AsyncRunEnable
+
+    @AsyncRunEnable.setter
+    def AsyncRunEnable(self, AsyncRunEnable):
+        self._AsyncRunEnable = AsyncRunEnable
+
+    @property
+    def TraceEnable(self):
+        return self._TraceEnable
+
+    @TraceEnable.setter
+    def TraceEnable(self, TraceEnable):
+        self._TraceEnable = TraceEnable
 
 
     def _deserialize(self, params):
-        self.ModTime = params.get("ModTime")
-        self.AddTime = params.get("AddTime")
-        self.Runtime = params.get("Runtime")
-        self.FunctionName = params.get("FunctionName")
-        self.FunctionId = params.get("FunctionId")
-        self.Namespace = params.get("Namespace")
-        self.Status = params.get("Status")
-        self.StatusDesc = params.get("StatusDesc")
-        self.Description = params.get("Description")
+        self._ModTime = params.get("ModTime")
+        self._AddTime = params.get("AddTime")
+        self._Runtime = params.get("Runtime")
+        self._FunctionName = params.get("FunctionName")
+        self._FunctionId = params.get("FunctionId")
+        self._Namespace = params.get("Namespace")
+        self._Status = params.get("Status")
+        self._StatusDesc = params.get("StatusDesc")
+        self._Description = params.get("Description")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.Type = params.get("Type")
+                self._Tags.append(obj)
+        self._Type = params.get("Type")
         if params.get("StatusReasons") is not None:
-            self.StatusReasons = []
+            self._StatusReasons = []
             for item in params.get("StatusReasons"):
                 obj = StatusReason()
                 obj._deserialize(item)
-                self.StatusReasons.append(obj)
-        self.TotalProvisionedConcurrencyMem = params.get("TotalProvisionedConcurrencyMem")
-        self.ReservedConcurrencyMem = params.get("ReservedConcurrencyMem")
-        self.AsyncRunEnable = params.get("AsyncRunEnable")
-        self.TraceEnable = params.get("TraceEnable")
+                self._StatusReasons.append(obj)
+        self._TotalProvisionedConcurrencyMem = params.get("TotalProvisionedConcurrencyMem")
+        self._ReservedConcurrencyMem = params.get("ReservedConcurrencyMem")
+        self._AsyncRunEnable = params.get("AsyncRunEnable")
+        self._TraceEnable = params.get("TraceEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -991,66 +1857,171 @@ class FunctionLog(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FunctionName: Function name
+        :param _FunctionName: Function name
         :type FunctionName: str
-        :param RetMsg: Return value after the function is executed
+        :param _RetMsg: Return value after the function is executed
         :type RetMsg: str
-        :param RequestId: RequestId corresponding to the executed function
+        :param _RequestId: RequestId corresponding to the executed function
         :type RequestId: str
-        :param StartTime: Start time of the function execution
+        :param _StartTime: Start time of the function execution
         :type StartTime: str
-        :param RetCode: Function execution result. `0` indicates successful execution and other values indicate failure.
+        :param _RetCode: Function execution result. `0` indicates successful execution and other values indicate failure.
         :type RetCode: int
-        :param InvokeFinished: It specifies whether the function invocation is finished. `1` indicates execution completion and other values indicate that exceptions occurred during the invocation.
+        :param _InvokeFinished: It specifies whether the function invocation is finished. `1` indicates execution completion and other values indicate that exceptions occurred during the invocation.
         :type InvokeFinished: int
-        :param Duration: Duration of the function execution. The unit is millisecond (ms).
+        :param _Duration: Duration of the function execution. The unit is millisecond (ms).
         :type Duration: float
-        :param BillDuration: Function billing duration. The unit is millisecond (ms). The value is rounded up to a multiple of 100 ms.
+        :param _BillDuration: Function billing duration. The unit is millisecond (ms). The value is rounded up to a multiple of 100 ms.
         :type BillDuration: int
-        :param MemUsage: Actual memory size used during the function execution. The unit is byte.
+        :param _MemUsage: Actual memory size used during the function execution. The unit is byte.
         :type MemUsage: int
-        :param Log: Function execution logs
+        :param _Log: Function execution logs
         :type Log: str
-        :param Level: Log level
+        :param _Level: Log level
         :type Level: str
-        :param Source: Log source
+        :param _Source: Log source
         :type Source: str
-        :param RetryNum: Number of retries
+        :param _RetryNum: Number of retries
         :type RetryNum: int
         """
-        self.FunctionName = None
-        self.RetMsg = None
-        self.RequestId = None
-        self.StartTime = None
-        self.RetCode = None
-        self.InvokeFinished = None
-        self.Duration = None
-        self.BillDuration = None
-        self.MemUsage = None
-        self.Log = None
-        self.Level = None
-        self.Source = None
-        self.RetryNum = None
+        self._FunctionName = None
+        self._RetMsg = None
+        self._RequestId = None
+        self._StartTime = None
+        self._RetCode = None
+        self._InvokeFinished = None
+        self._Duration = None
+        self._BillDuration = None
+        self._MemUsage = None
+        self._Log = None
+        self._Level = None
+        self._Source = None
+        self._RetryNum = None
+
+    @property
+    def FunctionName(self):
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def RetMsg(self):
+        return self._RetMsg
+
+    @RetMsg.setter
+    def RetMsg(self, RetMsg):
+        self._RetMsg = RetMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def RetCode(self):
+        return self._RetCode
+
+    @RetCode.setter
+    def RetCode(self, RetCode):
+        self._RetCode = RetCode
+
+    @property
+    def InvokeFinished(self):
+        return self._InvokeFinished
+
+    @InvokeFinished.setter
+    def InvokeFinished(self, InvokeFinished):
+        self._InvokeFinished = InvokeFinished
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def BillDuration(self):
+        return self._BillDuration
+
+    @BillDuration.setter
+    def BillDuration(self, BillDuration):
+        self._BillDuration = BillDuration
+
+    @property
+    def MemUsage(self):
+        return self._MemUsage
+
+    @MemUsage.setter
+    def MemUsage(self, MemUsage):
+        self._MemUsage = MemUsage
+
+    @property
+    def Log(self):
+        return self._Log
+
+    @Log.setter
+    def Log(self, Log):
+        self._Log = Log
+
+    @property
+    def Level(self):
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Source(self):
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def RetryNum(self):
+        return self._RetryNum
+
+    @RetryNum.setter
+    def RetryNum(self, RetryNum):
+        self._RetryNum = RetryNum
 
 
     def _deserialize(self, params):
-        self.FunctionName = params.get("FunctionName")
-        self.RetMsg = params.get("RetMsg")
-        self.RequestId = params.get("RequestId")
-        self.StartTime = params.get("StartTime")
-        self.RetCode = params.get("RetCode")
-        self.InvokeFinished = params.get("InvokeFinished")
-        self.Duration = params.get("Duration")
-        self.BillDuration = params.get("BillDuration")
-        self.MemUsage = params.get("MemUsage")
-        self.Log = params.get("Log")
-        self.Level = params.get("Level")
-        self.Source = params.get("Source")
-        self.RetryNum = params.get("RetryNum")
+        self._FunctionName = params.get("FunctionName")
+        self._RetMsg = params.get("RetMsg")
+        self._RequestId = params.get("RequestId")
+        self._StartTime = params.get("StartTime")
+        self._RetCode = params.get("RetCode")
+        self._InvokeFinished = params.get("InvokeFinished")
+        self._Duration = params.get("Duration")
+        self._BillDuration = params.get("BillDuration")
+        self._MemUsage = params.get("MemUsage")
+        self._Log = params.get("Log")
+        self._Level = params.get("Level")
+        self._Source = params.get("Source")
+        self._RetryNum = params.get("RetryNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1063,38 +2034,79 @@ class FunctionVersion(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Version: Function version name
+        :param _Version: Function version name
         :type Version: str
-        :param Description: Version description
+        :param _Description: Version description
 Note: This field may return null, indicating that no valid values is found.
         :type Description: str
-        :param AddTime: The creation time
+        :param _AddTime: The creation time
 Note: This field may return null, indicating that no valid value was found.
         :type AddTime: str
-        :param ModTime: Update time
+        :param _ModTime: Update time
 Note: This field may return null, indicating that no valid value was found.
         :type ModTime: str
-        :param Status: Version status
+        :param _Status: Version status
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Status: str
         """
-        self.Version = None
-        self.Description = None
-        self.AddTime = None
-        self.ModTime = None
-        self.Status = None
+        self._Version = None
+        self._Description = None
+        self._AddTime = None
+        self._ModTime = None
+        self._Status = None
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def AddTime(self):
+        return self._AddTime
+
+    @AddTime.setter
+    def AddTime(self, AddTime):
+        self._AddTime = AddTime
+
+    @property
+    def ModTime(self):
+        return self._ModTime
+
+    @ModTime.setter
+    def ModTime(self, ModTime):
+        self._ModTime = ModTime
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
 
     def _deserialize(self, params):
-        self.Version = params.get("Version")
-        self.Description = params.get("Description")
-        self.AddTime = params.get("AddTime")
-        self.ModTime = params.get("ModTime")
-        self.Status = params.get("Status")
+        self._Version = params.get("Version")
+        self._Description = params.get("Description")
+        self._AddTime = params.get("AddTime")
+        self._ModTime = params.get("ModTime")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1113,26 +2125,50 @@ class GetAccountResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AccountUsage: Namespace usage information
+        :param _AccountUsage: Namespace usage information
         :type AccountUsage: :class:`tencentcloud.scf.v20180416.models.UsageInfo`
-        :param AccountLimit: Namespace limit information
+        :param _AccountLimit: Namespace limit information
         :type AccountLimit: :class:`tencentcloud.scf.v20180416.models.LimitsInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.AccountUsage = None
-        self.AccountLimit = None
-        self.RequestId = None
+        self._AccountUsage = None
+        self._AccountLimit = None
+        self._RequestId = None
+
+    @property
+    def AccountUsage(self):
+        return self._AccountUsage
+
+    @AccountUsage.setter
+    def AccountUsage(self, AccountUsage):
+        self._AccountUsage = AccountUsage
+
+    @property
+    def AccountLimit(self):
+        return self._AccountLimit
+
+    @AccountLimit.setter
+    def AccountLimit(self, AccountLimit):
+        self._AccountLimit = AccountLimit
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("AccountUsage") is not None:
-            self.AccountUsage = UsageInfo()
-            self.AccountUsage._deserialize(params.get("AccountUsage"))
+            self._AccountUsage = UsageInfo()
+            self._AccountUsage._deserialize(params.get("AccountUsage"))
         if params.get("AccountLimit") is not None:
-            self.AccountLimit = LimitsInfo()
-            self.AccountLimit._deserialize(params.get("AccountLimit"))
-        self.RequestId = params.get("RequestId")
+            self._AccountLimit = LimitsInfo()
+            self._AccountLimit._deserialize(params.get("AccountLimit"))
+        self._RequestId = params.get("RequestId")
 
 
 class GetAliasRequest(AbstractModel):
@@ -1142,26 +2178,51 @@ class GetAliasRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FunctionName: Function name
+        :param _FunctionName: Function name
         :type FunctionName: str
-        :param Name: Alias name
+        :param _Name: Alias name
         :type Name: str
-        :param Namespace: Function namespace
+        :param _Namespace: Function namespace
         :type Namespace: str
         """
-        self.FunctionName = None
-        self.Name = None
-        self.Namespace = None
+        self._FunctionName = None
+        self._Name = None
+        self._Namespace = None
+
+    @property
+    def FunctionName(self):
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
 
 
     def _deserialize(self, params):
-        self.FunctionName = params.get("FunctionName")
-        self.Name = params.get("Name")
-        self.Namespace = params.get("Namespace")
+        self._FunctionName = params.get("FunctionName")
+        self._Name = params.get("Name")
+        self._Namespace = params.get("Namespace")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1174,43 +2235,99 @@ class GetAliasResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FunctionVersion: Master version pointed to by the alias
+        :param _FunctionVersion: Master version pointed to by the alias
         :type FunctionVersion: str
-        :param Name: Alias name
+        :param _Name: Alias name
         :type Name: str
-        :param RoutingConfig: Routing information of alias
+        :param _RoutingConfig: Routing information of alias
         :type RoutingConfig: :class:`tencentcloud.scf.v20180416.models.RoutingConfig`
-        :param Description: Alias description
+        :param _Description: Alias description
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Description: str
-        :param AddTime: Creation time
+        :param _AddTime: Creation time
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AddTime: str
-        :param ModTime: Update time
+        :param _ModTime: Update time
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ModTime: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.FunctionVersion = None
-        self.Name = None
-        self.RoutingConfig = None
-        self.Description = None
-        self.AddTime = None
-        self.ModTime = None
-        self.RequestId = None
+        self._FunctionVersion = None
+        self._Name = None
+        self._RoutingConfig = None
+        self._Description = None
+        self._AddTime = None
+        self._ModTime = None
+        self._RequestId = None
+
+    @property
+    def FunctionVersion(self):
+        return self._FunctionVersion
+
+    @FunctionVersion.setter
+    def FunctionVersion(self, FunctionVersion):
+        self._FunctionVersion = FunctionVersion
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def RoutingConfig(self):
+        return self._RoutingConfig
+
+    @RoutingConfig.setter
+    def RoutingConfig(self, RoutingConfig):
+        self._RoutingConfig = RoutingConfig
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def AddTime(self):
+        return self._AddTime
+
+    @AddTime.setter
+    def AddTime(self, AddTime):
+        self._AddTime = AddTime
+
+    @property
+    def ModTime(self):
+        return self._ModTime
+
+    @ModTime.setter
+    def ModTime(self, ModTime):
+        self._ModTime = ModTime
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.FunctionVersion = params.get("FunctionVersion")
-        self.Name = params.get("Name")
+        self._FunctionVersion = params.get("FunctionVersion")
+        self._Name = params.get("Name")
         if params.get("RoutingConfig") is not None:
-            self.RoutingConfig = RoutingConfig()
-            self.RoutingConfig._deserialize(params.get("RoutingConfig"))
-        self.Description = params.get("Description")
-        self.AddTime = params.get("AddTime")
-        self.ModTime = params.get("ModTime")
-        self.RequestId = params.get("RequestId")
+            self._RoutingConfig = RoutingConfig()
+            self._RoutingConfig._deserialize(params.get("RoutingConfig"))
+        self._Description = params.get("Description")
+        self._AddTime = params.get("AddTime")
+        self._ModTime = params.get("ModTime")
+        self._RequestId = params.get("RequestId")
 
 
 class GetAsyncEventStatusRequest(AbstractModel):
@@ -1220,18 +2337,27 @@ class GetAsyncEventStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InvokeRequestId: ID of the async execution request
+        :param _InvokeRequestId: ID of the async execution request
         :type InvokeRequestId: str
         """
-        self.InvokeRequestId = None
+        self._InvokeRequestId = None
+
+    @property
+    def InvokeRequestId(self):
+        return self._InvokeRequestId
+
+    @InvokeRequestId.setter
+    def InvokeRequestId(self, InvokeRequestId):
+        self._InvokeRequestId = InvokeRequestId
 
 
     def _deserialize(self, params):
-        self.InvokeRequestId = params.get("InvokeRequestId")
+        self._InvokeRequestId = params.get("InvokeRequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1244,20 +2370,36 @@ class GetAsyncEventStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Async event status
+        :param _Result: Async event status
         :type Result: :class:`tencentcloud.scf.v20180416.models.AsyncEventStatus`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = AsyncEventStatus()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = AsyncEventStatus()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class GetFunctionAddressRequest(AbstractModel):
@@ -1267,26 +2409,51 @@ class GetFunctionAddressRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FunctionName: Function name
+        :param _FunctionName: Function name
         :type FunctionName: str
-        :param Qualifier: Function version
+        :param _Qualifier: Function version
         :type Qualifier: str
-        :param Namespace: Function namespace
+        :param _Namespace: Function namespace
         :type Namespace: str
         """
-        self.FunctionName = None
-        self.Qualifier = None
-        self.Namespace = None
+        self._FunctionName = None
+        self._Qualifier = None
+        self._Namespace = None
+
+    @property
+    def FunctionName(self):
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def Qualifier(self):
+        return self._Qualifier
+
+    @Qualifier.setter
+    def Qualifier(self, Qualifier):
+        self._Qualifier = Qualifier
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
 
 
     def _deserialize(self, params):
-        self.FunctionName = params.get("FunctionName")
-        self.Qualifier = params.get("Qualifier")
-        self.Namespace = params.get("Namespace")
+        self._FunctionName = params.get("FunctionName")
+        self._Qualifier = params.get("Qualifier")
+        self._Namespace = params.get("Namespace")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1299,22 +2466,46 @@ class GetFunctionAddressResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Url: Cos address of the function
+        :param _Url: Cos address of the function
         :type Url: str
-        :param CodeSha256: SHA256 code of the function
+        :param _CodeSha256: SHA256 code of the function
         :type CodeSha256: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Url = None
-        self.CodeSha256 = None
-        self.RequestId = None
+        self._Url = None
+        self._CodeSha256 = None
+        self._RequestId = None
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def CodeSha256(self):
+        return self._CodeSha256
+
+    @CodeSha256.setter
+    def CodeSha256(self, CodeSha256):
+        self._CodeSha256 = CodeSha256
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Url = params.get("Url")
-        self.CodeSha256 = params.get("CodeSha256")
-        self.RequestId = params.get("RequestId")
+        self._Url = params.get("Url")
+        self._CodeSha256 = params.get("CodeSha256")
+        self._RequestId = params.get("RequestId")
 
 
 class GetFunctionEventInvokeConfigRequest(AbstractModel):
@@ -1324,26 +2515,51 @@ class GetFunctionEventInvokeConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FunctionName: Function name
+        :param _FunctionName: Function name
         :type FunctionName: str
-        :param Namespace: Function namespace. Default value: default
+        :param _Namespace: Function namespace. Default value: default
         :type Namespace: str
-        :param Qualifier: Function version. Default value: $LATEST
+        :param _Qualifier: Function version. Default value: $LATEST
         :type Qualifier: str
         """
-        self.FunctionName = None
-        self.Namespace = None
-        self.Qualifier = None
+        self._FunctionName = None
+        self._Namespace = None
+        self._Qualifier = None
+
+    @property
+    def FunctionName(self):
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Qualifier(self):
+        return self._Qualifier
+
+    @Qualifier.setter
+    def Qualifier(self, Qualifier):
+        self._Qualifier = Qualifier
 
 
     def _deserialize(self, params):
-        self.FunctionName = params.get("FunctionName")
-        self.Namespace = params.get("Namespace")
-        self.Qualifier = params.get("Qualifier")
+        self._FunctionName = params.get("FunctionName")
+        self._Namespace = params.get("Namespace")
+        self._Qualifier = params.get("Qualifier")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1356,20 +2572,36 @@ class GetFunctionEventInvokeConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AsyncTriggerConfig: Async retry configuration information
+        :param _AsyncTriggerConfig: Async retry configuration information
         :type AsyncTriggerConfig: :class:`tencentcloud.scf.v20180416.models.AsyncTriggerConfig`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.AsyncTriggerConfig = None
-        self.RequestId = None
+        self._AsyncTriggerConfig = None
+        self._RequestId = None
+
+    @property
+    def AsyncTriggerConfig(self):
+        return self._AsyncTriggerConfig
+
+    @AsyncTriggerConfig.setter
+    def AsyncTriggerConfig(self, AsyncTriggerConfig):
+        self._AsyncTriggerConfig = AsyncTriggerConfig
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("AsyncTriggerConfig") is not None:
-            self.AsyncTriggerConfig = AsyncTriggerConfig()
-            self.AsyncTriggerConfig._deserialize(params.get("AsyncTriggerConfig"))
-        self.RequestId = params.get("RequestId")
+            self._AsyncTriggerConfig = AsyncTriggerConfig()
+            self._AsyncTriggerConfig._deserialize(params.get("AsyncTriggerConfig"))
+        self._RequestId = params.get("RequestId")
 
 
 class GetFunctionLogsRequest(AbstractModel):
@@ -1379,68 +2611,165 @@ class GetFunctionLogsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FunctionName: Function name.
+        :param _FunctionName: Function name.
 - To ensure the compatibility of the [`GetFunctionLogs`](https://intl.cloud.tencent.com/document/product/583/18583?from_cn_redirect=1) API, the input parameter `FunctionName` is optional, but we recommend you enter it; otherwise, log acquisition may fail.
 - After the function is connected to CLS, we recommend you use the [related CLS API](https://intl.cloud.tencent.com/document/product/614/16875?from_cn_redirect=1) to get the best log retrieval experience.
         :type FunctionName: str
-        :param Offset: Data offset. The addition of `Offset` and `Limit` cannot exceed 10,000.
+        :param _Offset: Data offset. The addition of `Offset` and `Limit` cannot exceed 10,000.
         :type Offset: int
-        :param Limit: Length of the return data. The addition of `Offset` and `Limit` cannot exceed 10,000.
+        :param _Limit: Length of the return data. The addition of `Offset` and `Limit` cannot exceed 10,000.
         :type Limit: int
-        :param Order: It specifies whether to sort the logs in an ascending or descending order. The value is `desc` or `asc`.
+        :param _Order: It specifies whether to sort the logs in an ascending or descending order. The value is `desc` or `asc`.
         :type Order: str
-        :param OrderBy: It specifies the sorting order of the logs based on a specified field, such as `function_name`, `duration`, `mem_usage`, and `start_time`.
+        :param _OrderBy: It specifies the sorting order of the logs based on a specified field, such as `function_name`, `duration`, `mem_usage`, and `start_time`.
         :type OrderBy: str
-        :param Filter: Log filter used to identify whether to return logs of successful or failed requests. `filter.RetCode=not0` indicates that only the logs of failed requests will be returned. `filter.RetCode=is0` indicates that only the logs of successful requests will be returned. If this parameter is left blank, all logs will be returned. 
+        :param _Filter: Log filter used to identify whether to return logs of successful or failed requests. `filter.RetCode=not0` indicates that only the logs of failed requests will be returned. `filter.RetCode=is0` indicates that only the logs of successful requests will be returned. If this parameter is left blank, all logs will be returned. 
         :type Filter: :class:`tencentcloud.scf.v20180416.models.LogFilter`
-        :param Namespace: Function namespace
+        :param _Namespace: Function namespace
         :type Namespace: str
-        :param Qualifier: Function version
+        :param _Qualifier: Function version
         :type Qualifier: str
-        :param FunctionRequestId: RequestId corresponding to the executed function
+        :param _FunctionRequestId: RequestId corresponding to the executed function
         :type FunctionRequestId: str
-        :param StartTime: Query date, for example, 2017-05-16 20:00:00. The date must be within one day of the end time.
+        :param _StartTime: Query date, for example, 2017-05-16 20:00:00. The date must be within one day of the end time.
         :type StartTime: str
-        :param EndTime: Query date, for example, 2017-05-16 20:59:59. The date must be within one day of the start time.
+        :param _EndTime: Query date, for example, 2017-05-16 20:59:59. The date must be within one day of the start time.
         :type EndTime: str
-        :param SearchContext: This field is disused.
+        :param _SearchContext: This field is disused.
         :type SearchContext: :class:`tencentcloud.scf.v20180416.models.LogSearchContext`
         """
-        self.FunctionName = None
-        self.Offset = None
-        self.Limit = None
-        self.Order = None
-        self.OrderBy = None
-        self.Filter = None
-        self.Namespace = None
-        self.Qualifier = None
-        self.FunctionRequestId = None
-        self.StartTime = None
-        self.EndTime = None
-        self.SearchContext = None
+        self._FunctionName = None
+        self._Offset = None
+        self._Limit = None
+        self._Order = None
+        self._OrderBy = None
+        self._Filter = None
+        self._Namespace = None
+        self._Qualifier = None
+        self._FunctionRequestId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._SearchContext = None
+
+    @property
+    def FunctionName(self):
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def OrderBy(self):
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def Filter(self):
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Qualifier(self):
+        return self._Qualifier
+
+    @Qualifier.setter
+    def Qualifier(self, Qualifier):
+        self._Qualifier = Qualifier
+
+    @property
+    def FunctionRequestId(self):
+        return self._FunctionRequestId
+
+    @FunctionRequestId.setter
+    def FunctionRequestId(self, FunctionRequestId):
+        self._FunctionRequestId = FunctionRequestId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def SearchContext(self):
+        return self._SearchContext
+
+    @SearchContext.setter
+    def SearchContext(self, SearchContext):
+        self._SearchContext = SearchContext
 
 
     def _deserialize(self, params):
-        self.FunctionName = params.get("FunctionName")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.Order = params.get("Order")
-        self.OrderBy = params.get("OrderBy")
+        self._FunctionName = params.get("FunctionName")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Order = params.get("Order")
+        self._OrderBy = params.get("OrderBy")
         if params.get("Filter") is not None:
-            self.Filter = LogFilter()
-            self.Filter._deserialize(params.get("Filter"))
-        self.Namespace = params.get("Namespace")
-        self.Qualifier = params.get("Qualifier")
-        self.FunctionRequestId = params.get("FunctionRequestId")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
+            self._Filter = LogFilter()
+            self._Filter._deserialize(params.get("Filter"))
+        self._Namespace = params.get("Namespace")
+        self._Qualifier = params.get("Qualifier")
+        self._FunctionRequestId = params.get("FunctionRequestId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         if params.get("SearchContext") is not None:
-            self.SearchContext = LogSearchContext()
-            self.SearchContext._deserialize(params.get("SearchContext"))
+            self._SearchContext = LogSearchContext()
+            self._SearchContext._deserialize(params.get("SearchContext"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1453,33 +2782,65 @@ class GetFunctionLogsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Total number of function logs
+        :param _TotalCount: Total number of function logs
         :type TotalCount: int
-        :param Data: Function log information
+        :param _Data: Function log information
         :type Data: list of FunctionLog
-        :param SearchContext: This field is disused.
+        :param _SearchContext: This field is disused.
         :type SearchContext: :class:`tencentcloud.scf.v20180416.models.LogSearchContext`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.Data = None
-        self.SearchContext = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._Data = None
+        self._SearchContext = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def SearchContext(self):
+        return self._SearchContext
+
+    @SearchContext.setter
+    def SearchContext(self, SearchContext):
+        self._SearchContext = SearchContext
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("Data") is not None:
-            self.Data = []
+            self._Data = []
             for item in params.get("Data"):
                 obj = FunctionLog()
                 obj._deserialize(item)
-                self.Data.append(obj)
+                self._Data.append(obj)
         if params.get("SearchContext") is not None:
-            self.SearchContext = LogSearchContext()
-            self.SearchContext._deserialize(params.get("SearchContext"))
-        self.RequestId = params.get("RequestId")
+            self._SearchContext = LogSearchContext()
+            self._SearchContext._deserialize(params.get("SearchContext"))
+        self._RequestId = params.get("RequestId")
 
 
 class GetLayerVersionRequest(AbstractModel):
@@ -1489,22 +2850,39 @@ class GetLayerVersionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LayerName: Layer name
+        :param _LayerName: Layer name
         :type LayerName: str
-        :param LayerVersion: Version number
+        :param _LayerVersion: Version number
         :type LayerVersion: int
         """
-        self.LayerName = None
-        self.LayerVersion = None
+        self._LayerName = None
+        self._LayerVersion = None
+
+    @property
+    def LayerName(self):
+        return self._LayerName
+
+    @LayerName.setter
+    def LayerName(self, LayerName):
+        self._LayerName = LayerName
+
+    @property
+    def LayerVersion(self):
+        return self._LayerVersion
+
+    @LayerVersion.setter
+    def LayerVersion(self, LayerVersion):
+        self._LayerVersion = LayerVersion
 
 
     def _deserialize(self, params):
-        self.LayerName = params.get("LayerName")
-        self.LayerVersion = params.get("LayerVersion")
+        self._LayerName = params.get("LayerName")
+        self._LayerVersion = params.get("LayerVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1517,50 +2895,130 @@ class GetLayerVersionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CompatibleRuntimes: Compatible runtimes
+        :param _CompatibleRuntimes: Compatible runtimes
         :type CompatibleRuntimes: list of str
-        :param CodeSha256: SHA256 encoding of version file on the layer
+        :param _CodeSha256: SHA256 encoding of version file on the layer
         :type CodeSha256: str
-        :param Location: Download address of version file on the layer
+        :param _Location: Download address of version file on the layer
         :type Location: str
-        :param AddTime: Version creation time
+        :param _AddTime: Version creation time
         :type AddTime: str
-        :param Description: Version description
+        :param _Description: Version description
         :type Description: str
-        :param LicenseInfo: License information
+        :param _LicenseInfo: License information
         :type LicenseInfo: str
-        :param LayerVersion: Version number
+        :param _LayerVersion: Version number
         :type LayerVersion: int
-        :param LayerName: Layer name
+        :param _LayerName: Layer name
         :type LayerName: str
-        :param Status: Current status of specific layer version. For the status values, [see here](https://intl.cloud.tencent.com/document/product/583/47175?from_cn_redirect=1#.E5.B1.82.EF.BC.88layer.EF.BC.89.E7.8A.B6.E6.80.81)
+        :param _Status: Current status of specific layer version. For the status values, [see here](https://intl.cloud.tencent.com/document/product/583/47175?from_cn_redirect=1#.E5.B1.82.EF.BC.88layer.EF.BC.89.E7.8A.B6.E6.80.81)
         :type Status: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.CompatibleRuntimes = None
-        self.CodeSha256 = None
-        self.Location = None
-        self.AddTime = None
-        self.Description = None
-        self.LicenseInfo = None
-        self.LayerVersion = None
-        self.LayerName = None
-        self.Status = None
-        self.RequestId = None
+        self._CompatibleRuntimes = None
+        self._CodeSha256 = None
+        self._Location = None
+        self._AddTime = None
+        self._Description = None
+        self._LicenseInfo = None
+        self._LayerVersion = None
+        self._LayerName = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def CompatibleRuntimes(self):
+        return self._CompatibleRuntimes
+
+    @CompatibleRuntimes.setter
+    def CompatibleRuntimes(self, CompatibleRuntimes):
+        self._CompatibleRuntimes = CompatibleRuntimes
+
+    @property
+    def CodeSha256(self):
+        return self._CodeSha256
+
+    @CodeSha256.setter
+    def CodeSha256(self, CodeSha256):
+        self._CodeSha256 = CodeSha256
+
+    @property
+    def Location(self):
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+    @property
+    def AddTime(self):
+        return self._AddTime
+
+    @AddTime.setter
+    def AddTime(self, AddTime):
+        self._AddTime = AddTime
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def LicenseInfo(self):
+        return self._LicenseInfo
+
+    @LicenseInfo.setter
+    def LicenseInfo(self, LicenseInfo):
+        self._LicenseInfo = LicenseInfo
+
+    @property
+    def LayerVersion(self):
+        return self._LayerVersion
+
+    @LayerVersion.setter
+    def LayerVersion(self, LayerVersion):
+        self._LayerVersion = LayerVersion
+
+    @property
+    def LayerName(self):
+        return self._LayerName
+
+    @LayerName.setter
+    def LayerName(self, LayerName):
+        self._LayerName = LayerName
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.CompatibleRuntimes = params.get("CompatibleRuntimes")
-        self.CodeSha256 = params.get("CodeSha256")
-        self.Location = params.get("Location")
-        self.AddTime = params.get("AddTime")
-        self.Description = params.get("Description")
-        self.LicenseInfo = params.get("LicenseInfo")
-        self.LayerVersion = params.get("LayerVersion")
-        self.LayerName = params.get("LayerName")
-        self.Status = params.get("Status")
-        self.RequestId = params.get("RequestId")
+        self._CompatibleRuntimes = params.get("CompatibleRuntimes")
+        self._CodeSha256 = params.get("CodeSha256")
+        self._Location = params.get("Location")
+        self._AddTime = params.get("AddTime")
+        self._Description = params.get("Description")
+        self._LicenseInfo = params.get("LicenseInfo")
+        self._LayerVersion = params.get("LayerVersion")
+        self._LayerName = params.get("LayerName")
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
 
 
 class GetProvisionedConcurrencyConfigRequest(AbstractModel):
@@ -1570,26 +3028,51 @@ class GetProvisionedConcurrencyConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FunctionName: Name of the function for which to get the provisioned concurrency details.
+        :param _FunctionName: Name of the function for which to get the provisioned concurrency details.
         :type FunctionName: str
-        :param Namespace: Function namespace. Default value: default.
+        :param _Namespace: Function namespace. Default value: default.
         :type Namespace: str
-        :param Qualifier: Function version number. If this parameter is left empty, the provisioned concurrency information of all function versions will be returned.
+        :param _Qualifier: Function version number. If this parameter is left empty, the provisioned concurrency information of all function versions will be returned.
         :type Qualifier: str
         """
-        self.FunctionName = None
-        self.Namespace = None
-        self.Qualifier = None
+        self._FunctionName = None
+        self._Namespace = None
+        self._Qualifier = None
+
+    @property
+    def FunctionName(self):
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Qualifier(self):
+        return self._Qualifier
+
+    @Qualifier.setter
+    def Qualifier(self, Qualifier):
+        self._Qualifier = Qualifier
 
 
     def _deserialize(self, params):
-        self.FunctionName = params.get("FunctionName")
-        self.Namespace = params.get("Namespace")
-        self.Qualifier = params.get("Qualifier")
+        self._FunctionName = params.get("FunctionName")
+        self._Namespace = params.get("Namespace")
+        self._Qualifier = params.get("Qualifier")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1602,27 +3085,51 @@ class GetProvisionedConcurrencyConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UnallocatedConcurrencyNum: Unallocated provisioned concurrency amount of function.
+        :param _UnallocatedConcurrencyNum: Unallocated provisioned concurrency amount of function.
         :type UnallocatedConcurrencyNum: int
-        :param Allocated: Allocated provisioned concurrency amount of function.
+        :param _Allocated: Allocated provisioned concurrency amount of function.
         :type Allocated: list of VersionProvisionedConcurrencyInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.UnallocatedConcurrencyNum = None
-        self.Allocated = None
-        self.RequestId = None
+        self._UnallocatedConcurrencyNum = None
+        self._Allocated = None
+        self._RequestId = None
+
+    @property
+    def UnallocatedConcurrencyNum(self):
+        return self._UnallocatedConcurrencyNum
+
+    @UnallocatedConcurrencyNum.setter
+    def UnallocatedConcurrencyNum(self, UnallocatedConcurrencyNum):
+        self._UnallocatedConcurrencyNum = UnallocatedConcurrencyNum
+
+    @property
+    def Allocated(self):
+        return self._Allocated
+
+    @Allocated.setter
+    def Allocated(self, Allocated):
+        self._Allocated = Allocated
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.UnallocatedConcurrencyNum = params.get("UnallocatedConcurrencyNum")
+        self._UnallocatedConcurrencyNum = params.get("UnallocatedConcurrencyNum")
         if params.get("Allocated") is not None:
-            self.Allocated = []
+            self._Allocated = []
             for item in params.get("Allocated"):
                 obj = VersionProvisionedConcurrencyInfo()
                 obj._deserialize(item)
-                self.Allocated.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Allocated.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class GetRequestStatusRequest(AbstractModel):
@@ -1632,34 +3139,75 @@ class GetRequestStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FunctionName: Function name
+        :param _FunctionName: Function name
         :type FunctionName: str
-        :param FunctionRequestId: ID of the request to be queried
+        :param _FunctionRequestId: ID of the request to be queried
         :type FunctionRequestId: str
-        :param Namespace: Function namespace
+        :param _Namespace: Function namespace
         :type Namespace: str
-        :param StartTime: Start time of the query, for example `2017-05-16 20:00:00`. If it’s left empty, it defaults to 15 minutes before the current time.
+        :param _StartTime: Start time of the query, for example `2017-05-16 20:00:00`. If it’s left empty, it defaults to 15 minutes before the current time.
         :type StartTime: str
-        :param EndTime: End time of the query. such as `2017-05-16 20:59:59`. If `StartTime` is not specified, `EndTime` defaults to the current time. If `StartTime` is specified, `EndTime` is required, and it need to be later than the `StartTime`.
+        :param _EndTime: End time of the query. such as `2017-05-16 20:59:59`. If `StartTime` is not specified, `EndTime` defaults to the current time. If `StartTime` is specified, `EndTime` is required, and it need to be later than the `StartTime`.
         :type EndTime: str
         """
-        self.FunctionName = None
-        self.FunctionRequestId = None
-        self.Namespace = None
-        self.StartTime = None
-        self.EndTime = None
+        self._FunctionName = None
+        self._FunctionRequestId = None
+        self._Namespace = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def FunctionName(self):
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def FunctionRequestId(self):
+        return self._FunctionRequestId
+
+    @FunctionRequestId.setter
+    def FunctionRequestId(self, FunctionRequestId):
+        self._FunctionRequestId = FunctionRequestId
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
 
 
     def _deserialize(self, params):
-        self.FunctionName = params.get("FunctionName")
-        self.FunctionRequestId = params.get("FunctionRequestId")
-        self.Namespace = params.get("Namespace")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
+        self._FunctionName = params.get("FunctionName")
+        self._FunctionRequestId = params.get("FunctionRequestId")
+        self._Namespace = params.get("Namespace")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1672,29 +3220,53 @@ class GetRequestStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Total running functions
+        :param _TotalCount: Total running functions
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type TotalCount: int
-        :param Data: Details of the function running status
+        :param _Data: Details of the function running status
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Data: list of RequestStatus
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.Data = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("Data") is not None:
-            self.Data = []
+            self._Data = []
             for item in params.get("Data"):
                 obj = RequestStatus()
                 obj._deserialize(item)
-                self.Data.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class GetReservedConcurrencyConfigRequest(AbstractModel):
@@ -1704,22 +3276,39 @@ class GetReservedConcurrencyConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FunctionName: Specifies the function of which you want to obtain the reserved quota
+        :param _FunctionName: Specifies the function of which you want to obtain the reserved quota
         :type FunctionName: str
-        :param Namespace: Function namespace. Default value: default.
+        :param _Namespace: Function namespace. Default value: default.
         :type Namespace: str
         """
-        self.FunctionName = None
-        self.Namespace = None
+        self._FunctionName = None
+        self._Namespace = None
+
+    @property
+    def FunctionName(self):
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
 
 
     def _deserialize(self, params):
-        self.FunctionName = params.get("FunctionName")
-        self.Namespace = params.get("Namespace")
+        self._FunctionName = params.get("FunctionName")
+        self._Namespace = params.get("Namespace")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1732,19 +3321,35 @@ class GetReservedConcurrencyConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ReservedMem: The reserved quota of the function
+        :param _ReservedMem: The reserved quota of the function
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ReservedMem: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.ReservedMem = None
-        self.RequestId = None
+        self._ReservedMem = None
+        self._RequestId = None
+
+    @property
+    def ReservedMem(self):
+        return self._ReservedMem
+
+    @ReservedMem.setter
+    def ReservedMem(self, ReservedMem):
+        self._ReservedMem = ReservedMem
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ReservedMem = params.get("ReservedMem")
-        self.RequestId = params.get("RequestId")
+        self._ReservedMem = params.get("ReservedMem")
+        self._RequestId = params.get("RequestId")
 
 
 class ImageConfig(AbstractModel):
@@ -1754,55 +3359,120 @@ class ImageConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageType: Image repository type, which can be `personal` or `enterprise`
+        :param _ImageType: Image repository type, which can be `personal` or `enterprise`
         :type ImageType: str
-        :param ImageUri: {domain}/{namespace}/{imageName}:{tag}@{digest}
+        :param _ImageUri: {domain}/{namespace}/{imageName}:{tag}@{digest}
         :type ImageUri: str
-        :param RegistryId: The temp token that a TCR Enterprise instance uses to obtain an image. It’s required when `ImageType` is `enterprise`.
+        :param _RegistryId: The temp token that a TCR Enterprise instance uses to obtain an image. It’s required when `ImageType` is `enterprise`.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type RegistryId: str
-        :param EntryPoint: Disused
+        :param _EntryPoint: Disused
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type EntryPoint: str
-        :param Command: The command to start up the container, such as `python`. If it’s not specified, Entrypoint in Dockerfile is used.
+        :param _Command: The command to start up the container, such as `python`. If it’s not specified, Entrypoint in Dockerfile is used.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Command: str
-        :param Args: The parameters to start up the container. Separate parameters with spaces, such as `u app.py`. If it’s not specified, `CMD in Dockerfile is used.
+        :param _Args: The parameters to start up the container. Separate parameters with spaces, such as `u app.py`. If it’s not specified, `CMD in Dockerfile is used.
 Note: This field may return `null`, indicating that no valid value can be found.
         :type Args: str
-        :param ContainerImageAccelerate: Whether to enable image acceleration. It defaults to `False`.
+        :param _ContainerImageAccelerate: Whether to enable image acceleration. It defaults to `False`.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type ContainerImageAccelerate: bool
-        :param ImagePort: Image function port settings
+        :param _ImagePort: Image function port settings
 `-1`: No port-specific image functions
 `0`: Default port (Port 9000)
 Others: Special ports
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ImagePort: int
         """
-        self.ImageType = None
-        self.ImageUri = None
-        self.RegistryId = None
-        self.EntryPoint = None
-        self.Command = None
-        self.Args = None
-        self.ContainerImageAccelerate = None
-        self.ImagePort = None
+        self._ImageType = None
+        self._ImageUri = None
+        self._RegistryId = None
+        self._EntryPoint = None
+        self._Command = None
+        self._Args = None
+        self._ContainerImageAccelerate = None
+        self._ImagePort = None
+
+    @property
+    def ImageType(self):
+        return self._ImageType
+
+    @ImageType.setter
+    def ImageType(self, ImageType):
+        self._ImageType = ImageType
+
+    @property
+    def ImageUri(self):
+        return self._ImageUri
+
+    @ImageUri.setter
+    def ImageUri(self, ImageUri):
+        self._ImageUri = ImageUri
+
+    @property
+    def RegistryId(self):
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+    @property
+    def EntryPoint(self):
+        return self._EntryPoint
+
+    @EntryPoint.setter
+    def EntryPoint(self, EntryPoint):
+        self._EntryPoint = EntryPoint
+
+    @property
+    def Command(self):
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
+
+    @property
+    def Args(self):
+        return self._Args
+
+    @Args.setter
+    def Args(self, Args):
+        self._Args = Args
+
+    @property
+    def ContainerImageAccelerate(self):
+        return self._ContainerImageAccelerate
+
+    @ContainerImageAccelerate.setter
+    def ContainerImageAccelerate(self, ContainerImageAccelerate):
+        self._ContainerImageAccelerate = ContainerImageAccelerate
+
+    @property
+    def ImagePort(self):
+        return self._ImagePort
+
+    @ImagePort.setter
+    def ImagePort(self, ImagePort):
+        self._ImagePort = ImagePort
 
 
     def _deserialize(self, params):
-        self.ImageType = params.get("ImageType")
-        self.ImageUri = params.get("ImageUri")
-        self.RegistryId = params.get("RegistryId")
-        self.EntryPoint = params.get("EntryPoint")
-        self.Command = params.get("Command")
-        self.Args = params.get("Args")
-        self.ContainerImageAccelerate = params.get("ContainerImageAccelerate")
-        self.ImagePort = params.get("ImagePort")
+        self._ImageType = params.get("ImageType")
+        self._ImageUri = params.get("ImageUri")
+        self._RegistryId = params.get("RegistryId")
+        self._EntryPoint = params.get("EntryPoint")
+        self._Command = params.get("Command")
+        self._Args = params.get("Args")
+        self._ContainerImageAccelerate = params.get("ContainerImageAccelerate")
+        self._ImagePort = params.get("ImagePort")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1815,38 +3485,87 @@ class InvokeFunctionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FunctionName: Function name
+        :param _FunctionName: Function name
         :type FunctionName: str
-        :param Qualifier: Version or alias of the function. It defaults to `$DEFAULT`.
+        :param _Qualifier: Version or alias of the function. It defaults to `$DEFAULT`.
         :type Qualifier: str
-        :param Event: Function running parameter, which is in the JSON format. Maximum parameter size is 6 MB. This field corresponds to [event input parameter](https://intl.cloud.tencent.com/document/product/583/9210?from_cn_redirect=1#.E5.87.BD.E6.95.B0.E5.85.A5.E5.8F.82.3Ca-id.3D.22input.22.3E.3C.2Fa.3E).
+        :param _Event: Function running parameter, which is in the JSON format. Maximum parameter size is 6 MB. This field corresponds to [event input parameter](https://intl.cloud.tencent.com/document/product/583/9210?from_cn_redirect=1#.E5.87.BD.E6.95.B0.E5.85.A5.E5.8F.82.3Ca-id.3D.22input.22.3E.3C.2Fa.3E).
         :type Event: str
-        :param LogType: Valid value: `None` (default) or `Tail`. If the value is `Tail`, `log` in the response will contain the corresponding function execution log (up to 4KB).
+        :param _LogType: Valid value: `None` (default) or `Tail`. If the value is `Tail`, `log` in the response will contain the corresponding function execution log (up to 4KB).
         :type LogType: str
-        :param Namespace: Namespace. `default` is used if it’s left empty.
+        :param _Namespace: Namespace. `default` is used if it’s left empty.
         :type Namespace: str
-        :param RoutingKey: Traffic routing config in json format, e.g., {"k":"v"}. Please note that both "k" and "v" must be strings. Up to 1024 bytes allowed.
+        :param _RoutingKey: Traffic routing config in json format, e.g., {"k":"v"}. Please note that both "k" and "v" must be strings. Up to 1024 bytes allowed.
         :type RoutingKey: str
         """
-        self.FunctionName = None
-        self.Qualifier = None
-        self.Event = None
-        self.LogType = None
-        self.Namespace = None
-        self.RoutingKey = None
+        self._FunctionName = None
+        self._Qualifier = None
+        self._Event = None
+        self._LogType = None
+        self._Namespace = None
+        self._RoutingKey = None
+
+    @property
+    def FunctionName(self):
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def Qualifier(self):
+        return self._Qualifier
+
+    @Qualifier.setter
+    def Qualifier(self, Qualifier):
+        self._Qualifier = Qualifier
+
+    @property
+    def Event(self):
+        return self._Event
+
+    @Event.setter
+    def Event(self, Event):
+        self._Event = Event
+
+    @property
+    def LogType(self):
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def RoutingKey(self):
+        return self._RoutingKey
+
+    @RoutingKey.setter
+    def RoutingKey(self, RoutingKey):
+        self._RoutingKey = RoutingKey
 
 
     def _deserialize(self, params):
-        self.FunctionName = params.get("FunctionName")
-        self.Qualifier = params.get("Qualifier")
-        self.Event = params.get("Event")
-        self.LogType = params.get("LogType")
-        self.Namespace = params.get("Namespace")
-        self.RoutingKey = params.get("RoutingKey")
+        self._FunctionName = params.get("FunctionName")
+        self._Qualifier = params.get("Qualifier")
+        self._Event = params.get("Event")
+        self._LogType = params.get("LogType")
+        self._Namespace = params.get("Namespace")
+        self._RoutingKey = params.get("RoutingKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1859,20 +3578,36 @@ class InvokeFunctionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Function execution result
+        :param _Result: Function execution result
         :type Result: :class:`tencentcloud.scf.v20180416.models.Result`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = Result()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = Result()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class InvokeRequest(AbstractModel):
@@ -1882,42 +3617,99 @@ class InvokeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FunctionName: Function name
+        :param _FunctionName: Function name
         :type FunctionName: str
-        :param InvocationType: Fill in `RequestResponse` for synchronized invocations (default and recommended) and `Event` for asychronized invocations. Note that for synchronized invocations, the max timeout period is 300s. Choose asychronized invocations if the required timeout period is longer than 300 seconds. You can also use [InvokeFunction](https://intl.cloud.tencent.com/document/product/583/58400?from_cn_redirect=1) for synchronized invocations. 
+        :param _InvocationType: Fill in `RequestResponse` for synchronized invocations (default and recommended) and `Event` for asychronized invocations. Note that for synchronized invocations, the max timeout period is 300s. Choose asychronized invocations if the required timeout period is longer than 300 seconds. You can also use [InvokeFunction](https://intl.cloud.tencent.com/document/product/583/58400?from_cn_redirect=1) for synchronized invocations. 
         :type InvocationType: str
-        :param Qualifier: The version or alias of the triggered function. It defaults to $LATEST
+        :param _Qualifier: The version or alias of the triggered function. It defaults to $LATEST
         :type Qualifier: str
-        :param ClientContext: Function running parameter, which is in the JSON format. The maximum parameter size is 6 MB for synchronized invocations and 128KB for asynchronized invocations. This field corresponds to [event input parameter](https://intl.cloud.tencent.com/document/product/583/9210?from_cn_redirect=1#.E5.87.BD.E6.95.B0.E5.85.A5.E5.8F.82.3Ca-id.3D.22input.22.3E.3C.2Fa.3E).
+        :param _ClientContext: Function running parameter, which is in the JSON format. The maximum parameter size is 6 MB for synchronized invocations and 128KB for asynchronized invocations. This field corresponds to [event input parameter](https://intl.cloud.tencent.com/document/product/583/9210?from_cn_redirect=1#.E5.87.BD.E6.95.B0.E5.85.A5.E5.8F.82.3Ca-id.3D.22input.22.3E.3C.2Fa.3E).
         :type ClientContext: str
-        :param LogType: Null for async invocations
+        :param _LogType: Null for async invocations
         :type LogType: str
-        :param Namespace: Namespace
+        :param _Namespace: Namespace
         :type Namespace: str
-        :param RoutingKey: Traffic routing config in json format, e.g., {"k":"v"}. Please note that both "k" and "v" must be strings. Up to 1024 bytes allowed.
+        :param _RoutingKey: Traffic routing config in json format, e.g., {"k":"v"}. Please note that both "k" and "v" must be strings. Up to 1024 bytes allowed.
         :type RoutingKey: str
         """
-        self.FunctionName = None
-        self.InvocationType = None
-        self.Qualifier = None
-        self.ClientContext = None
-        self.LogType = None
-        self.Namespace = None
-        self.RoutingKey = None
+        self._FunctionName = None
+        self._InvocationType = None
+        self._Qualifier = None
+        self._ClientContext = None
+        self._LogType = None
+        self._Namespace = None
+        self._RoutingKey = None
+
+    @property
+    def FunctionName(self):
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def InvocationType(self):
+        return self._InvocationType
+
+    @InvocationType.setter
+    def InvocationType(self, InvocationType):
+        self._InvocationType = InvocationType
+
+    @property
+    def Qualifier(self):
+        return self._Qualifier
+
+    @Qualifier.setter
+    def Qualifier(self, Qualifier):
+        self._Qualifier = Qualifier
+
+    @property
+    def ClientContext(self):
+        return self._ClientContext
+
+    @ClientContext.setter
+    def ClientContext(self, ClientContext):
+        self._ClientContext = ClientContext
+
+    @property
+    def LogType(self):
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def RoutingKey(self):
+        return self._RoutingKey
+
+    @RoutingKey.setter
+    def RoutingKey(self, RoutingKey):
+        self._RoutingKey = RoutingKey
 
 
     def _deserialize(self, params):
-        self.FunctionName = params.get("FunctionName")
-        self.InvocationType = params.get("InvocationType")
-        self.Qualifier = params.get("Qualifier")
-        self.ClientContext = params.get("ClientContext")
-        self.LogType = params.get("LogType")
-        self.Namespace = params.get("Namespace")
-        self.RoutingKey = params.get("RoutingKey")
+        self._FunctionName = params.get("FunctionName")
+        self._InvocationType = params.get("InvocationType")
+        self._Qualifier = params.get("Qualifier")
+        self._ClientContext = params.get("ClientContext")
+        self._LogType = params.get("LogType")
+        self._Namespace = params.get("Namespace")
+        self._RoutingKey = params.get("RoutingKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1930,20 +3722,36 @@ class InvokeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Function execution result
+        :param _Result: Function execution result
         :type Result: :class:`tencentcloud.scf.v20180416.models.Result`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = Result()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = Result()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class LayerVersionInfo(AbstractModel):
@@ -1953,50 +3761,115 @@ class LayerVersionInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CompatibleRuntimes: Runtime applicable to a version
+        :param _CompatibleRuntimes: Runtime applicable to a version
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CompatibleRuntimes: list of str
-        :param AddTime: Creation time
+        :param _AddTime: Creation time
         :type AddTime: str
-        :param Description: Version description
+        :param _Description: Version description
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Description: str
-        :param LicenseInfo: License information
+        :param _LicenseInfo: License information
 Note: This field may return null, indicating that no valid values can be obtained.
         :type LicenseInfo: str
-        :param LayerVersion: Version number
+        :param _LayerVersion: Version number
         :type LayerVersion: int
-        :param LayerName: Layer name
+        :param _LayerName: Layer name
         :type LayerName: str
-        :param Status: Current status of specific layer version. For valid values, please see [here](https://intl.cloud.tencent.com/document/product/583/47175?from_cn_redirect=1#.E5.B1.82.EF.BC.88layer.EF.BC.89.E7.8A.B6.E6.80.81)
+        :param _Status: Current status of specific layer version. For valid values, please see [here](https://intl.cloud.tencent.com/document/product/583/47175?from_cn_redirect=1#.E5.B1.82.EF.BC.88layer.EF.BC.89.E7.8A.B6.E6.80.81)
         :type Status: str
-        :param Stamp: Stamp
+        :param _Stamp: Stamp
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Stamp: str
         """
-        self.CompatibleRuntimes = None
-        self.AddTime = None
-        self.Description = None
-        self.LicenseInfo = None
-        self.LayerVersion = None
-        self.LayerName = None
-        self.Status = None
-        self.Stamp = None
+        self._CompatibleRuntimes = None
+        self._AddTime = None
+        self._Description = None
+        self._LicenseInfo = None
+        self._LayerVersion = None
+        self._LayerName = None
+        self._Status = None
+        self._Stamp = None
+
+    @property
+    def CompatibleRuntimes(self):
+        return self._CompatibleRuntimes
+
+    @CompatibleRuntimes.setter
+    def CompatibleRuntimes(self, CompatibleRuntimes):
+        self._CompatibleRuntimes = CompatibleRuntimes
+
+    @property
+    def AddTime(self):
+        return self._AddTime
+
+    @AddTime.setter
+    def AddTime(self, AddTime):
+        self._AddTime = AddTime
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def LicenseInfo(self):
+        return self._LicenseInfo
+
+    @LicenseInfo.setter
+    def LicenseInfo(self, LicenseInfo):
+        self._LicenseInfo = LicenseInfo
+
+    @property
+    def LayerVersion(self):
+        return self._LayerVersion
+
+    @LayerVersion.setter
+    def LayerVersion(self, LayerVersion):
+        self._LayerVersion = LayerVersion
+
+    @property
+    def LayerName(self):
+        return self._LayerName
+
+    @LayerName.setter
+    def LayerName(self, LayerName):
+        self._LayerName = LayerName
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Stamp(self):
+        return self._Stamp
+
+    @Stamp.setter
+    def Stamp(self, Stamp):
+        self._Stamp = Stamp
 
 
     def _deserialize(self, params):
-        self.CompatibleRuntimes = params.get("CompatibleRuntimes")
-        self.AddTime = params.get("AddTime")
-        self.Description = params.get("Description")
-        self.LicenseInfo = params.get("LicenseInfo")
-        self.LayerVersion = params.get("LayerVersion")
-        self.LayerName = params.get("LayerName")
-        self.Status = params.get("Status")
-        self.Stamp = params.get("Stamp")
+        self._CompatibleRuntimes = params.get("CompatibleRuntimes")
+        self._AddTime = params.get("AddTime")
+        self._Description = params.get("Description")
+        self._LicenseInfo = params.get("LicenseInfo")
+        self._LayerVersion = params.get("LayerVersion")
+        self._LayerName = params.get("LayerName")
+        self._Status = params.get("Status")
+        self._Stamp = params.get("Stamp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2009,27 +3882,44 @@ class LimitsInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NamespacesCount: Limit of namespace quantity
+        :param _NamespacesCount: Limit of namespace quantity
         :type NamespacesCount: int
-        :param Namespace: Namespace limit information
+        :param _Namespace: Namespace limit information
         :type Namespace: list of NamespaceLimit
         """
-        self.NamespacesCount = None
-        self.Namespace = None
+        self._NamespacesCount = None
+        self._Namespace = None
+
+    @property
+    def NamespacesCount(self):
+        return self._NamespacesCount
+
+    @NamespacesCount.setter
+    def NamespacesCount(self, NamespacesCount):
+        self._NamespacesCount = NamespacesCount
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
 
 
     def _deserialize(self, params):
-        self.NamespacesCount = params.get("NamespacesCount")
+        self._NamespacesCount = params.get("NamespacesCount")
         if params.get("Namespace") is not None:
-            self.Namespace = []
+            self._Namespace = []
             for item in params.get("Namespace"):
                 obj = NamespaceLimit()
                 obj._deserialize(item)
-                self.Namespace.append(obj)
+                self._Namespace.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2042,34 +3932,75 @@ class ListAliasesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FunctionName: Function name
+        :param _FunctionName: Function name
         :type FunctionName: str
-        :param Namespace: Function namespace
+        :param _Namespace: Function namespace
         :type Namespace: str
-        :param FunctionVersion: If this parameter is provided, only aliases associated with this function version will be returned.
+        :param _FunctionVersion: If this parameter is provided, only aliases associated with this function version will be returned.
         :type FunctionVersion: str
-        :param Offset: Data offset. Default value: 0
+        :param _Offset: Data offset. Default value: 0
         :type Offset: str
-        :param Limit: Number of results to be returned. Default value: 20
+        :param _Limit: Number of results to be returned. Default value: 20
         :type Limit: str
         """
-        self.FunctionName = None
-        self.Namespace = None
-        self.FunctionVersion = None
-        self.Offset = None
-        self.Limit = None
+        self._FunctionName = None
+        self._Namespace = None
+        self._FunctionVersion = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def FunctionName(self):
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def FunctionVersion(self):
+        return self._FunctionVersion
+
+    @FunctionVersion.setter
+    def FunctionVersion(self, FunctionVersion):
+        self._FunctionVersion = FunctionVersion
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.FunctionName = params.get("FunctionName")
-        self.Namespace = params.get("Namespace")
-        self.FunctionVersion = params.get("FunctionVersion")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+        self._FunctionName = params.get("FunctionName")
+        self._Namespace = params.get("Namespace")
+        self._FunctionVersion = params.get("FunctionVersion")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2082,28 +4013,52 @@ class ListAliasesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Aliases: Alias list
+        :param _Aliases: Alias list
         :type Aliases: list of Alias
-        :param TotalCount: Total number of aliases
+        :param _TotalCount: Total number of aliases
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Aliases = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._Aliases = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Aliases(self):
+        return self._Aliases
+
+    @Aliases.setter
+    def Aliases(self, Aliases):
+        self._Aliases = Aliases
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Aliases") is not None:
-            self.Aliases = []
+            self._Aliases = []
             for item in params.get("Aliases"):
                 obj = Alias()
                 obj._deserialize(item)
-                self.Aliases.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._Aliases.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class ListAsyncEventsRequest(AbstractModel):
@@ -2113,66 +4068,163 @@ class ListAsyncEventsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FunctionName: Function name
+        :param _FunctionName: Function name
         :type FunctionName: str
-        :param Namespace: Namespace
+        :param _Namespace: Namespace
         :type Namespace: str
-        :param Qualifier: Filter (function version)
+        :param _Qualifier: Filter (function version)
         :type Qualifier: str
-        :param InvokeType: Filter (invocation type list)
+        :param _InvokeType: Filter (invocation type list)
         :type InvokeType: list of str
-        :param Status: Filter (event status list)
+        :param _Status: Filter (event status list)
         :type Status: list of str
-        :param StartTimeInterval: Filter (left-closed-right-open range of execution start time)
+        :param _StartTimeInterval: Filter (left-closed-right-open range of execution start time)
         :type StartTimeInterval: :class:`tencentcloud.scf.v20180416.models.TimeInterval`
-        :param EndTimeInterval: Filter (left-closed-right-open range of execution end time)
+        :param _EndTimeInterval: Filter (left-closed-right-open range of execution end time)
         :type EndTimeInterval: :class:`tencentcloud.scf.v20180416.models.TimeInterval`
-        :param Order: Valid values: ASC, DESC. Default value: DESC
+        :param _Order: Valid values: ASC, DESC. Default value: DESC
         :type Order: str
-        :param Orderby: Valid values: StartTime, EndTime. Default value: StartTime
+        :param _Orderby: Valid values: StartTime, EndTime. Default value: StartTime
         :type Orderby: str
-        :param Offset: Data offset. Default value: 0
+        :param _Offset: Data offset. Default value: 0
         :type Offset: int
-        :param Limit: Number of results to be returned. Default value: 20. Maximum value: 100
+        :param _Limit: Number of results to be returned. Default value: 20. Maximum value: 100
         :type Limit: int
-        :param InvokeRequestId: Filter (event invocation request ID)
+        :param _InvokeRequestId: Filter (event invocation request ID)
         :type InvokeRequestId: str
         """
-        self.FunctionName = None
-        self.Namespace = None
-        self.Qualifier = None
-        self.InvokeType = None
-        self.Status = None
-        self.StartTimeInterval = None
-        self.EndTimeInterval = None
-        self.Order = None
-        self.Orderby = None
-        self.Offset = None
-        self.Limit = None
-        self.InvokeRequestId = None
+        self._FunctionName = None
+        self._Namespace = None
+        self._Qualifier = None
+        self._InvokeType = None
+        self._Status = None
+        self._StartTimeInterval = None
+        self._EndTimeInterval = None
+        self._Order = None
+        self._Orderby = None
+        self._Offset = None
+        self._Limit = None
+        self._InvokeRequestId = None
+
+    @property
+    def FunctionName(self):
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Qualifier(self):
+        return self._Qualifier
+
+    @Qualifier.setter
+    def Qualifier(self, Qualifier):
+        self._Qualifier = Qualifier
+
+    @property
+    def InvokeType(self):
+        return self._InvokeType
+
+    @InvokeType.setter
+    def InvokeType(self, InvokeType):
+        self._InvokeType = InvokeType
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StartTimeInterval(self):
+        return self._StartTimeInterval
+
+    @StartTimeInterval.setter
+    def StartTimeInterval(self, StartTimeInterval):
+        self._StartTimeInterval = StartTimeInterval
+
+    @property
+    def EndTimeInterval(self):
+        return self._EndTimeInterval
+
+    @EndTimeInterval.setter
+    def EndTimeInterval(self, EndTimeInterval):
+        self._EndTimeInterval = EndTimeInterval
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def Orderby(self):
+        return self._Orderby
+
+    @Orderby.setter
+    def Orderby(self, Orderby):
+        self._Orderby = Orderby
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def InvokeRequestId(self):
+        return self._InvokeRequestId
+
+    @InvokeRequestId.setter
+    def InvokeRequestId(self, InvokeRequestId):
+        self._InvokeRequestId = InvokeRequestId
 
 
     def _deserialize(self, params):
-        self.FunctionName = params.get("FunctionName")
-        self.Namespace = params.get("Namespace")
-        self.Qualifier = params.get("Qualifier")
-        self.InvokeType = params.get("InvokeType")
-        self.Status = params.get("Status")
+        self._FunctionName = params.get("FunctionName")
+        self._Namespace = params.get("Namespace")
+        self._Qualifier = params.get("Qualifier")
+        self._InvokeType = params.get("InvokeType")
+        self._Status = params.get("Status")
         if params.get("StartTimeInterval") is not None:
-            self.StartTimeInterval = TimeInterval()
-            self.StartTimeInterval._deserialize(params.get("StartTimeInterval"))
+            self._StartTimeInterval = TimeInterval()
+            self._StartTimeInterval._deserialize(params.get("StartTimeInterval"))
         if params.get("EndTimeInterval") is not None:
-            self.EndTimeInterval = TimeInterval()
-            self.EndTimeInterval._deserialize(params.get("EndTimeInterval"))
-        self.Order = params.get("Order")
-        self.Orderby = params.get("Orderby")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.InvokeRequestId = params.get("InvokeRequestId")
+            self._EndTimeInterval = TimeInterval()
+            self._EndTimeInterval._deserialize(params.get("EndTimeInterval"))
+        self._Order = params.get("Order")
+        self._Orderby = params.get("Orderby")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._InvokeRequestId = params.get("InvokeRequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2185,27 +4237,51 @@ class ListAsyncEventsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Total number of events that meet the filter
+        :param _TotalCount: Total number of events that meet the filter
         :type TotalCount: int
-        :param EventList: Async event list
+        :param _EventList: Async event list
         :type EventList: list of AsyncEvent
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.EventList = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._EventList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def EventList(self):
+        return self._EventList
+
+    @EventList.setter
+    def EventList(self, EventList):
+        self._EventList = EventList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("EventList") is not None:
-            self.EventList = []
+            self._EventList = []
             for item in params.get("EventList"):
                 obj = AsyncEvent()
                 obj._deserialize(item)
-                self.EventList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._EventList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ListFunctionsRequest(AbstractModel):
@@ -2215,54 +4291,119 @@ class ListFunctionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Order: It specifies whether to return the results in ascending or descending order. The value is `ASC` or `DESC`.
+        :param _Order: It specifies whether to return the results in ascending or descending order. The value is `ASC` or `DESC`.
         :type Order: str
-        :param Orderby: It specifies the sorting order of the results according to a specified field, such as `AddTime`, `ModTime`, and `FunctionName`.
+        :param _Orderby: It specifies the sorting order of the results according to a specified field, such as `AddTime`, `ModTime`, and `FunctionName`.
         :type Orderby: str
-        :param Offset: Data offset. The default value is `0`.
+        :param _Offset: Data offset. The default value is `0`.
         :type Offset: int
-        :param Limit: Return data length. The default value is `20`.
+        :param _Limit: Return data length. The default value is `20`.
         :type Limit: int
-        :param SearchKey: It specifies whether to support fuzzy matching for the function name.
+        :param _SearchKey: It specifies whether to support fuzzy matching for the function name.
         :type SearchKey: str
-        :param Namespace: Namespace
+        :param _Namespace: Namespace
         :type Namespace: str
-        :param Description: Function description. Fuzzy search is supported.
+        :param _Description: Function description. Fuzzy search is supported.
         :type Description: str
-        :param Filters: Filters
+        :param _Filters: Filters
 - tag:tag-key - String - Required: No - Filtering criteria based on tag-key - value pairs. Replace `tag-key` with a specific tag-key.
 
 The maximum number of `Filters` for each request is 10, and that of `Filter.Values` is 5.
         :type Filters: list of Filter
         """
-        self.Order = None
-        self.Orderby = None
-        self.Offset = None
-        self.Limit = None
-        self.SearchKey = None
-        self.Namespace = None
-        self.Description = None
-        self.Filters = None
+        self._Order = None
+        self._Orderby = None
+        self._Offset = None
+        self._Limit = None
+        self._SearchKey = None
+        self._Namespace = None
+        self._Description = None
+        self._Filters = None
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def Orderby(self):
+        return self._Orderby
+
+    @Orderby.setter
+    def Orderby(self, Orderby):
+        self._Orderby = Orderby
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def SearchKey(self):
+        return self._SearchKey
+
+    @SearchKey.setter
+    def SearchKey(self, SearchKey):
+        self._SearchKey = SearchKey
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
 
     def _deserialize(self, params):
-        self.Order = params.get("Order")
-        self.Orderby = params.get("Orderby")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.SearchKey = params.get("SearchKey")
-        self.Namespace = params.get("Namespace")
-        self.Description = params.get("Description")
+        self._Order = params.get("Order")
+        self._Orderby = params.get("Orderby")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._SearchKey = params.get("SearchKey")
+        self._Namespace = params.get("Namespace")
+        self._Description = params.get("Description")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2275,27 +4416,51 @@ class ListFunctionsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Functions: Function list
+        :param _Functions: Function list
         :type Functions: list of Function
-        :param TotalCount: Total number
+        :param _TotalCount: Total number
         :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Functions = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._Functions = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Functions(self):
+        return self._Functions
+
+    @Functions.setter
+    def Functions(self, Functions):
+        self._Functions = Functions
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Functions") is not None:
-            self.Functions = []
+            self._Functions = []
             for item in params.get("Functions"):
                 obj = Function()
                 obj._deserialize(item)
-                self.Functions.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._Functions.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class ListLayerVersionsRequest(AbstractModel):
@@ -2305,22 +4470,39 @@ class ListLayerVersionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LayerName: Layer name
+        :param _LayerName: Layer name
         :type LayerName: str
-        :param CompatibleRuntime: Compatible runtimes
+        :param _CompatibleRuntime: Compatible runtimes
         :type CompatibleRuntime: list of str
         """
-        self.LayerName = None
-        self.CompatibleRuntime = None
+        self._LayerName = None
+        self._CompatibleRuntime = None
+
+    @property
+    def LayerName(self):
+        return self._LayerName
+
+    @LayerName.setter
+    def LayerName(self, LayerName):
+        self._LayerName = LayerName
+
+    @property
+    def CompatibleRuntime(self):
+        return self._CompatibleRuntime
+
+    @CompatibleRuntime.setter
+    def CompatibleRuntime(self, CompatibleRuntime):
+        self._CompatibleRuntime = CompatibleRuntime
 
 
     def _deserialize(self, params):
-        self.LayerName = params.get("LayerName")
-        self.CompatibleRuntime = params.get("CompatibleRuntime")
+        self._LayerName = params.get("LayerName")
+        self._CompatibleRuntime = params.get("CompatibleRuntime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2333,23 +4515,39 @@ class ListLayerVersionsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LayerVersions: Layer version list
+        :param _LayerVersions: Layer version list
         :type LayerVersions: list of LayerVersionInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.LayerVersions = None
-        self.RequestId = None
+        self._LayerVersions = None
+        self._RequestId = None
+
+    @property
+    def LayerVersions(self):
+        return self._LayerVersions
+
+    @LayerVersions.setter
+    def LayerVersions(self, LayerVersions):
+        self._LayerVersions = LayerVersions
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("LayerVersions") is not None:
-            self.LayerVersions = []
+            self._LayerVersions = []
             for item in params.get("LayerVersions"):
                 obj = LayerVersionInfo()
                 obj._deserialize(item)
-                self.LayerVersions.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._LayerVersions.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ListLayersRequest(AbstractModel):
@@ -2359,30 +4557,63 @@ class ListLayersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CompatibleRuntime: Compatible runtimes
+        :param _CompatibleRuntime: Compatible runtimes
         :type CompatibleRuntime: str
-        :param Offset: Offset
+        :param _Offset: Offset
         :type Offset: int
-        :param Limit: Limit
+        :param _Limit: Limit
         :type Limit: int
-        :param SearchKey: Query key, which fuzzily matches the name
+        :param _SearchKey: Query key, which fuzzily matches the name
         :type SearchKey: str
         """
-        self.CompatibleRuntime = None
-        self.Offset = None
-        self.Limit = None
-        self.SearchKey = None
+        self._CompatibleRuntime = None
+        self._Offset = None
+        self._Limit = None
+        self._SearchKey = None
+
+    @property
+    def CompatibleRuntime(self):
+        return self._CompatibleRuntime
+
+    @CompatibleRuntime.setter
+    def CompatibleRuntime(self, CompatibleRuntime):
+        self._CompatibleRuntime = CompatibleRuntime
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def SearchKey(self):
+        return self._SearchKey
+
+    @SearchKey.setter
+    def SearchKey(self, SearchKey):
+        self._SearchKey = SearchKey
 
 
     def _deserialize(self, params):
-        self.CompatibleRuntime = params.get("CompatibleRuntime")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.SearchKey = params.get("SearchKey")
+        self._CompatibleRuntime = params.get("CompatibleRuntime")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._SearchKey = params.get("SearchKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2395,27 +4626,51 @@ class ListLayersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Layers: Layer list
+        :param _Layers: Layer list
         :type Layers: list of LayerVersionInfo
-        :param TotalCount: Total number of layers
+        :param _TotalCount: Total number of layers
         :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Layers = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._Layers = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Layers(self):
+        return self._Layers
+
+    @Layers.setter
+    def Layers(self, Layers):
+        self._Layers = Layers
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Layers") is not None:
-            self.Layers = []
+            self._Layers = []
             for item in params.get("Layers"):
                 obj = LayerVersionInfo()
                 obj._deserialize(item)
-                self.Layers.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._Layers.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class ListNamespacesRequest(AbstractModel):
@@ -2425,39 +4680,80 @@ class ListNamespacesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: Return data length. The default value is `20`.
+        :param _Limit: Return data length. The default value is `20`.
         :type Limit: int
-        :param Offset: Data offset. The default value is `0`.
+        :param _Offset: Data offset. The default value is `0`.
         :type Offset: int
-        :param Orderby: It specifies the sorting order of the results according to a specified field, such as `Name` and `Updatetime`.
+        :param _Orderby: It specifies the sorting order of the results according to a specified field, such as `Name` and `Updatetime`.
         :type Orderby: str
-        :param Order: It specifies whether to return the results in ascending or descending order. The value is `ASC` or `DESC`.
+        :param _Order: It specifies whether to return the results in ascending or descending order. The value is `ASC` or `DESC`.
         :type Order: str
-        :param SearchKey: Specifies the range and keyword for search. The value of `Key` can be `Namespace` or `Description`. Multiple AND conditions can be specified.
+        :param _SearchKey: Specifies the range and keyword for search. The value of `Key` can be `Namespace` or `Description`. Multiple AND conditions can be specified.
         :type SearchKey: list of SearchKey
         """
-        self.Limit = None
-        self.Offset = None
-        self.Orderby = None
-        self.Order = None
-        self.SearchKey = None
+        self._Limit = None
+        self._Offset = None
+        self._Orderby = None
+        self._Order = None
+        self._SearchKey = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Orderby(self):
+        return self._Orderby
+
+    @Orderby.setter
+    def Orderby(self, Orderby):
+        self._Orderby = Orderby
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def SearchKey(self):
+        return self._SearchKey
+
+    @SearchKey.setter
+    def SearchKey(self, SearchKey):
+        self._SearchKey = SearchKey
 
 
     def _deserialize(self, params):
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        self.Orderby = params.get("Orderby")
-        self.Order = params.get("Order")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Orderby = params.get("Orderby")
+        self._Order = params.get("Order")
         if params.get("SearchKey") is not None:
-            self.SearchKey = []
+            self._SearchKey = []
             for item in params.get("SearchKey"):
                 obj = SearchKey()
                 obj._deserialize(item)
-                self.SearchKey.append(obj)
+                self._SearchKey.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2470,27 +4766,51 @@ class ListNamespacesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Namespaces: Namespace details
+        :param _Namespaces: Namespace details
         :type Namespaces: list of Namespace
-        :param TotalCount: Number of return namespaces
+        :param _TotalCount: Number of return namespaces
         :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Namespaces = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._Namespaces = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Namespaces(self):
+        return self._Namespaces
+
+    @Namespaces.setter
+    def Namespaces(self, Namespaces):
+        self._Namespaces = Namespaces
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Namespaces") is not None:
-            self.Namespaces = []
+            self._Namespaces = []
             for item in params.get("Namespaces"):
                 obj = Namespace()
                 obj._deserialize(item)
-                self.Namespaces.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._Namespaces.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class ListTriggersRequest(AbstractModel):
@@ -2500,48 +4820,105 @@ class ListTriggersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FunctionName: Function name
+        :param _FunctionName: Function name
         :type FunctionName: str
-        :param Namespace: Namespace. Default value: default
+        :param _Namespace: Namespace. Default value: default
         :type Namespace: str
-        :param Offset: Data offset. Default value: 0
+        :param _Offset: Data offset. Default value: 0
         :type Offset: int
-        :param Limit: Number of results to be returned. Default value: 20
+        :param _Limit: Number of results to be returned. Default value: 20
         :type Limit: int
-        :param OrderBy: Indicates by which field to sort the returned results. Valid values: add_time, mod_time. Default value: mod_time
+        :param _OrderBy: Indicates by which field to sort the returned results. Valid values: add_time, mod_time. Default value: mod_time
         :type OrderBy: str
-        :param Order: Indicates whether the returned results are sorted in ascending or descending order. Valid values: ASC, DESC. Default value: DESC
+        :param _Order: Indicates whether the returned results are sorted in ascending or descending order. Valid values: ASC, DESC. Default value: DESC
         :type Order: str
-        :param Filters: * Qualifier:
+        :param _Filters: * Qualifier:
 Function version, alias
         :type Filters: list of Filter
         """
-        self.FunctionName = None
-        self.Namespace = None
-        self.Offset = None
-        self.Limit = None
-        self.OrderBy = None
-        self.Order = None
-        self.Filters = None
+        self._FunctionName = None
+        self._Namespace = None
+        self._Offset = None
+        self._Limit = None
+        self._OrderBy = None
+        self._Order = None
+        self._Filters = None
+
+    @property
+    def FunctionName(self):
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def OrderBy(self):
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
 
     def _deserialize(self, params):
-        self.FunctionName = params.get("FunctionName")
-        self.Namespace = params.get("Namespace")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.OrderBy = params.get("OrderBy")
-        self.Order = params.get("Order")
+        self._FunctionName = params.get("FunctionName")
+        self._Namespace = params.get("Namespace")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._OrderBy = params.get("OrderBy")
+        self._Order = params.get("Order")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2554,27 +4931,51 @@ class ListTriggersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Total number of triggers
+        :param _TotalCount: Total number of triggers
         :type TotalCount: int
-        :param Triggers: Trigger list
+        :param _Triggers: Trigger list
         :type Triggers: list of TriggerInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.Triggers = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._Triggers = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Triggers(self):
+        return self._Triggers
+
+    @Triggers.setter
+    def Triggers(self, Triggers):
+        self._Triggers = Triggers
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("Triggers") is not None:
-            self.Triggers = []
+            self._Triggers = []
             for item in params.get("Triggers"):
                 obj = TriggerInfo()
                 obj._deserialize(item)
-                self.Triggers.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Triggers.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ListVersionByFunctionRequest(AbstractModel):
@@ -2584,38 +4985,87 @@ class ListVersionByFunctionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FunctionName: Function Name
+        :param _FunctionName: Function Name
         :type FunctionName: str
-        :param Namespace: The namespace where the function locates
+        :param _Namespace: The namespace where the function locates
         :type Namespace: str
-        :param Offset: Data offset. The default value is `0`.
+        :param _Offset: Data offset. The default value is `0`.
         :type Offset: int
-        :param Limit: Return data length. The default value is `20`.
+        :param _Limit: Return data length. The default value is `20`.
         :type Limit: int
-        :param Order: It specifies whether to return the results in ascending or descending order. The value is `ASC` or `DESC`.
+        :param _Order: It specifies whether to return the results in ascending or descending order. The value is `ASC` or `DESC`.
         :type Order: str
-        :param OrderBy: It specifies the sorting order of the results according to a specified field, such as `AddTime`, `ModTime`.
+        :param _OrderBy: It specifies the sorting order of the results according to a specified field, such as `AddTime`, `ModTime`.
         :type OrderBy: str
         """
-        self.FunctionName = None
-        self.Namespace = None
-        self.Offset = None
-        self.Limit = None
-        self.Order = None
-        self.OrderBy = None
+        self._FunctionName = None
+        self._Namespace = None
+        self._Offset = None
+        self._Limit = None
+        self._Order = None
+        self._OrderBy = None
+
+    @property
+    def FunctionName(self):
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def OrderBy(self):
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
 
 
     def _deserialize(self, params):
-        self.FunctionName = params.get("FunctionName")
-        self.Namespace = params.get("Namespace")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.Order = params.get("Order")
-        self.OrderBy = params.get("OrderBy")
+        self._FunctionName = params.get("FunctionName")
+        self._Namespace = params.get("Namespace")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Order = params.get("Order")
+        self._OrderBy = params.get("OrderBy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2628,33 +5078,65 @@ class ListVersionByFunctionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FunctionVersion: Function version
+        :param _FunctionVersion: Function version
         :type FunctionVersion: list of str
-        :param Versions: Function version list
+        :param _Versions: Function version list
 Note: This field may return null, indicating that no valid values is found.
         :type Versions: list of FunctionVersion
-        :param TotalCount: Total number of function versions
+        :param _TotalCount: Total number of function versions
 Note: This field may return null, indicating that no valid value was found.
         :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.FunctionVersion = None
-        self.Versions = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._FunctionVersion = None
+        self._Versions = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def FunctionVersion(self):
+        return self._FunctionVersion
+
+    @FunctionVersion.setter
+    def FunctionVersion(self, FunctionVersion):
+        self._FunctionVersion = FunctionVersion
+
+    @property
+    def Versions(self):
+        return self._Versions
+
+    @Versions.setter
+    def Versions(self, Versions):
+        self._Versions = Versions
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.FunctionVersion = params.get("FunctionVersion")
+        self._FunctionVersion = params.get("FunctionVersion")
         if params.get("Versions") is not None:
-            self.Versions = []
+            self._Versions = []
             for item in params.get("Versions"):
                 obj = FunctionVersion()
                 obj._deserialize(item)
-                self.Versions.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._Versions.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class LogFilter(AbstractModel):
@@ -2664,7 +5146,7 @@ class LogFilter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RetCode: Values of `filter.RetCode` include:
+        :param _RetCode: Values of `filter.RetCode` include:
 not0, indicating that only logs of failed execution will be returned.
 is0, indicating that only logs of successful execution will be returned.
 TimeLimitExceeded, indicating that logs of function invocations which timed out will be returned.
@@ -2673,15 +5155,24 @@ UserCodeException, indicating that logs of function invocations during which a u
 Blank, indicating that all logs will be returned.
         :type RetCode: str
         """
-        self.RetCode = None
+        self._RetCode = None
+
+    @property
+    def RetCode(self):
+        return self._RetCode
+
+    @RetCode.setter
+    def RetCode(self, RetCode):
+        self._RetCode = RetCode
 
 
     def _deserialize(self, params):
-        self.RetCode = params.get("RetCode")
+        self._RetCode = params.get("RetCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2694,30 +5185,63 @@ class LogSearchContext(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: Offset.
+        :param _Offset: Offset.
         :type Offset: str
-        :param Limit: Log record number
+        :param _Limit: Log record number
         :type Limit: int
-        :param Keyword: Log keyword
+        :param _Keyword: Log keyword
         :type Keyword: str
-        :param Type: Log type. The value is `Application` (default) or `Platform`.
+        :param _Type: Log type. The value is `Application` (default) or `Platform`.
         :type Type: str
         """
-        self.Offset = None
-        self.Limit = None
-        self.Keyword = None
-        self.Type = None
+        self._Offset = None
+        self._Limit = None
+        self._Keyword = None
+        self._Type = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Keyword(self):
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
 
 
     def _deserialize(self, params):
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.Keyword = params.get("Keyword")
-        self.Type = params.get("Type")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Keyword = params.get("Keyword")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2730,34 +5254,75 @@ class Namespace(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ModTime: Creation time of the namespace
+        :param _ModTime: Creation time of the namespace
         :type ModTime: str
-        :param AddTime: Modification time of the namespace
+        :param _AddTime: Modification time of the namespace
         :type AddTime: str
-        :param Description: Namespace description
+        :param _Description: Namespace description
         :type Description: str
-        :param Name: Namespace name
+        :param _Name: Namespace name
         :type Name: str
-        :param Type: The default value is default. TCB indicates that the namespace is developed and created through the mini-program cloud.
+        :param _Type: The default value is default. TCB indicates that the namespace is developed and created through the mini-program cloud.
         :type Type: str
         """
-        self.ModTime = None
-        self.AddTime = None
-        self.Description = None
-        self.Name = None
-        self.Type = None
+        self._ModTime = None
+        self._AddTime = None
+        self._Description = None
+        self._Name = None
+        self._Type = None
+
+    @property
+    def ModTime(self):
+        return self._ModTime
+
+    @ModTime.setter
+    def ModTime(self, ModTime):
+        self._ModTime = ModTime
+
+    @property
+    def AddTime(self):
+        return self._AddTime
+
+    @AddTime.setter
+    def AddTime(self, AddTime):
+        self._AddTime = AddTime
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
 
 
     def _deserialize(self, params):
-        self.ModTime = params.get("ModTime")
-        self.AddTime = params.get("AddTime")
-        self.Description = params.get("Description")
-        self.Name = params.get("Name")
-        self.Type = params.get("Type")
+        self._ModTime = params.get("ModTime")
+        self._AddTime = params.get("AddTime")
+        self._Description = params.get("Description")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2770,57 +5335,138 @@ class NamespaceLimit(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FunctionsCount: Total number of functions
+        :param _FunctionsCount: Total number of functions
         :type FunctionsCount: int
-        :param Trigger: Trigger information
+        :param _Trigger: Trigger information
         :type Trigger: :class:`tencentcloud.scf.v20180416.models.TriggerCount`
-        :param Namespace: Namespace name
+        :param _Namespace: Namespace name
         :type Namespace: str
-        :param ConcurrentExecutions: Concurrency
+        :param _ConcurrentExecutions: Concurrency
         :type ConcurrentExecutions: int
-        :param TimeoutLimit: Timeout limit
+        :param _TimeoutLimit: Timeout limit
         :type TimeoutLimit: int
-        :param TestModelLimit: Test event limit
+        :param _TestModelLimit: Test event limit
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TestModelLimit: int
-        :param InitTimeoutLimit: Initialization timeout limit
+        :param _InitTimeoutLimit: Initialization timeout limit
         :type InitTimeoutLimit: int
-        :param RetryNumLimit: Limit of async retry attempt quantity
+        :param _RetryNumLimit: Limit of async retry attempt quantity
         :type RetryNumLimit: int
-        :param MinMsgTTL: Lower limit of message retention time for async retry
+        :param _MinMsgTTL: Lower limit of message retention time for async retry
         :type MinMsgTTL: int
-        :param MaxMsgTTL: Upper limit of message retention time for async retry
+        :param _MaxMsgTTL: Upper limit of message retention time for async retry
         :type MaxMsgTTL: int
         """
-        self.FunctionsCount = None
-        self.Trigger = None
-        self.Namespace = None
-        self.ConcurrentExecutions = None
-        self.TimeoutLimit = None
-        self.TestModelLimit = None
-        self.InitTimeoutLimit = None
-        self.RetryNumLimit = None
-        self.MinMsgTTL = None
-        self.MaxMsgTTL = None
+        self._FunctionsCount = None
+        self._Trigger = None
+        self._Namespace = None
+        self._ConcurrentExecutions = None
+        self._TimeoutLimit = None
+        self._TestModelLimit = None
+        self._InitTimeoutLimit = None
+        self._RetryNumLimit = None
+        self._MinMsgTTL = None
+        self._MaxMsgTTL = None
+
+    @property
+    def FunctionsCount(self):
+        return self._FunctionsCount
+
+    @FunctionsCount.setter
+    def FunctionsCount(self, FunctionsCount):
+        self._FunctionsCount = FunctionsCount
+
+    @property
+    def Trigger(self):
+        return self._Trigger
+
+    @Trigger.setter
+    def Trigger(self, Trigger):
+        self._Trigger = Trigger
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def ConcurrentExecutions(self):
+        return self._ConcurrentExecutions
+
+    @ConcurrentExecutions.setter
+    def ConcurrentExecutions(self, ConcurrentExecutions):
+        self._ConcurrentExecutions = ConcurrentExecutions
+
+    @property
+    def TimeoutLimit(self):
+        return self._TimeoutLimit
+
+    @TimeoutLimit.setter
+    def TimeoutLimit(self, TimeoutLimit):
+        self._TimeoutLimit = TimeoutLimit
+
+    @property
+    def TestModelLimit(self):
+        return self._TestModelLimit
+
+    @TestModelLimit.setter
+    def TestModelLimit(self, TestModelLimit):
+        self._TestModelLimit = TestModelLimit
+
+    @property
+    def InitTimeoutLimit(self):
+        return self._InitTimeoutLimit
+
+    @InitTimeoutLimit.setter
+    def InitTimeoutLimit(self, InitTimeoutLimit):
+        self._InitTimeoutLimit = InitTimeoutLimit
+
+    @property
+    def RetryNumLimit(self):
+        return self._RetryNumLimit
+
+    @RetryNumLimit.setter
+    def RetryNumLimit(self, RetryNumLimit):
+        self._RetryNumLimit = RetryNumLimit
+
+    @property
+    def MinMsgTTL(self):
+        return self._MinMsgTTL
+
+    @MinMsgTTL.setter
+    def MinMsgTTL(self, MinMsgTTL):
+        self._MinMsgTTL = MinMsgTTL
+
+    @property
+    def MaxMsgTTL(self):
+        return self._MaxMsgTTL
+
+    @MaxMsgTTL.setter
+    def MaxMsgTTL(self, MaxMsgTTL):
+        self._MaxMsgTTL = MaxMsgTTL
 
 
     def _deserialize(self, params):
-        self.FunctionsCount = params.get("FunctionsCount")
+        self._FunctionsCount = params.get("FunctionsCount")
         if params.get("Trigger") is not None:
-            self.Trigger = TriggerCount()
-            self.Trigger._deserialize(params.get("Trigger"))
-        self.Namespace = params.get("Namespace")
-        self.ConcurrentExecutions = params.get("ConcurrentExecutions")
-        self.TimeoutLimit = params.get("TimeoutLimit")
-        self.TestModelLimit = params.get("TestModelLimit")
-        self.InitTimeoutLimit = params.get("InitTimeoutLimit")
-        self.RetryNumLimit = params.get("RetryNumLimit")
-        self.MinMsgTTL = params.get("MinMsgTTL")
-        self.MaxMsgTTL = params.get("MaxMsgTTL")
+            self._Trigger = TriggerCount()
+            self._Trigger._deserialize(params.get("Trigger"))
+        self._Namespace = params.get("Namespace")
+        self._ConcurrentExecutions = params.get("ConcurrentExecutions")
+        self._TimeoutLimit = params.get("TimeoutLimit")
+        self._TestModelLimit = params.get("TestModelLimit")
+        self._InitTimeoutLimit = params.get("InitTimeoutLimit")
+        self._RetryNumLimit = params.get("RetryNumLimit")
+        self._MinMsgTTL = params.get("MinMsgTTL")
+        self._MaxMsgTTL = params.get("MaxMsgTTL")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2833,41 +5479,90 @@ class NamespaceUsage(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Functions: Function array
+        :param _Functions: Function array
         :type Functions: list of str
-        :param Namespace: Namespace name
+        :param _Namespace: Namespace name
         :type Namespace: str
-        :param FunctionsCount: Number of functions in namespace
+        :param _FunctionsCount: Number of functions in namespace
         :type FunctionsCount: int
-        :param TotalConcurrencyMem: Total memory quota of the namespace
+        :param _TotalConcurrencyMem: Total memory quota of the namespace
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type TotalConcurrencyMem: int
-        :param TotalAllocatedConcurrencyMem: Concurrency usage of the namespace
+        :param _TotalAllocatedConcurrencyMem: Concurrency usage of the namespace
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type TotalAllocatedConcurrencyMem: int
-        :param TotalAllocatedProvisionedMem: Provisioned concurrency usage of the namespace
+        :param _TotalAllocatedProvisionedMem: Provisioned concurrency usage of the namespace
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type TotalAllocatedProvisionedMem: int
         """
-        self.Functions = None
-        self.Namespace = None
-        self.FunctionsCount = None
-        self.TotalConcurrencyMem = None
-        self.TotalAllocatedConcurrencyMem = None
-        self.TotalAllocatedProvisionedMem = None
+        self._Functions = None
+        self._Namespace = None
+        self._FunctionsCount = None
+        self._TotalConcurrencyMem = None
+        self._TotalAllocatedConcurrencyMem = None
+        self._TotalAllocatedProvisionedMem = None
+
+    @property
+    def Functions(self):
+        return self._Functions
+
+    @Functions.setter
+    def Functions(self, Functions):
+        self._Functions = Functions
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def FunctionsCount(self):
+        return self._FunctionsCount
+
+    @FunctionsCount.setter
+    def FunctionsCount(self, FunctionsCount):
+        self._FunctionsCount = FunctionsCount
+
+    @property
+    def TotalConcurrencyMem(self):
+        return self._TotalConcurrencyMem
+
+    @TotalConcurrencyMem.setter
+    def TotalConcurrencyMem(self, TotalConcurrencyMem):
+        self._TotalConcurrencyMem = TotalConcurrencyMem
+
+    @property
+    def TotalAllocatedConcurrencyMem(self):
+        return self._TotalAllocatedConcurrencyMem
+
+    @TotalAllocatedConcurrencyMem.setter
+    def TotalAllocatedConcurrencyMem(self, TotalAllocatedConcurrencyMem):
+        self._TotalAllocatedConcurrencyMem = TotalAllocatedConcurrencyMem
+
+    @property
+    def TotalAllocatedProvisionedMem(self):
+        return self._TotalAllocatedProvisionedMem
+
+    @TotalAllocatedProvisionedMem.setter
+    def TotalAllocatedProvisionedMem(self, TotalAllocatedProvisionedMem):
+        self._TotalAllocatedProvisionedMem = TotalAllocatedProvisionedMem
 
 
     def _deserialize(self, params):
-        self.Functions = params.get("Functions")
-        self.Namespace = params.get("Namespace")
-        self.FunctionsCount = params.get("FunctionsCount")
-        self.TotalConcurrencyMem = params.get("TotalConcurrencyMem")
-        self.TotalAllocatedConcurrencyMem = params.get("TotalAllocatedConcurrencyMem")
-        self.TotalAllocatedProvisionedMem = params.get("TotalAllocatedProvisionedMem")
+        self._Functions = params.get("Functions")
+        self._Namespace = params.get("Namespace")
+        self._FunctionsCount = params.get("FunctionsCount")
+        self._TotalConcurrencyMem = params.get("TotalConcurrencyMem")
+        self._TotalAllocatedConcurrencyMem = params.get("TotalAllocatedConcurrencyMem")
+        self._TotalAllocatedProvisionedMem = params.get("TotalAllocatedProvisionedMem")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2880,36 +5575,77 @@ class PublishLayerVersionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LayerName: Layer name, which can contain 1-64 English letters, digits, hyphens, and underscores, must begin with a letter, and cannot end with a hyphen or underscore
+        :param _LayerName: Layer name, which can contain 1-64 English letters, digits, hyphens, and underscores, must begin with a letter, and cannot end with a hyphen or underscore
         :type LayerName: str
-        :param CompatibleRuntimes: Runtimes compatible with layer. Multiple choices are allowed. The valid values of this parameter correspond to the valid values of the `Runtime` of the function.
+        :param _CompatibleRuntimes: Runtimes compatible with layer. Multiple choices are allowed. The valid values of this parameter correspond to the valid values of the `Runtime` of the function.
         :type CompatibleRuntimes: list of str
-        :param Content: Layer file source or content
+        :param _Content: Layer file source or content
         :type Content: :class:`tencentcloud.scf.v20180416.models.Code`
-        :param Description: Layer version description
+        :param _Description: Layer version description
         :type Description: str
-        :param LicenseInfo: Software license of layer
+        :param _LicenseInfo: Software license of layer
         :type LicenseInfo: str
         """
-        self.LayerName = None
-        self.CompatibleRuntimes = None
-        self.Content = None
-        self.Description = None
-        self.LicenseInfo = None
+        self._LayerName = None
+        self._CompatibleRuntimes = None
+        self._Content = None
+        self._Description = None
+        self._LicenseInfo = None
+
+    @property
+    def LayerName(self):
+        return self._LayerName
+
+    @LayerName.setter
+    def LayerName(self, LayerName):
+        self._LayerName = LayerName
+
+    @property
+    def CompatibleRuntimes(self):
+        return self._CompatibleRuntimes
+
+    @CompatibleRuntimes.setter
+    def CompatibleRuntimes(self, CompatibleRuntimes):
+        self._CompatibleRuntimes = CompatibleRuntimes
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def LicenseInfo(self):
+        return self._LicenseInfo
+
+    @LicenseInfo.setter
+    def LicenseInfo(self, LicenseInfo):
+        self._LicenseInfo = LicenseInfo
 
 
     def _deserialize(self, params):
-        self.LayerName = params.get("LayerName")
-        self.CompatibleRuntimes = params.get("CompatibleRuntimes")
+        self._LayerName = params.get("LayerName")
+        self._CompatibleRuntimes = params.get("CompatibleRuntimes")
         if params.get("Content") is not None:
-            self.Content = Code()
-            self.Content._deserialize(params.get("Content"))
-        self.Description = params.get("Description")
-        self.LicenseInfo = params.get("LicenseInfo")
+            self._Content = Code()
+            self._Content._deserialize(params.get("Content"))
+        self._Description = params.get("Description")
+        self._LicenseInfo = params.get("LicenseInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2922,18 +5658,34 @@ class PublishLayerVersionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LayerVersion: Version number of the layer created in this request
+        :param _LayerVersion: Version number of the layer created in this request
         :type LayerVersion: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.LayerVersion = None
-        self.RequestId = None
+        self._LayerVersion = None
+        self._RequestId = None
+
+    @property
+    def LayerVersion(self):
+        return self._LayerVersion
+
+    @LayerVersion.setter
+    def LayerVersion(self, LayerVersion):
+        self._LayerVersion = LayerVersion
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.LayerVersion = params.get("LayerVersion")
-        self.RequestId = params.get("RequestId")
+        self._LayerVersion = params.get("LayerVersion")
+        self._RequestId = params.get("RequestId")
 
 
 class PublishVersionRequest(AbstractModel):
@@ -2943,26 +5695,51 @@ class PublishVersionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FunctionName: Name of the released function
+        :param _FunctionName: Name of the released function
         :type FunctionName: str
-        :param Description: Function description
+        :param _Description: Function description
         :type Description: str
-        :param Namespace: Function namespace
+        :param _Namespace: Function namespace
         :type Namespace: str
         """
-        self.FunctionName = None
-        self.Description = None
-        self.Namespace = None
+        self._FunctionName = None
+        self._Description = None
+        self._Namespace = None
+
+    @property
+    def FunctionName(self):
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
 
 
     def _deserialize(self, params):
-        self.FunctionName = params.get("FunctionName")
-        self.Description = params.get("Description")
-        self.Namespace = params.get("Namespace")
+        self._FunctionName = params.get("FunctionName")
+        self._Description = params.get("Description")
+        self._Namespace = params.get("Namespace")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2975,46 +5752,118 @@ class PublishVersionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FunctionVersion: Function version
+        :param _FunctionVersion: Function version
         :type FunctionVersion: str
-        :param CodeSize: Code size
+        :param _CodeSize: Code size
         :type CodeSize: int
-        :param MemorySize: Maximum available memory
+        :param _MemorySize: Maximum available memory
         :type MemorySize: int
-        :param Description: Function description
+        :param _Description: Function description
         :type Description: str
-        :param Handler: Function entry
+        :param _Handler: Function entry
         :type Handler: str
-        :param Timeout: Function timeout
+        :param _Timeout: Function timeout
         :type Timeout: int
-        :param Runtime: Function running environment
+        :param _Runtime: Function running environment
         :type Runtime: str
-        :param Namespace: Function namespace
+        :param _Namespace: Function namespace
         :type Namespace: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.FunctionVersion = None
-        self.CodeSize = None
-        self.MemorySize = None
-        self.Description = None
-        self.Handler = None
-        self.Timeout = None
-        self.Runtime = None
-        self.Namespace = None
-        self.RequestId = None
+        self._FunctionVersion = None
+        self._CodeSize = None
+        self._MemorySize = None
+        self._Description = None
+        self._Handler = None
+        self._Timeout = None
+        self._Runtime = None
+        self._Namespace = None
+        self._RequestId = None
+
+    @property
+    def FunctionVersion(self):
+        return self._FunctionVersion
+
+    @FunctionVersion.setter
+    def FunctionVersion(self, FunctionVersion):
+        self._FunctionVersion = FunctionVersion
+
+    @property
+    def CodeSize(self):
+        return self._CodeSize
+
+    @CodeSize.setter
+    def CodeSize(self, CodeSize):
+        self._CodeSize = CodeSize
+
+    @property
+    def MemorySize(self):
+        return self._MemorySize
+
+    @MemorySize.setter
+    def MemorySize(self, MemorySize):
+        self._MemorySize = MemorySize
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Handler(self):
+        return self._Handler
+
+    @Handler.setter
+    def Handler(self, Handler):
+        self._Handler = Handler
+
+    @property
+    def Timeout(self):
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def Runtime(self):
+        return self._Runtime
+
+    @Runtime.setter
+    def Runtime(self, Runtime):
+        self._Runtime = Runtime
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.FunctionVersion = params.get("FunctionVersion")
-        self.CodeSize = params.get("CodeSize")
-        self.MemorySize = params.get("MemorySize")
-        self.Description = params.get("Description")
-        self.Handler = params.get("Handler")
-        self.Timeout = params.get("Timeout")
-        self.Runtime = params.get("Runtime")
-        self.Namespace = params.get("Namespace")
-        self.RequestId = params.get("RequestId")
+        self._FunctionVersion = params.get("FunctionVersion")
+        self._CodeSize = params.get("CodeSize")
+        self._MemorySize = params.get("MemorySize")
+        self._Description = params.get("Description")
+        self._Handler = params.get("Handler")
+        self._Timeout = params.get("Timeout")
+        self._Runtime = params.get("Runtime")
+        self._Namespace = params.get("Namespace")
+        self._RequestId = params.get("RequestId")
 
 
 class PutProvisionedConcurrencyConfigRequest(AbstractModel):
@@ -3024,60 +5873,133 @@ class PutProvisionedConcurrencyConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FunctionName: Name of the function for which to set the provisioned concurrency
+        :param _FunctionName: Name of the function for which to set the provisioned concurrency
         :type FunctionName: str
-        :param Qualifier: Function version number. Note: the `$LATEST` version does not support provisioned concurrency
+        :param _Qualifier: Function version number. Note: the `$LATEST` version does not support provisioned concurrency
         :type Qualifier: str
-        :param VersionProvisionedConcurrencyNum: Provisioned concurrency amount. Note: there is an upper limit for the sum of provisioned concurrency amounts of all versions, which currently is the function's maximum concurrency quota minus 100
+        :param _VersionProvisionedConcurrencyNum: Provisioned concurrency amount. Note: there is an upper limit for the sum of provisioned concurrency amounts of all versions, which currently is the function's maximum concurrency quota minus 100
         :type VersionProvisionedConcurrencyNum: int
-        :param Namespace: Function namespace. Default value: `default`
+        :param _Namespace: Function namespace. Default value: `default`
         :type Namespace: str
-        :param TriggerActions: Scheduled provisioned concurrency scaling action
+        :param _TriggerActions: Scheduled provisioned concurrency scaling action
         :type TriggerActions: list of TriggerAction
-        :param ProvisionedType: Specifies the provisioned concurrency type.
+        :param _ProvisionedType: Specifies the provisioned concurrency type.
 `Default`: Static provisioned concurrency. 
 `ConcurrencyUtilizationTracking`: Scales the concurrency automatically according to the concurrency utilization.
 If `ConcurrencyUtilizationTracking` is passed in, 
 
 `TrackingTarget`, `MinCapacity` and `MaxCapacity` are required, and `VersionProvisionedConcurrencyNum` must be `0`. 
         :type ProvisionedType: str
-        :param TrackingTarget: The target concurrency utilization. Range: (0,1) (two decimal places)
+        :param _TrackingTarget: The target concurrency utilization. Range: (0,1) (two decimal places)
         :type TrackingTarget: float
-        :param MinCapacity: The minimum number of instances. It can not be smaller than `1`.
+        :param _MinCapacity: The minimum number of instances. It can not be smaller than `1`.
         :type MinCapacity: int
-        :param MaxCapacity: The maximum number of instances
+        :param _MaxCapacity: The maximum number of instances
         :type MaxCapacity: int
         """
-        self.FunctionName = None
-        self.Qualifier = None
-        self.VersionProvisionedConcurrencyNum = None
-        self.Namespace = None
-        self.TriggerActions = None
-        self.ProvisionedType = None
-        self.TrackingTarget = None
-        self.MinCapacity = None
-        self.MaxCapacity = None
+        self._FunctionName = None
+        self._Qualifier = None
+        self._VersionProvisionedConcurrencyNum = None
+        self._Namespace = None
+        self._TriggerActions = None
+        self._ProvisionedType = None
+        self._TrackingTarget = None
+        self._MinCapacity = None
+        self._MaxCapacity = None
+
+    @property
+    def FunctionName(self):
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def Qualifier(self):
+        return self._Qualifier
+
+    @Qualifier.setter
+    def Qualifier(self, Qualifier):
+        self._Qualifier = Qualifier
+
+    @property
+    def VersionProvisionedConcurrencyNum(self):
+        return self._VersionProvisionedConcurrencyNum
+
+    @VersionProvisionedConcurrencyNum.setter
+    def VersionProvisionedConcurrencyNum(self, VersionProvisionedConcurrencyNum):
+        self._VersionProvisionedConcurrencyNum = VersionProvisionedConcurrencyNum
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def TriggerActions(self):
+        return self._TriggerActions
+
+    @TriggerActions.setter
+    def TriggerActions(self, TriggerActions):
+        self._TriggerActions = TriggerActions
+
+    @property
+    def ProvisionedType(self):
+        return self._ProvisionedType
+
+    @ProvisionedType.setter
+    def ProvisionedType(self, ProvisionedType):
+        self._ProvisionedType = ProvisionedType
+
+    @property
+    def TrackingTarget(self):
+        return self._TrackingTarget
+
+    @TrackingTarget.setter
+    def TrackingTarget(self, TrackingTarget):
+        self._TrackingTarget = TrackingTarget
+
+    @property
+    def MinCapacity(self):
+        return self._MinCapacity
+
+    @MinCapacity.setter
+    def MinCapacity(self, MinCapacity):
+        self._MinCapacity = MinCapacity
+
+    @property
+    def MaxCapacity(self):
+        return self._MaxCapacity
+
+    @MaxCapacity.setter
+    def MaxCapacity(self, MaxCapacity):
+        self._MaxCapacity = MaxCapacity
 
 
     def _deserialize(self, params):
-        self.FunctionName = params.get("FunctionName")
-        self.Qualifier = params.get("Qualifier")
-        self.VersionProvisionedConcurrencyNum = params.get("VersionProvisionedConcurrencyNum")
-        self.Namespace = params.get("Namespace")
+        self._FunctionName = params.get("FunctionName")
+        self._Qualifier = params.get("Qualifier")
+        self._VersionProvisionedConcurrencyNum = params.get("VersionProvisionedConcurrencyNum")
+        self._Namespace = params.get("Namespace")
         if params.get("TriggerActions") is not None:
-            self.TriggerActions = []
+            self._TriggerActions = []
             for item in params.get("TriggerActions"):
                 obj = TriggerAction()
                 obj._deserialize(item)
-                self.TriggerActions.append(obj)
-        self.ProvisionedType = params.get("ProvisionedType")
-        self.TrackingTarget = params.get("TrackingTarget")
-        self.MinCapacity = params.get("MinCapacity")
-        self.MaxCapacity = params.get("MaxCapacity")
+                self._TriggerActions.append(obj)
+        self._ProvisionedType = params.get("ProvisionedType")
+        self._TrackingTarget = params.get("TrackingTarget")
+        self._MinCapacity = params.get("MinCapacity")
+        self._MaxCapacity = params.get("MaxCapacity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3090,14 +6012,22 @@ class PutProvisionedConcurrencyConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class PutReservedConcurrencyConfigRequest(AbstractModel):
@@ -3107,26 +6037,51 @@ class PutReservedConcurrencyConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FunctionName: Specifies the function of which you want to configure the reserved quota
+        :param _FunctionName: Specifies the function of which you want to configure the reserved quota
         :type FunctionName: str
-        :param ReservedConcurrencyMem: Reserved memory quota of the function. Note: the upper limit for the total reserved quota of the function is the user's total concurrency memory minus 12800
+        :param _ReservedConcurrencyMem: Reserved memory quota of the function. Note: the upper limit for the total reserved quota of the function is the user's total concurrency memory minus 12800
         :type ReservedConcurrencyMem: int
-        :param Namespace: Function namespace. Default value: `default`
+        :param _Namespace: Function namespace. Default value: `default`
         :type Namespace: str
         """
-        self.FunctionName = None
-        self.ReservedConcurrencyMem = None
-        self.Namespace = None
+        self._FunctionName = None
+        self._ReservedConcurrencyMem = None
+        self._Namespace = None
+
+    @property
+    def FunctionName(self):
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def ReservedConcurrencyMem(self):
+        return self._ReservedConcurrencyMem
+
+    @ReservedConcurrencyMem.setter
+    def ReservedConcurrencyMem(self, ReservedConcurrencyMem):
+        self._ReservedConcurrencyMem = ReservedConcurrencyMem
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
 
 
     def _deserialize(self, params):
-        self.FunctionName = params.get("FunctionName")
-        self.ReservedConcurrencyMem = params.get("ReservedConcurrencyMem")
-        self.Namespace = params.get("Namespace")
+        self._FunctionName = params.get("FunctionName")
+        self._ReservedConcurrencyMem = params.get("ReservedConcurrencyMem")
+        self._Namespace = params.get("Namespace")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3139,14 +6094,22 @@ class PutReservedConcurrencyConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class PutTotalConcurrencyConfigRequest(AbstractModel):
@@ -3156,22 +6119,39 @@ class PutTotalConcurrencyConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalConcurrencyMem: Account concurrency memory quota. Note: the lower limit for the account concurrency memory quota is the user's total concurrency memory used + 12800
+        :param _TotalConcurrencyMem: Account concurrency memory quota. Note: the lower limit for the account concurrency memory quota is the user's total concurrency memory used + 12800
         :type TotalConcurrencyMem: int
-        :param Namespace: Namespace. Default value: `default`
+        :param _Namespace: Namespace. Default value: `default`
         :type Namespace: str
         """
-        self.TotalConcurrencyMem = None
-        self.Namespace = None
+        self._TotalConcurrencyMem = None
+        self._Namespace = None
+
+    @property
+    def TotalConcurrencyMem(self):
+        return self._TotalConcurrencyMem
+
+    @TotalConcurrencyMem.setter
+    def TotalConcurrencyMem(self, TotalConcurrencyMem):
+        self._TotalConcurrencyMem = TotalConcurrencyMem
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
 
 
     def _deserialize(self, params):
-        self.TotalConcurrencyMem = params.get("TotalConcurrencyMem")
-        self.Namespace = params.get("Namespace")
+        self._TotalConcurrencyMem = params.get("TotalConcurrencyMem")
+        self._Namespace = params.get("Namespace")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3184,14 +6164,22 @@ class PutTotalConcurrencyConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class RequestStatus(AbstractModel):
@@ -3201,46 +6189,111 @@ class RequestStatus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FunctionName: Function name
+        :param _FunctionName: Function name
         :type FunctionName: str
-        :param RetMsg: Return value after the function is executed
+        :param _RetMsg: Return value after the function is executed
         :type RetMsg: str
-        :param RequestId: Request ID
+        :param _RequestId: Request ID
         :type RequestId: str
-        :param StartTime: Request start time
+        :param _StartTime: Request start time
         :type StartTime: str
-        :param RetCode: Result of the request. `0`: succeeded, `1`: running, `-1`: exception
+        :param _RetCode: Result of the request. `0`: succeeded, `1`: running, `-1`: exception
         :type RetCode: int
-        :param Duration: Time consumed for the request in ms
+        :param _Duration: Time consumed for the request in ms
         :type Duration: float
-        :param MemUsage: Time consumed by the request in MB
+        :param _MemUsage: Time consumed by the request in MB
         :type MemUsage: float
-        :param RetryNum: Retry Attempts
+        :param _RetryNum: Retry Attempts
         :type RetryNum: int
         """
-        self.FunctionName = None
-        self.RetMsg = None
-        self.RequestId = None
-        self.StartTime = None
-        self.RetCode = None
-        self.Duration = None
-        self.MemUsage = None
-        self.RetryNum = None
+        self._FunctionName = None
+        self._RetMsg = None
+        self._RequestId = None
+        self._StartTime = None
+        self._RetCode = None
+        self._Duration = None
+        self._MemUsage = None
+        self._RetryNum = None
+
+    @property
+    def FunctionName(self):
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def RetMsg(self):
+        return self._RetMsg
+
+    @RetMsg.setter
+    def RetMsg(self, RetMsg):
+        self._RetMsg = RetMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def RetCode(self):
+        return self._RetCode
+
+    @RetCode.setter
+    def RetCode(self, RetCode):
+        self._RetCode = RetCode
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def MemUsage(self):
+        return self._MemUsage
+
+    @MemUsage.setter
+    def MemUsage(self, MemUsage):
+        self._MemUsage = MemUsage
+
+    @property
+    def RetryNum(self):
+        return self._RetryNum
+
+    @RetryNum.setter
+    def RetryNum(self, RetryNum):
+        self._RetryNum = RetryNum
 
 
     def _deserialize(self, params):
-        self.FunctionName = params.get("FunctionName")
-        self.RetMsg = params.get("RetMsg")
-        self.RequestId = params.get("RequestId")
-        self.StartTime = params.get("StartTime")
-        self.RetCode = params.get("RetCode")
-        self.Duration = params.get("Duration")
-        self.MemUsage = params.get("MemUsage")
-        self.RetryNum = params.get("RetryNum")
+        self._FunctionName = params.get("FunctionName")
+        self._RetMsg = params.get("RetMsg")
+        self._RequestId = params.get("RequestId")
+        self._StartTime = params.get("StartTime")
+        self._RetCode = params.get("RetCode")
+        self._Duration = params.get("Duration")
+        self._MemUsage = params.get("MemUsage")
+        self._RetryNum = params.get("RetryNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3253,46 +6306,111 @@ class Result(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Log: It indicates the log output during the function execution. Null is returned for asynchronous invocations.
+        :param _Log: It indicates the log output during the function execution. Null is returned for asynchronous invocations.
         :type Log: str
-        :param RetMsg: It indicates the response from the executed function. Null is returned for asynchronous invocations.
+        :param _RetMsg: It indicates the response from the executed function. Null is returned for asynchronous invocations.
         :type RetMsg: str
-        :param ErrMsg: It indicates the error message of the executed function. Null is returned for asynchronous invocations.
+        :param _ErrMsg: It indicates the error message of the executed function. Null is returned for asynchronous invocations.
         :type ErrMsg: str
-        :param MemUsage: It indicates the memory size (in bytes) when the function is running. Null is returned for asynchronous invocations.
+        :param _MemUsage: It indicates the memory size (in bytes) when the function is running. Null is returned for asynchronous invocations.
         :type MemUsage: int
-        :param Duration: It indicates the duration (in milliseconds) required for running the function. Null is returned for asynchronous invocations.
+        :param _Duration: It indicates the duration (in milliseconds) required for running the function. Null is returned for asynchronous invocations.
         :type Duration: float
-        :param BillDuration: It indicates the billing duration (in milliseconds) for the function. Null is returned for asynchronous invocations.
+        :param _BillDuration: It indicates the billing duration (in milliseconds) for the function. Null is returned for asynchronous invocations.
         :type BillDuration: int
-        :param FunctionRequestId: ID of the executed function
+        :param _FunctionRequestId: ID of the executed function
         :type FunctionRequestId: str
-        :param InvokeResult: The [status code](https://intl.cloud.tencent.com/document/product/583/42611?from_cn_redirect=1) of the request. It’s not available for `Invoke` API. 
+        :param _InvokeResult: The [status code](https://intl.cloud.tencent.com/document/product/583/42611?from_cn_redirect=1) of the request. It’s not available for `Invoke` API. 
         :type InvokeResult: int
         """
-        self.Log = None
-        self.RetMsg = None
-        self.ErrMsg = None
-        self.MemUsage = None
-        self.Duration = None
-        self.BillDuration = None
-        self.FunctionRequestId = None
-        self.InvokeResult = None
+        self._Log = None
+        self._RetMsg = None
+        self._ErrMsg = None
+        self._MemUsage = None
+        self._Duration = None
+        self._BillDuration = None
+        self._FunctionRequestId = None
+        self._InvokeResult = None
+
+    @property
+    def Log(self):
+        return self._Log
+
+    @Log.setter
+    def Log(self, Log):
+        self._Log = Log
+
+    @property
+    def RetMsg(self):
+        return self._RetMsg
+
+    @RetMsg.setter
+    def RetMsg(self, RetMsg):
+        self._RetMsg = RetMsg
+
+    @property
+    def ErrMsg(self):
+        return self._ErrMsg
+
+    @ErrMsg.setter
+    def ErrMsg(self, ErrMsg):
+        self._ErrMsg = ErrMsg
+
+    @property
+    def MemUsage(self):
+        return self._MemUsage
+
+    @MemUsage.setter
+    def MemUsage(self, MemUsage):
+        self._MemUsage = MemUsage
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def BillDuration(self):
+        return self._BillDuration
+
+    @BillDuration.setter
+    def BillDuration(self, BillDuration):
+        self._BillDuration = BillDuration
+
+    @property
+    def FunctionRequestId(self):
+        return self._FunctionRequestId
+
+    @FunctionRequestId.setter
+    def FunctionRequestId(self, FunctionRequestId):
+        self._FunctionRequestId = FunctionRequestId
+
+    @property
+    def InvokeResult(self):
+        return self._InvokeResult
+
+    @InvokeResult.setter
+    def InvokeResult(self, InvokeResult):
+        self._InvokeResult = InvokeResult
 
 
     def _deserialize(self, params):
-        self.Log = params.get("Log")
-        self.RetMsg = params.get("RetMsg")
-        self.ErrMsg = params.get("ErrMsg")
-        self.MemUsage = params.get("MemUsage")
-        self.Duration = params.get("Duration")
-        self.BillDuration = params.get("BillDuration")
-        self.FunctionRequestId = params.get("FunctionRequestId")
-        self.InvokeResult = params.get("InvokeResult")
+        self._Log = params.get("Log")
+        self._RetMsg = params.get("RetMsg")
+        self._ErrMsg = params.get("ErrMsg")
+        self._MemUsage = params.get("MemUsage")
+        self._Duration = params.get("Duration")
+        self._BillDuration = params.get("BillDuration")
+        self._FunctionRequestId = params.get("FunctionRequestId")
+        self._InvokeResult = params.get("InvokeResult")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3305,18 +6423,27 @@ class RetryConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RetryNum: Number of retry attempts
+        :param _RetryNum: Number of retry attempts
         :type RetryNum: int
         """
-        self.RetryNum = None
+        self._RetryNum = None
+
+    @property
+    def RetryNum(self):
+        return self._RetryNum
+
+    @RetryNum.setter
+    def RetryNum(self, RetryNum):
+        self._RetryNum = RetryNum
 
 
     def _deserialize(self, params):
-        self.RetryNum = params.get("RetryNum")
+        self._RetryNum = params.get("RetryNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3329,32 +6456,49 @@ class RoutingConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AdditionalVersionWeights: Additional version with random weight-based routing
+        :param _AdditionalVersionWeights: Additional version with random weight-based routing
         :type AdditionalVersionWeights: list of VersionWeight
-        :param AddtionVersionMatchs: Additional version with rule-based routing
+        :param _AddtionVersionMatchs: Additional version with rule-based routing
         :type AddtionVersionMatchs: list of VersionMatch
         """
-        self.AdditionalVersionWeights = None
-        self.AddtionVersionMatchs = None
+        self._AdditionalVersionWeights = None
+        self._AddtionVersionMatchs = None
+
+    @property
+    def AdditionalVersionWeights(self):
+        return self._AdditionalVersionWeights
+
+    @AdditionalVersionWeights.setter
+    def AdditionalVersionWeights(self, AdditionalVersionWeights):
+        self._AdditionalVersionWeights = AdditionalVersionWeights
+
+    @property
+    def AddtionVersionMatchs(self):
+        return self._AddtionVersionMatchs
+
+    @AddtionVersionMatchs.setter
+    def AddtionVersionMatchs(self, AddtionVersionMatchs):
+        self._AddtionVersionMatchs = AddtionVersionMatchs
 
 
     def _deserialize(self, params):
         if params.get("AdditionalVersionWeights") is not None:
-            self.AdditionalVersionWeights = []
+            self._AdditionalVersionWeights = []
             for item in params.get("AdditionalVersionWeights"):
                 obj = VersionWeight()
                 obj._deserialize(item)
-                self.AdditionalVersionWeights.append(obj)
+                self._AdditionalVersionWeights.append(obj)
         if params.get("AddtionVersionMatchs") is not None:
-            self.AddtionVersionMatchs = []
+            self._AddtionVersionMatchs = []
             for item in params.get("AddtionVersionMatchs"):
                 obj = VersionMatch()
                 obj._deserialize(item)
-                self.AddtionVersionMatchs.append(obj)
+                self._AddtionVersionMatchs.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3367,22 +6511,39 @@ class SearchKey(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Key: Search range
+        :param _Key: Search range
         :type Key: str
-        :param Value: Keyword for search
+        :param _Value: Keyword for search
         :type Value: str
         """
-        self.Key = None
-        self.Value = None
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
 
 
     def _deserialize(self, params):
-        self.Key = params.get("Key")
-        self.Value = params.get("Value")
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3395,22 +6556,39 @@ class StatusReason(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ErrorCode: Error code
+        :param _ErrorCode: Error code
         :type ErrorCode: str
-        :param ErrorMessage: Error message
+        :param _ErrorMessage: Error message
         :type ErrorMessage: str
         """
-        self.ErrorCode = None
-        self.ErrorMessage = None
+        self._ErrorCode = None
+        self._ErrorMessage = None
+
+    @property
+    def ErrorCode(self):
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def ErrorMessage(self):
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
 
 
     def _deserialize(self, params):
-        self.ErrorCode = params.get("ErrorCode")
-        self.ErrorMessage = params.get("ErrorMessage")
+        self._ErrorCode = params.get("ErrorCode")
+        self._ErrorMessage = params.get("ErrorMessage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3423,22 +6601,39 @@ class Tag(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Key: Tag key
+        :param _Key: Tag key
         :type Key: str
-        :param Value: Tag value
+        :param _Value: Tag value
         :type Value: str
         """
-        self.Key = None
-        self.Value = None
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
 
 
     def _deserialize(self, params):
-        self.Key = params.get("Key")
-        self.Value = params.get("Value")
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3451,30 +6646,63 @@ class TerminateAsyncEventRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FunctionName: Function name
+        :param _FunctionName: Function name
         :type FunctionName: str
-        :param InvokeRequestId: Terminated invocation request ID
+        :param _InvokeRequestId: Terminated invocation request ID
         :type InvokeRequestId: str
-        :param Namespace: Namespace
+        :param _Namespace: Namespace
         :type Namespace: str
-        :param GraceShutdown: Whether to enable grace shutdown. If it’s `true`, a `SIGTERM` signal is sent to the specified request. See [Sending termination signal](https://intl.cloud.tencent.com/document/product/583/63969?from_cn_redirect=1#.E5.8F.91.E9.80.81.E7.BB.88.E6.AD.A2.E4.BF.A1.E5.8F.B7]. It’s set to `false` by default.
+        :param _GraceShutdown: Whether to enable grace shutdown. If it’s `true`, a `SIGTERM` signal is sent to the specified request. See [Sending termination signal](https://intl.cloud.tencent.com/document/product/583/63969?from_cn_redirect=1#.E5.8F.91.E9.80.81.E7.BB.88.E6.AD.A2.E4.BF.A1.E5.8F.B7]. It’s set to `false` by default.
         :type GraceShutdown: bool
         """
-        self.FunctionName = None
-        self.InvokeRequestId = None
-        self.Namespace = None
-        self.GraceShutdown = None
+        self._FunctionName = None
+        self._InvokeRequestId = None
+        self._Namespace = None
+        self._GraceShutdown = None
+
+    @property
+    def FunctionName(self):
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def InvokeRequestId(self):
+        return self._InvokeRequestId
+
+    @InvokeRequestId.setter
+    def InvokeRequestId(self, InvokeRequestId):
+        self._InvokeRequestId = InvokeRequestId
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def GraceShutdown(self):
+        return self._GraceShutdown
+
+    @GraceShutdown.setter
+    def GraceShutdown(self, GraceShutdown):
+        self._GraceShutdown = GraceShutdown
 
 
     def _deserialize(self, params):
-        self.FunctionName = params.get("FunctionName")
-        self.InvokeRequestId = params.get("InvokeRequestId")
-        self.Namespace = params.get("Namespace")
-        self.GraceShutdown = params.get("GraceShutdown")
+        self._FunctionName = params.get("FunctionName")
+        self._InvokeRequestId = params.get("InvokeRequestId")
+        self._Namespace = params.get("Namespace")
+        self._GraceShutdown = params.get("GraceShutdown")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3487,14 +6715,22 @@ class TerminateAsyncEventResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class TimeInterval(AbstractModel):
@@ -3504,22 +6740,39 @@ class TimeInterval(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Start: Start time (inclusive) in the format of "%Y-%m-%d %H:%M:%S"
+        :param _Start: Start time (inclusive) in the format of "%Y-%m-%d %H:%M:%S"
         :type Start: str
-        :param End: End time (exclusive) in the format of "%Y-%m-%d %H:%M:%S"
+        :param _End: End time (exclusive) in the format of "%Y-%m-%d %H:%M:%S"
         :type End: str
         """
-        self.Start = None
-        self.End = None
+        self._Start = None
+        self._End = None
+
+    @property
+    def Start(self):
+        return self._Start
+
+    @Start.setter
+    def Start(self, Start):
+        self._Start = Start
+
+    @property
+    def End(self):
+        return self._End
+
+    @End.setter
+    def End(self, End):
+        self._End = End
 
 
     def _deserialize(self, params):
-        self.Start = params.get("Start")
-        self.End = params.get("End")
+        self._Start = params.get("Start")
+        self._End = params.get("End")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3532,62 +6785,159 @@ class Trigger(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ModTime: Latest modification time of the trigger
+        :param _ModTime: Latest modification time of the trigger
         :type ModTime: str
-        :param Type: Trigger type
+        :param _Type: Trigger type
         :type Type: str
-        :param TriggerDesc: Detailed trigger configuration
+        :param _TriggerDesc: Detailed trigger configuration
         :type TriggerDesc: str
-        :param TriggerName: Trigger name
+        :param _TriggerName: Trigger name
         :type TriggerName: str
-        :param AddTime: Creation time of the trigger
+        :param _AddTime: Creation time of the trigger
         :type AddTime: str
-        :param Enable: Enabling switch
+        :param _Enable: Enabling switch
         :type Enable: int
-        :param CustomArgument: Custom parameter
+        :param _CustomArgument: Custom parameter
         :type CustomArgument: str
-        :param AvailableStatus: Trigger status
+        :param _AvailableStatus: Trigger status
         :type AvailableStatus: str
-        :param ResourceId: Minimum resource ID of trigger
+        :param _ResourceId: Minimum resource ID of trigger
         :type ResourceId: str
-        :param BindStatus: Trigger-Function binding status
+        :param _BindStatus: Trigger-Function binding status
         :type BindStatus: str
-        :param TriggerAttribute: Trigger type. Two-way means that the trigger can be manipulated in both consoles, while one-way means that the trigger can be created only in the SCF Console
+        :param _TriggerAttribute: Trigger type. Two-way means that the trigger can be manipulated in both consoles, while one-way means that the trigger can be created only in the SCF Console
         :type TriggerAttribute: str
-        :param Qualifier: The alias or version bound with the trigger
+        :param _Qualifier: The alias or version bound with the trigger
         :type Qualifier: str
         """
-        self.ModTime = None
-        self.Type = None
-        self.TriggerDesc = None
-        self.TriggerName = None
-        self.AddTime = None
-        self.Enable = None
-        self.CustomArgument = None
-        self.AvailableStatus = None
-        self.ResourceId = None
-        self.BindStatus = None
-        self.TriggerAttribute = None
-        self.Qualifier = None
+        self._ModTime = None
+        self._Type = None
+        self._TriggerDesc = None
+        self._TriggerName = None
+        self._AddTime = None
+        self._Enable = None
+        self._CustomArgument = None
+        self._AvailableStatus = None
+        self._ResourceId = None
+        self._BindStatus = None
+        self._TriggerAttribute = None
+        self._Qualifier = None
+
+    @property
+    def ModTime(self):
+        return self._ModTime
+
+    @ModTime.setter
+    def ModTime(self, ModTime):
+        self._ModTime = ModTime
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def TriggerDesc(self):
+        return self._TriggerDesc
+
+    @TriggerDesc.setter
+    def TriggerDesc(self, TriggerDesc):
+        self._TriggerDesc = TriggerDesc
+
+    @property
+    def TriggerName(self):
+        return self._TriggerName
+
+    @TriggerName.setter
+    def TriggerName(self, TriggerName):
+        self._TriggerName = TriggerName
+
+    @property
+    def AddTime(self):
+        return self._AddTime
+
+    @AddTime.setter
+    def AddTime(self, AddTime):
+        self._AddTime = AddTime
+
+    @property
+    def Enable(self):
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def CustomArgument(self):
+        return self._CustomArgument
+
+    @CustomArgument.setter
+    def CustomArgument(self, CustomArgument):
+        self._CustomArgument = CustomArgument
+
+    @property
+    def AvailableStatus(self):
+        return self._AvailableStatus
+
+    @AvailableStatus.setter
+    def AvailableStatus(self, AvailableStatus):
+        self._AvailableStatus = AvailableStatus
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def BindStatus(self):
+        return self._BindStatus
+
+    @BindStatus.setter
+    def BindStatus(self, BindStatus):
+        self._BindStatus = BindStatus
+
+    @property
+    def TriggerAttribute(self):
+        return self._TriggerAttribute
+
+    @TriggerAttribute.setter
+    def TriggerAttribute(self, TriggerAttribute):
+        self._TriggerAttribute = TriggerAttribute
+
+    @property
+    def Qualifier(self):
+        return self._Qualifier
+
+    @Qualifier.setter
+    def Qualifier(self, Qualifier):
+        self._Qualifier = Qualifier
 
 
     def _deserialize(self, params):
-        self.ModTime = params.get("ModTime")
-        self.Type = params.get("Type")
-        self.TriggerDesc = params.get("TriggerDesc")
-        self.TriggerName = params.get("TriggerName")
-        self.AddTime = params.get("AddTime")
-        self.Enable = params.get("Enable")
-        self.CustomArgument = params.get("CustomArgument")
-        self.AvailableStatus = params.get("AvailableStatus")
-        self.ResourceId = params.get("ResourceId")
-        self.BindStatus = params.get("BindStatus")
-        self.TriggerAttribute = params.get("TriggerAttribute")
-        self.Qualifier = params.get("Qualifier")
+        self._ModTime = params.get("ModTime")
+        self._Type = params.get("Type")
+        self._TriggerDesc = params.get("TriggerDesc")
+        self._TriggerName = params.get("TriggerName")
+        self._AddTime = params.get("AddTime")
+        self._Enable = params.get("Enable")
+        self._CustomArgument = params.get("CustomArgument")
+        self._AvailableStatus = params.get("AvailableStatus")
+        self._ResourceId = params.get("ResourceId")
+        self._BindStatus = params.get("BindStatus")
+        self._TriggerAttribute = params.get("TriggerAttribute")
+        self._Qualifier = params.get("Qualifier")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3600,34 +6950,67 @@ class TriggerAction(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TriggerName: Scheduled action name
+        :param _TriggerName: Scheduled action name
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type TriggerName: str
-        :param TriggerProvisionedConcurrencyNum: Target provisioned concurrency of the scheduled scaling action 
+        :param _TriggerProvisionedConcurrencyNum: Target provisioned concurrency of the scheduled scaling action 
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type TriggerProvisionedConcurrencyNum: int
-        :param TriggerCronConfig: Trigger time of the scheduled action in Cron expression. Seven fields are required and should be separated with a space.
+        :param _TriggerCronConfig: Trigger time of the scheduled action in Cron expression. Seven fields are required and should be separated with a space.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type TriggerCronConfig: str
-        :param ProvisionedType: The provision type. Value: `Default`
+        :param _ProvisionedType: The provision type. Value: `Default`
 Note: This field may return `null`, indicating that no valid value can be found.
         :type ProvisionedType: str
         """
-        self.TriggerName = None
-        self.TriggerProvisionedConcurrencyNum = None
-        self.TriggerCronConfig = None
-        self.ProvisionedType = None
+        self._TriggerName = None
+        self._TriggerProvisionedConcurrencyNum = None
+        self._TriggerCronConfig = None
+        self._ProvisionedType = None
+
+    @property
+    def TriggerName(self):
+        return self._TriggerName
+
+    @TriggerName.setter
+    def TriggerName(self, TriggerName):
+        self._TriggerName = TriggerName
+
+    @property
+    def TriggerProvisionedConcurrencyNum(self):
+        return self._TriggerProvisionedConcurrencyNum
+
+    @TriggerProvisionedConcurrencyNum.setter
+    def TriggerProvisionedConcurrencyNum(self, TriggerProvisionedConcurrencyNum):
+        self._TriggerProvisionedConcurrencyNum = TriggerProvisionedConcurrencyNum
+
+    @property
+    def TriggerCronConfig(self):
+        return self._TriggerCronConfig
+
+    @TriggerCronConfig.setter
+    def TriggerCronConfig(self, TriggerCronConfig):
+        self._TriggerCronConfig = TriggerCronConfig
+
+    @property
+    def ProvisionedType(self):
+        return self._ProvisionedType
+
+    @ProvisionedType.setter
+    def ProvisionedType(self, ProvisionedType):
+        self._ProvisionedType = ProvisionedType
 
 
     def _deserialize(self, params):
-        self.TriggerName = params.get("TriggerName")
-        self.TriggerProvisionedConcurrencyNum = params.get("TriggerProvisionedConcurrencyNum")
-        self.TriggerCronConfig = params.get("TriggerCronConfig")
-        self.ProvisionedType = params.get("ProvisionedType")
+        self._TriggerName = params.get("TriggerName")
+        self._TriggerProvisionedConcurrencyNum = params.get("TriggerProvisionedConcurrencyNum")
+        self._TriggerCronConfig = params.get("TriggerCronConfig")
+        self._ProvisionedType = params.get("ProvisionedType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3640,63 +7023,160 @@ class TriggerCount(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Cos: Number of COS triggers
+        :param _Cos: Number of COS triggers
         :type Cos: int
-        :param Timer: Number of timer triggers
+        :param _Timer: Number of timer triggers
         :type Timer: int
-        :param Cmq: Number of CMQ triggers
+        :param _Cmq: Number of CMQ triggers
         :type Cmq: int
-        :param Total: Total number of triggers
+        :param _Total: Total number of triggers
         :type Total: int
-        :param Ckafka: Number of CKafka triggers
+        :param _Ckafka: Number of CKafka triggers
         :type Ckafka: int
-        :param Apigw: Number of API Gateway triggers
+        :param _Apigw: Number of API Gateway triggers
         :type Apigw: int
-        :param Cls: Number of CLS triggers
+        :param _Cls: Number of CLS triggers
         :type Cls: int
-        :param Clb: Number of CLB triggers
+        :param _Clb: Number of CLB triggers
         :type Clb: int
-        :param Mps: Number of MPS triggers
+        :param _Mps: Number of MPS triggers
         :type Mps: int
-        :param Cm: Number of CM triggers
+        :param _Cm: Number of CM triggers
         :type Cm: int
-        :param Vod: Number of VOD triggers
+        :param _Vod: Number of VOD triggers
         :type Vod: int
-        :param Eb: Number of EventBridge triggers
+        :param _Eb: Number of EventBridge triggers
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Eb: int
         """
-        self.Cos = None
-        self.Timer = None
-        self.Cmq = None
-        self.Total = None
-        self.Ckafka = None
-        self.Apigw = None
-        self.Cls = None
-        self.Clb = None
-        self.Mps = None
-        self.Cm = None
-        self.Vod = None
-        self.Eb = None
+        self._Cos = None
+        self._Timer = None
+        self._Cmq = None
+        self._Total = None
+        self._Ckafka = None
+        self._Apigw = None
+        self._Cls = None
+        self._Clb = None
+        self._Mps = None
+        self._Cm = None
+        self._Vod = None
+        self._Eb = None
+
+    @property
+    def Cos(self):
+        return self._Cos
+
+    @Cos.setter
+    def Cos(self, Cos):
+        self._Cos = Cos
+
+    @property
+    def Timer(self):
+        return self._Timer
+
+    @Timer.setter
+    def Timer(self, Timer):
+        self._Timer = Timer
+
+    @property
+    def Cmq(self):
+        return self._Cmq
+
+    @Cmq.setter
+    def Cmq(self, Cmq):
+        self._Cmq = Cmq
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Ckafka(self):
+        return self._Ckafka
+
+    @Ckafka.setter
+    def Ckafka(self, Ckafka):
+        self._Ckafka = Ckafka
+
+    @property
+    def Apigw(self):
+        return self._Apigw
+
+    @Apigw.setter
+    def Apigw(self, Apigw):
+        self._Apigw = Apigw
+
+    @property
+    def Cls(self):
+        return self._Cls
+
+    @Cls.setter
+    def Cls(self, Cls):
+        self._Cls = Cls
+
+    @property
+    def Clb(self):
+        return self._Clb
+
+    @Clb.setter
+    def Clb(self, Clb):
+        self._Clb = Clb
+
+    @property
+    def Mps(self):
+        return self._Mps
+
+    @Mps.setter
+    def Mps(self, Mps):
+        self._Mps = Mps
+
+    @property
+    def Cm(self):
+        return self._Cm
+
+    @Cm.setter
+    def Cm(self, Cm):
+        self._Cm = Cm
+
+    @property
+    def Vod(self):
+        return self._Vod
+
+    @Vod.setter
+    def Vod(self, Vod):
+        self._Vod = Vod
+
+    @property
+    def Eb(self):
+        return self._Eb
+
+    @Eb.setter
+    def Eb(self, Eb):
+        self._Eb = Eb
 
 
     def _deserialize(self, params):
-        self.Cos = params.get("Cos")
-        self.Timer = params.get("Timer")
-        self.Cmq = params.get("Cmq")
-        self.Total = params.get("Total")
-        self.Ckafka = params.get("Ckafka")
-        self.Apigw = params.get("Apigw")
-        self.Cls = params.get("Cls")
-        self.Clb = params.get("Clb")
-        self.Mps = params.get("Mps")
-        self.Cm = params.get("Cm")
-        self.Vod = params.get("Vod")
-        self.Eb = params.get("Eb")
+        self._Cos = params.get("Cos")
+        self._Timer = params.get("Timer")
+        self._Cmq = params.get("Cmq")
+        self._Total = params.get("Total")
+        self._Ckafka = params.get("Ckafka")
+        self._Apigw = params.get("Apigw")
+        self._Cls = params.get("Cls")
+        self._Clb = params.get("Clb")
+        self._Mps = params.get("Mps")
+        self._Cm = params.get("Cm")
+        self._Vod = params.get("Vod")
+        self._Eb = params.get("Eb")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3709,63 +7189,160 @@ class TriggerInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Enable: Whether to enable
+        :param _Enable: Whether to enable
         :type Enable: int
-        :param Qualifier: Function version or alias
+        :param _Qualifier: Function version or alias
         :type Qualifier: str
-        :param TriggerName: Trigger name
+        :param _TriggerName: Trigger name
         :type TriggerName: str
-        :param Type: Trigger type
+        :param _Type: Trigger type
         :type Type: str
-        :param TriggerDesc: Detailed configuration of trigger
+        :param _TriggerDesc: Detailed configuration of trigger
         :type TriggerDesc: str
-        :param AvailableStatus: Whether the trigger is available
+        :param _AvailableStatus: Whether the trigger is available
         :type AvailableStatus: str
-        :param CustomArgument: Custom parameter
+        :param _CustomArgument: Custom parameter
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CustomArgument: str
-        :param AddTime: Trigger creation time
+        :param _AddTime: Trigger creation time
         :type AddTime: str
-        :param ModTime: Trigger last modified time
+        :param _ModTime: Trigger last modified time
         :type ModTime: str
-        :param ResourceId: Minimum resource ID of trigger
+        :param _ResourceId: Minimum resource ID of trigger
         :type ResourceId: str
-        :param BindStatus: Trigger-Function binding status
+        :param _BindStatus: Trigger-Function binding status
         :type BindStatus: str
-        :param TriggerAttribute: Trigger type. Two-way means that the trigger can be manipulated in both consoles, while one-way means that the trigger can be created only in the SCF Console
+        :param _TriggerAttribute: Trigger type. Two-way means that the trigger can be manipulated in both consoles, while one-way means that the trigger can be created only in the SCF Console
         :type TriggerAttribute: str
         """
-        self.Enable = None
-        self.Qualifier = None
-        self.TriggerName = None
-        self.Type = None
-        self.TriggerDesc = None
-        self.AvailableStatus = None
-        self.CustomArgument = None
-        self.AddTime = None
-        self.ModTime = None
-        self.ResourceId = None
-        self.BindStatus = None
-        self.TriggerAttribute = None
+        self._Enable = None
+        self._Qualifier = None
+        self._TriggerName = None
+        self._Type = None
+        self._TriggerDesc = None
+        self._AvailableStatus = None
+        self._CustomArgument = None
+        self._AddTime = None
+        self._ModTime = None
+        self._ResourceId = None
+        self._BindStatus = None
+        self._TriggerAttribute = None
+
+    @property
+    def Enable(self):
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def Qualifier(self):
+        return self._Qualifier
+
+    @Qualifier.setter
+    def Qualifier(self, Qualifier):
+        self._Qualifier = Qualifier
+
+    @property
+    def TriggerName(self):
+        return self._TriggerName
+
+    @TriggerName.setter
+    def TriggerName(self, TriggerName):
+        self._TriggerName = TriggerName
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def TriggerDesc(self):
+        return self._TriggerDesc
+
+    @TriggerDesc.setter
+    def TriggerDesc(self, TriggerDesc):
+        self._TriggerDesc = TriggerDesc
+
+    @property
+    def AvailableStatus(self):
+        return self._AvailableStatus
+
+    @AvailableStatus.setter
+    def AvailableStatus(self, AvailableStatus):
+        self._AvailableStatus = AvailableStatus
+
+    @property
+    def CustomArgument(self):
+        return self._CustomArgument
+
+    @CustomArgument.setter
+    def CustomArgument(self, CustomArgument):
+        self._CustomArgument = CustomArgument
+
+    @property
+    def AddTime(self):
+        return self._AddTime
+
+    @AddTime.setter
+    def AddTime(self, AddTime):
+        self._AddTime = AddTime
+
+    @property
+    def ModTime(self):
+        return self._ModTime
+
+    @ModTime.setter
+    def ModTime(self, ModTime):
+        self._ModTime = ModTime
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def BindStatus(self):
+        return self._BindStatus
+
+    @BindStatus.setter
+    def BindStatus(self, BindStatus):
+        self._BindStatus = BindStatus
+
+    @property
+    def TriggerAttribute(self):
+        return self._TriggerAttribute
+
+    @TriggerAttribute.setter
+    def TriggerAttribute(self, TriggerAttribute):
+        self._TriggerAttribute = TriggerAttribute
 
 
     def _deserialize(self, params):
-        self.Enable = params.get("Enable")
-        self.Qualifier = params.get("Qualifier")
-        self.TriggerName = params.get("TriggerName")
-        self.Type = params.get("Type")
-        self.TriggerDesc = params.get("TriggerDesc")
-        self.AvailableStatus = params.get("AvailableStatus")
-        self.CustomArgument = params.get("CustomArgument")
-        self.AddTime = params.get("AddTime")
-        self.ModTime = params.get("ModTime")
-        self.ResourceId = params.get("ResourceId")
-        self.BindStatus = params.get("BindStatus")
-        self.TriggerAttribute = params.get("TriggerAttribute")
+        self._Enable = params.get("Enable")
+        self._Qualifier = params.get("Qualifier")
+        self._TriggerName = params.get("TriggerName")
+        self._Type = params.get("Type")
+        self._TriggerDesc = params.get("TriggerDesc")
+        self._AvailableStatus = params.get("AvailableStatus")
+        self._CustomArgument = params.get("CustomArgument")
+        self._AddTime = params.get("AddTime")
+        self._ModTime = params.get("ModTime")
+        self._ResourceId = params.get("ResourceId")
+        self._BindStatus = params.get("BindStatus")
+        self._TriggerAttribute = params.get("TriggerAttribute")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3778,40 +7355,89 @@ class UpdateAliasRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FunctionName: Function name
+        :param _FunctionName: Function name
         :type FunctionName: str
-        :param Name: Alias name
+        :param _Name: Alias name
         :type Name: str
-        :param FunctionVersion: Master version pointed to by the alias
+        :param _FunctionVersion: Master version pointed to by the alias
         :type FunctionVersion: str
-        :param Namespace: Function namespace
+        :param _Namespace: Function namespace
         :type Namespace: str
-        :param RoutingConfig: Routing information of alias, which is required if you need to specify an additional version for the alias.
+        :param _RoutingConfig: Routing information of alias, which is required if you need to specify an additional version for the alias.
         :type RoutingConfig: :class:`tencentcloud.scf.v20180416.models.RoutingConfig`
-        :param Description: Alias description
+        :param _Description: Alias description
         :type Description: str
         """
-        self.FunctionName = None
-        self.Name = None
-        self.FunctionVersion = None
-        self.Namespace = None
-        self.RoutingConfig = None
-        self.Description = None
+        self._FunctionName = None
+        self._Name = None
+        self._FunctionVersion = None
+        self._Namespace = None
+        self._RoutingConfig = None
+        self._Description = None
+
+    @property
+    def FunctionName(self):
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def FunctionVersion(self):
+        return self._FunctionVersion
+
+    @FunctionVersion.setter
+    def FunctionVersion(self, FunctionVersion):
+        self._FunctionVersion = FunctionVersion
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def RoutingConfig(self):
+        return self._RoutingConfig
+
+    @RoutingConfig.setter
+    def RoutingConfig(self, RoutingConfig):
+        self._RoutingConfig = RoutingConfig
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
 
     def _deserialize(self, params):
-        self.FunctionName = params.get("FunctionName")
-        self.Name = params.get("Name")
-        self.FunctionVersion = params.get("FunctionVersion")
-        self.Namespace = params.get("Namespace")
+        self._FunctionName = params.get("FunctionName")
+        self._Name = params.get("Name")
+        self._FunctionVersion = params.get("FunctionVersion")
+        self._Namespace = params.get("Namespace")
         if params.get("RoutingConfig") is not None:
-            self.RoutingConfig = RoutingConfig()
-            self.RoutingConfig._deserialize(params.get("RoutingConfig"))
-        self.Description = params.get("Description")
+            self._RoutingConfig = RoutingConfig()
+            self._RoutingConfig._deserialize(params.get("RoutingConfig"))
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3824,14 +7450,22 @@ class UpdateAliasResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateFunctionCodeRequest(AbstractModel):
@@ -3841,64 +7475,161 @@ class UpdateFunctionCodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FunctionName: Name of the function to be modified
+        :param _FunctionName: Name of the function to be modified
         :type FunctionName: str
-        :param Handler: Function handler name, which is in the `file name.function name` form. Use a period (.) to separate a file name and function name. The file name and function name must start and end with letters and contain 2-60 characters, including letters, digits, underscores (_), and hyphens (-).
+        :param _Handler: Function handler name, which is in the `file name.function name` form. Use a period (.) to separate a file name and function name. The file name and function name must start and end with letters and contain 2-60 characters, including letters, digits, underscores (_), and hyphens (-).
         :type Handler: str
-        :param CosBucketName: COS bucket name
+        :param _CosBucketName: COS bucket name
         :type CosBucketName: str
-        :param CosObjectName: COS object path
+        :param _CosObjectName: COS object path
         :type CosObjectName: str
-        :param ZipFile: It contains a function code file and its dependencies in the ZIP format. When you use this API, the ZIP file needs to be encoded with Base64. Up to 20 MB is supported.
+        :param _ZipFile: It contains a function code file and its dependencies in the ZIP format. When you use this API, the ZIP file needs to be encoded with Base64. Up to 20 MB is supported.
         :type ZipFile: str
-        :param Namespace: Function namespace
+        :param _Namespace: Function namespace
         :type Namespace: str
-        :param CosBucketRegion: COS region. Note: Beijing includes ap-beijing and ap-beijing-1.
+        :param _CosBucketRegion: COS region. Note: Beijing includes ap-beijing and ap-beijing-1.
         :type CosBucketRegion: str
-        :param InstallDependency: Whether to install dependencies automatically
+        :param _InstallDependency: Whether to install dependencies automatically
         :type InstallDependency: str
-        :param EnvId: Function environment
+        :param _EnvId: Function environment
         :type EnvId: str
-        :param Publish: It specifies whether to synchronously release a new version during the update. The default value is `FALSE`, indicating not to release a new version.
+        :param _Publish: It specifies whether to synchronously release a new version during the update. The default value is `FALSE`, indicating not to release a new version.
         :type Publish: str
-        :param Code: Function code
+        :param _Code: Function code
         :type Code: :class:`tencentcloud.scf.v20180416.models.Code`
-        :param CodeSource: Code source. Valid values: ZipFile, Cos, Inline
+        :param _CodeSource: Code source. Valid values: ZipFile, Cos, Inline
         :type CodeSource: str
         """
-        self.FunctionName = None
-        self.Handler = None
-        self.CosBucketName = None
-        self.CosObjectName = None
-        self.ZipFile = None
-        self.Namespace = None
-        self.CosBucketRegion = None
-        self.InstallDependency = None
-        self.EnvId = None
-        self.Publish = None
-        self.Code = None
-        self.CodeSource = None
+        self._FunctionName = None
+        self._Handler = None
+        self._CosBucketName = None
+        self._CosObjectName = None
+        self._ZipFile = None
+        self._Namespace = None
+        self._CosBucketRegion = None
+        self._InstallDependency = None
+        self._EnvId = None
+        self._Publish = None
+        self._Code = None
+        self._CodeSource = None
+
+    @property
+    def FunctionName(self):
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def Handler(self):
+        return self._Handler
+
+    @Handler.setter
+    def Handler(self, Handler):
+        self._Handler = Handler
+
+    @property
+    def CosBucketName(self):
+        return self._CosBucketName
+
+    @CosBucketName.setter
+    def CosBucketName(self, CosBucketName):
+        self._CosBucketName = CosBucketName
+
+    @property
+    def CosObjectName(self):
+        return self._CosObjectName
+
+    @CosObjectName.setter
+    def CosObjectName(self, CosObjectName):
+        self._CosObjectName = CosObjectName
+
+    @property
+    def ZipFile(self):
+        return self._ZipFile
+
+    @ZipFile.setter
+    def ZipFile(self, ZipFile):
+        self._ZipFile = ZipFile
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def CosBucketRegion(self):
+        return self._CosBucketRegion
+
+    @CosBucketRegion.setter
+    def CosBucketRegion(self, CosBucketRegion):
+        self._CosBucketRegion = CosBucketRegion
+
+    @property
+    def InstallDependency(self):
+        return self._InstallDependency
+
+    @InstallDependency.setter
+    def InstallDependency(self, InstallDependency):
+        self._InstallDependency = InstallDependency
+
+    @property
+    def EnvId(self):
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def Publish(self):
+        return self._Publish
+
+    @Publish.setter
+    def Publish(self, Publish):
+        self._Publish = Publish
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def CodeSource(self):
+        return self._CodeSource
+
+    @CodeSource.setter
+    def CodeSource(self, CodeSource):
+        self._CodeSource = CodeSource
 
 
     def _deserialize(self, params):
-        self.FunctionName = params.get("FunctionName")
-        self.Handler = params.get("Handler")
-        self.CosBucketName = params.get("CosBucketName")
-        self.CosObjectName = params.get("CosObjectName")
-        self.ZipFile = params.get("ZipFile")
-        self.Namespace = params.get("Namespace")
-        self.CosBucketRegion = params.get("CosBucketRegion")
-        self.InstallDependency = params.get("InstallDependency")
-        self.EnvId = params.get("EnvId")
-        self.Publish = params.get("Publish")
+        self._FunctionName = params.get("FunctionName")
+        self._Handler = params.get("Handler")
+        self._CosBucketName = params.get("CosBucketName")
+        self._CosObjectName = params.get("CosObjectName")
+        self._ZipFile = params.get("ZipFile")
+        self._Namespace = params.get("Namespace")
+        self._CosBucketRegion = params.get("CosBucketRegion")
+        self._InstallDependency = params.get("InstallDependency")
+        self._EnvId = params.get("EnvId")
+        self._Publish = params.get("Publish")
         if params.get("Code") is not None:
-            self.Code = Code()
-            self.Code._deserialize(params.get("Code"))
-        self.CodeSource = params.get("CodeSource")
+            self._Code = Code()
+            self._Code._deserialize(params.get("Code"))
+        self._CodeSource = params.get("CodeSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3911,14 +7642,22 @@ class UpdateFunctionCodeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateFunctionEventInvokeConfigRequest(AbstractModel):
@@ -3928,28 +7667,53 @@ class UpdateFunctionEventInvokeConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AsyncTriggerConfig: Async retry configuration information
+        :param _AsyncTriggerConfig: Async retry configuration information
         :type AsyncTriggerConfig: :class:`tencentcloud.scf.v20180416.models.AsyncTriggerConfig`
-        :param FunctionName: Function name
+        :param _FunctionName: Function name
         :type FunctionName: str
-        :param Namespace: Function namespace. Default value: default
+        :param _Namespace: Function namespace. Default value: default
         :type Namespace: str
         """
-        self.AsyncTriggerConfig = None
-        self.FunctionName = None
-        self.Namespace = None
+        self._AsyncTriggerConfig = None
+        self._FunctionName = None
+        self._Namespace = None
+
+    @property
+    def AsyncTriggerConfig(self):
+        return self._AsyncTriggerConfig
+
+    @AsyncTriggerConfig.setter
+    def AsyncTriggerConfig(self, AsyncTriggerConfig):
+        self._AsyncTriggerConfig = AsyncTriggerConfig
+
+    @property
+    def FunctionName(self):
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
 
 
     def _deserialize(self, params):
         if params.get("AsyncTriggerConfig") is not None:
-            self.AsyncTriggerConfig = AsyncTriggerConfig()
-            self.AsyncTriggerConfig._deserialize(params.get("AsyncTriggerConfig"))
-        self.FunctionName = params.get("FunctionName")
-        self.Namespace = params.get("Namespace")
+            self._AsyncTriggerConfig = AsyncTriggerConfig()
+            self._AsyncTriggerConfig._deserialize(params.get("AsyncTriggerConfig"))
+        self._FunctionName = params.get("FunctionName")
+        self._Namespace = params.get("Namespace")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3962,14 +7726,22 @@ class UpdateFunctionEventInvokeConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateNamespaceRequest(AbstractModel):
@@ -3979,22 +7751,39 @@ class UpdateNamespaceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Namespace: Namespace name
+        :param _Namespace: Namespace name
         :type Namespace: str
-        :param Description: Namespace description
+        :param _Description: Namespace description
         :type Description: str
         """
-        self.Namespace = None
-        self.Description = None
+        self._Namespace = None
+        self._Description = None
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
 
     def _deserialize(self, params):
-        self.Namespace = params.get("Namespace")
-        self.Description = params.get("Description")
+        self._Namespace = params.get("Namespace")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4007,14 +7796,22 @@ class UpdateNamespaceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateTriggerStatusRequest(AbstractModel):
@@ -4024,42 +7821,99 @@ class UpdateTriggerStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Enable: Initial status of the trigger. Values: `OPEN` (enabled); `CLOSE` disabled)
+        :param _Enable: Initial status of the trigger. Values: `OPEN` (enabled); `CLOSE` disabled)
         :type Enable: str
-        :param FunctionName: Function name.
+        :param _FunctionName: Function name.
         :type FunctionName: str
-        :param TriggerName: Trigger name
+        :param _TriggerName: Trigger name
         :type TriggerName: str
-        :param Type: Trigger Type
+        :param _Type: Trigger Type
         :type Type: str
-        :param Qualifier: Function version. It defaults to `$LATEST`. It’s recommended to use `[$DEFAULT](https://intl.cloud.tencent.com/document/product/583/36149?from_cn_redirect=1#.E9.BB.98.E8.AE.A4.E5.88.AB.E5.90.8D)` for canary release.
+        :param _Qualifier: Function version. It defaults to `$LATEST`. It’s recommended to use `[$DEFAULT](https://intl.cloud.tencent.com/document/product/583/36149?from_cn_redirect=1#.E9.BB.98.E8.AE.A4.E5.88.AB.E5.90.8D)` for canary release.
         :type Qualifier: str
-        :param Namespace: Function namespace
+        :param _Namespace: Function namespace
         :type Namespace: str
-        :param TriggerDesc: To update a COS trigger, this field is required. It stores the data {"event":"cos:ObjectCreated:*"} in the JSON format. The data content of this field is in the same format as that of SetTrigger. This field is optional if a scheduled trigger or CMQ trigger is to be deleted.
+        :param _TriggerDesc: To update a COS trigger, this field is required. It stores the data {"event":"cos:ObjectCreated:*"} in the JSON format. The data content of this field is in the same format as that of SetTrigger. This field is optional if a scheduled trigger or CMQ trigger is to be deleted.
         :type TriggerDesc: str
         """
-        self.Enable = None
-        self.FunctionName = None
-        self.TriggerName = None
-        self.Type = None
-        self.Qualifier = None
-        self.Namespace = None
-        self.TriggerDesc = None
+        self._Enable = None
+        self._FunctionName = None
+        self._TriggerName = None
+        self._Type = None
+        self._Qualifier = None
+        self._Namespace = None
+        self._TriggerDesc = None
+
+    @property
+    def Enable(self):
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def FunctionName(self):
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def TriggerName(self):
+        return self._TriggerName
+
+    @TriggerName.setter
+    def TriggerName(self, TriggerName):
+        self._TriggerName = TriggerName
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Qualifier(self):
+        return self._Qualifier
+
+    @Qualifier.setter
+    def Qualifier(self, Qualifier):
+        self._Qualifier = Qualifier
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def TriggerDesc(self):
+        return self._TriggerDesc
+
+    @TriggerDesc.setter
+    def TriggerDesc(self, TriggerDesc):
+        self._TriggerDesc = TriggerDesc
 
 
     def _deserialize(self, params):
-        self.Enable = params.get("Enable")
-        self.FunctionName = params.get("FunctionName")
-        self.TriggerName = params.get("TriggerName")
-        self.Type = params.get("Type")
-        self.Qualifier = params.get("Qualifier")
-        self.Namespace = params.get("Namespace")
-        self.TriggerDesc = params.get("TriggerDesc")
+        self._Enable = params.get("Enable")
+        self._FunctionName = params.get("FunctionName")
+        self._TriggerName = params.get("TriggerName")
+        self._Type = params.get("Type")
+        self._Qualifier = params.get("Qualifier")
+        self._Namespace = params.get("Namespace")
+        self._TriggerDesc = params.get("TriggerDesc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4072,14 +7926,22 @@ class UpdateTriggerStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class UsageInfo(AbstractModel):
@@ -4089,39 +7951,80 @@ class UsageInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NamespacesCount: Number of namespaces
+        :param _NamespacesCount: Number of namespaces
         :type NamespacesCount: int
-        :param Namespace: Namespace details
+        :param _Namespace: Namespace details
         :type Namespace: list of NamespaceUsage
-        :param TotalConcurrencyMem: Upper limit of user concurrency memory in the current region
+        :param _TotalConcurrencyMem: Upper limit of user concurrency memory in the current region
         :type TotalConcurrencyMem: int
-        :param TotalAllocatedConcurrencyMem: Quota of configured user concurrency memory in the current region
+        :param _TotalAllocatedConcurrencyMem: Quota of configured user concurrency memory in the current region
         :type TotalAllocatedConcurrencyMem: int
-        :param UserConcurrencyMemLimit: Quota of account concurrency actually configured by user
+        :param _UserConcurrencyMemLimit: Quota of account concurrency actually configured by user
         :type UserConcurrencyMemLimit: int
         """
-        self.NamespacesCount = None
-        self.Namespace = None
-        self.TotalConcurrencyMem = None
-        self.TotalAllocatedConcurrencyMem = None
-        self.UserConcurrencyMemLimit = None
+        self._NamespacesCount = None
+        self._Namespace = None
+        self._TotalConcurrencyMem = None
+        self._TotalAllocatedConcurrencyMem = None
+        self._UserConcurrencyMemLimit = None
+
+    @property
+    def NamespacesCount(self):
+        return self._NamespacesCount
+
+    @NamespacesCount.setter
+    def NamespacesCount(self, NamespacesCount):
+        self._NamespacesCount = NamespacesCount
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def TotalConcurrencyMem(self):
+        return self._TotalConcurrencyMem
+
+    @TotalConcurrencyMem.setter
+    def TotalConcurrencyMem(self, TotalConcurrencyMem):
+        self._TotalConcurrencyMem = TotalConcurrencyMem
+
+    @property
+    def TotalAllocatedConcurrencyMem(self):
+        return self._TotalAllocatedConcurrencyMem
+
+    @TotalAllocatedConcurrencyMem.setter
+    def TotalAllocatedConcurrencyMem(self, TotalAllocatedConcurrencyMem):
+        self._TotalAllocatedConcurrencyMem = TotalAllocatedConcurrencyMem
+
+    @property
+    def UserConcurrencyMemLimit(self):
+        return self._UserConcurrencyMemLimit
+
+    @UserConcurrencyMemLimit.setter
+    def UserConcurrencyMemLimit(self, UserConcurrencyMemLimit):
+        self._UserConcurrencyMemLimit = UserConcurrencyMemLimit
 
 
     def _deserialize(self, params):
-        self.NamespacesCount = params.get("NamespacesCount")
+        self._NamespacesCount = params.get("NamespacesCount")
         if params.get("Namespace") is not None:
-            self.Namespace = []
+            self._Namespace = []
             for item in params.get("Namespace"):
                 obj = NamespaceUsage()
                 obj._deserialize(item)
-                self.Namespace.append(obj)
-        self.TotalConcurrencyMem = params.get("TotalConcurrencyMem")
-        self.TotalAllocatedConcurrencyMem = params.get("TotalAllocatedConcurrencyMem")
-        self.UserConcurrencyMemLimit = params.get("UserConcurrencyMemLimit")
+                self._Namespace.append(obj)
+        self._TotalConcurrencyMem = params.get("TotalConcurrencyMem")
+        self._TotalAllocatedConcurrencyMem = params.get("TotalAllocatedConcurrencyMem")
+        self._UserConcurrencyMemLimit = params.get("UserConcurrencyMemLimit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4134,37 +8037,70 @@ class VersionMatch(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Version: Function version name
+        :param _Version: Function version name
         :type Version: str
-        :param Key: Matching rule key. When the API is called, pass in the `key` to route the request to the specified version based on the matching rule
+        :param _Key: Matching rule key. When the API is called, pass in the `key` to route the request to the specified version based on the matching rule
 Header method:
 Enter "invoke.headers.User" for `key` and pass in `RoutingKey:{"User":"value"}` when invoking a function through `invoke` for invocation based on rule matching
         :type Key: str
-        :param Method: Match method. Valid values:
+        :param _Method: Match method. Valid values:
 range: range match
 exact: exact string match
         :type Method: str
-        :param Expression: Rule requirements for range match:
+        :param _Expression: Rule requirements for range match:
 It should be described in an open or closed range, i.e., `(a,b)` or `[a,b]`, where both a and b are integers
 Rule requirements for exact match:
 Exact string match
         :type Expression: str
         """
-        self.Version = None
-        self.Key = None
-        self.Method = None
-        self.Expression = None
+        self._Version = None
+        self._Key = None
+        self._Method = None
+        self._Expression = None
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Method(self):
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
+    @property
+    def Expression(self):
+        return self._Expression
+
+    @Expression.setter
+    def Expression(self, Expression):
+        self._Expression = Expression
 
 
     def _deserialize(self, params):
-        self.Version = params.get("Version")
-        self.Key = params.get("Key")
-        self.Method = params.get("Method")
-        self.Expression = params.get("Expression")
+        self._Version = params.get("Version")
+        self._Key = params.get("Key")
+        self._Method = params.get("Method")
+        self._Expression = params.get("Expression")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4177,44 +8113,93 @@ class VersionProvisionedConcurrencyInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AllocatedProvisionedConcurrencyNum: Set provisioned concurrency amount.
+        :param _AllocatedProvisionedConcurrencyNum: Set provisioned concurrency amount.
         :type AllocatedProvisionedConcurrencyNum: int
-        :param AvailableProvisionedConcurrencyNum: Currently available provisioned concurrency amount.
+        :param _AvailableProvisionedConcurrencyNum: Currently available provisioned concurrency amount.
         :type AvailableProvisionedConcurrencyNum: int
-        :param Status: Provisioned concurrency setting task status. `Done`: completed; `InProgress`: in progress; `Failed`: partially or completely failed.
+        :param _Status: Provisioned concurrency setting task status. `Done`: completed; `InProgress`: in progress; `Failed`: partially or completely failed.
         :type Status: str
-        :param StatusReason: Status description of provisioned concurrency setting task.
+        :param _StatusReason: Status description of provisioned concurrency setting task.
         :type StatusReason: str
-        :param Qualifier: Function version number
+        :param _Qualifier: Function version number
         :type Qualifier: str
-        :param TriggerActions: List of scheduled provisioned concurrency scaling actions
+        :param _TriggerActions: List of scheduled provisioned concurrency scaling actions
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type TriggerActions: list of TriggerAction
         """
-        self.AllocatedProvisionedConcurrencyNum = None
-        self.AvailableProvisionedConcurrencyNum = None
-        self.Status = None
-        self.StatusReason = None
-        self.Qualifier = None
-        self.TriggerActions = None
+        self._AllocatedProvisionedConcurrencyNum = None
+        self._AvailableProvisionedConcurrencyNum = None
+        self._Status = None
+        self._StatusReason = None
+        self._Qualifier = None
+        self._TriggerActions = None
+
+    @property
+    def AllocatedProvisionedConcurrencyNum(self):
+        return self._AllocatedProvisionedConcurrencyNum
+
+    @AllocatedProvisionedConcurrencyNum.setter
+    def AllocatedProvisionedConcurrencyNum(self, AllocatedProvisionedConcurrencyNum):
+        self._AllocatedProvisionedConcurrencyNum = AllocatedProvisionedConcurrencyNum
+
+    @property
+    def AvailableProvisionedConcurrencyNum(self):
+        return self._AvailableProvisionedConcurrencyNum
+
+    @AvailableProvisionedConcurrencyNum.setter
+    def AvailableProvisionedConcurrencyNum(self, AvailableProvisionedConcurrencyNum):
+        self._AvailableProvisionedConcurrencyNum = AvailableProvisionedConcurrencyNum
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StatusReason(self):
+        return self._StatusReason
+
+    @StatusReason.setter
+    def StatusReason(self, StatusReason):
+        self._StatusReason = StatusReason
+
+    @property
+    def Qualifier(self):
+        return self._Qualifier
+
+    @Qualifier.setter
+    def Qualifier(self, Qualifier):
+        self._Qualifier = Qualifier
+
+    @property
+    def TriggerActions(self):
+        return self._TriggerActions
+
+    @TriggerActions.setter
+    def TriggerActions(self, TriggerActions):
+        self._TriggerActions = TriggerActions
 
 
     def _deserialize(self, params):
-        self.AllocatedProvisionedConcurrencyNum = params.get("AllocatedProvisionedConcurrencyNum")
-        self.AvailableProvisionedConcurrencyNum = params.get("AvailableProvisionedConcurrencyNum")
-        self.Status = params.get("Status")
-        self.StatusReason = params.get("StatusReason")
-        self.Qualifier = params.get("Qualifier")
+        self._AllocatedProvisionedConcurrencyNum = params.get("AllocatedProvisionedConcurrencyNum")
+        self._AvailableProvisionedConcurrencyNum = params.get("AvailableProvisionedConcurrencyNum")
+        self._Status = params.get("Status")
+        self._StatusReason = params.get("StatusReason")
+        self._Qualifier = params.get("Qualifier")
         if params.get("TriggerActions") is not None:
-            self.TriggerActions = []
+            self._TriggerActions = []
             for item in params.get("TriggerActions"):
                 obj = TriggerAction()
                 obj._deserialize(item)
-                self.TriggerActions.append(obj)
+                self._TriggerActions.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4227,22 +8212,39 @@ class VersionWeight(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Version: Function version name
+        :param _Version: Function version name
         :type Version: str
-        :param Weight: Version weight
+        :param _Weight: Version weight
         :type Weight: float
         """
-        self.Version = None
-        self.Weight = None
+        self._Version = None
+        self._Weight = None
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def Weight(self):
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
 
 
     def _deserialize(self, params):
-        self.Version = params.get("Version")
-        self.Weight = params.get("Weight")
+        self._Version = params.get("Version")
+        self._Weight = params.get("Weight")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

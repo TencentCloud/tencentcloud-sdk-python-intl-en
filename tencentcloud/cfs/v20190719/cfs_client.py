@@ -164,6 +164,30 @@ class CfsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateMigrationTask(self, request):
+        """This API is used to create a migration task.
+        To use this API, submit a ticket for us to add you to the allowlist.
+
+        :param request: Request instance for CreateMigrationTask.
+        :type request: :class:`tencentcloud.cfs.v20190719.models.CreateMigrationTaskRequest`
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.CreateMigrationTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateMigrationTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateMigrationTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteAutoSnapshotPolicy(self, request):
         """This API is used to delete a scheduled snapshot policy.
 
@@ -279,6 +303,30 @@ class CfsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteMigrationTask(self, request):
+        """This API is used to delete a migration task.
+        To use this API, submit a ticket for us to add you to the allowlist.
+
+        :param request: Request instance for DeleteMigrationTask.
+        :type request: :class:`tencentcloud.cfs.v20190719.models.DeleteMigrationTaskRequest`
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.DeleteMigrationTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteMigrationTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteMigrationTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteMountTarget(self, request):
         """This API is used to delete a mount target.
 
@@ -339,6 +387,30 @@ class CfsClient(AbstractClient):
             body = self.call("DescribeAvailableZoneInfo", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAvailableZoneInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBucketList(self, request):
+        """This API is used to get the list of data source buckets.
+        To use this API, submit a ticket for us to add you to the allowlist.
+
+        :param request: Request instance for DescribeBucketList.
+        :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeBucketListRequest`
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.DescribeBucketListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBucketList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBucketListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -509,6 +581,30 @@ class CfsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeMigrationTasks(self, request):
+        """This API is used to get the list of migration tasks.
+        To use this API, submit a ticket for us to add you to the allowlist.
+
+        :param request: Request instance for DescribeMigrationTasks.
+        :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeMigrationTasksRequest`
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.DescribeMigrationTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMigrationTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMigrationTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeMountTargets(self, request):
         """This API is used to query the mount targets of a file system.
 
@@ -555,6 +651,52 @@ class CfsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyFileSystemAutoScaleUpRule(self, request):
+        """This API is used to modify the scaling policy of a file system.
+
+        :param request: Request instance for ModifyFileSystemAutoScaleUpRule.
+        :type request: :class:`tencentcloud.cfs.v20190719.models.ModifyFileSystemAutoScaleUpRuleRequest`
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.ModifyFileSystemAutoScaleUpRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyFileSystemAutoScaleUpRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyFileSystemAutoScaleUpRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ScaleUpFileSystem(self, request):
+        """This API is used to scale up a Turbo file system.
+
+        :param request: Request instance for ScaleUpFileSystem.
+        :type request: :class:`tencentcloud.cfs.v20190719.models.ScaleUpFileSystemRequest`
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.ScaleUpFileSystemResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ScaleUpFileSystem", params, headers=headers)
+            response = json.loads(body)
+            model = models.ScaleUpFileSystemResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def SignUpCfsService(self, request):
         """This API is used to activate the CFS service.
 
@@ -569,6 +711,30 @@ class CfsClient(AbstractClient):
             body = self.call("SignUpCfsService", params, headers=headers)
             response = json.loads(body)
             model = models.SignUpCfsServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StopMigrationTask(self, request):
+        """This API is used to stop a migration task.
+        To use this API, submit a ticket for us to add you to the allowlist.
+
+        :param request: Request instance for StopMigrationTask.
+        :type request: :class:`tencentcloud.cfs.v20190719.models.StopMigrationTaskRequest`
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.StopMigrationTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopMigrationTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopMigrationTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

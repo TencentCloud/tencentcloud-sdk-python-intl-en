@@ -25,42 +25,91 @@ class AutomationAgentInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Instance ID.
+        :param _InstanceId: Instance ID.
         :type InstanceId: str
-        :param Version: Agent version.
+        :param _Version: Agent version.
         :type Version: str
-        :param LastHeartbeatTime: Last heartbeat time
+        :param _LastHeartbeatTime: Last heartbeat time
         :type LastHeartbeatTime: str
-        :param AgentStatus: Agent status. Valid values:
+        :param _AgentStatus: Agent status. Valid values:
 <li> `Online`
 <li> `Offline`
         :type AgentStatus: str
-        :param Environment: Agent runtime environment. Valid values:
+        :param _Environment: Agent runtime environment. Valid values:
 <li> `Linux`: Linux instance
 <li> `Windows`: Windows instance
         :type Environment: str
-        :param SupportFeatures: Features supported by the TAT agent.
+        :param _SupportFeatures: Features supported by the TAT agent.
         :type SupportFeatures: list of str
         """
-        self.InstanceId = None
-        self.Version = None
-        self.LastHeartbeatTime = None
-        self.AgentStatus = None
-        self.Environment = None
-        self.SupportFeatures = None
+        self._InstanceId = None
+        self._Version = None
+        self._LastHeartbeatTime = None
+        self._AgentStatus = None
+        self._Environment = None
+        self._SupportFeatures = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def LastHeartbeatTime(self):
+        return self._LastHeartbeatTime
+
+    @LastHeartbeatTime.setter
+    def LastHeartbeatTime(self, LastHeartbeatTime):
+        self._LastHeartbeatTime = LastHeartbeatTime
+
+    @property
+    def AgentStatus(self):
+        return self._AgentStatus
+
+    @AgentStatus.setter
+    def AgentStatus(self, AgentStatus):
+        self._AgentStatus = AgentStatus
+
+    @property
+    def Environment(self):
+        return self._Environment
+
+    @Environment.setter
+    def Environment(self, Environment):
+        self._Environment = Environment
+
+    @property
+    def SupportFeatures(self):
+        return self._SupportFeatures
+
+    @SupportFeatures.setter
+    def SupportFeatures(self, SupportFeatures):
+        self._SupportFeatures = SupportFeatures
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.Version = params.get("Version")
-        self.LastHeartbeatTime = params.get("LastHeartbeatTime")
-        self.AgentStatus = params.get("AgentStatus")
-        self.Environment = params.get("Environment")
-        self.SupportFeatures = params.get("SupportFeatures")
+        self._InstanceId = params.get("InstanceId")
+        self._Version = params.get("Version")
+        self._LastHeartbeatTime = params.get("LastHeartbeatTime")
+        self._AgentStatus = params.get("AgentStatus")
+        self._Environment = params.get("Environment")
+        self._SupportFeatures = params.get("SupportFeatures")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -73,24 +122,41 @@ class CancelInvocationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InvocationId: Execution activity ID
+        :param _InvocationId: Execution activity ID
         :type InvocationId: str
-        :param InstanceIds: Instance ID list. A maximum of 100 IDs are allowed. Supported instance types:
+        :param _InstanceIds: Instance ID list. A maximum of 100 IDs are allowed. Supported instance types:
 <li> `CVM`
 <li> `LIGHTHOUSE`
         :type InstanceIds: list of str
         """
-        self.InvocationId = None
-        self.InstanceIds = None
+        self._InvocationId = None
+        self._InstanceIds = None
+
+    @property
+    def InvocationId(self):
+        return self._InvocationId
+
+    @InvocationId.setter
+    def InvocationId(self, InvocationId):
+        self._InvocationId = InvocationId
+
+    @property
+    def InstanceIds(self):
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
 
 
     def _deserialize(self, params):
-        self.InvocationId = params.get("InvocationId")
-        self.InstanceIds = params.get("InstanceIds")
+        self._InvocationId = params.get("InvocationId")
+        self._InstanceIds = params.get("InstanceIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -103,14 +169,22 @@ class CancelInvocationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class Command(AbstractModel):
@@ -120,87 +194,224 @@ class Command(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CommandId: Command ID.
+        :param _CommandId: Command ID.
         :type CommandId: str
-        :param CommandName: Command name.
+        :param _CommandName: Command name.
         :type CommandName: str
-        :param Description: Command description.
+        :param _Description: Command description.
         :type Description: str
-        :param Content: Base64-encoded command.
+        :param _Content: Base64-encoded command.
         :type Content: str
-        :param CommandType: Command type.
+        :param _CommandType: Command type.
         :type CommandType: str
-        :param WorkingDirectory: Command execution path.
+        :param _WorkingDirectory: Command execution path.
         :type WorkingDirectory: str
-        :param Timeout: Command timeout period.
+        :param _Timeout: Command timeout period.
         :type Timeout: int
-        :param CreatedTime: Command creation time.
+        :param _CreatedTime: Command creation time.
         :type CreatedTime: str
-        :param UpdatedTime: Command update time.
+        :param _UpdatedTime: Command update time.
         :type UpdatedTime: str
-        :param EnableParameter: Whether to enable the custom parameter feature.
+        :param _EnableParameter: Whether to enable the custom parameter feature.
         :type EnableParameter: bool
-        :param DefaultParameters: Default custom parameter value.
+        :param _DefaultParameters: Default custom parameter value.
         :type DefaultParameters: str
-        :param FormattedDescription: Formatted description of the command. This parameter is an empty string for user commands and contains values for public commands.
+        :param _FormattedDescription: Formatted description of the command. This parameter is an empty string for user commands and contains values for public commands.
         :type FormattedDescription: str
-        :param CreatedBy: Command creator. `TAT` indicates a public command and `USER` indicates a personal command.
+        :param _CreatedBy: Command creator. `TAT` indicates a public command and `USER` indicates a personal command.
         :type CreatedBy: str
-        :param Tags: The list of tags bound to the command.
+        :param _Tags: The list of tags bound to the command.
         :type Tags: list of Tag
-        :param Username: The user who executes the command on the instance.
+        :param _Username: The user who executes the command on the instance.
         :type Username: str
-        :param OutputCOSBucketUrl: The COS bucket URL for uploading logs.
+        :param _OutputCOSBucketUrl: The COS bucket URL for uploading logs.
         :type OutputCOSBucketUrl: str
-        :param OutputCOSKeyPrefix: The COS bucket directory where the logs are saved.
+        :param _OutputCOSKeyPrefix: The COS bucket directory where the logs are saved.
         :type OutputCOSKeyPrefix: str
         """
-        self.CommandId = None
-        self.CommandName = None
-        self.Description = None
-        self.Content = None
-        self.CommandType = None
-        self.WorkingDirectory = None
-        self.Timeout = None
-        self.CreatedTime = None
-        self.UpdatedTime = None
-        self.EnableParameter = None
-        self.DefaultParameters = None
-        self.FormattedDescription = None
-        self.CreatedBy = None
-        self.Tags = None
-        self.Username = None
-        self.OutputCOSBucketUrl = None
-        self.OutputCOSKeyPrefix = None
+        self._CommandId = None
+        self._CommandName = None
+        self._Description = None
+        self._Content = None
+        self._CommandType = None
+        self._WorkingDirectory = None
+        self._Timeout = None
+        self._CreatedTime = None
+        self._UpdatedTime = None
+        self._EnableParameter = None
+        self._DefaultParameters = None
+        self._FormattedDescription = None
+        self._CreatedBy = None
+        self._Tags = None
+        self._Username = None
+        self._OutputCOSBucketUrl = None
+        self._OutputCOSKeyPrefix = None
+
+    @property
+    def CommandId(self):
+        return self._CommandId
+
+    @CommandId.setter
+    def CommandId(self, CommandId):
+        self._CommandId = CommandId
+
+    @property
+    def CommandName(self):
+        return self._CommandName
+
+    @CommandName.setter
+    def CommandName(self, CommandName):
+        self._CommandName = CommandName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def CommandType(self):
+        return self._CommandType
+
+    @CommandType.setter
+    def CommandType(self, CommandType):
+        self._CommandType = CommandType
+
+    @property
+    def WorkingDirectory(self):
+        return self._WorkingDirectory
+
+    @WorkingDirectory.setter
+    def WorkingDirectory(self, WorkingDirectory):
+        self._WorkingDirectory = WorkingDirectory
+
+    @property
+    def Timeout(self):
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def UpdatedTime(self):
+        return self._UpdatedTime
+
+    @UpdatedTime.setter
+    def UpdatedTime(self, UpdatedTime):
+        self._UpdatedTime = UpdatedTime
+
+    @property
+    def EnableParameter(self):
+        return self._EnableParameter
+
+    @EnableParameter.setter
+    def EnableParameter(self, EnableParameter):
+        self._EnableParameter = EnableParameter
+
+    @property
+    def DefaultParameters(self):
+        return self._DefaultParameters
+
+    @DefaultParameters.setter
+    def DefaultParameters(self, DefaultParameters):
+        self._DefaultParameters = DefaultParameters
+
+    @property
+    def FormattedDescription(self):
+        return self._FormattedDescription
+
+    @FormattedDescription.setter
+    def FormattedDescription(self, FormattedDescription):
+        self._FormattedDescription = FormattedDescription
+
+    @property
+    def CreatedBy(self):
+        return self._CreatedBy
+
+    @CreatedBy.setter
+    def CreatedBy(self, CreatedBy):
+        self._CreatedBy = CreatedBy
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Username(self):
+        return self._Username
+
+    @Username.setter
+    def Username(self, Username):
+        self._Username = Username
+
+    @property
+    def OutputCOSBucketUrl(self):
+        return self._OutputCOSBucketUrl
+
+    @OutputCOSBucketUrl.setter
+    def OutputCOSBucketUrl(self, OutputCOSBucketUrl):
+        self._OutputCOSBucketUrl = OutputCOSBucketUrl
+
+    @property
+    def OutputCOSKeyPrefix(self):
+        return self._OutputCOSKeyPrefix
+
+    @OutputCOSKeyPrefix.setter
+    def OutputCOSKeyPrefix(self, OutputCOSKeyPrefix):
+        self._OutputCOSKeyPrefix = OutputCOSKeyPrefix
 
 
     def _deserialize(self, params):
-        self.CommandId = params.get("CommandId")
-        self.CommandName = params.get("CommandName")
-        self.Description = params.get("Description")
-        self.Content = params.get("Content")
-        self.CommandType = params.get("CommandType")
-        self.WorkingDirectory = params.get("WorkingDirectory")
-        self.Timeout = params.get("Timeout")
-        self.CreatedTime = params.get("CreatedTime")
-        self.UpdatedTime = params.get("UpdatedTime")
-        self.EnableParameter = params.get("EnableParameter")
-        self.DefaultParameters = params.get("DefaultParameters")
-        self.FormattedDescription = params.get("FormattedDescription")
-        self.CreatedBy = params.get("CreatedBy")
+        self._CommandId = params.get("CommandId")
+        self._CommandName = params.get("CommandName")
+        self._Description = params.get("Description")
+        self._Content = params.get("Content")
+        self._CommandType = params.get("CommandType")
+        self._WorkingDirectory = params.get("WorkingDirectory")
+        self._Timeout = params.get("Timeout")
+        self._CreatedTime = params.get("CreatedTime")
+        self._UpdatedTime = params.get("UpdatedTime")
+        self._EnableParameter = params.get("EnableParameter")
+        self._DefaultParameters = params.get("DefaultParameters")
+        self._FormattedDescription = params.get("FormattedDescription")
+        self._CreatedBy = params.get("CreatedBy")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.Username = params.get("Username")
-        self.OutputCOSBucketUrl = params.get("OutputCOSBucketUrl")
-        self.OutputCOSKeyPrefix = params.get("OutputCOSKeyPrefix")
+                self._Tags.append(obj)
+        self._Username = params.get("Username")
+        self._OutputCOSBucketUrl = params.get("OutputCOSBucketUrl")
+        self._OutputCOSKeyPrefix = params.get("OutputCOSKeyPrefix")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -213,42 +424,99 @@ class CommandDocument(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Content: Base64-encoded command.
+        :param _Content: Base64-encoded command.
         :type Content: str
-        :param CommandType: Command type.
+        :param _CommandType: Command type.
         :type CommandType: str
-        :param Timeout: Timeout period.
+        :param _Timeout: Timeout period.
         :type Timeout: int
-        :param WorkingDirectory: Execution path.
+        :param _WorkingDirectory: Execution path.
         :type WorkingDirectory: str
-        :param Username: The user who executes the command.
+        :param _Username: The user who executes the command.
         :type Username: str
-        :param OutputCOSBucketUrl: URL of the COS bucket to store the output
+        :param _OutputCOSBucketUrl: URL of the COS bucket to store the output
         :type OutputCOSBucketUrl: str
-        :param OutputCOSKeyPrefix: Prefix of the output file name 
+        :param _OutputCOSKeyPrefix: Prefix of the output file name 
         :type OutputCOSKeyPrefix: str
         """
-        self.Content = None
-        self.CommandType = None
-        self.Timeout = None
-        self.WorkingDirectory = None
-        self.Username = None
-        self.OutputCOSBucketUrl = None
-        self.OutputCOSKeyPrefix = None
+        self._Content = None
+        self._CommandType = None
+        self._Timeout = None
+        self._WorkingDirectory = None
+        self._Username = None
+        self._OutputCOSBucketUrl = None
+        self._OutputCOSKeyPrefix = None
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def CommandType(self):
+        return self._CommandType
+
+    @CommandType.setter
+    def CommandType(self, CommandType):
+        self._CommandType = CommandType
+
+    @property
+    def Timeout(self):
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def WorkingDirectory(self):
+        return self._WorkingDirectory
+
+    @WorkingDirectory.setter
+    def WorkingDirectory(self, WorkingDirectory):
+        self._WorkingDirectory = WorkingDirectory
+
+    @property
+    def Username(self):
+        return self._Username
+
+    @Username.setter
+    def Username(self, Username):
+        self._Username = Username
+
+    @property
+    def OutputCOSBucketUrl(self):
+        return self._OutputCOSBucketUrl
+
+    @OutputCOSBucketUrl.setter
+    def OutputCOSBucketUrl(self, OutputCOSBucketUrl):
+        self._OutputCOSBucketUrl = OutputCOSBucketUrl
+
+    @property
+    def OutputCOSKeyPrefix(self):
+        return self._OutputCOSKeyPrefix
+
+    @OutputCOSKeyPrefix.setter
+    def OutputCOSKeyPrefix(self, OutputCOSKeyPrefix):
+        self._OutputCOSKeyPrefix = OutputCOSKeyPrefix
 
 
     def _deserialize(self, params):
-        self.Content = params.get("Content")
-        self.CommandType = params.get("CommandType")
-        self.Timeout = params.get("Timeout")
-        self.WorkingDirectory = params.get("WorkingDirectory")
-        self.Username = params.get("Username")
-        self.OutputCOSBucketUrl = params.get("OutputCOSBucketUrl")
-        self.OutputCOSKeyPrefix = params.get("OutputCOSKeyPrefix")
+        self._Content = params.get("Content")
+        self._CommandType = params.get("CommandType")
+        self._Timeout = params.get("Timeout")
+        self._WorkingDirectory = params.get("WorkingDirectory")
+        self._Username = params.get("Username")
+        self._OutputCOSBucketUrl = params.get("OutputCOSBucketUrl")
+        self._OutputCOSKeyPrefix = params.get("OutputCOSKeyPrefix")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -261,77 +529,174 @@ class CreateCommandRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CommandName: Command name. The name can be up to 60 bytes, and contain [a-z], [A-Z], [0-9] and [_-.].
+        :param _CommandName: Command name. The name can be up to 60 bytes, and contain [a-z], [A-Z], [0-9] and [_-.].
         :type CommandName: str
-        :param Content: Base64-encoded command. The maximum length is 64 KB.
+        :param _Content: Base64-encoded command. The maximum length is 64 KB.
         :type Content: str
-        :param Description: Command description. The maximum length is 120 characters.
+        :param _Description: Command description. The maximum length is 120 characters.
         :type Description: str
-        :param CommandType: Command type. `SHELL` and `POWERSHELL` are supported. The default value is `SHELL`.
+        :param _CommandType: Command type. `SHELL` and `POWERSHELL` are supported. The default value is `SHELL`.
         :type CommandType: str
-        :param WorkingDirectory: Command execution path. The default value is /root for `SHELL` commands and C:\Program Files\qcloud\tat_agent\workdir for `POWERSHELL` commands.
+        :param _WorkingDirectory: Command execution path. The default value is /root for `SHELL` commands and C:\Program Files\qcloud\tat_agent\workdir for `POWERSHELL` commands.
         :type WorkingDirectory: str
-        :param Timeout: Command timeout period. Default value: 60 seconds. Value range: [1, 86400].
+        :param _Timeout: Command timeout period. Default value: 60 seconds. Value range: [1, 86400].
         :type Timeout: int
-        :param EnableParameter: Whether to enable the custom parameter feature.
+        :param _EnableParameter: Whether to enable the custom parameter feature.
 This cannot be modified once created.
 Default value: `false`.
         :type EnableParameter: bool
-        :param DefaultParameters: The default value of the custom parameter value when it is enabled. The field type is JSON encoded string. For example, {\"varA\": \"222\"}.
+        :param _DefaultParameters: The default value of the custom parameter value when it is enabled. The field type is JSON encoded string. For example, {\"varA\": \"222\"}.
 `key` is the name of the custom parameter and `value` is the default value. Both `key` and `value` are strings.
 If no parameter value is provided in the `InvokeCommand` API, the default value is used.
 Up to 20 custom parameters are supported.
 The name of the custom parameter cannot exceed 64 characters and can contain [a-z], [A-Z], [0-9] and [-_].
         :type DefaultParameters: str
-        :param Tags: Tags bound to the command. At most 10 tags are allowed.
+        :param _Tags: Tags bound to the command. At most 10 tags are allowed.
         :type Tags: list of Tag
-        :param Username: The username used to execute the command on the CVM or Lighthouse instance.
+        :param _Username: The username used to execute the command on the CVM or Lighthouse instance.
 The principle of least privilege is the best practice for permission management. We recommend you execute TAT commands as a general user. By default, the root user is used to execute commands on Linux and the System user is used on Windows.
         :type Username: str
-        :param OutputCOSBucketUrl: The COS bucket URL for uploading logs. The URL must start with `https`, such as `https://BucketName-123454321.cos.ap-beijing.myqcloud.com`.
+        :param _OutputCOSBucketUrl: The COS bucket URL for uploading logs. The URL must start with `https`, such as `https://BucketName-123454321.cos.ap-beijing.myqcloud.com`.
         :type OutputCOSBucketUrl: str
-        :param OutputCOSKeyPrefix: The COS bucket directory where the logs are saved. Check below for the rules of the directory name. 
+        :param _OutputCOSKeyPrefix: The COS bucket directory where the logs are saved. Check below for the rules of the directory name. 
 1. It must be a combination of number, letters, and visible characters. Up to 60 characters are allowed.
 2. Use a slash (/) to create a subdirectory.
 3. Consecutive dots (.) and slashes (/) are not allowed. It can not start with a slash (/). 
         :type OutputCOSKeyPrefix: str
         """
-        self.CommandName = None
-        self.Content = None
-        self.Description = None
-        self.CommandType = None
-        self.WorkingDirectory = None
-        self.Timeout = None
-        self.EnableParameter = None
-        self.DefaultParameters = None
-        self.Tags = None
-        self.Username = None
-        self.OutputCOSBucketUrl = None
-        self.OutputCOSKeyPrefix = None
+        self._CommandName = None
+        self._Content = None
+        self._Description = None
+        self._CommandType = None
+        self._WorkingDirectory = None
+        self._Timeout = None
+        self._EnableParameter = None
+        self._DefaultParameters = None
+        self._Tags = None
+        self._Username = None
+        self._OutputCOSBucketUrl = None
+        self._OutputCOSKeyPrefix = None
+
+    @property
+    def CommandName(self):
+        return self._CommandName
+
+    @CommandName.setter
+    def CommandName(self, CommandName):
+        self._CommandName = CommandName
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CommandType(self):
+        return self._CommandType
+
+    @CommandType.setter
+    def CommandType(self, CommandType):
+        self._CommandType = CommandType
+
+    @property
+    def WorkingDirectory(self):
+        return self._WorkingDirectory
+
+    @WorkingDirectory.setter
+    def WorkingDirectory(self, WorkingDirectory):
+        self._WorkingDirectory = WorkingDirectory
+
+    @property
+    def Timeout(self):
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def EnableParameter(self):
+        return self._EnableParameter
+
+    @EnableParameter.setter
+    def EnableParameter(self, EnableParameter):
+        self._EnableParameter = EnableParameter
+
+    @property
+    def DefaultParameters(self):
+        return self._DefaultParameters
+
+    @DefaultParameters.setter
+    def DefaultParameters(self, DefaultParameters):
+        self._DefaultParameters = DefaultParameters
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Username(self):
+        return self._Username
+
+    @Username.setter
+    def Username(self, Username):
+        self._Username = Username
+
+    @property
+    def OutputCOSBucketUrl(self):
+        return self._OutputCOSBucketUrl
+
+    @OutputCOSBucketUrl.setter
+    def OutputCOSBucketUrl(self, OutputCOSBucketUrl):
+        self._OutputCOSBucketUrl = OutputCOSBucketUrl
+
+    @property
+    def OutputCOSKeyPrefix(self):
+        return self._OutputCOSKeyPrefix
+
+    @OutputCOSKeyPrefix.setter
+    def OutputCOSKeyPrefix(self, OutputCOSKeyPrefix):
+        self._OutputCOSKeyPrefix = OutputCOSKeyPrefix
 
 
     def _deserialize(self, params):
-        self.CommandName = params.get("CommandName")
-        self.Content = params.get("Content")
-        self.Description = params.get("Description")
-        self.CommandType = params.get("CommandType")
-        self.WorkingDirectory = params.get("WorkingDirectory")
-        self.Timeout = params.get("Timeout")
-        self.EnableParameter = params.get("EnableParameter")
-        self.DefaultParameters = params.get("DefaultParameters")
+        self._CommandName = params.get("CommandName")
+        self._Content = params.get("Content")
+        self._Description = params.get("Description")
+        self._CommandType = params.get("CommandType")
+        self._WorkingDirectory = params.get("WorkingDirectory")
+        self._Timeout = params.get("Timeout")
+        self._EnableParameter = params.get("EnableParameter")
+        self._DefaultParameters = params.get("DefaultParameters")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.Username = params.get("Username")
-        self.OutputCOSBucketUrl = params.get("OutputCOSBucketUrl")
-        self.OutputCOSKeyPrefix = params.get("OutputCOSKeyPrefix")
+                self._Tags.append(obj)
+        self._Username = params.get("Username")
+        self._OutputCOSBucketUrl = params.get("OutputCOSBucketUrl")
+        self._OutputCOSKeyPrefix = params.get("OutputCOSKeyPrefix")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -344,18 +709,34 @@ class CreateCommandResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CommandId: Command ID.
+        :param _CommandId: Command ID.
         :type CommandId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.CommandId = None
-        self.RequestId = None
+        self._CommandId = None
+        self._RequestId = None
+
+    @property
+    def CommandId(self):
+        return self._CommandId
+
+    @CommandId.setter
+    def CommandId(self, CommandId):
+        self._CommandId = CommandId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.CommandId = params.get("CommandId")
-        self.RequestId = params.get("RequestId")
+        self._CommandId = params.get("CommandId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateInvokerRequest(AbstractModel):
@@ -365,44 +746,101 @@ class CreateInvokerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: Invoker name.
+        :param _Name: Invoker name.
         :type Name: str
-        :param Type: Invoker type. It can only be `SCHEDULE` (recurring invokers).
+        :param _Type: Invoker type. It can only be `SCHEDULE` (recurring invokers).
         :type Type: str
-        :param CommandId: Remote command ID.
+        :param _CommandId: Remote command ID.
         :type CommandId: str
-        :param InstanceIds: ID of the instance bound to the trigger. Up to 100 IDs are allowed.
+        :param _InstanceIds: ID of the instance bound to the trigger. Up to 100 IDs are allowed.
         :type InstanceIds: list of str
-        :param Username: The user who executes the command.
+        :param _Username: The user who executes the command.
         :type Username: str
-        :param Parameters: Custom parameters of the command.
+        :param _Parameters: Custom parameters of the command.
         :type Parameters: str
-        :param ScheduleSettings: Settings required for a recurring invoker.
+        :param _ScheduleSettings: Settings required for a recurring invoker.
         :type ScheduleSettings: :class:`tencentcloud.tat.v20201028.models.ScheduleSettings`
         """
-        self.Name = None
-        self.Type = None
-        self.CommandId = None
-        self.InstanceIds = None
-        self.Username = None
-        self.Parameters = None
-        self.ScheduleSettings = None
+        self._Name = None
+        self._Type = None
+        self._CommandId = None
+        self._InstanceIds = None
+        self._Username = None
+        self._Parameters = None
+        self._ScheduleSettings = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def CommandId(self):
+        return self._CommandId
+
+    @CommandId.setter
+    def CommandId(self, CommandId):
+        self._CommandId = CommandId
+
+    @property
+    def InstanceIds(self):
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def Username(self):
+        return self._Username
+
+    @Username.setter
+    def Username(self, Username):
+        self._Username = Username
+
+    @property
+    def Parameters(self):
+        return self._Parameters
+
+    @Parameters.setter
+    def Parameters(self, Parameters):
+        self._Parameters = Parameters
+
+    @property
+    def ScheduleSettings(self):
+        return self._ScheduleSettings
+
+    @ScheduleSettings.setter
+    def ScheduleSettings(self, ScheduleSettings):
+        self._ScheduleSettings = ScheduleSettings
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Type = params.get("Type")
-        self.CommandId = params.get("CommandId")
-        self.InstanceIds = params.get("InstanceIds")
-        self.Username = params.get("Username")
-        self.Parameters = params.get("Parameters")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._CommandId = params.get("CommandId")
+        self._InstanceIds = params.get("InstanceIds")
+        self._Username = params.get("Username")
+        self._Parameters = params.get("Parameters")
         if params.get("ScheduleSettings") is not None:
-            self.ScheduleSettings = ScheduleSettings()
-            self.ScheduleSettings._deserialize(params.get("ScheduleSettings"))
+            self._ScheduleSettings = ScheduleSettings()
+            self._ScheduleSettings._deserialize(params.get("ScheduleSettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -415,18 +853,34 @@ class CreateInvokerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InvokerId: Invoker ID.
+        :param _InvokerId: Invoker ID.
         :type InvokerId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.InvokerId = None
-        self.RequestId = None
+        self._InvokerId = None
+        self._RequestId = None
+
+    @property
+    def InvokerId(self):
+        return self._InvokerId
+
+    @InvokerId.setter
+    def InvokerId(self, InvokerId):
+        self._InvokerId = InvokerId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.InvokerId = params.get("InvokerId")
-        self.RequestId = params.get("RequestId")
+        self._InvokerId = params.get("InvokerId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteCommandRequest(AbstractModel):
@@ -436,18 +890,27 @@ class DeleteCommandRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CommandId: ID of the command to be deleted.
+        :param _CommandId: ID of the command to be deleted.
         :type CommandId: str
         """
-        self.CommandId = None
+        self._CommandId = None
+
+    @property
+    def CommandId(self):
+        return self._CommandId
+
+    @CommandId.setter
+    def CommandId(self, CommandId):
+        self._CommandId = CommandId
 
 
     def _deserialize(self, params):
-        self.CommandId = params.get("CommandId")
+        self._CommandId = params.get("CommandId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -460,14 +923,22 @@ class DeleteCommandResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteInvokerRequest(AbstractModel):
@@ -477,18 +948,27 @@ class DeleteInvokerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InvokerId: ID of the invoker to be deleted.
+        :param _InvokerId: ID of the invoker to be deleted.
         :type InvokerId: str
         """
-        self.InvokerId = None
+        self._InvokerId = None
+
+    @property
+    def InvokerId(self):
+        return self._InvokerId
+
+    @InvokerId.setter
+    def InvokerId(self, InvokerId):
+        self._InvokerId = InvokerId
 
 
     def _deserialize(self, params):
-        self.InvokerId = params.get("InvokerId")
+        self._InvokerId = params.get("InvokerId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -501,14 +981,22 @@ class DeleteInvokerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeAutomationAgentStatusRequest(AbstractModel):
@@ -518,35 +1006,68 @@ class DescribeAutomationAgentStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceIds: List of instance IDs for the query.
+        :param _InstanceIds: List of instance IDs for the query.
         :type InstanceIds: list of str
-        :param Filters: Filter conditions.<br> <li>`agent-status` - String - Required: No - (Filter condition) Filter by agent status. Valid values: `Online`, `Offline`.<br> <li> `environment` - String - Required: No - (Filter condition) Filter by the agent environment. Valid value: `Linux`.<br> <li> `instance-id` - String - Required: No - (Filter condition) Filter by the instance ID. <br>Up to 10 `Filters` allowed in one request. For each filter, five `Filter.Values` can be specified. `InstanceIds` and `Filters` cannot be specified at the same time.
+        :param _Filters: Filter conditions.<br> <li>`agent-status` - String - Required: No - (Filter condition) Filter by agent status. Valid values: `Online`, `Offline`.<br> <li> `environment` - String - Required: No - (Filter condition) Filter by the agent environment. Valid value: `Linux`.<br> <li> `instance-id` - String - Required: No - (Filter condition) Filter by the instance ID. <br>Up to 10 `Filters` allowed in one request. For each filter, five `Filter.Values` can be specified. `InstanceIds` and `Filters` cannot be specified at the same time.
         :type Filters: list of Filter
-        :param Limit: Number of returned results. It defaults to `20`. The maximum is 100. For more information on `Limit`, see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :param _Limit: Number of returned results. It defaults to `20`. The maximum is 100. For more information on `Limit`, see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :type Limit: int
-        :param Offset: Offset. The default value is `0`. For more information on `Offset`, see the relevant section in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :param _Offset: Offset. The default value is `0`. For more information on `Offset`, see the relevant section in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :type Offset: int
         """
-        self.InstanceIds = None
-        self.Filters = None
-        self.Limit = None
-        self.Offset = None
+        self._InstanceIds = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def InstanceIds(self):
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.InstanceIds = params.get("InstanceIds")
+        self._InstanceIds = params.get("InstanceIds")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -559,27 +1080,51 @@ class DescribeAutomationAgentStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AutomationAgentSet: Agent information list.
+        :param _AutomationAgentSet: Agent information list.
         :type AutomationAgentSet: list of AutomationAgentInfo
-        :param TotalCount: Total number of matching agents.
+        :param _TotalCount: Total number of matching agents.
         :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.AutomationAgentSet = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._AutomationAgentSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def AutomationAgentSet(self):
+        return self._AutomationAgentSet
+
+    @AutomationAgentSet.setter
+    def AutomationAgentSet(self, AutomationAgentSet):
+        self._AutomationAgentSet = AutomationAgentSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("AutomationAgentSet") is not None:
-            self.AutomationAgentSet = []
+            self._AutomationAgentSet = []
             for item in params.get("AutomationAgentSet"):
                 obj = AutomationAgentInfo()
                 obj._deserialize(item)
-                self.AutomationAgentSet.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._AutomationAgentSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeCommandsRequest(AbstractModel):
@@ -589,9 +1134,9 @@ class DescribeCommandsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CommandIds: List of command IDs. Up to 100 IDs are allowed for each request. `CommandIds` and `Filters` cannot be specified at the same time.
+        :param _CommandIds: List of command IDs. Up to 100 IDs are allowed for each request. `CommandIds` and `Filters` cannot be specified at the same time.
         :type CommandIds: list of str
-        :param Filters: Filter conditions.
+        :param _Filters: Filter conditions.
 <li> `command-id` - String - Required: No - (Filter condition) Filter by the command ID.
 <li> `command-name` - String - Required: No - (Filter condition) Filter by the command name.
 <li> `command-type` - String - Required: No - (Filter condition) Filter by the command type. Valid values: `SHELL` or `POWERSHELL`.
@@ -602,31 +1147,64 @@ class DescribeCommandsRequest(AbstractModel):
 
 Up to 10 `Filters` are allowed in one request. Each filter can have up to 5 `Filter.Values`. `CommandIds` and `Filters` cannot be specified at the same time.
         :type Filters: list of Filter
-        :param Limit: Number of returned results. It defaults to `20`. The maximum is 100. For more information on `Limit`, see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :param _Limit: Number of returned results. It defaults to `20`. The maximum is 100. For more information on `Limit`, see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :type Limit: int
-        :param Offset: Offset. The default value is `0`. For more information on `Offset`, see the relevant section in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :param _Offset: Offset. The default value is `0`. For more information on `Offset`, see the relevant section in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :type Offset: int
         """
-        self.CommandIds = None
-        self.Filters = None
-        self.Limit = None
-        self.Offset = None
+        self._CommandIds = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def CommandIds(self):
+        return self._CommandIds
+
+    @CommandIds.setter
+    def CommandIds(self, CommandIds):
+        self._CommandIds = CommandIds
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.CommandIds = params.get("CommandIds")
+        self._CommandIds = params.get("CommandIds")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -639,27 +1217,51 @@ class DescribeCommandsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Total number of matching commands.
+        :param _TotalCount: Total number of matching commands.
         :type TotalCount: int
-        :param CommandSet: List of command details.
+        :param _CommandSet: List of command details.
         :type CommandSet: list of Command
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.CommandSet = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._CommandSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def CommandSet(self):
+        return self._CommandSet
+
+    @CommandSet.setter
+    def CommandSet(self, CommandSet):
+        self._CommandSet = CommandSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("CommandSet") is not None:
-            self.CommandSet = []
+            self._CommandSet = []
             for item in params.get("CommandSet"):
                 obj = Command()
                 obj._deserialize(item)
-                self.CommandSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._CommandSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeInvocationTasksRequest(AbstractModel):
@@ -669,39 +1271,80 @@ class DescribeInvocationTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InvocationTaskIds: List of execution task IDs. Up to 100 IDs are allowed for each request. `InvocationTaskIds` and `Filters` cannot be specified at the same time.
+        :param _InvocationTaskIds: List of execution task IDs. Up to 100 IDs are allowed for each request. `InvocationTaskIds` and `Filters` cannot be specified at the same time.
         :type InvocationTaskIds: list of str
-        :param Filters: Filter conditions.<br> <li> `invocation-id` - String - Required: No - (Filter condition) Filter by the execution activity ID.<br> <li> `invocation-task-id` - String - Required: No - (Filter condition) Filter by the execution task ID.<br> <li> `instance-id` - String - Required: No - (Filter condition) Filter by the instance ID. <br> <li> `command-id` - String - Required: No - (Filter condition) Filter by the command ID. <br>Up to 10 `Filters` are allowed for each request. Each filter can have up to five `Filter.Values`. `InvocationTaskIds` and `Filters` cannot be specified at the same time.
+        :param _Filters: Filter conditions.<br> <li> `invocation-id` - String - Required: No - (Filter condition) Filter by the execution activity ID.<br> <li> `invocation-task-id` - String - Required: No - (Filter condition) Filter by the execution task ID.<br> <li> `instance-id` - String - Required: No - (Filter condition) Filter by the instance ID. <br> <li> `command-id` - String - Required: No - (Filter condition) Filter by the command ID. <br>Up to 10 `Filters` are allowed for each request. Each filter can have up to five `Filter.Values`. `InvocationTaskIds` and `Filters` cannot be specified at the same time.
         :type Filters: list of Filter
-        :param Limit: Number of returned results. It defaults to `20`. The maximum is 100. For more information on `Limit`, see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :param _Limit: Number of returned results. It defaults to `20`. The maximum is 100. For more information on `Limit`, see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :type Limit: int
-        :param Offset: Offset. The default value is `0`. For more information on `Offset`, see the relevant section in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :param _Offset: Offset. The default value is `0`. For more information on `Offset`, see the relevant section in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :type Offset: int
-        :param HideOutput: Whether to hide the output. Valid values:<br><li>`True` (default): Hide the output <br><li>`False`: Show the output <br>
+        :param _HideOutput: Whether to hide the output. Valid values:<br><li>`True` (default): Hide the output <br><li>`False`: Show the output <br>
         :type HideOutput: bool
         """
-        self.InvocationTaskIds = None
-        self.Filters = None
-        self.Limit = None
-        self.Offset = None
-        self.HideOutput = None
+        self._InvocationTaskIds = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._HideOutput = None
+
+    @property
+    def InvocationTaskIds(self):
+        return self._InvocationTaskIds
+
+    @InvocationTaskIds.setter
+    def InvocationTaskIds(self, InvocationTaskIds):
+        self._InvocationTaskIds = InvocationTaskIds
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def HideOutput(self):
+        return self._HideOutput
+
+    @HideOutput.setter
+    def HideOutput(self, HideOutput):
+        self._HideOutput = HideOutput
 
 
     def _deserialize(self, params):
-        self.InvocationTaskIds = params.get("InvocationTaskIds")
+        self._InvocationTaskIds = params.get("InvocationTaskIds")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        self.HideOutput = params.get("HideOutput")
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._HideOutput = params.get("HideOutput")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -714,27 +1357,51 @@ class DescribeInvocationTasksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Total number of matching execution tasks.
+        :param _TotalCount: Total number of matching execution tasks.
         :type TotalCount: int
-        :param InvocationTaskSet: List of execution tasks.
+        :param _InvocationTaskSet: List of execution tasks.
         :type InvocationTaskSet: list of InvocationTask
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.InvocationTaskSet = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._InvocationTaskSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def InvocationTaskSet(self):
+        return self._InvocationTaskSet
+
+    @InvocationTaskSet.setter
+    def InvocationTaskSet(self, InvocationTaskSet):
+        self._InvocationTaskSet = InvocationTaskSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("InvocationTaskSet") is not None:
-            self.InvocationTaskSet = []
+            self._InvocationTaskSet = []
             for item in params.get("InvocationTaskSet"):
                 obj = InvocationTask()
                 obj._deserialize(item)
-                self.InvocationTaskSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._InvocationTaskSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeInvocationsRequest(AbstractModel):
@@ -744,39 +1411,72 @@ class DescribeInvocationsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InvocationIds: List of execution activity IDs. Up to 100 IDs are allowed for each request. `InvocationIds` and `Filters` cannot be specified at the same time.
+        :param _InvocationIds: List of execution activity IDs. Up to 100 IDs are allowed for each request. `InvocationIds` and `Filters` cannot be specified at the same time.
         :type InvocationIds: list of str
-        :param Filters: Filter conditions.<br> <li> `invocation-id` - String - Required: No - (Filter condition) Filter by the execution activity ID.<br> 
+        :param _Filters: Filter conditions.<br> <li> `invocation-id` - String - Required: No - (Filter condition) Filter by the execution activity ID.<br> 
 <li> `command-id` - String - Required: No - (Filter condition) Filter by the command ID. 
 <li> `command-created-by` - String - Required: No - (Filter condition) Filter by the command type. Valid values: `TAT` (public commands) or `USER` (custom commands).
 <li> `instance-kind` - String - Required: No - (Filter condition) Filter by the instance type. Valid values: `CVM` or `LIGHTHOUSE`. 
 <br>Up to 10 `Filters` are allowed for each request. Each filter can have up to five `Filter.Values`. `InvocationIds` and `Filters` cannot be specified at the same time.
         :type Filters: list of Filter
-        :param Limit: Number of returned results. It defaults to `20`. The maximum is 100. For more information on `Limit`, see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :param _Limit: Number of returned results. It defaults to `20`. The maximum is 100. For more information on `Limit`, see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :type Limit: int
-        :param Offset: Offset. The default value is `0`. For more information on `Offset`, see the relevant section in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :param _Offset: Offset. The default value is `0`. For more information on `Offset`, see the relevant section in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :type Offset: int
         """
-        self.InvocationIds = None
-        self.Filters = None
-        self.Limit = None
-        self.Offset = None
+        self._InvocationIds = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def InvocationIds(self):
+        return self._InvocationIds
+
+    @InvocationIds.setter
+    def InvocationIds(self, InvocationIds):
+        self._InvocationIds = InvocationIds
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.InvocationIds = params.get("InvocationIds")
+        self._InvocationIds = params.get("InvocationIds")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -789,27 +1489,51 @@ class DescribeInvocationsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Total number of matching execution activities.
+        :param _TotalCount: Total number of matching execution activities.
         :type TotalCount: int
-        :param InvocationSet: List of execution activities.
+        :param _InvocationSet: List of execution activities.
         :type InvocationSet: list of Invocation
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.InvocationSet = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._InvocationSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def InvocationSet(self):
+        return self._InvocationSet
+
+    @InvocationSet.setter
+    def InvocationSet(self, InvocationSet):
+        self._InvocationSet = InvocationSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("InvocationSet") is not None:
-            self.InvocationSet = []
+            self._InvocationSet = []
             for item in params.get("InvocationSet"):
                 obj = Invocation()
                 obj._deserialize(item)
-                self.InvocationSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._InvocationSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeInvokerRecordsRequest(AbstractModel):
@@ -819,26 +1543,51 @@ class DescribeInvokerRecordsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InvokerIds: List of invoker IDs. Up to 100 IDs are allowed.
+        :param _InvokerIds: List of invoker IDs. Up to 100 IDs are allowed.
         :type InvokerIds: list of str
-        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
+        :param _Limit: Number of returned results. Default value: 20. Maximum value: 100.
         :type Limit: int
-        :param Offset: Offset. Default value: 0.
+        :param _Offset: Offset. Default value: 0.
         :type Offset: int
         """
-        self.InvokerIds = None
-        self.Limit = None
-        self.Offset = None
+        self._InvokerIds = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def InvokerIds(self):
+        return self._InvokerIds
+
+    @InvokerIds.setter
+    def InvokerIds(self, InvokerIds):
+        self._InvokerIds = InvokerIds
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.InvokerIds = params.get("InvokerIds")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._InvokerIds = params.get("InvokerIds")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -851,27 +1600,51 @@ class DescribeInvokerRecordsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Number of matching records.
+        :param _TotalCount: Number of matching records.
         :type TotalCount: int
-        :param InvokerRecordSet: Execution history of an invoker.
+        :param _InvokerRecordSet: Execution history of an invoker.
         :type InvokerRecordSet: list of InvokerRecord
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.InvokerRecordSet = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._InvokerRecordSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def InvokerRecordSet(self):
+        return self._InvokerRecordSet
+
+    @InvokerRecordSet.setter
+    def InvokerRecordSet(self, InvokerRecordSet):
+        self._InvokerRecordSet = InvokerRecordSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("InvokerRecordSet") is not None:
-            self.InvokerRecordSet = []
+            self._InvokerRecordSet = []
             for item in params.get("InvokerRecordSet"):
                 obj = InvokerRecord()
                 obj._deserialize(item)
-                self.InvokerRecordSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._InvokerRecordSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeInvokersRequest(AbstractModel):
@@ -881,39 +1654,72 @@ class DescribeInvokersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InvokerIds: List of invoker IDs.
+        :param _InvokerIds: List of invoker IDs.
         :type InvokerIds: list of str
-        :param Filters: Filter conditions:
+        :param _Filters: Filter conditions:
 
 <li> `invoker-id` - String - Required: No - (Filter condition) Filter by the invoker ID.
 <li> `command-id` - String - Required: No - (Filter condition) Filter by the command ID.
 <li> `type` - String - Required: No - (Filter condition) Filter by the invoker type.
         :type Filters: list of Filter
-        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
+        :param _Limit: Number of returned results. Default value: 20. Maximum value: 100.
         :type Limit: int
-        :param Offset: Offset. Default value: 0.
+        :param _Offset: Offset. Default value: 0.
         :type Offset: int
         """
-        self.InvokerIds = None
-        self.Filters = None
-        self.Limit = None
-        self.Offset = None
+        self._InvokerIds = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def InvokerIds(self):
+        return self._InvokerIds
+
+    @InvokerIds.setter
+    def InvokerIds(self, InvokerIds):
+        self._InvokerIds = InvokerIds
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.InvokerIds = params.get("InvokerIds")
+        self._InvokerIds = params.get("InvokerIds")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -926,27 +1732,51 @@ class DescribeInvokersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Number of matching invokers.
+        :param _TotalCount: Number of matching invokers.
         :type TotalCount: int
-        :param InvokerSet: Invoker information.
+        :param _InvokerSet: Invoker information.
         :type InvokerSet: list of Invoker
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.InvokerSet = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._InvokerSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def InvokerSet(self):
+        return self._InvokerSet
+
+    @InvokerSet.setter
+    def InvokerSet(self, InvokerSet):
+        self._InvokerSet = InvokerSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("InvokerSet") is not None:
-            self.InvokerSet = []
+            self._InvokerSet = []
             for item in params.get("InvokerSet"):
                 obj = Invoker()
                 obj._deserialize(item)
-                self.InvokerSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._InvokerSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeRegionsRequest(AbstractModel):
@@ -962,27 +1792,51 @@ class DescribeRegionsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Number of regions
+        :param _TotalCount: Number of regions
         :type TotalCount: int
-        :param RegionSet: Region information list
+        :param _RegionSet: Region information list
         :type RegionSet: list of RegionInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.RegionSet = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._RegionSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RegionSet(self):
+        return self._RegionSet
+
+    @RegionSet.setter
+    def RegionSet(self, RegionSet):
+        self._RegionSet = RegionSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("RegionSet") is not None:
-            self.RegionSet = []
+            self._RegionSet = []
             for item in params.get("RegionSet"):
                 obj = RegionInfo()
                 obj._deserialize(item)
-                self.RegionSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._RegionSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DisableInvokerRequest(AbstractModel):
@@ -992,18 +1846,27 @@ class DisableInvokerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InvokerId: ID of the invoker to be disabled.
+        :param _InvokerId: ID of the invoker to be disabled.
         :type InvokerId: str
         """
-        self.InvokerId = None
+        self._InvokerId = None
+
+    @property
+    def InvokerId(self):
+        return self._InvokerId
+
+    @InvokerId.setter
+    def InvokerId(self, InvokerId):
+        self._InvokerId = InvokerId
 
 
     def _deserialize(self, params):
-        self.InvokerId = params.get("InvokerId")
+        self._InvokerId = params.get("InvokerId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1016,14 +1879,22 @@ class DisableInvokerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class EnableInvokerRequest(AbstractModel):
@@ -1033,18 +1904,27 @@ class EnableInvokerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InvokerId: ID of the invoker to be enabled.
+        :param _InvokerId: ID of the invoker to be enabled.
         :type InvokerId: str
         """
-        self.InvokerId = None
+        self._InvokerId = None
+
+    @property
+    def InvokerId(self):
+        return self._InvokerId
+
+    @InvokerId.setter
+    def InvokerId(self, InvokerId):
+        self._InvokerId = InvokerId
 
 
     def _deserialize(self, params):
-        self.InvokerId = params.get("InvokerId")
+        self._InvokerId = params.get("InvokerId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1057,14 +1937,22 @@ class EnableInvokerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class Filter(AbstractModel):
@@ -1085,22 +1973,39 @@ class Filter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: Field to be filtered.
+        :param _Name: Field to be filtered.
         :type Name: str
-        :param Values: Filter values of the field.
+        :param _Values: Filter values of the field.
         :type Values: list of str
         """
-        self.Name = None
-        self.Values = None
+        self._Name = None
+        self._Values = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Values = params.get("Values")
+        self._Name = params.get("Name")
+        self._Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1113,11 +2018,11 @@ class Invocation(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InvocationId: Execution activity ID.
+        :param _InvocationId: Execution activity ID.
         :type InvocationId: str
-        :param CommandId: Command ID.
+        :param _CommandId: Command ID.
         :type CommandId: str
-        :param InvocationStatus: Execution task status. Valid values:
+        :param _InvocationStatus: Execution task status. Valid values:
 <li> PENDING: Pending 
 <li> RUNNING: Running
 <li> SUCCESS: Success
@@ -1125,93 +2030,254 @@ class Invocation(AbstractModel):
 <li> TIMEOUT: Command timed out
 <li> PARTIAL_FAILED: Partial failure
         :type InvocationStatus: str
-        :param InvocationTaskBasicInfoSet: Execution task information list.
+        :param _InvocationTaskBasicInfoSet: Execution task information list.
         :type InvocationTaskBasicInfoSet: list of InvocationTaskBasicInfo
-        :param Description: Execution activity description.
+        :param _Description: Execution activity description.
         :type Description: str
-        :param StartTime: Start time of the execution activity.
+        :param _StartTime: Start time of the execution activity.
         :type StartTime: str
-        :param EndTime: End time of the execution activity.
+        :param _EndTime: End time of the execution activity.
         :type EndTime: str
-        :param CreatedTime: Time when the execution activity is created.
+        :param _CreatedTime: Time when the execution activity is created.
         :type CreatedTime: str
-        :param UpdatedTime: Time when the execution activity is updated.
+        :param _UpdatedTime: Time when the execution activity is updated.
         :type UpdatedTime: str
-        :param Parameters: Values of custom parameters.
+        :param _Parameters: Values of custom parameters.
         :type Parameters: str
-        :param DefaultParameters: Default custom parameter value.
+        :param _DefaultParameters: Default custom parameter value.
         :type DefaultParameters: str
-        :param InstanceKind: Type of the instance executing the command. Valid values: `CVM`, `LIGHTHOUSE`.
+        :param _InstanceKind: Type of the instance executing the command. Valid values: `CVM`, `LIGHTHOUSE`.
         :type InstanceKind: str
-        :param Username: The user who executes the command on the instance.
+        :param _Username: The user who executes the command on the instance.
         :type Username: str
-        :param InvocationSource: Invocation source.
+        :param _InvocationSource: Invocation source.
         :type InvocationSource: str
-        :param CommandContent: Base64-encoded command
+        :param _CommandContent: Base64-encoded command
         :type CommandContent: str
-        :param CommandType: Command type
+        :param _CommandType: Command type
         :type CommandType: str
-        :param Timeout: Command timeout period, in seconds.
+        :param _Timeout: Command timeout period, in seconds.
         :type Timeout: int
-        :param WorkingDirectory: Working directory for executing the command.
+        :param _WorkingDirectory: Working directory for executing the command.
         :type WorkingDirectory: str
-        :param OutputCOSBucketUrl: The COS bucket URL for uploading logs.
+        :param _OutputCOSBucketUrl: The COS bucket URL for uploading logs.
         :type OutputCOSBucketUrl: str
-        :param OutputCOSKeyPrefix: The COS bucket directory where the logs are saved.
+        :param _OutputCOSKeyPrefix: The COS bucket directory where the logs are saved.
         :type OutputCOSKeyPrefix: str
         """
-        self.InvocationId = None
-        self.CommandId = None
-        self.InvocationStatus = None
-        self.InvocationTaskBasicInfoSet = None
-        self.Description = None
-        self.StartTime = None
-        self.EndTime = None
-        self.CreatedTime = None
-        self.UpdatedTime = None
-        self.Parameters = None
-        self.DefaultParameters = None
-        self.InstanceKind = None
-        self.Username = None
-        self.InvocationSource = None
-        self.CommandContent = None
-        self.CommandType = None
-        self.Timeout = None
-        self.WorkingDirectory = None
-        self.OutputCOSBucketUrl = None
-        self.OutputCOSKeyPrefix = None
+        self._InvocationId = None
+        self._CommandId = None
+        self._InvocationStatus = None
+        self._InvocationTaskBasicInfoSet = None
+        self._Description = None
+        self._StartTime = None
+        self._EndTime = None
+        self._CreatedTime = None
+        self._UpdatedTime = None
+        self._Parameters = None
+        self._DefaultParameters = None
+        self._InstanceKind = None
+        self._Username = None
+        self._InvocationSource = None
+        self._CommandContent = None
+        self._CommandType = None
+        self._Timeout = None
+        self._WorkingDirectory = None
+        self._OutputCOSBucketUrl = None
+        self._OutputCOSKeyPrefix = None
+
+    @property
+    def InvocationId(self):
+        return self._InvocationId
+
+    @InvocationId.setter
+    def InvocationId(self, InvocationId):
+        self._InvocationId = InvocationId
+
+    @property
+    def CommandId(self):
+        return self._CommandId
+
+    @CommandId.setter
+    def CommandId(self, CommandId):
+        self._CommandId = CommandId
+
+    @property
+    def InvocationStatus(self):
+        return self._InvocationStatus
+
+    @InvocationStatus.setter
+    def InvocationStatus(self, InvocationStatus):
+        self._InvocationStatus = InvocationStatus
+
+    @property
+    def InvocationTaskBasicInfoSet(self):
+        return self._InvocationTaskBasicInfoSet
+
+    @InvocationTaskBasicInfoSet.setter
+    def InvocationTaskBasicInfoSet(self, InvocationTaskBasicInfoSet):
+        self._InvocationTaskBasicInfoSet = InvocationTaskBasicInfoSet
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def UpdatedTime(self):
+        return self._UpdatedTime
+
+    @UpdatedTime.setter
+    def UpdatedTime(self, UpdatedTime):
+        self._UpdatedTime = UpdatedTime
+
+    @property
+    def Parameters(self):
+        return self._Parameters
+
+    @Parameters.setter
+    def Parameters(self, Parameters):
+        self._Parameters = Parameters
+
+    @property
+    def DefaultParameters(self):
+        return self._DefaultParameters
+
+    @DefaultParameters.setter
+    def DefaultParameters(self, DefaultParameters):
+        self._DefaultParameters = DefaultParameters
+
+    @property
+    def InstanceKind(self):
+        return self._InstanceKind
+
+    @InstanceKind.setter
+    def InstanceKind(self, InstanceKind):
+        self._InstanceKind = InstanceKind
+
+    @property
+    def Username(self):
+        return self._Username
+
+    @Username.setter
+    def Username(self, Username):
+        self._Username = Username
+
+    @property
+    def InvocationSource(self):
+        return self._InvocationSource
+
+    @InvocationSource.setter
+    def InvocationSource(self, InvocationSource):
+        self._InvocationSource = InvocationSource
+
+    @property
+    def CommandContent(self):
+        return self._CommandContent
+
+    @CommandContent.setter
+    def CommandContent(self, CommandContent):
+        self._CommandContent = CommandContent
+
+    @property
+    def CommandType(self):
+        return self._CommandType
+
+    @CommandType.setter
+    def CommandType(self, CommandType):
+        self._CommandType = CommandType
+
+    @property
+    def Timeout(self):
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def WorkingDirectory(self):
+        return self._WorkingDirectory
+
+    @WorkingDirectory.setter
+    def WorkingDirectory(self, WorkingDirectory):
+        self._WorkingDirectory = WorkingDirectory
+
+    @property
+    def OutputCOSBucketUrl(self):
+        return self._OutputCOSBucketUrl
+
+    @OutputCOSBucketUrl.setter
+    def OutputCOSBucketUrl(self, OutputCOSBucketUrl):
+        self._OutputCOSBucketUrl = OutputCOSBucketUrl
+
+    @property
+    def OutputCOSKeyPrefix(self):
+        return self._OutputCOSKeyPrefix
+
+    @OutputCOSKeyPrefix.setter
+    def OutputCOSKeyPrefix(self, OutputCOSKeyPrefix):
+        self._OutputCOSKeyPrefix = OutputCOSKeyPrefix
 
 
     def _deserialize(self, params):
-        self.InvocationId = params.get("InvocationId")
-        self.CommandId = params.get("CommandId")
-        self.InvocationStatus = params.get("InvocationStatus")
+        self._InvocationId = params.get("InvocationId")
+        self._CommandId = params.get("CommandId")
+        self._InvocationStatus = params.get("InvocationStatus")
         if params.get("InvocationTaskBasicInfoSet") is not None:
-            self.InvocationTaskBasicInfoSet = []
+            self._InvocationTaskBasicInfoSet = []
             for item in params.get("InvocationTaskBasicInfoSet"):
                 obj = InvocationTaskBasicInfo()
                 obj._deserialize(item)
-                self.InvocationTaskBasicInfoSet.append(obj)
-        self.Description = params.get("Description")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.CreatedTime = params.get("CreatedTime")
-        self.UpdatedTime = params.get("UpdatedTime")
-        self.Parameters = params.get("Parameters")
-        self.DefaultParameters = params.get("DefaultParameters")
-        self.InstanceKind = params.get("InstanceKind")
-        self.Username = params.get("Username")
-        self.InvocationSource = params.get("InvocationSource")
-        self.CommandContent = params.get("CommandContent")
-        self.CommandType = params.get("CommandType")
-        self.Timeout = params.get("Timeout")
-        self.WorkingDirectory = params.get("WorkingDirectory")
-        self.OutputCOSBucketUrl = params.get("OutputCOSBucketUrl")
-        self.OutputCOSKeyPrefix = params.get("OutputCOSKeyPrefix")
+                self._InvocationTaskBasicInfoSet.append(obj)
+        self._Description = params.get("Description")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._CreatedTime = params.get("CreatedTime")
+        self._UpdatedTime = params.get("UpdatedTime")
+        self._Parameters = params.get("Parameters")
+        self._DefaultParameters = params.get("DefaultParameters")
+        self._InstanceKind = params.get("InstanceKind")
+        self._Username = params.get("Username")
+        self._InvocationSource = params.get("InvocationSource")
+        self._CommandContent = params.get("CommandContent")
+        self._CommandType = params.get("CommandType")
+        self._Timeout = params.get("Timeout")
+        self._WorkingDirectory = params.get("WorkingDirectory")
+        self._OutputCOSBucketUrl = params.get("OutputCOSBucketUrl")
+        self._OutputCOSKeyPrefix = params.get("OutputCOSKeyPrefix")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1224,13 +2290,13 @@ class InvocationTask(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InvocationId: Execution activity ID.
+        :param _InvocationId: Execution activity ID.
         :type InvocationId: str
-        :param InvocationTaskId: Execution task ID.
+        :param _InvocationTaskId: Execution task ID.
         :type InvocationTaskId: str
-        :param CommandId: Command ID.
+        :param _CommandId: Command ID.
         :type CommandId: str
-        :param TaskStatus: Execution task status. Valid values:
+        :param _TaskStatus: Execution task status. Valid values:
 <li> PENDING: Pending 
 <li> DELIVERING: Delivering
 <li> DELIVER_DELAYED: Delivery delayed 
@@ -1245,62 +2311,167 @@ class InvocationTask(AbstractModel):
 <li> CANCELLED: Canceled (canceled before execution)
 <li> TERMINATED: Terminated (canceled during execution)
         :type TaskStatus: str
-        :param InstanceId: Instance ID.
+        :param _InstanceId: Instance ID.
         :type InstanceId: str
-        :param TaskResult: Execution result.
+        :param _TaskResult: Execution result.
         :type TaskResult: :class:`tencentcloud.tat.v20201028.models.TaskResult`
-        :param StartTime: Start time of the execution task.
+        :param _StartTime: Start time of the execution task.
         :type StartTime: str
-        :param EndTime: End time of the execution task.
+        :param _EndTime: End time of the execution task.
         :type EndTime: str
-        :param CreatedTime: Creation time.
+        :param _CreatedTime: Creation time.
         :type CreatedTime: str
-        :param UpdatedTime: Update time.
+        :param _UpdatedTime: Update time.
         :type UpdatedTime: str
-        :param CommandDocument: Command details of the execution task.
+        :param _CommandDocument: Command details of the execution task.
         :type CommandDocument: :class:`tencentcloud.tat.v20201028.models.CommandDocument`
-        :param ErrorInfo: Error message displayed when the execution task fails.
+        :param _ErrorInfo: Error message displayed when the execution task fails.
         :type ErrorInfo: str
-        :param InvocationSource: Invocation source.
+        :param _InvocationSource: Invocation source.
         :type InvocationSource: str
         """
-        self.InvocationId = None
-        self.InvocationTaskId = None
-        self.CommandId = None
-        self.TaskStatus = None
-        self.InstanceId = None
-        self.TaskResult = None
-        self.StartTime = None
-        self.EndTime = None
-        self.CreatedTime = None
-        self.UpdatedTime = None
-        self.CommandDocument = None
-        self.ErrorInfo = None
-        self.InvocationSource = None
+        self._InvocationId = None
+        self._InvocationTaskId = None
+        self._CommandId = None
+        self._TaskStatus = None
+        self._InstanceId = None
+        self._TaskResult = None
+        self._StartTime = None
+        self._EndTime = None
+        self._CreatedTime = None
+        self._UpdatedTime = None
+        self._CommandDocument = None
+        self._ErrorInfo = None
+        self._InvocationSource = None
+
+    @property
+    def InvocationId(self):
+        return self._InvocationId
+
+    @InvocationId.setter
+    def InvocationId(self, InvocationId):
+        self._InvocationId = InvocationId
+
+    @property
+    def InvocationTaskId(self):
+        return self._InvocationTaskId
+
+    @InvocationTaskId.setter
+    def InvocationTaskId(self, InvocationTaskId):
+        self._InvocationTaskId = InvocationTaskId
+
+    @property
+    def CommandId(self):
+        return self._CommandId
+
+    @CommandId.setter
+    def CommandId(self, CommandId):
+        self._CommandId = CommandId
+
+    @property
+    def TaskStatus(self):
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def TaskResult(self):
+        return self._TaskResult
+
+    @TaskResult.setter
+    def TaskResult(self, TaskResult):
+        self._TaskResult = TaskResult
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def UpdatedTime(self):
+        return self._UpdatedTime
+
+    @UpdatedTime.setter
+    def UpdatedTime(self, UpdatedTime):
+        self._UpdatedTime = UpdatedTime
+
+    @property
+    def CommandDocument(self):
+        return self._CommandDocument
+
+    @CommandDocument.setter
+    def CommandDocument(self, CommandDocument):
+        self._CommandDocument = CommandDocument
+
+    @property
+    def ErrorInfo(self):
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def InvocationSource(self):
+        return self._InvocationSource
+
+    @InvocationSource.setter
+    def InvocationSource(self, InvocationSource):
+        self._InvocationSource = InvocationSource
 
 
     def _deserialize(self, params):
-        self.InvocationId = params.get("InvocationId")
-        self.InvocationTaskId = params.get("InvocationTaskId")
-        self.CommandId = params.get("CommandId")
-        self.TaskStatus = params.get("TaskStatus")
-        self.InstanceId = params.get("InstanceId")
+        self._InvocationId = params.get("InvocationId")
+        self._InvocationTaskId = params.get("InvocationTaskId")
+        self._CommandId = params.get("CommandId")
+        self._TaskStatus = params.get("TaskStatus")
+        self._InstanceId = params.get("InstanceId")
         if params.get("TaskResult") is not None:
-            self.TaskResult = TaskResult()
-            self.TaskResult._deserialize(params.get("TaskResult"))
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.CreatedTime = params.get("CreatedTime")
-        self.UpdatedTime = params.get("UpdatedTime")
+            self._TaskResult = TaskResult()
+            self._TaskResult._deserialize(params.get("TaskResult"))
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._CreatedTime = params.get("CreatedTime")
+        self._UpdatedTime = params.get("UpdatedTime")
         if params.get("CommandDocument") is not None:
-            self.CommandDocument = CommandDocument()
-            self.CommandDocument._deserialize(params.get("CommandDocument"))
-        self.ErrorInfo = params.get("ErrorInfo")
-        self.InvocationSource = params.get("InvocationSource")
+            self._CommandDocument = CommandDocument()
+            self._CommandDocument._deserialize(params.get("CommandDocument"))
+        self._ErrorInfo = params.get("ErrorInfo")
+        self._InvocationSource = params.get("InvocationSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1313,9 +2484,9 @@ class InvocationTaskBasicInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InvocationTaskId: Execution task ID.
+        :param _InvocationTaskId: Execution task ID.
         :type InvocationTaskId: str
-        :param TaskStatus: Execution task status. Valid values:
+        :param _TaskStatus: Execution task status. Valid values:
 <li> PENDING: Pending 
 <li> DELIVERING: Delivering
 <li> DELIVER_DELAYED: Delivery delayed 
@@ -1330,22 +2501,47 @@ class InvocationTaskBasicInfo(AbstractModel):
 <li> CANCELLED: Canceled (canceled before execution)
 <li> TERMINATED: Terminated (canceled during execution)
         :type TaskStatus: str
-        :param InstanceId: Instance ID.
+        :param _InstanceId: Instance ID.
         :type InstanceId: str
         """
-        self.InvocationTaskId = None
-        self.TaskStatus = None
-        self.InstanceId = None
+        self._InvocationTaskId = None
+        self._TaskStatus = None
+        self._InstanceId = None
+
+    @property
+    def InvocationTaskId(self):
+        return self._InvocationTaskId
+
+    @InvocationTaskId.setter
+    def InvocationTaskId(self, InvocationTaskId):
+        self._InvocationTaskId = InvocationTaskId
+
+    @property
+    def TaskStatus(self):
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
 
     def _deserialize(self, params):
-        self.InvocationTaskId = params.get("InvocationTaskId")
-        self.TaskStatus = params.get("TaskStatus")
-        self.InstanceId = params.get("InstanceId")
+        self._InvocationTaskId = params.get("InvocationTaskId")
+        self._TaskStatus = params.get("TaskStatus")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1358,54 +2554,119 @@ class InvokeCommandRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CommandId: ID of the command to be triggered.
+        :param _CommandId: ID of the command to be triggered.
         :type CommandId: str
-        :param InstanceIds: IDs of instances about to execute commands. At most 100 IDs are allowed.
+        :param _InstanceIds: IDs of instances about to execute commands. At most 100 IDs are allowed.
         :type InstanceIds: list of str
-        :param Parameters: Custom parameters of the command. The field type is JSON encoded string. For example, {\"varA\": \"222\"}.
+        :param _Parameters: Custom parameters of the command. The field type is JSON encoded string. For example, {\"varA\": \"222\"}.
 `key` is the name of the custom parameter and `value` is the default value. Both `key` and `value` are strings.
 If no parameter value is provided, the DefaultParameters of the command is used.
 Up to 20 custom parameters are supported.
 The name of the custom parameter cannot exceed 64 characters and can contain [a-z], [A-Z], [0-9] and [-_].
         :type Parameters: str
-        :param Username: The username used to execute the command on the CVM or Lighthouse instance.
+        :param _Username: The username used to execute the command on the CVM or Lighthouse instance.
 The principle of the least privilege is the best practice for permission management. We recommend you execute TAT commands as a general user. If this is not specified, the Username of the command is used by default.
         :type Username: str
-        :param WorkingDirectory: Execution path of the command. The WorkingDirectory of the command is used by default.
+        :param _WorkingDirectory: Execution path of the command. The WorkingDirectory of the command is used by default.
         :type WorkingDirectory: str
-        :param Timeout: Command timeout period. Value range: [1, 86400]. The Timeout of the command is used by default.
+        :param _Timeout: Command timeout period. Value range: [1, 86400]. The Timeout of the command is used by default.
         :type Timeout: int
-        :param OutputCOSBucketUrl: The COS bucket URL for uploading logs. The URL must start with `https`, such as `https://BucketName-123454321.cos.ap-beijing.myqcloud.com`.
+        :param _OutputCOSBucketUrl: The COS bucket URL for uploading logs. The URL must start with `https`, such as `https://BucketName-123454321.cos.ap-beijing.myqcloud.com`.
         :type OutputCOSBucketUrl: str
-        :param OutputCOSKeyPrefix: The COS bucket directory where the logs are saved. Check below for the rules of the directory name. 
+        :param _OutputCOSKeyPrefix: The COS bucket directory where the logs are saved. Check below for the rules of the directory name. 
 1. It must be a combination of number, letters, and visible characters. Up to 60 characters are allowed.
 2. Use a slash (/) to create a subdirectory.
 3. ".." can not be used as the folder name. It cannot start with a slash (/), and cannot contain consecutive slashes.
         :type OutputCOSKeyPrefix: str
         """
-        self.CommandId = None
-        self.InstanceIds = None
-        self.Parameters = None
-        self.Username = None
-        self.WorkingDirectory = None
-        self.Timeout = None
-        self.OutputCOSBucketUrl = None
-        self.OutputCOSKeyPrefix = None
+        self._CommandId = None
+        self._InstanceIds = None
+        self._Parameters = None
+        self._Username = None
+        self._WorkingDirectory = None
+        self._Timeout = None
+        self._OutputCOSBucketUrl = None
+        self._OutputCOSKeyPrefix = None
+
+    @property
+    def CommandId(self):
+        return self._CommandId
+
+    @CommandId.setter
+    def CommandId(self, CommandId):
+        self._CommandId = CommandId
+
+    @property
+    def InstanceIds(self):
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def Parameters(self):
+        return self._Parameters
+
+    @Parameters.setter
+    def Parameters(self, Parameters):
+        self._Parameters = Parameters
+
+    @property
+    def Username(self):
+        return self._Username
+
+    @Username.setter
+    def Username(self, Username):
+        self._Username = Username
+
+    @property
+    def WorkingDirectory(self):
+        return self._WorkingDirectory
+
+    @WorkingDirectory.setter
+    def WorkingDirectory(self, WorkingDirectory):
+        self._WorkingDirectory = WorkingDirectory
+
+    @property
+    def Timeout(self):
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def OutputCOSBucketUrl(self):
+        return self._OutputCOSBucketUrl
+
+    @OutputCOSBucketUrl.setter
+    def OutputCOSBucketUrl(self, OutputCOSBucketUrl):
+        self._OutputCOSBucketUrl = OutputCOSBucketUrl
+
+    @property
+    def OutputCOSKeyPrefix(self):
+        return self._OutputCOSKeyPrefix
+
+    @OutputCOSKeyPrefix.setter
+    def OutputCOSKeyPrefix(self, OutputCOSKeyPrefix):
+        self._OutputCOSKeyPrefix = OutputCOSKeyPrefix
 
 
     def _deserialize(self, params):
-        self.CommandId = params.get("CommandId")
-        self.InstanceIds = params.get("InstanceIds")
-        self.Parameters = params.get("Parameters")
-        self.Username = params.get("Username")
-        self.WorkingDirectory = params.get("WorkingDirectory")
-        self.Timeout = params.get("Timeout")
-        self.OutputCOSBucketUrl = params.get("OutputCOSBucketUrl")
-        self.OutputCOSKeyPrefix = params.get("OutputCOSKeyPrefix")
+        self._CommandId = params.get("CommandId")
+        self._InstanceIds = params.get("InstanceIds")
+        self._Parameters = params.get("Parameters")
+        self._Username = params.get("Username")
+        self._WorkingDirectory = params.get("WorkingDirectory")
+        self._Timeout = params.get("Timeout")
+        self._OutputCOSBucketUrl = params.get("OutputCOSBucketUrl")
+        self._OutputCOSKeyPrefix = params.get("OutputCOSKeyPrefix")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1418,18 +2679,34 @@ class InvokeCommandResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InvocationId: Execution activity ID.
+        :param _InvocationId: Execution activity ID.
         :type InvocationId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.InvocationId = None
-        self.RequestId = None
+        self._InvocationId = None
+        self._RequestId = None
+
+    @property
+    def InvocationId(self):
+        return self._InvocationId
+
+    @InvocationId.setter
+    def InvocationId(self, InvocationId):
+        self._InvocationId = InvocationId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.InvocationId = params.get("InvocationId")
-        self.RequestId = params.get("RequestId")
+        self._InvocationId = params.get("InvocationId")
+        self._RequestId = params.get("RequestId")
 
 
 class Invoker(AbstractModel):
@@ -1439,61 +2716,150 @@ class Invoker(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InvokerId: Invoker ID.
+        :param _InvokerId: Invoker ID.
         :type InvokerId: str
-        :param Name: Invoker name.
+        :param _Name: Invoker name.
         :type Name: str
-        :param Type: Invoker type.
+        :param _Type: Invoker type.
         :type Type: str
-        :param CommandId: Command ID.
+        :param _CommandId: Command ID.
         :type CommandId: str
-        :param Username: Username.
+        :param _Username: Username.
         :type Username: str
-        :param Parameters: Custom parameters.
+        :param _Parameters: Custom parameters.
         :type Parameters: str
-        :param InstanceIds: Instance ID list.
+        :param _InstanceIds: Instance ID list.
         :type InstanceIds: list of str
-        :param Enable: Whether to enable the invoker.
+        :param _Enable: Whether to enable the invoker.
         :type Enable: bool
-        :param ScheduleSettings: Execution schedule of the invoker. This field is returned for recurring invokers.
+        :param _ScheduleSettings: Execution schedule of the invoker. This field is returned for recurring invokers.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type ScheduleSettings: :class:`tencentcloud.tat.v20201028.models.ScheduleSettings`
-        :param CreatedTime: Creation time.
+        :param _CreatedTime: Creation time.
         :type CreatedTime: str
-        :param UpdatedTime: Modification time.
+        :param _UpdatedTime: Modification time.
         :type UpdatedTime: str
         """
-        self.InvokerId = None
-        self.Name = None
-        self.Type = None
-        self.CommandId = None
-        self.Username = None
-        self.Parameters = None
-        self.InstanceIds = None
-        self.Enable = None
-        self.ScheduleSettings = None
-        self.CreatedTime = None
-        self.UpdatedTime = None
+        self._InvokerId = None
+        self._Name = None
+        self._Type = None
+        self._CommandId = None
+        self._Username = None
+        self._Parameters = None
+        self._InstanceIds = None
+        self._Enable = None
+        self._ScheduleSettings = None
+        self._CreatedTime = None
+        self._UpdatedTime = None
+
+    @property
+    def InvokerId(self):
+        return self._InvokerId
+
+    @InvokerId.setter
+    def InvokerId(self, InvokerId):
+        self._InvokerId = InvokerId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def CommandId(self):
+        return self._CommandId
+
+    @CommandId.setter
+    def CommandId(self, CommandId):
+        self._CommandId = CommandId
+
+    @property
+    def Username(self):
+        return self._Username
+
+    @Username.setter
+    def Username(self, Username):
+        self._Username = Username
+
+    @property
+    def Parameters(self):
+        return self._Parameters
+
+    @Parameters.setter
+    def Parameters(self, Parameters):
+        self._Parameters = Parameters
+
+    @property
+    def InstanceIds(self):
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def Enable(self):
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def ScheduleSettings(self):
+        return self._ScheduleSettings
+
+    @ScheduleSettings.setter
+    def ScheduleSettings(self, ScheduleSettings):
+        self._ScheduleSettings = ScheduleSettings
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def UpdatedTime(self):
+        return self._UpdatedTime
+
+    @UpdatedTime.setter
+    def UpdatedTime(self, UpdatedTime):
+        self._UpdatedTime = UpdatedTime
 
 
     def _deserialize(self, params):
-        self.InvokerId = params.get("InvokerId")
-        self.Name = params.get("Name")
-        self.Type = params.get("Type")
-        self.CommandId = params.get("CommandId")
-        self.Username = params.get("Username")
-        self.Parameters = params.get("Parameters")
-        self.InstanceIds = params.get("InstanceIds")
-        self.Enable = params.get("Enable")
+        self._InvokerId = params.get("InvokerId")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._CommandId = params.get("CommandId")
+        self._Username = params.get("Username")
+        self._Parameters = params.get("Parameters")
+        self._InstanceIds = params.get("InstanceIds")
+        self._Enable = params.get("Enable")
         if params.get("ScheduleSettings") is not None:
-            self.ScheduleSettings = ScheduleSettings()
-            self.ScheduleSettings._deserialize(params.get("ScheduleSettings"))
-        self.CreatedTime = params.get("CreatedTime")
-        self.UpdatedTime = params.get("UpdatedTime")
+            self._ScheduleSettings = ScheduleSettings()
+            self._ScheduleSettings._deserialize(params.get("ScheduleSettings"))
+        self._CreatedTime = params.get("CreatedTime")
+        self._UpdatedTime = params.get("UpdatedTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1506,34 +2872,75 @@ class InvokerRecord(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InvokerId: Invoker ID.
+        :param _InvokerId: Invoker ID.
         :type InvokerId: str
-        :param InvokeTime: Execution time.
+        :param _InvokeTime: Execution time.
         :type InvokeTime: str
-        :param Reason: Execution reason.
+        :param _Reason: Execution reason.
         :type Reason: str
-        :param InvocationId: Command execution ID.
+        :param _InvocationId: Command execution ID.
         :type InvocationId: str
-        :param Result: Trigger result.
+        :param _Result: Trigger result.
         :type Result: str
         """
-        self.InvokerId = None
-        self.InvokeTime = None
-        self.Reason = None
-        self.InvocationId = None
-        self.Result = None
+        self._InvokerId = None
+        self._InvokeTime = None
+        self._Reason = None
+        self._InvocationId = None
+        self._Result = None
+
+    @property
+    def InvokerId(self):
+        return self._InvokerId
+
+    @InvokerId.setter
+    def InvokerId(self, InvokerId):
+        self._InvokerId = InvokerId
+
+    @property
+    def InvokeTime(self):
+        return self._InvokeTime
+
+    @InvokeTime.setter
+    def InvokeTime(self, InvokeTime):
+        self._InvokeTime = InvokeTime
+
+    @property
+    def Reason(self):
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def InvocationId(self):
+        return self._InvocationId
+
+    @InvocationId.setter
+    def InvocationId(self, InvocationId):
+        self._InvocationId = InvocationId
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
 
 
     def _deserialize(self, params):
-        self.InvokerId = params.get("InvokerId")
-        self.InvokeTime = params.get("InvokeTime")
-        self.Reason = params.get("Reason")
-        self.InvocationId = params.get("InvocationId")
-        self.Result = params.get("Result")
+        self._InvokerId = params.get("InvokerId")
+        self._InvokeTime = params.get("InvokeTime")
+        self._Reason = params.get("Reason")
+        self._InvocationId = params.get("InvocationId")
+        self._Result = params.get("Result")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1546,67 +2953,156 @@ class ModifyCommandRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CommandId: Command ID.
+        :param _CommandId: Command ID.
         :type CommandId: str
-        :param CommandName: Command name. The name can be up to 60 bytes, and contain [a-z], [A-Z], [0-9] and [_-.].
+        :param _CommandName: Command name. The name can be up to 60 bytes, and contain [a-z], [A-Z], [0-9] and [_-.].
         :type CommandName: str
-        :param Description: Command description. The maximum length is 120 characters.
+        :param _Description: Command description. The maximum length is 120 characters.
         :type Description: str
-        :param Content: Base64-encoded command. The maximum length is 64 KB.
+        :param _Content: Base64-encoded command. The maximum length is 64 KB.
         :type Content: str
-        :param CommandType: Command type. `SHELL` and `POWERSHELL` are supported.
+        :param _CommandType: Command type. `SHELL` and `POWERSHELL` are supported.
         :type CommandType: str
-        :param WorkingDirectory: Command execution path.
+        :param _WorkingDirectory: Command execution path.
         :type WorkingDirectory: str
-        :param Timeout: Command timeout period. Value range: [1, 86400].
+        :param _Timeout: Command timeout period. Value range: [1, 86400].
         :type Timeout: int
-        :param DefaultParameters: The default value of the custom parameter value when it is enabled. The field type is JSON encoded string. For example, {\"varA\": \"222\"}.
+        :param _DefaultParameters: The default value of the custom parameter value when it is enabled. The field type is JSON encoded string. For example, {\"varA\": \"222\"}.
 All parameters are overwritten. All default values are required for modification.
 Modification is only allowed when `EnableParameter` is `true`.
 `key` is the name of the custom parameter and `value` is the default value. Both `key` and `value` are strings.
 Up to 20 custom parameters are supported.
 The name of the custom parameter cannot exceed 64 characters and can contain [a-z], [A-Z], [0-9] and [-_].
         :type DefaultParameters: str
-        :param Username: The username used to execute the command on the CVM or Lighthouse instance.
+        :param _Username: The username used to execute the command on the CVM or Lighthouse instance.
 The principle of least privilege is the best practice for permission management. We recommend you execute TAT commands as a general user.
         :type Username: str
-        :param OutputCOSBucketUrl: The COS bucket URL for uploading logs. The URL must start with `https`, such as `https://BucketName-123454321.cos.ap-beijing.myqcloud.com`.
+        :param _OutputCOSBucketUrl: The COS bucket URL for uploading logs. The URL must start with `https`, such as `https://BucketName-123454321.cos.ap-beijing.myqcloud.com`.
         :type OutputCOSBucketUrl: str
-        :param OutputCOSKeyPrefix: The COS bucket directory where the logs are saved. Check below for the rules of the directory name. 
+        :param _OutputCOSKeyPrefix: The COS bucket directory where the logs are saved. Check below for the rules of the directory name. 
 1. It must be a combination of number, letters, and visible characters. Up to 60 characters are allowed.
 2. Use a slash (/) to create a subdirectory.
 3. ".." can not be used as the folder name. It cannot start with a slash (/), and cannot contain consecutive slashes.
         :type OutputCOSKeyPrefix: str
         """
-        self.CommandId = None
-        self.CommandName = None
-        self.Description = None
-        self.Content = None
-        self.CommandType = None
-        self.WorkingDirectory = None
-        self.Timeout = None
-        self.DefaultParameters = None
-        self.Username = None
-        self.OutputCOSBucketUrl = None
-        self.OutputCOSKeyPrefix = None
+        self._CommandId = None
+        self._CommandName = None
+        self._Description = None
+        self._Content = None
+        self._CommandType = None
+        self._WorkingDirectory = None
+        self._Timeout = None
+        self._DefaultParameters = None
+        self._Username = None
+        self._OutputCOSBucketUrl = None
+        self._OutputCOSKeyPrefix = None
+
+    @property
+    def CommandId(self):
+        return self._CommandId
+
+    @CommandId.setter
+    def CommandId(self, CommandId):
+        self._CommandId = CommandId
+
+    @property
+    def CommandName(self):
+        return self._CommandName
+
+    @CommandName.setter
+    def CommandName(self, CommandName):
+        self._CommandName = CommandName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def CommandType(self):
+        return self._CommandType
+
+    @CommandType.setter
+    def CommandType(self, CommandType):
+        self._CommandType = CommandType
+
+    @property
+    def WorkingDirectory(self):
+        return self._WorkingDirectory
+
+    @WorkingDirectory.setter
+    def WorkingDirectory(self, WorkingDirectory):
+        self._WorkingDirectory = WorkingDirectory
+
+    @property
+    def Timeout(self):
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def DefaultParameters(self):
+        return self._DefaultParameters
+
+    @DefaultParameters.setter
+    def DefaultParameters(self, DefaultParameters):
+        self._DefaultParameters = DefaultParameters
+
+    @property
+    def Username(self):
+        return self._Username
+
+    @Username.setter
+    def Username(self, Username):
+        self._Username = Username
+
+    @property
+    def OutputCOSBucketUrl(self):
+        return self._OutputCOSBucketUrl
+
+    @OutputCOSBucketUrl.setter
+    def OutputCOSBucketUrl(self, OutputCOSBucketUrl):
+        self._OutputCOSBucketUrl = OutputCOSBucketUrl
+
+    @property
+    def OutputCOSKeyPrefix(self):
+        return self._OutputCOSKeyPrefix
+
+    @OutputCOSKeyPrefix.setter
+    def OutputCOSKeyPrefix(self, OutputCOSKeyPrefix):
+        self._OutputCOSKeyPrefix = OutputCOSKeyPrefix
 
 
     def _deserialize(self, params):
-        self.CommandId = params.get("CommandId")
-        self.CommandName = params.get("CommandName")
-        self.Description = params.get("Description")
-        self.Content = params.get("Content")
-        self.CommandType = params.get("CommandType")
-        self.WorkingDirectory = params.get("WorkingDirectory")
-        self.Timeout = params.get("Timeout")
-        self.DefaultParameters = params.get("DefaultParameters")
-        self.Username = params.get("Username")
-        self.OutputCOSBucketUrl = params.get("OutputCOSBucketUrl")
-        self.OutputCOSKeyPrefix = params.get("OutputCOSKeyPrefix")
+        self._CommandId = params.get("CommandId")
+        self._CommandName = params.get("CommandName")
+        self._Description = params.get("Description")
+        self._Content = params.get("Content")
+        self._CommandType = params.get("CommandType")
+        self._WorkingDirectory = params.get("WorkingDirectory")
+        self._Timeout = params.get("Timeout")
+        self._DefaultParameters = params.get("DefaultParameters")
+        self._Username = params.get("Username")
+        self._OutputCOSBucketUrl = params.get("OutputCOSBucketUrl")
+        self._OutputCOSKeyPrefix = params.get("OutputCOSKeyPrefix")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1619,14 +3115,22 @@ class ModifyCommandResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyInvokerRequest(AbstractModel):
@@ -1636,48 +3140,113 @@ class ModifyInvokerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InvokerId: ID of the invoker to be modified.
+        :param _InvokerId: ID of the invoker to be modified.
         :type InvokerId: str
-        :param Name: Name of the invoker to be modified.
+        :param _Name: Name of the invoker to be modified.
         :type Name: str
-        :param Type: Invoker type. It can only be `SCHEDULE` (recurring invokers).
+        :param _Type: Invoker type. It can only be `SCHEDULE` (recurring invokers).
         :type Type: str
-        :param CommandId: ID of the command to be modified.
+        :param _CommandId: ID of the command to be modified.
         :type CommandId: str
-        :param Username: The username to be modified.
+        :param _Username: The username to be modified.
         :type Username: str
-        :param Parameters: Custom parameters to be modified.
+        :param _Parameters: Custom parameters to be modified.
         :type Parameters: str
-        :param InstanceIds: List of instance IDs to be modified. Up to 100 IDs are allowed.
+        :param _InstanceIds: List of instance IDs to be modified. Up to 100 IDs are allowed.
         :type InstanceIds: list of str
-        :param ScheduleSettings: Scheduled invoker settings to be modified.
+        :param _ScheduleSettings: Scheduled invoker settings to be modified.
         :type ScheduleSettings: :class:`tencentcloud.tat.v20201028.models.ScheduleSettings`
         """
-        self.InvokerId = None
-        self.Name = None
-        self.Type = None
-        self.CommandId = None
-        self.Username = None
-        self.Parameters = None
-        self.InstanceIds = None
-        self.ScheduleSettings = None
+        self._InvokerId = None
+        self._Name = None
+        self._Type = None
+        self._CommandId = None
+        self._Username = None
+        self._Parameters = None
+        self._InstanceIds = None
+        self._ScheduleSettings = None
+
+    @property
+    def InvokerId(self):
+        return self._InvokerId
+
+    @InvokerId.setter
+    def InvokerId(self, InvokerId):
+        self._InvokerId = InvokerId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def CommandId(self):
+        return self._CommandId
+
+    @CommandId.setter
+    def CommandId(self, CommandId):
+        self._CommandId = CommandId
+
+    @property
+    def Username(self):
+        return self._Username
+
+    @Username.setter
+    def Username(self, Username):
+        self._Username = Username
+
+    @property
+    def Parameters(self):
+        return self._Parameters
+
+    @Parameters.setter
+    def Parameters(self, Parameters):
+        self._Parameters = Parameters
+
+    @property
+    def InstanceIds(self):
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def ScheduleSettings(self):
+        return self._ScheduleSettings
+
+    @ScheduleSettings.setter
+    def ScheduleSettings(self, ScheduleSettings):
+        self._ScheduleSettings = ScheduleSettings
 
 
     def _deserialize(self, params):
-        self.InvokerId = params.get("InvokerId")
-        self.Name = params.get("Name")
-        self.Type = params.get("Type")
-        self.CommandId = params.get("CommandId")
-        self.Username = params.get("Username")
-        self.Parameters = params.get("Parameters")
-        self.InstanceIds = params.get("InstanceIds")
+        self._InvokerId = params.get("InvokerId")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._CommandId = params.get("CommandId")
+        self._Username = params.get("Username")
+        self._Parameters = params.get("Parameters")
+        self._InstanceIds = params.get("InstanceIds")
         if params.get("ScheduleSettings") is not None:
-            self.ScheduleSettings = ScheduleSettings()
-            self.ScheduleSettings._deserialize(params.get("ScheduleSettings"))
+            self._ScheduleSettings = ScheduleSettings()
+            self._ScheduleSettings._deserialize(params.get("ScheduleSettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1690,14 +3259,22 @@ class ModifyInvokerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class PreviewReplacedCommandContentRequest(AbstractModel):
@@ -1707,32 +3284,57 @@ class PreviewReplacedCommandContentRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Parameters: Custom parameters for the preview. The field type is JSON encoded string. For example, {\"varA\": \"222\"}.
+        :param _Parameters: Custom parameters for the preview. The field type is JSON encoded string. For example, {\"varA\": \"222\"}.
 `key` is the name of the custom parameter and "value" is its specified value. Both "key" and "value" are strings.
 At most 20 custom parameters are supported.
 The name of the custom parameter cannot exceed 64 characters and can only contain [a-z], [A-Z], [0-9], [-_].
 This parameter can be left empty if DefaultParameters is set for the previewed CommandId.
         :type Parameters: str
-        :param CommandId: The command to be previewed. If DefaultParameters is set, it is combined with Parameters and Parameters takes priority.
+        :param _CommandId: The command to be previewed. If DefaultParameters is set, it is combined with Parameters and Parameters takes priority.
 `CommandId` or `Content` must be specified.
         :type CommandId: str
-        :param Content: Base64-encoded command to be previewed. The maximum length is 64 KB.
+        :param _Content: Base64-encoded command to be previewed. The maximum length is 64 KB.
 CommandId or Content must be specified.
         :type Content: str
         """
-        self.Parameters = None
-        self.CommandId = None
-        self.Content = None
+        self._Parameters = None
+        self._CommandId = None
+        self._Content = None
+
+    @property
+    def Parameters(self):
+        return self._Parameters
+
+    @Parameters.setter
+    def Parameters(self, Parameters):
+        self._Parameters = Parameters
+
+    @property
+    def CommandId(self):
+        return self._CommandId
+
+    @CommandId.setter
+    def CommandId(self, CommandId):
+        self._CommandId = CommandId
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
 
 
     def _deserialize(self, params):
-        self.Parameters = params.get("Parameters")
-        self.CommandId = params.get("CommandId")
-        self.Content = params.get("Content")
+        self._Parameters = params.get("Parameters")
+        self._CommandId = params.get("CommandId")
+        self._Content = params.get("Content")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1745,18 +3347,34 @@ class PreviewReplacedCommandContentResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ReplacedContent: Base64-encoded command with custom parameters.
+        :param _ReplacedContent: Base64-encoded command with custom parameters.
         :type ReplacedContent: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.ReplacedContent = None
-        self.RequestId = None
+        self._ReplacedContent = None
+        self._RequestId = None
+
+    @property
+    def ReplacedContent(self):
+        return self._ReplacedContent
+
+    @ReplacedContent.setter
+    def ReplacedContent(self, ReplacedContent):
+        self._ReplacedContent = ReplacedContent
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ReplacedContent = params.get("ReplacedContent")
-        self.RequestId = params.get("RequestId")
+        self._ReplacedContent = params.get("ReplacedContent")
+        self._RequestId = params.get("RequestId")
 
 
 class RegionInfo(AbstractModel):
@@ -1766,26 +3384,51 @@ class RegionInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Region: Region name, such as `ap-guangzhou`
+        :param _Region: Region name, such as `ap-guangzhou`
         :type Region: str
-        :param RegionName: Region description, such as `Guangzhou`
+        :param _RegionName: Region description, such as `Guangzhou`
         :type RegionName: str
-        :param RegionState: Region status. `AVAILABLE` indicates the region is available.
+        :param _RegionState: Region status. `AVAILABLE` indicates the region is available.
         :type RegionState: str
         """
-        self.Region = None
-        self.RegionName = None
-        self.RegionState = None
+        self._Region = None
+        self._RegionName = None
+        self._RegionState = None
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def RegionName(self):
+        return self._RegionName
+
+    @RegionName.setter
+    def RegionName(self, RegionName):
+        self._RegionName = RegionName
+
+    @property
+    def RegionState(self):
+        return self._RegionState
+
+    @RegionState.setter
+    def RegionState(self, RegionState):
+        self._RegionState = RegionState
 
 
     def _deserialize(self, params):
-        self.Region = params.get("Region")
-        self.RegionName = params.get("RegionName")
-        self.RegionState = params.get("RegionState")
+        self._Region = params.get("Region")
+        self._RegionName = params.get("RegionName")
+        self._RegionState = params.get("RegionState")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1798,98 +3441,219 @@ class RunCommandRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Content: Base64-encoded command. The maximum length is 64 KB.
+        :param _Content: Base64-encoded command. The maximum length is 64 KB.
         :type Content: str
-        :param InstanceIds: IDs of instances about to execute commands. Up to 100 IDs are allowed. Supported instance types:
+        :param _InstanceIds: IDs of instances about to execute commands. Up to 100 IDs are allowed. Supported instance types:
 <li> `CVM`
 <li> `LIGHTHOUSE`
         :type InstanceIds: list of str
-        :param CommandName: Command name. The name can be up to 60 bytes, and contain [a-z], [A-Z], [0-9] and [_-.].
+        :param _CommandName: Command name. The name can be up to 60 bytes, and contain [a-z], [A-Z], [0-9] and [_-.].
         :type CommandName: str
-        :param Description: Command description. The maximum length is 120 characters.
+        :param _Description: Command description. The maximum length is 120 characters.
         :type Description: str
-        :param CommandType: Command type. `SHELL` and `POWERSHELL` are supported. The default value is `SHELL`.
+        :param _CommandType: Command type. `SHELL` and `POWERSHELL` are supported. The default value is `SHELL`.
         :type CommandType: str
-        :param WorkingDirectory: Command execution path. The default value is /root for `SHELL` commands and C:\Program Files\qcloud\tat_agent\workdir for `POWERSHELL` commands.
+        :param _WorkingDirectory: Command execution path. The default value is /root for `SHELL` commands and C:\Program Files\qcloud\tat_agent\workdir for `POWERSHELL` commands.
         :type WorkingDirectory: str
-        :param Timeout: Command timeout period. Default value: 60 seconds. Value range: [1, 86400].
+        :param _Timeout: Command timeout period. Default value: 60 seconds. Value range: [1, 86400].
         :type Timeout: int
-        :param SaveCommand: Whether to save the command. Valid values:
+        :param _SaveCommand: Whether to save the command. Valid values:
 <li> `True`: Save
 <li> `False`: Do not save
 The default value is `False`.
         :type SaveCommand: bool
-        :param EnableParameter: Whether to enable the custom parameter feature.
+        :param _EnableParameter: Whether to enable the custom parameter feature.
 This cannot be modified once created.
 Default value: `false`.
         :type EnableParameter: bool
-        :param DefaultParameters: The default value of the custom parameter value when it is enabled. The field type is JSON encoded string. For example, {\"varA\": \"222\"}.
+        :param _DefaultParameters: The default value of the custom parameter value when it is enabled. The field type is JSON encoded string. For example, {\"varA\": \"222\"}.
 `key` is the name of the custom parameter and `value` is the default value. Both `key` and `value` are strings.
 If Parameters is not provided, the default values specified here are used.
 Up to 20 custom parameters are supported.
 The name of the custom parameter cannot exceed 64 characters and can contain [a-z], [A-Z], [0-9] and [-_].
         :type DefaultParameters: str
-        :param Parameters: Custom parameters of `Command`. The field type is JSON encoded string. For example, {\"varA\": \"222\"}.
+        :param _Parameters: Custom parameters of `Command`. The field type is JSON encoded string. For example, {\"varA\": \"222\"}.
 `key` is the name of the custom parameter and `value` is the default value. Both `key` and `value` are strings.
 If no parameter value is provided, the `DefaultParameters` is used.
 Up to 20 custom parameters are supported.
 The name of the custom parameter cannot exceed 64 characters and can contain [a-z], [A-Z], [0-9] and [-_].
         :type Parameters: str
-        :param Tags: The tags of the command. It is available when `SaveCommand` is `True`. A maximum of 10 tags are allowed.
+        :param _Tags: The tags of the command. It is available when `SaveCommand` is `True`. A maximum of 10 tags are allowed.
         :type Tags: list of Tag
-        :param Username: The username used to execute the command on the CVM or Lighthouse instance.
+        :param _Username: The username used to execute the command on the CVM or Lighthouse instance.
 The principle of least privilege is the best practice for permission management. We recommend you execute TAT commands as a general user. By default, the user `root` is used to execute commands on Linux and the user `System` is used on Windows.
         :type Username: str
-        :param OutputCOSBucketUrl: The COS bucket URL for uploading logs. The URL must start with `https`, such as `https://BucketName-123454321.cos.ap-beijing.myqcloud.com`.
+        :param _OutputCOSBucketUrl: The COS bucket URL for uploading logs. The URL must start with `https`, such as `https://BucketName-123454321.cos.ap-beijing.myqcloud.com`.
         :type OutputCOSBucketUrl: str
-        :param OutputCOSKeyPrefix: The COS bucket directory where the logs are saved. Check below for the rules of the directory name. 
+        :param _OutputCOSKeyPrefix: The COS bucket directory where the logs are saved. Check below for the rules of the directory name. 
 1. It must be a combination of number, letters, and visible characters. Up to 60 characters are allowed.
 2. Use a slash (/) to create a subdirectory.
 3. ".." can not be used as the folder name. It cannot start with a slash (/), and cannot contain consecutive slashes.
         :type OutputCOSKeyPrefix: str
         """
-        self.Content = None
-        self.InstanceIds = None
-        self.CommandName = None
-        self.Description = None
-        self.CommandType = None
-        self.WorkingDirectory = None
-        self.Timeout = None
-        self.SaveCommand = None
-        self.EnableParameter = None
-        self.DefaultParameters = None
-        self.Parameters = None
-        self.Tags = None
-        self.Username = None
-        self.OutputCOSBucketUrl = None
-        self.OutputCOSKeyPrefix = None
+        self._Content = None
+        self._InstanceIds = None
+        self._CommandName = None
+        self._Description = None
+        self._CommandType = None
+        self._WorkingDirectory = None
+        self._Timeout = None
+        self._SaveCommand = None
+        self._EnableParameter = None
+        self._DefaultParameters = None
+        self._Parameters = None
+        self._Tags = None
+        self._Username = None
+        self._OutputCOSBucketUrl = None
+        self._OutputCOSKeyPrefix = None
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def InstanceIds(self):
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def CommandName(self):
+        return self._CommandName
+
+    @CommandName.setter
+    def CommandName(self, CommandName):
+        self._CommandName = CommandName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CommandType(self):
+        return self._CommandType
+
+    @CommandType.setter
+    def CommandType(self, CommandType):
+        self._CommandType = CommandType
+
+    @property
+    def WorkingDirectory(self):
+        return self._WorkingDirectory
+
+    @WorkingDirectory.setter
+    def WorkingDirectory(self, WorkingDirectory):
+        self._WorkingDirectory = WorkingDirectory
+
+    @property
+    def Timeout(self):
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def SaveCommand(self):
+        return self._SaveCommand
+
+    @SaveCommand.setter
+    def SaveCommand(self, SaveCommand):
+        self._SaveCommand = SaveCommand
+
+    @property
+    def EnableParameter(self):
+        return self._EnableParameter
+
+    @EnableParameter.setter
+    def EnableParameter(self, EnableParameter):
+        self._EnableParameter = EnableParameter
+
+    @property
+    def DefaultParameters(self):
+        return self._DefaultParameters
+
+    @DefaultParameters.setter
+    def DefaultParameters(self, DefaultParameters):
+        self._DefaultParameters = DefaultParameters
+
+    @property
+    def Parameters(self):
+        return self._Parameters
+
+    @Parameters.setter
+    def Parameters(self, Parameters):
+        self._Parameters = Parameters
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Username(self):
+        return self._Username
+
+    @Username.setter
+    def Username(self, Username):
+        self._Username = Username
+
+    @property
+    def OutputCOSBucketUrl(self):
+        return self._OutputCOSBucketUrl
+
+    @OutputCOSBucketUrl.setter
+    def OutputCOSBucketUrl(self, OutputCOSBucketUrl):
+        self._OutputCOSBucketUrl = OutputCOSBucketUrl
+
+    @property
+    def OutputCOSKeyPrefix(self):
+        return self._OutputCOSKeyPrefix
+
+    @OutputCOSKeyPrefix.setter
+    def OutputCOSKeyPrefix(self, OutputCOSKeyPrefix):
+        self._OutputCOSKeyPrefix = OutputCOSKeyPrefix
 
 
     def _deserialize(self, params):
-        self.Content = params.get("Content")
-        self.InstanceIds = params.get("InstanceIds")
-        self.CommandName = params.get("CommandName")
-        self.Description = params.get("Description")
-        self.CommandType = params.get("CommandType")
-        self.WorkingDirectory = params.get("WorkingDirectory")
-        self.Timeout = params.get("Timeout")
-        self.SaveCommand = params.get("SaveCommand")
-        self.EnableParameter = params.get("EnableParameter")
-        self.DefaultParameters = params.get("DefaultParameters")
-        self.Parameters = params.get("Parameters")
+        self._Content = params.get("Content")
+        self._InstanceIds = params.get("InstanceIds")
+        self._CommandName = params.get("CommandName")
+        self._Description = params.get("Description")
+        self._CommandType = params.get("CommandType")
+        self._WorkingDirectory = params.get("WorkingDirectory")
+        self._Timeout = params.get("Timeout")
+        self._SaveCommand = params.get("SaveCommand")
+        self._EnableParameter = params.get("EnableParameter")
+        self._DefaultParameters = params.get("DefaultParameters")
+        self._Parameters = params.get("Parameters")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.Username = params.get("Username")
-        self.OutputCOSBucketUrl = params.get("OutputCOSBucketUrl")
-        self.OutputCOSKeyPrefix = params.get("OutputCOSKeyPrefix")
+                self._Tags.append(obj)
+        self._Username = params.get("Username")
+        self._OutputCOSBucketUrl = params.get("OutputCOSBucketUrl")
+        self._OutputCOSKeyPrefix = params.get("OutputCOSKeyPrefix")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1902,22 +3666,46 @@ class RunCommandResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CommandId: Command ID.
+        :param _CommandId: Command ID.
         :type CommandId: str
-        :param InvocationId: Execution activity ID.
+        :param _InvocationId: Execution activity ID.
         :type InvocationId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.CommandId = None
-        self.InvocationId = None
-        self.RequestId = None
+        self._CommandId = None
+        self._InvocationId = None
+        self._RequestId = None
+
+    @property
+    def CommandId(self):
+        return self._CommandId
+
+    @CommandId.setter
+    def CommandId(self, CommandId):
+        self._CommandId = CommandId
+
+    @property
+    def InvocationId(self):
+        return self._InvocationId
+
+    @InvocationId.setter
+    def InvocationId(self, InvocationId):
+        self._InvocationId = InvocationId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.CommandId = params.get("CommandId")
-        self.InvocationId = params.get("InvocationId")
-        self.RequestId = params.get("RequestId")
+        self._CommandId = params.get("CommandId")
+        self._InvocationId = params.get("InvocationId")
+        self._RequestId = params.get("RequestId")
 
 
 class ScheduleSettings(AbstractModel):
@@ -1927,28 +3715,53 @@ class ScheduleSettings(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Policy: Execution policy:
+        :param _Policy: Execution policy:
 <br><li>`ONCE`: Execute once
 <br><li>`RECURRENCE`: Execute repeatedly
         :type Policy: str
-        :param Recurrence: Trigger the crontab expression. This field is required if `Policy` is `RECURRENCE`. The crontab expression is parsed in UTC+8.
+        :param _Recurrence: Trigger the crontab expression. This field is required if `Policy` is `RECURRENCE`. The crontab expression is parsed in UTC+8.
         :type Recurrence: str
-        :param InvokeTime: The next execution time of the invoker. This field is required if `Policy` is `ONCE`.
+        :param _InvokeTime: The next execution time of the invoker. This field is required if `Policy` is `ONCE`.
         :type InvokeTime: str
         """
-        self.Policy = None
-        self.Recurrence = None
-        self.InvokeTime = None
+        self._Policy = None
+        self._Recurrence = None
+        self._InvokeTime = None
+
+    @property
+    def Policy(self):
+        return self._Policy
+
+    @Policy.setter
+    def Policy(self, Policy):
+        self._Policy = Policy
+
+    @property
+    def Recurrence(self):
+        return self._Recurrence
+
+    @Recurrence.setter
+    def Recurrence(self, Recurrence):
+        self._Recurrence = Recurrence
+
+    @property
+    def InvokeTime(self):
+        return self._InvokeTime
+
+    @InvokeTime.setter
+    def InvokeTime(self, InvokeTime):
+        self._InvokeTime = InvokeTime
 
 
     def _deserialize(self, params):
-        self.Policy = params.get("Policy")
-        self.Recurrence = params.get("Recurrence")
-        self.InvokeTime = params.get("InvokeTime")
+        self._Policy = params.get("Policy")
+        self._Recurrence = params.get("Recurrence")
+        self._InvokeTime = params.get("InvokeTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1961,22 +3774,39 @@ class Tag(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Key: Tag key.
+        :param _Key: Tag key.
         :type Key: str
-        :param Value: Tag value.
+        :param _Value: Tag value.
         :type Value: str
         """
-        self.Key = None
-        self.Value = None
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
 
 
     def _deserialize(self, params):
-        self.Key = params.get("Key")
-        self.Value = params.get("Value")
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1989,42 +3819,99 @@ class TaskResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ExitCode: ExitCode of the execution.
+        :param _ExitCode: ExitCode of the execution.
         :type ExitCode: int
-        :param Output: Base64-encoded command output. The maximum length is 24 KB.
+        :param _Output: Base64-encoded command output. The maximum length is 24 KB.
         :type Output: str
-        :param ExecStartTime: Time when the execution is started.
+        :param _ExecStartTime: Time when the execution is started.
         :type ExecStartTime: str
-        :param ExecEndTime: Time when the execution is ended.
+        :param _ExecEndTime: Time when the execution is ended.
         :type ExecEndTime: str
-        :param Dropped: Dropped bytes of the command output.
+        :param _Dropped: Dropped bytes of the command output.
         :type Dropped: int
-        :param OutputUrl: COS URL of the logs.
+        :param _OutputUrl: COS URL of the logs.
         :type OutputUrl: str
-        :param OutputUploadCOSErrorInfo: Error message for uploading logs to COS.
+        :param _OutputUploadCOSErrorInfo: Error message for uploading logs to COS.
         :type OutputUploadCOSErrorInfo: str
         """
-        self.ExitCode = None
-        self.Output = None
-        self.ExecStartTime = None
-        self.ExecEndTime = None
-        self.Dropped = None
-        self.OutputUrl = None
-        self.OutputUploadCOSErrorInfo = None
+        self._ExitCode = None
+        self._Output = None
+        self._ExecStartTime = None
+        self._ExecEndTime = None
+        self._Dropped = None
+        self._OutputUrl = None
+        self._OutputUploadCOSErrorInfo = None
+
+    @property
+    def ExitCode(self):
+        return self._ExitCode
+
+    @ExitCode.setter
+    def ExitCode(self, ExitCode):
+        self._ExitCode = ExitCode
+
+    @property
+    def Output(self):
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def ExecStartTime(self):
+        return self._ExecStartTime
+
+    @ExecStartTime.setter
+    def ExecStartTime(self, ExecStartTime):
+        self._ExecStartTime = ExecStartTime
+
+    @property
+    def ExecEndTime(self):
+        return self._ExecEndTime
+
+    @ExecEndTime.setter
+    def ExecEndTime(self, ExecEndTime):
+        self._ExecEndTime = ExecEndTime
+
+    @property
+    def Dropped(self):
+        return self._Dropped
+
+    @Dropped.setter
+    def Dropped(self, Dropped):
+        self._Dropped = Dropped
+
+    @property
+    def OutputUrl(self):
+        return self._OutputUrl
+
+    @OutputUrl.setter
+    def OutputUrl(self, OutputUrl):
+        self._OutputUrl = OutputUrl
+
+    @property
+    def OutputUploadCOSErrorInfo(self):
+        return self._OutputUploadCOSErrorInfo
+
+    @OutputUploadCOSErrorInfo.setter
+    def OutputUploadCOSErrorInfo(self, OutputUploadCOSErrorInfo):
+        self._OutputUploadCOSErrorInfo = OutputUploadCOSErrorInfo
 
 
     def _deserialize(self, params):
-        self.ExitCode = params.get("ExitCode")
-        self.Output = params.get("Output")
-        self.ExecStartTime = params.get("ExecStartTime")
-        self.ExecEndTime = params.get("ExecEndTime")
-        self.Dropped = params.get("Dropped")
-        self.OutputUrl = params.get("OutputUrl")
-        self.OutputUploadCOSErrorInfo = params.get("OutputUploadCOSErrorInfo")
+        self._ExitCode = params.get("ExitCode")
+        self._Output = params.get("Output")
+        self._ExecStartTime = params.get("ExecStartTime")
+        self._ExecEndTime = params.get("ExecEndTime")
+        self._Dropped = params.get("Dropped")
+        self._OutputUrl = params.get("OutputUrl")
+        self._OutputUploadCOSErrorInfo = params.get("OutputUploadCOSErrorInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

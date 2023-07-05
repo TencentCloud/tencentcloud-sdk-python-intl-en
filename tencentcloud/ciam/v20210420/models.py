@@ -25,30 +25,63 @@ class ListUserGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserStoreId: User directory ID
+        :param _UserStoreId: User directory ID
         :type UserStoreId: str
-        :param Page: Number of queried pages
+        :param _Page: Number of queried pages
         :type Page: int
-        :param Size: Number of entries per page
+        :param _Size: Number of entries per page
         :type Size: int
-        :param Condition: Query conditions (user group ID or user group name)
+        :param _Condition: Query conditions (user group ID or user group name)
         :type Condition: str
         """
-        self.UserStoreId = None
-        self.Page = None
-        self.Size = None
-        self.Condition = None
+        self._UserStoreId = None
+        self._Page = None
+        self._Size = None
+        self._Condition = None
+
+    @property
+    def UserStoreId(self):
+        return self._UserStoreId
+
+    @UserStoreId.setter
+    def UserStoreId(self, UserStoreId):
+        self._UserStoreId = UserStoreId
+
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def Size(self):
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def Condition(self):
+        return self._Condition
+
+    @Condition.setter
+    def Condition(self, Condition):
+        self._Condition = Condition
 
 
     def _deserialize(self, params):
-        self.UserStoreId = params.get("UserStoreId")
-        self.Page = params.get("Page")
-        self.Size = params.get("Size")
-        self.Condition = params.get("Condition")
+        self._UserStoreId = params.get("UserStoreId")
+        self._Page = params.get("Page")
+        self._Size = params.get("Size")
+        self._Condition = params.get("Condition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -61,36 +94,68 @@ class ListUserGroupsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Content: User group list
+        :param _Content: User group list
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Content: list of UserGroup
-        :param Total: Total number
+        :param _Total: Total number
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Total: int
-        :param Pageable: Pagination
+        :param _Pageable: Pagination
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Pageable: :class:`tencentcloud.ciam.v20210420.models.Pageable`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Content = None
-        self.Total = None
-        self.Pageable = None
-        self.RequestId = None
+        self._Content = None
+        self._Total = None
+        self._Pageable = None
+        self._RequestId = None
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Pageable(self):
+        return self._Pageable
+
+    @Pageable.setter
+    def Pageable(self, Pageable):
+        self._Pageable = Pageable
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Content") is not None:
-            self.Content = []
+            self._Content = []
             for item in params.get("Content"):
                 obj = UserGroup()
                 obj._deserialize(item)
-                self.Content.append(obj)
-        self.Total = params.get("Total")
+                self._Content.append(obj)
+        self._Total = params.get("Total")
         if params.get("Pageable") is not None:
-            self.Pageable = Pageable()
-            self.Pageable._deserialize(params.get("Pageable"))
-        self.RequestId = params.get("RequestId")
+            self._Pageable = Pageable()
+            self._Pageable._deserialize(params.get("Pageable"))
+        self._RequestId = params.get("RequestId")
 
 
 class Pageable(AbstractModel):
@@ -100,22 +165,39 @@ class Pageable(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PageSize: Number of entries per page
+        :param _PageSize: Number of entries per page
         :type PageSize: int
-        :param PageNumber: Current page number
+        :param _PageNumber: Current page number
         :type PageNumber: int
         """
-        self.PageSize = None
-        self.PageNumber = None
+        self._PageSize = None
+        self._PageNumber = None
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
 
 
     def _deserialize(self, params):
-        self.PageSize = params.get("PageSize")
-        self.PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -128,35 +210,76 @@ class UserGroup(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserGroupId: User group ID
+        :param _UserGroupId: User group ID
         :type UserGroupId: str
-        :param DisplayName: User group name
+        :param _DisplayName: User group name
         :type DisplayName: str
-        :param Description: User group description
+        :param _Description: User group description
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Description: str
-        :param UserStoreId: User directory ID
+        :param _UserStoreId: User directory ID
         :type UserStoreId: str
-        :param TenantId: Tenant ID
+        :param _TenantId: Tenant ID
         :type TenantId: str
         """
-        self.UserGroupId = None
-        self.DisplayName = None
-        self.Description = None
-        self.UserStoreId = None
-        self.TenantId = None
+        self._UserGroupId = None
+        self._DisplayName = None
+        self._Description = None
+        self._UserStoreId = None
+        self._TenantId = None
+
+    @property
+    def UserGroupId(self):
+        return self._UserGroupId
+
+    @UserGroupId.setter
+    def UserGroupId(self, UserGroupId):
+        self._UserGroupId = UserGroupId
+
+    @property
+    def DisplayName(self):
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def UserStoreId(self):
+        return self._UserStoreId
+
+    @UserStoreId.setter
+    def UserStoreId(self, UserStoreId):
+        self._UserStoreId = UserStoreId
+
+    @property
+    def TenantId(self):
+        return self._TenantId
+
+    @TenantId.setter
+    def TenantId(self, TenantId):
+        self._TenantId = TenantId
 
 
     def _deserialize(self, params):
-        self.UserGroupId = params.get("UserGroupId")
-        self.DisplayName = params.get("DisplayName")
-        self.Description = params.get("Description")
-        self.UserStoreId = params.get("UserStoreId")
-        self.TenantId = params.get("TenantId")
+        self._UserGroupId = params.get("UserGroupId")
+        self._DisplayName = params.get("DisplayName")
+        self._Description = params.get("Description")
+        self._UserStoreId = params.get("UserStoreId")
+        self._TenantId = params.get("TenantId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

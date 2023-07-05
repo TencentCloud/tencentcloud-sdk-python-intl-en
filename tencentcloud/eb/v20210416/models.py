@@ -25,22 +25,39 @@ class APIGWParams(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Protocol: HTTPS
+        :param _Protocol: HTTPS
         :type Protocol: str
-        :param Method: POST
+        :param _Method: POST
         :type Method: str
         """
-        self.Protocol = None
-        self.Method = None
+        self._Protocol = None
+        self._Method = None
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def Method(self):
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
 
 
     def _deserialize(self, params):
-        self.Protocol = params.get("Protocol")
-        self.Method = params.get("Method")
+        self._Protocol = params.get("Protocol")
+        self._Method = params.get("Method")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -59,14 +76,22 @@ class CheckRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CheckTransformationRequest(AbstractModel):
@@ -76,27 +101,44 @@ class CheckTransformationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Input: JSON string to be processed
+        :param _Input: JSON string to be processed
         :type Input: str
-        :param Transformations: Transformation rule list
+        :param _Transformations: Transformation rule list
         :type Transformations: list of Transformation
         """
-        self.Input = None
-        self.Transformations = None
+        self._Input = None
+        self._Transformations = None
+
+    @property
+    def Input(self):
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Transformations(self):
+        return self._Transformations
+
+    @Transformations.setter
+    def Transformations(self, Transformations):
+        self._Transformations = Transformations
 
 
     def _deserialize(self, params):
-        self.Input = params.get("Input")
+        self._Input = params.get("Input")
         if params.get("Transformations") is not None:
-            self.Transformations = []
+            self._Transformations = []
             for item in params.get("Transformations"):
                 obj = Transformation()
                 obj._deserialize(item)
-                self.Transformations.append(obj)
+                self._Transformations.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -109,18 +151,34 @@ class CheckTransformationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Output: Data processed by `Transformations`
+        :param _Output: Data processed by `Transformations`
         :type Output: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Output = None
-        self.RequestId = None
+        self._Output = None
+        self._RequestId = None
+
+    @property
+    def Output(self):
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Output = params.get("Output")
-        self.RequestId = params.get("RequestId")
+        self._Output = params.get("Output")
+        self._RequestId = params.get("RequestId")
 
 
 class CkafkaDeliveryParams(AbstractModel):
@@ -130,22 +188,39 @@ class CkafkaDeliveryParams(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TopicName: ckafka topic name
+        :param _TopicName: ckafka topic name
         :type TopicName: str
-        :param ResourceDescription: Six-Segment QCS description of CKafka resource
+        :param _ResourceDescription: Six-Segment QCS description of CKafka resource
         :type ResourceDescription: str
         """
-        self.TopicName = None
-        self.ResourceDescription = None
+        self._TopicName = None
+        self._ResourceDescription = None
+
+    @property
+    def TopicName(self):
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def ResourceDescription(self):
+        return self._ResourceDescription
+
+    @ResourceDescription.setter
+    def ResourceDescription(self, ResourceDescription):
+        self._ResourceDescription = ResourceDescription
 
 
     def _deserialize(self, params):
-        self.TopicName = params.get("TopicName")
-        self.ResourceDescription = params.get("ResourceDescription")
+        self._TopicName = params.get("TopicName")
+        self._ResourceDescription = params.get("ResourceDescription")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -158,22 +233,39 @@ class CkafkaParams(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: kafka offset
+        :param _Offset: kafka offset
         :type Offset: str
-        :param TopicName: ckafka  topic
+        :param _TopicName: ckafka  topic
         :type TopicName: str
         """
-        self.Offset = None
-        self.TopicName = None
+        self._Offset = None
+        self._TopicName = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def TopicName(self):
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
 
 
     def _deserialize(self, params):
-        self.Offset = params.get("Offset")
-        self.TopicName = params.get("TopicName")
+        self._Offset = params.get("Offset")
+        self._TopicName = params.get("TopicName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -186,24 +278,41 @@ class CkafkaTargetParams(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TopicName: CKafka topic to be delivered to
+        :param _TopicName: CKafka topic to be delivered to
         :type TopicName: str
-        :param RetryPolicy: Retry policy
+        :param _RetryPolicy: Retry policy
         :type RetryPolicy: :class:`tencentcloud.eb.v20210416.models.RetryPolicy`
         """
-        self.TopicName = None
-        self.RetryPolicy = None
+        self._TopicName = None
+        self._RetryPolicy = None
+
+    @property
+    def TopicName(self):
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def RetryPolicy(self):
+        return self._RetryPolicy
+
+    @RetryPolicy.setter
+    def RetryPolicy(self, RetryPolicy):
+        self._RetryPolicy = RetryPolicy
 
 
     def _deserialize(self, params):
-        self.TopicName = params.get("TopicName")
+        self._TopicName = params.get("TopicName")
         if params.get("RetryPolicy") is not None:
-            self.RetryPolicy = RetryPolicy()
-            self.RetryPolicy._deserialize(params.get("RetryPolicy"))
+            self._RetryPolicy = RetryPolicy()
+            self._RetryPolicy._deserialize(params.get("RetryPolicy"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -216,56 +325,137 @@ class Connection(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: Status
+        :param _Status: Status
         :type Status: str
-        :param ModTime: Update time
+        :param _ModTime: Update time
         :type ModTime: str
-        :param Enable: Switch
+        :param _Enable: Switch
         :type Enable: bool
-        :param Description: Description
+        :param _Description: Description
         :type Description: str
-        :param AddTime: Creation time
+        :param _AddTime: Creation time
         :type AddTime: str
-        :param ConnectionId: Connector ID
+        :param _ConnectionId: Connector ID
         :type ConnectionId: str
-        :param EventBusId: Event bus ID
+        :param _EventBusId: Event bus ID
         :type EventBusId: str
-        :param ConnectionDescription: Connector description
+        :param _ConnectionDescription: Connector description
         :type ConnectionDescription: :class:`tencentcloud.eb.v20210416.models.ConnectionDescription`
-        :param ConnectionName: Connector name
+        :param _ConnectionName: Connector name
         :type ConnectionName: str
-        :param Type: Type
+        :param _Type: Type
         :type Type: str
         """
-        self.Status = None
-        self.ModTime = None
-        self.Enable = None
-        self.Description = None
-        self.AddTime = None
-        self.ConnectionId = None
-        self.EventBusId = None
-        self.ConnectionDescription = None
-        self.ConnectionName = None
-        self.Type = None
+        self._Status = None
+        self._ModTime = None
+        self._Enable = None
+        self._Description = None
+        self._AddTime = None
+        self._ConnectionId = None
+        self._EventBusId = None
+        self._ConnectionDescription = None
+        self._ConnectionName = None
+        self._Type = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ModTime(self):
+        return self._ModTime
+
+    @ModTime.setter
+    def ModTime(self, ModTime):
+        self._ModTime = ModTime
+
+    @property
+    def Enable(self):
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def AddTime(self):
+        return self._AddTime
+
+    @AddTime.setter
+    def AddTime(self, AddTime):
+        self._AddTime = AddTime
+
+    @property
+    def ConnectionId(self):
+        return self._ConnectionId
+
+    @ConnectionId.setter
+    def ConnectionId(self, ConnectionId):
+        self._ConnectionId = ConnectionId
+
+    @property
+    def EventBusId(self):
+        return self._EventBusId
+
+    @EventBusId.setter
+    def EventBusId(self, EventBusId):
+        self._EventBusId = EventBusId
+
+    @property
+    def ConnectionDescription(self):
+        return self._ConnectionDescription
+
+    @ConnectionDescription.setter
+    def ConnectionDescription(self, ConnectionDescription):
+        self._ConnectionDescription = ConnectionDescription
+
+    @property
+    def ConnectionName(self):
+        return self._ConnectionName
+
+    @ConnectionName.setter
+    def ConnectionName(self, ConnectionName):
+        self._ConnectionName = ConnectionName
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
 
 
     def _deserialize(self, params):
-        self.Status = params.get("Status")
-        self.ModTime = params.get("ModTime")
-        self.Enable = params.get("Enable")
-        self.Description = params.get("Description")
-        self.AddTime = params.get("AddTime")
-        self.ConnectionId = params.get("ConnectionId")
-        self.EventBusId = params.get("EventBusId")
+        self._Status = params.get("Status")
+        self._ModTime = params.get("ModTime")
+        self._Enable = params.get("Enable")
+        self._Description = params.get("Description")
+        self._AddTime = params.get("AddTime")
+        self._ConnectionId = params.get("ConnectionId")
+        self._EventBusId = params.get("EventBusId")
         if params.get("ConnectionDescription") is not None:
-            self.ConnectionDescription = ConnectionDescription()
-            self.ConnectionDescription._deserialize(params.get("ConnectionDescription"))
-        self.ConnectionName = params.get("ConnectionName")
-        self.Type = params.get("Type")
+            self._ConnectionDescription = ConnectionDescription()
+            self._ConnectionDescription._deserialize(params.get("ConnectionDescription"))
+        self._ConnectionName = params.get("ConnectionName")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -278,24 +468,41 @@ class ConnectionBrief(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: Connector type
+        :param _Type: Connector type
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Type: str
-        :param Status: Connector status
+        :param _Status: Connector status
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Status: str
         """
-        self.Type = None
-        self.Status = None
+        self._Type = None
+        self._Status = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
 
     def _deserialize(self, params):
-        self.Type = params.get("Type")
-        self.Status = params.get("Status")
+        self._Type = params.get("Type")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -308,39 +515,72 @@ class ConnectionDescription(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceDescription: Six-Segment QCS resource description. For more information, see [Resource Description Method](https://intl.cloud.tencent.com/document/product/598/10606?from_cn_redirect=1)
+        :param _ResourceDescription: Six-Segment QCS resource description. For more information, see [Resource Description Method](https://intl.cloud.tencent.com/document/product/598/10606?from_cn_redirect=1)
         :type ResourceDescription: str
-        :param APIGWParams: API Gateway parameters
+        :param _APIGWParams: API Gateway parameters
 Note: this field may return null, indicating that no valid values can be obtained.
         :type APIGWParams: :class:`tencentcloud.eb.v20210416.models.APIGWParams`
-        :param CkafkaParams: CKafka parameters
+        :param _CkafkaParams: CKafka parameters
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CkafkaParams: :class:`tencentcloud.eb.v20210416.models.CkafkaParams`
-        :param DTSParams: Data Transfer Service (DTS) connector information
+        :param _DTSParams: Data Transfer Service (DTS) connector information
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type DTSParams: :class:`tencentcloud.eb.v20210416.models.DTSParams`
         """
-        self.ResourceDescription = None
-        self.APIGWParams = None
-        self.CkafkaParams = None
-        self.DTSParams = None
+        self._ResourceDescription = None
+        self._APIGWParams = None
+        self._CkafkaParams = None
+        self._DTSParams = None
+
+    @property
+    def ResourceDescription(self):
+        return self._ResourceDescription
+
+    @ResourceDescription.setter
+    def ResourceDescription(self, ResourceDescription):
+        self._ResourceDescription = ResourceDescription
+
+    @property
+    def APIGWParams(self):
+        return self._APIGWParams
+
+    @APIGWParams.setter
+    def APIGWParams(self, APIGWParams):
+        self._APIGWParams = APIGWParams
+
+    @property
+    def CkafkaParams(self):
+        return self._CkafkaParams
+
+    @CkafkaParams.setter
+    def CkafkaParams(self, CkafkaParams):
+        self._CkafkaParams = CkafkaParams
+
+    @property
+    def DTSParams(self):
+        return self._DTSParams
+
+    @DTSParams.setter
+    def DTSParams(self, DTSParams):
+        self._DTSParams = DTSParams
 
 
     def _deserialize(self, params):
-        self.ResourceDescription = params.get("ResourceDescription")
+        self._ResourceDescription = params.get("ResourceDescription")
         if params.get("APIGWParams") is not None:
-            self.APIGWParams = APIGWParams()
-            self.APIGWParams._deserialize(params.get("APIGWParams"))
+            self._APIGWParams = APIGWParams()
+            self._APIGWParams._deserialize(params.get("APIGWParams"))
         if params.get("CkafkaParams") is not None:
-            self.CkafkaParams = CkafkaParams()
-            self.CkafkaParams._deserialize(params.get("CkafkaParams"))
+            self._CkafkaParams = CkafkaParams()
+            self._CkafkaParams._deserialize(params.get("CkafkaParams"))
         if params.get("DTSParams") is not None:
-            self.DTSParams = DTSParams()
-            self.DTSParams._deserialize(params.get("DTSParams"))
+            self._DTSParams = DTSParams()
+            self._DTSParams._deserialize(params.get("DTSParams"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -353,40 +593,89 @@ class CreateConnectionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ConnectionDescription: Connector description
+        :param _ConnectionDescription: Connector description
         :type ConnectionDescription: :class:`tencentcloud.eb.v20210416.models.ConnectionDescription`
-        :param EventBusId: Event bus ID
+        :param _EventBusId: Event bus ID
         :type EventBusId: str
-        :param ConnectionName: Connector name
+        :param _ConnectionName: Connector name
         :type ConnectionName: str
-        :param Description: Description
+        :param _Description: Description
         :type Description: str
-        :param Enable: Whether to enable
+        :param _Enable: Whether to enable
         :type Enable: bool
-        :param Type: Type of the connector
+        :param _Type: Type of the connector
         :type Type: str
         """
-        self.ConnectionDescription = None
-        self.EventBusId = None
-        self.ConnectionName = None
-        self.Description = None
-        self.Enable = None
-        self.Type = None
+        self._ConnectionDescription = None
+        self._EventBusId = None
+        self._ConnectionName = None
+        self._Description = None
+        self._Enable = None
+        self._Type = None
+
+    @property
+    def ConnectionDescription(self):
+        return self._ConnectionDescription
+
+    @ConnectionDescription.setter
+    def ConnectionDescription(self, ConnectionDescription):
+        self._ConnectionDescription = ConnectionDescription
+
+    @property
+    def EventBusId(self):
+        return self._EventBusId
+
+    @EventBusId.setter
+    def EventBusId(self, EventBusId):
+        self._EventBusId = EventBusId
+
+    @property
+    def ConnectionName(self):
+        return self._ConnectionName
+
+    @ConnectionName.setter
+    def ConnectionName(self, ConnectionName):
+        self._ConnectionName = ConnectionName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Enable(self):
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
 
 
     def _deserialize(self, params):
         if params.get("ConnectionDescription") is not None:
-            self.ConnectionDescription = ConnectionDescription()
-            self.ConnectionDescription._deserialize(params.get("ConnectionDescription"))
-        self.EventBusId = params.get("EventBusId")
-        self.ConnectionName = params.get("ConnectionName")
-        self.Description = params.get("Description")
-        self.Enable = params.get("Enable")
-        self.Type = params.get("Type")
+            self._ConnectionDescription = ConnectionDescription()
+            self._ConnectionDescription._deserialize(params.get("ConnectionDescription"))
+        self._EventBusId = params.get("EventBusId")
+        self._ConnectionName = params.get("ConnectionName")
+        self._Description = params.get("Description")
+        self._Enable = params.get("Enable")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -399,18 +688,34 @@ class CreateConnectionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ConnectionId: Connector ID
+        :param _ConnectionId: Connector ID
         :type ConnectionId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.ConnectionId = None
-        self.RequestId = None
+        self._ConnectionId = None
+        self._RequestId = None
+
+    @property
+    def ConnectionId(self):
+        return self._ConnectionId
+
+    @ConnectionId.setter
+    def ConnectionId(self, ConnectionId):
+        self._ConnectionId = ConnectionId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ConnectionId = params.get("ConnectionId")
-        self.RequestId = params.get("RequestId")
+        self._ConnectionId = params.get("ConnectionId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateEventBusRequest(AbstractModel):
@@ -420,30 +725,63 @@ class CreateEventBusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EventBusName: Event bus name: it can contain 2-60 letters, digits, underscores, and hyphens and must start with a letter and end with a digit or letter.
+        :param _EventBusName: Event bus name: it can contain 2-60 letters, digits, underscores, and hyphens and must start with a letter and end with a digit or letter.
         :type EventBusName: str
-        :param Description: Event bus description, which can contain up to 200 characters of any type.
+        :param _Description: Event bus description, which can contain up to 200 characters of any type.
         :type Description: str
-        :param SaveDays: Log retention period
+        :param _SaveDays: Log retention period
         :type SaveDays: int
-        :param EnableStore: Whether to enable log storage
+        :param _EnableStore: Whether to enable log storage
         :type EnableStore: bool
         """
-        self.EventBusName = None
-        self.Description = None
-        self.SaveDays = None
-        self.EnableStore = None
+        self._EventBusName = None
+        self._Description = None
+        self._SaveDays = None
+        self._EnableStore = None
+
+    @property
+    def EventBusName(self):
+        return self._EventBusName
+
+    @EventBusName.setter
+    def EventBusName(self, EventBusName):
+        self._EventBusName = EventBusName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def SaveDays(self):
+        return self._SaveDays
+
+    @SaveDays.setter
+    def SaveDays(self, SaveDays):
+        self._SaveDays = SaveDays
+
+    @property
+    def EnableStore(self):
+        return self._EnableStore
+
+    @EnableStore.setter
+    def EnableStore(self, EnableStore):
+        self._EnableStore = EnableStore
 
 
     def _deserialize(self, params):
-        self.EventBusName = params.get("EventBusName")
-        self.Description = params.get("Description")
-        self.SaveDays = params.get("SaveDays")
-        self.EnableStore = params.get("EnableStore")
+        self._EventBusName = params.get("EventBusName")
+        self._Description = params.get("Description")
+        self._SaveDays = params.get("SaveDays")
+        self._EnableStore = params.get("EnableStore")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -456,18 +794,34 @@ class CreateEventBusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EventBusId: Event bus ID
+        :param _EventBusId: Event bus ID
         :type EventBusId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.EventBusId = None
-        self.RequestId = None
+        self._EventBusId = None
+        self._RequestId = None
+
+    @property
+    def EventBusId(self):
+        return self._EventBusId
+
+    @EventBusId.setter
+    def EventBusId(self, EventBusId):
+        self._EventBusId = EventBusId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.EventBusId = params.get("EventBusId")
-        self.RequestId = params.get("RequestId")
+        self._EventBusId = params.get("EventBusId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateRuleRequest(AbstractModel):
@@ -477,34 +831,75 @@ class CreateRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EventPattern: See [Event Pattern](https://intl.cloud.tencent.com/document/product/1359/56084?from_cn_redirect=1)
+        :param _EventPattern: See [Event Pattern](https://intl.cloud.tencent.com/document/product/1359/56084?from_cn_redirect=1)
         :type EventPattern: str
-        :param EventBusId: Event bus ID.
+        :param _EventBusId: Event bus ID.
         :type EventBusId: str
-        :param RuleName: Event bus name, which can contain 2–60 letters, digits, underscores, and hyphens and must start with a letter and end with a digit or letter
+        :param _RuleName: Event bus name, which can contain 2–60 letters, digits, underscores, and hyphens and must start with a letter and end with a digit or letter
         :type RuleName: str
-        :param Enable: Switch.
+        :param _Enable: Switch.
         :type Enable: bool
-        :param Description: Event bus description, which can contain up to 200 characters of any type
+        :param _Description: Event bus description, which can contain up to 200 characters of any type
         :type Description: str
         """
-        self.EventPattern = None
-        self.EventBusId = None
-        self.RuleName = None
-        self.Enable = None
-        self.Description = None
+        self._EventPattern = None
+        self._EventBusId = None
+        self._RuleName = None
+        self._Enable = None
+        self._Description = None
+
+    @property
+    def EventPattern(self):
+        return self._EventPattern
+
+    @EventPattern.setter
+    def EventPattern(self, EventPattern):
+        self._EventPattern = EventPattern
+
+    @property
+    def EventBusId(self):
+        return self._EventBusId
+
+    @EventBusId.setter
+    def EventBusId(self, EventBusId):
+        self._EventBusId = EventBusId
+
+    @property
+    def RuleName(self):
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def Enable(self):
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
 
     def _deserialize(self, params):
-        self.EventPattern = params.get("EventPattern")
-        self.EventBusId = params.get("EventBusId")
-        self.RuleName = params.get("RuleName")
-        self.Enable = params.get("Enable")
-        self.Description = params.get("Description")
+        self._EventPattern = params.get("EventPattern")
+        self._EventBusId = params.get("EventBusId")
+        self._RuleName = params.get("RuleName")
+        self._Enable = params.get("Enable")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -517,18 +912,34 @@ class CreateRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RuleId: Event rule ID
+        :param _RuleId: Event rule ID
         :type RuleId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RuleId = None
-        self.RequestId = None
+        self._RuleId = None
+        self._RequestId = None
+
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RuleId = params.get("RuleId")
-        self.RequestId = params.get("RequestId")
+        self._RuleId = params.get("RuleId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateTargetRequest(AbstractModel):
@@ -538,32 +949,65 @@ class CreateTargetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EventBusId: Event bus ID
+        :param _EventBusId: Event bus ID
         :type EventBusId: str
-        :param Type: Target type
+        :param _Type: Target type
         :type Type: str
-        :param TargetDescription: Target description
+        :param _TargetDescription: Target description
         :type TargetDescription: :class:`tencentcloud.eb.v20210416.models.TargetDescription`
-        :param RuleId: Event rule ID
+        :param _RuleId: Event rule ID
         :type RuleId: str
         """
-        self.EventBusId = None
-        self.Type = None
-        self.TargetDescription = None
-        self.RuleId = None
+        self._EventBusId = None
+        self._Type = None
+        self._TargetDescription = None
+        self._RuleId = None
+
+    @property
+    def EventBusId(self):
+        return self._EventBusId
+
+    @EventBusId.setter
+    def EventBusId(self, EventBusId):
+        self._EventBusId = EventBusId
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def TargetDescription(self):
+        return self._TargetDescription
+
+    @TargetDescription.setter
+    def TargetDescription(self, TargetDescription):
+        self._TargetDescription = TargetDescription
+
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
 
 
     def _deserialize(self, params):
-        self.EventBusId = params.get("EventBusId")
-        self.Type = params.get("Type")
+        self._EventBusId = params.get("EventBusId")
+        self._Type = params.get("Type")
         if params.get("TargetDescription") is not None:
-            self.TargetDescription = TargetDescription()
-            self.TargetDescription._deserialize(params.get("TargetDescription"))
-        self.RuleId = params.get("RuleId")
+            self._TargetDescription = TargetDescription()
+            self._TargetDescription._deserialize(params.get("TargetDescription"))
+        self._RuleId = params.get("RuleId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -576,18 +1020,34 @@ class CreateTargetResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TargetId: Target ID
+        :param _TargetId: Target ID
         :type TargetId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TargetId = None
-        self.RequestId = None
+        self._TargetId = None
+        self._RequestId = None
+
+    @property
+    def TargetId(self):
+        return self._TargetId
+
+    @TargetId.setter
+    def TargetId(self, TargetId):
+        self._TargetId = TargetId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TargetId = params.get("TargetId")
-        self.RequestId = params.get("RequestId")
+        self._TargetId = params.get("TargetId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateTransformationRequest(AbstractModel):
@@ -597,31 +1057,56 @@ class CreateTransformationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EventBusId: Event bus ID
+        :param _EventBusId: Event bus ID
         :type EventBusId: str
-        :param RuleId: Rule ID
+        :param _RuleId: Rule ID
         :type RuleId: str
-        :param Transformations: Transformation rule list (currently, only one is supported)
+        :param _Transformations: Transformation rule list (currently, only one is supported)
         :type Transformations: list of Transformation
         """
-        self.EventBusId = None
-        self.RuleId = None
-        self.Transformations = None
+        self._EventBusId = None
+        self._RuleId = None
+        self._Transformations = None
+
+    @property
+    def EventBusId(self):
+        return self._EventBusId
+
+    @EventBusId.setter
+    def EventBusId(self, EventBusId):
+        self._EventBusId = EventBusId
+
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def Transformations(self):
+        return self._Transformations
+
+    @Transformations.setter
+    def Transformations(self, Transformations):
+        self._Transformations = Transformations
 
 
     def _deserialize(self, params):
-        self.EventBusId = params.get("EventBusId")
-        self.RuleId = params.get("RuleId")
+        self._EventBusId = params.get("EventBusId")
+        self._RuleId = params.get("RuleId")
         if params.get("Transformations") is not None:
-            self.Transformations = []
+            self._Transformations = []
             for item in params.get("Transformations"):
                 obj = Transformation()
                 obj._deserialize(item)
-                self.Transformations.append(obj)
+                self._Transformations.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -634,18 +1119,34 @@ class CreateTransformationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TransformationId: Generated transformer ID
+        :param _TransformationId: Generated transformer ID
         :type TransformationId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TransformationId = None
-        self.RequestId = None
+        self._TransformationId = None
+        self._RequestId = None
+
+    @property
+    def TransformationId(self):
+        return self._TransformationId
+
+    @TransformationId.setter
+    def TransformationId(self, TransformationId):
+        self._TransformationId = TransformationId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TransformationId = params.get("TransformationId")
-        self.RequestId = params.get("RequestId")
+        self._TransformationId = params.get("TransformationId")
+        self._RequestId = params.get("RequestId")
 
 
 class DTSParams(AbstractModel):
@@ -661,25 +1162,42 @@ class DeadLetterConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DisposeMethod: Three modes are supported: DLQ, drop, and ignore error, which correspond to `DLQ`, `DROP`, and `IGNORE_ERROR` respectively
+        :param _DisposeMethod: Three modes are supported: DLQ, drop, and ignore error, which correspond to `DLQ`, `DROP`, and `IGNORE_ERROR` respectively
         :type DisposeMethod: str
-        :param CkafkaDeliveryParams: If the DLQ mode is set, this option is required. Error messages will be delivered to the corresponding Kafka topic
+        :param _CkafkaDeliveryParams: If the DLQ mode is set, this option is required. Error messages will be delivered to the corresponding Kafka topic
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CkafkaDeliveryParams: :class:`tencentcloud.eb.v20210416.models.CkafkaDeliveryParams`
         """
-        self.DisposeMethod = None
-        self.CkafkaDeliveryParams = None
+        self._DisposeMethod = None
+        self._CkafkaDeliveryParams = None
+
+    @property
+    def DisposeMethod(self):
+        return self._DisposeMethod
+
+    @DisposeMethod.setter
+    def DisposeMethod(self, DisposeMethod):
+        self._DisposeMethod = DisposeMethod
+
+    @property
+    def CkafkaDeliveryParams(self):
+        return self._CkafkaDeliveryParams
+
+    @CkafkaDeliveryParams.setter
+    def CkafkaDeliveryParams(self, CkafkaDeliveryParams):
+        self._CkafkaDeliveryParams = CkafkaDeliveryParams
 
 
     def _deserialize(self, params):
-        self.DisposeMethod = params.get("DisposeMethod")
+        self._DisposeMethod = params.get("DisposeMethod")
         if params.get("CkafkaDeliveryParams") is not None:
-            self.CkafkaDeliveryParams = CkafkaDeliveryParams()
-            self.CkafkaDeliveryParams._deserialize(params.get("CkafkaDeliveryParams"))
+            self._CkafkaDeliveryParams = CkafkaDeliveryParams()
+            self._CkafkaDeliveryParams._deserialize(params.get("CkafkaDeliveryParams"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -692,22 +1210,39 @@ class DeleteConnectionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ConnectionId: Connector ID
+        :param _ConnectionId: Connector ID
         :type ConnectionId: str
-        :param EventBusId: Event bus ID
+        :param _EventBusId: Event bus ID
         :type EventBusId: str
         """
-        self.ConnectionId = None
-        self.EventBusId = None
+        self._ConnectionId = None
+        self._EventBusId = None
+
+    @property
+    def ConnectionId(self):
+        return self._ConnectionId
+
+    @ConnectionId.setter
+    def ConnectionId(self, ConnectionId):
+        self._ConnectionId = ConnectionId
+
+    @property
+    def EventBusId(self):
+        return self._EventBusId
+
+    @EventBusId.setter
+    def EventBusId(self, EventBusId):
+        self._EventBusId = EventBusId
 
 
     def _deserialize(self, params):
-        self.ConnectionId = params.get("ConnectionId")
-        self.EventBusId = params.get("EventBusId")
+        self._ConnectionId = params.get("ConnectionId")
+        self._EventBusId = params.get("EventBusId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -720,14 +1255,22 @@ class DeleteConnectionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteEventBusRequest(AbstractModel):
@@ -737,18 +1280,27 @@ class DeleteEventBusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EventBusId: Event bus ID
+        :param _EventBusId: Event bus ID
         :type EventBusId: str
         """
-        self.EventBusId = None
+        self._EventBusId = None
+
+    @property
+    def EventBusId(self):
+        return self._EventBusId
+
+    @EventBusId.setter
+    def EventBusId(self, EventBusId):
+        self._EventBusId = EventBusId
 
 
     def _deserialize(self, params):
-        self.EventBusId = params.get("EventBusId")
+        self._EventBusId = params.get("EventBusId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -761,14 +1313,22 @@ class DeleteEventBusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteRuleRequest(AbstractModel):
@@ -778,22 +1338,39 @@ class DeleteRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EventBusId: Event bus ID
+        :param _EventBusId: Event bus ID
         :type EventBusId: str
-        :param RuleId: Event rule ID
+        :param _RuleId: Event rule ID
         :type RuleId: str
         """
-        self.EventBusId = None
-        self.RuleId = None
+        self._EventBusId = None
+        self._RuleId = None
+
+    @property
+    def EventBusId(self):
+        return self._EventBusId
+
+    @EventBusId.setter
+    def EventBusId(self, EventBusId):
+        self._EventBusId = EventBusId
+
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
 
 
     def _deserialize(self, params):
-        self.EventBusId = params.get("EventBusId")
-        self.RuleId = params.get("RuleId")
+        self._EventBusId = params.get("EventBusId")
+        self._RuleId = params.get("RuleId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -806,14 +1383,22 @@ class DeleteRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteTargetRequest(AbstractModel):
@@ -823,26 +1408,51 @@ class DeleteTargetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EventBusId: Event bus ID
+        :param _EventBusId: Event bus ID
         :type EventBusId: str
-        :param TargetId: Delivery target ID
+        :param _TargetId: Delivery target ID
         :type TargetId: str
-        :param RuleId: Event rule ID
+        :param _RuleId: Event rule ID
         :type RuleId: str
         """
-        self.EventBusId = None
-        self.TargetId = None
-        self.RuleId = None
+        self._EventBusId = None
+        self._TargetId = None
+        self._RuleId = None
+
+    @property
+    def EventBusId(self):
+        return self._EventBusId
+
+    @EventBusId.setter
+    def EventBusId(self, EventBusId):
+        self._EventBusId = EventBusId
+
+    @property
+    def TargetId(self):
+        return self._TargetId
+
+    @TargetId.setter
+    def TargetId(self, TargetId):
+        self._TargetId = TargetId
+
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
 
 
     def _deserialize(self, params):
-        self.EventBusId = params.get("EventBusId")
-        self.TargetId = params.get("TargetId")
-        self.RuleId = params.get("RuleId")
+        self._EventBusId = params.get("EventBusId")
+        self._TargetId = params.get("TargetId")
+        self._RuleId = params.get("RuleId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -855,14 +1465,22 @@ class DeleteTargetResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteTransformationRequest(AbstractModel):
@@ -872,26 +1490,51 @@ class DeleteTransformationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EventBusId: Event bus ID
+        :param _EventBusId: Event bus ID
         :type EventBusId: str
-        :param RuleId: Rule ID
+        :param _RuleId: Rule ID
         :type RuleId: str
-        :param TransformationId: Transformer ID
+        :param _TransformationId: Transformer ID
         :type TransformationId: str
         """
-        self.EventBusId = None
-        self.RuleId = None
-        self.TransformationId = None
+        self._EventBusId = None
+        self._RuleId = None
+        self._TransformationId = None
+
+    @property
+    def EventBusId(self):
+        return self._EventBusId
+
+    @EventBusId.setter
+    def EventBusId(self, EventBusId):
+        self._EventBusId = EventBusId
+
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def TransformationId(self):
+        return self._TransformationId
+
+    @TransformationId.setter
+    def TransformationId(self, TransformationId):
+        self._TransformationId = TransformationId
 
 
     def _deserialize(self, params):
-        self.EventBusId = params.get("EventBusId")
-        self.RuleId = params.get("RuleId")
-        self.TransformationId = params.get("TransformationId")
+        self._EventBusId = params.get("EventBusId")
+        self._RuleId = params.get("RuleId")
+        self._TransformationId = params.get("TransformationId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -904,14 +1547,22 @@ class DeleteTransformationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ESTargetParams(AbstractModel):
@@ -921,38 +1572,87 @@ class ESTargetParams(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NetMode: Network connection type
+        :param _NetMode: Network connection type
         :type NetMode: str
-        :param IndexPrefix: Index prefix
+        :param _IndexPrefix: Index prefix
         :type IndexPrefix: str
-        :param RotationInterval: ES log rotation interval
+        :param _RotationInterval: ES log rotation interval
         :type RotationInterval: str
-        :param OutputMode: DTS event configuration
+        :param _OutputMode: DTS event configuration
         :type OutputMode: str
-        :param IndexSuffixMode: DTS indexing configuration
+        :param _IndexSuffixMode: DTS indexing configuration
         :type IndexSuffixMode: str
-        :param IndexTemplateType: ES template type
+        :param _IndexTemplateType: ES template type
         :type IndexTemplateType: str
         """
-        self.NetMode = None
-        self.IndexPrefix = None
-        self.RotationInterval = None
-        self.OutputMode = None
-        self.IndexSuffixMode = None
-        self.IndexTemplateType = None
+        self._NetMode = None
+        self._IndexPrefix = None
+        self._RotationInterval = None
+        self._OutputMode = None
+        self._IndexSuffixMode = None
+        self._IndexTemplateType = None
+
+    @property
+    def NetMode(self):
+        return self._NetMode
+
+    @NetMode.setter
+    def NetMode(self, NetMode):
+        self._NetMode = NetMode
+
+    @property
+    def IndexPrefix(self):
+        return self._IndexPrefix
+
+    @IndexPrefix.setter
+    def IndexPrefix(self, IndexPrefix):
+        self._IndexPrefix = IndexPrefix
+
+    @property
+    def RotationInterval(self):
+        return self._RotationInterval
+
+    @RotationInterval.setter
+    def RotationInterval(self, RotationInterval):
+        self._RotationInterval = RotationInterval
+
+    @property
+    def OutputMode(self):
+        return self._OutputMode
+
+    @OutputMode.setter
+    def OutputMode(self, OutputMode):
+        self._OutputMode = OutputMode
+
+    @property
+    def IndexSuffixMode(self):
+        return self._IndexSuffixMode
+
+    @IndexSuffixMode.setter
+    def IndexSuffixMode(self, IndexSuffixMode):
+        self._IndexSuffixMode = IndexSuffixMode
+
+    @property
+    def IndexTemplateType(self):
+        return self._IndexTemplateType
+
+    @IndexTemplateType.setter
+    def IndexTemplateType(self, IndexTemplateType):
+        self._IndexTemplateType = IndexTemplateType
 
 
     def _deserialize(self, params):
-        self.NetMode = params.get("NetMode")
-        self.IndexPrefix = params.get("IndexPrefix")
-        self.RotationInterval = params.get("RotationInterval")
-        self.OutputMode = params.get("OutputMode")
-        self.IndexSuffixMode = params.get("IndexSuffixMode")
-        self.IndexTemplateType = params.get("IndexTemplateType")
+        self._NetMode = params.get("NetMode")
+        self._IndexPrefix = params.get("IndexPrefix")
+        self._RotationInterval = params.get("RotationInterval")
+        self._OutputMode = params.get("OutputMode")
+        self._IndexSuffixMode = params.get("IndexSuffixMode")
+        self._IndexTemplateType = params.get("IndexTemplateType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -965,18 +1665,27 @@ class EtlFilter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Filter: The syntax is the same as that of `Rule`
+        :param _Filter: The syntax is the same as that of `Rule`
         :type Filter: str
         """
-        self.Filter = None
+        self._Filter = None
+
+    @property
+    def Filter(self):
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
 
 
     def _deserialize(self, params):
-        self.Filter = params.get("Filter")
+        self._Filter = params.get("Filter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -989,63 +1698,136 @@ class EventBus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ModTime: Update time
+        :param _ModTime: Update time
         :type ModTime: str
-        :param Description: Event bus description, which can contain up to 200 characters of any type
+        :param _Description: Event bus description, which can contain up to 200 characters of any type
         :type Description: str
-        :param AddTime: Creation time
+        :param _AddTime: Creation time
         :type AddTime: str
-        :param EventBusName: Event bus name, which can contain 2–60 letters, digits, underscores, and hyphens and must start with a letter and end with a digit or letter
+        :param _EventBusName: Event bus name, which can contain 2–60 letters, digits, underscores, and hyphens and must start with a letter and end with a digit or letter
         :type EventBusName: str
-        :param EventBusId: Event bus ID
+        :param _EventBusId: Event bus ID
         :type EventBusId: str
-        :param Type: Event bus type
+        :param _Type: Event bus type
         :type Type: str
-        :param PayMode: Billing Mode
+        :param _PayMode: Billing Mode
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type PayMode: str
-        :param ConnectionBriefs: Connector basic information
+        :param _ConnectionBriefs: Connector basic information
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type ConnectionBriefs: list of ConnectionBrief
-        :param TargetBriefs: Target information
+        :param _TargetBriefs: Target information
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type TargetBriefs: list of TargetBrief
         """
-        self.ModTime = None
-        self.Description = None
-        self.AddTime = None
-        self.EventBusName = None
-        self.EventBusId = None
-        self.Type = None
-        self.PayMode = None
-        self.ConnectionBriefs = None
-        self.TargetBriefs = None
+        self._ModTime = None
+        self._Description = None
+        self._AddTime = None
+        self._EventBusName = None
+        self._EventBusId = None
+        self._Type = None
+        self._PayMode = None
+        self._ConnectionBriefs = None
+        self._TargetBriefs = None
+
+    @property
+    def ModTime(self):
+        return self._ModTime
+
+    @ModTime.setter
+    def ModTime(self, ModTime):
+        self._ModTime = ModTime
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def AddTime(self):
+        return self._AddTime
+
+    @AddTime.setter
+    def AddTime(self, AddTime):
+        self._AddTime = AddTime
+
+    @property
+    def EventBusName(self):
+        return self._EventBusName
+
+    @EventBusName.setter
+    def EventBusName(self, EventBusName):
+        self._EventBusName = EventBusName
+
+    @property
+    def EventBusId(self):
+        return self._EventBusId
+
+    @EventBusId.setter
+    def EventBusId(self, EventBusId):
+        self._EventBusId = EventBusId
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def ConnectionBriefs(self):
+        return self._ConnectionBriefs
+
+    @ConnectionBriefs.setter
+    def ConnectionBriefs(self, ConnectionBriefs):
+        self._ConnectionBriefs = ConnectionBriefs
+
+    @property
+    def TargetBriefs(self):
+        return self._TargetBriefs
+
+    @TargetBriefs.setter
+    def TargetBriefs(self, TargetBriefs):
+        self._TargetBriefs = TargetBriefs
 
 
     def _deserialize(self, params):
-        self.ModTime = params.get("ModTime")
-        self.Description = params.get("Description")
-        self.AddTime = params.get("AddTime")
-        self.EventBusName = params.get("EventBusName")
-        self.EventBusId = params.get("EventBusId")
-        self.Type = params.get("Type")
-        self.PayMode = params.get("PayMode")
+        self._ModTime = params.get("ModTime")
+        self._Description = params.get("Description")
+        self._AddTime = params.get("AddTime")
+        self._EventBusName = params.get("EventBusName")
+        self._EventBusId = params.get("EventBusId")
+        self._Type = params.get("Type")
+        self._PayMode = params.get("PayMode")
         if params.get("ConnectionBriefs") is not None:
-            self.ConnectionBriefs = []
+            self._ConnectionBriefs = []
             for item in params.get("ConnectionBriefs"):
                 obj = ConnectionBrief()
                 obj._deserialize(item)
-                self.ConnectionBriefs.append(obj)
+                self._ConnectionBriefs.append(obj)
         if params.get("TargetBriefs") is not None:
-            self.TargetBriefs = []
+            self._TargetBriefs = []
             for item in params.get("TargetBriefs"):
                 obj = TargetBrief()
                 obj._deserialize(item)
-                self.TargetBriefs.append(obj)
+                self._TargetBriefs.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1058,29 +1840,54 @@ class Extraction(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ExtractionInputPath: JsonPath, which will be `$.` by default if not specified
+        :param _ExtractionInputPath: JsonPath, which will be `$.` by default if not specified
         :type ExtractionInputPath: str
-        :param Format: Valid values: TEXT/JSON
+        :param _Format: Valid values: TEXT/JSON
         :type Format: str
-        :param TextParams: Only required for `Text`
+        :param _TextParams: Only required for `Text`
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TextParams: :class:`tencentcloud.eb.v20210416.models.TextParams`
         """
-        self.ExtractionInputPath = None
-        self.Format = None
-        self.TextParams = None
+        self._ExtractionInputPath = None
+        self._Format = None
+        self._TextParams = None
+
+    @property
+    def ExtractionInputPath(self):
+        return self._ExtractionInputPath
+
+    @ExtractionInputPath.setter
+    def ExtractionInputPath(self, ExtractionInputPath):
+        self._ExtractionInputPath = ExtractionInputPath
+
+    @property
+    def Format(self):
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+    @property
+    def TextParams(self):
+        return self._TextParams
+
+    @TextParams.setter
+    def TextParams(self, TextParams):
+        self._TextParams = TextParams
 
 
     def _deserialize(self, params):
-        self.ExtractionInputPath = params.get("ExtractionInputPath")
-        self.Format = params.get("Format")
+        self._ExtractionInputPath = params.get("ExtractionInputPath")
+        self._Format = params.get("Format")
         if params.get("TextParams") is not None:
-            self.TextParams = TextParams()
-            self.TextParams._deserialize(params.get("TextParams"))
+            self._TextParams = TextParams()
+            self._TextParams._deserialize(params.get("TextParams"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1095,22 +1902,39 @@ class Filter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Values: One or more filter values.
+        :param _Values: One or more filter values.
         :type Values: list of str
-        :param Name: Filter name.
+        :param _Name: Filter name.
         :type Name: str
         """
-        self.Values = None
-        self.Name = None
+        self._Values = None
+        self._Name = None
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
 
     def _deserialize(self, params):
-        self.Values = params.get("Values")
-        self.Name = params.get("Name")
+        self._Values = params.get("Values")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1123,18 +1947,27 @@ class GetEventBusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EventBusId: Event bus ID
+        :param _EventBusId: Event bus ID
         :type EventBusId: str
         """
-        self.EventBusId = None
+        self._EventBusId = None
+
+    @property
+    def EventBusId(self):
+        return self._EventBusId
+
+    @EventBusId.setter
+    def EventBusId(self, EventBusId):
+        self._EventBusId = EventBusId
 
 
     def _deserialize(self, params):
-        self.EventBusId = params.get("EventBusId")
+        self._EventBusId = params.get("EventBusId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1147,70 +1980,182 @@ class GetEventBusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ModTime: Update time
+        :param _ModTime: Update time
         :type ModTime: str
-        :param Description: Event bus description
+        :param _Description: Event bus description
         :type Description: str
-        :param ClsTopicId: Log topic ID
+        :param _ClsTopicId: Log topic ID
         :type ClsTopicId: str
-        :param AddTime: Creation time.
+        :param _AddTime: Creation time.
         :type AddTime: str
-        :param ClsLogsetId: Logset ID
+        :param _ClsLogsetId: Logset ID
         :type ClsLogsetId: str
-        :param EventBusName: Event bus name
+        :param _EventBusName: Event bus name
         :type EventBusName: str
-        :param EventBusId: Event bus ID
+        :param _EventBusId: Event bus ID
         :type EventBusId: str
-        :param Type: (Disused) Event bus type
+        :param _Type: (Disused) Event bus type
         :type Type: str
-        :param PayMode: Billing mode
+        :param _PayMode: Billing mode
         :type PayMode: str
-        :param SaveDays: EventBridge log storage period
+        :param _SaveDays: EventBridge log storage period
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type SaveDays: int
-        :param LogTopicId: EventBridge log topic ID
+        :param _LogTopicId: EventBridge log topic ID
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type LogTopicId: str
-        :param EnableStore: Whether to enable log storage
+        :param _EnableStore: Whether to enable log storage
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type EnableStore: bool
-        :param LinkMode: Whether to sort the message
+        :param _LinkMode: Whether to sort the message
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type LinkMode: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.ModTime = None
-        self.Description = None
-        self.ClsTopicId = None
-        self.AddTime = None
-        self.ClsLogsetId = None
-        self.EventBusName = None
-        self.EventBusId = None
-        self.Type = None
-        self.PayMode = None
-        self.SaveDays = None
-        self.LogTopicId = None
-        self.EnableStore = None
-        self.LinkMode = None
-        self.RequestId = None
+        self._ModTime = None
+        self._Description = None
+        self._ClsTopicId = None
+        self._AddTime = None
+        self._ClsLogsetId = None
+        self._EventBusName = None
+        self._EventBusId = None
+        self._Type = None
+        self._PayMode = None
+        self._SaveDays = None
+        self._LogTopicId = None
+        self._EnableStore = None
+        self._LinkMode = None
+        self._RequestId = None
+
+    @property
+    def ModTime(self):
+        return self._ModTime
+
+    @ModTime.setter
+    def ModTime(self, ModTime):
+        self._ModTime = ModTime
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ClsTopicId(self):
+        return self._ClsTopicId
+
+    @ClsTopicId.setter
+    def ClsTopicId(self, ClsTopicId):
+        self._ClsTopicId = ClsTopicId
+
+    @property
+    def AddTime(self):
+        return self._AddTime
+
+    @AddTime.setter
+    def AddTime(self, AddTime):
+        self._AddTime = AddTime
+
+    @property
+    def ClsLogsetId(self):
+        return self._ClsLogsetId
+
+    @ClsLogsetId.setter
+    def ClsLogsetId(self, ClsLogsetId):
+        self._ClsLogsetId = ClsLogsetId
+
+    @property
+    def EventBusName(self):
+        return self._EventBusName
+
+    @EventBusName.setter
+    def EventBusName(self, EventBusName):
+        self._EventBusName = EventBusName
+
+    @property
+    def EventBusId(self):
+        return self._EventBusId
+
+    @EventBusId.setter
+    def EventBusId(self, EventBusId):
+        self._EventBusId = EventBusId
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def SaveDays(self):
+        return self._SaveDays
+
+    @SaveDays.setter
+    def SaveDays(self, SaveDays):
+        self._SaveDays = SaveDays
+
+    @property
+    def LogTopicId(self):
+        return self._LogTopicId
+
+    @LogTopicId.setter
+    def LogTopicId(self, LogTopicId):
+        self._LogTopicId = LogTopicId
+
+    @property
+    def EnableStore(self):
+        return self._EnableStore
+
+    @EnableStore.setter
+    def EnableStore(self, EnableStore):
+        self._EnableStore = EnableStore
+
+    @property
+    def LinkMode(self):
+        return self._LinkMode
+
+    @LinkMode.setter
+    def LinkMode(self, LinkMode):
+        self._LinkMode = LinkMode
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ModTime = params.get("ModTime")
-        self.Description = params.get("Description")
-        self.ClsTopicId = params.get("ClsTopicId")
-        self.AddTime = params.get("AddTime")
-        self.ClsLogsetId = params.get("ClsLogsetId")
-        self.EventBusName = params.get("EventBusName")
-        self.EventBusId = params.get("EventBusId")
-        self.Type = params.get("Type")
-        self.PayMode = params.get("PayMode")
-        self.SaveDays = params.get("SaveDays")
-        self.LogTopicId = params.get("LogTopicId")
-        self.EnableStore = params.get("EnableStore")
-        self.LinkMode = params.get("LinkMode")
-        self.RequestId = params.get("RequestId")
+        self._ModTime = params.get("ModTime")
+        self._Description = params.get("Description")
+        self._ClsTopicId = params.get("ClsTopicId")
+        self._AddTime = params.get("AddTime")
+        self._ClsLogsetId = params.get("ClsLogsetId")
+        self._EventBusName = params.get("EventBusName")
+        self._EventBusId = params.get("EventBusId")
+        self._Type = params.get("Type")
+        self._PayMode = params.get("PayMode")
+        self._SaveDays = params.get("SaveDays")
+        self._LogTopicId = params.get("LogTopicId")
+        self._EnableStore = params.get("EnableStore")
+        self._LinkMode = params.get("LinkMode")
+        self._RequestId = params.get("RequestId")
 
 
 class GetRuleRequest(AbstractModel):
@@ -1220,22 +2165,39 @@ class GetRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EventBusId: Event bus ID
+        :param _EventBusId: Event bus ID
         :type EventBusId: str
-        :param RuleId: Event rule ID
+        :param _RuleId: Event rule ID
         :type RuleId: str
         """
-        self.EventBusId = None
-        self.RuleId = None
+        self._EventBusId = None
+        self._RuleId = None
+
+    @property
+    def EventBusId(self):
+        return self._EventBusId
+
+    @EventBusId.setter
+    def EventBusId(self, EventBusId):
+        self._EventBusId = EventBusId
+
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
 
 
     def _deserialize(self, params):
-        self.EventBusId = params.get("EventBusId")
-        self.RuleId = params.get("RuleId")
+        self._EventBusId = params.get("EventBusId")
+        self._RuleId = params.get("RuleId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1248,50 +2210,130 @@ class GetRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EventBusId: Event bus ID
+        :param _EventBusId: Event bus ID
         :type EventBusId: str
-        :param RuleId: Event rule ID
+        :param _RuleId: Event rule ID
         :type RuleId: str
-        :param RuleName: Event rule name
+        :param _RuleName: Event rule name
         :type RuleName: str
-        :param Status: Event rule status
+        :param _Status: Event rule status
         :type Status: str
-        :param Enable: Switch
+        :param _Enable: Switch
         :type Enable: bool
-        :param Description: Event rule description
+        :param _Description: Event rule description
         :type Description: str
-        :param EventPattern: Event pattern
+        :param _EventPattern: Event pattern
         :type EventPattern: str
-        :param AddTime: Creation time
+        :param _AddTime: Creation time
         :type AddTime: str
-        :param ModTime: Update time
+        :param _ModTime: Update time
         :type ModTime: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.EventBusId = None
-        self.RuleId = None
-        self.RuleName = None
-        self.Status = None
-        self.Enable = None
-        self.Description = None
-        self.EventPattern = None
-        self.AddTime = None
-        self.ModTime = None
-        self.RequestId = None
+        self._EventBusId = None
+        self._RuleId = None
+        self._RuleName = None
+        self._Status = None
+        self._Enable = None
+        self._Description = None
+        self._EventPattern = None
+        self._AddTime = None
+        self._ModTime = None
+        self._RequestId = None
+
+    @property
+    def EventBusId(self):
+        return self._EventBusId
+
+    @EventBusId.setter
+    def EventBusId(self, EventBusId):
+        self._EventBusId = EventBusId
+
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RuleName(self):
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Enable(self):
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def EventPattern(self):
+        return self._EventPattern
+
+    @EventPattern.setter
+    def EventPattern(self, EventPattern):
+        self._EventPattern = EventPattern
+
+    @property
+    def AddTime(self):
+        return self._AddTime
+
+    @AddTime.setter
+    def AddTime(self, AddTime):
+        self._AddTime = AddTime
+
+    @property
+    def ModTime(self):
+        return self._ModTime
+
+    @ModTime.setter
+    def ModTime(self, ModTime):
+        self._ModTime = ModTime
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.EventBusId = params.get("EventBusId")
-        self.RuleId = params.get("RuleId")
-        self.RuleName = params.get("RuleName")
-        self.Status = params.get("Status")
-        self.Enable = params.get("Enable")
-        self.Description = params.get("Description")
-        self.EventPattern = params.get("EventPattern")
-        self.AddTime = params.get("AddTime")
-        self.ModTime = params.get("ModTime")
-        self.RequestId = params.get("RequestId")
+        self._EventBusId = params.get("EventBusId")
+        self._RuleId = params.get("RuleId")
+        self._RuleName = params.get("RuleName")
+        self._Status = params.get("Status")
+        self._Enable = params.get("Enable")
+        self._Description = params.get("Description")
+        self._EventPattern = params.get("EventPattern")
+        self._AddTime = params.get("AddTime")
+        self._ModTime = params.get("ModTime")
+        self._RequestId = params.get("RequestId")
 
 
 class GetTransformationRequest(AbstractModel):
@@ -1301,26 +2343,51 @@ class GetTransformationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EventBusId: Event bus ID
+        :param _EventBusId: Event bus ID
         :type EventBusId: str
-        :param RuleId: Rule ID
+        :param _RuleId: Rule ID
         :type RuleId: str
-        :param TransformationId: Transformer ID
+        :param _TransformationId: Transformer ID
         :type TransformationId: str
         """
-        self.EventBusId = None
-        self.RuleId = None
-        self.TransformationId = None
+        self._EventBusId = None
+        self._RuleId = None
+        self._TransformationId = None
+
+    @property
+    def EventBusId(self):
+        return self._EventBusId
+
+    @EventBusId.setter
+    def EventBusId(self, EventBusId):
+        self._EventBusId = EventBusId
+
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def TransformationId(self):
+        return self._TransformationId
+
+    @TransformationId.setter
+    def TransformationId(self, TransformationId):
+        self._TransformationId = TransformationId
 
 
     def _deserialize(self, params):
-        self.EventBusId = params.get("EventBusId")
-        self.RuleId = params.get("RuleId")
-        self.TransformationId = params.get("TransformationId")
+        self._EventBusId = params.get("EventBusId")
+        self._RuleId = params.get("RuleId")
+        self._TransformationId = params.get("TransformationId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1333,23 +2400,39 @@ class GetTransformationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Transformations: Transformation rule list
+        :param _Transformations: Transformation rule list
         :type Transformations: list of Transformation
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Transformations = None
-        self.RequestId = None
+        self._Transformations = None
+        self._RequestId = None
+
+    @property
+    def Transformations(self):
+        return self._Transformations
+
+    @Transformations.setter
+    def Transformations(self, Transformations):
+        self._Transformations = Transformations
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Transformations") is not None:
-            self.Transformations = []
+            self._Transformations = []
             for item in params.get("Transformations"):
                 obj = Transformation()
                 obj._deserialize(item)
-                self.Transformations.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Transformations.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ListConnectionsRequest(AbstractModel):
@@ -1359,34 +2442,75 @@ class ListConnectionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EventBusId: Event bus ID
+        :param _EventBusId: Event bus ID
         :type EventBusId: str
-        :param OrderBy: Indicates by which field to sort the returned results. Valid values: AddTime, ModTime
+        :param _OrderBy: Indicates by which field to sort the returned results. Valid values: AddTime, ModTime
         :type OrderBy: str
-        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
+        :param _Limit: Number of returned results. Default value: 20. Maximum value: 100.
         :type Limit: int
-        :param Order: Indicates whether the returned results are sorted in ascending or descending order. Valid values: ASC, DESC
+        :param _Order: Indicates whether the returned results are sorted in ascending or descending order. Valid values: ASC, DESC
         :type Order: str
-        :param Offset: Offset. Default value: 0.
+        :param _Offset: Offset. Default value: 0.
         :type Offset: int
         """
-        self.EventBusId = None
-        self.OrderBy = None
-        self.Limit = None
-        self.Order = None
-        self.Offset = None
+        self._EventBusId = None
+        self._OrderBy = None
+        self._Limit = None
+        self._Order = None
+        self._Offset = None
+
+    @property
+    def EventBusId(self):
+        return self._EventBusId
+
+    @EventBusId.setter
+    def EventBusId(self, EventBusId):
+        self._EventBusId = EventBusId
+
+    @property
+    def OrderBy(self):
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.EventBusId = params.get("EventBusId")
-        self.OrderBy = params.get("OrderBy")
-        self.Limit = params.get("Limit")
-        self.Order = params.get("Order")
-        self.Offset = params.get("Offset")
+        self._EventBusId = params.get("EventBusId")
+        self._OrderBy = params.get("OrderBy")
+        self._Limit = params.get("Limit")
+        self._Order = params.get("Order")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1399,27 +2523,51 @@ class ListConnectionsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Connections: Connector information
+        :param _Connections: Connector information
         :type Connections: list of Connection
-        :param TotalCount: Total number of connectors
+        :param _TotalCount: Total number of connectors
         :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Connections = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._Connections = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Connections(self):
+        return self._Connections
+
+    @Connections.setter
+    def Connections(self, Connections):
+        self._Connections = Connections
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Connections") is not None:
-            self.Connections = []
+            self._Connections = []
             for item in params.get("Connections"):
                 obj = Connection()
                 obj._deserialize(item)
-                self.Connections.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._Connections.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class ListEventBusesRequest(AbstractModel):
@@ -1429,39 +2577,80 @@ class ListEventBusesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OrderBy: Indicates by which field to sort the returned results. Valid values: AddTime (creation time), ModTime (modification time)
+        :param _OrderBy: Indicates by which field to sort the returned results. Valid values: AddTime (creation time), ModTime (modification time)
         :type OrderBy: str
-        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
+        :param _Limit: Number of returned results. Default value: 20. Maximum value: 100.
         :type Limit: int
-        :param Order: Indicates whether the returned results are sorted in ascending or descending order. Valid values: ASC (ascending order), DESC (descending order)
+        :param _Order: Indicates whether the returned results are sorted in ascending or descending order. Valid values: ASC (ascending order), DESC (descending order)
         :type Order: str
-        :param Filters: Filter. For more information, see the Instance Filter Table below. Each request can contain up to 10 `Filters` and 5 `Filter.Values`.
+        :param _Filters: Filter. For more information, see the Instance Filter Table below. Each request can contain up to 10 `Filters` and 5 `Filter.Values`.
         :type Filters: list of Filter
-        :param Offset: Pagination offset. Default value: 0.
+        :param _Offset: Pagination offset. Default value: 0.
         :type Offset: int
         """
-        self.OrderBy = None
-        self.Limit = None
-        self.Order = None
-        self.Filters = None
-        self.Offset = None
+        self._OrderBy = None
+        self._Limit = None
+        self._Order = None
+        self._Filters = None
+        self._Offset = None
+
+    @property
+    def OrderBy(self):
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.OrderBy = params.get("OrderBy")
-        self.Limit = params.get("Limit")
-        self.Order = params.get("Order")
+        self._OrderBy = params.get("OrderBy")
+        self._Limit = params.get("Limit")
+        self._Order = params.get("Order")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.Offset = params.get("Offset")
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1474,27 +2663,51 @@ class ListEventBusesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EventBuses: Event bus information
+        :param _EventBuses: Event bus information
         :type EventBuses: list of EventBus
-        :param TotalCount: Total number of event buses
+        :param _TotalCount: Total number of event buses
         :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.EventBuses = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._EventBuses = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def EventBuses(self):
+        return self._EventBuses
+
+    @EventBuses.setter
+    def EventBuses(self, EventBuses):
+        self._EventBuses = EventBuses
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("EventBuses") is not None:
-            self.EventBuses = []
+            self._EventBuses = []
             for item in params.get("EventBuses"):
                 obj = EventBus()
                 obj._deserialize(item)
-                self.EventBuses.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._EventBuses.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class ListRulesRequest(AbstractModel):
@@ -1504,34 +2717,75 @@ class ListRulesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EventBusId: Event bus ID
+        :param _EventBusId: Event bus ID
         :type EventBusId: str
-        :param OrderBy: Indicates by which field to sort the returned results. Valid values: AddTime (creation time), ModTime (modification time)
+        :param _OrderBy: Indicates by which field to sort the returned results. Valid values: AddTime (creation time), ModTime (modification time)
         :type OrderBy: str
-        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
+        :param _Limit: Number of returned results. Default value: 20. Maximum value: 100.
         :type Limit: int
-        :param Offset: Pagination offset. Default value: 0.
+        :param _Offset: Pagination offset. Default value: 0.
         :type Offset: int
-        :param Order: Indicates whether the returned results are sorted in ascending or descending order. Valid values: ASC (ascending order), DESC (descending order)
+        :param _Order: Indicates whether the returned results are sorted in ascending or descending order. Valid values: ASC (ascending order), DESC (descending order)
         :type Order: str
         """
-        self.EventBusId = None
-        self.OrderBy = None
-        self.Limit = None
-        self.Offset = None
-        self.Order = None
+        self._EventBusId = None
+        self._OrderBy = None
+        self._Limit = None
+        self._Offset = None
+        self._Order = None
+
+    @property
+    def EventBusId(self):
+        return self._EventBusId
+
+    @EventBusId.setter
+    def EventBusId(self, EventBusId):
+        self._EventBusId = EventBusId
+
+    @property
+    def OrderBy(self):
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
 
 
     def _deserialize(self, params):
-        self.EventBusId = params.get("EventBusId")
-        self.OrderBy = params.get("OrderBy")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        self.Order = params.get("Order")
+        self._EventBusId = params.get("EventBusId")
+        self._OrderBy = params.get("OrderBy")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1544,27 +2798,51 @@ class ListRulesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Rules: Event rule information
+        :param _Rules: Event rule information
         :type Rules: list of Rule
-        :param TotalCount: Total number of event rules
+        :param _TotalCount: Total number of event rules
         :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Rules = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._Rules = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Rules(self):
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Rules") is not None:
-            self.Rules = []
+            self._Rules = []
             for item in params.get("Rules"):
                 obj = Rule()
                 obj._deserialize(item)
-                self.Rules.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._Rules.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class ListTargetsRequest(AbstractModel):
@@ -1574,38 +2852,87 @@ class ListTargetsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RuleId: Event rule ID
+        :param _RuleId: Event rule ID
         :type RuleId: str
-        :param EventBusId: Event bus ID
+        :param _EventBusId: Event bus ID
         :type EventBusId: str
-        :param OrderBy: Indicates by which field to sort the returned results. Valid values: AddTime (creation time), ModTime (modification time)
+        :param _OrderBy: Indicates by which field to sort the returned results. Valid values: AddTime (creation time), ModTime (modification time)
         :type OrderBy: str
-        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
+        :param _Limit: Number of returned results. Default value: 20. Maximum value: 100.
         :type Limit: int
-        :param Offset: Pagination offset. Default value: 0.
+        :param _Offset: Pagination offset. Default value: 0.
         :type Offset: int
-        :param Order: Indicates whether the returned results are sorted in ascending or descending order. Valid values: ASC (ascending order), DESC (descending order)
+        :param _Order: Indicates whether the returned results are sorted in ascending or descending order. Valid values: ASC (ascending order), DESC (descending order)
         :type Order: str
         """
-        self.RuleId = None
-        self.EventBusId = None
-        self.OrderBy = None
-        self.Limit = None
-        self.Offset = None
-        self.Order = None
+        self._RuleId = None
+        self._EventBusId = None
+        self._OrderBy = None
+        self._Limit = None
+        self._Offset = None
+        self._Order = None
+
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def EventBusId(self):
+        return self._EventBusId
+
+    @EventBusId.setter
+    def EventBusId(self, EventBusId):
+        self._EventBusId = EventBusId
+
+    @property
+    def OrderBy(self):
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
 
 
     def _deserialize(self, params):
-        self.RuleId = params.get("RuleId")
-        self.EventBusId = params.get("EventBusId")
-        self.OrderBy = params.get("OrderBy")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        self.Order = params.get("Order")
+        self._RuleId = params.get("RuleId")
+        self._EventBusId = params.get("EventBusId")
+        self._OrderBy = params.get("OrderBy")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1618,27 +2945,51 @@ class ListTargetsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Total number of targets
+        :param _TotalCount: Total number of targets
         :type TotalCount: int
-        :param Targets: Target information
+        :param _Targets: Target information
         :type Targets: list of Target
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.Targets = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._Targets = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Targets(self):
+        return self._Targets
+
+    @Targets.setter
+    def Targets(self, Targets):
+        self._Targets = Targets
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("Targets") is not None:
-            self.Targets = []
+            self._Targets = []
             for item in params.get("Targets"):
                 obj = Target()
                 obj._deserialize(item)
-                self.Targets.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Targets.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class OutputStructParam(AbstractModel):
@@ -1648,26 +2999,51 @@ class OutputStructParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Key: Key in the corresponding JSON output
+        :param _Key: Key in the corresponding JSON output
         :type Key: str
-        :param Value: You can enter a JsonPath, constant, or built-in date type
+        :param _Value: You can enter a JsonPath, constant, or built-in date type
         :type Value: str
-        :param ValueType: Data type of `Value`. Valid values: STRING, NUMBER, BOOLEAN, NULL, SYS_VARIABLE, JSONPATH
+        :param _ValueType: Data type of `Value`. Valid values: STRING, NUMBER, BOOLEAN, NULL, SYS_VARIABLE, JSONPATH
         :type ValueType: str
         """
-        self.Key = None
-        self.Value = None
-        self.ValueType = None
+        self._Key = None
+        self._Value = None
+        self._ValueType = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def ValueType(self):
+        return self._ValueType
+
+    @ValueType.setter
+    def ValueType(self, ValueType):
+        self._ValueType = ValueType
 
 
     def _deserialize(self, params):
-        self.Key = params.get("Key")
-        self.Value = params.get("Value")
-        self.ValueType = params.get("ValueType")
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        self._ValueType = params.get("ValueType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1680,22 +3056,39 @@ class RetryPolicy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RetryInterval: Retry interval in seconds
+        :param _RetryInterval: Retry interval in seconds
         :type RetryInterval: int
-        :param MaxRetryAttempts: Maximum number of retries
+        :param _MaxRetryAttempts: Maximum number of retries
         :type MaxRetryAttempts: int
         """
-        self.RetryInterval = None
-        self.MaxRetryAttempts = None
+        self._RetryInterval = None
+        self._MaxRetryAttempts = None
+
+    @property
+    def RetryInterval(self):
+        return self._RetryInterval
+
+    @RetryInterval.setter
+    def RetryInterval(self, RetryInterval):
+        self._RetryInterval = RetryInterval
+
+    @property
+    def MaxRetryAttempts(self):
+        return self._MaxRetryAttempts
+
+    @MaxRetryAttempts.setter
+    def MaxRetryAttempts(self, MaxRetryAttempts):
+        self._MaxRetryAttempts = MaxRetryAttempts
 
 
     def _deserialize(self, params):
-        self.RetryInterval = params.get("RetryInterval")
-        self.MaxRetryAttempts = params.get("MaxRetryAttempts")
+        self._RetryInterval = params.get("RetryInterval")
+        self._MaxRetryAttempts = params.get("MaxRetryAttempts")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1708,63 +3101,144 @@ class Rule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: Status
+        :param _Status: Status
         :type Status: str
-        :param ModTime: Modification time
+        :param _ModTime: Modification time
         :type ModTime: str
-        :param Enable: Switch
+        :param _Enable: Switch
         :type Enable: bool
-        :param Description: Description
+        :param _Description: Description
         :type Description: str
-        :param RuleId: Rule ID
+        :param _RuleId: Rule ID
         :type RuleId: str
-        :param AddTime: Creation time
+        :param _AddTime: Creation time
         :type AddTime: str
-        :param EventBusId: Event bus ID
+        :param _EventBusId: Event bus ID
         :type EventBusId: str
-        :param RuleName: Rule name
+        :param _RuleName: Rule name
         :type RuleName: str
-        :param Targets: Target overview
+        :param _Targets: Target overview
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Targets: list of TargetBrief
-        :param DeadLetterConfig: DLQ rule set by the rule, which may be null
+        :param _DeadLetterConfig: DLQ rule set by the rule, which may be null
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DeadLetterConfig: :class:`tencentcloud.eb.v20210416.models.DeadLetterConfig`
         """
-        self.Status = None
-        self.ModTime = None
-        self.Enable = None
-        self.Description = None
-        self.RuleId = None
-        self.AddTime = None
-        self.EventBusId = None
-        self.RuleName = None
-        self.Targets = None
-        self.DeadLetterConfig = None
+        self._Status = None
+        self._ModTime = None
+        self._Enable = None
+        self._Description = None
+        self._RuleId = None
+        self._AddTime = None
+        self._EventBusId = None
+        self._RuleName = None
+        self._Targets = None
+        self._DeadLetterConfig = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ModTime(self):
+        return self._ModTime
+
+    @ModTime.setter
+    def ModTime(self, ModTime):
+        self._ModTime = ModTime
+
+    @property
+    def Enable(self):
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def AddTime(self):
+        return self._AddTime
+
+    @AddTime.setter
+    def AddTime(self, AddTime):
+        self._AddTime = AddTime
+
+    @property
+    def EventBusId(self):
+        return self._EventBusId
+
+    @EventBusId.setter
+    def EventBusId(self, EventBusId):
+        self._EventBusId = EventBusId
+
+    @property
+    def RuleName(self):
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def Targets(self):
+        return self._Targets
+
+    @Targets.setter
+    def Targets(self, Targets):
+        self._Targets = Targets
+
+    @property
+    def DeadLetterConfig(self):
+        return self._DeadLetterConfig
+
+    @DeadLetterConfig.setter
+    def DeadLetterConfig(self, DeadLetterConfig):
+        self._DeadLetterConfig = DeadLetterConfig
 
 
     def _deserialize(self, params):
-        self.Status = params.get("Status")
-        self.ModTime = params.get("ModTime")
-        self.Enable = params.get("Enable")
-        self.Description = params.get("Description")
-        self.RuleId = params.get("RuleId")
-        self.AddTime = params.get("AddTime")
-        self.EventBusId = params.get("EventBusId")
-        self.RuleName = params.get("RuleName")
+        self._Status = params.get("Status")
+        self._ModTime = params.get("ModTime")
+        self._Enable = params.get("Enable")
+        self._Description = params.get("Description")
+        self._RuleId = params.get("RuleId")
+        self._AddTime = params.get("AddTime")
+        self._EventBusId = params.get("EventBusId")
+        self._RuleName = params.get("RuleName")
         if params.get("Targets") is not None:
-            self.Targets = []
+            self._Targets = []
             for item in params.get("Targets"):
                 obj = TargetBrief()
                 obj._deserialize(item)
-                self.Targets.append(obj)
+                self._Targets.append(obj)
         if params.get("DeadLetterConfig") is not None:
-            self.DeadLetterConfig = DeadLetterConfig()
-            self.DeadLetterConfig._deserialize(params.get("DeadLetterConfig"))
+            self._DeadLetterConfig = DeadLetterConfig()
+            self._DeadLetterConfig._deserialize(params.get("DeadLetterConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1777,26 +3251,51 @@ class SCFParams(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BatchTimeout: Maximum waiting time for batch delivery
+        :param _BatchTimeout: Maximum waiting time for batch delivery
         :type BatchTimeout: int
-        :param BatchEventCount: Maximum number of events in batch delivery
+        :param _BatchEventCount: Maximum number of events in batch delivery
         :type BatchEventCount: int
-        :param EnableBatchDelivery: Enables batch delivery
+        :param _EnableBatchDelivery: Enables batch delivery
         :type EnableBatchDelivery: bool
         """
-        self.BatchTimeout = None
-        self.BatchEventCount = None
-        self.EnableBatchDelivery = None
+        self._BatchTimeout = None
+        self._BatchEventCount = None
+        self._EnableBatchDelivery = None
+
+    @property
+    def BatchTimeout(self):
+        return self._BatchTimeout
+
+    @BatchTimeout.setter
+    def BatchTimeout(self, BatchTimeout):
+        self._BatchTimeout = BatchTimeout
+
+    @property
+    def BatchEventCount(self):
+        return self._BatchEventCount
+
+    @BatchEventCount.setter
+    def BatchEventCount(self, BatchEventCount):
+        self._BatchEventCount = BatchEventCount
+
+    @property
+    def EnableBatchDelivery(self):
+        return self._EnableBatchDelivery
+
+    @EnableBatchDelivery.setter
+    def EnableBatchDelivery(self, EnableBatchDelivery):
+        self._EnableBatchDelivery = EnableBatchDelivery
 
 
     def _deserialize(self, params):
-        self.BatchTimeout = params.get("BatchTimeout")
-        self.BatchEventCount = params.get("BatchEventCount")
-        self.EnableBatchDelivery = params.get("EnableBatchDelivery")
+        self._BatchTimeout = params.get("BatchTimeout")
+        self._BatchEventCount = params.get("BatchEventCount")
+        self._EnableBatchDelivery = params.get("EnableBatchDelivery")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1809,51 +3308,116 @@ class Target(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: Target type
+        :param _Type: Target type
         :type Type: str
-        :param EventBusId: Event bus ID
+        :param _EventBusId: Event bus ID
         :type EventBusId: str
-        :param TargetId: Target ID
+        :param _TargetId: Target ID
         :type TargetId: str
-        :param TargetDescription: Target description
+        :param _TargetDescription: Target description
         :type TargetDescription: :class:`tencentcloud.eb.v20210416.models.TargetDescription`
-        :param RuleId: Event rule ID
+        :param _RuleId: Event rule ID
         :type RuleId: str
-        :param EnableBatchDelivery: Enables batch delivery
+        :param _EnableBatchDelivery: Enables batch delivery
 Note: this field may return null, indicating that no valid values can be obtained.
         :type EnableBatchDelivery: bool
-        :param BatchTimeout: Maximum waiting time for batch delivery
+        :param _BatchTimeout: Maximum waiting time for batch delivery
 Note: this field may return null, indicating that no valid values can be obtained.
         :type BatchTimeout: int
-        :param BatchEventCount: Maximum number of events in batch delivery
+        :param _BatchEventCount: Maximum number of events in batch delivery
 Note: this field may return null, indicating that no valid values can be obtained.
         :type BatchEventCount: int
         """
-        self.Type = None
-        self.EventBusId = None
-        self.TargetId = None
-        self.TargetDescription = None
-        self.RuleId = None
-        self.EnableBatchDelivery = None
-        self.BatchTimeout = None
-        self.BatchEventCount = None
+        self._Type = None
+        self._EventBusId = None
+        self._TargetId = None
+        self._TargetDescription = None
+        self._RuleId = None
+        self._EnableBatchDelivery = None
+        self._BatchTimeout = None
+        self._BatchEventCount = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def EventBusId(self):
+        return self._EventBusId
+
+    @EventBusId.setter
+    def EventBusId(self, EventBusId):
+        self._EventBusId = EventBusId
+
+    @property
+    def TargetId(self):
+        return self._TargetId
+
+    @TargetId.setter
+    def TargetId(self, TargetId):
+        self._TargetId = TargetId
+
+    @property
+    def TargetDescription(self):
+        return self._TargetDescription
+
+    @TargetDescription.setter
+    def TargetDescription(self, TargetDescription):
+        self._TargetDescription = TargetDescription
+
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def EnableBatchDelivery(self):
+        return self._EnableBatchDelivery
+
+    @EnableBatchDelivery.setter
+    def EnableBatchDelivery(self, EnableBatchDelivery):
+        self._EnableBatchDelivery = EnableBatchDelivery
+
+    @property
+    def BatchTimeout(self):
+        return self._BatchTimeout
+
+    @BatchTimeout.setter
+    def BatchTimeout(self, BatchTimeout):
+        self._BatchTimeout = BatchTimeout
+
+    @property
+    def BatchEventCount(self):
+        return self._BatchEventCount
+
+    @BatchEventCount.setter
+    def BatchEventCount(self, BatchEventCount):
+        self._BatchEventCount = BatchEventCount
 
 
     def _deserialize(self, params):
-        self.Type = params.get("Type")
-        self.EventBusId = params.get("EventBusId")
-        self.TargetId = params.get("TargetId")
+        self._Type = params.get("Type")
+        self._EventBusId = params.get("EventBusId")
+        self._TargetId = params.get("TargetId")
         if params.get("TargetDescription") is not None:
-            self.TargetDescription = TargetDescription()
-            self.TargetDescription._deserialize(params.get("TargetDescription"))
-        self.RuleId = params.get("RuleId")
-        self.EnableBatchDelivery = params.get("EnableBatchDelivery")
-        self.BatchTimeout = params.get("BatchTimeout")
-        self.BatchEventCount = params.get("BatchEventCount")
+            self._TargetDescription = TargetDescription()
+            self._TargetDescription._deserialize(params.get("TargetDescription"))
+        self._RuleId = params.get("RuleId")
+        self._EnableBatchDelivery = params.get("EnableBatchDelivery")
+        self._BatchTimeout = params.get("BatchTimeout")
+        self._BatchEventCount = params.get("BatchEventCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1866,22 +3430,39 @@ class TargetBrief(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TargetId: Target ID
+        :param _TargetId: Target ID
         :type TargetId: str
-        :param Type: Target type
+        :param _Type: Target type
         :type Type: str
         """
-        self.TargetId = None
-        self.Type = None
+        self._TargetId = None
+        self._Type = None
+
+    @property
+    def TargetId(self):
+        return self._TargetId
+
+    @TargetId.setter
+    def TargetId(self, TargetId):
+        self._TargetId = TargetId
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
 
 
     def _deserialize(self, params):
-        self.TargetId = params.get("TargetId")
-        self.Type = params.get("Type")
+        self._TargetId = params.get("TargetId")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1894,36 +3475,69 @@ class TargetDescription(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceDescription: Six-Segment QCS resource description. For more information, see [Resource Description Method](https://intl.cloud.tencent.com/document/product/598/10606?from_cn_redirect=1)
+        :param _ResourceDescription: Six-Segment QCS resource description. For more information, see [Resource Description Method](https://intl.cloud.tencent.com/document/product/598/10606?from_cn_redirect=1)
         :type ResourceDescription: str
-        :param SCFParams: SCF parameter
+        :param _SCFParams: SCF parameter
         :type SCFParams: :class:`tencentcloud.eb.v20210416.models.SCFParams`
-        :param CkafkaTargetParams: CKafka parameters
+        :param _CkafkaTargetParams: CKafka parameters
         :type CkafkaTargetParams: :class:`tencentcloud.eb.v20210416.models.CkafkaTargetParams`
-        :param ESTargetParams: ElasticSearch parameters
+        :param _ESTargetParams: ElasticSearch parameters
         :type ESTargetParams: :class:`tencentcloud.eb.v20210416.models.ESTargetParams`
         """
-        self.ResourceDescription = None
-        self.SCFParams = None
-        self.CkafkaTargetParams = None
-        self.ESTargetParams = None
+        self._ResourceDescription = None
+        self._SCFParams = None
+        self._CkafkaTargetParams = None
+        self._ESTargetParams = None
+
+    @property
+    def ResourceDescription(self):
+        return self._ResourceDescription
+
+    @ResourceDescription.setter
+    def ResourceDescription(self, ResourceDescription):
+        self._ResourceDescription = ResourceDescription
+
+    @property
+    def SCFParams(self):
+        return self._SCFParams
+
+    @SCFParams.setter
+    def SCFParams(self, SCFParams):
+        self._SCFParams = SCFParams
+
+    @property
+    def CkafkaTargetParams(self):
+        return self._CkafkaTargetParams
+
+    @CkafkaTargetParams.setter
+    def CkafkaTargetParams(self, CkafkaTargetParams):
+        self._CkafkaTargetParams = CkafkaTargetParams
+
+    @property
+    def ESTargetParams(self):
+        return self._ESTargetParams
+
+    @ESTargetParams.setter
+    def ESTargetParams(self, ESTargetParams):
+        self._ESTargetParams = ESTargetParams
 
 
     def _deserialize(self, params):
-        self.ResourceDescription = params.get("ResourceDescription")
+        self._ResourceDescription = params.get("ResourceDescription")
         if params.get("SCFParams") is not None:
-            self.SCFParams = SCFParams()
-            self.SCFParams._deserialize(params.get("SCFParams"))
+            self._SCFParams = SCFParams()
+            self._SCFParams._deserialize(params.get("SCFParams"))
         if params.get("CkafkaTargetParams") is not None:
-            self.CkafkaTargetParams = CkafkaTargetParams()
-            self.CkafkaTargetParams._deserialize(params.get("CkafkaTargetParams"))
+            self._CkafkaTargetParams = CkafkaTargetParams()
+            self._CkafkaTargetParams._deserialize(params.get("CkafkaTargetParams"))
         if params.get("ESTargetParams") is not None:
-            self.ESTargetParams = ESTargetParams()
-            self.ESTargetParams._deserialize(params.get("ESTargetParams"))
+            self._ESTargetParams = ESTargetParams()
+            self._ESTargetParams._deserialize(params.get("ESTargetParams"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1936,24 +3550,41 @@ class TextParams(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Separator: Comma, | , tab, space, line break, %, or #, which can contain only 1 character.
+        :param _Separator: Comma, | , tab, space, line break, %, or #, which can contain only 1 character.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Separator: str
-        :param Regex: Entered regex (128 characters)
+        :param _Regex: Entered regex (128 characters)
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Regex: str
         """
-        self.Separator = None
-        self.Regex = None
+        self._Separator = None
+        self._Regex = None
+
+    @property
+    def Separator(self):
+        return self._Separator
+
+    @Separator.setter
+    def Separator(self, Separator):
+        self._Separator = Separator
+
+    @property
+    def Regex(self):
+        return self._Regex
+
+    @Regex.setter
+    def Regex(self, Regex):
+        self._Regex = Regex
 
 
     def _deserialize(self, params):
-        self.Separator = params.get("Separator")
-        self.Regex = params.get("Regex")
+        self._Separator = params.get("Separator")
+        self._Regex = params.get("Regex")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1966,23 +3597,32 @@ class Transform(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OutputStructs: Describes how to transform data
+        :param _OutputStructs: Describes how to transform data
         :type OutputStructs: list of OutputStructParam
         """
-        self.OutputStructs = None
+        self._OutputStructs = None
+
+    @property
+    def OutputStructs(self):
+        return self._OutputStructs
+
+    @OutputStructs.setter
+    def OutputStructs(self, OutputStructs):
+        self._OutputStructs = OutputStructs
 
 
     def _deserialize(self, params):
         if params.get("OutputStructs") is not None:
-            self.OutputStructs = []
+            self._OutputStructs = []
             for item in params.get("OutputStructs"):
                 obj = OutputStructParam()
                 obj._deserialize(item)
-                self.OutputStructs.append(obj)
+                self._OutputStructs.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1995,35 +3635,60 @@ class Transformation(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Extraction: Describes how to extract data
+        :param _Extraction: Describes how to extract data
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Extraction: :class:`tencentcloud.eb.v20210416.models.Extraction`
-        :param EtlFilter: Describes how to filter data
+        :param _EtlFilter: Describes how to filter data
 Note: this field may return null, indicating that no valid values can be obtained.
         :type EtlFilter: :class:`tencentcloud.eb.v20210416.models.EtlFilter`
-        :param Transform: Describes how to transform data
+        :param _Transform: Describes how to transform data
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Transform: :class:`tencentcloud.eb.v20210416.models.Transform`
         """
-        self.Extraction = None
-        self.EtlFilter = None
-        self.Transform = None
+        self._Extraction = None
+        self._EtlFilter = None
+        self._Transform = None
+
+    @property
+    def Extraction(self):
+        return self._Extraction
+
+    @Extraction.setter
+    def Extraction(self, Extraction):
+        self._Extraction = Extraction
+
+    @property
+    def EtlFilter(self):
+        return self._EtlFilter
+
+    @EtlFilter.setter
+    def EtlFilter(self, EtlFilter):
+        self._EtlFilter = EtlFilter
+
+    @property
+    def Transform(self):
+        return self._Transform
+
+    @Transform.setter
+    def Transform(self, Transform):
+        self._Transform = Transform
 
 
     def _deserialize(self, params):
         if params.get("Extraction") is not None:
-            self.Extraction = Extraction()
-            self.Extraction._deserialize(params.get("Extraction"))
+            self._Extraction = Extraction()
+            self._Extraction._deserialize(params.get("Extraction"))
         if params.get("EtlFilter") is not None:
-            self.EtlFilter = EtlFilter()
-            self.EtlFilter._deserialize(params.get("EtlFilter"))
+            self._EtlFilter = EtlFilter()
+            self._EtlFilter._deserialize(params.get("EtlFilter"))
         if params.get("Transform") is not None:
-            self.Transform = Transform()
-            self.Transform._deserialize(params.get("Transform"))
+            self._Transform = Transform()
+            self._Transform._deserialize(params.get("Transform"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2036,34 +3701,75 @@ class UpdateConnectionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ConnectionId: Connector ID
+        :param _ConnectionId: Connector ID
         :type ConnectionId: str
-        :param EventBusId: Event bus ID
+        :param _EventBusId: Event bus ID
         :type EventBusId: str
-        :param Enable: Switch
+        :param _Enable: Switch
         :type Enable: bool
-        :param Description: Description
+        :param _Description: Description
         :type Description: str
-        :param ConnectionName: Connector name
+        :param _ConnectionName: Connector name
         :type ConnectionName: str
         """
-        self.ConnectionId = None
-        self.EventBusId = None
-        self.Enable = None
-        self.Description = None
-        self.ConnectionName = None
+        self._ConnectionId = None
+        self._EventBusId = None
+        self._Enable = None
+        self._Description = None
+        self._ConnectionName = None
+
+    @property
+    def ConnectionId(self):
+        return self._ConnectionId
+
+    @ConnectionId.setter
+    def ConnectionId(self, ConnectionId):
+        self._ConnectionId = ConnectionId
+
+    @property
+    def EventBusId(self):
+        return self._EventBusId
+
+    @EventBusId.setter
+    def EventBusId(self, EventBusId):
+        self._EventBusId = EventBusId
+
+    @property
+    def Enable(self):
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ConnectionName(self):
+        return self._ConnectionName
+
+    @ConnectionName.setter
+    def ConnectionName(self, ConnectionName):
+        self._ConnectionName = ConnectionName
 
 
     def _deserialize(self, params):
-        self.ConnectionId = params.get("ConnectionId")
-        self.EventBusId = params.get("EventBusId")
-        self.Enable = params.get("Enable")
-        self.Description = params.get("Description")
-        self.ConnectionName = params.get("ConnectionName")
+        self._ConnectionId = params.get("ConnectionId")
+        self._EventBusId = params.get("EventBusId")
+        self._Enable = params.get("Enable")
+        self._Description = params.get("Description")
+        self._ConnectionName = params.get("ConnectionName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2076,14 +3782,22 @@ class UpdateConnectionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateEventBusRequest(AbstractModel):
@@ -2093,38 +3807,87 @@ class UpdateEventBusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EventBusId: Event bus ID
+        :param _EventBusId: Event bus ID
         :type EventBusId: str
-        :param Description: Event bus description, which can contain up to 200 characters of any type.
+        :param _Description: Event bus description, which can contain up to 200 characters of any type.
         :type Description: str
-        :param EventBusName: Event bus name: it can contain 2-60 letters, digits, underscores, and hyphens and must start with a letter and end with a digit or letter.
+        :param _EventBusName: Event bus name: it can contain 2-60 letters, digits, underscores, and hyphens and must start with a letter and end with a digit or letter.
         :type EventBusName: str
-        :param SaveDays: Log retention period
+        :param _SaveDays: Log retention period
         :type SaveDays: int
-        :param LogTopicId: EventBridge log topic ID
+        :param _LogTopicId: EventBridge log topic ID
         :type LogTopicId: str
-        :param EnableStore: Whether to enable log retention
+        :param _EnableStore: Whether to enable log retention
         :type EnableStore: bool
         """
-        self.EventBusId = None
-        self.Description = None
-        self.EventBusName = None
-        self.SaveDays = None
-        self.LogTopicId = None
-        self.EnableStore = None
+        self._EventBusId = None
+        self._Description = None
+        self._EventBusName = None
+        self._SaveDays = None
+        self._LogTopicId = None
+        self._EnableStore = None
+
+    @property
+    def EventBusId(self):
+        return self._EventBusId
+
+    @EventBusId.setter
+    def EventBusId(self, EventBusId):
+        self._EventBusId = EventBusId
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def EventBusName(self):
+        return self._EventBusName
+
+    @EventBusName.setter
+    def EventBusName(self, EventBusName):
+        self._EventBusName = EventBusName
+
+    @property
+    def SaveDays(self):
+        return self._SaveDays
+
+    @SaveDays.setter
+    def SaveDays(self, SaveDays):
+        self._SaveDays = SaveDays
+
+    @property
+    def LogTopicId(self):
+        return self._LogTopicId
+
+    @LogTopicId.setter
+    def LogTopicId(self, LogTopicId):
+        self._LogTopicId = LogTopicId
+
+    @property
+    def EnableStore(self):
+        return self._EnableStore
+
+    @EnableStore.setter
+    def EnableStore(self, EnableStore):
+        self._EnableStore = EnableStore
 
 
     def _deserialize(self, params):
-        self.EventBusId = params.get("EventBusId")
-        self.Description = params.get("Description")
-        self.EventBusName = params.get("EventBusName")
-        self.SaveDays = params.get("SaveDays")
-        self.LogTopicId = params.get("LogTopicId")
-        self.EnableStore = params.get("EnableStore")
+        self._EventBusId = params.get("EventBusId")
+        self._Description = params.get("Description")
+        self._EventBusName = params.get("EventBusName")
+        self._SaveDays = params.get("SaveDays")
+        self._LogTopicId = params.get("LogTopicId")
+        self._EnableStore = params.get("EnableStore")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2137,14 +3900,22 @@ class UpdateEventBusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateRuleRequest(AbstractModel):
@@ -2154,38 +3925,87 @@ class UpdateRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RuleId: Event rule ID
+        :param _RuleId: Event rule ID
         :type RuleId: str
-        :param EventBusId: Event bus ID
+        :param _EventBusId: Event bus ID
         :type EventBusId: str
-        :param Enable: Switch.
+        :param _Enable: Switch.
         :type Enable: bool
-        :param Description: Rule description, which can contain up to 200 characters of any type.
+        :param _Description: Rule description, which can contain up to 200 characters of any type.
         :type Description: str
-        :param EventPattern: See [CKafka Target](https://intl.cloud.tencent.com/document/product/1359/56084?from_cn_redirect=1)
+        :param _EventPattern: See [CKafka Target](https://intl.cloud.tencent.com/document/product/1359/56084?from_cn_redirect=1)
         :type EventPattern: str
-        :param RuleName: Event rule name, which can contain 2–60 letters, digits, underscores, and hyphens and must start with a letter and end with a digit or letter
+        :param _RuleName: Event rule name, which can contain 2–60 letters, digits, underscores, and hyphens and must start with a letter and end with a digit or letter
         :type RuleName: str
         """
-        self.RuleId = None
-        self.EventBusId = None
-        self.Enable = None
-        self.Description = None
-        self.EventPattern = None
-        self.RuleName = None
+        self._RuleId = None
+        self._EventBusId = None
+        self._Enable = None
+        self._Description = None
+        self._EventPattern = None
+        self._RuleName = None
+
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def EventBusId(self):
+        return self._EventBusId
+
+    @EventBusId.setter
+    def EventBusId(self, EventBusId):
+        self._EventBusId = EventBusId
+
+    @property
+    def Enable(self):
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def EventPattern(self):
+        return self._EventPattern
+
+    @EventPattern.setter
+    def EventPattern(self, EventPattern):
+        self._EventPattern = EventPattern
+
+    @property
+    def RuleName(self):
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
 
 
     def _deserialize(self, params):
-        self.RuleId = params.get("RuleId")
-        self.EventBusId = params.get("EventBusId")
-        self.Enable = params.get("Enable")
-        self.Description = params.get("Description")
-        self.EventPattern = params.get("EventPattern")
-        self.RuleName = params.get("RuleName")
+        self._RuleId = params.get("RuleId")
+        self._EventBusId = params.get("EventBusId")
+        self._Enable = params.get("Enable")
+        self._Description = params.get("Description")
+        self._EventPattern = params.get("EventPattern")
+        self._RuleName = params.get("RuleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2198,14 +4018,22 @@ class UpdateRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateTargetRequest(AbstractModel):
@@ -2215,38 +4043,87 @@ class UpdateTargetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EventBusId: Event bus ID
+        :param _EventBusId: Event bus ID
         :type EventBusId: str
-        :param RuleId: Event rule ID
+        :param _RuleId: Event rule ID
         :type RuleId: str
-        :param TargetId: Delivery target ID
+        :param _TargetId: Delivery target ID
         :type TargetId: str
-        :param EnableBatchDelivery: Enables batch delivery
+        :param _EnableBatchDelivery: Enables batch delivery
         :type EnableBatchDelivery: bool
-        :param BatchTimeout: Maximum waiting time for batch delivery
+        :param _BatchTimeout: Maximum waiting time for batch delivery
         :type BatchTimeout: int
-        :param BatchEventCount: Maximum number of events in batch delivery
+        :param _BatchEventCount: Maximum number of events in batch delivery
         :type BatchEventCount: int
         """
-        self.EventBusId = None
-        self.RuleId = None
-        self.TargetId = None
-        self.EnableBatchDelivery = None
-        self.BatchTimeout = None
-        self.BatchEventCount = None
+        self._EventBusId = None
+        self._RuleId = None
+        self._TargetId = None
+        self._EnableBatchDelivery = None
+        self._BatchTimeout = None
+        self._BatchEventCount = None
+
+    @property
+    def EventBusId(self):
+        return self._EventBusId
+
+    @EventBusId.setter
+    def EventBusId(self, EventBusId):
+        self._EventBusId = EventBusId
+
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def TargetId(self):
+        return self._TargetId
+
+    @TargetId.setter
+    def TargetId(self, TargetId):
+        self._TargetId = TargetId
+
+    @property
+    def EnableBatchDelivery(self):
+        return self._EnableBatchDelivery
+
+    @EnableBatchDelivery.setter
+    def EnableBatchDelivery(self, EnableBatchDelivery):
+        self._EnableBatchDelivery = EnableBatchDelivery
+
+    @property
+    def BatchTimeout(self):
+        return self._BatchTimeout
+
+    @BatchTimeout.setter
+    def BatchTimeout(self, BatchTimeout):
+        self._BatchTimeout = BatchTimeout
+
+    @property
+    def BatchEventCount(self):
+        return self._BatchEventCount
+
+    @BatchEventCount.setter
+    def BatchEventCount(self, BatchEventCount):
+        self._BatchEventCount = BatchEventCount
 
 
     def _deserialize(self, params):
-        self.EventBusId = params.get("EventBusId")
-        self.RuleId = params.get("RuleId")
-        self.TargetId = params.get("TargetId")
-        self.EnableBatchDelivery = params.get("EnableBatchDelivery")
-        self.BatchTimeout = params.get("BatchTimeout")
-        self.BatchEventCount = params.get("BatchEventCount")
+        self._EventBusId = params.get("EventBusId")
+        self._RuleId = params.get("RuleId")
+        self._TargetId = params.get("TargetId")
+        self._EnableBatchDelivery = params.get("EnableBatchDelivery")
+        self._BatchTimeout = params.get("BatchTimeout")
+        self._BatchEventCount = params.get("BatchEventCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2259,14 +4136,22 @@ class UpdateTargetResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateTransformationRequest(AbstractModel):
@@ -2276,35 +4161,68 @@ class UpdateTransformationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EventBusId: Event bus ID
+        :param _EventBusId: Event bus ID
         :type EventBusId: str
-        :param RuleId: Rule ID
+        :param _RuleId: Rule ID
         :type RuleId: str
-        :param TransformationId: Transformer ID
+        :param _TransformationId: Transformer ID
         :type TransformationId: str
-        :param Transformations: Transformation rule list (currently, only one is supported)
+        :param _Transformations: Transformation rule list (currently, only one is supported)
         :type Transformations: list of Transformation
         """
-        self.EventBusId = None
-        self.RuleId = None
-        self.TransformationId = None
-        self.Transformations = None
+        self._EventBusId = None
+        self._RuleId = None
+        self._TransformationId = None
+        self._Transformations = None
+
+    @property
+    def EventBusId(self):
+        return self._EventBusId
+
+    @EventBusId.setter
+    def EventBusId(self, EventBusId):
+        self._EventBusId = EventBusId
+
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def TransformationId(self):
+        return self._TransformationId
+
+    @TransformationId.setter
+    def TransformationId(self, TransformationId):
+        self._TransformationId = TransformationId
+
+    @property
+    def Transformations(self):
+        return self._Transformations
+
+    @Transformations.setter
+    def Transformations(self, Transformations):
+        self._Transformations = Transformations
 
 
     def _deserialize(self, params):
-        self.EventBusId = params.get("EventBusId")
-        self.RuleId = params.get("RuleId")
-        self.TransformationId = params.get("TransformationId")
+        self._EventBusId = params.get("EventBusId")
+        self._RuleId = params.get("RuleId")
+        self._TransformationId = params.get("TransformationId")
         if params.get("Transformations") is not None:
-            self.Transformations = []
+            self._Transformations = []
             for item in params.get("Transformations"):
                 obj = Transformation()
                 obj._deserialize(item)
-                self.Transformations.append(obj)
+                self._Transformations.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2317,11 +4235,19 @@ class UpdateTransformationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")

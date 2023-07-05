@@ -25,18 +25,27 @@ class AcceptDirectConnectTunnelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DirectConnectTunnelId: The connection owner accepts an application for sharing the dedicated tunnel
+        :param _DirectConnectTunnelId: The connection owner accepts an application for sharing the dedicated tunnel
         :type DirectConnectTunnelId: str
         """
-        self.DirectConnectTunnelId = None
+        self._DirectConnectTunnelId = None
+
+    @property
+    def DirectConnectTunnelId(self):
+        return self._DirectConnectTunnelId
+
+    @DirectConnectTunnelId.setter
+    def DirectConnectTunnelId(self, DirectConnectTunnelId):
+        self._DirectConnectTunnelId = DirectConnectTunnelId
 
 
     def _deserialize(self, params):
-        self.DirectConnectTunnelId = params.get("DirectConnectTunnelId")
+        self._DirectConnectTunnelId = params.get("DirectConnectTunnelId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -49,14 +58,22 @@ class AcceptDirectConnectTunnelResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class AccessPoint(AbstractModel):
@@ -66,65 +83,154 @@ class AccessPoint(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AccessPointName: Access point name.
+        :param _AccessPointName: Access point name.
         :type AccessPointName: str
-        :param AccessPointId: Unique access point ID.
+        :param _AccessPointId: Unique access point ID.
         :type AccessPointId: str
-        :param State: Access point status. Valid values: available, unavailable.
+        :param _State: Access point status. Valid values: available, unavailable.
         :type State: str
-        :param Location: Access point location.
+        :param _Location: Access point location.
         :type Location: str
-        :param LineOperator: List of ISPs supported by access point.
+        :param _LineOperator: List of ISPs supported by access point.
         :type LineOperator: list of str
-        :param RegionId: ID of the region that manages the access point.
+        :param _RegionId: ID of the region that manages the access point.
         :type RegionId: str
-        :param AvailablePortType: Available port type at the access point. Valid values: 1000BASE-T: gigabit electrical port; 1000BASE-LX: 10 km gigabit single-mode optical port; 1000BASE-ZX: 80 km gigabit single-mode optical port; 10GBASE-LR: 10 km 10-gigabit single-mode optical port; 10GBASE-ZR: 80 km 10-gigabit single-mode optical port; 10GBASE-LH: 40 km 10-gigabit single-mode optical port; 100GBASE-LR4: 10 km 100-gigabit single-mode optical portfiber optic port.
+        :param _AvailablePortType: Available port type at the access point. Valid values: 1000BASE-T: gigabit electrical port; 1000BASE-LX: 10 km gigabit single-mode optical port; 1000BASE-ZX: 80 km gigabit single-mode optical port; 10GBASE-LR: 10 km 10-gigabit single-mode optical port; 10GBASE-ZR: 80 km 10-gigabit single-mode optical port; 10GBASE-LH: 40 km 10-gigabit single-mode optical port; 100GBASE-LR4: 10 km 100-gigabit single-mode optical portfiber optic port.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type AvailablePortType: list of str
-        :param Coordinate: Latitude and longitude of the access point
+        :param _Coordinate: Latitude and longitude of the access point
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Coordinate: :class:`tencentcloud.dc.v20180410.models.Coordinate`
-        :param City: City where the access point is located
+        :param _City: City where the access point is located
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type City: str
-        :param Area: Access point region
+        :param _Area: Access point region
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Area: str
-        :param AccessPointType: Access point type. Valid values: `VXLAN`, `QCPL`, and `QCAR`.
+        :param _AccessPointType: Access point type. Valid values: `VXLAN`, `QCPL`, and `QCAR`.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type AccessPointType: str
         """
-        self.AccessPointName = None
-        self.AccessPointId = None
-        self.State = None
-        self.Location = None
-        self.LineOperator = None
-        self.RegionId = None
-        self.AvailablePortType = None
-        self.Coordinate = None
-        self.City = None
-        self.Area = None
-        self.AccessPointType = None
+        self._AccessPointName = None
+        self._AccessPointId = None
+        self._State = None
+        self._Location = None
+        self._LineOperator = None
+        self._RegionId = None
+        self._AvailablePortType = None
+        self._Coordinate = None
+        self._City = None
+        self._Area = None
+        self._AccessPointType = None
+
+    @property
+    def AccessPointName(self):
+        return self._AccessPointName
+
+    @AccessPointName.setter
+    def AccessPointName(self, AccessPointName):
+        self._AccessPointName = AccessPointName
+
+    @property
+    def AccessPointId(self):
+        return self._AccessPointId
+
+    @AccessPointId.setter
+    def AccessPointId(self, AccessPointId):
+        self._AccessPointId = AccessPointId
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def Location(self):
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+    @property
+    def LineOperator(self):
+        return self._LineOperator
+
+    @LineOperator.setter
+    def LineOperator(self, LineOperator):
+        self._LineOperator = LineOperator
+
+    @property
+    def RegionId(self):
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def AvailablePortType(self):
+        return self._AvailablePortType
+
+    @AvailablePortType.setter
+    def AvailablePortType(self, AvailablePortType):
+        self._AvailablePortType = AvailablePortType
+
+    @property
+    def Coordinate(self):
+        return self._Coordinate
+
+    @Coordinate.setter
+    def Coordinate(self, Coordinate):
+        self._Coordinate = Coordinate
+
+    @property
+    def City(self):
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+    @property
+    def Area(self):
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def AccessPointType(self):
+        return self._AccessPointType
+
+    @AccessPointType.setter
+    def AccessPointType(self, AccessPointType):
+        self._AccessPointType = AccessPointType
 
 
     def _deserialize(self, params):
-        self.AccessPointName = params.get("AccessPointName")
-        self.AccessPointId = params.get("AccessPointId")
-        self.State = params.get("State")
-        self.Location = params.get("Location")
-        self.LineOperator = params.get("LineOperator")
-        self.RegionId = params.get("RegionId")
-        self.AvailablePortType = params.get("AvailablePortType")
+        self._AccessPointName = params.get("AccessPointName")
+        self._AccessPointId = params.get("AccessPointId")
+        self._State = params.get("State")
+        self._Location = params.get("Location")
+        self._LineOperator = params.get("LineOperator")
+        self._RegionId = params.get("RegionId")
+        self._AvailablePortType = params.get("AvailablePortType")
         if params.get("Coordinate") is not None:
-            self.Coordinate = Coordinate()
-            self.Coordinate._deserialize(params.get("Coordinate"))
-        self.City = params.get("City")
-        self.Area = params.get("Area")
-        self.AccessPointType = params.get("AccessPointType")
+            self._Coordinate = Coordinate()
+            self._Coordinate._deserialize(params.get("Coordinate"))
+        self._City = params.get("City")
+        self._Area = params.get("Area")
+        self._AccessPointType = params.get("AccessPointType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -137,30 +243,55 @@ class ApplyInternetAddressRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MaskLen: Mask length of a CIDR block
+        :param _MaskLen: Mask length of a CIDR block
         :type MaskLen: int
-        :param AddrType: Address type. Valid values: 0: BGP
+        :param _AddrType: Address type. Valid values: 0: BGP
 1: China Telecom
 2: China Mobile
 3: China Unicom
         :type AddrType: int
-        :param AddrProto: Address protocol. Valid values: 0: IPv4
+        :param _AddrProto: Address protocol. Valid values: 0: IPv4
 1: IPv6
         :type AddrProto: int
         """
-        self.MaskLen = None
-        self.AddrType = None
-        self.AddrProto = None
+        self._MaskLen = None
+        self._AddrType = None
+        self._AddrProto = None
+
+    @property
+    def MaskLen(self):
+        return self._MaskLen
+
+    @MaskLen.setter
+    def MaskLen(self, MaskLen):
+        self._MaskLen = MaskLen
+
+    @property
+    def AddrType(self):
+        return self._AddrType
+
+    @AddrType.setter
+    def AddrType(self, AddrType):
+        self._AddrType = AddrType
+
+    @property
+    def AddrProto(self):
+        return self._AddrProto
+
+    @AddrProto.setter
+    def AddrProto(self, AddrProto):
+        self._AddrProto = AddrProto
 
 
     def _deserialize(self, params):
-        self.MaskLen = params.get("MaskLen")
-        self.AddrType = params.get("AddrType")
-        self.AddrProto = params.get("AddrProto")
+        self._MaskLen = params.get("MaskLen")
+        self._AddrType = params.get("AddrType")
+        self._AddrProto = params.get("AddrProto")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -173,19 +304,35 @@ class ApplyInternetAddressResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: ID of the internet tunnel’s public IP address
+        :param _InstanceId: ID of the internet tunnel’s public IP address
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type InstanceId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.InstanceId = None
-        self.RequestId = None
+        self._InstanceId = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.RequestId = params.get("RequestId")
+        self._InstanceId = params.get("InstanceId")
+        self._RequestId = params.get("RequestId")
 
 
 class BFDInfo(AbstractModel):
@@ -195,22 +342,39 @@ class BFDInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProbeFailedTimes: Number of health checks
+        :param _ProbeFailedTimes: Number of health checks
         :type ProbeFailedTimes: int
-        :param Interval: Health check interval
+        :param _Interval: Health check interval
         :type Interval: int
         """
-        self.ProbeFailedTimes = None
-        self.Interval = None
+        self._ProbeFailedTimes = None
+        self._Interval = None
+
+    @property
+    def ProbeFailedTimes(self):
+        return self._ProbeFailedTimes
+
+    @ProbeFailedTimes.setter
+    def ProbeFailedTimes(self, ProbeFailedTimes):
+        self._ProbeFailedTimes = ProbeFailedTimes
+
+    @property
+    def Interval(self):
+        return self._Interval
+
+    @Interval.setter
+    def Interval(self, Interval):
+        self._Interval = Interval
 
 
     def _deserialize(self, params):
-        self.ProbeFailedTimes = params.get("ProbeFailedTimes")
-        self.Interval = params.get("Interval")
+        self._ProbeFailedTimes = params.get("ProbeFailedTimes")
+        self._Interval = params.get("Interval")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -223,22 +387,39 @@ class BgpPeer(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Asn: User-side BGP Asn.
+        :param _Asn: User-side BGP Asn.
         :type Asn: int
-        :param AuthKey: User-side BGP key.
+        :param _AuthKey: User-side BGP key.
         :type AuthKey: str
         """
-        self.Asn = None
-        self.AuthKey = None
+        self._Asn = None
+        self._AuthKey = None
+
+    @property
+    def Asn(self):
+        return self._Asn
+
+    @Asn.setter
+    def Asn(self, Asn):
+        self._Asn = Asn
+
+    @property
+    def AuthKey(self):
+        return self._AuthKey
+
+    @AuthKey.setter
+    def AuthKey(self, AuthKey):
+        self._AuthKey = AuthKey
 
 
     def _deserialize(self, params):
-        self.Asn = params.get("Asn")
-        self.AuthKey = params.get("AuthKey")
+        self._Asn = params.get("Asn")
+        self._AuthKey = params.get("AuthKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -251,22 +432,39 @@ class Coordinate(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Lat: Latitude
+        :param _Lat: Latitude
         :type Lat: float
-        :param Lng: Longitude
+        :param _Lng: Longitude
         :type Lng: float
         """
-        self.Lat = None
-        self.Lng = None
+        self._Lat = None
+        self._Lng = None
+
+    @property
+    def Lat(self):
+        return self._Lat
+
+    @Lat.setter
+    def Lat(self, Lat):
+        self._Lat = Lat
+
+    @property
+    def Lng(self):
+        return self._Lng
+
+    @Lng.setter
+    def Lng(self, Lng):
+        self._Lng = Lng
 
 
     def _deserialize(self, params):
-        self.Lat = params.get("Lat")
-        self.Lng = params.get("Lng")
+        self._Lat = params.get("Lat")
+        self._Lng = params.get("Lng")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -279,83 +477,220 @@ class CreateDirectConnectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DirectConnectName: Connection name.
+        :param _DirectConnectName: Connection name.
         :type DirectConnectName: str
-        :param AccessPointId: Access point of connection.
+        :param _AccessPointId: Access point of connection.
 You can call `DescribeAccessPoints` to get the region ID. The selected access point must exist and be available.
         :type AccessPointId: str
-        :param LineOperator: ISP that provides connections. Valid values: ChinaTelecom (China Telecom), ChinaMobile (China Mobile), ChinaUnicom (China Unicom), In-houseWiring (in-house wiring), ChinaOther (other Chinese ISPs), InternationalOperator (international ISPs).
+        :param _LineOperator: ISP that provides connections. Valid values: ChinaTelecom (China Telecom), ChinaMobile (China Mobile), ChinaUnicom (China Unicom), In-houseWiring (in-house wiring), ChinaOther (other Chinese ISPs), InternationalOperator (international ISPs).
         :type LineOperator: str
-        :param PortType: Port type of connection. Valid values: 100Base-T (100-Megabit electrical Ethernet interface), 1000Base-T (1-Gigabit electrical Ethernet interface), 1000Base-LX (1-Gigabit single-module optical Ethernet interface; 10 KM), 10GBase-T (10-Gigabit electrical Ethernet interface), 10GBase-LR (10-Gigabit single-module optical Ethernet interface; 10 KM). Default value: 1000Base-LX.
+        :param _PortType: Port type of connection. Valid values: 100Base-T (100-Megabit electrical Ethernet interface), 1000Base-T (1-Gigabit electrical Ethernet interface), 1000Base-LX (1-Gigabit single-module optical Ethernet interface; 10 KM), 10GBase-T (10-Gigabit electrical Ethernet interface), 10GBase-LR (10-Gigabit single-module optical Ethernet interface; 10 KM). Default value: 1000Base-LX.
         :type PortType: str
-        :param CircuitCode: Circuit code of a connection, which is provided by the ISP or connection provider.
+        :param _CircuitCode: Circuit code of a connection, which is provided by the ISP or connection provider.
         :type CircuitCode: str
-        :param Location: Local IDC location.
+        :param _Location: Local IDC location.
         :type Location: str
-        :param Bandwidth: Connection port bandwidth in Mbps. Value range: [2,10240]. Default value: 1000.
+        :param _Bandwidth: Connection port bandwidth in Mbps. Value range: [2,10240]. Default value: 1000.
         :type Bandwidth: int
-        :param RedundantDirectConnectId: ID of redundant connection.
+        :param _RedundantDirectConnectId: ID of redundant connection.
         :type RedundantDirectConnectId: str
-        :param Vlan: VLAN for connection debugging, which is enabled and automatically assigned by default.
+        :param _Vlan: VLAN for connection debugging, which is enabled and automatically assigned by default.
         :type Vlan: int
-        :param TencentAddress: Tencent-side IP address for connection debugging, which is automatically assigned by default.
+        :param _TencentAddress: Tencent-side IP address for connection debugging, which is automatically assigned by default.
         :type TencentAddress: str
-        :param CustomerAddress: User-side IP address for connection debugging, which is automatically assigned by default.
+        :param _CustomerAddress: User-side IP address for connection debugging, which is automatically assigned by default.
         :type CustomerAddress: str
-        :param CustomerName: Name of connection applicant, which is obtained from the account system by default.
+        :param _CustomerName: Name of connection applicant, which is obtained from the account system by default.
         :type CustomerName: str
-        :param CustomerContactMail: Email address of connection applicant, which is obtained from the account system by default.
+        :param _CustomerContactMail: Email address of connection applicant, which is obtained from the account system by default.
         :type CustomerContactMail: str
-        :param CustomerContactNumber: Contact number of connection applicant, which is obtained from the account system by default.
+        :param _CustomerContactNumber: Contact number of connection applicant, which is obtained from the account system by default.
         :type CustomerContactNumber: str
-        :param FaultReportContactPerson: Fault reporting contact person.
+        :param _FaultReportContactPerson: Fault reporting contact person.
         :type FaultReportContactPerson: str
-        :param FaultReportContactNumber: Fault reporting contact number.
+        :param _FaultReportContactNumber: Fault reporting contact number.
         :type FaultReportContactNumber: str
-        :param SignLaw: Whether the connection applicant has signed the service agreement. Default value: true.
+        :param _SignLaw: Whether the connection applicant has signed the service agreement. Default value: true.
         :type SignLaw: bool
         """
-        self.DirectConnectName = None
-        self.AccessPointId = None
-        self.LineOperator = None
-        self.PortType = None
-        self.CircuitCode = None
-        self.Location = None
-        self.Bandwidth = None
-        self.RedundantDirectConnectId = None
-        self.Vlan = None
-        self.TencentAddress = None
-        self.CustomerAddress = None
-        self.CustomerName = None
-        self.CustomerContactMail = None
-        self.CustomerContactNumber = None
-        self.FaultReportContactPerson = None
-        self.FaultReportContactNumber = None
-        self.SignLaw = None
+        self._DirectConnectName = None
+        self._AccessPointId = None
+        self._LineOperator = None
+        self._PortType = None
+        self._CircuitCode = None
+        self._Location = None
+        self._Bandwidth = None
+        self._RedundantDirectConnectId = None
+        self._Vlan = None
+        self._TencentAddress = None
+        self._CustomerAddress = None
+        self._CustomerName = None
+        self._CustomerContactMail = None
+        self._CustomerContactNumber = None
+        self._FaultReportContactPerson = None
+        self._FaultReportContactNumber = None
+        self._SignLaw = None
+
+    @property
+    def DirectConnectName(self):
+        return self._DirectConnectName
+
+    @DirectConnectName.setter
+    def DirectConnectName(self, DirectConnectName):
+        self._DirectConnectName = DirectConnectName
+
+    @property
+    def AccessPointId(self):
+        return self._AccessPointId
+
+    @AccessPointId.setter
+    def AccessPointId(self, AccessPointId):
+        self._AccessPointId = AccessPointId
+
+    @property
+    def LineOperator(self):
+        return self._LineOperator
+
+    @LineOperator.setter
+    def LineOperator(self, LineOperator):
+        self._LineOperator = LineOperator
+
+    @property
+    def PortType(self):
+        return self._PortType
+
+    @PortType.setter
+    def PortType(self, PortType):
+        self._PortType = PortType
+
+    @property
+    def CircuitCode(self):
+        return self._CircuitCode
+
+    @CircuitCode.setter
+    def CircuitCode(self, CircuitCode):
+        self._CircuitCode = CircuitCode
+
+    @property
+    def Location(self):
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+    @property
+    def Bandwidth(self):
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
+
+    @property
+    def RedundantDirectConnectId(self):
+        return self._RedundantDirectConnectId
+
+    @RedundantDirectConnectId.setter
+    def RedundantDirectConnectId(self, RedundantDirectConnectId):
+        self._RedundantDirectConnectId = RedundantDirectConnectId
+
+    @property
+    def Vlan(self):
+        return self._Vlan
+
+    @Vlan.setter
+    def Vlan(self, Vlan):
+        self._Vlan = Vlan
+
+    @property
+    def TencentAddress(self):
+        return self._TencentAddress
+
+    @TencentAddress.setter
+    def TencentAddress(self, TencentAddress):
+        self._TencentAddress = TencentAddress
+
+    @property
+    def CustomerAddress(self):
+        return self._CustomerAddress
+
+    @CustomerAddress.setter
+    def CustomerAddress(self, CustomerAddress):
+        self._CustomerAddress = CustomerAddress
+
+    @property
+    def CustomerName(self):
+        return self._CustomerName
+
+    @CustomerName.setter
+    def CustomerName(self, CustomerName):
+        self._CustomerName = CustomerName
+
+    @property
+    def CustomerContactMail(self):
+        return self._CustomerContactMail
+
+    @CustomerContactMail.setter
+    def CustomerContactMail(self, CustomerContactMail):
+        self._CustomerContactMail = CustomerContactMail
+
+    @property
+    def CustomerContactNumber(self):
+        return self._CustomerContactNumber
+
+    @CustomerContactNumber.setter
+    def CustomerContactNumber(self, CustomerContactNumber):
+        self._CustomerContactNumber = CustomerContactNumber
+
+    @property
+    def FaultReportContactPerson(self):
+        return self._FaultReportContactPerson
+
+    @FaultReportContactPerson.setter
+    def FaultReportContactPerson(self, FaultReportContactPerson):
+        self._FaultReportContactPerson = FaultReportContactPerson
+
+    @property
+    def FaultReportContactNumber(self):
+        return self._FaultReportContactNumber
+
+    @FaultReportContactNumber.setter
+    def FaultReportContactNumber(self, FaultReportContactNumber):
+        self._FaultReportContactNumber = FaultReportContactNumber
+
+    @property
+    def SignLaw(self):
+        return self._SignLaw
+
+    @SignLaw.setter
+    def SignLaw(self, SignLaw):
+        self._SignLaw = SignLaw
 
 
     def _deserialize(self, params):
-        self.DirectConnectName = params.get("DirectConnectName")
-        self.AccessPointId = params.get("AccessPointId")
-        self.LineOperator = params.get("LineOperator")
-        self.PortType = params.get("PortType")
-        self.CircuitCode = params.get("CircuitCode")
-        self.Location = params.get("Location")
-        self.Bandwidth = params.get("Bandwidth")
-        self.RedundantDirectConnectId = params.get("RedundantDirectConnectId")
-        self.Vlan = params.get("Vlan")
-        self.TencentAddress = params.get("TencentAddress")
-        self.CustomerAddress = params.get("CustomerAddress")
-        self.CustomerName = params.get("CustomerName")
-        self.CustomerContactMail = params.get("CustomerContactMail")
-        self.CustomerContactNumber = params.get("CustomerContactNumber")
-        self.FaultReportContactPerson = params.get("FaultReportContactPerson")
-        self.FaultReportContactNumber = params.get("FaultReportContactNumber")
-        self.SignLaw = params.get("SignLaw")
+        self._DirectConnectName = params.get("DirectConnectName")
+        self._AccessPointId = params.get("AccessPointId")
+        self._LineOperator = params.get("LineOperator")
+        self._PortType = params.get("PortType")
+        self._CircuitCode = params.get("CircuitCode")
+        self._Location = params.get("Location")
+        self._Bandwidth = params.get("Bandwidth")
+        self._RedundantDirectConnectId = params.get("RedundantDirectConnectId")
+        self._Vlan = params.get("Vlan")
+        self._TencentAddress = params.get("TencentAddress")
+        self._CustomerAddress = params.get("CustomerAddress")
+        self._CustomerName = params.get("CustomerName")
+        self._CustomerContactMail = params.get("CustomerContactMail")
+        self._CustomerContactNumber = params.get("CustomerContactNumber")
+        self._FaultReportContactPerson = params.get("FaultReportContactPerson")
+        self._FaultReportContactNumber = params.get("FaultReportContactNumber")
+        self._SignLaw = params.get("SignLaw")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -368,18 +703,34 @@ class CreateDirectConnectResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DirectConnectIdSet: Connection ID.
+        :param _DirectConnectIdSet: Connection ID.
         :type DirectConnectIdSet: list of str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.DirectConnectIdSet = None
-        self.RequestId = None
+        self._DirectConnectIdSet = None
+        self._RequestId = None
+
+    @property
+    def DirectConnectIdSet(self):
+        return self._DirectConnectIdSet
+
+    @DirectConnectIdSet.setter
+    def DirectConnectIdSet(self, DirectConnectIdSet):
+        self._DirectConnectIdSet = DirectConnectIdSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.DirectConnectIdSet = params.get("DirectConnectIdSet")
-        self.RequestId = params.get("RequestId")
+        self._DirectConnectIdSet = params.get("DirectConnectIdSet")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateDirectConnectTunnelRequest(AbstractModel):
@@ -389,114 +740,275 @@ class CreateDirectConnectTunnelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DirectConnectId: Direct Connect ID, such as `dc-kd7d06of`.
+        :param _DirectConnectId: Direct Connect ID, such as `dc-kd7d06of`.
         :type DirectConnectId: str
-        :param DirectConnectTunnelName: Dedicated tunnel name.
+        :param _DirectConnectTunnelName: Dedicated tunnel name.
         :type DirectConnectTunnelName: str
-        :param DirectConnectOwnerAccount: Connection owner, who is the current customer by default.
+        :param _DirectConnectOwnerAccount: Connection owner, who is the current customer by default.
 The developer account ID should be entered for shared connections.
         :type DirectConnectOwnerAccount: str
-        :param NetworkType: Network type. Valid values: VPC, BMVPC, CCN. Default value: VPC.
+        :param _NetworkType: Network type. Valid values: VPC, BMVPC, CCN. Default value: VPC.
 VPC: Virtual Private Cloud.
 BMVPC: BM VPC.
 CCN: Cloud Connect Network.
         :type NetworkType: str
-        :param NetworkRegion: Network region.
+        :param _NetworkRegion: Network region.
         :type NetworkRegion: str
-        :param VpcId: Unified VPC ID or BMVPC ID.
+        :param _VpcId: Unified VPC ID or BMVPC ID.
         :type VpcId: str
-        :param DirectConnectGatewayId: Direct connect gateway ID, such as `dcg-d545ddf`.
+        :param _DirectConnectGatewayId: Direct connect gateway ID, such as `dcg-d545ddf`.
         :type DirectConnectGatewayId: str
-        :param Bandwidth: Direct Connect bandwidth in Mbps.
+        :param _Bandwidth: Direct Connect bandwidth in Mbps.
 Default value: connection bandwidth value.
         :type Bandwidth: int
-        :param RouteType: BGP: BGP routing.
+        :param _RouteType: BGP: BGP routing.
 STATIC: Static routing.
 Default value: BGP routing.
         :type RouteType: str
-        :param BgpPeer: BgpPeer, which is BGP information on the user side and includes Asn and AuthKey.
+        :param _BgpPeer: BgpPeer, which is BGP information on the user side and includes Asn and AuthKey.
         :type BgpPeer: :class:`tencentcloud.dc.v20180410.models.BgpPeer`
-        :param RouteFilterPrefixes: Static routing, i.e., IP range of the user's IDC.
+        :param _RouteFilterPrefixes: Static routing, i.e., IP range of the user's IDC.
         :type RouteFilterPrefixes: list of RouteFilterPrefix
-        :param Vlan: VLAN. Value range: 0-3,000.
+        :param _Vlan: VLAN. Value range: 0-3,000.
 0: sub-interface not enabled.
 Default value: Non-zero.
         :type Vlan: int
-        :param TencentAddress: TencentAddress: Tencent-side IP address.
+        :param _TencentAddress: TencentAddress: Tencent-side IP address.
         :type TencentAddress: str
-        :param CustomerAddress: CustomerAddress: User-side IP address.
+        :param _CustomerAddress: CustomerAddress: User-side IP address.
         :type CustomerAddress: str
-        :param TencentBackupAddress: TencentBackupAddress, i.e., Tencent-side standby IP address
+        :param _TencentBackupAddress: TencentBackupAddress, i.e., Tencent-side standby IP address
         :type TencentBackupAddress: str
-        :param CloudAttachId: Cloud Attached Connection Service ID
+        :param _CloudAttachId: Cloud Attached Connection Service ID
         :type CloudAttachId: str
-        :param BfdEnable: Whether to enable BFD
+        :param _BfdEnable: Whether to enable BFD
         :type BfdEnable: int
-        :param NqaEnable: Whether to enable NQA
+        :param _NqaEnable: Whether to enable NQA
         :type NqaEnable: int
-        :param BfdInfo: BFD configuration information
+        :param _BfdInfo: BFD configuration information
         :type BfdInfo: :class:`tencentcloud.dc.v20180410.models.BFDInfo`
-        :param NqaInfo: NQA configuration information
+        :param _NqaInfo: NQA configuration information
         :type NqaInfo: :class:`tencentcloud.dc.v20180410.models.NQAInfo`
         """
-        self.DirectConnectId = None
-        self.DirectConnectTunnelName = None
-        self.DirectConnectOwnerAccount = None
-        self.NetworkType = None
-        self.NetworkRegion = None
-        self.VpcId = None
-        self.DirectConnectGatewayId = None
-        self.Bandwidth = None
-        self.RouteType = None
-        self.BgpPeer = None
-        self.RouteFilterPrefixes = None
-        self.Vlan = None
-        self.TencentAddress = None
-        self.CustomerAddress = None
-        self.TencentBackupAddress = None
-        self.CloudAttachId = None
-        self.BfdEnable = None
-        self.NqaEnable = None
-        self.BfdInfo = None
-        self.NqaInfo = None
+        self._DirectConnectId = None
+        self._DirectConnectTunnelName = None
+        self._DirectConnectOwnerAccount = None
+        self._NetworkType = None
+        self._NetworkRegion = None
+        self._VpcId = None
+        self._DirectConnectGatewayId = None
+        self._Bandwidth = None
+        self._RouteType = None
+        self._BgpPeer = None
+        self._RouteFilterPrefixes = None
+        self._Vlan = None
+        self._TencentAddress = None
+        self._CustomerAddress = None
+        self._TencentBackupAddress = None
+        self._CloudAttachId = None
+        self._BfdEnable = None
+        self._NqaEnable = None
+        self._BfdInfo = None
+        self._NqaInfo = None
+
+    @property
+    def DirectConnectId(self):
+        return self._DirectConnectId
+
+    @DirectConnectId.setter
+    def DirectConnectId(self, DirectConnectId):
+        self._DirectConnectId = DirectConnectId
+
+    @property
+    def DirectConnectTunnelName(self):
+        return self._DirectConnectTunnelName
+
+    @DirectConnectTunnelName.setter
+    def DirectConnectTunnelName(self, DirectConnectTunnelName):
+        self._DirectConnectTunnelName = DirectConnectTunnelName
+
+    @property
+    def DirectConnectOwnerAccount(self):
+        return self._DirectConnectOwnerAccount
+
+    @DirectConnectOwnerAccount.setter
+    def DirectConnectOwnerAccount(self, DirectConnectOwnerAccount):
+        self._DirectConnectOwnerAccount = DirectConnectOwnerAccount
+
+    @property
+    def NetworkType(self):
+        return self._NetworkType
+
+    @NetworkType.setter
+    def NetworkType(self, NetworkType):
+        self._NetworkType = NetworkType
+
+    @property
+    def NetworkRegion(self):
+        return self._NetworkRegion
+
+    @NetworkRegion.setter
+    def NetworkRegion(self, NetworkRegion):
+        self._NetworkRegion = NetworkRegion
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def DirectConnectGatewayId(self):
+        return self._DirectConnectGatewayId
+
+    @DirectConnectGatewayId.setter
+    def DirectConnectGatewayId(self, DirectConnectGatewayId):
+        self._DirectConnectGatewayId = DirectConnectGatewayId
+
+    @property
+    def Bandwidth(self):
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
+
+    @property
+    def RouteType(self):
+        return self._RouteType
+
+    @RouteType.setter
+    def RouteType(self, RouteType):
+        self._RouteType = RouteType
+
+    @property
+    def BgpPeer(self):
+        return self._BgpPeer
+
+    @BgpPeer.setter
+    def BgpPeer(self, BgpPeer):
+        self._BgpPeer = BgpPeer
+
+    @property
+    def RouteFilterPrefixes(self):
+        return self._RouteFilterPrefixes
+
+    @RouteFilterPrefixes.setter
+    def RouteFilterPrefixes(self, RouteFilterPrefixes):
+        self._RouteFilterPrefixes = RouteFilterPrefixes
+
+    @property
+    def Vlan(self):
+        return self._Vlan
+
+    @Vlan.setter
+    def Vlan(self, Vlan):
+        self._Vlan = Vlan
+
+    @property
+    def TencentAddress(self):
+        return self._TencentAddress
+
+    @TencentAddress.setter
+    def TencentAddress(self, TencentAddress):
+        self._TencentAddress = TencentAddress
+
+    @property
+    def CustomerAddress(self):
+        return self._CustomerAddress
+
+    @CustomerAddress.setter
+    def CustomerAddress(self, CustomerAddress):
+        self._CustomerAddress = CustomerAddress
+
+    @property
+    def TencentBackupAddress(self):
+        return self._TencentBackupAddress
+
+    @TencentBackupAddress.setter
+    def TencentBackupAddress(self, TencentBackupAddress):
+        self._TencentBackupAddress = TencentBackupAddress
+
+    @property
+    def CloudAttachId(self):
+        return self._CloudAttachId
+
+    @CloudAttachId.setter
+    def CloudAttachId(self, CloudAttachId):
+        self._CloudAttachId = CloudAttachId
+
+    @property
+    def BfdEnable(self):
+        return self._BfdEnable
+
+    @BfdEnable.setter
+    def BfdEnable(self, BfdEnable):
+        self._BfdEnable = BfdEnable
+
+    @property
+    def NqaEnable(self):
+        return self._NqaEnable
+
+    @NqaEnable.setter
+    def NqaEnable(self, NqaEnable):
+        self._NqaEnable = NqaEnable
+
+    @property
+    def BfdInfo(self):
+        return self._BfdInfo
+
+    @BfdInfo.setter
+    def BfdInfo(self, BfdInfo):
+        self._BfdInfo = BfdInfo
+
+    @property
+    def NqaInfo(self):
+        return self._NqaInfo
+
+    @NqaInfo.setter
+    def NqaInfo(self, NqaInfo):
+        self._NqaInfo = NqaInfo
 
 
     def _deserialize(self, params):
-        self.DirectConnectId = params.get("DirectConnectId")
-        self.DirectConnectTunnelName = params.get("DirectConnectTunnelName")
-        self.DirectConnectOwnerAccount = params.get("DirectConnectOwnerAccount")
-        self.NetworkType = params.get("NetworkType")
-        self.NetworkRegion = params.get("NetworkRegion")
-        self.VpcId = params.get("VpcId")
-        self.DirectConnectGatewayId = params.get("DirectConnectGatewayId")
-        self.Bandwidth = params.get("Bandwidth")
-        self.RouteType = params.get("RouteType")
+        self._DirectConnectId = params.get("DirectConnectId")
+        self._DirectConnectTunnelName = params.get("DirectConnectTunnelName")
+        self._DirectConnectOwnerAccount = params.get("DirectConnectOwnerAccount")
+        self._NetworkType = params.get("NetworkType")
+        self._NetworkRegion = params.get("NetworkRegion")
+        self._VpcId = params.get("VpcId")
+        self._DirectConnectGatewayId = params.get("DirectConnectGatewayId")
+        self._Bandwidth = params.get("Bandwidth")
+        self._RouteType = params.get("RouteType")
         if params.get("BgpPeer") is not None:
-            self.BgpPeer = BgpPeer()
-            self.BgpPeer._deserialize(params.get("BgpPeer"))
+            self._BgpPeer = BgpPeer()
+            self._BgpPeer._deserialize(params.get("BgpPeer"))
         if params.get("RouteFilterPrefixes") is not None:
-            self.RouteFilterPrefixes = []
+            self._RouteFilterPrefixes = []
             for item in params.get("RouteFilterPrefixes"):
                 obj = RouteFilterPrefix()
                 obj._deserialize(item)
-                self.RouteFilterPrefixes.append(obj)
-        self.Vlan = params.get("Vlan")
-        self.TencentAddress = params.get("TencentAddress")
-        self.CustomerAddress = params.get("CustomerAddress")
-        self.TencentBackupAddress = params.get("TencentBackupAddress")
-        self.CloudAttachId = params.get("CloudAttachId")
-        self.BfdEnable = params.get("BfdEnable")
-        self.NqaEnable = params.get("NqaEnable")
+                self._RouteFilterPrefixes.append(obj)
+        self._Vlan = params.get("Vlan")
+        self._TencentAddress = params.get("TencentAddress")
+        self._CustomerAddress = params.get("CustomerAddress")
+        self._TencentBackupAddress = params.get("TencentBackupAddress")
+        self._CloudAttachId = params.get("CloudAttachId")
+        self._BfdEnable = params.get("BfdEnable")
+        self._NqaEnable = params.get("NqaEnable")
         if params.get("BfdInfo") is not None:
-            self.BfdInfo = BFDInfo()
-            self.BfdInfo._deserialize(params.get("BfdInfo"))
+            self._BfdInfo = BFDInfo()
+            self._BfdInfo._deserialize(params.get("BfdInfo"))
         if params.get("NqaInfo") is not None:
-            self.NqaInfo = NQAInfo()
-            self.NqaInfo._deserialize(params.get("NqaInfo"))
+            self._NqaInfo = NQAInfo()
+            self._NqaInfo._deserialize(params.get("NqaInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -509,18 +1021,34 @@ class CreateDirectConnectTunnelResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DirectConnectTunnelIdSet: Dedicated tunnel ID.
+        :param _DirectConnectTunnelIdSet: Dedicated tunnel ID.
         :type DirectConnectTunnelIdSet: list of str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.DirectConnectTunnelIdSet = None
-        self.RequestId = None
+        self._DirectConnectTunnelIdSet = None
+        self._RequestId = None
+
+    @property
+    def DirectConnectTunnelIdSet(self):
+        return self._DirectConnectTunnelIdSet
+
+    @DirectConnectTunnelIdSet.setter
+    def DirectConnectTunnelIdSet(self, DirectConnectTunnelIdSet):
+        self._DirectConnectTunnelIdSet = DirectConnectTunnelIdSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.DirectConnectTunnelIdSet = params.get("DirectConnectTunnelIdSet")
-        self.RequestId = params.get("RequestId")
+        self._DirectConnectTunnelIdSet = params.get("DirectConnectTunnelIdSet")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteDirectConnectRequest(AbstractModel):
@@ -530,18 +1058,27 @@ class DeleteDirectConnectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DirectConnectId: Connection ID.
+        :param _DirectConnectId: Connection ID.
         :type DirectConnectId: str
         """
-        self.DirectConnectId = None
+        self._DirectConnectId = None
+
+    @property
+    def DirectConnectId(self):
+        return self._DirectConnectId
+
+    @DirectConnectId.setter
+    def DirectConnectId(self, DirectConnectId):
+        self._DirectConnectId = DirectConnectId
 
 
     def _deserialize(self, params):
-        self.DirectConnectId = params.get("DirectConnectId")
+        self._DirectConnectId = params.get("DirectConnectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -554,14 +1091,22 @@ class DeleteDirectConnectResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteDirectConnectTunnelRequest(AbstractModel):
@@ -571,18 +1116,27 @@ class DeleteDirectConnectTunnelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DirectConnectTunnelId: Dedicated tunnel ID.
+        :param _DirectConnectTunnelId: Dedicated tunnel ID.
         :type DirectConnectTunnelId: str
         """
-        self.DirectConnectTunnelId = None
+        self._DirectConnectTunnelId = None
+
+    @property
+    def DirectConnectTunnelId(self):
+        return self._DirectConnectTunnelId
+
+    @DirectConnectTunnelId.setter
+    def DirectConnectTunnelId(self, DirectConnectTunnelId):
+        self._DirectConnectTunnelId = DirectConnectTunnelId
 
 
     def _deserialize(self, params):
-        self.DirectConnectTunnelId = params.get("DirectConnectTunnelId")
+        self._DirectConnectTunnelId = params.get("DirectConnectTunnelId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -595,14 +1149,22 @@ class DeleteDirectConnectTunnelResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeAccessPointsRequest(AbstractModel):
@@ -612,28 +1174,53 @@ class DescribeAccessPointsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RegionId: Access point region, which can be queried through `DescribeRegions`.
+        :param _RegionId: Access point region, which can be queried through `DescribeRegions`.
 
 You can call `DescribeRegions` to get the region ID.
         :type RegionId: str
-        :param Offset: Offset. Default value: 0.
+        :param _Offset: Offset. Default value: 0.
         :type Offset: int
-        :param Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
+        :param _Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
         :type Limit: int
         """
-        self.RegionId = None
-        self.Offset = None
-        self.Limit = None
+        self._RegionId = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def RegionId(self):
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.RegionId = params.get("RegionId")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+        self._RegionId = params.get("RegionId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -646,27 +1233,51 @@ class DescribeAccessPointsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AccessPointSet: Access point information.
+        :param _AccessPointSet: Access point information.
         :type AccessPointSet: list of AccessPoint
-        :param TotalCount: Number of eligible access points.
+        :param _TotalCount: Number of eligible access points.
         :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.AccessPointSet = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._AccessPointSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def AccessPointSet(self):
+        return self._AccessPointSet
+
+    @AccessPointSet.setter
+    def AccessPointSet(self, AccessPointSet):
+        self._AccessPointSet = AccessPointSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("AccessPointSet") is not None:
-            self.AccessPointSet = []
+            self._AccessPointSet = []
             for item in params.get("AccessPointSet"):
                 obj = AccessPoint()
                 obj._deserialize(item)
-                self.AccessPointSet.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._AccessPointSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeDirectConnectTunnelsRequest(AbstractModel):
@@ -676,39 +1287,72 @@ class DescribeDirectConnectTunnelsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Filters: Filter conditions:
+        :param _Filters: Filter conditions:
 This parameter does not support specifying `DirectConnectTunnelIds` and `Filters` at the same time.
 <li> direct-connect-tunnel-name: Dedicated tunnel name.</li>
 <li> direct-connect-tunnel-id: Dedicated tunnel instance ID, such as `dcx-abcdefgh`.</li>
 <li>direct-connect-id: Connection instance ID, such as `dc-abcdefgh`.</li>
         :type Filters: list of Filter
-        :param DirectConnectTunnelIds: Array of dedicated tunnel IDs.
+        :param _DirectConnectTunnelIds: Array of dedicated tunnel IDs.
         :type DirectConnectTunnelIds: list of str
-        :param Offset: Offset. Default value: 0.
+        :param _Offset: Offset. Default value: 0.
         :type Offset: int
-        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
+        :param _Limit: Number of returned results. Default value: 20. Maximum value: 100.
         :type Limit: int
         """
-        self.Filters = None
-        self.DirectConnectTunnelIds = None
-        self.Offset = None
-        self.Limit = None
+        self._Filters = None
+        self._DirectConnectTunnelIds = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def DirectConnectTunnelIds(self):
+        return self._DirectConnectTunnelIds
+
+    @DirectConnectTunnelIds.setter
+    def DirectConnectTunnelIds(self, DirectConnectTunnelIds):
+        self._DirectConnectTunnelIds = DirectConnectTunnelIds
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.DirectConnectTunnelIds = params.get("DirectConnectTunnelIds")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+                self._Filters.append(obj)
+        self._DirectConnectTunnelIds = params.get("DirectConnectTunnelIds")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -721,27 +1365,51 @@ class DescribeDirectConnectTunnelsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DirectConnectTunnelSet: List of dedicated tunnels.
+        :param _DirectConnectTunnelSet: List of dedicated tunnels.
         :type DirectConnectTunnelSet: list of DirectConnectTunnel
-        :param TotalCount: Number of eligible dedicated tunnels.
+        :param _TotalCount: Number of eligible dedicated tunnels.
         :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.DirectConnectTunnelSet = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._DirectConnectTunnelSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def DirectConnectTunnelSet(self):
+        return self._DirectConnectTunnelSet
+
+    @DirectConnectTunnelSet.setter
+    def DirectConnectTunnelSet(self, DirectConnectTunnelSet):
+        self._DirectConnectTunnelSet = DirectConnectTunnelSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DirectConnectTunnelSet") is not None:
-            self.DirectConnectTunnelSet = []
+            self._DirectConnectTunnelSet = []
             for item in params.get("DirectConnectTunnelSet"):
                 obj = DirectConnectTunnel()
                 obj._deserialize(item)
-                self.DirectConnectTunnelSet.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._DirectConnectTunnelSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeDirectConnectsRequest(AbstractModel):
@@ -751,35 +1419,68 @@ class DescribeDirectConnectsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Filters: Filter conditions:
+        :param _Filters: Filter conditions:
         :type Filters: list of Filter
-        :param DirectConnectIds: Array of connection IDs.
+        :param _DirectConnectIds: Array of connection IDs.
         :type DirectConnectIds: list of str
-        :param Offset: Offset. Default value: 0.
+        :param _Offset: Offset. Default value: 0.
         :type Offset: int
-        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
+        :param _Limit: Number of returned results. Default value: 20. Maximum value: 100.
         :type Limit: int
         """
-        self.Filters = None
-        self.DirectConnectIds = None
-        self.Offset = None
-        self.Limit = None
+        self._Filters = None
+        self._DirectConnectIds = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def DirectConnectIds(self):
+        return self._DirectConnectIds
+
+    @DirectConnectIds.setter
+    def DirectConnectIds(self, DirectConnectIds):
+        self._DirectConnectIds = DirectConnectIds
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.DirectConnectIds = params.get("DirectConnectIds")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+                self._Filters.append(obj)
+        self._DirectConnectIds = params.get("DirectConnectIds")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -792,32 +1493,64 @@ class DescribeDirectConnectsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DirectConnectSet: List of connections.
+        :param _DirectConnectSet: List of connections.
         :type DirectConnectSet: list of DirectConnect
-        :param TotalCount: Number of eligible connection lists.
+        :param _TotalCount: Number of eligible connection lists.
         :type TotalCount: int
-        :param AllSignLaw: Whether all connections under the account have the service agreement signed.
+        :param _AllSignLaw: Whether all connections under the account have the service agreement signed.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type AllSignLaw: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.DirectConnectSet = None
-        self.TotalCount = None
-        self.AllSignLaw = None
-        self.RequestId = None
+        self._DirectConnectSet = None
+        self._TotalCount = None
+        self._AllSignLaw = None
+        self._RequestId = None
+
+    @property
+    def DirectConnectSet(self):
+        return self._DirectConnectSet
+
+    @DirectConnectSet.setter
+    def DirectConnectSet(self, DirectConnectSet):
+        self._DirectConnectSet = DirectConnectSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def AllSignLaw(self):
+        return self._AllSignLaw
+
+    @AllSignLaw.setter
+    def AllSignLaw(self, AllSignLaw):
+        self._AllSignLaw = AllSignLaw
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DirectConnectSet") is not None:
-            self.DirectConnectSet = []
+            self._DirectConnectSet = []
             for item in params.get("DirectConnectSet"):
                 obj = DirectConnect()
                 obj._deserialize(item)
-                self.DirectConnectSet.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.AllSignLaw = params.get("AllSignLaw")
-        self.RequestId = params.get("RequestId")
+                self._DirectConnectSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._AllSignLaw = params.get("AllSignLaw")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeInternetAddressQuotaRequest(AbstractModel):
@@ -833,39 +1566,87 @@ class DescribeInternetAddressQuotaResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Ipv6PrefixLen: Minimum prefix length allowed for a public IPv6 address
+        :param _Ipv6PrefixLen: Minimum prefix length allowed for a public IPv6 address
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Ipv6PrefixLen: int
-        :param Ipv4BgpQuota: Quota of BGP IPv4 addresses
+        :param _Ipv4BgpQuota: Quota of BGP IPv4 addresses
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Ipv4BgpQuota: int
-        :param Ipv4OtherQuota: Quota of non-BGP IPv4 addresses
+        :param _Ipv4OtherQuota: Quota of non-BGP IPv4 addresses
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Ipv4OtherQuota: int
-        :param Ipv4BgpNum: Used number of BGP IPv4 addresses
+        :param _Ipv4BgpNum: Used number of BGP IPv4 addresses
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Ipv4BgpNum: int
-        :param Ipv4OtherNum: Used number of non-BGP IPv4 addresses
+        :param _Ipv4OtherNum: Used number of non-BGP IPv4 addresses
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Ipv4OtherNum: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Ipv6PrefixLen = None
-        self.Ipv4BgpQuota = None
-        self.Ipv4OtherQuota = None
-        self.Ipv4BgpNum = None
-        self.Ipv4OtherNum = None
-        self.RequestId = None
+        self._Ipv6PrefixLen = None
+        self._Ipv4BgpQuota = None
+        self._Ipv4OtherQuota = None
+        self._Ipv4BgpNum = None
+        self._Ipv4OtherNum = None
+        self._RequestId = None
+
+    @property
+    def Ipv6PrefixLen(self):
+        return self._Ipv6PrefixLen
+
+    @Ipv6PrefixLen.setter
+    def Ipv6PrefixLen(self, Ipv6PrefixLen):
+        self._Ipv6PrefixLen = Ipv6PrefixLen
+
+    @property
+    def Ipv4BgpQuota(self):
+        return self._Ipv4BgpQuota
+
+    @Ipv4BgpQuota.setter
+    def Ipv4BgpQuota(self, Ipv4BgpQuota):
+        self._Ipv4BgpQuota = Ipv4BgpQuota
+
+    @property
+    def Ipv4OtherQuota(self):
+        return self._Ipv4OtherQuota
+
+    @Ipv4OtherQuota.setter
+    def Ipv4OtherQuota(self, Ipv4OtherQuota):
+        self._Ipv4OtherQuota = Ipv4OtherQuota
+
+    @property
+    def Ipv4BgpNum(self):
+        return self._Ipv4BgpNum
+
+    @Ipv4BgpNum.setter
+    def Ipv4BgpNum(self, Ipv4BgpNum):
+        self._Ipv4BgpNum = Ipv4BgpNum
+
+    @property
+    def Ipv4OtherNum(self):
+        return self._Ipv4OtherNum
+
+    @Ipv4OtherNum.setter
+    def Ipv4OtherNum(self, Ipv4OtherNum):
+        self._Ipv4OtherNum = Ipv4OtherNum
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Ipv6PrefixLen = params.get("Ipv6PrefixLen")
-        self.Ipv4BgpQuota = params.get("Ipv4BgpQuota")
-        self.Ipv4OtherQuota = params.get("Ipv4OtherQuota")
-        self.Ipv4BgpNum = params.get("Ipv4BgpNum")
-        self.Ipv4OtherNum = params.get("Ipv4OtherNum")
-        self.RequestId = params.get("RequestId")
+        self._Ipv6PrefixLen = params.get("Ipv6PrefixLen")
+        self._Ipv4BgpQuota = params.get("Ipv4BgpQuota")
+        self._Ipv4OtherQuota = params.get("Ipv4OtherQuota")
+        self._Ipv4BgpNum = params.get("Ipv4BgpNum")
+        self._Ipv4OtherNum = params.get("Ipv4OtherNum")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeInternetAddressRequest(AbstractModel):
@@ -875,11 +1656,11 @@ class DescribeInternetAddressRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: Offset. Default value: 0.
+        :param _Offset: Offset. Default value: 0.
         :type Offset: int
-        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
+        :param _Limit: Number of returned results. Default value: 20. Maximum value: 100.
         :type Limit: int
-        :param Filters: Filter conditions:
+        :param _Filters: Filter conditions:
 <li>AddrType, address type. Valid values: 0: BGP; 1: China Telecom; 2: China Mobile; 3: China Unicom</li>
 <li>AddrProto, address protocol. Valid values: 0: IPv4; 1: IPv6</li>
 <li>Status, address status. Valid values: 0: in use; 1: disabled; 2: returned</li>
@@ -887,24 +1668,49 @@ class DescribeInternetAddressRequest(AbstractModel):
 <InstanceIds>Public IP address ID array</li>
         :type Filters: list of Filter
         """
-        self.Offset = None
-        self.Limit = None
-        self.Filters = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
 
     def _deserialize(self, params):
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -917,28 +1723,52 @@ class DescribeInternetAddressResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Number of public IP addresses for internet tunnels
+        :param _TotalCount: Number of public IP addresses for internet tunnels
         :type TotalCount: int
-        :param Subnets: List of the public IP addresses for internet tunnels
+        :param _Subnets: List of the public IP addresses for internet tunnels
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Subnets: list of InternetAddressDetail
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.Subnets = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._Subnets = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Subnets(self):
+        return self._Subnets
+
+    @Subnets.setter
+    def Subnets(self, Subnets):
+        self._Subnets = Subnets
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("Subnets") is not None:
-            self.Subnets = []
+            self._Subnets = []
             for item in params.get("Subnets"):
                 obj = InternetAddressDetail()
                 obj._deserialize(item)
-                self.Subnets.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Subnets.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeInternetAddressStatisticsRequest(AbstractModel):
@@ -954,28 +1784,52 @@ class DescribeInternetAddressStatisticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Number of public IP address statistics for internet tunnels
+        :param _TotalCount: Number of public IP address statistics for internet tunnels
         :type TotalCount: int
-        :param InternetAddressStatistics: List of the public IP address statistics for internet tunnels
+        :param _InternetAddressStatistics: List of the public IP address statistics for internet tunnels
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type InternetAddressStatistics: list of InternetAddressStatistics
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.InternetAddressStatistics = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._InternetAddressStatistics = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def InternetAddressStatistics(self):
+        return self._InternetAddressStatistics
+
+    @InternetAddressStatistics.setter
+    def InternetAddressStatistics(self, InternetAddressStatistics):
+        self._InternetAddressStatistics = InternetAddressStatistics
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("InternetAddressStatistics") is not None:
-            self.InternetAddressStatistics = []
+            self._InternetAddressStatistics = []
             for item in params.get("InternetAddressStatistics"):
                 obj = InternetAddressStatistics()
                 obj._deserialize(item)
-                self.InternetAddressStatistics.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._InternetAddressStatistics.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DirectConnect(AbstractModel):
@@ -985,13 +1839,13 @@ class DirectConnect(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DirectConnectId: Connection ID.
+        :param _DirectConnectId: Connection ID.
         :type DirectConnectId: str
-        :param DirectConnectName: Connection name.
+        :param _DirectConnectName: Connection name.
         :type DirectConnectName: str
-        :param AccessPointId: Access point ID of a connection.
+        :param _AccessPointId: Access point ID of a connection.
         :type AccessPointId: str
-        :param State: Connection status.
+        :param _State: Connection status.
 PENDING: Applying. 
 REJECTED: Application rejected.   
 TOPAY: Payment pending. 
@@ -1001,159 +1855,416 @@ AVAILABLE: Available.
 DELETING: Deleting.
 DELETED: Deleted.
         :type State: str
-        :param CreatedTime: Connection creation time.
+        :param _CreatedTime: Connection creation time.
         :type CreatedTime: str
-        :param EnabledTime: Connection activation time.
+        :param _EnabledTime: Connection activation time.
         :type EnabledTime: str
-        :param LineOperator: ISP that provides connections. Valid values: ChinaTelecom (China Telecom), ChinaMobile (China Mobile), ChinaUnicom (China Unicom), In-houseWiring (in-house wiring), ChinaOther (other Chinese ISPs), InternationalOperator (international ISPs).
+        :param _LineOperator: ISP that provides connections. Valid values: ChinaTelecom (China Telecom), ChinaMobile (China Mobile), ChinaUnicom (China Unicom), In-houseWiring (in-house wiring), ChinaOther (other Chinese ISPs), InternationalOperator (international ISPs).
         :type LineOperator: str
-        :param Location: Location of a local IDC.
+        :param _Location: Location of a local IDC.
         :type Location: str
-        :param Bandwidth: Connection port bandwidth in Mbps.
+        :param _Bandwidth: Connection port bandwidth in Mbps.
         :type Bandwidth: int
-        :param PortType: User-side port type of a connection. Valid values: 100Base-T (100-Megabit electrical Ethernet interface), 1000Base-T (1-Gigabit electrical Ethernet interface; it is the default value), 1000Base-LX (1-Gigabit single-mode optical Ethernet interface; 10 KM), 10GBase-T (10-Gigabit electrical Ethernet interface), 10GBase-LR (10-Gigabit single-mode optical Ethernet interface; 10 KM).
+        :param _PortType: User-side port type of a connection. Valid values: 100Base-T (100-Megabit electrical Ethernet interface), 1000Base-T (1-Gigabit electrical Ethernet interface; it is the default value), 1000Base-LX (1-Gigabit single-mode optical Ethernet interface; 10 KM), 10GBase-T (10-Gigabit electrical Ethernet interface), 10GBase-LR (10-Gigabit single-mode optical Ethernet interface; 10 KM).
         :type PortType: str
-        :param CircuitCode: Circuit code of a connection, which is provided by the ISP or service provider.
+        :param _CircuitCode: Circuit code of a connection, which is provided by the ISP or service provider.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CircuitCode: str
-        :param RedundantDirectConnectId: ID of a redundant connection.
+        :param _RedundantDirectConnectId: ID of a redundant connection.
         :type RedundantDirectConnectId: str
-        :param Vlan: VLAN for connection debugging, which is enabled and automatically assigned by default.
+        :param _Vlan: VLAN for connection debugging, which is enabled and automatically assigned by default.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Vlan: int
-        :param TencentAddress: Tencent-side IP address for connection debugging.
+        :param _TencentAddress: Tencent-side IP address for connection debugging.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TencentAddress: str
-        :param CustomerAddress: User-side IP address for connection debugging.
+        :param _CustomerAddress: User-side IP address for connection debugging.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CustomerAddress: str
-        :param CustomerName: Name of the connection applicant, which is obtained from the account system by default.
+        :param _CustomerName: Name of the connection applicant, which is obtained from the account system by default.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CustomerName: str
-        :param CustomerContactMail: Email address of the connection applicant, which is obtained from the account system by default.
+        :param _CustomerContactMail: Email address of the connection applicant, which is obtained from the account system by default.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CustomerContactMail: str
-        :param CustomerContactNumber: Contact number of the connection applicant, which is obtained from the account system by default.
+        :param _CustomerContactNumber: Contact number of the connection applicant, which is obtained from the account system by default.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CustomerContactNumber: str
-        :param ExpiredTime: Connection expiration time.
+        :param _ExpiredTime: Connection expiration time.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ExpiredTime: str
-        :param ChargeType: Connection billing mode. NON_RECURRING_CHARGE: One-time charge for accessing service
+        :param _ChargeType: Connection billing mode. NON_RECURRING_CHARGE: One-time charge for accessing service
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ChargeType: str
-        :param FaultReportContactPerson: Fault reporting contact person.
+        :param _FaultReportContactPerson: Fault reporting contact person.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type FaultReportContactPerson: str
-        :param FaultReportContactNumber: Fault reporting contact number.
+        :param _FaultReportContactNumber: Fault reporting contact number.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type FaultReportContactNumber: str
-        :param TagSet: Tag key-value pair
+        :param _TagSet: Tag key-value pair
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TagSet: list of Tag
-        :param AccessPointType: Access point type of a connection.
+        :param _AccessPointType: Access point type of a connection.
         :type AccessPointType: str
-        :param IdcCity: IDC city.
+        :param _IdcCity: IDC city.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IdcCity: str
-        :param ChargeState: Billing status
+        :param _ChargeState: Billing status
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ChargeState: str
-        :param StartTime: Connection activation time.
+        :param _StartTime: Connection activation time.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type StartTime: str
-        :param SignLaw: Whether the connection has the service agreement signed.
+        :param _SignLaw: Whether the connection has the service agreement signed.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type SignLaw: bool
-        :param LocalZone: Whether the connection is an edge zone.
+        :param _LocalZone: Whether the connection is an edge zone.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type LocalZone: bool
-        :param VlanZeroDirectConnectTunnelCount: Number of dedicated tunnels with disabled VLAN in the connection
+        :param _VlanZeroDirectConnectTunnelCount: Number of dedicated tunnels with disabled VLAN in the connection
 Note: this field may return `null`, indicating that no valid value can be found.
         :type VlanZeroDirectConnectTunnelCount: int
-        :param OtherVlanDirectConnectTunnelCount: Number of dedicated tunnels with enabled VLAN in the connection
+        :param _OtherVlanDirectConnectTunnelCount: Number of dedicated tunnels with enabled VLAN in the connection
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type OtherVlanDirectConnectTunnelCount: int
-        :param MinBandwidth: Minimum bandwidth of the connection
+        :param _MinBandwidth: Minimum bandwidth of the connection
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type MinBandwidth: int
         """
-        self.DirectConnectId = None
-        self.DirectConnectName = None
-        self.AccessPointId = None
-        self.State = None
-        self.CreatedTime = None
-        self.EnabledTime = None
-        self.LineOperator = None
-        self.Location = None
-        self.Bandwidth = None
-        self.PortType = None
-        self.CircuitCode = None
-        self.RedundantDirectConnectId = None
-        self.Vlan = None
-        self.TencentAddress = None
-        self.CustomerAddress = None
-        self.CustomerName = None
-        self.CustomerContactMail = None
-        self.CustomerContactNumber = None
-        self.ExpiredTime = None
-        self.ChargeType = None
-        self.FaultReportContactPerson = None
-        self.FaultReportContactNumber = None
-        self.TagSet = None
-        self.AccessPointType = None
-        self.IdcCity = None
-        self.ChargeState = None
-        self.StartTime = None
-        self.SignLaw = None
-        self.LocalZone = None
-        self.VlanZeroDirectConnectTunnelCount = None
-        self.OtherVlanDirectConnectTunnelCount = None
-        self.MinBandwidth = None
+        self._DirectConnectId = None
+        self._DirectConnectName = None
+        self._AccessPointId = None
+        self._State = None
+        self._CreatedTime = None
+        self._EnabledTime = None
+        self._LineOperator = None
+        self._Location = None
+        self._Bandwidth = None
+        self._PortType = None
+        self._CircuitCode = None
+        self._RedundantDirectConnectId = None
+        self._Vlan = None
+        self._TencentAddress = None
+        self._CustomerAddress = None
+        self._CustomerName = None
+        self._CustomerContactMail = None
+        self._CustomerContactNumber = None
+        self._ExpiredTime = None
+        self._ChargeType = None
+        self._FaultReportContactPerson = None
+        self._FaultReportContactNumber = None
+        self._TagSet = None
+        self._AccessPointType = None
+        self._IdcCity = None
+        self._ChargeState = None
+        self._StartTime = None
+        self._SignLaw = None
+        self._LocalZone = None
+        self._VlanZeroDirectConnectTunnelCount = None
+        self._OtherVlanDirectConnectTunnelCount = None
+        self._MinBandwidth = None
+
+    @property
+    def DirectConnectId(self):
+        return self._DirectConnectId
+
+    @DirectConnectId.setter
+    def DirectConnectId(self, DirectConnectId):
+        self._DirectConnectId = DirectConnectId
+
+    @property
+    def DirectConnectName(self):
+        return self._DirectConnectName
+
+    @DirectConnectName.setter
+    def DirectConnectName(self, DirectConnectName):
+        self._DirectConnectName = DirectConnectName
+
+    @property
+    def AccessPointId(self):
+        return self._AccessPointId
+
+    @AccessPointId.setter
+    def AccessPointId(self, AccessPointId):
+        self._AccessPointId = AccessPointId
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def EnabledTime(self):
+        return self._EnabledTime
+
+    @EnabledTime.setter
+    def EnabledTime(self, EnabledTime):
+        self._EnabledTime = EnabledTime
+
+    @property
+    def LineOperator(self):
+        return self._LineOperator
+
+    @LineOperator.setter
+    def LineOperator(self, LineOperator):
+        self._LineOperator = LineOperator
+
+    @property
+    def Location(self):
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+    @property
+    def Bandwidth(self):
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
+
+    @property
+    def PortType(self):
+        return self._PortType
+
+    @PortType.setter
+    def PortType(self, PortType):
+        self._PortType = PortType
+
+    @property
+    def CircuitCode(self):
+        return self._CircuitCode
+
+    @CircuitCode.setter
+    def CircuitCode(self, CircuitCode):
+        self._CircuitCode = CircuitCode
+
+    @property
+    def RedundantDirectConnectId(self):
+        return self._RedundantDirectConnectId
+
+    @RedundantDirectConnectId.setter
+    def RedundantDirectConnectId(self, RedundantDirectConnectId):
+        self._RedundantDirectConnectId = RedundantDirectConnectId
+
+    @property
+    def Vlan(self):
+        return self._Vlan
+
+    @Vlan.setter
+    def Vlan(self, Vlan):
+        self._Vlan = Vlan
+
+    @property
+    def TencentAddress(self):
+        return self._TencentAddress
+
+    @TencentAddress.setter
+    def TencentAddress(self, TencentAddress):
+        self._TencentAddress = TencentAddress
+
+    @property
+    def CustomerAddress(self):
+        return self._CustomerAddress
+
+    @CustomerAddress.setter
+    def CustomerAddress(self, CustomerAddress):
+        self._CustomerAddress = CustomerAddress
+
+    @property
+    def CustomerName(self):
+        return self._CustomerName
+
+    @CustomerName.setter
+    def CustomerName(self, CustomerName):
+        self._CustomerName = CustomerName
+
+    @property
+    def CustomerContactMail(self):
+        return self._CustomerContactMail
+
+    @CustomerContactMail.setter
+    def CustomerContactMail(self, CustomerContactMail):
+        self._CustomerContactMail = CustomerContactMail
+
+    @property
+    def CustomerContactNumber(self):
+        return self._CustomerContactNumber
+
+    @CustomerContactNumber.setter
+    def CustomerContactNumber(self, CustomerContactNumber):
+        self._CustomerContactNumber = CustomerContactNumber
+
+    @property
+    def ExpiredTime(self):
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
+
+    @property
+    def ChargeType(self):
+        return self._ChargeType
+
+    @ChargeType.setter
+    def ChargeType(self, ChargeType):
+        self._ChargeType = ChargeType
+
+    @property
+    def FaultReportContactPerson(self):
+        return self._FaultReportContactPerson
+
+    @FaultReportContactPerson.setter
+    def FaultReportContactPerson(self, FaultReportContactPerson):
+        self._FaultReportContactPerson = FaultReportContactPerson
+
+    @property
+    def FaultReportContactNumber(self):
+        return self._FaultReportContactNumber
+
+    @FaultReportContactNumber.setter
+    def FaultReportContactNumber(self, FaultReportContactNumber):
+        self._FaultReportContactNumber = FaultReportContactNumber
+
+    @property
+    def TagSet(self):
+        return self._TagSet
+
+    @TagSet.setter
+    def TagSet(self, TagSet):
+        self._TagSet = TagSet
+
+    @property
+    def AccessPointType(self):
+        return self._AccessPointType
+
+    @AccessPointType.setter
+    def AccessPointType(self, AccessPointType):
+        self._AccessPointType = AccessPointType
+
+    @property
+    def IdcCity(self):
+        return self._IdcCity
+
+    @IdcCity.setter
+    def IdcCity(self, IdcCity):
+        self._IdcCity = IdcCity
+
+    @property
+    def ChargeState(self):
+        return self._ChargeState
+
+    @ChargeState.setter
+    def ChargeState(self, ChargeState):
+        self._ChargeState = ChargeState
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def SignLaw(self):
+        return self._SignLaw
+
+    @SignLaw.setter
+    def SignLaw(self, SignLaw):
+        self._SignLaw = SignLaw
+
+    @property
+    def LocalZone(self):
+        return self._LocalZone
+
+    @LocalZone.setter
+    def LocalZone(self, LocalZone):
+        self._LocalZone = LocalZone
+
+    @property
+    def VlanZeroDirectConnectTunnelCount(self):
+        return self._VlanZeroDirectConnectTunnelCount
+
+    @VlanZeroDirectConnectTunnelCount.setter
+    def VlanZeroDirectConnectTunnelCount(self, VlanZeroDirectConnectTunnelCount):
+        self._VlanZeroDirectConnectTunnelCount = VlanZeroDirectConnectTunnelCount
+
+    @property
+    def OtherVlanDirectConnectTunnelCount(self):
+        return self._OtherVlanDirectConnectTunnelCount
+
+    @OtherVlanDirectConnectTunnelCount.setter
+    def OtherVlanDirectConnectTunnelCount(self, OtherVlanDirectConnectTunnelCount):
+        self._OtherVlanDirectConnectTunnelCount = OtherVlanDirectConnectTunnelCount
+
+    @property
+    def MinBandwidth(self):
+        return self._MinBandwidth
+
+    @MinBandwidth.setter
+    def MinBandwidth(self, MinBandwidth):
+        self._MinBandwidth = MinBandwidth
 
 
     def _deserialize(self, params):
-        self.DirectConnectId = params.get("DirectConnectId")
-        self.DirectConnectName = params.get("DirectConnectName")
-        self.AccessPointId = params.get("AccessPointId")
-        self.State = params.get("State")
-        self.CreatedTime = params.get("CreatedTime")
-        self.EnabledTime = params.get("EnabledTime")
-        self.LineOperator = params.get("LineOperator")
-        self.Location = params.get("Location")
-        self.Bandwidth = params.get("Bandwidth")
-        self.PortType = params.get("PortType")
-        self.CircuitCode = params.get("CircuitCode")
-        self.RedundantDirectConnectId = params.get("RedundantDirectConnectId")
-        self.Vlan = params.get("Vlan")
-        self.TencentAddress = params.get("TencentAddress")
-        self.CustomerAddress = params.get("CustomerAddress")
-        self.CustomerName = params.get("CustomerName")
-        self.CustomerContactMail = params.get("CustomerContactMail")
-        self.CustomerContactNumber = params.get("CustomerContactNumber")
-        self.ExpiredTime = params.get("ExpiredTime")
-        self.ChargeType = params.get("ChargeType")
-        self.FaultReportContactPerson = params.get("FaultReportContactPerson")
-        self.FaultReportContactNumber = params.get("FaultReportContactNumber")
+        self._DirectConnectId = params.get("DirectConnectId")
+        self._DirectConnectName = params.get("DirectConnectName")
+        self._AccessPointId = params.get("AccessPointId")
+        self._State = params.get("State")
+        self._CreatedTime = params.get("CreatedTime")
+        self._EnabledTime = params.get("EnabledTime")
+        self._LineOperator = params.get("LineOperator")
+        self._Location = params.get("Location")
+        self._Bandwidth = params.get("Bandwidth")
+        self._PortType = params.get("PortType")
+        self._CircuitCode = params.get("CircuitCode")
+        self._RedundantDirectConnectId = params.get("RedundantDirectConnectId")
+        self._Vlan = params.get("Vlan")
+        self._TencentAddress = params.get("TencentAddress")
+        self._CustomerAddress = params.get("CustomerAddress")
+        self._CustomerName = params.get("CustomerName")
+        self._CustomerContactMail = params.get("CustomerContactMail")
+        self._CustomerContactNumber = params.get("CustomerContactNumber")
+        self._ExpiredTime = params.get("ExpiredTime")
+        self._ChargeType = params.get("ChargeType")
+        self._FaultReportContactPerson = params.get("FaultReportContactPerson")
+        self._FaultReportContactNumber = params.get("FaultReportContactNumber")
         if params.get("TagSet") is not None:
-            self.TagSet = []
+            self._TagSet = []
             for item in params.get("TagSet"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.TagSet.append(obj)
-        self.AccessPointType = params.get("AccessPointType")
-        self.IdcCity = params.get("IdcCity")
-        self.ChargeState = params.get("ChargeState")
-        self.StartTime = params.get("StartTime")
-        self.SignLaw = params.get("SignLaw")
-        self.LocalZone = params.get("LocalZone")
-        self.VlanZeroDirectConnectTunnelCount = params.get("VlanZeroDirectConnectTunnelCount")
-        self.OtherVlanDirectConnectTunnelCount = params.get("OtherVlanDirectConnectTunnelCount")
-        self.MinBandwidth = params.get("MinBandwidth")
+                self._TagSet.append(obj)
+        self._AccessPointType = params.get("AccessPointType")
+        self._IdcCity = params.get("IdcCity")
+        self._ChargeState = params.get("ChargeState")
+        self._StartTime = params.get("StartTime")
+        self._SignLaw = params.get("SignLaw")
+        self._LocalZone = params.get("LocalZone")
+        self._VlanZeroDirectConnectTunnelCount = params.get("VlanZeroDirectConnectTunnelCount")
+        self._OtherVlanDirectConnectTunnelCount = params.get("OtherVlanDirectConnectTunnelCount")
+        self._MinBandwidth = params.get("MinBandwidth")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1166,11 +2277,11 @@ class DirectConnectTunnel(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DirectConnectTunnelId: Dedicated tunnel ID.
+        :param _DirectConnectTunnelId: Dedicated tunnel ID.
         :type DirectConnectTunnelId: str
-        :param DirectConnectId: Connection ID.
+        :param _DirectConnectId: Connection ID.
         :type DirectConnectId: str
-        :param State: Dedicated tunnel status.
+        :param _State: Dedicated tunnel status.
 AVAILABLE: Ready or connected.
 PENDING: Applying.
 ALLOCATING: Configuring.
@@ -1181,151 +2292,392 @@ DELETED: Deleted.
 COMFIRMING: To be accepted.
 REJECTED: Rejected.
         :type State: str
-        :param DirectConnectOwnerAccount: Connection owner, i.e., developer account ID.
+        :param _DirectConnectOwnerAccount: Connection owner, i.e., developer account ID.
         :type DirectConnectOwnerAccount: str
-        :param OwnerAccount: Dedicated tunnel owner, i.e., developer account ID.
+        :param _OwnerAccount: Dedicated tunnel owner, i.e., developer account ID.
         :type OwnerAccount: str
-        :param NetworkType: Network type. Valid values: VPC, BMVPC, CCN.
+        :param _NetworkType: Network type. Valid values: VPC, BMVPC, CCN.
  VPC: Virtual Private Cloud; BMVPC: BM VPC; CCN: Cloud Connect Network.
         :type NetworkType: str
-        :param NetworkRegion: Network of the VPC region, such as `ap-guangzhou`.
+        :param _NetworkRegion: Network of the VPC region, such as `ap-guangzhou`.
         :type NetworkRegion: str
-        :param VpcId: Unified VPC ID or BMVPC ID.
+        :param _VpcId: Unified VPC ID or BMVPC ID.
         :type VpcId: str
-        :param DirectConnectGatewayId: Direct connect gateway ID.
+        :param _DirectConnectGatewayId: Direct connect gateway ID.
         :type DirectConnectGatewayId: str
-        :param RouteType: BGP: BGP routing; STATIC: Static routing. Default value: BGP routing.
+        :param _RouteType: BGP: BGP routing; STATIC: Static routing. Default value: BGP routing.
         :type RouteType: str
-        :param BgpPeer: User-side BGP, including Asn and AuthKey.
+        :param _BgpPeer: User-side BGP, including Asn and AuthKey.
         :type BgpPeer: :class:`tencentcloud.dc.v20180410.models.BgpPeer`
-        :param RouteFilterPrefixes: User-side IP range.
+        :param _RouteFilterPrefixes: User-side IP range.
         :type RouteFilterPrefixes: list of RouteFilterPrefix
-        :param Vlan: VLAN of a dedicated tunnel.
+        :param _Vlan: VLAN of a dedicated tunnel.
         :type Vlan: int
-        :param TencentAddress: TencentAddress: Tencent-side IP address.
+        :param _TencentAddress: TencentAddress: Tencent-side IP address.
         :type TencentAddress: str
-        :param CustomerAddress: CustomerAddress: User-side IP address.
+        :param _CustomerAddress: CustomerAddress: User-side IP address.
         :type CustomerAddress: str
-        :param DirectConnectTunnelName: Dedicated tunnel name.
+        :param _DirectConnectTunnelName: Dedicated tunnel name.
         :type DirectConnectTunnelName: str
-        :param CreatedTime: Creation time of a dedicated tunnel.
+        :param _CreatedTime: Creation time of a dedicated tunnel.
         :type CreatedTime: str
-        :param Bandwidth: Bandwidth value of a dedicated tunnel.
+        :param _Bandwidth: Bandwidth value of a dedicated tunnel.
         :type Bandwidth: int
-        :param TagSet: Tag value of a dedicated tunnel.
+        :param _TagSet: Tag value of a dedicated tunnel.
         :type TagSet: list of Tag
-        :param NetDetectId: Associated custom network probe ID
+        :param _NetDetectId: Associated custom network probe ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :type NetDetectId: str
-        :param EnableBGPCommunity: BGP community switch
+        :param _EnableBGPCommunity: BGP community switch
 Note: this field may return null, indicating that no valid values can be obtained.
         :type EnableBGPCommunity: bool
-        :param NatType: Whether it is a NAT tunnel
+        :param _NatType: Whether it is a NAT tunnel
 Note: this field may return null, indicating that no valid values can be obtained.
         :type NatType: int
-        :param VpcRegion: VPC region abbreviation, such as `gz`, `cd`.
+        :param _VpcRegion: VPC region abbreviation, such as `gz`, `cd`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type VpcRegion: str
-        :param BfdEnable: Whether to enable BFD
+        :param _BfdEnable: Whether to enable BFD
 Note: this field may return null, indicating that no valid values can be obtained.
         :type BfdEnable: int
-        :param AccessPointType: Access point type of a dedicated tunnel.
+        :param _AccessPointType: Access point type of a dedicated tunnel.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AccessPointType: str
-        :param DirectConnectGatewayName: Direct connect gateway name.
+        :param _DirectConnectGatewayName: Direct connect gateway name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DirectConnectGatewayName: str
-        :param VpcName: VPC name.
+        :param _VpcName: VPC name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type VpcName: str
-        :param TencentBackupAddress: Backup IP address on the Tencent side.
+        :param _TencentBackupAddress: Backup IP address on the Tencent side.
         :type TencentBackupAddress: str
-        :param SignLaw: Whether the connection associated with the dedicated tunnel has the service agreement signed.
+        :param _SignLaw: Whether the connection associated with the dedicated tunnel has the service agreement signed.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type SignLaw: bool
-        :param CloudAttachId: Cloud Attached Connection Service ID
+        :param _CloudAttachId: Cloud Attached Connection Service ID
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type CloudAttachId: str
         """
-        self.DirectConnectTunnelId = None
-        self.DirectConnectId = None
-        self.State = None
-        self.DirectConnectOwnerAccount = None
-        self.OwnerAccount = None
-        self.NetworkType = None
-        self.NetworkRegion = None
-        self.VpcId = None
-        self.DirectConnectGatewayId = None
-        self.RouteType = None
-        self.BgpPeer = None
-        self.RouteFilterPrefixes = None
-        self.Vlan = None
-        self.TencentAddress = None
-        self.CustomerAddress = None
-        self.DirectConnectTunnelName = None
-        self.CreatedTime = None
-        self.Bandwidth = None
-        self.TagSet = None
-        self.NetDetectId = None
-        self.EnableBGPCommunity = None
-        self.NatType = None
-        self.VpcRegion = None
-        self.BfdEnable = None
-        self.AccessPointType = None
-        self.DirectConnectGatewayName = None
-        self.VpcName = None
-        self.TencentBackupAddress = None
-        self.SignLaw = None
-        self.CloudAttachId = None
+        self._DirectConnectTunnelId = None
+        self._DirectConnectId = None
+        self._State = None
+        self._DirectConnectOwnerAccount = None
+        self._OwnerAccount = None
+        self._NetworkType = None
+        self._NetworkRegion = None
+        self._VpcId = None
+        self._DirectConnectGatewayId = None
+        self._RouteType = None
+        self._BgpPeer = None
+        self._RouteFilterPrefixes = None
+        self._Vlan = None
+        self._TencentAddress = None
+        self._CustomerAddress = None
+        self._DirectConnectTunnelName = None
+        self._CreatedTime = None
+        self._Bandwidth = None
+        self._TagSet = None
+        self._NetDetectId = None
+        self._EnableBGPCommunity = None
+        self._NatType = None
+        self._VpcRegion = None
+        self._BfdEnable = None
+        self._AccessPointType = None
+        self._DirectConnectGatewayName = None
+        self._VpcName = None
+        self._TencentBackupAddress = None
+        self._SignLaw = None
+        self._CloudAttachId = None
+
+    @property
+    def DirectConnectTunnelId(self):
+        return self._DirectConnectTunnelId
+
+    @DirectConnectTunnelId.setter
+    def DirectConnectTunnelId(self, DirectConnectTunnelId):
+        self._DirectConnectTunnelId = DirectConnectTunnelId
+
+    @property
+    def DirectConnectId(self):
+        return self._DirectConnectId
+
+    @DirectConnectId.setter
+    def DirectConnectId(self, DirectConnectId):
+        self._DirectConnectId = DirectConnectId
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def DirectConnectOwnerAccount(self):
+        return self._DirectConnectOwnerAccount
+
+    @DirectConnectOwnerAccount.setter
+    def DirectConnectOwnerAccount(self, DirectConnectOwnerAccount):
+        self._DirectConnectOwnerAccount = DirectConnectOwnerAccount
+
+    @property
+    def OwnerAccount(self):
+        return self._OwnerAccount
+
+    @OwnerAccount.setter
+    def OwnerAccount(self, OwnerAccount):
+        self._OwnerAccount = OwnerAccount
+
+    @property
+    def NetworkType(self):
+        return self._NetworkType
+
+    @NetworkType.setter
+    def NetworkType(self, NetworkType):
+        self._NetworkType = NetworkType
+
+    @property
+    def NetworkRegion(self):
+        return self._NetworkRegion
+
+    @NetworkRegion.setter
+    def NetworkRegion(self, NetworkRegion):
+        self._NetworkRegion = NetworkRegion
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def DirectConnectGatewayId(self):
+        return self._DirectConnectGatewayId
+
+    @DirectConnectGatewayId.setter
+    def DirectConnectGatewayId(self, DirectConnectGatewayId):
+        self._DirectConnectGatewayId = DirectConnectGatewayId
+
+    @property
+    def RouteType(self):
+        return self._RouteType
+
+    @RouteType.setter
+    def RouteType(self, RouteType):
+        self._RouteType = RouteType
+
+    @property
+    def BgpPeer(self):
+        return self._BgpPeer
+
+    @BgpPeer.setter
+    def BgpPeer(self, BgpPeer):
+        self._BgpPeer = BgpPeer
+
+    @property
+    def RouteFilterPrefixes(self):
+        return self._RouteFilterPrefixes
+
+    @RouteFilterPrefixes.setter
+    def RouteFilterPrefixes(self, RouteFilterPrefixes):
+        self._RouteFilterPrefixes = RouteFilterPrefixes
+
+    @property
+    def Vlan(self):
+        return self._Vlan
+
+    @Vlan.setter
+    def Vlan(self, Vlan):
+        self._Vlan = Vlan
+
+    @property
+    def TencentAddress(self):
+        return self._TencentAddress
+
+    @TencentAddress.setter
+    def TencentAddress(self, TencentAddress):
+        self._TencentAddress = TencentAddress
+
+    @property
+    def CustomerAddress(self):
+        return self._CustomerAddress
+
+    @CustomerAddress.setter
+    def CustomerAddress(self, CustomerAddress):
+        self._CustomerAddress = CustomerAddress
+
+    @property
+    def DirectConnectTunnelName(self):
+        return self._DirectConnectTunnelName
+
+    @DirectConnectTunnelName.setter
+    def DirectConnectTunnelName(self, DirectConnectTunnelName):
+        self._DirectConnectTunnelName = DirectConnectTunnelName
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def Bandwidth(self):
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
+
+    @property
+    def TagSet(self):
+        return self._TagSet
+
+    @TagSet.setter
+    def TagSet(self, TagSet):
+        self._TagSet = TagSet
+
+    @property
+    def NetDetectId(self):
+        return self._NetDetectId
+
+    @NetDetectId.setter
+    def NetDetectId(self, NetDetectId):
+        self._NetDetectId = NetDetectId
+
+    @property
+    def EnableBGPCommunity(self):
+        return self._EnableBGPCommunity
+
+    @EnableBGPCommunity.setter
+    def EnableBGPCommunity(self, EnableBGPCommunity):
+        self._EnableBGPCommunity = EnableBGPCommunity
+
+    @property
+    def NatType(self):
+        return self._NatType
+
+    @NatType.setter
+    def NatType(self, NatType):
+        self._NatType = NatType
+
+    @property
+    def VpcRegion(self):
+        return self._VpcRegion
+
+    @VpcRegion.setter
+    def VpcRegion(self, VpcRegion):
+        self._VpcRegion = VpcRegion
+
+    @property
+    def BfdEnable(self):
+        return self._BfdEnable
+
+    @BfdEnable.setter
+    def BfdEnable(self, BfdEnable):
+        self._BfdEnable = BfdEnable
+
+    @property
+    def AccessPointType(self):
+        return self._AccessPointType
+
+    @AccessPointType.setter
+    def AccessPointType(self, AccessPointType):
+        self._AccessPointType = AccessPointType
+
+    @property
+    def DirectConnectGatewayName(self):
+        return self._DirectConnectGatewayName
+
+    @DirectConnectGatewayName.setter
+    def DirectConnectGatewayName(self, DirectConnectGatewayName):
+        self._DirectConnectGatewayName = DirectConnectGatewayName
+
+    @property
+    def VpcName(self):
+        return self._VpcName
+
+    @VpcName.setter
+    def VpcName(self, VpcName):
+        self._VpcName = VpcName
+
+    @property
+    def TencentBackupAddress(self):
+        return self._TencentBackupAddress
+
+    @TencentBackupAddress.setter
+    def TencentBackupAddress(self, TencentBackupAddress):
+        self._TencentBackupAddress = TencentBackupAddress
+
+    @property
+    def SignLaw(self):
+        return self._SignLaw
+
+    @SignLaw.setter
+    def SignLaw(self, SignLaw):
+        self._SignLaw = SignLaw
+
+    @property
+    def CloudAttachId(self):
+        return self._CloudAttachId
+
+    @CloudAttachId.setter
+    def CloudAttachId(self, CloudAttachId):
+        self._CloudAttachId = CloudAttachId
 
 
     def _deserialize(self, params):
-        self.DirectConnectTunnelId = params.get("DirectConnectTunnelId")
-        self.DirectConnectId = params.get("DirectConnectId")
-        self.State = params.get("State")
-        self.DirectConnectOwnerAccount = params.get("DirectConnectOwnerAccount")
-        self.OwnerAccount = params.get("OwnerAccount")
-        self.NetworkType = params.get("NetworkType")
-        self.NetworkRegion = params.get("NetworkRegion")
-        self.VpcId = params.get("VpcId")
-        self.DirectConnectGatewayId = params.get("DirectConnectGatewayId")
-        self.RouteType = params.get("RouteType")
+        self._DirectConnectTunnelId = params.get("DirectConnectTunnelId")
+        self._DirectConnectId = params.get("DirectConnectId")
+        self._State = params.get("State")
+        self._DirectConnectOwnerAccount = params.get("DirectConnectOwnerAccount")
+        self._OwnerAccount = params.get("OwnerAccount")
+        self._NetworkType = params.get("NetworkType")
+        self._NetworkRegion = params.get("NetworkRegion")
+        self._VpcId = params.get("VpcId")
+        self._DirectConnectGatewayId = params.get("DirectConnectGatewayId")
+        self._RouteType = params.get("RouteType")
         if params.get("BgpPeer") is not None:
-            self.BgpPeer = BgpPeer()
-            self.BgpPeer._deserialize(params.get("BgpPeer"))
+            self._BgpPeer = BgpPeer()
+            self._BgpPeer._deserialize(params.get("BgpPeer"))
         if params.get("RouteFilterPrefixes") is not None:
-            self.RouteFilterPrefixes = []
+            self._RouteFilterPrefixes = []
             for item in params.get("RouteFilterPrefixes"):
                 obj = RouteFilterPrefix()
                 obj._deserialize(item)
-                self.RouteFilterPrefixes.append(obj)
-        self.Vlan = params.get("Vlan")
-        self.TencentAddress = params.get("TencentAddress")
-        self.CustomerAddress = params.get("CustomerAddress")
-        self.DirectConnectTunnelName = params.get("DirectConnectTunnelName")
-        self.CreatedTime = params.get("CreatedTime")
-        self.Bandwidth = params.get("Bandwidth")
+                self._RouteFilterPrefixes.append(obj)
+        self._Vlan = params.get("Vlan")
+        self._TencentAddress = params.get("TencentAddress")
+        self._CustomerAddress = params.get("CustomerAddress")
+        self._DirectConnectTunnelName = params.get("DirectConnectTunnelName")
+        self._CreatedTime = params.get("CreatedTime")
+        self._Bandwidth = params.get("Bandwidth")
         if params.get("TagSet") is not None:
-            self.TagSet = []
+            self._TagSet = []
             for item in params.get("TagSet"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.TagSet.append(obj)
-        self.NetDetectId = params.get("NetDetectId")
-        self.EnableBGPCommunity = params.get("EnableBGPCommunity")
-        self.NatType = params.get("NatType")
-        self.VpcRegion = params.get("VpcRegion")
-        self.BfdEnable = params.get("BfdEnable")
-        self.AccessPointType = params.get("AccessPointType")
-        self.DirectConnectGatewayName = params.get("DirectConnectGatewayName")
-        self.VpcName = params.get("VpcName")
-        self.TencentBackupAddress = params.get("TencentBackupAddress")
-        self.SignLaw = params.get("SignLaw")
-        self.CloudAttachId = params.get("CloudAttachId")
+                self._TagSet.append(obj)
+        self._NetDetectId = params.get("NetDetectId")
+        self._EnableBGPCommunity = params.get("EnableBGPCommunity")
+        self._NatType = params.get("NatType")
+        self._VpcRegion = params.get("VpcRegion")
+        self._BfdEnable = params.get("BfdEnable")
+        self._AccessPointType = params.get("AccessPointType")
+        self._DirectConnectGatewayName = params.get("DirectConnectGatewayName")
+        self._VpcName = params.get("VpcName")
+        self._TencentBackupAddress = params.get("TencentBackupAddress")
+        self._SignLaw = params.get("SignLaw")
+        self._CloudAttachId = params.get("CloudAttachId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1338,18 +2690,27 @@ class DisableInternetAddressRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: ID of the internet tunnel’s public IP address
+        :param _InstanceId: ID of the internet tunnel’s public IP address
         :type InstanceId: str
         """
-        self.InstanceId = None
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1362,14 +2723,22 @@ class DisableInternetAddressResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class EnableInternetAddressRequest(AbstractModel):
@@ -1379,18 +2748,27 @@ class EnableInternetAddressRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: ID of the internet tunnel’s public IP address
+        :param _InstanceId: ID of the internet tunnel’s public IP address
         :type InstanceId: str
         """
-        self.InstanceId = None
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1403,14 +2781,22 @@ class EnableInternetAddressResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class Filter(AbstractModel):
@@ -1420,22 +2806,39 @@ class Filter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: Fields to be filtered.
+        :param _Name: Fields to be filtered.
         :type Name: str
-        :param Values: Filter values of the field.
+        :param _Values: Filter values of the field.
         :type Values: list of str
         """
-        self.Name = None
-        self.Values = None
+        self._Name = None
+        self._Values = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Values = params.get("Values")
+        self._Name = params.get("Name")
+        self._Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1448,78 +2851,175 @@ class InternetAddressDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Internet tunnel’s IP address ID
+        :param _InstanceId: Internet tunnel’s IP address ID
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type InstanceId: str
-        :param Subnet: Internet tunnel’s network address
+        :param _Subnet: Internet tunnel’s network address
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Subnet: str
-        :param MaskLen: Mask length of a network address
+        :param _MaskLen: Mask length of a network address
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type MaskLen: int
-        :param AddrType: Address type. Valid values: 0: BGP
+        :param _AddrType: Address type. Valid values: 0: BGP
 1: China Telecom
 2: China Mobile
 3: China Unicom
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type AddrType: int
-        :param Status: Address status. Valid values: 0: in use
+        :param _Status: Address status. Valid values: 0: in use
 1: disabled
 2: returned
         :type Status: int
-        :param ApplyTime: Applied at
+        :param _ApplyTime: Applied at
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ApplyTime: str
-        :param StopTime: Disabled at
+        :param _StopTime: Disabled at
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type StopTime: str
-        :param ReleaseTime: Returned at
+        :param _ReleaseTime: Returned at
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ReleaseTime: str
-        :param Region: Region
+        :param _Region: Region
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Region: str
-        :param AppId: User ID
+        :param _AppId: User ID
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type AppId: int
-        :param AddrProto: Address protocol. Valid values: 0: IPv4; 1: IPv6
+        :param _AddrProto: Address protocol. Valid values: 0: IPv4; 1: IPv6
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type AddrProto: int
-        :param ReserveTime: Retention period of a released IP address, in days
+        :param _ReserveTime: Retention period of a released IP address, in days
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ReserveTime: int
         """
-        self.InstanceId = None
-        self.Subnet = None
-        self.MaskLen = None
-        self.AddrType = None
-        self.Status = None
-        self.ApplyTime = None
-        self.StopTime = None
-        self.ReleaseTime = None
-        self.Region = None
-        self.AppId = None
-        self.AddrProto = None
-        self.ReserveTime = None
+        self._InstanceId = None
+        self._Subnet = None
+        self._MaskLen = None
+        self._AddrType = None
+        self._Status = None
+        self._ApplyTime = None
+        self._StopTime = None
+        self._ReleaseTime = None
+        self._Region = None
+        self._AppId = None
+        self._AddrProto = None
+        self._ReserveTime = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Subnet(self):
+        return self._Subnet
+
+    @Subnet.setter
+    def Subnet(self, Subnet):
+        self._Subnet = Subnet
+
+    @property
+    def MaskLen(self):
+        return self._MaskLen
+
+    @MaskLen.setter
+    def MaskLen(self, MaskLen):
+        self._MaskLen = MaskLen
+
+    @property
+    def AddrType(self):
+        return self._AddrType
+
+    @AddrType.setter
+    def AddrType(self, AddrType):
+        self._AddrType = AddrType
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ApplyTime(self):
+        return self._ApplyTime
+
+    @ApplyTime.setter
+    def ApplyTime(self, ApplyTime):
+        self._ApplyTime = ApplyTime
+
+    @property
+    def StopTime(self):
+        return self._StopTime
+
+    @StopTime.setter
+    def StopTime(self, StopTime):
+        self._StopTime = StopTime
+
+    @property
+    def ReleaseTime(self):
+        return self._ReleaseTime
+
+    @ReleaseTime.setter
+    def ReleaseTime(self, ReleaseTime):
+        self._ReleaseTime = ReleaseTime
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def AddrProto(self):
+        return self._AddrProto
+
+    @AddrProto.setter
+    def AddrProto(self, AddrProto):
+        self._AddrProto = AddrProto
+
+    @property
+    def ReserveTime(self):
+        return self._ReserveTime
+
+    @ReserveTime.setter
+    def ReserveTime(self, ReserveTime):
+        self._ReserveTime = ReserveTime
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.Subnet = params.get("Subnet")
-        self.MaskLen = params.get("MaskLen")
-        self.AddrType = params.get("AddrType")
-        self.Status = params.get("Status")
-        self.ApplyTime = params.get("ApplyTime")
-        self.StopTime = params.get("StopTime")
-        self.ReleaseTime = params.get("ReleaseTime")
-        self.Region = params.get("Region")
-        self.AppId = params.get("AppId")
-        self.AddrProto = params.get("AddrProto")
-        self.ReserveTime = params.get("ReserveTime")
+        self._InstanceId = params.get("InstanceId")
+        self._Subnet = params.get("Subnet")
+        self._MaskLen = params.get("MaskLen")
+        self._AddrType = params.get("AddrType")
+        self._Status = params.get("Status")
+        self._ApplyTime = params.get("ApplyTime")
+        self._StopTime = params.get("StopTime")
+        self._ReleaseTime = params.get("ReleaseTime")
+        self._Region = params.get("Region")
+        self._AppId = params.get("AppId")
+        self._AddrProto = params.get("AddrProto")
+        self._ReserveTime = params.get("ReserveTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1532,24 +3032,41 @@ class InternetAddressStatistics(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Region: Region
+        :param _Region: Region
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Region: str
-        :param SubnetNum: Number of public IP addresses for internet tunnels
+        :param _SubnetNum: Number of public IP addresses for internet tunnels
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type SubnetNum: int
         """
-        self.Region = None
-        self.SubnetNum = None
+        self._Region = None
+        self._SubnetNum = None
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def SubnetNum(self):
+        return self._SubnetNum
+
+    @SubnetNum.setter
+    def SubnetNum(self, SubnetNum):
+        self._SubnetNum = SubnetNum
 
 
     def _deserialize(self, params):
-        self.Region = params.get("Region")
-        self.SubnetNum = params.get("SubnetNum")
+        self._Region = params.get("Region")
+        self._SubnetNum = params.get("SubnetNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1562,66 +3079,171 @@ class ModifyDirectConnectAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DirectConnectId: Connection ID.
+        :param _DirectConnectId: Connection ID.
         :type DirectConnectId: str
-        :param DirectConnectName: Connection name.
+        :param _DirectConnectName: Connection name.
         :type DirectConnectName: str
-        :param CircuitCode: Circuit code of a connection, which is provided by the ISP or connection provider.
+        :param _CircuitCode: Circuit code of a connection, which is provided by the ISP or connection provider.
         :type CircuitCode: str
-        :param Vlan: VLAN for connection debugging.
+        :param _Vlan: VLAN for connection debugging.
         :type Vlan: int
-        :param TencentAddress: Tencent-side IP address for connection debugging.
+        :param _TencentAddress: Tencent-side IP address for connection debugging.
         :type TencentAddress: str
-        :param CustomerAddress: User-side IP address for connection debugging.
+        :param _CustomerAddress: User-side IP address for connection debugging.
         :type CustomerAddress: str
-        :param CustomerName: Name of connection applicant, which is obtained from the account system by default.
+        :param _CustomerName: Name of connection applicant, which is obtained from the account system by default.
         :type CustomerName: str
-        :param CustomerContactMail: Email address of connection applicant, which is obtained from the account system by default.
+        :param _CustomerContactMail: Email address of connection applicant, which is obtained from the account system by default.
         :type CustomerContactMail: str
-        :param CustomerContactNumber: Contact number of connection applicant, which is obtained from the account system by default.
+        :param _CustomerContactNumber: Contact number of connection applicant, which is obtained from the account system by default.
         :type CustomerContactNumber: str
-        :param FaultReportContactPerson: Fault reporting contact person.
+        :param _FaultReportContactPerson: Fault reporting contact person.
         :type FaultReportContactPerson: str
-        :param FaultReportContactNumber: Fault reporting contact number.
+        :param _FaultReportContactNumber: Fault reporting contact number.
         :type FaultReportContactNumber: str
-        :param SignLaw: Whether the connection applicant has signed the service agreement.
+        :param _SignLaw: Whether the connection applicant has signed the service agreement.
         :type SignLaw: bool
-        :param Bandwidth: Connection’s bandwidth
+        :param _Bandwidth: Connection’s bandwidth
         :type Bandwidth: int
         """
-        self.DirectConnectId = None
-        self.DirectConnectName = None
-        self.CircuitCode = None
-        self.Vlan = None
-        self.TencentAddress = None
-        self.CustomerAddress = None
-        self.CustomerName = None
-        self.CustomerContactMail = None
-        self.CustomerContactNumber = None
-        self.FaultReportContactPerson = None
-        self.FaultReportContactNumber = None
-        self.SignLaw = None
-        self.Bandwidth = None
+        self._DirectConnectId = None
+        self._DirectConnectName = None
+        self._CircuitCode = None
+        self._Vlan = None
+        self._TencentAddress = None
+        self._CustomerAddress = None
+        self._CustomerName = None
+        self._CustomerContactMail = None
+        self._CustomerContactNumber = None
+        self._FaultReportContactPerson = None
+        self._FaultReportContactNumber = None
+        self._SignLaw = None
+        self._Bandwidth = None
+
+    @property
+    def DirectConnectId(self):
+        return self._DirectConnectId
+
+    @DirectConnectId.setter
+    def DirectConnectId(self, DirectConnectId):
+        self._DirectConnectId = DirectConnectId
+
+    @property
+    def DirectConnectName(self):
+        return self._DirectConnectName
+
+    @DirectConnectName.setter
+    def DirectConnectName(self, DirectConnectName):
+        self._DirectConnectName = DirectConnectName
+
+    @property
+    def CircuitCode(self):
+        return self._CircuitCode
+
+    @CircuitCode.setter
+    def CircuitCode(self, CircuitCode):
+        self._CircuitCode = CircuitCode
+
+    @property
+    def Vlan(self):
+        return self._Vlan
+
+    @Vlan.setter
+    def Vlan(self, Vlan):
+        self._Vlan = Vlan
+
+    @property
+    def TencentAddress(self):
+        return self._TencentAddress
+
+    @TencentAddress.setter
+    def TencentAddress(self, TencentAddress):
+        self._TencentAddress = TencentAddress
+
+    @property
+    def CustomerAddress(self):
+        return self._CustomerAddress
+
+    @CustomerAddress.setter
+    def CustomerAddress(self, CustomerAddress):
+        self._CustomerAddress = CustomerAddress
+
+    @property
+    def CustomerName(self):
+        return self._CustomerName
+
+    @CustomerName.setter
+    def CustomerName(self, CustomerName):
+        self._CustomerName = CustomerName
+
+    @property
+    def CustomerContactMail(self):
+        return self._CustomerContactMail
+
+    @CustomerContactMail.setter
+    def CustomerContactMail(self, CustomerContactMail):
+        self._CustomerContactMail = CustomerContactMail
+
+    @property
+    def CustomerContactNumber(self):
+        return self._CustomerContactNumber
+
+    @CustomerContactNumber.setter
+    def CustomerContactNumber(self, CustomerContactNumber):
+        self._CustomerContactNumber = CustomerContactNumber
+
+    @property
+    def FaultReportContactPerson(self):
+        return self._FaultReportContactPerson
+
+    @FaultReportContactPerson.setter
+    def FaultReportContactPerson(self, FaultReportContactPerson):
+        self._FaultReportContactPerson = FaultReportContactPerson
+
+    @property
+    def FaultReportContactNumber(self):
+        return self._FaultReportContactNumber
+
+    @FaultReportContactNumber.setter
+    def FaultReportContactNumber(self, FaultReportContactNumber):
+        self._FaultReportContactNumber = FaultReportContactNumber
+
+    @property
+    def SignLaw(self):
+        return self._SignLaw
+
+    @SignLaw.setter
+    def SignLaw(self, SignLaw):
+        self._SignLaw = SignLaw
+
+    @property
+    def Bandwidth(self):
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
 
 
     def _deserialize(self, params):
-        self.DirectConnectId = params.get("DirectConnectId")
-        self.DirectConnectName = params.get("DirectConnectName")
-        self.CircuitCode = params.get("CircuitCode")
-        self.Vlan = params.get("Vlan")
-        self.TencentAddress = params.get("TencentAddress")
-        self.CustomerAddress = params.get("CustomerAddress")
-        self.CustomerName = params.get("CustomerName")
-        self.CustomerContactMail = params.get("CustomerContactMail")
-        self.CustomerContactNumber = params.get("CustomerContactNumber")
-        self.FaultReportContactPerson = params.get("FaultReportContactPerson")
-        self.FaultReportContactNumber = params.get("FaultReportContactNumber")
-        self.SignLaw = params.get("SignLaw")
-        self.Bandwidth = params.get("Bandwidth")
+        self._DirectConnectId = params.get("DirectConnectId")
+        self._DirectConnectName = params.get("DirectConnectName")
+        self._CircuitCode = params.get("CircuitCode")
+        self._Vlan = params.get("Vlan")
+        self._TencentAddress = params.get("TencentAddress")
+        self._CustomerAddress = params.get("CustomerAddress")
+        self._CustomerName = params.get("CustomerName")
+        self._CustomerContactMail = params.get("CustomerContactMail")
+        self._CustomerContactNumber = params.get("CustomerContactNumber")
+        self._FaultReportContactPerson = params.get("FaultReportContactPerson")
+        self._FaultReportContactNumber = params.get("FaultReportContactNumber")
+        self._SignLaw = params.get("SignLaw")
+        self._Bandwidth = params.get("Bandwidth")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1634,14 +3256,22 @@ class ModifyDirectConnectAttributeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyDirectConnectTunnelAttributeRequest(AbstractModel):
@@ -1651,53 +3281,118 @@ class ModifyDirectConnectTunnelAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DirectConnectTunnelId: Dedicated tunnel ID.
+        :param _DirectConnectTunnelId: Dedicated tunnel ID.
         :type DirectConnectTunnelId: str
-        :param DirectConnectTunnelName: Dedicated tunnel name.
+        :param _DirectConnectTunnelName: Dedicated tunnel name.
         :type DirectConnectTunnelName: str
-        :param BgpPeer: User-side BGP, including Asn and AuthKey.
+        :param _BgpPeer: User-side BGP, including Asn and AuthKey.
         :type BgpPeer: :class:`tencentcloud.dc.v20180410.models.BgpPeer`
-        :param RouteFilterPrefixes: User-side IP range.
+        :param _RouteFilterPrefixes: User-side IP range.
         :type RouteFilterPrefixes: list of RouteFilterPrefix
-        :param TencentAddress: Tencent-side IP address.
+        :param _TencentAddress: Tencent-side IP address.
         :type TencentAddress: str
-        :param CustomerAddress: User-side IP address.
+        :param _CustomerAddress: User-side IP address.
         :type CustomerAddress: str
-        :param Bandwidth: Bandwidth value of a dedicated tunnel in Mbps.
+        :param _Bandwidth: Bandwidth value of a dedicated tunnel in Mbps.
         :type Bandwidth: int
-        :param TencentBackupAddress: Tencent-side standby IP address
+        :param _TencentBackupAddress: Tencent-side standby IP address
         :type TencentBackupAddress: str
         """
-        self.DirectConnectTunnelId = None
-        self.DirectConnectTunnelName = None
-        self.BgpPeer = None
-        self.RouteFilterPrefixes = None
-        self.TencentAddress = None
-        self.CustomerAddress = None
-        self.Bandwidth = None
-        self.TencentBackupAddress = None
+        self._DirectConnectTunnelId = None
+        self._DirectConnectTunnelName = None
+        self._BgpPeer = None
+        self._RouteFilterPrefixes = None
+        self._TencentAddress = None
+        self._CustomerAddress = None
+        self._Bandwidth = None
+        self._TencentBackupAddress = None
+
+    @property
+    def DirectConnectTunnelId(self):
+        return self._DirectConnectTunnelId
+
+    @DirectConnectTunnelId.setter
+    def DirectConnectTunnelId(self, DirectConnectTunnelId):
+        self._DirectConnectTunnelId = DirectConnectTunnelId
+
+    @property
+    def DirectConnectTunnelName(self):
+        return self._DirectConnectTunnelName
+
+    @DirectConnectTunnelName.setter
+    def DirectConnectTunnelName(self, DirectConnectTunnelName):
+        self._DirectConnectTunnelName = DirectConnectTunnelName
+
+    @property
+    def BgpPeer(self):
+        return self._BgpPeer
+
+    @BgpPeer.setter
+    def BgpPeer(self, BgpPeer):
+        self._BgpPeer = BgpPeer
+
+    @property
+    def RouteFilterPrefixes(self):
+        return self._RouteFilterPrefixes
+
+    @RouteFilterPrefixes.setter
+    def RouteFilterPrefixes(self, RouteFilterPrefixes):
+        self._RouteFilterPrefixes = RouteFilterPrefixes
+
+    @property
+    def TencentAddress(self):
+        return self._TencentAddress
+
+    @TencentAddress.setter
+    def TencentAddress(self, TencentAddress):
+        self._TencentAddress = TencentAddress
+
+    @property
+    def CustomerAddress(self):
+        return self._CustomerAddress
+
+    @CustomerAddress.setter
+    def CustomerAddress(self, CustomerAddress):
+        self._CustomerAddress = CustomerAddress
+
+    @property
+    def Bandwidth(self):
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
+
+    @property
+    def TencentBackupAddress(self):
+        return self._TencentBackupAddress
+
+    @TencentBackupAddress.setter
+    def TencentBackupAddress(self, TencentBackupAddress):
+        self._TencentBackupAddress = TencentBackupAddress
 
 
     def _deserialize(self, params):
-        self.DirectConnectTunnelId = params.get("DirectConnectTunnelId")
-        self.DirectConnectTunnelName = params.get("DirectConnectTunnelName")
+        self._DirectConnectTunnelId = params.get("DirectConnectTunnelId")
+        self._DirectConnectTunnelName = params.get("DirectConnectTunnelName")
         if params.get("BgpPeer") is not None:
-            self.BgpPeer = BgpPeer()
-            self.BgpPeer._deserialize(params.get("BgpPeer"))
+            self._BgpPeer = BgpPeer()
+            self._BgpPeer._deserialize(params.get("BgpPeer"))
         if params.get("RouteFilterPrefixes") is not None:
-            self.RouteFilterPrefixes = []
+            self._RouteFilterPrefixes = []
             for item in params.get("RouteFilterPrefixes"):
                 obj = RouteFilterPrefix()
                 obj._deserialize(item)
-                self.RouteFilterPrefixes.append(obj)
-        self.TencentAddress = params.get("TencentAddress")
-        self.CustomerAddress = params.get("CustomerAddress")
-        self.Bandwidth = params.get("Bandwidth")
-        self.TencentBackupAddress = params.get("TencentBackupAddress")
+                self._RouteFilterPrefixes.append(obj)
+        self._TencentAddress = params.get("TencentAddress")
+        self._CustomerAddress = params.get("CustomerAddress")
+        self._Bandwidth = params.get("Bandwidth")
+        self._TencentBackupAddress = params.get("TencentBackupAddress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1710,14 +3405,22 @@ class ModifyDirectConnectTunnelAttributeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class NQAInfo(AbstractModel):
@@ -1727,26 +3430,51 @@ class NQAInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProbeFailedTimes: Number of health checks
+        :param _ProbeFailedTimes: Number of health checks
         :type ProbeFailedTimes: int
-        :param Interval: Health check interval
+        :param _Interval: Health check interval
         :type Interval: int
-        :param DestinationIp: IP address for the health check
+        :param _DestinationIp: IP address for the health check
         :type DestinationIp: str
         """
-        self.ProbeFailedTimes = None
-        self.Interval = None
-        self.DestinationIp = None
+        self._ProbeFailedTimes = None
+        self._Interval = None
+        self._DestinationIp = None
+
+    @property
+    def ProbeFailedTimes(self):
+        return self._ProbeFailedTimes
+
+    @ProbeFailedTimes.setter
+    def ProbeFailedTimes(self, ProbeFailedTimes):
+        self._ProbeFailedTimes = ProbeFailedTimes
+
+    @property
+    def Interval(self):
+        return self._Interval
+
+    @Interval.setter
+    def Interval(self, Interval):
+        self._Interval = Interval
+
+    @property
+    def DestinationIp(self):
+        return self._DestinationIp
+
+    @DestinationIp.setter
+    def DestinationIp(self, DestinationIp):
+        self._DestinationIp = DestinationIp
 
 
     def _deserialize(self, params):
-        self.ProbeFailedTimes = params.get("ProbeFailedTimes")
-        self.Interval = params.get("Interval")
-        self.DestinationIp = params.get("DestinationIp")
+        self._ProbeFailedTimes = params.get("ProbeFailedTimes")
+        self._Interval = params.get("Interval")
+        self._DestinationIp = params.get("DestinationIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1759,18 +3487,27 @@ class RejectDirectConnectTunnelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DirectConnectTunnelId: None.
+        :param _DirectConnectTunnelId: None.
         :type DirectConnectTunnelId: str
         """
-        self.DirectConnectTunnelId = None
+        self._DirectConnectTunnelId = None
+
+    @property
+    def DirectConnectTunnelId(self):
+        return self._DirectConnectTunnelId
+
+    @DirectConnectTunnelId.setter
+    def DirectConnectTunnelId(self, DirectConnectTunnelId):
+        self._DirectConnectTunnelId = DirectConnectTunnelId
 
 
     def _deserialize(self, params):
-        self.DirectConnectTunnelId = params.get("DirectConnectTunnelId")
+        self._DirectConnectTunnelId = params.get("DirectConnectTunnelId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1783,14 +3520,22 @@ class RejectDirectConnectTunnelResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ReleaseInternetAddressRequest(AbstractModel):
@@ -1800,18 +3545,27 @@ class ReleaseInternetAddressRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: ID of the internet tunnel’s public IP address
+        :param _InstanceId: ID of the internet tunnel’s public IP address
         :type InstanceId: str
         """
-        self.InstanceId = None
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
 
     def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1824,14 +3578,22 @@ class ReleaseInternetAddressResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class RouteFilterPrefix(AbstractModel):
@@ -1841,18 +3603,27 @@ class RouteFilterPrefix(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Cidr: User-side IP range.
+        :param _Cidr: User-side IP range.
         :type Cidr: str
         """
-        self.Cidr = None
+        self._Cidr = None
+
+    @property
+    def Cidr(self):
+        return self._Cidr
+
+    @Cidr.setter
+    def Cidr(self, Cidr):
+        self._Cidr = Cidr
 
 
     def _deserialize(self, params):
-        self.Cidr = params.get("Cidr")
+        self._Cidr = params.get("Cidr")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1865,24 +3636,41 @@ class Tag(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Key: Tag key
+        :param _Key: Tag key
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Key: str
-        :param Value: Tag value
+        :param _Value: Tag value
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Value: str
         """
-        self.Key = None
-        self.Value = None
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
 
 
     def _deserialize(self, params):
-        self.Key = params.get("Key")
-        self.Value = params.get("Value")
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

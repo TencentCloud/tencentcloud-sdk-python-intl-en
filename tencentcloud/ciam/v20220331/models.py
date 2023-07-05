@@ -25,27 +25,44 @@ class CreateApiImportUserJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserStoreId: User directory ID
+        :param _UserStoreId: User directory ID
         :type UserStoreId: str
-        :param DataFlowUserCreateList: Imported user data
+        :param _DataFlowUserCreateList: Imported user data
         :type DataFlowUserCreateList: list of ImportUser
         """
-        self.UserStoreId = None
-        self.DataFlowUserCreateList = None
+        self._UserStoreId = None
+        self._DataFlowUserCreateList = None
+
+    @property
+    def UserStoreId(self):
+        return self._UserStoreId
+
+    @UserStoreId.setter
+    def UserStoreId(self, UserStoreId):
+        self._UserStoreId = UserStoreId
+
+    @property
+    def DataFlowUserCreateList(self):
+        return self._DataFlowUserCreateList
+
+    @DataFlowUserCreateList.setter
+    def DataFlowUserCreateList(self, DataFlowUserCreateList):
+        self._DataFlowUserCreateList = DataFlowUserCreateList
 
 
     def _deserialize(self, params):
-        self.UserStoreId = params.get("UserStoreId")
+        self._UserStoreId = params.get("UserStoreId")
         if params.get("DataFlowUserCreateList") is not None:
-            self.DataFlowUserCreateList = []
+            self._DataFlowUserCreateList = []
             for item in params.get("DataFlowUserCreateList"):
                 obj = ImportUser()
                 obj._deserialize(item)
-                self.DataFlowUserCreateList.append(obj)
+                self._DataFlowUserCreateList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -58,20 +75,36 @@ class CreateApiImportUserJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Job: Data flow task
+        :param _Job: Data flow task
         :type Job: :class:`tencentcloud.ciam.v20220331.models.Job`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Job = None
-        self.RequestId = None
+        self._Job = None
+        self._RequestId = None
+
+    @property
+    def Job(self):
+        return self._Job
+
+    @Job.setter
+    def Job(self, Job):
+        self._Job = Job
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Job") is not None:
-            self.Job = Job()
-            self.Job._deserialize(params.get("Job"))
-        self.RequestId = params.get("RequestId")
+            self._Job = Job()
+            self._Job._deserialize(params.get("Job"))
+        self._RequestId = params.get("RequestId")
 
 
 class CreateFileExportUserJobRequest(AbstractModel):
@@ -81,46 +114,79 @@ class CreateFileExportUserJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserStoreId: User directory ID
+        :param _UserStoreId: User directory ID
         :type UserStoreId: str
-        :param Format: Exported data type
+        :param _Format: Exported data type
 
 <li> **NDJSON** </li>  New-line Delimited JSON
 <li> **CSV** </li>  Comma-Separated Values
         :type Format: str
-        :param Filters: Valid values of `Key`: `condition`, `userGroupId`.
+        :param _Filters: Valid values of `Key`: `condition`, `userGroupId`.
 
 <li> **condition** </li>	Values = Query condition, which can be user ID, username, mobile number, or email address.
 <li> **userGroupId** </li>	Values = User group ID
         :type Filters: list of Filter
-        :param ExportPropertyMaps: Attributes and mapping names included in the exported user information. If this parameter is empty, all attributes will be included.
+        :param _ExportPropertyMaps: Attributes and mapping names included in the exported user information. If this parameter is empty, all attributes will be included.
         :type ExportPropertyMaps: list of ExportPropertyMap
         """
-        self.UserStoreId = None
-        self.Format = None
-        self.Filters = None
-        self.ExportPropertyMaps = None
+        self._UserStoreId = None
+        self._Format = None
+        self._Filters = None
+        self._ExportPropertyMaps = None
+
+    @property
+    def UserStoreId(self):
+        return self._UserStoreId
+
+    @UserStoreId.setter
+    def UserStoreId(self, UserStoreId):
+        self._UserStoreId = UserStoreId
+
+    @property
+    def Format(self):
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def ExportPropertyMaps(self):
+        return self._ExportPropertyMaps
+
+    @ExportPropertyMaps.setter
+    def ExportPropertyMaps(self, ExportPropertyMaps):
+        self._ExportPropertyMaps = ExportPropertyMaps
 
 
     def _deserialize(self, params):
-        self.UserStoreId = params.get("UserStoreId")
-        self.Format = params.get("Format")
+        self._UserStoreId = params.get("UserStoreId")
+        self._Format = params.get("Format")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
+                self._Filters.append(obj)
         if params.get("ExportPropertyMaps") is not None:
-            self.ExportPropertyMaps = []
+            self._ExportPropertyMaps = []
             for item in params.get("ExportPropertyMaps"):
                 obj = ExportPropertyMap()
                 obj._deserialize(item)
-                self.ExportPropertyMaps.append(obj)
+                self._ExportPropertyMaps.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -133,20 +199,36 @@ class CreateFileExportUserJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Job: Data flow task
+        :param _Job: Data flow task
         :type Job: :class:`tencentcloud.ciam.v20220331.models.Job`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Job = None
-        self.RequestId = None
+        self._Job = None
+        self._RequestId = None
+
+    @property
+    def Job(self):
+        return self._Job
+
+    @Job.setter
+    def Job(self, Job):
+        self._Job = Job
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Job") is not None:
-            self.Job = Job()
-            self.Job._deserialize(params.get("Job"))
-        self.RequestId = params.get("RequestId")
+            self._Job = Job()
+            self._Job._deserialize(params.get("Job"))
+        self._RequestId = params.get("RequestId")
 
 
 class CreateUserRequest(AbstractModel):
@@ -156,79 +238,200 @@ class CreateUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserStoreId: User directory ID
+        :param _UserStoreId: User directory ID
         :type UserStoreId: str
-        :param PhoneNumber: Mobile number
+        :param _PhoneNumber: Mobile number
         :type PhoneNumber: str
-        :param Email: Email address
+        :param _Email: Email address
         :type Email: str
-        :param Password: Password
+        :param _Password: Password
         :type Password: str
-        :param UserName: Username
+        :param _UserName: Username
         :type UserName: str
-        :param Nickname: Nickname
+        :param _Nickname: Nickname
         :type Nickname: str
-        :param Address: Address
+        :param _Address: Address
         :type Address: str
-        :param UserGroup: User group ID
+        :param _UserGroup: User group ID
         :type UserGroup: list of str
-        :param Birthdate: Date of birth
+        :param _Birthdate: Date of birth
         :type Birthdate: int
-        :param CustomizationAttributes: Custom attribute
+        :param _CustomizationAttributes: Custom attribute
         :type CustomizationAttributes: list of MemberMap
-        :param IndexedAttribute1: Index field 1
+        :param _IndexedAttribute1: Index field 1
         :type IndexedAttribute1: str
-        :param IndexedAttribute2: Index field 2
+        :param _IndexedAttribute2: Index field 2
         :type IndexedAttribute2: str
-        :param IndexedAttribute3: Index field 3
+        :param _IndexedAttribute3: Index field 3
         :type IndexedAttribute3: str
-        :param IndexedAttribute4: Index field 4
+        :param _IndexedAttribute4: Index field 4
         :type IndexedAttribute4: str
-        :param IndexedAttribute5: Index field 5
+        :param _IndexedAttribute5: Index field 5
         :type IndexedAttribute5: str
         """
-        self.UserStoreId = None
-        self.PhoneNumber = None
-        self.Email = None
-        self.Password = None
-        self.UserName = None
-        self.Nickname = None
-        self.Address = None
-        self.UserGroup = None
-        self.Birthdate = None
-        self.CustomizationAttributes = None
-        self.IndexedAttribute1 = None
-        self.IndexedAttribute2 = None
-        self.IndexedAttribute3 = None
-        self.IndexedAttribute4 = None
-        self.IndexedAttribute5 = None
+        self._UserStoreId = None
+        self._PhoneNumber = None
+        self._Email = None
+        self._Password = None
+        self._UserName = None
+        self._Nickname = None
+        self._Address = None
+        self._UserGroup = None
+        self._Birthdate = None
+        self._CustomizationAttributes = None
+        self._IndexedAttribute1 = None
+        self._IndexedAttribute2 = None
+        self._IndexedAttribute3 = None
+        self._IndexedAttribute4 = None
+        self._IndexedAttribute5 = None
+
+    @property
+    def UserStoreId(self):
+        return self._UserStoreId
+
+    @UserStoreId.setter
+    def UserStoreId(self, UserStoreId):
+        self._UserStoreId = UserStoreId
+
+    @property
+    def PhoneNumber(self):
+        return self._PhoneNumber
+
+    @PhoneNumber.setter
+    def PhoneNumber(self, PhoneNumber):
+        self._PhoneNumber = PhoneNumber
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Nickname(self):
+        return self._Nickname
+
+    @Nickname.setter
+    def Nickname(self, Nickname):
+        self._Nickname = Nickname
+
+    @property
+    def Address(self):
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
+    @property
+    def UserGroup(self):
+        return self._UserGroup
+
+    @UserGroup.setter
+    def UserGroup(self, UserGroup):
+        self._UserGroup = UserGroup
+
+    @property
+    def Birthdate(self):
+        return self._Birthdate
+
+    @Birthdate.setter
+    def Birthdate(self, Birthdate):
+        self._Birthdate = Birthdate
+
+    @property
+    def CustomizationAttributes(self):
+        return self._CustomizationAttributes
+
+    @CustomizationAttributes.setter
+    def CustomizationAttributes(self, CustomizationAttributes):
+        self._CustomizationAttributes = CustomizationAttributes
+
+    @property
+    def IndexedAttribute1(self):
+        return self._IndexedAttribute1
+
+    @IndexedAttribute1.setter
+    def IndexedAttribute1(self, IndexedAttribute1):
+        self._IndexedAttribute1 = IndexedAttribute1
+
+    @property
+    def IndexedAttribute2(self):
+        return self._IndexedAttribute2
+
+    @IndexedAttribute2.setter
+    def IndexedAttribute2(self, IndexedAttribute2):
+        self._IndexedAttribute2 = IndexedAttribute2
+
+    @property
+    def IndexedAttribute3(self):
+        return self._IndexedAttribute3
+
+    @IndexedAttribute3.setter
+    def IndexedAttribute3(self, IndexedAttribute3):
+        self._IndexedAttribute3 = IndexedAttribute3
+
+    @property
+    def IndexedAttribute4(self):
+        return self._IndexedAttribute4
+
+    @IndexedAttribute4.setter
+    def IndexedAttribute4(self, IndexedAttribute4):
+        self._IndexedAttribute4 = IndexedAttribute4
+
+    @property
+    def IndexedAttribute5(self):
+        return self._IndexedAttribute5
+
+    @IndexedAttribute5.setter
+    def IndexedAttribute5(self, IndexedAttribute5):
+        self._IndexedAttribute5 = IndexedAttribute5
 
 
     def _deserialize(self, params):
-        self.UserStoreId = params.get("UserStoreId")
-        self.PhoneNumber = params.get("PhoneNumber")
-        self.Email = params.get("Email")
-        self.Password = params.get("Password")
-        self.UserName = params.get("UserName")
-        self.Nickname = params.get("Nickname")
-        self.Address = params.get("Address")
-        self.UserGroup = params.get("UserGroup")
-        self.Birthdate = params.get("Birthdate")
+        self._UserStoreId = params.get("UserStoreId")
+        self._PhoneNumber = params.get("PhoneNumber")
+        self._Email = params.get("Email")
+        self._Password = params.get("Password")
+        self._UserName = params.get("UserName")
+        self._Nickname = params.get("Nickname")
+        self._Address = params.get("Address")
+        self._UserGroup = params.get("UserGroup")
+        self._Birthdate = params.get("Birthdate")
         if params.get("CustomizationAttributes") is not None:
-            self.CustomizationAttributes = []
+            self._CustomizationAttributes = []
             for item in params.get("CustomizationAttributes"):
                 obj = MemberMap()
                 obj._deserialize(item)
-                self.CustomizationAttributes.append(obj)
-        self.IndexedAttribute1 = params.get("IndexedAttribute1")
-        self.IndexedAttribute2 = params.get("IndexedAttribute2")
-        self.IndexedAttribute3 = params.get("IndexedAttribute3")
-        self.IndexedAttribute4 = params.get("IndexedAttribute4")
-        self.IndexedAttribute5 = params.get("IndexedAttribute5")
+                self._CustomizationAttributes.append(obj)
+        self._IndexedAttribute1 = params.get("IndexedAttribute1")
+        self._IndexedAttribute2 = params.get("IndexedAttribute2")
+        self._IndexedAttribute3 = params.get("IndexedAttribute3")
+        self._IndexedAttribute4 = params.get("IndexedAttribute4")
+        self._IndexedAttribute5 = params.get("IndexedAttribute5")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -241,21 +444,37 @@ class CreateUserResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param User: Information of the created user
+        :param _User: Information of the created user
 Note: This field may return null, indicating that no valid values can be obtained.
         :type User: :class:`tencentcloud.ciam.v20220331.models.User`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.User = None
-        self.RequestId = None
+        self._User = None
+        self._RequestId = None
+
+    @property
+    def User(self):
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("User") is not None:
-            self.User = User()
-            self.User._deserialize(params.get("User"))
-        self.RequestId = params.get("RequestId")
+            self._User = User()
+            self._User._deserialize(params.get("User"))
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteUsersRequest(AbstractModel):
@@ -265,22 +484,39 @@ class DeleteUsersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserStoreId: User directory ID
+        :param _UserStoreId: User directory ID
         :type UserStoreId: str
-        :param UserIds: Array of user IDs
+        :param _UserIds: Array of user IDs
         :type UserIds: list of str
         """
-        self.UserStoreId = None
-        self.UserIds = None
+        self._UserStoreId = None
+        self._UserIds = None
+
+    @property
+    def UserStoreId(self):
+        return self._UserStoreId
+
+    @UserStoreId.setter
+    def UserStoreId(self, UserStoreId):
+        self._UserStoreId = UserStoreId
+
+    @property
+    def UserIds(self):
+        return self._UserIds
+
+    @UserIds.setter
+    def UserIds(self, UserIds):
+        self._UserIds = UserIds
 
 
     def _deserialize(self, params):
-        self.UserStoreId = params.get("UserStoreId")
-        self.UserIds = params.get("UserIds")
+        self._UserStoreId = params.get("UserStoreId")
+        self._UserIds = params.get("UserIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -293,14 +529,22 @@ class DeleteUsersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeUserByIdRequest(AbstractModel):
@@ -310,29 +554,54 @@ class DescribeUserByIdRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserStoreId: User directory ID
+        :param _UserStoreId: User directory ID
         :type UserStoreId: str
-        :param UserId: User ID
+        :param _UserId: User ID
         :type UserId: str
-        :param Original: Whether the content is passed through
+        :param _Original: Whether the content is passed through
 
 <li> **false** </li>Default. The returned information is desensitized.
 <li> **true** </li>Return the original content.
         :type Original: bool
         """
-        self.UserStoreId = None
-        self.UserId = None
-        self.Original = None
+        self._UserStoreId = None
+        self._UserId = None
+        self._Original = None
+
+    @property
+    def UserStoreId(self):
+        return self._UserStoreId
+
+    @UserStoreId.setter
+    def UserStoreId(self, UserStoreId):
+        self._UserStoreId = UserStoreId
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def Original(self):
+        return self._Original
+
+    @Original.setter
+    def Original(self, Original):
+        self._Original = Original
 
 
     def _deserialize(self, params):
-        self.UserStoreId = params.get("UserStoreId")
-        self.UserId = params.get("UserId")
-        self.Original = params.get("Original")
+        self._UserStoreId = params.get("UserStoreId")
+        self._UserId = params.get("UserId")
+        self._Original = params.get("Original")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -345,21 +614,37 @@ class DescribeUserByIdResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param User: User information
+        :param _User: User information
 Note: This field may return null, indicating that no valid values can be obtained.
         :type User: :class:`tencentcloud.ciam.v20220331.models.User`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.User = None
-        self.RequestId = None
+        self._User = None
+        self._RequestId = None
+
+    @property
+    def User(self):
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("User") is not None:
-            self.User = User()
-            self.User._deserialize(params.get("User"))
-        self.RequestId = params.get("RequestId")
+            self._User = User()
+            self._User._deserialize(params.get("User"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeUserRequest(AbstractModel):
@@ -369,43 +654,84 @@ class DescribeUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserStoreId: User directory ID
+        :param _UserStoreId: User directory ID
         :type UserStoreId: str
-        :param Pageable: Pagination data
+        :param _Pageable: Pagination data
         :type Pageable: :class:`tencentcloud.ciam.v20220331.models.Pageable`
-        :param Filters: Query condition (`propertycode` and `propertykey`)
+        :param _Filters: Query condition (`propertycode` and `propertykey`)
         :type Filters: list of QueryUserFilter
-        :param Original: Whether the plaintext is returned
+        :param _Original: Whether the plaintext is returned
         :type Original: bool
-        :param Sort: Sorting configuration
+        :param _Sort: Sorting configuration
         :type Sort: :class:`tencentcloud.ciam.v20220331.models.Sort`
         """
-        self.UserStoreId = None
-        self.Pageable = None
-        self.Filters = None
-        self.Original = None
-        self.Sort = None
+        self._UserStoreId = None
+        self._Pageable = None
+        self._Filters = None
+        self._Original = None
+        self._Sort = None
+
+    @property
+    def UserStoreId(self):
+        return self._UserStoreId
+
+    @UserStoreId.setter
+    def UserStoreId(self, UserStoreId):
+        self._UserStoreId = UserStoreId
+
+    @property
+    def Pageable(self):
+        return self._Pageable
+
+    @Pageable.setter
+    def Pageable(self, Pageable):
+        self._Pageable = Pageable
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Original(self):
+        return self._Original
+
+    @Original.setter
+    def Original(self, Original):
+        self._Original = Original
+
+    @property
+    def Sort(self):
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
 
 
     def _deserialize(self, params):
-        self.UserStoreId = params.get("UserStoreId")
+        self._UserStoreId = params.get("UserStoreId")
         if params.get("Pageable") is not None:
-            self.Pageable = Pageable()
-            self.Pageable._deserialize(params.get("Pageable"))
+            self._Pageable = Pageable()
+            self._Pageable._deserialize(params.get("Pageable"))
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = QueryUserFilter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.Original = params.get("Original")
+                self._Filters.append(obj)
+        self._Original = params.get("Original")
         if params.get("Sort") is not None:
-            self.Sort = Sort()
-            self.Sort._deserialize(params.get("Sort"))
+            self._Sort = Sort()
+            self._Sort._deserialize(params.get("Sort"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -418,36 +744,68 @@ class DescribeUserResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Total: The total number of returned results.
+        :param _Total: The total number of returned results.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Total: int
-        :param Pageable: Pagination object
+        :param _Pageable: Pagination object
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Pageable: :class:`tencentcloud.ciam.v20220331.models.Pageable`
-        :param Content: User List
+        :param _Content: User List
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Content: list of User
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Total = None
-        self.Pageable = None
-        self.Content = None
-        self.RequestId = None
+        self._Total = None
+        self._Pageable = None
+        self._Content = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Pageable(self):
+        return self._Pageable
+
+    @Pageable.setter
+    def Pageable(self, Pageable):
+        self._Pageable = Pageable
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Total = params.get("Total")
+        self._Total = params.get("Total")
         if params.get("Pageable") is not None:
-            self.Pageable = Pageable()
-            self.Pageable._deserialize(params.get("Pageable"))
+            self._Pageable = Pageable()
+            self._Pageable._deserialize(params.get("Pageable"))
         if params.get("Content") is not None:
-            self.Content = []
+            self._Content = []
             for item in params.get("Content"):
                 obj = User()
                 obj._deserialize(item)
-                self.Content.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Content.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ErrorDetails(AbstractModel):
@@ -457,23 +815,40 @@ class ErrorDetails(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserId: User information
+        :param _UserId: User information
 Note: This field may return null, indicating that no valid values can be obtained.
         :type UserId: str
-        :param Error: Failure cause
+        :param _Error: Failure cause
         :type Error: str
         """
-        self.UserId = None
-        self.Error = None
+        self._UserId = None
+        self._Error = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def Error(self):
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
 
 
     def _deserialize(self, params):
-        self.UserId = params.get("UserId")
-        self.Error = params.get("Error")
+        self._UserId = params.get("UserId")
+        self._Error = params.get("Error")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -486,22 +861,39 @@ class ExportPropertyMap(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserPropertyCode: User attribute code
+        :param _UserPropertyCode: User attribute code
         :type UserPropertyCode: str
-        :param ColumnName: User attribute mapping name
+        :param _ColumnName: User attribute mapping name
         :type ColumnName: str
         """
-        self.UserPropertyCode = None
-        self.ColumnName = None
+        self._UserPropertyCode = None
+        self._ColumnName = None
+
+    @property
+    def UserPropertyCode(self):
+        return self._UserPropertyCode
+
+    @UserPropertyCode.setter
+    def UserPropertyCode(self, UserPropertyCode):
+        self._UserPropertyCode = UserPropertyCode
+
+    @property
+    def ColumnName(self):
+        return self._ColumnName
+
+    @ColumnName.setter
+    def ColumnName(self, ColumnName):
+        self._ColumnName = ColumnName
 
 
     def _deserialize(self, params):
-        self.UserPropertyCode = params.get("UserPropertyCode")
-        self.ColumnName = params.get("ColumnName")
+        self._UserPropertyCode = params.get("UserPropertyCode")
+        self._ColumnName = params.get("ColumnName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -514,24 +906,41 @@ class FailedUsers(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FailedUserIdentification: ID of the failed user
+        :param _FailedUserIdentification: ID of the failed user
 Note: This field may return null, indicating that no valid values can be obtained.
         :type FailedUserIdentification: str
-        :param FailedReason: Failure cause for user import
+        :param _FailedReason: Failure cause for user import
 Note: This field may return null, indicating that no valid values can be obtained.
         :type FailedReason: str
         """
-        self.FailedUserIdentification = None
-        self.FailedReason = None
+        self._FailedUserIdentification = None
+        self._FailedReason = None
+
+    @property
+    def FailedUserIdentification(self):
+        return self._FailedUserIdentification
+
+    @FailedUserIdentification.setter
+    def FailedUserIdentification(self, FailedUserIdentification):
+        self._FailedUserIdentification = FailedUserIdentification
+
+    @property
+    def FailedReason(self):
+        return self._FailedReason
+
+    @FailedReason.setter
+    def FailedReason(self, FailedReason):
+        self._FailedReason = FailedReason
 
 
     def _deserialize(self, params):
-        self.FailedUserIdentification = params.get("FailedUserIdentification")
-        self.FailedReason = params.get("FailedReason")
+        self._FailedUserIdentification = params.get("FailedUserIdentification")
+        self._FailedReason = params.get("FailedReason")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -544,26 +953,51 @@ class Filter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Key: Key value
+        :param _Key: Key value
         :type Key: str
-        :param Values: Value
+        :param _Values: Value
         :type Values: list of str
-        :param Logic: Logical value
+        :param _Logic: Logical value
         :type Logic: bool
         """
-        self.Key = None
-        self.Values = None
-        self.Logic = None
+        self._Key = None
+        self._Values = None
+        self._Logic = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+    @property
+    def Logic(self):
+        return self._Logic
+
+    @Logic.setter
+    def Logic(self, Logic):
+        self._Logic = Logic
 
 
     def _deserialize(self, params):
-        self.Key = params.get("Key")
-        self.Values = params.get("Values")
-        self.Logic = params.get("Logic")
+        self._Key = params.get("Key")
+        self._Values = params.get("Values")
+        self._Logic = params.get("Logic")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -582,145 +1016,394 @@ class ImportUser(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserName: Username
+        :param _UserName: Username
         :type UserName: str
-        :param PhoneNumber: Mobile number
+        :param _PhoneNumber: Mobile number
         :type PhoneNumber: str
-        :param Email: Email address
+        :param _Email: Email address
         :type Email: str
-        :param ResidentIdentityCard: ID card number
+        :param _ResidentIdentityCard: ID card number
         :type ResidentIdentityCard: str
-        :param Nickname: Nickname
+        :param _Nickname: Nickname
         :type Nickname: str
-        :param Address: Address
+        :param _Address: Address
         :type Address: str
-        :param UserGroup: User group ID
+        :param _UserGroup: User group ID
         :type UserGroup: list of str
-        :param QqOpenId: `qqOpenId` on QQ
+        :param _QqOpenId: `qqOpenId` on QQ
         :type QqOpenId: str
-        :param QqUnionId: `qqUnionId` on QQ
+        :param _QqUnionId: `qqUnionId` on QQ
         :type QqUnionId: str
-        :param WechatOpenId: `wechatOpenId` on WeChat
+        :param _WechatOpenId: `wechatOpenId` on WeChat
         :type WechatOpenId: str
-        :param WechatUnionId: `wechatUnionId` on WeChat
+        :param _WechatUnionId: `wechatUnionId` on WeChat
         :type WechatUnionId: str
-        :param AlipayUserId: `alipayUserId` on Alipay
+        :param _AlipayUserId: `alipayUserId` on Alipay
         :type AlipayUserId: str
-        :param Description: Description
+        :param _Description: Description
         :type Description: str
-        :param Birthdate: Date of birth
+        :param _Birthdate: Date of birth
         :type Birthdate: str
-        :param Name: Name
+        :param _Name: Name
         :type Name: str
-        :param Locale: Coordinate
+        :param _Locale: Coordinate
         :type Locale: str
-        :param Gender: Gender. Valid values: `MALE`, `FEMALE`, `UNKNOWN`.
+        :param _Gender: Gender. Valid values: `MALE`, `FEMALE`, `UNKNOWN`.
         :type Gender: str
-        :param IdentityVerificationMethod: Identity verification method
+        :param _IdentityVerificationMethod: Identity verification method
         :type IdentityVerificationMethod: str
-        :param IdentityVerified: Whether the identity is verified
+        :param _IdentityVerified: Whether the identity is verified
         :type IdentityVerified: bool
-        :param Job: Job
+        :param _Job: Job
         :type Job: str
-        :param Nationality: Country/Region
+        :param _Nationality: Country/Region
         :type Nationality: str
-        :param Zone: Time zone
+        :param _Zone: Time zone
         :type Zone: str
-        :param Password: Password ciphertext
+        :param _Password: Password ciphertext
         :type Password: str
-        :param CustomizationAttributes: Custom attribute
+        :param _CustomizationAttributes: Custom attribute
         :type CustomizationAttributes: list of MemberMap
-        :param Salt: Password salt
+        :param _Salt: Password salt
         :type Salt: :class:`tencentcloud.ciam.v20220331.models.Salt`
-        :param PasswordEncryptTypeEnum: Password encryption method. Valid values: `SHA1`, `BCRYPT`.
+        :param _PasswordEncryptTypeEnum: Password encryption method. Valid values: `SHA1`, `BCRYPT`.
         :type PasswordEncryptTypeEnum: str
-        :param IndexedAttribute1: Index field 1
+        :param _IndexedAttribute1: Index field 1
         :type IndexedAttribute1: str
-        :param IndexedAttribute2: Index field 2
+        :param _IndexedAttribute2: Index field 2
         :type IndexedAttribute2: str
-        :param IndexedAttribute3: Index field 3
+        :param _IndexedAttribute3: Index field 3
         :type IndexedAttribute3: str
-        :param IndexedAttribute4: Index field 4
+        :param _IndexedAttribute4: Index field 4
         :type IndexedAttribute4: str
-        :param IndexedAttribute5: Index field 5
+        :param _IndexedAttribute5: Index field 5
         :type IndexedAttribute5: str
         """
-        self.UserName = None
-        self.PhoneNumber = None
-        self.Email = None
-        self.ResidentIdentityCard = None
-        self.Nickname = None
-        self.Address = None
-        self.UserGroup = None
-        self.QqOpenId = None
-        self.QqUnionId = None
-        self.WechatOpenId = None
-        self.WechatUnionId = None
-        self.AlipayUserId = None
-        self.Description = None
-        self.Birthdate = None
-        self.Name = None
-        self.Locale = None
-        self.Gender = None
-        self.IdentityVerificationMethod = None
-        self.IdentityVerified = None
-        self.Job = None
-        self.Nationality = None
-        self.Zone = None
-        self.Password = None
-        self.CustomizationAttributes = None
-        self.Salt = None
-        self.PasswordEncryptTypeEnum = None
-        self.IndexedAttribute1 = None
-        self.IndexedAttribute2 = None
-        self.IndexedAttribute3 = None
-        self.IndexedAttribute4 = None
-        self.IndexedAttribute5 = None
+        self._UserName = None
+        self._PhoneNumber = None
+        self._Email = None
+        self._ResidentIdentityCard = None
+        self._Nickname = None
+        self._Address = None
+        self._UserGroup = None
+        self._QqOpenId = None
+        self._QqUnionId = None
+        self._WechatOpenId = None
+        self._WechatUnionId = None
+        self._AlipayUserId = None
+        self._Description = None
+        self._Birthdate = None
+        self._Name = None
+        self._Locale = None
+        self._Gender = None
+        self._IdentityVerificationMethod = None
+        self._IdentityVerified = None
+        self._Job = None
+        self._Nationality = None
+        self._Zone = None
+        self._Password = None
+        self._CustomizationAttributes = None
+        self._Salt = None
+        self._PasswordEncryptTypeEnum = None
+        self._IndexedAttribute1 = None
+        self._IndexedAttribute2 = None
+        self._IndexedAttribute3 = None
+        self._IndexedAttribute4 = None
+        self._IndexedAttribute5 = None
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def PhoneNumber(self):
+        return self._PhoneNumber
+
+    @PhoneNumber.setter
+    def PhoneNumber(self, PhoneNumber):
+        self._PhoneNumber = PhoneNumber
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def ResidentIdentityCard(self):
+        return self._ResidentIdentityCard
+
+    @ResidentIdentityCard.setter
+    def ResidentIdentityCard(self, ResidentIdentityCard):
+        self._ResidentIdentityCard = ResidentIdentityCard
+
+    @property
+    def Nickname(self):
+        return self._Nickname
+
+    @Nickname.setter
+    def Nickname(self, Nickname):
+        self._Nickname = Nickname
+
+    @property
+    def Address(self):
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
+    @property
+    def UserGroup(self):
+        return self._UserGroup
+
+    @UserGroup.setter
+    def UserGroup(self, UserGroup):
+        self._UserGroup = UserGroup
+
+    @property
+    def QqOpenId(self):
+        return self._QqOpenId
+
+    @QqOpenId.setter
+    def QqOpenId(self, QqOpenId):
+        self._QqOpenId = QqOpenId
+
+    @property
+    def QqUnionId(self):
+        return self._QqUnionId
+
+    @QqUnionId.setter
+    def QqUnionId(self, QqUnionId):
+        self._QqUnionId = QqUnionId
+
+    @property
+    def WechatOpenId(self):
+        return self._WechatOpenId
+
+    @WechatOpenId.setter
+    def WechatOpenId(self, WechatOpenId):
+        self._WechatOpenId = WechatOpenId
+
+    @property
+    def WechatUnionId(self):
+        return self._WechatUnionId
+
+    @WechatUnionId.setter
+    def WechatUnionId(self, WechatUnionId):
+        self._WechatUnionId = WechatUnionId
+
+    @property
+    def AlipayUserId(self):
+        return self._AlipayUserId
+
+    @AlipayUserId.setter
+    def AlipayUserId(self, AlipayUserId):
+        self._AlipayUserId = AlipayUserId
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Birthdate(self):
+        return self._Birthdate
+
+    @Birthdate.setter
+    def Birthdate(self, Birthdate):
+        self._Birthdate = Birthdate
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Locale(self):
+        return self._Locale
+
+    @Locale.setter
+    def Locale(self, Locale):
+        self._Locale = Locale
+
+    @property
+    def Gender(self):
+        return self._Gender
+
+    @Gender.setter
+    def Gender(self, Gender):
+        self._Gender = Gender
+
+    @property
+    def IdentityVerificationMethod(self):
+        return self._IdentityVerificationMethod
+
+    @IdentityVerificationMethod.setter
+    def IdentityVerificationMethod(self, IdentityVerificationMethod):
+        self._IdentityVerificationMethod = IdentityVerificationMethod
+
+    @property
+    def IdentityVerified(self):
+        return self._IdentityVerified
+
+    @IdentityVerified.setter
+    def IdentityVerified(self, IdentityVerified):
+        self._IdentityVerified = IdentityVerified
+
+    @property
+    def Job(self):
+        return self._Job
+
+    @Job.setter
+    def Job(self, Job):
+        self._Job = Job
+
+    @property
+    def Nationality(self):
+        return self._Nationality
+
+    @Nationality.setter
+    def Nationality(self, Nationality):
+        self._Nationality = Nationality
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def CustomizationAttributes(self):
+        return self._CustomizationAttributes
+
+    @CustomizationAttributes.setter
+    def CustomizationAttributes(self, CustomizationAttributes):
+        self._CustomizationAttributes = CustomizationAttributes
+
+    @property
+    def Salt(self):
+        return self._Salt
+
+    @Salt.setter
+    def Salt(self, Salt):
+        self._Salt = Salt
+
+    @property
+    def PasswordEncryptTypeEnum(self):
+        return self._PasswordEncryptTypeEnum
+
+    @PasswordEncryptTypeEnum.setter
+    def PasswordEncryptTypeEnum(self, PasswordEncryptTypeEnum):
+        self._PasswordEncryptTypeEnum = PasswordEncryptTypeEnum
+
+    @property
+    def IndexedAttribute1(self):
+        return self._IndexedAttribute1
+
+    @IndexedAttribute1.setter
+    def IndexedAttribute1(self, IndexedAttribute1):
+        self._IndexedAttribute1 = IndexedAttribute1
+
+    @property
+    def IndexedAttribute2(self):
+        return self._IndexedAttribute2
+
+    @IndexedAttribute2.setter
+    def IndexedAttribute2(self, IndexedAttribute2):
+        self._IndexedAttribute2 = IndexedAttribute2
+
+    @property
+    def IndexedAttribute3(self):
+        return self._IndexedAttribute3
+
+    @IndexedAttribute3.setter
+    def IndexedAttribute3(self, IndexedAttribute3):
+        self._IndexedAttribute3 = IndexedAttribute3
+
+    @property
+    def IndexedAttribute4(self):
+        return self._IndexedAttribute4
+
+    @IndexedAttribute4.setter
+    def IndexedAttribute4(self, IndexedAttribute4):
+        self._IndexedAttribute4 = IndexedAttribute4
+
+    @property
+    def IndexedAttribute5(self):
+        return self._IndexedAttribute5
+
+    @IndexedAttribute5.setter
+    def IndexedAttribute5(self, IndexedAttribute5):
+        self._IndexedAttribute5 = IndexedAttribute5
 
 
     def _deserialize(self, params):
-        self.UserName = params.get("UserName")
-        self.PhoneNumber = params.get("PhoneNumber")
-        self.Email = params.get("Email")
-        self.ResidentIdentityCard = params.get("ResidentIdentityCard")
-        self.Nickname = params.get("Nickname")
-        self.Address = params.get("Address")
-        self.UserGroup = params.get("UserGroup")
-        self.QqOpenId = params.get("QqOpenId")
-        self.QqUnionId = params.get("QqUnionId")
-        self.WechatOpenId = params.get("WechatOpenId")
-        self.WechatUnionId = params.get("WechatUnionId")
-        self.AlipayUserId = params.get("AlipayUserId")
-        self.Description = params.get("Description")
-        self.Birthdate = params.get("Birthdate")
-        self.Name = params.get("Name")
-        self.Locale = params.get("Locale")
-        self.Gender = params.get("Gender")
-        self.IdentityVerificationMethod = params.get("IdentityVerificationMethod")
-        self.IdentityVerified = params.get("IdentityVerified")
-        self.Job = params.get("Job")
-        self.Nationality = params.get("Nationality")
-        self.Zone = params.get("Zone")
-        self.Password = params.get("Password")
+        self._UserName = params.get("UserName")
+        self._PhoneNumber = params.get("PhoneNumber")
+        self._Email = params.get("Email")
+        self._ResidentIdentityCard = params.get("ResidentIdentityCard")
+        self._Nickname = params.get("Nickname")
+        self._Address = params.get("Address")
+        self._UserGroup = params.get("UserGroup")
+        self._QqOpenId = params.get("QqOpenId")
+        self._QqUnionId = params.get("QqUnionId")
+        self._WechatOpenId = params.get("WechatOpenId")
+        self._WechatUnionId = params.get("WechatUnionId")
+        self._AlipayUserId = params.get("AlipayUserId")
+        self._Description = params.get("Description")
+        self._Birthdate = params.get("Birthdate")
+        self._Name = params.get("Name")
+        self._Locale = params.get("Locale")
+        self._Gender = params.get("Gender")
+        self._IdentityVerificationMethod = params.get("IdentityVerificationMethod")
+        self._IdentityVerified = params.get("IdentityVerified")
+        self._Job = params.get("Job")
+        self._Nationality = params.get("Nationality")
+        self._Zone = params.get("Zone")
+        self._Password = params.get("Password")
         if params.get("CustomizationAttributes") is not None:
-            self.CustomizationAttributes = []
+            self._CustomizationAttributes = []
             for item in params.get("CustomizationAttributes"):
                 obj = MemberMap()
                 obj._deserialize(item)
-                self.CustomizationAttributes.append(obj)
+                self._CustomizationAttributes.append(obj)
         if params.get("Salt") is not None:
-            self.Salt = Salt()
-            self.Salt._deserialize(params.get("Salt"))
-        self.PasswordEncryptTypeEnum = params.get("PasswordEncryptTypeEnum")
-        self.IndexedAttribute1 = params.get("IndexedAttribute1")
-        self.IndexedAttribute2 = params.get("IndexedAttribute2")
-        self.IndexedAttribute3 = params.get("IndexedAttribute3")
-        self.IndexedAttribute4 = params.get("IndexedAttribute4")
-        self.IndexedAttribute5 = params.get("IndexedAttribute5")
+            self._Salt = Salt()
+            self._Salt._deserialize(params.get("Salt"))
+        self._PasswordEncryptTypeEnum = params.get("PasswordEncryptTypeEnum")
+        self._IndexedAttribute1 = params.get("IndexedAttribute1")
+        self._IndexedAttribute2 = params.get("IndexedAttribute2")
+        self._IndexedAttribute3 = params.get("IndexedAttribute3")
+        self._IndexedAttribute4 = params.get("IndexedAttribute4")
+        self._IndexedAttribute5 = params.get("IndexedAttribute5")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -733,71 +1416,136 @@ class Job(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: Task ID
+        :param _Id: Task ID
         :type Id: str
-        :param Status: Task status
+        :param _Status: Task status
 
 <li> **PENDING** </li>  Pending
 <li> **PROCESSING** </li>  Executing
 <li> **COMPLETED** </li>  Completed
 <li> **FAILED** </li>  Failed
         :type Status: str
-        :param Type: Task type
+        :param _Type: Task type
 
 <li> **IMPORT_USER** </li>  User import
 <li> **EXPORT_USER** </li>  User export
         :type Type: str
-        :param CreatedDate: Task creation time
+        :param _CreatedDate: Task creation time
         :type CreatedDate: int
-        :param Format: Data type of the task
+        :param _Format: Data type of the task
 
 <li> **NDJSON** </li>  New-line Delimited JSON
 <li> **CSV** </li>  Comma-Separated Values
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Format: str
-        :param Location: Task result download address
+        :param _Location: Task result download address
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Location: str
-        :param ErrorDetails: Failure details
+        :param _ErrorDetails: Failure details
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ErrorDetails: list of ErrorDetails
-        :param FailedUsers: Failed user
+        :param _FailedUsers: Failed user
 Note: This field may return null, indicating that no valid values can be obtained.
         :type FailedUsers: list of FailedUsers
         """
-        self.Id = None
-        self.Status = None
-        self.Type = None
-        self.CreatedDate = None
-        self.Format = None
-        self.Location = None
-        self.ErrorDetails = None
-        self.FailedUsers = None
+        self._Id = None
+        self._Status = None
+        self._Type = None
+        self._CreatedDate = None
+        self._Format = None
+        self._Location = None
+        self._ErrorDetails = None
+        self._FailedUsers = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def CreatedDate(self):
+        return self._CreatedDate
+
+    @CreatedDate.setter
+    def CreatedDate(self, CreatedDate):
+        self._CreatedDate = CreatedDate
+
+    @property
+    def Format(self):
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+    @property
+    def Location(self):
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+    @property
+    def ErrorDetails(self):
+        return self._ErrorDetails
+
+    @ErrorDetails.setter
+    def ErrorDetails(self, ErrorDetails):
+        self._ErrorDetails = ErrorDetails
+
+    @property
+    def FailedUsers(self):
+        return self._FailedUsers
+
+    @FailedUsers.setter
+    def FailedUsers(self, FailedUsers):
+        self._FailedUsers = FailedUsers
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.Status = params.get("Status")
-        self.Type = params.get("Type")
-        self.CreatedDate = params.get("CreatedDate")
-        self.Format = params.get("Format")
-        self.Location = params.get("Location")
+        self._Id = params.get("Id")
+        self._Status = params.get("Status")
+        self._Type = params.get("Type")
+        self._CreatedDate = params.get("CreatedDate")
+        self._Format = params.get("Format")
+        self._Location = params.get("Location")
         if params.get("ErrorDetails") is not None:
-            self.ErrorDetails = []
+            self._ErrorDetails = []
             for item in params.get("ErrorDetails"):
                 obj = ErrorDetails()
                 obj._deserialize(item)
-                self.ErrorDetails.append(obj)
+                self._ErrorDetails.append(obj)
         if params.get("FailedUsers") is not None:
-            self.FailedUsers = []
+            self._FailedUsers = []
             for item in params.get("FailedUsers"):
                 obj = FailedUsers()
                 obj._deserialize(item)
-                self.FailedUsers.append(obj)
+                self._FailedUsers.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -810,33 +1558,66 @@ class LinkAccountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserStoreId: User directory ID
+        :param _UserStoreId: User directory ID
         :type UserStoreId: str
-        :param PrimaryUserId: Primary user ID
+        :param _PrimaryUserId: Primary user ID
         :type PrimaryUserId: str
-        :param SecondaryUserId: Secondary user ID
+        :param _SecondaryUserId: Secondary user ID
         :type SecondaryUserId: str
-        :param UserLinkedOnAttribute: Fusion attribute
+        :param _UserLinkedOnAttribute: Fusion attribute
 
 <li> **PHONENUMBER** </li>	  Mobile number
 <li> **EMAIL** </li>  Email
         :type UserLinkedOnAttribute: str
         """
-        self.UserStoreId = None
-        self.PrimaryUserId = None
-        self.SecondaryUserId = None
-        self.UserLinkedOnAttribute = None
+        self._UserStoreId = None
+        self._PrimaryUserId = None
+        self._SecondaryUserId = None
+        self._UserLinkedOnAttribute = None
+
+    @property
+    def UserStoreId(self):
+        return self._UserStoreId
+
+    @UserStoreId.setter
+    def UserStoreId(self, UserStoreId):
+        self._UserStoreId = UserStoreId
+
+    @property
+    def PrimaryUserId(self):
+        return self._PrimaryUserId
+
+    @PrimaryUserId.setter
+    def PrimaryUserId(self, PrimaryUserId):
+        self._PrimaryUserId = PrimaryUserId
+
+    @property
+    def SecondaryUserId(self):
+        return self._SecondaryUserId
+
+    @SecondaryUserId.setter
+    def SecondaryUserId(self, SecondaryUserId):
+        self._SecondaryUserId = SecondaryUserId
+
+    @property
+    def UserLinkedOnAttribute(self):
+        return self._UserLinkedOnAttribute
+
+    @UserLinkedOnAttribute.setter
+    def UserLinkedOnAttribute(self, UserLinkedOnAttribute):
+        self._UserLinkedOnAttribute = UserLinkedOnAttribute
 
 
     def _deserialize(self, params):
-        self.UserStoreId = params.get("UserStoreId")
-        self.PrimaryUserId = params.get("PrimaryUserId")
-        self.SecondaryUserId = params.get("SecondaryUserId")
-        self.UserLinkedOnAttribute = params.get("UserLinkedOnAttribute")
+        self._UserStoreId = params.get("UserStoreId")
+        self._PrimaryUserId = params.get("PrimaryUserId")
+        self._SecondaryUserId = params.get("SecondaryUserId")
+        self._UserLinkedOnAttribute = params.get("UserLinkedOnAttribute")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -849,14 +1630,22 @@ class LinkAccountResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ListJobsRequest(AbstractModel):
@@ -866,22 +1655,39 @@ class ListJobsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserStoreId: User directory ID
+        :param _UserStoreId: User directory ID
         :type UserStoreId: str
-        :param JobIds: List of task IDs. If this parameter is empty, all tasks will be returned.
+        :param _JobIds: List of task IDs. If this parameter is empty, all tasks will be returned.
         :type JobIds: list of str
         """
-        self.UserStoreId = None
-        self.JobIds = None
+        self._UserStoreId = None
+        self._JobIds = None
+
+    @property
+    def UserStoreId(self):
+        return self._UserStoreId
+
+    @UserStoreId.setter
+    def UserStoreId(self, UserStoreId):
+        self._UserStoreId = UserStoreId
+
+    @property
+    def JobIds(self):
+        return self._JobIds
+
+    @JobIds.setter
+    def JobIds(self, JobIds):
+        self._JobIds = JobIds
 
 
     def _deserialize(self, params):
-        self.UserStoreId = params.get("UserStoreId")
-        self.JobIds = params.get("JobIds")
+        self._UserStoreId = params.get("UserStoreId")
+        self._JobIds = params.get("JobIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -894,24 +1700,40 @@ class ListJobsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobSet: List of tasks
+        :param _JobSet: List of tasks
 Note: This field may return null, indicating that no valid values can be obtained.
         :type JobSet: list of Job
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.JobSet = None
-        self.RequestId = None
+        self._JobSet = None
+        self._RequestId = None
+
+    @property
+    def JobSet(self):
+        return self._JobSet
+
+    @JobSet.setter
+    def JobSet(self, JobSet):
+        self._JobSet = JobSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("JobSet") is not None:
-            self.JobSet = []
+            self._JobSet = []
             for item in params.get("JobSet"):
                 obj = Job()
                 obj._deserialize(item)
-                self.JobSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._JobSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ListLogMessageByConditionRequest(AbstractModel):
@@ -921,39 +1743,72 @@ class ListLogMessageByConditionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserStoreId: User pool ID
+        :param _UserStoreId: User pool ID
         :type UserStoreId: str
-        :param Pageable: Pagination data
+        :param _Pageable: Pagination data
         :type Pageable: :class:`tencentcloud.ciam.v20220331.models.Pageable`
-        :param StartTime: Start timestamp accurate to the millisecond
+        :param _StartTime: Start timestamp accurate to the millisecond
         :type StartTime: int
-        :param Filters: Valid values of `Key`: `events`.
+        :param _Filters: Valid values of `Key`: `events`.
 
 <li> **events** </li>	Values can be one or multiple items in ["SIGNUP", "USER_UPDATE", "USER_DELETE", "USER_CREATE", "ACCOUNT_LINKING"].
         :type Filters: list of Filter
         """
-        self.UserStoreId = None
-        self.Pageable = None
-        self.StartTime = None
-        self.Filters = None
+        self._UserStoreId = None
+        self._Pageable = None
+        self._StartTime = None
+        self._Filters = None
+
+    @property
+    def UserStoreId(self):
+        return self._UserStoreId
+
+    @UserStoreId.setter
+    def UserStoreId(self, UserStoreId):
+        self._UserStoreId = UserStoreId
+
+    @property
+    def Pageable(self):
+        return self._Pageable
+
+    @Pageable.setter
+    def Pageable(self, Pageable):
+        self._Pageable = Pageable
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
 
     def _deserialize(self, params):
-        self.UserStoreId = params.get("UserStoreId")
+        self._UserStoreId = params.get("UserStoreId")
         if params.get("Pageable") is not None:
-            self.Pageable = Pageable()
-            self.Pageable._deserialize(params.get("Pageable"))
-        self.StartTime = params.get("StartTime")
+            self._Pageable = Pageable()
+            self._Pageable._deserialize(params.get("Pageable"))
+        self._StartTime = params.get("StartTime")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -966,34 +1821,66 @@ class ListLogMessageByConditionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Total: Total number
+        :param _Total: Total number
         :type Total: int
-        :param Pageable: Pagination object
+        :param _Pageable: Pagination object
         :type Pageable: :class:`tencentcloud.ciam.v20220331.models.Pageable`
-        :param Content: List of logs
+        :param _Content: List of logs
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Content: list of LogMessage
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Total = None
-        self.Pageable = None
-        self.Content = None
-        self.RequestId = None
+        self._Total = None
+        self._Pageable = None
+        self._Content = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Pageable(self):
+        return self._Pageable
+
+    @Pageable.setter
+    def Pageable(self, Pageable):
+        self._Pageable = Pageable
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Total = params.get("Total")
+        self._Total = params.get("Total")
         if params.get("Pageable") is not None:
-            self.Pageable = Pageable()
-            self.Pageable._deserialize(params.get("Pageable"))
+            self._Pageable = Pageable()
+            self._Pageable._deserialize(params.get("Pageable"))
         if params.get("Content") is not None:
-            self.Content = []
+            self._Content = []
             for item in params.get("Content"):
                 obj = LogMessage()
                 obj._deserialize(item)
-                self.Content.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Content.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ListUserByPropertyRequest(AbstractModel):
@@ -1003,33 +1890,66 @@ class ListUserByPropertyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserStoreId: User directory ID
+        :param _UserStoreId: User directory ID
         :type UserStoreId: str
-        :param PropertyCode: Query attribute
+        :param _PropertyCode: Query attribute
 
 <li> **phoneNumber** </li>	  Mobile number
 <li> **email** </li>  Email
         :type PropertyCode: str
-        :param PropertyValue: Attribute value
+        :param _PropertyValue: Attribute value
         :type PropertyValue: str
-        :param Original: Whether the content is passed through
+        :param _Original: Whether the content is passed through
         :type Original: bool
         """
-        self.UserStoreId = None
-        self.PropertyCode = None
-        self.PropertyValue = None
-        self.Original = None
+        self._UserStoreId = None
+        self._PropertyCode = None
+        self._PropertyValue = None
+        self._Original = None
+
+    @property
+    def UserStoreId(self):
+        return self._UserStoreId
+
+    @UserStoreId.setter
+    def UserStoreId(self, UserStoreId):
+        self._UserStoreId = UserStoreId
+
+    @property
+    def PropertyCode(self):
+        return self._PropertyCode
+
+    @PropertyCode.setter
+    def PropertyCode(self, PropertyCode):
+        self._PropertyCode = PropertyCode
+
+    @property
+    def PropertyValue(self):
+        return self._PropertyValue
+
+    @PropertyValue.setter
+    def PropertyValue(self, PropertyValue):
+        self._PropertyValue = PropertyValue
+
+    @property
+    def Original(self):
+        return self._Original
+
+    @Original.setter
+    def Original(self, Original):
+        self._Original = Original
 
 
     def _deserialize(self, params):
-        self.UserStoreId = params.get("UserStoreId")
-        self.PropertyCode = params.get("PropertyCode")
-        self.PropertyValue = params.get("PropertyValue")
-        self.Original = params.get("Original")
+        self._UserStoreId = params.get("UserStoreId")
+        self._PropertyCode = params.get("PropertyCode")
+        self._PropertyValue = params.get("PropertyValue")
+        self._Original = params.get("Original")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1042,24 +1962,40 @@ class ListUserByPropertyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Users: List of users
+        :param _Users: List of users
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Users: list of User
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Users = None
-        self.RequestId = None
+        self._Users = None
+        self._RequestId = None
+
+    @property
+    def Users(self):
+        return self._Users
+
+    @Users.setter
+    def Users(self, Users):
+        self._Users = Users
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Users") is not None:
-            self.Users = []
+            self._Users = []
             for item in params.get("Users"):
                 obj = User()
                 obj._deserialize(item)
-                self.Users.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Users.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ListUserRequest(AbstractModel):
@@ -1069,40 +2005,73 @@ class ListUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserStoreId: User directory ID
+        :param _UserStoreId: User directory ID
         :type UserStoreId: str
-        :param Pageable: Pagination data
+        :param _Pageable: Pagination data
         :type Pageable: :class:`tencentcloud.ciam.v20220331.models.Pageable`
-        :param Filters: Valid values of `Key`: `condition`, `userGroupId`.
+        :param _Filters: Valid values of `Key`: `condition`, `userGroupId`.
 
 <li> **condition** </li>	Values = Query condition, which can be user ID, username, mobile number, or email address.
 <li> **userGroupId** </li>	Values = User group ID
         :type Filters: list of Filter
-        :param Original: Whether the content is passed through
+        :param _Original: Whether the content is passed through
         :type Original: bool
         """
-        self.UserStoreId = None
-        self.Pageable = None
-        self.Filters = None
-        self.Original = None
+        self._UserStoreId = None
+        self._Pageable = None
+        self._Filters = None
+        self._Original = None
+
+    @property
+    def UserStoreId(self):
+        return self._UserStoreId
+
+    @UserStoreId.setter
+    def UserStoreId(self, UserStoreId):
+        self._UserStoreId = UserStoreId
+
+    @property
+    def Pageable(self):
+        return self._Pageable
+
+    @Pageable.setter
+    def Pageable(self, Pageable):
+        self._Pageable = Pageable
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Original(self):
+        return self._Original
+
+    @Original.setter
+    def Original(self, Original):
+        self._Original = Original
 
 
     def _deserialize(self, params):
-        self.UserStoreId = params.get("UserStoreId")
+        self._UserStoreId = params.get("UserStoreId")
         if params.get("Pageable") is not None:
-            self.Pageable = Pageable()
-            self.Pageable._deserialize(params.get("Pageable"))
+            self._Pageable = Pageable()
+            self._Pageable._deserialize(params.get("Pageable"))
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.Original = params.get("Original")
+                self._Filters.append(obj)
+        self._Original = params.get("Original")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1115,36 +2084,68 @@ class ListUserResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Total: Total number
+        :param _Total: Total number
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Total: int
-        :param Pageable: Pagination object
+        :param _Pageable: Pagination object
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Pageable: :class:`tencentcloud.ciam.v20220331.models.Pageable`
-        :param Content: List of users
+        :param _Content: List of users
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Content: list of User
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Total = None
-        self.Pageable = None
-        self.Content = None
-        self.RequestId = None
+        self._Total = None
+        self._Pageable = None
+        self._Content = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Pageable(self):
+        return self._Pageable
+
+    @Pageable.setter
+    def Pageable(self, Pageable):
+        self._Pageable = Pageable
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Total = params.get("Total")
+        self._Total = params.get("Total")
         if params.get("Pageable") is not None:
-            self.Pageable = Pageable()
-            self.Pageable._deserialize(params.get("Pageable"))
+            self._Pageable = Pageable()
+            self._Pageable._deserialize(params.get("Pageable"))
         if params.get("Content") is not None:
-            self.Content = []
+            self._Content = []
             for item in params.get("Content"):
                 obj = User()
                 obj._deserialize(item)
-                self.Content.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Content.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class LogMessage(AbstractModel):
@@ -1154,101 +2155,238 @@ class LogMessage(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LogId: Log ID
+        :param _LogId: Log ID
         :type LogId: str
-        :param TenantId: Tenant ID
+        :param _TenantId: Tenant ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TenantId: str
-        :param UserStoreId: User pool ID
+        :param _UserStoreId: User pool ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :type UserStoreId: str
-        :param EventCode: Event code
+        :param _EventCode: Event code
 Note: This field may return null, indicating that no valid values can be obtained.
         :type EventCode: str
-        :param EventDate: Event timestamp in milliseconds
+        :param _EventDate: Event timestamp in milliseconds
 Note: This field may return null, indicating that no valid values can be obtained.
         :type EventDate: int
-        :param Description: Description
+        :param _Description: Description
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Description: str
-        :param Participant: Event participant
+        :param _Participant: Event participant
 
 <li> **TENANT** </li>  Tenant
 <li> **USER** </li>  User
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Participant: str
-        :param ApplicationClientId: Application `clientId`
+        :param _ApplicationClientId: Application `clientId`
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ApplicationClientId: str
-        :param ApplicationName: Application name
+        :param _ApplicationName: Application name
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ApplicationName: str
-        :param AuthSourceId: Authentication source ID
+        :param _AuthSourceId: Authentication source ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AuthSourceId: str
-        :param AuthSourceName: Authentication source name
+        :param _AuthSourceName: Authentication source name
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AuthSourceName: str
-        :param AuthSourceType: Authentication source type
+        :param _AuthSourceType: Authentication source type
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AuthSourceType: str
-        :param AuthSourceCategory: Authentication source category
+        :param _AuthSourceCategory: Authentication source category
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AuthSourceCategory: str
-        :param Ip: IP address
+        :param _Ip: IP address
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Ip: str
-        :param UserAgent: User agent
+        :param _UserAgent: User agent
 Note: This field may return null, indicating that no valid values can be obtained.
         :type UserAgent: str
-        :param UserId: User ID
+        :param _UserId: User ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :type UserId: str
-        :param Detail: Details
+        :param _Detail: Details
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Detail: str
         """
-        self.LogId = None
-        self.TenantId = None
-        self.UserStoreId = None
-        self.EventCode = None
-        self.EventDate = None
-        self.Description = None
-        self.Participant = None
-        self.ApplicationClientId = None
-        self.ApplicationName = None
-        self.AuthSourceId = None
-        self.AuthSourceName = None
-        self.AuthSourceType = None
-        self.AuthSourceCategory = None
-        self.Ip = None
-        self.UserAgent = None
-        self.UserId = None
-        self.Detail = None
+        self._LogId = None
+        self._TenantId = None
+        self._UserStoreId = None
+        self._EventCode = None
+        self._EventDate = None
+        self._Description = None
+        self._Participant = None
+        self._ApplicationClientId = None
+        self._ApplicationName = None
+        self._AuthSourceId = None
+        self._AuthSourceName = None
+        self._AuthSourceType = None
+        self._AuthSourceCategory = None
+        self._Ip = None
+        self._UserAgent = None
+        self._UserId = None
+        self._Detail = None
+
+    @property
+    def LogId(self):
+        return self._LogId
+
+    @LogId.setter
+    def LogId(self, LogId):
+        self._LogId = LogId
+
+    @property
+    def TenantId(self):
+        return self._TenantId
+
+    @TenantId.setter
+    def TenantId(self, TenantId):
+        self._TenantId = TenantId
+
+    @property
+    def UserStoreId(self):
+        return self._UserStoreId
+
+    @UserStoreId.setter
+    def UserStoreId(self, UserStoreId):
+        self._UserStoreId = UserStoreId
+
+    @property
+    def EventCode(self):
+        return self._EventCode
+
+    @EventCode.setter
+    def EventCode(self, EventCode):
+        self._EventCode = EventCode
+
+    @property
+    def EventDate(self):
+        return self._EventDate
+
+    @EventDate.setter
+    def EventDate(self, EventDate):
+        self._EventDate = EventDate
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Participant(self):
+        return self._Participant
+
+    @Participant.setter
+    def Participant(self, Participant):
+        self._Participant = Participant
+
+    @property
+    def ApplicationClientId(self):
+        return self._ApplicationClientId
+
+    @ApplicationClientId.setter
+    def ApplicationClientId(self, ApplicationClientId):
+        self._ApplicationClientId = ApplicationClientId
+
+    @property
+    def ApplicationName(self):
+        return self._ApplicationName
+
+    @ApplicationName.setter
+    def ApplicationName(self, ApplicationName):
+        self._ApplicationName = ApplicationName
+
+    @property
+    def AuthSourceId(self):
+        return self._AuthSourceId
+
+    @AuthSourceId.setter
+    def AuthSourceId(self, AuthSourceId):
+        self._AuthSourceId = AuthSourceId
+
+    @property
+    def AuthSourceName(self):
+        return self._AuthSourceName
+
+    @AuthSourceName.setter
+    def AuthSourceName(self, AuthSourceName):
+        self._AuthSourceName = AuthSourceName
+
+    @property
+    def AuthSourceType(self):
+        return self._AuthSourceType
+
+    @AuthSourceType.setter
+    def AuthSourceType(self, AuthSourceType):
+        self._AuthSourceType = AuthSourceType
+
+    @property
+    def AuthSourceCategory(self):
+        return self._AuthSourceCategory
+
+    @AuthSourceCategory.setter
+    def AuthSourceCategory(self, AuthSourceCategory):
+        self._AuthSourceCategory = AuthSourceCategory
+
+    @property
+    def Ip(self):
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def UserAgent(self):
+        return self._UserAgent
+
+    @UserAgent.setter
+    def UserAgent(self, UserAgent):
+        self._UserAgent = UserAgent
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def Detail(self):
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
 
 
     def _deserialize(self, params):
-        self.LogId = params.get("LogId")
-        self.TenantId = params.get("TenantId")
-        self.UserStoreId = params.get("UserStoreId")
-        self.EventCode = params.get("EventCode")
-        self.EventDate = params.get("EventDate")
-        self.Description = params.get("Description")
-        self.Participant = params.get("Participant")
-        self.ApplicationClientId = params.get("ApplicationClientId")
-        self.ApplicationName = params.get("ApplicationName")
-        self.AuthSourceId = params.get("AuthSourceId")
-        self.AuthSourceName = params.get("AuthSourceName")
-        self.AuthSourceType = params.get("AuthSourceType")
-        self.AuthSourceCategory = params.get("AuthSourceCategory")
-        self.Ip = params.get("Ip")
-        self.UserAgent = params.get("UserAgent")
-        self.UserId = params.get("UserId")
-        self.Detail = params.get("Detail")
+        self._LogId = params.get("LogId")
+        self._TenantId = params.get("TenantId")
+        self._UserStoreId = params.get("UserStoreId")
+        self._EventCode = params.get("EventCode")
+        self._EventDate = params.get("EventDate")
+        self._Description = params.get("Description")
+        self._Participant = params.get("Participant")
+        self._ApplicationClientId = params.get("ApplicationClientId")
+        self._ApplicationName = params.get("ApplicationName")
+        self._AuthSourceId = params.get("AuthSourceId")
+        self._AuthSourceName = params.get("AuthSourceName")
+        self._AuthSourceType = params.get("AuthSourceType")
+        self._AuthSourceCategory = params.get("AuthSourceCategory")
+        self._Ip = params.get("Ip")
+        self._UserAgent = params.get("UserAgent")
+        self._UserId = params.get("UserId")
+        self._Detail = params.get("Detail")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1261,27 +2399,52 @@ class MemberMap(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: Key
+        :param _Name: Key
         :type Name: str
-        :param Value: Value
+        :param _Value: Value
         :type Value: str
-        :param Type: Type
+        :param _Type: Type
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Type: str
         """
-        self.Name = None
-        self.Value = None
-        self.Type = None
+        self._Name = None
+        self._Value = None
+        self._Type = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Value = params.get("Value")
-        self.Type = params.get("Type")
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1294,22 +2457,39 @@ class Pageable(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PageSize: Number of entries per page
+        :param _PageSize: Number of entries per page
         :type PageSize: int
-        :param PageNumber: Current page number
+        :param _PageNumber: Current page number
         :type PageNumber: int
         """
-        self.PageSize = None
-        self.PageNumber = None
+        self._PageSize = None
+        self._PageNumber = None
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
 
 
     def _deserialize(self, params):
-        self.PageSize = params.get("PageSize")
-        self.PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1322,30 +2502,63 @@ class QueryUserFilter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PropertyKey: Property key
+        :param _PropertyKey: Property key
         :type PropertyKey: str
-        :param PropertyValue: Property value
+        :param _PropertyValue: Property value
         :type PropertyValue: str
-        :param Logic: Logic value. `True` or `False`
+        :param _Logic: Logic value. `True` or `False`
         :type Logic: bool
-        :param OperateLogic: Operator. Values: `>`, `<`, `=`, `>=`, `<=`, `!=` and `between`. 
+        :param _OperateLogic: Operator. Values: `>`, `<`, `=`, `>=`, `<=`, `!=` and `between`. 
         :type OperateLogic: str
         """
-        self.PropertyKey = None
-        self.PropertyValue = None
-        self.Logic = None
-        self.OperateLogic = None
+        self._PropertyKey = None
+        self._PropertyValue = None
+        self._Logic = None
+        self._OperateLogic = None
+
+    @property
+    def PropertyKey(self):
+        return self._PropertyKey
+
+    @PropertyKey.setter
+    def PropertyKey(self, PropertyKey):
+        self._PropertyKey = PropertyKey
+
+    @property
+    def PropertyValue(self):
+        return self._PropertyValue
+
+    @PropertyValue.setter
+    def PropertyValue(self, PropertyValue):
+        self._PropertyValue = PropertyValue
+
+    @property
+    def Logic(self):
+        return self._Logic
+
+    @Logic.setter
+    def Logic(self, Logic):
+        self._Logic = Logic
+
+    @property
+    def OperateLogic(self):
+        return self._OperateLogic
+
+    @OperateLogic.setter
+    def OperateLogic(self, OperateLogic):
+        self._OperateLogic = OperateLogic
 
 
     def _deserialize(self, params):
-        self.PropertyKey = params.get("PropertyKey")
-        self.PropertyValue = params.get("PropertyValue")
-        self.Logic = params.get("Logic")
-        self.OperateLogic = params.get("OperateLogic")
+        self._PropertyKey = params.get("PropertyKey")
+        self._PropertyValue = params.get("PropertyValue")
+        self._Logic = params.get("Logic")
+        self._OperateLogic = params.get("OperateLogic")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1358,22 +2571,39 @@ class ResetPasswordRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserId: User ID
+        :param _UserId: User ID
         :type UserId: str
-        :param UserStoreId: User directory ID
+        :param _UserStoreId: User directory ID
         :type UserStoreId: str
         """
-        self.UserId = None
-        self.UserStoreId = None
+        self._UserId = None
+        self._UserStoreId = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserStoreId(self):
+        return self._UserStoreId
+
+    @UserStoreId.setter
+    def UserStoreId(self, UserStoreId):
+        self._UserStoreId = UserStoreId
 
 
     def _deserialize(self, params):
-        self.UserId = params.get("UserId")
-        self.UserStoreId = params.get("UserStoreId")
+        self._UserId = params.get("UserId")
+        self._UserStoreId = params.get("UserStoreId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1386,18 +2616,34 @@ class ResetPasswordResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Password: User password after reset
+        :param _Password: User password after reset
         :type Password: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Password = None
-        self.RequestId = None
+        self._Password = None
+        self._RequestId = None
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Password = params.get("Password")
-        self.RequestId = params.get("RequestId")
+        self._Password = params.get("Password")
+        self._RequestId = params.get("RequestId")
 
 
 class Salt(AbstractModel):
@@ -1407,24 +2653,41 @@ class Salt(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SaltValue: Salt value
+        :param _SaltValue: Salt value
         :type SaltValue: str
-        :param SaltLocation: Salt value location
+        :param _SaltLocation: Salt value location
         :type SaltLocation: :class:`tencentcloud.ciam.v20220331.models.SaltLocation`
         """
-        self.SaltValue = None
-        self.SaltLocation = None
+        self._SaltValue = None
+        self._SaltLocation = None
+
+    @property
+    def SaltValue(self):
+        return self._SaltValue
+
+    @SaltValue.setter
+    def SaltValue(self, SaltValue):
+        self._SaltValue = SaltValue
+
+    @property
+    def SaltLocation(self):
+        return self._SaltLocation
+
+    @SaltLocation.setter
+    def SaltLocation(self, SaltLocation):
+        self._SaltLocation = SaltLocation
 
 
     def _deserialize(self, params):
-        self.SaltValue = params.get("SaltValue")
+        self._SaltValue = params.get("SaltValue")
         if params.get("SaltLocation") is not None:
-            self.SaltLocation = SaltLocation()
-            self.SaltLocation._deserialize(params.get("SaltLocation"))
+            self._SaltLocation = SaltLocation()
+            self._SaltLocation._deserialize(params.get("SaltLocation"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1437,24 +2700,41 @@ class SaltLocation(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SaltLocationTypeEnum: Password salt type. Valid values: `HEAD`, `TAIL`, `OTHER`.
+        :param _SaltLocationTypeEnum: Password salt type. Valid values: `HEAD`, `TAIL`, `OTHER`.
         :type SaltLocationTypeEnum: str
-        :param SaltLocationRule: Salting rule
+        :param _SaltLocationRule: Salting rule
         :type SaltLocationRule: :class:`tencentcloud.ciam.v20220331.models.SaltLocationRule`
         """
-        self.SaltLocationTypeEnum = None
-        self.SaltLocationRule = None
+        self._SaltLocationTypeEnum = None
+        self._SaltLocationRule = None
+
+    @property
+    def SaltLocationTypeEnum(self):
+        return self._SaltLocationTypeEnum
+
+    @SaltLocationTypeEnum.setter
+    def SaltLocationTypeEnum(self, SaltLocationTypeEnum):
+        self._SaltLocationTypeEnum = SaltLocationTypeEnum
+
+    @property
+    def SaltLocationRule(self):
+        return self._SaltLocationRule
+
+    @SaltLocationRule.setter
+    def SaltLocationRule(self, SaltLocationRule):
+        self._SaltLocationRule = SaltLocationRule
 
 
     def _deserialize(self, params):
-        self.SaltLocationTypeEnum = params.get("SaltLocationTypeEnum")
+        self._SaltLocationTypeEnum = params.get("SaltLocationTypeEnum")
         if params.get("SaltLocationRule") is not None:
-            self.SaltLocationRule = SaltLocationRule()
-            self.SaltLocationRule._deserialize(params.get("SaltLocationRule"))
+            self._SaltLocationRule = SaltLocationRule()
+            self._SaltLocationRule._deserialize(params.get("SaltLocationRule"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1467,18 +2747,27 @@ class SaltLocationRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Regex: Expression
+        :param _Regex: Expression
         :type Regex: str
         """
-        self.Regex = None
+        self._Regex = None
+
+    @property
+    def Regex(self):
+        return self._Regex
+
+    @Regex.setter
+    def Regex(self, Regex):
+        self._Regex = Regex
 
 
     def _deserialize(self, params):
-        self.Regex = params.get("Regex")
+        self._Regex = params.get("Regex")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1491,26 +2780,51 @@ class SetPasswordRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserStoreId: User directory ID
+        :param _UserStoreId: User directory ID
         :type UserStoreId: str
-        :param UserId: User ID
+        :param _UserId: User ID
         :type UserId: str
-        :param Password: Password
+        :param _Password: Password
         :type Password: str
         """
-        self.UserStoreId = None
-        self.UserId = None
-        self.Password = None
+        self._UserStoreId = None
+        self._UserId = None
+        self._Password = None
+
+    @property
+    def UserStoreId(self):
+        return self._UserStoreId
+
+    @UserStoreId.setter
+    def UserStoreId(self, UserStoreId):
+        self._UserStoreId = UserStoreId
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
 
 
     def _deserialize(self, params):
-        self.UserStoreId = params.get("UserStoreId")
-        self.UserId = params.get("UserId")
-        self.Password = params.get("Password")
+        self._UserStoreId = params.get("UserStoreId")
+        self._UserId = params.get("UserId")
+        self._Password = params.get("Password")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1523,14 +2837,22 @@ class SetPasswordResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class Sort(AbstractModel):
@@ -1540,22 +2862,39 @@ class Sort(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PropertyKey: Key for sorting. See custom attributes
+        :param _PropertyKey: Key for sorting. See custom attributes
         :type PropertyKey: str
-        :param Order: `ASC` or `DESC`
+        :param _Order: `ASC` or `DESC`
         :type Order: str
         """
-        self.PropertyKey = None
-        self.Order = None
+        self._PropertyKey = None
+        self._Order = None
+
+    @property
+    def PropertyKey(self):
+        return self._PropertyKey
+
+    @PropertyKey.setter
+    def PropertyKey(self, PropertyKey):
+        self._PropertyKey = PropertyKey
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
 
 
     def _deserialize(self, params):
-        self.PropertyKey = params.get("PropertyKey")
-        self.Order = params.get("Order")
+        self._PropertyKey = params.get("PropertyKey")
+        self._Order = params.get("Order")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1568,79 +2907,200 @@ class UpdateUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserId: User ID
+        :param _UserId: User ID
         :type UserId: str
-        :param UserStoreId: User directory ID
+        :param _UserStoreId: User directory ID
         :type UserStoreId: str
-        :param UserName: Username
+        :param _UserName: Username
         :type UserName: str
-        :param PhoneNumber: Mobile number
+        :param _PhoneNumber: Mobile number
         :type PhoneNumber: str
-        :param Email: Email address
+        :param _Email: Email address
         :type Email: str
-        :param Nickname: Nickname
+        :param _Nickname: Nickname
         :type Nickname: str
-        :param Address: Address
+        :param _Address: Address
         :type Address: str
-        :param UserGroup: User group
+        :param _UserGroup: User group
         :type UserGroup: list of str
-        :param Birthdate: Date of birth
+        :param _Birthdate: Date of birth
         :type Birthdate: int
-        :param CustomizationAttributes: Custom attribute
+        :param _CustomizationAttributes: Custom attribute
         :type CustomizationAttributes: list of MemberMap
-        :param IndexedAttribute1: Index field 1
+        :param _IndexedAttribute1: Index field 1
         :type IndexedAttribute1: str
-        :param IndexedAttribute2: Index field 2
+        :param _IndexedAttribute2: Index field 2
         :type IndexedAttribute2: str
-        :param IndexedAttribute3: Index field 3
+        :param _IndexedAttribute3: Index field 3
         :type IndexedAttribute3: str
-        :param IndexedAttribute4: Index field 4
+        :param _IndexedAttribute4: Index field 4
         :type IndexedAttribute4: str
-        :param IndexedAttribute5: Index field 5
+        :param _IndexedAttribute5: Index field 5
         :type IndexedAttribute5: str
         """
-        self.UserId = None
-        self.UserStoreId = None
-        self.UserName = None
-        self.PhoneNumber = None
-        self.Email = None
-        self.Nickname = None
-        self.Address = None
-        self.UserGroup = None
-        self.Birthdate = None
-        self.CustomizationAttributes = None
-        self.IndexedAttribute1 = None
-        self.IndexedAttribute2 = None
-        self.IndexedAttribute3 = None
-        self.IndexedAttribute4 = None
-        self.IndexedAttribute5 = None
+        self._UserId = None
+        self._UserStoreId = None
+        self._UserName = None
+        self._PhoneNumber = None
+        self._Email = None
+        self._Nickname = None
+        self._Address = None
+        self._UserGroup = None
+        self._Birthdate = None
+        self._CustomizationAttributes = None
+        self._IndexedAttribute1 = None
+        self._IndexedAttribute2 = None
+        self._IndexedAttribute3 = None
+        self._IndexedAttribute4 = None
+        self._IndexedAttribute5 = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserStoreId(self):
+        return self._UserStoreId
+
+    @UserStoreId.setter
+    def UserStoreId(self, UserStoreId):
+        self._UserStoreId = UserStoreId
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def PhoneNumber(self):
+        return self._PhoneNumber
+
+    @PhoneNumber.setter
+    def PhoneNumber(self, PhoneNumber):
+        self._PhoneNumber = PhoneNumber
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def Nickname(self):
+        return self._Nickname
+
+    @Nickname.setter
+    def Nickname(self, Nickname):
+        self._Nickname = Nickname
+
+    @property
+    def Address(self):
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
+    @property
+    def UserGroup(self):
+        return self._UserGroup
+
+    @UserGroup.setter
+    def UserGroup(self, UserGroup):
+        self._UserGroup = UserGroup
+
+    @property
+    def Birthdate(self):
+        return self._Birthdate
+
+    @Birthdate.setter
+    def Birthdate(self, Birthdate):
+        self._Birthdate = Birthdate
+
+    @property
+    def CustomizationAttributes(self):
+        return self._CustomizationAttributes
+
+    @CustomizationAttributes.setter
+    def CustomizationAttributes(self, CustomizationAttributes):
+        self._CustomizationAttributes = CustomizationAttributes
+
+    @property
+    def IndexedAttribute1(self):
+        return self._IndexedAttribute1
+
+    @IndexedAttribute1.setter
+    def IndexedAttribute1(self, IndexedAttribute1):
+        self._IndexedAttribute1 = IndexedAttribute1
+
+    @property
+    def IndexedAttribute2(self):
+        return self._IndexedAttribute2
+
+    @IndexedAttribute2.setter
+    def IndexedAttribute2(self, IndexedAttribute2):
+        self._IndexedAttribute2 = IndexedAttribute2
+
+    @property
+    def IndexedAttribute3(self):
+        return self._IndexedAttribute3
+
+    @IndexedAttribute3.setter
+    def IndexedAttribute3(self, IndexedAttribute3):
+        self._IndexedAttribute3 = IndexedAttribute3
+
+    @property
+    def IndexedAttribute4(self):
+        return self._IndexedAttribute4
+
+    @IndexedAttribute4.setter
+    def IndexedAttribute4(self, IndexedAttribute4):
+        self._IndexedAttribute4 = IndexedAttribute4
+
+    @property
+    def IndexedAttribute5(self):
+        return self._IndexedAttribute5
+
+    @IndexedAttribute5.setter
+    def IndexedAttribute5(self, IndexedAttribute5):
+        self._IndexedAttribute5 = IndexedAttribute5
 
 
     def _deserialize(self, params):
-        self.UserId = params.get("UserId")
-        self.UserStoreId = params.get("UserStoreId")
-        self.UserName = params.get("UserName")
-        self.PhoneNumber = params.get("PhoneNumber")
-        self.Email = params.get("Email")
-        self.Nickname = params.get("Nickname")
-        self.Address = params.get("Address")
-        self.UserGroup = params.get("UserGroup")
-        self.Birthdate = params.get("Birthdate")
+        self._UserId = params.get("UserId")
+        self._UserStoreId = params.get("UserStoreId")
+        self._UserName = params.get("UserName")
+        self._PhoneNumber = params.get("PhoneNumber")
+        self._Email = params.get("Email")
+        self._Nickname = params.get("Nickname")
+        self._Address = params.get("Address")
+        self._UserGroup = params.get("UserGroup")
+        self._Birthdate = params.get("Birthdate")
         if params.get("CustomizationAttributes") is not None:
-            self.CustomizationAttributes = []
+            self._CustomizationAttributes = []
             for item in params.get("CustomizationAttributes"):
                 obj = MemberMap()
                 obj._deserialize(item)
-                self.CustomizationAttributes.append(obj)
-        self.IndexedAttribute1 = params.get("IndexedAttribute1")
-        self.IndexedAttribute2 = params.get("IndexedAttribute2")
-        self.IndexedAttribute3 = params.get("IndexedAttribute3")
-        self.IndexedAttribute4 = params.get("IndexedAttribute4")
-        self.IndexedAttribute5 = params.get("IndexedAttribute5")
+                self._CustomizationAttributes.append(obj)
+        self._IndexedAttribute1 = params.get("IndexedAttribute1")
+        self._IndexedAttribute2 = params.get("IndexedAttribute2")
+        self._IndexedAttribute3 = params.get("IndexedAttribute3")
+        self._IndexedAttribute4 = params.get("IndexedAttribute4")
+        self._IndexedAttribute5 = params.get("IndexedAttribute5")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1653,21 +3113,37 @@ class UpdateUserResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param User: User information after update
+        :param _User: User information after update
 Note: This field may return null, indicating that no valid values can be obtained.
         :type User: :class:`tencentcloud.ciam.v20220331.models.User`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.User = None
-        self.RequestId = None
+        self._User = None
+        self._RequestId = None
+
+    @property
+    def User(self):
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("User") is not None:
-            self.User = User()
-            self.User._deserialize(params.get("User"))
-        self.RequestId = params.get("RequestId")
+            self._User = User()
+            self._User._deserialize(params.get("User"))
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateUserStatusRequest(AbstractModel):
@@ -1677,30 +3153,55 @@ class UpdateUserStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserStoreId: User directory ID
+        :param _UserStoreId: User directory ID
         :type UserStoreId: str
-        :param UserId: User ID
+        :param _UserId: User ID
         :type UserId: str
-        :param Status: User status
+        :param _Status: User status
 
 <li> **NORMAL** </li>	  Normal
 <li> **LOCK** </li>  Locked
 <li> **FREEZE** </li>	  Frozen
         :type Status: str
         """
-        self.UserStoreId = None
-        self.UserId = None
-        self.Status = None
+        self._UserStoreId = None
+        self._UserId = None
+        self._Status = None
+
+    @property
+    def UserStoreId(self):
+        return self._UserStoreId
+
+    @UserStoreId.setter
+    def UserStoreId(self, UserStoreId):
+        self._UserStoreId = UserStoreId
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
 
     def _deserialize(self, params):
-        self.UserStoreId = params.get("UserStoreId")
-        self.UserId = params.get("UserId")
-        self.Status = params.get("Status")
+        self._UserStoreId = params.get("UserStoreId")
+        self._UserId = params.get("UserId")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1713,14 +3214,22 @@ class UpdateUserStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class User(AbstractModel):
@@ -1730,220 +3239,549 @@ class User(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserId: User ID
+        :param _UserId: User ID
         :type UserId: str
-        :param UserName: Username
+        :param _UserName: Username
 Note: This field may return null, indicating that no valid values can be obtained.
         :type UserName: str
-        :param PhoneNumber: Mobile number
+        :param _PhoneNumber: Mobile number
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PhoneNumber: str
-        :param Email: Email address
+        :param _Email: Email address
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Email: str
-        :param LastSignOn: Last login time
+        :param _LastSignOn: Last login time
 Note: This field may return null, indicating that no valid values can be obtained.
         :type LastSignOn: int
-        :param CreatedDate: Creation time
+        :param _CreatedDate: Creation time
         :type CreatedDate: int
-        :param Status: Status
+        :param _Status: Status
         :type Status: str
-        :param UserDataSourceEnum: User source
+        :param _UserDataSourceEnum: User source
         :type UserDataSourceEnum: str
-        :param Nickname: Nickname
+        :param _Nickname: Nickname
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Nickname: str
-        :param Address: Address
+        :param _Address: Address
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Address: str
-        :param Birthdate: Date of birth
+        :param _Birthdate: Date of birth
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Birthdate: int
-        :param UserGroups: User group ID
+        :param _UserGroups: User group ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :type UserGroups: list of str
-        :param LastModifiedDate: Last modified time
+        :param _LastModifiedDate: Last modified time
 Note: This field may return null, indicating that no valid values can be obtained.
         :type LastModifiedDate: int
-        :param CustomAttributes: Custom attribute
+        :param _CustomAttributes: Custom attribute
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CustomAttributes: list of MemberMap
-        :param ResidentIdentityCard: ID card number
+        :param _ResidentIdentityCard: ID card number
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ResidentIdentityCard: str
-        :param QqOpenId: `OpenId` on QQ
+        :param _QqOpenId: `OpenId` on QQ
 Note: This field may return null, indicating that no valid values can be obtained.
         :type QqOpenId: str
-        :param QqUnionId: `UnionId` on QQ
+        :param _QqUnionId: `UnionId` on QQ
 Note: This field may return null, indicating that no valid values can be obtained.
         :type QqUnionId: str
-        :param WechatOpenId: `WechatOpenId` on WeChat
+        :param _WechatOpenId: `WechatOpenId` on WeChat
 Note: This field may return null, indicating that no valid values can be obtained.
         :type WechatOpenId: str
-        :param WechatUnionId: `WechatUnionId` on WeChat
+        :param _WechatUnionId: `WechatUnionId` on WeChat
 Note: This field may return null, indicating that no valid values can be obtained.
         :type WechatUnionId: str
-        :param AlipayUserId: `AlipayUserId` on Alipay
+        :param _AlipayUserId: `AlipayUserId` on Alipay
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AlipayUserId: str
-        :param Description: Description
+        :param _Description: Description
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Description: str
-        :param Name: Name
+        :param _Name: Name
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Name: str
-        :param Locale: Coordinate
+        :param _Locale: Coordinate
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Locale: str
-        :param Gender: Gender
+        :param _Gender: Gender
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Gender: str
-        :param IdentityVerificationMethod: Identity verification method
+        :param _IdentityVerificationMethod: Identity verification method
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IdentityVerificationMethod: str
-        :param IdentityVerified: Whether the identity is verified
+        :param _IdentityVerified: Whether the identity is verified
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IdentityVerified: bool
-        :param Job: Job
+        :param _Job: Job
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Job: str
-        :param Nationality: Country/Region
+        :param _Nationality: Country/Region
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Nationality: str
-        :param Primary: Whether the account is the primary account (after account merge, this parameter is `true` for primary accounts and `false` for secondary account).
+        :param _Primary: Whether the account is the primary account (after account merge, this parameter is `true` for primary accounts and `false` for secondary account).
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Primary: bool
-        :param Zone: Time zone
+        :param _Zone: Time zone
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Zone: str
-        :param AlreadyFirstLogin: Whether the account has ever logged in.
+        :param _AlreadyFirstLogin: Whether the account has ever logged in.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AlreadyFirstLogin: bool
-        :param TenantId: Tenant ID
+        :param _TenantId: Tenant ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TenantId: str
-        :param UserStoreId: User directory ID
+        :param _UserStoreId: User directory ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :type UserStoreId: str
-        :param Version: Version
+        :param _Version: Version
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Version: int
-        :param LockType: Lock type (locked by admin or locked by login policy)
+        :param _LockType: Lock type (locked by admin or locked by login policy)
 Note: This field may return null, indicating that no valid values can be obtained.
         :type LockType: str
-        :param LockTime: Lock time
+        :param _LockTime: Lock time
 Note: This field may return null, indicating that no valid values can be obtained.
         :type LockTime: int
-        :param IndexedAttribute1: Index field 1
+        :param _IndexedAttribute1: Index field 1
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IndexedAttribute1: str
-        :param IndexedAttribute2: Index field 2
+        :param _IndexedAttribute2: Index field 2
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IndexedAttribute2: str
-        :param IndexedAttribute3: Index field 3
+        :param _IndexedAttribute3: Index field 3
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IndexedAttribute3: str
-        :param IndexedAttribute4: Index field 4
+        :param _IndexedAttribute4: Index field 4
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IndexedAttribute4: str
-        :param IndexedAttribute5: Index field 5
+        :param _IndexedAttribute5: Index field 5
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IndexedAttribute5: str
         """
-        self.UserId = None
-        self.UserName = None
-        self.PhoneNumber = None
-        self.Email = None
-        self.LastSignOn = None
-        self.CreatedDate = None
-        self.Status = None
-        self.UserDataSourceEnum = None
-        self.Nickname = None
-        self.Address = None
-        self.Birthdate = None
-        self.UserGroups = None
-        self.LastModifiedDate = None
-        self.CustomAttributes = None
-        self.ResidentIdentityCard = None
-        self.QqOpenId = None
-        self.QqUnionId = None
-        self.WechatOpenId = None
-        self.WechatUnionId = None
-        self.AlipayUserId = None
-        self.Description = None
-        self.Name = None
-        self.Locale = None
-        self.Gender = None
-        self.IdentityVerificationMethod = None
-        self.IdentityVerified = None
-        self.Job = None
-        self.Nationality = None
-        self.Primary = None
-        self.Zone = None
-        self.AlreadyFirstLogin = None
-        self.TenantId = None
-        self.UserStoreId = None
-        self.Version = None
-        self.LockType = None
-        self.LockTime = None
-        self.IndexedAttribute1 = None
-        self.IndexedAttribute2 = None
-        self.IndexedAttribute3 = None
-        self.IndexedAttribute4 = None
-        self.IndexedAttribute5 = None
+        self._UserId = None
+        self._UserName = None
+        self._PhoneNumber = None
+        self._Email = None
+        self._LastSignOn = None
+        self._CreatedDate = None
+        self._Status = None
+        self._UserDataSourceEnum = None
+        self._Nickname = None
+        self._Address = None
+        self._Birthdate = None
+        self._UserGroups = None
+        self._LastModifiedDate = None
+        self._CustomAttributes = None
+        self._ResidentIdentityCard = None
+        self._QqOpenId = None
+        self._QqUnionId = None
+        self._WechatOpenId = None
+        self._WechatUnionId = None
+        self._AlipayUserId = None
+        self._Description = None
+        self._Name = None
+        self._Locale = None
+        self._Gender = None
+        self._IdentityVerificationMethod = None
+        self._IdentityVerified = None
+        self._Job = None
+        self._Nationality = None
+        self._Primary = None
+        self._Zone = None
+        self._AlreadyFirstLogin = None
+        self._TenantId = None
+        self._UserStoreId = None
+        self._Version = None
+        self._LockType = None
+        self._LockTime = None
+        self._IndexedAttribute1 = None
+        self._IndexedAttribute2 = None
+        self._IndexedAttribute3 = None
+        self._IndexedAttribute4 = None
+        self._IndexedAttribute5 = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def PhoneNumber(self):
+        return self._PhoneNumber
+
+    @PhoneNumber.setter
+    def PhoneNumber(self, PhoneNumber):
+        self._PhoneNumber = PhoneNumber
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def LastSignOn(self):
+        return self._LastSignOn
+
+    @LastSignOn.setter
+    def LastSignOn(self, LastSignOn):
+        self._LastSignOn = LastSignOn
+
+    @property
+    def CreatedDate(self):
+        return self._CreatedDate
+
+    @CreatedDate.setter
+    def CreatedDate(self, CreatedDate):
+        self._CreatedDate = CreatedDate
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def UserDataSourceEnum(self):
+        return self._UserDataSourceEnum
+
+    @UserDataSourceEnum.setter
+    def UserDataSourceEnum(self, UserDataSourceEnum):
+        self._UserDataSourceEnum = UserDataSourceEnum
+
+    @property
+    def Nickname(self):
+        return self._Nickname
+
+    @Nickname.setter
+    def Nickname(self, Nickname):
+        self._Nickname = Nickname
+
+    @property
+    def Address(self):
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
+    @property
+    def Birthdate(self):
+        return self._Birthdate
+
+    @Birthdate.setter
+    def Birthdate(self, Birthdate):
+        self._Birthdate = Birthdate
+
+    @property
+    def UserGroups(self):
+        return self._UserGroups
+
+    @UserGroups.setter
+    def UserGroups(self, UserGroups):
+        self._UserGroups = UserGroups
+
+    @property
+    def LastModifiedDate(self):
+        return self._LastModifiedDate
+
+    @LastModifiedDate.setter
+    def LastModifiedDate(self, LastModifiedDate):
+        self._LastModifiedDate = LastModifiedDate
+
+    @property
+    def CustomAttributes(self):
+        return self._CustomAttributes
+
+    @CustomAttributes.setter
+    def CustomAttributes(self, CustomAttributes):
+        self._CustomAttributes = CustomAttributes
+
+    @property
+    def ResidentIdentityCard(self):
+        return self._ResidentIdentityCard
+
+    @ResidentIdentityCard.setter
+    def ResidentIdentityCard(self, ResidentIdentityCard):
+        self._ResidentIdentityCard = ResidentIdentityCard
+
+    @property
+    def QqOpenId(self):
+        return self._QqOpenId
+
+    @QqOpenId.setter
+    def QqOpenId(self, QqOpenId):
+        self._QqOpenId = QqOpenId
+
+    @property
+    def QqUnionId(self):
+        return self._QqUnionId
+
+    @QqUnionId.setter
+    def QqUnionId(self, QqUnionId):
+        self._QqUnionId = QqUnionId
+
+    @property
+    def WechatOpenId(self):
+        return self._WechatOpenId
+
+    @WechatOpenId.setter
+    def WechatOpenId(self, WechatOpenId):
+        self._WechatOpenId = WechatOpenId
+
+    @property
+    def WechatUnionId(self):
+        return self._WechatUnionId
+
+    @WechatUnionId.setter
+    def WechatUnionId(self, WechatUnionId):
+        self._WechatUnionId = WechatUnionId
+
+    @property
+    def AlipayUserId(self):
+        return self._AlipayUserId
+
+    @AlipayUserId.setter
+    def AlipayUserId(self, AlipayUserId):
+        self._AlipayUserId = AlipayUserId
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Locale(self):
+        return self._Locale
+
+    @Locale.setter
+    def Locale(self, Locale):
+        self._Locale = Locale
+
+    @property
+    def Gender(self):
+        return self._Gender
+
+    @Gender.setter
+    def Gender(self, Gender):
+        self._Gender = Gender
+
+    @property
+    def IdentityVerificationMethod(self):
+        return self._IdentityVerificationMethod
+
+    @IdentityVerificationMethod.setter
+    def IdentityVerificationMethod(self, IdentityVerificationMethod):
+        self._IdentityVerificationMethod = IdentityVerificationMethod
+
+    @property
+    def IdentityVerified(self):
+        return self._IdentityVerified
+
+    @IdentityVerified.setter
+    def IdentityVerified(self, IdentityVerified):
+        self._IdentityVerified = IdentityVerified
+
+    @property
+    def Job(self):
+        return self._Job
+
+    @Job.setter
+    def Job(self, Job):
+        self._Job = Job
+
+    @property
+    def Nationality(self):
+        return self._Nationality
+
+    @Nationality.setter
+    def Nationality(self, Nationality):
+        self._Nationality = Nationality
+
+    @property
+    def Primary(self):
+        return self._Primary
+
+    @Primary.setter
+    def Primary(self, Primary):
+        self._Primary = Primary
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def AlreadyFirstLogin(self):
+        return self._AlreadyFirstLogin
+
+    @AlreadyFirstLogin.setter
+    def AlreadyFirstLogin(self, AlreadyFirstLogin):
+        self._AlreadyFirstLogin = AlreadyFirstLogin
+
+    @property
+    def TenantId(self):
+        return self._TenantId
+
+    @TenantId.setter
+    def TenantId(self, TenantId):
+        self._TenantId = TenantId
+
+    @property
+    def UserStoreId(self):
+        return self._UserStoreId
+
+    @UserStoreId.setter
+    def UserStoreId(self, UserStoreId):
+        self._UserStoreId = UserStoreId
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def LockType(self):
+        return self._LockType
+
+    @LockType.setter
+    def LockType(self, LockType):
+        self._LockType = LockType
+
+    @property
+    def LockTime(self):
+        return self._LockTime
+
+    @LockTime.setter
+    def LockTime(self, LockTime):
+        self._LockTime = LockTime
+
+    @property
+    def IndexedAttribute1(self):
+        return self._IndexedAttribute1
+
+    @IndexedAttribute1.setter
+    def IndexedAttribute1(self, IndexedAttribute1):
+        self._IndexedAttribute1 = IndexedAttribute1
+
+    @property
+    def IndexedAttribute2(self):
+        return self._IndexedAttribute2
+
+    @IndexedAttribute2.setter
+    def IndexedAttribute2(self, IndexedAttribute2):
+        self._IndexedAttribute2 = IndexedAttribute2
+
+    @property
+    def IndexedAttribute3(self):
+        return self._IndexedAttribute3
+
+    @IndexedAttribute3.setter
+    def IndexedAttribute3(self, IndexedAttribute3):
+        self._IndexedAttribute3 = IndexedAttribute3
+
+    @property
+    def IndexedAttribute4(self):
+        return self._IndexedAttribute4
+
+    @IndexedAttribute4.setter
+    def IndexedAttribute4(self, IndexedAttribute4):
+        self._IndexedAttribute4 = IndexedAttribute4
+
+    @property
+    def IndexedAttribute5(self):
+        return self._IndexedAttribute5
+
+    @IndexedAttribute5.setter
+    def IndexedAttribute5(self, IndexedAttribute5):
+        self._IndexedAttribute5 = IndexedAttribute5
 
 
     def _deserialize(self, params):
-        self.UserId = params.get("UserId")
-        self.UserName = params.get("UserName")
-        self.PhoneNumber = params.get("PhoneNumber")
-        self.Email = params.get("Email")
-        self.LastSignOn = params.get("LastSignOn")
-        self.CreatedDate = params.get("CreatedDate")
-        self.Status = params.get("Status")
-        self.UserDataSourceEnum = params.get("UserDataSourceEnum")
-        self.Nickname = params.get("Nickname")
-        self.Address = params.get("Address")
-        self.Birthdate = params.get("Birthdate")
-        self.UserGroups = params.get("UserGroups")
-        self.LastModifiedDate = params.get("LastModifiedDate")
+        self._UserId = params.get("UserId")
+        self._UserName = params.get("UserName")
+        self._PhoneNumber = params.get("PhoneNumber")
+        self._Email = params.get("Email")
+        self._LastSignOn = params.get("LastSignOn")
+        self._CreatedDate = params.get("CreatedDate")
+        self._Status = params.get("Status")
+        self._UserDataSourceEnum = params.get("UserDataSourceEnum")
+        self._Nickname = params.get("Nickname")
+        self._Address = params.get("Address")
+        self._Birthdate = params.get("Birthdate")
+        self._UserGroups = params.get("UserGroups")
+        self._LastModifiedDate = params.get("LastModifiedDate")
         if params.get("CustomAttributes") is not None:
-            self.CustomAttributes = []
+            self._CustomAttributes = []
             for item in params.get("CustomAttributes"):
                 obj = MemberMap()
                 obj._deserialize(item)
-                self.CustomAttributes.append(obj)
-        self.ResidentIdentityCard = params.get("ResidentIdentityCard")
-        self.QqOpenId = params.get("QqOpenId")
-        self.QqUnionId = params.get("QqUnionId")
-        self.WechatOpenId = params.get("WechatOpenId")
-        self.WechatUnionId = params.get("WechatUnionId")
-        self.AlipayUserId = params.get("AlipayUserId")
-        self.Description = params.get("Description")
-        self.Name = params.get("Name")
-        self.Locale = params.get("Locale")
-        self.Gender = params.get("Gender")
-        self.IdentityVerificationMethod = params.get("IdentityVerificationMethod")
-        self.IdentityVerified = params.get("IdentityVerified")
-        self.Job = params.get("Job")
-        self.Nationality = params.get("Nationality")
-        self.Primary = params.get("Primary")
-        self.Zone = params.get("Zone")
-        self.AlreadyFirstLogin = params.get("AlreadyFirstLogin")
-        self.TenantId = params.get("TenantId")
-        self.UserStoreId = params.get("UserStoreId")
-        self.Version = params.get("Version")
-        self.LockType = params.get("LockType")
-        self.LockTime = params.get("LockTime")
-        self.IndexedAttribute1 = params.get("IndexedAttribute1")
-        self.IndexedAttribute2 = params.get("IndexedAttribute2")
-        self.IndexedAttribute3 = params.get("IndexedAttribute3")
-        self.IndexedAttribute4 = params.get("IndexedAttribute4")
-        self.IndexedAttribute5 = params.get("IndexedAttribute5")
+                self._CustomAttributes.append(obj)
+        self._ResidentIdentityCard = params.get("ResidentIdentityCard")
+        self._QqOpenId = params.get("QqOpenId")
+        self._QqUnionId = params.get("QqUnionId")
+        self._WechatOpenId = params.get("WechatOpenId")
+        self._WechatUnionId = params.get("WechatUnionId")
+        self._AlipayUserId = params.get("AlipayUserId")
+        self._Description = params.get("Description")
+        self._Name = params.get("Name")
+        self._Locale = params.get("Locale")
+        self._Gender = params.get("Gender")
+        self._IdentityVerificationMethod = params.get("IdentityVerificationMethod")
+        self._IdentityVerified = params.get("IdentityVerified")
+        self._Job = params.get("Job")
+        self._Nationality = params.get("Nationality")
+        self._Primary = params.get("Primary")
+        self._Zone = params.get("Zone")
+        self._AlreadyFirstLogin = params.get("AlreadyFirstLogin")
+        self._TenantId = params.get("TenantId")
+        self._UserStoreId = params.get("UserStoreId")
+        self._Version = params.get("Version")
+        self._LockType = params.get("LockType")
+        self._LockTime = params.get("LockTime")
+        self._IndexedAttribute1 = params.get("IndexedAttribute1")
+        self._IndexedAttribute2 = params.get("IndexedAttribute2")
+        self._IndexedAttribute3 = params.get("IndexedAttribute3")
+        self._IndexedAttribute4 = params.get("IndexedAttribute4")
+        self._IndexedAttribute5 = params.get("IndexedAttribute5")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

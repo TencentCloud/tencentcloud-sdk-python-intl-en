@@ -25,70 +25,175 @@ class AdminContact(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FirstName: The first name.
+        :param _FirstName: The first name.
         :type FirstName: str
-        :param LastName: The last name.
+        :param _LastName: The last name.
         :type LastName: str
-        :param Country: The country or region name, such as `CN`.
+        :param _Country: The country or region name, such as `CN`.
         :type Country: str
-        :param Province: The province or state name.
+        :param _Province: The province or state name.
         :type Province: str
-        :param City: The city name.
+        :param _City: The city name.
         :type City: str
-        :param AddressLine: The address line 1.
+        :param _AddressLine: The address line 1.
         :type AddressLine: str
-        :param ZipCode: The zip code.
+        :param _ZipCode: The zip code.
         :type ZipCode: str
-        :param Email: The email address.
+        :param _Email: The email address.
         :type Email: str
-        :param Phone: The mobile number, such as `+86.13600000000`.
+        :param _Phone: The mobile number, such as `+86.13600000000`.
         :type Phone: str
-        :param CompanyName: The company or organization name.
+        :param _CompanyName: The company or organization name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CompanyName: str
-        :param JobTitle: The job title.
+        :param _JobTitle: The job title.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type JobTitle: str
-        :param AddressLineTwo: The address line 2.
+        :param _AddressLineTwo: The address line 2.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AddressLineTwo: str
-        :param Fax: The fax number.
+        :param _Fax: The fax number.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Fax: str
         """
-        self.FirstName = None
-        self.LastName = None
-        self.Country = None
-        self.Province = None
-        self.City = None
-        self.AddressLine = None
-        self.ZipCode = None
-        self.Email = None
-        self.Phone = None
-        self.CompanyName = None
-        self.JobTitle = None
-        self.AddressLineTwo = None
-        self.Fax = None
+        self._FirstName = None
+        self._LastName = None
+        self._Country = None
+        self._Province = None
+        self._City = None
+        self._AddressLine = None
+        self._ZipCode = None
+        self._Email = None
+        self._Phone = None
+        self._CompanyName = None
+        self._JobTitle = None
+        self._AddressLineTwo = None
+        self._Fax = None
+
+    @property
+    def FirstName(self):
+        return self._FirstName
+
+    @FirstName.setter
+    def FirstName(self, FirstName):
+        self._FirstName = FirstName
+
+    @property
+    def LastName(self):
+        return self._LastName
+
+    @LastName.setter
+    def LastName(self, LastName):
+        self._LastName = LastName
+
+    @property
+    def Country(self):
+        return self._Country
+
+    @Country.setter
+    def Country(self, Country):
+        self._Country = Country
+
+    @property
+    def Province(self):
+        return self._Province
+
+    @Province.setter
+    def Province(self, Province):
+        self._Province = Province
+
+    @property
+    def City(self):
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+    @property
+    def AddressLine(self):
+        return self._AddressLine
+
+    @AddressLine.setter
+    def AddressLine(self, AddressLine):
+        self._AddressLine = AddressLine
+
+    @property
+    def ZipCode(self):
+        return self._ZipCode
+
+    @ZipCode.setter
+    def ZipCode(self, ZipCode):
+        self._ZipCode = ZipCode
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def Phone(self):
+        return self._Phone
+
+    @Phone.setter
+    def Phone(self, Phone):
+        self._Phone = Phone
+
+    @property
+    def CompanyName(self):
+        return self._CompanyName
+
+    @CompanyName.setter
+    def CompanyName(self, CompanyName):
+        self._CompanyName = CompanyName
+
+    @property
+    def JobTitle(self):
+        return self._JobTitle
+
+    @JobTitle.setter
+    def JobTitle(self, JobTitle):
+        self._JobTitle = JobTitle
+
+    @property
+    def AddressLineTwo(self):
+        return self._AddressLineTwo
+
+    @AddressLineTwo.setter
+    def AddressLineTwo(self, AddressLineTwo):
+        self._AddressLineTwo = AddressLineTwo
+
+    @property
+    def Fax(self):
+        return self._Fax
+
+    @Fax.setter
+    def Fax(self, Fax):
+        self._Fax = Fax
 
 
     def _deserialize(self, params):
-        self.FirstName = params.get("FirstName")
-        self.LastName = params.get("LastName")
-        self.Country = params.get("Country")
-        self.Province = params.get("Province")
-        self.City = params.get("City")
-        self.AddressLine = params.get("AddressLine")
-        self.ZipCode = params.get("ZipCode")
-        self.Email = params.get("Email")
-        self.Phone = params.get("Phone")
-        self.CompanyName = params.get("CompanyName")
-        self.JobTitle = params.get("JobTitle")
-        self.AddressLineTwo = params.get("AddressLineTwo")
-        self.Fax = params.get("Fax")
+        self._FirstName = params.get("FirstName")
+        self._LastName = params.get("LastName")
+        self._Country = params.get("Country")
+        self._Province = params.get("Province")
+        self._City = params.get("City")
+        self._AddressLine = params.get("AddressLine")
+        self._ZipCode = params.get("ZipCode")
+        self._Email = params.get("Email")
+        self._Phone = params.get("Phone")
+        self._CompanyName = params.get("CompanyName")
+        self._JobTitle = params.get("JobTitle")
+        self._AddressLineTwo = params.get("AddressLineTwo")
+        self._Fax = params.get("Fax")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -101,58 +206,139 @@ class BatchDomainBuyDetails(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: The details ID.
+        :param _Id: The details ID.
         :type Id: int
-        :param Action: The bulk operation type. Valid values: `new` (register domains), `batch_transfer_prohibition_on` (enable transfer prohibition), `batch_transfer_prohibition_off` (disable transfer prohibition), `batch_update_prohibition_on` (enable update prohibition), `batch_update_prohibition_off` (disable update prohibition).
+        :param _Action: The bulk operation type. Valid values: `new` (register domains), `batch_transfer_prohibition_on` (enable transfer prohibition), `batch_transfer_prohibition_off` (disable transfer prohibition), `batch_update_prohibition_on` (enable update prohibition), `batch_update_prohibition_off` (disable update prohibition).
         :type Action: str
-        :param Domain: The domains.
+        :param _Domain: The domains.
         :type Domain: str
-        :param Status: The status. Valid values: `SUCCESS`, `FAILURE`
+        :param _Status: The status. Valid values: `SUCCESS`, `FAILURE`
         :type Status: str
-        :param Reason: The reason for failure.
+        :param _Reason: The reason for failure.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Reason: str
-        :param CreatedOn: The creation time.
+        :param _CreatedOn: The creation time.
         :type CreatedOn: str
-        :param UpdatedOn: The update time.
+        :param _UpdatedOn: The update time.
         :type UpdatedOn: str
-        :param TransferDnsResult: Null: The DNS service is not transferred. `false`: The DNS service failed to be transferred. `true`: The DNS service is transferred successfully.
+        :param _TransferDnsResult: Null: The DNS service is not transferred. `false`: The DNS service failed to be transferred. `true`: The DNS service is transferred successfully.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TransferDnsResult: bool
-        :param ReasonZh: The reason for failure, expressed in Chinese.
+        :param _ReasonZh: The reason for failure, expressed in Chinese.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ReasonZh: str
-        :param PayStatus: The payment status.
+        :param _PayStatus: The payment status.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PayStatus: int
         """
-        self.Id = None
-        self.Action = None
-        self.Domain = None
-        self.Status = None
-        self.Reason = None
-        self.CreatedOn = None
-        self.UpdatedOn = None
-        self.TransferDnsResult = None
-        self.ReasonZh = None
-        self.PayStatus = None
+        self._Id = None
+        self._Action = None
+        self._Domain = None
+        self._Status = None
+        self._Reason = None
+        self._CreatedOn = None
+        self._UpdatedOn = None
+        self._TransferDnsResult = None
+        self._ReasonZh = None
+        self._PayStatus = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Action(self):
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Reason(self):
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def CreatedOn(self):
+        return self._CreatedOn
+
+    @CreatedOn.setter
+    def CreatedOn(self, CreatedOn):
+        self._CreatedOn = CreatedOn
+
+    @property
+    def UpdatedOn(self):
+        return self._UpdatedOn
+
+    @UpdatedOn.setter
+    def UpdatedOn(self, UpdatedOn):
+        self._UpdatedOn = UpdatedOn
+
+    @property
+    def TransferDnsResult(self):
+        return self._TransferDnsResult
+
+    @TransferDnsResult.setter
+    def TransferDnsResult(self, TransferDnsResult):
+        self._TransferDnsResult = TransferDnsResult
+
+    @property
+    def ReasonZh(self):
+        return self._ReasonZh
+
+    @ReasonZh.setter
+    def ReasonZh(self, ReasonZh):
+        self._ReasonZh = ReasonZh
+
+    @property
+    def PayStatus(self):
+        return self._PayStatus
+
+    @PayStatus.setter
+    def PayStatus(self, PayStatus):
+        self._PayStatus = PayStatus
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.Action = params.get("Action")
-        self.Domain = params.get("Domain")
-        self.Status = params.get("Status")
-        self.Reason = params.get("Reason")
-        self.CreatedOn = params.get("CreatedOn")
-        self.UpdatedOn = params.get("UpdatedOn")
-        self.TransferDnsResult = params.get("TransferDnsResult")
-        self.ReasonZh = params.get("ReasonZh")
-        self.PayStatus = params.get("PayStatus")
+        self._Id = params.get("Id")
+        self._Action = params.get("Action")
+        self._Domain = params.get("Domain")
+        self._Status = params.get("Status")
+        self._Reason = params.get("Reason")
+        self._CreatedOn = params.get("CreatedOn")
+        self._UpdatedOn = params.get("UpdatedOn")
+        self._TransferDnsResult = params.get("TransferDnsResult")
+        self._ReasonZh = params.get("ReasonZh")
+        self._PayStatus = params.get("PayStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -165,34 +351,75 @@ class BatchDomainBuyLog(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LogId: The log ID.
+        :param _LogId: The log ID.
         :type LogId: int
-        :param Action: The bulk operation type. Valid values: `new` (register domains), `batch_transfer_prohibition_on` (enable transfer prohibition), `batch_transfer_prohibition_off` (disable transfer prohibition), `batch_update_prohibition_on` (enable update prohibition), `batch_update_prohibition_off` (disable update prohibition).
+        :param _Action: The bulk operation type. Valid values: `new` (register domains), `batch_transfer_prohibition_on` (enable transfer prohibition), `batch_transfer_prohibition_off` (disable transfer prohibition), `batch_update_prohibition_on` (enable update prohibition), `batch_update_prohibition_off` (disable update prohibition).
         :type Action: str
-        :param Number: The quantity.
+        :param _Number: The quantity.
         :type Number: int
-        :param Status: The execution status. Valid values: `doing`, `done`
+        :param _Status: The execution status. Valid values: `doing`, `done`
         :type Status: str
-        :param CreatedOn: The submission time.
+        :param _CreatedOn: The submission time.
         :type CreatedOn: str
         """
-        self.LogId = None
-        self.Action = None
-        self.Number = None
-        self.Status = None
-        self.CreatedOn = None
+        self._LogId = None
+        self._Action = None
+        self._Number = None
+        self._Status = None
+        self._CreatedOn = None
+
+    @property
+    def LogId(self):
+        return self._LogId
+
+    @LogId.setter
+    def LogId(self, LogId):
+        self._LogId = LogId
+
+    @property
+    def Action(self):
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def Number(self):
+        return self._Number
+
+    @Number.setter
+    def Number(self, Number):
+        self._Number = Number
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreatedOn(self):
+        return self._CreatedOn
+
+    @CreatedOn.setter
+    def CreatedOn(self, CreatedOn):
+        self._CreatedOn = CreatedOn
 
 
     def _deserialize(self, params):
-        self.LogId = params.get("LogId")
-        self.Action = params.get("Action")
-        self.Number = params.get("Number")
-        self.Status = params.get("Status")
-        self.CreatedOn = params.get("CreatedOn")
+        self._LogId = params.get("LogId")
+        self._Action = params.get("Action")
+        self._Number = params.get("Number")
+        self._Status = params.get("Status")
+        self._CreatedOn = params.get("CreatedOn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -205,26 +432,51 @@ class BatchModifyIntlDomainDNSRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Domains: The target domains.
+        :param _Domains: The target domains.
         :type Domains: list of str
-        :param Dns: The domain DNS array.
+        :param _Dns: The domain DNS array.
         :type Dns: list of str
-        :param BatchAction: Valid values: `batch_modify_domain_dns1`, `batch_modify_domain_dns2`, `batch_modify_domain_dns3`
+        :param _BatchAction: Valid values: `batch_modify_domain_dns1`, `batch_modify_domain_dns2`, `batch_modify_domain_dns3`
         :type BatchAction: str
         """
-        self.Domains = None
-        self.Dns = None
-        self.BatchAction = None
+        self._Domains = None
+        self._Dns = None
+        self._BatchAction = None
+
+    @property
+    def Domains(self):
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+    @property
+    def Dns(self):
+        return self._Dns
+
+    @Dns.setter
+    def Dns(self, Dns):
+        self._Dns = Dns
+
+    @property
+    def BatchAction(self):
+        return self._BatchAction
+
+    @BatchAction.setter
+    def BatchAction(self, BatchAction):
+        self._BatchAction = BatchAction
 
 
     def _deserialize(self, params):
-        self.Domains = params.get("Domains")
-        self.Dns = params.get("Dns")
-        self.BatchAction = params.get("BatchAction")
+        self._Domains = params.get("Domains")
+        self._Dns = params.get("Dns")
+        self._BatchAction = params.get("BatchAction")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -237,18 +489,34 @@ class BatchModifyIntlDomainDNSResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LogId: The log ID.
+        :param _LogId: The log ID.
         :type LogId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.LogId = None
-        self.RequestId = None
+        self._LogId = None
+        self._RequestId = None
+
+    @property
+    def LogId(self):
+        return self._LogId
+
+    @LogId.setter
+    def LogId(self, LogId):
+        self._LogId = LogId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.LogId = params.get("LogId")
-        self.RequestId = params.get("RequestId")
+        self._LogId = params.get("LogId")
+        self._RequestId = params.get("RequestId")
 
 
 class BatchModifyIntlDomainInfoRequest(AbstractModel):
@@ -258,26 +526,51 @@ class BatchModifyIntlDomainInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Domains: The domains whose information is to be modified.
+        :param _Domains: The domains whose information is to be modified.
         :type Domains: list of str
-        :param TemplateId: The profile ID.
+        :param _TemplateId: The profile ID.
         :type TemplateId: str
-        :param LockTransfer: Whether to enable the 60-day inter-registrar transfer lock.
+        :param _LockTransfer: Whether to enable the 60-day inter-registrar transfer lock.
         :type LockTransfer: bool
         """
-        self.Domains = None
-        self.TemplateId = None
-        self.LockTransfer = None
+        self._Domains = None
+        self._TemplateId = None
+        self._LockTransfer = None
+
+    @property
+    def Domains(self):
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def LockTransfer(self):
+        return self._LockTransfer
+
+    @LockTransfer.setter
+    def LockTransfer(self, LockTransfer):
+        self._LockTransfer = LockTransfer
 
 
     def _deserialize(self, params):
-        self.Domains = params.get("Domains")
-        self.TemplateId = params.get("TemplateId")
-        self.LockTransfer = params.get("LockTransfer")
+        self._Domains = params.get("Domains")
+        self._TemplateId = params.get("TemplateId")
+        self._LockTransfer = params.get("LockTransfer")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -290,18 +583,34 @@ class BatchModifyIntlDomainInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LogId: The log ID.
+        :param _LogId: The log ID.
         :type LogId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.LogId = None
-        self.RequestId = None
+        self._LogId = None
+        self._RequestId = None
+
+    @property
+    def LogId(self):
+        return self._LogId
+
+    @LogId.setter
+    def LogId(self, LogId):
+        self._LogId = LogId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.LogId = params.get("LogId")
-        self.RequestId = params.get("RequestId")
+        self._LogId = params.get("LogId")
+        self._RequestId = params.get("RequestId")
 
 
 class BillingContact(AbstractModel):
@@ -311,70 +620,175 @@ class BillingContact(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FirstName: The first name.
+        :param _FirstName: The first name.
         :type FirstName: str
-        :param LastName: The last name.
+        :param _LastName: The last name.
         :type LastName: str
-        :param Country: The country or region name, such as `CN`.
+        :param _Country: The country or region name, such as `CN`.
         :type Country: str
-        :param Province: The province or state name.
+        :param _Province: The province or state name.
         :type Province: str
-        :param City: The city name.
+        :param _City: The city name.
         :type City: str
-        :param AddressLine: The address line 1.
+        :param _AddressLine: The address line 1.
         :type AddressLine: str
-        :param ZipCode: The zip code.
+        :param _ZipCode: The zip code.
         :type ZipCode: str
-        :param Email: The email address.
+        :param _Email: The email address.
         :type Email: str
-        :param Phone: The mobile number, such as `+86.13600000000`.
+        :param _Phone: The mobile number, such as `+86.13600000000`.
         :type Phone: str
-        :param CompanyName: The company or organization name.
+        :param _CompanyName: The company or organization name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CompanyName: str
-        :param JobTitle: The job title.
+        :param _JobTitle: The job title.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type JobTitle: str
-        :param AddressLineTwo: The address line 2.
+        :param _AddressLineTwo: The address line 2.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AddressLineTwo: str
-        :param Fax: The fax number.
+        :param _Fax: The fax number.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Fax: str
         """
-        self.FirstName = None
-        self.LastName = None
-        self.Country = None
-        self.Province = None
-        self.City = None
-        self.AddressLine = None
-        self.ZipCode = None
-        self.Email = None
-        self.Phone = None
-        self.CompanyName = None
-        self.JobTitle = None
-        self.AddressLineTwo = None
-        self.Fax = None
+        self._FirstName = None
+        self._LastName = None
+        self._Country = None
+        self._Province = None
+        self._City = None
+        self._AddressLine = None
+        self._ZipCode = None
+        self._Email = None
+        self._Phone = None
+        self._CompanyName = None
+        self._JobTitle = None
+        self._AddressLineTwo = None
+        self._Fax = None
+
+    @property
+    def FirstName(self):
+        return self._FirstName
+
+    @FirstName.setter
+    def FirstName(self, FirstName):
+        self._FirstName = FirstName
+
+    @property
+    def LastName(self):
+        return self._LastName
+
+    @LastName.setter
+    def LastName(self, LastName):
+        self._LastName = LastName
+
+    @property
+    def Country(self):
+        return self._Country
+
+    @Country.setter
+    def Country(self, Country):
+        self._Country = Country
+
+    @property
+    def Province(self):
+        return self._Province
+
+    @Province.setter
+    def Province(self, Province):
+        self._Province = Province
+
+    @property
+    def City(self):
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+    @property
+    def AddressLine(self):
+        return self._AddressLine
+
+    @AddressLine.setter
+    def AddressLine(self, AddressLine):
+        self._AddressLine = AddressLine
+
+    @property
+    def ZipCode(self):
+        return self._ZipCode
+
+    @ZipCode.setter
+    def ZipCode(self, ZipCode):
+        self._ZipCode = ZipCode
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def Phone(self):
+        return self._Phone
+
+    @Phone.setter
+    def Phone(self, Phone):
+        self._Phone = Phone
+
+    @property
+    def CompanyName(self):
+        return self._CompanyName
+
+    @CompanyName.setter
+    def CompanyName(self, CompanyName):
+        self._CompanyName = CompanyName
+
+    @property
+    def JobTitle(self):
+        return self._JobTitle
+
+    @JobTitle.setter
+    def JobTitle(self, JobTitle):
+        self._JobTitle = JobTitle
+
+    @property
+    def AddressLineTwo(self):
+        return self._AddressLineTwo
+
+    @AddressLineTwo.setter
+    def AddressLineTwo(self, AddressLineTwo):
+        self._AddressLineTwo = AddressLineTwo
+
+    @property
+    def Fax(self):
+        return self._Fax
+
+    @Fax.setter
+    def Fax(self, Fax):
+        self._Fax = Fax
 
 
     def _deserialize(self, params):
-        self.FirstName = params.get("FirstName")
-        self.LastName = params.get("LastName")
-        self.Country = params.get("Country")
-        self.Province = params.get("Province")
-        self.City = params.get("City")
-        self.AddressLine = params.get("AddressLine")
-        self.ZipCode = params.get("ZipCode")
-        self.Email = params.get("Email")
-        self.Phone = params.get("Phone")
-        self.CompanyName = params.get("CompanyName")
-        self.JobTitle = params.get("JobTitle")
-        self.AddressLineTwo = params.get("AddressLineTwo")
-        self.Fax = params.get("Fax")
+        self._FirstName = params.get("FirstName")
+        self._LastName = params.get("LastName")
+        self._Country = params.get("Country")
+        self._Province = params.get("Province")
+        self._City = params.get("City")
+        self._AddressLine = params.get("AddressLine")
+        self._ZipCode = params.get("ZipCode")
+        self._Email = params.get("Email")
+        self._Phone = params.get("Phone")
+        self._CompanyName = params.get("CompanyName")
+        self._JobTitle = params.get("JobTitle")
+        self._AddressLineTwo = params.get("AddressLineTwo")
+        self._Fax = params.get("Fax")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -387,22 +801,39 @@ class CheckIntlDomainNewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Domain: The name of the domain to be checked.
+        :param _Domain: The name of the domain to be checked.
         :type Domain: str
-        :param Period: Period, in years. If this parameter is left empty, premium domains cannot be queried.
+        :param _Period: Period, in years. If this parameter is left empty, premium domains cannot be queried.
         :type Period: str
         """
-        self.Domain = None
-        self.Period = None
+        self._Domain = None
+        self._Period = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Period(self):
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
 
 
     def _deserialize(self, params):
-        self.Domain = params.get("Domain")
-        self.Period = params.get("Period")
+        self._Domain = params.get("Domain")
+        self._Period = params.get("Period")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -415,74 +846,194 @@ class CheckIntlDomainNewResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainName: The name of the domain checked.
+        :param _DomainName: The name of the domain checked.
         :type DomainName: str
-        :param Available: Whether the domain is available for registration.
+        :param _Available: Whether the domain is available for registration.
         :type Available: bool
-        :param Reason: The reason why the domain cannot be registered.
+        :param _Reason: The reason why the domain cannot be registered.
         :type Reason: str
-        :param Premium: Whether the domain is a premium one.
+        :param _Premium: Whether the domain is a premium one.
         :type Premium: bool
-        :param Price: The domain price.
+        :param _Price: The domain price.
         :type Price: float
-        :param BlackWord: Whether the domain name involves restricted words.
+        :param _BlackWord: Whether the domain name involves restricted words.
         :type BlackWord: bool
-        :param Describe: The premium domain description.
+        :param _Describe: The premium domain description.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Describe: str
-        :param FeeRenew: The price for renewing the premium domain.
+        :param _FeeRenew: The price for renewing the premium domain.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type FeeRenew: float
-        :param RealPrice: The real price of the domain. For a premium domain, its price varies depending on the period. For a non-premium domain, the price is the 1-year price.
+        :param _RealPrice: The real price of the domain. For a premium domain, its price varies depending on the period. For a non-premium domain, the price is the 1-year price.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type RealPrice: float
-        :param FeeTransfer: The price for transferring a premium domain in.
+        :param _FeeTransfer: The price for transferring a premium domain in.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type FeeTransfer: float
-        :param FeeRestore: The price for redeeming a premium domain.
+        :param _FeeRestore: The price for redeeming a premium domain.
         :type FeeRestore: float
-        :param Period: The period (in years) of the domain.
+        :param _Period: The period (in years) of the domain.
         :type Period: int
-        :param ReasonZh: The reason why the domain cannot be registered, expressed in Chinese.
+        :param _ReasonZh: The reason why the domain cannot be registered, expressed in Chinese.
         :type ReasonZh: str
-        :param ResCode: The internal error code.
+        :param _ResCode: The internal error code.
         :type ResCode: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.DomainName = None
-        self.Available = None
-        self.Reason = None
-        self.Premium = None
-        self.Price = None
-        self.BlackWord = None
-        self.Describe = None
-        self.FeeRenew = None
-        self.RealPrice = None
-        self.FeeTransfer = None
-        self.FeeRestore = None
-        self.Period = None
-        self.ReasonZh = None
-        self.ResCode = None
-        self.RequestId = None
+        self._DomainName = None
+        self._Available = None
+        self._Reason = None
+        self._Premium = None
+        self._Price = None
+        self._BlackWord = None
+        self._Describe = None
+        self._FeeRenew = None
+        self._RealPrice = None
+        self._FeeTransfer = None
+        self._FeeRestore = None
+        self._Period = None
+        self._ReasonZh = None
+        self._ResCode = None
+        self._RequestId = None
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def Available(self):
+        return self._Available
+
+    @Available.setter
+    def Available(self, Available):
+        self._Available = Available
+
+    @property
+    def Reason(self):
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def Premium(self):
+        return self._Premium
+
+    @Premium.setter
+    def Premium(self, Premium):
+        self._Premium = Premium
+
+    @property
+    def Price(self):
+        return self._Price
+
+    @Price.setter
+    def Price(self, Price):
+        self._Price = Price
+
+    @property
+    def BlackWord(self):
+        return self._BlackWord
+
+    @BlackWord.setter
+    def BlackWord(self, BlackWord):
+        self._BlackWord = BlackWord
+
+    @property
+    def Describe(self):
+        return self._Describe
+
+    @Describe.setter
+    def Describe(self, Describe):
+        self._Describe = Describe
+
+    @property
+    def FeeRenew(self):
+        return self._FeeRenew
+
+    @FeeRenew.setter
+    def FeeRenew(self, FeeRenew):
+        self._FeeRenew = FeeRenew
+
+    @property
+    def RealPrice(self):
+        return self._RealPrice
+
+    @RealPrice.setter
+    def RealPrice(self, RealPrice):
+        self._RealPrice = RealPrice
+
+    @property
+    def FeeTransfer(self):
+        return self._FeeTransfer
+
+    @FeeTransfer.setter
+    def FeeTransfer(self, FeeTransfer):
+        self._FeeTransfer = FeeTransfer
+
+    @property
+    def FeeRestore(self):
+        return self._FeeRestore
+
+    @FeeRestore.setter
+    def FeeRestore(self, FeeRestore):
+        self._FeeRestore = FeeRestore
+
+    @property
+    def Period(self):
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def ReasonZh(self):
+        return self._ReasonZh
+
+    @ReasonZh.setter
+    def ReasonZh(self, ReasonZh):
+        self._ReasonZh = ReasonZh
+
+    @property
+    def ResCode(self):
+        return self._ResCode
+
+    @ResCode.setter
+    def ResCode(self, ResCode):
+        self._ResCode = ResCode
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.DomainName = params.get("DomainName")
-        self.Available = params.get("Available")
-        self.Reason = params.get("Reason")
-        self.Premium = params.get("Premium")
-        self.Price = params.get("Price")
-        self.BlackWord = params.get("BlackWord")
-        self.Describe = params.get("Describe")
-        self.FeeRenew = params.get("FeeRenew")
-        self.RealPrice = params.get("RealPrice")
-        self.FeeTransfer = params.get("FeeTransfer")
-        self.FeeRestore = params.get("FeeRestore")
-        self.Period = params.get("Period")
-        self.ReasonZh = params.get("ReasonZh")
-        self.ResCode = params.get("ResCode")
-        self.RequestId = params.get("RequestId")
+        self._DomainName = params.get("DomainName")
+        self._Available = params.get("Available")
+        self._Reason = params.get("Reason")
+        self._Premium = params.get("Premium")
+        self._Price = params.get("Price")
+        self._BlackWord = params.get("BlackWord")
+        self._Describe = params.get("Describe")
+        self._FeeRenew = params.get("FeeRenew")
+        self._RealPrice = params.get("RealPrice")
+        self._FeeTransfer = params.get("FeeTransfer")
+        self._FeeRestore = params.get("FeeRestore")
+        self._Period = params.get("Period")
+        self._ReasonZh = params.get("ReasonZh")
+        self._ResCode = params.get("ResCode")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateIntlDomainBatchRequest(AbstractModel):
@@ -492,46 +1043,111 @@ class CreateIntlDomainBatchRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateId: The profile ID.
+        :param _TemplateId: The profile ID.
         :type TemplateId: str
-        :param Period: The purchase period (years) of the domain. Value range: [1-10]
+        :param _Period: The purchase period (years) of the domain. Value range: [1-10]
         :type Period: int
-        :param Domains: The domains (maximum 4,000) to purchase.
+        :param _Domains: The domains (maximum 4,000) to purchase.
         :type Domains: list of str
-        :param PayMode: The payment method. Valid values: `0` (online payment), `1` (account balance), `2` (package), `3` (offline settlement).
+        :param _PayMode: The payment method. Valid values: `0` (online payment), `1` (account balance), `2` (package), `3` (offline settlement).
         :type PayMode: int
-        :param AutoRenewFlag: Whether to enable auto-renewal.
+        :param _AutoRenewFlag: Whether to enable auto-renewal.
         :type AutoRenewFlag: bool
-        :param TransferProhibition: Whether to enable the transfer prohibition lock.
+        :param _TransferProhibition: Whether to enable the transfer prohibition lock.
         :type TransferProhibition: bool
-        :param UpdateProhibition: Whether to enable the update prohibition lock.
+        :param _UpdateProhibition: Whether to enable the update prohibition lock.
         :type UpdateProhibition: bool
-        :param CustomDns: The custom DNS servers
+        :param _CustomDns: The custom DNS servers
         :type CustomDns: list of str
         """
-        self.TemplateId = None
-        self.Period = None
-        self.Domains = None
-        self.PayMode = None
-        self.AutoRenewFlag = None
-        self.TransferProhibition = None
-        self.UpdateProhibition = None
-        self.CustomDns = None
+        self._TemplateId = None
+        self._Period = None
+        self._Domains = None
+        self._PayMode = None
+        self._AutoRenewFlag = None
+        self._TransferProhibition = None
+        self._UpdateProhibition = None
+        self._CustomDns = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def Period(self):
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def Domains(self):
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def AutoRenewFlag(self):
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def TransferProhibition(self):
+        return self._TransferProhibition
+
+    @TransferProhibition.setter
+    def TransferProhibition(self, TransferProhibition):
+        self._TransferProhibition = TransferProhibition
+
+    @property
+    def UpdateProhibition(self):
+        return self._UpdateProhibition
+
+    @UpdateProhibition.setter
+    def UpdateProhibition(self, UpdateProhibition):
+        self._UpdateProhibition = UpdateProhibition
+
+    @property
+    def CustomDns(self):
+        return self._CustomDns
+
+    @CustomDns.setter
+    def CustomDns(self, CustomDns):
+        self._CustomDns = CustomDns
 
 
     def _deserialize(self, params):
-        self.TemplateId = params.get("TemplateId")
-        self.Period = params.get("Period")
-        self.Domains = params.get("Domains")
-        self.PayMode = params.get("PayMode")
-        self.AutoRenewFlag = params.get("AutoRenewFlag")
-        self.TransferProhibition = params.get("TransferProhibition")
-        self.UpdateProhibition = params.get("UpdateProhibition")
-        self.CustomDns = params.get("CustomDns")
+        self._TemplateId = params.get("TemplateId")
+        self._Period = params.get("Period")
+        self._Domains = params.get("Domains")
+        self._PayMode = params.get("PayMode")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._TransferProhibition = params.get("TransferProhibition")
+        self._UpdateProhibition = params.get("UpdateProhibition")
+        self._CustomDns = params.get("CustomDns")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -544,19 +1160,35 @@ class CreateIntlDomainBatchResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LogId: The bulk purchase log ID.
+        :param _LogId: The bulk purchase log ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type LogId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.LogId = None
-        self.RequestId = None
+        self._LogId = None
+        self._RequestId = None
+
+    @property
+    def LogId(self):
+        return self._LogId
+
+    @LogId.setter
+    def LogId(self, LogId):
+        self._LogId = LogId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.LogId = params.get("LogId")
-        self.RequestId = params.get("RequestId")
+        self._LogId = params.get("LogId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateIntlPhoneEmailRequest(AbstractModel):
@@ -566,26 +1198,51 @@ class CreateIntlPhoneEmailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: The type. Valid values: `1` (mobile number), `2` (email address).
+        :param _Type: The type. Valid values: `1` (mobile number), `2` (email address).
         :type Type: int
-        :param Code: The mobile number or email address.
+        :param _Code: The mobile number or email address.
         :type Code: str
-        :param VerifyCode: The verification code.
+        :param _VerifyCode: The verification code.
         :type VerifyCode: str
         """
-        self.Type = None
-        self.Code = None
-        self.VerifyCode = None
+        self._Type = None
+        self._Code = None
+        self._VerifyCode = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def VerifyCode(self):
+        return self._VerifyCode
+
+    @VerifyCode.setter
+    def VerifyCode(self, VerifyCode):
+        self._VerifyCode = VerifyCode
 
 
     def _deserialize(self, params):
-        self.Type = params.get("Type")
-        self.Code = params.get("Code")
-        self.VerifyCode = params.get("VerifyCode")
+        self._Type = params.get("Type")
+        self._Code = params.get("Code")
+        self._VerifyCode = params.get("VerifyCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -598,14 +1255,22 @@ class CreateIntlPhoneEmailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateIntlTemplateRequest(AbstractModel):
@@ -615,42 +1280,83 @@ class CreateIntlTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RegistrantContact: The registrant contact.
+        :param _RegistrantContact: The registrant contact.
         :type RegistrantContact: :class:`tencentcloud.domain.v20180808.models.RegistrantContact`
-        :param AdminContact: The admin contact.
+        :param _AdminContact: The admin contact.
         :type AdminContact: :class:`tencentcloud.domain.v20180808.models.AdminContact`
-        :param TechnicalContact: The technical contact.
+        :param _TechnicalContact: The technical contact.
         :type TechnicalContact: :class:`tencentcloud.domain.v20180808.models.TechnicalContact`
-        :param BillingContact: The contact person for bills.
+        :param _BillingContact: The contact person for bills.
         :type BillingContact: :class:`tencentcloud.domain.v20180808.models.BillingContact`
-        :param TemplateType: The profile type. Valid values: `I` (individual, default), `E` (organization).
+        :param _TemplateType: The profile type. Valid values: `I` (individual, default), `E` (organization).
         :type TemplateType: str
         """
-        self.RegistrantContact = None
-        self.AdminContact = None
-        self.TechnicalContact = None
-        self.BillingContact = None
-        self.TemplateType = None
+        self._RegistrantContact = None
+        self._AdminContact = None
+        self._TechnicalContact = None
+        self._BillingContact = None
+        self._TemplateType = None
+
+    @property
+    def RegistrantContact(self):
+        return self._RegistrantContact
+
+    @RegistrantContact.setter
+    def RegistrantContact(self, RegistrantContact):
+        self._RegistrantContact = RegistrantContact
+
+    @property
+    def AdminContact(self):
+        return self._AdminContact
+
+    @AdminContact.setter
+    def AdminContact(self, AdminContact):
+        self._AdminContact = AdminContact
+
+    @property
+    def TechnicalContact(self):
+        return self._TechnicalContact
+
+    @TechnicalContact.setter
+    def TechnicalContact(self, TechnicalContact):
+        self._TechnicalContact = TechnicalContact
+
+    @property
+    def BillingContact(self):
+        return self._BillingContact
+
+    @BillingContact.setter
+    def BillingContact(self, BillingContact):
+        self._BillingContact = BillingContact
+
+    @property
+    def TemplateType(self):
+        return self._TemplateType
+
+    @TemplateType.setter
+    def TemplateType(self, TemplateType):
+        self._TemplateType = TemplateType
 
 
     def _deserialize(self, params):
         if params.get("RegistrantContact") is not None:
-            self.RegistrantContact = RegistrantContact()
-            self.RegistrantContact._deserialize(params.get("RegistrantContact"))
+            self._RegistrantContact = RegistrantContact()
+            self._RegistrantContact._deserialize(params.get("RegistrantContact"))
         if params.get("AdminContact") is not None:
-            self.AdminContact = AdminContact()
-            self.AdminContact._deserialize(params.get("AdminContact"))
+            self._AdminContact = AdminContact()
+            self._AdminContact._deserialize(params.get("AdminContact"))
         if params.get("TechnicalContact") is not None:
-            self.TechnicalContact = TechnicalContact()
-            self.TechnicalContact._deserialize(params.get("TechnicalContact"))
+            self._TechnicalContact = TechnicalContact()
+            self._TechnicalContact._deserialize(params.get("TechnicalContact"))
         if params.get("BillingContact") is not None:
-            self.BillingContact = BillingContact()
-            self.BillingContact._deserialize(params.get("BillingContact"))
-        self.TemplateType = params.get("TemplateType")
+            self._BillingContact = BillingContact()
+            self._BillingContact._deserialize(params.get("BillingContact"))
+        self._TemplateType = params.get("TemplateType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -663,18 +1369,34 @@ class CreateIntlTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateId: The profile ID.
+        :param _TemplateId: The profile ID.
         :type TemplateId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TemplateId = None
-        self.RequestId = None
+        self._TemplateId = None
+        self._RequestId = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TemplateId = params.get("TemplateId")
-        self.RequestId = params.get("RequestId")
+        self._TemplateId = params.get("TemplateId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteIntlPhoneEmailRequest(AbstractModel):
@@ -684,22 +1406,39 @@ class DeleteIntlPhoneEmailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: The type. Valid values: `1` (mobile number), `2` (email address).
+        :param _Type: The type. Valid values: `1` (mobile number), `2` (email address).
         :type Type: int
-        :param Code: The mobile number or email address.
+        :param _Code: The mobile number or email address.
         :type Code: str
         """
-        self.Type = None
-        self.Code = None
+        self._Type = None
+        self._Code = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
 
 
     def _deserialize(self, params):
-        self.Type = params.get("Type")
-        self.Code = params.get("Code")
+        self._Type = params.get("Type")
+        self._Code = params.get("Code")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -712,14 +1451,22 @@ class DeleteIntlPhoneEmailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteIntlTemplateRequest(AbstractModel):
@@ -729,18 +1476,27 @@ class DeleteIntlTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateId: The unique ID of the target registrant profile.
+        :param _TemplateId: The unique ID of the target registrant profile.
         :type TemplateId: str
         """
-        self.TemplateId = None
+        self._TemplateId = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
 
 
     def _deserialize(self, params):
-        self.TemplateId = params.get("TemplateId")
+        self._TemplateId = params.get("TemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -753,14 +1509,22 @@ class DeleteIntlTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeIntlBatchDetailStatusRequest(AbstractModel):
@@ -770,18 +1534,27 @@ class DescribeIntlBatchDetailStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LogIds: The IDs of the logs to be queried.
+        :param _LogIds: The IDs of the logs to be queried.
         :type LogIds: list of int
         """
-        self.LogIds = None
+        self._LogIds = None
+
+    @property
+    def LogIds(self):
+        return self._LogIds
+
+    @LogIds.setter
+    def LogIds(self, LogIds):
+        self._LogIds = LogIds
 
 
     def _deserialize(self, params):
-        self.LogIds = params.get("LogIds")
+        self._LogIds = params.get("LogIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -794,23 +1567,39 @@ class DescribeIntlBatchDetailStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Details: The details.
+        :param _Details: The details.
         :type Details: list of IntlBatchDetails
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Details = None
-        self.RequestId = None
+        self._Details = None
+        self._RequestId = None
+
+    @property
+    def Details(self):
+        return self._Details
+
+    @Details.setter
+    def Details(self, Details):
+        self._Details = Details
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Details") is not None:
-            self.Details = []
+            self._Details = []
             for item in params.get("Details"):
                 obj = IntlBatchDetails()
                 obj._deserialize(item)
-                self.Details.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Details.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeIntlBatchOperationLogsRequest(AbstractModel):
@@ -820,22 +1609,39 @@ class DescribeIntlBatchOperationLogsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: The offset. Default value: 0
+        :param _Offset: The offset. Default value: 0
         :type Offset: int
-        :param Limit: The number of returned results. Default value: 20. Maximum value: 100.
+        :param _Limit: The number of returned results. Default value: 20. Maximum value: 100.
         :type Limit: int
         """
-        self.Offset = None
-        self.Limit = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -848,28 +1654,52 @@ class DescribeIntlBatchOperationLogsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: The total count.
+        :param _TotalCount: The total count.
         :type TotalCount: int
-        :param DomainBatchLogSet: The log list.
+        :param _DomainBatchLogSet: The log list.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DomainBatchLogSet: list of BatchDomainBuyLog
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.DomainBatchLogSet = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._DomainBatchLogSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DomainBatchLogSet(self):
+        return self._DomainBatchLogSet
+
+    @DomainBatchLogSet.setter
+    def DomainBatchLogSet(self, DomainBatchLogSet):
+        self._DomainBatchLogSet = DomainBatchLogSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("DomainBatchLogSet") is not None:
-            self.DomainBatchLogSet = []
+            self._DomainBatchLogSet = []
             for item in params.get("DomainBatchLogSet"):
                 obj = BatchDomainBuyLog()
                 obj._deserialize(item)
-                self.DomainBatchLogSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._DomainBatchLogSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeIntlDomainBatchDetailsRequest(AbstractModel):
@@ -879,34 +1709,75 @@ class DescribeIntlDomainBatchDetailsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LogId: The log ID.
+        :param _LogId: The log ID.
         :type LogId: int
-        :param Offset: The offset. Default value: 0
+        :param _Offset: The offset. Default value: 0
         :type Offset: int
-        :param Limit: The number of returned results. Default value: 20. Maximum value: 100.
+        :param _Limit: The number of returned results. Default value: 20. Maximum value: 100.
         :type Limit: int
-        :param OrderByKey: The sort key. Valid values: `Domain`, `UpdateOn`, `Status`
+        :param _OrderByKey: The sort key. Valid values: `Domain`, `UpdateOn`, `Status`
         :type OrderByKey: str
-        :param OrderBy: Valid values: `0` (ascending), `1` (descending).
+        :param _OrderBy: Valid values: `0` (ascending), `1` (descending).
         :type OrderBy: int
         """
-        self.LogId = None
-        self.Offset = None
-        self.Limit = None
-        self.OrderByKey = None
-        self.OrderBy = None
+        self._LogId = None
+        self._Offset = None
+        self._Limit = None
+        self._OrderByKey = None
+        self._OrderBy = None
+
+    @property
+    def LogId(self):
+        return self._LogId
+
+    @LogId.setter
+    def LogId(self, LogId):
+        self._LogId = LogId
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def OrderByKey(self):
+        return self._OrderByKey
+
+    @OrderByKey.setter
+    def OrderByKey(self, OrderByKey):
+        self._OrderByKey = OrderByKey
+
+    @property
+    def OrderBy(self):
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
 
 
     def _deserialize(self, params):
-        self.LogId = params.get("LogId")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.OrderByKey = params.get("OrderByKey")
-        self.OrderBy = params.get("OrderBy")
+        self._LogId = params.get("LogId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._OrderByKey = params.get("OrderByKey")
+        self._OrderBy = params.get("OrderBy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -919,28 +1790,52 @@ class DescribeIntlDomainBatchDetailsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: The total count.
+        :param _TotalCount: The total count.
         :type TotalCount: int
-        :param DomainBatchDetailSet: The list of log details.
+        :param _DomainBatchDetailSet: The list of log details.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DomainBatchDetailSet: list of BatchDomainBuyDetails
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.DomainBatchDetailSet = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._DomainBatchDetailSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DomainBatchDetailSet(self):
+        return self._DomainBatchDetailSet
+
+    @DomainBatchDetailSet.setter
+    def DomainBatchDetailSet(self, DomainBatchDetailSet):
+        self._DomainBatchDetailSet = DomainBatchDetailSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("DomainBatchDetailSet") is not None:
-            self.DomainBatchDetailSet = []
+            self._DomainBatchDetailSet = []
             for item in params.get("DomainBatchDetailSet"):
                 obj = BatchDomainBuyDetails()
                 obj._deserialize(item)
-                self.DomainBatchDetailSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._DomainBatchDetailSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeIntlDomainListRequest(AbstractModel):
@@ -950,51 +1845,116 @@ class DescribeIntlDomainListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: The page number in pagination cases.
+        :param _Offset: The page number in pagination cases.
         :type Offset: int
-        :param Limit: The number of records on each page in pagination cases.
+        :param _Limit: The number of records on each page in pagination cases.
         :type Limit: int
-        :param KeyWord: The domain keyword for fuzzy search.
+        :param _KeyWord: The domain keyword for fuzzy search.
         :type KeyWord: str
-        :param OrderByRegTime: The registration time sort order. Valid values: `1` (descending), `2` (ascending).
+        :param _OrderByRegTime: The registration time sort order. Valid values: `1` (descending), `2` (ascending).
         :type OrderByRegTime: int
-        :param OrderByExpireTime: The expiration time sort order. Valid values: `1` (descending), `2` (ascending).
+        :param _OrderByExpireTime: The expiration time sort order. Valid values: `1` (descending), `2` (ascending).
         :type OrderByExpireTime: int
-        :param Status: The domain status.
+        :param _Status: The domain status.
 `all`: All domains.
 `UrgentNeedRenew`: The domains that are in urgent need of renewal.
 `RedemptionPending`: The domains that are in urgent need of redemption.
 `nosubmit`: The domains with unverified identities.
 `tran`: The domains that are being transferred in.
         :type Status: str
-        :param DnsStatus: The DNS type. Valid values: `1` (DNSPod), `2` (others).
+        :param _DnsStatus: The DNS type. Valid values: `1` (DNSPod), `2` (others).
         :type DnsStatus: int
-        :param OrderByDomainName: The domain sort order. Valid values: `1` (descending), `2` (ascending).
+        :param _OrderByDomainName: The domain sort order. Valid values: `1` (descending), `2` (ascending).
         :type OrderByDomainName: int
         """
-        self.Offset = None
-        self.Limit = None
-        self.KeyWord = None
-        self.OrderByRegTime = None
-        self.OrderByExpireTime = None
-        self.Status = None
-        self.DnsStatus = None
-        self.OrderByDomainName = None
+        self._Offset = None
+        self._Limit = None
+        self._KeyWord = None
+        self._OrderByRegTime = None
+        self._OrderByExpireTime = None
+        self._Status = None
+        self._DnsStatus = None
+        self._OrderByDomainName = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def KeyWord(self):
+        return self._KeyWord
+
+    @KeyWord.setter
+    def KeyWord(self, KeyWord):
+        self._KeyWord = KeyWord
+
+    @property
+    def OrderByRegTime(self):
+        return self._OrderByRegTime
+
+    @OrderByRegTime.setter
+    def OrderByRegTime(self, OrderByRegTime):
+        self._OrderByRegTime = OrderByRegTime
+
+    @property
+    def OrderByExpireTime(self):
+        return self._OrderByExpireTime
+
+    @OrderByExpireTime.setter
+    def OrderByExpireTime(self, OrderByExpireTime):
+        self._OrderByExpireTime = OrderByExpireTime
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def DnsStatus(self):
+        return self._DnsStatus
+
+    @DnsStatus.setter
+    def DnsStatus(self, DnsStatus):
+        self._DnsStatus = DnsStatus
+
+    @property
+    def OrderByDomainName(self):
+        return self._OrderByDomainName
+
+    @OrderByDomainName.setter
+    def OrderByDomainName(self, OrderByDomainName):
+        self._OrderByDomainName = OrderByDomainName
 
 
     def _deserialize(self, params):
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.KeyWord = params.get("KeyWord")
-        self.OrderByRegTime = params.get("OrderByRegTime")
-        self.OrderByExpireTime = params.get("OrderByExpireTime")
-        self.Status = params.get("Status")
-        self.DnsStatus = params.get("DnsStatus")
-        self.OrderByDomainName = params.get("OrderByDomainName")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._KeyWord = params.get("KeyWord")
+        self._OrderByRegTime = params.get("OrderByRegTime")
+        self._OrderByExpireTime = params.get("OrderByExpireTime")
+        self._Status = params.get("Status")
+        self._DnsStatus = params.get("DnsStatus")
+        self._OrderByDomainName = params.get("OrderByDomainName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1007,27 +1967,51 @@ class DescribeIntlDomainListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainSet: The domain information set.
+        :param _DomainSet: The domain information set.
         :type DomainSet: list of IntlDomainInfo
-        :param TotalCount: The total number of domains.
+        :param _TotalCount: The total number of domains.
         :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.DomainSet = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._DomainSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def DomainSet(self):
+        return self._DomainSet
+
+    @DomainSet.setter
+    def DomainSet(self, DomainSet):
+        self._DomainSet = DomainSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DomainSet") is not None:
-            self.DomainSet = []
+            self._DomainSet = []
             for item in params.get("DomainSet"):
                 obj = IntlDomainInfo()
                 obj._deserialize(item)
-                self.DomainSet.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._DomainSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeIntlDomainPriceNewListRequest(AbstractModel):
@@ -1037,26 +2021,51 @@ class DescribeIntlDomainPriceNewListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TldList: The list of domain suffixes for which you want to query prices. This parameter defaults to all suffixes.
+        :param _TldList: The list of domain suffixes for which you want to query prices. This parameter defaults to all suffixes.
         :type TldList: list of str
-        :param Year: The purchase year of the domains for which you want to query prices. This parameter defaults to all years.
+        :param _Year: The purchase year of the domains for which you want to query prices. This parameter defaults to all years.
         :type Year: list of int
-        :param Operation: The domain purchase type. Valid values: `new`, `renew`, `redem` (redeem), `tran` (transfer in).
+        :param _Operation: The domain purchase type. Valid values: `new`, `renew`, `redem` (redeem), `tran` (transfer in).
         :type Operation: list of str
         """
-        self.TldList = None
-        self.Year = None
-        self.Operation = None
+        self._TldList = None
+        self._Year = None
+        self._Operation = None
+
+    @property
+    def TldList(self):
+        return self._TldList
+
+    @TldList.setter
+    def TldList(self, TldList):
+        self._TldList = TldList
+
+    @property
+    def Year(self):
+        return self._Year
+
+    @Year.setter
+    def Year(self, Year):
+        self._Year = Year
+
+    @property
+    def Operation(self):
+        return self._Operation
+
+    @Operation.setter
+    def Operation(self, Operation):
+        self._Operation = Operation
 
 
     def _deserialize(self, params):
-        self.TldList = params.get("TldList")
-        self.Year = params.get("Year")
-        self.Operation = params.get("Operation")
+        self._TldList = params.get("TldList")
+        self._Year = params.get("Year")
+        self._Operation = params.get("Operation")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1069,23 +2078,39 @@ class DescribeIntlDomainPriceNewListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PriceList: The price list of domains.
+        :param _PriceList: The price list of domains.
         :type PriceList: list of PriceInfoNew
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.PriceList = None
-        self.RequestId = None
+        self._PriceList = None
+        self._RequestId = None
+
+    @property
+    def PriceList(self):
+        return self._PriceList
+
+    @PriceList.setter
+    def PriceList(self, PriceList):
+        self._PriceList = PriceList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("PriceList") is not None:
-            self.PriceList = []
+            self._PriceList = []
             for item in params.get("PriceList"):
                 obj = PriceInfoNew()
                 obj._deserialize(item)
-                self.PriceList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._PriceList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeIntlDomainRequest(AbstractModel):
@@ -1095,18 +2120,27 @@ class DescribeIntlDomainRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainId: The domain ID.
+        :param _DomainId: The domain ID.
         :type DomainId: str
         """
-        self.DomainId = None
+        self._DomainId = None
+
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
 
 
     def _deserialize(self, params):
-        self.DomainId = params.get("DomainId")
+        self._DomainId = params.get("DomainId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1119,20 +2153,36 @@ class DescribeIntlDomainResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainInfo: The domain information.
+        :param _DomainInfo: The domain information.
         :type DomainInfo: :class:`tencentcloud.domain.v20180808.models.IntlDomainInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.DomainInfo = None
-        self.RequestId = None
+        self._DomainInfo = None
+        self._RequestId = None
+
+    @property
+    def DomainInfo(self):
+        return self._DomainInfo
+
+    @DomainInfo.setter
+    def DomainInfo(self, DomainInfo):
+        self._DomainInfo = DomainInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DomainInfo") is not None:
-            self.DomainInfo = IntlDomainInfo()
-            self.DomainInfo._deserialize(params.get("DomainInfo"))
-        self.RequestId = params.get("RequestId")
+            self._DomainInfo = IntlDomainInfo()
+            self._DomainInfo._deserialize(params.get("DomainInfo"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeIntlPhoneEmailListRequest(AbstractModel):
@@ -1142,26 +2192,51 @@ class DescribeIntlPhoneEmailListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: The type. Valid values: `1` (mobile number), `2` (email address).
+        :param _Type: The type. Valid values: `1` (mobile number), `2` (email address).
         :type Type: int
-        :param Limit: The number of records on each page in pagination cases.
+        :param _Limit: The number of records on each page in pagination cases.
         :type Limit: int
-        :param Offset: The page number in pagination cases.
+        :param _Offset: The page number in pagination cases.
         :type Offset: int
         """
-        self.Type = None
-        self.Limit = None
-        self.Offset = None
+        self._Type = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.Type = params.get("Type")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._Type = params.get("Type")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1174,27 +2249,51 @@ class DescribeIntlPhoneEmailListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PhoneEmailList: The list of verified mobile numbers and email addresses.
+        :param _PhoneEmailList: The list of verified mobile numbers and email addresses.
         :type PhoneEmailList: list of IntlPhoneEmailLists
-        :param TotalCount: The total count.
+        :param _TotalCount: The total count.
         :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.PhoneEmailList = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._PhoneEmailList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def PhoneEmailList(self):
+        return self._PhoneEmailList
+
+    @PhoneEmailList.setter
+    def PhoneEmailList(self, PhoneEmailList):
+        self._PhoneEmailList = PhoneEmailList
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("PhoneEmailList") is not None:
-            self.PhoneEmailList = []
+            self._PhoneEmailList = []
             for item in params.get("PhoneEmailList"):
                 obj = IntlPhoneEmailLists()
                 obj._deserialize(item)
-                self.PhoneEmailList.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._PhoneEmailList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeIntlTemplateListRequest(AbstractModel):
@@ -1204,30 +2303,63 @@ class DescribeIntlTemplateListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: The offset.
+        :param _Offset: The offset.
         :type Offset: int
-        :param Limit: The maximum number of entries.
+        :param _Limit: The maximum number of entries.
         :type Limit: int
-        :param Keyword: The domain registrant keyword for exact match.
+        :param _Keyword: The domain registrant keyword for exact match.
         :type Keyword: str
-        :param Type: The type. Valid values: `all` (all types), `I` (individual), `E` (organization).
+        :param _Type: The type. Valid values: `all` (all types), `I` (individual), `E` (organization).
         :type Type: str
         """
-        self.Offset = None
-        self.Limit = None
-        self.Keyword = None
-        self.Type = None
+        self._Offset = None
+        self._Limit = None
+        self._Keyword = None
+        self._Type = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Keyword(self):
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
 
 
     def _deserialize(self, params):
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.Keyword = params.get("Keyword")
-        self.Type = params.get("Type")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Keyword = params.get("Keyword")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1240,27 +2372,51 @@ class DescribeIntlTemplateListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateSet: The registrant profile list information.
+        :param _TemplateSet: The registrant profile list information.
         :type TemplateSet: list of IntlTemplate
-        :param TotalCount: The total count.
+        :param _TotalCount: The total count.
         :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TemplateSet = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._TemplateSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def TemplateSet(self):
+        return self._TemplateSet
+
+    @TemplateSet.setter
+    def TemplateSet(self, TemplateSet):
+        self._TemplateSet = TemplateSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("TemplateSet") is not None:
-            self.TemplateSet = []
+            self._TemplateSet = []
             for item in params.get("TemplateSet"):
                 obj = IntlTemplate()
                 obj._deserialize(item)
-                self.TemplateSet.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._TemplateSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeIntlTemplateRequest(AbstractModel):
@@ -1270,18 +2426,27 @@ class DescribeIntlTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateId: The unique ID of a registrant profile.
+        :param _TemplateId: The unique ID of a registrant profile.
         :type TemplateId: str
         """
-        self.TemplateId = None
+        self._TemplateId = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
 
 
     def _deserialize(self, params):
-        self.TemplateId = params.get("TemplateId")
+        self._TemplateId = params.get("TemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1294,20 +2459,36 @@ class DescribeIntlTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Template: The details of the registrant profile.
+        :param _Template: The details of the registrant profile.
         :type Template: :class:`tencentcloud.domain.v20180808.models.IntlTemplateInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Template = None
-        self.RequestId = None
+        self._Template = None
+        self._RequestId = None
+
+    @property
+    def Template(self):
+        return self._Template
+
+    @Template.setter
+    def Template(self, Template):
+        self._Template = Template
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Template") is not None:
-            self.Template = IntlTemplateInfo()
-            self.Template._deserialize(params.get("Template"))
-        self.RequestId = params.get("RequestId")
+            self._Template = IntlTemplateInfo()
+            self._Template._deserialize(params.get("Template"))
+        self._RequestId = params.get("RequestId")
 
 
 class IntlBatchDetails(AbstractModel):
@@ -1317,30 +2498,63 @@ class IntlBatchDetails(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: The ID of the bulk task.
+        :param _Id: The ID of the bulk task.
         :type Id: int
-        :param Status: The task status.
+        :param _Status: The task status.
         :type Status: str
-        :param Reason: The reason.
+        :param _Reason: The reason.
         :type Reason: str
-        :param ReasonZh: The reason, expressed in Chinese.
+        :param _ReasonZh: The reason, expressed in Chinese.
         :type ReasonZh: str
         """
-        self.Id = None
-        self.Status = None
-        self.Reason = None
-        self.ReasonZh = None
+        self._Id = None
+        self._Status = None
+        self._Reason = None
+        self._ReasonZh = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Reason(self):
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def ReasonZh(self):
+        return self._ReasonZh
+
+    @ReasonZh.setter
+    def ReasonZh(self, ReasonZh):
+        self._ReasonZh = ReasonZh
 
 
     def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.Status = params.get("Status")
-        self.Reason = params.get("Reason")
-        self.ReasonZh = params.get("ReasonZh")
+        self._Id = params.get("Id")
+        self._Status = params.get("Status")
+        self._Reason = params.get("Reason")
+        self._ReasonZh = params.get("ReasonZh")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1353,66 +2567,171 @@ class IntlContactInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param City: The city name.
+        :param _City: The city name.
         :type City: str
-        :param Country: The country or region name.
+        :param _Country: The country or region name.
         :type Country: str
-        :param Email: The email address.
+        :param _Email: The email address.
         :type Email: str
-        :param OrganizationName: The domain registrant.
+        :param _OrganizationName: The domain registrant.
         :type OrganizationName: str
-        :param Province: The province or state name.
+        :param _Province: The province or state name.
         :type Province: str
-        :param RegistrantName: The name of the registrant.
+        :param _RegistrantName: The name of the registrant.
         :type RegistrantName: str
-        :param RegistrantType: The registrant type. Valid values: `I` (individual), `E` (organization).
+        :param _RegistrantType: The registrant type. Valid values: `I` (individual), `E` (organization).
         :type RegistrantType: str
-        :param Street: The detailed address.
+        :param _Street: The detailed address.
         :type Street: str
-        :param Telephone: The mobile number.
+        :param _Telephone: The mobile number.
         :type Telephone: str
-        :param ZipCode: The zip code.
+        :param _ZipCode: The zip code.
         :type ZipCode: str
-        :param FirstName: The first name.
+        :param _FirstName: The first name.
         :type FirstName: str
-        :param LastName: The last name.
+        :param _LastName: The last name.
         :type LastName: str
-        :param CompanyName: The company name.
+        :param _CompanyName: The company name.
         :type CompanyName: str
         """
-        self.City = None
-        self.Country = None
-        self.Email = None
-        self.OrganizationName = None
-        self.Province = None
-        self.RegistrantName = None
-        self.RegistrantType = None
-        self.Street = None
-        self.Telephone = None
-        self.ZipCode = None
-        self.FirstName = None
-        self.LastName = None
-        self.CompanyName = None
+        self._City = None
+        self._Country = None
+        self._Email = None
+        self._OrganizationName = None
+        self._Province = None
+        self._RegistrantName = None
+        self._RegistrantType = None
+        self._Street = None
+        self._Telephone = None
+        self._ZipCode = None
+        self._FirstName = None
+        self._LastName = None
+        self._CompanyName = None
+
+    @property
+    def City(self):
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+    @property
+    def Country(self):
+        return self._Country
+
+    @Country.setter
+    def Country(self, Country):
+        self._Country = Country
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def OrganizationName(self):
+        return self._OrganizationName
+
+    @OrganizationName.setter
+    def OrganizationName(self, OrganizationName):
+        self._OrganizationName = OrganizationName
+
+    @property
+    def Province(self):
+        return self._Province
+
+    @Province.setter
+    def Province(self, Province):
+        self._Province = Province
+
+    @property
+    def RegistrantName(self):
+        return self._RegistrantName
+
+    @RegistrantName.setter
+    def RegistrantName(self, RegistrantName):
+        self._RegistrantName = RegistrantName
+
+    @property
+    def RegistrantType(self):
+        return self._RegistrantType
+
+    @RegistrantType.setter
+    def RegistrantType(self, RegistrantType):
+        self._RegistrantType = RegistrantType
+
+    @property
+    def Street(self):
+        return self._Street
+
+    @Street.setter
+    def Street(self, Street):
+        self._Street = Street
+
+    @property
+    def Telephone(self):
+        return self._Telephone
+
+    @Telephone.setter
+    def Telephone(self, Telephone):
+        self._Telephone = Telephone
+
+    @property
+    def ZipCode(self):
+        return self._ZipCode
+
+    @ZipCode.setter
+    def ZipCode(self, ZipCode):
+        self._ZipCode = ZipCode
+
+    @property
+    def FirstName(self):
+        return self._FirstName
+
+    @FirstName.setter
+    def FirstName(self, FirstName):
+        self._FirstName = FirstName
+
+    @property
+    def LastName(self):
+        return self._LastName
+
+    @LastName.setter
+    def LastName(self, LastName):
+        self._LastName = LastName
+
+    @property
+    def CompanyName(self):
+        return self._CompanyName
+
+    @CompanyName.setter
+    def CompanyName(self, CompanyName):
+        self._CompanyName = CompanyName
 
 
     def _deserialize(self, params):
-        self.City = params.get("City")
-        self.Country = params.get("Country")
-        self.Email = params.get("Email")
-        self.OrganizationName = params.get("OrganizationName")
-        self.Province = params.get("Province")
-        self.RegistrantName = params.get("RegistrantName")
-        self.RegistrantType = params.get("RegistrantType")
-        self.Street = params.get("Street")
-        self.Telephone = params.get("Telephone")
-        self.ZipCode = params.get("ZipCode")
-        self.FirstName = params.get("FirstName")
-        self.LastName = params.get("LastName")
-        self.CompanyName = params.get("CompanyName")
+        self._City = params.get("City")
+        self._Country = params.get("Country")
+        self._Email = params.get("Email")
+        self._OrganizationName = params.get("OrganizationName")
+        self._Province = params.get("Province")
+        self._RegistrantName = params.get("RegistrantName")
+        self._RegistrantType = params.get("RegistrantType")
+        self._Street = params.get("Street")
+        self._Telephone = params.get("Telephone")
+        self._ZipCode = params.get("ZipCode")
+        self._FirstName = params.get("FirstName")
+        self._LastName = params.get("LastName")
+        self._CompanyName = params.get("CompanyName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1425,19 +2744,19 @@ class IntlDomainInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AutoRenew: The auto-renewal flag. Valid values: `0` (disabled by default), `1` (enabled), `2` (disabled).
+        :param _AutoRenew: The auto-renewal flag. Valid values: `0` (disabled by default), `1` (enabled), `2` (disabled).
         :type AutoRenew: int
-        :param CreationDate: The registration time.
+        :param _CreationDate: The registration time.
         :type CreationDate: str
-        :param DomainId: The domain ID.
+        :param _DomainId: The domain ID.
         :type DomainId: str
-        :param DnsStatus: The DNS status. Valid values: `1` (DNSPod), `2` (others), `3` (unknown).
+        :param _DnsStatus: The DNS status. Valid values: `1` (DNSPod), `2` (others), `3` (unknown).
         :type DnsStatus: int
-        :param DomainName: The domains.
+        :param _DomainName: The domains.
         :type DomainName: str
-        :param DomainStatus: The domain status.
+        :param _DomainStatus: The domain status.
         :type DomainStatus: list of str
-        :param Status: The purchase status of the domain. Valid values:
+        :param _Status: The purchase status of the domain. Valid values:
 `ok`: Normal.
 `RegisterPending`: Pending registration.
 `RegisterDoing`: Registration in progress.
@@ -1450,82 +2769,243 @@ class IntlDomainInfo(AbstractModel):
 `TransferTransing`: Transfer in progress.
 `TransferFailed`: Transfer failed.
         :type Status: str
-        :param ExpirationDate: The expiration date.
+        :param _ExpirationDate: The expiration date.
         :type ExpirationDate: str
-        :param ExpireMessage: The auto-renewal flag. Valid values: `1` (enabled), `2` (disabled), `3` (disabled by default).
+        :param _ExpireMessage: The auto-renewal flag. Valid values: `1` (enabled), `2` (disabled), `3` (disabled by default).
         :type ExpireMessage: int
-        :param IsPremium: Whether the domain is a premium one.
+        :param _IsPremium: Whether the domain is a premium one.
         :type IsPremium: bool
-        :param Dns: The DNS server of the domain.
+        :param _Dns: The DNS server of the domain.
         :type Dns: list of str
-        :param ContactInfo: The contact information.
+        :param _ContactInfo: The contact information.
         :type ContactInfo: :class:`tencentcloud.domain.v20180808.models.IntlContactInfo`
-        :param CanRenewYears: The number of years available for renewal. The value `0` indicates that the domain has reached its maximum validity period (10 years) and cannot be renewed.
+        :param _CanRenewYears: The number of years available for renewal. The value `0` indicates that the domain has reached its maximum validity period (10 years) and cannot be renewed.
         :type CanRenewYears: int
-        :param RegistrarType: The registrar type. If the value is `epp`, the registration time on the page is followed by (UTC). Otherwise, it is followed by (UTC+8).
+        :param _RegistrarType: The registrar type. If the value is `epp`, the registration time on the page is followed by (UTC). Otherwise, it is followed by (UTC+8).
         :type RegistrarType: str
-        :param Uin: The account to which the domain belongs.
+        :param _Uin: The account to which the domain belongs.
         :type Uin: str
-        :param TemplateId: The profile ID.
+        :param _TemplateId: The profile ID.
         :type TemplateId: str
-        :param SupportDnssec: Whether DNSSEC is supported.
+        :param _SupportDnssec: Whether DNSSEC is supported.
         :type SupportDnssec: bool
-        :param WhoisPrivacy: WHOIS privacy service status. Valid values: `1` (enabled), `2` (disabled), `3` (enabling), `4` (disabling).
+        :param _WhoisPrivacy: WHOIS privacy service status. Valid values: `1` (enabled), `2` (disabled), `3` (enabling), `4` (disabling).
         :type WhoisPrivacy: int
-        :param ModifyStatus: Valid values: `NotModify` (not modified), `Modifying`, `Failed` (failed to modify)
+        :param _ModifyStatus: Valid values: `NotModify` (not modified), `Modifying`, `Failed` (failed to modify)
         :type ModifyStatus: str
-        :param DnsModifyStatus: Valid values: `NotModify` (not modified), `Modifying`, `Failed` (failed to modify)
+        :param _DnsModifyStatus: Valid values: `NotModify` (not modified), `Modifying`, `Failed` (failed to modify)
         :type DnsModifyStatus: str
         """
-        self.AutoRenew = None
-        self.CreationDate = None
-        self.DomainId = None
-        self.DnsStatus = None
-        self.DomainName = None
-        self.DomainStatus = None
-        self.Status = None
-        self.ExpirationDate = None
-        self.ExpireMessage = None
-        self.IsPremium = None
-        self.Dns = None
-        self.ContactInfo = None
-        self.CanRenewYears = None
-        self.RegistrarType = None
-        self.Uin = None
-        self.TemplateId = None
-        self.SupportDnssec = None
-        self.WhoisPrivacy = None
-        self.ModifyStatus = None
-        self.DnsModifyStatus = None
+        self._AutoRenew = None
+        self._CreationDate = None
+        self._DomainId = None
+        self._DnsStatus = None
+        self._DomainName = None
+        self._DomainStatus = None
+        self._Status = None
+        self._ExpirationDate = None
+        self._ExpireMessage = None
+        self._IsPremium = None
+        self._Dns = None
+        self._ContactInfo = None
+        self._CanRenewYears = None
+        self._RegistrarType = None
+        self._Uin = None
+        self._TemplateId = None
+        self._SupportDnssec = None
+        self._WhoisPrivacy = None
+        self._ModifyStatus = None
+        self._DnsModifyStatus = None
+
+    @property
+    def AutoRenew(self):
+        return self._AutoRenew
+
+    @AutoRenew.setter
+    def AutoRenew(self, AutoRenew):
+        self._AutoRenew = AutoRenew
+
+    @property
+    def CreationDate(self):
+        return self._CreationDate
+
+    @CreationDate.setter
+    def CreationDate(self, CreationDate):
+        self._CreationDate = CreationDate
+
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+    @property
+    def DnsStatus(self):
+        return self._DnsStatus
+
+    @DnsStatus.setter
+    def DnsStatus(self, DnsStatus):
+        self._DnsStatus = DnsStatus
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def DomainStatus(self):
+        return self._DomainStatus
+
+    @DomainStatus.setter
+    def DomainStatus(self, DomainStatus):
+        self._DomainStatus = DomainStatus
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ExpirationDate(self):
+        return self._ExpirationDate
+
+    @ExpirationDate.setter
+    def ExpirationDate(self, ExpirationDate):
+        self._ExpirationDate = ExpirationDate
+
+    @property
+    def ExpireMessage(self):
+        return self._ExpireMessage
+
+    @ExpireMessage.setter
+    def ExpireMessage(self, ExpireMessage):
+        self._ExpireMessage = ExpireMessage
+
+    @property
+    def IsPremium(self):
+        return self._IsPremium
+
+    @IsPremium.setter
+    def IsPremium(self, IsPremium):
+        self._IsPremium = IsPremium
+
+    @property
+    def Dns(self):
+        return self._Dns
+
+    @Dns.setter
+    def Dns(self, Dns):
+        self._Dns = Dns
+
+    @property
+    def ContactInfo(self):
+        return self._ContactInfo
+
+    @ContactInfo.setter
+    def ContactInfo(self, ContactInfo):
+        self._ContactInfo = ContactInfo
+
+    @property
+    def CanRenewYears(self):
+        return self._CanRenewYears
+
+    @CanRenewYears.setter
+    def CanRenewYears(self, CanRenewYears):
+        self._CanRenewYears = CanRenewYears
+
+    @property
+    def RegistrarType(self):
+        return self._RegistrarType
+
+    @RegistrarType.setter
+    def RegistrarType(self, RegistrarType):
+        self._RegistrarType = RegistrarType
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def SupportDnssec(self):
+        return self._SupportDnssec
+
+    @SupportDnssec.setter
+    def SupportDnssec(self, SupportDnssec):
+        self._SupportDnssec = SupportDnssec
+
+    @property
+    def WhoisPrivacy(self):
+        return self._WhoisPrivacy
+
+    @WhoisPrivacy.setter
+    def WhoisPrivacy(self, WhoisPrivacy):
+        self._WhoisPrivacy = WhoisPrivacy
+
+    @property
+    def ModifyStatus(self):
+        return self._ModifyStatus
+
+    @ModifyStatus.setter
+    def ModifyStatus(self, ModifyStatus):
+        self._ModifyStatus = ModifyStatus
+
+    @property
+    def DnsModifyStatus(self):
+        return self._DnsModifyStatus
+
+    @DnsModifyStatus.setter
+    def DnsModifyStatus(self, DnsModifyStatus):
+        self._DnsModifyStatus = DnsModifyStatus
 
 
     def _deserialize(self, params):
-        self.AutoRenew = params.get("AutoRenew")
-        self.CreationDate = params.get("CreationDate")
-        self.DomainId = params.get("DomainId")
-        self.DnsStatus = params.get("DnsStatus")
-        self.DomainName = params.get("DomainName")
-        self.DomainStatus = params.get("DomainStatus")
-        self.Status = params.get("Status")
-        self.ExpirationDate = params.get("ExpirationDate")
-        self.ExpireMessage = params.get("ExpireMessage")
-        self.IsPremium = params.get("IsPremium")
-        self.Dns = params.get("Dns")
+        self._AutoRenew = params.get("AutoRenew")
+        self._CreationDate = params.get("CreationDate")
+        self._DomainId = params.get("DomainId")
+        self._DnsStatus = params.get("DnsStatus")
+        self._DomainName = params.get("DomainName")
+        self._DomainStatus = params.get("DomainStatus")
+        self._Status = params.get("Status")
+        self._ExpirationDate = params.get("ExpirationDate")
+        self._ExpireMessage = params.get("ExpireMessage")
+        self._IsPremium = params.get("IsPremium")
+        self._Dns = params.get("Dns")
         if params.get("ContactInfo") is not None:
-            self.ContactInfo = IntlContactInfo()
-            self.ContactInfo._deserialize(params.get("ContactInfo"))
-        self.CanRenewYears = params.get("CanRenewYears")
-        self.RegistrarType = params.get("RegistrarType")
-        self.Uin = params.get("Uin")
-        self.TemplateId = params.get("TemplateId")
-        self.SupportDnssec = params.get("SupportDnssec")
-        self.WhoisPrivacy = params.get("WhoisPrivacy")
-        self.ModifyStatus = params.get("ModifyStatus")
-        self.DnsModifyStatus = params.get("DnsModifyStatus")
+            self._ContactInfo = IntlContactInfo()
+            self._ContactInfo._deserialize(params.get("ContactInfo"))
+        self._CanRenewYears = params.get("CanRenewYears")
+        self._RegistrarType = params.get("RegistrarType")
+        self._Uin = params.get("Uin")
+        self._TemplateId = params.get("TemplateId")
+        self._SupportDnssec = params.get("SupportDnssec")
+        self._WhoisPrivacy = params.get("WhoisPrivacy")
+        self._ModifyStatus = params.get("ModifyStatus")
+        self._DnsModifyStatus = params.get("DnsModifyStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1538,26 +3018,51 @@ class IntlPhoneEmailLists(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Code: The mobile number or email address.
+        :param _Code: The mobile number or email address.
         :type Code: str
-        :param Type: The type. Valid values: `1` (mobile number), `2` (email address).
+        :param _Type: The type. Valid values: `1` (mobile number), `2` (email address).
         :type Type: int
-        :param CreatedOn: The verification time.
+        :param _CreatedOn: The verification time.
         :type CreatedOn: str
         """
-        self.Code = None
-        self.Type = None
-        self.CreatedOn = None
+        self._Code = None
+        self._Type = None
+        self._CreatedOn = None
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def CreatedOn(self):
+        return self._CreatedOn
+
+    @CreatedOn.setter
+    def CreatedOn(self, CreatedOn):
+        self._CreatedOn = CreatedOn
 
 
     def _deserialize(self, params):
-        self.Code = params.get("Code")
-        self.Type = params.get("Type")
-        self.CreatedOn = params.get("CreatedOn")
+        self._Code = params.get("Code")
+        self._Type = params.get("Type")
+        self._CreatedOn = params.get("CreatedOn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1570,54 +3075,119 @@ class IntlTemplate(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RegistrantContact: The registrant contact.
+        :param _RegistrantContact: The registrant contact.
         :type RegistrantContact: :class:`tencentcloud.domain.v20180808.models.RegistrantContact`
-        :param AdminContact: The admin contact.
+        :param _AdminContact: The admin contact.
         :type AdminContact: :class:`tencentcloud.domain.v20180808.models.AdminContact`
-        :param TechnicalContact: The technical contact.
+        :param _TechnicalContact: The technical contact.
         :type TechnicalContact: :class:`tencentcloud.domain.v20180808.models.TechnicalContact`
-        :param BillingContact: The contact person for bills.
+        :param _BillingContact: The contact person for bills.
         :type BillingContact: :class:`tencentcloud.domain.v20180808.models.BillingContact`
-        :param CreatedOn: The creation time.
+        :param _CreatedOn: The creation time.
         :type CreatedOn: str
-        :param TemplateId: The profile ID.
+        :param _TemplateId: The profile ID.
         :type TemplateId: str
-        :param IsDefault: Whether the profile is the default one.
+        :param _IsDefault: Whether the profile is the default one.
         :type IsDefault: int
-        :param UpdatedOn: The last update time.
+        :param _UpdatedOn: The last update time.
         :type UpdatedOn: str
         """
-        self.RegistrantContact = None
-        self.AdminContact = None
-        self.TechnicalContact = None
-        self.BillingContact = None
-        self.CreatedOn = None
-        self.TemplateId = None
-        self.IsDefault = None
-        self.UpdatedOn = None
+        self._RegistrantContact = None
+        self._AdminContact = None
+        self._TechnicalContact = None
+        self._BillingContact = None
+        self._CreatedOn = None
+        self._TemplateId = None
+        self._IsDefault = None
+        self._UpdatedOn = None
+
+    @property
+    def RegistrantContact(self):
+        return self._RegistrantContact
+
+    @RegistrantContact.setter
+    def RegistrantContact(self, RegistrantContact):
+        self._RegistrantContact = RegistrantContact
+
+    @property
+    def AdminContact(self):
+        return self._AdminContact
+
+    @AdminContact.setter
+    def AdminContact(self, AdminContact):
+        self._AdminContact = AdminContact
+
+    @property
+    def TechnicalContact(self):
+        return self._TechnicalContact
+
+    @TechnicalContact.setter
+    def TechnicalContact(self, TechnicalContact):
+        self._TechnicalContact = TechnicalContact
+
+    @property
+    def BillingContact(self):
+        return self._BillingContact
+
+    @BillingContact.setter
+    def BillingContact(self, BillingContact):
+        self._BillingContact = BillingContact
+
+    @property
+    def CreatedOn(self):
+        return self._CreatedOn
+
+    @CreatedOn.setter
+    def CreatedOn(self, CreatedOn):
+        self._CreatedOn = CreatedOn
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def IsDefault(self):
+        return self._IsDefault
+
+    @IsDefault.setter
+    def IsDefault(self, IsDefault):
+        self._IsDefault = IsDefault
+
+    @property
+    def UpdatedOn(self):
+        return self._UpdatedOn
+
+    @UpdatedOn.setter
+    def UpdatedOn(self, UpdatedOn):
+        self._UpdatedOn = UpdatedOn
 
 
     def _deserialize(self, params):
         if params.get("RegistrantContact") is not None:
-            self.RegistrantContact = RegistrantContact()
-            self.RegistrantContact._deserialize(params.get("RegistrantContact"))
+            self._RegistrantContact = RegistrantContact()
+            self._RegistrantContact._deserialize(params.get("RegistrantContact"))
         if params.get("AdminContact") is not None:
-            self.AdminContact = AdminContact()
-            self.AdminContact._deserialize(params.get("AdminContact"))
+            self._AdminContact = AdminContact()
+            self._AdminContact._deserialize(params.get("AdminContact"))
         if params.get("TechnicalContact") is not None:
-            self.TechnicalContact = TechnicalContact()
-            self.TechnicalContact._deserialize(params.get("TechnicalContact"))
+            self._TechnicalContact = TechnicalContact()
+            self._TechnicalContact._deserialize(params.get("TechnicalContact"))
         if params.get("BillingContact") is not None:
-            self.BillingContact = BillingContact()
-            self.BillingContact._deserialize(params.get("BillingContact"))
-        self.CreatedOn = params.get("CreatedOn")
-        self.TemplateId = params.get("TemplateId")
-        self.IsDefault = params.get("IsDefault")
-        self.UpdatedOn = params.get("UpdatedOn")
+            self._BillingContact = BillingContact()
+            self._BillingContact._deserialize(params.get("BillingContact"))
+        self._CreatedOn = params.get("CreatedOn")
+        self._TemplateId = params.get("TemplateId")
+        self._IsDefault = params.get("IsDefault")
+        self._UpdatedOn = params.get("UpdatedOn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1630,62 +3200,143 @@ class IntlTemplateInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RegistrantContact: The registrant contact.
+        :param _RegistrantContact: The registrant contact.
         :type RegistrantContact: :class:`tencentcloud.domain.v20180808.models.RegistrantContact`
-        :param AdminContact: The admin contact.
+        :param _AdminContact: The admin contact.
         :type AdminContact: :class:`tencentcloud.domain.v20180808.models.AdminContact`
-        :param TechnicalContact: The technical contact.
+        :param _TechnicalContact: The technical contact.
         :type TechnicalContact: :class:`tencentcloud.domain.v20180808.models.TechnicalContact`
-        :param BillingContact: The contact person for bills.
+        :param _BillingContact: The contact person for bills.
         :type BillingContact: :class:`tencentcloud.domain.v20180808.models.BillingContact`
-        :param CreatedOn: The creation time.
+        :param _CreatedOn: The creation time.
         :type CreatedOn: str
-        :param TemplateId: The profile ID.
+        :param _TemplateId: The profile ID.
         :type TemplateId: str
-        :param TemplateType: The registrant type. Valid values: `I` (individual), `E` (organization).
+        :param _TemplateType: The registrant type. Valid values: `I` (individual), `E` (organization).
         :type TemplateType: str
-        :param UpdatedOn: The last updated time.
+        :param _UpdatedOn: The last updated time.
         :type UpdatedOn: str
-        :param Uin: The account ID.
+        :param _Uin: The account ID.
         :type Uin: str
-        :param IsDefault: Whether the profile is the default one.
+        :param _IsDefault: Whether the profile is the default one.
         :type IsDefault: int
         """
-        self.RegistrantContact = None
-        self.AdminContact = None
-        self.TechnicalContact = None
-        self.BillingContact = None
-        self.CreatedOn = None
-        self.TemplateId = None
-        self.TemplateType = None
-        self.UpdatedOn = None
-        self.Uin = None
-        self.IsDefault = None
+        self._RegistrantContact = None
+        self._AdminContact = None
+        self._TechnicalContact = None
+        self._BillingContact = None
+        self._CreatedOn = None
+        self._TemplateId = None
+        self._TemplateType = None
+        self._UpdatedOn = None
+        self._Uin = None
+        self._IsDefault = None
+
+    @property
+    def RegistrantContact(self):
+        return self._RegistrantContact
+
+    @RegistrantContact.setter
+    def RegistrantContact(self, RegistrantContact):
+        self._RegistrantContact = RegistrantContact
+
+    @property
+    def AdminContact(self):
+        return self._AdminContact
+
+    @AdminContact.setter
+    def AdminContact(self, AdminContact):
+        self._AdminContact = AdminContact
+
+    @property
+    def TechnicalContact(self):
+        return self._TechnicalContact
+
+    @TechnicalContact.setter
+    def TechnicalContact(self, TechnicalContact):
+        self._TechnicalContact = TechnicalContact
+
+    @property
+    def BillingContact(self):
+        return self._BillingContact
+
+    @BillingContact.setter
+    def BillingContact(self, BillingContact):
+        self._BillingContact = BillingContact
+
+    @property
+    def CreatedOn(self):
+        return self._CreatedOn
+
+    @CreatedOn.setter
+    def CreatedOn(self, CreatedOn):
+        self._CreatedOn = CreatedOn
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def TemplateType(self):
+        return self._TemplateType
+
+    @TemplateType.setter
+    def TemplateType(self, TemplateType):
+        self._TemplateType = TemplateType
+
+    @property
+    def UpdatedOn(self):
+        return self._UpdatedOn
+
+    @UpdatedOn.setter
+    def UpdatedOn(self, UpdatedOn):
+        self._UpdatedOn = UpdatedOn
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def IsDefault(self):
+        return self._IsDefault
+
+    @IsDefault.setter
+    def IsDefault(self, IsDefault):
+        self._IsDefault = IsDefault
 
 
     def _deserialize(self, params):
         if params.get("RegistrantContact") is not None:
-            self.RegistrantContact = RegistrantContact()
-            self.RegistrantContact._deserialize(params.get("RegistrantContact"))
+            self._RegistrantContact = RegistrantContact()
+            self._RegistrantContact._deserialize(params.get("RegistrantContact"))
         if params.get("AdminContact") is not None:
-            self.AdminContact = AdminContact()
-            self.AdminContact._deserialize(params.get("AdminContact"))
+            self._AdminContact = AdminContact()
+            self._AdminContact._deserialize(params.get("AdminContact"))
         if params.get("TechnicalContact") is not None:
-            self.TechnicalContact = TechnicalContact()
-            self.TechnicalContact._deserialize(params.get("TechnicalContact"))
+            self._TechnicalContact = TechnicalContact()
+            self._TechnicalContact._deserialize(params.get("TechnicalContact"))
         if params.get("BillingContact") is not None:
-            self.BillingContact = BillingContact()
-            self.BillingContact._deserialize(params.get("BillingContact"))
-        self.CreatedOn = params.get("CreatedOn")
-        self.TemplateId = params.get("TemplateId")
-        self.TemplateType = params.get("TemplateType")
-        self.UpdatedOn = params.get("UpdatedOn")
-        self.Uin = params.get("Uin")
-        self.IsDefault = params.get("IsDefault")
+            self._BillingContact = BillingContact()
+            self._BillingContact._deserialize(params.get("BillingContact"))
+        self._CreatedOn = params.get("CreatedOn")
+        self._TemplateId = params.get("TemplateId")
+        self._TemplateType = params.get("TemplateType")
+        self._UpdatedOn = params.get("UpdatedOn")
+        self._Uin = params.get("Uin")
+        self._IsDefault = params.get("IsDefault")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1698,26 +3349,51 @@ class ModifyOwnerIntlBatchRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Domains: The domains.
+        :param _Domains: The domains.
         :type Domains: list of str
-        :param ToUin: The user ID.
+        :param _ToUin: The user ID.
         :type ToUin: str
-        :param DnsTransfer: Whether to transfer the DNS service.
+        :param _DnsTransfer: Whether to transfer the DNS service.
         :type DnsTransfer: bool
         """
-        self.Domains = None
-        self.ToUin = None
-        self.DnsTransfer = None
+        self._Domains = None
+        self._ToUin = None
+        self._DnsTransfer = None
+
+    @property
+    def Domains(self):
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+    @property
+    def ToUin(self):
+        return self._ToUin
+
+    @ToUin.setter
+    def ToUin(self, ToUin):
+        self._ToUin = ToUin
+
+    @property
+    def DnsTransfer(self):
+        return self._DnsTransfer
+
+    @DnsTransfer.setter
+    def DnsTransfer(self, DnsTransfer):
+        self._DnsTransfer = DnsTransfer
 
 
     def _deserialize(self, params):
-        self.Domains = params.get("Domains")
-        self.ToUin = params.get("ToUin")
-        self.DnsTransfer = params.get("DnsTransfer")
+        self._Domains = params.get("Domains")
+        self._ToUin = params.get("ToUin")
+        self._DnsTransfer = params.get("DnsTransfer")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1730,18 +3406,34 @@ class ModifyOwnerIntlBatchResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LogId: The ID of the bulk task.
+        :param _LogId: The ID of the bulk task.
         :type LogId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.LogId = None
-        self.RequestId = None
+        self._LogId = None
+        self._RequestId = None
+
+    @property
+    def LogId(self):
+        return self._LogId
+
+    @LogId.setter
+    def LogId(self, LogId):
+        self._LogId = LogId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.LogId = params.get("LogId")
-        self.RequestId = params.get("RequestId")
+        self._LogId = params.get("LogId")
+        self._RequestId = params.get("RequestId")
 
 
 class PriceInfoNew(AbstractModel):
@@ -1751,39 +3443,88 @@ class PriceInfoNew(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Tld: The domain suffix, such as `.com`.
+        :param _Tld: The domain suffix, such as `.com`.
         :type Tld: str
-        :param Year: The purchase years. Value range: [1-10]
+        :param _Year: The purchase years. Value range: [1-10]
         :type Year: int
-        :param Price: The original price of the domain.
+        :param _Price: The original price of the domain.
         :type Price: float
-        :param RealPrice: The current price of the domain.
+        :param _RealPrice: The current price of the domain.
         :type RealPrice: float
-        :param Operation: The domain purchase type. Valid values: `new`, `renew`, `redem` (redeem), `tran` (transfer in).
+        :param _Operation: The domain purchase type. Valid values: `new`, `renew`, `redem` (redeem), `tran` (transfer in).
         :type Operation: str
-        :param Title: The title.
+        :param _Title: The title.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Title: str
         """
-        self.Tld = None
-        self.Year = None
-        self.Price = None
-        self.RealPrice = None
-        self.Operation = None
-        self.Title = None
+        self._Tld = None
+        self._Year = None
+        self._Price = None
+        self._RealPrice = None
+        self._Operation = None
+        self._Title = None
+
+    @property
+    def Tld(self):
+        return self._Tld
+
+    @Tld.setter
+    def Tld(self, Tld):
+        self._Tld = Tld
+
+    @property
+    def Year(self):
+        return self._Year
+
+    @Year.setter
+    def Year(self, Year):
+        self._Year = Year
+
+    @property
+    def Price(self):
+        return self._Price
+
+    @Price.setter
+    def Price(self, Price):
+        self._Price = Price
+
+    @property
+    def RealPrice(self):
+        return self._RealPrice
+
+    @RealPrice.setter
+    def RealPrice(self, RealPrice):
+        self._RealPrice = RealPrice
+
+    @property
+    def Operation(self):
+        return self._Operation
+
+    @Operation.setter
+    def Operation(self, Operation):
+        self._Operation = Operation
+
+    @property
+    def Title(self):
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
 
 
     def _deserialize(self, params):
-        self.Tld = params.get("Tld")
-        self.Year = params.get("Year")
-        self.Price = params.get("Price")
-        self.RealPrice = params.get("RealPrice")
-        self.Operation = params.get("Operation")
-        self.Title = params.get("Title")
+        self._Tld = params.get("Tld")
+        self._Year = params.get("Year")
+        self._Price = params.get("Price")
+        self._RealPrice = params.get("RealPrice")
+        self._Operation = params.get("Operation")
+        self._Title = params.get("Title")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1796,70 +3537,175 @@ class RegistrantContact(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FirstName: The first name.
+        :param _FirstName: The first name.
         :type FirstName: str
-        :param LastName: The last name.
+        :param _LastName: The last name.
         :type LastName: str
-        :param Country: The country or region name, such as `CN`.
+        :param _Country: The country or region name, such as `CN`.
         :type Country: str
-        :param Province: The province or state name.
+        :param _Province: The province or state name.
         :type Province: str
-        :param City: The city name.
+        :param _City: The city name.
         :type City: str
-        :param AddressLine: The address line 1.
+        :param _AddressLine: The address line 1.
         :type AddressLine: str
-        :param ZipCode: The zip code.
+        :param _ZipCode: The zip code.
         :type ZipCode: str
-        :param Email: The email address.
+        :param _Email: The email address.
         :type Email: str
-        :param Phone: The mobile number, such as `+86.1360000000`.
+        :param _Phone: The mobile number, such as `+86.1360000000`.
         :type Phone: str
-        :param CompanyName: The company or organization name.
+        :param _CompanyName: The company or organization name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CompanyName: str
-        :param JobTitle: The job title.
+        :param _JobTitle: The job title.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type JobTitle: str
-        :param AddressLineTwo: The address line 2.
+        :param _AddressLineTwo: The address line 2.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AddressLineTwo: str
-        :param Fax: The fax number.
+        :param _Fax: The fax number.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Fax: str
         """
-        self.FirstName = None
-        self.LastName = None
-        self.Country = None
-        self.Province = None
-        self.City = None
-        self.AddressLine = None
-        self.ZipCode = None
-        self.Email = None
-        self.Phone = None
-        self.CompanyName = None
-        self.JobTitle = None
-        self.AddressLineTwo = None
-        self.Fax = None
+        self._FirstName = None
+        self._LastName = None
+        self._Country = None
+        self._Province = None
+        self._City = None
+        self._AddressLine = None
+        self._ZipCode = None
+        self._Email = None
+        self._Phone = None
+        self._CompanyName = None
+        self._JobTitle = None
+        self._AddressLineTwo = None
+        self._Fax = None
+
+    @property
+    def FirstName(self):
+        return self._FirstName
+
+    @FirstName.setter
+    def FirstName(self, FirstName):
+        self._FirstName = FirstName
+
+    @property
+    def LastName(self):
+        return self._LastName
+
+    @LastName.setter
+    def LastName(self, LastName):
+        self._LastName = LastName
+
+    @property
+    def Country(self):
+        return self._Country
+
+    @Country.setter
+    def Country(self, Country):
+        self._Country = Country
+
+    @property
+    def Province(self):
+        return self._Province
+
+    @Province.setter
+    def Province(self, Province):
+        self._Province = Province
+
+    @property
+    def City(self):
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+    @property
+    def AddressLine(self):
+        return self._AddressLine
+
+    @AddressLine.setter
+    def AddressLine(self, AddressLine):
+        self._AddressLine = AddressLine
+
+    @property
+    def ZipCode(self):
+        return self._ZipCode
+
+    @ZipCode.setter
+    def ZipCode(self, ZipCode):
+        self._ZipCode = ZipCode
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def Phone(self):
+        return self._Phone
+
+    @Phone.setter
+    def Phone(self, Phone):
+        self._Phone = Phone
+
+    @property
+    def CompanyName(self):
+        return self._CompanyName
+
+    @CompanyName.setter
+    def CompanyName(self, CompanyName):
+        self._CompanyName = CompanyName
+
+    @property
+    def JobTitle(self):
+        return self._JobTitle
+
+    @JobTitle.setter
+    def JobTitle(self, JobTitle):
+        self._JobTitle = JobTitle
+
+    @property
+    def AddressLineTwo(self):
+        return self._AddressLineTwo
+
+    @AddressLineTwo.setter
+    def AddressLineTwo(self, AddressLineTwo):
+        self._AddressLineTwo = AddressLineTwo
+
+    @property
+    def Fax(self):
+        return self._Fax
+
+    @Fax.setter
+    def Fax(self, Fax):
+        self._Fax = Fax
 
 
     def _deserialize(self, params):
-        self.FirstName = params.get("FirstName")
-        self.LastName = params.get("LastName")
-        self.Country = params.get("Country")
-        self.Province = params.get("Province")
-        self.City = params.get("City")
-        self.AddressLine = params.get("AddressLine")
-        self.ZipCode = params.get("ZipCode")
-        self.Email = params.get("Email")
-        self.Phone = params.get("Phone")
-        self.CompanyName = params.get("CompanyName")
-        self.JobTitle = params.get("JobTitle")
-        self.AddressLineTwo = params.get("AddressLineTwo")
-        self.Fax = params.get("Fax")
+        self._FirstName = params.get("FirstName")
+        self._LastName = params.get("LastName")
+        self._Country = params.get("Country")
+        self._Province = params.get("Province")
+        self._City = params.get("City")
+        self._AddressLine = params.get("AddressLine")
+        self._ZipCode = params.get("ZipCode")
+        self._Email = params.get("Email")
+        self._Phone = params.get("Phone")
+        self._CompanyName = params.get("CompanyName")
+        self._JobTitle = params.get("JobTitle")
+        self._AddressLineTwo = params.get("AddressLineTwo")
+        self._Fax = params.get("Fax")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1872,30 +3718,63 @@ class RenewIntlDomainBatchRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Domains: The domains to check.
+        :param _Domains: The domains to check.
         :type Domains: list of str
-        :param Period: The period (1 to 10 years). If this parameter is left empty, premium domains cannot be checked.
+        :param _Period: The period (1 to 10 years). If this parameter is left empty, premium domains cannot be checked.
         :type Period: int
-        :param PayMode: Payment method. Valid value: `1` (account balance).
+        :param _PayMode: Payment method. Valid value: `1` (account balance).
         :type PayMode: int
-        :param AutoRenewFlag: Whether to enable auto-renewal.
+        :param _AutoRenewFlag: Whether to enable auto-renewal.
         :type AutoRenewFlag: bool
         """
-        self.Domains = None
-        self.Period = None
-        self.PayMode = None
-        self.AutoRenewFlag = None
+        self._Domains = None
+        self._Period = None
+        self._PayMode = None
+        self._AutoRenewFlag = None
+
+    @property
+    def Domains(self):
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+    @property
+    def Period(self):
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def AutoRenewFlag(self):
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
 
 
     def _deserialize(self, params):
-        self.Domains = params.get("Domains")
-        self.Period = params.get("Period")
-        self.PayMode = params.get("PayMode")
-        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self._Domains = params.get("Domains")
+        self._Period = params.get("Period")
+        self._PayMode = params.get("PayMode")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1908,18 +3787,34 @@ class RenewIntlDomainBatchResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LogId: The ID of the bulk task.
+        :param _LogId: The ID of the bulk task.
         :type LogId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.LogId = None
-        self.RequestId = None
+        self._LogId = None
+        self._RequestId = None
+
+    @property
+    def LogId(self):
+        return self._LogId
+
+    @LogId.setter
+    def LogId(self, LogId):
+        self._LogId = LogId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.LogId = params.get("LogId")
-        self.RequestId = params.get("RequestId")
+        self._LogId = params.get("LogId")
+        self._RequestId = params.get("RequestId")
 
 
 class SendIntlPhoneEmailCodeRequest(AbstractModel):
@@ -1929,22 +3824,39 @@ class SendIntlPhoneEmailCodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: The type. Valid values: `1` (mobile number), `2` (email address).
+        :param _Type: The type. Valid values: `1` (mobile number), `2` (email address).
         :type Type: int
-        :param Code: The mobile number or email address.
+        :param _Code: The mobile number or email address.
         :type Code: str
         """
-        self.Type = None
-        self.Code = None
+        self._Type = None
+        self._Code = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
 
 
     def _deserialize(self, params):
-        self.Type = params.get("Type")
-        self.Code = params.get("Code")
+        self._Type = params.get("Type")
+        self._Code = params.get("Code")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1957,14 +3869,22 @@ class SendIntlPhoneEmailCodeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class SetIntlDomainAutoRenewRequest(AbstractModel):
@@ -1974,22 +3894,39 @@ class SetIntlDomainAutoRenewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainId: The domain ID.
+        :param _DomainId: The domain ID.
         :type DomainId: str
-        :param AutoRenew: Whether to enable auto-renewal. Valid values: `1` (enable), `2` (disable).
+        :param _AutoRenew: Whether to enable auto-renewal. Valid values: `1` (enable), `2` (disable).
         :type AutoRenew: int
         """
-        self.DomainId = None
-        self.AutoRenew = None
+        self._DomainId = None
+        self._AutoRenew = None
+
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+    @property
+    def AutoRenew(self):
+        return self._AutoRenew
+
+    @AutoRenew.setter
+    def AutoRenew(self, AutoRenew):
+        self._AutoRenew = AutoRenew
 
 
     def _deserialize(self, params):
-        self.DomainId = params.get("DomainId")
-        self.AutoRenew = params.get("AutoRenew")
+        self._DomainId = params.get("DomainId")
+        self._AutoRenew = params.get("AutoRenew")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2002,14 +3939,22 @@ class SetIntlDomainAutoRenewResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class TechnicalContact(AbstractModel):
@@ -2019,70 +3964,175 @@ class TechnicalContact(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FirstName: The first name.
+        :param _FirstName: The first name.
         :type FirstName: str
-        :param LastName: The last name.
+        :param _LastName: The last name.
         :type LastName: str
-        :param Country: The country or region name, such as `CN`.
+        :param _Country: The country or region name, such as `CN`.
         :type Country: str
-        :param Province: The province or state name.
+        :param _Province: The province or state name.
         :type Province: str
-        :param City: The city name.
+        :param _City: The city name.
         :type City: str
-        :param AddressLine: The address line 1.
+        :param _AddressLine: The address line 1.
         :type AddressLine: str
-        :param ZipCode: The zip code.
+        :param _ZipCode: The zip code.
         :type ZipCode: str
-        :param Email: The email address.
+        :param _Email: The email address.
         :type Email: str
-        :param Phone: The mobile number, such as `+86.13600000000`.
+        :param _Phone: The mobile number, such as `+86.13600000000`.
         :type Phone: str
-        :param CompanyName: The company or organization name.
+        :param _CompanyName: The company or organization name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CompanyName: str
-        :param JobTitle: The job title.
+        :param _JobTitle: The job title.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type JobTitle: str
-        :param AddressLineTwo: The address line 2.
+        :param _AddressLineTwo: The address line 2.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AddressLineTwo: str
-        :param Fax: The fax number.
+        :param _Fax: The fax number.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Fax: str
         """
-        self.FirstName = None
-        self.LastName = None
-        self.Country = None
-        self.Province = None
-        self.City = None
-        self.AddressLine = None
-        self.ZipCode = None
-        self.Email = None
-        self.Phone = None
-        self.CompanyName = None
-        self.JobTitle = None
-        self.AddressLineTwo = None
-        self.Fax = None
+        self._FirstName = None
+        self._LastName = None
+        self._Country = None
+        self._Province = None
+        self._City = None
+        self._AddressLine = None
+        self._ZipCode = None
+        self._Email = None
+        self._Phone = None
+        self._CompanyName = None
+        self._JobTitle = None
+        self._AddressLineTwo = None
+        self._Fax = None
+
+    @property
+    def FirstName(self):
+        return self._FirstName
+
+    @FirstName.setter
+    def FirstName(self, FirstName):
+        self._FirstName = FirstName
+
+    @property
+    def LastName(self):
+        return self._LastName
+
+    @LastName.setter
+    def LastName(self, LastName):
+        self._LastName = LastName
+
+    @property
+    def Country(self):
+        return self._Country
+
+    @Country.setter
+    def Country(self, Country):
+        self._Country = Country
+
+    @property
+    def Province(self):
+        return self._Province
+
+    @Province.setter
+    def Province(self, Province):
+        self._Province = Province
+
+    @property
+    def City(self):
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+    @property
+    def AddressLine(self):
+        return self._AddressLine
+
+    @AddressLine.setter
+    def AddressLine(self, AddressLine):
+        self._AddressLine = AddressLine
+
+    @property
+    def ZipCode(self):
+        return self._ZipCode
+
+    @ZipCode.setter
+    def ZipCode(self, ZipCode):
+        self._ZipCode = ZipCode
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def Phone(self):
+        return self._Phone
+
+    @Phone.setter
+    def Phone(self, Phone):
+        self._Phone = Phone
+
+    @property
+    def CompanyName(self):
+        return self._CompanyName
+
+    @CompanyName.setter
+    def CompanyName(self, CompanyName):
+        self._CompanyName = CompanyName
+
+    @property
+    def JobTitle(self):
+        return self._JobTitle
+
+    @JobTitle.setter
+    def JobTitle(self, JobTitle):
+        self._JobTitle = JobTitle
+
+    @property
+    def AddressLineTwo(self):
+        return self._AddressLineTwo
+
+    @AddressLineTwo.setter
+    def AddressLineTwo(self, AddressLineTwo):
+        self._AddressLineTwo = AddressLineTwo
+
+    @property
+    def Fax(self):
+        return self._Fax
+
+    @Fax.setter
+    def Fax(self, Fax):
+        self._Fax = Fax
 
 
     def _deserialize(self, params):
-        self.FirstName = params.get("FirstName")
-        self.LastName = params.get("LastName")
-        self.Country = params.get("Country")
-        self.Province = params.get("Province")
-        self.City = params.get("City")
-        self.AddressLine = params.get("AddressLine")
-        self.ZipCode = params.get("ZipCode")
-        self.Email = params.get("Email")
-        self.Phone = params.get("Phone")
-        self.CompanyName = params.get("CompanyName")
-        self.JobTitle = params.get("JobTitle")
-        self.AddressLineTwo = params.get("AddressLineTwo")
-        self.Fax = params.get("Fax")
+        self._FirstName = params.get("FirstName")
+        self._LastName = params.get("LastName")
+        self._Country = params.get("Country")
+        self._Province = params.get("Province")
+        self._City = params.get("City")
+        self._AddressLine = params.get("AddressLine")
+        self._ZipCode = params.get("ZipCode")
+        self._Email = params.get("Email")
+        self._Phone = params.get("Phone")
+        self._CompanyName = params.get("CompanyName")
+        self._JobTitle = params.get("JobTitle")
+        self._AddressLineTwo = params.get("AddressLineTwo")
+        self._Fax = params.get("Fax")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2095,46 +4145,111 @@ class TransferInIntlDomainBatchRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateId: The profile ID.
+        :param _TemplateId: The profile ID.
         :type TemplateId: str
-        :param PassWords: The transfer passwords for the domains.
+        :param _PassWords: The transfer passwords for the domains.
         :type PassWords: list of str
-        :param Domains: The domains to be bulk transferred in.
+        :param _Domains: The domains to be bulk transferred in.
         :type Domains: list of str
-        :param PayMode: The payment method. Valid value: `1` (account balance).
+        :param _PayMode: The payment method. Valid value: `1` (account balance).
         :type PayMode: int
-        :param AutoRenewFlag: Whether to enable auto-renewal.
+        :param _AutoRenewFlag: Whether to enable auto-renewal.
         :type AutoRenewFlag: bool
-        :param TransferProhibition: Whether to enable the transfer prohibition lock.
+        :param _TransferProhibition: Whether to enable the transfer prohibition lock.
         :type TransferProhibition: bool
-        :param UpdateProhibition: Whether to enable the update prohibition lock.
+        :param _UpdateProhibition: Whether to enable the update prohibition lock.
         :type UpdateProhibition: bool
-        :param LockTransfer: Whether to enable the 60-day inter-registrar transfer lock.
+        :param _LockTransfer: Whether to enable the 60-day inter-registrar transfer lock.
         :type LockTransfer: bool
         """
-        self.TemplateId = None
-        self.PassWords = None
-        self.Domains = None
-        self.PayMode = None
-        self.AutoRenewFlag = None
-        self.TransferProhibition = None
-        self.UpdateProhibition = None
-        self.LockTransfer = None
+        self._TemplateId = None
+        self._PassWords = None
+        self._Domains = None
+        self._PayMode = None
+        self._AutoRenewFlag = None
+        self._TransferProhibition = None
+        self._UpdateProhibition = None
+        self._LockTransfer = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def PassWords(self):
+        return self._PassWords
+
+    @PassWords.setter
+    def PassWords(self, PassWords):
+        self._PassWords = PassWords
+
+    @property
+    def Domains(self):
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def AutoRenewFlag(self):
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def TransferProhibition(self):
+        return self._TransferProhibition
+
+    @TransferProhibition.setter
+    def TransferProhibition(self, TransferProhibition):
+        self._TransferProhibition = TransferProhibition
+
+    @property
+    def UpdateProhibition(self):
+        return self._UpdateProhibition
+
+    @UpdateProhibition.setter
+    def UpdateProhibition(self, UpdateProhibition):
+        self._UpdateProhibition = UpdateProhibition
+
+    @property
+    def LockTransfer(self):
+        return self._LockTransfer
+
+    @LockTransfer.setter
+    def LockTransfer(self, LockTransfer):
+        self._LockTransfer = LockTransfer
 
 
     def _deserialize(self, params):
-        self.TemplateId = params.get("TemplateId")
-        self.PassWords = params.get("PassWords")
-        self.Domains = params.get("Domains")
-        self.PayMode = params.get("PayMode")
-        self.AutoRenewFlag = params.get("AutoRenewFlag")
-        self.TransferProhibition = params.get("TransferProhibition")
-        self.UpdateProhibition = params.get("UpdateProhibition")
-        self.LockTransfer = params.get("LockTransfer")
+        self._TemplateId = params.get("TemplateId")
+        self._PassWords = params.get("PassWords")
+        self._Domains = params.get("Domains")
+        self._PayMode = params.get("PayMode")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._TransferProhibition = params.get("TransferProhibition")
+        self._UpdateProhibition = params.get("UpdateProhibition")
+        self._LockTransfer = params.get("LockTransfer")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2147,19 +4262,35 @@ class TransferInIntlDomainBatchResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LogId: The bulk purchase log ID.
+        :param _LogId: The bulk purchase log ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type LogId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.LogId = None
-        self.RequestId = None
+        self._LogId = None
+        self._RequestId = None
+
+    @property
+    def LogId(self):
+        return self._LogId
+
+    @LogId.setter
+    def LogId(self, LogId):
+        self._LogId = LogId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.LogId = params.get("LogId")
-        self.RequestId = params.get("RequestId")
+        self._LogId = params.get("LogId")
+        self._RequestId = params.get("RequestId")
 
 
 class TransferProhibitionIntlBatchRequest(AbstractModel):
@@ -2169,22 +4300,39 @@ class TransferProhibitionIntlBatchRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Domains: The domain array.
+        :param _Domains: The domain array.
         :type Domains: list of str
-        :param Status: Whether to enable transfer prohibition. Valid values: `true` (enable), `false` (disable).
+        :param _Status: Whether to enable transfer prohibition. Valid values: `true` (enable), `false` (disable).
         :type Status: bool
         """
-        self.Domains = None
-        self.Status = None
+        self._Domains = None
+        self._Status = None
+
+    @property
+    def Domains(self):
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
 
     def _deserialize(self, params):
-        self.Domains = params.get("Domains")
-        self.Status = params.get("Status")
+        self._Domains = params.get("Domains")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2197,18 +4345,34 @@ class TransferProhibitionIntlBatchResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LogId: The log ID.
+        :param _LogId: The log ID.
         :type LogId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.LogId = None
-        self.RequestId = None
+        self._LogId = None
+        self._RequestId = None
+
+    @property
+    def LogId(self):
+        return self._LogId
+
+    @LogId.setter
+    def LogId(self, LogId):
+        self._LogId = LogId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.LogId = params.get("LogId")
-        self.RequestId = params.get("RequestId")
+        self._LogId = params.get("LogId")
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateProhibitionIntlBatchRequest(AbstractModel):
@@ -2218,22 +4382,39 @@ class UpdateProhibitionIntlBatchRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Domains: The domain array.
+        :param _Domains: The domain array.
         :type Domains: list of str
-        :param Status: Whether to enable update prohibition. Valid values: `true` (enable), `false` (disable).
+        :param _Status: Whether to enable update prohibition. Valid values: `true` (enable), `false` (disable).
         :type Status: bool
         """
-        self.Domains = None
-        self.Status = None
+        self._Domains = None
+        self._Status = None
+
+    @property
+    def Domains(self):
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
 
     def _deserialize(self, params):
-        self.Domains = params.get("Domains")
-        self.Status = params.get("Status")
+        self._Domains = params.get("Domains")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2246,15 +4427,31 @@ class UpdateProhibitionIntlBatchResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LogId: The log ID.
+        :param _LogId: The log ID.
         :type LogId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.LogId = None
-        self.RequestId = None
+        self._LogId = None
+        self._RequestId = None
+
+    @property
+    def LogId(self):
+        return self._LogId
+
+    @LogId.setter
+    def LogId(self, LogId):
+        self._LogId = LogId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.LogId = params.get("LogId")
-        self.RequestId = params.get("RequestId")
+        self._LogId = params.get("LogId")
+        self._RequestId = params.get("RequestId")

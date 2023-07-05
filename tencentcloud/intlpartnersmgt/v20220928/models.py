@@ -25,39 +25,80 @@ class ActionSummaryOverviewItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ActionType: Transaction type code
+        :param _ActionType: Transaction type code
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ActionType: str
-        :param ActionTypeName: Transaction type name
+        :param _ActionTypeName: Transaction type name
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ActionTypeName: str
-        :param OriginalCost: The actual total consumption amount accurate down to eight decimal places
+        :param _OriginalCost: The actual total consumption amount accurate down to eight decimal places
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OriginalCost: str
-        :param VoucherPayAmount: The deducted voucher amount accurate down to eight decimal places
+        :param _VoucherPayAmount: The deducted voucher amount accurate down to eight decimal places
 Note: This field may return null, indicating that no valid values can be obtained.
         :type VoucherPayAmount: str
-        :param TotalCost: Total consumption amount accurate down to eight decimal places
+        :param _TotalCost: Total consumption amount accurate down to eight decimal places
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TotalCost: str
         """
-        self.ActionType = None
-        self.ActionTypeName = None
-        self.OriginalCost = None
-        self.VoucherPayAmount = None
-        self.TotalCost = None
+        self._ActionType = None
+        self._ActionTypeName = None
+        self._OriginalCost = None
+        self._VoucherPayAmount = None
+        self._TotalCost = None
+
+    @property
+    def ActionType(self):
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def ActionTypeName(self):
+        return self._ActionTypeName
+
+    @ActionTypeName.setter
+    def ActionTypeName(self, ActionTypeName):
+        self._ActionTypeName = ActionTypeName
+
+    @property
+    def OriginalCost(self):
+        return self._OriginalCost
+
+    @OriginalCost.setter
+    def OriginalCost(self, OriginalCost):
+        self._OriginalCost = OriginalCost
+
+    @property
+    def VoucherPayAmount(self):
+        return self._VoucherPayAmount
+
+    @VoucherPayAmount.setter
+    def VoucherPayAmount(self, VoucherPayAmount):
+        self._VoucherPayAmount = VoucherPayAmount
+
+    @property
+    def TotalCost(self):
+        return self._TotalCost
+
+    @TotalCost.setter
+    def TotalCost(self, TotalCost):
+        self._TotalCost = TotalCost
 
 
     def _deserialize(self, params):
-        self.ActionType = params.get("ActionType")
-        self.ActionTypeName = params.get("ActionTypeName")
-        self.OriginalCost = params.get("OriginalCost")
-        self.VoucherPayAmount = params.get("VoucherPayAmount")
-        self.TotalCost = params.get("TotalCost")
+        self._ActionType = params.get("ActionType")
+        self._ActionTypeName = params.get("ActionTypeName")
+        self._OriginalCost = params.get("OriginalCost")
+        self._VoucherPayAmount = params.get("VoucherPayAmount")
+        self._TotalCost = params.get("TotalCost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -70,22 +111,39 @@ class AllocateCustomerCreditRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AddedCredit: Specific value of the credit allocated to the customer
+        :param _AddedCredit: Specific value of the credit allocated to the customer
         :type AddedCredit: float
-        :param ClientUin: Customer UIN
+        :param _ClientUin: Customer UIN
         :type ClientUin: int
         """
-        self.AddedCredit = None
-        self.ClientUin = None
+        self._AddedCredit = None
+        self._ClientUin = None
+
+    @property
+    def AddedCredit(self):
+        return self._AddedCredit
+
+    @AddedCredit.setter
+    def AddedCredit(self, AddedCredit):
+        self._AddedCredit = AddedCredit
+
+    @property
+    def ClientUin(self):
+        return self._ClientUin
+
+    @ClientUin.setter
+    def ClientUin(self, ClientUin):
+        self._ClientUin = ClientUin
 
 
     def _deserialize(self, params):
-        self.AddedCredit = params.get("AddedCredit")
-        self.ClientUin = params.get("ClientUin")
+        self._AddedCredit = params.get("AddedCredit")
+        self._ClientUin = params.get("ClientUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -98,22 +156,46 @@ class AllocateCustomerCreditResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCredit: The updated total credit
+        :param _TotalCredit: The updated total credit
         :type TotalCredit: float
-        :param RemainingCredit: The updated available credit
+        :param _RemainingCredit: The updated available credit
         :type RemainingCredit: float
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TotalCredit = None
-        self.RemainingCredit = None
-        self.RequestId = None
+        self._TotalCredit = None
+        self._RemainingCredit = None
+        self._RequestId = None
+
+    @property
+    def TotalCredit(self):
+        return self._TotalCredit
+
+    @TotalCredit.setter
+    def TotalCredit(self, TotalCredit):
+        self._TotalCredit = TotalCredit
+
+    @property
+    def RemainingCredit(self):
+        return self._RemainingCredit
+
+    @RemainingCredit.setter
+    def RemainingCredit(self, RemainingCredit):
+        self._RemainingCredit = RemainingCredit
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCredit = params.get("TotalCredit")
-        self.RemainingCredit = params.get("RemainingCredit")
-        self.RequestId = params.get("RequestId")
+        self._TotalCredit = params.get("TotalCredit")
+        self._RemainingCredit = params.get("RemainingCredit")
+        self._RequestId = params.get("RequestId")
 
 
 class BillDetailData(AbstractModel):
@@ -123,171 +205,412 @@ class BillDetailData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PayerAccountId: Reseller account
+        :param _PayerAccountId: Reseller account
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PayerAccountId: int
-        :param OwnerAccountId: Customer account
+        :param _OwnerAccountId: Customer account
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OwnerAccountId: int
-        :param OperatorAccountId: Operator account
+        :param _OperatorAccountId: Operator account
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OperatorAccountId: int
-        :param ProductName: Product name
+        :param _ProductName: Product name
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ProductName: str
-        :param BillingMode: Billing mode
+        :param _BillingMode: Billing mode
 `Monthly subscription` (Monthly subscription)
 `Pay-As-You-Go resources` (Pay-as-you-go)
 `Standard RI` (Reserved instance)
 Note: This field may return null, indicating that no valid values can be obtained.
         :type BillingMode: str
-        :param ProjectName: Project name
+        :param _ProjectName: Project name
 
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ProjectName: str
-        :param Region: Resource region
+        :param _Region: Resource region
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Region: str
-        :param AvailabilityZone: Resource AZ
+        :param _AvailabilityZone: Resource AZ
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AvailabilityZone: str
-        :param InstanceId: Instance ID
+        :param _InstanceId: Instance ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :type InstanceId: str
-        :param InstanceName: Instance name
+        :param _InstanceName: Instance name
 Note: This field may return null, indicating that no valid values can be obtained.
         :type InstanceName: str
-        :param SubProductName: Subproduct name
+        :param _SubProductName: Subproduct name
 
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SubProductName: str
-        :param TransactionType: Settlement type
+        :param _TransactionType: Settlement type
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TransactionType: str
-        :param TransactionId: Transaction ID
+        :param _TransactionId: Transaction ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TransactionId: str
-        :param TransactionTime: Settlement time
+        :param _TransactionTime: Settlement time
 
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TransactionTime: str
-        :param UsageStartTime: Start time of resource use
+        :param _UsageStartTime: Start time of resource use
 Note: This field may return null, indicating that no valid values can be obtained.
         :type UsageStartTime: str
-        :param UsageEndTime: End time of resource use
+        :param _UsageEndTime: End time of resource use
 Note: This field may return null, indicating that no valid values can be obtained.
         :type UsageEndTime: str
-        :param ComponentType: Component
+        :param _ComponentType: Component
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ComponentType: str
-        :param ComponentName: Component name
+        :param _ComponentName: Component name
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ComponentName: str
-        :param ComponentListPrice: Component list price
+        :param _ComponentListPrice: Component list price
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ComponentListPrice: str
-        :param ComponentPriceMeasurementUnit: Price unit
+        :param _ComponentPriceMeasurementUnit: Price unit
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ComponentPriceMeasurementUnit: str
-        :param ComponentUsage: Component usage
+        :param _ComponentUsage: Component usage
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ComponentUsage: str
-        :param ComponentUsageUnit: Component usage unit
+        :param _ComponentUsageUnit: Component usage unit
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ComponentUsageUnit: str
-        :param UsageDuration: Resource usage duration
+        :param _UsageDuration: Resource usage duration
 Note: This field may return null, indicating that no valid values can be obtained.
         :type UsageDuration: str
-        :param DurationUnit: Duration unit
+        :param _DurationUnit: Duration unit
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DurationUnit: str
-        :param OriginalCost: Original cost
+        :param _OriginalCost: Original cost
 Original cost = component list price * component usage * usage duration
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OriginalCost: str
-        :param DiscountRate: Discount, which defaults to `1`, indicating there is no discount.
+        :param _DiscountRate: Discount, which defaults to `1`, indicating there is no discount.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DiscountRate: str
-        :param Currency: Currency
+        :param _Currency: Currency
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Currency: str
-        :param TotalAmountAfterDiscount: Discounted total
+        :param _TotalAmountAfterDiscount: Discounted total
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TotalAmountAfterDiscount: str
-        :param VoucherDeduction: Voucher deduction
+        :param _VoucherDeduction: Voucher deduction
 Note: This field may return null, indicating that no valid values can be obtained.
         :type VoucherDeduction: str
-        :param TotalCost: Total cost = discounted total - voucher deduction
+        :param _TotalCost: Total cost = discounted total - voucher deduction
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TotalCost: str
         """
-        self.PayerAccountId = None
-        self.OwnerAccountId = None
-        self.OperatorAccountId = None
-        self.ProductName = None
-        self.BillingMode = None
-        self.ProjectName = None
-        self.Region = None
-        self.AvailabilityZone = None
-        self.InstanceId = None
-        self.InstanceName = None
-        self.SubProductName = None
-        self.TransactionType = None
-        self.TransactionId = None
-        self.TransactionTime = None
-        self.UsageStartTime = None
-        self.UsageEndTime = None
-        self.ComponentType = None
-        self.ComponentName = None
-        self.ComponentListPrice = None
-        self.ComponentPriceMeasurementUnit = None
-        self.ComponentUsage = None
-        self.ComponentUsageUnit = None
-        self.UsageDuration = None
-        self.DurationUnit = None
-        self.OriginalCost = None
-        self.DiscountRate = None
-        self.Currency = None
-        self.TotalAmountAfterDiscount = None
-        self.VoucherDeduction = None
-        self.TotalCost = None
+        self._PayerAccountId = None
+        self._OwnerAccountId = None
+        self._OperatorAccountId = None
+        self._ProductName = None
+        self._BillingMode = None
+        self._ProjectName = None
+        self._Region = None
+        self._AvailabilityZone = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._SubProductName = None
+        self._TransactionType = None
+        self._TransactionId = None
+        self._TransactionTime = None
+        self._UsageStartTime = None
+        self._UsageEndTime = None
+        self._ComponentType = None
+        self._ComponentName = None
+        self._ComponentListPrice = None
+        self._ComponentPriceMeasurementUnit = None
+        self._ComponentUsage = None
+        self._ComponentUsageUnit = None
+        self._UsageDuration = None
+        self._DurationUnit = None
+        self._OriginalCost = None
+        self._DiscountRate = None
+        self._Currency = None
+        self._TotalAmountAfterDiscount = None
+        self._VoucherDeduction = None
+        self._TotalCost = None
+
+    @property
+    def PayerAccountId(self):
+        return self._PayerAccountId
+
+    @PayerAccountId.setter
+    def PayerAccountId(self, PayerAccountId):
+        self._PayerAccountId = PayerAccountId
+
+    @property
+    def OwnerAccountId(self):
+        return self._OwnerAccountId
+
+    @OwnerAccountId.setter
+    def OwnerAccountId(self, OwnerAccountId):
+        self._OwnerAccountId = OwnerAccountId
+
+    @property
+    def OperatorAccountId(self):
+        return self._OperatorAccountId
+
+    @OperatorAccountId.setter
+    def OperatorAccountId(self, OperatorAccountId):
+        self._OperatorAccountId = OperatorAccountId
+
+    @property
+    def ProductName(self):
+        return self._ProductName
+
+    @ProductName.setter
+    def ProductName(self, ProductName):
+        self._ProductName = ProductName
+
+    @property
+    def BillingMode(self):
+        return self._BillingMode
+
+    @BillingMode.setter
+    def BillingMode(self, BillingMode):
+        self._BillingMode = BillingMode
+
+    @property
+    def ProjectName(self):
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def AvailabilityZone(self):
+        return self._AvailabilityZone
+
+    @AvailabilityZone.setter
+    def AvailabilityZone(self, AvailabilityZone):
+        self._AvailabilityZone = AvailabilityZone
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def SubProductName(self):
+        return self._SubProductName
+
+    @SubProductName.setter
+    def SubProductName(self, SubProductName):
+        self._SubProductName = SubProductName
+
+    @property
+    def TransactionType(self):
+        return self._TransactionType
+
+    @TransactionType.setter
+    def TransactionType(self, TransactionType):
+        self._TransactionType = TransactionType
+
+    @property
+    def TransactionId(self):
+        return self._TransactionId
+
+    @TransactionId.setter
+    def TransactionId(self, TransactionId):
+        self._TransactionId = TransactionId
+
+    @property
+    def TransactionTime(self):
+        return self._TransactionTime
+
+    @TransactionTime.setter
+    def TransactionTime(self, TransactionTime):
+        self._TransactionTime = TransactionTime
+
+    @property
+    def UsageStartTime(self):
+        return self._UsageStartTime
+
+    @UsageStartTime.setter
+    def UsageStartTime(self, UsageStartTime):
+        self._UsageStartTime = UsageStartTime
+
+    @property
+    def UsageEndTime(self):
+        return self._UsageEndTime
+
+    @UsageEndTime.setter
+    def UsageEndTime(self, UsageEndTime):
+        self._UsageEndTime = UsageEndTime
+
+    @property
+    def ComponentType(self):
+        return self._ComponentType
+
+    @ComponentType.setter
+    def ComponentType(self, ComponentType):
+        self._ComponentType = ComponentType
+
+    @property
+    def ComponentName(self):
+        return self._ComponentName
+
+    @ComponentName.setter
+    def ComponentName(self, ComponentName):
+        self._ComponentName = ComponentName
+
+    @property
+    def ComponentListPrice(self):
+        return self._ComponentListPrice
+
+    @ComponentListPrice.setter
+    def ComponentListPrice(self, ComponentListPrice):
+        self._ComponentListPrice = ComponentListPrice
+
+    @property
+    def ComponentPriceMeasurementUnit(self):
+        return self._ComponentPriceMeasurementUnit
+
+    @ComponentPriceMeasurementUnit.setter
+    def ComponentPriceMeasurementUnit(self, ComponentPriceMeasurementUnit):
+        self._ComponentPriceMeasurementUnit = ComponentPriceMeasurementUnit
+
+    @property
+    def ComponentUsage(self):
+        return self._ComponentUsage
+
+    @ComponentUsage.setter
+    def ComponentUsage(self, ComponentUsage):
+        self._ComponentUsage = ComponentUsage
+
+    @property
+    def ComponentUsageUnit(self):
+        return self._ComponentUsageUnit
+
+    @ComponentUsageUnit.setter
+    def ComponentUsageUnit(self, ComponentUsageUnit):
+        self._ComponentUsageUnit = ComponentUsageUnit
+
+    @property
+    def UsageDuration(self):
+        return self._UsageDuration
+
+    @UsageDuration.setter
+    def UsageDuration(self, UsageDuration):
+        self._UsageDuration = UsageDuration
+
+    @property
+    def DurationUnit(self):
+        return self._DurationUnit
+
+    @DurationUnit.setter
+    def DurationUnit(self, DurationUnit):
+        self._DurationUnit = DurationUnit
+
+    @property
+    def OriginalCost(self):
+        return self._OriginalCost
+
+    @OriginalCost.setter
+    def OriginalCost(self, OriginalCost):
+        self._OriginalCost = OriginalCost
+
+    @property
+    def DiscountRate(self):
+        return self._DiscountRate
+
+    @DiscountRate.setter
+    def DiscountRate(self, DiscountRate):
+        self._DiscountRate = DiscountRate
+
+    @property
+    def Currency(self):
+        return self._Currency
+
+    @Currency.setter
+    def Currency(self, Currency):
+        self._Currency = Currency
+
+    @property
+    def TotalAmountAfterDiscount(self):
+        return self._TotalAmountAfterDiscount
+
+    @TotalAmountAfterDiscount.setter
+    def TotalAmountAfterDiscount(self, TotalAmountAfterDiscount):
+        self._TotalAmountAfterDiscount = TotalAmountAfterDiscount
+
+    @property
+    def VoucherDeduction(self):
+        return self._VoucherDeduction
+
+    @VoucherDeduction.setter
+    def VoucherDeduction(self, VoucherDeduction):
+        self._VoucherDeduction = VoucherDeduction
+
+    @property
+    def TotalCost(self):
+        return self._TotalCost
+
+    @TotalCost.setter
+    def TotalCost(self, TotalCost):
+        self._TotalCost = TotalCost
 
 
     def _deserialize(self, params):
-        self.PayerAccountId = params.get("PayerAccountId")
-        self.OwnerAccountId = params.get("OwnerAccountId")
-        self.OperatorAccountId = params.get("OperatorAccountId")
-        self.ProductName = params.get("ProductName")
-        self.BillingMode = params.get("BillingMode")
-        self.ProjectName = params.get("ProjectName")
-        self.Region = params.get("Region")
-        self.AvailabilityZone = params.get("AvailabilityZone")
-        self.InstanceId = params.get("InstanceId")
-        self.InstanceName = params.get("InstanceName")
-        self.SubProductName = params.get("SubProductName")
-        self.TransactionType = params.get("TransactionType")
-        self.TransactionId = params.get("TransactionId")
-        self.TransactionTime = params.get("TransactionTime")
-        self.UsageStartTime = params.get("UsageStartTime")
-        self.UsageEndTime = params.get("UsageEndTime")
-        self.ComponentType = params.get("ComponentType")
-        self.ComponentName = params.get("ComponentName")
-        self.ComponentListPrice = params.get("ComponentListPrice")
-        self.ComponentPriceMeasurementUnit = params.get("ComponentPriceMeasurementUnit")
-        self.ComponentUsage = params.get("ComponentUsage")
-        self.ComponentUsageUnit = params.get("ComponentUsageUnit")
-        self.UsageDuration = params.get("UsageDuration")
-        self.DurationUnit = params.get("DurationUnit")
-        self.OriginalCost = params.get("OriginalCost")
-        self.DiscountRate = params.get("DiscountRate")
-        self.Currency = params.get("Currency")
-        self.TotalAmountAfterDiscount = params.get("TotalAmountAfterDiscount")
-        self.VoucherDeduction = params.get("VoucherDeduction")
-        self.TotalCost = params.get("TotalCost")
+        self._PayerAccountId = params.get("PayerAccountId")
+        self._OwnerAccountId = params.get("OwnerAccountId")
+        self._OperatorAccountId = params.get("OperatorAccountId")
+        self._ProductName = params.get("ProductName")
+        self._BillingMode = params.get("BillingMode")
+        self._ProjectName = params.get("ProjectName")
+        self._Region = params.get("Region")
+        self._AvailabilityZone = params.get("AvailabilityZone")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._SubProductName = params.get("SubProductName")
+        self._TransactionType = params.get("TransactionType")
+        self._TransactionId = params.get("TransactionId")
+        self._TransactionTime = params.get("TransactionTime")
+        self._UsageStartTime = params.get("UsageStartTime")
+        self._UsageEndTime = params.get("UsageEndTime")
+        self._ComponentType = params.get("ComponentType")
+        self._ComponentName = params.get("ComponentName")
+        self._ComponentListPrice = params.get("ComponentListPrice")
+        self._ComponentPriceMeasurementUnit = params.get("ComponentPriceMeasurementUnit")
+        self._ComponentUsage = params.get("ComponentUsage")
+        self._ComponentUsageUnit = params.get("ComponentUsageUnit")
+        self._UsageDuration = params.get("UsageDuration")
+        self._DurationUnit = params.get("DurationUnit")
+        self._OriginalCost = params.get("OriginalCost")
+        self._DiscountRate = params.get("DiscountRate")
+        self._Currency = params.get("Currency")
+        self._TotalAmountAfterDiscount = params.get("TotalAmountAfterDiscount")
+        self._VoucherDeduction = params.get("VoucherDeduction")
+        self._TotalCost = params.get("TotalCost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -300,39 +623,80 @@ class BusinessSummaryOverviewItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BusinessCode: Product code
+        :param _BusinessCode: Product code
 Note: This field may return null, indicating that no valid values can be obtained.
         :type BusinessCode: str
-        :param BusinessCodeName: Product name
+        :param _BusinessCodeName: Product name
 Note: This field may return null, indicating that no valid values can be obtained.
         :type BusinessCodeName: str
-        :param OriginalCost: List price accurate down to eight decimal places
+        :param _OriginalCost: List price accurate down to eight decimal places
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OriginalCost: str
-        :param VoucherPayAmount: The deducted voucher amount accurate down to eight decimal places
+        :param _VoucherPayAmount: The deducted voucher amount accurate down to eight decimal places
 Note: This field may return null, indicating that no valid values can be obtained.
         :type VoucherPayAmount: str
-        :param TotalCost: Consumption amount accurate down to eight decimal places
+        :param _TotalCost: Consumption amount accurate down to eight decimal places
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TotalCost: str
         """
-        self.BusinessCode = None
-        self.BusinessCodeName = None
-        self.OriginalCost = None
-        self.VoucherPayAmount = None
-        self.TotalCost = None
+        self._BusinessCode = None
+        self._BusinessCodeName = None
+        self._OriginalCost = None
+        self._VoucherPayAmount = None
+        self._TotalCost = None
+
+    @property
+    def BusinessCode(self):
+        return self._BusinessCode
+
+    @BusinessCode.setter
+    def BusinessCode(self, BusinessCode):
+        self._BusinessCode = BusinessCode
+
+    @property
+    def BusinessCodeName(self):
+        return self._BusinessCodeName
+
+    @BusinessCodeName.setter
+    def BusinessCodeName(self, BusinessCodeName):
+        self._BusinessCodeName = BusinessCodeName
+
+    @property
+    def OriginalCost(self):
+        return self._OriginalCost
+
+    @OriginalCost.setter
+    def OriginalCost(self, OriginalCost):
+        self._OriginalCost = OriginalCost
+
+    @property
+    def VoucherPayAmount(self):
+        return self._VoucherPayAmount
+
+    @VoucherPayAmount.setter
+    def VoucherPayAmount(self, VoucherPayAmount):
+        self._VoucherPayAmount = VoucherPayAmount
+
+    @property
+    def TotalCost(self):
+        return self._TotalCost
+
+    @TotalCost.setter
+    def TotalCost(self, TotalCost):
+        self._TotalCost = TotalCost
 
 
     def _deserialize(self, params):
-        self.BusinessCode = params.get("BusinessCode")
-        self.BusinessCodeName = params.get("BusinessCodeName")
-        self.OriginalCost = params.get("OriginalCost")
-        self.VoucherPayAmount = params.get("VoucherPayAmount")
-        self.TotalCost = params.get("TotalCost")
+        self._BusinessCode = params.get("BusinessCode")
+        self._BusinessCodeName = params.get("BusinessCodeName")
+        self._OriginalCost = params.get("OriginalCost")
+        self._VoucherPayAmount = params.get("VoucherPayAmount")
+        self._TotalCost = params.get("TotalCost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -345,34 +709,75 @@ class CountryCodeItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EnName: Country/region name in English
+        :param _EnName: Country/region name in English
         :type EnName: str
-        :param Name: Country/region name in Chinese
+        :param _Name: Country/region name in Chinese
         :type Name: str
-        :param IOS2: 
+        :param _IOS2: 
         :type IOS2: str
-        :param IOS3: 
+        :param _IOS3: 
         :type IOS3: str
-        :param Code: International dialing code
+        :param _Code: International dialing code
         :type Code: str
         """
-        self.EnName = None
-        self.Name = None
-        self.IOS2 = None
-        self.IOS3 = None
-        self.Code = None
+        self._EnName = None
+        self._Name = None
+        self._IOS2 = None
+        self._IOS3 = None
+        self._Code = None
+
+    @property
+    def EnName(self):
+        return self._EnName
+
+    @EnName.setter
+    def EnName(self, EnName):
+        self._EnName = EnName
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def IOS2(self):
+        return self._IOS2
+
+    @IOS2.setter
+    def IOS2(self, IOS2):
+        self._IOS2 = IOS2
+
+    @property
+    def IOS3(self):
+        return self._IOS3
+
+    @IOS3.setter
+    def IOS3(self, IOS3):
+        self._IOS3 = IOS3
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
 
 
     def _deserialize(self, params):
-        self.EnName = params.get("EnName")
-        self.Name = params.get("Name")
-        self.IOS2 = params.get("IOS2")
-        self.IOS3 = params.get("IOS3")
-        self.Code = params.get("Code")
+        self._EnName = params.get("EnName")
+        self._Name = params.get("Name")
+        self._IOS2 = params.get("IOS2")
+        self._IOS3 = params.get("IOS3")
+        self._Code = params.get("Code")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -385,50 +790,115 @@ class CreateAccountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AccountType: Account type of a new customer. Valid values: `personal`, `company`.
+        :param _AccountType: Account type of a new customer. Valid values: `personal`, `company`.
         :type AccountType: str
-        :param Mail: Registered email address, which should be valid and correct.
+        :param _Mail: Registered email address, which should be valid and correct.
 For example, account@qq.com.
         :type Mail: str
-        :param Password: Account password
+        :param _Password: Account password
 Length limit: 8-20 characters
 A password must contain numbers, letters, and symbols (!@#$%^&*()). Space is not allowed.
         :type Password: str
-        :param ConfirmPassword: The confirmed password, which must be the same as that entered in the `Password` field.
+        :param _ConfirmPassword: The confirmed password, which must be the same as that entered in the `Password` field.
         :type ConfirmPassword: str
-        :param PhoneNum: Customer mobile number, which should be valid and correct.
+        :param _PhoneNum: Customer mobile number, which should be valid and correct.
 A global mobile number within 1-32 digits is allowed, such as 18888888888.
         :type PhoneNum: str
-        :param CountryCode: Customer's country/region code, which can be obtained via the `GetCountryCodes` API, such as "852".
+        :param _CountryCode: Customer's country/region code, which can be obtained via the `GetCountryCodes` API, such as "852".
         :type CountryCode: str
-        :param Area: Customer's ISO2 standard country/region code, which can be obtained via the `GetCountryCodes` API. It should correspond to the `CountryCode` field, such as `HK`.
+        :param _Area: Customer's ISO2 standard country/region code, which can be obtained via the `GetCountryCodes` API. It should correspond to the `CountryCode` field, such as `HK`.
         :type Area: str
-        :param Extended: Extension field, which is left empty by default.
+        :param _Extended: Extension field, which is left empty by default.
         :type Extended: str
         """
-        self.AccountType = None
-        self.Mail = None
-        self.Password = None
-        self.ConfirmPassword = None
-        self.PhoneNum = None
-        self.CountryCode = None
-        self.Area = None
-        self.Extended = None
+        self._AccountType = None
+        self._Mail = None
+        self._Password = None
+        self._ConfirmPassword = None
+        self._PhoneNum = None
+        self._CountryCode = None
+        self._Area = None
+        self._Extended = None
+
+    @property
+    def AccountType(self):
+        return self._AccountType
+
+    @AccountType.setter
+    def AccountType(self, AccountType):
+        self._AccountType = AccountType
+
+    @property
+    def Mail(self):
+        return self._Mail
+
+    @Mail.setter
+    def Mail(self, Mail):
+        self._Mail = Mail
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def ConfirmPassword(self):
+        return self._ConfirmPassword
+
+    @ConfirmPassword.setter
+    def ConfirmPassword(self, ConfirmPassword):
+        self._ConfirmPassword = ConfirmPassword
+
+    @property
+    def PhoneNum(self):
+        return self._PhoneNum
+
+    @PhoneNum.setter
+    def PhoneNum(self, PhoneNum):
+        self._PhoneNum = PhoneNum
+
+    @property
+    def CountryCode(self):
+        return self._CountryCode
+
+    @CountryCode.setter
+    def CountryCode(self, CountryCode):
+        self._CountryCode = CountryCode
+
+    @property
+    def Area(self):
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def Extended(self):
+        return self._Extended
+
+    @Extended.setter
+    def Extended(self, Extended):
+        self._Extended = Extended
 
 
     def _deserialize(self, params):
-        self.AccountType = params.get("AccountType")
-        self.Mail = params.get("Mail")
-        self.Password = params.get("Password")
-        self.ConfirmPassword = params.get("ConfirmPassword")
-        self.PhoneNum = params.get("PhoneNum")
-        self.CountryCode = params.get("CountryCode")
-        self.Area = params.get("Area")
-        self.Extended = params.get("Extended")
+        self._AccountType = params.get("AccountType")
+        self._Mail = params.get("Mail")
+        self._Password = params.get("Password")
+        self._ConfirmPassword = params.get("ConfirmPassword")
+        self._PhoneNum = params.get("PhoneNum")
+        self._CountryCode = params.get("CountryCode")
+        self._Area = params.get("Area")
+        self._Extended = params.get("Extended")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -441,18 +911,34 @@ class CreateAccountResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Uin: Account UIN
+        :param _Uin: Account UIN
         :type Uin: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Uin = None
-        self.RequestId = None
+        self._Uin = None
+        self._RequestId = None
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Uin = params.get("Uin")
-        self.RequestId = params.get("RequestId")
+        self._Uin = params.get("Uin")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeBillSummaryByPayModeRequest(AbstractModel):
@@ -462,22 +948,39 @@ class DescribeBillSummaryByPayModeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BillMonth: Bill month in the format of "yyyy-MM"
+        :param _BillMonth: Bill month in the format of "yyyy-MM"
         :type BillMonth: str
-        :param CustomerUin: Customer UIN
+        :param _CustomerUin: Customer UIN
         :type CustomerUin: int
         """
-        self.BillMonth = None
-        self.CustomerUin = None
+        self._BillMonth = None
+        self._CustomerUin = None
+
+    @property
+    def BillMonth(self):
+        return self._BillMonth
+
+    @BillMonth.setter
+    def BillMonth(self, BillMonth):
+        self._BillMonth = BillMonth
+
+    @property
+    def CustomerUin(self):
+        return self._CustomerUin
+
+    @CustomerUin.setter
+    def CustomerUin(self, CustomerUin):
+        self._CustomerUin = CustomerUin
 
 
     def _deserialize(self, params):
-        self.BillMonth = params.get("BillMonth")
-        self.CustomerUin = params.get("CustomerUin")
+        self._BillMonth = params.get("BillMonth")
+        self._CustomerUin = params.get("CustomerUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -490,24 +993,40 @@ class DescribeBillSummaryByPayModeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SummaryOverview: Payment mode details in the customer bill data totaled by payment mode
+        :param _SummaryOverview: Payment mode details in the customer bill data totaled by payment mode
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SummaryOverview: list of PayModeSummaryOverviewItem
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.SummaryOverview = None
-        self.RequestId = None
+        self._SummaryOverview = None
+        self._RequestId = None
+
+    @property
+    def SummaryOverview(self):
+        return self._SummaryOverview
+
+    @SummaryOverview.setter
+    def SummaryOverview(self, SummaryOverview):
+        self._SummaryOverview = SummaryOverview
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("SummaryOverview") is not None:
-            self.SummaryOverview = []
+            self._SummaryOverview = []
             for item in params.get("SummaryOverview"):
                 obj = PayModeSummaryOverviewItem()
                 obj._deserialize(item)
-                self.SummaryOverview.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._SummaryOverview.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeBillSummaryByProductRequest(AbstractModel):
@@ -517,22 +1036,39 @@ class DescribeBillSummaryByProductRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BillMonth: Bill month in the format of "yyyy-MM"
+        :param _BillMonth: Bill month in the format of "yyyy-MM"
         :type BillMonth: str
-        :param CustomerUin: Customer UIN
+        :param _CustomerUin: Customer UIN
         :type CustomerUin: int
         """
-        self.BillMonth = None
-        self.CustomerUin = None
+        self._BillMonth = None
+        self._CustomerUin = None
+
+    @property
+    def BillMonth(self):
+        return self._BillMonth
+
+    @BillMonth.setter
+    def BillMonth(self, BillMonth):
+        self._BillMonth = BillMonth
+
+    @property
+    def CustomerUin(self):
+        return self._CustomerUin
+
+    @CustomerUin.setter
+    def CustomerUin(self, CustomerUin):
+        self._CustomerUin = CustomerUin
 
 
     def _deserialize(self, params):
-        self.BillMonth = params.get("BillMonth")
-        self.CustomerUin = params.get("CustomerUin")
+        self._BillMonth = params.get("BillMonth")
+        self._CustomerUin = params.get("CustomerUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -545,24 +1081,40 @@ class DescribeBillSummaryByProductResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SummaryOverview: Bill details from the product dimension
+        :param _SummaryOverview: Bill details from the product dimension
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SummaryOverview: list of BusinessSummaryOverviewItem
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.SummaryOverview = None
-        self.RequestId = None
+        self._SummaryOverview = None
+        self._RequestId = None
+
+    @property
+    def SummaryOverview(self):
+        return self._SummaryOverview
+
+    @SummaryOverview.setter
+    def SummaryOverview(self, SummaryOverview):
+        self._SummaryOverview = SummaryOverview
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("SummaryOverview") is not None:
-            self.SummaryOverview = []
+            self._SummaryOverview = []
             for item in params.get("SummaryOverview"):
                 obj = BusinessSummaryOverviewItem()
                 obj._deserialize(item)
-                self.SummaryOverview.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._SummaryOverview.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeBillSummaryByRegionRequest(AbstractModel):
@@ -572,22 +1124,39 @@ class DescribeBillSummaryByRegionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BillMonth: Bill month in the format of "yyyy-MM"
+        :param _BillMonth: Bill month in the format of "yyyy-MM"
         :type BillMonth: str
-        :param CustomerUin: Customer UIN
+        :param _CustomerUin: Customer UIN
         :type CustomerUin: int
         """
-        self.BillMonth = None
-        self.CustomerUin = None
+        self._BillMonth = None
+        self._CustomerUin = None
+
+    @property
+    def BillMonth(self):
+        return self._BillMonth
+
+    @BillMonth.setter
+    def BillMonth(self, BillMonth):
+        self._BillMonth = BillMonth
+
+    @property
+    def CustomerUin(self):
+        return self._CustomerUin
+
+    @CustomerUin.setter
+    def CustomerUin(self, CustomerUin):
+        self._CustomerUin = CustomerUin
 
 
     def _deserialize(self, params):
-        self.BillMonth = params.get("BillMonth")
-        self.CustomerUin = params.get("CustomerUin")
+        self._BillMonth = params.get("BillMonth")
+        self._CustomerUin = params.get("CustomerUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -600,24 +1169,40 @@ class DescribeBillSummaryByRegionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SummaryOverview: Region details in the customer bill data totaled by region
+        :param _SummaryOverview: Region details in the customer bill data totaled by region
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SummaryOverview: list of RegionSummaryOverviewItem
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.SummaryOverview = None
-        self.RequestId = None
+        self._SummaryOverview = None
+        self._RequestId = None
+
+    @property
+    def SummaryOverview(self):
+        return self._SummaryOverview
+
+    @SummaryOverview.setter
+    def SummaryOverview(self, SummaryOverview):
+        self._SummaryOverview = SummaryOverview
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("SummaryOverview") is not None:
-            self.SummaryOverview = []
+            self._SummaryOverview = []
             for item in params.get("SummaryOverview"):
                 obj = RegionSummaryOverviewItem()
                 obj._deserialize(item)
-                self.SummaryOverview.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._SummaryOverview.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeCustomerBillDetailRequest(AbstractModel):
@@ -627,19 +1212,19 @@ class DescribeCustomerBillDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CustomerUin: Customer UIN
+        :param _CustomerUin: Customer UIN
         :type CustomerUin: int
-        :param Month: The queried month in “YYYY-MM” format, such as 2023-01.
+        :param _Month: The queried month in “YYYY-MM” format, such as 2023-01.
         :type Month: str
-        :param PageSize: A pagination parameter that specifies the number of entries per page
+        :param _PageSize: A pagination parameter that specifies the number of entries per page
         :type PageSize: int
-        :param Page: A pagination parameter that specifies the current page number
+        :param _Page: A pagination parameter that specifies the current page number
         :type Page: int
-        :param PayMode: Billing mode. Valid values:
+        :param _PayMode: Billing mode. Valid values:
 `prePay` (Monthly subscription)
 `postPay` (Pay-as-you-go)
         :type PayMode: str
-        :param ActionType: Transaction type. Valid values:
+        :param _ActionType: Transaction type. Valid values:
 `prepay_purchase` (Purchase)
 `prepay_renew` (Renewal)
 `prepay_modify` (Upgrade/Downgrade)
@@ -666,33 +1251,90 @@ class DescribeCustomerBillDetailRequest(AbstractModel):
 `pre_upgrade` (Upgrade/Downgrade)
 `pre_downgrade` (Upgrade/Downgrade)
         :type ActionType: str
-        :param IsConfirmed: Payment status
+        :param _IsConfirmed: Payment status
 `0`: N/A
 `1`: Paid
 `2`: Unpaid
         :type IsConfirmed: str
         """
-        self.CustomerUin = None
-        self.Month = None
-        self.PageSize = None
-        self.Page = None
-        self.PayMode = None
-        self.ActionType = None
-        self.IsConfirmed = None
+        self._CustomerUin = None
+        self._Month = None
+        self._PageSize = None
+        self._Page = None
+        self._PayMode = None
+        self._ActionType = None
+        self._IsConfirmed = None
+
+    @property
+    def CustomerUin(self):
+        return self._CustomerUin
+
+    @CustomerUin.setter
+    def CustomerUin(self, CustomerUin):
+        self._CustomerUin = CustomerUin
+
+    @property
+    def Month(self):
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def ActionType(self):
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def IsConfirmed(self):
+        return self._IsConfirmed
+
+    @IsConfirmed.setter
+    def IsConfirmed(self, IsConfirmed):
+        self._IsConfirmed = IsConfirmed
 
 
     def _deserialize(self, params):
-        self.CustomerUin = params.get("CustomerUin")
-        self.Month = params.get("Month")
-        self.PageSize = params.get("PageSize")
-        self.Page = params.get("Page")
-        self.PayMode = params.get("PayMode")
-        self.ActionType = params.get("ActionType")
-        self.IsConfirmed = params.get("IsConfirmed")
+        self._CustomerUin = params.get("CustomerUin")
+        self._Month = params.get("Month")
+        self._PageSize = params.get("PageSize")
+        self._Page = params.get("Page")
+        self._PayMode = params.get("PayMode")
+        self._ActionType = params.get("ActionType")
+        self._IsConfirmed = params.get("IsConfirmed")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -705,28 +1347,52 @@ class DescribeCustomerBillDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Total: Total number of data entries
+        :param _Total: Total number of data entries
         :type Total: int
-        :param DetailSet: Data details
+        :param _DetailSet: Data details
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DetailSet: list of BillDetailData
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Total = None
-        self.DetailSet = None
-        self.RequestId = None
+        self._Total = None
+        self._DetailSet = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def DetailSet(self):
+        return self._DetailSet
+
+    @DetailSet.setter
+    def DetailSet(self, DetailSet):
+        self._DetailSet = DetailSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Total = params.get("Total")
+        self._Total = params.get("Total")
         if params.get("DetailSet") is not None:
-            self.DetailSet = []
+            self._DetailSet = []
             for item in params.get("DetailSet"):
                 obj = BillDetailData()
                 obj._deserialize(item)
-                self.DetailSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._DetailSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeCustomerBillSummaryRequest(AbstractModel):
@@ -736,15 +1402,15 @@ class DescribeCustomerBillSummaryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CustomerUin: Customer UIN
+        :param _CustomerUin: Customer UIN
         :type CustomerUin: int
-        :param Month: The queried month in “YYYY-MM” format, such as 2023-01.
+        :param _Month: The queried month in “YYYY-MM” format, such as 2023-01.
         :type Month: str
-        :param PayMode: Billing mode. Valid values:
+        :param _PayMode: Billing mode. Valid values:
 `prePay` (Monthly subscription)
 `postPay` (Pay-as-you-go)
         :type PayMode: str
-        :param ActionType: Transaction type. Valid values:
+        :param _ActionType: Transaction type. Valid values:
 `prepay_purchase` (Purchase)
 `prepay_renew` (Renewal)
 `prepay_modify` (Upgrade/Downgrade)
@@ -771,29 +1437,70 @@ class DescribeCustomerBillSummaryRequest(AbstractModel):
 `pre_upgrade` (Upgrade/Downgrade)
 `pre_downgrade` (Upgrade/Downgrade)
         :type ActionType: str
-        :param IsConfirmed: Payment status
+        :param _IsConfirmed: Payment status
 `0`: N/A
 `1`: Paid
 `2`: Unpaid
         :type IsConfirmed: str
         """
-        self.CustomerUin = None
-        self.Month = None
-        self.PayMode = None
-        self.ActionType = None
-        self.IsConfirmed = None
+        self._CustomerUin = None
+        self._Month = None
+        self._PayMode = None
+        self._ActionType = None
+        self._IsConfirmed = None
+
+    @property
+    def CustomerUin(self):
+        return self._CustomerUin
+
+    @CustomerUin.setter
+    def CustomerUin(self, CustomerUin):
+        self._CustomerUin = CustomerUin
+
+    @property
+    def Month(self):
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def ActionType(self):
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def IsConfirmed(self):
+        return self._IsConfirmed
+
+    @IsConfirmed.setter
+    def IsConfirmed(self, IsConfirmed):
+        self._IsConfirmed = IsConfirmed
 
 
     def _deserialize(self, params):
-        self.CustomerUin = params.get("CustomerUin")
-        self.Month = params.get("Month")
-        self.PayMode = params.get("PayMode")
-        self.ActionType = params.get("ActionType")
-        self.IsConfirmed = params.get("IsConfirmed")
+        self._CustomerUin = params.get("CustomerUin")
+        self._Month = params.get("Month")
+        self._PayMode = params.get("PayMode")
+        self._ActionType = params.get("ActionType")
+        self._IsConfirmed = params.get("IsConfirmed")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -806,18 +1513,34 @@ class DescribeCustomerBillSummaryResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCost: Total amount
+        :param _TotalCost: Total amount
         :type TotalCost: float
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TotalCost = None
-        self.RequestId = None
+        self._TotalCost = None
+        self._RequestId = None
+
+    @property
+    def TotalCost(self):
+        return self._TotalCost
+
+    @TotalCost.setter
+    def TotalCost(self, TotalCost):
+        self._TotalCost = TotalCost
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCost = params.get("TotalCost")
-        self.RequestId = params.get("RequestId")
+        self._TotalCost = params.get("TotalCost")
+        self._RequestId = params.get("RequestId")
 
 
 class GetCountryCodesRequest(AbstractModel):
@@ -833,23 +1556,39 @@ class GetCountryCodesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: List of country/region codes
+        :param _Data: List of country/region codes
         :type Data: list of CountryCodeItem
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = []
+            self._Data = []
             for item in params.get("Data"):
                 obj = CountryCodeItem()
                 obj._deserialize(item)
-                self.Data.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class PayModeSummaryOverviewItem(AbstractModel):
@@ -859,49 +1598,98 @@ class PayModeSummaryOverviewItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PayMode: Billing mode
+        :param _PayMode: Billing mode
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PayMode: str
-        :param PayModeName: Billing mode name
+        :param _PayModeName: Billing mode name
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PayModeName: str
-        :param OriginalCost: The actual total consumption amount accurate down to eight decimal places
+        :param _OriginalCost: The actual total consumption amount accurate down to eight decimal places
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OriginalCost: str
-        :param Detail: Bill details in each payment mode
+        :param _Detail: Bill details in each payment mode
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Detail: list of ActionSummaryOverviewItem
-        :param VoucherPayAmount: The deducted voucher amount accurate down to eight decimal places
+        :param _VoucherPayAmount: The deducted voucher amount accurate down to eight decimal places
 Note: This field may return null, indicating that no valid values can be obtained.
         :type VoucherPayAmount: str
-        :param TotalCost: Total consumption amount accurate down to eight decimal places
+        :param _TotalCost: Total consumption amount accurate down to eight decimal places
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TotalCost: str
         """
-        self.PayMode = None
-        self.PayModeName = None
-        self.OriginalCost = None
-        self.Detail = None
-        self.VoucherPayAmount = None
-        self.TotalCost = None
+        self._PayMode = None
+        self._PayModeName = None
+        self._OriginalCost = None
+        self._Detail = None
+        self._VoucherPayAmount = None
+        self._TotalCost = None
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def PayModeName(self):
+        return self._PayModeName
+
+    @PayModeName.setter
+    def PayModeName(self, PayModeName):
+        self._PayModeName = PayModeName
+
+    @property
+    def OriginalCost(self):
+        return self._OriginalCost
+
+    @OriginalCost.setter
+    def OriginalCost(self, OriginalCost):
+        self._OriginalCost = OriginalCost
+
+    @property
+    def Detail(self):
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+    @property
+    def VoucherPayAmount(self):
+        return self._VoucherPayAmount
+
+    @VoucherPayAmount.setter
+    def VoucherPayAmount(self, VoucherPayAmount):
+        self._VoucherPayAmount = VoucherPayAmount
+
+    @property
+    def TotalCost(self):
+        return self._TotalCost
+
+    @TotalCost.setter
+    def TotalCost(self, TotalCost):
+        self._TotalCost = TotalCost
 
 
     def _deserialize(self, params):
-        self.PayMode = params.get("PayMode")
-        self.PayModeName = params.get("PayModeName")
-        self.OriginalCost = params.get("OriginalCost")
+        self._PayMode = params.get("PayMode")
+        self._PayModeName = params.get("PayModeName")
+        self._OriginalCost = params.get("OriginalCost")
         if params.get("Detail") is not None:
-            self.Detail = []
+            self._Detail = []
             for item in params.get("Detail"):
                 obj = ActionSummaryOverviewItem()
                 obj._deserialize(item)
-                self.Detail.append(obj)
-        self.VoucherPayAmount = params.get("VoucherPayAmount")
-        self.TotalCost = params.get("TotalCost")
+                self._Detail.append(obj)
+        self._VoucherPayAmount = params.get("VoucherPayAmount")
+        self._TotalCost = params.get("TotalCost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -914,30 +1702,63 @@ class QueryCreditAllocationHistoryData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AllocatedTime: Allocation time
+        :param _AllocatedTime: Allocation time
         :type AllocatedTime: str
-        :param Operator: Operator
+        :param _Operator: Operator
         :type Operator: str
-        :param Credit: Allocated credit value
+        :param _Credit: Allocated credit value
         :type Credit: float
-        :param AllocatedCredit: The allocated total credit
+        :param _AllocatedCredit: The allocated total credit
         :type AllocatedCredit: float
         """
-        self.AllocatedTime = None
-        self.Operator = None
-        self.Credit = None
-        self.AllocatedCredit = None
+        self._AllocatedTime = None
+        self._Operator = None
+        self._Credit = None
+        self._AllocatedCredit = None
+
+    @property
+    def AllocatedTime(self):
+        return self._AllocatedTime
+
+    @AllocatedTime.setter
+    def AllocatedTime(self, AllocatedTime):
+        self._AllocatedTime = AllocatedTime
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Credit(self):
+        return self._Credit
+
+    @Credit.setter
+    def Credit(self, Credit):
+        self._Credit = Credit
+
+    @property
+    def AllocatedCredit(self):
+        return self._AllocatedCredit
+
+    @AllocatedCredit.setter
+    def AllocatedCredit(self, AllocatedCredit):
+        self._AllocatedCredit = AllocatedCredit
 
 
     def _deserialize(self, params):
-        self.AllocatedTime = params.get("AllocatedTime")
-        self.Operator = params.get("Operator")
-        self.Credit = params.get("Credit")
-        self.AllocatedCredit = params.get("AllocatedCredit")
+        self._AllocatedTime = params.get("AllocatedTime")
+        self._Operator = params.get("Operator")
+        self._Credit = params.get("Credit")
+        self._AllocatedCredit = params.get("AllocatedCredit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -950,26 +1771,51 @@ class QueryCreditAllocationHistoryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClientUin: Customer UIN
+        :param _ClientUin: Customer UIN
         :type ClientUin: int
-        :param Page: Page number
+        :param _Page: Page number
         :type Page: int
-        :param PageSize: Number of data entries per page
+        :param _PageSize: Number of data entries per page
         :type PageSize: int
         """
-        self.ClientUin = None
-        self.Page = None
-        self.PageSize = None
+        self._ClientUin = None
+        self._Page = None
+        self._PageSize = None
+
+    @property
+    def ClientUin(self):
+        return self._ClientUin
+
+    @ClientUin.setter
+    def ClientUin(self, ClientUin):
+        self._ClientUin = ClientUin
+
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
 
 
     def _deserialize(self, params):
-        self.ClientUin = params.get("ClientUin")
-        self.Page = params.get("Page")
-        self.PageSize = params.get("PageSize")
+        self._ClientUin = params.get("ClientUin")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -982,29 +1828,53 @@ class QueryCreditAllocationHistoryResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Total: Total number of records
+        :param _Total: Total number of records
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Total: int
-        :param History: List of record details
+        :param _History: List of record details
 Note: This field may return null, indicating that no valid values can be obtained.
         :type History: list of QueryCreditAllocationHistoryData
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Total = None
-        self.History = None
-        self.RequestId = None
+        self._Total = None
+        self._History = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def History(self):
+        return self._History
+
+    @History.setter
+    def History(self, History):
+        self._History = History
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Total = params.get("Total")
+        self._Total = params.get("Total")
         if params.get("History") is not None:
-            self.History = []
+            self._History = []
             for item in params.get("History"):
                 obj = QueryCreditAllocationHistoryData()
                 obj._deserialize(item)
-                self.History.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._History.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class QueryCreditByUinListRequest(AbstractModel):
@@ -1014,18 +1884,27 @@ class QueryCreditByUinListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UinList: User list
+        :param _UinList: User list
         :type UinList: list of int non-negative
         """
-        self.UinList = None
+        self._UinList = None
+
+    @property
+    def UinList(self):
+        return self._UinList
+
+    @UinList.setter
+    def UinList(self, UinList):
+        self._UinList = UinList
 
 
     def _deserialize(self, params):
-        self.UinList = params.get("UinList")
+        self._UinList = params.get("UinList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1038,23 +1917,39 @@ class QueryCreditByUinListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: User information list
+        :param _Data: User information list
         :type Data: list of QueryDirectCustomersCreditData
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = []
+            self._Data = []
             for item in params.get("Data"):
                 obj = QueryDirectCustomersCreditData()
                 obj._deserialize(item)
-                self.Data.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class QueryCustomersCreditData(AbstractModel):
@@ -1064,66 +1959,171 @@ class QueryCustomersCreditData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: Name
+        :param _Name: Name
         :type Name: str
-        :param Type: Type
+        :param _Type: Type
         :type Type: str
-        :param Mobile: Mobile number
+        :param _Mobile: Mobile number
         :type Mobile: str
-        :param Email: Email
+        :param _Email: Email
         :type Email: str
-        :param Arrears: Overdue payment flag
+        :param _Arrears: Overdue payment flag
         :type Arrears: str
-        :param AssociationTime: Binding time
+        :param _AssociationTime: Binding time
         :type AssociationTime: str
-        :param RecentExpiry: Expiration time
+        :param _RecentExpiry: Expiration time
         :type RecentExpiry: str
-        :param ClientUin: Customer UIN
+        :param _ClientUin: Customer UIN
         :type ClientUin: int
-        :param Credit: Credit allocated to a customer
+        :param _Credit: Credit allocated to a customer
         :type Credit: float
-        :param RemainingCredit: The remaining credit of a customer
+        :param _RemainingCredit: The remaining credit of a customer
         :type RemainingCredit: float
-        :param IdentifyType: `0`: Identity not verified; `1`: Individual identity verified; `2`: Enterprise identity verified.
+        :param _IdentifyType: `0`: Identity not verified; `1`: Individual identity verified; `2`: Enterprise identity verified.
         :type IdentifyType: int
-        :param Remark: Customer remarks
+        :param _Remark: Customer remarks
         :type Remark: str
-        :param Force: Forced status
+        :param _Force: Forced status
         :type Force: int
         """
-        self.Name = None
-        self.Type = None
-        self.Mobile = None
-        self.Email = None
-        self.Arrears = None
-        self.AssociationTime = None
-        self.RecentExpiry = None
-        self.ClientUin = None
-        self.Credit = None
-        self.RemainingCredit = None
-        self.IdentifyType = None
-        self.Remark = None
-        self.Force = None
+        self._Name = None
+        self._Type = None
+        self._Mobile = None
+        self._Email = None
+        self._Arrears = None
+        self._AssociationTime = None
+        self._RecentExpiry = None
+        self._ClientUin = None
+        self._Credit = None
+        self._RemainingCredit = None
+        self._IdentifyType = None
+        self._Remark = None
+        self._Force = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Mobile(self):
+        return self._Mobile
+
+    @Mobile.setter
+    def Mobile(self, Mobile):
+        self._Mobile = Mobile
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def Arrears(self):
+        return self._Arrears
+
+    @Arrears.setter
+    def Arrears(self, Arrears):
+        self._Arrears = Arrears
+
+    @property
+    def AssociationTime(self):
+        return self._AssociationTime
+
+    @AssociationTime.setter
+    def AssociationTime(self, AssociationTime):
+        self._AssociationTime = AssociationTime
+
+    @property
+    def RecentExpiry(self):
+        return self._RecentExpiry
+
+    @RecentExpiry.setter
+    def RecentExpiry(self, RecentExpiry):
+        self._RecentExpiry = RecentExpiry
+
+    @property
+    def ClientUin(self):
+        return self._ClientUin
+
+    @ClientUin.setter
+    def ClientUin(self, ClientUin):
+        self._ClientUin = ClientUin
+
+    @property
+    def Credit(self):
+        return self._Credit
+
+    @Credit.setter
+    def Credit(self, Credit):
+        self._Credit = Credit
+
+    @property
+    def RemainingCredit(self):
+        return self._RemainingCredit
+
+    @RemainingCredit.setter
+    def RemainingCredit(self, RemainingCredit):
+        self._RemainingCredit = RemainingCredit
+
+    @property
+    def IdentifyType(self):
+        return self._IdentifyType
+
+    @IdentifyType.setter
+    def IdentifyType(self, IdentifyType):
+        self._IdentifyType = IdentifyType
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Force(self):
+        return self._Force
+
+    @Force.setter
+    def Force(self, Force):
+        self._Force = Force
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Type = params.get("Type")
-        self.Mobile = params.get("Mobile")
-        self.Email = params.get("Email")
-        self.Arrears = params.get("Arrears")
-        self.AssociationTime = params.get("AssociationTime")
-        self.RecentExpiry = params.get("RecentExpiry")
-        self.ClientUin = params.get("ClientUin")
-        self.Credit = params.get("Credit")
-        self.RemainingCredit = params.get("RemainingCredit")
-        self.IdentifyType = params.get("IdentifyType")
-        self.Remark = params.get("Remark")
-        self.Force = params.get("Force")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._Mobile = params.get("Mobile")
+        self._Email = params.get("Email")
+        self._Arrears = params.get("Arrears")
+        self._AssociationTime = params.get("AssociationTime")
+        self._RecentExpiry = params.get("RecentExpiry")
+        self._ClientUin = params.get("ClientUin")
+        self._Credit = params.get("Credit")
+        self._RemainingCredit = params.get("RemainingCredit")
+        self._IdentifyType = params.get("IdentifyType")
+        self._Remark = params.get("Remark")
+        self._Force = params.get("Force")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1136,34 +2136,75 @@ class QueryCustomersCreditRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FilterType: Search condition type. You can only search by customer ID, name, remarks, or email.
+        :param _FilterType: Search condition type. You can only search by customer ID, name, remarks, or email.
         :type FilterType: str
-        :param Filter: Search condition
+        :param _Filter: Search condition
         :type Filter: str
-        :param Page: A pagination parameter that specifies the current page number, with a value starting from 1.
+        :param _Page: A pagination parameter that specifies the current page number, with a value starting from 1.
         :type Page: int
-        :param PageSize: A pagination parameter that specifies the number of entries per page.
+        :param _PageSize: A pagination parameter that specifies the number of entries per page.
         :type PageSize: int
-        :param Order: A sort parameter that specifies the sort order. Valid values: `desc` (descending order), or `asc` (ascending order) based on `AssociationTime`. The value will be `desc` if left empty.
+        :param _Order: A sort parameter that specifies the sort order. Valid values: `desc` (descending order), or `asc` (ascending order) based on `AssociationTime`. The value will be `desc` if left empty.
         :type Order: str
         """
-        self.FilterType = None
-        self.Filter = None
-        self.Page = None
-        self.PageSize = None
-        self.Order = None
+        self._FilterType = None
+        self._Filter = None
+        self._Page = None
+        self._PageSize = None
+        self._Order = None
+
+    @property
+    def FilterType(self):
+        return self._FilterType
+
+    @FilterType.setter
+    def FilterType(self, FilterType):
+        self._FilterType = FilterType
+
+    @property
+    def Filter(self):
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
 
 
     def _deserialize(self, params):
-        self.FilterType = params.get("FilterType")
-        self.Filter = params.get("Filter")
-        self.Page = params.get("Page")
-        self.PageSize = params.get("PageSize")
-        self.Order = params.get("Order")
+        self._FilterType = params.get("FilterType")
+        self._Filter = params.get("Filter")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._Order = params.get("Order")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1176,28 +2217,52 @@ class QueryCustomersCreditResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: The list of queried customers
+        :param _Data: The list of queried customers
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Data: list of QueryCustomersCreditData
-        :param Total: Number of customers
+        :param _Total: Number of customers
         :type Total: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Data = None
-        self.Total = None
-        self.RequestId = None
+        self._Data = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = []
+            self._Data = []
             for item in params.get("Data"):
                 obj = QueryCustomersCreditData()
                 obj._deserialize(item)
-                self.Data.append(obj)
-        self.Total = params.get("Total")
-        self.RequestId = params.get("RequestId")
+                self._Data.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
 
 
 class QueryDirectCustomersCreditData(AbstractModel):
@@ -1207,26 +2272,51 @@ class QueryDirectCustomersCreditData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Uin: User UIN
+        :param _Uin: User UIN
         :type Uin: int
-        :param TotalCredit: Total credit
+        :param _TotalCredit: Total credit
         :type TotalCredit: float
-        :param RemainingCredit: Remaining credit
+        :param _RemainingCredit: Remaining credit
         :type RemainingCredit: float
         """
-        self.Uin = None
-        self.TotalCredit = None
-        self.RemainingCredit = None
+        self._Uin = None
+        self._TotalCredit = None
+        self._RemainingCredit = None
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def TotalCredit(self):
+        return self._TotalCredit
+
+    @TotalCredit.setter
+    def TotalCredit(self, TotalCredit):
+        self._TotalCredit = TotalCredit
+
+    @property
+    def RemainingCredit(self):
+        return self._RemainingCredit
+
+    @RemainingCredit.setter
+    def RemainingCredit(self, RemainingCredit):
+        self._RemainingCredit = RemainingCredit
 
 
     def _deserialize(self, params):
-        self.Uin = params.get("Uin")
-        self.TotalCredit = params.get("TotalCredit")
-        self.RemainingCredit = params.get("RemainingCredit")
+        self._Uin = params.get("Uin")
+        self._TotalCredit = params.get("TotalCredit")
+        self._RemainingCredit = params.get("RemainingCredit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1245,23 +2335,39 @@ class QueryDirectCustomersCreditResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: Direct customer information list
+        :param _Data: Direct customer information list
         :type Data: list of QueryDirectCustomersCreditData
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = []
+            self._Data = []
             for item in params.get("Data"):
                 obj = QueryDirectCustomersCreditData()
                 obj._deserialize(item)
-                self.Data.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class QueryPartnerCreditRequest(AbstractModel):
@@ -1277,26 +2383,58 @@ class QueryPartnerCreditResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AllocatedCredit: Allocated credit
+        :param _AllocatedCredit: Allocated credit
         :type AllocatedCredit: float
-        :param TotalCredit: Total credit
+        :param _TotalCredit: Total credit
         :type TotalCredit: float
-        :param RemainingCredit: Remaining credit
+        :param _RemainingCredit: Remaining credit
         :type RemainingCredit: float
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.AllocatedCredit = None
-        self.TotalCredit = None
-        self.RemainingCredit = None
-        self.RequestId = None
+        self._AllocatedCredit = None
+        self._TotalCredit = None
+        self._RemainingCredit = None
+        self._RequestId = None
+
+    @property
+    def AllocatedCredit(self):
+        return self._AllocatedCredit
+
+    @AllocatedCredit.setter
+    def AllocatedCredit(self, AllocatedCredit):
+        self._AllocatedCredit = AllocatedCredit
+
+    @property
+    def TotalCredit(self):
+        return self._TotalCredit
+
+    @TotalCredit.setter
+    def TotalCredit(self, TotalCredit):
+        self._TotalCredit = TotalCredit
+
+    @property
+    def RemainingCredit(self):
+        return self._RemainingCredit
+
+    @RemainingCredit.setter
+    def RemainingCredit(self, RemainingCredit):
+        self._RemainingCredit = RemainingCredit
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.AllocatedCredit = params.get("AllocatedCredit")
-        self.TotalCredit = params.get("TotalCredit")
-        self.RemainingCredit = params.get("RemainingCredit")
-        self.RequestId = params.get("RequestId")
+        self._AllocatedCredit = params.get("AllocatedCredit")
+        self._TotalCredit = params.get("TotalCredit")
+        self._RemainingCredit = params.get("RemainingCredit")
+        self._RequestId = params.get("RequestId")
 
 
 class QueryVoucherAmountByUinItem(AbstractModel):
@@ -1306,26 +2444,51 @@ class QueryVoucherAmountByUinItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClientUin: Customer UIN
+        :param _ClientUin: Customer UIN
         :type ClientUin: int
-        :param TotalAmount: Voucher quota
+        :param _TotalAmount: Voucher quota
         :type TotalAmount: float
-        :param RemainAmount: Voucher amount
+        :param _RemainAmount: Voucher amount
         :type RemainAmount: float
         """
-        self.ClientUin = None
-        self.TotalAmount = None
-        self.RemainAmount = None
+        self._ClientUin = None
+        self._TotalAmount = None
+        self._RemainAmount = None
+
+    @property
+    def ClientUin(self):
+        return self._ClientUin
+
+    @ClientUin.setter
+    def ClientUin(self, ClientUin):
+        self._ClientUin = ClientUin
+
+    @property
+    def TotalAmount(self):
+        return self._TotalAmount
+
+    @TotalAmount.setter
+    def TotalAmount(self, TotalAmount):
+        self._TotalAmount = TotalAmount
+
+    @property
+    def RemainAmount(self):
+        return self._RemainAmount
+
+    @RemainAmount.setter
+    def RemainAmount(self, RemainAmount):
+        self._RemainAmount = RemainAmount
 
 
     def _deserialize(self, params):
-        self.ClientUin = params.get("ClientUin")
-        self.TotalAmount = params.get("TotalAmount")
-        self.RemainAmount = params.get("RemainAmount")
+        self._ClientUin = params.get("ClientUin")
+        self._TotalAmount = params.get("TotalAmount")
+        self._RemainAmount = params.get("RemainAmount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1338,18 +2501,27 @@ class QueryVoucherAmountByUinRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClientUins: Customer UIN list
+        :param _ClientUins: Customer UIN list
         :type ClientUins: list of int non-negative
         """
-        self.ClientUins = None
+        self._ClientUins = None
+
+    @property
+    def ClientUins(self):
+        return self._ClientUins
+
+    @ClientUins.setter
+    def ClientUins(self, ClientUins):
+        self._ClientUins = ClientUins
 
 
     def _deserialize(self, params):
-        self.ClientUins = params.get("ClientUins")
+        self._ClientUins = params.get("ClientUins")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1362,23 +2534,39 @@ class QueryVoucherAmountByUinResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: Customer voucher quota information
+        :param _Data: Customer voucher quota information
         :type Data: list of QueryVoucherAmountByUinItem
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = []
+            self._Data = []
             for item in params.get("Data"):
                 obj = QueryVoucherAmountByUinItem()
                 obj._deserialize(item)
-                self.Data.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class QueryVoucherListByUinItem(AbstractModel):
@@ -1388,31 +2576,56 @@ class QueryVoucherListByUinItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClientUin: Customer UIN
+        :param _ClientUin: Customer UIN
         :type ClientUin: int
-        :param TotalCount: The total number of vouchers
+        :param _TotalCount: The total number of vouchers
         :type TotalCount: int
-        :param Data: Voucher details
+        :param _Data: Voucher details
         :type Data: list of QueryVoucherListByUinVoucherItem
         """
-        self.ClientUin = None
-        self.TotalCount = None
-        self.Data = None
+        self._ClientUin = None
+        self._TotalCount = None
+        self._Data = None
+
+    @property
+    def ClientUin(self):
+        return self._ClientUin
+
+    @ClientUin.setter
+    def ClientUin(self, ClientUin):
+        self._ClientUin = ClientUin
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
 
 
     def _deserialize(self, params):
-        self.ClientUin = params.get("ClientUin")
-        self.TotalCount = params.get("TotalCount")
+        self._ClientUin = params.get("ClientUin")
+        self._TotalCount = params.get("TotalCount")
         if params.get("Data") is not None:
-            self.Data = []
+            self._Data = []
             for item in params.get("Data"):
                 obj = QueryVoucherListByUinVoucherItem()
                 obj._deserialize(item)
-                self.Data.append(obj)
+                self._Data.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1425,22 +2638,39 @@ class QueryVoucherListByUinRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClientUins: Customer UIN list
+        :param _ClientUins: Customer UIN list
         :type ClientUins: list of int non-negative
-        :param Status: Voucher status. If this parameter is not passed in, all status will be queried by default. Valid values: `Unused`, `Used`, `Expired`.
+        :param _Status: Voucher status. If this parameter is not passed in, all status will be queried by default. Valid values: `Unused`, `Used`, `Expired`.
         :type Status: str
         """
-        self.ClientUins = None
-        self.Status = None
+        self._ClientUins = None
+        self._Status = None
+
+    @property
+    def ClientUins(self):
+        return self._ClientUins
+
+    @ClientUins.setter
+    def ClientUins(self, ClientUins):
+        self._ClientUins = ClientUins
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
 
     def _deserialize(self, params):
-        self.ClientUins = params.get("ClientUins")
-        self.Status = params.get("Status")
+        self._ClientUins = params.get("ClientUins")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1453,23 +2683,39 @@ class QueryVoucherListByUinResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: Customer voucher information
+        :param _Data: Customer voucher information
         :type Data: list of QueryVoucherListByUinItem
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Data = None
-        self.RequestId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
-            self.Data = []
+            self._Data = []
             for item in params.get("Data"):
                 obj = QueryVoucherListByUinItem()
                 obj._deserialize(item)
-                self.Data.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class QueryVoucherListByUinVoucherItem(AbstractModel):
@@ -1479,30 +2725,63 @@ class QueryVoucherListByUinVoucherItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VoucherId: Voucher ID
+        :param _VoucherId: Voucher ID
         :type VoucherId: str
-        :param VoucherStatus: Voucher status
+        :param _VoucherStatus: Voucher status
         :type VoucherStatus: str
-        :param TotalAmount: Voucher value
+        :param _TotalAmount: Voucher value
         :type TotalAmount: float
-        :param RemainAmount: Balance
+        :param _RemainAmount: Balance
         :type RemainAmount: float
         """
-        self.VoucherId = None
-        self.VoucherStatus = None
-        self.TotalAmount = None
-        self.RemainAmount = None
+        self._VoucherId = None
+        self._VoucherStatus = None
+        self._TotalAmount = None
+        self._RemainAmount = None
+
+    @property
+    def VoucherId(self):
+        return self._VoucherId
+
+    @VoucherId.setter
+    def VoucherId(self, VoucherId):
+        self._VoucherId = VoucherId
+
+    @property
+    def VoucherStatus(self):
+        return self._VoucherStatus
+
+    @VoucherStatus.setter
+    def VoucherStatus(self, VoucherStatus):
+        self._VoucherStatus = VoucherStatus
+
+    @property
+    def TotalAmount(self):
+        return self._TotalAmount
+
+    @TotalAmount.setter
+    def TotalAmount(self, TotalAmount):
+        self._TotalAmount = TotalAmount
+
+    @property
+    def RemainAmount(self):
+        return self._RemainAmount
+
+    @RemainAmount.setter
+    def RemainAmount(self, RemainAmount):
+        self._RemainAmount = RemainAmount
 
 
     def _deserialize(self, params):
-        self.VoucherId = params.get("VoucherId")
-        self.VoucherStatus = params.get("VoucherStatus")
-        self.TotalAmount = params.get("TotalAmount")
-        self.RemainAmount = params.get("RemainAmount")
+        self._VoucherId = params.get("VoucherId")
+        self._VoucherStatus = params.get("VoucherStatus")
+        self._TotalAmount = params.get("TotalAmount")
+        self._RemainAmount = params.get("RemainAmount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1521,34 +2800,82 @@ class QueryVoucherPoolResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AgentName: Reseller name
+        :param _AgentName: Reseller name
         :type AgentName: str
-        :param AccountType: Reseller role type (1: Reseller; 2: Distributor; 3: Second-level reseller)
+        :param _AccountType: Reseller role type (1: Reseller; 2: Distributor; 3: Second-level reseller)
         :type AccountType: int
-        :param TotalQuota: Total quota
+        :param _TotalQuota: Total quota
         :type TotalQuota: float
-        :param RemainingQuota: Remaining quota
+        :param _RemainingQuota: Remaining quota
         :type RemainingQuota: float
-        :param IssuedNum: The number of issued vouchers
+        :param _IssuedNum: The number of issued vouchers
         :type IssuedNum: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.AgentName = None
-        self.AccountType = None
-        self.TotalQuota = None
-        self.RemainingQuota = None
-        self.IssuedNum = None
-        self.RequestId = None
+        self._AgentName = None
+        self._AccountType = None
+        self._TotalQuota = None
+        self._RemainingQuota = None
+        self._IssuedNum = None
+        self._RequestId = None
+
+    @property
+    def AgentName(self):
+        return self._AgentName
+
+    @AgentName.setter
+    def AgentName(self, AgentName):
+        self._AgentName = AgentName
+
+    @property
+    def AccountType(self):
+        return self._AccountType
+
+    @AccountType.setter
+    def AccountType(self, AccountType):
+        self._AccountType = AccountType
+
+    @property
+    def TotalQuota(self):
+        return self._TotalQuota
+
+    @TotalQuota.setter
+    def TotalQuota(self, TotalQuota):
+        self._TotalQuota = TotalQuota
+
+    @property
+    def RemainingQuota(self):
+        return self._RemainingQuota
+
+    @RemainingQuota.setter
+    def RemainingQuota(self, RemainingQuota):
+        self._RemainingQuota = RemainingQuota
+
+    @property
+    def IssuedNum(self):
+        return self._IssuedNum
+
+    @IssuedNum.setter
+    def IssuedNum(self, IssuedNum):
+        self._IssuedNum = IssuedNum
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.AgentName = params.get("AgentName")
-        self.AccountType = params.get("AccountType")
-        self.TotalQuota = params.get("TotalQuota")
-        self.RemainingQuota = params.get("RemainingQuota")
-        self.IssuedNum = params.get("IssuedNum")
-        self.RequestId = params.get("RequestId")
+        self._AgentName = params.get("AgentName")
+        self._AccountType = params.get("AccountType")
+        self._TotalQuota = params.get("TotalQuota")
+        self._RemainingQuota = params.get("RemainingQuota")
+        self._IssuedNum = params.get("IssuedNum")
+        self._RequestId = params.get("RequestId")
 
 
 class RegionSummaryOverviewItem(AbstractModel):
@@ -1558,39 +2885,80 @@ class RegionSummaryOverviewItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RegionId: Region ID
+        :param _RegionId: Region ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :type RegionId: str
-        :param RegionName: Region name
+        :param _RegionName: Region name
 Note: This field may return null, indicating that no valid values can be obtained.
         :type RegionName: str
-        :param OriginalCost: The actual total consumption amount accurate down to eight decimal places
+        :param _OriginalCost: The actual total consumption amount accurate down to eight decimal places
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OriginalCost: str
-        :param VoucherPayAmount: The deducted voucher amount accurate down to eight decimal places
+        :param _VoucherPayAmount: The deducted voucher amount accurate down to eight decimal places
 Note: This field may return null, indicating that no valid values can be obtained.
         :type VoucherPayAmount: str
-        :param TotalCost: Total consumption amount accurate down to eight decimal places
+        :param _TotalCost: Total consumption amount accurate down to eight decimal places
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TotalCost: str
         """
-        self.RegionId = None
-        self.RegionName = None
-        self.OriginalCost = None
-        self.VoucherPayAmount = None
-        self.TotalCost = None
+        self._RegionId = None
+        self._RegionName = None
+        self._OriginalCost = None
+        self._VoucherPayAmount = None
+        self._TotalCost = None
+
+    @property
+    def RegionId(self):
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def RegionName(self):
+        return self._RegionName
+
+    @RegionName.setter
+    def RegionName(self, RegionName):
+        self._RegionName = RegionName
+
+    @property
+    def OriginalCost(self):
+        return self._OriginalCost
+
+    @OriginalCost.setter
+    def OriginalCost(self, OriginalCost):
+        self._OriginalCost = OriginalCost
+
+    @property
+    def VoucherPayAmount(self):
+        return self._VoucherPayAmount
+
+    @VoucherPayAmount.setter
+    def VoucherPayAmount(self, VoucherPayAmount):
+        self._VoucherPayAmount = VoucherPayAmount
+
+    @property
+    def TotalCost(self):
+        return self._TotalCost
+
+    @TotalCost.setter
+    def TotalCost(self, TotalCost):
+        self._TotalCost = TotalCost
 
 
     def _deserialize(self, params):
-        self.RegionId = params.get("RegionId")
-        self.RegionName = params.get("RegionName")
-        self.OriginalCost = params.get("OriginalCost")
-        self.VoucherPayAmount = params.get("VoucherPayAmount")
-        self.TotalCost = params.get("TotalCost")
+        self._RegionId = params.get("RegionId")
+        self._RegionName = params.get("RegionName")
+        self._OriginalCost = params.get("OriginalCost")
+        self._VoucherPayAmount = params.get("VoucherPayAmount")
+        self._TotalCost = params.get("TotalCost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

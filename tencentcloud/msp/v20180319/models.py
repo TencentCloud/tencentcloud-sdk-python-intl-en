@@ -25,18 +25,27 @@ class DeregisterMigrationTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: Task ID
+        :param _TaskId: Task ID
         :type TaskId: str
         """
-        self.TaskId = None
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
+        self._TaskId = params.get("TaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -49,14 +58,22 @@ class DeregisterMigrationTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeMigrationTaskRequest(AbstractModel):
@@ -66,18 +83,27 @@ class DescribeMigrationTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: Task ID, such as msp-jitoh33n
+        :param _TaskId: Task ID, such as msp-jitoh33n
         :type TaskId: str
         """
-        self.TaskId = None
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
+        self._TaskId = params.get("TaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -90,23 +116,39 @@ class DescribeMigrationTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskStatus: Migration details list
+        :param _TaskStatus: Migration details list
         :type TaskStatus: list of TaskStatus
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TaskStatus = None
-        self.RequestId = None
+        self._TaskStatus = None
+        self._RequestId = None
+
+    @property
+    def TaskStatus(self):
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("TaskStatus") is not None:
-            self.TaskStatus = []
+            self._TaskStatus = []
             for item in params.get("TaskStatus"):
                 obj = TaskStatus()
                 obj._deserialize(item)
-                self.TaskStatus.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._TaskStatus.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DstInfo(AbstractModel):
@@ -116,30 +158,63 @@ class DstInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Region: Migration destination region
+        :param _Region: Migration destination region
         :type Region: str
-        :param Ip: 
+        :param _Ip: 
         :type Ip: str
-        :param Port: Migration destination port
+        :param _Port: Migration destination port
         :type Port: str
-        :param InstanceId: Migration destination instance ID
+        :param _InstanceId: Migration destination instance ID
         :type InstanceId: str
         """
-        self.Region = None
-        self.Ip = None
-        self.Port = None
-        self.InstanceId = None
+        self._Region = None
+        self._Ip = None
+        self._Port = None
+        self._InstanceId = None
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Ip(self):
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
 
     def _deserialize(self, params):
-        self.Region = params.get("Region")
-        self.Ip = params.get("Ip")
-        self.Port = params.get("Port")
-        self.InstanceId = params.get("InstanceId")
+        self._Region = params.get("Region")
+        self._Ip = params.get("Ip")
+        self._Port = params.get("Port")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -152,22 +227,39 @@ class ListMigrationProjectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: The initial number of records, default value: 0
+        :param _Offset: The initial number of records, default value: 0
         :type Offset: int
-        :param Limit: The number of records returned, default value: 500
+        :param _Limit: The number of records returned, default value: 500
         :type Limit: int
         """
-        self.Offset = None
-        self.Limit = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -180,27 +272,51 @@ class ListMigrationProjectResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Projects: Project list
+        :param _Projects: Project list
         :type Projects: list of Project
-        :param TotalCount: Total number of projects
+        :param _TotalCount: Total number of projects
         :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Projects = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._Projects = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Projects(self):
+        return self._Projects
+
+    @Projects.setter
+    def Projects(self, Projects):
+        self._Projects = Projects
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Projects") is not None:
-            self.Projects = []
+            self._Projects = []
             for item in params.get("Projects"):
                 obj = Project()
                 obj._deserialize(item)
-                self.Projects.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+                self._Projects.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class ListMigrationTaskRequest(AbstractModel):
@@ -210,26 +326,51 @@ class ListMigrationTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: The initial number of records, default value: 0
+        :param _Offset: The initial number of records, default value: 0
         :type Offset: int
-        :param Limit: Number of records, default value: 10
+        :param _Limit: Number of records, default value: 10
         :type Limit: int
-        :param ProjectId: Project ID, the default value is empty.
+        :param _ProjectId: Project ID, the default value is empty.
         :type ProjectId: int
         """
-        self.Offset = None
-        self.Limit = None
-        self.ProjectId = None
+        self._Offset = None
+        self._Limit = None
+        self._ProjectId = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
 
 
     def _deserialize(self, params):
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.ProjectId = params.get("ProjectId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._ProjectId = params.get("ProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -242,27 +383,51 @@ class ListMigrationTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Total number of records
+        :param _TotalCount: Total number of records
         :type TotalCount: int
-        :param Tasks: Migration task list
+        :param _Tasks: Migration task list
         :type Tasks: list of Task
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.Tasks = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._Tasks = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Tasks(self):
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("Tasks") is not None:
-            self.Tasks = []
+            self._Tasks = []
             for item in params.get("Tasks"):
                 obj = Task()
                 obj._deserialize(item)
-                self.Tasks.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Tasks.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyMigrationTaskBelongToProjectRequest(AbstractModel):
@@ -272,22 +437,39 @@ class ModifyMigrationTaskBelongToProjectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: Task ID, such as msp-jitoh33n
+        :param _TaskId: Task ID, such as msp-jitoh33n
         :type TaskId: str
-        :param ProjectId: Project ID, such as 10005
+        :param _ProjectId: Project ID, such as 10005
         :type ProjectId: int
         """
-        self.TaskId = None
-        self.ProjectId = None
+        self._TaskId = None
+        self._ProjectId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.ProjectId = params.get("ProjectId")
+        self._TaskId = params.get("TaskId")
+        self._ProjectId = params.get("ProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -300,14 +482,22 @@ class ModifyMigrationTaskBelongToProjectResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyMigrationTaskStatusRequest(AbstractModel):
@@ -317,22 +507,39 @@ class ModifyMigrationTaskStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: Task status, valid values include `unstart` (migration has not started), `migrating` (migration in progress), `finish` (migration completed) or `fail` (migration failed).
+        :param _Status: Task status, valid values include `unstart` (migration has not started), `migrating` (migration in progress), `finish` (migration completed) or `fail` (migration failed).
         :type Status: str
-        :param TaskId: Task ID, such as msp-jitoh33n
+        :param _TaskId: Task ID, such as msp-jitoh33n
         :type TaskId: str
         """
-        self.Status = None
-        self.TaskId = None
+        self._Status = None
+        self._TaskId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
 
     def _deserialize(self, params):
-        self.Status = params.get("Status")
-        self.TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        self._TaskId = params.get("TaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -345,14 +552,22 @@ class ModifyMigrationTaskStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class Project(AbstractModel):
@@ -362,22 +577,39 @@ class Project(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProjectId: Project ID
+        :param _ProjectId: Project ID
         :type ProjectId: int
-        :param ProjectName: Project name
+        :param _ProjectName: Project name
         :type ProjectName: str
         """
-        self.ProjectId = None
-        self.ProjectName = None
+        self._ProjectId = None
+        self._ProjectName = None
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProjectName(self):
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
 
 
     def _deserialize(self, params):
-        self.ProjectId = params.get("ProjectId")
-        self.ProjectName = params.get("ProjectName")
+        self._ProjectId = params.get("ProjectId")
+        self._ProjectName = params.get("ProjectName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -390,66 +622,163 @@ class RegisterMigrationTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskType: Task type, valid values include `database` (database migration), `file` (file migration) or `host` (host migration).
+        :param _TaskType: Task type, valid values include `database` (database migration), `file` (file migration) or `host` (host migration).
         :type TaskType: str
-        :param TaskName: Task name
+        :param _TaskName: Task name
         :type TaskName: str
-        :param ServiceSupplier: Service supplier name
+        :param _ServiceSupplier: Service supplier name
         :type ServiceSupplier: str
-        :param CreateTime: Migration task creation time
+        :param _CreateTime: Migration task creation time
         :type CreateTime: str
-        :param UpdateTime: Migration task update time
+        :param _UpdateTime: Migration task update time
         :type UpdateTime: str
-        :param MigrateClass: Migration type, for example `mysql:mysql` in database migration means migration from mysql to mysql and `oss:cos` in file migration means migration from Alibaba Cloud OSS to Tencent COS.
+        :param _MigrateClass: Migration type, for example `mysql:mysql` in database migration means migration from mysql to mysql and `oss:cos` in file migration means migration from Alibaba Cloud OSS to Tencent COS.
         :type MigrateClass: str
-        :param SrcInfo: Migration task source information
+        :param _SrcInfo: Migration task source information
         :type SrcInfo: :class:`tencentcloud.msp.v20180319.models.SrcInfo`
-        :param DstInfo: Migration task destination information
+        :param _DstInfo: Migration task destination information
         :type DstInfo: :class:`tencentcloud.msp.v20180319.models.DstInfo`
-        :param SrcAccessType: Source instance access type. Valid values for database migration include `extranet` (public network), `cvm` (CVM-created instance), `dcg` (Direct Connect-enabled instance), `vpncloud` (Tencent Cloud VPN-enabled instance), `vpnselfbuild` (self-built VPN-enabled instance), `cdb` (TencentDB instance)
+        :param _SrcAccessType: Source instance access type. Valid values for database migration include `extranet` (public network), `cvm` (CVM-created instance), `dcg` (Direct Connect-enabled instance), `vpncloud` (Tencent Cloud VPN-enabled instance), `vpnselfbuild` (self-built VPN-enabled instance), `cdb` (TencentDB instance)
         :type SrcAccessType: str
-        :param SrcDatabaseType: Database type of the source instance. Valid values for database migration: `mysql`, `redis`, `percona`, `mongodb`, `postgresql`, `sqlserver`, `mariadb`
+        :param _SrcDatabaseType: Database type of the source instance. Valid values for database migration: `mysql`, `redis`, `percona`, `mongodb`, `postgresql`, `sqlserver`, `mariadb`
         :type SrcDatabaseType: str
-        :param DstAccessType: Target instance access type. Valid values for database migration include `extranet` (public network), `cvm` (CVM-created instance), `dcg` (Direct Connect-enabled instance), `vpncloud` (Tencent Cloud VPN-enabled instance), `vpnselfbuild` (self-built VPN-enabled instance), `cdb` (TencentDB instance)
+        :param _DstAccessType: Target instance access type. Valid values for database migration include `extranet` (public network), `cvm` (CVM-created instance), `dcg` (Direct Connect-enabled instance), `vpncloud` (Tencent Cloud VPN-enabled instance), `vpnselfbuild` (self-built VPN-enabled instance), `cdb` (TencentDB instance)
         :type DstAccessType: str
-        :param DstDatabaseType: Database type of the target instance. Valid values for database migration: `mysql`, `redis`, `percona`, `mongodb`, `postgresql`, `sqlserver`, `mariadb`
+        :param _DstDatabaseType: Database type of the target instance. Valid values for database migration: `mysql`, `redis`, `percona`, `mongodb`, `postgresql`, `sqlserver`, `mariadb`
         :type DstDatabaseType: str
         """
-        self.TaskType = None
-        self.TaskName = None
-        self.ServiceSupplier = None
-        self.CreateTime = None
-        self.UpdateTime = None
-        self.MigrateClass = None
-        self.SrcInfo = None
-        self.DstInfo = None
-        self.SrcAccessType = None
-        self.SrcDatabaseType = None
-        self.DstAccessType = None
-        self.DstDatabaseType = None
+        self._TaskType = None
+        self._TaskName = None
+        self._ServiceSupplier = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._MigrateClass = None
+        self._SrcInfo = None
+        self._DstInfo = None
+        self._SrcAccessType = None
+        self._SrcDatabaseType = None
+        self._DstAccessType = None
+        self._DstDatabaseType = None
+
+    @property
+    def TaskType(self):
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def TaskName(self):
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def ServiceSupplier(self):
+        return self._ServiceSupplier
+
+    @ServiceSupplier.setter
+    def ServiceSupplier(self, ServiceSupplier):
+        self._ServiceSupplier = ServiceSupplier
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def MigrateClass(self):
+        return self._MigrateClass
+
+    @MigrateClass.setter
+    def MigrateClass(self, MigrateClass):
+        self._MigrateClass = MigrateClass
+
+    @property
+    def SrcInfo(self):
+        return self._SrcInfo
+
+    @SrcInfo.setter
+    def SrcInfo(self, SrcInfo):
+        self._SrcInfo = SrcInfo
+
+    @property
+    def DstInfo(self):
+        return self._DstInfo
+
+    @DstInfo.setter
+    def DstInfo(self, DstInfo):
+        self._DstInfo = DstInfo
+
+    @property
+    def SrcAccessType(self):
+        return self._SrcAccessType
+
+    @SrcAccessType.setter
+    def SrcAccessType(self, SrcAccessType):
+        self._SrcAccessType = SrcAccessType
+
+    @property
+    def SrcDatabaseType(self):
+        return self._SrcDatabaseType
+
+    @SrcDatabaseType.setter
+    def SrcDatabaseType(self, SrcDatabaseType):
+        self._SrcDatabaseType = SrcDatabaseType
+
+    @property
+    def DstAccessType(self):
+        return self._DstAccessType
+
+    @DstAccessType.setter
+    def DstAccessType(self, DstAccessType):
+        self._DstAccessType = DstAccessType
+
+    @property
+    def DstDatabaseType(self):
+        return self._DstDatabaseType
+
+    @DstDatabaseType.setter
+    def DstDatabaseType(self, DstDatabaseType):
+        self._DstDatabaseType = DstDatabaseType
 
 
     def _deserialize(self, params):
-        self.TaskType = params.get("TaskType")
-        self.TaskName = params.get("TaskName")
-        self.ServiceSupplier = params.get("ServiceSupplier")
-        self.CreateTime = params.get("CreateTime")
-        self.UpdateTime = params.get("UpdateTime")
-        self.MigrateClass = params.get("MigrateClass")
+        self._TaskType = params.get("TaskType")
+        self._TaskName = params.get("TaskName")
+        self._ServiceSupplier = params.get("ServiceSupplier")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._MigrateClass = params.get("MigrateClass")
         if params.get("SrcInfo") is not None:
-            self.SrcInfo = SrcInfo()
-            self.SrcInfo._deserialize(params.get("SrcInfo"))
+            self._SrcInfo = SrcInfo()
+            self._SrcInfo._deserialize(params.get("SrcInfo"))
         if params.get("DstInfo") is not None:
-            self.DstInfo = DstInfo()
-            self.DstInfo._deserialize(params.get("DstInfo"))
-        self.SrcAccessType = params.get("SrcAccessType")
-        self.SrcDatabaseType = params.get("SrcDatabaseType")
-        self.DstAccessType = params.get("DstAccessType")
-        self.DstDatabaseType = params.get("DstDatabaseType")
+            self._DstInfo = DstInfo()
+            self._DstInfo._deserialize(params.get("DstInfo"))
+        self._SrcAccessType = params.get("SrcAccessType")
+        self._SrcDatabaseType = params.get("SrcDatabaseType")
+        self._DstAccessType = params.get("DstAccessType")
+        self._DstDatabaseType = params.get("DstDatabaseType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -462,18 +791,34 @@ class RegisterMigrationTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: Task ID
+        :param _TaskId: Task ID
         :type TaskId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TaskId = None
-        self.RequestId = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class SrcInfo(AbstractModel):
@@ -483,30 +828,63 @@ class SrcInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Region: Migration source region
+        :param _Region: Migration source region
         :type Region: str
-        :param Ip: 
+        :param _Ip: 
         :type Ip: str
-        :param Port: Migration source port
+        :param _Port: Migration source port
         :type Port: str
-        :param InstanceId: Migration source instance ID
+        :param _InstanceId: Migration source instance ID
         :type InstanceId: str
         """
-        self.Region = None
-        self.Ip = None
-        self.Port = None
-        self.InstanceId = None
+        self._Region = None
+        self._Ip = None
+        self._Port = None
+        self._InstanceId = None
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Ip(self):
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
 
     def _deserialize(self, params):
-        self.Region = params.get("Region")
-        self.Ip = params.get("Ip")
-        self.Port = params.get("Port")
-        self.InstanceId = params.get("InstanceId")
+        self._Region = params.get("Region")
+        self._Ip = params.get("Ip")
+        self._Port = params.get("Port")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -519,60 +897,141 @@ class Task(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: Task ID
+        :param _TaskId: Task ID
         :type TaskId: str
-        :param TaskName: Task name
+        :param _TaskName: Task name
         :type TaskName: str
-        :param MigrationType: Migration type
+        :param _MigrationType: Migration type
         :type MigrationType: str
-        :param Status: Migration status
+        :param _Status: Migration status
         :type Status: str
-        :param ProjectId: Project ID
+        :param _ProjectId: Project ID
         :type ProjectId: int
-        :param ProjectName: Project name
+        :param _ProjectName: Project name
         :type ProjectName: str
-        :param SrcInfo: Migration source information
+        :param _SrcInfo: Migration source information
         :type SrcInfo: :class:`tencentcloud.msp.v20180319.models.SrcInfo`
-        :param MigrationTimeLine: Migration time information
+        :param _MigrationTimeLine: Migration time information
         :type MigrationTimeLine: :class:`tencentcloud.msp.v20180319.models.TimeObj`
-        :param Updated: Status update time
+        :param _Updated: Status update time
         :type Updated: str
-        :param DstInfo: Migration destination information
+        :param _DstInfo: Migration destination information
         :type DstInfo: :class:`tencentcloud.msp.v20180319.models.DstInfo`
         """
-        self.TaskId = None
-        self.TaskName = None
-        self.MigrationType = None
-        self.Status = None
-        self.ProjectId = None
-        self.ProjectName = None
-        self.SrcInfo = None
-        self.MigrationTimeLine = None
-        self.Updated = None
-        self.DstInfo = None
+        self._TaskId = None
+        self._TaskName = None
+        self._MigrationType = None
+        self._Status = None
+        self._ProjectId = None
+        self._ProjectName = None
+        self._SrcInfo = None
+        self._MigrationTimeLine = None
+        self._Updated = None
+        self._DstInfo = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskName(self):
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def MigrationType(self):
+        return self._MigrationType
+
+    @MigrationType.setter
+    def MigrationType(self, MigrationType):
+        self._MigrationType = MigrationType
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProjectName(self):
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def SrcInfo(self):
+        return self._SrcInfo
+
+    @SrcInfo.setter
+    def SrcInfo(self, SrcInfo):
+        self._SrcInfo = SrcInfo
+
+    @property
+    def MigrationTimeLine(self):
+        return self._MigrationTimeLine
+
+    @MigrationTimeLine.setter
+    def MigrationTimeLine(self, MigrationTimeLine):
+        self._MigrationTimeLine = MigrationTimeLine
+
+    @property
+    def Updated(self):
+        return self._Updated
+
+    @Updated.setter
+    def Updated(self, Updated):
+        self._Updated = Updated
+
+    @property
+    def DstInfo(self):
+        return self._DstInfo
+
+    @DstInfo.setter
+    def DstInfo(self, DstInfo):
+        self._DstInfo = DstInfo
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.TaskName = params.get("TaskName")
-        self.MigrationType = params.get("MigrationType")
-        self.Status = params.get("Status")
-        self.ProjectId = params.get("ProjectId")
-        self.ProjectName = params.get("ProjectName")
+        self._TaskId = params.get("TaskId")
+        self._TaskName = params.get("TaskName")
+        self._MigrationType = params.get("MigrationType")
+        self._Status = params.get("Status")
+        self._ProjectId = params.get("ProjectId")
+        self._ProjectName = params.get("ProjectName")
         if params.get("SrcInfo") is not None:
-            self.SrcInfo = SrcInfo()
-            self.SrcInfo._deserialize(params.get("SrcInfo"))
+            self._SrcInfo = SrcInfo()
+            self._SrcInfo._deserialize(params.get("SrcInfo"))
         if params.get("MigrationTimeLine") is not None:
-            self.MigrationTimeLine = TimeObj()
-            self.MigrationTimeLine._deserialize(params.get("MigrationTimeLine"))
-        self.Updated = params.get("Updated")
+            self._MigrationTimeLine = TimeObj()
+            self._MigrationTimeLine._deserialize(params.get("MigrationTimeLine"))
+        self._Updated = params.get("Updated")
         if params.get("DstInfo") is not None:
-            self.DstInfo = DstInfo()
-            self.DstInfo._deserialize(params.get("DstInfo"))
+            self._DstInfo = DstInfo()
+            self._DstInfo._deserialize(params.get("DstInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -585,26 +1044,51 @@ class TaskStatus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: Migration status
+        :param _Status: Migration status
         :type Status: str
-        :param Progress: Migration progress
+        :param _Progress: Migration progress
         :type Progress: str
-        :param UpdateTime: Migration date
+        :param _UpdateTime: Migration date
         :type UpdateTime: str
         """
-        self.Status = None
-        self.Progress = None
-        self.UpdateTime = None
+        self._Status = None
+        self._Progress = None
+        self._UpdateTime = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Progress(self):
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
 
 
     def _deserialize(self, params):
-        self.Status = params.get("Status")
-        self.Progress = params.get("Progress")
-        self.UpdateTime = params.get("UpdateTime")
+        self._Status = params.get("Status")
+        self._Progress = params.get("Progress")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -617,22 +1101,39 @@ class TimeObj(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CreateTime: The creation time
+        :param _CreateTime: The creation time
         :type CreateTime: str
-        :param EndTime: End time
+        :param _EndTime: End time
         :type EndTime: str
         """
-        self.CreateTime = None
-        self.EndTime = None
+        self._CreateTime = None
+        self._EndTime = None
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
 
 
     def _deserialize(self, params):
-        self.CreateTime = params.get("CreateTime")
-        self.EndTime = params.get("EndTime")
+        self._CreateTime = params.get("CreateTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

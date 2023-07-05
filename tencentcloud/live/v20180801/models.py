@@ -25,37 +25,78 @@ class AddDelayLiveStreamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
+        :param _AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
         :type AppName: str
-        :param DomainName: Push domain name.
+        :param _DomainName: Push domain name.
         :type DomainName: str
-        :param StreamName: Stream name.
+        :param _StreamName: Stream name.
         :type StreamName: str
-        :param DelayTime: Delay time in seconds, up to 600s.
+        :param _DelayTime: Delay time in seconds, up to 600s.
         :type DelayTime: int
-        :param ExpireTime: Expiration time of the configured delayed playback in UTC format, such as 2018-11-29T19:00:00Z.
+        :param _ExpireTime: Expiration time of the configured delayed playback in UTC format, such as 2018-11-29T19:00:00Z.
 Notes:
 1. The configuration will expire after 7 days by default and can last up to 7 days.
 2. The Beijing time is in UTC+8. This value should be in the format as required by ISO 8601. For more information, please see [ISO Date and Time Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type ExpireTime: str
         """
-        self.AppName = None
-        self.DomainName = None
-        self.StreamName = None
-        self.DelayTime = None
-        self.ExpireTime = None
+        self._AppName = None
+        self._DomainName = None
+        self._StreamName = None
+        self._DelayTime = None
+        self._ExpireTime = None
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+    @property
+    def DelayTime(self):
+        return self._DelayTime
+
+    @DelayTime.setter
+    def DelayTime(self, DelayTime):
+        self._DelayTime = DelayTime
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
 
 
     def _deserialize(self, params):
-        self.AppName = params.get("AppName")
-        self.DomainName = params.get("DomainName")
-        self.StreamName = params.get("StreamName")
-        self.DelayTime = params.get("DelayTime")
-        self.ExpireTime = params.get("ExpireTime")
+        self._AppName = params.get("AppName")
+        self._DomainName = params.get("DomainName")
+        self._StreamName = params.get("StreamName")
+        self._DelayTime = params.get("DelayTime")
+        self._ExpireTime = params.get("ExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -68,14 +109,22 @@ class AddDelayLiveStreamResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class AddLiveDomainRequest(AbstractModel):
@@ -85,29 +134,29 @@ class AddLiveDomainRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainName: Domain name.
+        :param _DomainName: Domain name.
         :type DomainName: str
-        :param DomainType: Domain name type.
+        :param _DomainType: Domain name type.
 0: push domain name.
 1: playback domain name.
         :type DomainType: int
-        :param PlayType: Pull domain name type:
+        :param _PlayType: Pull domain name type:
 1: Mainland China.
 2: global.
 3: outside Mainland China.
 Default value: 1.
         :type PlayType: int
-        :param IsDelayLive: Whether it is LCB:
+        :param _IsDelayLive: Whether it is LCB:
 0: LVB,
 1: LCB.
 Default value: 0.
         :type IsDelayLive: int
-        :param IsMiniProgramLive: Whether it is LVB on Mini Program.
+        :param _IsMiniProgramLive: Whether it is LVB on Mini Program.
 0: LVB.
 1: LVB on Mini Program.
 Default value: 0.
         :type IsMiniProgramLive: int
-        :param VerifyOwnerType: The domain verification type.
+        :param _VerifyOwnerType: The domain verification type.
 Valid values (the value of this parameter must be the same as `VerifyType` of the `AuthenticateDomainOwner` API):
 dnsCheck: Check immediately whether the verification DNS record has been added successfully. If so, record this verification result.
 fileCheck: Check immediately whether the verification HTML file has been uploaded successfully. If so, record this verification result.
@@ -115,25 +164,74 @@ dbCheck: Check whether the domain has already been verified.
 If you do not pass a value, `dbCheck` will be used.
         :type VerifyOwnerType: str
         """
-        self.DomainName = None
-        self.DomainType = None
-        self.PlayType = None
-        self.IsDelayLive = None
-        self.IsMiniProgramLive = None
-        self.VerifyOwnerType = None
+        self._DomainName = None
+        self._DomainType = None
+        self._PlayType = None
+        self._IsDelayLive = None
+        self._IsMiniProgramLive = None
+        self._VerifyOwnerType = None
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def DomainType(self):
+        return self._DomainType
+
+    @DomainType.setter
+    def DomainType(self, DomainType):
+        self._DomainType = DomainType
+
+    @property
+    def PlayType(self):
+        return self._PlayType
+
+    @PlayType.setter
+    def PlayType(self, PlayType):
+        self._PlayType = PlayType
+
+    @property
+    def IsDelayLive(self):
+        return self._IsDelayLive
+
+    @IsDelayLive.setter
+    def IsDelayLive(self, IsDelayLive):
+        self._IsDelayLive = IsDelayLive
+
+    @property
+    def IsMiniProgramLive(self):
+        return self._IsMiniProgramLive
+
+    @IsMiniProgramLive.setter
+    def IsMiniProgramLive(self, IsMiniProgramLive):
+        self._IsMiniProgramLive = IsMiniProgramLive
+
+    @property
+    def VerifyOwnerType(self):
+        return self._VerifyOwnerType
+
+    @VerifyOwnerType.setter
+    def VerifyOwnerType(self, VerifyOwnerType):
+        self._VerifyOwnerType = VerifyOwnerType
 
 
     def _deserialize(self, params):
-        self.DomainName = params.get("DomainName")
-        self.DomainType = params.get("DomainType")
-        self.PlayType = params.get("PlayType")
-        self.IsDelayLive = params.get("IsDelayLive")
-        self.IsMiniProgramLive = params.get("IsMiniProgramLive")
-        self.VerifyOwnerType = params.get("VerifyOwnerType")
+        self._DomainName = params.get("DomainName")
+        self._DomainType = params.get("DomainType")
+        self._PlayType = params.get("PlayType")
+        self._IsDelayLive = params.get("IsDelayLive")
+        self._IsMiniProgramLive = params.get("IsMiniProgramLive")
+        self._VerifyOwnerType = params.get("VerifyOwnerType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -146,14 +244,22 @@ class AddLiveDomainResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class AddLiveWatermarkRequest(AbstractModel):
@@ -163,41 +269,90 @@ class AddLiveWatermarkRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PictureUrl: Watermark image URL.
+        :param _PictureUrl: Watermark image URL.
 Unallowed characters in the URL:
  ;(){}$>`#"\'|
         :type PictureUrl: str
-        :param WatermarkName: Watermark name.
+        :param _WatermarkName: Watermark name.
 Up to 16 bytes.
         :type WatermarkName: str
-        :param XPosition: Display position: X-axis offset in %. Default value: 0.
+        :param _XPosition: Display position: X-axis offset in %. Default value: 0.
         :type XPosition: int
-        :param YPosition: Display position: Y-axis offset in %. Default value: 0.
+        :param _YPosition: Display position: Y-axis offset in %. Default value: 0.
         :type YPosition: int
-        :param Width: Watermark width or its percentage of the live streaming video width. It is recommended to just specify either height or width as the other will be scaled proportionally to avoid distortions. The original width is used by default.
+        :param _Width: Watermark width or its percentage of the live streaming video width. It is recommended to just specify either height or width as the other will be scaled proportionally to avoid distortions. The original width is used by default.
         :type Width: int
-        :param Height: Watermark height, which is set by entering a percentage of the live stream image’s original height. You are advised to set either the height or width as the other will be scaled proportionally to avoid distortions. Default value: original height.
+        :param _Height: Watermark height, which is set by entering a percentage of the live stream image’s original height. You are advised to set either the height or width as the other will be scaled proportionally to avoid distortions. Default value: original height.
         :type Height: int
         """
-        self.PictureUrl = None
-        self.WatermarkName = None
-        self.XPosition = None
-        self.YPosition = None
-        self.Width = None
-        self.Height = None
+        self._PictureUrl = None
+        self._WatermarkName = None
+        self._XPosition = None
+        self._YPosition = None
+        self._Width = None
+        self._Height = None
+
+    @property
+    def PictureUrl(self):
+        return self._PictureUrl
+
+    @PictureUrl.setter
+    def PictureUrl(self, PictureUrl):
+        self._PictureUrl = PictureUrl
+
+    @property
+    def WatermarkName(self):
+        return self._WatermarkName
+
+    @WatermarkName.setter
+    def WatermarkName(self, WatermarkName):
+        self._WatermarkName = WatermarkName
+
+    @property
+    def XPosition(self):
+        return self._XPosition
+
+    @XPosition.setter
+    def XPosition(self, XPosition):
+        self._XPosition = XPosition
+
+    @property
+    def YPosition(self):
+        return self._YPosition
+
+    @YPosition.setter
+    def YPosition(self, YPosition):
+        self._YPosition = YPosition
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
 
 
     def _deserialize(self, params):
-        self.PictureUrl = params.get("PictureUrl")
-        self.WatermarkName = params.get("WatermarkName")
-        self.XPosition = params.get("XPosition")
-        self.YPosition = params.get("YPosition")
-        self.Width = params.get("Width")
-        self.Height = params.get("Height")
+        self._PictureUrl = params.get("PictureUrl")
+        self._WatermarkName = params.get("WatermarkName")
+        self._XPosition = params.get("XPosition")
+        self._YPosition = params.get("YPosition")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -210,18 +365,34 @@ class AddLiveWatermarkResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param WatermarkId: Watermark ID.
+        :param _WatermarkId: Watermark ID.
         :type WatermarkId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.WatermarkId = None
-        self.RequestId = None
+        self._WatermarkId = None
+        self._RequestId = None
+
+    @property
+    def WatermarkId(self):
+        return self._WatermarkId
+
+    @WatermarkId.setter
+    def WatermarkId(self, WatermarkId):
+        self._WatermarkId = WatermarkId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.WatermarkId = params.get("WatermarkId")
-        self.RequestId = params.get("RequestId")
+        self._WatermarkId = params.get("WatermarkId")
+        self._RequestId = params.get("RequestId")
 
 
 class AuthenticateDomainOwnerRequest(AbstractModel):
@@ -231,25 +402,42 @@ class AuthenticateDomainOwnerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainName: The domain to verify.
+        :param _DomainName: The domain to verify.
         :type DomainName: str
-        :param VerifyType: The verification type. Valid values:
+        :param _VerifyType: The verification type. Valid values:
 dnsCheck: Check immediately whether the verification DNS record has been added successfully. If so, record this verification result.
 fileCheck: Check immediately whether the verification HTML file has been uploaded successfully. If so, record this verification result.
 dbCheck: Check whether the domain has already been successfully verified.
         :type VerifyType: str
         """
-        self.DomainName = None
-        self.VerifyType = None
+        self._DomainName = None
+        self._VerifyType = None
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def VerifyType(self):
+        return self._VerifyType
+
+    @VerifyType.setter
+    def VerifyType(self, VerifyType):
+        self._VerifyType = VerifyType
 
 
     def _deserialize(self, params):
-        self.DomainName = params.get("DomainName")
-        self.VerifyType = params.get("VerifyType")
+        self._DomainName = params.get("DomainName")
+        self._VerifyType = params.get("VerifyType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -262,31 +450,63 @@ class AuthenticateDomainOwnerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Content: The content verified.
+        :param _Content: The content verified.
 If `VerifyType` is `dnsCheck`, this is the TXT record that should be added for verification.
 If `VerifyType` is `fileCheck`, this is the file that should be uploaded for verification.
         :type Content: str
-        :param Status: The verification status.
+        :param _Status: The verification status.
 If the value of this parameter is 0 or greater, the domain has been verified.
 If the value of this parameter is smaller than 0, the domain has not been verified.
         :type Status: int
-        :param MainDomain: The primary domain of the domain verified.
+        :param _MainDomain: The primary domain of the domain verified.
 Verification is not required if another domain under the same primary domain has been successfully verified.
         :type MainDomain: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Content = None
-        self.Status = None
-        self.MainDomain = None
-        self.RequestId = None
+        self._Content = None
+        self._Status = None
+        self._MainDomain = None
+        self._RequestId = None
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def MainDomain(self):
+        return self._MainDomain
+
+    @MainDomain.setter
+    def MainDomain(self, MainDomain):
+        self._MainDomain = MainDomain
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Content = params.get("Content")
-        self.Status = params.get("Status")
-        self.MainDomain = params.get("MainDomain")
-        self.RequestId = params.get("RequestId")
+        self._Content = params.get("Content")
+        self._Status = params.get("Status")
+        self._MainDomain = params.get("MainDomain")
+        self._RequestId = params.get("RequestId")
 
 
 class BandwidthInfo(AbstractModel):
@@ -296,24 +516,41 @@ class BandwidthInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Time: Format of return value:
+        :param _Time: Format of return value:
 yyyy-mm-dd HH:MM:SS
 The time accuracy matches with the query granularity.
         :type Time: str
-        :param Bandwidth: Bandwidth.
+        :param _Bandwidth: Bandwidth.
         :type Bandwidth: float
         """
-        self.Time = None
-        self.Bandwidth = None
+        self._Time = None
+        self._Bandwidth = None
+
+    @property
+    def Time(self):
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def Bandwidth(self):
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
 
 
     def _deserialize(self, params):
-        self.Time = params.get("Time")
-        self.Bandwidth = params.get("Bandwidth")
+        self._Time = params.get("Time")
+        self._Bandwidth = params.get("Bandwidth")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -326,26 +563,51 @@ class BatchDomainOperateErrors(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainName: The domain that the API failed to operate.
+        :param _DomainName: The domain that the API failed to operate.
         :type DomainName: str
-        :param Code: The API 3.0 error code.
+        :param _Code: The API 3.0 error code.
         :type Code: str
-        :param Message: The API 3.0 error message.
+        :param _Message: The API 3.0 error message.
         :type Message: str
         """
-        self.DomainName = None
-        self.Code = None
-        self.Message = None
+        self._DomainName = None
+        self._Code = None
+        self._Message = None
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
 
 
     def _deserialize(self, params):
-        self.DomainName = params.get("DomainName")
-        self.Code = params.get("Code")
-        self.Message = params.get("Message")
+        self._DomainName = params.get("DomainName")
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -358,30 +620,63 @@ class BillDataInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Time: Time point in the format of `yyyy-mm-dd HH:MM:SS`.
+        :param _Time: Time point in the format of `yyyy-mm-dd HH:MM:SS`.
         :type Time: str
-        :param Bandwidth: Bandwidth in Mbps.
+        :param _Bandwidth: Bandwidth in Mbps.
         :type Bandwidth: float
-        :param Flux: Traffic in MB.
+        :param _Flux: Traffic in MB.
         :type Flux: float
-        :param PeakTime: Time point of peak value in the format of `yyyy-mm-dd HH:MM:SS`. As raw data is at a 5-minute granularity, if data at a 1-hour or 1-day granularity is queried, the time point of peak bandwidth value at the corresponding granularity will be returned.
+        :param _PeakTime: Time point of peak value in the format of `yyyy-mm-dd HH:MM:SS`. As raw data is at a 5-minute granularity, if data at a 1-hour or 1-day granularity is queried, the time point of peak bandwidth value at the corresponding granularity will be returned.
         :type PeakTime: str
         """
-        self.Time = None
-        self.Bandwidth = None
-        self.Flux = None
-        self.PeakTime = None
+        self._Time = None
+        self._Bandwidth = None
+        self._Flux = None
+        self._PeakTime = None
+
+    @property
+    def Time(self):
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def Bandwidth(self):
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
+
+    @property
+    def Flux(self):
+        return self._Flux
+
+    @Flux.setter
+    def Flux(self, Flux):
+        self._Flux = Flux
+
+    @property
+    def PeakTime(self):
+        return self._PeakTime
+
+    @PeakTime.setter
+    def PeakTime(self, PeakTime):
+        self._PeakTime = PeakTime
 
 
     def _deserialize(self, params):
-        self.Time = params.get("Time")
-        self.Bandwidth = params.get("Bandwidth")
-        self.Flux = params.get("Flux")
-        self.PeakTime = params.get("PeakTime")
+        self._Time = params.get("Time")
+        self._Bandwidth = params.get("Bandwidth")
+        self._Flux = params.get("Flux")
+        self._PeakTime = params.get("PeakTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -394,36 +689,77 @@ class CallBackRuleInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CreateTime: The rule creation time.
+        :param _CreateTime: The rule creation time.
 Note: Beijing time (UTC+8) is used.
         :type CreateTime: str
-        :param UpdateTime: The rule update time.
+        :param _UpdateTime: The rule update time.
 Note: Beijing time (UTC+8) is used.
         :type UpdateTime: str
-        :param TemplateId: Template ID.
+        :param _TemplateId: Template ID.
         :type TemplateId: int
-        :param DomainName: Push domain name.
+        :param _DomainName: Push domain name.
         :type DomainName: str
-        :param AppName: Push path.
+        :param _AppName: Push path.
         :type AppName: str
         """
-        self.CreateTime = None
-        self.UpdateTime = None
-        self.TemplateId = None
-        self.DomainName = None
-        self.AppName = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._TemplateId = None
+        self._DomainName = None
+        self._AppName = None
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
 
 
     def _deserialize(self, params):
-        self.CreateTime = params.get("CreateTime")
-        self.UpdateTime = params.get("UpdateTime")
-        self.TemplateId = params.get("TemplateId")
-        self.DomainName = params.get("DomainName")
-        self.AppName = params.get("AppName")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._TemplateId = params.get("TemplateId")
+        self._DomainName = params.get("DomainName")
+        self._AppName = params.get("AppName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -436,64 +772,161 @@ class CallBackTemplateInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateId: Template ID.
+        :param _TemplateId: Template ID.
         :type TemplateId: int
-        :param TemplateName: Template name.
+        :param _TemplateName: Template name.
         :type TemplateName: str
-        :param Description: Description.
+        :param _Description: Description.
         :type Description: str
-        :param StreamBeginNotifyUrl: Stream starting callback URL.
+        :param _StreamBeginNotifyUrl: Stream starting callback URL.
         :type StreamBeginNotifyUrl: str
-        :param StreamMixNotifyUrl: Stream mixing callback URL (disused)
+        :param _StreamMixNotifyUrl: Stream mixing callback URL (disused)
         :type StreamMixNotifyUrl: str
-        :param StreamEndNotifyUrl: Interruption callback URL.
+        :param _StreamEndNotifyUrl: Interruption callback URL.
         :type StreamEndNotifyUrl: str
-        :param RecordNotifyUrl: Recording callback URL.
+        :param _RecordNotifyUrl: Recording callback URL.
         :type RecordNotifyUrl: str
-        :param SnapshotNotifyUrl: Screencapturing callback URL.
+        :param _SnapshotNotifyUrl: Screencapturing callback URL.
         :type SnapshotNotifyUrl: str
-        :param PornCensorshipNotifyUrl: Porn detection callback URL.
+        :param _PornCensorshipNotifyUrl: Porn detection callback URL.
         :type PornCensorshipNotifyUrl: str
-        :param CallbackKey: Callback authentication key.
+        :param _CallbackKey: Callback authentication key.
         :type CallbackKey: str
-        :param PushExceptionNotifyUrl: The push error callback URL.
+        :param _PushExceptionNotifyUrl: The push error callback URL.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PushExceptionNotifyUrl: str
-        :param AudioAuditNotifyUrl: The audio/video moderation callback URL.
+        :param _AudioAuditNotifyUrl: The audio/video moderation callback URL.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AudioAuditNotifyUrl: str
         """
-        self.TemplateId = None
-        self.TemplateName = None
-        self.Description = None
-        self.StreamBeginNotifyUrl = None
-        self.StreamMixNotifyUrl = None
-        self.StreamEndNotifyUrl = None
-        self.RecordNotifyUrl = None
-        self.SnapshotNotifyUrl = None
-        self.PornCensorshipNotifyUrl = None
-        self.CallbackKey = None
-        self.PushExceptionNotifyUrl = None
-        self.AudioAuditNotifyUrl = None
+        self._TemplateId = None
+        self._TemplateName = None
+        self._Description = None
+        self._StreamBeginNotifyUrl = None
+        self._StreamMixNotifyUrl = None
+        self._StreamEndNotifyUrl = None
+        self._RecordNotifyUrl = None
+        self._SnapshotNotifyUrl = None
+        self._PornCensorshipNotifyUrl = None
+        self._CallbackKey = None
+        self._PushExceptionNotifyUrl = None
+        self._AudioAuditNotifyUrl = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def TemplateName(self):
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def StreamBeginNotifyUrl(self):
+        return self._StreamBeginNotifyUrl
+
+    @StreamBeginNotifyUrl.setter
+    def StreamBeginNotifyUrl(self, StreamBeginNotifyUrl):
+        self._StreamBeginNotifyUrl = StreamBeginNotifyUrl
+
+    @property
+    def StreamMixNotifyUrl(self):
+        return self._StreamMixNotifyUrl
+
+    @StreamMixNotifyUrl.setter
+    def StreamMixNotifyUrl(self, StreamMixNotifyUrl):
+        self._StreamMixNotifyUrl = StreamMixNotifyUrl
+
+    @property
+    def StreamEndNotifyUrl(self):
+        return self._StreamEndNotifyUrl
+
+    @StreamEndNotifyUrl.setter
+    def StreamEndNotifyUrl(self, StreamEndNotifyUrl):
+        self._StreamEndNotifyUrl = StreamEndNotifyUrl
+
+    @property
+    def RecordNotifyUrl(self):
+        return self._RecordNotifyUrl
+
+    @RecordNotifyUrl.setter
+    def RecordNotifyUrl(self, RecordNotifyUrl):
+        self._RecordNotifyUrl = RecordNotifyUrl
+
+    @property
+    def SnapshotNotifyUrl(self):
+        return self._SnapshotNotifyUrl
+
+    @SnapshotNotifyUrl.setter
+    def SnapshotNotifyUrl(self, SnapshotNotifyUrl):
+        self._SnapshotNotifyUrl = SnapshotNotifyUrl
+
+    @property
+    def PornCensorshipNotifyUrl(self):
+        return self._PornCensorshipNotifyUrl
+
+    @PornCensorshipNotifyUrl.setter
+    def PornCensorshipNotifyUrl(self, PornCensorshipNotifyUrl):
+        self._PornCensorshipNotifyUrl = PornCensorshipNotifyUrl
+
+    @property
+    def CallbackKey(self):
+        return self._CallbackKey
+
+    @CallbackKey.setter
+    def CallbackKey(self, CallbackKey):
+        self._CallbackKey = CallbackKey
+
+    @property
+    def PushExceptionNotifyUrl(self):
+        return self._PushExceptionNotifyUrl
+
+    @PushExceptionNotifyUrl.setter
+    def PushExceptionNotifyUrl(self, PushExceptionNotifyUrl):
+        self._PushExceptionNotifyUrl = PushExceptionNotifyUrl
+
+    @property
+    def AudioAuditNotifyUrl(self):
+        return self._AudioAuditNotifyUrl
+
+    @AudioAuditNotifyUrl.setter
+    def AudioAuditNotifyUrl(self, AudioAuditNotifyUrl):
+        self._AudioAuditNotifyUrl = AudioAuditNotifyUrl
 
 
     def _deserialize(self, params):
-        self.TemplateId = params.get("TemplateId")
-        self.TemplateName = params.get("TemplateName")
-        self.Description = params.get("Description")
-        self.StreamBeginNotifyUrl = params.get("StreamBeginNotifyUrl")
-        self.StreamMixNotifyUrl = params.get("StreamMixNotifyUrl")
-        self.StreamEndNotifyUrl = params.get("StreamEndNotifyUrl")
-        self.RecordNotifyUrl = params.get("RecordNotifyUrl")
-        self.SnapshotNotifyUrl = params.get("SnapshotNotifyUrl")
-        self.PornCensorshipNotifyUrl = params.get("PornCensorshipNotifyUrl")
-        self.CallbackKey = params.get("CallbackKey")
-        self.PushExceptionNotifyUrl = params.get("PushExceptionNotifyUrl")
-        self.AudioAuditNotifyUrl = params.get("AudioAuditNotifyUrl")
+        self._TemplateId = params.get("TemplateId")
+        self._TemplateName = params.get("TemplateName")
+        self._Description = params.get("Description")
+        self._StreamBeginNotifyUrl = params.get("StreamBeginNotifyUrl")
+        self._StreamMixNotifyUrl = params.get("StreamMixNotifyUrl")
+        self._StreamEndNotifyUrl = params.get("StreamEndNotifyUrl")
+        self._RecordNotifyUrl = params.get("RecordNotifyUrl")
+        self._SnapshotNotifyUrl = params.get("SnapshotNotifyUrl")
+        self._PornCensorshipNotifyUrl = params.get("PornCensorshipNotifyUrl")
+        self._CallbackKey = params.get("CallbackKey")
+        self._PushExceptionNotifyUrl = params.get("PushExceptionNotifyUrl")
+        self._AudioAuditNotifyUrl = params.get("AudioAuditNotifyUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -506,19 +939,28 @@ class CancelCommonMixStreamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MixStreamSessionId: ID of stream mix session (from applying for stream mix to canceling stream mix).
+        :param _MixStreamSessionId: ID of stream mix session (from applying for stream mix to canceling stream mix).
 This value is the same as the `MixStreamSessionId` in `CreateCommonMixStream`.
         :type MixStreamSessionId: str
         """
-        self.MixStreamSessionId = None
+        self._MixStreamSessionId = None
+
+    @property
+    def MixStreamSessionId(self):
+        return self._MixStreamSessionId
+
+    @MixStreamSessionId.setter
+    def MixStreamSessionId(self, MixStreamSessionId):
+        self._MixStreamSessionId = MixStreamSessionId
 
 
     def _deserialize(self, params):
-        self.MixStreamSessionId = params.get("MixStreamSessionId")
+        self._MixStreamSessionId = params.get("MixStreamSessionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -531,14 +973,22 @@ class CancelCommonMixStreamResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CdnPlayStatData(AbstractModel):
@@ -548,34 +998,75 @@ class CdnPlayStatData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Time: Time point in the format of `yyyy-mm-dd HH:MM:SS`.
+        :param _Time: Time point in the format of `yyyy-mm-dd HH:MM:SS`.
         :type Time: str
-        :param Bandwidth: Bandwidth in Mbps.
+        :param _Bandwidth: Bandwidth in Mbps.
         :type Bandwidth: float
-        :param Flux: Traffic in MB.
+        :param _Flux: Traffic in MB.
         :type Flux: float
-        :param Request: Number of new requests.
+        :param _Request: Number of new requests.
         :type Request: int
-        :param Online: Number of concurrent connections.
+        :param _Online: Number of concurrent connections.
         :type Online: int
         """
-        self.Time = None
-        self.Bandwidth = None
-        self.Flux = None
-        self.Request = None
-        self.Online = None
+        self._Time = None
+        self._Bandwidth = None
+        self._Flux = None
+        self._Request = None
+        self._Online = None
+
+    @property
+    def Time(self):
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def Bandwidth(self):
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
+
+    @property
+    def Flux(self):
+        return self._Flux
+
+    @Flux.setter
+    def Flux(self, Flux):
+        self._Flux = Flux
+
+    @property
+    def Request(self):
+        return self._Request
+
+    @Request.setter
+    def Request(self, Request):
+        self._Request = Request
+
+    @property
+    def Online(self):
+        return self._Online
+
+    @Online.setter
+    def Online(self, Online):
+        self._Online = Online
 
 
     def _deserialize(self, params):
-        self.Time = params.get("Time")
-        self.Bandwidth = params.get("Bandwidth")
-        self.Flux = params.get("Flux")
-        self.Request = params.get("Request")
-        self.Online = params.get("Online")
+        self._Time = params.get("Time")
+        self._Bandwidth = params.get("Bandwidth")
+        self._Flux = params.get("Flux")
+        self._Request = params.get("Request")
+        self._Online = params.get("Online")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -588,50 +1079,115 @@ class CertInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CertId: Certificate ID.
+        :param _CertId: Certificate ID.
         :type CertId: int
-        :param CertName: Certificate name.
+        :param _CertName: Certificate name.
         :type CertName: str
-        :param Description: Description.
+        :param _Description: Description.
         :type Description: str
-        :param CreateTime: The creation time in UTC format.
+        :param _CreateTime: The creation time in UTC format.
 Note: Beijing time (UTC+8) is used.
         :type CreateTime: str
-        :param HttpsCrt: Certificate content.
+        :param _HttpsCrt: Certificate content.
         :type HttpsCrt: str
-        :param CertType: Certificate type.
+        :param _CertType: Certificate type.
 0: user-added certificate
 1: Tencent Cloud-hosted certificate
         :type CertType: int
-        :param CertExpireTime: The certificate expiration time in UTC format.
+        :param _CertExpireTime: The certificate expiration time in UTC format.
 Note: Beijing time (UTC+8) is used.
         :type CertExpireTime: str
-        :param DomainList: List of domain names that use this certificate.
+        :param _DomainList: List of domain names that use this certificate.
         :type DomainList: list of str
         """
-        self.CertId = None
-        self.CertName = None
-        self.Description = None
-        self.CreateTime = None
-        self.HttpsCrt = None
-        self.CertType = None
-        self.CertExpireTime = None
-        self.DomainList = None
+        self._CertId = None
+        self._CertName = None
+        self._Description = None
+        self._CreateTime = None
+        self._HttpsCrt = None
+        self._CertType = None
+        self._CertExpireTime = None
+        self._DomainList = None
+
+    @property
+    def CertId(self):
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
+
+    @property
+    def CertName(self):
+        return self._CertName
+
+    @CertName.setter
+    def CertName(self, CertName):
+        self._CertName = CertName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def HttpsCrt(self):
+        return self._HttpsCrt
+
+    @HttpsCrt.setter
+    def HttpsCrt(self, HttpsCrt):
+        self._HttpsCrt = HttpsCrt
+
+    @property
+    def CertType(self):
+        return self._CertType
+
+    @CertType.setter
+    def CertType(self, CertType):
+        self._CertType = CertType
+
+    @property
+    def CertExpireTime(self):
+        return self._CertExpireTime
+
+    @CertExpireTime.setter
+    def CertExpireTime(self, CertExpireTime):
+        self._CertExpireTime = CertExpireTime
+
+    @property
+    def DomainList(self):
+        return self._DomainList
+
+    @DomainList.setter
+    def DomainList(self, DomainList):
+        self._DomainList = DomainList
 
 
     def _deserialize(self, params):
-        self.CertId = params.get("CertId")
-        self.CertName = params.get("CertName")
-        self.Description = params.get("Description")
-        self.CreateTime = params.get("CreateTime")
-        self.HttpsCrt = params.get("HttpsCrt")
-        self.CertType = params.get("CertType")
-        self.CertExpireTime = params.get("CertExpireTime")
-        self.DomainList = params.get("DomainList")
+        self._CertId = params.get("CertId")
+        self._CertName = params.get("CertName")
+        self._Description = params.get("Description")
+        self._CreateTime = params.get("CreateTime")
+        self._HttpsCrt = params.get("HttpsCrt")
+        self._CertType = params.get("CertType")
+        self._CertExpireTime = params.get("CertExpireTime")
+        self._DomainList = params.get("DomainList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -644,38 +1200,87 @@ class ClientIpPlaySumInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClientIp: Client IP in dotted-decimal notation.
+        :param _ClientIp: Client IP in dotted-decimal notation.
         :type ClientIp: str
-        :param Province: District where the client is located.
+        :param _Province: District where the client is located.
         :type Province: str
-        :param TotalFlux: Total traffic.
+        :param _TotalFlux: Total traffic.
         :type TotalFlux: float
-        :param TotalRequest: Total number of requests.
+        :param _TotalRequest: Total number of requests.
         :type TotalRequest: int
-        :param TotalFailedRequest: Total number of failed requests.
+        :param _TotalFailedRequest: Total number of failed requests.
         :type TotalFailedRequest: int
-        :param CountryArea: Country/region where the client is located.
+        :param _CountryArea: Country/region where the client is located.
         :type CountryArea: str
         """
-        self.ClientIp = None
-        self.Province = None
-        self.TotalFlux = None
-        self.TotalRequest = None
-        self.TotalFailedRequest = None
-        self.CountryArea = None
+        self._ClientIp = None
+        self._Province = None
+        self._TotalFlux = None
+        self._TotalRequest = None
+        self._TotalFailedRequest = None
+        self._CountryArea = None
+
+    @property
+    def ClientIp(self):
+        return self._ClientIp
+
+    @ClientIp.setter
+    def ClientIp(self, ClientIp):
+        self._ClientIp = ClientIp
+
+    @property
+    def Province(self):
+        return self._Province
+
+    @Province.setter
+    def Province(self, Province):
+        self._Province = Province
+
+    @property
+    def TotalFlux(self):
+        return self._TotalFlux
+
+    @TotalFlux.setter
+    def TotalFlux(self, TotalFlux):
+        self._TotalFlux = TotalFlux
+
+    @property
+    def TotalRequest(self):
+        return self._TotalRequest
+
+    @TotalRequest.setter
+    def TotalRequest(self, TotalRequest):
+        self._TotalRequest = TotalRequest
+
+    @property
+    def TotalFailedRequest(self):
+        return self._TotalFailedRequest
+
+    @TotalFailedRequest.setter
+    def TotalFailedRequest(self, TotalFailedRequest):
+        self._TotalFailedRequest = TotalFailedRequest
+
+    @property
+    def CountryArea(self):
+        return self._CountryArea
+
+    @CountryArea.setter
+    def CountryArea(self, CountryArea):
+        self._CountryArea = CountryArea
 
 
     def _deserialize(self, params):
-        self.ClientIp = params.get("ClientIp")
-        self.Province = params.get("Province")
-        self.TotalFlux = params.get("TotalFlux")
-        self.TotalRequest = params.get("TotalRequest")
-        self.TotalFailedRequest = params.get("TotalFailedRequest")
-        self.CountryArea = params.get("CountryArea")
+        self._ClientIp = params.get("ClientIp")
+        self._Province = params.get("Province")
+        self._TotalFlux = params.get("TotalFlux")
+        self._TotalRequest = params.get("TotalRequest")
+        self._TotalFailedRequest = params.get("TotalFailedRequest")
+        self._CountryArea = params.get("CountryArea")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -688,29 +1293,54 @@ class CommonMixControlParams(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UseMixCropCenter: Value range: [0,1]. 
+        :param _UseMixCropCenter: Value range: [0,1]. 
 If 1 is entered, when the layer resolution in the parameter is different from the actual video resolution, the video will be automatically cropped according to the resolution set by the layer.
         :type UseMixCropCenter: int
-        :param AllowCopy: Value range: [0,1].
+        :param _AllowCopy: Value range: [0,1].
 If this parameter is set to 1, when both `InputStreamList` and `OutputParams.OutputStreamType` are set to 1, you can copy a stream instead of canceling it.
         :type AllowCopy: int
-        :param PassInputSei: Valid values: 0, 1
+        :param _PassInputSei: Valid values: 0, 1
 If you set this parameter to 1, SEI (Supplemental Enhanced Information) of the input streams will be passed through.
         :type PassInputSei: int
         """
-        self.UseMixCropCenter = None
-        self.AllowCopy = None
-        self.PassInputSei = None
+        self._UseMixCropCenter = None
+        self._AllowCopy = None
+        self._PassInputSei = None
+
+    @property
+    def UseMixCropCenter(self):
+        return self._UseMixCropCenter
+
+    @UseMixCropCenter.setter
+    def UseMixCropCenter(self, UseMixCropCenter):
+        self._UseMixCropCenter = UseMixCropCenter
+
+    @property
+    def AllowCopy(self):
+        return self._AllowCopy
+
+    @AllowCopy.setter
+    def AllowCopy(self, AllowCopy):
+        self._AllowCopy = AllowCopy
+
+    @property
+    def PassInputSei(self):
+        return self._PassInputSei
+
+    @PassInputSei.setter
+    def PassInputSei(self, PassInputSei):
+        self._PassInputSei = PassInputSei
 
 
     def _deserialize(self, params):
-        self.UseMixCropCenter = params.get("UseMixCropCenter")
-        self.AllowCopy = params.get("AllowCopy")
-        self.PassInputSei = params.get("PassInputSei")
+        self._UseMixCropCenter = params.get("UseMixCropCenter")
+        self._AllowCopy = params.get("AllowCopy")
+        self._PassInputSei = params.get("PassInputSei")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -723,30 +1353,63 @@ class CommonMixCropParams(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CropWidth: Crop width. Value range: [0,2000].
+        :param _CropWidth: Crop width. Value range: [0,2000].
         :type CropWidth: float
-        :param CropHeight: Crop height. Value range: [0,2000].
+        :param _CropHeight: Crop height. Value range: [0,2000].
         :type CropHeight: float
-        :param CropStartLocationX: Starting crop X coordinate. Value range: [0,2000].
+        :param _CropStartLocationX: Starting crop X coordinate. Value range: [0,2000].
         :type CropStartLocationX: float
-        :param CropStartLocationY: Starting crop Y coordinate. Value range: [0,2000].
+        :param _CropStartLocationY: Starting crop Y coordinate. Value range: [0,2000].
         :type CropStartLocationY: float
         """
-        self.CropWidth = None
-        self.CropHeight = None
-        self.CropStartLocationX = None
-        self.CropStartLocationY = None
+        self._CropWidth = None
+        self._CropHeight = None
+        self._CropStartLocationX = None
+        self._CropStartLocationY = None
+
+    @property
+    def CropWidth(self):
+        return self._CropWidth
+
+    @CropWidth.setter
+    def CropWidth(self, CropWidth):
+        self._CropWidth = CropWidth
+
+    @property
+    def CropHeight(self):
+        return self._CropHeight
+
+    @CropHeight.setter
+    def CropHeight(self, CropHeight):
+        self._CropHeight = CropHeight
+
+    @property
+    def CropStartLocationX(self):
+        return self._CropStartLocationX
+
+    @CropStartLocationX.setter
+    def CropStartLocationX(self, CropStartLocationX):
+        self._CropStartLocationX = CropStartLocationX
+
+    @property
+    def CropStartLocationY(self):
+        return self._CropStartLocationY
+
+    @CropStartLocationY.setter
+    def CropStartLocationY(self, CropStartLocationY):
+        self._CropStartLocationY = CropStartLocationY
 
 
     def _deserialize(self, params):
-        self.CropWidth = params.get("CropWidth")
-        self.CropHeight = params.get("CropHeight")
-        self.CropStartLocationX = params.get("CropStartLocationX")
-        self.CropStartLocationY = params.get("CropStartLocationY")
+        self._CropWidth = params.get("CropWidth")
+        self._CropHeight = params.get("CropHeight")
+        self._CropStartLocationX = params.get("CropStartLocationX")
+        self._CropStartLocationY = params.get("CropStartLocationY")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -759,32 +1422,57 @@ class CommonMixInputParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InputStreamName: Input stream name, which can contain up to 80 bytes of letters, digits, and underscores.
+        :param _InputStreamName: Input stream name, which can contain up to 80 bytes of letters, digits, and underscores.
 The value should be the name of an input stream for stream mix when `LayoutParams.InputType` is set to `0` (audio and video), `4` (pure audio), or `5` (pure video).
 The value can be a random name for identification, such as `Canvas1` or `Picture1`, when `LayoutParams.InputType` is set to `2` (image) or `3` (canvas).
         :type InputStreamName: str
-        :param LayoutParams: Input stream layout parameter.
+        :param _LayoutParams: Input stream layout parameter.
         :type LayoutParams: :class:`tencentcloud.live.v20180801.models.CommonMixLayoutParams`
-        :param CropParams: Input stream crop parameter.
+        :param _CropParams: Input stream crop parameter.
         :type CropParams: :class:`tencentcloud.live.v20180801.models.CommonMixCropParams`
         """
-        self.InputStreamName = None
-        self.LayoutParams = None
-        self.CropParams = None
+        self._InputStreamName = None
+        self._LayoutParams = None
+        self._CropParams = None
+
+    @property
+    def InputStreamName(self):
+        return self._InputStreamName
+
+    @InputStreamName.setter
+    def InputStreamName(self, InputStreamName):
+        self._InputStreamName = InputStreamName
+
+    @property
+    def LayoutParams(self):
+        return self._LayoutParams
+
+    @LayoutParams.setter
+    def LayoutParams(self, LayoutParams):
+        self._LayoutParams = LayoutParams
+
+    @property
+    def CropParams(self):
+        return self._CropParams
+
+    @CropParams.setter
+    def CropParams(self, CropParams):
+        self._CropParams = CropParams
 
 
     def _deserialize(self, params):
-        self.InputStreamName = params.get("InputStreamName")
+        self._InputStreamName = params.get("InputStreamName")
         if params.get("LayoutParams") is not None:
-            self.LayoutParams = CommonMixLayoutParams()
-            self.LayoutParams._deserialize(params.get("LayoutParams"))
+            self._LayoutParams = CommonMixLayoutParams()
+            self._LayoutParams._deserialize(params.get("LayoutParams"))
         if params.get("CropParams") is not None:
-            self.CropParams = CommonMixCropParams()
-            self.CropParams._deserialize(params.get("CropParams"))
+            self._CropParams = CommonMixCropParams()
+            self._CropParams._deserialize(params.get("CropParams"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -797,12 +1485,12 @@ class CommonMixLayoutParams(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageLayer: Input layer. Value range: [1,16]
+        :param _ImageLayer: Input layer. Value range: [1,16]
 (1) For the background stream, i.e., the room owner’s image or the canvas, set this parameter to `1`.
 (2) This parameter is required for audio-only stream mixing as well.
 Note that two inputs cannot have the same `ImageLayer` value.
         :type ImageLayer: int
-        :param InputType: Input type. Value range: [0,5].
+        :param _InputType: Input type. Value range: [0,5].
 If this parameter is left empty, 0 will be used by default.
 0: the input stream is audio/video.
 2: the input stream is image.
@@ -810,33 +1498,33 @@ If this parameter is left empty, 0 will be used by default.
 4: the input stream is audio.
 5: the input stream is pure video.
         :type InputType: int
-        :param ImageHeight: Output height of input video image. Value range:
+        :param _ImageHeight: Output height of input video image. Value range:
 Pixel: [0,2000]
 Percentage: [0.01,0.99]
 If this parameter is left empty, the input stream height will be used by default.
 If percentage is used, the expected output is (percentage * background height).
         :type ImageHeight: float
-        :param ImageWidth: Output width of input video image. Value range:
+        :param _ImageWidth: Output width of input video image. Value range:
 Pixel: [0,2000]
 Percentage: [0.01,0.99]
 If this parameter is left empty, the input stream width will be used by default.
 If percentage is used, the expected output is (percentage * background width).
         :type ImageWidth: float
-        :param LocationX: X-axis offset of input in output video image. Value range:
+        :param _LocationX: X-axis offset of input in output video image. Value range:
 Pixel: [0,2000]
 Percentage: [0.01,0.99]
 If this parameter is left empty, 0 will be used by default.
 Horizontal offset from the top-left corner of main host background video image. 
 If percentage is used, the expected output is (percentage * background width).
         :type LocationX: float
-        :param LocationY: Y-axis offset of input in output video image. Value range:
+        :param _LocationY: Y-axis offset of input in output video image. Value range:
 Pixel: [0,2000]
 Percentage: [0.01,0.99]
 If this parameter is left empty, 0 will be used by default.
 Vertical offset from the top-left corner of main host background video image. 
 If percentage is used, the expected output is (percentage * background width)
         :type LocationY: float
-        :param Color: When `InputType` is 3 (canvas), this value indicates the canvas color.
+        :param _Color: When `InputType` is 3 (canvas), this value indicates the canvas color.
 Commonly used colors include:
 Red: 0xcc0033.
 Yellow: 0xcc9900.
@@ -846,32 +1534,97 @@ Black: 0x000000.
 White: 0xFFFFFF.
 Gray: 0x999999
         :type Color: str
-        :param WatermarkId: When `InputType` is 2 (image), this value is the watermark ID.
+        :param _WatermarkId: When `InputType` is 2 (image), this value is the watermark ID.
         :type WatermarkId: int
         """
-        self.ImageLayer = None
-        self.InputType = None
-        self.ImageHeight = None
-        self.ImageWidth = None
-        self.LocationX = None
-        self.LocationY = None
-        self.Color = None
-        self.WatermarkId = None
+        self._ImageLayer = None
+        self._InputType = None
+        self._ImageHeight = None
+        self._ImageWidth = None
+        self._LocationX = None
+        self._LocationY = None
+        self._Color = None
+        self._WatermarkId = None
+
+    @property
+    def ImageLayer(self):
+        return self._ImageLayer
+
+    @ImageLayer.setter
+    def ImageLayer(self, ImageLayer):
+        self._ImageLayer = ImageLayer
+
+    @property
+    def InputType(self):
+        return self._InputType
+
+    @InputType.setter
+    def InputType(self, InputType):
+        self._InputType = InputType
+
+    @property
+    def ImageHeight(self):
+        return self._ImageHeight
+
+    @ImageHeight.setter
+    def ImageHeight(self, ImageHeight):
+        self._ImageHeight = ImageHeight
+
+    @property
+    def ImageWidth(self):
+        return self._ImageWidth
+
+    @ImageWidth.setter
+    def ImageWidth(self, ImageWidth):
+        self._ImageWidth = ImageWidth
+
+    @property
+    def LocationX(self):
+        return self._LocationX
+
+    @LocationX.setter
+    def LocationX(self, LocationX):
+        self._LocationX = LocationX
+
+    @property
+    def LocationY(self):
+        return self._LocationY
+
+    @LocationY.setter
+    def LocationY(self, LocationY):
+        self._LocationY = LocationY
+
+    @property
+    def Color(self):
+        return self._Color
+
+    @Color.setter
+    def Color(self, Color):
+        self._Color = Color
+
+    @property
+    def WatermarkId(self):
+        return self._WatermarkId
+
+    @WatermarkId.setter
+    def WatermarkId(self, WatermarkId):
+        self._WatermarkId = WatermarkId
 
 
     def _deserialize(self, params):
-        self.ImageLayer = params.get("ImageLayer")
-        self.InputType = params.get("InputType")
-        self.ImageHeight = params.get("ImageHeight")
-        self.ImageWidth = params.get("ImageWidth")
-        self.LocationX = params.get("LocationX")
-        self.LocationY = params.get("LocationY")
-        self.Color = params.get("Color")
-        self.WatermarkId = params.get("WatermarkId")
+        self._ImageLayer = params.get("ImageLayer")
+        self._InputType = params.get("InputType")
+        self._ImageHeight = params.get("ImageHeight")
+        self._ImageWidth = params.get("ImageWidth")
+        self._LocationX = params.get("LocationX")
+        self._LocationY = params.get("LocationY")
+        self._Color = params.get("Color")
+        self._WatermarkId = params.get("WatermarkId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -884,60 +1637,133 @@ class CommonMixOutputParams(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OutputStreamName: Output stream name.
+        :param _OutputStreamName: Output stream name.
         :type OutputStreamName: str
-        :param OutputStreamType: Output stream type. Valid values: [0,1].
+        :param _OutputStreamType: Output stream type. Valid values: [0,1].
 If this parameter is left empty, 0 will be used by default.
 If the output stream is a stream in the input stream list, enter 0.
 If you want the stream mix result to be a new stream, enter 1.
 If this value is 1, `output_stream_id` cannot appear in `input_stram_list`, and there cannot be a stream with the same ID on the LVB backend.
         :type OutputStreamType: int
-        :param OutputStreamBitRate: The output bitrate. Value range: 1-10000.
+        :param _OutputStreamBitRate: The output bitrate. Value range: 1-10000.
 If you do not specify this, the system will select a bitrate automatically.
         :type OutputStreamBitRate: int
-        :param OutputStreamGop: Output stream GOP size. Value range: [1,10].
+        :param _OutputStreamGop: Output stream GOP size. Value range: [1,10].
 If this parameter is left empty, the system will automatically determine.
         :type OutputStreamGop: int
-        :param OutputStreamFrameRate: Output stream frame rate. Value range: [1,60].
+        :param _OutputStreamFrameRate: Output stream frame rate. Value range: [1,60].
 If this parameter is left empty, the system will automatically determine.
         :type OutputStreamFrameRate: int
-        :param OutputAudioBitRate: Output stream audio bitrate. Value range: [1,500]
+        :param _OutputAudioBitRate: Output stream audio bitrate. Value range: [1,500]
 If this parameter is left empty, the system will automatically determine.
         :type OutputAudioBitRate: int
-        :param OutputAudioSampleRate: Output stream audio sample rate. Valid values: [96000, 88200, 64000, 48000, 44100, 32000,24000, 22050, 16000, 12000, 11025, 8000].
+        :param _OutputAudioSampleRate: Output stream audio sample rate. Valid values: [96000, 88200, 64000, 48000, 44100, 32000,24000, 22050, 16000, 12000, 11025, 8000].
 If this parameter is left empty, the system will automatically determine.
         :type OutputAudioSampleRate: int
-        :param OutputAudioChannels: Output stream audio sound channel. Valid values: [1,2].
+        :param _OutputAudioChannels: Output stream audio sound channel. Valid values: [1,2].
 If this parameter is left empty, the system will automatically determine.
         :type OutputAudioChannels: int
-        :param MixSei: SEI information in output stream. If there are no special needs, leave it empty.
+        :param _MixSei: SEI information in output stream. If there are no special needs, leave it empty.
         :type MixSei: str
         """
-        self.OutputStreamName = None
-        self.OutputStreamType = None
-        self.OutputStreamBitRate = None
-        self.OutputStreamGop = None
-        self.OutputStreamFrameRate = None
-        self.OutputAudioBitRate = None
-        self.OutputAudioSampleRate = None
-        self.OutputAudioChannels = None
-        self.MixSei = None
+        self._OutputStreamName = None
+        self._OutputStreamType = None
+        self._OutputStreamBitRate = None
+        self._OutputStreamGop = None
+        self._OutputStreamFrameRate = None
+        self._OutputAudioBitRate = None
+        self._OutputAudioSampleRate = None
+        self._OutputAudioChannels = None
+        self._MixSei = None
+
+    @property
+    def OutputStreamName(self):
+        return self._OutputStreamName
+
+    @OutputStreamName.setter
+    def OutputStreamName(self, OutputStreamName):
+        self._OutputStreamName = OutputStreamName
+
+    @property
+    def OutputStreamType(self):
+        return self._OutputStreamType
+
+    @OutputStreamType.setter
+    def OutputStreamType(self, OutputStreamType):
+        self._OutputStreamType = OutputStreamType
+
+    @property
+    def OutputStreamBitRate(self):
+        return self._OutputStreamBitRate
+
+    @OutputStreamBitRate.setter
+    def OutputStreamBitRate(self, OutputStreamBitRate):
+        self._OutputStreamBitRate = OutputStreamBitRate
+
+    @property
+    def OutputStreamGop(self):
+        return self._OutputStreamGop
+
+    @OutputStreamGop.setter
+    def OutputStreamGop(self, OutputStreamGop):
+        self._OutputStreamGop = OutputStreamGop
+
+    @property
+    def OutputStreamFrameRate(self):
+        return self._OutputStreamFrameRate
+
+    @OutputStreamFrameRate.setter
+    def OutputStreamFrameRate(self, OutputStreamFrameRate):
+        self._OutputStreamFrameRate = OutputStreamFrameRate
+
+    @property
+    def OutputAudioBitRate(self):
+        return self._OutputAudioBitRate
+
+    @OutputAudioBitRate.setter
+    def OutputAudioBitRate(self, OutputAudioBitRate):
+        self._OutputAudioBitRate = OutputAudioBitRate
+
+    @property
+    def OutputAudioSampleRate(self):
+        return self._OutputAudioSampleRate
+
+    @OutputAudioSampleRate.setter
+    def OutputAudioSampleRate(self, OutputAudioSampleRate):
+        self._OutputAudioSampleRate = OutputAudioSampleRate
+
+    @property
+    def OutputAudioChannels(self):
+        return self._OutputAudioChannels
+
+    @OutputAudioChannels.setter
+    def OutputAudioChannels(self, OutputAudioChannels):
+        self._OutputAudioChannels = OutputAudioChannels
+
+    @property
+    def MixSei(self):
+        return self._MixSei
+
+    @MixSei.setter
+    def MixSei(self, MixSei):
+        self._MixSei = MixSei
 
 
     def _deserialize(self, params):
-        self.OutputStreamName = params.get("OutputStreamName")
-        self.OutputStreamType = params.get("OutputStreamType")
-        self.OutputStreamBitRate = params.get("OutputStreamBitRate")
-        self.OutputStreamGop = params.get("OutputStreamGop")
-        self.OutputStreamFrameRate = params.get("OutputStreamFrameRate")
-        self.OutputAudioBitRate = params.get("OutputAudioBitRate")
-        self.OutputAudioSampleRate = params.get("OutputAudioSampleRate")
-        self.OutputAudioChannels = params.get("OutputAudioChannels")
-        self.MixSei = params.get("MixSei")
+        self._OutputStreamName = params.get("OutputStreamName")
+        self._OutputStreamType = params.get("OutputStreamType")
+        self._OutputStreamBitRate = params.get("OutputStreamBitRate")
+        self._OutputStreamGop = params.get("OutputStreamGop")
+        self._OutputStreamFrameRate = params.get("OutputStreamFrameRate")
+        self._OutputAudioBitRate = params.get("OutputAudioBitRate")
+        self._OutputAudioSampleRate = params.get("OutputAudioSampleRate")
+        self._OutputAudioChannels = params.get("OutputAudioChannels")
+        self._MixSei = params.get("MixSei")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -950,22 +1776,39 @@ class ConcurrentRecordStreamNum(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Time: Time point.
+        :param _Time: Time point.
         :type Time: str
-        :param Num: Number of channels.
+        :param _Num: Number of channels.
         :type Num: int
         """
-        self.Time = None
-        self.Num = None
+        self._Time = None
+        self._Num = None
+
+    @property
+    def Time(self):
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def Num(self):
+        return self._Num
+
+    @Num.setter
+    def Num(self, Num):
+        self._Num = Num
 
 
     def _deserialize(self, params):
-        self.Time = params.get("Time")
-        self.Num = params.get("Num")
+        self._Time = params.get("Time")
+        self._Num = params.get("Num")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -978,13 +1821,13 @@ class CreateCommonMixStreamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MixStreamSessionId: ID of a stream mix session (from applying for the stream mix to cancelling it). This parameter can contain up to 80 bytes of letters, digits, and underscores.
+        :param _MixStreamSessionId: ID of a stream mix session (from applying for the stream mix to cancelling it). This parameter can contain up to 80 bytes of letters, digits, and underscores.
         :type MixStreamSessionId: str
-        :param InputStreamList: Input stream list for stream mix.
+        :param _InputStreamList: Input stream list for stream mix.
         :type InputStreamList: list of CommonMixInputParam
-        :param OutputParams: Output stream parameter for stream mix.
+        :param _OutputParams: Output stream parameter for stream mix.
         :type OutputParams: :class:`tencentcloud.live.v20180801.models.CommonMixOutputParams`
-        :param MixStreamTemplateId: Input template ID. If this parameter is set, the output will be generated according to the default template layout, and there is no need to enter the custom position parameters.
+        :param _MixStreamTemplateId: Input template ID. If this parameter is set, the output will be generated according to the default template layout, and there is no need to enter the custom position parameters.
 If this parameter is left empty, 0 will be used by default.
 For two input sources, 10, 20, 30, 40, and 50 are supported.
 For three input sources, 310, 390, and 391 are supported.
@@ -992,35 +1835,76 @@ For four input sources, 410 is supported.
 For five input sources, 510 and 590 are supported.
 For six input sources, 610 is supported.
         :type MixStreamTemplateId: int
-        :param ControlParams: Special control parameter for stream mix. If there are no special needs, leave it empty.
+        :param _ControlParams: Special control parameter for stream mix. If there are no special needs, leave it empty.
         :type ControlParams: :class:`tencentcloud.live.v20180801.models.CommonMixControlParams`
         """
-        self.MixStreamSessionId = None
-        self.InputStreamList = None
-        self.OutputParams = None
-        self.MixStreamTemplateId = None
-        self.ControlParams = None
+        self._MixStreamSessionId = None
+        self._InputStreamList = None
+        self._OutputParams = None
+        self._MixStreamTemplateId = None
+        self._ControlParams = None
+
+    @property
+    def MixStreamSessionId(self):
+        return self._MixStreamSessionId
+
+    @MixStreamSessionId.setter
+    def MixStreamSessionId(self, MixStreamSessionId):
+        self._MixStreamSessionId = MixStreamSessionId
+
+    @property
+    def InputStreamList(self):
+        return self._InputStreamList
+
+    @InputStreamList.setter
+    def InputStreamList(self, InputStreamList):
+        self._InputStreamList = InputStreamList
+
+    @property
+    def OutputParams(self):
+        return self._OutputParams
+
+    @OutputParams.setter
+    def OutputParams(self, OutputParams):
+        self._OutputParams = OutputParams
+
+    @property
+    def MixStreamTemplateId(self):
+        return self._MixStreamTemplateId
+
+    @MixStreamTemplateId.setter
+    def MixStreamTemplateId(self, MixStreamTemplateId):
+        self._MixStreamTemplateId = MixStreamTemplateId
+
+    @property
+    def ControlParams(self):
+        return self._ControlParams
+
+    @ControlParams.setter
+    def ControlParams(self, ControlParams):
+        self._ControlParams = ControlParams
 
 
     def _deserialize(self, params):
-        self.MixStreamSessionId = params.get("MixStreamSessionId")
+        self._MixStreamSessionId = params.get("MixStreamSessionId")
         if params.get("InputStreamList") is not None:
-            self.InputStreamList = []
+            self._InputStreamList = []
             for item in params.get("InputStreamList"):
                 obj = CommonMixInputParam()
                 obj._deserialize(item)
-                self.InputStreamList.append(obj)
+                self._InputStreamList.append(obj)
         if params.get("OutputParams") is not None:
-            self.OutputParams = CommonMixOutputParams()
-            self.OutputParams._deserialize(params.get("OutputParams"))
-        self.MixStreamTemplateId = params.get("MixStreamTemplateId")
+            self._OutputParams = CommonMixOutputParams()
+            self._OutputParams._deserialize(params.get("OutputParams"))
+        self._MixStreamTemplateId = params.get("MixStreamTemplateId")
         if params.get("ControlParams") is not None:
-            self.ControlParams = CommonMixControlParams()
-            self.ControlParams._deserialize(params.get("ControlParams"))
+            self._ControlParams = CommonMixControlParams()
+            self._ControlParams._deserialize(params.get("ControlParams"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1033,14 +1917,22 @@ class CreateCommonMixStreamResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateLiveCallbackRuleRequest(AbstractModel):
@@ -1050,26 +1942,51 @@ class CreateLiveCallbackRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainName: Push domain name.
+        :param _DomainName: Push domain name.
         :type DomainName: str
-        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
+        :param _AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
         :type AppName: str
-        :param TemplateId: Template ID.
+        :param _TemplateId: Template ID.
         :type TemplateId: int
         """
-        self.DomainName = None
-        self.AppName = None
-        self.TemplateId = None
+        self._DomainName = None
+        self._AppName = None
+        self._TemplateId = None
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
 
 
     def _deserialize(self, params):
-        self.DomainName = params.get("DomainName")
-        self.AppName = params.get("AppName")
-        self.TemplateId = params.get("TemplateId")
+        self._DomainName = params.get("DomainName")
+        self._AppName = params.get("AppName")
+        self._TemplateId = params.get("TemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1082,14 +1999,22 @@ class CreateLiveCallbackRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateLiveCallbackTemplateRequest(AbstractModel):
@@ -1099,64 +2024,145 @@ class CreateLiveCallbackTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateName: Template name.
+        :param _TemplateName: Template name.
 Maximum length: 255 bytes.
 Only letters, digits, underscores, and hyphens can be contained.
         :type TemplateName: str
-        :param Description: Description.
+        :param _Description: Description.
 Maximum length: 1,024 bytes.
 Only letters, digits, underscores, and hyphens can be contained.
         :type Description: str
-        :param StreamBeginNotifyUrl: Stream starting callback URL,
+        :param _StreamBeginNotifyUrl: Stream starting callback URL,
 Protocol document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).
         :type StreamBeginNotifyUrl: str
-        :param StreamEndNotifyUrl: Interruption callback URL,
+        :param _StreamEndNotifyUrl: Interruption callback URL,
 Protocol document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).
         :type StreamEndNotifyUrl: str
-        :param RecordNotifyUrl: Recording callback URL,
+        :param _RecordNotifyUrl: Recording callback URL,
 Protocol document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).
         :type RecordNotifyUrl: str
-        :param SnapshotNotifyUrl: Screencapturing callback URL,
+        :param _SnapshotNotifyUrl: Screencapturing callback URL,
 Protocol document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).
         :type SnapshotNotifyUrl: str
-        :param PornCensorshipNotifyUrl: Porn detection callback URL,
+        :param _PornCensorshipNotifyUrl: Porn detection callback URL,
 Protocol document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32741?from_cn_redirect=1).
         :type PornCensorshipNotifyUrl: str
-        :param CallbackKey: Callback key. The callback URL is public. For the callback signature, please see the event message notification document.
+        :param _CallbackKey: Callback key. The callback URL is public. For the callback signature, please see the event message notification document.
 [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).
         :type CallbackKey: str
-        :param StreamMixNotifyUrl: Disused
+        :param _StreamMixNotifyUrl: Disused
         :type StreamMixNotifyUrl: str
-        :param PushExceptionNotifyUrl: The push error callback URL.
+        :param _PushExceptionNotifyUrl: The push error callback URL.
         :type PushExceptionNotifyUrl: str
         """
-        self.TemplateName = None
-        self.Description = None
-        self.StreamBeginNotifyUrl = None
-        self.StreamEndNotifyUrl = None
-        self.RecordNotifyUrl = None
-        self.SnapshotNotifyUrl = None
-        self.PornCensorshipNotifyUrl = None
-        self.CallbackKey = None
-        self.StreamMixNotifyUrl = None
-        self.PushExceptionNotifyUrl = None
+        self._TemplateName = None
+        self._Description = None
+        self._StreamBeginNotifyUrl = None
+        self._StreamEndNotifyUrl = None
+        self._RecordNotifyUrl = None
+        self._SnapshotNotifyUrl = None
+        self._PornCensorshipNotifyUrl = None
+        self._CallbackKey = None
+        self._StreamMixNotifyUrl = None
+        self._PushExceptionNotifyUrl = None
+
+    @property
+    def TemplateName(self):
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def StreamBeginNotifyUrl(self):
+        return self._StreamBeginNotifyUrl
+
+    @StreamBeginNotifyUrl.setter
+    def StreamBeginNotifyUrl(self, StreamBeginNotifyUrl):
+        self._StreamBeginNotifyUrl = StreamBeginNotifyUrl
+
+    @property
+    def StreamEndNotifyUrl(self):
+        return self._StreamEndNotifyUrl
+
+    @StreamEndNotifyUrl.setter
+    def StreamEndNotifyUrl(self, StreamEndNotifyUrl):
+        self._StreamEndNotifyUrl = StreamEndNotifyUrl
+
+    @property
+    def RecordNotifyUrl(self):
+        return self._RecordNotifyUrl
+
+    @RecordNotifyUrl.setter
+    def RecordNotifyUrl(self, RecordNotifyUrl):
+        self._RecordNotifyUrl = RecordNotifyUrl
+
+    @property
+    def SnapshotNotifyUrl(self):
+        return self._SnapshotNotifyUrl
+
+    @SnapshotNotifyUrl.setter
+    def SnapshotNotifyUrl(self, SnapshotNotifyUrl):
+        self._SnapshotNotifyUrl = SnapshotNotifyUrl
+
+    @property
+    def PornCensorshipNotifyUrl(self):
+        return self._PornCensorshipNotifyUrl
+
+    @PornCensorshipNotifyUrl.setter
+    def PornCensorshipNotifyUrl(self, PornCensorshipNotifyUrl):
+        self._PornCensorshipNotifyUrl = PornCensorshipNotifyUrl
+
+    @property
+    def CallbackKey(self):
+        return self._CallbackKey
+
+    @CallbackKey.setter
+    def CallbackKey(self, CallbackKey):
+        self._CallbackKey = CallbackKey
+
+    @property
+    def StreamMixNotifyUrl(self):
+        return self._StreamMixNotifyUrl
+
+    @StreamMixNotifyUrl.setter
+    def StreamMixNotifyUrl(self, StreamMixNotifyUrl):
+        self._StreamMixNotifyUrl = StreamMixNotifyUrl
+
+    @property
+    def PushExceptionNotifyUrl(self):
+        return self._PushExceptionNotifyUrl
+
+    @PushExceptionNotifyUrl.setter
+    def PushExceptionNotifyUrl(self, PushExceptionNotifyUrl):
+        self._PushExceptionNotifyUrl = PushExceptionNotifyUrl
 
 
     def _deserialize(self, params):
-        self.TemplateName = params.get("TemplateName")
-        self.Description = params.get("Description")
-        self.StreamBeginNotifyUrl = params.get("StreamBeginNotifyUrl")
-        self.StreamEndNotifyUrl = params.get("StreamEndNotifyUrl")
-        self.RecordNotifyUrl = params.get("RecordNotifyUrl")
-        self.SnapshotNotifyUrl = params.get("SnapshotNotifyUrl")
-        self.PornCensorshipNotifyUrl = params.get("PornCensorshipNotifyUrl")
-        self.CallbackKey = params.get("CallbackKey")
-        self.StreamMixNotifyUrl = params.get("StreamMixNotifyUrl")
-        self.PushExceptionNotifyUrl = params.get("PushExceptionNotifyUrl")
+        self._TemplateName = params.get("TemplateName")
+        self._Description = params.get("Description")
+        self._StreamBeginNotifyUrl = params.get("StreamBeginNotifyUrl")
+        self._StreamEndNotifyUrl = params.get("StreamEndNotifyUrl")
+        self._RecordNotifyUrl = params.get("RecordNotifyUrl")
+        self._SnapshotNotifyUrl = params.get("SnapshotNotifyUrl")
+        self._PornCensorshipNotifyUrl = params.get("PornCensorshipNotifyUrl")
+        self._CallbackKey = params.get("CallbackKey")
+        self._StreamMixNotifyUrl = params.get("StreamMixNotifyUrl")
+        self._PushExceptionNotifyUrl = params.get("PushExceptionNotifyUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1169,18 +2175,34 @@ class CreateLiveCallbackTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateId: Template ID.
+        :param _TemplateId: Template ID.
         :type TemplateId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TemplateId = None
-        self.RequestId = None
+        self._TemplateId = None
+        self._RequestId = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TemplateId = params.get("TemplateId")
-        self.RequestId = params.get("RequestId")
+        self._TemplateId = params.get("TemplateId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateLivePullStreamTaskRequest(AbstractModel):
@@ -1190,12 +2212,12 @@ class CreateLivePullStreamTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SourceType: The source type. Valid values:
+        :param _SourceType: The source type. Valid values:
 PullLivePushLive: Live streaming
 PullVodPushLive: Video files
 PullPicPushLive: Images
         :type SourceType: str
-        :param SourceUrls: The source URL(s).
+        :param _SourceUrls: The source URL(s).
 If `SourceType` is `PullLivePushLive`, you can specify only one source URL.
 If `SourceType` is `PullVodPushLive`, you can specify at most 30 source URLs.
 Supported file formats: FLV, MP4, HLS.
@@ -1208,22 +2230,22 @@ Notes:
 5. Supported audio coding format: AAC.
 6. Use small video files, preferably not longer than one hour. Large files may take a long time to load or resume after pause. Relay may fail if the time consumed exceeds 15 seconds.
         :type SourceUrls: list of str
-        :param DomainName: The push domain name.
+        :param _DomainName: The push domain name.
 The pulled stream is pushed to this domain.
 Note: If the destination is not a CSS address and its format is different from that of CSS addresses, pass the full address to `ToUrl`. For details, see the description of the `ToUrl` parameter.
         :type DomainName: str
-        :param AppName: The application to push to.
+        :param _AppName: The application to push to.
 The pulled stream is pushed to this application.
         :type AppName: str
-        :param StreamName: The stream name.
+        :param _StreamName: The stream name.
 The pulled stream is pushed under this name.
         :type StreamName: str
-        :param StartTime: The start time.
+        :param _StartTime: The start time.
 It must be in UTC format.
 Example: 2019-01-08T10:00:00Z.
 Note: Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format) is used.
         :type StartTime: str
-        :param EndTime: The end time. Notes:
+        :param _EndTime: The end time. Notes:
 1. The end time must be later than the start time.
 2. The end time and start time must be later than the current time.
 3. The end time and start time must be less than seven days apart.
@@ -1231,14 +2253,14 @@ It must be in UTC format.
 Example: 2019-01-08T10:00:00Z.
 Note: Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format) is used.
         :type EndTime: str
-        :param Operator: The operator.
+        :param _Operator: The operator.
         :type Operator: str
-        :param PushArgs: The push parameter.
+        :param _PushArgs: The push parameter.
 This is a custom parameter carried during push.
 Example:
 bak=1&test=2
         :type PushArgs: str
-        :param CallbackEvents: The events to listen for. If you do not pass this parameter, all events will be listened for.
+        :param _CallbackEvents: The events to listen for. If you do not pass this parameter, all events will be listened for.
 TaskStart: Callback for starting a task
 TaskExit: Callback for ending a task
 VodSourceFileStart: Callback for starting to pull from video files
@@ -1252,32 +2274,32 @@ PullFileFailed: Error pulling from video files.
 PushStreamFailed: Push error.
 FileEndEarly: The video file ended prematurely.
         :type CallbackEvents: list of str
-        :param VodLoopTimes: The number of times to loop video files. Default value: -1.
+        :param _VodLoopTimes: The number of times to loop video files. Default value: -1.
 -1: Loop indefinitely
 0: Do not loop
 > 0: The number of loop times. A task will end either when the videos are looped for the specified number of times or at the specified task end time, whichever is earlier.
 This parameter is valid only when the source is video files.
         :type VodLoopTimes: str
-        :param VodRefreshType: The behavior after the source video files (`SourceUrls`) are changed.
+        :param _VodRefreshType: The behavior after the source video files (`SourceUrls`) are changed.
 ImmediateNewSource: Play the new videos immediately
 ContinueBreakPoint: Play the new videos after the current video is finished playing (the remaining videos in the old playlist will not be played).
 
 This parameter is valid only if the source before the change is video files.
         :type VodRefreshType: str
-        :param CallbackUrl: A custom callback URL.
+        :param _CallbackUrl: A custom callback URL.
 Callbacks about pull and relay events will be sent to this URL.
         :type CallbackUrl: str
-        :param ExtraCmd: Other parameters.
+        :param _ExtraCmd: Other parameters.
 For example, you can use `ignore_region` to ignore the region passed in and assign a region based on load distribution.
         :type ExtraCmd: str
-        :param Comment: The remarks for a task, not longer than 512 bytes.
+        :param _Comment: The remarks for a task, not longer than 512 bytes.
         :type Comment: str
-        :param ToUrl: The complete destination URL.
+        :param _ToUrl: The complete destination URL.
 If you specify this parameter, make sure you pass in an empty string for `DomainName`, `AppName`, and `StreamName`.
 
 Note: Make sure that the expiration time of the signature is later than the task end time.
         :type ToUrl: str
-        :param BackupSourceType: The backup source type.
+        :param _BackupSourceType: The backup source type.
 PullLivePushLive: Live streaming
 PullVodPushLive: Video files
 Notes:
@@ -1285,73 +2307,234 @@ Notes:
 2. When pull from the primary source is interrupted, the system will pull from the backup source.
 3. If the backup source is a video file, each time the video is finished, the system will check if the primary source is recovered and will switch back if it is.
         :type BackupSourceType: str
-        :param BackupSourceUrl: The URL of the backup source.
+        :param _BackupSourceUrl: The URL of the backup source.
 You can specify only one backup source URL.
         :type BackupSourceUrl: str
-        :param WatermarkList: The information of watermarks to add.
+        :param _WatermarkList: The information of watermarks to add.
 Notes:
 1. You can add up to four watermarks to different locations of the video.
 2. Make sure you use publicly accessible URLs for the watermark images.
 3. Supported image formats include PNG, JPG, and GIF.
         :type WatermarkList: list of PullPushWatermarkInfo
-        :param VodLocalMode: Whether to use local mode when the source type is video files. The default is `0`.
+        :param _VodLocalMode: Whether to use local mode when the source type is video files. The default is `0`.
 0: Do not use local mode
 1: Use local mode
 Note: If you enable local mode, MP4 files will be downloaded to local storage, and the local files will be used for push. This ensures more reliable push. Pushing a local file will incur additional fees.
         :type VodLocalMode: int
         """
-        self.SourceType = None
-        self.SourceUrls = None
-        self.DomainName = None
-        self.AppName = None
-        self.StreamName = None
-        self.StartTime = None
-        self.EndTime = None
-        self.Operator = None
-        self.PushArgs = None
-        self.CallbackEvents = None
-        self.VodLoopTimes = None
-        self.VodRefreshType = None
-        self.CallbackUrl = None
-        self.ExtraCmd = None
-        self.Comment = None
-        self.ToUrl = None
-        self.BackupSourceType = None
-        self.BackupSourceUrl = None
-        self.WatermarkList = None
-        self.VodLocalMode = None
+        self._SourceType = None
+        self._SourceUrls = None
+        self._DomainName = None
+        self._AppName = None
+        self._StreamName = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Operator = None
+        self._PushArgs = None
+        self._CallbackEvents = None
+        self._VodLoopTimes = None
+        self._VodRefreshType = None
+        self._CallbackUrl = None
+        self._ExtraCmd = None
+        self._Comment = None
+        self._ToUrl = None
+        self._BackupSourceType = None
+        self._BackupSourceUrl = None
+        self._WatermarkList = None
+        self._VodLocalMode = None
+
+    @property
+    def SourceType(self):
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def SourceUrls(self):
+        return self._SourceUrls
+
+    @SourceUrls.setter
+    def SourceUrls(self, SourceUrls):
+        self._SourceUrls = SourceUrls
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def PushArgs(self):
+        return self._PushArgs
+
+    @PushArgs.setter
+    def PushArgs(self, PushArgs):
+        self._PushArgs = PushArgs
+
+    @property
+    def CallbackEvents(self):
+        return self._CallbackEvents
+
+    @CallbackEvents.setter
+    def CallbackEvents(self, CallbackEvents):
+        self._CallbackEvents = CallbackEvents
+
+    @property
+    def VodLoopTimes(self):
+        return self._VodLoopTimes
+
+    @VodLoopTimes.setter
+    def VodLoopTimes(self, VodLoopTimes):
+        self._VodLoopTimes = VodLoopTimes
+
+    @property
+    def VodRefreshType(self):
+        return self._VodRefreshType
+
+    @VodRefreshType.setter
+    def VodRefreshType(self, VodRefreshType):
+        self._VodRefreshType = VodRefreshType
+
+    @property
+    def CallbackUrl(self):
+        return self._CallbackUrl
+
+    @CallbackUrl.setter
+    def CallbackUrl(self, CallbackUrl):
+        self._CallbackUrl = CallbackUrl
+
+    @property
+    def ExtraCmd(self):
+        return self._ExtraCmd
+
+    @ExtraCmd.setter
+    def ExtraCmd(self, ExtraCmd):
+        self._ExtraCmd = ExtraCmd
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def ToUrl(self):
+        return self._ToUrl
+
+    @ToUrl.setter
+    def ToUrl(self, ToUrl):
+        self._ToUrl = ToUrl
+
+    @property
+    def BackupSourceType(self):
+        return self._BackupSourceType
+
+    @BackupSourceType.setter
+    def BackupSourceType(self, BackupSourceType):
+        self._BackupSourceType = BackupSourceType
+
+    @property
+    def BackupSourceUrl(self):
+        return self._BackupSourceUrl
+
+    @BackupSourceUrl.setter
+    def BackupSourceUrl(self, BackupSourceUrl):
+        self._BackupSourceUrl = BackupSourceUrl
+
+    @property
+    def WatermarkList(self):
+        return self._WatermarkList
+
+    @WatermarkList.setter
+    def WatermarkList(self, WatermarkList):
+        self._WatermarkList = WatermarkList
+
+    @property
+    def VodLocalMode(self):
+        return self._VodLocalMode
+
+    @VodLocalMode.setter
+    def VodLocalMode(self, VodLocalMode):
+        self._VodLocalMode = VodLocalMode
 
 
     def _deserialize(self, params):
-        self.SourceType = params.get("SourceType")
-        self.SourceUrls = params.get("SourceUrls")
-        self.DomainName = params.get("DomainName")
-        self.AppName = params.get("AppName")
-        self.StreamName = params.get("StreamName")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.Operator = params.get("Operator")
-        self.PushArgs = params.get("PushArgs")
-        self.CallbackEvents = params.get("CallbackEvents")
-        self.VodLoopTimes = params.get("VodLoopTimes")
-        self.VodRefreshType = params.get("VodRefreshType")
-        self.CallbackUrl = params.get("CallbackUrl")
-        self.ExtraCmd = params.get("ExtraCmd")
-        self.Comment = params.get("Comment")
-        self.ToUrl = params.get("ToUrl")
-        self.BackupSourceType = params.get("BackupSourceType")
-        self.BackupSourceUrl = params.get("BackupSourceUrl")
+        self._SourceType = params.get("SourceType")
+        self._SourceUrls = params.get("SourceUrls")
+        self._DomainName = params.get("DomainName")
+        self._AppName = params.get("AppName")
+        self._StreamName = params.get("StreamName")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Operator = params.get("Operator")
+        self._PushArgs = params.get("PushArgs")
+        self._CallbackEvents = params.get("CallbackEvents")
+        self._VodLoopTimes = params.get("VodLoopTimes")
+        self._VodRefreshType = params.get("VodRefreshType")
+        self._CallbackUrl = params.get("CallbackUrl")
+        self._ExtraCmd = params.get("ExtraCmd")
+        self._Comment = params.get("Comment")
+        self._ToUrl = params.get("ToUrl")
+        self._BackupSourceType = params.get("BackupSourceType")
+        self._BackupSourceUrl = params.get("BackupSourceUrl")
         if params.get("WatermarkList") is not None:
-            self.WatermarkList = []
+            self._WatermarkList = []
             for item in params.get("WatermarkList"):
                 obj = PullPushWatermarkInfo()
                 obj._deserialize(item)
-                self.WatermarkList.append(obj)
-        self.VodLocalMode = params.get("VodLocalMode")
+                self._WatermarkList.append(obj)
+        self._VodLocalMode = params.get("VodLocalMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1364,18 +2547,34 @@ class CreateLivePullStreamTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: The task ID.
+        :param _TaskId: The task ID.
         :type TaskId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TaskId = None
-        self.RequestId = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateLiveRecordRequest(AbstractModel):
@@ -1385,37 +2584,37 @@ class CreateLiveRecordRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StreamName: Stream name.
+        :param _StreamName: Stream name.
         :type StreamName: str
-        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
+        :param _AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
         :type AppName: str
-        :param DomainName: Push domain name. This parameter must be set for multi-domain name push.
+        :param _DomainName: Push domain name. This parameter must be set for multi-domain name push.
         :type DomainName: str
-        :param StartTime: Recording start time, which is China standard time and should be URL-encoded (RFC3986). For example, the encoding of 2017-01-01 10:10:01 is 2017-01-01+10%3a10%3a01.
+        :param _StartTime: Recording start time, which is China standard time and should be URL-encoded (RFC3986). For example, the encoding of 2017-01-01 10:10:01 is 2017-01-01+10%3a10%3a01.
 In scheduled recording mode, this field must be set; in real-time video recording mode, this field is ignored.
         :type StartTime: str
-        :param EndTime: Recording end time, which is China standard time and should be URL-encoded (RFC3986). For example, the encoding of 2017-01-01 10:30:01 is 2017-01-01+10%3a30%3a01.
+        :param _EndTime: Recording end time, which is China standard time and should be URL-encoded (RFC3986). For example, the encoding of 2017-01-01 10:30:01 is 2017-01-01+10%3a30%3a01.
 In scheduled recording mode, this field must be set; in real-time video recording mode, this field is optional. If the recording is set to real-time video recording mode through the `Highlight` parameter, the set end time should not be more than 30 minutes after the current time. If the set end time is more than 30 minutes after the current time, earlier than the current time, or left empty, the actual end time will be 30 minutes after the current time.
         :type EndTime: str
-        :param RecordType: Recording type.
+        :param _RecordType: Recording type.
 "video": Audio-video recording **(default)**.
 "audio": audio recording.
 In both scheduled and real-time video recording modes, this parameter is valid and is not case sensitive.
         :type RecordType: str
-        :param FileFormat: Recording file format. Valid values:
+        :param _FileFormat: Recording file format. Valid values:
 "flv" **(default)**, "hls", "mp4", "aac", "mp3".
 In both scheduled and real-time video recording modes, this parameter is valid and is not case sensitive.
         :type FileFormat: str
-        :param Highlight: Mark for enabling real-time video recording mode.
+        :param _Highlight: Mark for enabling real-time video recording mode.
 0: Real-time video recording mode is not enabled, i.e., the scheduled recording mode is used **(default)**. See [Sample 1](#.E7.A4.BA.E4.BE.8B1-.E5.88.9B.E5.BB.BA.E5.AE.9A.E6.97.B6.E5.BD.95.E5.88.B6.E4.BB.BB.E5.8A.A1).
 1: Real-time video recording mode is enabled. See [Sample 2](#.E7.A4.BA.E4.BE.8B2-.E5.88.9B.E5.BB.BA.E5.AE.9E.E6.97.B6.E5.BD.95.E5.88.B6.E4.BB.BB.E5.8A.A1).
         :type Highlight: int
-        :param MixStream: Flag for enabling A+B=C mixed stream recording.
+        :param _MixStream: Flag for enabling A+B=C mixed stream recording.
 0: A+B=C mixed stream recording is not enabled **(default)**.
 1: A+B=C mixed stream recording is enabled.
 In both scheduled and real-time video recording modes, this parameter is valid.
         :type MixStream: int
-        :param StreamParam: Recording stream parameter. The following parameters are supported currently:
+        :param _StreamParam: Recording stream parameter. The following parameters are supported currently:
 record_interval: recording interval in seconds. Value range: 1800-7200.
 storage_time: recording file storage duration in seconds.
 Example: record_interval=3600&storage_time=2592000.
@@ -1423,33 +2622,114 @@ Note: the parameter needs to be URL-encoded.
 In both scheduled and real-time video recording modes, this parameter is valid.
         :type StreamParam: str
         """
-        self.StreamName = None
-        self.AppName = None
-        self.DomainName = None
-        self.StartTime = None
-        self.EndTime = None
-        self.RecordType = None
-        self.FileFormat = None
-        self.Highlight = None
-        self.MixStream = None
-        self.StreamParam = None
+        self._StreamName = None
+        self._AppName = None
+        self._DomainName = None
+        self._StartTime = None
+        self._EndTime = None
+        self._RecordType = None
+        self._FileFormat = None
+        self._Highlight = None
+        self._MixStream = None
+        self._StreamParam = None
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def RecordType(self):
+        return self._RecordType
+
+    @RecordType.setter
+    def RecordType(self, RecordType):
+        self._RecordType = RecordType
+
+    @property
+    def FileFormat(self):
+        return self._FileFormat
+
+    @FileFormat.setter
+    def FileFormat(self, FileFormat):
+        self._FileFormat = FileFormat
+
+    @property
+    def Highlight(self):
+        return self._Highlight
+
+    @Highlight.setter
+    def Highlight(self, Highlight):
+        self._Highlight = Highlight
+
+    @property
+    def MixStream(self):
+        return self._MixStream
+
+    @MixStream.setter
+    def MixStream(self, MixStream):
+        self._MixStream = MixStream
+
+    @property
+    def StreamParam(self):
+        return self._StreamParam
+
+    @StreamParam.setter
+    def StreamParam(self, StreamParam):
+        self._StreamParam = StreamParam
 
 
     def _deserialize(self, params):
-        self.StreamName = params.get("StreamName")
-        self.AppName = params.get("AppName")
-        self.DomainName = params.get("DomainName")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.RecordType = params.get("RecordType")
-        self.FileFormat = params.get("FileFormat")
-        self.Highlight = params.get("Highlight")
-        self.MixStream = params.get("MixStream")
-        self.StreamParam = params.get("StreamParam")
+        self._StreamName = params.get("StreamName")
+        self._AppName = params.get("AppName")
+        self._DomainName = params.get("DomainName")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._RecordType = params.get("RecordType")
+        self._FileFormat = params.get("FileFormat")
+        self._Highlight = params.get("Highlight")
+        self._MixStream = params.get("MixStream")
+        self._StreamParam = params.get("StreamParam")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1462,18 +2742,34 @@ class CreateLiveRecordResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: Task ID, which uniquely identifies a recording task globally.
+        :param _TaskId: Task ID, which uniquely identifies a recording task globally.
         :type TaskId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TaskId = None
-        self.RequestId = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateLiveRecordRuleRequest(AbstractModel):
@@ -1483,31 +2779,64 @@ class CreateLiveRecordRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainName: Push domain name.
+        :param _DomainName: Push domain name.
         :type DomainName: str
-        :param TemplateId: Template ID.
+        :param _TemplateId: Template ID.
         :type TemplateId: int
-        :param AppName: Push path, which is the same as the AppName in push and playback addresses and is "live" by default.
+        :param _AppName: Push path, which is the same as the AppName in push and playback addresses and is "live" by default.
         :type AppName: str
-        :param StreamName: Stream name.
+        :param _StreamName: Stream name.
 Note: If the parameter is a non-empty string, the rule will be only applicable to the particular stream.
         :type StreamName: str
         """
-        self.DomainName = None
-        self.TemplateId = None
-        self.AppName = None
-        self.StreamName = None
+        self._DomainName = None
+        self._TemplateId = None
+        self._AppName = None
+        self._StreamName = None
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
 
 
     def _deserialize(self, params):
-        self.DomainName = params.get("DomainName")
-        self.TemplateId = params.get("TemplateId")
-        self.AppName = params.get("AppName")
-        self.StreamName = params.get("StreamName")
+        self._DomainName = params.get("DomainName")
+        self._TemplateId = params.get("TemplateId")
+        self._AppName = params.get("AppName")
+        self._StreamName = params.get("StreamName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1520,14 +2849,22 @@ class CreateLiveRecordRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateLiveRecordTemplateRequest(AbstractModel):
@@ -1537,74 +2874,163 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateName: Template name. Only letters, digits, underscores, and hyphens can be contained.
+        :param _TemplateName: Template name. Only letters, digits, underscores, and hyphens can be contained.
         :type TemplateName: str
-        :param Description: Message description
+        :param _Description: Message description
         :type Description: str
-        :param FlvParam: FLV recording parameter, which is set when FLV recording is enabled.
+        :param _FlvParam: FLV recording parameter, which is set when FLV recording is enabled.
         :type FlvParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param HlsParam: HLS recording parameter, which is set when HLS recording is enabled.
+        :param _HlsParam: HLS recording parameter, which is set when HLS recording is enabled.
         :type HlsParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param Mp4Param: Mp4 recording parameter, which is set when Mp4 recording is enabled.
+        :param _Mp4Param: Mp4 recording parameter, which is set when Mp4 recording is enabled.
         :type Mp4Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param AacParam: AAC recording parameter, which is set when AAC recording is enabled.
+        :param _AacParam: AAC recording parameter, which is set when AAC recording is enabled.
         :type AacParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param IsDelayLive: LVB type. Default value: 0.
+        :param _IsDelayLive: LVB type. Default value: 0.
 0: LVB.
 1: LCB.
         :type IsDelayLive: int
-        :param HlsSpecialParam: HLS-specific recording parameter.
+        :param _HlsSpecialParam: HLS-specific recording parameter.
         :type HlsSpecialParam: :class:`tencentcloud.live.v20180801.models.HlsSpecialParam`
-        :param Mp3Param: Mp3 recording parameter, which is set when Mp3 recording is enabled.
+        :param _Mp3Param: Mp3 recording parameter, which is set when Mp3 recording is enabled.
         :type Mp3Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param RemoveWatermark: Whether to remove the watermark. This parameter is invalid if `IsDelayLive` is `1`.
+        :param _RemoveWatermark: Whether to remove the watermark. This parameter is invalid if `IsDelayLive` is `1`.
         :type RemoveWatermark: bool
-        :param FlvSpecialParam: A special parameter for FLV recording.
+        :param _FlvSpecialParam: A special parameter for FLV recording.
         :type FlvSpecialParam: :class:`tencentcloud.live.v20180801.models.FlvSpecialParam`
         """
-        self.TemplateName = None
-        self.Description = None
-        self.FlvParam = None
-        self.HlsParam = None
-        self.Mp4Param = None
-        self.AacParam = None
-        self.IsDelayLive = None
-        self.HlsSpecialParam = None
-        self.Mp3Param = None
-        self.RemoveWatermark = None
-        self.FlvSpecialParam = None
+        self._TemplateName = None
+        self._Description = None
+        self._FlvParam = None
+        self._HlsParam = None
+        self._Mp4Param = None
+        self._AacParam = None
+        self._IsDelayLive = None
+        self._HlsSpecialParam = None
+        self._Mp3Param = None
+        self._RemoveWatermark = None
+        self._FlvSpecialParam = None
+
+    @property
+    def TemplateName(self):
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def FlvParam(self):
+        return self._FlvParam
+
+    @FlvParam.setter
+    def FlvParam(self, FlvParam):
+        self._FlvParam = FlvParam
+
+    @property
+    def HlsParam(self):
+        return self._HlsParam
+
+    @HlsParam.setter
+    def HlsParam(self, HlsParam):
+        self._HlsParam = HlsParam
+
+    @property
+    def Mp4Param(self):
+        return self._Mp4Param
+
+    @Mp4Param.setter
+    def Mp4Param(self, Mp4Param):
+        self._Mp4Param = Mp4Param
+
+    @property
+    def AacParam(self):
+        return self._AacParam
+
+    @AacParam.setter
+    def AacParam(self, AacParam):
+        self._AacParam = AacParam
+
+    @property
+    def IsDelayLive(self):
+        return self._IsDelayLive
+
+    @IsDelayLive.setter
+    def IsDelayLive(self, IsDelayLive):
+        self._IsDelayLive = IsDelayLive
+
+    @property
+    def HlsSpecialParam(self):
+        return self._HlsSpecialParam
+
+    @HlsSpecialParam.setter
+    def HlsSpecialParam(self, HlsSpecialParam):
+        self._HlsSpecialParam = HlsSpecialParam
+
+    @property
+    def Mp3Param(self):
+        return self._Mp3Param
+
+    @Mp3Param.setter
+    def Mp3Param(self, Mp3Param):
+        self._Mp3Param = Mp3Param
+
+    @property
+    def RemoveWatermark(self):
+        return self._RemoveWatermark
+
+    @RemoveWatermark.setter
+    def RemoveWatermark(self, RemoveWatermark):
+        self._RemoveWatermark = RemoveWatermark
+
+    @property
+    def FlvSpecialParam(self):
+        return self._FlvSpecialParam
+
+    @FlvSpecialParam.setter
+    def FlvSpecialParam(self, FlvSpecialParam):
+        self._FlvSpecialParam = FlvSpecialParam
 
 
     def _deserialize(self, params):
-        self.TemplateName = params.get("TemplateName")
-        self.Description = params.get("Description")
+        self._TemplateName = params.get("TemplateName")
+        self._Description = params.get("Description")
         if params.get("FlvParam") is not None:
-            self.FlvParam = RecordParam()
-            self.FlvParam._deserialize(params.get("FlvParam"))
+            self._FlvParam = RecordParam()
+            self._FlvParam._deserialize(params.get("FlvParam"))
         if params.get("HlsParam") is not None:
-            self.HlsParam = RecordParam()
-            self.HlsParam._deserialize(params.get("HlsParam"))
+            self._HlsParam = RecordParam()
+            self._HlsParam._deserialize(params.get("HlsParam"))
         if params.get("Mp4Param") is not None:
-            self.Mp4Param = RecordParam()
-            self.Mp4Param._deserialize(params.get("Mp4Param"))
+            self._Mp4Param = RecordParam()
+            self._Mp4Param._deserialize(params.get("Mp4Param"))
         if params.get("AacParam") is not None:
-            self.AacParam = RecordParam()
-            self.AacParam._deserialize(params.get("AacParam"))
-        self.IsDelayLive = params.get("IsDelayLive")
+            self._AacParam = RecordParam()
+            self._AacParam._deserialize(params.get("AacParam"))
+        self._IsDelayLive = params.get("IsDelayLive")
         if params.get("HlsSpecialParam") is not None:
-            self.HlsSpecialParam = HlsSpecialParam()
-            self.HlsSpecialParam._deserialize(params.get("HlsSpecialParam"))
+            self._HlsSpecialParam = HlsSpecialParam()
+            self._HlsSpecialParam._deserialize(params.get("HlsSpecialParam"))
         if params.get("Mp3Param") is not None:
-            self.Mp3Param = RecordParam()
-            self.Mp3Param._deserialize(params.get("Mp3Param"))
-        self.RemoveWatermark = params.get("RemoveWatermark")
+            self._Mp3Param = RecordParam()
+            self._Mp3Param._deserialize(params.get("Mp3Param"))
+        self._RemoveWatermark = params.get("RemoveWatermark")
         if params.get("FlvSpecialParam") is not None:
-            self.FlvSpecialParam = FlvSpecialParam()
-            self.FlvSpecialParam._deserialize(params.get("FlvSpecialParam"))
+            self._FlvSpecialParam = FlvSpecialParam()
+            self._FlvSpecialParam._deserialize(params.get("FlvSpecialParam"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1617,18 +3043,34 @@ class CreateLiveRecordTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateId: Template ID.
+        :param _TemplateId: Template ID.
         :type TemplateId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TemplateId = None
-        self.RequestId = None
+        self._TemplateId = None
+        self._RequestId = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TemplateId = params.get("TemplateId")
-        self.RequestId = params.get("RequestId")
+        self._TemplateId = params.get("TemplateId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateLiveSnapshotRuleRequest(AbstractModel):
@@ -1638,31 +3080,64 @@ class CreateLiveSnapshotRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainName: Push domain name.
+        :param _DomainName: Push domain name.
         :type DomainName: str
-        :param TemplateId: Template ID.
+        :param _TemplateId: Template ID.
         :type TemplateId: int
-        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
+        :param _AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
         :type AppName: str
-        :param StreamName: Stream name.
+        :param _StreamName: Stream name.
 Note: if this parameter is a non-empty string, the rule will take effect only for the particular stream.
         :type StreamName: str
         """
-        self.DomainName = None
-        self.TemplateId = None
-        self.AppName = None
-        self.StreamName = None
+        self._DomainName = None
+        self._TemplateId = None
+        self._AppName = None
+        self._StreamName = None
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
 
 
     def _deserialize(self, params):
-        self.DomainName = params.get("DomainName")
-        self.TemplateId = params.get("TemplateId")
-        self.AppName = params.get("AppName")
-        self.StreamName = params.get("StreamName")
+        self._DomainName = params.get("DomainName")
+        self._TemplateId = params.get("TemplateId")
+        self._AppName = params.get("AppName")
+        self._StreamName = params.get("StreamName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1675,14 +3150,22 @@ class CreateLiveSnapshotRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateLiveSnapshotTemplateRequest(AbstractModel):
@@ -1692,72 +3175,161 @@ class CreateLiveSnapshotTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateName: Template name.
+        :param _TemplateName: Template name.
 Maximum length: 255 bytes.
 Only letters, digits, underscores, and hyphens can be contained.
         :type TemplateName: str
-        :param CosAppId: COS application ID.
+        :param _CosAppId: COS application ID.
         :type CosAppId: int
-        :param CosBucket: COS bucket name.
+        :param _CosBucket: COS bucket name.
 Note: the value of `CosBucket` cannot contain `-[appid]`.
         :type CosBucket: str
-        :param CosRegion: COS region.
+        :param _CosRegion: COS region.
         :type CosRegion: str
-        :param Description: Description.
+        :param _Description: Description.
 Maximum length: 1,024 bytes.
 Only letters, digits, underscores, and hyphens can be contained.
         :type Description: str
-        :param SnapshotInterval: Screencapturing interval (s). Default value: 10
+        :param _SnapshotInterval: Screencapturing interval (s). Default value: 10
 Value range: 2-300
         :type SnapshotInterval: int
-        :param Width: Screenshot width. Default value: `0` (original width)
+        :param _Width: Screenshot width. Default value: `0` (original width)
 Value range: 0-3000
         :type Width: int
-        :param Height: Screenshot height. Default value: `0` (original height)
+        :param _Height: Screenshot height. Default value: `0` (original height)
 Value range: 0-2000
         :type Height: int
-        :param PornFlag: Whether to enable porn detection. 0: no, 1: yes. Default value: 0
+        :param _PornFlag: Whether to enable porn detection. 0: no, 1: yes. Default value: 0
         :type PornFlag: int
-        :param CosPrefix: COS Bucket folder prefix.
+        :param _CosPrefix: COS Bucket folder prefix.
 If no value is entered, the default value
 `/{Year}-{Month}-{Day}`
 will be used.
         :type CosPrefix: str
-        :param CosFileName: COS filename.
+        :param _CosFileName: COS filename.
 If no value is entered, the default value 
 `{StreamID}-screenshot-{Hour}-{Minute}-{Second}-{Width}x{Height}{Ext}`
 will be used.
         :type CosFileName: str
         """
-        self.TemplateName = None
-        self.CosAppId = None
-        self.CosBucket = None
-        self.CosRegion = None
-        self.Description = None
-        self.SnapshotInterval = None
-        self.Width = None
-        self.Height = None
-        self.PornFlag = None
-        self.CosPrefix = None
-        self.CosFileName = None
+        self._TemplateName = None
+        self._CosAppId = None
+        self._CosBucket = None
+        self._CosRegion = None
+        self._Description = None
+        self._SnapshotInterval = None
+        self._Width = None
+        self._Height = None
+        self._PornFlag = None
+        self._CosPrefix = None
+        self._CosFileName = None
+
+    @property
+    def TemplateName(self):
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+    @property
+    def CosAppId(self):
+        return self._CosAppId
+
+    @CosAppId.setter
+    def CosAppId(self, CosAppId):
+        self._CosAppId = CosAppId
+
+    @property
+    def CosBucket(self):
+        return self._CosBucket
+
+    @CosBucket.setter
+    def CosBucket(self, CosBucket):
+        self._CosBucket = CosBucket
+
+    @property
+    def CosRegion(self):
+        return self._CosRegion
+
+    @CosRegion.setter
+    def CosRegion(self, CosRegion):
+        self._CosRegion = CosRegion
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def SnapshotInterval(self):
+        return self._SnapshotInterval
+
+    @SnapshotInterval.setter
+    def SnapshotInterval(self, SnapshotInterval):
+        self._SnapshotInterval = SnapshotInterval
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def PornFlag(self):
+        return self._PornFlag
+
+    @PornFlag.setter
+    def PornFlag(self, PornFlag):
+        self._PornFlag = PornFlag
+
+    @property
+    def CosPrefix(self):
+        return self._CosPrefix
+
+    @CosPrefix.setter
+    def CosPrefix(self, CosPrefix):
+        self._CosPrefix = CosPrefix
+
+    @property
+    def CosFileName(self):
+        return self._CosFileName
+
+    @CosFileName.setter
+    def CosFileName(self, CosFileName):
+        self._CosFileName = CosFileName
 
 
     def _deserialize(self, params):
-        self.TemplateName = params.get("TemplateName")
-        self.CosAppId = params.get("CosAppId")
-        self.CosBucket = params.get("CosBucket")
-        self.CosRegion = params.get("CosRegion")
-        self.Description = params.get("Description")
-        self.SnapshotInterval = params.get("SnapshotInterval")
-        self.Width = params.get("Width")
-        self.Height = params.get("Height")
-        self.PornFlag = params.get("PornFlag")
-        self.CosPrefix = params.get("CosPrefix")
-        self.CosFileName = params.get("CosFileName")
+        self._TemplateName = params.get("TemplateName")
+        self._CosAppId = params.get("CosAppId")
+        self._CosBucket = params.get("CosBucket")
+        self._CosRegion = params.get("CosRegion")
+        self._Description = params.get("Description")
+        self._SnapshotInterval = params.get("SnapshotInterval")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        self._PornFlag = params.get("PornFlag")
+        self._CosPrefix = params.get("CosPrefix")
+        self._CosFileName = params.get("CosFileName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1770,18 +3342,34 @@ class CreateLiveSnapshotTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateId: Template ID.
+        :param _TemplateId: Template ID.
         :type TemplateId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TemplateId = None
-        self.RequestId = None
+        self._TemplateId = None
+        self._RequestId = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TemplateId = params.get("TemplateId")
-        self.RequestId = params.get("RequestId")
+        self._TemplateId = params.get("TemplateId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateLiveTimeShiftRuleRequest(AbstractModel):
@@ -1791,31 +3379,64 @@ class CreateLiveTimeShiftRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainName: The push domain.
+        :param _DomainName: The push domain.
         :type DomainName: str
-        :param AppName: The push path, which should be the same as `AppName` in the push and playback URLs. The default value is `live`.
+        :param _AppName: The push path, which should be the same as `AppName` in the push and playback URLs. The default value is `live`.
         :type AppName: str
-        :param StreamName: The stream name.
+        :param _StreamName: The stream name.
 Note: If you pass in a non-empty string, the rule will only be applied to the specified stream.
         :type StreamName: str
-        :param TemplateId: The template ID.
+        :param _TemplateId: The template ID.
         :type TemplateId: int
         """
-        self.DomainName = None
-        self.AppName = None
-        self.StreamName = None
-        self.TemplateId = None
+        self._DomainName = None
+        self._AppName = None
+        self._StreamName = None
+        self._TemplateId = None
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
 
 
     def _deserialize(self, params):
-        self.DomainName = params.get("DomainName")
-        self.AppName = params.get("AppName")
-        self.StreamName = params.get("StreamName")
-        self.TemplateId = params.get("TemplateId")
+        self._DomainName = params.get("DomainName")
+        self._AppName = params.get("AppName")
+        self._StreamName = params.get("StreamName")
+        self._TemplateId = params.get("TemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1828,14 +3449,22 @@ class CreateLiveTimeShiftRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateLiveTimeShiftTemplateRequest(AbstractModel):
@@ -1845,55 +3474,112 @@ class CreateLiveTimeShiftTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateName: The template name.
+        :param _TemplateName: The template name.
 Maximum length: 255 bytes.
 Only letters, numbers, underscores, and hyphens are supported.
         :type TemplateName: str
-        :param Duration: The time shifting duration.
+        :param _Duration: The time shifting duration.
 Unit: Second.
         :type Duration: int
-        :param Description: The template description.
+        :param _Description: The template description.
 Only letters, numbers, underscores, and hyphens are supported.
         :type Description: str
-        :param Area: The region.
+        :param _Area: The region.
 `Mainland`: The Chinese mainland.
 `Overseas`: Outside the Chinese mainland.
 Default value: `Mainland`.
         :type Area: str
-        :param ItemDuration: The segment size.
+        :param _ItemDuration: The segment size.
 Value range: 3-10.
 Unit: Second.
 Default value: 5
         :type ItemDuration: int
-        :param RemoveWatermark: Whether to remove watermarks.
+        :param _RemoveWatermark: Whether to remove watermarks.
 If you pass in `true`, the original stream will be recorded.
 Default value: `false`.
         :type RemoveWatermark: bool
-        :param TranscodeTemplateIds: The transcoding template IDs.
+        :param _TranscodeTemplateIds: The transcoding template IDs.
 This API works only if `RemoveWatermark` is `false`.
         :type TranscodeTemplateIds: list of int
         """
-        self.TemplateName = None
-        self.Duration = None
-        self.Description = None
-        self.Area = None
-        self.ItemDuration = None
-        self.RemoveWatermark = None
-        self.TranscodeTemplateIds = None
+        self._TemplateName = None
+        self._Duration = None
+        self._Description = None
+        self._Area = None
+        self._ItemDuration = None
+        self._RemoveWatermark = None
+        self._TranscodeTemplateIds = None
+
+    @property
+    def TemplateName(self):
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Area(self):
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def ItemDuration(self):
+        return self._ItemDuration
+
+    @ItemDuration.setter
+    def ItemDuration(self, ItemDuration):
+        self._ItemDuration = ItemDuration
+
+    @property
+    def RemoveWatermark(self):
+        return self._RemoveWatermark
+
+    @RemoveWatermark.setter
+    def RemoveWatermark(self, RemoveWatermark):
+        self._RemoveWatermark = RemoveWatermark
+
+    @property
+    def TranscodeTemplateIds(self):
+        return self._TranscodeTemplateIds
+
+    @TranscodeTemplateIds.setter
+    def TranscodeTemplateIds(self, TranscodeTemplateIds):
+        self._TranscodeTemplateIds = TranscodeTemplateIds
 
 
     def _deserialize(self, params):
-        self.TemplateName = params.get("TemplateName")
-        self.Duration = params.get("Duration")
-        self.Description = params.get("Description")
-        self.Area = params.get("Area")
-        self.ItemDuration = params.get("ItemDuration")
-        self.RemoveWatermark = params.get("RemoveWatermark")
-        self.TranscodeTemplateIds = params.get("TranscodeTemplateIds")
+        self._TemplateName = params.get("TemplateName")
+        self._Duration = params.get("Duration")
+        self._Description = params.get("Description")
+        self._Area = params.get("Area")
+        self._ItemDuration = params.get("ItemDuration")
+        self._RemoveWatermark = params.get("RemoveWatermark")
+        self._TranscodeTemplateIds = params.get("TranscodeTemplateIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1906,18 +3592,34 @@ class CreateLiveTimeShiftTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateId: The template ID.
+        :param _TemplateId: The template ID.
         :type TemplateId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TemplateId = None
-        self.RequestId = None
+        self._TemplateId = None
+        self._RequestId = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TemplateId = params.get("TemplateId")
-        self.RequestId = params.get("RequestId")
+        self._TemplateId = params.get("TemplateId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateLiveTranscodeRuleRequest(AbstractModel):
@@ -1927,30 +3629,63 @@ class CreateLiveTranscodeRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainName: Playback domain name.
+        :param _DomainName: Playback domain name.
         :type DomainName: str
-        :param AppName: The push path, which is the same as `AppName` in the push and playback addresses and is `live` by default. If you only want to bind the template to a domain, pass in an empty string.
+        :param _AppName: The push path, which is the same as `AppName` in the push and playback addresses and is `live` by default. If you only want to bind the template to a domain, pass in an empty string.
         :type AppName: str
-        :param StreamName: Stream name. If only the domain name or path is bound, leave this parameter blank.
+        :param _StreamName: Stream name. If only the domain name or path is bound, leave this parameter blank.
         :type StreamName: str
-        :param TemplateId: Designates an existing template ID.
+        :param _TemplateId: Designates an existing template ID.
         :type TemplateId: int
         """
-        self.DomainName = None
-        self.AppName = None
-        self.StreamName = None
-        self.TemplateId = None
+        self._DomainName = None
+        self._AppName = None
+        self._StreamName = None
+        self._TemplateId = None
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
 
 
     def _deserialize(self, params):
-        self.DomainName = params.get("DomainName")
-        self.AppName = params.get("AppName")
-        self.StreamName = params.get("StreamName")
-        self.TemplateId = params.get("TemplateId")
+        self._DomainName = params.get("DomainName")
+        self._AppName = params.get("AppName")
+        self._StreamName = params.get("StreamName")
+        self._TemplateId = params.get("TemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1963,14 +3698,22 @@ class CreateLiveTranscodeRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateLiveTranscodeTemplateRequest(AbstractModel):
@@ -1980,130 +3723,307 @@ class CreateLiveTranscodeTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateName: Template name, such as “900p”. This can be only a combination of letters and digits.
+        :param _TemplateName: Template name, such as “900p”. This can be only a combination of letters and digits.
 Length limit:
   Standard transcoding: 1-10 characters
   Top speed codec transcoding: 3-10 characters
         :type TemplateName: str
-        :param VideoBitrate: Video bitrate in Kbps. Value range: 100-8000.
+        :param _VideoBitrate: Video bitrate in Kbps. Value range: 100-8000.
 Note: the transcoding template requires that the bitrate be unique. Therefore, the final saved bitrate may be different from the input bitrate.
         :type VideoBitrate: int
-        :param Acodec: Audio codec. Default value: aac.
+        :param _Acodec: Audio codec. Default value: aac.
 Note: this parameter is unsupported now.
         :type Acodec: str
-        :param AudioBitrate: Audio bitrate. Default value: 0.
+        :param _AudioBitrate: Audio bitrate. Default value: 0.
 Value range: 0-500.
         :type AudioBitrate: int
-        :param Vcodec: Video codec. Valid values: h264, h265, origin (default)
+        :param _Vcodec: Video codec. Valid values: h264, h265, origin (default)
 
 origin: original codec as the output codec
         :type Vcodec: str
-        :param Description: Template description.
+        :param _Description: Template description.
         :type Description: str
-        :param NeedVideo: Whether to keep the video. 0: no; 1: yes. Default value: 1.
+        :param _NeedVideo: Whether to keep the video. 0: no; 1: yes. Default value: 1.
         :type NeedVideo: int
-        :param Width: Width. Default value: 0.
+        :param _Width: Width. Default value: 0.
 Value range: 0-3000
 It must be a multiple of 2. The original width is 0.
         :type Width: int
-        :param NeedAudio: Whether to keep the audio. 0: no; 1: yes. Default value: 1.
+        :param _NeedAudio: Whether to keep the audio. 0: no; 1: yes. Default value: 1.
         :type NeedAudio: int
-        :param Height: Height. Default value: 0
+        :param _Height: Height. Default value: 0
 Value range: 0-3000
 The value must be a multiple of 2. The original height is `0`.
 This parameter is required for a top speed codec template (when `AiTransCode` is `1`).
         :type Height: int
-        :param Fps: Frame rate. Default value: 0.
+        :param _Fps: Frame rate. Default value: 0.
 Value range: 0-60
         :type Fps: int
-        :param Gop: Keyframe interval in seconds. Default value: original interval
+        :param _Gop: Keyframe interval in seconds. Default value: original interval
 Value range: 2-6
         :type Gop: int
-        :param Rotate: Rotation angle. Default value: 0.
+        :param _Rotate: Rotation angle. Default value: 0.
 Valid values: 0, 90, 180, 270
         :type Rotate: int
-        :param Profile: Encoding quality:
+        :param _Profile: Encoding quality:
 baseline/main/high. Default value: baseline.
         :type Profile: str
-        :param BitrateToOrig: Whether to use the original bitrate when the set bitrate is larger than the original bitrate.
+        :param _BitrateToOrig: Whether to use the original bitrate when the set bitrate is larger than the original bitrate.
 0: no, 1: yes
 Default value: 0.
         :type BitrateToOrig: int
-        :param HeightToOrig: Whether to use the original height when the set height is higher than the original height.
+        :param _HeightToOrig: Whether to use the original height when the set height is higher than the original height.
 0: no, 1: yes
 Default value: 0.
         :type HeightToOrig: int
-        :param FpsToOrig: Whether to use the original frame rate when the set frame rate is larger than the original frame rate.
+        :param _FpsToOrig: Whether to use the original frame rate when the set frame rate is larger than the original frame rate.
 0: no, 1: yes
 Default value: 0.
         :type FpsToOrig: int
-        :param AiTransCode: Whether it is a top speed codec template. 0: no, 1: yes. Default value: 0.
+        :param _AiTransCode: Whether it is a top speed codec template. 0: no, 1: yes. Default value: 0.
         :type AiTransCode: int
-        :param AdaptBitratePercent: Bitrate compression ratio of top speed codec video.
+        :param _AdaptBitratePercent: Bitrate compression ratio of top speed codec video.
 Target bitrate of top speed code = VideoBitrate * (1-AdaptBitratePercent)
 
 Value range: 0.0-0.5.
         :type AdaptBitratePercent: float
-        :param ShortEdgeAsHeight: Whether to use the short side as the video height. 0: no, 1: yes. Default value: 0.
+        :param _ShortEdgeAsHeight: Whether to use the short side as the video height. 0: no, 1: yes. Default value: 0.
         :type ShortEdgeAsHeight: int
-        :param DRMType: The DRM encryption type. Valid values: fairplay, normalaes, widevine.
+        :param _DRMType: The DRM encryption type. Valid values: fairplay, normalaes, widevine.
 If you do not pass this parameter or pass in an empty string, the existing configuration will be reset.
         :type DRMType: str
-        :param DRMTracks: The tracks to encrypt. Valid values: AUDIO, SD, HD, UHD1, UHD2. You can choose only one video track (SD, HD, UHD1, or UHD2).
+        :param _DRMTracks: The tracks to encrypt. Valid values: AUDIO, SD, HD, UHD1, UHD2. You can choose only one video track (SD, HD, UHD1, or UHD2).
 If you do not pass this parameter or pass in an empty string, the existing configuration will be reset.
         :type DRMTracks: str
         """
-        self.TemplateName = None
-        self.VideoBitrate = None
-        self.Acodec = None
-        self.AudioBitrate = None
-        self.Vcodec = None
-        self.Description = None
-        self.NeedVideo = None
-        self.Width = None
-        self.NeedAudio = None
-        self.Height = None
-        self.Fps = None
-        self.Gop = None
-        self.Rotate = None
-        self.Profile = None
-        self.BitrateToOrig = None
-        self.HeightToOrig = None
-        self.FpsToOrig = None
-        self.AiTransCode = None
-        self.AdaptBitratePercent = None
-        self.ShortEdgeAsHeight = None
-        self.DRMType = None
-        self.DRMTracks = None
+        self._TemplateName = None
+        self._VideoBitrate = None
+        self._Acodec = None
+        self._AudioBitrate = None
+        self._Vcodec = None
+        self._Description = None
+        self._NeedVideo = None
+        self._Width = None
+        self._NeedAudio = None
+        self._Height = None
+        self._Fps = None
+        self._Gop = None
+        self._Rotate = None
+        self._Profile = None
+        self._BitrateToOrig = None
+        self._HeightToOrig = None
+        self._FpsToOrig = None
+        self._AiTransCode = None
+        self._AdaptBitratePercent = None
+        self._ShortEdgeAsHeight = None
+        self._DRMType = None
+        self._DRMTracks = None
+
+    @property
+    def TemplateName(self):
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+    @property
+    def VideoBitrate(self):
+        return self._VideoBitrate
+
+    @VideoBitrate.setter
+    def VideoBitrate(self, VideoBitrate):
+        self._VideoBitrate = VideoBitrate
+
+    @property
+    def Acodec(self):
+        return self._Acodec
+
+    @Acodec.setter
+    def Acodec(self, Acodec):
+        self._Acodec = Acodec
+
+    @property
+    def AudioBitrate(self):
+        return self._AudioBitrate
+
+    @AudioBitrate.setter
+    def AudioBitrate(self, AudioBitrate):
+        self._AudioBitrate = AudioBitrate
+
+    @property
+    def Vcodec(self):
+        return self._Vcodec
+
+    @Vcodec.setter
+    def Vcodec(self, Vcodec):
+        self._Vcodec = Vcodec
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def NeedVideo(self):
+        return self._NeedVideo
+
+    @NeedVideo.setter
+    def NeedVideo(self, NeedVideo):
+        self._NeedVideo = NeedVideo
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def NeedAudio(self):
+        return self._NeedAudio
+
+    @NeedAudio.setter
+    def NeedAudio(self, NeedAudio):
+        self._NeedAudio = NeedAudio
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def Fps(self):
+        return self._Fps
+
+    @Fps.setter
+    def Fps(self, Fps):
+        self._Fps = Fps
+
+    @property
+    def Gop(self):
+        return self._Gop
+
+    @Gop.setter
+    def Gop(self, Gop):
+        self._Gop = Gop
+
+    @property
+    def Rotate(self):
+        return self._Rotate
+
+    @Rotate.setter
+    def Rotate(self, Rotate):
+        self._Rotate = Rotate
+
+    @property
+    def Profile(self):
+        return self._Profile
+
+    @Profile.setter
+    def Profile(self, Profile):
+        self._Profile = Profile
+
+    @property
+    def BitrateToOrig(self):
+        return self._BitrateToOrig
+
+    @BitrateToOrig.setter
+    def BitrateToOrig(self, BitrateToOrig):
+        self._BitrateToOrig = BitrateToOrig
+
+    @property
+    def HeightToOrig(self):
+        return self._HeightToOrig
+
+    @HeightToOrig.setter
+    def HeightToOrig(self, HeightToOrig):
+        self._HeightToOrig = HeightToOrig
+
+    @property
+    def FpsToOrig(self):
+        return self._FpsToOrig
+
+    @FpsToOrig.setter
+    def FpsToOrig(self, FpsToOrig):
+        self._FpsToOrig = FpsToOrig
+
+    @property
+    def AiTransCode(self):
+        return self._AiTransCode
+
+    @AiTransCode.setter
+    def AiTransCode(self, AiTransCode):
+        self._AiTransCode = AiTransCode
+
+    @property
+    def AdaptBitratePercent(self):
+        return self._AdaptBitratePercent
+
+    @AdaptBitratePercent.setter
+    def AdaptBitratePercent(self, AdaptBitratePercent):
+        self._AdaptBitratePercent = AdaptBitratePercent
+
+    @property
+    def ShortEdgeAsHeight(self):
+        return self._ShortEdgeAsHeight
+
+    @ShortEdgeAsHeight.setter
+    def ShortEdgeAsHeight(self, ShortEdgeAsHeight):
+        self._ShortEdgeAsHeight = ShortEdgeAsHeight
+
+    @property
+    def DRMType(self):
+        return self._DRMType
+
+    @DRMType.setter
+    def DRMType(self, DRMType):
+        self._DRMType = DRMType
+
+    @property
+    def DRMTracks(self):
+        return self._DRMTracks
+
+    @DRMTracks.setter
+    def DRMTracks(self, DRMTracks):
+        self._DRMTracks = DRMTracks
 
 
     def _deserialize(self, params):
-        self.TemplateName = params.get("TemplateName")
-        self.VideoBitrate = params.get("VideoBitrate")
-        self.Acodec = params.get("Acodec")
-        self.AudioBitrate = params.get("AudioBitrate")
-        self.Vcodec = params.get("Vcodec")
-        self.Description = params.get("Description")
-        self.NeedVideo = params.get("NeedVideo")
-        self.Width = params.get("Width")
-        self.NeedAudio = params.get("NeedAudio")
-        self.Height = params.get("Height")
-        self.Fps = params.get("Fps")
-        self.Gop = params.get("Gop")
-        self.Rotate = params.get("Rotate")
-        self.Profile = params.get("Profile")
-        self.BitrateToOrig = params.get("BitrateToOrig")
-        self.HeightToOrig = params.get("HeightToOrig")
-        self.FpsToOrig = params.get("FpsToOrig")
-        self.AiTransCode = params.get("AiTransCode")
-        self.AdaptBitratePercent = params.get("AdaptBitratePercent")
-        self.ShortEdgeAsHeight = params.get("ShortEdgeAsHeight")
-        self.DRMType = params.get("DRMType")
-        self.DRMTracks = params.get("DRMTracks")
+        self._TemplateName = params.get("TemplateName")
+        self._VideoBitrate = params.get("VideoBitrate")
+        self._Acodec = params.get("Acodec")
+        self._AudioBitrate = params.get("AudioBitrate")
+        self._Vcodec = params.get("Vcodec")
+        self._Description = params.get("Description")
+        self._NeedVideo = params.get("NeedVideo")
+        self._Width = params.get("Width")
+        self._NeedAudio = params.get("NeedAudio")
+        self._Height = params.get("Height")
+        self._Fps = params.get("Fps")
+        self._Gop = params.get("Gop")
+        self._Rotate = params.get("Rotate")
+        self._Profile = params.get("Profile")
+        self._BitrateToOrig = params.get("BitrateToOrig")
+        self._HeightToOrig = params.get("HeightToOrig")
+        self._FpsToOrig = params.get("FpsToOrig")
+        self._AiTransCode = params.get("AiTransCode")
+        self._AdaptBitratePercent = params.get("AdaptBitratePercent")
+        self._ShortEdgeAsHeight = params.get("ShortEdgeAsHeight")
+        self._DRMType = params.get("DRMType")
+        self._DRMTracks = params.get("DRMTracks")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2116,18 +4036,34 @@ class CreateLiveTranscodeTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateId: Template ID.
+        :param _TemplateId: Template ID.
         :type TemplateId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TemplateId = None
-        self.RequestId = None
+        self._TemplateId = None
+        self._RequestId = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TemplateId = params.get("TemplateId")
-        self.RequestId = params.get("RequestId")
+        self._TemplateId = params.get("TemplateId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateLiveWatermarkRuleRequest(AbstractModel):
@@ -2137,30 +4073,63 @@ class CreateLiveWatermarkRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainName: Push domain name.
+        :param _DomainName: Push domain name.
         :type DomainName: str
-        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
+        :param _AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
         :type AppName: str
-        :param StreamName: Stream name.
+        :param _StreamName: Stream name.
         :type StreamName: str
-        :param TemplateId: Watermark ID, which is the `WatermarkId` returned by the [AddLiveWatermark](https://intl.cloud.tencent.com/document/product/267/30154?from_cn_redirect=1) API.
+        :param _TemplateId: Watermark ID, which is the `WatermarkId` returned by the [AddLiveWatermark](https://intl.cloud.tencent.com/document/product/267/30154?from_cn_redirect=1) API.
         :type TemplateId: int
         """
-        self.DomainName = None
-        self.AppName = None
-        self.StreamName = None
-        self.TemplateId = None
+        self._DomainName = None
+        self._AppName = None
+        self._StreamName = None
+        self._TemplateId = None
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
 
 
     def _deserialize(self, params):
-        self.DomainName = params.get("DomainName")
-        self.AppName = params.get("AppName")
-        self.StreamName = params.get("StreamName")
-        self.TemplateId = params.get("TemplateId")
+        self._DomainName = params.get("DomainName")
+        self._AppName = params.get("AppName")
+        self._StreamName = params.get("StreamName")
+        self._TemplateId = params.get("TemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2173,14 +4142,22 @@ class CreateLiveWatermarkRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateRecordTaskRequest(AbstractModel):
@@ -2190,48 +4167,113 @@ class CreateRecordTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StreamName: Stream name.
+        :param _StreamName: Stream name.
         :type StreamName: str
-        :param DomainName: Push domain name.
+        :param _DomainName: Push domain name.
         :type DomainName: str
-        :param AppName: Push path.
+        :param _AppName: Push path.
         :type AppName: str
-        :param EndTime: Recording end time in UNIX timestamp format. `EndTime` should be later than `StartTime` and the current time, and the duration between `EndTime` and `StartTime` is up to 24 hours.
+        :param _EndTime: Recording end time in UNIX timestamp format. `EndTime` should be later than `StartTime` and the current time, and the duration between `EndTime` and `StartTime` is up to 24 hours.
         :type EndTime: int
-        :param StartTime: Recording start time in UNIX timestamp format. Leaving this parameter empty means starting recording now. `StartTime` cannot be later than the current time plus 6 days.
+        :param _StartTime: Recording start time in UNIX timestamp format. Leaving this parameter empty means starting recording now. `StartTime` cannot be later than the current time plus 6 days.
         :type StartTime: int
-        :param StreamType: Push type. Default value: 0. Valid values:
+        :param _StreamType: Push type. Default value: 0. Valid values:
 0: LVB push.
 1: mixed stream, i.e., A + B = C mixed stream.
         :type StreamType: int
-        :param TemplateId: Recording template ID, which is the returned value of `CreateLiveRecordTemplate`. If this parameter is left empty or incorrect, the stream will be recorded in HLS format and retained permanently by default.
+        :param _TemplateId: Recording template ID, which is the returned value of `CreateLiveRecordTemplate`. If this parameter is left empty or incorrect, the stream will be recorded in HLS format and retained permanently by default.
         :type TemplateId: int
-        :param Extension: Extension field which is not defined now. It is empty by default.
+        :param _Extension: Extension field which is not defined now. It is empty by default.
         :type Extension: str
         """
-        self.StreamName = None
-        self.DomainName = None
-        self.AppName = None
-        self.EndTime = None
-        self.StartTime = None
-        self.StreamType = None
-        self.TemplateId = None
-        self.Extension = None
+        self._StreamName = None
+        self._DomainName = None
+        self._AppName = None
+        self._EndTime = None
+        self._StartTime = None
+        self._StreamType = None
+        self._TemplateId = None
+        self._Extension = None
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def StreamType(self):
+        return self._StreamType
+
+    @StreamType.setter
+    def StreamType(self, StreamType):
+        self._StreamType = StreamType
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def Extension(self):
+        return self._Extension
+
+    @Extension.setter
+    def Extension(self, Extension):
+        self._Extension = Extension
 
 
     def _deserialize(self, params):
-        self.StreamName = params.get("StreamName")
-        self.DomainName = params.get("DomainName")
-        self.AppName = params.get("AppName")
-        self.EndTime = params.get("EndTime")
-        self.StartTime = params.get("StartTime")
-        self.StreamType = params.get("StreamType")
-        self.TemplateId = params.get("TemplateId")
-        self.Extension = params.get("Extension")
+        self._StreamName = params.get("StreamName")
+        self._DomainName = params.get("DomainName")
+        self._AppName = params.get("AppName")
+        self._EndTime = params.get("EndTime")
+        self._StartTime = params.get("StartTime")
+        self._StreamType = params.get("StreamType")
+        self._TemplateId = params.get("TemplateId")
+        self._Extension = params.get("Extension")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2244,18 +4286,34 @@ class CreateRecordTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: A globally unique task ID. If `TaskId` is returned, the recording task has been successfully created.
+        :param _TaskId: A globally unique task ID. If `TaskId` is returned, the recording task has been successfully created.
         :type TaskId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TaskId = None
-        self.RequestId = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateScreenshotTaskRequest(AbstractModel):
@@ -2265,48 +4323,113 @@ class CreateScreenshotTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StreamName: The stream name.
+        :param _StreamName: The stream name.
         :type StreamName: str
-        :param DomainName: The push domain.
+        :param _DomainName: The push domain.
         :type DomainName: str
-        :param AppName: The push path.
+        :param _AppName: The push path.
         :type AppName: str
-        :param EndTime: The task end time, which must be a Unix timestamp and later than `StartTime` and the current time. The end time and start time cannot be more than 24 hours apart.
+        :param _EndTime: The task end time, which must be a Unix timestamp and later than `StartTime` and the current time. The end time and start time cannot be more than 24 hours apart.
         :type EndTime: int
-        :param TemplateId: The ID of the screencapturing template, which is returned by `CreateLiveSnapshotTemplate`. If an incorrect template ID is passed in, the screencapturing task will fail.
+        :param _TemplateId: The ID of the screencapturing template, which is returned by `CreateLiveSnapshotTemplate`. If an incorrect template ID is passed in, the screencapturing task will fail.
         :type TemplateId: int
-        :param StartTime: The task start time, which must be a Unix timestamp and cannot be later than six days from the current time. If you do not specify this parameter, the task will start immediately.
+        :param _StartTime: The task start time, which must be a Unix timestamp and cannot be later than six days from the current time. If you do not specify this parameter, the task will start immediately.
         :type StartTime: int
-        :param StreamType: The publishing type. Valid values:
+        :param _StreamType: The publishing type. Valid values:
 `0` (default): Live stream
 `1`: Mixed stream
         :type StreamType: int
-        :param Extension: An extension field, which is not defined currently and is empty by default.
+        :param _Extension: An extension field, which is not defined currently and is empty by default.
         :type Extension: str
         """
-        self.StreamName = None
-        self.DomainName = None
-        self.AppName = None
-        self.EndTime = None
-        self.TemplateId = None
-        self.StartTime = None
-        self.StreamType = None
-        self.Extension = None
+        self._StreamName = None
+        self._DomainName = None
+        self._AppName = None
+        self._EndTime = None
+        self._TemplateId = None
+        self._StartTime = None
+        self._StreamType = None
+        self._Extension = None
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def StreamType(self):
+        return self._StreamType
+
+    @StreamType.setter
+    def StreamType(self, StreamType):
+        self._StreamType = StreamType
+
+    @property
+    def Extension(self):
+        return self._Extension
+
+    @Extension.setter
+    def Extension(self, Extension):
+        self._Extension = Extension
 
 
     def _deserialize(self, params):
-        self.StreamName = params.get("StreamName")
-        self.DomainName = params.get("DomainName")
-        self.AppName = params.get("AppName")
-        self.EndTime = params.get("EndTime")
-        self.TemplateId = params.get("TemplateId")
-        self.StartTime = params.get("StartTime")
-        self.StreamType = params.get("StreamType")
-        self.Extension = params.get("Extension")
+        self._StreamName = params.get("StreamName")
+        self._DomainName = params.get("DomainName")
+        self._AppName = params.get("AppName")
+        self._EndTime = params.get("EndTime")
+        self._TemplateId = params.get("TemplateId")
+        self._StartTime = params.get("StartTime")
+        self._StreamType = params.get("StreamType")
+        self._Extension = params.get("Extension")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2319,18 +4442,34 @@ class CreateScreenshotTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: A unique task ID. If this parameter is returned, the screencapturing task is created successfully.
+        :param _TaskId: A unique task ID. If this parameter is returned, the screencapturing task is created successfully.
         :type TaskId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TaskId = None
-        self.RequestId = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.RequestId = params.get("RequestId")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class DayStreamPlayInfo(AbstractModel):
@@ -2340,34 +4479,75 @@ class DayStreamPlayInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Time: Data point in time in the format of `yyyy-mm-dd HH:MM:SS`.
+        :param _Time: Data point in time in the format of `yyyy-mm-dd HH:MM:SS`.
         :type Time: str
-        :param Bandwidth: Bandwidth in Mbps.
+        :param _Bandwidth: Bandwidth in Mbps.
         :type Bandwidth: float
-        :param Flux: Traffic in MB.
+        :param _Flux: Traffic in MB.
         :type Flux: float
-        :param Request: Number of requests.
+        :param _Request: Number of requests.
         :type Request: int
-        :param Online: Number of online viewers.
+        :param _Online: Number of online viewers.
         :type Online: int
         """
-        self.Time = None
-        self.Bandwidth = None
-        self.Flux = None
-        self.Request = None
-        self.Online = None
+        self._Time = None
+        self._Bandwidth = None
+        self._Flux = None
+        self._Request = None
+        self._Online = None
+
+    @property
+    def Time(self):
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def Bandwidth(self):
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
+
+    @property
+    def Flux(self):
+        return self._Flux
+
+    @Flux.setter
+    def Flux(self, Flux):
+        self._Flux = Flux
+
+    @property
+    def Request(self):
+        return self._Request
+
+    @Request.setter
+    def Request(self, Request):
+        self._Request = Request
+
+    @property
+    def Online(self):
+        return self._Online
+
+    @Online.setter
+    def Online(self, Online):
+        self._Online = Online
 
 
     def _deserialize(self, params):
-        self.Time = params.get("Time")
-        self.Bandwidth = params.get("Bandwidth")
-        self.Flux = params.get("Flux")
-        self.Request = params.get("Request")
-        self.Online = params.get("Online")
+        self._Time = params.get("Time")
+        self._Bandwidth = params.get("Bandwidth")
+        self._Flux = params.get("Flux")
+        self._Request = params.get("Request")
+        self._Online = params.get("Online")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2380,49 +4560,106 @@ class DelayInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainName: Push domain name.
+        :param _DomainName: Push domain name.
         :type DomainName: str
-        :param AppName: Push path, which is the same as the 
+        :param _AppName: Push path, which is the same as the 
  `AppName` in push and playback addresses and is `live` by default.
         :type AppName: str
-        :param StreamName: Stream name.
+        :param _StreamName: Stream name.
         :type StreamName: str
-        :param DelayInterval: Delay time in seconds.
+        :param _DelayInterval: Delay time in seconds.
         :type DelayInterval: int
-        :param CreateTime: Creation time in UTC time.
+        :param _CreateTime: Creation time in UTC time.
 Note: the difference between UTC time and Beijing time is 8 hours.
 Example: 2019-06-18T12:00:00Z (i.e., June 18, 2019 20:00:00 Beijing time).
         :type CreateTime: str
-        :param ExpireTime: Expiration time in UTC time.
+        :param _ExpireTime: Expiration time in UTC time.
 Note: the difference between UTC time and Beijing time is 8 hours.
 Example: 2019-06-18T12:00:00Z (i.e., June 18, 2019 20:00:00 Beijing time).
         :type ExpireTime: str
-        :param Status: Current status:
+        :param _Status: Current status:
 -1: expired.
 1: in effect.
         :type Status: int
         """
-        self.DomainName = None
-        self.AppName = None
-        self.StreamName = None
-        self.DelayInterval = None
-        self.CreateTime = None
-        self.ExpireTime = None
-        self.Status = None
+        self._DomainName = None
+        self._AppName = None
+        self._StreamName = None
+        self._DelayInterval = None
+        self._CreateTime = None
+        self._ExpireTime = None
+        self._Status = None
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+    @property
+    def DelayInterval(self):
+        return self._DelayInterval
+
+    @DelayInterval.setter
+    def DelayInterval(self, DelayInterval):
+        self._DelayInterval = DelayInterval
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
 
     def _deserialize(self, params):
-        self.DomainName = params.get("DomainName")
-        self.AppName = params.get("AppName")
-        self.StreamName = params.get("StreamName")
-        self.DelayInterval = params.get("DelayInterval")
-        self.CreateTime = params.get("CreateTime")
-        self.ExpireTime = params.get("ExpireTime")
-        self.Status = params.get("Status")
+        self._DomainName = params.get("DomainName")
+        self._AppName = params.get("AppName")
+        self._StreamName = params.get("StreamName")
+        self._DelayInterval = params.get("DelayInterval")
+        self._CreateTime = params.get("CreateTime")
+        self._ExpireTime = params.get("ExpireTime")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2435,22 +4672,39 @@ class DeleteLiveCallbackRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainName: Push domain name.
+        :param _DomainName: Push domain name.
         :type DomainName: str
-        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
+        :param _AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
         :type AppName: str
         """
-        self.DomainName = None
-        self.AppName = None
+        self._DomainName = None
+        self._AppName = None
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
 
 
     def _deserialize(self, params):
-        self.DomainName = params.get("DomainName")
-        self.AppName = params.get("AppName")
+        self._DomainName = params.get("DomainName")
+        self._AppName = params.get("AppName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2463,14 +4717,22 @@ class DeleteLiveCallbackRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteLiveCallbackTemplateRequest(AbstractModel):
@@ -2480,20 +4742,29 @@ class DeleteLiveCallbackTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateId: Template ID.
+        :param _TemplateId: Template ID.
 1. Get the template ID in the returned value of the [CreateLiveCallbackTemplate](https://intl.cloud.tencent.com/document/product/267/32637?from_cn_redirect=1) API call.
 2. You can query the list of created templates through the [DescribeLiveCallbackTemplates](https://intl.cloud.tencent.com/document/product/267/32632?from_cn_redirect=1) API.
         :type TemplateId: int
         """
-        self.TemplateId = None
+        self._TemplateId = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
 
 
     def _deserialize(self, params):
-        self.TemplateId = params.get("TemplateId")
+        self._TemplateId = params.get("TemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2506,14 +4777,22 @@ class DeleteLiveCallbackTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteLiveDomainRequest(AbstractModel):
@@ -2523,22 +4802,39 @@ class DeleteLiveDomainRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainName: Domain name to be deleted.
+        :param _DomainName: Domain name to be deleted.
         :type DomainName: str
-        :param DomainType: Type. 0: push, 1: playback.
+        :param _DomainType: Type. 0: push, 1: playback.
         :type DomainType: int
         """
-        self.DomainName = None
-        self.DomainType = None
+        self._DomainName = None
+        self._DomainType = None
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def DomainType(self):
+        return self._DomainType
+
+    @DomainType.setter
+    def DomainType(self, DomainType):
+        self._DomainType = DomainType
 
 
     def _deserialize(self, params):
-        self.DomainName = params.get("DomainName")
-        self.DomainType = params.get("DomainType")
+        self._DomainName = params.get("DomainName")
+        self._DomainType = params.get("DomainType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2551,14 +4847,22 @@ class DeleteLiveDomainResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteLivePullStreamTaskRequest(AbstractModel):
@@ -2568,22 +4872,39 @@ class DeleteLivePullStreamTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: The task ID.
+        :param _TaskId: The task ID.
         :type TaskId: str
-        :param Operator: The operator.
+        :param _Operator: The operator.
         :type Operator: str
         """
-        self.TaskId = None
-        self.Operator = None
+        self._TaskId = None
+        self._Operator = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.Operator = params.get("Operator")
+        self._TaskId = params.get("TaskId")
+        self._Operator = params.get("Operator")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2596,14 +4917,22 @@ class DeleteLivePullStreamTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteLiveRecordRequest(AbstractModel):
@@ -2613,22 +4942,39 @@ class DeleteLiveRecordRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StreamName: Stream name.
+        :param _StreamName: Stream name.
         :type StreamName: str
-        :param TaskId: Task ID returned by the `CreateLiveRecord` API.
+        :param _TaskId: Task ID returned by the `CreateLiveRecord` API.
         :type TaskId: int
         """
-        self.StreamName = None
-        self.TaskId = None
+        self._StreamName = None
+        self._TaskId = None
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
 
     def _deserialize(self, params):
-        self.StreamName = params.get("StreamName")
-        self.TaskId = params.get("TaskId")
+        self._StreamName = params.get("StreamName")
+        self._TaskId = params.get("TaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2641,14 +4987,22 @@ class DeleteLiveRecordResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteLiveRecordRuleRequest(AbstractModel):
@@ -2658,29 +5012,54 @@ class DeleteLiveRecordRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainName: Push domain name.
+        :param _DomainName: Push domain name.
 Domain name+AppName+StreamName uniquely identifies a single transcoding rule. If you need to delete it, strong match is required. For example, even if AppName is blank, you need to pass in a blank string to make a strong match.
         :type DomainName: str
-        :param AppName: Push path, which is the same as the AppName in push and playback addresses and is "live" by default.
+        :param _AppName: Push path, which is the same as the AppName in push and playback addresses and is "live" by default.
 Domain name+AppName+StreamName uniquely identifies a single transcoding rule. If you need to delete it, strong match is required. For example, even if AppName is blank, you need to pass in a blank string to make a strong match.
         :type AppName: str
-        :param StreamName: Stream name.
+        :param _StreamName: Stream name.
 Domain name+AppName+StreamName uniquely identifies a single transcoding rule. If you need to delete it, strong match is required. For example, even if AppName is blank, you need to pass in a blank string to make a strong match.
         :type StreamName: str
         """
-        self.DomainName = None
-        self.AppName = None
-        self.StreamName = None
+        self._DomainName = None
+        self._AppName = None
+        self._StreamName = None
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
 
 
     def _deserialize(self, params):
-        self.DomainName = params.get("DomainName")
-        self.AppName = params.get("AppName")
-        self.StreamName = params.get("StreamName")
+        self._DomainName = params.get("DomainName")
+        self._AppName = params.get("AppName")
+        self._StreamName = params.get("StreamName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2693,14 +5072,22 @@ class DeleteLiveRecordRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteLiveRecordTemplateRequest(AbstractModel):
@@ -2710,18 +5097,27 @@ class DeleteLiveRecordTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateId: Template ID obtained through the `DescribeRecordTemplates` API.
+        :param _TemplateId: Template ID obtained through the `DescribeRecordTemplates` API.
         :type TemplateId: int
         """
-        self.TemplateId = None
+        self._TemplateId = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
 
 
     def _deserialize(self, params):
-        self.TemplateId = params.get("TemplateId")
+        self._TemplateId = params.get("TemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2734,14 +5130,22 @@ class DeleteLiveRecordTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteLiveSnapshotRuleRequest(AbstractModel):
@@ -2751,26 +5155,51 @@ class DeleteLiveSnapshotRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainName: Push domain name.
+        :param _DomainName: Push domain name.
         :type DomainName: str
-        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
+        :param _AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
         :type AppName: str
-        :param StreamName: Stream name.
+        :param _StreamName: Stream name.
         :type StreamName: str
         """
-        self.DomainName = None
-        self.AppName = None
-        self.StreamName = None
+        self._DomainName = None
+        self._AppName = None
+        self._StreamName = None
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
 
 
     def _deserialize(self, params):
-        self.DomainName = params.get("DomainName")
-        self.AppName = params.get("AppName")
-        self.StreamName = params.get("StreamName")
+        self._DomainName = params.get("DomainName")
+        self._AppName = params.get("AppName")
+        self._StreamName = params.get("StreamName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2783,14 +5212,22 @@ class DeleteLiveSnapshotRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteLiveSnapshotTemplateRequest(AbstractModel):
@@ -2800,20 +5237,29 @@ class DeleteLiveSnapshotTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateId: Template ID.
+        :param _TemplateId: Template ID.
 1. Get from the returned value of the [CreateLiveSnapshotTemplate](https://intl.cloud.tencent.com/document/product/267/32624?from_cn_redirect=1) API call.
 2. You can query the list of created screencapturing templates through the [DescribeLiveSnapshotTemplates](https://intl.cloud.tencent.com/document/product/267/32619?from_cn_redirect=1) API.
         :type TemplateId: int
         """
-        self.TemplateId = None
+        self._TemplateId = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
 
 
     def _deserialize(self, params):
-        self.TemplateId = params.get("TemplateId")
+        self._TemplateId = params.get("TemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2826,14 +5272,22 @@ class DeleteLiveSnapshotTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteLiveTimeShiftRuleRequest(AbstractModel):
@@ -2843,29 +5297,54 @@ class DeleteLiveTimeShiftRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainName: The push domain.
+        :param _DomainName: The push domain.
 `Domain name+AppName+StreamName` uniquely identifies a time shifting rule. To delete a time shifting rule, exact match is required. This means if the `AppName` of a time shifting rule is empty, to delete the rule, you need to pass in an empty string for `AppName`.
         :type DomainName: str
-        :param AppName: The push path, which should be the same as `AppName` in the push and playback URLs. The default value is `live`.
+        :param _AppName: The push path, which should be the same as `AppName` in the push and playback URLs. The default value is `live`.
 `Domain name+AppName+StreamName` uniquely identifies a time shifting rule. To delete a time shifting rule, exact match is required. This means if the `AppName` of a time shifting rule is empty, to delete the rule, you need to pass in an empty string for `AppName`.
         :type AppName: str
-        :param StreamName: The stream name.
+        :param _StreamName: The stream name.
 `Domain name+AppName+StreamName` uniquely identifies a time shifting rule. To delete a time shifting rule, exact match is required. This means if the `AppName` of a time shifting rule is empty, to delete the rule, you need to pass in an empty string for `AppName`.
         :type StreamName: str
         """
-        self.DomainName = None
-        self.AppName = None
-        self.StreamName = None
+        self._DomainName = None
+        self._AppName = None
+        self._StreamName = None
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
 
 
     def _deserialize(self, params):
-        self.DomainName = params.get("DomainName")
-        self.AppName = params.get("AppName")
-        self.StreamName = params.get("StreamName")
+        self._DomainName = params.get("DomainName")
+        self._AppName = params.get("AppName")
+        self._StreamName = params.get("StreamName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2878,14 +5357,22 @@ class DeleteLiveTimeShiftRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteLiveTimeShiftTemplateRequest(AbstractModel):
@@ -2895,18 +5382,27 @@ class DeleteLiveTimeShiftTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateId: The template ID.
+        :param _TemplateId: The template ID.
         :type TemplateId: int
         """
-        self.TemplateId = None
+        self._TemplateId = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
 
 
     def _deserialize(self, params):
-        self.TemplateId = params.get("TemplateId")
+        self._TemplateId = params.get("TemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2919,14 +5415,22 @@ class DeleteLiveTimeShiftTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteLiveTranscodeRuleRequest(AbstractModel):
@@ -2936,30 +5440,63 @@ class DeleteLiveTranscodeRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainName: Playback domain name.
+        :param _DomainName: Playback domain name.
         :type DomainName: str
-        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
+        :param _AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
         :type AppName: str
-        :param StreamName: Stream name.
+        :param _StreamName: Stream name.
         :type StreamName: str
-        :param TemplateId: Template ID.
+        :param _TemplateId: Template ID.
         :type TemplateId: int
         """
-        self.DomainName = None
-        self.AppName = None
-        self.StreamName = None
-        self.TemplateId = None
+        self._DomainName = None
+        self._AppName = None
+        self._StreamName = None
+        self._TemplateId = None
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
 
 
     def _deserialize(self, params):
-        self.DomainName = params.get("DomainName")
-        self.AppName = params.get("AppName")
-        self.StreamName = params.get("StreamName")
-        self.TemplateId = params.get("TemplateId")
+        self._DomainName = params.get("DomainName")
+        self._AppName = params.get("AppName")
+        self._StreamName = params.get("StreamName")
+        self._TemplateId = params.get("TemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2972,14 +5509,22 @@ class DeleteLiveTranscodeRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteLiveTranscodeTemplateRequest(AbstractModel):
@@ -2989,20 +5534,29 @@ class DeleteLiveTranscodeTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateId: Template ID.
+        :param _TemplateId: Template ID.
 1. Get the template ID in the returned value of the [CreateLiveTranscodeTemplate](https://intl.cloud.tencent.com/document/product/267/32646?from_cn_redirect=1) API call.
 2. You can query the list of created templates through the [DescribeLiveTranscodeTemplates](https://intl.cloud.tencent.com/document/product/267/32641?from_cn_redirect=1) API.
         :type TemplateId: int
         """
-        self.TemplateId = None
+        self._TemplateId = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
 
 
     def _deserialize(self, params):
-        self.TemplateId = params.get("TemplateId")
+        self._TemplateId = params.get("TemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3015,14 +5569,22 @@ class DeleteLiveTranscodeTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteLiveWatermarkRequest(AbstractModel):
@@ -3032,20 +5594,29 @@ class DeleteLiveWatermarkRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param WatermarkId: Watermark ID.
+        :param _WatermarkId: Watermark ID.
 Watermark ID obtained in the returned value of the [AddLiveWatermark](https://intl.cloud.tencent.com/document/product/267/30154?from_cn_redirect=1) API call.
 Watermark ID returned by the `DescribeLiveWatermarks` API.
         :type WatermarkId: int
         """
-        self.WatermarkId = None
+        self._WatermarkId = None
+
+    @property
+    def WatermarkId(self):
+        return self._WatermarkId
+
+    @WatermarkId.setter
+    def WatermarkId(self, WatermarkId):
+        self._WatermarkId = WatermarkId
 
 
     def _deserialize(self, params):
-        self.WatermarkId = params.get("WatermarkId")
+        self._WatermarkId = params.get("WatermarkId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3058,14 +5629,22 @@ class DeleteLiveWatermarkResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteLiveWatermarkRuleRequest(AbstractModel):
@@ -3075,26 +5654,51 @@ class DeleteLiveWatermarkRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainName: Push domain name.
+        :param _DomainName: Push domain name.
         :type DomainName: str
-        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
+        :param _AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
         :type AppName: str
-        :param StreamName: Stream name.
+        :param _StreamName: Stream name.
         :type StreamName: str
         """
-        self.DomainName = None
-        self.AppName = None
-        self.StreamName = None
+        self._DomainName = None
+        self._AppName = None
+        self._StreamName = None
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
 
 
     def _deserialize(self, params):
-        self.DomainName = params.get("DomainName")
-        self.AppName = params.get("AppName")
-        self.StreamName = params.get("StreamName")
+        self._DomainName = params.get("DomainName")
+        self._AppName = params.get("AppName")
+        self._StreamName = params.get("StreamName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3107,14 +5711,22 @@ class DeleteLiveWatermarkRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteRecordTaskRequest(AbstractModel):
@@ -3124,18 +5736,27 @@ class DeleteRecordTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: Task ID returned by `CreateRecordTask`. The recording task specified by `TaskId` will be deleted.
+        :param _TaskId: Task ID returned by `CreateRecordTask`. The recording task specified by `TaskId` will be deleted.
         :type TaskId: str
         """
-        self.TaskId = None
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
+        self._TaskId = params.get("TaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3148,14 +5769,22 @@ class DeleteRecordTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeAllStreamPlayInfoListRequest(AbstractModel):
@@ -3165,22 +5794,39 @@ class DescribeAllStreamPlayInfoListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param QueryTime: The time point to query in the format of “yyyy-mm-dd HH:MM:00”(accurate to the minute). You can query data from the last month. Because there is a five-minute delay in the data, if you want to get the latest data, we recommend you pass in a time point five minutes earlier than the current time.
+        :param _QueryTime: The time point to query in the format of “yyyy-mm-dd HH:MM:00”(accurate to the minute). You can query data from the last month. Because there is a five-minute delay in the data, if you want to get the latest data, we recommend you pass in a time point five minutes earlier than the current time.
         :type QueryTime: str
-        :param PlayDomains: The playback domains to query. If you leave this empty, all playback domains will be queried.
+        :param _PlayDomains: The playback domains to query. If you leave this empty, all playback domains will be queried.
         :type PlayDomains: list of str
         """
-        self.QueryTime = None
-        self.PlayDomains = None
+        self._QueryTime = None
+        self._PlayDomains = None
+
+    @property
+    def QueryTime(self):
+        return self._QueryTime
+
+    @QueryTime.setter
+    def QueryTime(self, QueryTime):
+        self._QueryTime = QueryTime
+
+    @property
+    def PlayDomains(self):
+        return self._PlayDomains
+
+    @PlayDomains.setter
+    def PlayDomains(self, PlayDomains):
+        self._PlayDomains = PlayDomains
 
 
     def _deserialize(self, params):
-        self.QueryTime = params.get("QueryTime")
-        self.PlayDomains = params.get("PlayDomains")
+        self._QueryTime = params.get("QueryTime")
+        self._PlayDomains = params.get("PlayDomains")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3193,27 +5839,51 @@ class DescribeAllStreamPlayInfoListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param QueryTime: The time point queried, whose value is the same as that of the corresponding request parameter.
+        :param _QueryTime: The time point queried, whose value is the same as that of the corresponding request parameter.
         :type QueryTime: str
-        :param DataInfoList: The playback data.
+        :param _DataInfoList: The playback data.
         :type DataInfoList: list of MonitorStreamPlayInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.QueryTime = None
-        self.DataInfoList = None
-        self.RequestId = None
+        self._QueryTime = None
+        self._DataInfoList = None
+        self._RequestId = None
+
+    @property
+    def QueryTime(self):
+        return self._QueryTime
+
+    @QueryTime.setter
+    def QueryTime(self, QueryTime):
+        self._QueryTime = QueryTime
+
+    @property
+    def DataInfoList(self):
+        return self._DataInfoList
+
+    @DataInfoList.setter
+    def DataInfoList(self, DataInfoList):
+        self._DataInfoList = DataInfoList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.QueryTime = params.get("QueryTime")
+        self._QueryTime = params.get("QueryTime")
         if params.get("DataInfoList") is not None:
-            self.DataInfoList = []
+            self._DataInfoList = []
             for item in params.get("DataInfoList"):
                 obj = MonitorStreamPlayInfo()
                 obj._deserialize(item)
-                self.DataInfoList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._DataInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeBillBandwidthAndFluxListRequest(AbstractModel):
@@ -3223,27 +5893,27 @@ class DescribeBillBandwidthAndFluxListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: Start time point in the format of `yyyy-mm-dd HH:MM:SS`.
+        :param _StartTime: Start time point in the format of `yyyy-mm-dd HH:MM:SS`.
         :type StartTime: str
-        :param EndTime: End time point in the format of yyyy-mm-dd HH:MM:SS. The difference between the start time and end time cannot be greater than 31 days. Data in the last 3 years can be queried.
+        :param _EndTime: End time point in the format of yyyy-mm-dd HH:MM:SS. The difference between the start time and end time cannot be greater than 31 days. Data in the last 3 years can be queried.
         :type EndTime: str
-        :param PlayDomains: LVB playback domain name. If this parameter is left empty, full data will be queried.
+        :param _PlayDomains: LVB playback domain name. If this parameter is left empty, full data will be queried.
         :type PlayDomains: list of str
-        :param MainlandOrOversea: Valid values:
+        :param _MainlandOrOversea: Valid values:
 Mainland: query data for Mainland China,
 Oversea: query data for regions outside Mainland China,
 Default: query data for all regions.
 Note: LEB only supports querying data for all regions.
         :type MainlandOrOversea: str
-        :param Granularity: Data granularity. Valid values:
+        :param _Granularity: Data granularity. Valid values:
 5: 5-minute granularity (the query time span should be within 1 day),
 60: 1-hour granularity (the query time span should be within one month),
 1440: 1-day granularity (the query time span should be within one month).
 Default value: 5.
         :type Granularity: int
-        :param ServiceName: Service name. Valid values: LVB, LEB. The sum of LVB and LEB usage will be returned if this parameter is left empty.
+        :param _ServiceName: Service name. Valid values: LVB, LEB. The sum of LVB and LEB usage will be returned if this parameter is left empty.
         :type ServiceName: str
-        :param RegionNames: Region. Valid values:
+        :param _RegionNames: Region. Valid values:
 China Mainland
 Asia Pacific I
 Asia Pacific II
@@ -3255,27 +5925,84 @@ Middle East
 Africa
         :type RegionNames: list of str
         """
-        self.StartTime = None
-        self.EndTime = None
-        self.PlayDomains = None
-        self.MainlandOrOversea = None
-        self.Granularity = None
-        self.ServiceName = None
-        self.RegionNames = None
+        self._StartTime = None
+        self._EndTime = None
+        self._PlayDomains = None
+        self._MainlandOrOversea = None
+        self._Granularity = None
+        self._ServiceName = None
+        self._RegionNames = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def PlayDomains(self):
+        return self._PlayDomains
+
+    @PlayDomains.setter
+    def PlayDomains(self, PlayDomains):
+        self._PlayDomains = PlayDomains
+
+    @property
+    def MainlandOrOversea(self):
+        return self._MainlandOrOversea
+
+    @MainlandOrOversea.setter
+    def MainlandOrOversea(self, MainlandOrOversea):
+        self._MainlandOrOversea = MainlandOrOversea
+
+    @property
+    def Granularity(self):
+        return self._Granularity
+
+    @Granularity.setter
+    def Granularity(self, Granularity):
+        self._Granularity = Granularity
+
+    @property
+    def ServiceName(self):
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def RegionNames(self):
+        return self._RegionNames
+
+    @RegionNames.setter
+    def RegionNames(self, RegionNames):
+        self._RegionNames = RegionNames
 
 
     def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.PlayDomains = params.get("PlayDomains")
-        self.MainlandOrOversea = params.get("MainlandOrOversea")
-        self.Granularity = params.get("Granularity")
-        self.ServiceName = params.get("ServiceName")
-        self.RegionNames = params.get("RegionNames")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._PlayDomains = params.get("PlayDomains")
+        self._MainlandOrOversea = params.get("MainlandOrOversea")
+        self._Granularity = params.get("Granularity")
+        self._ServiceName = params.get("ServiceName")
+        self._RegionNames = params.get("RegionNames")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3288,43 +6015,99 @@ class DescribeBillBandwidthAndFluxListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PeakBandwidthTime: Time point of peak bandwidth value in the format of `yyyy-mm-dd HH:MM:SS`.
+        :param _PeakBandwidthTime: Time point of peak bandwidth value in the format of `yyyy-mm-dd HH:MM:SS`.
         :type PeakBandwidthTime: str
-        :param PeakBandwidth: Peak bandwidth in Mbps.
+        :param _PeakBandwidth: Peak bandwidth in Mbps.
         :type PeakBandwidth: float
-        :param P95PeakBandwidthTime: Time point of 95th percentile bandwidth value in the format of `yyyy-mm-dd HH:MM:SS`.
+        :param _P95PeakBandwidthTime: Time point of 95th percentile bandwidth value in the format of `yyyy-mm-dd HH:MM:SS`.
         :type P95PeakBandwidthTime: str
-        :param P95PeakBandwidth: 95th percentile bandwidth in Mbps.
+        :param _P95PeakBandwidth: 95th percentile bandwidth in Mbps.
         :type P95PeakBandwidth: float
-        :param SumFlux: Total traffic in MB.
+        :param _SumFlux: Total traffic in MB.
         :type SumFlux: float
-        :param DataInfoList: Detailed data information.
+        :param _DataInfoList: Detailed data information.
         :type DataInfoList: list of BillDataInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.PeakBandwidthTime = None
-        self.PeakBandwidth = None
-        self.P95PeakBandwidthTime = None
-        self.P95PeakBandwidth = None
-        self.SumFlux = None
-        self.DataInfoList = None
-        self.RequestId = None
+        self._PeakBandwidthTime = None
+        self._PeakBandwidth = None
+        self._P95PeakBandwidthTime = None
+        self._P95PeakBandwidth = None
+        self._SumFlux = None
+        self._DataInfoList = None
+        self._RequestId = None
+
+    @property
+    def PeakBandwidthTime(self):
+        return self._PeakBandwidthTime
+
+    @PeakBandwidthTime.setter
+    def PeakBandwidthTime(self, PeakBandwidthTime):
+        self._PeakBandwidthTime = PeakBandwidthTime
+
+    @property
+    def PeakBandwidth(self):
+        return self._PeakBandwidth
+
+    @PeakBandwidth.setter
+    def PeakBandwidth(self, PeakBandwidth):
+        self._PeakBandwidth = PeakBandwidth
+
+    @property
+    def P95PeakBandwidthTime(self):
+        return self._P95PeakBandwidthTime
+
+    @P95PeakBandwidthTime.setter
+    def P95PeakBandwidthTime(self, P95PeakBandwidthTime):
+        self._P95PeakBandwidthTime = P95PeakBandwidthTime
+
+    @property
+    def P95PeakBandwidth(self):
+        return self._P95PeakBandwidth
+
+    @P95PeakBandwidth.setter
+    def P95PeakBandwidth(self, P95PeakBandwidth):
+        self._P95PeakBandwidth = P95PeakBandwidth
+
+    @property
+    def SumFlux(self):
+        return self._SumFlux
+
+    @SumFlux.setter
+    def SumFlux(self, SumFlux):
+        self._SumFlux = SumFlux
+
+    @property
+    def DataInfoList(self):
+        return self._DataInfoList
+
+    @DataInfoList.setter
+    def DataInfoList(self, DataInfoList):
+        self._DataInfoList = DataInfoList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.PeakBandwidthTime = params.get("PeakBandwidthTime")
-        self.PeakBandwidth = params.get("PeakBandwidth")
-        self.P95PeakBandwidthTime = params.get("P95PeakBandwidthTime")
-        self.P95PeakBandwidth = params.get("P95PeakBandwidth")
-        self.SumFlux = params.get("SumFlux")
+        self._PeakBandwidthTime = params.get("PeakBandwidthTime")
+        self._PeakBandwidth = params.get("PeakBandwidth")
+        self._P95PeakBandwidthTime = params.get("P95PeakBandwidthTime")
+        self._P95PeakBandwidth = params.get("P95PeakBandwidth")
+        self._SumFlux = params.get("SumFlux")
         if params.get("DataInfoList") is not None:
-            self.DataInfoList = []
+            self._DataInfoList = []
             for item in params.get("DataInfoList"):
                 obj = BillDataInfo()
                 obj._deserialize(item)
-                self.DataInfoList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._DataInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeConcurrentRecordStreamNumRequest(AbstractModel):
@@ -3334,37 +6117,78 @@ class DescribeConcurrentRecordStreamNumRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LiveType: Live streaming type. SlowLive: LCB.
+        :param _LiveType: Live streaming type. SlowLive: LCB.
 NormalLive: LVB.
         :type LiveType: str
-        :param StartTime: Start time in the format of `yyyy-mm-dd HH:MM:SS`.
+        :param _StartTime: Start time in the format of `yyyy-mm-dd HH:MM:SS`.
 Data for the last 180 days can be queried.
         :type StartTime: str
-        :param EndTime: End time in the format of `yyyy-mm-dd HH:MM:SS`.
+        :param _EndTime: End time in the format of `yyyy-mm-dd HH:MM:SS`.
 The maximum time span supported is 31 days.
         :type EndTime: str
-        :param MainlandOrOversea: Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China). If this parameter is left empty, data for all regions will be queried.
+        :param _MainlandOrOversea: Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China). If this parameter is left empty, data for all regions will be queried.
         :type MainlandOrOversea: str
-        :param PushDomains: Playback domain name list. If this parameter is left empty, full data will be queried.
+        :param _PushDomains: Playback domain name list. If this parameter is left empty, full data will be queried.
         :type PushDomains: list of str
         """
-        self.LiveType = None
-        self.StartTime = None
-        self.EndTime = None
-        self.MainlandOrOversea = None
-        self.PushDomains = None
+        self._LiveType = None
+        self._StartTime = None
+        self._EndTime = None
+        self._MainlandOrOversea = None
+        self._PushDomains = None
+
+    @property
+    def LiveType(self):
+        return self._LiveType
+
+    @LiveType.setter
+    def LiveType(self, LiveType):
+        self._LiveType = LiveType
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def MainlandOrOversea(self):
+        return self._MainlandOrOversea
+
+    @MainlandOrOversea.setter
+    def MainlandOrOversea(self, MainlandOrOversea):
+        self._MainlandOrOversea = MainlandOrOversea
+
+    @property
+    def PushDomains(self):
+        return self._PushDomains
+
+    @PushDomains.setter
+    def PushDomains(self, PushDomains):
+        self._PushDomains = PushDomains
 
 
     def _deserialize(self, params):
-        self.LiveType = params.get("LiveType")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.MainlandOrOversea = params.get("MainlandOrOversea")
-        self.PushDomains = params.get("PushDomains")
+        self._LiveType = params.get("LiveType")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._MainlandOrOversea = params.get("MainlandOrOversea")
+        self._PushDomains = params.get("PushDomains")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3377,23 +6201,39 @@ class DescribeConcurrentRecordStreamNumResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DataInfoList: Statistics list.
+        :param _DataInfoList: Statistics list.
         :type DataInfoList: list of ConcurrentRecordStreamNum
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.DataInfoList = None
-        self.RequestId = None
+        self._DataInfoList = None
+        self._RequestId = None
+
+    @property
+    def DataInfoList(self):
+        return self._DataInfoList
+
+    @DataInfoList.setter
+    def DataInfoList(self, DataInfoList):
+        self._DataInfoList = DataInfoList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DataInfoList") is not None:
-            self.DataInfoList = []
+            self._DataInfoList = []
             for item in params.get("DataInfoList"):
                 obj = ConcurrentRecordStreamNum()
                 obj._deserialize(item)
-                self.DataInfoList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._DataInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeDeliverBandwidthListRequest(AbstractModel):
@@ -3403,22 +6243,39 @@ class DescribeDeliverBandwidthListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: Start time in the format of "%Y-%m-%d %H:%M:%S".
+        :param _StartTime: Start time in the format of "%Y-%m-%d %H:%M:%S".
         :type StartTime: str
-        :param EndTime: End time in the format of "%Y-%m-%d %H:%M:%S". Data in the last 3 months can be queried, and the query period is up to 1 month.
+        :param _EndTime: End time in the format of "%Y-%m-%d %H:%M:%S". Data in the last 3 months can be queried, and the query period is up to 1 month.
         :type EndTime: str
         """
-        self.StartTime = None
-        self.EndTime = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
 
 
     def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3431,23 +6288,39 @@ class DescribeDeliverBandwidthListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DataInfoList: Billable bandwidth of live stream relaying.
+        :param _DataInfoList: Billable bandwidth of live stream relaying.
         :type DataInfoList: list of BandwidthInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.DataInfoList = None
-        self.RequestId = None
+        self._DataInfoList = None
+        self._RequestId = None
+
+    @property
+    def DataInfoList(self):
+        return self._DataInfoList
+
+    @DataInfoList.setter
+    def DataInfoList(self, DataInfoList):
+        self._DataInfoList = DataInfoList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DataInfoList") is not None:
-            self.DataInfoList = []
+            self._DataInfoList = []
             for item in params.get("DataInfoList"):
                 obj = BandwidthInfo()
                 obj._deserialize(item)
-                self.DataInfoList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._DataInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeGroupProIspPlayInfoListRequest(AbstractModel):
@@ -3457,39 +6330,88 @@ class DescribeGroupProIspPlayInfoListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: Start time point in the format of `yyyy-mm-dd HH:MM:SS`.
+        :param _StartTime: Start time point in the format of `yyyy-mm-dd HH:MM:SS`.
         :type StartTime: str
-        :param EndTime: End time point in the format of `yyyy-mm-dd HH:MM:SS`
+        :param _EndTime: End time point in the format of `yyyy-mm-dd HH:MM:SS`
 The time span is (0,3 hours]. Data for the last month can be queried.
         :type EndTime: str
-        :param PlayDomains: Playback domain name. If this parameter is left empty, full data will be queried.
+        :param _PlayDomains: Playback domain name. If this parameter is left empty, full data will be queried.
         :type PlayDomains: list of str
-        :param ProvinceNames: District list. If this parameter is left empty, data for all districts will be returned.
+        :param _ProvinceNames: District list. If this parameter is left empty, data for all districts will be returned.
         :type ProvinceNames: list of str
-        :param IspNames: ISP list. If this parameter is left empty, data of all ISPs will be returned.
+        :param _IspNames: ISP list. If this parameter is left empty, data of all ISPs will be returned.
         :type IspNames: list of str
-        :param MainlandOrOversea: Within or outside Mainland China. Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China). If this parameter is left empty, data for all regions will be queried.
+        :param _MainlandOrOversea: Within or outside Mainland China. Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China). If this parameter is left empty, data for all regions will be queried.
         :type MainlandOrOversea: str
         """
-        self.StartTime = None
-        self.EndTime = None
-        self.PlayDomains = None
-        self.ProvinceNames = None
-        self.IspNames = None
-        self.MainlandOrOversea = None
+        self._StartTime = None
+        self._EndTime = None
+        self._PlayDomains = None
+        self._ProvinceNames = None
+        self._IspNames = None
+        self._MainlandOrOversea = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def PlayDomains(self):
+        return self._PlayDomains
+
+    @PlayDomains.setter
+    def PlayDomains(self, PlayDomains):
+        self._PlayDomains = PlayDomains
+
+    @property
+    def ProvinceNames(self):
+        return self._ProvinceNames
+
+    @ProvinceNames.setter
+    def ProvinceNames(self, ProvinceNames):
+        self._ProvinceNames = ProvinceNames
+
+    @property
+    def IspNames(self):
+        return self._IspNames
+
+    @IspNames.setter
+    def IspNames(self, IspNames):
+        self._IspNames = IspNames
+
+    @property
+    def MainlandOrOversea(self):
+        return self._MainlandOrOversea
+
+    @MainlandOrOversea.setter
+    def MainlandOrOversea(self, MainlandOrOversea):
+        self._MainlandOrOversea = MainlandOrOversea
 
 
     def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.PlayDomains = params.get("PlayDomains")
-        self.ProvinceNames = params.get("ProvinceNames")
-        self.IspNames = params.get("IspNames")
-        self.MainlandOrOversea = params.get("MainlandOrOversea")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._PlayDomains = params.get("PlayDomains")
+        self._ProvinceNames = params.get("ProvinceNames")
+        self._IspNames = params.get("IspNames")
+        self._MainlandOrOversea = params.get("MainlandOrOversea")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3502,23 +6424,39 @@ class DescribeGroupProIspPlayInfoListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DataInfoList: Data content.
+        :param _DataInfoList: Data content.
         :type DataInfoList: list of GroupProIspDataInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.DataInfoList = None
-        self.RequestId = None
+        self._DataInfoList = None
+        self._RequestId = None
+
+    @property
+    def DataInfoList(self):
+        return self._DataInfoList
+
+    @DataInfoList.setter
+    def DataInfoList(self, DataInfoList):
+        self._DataInfoList = DataInfoList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DataInfoList") is not None:
-            self.DataInfoList = []
+            self._DataInfoList = []
             for item in params.get("DataInfoList"):
                 obj = GroupProIspDataInfo()
                 obj._deserialize(item)
-                self.DataInfoList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._DataInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeHttpStatusInfoListRequest(AbstractModel):
@@ -3528,29 +6466,54 @@ class DescribeHttpStatusInfoListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: Start time (Beijing time).
+        :param _StartTime: Start time (Beijing time).
 Format: yyyy-mm-dd HH:MM:SS.
         :type StartTime: str
-        :param EndTime: End time (Beijing time).
+        :param _EndTime: End time (Beijing time).
 Format: yyyy-mm-dd HH:MM:SS.
 Note: data in the last 3 months can be queried and the query period is up to 1 day.
         :type EndTime: str
-        :param PlayDomains: Playback domain name list.
+        :param _PlayDomains: Playback domain name list.
         :type PlayDomains: list of str
         """
-        self.StartTime = None
-        self.EndTime = None
-        self.PlayDomains = None
+        self._StartTime = None
+        self._EndTime = None
+        self._PlayDomains = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def PlayDomains(self):
+        return self._PlayDomains
+
+    @PlayDomains.setter
+    def PlayDomains(self, PlayDomains):
+        self._PlayDomains = PlayDomains
 
 
     def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.PlayDomains = params.get("PlayDomains")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._PlayDomains = params.get("PlayDomains")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3563,23 +6526,39 @@ class DescribeHttpStatusInfoListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DataInfoList: Playback status code list.
+        :param _DataInfoList: Playback status code list.
         :type DataInfoList: list of HttpStatusData
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.DataInfoList = None
-        self.RequestId = None
+        self._DataInfoList = None
+        self._RequestId = None
+
+    @property
+    def DataInfoList(self):
+        return self._DataInfoList
+
+    @DataInfoList.setter
+    def DataInfoList(self, DataInfoList):
+        self._DataInfoList = DataInfoList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DataInfoList") is not None:
-            self.DataInfoList = []
+            self._DataInfoList = []
             for item in params.get("DataInfoList"):
                 obj = HttpStatusData()
                 obj._deserialize(item)
-                self.DataInfoList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._DataInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeLiveCallbackRulesRequest(AbstractModel):
@@ -3595,23 +6574,39 @@ class DescribeLiveCallbackRulesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Rules: Rule information list.
+        :param _Rules: Rule information list.
         :type Rules: list of CallBackRuleInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Rules = None
-        self.RequestId = None
+        self._Rules = None
+        self._RequestId = None
+
+    @property
+    def Rules(self):
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Rules") is not None:
-            self.Rules = []
+            self._Rules = []
             for item in params.get("Rules"):
                 obj = CallBackRuleInfo()
                 obj._deserialize(item)
-                self.Rules.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Rules.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeLiveCallbackTemplateRequest(AbstractModel):
@@ -3621,20 +6616,29 @@ class DescribeLiveCallbackTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateId: Template ID.
+        :param _TemplateId: Template ID.
 1. Get the template ID in the returned value of the [CreateLiveCallbackTemplate](https://intl.cloud.tencent.com/document/product/267/32637?from_cn_redirect=1) API call.
 2. You can query the list of created templates through the [DescribeLiveCallbackTemplates](https://intl.cloud.tencent.com/document/product/267/32632?from_cn_redirect=1) API.
         :type TemplateId: int
         """
-        self.TemplateId = None
+        self._TemplateId = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
 
 
     def _deserialize(self, params):
-        self.TemplateId = params.get("TemplateId")
+        self._TemplateId = params.get("TemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3647,20 +6651,36 @@ class DescribeLiveCallbackTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Template: Callback template information.
+        :param _Template: Callback template information.
         :type Template: :class:`tencentcloud.live.v20180801.models.CallBackTemplateInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Template = None
-        self.RequestId = None
+        self._Template = None
+        self._RequestId = None
+
+    @property
+    def Template(self):
+        return self._Template
+
+    @Template.setter
+    def Template(self, Template):
+        self._Template = Template
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Template") is not None:
-            self.Template = CallBackTemplateInfo()
-            self.Template._deserialize(params.get("Template"))
-        self.RequestId = params.get("RequestId")
+            self._Template = CallBackTemplateInfo()
+            self._Template._deserialize(params.get("Template"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeLiveCallbackTemplatesRequest(AbstractModel):
@@ -3676,23 +6696,39 @@ class DescribeLiveCallbackTemplatesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Templates: Template information list.
+        :param _Templates: Template information list.
         :type Templates: list of CallBackTemplateInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Templates = None
-        self.RequestId = None
+        self._Templates = None
+        self._RequestId = None
+
+    @property
+    def Templates(self):
+        return self._Templates
+
+    @Templates.setter
+    def Templates(self, Templates):
+        self._Templates = Templates
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Templates") is not None:
-            self.Templates = []
+            self._Templates = []
             for item in params.get("Templates"):
                 obj = CallBackTemplateInfo()
                 obj._deserialize(item)
-                self.Templates.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Templates.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeLiveCertRequest(AbstractModel):
@@ -3702,18 +6738,27 @@ class DescribeLiveCertRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CertId: Certificate ID obtained through the `DescribeLiveCerts` API.
+        :param _CertId: Certificate ID obtained through the `DescribeLiveCerts` API.
         :type CertId: int
         """
-        self.CertId = None
+        self._CertId = None
+
+    @property
+    def CertId(self):
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
 
 
     def _deserialize(self, params):
-        self.CertId = params.get("CertId")
+        self._CertId = params.get("CertId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3726,20 +6771,36 @@ class DescribeLiveCertResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CertInfo: Certificate information.
+        :param _CertInfo: Certificate information.
         :type CertInfo: :class:`tencentcloud.live.v20180801.models.CertInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.CertInfo = None
-        self.RequestId = None
+        self._CertInfo = None
+        self._RequestId = None
+
+    @property
+    def CertInfo(self):
+        return self._CertInfo
+
+    @CertInfo.setter
+    def CertInfo(self, CertInfo):
+        self._CertInfo = CertInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("CertInfo") is not None:
-            self.CertInfo = CertInfo()
-            self.CertInfo._deserialize(params.get("CertInfo"))
-        self.RequestId = params.get("RequestId")
+            self._CertInfo = CertInfo()
+            self._CertInfo._deserialize(params.get("CertInfo"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeLiveCertsRequest(AbstractModel):
@@ -3755,23 +6816,39 @@ class DescribeLiveCertsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CertInfoSet: Certificate information list.
+        :param _CertInfoSet: Certificate information list.
         :type CertInfoSet: list of CertInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.CertInfoSet = None
-        self.RequestId = None
+        self._CertInfoSet = None
+        self._RequestId = None
+
+    @property
+    def CertInfoSet(self):
+        return self._CertInfoSet
+
+    @CertInfoSet.setter
+    def CertInfoSet(self, CertInfoSet):
+        self._CertInfoSet = CertInfoSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("CertInfoSet") is not None:
-            self.CertInfoSet = []
+            self._CertInfoSet = []
             for item in params.get("CertInfoSet"):
                 obj = CertInfo()
                 obj._deserialize(item)
-                self.CertInfoSet.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._CertInfoSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeLiveDelayInfoListRequest(AbstractModel):
@@ -3787,23 +6864,39 @@ class DescribeLiveDelayInfoListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DelayInfoList: Delayed playback information list.
+        :param _DelayInfoList: Delayed playback information list.
         :type DelayInfoList: list of DelayInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.DelayInfoList = None
-        self.RequestId = None
+        self._DelayInfoList = None
+        self._RequestId = None
+
+    @property
+    def DelayInfoList(self):
+        return self._DelayInfoList
+
+    @DelayInfoList.setter
+    def DelayInfoList(self, DelayInfoList):
+        self._DelayInfoList = DelayInfoList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DelayInfoList") is not None:
-            self.DelayInfoList = []
+            self._DelayInfoList = []
             for item in params.get("DelayInfoList"):
                 obj = DelayInfo()
                 obj._deserialize(item)
-                self.DelayInfoList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._DelayInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeLiveDomainCertBindingsRequest(AbstractModel):
@@ -3813,37 +6906,78 @@ class DescribeLiveDomainCertBindingsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainSearch: The keyword to use to search for domains.
+        :param _DomainSearch: The keyword to use to search for domains.
         :type DomainSearch: str
-        :param Offset: The number of records to skip before starting to return any results. 0 means to start from the first record and is the default.
+        :param _Offset: The number of records to skip before starting to return any results. 0 means to start from the first record and is the default.
         :type Offset: int
-        :param Length: The maximum number of records to return. The default is 50.
+        :param _Length: The maximum number of records to return. The default is 50.
 If this parameter is not specified, up to 50 records will be returned.
         :type Length: int
-        :param DomainName: The name of a particular domain to query.
+        :param _DomainName: The name of a particular domain to query.
         :type DomainName: str
-        :param OrderBy: Valid values:
+        :param _OrderBy: Valid values:
 ExpireTimeAsc: Sort the records by certificate expiration time in ascending order.
 ExpireTimeDesc: Sort the records by certificate expiration time in descending order.
         :type OrderBy: str
         """
-        self.DomainSearch = None
-        self.Offset = None
-        self.Length = None
-        self.DomainName = None
-        self.OrderBy = None
+        self._DomainSearch = None
+        self._Offset = None
+        self._Length = None
+        self._DomainName = None
+        self._OrderBy = None
+
+    @property
+    def DomainSearch(self):
+        return self._DomainSearch
+
+    @DomainSearch.setter
+    def DomainSearch(self, DomainSearch):
+        self._DomainSearch = DomainSearch
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Length(self):
+        return self._Length
+
+    @Length.setter
+    def Length(self, Length):
+        self._Length = Length
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def OrderBy(self):
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
 
 
     def _deserialize(self, params):
-        self.DomainSearch = params.get("DomainSearch")
-        self.Offset = params.get("Offset")
-        self.Length = params.get("Length")
-        self.DomainName = params.get("DomainName")
-        self.OrderBy = params.get("OrderBy")
+        self._DomainSearch = params.get("DomainSearch")
+        self._Offset = params.get("Offset")
+        self._Length = params.get("Length")
+        self._DomainName = params.get("DomainName")
+        self._OrderBy = params.get("OrderBy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3856,27 +6990,51 @@ class DescribeLiveDomainCertBindingsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LiveDomainCertBindings: The information of domains that meet the query criteria.
+        :param _LiveDomainCertBindings: The information of domains that meet the query criteria.
         :type LiveDomainCertBindings: list of LiveDomainCertBindings
-        :param TotalNum: The number of records returned, which is needed for pagination.
+        :param _TotalNum: The number of records returned, which is needed for pagination.
         :type TotalNum: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.LiveDomainCertBindings = None
-        self.TotalNum = None
-        self.RequestId = None
+        self._LiveDomainCertBindings = None
+        self._TotalNum = None
+        self._RequestId = None
+
+    @property
+    def LiveDomainCertBindings(self):
+        return self._LiveDomainCertBindings
+
+    @LiveDomainCertBindings.setter
+    def LiveDomainCertBindings(self, LiveDomainCertBindings):
+        self._LiveDomainCertBindings = LiveDomainCertBindings
+
+    @property
+    def TotalNum(self):
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("LiveDomainCertBindings") is not None:
-            self.LiveDomainCertBindings = []
+            self._LiveDomainCertBindings = []
             for item in params.get("LiveDomainCertBindings"):
                 obj = LiveDomainCertBindings()
                 obj._deserialize(item)
-                self.LiveDomainCertBindings.append(obj)
-        self.TotalNum = params.get("TotalNum")
-        self.RequestId = params.get("RequestId")
+                self._LiveDomainCertBindings.append(obj)
+        self._TotalNum = params.get("TotalNum")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeLiveDomainCertRequest(AbstractModel):
@@ -3886,18 +7044,27 @@ class DescribeLiveDomainCertRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainName: Playback domain name.
+        :param _DomainName: Playback domain name.
         :type DomainName: str
         """
-        self.DomainName = None
+        self._DomainName = None
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
 
 
     def _deserialize(self, params):
-        self.DomainName = params.get("DomainName")
+        self._DomainName = params.get("DomainName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3910,20 +7077,36 @@ class DescribeLiveDomainCertResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainCertInfo: Certificate information.
+        :param _DomainCertInfo: Certificate information.
         :type DomainCertInfo: :class:`tencentcloud.live.v20180801.models.DomainCertInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.DomainCertInfo = None
-        self.RequestId = None
+        self._DomainCertInfo = None
+        self._RequestId = None
+
+    @property
+    def DomainCertInfo(self):
+        return self._DomainCertInfo
+
+    @DomainCertInfo.setter
+    def DomainCertInfo(self, DomainCertInfo):
+        self._DomainCertInfo = DomainCertInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DomainCertInfo") is not None:
-            self.DomainCertInfo = DomainCertInfo()
-            self.DomainCertInfo._deserialize(params.get("DomainCertInfo"))
-        self.RequestId = params.get("RequestId")
+            self._DomainCertInfo = DomainCertInfo()
+            self._DomainCertInfo._deserialize(params.get("DomainCertInfo"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeLiveDomainRefererRequest(AbstractModel):
@@ -3933,18 +7116,27 @@ class DescribeLiveDomainRefererRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainName: Playback domain name
+        :param _DomainName: Playback domain name
         :type DomainName: str
         """
-        self.DomainName = None
+        self._DomainName = None
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
 
 
     def _deserialize(self, params):
-        self.DomainName = params.get("DomainName")
+        self._DomainName = params.get("DomainName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3957,20 +7149,36 @@ class DescribeLiveDomainRefererResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RefererAuthConfig: Referer allowlist/blocklist configuration of a domain name
+        :param _RefererAuthConfig: Referer allowlist/blocklist configuration of a domain name
         :type RefererAuthConfig: :class:`tencentcloud.live.v20180801.models.RefererAuthConfig`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RefererAuthConfig = None
-        self.RequestId = None
+        self._RefererAuthConfig = None
+        self._RequestId = None
+
+    @property
+    def RefererAuthConfig(self):
+        return self._RefererAuthConfig
+
+    @RefererAuthConfig.setter
+    def RefererAuthConfig(self, RefererAuthConfig):
+        self._RefererAuthConfig = RefererAuthConfig
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("RefererAuthConfig") is not None:
-            self.RefererAuthConfig = RefererAuthConfig()
-            self.RefererAuthConfig._deserialize(params.get("RefererAuthConfig"))
-        self.RequestId = params.get("RequestId")
+            self._RefererAuthConfig = RefererAuthConfig()
+            self._RefererAuthConfig._deserialize(params.get("RefererAuthConfig"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeLiveDomainRequest(AbstractModel):
@@ -3980,18 +7188,27 @@ class DescribeLiveDomainRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainName: Domain name.
+        :param _DomainName: Domain name.
         :type DomainName: str
         """
-        self.DomainName = None
+        self._DomainName = None
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
 
 
     def _deserialize(self, params):
-        self.DomainName = params.get("DomainName")
+        self._DomainName = params.get("DomainName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4004,21 +7221,37 @@ class DescribeLiveDomainResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainInfo: Domain name information.
+        :param _DomainInfo: Domain name information.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type DomainInfo: :class:`tencentcloud.live.v20180801.models.DomainInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.DomainInfo = None
-        self.RequestId = None
+        self._DomainInfo = None
+        self._RequestId = None
+
+    @property
+    def DomainInfo(self):
+        return self._DomainInfo
+
+    @DomainInfo.setter
+    def DomainInfo(self, DomainInfo):
+        self._DomainInfo = DomainInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DomainInfo") is not None:
-            self.DomainInfo = DomainInfo()
-            self.DomainInfo._deserialize(params.get("DomainInfo"))
-        self.RequestId = params.get("RequestId")
+            self._DomainInfo = DomainInfo()
+            self._DomainInfo._deserialize(params.get("DomainInfo"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeLiveDomainsRequest(AbstractModel):
@@ -4028,45 +7261,102 @@ class DescribeLiveDomainsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainStatus: Filter by domain name status. 0: disabled, 1: enabled.
+        :param _DomainStatus: Filter by domain name status. 0: disabled, 1: enabled.
         :type DomainStatus: int
-        :param DomainType: Filter by domain name type. 0: push. 1: playback
+        :param _DomainType: Filter by domain name type. 0: push. 1: playback
         :type DomainType: int
-        :param PageSize: Number of entries per page. Value range: 10-100. Default value: 10.
+        :param _PageSize: Number of entries per page. Value range: 10-100. Default value: 10.
         :type PageSize: int
-        :param PageNum: Page number to get. Value range: 1-100000. Default value: 1.
+        :param _PageNum: Page number to get. Value range: 1-100000. Default value: 1.
         :type PageNum: int
-        :param IsDelayLive: 0: LVB, 1: LCB. Default value: 0.
+        :param _IsDelayLive: 0: LVB, 1: LCB. Default value: 0.
         :type IsDelayLive: int
-        :param DomainPrefix: Domain name prefix.
+        :param _DomainPrefix: Domain name prefix.
         :type DomainPrefix: str
-        :param PlayType: Playback region. This parameter is valid only when `DomainType` is set to `1`.
+        :param _PlayType: Playback region. This parameter is valid only when `DomainType` is set to `1`.
 `1`: Chinese mainland
 `2`: global
 `3`: outside Chinese mainland
         :type PlayType: int
         """
-        self.DomainStatus = None
-        self.DomainType = None
-        self.PageSize = None
-        self.PageNum = None
-        self.IsDelayLive = None
-        self.DomainPrefix = None
-        self.PlayType = None
+        self._DomainStatus = None
+        self._DomainType = None
+        self._PageSize = None
+        self._PageNum = None
+        self._IsDelayLive = None
+        self._DomainPrefix = None
+        self._PlayType = None
+
+    @property
+    def DomainStatus(self):
+        return self._DomainStatus
+
+    @DomainStatus.setter
+    def DomainStatus(self, DomainStatus):
+        self._DomainStatus = DomainStatus
+
+    @property
+    def DomainType(self):
+        return self._DomainType
+
+    @DomainType.setter
+    def DomainType(self, DomainType):
+        self._DomainType = DomainType
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNum(self):
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def IsDelayLive(self):
+        return self._IsDelayLive
+
+    @IsDelayLive.setter
+    def IsDelayLive(self, IsDelayLive):
+        self._IsDelayLive = IsDelayLive
+
+    @property
+    def DomainPrefix(self):
+        return self._DomainPrefix
+
+    @DomainPrefix.setter
+    def DomainPrefix(self, DomainPrefix):
+        self._DomainPrefix = DomainPrefix
+
+    @property
+    def PlayType(self):
+        return self._PlayType
+
+    @PlayType.setter
+    def PlayType(self, PlayType):
+        self._PlayType = PlayType
 
 
     def _deserialize(self, params):
-        self.DomainStatus = params.get("DomainStatus")
-        self.DomainType = params.get("DomainType")
-        self.PageSize = params.get("PageSize")
-        self.PageNum = params.get("PageNum")
-        self.IsDelayLive = params.get("IsDelayLive")
-        self.DomainPrefix = params.get("DomainPrefix")
-        self.PlayType = params.get("PlayType")
+        self._DomainStatus = params.get("DomainStatus")
+        self._DomainType = params.get("DomainType")
+        self._PageSize = params.get("PageSize")
+        self._PageNum = params.get("PageNum")
+        self._IsDelayLive = params.get("IsDelayLive")
+        self._DomainPrefix = params.get("DomainPrefix")
+        self._PlayType = params.get("PlayType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4079,37 +7369,77 @@ class DescribeLiveDomainsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AllCount: Total number of results.
+        :param _AllCount: Total number of results.
         :type AllCount: int
-        :param DomainList: List of domain name details.
+        :param _DomainList: List of domain name details.
         :type DomainList: list of DomainInfo
-        :param CreateLimitCount: The number of domain names that can be added
+        :param _CreateLimitCount: The number of domain names that can be added
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type CreateLimitCount: int
-        :param PlayTypeCount: The number of domains accelerated in the Chinese mainland, globally, and outside the Chinese mainland respectively.
+        :param _PlayTypeCount: The number of domains accelerated in the Chinese mainland, globally, and outside the Chinese mainland respectively.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PlayTypeCount: list of int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.AllCount = None
-        self.DomainList = None
-        self.CreateLimitCount = None
-        self.PlayTypeCount = None
-        self.RequestId = None
+        self._AllCount = None
+        self._DomainList = None
+        self._CreateLimitCount = None
+        self._PlayTypeCount = None
+        self._RequestId = None
+
+    @property
+    def AllCount(self):
+        return self._AllCount
+
+    @AllCount.setter
+    def AllCount(self, AllCount):
+        self._AllCount = AllCount
+
+    @property
+    def DomainList(self):
+        return self._DomainList
+
+    @DomainList.setter
+    def DomainList(self, DomainList):
+        self._DomainList = DomainList
+
+    @property
+    def CreateLimitCount(self):
+        return self._CreateLimitCount
+
+    @CreateLimitCount.setter
+    def CreateLimitCount(self, CreateLimitCount):
+        self._CreateLimitCount = CreateLimitCount
+
+    @property
+    def PlayTypeCount(self):
+        return self._PlayTypeCount
+
+    @PlayTypeCount.setter
+    def PlayTypeCount(self, PlayTypeCount):
+        self._PlayTypeCount = PlayTypeCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.AllCount = params.get("AllCount")
+        self._AllCount = params.get("AllCount")
         if params.get("DomainList") is not None:
-            self.DomainList = []
+            self._DomainList = []
             for item in params.get("DomainList"):
                 obj = DomainInfo()
                 obj._deserialize(item)
-                self.DomainList.append(obj)
-        self.CreateLimitCount = params.get("CreateLimitCount")
-        self.PlayTypeCount = params.get("PlayTypeCount")
-        self.RequestId = params.get("RequestId")
+                self._DomainList.append(obj)
+        self._CreateLimitCount = params.get("CreateLimitCount")
+        self._PlayTypeCount = params.get("PlayTypeCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeLiveForbidStreamListRequest(AbstractModel):
@@ -4119,28 +7449,53 @@ class DescribeLiveForbidStreamListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PageNum: Page number to get. Default value: 1.
+        :param _PageNum: Page number to get. Default value: 1.
         :type PageNum: int
-        :param PageSize: Number of entries per page. Maximum value: 100. 
+        :param _PageSize: Number of entries per page. Maximum value: 100. 
 Value: any integer between 1 and 100.
 Default value: 10.
         :type PageSize: int
-        :param StreamName: Stream name for query
+        :param _StreamName: Stream name for query
         :type StreamName: str
         """
-        self.PageNum = None
-        self.PageSize = None
-        self.StreamName = None
+        self._PageNum = None
+        self._PageSize = None
+        self._StreamName = None
+
+    @property
+    def PageNum(self):
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
 
 
     def _deserialize(self, params):
-        self.PageNum = params.get("PageNum")
-        self.PageSize = params.get("PageSize")
-        self.StreamName = params.get("StreamName")
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        self._StreamName = params.get("StreamName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4153,39 +7508,87 @@ class DescribeLiveForbidStreamListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalNum: Total number of eligible ones.
+        :param _TotalNum: Total number of eligible ones.
         :type TotalNum: int
-        :param TotalPage: Total number of pages.
+        :param _TotalPage: Total number of pages.
         :type TotalPage: int
-        :param PageNum: Page number.
+        :param _PageNum: Page number.
         :type PageNum: int
-        :param PageSize: Number of entries displayed per page.
+        :param _PageSize: Number of entries displayed per page.
         :type PageSize: int
-        :param ForbidStreamList: List of forbidden streams.
+        :param _ForbidStreamList: List of forbidden streams.
         :type ForbidStreamList: list of ForbidStreamInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TotalNum = None
-        self.TotalPage = None
-        self.PageNum = None
-        self.PageSize = None
-        self.ForbidStreamList = None
-        self.RequestId = None
+        self._TotalNum = None
+        self._TotalPage = None
+        self._PageNum = None
+        self._PageSize = None
+        self._ForbidStreamList = None
+        self._RequestId = None
+
+    @property
+    def TotalNum(self):
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def TotalPage(self):
+        return self._TotalPage
+
+    @TotalPage.setter
+    def TotalPage(self, TotalPage):
+        self._TotalPage = TotalPage
+
+    @property
+    def PageNum(self):
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def ForbidStreamList(self):
+        return self._ForbidStreamList
+
+    @ForbidStreamList.setter
+    def ForbidStreamList(self, ForbidStreamList):
+        self._ForbidStreamList = ForbidStreamList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalNum = params.get("TotalNum")
-        self.TotalPage = params.get("TotalPage")
-        self.PageNum = params.get("PageNum")
-        self.PageSize = params.get("PageSize")
+        self._TotalNum = params.get("TotalNum")
+        self._TotalPage = params.get("TotalPage")
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
         if params.get("ForbidStreamList") is not None:
-            self.ForbidStreamList = []
+            self._ForbidStreamList = []
             for item in params.get("ForbidStreamList"):
                 obj = ForbidStreamInfo()
                 obj._deserialize(item)
-                self.ForbidStreamList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._ForbidStreamList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeLivePlayAuthKeyRequest(AbstractModel):
@@ -4195,18 +7598,27 @@ class DescribeLivePlayAuthKeyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainName: Domain name.
+        :param _DomainName: Domain name.
         :type DomainName: str
         """
-        self.DomainName = None
+        self._DomainName = None
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
 
 
     def _deserialize(self, params):
-        self.DomainName = params.get("DomainName")
+        self._DomainName = params.get("DomainName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4219,20 +7631,36 @@ class DescribeLivePlayAuthKeyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PlayAuthKeyInfo: Playback authentication key information.
+        :param _PlayAuthKeyInfo: Playback authentication key information.
         :type PlayAuthKeyInfo: :class:`tencentcloud.live.v20180801.models.PlayAuthKeyInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.PlayAuthKeyInfo = None
-        self.RequestId = None
+        self._PlayAuthKeyInfo = None
+        self._RequestId = None
+
+    @property
+    def PlayAuthKeyInfo(self):
+        return self._PlayAuthKeyInfo
+
+    @PlayAuthKeyInfo.setter
+    def PlayAuthKeyInfo(self, PlayAuthKeyInfo):
+        self._PlayAuthKeyInfo = PlayAuthKeyInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("PlayAuthKeyInfo") is not None:
-            self.PlayAuthKeyInfo = PlayAuthKeyInfo()
-            self.PlayAuthKeyInfo._deserialize(params.get("PlayAuthKeyInfo"))
-        self.RequestId = params.get("RequestId")
+            self._PlayAuthKeyInfo = PlayAuthKeyInfo()
+            self._PlayAuthKeyInfo._deserialize(params.get("PlayAuthKeyInfo"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeLivePullStreamTasksRequest(AbstractModel):
@@ -4242,29 +7670,54 @@ class DescribeLivePullStreamTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: The task ID. 
+        :param _TaskId: The task ID. 
 A task ID is returned by the `CreateLivePullStreamTask` API.
 If you do not pass this parameter, all tasks will be returned, sorted by last updated time in descending order.
         :type TaskId: str
-        :param PageNum: The number of page to start from. Default value: 1.
+        :param _PageNum: The number of page to start from. Default value: 1.
         :type PageNum: int
-        :param PageSize: The maximum number of records per page. Default value: 10.
+        :param _PageSize: The maximum number of records per page. Default value: 10.
 Valid values: Any integer between 1 and 20.
         :type PageSize: int
         """
-        self.TaskId = None
-        self.PageNum = None
-        self.PageSize = None
+        self._TaskId = None
+        self._PageNum = None
+        self._PageSize = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def PageNum(self):
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.PageNum = params.get("PageNum")
-        self.PageSize = params.get("PageSize")
+        self._TaskId = params.get("TaskId")
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4277,43 +7730,99 @@ class DescribeLivePullStreamTasksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskInfos: The information of stream pulling tasks.
+        :param _TaskInfos: The information of stream pulling tasks.
         :type TaskInfos: list of PullStreamTaskInfo
-        :param PageNum: The page number.
+        :param _PageNum: The page number.
         :type PageNum: int
-        :param PageSize: The number of records per page.
+        :param _PageSize: The number of records per page.
         :type PageSize: int
-        :param TotalNum: The total number of records.
+        :param _TotalNum: The total number of records.
         :type TotalNum: int
-        :param TotalPage: The total number of pages.
+        :param _TotalPage: The total number of pages.
         :type TotalPage: int
-        :param LimitTaskNum: The maximum number of tasks allowed.
+        :param _LimitTaskNum: The maximum number of tasks allowed.
         :type LimitTaskNum: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TaskInfos = None
-        self.PageNum = None
-        self.PageSize = None
-        self.TotalNum = None
-        self.TotalPage = None
-        self.LimitTaskNum = None
-        self.RequestId = None
+        self._TaskInfos = None
+        self._PageNum = None
+        self._PageSize = None
+        self._TotalNum = None
+        self._TotalPage = None
+        self._LimitTaskNum = None
+        self._RequestId = None
+
+    @property
+    def TaskInfos(self):
+        return self._TaskInfos
+
+    @TaskInfos.setter
+    def TaskInfos(self, TaskInfos):
+        self._TaskInfos = TaskInfos
+
+    @property
+    def PageNum(self):
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalNum(self):
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def TotalPage(self):
+        return self._TotalPage
+
+    @TotalPage.setter
+    def TotalPage(self, TotalPage):
+        self._TotalPage = TotalPage
+
+    @property
+    def LimitTaskNum(self):
+        return self._LimitTaskNum
+
+    @LimitTaskNum.setter
+    def LimitTaskNum(self, LimitTaskNum):
+        self._LimitTaskNum = LimitTaskNum
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("TaskInfos") is not None:
-            self.TaskInfos = []
+            self._TaskInfos = []
             for item in params.get("TaskInfos"):
                 obj = PullStreamTaskInfo()
                 obj._deserialize(item)
-                self.TaskInfos.append(obj)
-        self.PageNum = params.get("PageNum")
-        self.PageSize = params.get("PageSize")
-        self.TotalNum = params.get("TotalNum")
-        self.TotalPage = params.get("TotalPage")
-        self.LimitTaskNum = params.get("LimitTaskNum")
-        self.RequestId = params.get("RequestId")
+                self._TaskInfos.append(obj)
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        self._TotalNum = params.get("TotalNum")
+        self._TotalPage = params.get("TotalPage")
+        self._LimitTaskNum = params.get("LimitTaskNum")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeLivePushAuthKeyRequest(AbstractModel):
@@ -4323,18 +7832,27 @@ class DescribeLivePushAuthKeyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainName: Push domain name.
+        :param _DomainName: Push domain name.
         :type DomainName: str
         """
-        self.DomainName = None
+        self._DomainName = None
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
 
 
     def _deserialize(self, params):
-        self.DomainName = params.get("DomainName")
+        self._DomainName = params.get("DomainName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4347,20 +7865,36 @@ class DescribeLivePushAuthKeyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PushAuthKeyInfo: Push authentication key information.
+        :param _PushAuthKeyInfo: Push authentication key information.
         :type PushAuthKeyInfo: :class:`tencentcloud.live.v20180801.models.PushAuthKeyInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.PushAuthKeyInfo = None
-        self.RequestId = None
+        self._PushAuthKeyInfo = None
+        self._RequestId = None
+
+    @property
+    def PushAuthKeyInfo(self):
+        return self._PushAuthKeyInfo
+
+    @PushAuthKeyInfo.setter
+    def PushAuthKeyInfo(self, PushAuthKeyInfo):
+        self._PushAuthKeyInfo = PushAuthKeyInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("PushAuthKeyInfo") is not None:
-            self.PushAuthKeyInfo = PushAuthKeyInfo()
-            self.PushAuthKeyInfo._deserialize(params.get("PushAuthKeyInfo"))
-        self.RequestId = params.get("RequestId")
+            self._PushAuthKeyInfo = PushAuthKeyInfo()
+            self._PushAuthKeyInfo._deserialize(params.get("PushAuthKeyInfo"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeLiveRecordRulesRequest(AbstractModel):
@@ -4376,23 +7910,39 @@ class DescribeLiveRecordRulesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Rules: List of rules.
+        :param _Rules: List of rules.
         :type Rules: list of RuleInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Rules = None
-        self.RequestId = None
+        self._Rules = None
+        self._RequestId = None
+
+    @property
+    def Rules(self):
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Rules") is not None:
-            self.Rules = []
+            self._Rules = []
             for item in params.get("Rules"):
                 obj = RuleInfo()
                 obj._deserialize(item)
-                self.Rules.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Rules.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeLiveRecordTemplateRequest(AbstractModel):
@@ -4402,18 +7952,27 @@ class DescribeLiveRecordTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateId: Template ID obtained by [DescribeLiveRecordTemplates](https://intl.cloud.tencent.com/document/product/267/32609?from_cn_redirect=1).
+        :param _TemplateId: Template ID obtained by [DescribeLiveRecordTemplates](https://intl.cloud.tencent.com/document/product/267/32609?from_cn_redirect=1).
         :type TemplateId: int
         """
-        self.TemplateId = None
+        self._TemplateId = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
 
 
     def _deserialize(self, params):
-        self.TemplateId = params.get("TemplateId")
+        self._TemplateId = params.get("TemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4426,20 +7985,36 @@ class DescribeLiveRecordTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Template: Recording template information.
+        :param _Template: Recording template information.
         :type Template: :class:`tencentcloud.live.v20180801.models.RecordTemplateInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Template = None
-        self.RequestId = None
+        self._Template = None
+        self._RequestId = None
+
+    @property
+    def Template(self):
+        return self._Template
+
+    @Template.setter
+    def Template(self, Template):
+        self._Template = Template
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Template") is not None:
-            self.Template = RecordTemplateInfo()
-            self.Template._deserialize(params.get("Template"))
-        self.RequestId = params.get("RequestId")
+            self._Template = RecordTemplateInfo()
+            self._Template._deserialize(params.get("Template"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeLiveRecordTemplatesRequest(AbstractModel):
@@ -4449,20 +8024,29 @@ class DescribeLiveRecordTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IsDelayLive: Whether it is an LCB template. Default value: 0.
+        :param _IsDelayLive: Whether it is an LCB template. Default value: 0.
 0: LVB.
 1: LCB.
         :type IsDelayLive: int
         """
-        self.IsDelayLive = None
+        self._IsDelayLive = None
+
+    @property
+    def IsDelayLive(self):
+        return self._IsDelayLive
+
+    @IsDelayLive.setter
+    def IsDelayLive(self, IsDelayLive):
+        self._IsDelayLive = IsDelayLive
 
 
     def _deserialize(self, params):
-        self.IsDelayLive = params.get("IsDelayLive")
+        self._IsDelayLive = params.get("IsDelayLive")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4475,23 +8059,39 @@ class DescribeLiveRecordTemplatesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Templates: Recording template information list.
+        :param _Templates: Recording template information list.
         :type Templates: list of RecordTemplateInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Templates = None
-        self.RequestId = None
+        self._Templates = None
+        self._RequestId = None
+
+    @property
+    def Templates(self):
+        return self._Templates
+
+    @Templates.setter
+    def Templates(self, Templates):
+        self._Templates = Templates
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Templates") is not None:
-            self.Templates = []
+            self._Templates = []
             for item in params.get("Templates"):
                 obj = RecordTemplateInfo()
                 obj._deserialize(item)
-                self.Templates.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Templates.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeLiveSnapshotRulesRequest(AbstractModel):
@@ -4507,23 +8107,39 @@ class DescribeLiveSnapshotRulesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Rules: Rule list.
+        :param _Rules: Rule list.
         :type Rules: list of RuleInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Rules = None
-        self.RequestId = None
+        self._Rules = None
+        self._RequestId = None
+
+    @property
+    def Rules(self):
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Rules") is not None:
-            self.Rules = []
+            self._Rules = []
             for item in params.get("Rules"):
                 obj = RuleInfo()
                 obj._deserialize(item)
-                self.Rules.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Rules.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeLiveSnapshotTemplateRequest(AbstractModel):
@@ -4533,19 +8149,28 @@ class DescribeLiveSnapshotTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateId: Template ID.
+        :param _TemplateId: Template ID.
 Template ID returned by the [CreateLiveSnapshotTemplate](https://intl.cloud.tencent.com/document/product/267/32624?from_cn_redirect=1) API call.
         :type TemplateId: int
         """
-        self.TemplateId = None
+        self._TemplateId = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
 
 
     def _deserialize(self, params):
-        self.TemplateId = params.get("TemplateId")
+        self._TemplateId = params.get("TemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4558,20 +8183,36 @@ class DescribeLiveSnapshotTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Template: Screencapturing template information.
+        :param _Template: Screencapturing template information.
         :type Template: :class:`tencentcloud.live.v20180801.models.SnapshotTemplateInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Template = None
-        self.RequestId = None
+        self._Template = None
+        self._RequestId = None
+
+    @property
+    def Template(self):
+        return self._Template
+
+    @Template.setter
+    def Template(self, Template):
+        self._Template = Template
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Template") is not None:
-            self.Template = SnapshotTemplateInfo()
-            self.Template._deserialize(params.get("Template"))
-        self.RequestId = params.get("RequestId")
+            self._Template = SnapshotTemplateInfo()
+            self._Template._deserialize(params.get("Template"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeLiveSnapshotTemplatesRequest(AbstractModel):
@@ -4587,23 +8228,39 @@ class DescribeLiveSnapshotTemplatesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Templates: Screencapturing template list.
+        :param _Templates: Screencapturing template list.
         :type Templates: list of SnapshotTemplateInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Templates = None
-        self.RequestId = None
+        self._Templates = None
+        self._RequestId = None
+
+    @property
+    def Templates(self):
+        return self._Templates
+
+    @Templates.setter
+    def Templates(self, Templates):
+        self._Templates = Templates
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Templates") is not None:
-            self.Templates = []
+            self._Templates = []
             for item in params.get("Templates"):
                 obj = SnapshotTemplateInfo()
                 obj._deserialize(item)
-                self.Templates.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Templates.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeLiveStreamEventListRequest(AbstractModel):
@@ -4613,72 +8270,153 @@ class DescribeLiveStreamEventListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: Start time. 
+        :param _StartTime: Start time. 
 In UTC format, such as 2018-12-29T19:00:00Z.
 This supports querying the history of 60 days.
         :type StartTime: str
-        :param EndTime: End time.
+        :param _EndTime: End time.
 In UTC format, such as 2018-12-29T20:00:00Z.
 This cannot be after the current time and cannot be more than 30 days after the start time.
         :type EndTime: str
-        :param AppName: Push path, which is the same as the AppName in push and playback addresses and is "live" by default.
+        :param _AppName: Push path, which is the same as the AppName in push and playback addresses and is "live" by default.
         :type AppName: str
-        :param DomainName: Push domain name.
+        :param _DomainName: Push domain name.
         :type DomainName: str
-        :param StreamName: Stream name; query with wildcard (*) is not supported; fuzzy match by default.
+        :param _StreamName: Stream name; query with wildcard (*) is not supported; fuzzy match by default.
 The IsStrict field can be used to change to exact query.
         :type StreamName: str
-        :param PageNum: Page number to get.
+        :param _PageNum: Page number to get.
 Default value: 1.
 Note: Currently, query for up to 10,000 entries is supported.
         :type PageNum: int
-        :param PageSize: Number of entries per page.
+        :param _PageSize: Number of entries per page.
 Maximum value: 100.
 Value range: any integer between 1 and 100.
 Default value: 10.
 Note: currently, query for up to 10,000 entries is supported.
         :type PageSize: int
-        :param IsFilter: Whether to filter. No filtering by default.
+        :param _IsFilter: Whether to filter. No filtering by default.
 0: No filtering at all.
 1: Filter out the failing streams and return only the successful ones.
         :type IsFilter: int
-        :param IsStrict: Whether to query exactly. Fuzzy match by default.
+        :param _IsStrict: Whether to query exactly. Fuzzy match by default.
 0: Fuzzy match.
 1: Exact query.
 Note: This parameter takes effect when StreamName is used.
         :type IsStrict: int
-        :param IsAsc: Whether to display in ascending order by end time. Descending order by default.
+        :param _IsAsc: Whether to display in ascending order by end time. Descending order by default.
 0: Descending.
 1: Ascending.
         :type IsAsc: int
         """
-        self.StartTime = None
-        self.EndTime = None
-        self.AppName = None
-        self.DomainName = None
-        self.StreamName = None
-        self.PageNum = None
-        self.PageSize = None
-        self.IsFilter = None
-        self.IsStrict = None
-        self.IsAsc = None
+        self._StartTime = None
+        self._EndTime = None
+        self._AppName = None
+        self._DomainName = None
+        self._StreamName = None
+        self._PageNum = None
+        self._PageSize = None
+        self._IsFilter = None
+        self._IsStrict = None
+        self._IsAsc = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+    @property
+    def PageNum(self):
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def IsFilter(self):
+        return self._IsFilter
+
+    @IsFilter.setter
+    def IsFilter(self, IsFilter):
+        self._IsFilter = IsFilter
+
+    @property
+    def IsStrict(self):
+        return self._IsStrict
+
+    @IsStrict.setter
+    def IsStrict(self, IsStrict):
+        self._IsStrict = IsStrict
+
+    @property
+    def IsAsc(self):
+        return self._IsAsc
+
+    @IsAsc.setter
+    def IsAsc(self, IsAsc):
+        self._IsAsc = IsAsc
 
 
     def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.AppName = params.get("AppName")
-        self.DomainName = params.get("DomainName")
-        self.StreamName = params.get("StreamName")
-        self.PageNum = params.get("PageNum")
-        self.PageSize = params.get("PageSize")
-        self.IsFilter = params.get("IsFilter")
-        self.IsStrict = params.get("IsStrict")
-        self.IsAsc = params.get("IsAsc")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._AppName = params.get("AppName")
+        self._DomainName = params.get("DomainName")
+        self._StreamName = params.get("StreamName")
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        self._IsFilter = params.get("IsFilter")
+        self._IsStrict = params.get("IsStrict")
+        self._IsAsc = params.get("IsAsc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4691,39 +8429,87 @@ class DescribeLiveStreamEventListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EventList: List of streaming events.
+        :param _EventList: List of streaming events.
         :type EventList: list of StreamEventInfo
-        :param PageNum: Page number.
+        :param _PageNum: Page number.
         :type PageNum: int
-        :param PageSize: Number of entries per page.
+        :param _PageSize: Number of entries per page.
         :type PageSize: int
-        :param TotalNum: Total number of eligible ones.
+        :param _TotalNum: Total number of eligible ones.
         :type TotalNum: int
-        :param TotalPage: Total number of pages.
+        :param _TotalPage: Total number of pages.
         :type TotalPage: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.EventList = None
-        self.PageNum = None
-        self.PageSize = None
-        self.TotalNum = None
-        self.TotalPage = None
-        self.RequestId = None
+        self._EventList = None
+        self._PageNum = None
+        self._PageSize = None
+        self._TotalNum = None
+        self._TotalPage = None
+        self._RequestId = None
+
+    @property
+    def EventList(self):
+        return self._EventList
+
+    @EventList.setter
+    def EventList(self, EventList):
+        self._EventList = EventList
+
+    @property
+    def PageNum(self):
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalNum(self):
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def TotalPage(self):
+        return self._TotalPage
+
+    @TotalPage.setter
+    def TotalPage(self, TotalPage):
+        self._TotalPage = TotalPage
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("EventList") is not None:
-            self.EventList = []
+            self._EventList = []
             for item in params.get("EventList"):
                 obj = StreamEventInfo()
                 obj._deserialize(item)
-                self.EventList.append(obj)
-        self.PageNum = params.get("PageNum")
-        self.PageSize = params.get("PageSize")
-        self.TotalNum = params.get("TotalNum")
-        self.TotalPage = params.get("TotalPage")
-        self.RequestId = params.get("RequestId")
+                self._EventList.append(obj)
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        self._TotalNum = params.get("TotalNum")
+        self._TotalPage = params.get("TotalPage")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeLiveStreamOnlineListRequest(AbstractModel):
@@ -4733,36 +8519,77 @@ class DescribeLiveStreamOnlineListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainName: Push domain name. If you use multiple paths, enter the `DomainName`.
+        :param _DomainName: Push domain name. If you use multiple paths, enter the `DomainName`.
         :type DomainName: str
-        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default. If you use multiple paths, enter the `AppName`.
+        :param _AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default. If you use multiple paths, enter the `AppName`.
         :type AppName: str
-        :param PageNum: Page number to get. Default value: 1.
+        :param _PageNum: Page number to get. Default value: 1.
         :type PageNum: int
-        :param PageSize: Number of entries per page. Maximum value: 100. 
+        :param _PageSize: Number of entries per page. Maximum value: 100. 
 Value: any integer between 10 and 100.
 Default value: 10.
         :type PageSize: int
-        :param StreamName: Stream name, which is used for exact query.
+        :param _StreamName: Stream name, which is used for exact query.
         :type StreamName: str
         """
-        self.DomainName = None
-        self.AppName = None
-        self.PageNum = None
-        self.PageSize = None
-        self.StreamName = None
+        self._DomainName = None
+        self._AppName = None
+        self._PageNum = None
+        self._PageSize = None
+        self._StreamName = None
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def PageNum(self):
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
 
 
     def _deserialize(self, params):
-        self.DomainName = params.get("DomainName")
-        self.AppName = params.get("AppName")
-        self.PageNum = params.get("PageNum")
-        self.PageSize = params.get("PageSize")
-        self.StreamName = params.get("StreamName")
+        self._DomainName = params.get("DomainName")
+        self._AppName = params.get("AppName")
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        self._StreamName = params.get("StreamName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4775,39 +8602,87 @@ class DescribeLiveStreamOnlineListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalNum: Total number of eligible ones.
+        :param _TotalNum: Total number of eligible ones.
         :type TotalNum: int
-        :param TotalPage: Total number of pages.
+        :param _TotalPage: Total number of pages.
         :type TotalPage: int
-        :param PageNum: Page number.
+        :param _PageNum: Page number.
         :type PageNum: int
-        :param PageSize: Number of entries displayed per page.
+        :param _PageSize: Number of entries displayed per page.
         :type PageSize: int
-        :param OnlineInfo: Active push information list.
+        :param _OnlineInfo: Active push information list.
         :type OnlineInfo: list of StreamOnlineInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TotalNum = None
-        self.TotalPage = None
-        self.PageNum = None
-        self.PageSize = None
-        self.OnlineInfo = None
-        self.RequestId = None
+        self._TotalNum = None
+        self._TotalPage = None
+        self._PageNum = None
+        self._PageSize = None
+        self._OnlineInfo = None
+        self._RequestId = None
+
+    @property
+    def TotalNum(self):
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def TotalPage(self):
+        return self._TotalPage
+
+    @TotalPage.setter
+    def TotalPage(self, TotalPage):
+        self._TotalPage = TotalPage
+
+    @property
+    def PageNum(self):
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def OnlineInfo(self):
+        return self._OnlineInfo
+
+    @OnlineInfo.setter
+    def OnlineInfo(self, OnlineInfo):
+        self._OnlineInfo = OnlineInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalNum = params.get("TotalNum")
-        self.TotalPage = params.get("TotalPage")
-        self.PageNum = params.get("PageNum")
-        self.PageSize = params.get("PageSize")
+        self._TotalNum = params.get("TotalNum")
+        self._TotalPage = params.get("TotalPage")
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
         if params.get("OnlineInfo") is not None:
-            self.OnlineInfo = []
+            self._OnlineInfo = []
             for item in params.get("OnlineInfo"):
                 obj = StreamOnlineInfo()
                 obj._deserialize(item)
-                self.OnlineInfo.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._OnlineInfo.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeLiveStreamPublishedListRequest(AbstractModel):
@@ -4817,51 +8692,108 @@ class DescribeLiveStreamPublishedListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainName: Your push domain name.
+        :param _DomainName: Your push domain name.
         :type DomainName: str
-        :param EndTime: End time.
+        :param _EndTime: End time.
 In UTC format, such as 2016-06-30T19:00:00Z.
 This cannot be after the current time.
 Note: The difference between EndTime and StartTime cannot be greater than 30 days.
         :type EndTime: str
-        :param StartTime: Start time. 
+        :param _StartTime: Start time. 
 In UTC format, such as 2016-06-29T19:00:00Z.
 This supports querying data in the past 60 days.
         :type StartTime: str
-        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default. Fuzzy match is not supported.
+        :param _AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default. Fuzzy match is not supported.
         :type AppName: str
-        :param PageNum: Page number to get.
+        :param _PageNum: Page number to get.
 Default value: 1.
         :type PageNum: int
-        :param PageSize: Number of entries per page.
+        :param _PageSize: Number of entries per page.
 Maximum value: 100
 Valid values: integers between 10 and 100
 Default value: 10
         :type PageSize: int
-        :param StreamName: Stream name, which supports fuzzy match.
+        :param _StreamName: Stream name, which supports fuzzy match.
         :type StreamName: str
         """
-        self.DomainName = None
-        self.EndTime = None
-        self.StartTime = None
-        self.AppName = None
-        self.PageNum = None
-        self.PageSize = None
-        self.StreamName = None
+        self._DomainName = None
+        self._EndTime = None
+        self._StartTime = None
+        self._AppName = None
+        self._PageNum = None
+        self._PageSize = None
+        self._StreamName = None
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def PageNum(self):
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
 
 
     def _deserialize(self, params):
-        self.DomainName = params.get("DomainName")
-        self.EndTime = params.get("EndTime")
-        self.StartTime = params.get("StartTime")
-        self.AppName = params.get("AppName")
-        self.PageNum = params.get("PageNum")
-        self.PageSize = params.get("PageSize")
-        self.StreamName = params.get("StreamName")
+        self._DomainName = params.get("DomainName")
+        self._EndTime = params.get("EndTime")
+        self._StartTime = params.get("StartTime")
+        self._AppName = params.get("AppName")
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        self._StreamName = params.get("StreamName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4874,39 +8806,87 @@ class DescribeLiveStreamPublishedListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PublishInfo: Push record information.
+        :param _PublishInfo: Push record information.
         :type PublishInfo: list of StreamName
-        :param PageNum: Page number.
+        :param _PageNum: Page number.
         :type PageNum: int
-        :param PageSize: Number of entries per page
+        :param _PageSize: Number of entries per page
         :type PageSize: int
-        :param TotalNum: Total number of eligible ones.
+        :param _TotalNum: Total number of eligible ones.
         :type TotalNum: int
-        :param TotalPage: Total number of pages.
+        :param _TotalPage: Total number of pages.
         :type TotalPage: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.PublishInfo = None
-        self.PageNum = None
-        self.PageSize = None
-        self.TotalNum = None
-        self.TotalPage = None
-        self.RequestId = None
+        self._PublishInfo = None
+        self._PageNum = None
+        self._PageSize = None
+        self._TotalNum = None
+        self._TotalPage = None
+        self._RequestId = None
+
+    @property
+    def PublishInfo(self):
+        return self._PublishInfo
+
+    @PublishInfo.setter
+    def PublishInfo(self, PublishInfo):
+        self._PublishInfo = PublishInfo
+
+    @property
+    def PageNum(self):
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalNum(self):
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def TotalPage(self):
+        return self._TotalPage
+
+    @TotalPage.setter
+    def TotalPage(self, TotalPage):
+        self._TotalPage = TotalPage
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("PublishInfo") is not None:
-            self.PublishInfo = []
+            self._PublishInfo = []
             for item in params.get("PublishInfo"):
                 obj = StreamName()
                 obj._deserialize(item)
-                self.PublishInfo.append(obj)
-        self.PageNum = params.get("PageNum")
-        self.PageSize = params.get("PageSize")
-        self.TotalNum = params.get("TotalNum")
-        self.TotalPage = params.get("TotalPage")
-        self.RequestId = params.get("RequestId")
+                self._PublishInfo.append(obj)
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        self._TotalNum = params.get("TotalNum")
+        self._TotalPage = params.get("TotalPage")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeLiveStreamPushInfoListRequest(AbstractModel):
@@ -4916,34 +8896,67 @@ class DescribeLiveStreamPushInfoListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PushDomain: Push domain name.
+        :param _PushDomain: Push domain name.
         :type PushDomain: str
-        :param AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
+        :param _AppName: Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
         :type AppName: str
-        :param PageNum: Number of pages,
+        :param _PageNum: Number of pages,
 Value range: [1,10000],
 Default value: 1.
         :type PageNum: int
-        :param PageSize: Number of entries per page,
+        :param _PageSize: Number of entries per page,
 Value range: [1,1000],
 Default value: 200.
         :type PageSize: int
         """
-        self.PushDomain = None
-        self.AppName = None
-        self.PageNum = None
-        self.PageSize = None
+        self._PushDomain = None
+        self._AppName = None
+        self._PageNum = None
+        self._PageSize = None
+
+    @property
+    def PushDomain(self):
+        return self._PushDomain
+
+    @PushDomain.setter
+    def PushDomain(self, PushDomain):
+        self._PushDomain = PushDomain
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def PageNum(self):
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
 
 
     def _deserialize(self, params):
-        self.PushDomain = params.get("PushDomain")
-        self.AppName = params.get("AppName")
-        self.PageNum = params.get("PageNum")
-        self.PageSize = params.get("PageSize")
+        self._PushDomain = params.get("PushDomain")
+        self._AppName = params.get("AppName")
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4956,39 +8969,87 @@ class DescribeLiveStreamPushInfoListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DataInfoList: Live stream statistics list.
+        :param _DataInfoList: Live stream statistics list.
         :type DataInfoList: list of PushDataInfo
-        :param TotalNum: Total number of live streams.
+        :param _TotalNum: Total number of live streams.
         :type TotalNum: int
-        :param TotalPage: Total number of pages.
+        :param _TotalPage: Total number of pages.
         :type TotalPage: int
-        :param PageNum: Page number where the current data resides.
+        :param _PageNum: Page number where the current data resides.
         :type PageNum: int
-        :param PageSize: Number of live streams per page.
+        :param _PageSize: Number of live streams per page.
         :type PageSize: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.DataInfoList = None
-        self.TotalNum = None
-        self.TotalPage = None
-        self.PageNum = None
-        self.PageSize = None
-        self.RequestId = None
+        self._DataInfoList = None
+        self._TotalNum = None
+        self._TotalPage = None
+        self._PageNum = None
+        self._PageSize = None
+        self._RequestId = None
+
+    @property
+    def DataInfoList(self):
+        return self._DataInfoList
+
+    @DataInfoList.setter
+    def DataInfoList(self, DataInfoList):
+        self._DataInfoList = DataInfoList
+
+    @property
+    def TotalNum(self):
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def TotalPage(self):
+        return self._TotalPage
+
+    @TotalPage.setter
+    def TotalPage(self, TotalPage):
+        self._TotalPage = TotalPage
+
+    @property
+    def PageNum(self):
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DataInfoList") is not None:
-            self.DataInfoList = []
+            self._DataInfoList = []
             for item in params.get("DataInfoList"):
                 obj = PushDataInfo()
                 obj._deserialize(item)
-                self.DataInfoList.append(obj)
-        self.TotalNum = params.get("TotalNum")
-        self.TotalPage = params.get("TotalPage")
-        self.PageNum = params.get("PageNum")
-        self.PageSize = params.get("PageSize")
-        self.RequestId = params.get("RequestId")
+                self._DataInfoList.append(obj)
+        self._TotalNum = params.get("TotalNum")
+        self._TotalPage = params.get("TotalPage")
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeLiveStreamStateRequest(AbstractModel):
@@ -4998,26 +9059,51 @@ class DescribeLiveStreamStateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AppName: Push path, which is the same as the AppName in push and playback addresses and is "live" by default.
+        :param _AppName: Push path, which is the same as the AppName in push and playback addresses and is "live" by default.
         :type AppName: str
-        :param DomainName: Your push domain name.
+        :param _DomainName: Your push domain name.
         :type DomainName: str
-        :param StreamName: Stream name.
+        :param _StreamName: Stream name.
         :type StreamName: str
         """
-        self.AppName = None
-        self.DomainName = None
-        self.StreamName = None
+        self._AppName = None
+        self._DomainName = None
+        self._StreamName = None
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
 
 
     def _deserialize(self, params):
-        self.AppName = params.get("AppName")
-        self.DomainName = params.get("DomainName")
-        self.StreamName = params.get("StreamName")
+        self._AppName = params.get("AppName")
+        self._DomainName = params.get("DomainName")
+        self._StreamName = params.get("StreamName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5030,21 +9116,37 @@ class DescribeLiveStreamStateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StreamState: Stream status,
+        :param _StreamState: Stream status,
 active: active
 inactive: Inactive
 forbid: forbidden.
         :type StreamState: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.StreamState = None
-        self.RequestId = None
+        self._StreamState = None
+        self._RequestId = None
+
+    @property
+    def StreamState(self):
+        return self._StreamState
+
+    @StreamState.setter
+    def StreamState(self, StreamState):
+        self._StreamState = StreamState
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.StreamState = params.get("StreamState")
-        self.RequestId = params.get("RequestId")
+        self._StreamState = params.get("StreamState")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeLiveTimeShiftBillInfoListRequest(AbstractModel):
@@ -5054,34 +9156,59 @@ class DescribeLiveTimeShiftBillInfoListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: The start time for query. You can query data from the past three months. The longest time period that can be queried is one month.
+        :param _StartTime: The start time for query. You can query data from the past three months. The longest time period that can be queried is one month.
 
 It must be in UTC format.
 Example: 2019-01-08T10:00:00Z.
 Note: Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format) is used.
         :type StartTime: str
-        :param EndTime: The end time for query. You can query data from the past three months. The longest time period that can be queried is one month.
+        :param _EndTime: The end time for query. You can query data from the past three months. The longest time period that can be queried is one month.
 
 It must be in UTC format.
 Example: 2019-01-08T10:00:00Z.
 Note: Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format) is used.
         :type EndTime: str
-        :param PushDomains: The push domains to query. If you leave this empty, the time shifting billing data of all push domains will be returned.
+        :param _PushDomains: The push domains to query. If you leave this empty, the time shifting billing data of all push domains will be returned.
         :type PushDomains: list of str
         """
-        self.StartTime = None
-        self.EndTime = None
-        self.PushDomains = None
+        self._StartTime = None
+        self._EndTime = None
+        self._PushDomains = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def PushDomains(self):
+        return self._PushDomains
+
+    @PushDomains.setter
+    def PushDomains(self, PushDomains):
+        self._PushDomains = PushDomains
 
 
     def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.PushDomains = params.get("PushDomains")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._PushDomains = params.get("PushDomains")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5094,23 +9221,39 @@ class DescribeLiveTimeShiftBillInfoListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DataInfoList: The time shifting billing data.
+        :param _DataInfoList: The time shifting billing data.
         :type DataInfoList: list of TimeShiftBillData
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.DataInfoList = None
-        self.RequestId = None
+        self._DataInfoList = None
+        self._RequestId = None
+
+    @property
+    def DataInfoList(self):
+        return self._DataInfoList
+
+    @DataInfoList.setter
+    def DataInfoList(self, DataInfoList):
+        self._DataInfoList = DataInfoList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DataInfoList") is not None:
-            self.DataInfoList = []
+            self._DataInfoList = []
             for item in params.get("DataInfoList"):
                 obj = TimeShiftBillData()
                 obj._deserialize(item)
-                self.DataInfoList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._DataInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeLiveTimeShiftRulesRequest(AbstractModel):
@@ -5126,23 +9269,39 @@ class DescribeLiveTimeShiftRulesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Rules: The information of the rules.
+        :param _Rules: The information of the rules.
         :type Rules: list of RuleInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Rules = None
-        self.RequestId = None
+        self._Rules = None
+        self._RequestId = None
+
+    @property
+    def Rules(self):
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Rules") is not None:
-            self.Rules = []
+            self._Rules = []
             for item in params.get("Rules"):
                 obj = RuleInfo()
                 obj._deserialize(item)
-                self.Rules.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Rules.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeLiveTimeShiftTemplatesRequest(AbstractModel):
@@ -5158,23 +9317,39 @@ class DescribeLiveTimeShiftTemplatesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Templates: The information of the templates.
+        :param _Templates: The information of the templates.
         :type Templates: list of TimeShiftTemplate
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Templates = None
-        self.RequestId = None
+        self._Templates = None
+        self._RequestId = None
+
+    @property
+    def Templates(self):
+        return self._Templates
+
+    @Templates.setter
+    def Templates(self, Templates):
+        self._Templates = Templates
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Templates") is not None:
-            self.Templates = []
+            self._Templates = []
             for item in params.get("Templates"):
                 obj = TimeShiftTemplate()
                 obj._deserialize(item)
-                self.Templates.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Templates.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeLiveTranscodeDetailInfoRequest(AbstractModel):
@@ -5184,50 +9359,107 @@ class DescribeLiveTranscodeDetailInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PushDomain: Push domain name.
+        :param _PushDomain: Push domain name.
         :type PushDomain: str
-        :param StreamName: Stream name.
+        :param _StreamName: Stream name.
         :type StreamName: str
-        :param DayTime: Query date (UTC+8)
+        :param _DayTime: Query date (UTC+8)
 Format: yyyymmdd
 Note: you can query the statistics for a day in the past month, with yesterday as the latest date allowed.
         :type DayTime: str
-        :param PageNum: Number of pages. Default value: 1.
+        :param _PageNum: Number of pages. Default value: 1.
 Up to 100 pages.
         :type PageNum: int
-        :param PageSize: Number of entries per page. Default value: 20,
+        :param _PageSize: Number of entries per page. Default value: 20,
 Value range: [10,1000].
         :type PageSize: int
-        :param StartDayTime: Start day time (Beijing time),
+        :param _StartDayTime: Start day time (Beijing time),
 In the format of `yyyymmdd`.
 Note: details for the last month can be queried.
         :type StartDayTime: str
-        :param EndDayTime: End date (UTC+8)
+        :param _EndDayTime: End date (UTC+8)
 Format: yyyymmdd
 Note: you can query the statistics for a period in the past month, with yesterday as the latest date allowed. You must specify either `DayTime`, or `StartDayTime` and `EndDayTime`. If you specify all three parameters, only `DayTime` will be applied.
         :type EndDayTime: str
         """
-        self.PushDomain = None
-        self.StreamName = None
-        self.DayTime = None
-        self.PageNum = None
-        self.PageSize = None
-        self.StartDayTime = None
-        self.EndDayTime = None
+        self._PushDomain = None
+        self._StreamName = None
+        self._DayTime = None
+        self._PageNum = None
+        self._PageSize = None
+        self._StartDayTime = None
+        self._EndDayTime = None
+
+    @property
+    def PushDomain(self):
+        return self._PushDomain
+
+    @PushDomain.setter
+    def PushDomain(self, PushDomain):
+        self._PushDomain = PushDomain
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+    @property
+    def DayTime(self):
+        return self._DayTime
+
+    @DayTime.setter
+    def DayTime(self, DayTime):
+        self._DayTime = DayTime
+
+    @property
+    def PageNum(self):
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def StartDayTime(self):
+        return self._StartDayTime
+
+    @StartDayTime.setter
+    def StartDayTime(self, StartDayTime):
+        self._StartDayTime = StartDayTime
+
+    @property
+    def EndDayTime(self):
+        return self._EndDayTime
+
+    @EndDayTime.setter
+    def EndDayTime(self, EndDayTime):
+        self._EndDayTime = EndDayTime
 
 
     def _deserialize(self, params):
-        self.PushDomain = params.get("PushDomain")
-        self.StreamName = params.get("StreamName")
-        self.DayTime = params.get("DayTime")
-        self.PageNum = params.get("PageNum")
-        self.PageSize = params.get("PageSize")
-        self.StartDayTime = params.get("StartDayTime")
-        self.EndDayTime = params.get("EndDayTime")
+        self._PushDomain = params.get("PushDomain")
+        self._StreamName = params.get("StreamName")
+        self._DayTime = params.get("DayTime")
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        self._StartDayTime = params.get("StartDayTime")
+        self._EndDayTime = params.get("EndDayTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5240,39 +9472,87 @@ class DescribeLiveTranscodeDetailInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DataInfoList: Statistics list.
+        :param _DataInfoList: Statistics list.
         :type DataInfoList: list of TranscodeDetailInfo
-        :param PageNum: Page number.
+        :param _PageNum: Page number.
         :type PageNum: int
-        :param PageSize: Number of entries per page.
+        :param _PageSize: Number of entries per page.
         :type PageSize: int
-        :param TotalNum: Total number.
+        :param _TotalNum: Total number.
         :type TotalNum: int
-        :param TotalPage: Total number of pages.
+        :param _TotalPage: Total number of pages.
         :type TotalPage: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.DataInfoList = None
-        self.PageNum = None
-        self.PageSize = None
-        self.TotalNum = None
-        self.TotalPage = None
-        self.RequestId = None
+        self._DataInfoList = None
+        self._PageNum = None
+        self._PageSize = None
+        self._TotalNum = None
+        self._TotalPage = None
+        self._RequestId = None
+
+    @property
+    def DataInfoList(self):
+        return self._DataInfoList
+
+    @DataInfoList.setter
+    def DataInfoList(self, DataInfoList):
+        self._DataInfoList = DataInfoList
+
+    @property
+    def PageNum(self):
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalNum(self):
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def TotalPage(self):
+        return self._TotalPage
+
+    @TotalPage.setter
+    def TotalPage(self, TotalPage):
+        self._TotalPage = TotalPage
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DataInfoList") is not None:
-            self.DataInfoList = []
+            self._DataInfoList = []
             for item in params.get("DataInfoList"):
                 obj = TranscodeDetailInfo()
                 obj._deserialize(item)
-                self.DataInfoList.append(obj)
-        self.PageNum = params.get("PageNum")
-        self.PageSize = params.get("PageSize")
-        self.TotalNum = params.get("TotalNum")
-        self.TotalPage = params.get("TotalPage")
-        self.RequestId = params.get("RequestId")
+                self._DataInfoList.append(obj)
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        self._TotalNum = params.get("TotalNum")
+        self._TotalPage = params.get("TotalPage")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeLiveTranscodeRulesRequest(AbstractModel):
@@ -5282,22 +9562,39 @@ class DescribeLiveTranscodeRulesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateIds: An array of template IDs to be filtered.
+        :param _TemplateIds: An array of template IDs to be filtered.
         :type TemplateIds: list of int
-        :param DomainNames: An array of domain names to be filtered.
+        :param _DomainNames: An array of domain names to be filtered.
         :type DomainNames: list of str
         """
-        self.TemplateIds = None
-        self.DomainNames = None
+        self._TemplateIds = None
+        self._DomainNames = None
+
+    @property
+    def TemplateIds(self):
+        return self._TemplateIds
+
+    @TemplateIds.setter
+    def TemplateIds(self, TemplateIds):
+        self._TemplateIds = TemplateIds
+
+    @property
+    def DomainNames(self):
+        return self._DomainNames
+
+    @DomainNames.setter
+    def DomainNames(self, DomainNames):
+        self._DomainNames = DomainNames
 
 
     def _deserialize(self, params):
-        self.TemplateIds = params.get("TemplateIds")
-        self.DomainNames = params.get("DomainNames")
+        self._TemplateIds = params.get("TemplateIds")
+        self._DomainNames = params.get("DomainNames")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5310,23 +9607,39 @@ class DescribeLiveTranscodeRulesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Rules: List of transcoding rules.
+        :param _Rules: List of transcoding rules.
         :type Rules: list of RuleInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Rules = None
-        self.RequestId = None
+        self._Rules = None
+        self._RequestId = None
+
+    @property
+    def Rules(self):
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Rules") is not None:
-            self.Rules = []
+            self._Rules = []
             for item in params.get("Rules"):
                 obj = RuleInfo()
                 obj._deserialize(item)
-                self.Rules.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Rules.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeLiveTranscodeTemplateRequest(AbstractModel):
@@ -5336,19 +9649,28 @@ class DescribeLiveTranscodeTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateId: Template ID.
+        :param _TemplateId: Template ID.
 Note: get the template ID in the returned value of the [CreateLiveTranscodeTemplate](https://intl.cloud.tencent.com/document/product/267/32646?from_cn_redirect=1) API call.
         :type TemplateId: int
         """
-        self.TemplateId = None
+        self._TemplateId = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
 
 
     def _deserialize(self, params):
-        self.TemplateId = params.get("TemplateId")
+        self._TemplateId = params.get("TemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5361,20 +9683,36 @@ class DescribeLiveTranscodeTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Template: Template information.
+        :param _Template: Template information.
         :type Template: :class:`tencentcloud.live.v20180801.models.TemplateInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Template = None
-        self.RequestId = None
+        self._Template = None
+        self._RequestId = None
+
+    @property
+    def Template(self):
+        return self._Template
+
+    @Template.setter
+    def Template(self, Template):
+        self._Template = Template
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Template") is not None:
-            self.Template = TemplateInfo()
-            self.Template._deserialize(params.get("Template"))
-        self.RequestId = params.get("RequestId")
+            self._Template = TemplateInfo()
+            self._Template._deserialize(params.get("Template"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeLiveTranscodeTemplatesRequest(AbstractModel):
@@ -5390,23 +9728,39 @@ class DescribeLiveTranscodeTemplatesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Templates: List of transcoding templates.
+        :param _Templates: List of transcoding templates.
         :type Templates: list of TemplateInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Templates = None
-        self.RequestId = None
+        self._Templates = None
+        self._RequestId = None
+
+    @property
+    def Templates(self):
+        return self._Templates
+
+    @Templates.setter
+    def Templates(self, Templates):
+        self._Templates = Templates
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Templates") is not None:
-            self.Templates = []
+            self._Templates = []
             for item in params.get("Templates"):
                 obj = TemplateInfo()
                 obj._deserialize(item)
-                self.Templates.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Templates.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeLiveTranscodeTotalInfoRequest(AbstractModel):
@@ -5416,36 +9770,69 @@ class DescribeLiveTranscodeTotalInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: Start time (Beijing time)
+        :param _StartTime: Start time (Beijing time)
 Format: yyyy-mm-dd HH:MM:SS
         :type StartTime: str
-        :param EndTime: End time (Beijing time)
+        :param _EndTime: End time (Beijing time)
 Format: yyyy-mm-dd HH:MM:SS
         :type EndTime: str
-        :param PushDomains: List of push domains to query. If this parameter is left empty, the data of all domains is queried.
+        :param _PushDomains: List of push domains to query. If this parameter is left empty, the data of all domains is queried.
 If this parameter is specified, the data returned will be on an hourly basis.
         :type PushDomains: list of str
-        :param MainlandOrOversea: Valid values:
+        :param _MainlandOrOversea: Valid values:
 `Mainland`: queries transcoding data in the Chinese mainland
 `Oversea`: queries transcoding data outside the Chinese mainland
 By default, the data both in and outside the Chinese mainland is queried.
         :type MainlandOrOversea: str
         """
-        self.StartTime = None
-        self.EndTime = None
-        self.PushDomains = None
-        self.MainlandOrOversea = None
+        self._StartTime = None
+        self._EndTime = None
+        self._PushDomains = None
+        self._MainlandOrOversea = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def PushDomains(self):
+        return self._PushDomains
+
+    @PushDomains.setter
+    def PushDomains(self, PushDomains):
+        self._PushDomains = PushDomains
+
+    @property
+    def MainlandOrOversea(self):
+        return self._MainlandOrOversea
+
+    @MainlandOrOversea.setter
+    def MainlandOrOversea(self, MainlandOrOversea):
+        self._MainlandOrOversea = MainlandOrOversea
 
 
     def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.PushDomains = params.get("PushDomains")
-        self.MainlandOrOversea = params.get("MainlandOrOversea")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._PushDomains = params.get("PushDomains")
+        self._MainlandOrOversea = params.get("MainlandOrOversea")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5458,24 +9845,40 @@ class DescribeLiveTranscodeTotalInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DataInfoList: List of transcoding data
+        :param _DataInfoList: List of transcoding data
 Note: This field may return `null`, indicating that no valid value can be found.
         :type DataInfoList: list of TranscodeTotalInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.DataInfoList = None
-        self.RequestId = None
+        self._DataInfoList = None
+        self._RequestId = None
+
+    @property
+    def DataInfoList(self):
+        return self._DataInfoList
+
+    @DataInfoList.setter
+    def DataInfoList(self, DataInfoList):
+        self._DataInfoList = DataInfoList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DataInfoList") is not None:
-            self.DataInfoList = []
+            self._DataInfoList = []
             for item in params.get("DataInfoList"):
                 obj = TranscodeTotalInfo()
                 obj._deserialize(item)
-                self.DataInfoList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._DataInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeLiveWatermarkRequest(AbstractModel):
@@ -5485,18 +9888,27 @@ class DescribeLiveWatermarkRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param WatermarkId: Watermark ID returned by the `DescribeLiveWatermarks` API.
+        :param _WatermarkId: Watermark ID returned by the `DescribeLiveWatermarks` API.
         :type WatermarkId: int
         """
-        self.WatermarkId = None
+        self._WatermarkId = None
+
+    @property
+    def WatermarkId(self):
+        return self._WatermarkId
+
+    @WatermarkId.setter
+    def WatermarkId(self, WatermarkId):
+        self._WatermarkId = WatermarkId
 
 
     def _deserialize(self, params):
-        self.WatermarkId = params.get("WatermarkId")
+        self._WatermarkId = params.get("WatermarkId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5509,20 +9921,36 @@ class DescribeLiveWatermarkResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Watermark: Watermark information.
+        :param _Watermark: Watermark information.
         :type Watermark: :class:`tencentcloud.live.v20180801.models.WatermarkInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Watermark = None
-        self.RequestId = None
+        self._Watermark = None
+        self._RequestId = None
+
+    @property
+    def Watermark(self):
+        return self._Watermark
+
+    @Watermark.setter
+    def Watermark(self, Watermark):
+        self._Watermark = Watermark
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Watermark") is not None:
-            self.Watermark = WatermarkInfo()
-            self.Watermark._deserialize(params.get("Watermark"))
-        self.RequestId = params.get("RequestId")
+            self._Watermark = WatermarkInfo()
+            self._Watermark._deserialize(params.get("Watermark"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeLiveWatermarkRulesRequest(AbstractModel):
@@ -5538,23 +9966,39 @@ class DescribeLiveWatermarkRulesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Rules: Watermarking rule list.
+        :param _Rules: Watermarking rule list.
         :type Rules: list of RuleInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Rules = None
-        self.RequestId = None
+        self._Rules = None
+        self._RequestId = None
+
+    @property
+    def Rules(self):
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Rules") is not None:
-            self.Rules = []
+            self._Rules = []
             for item in params.get("Rules"):
                 obj = RuleInfo()
                 obj._deserialize(item)
-                self.Rules.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Rules.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeLiveWatermarksRequest(AbstractModel):
@@ -5570,27 +10014,51 @@ class DescribeLiveWatermarksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalNum: Total number of watermarks.
+        :param _TotalNum: Total number of watermarks.
         :type TotalNum: int
-        :param WatermarkList: Watermark information list.
+        :param _WatermarkList: Watermark information list.
         :type WatermarkList: list of WatermarkInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TotalNum = None
-        self.WatermarkList = None
-        self.RequestId = None
+        self._TotalNum = None
+        self._WatermarkList = None
+        self._RequestId = None
+
+    @property
+    def TotalNum(self):
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def WatermarkList(self):
+        return self._WatermarkList
+
+    @WatermarkList.setter
+    def WatermarkList(self, WatermarkList):
+        self._WatermarkList = WatermarkList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalNum = params.get("TotalNum")
+        self._TotalNum = params.get("TotalNum")
         if params.get("WatermarkList") is not None:
-            self.WatermarkList = []
+            self._WatermarkList = []
             for item in params.get("WatermarkList"):
                 obj = WatermarkInfo()
                 obj._deserialize(item)
-                self.WatermarkList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._WatermarkList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribePlayErrorCodeDetailInfoListRequest(AbstractModel):
@@ -5600,42 +10068,91 @@ class DescribePlayErrorCodeDetailInfoListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: Start time (Beijing time),
+        :param _StartTime: Start time (Beijing time),
 In the format of `yyyy-mm-dd HH:MM:SS`.
         :type StartTime: str
-        :param EndTime: End time (Beijing time),
+        :param _EndTime: End time (Beijing time),
 In the format of `yyyy-mm-dd HH:MM:SS`.
 Note: `EndTime` and `StartTime` only support querying data for the last day.
         :type EndTime: str
-        :param Granularity: Query granularity:
+        :param _Granularity: Query granularity:
 1: 1-minute granularity.
         :type Granularity: int
-        :param StatType: Yes. Valid values: "4xx", "5xx". Mixed codes in the format of `4xx,5xx` are also supported.
+        :param _StatType: Yes. Valid values: "4xx", "5xx". Mixed codes in the format of `4xx,5xx` are also supported.
         :type StatType: str
-        :param PlayDomains: Playback domain name list.
+        :param _PlayDomains: Playback domain name list.
         :type PlayDomains: list of str
-        :param MainlandOrOversea: Region. Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China), China (data for China, including Hong Kong, Macao, and Taiwan), Foreign (data for regions outside China, excluding Hong Kong, Macao, and Taiwan), Global (default). If this parameter is left empty, data for all regions will be queried.
+        :param _MainlandOrOversea: Region. Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China), China (data for China, including Hong Kong, Macao, and Taiwan), Foreign (data for regions outside China, excluding Hong Kong, Macao, and Taiwan), Global (default). If this parameter is left empty, data for all regions will be queried.
         :type MainlandOrOversea: str
         """
-        self.StartTime = None
-        self.EndTime = None
-        self.Granularity = None
-        self.StatType = None
-        self.PlayDomains = None
-        self.MainlandOrOversea = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Granularity = None
+        self._StatType = None
+        self._PlayDomains = None
+        self._MainlandOrOversea = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Granularity(self):
+        return self._Granularity
+
+    @Granularity.setter
+    def Granularity(self, Granularity):
+        self._Granularity = Granularity
+
+    @property
+    def StatType(self):
+        return self._StatType
+
+    @StatType.setter
+    def StatType(self, StatType):
+        self._StatType = StatType
+
+    @property
+    def PlayDomains(self):
+        return self._PlayDomains
+
+    @PlayDomains.setter
+    def PlayDomains(self, PlayDomains):
+        self._PlayDomains = PlayDomains
+
+    @property
+    def MainlandOrOversea(self):
+        return self._MainlandOrOversea
+
+    @MainlandOrOversea.setter
+    def MainlandOrOversea(self, MainlandOrOversea):
+        self._MainlandOrOversea = MainlandOrOversea
 
 
     def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.Granularity = params.get("Granularity")
-        self.StatType = params.get("StatType")
-        self.PlayDomains = params.get("PlayDomains")
-        self.MainlandOrOversea = params.get("MainlandOrOversea")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Granularity = params.get("Granularity")
+        self._StatType = params.get("StatType")
+        self._PlayDomains = params.get("PlayDomains")
+        self._MainlandOrOversea = params.get("MainlandOrOversea")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5648,27 +10165,51 @@ class DescribePlayErrorCodeDetailInfoListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param HttpCodeList: Statistics list.
+        :param _HttpCodeList: Statistics list.
         :type HttpCodeList: list of HttpCodeInfo
-        :param StatType: Statistics type.
+        :param _StatType: Statistics type.
         :type StatType: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.HttpCodeList = None
-        self.StatType = None
-        self.RequestId = None
+        self._HttpCodeList = None
+        self._StatType = None
+        self._RequestId = None
+
+    @property
+    def HttpCodeList(self):
+        return self._HttpCodeList
+
+    @HttpCodeList.setter
+    def HttpCodeList(self, HttpCodeList):
+        self._HttpCodeList = HttpCodeList
+
+    @property
+    def StatType(self):
+        return self._StatType
+
+    @StatType.setter
+    def StatType(self, StatType):
+        self._StatType = StatType
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("HttpCodeList") is not None:
-            self.HttpCodeList = []
+            self._HttpCodeList = []
             for item in params.get("HttpCodeList"):
                 obj = HttpCodeInfo()
                 obj._deserialize(item)
-                self.HttpCodeList.append(obj)
-        self.StatType = params.get("StatType")
-        self.RequestId = params.get("RequestId")
+                self._HttpCodeList.append(obj)
+        self._StatType = params.get("StatType")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribePlayErrorCodeSumInfoListRequest(AbstractModel):
@@ -5678,49 +10219,114 @@ class DescribePlayErrorCodeSumInfoListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: Start point in time (Beijing time).
+        :param _StartTime: Start point in time (Beijing time).
 In the format of `yyyy-mm-dd HH:MM:SS`.
         :type StartTime: str
-        :param EndTime: End point in time (Beijing time).
+        :param _EndTime: End point in time (Beijing time).
 In the format of `yyyy-mm-dd HH:MM:SS`.
 Note: `EndTime` and `StartTime` only support querying data for the last day.
         :type EndTime: str
-        :param PlayDomains: Playback domain name list. If this parameter is left empty, full data will be queried.
+        :param _PlayDomains: Playback domain name list. If this parameter is left empty, full data will be queried.
         :type PlayDomains: list of str
-        :param PageNum: Number of pages. Value range: [1,1000]. Default value: 1.
+        :param _PageNum: Number of pages. Value range: [1,1000]. Default value: 1.
         :type PageNum: int
-        :param PageSize: Number of entries per page. Value range: [1,1000]. Default value: 20.
+        :param _PageSize: Number of entries per page. Value range: [1,1000]. Default value: 20.
         :type PageSize: int
-        :param MainlandOrOversea: Region. Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China), China (data for China, including Hong Kong, Macao, and Taiwan), Foreign (data for regions outside China, excluding Hong Kong, Macao, and Taiwan), Global (default). If this parameter is left empty, data for all regions will be queried.
+        :param _MainlandOrOversea: Region. Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China), China (data for China, including Hong Kong, Macao, and Taiwan), Foreign (data for regions outside China, excluding Hong Kong, Macao, and Taiwan), Global (default). If this parameter is left empty, data for all regions will be queried.
         :type MainlandOrOversea: str
-        :param GroupType: Grouping parameter. Valid values: CountryProIsp (default value), Country (country/region). Grouping is made by country/region + district + ISP by default. Currently, districts and ISPs outside Mainland China cannot be recognized.
+        :param _GroupType: Grouping parameter. Valid values: CountryProIsp (default value), Country (country/region). Grouping is made by country/region + district + ISP by default. Currently, districts and ISPs outside Mainland China cannot be recognized.
         :type GroupType: str
-        :param OutLanguage: Language used in the output field. Valid values: Chinese (default), English. Currently, country/region, district, and ISP parameters support multiple languages.
+        :param _OutLanguage: Language used in the output field. Valid values: Chinese (default), English. Currently, country/region, district, and ISP parameters support multiple languages.
         :type OutLanguage: str
         """
-        self.StartTime = None
-        self.EndTime = None
-        self.PlayDomains = None
-        self.PageNum = None
-        self.PageSize = None
-        self.MainlandOrOversea = None
-        self.GroupType = None
-        self.OutLanguage = None
+        self._StartTime = None
+        self._EndTime = None
+        self._PlayDomains = None
+        self._PageNum = None
+        self._PageSize = None
+        self._MainlandOrOversea = None
+        self._GroupType = None
+        self._OutLanguage = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def PlayDomains(self):
+        return self._PlayDomains
+
+    @PlayDomains.setter
+    def PlayDomains(self, PlayDomains):
+        self._PlayDomains = PlayDomains
+
+    @property
+    def PageNum(self):
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def MainlandOrOversea(self):
+        return self._MainlandOrOversea
+
+    @MainlandOrOversea.setter
+    def MainlandOrOversea(self, MainlandOrOversea):
+        self._MainlandOrOversea = MainlandOrOversea
+
+    @property
+    def GroupType(self):
+        return self._GroupType
+
+    @GroupType.setter
+    def GroupType(self, GroupType):
+        self._GroupType = GroupType
+
+    @property
+    def OutLanguage(self):
+        return self._OutLanguage
+
+    @OutLanguage.setter
+    def OutLanguage(self, OutLanguage):
+        self._OutLanguage = OutLanguage
 
 
     def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.PlayDomains = params.get("PlayDomains")
-        self.PageNum = params.get("PageNum")
-        self.PageSize = params.get("PageSize")
-        self.MainlandOrOversea = params.get("MainlandOrOversea")
-        self.GroupType = params.get("GroupType")
-        self.OutLanguage = params.get("OutLanguage")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._PlayDomains = params.get("PlayDomains")
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        self._MainlandOrOversea = params.get("MainlandOrOversea")
+        self._GroupType = params.get("GroupType")
+        self._OutLanguage = params.get("OutLanguage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5733,68 +10339,164 @@ class DescribePlayErrorCodeSumInfoListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProIspInfoList: Information of error codes starting with 2, 3, 4, or 5 by district and ISP.
+        :param _ProIspInfoList: Information of error codes starting with 2, 3, 4, or 5 by district and ISP.
         :type ProIspInfoList: list of ProIspPlayCodeDataInfo
-        :param TotalCodeAll: Total occurrences of all status codes.
+        :param _TotalCodeAll: Total occurrences of all status codes.
         :type TotalCodeAll: int
-        :param TotalCode4xx: Occurrences of 4xx status codes.
+        :param _TotalCode4xx: Occurrences of 4xx status codes.
         :type TotalCode4xx: int
-        :param TotalCode5xx: Occurrences of 5xx status codes.
+        :param _TotalCode5xx: Occurrences of 5xx status codes.
         :type TotalCode5xx: int
-        :param TotalCodeList: Total occurrences of each status code.
+        :param _TotalCodeList: Total occurrences of each status code.
         :type TotalCodeList: list of PlayCodeTotalInfo
-        :param PageNum: Page number.
+        :param _PageNum: Page number.
         :type PageNum: int
-        :param PageSize: Number of entries per page.
+        :param _PageSize: Number of entries per page.
         :type PageSize: int
-        :param TotalPage: Total number of pages.
+        :param _TotalPage: Total number of pages.
         :type TotalPage: int
-        :param TotalNum: Total number of results.
+        :param _TotalNum: Total number of results.
         :type TotalNum: int
-        :param TotalCode2xx: Occurrences of 2xx status codes.
+        :param _TotalCode2xx: Occurrences of 2xx status codes.
         :type TotalCode2xx: int
-        :param TotalCode3xx: Occurrences of 3xx status codes.
+        :param _TotalCode3xx: Occurrences of 3xx status codes.
         :type TotalCode3xx: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.ProIspInfoList = None
-        self.TotalCodeAll = None
-        self.TotalCode4xx = None
-        self.TotalCode5xx = None
-        self.TotalCodeList = None
-        self.PageNum = None
-        self.PageSize = None
-        self.TotalPage = None
-        self.TotalNum = None
-        self.TotalCode2xx = None
-        self.TotalCode3xx = None
-        self.RequestId = None
+        self._ProIspInfoList = None
+        self._TotalCodeAll = None
+        self._TotalCode4xx = None
+        self._TotalCode5xx = None
+        self._TotalCodeList = None
+        self._PageNum = None
+        self._PageSize = None
+        self._TotalPage = None
+        self._TotalNum = None
+        self._TotalCode2xx = None
+        self._TotalCode3xx = None
+        self._RequestId = None
+
+    @property
+    def ProIspInfoList(self):
+        return self._ProIspInfoList
+
+    @ProIspInfoList.setter
+    def ProIspInfoList(self, ProIspInfoList):
+        self._ProIspInfoList = ProIspInfoList
+
+    @property
+    def TotalCodeAll(self):
+        return self._TotalCodeAll
+
+    @TotalCodeAll.setter
+    def TotalCodeAll(self, TotalCodeAll):
+        self._TotalCodeAll = TotalCodeAll
+
+    @property
+    def TotalCode4xx(self):
+        return self._TotalCode4xx
+
+    @TotalCode4xx.setter
+    def TotalCode4xx(self, TotalCode4xx):
+        self._TotalCode4xx = TotalCode4xx
+
+    @property
+    def TotalCode5xx(self):
+        return self._TotalCode5xx
+
+    @TotalCode5xx.setter
+    def TotalCode5xx(self, TotalCode5xx):
+        self._TotalCode5xx = TotalCode5xx
+
+    @property
+    def TotalCodeList(self):
+        return self._TotalCodeList
+
+    @TotalCodeList.setter
+    def TotalCodeList(self, TotalCodeList):
+        self._TotalCodeList = TotalCodeList
+
+    @property
+    def PageNum(self):
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalPage(self):
+        return self._TotalPage
+
+    @TotalPage.setter
+    def TotalPage(self, TotalPage):
+        self._TotalPage = TotalPage
+
+    @property
+    def TotalNum(self):
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def TotalCode2xx(self):
+        return self._TotalCode2xx
+
+    @TotalCode2xx.setter
+    def TotalCode2xx(self, TotalCode2xx):
+        self._TotalCode2xx = TotalCode2xx
+
+    @property
+    def TotalCode3xx(self):
+        return self._TotalCode3xx
+
+    @TotalCode3xx.setter
+    def TotalCode3xx(self, TotalCode3xx):
+        self._TotalCode3xx = TotalCode3xx
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("ProIspInfoList") is not None:
-            self.ProIspInfoList = []
+            self._ProIspInfoList = []
             for item in params.get("ProIspInfoList"):
                 obj = ProIspPlayCodeDataInfo()
                 obj._deserialize(item)
-                self.ProIspInfoList.append(obj)
-        self.TotalCodeAll = params.get("TotalCodeAll")
-        self.TotalCode4xx = params.get("TotalCode4xx")
-        self.TotalCode5xx = params.get("TotalCode5xx")
+                self._ProIspInfoList.append(obj)
+        self._TotalCodeAll = params.get("TotalCodeAll")
+        self._TotalCode4xx = params.get("TotalCode4xx")
+        self._TotalCode5xx = params.get("TotalCode5xx")
         if params.get("TotalCodeList") is not None:
-            self.TotalCodeList = []
+            self._TotalCodeList = []
             for item in params.get("TotalCodeList"):
                 obj = PlayCodeTotalInfo()
                 obj._deserialize(item)
-                self.TotalCodeList.append(obj)
-        self.PageNum = params.get("PageNum")
-        self.PageSize = params.get("PageSize")
-        self.TotalPage = params.get("TotalPage")
-        self.TotalNum = params.get("TotalNum")
-        self.TotalCode2xx = params.get("TotalCode2xx")
-        self.TotalCode3xx = params.get("TotalCode3xx")
-        self.RequestId = params.get("RequestId")
+                self._TotalCodeList.append(obj)
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        self._TotalPage = params.get("TotalPage")
+        self._TotalNum = params.get("TotalNum")
+        self._TotalCode2xx = params.get("TotalCode2xx")
+        self._TotalCode3xx = params.get("TotalCode3xx")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeProvinceIspPlayInfoListRequest(AbstractModel):
@@ -5804,61 +10506,134 @@ class DescribeProvinceIspPlayInfoListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: Start point in time (Beijing time).
+        :param _StartTime: Start point in time (Beijing time).
 Example: 2019-02-21 10:00:00.
         :type StartTime: str
-        :param EndTime: End point in time (Beijing time).
+        :param _EndTime: End point in time (Beijing time).
 Example: 2019-02-21 12:00:00.
 Note: `EndTime` and `StartTime` only support querying data for the last day.
         :type EndTime: str
-        :param Granularity: Supported granularities:
+        :param _Granularity: Supported granularities:
 1: 1-minute granularity (the query interval should be within 1 day)
         :type Granularity: int
-        :param StatType: Statistical metric type:
+        :param _StatType: Statistical metric type:
 "Bandwidth": bandwidth
 "FluxPerSecond": average traffic
 "Flux": traffic
 "Request": number of requests
 "Online": number of concurrent connections
         :type StatType: str
-        :param PlayDomains: Playback domain name list.
+        :param _PlayDomains: Playback domain name list.
         :type PlayDomains: list of str
-        :param ProvinceNames: List of the districts to be queried, such as Beijing.
+        :param _ProvinceNames: List of the districts to be queried, such as Beijing.
         :type ProvinceNames: list of str
-        :param IspNames: List of the ISPs to be queried, such as China Mobile. If this parameter is left empty, the data of all ISPs will be queried.
+        :param _IspNames: List of the ISPs to be queried, such as China Mobile. If this parameter is left empty, the data of all ISPs will be queried.
         :type IspNames: list of str
-        :param MainlandOrOversea: Region. Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China), China (data for China, including Hong Kong, Macao, and Taiwan), Foreign (data for regions outside China, excluding Hong Kong, Macao, and Taiwan), Global (default). If this parameter is left empty, data for all regions will be queried.
+        :param _MainlandOrOversea: Region. Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China), China (data for China, including Hong Kong, Macao, and Taiwan), Foreign (data for regions outside China, excluding Hong Kong, Macao, and Taiwan), Global (default). If this parameter is left empty, data for all regions will be queried.
         :type MainlandOrOversea: str
-        :param IpType: IP type:
+        :param _IpType: IP type:
 "Ipv6": IPv6 data
 Data of all IPs will be returned if this parameter is left empty.
         :type IpType: str
         """
-        self.StartTime = None
-        self.EndTime = None
-        self.Granularity = None
-        self.StatType = None
-        self.PlayDomains = None
-        self.ProvinceNames = None
-        self.IspNames = None
-        self.MainlandOrOversea = None
-        self.IpType = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Granularity = None
+        self._StatType = None
+        self._PlayDomains = None
+        self._ProvinceNames = None
+        self._IspNames = None
+        self._MainlandOrOversea = None
+        self._IpType = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Granularity(self):
+        return self._Granularity
+
+    @Granularity.setter
+    def Granularity(self, Granularity):
+        self._Granularity = Granularity
+
+    @property
+    def StatType(self):
+        return self._StatType
+
+    @StatType.setter
+    def StatType(self, StatType):
+        self._StatType = StatType
+
+    @property
+    def PlayDomains(self):
+        return self._PlayDomains
+
+    @PlayDomains.setter
+    def PlayDomains(self, PlayDomains):
+        self._PlayDomains = PlayDomains
+
+    @property
+    def ProvinceNames(self):
+        return self._ProvinceNames
+
+    @ProvinceNames.setter
+    def ProvinceNames(self, ProvinceNames):
+        self._ProvinceNames = ProvinceNames
+
+    @property
+    def IspNames(self):
+        return self._IspNames
+
+    @IspNames.setter
+    def IspNames(self, IspNames):
+        self._IspNames = IspNames
+
+    @property
+    def MainlandOrOversea(self):
+        return self._MainlandOrOversea
+
+    @MainlandOrOversea.setter
+    def MainlandOrOversea(self, MainlandOrOversea):
+        self._MainlandOrOversea = MainlandOrOversea
+
+    @property
+    def IpType(self):
+        return self._IpType
+
+    @IpType.setter
+    def IpType(self, IpType):
+        self._IpType = IpType
 
 
     def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.Granularity = params.get("Granularity")
-        self.StatType = params.get("StatType")
-        self.PlayDomains = params.get("PlayDomains")
-        self.ProvinceNames = params.get("ProvinceNames")
-        self.IspNames = params.get("IspNames")
-        self.MainlandOrOversea = params.get("MainlandOrOversea")
-        self.IpType = params.get("IpType")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Granularity = params.get("Granularity")
+        self._StatType = params.get("StatType")
+        self._PlayDomains = params.get("PlayDomains")
+        self._ProvinceNames = params.get("ProvinceNames")
+        self._IspNames = params.get("IspNames")
+        self._MainlandOrOversea = params.get("MainlandOrOversea")
+        self._IpType = params.get("IpType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5871,27 +10646,51 @@ class DescribeProvinceIspPlayInfoListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DataInfoList: Playback information list.
+        :param _DataInfoList: Playback information list.
         :type DataInfoList: list of PlayStatInfo
-        :param StatType: Statistics type, which is the same as the input parameter.
+        :param _StatType: Statistics type, which is the same as the input parameter.
         :type StatType: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.DataInfoList = None
-        self.StatType = None
-        self.RequestId = None
+        self._DataInfoList = None
+        self._StatType = None
+        self._RequestId = None
+
+    @property
+    def DataInfoList(self):
+        return self._DataInfoList
+
+    @DataInfoList.setter
+    def DataInfoList(self, DataInfoList):
+        self._DataInfoList = DataInfoList
+
+    @property
+    def StatType(self):
+        return self._StatType
+
+    @StatType.setter
+    def StatType(self, StatType):
+        self._StatType = StatType
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DataInfoList") is not None:
-            self.DataInfoList = []
+            self._DataInfoList = []
             for item in params.get("DataInfoList"):
                 obj = PlayStatInfo()
                 obj._deserialize(item)
-                self.DataInfoList.append(obj)
-        self.StatType = params.get("StatType")
-        self.RequestId = params.get("RequestId")
+                self._DataInfoList.append(obj)
+        self._StatType = params.get("StatType")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeScreenShotSheetNumListRequest(AbstractModel):
@@ -5901,34 +10700,75 @@ class DescribeScreenShotSheetNumListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: Start time in UTC time in the format of `yyyy-mm-ddTHH:MM:SSZ`.
+        :param _StartTime: Start time in UTC time in the format of `yyyy-mm-ddTHH:MM:SSZ`.
         :type StartTime: str
-        :param EndTime: End time in UTC time in the format of `yyyy-mm-ddTHH:MM:SSZ`. Data for the last year can be queried.
+        :param _EndTime: End time in UTC time in the format of `yyyy-mm-ddTHH:MM:SSZ`. Data for the last year can be queried.
         :type EndTime: str
-        :param Zone: Region information. Valid values: Mainland, Oversea. The former is to query data within Mainland China, while the latter outside Mainland China. If this parameter is left empty, data of all regions will be queried.
+        :param _Zone: Region information. Valid values: Mainland, Oversea. The former is to query data within Mainland China, while the latter outside Mainland China. If this parameter is left empty, data of all regions will be queried.
         :type Zone: str
-        :param PushDomains: Push domain name (data at the domain name level after November 1, 2019 can be queried).
+        :param _PushDomains: Push domain name (data at the domain name level after November 1, 2019 can be queried).
         :type PushDomains: list of str
-        :param Granularity: Data granularity. There is a 1.5-hour delay in data reporting. Valid values: `Minute` (5-minute granularity; query period of up to 31 days); `Day` (1-day granularity based on UTC+8:00; query period of up to 186 days)
+        :param _Granularity: Data granularity. There is a 1.5-hour delay in data reporting. Valid values: `Minute` (5-minute granularity; query period of up to 31 days); `Day` (1-day granularity based on UTC+8:00; query period of up to 186 days)
         :type Granularity: str
         """
-        self.StartTime = None
-        self.EndTime = None
-        self.Zone = None
-        self.PushDomains = None
-        self.Granularity = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Zone = None
+        self._PushDomains = None
+        self._Granularity = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def PushDomains(self):
+        return self._PushDomains
+
+    @PushDomains.setter
+    def PushDomains(self, PushDomains):
+        self._PushDomains = PushDomains
+
+    @property
+    def Granularity(self):
+        return self._Granularity
+
+    @Granularity.setter
+    def Granularity(self, Granularity):
+        self._Granularity = Granularity
 
 
     def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.Zone = params.get("Zone")
-        self.PushDomains = params.get("PushDomains")
-        self.Granularity = params.get("Granularity")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Zone = params.get("Zone")
+        self._PushDomains = params.get("PushDomains")
+        self._Granularity = params.get("Granularity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5941,23 +10781,39 @@ class DescribeScreenShotSheetNumListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DataInfoList: Data information list.
+        :param _DataInfoList: Data information list.
         :type DataInfoList: list of TimeValue
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.DataInfoList = None
-        self.RequestId = None
+        self._DataInfoList = None
+        self._RequestId = None
+
+    @property
+    def DataInfoList(self):
+        return self._DataInfoList
+
+    @DataInfoList.setter
+    def DataInfoList(self, DataInfoList):
+        self._DataInfoList = DataInfoList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DataInfoList") is not None:
-            self.DataInfoList = []
+            self._DataInfoList = []
             for item in params.get("DataInfoList"):
                 obj = TimeValue()
                 obj._deserialize(item)
-                self.DataInfoList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._DataInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeStreamDayPlayInfoListRequest(AbstractModel):
@@ -5967,42 +10823,91 @@ class DescribeStreamDayPlayInfoListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DayTime: Date in the format of YYYY-mm-dd
+        :param _DayTime: Date in the format of YYYY-mm-dd
 Data is available at 3am Beijing Time the next day. You are recommended to query the latest data after this time point. Data in the last 3 months can be queried.
         :type DayTime: str
-        :param PlayDomain: Playback domain name.
+        :param _PlayDomain: Playback domain name.
         :type PlayDomain: str
-        :param PageNum: Page number. Value range: [1,1000]. Default value: 1.
+        :param _PageNum: Page number. Value range: [1,1000]. Default value: 1.
         :type PageNum: int
-        :param PageSize: Number of entries per page. Value range: [100,1000]. Default value: 1,000.
+        :param _PageSize: Number of entries per page. Value range: [100,1000]. Default value: 1,000.
         :type PageSize: int
-        :param MainlandOrOversea: Valid values:
+        :param _MainlandOrOversea: Valid values:
 Mainland: query data for Mainland China,
 Oversea: query data for regions outside Mainland China,
 Default: query data for all regions.
         :type MainlandOrOversea: str
-        :param ServiceName: Service name. Valid values: LVB, LEB. If this parameter is left empty, all data of LVB and LEB will be queried.
+        :param _ServiceName: Service name. Valid values: LVB, LEB. If this parameter is left empty, all data of LVB and LEB will be queried.
         :type ServiceName: str
         """
-        self.DayTime = None
-        self.PlayDomain = None
-        self.PageNum = None
-        self.PageSize = None
-        self.MainlandOrOversea = None
-        self.ServiceName = None
+        self._DayTime = None
+        self._PlayDomain = None
+        self._PageNum = None
+        self._PageSize = None
+        self._MainlandOrOversea = None
+        self._ServiceName = None
+
+    @property
+    def DayTime(self):
+        return self._DayTime
+
+    @DayTime.setter
+    def DayTime(self, DayTime):
+        self._DayTime = DayTime
+
+    @property
+    def PlayDomain(self):
+        return self._PlayDomain
+
+    @PlayDomain.setter
+    def PlayDomain(self, PlayDomain):
+        self._PlayDomain = PlayDomain
+
+    @property
+    def PageNum(self):
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def MainlandOrOversea(self):
+        return self._MainlandOrOversea
+
+    @MainlandOrOversea.setter
+    def MainlandOrOversea(self, MainlandOrOversea):
+        self._MainlandOrOversea = MainlandOrOversea
+
+    @property
+    def ServiceName(self):
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
 
 
     def _deserialize(self, params):
-        self.DayTime = params.get("DayTime")
-        self.PlayDomain = params.get("PlayDomain")
-        self.PageNum = params.get("PageNum")
-        self.PageSize = params.get("PageSize")
-        self.MainlandOrOversea = params.get("MainlandOrOversea")
-        self.ServiceName = params.get("ServiceName")
+        self._DayTime = params.get("DayTime")
+        self._PlayDomain = params.get("PlayDomain")
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        self._MainlandOrOversea = params.get("MainlandOrOversea")
+        self._ServiceName = params.get("ServiceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6015,39 +10920,87 @@ class DescribeStreamDayPlayInfoListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DataInfoList: Playback data information list.
+        :param _DataInfoList: Playback data information list.
         :type DataInfoList: list of PlayDataInfoByStream
-        :param TotalNum: Total number.
+        :param _TotalNum: Total number.
         :type TotalNum: int
-        :param TotalPage: Total number of pages.
+        :param _TotalPage: Total number of pages.
         :type TotalPage: int
-        :param PageNum: Page number where the current data resides.
+        :param _PageNum: Page number where the current data resides.
         :type PageNum: int
-        :param PageSize: Number of entries per page.
+        :param _PageSize: Number of entries per page.
         :type PageSize: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.DataInfoList = None
-        self.TotalNum = None
-        self.TotalPage = None
-        self.PageNum = None
-        self.PageSize = None
-        self.RequestId = None
+        self._DataInfoList = None
+        self._TotalNum = None
+        self._TotalPage = None
+        self._PageNum = None
+        self._PageSize = None
+        self._RequestId = None
+
+    @property
+    def DataInfoList(self):
+        return self._DataInfoList
+
+    @DataInfoList.setter
+    def DataInfoList(self, DataInfoList):
+        self._DataInfoList = DataInfoList
+
+    @property
+    def TotalNum(self):
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def TotalPage(self):
+        return self._TotalPage
+
+    @TotalPage.setter
+    def TotalPage(self, TotalPage):
+        self._TotalPage = TotalPage
+
+    @property
+    def PageNum(self):
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DataInfoList") is not None:
-            self.DataInfoList = []
+            self._DataInfoList = []
             for item in params.get("DataInfoList"):
                 obj = PlayDataInfoByStream()
                 obj._deserialize(item)
-                self.DataInfoList.append(obj)
-        self.TotalNum = params.get("TotalNum")
-        self.TotalPage = params.get("TotalPage")
-        self.PageNum = params.get("PageNum")
-        self.PageSize = params.get("PageSize")
-        self.RequestId = params.get("RequestId")
+                self._DataInfoList.append(obj)
+        self._TotalNum = params.get("TotalNum")
+        self._TotalPage = params.get("TotalPage")
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeStreamPlayInfoListRequest(AbstractModel):
@@ -6057,43 +11010,92 @@ class DescribeStreamPlayInfoListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: Start time (Beijing time) in the format of yyyy-mm-dd HH:MM:SS
+        :param _StartTime: Start time (Beijing time) in the format of yyyy-mm-dd HH:MM:SS
         :type StartTime: str
-        :param EndTime: The end time (Beijing time) in the format of yyyy-mm-dd HH:MM:SS.
+        :param _EndTime: The end time (Beijing time) in the format of yyyy-mm-dd HH:MM:SS.
 The start time and end time cannot be more than 24 hours apart and must be within the past month.
         :type EndTime: str
-        :param PlayDomain: Playback domain name,
+        :param _PlayDomain: Playback domain name,
 If this parameter is left empty, data of live streams of all playback domain names will be queried.
         :type PlayDomain: str
-        :param StreamName: Stream name (exact match).
+        :param _StreamName: Stream name (exact match).
 If this parameter is left empty, full playback data will be queried.
         :type StreamName: str
-        :param AppName: Push address. Its value is the same as the `AppName` in playback address. It supports exact match, and takes effect only when `StreamName` is passed at the same time.
+        :param _AppName: Push address. Its value is the same as the `AppName` in playback address. It supports exact match, and takes effect only when `StreamName` is passed at the same time.
 If it is left empty, the full playback data will be queried.
 Note: to query by `AppName`, you need to submit a ticket first. After your application succeeds, it will take about 5 business days (subject to the time in the reply) for the configuration to take effect.
         :type AppName: str
-        :param ServiceName: Service name. Valid values: LVB, LEB. If this parameter is left empty, all data of LVB and LEB will be queried.
+        :param _ServiceName: Service name. Valid values: LVB, LEB. If this parameter is left empty, all data of LVB and LEB will be queried.
         :type ServiceName: str
         """
-        self.StartTime = None
-        self.EndTime = None
-        self.PlayDomain = None
-        self.StreamName = None
-        self.AppName = None
-        self.ServiceName = None
+        self._StartTime = None
+        self._EndTime = None
+        self._PlayDomain = None
+        self._StreamName = None
+        self._AppName = None
+        self._ServiceName = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def PlayDomain(self):
+        return self._PlayDomain
+
+    @PlayDomain.setter
+    def PlayDomain(self, PlayDomain):
+        self._PlayDomain = PlayDomain
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def ServiceName(self):
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
 
 
     def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.PlayDomain = params.get("PlayDomain")
-        self.StreamName = params.get("StreamName")
-        self.AppName = params.get("AppName")
-        self.ServiceName = params.get("ServiceName")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._PlayDomain = params.get("PlayDomain")
+        self._StreamName = params.get("StreamName")
+        self._AppName = params.get("AppName")
+        self._ServiceName = params.get("ServiceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6106,23 +11108,39 @@ class DescribeStreamPlayInfoListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DataInfoList: Statistics list at a 1-minute granularity.
+        :param _DataInfoList: Statistics list at a 1-minute granularity.
         :type DataInfoList: list of DayStreamPlayInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.DataInfoList = None
-        self.RequestId = None
+        self._DataInfoList = None
+        self._RequestId = None
+
+    @property
+    def DataInfoList(self):
+        return self._DataInfoList
+
+    @DataInfoList.setter
+    def DataInfoList(self, DataInfoList):
+        self._DataInfoList = DataInfoList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DataInfoList") is not None:
-            self.DataInfoList = []
+            self._DataInfoList = []
             for item in params.get("DataInfoList"):
                 obj = DayStreamPlayInfo()
                 obj._deserialize(item)
-                self.DataInfoList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._DataInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeStreamPushInfoListRequest(AbstractModel):
@@ -6132,34 +11150,75 @@ class DescribeStreamPushInfoListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StreamName: The stream name.
+        :param _StreamName: The stream name.
         :type StreamName: str
-        :param StartTime: The start time (UTC+8) in the format of “yyyy-mm-dd HH:MM:SS”.
+        :param _StartTime: The start time (UTC+8) in the format of “yyyy-mm-dd HH:MM:SS”.
         :type StartTime: str
-        :param EndTime: The end time (UTC+8) in the format of “yyyy-mm-dd HH:MM:SS”. You can query data from the past seven days for a period of preferably not longer than three hours.
+        :param _EndTime: The end time (UTC+8) in the format of “yyyy-mm-dd HH:MM:SS”. You can query data from the past seven days for a period of preferably not longer than three hours.
         :type EndTime: str
-        :param PushDomain: The push domain.
+        :param _PushDomain: The push domain.
         :type PushDomain: str
-        :param AppName: The push path, which should be the same as `AppName` in the push and playback URL. The default value is `live`.
+        :param _AppName: The push path, which should be the same as `AppName` in the push and playback URL. The default value is `live`.
         :type AppName: str
         """
-        self.StreamName = None
-        self.StartTime = None
-        self.EndTime = None
-        self.PushDomain = None
-        self.AppName = None
+        self._StreamName = None
+        self._StartTime = None
+        self._EndTime = None
+        self._PushDomain = None
+        self._AppName = None
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def PushDomain(self):
+        return self._PushDomain
+
+    @PushDomain.setter
+    def PushDomain(self, PushDomain):
+        self._PushDomain = PushDomain
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
 
 
     def _deserialize(self, params):
-        self.StreamName = params.get("StreamName")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.PushDomain = params.get("PushDomain")
-        self.AppName = params.get("AppName")
+        self._StreamName = params.get("StreamName")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._PushDomain = params.get("PushDomain")
+        self._AppName = params.get("AppName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6172,23 +11231,39 @@ class DescribeStreamPushInfoListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DataInfoList: Returned data list.
+        :param _DataInfoList: Returned data list.
         :type DataInfoList: list of PushQualityData
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.DataInfoList = None
-        self.RequestId = None
+        self._DataInfoList = None
+        self._RequestId = None
+
+    @property
+    def DataInfoList(self):
+        return self._DataInfoList
+
+    @DataInfoList.setter
+    def DataInfoList(self, DataInfoList):
+        self._DataInfoList = DataInfoList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DataInfoList") is not None:
-            self.DataInfoList = []
+            self._DataInfoList = []
             for item in params.get("DataInfoList"):
                 obj = PushQualityData()
                 obj._deserialize(item)
-                self.DataInfoList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._DataInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeTimeShiftRecordDetailRequest(AbstractModel):
@@ -6198,42 +11273,99 @@ class DescribeTimeShiftRecordDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Domain: The push domain.
+        :param _Domain: The push domain.
         :type Domain: str
-        :param AppName: The push path.
+        :param _AppName: The push path.
         :type AppName: str
-        :param StreamName: The stream name.
+        :param _StreamName: The stream name.
         :type StreamName: str
-        :param StartTime: The start time, which must be a Unix timestamp.
+        :param _StartTime: The start time, which must be a Unix timestamp.
         :type StartTime: int
-        :param EndTime: The end time, which must be a Unix timestamp. 
+        :param _EndTime: The end time, which must be a Unix timestamp. 
         :type EndTime: int
-        :param DomainGroup: The group the push domain belongs to. You don’t need to specify this parameter if the domain doesn’t belong to any group or the group name is an empty string.
+        :param _DomainGroup: The group the push domain belongs to. You don’t need to specify this parameter if the domain doesn’t belong to any group or the group name is an empty string.
         :type DomainGroup: str
-        :param TransCodeId: The transcoding template ID. You don’t need to specify this parameter if the transcoding template ID is `0`.
+        :param _TransCodeId: The transcoding template ID. You don’t need to specify this parameter if the transcoding template ID is `0`.
         :type TransCodeId: int
         """
-        self.Domain = None
-        self.AppName = None
-        self.StreamName = None
-        self.StartTime = None
-        self.EndTime = None
-        self.DomainGroup = None
-        self.TransCodeId = None
+        self._Domain = None
+        self._AppName = None
+        self._StreamName = None
+        self._StartTime = None
+        self._EndTime = None
+        self._DomainGroup = None
+        self._TransCodeId = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def DomainGroup(self):
+        return self._DomainGroup
+
+    @DomainGroup.setter
+    def DomainGroup(self, DomainGroup):
+        self._DomainGroup = DomainGroup
+
+    @property
+    def TransCodeId(self):
+        return self._TransCodeId
+
+    @TransCodeId.setter
+    def TransCodeId(self, TransCodeId):
+        self._TransCodeId = TransCodeId
 
 
     def _deserialize(self, params):
-        self.Domain = params.get("Domain")
-        self.AppName = params.get("AppName")
-        self.StreamName = params.get("StreamName")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.DomainGroup = params.get("DomainGroup")
-        self.TransCodeId = params.get("TransCodeId")
+        self._Domain = params.get("Domain")
+        self._AppName = params.get("AppName")
+        self._StreamName = params.get("StreamName")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._DomainGroup = params.get("DomainGroup")
+        self._TransCodeId = params.get("TransCodeId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6246,24 +11378,40 @@ class DescribeTimeShiftRecordDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RecordList: The number of sessions recorded.
+        :param _RecordList: The number of sessions recorded.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type RecordList: list of TimeShiftRecord
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RecordList = None
-        self.RequestId = None
+        self._RecordList = None
+        self._RequestId = None
+
+    @property
+    def RecordList(self):
+        return self._RecordList
+
+    @RecordList.setter
+    def RecordList(self, RecordList):
+        self._RecordList = RecordList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("RecordList") is not None:
-            self.RecordList = []
+            self._RecordList = []
             for item in params.get("RecordList"):
                 obj = TimeShiftRecord()
                 obj._deserialize(item)
-                self.RecordList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._RecordList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeTimeShiftStreamListRequest(AbstractModel):
@@ -6273,43 +11421,100 @@ class DescribeTimeShiftStreamListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: The start time, which must be a Unix timestamp.
+        :param _StartTime: The start time, which must be a Unix timestamp.
         :type StartTime: int
-        :param EndTime: The end time, which must be a Unix timestamp.
+        :param _EndTime: The end time, which must be a Unix timestamp.
         :type EndTime: int
-        :param StreamName: The stream name.
+        :param _StreamName: The stream name.
         :type StreamName: str
-        :param Domain: The push domain.
+        :param _Domain: The push domain.
         :type Domain: str
-        :param DomainGroup: The group the push domain belongs to.
+        :param _DomainGroup: The group the push domain belongs to.
         :type DomainGroup: str
-        :param PageSize: The maximum number of records to return. Value range: 0-100. If you do not specify this parameter or pass in `0`, 
+        :param _PageSize: The maximum number of records to return. Value range: 0-100. If you do not specify this parameter or pass in `0`, 
 the default value `100` will be used. If you pass in a negative number or a value greater than 100, an error will be returned.
         :type PageSize: int
-        :param PageNum: The number of page to pull records from. If you do not specify this parameter, the default value `1` will be used.
+        :param _PageNum: The number of page to pull records from. If you do not specify this parameter, the default value `1` will be used.
         :type PageNum: int
         """
-        self.StartTime = None
-        self.EndTime = None
-        self.StreamName = None
-        self.Domain = None
-        self.DomainGroup = None
-        self.PageSize = None
-        self.PageNum = None
+        self._StartTime = None
+        self._EndTime = None
+        self._StreamName = None
+        self._Domain = None
+        self._DomainGroup = None
+        self._PageSize = None
+        self._PageNum = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def DomainGroup(self):
+        return self._DomainGroup
+
+    @DomainGroup.setter
+    def DomainGroup(self, DomainGroup):
+        self._DomainGroup = DomainGroup
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNum(self):
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
 
 
     def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.StreamName = params.get("StreamName")
-        self.Domain = params.get("Domain")
-        self.DomainGroup = params.get("DomainGroup")
-        self.PageSize = params.get("PageSize")
-        self.PageNum = params.get("PageNum")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._StreamName = params.get("StreamName")
+        self._Domain = params.get("Domain")
+        self._DomainGroup = params.get("DomainGroup")
+        self._PageSize = params.get("PageSize")
+        self._PageNum = params.get("PageNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6322,28 +11527,52 @@ class DescribeTimeShiftStreamListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalSize: The total number of records in the specified time period.
+        :param _TotalSize: The total number of records in the specified time period.
         :type TotalSize: int
-        :param StreamList: The information of the streams.
+        :param _StreamList: The information of the streams.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type StreamList: list of TimeShiftStreamInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TotalSize = None
-        self.StreamList = None
-        self.RequestId = None
+        self._TotalSize = None
+        self._StreamList = None
+        self._RequestId = None
+
+    @property
+    def TotalSize(self):
+        return self._TotalSize
+
+    @TotalSize.setter
+    def TotalSize(self, TotalSize):
+        self._TotalSize = TotalSize
+
+    @property
+    def StreamList(self):
+        return self._StreamList
+
+    @StreamList.setter
+    def StreamList(self, StreamList):
+        self._StreamList = StreamList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalSize = params.get("TotalSize")
+        self._TotalSize = params.get("TotalSize")
         if params.get("StreamList") is not None:
-            self.StreamList = []
+            self._StreamList = []
             for item in params.get("StreamList"):
                 obj = TimeShiftStreamInfo()
                 obj._deserialize(item)
-                self.StreamList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._StreamList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeTopClientIpSumInfoListRequest(AbstractModel):
@@ -6353,47 +11582,112 @@ class DescribeTopClientIpSumInfoListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: Start point in time in the format of `yyyy-mm-dd HH:MM:SS`.
+        :param _StartTime: Start point in time in the format of `yyyy-mm-dd HH:MM:SS`.
         :type StartTime: str
-        :param EndTime: End point in time in the format of `yyyy-mm-dd HH:MM:SS`
+        :param _EndTime: End point in time in the format of `yyyy-mm-dd HH:MM:SS`
 The time span is [0,4 hours]. Data for the last day can be queried.
         :type EndTime: str
-        :param PlayDomains: Playback domain name. If this parameter is left empty, full data will be queried by default.
+        :param _PlayDomains: Playback domain name. If this parameter is left empty, full data will be queried by default.
         :type PlayDomains: list of str
-        :param PageNum: Page number. Value range: [1,1000]. Default value: 1.
+        :param _PageNum: Page number. Value range: [1,1000]. Default value: 1.
         :type PageNum: int
-        :param PageSize: Number of entries per page. Value range: [1,1000]. Default value: 20.
+        :param _PageSize: Number of entries per page. Value range: [1,1000]. Default value: 20.
         :type PageSize: int
-        :param OrderParam: Sorting metric. Valid values: TotalRequest (default value), FailedRequest, TotalFlux.
+        :param _OrderParam: Sorting metric. Valid values: TotalRequest (default value), FailedRequest, TotalFlux.
         :type OrderParam: str
-        :param MainlandOrOversea: Region. Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China), China (data for China, including Hong Kong, Macao, and Taiwan), Foreign (data for regions outside China, excluding Hong Kong, Macao, and Taiwan), Global (default). If this parameter is left empty, data for all regions will be queried.
+        :param _MainlandOrOversea: Region. Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China), China (data for China, including Hong Kong, Macao, and Taiwan), Foreign (data for regions outside China, excluding Hong Kong, Macao, and Taiwan), Global (default). If this parameter is left empty, data for all regions will be queried.
         :type MainlandOrOversea: str
-        :param OutLanguage: Language used in the output field. Valid values: Chinese (default), English. Currently, country/region, district, and ISP parameters support multiple languages.
+        :param _OutLanguage: Language used in the output field. Valid values: Chinese (default), English. Currently, country/region, district, and ISP parameters support multiple languages.
         :type OutLanguage: str
         """
-        self.StartTime = None
-        self.EndTime = None
-        self.PlayDomains = None
-        self.PageNum = None
-        self.PageSize = None
-        self.OrderParam = None
-        self.MainlandOrOversea = None
-        self.OutLanguage = None
+        self._StartTime = None
+        self._EndTime = None
+        self._PlayDomains = None
+        self._PageNum = None
+        self._PageSize = None
+        self._OrderParam = None
+        self._MainlandOrOversea = None
+        self._OutLanguage = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def PlayDomains(self):
+        return self._PlayDomains
+
+    @PlayDomains.setter
+    def PlayDomains(self, PlayDomains):
+        self._PlayDomains = PlayDomains
+
+    @property
+    def PageNum(self):
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def OrderParam(self):
+        return self._OrderParam
+
+    @OrderParam.setter
+    def OrderParam(self, OrderParam):
+        self._OrderParam = OrderParam
+
+    @property
+    def MainlandOrOversea(self):
+        return self._MainlandOrOversea
+
+    @MainlandOrOversea.setter
+    def MainlandOrOversea(self, MainlandOrOversea):
+        self._MainlandOrOversea = MainlandOrOversea
+
+    @property
+    def OutLanguage(self):
+        return self._OutLanguage
+
+    @OutLanguage.setter
+    def OutLanguage(self, OutLanguage):
+        self._OutLanguage = OutLanguage
 
 
     def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.PlayDomains = params.get("PlayDomains")
-        self.PageNum = params.get("PageNum")
-        self.PageSize = params.get("PageSize")
-        self.OrderParam = params.get("OrderParam")
-        self.MainlandOrOversea = params.get("MainlandOrOversea")
-        self.OutLanguage = params.get("OutLanguage")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._PlayDomains = params.get("PlayDomains")
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        self._OrderParam = params.get("OrderParam")
+        self._MainlandOrOversea = params.get("MainlandOrOversea")
+        self._OutLanguage = params.get("OutLanguage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6406,43 +11700,99 @@ class DescribeTopClientIpSumInfoListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PageNum: Page number. Value range: [1,1000]. Default value: 1.
+        :param _PageNum: Page number. Value range: [1,1000]. Default value: 1.
         :type PageNum: int
-        :param PageSize: Number of entries per page. Value range: [1,1000]. Default value: 20.
+        :param _PageSize: Number of entries per page. Value range: [1,1000]. Default value: 20.
         :type PageSize: int
-        :param OrderParam: Sorting metric. Valid values: "TotalRequest", "FailedRequest", "TotalFlux".
+        :param _OrderParam: Sorting metric. Valid values: "TotalRequest", "FailedRequest", "TotalFlux".
         :type OrderParam: str
-        :param TotalNum: Total number of results.
+        :param _TotalNum: Total number of results.
         :type TotalNum: int
-        :param TotalPage: Total number of result pages.
+        :param _TotalPage: Total number of result pages.
         :type TotalPage: int
-        :param DataInfoList: Data content.
+        :param _DataInfoList: Data content.
         :type DataInfoList: list of ClientIpPlaySumInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.PageNum = None
-        self.PageSize = None
-        self.OrderParam = None
-        self.TotalNum = None
-        self.TotalPage = None
-        self.DataInfoList = None
-        self.RequestId = None
+        self._PageNum = None
+        self._PageSize = None
+        self._OrderParam = None
+        self._TotalNum = None
+        self._TotalPage = None
+        self._DataInfoList = None
+        self._RequestId = None
+
+    @property
+    def PageNum(self):
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def OrderParam(self):
+        return self._OrderParam
+
+    @OrderParam.setter
+    def OrderParam(self, OrderParam):
+        self._OrderParam = OrderParam
+
+    @property
+    def TotalNum(self):
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def TotalPage(self):
+        return self._TotalPage
+
+    @TotalPage.setter
+    def TotalPage(self, TotalPage):
+        self._TotalPage = TotalPage
+
+    @property
+    def DataInfoList(self):
+        return self._DataInfoList
+
+    @DataInfoList.setter
+    def DataInfoList(self, DataInfoList):
+        self._DataInfoList = DataInfoList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.PageNum = params.get("PageNum")
-        self.PageSize = params.get("PageSize")
-        self.OrderParam = params.get("OrderParam")
-        self.TotalNum = params.get("TotalNum")
-        self.TotalPage = params.get("TotalPage")
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        self._OrderParam = params.get("OrderParam")
+        self._TotalNum = params.get("TotalNum")
+        self._TotalPage = params.get("TotalPage")
         if params.get("DataInfoList") is not None:
-            self.DataInfoList = []
+            self._DataInfoList = []
             for item in params.get("DataInfoList"):
                 obj = ClientIpPlaySumInfo()
                 obj._deserialize(item)
-                self.DataInfoList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._DataInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeTranscodeTaskNumRequest(AbstractModel):
@@ -6452,26 +11802,51 @@ class DescribeTranscodeTaskNumRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: The start time in the format of yyyy-mm-dd HH:MM:SS.
+        :param _StartTime: The start time in the format of yyyy-mm-dd HH:MM:SS.
         :type StartTime: str
-        :param EndTime: The end time in the format of yyyy-mm-dd HH:MM:SS.
+        :param _EndTime: The end time in the format of yyyy-mm-dd HH:MM:SS.
         :type EndTime: str
-        :param PushDomains: The push domains to query. If you do not pass a value, all push domains will be queried.
+        :param _PushDomains: The push domains to query. If you do not pass a value, all push domains will be queried.
         :type PushDomains: list of str
         """
-        self.StartTime = None
-        self.EndTime = None
-        self.PushDomains = None
+        self._StartTime = None
+        self._EndTime = None
+        self._PushDomains = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def PushDomains(self):
+        return self._PushDomains
+
+    @PushDomains.setter
+    def PushDomains(self, PushDomains):
+        self._PushDomains = PushDomains
 
 
     def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.PushDomains = params.get("PushDomains")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._PushDomains = params.get("PushDomains")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6484,23 +11859,39 @@ class DescribeTranscodeTaskNumResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DataInfoList: The number of tasks.
+        :param _DataInfoList: The number of tasks.
         :type DataInfoList: list of TranscodeTaskNum
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.DataInfoList = None
-        self.RequestId = None
+        self._DataInfoList = None
+        self._RequestId = None
+
+    @property
+    def DataInfoList(self):
+        return self._DataInfoList
+
+    @DataInfoList.setter
+    def DataInfoList(self, DataInfoList):
+        self._DataInfoList = DataInfoList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DataInfoList") is not None:
-            self.DataInfoList = []
+            self._DataInfoList = []
             for item in params.get("DataInfoList"):
                 obj = TranscodeTaskNum()
                 obj._deserialize(item)
-                self.DataInfoList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._DataInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeUploadStreamNumsRequest(AbstractModel):
@@ -6510,33 +11901,66 @@ class DescribeUploadStreamNumsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: Start time point in the format of yyyy-mm-dd HH:MM:SS.
+        :param _StartTime: Start time point in the format of yyyy-mm-dd HH:MM:SS.
         :type StartTime: str
-        :param EndTime: End time point in the format of yyyy-mm-dd HH:MM:SS. The difference between the start time and end time cannot be greater than 31 days. Data in the last 31 days can be queried.
+        :param _EndTime: End time point in the format of yyyy-mm-dd HH:MM:SS. The difference between the start time and end time cannot be greater than 31 days. Data in the last 31 days can be queried.
         :type EndTime: str
-        :param Domains: LVB domain names. If this parameter is left empty, data of all domain names will be queried.
+        :param _Domains: LVB domain names. If this parameter is left empty, data of all domain names will be queried.
         :type Domains: list of str
-        :param Granularity: Time granularity of the data. Valid values:
+        :param _Granularity: Time granularity of the data. Valid values:
 5: 5-minute granularity (the query period is up to 1 day)
 1440: 1-day granularity (the query period is up to 1 month)
 Default value: 5
         :type Granularity: int
         """
-        self.StartTime = None
-        self.EndTime = None
-        self.Domains = None
-        self.Granularity = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Domains = None
+        self._Granularity = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Domains(self):
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+    @property
+    def Granularity(self):
+        return self._Granularity
+
+    @Granularity.setter
+    def Granularity(self, Granularity):
+        self._Granularity = Granularity
 
 
     def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.Domains = params.get("Domains")
-        self.Granularity = params.get("Granularity")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Domains = params.get("Domains")
+        self._Granularity = params.get("Granularity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6549,23 +11973,39 @@ class DescribeUploadStreamNumsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DataInfoList: Detailed data.
+        :param _DataInfoList: Detailed data.
         :type DataInfoList: list of ConcurrentRecordStreamNum
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.DataInfoList = None
-        self.RequestId = None
+        self._DataInfoList = None
+        self._RequestId = None
+
+    @property
+    def DataInfoList(self):
+        return self._DataInfoList
+
+    @DataInfoList.setter
+    def DataInfoList(self, DataInfoList):
+        self._DataInfoList = DataInfoList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("DataInfoList") is not None:
-            self.DataInfoList = []
+            self._DataInfoList = []
             for item in params.get("DataInfoList"):
                 obj = ConcurrentRecordStreamNum()
                 obj._deserialize(item)
-                self.DataInfoList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._DataInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeVisitTopSumInfoListRequest(AbstractModel):
@@ -6575,46 +12015,103 @@ class DescribeVisitTopSumInfoListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: Start point in time in the format of `yyyy-mm-dd HH:MM:SS`.
+        :param _StartTime: Start point in time in the format of `yyyy-mm-dd HH:MM:SS`.
         :type StartTime: str
-        :param EndTime: End point in time in the format of `yyyy-mm-dd HH:MM:SS`
+        :param _EndTime: End point in time in the format of `yyyy-mm-dd HH:MM:SS`
 The time span is (0,4 hours]. Data for the last day can be queried.
         :type EndTime: str
-        :param TopIndex: Bandwidth metric. Valid values: "Domain", "StreamId".
+        :param _TopIndex: Bandwidth metric. Valid values: "Domain", "StreamId".
         :type TopIndex: str
-        :param PlayDomains: Playback domain name. If this parameter is left empty, full data will be queried by default.
+        :param _PlayDomains: Playback domain name. If this parameter is left empty, full data will be queried by default.
         :type PlayDomains: list of str
-        :param PageNum: Page number,
+        :param _PageNum: Page number,
 Value range: [1,1000],
 Default value: 1.
         :type PageNum: int
-        :param PageSize: Number of entries per page. Value range: [1,1000].
+        :param _PageSize: Number of entries per page. Value range: [1,1000].
 Default value: 20.
         :type PageSize: int
-        :param OrderParam: Sorting metric. Valid values: "AvgFluxPerSecond", "TotalRequest" (default), "TotalFlux".
+        :param _OrderParam: Sorting metric. Valid values: "AvgFluxPerSecond", "TotalRequest" (default), "TotalFlux".
         :type OrderParam: str
         """
-        self.StartTime = None
-        self.EndTime = None
-        self.TopIndex = None
-        self.PlayDomains = None
-        self.PageNum = None
-        self.PageSize = None
-        self.OrderParam = None
+        self._StartTime = None
+        self._EndTime = None
+        self._TopIndex = None
+        self._PlayDomains = None
+        self._PageNum = None
+        self._PageSize = None
+        self._OrderParam = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def TopIndex(self):
+        return self._TopIndex
+
+    @TopIndex.setter
+    def TopIndex(self, TopIndex):
+        self._TopIndex = TopIndex
+
+    @property
+    def PlayDomains(self):
+        return self._PlayDomains
+
+    @PlayDomains.setter
+    def PlayDomains(self, PlayDomains):
+        self._PlayDomains = PlayDomains
+
+    @property
+    def PageNum(self):
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def OrderParam(self):
+        return self._OrderParam
+
+    @OrderParam.setter
+    def OrderParam(self, OrderParam):
+        self._OrderParam = OrderParam
 
 
     def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.TopIndex = params.get("TopIndex")
-        self.PlayDomains = params.get("PlayDomains")
-        self.PageNum = params.get("PageNum")
-        self.PageSize = params.get("PageSize")
-        self.OrderParam = params.get("OrderParam")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._TopIndex = params.get("TopIndex")
+        self._PlayDomains = params.get("PlayDomains")
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        self._OrderParam = params.get("OrderParam")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6627,50 +12124,114 @@ class DescribeVisitTopSumInfoListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PageNum: Page number,
+        :param _PageNum: Page number,
 Value range: [1,1000],
 Default value: 1.
         :type PageNum: int
-        :param PageSize: Number of entries per page. Value range: [1,1000].
+        :param _PageSize: Number of entries per page. Value range: [1,1000].
 Default value: 20.
         :type PageSize: int
-        :param TopIndex: Bandwidth metric. Valid values: "Domain", "StreamId".
+        :param _TopIndex: Bandwidth metric. Valid values: "Domain", "StreamId".
         :type TopIndex: str
-        :param OrderParam: Sorting metric. Valid values: AvgFluxPerSecond (sort by average traffic per second), TotalRequest (sort by total requests), TotalFlux (sort by total traffic). Default value: TotalRequest.
+        :param _OrderParam: Sorting metric. Valid values: AvgFluxPerSecond (sort by average traffic per second), TotalRequest (sort by total requests), TotalFlux (sort by total traffic). Default value: TotalRequest.
         :type OrderParam: str
-        :param TotalNum: Total number of results.
+        :param _TotalNum: Total number of results.
         :type TotalNum: int
-        :param TotalPage: Total number of result pages.
+        :param _TotalPage: Total number of result pages.
         :type TotalPage: int
-        :param DataInfoList: Data content.
+        :param _DataInfoList: Data content.
         :type DataInfoList: list of PlaySumStatInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.PageNum = None
-        self.PageSize = None
-        self.TopIndex = None
-        self.OrderParam = None
-        self.TotalNum = None
-        self.TotalPage = None
-        self.DataInfoList = None
-        self.RequestId = None
+        self._PageNum = None
+        self._PageSize = None
+        self._TopIndex = None
+        self._OrderParam = None
+        self._TotalNum = None
+        self._TotalPage = None
+        self._DataInfoList = None
+        self._RequestId = None
+
+    @property
+    def PageNum(self):
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TopIndex(self):
+        return self._TopIndex
+
+    @TopIndex.setter
+    def TopIndex(self, TopIndex):
+        self._TopIndex = TopIndex
+
+    @property
+    def OrderParam(self):
+        return self._OrderParam
+
+    @OrderParam.setter
+    def OrderParam(self, OrderParam):
+        self._OrderParam = OrderParam
+
+    @property
+    def TotalNum(self):
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def TotalPage(self):
+        return self._TotalPage
+
+    @TotalPage.setter
+    def TotalPage(self, TotalPage):
+        self._TotalPage = TotalPage
+
+    @property
+    def DataInfoList(self):
+        return self._DataInfoList
+
+    @DataInfoList.setter
+    def DataInfoList(self, DataInfoList):
+        self._DataInfoList = DataInfoList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.PageNum = params.get("PageNum")
-        self.PageSize = params.get("PageSize")
-        self.TopIndex = params.get("TopIndex")
-        self.OrderParam = params.get("OrderParam")
-        self.TotalNum = params.get("TotalNum")
-        self.TotalPage = params.get("TotalPage")
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        self._TopIndex = params.get("TopIndex")
+        self._OrderParam = params.get("OrderParam")
+        self._TotalNum = params.get("TotalNum")
+        self._TotalPage = params.get("TotalPage")
         if params.get("DataInfoList") is not None:
-            self.DataInfoList = []
+            self._DataInfoList = []
             for item in params.get("DataInfoList"):
                 obj = PlaySumStatInfo()
                 obj._deserialize(item)
-                self.DataInfoList.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._DataInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DomainCertInfo(AbstractModel):
@@ -6680,65 +12241,154 @@ class DomainCertInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CertId: Certificate ID.
+        :param _CertId: Certificate ID.
         :type CertId: int
-        :param CertName: Certificate name.
+        :param _CertName: Certificate name.
         :type CertName: str
-        :param Description: Description.
+        :param _Description: Description.
         :type Description: str
-        :param CreateTime: The creation time in UTC format.
+        :param _CreateTime: The creation time in UTC format.
 Note: Beijing time (UTC+8) is used.
         :type CreateTime: str
-        :param HttpsCrt: Certificate content.
+        :param _HttpsCrt: Certificate content.
         :type HttpsCrt: str
-        :param CertType: Certificate type.
+        :param _CertType: Certificate type.
 0: user-added certificate
 1: Tencent Cloud-hosted certificate.
         :type CertType: int
-        :param CertExpireTime: The certificate expiration time in UTC format.
+        :param _CertExpireTime: The certificate expiration time in UTC format.
 Note: Beijing time (UTC+8) is used.
         :type CertExpireTime: str
-        :param DomainName: Domain name that uses this certificate.
+        :param _DomainName: Domain name that uses this certificate.
         :type DomainName: str
-        :param Status: Certificate status.
+        :param _Status: Certificate status.
         :type Status: int
-        :param CertDomains: List of domain names in the certificate.
+        :param _CertDomains: List of domain names in the certificate.
 ["*.x.com"] for example.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type CertDomains: list of str
-        :param CloudCertId: Tencent Cloud SSL certificate ID.
+        :param _CloudCertId: Tencent Cloud SSL certificate ID.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type CloudCertId: str
         """
-        self.CertId = None
-        self.CertName = None
-        self.Description = None
-        self.CreateTime = None
-        self.HttpsCrt = None
-        self.CertType = None
-        self.CertExpireTime = None
-        self.DomainName = None
-        self.Status = None
-        self.CertDomains = None
-        self.CloudCertId = None
+        self._CertId = None
+        self._CertName = None
+        self._Description = None
+        self._CreateTime = None
+        self._HttpsCrt = None
+        self._CertType = None
+        self._CertExpireTime = None
+        self._DomainName = None
+        self._Status = None
+        self._CertDomains = None
+        self._CloudCertId = None
+
+    @property
+    def CertId(self):
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
+
+    @property
+    def CertName(self):
+        return self._CertName
+
+    @CertName.setter
+    def CertName(self, CertName):
+        self._CertName = CertName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def HttpsCrt(self):
+        return self._HttpsCrt
+
+    @HttpsCrt.setter
+    def HttpsCrt(self, HttpsCrt):
+        self._HttpsCrt = HttpsCrt
+
+    @property
+    def CertType(self):
+        return self._CertType
+
+    @CertType.setter
+    def CertType(self, CertType):
+        self._CertType = CertType
+
+    @property
+    def CertExpireTime(self):
+        return self._CertExpireTime
+
+    @CertExpireTime.setter
+    def CertExpireTime(self, CertExpireTime):
+        self._CertExpireTime = CertExpireTime
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CertDomains(self):
+        return self._CertDomains
+
+    @CertDomains.setter
+    def CertDomains(self, CertDomains):
+        self._CertDomains = CertDomains
+
+    @property
+    def CloudCertId(self):
+        return self._CloudCertId
+
+    @CloudCertId.setter
+    def CloudCertId(self, CloudCertId):
+        self._CloudCertId = CloudCertId
 
 
     def _deserialize(self, params):
-        self.CertId = params.get("CertId")
-        self.CertName = params.get("CertName")
-        self.Description = params.get("Description")
-        self.CreateTime = params.get("CreateTime")
-        self.HttpsCrt = params.get("HttpsCrt")
-        self.CertType = params.get("CertType")
-        self.CertExpireTime = params.get("CertExpireTime")
-        self.DomainName = params.get("DomainName")
-        self.Status = params.get("Status")
-        self.CertDomains = params.get("CertDomains")
-        self.CloudCertId = params.get("CloudCertId")
+        self._CertId = params.get("CertId")
+        self._CertName = params.get("CertName")
+        self._Description = params.get("Description")
+        self._CreateTime = params.get("CreateTime")
+        self._HttpsCrt = params.get("HttpsCrt")
+        self._CertType = params.get("CertType")
+        self._CertExpireTime = params.get("CertExpireTime")
+        self._DomainName = params.get("DomainName")
+        self._Status = params.get("Status")
+        self._CertDomains = params.get("CertDomains")
+        self._CloudCertId = params.get("CloudCertId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6751,77 +12401,174 @@ class DomainInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: LVB domain name.
+        :param _Name: LVB domain name.
         :type Name: str
-        :param Type: Domain name type:
+        :param _Type: Domain name type:
 0: push.
 1: playback.
         :type Type: int
-        :param Status: Domain name status:
+        :param _Status: Domain name status:
 0: deactivated.
 1: activated.
         :type Status: int
-        :param CreateTime: The time when the domain was added.
+        :param _CreateTime: The time when the domain was added.
 Note: Beijing time (UTC+8) is used.
         :type CreateTime: str
-        :param BCName: Whether there is a CNAME record pointing to a fixed rule domain name:
+        :param _BCName: Whether there is a CNAME record pointing to a fixed rule domain name:
 0: no.
 1: yes.
         :type BCName: int
-        :param TargetDomain: Domain name corresponding to CNAME record.
+        :param _TargetDomain: Domain name corresponding to CNAME record.
         :type TargetDomain: str
-        :param PlayType: Playback region. This parameter is valid only if `Type` is 1.
+        :param _PlayType: Playback region. This parameter is valid only if `Type` is 1.
 1: in Mainland China.
 2: global.
 3: outside Mainland China.
         :type PlayType: int
-        :param IsDelayLive: Whether it is LCB:
+        :param _IsDelayLive: Whether it is LCB:
 0: LVB.
 1: LCB.
         :type IsDelayLive: int
-        :param CurrentCName: Information of currently used CNAME record.
+        :param _CurrentCName: Information of currently used CNAME record.
         :type CurrentCName: str
-        :param RentTag: Disused parameter, which can be ignored.
+        :param _RentTag: Disused parameter, which can be ignored.
         :type RentTag: int
-        :param RentExpireTime: A disused parameter.
+        :param _RentExpireTime: A disused parameter.
 Note: Beijing time (UTC+8) is used.
         :type RentExpireTime: str
-        :param IsMiniProgramLive: 0: LVB.
+        :param _IsMiniProgramLive: 0: LVB.
 1: LVB on Mini Program.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IsMiniProgramLive: int
         """
-        self.Name = None
-        self.Type = None
-        self.Status = None
-        self.CreateTime = None
-        self.BCName = None
-        self.TargetDomain = None
-        self.PlayType = None
-        self.IsDelayLive = None
-        self.CurrentCName = None
-        self.RentTag = None
-        self.RentExpireTime = None
-        self.IsMiniProgramLive = None
+        self._Name = None
+        self._Type = None
+        self._Status = None
+        self._CreateTime = None
+        self._BCName = None
+        self._TargetDomain = None
+        self._PlayType = None
+        self._IsDelayLive = None
+        self._CurrentCName = None
+        self._RentTag = None
+        self._RentExpireTime = None
+        self._IsMiniProgramLive = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def BCName(self):
+        return self._BCName
+
+    @BCName.setter
+    def BCName(self, BCName):
+        self._BCName = BCName
+
+    @property
+    def TargetDomain(self):
+        return self._TargetDomain
+
+    @TargetDomain.setter
+    def TargetDomain(self, TargetDomain):
+        self._TargetDomain = TargetDomain
+
+    @property
+    def PlayType(self):
+        return self._PlayType
+
+    @PlayType.setter
+    def PlayType(self, PlayType):
+        self._PlayType = PlayType
+
+    @property
+    def IsDelayLive(self):
+        return self._IsDelayLive
+
+    @IsDelayLive.setter
+    def IsDelayLive(self, IsDelayLive):
+        self._IsDelayLive = IsDelayLive
+
+    @property
+    def CurrentCName(self):
+        return self._CurrentCName
+
+    @CurrentCName.setter
+    def CurrentCName(self, CurrentCName):
+        self._CurrentCName = CurrentCName
+
+    @property
+    def RentTag(self):
+        return self._RentTag
+
+    @RentTag.setter
+    def RentTag(self, RentTag):
+        self._RentTag = RentTag
+
+    @property
+    def RentExpireTime(self):
+        return self._RentExpireTime
+
+    @RentExpireTime.setter
+    def RentExpireTime(self, RentExpireTime):
+        self._RentExpireTime = RentExpireTime
+
+    @property
+    def IsMiniProgramLive(self):
+        return self._IsMiniProgramLive
+
+    @IsMiniProgramLive.setter
+    def IsMiniProgramLive(self, IsMiniProgramLive):
+        self._IsMiniProgramLive = IsMiniProgramLive
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Type = params.get("Type")
-        self.Status = params.get("Status")
-        self.CreateTime = params.get("CreateTime")
-        self.BCName = params.get("BCName")
-        self.TargetDomain = params.get("TargetDomain")
-        self.PlayType = params.get("PlayType")
-        self.IsDelayLive = params.get("IsDelayLive")
-        self.CurrentCName = params.get("CurrentCName")
-        self.RentTag = params.get("RentTag")
-        self.RentExpireTime = params.get("RentExpireTime")
-        self.IsMiniProgramLive = params.get("IsMiniProgramLive")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._BCName = params.get("BCName")
+        self._TargetDomain = params.get("TargetDomain")
+        self._PlayType = params.get("PlayType")
+        self._IsDelayLive = params.get("IsDelayLive")
+        self._CurrentCName = params.get("CurrentCName")
+        self._RentTag = params.get("RentTag")
+        self._RentExpireTime = params.get("RentExpireTime")
+        self._IsMiniProgramLive = params.get("IsMiniProgramLive")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6834,26 +12581,51 @@ class DropLiveStreamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StreamName: The stream name.
+        :param _StreamName: The stream name.
         :type StreamName: str
-        :param DomainName: Your push domain.
+        :param _DomainName: Your push domain.
         :type DomainName: str
-        :param AppName: The push path, which should be the same as `AppName` in the push and playback URL. The default value is `live`.
+        :param _AppName: The push path, which should be the same as `AppName` in the push and playback URL. The default value is `live`.
         :type AppName: str
         """
-        self.StreamName = None
-        self.DomainName = None
-        self.AppName = None
+        self._StreamName = None
+        self._DomainName = None
+        self._AppName = None
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
 
 
     def _deserialize(self, params):
-        self.StreamName = params.get("StreamName")
-        self.DomainName = params.get("DomainName")
-        self.AppName = params.get("AppName")
+        self._StreamName = params.get("StreamName")
+        self._DomainName = params.get("DomainName")
+        self._AppName = params.get("AppName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6866,14 +12638,22 @@ class DropLiveStreamResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class EnableLiveDomainRequest(AbstractModel):
@@ -6883,18 +12663,27 @@ class EnableLiveDomainRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainName: LVB domain name to be enabled.
+        :param _DomainName: LVB domain name to be enabled.
         :type DomainName: str
         """
-        self.DomainName = None
+        self._DomainName = None
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
 
 
     def _deserialize(self, params):
-        self.DomainName = params.get("DomainName")
+        self._DomainName = params.get("DomainName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6907,14 +12696,22 @@ class EnableLiveDomainResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class FlvSpecialParam(AbstractModel):
@@ -6924,18 +12721,27 @@ class FlvSpecialParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UploadInRecording: Whether to enable upload while recording. This parameter is only valid for FLV recording.
+        :param _UploadInRecording: Whether to enable upload while recording. This parameter is only valid for FLV recording.
         :type UploadInRecording: bool
         """
-        self.UploadInRecording = None
+        self._UploadInRecording = None
+
+    @property
+    def UploadInRecording(self):
+        return self._UploadInRecording
+
+    @UploadInRecording.setter
+    def UploadInRecording(self, UploadInRecording):
+        self._UploadInRecording = UploadInRecording
 
 
     def _deserialize(self, params):
-        self.UploadInRecording = params.get("UploadInRecording")
+        self._UploadInRecording = params.get("UploadInRecording")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6948,18 +12754,27 @@ class ForbidLiveDomainRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainName: LVB domain name to be disabled.
+        :param _DomainName: LVB domain name to be disabled.
         :type DomainName: str
         """
-        self.DomainName = None
+        self._DomainName = None
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
 
 
     def _deserialize(self, params):
-        self.DomainName = params.get("DomainName")
+        self._DomainName = params.get("DomainName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6972,14 +12787,22 @@ class ForbidLiveDomainResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ForbidLiveStreamRequest(AbstractModel):
@@ -6989,39 +12812,80 @@ class ForbidLiveStreamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AppName: Push path, which is the same as the AppName in push and playback addresses and is "live" by default.
+        :param _AppName: Push path, which is the same as the AppName in push and playback addresses and is "live" by default.
         :type AppName: str
-        :param DomainName: Your push domain name.
+        :param _DomainName: Your push domain name.
         :type DomainName: str
-        :param StreamName: Stream name.
+        :param _StreamName: Stream name.
         :type StreamName: str
-        :param ResumeTime: The time (in UTC format) to resume the stream, such as 2018-11-29T19:00:00Z.
+        :param _ResumeTime: The time (in UTC format) to resume the stream, such as 2018-11-29T19:00:00Z.
 Notes:
 1. The default stream disabling period is seven days. A stream can be disabled for up to 90 days.
 2. Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format) is used.
         :type ResumeTime: str
-        :param Reason: Reason for forbidding.
+        :param _Reason: Reason for forbidding.
 Note: Be sure to enter the reason for forbidding to avoid any faulty operations.
 Length limit: 2,048 bytes.
         :type Reason: str
         """
-        self.AppName = None
-        self.DomainName = None
-        self.StreamName = None
-        self.ResumeTime = None
-        self.Reason = None
+        self._AppName = None
+        self._DomainName = None
+        self._StreamName = None
+        self._ResumeTime = None
+        self._Reason = None
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+    @property
+    def ResumeTime(self):
+        return self._ResumeTime
+
+    @ResumeTime.setter
+    def ResumeTime(self, ResumeTime):
+        self._ResumeTime = ResumeTime
+
+    @property
+    def Reason(self):
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
 
 
     def _deserialize(self, params):
-        self.AppName = params.get("AppName")
-        self.DomainName = params.get("DomainName")
-        self.StreamName = params.get("StreamName")
-        self.ResumeTime = params.get("ResumeTime")
-        self.Reason = params.get("Reason")
+        self._AppName = params.get("AppName")
+        self._DomainName = params.get("DomainName")
+        self._StreamName = params.get("StreamName")
+        self._ResumeTime = params.get("ResumeTime")
+        self._Reason = params.get("Reason")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7034,14 +12898,22 @@ class ForbidLiveStreamResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ForbidStreamInfo(AbstractModel):
@@ -7051,38 +12923,79 @@ class ForbidStreamInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StreamName: Stream name.
+        :param _StreamName: Stream name.
         :type StreamName: str
-        :param CreateTime: The creation time.
+        :param _CreateTime: The creation time.
 Note: Beijing time (UTC+8) is used.
         :type CreateTime: str
-        :param ExpireTime: The end time.
+        :param _ExpireTime: The end time.
 Note: Beijing time (UTC+8) is used.
         :type ExpireTime: str
-        :param AppName: The push path.
+        :param _AppName: The push path.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AppName: str
-        :param DomainName: The push domain name.
+        :param _DomainName: The push domain name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DomainName: str
         """
-        self.StreamName = None
-        self.CreateTime = None
-        self.ExpireTime = None
-        self.AppName = None
-        self.DomainName = None
+        self._StreamName = None
+        self._CreateTime = None
+        self._ExpireTime = None
+        self._AppName = None
+        self._DomainName = None
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
 
 
     def _deserialize(self, params):
-        self.StreamName = params.get("StreamName")
-        self.CreateTime = params.get("CreateTime")
-        self.ExpireTime = params.get("ExpireTime")
-        self.AppName = params.get("AppName")
-        self.DomainName = params.get("DomainName")
+        self._StreamName = params.get("StreamName")
+        self._CreateTime = params.get("CreateTime")
+        self._ExpireTime = params.get("ExpireTime")
+        self._AppName = params.get("AppName")
+        self._DomainName = params.get("DomainName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7095,31 +13008,56 @@ class GroupProIspDataInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProvinceName: District.
+        :param _ProvinceName: District.
         :type ProvinceName: str
-        :param IspName: ISP.
+        :param _IspName: ISP.
         :type IspName: str
-        :param DetailInfoList: Detailed data at the minute level.
+        :param _DetailInfoList: Detailed data at the minute level.
         :type DetailInfoList: list of CdnPlayStatData
         """
-        self.ProvinceName = None
-        self.IspName = None
-        self.DetailInfoList = None
+        self._ProvinceName = None
+        self._IspName = None
+        self._DetailInfoList = None
+
+    @property
+    def ProvinceName(self):
+        return self._ProvinceName
+
+    @ProvinceName.setter
+    def ProvinceName(self, ProvinceName):
+        self._ProvinceName = ProvinceName
+
+    @property
+    def IspName(self):
+        return self._IspName
+
+    @IspName.setter
+    def IspName(self, IspName):
+        self._IspName = IspName
+
+    @property
+    def DetailInfoList(self):
+        return self._DetailInfoList
+
+    @DetailInfoList.setter
+    def DetailInfoList(self, DetailInfoList):
+        self._DetailInfoList = DetailInfoList
 
 
     def _deserialize(self, params):
-        self.ProvinceName = params.get("ProvinceName")
-        self.IspName = params.get("IspName")
+        self._ProvinceName = params.get("ProvinceName")
+        self._IspName = params.get("IspName")
         if params.get("DetailInfoList") is not None:
-            self.DetailInfoList = []
+            self._DetailInfoList = []
             for item in params.get("DetailInfoList"):
                 obj = CdnPlayStatData()
                 obj._deserialize(item)
-                self.DetailInfoList.append(obj)
+                self._DetailInfoList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7132,19 +13070,28 @@ class HlsSpecialParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowContinueDuration: Timeout period for restarting an interrupted HLS push.
+        :param _FlowContinueDuration: Timeout period for restarting an interrupted HLS push.
 Value range: [0, 1,800].
         :type FlowContinueDuration: int
         """
-        self.FlowContinueDuration = None
+        self._FlowContinueDuration = None
+
+    @property
+    def FlowContinueDuration(self):
+        return self._FlowContinueDuration
+
+    @FlowContinueDuration.setter
+    def FlowContinueDuration(self, FlowContinueDuration):
+        self._FlowContinueDuration = FlowContinueDuration
 
 
     def _deserialize(self, params):
-        self.FlowContinueDuration = params.get("FlowContinueDuration")
+        self._FlowContinueDuration = params.get("FlowContinueDuration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7157,28 +13104,45 @@ class HttpCodeInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param HttpCode: HTTP return code.
+        :param _HttpCode: HTTP return code.
 Example: "2xx", "3xx", "4xx", "5xx".
         :type HttpCode: str
-        :param ValueList: Statistics. 0 will be added for points in time when there is no data.
+        :param _ValueList: Statistics. 0 will be added for points in time when there is no data.
         :type ValueList: list of HttpCodeValue
         """
-        self.HttpCode = None
-        self.ValueList = None
+        self._HttpCode = None
+        self._ValueList = None
+
+    @property
+    def HttpCode(self):
+        return self._HttpCode
+
+    @HttpCode.setter
+    def HttpCode(self, HttpCode):
+        self._HttpCode = HttpCode
+
+    @property
+    def ValueList(self):
+        return self._ValueList
+
+    @ValueList.setter
+    def ValueList(self, ValueList):
+        self._ValueList = ValueList
 
 
     def _deserialize(self, params):
-        self.HttpCode = params.get("HttpCode")
+        self._HttpCode = params.get("HttpCode")
         if params.get("ValueList") is not None:
-            self.ValueList = []
+            self._ValueList = []
             for item in params.get("ValueList"):
                 obj = HttpCodeValue()
                 obj._deserialize(item)
-                self.ValueList.append(obj)
+                self._ValueList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7191,26 +13155,51 @@ class HttpCodeValue(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Time: Time in the format of `yyyy-mm-dd HH:MM:SS`.
+        :param _Time: Time in the format of `yyyy-mm-dd HH:MM:SS`.
         :type Time: str
-        :param Numbers: Occurrences.
+        :param _Numbers: Occurrences.
         :type Numbers: int
-        :param Percentage: Proportion.
+        :param _Percentage: Proportion.
         :type Percentage: float
         """
-        self.Time = None
-        self.Numbers = None
-        self.Percentage = None
+        self._Time = None
+        self._Numbers = None
+        self._Percentage = None
+
+    @property
+    def Time(self):
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def Numbers(self):
+        return self._Numbers
+
+    @Numbers.setter
+    def Numbers(self, Numbers):
+        self._Numbers = Numbers
+
+    @property
+    def Percentage(self):
+        return self._Percentage
+
+    @Percentage.setter
+    def Percentage(self, Percentage):
+        self._Percentage = Percentage
 
 
     def _deserialize(self, params):
-        self.Time = params.get("Time")
-        self.Numbers = params.get("Numbers")
-        self.Percentage = params.get("Percentage")
+        self._Time = params.get("Time")
+        self._Numbers = params.get("Numbers")
+        self._Percentage = params.get("Percentage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7223,28 +13212,45 @@ class HttpStatusData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Time: Data point in time,
+        :param _Time: Data point in time,
 In the format of `yyyy-mm-dd HH:MM:SS`.
         :type Time: str
-        :param HttpStatusInfoList: Playback status code details.
+        :param _HttpStatusInfoList: Playback status code details.
         :type HttpStatusInfoList: list of HttpStatusInfo
         """
-        self.Time = None
-        self.HttpStatusInfoList = None
+        self._Time = None
+        self._HttpStatusInfoList = None
+
+    @property
+    def Time(self):
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def HttpStatusInfoList(self):
+        return self._HttpStatusInfoList
+
+    @HttpStatusInfoList.setter
+    def HttpStatusInfoList(self, HttpStatusInfoList):
+        self._HttpStatusInfoList = HttpStatusInfoList
 
 
     def _deserialize(self, params):
-        self.Time = params.get("Time")
+        self._Time = params.get("Time")
         if params.get("HttpStatusInfoList") is not None:
-            self.HttpStatusInfoList = []
+            self._HttpStatusInfoList = []
             for item in params.get("HttpStatusInfoList"):
                 obj = HttpStatusInfo()
                 obj._deserialize(item)
-                self.HttpStatusInfoList.append(obj)
+                self._HttpStatusInfoList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7257,22 +13263,39 @@ class HttpStatusInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param HttpStatus: Playback HTTP status code.
+        :param _HttpStatus: Playback HTTP status code.
         :type HttpStatus: str
-        :param Num: Quantity.
+        :param _Num: Quantity.
         :type Num: int
         """
-        self.HttpStatus = None
-        self.Num = None
+        self._HttpStatus = None
+        self._Num = None
+
+    @property
+    def HttpStatus(self):
+        return self._HttpStatus
+
+    @HttpStatus.setter
+    def HttpStatus(self, HttpStatus):
+        self._HttpStatus = HttpStatus
+
+    @property
+    def Num(self):
+        return self._Num
+
+    @Num.setter
+    def Num(self, Num):
+        self._Num = Num
 
 
     def _deserialize(self, params):
-        self.HttpStatus = params.get("HttpStatus")
-        self.Num = params.get("Num")
+        self._HttpStatus = params.get("HttpStatus")
+        self._Num = params.get("Num")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7285,25 +13308,42 @@ class LiveCertDomainInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainName: The domain name.
+        :param _DomainName: The domain name.
         :type DomainName: str
-        :param Status: Whether to enable HTTPS for the domain.
+        :param _Status: Whether to enable HTTPS for the domain.
 1: Enable
 0: Disable
 -1: Keep the current configuration
         :type Status: int
         """
-        self.DomainName = None
-        self.Status = None
+        self._DomainName = None
+        self._Status = None
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
 
     def _deserialize(self, params):
-        self.DomainName = params.get("DomainName")
-        self.Status = params.get("Status")
+        self._DomainName = params.get("DomainName")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7316,53 +13356,118 @@ class LiveDomainCertBindings(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainName: The domain name.
+        :param _DomainName: The domain name.
         :type DomainName: str
-        :param CertificateAlias: The remarks for the certificate. This parameter is the same as `CertName`.
+        :param _CertificateAlias: The remarks for the certificate. This parameter is the same as `CertName`.
         :type CertificateAlias: str
-        :param CertType: The certificate type.
+        :param _CertType: The certificate type.
 0: Self-owned certificate
 1: Tencent Cloud-hosted certificate
         :type CertType: int
-        :param Status: Whether HTTPS is enabled.
+        :param _Status: Whether HTTPS is enabled.
 1: Enabled
 0: Disabled
         :type Status: int
-        :param CertExpireTime: The certificate expiration time.
+        :param _CertExpireTime: The certificate expiration time.
 Note: Beijing time (UTC+8) is used.
         :type CertExpireTime: str
-        :param CertId: The certificate ID.
+        :param _CertId: The certificate ID.
         :type CertId: int
-        :param CloudCertId: The SSL certificate ID assigned by Tencent Cloud.
+        :param _CloudCertId: The SSL certificate ID assigned by Tencent Cloud.
         :type CloudCertId: str
-        :param UpdateTime: The last updated time.
+        :param _UpdateTime: The last updated time.
 Note: Beijing time (UTC+8) is used.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type UpdateTime: str
         """
-        self.DomainName = None
-        self.CertificateAlias = None
-        self.CertType = None
-        self.Status = None
-        self.CertExpireTime = None
-        self.CertId = None
-        self.CloudCertId = None
-        self.UpdateTime = None
+        self._DomainName = None
+        self._CertificateAlias = None
+        self._CertType = None
+        self._Status = None
+        self._CertExpireTime = None
+        self._CertId = None
+        self._CloudCertId = None
+        self._UpdateTime = None
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def CertificateAlias(self):
+        return self._CertificateAlias
+
+    @CertificateAlias.setter
+    def CertificateAlias(self, CertificateAlias):
+        self._CertificateAlias = CertificateAlias
+
+    @property
+    def CertType(self):
+        return self._CertType
+
+    @CertType.setter
+    def CertType(self, CertType):
+        self._CertType = CertType
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CertExpireTime(self):
+        return self._CertExpireTime
+
+    @CertExpireTime.setter
+    def CertExpireTime(self, CertExpireTime):
+        self._CertExpireTime = CertExpireTime
+
+    @property
+    def CertId(self):
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
+
+    @property
+    def CloudCertId(self):
+        return self._CloudCertId
+
+    @CloudCertId.setter
+    def CloudCertId(self, CloudCertId):
+        self._CloudCertId = CloudCertId
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
 
 
     def _deserialize(self, params):
-        self.DomainName = params.get("DomainName")
-        self.CertificateAlias = params.get("CertificateAlias")
-        self.CertType = params.get("CertType")
-        self.Status = params.get("Status")
-        self.CertExpireTime = params.get("CertExpireTime")
-        self.CertId = params.get("CertId")
-        self.CloudCertId = params.get("CloudCertId")
-        self.UpdateTime = params.get("UpdateTime")
+        self._DomainName = params.get("DomainName")
+        self._CertificateAlias = params.get("CertificateAlias")
+        self._CertType = params.get("CertType")
+        self._Status = params.get("Status")
+        self._CertExpireTime = params.get("CertExpireTime")
+        self._CertId = params.get("CertId")
+        self._CloudCertId = params.get("CloudCertId")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7375,55 +13480,136 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateId: Template ID returned by the `DescribeLiveCallbackTemplates` API.
+        :param _TemplateId: Template ID returned by the `DescribeLiveCallbackTemplates` API.
         :type TemplateId: int
-        :param TemplateName: Template name.
+        :param _TemplateName: Template name.
         :type TemplateName: str
-        :param Description: Description.
+        :param _Description: Description.
         :type Description: str
-        :param StreamBeginNotifyUrl: Stream starting callback URL.
+        :param _StreamBeginNotifyUrl: Stream starting callback URL.
         :type StreamBeginNotifyUrl: str
-        :param StreamEndNotifyUrl: Interruption callback URL.
+        :param _StreamEndNotifyUrl: Interruption callback URL.
         :type StreamEndNotifyUrl: str
-        :param RecordNotifyUrl: Recording callback URL.
+        :param _RecordNotifyUrl: Recording callback URL.
         :type RecordNotifyUrl: str
-        :param SnapshotNotifyUrl: Screencapturing callback URL.
+        :param _SnapshotNotifyUrl: Screencapturing callback URL.
         :type SnapshotNotifyUrl: str
-        :param PornCensorshipNotifyUrl: Porn detection callback URL.
+        :param _PornCensorshipNotifyUrl: Porn detection callback URL.
         :type PornCensorshipNotifyUrl: str
-        :param CallbackKey: Callback key. The callback URL is public. For the callback signature, please see the event message notification document.
+        :param _CallbackKey: Callback key. The callback URL is public. For the callback signature, please see the event message notification document.
 [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).
         :type CallbackKey: str
-        :param PushExceptionNotifyUrl: The push error callback URL.
+        :param _PushExceptionNotifyUrl: The push error callback URL.
         :type PushExceptionNotifyUrl: str
         """
-        self.TemplateId = None
-        self.TemplateName = None
-        self.Description = None
-        self.StreamBeginNotifyUrl = None
-        self.StreamEndNotifyUrl = None
-        self.RecordNotifyUrl = None
-        self.SnapshotNotifyUrl = None
-        self.PornCensorshipNotifyUrl = None
-        self.CallbackKey = None
-        self.PushExceptionNotifyUrl = None
+        self._TemplateId = None
+        self._TemplateName = None
+        self._Description = None
+        self._StreamBeginNotifyUrl = None
+        self._StreamEndNotifyUrl = None
+        self._RecordNotifyUrl = None
+        self._SnapshotNotifyUrl = None
+        self._PornCensorshipNotifyUrl = None
+        self._CallbackKey = None
+        self._PushExceptionNotifyUrl = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def TemplateName(self):
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def StreamBeginNotifyUrl(self):
+        return self._StreamBeginNotifyUrl
+
+    @StreamBeginNotifyUrl.setter
+    def StreamBeginNotifyUrl(self, StreamBeginNotifyUrl):
+        self._StreamBeginNotifyUrl = StreamBeginNotifyUrl
+
+    @property
+    def StreamEndNotifyUrl(self):
+        return self._StreamEndNotifyUrl
+
+    @StreamEndNotifyUrl.setter
+    def StreamEndNotifyUrl(self, StreamEndNotifyUrl):
+        self._StreamEndNotifyUrl = StreamEndNotifyUrl
+
+    @property
+    def RecordNotifyUrl(self):
+        return self._RecordNotifyUrl
+
+    @RecordNotifyUrl.setter
+    def RecordNotifyUrl(self, RecordNotifyUrl):
+        self._RecordNotifyUrl = RecordNotifyUrl
+
+    @property
+    def SnapshotNotifyUrl(self):
+        return self._SnapshotNotifyUrl
+
+    @SnapshotNotifyUrl.setter
+    def SnapshotNotifyUrl(self, SnapshotNotifyUrl):
+        self._SnapshotNotifyUrl = SnapshotNotifyUrl
+
+    @property
+    def PornCensorshipNotifyUrl(self):
+        return self._PornCensorshipNotifyUrl
+
+    @PornCensorshipNotifyUrl.setter
+    def PornCensorshipNotifyUrl(self, PornCensorshipNotifyUrl):
+        self._PornCensorshipNotifyUrl = PornCensorshipNotifyUrl
+
+    @property
+    def CallbackKey(self):
+        return self._CallbackKey
+
+    @CallbackKey.setter
+    def CallbackKey(self, CallbackKey):
+        self._CallbackKey = CallbackKey
+
+    @property
+    def PushExceptionNotifyUrl(self):
+        return self._PushExceptionNotifyUrl
+
+    @PushExceptionNotifyUrl.setter
+    def PushExceptionNotifyUrl(self, PushExceptionNotifyUrl):
+        self._PushExceptionNotifyUrl = PushExceptionNotifyUrl
 
 
     def _deserialize(self, params):
-        self.TemplateId = params.get("TemplateId")
-        self.TemplateName = params.get("TemplateName")
-        self.Description = params.get("Description")
-        self.StreamBeginNotifyUrl = params.get("StreamBeginNotifyUrl")
-        self.StreamEndNotifyUrl = params.get("StreamEndNotifyUrl")
-        self.RecordNotifyUrl = params.get("RecordNotifyUrl")
-        self.SnapshotNotifyUrl = params.get("SnapshotNotifyUrl")
-        self.PornCensorshipNotifyUrl = params.get("PornCensorshipNotifyUrl")
-        self.CallbackKey = params.get("CallbackKey")
-        self.PushExceptionNotifyUrl = params.get("PushExceptionNotifyUrl")
+        self._TemplateId = params.get("TemplateId")
+        self._TemplateName = params.get("TemplateName")
+        self._Description = params.get("Description")
+        self._StreamBeginNotifyUrl = params.get("StreamBeginNotifyUrl")
+        self._StreamEndNotifyUrl = params.get("StreamEndNotifyUrl")
+        self._RecordNotifyUrl = params.get("RecordNotifyUrl")
+        self._SnapshotNotifyUrl = params.get("SnapshotNotifyUrl")
+        self._PornCensorshipNotifyUrl = params.get("PornCensorshipNotifyUrl")
+        self._CallbackKey = params.get("CallbackKey")
+        self._PushExceptionNotifyUrl = params.get("PushExceptionNotifyUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7436,14 +13622,22 @@ class ModifyLiveCallbackTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyLiveDomainCertBindingsRequest(AbstractModel):
@@ -7453,43 +13647,84 @@ class ModifyLiveDomainCertBindingsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainInfos: The playback domains to bind and whether to enable HTTPS for them.
+        :param _DomainInfos: The playback domains to bind and whether to enable HTTPS for them.
 If neither `CloudCertId` nor the public/private key is specified, and a domain is already bound with a certificate, this API will only update the HTTPS configuration of the domain and, if the certificate is a self-owned certificate, upload it to Tencent Cloud.
         :type DomainInfos: list of LiveCertDomainInfo
-        :param CloudCertId: The SSL certificate ID assigned by Tencent Cloud.
+        :param _CloudCertId: The SSL certificate ID assigned by Tencent Cloud.
 For details, see https://intl.cloud.tencent.com/document/api/400/41665?from_cn_redirect=1
         :type CloudCertId: str
-        :param CertificatePublicKey: The public key of the certificate.
+        :param _CertificatePublicKey: The public key of the certificate.
 You can specify either `CloudCertId` or the public/private key. If both are specified, the private and public key parameters will be ignored. If you pass in only the public and private keys, the corresponding certificate will be uploaded to Tencent Cloud SSL Certificate Service, which will generate a `CloudCertId` for the certificate.
         :type CertificatePublicKey: str
-        :param CertificatePrivateKey: The private key of the certificate.
+        :param _CertificatePrivateKey: The private key of the certificate.
 You can specify either `CloudCertId` or the public/private key. If both are specified, the private and public key parameters will be ignored. If you pass in only the public and private keys, the corresponding certificate will be uploaded to Tencent Cloud SSL Certificate Service, which will generate a `CloudCertId` for the certificate.
         :type CertificatePrivateKey: str
-        :param CertificateAlias: The remarks for the certificate in Tencent Cloud SSL Certificate Service. This parameter will be ignored if `CloudCertId` is specified.
+        :param _CertificateAlias: The remarks for the certificate in Tencent Cloud SSL Certificate Service. This parameter will be ignored if `CloudCertId` is specified.
         :type CertificateAlias: str
         """
-        self.DomainInfos = None
-        self.CloudCertId = None
-        self.CertificatePublicKey = None
-        self.CertificatePrivateKey = None
-        self.CertificateAlias = None
+        self._DomainInfos = None
+        self._CloudCertId = None
+        self._CertificatePublicKey = None
+        self._CertificatePrivateKey = None
+        self._CertificateAlias = None
+
+    @property
+    def DomainInfos(self):
+        return self._DomainInfos
+
+    @DomainInfos.setter
+    def DomainInfos(self, DomainInfos):
+        self._DomainInfos = DomainInfos
+
+    @property
+    def CloudCertId(self):
+        return self._CloudCertId
+
+    @CloudCertId.setter
+    def CloudCertId(self, CloudCertId):
+        self._CloudCertId = CloudCertId
+
+    @property
+    def CertificatePublicKey(self):
+        return self._CertificatePublicKey
+
+    @CertificatePublicKey.setter
+    def CertificatePublicKey(self, CertificatePublicKey):
+        self._CertificatePublicKey = CertificatePublicKey
+
+    @property
+    def CertificatePrivateKey(self):
+        return self._CertificatePrivateKey
+
+    @CertificatePrivateKey.setter
+    def CertificatePrivateKey(self, CertificatePrivateKey):
+        self._CertificatePrivateKey = CertificatePrivateKey
+
+    @property
+    def CertificateAlias(self):
+        return self._CertificateAlias
+
+    @CertificateAlias.setter
+    def CertificateAlias(self, CertificateAlias):
+        self._CertificateAlias = CertificateAlias
 
 
     def _deserialize(self, params):
         if params.get("DomainInfos") is not None:
-            self.DomainInfos = []
+            self._DomainInfos = []
             for item in params.get("DomainInfos"):
                 obj = LiveCertDomainInfo()
                 obj._deserialize(item)
-                self.DomainInfos.append(obj)
-        self.CloudCertId = params.get("CloudCertId")
-        self.CertificatePublicKey = params.get("CertificatePublicKey")
-        self.CertificatePrivateKey = params.get("CertificatePrivateKey")
-        self.CertificateAlias = params.get("CertificateAlias")
+                self._DomainInfos.append(obj)
+        self._CloudCertId = params.get("CloudCertId")
+        self._CertificatePublicKey = params.get("CertificatePublicKey")
+        self._CertificatePrivateKey = params.get("CertificatePrivateKey")
+        self._CertificateAlias = params.get("CertificateAlias")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7502,28 +13737,52 @@ class ModifyLiveDomainCertBindingsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MismatchedDomainNames: The domains skipped due to certificate mismatch.
+        :param _MismatchedDomainNames: The domains skipped due to certificate mismatch.
         :type MismatchedDomainNames: list of str
-        :param Errors: The domains that the API failed to bind, including those in `MismatchedDomainNames`, and the error information.
+        :param _Errors: The domains that the API failed to bind, including those in `MismatchedDomainNames`, and the error information.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Errors: list of BatchDomainOperateErrors
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.MismatchedDomainNames = None
-        self.Errors = None
-        self.RequestId = None
+        self._MismatchedDomainNames = None
+        self._Errors = None
+        self._RequestId = None
+
+    @property
+    def MismatchedDomainNames(self):
+        return self._MismatchedDomainNames
+
+    @MismatchedDomainNames.setter
+    def MismatchedDomainNames(self, MismatchedDomainNames):
+        self._MismatchedDomainNames = MismatchedDomainNames
+
+    @property
+    def Errors(self):
+        return self._Errors
+
+    @Errors.setter
+    def Errors(self, Errors):
+        self._Errors = Errors
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.MismatchedDomainNames = params.get("MismatchedDomainNames")
+        self._MismatchedDomainNames = params.get("MismatchedDomainNames")
         if params.get("Errors") is not None:
-            self.Errors = []
+            self._Errors = []
             for item in params.get("Errors"):
                 obj = BatchDomainOperateErrors()
                 obj._deserialize(item)
-                self.Errors.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Errors.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyLiveDomainRefererRequest(AbstractModel):
@@ -7533,34 +13792,75 @@ class ModifyLiveDomainRefererRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainName: Playback domain name
+        :param _DomainName: Playback domain name
         :type DomainName: str
-        :param Enable: Whether to enable referer allowlist/blocklist authentication for the current domain name
+        :param _Enable: Whether to enable referer allowlist/blocklist authentication for the current domain name
         :type Enable: int
-        :param Type: List type. Valid values: `0` (blocklist), `1` (allowlist)
+        :param _Type: List type. Valid values: `0` (blocklist), `1` (allowlist)
         :type Type: int
-        :param AllowEmpty: Whether to allow empty referer. Valid values: `0` (no), `1` (yes)
+        :param _AllowEmpty: Whether to allow empty referer. Valid values: `0` (no), `1` (yes)
         :type AllowEmpty: int
-        :param Rules: Referer list. Separate items in it with semicolons (;).
+        :param _Rules: Referer list. Separate items in it with semicolons (;).
         :type Rules: str
         """
-        self.DomainName = None
-        self.Enable = None
-        self.Type = None
-        self.AllowEmpty = None
-        self.Rules = None
+        self._DomainName = None
+        self._Enable = None
+        self._Type = None
+        self._AllowEmpty = None
+        self._Rules = None
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def Enable(self):
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def AllowEmpty(self):
+        return self._AllowEmpty
+
+    @AllowEmpty.setter
+    def AllowEmpty(self, AllowEmpty):
+        self._AllowEmpty = AllowEmpty
+
+    @property
+    def Rules(self):
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
 
 
     def _deserialize(self, params):
-        self.DomainName = params.get("DomainName")
-        self.Enable = params.get("Enable")
-        self.Type = params.get("Type")
-        self.AllowEmpty = params.get("AllowEmpty")
-        self.Rules = params.get("Rules")
+        self._DomainName = params.get("DomainName")
+        self._Enable = params.get("Enable")
+        self._Type = params.get("Type")
+        self._AllowEmpty = params.get("AllowEmpty")
+        self._Rules = params.get("Rules")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7573,14 +13873,22 @@ class ModifyLiveDomainRefererResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyLivePlayAuthKeyRequest(AbstractModel):
@@ -7590,38 +13898,79 @@ class ModifyLivePlayAuthKeyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainName: Playback domain name.
+        :param _DomainName: Playback domain name.
         :type DomainName: str
-        :param Enable: Whether to enable. 0: disabled; 1: enabled.
+        :param _Enable: Whether to enable. 0: disabled; 1: enabled.
 If this parameter is left empty, the current value will not be modified.
         :type Enable: int
-        :param AuthKey: Authentication key.
+        :param _AuthKey: Authentication key.
 If this parameter is left empty, the current value will not be modified.
         :type AuthKey: str
-        :param AuthDelta: Validity period in seconds.
+        :param _AuthDelta: Validity period in seconds.
 If this parameter is left empty, the current value will not be modified.
         :type AuthDelta: int
-        :param AuthBackKey: Backup authentication key.
+        :param _AuthBackKey: Backup authentication key.
 If this parameter is left empty, the current value will not be modified.
         :type AuthBackKey: str
         """
-        self.DomainName = None
-        self.Enable = None
-        self.AuthKey = None
-        self.AuthDelta = None
-        self.AuthBackKey = None
+        self._DomainName = None
+        self._Enable = None
+        self._AuthKey = None
+        self._AuthDelta = None
+        self._AuthBackKey = None
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def Enable(self):
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def AuthKey(self):
+        return self._AuthKey
+
+    @AuthKey.setter
+    def AuthKey(self, AuthKey):
+        self._AuthKey = AuthKey
+
+    @property
+    def AuthDelta(self):
+        return self._AuthDelta
+
+    @AuthDelta.setter
+    def AuthDelta(self, AuthDelta):
+        self._AuthDelta = AuthDelta
+
+    @property
+    def AuthBackKey(self):
+        return self._AuthBackKey
+
+    @AuthBackKey.setter
+    def AuthBackKey(self, AuthBackKey):
+        self._AuthBackKey = AuthBackKey
 
 
     def _deserialize(self, params):
-        self.DomainName = params.get("DomainName")
-        self.Enable = params.get("Enable")
-        self.AuthKey = params.get("AuthKey")
-        self.AuthDelta = params.get("AuthDelta")
-        self.AuthBackKey = params.get("AuthBackKey")
+        self._DomainName = params.get("DomainName")
+        self._Enable = params.get("Enable")
+        self._AuthKey = params.get("AuthKey")
+        self._AuthDelta = params.get("AuthDelta")
+        self._AuthBackKey = params.get("AuthBackKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7634,14 +13983,22 @@ class ModifyLivePlayAuthKeyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyLivePlayDomainRequest(AbstractModel):
@@ -7651,22 +14008,39 @@ class ModifyLivePlayDomainRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainName: Playback domain name.
+        :param _DomainName: Playback domain name.
         :type DomainName: str
-        :param PlayType: Pull domain name type. 1: Mainland China. 2: global, 3: outside Mainland China
+        :param _PlayType: Pull domain name type. 1: Mainland China. 2: global, 3: outside Mainland China
         :type PlayType: int
         """
-        self.DomainName = None
-        self.PlayType = None
+        self._DomainName = None
+        self._PlayType = None
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def PlayType(self):
+        return self._PlayType
+
+    @PlayType.setter
+    def PlayType(self, PlayType):
+        self._PlayType = PlayType
 
 
     def _deserialize(self, params):
-        self.DomainName = params.get("DomainName")
-        self.PlayType = params.get("PlayType")
+        self._DomainName = params.get("DomainName")
+        self._PlayType = params.get("PlayType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7679,14 +14053,22 @@ class ModifyLivePlayDomainResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyLivePullStreamTaskRequest(AbstractModel):
@@ -7696,20 +14078,20 @@ class ModifyLivePullStreamTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: The task ID.
+        :param _TaskId: The task ID.
         :type TaskId: str
-        :param Operator: The operator.
+        :param _Operator: The operator.
         :type Operator: str
-        :param SourceUrls: The source URL(s).
+        :param _SourceUrls: The source URL(s).
 If `SourceType` is `PullLivePushLive`, you can specify only one source URL.
 If `SourceType` is `PullVodPushLive`, you can specify at most 30 source URLs.
         :type SourceUrls: list of str
-        :param StartTime: The start time.
+        :param _StartTime: The start time.
 It must be in UTC format.
 Example: 2019-01-08T10:00:00Z.
 Note: Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format) is used.
         :type StartTime: str
-        :param EndTime: The end time. Notes:
+        :param _EndTime: The end time. Notes:
 1. The end time must be later than the start time.
 2. The end time and start time must be later than the current time.
 3. The end time and start time must be less than seven days apart.
@@ -7717,41 +14099,41 @@ It must be in UTC format.
 Example: 2019-01-08T10:00:00Z.
 Note: Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format) is used.
         :type EndTime: str
-        :param VodLoopTimes: The number of times to loop video files.
+        :param _VodLoopTimes: The number of times to loop video files.
 -1: Loop indefinitely
 0: Do not loop
 > 0: The number of loop times. A task will end either when the videos are looped for the specified number of times or at the specified task end time, whichever is earlier.
 This parameter is valid only if the source is video files.
         :type VodLoopTimes: int
-        :param VodRefreshType: The behavior after the source video files (`SourceUrls`) are changed.
+        :param _VodRefreshType: The behavior after the source video files (`SourceUrls`) are changed.
 ImmediateNewSource: Play the new videos immediately
 ContinueBreakPoint: Finish the current video first and then pull from the new source.
 This parameter is valid only if the source is video files.
         :type VodRefreshType: str
-        :param Status: Whether to enable or pause the task. Valid values:
+        :param _Status: Whether to enable or pause the task. Valid values:
 enable
 pause
         :type Status: str
-        :param CallbackEvents: The events to listen for. If you do not pass this parameter, all events will be listened for.
+        :param _CallbackEvents: The events to listen for. If you do not pass this parameter, all events will be listened for.
 TaskStart: Callback for starting a task
 TaskExit: Callback for ending a task
 VodSourceFileStart: Callback for starting to pull from video files
 VodSourceFileFinish: Callback for stopping pulling from video files
 ResetTaskConfig: Callback for modifying a task
         :type CallbackEvents: list of str
-        :param CallbackUrl: A custom callback URL.
+        :param _CallbackUrl: A custom callback URL.
 Callbacks will be sent to this URL.
         :type CallbackUrl: str
-        :param FileIndex: The index of the video to start from.
+        :param _FileIndex: The index of the video to start from.
 The value of this parameter cannot be smaller than 1 or larger than the number of elements in `SourceUrls`.
         :type FileIndex: int
-        :param OffsetTime: The playback offset (seconds).
+        :param _OffsetTime: The playback offset (seconds).
 Notes:
 1. This parameter should be used together with `FileIndex`.
         :type OffsetTime: int
-        :param Comment: The remarks for the task.
+        :param _Comment: The remarks for the task.
         :type Comment: str
-        :param BackupSourceType: The backup source type.
+        :param _BackupSourceType: The backup source type.
 PullLivePushLive: Live streaming
 PullVodPushLive: Video files
 Notes:
@@ -7760,10 +14142,10 @@ Notes:
 3. When pull from the primary source is interrupted, the system will pull from the backup source.
 4. If the backup source is a video file, each time the video is finished, the system will check if the primary source is recovered and will switch back if it is.
         :type BackupSourceType: str
-        :param BackupSourceUrl: The URL of the backup source.
+        :param _BackupSourceUrl: The URL of the backup source.
 You can specify only one backup source URL.
         :type BackupSourceUrl: str
-        :param WatermarkList: The information of watermarks to add.
+        :param _WatermarkList: The information of watermarks to add.
 Notes:
 1. You can add up to four watermarks to different locations of the video.
 2. Make sure you use publicly accessible URLs for the watermark images.
@@ -7773,58 +14155,195 @@ Notes:
 6. If you want to stop using watermarks, pass in an empty array.
 7. Currently, animated watermarks are not supported.
         :type WatermarkList: list of PullPushWatermarkInfo
-        :param VodLocalMode: Whether to use local mode when the source type is video files. The default is `0`.
+        :param _VodLocalMode: Whether to use local mode when the source type is video files. The default is `0`.
 0: Do not use local mode
 1: Use local mode
 Note: If you enable local mode, MP4 files will be downloaded to local storage, and the local files will be used for push. This ensures more reliable push. Pushing a local file will incur additional fees.
         :type VodLocalMode: int
         """
-        self.TaskId = None
-        self.Operator = None
-        self.SourceUrls = None
-        self.StartTime = None
-        self.EndTime = None
-        self.VodLoopTimes = None
-        self.VodRefreshType = None
-        self.Status = None
-        self.CallbackEvents = None
-        self.CallbackUrl = None
-        self.FileIndex = None
-        self.OffsetTime = None
-        self.Comment = None
-        self.BackupSourceType = None
-        self.BackupSourceUrl = None
-        self.WatermarkList = None
-        self.VodLocalMode = None
+        self._TaskId = None
+        self._Operator = None
+        self._SourceUrls = None
+        self._StartTime = None
+        self._EndTime = None
+        self._VodLoopTimes = None
+        self._VodRefreshType = None
+        self._Status = None
+        self._CallbackEvents = None
+        self._CallbackUrl = None
+        self._FileIndex = None
+        self._OffsetTime = None
+        self._Comment = None
+        self._BackupSourceType = None
+        self._BackupSourceUrl = None
+        self._WatermarkList = None
+        self._VodLocalMode = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def SourceUrls(self):
+        return self._SourceUrls
+
+    @SourceUrls.setter
+    def SourceUrls(self, SourceUrls):
+        self._SourceUrls = SourceUrls
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def VodLoopTimes(self):
+        return self._VodLoopTimes
+
+    @VodLoopTimes.setter
+    def VodLoopTimes(self, VodLoopTimes):
+        self._VodLoopTimes = VodLoopTimes
+
+    @property
+    def VodRefreshType(self):
+        return self._VodRefreshType
+
+    @VodRefreshType.setter
+    def VodRefreshType(self, VodRefreshType):
+        self._VodRefreshType = VodRefreshType
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CallbackEvents(self):
+        return self._CallbackEvents
+
+    @CallbackEvents.setter
+    def CallbackEvents(self, CallbackEvents):
+        self._CallbackEvents = CallbackEvents
+
+    @property
+    def CallbackUrl(self):
+        return self._CallbackUrl
+
+    @CallbackUrl.setter
+    def CallbackUrl(self, CallbackUrl):
+        self._CallbackUrl = CallbackUrl
+
+    @property
+    def FileIndex(self):
+        return self._FileIndex
+
+    @FileIndex.setter
+    def FileIndex(self, FileIndex):
+        self._FileIndex = FileIndex
+
+    @property
+    def OffsetTime(self):
+        return self._OffsetTime
+
+    @OffsetTime.setter
+    def OffsetTime(self, OffsetTime):
+        self._OffsetTime = OffsetTime
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def BackupSourceType(self):
+        return self._BackupSourceType
+
+    @BackupSourceType.setter
+    def BackupSourceType(self, BackupSourceType):
+        self._BackupSourceType = BackupSourceType
+
+    @property
+    def BackupSourceUrl(self):
+        return self._BackupSourceUrl
+
+    @BackupSourceUrl.setter
+    def BackupSourceUrl(self, BackupSourceUrl):
+        self._BackupSourceUrl = BackupSourceUrl
+
+    @property
+    def WatermarkList(self):
+        return self._WatermarkList
+
+    @WatermarkList.setter
+    def WatermarkList(self, WatermarkList):
+        self._WatermarkList = WatermarkList
+
+    @property
+    def VodLocalMode(self):
+        return self._VodLocalMode
+
+    @VodLocalMode.setter
+    def VodLocalMode(self, VodLocalMode):
+        self._VodLocalMode = VodLocalMode
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.Operator = params.get("Operator")
-        self.SourceUrls = params.get("SourceUrls")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.VodLoopTimes = params.get("VodLoopTimes")
-        self.VodRefreshType = params.get("VodRefreshType")
-        self.Status = params.get("Status")
-        self.CallbackEvents = params.get("CallbackEvents")
-        self.CallbackUrl = params.get("CallbackUrl")
-        self.FileIndex = params.get("FileIndex")
-        self.OffsetTime = params.get("OffsetTime")
-        self.Comment = params.get("Comment")
-        self.BackupSourceType = params.get("BackupSourceType")
-        self.BackupSourceUrl = params.get("BackupSourceUrl")
+        self._TaskId = params.get("TaskId")
+        self._Operator = params.get("Operator")
+        self._SourceUrls = params.get("SourceUrls")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._VodLoopTimes = params.get("VodLoopTimes")
+        self._VodRefreshType = params.get("VodRefreshType")
+        self._Status = params.get("Status")
+        self._CallbackEvents = params.get("CallbackEvents")
+        self._CallbackUrl = params.get("CallbackUrl")
+        self._FileIndex = params.get("FileIndex")
+        self._OffsetTime = params.get("OffsetTime")
+        self._Comment = params.get("Comment")
+        self._BackupSourceType = params.get("BackupSourceType")
+        self._BackupSourceUrl = params.get("BackupSourceUrl")
         if params.get("WatermarkList") is not None:
-            self.WatermarkList = []
+            self._WatermarkList = []
             for item in params.get("WatermarkList"):
                 obj = PullPushWatermarkInfo()
                 obj._deserialize(item)
-                self.WatermarkList.append(obj)
-        self.VodLocalMode = params.get("VodLocalMode")
+                self._WatermarkList.append(obj)
+        self._VodLocalMode = params.get("VodLocalMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7837,14 +14356,22 @@ class ModifyLivePullStreamTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyLivePushAuthKeyRequest(AbstractModel):
@@ -7854,37 +14381,78 @@ class ModifyLivePushAuthKeyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainName: Push domain name.
+        :param _DomainName: Push domain name.
         :type DomainName: str
-        :param Enable: Whether to enable. 0: disabled; 1: enabled.
+        :param _Enable: Whether to enable. 0: disabled; 1: enabled.
 If this parameter is left empty, the current value will not be modified.
         :type Enable: int
-        :param MasterAuthKey: Master authentication key.
+        :param _MasterAuthKey: Master authentication key.
 If this parameter is left empty, the current value will not be modified.
         :type MasterAuthKey: str
-        :param BackupAuthKey: Backup authentication key.
+        :param _BackupAuthKey: Backup authentication key.
 If this parameter is left empty, the current value will not be modified.
         :type BackupAuthKey: str
-        :param AuthDelta: Validity period in seconds.
+        :param _AuthDelta: Validity period in seconds.
         :type AuthDelta: int
         """
-        self.DomainName = None
-        self.Enable = None
-        self.MasterAuthKey = None
-        self.BackupAuthKey = None
-        self.AuthDelta = None
+        self._DomainName = None
+        self._Enable = None
+        self._MasterAuthKey = None
+        self._BackupAuthKey = None
+        self._AuthDelta = None
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def Enable(self):
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def MasterAuthKey(self):
+        return self._MasterAuthKey
+
+    @MasterAuthKey.setter
+    def MasterAuthKey(self, MasterAuthKey):
+        self._MasterAuthKey = MasterAuthKey
+
+    @property
+    def BackupAuthKey(self):
+        return self._BackupAuthKey
+
+    @BackupAuthKey.setter
+    def BackupAuthKey(self, BackupAuthKey):
+        self._BackupAuthKey = BackupAuthKey
+
+    @property
+    def AuthDelta(self):
+        return self._AuthDelta
+
+    @AuthDelta.setter
+    def AuthDelta(self, AuthDelta):
+        self._AuthDelta = AuthDelta
 
 
     def _deserialize(self, params):
-        self.DomainName = params.get("DomainName")
-        self.Enable = params.get("Enable")
-        self.MasterAuthKey = params.get("MasterAuthKey")
-        self.BackupAuthKey = params.get("BackupAuthKey")
-        self.AuthDelta = params.get("AuthDelta")
+        self._DomainName = params.get("DomainName")
+        self._Enable = params.get("Enable")
+        self._MasterAuthKey = params.get("MasterAuthKey")
+        self._BackupAuthKey = params.get("BackupAuthKey")
+        self._AuthDelta = params.get("AuthDelta")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7897,14 +14465,22 @@ class ModifyLivePushAuthKeyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyLiveRecordTemplateRequest(AbstractModel):
@@ -7914,72 +14490,161 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateId: Template ID obtained through the `DescribeRecordTemplates` API.
+        :param _TemplateId: Template ID obtained through the `DescribeRecordTemplates` API.
         :type TemplateId: int
-        :param TemplateName: Template name.
+        :param _TemplateName: Template name.
         :type TemplateName: str
-        :param Description: Message description
+        :param _Description: Message description
         :type Description: str
-        :param FlvParam: FLV recording parameter, which is set when FLV recording is enabled.
+        :param _FlvParam: FLV recording parameter, which is set when FLV recording is enabled.
         :type FlvParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param HlsParam: HLS recording parameter, which is set when HLS recording is enabled.
+        :param _HlsParam: HLS recording parameter, which is set when HLS recording is enabled.
         :type HlsParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param Mp4Param: MP4 recording parameter, which is set when MP4 recording is enabled.
+        :param _Mp4Param: MP4 recording parameter, which is set when MP4 recording is enabled.
         :type Mp4Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param AacParam: AAC recording parameter, which is set when AAC recording is enabled.
+        :param _AacParam: AAC recording parameter, which is set when AAC recording is enabled.
         :type AacParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param HlsSpecialParam: Custom HLS recording parameter.
+        :param _HlsSpecialParam: Custom HLS recording parameter.
         :type HlsSpecialParam: :class:`tencentcloud.live.v20180801.models.HlsSpecialParam`
-        :param Mp3Param: MP3 recording parameter, which is set when MP3 recording is enabled.
+        :param _Mp3Param: MP3 recording parameter, which is set when MP3 recording is enabled.
         :type Mp3Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param RemoveWatermark: Whether to remove the watermark. This parameter is invalid if `IsDelayLive` is `1`.
+        :param _RemoveWatermark: Whether to remove the watermark. This parameter is invalid if `IsDelayLive` is `1`.
         :type RemoveWatermark: bool
-        :param FlvSpecialParam: A special parameter for FLV recording.
+        :param _FlvSpecialParam: A special parameter for FLV recording.
         :type FlvSpecialParam: :class:`tencentcloud.live.v20180801.models.FlvSpecialParam`
         """
-        self.TemplateId = None
-        self.TemplateName = None
-        self.Description = None
-        self.FlvParam = None
-        self.HlsParam = None
-        self.Mp4Param = None
-        self.AacParam = None
-        self.HlsSpecialParam = None
-        self.Mp3Param = None
-        self.RemoveWatermark = None
-        self.FlvSpecialParam = None
+        self._TemplateId = None
+        self._TemplateName = None
+        self._Description = None
+        self._FlvParam = None
+        self._HlsParam = None
+        self._Mp4Param = None
+        self._AacParam = None
+        self._HlsSpecialParam = None
+        self._Mp3Param = None
+        self._RemoveWatermark = None
+        self._FlvSpecialParam = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def TemplateName(self):
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def FlvParam(self):
+        return self._FlvParam
+
+    @FlvParam.setter
+    def FlvParam(self, FlvParam):
+        self._FlvParam = FlvParam
+
+    @property
+    def HlsParam(self):
+        return self._HlsParam
+
+    @HlsParam.setter
+    def HlsParam(self, HlsParam):
+        self._HlsParam = HlsParam
+
+    @property
+    def Mp4Param(self):
+        return self._Mp4Param
+
+    @Mp4Param.setter
+    def Mp4Param(self, Mp4Param):
+        self._Mp4Param = Mp4Param
+
+    @property
+    def AacParam(self):
+        return self._AacParam
+
+    @AacParam.setter
+    def AacParam(self, AacParam):
+        self._AacParam = AacParam
+
+    @property
+    def HlsSpecialParam(self):
+        return self._HlsSpecialParam
+
+    @HlsSpecialParam.setter
+    def HlsSpecialParam(self, HlsSpecialParam):
+        self._HlsSpecialParam = HlsSpecialParam
+
+    @property
+    def Mp3Param(self):
+        return self._Mp3Param
+
+    @Mp3Param.setter
+    def Mp3Param(self, Mp3Param):
+        self._Mp3Param = Mp3Param
+
+    @property
+    def RemoveWatermark(self):
+        return self._RemoveWatermark
+
+    @RemoveWatermark.setter
+    def RemoveWatermark(self, RemoveWatermark):
+        self._RemoveWatermark = RemoveWatermark
+
+    @property
+    def FlvSpecialParam(self):
+        return self._FlvSpecialParam
+
+    @FlvSpecialParam.setter
+    def FlvSpecialParam(self, FlvSpecialParam):
+        self._FlvSpecialParam = FlvSpecialParam
 
 
     def _deserialize(self, params):
-        self.TemplateId = params.get("TemplateId")
-        self.TemplateName = params.get("TemplateName")
-        self.Description = params.get("Description")
+        self._TemplateId = params.get("TemplateId")
+        self._TemplateName = params.get("TemplateName")
+        self._Description = params.get("Description")
         if params.get("FlvParam") is not None:
-            self.FlvParam = RecordParam()
-            self.FlvParam._deserialize(params.get("FlvParam"))
+            self._FlvParam = RecordParam()
+            self._FlvParam._deserialize(params.get("FlvParam"))
         if params.get("HlsParam") is not None:
-            self.HlsParam = RecordParam()
-            self.HlsParam._deserialize(params.get("HlsParam"))
+            self._HlsParam = RecordParam()
+            self._HlsParam._deserialize(params.get("HlsParam"))
         if params.get("Mp4Param") is not None:
-            self.Mp4Param = RecordParam()
-            self.Mp4Param._deserialize(params.get("Mp4Param"))
+            self._Mp4Param = RecordParam()
+            self._Mp4Param._deserialize(params.get("Mp4Param"))
         if params.get("AacParam") is not None:
-            self.AacParam = RecordParam()
-            self.AacParam._deserialize(params.get("AacParam"))
+            self._AacParam = RecordParam()
+            self._AacParam._deserialize(params.get("AacParam"))
         if params.get("HlsSpecialParam") is not None:
-            self.HlsSpecialParam = HlsSpecialParam()
-            self.HlsSpecialParam._deserialize(params.get("HlsSpecialParam"))
+            self._HlsSpecialParam = HlsSpecialParam()
+            self._HlsSpecialParam._deserialize(params.get("HlsSpecialParam"))
         if params.get("Mp3Param") is not None:
-            self.Mp3Param = RecordParam()
-            self.Mp3Param._deserialize(params.get("Mp3Param"))
-        self.RemoveWatermark = params.get("RemoveWatermark")
+            self._Mp3Param = RecordParam()
+            self._Mp3Param._deserialize(params.get("Mp3Param"))
+        self._RemoveWatermark = params.get("RemoveWatermark")
         if params.get("FlvSpecialParam") is not None:
-            self.FlvSpecialParam = FlvSpecialParam()
-            self.FlvSpecialParam._deserialize(params.get("FlvSpecialParam"))
+            self._FlvSpecialParam = FlvSpecialParam()
+            self._FlvSpecialParam._deserialize(params.get("FlvSpecialParam"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7992,14 +14657,22 @@ class ModifyLiveRecordTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyLiveSnapshotTemplateRequest(AbstractModel):
@@ -8009,71 +14682,168 @@ class ModifyLiveSnapshotTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateId: Template ID.
+        :param _TemplateId: Template ID.
         :type TemplateId: int
-        :param CosAppId: The COS application ID.
+        :param _CosAppId: The COS application ID.
 **Please note that this parameter is required now**.
         :type CosAppId: int
-        :param CosBucket: The COS bucket name.
+        :param _CosBucket: The COS bucket name.
 Note: Do not include the `-[appid]` part in the value of `CosBucket`.
 **Please note that this parameter is required now**.
         :type CosBucket: str
-        :param CosRegion: The COS region.
+        :param _CosRegion: The COS region.
 **Please note that this parameter is required now**.
         :type CosRegion: str
-        :param TemplateName: Template name.
+        :param _TemplateName: Template name.
 Maximum length: 255 bytes.
         :type TemplateName: str
-        :param Description: Description.
+        :param _Description: Description.
 Maximum length: 1,024 bytes.
         :type Description: str
-        :param SnapshotInterval: Screencapturing interval in seconds. Default value: 10s.
+        :param _SnapshotInterval: Screencapturing interval in seconds. Default value: 10s.
 Value range: 5-300s.
         :type SnapshotInterval: int
-        :param Width: Screenshot width. Default value: 0 (original width).
+        :param _Width: Screenshot width. Default value: 0 (original width).
         :type Width: int
-        :param Height: Screenshot height. Default value: 0 (original height).
+        :param _Height: Screenshot height. Default value: 0 (original height).
         :type Height: int
-        :param PornFlag: Whether to enable porn detection. Default value: 0.
+        :param _PornFlag: Whether to enable porn detection. Default value: 0.
 0: do not enable.
 1: enable.
         :type PornFlag: int
-        :param CosPrefix: COS bucket folder prefix.
+        :param _CosPrefix: COS bucket folder prefix.
         :type CosPrefix: str
-        :param CosFileName: COS filename.
+        :param _CosFileName: COS filename.
         :type CosFileName: str
         """
-        self.TemplateId = None
-        self.CosAppId = None
-        self.CosBucket = None
-        self.CosRegion = None
-        self.TemplateName = None
-        self.Description = None
-        self.SnapshotInterval = None
-        self.Width = None
-        self.Height = None
-        self.PornFlag = None
-        self.CosPrefix = None
-        self.CosFileName = None
+        self._TemplateId = None
+        self._CosAppId = None
+        self._CosBucket = None
+        self._CosRegion = None
+        self._TemplateName = None
+        self._Description = None
+        self._SnapshotInterval = None
+        self._Width = None
+        self._Height = None
+        self._PornFlag = None
+        self._CosPrefix = None
+        self._CosFileName = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def CosAppId(self):
+        return self._CosAppId
+
+    @CosAppId.setter
+    def CosAppId(self, CosAppId):
+        self._CosAppId = CosAppId
+
+    @property
+    def CosBucket(self):
+        return self._CosBucket
+
+    @CosBucket.setter
+    def CosBucket(self, CosBucket):
+        self._CosBucket = CosBucket
+
+    @property
+    def CosRegion(self):
+        return self._CosRegion
+
+    @CosRegion.setter
+    def CosRegion(self, CosRegion):
+        self._CosRegion = CosRegion
+
+    @property
+    def TemplateName(self):
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def SnapshotInterval(self):
+        return self._SnapshotInterval
+
+    @SnapshotInterval.setter
+    def SnapshotInterval(self, SnapshotInterval):
+        self._SnapshotInterval = SnapshotInterval
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def PornFlag(self):
+        return self._PornFlag
+
+    @PornFlag.setter
+    def PornFlag(self, PornFlag):
+        self._PornFlag = PornFlag
+
+    @property
+    def CosPrefix(self):
+        return self._CosPrefix
+
+    @CosPrefix.setter
+    def CosPrefix(self, CosPrefix):
+        self._CosPrefix = CosPrefix
+
+    @property
+    def CosFileName(self):
+        return self._CosFileName
+
+    @CosFileName.setter
+    def CosFileName(self, CosFileName):
+        self._CosFileName = CosFileName
 
 
     def _deserialize(self, params):
-        self.TemplateId = params.get("TemplateId")
-        self.CosAppId = params.get("CosAppId")
-        self.CosBucket = params.get("CosBucket")
-        self.CosRegion = params.get("CosRegion")
-        self.TemplateName = params.get("TemplateName")
-        self.Description = params.get("Description")
-        self.SnapshotInterval = params.get("SnapshotInterval")
-        self.Width = params.get("Width")
-        self.Height = params.get("Height")
-        self.PornFlag = params.get("PornFlag")
-        self.CosPrefix = params.get("CosPrefix")
-        self.CosFileName = params.get("CosFileName")
+        self._TemplateId = params.get("TemplateId")
+        self._CosAppId = params.get("CosAppId")
+        self._CosBucket = params.get("CosBucket")
+        self._CosRegion = params.get("CosRegion")
+        self._TemplateName = params.get("TemplateName")
+        self._Description = params.get("Description")
+        self._SnapshotInterval = params.get("SnapshotInterval")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        self._PornFlag = params.get("PornFlag")
+        self._CosPrefix = params.get("CosPrefix")
+        self._CosFileName = params.get("CosFileName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8086,14 +14856,22 @@ class ModifyLiveSnapshotTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyLiveTimeShiftTemplateRequest(AbstractModel):
@@ -8103,59 +14881,124 @@ class ModifyLiveTimeShiftTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateId: The time shifting template ID.
+        :param _TemplateId: The time shifting template ID.
         :type TemplateId: int
-        :param TemplateName: The template name.
+        :param _TemplateName: The template name.
 Only letters, numbers, underscores, and hyphens are supported.
         :type TemplateName: str
-        :param Description: The template description.
+        :param _Description: The template description.
 Maximum length: 1,024 bytes.
 Only letters, numbers, underscores, and hyphens are supported.
         :type Description: str
-        :param Duration: The time shifting duration.
+        :param _Duration: The time shifting duration.
 Unit: Second.
         :type Duration: int
-        :param ItemDuration: The segment size.
+        :param _ItemDuration: The segment size.
 Value range: 3-10.
 Unit: Second.
 Default value: 5
         :type ItemDuration: int
-        :param RemoveWatermark: Whether to remove watermarks.
+        :param _RemoveWatermark: Whether to remove watermarks.
 If you pass in `true`, the original stream will be recorded.
 Default value: `false`.
         :type RemoveWatermark: bool
-        :param TranscodeTemplateIds: The transcoding template IDs.
+        :param _TranscodeTemplateIds: The transcoding template IDs.
 This API works only if `RemoveWatermark` is `false`.
         :type TranscodeTemplateIds: list of int
-        :param Area: The region.
+        :param _Area: The region.
 `Mainland`: The Chinese mainland.
 `Overseas`: Outside the Chinese mainland.
 Default value: `Mainland`.
         :type Area: str
         """
-        self.TemplateId = None
-        self.TemplateName = None
-        self.Description = None
-        self.Duration = None
-        self.ItemDuration = None
-        self.RemoveWatermark = None
-        self.TranscodeTemplateIds = None
-        self.Area = None
+        self._TemplateId = None
+        self._TemplateName = None
+        self._Description = None
+        self._Duration = None
+        self._ItemDuration = None
+        self._RemoveWatermark = None
+        self._TranscodeTemplateIds = None
+        self._Area = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def TemplateName(self):
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def ItemDuration(self):
+        return self._ItemDuration
+
+    @ItemDuration.setter
+    def ItemDuration(self, ItemDuration):
+        self._ItemDuration = ItemDuration
+
+    @property
+    def RemoveWatermark(self):
+        return self._RemoveWatermark
+
+    @RemoveWatermark.setter
+    def RemoveWatermark(self, RemoveWatermark):
+        self._RemoveWatermark = RemoveWatermark
+
+    @property
+    def TranscodeTemplateIds(self):
+        return self._TranscodeTemplateIds
+
+    @TranscodeTemplateIds.setter
+    def TranscodeTemplateIds(self, TranscodeTemplateIds):
+        self._TranscodeTemplateIds = TranscodeTemplateIds
+
+    @property
+    def Area(self):
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
 
 
     def _deserialize(self, params):
-        self.TemplateId = params.get("TemplateId")
-        self.TemplateName = params.get("TemplateName")
-        self.Description = params.get("Description")
-        self.Duration = params.get("Duration")
-        self.ItemDuration = params.get("ItemDuration")
-        self.RemoveWatermark = params.get("RemoveWatermark")
-        self.TranscodeTemplateIds = params.get("TranscodeTemplateIds")
-        self.Area = params.get("Area")
+        self._TemplateId = params.get("TemplateId")
+        self._TemplateName = params.get("TemplateName")
+        self._Description = params.get("Description")
+        self._Duration = params.get("Duration")
+        self._ItemDuration = params.get("ItemDuration")
+        self._RemoveWatermark = params.get("RemoveWatermark")
+        self._TranscodeTemplateIds = params.get("TranscodeTemplateIds")
+        self._Area = params.get("Area")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8168,14 +15011,22 @@ class ModifyLiveTimeShiftTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyLiveTranscodeTemplateRequest(AbstractModel):
@@ -8185,120 +15036,289 @@ class ModifyLiveTranscodeTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateId: Template ID.
+        :param _TemplateId: Template ID.
         :type TemplateId: int
-        :param Vcodec: Video codec. Valid values: h264, h265, origin (default)
+        :param _Vcodec: Video codec. Valid values: h264, h265, origin (default)
 
 origin: original codec as the output codec
         :type Vcodec: str
-        :param Acodec: Audio codec. Defaut value: aac.
+        :param _Acodec: Audio codec. Defaut value: aac.
 Note: this parameter is unsupported now.
         :type Acodec: str
-        :param AudioBitrate: Audio bitrate. Default value: 0.
+        :param _AudioBitrate: Audio bitrate. Default value: 0.
 Value range: 0-500.
         :type AudioBitrate: int
-        :param Description: Template description.
+        :param _Description: Template description.
         :type Description: str
-        :param VideoBitrate: Video bitrate in Kbps. Value range: 100-8000.
+        :param _VideoBitrate: Video bitrate in Kbps. Value range: 100-8000.
 Note: the transcoding template requires that the bitrate be unique. Therefore, the final saved bitrate may be different from the input bitrate.
         :type VideoBitrate: int
-        :param Width: Width in pixels. Value range: 0-3000.
+        :param _Width: Width in pixels. Value range: 0-3000.
 It must be a multiple of 2. The original width is 0.
         :type Width: int
-        :param NeedVideo: Whether to keep the video. 0: no; 1: yes. Default value: 1.
+        :param _NeedVideo: Whether to keep the video. 0: no; 1: yes. Default value: 1.
         :type NeedVideo: int
-        :param NeedAudio: Whether to keep the audio. 0: no; 1: yes. Default value: 1.
+        :param _NeedAudio: Whether to keep the audio. 0: no; 1: yes. Default value: 1.
         :type NeedAudio: int
-        :param Height: Height in pixels. Value range: 0-3000.
+        :param _Height: Height in pixels. Value range: 0-3000.
 It must be a multiple of 2. The original height is 0.
         :type Height: int
-        :param Fps: Frame rate in fps. Default value: 0.
+        :param _Fps: Frame rate in fps. Default value: 0.
 Value range: 0-60
         :type Fps: int
-        :param Gop: Keyframe interval in seconds.
+        :param _Gop: Keyframe interval in seconds.
 Value range: 2-6
         :type Gop: int
-        :param Rotate: Rotation angle. Default value: 0.
+        :param _Rotate: Rotation angle. Default value: 0.
 Valid values: 0, 90, 180, 270
         :type Rotate: int
-        :param Profile: Encoding quality:
+        :param _Profile: Encoding quality:
 baseline/main/high.
         :type Profile: str
-        :param BitrateToOrig: Whether to use the original bitrate when the set bitrate is larger than the original bitrate.
+        :param _BitrateToOrig: Whether to use the original bitrate when the set bitrate is larger than the original bitrate.
 0: no, 1: yes
 Default value: 0.
         :type BitrateToOrig: int
-        :param HeightToOrig: Whether to use the original height when the set height is higher than the original height.
+        :param _HeightToOrig: Whether to use the original height when the set height is higher than the original height.
 0: no, 1: yes
 Default value: 0.
         :type HeightToOrig: int
-        :param FpsToOrig: Whether to use the original frame rate when the set frame rate is larger than the original frame rate.
+        :param _FpsToOrig: Whether to use the original frame rate when the set frame rate is larger than the original frame rate.
 0: no, 1: yes
 Default value: 0.
         :type FpsToOrig: int
-        :param AdaptBitratePercent: Bitrate compression ratio of top speed codec video.
+        :param _AdaptBitratePercent: Bitrate compression ratio of top speed codec video.
 Target bitrate of top speed code = VideoBitrate * (1-AdaptBitratePercent)
 
 Value range: 0.0-0.5.
         :type AdaptBitratePercent: float
-        :param ShortEdgeAsHeight: Whether to use the short side as the video height. 0: no, 1: yes. Default value: 0.
+        :param _ShortEdgeAsHeight: Whether to use the short side as the video height. 0: no, 1: yes. Default value: 0.
         :type ShortEdgeAsHeight: int
-        :param DRMType: The DRM encryption type. Valid values: fairplay, normalaes, widevine.
+        :param _DRMType: The DRM encryption type. Valid values: fairplay, normalaes, widevine.
 If you do not pass this parameter or pass in an empty string, the existing configuration will be reset.
         :type DRMType: str
-        :param DRMTracks: The tracks to encrypt. Valid values: AUDIO, SD, HD, UHD1, UHD2. You can choose only one video track (SD, HD, UHD1, or UHD2).
+        :param _DRMTracks: The tracks to encrypt. Valid values: AUDIO, SD, HD, UHD1, UHD2. You can choose only one video track (SD, HD, UHD1, or UHD2).
 If you do not pass this parameter or pass in an empty string, the existing configuration will be reset.
         :type DRMTracks: str
         """
-        self.TemplateId = None
-        self.Vcodec = None
-        self.Acodec = None
-        self.AudioBitrate = None
-        self.Description = None
-        self.VideoBitrate = None
-        self.Width = None
-        self.NeedVideo = None
-        self.NeedAudio = None
-        self.Height = None
-        self.Fps = None
-        self.Gop = None
-        self.Rotate = None
-        self.Profile = None
-        self.BitrateToOrig = None
-        self.HeightToOrig = None
-        self.FpsToOrig = None
-        self.AdaptBitratePercent = None
-        self.ShortEdgeAsHeight = None
-        self.DRMType = None
-        self.DRMTracks = None
+        self._TemplateId = None
+        self._Vcodec = None
+        self._Acodec = None
+        self._AudioBitrate = None
+        self._Description = None
+        self._VideoBitrate = None
+        self._Width = None
+        self._NeedVideo = None
+        self._NeedAudio = None
+        self._Height = None
+        self._Fps = None
+        self._Gop = None
+        self._Rotate = None
+        self._Profile = None
+        self._BitrateToOrig = None
+        self._HeightToOrig = None
+        self._FpsToOrig = None
+        self._AdaptBitratePercent = None
+        self._ShortEdgeAsHeight = None
+        self._DRMType = None
+        self._DRMTracks = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def Vcodec(self):
+        return self._Vcodec
+
+    @Vcodec.setter
+    def Vcodec(self, Vcodec):
+        self._Vcodec = Vcodec
+
+    @property
+    def Acodec(self):
+        return self._Acodec
+
+    @Acodec.setter
+    def Acodec(self, Acodec):
+        self._Acodec = Acodec
+
+    @property
+    def AudioBitrate(self):
+        return self._AudioBitrate
+
+    @AudioBitrate.setter
+    def AudioBitrate(self, AudioBitrate):
+        self._AudioBitrate = AudioBitrate
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def VideoBitrate(self):
+        return self._VideoBitrate
+
+    @VideoBitrate.setter
+    def VideoBitrate(self, VideoBitrate):
+        self._VideoBitrate = VideoBitrate
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def NeedVideo(self):
+        return self._NeedVideo
+
+    @NeedVideo.setter
+    def NeedVideo(self, NeedVideo):
+        self._NeedVideo = NeedVideo
+
+    @property
+    def NeedAudio(self):
+        return self._NeedAudio
+
+    @NeedAudio.setter
+    def NeedAudio(self, NeedAudio):
+        self._NeedAudio = NeedAudio
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def Fps(self):
+        return self._Fps
+
+    @Fps.setter
+    def Fps(self, Fps):
+        self._Fps = Fps
+
+    @property
+    def Gop(self):
+        return self._Gop
+
+    @Gop.setter
+    def Gop(self, Gop):
+        self._Gop = Gop
+
+    @property
+    def Rotate(self):
+        return self._Rotate
+
+    @Rotate.setter
+    def Rotate(self, Rotate):
+        self._Rotate = Rotate
+
+    @property
+    def Profile(self):
+        return self._Profile
+
+    @Profile.setter
+    def Profile(self, Profile):
+        self._Profile = Profile
+
+    @property
+    def BitrateToOrig(self):
+        return self._BitrateToOrig
+
+    @BitrateToOrig.setter
+    def BitrateToOrig(self, BitrateToOrig):
+        self._BitrateToOrig = BitrateToOrig
+
+    @property
+    def HeightToOrig(self):
+        return self._HeightToOrig
+
+    @HeightToOrig.setter
+    def HeightToOrig(self, HeightToOrig):
+        self._HeightToOrig = HeightToOrig
+
+    @property
+    def FpsToOrig(self):
+        return self._FpsToOrig
+
+    @FpsToOrig.setter
+    def FpsToOrig(self, FpsToOrig):
+        self._FpsToOrig = FpsToOrig
+
+    @property
+    def AdaptBitratePercent(self):
+        return self._AdaptBitratePercent
+
+    @AdaptBitratePercent.setter
+    def AdaptBitratePercent(self, AdaptBitratePercent):
+        self._AdaptBitratePercent = AdaptBitratePercent
+
+    @property
+    def ShortEdgeAsHeight(self):
+        return self._ShortEdgeAsHeight
+
+    @ShortEdgeAsHeight.setter
+    def ShortEdgeAsHeight(self, ShortEdgeAsHeight):
+        self._ShortEdgeAsHeight = ShortEdgeAsHeight
+
+    @property
+    def DRMType(self):
+        return self._DRMType
+
+    @DRMType.setter
+    def DRMType(self, DRMType):
+        self._DRMType = DRMType
+
+    @property
+    def DRMTracks(self):
+        return self._DRMTracks
+
+    @DRMTracks.setter
+    def DRMTracks(self, DRMTracks):
+        self._DRMTracks = DRMTracks
 
 
     def _deserialize(self, params):
-        self.TemplateId = params.get("TemplateId")
-        self.Vcodec = params.get("Vcodec")
-        self.Acodec = params.get("Acodec")
-        self.AudioBitrate = params.get("AudioBitrate")
-        self.Description = params.get("Description")
-        self.VideoBitrate = params.get("VideoBitrate")
-        self.Width = params.get("Width")
-        self.NeedVideo = params.get("NeedVideo")
-        self.NeedAudio = params.get("NeedAudio")
-        self.Height = params.get("Height")
-        self.Fps = params.get("Fps")
-        self.Gop = params.get("Gop")
-        self.Rotate = params.get("Rotate")
-        self.Profile = params.get("Profile")
-        self.BitrateToOrig = params.get("BitrateToOrig")
-        self.HeightToOrig = params.get("HeightToOrig")
-        self.FpsToOrig = params.get("FpsToOrig")
-        self.AdaptBitratePercent = params.get("AdaptBitratePercent")
-        self.ShortEdgeAsHeight = params.get("ShortEdgeAsHeight")
-        self.DRMType = params.get("DRMType")
-        self.DRMTracks = params.get("DRMTracks")
+        self._TemplateId = params.get("TemplateId")
+        self._Vcodec = params.get("Vcodec")
+        self._Acodec = params.get("Acodec")
+        self._AudioBitrate = params.get("AudioBitrate")
+        self._Description = params.get("Description")
+        self._VideoBitrate = params.get("VideoBitrate")
+        self._Width = params.get("Width")
+        self._NeedVideo = params.get("NeedVideo")
+        self._NeedAudio = params.get("NeedAudio")
+        self._Height = params.get("Height")
+        self._Fps = params.get("Fps")
+        self._Gop = params.get("Gop")
+        self._Rotate = params.get("Rotate")
+        self._Profile = params.get("Profile")
+        self._BitrateToOrig = params.get("BitrateToOrig")
+        self._HeightToOrig = params.get("HeightToOrig")
+        self._FpsToOrig = params.get("FpsToOrig")
+        self._AdaptBitratePercent = params.get("AdaptBitratePercent")
+        self._ShortEdgeAsHeight = params.get("ShortEdgeAsHeight")
+        self._DRMType = params.get("DRMType")
+        self._DRMTracks = params.get("DRMTracks")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8311,14 +15331,22 @@ class ModifyLiveTranscodeTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class MonitorStreamPlayInfo(AbstractModel):
@@ -8328,42 +15356,99 @@ class MonitorStreamPlayInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PlayDomain: The playback domain.
+        :param _PlayDomain: The playback domain.
         :type PlayDomain: str
-        :param StreamName: The stream ID.
+        :param _StreamName: The stream ID.
         :type StreamName: str
-        :param Rate: The playback bitrate. `0` indicates the original bitrate.
+        :param _Rate: The playback bitrate. `0` indicates the original bitrate.
         :type Rate: int
-        :param Protocol: The playback protocol. Valid values: `Unknown`, `Flv`, `Hls`, `Rtmp`, `Huyap2p`.
+        :param _Protocol: The playback protocol. Valid values: `Unknown`, `Flv`, `Hls`, `Rtmp`, `Huyap2p`.
         :type Protocol: str
-        :param Bandwidth: The bandwidth (Mbps).
+        :param _Bandwidth: The bandwidth (Mbps).
         :type Bandwidth: float
-        :param Online: The number of online users, which is represented by the number of TCP connections (data collected every minute).
+        :param _Online: The number of online users, which is represented by the number of TCP connections (data collected every minute).
         :type Online: int
-        :param Request: The number of requests.
+        :param _Request: The number of requests.
         :type Request: int
         """
-        self.PlayDomain = None
-        self.StreamName = None
-        self.Rate = None
-        self.Protocol = None
-        self.Bandwidth = None
-        self.Online = None
-        self.Request = None
+        self._PlayDomain = None
+        self._StreamName = None
+        self._Rate = None
+        self._Protocol = None
+        self._Bandwidth = None
+        self._Online = None
+        self._Request = None
+
+    @property
+    def PlayDomain(self):
+        return self._PlayDomain
+
+    @PlayDomain.setter
+    def PlayDomain(self, PlayDomain):
+        self._PlayDomain = PlayDomain
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+    @property
+    def Rate(self):
+        return self._Rate
+
+    @Rate.setter
+    def Rate(self, Rate):
+        self._Rate = Rate
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def Bandwidth(self):
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
+
+    @property
+    def Online(self):
+        return self._Online
+
+    @Online.setter
+    def Online(self, Online):
+        self._Online = Online
+
+    @property
+    def Request(self):
+        return self._Request
+
+    @Request.setter
+    def Request(self, Request):
+        self._Request = Request
 
 
     def _deserialize(self, params):
-        self.PlayDomain = params.get("PlayDomain")
-        self.StreamName = params.get("StreamName")
-        self.Rate = params.get("Rate")
-        self.Protocol = params.get("Protocol")
-        self.Bandwidth = params.get("Bandwidth")
-        self.Online = params.get("Online")
-        self.Request = params.get("Request")
+        self._PlayDomain = params.get("PlayDomain")
+        self._StreamName = params.get("StreamName")
+        self._Rate = params.get("Rate")
+        self._Protocol = params.get("Protocol")
+        self._Bandwidth = params.get("Bandwidth")
+        self._Online = params.get("Online")
+        self._Request = params.get("Request")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8376,36 +15461,77 @@ class PlayAuthKeyInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainName: Domain name.
+        :param _DomainName: Domain name.
         :type DomainName: str
-        :param Enable: Whether to enable:
+        :param _Enable: Whether to enable:
 0: disable.
 1: enable.
         :type Enable: int
-        :param AuthKey: Authentication key.
+        :param _AuthKey: Authentication key.
         :type AuthKey: str
-        :param AuthDelta: Validity period in seconds.
+        :param _AuthDelta: Validity period in seconds.
         :type AuthDelta: int
-        :param AuthBackKey: Authentication `BackKey`.
+        :param _AuthBackKey: Authentication `BackKey`.
         :type AuthBackKey: str
         """
-        self.DomainName = None
-        self.Enable = None
-        self.AuthKey = None
-        self.AuthDelta = None
-        self.AuthBackKey = None
+        self._DomainName = None
+        self._Enable = None
+        self._AuthKey = None
+        self._AuthDelta = None
+        self._AuthBackKey = None
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def Enable(self):
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def AuthKey(self):
+        return self._AuthKey
+
+    @AuthKey.setter
+    def AuthKey(self, AuthKey):
+        self._AuthKey = AuthKey
+
+    @property
+    def AuthDelta(self):
+        return self._AuthDelta
+
+    @AuthDelta.setter
+    def AuthDelta(self, AuthDelta):
+        self._AuthDelta = AuthDelta
+
+    @property
+    def AuthBackKey(self):
+        return self._AuthBackKey
+
+    @AuthBackKey.setter
+    def AuthBackKey(self, AuthBackKey):
+        self._AuthBackKey = AuthBackKey
 
 
     def _deserialize(self, params):
-        self.DomainName = params.get("DomainName")
-        self.Enable = params.get("Enable")
-        self.AuthKey = params.get("AuthKey")
-        self.AuthDelta = params.get("AuthDelta")
-        self.AuthBackKey = params.get("AuthBackKey")
+        self._DomainName = params.get("DomainName")
+        self._Enable = params.get("Enable")
+        self._AuthKey = params.get("AuthKey")
+        self._AuthDelta = params.get("AuthDelta")
+        self._AuthBackKey = params.get("AuthBackKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8418,23 +15544,40 @@ class PlayCodeTotalInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Code: HTTP code. Valid values:
+        :param _Code: HTTP code. Valid values:
 400, 403, 404, 500, 502, 503, 504.
         :type Code: str
-        :param Num: Total occurrences.
+        :param _Num: Total occurrences.
         :type Num: int
         """
-        self.Code = None
-        self.Num = None
+        self._Code = None
+        self._Num = None
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Num(self):
+        return self._Num
+
+    @Num.setter
+    def Num(self, Num):
+        self._Num = Num
 
 
     def _deserialize(self, params):
-        self.Code = params.get("Code")
-        self.Num = params.get("Num")
+        self._Code = params.get("Code")
+        self._Num = params.get("Num")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8447,22 +15590,39 @@ class PlayDataInfoByStream(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StreamName: Stream name.
+        :param _StreamName: Stream name.
         :type StreamName: str
-        :param TotalFlux: Total traffic in MB.
+        :param _TotalFlux: Total traffic in MB.
         :type TotalFlux: float
         """
-        self.StreamName = None
-        self.TotalFlux = None
+        self._StreamName = None
+        self._TotalFlux = None
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+    @property
+    def TotalFlux(self):
+        return self._TotalFlux
+
+    @TotalFlux.setter
+    def TotalFlux(self, TotalFlux):
+        self._TotalFlux = TotalFlux
 
 
     def _deserialize(self, params):
-        self.StreamName = params.get("StreamName")
-        self.TotalFlux = params.get("TotalFlux")
+        self._StreamName = params.get("StreamName")
+        self._TotalFlux = params.get("TotalFlux")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8475,23 +15635,40 @@ class PlayStatInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Time: Data point in time.
+        :param _Time: Data point in time.
         :type Time: str
-        :param Value: Value of bandwidth/traffic/number of requests/number of concurrent connections/download speed. If there is no data returned, the value is 0.
+        :param _Value: Value of bandwidth/traffic/number of requests/number of concurrent connections/download speed. If there is no data returned, the value is 0.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Value: float
         """
-        self.Time = None
-        self.Value = None
+        self._Time = None
+        self._Value = None
+
+    @property
+    def Time(self):
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
 
 
     def _deserialize(self, params):
-        self.Time = params.get("Time")
-        self.Value = params.get("Value")
+        self._Time = params.get("Time")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8504,32 +15681,65 @@ class PlaySumStatInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: Domain name or stream ID.
+        :param _Name: Domain name or stream ID.
         :type Name: str
-        :param AvgFluxPerSecond: Average download speed,
+        :param _AvgFluxPerSecond: Average download speed,
 In MB/s.
 Calculation formula: average download speed per minute.
         :type AvgFluxPerSecond: float
-        :param TotalFlux: Total traffic in MB.
+        :param _TotalFlux: Total traffic in MB.
         :type TotalFlux: float
-        :param TotalRequest: Total number of requests.
+        :param _TotalRequest: Total number of requests.
         :type TotalRequest: int
         """
-        self.Name = None
-        self.AvgFluxPerSecond = None
-        self.TotalFlux = None
-        self.TotalRequest = None
+        self._Name = None
+        self._AvgFluxPerSecond = None
+        self._TotalFlux = None
+        self._TotalRequest = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def AvgFluxPerSecond(self):
+        return self._AvgFluxPerSecond
+
+    @AvgFluxPerSecond.setter
+    def AvgFluxPerSecond(self, AvgFluxPerSecond):
+        self._AvgFluxPerSecond = AvgFluxPerSecond
+
+    @property
+    def TotalFlux(self):
+        return self._TotalFlux
+
+    @TotalFlux.setter
+    def TotalFlux(self, TotalFlux):
+        self._TotalFlux = TotalFlux
+
+    @property
+    def TotalRequest(self):
+        return self._TotalRequest
+
+    @TotalRequest.setter
+    def TotalRequest(self, TotalRequest):
+        self._TotalRequest = TotalRequest
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.AvgFluxPerSecond = params.get("AvgFluxPerSecond")
-        self.TotalFlux = params.get("TotalFlux")
-        self.TotalRequest = params.get("TotalRequest")
+        self._Name = params.get("Name")
+        self._AvgFluxPerSecond = params.get("AvgFluxPerSecond")
+        self._TotalFlux = params.get("TotalFlux")
+        self._TotalRequest = params.get("TotalRequest")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8542,42 +15752,99 @@ class ProIspPlayCodeDataInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CountryAreaName: Country or region.
+        :param _CountryAreaName: Country or region.
         :type CountryAreaName: str
-        :param ProvinceName: District.
+        :param _ProvinceName: District.
         :type ProvinceName: str
-        :param IspName: ISP.
+        :param _IspName: ISP.
         :type IspName: str
-        :param Code2xx: Occurrences of 2xx error codes.
+        :param _Code2xx: Occurrences of 2xx error codes.
         :type Code2xx: int
-        :param Code3xx: Occurrences of 3xx error codes.
+        :param _Code3xx: Occurrences of 3xx error codes.
         :type Code3xx: int
-        :param Code4xx: Occurrences of 4xx error codes.
+        :param _Code4xx: Occurrences of 4xx error codes.
         :type Code4xx: int
-        :param Code5xx: Occurrences of 5xx error codes.
+        :param _Code5xx: Occurrences of 5xx error codes.
         :type Code5xx: int
         """
-        self.CountryAreaName = None
-        self.ProvinceName = None
-        self.IspName = None
-        self.Code2xx = None
-        self.Code3xx = None
-        self.Code4xx = None
-        self.Code5xx = None
+        self._CountryAreaName = None
+        self._ProvinceName = None
+        self._IspName = None
+        self._Code2xx = None
+        self._Code3xx = None
+        self._Code4xx = None
+        self._Code5xx = None
+
+    @property
+    def CountryAreaName(self):
+        return self._CountryAreaName
+
+    @CountryAreaName.setter
+    def CountryAreaName(self, CountryAreaName):
+        self._CountryAreaName = CountryAreaName
+
+    @property
+    def ProvinceName(self):
+        return self._ProvinceName
+
+    @ProvinceName.setter
+    def ProvinceName(self, ProvinceName):
+        self._ProvinceName = ProvinceName
+
+    @property
+    def IspName(self):
+        return self._IspName
+
+    @IspName.setter
+    def IspName(self, IspName):
+        self._IspName = IspName
+
+    @property
+    def Code2xx(self):
+        return self._Code2xx
+
+    @Code2xx.setter
+    def Code2xx(self, Code2xx):
+        self._Code2xx = Code2xx
+
+    @property
+    def Code3xx(self):
+        return self._Code3xx
+
+    @Code3xx.setter
+    def Code3xx(self, Code3xx):
+        self._Code3xx = Code3xx
+
+    @property
+    def Code4xx(self):
+        return self._Code4xx
+
+    @Code4xx.setter
+    def Code4xx(self, Code4xx):
+        self._Code4xx = Code4xx
+
+    @property
+    def Code5xx(self):
+        return self._Code5xx
+
+    @Code5xx.setter
+    def Code5xx(self, Code5xx):
+        self._Code5xx = Code5xx
 
 
     def _deserialize(self, params):
-        self.CountryAreaName = params.get("CountryAreaName")
-        self.ProvinceName = params.get("ProvinceName")
-        self.IspName = params.get("IspName")
-        self.Code2xx = params.get("Code2xx")
-        self.Code3xx = params.get("Code3xx")
-        self.Code4xx = params.get("Code4xx")
-        self.Code5xx = params.get("Code5xx")
+        self._CountryAreaName = params.get("CountryAreaName")
+        self._ProvinceName = params.get("ProvinceName")
+        self._IspName = params.get("IspName")
+        self._Code2xx = params.get("Code2xx")
+        self._Code3xx = params.get("Code3xx")
+        self._Code4xx = params.get("Code4xx")
+        self._Code5xx = params.get("Code5xx")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8590,19 +15857,28 @@ class PublishTime(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PublishTime: Push time.
+        :param _PublishTime: Push time.
 In UTC format, such as 2018-06-29T19:00:00Z.
         :type PublishTime: str
         """
-        self.PublishTime = None
+        self._PublishTime = None
+
+    @property
+    def PublishTime(self):
+        return self._PublishTime
+
+    @PublishTime.setter
+    def PublishTime(self, PublishTime):
+        self._PublishTime = PublishTime
 
 
     def _deserialize(self, params):
-        self.PublishTime = params.get("PublishTime")
+        self._PublishTime = params.get("PublishTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8615,44 +15891,93 @@ class PullPushWatermarkInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PictureUrl: The watermark image URL.
+        :param _PictureUrl: The watermark image URL.
 Characters not allowed:
 ;(){}$>`#"'|
         :type PictureUrl: str
-        :param XPosition: The horizontal offset (%) of the watermark. The default value is 0.
+        :param _XPosition: The horizontal offset (%) of the watermark. The default value is 0.
         :type XPosition: int
-        :param YPosition: The vertical offset (%) of the watermark. The default value is 0.
+        :param _YPosition: The vertical offset (%) of the watermark. The default value is 0.
         :type YPosition: int
-        :param Width: The watermark width as a percentage of the video width. To avoid distorted images, we recommend you specify only the width or height so that the other side can be scaled proportionally. By default, the original width of the watermark image is used.
+        :param _Width: The watermark width as a percentage of the video width. To avoid distorted images, we recommend you specify only the width or height so that the other side can be scaled proportionally. By default, the original width of the watermark image is used.
         :type Width: int
-        :param Height: The watermark height as a percentage of the video height. To avoid distorted images, we recommend you specify only the width or height so that the other side can be scaled proportionally. By default, the original height of the watermark image is used.
+        :param _Height: The watermark height as a percentage of the video height. To avoid distorted images, we recommend you specify only the width or height so that the other side can be scaled proportionally. By default, the original height of the watermark image is used.
         :type Height: int
-        :param Location: The origin. The default value is 0.
+        :param _Location: The origin. The default value is 0.
 0: Top left corner
 1: Top right corner
 2: Bottom right corner
 3: Bottom left corner
         :type Location: int
         """
-        self.PictureUrl = None
-        self.XPosition = None
-        self.YPosition = None
-        self.Width = None
-        self.Height = None
-        self.Location = None
+        self._PictureUrl = None
+        self._XPosition = None
+        self._YPosition = None
+        self._Width = None
+        self._Height = None
+        self._Location = None
+
+    @property
+    def PictureUrl(self):
+        return self._PictureUrl
+
+    @PictureUrl.setter
+    def PictureUrl(self, PictureUrl):
+        self._PictureUrl = PictureUrl
+
+    @property
+    def XPosition(self):
+        return self._XPosition
+
+    @XPosition.setter
+    def XPosition(self, XPosition):
+        self._XPosition = XPosition
+
+    @property
+    def YPosition(self):
+        return self._YPosition
+
+    @YPosition.setter
+    def YPosition(self, YPosition):
+        self._YPosition = YPosition
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def Location(self):
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
 
 
     def _deserialize(self, params):
-        self.PictureUrl = params.get("PictureUrl")
-        self.XPosition = params.get("XPosition")
-        self.YPosition = params.get("YPosition")
-        self.Width = params.get("Width")
-        self.Height = params.get("Height")
-        self.Location = params.get("Location")
+        self._PictureUrl = params.get("PictureUrl")
+        self._XPosition = params.get("XPosition")
+        self._YPosition = params.get("YPosition")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        self._Location = params.get("Location")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8665,35 +15990,35 @@ class PullStreamTaskInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: The task ID.
+        :param _TaskId: The task ID.
         :type TaskId: str
-        :param SourceType: The source type. Valid values:
+        :param _SourceType: The source type. Valid values:
 PullLivePushLive: Live streaming
 PullVodPushLive: Video files
 PullPicPushLive: Images
         :type SourceType: str
-        :param SourceUrls: The source URL(s).
+        :param _SourceUrls: The source URL(s).
 If `SourceType` is `PullLiveToLive`, there can be only one source URL.
 If `SourceType` is `PullVodToLive`, there can be at most 10 source URLs.
         :type SourceUrls: list of str
-        :param DomainName: The push domain name.
+        :param _DomainName: The push domain name.
 The pulled stream is pushed to this domain.
         :type DomainName: str
-        :param AppName: The application to push to.
+        :param _AppName: The application to push to.
 The pulled stream is pushed to this application.
         :type AppName: str
-        :param StreamName: The stream name.
+        :param _StreamName: The stream name.
 The pulled stream is pushed under this name.
         :type StreamName: str
-        :param PushArgs: The push parameter.
+        :param _PushArgs: The push parameter.
 A custom push parameter.
         :type PushArgs: str
-        :param StartTime: The start time.
+        :param _StartTime: The start time.
 It must be in UTC format.
 Example: 2019-01-08T10:00:00Z.
 Note: Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format) is used.
         :type StartTime: str
-        :param EndTime: The end time. Notes:
+        :param _EndTime: The end time. Notes:
 1. The end time must be later than the start time.
 2. The end time and start time must be later than the current time.
 3. The end time and start time must be less than seven days apart.
@@ -8701,7 +16026,7 @@ It must be in UTC format.
 Example: 2019-01-08T10:00:00Z.
 Note: Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format) is used.
         :type EndTime: str
-        :param Region: The region where the task was created.
+        :param _Region: The region where the task was created.
 `ap-beijing`: North China (Beijing)
 `ap-shanghai`: East China (Shanghai)
 `ap-guangzhou`: South China (Guangzhou)
@@ -8715,142 +16040,359 @@ Note: Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.c
 `na-ashburn`: Eastern US
 `ap-tokyo`: Japan
         :type Region: str
-        :param VodLoopTimes: The number of times to loop video files.
+        :param _VodLoopTimes: The number of times to loop video files.
 -1: Loop indefinitely
 0: Do not loop
 > 0: The number of loop times. A task will end either when the videos are looped for the specified number of times or at the specified task end time, whichever is earlier.
 This parameter is valid only if the source is video files.
         :type VodLoopTimes: int
-        :param VodRefreshType: The behavior after the source video files (`SourceUrls`) are changed.
+        :param _VodRefreshType: The behavior after the source video files (`SourceUrls`) are changed.
 ImmediateNewSource: Play the new videos immediately
 ContinueBreakPoint: Finish the current video first and then pull from the new source.
 
 This parameter is valid only if the source is video files.
         :type VodRefreshType: str
-        :param CreateTime: The task creation time.
+        :param _CreateTime: The task creation time.
 It must be in UTC format.
 Example: 2019-01-08T10:00:00Z.
 Note: Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format) is used.
         :type CreateTime: str
-        :param UpdateTime: The last updated time.
+        :param _UpdateTime: The last updated time.
 It must be in UTC format.
 Example: 2019-01-08T10:00:00Z.
 Note: Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format) is used.
         :type UpdateTime: str
-        :param CreateBy: The task creator.
+        :param _CreateBy: The task creator.
         :type CreateBy: str
-        :param UpdateBy: The operator of the last update.
+        :param _UpdateBy: The operator of the last update.
         :type UpdateBy: str
-        :param CallbackUrl: The callback URL.
+        :param _CallbackUrl: The callback URL.
         :type CallbackUrl: str
-        :param CallbackEvents: The events to listen for.
+        :param _CallbackEvents: The events to listen for.
 TaskStart: Callback for starting a task
 TaskExit: Callback for ending a task
 VodSourceFileStart: Callback for starting to pull from video files
 VodSourceFileFinish: Callback for stopping pulling from video files
 ResetTaskConfig: Callback for modifying a task
         :type CallbackEvents: list of str
-        :param CallbackInfo: Note: This parameter is not returned currently.
+        :param _CallbackInfo: Note: This parameter is not returned currently.
 The information of the last callback.
         :type CallbackInfo: str
-        :param ErrorInfo: Note: This parameter is not returned currently.
+        :param _ErrorInfo: Note: This parameter is not returned currently.
 Error message.
         :type ErrorInfo: str
-        :param Status: The task status.
+        :param _Status: The task status.
 enable: Enabled
 pause: Paused
         :type Status: str
-        :param RecentPullInfo: Note: This parameter is returned only if one task is queried.
+        :param _RecentPullInfo: Note: This parameter is returned only if one task is queried.
 The latest pull information.
 The information includes the source URL, offset, and report time.
         :type RecentPullInfo: :class:`tencentcloud.live.v20180801.models.RecentPullInfo`
-        :param Comment: The remarks for the task.
+        :param _Comment: The remarks for the task.
         :type Comment: str
-        :param BackupSourceType: The backup source type. Valid values:
+        :param _BackupSourceType: The backup source type. Valid values:
 PullLivePushLive: Live streaming
 PullVodPushLive: Video files
 Note: This field may return null, indicating that no valid values can be obtained.
         :type BackupSourceType: str
-        :param BackupSourceUrl: The URL of the backup source.
+        :param _BackupSourceUrl: The URL of the backup source.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type BackupSourceUrl: str
-        :param WatermarkList: The information of watermarks to add.
+        :param _WatermarkList: The information of watermarks to add.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type WatermarkList: list of PullPushWatermarkInfo
-        :param VodLocalMode: Whether to use local mode when the source type is video files. The default is `0`.
+        :param _VodLocalMode: Whether to use local mode when the source type is video files. The default is `0`.
 0: Do not use local mode
 1: Use local mode
 Note: This field may return null, indicating that no valid values can be obtained.
         :type VodLocalMode: int
         """
-        self.TaskId = None
-        self.SourceType = None
-        self.SourceUrls = None
-        self.DomainName = None
-        self.AppName = None
-        self.StreamName = None
-        self.PushArgs = None
-        self.StartTime = None
-        self.EndTime = None
-        self.Region = None
-        self.VodLoopTimes = None
-        self.VodRefreshType = None
-        self.CreateTime = None
-        self.UpdateTime = None
-        self.CreateBy = None
-        self.UpdateBy = None
-        self.CallbackUrl = None
-        self.CallbackEvents = None
-        self.CallbackInfo = None
-        self.ErrorInfo = None
-        self.Status = None
-        self.RecentPullInfo = None
-        self.Comment = None
-        self.BackupSourceType = None
-        self.BackupSourceUrl = None
-        self.WatermarkList = None
-        self.VodLocalMode = None
+        self._TaskId = None
+        self._SourceType = None
+        self._SourceUrls = None
+        self._DomainName = None
+        self._AppName = None
+        self._StreamName = None
+        self._PushArgs = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Region = None
+        self._VodLoopTimes = None
+        self._VodRefreshType = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._CreateBy = None
+        self._UpdateBy = None
+        self._CallbackUrl = None
+        self._CallbackEvents = None
+        self._CallbackInfo = None
+        self._ErrorInfo = None
+        self._Status = None
+        self._RecentPullInfo = None
+        self._Comment = None
+        self._BackupSourceType = None
+        self._BackupSourceUrl = None
+        self._WatermarkList = None
+        self._VodLocalMode = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def SourceType(self):
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def SourceUrls(self):
+        return self._SourceUrls
+
+    @SourceUrls.setter
+    def SourceUrls(self, SourceUrls):
+        self._SourceUrls = SourceUrls
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+    @property
+    def PushArgs(self):
+        return self._PushArgs
+
+    @PushArgs.setter
+    def PushArgs(self, PushArgs):
+        self._PushArgs = PushArgs
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def VodLoopTimes(self):
+        return self._VodLoopTimes
+
+    @VodLoopTimes.setter
+    def VodLoopTimes(self, VodLoopTimes):
+        self._VodLoopTimes = VodLoopTimes
+
+    @property
+    def VodRefreshType(self):
+        return self._VodRefreshType
+
+    @VodRefreshType.setter
+    def VodRefreshType(self, VodRefreshType):
+        self._VodRefreshType = VodRefreshType
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def CreateBy(self):
+        return self._CreateBy
+
+    @CreateBy.setter
+    def CreateBy(self, CreateBy):
+        self._CreateBy = CreateBy
+
+    @property
+    def UpdateBy(self):
+        return self._UpdateBy
+
+    @UpdateBy.setter
+    def UpdateBy(self, UpdateBy):
+        self._UpdateBy = UpdateBy
+
+    @property
+    def CallbackUrl(self):
+        return self._CallbackUrl
+
+    @CallbackUrl.setter
+    def CallbackUrl(self, CallbackUrl):
+        self._CallbackUrl = CallbackUrl
+
+    @property
+    def CallbackEvents(self):
+        return self._CallbackEvents
+
+    @CallbackEvents.setter
+    def CallbackEvents(self, CallbackEvents):
+        self._CallbackEvents = CallbackEvents
+
+    @property
+    def CallbackInfo(self):
+        return self._CallbackInfo
+
+    @CallbackInfo.setter
+    def CallbackInfo(self, CallbackInfo):
+        self._CallbackInfo = CallbackInfo
+
+    @property
+    def ErrorInfo(self):
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RecentPullInfo(self):
+        return self._RecentPullInfo
+
+    @RecentPullInfo.setter
+    def RecentPullInfo(self, RecentPullInfo):
+        self._RecentPullInfo = RecentPullInfo
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def BackupSourceType(self):
+        return self._BackupSourceType
+
+    @BackupSourceType.setter
+    def BackupSourceType(self, BackupSourceType):
+        self._BackupSourceType = BackupSourceType
+
+    @property
+    def BackupSourceUrl(self):
+        return self._BackupSourceUrl
+
+    @BackupSourceUrl.setter
+    def BackupSourceUrl(self, BackupSourceUrl):
+        self._BackupSourceUrl = BackupSourceUrl
+
+    @property
+    def WatermarkList(self):
+        return self._WatermarkList
+
+    @WatermarkList.setter
+    def WatermarkList(self, WatermarkList):
+        self._WatermarkList = WatermarkList
+
+    @property
+    def VodLocalMode(self):
+        return self._VodLocalMode
+
+    @VodLocalMode.setter
+    def VodLocalMode(self, VodLocalMode):
+        self._VodLocalMode = VodLocalMode
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.SourceType = params.get("SourceType")
-        self.SourceUrls = params.get("SourceUrls")
-        self.DomainName = params.get("DomainName")
-        self.AppName = params.get("AppName")
-        self.StreamName = params.get("StreamName")
-        self.PushArgs = params.get("PushArgs")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.Region = params.get("Region")
-        self.VodLoopTimes = params.get("VodLoopTimes")
-        self.VodRefreshType = params.get("VodRefreshType")
-        self.CreateTime = params.get("CreateTime")
-        self.UpdateTime = params.get("UpdateTime")
-        self.CreateBy = params.get("CreateBy")
-        self.UpdateBy = params.get("UpdateBy")
-        self.CallbackUrl = params.get("CallbackUrl")
-        self.CallbackEvents = params.get("CallbackEvents")
-        self.CallbackInfo = params.get("CallbackInfo")
-        self.ErrorInfo = params.get("ErrorInfo")
-        self.Status = params.get("Status")
+        self._TaskId = params.get("TaskId")
+        self._SourceType = params.get("SourceType")
+        self._SourceUrls = params.get("SourceUrls")
+        self._DomainName = params.get("DomainName")
+        self._AppName = params.get("AppName")
+        self._StreamName = params.get("StreamName")
+        self._PushArgs = params.get("PushArgs")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Region = params.get("Region")
+        self._VodLoopTimes = params.get("VodLoopTimes")
+        self._VodRefreshType = params.get("VodRefreshType")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._CreateBy = params.get("CreateBy")
+        self._UpdateBy = params.get("UpdateBy")
+        self._CallbackUrl = params.get("CallbackUrl")
+        self._CallbackEvents = params.get("CallbackEvents")
+        self._CallbackInfo = params.get("CallbackInfo")
+        self._ErrorInfo = params.get("ErrorInfo")
+        self._Status = params.get("Status")
         if params.get("RecentPullInfo") is not None:
-            self.RecentPullInfo = RecentPullInfo()
-            self.RecentPullInfo._deserialize(params.get("RecentPullInfo"))
-        self.Comment = params.get("Comment")
-        self.BackupSourceType = params.get("BackupSourceType")
-        self.BackupSourceUrl = params.get("BackupSourceUrl")
+            self._RecentPullInfo = RecentPullInfo()
+            self._RecentPullInfo._deserialize(params.get("RecentPullInfo"))
+        self._Comment = params.get("Comment")
+        self._BackupSourceType = params.get("BackupSourceType")
+        self._BackupSourceUrl = params.get("BackupSourceUrl")
         if params.get("WatermarkList") is not None:
-            self.WatermarkList = []
+            self._WatermarkList = []
             for item in params.get("WatermarkList"):
                 obj = PullPushWatermarkInfo()
                 obj._deserialize(item)
-                self.WatermarkList.append(obj)
-        self.VodLocalMode = params.get("VodLocalMode")
+                self._WatermarkList.append(obj)
+        self._VodLocalMode = params.get("VodLocalMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8863,34 +16405,75 @@ class PushAuthKeyInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainName: Domain name.
+        :param _DomainName: Domain name.
         :type DomainName: str
-        :param Enable: Whether to enable. 0: disabled; 1: enabled.
+        :param _Enable: Whether to enable. 0: disabled; 1: enabled.
         :type Enable: int
-        :param MasterAuthKey: Master authentication key.
+        :param _MasterAuthKey: Master authentication key.
         :type MasterAuthKey: str
-        :param BackupAuthKey: Standby authentication key.
+        :param _BackupAuthKey: Standby authentication key.
         :type BackupAuthKey: str
-        :param AuthDelta: Validity period in seconds.
+        :param _AuthDelta: Validity period in seconds.
         :type AuthDelta: int
         """
-        self.DomainName = None
-        self.Enable = None
-        self.MasterAuthKey = None
-        self.BackupAuthKey = None
-        self.AuthDelta = None
+        self._DomainName = None
+        self._Enable = None
+        self._MasterAuthKey = None
+        self._BackupAuthKey = None
+        self._AuthDelta = None
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def Enable(self):
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def MasterAuthKey(self):
+        return self._MasterAuthKey
+
+    @MasterAuthKey.setter
+    def MasterAuthKey(self, MasterAuthKey):
+        self._MasterAuthKey = MasterAuthKey
+
+    @property
+    def BackupAuthKey(self):
+        return self._BackupAuthKey
+
+    @BackupAuthKey.setter
+    def BackupAuthKey(self, BackupAuthKey):
+        self._BackupAuthKey = BackupAuthKey
+
+    @property
+    def AuthDelta(self):
+        return self._AuthDelta
+
+    @AuthDelta.setter
+    def AuthDelta(self, AuthDelta):
+        self._AuthDelta = AuthDelta
 
 
     def _deserialize(self, params):
-        self.DomainName = params.get("DomainName")
-        self.Enable = params.get("Enable")
-        self.MasterAuthKey = params.get("MasterAuthKey")
-        self.BackupAuthKey = params.get("BackupAuthKey")
-        self.AuthDelta = params.get("AuthDelta")
+        self._DomainName = params.get("DomainName")
+        self._Enable = params.get("Enable")
+        self._MasterAuthKey = params.get("MasterAuthKey")
+        self._BackupAuthKey = params.get("BackupAuthKey")
+        self._AuthDelta = params.get("AuthDelta")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8903,84 +16486,221 @@ class PushDataInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StreamName: Stream name.
+        :param _StreamName: Stream name.
         :type StreamName: str
-        :param AppName: Push path.
+        :param _AppName: Push path.
         :type AppName: str
-        :param ClientIp: Push client IP.
+        :param _ClientIp: Push client IP.
         :type ClientIp: str
-        :param ServerIp: IP of the server that receives the stream.
+        :param _ServerIp: IP of the server that receives the stream.
         :type ServerIp: str
-        :param VideoFps: Pushed video frame rate in Hz.
+        :param _VideoFps: Pushed video frame rate in Hz.
         :type VideoFps: int
-        :param VideoSpeed: Video bitrate (bps) for publishing
+        :param _VideoSpeed: Video bitrate (bps) for publishing
         :type VideoSpeed: int
-        :param AudioFps: Pushed audio frame rate in Hz.
+        :param _AudioFps: Pushed audio frame rate in Hz.
         :type AudioFps: int
-        :param AudioSpeed: Audio bitrate (bps) for publishing
+        :param _AudioSpeed: Audio bitrate (bps) for publishing
         :type AudioSpeed: int
-        :param PushDomain: Push domain name.
+        :param _PushDomain: Push domain name.
         :type PushDomain: str
-        :param BeginPushTime: Push start time.
+        :param _BeginPushTime: Push start time.
         :type BeginPushTime: str
-        :param Acodec: Audio codec,
+        :param _Acodec: Audio codec,
 Example: AAC.
         :type Acodec: str
-        :param Vcodec: Video codec,
+        :param _Vcodec: Video codec,
 Example: H.264.
         :type Vcodec: str
-        :param Resolution: Resolution.
+        :param _Resolution: Resolution.
         :type Resolution: str
-        :param AsampleRate: Sample rate.
+        :param _AsampleRate: Sample rate.
         :type AsampleRate: int
-        :param MetaAudioSpeed: Audio bitrate (bps) in metadata
+        :param _MetaAudioSpeed: Audio bitrate (bps) in metadata
         :type MetaAudioSpeed: int
-        :param MetaVideoSpeed: Video bitrate (bps) in metadata
+        :param _MetaVideoSpeed: Video bitrate (bps) in metadata
         :type MetaVideoSpeed: int
-        :param MetaFps: Frame rate in `metadata`.
+        :param _MetaFps: Frame rate in `metadata`.
         :type MetaFps: int
         """
-        self.StreamName = None
-        self.AppName = None
-        self.ClientIp = None
-        self.ServerIp = None
-        self.VideoFps = None
-        self.VideoSpeed = None
-        self.AudioFps = None
-        self.AudioSpeed = None
-        self.PushDomain = None
-        self.BeginPushTime = None
-        self.Acodec = None
-        self.Vcodec = None
-        self.Resolution = None
-        self.AsampleRate = None
-        self.MetaAudioSpeed = None
-        self.MetaVideoSpeed = None
-        self.MetaFps = None
+        self._StreamName = None
+        self._AppName = None
+        self._ClientIp = None
+        self._ServerIp = None
+        self._VideoFps = None
+        self._VideoSpeed = None
+        self._AudioFps = None
+        self._AudioSpeed = None
+        self._PushDomain = None
+        self._BeginPushTime = None
+        self._Acodec = None
+        self._Vcodec = None
+        self._Resolution = None
+        self._AsampleRate = None
+        self._MetaAudioSpeed = None
+        self._MetaVideoSpeed = None
+        self._MetaFps = None
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def ClientIp(self):
+        return self._ClientIp
+
+    @ClientIp.setter
+    def ClientIp(self, ClientIp):
+        self._ClientIp = ClientIp
+
+    @property
+    def ServerIp(self):
+        return self._ServerIp
+
+    @ServerIp.setter
+    def ServerIp(self, ServerIp):
+        self._ServerIp = ServerIp
+
+    @property
+    def VideoFps(self):
+        return self._VideoFps
+
+    @VideoFps.setter
+    def VideoFps(self, VideoFps):
+        self._VideoFps = VideoFps
+
+    @property
+    def VideoSpeed(self):
+        return self._VideoSpeed
+
+    @VideoSpeed.setter
+    def VideoSpeed(self, VideoSpeed):
+        self._VideoSpeed = VideoSpeed
+
+    @property
+    def AudioFps(self):
+        return self._AudioFps
+
+    @AudioFps.setter
+    def AudioFps(self, AudioFps):
+        self._AudioFps = AudioFps
+
+    @property
+    def AudioSpeed(self):
+        return self._AudioSpeed
+
+    @AudioSpeed.setter
+    def AudioSpeed(self, AudioSpeed):
+        self._AudioSpeed = AudioSpeed
+
+    @property
+    def PushDomain(self):
+        return self._PushDomain
+
+    @PushDomain.setter
+    def PushDomain(self, PushDomain):
+        self._PushDomain = PushDomain
+
+    @property
+    def BeginPushTime(self):
+        return self._BeginPushTime
+
+    @BeginPushTime.setter
+    def BeginPushTime(self, BeginPushTime):
+        self._BeginPushTime = BeginPushTime
+
+    @property
+    def Acodec(self):
+        return self._Acodec
+
+    @Acodec.setter
+    def Acodec(self, Acodec):
+        self._Acodec = Acodec
+
+    @property
+    def Vcodec(self):
+        return self._Vcodec
+
+    @Vcodec.setter
+    def Vcodec(self, Vcodec):
+        self._Vcodec = Vcodec
+
+    @property
+    def Resolution(self):
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
+    @property
+    def AsampleRate(self):
+        return self._AsampleRate
+
+    @AsampleRate.setter
+    def AsampleRate(self, AsampleRate):
+        self._AsampleRate = AsampleRate
+
+    @property
+    def MetaAudioSpeed(self):
+        return self._MetaAudioSpeed
+
+    @MetaAudioSpeed.setter
+    def MetaAudioSpeed(self, MetaAudioSpeed):
+        self._MetaAudioSpeed = MetaAudioSpeed
+
+    @property
+    def MetaVideoSpeed(self):
+        return self._MetaVideoSpeed
+
+    @MetaVideoSpeed.setter
+    def MetaVideoSpeed(self, MetaVideoSpeed):
+        self._MetaVideoSpeed = MetaVideoSpeed
+
+    @property
+    def MetaFps(self):
+        return self._MetaFps
+
+    @MetaFps.setter
+    def MetaFps(self, MetaFps):
+        self._MetaFps = MetaFps
 
 
     def _deserialize(self, params):
-        self.StreamName = params.get("StreamName")
-        self.AppName = params.get("AppName")
-        self.ClientIp = params.get("ClientIp")
-        self.ServerIp = params.get("ServerIp")
-        self.VideoFps = params.get("VideoFps")
-        self.VideoSpeed = params.get("VideoSpeed")
-        self.AudioFps = params.get("AudioFps")
-        self.AudioSpeed = params.get("AudioSpeed")
-        self.PushDomain = params.get("PushDomain")
-        self.BeginPushTime = params.get("BeginPushTime")
-        self.Acodec = params.get("Acodec")
-        self.Vcodec = params.get("Vcodec")
-        self.Resolution = params.get("Resolution")
-        self.AsampleRate = params.get("AsampleRate")
-        self.MetaAudioSpeed = params.get("MetaAudioSpeed")
-        self.MetaVideoSpeed = params.get("MetaVideoSpeed")
-        self.MetaFps = params.get("MetaFps")
+        self._StreamName = params.get("StreamName")
+        self._AppName = params.get("AppName")
+        self._ClientIp = params.get("ClientIp")
+        self._ServerIp = params.get("ServerIp")
+        self._VideoFps = params.get("VideoFps")
+        self._VideoSpeed = params.get("VideoSpeed")
+        self._AudioFps = params.get("AudioFps")
+        self._AudioSpeed = params.get("AudioSpeed")
+        self._PushDomain = params.get("PushDomain")
+        self._BeginPushTime = params.get("BeginPushTime")
+        self._Acodec = params.get("Acodec")
+        self._Vcodec = params.get("Vcodec")
+        self._Resolution = params.get("Resolution")
+        self._AsampleRate = params.get("AsampleRate")
+        self._MetaAudioSpeed = params.get("MetaAudioSpeed")
+        self._MetaVideoSpeed = params.get("MetaVideoSpeed")
+        self._MetaFps = params.get("MetaFps")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8993,107 +16713,292 @@ class PushQualityData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Time: The time of the data in the format of “%Y-%m-%d %H:%M:%S.%ms” (accurate to the millisecond).
+        :param _Time: The time of the data in the format of “%Y-%m-%d %H:%M:%S.%ms” (accurate to the millisecond).
         :type Time: str
-        :param PushDomain: The push domain.
+        :param _PushDomain: The push domain.
         :type PushDomain: str
-        :param AppName: The push path.
+        :param _AppName: The push path.
         :type AppName: str
-        :param ClientIp: The IP address of the push client.
+        :param _ClientIp: The IP address of the push client.
         :type ClientIp: str
-        :param BeginPushTime: The push start time in the format of “%Y-%m-%d %H:%M:%S.%ms” (accurate to the millisecond).
+        :param _BeginPushTime: The push start time in the format of “%Y-%m-%d %H:%M:%S.%ms” (accurate to the millisecond).
         :type BeginPushTime: str
-        :param Resolution: The resolution.
+        :param _Resolution: The resolution.
         :type Resolution: str
-        :param VCodec: The video codec.
+        :param _VCodec: The video codec.
         :type VCodec: str
-        :param ACodec: The audio codec.
+        :param _ACodec: The audio codec.
         :type ACodec: str
-        :param Sequence: The push sequence number, which uniquely identifies a push.
+        :param _Sequence: The push sequence number, which uniquely identifies a push.
         :type Sequence: str
-        :param VideoFps: The video frame rate.
+        :param _VideoFps: The video frame rate.
         :type VideoFps: int
-        :param VideoRate: The video bitrate (bps).
+        :param _VideoRate: The video bitrate (bps).
         :type VideoRate: int
-        :param AudioFps: The audio frame rate.
+        :param _AudioFps: The audio frame rate.
         :type AudioFps: int
-        :param AudioRate: The audio bitrate (bps).
+        :param _AudioRate: The audio bitrate (bps).
         :type AudioRate: int
-        :param LocalTs: The local elapsed time (milliseconds). The greater the difference between the local elapsed time and audio/video elapsed time, the poorer the push quality and the more severe the upstream lag.
+        :param _LocalTs: The local elapsed time (milliseconds). The greater the difference between the local elapsed time and audio/video elapsed time, the poorer the push quality and the more severe the upstream lag.
         :type LocalTs: int
-        :param VideoTs: The video elapsed time (milliseconds).
+        :param _VideoTs: The video elapsed time (milliseconds).
         :type VideoTs: int
-        :param AudioTs: The audio elapsed time (milliseconds).
+        :param _AudioTs: The audio elapsed time (milliseconds).
         :type AudioTs: int
-        :param MetaVideoRate: The video bitrate (Kbps) in the metadata.
+        :param _MetaVideoRate: The video bitrate (Kbps) in the metadata.
         :type MetaVideoRate: int
-        :param MetaAudioRate: The audio bitrate (Kbps) in the metadata.
+        :param _MetaAudioRate: The audio bitrate (Kbps) in the metadata.
         :type MetaAudioRate: int
-        :param MateFps: The frame rate in the metadata.
+        :param _MateFps: The frame rate in the metadata.
         :type MateFps: int
-        :param StreamParam: The push parameter.
+        :param _StreamParam: The push parameter.
         :type StreamParam: str
-        :param Bandwidth: The bandwidth (Mbps).
+        :param _Bandwidth: The bandwidth (Mbps).
         :type Bandwidth: float
-        :param Flux: The traffic (MB).
+        :param _Flux: The traffic (MB).
         :type Flux: float
-        :param ServerIp: The IP address of the push client.
+        :param _ServerIp: The IP address of the push client.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ServerIp: str
         """
-        self.Time = None
-        self.PushDomain = None
-        self.AppName = None
-        self.ClientIp = None
-        self.BeginPushTime = None
-        self.Resolution = None
-        self.VCodec = None
-        self.ACodec = None
-        self.Sequence = None
-        self.VideoFps = None
-        self.VideoRate = None
-        self.AudioFps = None
-        self.AudioRate = None
-        self.LocalTs = None
-        self.VideoTs = None
-        self.AudioTs = None
-        self.MetaVideoRate = None
-        self.MetaAudioRate = None
-        self.MateFps = None
-        self.StreamParam = None
-        self.Bandwidth = None
-        self.Flux = None
-        self.ServerIp = None
+        self._Time = None
+        self._PushDomain = None
+        self._AppName = None
+        self._ClientIp = None
+        self._BeginPushTime = None
+        self._Resolution = None
+        self._VCodec = None
+        self._ACodec = None
+        self._Sequence = None
+        self._VideoFps = None
+        self._VideoRate = None
+        self._AudioFps = None
+        self._AudioRate = None
+        self._LocalTs = None
+        self._VideoTs = None
+        self._AudioTs = None
+        self._MetaVideoRate = None
+        self._MetaAudioRate = None
+        self._MateFps = None
+        self._StreamParam = None
+        self._Bandwidth = None
+        self._Flux = None
+        self._ServerIp = None
+
+    @property
+    def Time(self):
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def PushDomain(self):
+        return self._PushDomain
+
+    @PushDomain.setter
+    def PushDomain(self, PushDomain):
+        self._PushDomain = PushDomain
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def ClientIp(self):
+        return self._ClientIp
+
+    @ClientIp.setter
+    def ClientIp(self, ClientIp):
+        self._ClientIp = ClientIp
+
+    @property
+    def BeginPushTime(self):
+        return self._BeginPushTime
+
+    @BeginPushTime.setter
+    def BeginPushTime(self, BeginPushTime):
+        self._BeginPushTime = BeginPushTime
+
+    @property
+    def Resolution(self):
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
+    @property
+    def VCodec(self):
+        return self._VCodec
+
+    @VCodec.setter
+    def VCodec(self, VCodec):
+        self._VCodec = VCodec
+
+    @property
+    def ACodec(self):
+        return self._ACodec
+
+    @ACodec.setter
+    def ACodec(self, ACodec):
+        self._ACodec = ACodec
+
+    @property
+    def Sequence(self):
+        return self._Sequence
+
+    @Sequence.setter
+    def Sequence(self, Sequence):
+        self._Sequence = Sequence
+
+    @property
+    def VideoFps(self):
+        return self._VideoFps
+
+    @VideoFps.setter
+    def VideoFps(self, VideoFps):
+        self._VideoFps = VideoFps
+
+    @property
+    def VideoRate(self):
+        return self._VideoRate
+
+    @VideoRate.setter
+    def VideoRate(self, VideoRate):
+        self._VideoRate = VideoRate
+
+    @property
+    def AudioFps(self):
+        return self._AudioFps
+
+    @AudioFps.setter
+    def AudioFps(self, AudioFps):
+        self._AudioFps = AudioFps
+
+    @property
+    def AudioRate(self):
+        return self._AudioRate
+
+    @AudioRate.setter
+    def AudioRate(self, AudioRate):
+        self._AudioRate = AudioRate
+
+    @property
+    def LocalTs(self):
+        return self._LocalTs
+
+    @LocalTs.setter
+    def LocalTs(self, LocalTs):
+        self._LocalTs = LocalTs
+
+    @property
+    def VideoTs(self):
+        return self._VideoTs
+
+    @VideoTs.setter
+    def VideoTs(self, VideoTs):
+        self._VideoTs = VideoTs
+
+    @property
+    def AudioTs(self):
+        return self._AudioTs
+
+    @AudioTs.setter
+    def AudioTs(self, AudioTs):
+        self._AudioTs = AudioTs
+
+    @property
+    def MetaVideoRate(self):
+        return self._MetaVideoRate
+
+    @MetaVideoRate.setter
+    def MetaVideoRate(self, MetaVideoRate):
+        self._MetaVideoRate = MetaVideoRate
+
+    @property
+    def MetaAudioRate(self):
+        return self._MetaAudioRate
+
+    @MetaAudioRate.setter
+    def MetaAudioRate(self, MetaAudioRate):
+        self._MetaAudioRate = MetaAudioRate
+
+    @property
+    def MateFps(self):
+        return self._MateFps
+
+    @MateFps.setter
+    def MateFps(self, MateFps):
+        self._MateFps = MateFps
+
+    @property
+    def StreamParam(self):
+        return self._StreamParam
+
+    @StreamParam.setter
+    def StreamParam(self, StreamParam):
+        self._StreamParam = StreamParam
+
+    @property
+    def Bandwidth(self):
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
+
+    @property
+    def Flux(self):
+        return self._Flux
+
+    @Flux.setter
+    def Flux(self, Flux):
+        self._Flux = Flux
+
+    @property
+    def ServerIp(self):
+        return self._ServerIp
+
+    @ServerIp.setter
+    def ServerIp(self, ServerIp):
+        self._ServerIp = ServerIp
 
 
     def _deserialize(self, params):
-        self.Time = params.get("Time")
-        self.PushDomain = params.get("PushDomain")
-        self.AppName = params.get("AppName")
-        self.ClientIp = params.get("ClientIp")
-        self.BeginPushTime = params.get("BeginPushTime")
-        self.Resolution = params.get("Resolution")
-        self.VCodec = params.get("VCodec")
-        self.ACodec = params.get("ACodec")
-        self.Sequence = params.get("Sequence")
-        self.VideoFps = params.get("VideoFps")
-        self.VideoRate = params.get("VideoRate")
-        self.AudioFps = params.get("AudioFps")
-        self.AudioRate = params.get("AudioRate")
-        self.LocalTs = params.get("LocalTs")
-        self.VideoTs = params.get("VideoTs")
-        self.AudioTs = params.get("AudioTs")
-        self.MetaVideoRate = params.get("MetaVideoRate")
-        self.MetaAudioRate = params.get("MetaAudioRate")
-        self.MateFps = params.get("MateFps")
-        self.StreamParam = params.get("StreamParam")
-        self.Bandwidth = params.get("Bandwidth")
-        self.Flux = params.get("Flux")
-        self.ServerIp = params.get("ServerIp")
+        self._Time = params.get("Time")
+        self._PushDomain = params.get("PushDomain")
+        self._AppName = params.get("AppName")
+        self._ClientIp = params.get("ClientIp")
+        self._BeginPushTime = params.get("BeginPushTime")
+        self._Resolution = params.get("Resolution")
+        self._VCodec = params.get("VCodec")
+        self._ACodec = params.get("ACodec")
+        self._Sequence = params.get("Sequence")
+        self._VideoFps = params.get("VideoFps")
+        self._VideoRate = params.get("VideoRate")
+        self._AudioFps = params.get("AudioFps")
+        self._AudioRate = params.get("AudioRate")
+        self._LocalTs = params.get("LocalTs")
+        self._VideoTs = params.get("VideoTs")
+        self._AudioTs = params.get("AudioTs")
+        self._MetaVideoRate = params.get("MetaVideoRate")
+        self._MetaAudioRate = params.get("MetaAudioRate")
+        self._MateFps = params.get("MateFps")
+        self._StreamParam = params.get("StreamParam")
+        self._Bandwidth = params.get("Bandwidth")
+        self._Flux = params.get("Flux")
+        self._ServerIp = params.get("ServerIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9106,32 +17011,65 @@ class RecentPullInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FileUrl: The URL of the file currently pulled.
+        :param _FileUrl: The URL of the file currently pulled.
         :type FileUrl: str
-        :param OffsetTime: The offset of the file currently pulled.
+        :param _OffsetTime: The offset of the file currently pulled.
         :type OffsetTime: int
-        :param ReportTime: The time when the offset is reported, in UTC format.
+        :param _ReportTime: The time when the offset is reported, in UTC format.
 Example: 2020-07-23T03:20:39Z
 Note: Beijing time is 8 hours ahead of UTC.
         :type ReportTime: str
-        :param LoopedTimes: The number of times looped.
+        :param _LoopedTimes: The number of times looped.
         :type LoopedTimes: int
         """
-        self.FileUrl = None
-        self.OffsetTime = None
-        self.ReportTime = None
-        self.LoopedTimes = None
+        self._FileUrl = None
+        self._OffsetTime = None
+        self._ReportTime = None
+        self._LoopedTimes = None
+
+    @property
+    def FileUrl(self):
+        return self._FileUrl
+
+    @FileUrl.setter
+    def FileUrl(self, FileUrl):
+        self._FileUrl = FileUrl
+
+    @property
+    def OffsetTime(self):
+        return self._OffsetTime
+
+    @OffsetTime.setter
+    def OffsetTime(self, OffsetTime):
+        self._OffsetTime = OffsetTime
+
+    @property
+    def ReportTime(self):
+        return self._ReportTime
+
+    @ReportTime.setter
+    def ReportTime(self, ReportTime):
+        self._ReportTime = ReportTime
+
+    @property
+    def LoopedTimes(self):
+        return self._LoopedTimes
+
+    @LoopedTimes.setter
+    def LoopedTimes(self, LoopedTimes):
+        self._LoopedTimes = LoopedTimes
 
 
     def _deserialize(self, params):
-        self.FileUrl = params.get("FileUrl")
-        self.OffsetTime = params.get("OffsetTime")
-        self.ReportTime = params.get("ReportTime")
-        self.LoopedTimes = params.get("LoopedTimes")
+        self._FileUrl = params.get("FileUrl")
+        self._OffsetTime = params.get("OffsetTime")
+        self._ReportTime = params.get("ReportTime")
+        self._LoopedTimes = params.get("LoopedTimes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9144,20 +17082,20 @@ class RecordParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RecordInterval: Max recording time per file
+        :param _RecordInterval: Max recording time per file
 Default value: `1800` (seconds)
 Value range: 30-7200
 This parameter is invalid for HLS. Only one HLS file will be generated from push start to push end.
         :type RecordInterval: int
-        :param StorageTime: Storage duration of the recording file
+        :param _StorageTime: Storage duration of the recording file
 Value range: 0-129600000 seconds (0-1500 days)
 `0`: permanent
         :type StorageTime: int
-        :param Enable: Whether to enable recording in the current format. Default value: 0. 0: no, 1: yes.
+        :param _Enable: Whether to enable recording in the current format. Default value: 0. 0: no, 1: yes.
         :type Enable: int
-        :param VodSubAppId: VOD subapplication ID.
+        :param _VodSubAppId: VOD subapplication ID.
         :type VodSubAppId: int
-        :param VodFileName: Recording filename.
+        :param _VodFileName: Recording filename.
 Supported special placeholders include:
 {StreamID}: stream ID
 {StartYear}: start time - year
@@ -9177,41 +17115,106 @@ Supported special placeholders include:
 
 If this parameter is not set, the recording filename will be `{StreamID}_{StartYear}-{StartMonth}-{StartDay}-{StartHour}-{StartMinute}-{StartSecond}_{EndYear}-{EndMonth}-{EndDay}-{EndHour}-{EndMinute}-{EndSecond}` by default
         :type VodFileName: str
-        :param Procedure: Task flow
+        :param _Procedure: Task flow
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type Procedure: str
-        :param StorageMode: Video storage class. Valid values:
+        :param _StorageMode: Video storage class. Valid values:
 `normal`: STANDARD
 `cold`: STANDARD_IA
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type StorageMode: str
-        :param ClassId: VOD subapplication category
+        :param _ClassId: VOD subapplication category
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type ClassId: int
         """
-        self.RecordInterval = None
-        self.StorageTime = None
-        self.Enable = None
-        self.VodSubAppId = None
-        self.VodFileName = None
-        self.Procedure = None
-        self.StorageMode = None
-        self.ClassId = None
+        self._RecordInterval = None
+        self._StorageTime = None
+        self._Enable = None
+        self._VodSubAppId = None
+        self._VodFileName = None
+        self._Procedure = None
+        self._StorageMode = None
+        self._ClassId = None
+
+    @property
+    def RecordInterval(self):
+        return self._RecordInterval
+
+    @RecordInterval.setter
+    def RecordInterval(self, RecordInterval):
+        self._RecordInterval = RecordInterval
+
+    @property
+    def StorageTime(self):
+        return self._StorageTime
+
+    @StorageTime.setter
+    def StorageTime(self, StorageTime):
+        self._StorageTime = StorageTime
+
+    @property
+    def Enable(self):
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def VodSubAppId(self):
+        return self._VodSubAppId
+
+    @VodSubAppId.setter
+    def VodSubAppId(self, VodSubAppId):
+        self._VodSubAppId = VodSubAppId
+
+    @property
+    def VodFileName(self):
+        return self._VodFileName
+
+    @VodFileName.setter
+    def VodFileName(self, VodFileName):
+        self._VodFileName = VodFileName
+
+    @property
+    def Procedure(self):
+        return self._Procedure
+
+    @Procedure.setter
+    def Procedure(self, Procedure):
+        self._Procedure = Procedure
+
+    @property
+    def StorageMode(self):
+        return self._StorageMode
+
+    @StorageMode.setter
+    def StorageMode(self, StorageMode):
+        self._StorageMode = StorageMode
+
+    @property
+    def ClassId(self):
+        return self._ClassId
+
+    @ClassId.setter
+    def ClassId(self, ClassId):
+        self._ClassId = ClassId
 
 
     def _deserialize(self, params):
-        self.RecordInterval = params.get("RecordInterval")
-        self.StorageTime = params.get("StorageTime")
-        self.Enable = params.get("Enable")
-        self.VodSubAppId = params.get("VodSubAppId")
-        self.VodFileName = params.get("VodFileName")
-        self.Procedure = params.get("Procedure")
-        self.StorageMode = params.get("StorageMode")
-        self.ClassId = params.get("ClassId")
+        self._RecordInterval = params.get("RecordInterval")
+        self._StorageTime = params.get("StorageTime")
+        self._Enable = params.get("Enable")
+        self._VodSubAppId = params.get("VodSubAppId")
+        self._VodFileName = params.get("VodFileName")
+        self._Procedure = params.get("Procedure")
+        self._StorageMode = params.get("StorageMode")
+        self._ClassId = params.get("ClassId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9224,79 +17227,176 @@ class RecordTemplateInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateId: Template ID.
+        :param _TemplateId: Template ID.
         :type TemplateId: int
-        :param TemplateName: Template name.
+        :param _TemplateName: Template name.
         :type TemplateName: str
-        :param Description: Message description
+        :param _Description: Message description
         :type Description: str
-        :param FlvParam: FLV recording parameter.
+        :param _FlvParam: FLV recording parameter.
         :type FlvParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param HlsParam: HLS recording parameter.
+        :param _HlsParam: HLS recording parameter.
         :type HlsParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param Mp4Param: MP4 recording parameter.
+        :param _Mp4Param: MP4 recording parameter.
         :type Mp4Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param AacParam: AAC recording parameter.
+        :param _AacParam: AAC recording parameter.
         :type AacParam: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param IsDelayLive: 0: LVB,
+        :param _IsDelayLive: 0: LVB,
 1: LCB.
         :type IsDelayLive: int
-        :param HlsSpecialParam: A special parameter for HLS recording.
+        :param _HlsSpecialParam: A special parameter for HLS recording.
         :type HlsSpecialParam: :class:`tencentcloud.live.v20180801.models.HlsSpecialParam`
-        :param Mp3Param: MP3 recording parameter.
+        :param _Mp3Param: MP3 recording parameter.
         :type Mp3Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
-        :param RemoveWatermark: Whether the watermark is removed.
+        :param _RemoveWatermark: Whether the watermark is removed.
 Note: This field may return `null`, indicating that no valid value was found.
         :type RemoveWatermark: bool
-        :param FlvSpecialParam: A special parameter for FLV recording.
+        :param _FlvSpecialParam: A special parameter for FLV recording.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type FlvSpecialParam: :class:`tencentcloud.live.v20180801.models.FlvSpecialParam`
         """
-        self.TemplateId = None
-        self.TemplateName = None
-        self.Description = None
-        self.FlvParam = None
-        self.HlsParam = None
-        self.Mp4Param = None
-        self.AacParam = None
-        self.IsDelayLive = None
-        self.HlsSpecialParam = None
-        self.Mp3Param = None
-        self.RemoveWatermark = None
-        self.FlvSpecialParam = None
+        self._TemplateId = None
+        self._TemplateName = None
+        self._Description = None
+        self._FlvParam = None
+        self._HlsParam = None
+        self._Mp4Param = None
+        self._AacParam = None
+        self._IsDelayLive = None
+        self._HlsSpecialParam = None
+        self._Mp3Param = None
+        self._RemoveWatermark = None
+        self._FlvSpecialParam = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def TemplateName(self):
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def FlvParam(self):
+        return self._FlvParam
+
+    @FlvParam.setter
+    def FlvParam(self, FlvParam):
+        self._FlvParam = FlvParam
+
+    @property
+    def HlsParam(self):
+        return self._HlsParam
+
+    @HlsParam.setter
+    def HlsParam(self, HlsParam):
+        self._HlsParam = HlsParam
+
+    @property
+    def Mp4Param(self):
+        return self._Mp4Param
+
+    @Mp4Param.setter
+    def Mp4Param(self, Mp4Param):
+        self._Mp4Param = Mp4Param
+
+    @property
+    def AacParam(self):
+        return self._AacParam
+
+    @AacParam.setter
+    def AacParam(self, AacParam):
+        self._AacParam = AacParam
+
+    @property
+    def IsDelayLive(self):
+        return self._IsDelayLive
+
+    @IsDelayLive.setter
+    def IsDelayLive(self, IsDelayLive):
+        self._IsDelayLive = IsDelayLive
+
+    @property
+    def HlsSpecialParam(self):
+        return self._HlsSpecialParam
+
+    @HlsSpecialParam.setter
+    def HlsSpecialParam(self, HlsSpecialParam):
+        self._HlsSpecialParam = HlsSpecialParam
+
+    @property
+    def Mp3Param(self):
+        return self._Mp3Param
+
+    @Mp3Param.setter
+    def Mp3Param(self, Mp3Param):
+        self._Mp3Param = Mp3Param
+
+    @property
+    def RemoveWatermark(self):
+        return self._RemoveWatermark
+
+    @RemoveWatermark.setter
+    def RemoveWatermark(self, RemoveWatermark):
+        self._RemoveWatermark = RemoveWatermark
+
+    @property
+    def FlvSpecialParam(self):
+        return self._FlvSpecialParam
+
+    @FlvSpecialParam.setter
+    def FlvSpecialParam(self, FlvSpecialParam):
+        self._FlvSpecialParam = FlvSpecialParam
 
 
     def _deserialize(self, params):
-        self.TemplateId = params.get("TemplateId")
-        self.TemplateName = params.get("TemplateName")
-        self.Description = params.get("Description")
+        self._TemplateId = params.get("TemplateId")
+        self._TemplateName = params.get("TemplateName")
+        self._Description = params.get("Description")
         if params.get("FlvParam") is not None:
-            self.FlvParam = RecordParam()
-            self.FlvParam._deserialize(params.get("FlvParam"))
+            self._FlvParam = RecordParam()
+            self._FlvParam._deserialize(params.get("FlvParam"))
         if params.get("HlsParam") is not None:
-            self.HlsParam = RecordParam()
-            self.HlsParam._deserialize(params.get("HlsParam"))
+            self._HlsParam = RecordParam()
+            self._HlsParam._deserialize(params.get("HlsParam"))
         if params.get("Mp4Param") is not None:
-            self.Mp4Param = RecordParam()
-            self.Mp4Param._deserialize(params.get("Mp4Param"))
+            self._Mp4Param = RecordParam()
+            self._Mp4Param._deserialize(params.get("Mp4Param"))
         if params.get("AacParam") is not None:
-            self.AacParam = RecordParam()
-            self.AacParam._deserialize(params.get("AacParam"))
-        self.IsDelayLive = params.get("IsDelayLive")
+            self._AacParam = RecordParam()
+            self._AacParam._deserialize(params.get("AacParam"))
+        self._IsDelayLive = params.get("IsDelayLive")
         if params.get("HlsSpecialParam") is not None:
-            self.HlsSpecialParam = HlsSpecialParam()
-            self.HlsSpecialParam._deserialize(params.get("HlsSpecialParam"))
+            self._HlsSpecialParam = HlsSpecialParam()
+            self._HlsSpecialParam._deserialize(params.get("HlsSpecialParam"))
         if params.get("Mp3Param") is not None:
-            self.Mp3Param = RecordParam()
-            self.Mp3Param._deserialize(params.get("Mp3Param"))
-        self.RemoveWatermark = params.get("RemoveWatermark")
+            self._Mp3Param = RecordParam()
+            self._Mp3Param._deserialize(params.get("Mp3Param"))
+        self._RemoveWatermark = params.get("RemoveWatermark")
         if params.get("FlvSpecialParam") is not None:
-            self.FlvSpecialParam = FlvSpecialParam()
-            self.FlvSpecialParam._deserialize(params.get("FlvSpecialParam"))
+            self._FlvSpecialParam = FlvSpecialParam()
+            self._FlvSpecialParam._deserialize(params.get("FlvSpecialParam"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9309,34 +17409,75 @@ class RefererAuthConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainName: Domain name
+        :param _DomainName: Domain name
         :type DomainName: str
-        :param Enable: Whether to enable referer. Valid values: `0` (no), `1` (yes)
+        :param _Enable: Whether to enable referer. Valid values: `0` (no), `1` (yes)
         :type Enable: int
-        :param Type: List type. Valid values: `0` (blocklist), `1` (allowlist)
+        :param _Type: List type. Valid values: `0` (blocklist), `1` (allowlist)
         :type Type: int
-        :param AllowEmpty: Whether to allow empty referer. Valid values: `0` (no), `1` (yes)
+        :param _AllowEmpty: Whether to allow empty referer. Valid values: `0` (no), `1` (yes)
         :type AllowEmpty: int
-        :param Rules: Referer list. Separate items in it with semicolons (;).
+        :param _Rules: Referer list. Separate items in it with semicolons (;).
         :type Rules: str
         """
-        self.DomainName = None
-        self.Enable = None
-        self.Type = None
-        self.AllowEmpty = None
-        self.Rules = None
+        self._DomainName = None
+        self._Enable = None
+        self._Type = None
+        self._AllowEmpty = None
+        self._Rules = None
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def Enable(self):
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def AllowEmpty(self):
+        return self._AllowEmpty
+
+    @AllowEmpty.setter
+    def AllowEmpty(self, AllowEmpty):
+        self._AllowEmpty = AllowEmpty
+
+    @property
+    def Rules(self):
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
 
 
     def _deserialize(self, params):
-        self.DomainName = params.get("DomainName")
-        self.Enable = params.get("Enable")
-        self.Type = params.get("Type")
-        self.AllowEmpty = params.get("AllowEmpty")
-        self.Rules = params.get("Rules")
+        self._DomainName = params.get("DomainName")
+        self._Enable = params.get("Enable")
+        self._Type = params.get("Type")
+        self._AllowEmpty = params.get("AllowEmpty")
+        self._Rules = params.get("Rules")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9349,26 +17490,51 @@ class ResumeDelayLiveStreamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AppName: Push path, which is the same as the AppName in push and playback addresses and is "live" by default.
+        :param _AppName: Push path, which is the same as the AppName in push and playback addresses and is "live" by default.
         :type AppName: str
-        :param DomainName: Push domain name.
+        :param _DomainName: Push domain name.
         :type DomainName: str
-        :param StreamName: Stream name.
+        :param _StreamName: Stream name.
         :type StreamName: str
         """
-        self.AppName = None
-        self.DomainName = None
-        self.StreamName = None
+        self._AppName = None
+        self._DomainName = None
+        self._StreamName = None
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
 
 
     def _deserialize(self, params):
-        self.AppName = params.get("AppName")
-        self.DomainName = params.get("DomainName")
-        self.StreamName = params.get("StreamName")
+        self._AppName = params.get("AppName")
+        self._DomainName = params.get("DomainName")
+        self._StreamName = params.get("StreamName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9381,14 +17547,22 @@ class ResumeDelayLiveStreamResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ResumeLiveStreamRequest(AbstractModel):
@@ -9398,26 +17572,51 @@ class ResumeLiveStreamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AppName: Push path, which is the same as the AppName in push and playback addresses and is "live" by default.
+        :param _AppName: Push path, which is the same as the AppName in push and playback addresses and is "live" by default.
         :type AppName: str
-        :param DomainName: Your push domain name.
+        :param _DomainName: Your push domain name.
         :type DomainName: str
-        :param StreamName: Stream name.
+        :param _StreamName: Stream name.
         :type StreamName: str
         """
-        self.AppName = None
-        self.DomainName = None
-        self.StreamName = None
+        self._AppName = None
+        self._DomainName = None
+        self._StreamName = None
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
 
 
     def _deserialize(self, params):
-        self.AppName = params.get("AppName")
-        self.DomainName = params.get("DomainName")
-        self.StreamName = params.get("StreamName")
+        self._AppName = params.get("AppName")
+        self._DomainName = params.get("DomainName")
+        self._StreamName = params.get("StreamName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9430,14 +17629,22 @@ class ResumeLiveStreamResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class RuleInfo(AbstractModel):
@@ -9447,40 +17654,89 @@ class RuleInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CreateTime: The rule creation time.
+        :param _CreateTime: The rule creation time.
 Note: Beijing time (UTC+8) is used.
         :type CreateTime: str
-        :param UpdateTime: The rule update time.
+        :param _UpdateTime: The rule update time.
 Note: Beijing time (UTC+8) is used.
         :type UpdateTime: str
-        :param TemplateId: Template ID.
+        :param _TemplateId: Template ID.
         :type TemplateId: int
-        :param DomainName: Push domain name.
+        :param _DomainName: Push domain name.
         :type DomainName: str
-        :param AppName: Push path.
+        :param _AppName: Push path.
         :type AppName: str
-        :param StreamName: Stream name.
+        :param _StreamName: Stream name.
         :type StreamName: str
         """
-        self.CreateTime = None
-        self.UpdateTime = None
-        self.TemplateId = None
-        self.DomainName = None
-        self.AppName = None
-        self.StreamName = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._TemplateId = None
+        self._DomainName = None
+        self._AppName = None
+        self._StreamName = None
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
 
 
     def _deserialize(self, params):
-        self.CreateTime = params.get("CreateTime")
-        self.UpdateTime = params.get("UpdateTime")
-        self.TemplateId = params.get("TemplateId")
-        self.DomainName = params.get("DomainName")
-        self.AppName = params.get("AppName")
-        self.StreamName = params.get("StreamName")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._TemplateId = params.get("TemplateId")
+        self._DomainName = params.get("DomainName")
+        self._AppName = params.get("AppName")
+        self._StreamName = params.get("StreamName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9493,66 +17749,163 @@ class SnapshotTemplateInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateId: Template ID.
+        :param _TemplateId: Template ID.
         :type TemplateId: int
-        :param TemplateName: Template name.
+        :param _TemplateName: Template name.
         :type TemplateName: str
-        :param SnapshotInterval: Screencapturing interval. Value range: 5-300s.
+        :param _SnapshotInterval: Screencapturing interval. Value range: 5-300s.
         :type SnapshotInterval: int
-        :param Width: Screenshot width. Value range: 0-3000. 
+        :param _Width: Screenshot width. Value range: 0-3000. 
 0: original width and fit to the original ratio.
         :type Width: int
-        :param Height: Screenshot height. Value range: 0-2000.
+        :param _Height: Screenshot height. Value range: 0-2000.
 0: original height and fit to the original ratio.
         :type Height: int
-        :param PornFlag: Whether to enable porn detection. 0: no, 1: yes.
+        :param _PornFlag: Whether to enable porn detection. 0: no, 1: yes.
         :type PornFlag: int
-        :param CosAppId: COS application ID.
+        :param _CosAppId: COS application ID.
         :type CosAppId: int
-        :param CosBucket: COS bucket name.
+        :param _CosBucket: COS bucket name.
         :type CosBucket: str
-        :param CosRegion: COS region.
+        :param _CosRegion: COS region.
         :type CosRegion: str
-        :param Description: Template description.
+        :param _Description: Template description.
         :type Description: str
-        :param CosPrefix: COS bucket folder prefix.
+        :param _CosPrefix: COS bucket folder prefix.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CosPrefix: str
-        :param CosFileName: COS filename.
+        :param _CosFileName: COS filename.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CosFileName: str
         """
-        self.TemplateId = None
-        self.TemplateName = None
-        self.SnapshotInterval = None
-        self.Width = None
-        self.Height = None
-        self.PornFlag = None
-        self.CosAppId = None
-        self.CosBucket = None
-        self.CosRegion = None
-        self.Description = None
-        self.CosPrefix = None
-        self.CosFileName = None
+        self._TemplateId = None
+        self._TemplateName = None
+        self._SnapshotInterval = None
+        self._Width = None
+        self._Height = None
+        self._PornFlag = None
+        self._CosAppId = None
+        self._CosBucket = None
+        self._CosRegion = None
+        self._Description = None
+        self._CosPrefix = None
+        self._CosFileName = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def TemplateName(self):
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+    @property
+    def SnapshotInterval(self):
+        return self._SnapshotInterval
+
+    @SnapshotInterval.setter
+    def SnapshotInterval(self, SnapshotInterval):
+        self._SnapshotInterval = SnapshotInterval
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def PornFlag(self):
+        return self._PornFlag
+
+    @PornFlag.setter
+    def PornFlag(self, PornFlag):
+        self._PornFlag = PornFlag
+
+    @property
+    def CosAppId(self):
+        return self._CosAppId
+
+    @CosAppId.setter
+    def CosAppId(self, CosAppId):
+        self._CosAppId = CosAppId
+
+    @property
+    def CosBucket(self):
+        return self._CosBucket
+
+    @CosBucket.setter
+    def CosBucket(self, CosBucket):
+        self._CosBucket = CosBucket
+
+    @property
+    def CosRegion(self):
+        return self._CosRegion
+
+    @CosRegion.setter
+    def CosRegion(self, CosRegion):
+        self._CosRegion = CosRegion
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CosPrefix(self):
+        return self._CosPrefix
+
+    @CosPrefix.setter
+    def CosPrefix(self, CosPrefix):
+        self._CosPrefix = CosPrefix
+
+    @property
+    def CosFileName(self):
+        return self._CosFileName
+
+    @CosFileName.setter
+    def CosFileName(self, CosFileName):
+        self._CosFileName = CosFileName
 
 
     def _deserialize(self, params):
-        self.TemplateId = params.get("TemplateId")
-        self.TemplateName = params.get("TemplateName")
-        self.SnapshotInterval = params.get("SnapshotInterval")
-        self.Width = params.get("Width")
-        self.Height = params.get("Height")
-        self.PornFlag = params.get("PornFlag")
-        self.CosAppId = params.get("CosAppId")
-        self.CosBucket = params.get("CosBucket")
-        self.CosRegion = params.get("CosRegion")
-        self.Description = params.get("Description")
-        self.CosPrefix = params.get("CosPrefix")
-        self.CosFileName = params.get("CosFileName")
+        self._TemplateId = params.get("TemplateId")
+        self._TemplateName = params.get("TemplateName")
+        self._SnapshotInterval = params.get("SnapshotInterval")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        self._PornFlag = params.get("PornFlag")
+        self._CosAppId = params.get("CosAppId")
+        self._CosBucket = params.get("CosBucket")
+        self._CosRegion = params.get("CosRegion")
+        self._Description = params.get("Description")
+        self._CosPrefix = params.get("CosPrefix")
+        self._CosFileName = params.get("CosFileName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9565,22 +17918,39 @@ class StopLiveRecordRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StreamName: Stream name.
+        :param _StreamName: Stream name.
         :type StreamName: str
-        :param TaskId: Task ID returned by the `CreateLiveRecord` API.
+        :param _TaskId: Task ID returned by the `CreateLiveRecord` API.
         :type TaskId: int
         """
-        self.StreamName = None
-        self.TaskId = None
+        self._StreamName = None
+        self._TaskId = None
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
 
     def _deserialize(self, params):
-        self.StreamName = params.get("StreamName")
-        self.TaskId = params.get("TaskId")
+        self._StreamName = params.get("StreamName")
+        self._TaskId = params.get("TaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9593,14 +17963,22 @@ class StopLiveRecordResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class StopRecordTaskRequest(AbstractModel):
@@ -9610,18 +17988,27 @@ class StopRecordTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: Recording task ID.
+        :param _TaskId: Recording task ID.
         :type TaskId: str
         """
-        self.TaskId = None
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
 
     def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
+        self._TaskId = params.get("TaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9634,14 +18021,22 @@ class StopRecordTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class StreamEventInfo(AbstractModel):
@@ -9651,53 +18046,126 @@ class StreamEventInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AppName: Application name.
+        :param _AppName: Application name.
         :type AppName: str
-        :param DomainName: Push domain name.
+        :param _DomainName: Push domain name.
         :type DomainName: str
-        :param StreamName: Stream name.
+        :param _StreamName: Stream name.
         :type StreamName: str
-        :param StreamStartTime: Push start time.
+        :param _StreamStartTime: Push start time.
 In UTC format, such as 2019-01-07T12:00:00Z.
         :type StreamStartTime: str
-        :param StreamEndTime: Push end time.
+        :param _StreamEndTime: Push end time.
 In UTC format, such as 2019-01-07T15:00:00Z.
         :type StreamEndTime: str
-        :param StopReason: Stop reason.
+        :param _StopReason: Stop reason.
         :type StopReason: str
-        :param Duration: Push duration in seconds.
+        :param _Duration: Push duration in seconds.
         :type Duration: int
-        :param ClientIp: The IP address of the host.
+        :param _ClientIp: The IP address of the host.
 If the stream is published from a private network, this parameter will be `-`.
         :type ClientIp: str
-        :param Resolution: Resolution.
+        :param _Resolution: Resolution.
         :type Resolution: str
         """
-        self.AppName = None
-        self.DomainName = None
-        self.StreamName = None
-        self.StreamStartTime = None
-        self.StreamEndTime = None
-        self.StopReason = None
-        self.Duration = None
-        self.ClientIp = None
-        self.Resolution = None
+        self._AppName = None
+        self._DomainName = None
+        self._StreamName = None
+        self._StreamStartTime = None
+        self._StreamEndTime = None
+        self._StopReason = None
+        self._Duration = None
+        self._ClientIp = None
+        self._Resolution = None
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+    @property
+    def StreamStartTime(self):
+        return self._StreamStartTime
+
+    @StreamStartTime.setter
+    def StreamStartTime(self, StreamStartTime):
+        self._StreamStartTime = StreamStartTime
+
+    @property
+    def StreamEndTime(self):
+        return self._StreamEndTime
+
+    @StreamEndTime.setter
+    def StreamEndTime(self, StreamEndTime):
+        self._StreamEndTime = StreamEndTime
+
+    @property
+    def StopReason(self):
+        return self._StopReason
+
+    @StopReason.setter
+    def StopReason(self, StopReason):
+        self._StopReason = StopReason
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def ClientIp(self):
+        return self._ClientIp
+
+    @ClientIp.setter
+    def ClientIp(self, ClientIp):
+        self._ClientIp = ClientIp
+
+    @property
+    def Resolution(self):
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
 
 
     def _deserialize(self, params):
-        self.AppName = params.get("AppName")
-        self.DomainName = params.get("DomainName")
-        self.StreamName = params.get("StreamName")
-        self.StreamStartTime = params.get("StreamStartTime")
-        self.StreamEndTime = params.get("StreamEndTime")
-        self.StopReason = params.get("StopReason")
-        self.Duration = params.get("Duration")
-        self.ClientIp = params.get("ClientIp")
-        self.Resolution = params.get("Resolution")
+        self._AppName = params.get("AppName")
+        self._DomainName = params.get("DomainName")
+        self._StreamName = params.get("StreamName")
+        self._StreamStartTime = params.get("StreamStartTime")
+        self._StreamEndTime = params.get("StreamEndTime")
+        self._StopReason = params.get("StopReason")
+        self._Duration = params.get("Duration")
+        self._ClientIp = params.get("ClientIp")
+        self._Resolution = params.get("Resolution")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9710,52 +18178,125 @@ class StreamName(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StreamName: Stream name.
+        :param _StreamName: Stream name.
         :type StreamName: str
-        :param AppName: Application name.
+        :param _AppName: Application name.
         :type AppName: str
-        :param DomainName: Push domain name.
+        :param _DomainName: Push domain name.
         :type DomainName: str
-        :param StreamStartTime: Push start time.
+        :param _StreamStartTime: Push start time.
 In UTC format, such as 2019-01-07T12:00:00Z.
         :type StreamStartTime: str
-        :param StreamEndTime: Push end time.
+        :param _StreamEndTime: Push end time.
 In UTC format, such as 2019-01-07T15:00:00Z.
         :type StreamEndTime: str
-        :param StopReason: Stop reason.
+        :param _StopReason: Stop reason.
         :type StopReason: str
-        :param Duration: Push duration in seconds.
+        :param _Duration: Push duration in seconds.
         :type Duration: int
-        :param ClientIp: Host IP.
+        :param _ClientIp: Host IP.
         :type ClientIp: str
-        :param Resolution: Resolution.
+        :param _Resolution: Resolution.
         :type Resolution: str
         """
-        self.StreamName = None
-        self.AppName = None
-        self.DomainName = None
-        self.StreamStartTime = None
-        self.StreamEndTime = None
-        self.StopReason = None
-        self.Duration = None
-        self.ClientIp = None
-        self.Resolution = None
+        self._StreamName = None
+        self._AppName = None
+        self._DomainName = None
+        self._StreamStartTime = None
+        self._StreamEndTime = None
+        self._StopReason = None
+        self._Duration = None
+        self._ClientIp = None
+        self._Resolution = None
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def StreamStartTime(self):
+        return self._StreamStartTime
+
+    @StreamStartTime.setter
+    def StreamStartTime(self, StreamStartTime):
+        self._StreamStartTime = StreamStartTime
+
+    @property
+    def StreamEndTime(self):
+        return self._StreamEndTime
+
+    @StreamEndTime.setter
+    def StreamEndTime(self, StreamEndTime):
+        self._StreamEndTime = StreamEndTime
+
+    @property
+    def StopReason(self):
+        return self._StopReason
+
+    @StopReason.setter
+    def StopReason(self, StopReason):
+        self._StopReason = StopReason
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def ClientIp(self):
+        return self._ClientIp
+
+    @ClientIp.setter
+    def ClientIp(self, ClientIp):
+        self._ClientIp = ClientIp
+
+    @property
+    def Resolution(self):
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
 
 
     def _deserialize(self, params):
-        self.StreamName = params.get("StreamName")
-        self.AppName = params.get("AppName")
-        self.DomainName = params.get("DomainName")
-        self.StreamStartTime = params.get("StreamStartTime")
-        self.StreamEndTime = params.get("StreamEndTime")
-        self.StopReason = params.get("StopReason")
-        self.Duration = params.get("Duration")
-        self.ClientIp = params.get("ClientIp")
-        self.Resolution = params.get("Resolution")
+        self._StreamName = params.get("StreamName")
+        self._AppName = params.get("AppName")
+        self._DomainName = params.get("DomainName")
+        self._StreamStartTime = params.get("StreamStartTime")
+        self._StreamEndTime = params.get("StreamEndTime")
+        self._StopReason = params.get("StopReason")
+        self._Duration = params.get("Duration")
+        self._ClientIp = params.get("ClientIp")
+        self._Resolution = params.get("Resolution")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9768,35 +18309,68 @@ class StreamOnlineInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StreamName: Stream name.
+        :param _StreamName: Stream name.
         :type StreamName: str
-        :param PublishTimeList: Push time list
+        :param _PublishTimeList: Push time list
         :type PublishTimeList: list of PublishTime
-        :param AppName: Application name.
+        :param _AppName: Application name.
         :type AppName: str
-        :param DomainName: Push domain name.
+        :param _DomainName: Push domain name.
         :type DomainName: str
         """
-        self.StreamName = None
-        self.PublishTimeList = None
-        self.AppName = None
-        self.DomainName = None
+        self._StreamName = None
+        self._PublishTimeList = None
+        self._AppName = None
+        self._DomainName = None
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+    @property
+    def PublishTimeList(self):
+        return self._PublishTimeList
+
+    @PublishTimeList.setter
+    def PublishTimeList(self, PublishTimeList):
+        self._PublishTimeList = PublishTimeList
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
 
 
     def _deserialize(self, params):
-        self.StreamName = params.get("StreamName")
+        self._StreamName = params.get("StreamName")
         if params.get("PublishTimeList") is not None:
-            self.PublishTimeList = []
+            self._PublishTimeList = []
             for item in params.get("PublishTimeList"):
                 obj = PublishTime()
                 obj._deserialize(item)
-                self.PublishTimeList.append(obj)
-        self.AppName = params.get("AppName")
-        self.DomainName = params.get("DomainName")
+                self._PublishTimeList.append(obj)
+        self._AppName = params.get("AppName")
+        self._DomainName = params.get("DomainName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9809,133 +18383,318 @@ class TemplateInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Vcodec: Codec: h264/h265/origin. Default value: h264.
+        :param _Vcodec: Codec: h264/h265/origin. Default value: h264.
 
 origin: keep the original codec.
         :type Vcodec: str
-        :param VideoBitrate: Video bitrate. Value range: 0–8,000 Kbps.
+        :param _VideoBitrate: Video bitrate. Value range: 0–8,000 Kbps.
 If the value is 0, the original bitrate will be retained.
 Note: transcoding templates require a unique bitrate. The final saved bitrate may differ from the input bitrate.
         :type VideoBitrate: int
-        :param Acodec: Audio codec: aac. Default value: aac.
+        :param _Acodec: Audio codec: aac. Default value: aac.
 Note: This parameter will not take effect for now and will be supported soon.
         :type Acodec: str
-        :param AudioBitrate: Audio bitrate. Value range: 0–500 Kbps.
+        :param _AudioBitrate: Audio bitrate. Value range: 0–500 Kbps.
 0 by default.
         :type AudioBitrate: int
-        :param Width: Width. Default value: 0.
+        :param _Width: Width. Default value: 0.
 Value range: [0-3,000].
 The value must be a multiple of 2. The original width is 0.
         :type Width: int
-        :param Height: Height. Default value: 0.
+        :param _Height: Height. Default value: 0.
 Value range: [0-3,000].
 The value must be a multiple of 2. The original width is 0.
         :type Height: int
-        :param Fps: Frame rate. Default value: 0.
+        :param _Fps: Frame rate. Default value: 0.
 Range: 0-60 Fps.
         :type Fps: int
-        :param Gop: Keyframe interval, unit: second.
+        :param _Gop: Keyframe interval, unit: second.
 Original interval by default
 Range: 2-6
         :type Gop: int
-        :param Rotate: Rotation angle. Default value: 0.
+        :param _Rotate: Rotation angle. Default value: 0.
 Value range: 0, 90, 180, 270
         :type Rotate: int
-        :param Profile: Encoding quality:
+        :param _Profile: Encoding quality:
 baseline/main/high. Default value: baseline.
         :type Profile: str
-        :param BitrateToOrig: Whether to use the original bitrate when the set bitrate is larger than the original bitrate.
+        :param _BitrateToOrig: Whether to use the original bitrate when the set bitrate is larger than the original bitrate.
 0: no, 1: yes
 Default value: 0.
         :type BitrateToOrig: int
-        :param HeightToOrig: Whether to use the original height when the set height is higher than the original height.
+        :param _HeightToOrig: Whether to use the original height when the set height is higher than the original height.
 0: no, 1: yes
 Default value: 0.
         :type HeightToOrig: int
-        :param FpsToOrig: Whether to use the original frame rate when the set frame rate is larger than the original frame rate.
+        :param _FpsToOrig: Whether to use the original frame rate when the set frame rate is larger than the original frame rate.
 0: no, 1: yes
 Default value: 0.
         :type FpsToOrig: int
-        :param NeedVideo: Whether to keep the video. 0: no; 1: yes.
+        :param _NeedVideo: Whether to keep the video. 0: no; 1: yes.
         :type NeedVideo: int
-        :param NeedAudio: Whether to keep the audio. 0: no; 1: yes.
+        :param _NeedAudio: Whether to keep the audio. 0: no; 1: yes.
         :type NeedAudio: int
-        :param TemplateId: Template ID.
+        :param _TemplateId: Template ID.
         :type TemplateId: int
-        :param TemplateName: Template name.
+        :param _TemplateName: Template name.
         :type TemplateName: str
-        :param Description: Template description.
+        :param _Description: Template description.
         :type Description: str
-        :param AiTransCode: Whether it is a top speed codec template. 0: no, 1: yes. Default value: 0.
+        :param _AiTransCode: Whether it is a top speed codec template. 0: no, 1: yes. Default value: 0.
         :type AiTransCode: int
-        :param AdaptBitratePercent: Bitrate compression ratio of top speed code video.
+        :param _AdaptBitratePercent: Bitrate compression ratio of top speed code video.
 Target bitrate of top speed code = VideoBitrate * (1-AdaptBitratePercent)
 
 Value range: 0.0-0.5.
         :type AdaptBitratePercent: float
-        :param ShortEdgeAsHeight: Whether to take the shorter side as height. 0: no, 1: yes. Default value: 0.
+        :param _ShortEdgeAsHeight: Whether to take the shorter side as height. 0: no, 1: yes. Default value: 0.
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type ShortEdgeAsHeight: int
-        :param DRMType: The DRM encryption type. Valid values: fairplay, normalaes, widevine.
+        :param _DRMType: The DRM encryption type. Valid values: fairplay, normalaes, widevine.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DRMType: str
-        :param DRMTracks: The tracks to encrypt. Valid values: AUDIO, SD, HD, UHD1, UHD2. Separate multiple tracks with “|”. You can choose only one video track (SD, HD, UHD1, or UHD2).
+        :param _DRMTracks: The tracks to encrypt. Valid values: AUDIO, SD, HD, UHD1, UHD2. Separate multiple tracks with “|”. You can choose only one video track (SD, HD, UHD1, or UHD2).
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DRMTracks: str
         """
-        self.Vcodec = None
-        self.VideoBitrate = None
-        self.Acodec = None
-        self.AudioBitrate = None
-        self.Width = None
-        self.Height = None
-        self.Fps = None
-        self.Gop = None
-        self.Rotate = None
-        self.Profile = None
-        self.BitrateToOrig = None
-        self.HeightToOrig = None
-        self.FpsToOrig = None
-        self.NeedVideo = None
-        self.NeedAudio = None
-        self.TemplateId = None
-        self.TemplateName = None
-        self.Description = None
-        self.AiTransCode = None
-        self.AdaptBitratePercent = None
-        self.ShortEdgeAsHeight = None
-        self.DRMType = None
-        self.DRMTracks = None
+        self._Vcodec = None
+        self._VideoBitrate = None
+        self._Acodec = None
+        self._AudioBitrate = None
+        self._Width = None
+        self._Height = None
+        self._Fps = None
+        self._Gop = None
+        self._Rotate = None
+        self._Profile = None
+        self._BitrateToOrig = None
+        self._HeightToOrig = None
+        self._FpsToOrig = None
+        self._NeedVideo = None
+        self._NeedAudio = None
+        self._TemplateId = None
+        self._TemplateName = None
+        self._Description = None
+        self._AiTransCode = None
+        self._AdaptBitratePercent = None
+        self._ShortEdgeAsHeight = None
+        self._DRMType = None
+        self._DRMTracks = None
+
+    @property
+    def Vcodec(self):
+        return self._Vcodec
+
+    @Vcodec.setter
+    def Vcodec(self, Vcodec):
+        self._Vcodec = Vcodec
+
+    @property
+    def VideoBitrate(self):
+        return self._VideoBitrate
+
+    @VideoBitrate.setter
+    def VideoBitrate(self, VideoBitrate):
+        self._VideoBitrate = VideoBitrate
+
+    @property
+    def Acodec(self):
+        return self._Acodec
+
+    @Acodec.setter
+    def Acodec(self, Acodec):
+        self._Acodec = Acodec
+
+    @property
+    def AudioBitrate(self):
+        return self._AudioBitrate
+
+    @AudioBitrate.setter
+    def AudioBitrate(self, AudioBitrate):
+        self._AudioBitrate = AudioBitrate
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def Fps(self):
+        return self._Fps
+
+    @Fps.setter
+    def Fps(self, Fps):
+        self._Fps = Fps
+
+    @property
+    def Gop(self):
+        return self._Gop
+
+    @Gop.setter
+    def Gop(self, Gop):
+        self._Gop = Gop
+
+    @property
+    def Rotate(self):
+        return self._Rotate
+
+    @Rotate.setter
+    def Rotate(self, Rotate):
+        self._Rotate = Rotate
+
+    @property
+    def Profile(self):
+        return self._Profile
+
+    @Profile.setter
+    def Profile(self, Profile):
+        self._Profile = Profile
+
+    @property
+    def BitrateToOrig(self):
+        return self._BitrateToOrig
+
+    @BitrateToOrig.setter
+    def BitrateToOrig(self, BitrateToOrig):
+        self._BitrateToOrig = BitrateToOrig
+
+    @property
+    def HeightToOrig(self):
+        return self._HeightToOrig
+
+    @HeightToOrig.setter
+    def HeightToOrig(self, HeightToOrig):
+        self._HeightToOrig = HeightToOrig
+
+    @property
+    def FpsToOrig(self):
+        return self._FpsToOrig
+
+    @FpsToOrig.setter
+    def FpsToOrig(self, FpsToOrig):
+        self._FpsToOrig = FpsToOrig
+
+    @property
+    def NeedVideo(self):
+        return self._NeedVideo
+
+    @NeedVideo.setter
+    def NeedVideo(self, NeedVideo):
+        self._NeedVideo = NeedVideo
+
+    @property
+    def NeedAudio(self):
+        return self._NeedAudio
+
+    @NeedAudio.setter
+    def NeedAudio(self, NeedAudio):
+        self._NeedAudio = NeedAudio
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def TemplateName(self):
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def AiTransCode(self):
+        return self._AiTransCode
+
+    @AiTransCode.setter
+    def AiTransCode(self, AiTransCode):
+        self._AiTransCode = AiTransCode
+
+    @property
+    def AdaptBitratePercent(self):
+        return self._AdaptBitratePercent
+
+    @AdaptBitratePercent.setter
+    def AdaptBitratePercent(self, AdaptBitratePercent):
+        self._AdaptBitratePercent = AdaptBitratePercent
+
+    @property
+    def ShortEdgeAsHeight(self):
+        return self._ShortEdgeAsHeight
+
+    @ShortEdgeAsHeight.setter
+    def ShortEdgeAsHeight(self, ShortEdgeAsHeight):
+        self._ShortEdgeAsHeight = ShortEdgeAsHeight
+
+    @property
+    def DRMType(self):
+        return self._DRMType
+
+    @DRMType.setter
+    def DRMType(self, DRMType):
+        self._DRMType = DRMType
+
+    @property
+    def DRMTracks(self):
+        return self._DRMTracks
+
+    @DRMTracks.setter
+    def DRMTracks(self, DRMTracks):
+        self._DRMTracks = DRMTracks
 
 
     def _deserialize(self, params):
-        self.Vcodec = params.get("Vcodec")
-        self.VideoBitrate = params.get("VideoBitrate")
-        self.Acodec = params.get("Acodec")
-        self.AudioBitrate = params.get("AudioBitrate")
-        self.Width = params.get("Width")
-        self.Height = params.get("Height")
-        self.Fps = params.get("Fps")
-        self.Gop = params.get("Gop")
-        self.Rotate = params.get("Rotate")
-        self.Profile = params.get("Profile")
-        self.BitrateToOrig = params.get("BitrateToOrig")
-        self.HeightToOrig = params.get("HeightToOrig")
-        self.FpsToOrig = params.get("FpsToOrig")
-        self.NeedVideo = params.get("NeedVideo")
-        self.NeedAudio = params.get("NeedAudio")
-        self.TemplateId = params.get("TemplateId")
-        self.TemplateName = params.get("TemplateName")
-        self.Description = params.get("Description")
-        self.AiTransCode = params.get("AiTransCode")
-        self.AdaptBitratePercent = params.get("AdaptBitratePercent")
-        self.ShortEdgeAsHeight = params.get("ShortEdgeAsHeight")
-        self.DRMType = params.get("DRMType")
-        self.DRMTracks = params.get("DRMTracks")
+        self._Vcodec = params.get("Vcodec")
+        self._VideoBitrate = params.get("VideoBitrate")
+        self._Acodec = params.get("Acodec")
+        self._AudioBitrate = params.get("AudioBitrate")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        self._Fps = params.get("Fps")
+        self._Gop = params.get("Gop")
+        self._Rotate = params.get("Rotate")
+        self._Profile = params.get("Profile")
+        self._BitrateToOrig = params.get("BitrateToOrig")
+        self._HeightToOrig = params.get("HeightToOrig")
+        self._FpsToOrig = params.get("FpsToOrig")
+        self._NeedVideo = params.get("NeedVideo")
+        self._NeedAudio = params.get("NeedAudio")
+        self._TemplateId = params.get("TemplateId")
+        self._TemplateName = params.get("TemplateName")
+        self._Description = params.get("Description")
+        self._AiTransCode = params.get("AiTransCode")
+        self._AdaptBitratePercent = params.get("AdaptBitratePercent")
+        self._ShortEdgeAsHeight = params.get("ShortEdgeAsHeight")
+        self._DRMType = params.get("DRMType")
+        self._DRMTracks = params.get("DRMTracks")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9948,34 +18707,75 @@ class TimeShiftBillData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Domain: The push domain name.
+        :param _Domain: The push domain name.
         :type Domain: str
-        :param Duration: The time-shift video length (minutes).
+        :param _Duration: The time-shift video length (minutes).
         :type Duration: float
-        :param StoragePeriod: The time-shift days.
+        :param _StoragePeriod: The time-shift days.
         :type StoragePeriod: float
-        :param Time: The time for the data returned. Format: YYYY-MM-DDThh:mm:ssZ.
+        :param _Time: The time for the data returned. Format: YYYY-MM-DDThh:mm:ssZ.
         :type Time: str
-        :param TotalDuration: The total time-shift duration (minutes).
+        :param _TotalDuration: The total time-shift duration (minutes).
         :type TotalDuration: float
         """
-        self.Domain = None
-        self.Duration = None
-        self.StoragePeriod = None
-        self.Time = None
-        self.TotalDuration = None
+        self._Domain = None
+        self._Duration = None
+        self._StoragePeriod = None
+        self._Time = None
+        self._TotalDuration = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def StoragePeriod(self):
+        return self._StoragePeriod
+
+    @StoragePeriod.setter
+    def StoragePeriod(self, StoragePeriod):
+        self._StoragePeriod = StoragePeriod
+
+    @property
+    def Time(self):
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def TotalDuration(self):
+        return self._TotalDuration
+
+    @TotalDuration.setter
+    def TotalDuration(self, TotalDuration):
+        self._TotalDuration = TotalDuration
 
 
     def _deserialize(self, params):
-        self.Domain = params.get("Domain")
-        self.Duration = params.get("Duration")
-        self.StoragePeriod = params.get("StoragePeriod")
-        self.Time = params.get("Time")
-        self.TotalDuration = params.get("TotalDuration")
+        self._Domain = params.get("Domain")
+        self._Duration = params.get("Duration")
+        self._StoragePeriod = params.get("StoragePeriod")
+        self._Time = params.get("Time")
+        self._TotalDuration = params.get("TotalDuration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9988,26 +18788,51 @@ class TimeShiftRecord(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Sid: The session ID.
+        :param _Sid: The session ID.
         :type Sid: str
-        :param StartTime: The recording start time, which is a Unix timestamp.
+        :param _StartTime: The recording start time, which is a Unix timestamp.
         :type StartTime: int
-        :param EndTime: The recording end time, which is a Unix timestamp.
+        :param _EndTime: The recording end time, which is a Unix timestamp.
         :type EndTime: int
         """
-        self.Sid = None
-        self.StartTime = None
-        self.EndTime = None
+        self._Sid = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def Sid(self):
+        return self._Sid
+
+    @Sid.setter
+    def Sid(self, Sid):
+        self._Sid = Sid
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
 
 
     def _deserialize(self, params):
-        self.Sid = params.get("Sid")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
+        self._Sid = params.get("Sid")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -10020,53 +18845,126 @@ class TimeShiftStreamInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainGroup: The group the push domain belongs to.
+        :param _DomainGroup: The group the push domain belongs to.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DomainGroup: str
-        :param Domain: The push domain.
+        :param _Domain: The push domain.
         :type Domain: str
-        :param AppName: The push path.
+        :param _AppName: The push path.
         :type AppName: str
-        :param StreamName: The stream name.
+        :param _StreamName: The stream name.
         :type StreamName: str
-        :param StartTime: The stream start time, which is a Unix timestamp.
+        :param _StartTime: The stream start time, which is a Unix timestamp.
         :type StartTime: int
-        :param EndTime: The stream end time (for streams that ended before the time of query), which is a Unix timestamp.
+        :param _EndTime: The stream end time (for streams that ended before the time of query), which is a Unix timestamp.
         :type EndTime: int
-        :param TransCodeId: The transcoding template ID.
+        :param _TransCodeId: The transcoding template ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TransCodeId: int
-        :param StreamType: The stream type. `0`: The original stream; `1`: The watermarked stream; `2`: The transcoded stream.
+        :param _StreamType: The stream type. `0`: The original stream; `1`: The watermarked stream; `2`: The transcoded stream.
         :type StreamType: int
-        :param Duration: The storage duration (seconds) of the recording.
+        :param _Duration: The storage duration (seconds) of the recording.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Duration: int
         """
-        self.DomainGroup = None
-        self.Domain = None
-        self.AppName = None
-        self.StreamName = None
-        self.StartTime = None
-        self.EndTime = None
-        self.TransCodeId = None
-        self.StreamType = None
-        self.Duration = None
+        self._DomainGroup = None
+        self._Domain = None
+        self._AppName = None
+        self._StreamName = None
+        self._StartTime = None
+        self._EndTime = None
+        self._TransCodeId = None
+        self._StreamType = None
+        self._Duration = None
+
+    @property
+    def DomainGroup(self):
+        return self._DomainGroup
+
+    @DomainGroup.setter
+    def DomainGroup(self, DomainGroup):
+        self._DomainGroup = DomainGroup
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def TransCodeId(self):
+        return self._TransCodeId
+
+    @TransCodeId.setter
+    def TransCodeId(self, TransCodeId):
+        self._TransCodeId = TransCodeId
+
+    @property
+    def StreamType(self):
+        return self._StreamType
+
+    @StreamType.setter
+    def StreamType(self, StreamType):
+        self._StreamType = StreamType
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
 
 
     def _deserialize(self, params):
-        self.DomainGroup = params.get("DomainGroup")
-        self.Domain = params.get("Domain")
-        self.AppName = params.get("AppName")
-        self.StreamName = params.get("StreamName")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.TransCodeId = params.get("TransCodeId")
-        self.StreamType = params.get("StreamType")
-        self.Duration = params.get("Duration")
+        self._DomainGroup = params.get("DomainGroup")
+        self._Domain = params.get("Domain")
+        self._AppName = params.get("AppName")
+        self._StreamName = params.get("StreamName")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._TransCodeId = params.get("TransCodeId")
+        self._StreamType = params.get("StreamType")
+        self._Duration = params.get("Duration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -10079,56 +18977,121 @@ class TimeShiftTemplate(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateName: The template name.
+        :param _TemplateName: The template name.
         :type TemplateName: str
-        :param Duration: The time shifting duration.
+        :param _Duration: The time shifting duration.
 Unit: second
         :type Duration: int
-        :param ItemDuration: The segment size.
+        :param _ItemDuration: The segment size.
 Value range: 3-10.
 Unit: Second.
 Default value: 5
         :type ItemDuration: int
-        :param TemplateId: The template ID.
+        :param _TemplateId: The template ID.
         :type TemplateId: int
-        :param Description: The template description.
+        :param _Description: The template description.
         :type Description: str
-        :param Area: The region. Valid values:
+        :param _Area: The region. Valid values:
 `Mainland`: The Chinese mainland.
 `Overseas`: Outside the Chinese mainland.
 Default value: `Mainland`.
         :type Area: str
-        :param RemoveWatermark: Whether to remove watermarks.
+        :param _RemoveWatermark: Whether to remove watermarks.
 If you pass in `true`, the original stream will be recorded.
 Default value: `false`.
         :type RemoveWatermark: bool
-        :param TranscodeTemplateIds: The transcoding template IDs.
+        :param _TranscodeTemplateIds: The transcoding template IDs.
 This API works only if `RemoveWatermark` is `false`.
         :type TranscodeTemplateIds: list of int non-negative
         """
-        self.TemplateName = None
-        self.Duration = None
-        self.ItemDuration = None
-        self.TemplateId = None
-        self.Description = None
-        self.Area = None
-        self.RemoveWatermark = None
-        self.TranscodeTemplateIds = None
+        self._TemplateName = None
+        self._Duration = None
+        self._ItemDuration = None
+        self._TemplateId = None
+        self._Description = None
+        self._Area = None
+        self._RemoveWatermark = None
+        self._TranscodeTemplateIds = None
+
+    @property
+    def TemplateName(self):
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def ItemDuration(self):
+        return self._ItemDuration
+
+    @ItemDuration.setter
+    def ItemDuration(self, ItemDuration):
+        self._ItemDuration = ItemDuration
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Area(self):
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def RemoveWatermark(self):
+        return self._RemoveWatermark
+
+    @RemoveWatermark.setter
+    def RemoveWatermark(self, RemoveWatermark):
+        self._RemoveWatermark = RemoveWatermark
+
+    @property
+    def TranscodeTemplateIds(self):
+        return self._TranscodeTemplateIds
+
+    @TranscodeTemplateIds.setter
+    def TranscodeTemplateIds(self, TranscodeTemplateIds):
+        self._TranscodeTemplateIds = TranscodeTemplateIds
 
 
     def _deserialize(self, params):
-        self.TemplateName = params.get("TemplateName")
-        self.Duration = params.get("Duration")
-        self.ItemDuration = params.get("ItemDuration")
-        self.TemplateId = params.get("TemplateId")
-        self.Description = params.get("Description")
-        self.Area = params.get("Area")
-        self.RemoveWatermark = params.get("RemoveWatermark")
-        self.TranscodeTemplateIds = params.get("TranscodeTemplateIds")
+        self._TemplateName = params.get("TemplateName")
+        self._Duration = params.get("Duration")
+        self._ItemDuration = params.get("ItemDuration")
+        self._TemplateId = params.get("TemplateId")
+        self._Description = params.get("Description")
+        self._Area = params.get("Area")
+        self._RemoveWatermark = params.get("RemoveWatermark")
+        self._TranscodeTemplateIds = params.get("TranscodeTemplateIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -10141,22 +19104,39 @@ class TimeValue(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Time: UTC time in the format of `yyyy-mm-ddTHH:MM:SSZ`.
+        :param _Time: UTC time in the format of `yyyy-mm-ddTHH:MM:SSZ`.
         :type Time: str
-        :param Num: Value.
+        :param _Num: Value.
         :type Num: int
         """
-        self.Time = None
-        self.Num = None
+        self._Time = None
+        self._Num = None
+
+    @property
+    def Time(self):
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def Num(self):
+        return self._Num
+
+    @Num.setter
+    def Num(self, Num):
+        self._Num = Num
 
 
     def _deserialize(self, params):
-        self.Time = params.get("Time")
-        self.Num = params.get("Num")
+        self._Time = params.get("Time")
+        self._Num = params.get("Num")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -10169,62 +19149,143 @@ class TranscodeDetailInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StreamName: Stream name.
+        :param _StreamName: Stream name.
         :type StreamName: str
-        :param StartTime: Start time (Beijing time) in the format of `yyyy-mm-dd HH:MM`.
+        :param _StartTime: Start time (Beijing time) in the format of `yyyy-mm-dd HH:MM`.
         :type StartTime: str
-        :param EndTime: End time (Beijing time) in the format of `yyyy-mm-dd HH:MM`.
+        :param _EndTime: End time (Beijing time) in the format of `yyyy-mm-dd HH:MM`.
         :type EndTime: str
-        :param Duration: Transcoding duration in minutes.
+        :param _Duration: Transcoding duration in minutes.
 Note: given the possible interruptions during push, duration here is the sum of actual duration of transcoding instead of the interval between the start time and end time.
         :type Duration: int
-        :param ModuleCodec: Codec with modules,
+        :param _ModuleCodec: Codec with modules,
 Example:
 liveprocessor_H264: LVB transcoding - H264,
 liveprocessor_H265: LVB transcoding - H265,
 topspeed_H264: top speed codec - H264,
 topspeed_H265: top speed codec - H265.
         :type ModuleCodec: str
-        :param Bitrate: Bitrate.
+        :param _Bitrate: Bitrate.
         :type Bitrate: int
-        :param Type: The task type. Valid values: Transcode, MixStream, WaterMark, Webrtc.
+        :param _Type: The task type. Valid values: Transcode, MixStream, WaterMark, Webrtc.
         :type Type: str
-        :param PushDomain: Push domain name.
+        :param _PushDomain: Push domain name.
         :type PushDomain: str
-        :param Resolution: Resolution.
+        :param _Resolution: Resolution.
         :type Resolution: str
-        :param MainlandOrOversea: The region. Valid values:
+        :param _MainlandOrOversea: The region. Valid values:
 `Mainland`: Inside the Chinese mainland.
 `Overseas`: Outside the Chinese mainland.
         :type MainlandOrOversea: str
         """
-        self.StreamName = None
-        self.StartTime = None
-        self.EndTime = None
-        self.Duration = None
-        self.ModuleCodec = None
-        self.Bitrate = None
-        self.Type = None
-        self.PushDomain = None
-        self.Resolution = None
-        self.MainlandOrOversea = None
+        self._StreamName = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Duration = None
+        self._ModuleCodec = None
+        self._Bitrate = None
+        self._Type = None
+        self._PushDomain = None
+        self._Resolution = None
+        self._MainlandOrOversea = None
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def ModuleCodec(self):
+        return self._ModuleCodec
+
+    @ModuleCodec.setter
+    def ModuleCodec(self, ModuleCodec):
+        self._ModuleCodec = ModuleCodec
+
+    @property
+    def Bitrate(self):
+        return self._Bitrate
+
+    @Bitrate.setter
+    def Bitrate(self, Bitrate):
+        self._Bitrate = Bitrate
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def PushDomain(self):
+        return self._PushDomain
+
+    @PushDomain.setter
+    def PushDomain(self, PushDomain):
+        self._PushDomain = PushDomain
+
+    @property
+    def Resolution(self):
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
+    @property
+    def MainlandOrOversea(self):
+        return self._MainlandOrOversea
+
+    @MainlandOrOversea.setter
+    def MainlandOrOversea(self, MainlandOrOversea):
+        self._MainlandOrOversea = MainlandOrOversea
 
 
     def _deserialize(self, params):
-        self.StreamName = params.get("StreamName")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.Duration = params.get("Duration")
-        self.ModuleCodec = params.get("ModuleCodec")
-        self.Bitrate = params.get("Bitrate")
-        self.Type = params.get("Type")
-        self.PushDomain = params.get("PushDomain")
-        self.Resolution = params.get("Resolution")
-        self.MainlandOrOversea = params.get("MainlandOrOversea")
+        self._StreamName = params.get("StreamName")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Duration = params.get("Duration")
+        self._ModuleCodec = params.get("ModuleCodec")
+        self._Bitrate = params.get("Bitrate")
+        self._Type = params.get("Type")
+        self._PushDomain = params.get("PushDomain")
+        self._Resolution = params.get("Resolution")
+        self._MainlandOrOversea = params.get("MainlandOrOversea")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -10237,26 +19298,51 @@ class TranscodeTaskNum(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Time: The time of query.
+        :param _Time: The time of query.
         :type Time: str
-        :param CodeRate: The bitrate.
+        :param _CodeRate: The bitrate.
         :type CodeRate: int
-        :param Num: The number of tasks.
+        :param _Num: The number of tasks.
         :type Num: int
         """
-        self.Time = None
-        self.CodeRate = None
-        self.Num = None
+        self._Time = None
+        self._CodeRate = None
+        self._Num = None
+
+    @property
+    def Time(self):
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def CodeRate(self):
+        return self._CodeRate
+
+    @CodeRate.setter
+    def CodeRate(self, CodeRate):
+        self._CodeRate = CodeRate
+
+    @property
+    def Num(self):
+        return self._Num
+
+    @Num.setter
+    def Num(self, Num):
+        self._Num = Num
 
 
     def _deserialize(self, params):
-        self.Time = params.get("Time")
-        self.CodeRate = params.get("CodeRate")
-        self.Num = params.get("Num")
+        self._Time = params.get("Time")
+        self._CodeRate = params.get("CodeRate")
+        self._Num = params.get("Num")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -10269,37 +19355,70 @@ class TranscodeTotalInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Time: Usage time (Beijing time)
+        :param _Time: Usage time (Beijing time)
 Example: 2019-03-01 00:00:00
         :type Time: str
-        :param Duration: Transcoding duration in minutes
+        :param _Duration: Transcoding duration in minutes
         :type Duration: int
-        :param ModuleCodec: Codec, with modules
+        :param _ModuleCodec: Codec, with modules
 Examples:
 `liveprocessor_H264`: live transcoding-H264
 `liveprocessor_H265`: live transcoding-H265
 `topspeed_H264`: top speed codec-H264
 `topspeed_H265`: top speed codec-H265
         :type ModuleCodec: str
-        :param Resolution: Resolution
+        :param _Resolution: Resolution
 Example: 540*480
         :type Resolution: str
         """
-        self.Time = None
-        self.Duration = None
-        self.ModuleCodec = None
-        self.Resolution = None
+        self._Time = None
+        self._Duration = None
+        self._ModuleCodec = None
+        self._Resolution = None
+
+    @property
+    def Time(self):
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def ModuleCodec(self):
+        return self._ModuleCodec
+
+    @ModuleCodec.setter
+    def ModuleCodec(self, ModuleCodec):
+        self._ModuleCodec = ModuleCodec
+
+    @property
+    def Resolution(self):
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
 
 
     def _deserialize(self, params):
-        self.Time = params.get("Time")
-        self.Duration = params.get("Duration")
-        self.ModuleCodec = params.get("ModuleCodec")
-        self.Resolution = params.get("Resolution")
+        self._Time = params.get("Time")
+        self._Duration = params.get("Duration")
+        self._ModuleCodec = params.get("ModuleCodec")
+        self._Resolution = params.get("Resolution")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -10312,26 +19431,43 @@ class UnBindLiveDomainCertRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainName: Playback domain name.
+        :param _DomainName: Playback domain name.
         :type DomainName: str
-        :param Type: Valid values:
+        :param _Type: Valid values:
 `gray`: unbind the canary certificate
 `formal` (default): unbind the formal certificate
 
 `formal` will be used if no value is passed in
         :type Type: str
         """
-        self.DomainName = None
-        self.Type = None
+        self._DomainName = None
+        self._Type = None
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
 
 
     def _deserialize(self, params):
-        self.DomainName = params.get("DomainName")
-        self.Type = params.get("Type")
+        self._DomainName = params.get("DomainName")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -10344,14 +19480,22 @@ class UnBindLiveDomainCertResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateLiveWatermarkRequest(AbstractModel):
@@ -10361,46 +19505,103 @@ class UpdateLiveWatermarkRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param WatermarkId: Watermark ID.
+        :param _WatermarkId: Watermark ID.
 Get the watermark ID in the returned value of the [AddLiveWatermark](https://intl.cloud.tencent.com/document/product/267/30154?from_cn_redirect=1) API call.
         :type WatermarkId: int
-        :param PictureUrl: Watermark image URL.
+        :param _PictureUrl: Watermark image URL.
 Unallowed characters in the URL:
  ;(){}$>`#"\'|
         :type PictureUrl: str
-        :param XPosition: Display position: X-axis offset in %. Default value: 0.
+        :param _XPosition: Display position: X-axis offset in %. Default value: 0.
         :type XPosition: int
-        :param YPosition: Display position: Y-axis offset in %. Default value: 0.
+        :param _YPosition: Display position: Y-axis offset in %. Default value: 0.
         :type YPosition: int
-        :param WatermarkName: Watermark name.
+        :param _WatermarkName: Watermark name.
 Up to 16 bytes.
         :type WatermarkName: str
-        :param Width: Watermark width or its percentage of the live streaming video width. It is recommended to just specify either height or width as the other will be scaled proportionally to avoid distortions. The original width is used by default.
+        :param _Width: Watermark width or its percentage of the live streaming video width. It is recommended to just specify either height or width as the other will be scaled proportionally to avoid distortions. The original width is used by default.
         :type Width: int
-        :param Height: Watermark height or its percentage of the live streaming video width. It is recommended to just specify either height or width as the other will be scaled proportionally to avoid distortions. The original height is used by default.
+        :param _Height: Watermark height or its percentage of the live streaming video width. It is recommended to just specify either height or width as the other will be scaled proportionally to avoid distortions. The original height is used by default.
         :type Height: int
         """
-        self.WatermarkId = None
-        self.PictureUrl = None
-        self.XPosition = None
-        self.YPosition = None
-        self.WatermarkName = None
-        self.Width = None
-        self.Height = None
+        self._WatermarkId = None
+        self._PictureUrl = None
+        self._XPosition = None
+        self._YPosition = None
+        self._WatermarkName = None
+        self._Width = None
+        self._Height = None
+
+    @property
+    def WatermarkId(self):
+        return self._WatermarkId
+
+    @WatermarkId.setter
+    def WatermarkId(self, WatermarkId):
+        self._WatermarkId = WatermarkId
+
+    @property
+    def PictureUrl(self):
+        return self._PictureUrl
+
+    @PictureUrl.setter
+    def PictureUrl(self, PictureUrl):
+        self._PictureUrl = PictureUrl
+
+    @property
+    def XPosition(self):
+        return self._XPosition
+
+    @XPosition.setter
+    def XPosition(self, XPosition):
+        self._XPosition = XPosition
+
+    @property
+    def YPosition(self):
+        return self._YPosition
+
+    @YPosition.setter
+    def YPosition(self, YPosition):
+        self._YPosition = YPosition
+
+    @property
+    def WatermarkName(self):
+        return self._WatermarkName
+
+    @WatermarkName.setter
+    def WatermarkName(self, WatermarkName):
+        self._WatermarkName = WatermarkName
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
 
 
     def _deserialize(self, params):
-        self.WatermarkId = params.get("WatermarkId")
-        self.PictureUrl = params.get("PictureUrl")
-        self.XPosition = params.get("XPosition")
-        self.YPosition = params.get("YPosition")
-        self.WatermarkName = params.get("WatermarkName")
-        self.Width = params.get("Width")
-        self.Height = params.get("Height")
+        self._WatermarkId = params.get("WatermarkId")
+        self._PictureUrl = params.get("PictureUrl")
+        self._XPosition = params.get("XPosition")
+        self._YPosition = params.get("YPosition")
+        self._WatermarkName = params.get("WatermarkName")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -10413,14 +19614,22 @@ class UpdateLiveWatermarkResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class WatermarkInfo(AbstractModel):
@@ -10430,51 +19639,124 @@ class WatermarkInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param WatermarkId: Watermark ID.
+        :param _WatermarkId: Watermark ID.
         :type WatermarkId: int
-        :param PictureUrl: Watermark image URL.
+        :param _PictureUrl: Watermark image URL.
         :type PictureUrl: str
-        :param XPosition: Display position: X-axis offset.
+        :param _XPosition: Display position: X-axis offset.
         :type XPosition: int
-        :param YPosition: Display position: Y-axis offset.
+        :param _YPosition: Display position: Y-axis offset.
         :type YPosition: int
-        :param WatermarkName: Watermark name.
+        :param _WatermarkName: Watermark name.
         :type WatermarkName: str
-        :param Status: Current status. 0: not used. 1: in use.
+        :param _Status: Current status. 0: not used. 1: in use.
         :type Status: int
-        :param CreateTime: The time when the watermark was added.
+        :param _CreateTime: The time when the watermark was added.
 Note: Beijing time (UTC+8) is used.
         :type CreateTime: str
-        :param Width: Watermark width.
+        :param _Width: Watermark width.
         :type Width: int
-        :param Height: Watermark height.
+        :param _Height: Watermark height.
         :type Height: int
         """
-        self.WatermarkId = None
-        self.PictureUrl = None
-        self.XPosition = None
-        self.YPosition = None
-        self.WatermarkName = None
-        self.Status = None
-        self.CreateTime = None
-        self.Width = None
-        self.Height = None
+        self._WatermarkId = None
+        self._PictureUrl = None
+        self._XPosition = None
+        self._YPosition = None
+        self._WatermarkName = None
+        self._Status = None
+        self._CreateTime = None
+        self._Width = None
+        self._Height = None
+
+    @property
+    def WatermarkId(self):
+        return self._WatermarkId
+
+    @WatermarkId.setter
+    def WatermarkId(self, WatermarkId):
+        self._WatermarkId = WatermarkId
+
+    @property
+    def PictureUrl(self):
+        return self._PictureUrl
+
+    @PictureUrl.setter
+    def PictureUrl(self, PictureUrl):
+        self._PictureUrl = PictureUrl
+
+    @property
+    def XPosition(self):
+        return self._XPosition
+
+    @XPosition.setter
+    def XPosition(self, XPosition):
+        self._XPosition = XPosition
+
+    @property
+    def YPosition(self):
+        return self._YPosition
+
+    @YPosition.setter
+    def YPosition(self, YPosition):
+        self._YPosition = YPosition
+
+    @property
+    def WatermarkName(self):
+        return self._WatermarkName
+
+    @WatermarkName.setter
+    def WatermarkName(self, WatermarkName):
+        self._WatermarkName = WatermarkName
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
 
 
     def _deserialize(self, params):
-        self.WatermarkId = params.get("WatermarkId")
-        self.PictureUrl = params.get("PictureUrl")
-        self.XPosition = params.get("XPosition")
-        self.YPosition = params.get("YPosition")
-        self.WatermarkName = params.get("WatermarkName")
-        self.Status = params.get("Status")
-        self.CreateTime = params.get("CreateTime")
-        self.Width = params.get("Width")
-        self.Height = params.get("Height")
+        self._WatermarkId = params.get("WatermarkId")
+        self._PictureUrl = params.get("PictureUrl")
+        self._XPosition = params.get("XPosition")
+        self._YPosition = params.get("YPosition")
+        self._WatermarkName = params.get("WatermarkName")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

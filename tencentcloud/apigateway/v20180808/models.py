@@ -25,26 +25,51 @@ class APIDoc(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApiDocId: API document ID
+        :param _ApiDocId: API document ID
         :type ApiDocId: str
-        :param ApiDocName: API document name
+        :param _ApiDocName: API document name
         :type ApiDocName: str
-        :param ApiDocStatus: API document build status
+        :param _ApiDocStatus: API document build status
         :type ApiDocStatus: str
         """
-        self.ApiDocId = None
-        self.ApiDocName = None
-        self.ApiDocStatus = None
+        self._ApiDocId = None
+        self._ApiDocName = None
+        self._ApiDocStatus = None
+
+    @property
+    def ApiDocId(self):
+        return self._ApiDocId
+
+    @ApiDocId.setter
+    def ApiDocId(self, ApiDocId):
+        self._ApiDocId = ApiDocId
+
+    @property
+    def ApiDocName(self):
+        return self._ApiDocName
+
+    @ApiDocName.setter
+    def ApiDocName(self, ApiDocName):
+        self._ApiDocName = ApiDocName
+
+    @property
+    def ApiDocStatus(self):
+        return self._ApiDocStatus
+
+    @ApiDocStatus.setter
+    def ApiDocStatus(self, ApiDocStatus):
+        self._ApiDocStatus = ApiDocStatus
 
 
     def _deserialize(self, params):
-        self.ApiDocId = params.get("ApiDocId")
-        self.ApiDocName = params.get("ApiDocName")
-        self.ApiDocStatus = params.get("ApiDocStatus")
+        self._ApiDocId = params.get("ApiDocId")
+        self._ApiDocName = params.get("ApiDocName")
+        self._ApiDocStatus = params.get("ApiDocStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -57,70 +82,183 @@ class APIDocInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApiDocId: API document ID
+        :param _ApiDocId: API document ID
         :type ApiDocId: str
-        :param ApiDocName: API document name
+        :param _ApiDocName: API document name
         :type ApiDocName: str
-        :param ApiDocStatus: API document build status
+        :param _ApiDocStatus: API document build status
         :type ApiDocStatus: str
-        :param ApiCount: Number of APIs with API documents
+        :param _ApiCount: Number of APIs with API documents
         :type ApiCount: int
-        :param ViewCount: Number of views of API document
+        :param _ViewCount: Number of views of API document
         :type ViewCount: int
-        :param ReleaseCount: Number of releases of API document
+        :param _ReleaseCount: Number of releases of API document
         :type ReleaseCount: int
-        :param ApiDocUri: API document access URI
+        :param _ApiDocUri: API document access URI
         :type ApiDocUri: str
-        :param SharePassword: API document password for sharing
+        :param _SharePassword: API document password for sharing
         :type SharePassword: str
-        :param UpdatedTime: API document update time
+        :param _UpdatedTime: API document update time
         :type UpdatedTime: str
-        :param ServiceId: Service ID
+        :param _ServiceId: Service ID
         :type ServiceId: str
-        :param Environment: Environment information
+        :param _Environment: Environment information
         :type Environment: str
-        :param ApiIds: ID of the API for which to generate the API document
+        :param _ApiIds: ID of the API for which to generate the API document
         :type ApiIds: list of str
-        :param ServiceName: Service name
+        :param _ServiceName: Service name
         :type ServiceName: str
-        :param ApiNames: Name of the API for which to generate the API document
+        :param _ApiNames: Name of the API for which to generate the API document
         :type ApiNames: list of str
         """
-        self.ApiDocId = None
-        self.ApiDocName = None
-        self.ApiDocStatus = None
-        self.ApiCount = None
-        self.ViewCount = None
-        self.ReleaseCount = None
-        self.ApiDocUri = None
-        self.SharePassword = None
-        self.UpdatedTime = None
-        self.ServiceId = None
-        self.Environment = None
-        self.ApiIds = None
-        self.ServiceName = None
-        self.ApiNames = None
+        self._ApiDocId = None
+        self._ApiDocName = None
+        self._ApiDocStatus = None
+        self._ApiCount = None
+        self._ViewCount = None
+        self._ReleaseCount = None
+        self._ApiDocUri = None
+        self._SharePassword = None
+        self._UpdatedTime = None
+        self._ServiceId = None
+        self._Environment = None
+        self._ApiIds = None
+        self._ServiceName = None
+        self._ApiNames = None
+
+    @property
+    def ApiDocId(self):
+        return self._ApiDocId
+
+    @ApiDocId.setter
+    def ApiDocId(self, ApiDocId):
+        self._ApiDocId = ApiDocId
+
+    @property
+    def ApiDocName(self):
+        return self._ApiDocName
+
+    @ApiDocName.setter
+    def ApiDocName(self, ApiDocName):
+        self._ApiDocName = ApiDocName
+
+    @property
+    def ApiDocStatus(self):
+        return self._ApiDocStatus
+
+    @ApiDocStatus.setter
+    def ApiDocStatus(self, ApiDocStatus):
+        self._ApiDocStatus = ApiDocStatus
+
+    @property
+    def ApiCount(self):
+        return self._ApiCount
+
+    @ApiCount.setter
+    def ApiCount(self, ApiCount):
+        self._ApiCount = ApiCount
+
+    @property
+    def ViewCount(self):
+        return self._ViewCount
+
+    @ViewCount.setter
+    def ViewCount(self, ViewCount):
+        self._ViewCount = ViewCount
+
+    @property
+    def ReleaseCount(self):
+        return self._ReleaseCount
+
+    @ReleaseCount.setter
+    def ReleaseCount(self, ReleaseCount):
+        self._ReleaseCount = ReleaseCount
+
+    @property
+    def ApiDocUri(self):
+        return self._ApiDocUri
+
+    @ApiDocUri.setter
+    def ApiDocUri(self, ApiDocUri):
+        self._ApiDocUri = ApiDocUri
+
+    @property
+    def SharePassword(self):
+        return self._SharePassword
+
+    @SharePassword.setter
+    def SharePassword(self, SharePassword):
+        self._SharePassword = SharePassword
+
+    @property
+    def UpdatedTime(self):
+        return self._UpdatedTime
+
+    @UpdatedTime.setter
+    def UpdatedTime(self, UpdatedTime):
+        self._UpdatedTime = UpdatedTime
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def Environment(self):
+        return self._Environment
+
+    @Environment.setter
+    def Environment(self, Environment):
+        self._Environment = Environment
+
+    @property
+    def ApiIds(self):
+        return self._ApiIds
+
+    @ApiIds.setter
+    def ApiIds(self, ApiIds):
+        self._ApiIds = ApiIds
+
+    @property
+    def ServiceName(self):
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def ApiNames(self):
+        return self._ApiNames
+
+    @ApiNames.setter
+    def ApiNames(self, ApiNames):
+        self._ApiNames = ApiNames
 
 
     def _deserialize(self, params):
-        self.ApiDocId = params.get("ApiDocId")
-        self.ApiDocName = params.get("ApiDocName")
-        self.ApiDocStatus = params.get("ApiDocStatus")
-        self.ApiCount = params.get("ApiCount")
-        self.ViewCount = params.get("ViewCount")
-        self.ReleaseCount = params.get("ReleaseCount")
-        self.ApiDocUri = params.get("ApiDocUri")
-        self.SharePassword = params.get("SharePassword")
-        self.UpdatedTime = params.get("UpdatedTime")
-        self.ServiceId = params.get("ServiceId")
-        self.Environment = params.get("Environment")
-        self.ApiIds = params.get("ApiIds")
-        self.ServiceName = params.get("ServiceName")
-        self.ApiNames = params.get("ApiNames")
+        self._ApiDocId = params.get("ApiDocId")
+        self._ApiDocName = params.get("ApiDocName")
+        self._ApiDocStatus = params.get("ApiDocStatus")
+        self._ApiCount = params.get("ApiCount")
+        self._ViewCount = params.get("ViewCount")
+        self._ReleaseCount = params.get("ReleaseCount")
+        self._ApiDocUri = params.get("ApiDocUri")
+        self._SharePassword = params.get("SharePassword")
+        self._UpdatedTime = params.get("UpdatedTime")
+        self._ServiceId = params.get("ServiceId")
+        self._Environment = params.get("Environment")
+        self._ApiIds = params.get("ApiIds")
+        self._ServiceName = params.get("ServiceName")
+        self._ApiNames = params.get("ApiNames")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -133,27 +271,44 @@ class APIDocs(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Number of API documents
+        :param _TotalCount: Number of API documents
         :type TotalCount: int
-        :param APIDocSet: Basic information of API document
+        :param _APIDocSet: Basic information of API document
         :type APIDocSet: list of APIDoc
         """
-        self.TotalCount = None
-        self.APIDocSet = None
+        self._TotalCount = None
+        self._APIDocSet = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def APIDocSet(self):
+        return self._APIDocSet
+
+    @APIDocSet.setter
+    def APIDocSet(self, APIDocSet):
+        self._APIDocSet = APIDocSet
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("APIDocSet") is not None:
-            self.APIDocSet = []
+            self._APIDocSet = []
             for item in params.get("APIDocSet"):
                 obj = APIDoc()
                 obj._deserialize(item)
-                self.APIDocSet.append(obj)
+                self._APIDocSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -166,53 +321,118 @@ class ApiAppApiInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApiAppName: Application name
+        :param _ApiAppName: Application name
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApiAppName: str
-        :param ApiAppId: Application ID
+        :param _ApiAppId: Application ID
         :type ApiAppId: str
-        :param ApiId: API ID
+        :param _ApiId: API ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApiId: str
-        :param ApiName: API name
+        :param _ApiName: API name
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApiName: str
-        :param ServiceId: Service ID
+        :param _ServiceId: Service ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceId: str
-        :param AuthorizedTime: Binding authorization time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+        :param _AuthorizedTime: Binding authorization time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AuthorizedTime: str
-        :param ApiRegion: API region
+        :param _ApiRegion: API region
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApiRegion: str
-        :param EnvironmentName: Authorized binding environment
+        :param _EnvironmentName: Authorized binding environment
 Note: this field may return null, indicating that no valid values can be obtained.
         :type EnvironmentName: str
         """
-        self.ApiAppName = None
-        self.ApiAppId = None
-        self.ApiId = None
-        self.ApiName = None
-        self.ServiceId = None
-        self.AuthorizedTime = None
-        self.ApiRegion = None
-        self.EnvironmentName = None
+        self._ApiAppName = None
+        self._ApiAppId = None
+        self._ApiId = None
+        self._ApiName = None
+        self._ServiceId = None
+        self._AuthorizedTime = None
+        self._ApiRegion = None
+        self._EnvironmentName = None
+
+    @property
+    def ApiAppName(self):
+        return self._ApiAppName
+
+    @ApiAppName.setter
+    def ApiAppName(self, ApiAppName):
+        self._ApiAppName = ApiAppName
+
+    @property
+    def ApiAppId(self):
+        return self._ApiAppId
+
+    @ApiAppId.setter
+    def ApiAppId(self, ApiAppId):
+        self._ApiAppId = ApiAppId
+
+    @property
+    def ApiId(self):
+        return self._ApiId
+
+    @ApiId.setter
+    def ApiId(self, ApiId):
+        self._ApiId = ApiId
+
+    @property
+    def ApiName(self):
+        return self._ApiName
+
+    @ApiName.setter
+    def ApiName(self, ApiName):
+        self._ApiName = ApiName
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def AuthorizedTime(self):
+        return self._AuthorizedTime
+
+    @AuthorizedTime.setter
+    def AuthorizedTime(self, AuthorizedTime):
+        self._AuthorizedTime = AuthorizedTime
+
+    @property
+    def ApiRegion(self):
+        return self._ApiRegion
+
+    @ApiRegion.setter
+    def ApiRegion(self, ApiRegion):
+        self._ApiRegion = ApiRegion
+
+    @property
+    def EnvironmentName(self):
+        return self._EnvironmentName
+
+    @EnvironmentName.setter
+    def EnvironmentName(self, EnvironmentName):
+        self._EnvironmentName = EnvironmentName
 
 
     def _deserialize(self, params):
-        self.ApiAppName = params.get("ApiAppName")
-        self.ApiAppId = params.get("ApiAppId")
-        self.ApiId = params.get("ApiId")
-        self.ApiName = params.get("ApiName")
-        self.ServiceId = params.get("ServiceId")
-        self.AuthorizedTime = params.get("AuthorizedTime")
-        self.ApiRegion = params.get("ApiRegion")
-        self.EnvironmentName = params.get("EnvironmentName")
+        self._ApiAppName = params.get("ApiAppName")
+        self._ApiAppId = params.get("ApiAppId")
+        self._ApiId = params.get("ApiId")
+        self._ApiName = params.get("ApiName")
+        self._ServiceId = params.get("ServiceId")
+        self._AuthorizedTime = params.get("AuthorizedTime")
+        self._ApiRegion = params.get("ApiRegion")
+        self._EnvironmentName = params.get("EnvironmentName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -225,28 +445,45 @@ class ApiAppApiInfos(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Quantity
+        :param _TotalCount: Quantity
         :type TotalCount: int
-        :param ApiAppApiSet: Information array of the API bound to the application
+        :param _ApiAppApiSet: Information array of the API bound to the application
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApiAppApiSet: list of ApiAppApiInfo
         """
-        self.TotalCount = None
-        self.ApiAppApiSet = None
+        self._TotalCount = None
+        self._ApiAppApiSet = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ApiAppApiSet(self):
+        return self._ApiAppApiSet
+
+    @ApiAppApiSet.setter
+    def ApiAppApiSet(self, ApiAppApiSet):
+        self._ApiAppApiSet = ApiAppApiSet
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("ApiAppApiSet") is not None:
-            self.ApiAppApiSet = []
+            self._ApiAppApiSet = []
             for item in params.get("ApiAppApiSet"):
                 obj = ApiAppApiInfo()
                 obj._deserialize(item)
-                self.ApiAppApiSet.append(obj)
+                self._ApiAppApiSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -259,48 +496,105 @@ class ApiAppInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApiAppName: Application name
+        :param _ApiAppName: Application name
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApiAppName: str
-        :param ApiAppId: Application ID
+        :param _ApiAppId: Application ID
         :type ApiAppId: str
-        :param ApiAppSecret: Application SECRET
+        :param _ApiAppSecret: Application SECRET
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApiAppSecret: str
-        :param ApiAppDesc: Application description
+        :param _ApiAppDesc: Application description
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApiAppDesc: str
-        :param CreatedTime: Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+        :param _CreatedTime: Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CreatedTime: str
-        :param ModifiedTime: Modification time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+        :param _ModifiedTime: Modification time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ModifiedTime: str
-        :param ApiAppKey: Application KEY
+        :param _ApiAppKey: Application KEY
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApiAppKey: str
         """
-        self.ApiAppName = None
-        self.ApiAppId = None
-        self.ApiAppSecret = None
-        self.ApiAppDesc = None
-        self.CreatedTime = None
-        self.ModifiedTime = None
-        self.ApiAppKey = None
+        self._ApiAppName = None
+        self._ApiAppId = None
+        self._ApiAppSecret = None
+        self._ApiAppDesc = None
+        self._CreatedTime = None
+        self._ModifiedTime = None
+        self._ApiAppKey = None
+
+    @property
+    def ApiAppName(self):
+        return self._ApiAppName
+
+    @ApiAppName.setter
+    def ApiAppName(self, ApiAppName):
+        self._ApiAppName = ApiAppName
+
+    @property
+    def ApiAppId(self):
+        return self._ApiAppId
+
+    @ApiAppId.setter
+    def ApiAppId(self, ApiAppId):
+        self._ApiAppId = ApiAppId
+
+    @property
+    def ApiAppSecret(self):
+        return self._ApiAppSecret
+
+    @ApiAppSecret.setter
+    def ApiAppSecret(self, ApiAppSecret):
+        self._ApiAppSecret = ApiAppSecret
+
+    @property
+    def ApiAppDesc(self):
+        return self._ApiAppDesc
+
+    @ApiAppDesc.setter
+    def ApiAppDesc(self, ApiAppDesc):
+        self._ApiAppDesc = ApiAppDesc
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def ModifiedTime(self):
+        return self._ModifiedTime
+
+    @ModifiedTime.setter
+    def ModifiedTime(self, ModifiedTime):
+        self._ModifiedTime = ModifiedTime
+
+    @property
+    def ApiAppKey(self):
+        return self._ApiAppKey
+
+    @ApiAppKey.setter
+    def ApiAppKey(self, ApiAppKey):
+        self._ApiAppKey = ApiAppKey
 
 
     def _deserialize(self, params):
-        self.ApiAppName = params.get("ApiAppName")
-        self.ApiAppId = params.get("ApiAppId")
-        self.ApiAppSecret = params.get("ApiAppSecret")
-        self.ApiAppDesc = params.get("ApiAppDesc")
-        self.CreatedTime = params.get("CreatedTime")
-        self.ModifiedTime = params.get("ModifiedTime")
-        self.ApiAppKey = params.get("ApiAppKey")
+        self._ApiAppName = params.get("ApiAppName")
+        self._ApiAppId = params.get("ApiAppId")
+        self._ApiAppSecret = params.get("ApiAppSecret")
+        self._ApiAppDesc = params.get("ApiAppDesc")
+        self._CreatedTime = params.get("CreatedTime")
+        self._ModifiedTime = params.get("ModifiedTime")
+        self._ApiAppKey = params.get("ApiAppKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -313,28 +607,45 @@ class ApiAppInfos(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Number of applications
+        :param _TotalCount: Number of applications
         :type TotalCount: int
-        :param ApiAppSet: Application information array
+        :param _ApiAppSet: Application information array
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApiAppSet: list of ApiAppInfo
         """
-        self.TotalCount = None
-        self.ApiAppSet = None
+        self._TotalCount = None
+        self._ApiAppSet = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ApiAppSet(self):
+        return self._ApiAppSet
+
+    @ApiAppSet.setter
+    def ApiAppSet(self, ApiAppSet):
+        self._ApiAppSet = ApiAppSet
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("ApiAppSet") is not None:
-            self.ApiAppSet = []
+            self._ApiAppSet = []
             for item in params.get("ApiAppSet"):
                 obj = ApiAppInfo()
                 obj._deserialize(item)
-                self.ApiAppSet.append(obj)
+                self._ApiAppSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -347,39 +658,80 @@ class ApiEnvironmentStrategy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApiId: Unique API ID.
+        :param _ApiId: Unique API ID.
         :type ApiId: str
-        :param ApiName: Custom API name.
+        :param _ApiName: Custom API name.
         :type ApiName: str
-        :param Path: API path, such as `/path`.
+        :param _Path: API path, such as `/path`.
         :type Path: str
-        :param Method: API method, such as `GET`.
+        :param _Method: API method, such as `GET`.
         :type Method: str
-        :param EnvironmentStrategySet: Environment throttling information.
+        :param _EnvironmentStrategySet: Environment throttling information.
         :type EnvironmentStrategySet: list of EnvironmentStrategy
         """
-        self.ApiId = None
-        self.ApiName = None
-        self.Path = None
-        self.Method = None
-        self.EnvironmentStrategySet = None
+        self._ApiId = None
+        self._ApiName = None
+        self._Path = None
+        self._Method = None
+        self._EnvironmentStrategySet = None
+
+    @property
+    def ApiId(self):
+        return self._ApiId
+
+    @ApiId.setter
+    def ApiId(self, ApiId):
+        self._ApiId = ApiId
+
+    @property
+    def ApiName(self):
+        return self._ApiName
+
+    @ApiName.setter
+    def ApiName(self, ApiName):
+        self._ApiName = ApiName
+
+    @property
+    def Path(self):
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Method(self):
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
+    @property
+    def EnvironmentStrategySet(self):
+        return self._EnvironmentStrategySet
+
+    @EnvironmentStrategySet.setter
+    def EnvironmentStrategySet(self, EnvironmentStrategySet):
+        self._EnvironmentStrategySet = EnvironmentStrategySet
 
 
     def _deserialize(self, params):
-        self.ApiId = params.get("ApiId")
-        self.ApiName = params.get("ApiName")
-        self.Path = params.get("Path")
-        self.Method = params.get("Method")
+        self._ApiId = params.get("ApiId")
+        self._ApiName = params.get("ApiName")
+        self._Path = params.get("Path")
+        self._Method = params.get("Method")
         if params.get("EnvironmentStrategySet") is not None:
-            self.EnvironmentStrategySet = []
+            self._EnvironmentStrategySet = []
             for item in params.get("EnvironmentStrategySet"):
                 obj = EnvironmentStrategy()
                 obj._deserialize(item)
-                self.EnvironmentStrategySet.append(obj)
+                self._EnvironmentStrategySet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -392,29 +744,46 @@ class ApiEnvironmentStrategyStataus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Number of throttling policies bound to API.
+        :param _TotalCount: Number of throttling policies bound to API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TotalCount: int
-        :param ApiEnvironmentStrategySet: List of throttling policies bound to API.
+        :param _ApiEnvironmentStrategySet: List of throttling policies bound to API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApiEnvironmentStrategySet: list of ApiEnvironmentStrategy
         """
-        self.TotalCount = None
-        self.ApiEnvironmentStrategySet = None
+        self._TotalCount = None
+        self._ApiEnvironmentStrategySet = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ApiEnvironmentStrategySet(self):
+        return self._ApiEnvironmentStrategySet
+
+    @ApiEnvironmentStrategySet.setter
+    def ApiEnvironmentStrategySet(self, ApiEnvironmentStrategySet):
+        self._ApiEnvironmentStrategySet = ApiEnvironmentStrategySet
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("ApiEnvironmentStrategySet") is not None:
-            self.ApiEnvironmentStrategySet = []
+            self._ApiEnvironmentStrategySet = []
             for item in params.get("ApiEnvironmentStrategySet"):
                 obj = ApiEnvironmentStrategy()
                 obj._deserialize(item)
-                self.ApiEnvironmentStrategySet.append(obj)
+                self._ApiEnvironmentStrategySet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -427,99 +796,244 @@ class ApiIdStatus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Unique service ID.
+        :param _ServiceId: Unique service ID.
         :type ServiceId: str
-        :param ApiId: Unique API ID.
+        :param _ApiId: Unique API ID.
         :type ApiId: str
-        :param ApiDesc: API description
+        :param _ApiDesc: API description
         :type ApiDesc: str
-        :param Path: API path.
+        :param _Path: API path.
         :type Path: str
-        :param Method: API method.
+        :param _Method: API method.
         :type Method: str
-        :param CreatedTime: Service creation time.
+        :param _CreatedTime: Service creation time.
         :type CreatedTime: str
-        :param ModifiedTime: Service modification time.
+        :param _ModifiedTime: Service modification time.
         :type ModifiedTime: str
-        :param ApiName: API name.
+        :param _ApiName: API name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApiName: str
-        :param UniqVpcId: Unique VPC ID.
+        :param _UniqVpcId: Unique VPC ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UniqVpcId: str
-        :param ApiType: API type.
+        :param _ApiType: API type.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApiType: str
-        :param Protocol: API protocol.
+        :param _Protocol: API protocol.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Protocol: str
-        :param IsDebugAfterCharge: Whether to enable debugging after purchase.
+        :param _IsDebugAfterCharge: Whether to enable debugging after purchase.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IsDebugAfterCharge: bool
-        :param AuthType: Authorization type.
+        :param _AuthType: Authorization type.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AuthType: str
-        :param ApiBusinessType: API business type.
+        :param _ApiBusinessType: API business type.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApiBusinessType: str
-        :param AuthRelationApiId: Unique ID of associated authorization API.
+        :param _AuthRelationApiId: Unique ID of associated authorization API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AuthRelationApiId: str
-        :param RelationBuniessApiIds: List of business APIs associated with authorization API.
+        :param _RelationBuniessApiIds: List of business APIs associated with authorization API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RelationBuniessApiIds: list of str
-        :param OauthConfig: OAuth configuration information.
+        :param _OauthConfig: OAuth configuration information.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OauthConfig: :class:`tencentcloud.apigateway.v20180808.models.OauthConfig`
-        :param TokenLocation: Token storage position, which is an OAuth 2.0 API request.
+        :param _TokenLocation: Token storage position, which is an OAuth 2.0 API request.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TokenLocation: str
         """
-        self.ServiceId = None
-        self.ApiId = None
-        self.ApiDesc = None
-        self.Path = None
-        self.Method = None
-        self.CreatedTime = None
-        self.ModifiedTime = None
-        self.ApiName = None
-        self.UniqVpcId = None
-        self.ApiType = None
-        self.Protocol = None
-        self.IsDebugAfterCharge = None
-        self.AuthType = None
-        self.ApiBusinessType = None
-        self.AuthRelationApiId = None
-        self.RelationBuniessApiIds = None
-        self.OauthConfig = None
-        self.TokenLocation = None
+        self._ServiceId = None
+        self._ApiId = None
+        self._ApiDesc = None
+        self._Path = None
+        self._Method = None
+        self._CreatedTime = None
+        self._ModifiedTime = None
+        self._ApiName = None
+        self._UniqVpcId = None
+        self._ApiType = None
+        self._Protocol = None
+        self._IsDebugAfterCharge = None
+        self._AuthType = None
+        self._ApiBusinessType = None
+        self._AuthRelationApiId = None
+        self._RelationBuniessApiIds = None
+        self._OauthConfig = None
+        self._TokenLocation = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def ApiId(self):
+        return self._ApiId
+
+    @ApiId.setter
+    def ApiId(self, ApiId):
+        self._ApiId = ApiId
+
+    @property
+    def ApiDesc(self):
+        return self._ApiDesc
+
+    @ApiDesc.setter
+    def ApiDesc(self, ApiDesc):
+        self._ApiDesc = ApiDesc
+
+    @property
+    def Path(self):
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Method(self):
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def ModifiedTime(self):
+        return self._ModifiedTime
+
+    @ModifiedTime.setter
+    def ModifiedTime(self, ModifiedTime):
+        self._ModifiedTime = ModifiedTime
+
+    @property
+    def ApiName(self):
+        return self._ApiName
+
+    @ApiName.setter
+    def ApiName(self, ApiName):
+        self._ApiName = ApiName
+
+    @property
+    def UniqVpcId(self):
+        return self._UniqVpcId
+
+    @UniqVpcId.setter
+    def UniqVpcId(self, UniqVpcId):
+        self._UniqVpcId = UniqVpcId
+
+    @property
+    def ApiType(self):
+        return self._ApiType
+
+    @ApiType.setter
+    def ApiType(self, ApiType):
+        self._ApiType = ApiType
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def IsDebugAfterCharge(self):
+        return self._IsDebugAfterCharge
+
+    @IsDebugAfterCharge.setter
+    def IsDebugAfterCharge(self, IsDebugAfterCharge):
+        self._IsDebugAfterCharge = IsDebugAfterCharge
+
+    @property
+    def AuthType(self):
+        return self._AuthType
+
+    @AuthType.setter
+    def AuthType(self, AuthType):
+        self._AuthType = AuthType
+
+    @property
+    def ApiBusinessType(self):
+        return self._ApiBusinessType
+
+    @ApiBusinessType.setter
+    def ApiBusinessType(self, ApiBusinessType):
+        self._ApiBusinessType = ApiBusinessType
+
+    @property
+    def AuthRelationApiId(self):
+        return self._AuthRelationApiId
+
+    @AuthRelationApiId.setter
+    def AuthRelationApiId(self, AuthRelationApiId):
+        self._AuthRelationApiId = AuthRelationApiId
+
+    @property
+    def RelationBuniessApiIds(self):
+        return self._RelationBuniessApiIds
+
+    @RelationBuniessApiIds.setter
+    def RelationBuniessApiIds(self, RelationBuniessApiIds):
+        self._RelationBuniessApiIds = RelationBuniessApiIds
+
+    @property
+    def OauthConfig(self):
+        return self._OauthConfig
+
+    @OauthConfig.setter
+    def OauthConfig(self, OauthConfig):
+        self._OauthConfig = OauthConfig
+
+    @property
+    def TokenLocation(self):
+        return self._TokenLocation
+
+    @TokenLocation.setter
+    def TokenLocation(self, TokenLocation):
+        self._TokenLocation = TokenLocation
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.ApiId = params.get("ApiId")
-        self.ApiDesc = params.get("ApiDesc")
-        self.Path = params.get("Path")
-        self.Method = params.get("Method")
-        self.CreatedTime = params.get("CreatedTime")
-        self.ModifiedTime = params.get("ModifiedTime")
-        self.ApiName = params.get("ApiName")
-        self.UniqVpcId = params.get("UniqVpcId")
-        self.ApiType = params.get("ApiType")
-        self.Protocol = params.get("Protocol")
-        self.IsDebugAfterCharge = params.get("IsDebugAfterCharge")
-        self.AuthType = params.get("AuthType")
-        self.ApiBusinessType = params.get("ApiBusinessType")
-        self.AuthRelationApiId = params.get("AuthRelationApiId")
-        self.RelationBuniessApiIds = params.get("RelationBuniessApiIds")
+        self._ServiceId = params.get("ServiceId")
+        self._ApiId = params.get("ApiId")
+        self._ApiDesc = params.get("ApiDesc")
+        self._Path = params.get("Path")
+        self._Method = params.get("Method")
+        self._CreatedTime = params.get("CreatedTime")
+        self._ModifiedTime = params.get("ModifiedTime")
+        self._ApiName = params.get("ApiName")
+        self._UniqVpcId = params.get("UniqVpcId")
+        self._ApiType = params.get("ApiType")
+        self._Protocol = params.get("Protocol")
+        self._IsDebugAfterCharge = params.get("IsDebugAfterCharge")
+        self._AuthType = params.get("AuthType")
+        self._ApiBusinessType = params.get("ApiBusinessType")
+        self._AuthRelationApiId = params.get("AuthRelationApiId")
+        self._RelationBuniessApiIds = params.get("RelationBuniessApiIds")
         if params.get("OauthConfig") is not None:
-            self.OauthConfig = OauthConfig()
-            self.OauthConfig._deserialize(params.get("OauthConfig"))
-        self.TokenLocation = params.get("TokenLocation")
+            self._OauthConfig = OauthConfig()
+            self._OauthConfig._deserialize(params.get("OauthConfig"))
+        self._TokenLocation = params.get("TokenLocation")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -532,314 +1046,723 @@ class ApiInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Unique service ID of API.
+        :param _ServiceId: Unique service ID of API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceId: str
-        :param ServiceName: Service name of API.
+        :param _ServiceName: Service name of API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceName: str
-        :param ServiceDesc: Service description of API.
+        :param _ServiceDesc: Service description of API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceDesc: str
-        :param ApiId: Unique API ID.
+        :param _ApiId: Unique API ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApiId: str
-        :param ApiDesc: API description.
+        :param _ApiDesc: API description.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApiDesc: str
-        :param CreatedTime: Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+        :param _CreatedTime: Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CreatedTime: str
-        :param ModifiedTime: Last modified time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+        :param _ModifiedTime: Last modified time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ModifiedTime: str
-        :param ApiName: API name.
+        :param _ApiName: API name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApiName: str
-        :param ApiType: API type. Valid values: NORMAL (general API), TSF (microservice API).
+        :param _ApiType: API type. Valid values: NORMAL (general API), TSF (microservice API).
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApiType: str
-        :param Protocol: API frontend request type, such as HTTP, HTTPS, or HTTP and HTTPS.
+        :param _Protocol: API frontend request type, such as HTTP, HTTPS, or HTTP and HTTPS.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Protocol: str
-        :param AuthType: API authentication type. Valid values: SECRET (key pair authentication), NONE (no authentication), OAUTH.
+        :param _AuthType: API authentication type. Valid values: SECRET (key pair authentication), NONE (no authentication), OAUTH.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AuthType: str
-        :param ApiBusinessType: OAuth API type. Valid values: NORMAL (business API), OAUTH (authorization API).
+        :param _ApiBusinessType: OAuth API type. Valid values: NORMAL (business API), OAUTH (authorization API).
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApiBusinessType: str
-        :param AuthRelationApiId: Unique ID of the authorization API associated with OAuth business API.
+        :param _AuthRelationApiId: Unique ID of the authorization API associated with OAuth business API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AuthRelationApiId: str
-        :param OauthConfig: OAuth configuration.
+        :param _OauthConfig: OAuth configuration.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OauthConfig: :class:`tencentcloud.apigateway.v20180808.models.OauthConfig`
-        :param IsDebugAfterCharge: Whether to enable debugging after purchase (reserved field for the marketplace).
+        :param _IsDebugAfterCharge: Whether to enable debugging after purchase (reserved field for the marketplace).
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IsDebugAfterCharge: bool
-        :param RequestConfig: Request frontend configuration.
+        :param _RequestConfig: Request frontend configuration.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RequestConfig: :class:`tencentcloud.apigateway.v20180808.models.RequestConfig`
-        :param ResponseType: Return type.
+        :param _ResponseType: Return type.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ResponseType: str
-        :param ResponseSuccessExample: Sample response for successful custom response configuration.
+        :param _ResponseSuccessExample: Sample response for successful custom response configuration.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ResponseSuccessExample: str
-        :param ResponseFailExample: Sample response for failed custom response configuration.
+        :param _ResponseFailExample: Sample response for failed custom response configuration.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ResponseFailExample: str
-        :param ResponseErrorCodes: Custom error code configuration.
+        :param _ResponseErrorCodes: Custom error code configuration.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ResponseErrorCodes: list of ErrorCodes
-        :param RequestParameters: Frontend request parameter.
+        :param _RequestParameters: Frontend request parameter.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RequestParameters: list of ReqParameter
-        :param ServiceTimeout: API backend service timeout period in seconds.
+        :param _ServiceTimeout: API backend service timeout period in seconds.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceTimeout: int
-        :param ServiceType: API backend service type. Valid values: HTTP, MOCK, TSF, CLB, SCF, WEBSOCKET, TARGET (in beta test).
+        :param _ServiceType: API backend service type. Valid values: HTTP, MOCK, TSF, CLB, SCF, WEBSOCKET, TARGET (in beta test).
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceType: str
-        :param ServiceConfig: API backend service configuration.
+        :param _ServiceConfig: API backend service configuration.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceConfig: :class:`tencentcloud.apigateway.v20180808.models.ServiceConfig`
-        :param ServiceParameters: API backend service parameter.
+        :param _ServiceParameters: API backend service parameter.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceParameters: list of ServiceParameter
-        :param ConstantParameters: Constant parameter.
+        :param _ConstantParameters: Constant parameter.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ConstantParameters: list of ConstantParameter
-        :param ServiceMockReturnMessage: Returned message of API backend Mock, which is required if `ServiceType` is `Mock`.
+        :param _ServiceMockReturnMessage: Returned message of API backend Mock, which is required if `ServiceType` is `Mock`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceMockReturnMessage: str
-        :param ServiceScfFunctionName: SCF function name, which takes effect if the backend type is `SCF`.
+        :param _ServiceScfFunctionName: SCF function name, which takes effect if the backend type is `SCF`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceScfFunctionName: str
-        :param ServiceScfFunctionNamespace: SCF function namespace, which takes effect if the backend type is `SCF`.
+        :param _ServiceScfFunctionNamespace: SCF function namespace, which takes effect if the backend type is `SCF`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceScfFunctionNamespace: str
-        :param ServiceScfFunctionQualifier: SCF function version, which takes effect if the backend type is `SCF`.
+        :param _ServiceScfFunctionQualifier: SCF function version, which takes effect if the backend type is `SCF`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceScfFunctionQualifier: str
-        :param ServiceScfIsIntegratedResponse: Whether integrated response is enabled.
+        :param _ServiceScfIsIntegratedResponse: Whether integrated response is enabled.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceScfIsIntegratedResponse: bool
-        :param ServiceWebsocketRegisterFunctionName: SCF WebSocket registration function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`
+        :param _ServiceWebsocketRegisterFunctionName: SCF WebSocket registration function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceWebsocketRegisterFunctionName: str
-        :param ServiceWebsocketRegisterFunctionNamespace: SCF WebSocket registration function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param _ServiceWebsocketRegisterFunctionNamespace: SCF WebSocket registration function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceWebsocketRegisterFunctionNamespace: str
-        :param ServiceWebsocketRegisterFunctionQualifier: SCF WebSocket transfer function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param _ServiceWebsocketRegisterFunctionQualifier: SCF WebSocket transfer function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceWebsocketRegisterFunctionQualifier: str
-        :param ServiceWebsocketCleanupFunctionName: SCF WebSocket cleanup function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param _ServiceWebsocketCleanupFunctionName: SCF WebSocket cleanup function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceWebsocketCleanupFunctionName: str
-        :param ServiceWebsocketCleanupFunctionNamespace: SCF WebSocket cleanup function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param _ServiceWebsocketCleanupFunctionNamespace: SCF WebSocket cleanup function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceWebsocketCleanupFunctionNamespace: str
-        :param ServiceWebsocketCleanupFunctionQualifier: SCF WebSocket cleanup function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param _ServiceWebsocketCleanupFunctionQualifier: SCF WebSocket cleanup function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceWebsocketCleanupFunctionQualifier: str
-        :param InternalDomain: WebSocket callback address.
+        :param _InternalDomain: WebSocket callback address.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type InternalDomain: str
-        :param ServiceWebsocketTransportFunctionName: SCF WebSocket transfer function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param _ServiceWebsocketTransportFunctionName: SCF WebSocket transfer function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceWebsocketTransportFunctionName: str
-        :param ServiceWebsocketTransportFunctionNamespace: SCF WebSocket transfer function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param _ServiceWebsocketTransportFunctionNamespace: SCF WebSocket transfer function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceWebsocketTransportFunctionNamespace: str
-        :param ServiceWebsocketTransportFunctionQualifier: SCF WebSocket transfer function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param _ServiceWebsocketTransportFunctionQualifier: SCF WebSocket transfer function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceWebsocketTransportFunctionQualifier: str
-        :param MicroServices: List of microservices bound to API.
+        :param _MicroServices: List of microservices bound to API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MicroServices: list of MicroService
-        :param MicroServicesInfo: Microservice details.
+        :param _MicroServicesInfo: Microservice details.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MicroServicesInfo: list of int
-        :param ServiceTsfLoadBalanceConf: Load balancing configuration of microservice.
+        :param _ServiceTsfLoadBalanceConf: Load balancing configuration of microservice.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceTsfLoadBalanceConf: :class:`tencentcloud.apigateway.v20180808.models.TsfLoadBalanceConfResp`
-        :param ServiceTsfHealthCheckConf: Health check configuration of microservice.
+        :param _ServiceTsfHealthCheckConf: Health check configuration of microservice.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceTsfHealthCheckConf: :class:`tencentcloud.apigateway.v20180808.models.HealthCheckConf`
-        :param EnableCORS: Whether to enable CORS.
+        :param _EnableCORS: Whether to enable CORS.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type EnableCORS: bool
-        :param Tags: Information of tags bound to API.
+        :param _Tags: Information of tags bound to API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Tags: list of Tag
-        :param Environments: Environment information published for API.
+        :param _Environments: Environment information published for API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Environments: list of str
-        :param IsBase64Encoded: Whether to enable Base64 encoding. This parameter takes effect only when the backend is SCF.
+        :param _IsBase64Encoded: Whether to enable Base64 encoding. This parameter takes effect only when the backend is SCF.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type IsBase64Encoded: bool
-        :param IsBase64Trigger: Whether to trigger Base64 encoding by header. This parameter takes effect only when the backend is SCF.
+        :param _IsBase64Trigger: Whether to trigger Base64 encoding by header. This parameter takes effect only when the backend is SCF.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type IsBase64Trigger: bool
-        :param Base64EncodedTriggerRules: Header trigger rules. The number of rules cannot exceed 10.
+        :param _Base64EncodedTriggerRules: Header trigger rules. The number of rules cannot exceed 10.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Base64EncodedTriggerRules: list of Base64EncodedTriggerRule
         """
-        self.ServiceId = None
-        self.ServiceName = None
-        self.ServiceDesc = None
-        self.ApiId = None
-        self.ApiDesc = None
-        self.CreatedTime = None
-        self.ModifiedTime = None
-        self.ApiName = None
-        self.ApiType = None
-        self.Protocol = None
-        self.AuthType = None
-        self.ApiBusinessType = None
-        self.AuthRelationApiId = None
-        self.OauthConfig = None
-        self.IsDebugAfterCharge = None
-        self.RequestConfig = None
-        self.ResponseType = None
-        self.ResponseSuccessExample = None
-        self.ResponseFailExample = None
-        self.ResponseErrorCodes = None
-        self.RequestParameters = None
-        self.ServiceTimeout = None
-        self.ServiceType = None
-        self.ServiceConfig = None
-        self.ServiceParameters = None
-        self.ConstantParameters = None
-        self.ServiceMockReturnMessage = None
-        self.ServiceScfFunctionName = None
-        self.ServiceScfFunctionNamespace = None
-        self.ServiceScfFunctionQualifier = None
-        self.ServiceScfIsIntegratedResponse = None
-        self.ServiceWebsocketRegisterFunctionName = None
-        self.ServiceWebsocketRegisterFunctionNamespace = None
-        self.ServiceWebsocketRegisterFunctionQualifier = None
-        self.ServiceWebsocketCleanupFunctionName = None
-        self.ServiceWebsocketCleanupFunctionNamespace = None
-        self.ServiceWebsocketCleanupFunctionQualifier = None
-        self.InternalDomain = None
-        self.ServiceWebsocketTransportFunctionName = None
-        self.ServiceWebsocketTransportFunctionNamespace = None
-        self.ServiceWebsocketTransportFunctionQualifier = None
-        self.MicroServices = None
-        self.MicroServicesInfo = None
-        self.ServiceTsfLoadBalanceConf = None
-        self.ServiceTsfHealthCheckConf = None
-        self.EnableCORS = None
-        self.Tags = None
-        self.Environments = None
-        self.IsBase64Encoded = None
-        self.IsBase64Trigger = None
-        self.Base64EncodedTriggerRules = None
+        self._ServiceId = None
+        self._ServiceName = None
+        self._ServiceDesc = None
+        self._ApiId = None
+        self._ApiDesc = None
+        self._CreatedTime = None
+        self._ModifiedTime = None
+        self._ApiName = None
+        self._ApiType = None
+        self._Protocol = None
+        self._AuthType = None
+        self._ApiBusinessType = None
+        self._AuthRelationApiId = None
+        self._OauthConfig = None
+        self._IsDebugAfterCharge = None
+        self._RequestConfig = None
+        self._ResponseType = None
+        self._ResponseSuccessExample = None
+        self._ResponseFailExample = None
+        self._ResponseErrorCodes = None
+        self._RequestParameters = None
+        self._ServiceTimeout = None
+        self._ServiceType = None
+        self._ServiceConfig = None
+        self._ServiceParameters = None
+        self._ConstantParameters = None
+        self._ServiceMockReturnMessage = None
+        self._ServiceScfFunctionName = None
+        self._ServiceScfFunctionNamespace = None
+        self._ServiceScfFunctionQualifier = None
+        self._ServiceScfIsIntegratedResponse = None
+        self._ServiceWebsocketRegisterFunctionName = None
+        self._ServiceWebsocketRegisterFunctionNamespace = None
+        self._ServiceWebsocketRegisterFunctionQualifier = None
+        self._ServiceWebsocketCleanupFunctionName = None
+        self._ServiceWebsocketCleanupFunctionNamespace = None
+        self._ServiceWebsocketCleanupFunctionQualifier = None
+        self._InternalDomain = None
+        self._ServiceWebsocketTransportFunctionName = None
+        self._ServiceWebsocketTransportFunctionNamespace = None
+        self._ServiceWebsocketTransportFunctionQualifier = None
+        self._MicroServices = None
+        self._MicroServicesInfo = None
+        self._ServiceTsfLoadBalanceConf = None
+        self._ServiceTsfHealthCheckConf = None
+        self._EnableCORS = None
+        self._Tags = None
+        self._Environments = None
+        self._IsBase64Encoded = None
+        self._IsBase64Trigger = None
+        self._Base64EncodedTriggerRules = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def ServiceName(self):
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def ServiceDesc(self):
+        return self._ServiceDesc
+
+    @ServiceDesc.setter
+    def ServiceDesc(self, ServiceDesc):
+        self._ServiceDesc = ServiceDesc
+
+    @property
+    def ApiId(self):
+        return self._ApiId
+
+    @ApiId.setter
+    def ApiId(self, ApiId):
+        self._ApiId = ApiId
+
+    @property
+    def ApiDesc(self):
+        return self._ApiDesc
+
+    @ApiDesc.setter
+    def ApiDesc(self, ApiDesc):
+        self._ApiDesc = ApiDesc
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def ModifiedTime(self):
+        return self._ModifiedTime
+
+    @ModifiedTime.setter
+    def ModifiedTime(self, ModifiedTime):
+        self._ModifiedTime = ModifiedTime
+
+    @property
+    def ApiName(self):
+        return self._ApiName
+
+    @ApiName.setter
+    def ApiName(self, ApiName):
+        self._ApiName = ApiName
+
+    @property
+    def ApiType(self):
+        return self._ApiType
+
+    @ApiType.setter
+    def ApiType(self, ApiType):
+        self._ApiType = ApiType
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def AuthType(self):
+        return self._AuthType
+
+    @AuthType.setter
+    def AuthType(self, AuthType):
+        self._AuthType = AuthType
+
+    @property
+    def ApiBusinessType(self):
+        return self._ApiBusinessType
+
+    @ApiBusinessType.setter
+    def ApiBusinessType(self, ApiBusinessType):
+        self._ApiBusinessType = ApiBusinessType
+
+    @property
+    def AuthRelationApiId(self):
+        return self._AuthRelationApiId
+
+    @AuthRelationApiId.setter
+    def AuthRelationApiId(self, AuthRelationApiId):
+        self._AuthRelationApiId = AuthRelationApiId
+
+    @property
+    def OauthConfig(self):
+        return self._OauthConfig
+
+    @OauthConfig.setter
+    def OauthConfig(self, OauthConfig):
+        self._OauthConfig = OauthConfig
+
+    @property
+    def IsDebugAfterCharge(self):
+        return self._IsDebugAfterCharge
+
+    @IsDebugAfterCharge.setter
+    def IsDebugAfterCharge(self, IsDebugAfterCharge):
+        self._IsDebugAfterCharge = IsDebugAfterCharge
+
+    @property
+    def RequestConfig(self):
+        return self._RequestConfig
+
+    @RequestConfig.setter
+    def RequestConfig(self, RequestConfig):
+        self._RequestConfig = RequestConfig
+
+    @property
+    def ResponseType(self):
+        return self._ResponseType
+
+    @ResponseType.setter
+    def ResponseType(self, ResponseType):
+        self._ResponseType = ResponseType
+
+    @property
+    def ResponseSuccessExample(self):
+        return self._ResponseSuccessExample
+
+    @ResponseSuccessExample.setter
+    def ResponseSuccessExample(self, ResponseSuccessExample):
+        self._ResponseSuccessExample = ResponseSuccessExample
+
+    @property
+    def ResponseFailExample(self):
+        return self._ResponseFailExample
+
+    @ResponseFailExample.setter
+    def ResponseFailExample(self, ResponseFailExample):
+        self._ResponseFailExample = ResponseFailExample
+
+    @property
+    def ResponseErrorCodes(self):
+        return self._ResponseErrorCodes
+
+    @ResponseErrorCodes.setter
+    def ResponseErrorCodes(self, ResponseErrorCodes):
+        self._ResponseErrorCodes = ResponseErrorCodes
+
+    @property
+    def RequestParameters(self):
+        return self._RequestParameters
+
+    @RequestParameters.setter
+    def RequestParameters(self, RequestParameters):
+        self._RequestParameters = RequestParameters
+
+    @property
+    def ServiceTimeout(self):
+        return self._ServiceTimeout
+
+    @ServiceTimeout.setter
+    def ServiceTimeout(self, ServiceTimeout):
+        self._ServiceTimeout = ServiceTimeout
+
+    @property
+    def ServiceType(self):
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+    @property
+    def ServiceConfig(self):
+        return self._ServiceConfig
+
+    @ServiceConfig.setter
+    def ServiceConfig(self, ServiceConfig):
+        self._ServiceConfig = ServiceConfig
+
+    @property
+    def ServiceParameters(self):
+        return self._ServiceParameters
+
+    @ServiceParameters.setter
+    def ServiceParameters(self, ServiceParameters):
+        self._ServiceParameters = ServiceParameters
+
+    @property
+    def ConstantParameters(self):
+        return self._ConstantParameters
+
+    @ConstantParameters.setter
+    def ConstantParameters(self, ConstantParameters):
+        self._ConstantParameters = ConstantParameters
+
+    @property
+    def ServiceMockReturnMessage(self):
+        return self._ServiceMockReturnMessage
+
+    @ServiceMockReturnMessage.setter
+    def ServiceMockReturnMessage(self, ServiceMockReturnMessage):
+        self._ServiceMockReturnMessage = ServiceMockReturnMessage
+
+    @property
+    def ServiceScfFunctionName(self):
+        return self._ServiceScfFunctionName
+
+    @ServiceScfFunctionName.setter
+    def ServiceScfFunctionName(self, ServiceScfFunctionName):
+        self._ServiceScfFunctionName = ServiceScfFunctionName
+
+    @property
+    def ServiceScfFunctionNamespace(self):
+        return self._ServiceScfFunctionNamespace
+
+    @ServiceScfFunctionNamespace.setter
+    def ServiceScfFunctionNamespace(self, ServiceScfFunctionNamespace):
+        self._ServiceScfFunctionNamespace = ServiceScfFunctionNamespace
+
+    @property
+    def ServiceScfFunctionQualifier(self):
+        return self._ServiceScfFunctionQualifier
+
+    @ServiceScfFunctionQualifier.setter
+    def ServiceScfFunctionQualifier(self, ServiceScfFunctionQualifier):
+        self._ServiceScfFunctionQualifier = ServiceScfFunctionQualifier
+
+    @property
+    def ServiceScfIsIntegratedResponse(self):
+        return self._ServiceScfIsIntegratedResponse
+
+    @ServiceScfIsIntegratedResponse.setter
+    def ServiceScfIsIntegratedResponse(self, ServiceScfIsIntegratedResponse):
+        self._ServiceScfIsIntegratedResponse = ServiceScfIsIntegratedResponse
+
+    @property
+    def ServiceWebsocketRegisterFunctionName(self):
+        return self._ServiceWebsocketRegisterFunctionName
+
+    @ServiceWebsocketRegisterFunctionName.setter
+    def ServiceWebsocketRegisterFunctionName(self, ServiceWebsocketRegisterFunctionName):
+        self._ServiceWebsocketRegisterFunctionName = ServiceWebsocketRegisterFunctionName
+
+    @property
+    def ServiceWebsocketRegisterFunctionNamespace(self):
+        return self._ServiceWebsocketRegisterFunctionNamespace
+
+    @ServiceWebsocketRegisterFunctionNamespace.setter
+    def ServiceWebsocketRegisterFunctionNamespace(self, ServiceWebsocketRegisterFunctionNamespace):
+        self._ServiceWebsocketRegisterFunctionNamespace = ServiceWebsocketRegisterFunctionNamespace
+
+    @property
+    def ServiceWebsocketRegisterFunctionQualifier(self):
+        return self._ServiceWebsocketRegisterFunctionQualifier
+
+    @ServiceWebsocketRegisterFunctionQualifier.setter
+    def ServiceWebsocketRegisterFunctionQualifier(self, ServiceWebsocketRegisterFunctionQualifier):
+        self._ServiceWebsocketRegisterFunctionQualifier = ServiceWebsocketRegisterFunctionQualifier
+
+    @property
+    def ServiceWebsocketCleanupFunctionName(self):
+        return self._ServiceWebsocketCleanupFunctionName
+
+    @ServiceWebsocketCleanupFunctionName.setter
+    def ServiceWebsocketCleanupFunctionName(self, ServiceWebsocketCleanupFunctionName):
+        self._ServiceWebsocketCleanupFunctionName = ServiceWebsocketCleanupFunctionName
+
+    @property
+    def ServiceWebsocketCleanupFunctionNamespace(self):
+        return self._ServiceWebsocketCleanupFunctionNamespace
+
+    @ServiceWebsocketCleanupFunctionNamespace.setter
+    def ServiceWebsocketCleanupFunctionNamespace(self, ServiceWebsocketCleanupFunctionNamespace):
+        self._ServiceWebsocketCleanupFunctionNamespace = ServiceWebsocketCleanupFunctionNamespace
+
+    @property
+    def ServiceWebsocketCleanupFunctionQualifier(self):
+        return self._ServiceWebsocketCleanupFunctionQualifier
+
+    @ServiceWebsocketCleanupFunctionQualifier.setter
+    def ServiceWebsocketCleanupFunctionQualifier(self, ServiceWebsocketCleanupFunctionQualifier):
+        self._ServiceWebsocketCleanupFunctionQualifier = ServiceWebsocketCleanupFunctionQualifier
+
+    @property
+    def InternalDomain(self):
+        return self._InternalDomain
+
+    @InternalDomain.setter
+    def InternalDomain(self, InternalDomain):
+        self._InternalDomain = InternalDomain
+
+    @property
+    def ServiceWebsocketTransportFunctionName(self):
+        return self._ServiceWebsocketTransportFunctionName
+
+    @ServiceWebsocketTransportFunctionName.setter
+    def ServiceWebsocketTransportFunctionName(self, ServiceWebsocketTransportFunctionName):
+        self._ServiceWebsocketTransportFunctionName = ServiceWebsocketTransportFunctionName
+
+    @property
+    def ServiceWebsocketTransportFunctionNamespace(self):
+        return self._ServiceWebsocketTransportFunctionNamespace
+
+    @ServiceWebsocketTransportFunctionNamespace.setter
+    def ServiceWebsocketTransportFunctionNamespace(self, ServiceWebsocketTransportFunctionNamespace):
+        self._ServiceWebsocketTransportFunctionNamespace = ServiceWebsocketTransportFunctionNamespace
+
+    @property
+    def ServiceWebsocketTransportFunctionQualifier(self):
+        return self._ServiceWebsocketTransportFunctionQualifier
+
+    @ServiceWebsocketTransportFunctionQualifier.setter
+    def ServiceWebsocketTransportFunctionQualifier(self, ServiceWebsocketTransportFunctionQualifier):
+        self._ServiceWebsocketTransportFunctionQualifier = ServiceWebsocketTransportFunctionQualifier
+
+    @property
+    def MicroServices(self):
+        return self._MicroServices
+
+    @MicroServices.setter
+    def MicroServices(self, MicroServices):
+        self._MicroServices = MicroServices
+
+    @property
+    def MicroServicesInfo(self):
+        return self._MicroServicesInfo
+
+    @MicroServicesInfo.setter
+    def MicroServicesInfo(self, MicroServicesInfo):
+        self._MicroServicesInfo = MicroServicesInfo
+
+    @property
+    def ServiceTsfLoadBalanceConf(self):
+        return self._ServiceTsfLoadBalanceConf
+
+    @ServiceTsfLoadBalanceConf.setter
+    def ServiceTsfLoadBalanceConf(self, ServiceTsfLoadBalanceConf):
+        self._ServiceTsfLoadBalanceConf = ServiceTsfLoadBalanceConf
+
+    @property
+    def ServiceTsfHealthCheckConf(self):
+        return self._ServiceTsfHealthCheckConf
+
+    @ServiceTsfHealthCheckConf.setter
+    def ServiceTsfHealthCheckConf(self, ServiceTsfHealthCheckConf):
+        self._ServiceTsfHealthCheckConf = ServiceTsfHealthCheckConf
+
+    @property
+    def EnableCORS(self):
+        return self._EnableCORS
+
+    @EnableCORS.setter
+    def EnableCORS(self, EnableCORS):
+        self._EnableCORS = EnableCORS
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Environments(self):
+        return self._Environments
+
+    @Environments.setter
+    def Environments(self, Environments):
+        self._Environments = Environments
+
+    @property
+    def IsBase64Encoded(self):
+        return self._IsBase64Encoded
+
+    @IsBase64Encoded.setter
+    def IsBase64Encoded(self, IsBase64Encoded):
+        self._IsBase64Encoded = IsBase64Encoded
+
+    @property
+    def IsBase64Trigger(self):
+        return self._IsBase64Trigger
+
+    @IsBase64Trigger.setter
+    def IsBase64Trigger(self, IsBase64Trigger):
+        self._IsBase64Trigger = IsBase64Trigger
+
+    @property
+    def Base64EncodedTriggerRules(self):
+        return self._Base64EncodedTriggerRules
+
+    @Base64EncodedTriggerRules.setter
+    def Base64EncodedTriggerRules(self, Base64EncodedTriggerRules):
+        self._Base64EncodedTriggerRules = Base64EncodedTriggerRules
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.ServiceName = params.get("ServiceName")
-        self.ServiceDesc = params.get("ServiceDesc")
-        self.ApiId = params.get("ApiId")
-        self.ApiDesc = params.get("ApiDesc")
-        self.CreatedTime = params.get("CreatedTime")
-        self.ModifiedTime = params.get("ModifiedTime")
-        self.ApiName = params.get("ApiName")
-        self.ApiType = params.get("ApiType")
-        self.Protocol = params.get("Protocol")
-        self.AuthType = params.get("AuthType")
-        self.ApiBusinessType = params.get("ApiBusinessType")
-        self.AuthRelationApiId = params.get("AuthRelationApiId")
+        self._ServiceId = params.get("ServiceId")
+        self._ServiceName = params.get("ServiceName")
+        self._ServiceDesc = params.get("ServiceDesc")
+        self._ApiId = params.get("ApiId")
+        self._ApiDesc = params.get("ApiDesc")
+        self._CreatedTime = params.get("CreatedTime")
+        self._ModifiedTime = params.get("ModifiedTime")
+        self._ApiName = params.get("ApiName")
+        self._ApiType = params.get("ApiType")
+        self._Protocol = params.get("Protocol")
+        self._AuthType = params.get("AuthType")
+        self._ApiBusinessType = params.get("ApiBusinessType")
+        self._AuthRelationApiId = params.get("AuthRelationApiId")
         if params.get("OauthConfig") is not None:
-            self.OauthConfig = OauthConfig()
-            self.OauthConfig._deserialize(params.get("OauthConfig"))
-        self.IsDebugAfterCharge = params.get("IsDebugAfterCharge")
+            self._OauthConfig = OauthConfig()
+            self._OauthConfig._deserialize(params.get("OauthConfig"))
+        self._IsDebugAfterCharge = params.get("IsDebugAfterCharge")
         if params.get("RequestConfig") is not None:
-            self.RequestConfig = RequestConfig()
-            self.RequestConfig._deserialize(params.get("RequestConfig"))
-        self.ResponseType = params.get("ResponseType")
-        self.ResponseSuccessExample = params.get("ResponseSuccessExample")
-        self.ResponseFailExample = params.get("ResponseFailExample")
+            self._RequestConfig = RequestConfig()
+            self._RequestConfig._deserialize(params.get("RequestConfig"))
+        self._ResponseType = params.get("ResponseType")
+        self._ResponseSuccessExample = params.get("ResponseSuccessExample")
+        self._ResponseFailExample = params.get("ResponseFailExample")
         if params.get("ResponseErrorCodes") is not None:
-            self.ResponseErrorCodes = []
+            self._ResponseErrorCodes = []
             for item in params.get("ResponseErrorCodes"):
                 obj = ErrorCodes()
                 obj._deserialize(item)
-                self.ResponseErrorCodes.append(obj)
+                self._ResponseErrorCodes.append(obj)
         if params.get("RequestParameters") is not None:
-            self.RequestParameters = []
+            self._RequestParameters = []
             for item in params.get("RequestParameters"):
                 obj = ReqParameter()
                 obj._deserialize(item)
-                self.RequestParameters.append(obj)
-        self.ServiceTimeout = params.get("ServiceTimeout")
-        self.ServiceType = params.get("ServiceType")
+                self._RequestParameters.append(obj)
+        self._ServiceTimeout = params.get("ServiceTimeout")
+        self._ServiceType = params.get("ServiceType")
         if params.get("ServiceConfig") is not None:
-            self.ServiceConfig = ServiceConfig()
-            self.ServiceConfig._deserialize(params.get("ServiceConfig"))
+            self._ServiceConfig = ServiceConfig()
+            self._ServiceConfig._deserialize(params.get("ServiceConfig"))
         if params.get("ServiceParameters") is not None:
-            self.ServiceParameters = []
+            self._ServiceParameters = []
             for item in params.get("ServiceParameters"):
                 obj = ServiceParameter()
                 obj._deserialize(item)
-                self.ServiceParameters.append(obj)
+                self._ServiceParameters.append(obj)
         if params.get("ConstantParameters") is not None:
-            self.ConstantParameters = []
+            self._ConstantParameters = []
             for item in params.get("ConstantParameters"):
                 obj = ConstantParameter()
                 obj._deserialize(item)
-                self.ConstantParameters.append(obj)
-        self.ServiceMockReturnMessage = params.get("ServiceMockReturnMessage")
-        self.ServiceScfFunctionName = params.get("ServiceScfFunctionName")
-        self.ServiceScfFunctionNamespace = params.get("ServiceScfFunctionNamespace")
-        self.ServiceScfFunctionQualifier = params.get("ServiceScfFunctionQualifier")
-        self.ServiceScfIsIntegratedResponse = params.get("ServiceScfIsIntegratedResponse")
-        self.ServiceWebsocketRegisterFunctionName = params.get("ServiceWebsocketRegisterFunctionName")
-        self.ServiceWebsocketRegisterFunctionNamespace = params.get("ServiceWebsocketRegisterFunctionNamespace")
-        self.ServiceWebsocketRegisterFunctionQualifier = params.get("ServiceWebsocketRegisterFunctionQualifier")
-        self.ServiceWebsocketCleanupFunctionName = params.get("ServiceWebsocketCleanupFunctionName")
-        self.ServiceWebsocketCleanupFunctionNamespace = params.get("ServiceWebsocketCleanupFunctionNamespace")
-        self.ServiceWebsocketCleanupFunctionQualifier = params.get("ServiceWebsocketCleanupFunctionQualifier")
-        self.InternalDomain = params.get("InternalDomain")
-        self.ServiceWebsocketTransportFunctionName = params.get("ServiceWebsocketTransportFunctionName")
-        self.ServiceWebsocketTransportFunctionNamespace = params.get("ServiceWebsocketTransportFunctionNamespace")
-        self.ServiceWebsocketTransportFunctionQualifier = params.get("ServiceWebsocketTransportFunctionQualifier")
+                self._ConstantParameters.append(obj)
+        self._ServiceMockReturnMessage = params.get("ServiceMockReturnMessage")
+        self._ServiceScfFunctionName = params.get("ServiceScfFunctionName")
+        self._ServiceScfFunctionNamespace = params.get("ServiceScfFunctionNamespace")
+        self._ServiceScfFunctionQualifier = params.get("ServiceScfFunctionQualifier")
+        self._ServiceScfIsIntegratedResponse = params.get("ServiceScfIsIntegratedResponse")
+        self._ServiceWebsocketRegisterFunctionName = params.get("ServiceWebsocketRegisterFunctionName")
+        self._ServiceWebsocketRegisterFunctionNamespace = params.get("ServiceWebsocketRegisterFunctionNamespace")
+        self._ServiceWebsocketRegisterFunctionQualifier = params.get("ServiceWebsocketRegisterFunctionQualifier")
+        self._ServiceWebsocketCleanupFunctionName = params.get("ServiceWebsocketCleanupFunctionName")
+        self._ServiceWebsocketCleanupFunctionNamespace = params.get("ServiceWebsocketCleanupFunctionNamespace")
+        self._ServiceWebsocketCleanupFunctionQualifier = params.get("ServiceWebsocketCleanupFunctionQualifier")
+        self._InternalDomain = params.get("InternalDomain")
+        self._ServiceWebsocketTransportFunctionName = params.get("ServiceWebsocketTransportFunctionName")
+        self._ServiceWebsocketTransportFunctionNamespace = params.get("ServiceWebsocketTransportFunctionNamespace")
+        self._ServiceWebsocketTransportFunctionQualifier = params.get("ServiceWebsocketTransportFunctionQualifier")
         if params.get("MicroServices") is not None:
-            self.MicroServices = []
+            self._MicroServices = []
             for item in params.get("MicroServices"):
                 obj = MicroService()
                 obj._deserialize(item)
-                self.MicroServices.append(obj)
-        self.MicroServicesInfo = params.get("MicroServicesInfo")
+                self._MicroServices.append(obj)
+        self._MicroServicesInfo = params.get("MicroServicesInfo")
         if params.get("ServiceTsfLoadBalanceConf") is not None:
-            self.ServiceTsfLoadBalanceConf = TsfLoadBalanceConfResp()
-            self.ServiceTsfLoadBalanceConf._deserialize(params.get("ServiceTsfLoadBalanceConf"))
+            self._ServiceTsfLoadBalanceConf = TsfLoadBalanceConfResp()
+            self._ServiceTsfLoadBalanceConf._deserialize(params.get("ServiceTsfLoadBalanceConf"))
         if params.get("ServiceTsfHealthCheckConf") is not None:
-            self.ServiceTsfHealthCheckConf = HealthCheckConf()
-            self.ServiceTsfHealthCheckConf._deserialize(params.get("ServiceTsfHealthCheckConf"))
-        self.EnableCORS = params.get("EnableCORS")
+            self._ServiceTsfHealthCheckConf = HealthCheckConf()
+            self._ServiceTsfHealthCheckConf._deserialize(params.get("ServiceTsfHealthCheckConf"))
+        self._EnableCORS = params.get("EnableCORS")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.Environments = params.get("Environments")
-        self.IsBase64Encoded = params.get("IsBase64Encoded")
-        self.IsBase64Trigger = params.get("IsBase64Trigger")
+                self._Tags.append(obj)
+        self._Environments = params.get("Environments")
+        self._IsBase64Encoded = params.get("IsBase64Encoded")
+        self._IsBase64Trigger = params.get("IsBase64Trigger")
         if params.get("Base64EncodedTriggerRules") is not None:
-            self.Base64EncodedTriggerRules = []
+            self._Base64EncodedTriggerRules = []
             for item in params.get("Base64EncodedTriggerRules"):
                 obj = Base64EncodedTriggerRule()
                 obj._deserialize(item)
-                self.Base64EncodedTriggerRules.append(obj)
+                self._Base64EncodedTriggerRules.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -852,27 +1775,44 @@ class ApiInfoSummary(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Total number of APIs that can use this plugin
+        :param _TotalCount: Total number of APIs that can use this plugin
         :type TotalCount: int
-        :param ApiSet: Information of the APIs that can use this plugin
+        :param _ApiSet: Information of the APIs that can use this plugin
         :type ApiSet: list of AvailableApiInfo
         """
-        self.TotalCount = None
-        self.ApiSet = None
+        self._TotalCount = None
+        self._ApiSet = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ApiSet(self):
+        return self._ApiSet
+
+    @ApiSet.setter
+    def ApiSet(self, ApiSet):
+        self._ApiSet = ApiSet
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("ApiSet") is not None:
-            self.ApiSet = []
+            self._ApiSet = []
             for item in params.get("ApiSet"):
                 obj = AvailableApiInfo()
                 obj._deserialize(item)
-                self.ApiSet.append(obj)
+                self._ApiSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -885,42 +1825,99 @@ class ApiKey(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AccessKeyId: Created API key ID.
+        :param _AccessKeyId: Created API key ID.
         :type AccessKeyId: str
-        :param AccessKeySecret: Created API key.
+        :param _AccessKeySecret: Created API key.
         :type AccessKeySecret: str
-        :param AccessKeyType: Key type. Valid values: auto, manual.
+        :param _AccessKeyType: Key type. Valid values: auto, manual.
         :type AccessKeyType: str
-        :param SecretName: Custom key name.
+        :param _SecretName: Custom key name.
         :type SecretName: str
-        :param ModifiedTime: Last modified time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+        :param _ModifiedTime: Last modified time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
         :type ModifiedTime: str
-        :param Status: Key status. 0: disabled. 1: enabled.
+        :param _Status: Key status. 0: disabled. 1: enabled.
         :type Status: int
-        :param CreatedTime: Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+        :param _CreatedTime: Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
         :type CreatedTime: str
         """
-        self.AccessKeyId = None
-        self.AccessKeySecret = None
-        self.AccessKeyType = None
-        self.SecretName = None
-        self.ModifiedTime = None
-        self.Status = None
-        self.CreatedTime = None
+        self._AccessKeyId = None
+        self._AccessKeySecret = None
+        self._AccessKeyType = None
+        self._SecretName = None
+        self._ModifiedTime = None
+        self._Status = None
+        self._CreatedTime = None
+
+    @property
+    def AccessKeyId(self):
+        return self._AccessKeyId
+
+    @AccessKeyId.setter
+    def AccessKeyId(self, AccessKeyId):
+        self._AccessKeyId = AccessKeyId
+
+    @property
+    def AccessKeySecret(self):
+        return self._AccessKeySecret
+
+    @AccessKeySecret.setter
+    def AccessKeySecret(self, AccessKeySecret):
+        self._AccessKeySecret = AccessKeySecret
+
+    @property
+    def AccessKeyType(self):
+        return self._AccessKeyType
+
+    @AccessKeyType.setter
+    def AccessKeyType(self, AccessKeyType):
+        self._AccessKeyType = AccessKeyType
+
+    @property
+    def SecretName(self):
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
+
+    @property
+    def ModifiedTime(self):
+        return self._ModifiedTime
+
+    @ModifiedTime.setter
+    def ModifiedTime(self, ModifiedTime):
+        self._ModifiedTime = ModifiedTime
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
 
 
     def _deserialize(self, params):
-        self.AccessKeyId = params.get("AccessKeyId")
-        self.AccessKeySecret = params.get("AccessKeySecret")
-        self.AccessKeyType = params.get("AccessKeyType")
-        self.SecretName = params.get("SecretName")
-        self.ModifiedTime = params.get("ModifiedTime")
-        self.Status = params.get("Status")
-        self.CreatedTime = params.get("CreatedTime")
+        self._AccessKeyId = params.get("AccessKeyId")
+        self._AccessKeySecret = params.get("AccessKeySecret")
+        self._AccessKeyType = params.get("AccessKeyType")
+        self._SecretName = params.get("SecretName")
+        self._ModifiedTime = params.get("ModifiedTime")
+        self._Status = params.get("Status")
+        self._CreatedTime = params.get("CreatedTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -933,29 +1930,46 @@ class ApiKeysStatus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Number of eligible API keys.
+        :param _TotalCount: Number of eligible API keys.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TotalCount: int
-        :param ApiKeySet: API key list.
+        :param _ApiKeySet: API key list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApiKeySet: list of ApiKey
         """
-        self.TotalCount = None
-        self.ApiKeySet = None
+        self._TotalCount = None
+        self._ApiKeySet = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ApiKeySet(self):
+        return self._ApiKeySet
+
+    @ApiKeySet.setter
+    def ApiKeySet(self, ApiKeySet):
+        self._ApiKeySet = ApiKeySet
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("ApiKeySet") is not None:
-            self.ApiKeySet = []
+            self._ApiKeySet = []
             for item in params.get("ApiKeySet"):
                 obj = ApiKey()
                 obj._deserialize(item)
-                self.ApiKeySet.append(obj)
+                self._ApiKeySet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -968,22 +1982,39 @@ class ApiRequestConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Path: path
+        :param _Path: path
         :type Path: str
-        :param Method: Method
+        :param _Method: Method
         :type Method: str
         """
-        self.Path = None
-        self.Method = None
+        self._Path = None
+        self._Method = None
+
+    @property
+    def Path(self):
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Method(self):
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
 
 
     def _deserialize(self, params):
-        self.Path = params.get("Path")
-        self.Method = params.get("Method")
+        self._Path = params.get("Path")
+        self._Method = params.get("Method")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -996,89 +2027,210 @@ class ApiUsagePlan(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Unique service ID.
+        :param _ServiceId: Unique service ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceId: str
-        :param ApiId: Unique API ID.
+        :param _ApiId: Unique API ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApiId: str
-        :param ApiName: API name.
+        :param _ApiName: API name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApiName: str
-        :param Path: API path.
+        :param _Path: API path.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Path: str
-        :param Method: API method.
+        :param _Method: API method.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Method: str
-        :param UsagePlanId: Unique usage plan ID.
+        :param _UsagePlanId: Unique usage plan ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UsagePlanId: str
-        :param UsagePlanName: Usage plan name.
+        :param _UsagePlanName: Usage plan name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UsagePlanName: str
-        :param UsagePlanDesc: Usage plan description.
+        :param _UsagePlanDesc: Usage plan description.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UsagePlanDesc: str
-        :param Environment: Service environment bound to usage plan.
+        :param _Environment: Service environment bound to usage plan.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Environment: str
-        :param InUseRequestNum: Used quota.
+        :param _InUseRequestNum: Used quota.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type InUseRequestNum: int
-        :param MaxRequestNum: Total number of requests allowed. `-1` indicates no limit.
+        :param _MaxRequestNum: Total number of requests allowed. `-1` indicates no limit.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MaxRequestNum: int
-        :param MaxRequestNumPreSec: Request QPS upper limit. `-1` indicates no limit.
+        :param _MaxRequestNumPreSec: Request QPS upper limit. `-1` indicates no limit.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MaxRequestNumPreSec: int
-        :param CreatedTime: Usage plan creation time.
+        :param _CreatedTime: Usage plan creation time.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CreatedTime: str
-        :param ModifiedTime: Last modified time of usage plan.
+        :param _ModifiedTime: Last modified time of usage plan.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ModifiedTime: str
-        :param ServiceName: Service name.
+        :param _ServiceName: Service name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceName: str
         """
-        self.ServiceId = None
-        self.ApiId = None
-        self.ApiName = None
-        self.Path = None
-        self.Method = None
-        self.UsagePlanId = None
-        self.UsagePlanName = None
-        self.UsagePlanDesc = None
-        self.Environment = None
-        self.InUseRequestNum = None
-        self.MaxRequestNum = None
-        self.MaxRequestNumPreSec = None
-        self.CreatedTime = None
-        self.ModifiedTime = None
-        self.ServiceName = None
+        self._ServiceId = None
+        self._ApiId = None
+        self._ApiName = None
+        self._Path = None
+        self._Method = None
+        self._UsagePlanId = None
+        self._UsagePlanName = None
+        self._UsagePlanDesc = None
+        self._Environment = None
+        self._InUseRequestNum = None
+        self._MaxRequestNum = None
+        self._MaxRequestNumPreSec = None
+        self._CreatedTime = None
+        self._ModifiedTime = None
+        self._ServiceName = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def ApiId(self):
+        return self._ApiId
+
+    @ApiId.setter
+    def ApiId(self, ApiId):
+        self._ApiId = ApiId
+
+    @property
+    def ApiName(self):
+        return self._ApiName
+
+    @ApiName.setter
+    def ApiName(self, ApiName):
+        self._ApiName = ApiName
+
+    @property
+    def Path(self):
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Method(self):
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
+    @property
+    def UsagePlanId(self):
+        return self._UsagePlanId
+
+    @UsagePlanId.setter
+    def UsagePlanId(self, UsagePlanId):
+        self._UsagePlanId = UsagePlanId
+
+    @property
+    def UsagePlanName(self):
+        return self._UsagePlanName
+
+    @UsagePlanName.setter
+    def UsagePlanName(self, UsagePlanName):
+        self._UsagePlanName = UsagePlanName
+
+    @property
+    def UsagePlanDesc(self):
+        return self._UsagePlanDesc
+
+    @UsagePlanDesc.setter
+    def UsagePlanDesc(self, UsagePlanDesc):
+        self._UsagePlanDesc = UsagePlanDesc
+
+    @property
+    def Environment(self):
+        return self._Environment
+
+    @Environment.setter
+    def Environment(self, Environment):
+        self._Environment = Environment
+
+    @property
+    def InUseRequestNum(self):
+        return self._InUseRequestNum
+
+    @InUseRequestNum.setter
+    def InUseRequestNum(self, InUseRequestNum):
+        self._InUseRequestNum = InUseRequestNum
+
+    @property
+    def MaxRequestNum(self):
+        return self._MaxRequestNum
+
+    @MaxRequestNum.setter
+    def MaxRequestNum(self, MaxRequestNum):
+        self._MaxRequestNum = MaxRequestNum
+
+    @property
+    def MaxRequestNumPreSec(self):
+        return self._MaxRequestNumPreSec
+
+    @MaxRequestNumPreSec.setter
+    def MaxRequestNumPreSec(self, MaxRequestNumPreSec):
+        self._MaxRequestNumPreSec = MaxRequestNumPreSec
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def ModifiedTime(self):
+        return self._ModifiedTime
+
+    @ModifiedTime.setter
+    def ModifiedTime(self, ModifiedTime):
+        self._ModifiedTime = ModifiedTime
+
+    @property
+    def ServiceName(self):
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.ApiId = params.get("ApiId")
-        self.ApiName = params.get("ApiName")
-        self.Path = params.get("Path")
-        self.Method = params.get("Method")
-        self.UsagePlanId = params.get("UsagePlanId")
-        self.UsagePlanName = params.get("UsagePlanName")
-        self.UsagePlanDesc = params.get("UsagePlanDesc")
-        self.Environment = params.get("Environment")
-        self.InUseRequestNum = params.get("InUseRequestNum")
-        self.MaxRequestNum = params.get("MaxRequestNum")
-        self.MaxRequestNumPreSec = params.get("MaxRequestNumPreSec")
-        self.CreatedTime = params.get("CreatedTime")
-        self.ModifiedTime = params.get("ModifiedTime")
-        self.ServiceName = params.get("ServiceName")
+        self._ServiceId = params.get("ServiceId")
+        self._ApiId = params.get("ApiId")
+        self._ApiName = params.get("ApiName")
+        self._Path = params.get("Path")
+        self._Method = params.get("Method")
+        self._UsagePlanId = params.get("UsagePlanId")
+        self._UsagePlanName = params.get("UsagePlanName")
+        self._UsagePlanDesc = params.get("UsagePlanDesc")
+        self._Environment = params.get("Environment")
+        self._InUseRequestNum = params.get("InUseRequestNum")
+        self._MaxRequestNum = params.get("MaxRequestNum")
+        self._MaxRequestNumPreSec = params.get("MaxRequestNumPreSec")
+        self._CreatedTime = params.get("CreatedTime")
+        self._ModifiedTime = params.get("ModifiedTime")
+        self._ServiceName = params.get("ServiceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1091,29 +2243,46 @@ class ApiUsagePlanSet(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Total number of usage plans bound to API.
+        :param _TotalCount: Total number of usage plans bound to API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TotalCount: int
-        :param ApiUsagePlanList: List of usage plans bound to API.
+        :param _ApiUsagePlanList: List of usage plans bound to API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApiUsagePlanList: list of ApiUsagePlan
         """
-        self.TotalCount = None
-        self.ApiUsagePlanList = None
+        self._TotalCount = None
+        self._ApiUsagePlanList = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ApiUsagePlanList(self):
+        return self._ApiUsagePlanList
+
+    @ApiUsagePlanList.setter
+    def ApiUsagePlanList(self, ApiUsagePlanList):
+        self._ApiUsagePlanList = ApiUsagePlanList
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("ApiUsagePlanList") is not None:
-            self.ApiUsagePlanList = []
+            self._ApiUsagePlanList = []
             for item in params.get("ApiUsagePlanList"):
                 obj = ApiUsagePlan()
                 obj._deserialize(item)
-                self.ApiUsagePlanList.append(obj)
+                self._ApiUsagePlanList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1126,27 +2295,44 @@ class ApisStatus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Number of eligible APIs.
+        :param _TotalCount: Number of eligible APIs.
         :type TotalCount: int
-        :param ApiIdStatusSet: API list.
+        :param _ApiIdStatusSet: API list.
         :type ApiIdStatusSet: list of DesApisStatus
         """
-        self.TotalCount = None
-        self.ApiIdStatusSet = None
+        self._TotalCount = None
+        self._ApiIdStatusSet = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ApiIdStatusSet(self):
+        return self._ApiIdStatusSet
+
+    @ApiIdStatusSet.setter
+    def ApiIdStatusSet(self, ApiIdStatusSet):
+        self._ApiIdStatusSet = ApiIdStatusSet
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("ApiIdStatusSet") is not None:
-            self.ApiIdStatusSet = []
+            self._ApiIdStatusSet = []
             for item in params.get("ApiIdStatusSet"):
                 obj = DesApisStatus()
                 obj._deserialize(item)
-                self.ApiIdStatusSet.append(obj)
+                self._ApiIdStatusSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1159,30 +2345,63 @@ class AttachPluginRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PluginId: ID of the plugin to be bound
+        :param _PluginId: ID of the plugin to be bound
         :type PluginId: str
-        :param ServiceId: Service ID
+        :param _ServiceId: Service ID
         :type ServiceId: str
-        :param EnvironmentName: API environment
+        :param _EnvironmentName: API environment
         :type EnvironmentName: str
-        :param ApiIds: List of APIs bound with the plugin
+        :param _ApiIds: List of APIs bound with the plugin
         :type ApiIds: list of str
         """
-        self.PluginId = None
-        self.ServiceId = None
-        self.EnvironmentName = None
-        self.ApiIds = None
+        self._PluginId = None
+        self._ServiceId = None
+        self._EnvironmentName = None
+        self._ApiIds = None
+
+    @property
+    def PluginId(self):
+        return self._PluginId
+
+    @PluginId.setter
+    def PluginId(self, PluginId):
+        self._PluginId = PluginId
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def EnvironmentName(self):
+        return self._EnvironmentName
+
+    @EnvironmentName.setter
+    def EnvironmentName(self, EnvironmentName):
+        self._EnvironmentName = EnvironmentName
+
+    @property
+    def ApiIds(self):
+        return self._ApiIds
+
+    @ApiIds.setter
+    def ApiIds(self, ApiIds):
+        self._ApiIds = ApiIds
 
 
     def _deserialize(self, params):
-        self.PluginId = params.get("PluginId")
-        self.ServiceId = params.get("ServiceId")
-        self.EnvironmentName = params.get("EnvironmentName")
-        self.ApiIds = params.get("ApiIds")
+        self._PluginId = params.get("PluginId")
+        self._ServiceId = params.get("ServiceId")
+        self._EnvironmentName = params.get("EnvironmentName")
+        self._ApiIds = params.get("ApiIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1195,18 +2414,34 @@ class AttachPluginResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Whether binding succeeded.
+        :param _Result: Whether binding succeeded.
         :type Result: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
 
 
 class AttachedApiInfo(AbstractModel):
@@ -1216,48 +2451,113 @@ class AttachedApiInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: ID of the service to which the API belongs
+        :param _ServiceId: ID of the service to which the API belongs
         :type ServiceId: str
-        :param ServiceName: Name of the service to which the API belongs
+        :param _ServiceName: Name of the service to which the API belongs
         :type ServiceName: str
-        :param ServiceDesc: Description of the service to which the API belongs
+        :param _ServiceDesc: Description of the service to which the API belongs
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceDesc: str
-        :param ApiId: API ID
+        :param _ApiId: API ID
         :type ApiId: str
-        :param ApiName: API name
+        :param _ApiName: API name
         :type ApiName: str
-        :param ApiDesc: API description
+        :param _ApiDesc: API description
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApiDesc: str
-        :param Environment: Environment of the API bound with the plugin
+        :param _Environment: Environment of the API bound with the plugin
         :type Environment: str
-        :param AttachedTime: Time when the plugin was bound to the API
+        :param _AttachedTime: Time when the plugin was bound to the API
         :type AttachedTime: str
         """
-        self.ServiceId = None
-        self.ServiceName = None
-        self.ServiceDesc = None
-        self.ApiId = None
-        self.ApiName = None
-        self.ApiDesc = None
-        self.Environment = None
-        self.AttachedTime = None
+        self._ServiceId = None
+        self._ServiceName = None
+        self._ServiceDesc = None
+        self._ApiId = None
+        self._ApiName = None
+        self._ApiDesc = None
+        self._Environment = None
+        self._AttachedTime = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def ServiceName(self):
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def ServiceDesc(self):
+        return self._ServiceDesc
+
+    @ServiceDesc.setter
+    def ServiceDesc(self, ServiceDesc):
+        self._ServiceDesc = ServiceDesc
+
+    @property
+    def ApiId(self):
+        return self._ApiId
+
+    @ApiId.setter
+    def ApiId(self, ApiId):
+        self._ApiId = ApiId
+
+    @property
+    def ApiName(self):
+        return self._ApiName
+
+    @ApiName.setter
+    def ApiName(self, ApiName):
+        self._ApiName = ApiName
+
+    @property
+    def ApiDesc(self):
+        return self._ApiDesc
+
+    @ApiDesc.setter
+    def ApiDesc(self, ApiDesc):
+        self._ApiDesc = ApiDesc
+
+    @property
+    def Environment(self):
+        return self._Environment
+
+    @Environment.setter
+    def Environment(self, Environment):
+        self._Environment = Environment
+
+    @property
+    def AttachedTime(self):
+        return self._AttachedTime
+
+    @AttachedTime.setter
+    def AttachedTime(self, AttachedTime):
+        self._AttachedTime = AttachedTime
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.ServiceName = params.get("ServiceName")
-        self.ServiceDesc = params.get("ServiceDesc")
-        self.ApiId = params.get("ApiId")
-        self.ApiName = params.get("ApiName")
-        self.ApiDesc = params.get("ApiDesc")
-        self.Environment = params.get("Environment")
-        self.AttachedTime = params.get("AttachedTime")
+        self._ServiceId = params.get("ServiceId")
+        self._ServiceName = params.get("ServiceName")
+        self._ServiceDesc = params.get("ServiceDesc")
+        self._ApiId = params.get("ApiId")
+        self._ApiName = params.get("ApiName")
+        self._ApiDesc = params.get("ApiDesc")
+        self._Environment = params.get("Environment")
+        self._AttachedTime = params.get("AttachedTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1270,27 +2570,44 @@ class AttachedApiSummary(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Number of APIs bound with the plugin
+        :param _TotalCount: Number of APIs bound with the plugin
         :type TotalCount: int
-        :param AttachedApis: Information of the API bound with the plugin
+        :param _AttachedApis: Information of the API bound with the plugin
         :type AttachedApis: list of AttachedApiInfo
         """
-        self.TotalCount = None
-        self.AttachedApis = None
+        self._TotalCount = None
+        self._AttachedApis = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def AttachedApis(self):
+        return self._AttachedApis
+
+    @AttachedApis.setter
+    def AttachedApis(self, AttachedApis):
+        self._AttachedApis = AttachedApis
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("AttachedApis") is not None:
-            self.AttachedApis = []
+            self._AttachedApis = []
             for item in params.get("AttachedApis"):
                 obj = AttachedApiInfo()
                 obj._deserialize(item)
-                self.AttachedApis.append(obj)
+                self._AttachedApis.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1303,42 +2620,99 @@ class AttachedPluginInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PluginId: Plugin ID
+        :param _PluginId: Plugin ID
         :type PluginId: str
-        :param Environment: Environment information
+        :param _Environment: Environment information
         :type Environment: str
-        :param AttachedTime: Binding time
+        :param _AttachedTime: Binding time
         :type AttachedTime: str
-        :param PluginName: Plugin name
+        :param _PluginName: Plugin name
         :type PluginName: str
-        :param PluginType: Plugin type
+        :param _PluginType: Plugin type
         :type PluginType: str
-        :param Description: Plugin description
+        :param _Description: Plugin description
         :type Description: str
-        :param PluginData: Plugin definition statement
+        :param _PluginData: Plugin definition statement
         :type PluginData: str
         """
-        self.PluginId = None
-        self.Environment = None
-        self.AttachedTime = None
-        self.PluginName = None
-        self.PluginType = None
-        self.Description = None
-        self.PluginData = None
+        self._PluginId = None
+        self._Environment = None
+        self._AttachedTime = None
+        self._PluginName = None
+        self._PluginType = None
+        self._Description = None
+        self._PluginData = None
+
+    @property
+    def PluginId(self):
+        return self._PluginId
+
+    @PluginId.setter
+    def PluginId(self, PluginId):
+        self._PluginId = PluginId
+
+    @property
+    def Environment(self):
+        return self._Environment
+
+    @Environment.setter
+    def Environment(self, Environment):
+        self._Environment = Environment
+
+    @property
+    def AttachedTime(self):
+        return self._AttachedTime
+
+    @AttachedTime.setter
+    def AttachedTime(self, AttachedTime):
+        self._AttachedTime = AttachedTime
+
+    @property
+    def PluginName(self):
+        return self._PluginName
+
+    @PluginName.setter
+    def PluginName(self, PluginName):
+        self._PluginName = PluginName
+
+    @property
+    def PluginType(self):
+        return self._PluginType
+
+    @PluginType.setter
+    def PluginType(self, PluginType):
+        self._PluginType = PluginType
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def PluginData(self):
+        return self._PluginData
+
+    @PluginData.setter
+    def PluginData(self, PluginData):
+        self._PluginData = PluginData
 
 
     def _deserialize(self, params):
-        self.PluginId = params.get("PluginId")
-        self.Environment = params.get("Environment")
-        self.AttachedTime = params.get("AttachedTime")
-        self.PluginName = params.get("PluginName")
-        self.PluginType = params.get("PluginType")
-        self.Description = params.get("Description")
-        self.PluginData = params.get("PluginData")
+        self._PluginId = params.get("PluginId")
+        self._Environment = params.get("Environment")
+        self._AttachedTime = params.get("AttachedTime")
+        self._PluginName = params.get("PluginName")
+        self._PluginType = params.get("PluginType")
+        self._Description = params.get("Description")
+        self._PluginData = params.get("PluginData")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1351,27 +2725,44 @@ class AttachedPluginSummary(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Total number of bound plug-ins
+        :param _TotalCount: Total number of bound plug-ins
         :type TotalCount: int
-        :param PluginSummary: Information of bound plug-ins
+        :param _PluginSummary: Information of bound plug-ins
         :type PluginSummary: list of AttachedPluginInfo
         """
-        self.TotalCount = None
-        self.PluginSummary = None
+        self._TotalCount = None
+        self._PluginSummary = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def PluginSummary(self):
+        return self._PluginSummary
+
+    @PluginSummary.setter
+    def PluginSummary(self, PluginSummary):
+        self._PluginSummary = PluginSummary
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("PluginSummary") is not None:
-            self.PluginSummary = []
+            self._PluginSummary = []
             for item in params.get("PluginSummary"):
                 obj = AttachedPluginInfo()
                 obj._deserialize(item)
-                self.PluginSummary.append(obj)
+                self._PluginSummary.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1384,44 +2775,101 @@ class AvailableApiInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApiId: API ID
+        :param _ApiId: API ID
         :type ApiId: str
-        :param ApiName: API name
+        :param _ApiName: API name
         :type ApiName: str
-        :param ApiType: API type
+        :param _ApiType: API type
         :type ApiType: str
-        :param Path: API path
+        :param _Path: API path
         :type Path: str
-        :param Method: API method
+        :param _Method: API method
         :type Method: str
-        :param AttachedOtherPlugin: Whether the API is bound with another plugin
+        :param _AttachedOtherPlugin: Whether the API is bound with another plugin
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AttachedOtherPlugin: bool
-        :param IsAttached: Whether the API is bound with the current plugin
+        :param _IsAttached: Whether the API is bound with the current plugin
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IsAttached: bool
         """
-        self.ApiId = None
-        self.ApiName = None
-        self.ApiType = None
-        self.Path = None
-        self.Method = None
-        self.AttachedOtherPlugin = None
-        self.IsAttached = None
+        self._ApiId = None
+        self._ApiName = None
+        self._ApiType = None
+        self._Path = None
+        self._Method = None
+        self._AttachedOtherPlugin = None
+        self._IsAttached = None
+
+    @property
+    def ApiId(self):
+        return self._ApiId
+
+    @ApiId.setter
+    def ApiId(self, ApiId):
+        self._ApiId = ApiId
+
+    @property
+    def ApiName(self):
+        return self._ApiName
+
+    @ApiName.setter
+    def ApiName(self, ApiName):
+        self._ApiName = ApiName
+
+    @property
+    def ApiType(self):
+        return self._ApiType
+
+    @ApiType.setter
+    def ApiType(self, ApiType):
+        self._ApiType = ApiType
+
+    @property
+    def Path(self):
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Method(self):
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
+    @property
+    def AttachedOtherPlugin(self):
+        return self._AttachedOtherPlugin
+
+    @AttachedOtherPlugin.setter
+    def AttachedOtherPlugin(self, AttachedOtherPlugin):
+        self._AttachedOtherPlugin = AttachedOtherPlugin
+
+    @property
+    def IsAttached(self):
+        return self._IsAttached
+
+    @IsAttached.setter
+    def IsAttached(self, IsAttached):
+        self._IsAttached = IsAttached
 
 
     def _deserialize(self, params):
-        self.ApiId = params.get("ApiId")
-        self.ApiName = params.get("ApiName")
-        self.ApiType = params.get("ApiType")
-        self.Path = params.get("Path")
-        self.Method = params.get("Method")
-        self.AttachedOtherPlugin = params.get("AttachedOtherPlugin")
-        self.IsAttached = params.get("IsAttached")
+        self._ApiId = params.get("ApiId")
+        self._ApiName = params.get("ApiName")
+        self._ApiType = params.get("ApiType")
+        self._Path = params.get("Path")
+        self._Method = params.get("Method")
+        self._AttachedOtherPlugin = params.get("AttachedOtherPlugin")
+        self._IsAttached = params.get("IsAttached")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1434,9 +2882,9 @@ class Base64EncodedTriggerRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: Header for triggering encoding. Valid values are `Accept` and `Content_Type`, corresponding to the `Accept` and `Content-Type` headers in the data stream request, respectively.
+        :param _Name: Header for triggering encoding. Valid values are `Accept` and `Content_Type`, corresponding to the `Accept` and `Content-Type` headers in the data stream request, respectively.
         :type Name: str
-        :param Value: Array of header values that can trigger the encoding. Each element in the array can be up to 40 characters, including digits, letters, and special characters (`.`, `+`, `*`, `-`, `/`, and `_`). 
+        :param _Value: Array of header values that can trigger the encoding. Each element in the array can be up to 40 characters, including digits, letters, and special characters (`.`, `+`, `*`, `-`, `/`, and `_`). 
 
 For example, [
     "application/x-vpeg005",
@@ -1446,17 +2894,34 @@ For example, [
 ] are valid.
         :type Value: list of str
         """
-        self.Name = None
-        self.Value = None
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Value = params.get("Value")
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1469,30 +2934,63 @@ class BindApiAppRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApiAppId: Unique ID of the application to be bound.
+        :param _ApiAppId: Unique ID of the application to be bound.
         :type ApiAppId: str
-        :param Environment: Environment to be bound.
+        :param _Environment: Environment to be bound.
         :type Environment: str
-        :param ServiceId: Unique ID of the service to be bound.
+        :param _ServiceId: Unique ID of the service to be bound.
         :type ServiceId: str
-        :param ApiId: Unique ID of the API to be bound.
+        :param _ApiId: Unique ID of the API to be bound.
         :type ApiId: str
         """
-        self.ApiAppId = None
-        self.Environment = None
-        self.ServiceId = None
-        self.ApiId = None
+        self._ApiAppId = None
+        self._Environment = None
+        self._ServiceId = None
+        self._ApiId = None
+
+    @property
+    def ApiAppId(self):
+        return self._ApiAppId
+
+    @ApiAppId.setter
+    def ApiAppId(self, ApiAppId):
+        self._ApiAppId = ApiAppId
+
+    @property
+    def Environment(self):
+        return self._Environment
+
+    @Environment.setter
+    def Environment(self, Environment):
+        self._Environment = Environment
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def ApiId(self):
+        return self._ApiId
+
+    @ApiId.setter
+    def ApiId(self, ApiId):
+        self._ApiId = ApiId
 
 
     def _deserialize(self, params):
-        self.ApiAppId = params.get("ApiAppId")
-        self.Environment = params.get("Environment")
-        self.ServiceId = params.get("ServiceId")
-        self.ApiId = params.get("ApiId")
+        self._ApiAppId = params.get("ApiAppId")
+        self._Environment = params.get("Environment")
+        self._ServiceId = params.get("ServiceId")
+        self._ApiId = params.get("ApiId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1505,19 +3003,35 @@ class BindApiAppResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Whether binding succeeded.
+        :param _Result: Whether binding succeeded.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
 
 
 class BindApiInfo(AbstractModel):
@@ -1527,36 +3041,77 @@ class BindApiInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApiId: Unique API ID.
+        :param _ApiId: Unique API ID.
         :type ApiId: str
-        :param ServiceId: Unique ID of the service
+        :param _ServiceId: Unique ID of the service
         :type ServiceId: str
-        :param ApiName: API name
+        :param _ApiName: API name
 Note: This field may return `null`, indicating that no valid value was found.
         :type ApiName: str
-        :param ServiceName: Service name
+        :param _ServiceName: Service name
 Note: This field may return `null`, indicating that no valid value was found.
         :type ServiceName: str
-        :param BindTime: Bound At
+        :param _BindTime: Bound At
         :type BindTime: str
         """
-        self.ApiId = None
-        self.ServiceId = None
-        self.ApiName = None
-        self.ServiceName = None
-        self.BindTime = None
+        self._ApiId = None
+        self._ServiceId = None
+        self._ApiName = None
+        self._ServiceName = None
+        self._BindTime = None
+
+    @property
+    def ApiId(self):
+        return self._ApiId
+
+    @ApiId.setter
+    def ApiId(self, ApiId):
+        self._ApiId = ApiId
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def ApiName(self):
+        return self._ApiName
+
+    @ApiName.setter
+    def ApiName(self, ApiName):
+        self._ApiName = ApiName
+
+    @property
+    def ServiceName(self):
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def BindTime(self):
+        return self._BindTime
+
+    @BindTime.setter
+    def BindTime(self, BindTime):
+        self._BindTime = BindTime
 
 
     def _deserialize(self, params):
-        self.ApiId = params.get("ApiId")
-        self.ServiceId = params.get("ServiceId")
-        self.ApiName = params.get("ApiName")
-        self.ServiceName = params.get("ServiceName")
-        self.BindTime = params.get("BindTime")
+        self._ApiId = params.get("ApiId")
+        self._ServiceId = params.get("ServiceId")
+        self._ApiName = params.get("ApiName")
+        self._ServiceName = params.get("ServiceName")
+        self._BindTime = params.get("BindTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1569,34 +3124,75 @@ class BindEnvironmentRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UsagePlanIds: List of unique IDs of the usage plans to be bound.
+        :param _UsagePlanIds: List of unique IDs of the usage plans to be bound.
         :type UsagePlanIds: list of str
-        :param BindType: Binding type. Valid values: API, SERVICE. Default value: SERVICE.
+        :param _BindType: Binding type. Valid values: API, SERVICE. Default value: SERVICE.
         :type BindType: str
-        :param Environment: Environment to be bound.
+        :param _Environment: Environment to be bound.
         :type Environment: str
-        :param ServiceId: Unique ID of the service to be bound.
+        :param _ServiceId: Unique ID of the service to be bound.
         :type ServiceId: str
-        :param ApiIds: Unique API ID array, which is required if `bindType` is `API`.
+        :param _ApiIds: Unique API ID array, which is required if `bindType` is `API`.
         :type ApiIds: list of str
         """
-        self.UsagePlanIds = None
-        self.BindType = None
-        self.Environment = None
-        self.ServiceId = None
-        self.ApiIds = None
+        self._UsagePlanIds = None
+        self._BindType = None
+        self._Environment = None
+        self._ServiceId = None
+        self._ApiIds = None
+
+    @property
+    def UsagePlanIds(self):
+        return self._UsagePlanIds
+
+    @UsagePlanIds.setter
+    def UsagePlanIds(self, UsagePlanIds):
+        self._UsagePlanIds = UsagePlanIds
+
+    @property
+    def BindType(self):
+        return self._BindType
+
+    @BindType.setter
+    def BindType(self, BindType):
+        self._BindType = BindType
+
+    @property
+    def Environment(self):
+        return self._Environment
+
+    @Environment.setter
+    def Environment(self, Environment):
+        self._Environment = Environment
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def ApiIds(self):
+        return self._ApiIds
+
+    @ApiIds.setter
+    def ApiIds(self, ApiIds):
+        self._ApiIds = ApiIds
 
 
     def _deserialize(self, params):
-        self.UsagePlanIds = params.get("UsagePlanIds")
-        self.BindType = params.get("BindType")
-        self.Environment = params.get("Environment")
-        self.ServiceId = params.get("ServiceId")
-        self.ApiIds = params.get("ApiIds")
+        self._UsagePlanIds = params.get("UsagePlanIds")
+        self._BindType = params.get("BindType")
+        self._Environment = params.get("Environment")
+        self._ServiceId = params.get("ServiceId")
+        self._ApiIds = params.get("ApiIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1609,19 +3205,35 @@ class BindEnvironmentResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Whether binding succeeded.
+        :param _Result: Whether binding succeeded.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
 
 
 class BindIPStrategyRequest(AbstractModel):
@@ -1631,30 +3243,63 @@ class BindIPStrategyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Unique service ID of the IP policy to be bound.
+        :param _ServiceId: Unique service ID of the IP policy to be bound.
         :type ServiceId: str
-        :param StrategyId: Unique ID of the IP policy to be bound.
+        :param _StrategyId: Unique ID of the IP policy to be bound.
         :type StrategyId: str
-        :param EnvironmentName: Environment to be bound to IP policy.
+        :param _EnvironmentName: Environment to be bound to IP policy.
         :type EnvironmentName: str
-        :param BindApiIds: List of APIs to be bound to IP policy.
+        :param _BindApiIds: List of APIs to be bound to IP policy.
         :type BindApiIds: list of str
         """
-        self.ServiceId = None
-        self.StrategyId = None
-        self.EnvironmentName = None
-        self.BindApiIds = None
+        self._ServiceId = None
+        self._StrategyId = None
+        self._EnvironmentName = None
+        self._BindApiIds = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def StrategyId(self):
+        return self._StrategyId
+
+    @StrategyId.setter
+    def StrategyId(self, StrategyId):
+        self._StrategyId = StrategyId
+
+    @property
+    def EnvironmentName(self):
+        return self._EnvironmentName
+
+    @EnvironmentName.setter
+    def EnvironmentName(self, EnvironmentName):
+        self._EnvironmentName = EnvironmentName
+
+    @property
+    def BindApiIds(self):
+        return self._BindApiIds
+
+    @BindApiIds.setter
+    def BindApiIds(self, BindApiIds):
+        self._BindApiIds = BindApiIds
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.StrategyId = params.get("StrategyId")
-        self.EnvironmentName = params.get("EnvironmentName")
-        self.BindApiIds = params.get("BindApiIds")
+        self._ServiceId = params.get("ServiceId")
+        self._StrategyId = params.get("StrategyId")
+        self._EnvironmentName = params.get("EnvironmentName")
+        self._BindApiIds = params.get("BindApiIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1667,19 +3312,35 @@ class BindIPStrategyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Whether binding succeeded.
+        :param _Result: Whether binding succeeded.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
 
 
 class BindSecretIdsRequest(AbstractModel):
@@ -1689,22 +3350,39 @@ class BindSecretIdsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UsagePlanId: Unique ID of the usage plan to be bound.
+        :param _UsagePlanId: Unique ID of the usage plan to be bound.
         :type UsagePlanId: str
-        :param AccessKeyIds: Array of IDs of the keys to be bound.
+        :param _AccessKeyIds: Array of IDs of the keys to be bound.
         :type AccessKeyIds: list of str
         """
-        self.UsagePlanId = None
-        self.AccessKeyIds = None
+        self._UsagePlanId = None
+        self._AccessKeyIds = None
+
+    @property
+    def UsagePlanId(self):
+        return self._UsagePlanId
+
+    @UsagePlanId.setter
+    def UsagePlanId(self, UsagePlanId):
+        self._UsagePlanId = UsagePlanId
+
+    @property
+    def AccessKeyIds(self):
+        return self._AccessKeyIds
+
+    @AccessKeyIds.setter
+    def AccessKeyIds(self, AccessKeyIds):
+        self._AccessKeyIds = AccessKeyIds
 
 
     def _deserialize(self, params):
-        self.UsagePlanId = params.get("UsagePlanId")
-        self.AccessKeyIds = params.get("AccessKeyIds")
+        self._UsagePlanId = params.get("UsagePlanId")
+        self._AccessKeyIds = params.get("AccessKeyIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1717,19 +3395,35 @@ class BindSecretIdsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Whether binding succeeded.
+        :param _Result: Whether binding succeeded.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
 
 
 class BindSubDomainRequest(AbstractModel):
@@ -1739,55 +3433,128 @@ class BindSubDomainRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Unique service ID.
+        :param _ServiceId: Unique service ID.
         :type ServiceId: str
-        :param SubDomain: Custom domain name to be bound.
+        :param _SubDomain: Custom domain name to be bound.
         :type SubDomain: str
-        :param Protocol: Protocol supported by service. Valid values: http, https, http&https.
+        :param _Protocol: Protocol supported by service. Valid values: http, https, http&https.
         :type Protocol: str
-        :param NetType: Network type. Valid values: OUTER, INNER.
+        :param _NetType: Network type. Valid values: OUTER, INNER.
         :type NetType: str
-        :param IsDefaultMapping: Whether the default path mapping is used. The default value is `true`. If the value is `false`, the custom path mapping will be used and `PathMappingSet` will be required in this case.
+        :param _IsDefaultMapping: Whether the default path mapping is used. The default value is `true`. If the value is `false`, the custom path mapping will be used and `PathMappingSet` will be required in this case.
         :type IsDefaultMapping: bool
-        :param NetSubDomain: Default domain name.
+        :param _NetSubDomain: Default domain name.
         :type NetSubDomain: str
-        :param CertificateId: Unique certificate ID of the custom domain name to be bound. The certificate can be uploaded if `Protocol` is `https` or `http&https`.
+        :param _CertificateId: Unique certificate ID of the custom domain name to be bound. The certificate can be uploaded if `Protocol` is `https` or `http&https`.
         :type CertificateId: str
-        :param PathMappingSet: Custom domain name path mapping. It can contain up to 3 `Environment` values which can be set to only `test`, `prepub`, and `release`, respectively.
+        :param _PathMappingSet: Custom domain name path mapping. It can contain up to 3 `Environment` values which can be set to only `test`, `prepub`, and `release`, respectively.
         :type PathMappingSet: list of PathMapping
-        :param IsForcedHttps: Whether to force HTTP requests to redirect to HTTPS. Default value: `false`. When this parameter is `true`, API Gateway will redirect all requests using the custom domain name over the HTTP protocol to the HTTPS protocol for forwarding.
+        :param _IsForcedHttps: Whether to force HTTP requests to redirect to HTTPS. Default value: `false`. When this parameter is `true`, API Gateway will redirect all requests using the custom domain name over the HTTP protocol to the HTTPS protocol for forwarding.
         :type IsForcedHttps: bool
         """
-        self.ServiceId = None
-        self.SubDomain = None
-        self.Protocol = None
-        self.NetType = None
-        self.IsDefaultMapping = None
-        self.NetSubDomain = None
-        self.CertificateId = None
-        self.PathMappingSet = None
-        self.IsForcedHttps = None
+        self._ServiceId = None
+        self._SubDomain = None
+        self._Protocol = None
+        self._NetType = None
+        self._IsDefaultMapping = None
+        self._NetSubDomain = None
+        self._CertificateId = None
+        self._PathMappingSet = None
+        self._IsForcedHttps = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def SubDomain(self):
+        return self._SubDomain
+
+    @SubDomain.setter
+    def SubDomain(self, SubDomain):
+        self._SubDomain = SubDomain
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def NetType(self):
+        return self._NetType
+
+    @NetType.setter
+    def NetType(self, NetType):
+        self._NetType = NetType
+
+    @property
+    def IsDefaultMapping(self):
+        return self._IsDefaultMapping
+
+    @IsDefaultMapping.setter
+    def IsDefaultMapping(self, IsDefaultMapping):
+        self._IsDefaultMapping = IsDefaultMapping
+
+    @property
+    def NetSubDomain(self):
+        return self._NetSubDomain
+
+    @NetSubDomain.setter
+    def NetSubDomain(self, NetSubDomain):
+        self._NetSubDomain = NetSubDomain
+
+    @property
+    def CertificateId(self):
+        return self._CertificateId
+
+    @CertificateId.setter
+    def CertificateId(self, CertificateId):
+        self._CertificateId = CertificateId
+
+    @property
+    def PathMappingSet(self):
+        return self._PathMappingSet
+
+    @PathMappingSet.setter
+    def PathMappingSet(self, PathMappingSet):
+        self._PathMappingSet = PathMappingSet
+
+    @property
+    def IsForcedHttps(self):
+        return self._IsForcedHttps
+
+    @IsForcedHttps.setter
+    def IsForcedHttps(self, IsForcedHttps):
+        self._IsForcedHttps = IsForcedHttps
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.SubDomain = params.get("SubDomain")
-        self.Protocol = params.get("Protocol")
-        self.NetType = params.get("NetType")
-        self.IsDefaultMapping = params.get("IsDefaultMapping")
-        self.NetSubDomain = params.get("NetSubDomain")
-        self.CertificateId = params.get("CertificateId")
+        self._ServiceId = params.get("ServiceId")
+        self._SubDomain = params.get("SubDomain")
+        self._Protocol = params.get("Protocol")
+        self._NetType = params.get("NetType")
+        self._IsDefaultMapping = params.get("IsDefaultMapping")
+        self._NetSubDomain = params.get("NetSubDomain")
+        self._CertificateId = params.get("CertificateId")
         if params.get("PathMappingSet") is not None:
-            self.PathMappingSet = []
+            self._PathMappingSet = []
             for item in params.get("PathMappingSet"):
                 obj = PathMapping()
                 obj._deserialize(item)
-                self.PathMappingSet.append(obj)
-        self.IsForcedHttps = params.get("IsForcedHttps")
+                self._PathMappingSet.append(obj)
+        self._IsForcedHttps = params.get("IsForcedHttps")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1800,19 +3567,35 @@ class BindSubDomainResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Whether binding succeeded.
+        :param _Result: Whether binding succeeded.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
 
 
 class BuildAPIDocRequest(AbstractModel):
@@ -1822,18 +3605,27 @@ class BuildAPIDocRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApiDocId: API document ID
+        :param _ApiDocId: API document ID
         :type ApiDocId: str
         """
-        self.ApiDocId = None
+        self._ApiDocId = None
+
+    @property
+    def ApiDocId(self):
+        return self._ApiDocId
+
+    @ApiDocId.setter
+    def ApiDocId(self, ApiDocId):
+        self._ApiDocId = ApiDocId
 
 
     def _deserialize(self, params):
-        self.ApiDocId = params.get("ApiDocId")
+        self._ApiDocId = params.get("ApiDocId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1846,18 +3638,34 @@ class BuildAPIDocResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Whether the operation succeeded
+        :param _Result: Whether the operation succeeded
         :type Result: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
 
 
 class ConstantParameter(AbstractModel):
@@ -1867,30 +3675,63 @@ class ConstantParameter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: Constant parameter name, which is used only if `ServiceType` is `HTTP`.
+        :param _Name: Constant parameter name, which is used only if `ServiceType` is `HTTP`.
         :type Name: str
-        :param Desc: Constant parameter description, which is used only if `ServiceType` is `HTTP`.
+        :param _Desc: Constant parameter description, which is used only if `ServiceType` is `HTTP`.
         :type Desc: str
-        :param Position: Constant parameter position, which is used only if `ServiceType` is `HTTP`.
+        :param _Position: Constant parameter position, which is used only if `ServiceType` is `HTTP`.
         :type Position: str
-        :param DefaultValue: Default value of constant parameter, which is used only if `ServiceType` is `HTTP`.
+        :param _DefaultValue: Default value of constant parameter, which is used only if `ServiceType` is `HTTP`.
         :type DefaultValue: str
         """
-        self.Name = None
-        self.Desc = None
-        self.Position = None
-        self.DefaultValue = None
+        self._Name = None
+        self._Desc = None
+        self._Position = None
+        self._DefaultValue = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Desc(self):
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+    @property
+    def Position(self):
+        return self._Position
+
+    @Position.setter
+    def Position(self, Position):
+        self._Position = Position
+
+    @property
+    def DefaultValue(self):
+        return self._DefaultValue
+
+    @DefaultValue.setter
+    def DefaultValue(self, DefaultValue):
+        self._DefaultValue = DefaultValue
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Desc = params.get("Desc")
-        self.Position = params.get("Position")
-        self.DefaultValue = params.get("DefaultValue")
+        self._Name = params.get("Name")
+        self._Desc = params.get("Desc")
+        self._Position = params.get("Position")
+        self._DefaultValue = params.get("DefaultValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1903,7 +3744,7 @@ class CosConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Action: Specifies how the backend COS bucket is called by the API. The frontend request method and Action can be:
+        :param _Action: Specifies how the backend COS bucket is called by the API. The frontend request method and Action can be:
 GET：GetObject
 PUT：PutObject
 POST：PostObject、AppendObject
@@ -1911,13 +3752,13 @@ HEAD： HeadObject
 DELETE： DeleteObject
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Action: str
-        :param BucketName: Backend COS bucket of the API
+        :param _BucketName: Backend COS bucket of the API
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type BucketName: str
-        :param Authorization: Whether to enable the backend COS signature for the API. It defaults to `false`.
+        :param _Authorization: Whether to enable the backend COS signature for the API. It defaults to `false`.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Authorization: bool
-        :param PathMatchMode: The path matching mode of the backend COS service
+        :param _PathMatchMode: The path matching mode of the backend COS service
 `BackEndPath`: Match the backend path
 `FullPath`: Match the full path
 
@@ -1925,21 +3766,54 @@ Default: `BackEndPath`
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type PathMatchMode: str
         """
-        self.Action = None
-        self.BucketName = None
-        self.Authorization = None
-        self.PathMatchMode = None
+        self._Action = None
+        self._BucketName = None
+        self._Authorization = None
+        self._PathMatchMode = None
+
+    @property
+    def Action(self):
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def BucketName(self):
+        return self._BucketName
+
+    @BucketName.setter
+    def BucketName(self, BucketName):
+        self._BucketName = BucketName
+
+    @property
+    def Authorization(self):
+        return self._Authorization
+
+    @Authorization.setter
+    def Authorization(self, Authorization):
+        self._Authorization = Authorization
+
+    @property
+    def PathMatchMode(self):
+        return self._PathMatchMode
+
+    @PathMatchMode.setter
+    def PathMatchMode(self, PathMatchMode):
+        self._PathMatchMode = PathMatchMode
 
 
     def _deserialize(self, params):
-        self.Action = params.get("Action")
-        self.BucketName = params.get("BucketName")
-        self.Authorization = params.get("Authorization")
-        self.PathMatchMode = params.get("PathMatchMode")
+        self._Action = params.get("Action")
+        self._BucketName = params.get("BucketName")
+        self._Authorization = params.get("Authorization")
+        self._PathMatchMode = params.get("PathMatchMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1952,30 +3826,63 @@ class CreateAPIDocRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApiDocName: API document name
+        :param _ApiDocName: API document name
         :type ApiDocName: str
-        :param ServiceId: Service name
+        :param _ServiceId: Service name
         :type ServiceId: str
-        :param Environment: Environment name
+        :param _Environment: Environment name
         :type Environment: str
-        :param ApiIds: List of APIs for which to generate documents
+        :param _ApiIds: List of APIs for which to generate documents
         :type ApiIds: list of str
         """
-        self.ApiDocName = None
-        self.ServiceId = None
-        self.Environment = None
-        self.ApiIds = None
+        self._ApiDocName = None
+        self._ServiceId = None
+        self._Environment = None
+        self._ApiIds = None
+
+    @property
+    def ApiDocName(self):
+        return self._ApiDocName
+
+    @ApiDocName.setter
+    def ApiDocName(self, ApiDocName):
+        self._ApiDocName = ApiDocName
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def Environment(self):
+        return self._Environment
+
+    @Environment.setter
+    def Environment(self, Environment):
+        self._Environment = Environment
+
+    @property
+    def ApiIds(self):
+        return self._ApiIds
+
+    @ApiIds.setter
+    def ApiIds(self, ApiIds):
+        self._ApiIds = ApiIds
 
 
     def _deserialize(self, params):
-        self.ApiDocName = params.get("ApiDocName")
-        self.ServiceId = params.get("ServiceId")
-        self.Environment = params.get("Environment")
-        self.ApiIds = params.get("ApiIds")
+        self._ApiDocName = params.get("ApiDocName")
+        self._ServiceId = params.get("ServiceId")
+        self._Environment = params.get("Environment")
+        self._ApiIds = params.get("ApiIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1988,20 +3895,36 @@ class CreateAPIDocResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Basic information of API document
+        :param _Result: Basic information of API document
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.APIDoc`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = APIDoc()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = APIDoc()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class CreateApiAppRequest(AbstractModel):
@@ -2011,22 +3934,39 @@ class CreateApiAppRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApiAppName: Custom application name.
+        :param _ApiAppName: Custom application name.
         :type ApiAppName: str
-        :param ApiAppDesc: Application description
+        :param _ApiAppDesc: Application description
         :type ApiAppDesc: str
         """
-        self.ApiAppName = None
-        self.ApiAppDesc = None
+        self._ApiAppName = None
+        self._ApiAppDesc = None
+
+    @property
+    def ApiAppName(self):
+        return self._ApiAppName
+
+    @ApiAppName.setter
+    def ApiAppName(self, ApiAppName):
+        self._ApiAppName = ApiAppName
+
+    @property
+    def ApiAppDesc(self):
+        return self._ApiAppDesc
+
+    @ApiAppDesc.setter
+    def ApiAppDesc(self, ApiAppDesc):
+        self._ApiAppDesc = ApiAppDesc
 
 
     def _deserialize(self, params):
-        self.ApiAppName = params.get("ApiAppName")
-        self.ApiAppDesc = params.get("ApiAppDesc")
+        self._ApiAppName = params.get("ApiAppName")
+        self._ApiAppDesc = params.get("ApiAppDesc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2039,21 +3979,37 @@ class CreateApiAppResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: New application details.
+        :param _Result: New application details.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiAppInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = ApiAppInfo()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = ApiAppInfo()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class CreateApiKeyRequest(AbstractModel):
@@ -2063,30 +4019,63 @@ class CreateApiKeyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecretName: Custom key name.
+        :param _SecretName: Custom key name.
         :type SecretName: str
-        :param AccessKeyType: Key type. Valid values: auto, manual (custom key). Default value: auto.
+        :param _AccessKeyType: Key type. Valid values: auto, manual (custom key). Default value: auto.
         :type AccessKeyType: str
-        :param AccessKeyId: Custom key ID, which is required if `AccessKeyType` is `manual`. It can contain 5–50 letters, digits, and underscores.
+        :param _AccessKeyId: Custom key ID, which is required if `AccessKeyType` is `manual`. It can contain 5–50 letters, digits, and underscores.
         :type AccessKeyId: str
-        :param AccessKeySecret: Custom key, which is required if `AccessKeyType` is `manual`. It can contain 10–50 letters, digits, and underscores.
+        :param _AccessKeySecret: Custom key, which is required if `AccessKeyType` is `manual`. It can contain 10–50 letters, digits, and underscores.
         :type AccessKeySecret: str
         """
-        self.SecretName = None
-        self.AccessKeyType = None
-        self.AccessKeyId = None
-        self.AccessKeySecret = None
+        self._SecretName = None
+        self._AccessKeyType = None
+        self._AccessKeyId = None
+        self._AccessKeySecret = None
+
+    @property
+    def SecretName(self):
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
+
+    @property
+    def AccessKeyType(self):
+        return self._AccessKeyType
+
+    @AccessKeyType.setter
+    def AccessKeyType(self, AccessKeyType):
+        self._AccessKeyType = AccessKeyType
+
+    @property
+    def AccessKeyId(self):
+        return self._AccessKeyId
+
+    @AccessKeyId.setter
+    def AccessKeyId(self, AccessKeyId):
+        self._AccessKeyId = AccessKeyId
+
+    @property
+    def AccessKeySecret(self):
+        return self._AccessKeySecret
+
+    @AccessKeySecret.setter
+    def AccessKeySecret(self, AccessKeySecret):
+        self._AccessKeySecret = AccessKeySecret
 
 
     def _deserialize(self, params):
-        self.SecretName = params.get("SecretName")
-        self.AccessKeyType = params.get("AccessKeyType")
-        self.AccessKeyId = params.get("AccessKeyId")
-        self.AccessKeySecret = params.get("AccessKeySecret")
+        self._SecretName = params.get("SecretName")
+        self._AccessKeyType = params.get("AccessKeyType")
+        self._AccessKeyId = params.get("AccessKeyId")
+        self._AccessKeySecret = params.get("AccessKeySecret")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2099,21 +4088,37 @@ class CreateApiKeyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: New key details.
+        :param _Result: New key details.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiKey`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = ApiKey()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = ApiKey()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class CreateApiRequest(AbstractModel):
@@ -2123,268 +4128,693 @@ class CreateApiRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Unique service ID of API.
+        :param _ServiceId: Unique service ID of API.
         :type ServiceId: str
-        :param ServiceType: API backend service type. Valid values: HTTP, MOCK, TSF, SCF, WEBSOCKET, TARGET (in beta test).
+        :param _ServiceType: API backend service type. Valid values: HTTP, MOCK, TSF, SCF, WEBSOCKET, TARGET (in beta test).
         :type ServiceType: str
-        :param ServiceTimeout: API backend service timeout period in seconds.
+        :param _ServiceTimeout: API backend service timeout period in seconds.
         :type ServiceTimeout: int
-        :param Protocol: API frontend request protocol. Valid values: HTTPS, WEBSOCKET.
+        :param _Protocol: API frontend request protocol. Valid values: HTTPS, WEBSOCKET.
         :type Protocol: str
-        :param RequestConfig: Request frontend configuration.
+        :param _RequestConfig: Request frontend configuration.
         :type RequestConfig: :class:`tencentcloud.apigateway.v20180808.models.ApiRequestConfig`
-        :param ApiName: Custom API name.
+        :param _ApiName: Custom API name.
         :type ApiName: str
-        :param ApiDesc: Custom API description.
+        :param _ApiDesc: Custom API description.
         :type ApiDesc: str
-        :param ApiType: API type. Valid values: NORMAL (general API), TSF (microservice API). Default value: NORMAL.
+        :param _ApiType: API type. Valid values: NORMAL (general API), TSF (microservice API). Default value: NORMAL.
         :type ApiType: str
-        :param AuthType: API authentication type. Valid values: SECRET (key pair authentication), NONE (no authentication), OAUTH, APP (application authentication). Default value: NONE.
+        :param _AuthType: API authentication type. Valid values: SECRET (key pair authentication), NONE (no authentication), OAUTH, APP (application authentication). Default value: NONE.
         :type AuthType: str
-        :param EnableCORS: Whether to enable CORS.
+        :param _EnableCORS: Whether to enable CORS.
         :type EnableCORS: bool
-        :param ConstantParameters: Constant parameter.
+        :param _ConstantParameters: Constant parameter.
         :type ConstantParameters: list of ConstantParameter
-        :param RequestParameters: Frontend request parameter.
+        :param _RequestParameters: Frontend request parameter.
         :type RequestParameters: list of RequestParameter
-        :param ApiBusinessType: This field is valid if `AuthType` is `OAUTH`. NORMAL: business API; OAUTH: authorization API.
+        :param _ApiBusinessType: This field is valid if `AuthType` is `OAUTH`. NORMAL: business API; OAUTH: authorization API.
         :type ApiBusinessType: str
-        :param ServiceMockReturnMessage: Returned message of API backend Mock, which is required if `ServiceType` is `Mock`.
+        :param _ServiceMockReturnMessage: Returned message of API backend Mock, which is required if `ServiceType` is `Mock`.
         :type ServiceMockReturnMessage: str
-        :param MicroServices: List of microservices bound to API.
+        :param _MicroServices: List of microservices bound to API.
         :type MicroServices: list of MicroServiceReq
-        :param ServiceTsfLoadBalanceConf: Load balancing configuration of microservice.
+        :param _ServiceTsfLoadBalanceConf: Load balancing configuration of microservice.
         :type ServiceTsfLoadBalanceConf: :class:`tencentcloud.apigateway.v20180808.models.TsfLoadBalanceConfResp`
-        :param ServiceTsfHealthCheckConf: Health check configuration of microservice.
+        :param _ServiceTsfHealthCheckConf: Health check configuration of microservice.
         :type ServiceTsfHealthCheckConf: :class:`tencentcloud.apigateway.v20180808.models.HealthCheckConf`
-        :param TargetServices: `target` type backend resource information (in beta test).
+        :param _TargetServices: `target` type backend resource information (in beta test).
         :type TargetServices: list of TargetServicesReq
-        :param TargetServicesLoadBalanceConf: `target` type load balancing configuration (in beta test).
+        :param _TargetServicesLoadBalanceConf: `target` type load balancing configuration (in beta test).
         :type TargetServicesLoadBalanceConf: int
-        :param TargetServicesHealthCheckConf: `target` health check configuration (in beta test).
+        :param _TargetServicesHealthCheckConf: `target` health check configuration (in beta test).
         :type TargetServicesHealthCheckConf: :class:`tencentcloud.apigateway.v20180808.models.HealthCheckConf`
-        :param ServiceScfFunctionName: SCF function name, which takes effect if the backend type is `SCF`.
+        :param _ServiceScfFunctionName: SCF function name, which takes effect if the backend type is `SCF`.
         :type ServiceScfFunctionName: str
-        :param ServiceWebsocketRegisterFunctionName: SCF WebSocket registration function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param _ServiceWebsocketRegisterFunctionName: SCF WebSocket registration function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :type ServiceWebsocketRegisterFunctionName: str
-        :param ServiceWebsocketCleanupFunctionName: SCF WebSocket cleanup function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param _ServiceWebsocketCleanupFunctionName: SCF WebSocket cleanup function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :type ServiceWebsocketCleanupFunctionName: str
-        :param ServiceWebsocketTransportFunctionName: SCF WebSocket transfer function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param _ServiceWebsocketTransportFunctionName: SCF WebSocket transfer function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :type ServiceWebsocketTransportFunctionName: str
-        :param ServiceScfFunctionNamespace: SCF function namespace, which takes effect if the backend type is `SCF`.
+        :param _ServiceScfFunctionNamespace: SCF function namespace, which takes effect if the backend type is `SCF`.
         :type ServiceScfFunctionNamespace: str
-        :param ServiceScfFunctionQualifier: SCF function version, which takes effect if the backend type is `SCF`.
+        :param _ServiceScfFunctionQualifier: SCF function version, which takes effect if the backend type is `SCF`.
         :type ServiceScfFunctionQualifier: str
-        :param ServiceWebsocketRegisterFunctionNamespace: SCF WebSocket registration function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param _ServiceWebsocketRegisterFunctionNamespace: SCF WebSocket registration function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :type ServiceWebsocketRegisterFunctionNamespace: str
-        :param ServiceWebsocketRegisterFunctionQualifier: SCF WebSocket transfer function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param _ServiceWebsocketRegisterFunctionQualifier: SCF WebSocket transfer function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :type ServiceWebsocketRegisterFunctionQualifier: str
-        :param ServiceWebsocketTransportFunctionNamespace: SCF WebSocket transfer function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param _ServiceWebsocketTransportFunctionNamespace: SCF WebSocket transfer function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :type ServiceWebsocketTransportFunctionNamespace: str
-        :param ServiceWebsocketTransportFunctionQualifier: SCF WebSocket transfer function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param _ServiceWebsocketTransportFunctionQualifier: SCF WebSocket transfer function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :type ServiceWebsocketTransportFunctionQualifier: str
-        :param ServiceWebsocketCleanupFunctionNamespace: SCF WebSocket cleanup function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param _ServiceWebsocketCleanupFunctionNamespace: SCF WebSocket cleanup function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :type ServiceWebsocketCleanupFunctionNamespace: str
-        :param ServiceWebsocketCleanupFunctionQualifier: SCF WebSocket cleanup function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param _ServiceWebsocketCleanupFunctionQualifier: SCF WebSocket cleanup function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :type ServiceWebsocketCleanupFunctionQualifier: str
-        :param ServiceScfIsIntegratedResponse: Whether to enable response integration, which takes effect if the backend type is `SCF`.
+        :param _ServiceScfIsIntegratedResponse: Whether to enable response integration, which takes effect if the backend type is `SCF`.
         :type ServiceScfIsIntegratedResponse: bool
-        :param IsDebugAfterCharge: Billing after debugging starts (reserved field for marketplace).
+        :param _IsDebugAfterCharge: Billing after debugging starts (reserved field for marketplace).
         :type IsDebugAfterCharge: bool
-        :param IsDeleteResponseErrorCodes: Whether to delete the error codes for custom response configuration. If the value is left empty or `False`, the error codes will not be deleted. If the value is `True`, all custom response configuration error codes of the API will be deleted.
+        :param _IsDeleteResponseErrorCodes: Whether to delete the error codes for custom response configuration. If the value is left empty or `False`, the error codes will not be deleted. If the value is `True`, all custom response configuration error codes of the API will be deleted.
         :type IsDeleteResponseErrorCodes: bool
-        :param ResponseType: Return type.
+        :param _ResponseType: Return type.
         :type ResponseType: str
-        :param ResponseSuccessExample: Sample response for successful custom response configuration.
+        :param _ResponseSuccessExample: Sample response for successful custom response configuration.
         :type ResponseSuccessExample: str
-        :param ResponseFailExample: Sample response for failed custom response configuration.
+        :param _ResponseFailExample: Sample response for failed custom response configuration.
         :type ResponseFailExample: str
-        :param ServiceConfig: API backend service configuration.
+        :param _ServiceConfig: API backend service configuration.
         :type ServiceConfig: :class:`tencentcloud.apigateway.v20180808.models.ServiceConfig`
-        :param AuthRelationApiId: Unique ID of associated authorization API, which takes effect only if `AuthType` is `OAUTH` and `ApiBusinessType` is `NORMAL`. It is the unique ID of the OAuth 2.0 authorization API bound to the business API.
+        :param _AuthRelationApiId: Unique ID of associated authorization API, which takes effect only if `AuthType` is `OAUTH` and `ApiBusinessType` is `NORMAL`. It is the unique ID of the OAuth 2.0 authorization API bound to the business API.
         :type AuthRelationApiId: str
-        :param ServiceParameters: API backend service parameter.
+        :param _ServiceParameters: API backend service parameter.
         :type ServiceParameters: list of ServiceParameter
-        :param OauthConfig: OAuth configuration, which takes effect if `AuthType` is `OAUTH`.
+        :param _OauthConfig: OAuth configuration, which takes effect if `AuthType` is `OAUTH`.
         :type OauthConfig: :class:`tencentcloud.apigateway.v20180808.models.OauthConfig`
-        :param ResponseErrorCodes: Custom error code configuration.
+        :param _ResponseErrorCodes: Custom error code configuration.
         :type ResponseErrorCodes: list of ResponseErrorCodeReq
-        :param TargetNamespaceId: TSF Serverless namespace ID (in beta test).
+        :param _TargetNamespaceId: TSF Serverless namespace ID (in beta test).
         :type TargetNamespaceId: str
-        :param UserType: User type.
+        :param _UserType: User type.
         :type UserType: str
-        :param IsBase64Encoded: Whether to enable Base64 encoding. This parameter takes effect only when the backend is SCF.
+        :param _IsBase64Encoded: Whether to enable Base64 encoding. This parameter takes effect only when the backend is SCF.
         :type IsBase64Encoded: bool
-        :param EventBusId: Event bus ID.
+        :param _EventBusId: Event bus ID.
         :type EventBusId: str
-        :param ServiceScfFunctionType: SCF function type, which takes effect if the backend type is `SCF`. Valid values: `EVENT` and `HTTP`.
+        :param _ServiceScfFunctionType: SCF function type, which takes effect if the backend type is `SCF`. Valid values: `EVENT` and `HTTP`.
         :type ServiceScfFunctionType: str
-        :param EIAMAppType: EIAM application type.
+        :param _EIAMAppType: EIAM application type.
         :type EIAMAppType: str
-        :param EIAMAuthType: EIAM application authentication type. Valid values: `AuthenticationOnly`, `Authentication`, `Authorization`.
+        :param _EIAMAuthType: EIAM application authentication type. Valid values: `AuthenticationOnly`, `Authentication`, `Authorization`.
         :type EIAMAuthType: str
-        :param TokenTimeout: Validity of the EIAM application token. Unit: second. Default value: `7200`.
+        :param _TokenTimeout: Validity of the EIAM application token. Unit: second. Default value: `7200`.
         :type TokenTimeout: int
-        :param EIAMAppId: EIAM application ID.
+        :param _EIAMAppId: EIAM application ID.
         :type EIAMAppId: str
-        :param Owner: Owner of the resource
+        :param _Owner: Owner of the resource
         :type Owner: str
         """
-        self.ServiceId = None
-        self.ServiceType = None
-        self.ServiceTimeout = None
-        self.Protocol = None
-        self.RequestConfig = None
-        self.ApiName = None
-        self.ApiDesc = None
-        self.ApiType = None
-        self.AuthType = None
-        self.EnableCORS = None
-        self.ConstantParameters = None
-        self.RequestParameters = None
-        self.ApiBusinessType = None
-        self.ServiceMockReturnMessage = None
-        self.MicroServices = None
-        self.ServiceTsfLoadBalanceConf = None
-        self.ServiceTsfHealthCheckConf = None
-        self.TargetServices = None
-        self.TargetServicesLoadBalanceConf = None
-        self.TargetServicesHealthCheckConf = None
-        self.ServiceScfFunctionName = None
-        self.ServiceWebsocketRegisterFunctionName = None
-        self.ServiceWebsocketCleanupFunctionName = None
-        self.ServiceWebsocketTransportFunctionName = None
-        self.ServiceScfFunctionNamespace = None
-        self.ServiceScfFunctionQualifier = None
-        self.ServiceWebsocketRegisterFunctionNamespace = None
-        self.ServiceWebsocketRegisterFunctionQualifier = None
-        self.ServiceWebsocketTransportFunctionNamespace = None
-        self.ServiceWebsocketTransportFunctionQualifier = None
-        self.ServiceWebsocketCleanupFunctionNamespace = None
-        self.ServiceWebsocketCleanupFunctionQualifier = None
-        self.ServiceScfIsIntegratedResponse = None
-        self.IsDebugAfterCharge = None
-        self.IsDeleteResponseErrorCodes = None
-        self.ResponseType = None
-        self.ResponseSuccessExample = None
-        self.ResponseFailExample = None
-        self.ServiceConfig = None
-        self.AuthRelationApiId = None
-        self.ServiceParameters = None
-        self.OauthConfig = None
-        self.ResponseErrorCodes = None
-        self.TargetNamespaceId = None
-        self.UserType = None
-        self.IsBase64Encoded = None
-        self.EventBusId = None
-        self.ServiceScfFunctionType = None
-        self.EIAMAppType = None
-        self.EIAMAuthType = None
-        self.TokenTimeout = None
-        self.EIAMAppId = None
-        self.Owner = None
+        self._ServiceId = None
+        self._ServiceType = None
+        self._ServiceTimeout = None
+        self._Protocol = None
+        self._RequestConfig = None
+        self._ApiName = None
+        self._ApiDesc = None
+        self._ApiType = None
+        self._AuthType = None
+        self._EnableCORS = None
+        self._ConstantParameters = None
+        self._RequestParameters = None
+        self._ApiBusinessType = None
+        self._ServiceMockReturnMessage = None
+        self._MicroServices = None
+        self._ServiceTsfLoadBalanceConf = None
+        self._ServiceTsfHealthCheckConf = None
+        self._TargetServices = None
+        self._TargetServicesLoadBalanceConf = None
+        self._TargetServicesHealthCheckConf = None
+        self._ServiceScfFunctionName = None
+        self._ServiceWebsocketRegisterFunctionName = None
+        self._ServiceWebsocketCleanupFunctionName = None
+        self._ServiceWebsocketTransportFunctionName = None
+        self._ServiceScfFunctionNamespace = None
+        self._ServiceScfFunctionQualifier = None
+        self._ServiceWebsocketRegisterFunctionNamespace = None
+        self._ServiceWebsocketRegisterFunctionQualifier = None
+        self._ServiceWebsocketTransportFunctionNamespace = None
+        self._ServiceWebsocketTransportFunctionQualifier = None
+        self._ServiceWebsocketCleanupFunctionNamespace = None
+        self._ServiceWebsocketCleanupFunctionQualifier = None
+        self._ServiceScfIsIntegratedResponse = None
+        self._IsDebugAfterCharge = None
+        self._IsDeleteResponseErrorCodes = None
+        self._ResponseType = None
+        self._ResponseSuccessExample = None
+        self._ResponseFailExample = None
+        self._ServiceConfig = None
+        self._AuthRelationApiId = None
+        self._ServiceParameters = None
+        self._OauthConfig = None
+        self._ResponseErrorCodes = None
+        self._TargetNamespaceId = None
+        self._UserType = None
+        self._IsBase64Encoded = None
+        self._EventBusId = None
+        self._ServiceScfFunctionType = None
+        self._EIAMAppType = None
+        self._EIAMAuthType = None
+        self._TokenTimeout = None
+        self._EIAMAppId = None
+        self._Owner = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def ServiceType(self):
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+    @property
+    def ServiceTimeout(self):
+        return self._ServiceTimeout
+
+    @ServiceTimeout.setter
+    def ServiceTimeout(self, ServiceTimeout):
+        self._ServiceTimeout = ServiceTimeout
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def RequestConfig(self):
+        return self._RequestConfig
+
+    @RequestConfig.setter
+    def RequestConfig(self, RequestConfig):
+        self._RequestConfig = RequestConfig
+
+    @property
+    def ApiName(self):
+        return self._ApiName
+
+    @ApiName.setter
+    def ApiName(self, ApiName):
+        self._ApiName = ApiName
+
+    @property
+    def ApiDesc(self):
+        return self._ApiDesc
+
+    @ApiDesc.setter
+    def ApiDesc(self, ApiDesc):
+        self._ApiDesc = ApiDesc
+
+    @property
+    def ApiType(self):
+        return self._ApiType
+
+    @ApiType.setter
+    def ApiType(self, ApiType):
+        self._ApiType = ApiType
+
+    @property
+    def AuthType(self):
+        return self._AuthType
+
+    @AuthType.setter
+    def AuthType(self, AuthType):
+        self._AuthType = AuthType
+
+    @property
+    def EnableCORS(self):
+        return self._EnableCORS
+
+    @EnableCORS.setter
+    def EnableCORS(self, EnableCORS):
+        self._EnableCORS = EnableCORS
+
+    @property
+    def ConstantParameters(self):
+        return self._ConstantParameters
+
+    @ConstantParameters.setter
+    def ConstantParameters(self, ConstantParameters):
+        self._ConstantParameters = ConstantParameters
+
+    @property
+    def RequestParameters(self):
+        return self._RequestParameters
+
+    @RequestParameters.setter
+    def RequestParameters(self, RequestParameters):
+        self._RequestParameters = RequestParameters
+
+    @property
+    def ApiBusinessType(self):
+        return self._ApiBusinessType
+
+    @ApiBusinessType.setter
+    def ApiBusinessType(self, ApiBusinessType):
+        self._ApiBusinessType = ApiBusinessType
+
+    @property
+    def ServiceMockReturnMessage(self):
+        return self._ServiceMockReturnMessage
+
+    @ServiceMockReturnMessage.setter
+    def ServiceMockReturnMessage(self, ServiceMockReturnMessage):
+        self._ServiceMockReturnMessage = ServiceMockReturnMessage
+
+    @property
+    def MicroServices(self):
+        return self._MicroServices
+
+    @MicroServices.setter
+    def MicroServices(self, MicroServices):
+        self._MicroServices = MicroServices
+
+    @property
+    def ServiceTsfLoadBalanceConf(self):
+        return self._ServiceTsfLoadBalanceConf
+
+    @ServiceTsfLoadBalanceConf.setter
+    def ServiceTsfLoadBalanceConf(self, ServiceTsfLoadBalanceConf):
+        self._ServiceTsfLoadBalanceConf = ServiceTsfLoadBalanceConf
+
+    @property
+    def ServiceTsfHealthCheckConf(self):
+        return self._ServiceTsfHealthCheckConf
+
+    @ServiceTsfHealthCheckConf.setter
+    def ServiceTsfHealthCheckConf(self, ServiceTsfHealthCheckConf):
+        self._ServiceTsfHealthCheckConf = ServiceTsfHealthCheckConf
+
+    @property
+    def TargetServices(self):
+        return self._TargetServices
+
+    @TargetServices.setter
+    def TargetServices(self, TargetServices):
+        self._TargetServices = TargetServices
+
+    @property
+    def TargetServicesLoadBalanceConf(self):
+        return self._TargetServicesLoadBalanceConf
+
+    @TargetServicesLoadBalanceConf.setter
+    def TargetServicesLoadBalanceConf(self, TargetServicesLoadBalanceConf):
+        self._TargetServicesLoadBalanceConf = TargetServicesLoadBalanceConf
+
+    @property
+    def TargetServicesHealthCheckConf(self):
+        return self._TargetServicesHealthCheckConf
+
+    @TargetServicesHealthCheckConf.setter
+    def TargetServicesHealthCheckConf(self, TargetServicesHealthCheckConf):
+        self._TargetServicesHealthCheckConf = TargetServicesHealthCheckConf
+
+    @property
+    def ServiceScfFunctionName(self):
+        return self._ServiceScfFunctionName
+
+    @ServiceScfFunctionName.setter
+    def ServiceScfFunctionName(self, ServiceScfFunctionName):
+        self._ServiceScfFunctionName = ServiceScfFunctionName
+
+    @property
+    def ServiceWebsocketRegisterFunctionName(self):
+        return self._ServiceWebsocketRegisterFunctionName
+
+    @ServiceWebsocketRegisterFunctionName.setter
+    def ServiceWebsocketRegisterFunctionName(self, ServiceWebsocketRegisterFunctionName):
+        self._ServiceWebsocketRegisterFunctionName = ServiceWebsocketRegisterFunctionName
+
+    @property
+    def ServiceWebsocketCleanupFunctionName(self):
+        return self._ServiceWebsocketCleanupFunctionName
+
+    @ServiceWebsocketCleanupFunctionName.setter
+    def ServiceWebsocketCleanupFunctionName(self, ServiceWebsocketCleanupFunctionName):
+        self._ServiceWebsocketCleanupFunctionName = ServiceWebsocketCleanupFunctionName
+
+    @property
+    def ServiceWebsocketTransportFunctionName(self):
+        return self._ServiceWebsocketTransportFunctionName
+
+    @ServiceWebsocketTransportFunctionName.setter
+    def ServiceWebsocketTransportFunctionName(self, ServiceWebsocketTransportFunctionName):
+        self._ServiceWebsocketTransportFunctionName = ServiceWebsocketTransportFunctionName
+
+    @property
+    def ServiceScfFunctionNamespace(self):
+        return self._ServiceScfFunctionNamespace
+
+    @ServiceScfFunctionNamespace.setter
+    def ServiceScfFunctionNamespace(self, ServiceScfFunctionNamespace):
+        self._ServiceScfFunctionNamespace = ServiceScfFunctionNamespace
+
+    @property
+    def ServiceScfFunctionQualifier(self):
+        return self._ServiceScfFunctionQualifier
+
+    @ServiceScfFunctionQualifier.setter
+    def ServiceScfFunctionQualifier(self, ServiceScfFunctionQualifier):
+        self._ServiceScfFunctionQualifier = ServiceScfFunctionQualifier
+
+    @property
+    def ServiceWebsocketRegisterFunctionNamespace(self):
+        return self._ServiceWebsocketRegisterFunctionNamespace
+
+    @ServiceWebsocketRegisterFunctionNamespace.setter
+    def ServiceWebsocketRegisterFunctionNamespace(self, ServiceWebsocketRegisterFunctionNamespace):
+        self._ServiceWebsocketRegisterFunctionNamespace = ServiceWebsocketRegisterFunctionNamespace
+
+    @property
+    def ServiceWebsocketRegisterFunctionQualifier(self):
+        return self._ServiceWebsocketRegisterFunctionQualifier
+
+    @ServiceWebsocketRegisterFunctionQualifier.setter
+    def ServiceWebsocketRegisterFunctionQualifier(self, ServiceWebsocketRegisterFunctionQualifier):
+        self._ServiceWebsocketRegisterFunctionQualifier = ServiceWebsocketRegisterFunctionQualifier
+
+    @property
+    def ServiceWebsocketTransportFunctionNamespace(self):
+        return self._ServiceWebsocketTransportFunctionNamespace
+
+    @ServiceWebsocketTransportFunctionNamespace.setter
+    def ServiceWebsocketTransportFunctionNamespace(self, ServiceWebsocketTransportFunctionNamespace):
+        self._ServiceWebsocketTransportFunctionNamespace = ServiceWebsocketTransportFunctionNamespace
+
+    @property
+    def ServiceWebsocketTransportFunctionQualifier(self):
+        return self._ServiceWebsocketTransportFunctionQualifier
+
+    @ServiceWebsocketTransportFunctionQualifier.setter
+    def ServiceWebsocketTransportFunctionQualifier(self, ServiceWebsocketTransportFunctionQualifier):
+        self._ServiceWebsocketTransportFunctionQualifier = ServiceWebsocketTransportFunctionQualifier
+
+    @property
+    def ServiceWebsocketCleanupFunctionNamespace(self):
+        return self._ServiceWebsocketCleanupFunctionNamespace
+
+    @ServiceWebsocketCleanupFunctionNamespace.setter
+    def ServiceWebsocketCleanupFunctionNamespace(self, ServiceWebsocketCleanupFunctionNamespace):
+        self._ServiceWebsocketCleanupFunctionNamespace = ServiceWebsocketCleanupFunctionNamespace
+
+    @property
+    def ServiceWebsocketCleanupFunctionQualifier(self):
+        return self._ServiceWebsocketCleanupFunctionQualifier
+
+    @ServiceWebsocketCleanupFunctionQualifier.setter
+    def ServiceWebsocketCleanupFunctionQualifier(self, ServiceWebsocketCleanupFunctionQualifier):
+        self._ServiceWebsocketCleanupFunctionQualifier = ServiceWebsocketCleanupFunctionQualifier
+
+    @property
+    def ServiceScfIsIntegratedResponse(self):
+        return self._ServiceScfIsIntegratedResponse
+
+    @ServiceScfIsIntegratedResponse.setter
+    def ServiceScfIsIntegratedResponse(self, ServiceScfIsIntegratedResponse):
+        self._ServiceScfIsIntegratedResponse = ServiceScfIsIntegratedResponse
+
+    @property
+    def IsDebugAfterCharge(self):
+        return self._IsDebugAfterCharge
+
+    @IsDebugAfterCharge.setter
+    def IsDebugAfterCharge(self, IsDebugAfterCharge):
+        self._IsDebugAfterCharge = IsDebugAfterCharge
+
+    @property
+    def IsDeleteResponseErrorCodes(self):
+        return self._IsDeleteResponseErrorCodes
+
+    @IsDeleteResponseErrorCodes.setter
+    def IsDeleteResponseErrorCodes(self, IsDeleteResponseErrorCodes):
+        self._IsDeleteResponseErrorCodes = IsDeleteResponseErrorCodes
+
+    @property
+    def ResponseType(self):
+        return self._ResponseType
+
+    @ResponseType.setter
+    def ResponseType(self, ResponseType):
+        self._ResponseType = ResponseType
+
+    @property
+    def ResponseSuccessExample(self):
+        return self._ResponseSuccessExample
+
+    @ResponseSuccessExample.setter
+    def ResponseSuccessExample(self, ResponseSuccessExample):
+        self._ResponseSuccessExample = ResponseSuccessExample
+
+    @property
+    def ResponseFailExample(self):
+        return self._ResponseFailExample
+
+    @ResponseFailExample.setter
+    def ResponseFailExample(self, ResponseFailExample):
+        self._ResponseFailExample = ResponseFailExample
+
+    @property
+    def ServiceConfig(self):
+        return self._ServiceConfig
+
+    @ServiceConfig.setter
+    def ServiceConfig(self, ServiceConfig):
+        self._ServiceConfig = ServiceConfig
+
+    @property
+    def AuthRelationApiId(self):
+        return self._AuthRelationApiId
+
+    @AuthRelationApiId.setter
+    def AuthRelationApiId(self, AuthRelationApiId):
+        self._AuthRelationApiId = AuthRelationApiId
+
+    @property
+    def ServiceParameters(self):
+        return self._ServiceParameters
+
+    @ServiceParameters.setter
+    def ServiceParameters(self, ServiceParameters):
+        self._ServiceParameters = ServiceParameters
+
+    @property
+    def OauthConfig(self):
+        return self._OauthConfig
+
+    @OauthConfig.setter
+    def OauthConfig(self, OauthConfig):
+        self._OauthConfig = OauthConfig
+
+    @property
+    def ResponseErrorCodes(self):
+        return self._ResponseErrorCodes
+
+    @ResponseErrorCodes.setter
+    def ResponseErrorCodes(self, ResponseErrorCodes):
+        self._ResponseErrorCodes = ResponseErrorCodes
+
+    @property
+    def TargetNamespaceId(self):
+        return self._TargetNamespaceId
+
+    @TargetNamespaceId.setter
+    def TargetNamespaceId(self, TargetNamespaceId):
+        self._TargetNamespaceId = TargetNamespaceId
+
+    @property
+    def UserType(self):
+        return self._UserType
+
+    @UserType.setter
+    def UserType(self, UserType):
+        self._UserType = UserType
+
+    @property
+    def IsBase64Encoded(self):
+        return self._IsBase64Encoded
+
+    @IsBase64Encoded.setter
+    def IsBase64Encoded(self, IsBase64Encoded):
+        self._IsBase64Encoded = IsBase64Encoded
+
+    @property
+    def EventBusId(self):
+        return self._EventBusId
+
+    @EventBusId.setter
+    def EventBusId(self, EventBusId):
+        self._EventBusId = EventBusId
+
+    @property
+    def ServiceScfFunctionType(self):
+        return self._ServiceScfFunctionType
+
+    @ServiceScfFunctionType.setter
+    def ServiceScfFunctionType(self, ServiceScfFunctionType):
+        self._ServiceScfFunctionType = ServiceScfFunctionType
+
+    @property
+    def EIAMAppType(self):
+        return self._EIAMAppType
+
+    @EIAMAppType.setter
+    def EIAMAppType(self, EIAMAppType):
+        self._EIAMAppType = EIAMAppType
+
+    @property
+    def EIAMAuthType(self):
+        return self._EIAMAuthType
+
+    @EIAMAuthType.setter
+    def EIAMAuthType(self, EIAMAuthType):
+        self._EIAMAuthType = EIAMAuthType
+
+    @property
+    def TokenTimeout(self):
+        return self._TokenTimeout
+
+    @TokenTimeout.setter
+    def TokenTimeout(self, TokenTimeout):
+        self._TokenTimeout = TokenTimeout
+
+    @property
+    def EIAMAppId(self):
+        return self._EIAMAppId
+
+    @EIAMAppId.setter
+    def EIAMAppId(self, EIAMAppId):
+        self._EIAMAppId = EIAMAppId
+
+    @property
+    def Owner(self):
+        return self._Owner
+
+    @Owner.setter
+    def Owner(self, Owner):
+        self._Owner = Owner
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.ServiceType = params.get("ServiceType")
-        self.ServiceTimeout = params.get("ServiceTimeout")
-        self.Protocol = params.get("Protocol")
+        self._ServiceId = params.get("ServiceId")
+        self._ServiceType = params.get("ServiceType")
+        self._ServiceTimeout = params.get("ServiceTimeout")
+        self._Protocol = params.get("Protocol")
         if params.get("RequestConfig") is not None:
-            self.RequestConfig = ApiRequestConfig()
-            self.RequestConfig._deserialize(params.get("RequestConfig"))
-        self.ApiName = params.get("ApiName")
-        self.ApiDesc = params.get("ApiDesc")
-        self.ApiType = params.get("ApiType")
-        self.AuthType = params.get("AuthType")
-        self.EnableCORS = params.get("EnableCORS")
+            self._RequestConfig = ApiRequestConfig()
+            self._RequestConfig._deserialize(params.get("RequestConfig"))
+        self._ApiName = params.get("ApiName")
+        self._ApiDesc = params.get("ApiDesc")
+        self._ApiType = params.get("ApiType")
+        self._AuthType = params.get("AuthType")
+        self._EnableCORS = params.get("EnableCORS")
         if params.get("ConstantParameters") is not None:
-            self.ConstantParameters = []
+            self._ConstantParameters = []
             for item in params.get("ConstantParameters"):
                 obj = ConstantParameter()
                 obj._deserialize(item)
-                self.ConstantParameters.append(obj)
+                self._ConstantParameters.append(obj)
         if params.get("RequestParameters") is not None:
-            self.RequestParameters = []
+            self._RequestParameters = []
             for item in params.get("RequestParameters"):
                 obj = RequestParameter()
                 obj._deserialize(item)
-                self.RequestParameters.append(obj)
-        self.ApiBusinessType = params.get("ApiBusinessType")
-        self.ServiceMockReturnMessage = params.get("ServiceMockReturnMessage")
+                self._RequestParameters.append(obj)
+        self._ApiBusinessType = params.get("ApiBusinessType")
+        self._ServiceMockReturnMessage = params.get("ServiceMockReturnMessage")
         if params.get("MicroServices") is not None:
-            self.MicroServices = []
+            self._MicroServices = []
             for item in params.get("MicroServices"):
                 obj = MicroServiceReq()
                 obj._deserialize(item)
-                self.MicroServices.append(obj)
+                self._MicroServices.append(obj)
         if params.get("ServiceTsfLoadBalanceConf") is not None:
-            self.ServiceTsfLoadBalanceConf = TsfLoadBalanceConfResp()
-            self.ServiceTsfLoadBalanceConf._deserialize(params.get("ServiceTsfLoadBalanceConf"))
+            self._ServiceTsfLoadBalanceConf = TsfLoadBalanceConfResp()
+            self._ServiceTsfLoadBalanceConf._deserialize(params.get("ServiceTsfLoadBalanceConf"))
         if params.get("ServiceTsfHealthCheckConf") is not None:
-            self.ServiceTsfHealthCheckConf = HealthCheckConf()
-            self.ServiceTsfHealthCheckConf._deserialize(params.get("ServiceTsfHealthCheckConf"))
+            self._ServiceTsfHealthCheckConf = HealthCheckConf()
+            self._ServiceTsfHealthCheckConf._deserialize(params.get("ServiceTsfHealthCheckConf"))
         if params.get("TargetServices") is not None:
-            self.TargetServices = []
+            self._TargetServices = []
             for item in params.get("TargetServices"):
                 obj = TargetServicesReq()
                 obj._deserialize(item)
-                self.TargetServices.append(obj)
-        self.TargetServicesLoadBalanceConf = params.get("TargetServicesLoadBalanceConf")
+                self._TargetServices.append(obj)
+        self._TargetServicesLoadBalanceConf = params.get("TargetServicesLoadBalanceConf")
         if params.get("TargetServicesHealthCheckConf") is not None:
-            self.TargetServicesHealthCheckConf = HealthCheckConf()
-            self.TargetServicesHealthCheckConf._deserialize(params.get("TargetServicesHealthCheckConf"))
-        self.ServiceScfFunctionName = params.get("ServiceScfFunctionName")
-        self.ServiceWebsocketRegisterFunctionName = params.get("ServiceWebsocketRegisterFunctionName")
-        self.ServiceWebsocketCleanupFunctionName = params.get("ServiceWebsocketCleanupFunctionName")
-        self.ServiceWebsocketTransportFunctionName = params.get("ServiceWebsocketTransportFunctionName")
-        self.ServiceScfFunctionNamespace = params.get("ServiceScfFunctionNamespace")
-        self.ServiceScfFunctionQualifier = params.get("ServiceScfFunctionQualifier")
-        self.ServiceWebsocketRegisterFunctionNamespace = params.get("ServiceWebsocketRegisterFunctionNamespace")
-        self.ServiceWebsocketRegisterFunctionQualifier = params.get("ServiceWebsocketRegisterFunctionQualifier")
-        self.ServiceWebsocketTransportFunctionNamespace = params.get("ServiceWebsocketTransportFunctionNamespace")
-        self.ServiceWebsocketTransportFunctionQualifier = params.get("ServiceWebsocketTransportFunctionQualifier")
-        self.ServiceWebsocketCleanupFunctionNamespace = params.get("ServiceWebsocketCleanupFunctionNamespace")
-        self.ServiceWebsocketCleanupFunctionQualifier = params.get("ServiceWebsocketCleanupFunctionQualifier")
-        self.ServiceScfIsIntegratedResponse = params.get("ServiceScfIsIntegratedResponse")
-        self.IsDebugAfterCharge = params.get("IsDebugAfterCharge")
-        self.IsDeleteResponseErrorCodes = params.get("IsDeleteResponseErrorCodes")
-        self.ResponseType = params.get("ResponseType")
-        self.ResponseSuccessExample = params.get("ResponseSuccessExample")
-        self.ResponseFailExample = params.get("ResponseFailExample")
+            self._TargetServicesHealthCheckConf = HealthCheckConf()
+            self._TargetServicesHealthCheckConf._deserialize(params.get("TargetServicesHealthCheckConf"))
+        self._ServiceScfFunctionName = params.get("ServiceScfFunctionName")
+        self._ServiceWebsocketRegisterFunctionName = params.get("ServiceWebsocketRegisterFunctionName")
+        self._ServiceWebsocketCleanupFunctionName = params.get("ServiceWebsocketCleanupFunctionName")
+        self._ServiceWebsocketTransportFunctionName = params.get("ServiceWebsocketTransportFunctionName")
+        self._ServiceScfFunctionNamespace = params.get("ServiceScfFunctionNamespace")
+        self._ServiceScfFunctionQualifier = params.get("ServiceScfFunctionQualifier")
+        self._ServiceWebsocketRegisterFunctionNamespace = params.get("ServiceWebsocketRegisterFunctionNamespace")
+        self._ServiceWebsocketRegisterFunctionQualifier = params.get("ServiceWebsocketRegisterFunctionQualifier")
+        self._ServiceWebsocketTransportFunctionNamespace = params.get("ServiceWebsocketTransportFunctionNamespace")
+        self._ServiceWebsocketTransportFunctionQualifier = params.get("ServiceWebsocketTransportFunctionQualifier")
+        self._ServiceWebsocketCleanupFunctionNamespace = params.get("ServiceWebsocketCleanupFunctionNamespace")
+        self._ServiceWebsocketCleanupFunctionQualifier = params.get("ServiceWebsocketCleanupFunctionQualifier")
+        self._ServiceScfIsIntegratedResponse = params.get("ServiceScfIsIntegratedResponse")
+        self._IsDebugAfterCharge = params.get("IsDebugAfterCharge")
+        self._IsDeleteResponseErrorCodes = params.get("IsDeleteResponseErrorCodes")
+        self._ResponseType = params.get("ResponseType")
+        self._ResponseSuccessExample = params.get("ResponseSuccessExample")
+        self._ResponseFailExample = params.get("ResponseFailExample")
         if params.get("ServiceConfig") is not None:
-            self.ServiceConfig = ServiceConfig()
-            self.ServiceConfig._deserialize(params.get("ServiceConfig"))
-        self.AuthRelationApiId = params.get("AuthRelationApiId")
+            self._ServiceConfig = ServiceConfig()
+            self._ServiceConfig._deserialize(params.get("ServiceConfig"))
+        self._AuthRelationApiId = params.get("AuthRelationApiId")
         if params.get("ServiceParameters") is not None:
-            self.ServiceParameters = []
+            self._ServiceParameters = []
             for item in params.get("ServiceParameters"):
                 obj = ServiceParameter()
                 obj._deserialize(item)
-                self.ServiceParameters.append(obj)
+                self._ServiceParameters.append(obj)
         if params.get("OauthConfig") is not None:
-            self.OauthConfig = OauthConfig()
-            self.OauthConfig._deserialize(params.get("OauthConfig"))
+            self._OauthConfig = OauthConfig()
+            self._OauthConfig._deserialize(params.get("OauthConfig"))
         if params.get("ResponseErrorCodes") is not None:
-            self.ResponseErrorCodes = []
+            self._ResponseErrorCodes = []
             for item in params.get("ResponseErrorCodes"):
                 obj = ResponseErrorCodeReq()
                 obj._deserialize(item)
-                self.ResponseErrorCodes.append(obj)
-        self.TargetNamespaceId = params.get("TargetNamespaceId")
-        self.UserType = params.get("UserType")
-        self.IsBase64Encoded = params.get("IsBase64Encoded")
-        self.EventBusId = params.get("EventBusId")
-        self.ServiceScfFunctionType = params.get("ServiceScfFunctionType")
-        self.EIAMAppType = params.get("EIAMAppType")
-        self.EIAMAuthType = params.get("EIAMAuthType")
-        self.TokenTimeout = params.get("TokenTimeout")
-        self.EIAMAppId = params.get("EIAMAppId")
-        self.Owner = params.get("Owner")
+                self._ResponseErrorCodes.append(obj)
+        self._TargetNamespaceId = params.get("TargetNamespaceId")
+        self._UserType = params.get("UserType")
+        self._IsBase64Encoded = params.get("IsBase64Encoded")
+        self._EventBusId = params.get("EventBusId")
+        self._ServiceScfFunctionType = params.get("ServiceScfFunctionType")
+        self._EIAMAppType = params.get("EIAMAppType")
+        self._EIAMAuthType = params.get("EIAMAuthType")
+        self._TokenTimeout = params.get("TokenTimeout")
+        self._EIAMAppId = params.get("EIAMAppId")
+        self._Owner = params.get("Owner")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2397,21 +4827,37 @@ class CreateApiResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: API information
+        :param _Result: API information
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.CreateApiRsp`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = CreateApiRsp()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = CreateApiRsp()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class CreateApiRsp(AbstractModel):
@@ -2421,49 +4867,106 @@ class CreateApiRsp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApiId: API ID
+        :param _ApiId: API ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApiId: str
-        :param Path: Path
+        :param _Path: Path
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Path: str
-        :param Method: Request method
+        :param _Method: Request method
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Method: str
-        :param CreatedTime: Creation time
+        :param _CreatedTime: Creation time
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CreatedTime: str
-        :param Status: Status of the import task
+        :param _Status: Status of the import task
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Status: str
-        :param ErrMsg: Details of the error
+        :param _ErrMsg: Details of the error
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type ErrMsg: str
-        :param ApiName: API name
+        :param _ApiName: API name
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type ApiName: str
         """
-        self.ApiId = None
-        self.Path = None
-        self.Method = None
-        self.CreatedTime = None
-        self.Status = None
-        self.ErrMsg = None
-        self.ApiName = None
+        self._ApiId = None
+        self._Path = None
+        self._Method = None
+        self._CreatedTime = None
+        self._Status = None
+        self._ErrMsg = None
+        self._ApiName = None
+
+    @property
+    def ApiId(self):
+        return self._ApiId
+
+    @ApiId.setter
+    def ApiId(self, ApiId):
+        self._ApiId = ApiId
+
+    @property
+    def Path(self):
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Method(self):
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrMsg(self):
+        return self._ErrMsg
+
+    @ErrMsg.setter
+    def ErrMsg(self, ErrMsg):
+        self._ErrMsg = ErrMsg
+
+    @property
+    def ApiName(self):
+        return self._ApiName
+
+    @ApiName.setter
+    def ApiName(self, ApiName):
+        self._ApiName = ApiName
 
 
     def _deserialize(self, params):
-        self.ApiId = params.get("ApiId")
-        self.Path = params.get("Path")
-        self.Method = params.get("Method")
-        self.CreatedTime = params.get("CreatedTime")
-        self.Status = params.get("Status")
-        self.ErrMsg = params.get("ErrMsg")
-        self.ApiName = params.get("ApiName")
+        self._ApiId = params.get("ApiId")
+        self._Path = params.get("Path")
+        self._Method = params.get("Method")
+        self._CreatedTime = params.get("CreatedTime")
+        self._Status = params.get("Status")
+        self._ErrMsg = params.get("ErrMsg")
+        self._ApiName = params.get("ApiName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2476,27 +4979,44 @@ class CreateApiRspSet(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Total number of APIs
+        :param _TotalCount: Total number of APIs
         :type TotalCount: int
-        :param ApiSet: Information of created APIs
+        :param _ApiSet: Information of created APIs
         :type ApiSet: list of CreateApiRsp
         """
-        self.TotalCount = None
-        self.ApiSet = None
+        self._TotalCount = None
+        self._ApiSet = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ApiSet(self):
+        return self._ApiSet
+
+    @ApiSet.setter
+    def ApiSet(self, ApiSet):
+        self._ApiSet = ApiSet
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("ApiSet") is not None:
-            self.ApiSet = []
+            self._ApiSet = []
             for item in params.get("ApiSet"):
                 obj = CreateApiRsp()
                 obj._deserialize(item)
-                self.ApiSet.append(obj)
+                self._ApiSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2509,30 +5029,63 @@ class CreateIPStrategyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Unique service ID.
+        :param _ServiceId: Unique service ID.
         :type ServiceId: str
-        :param StrategyName: Custom policy name.
+        :param _StrategyName: Custom policy name.
         :type StrategyName: str
-        :param StrategyType: Policy type. Valid values: WHITE (allowlist), BLACK (blocklist).
+        :param _StrategyType: Policy type. Valid values: WHITE (allowlist), BLACK (blocklist).
         :type StrategyType: str
-        :param StrategyData: Policy details. Multiple IPs are separated with \n.
+        :param _StrategyData: Policy details. Multiple IPs are separated with \n.
         :type StrategyData: str
         """
-        self.ServiceId = None
-        self.StrategyName = None
-        self.StrategyType = None
-        self.StrategyData = None
+        self._ServiceId = None
+        self._StrategyName = None
+        self._StrategyType = None
+        self._StrategyData = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def StrategyName(self):
+        return self._StrategyName
+
+    @StrategyName.setter
+    def StrategyName(self, StrategyName):
+        self._StrategyName = StrategyName
+
+    @property
+    def StrategyType(self):
+        return self._StrategyType
+
+    @StrategyType.setter
+    def StrategyType(self, StrategyType):
+        self._StrategyType = StrategyType
+
+    @property
+    def StrategyData(self):
+        return self._StrategyData
+
+    @StrategyData.setter
+    def StrategyData(self, StrategyData):
+        self._StrategyData = StrategyData
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.StrategyName = params.get("StrategyName")
-        self.StrategyType = params.get("StrategyType")
-        self.StrategyData = params.get("StrategyData")
+        self._ServiceId = params.get("ServiceId")
+        self._StrategyName = params.get("StrategyName")
+        self._StrategyType = params.get("StrategyType")
+        self._StrategyData = params.get("StrategyData")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2545,21 +5098,37 @@ class CreateIPStrategyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: New IP policy details.
+        :param _Result: New IP policy details.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.IPStrategy`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = IPStrategy()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = IPStrategy()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class CreatePluginRequest(AbstractModel):
@@ -2569,39 +5138,80 @@ class CreatePluginRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PluginName: Custom plugin name. A plugin name should contain 2-50 characters out of a-z, A-Z, 0-9, and _, which must begin with a letter and end with a letter or a number.
+        :param _PluginName: Custom plugin name. A plugin name should contain 2-50 characters out of a-z, A-Z, 0-9, and _, which must begin with a letter and end with a letter or a number.
         :type PluginName: str
-        :param PluginType: Plugin type. Valid values: `IPControl`, `TrafficControl`, `Cors`, `CustomReq`, `CustomAuth`, `Routing`, `TrafficControlByParameter`, `CircuitBreaker`, `ProxyCache`
+        :param _PluginType: Plugin type. Valid values: `IPControl`, `TrafficControl`, `Cors`, `CustomReq`, `CustomAuth`, `Routing`, `TrafficControlByParameter`, `CircuitBreaker`, `ProxyCache`
         :type PluginType: str
-        :param PluginData: Plugin definition statement in json format
+        :param _PluginData: Plugin definition statement in json format
         :type PluginData: str
-        :param Description: Plugin description within 200 characters
+        :param _Description: Plugin description within 200 characters
         :type Description: str
-        :param Tags: Label
+        :param _Tags: Label
         :type Tags: list of Tag
         """
-        self.PluginName = None
-        self.PluginType = None
-        self.PluginData = None
-        self.Description = None
-        self.Tags = None
+        self._PluginName = None
+        self._PluginType = None
+        self._PluginData = None
+        self._Description = None
+        self._Tags = None
+
+    @property
+    def PluginName(self):
+        return self._PluginName
+
+    @PluginName.setter
+    def PluginName(self, PluginName):
+        self._PluginName = PluginName
+
+    @property
+    def PluginType(self):
+        return self._PluginType
+
+    @PluginType.setter
+    def PluginType(self, PluginType):
+        self._PluginType = PluginType
+
+    @property
+    def PluginData(self):
+        return self._PluginData
+
+    @PluginData.setter
+    def PluginData(self, PluginData):
+        self._PluginData = PluginData
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
-        self.PluginName = params.get("PluginName")
-        self.PluginType = params.get("PluginType")
-        self.PluginData = params.get("PluginData")
-        self.Description = params.get("Description")
+        self._PluginName = params.get("PluginName")
+        self._PluginType = params.get("PluginType")
+        self._PluginData = params.get("PluginData")
+        self._Description = params.get("Description")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2614,20 +5224,36 @@ class CreatePluginResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Details of the new plugin
+        :param _Result: Details of the new plugin
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.Plugin`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = Plugin()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = Plugin()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class CreateServiceRequest(AbstractModel):
@@ -2637,63 +5263,152 @@ class CreateServiceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceName: Custom service name.
+        :param _ServiceName: Custom service name.
         :type ServiceName: str
-        :param Protocol: Service frontend request type, such as `http`, `https`, and `http&https`.
+        :param _Protocol: Service frontend request type, such as `http`, `https`, and `http&https`.
         :type Protocol: str
-        :param ServiceDesc: Custom service description.
+        :param _ServiceDesc: Custom service description.
         :type ServiceDesc: str
-        :param ExclusiveSetName: Dedicated cluster name, which is used to specify the dedicated cluster where the service is to be created.
+        :param _ExclusiveSetName: Dedicated cluster name, which is used to specify the dedicated cluster where the service is to be created.
         :type ExclusiveSetName: str
-        :param NetTypes: Network type list, which is used to specify the supported network types. INNER: private network access; OUTER: public network access. Default value: OUTER.
+        :param _NetTypes: Network type list, which is used to specify the supported network types. INNER: private network access; OUTER: public network access. Default value: OUTER.
         :type NetTypes: list of str
-        :param IpVersion: IP version number. Valid values: IPv4, IPv6. Default value: IPv4.
+        :param _IpVersion: IP version number. Valid values: IPv4, IPv6. Default value: IPv4.
         :type IpVersion: str
-        :param SetServerName: Cluster name, which is reserved and used by the `tsf serverless` type.
+        :param _SetServerName: Cluster name, which is reserved and used by the `tsf serverless` type.
         :type SetServerName: str
-        :param AppIdType: User type, which is reserved and can be used by `serverless` users.
+        :param _AppIdType: User type, which is reserved and can be used by `serverless` users.
         :type AppIdType: str
-        :param Tags: Tag information.
+        :param _Tags: Tag information.
         :type Tags: list of Tag
-        :param InstanceId: Dedicated instance ID
+        :param _InstanceId: Dedicated instance ID
         :type InstanceId: str
-        :param UniqVpcId: VPC attribute
+        :param _UniqVpcId: VPC attribute
         :type UniqVpcId: str
         """
-        self.ServiceName = None
-        self.Protocol = None
-        self.ServiceDesc = None
-        self.ExclusiveSetName = None
-        self.NetTypes = None
-        self.IpVersion = None
-        self.SetServerName = None
-        self.AppIdType = None
-        self.Tags = None
-        self.InstanceId = None
-        self.UniqVpcId = None
+        self._ServiceName = None
+        self._Protocol = None
+        self._ServiceDesc = None
+        self._ExclusiveSetName = None
+        self._NetTypes = None
+        self._IpVersion = None
+        self._SetServerName = None
+        self._AppIdType = None
+        self._Tags = None
+        self._InstanceId = None
+        self._UniqVpcId = None
+
+    @property
+    def ServiceName(self):
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def ServiceDesc(self):
+        return self._ServiceDesc
+
+    @ServiceDesc.setter
+    def ServiceDesc(self, ServiceDesc):
+        self._ServiceDesc = ServiceDesc
+
+    @property
+    def ExclusiveSetName(self):
+        return self._ExclusiveSetName
+
+    @ExclusiveSetName.setter
+    def ExclusiveSetName(self, ExclusiveSetName):
+        self._ExclusiveSetName = ExclusiveSetName
+
+    @property
+    def NetTypes(self):
+        return self._NetTypes
+
+    @NetTypes.setter
+    def NetTypes(self, NetTypes):
+        self._NetTypes = NetTypes
+
+    @property
+    def IpVersion(self):
+        return self._IpVersion
+
+    @IpVersion.setter
+    def IpVersion(self, IpVersion):
+        self._IpVersion = IpVersion
+
+    @property
+    def SetServerName(self):
+        return self._SetServerName
+
+    @SetServerName.setter
+    def SetServerName(self, SetServerName):
+        self._SetServerName = SetServerName
+
+    @property
+    def AppIdType(self):
+        return self._AppIdType
+
+    @AppIdType.setter
+    def AppIdType(self, AppIdType):
+        self._AppIdType = AppIdType
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def UniqVpcId(self):
+        return self._UniqVpcId
+
+    @UniqVpcId.setter
+    def UniqVpcId(self, UniqVpcId):
+        self._UniqVpcId = UniqVpcId
 
 
     def _deserialize(self, params):
-        self.ServiceName = params.get("ServiceName")
-        self.Protocol = params.get("Protocol")
-        self.ServiceDesc = params.get("ServiceDesc")
-        self.ExclusiveSetName = params.get("ExclusiveSetName")
-        self.NetTypes = params.get("NetTypes")
-        self.IpVersion = params.get("IpVersion")
-        self.SetServerName = params.get("SetServerName")
-        self.AppIdType = params.get("AppIdType")
+        self._ServiceName = params.get("ServiceName")
+        self._Protocol = params.get("Protocol")
+        self._ServiceDesc = params.get("ServiceDesc")
+        self._ExclusiveSetName = params.get("ExclusiveSetName")
+        self._NetTypes = params.get("NetTypes")
+        self._IpVersion = params.get("IpVersion")
+        self._SetServerName = params.get("SetServerName")
+        self._AppIdType = params.get("AppIdType")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.InstanceId = params.get("InstanceId")
-        self.UniqVpcId = params.get("UniqVpcId")
+                self._Tags.append(obj)
+        self._InstanceId = params.get("InstanceId")
+        self._UniqVpcId = params.get("UniqVpcId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2706,47 +5421,119 @@ class CreateServiceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Unique service ID.
+        :param _ServiceId: Unique service ID.
         :type ServiceId: str
-        :param ServiceName: Custom service name.
+        :param _ServiceName: Custom service name.
         :type ServiceName: str
-        :param ServiceDesc: Custom service description.
+        :param _ServiceDesc: Custom service description.
         :type ServiceDesc: str
-        :param OuterSubDomain: Default public domain name.
+        :param _OuterSubDomain: Default public domain name.
         :type OuterSubDomain: str
-        :param InnerSubDomain: Default VPC domain name.
+        :param _InnerSubDomain: Default VPC domain name.
         :type InnerSubDomain: str
-        :param CreatedTime: Service creation time in the format of `YYYY-MM-DDThh:mm:ssZ` according to ISO 8601 standard. UTC time is used.
+        :param _CreatedTime: Service creation time in the format of `YYYY-MM-DDThh:mm:ssZ` according to ISO 8601 standard. UTC time is used.
         :type CreatedTime: str
-        :param NetTypes: Network type list. INNER: private network access; OUTER: public network access.
+        :param _NetTypes: Network type list. INNER: private network access; OUTER: public network access.
         :type NetTypes: list of str
-        :param IpVersion: IP version number.
+        :param _IpVersion: IP version number.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IpVersion: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.ServiceId = None
-        self.ServiceName = None
-        self.ServiceDesc = None
-        self.OuterSubDomain = None
-        self.InnerSubDomain = None
-        self.CreatedTime = None
-        self.NetTypes = None
-        self.IpVersion = None
-        self.RequestId = None
+        self._ServiceId = None
+        self._ServiceName = None
+        self._ServiceDesc = None
+        self._OuterSubDomain = None
+        self._InnerSubDomain = None
+        self._CreatedTime = None
+        self._NetTypes = None
+        self._IpVersion = None
+        self._RequestId = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def ServiceName(self):
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def ServiceDesc(self):
+        return self._ServiceDesc
+
+    @ServiceDesc.setter
+    def ServiceDesc(self, ServiceDesc):
+        self._ServiceDesc = ServiceDesc
+
+    @property
+    def OuterSubDomain(self):
+        return self._OuterSubDomain
+
+    @OuterSubDomain.setter
+    def OuterSubDomain(self, OuterSubDomain):
+        self._OuterSubDomain = OuterSubDomain
+
+    @property
+    def InnerSubDomain(self):
+        return self._InnerSubDomain
+
+    @InnerSubDomain.setter
+    def InnerSubDomain(self, InnerSubDomain):
+        self._InnerSubDomain = InnerSubDomain
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def NetTypes(self):
+        return self._NetTypes
+
+    @NetTypes.setter
+    def NetTypes(self, NetTypes):
+        self._NetTypes = NetTypes
+
+    @property
+    def IpVersion(self):
+        return self._IpVersion
+
+    @IpVersion.setter
+    def IpVersion(self, IpVersion):
+        self._IpVersion = IpVersion
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.ServiceName = params.get("ServiceName")
-        self.ServiceDesc = params.get("ServiceDesc")
-        self.OuterSubDomain = params.get("OuterSubDomain")
-        self.InnerSubDomain = params.get("InnerSubDomain")
-        self.CreatedTime = params.get("CreatedTime")
-        self.NetTypes = params.get("NetTypes")
-        self.IpVersion = params.get("IpVersion")
-        self.RequestId = params.get("RequestId")
+        self._ServiceId = params.get("ServiceId")
+        self._ServiceName = params.get("ServiceName")
+        self._ServiceDesc = params.get("ServiceDesc")
+        self._OuterSubDomain = params.get("OuterSubDomain")
+        self._InnerSubDomain = params.get("InnerSubDomain")
+        self._CreatedTime = params.get("CreatedTime")
+        self._NetTypes = params.get("NetTypes")
+        self._IpVersion = params.get("IpVersion")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateUpstreamRequest(AbstractModel):
@@ -2756,79 +5543,176 @@ class CreateUpstreamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Scheme: Backend protocol. Valid values: `HTTP`, `HTTPS`
+        :param _Scheme: Backend protocol. Valid values: `HTTP`, `HTTPS`
         :type Scheme: str
-        :param Algorithm: Load balancing algorithm. Valid value: `ROUND-ROBIN`
+        :param _Algorithm: Load balancing algorithm. Valid value: `ROUND-ROBIN`
         :type Algorithm: str
-        :param UniqVpcId: Unique VPC ID
+        :param _UniqVpcId: Unique VPC ID
         :type UniqVpcId: str
-        :param UpstreamName: Upstream name
+        :param _UpstreamName: Upstream name
         :type UpstreamName: str
-        :param UpstreamDescription: Upstream description
+        :param _UpstreamDescription: Upstream description
         :type UpstreamDescription: str
-        :param UpstreamType: Upstream access type. Valid values: `IP_PORT`, `K8S`
+        :param _UpstreamType: Upstream access type. Valid values: `IP_PORT`, `K8S`
         :type UpstreamType: str
-        :param Retries: Retry attempts. It defaults to `3`.
+        :param _Retries: Retry attempts. It defaults to `3`.
         :type Retries: int
-        :param UpstreamHost: The Host request header that forwarded from the gateway to backend
+        :param _UpstreamHost: The Host request header that forwarded from the gateway to backend
         :type UpstreamHost: str
-        :param Nodes: Backend nodes
+        :param _Nodes: Backend nodes
         :type Nodes: list of UpstreamNode
-        :param Tags: Label
+        :param _Tags: Label
         :type Tags: list of Tag
-        :param HealthChecker: Health check configuration
+        :param _HealthChecker: Health check configuration
         :type HealthChecker: :class:`tencentcloud.apigateway.v20180808.models.UpstreamHealthChecker`
-        :param K8sService: Configuration of TKE service
+        :param _K8sService: Configuration of TKE service
         :type K8sService: list of K8sService
         """
-        self.Scheme = None
-        self.Algorithm = None
-        self.UniqVpcId = None
-        self.UpstreamName = None
-        self.UpstreamDescription = None
-        self.UpstreamType = None
-        self.Retries = None
-        self.UpstreamHost = None
-        self.Nodes = None
-        self.Tags = None
-        self.HealthChecker = None
-        self.K8sService = None
+        self._Scheme = None
+        self._Algorithm = None
+        self._UniqVpcId = None
+        self._UpstreamName = None
+        self._UpstreamDescription = None
+        self._UpstreamType = None
+        self._Retries = None
+        self._UpstreamHost = None
+        self._Nodes = None
+        self._Tags = None
+        self._HealthChecker = None
+        self._K8sService = None
+
+    @property
+    def Scheme(self):
+        return self._Scheme
+
+    @Scheme.setter
+    def Scheme(self, Scheme):
+        self._Scheme = Scheme
+
+    @property
+    def Algorithm(self):
+        return self._Algorithm
+
+    @Algorithm.setter
+    def Algorithm(self, Algorithm):
+        self._Algorithm = Algorithm
+
+    @property
+    def UniqVpcId(self):
+        return self._UniqVpcId
+
+    @UniqVpcId.setter
+    def UniqVpcId(self, UniqVpcId):
+        self._UniqVpcId = UniqVpcId
+
+    @property
+    def UpstreamName(self):
+        return self._UpstreamName
+
+    @UpstreamName.setter
+    def UpstreamName(self, UpstreamName):
+        self._UpstreamName = UpstreamName
+
+    @property
+    def UpstreamDescription(self):
+        return self._UpstreamDescription
+
+    @UpstreamDescription.setter
+    def UpstreamDescription(self, UpstreamDescription):
+        self._UpstreamDescription = UpstreamDescription
+
+    @property
+    def UpstreamType(self):
+        return self._UpstreamType
+
+    @UpstreamType.setter
+    def UpstreamType(self, UpstreamType):
+        self._UpstreamType = UpstreamType
+
+    @property
+    def Retries(self):
+        return self._Retries
+
+    @Retries.setter
+    def Retries(self, Retries):
+        self._Retries = Retries
+
+    @property
+    def UpstreamHost(self):
+        return self._UpstreamHost
+
+    @UpstreamHost.setter
+    def UpstreamHost(self, UpstreamHost):
+        self._UpstreamHost = UpstreamHost
+
+    @property
+    def Nodes(self):
+        return self._Nodes
+
+    @Nodes.setter
+    def Nodes(self, Nodes):
+        self._Nodes = Nodes
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def HealthChecker(self):
+        return self._HealthChecker
+
+    @HealthChecker.setter
+    def HealthChecker(self, HealthChecker):
+        self._HealthChecker = HealthChecker
+
+    @property
+    def K8sService(self):
+        return self._K8sService
+
+    @K8sService.setter
+    def K8sService(self, K8sService):
+        self._K8sService = K8sService
 
 
     def _deserialize(self, params):
-        self.Scheme = params.get("Scheme")
-        self.Algorithm = params.get("Algorithm")
-        self.UniqVpcId = params.get("UniqVpcId")
-        self.UpstreamName = params.get("UpstreamName")
-        self.UpstreamDescription = params.get("UpstreamDescription")
-        self.UpstreamType = params.get("UpstreamType")
-        self.Retries = params.get("Retries")
-        self.UpstreamHost = params.get("UpstreamHost")
+        self._Scheme = params.get("Scheme")
+        self._Algorithm = params.get("Algorithm")
+        self._UniqVpcId = params.get("UniqVpcId")
+        self._UpstreamName = params.get("UpstreamName")
+        self._UpstreamDescription = params.get("UpstreamDescription")
+        self._UpstreamType = params.get("UpstreamType")
+        self._Retries = params.get("Retries")
+        self._UpstreamHost = params.get("UpstreamHost")
         if params.get("Nodes") is not None:
-            self.Nodes = []
+            self._Nodes = []
             for item in params.get("Nodes"):
                 obj = UpstreamNode()
                 obj._deserialize(item)
-                self.Nodes.append(obj)
+                self._Nodes.append(obj)
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
+                self._Tags.append(obj)
         if params.get("HealthChecker") is not None:
-            self.HealthChecker = UpstreamHealthChecker()
-            self.HealthChecker._deserialize(params.get("HealthChecker"))
+            self._HealthChecker = UpstreamHealthChecker()
+            self._HealthChecker._deserialize(params.get("HealthChecker"))
         if params.get("K8sService") is not None:
-            self.K8sService = []
+            self._K8sService = []
             for item in params.get("K8sService"):
                 obj = K8sService()
                 obj._deserialize(item)
-                self.K8sService.append(obj)
+                self._K8sService.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2841,19 +5725,35 @@ class CreateUpstreamResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UpstreamId: The unique upstream ID returned
+        :param _UpstreamId: The unique upstream ID returned
 Note: This field may return `NULL`, indicating that no valid value was found.
         :type UpstreamId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.UpstreamId = None
-        self.RequestId = None
+        self._UpstreamId = None
+        self._RequestId = None
+
+    @property
+    def UpstreamId(self):
+        return self._UpstreamId
+
+    @UpstreamId.setter
+    def UpstreamId(self, UpstreamId):
+        self._UpstreamId = UpstreamId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.UpstreamId = params.get("UpstreamId")
-        self.RequestId = params.get("RequestId")
+        self._UpstreamId = params.get("UpstreamId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateUsagePlanRequest(AbstractModel):
@@ -2863,30 +5763,63 @@ class CreateUsagePlanRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UsagePlanName: Custom usage plan name.
+        :param _UsagePlanName: Custom usage plan name.
         :type UsagePlanName: str
-        :param UsagePlanDesc: Custom usage plan description.
+        :param _UsagePlanDesc: Custom usage plan description.
         :type UsagePlanDesc: str
-        :param MaxRequestNum: Total number of requests allowed. Valid values: -1, [1,99999999]. The default value is `-1`, which indicates no limit.
+        :param _MaxRequestNum: Total number of requests allowed. Valid values: -1, [1,99999999]. The default value is `-1`, which indicates no limit.
         :type MaxRequestNum: int
-        :param MaxRequestNumPreSec: Limit of requests per second. Valid values: -1, [1,2000]. The default value is `-1`, which indicates no limit.
+        :param _MaxRequestNumPreSec: Limit of requests per second. Valid values: -1, [1,2000]. The default value is `-1`, which indicates no limit.
         :type MaxRequestNumPreSec: int
         """
-        self.UsagePlanName = None
-        self.UsagePlanDesc = None
-        self.MaxRequestNum = None
-        self.MaxRequestNumPreSec = None
+        self._UsagePlanName = None
+        self._UsagePlanDesc = None
+        self._MaxRequestNum = None
+        self._MaxRequestNumPreSec = None
+
+    @property
+    def UsagePlanName(self):
+        return self._UsagePlanName
+
+    @UsagePlanName.setter
+    def UsagePlanName(self, UsagePlanName):
+        self._UsagePlanName = UsagePlanName
+
+    @property
+    def UsagePlanDesc(self):
+        return self._UsagePlanDesc
+
+    @UsagePlanDesc.setter
+    def UsagePlanDesc(self, UsagePlanDesc):
+        self._UsagePlanDesc = UsagePlanDesc
+
+    @property
+    def MaxRequestNum(self):
+        return self._MaxRequestNum
+
+    @MaxRequestNum.setter
+    def MaxRequestNum(self, MaxRequestNum):
+        self._MaxRequestNum = MaxRequestNum
+
+    @property
+    def MaxRequestNumPreSec(self):
+        return self._MaxRequestNumPreSec
+
+    @MaxRequestNumPreSec.setter
+    def MaxRequestNumPreSec(self, MaxRequestNumPreSec):
+        self._MaxRequestNumPreSec = MaxRequestNumPreSec
 
 
     def _deserialize(self, params):
-        self.UsagePlanName = params.get("UsagePlanName")
-        self.UsagePlanDesc = params.get("UsagePlanDesc")
-        self.MaxRequestNum = params.get("MaxRequestNum")
-        self.MaxRequestNumPreSec = params.get("MaxRequestNumPreSec")
+        self._UsagePlanName = params.get("UsagePlanName")
+        self._UsagePlanDesc = params.get("UsagePlanDesc")
+        self._MaxRequestNum = params.get("MaxRequestNum")
+        self._MaxRequestNumPreSec = params.get("MaxRequestNumPreSec")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2899,21 +5832,37 @@ class CreateUsagePlanResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Usage plan details.
+        :param _Result: Usage plan details.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.UsagePlanInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = UsagePlanInfo()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = UsagePlanInfo()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteAPIDocRequest(AbstractModel):
@@ -2923,18 +5872,27 @@ class DeleteAPIDocRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApiDocId: API document ID
+        :param _ApiDocId: API document ID
         :type ApiDocId: str
         """
-        self.ApiDocId = None
+        self._ApiDocId = None
+
+    @property
+    def ApiDocId(self):
+        return self._ApiDocId
+
+    @ApiDocId.setter
+    def ApiDocId(self, ApiDocId):
+        self._ApiDocId = ApiDocId
 
 
     def _deserialize(self, params):
-        self.ApiDocId = params.get("ApiDocId")
+        self._ApiDocId = params.get("ApiDocId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2947,18 +5905,34 @@ class DeleteAPIDocResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Whether the operation succeeded
+        :param _Result: Whether the operation succeeded
         :type Result: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteApiAppRequest(AbstractModel):
@@ -2968,18 +5942,27 @@ class DeleteApiAppRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApiAppId: Unique application ID.
+        :param _ApiAppId: Unique application ID.
         :type ApiAppId: str
         """
-        self.ApiAppId = None
+        self._ApiAppId = None
+
+    @property
+    def ApiAppId(self):
+        return self._ApiAppId
+
+    @ApiAppId.setter
+    def ApiAppId(self, ApiAppId):
+        self._ApiAppId = ApiAppId
 
 
     def _deserialize(self, params):
-        self.ApiAppId = params.get("ApiAppId")
+        self._ApiAppId = params.get("ApiAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -2992,19 +5975,35 @@ class DeleteApiAppResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Whether deletion succeeded.
+        :param _Result: Whether deletion succeeded.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteApiKeyRequest(AbstractModel):
@@ -3014,18 +6013,27 @@ class DeleteApiKeyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AccessKeyId: ID of the key to be deleted.
+        :param _AccessKeyId: ID of the key to be deleted.
         :type AccessKeyId: str
         """
-        self.AccessKeyId = None
+        self._AccessKeyId = None
+
+    @property
+    def AccessKeyId(self):
+        return self._AccessKeyId
+
+    @AccessKeyId.setter
+    def AccessKeyId(self, AccessKeyId):
+        self._AccessKeyId = AccessKeyId
 
 
     def _deserialize(self, params):
-        self.AccessKeyId = params.get("AccessKeyId")
+        self._AccessKeyId = params.get("AccessKeyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3038,19 +6046,35 @@ class DeleteApiKeyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Whether deletion succeeded.
+        :param _Result: Whether deletion succeeded.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteApiRequest(AbstractModel):
@@ -3060,22 +6084,39 @@ class DeleteApiRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Unique service ID of API.
+        :param _ServiceId: Unique service ID of API.
         :type ServiceId: str
-        :param ApiId: Unique API ID.
+        :param _ApiId: Unique API ID.
         :type ApiId: str
         """
-        self.ServiceId = None
-        self.ApiId = None
+        self._ServiceId = None
+        self._ApiId = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def ApiId(self):
+        return self._ApiId
+
+    @ApiId.setter
+    def ApiId(self, ApiId):
+        self._ApiId = ApiId
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.ApiId = params.get("ApiId")
+        self._ServiceId = params.get("ServiceId")
+        self._ApiId = params.get("ApiId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3088,19 +6129,35 @@ class DeleteApiResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Whether deletion succeeded.
+        :param _Result: Whether deletion succeeded.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteIPStrategyRequest(AbstractModel):
@@ -3110,22 +6167,39 @@ class DeleteIPStrategyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Unique service ID of the IP policy to be deleted.
+        :param _ServiceId: Unique service ID of the IP policy to be deleted.
         :type ServiceId: str
-        :param StrategyId: Unique ID of the IP policy to be deleted.
+        :param _StrategyId: Unique ID of the IP policy to be deleted.
         :type StrategyId: str
         """
-        self.ServiceId = None
-        self.StrategyId = None
+        self._ServiceId = None
+        self._StrategyId = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def StrategyId(self):
+        return self._StrategyId
+
+    @StrategyId.setter
+    def StrategyId(self, StrategyId):
+        self._StrategyId = StrategyId
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.StrategyId = params.get("StrategyId")
+        self._ServiceId = params.get("ServiceId")
+        self._StrategyId = params.get("StrategyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3138,19 +6212,35 @@ class DeleteIPStrategyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Whether deletion succeeded.
+        :param _Result: Whether deletion succeeded.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
 
 
 class DeletePluginRequest(AbstractModel):
@@ -3160,18 +6250,27 @@ class DeletePluginRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PluginId: ID of the plugin to be deleted
+        :param _PluginId: ID of the plugin to be deleted
         :type PluginId: str
         """
-        self.PluginId = None
+        self._PluginId = None
+
+    @property
+    def PluginId(self):
+        return self._PluginId
+
+    @PluginId.setter
+    def PluginId(self, PluginId):
+        self._PluginId = PluginId
 
 
     def _deserialize(self, params):
-        self.PluginId = params.get("PluginId")
+        self._PluginId = params.get("PluginId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3184,18 +6283,34 @@ class DeletePluginResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Result of the deletion action
+        :param _Result: Result of the deletion action
         :type Result: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteServiceRequest(AbstractModel):
@@ -3205,22 +6320,39 @@ class DeleteServiceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Unique ID of the service to be deleted.
+        :param _ServiceId: Unique ID of the service to be deleted.
         :type ServiceId: str
-        :param SkipVerification: A parameter used to set to skip the deletion precondition verification (only supported for services on dedicated instances).
+        :param _SkipVerification: A parameter used to set to skip the deletion precondition verification (only supported for services on dedicated instances).
         :type SkipVerification: int
         """
-        self.ServiceId = None
-        self.SkipVerification = None
+        self._ServiceId = None
+        self._SkipVerification = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def SkipVerification(self):
+        return self._SkipVerification
+
+    @SkipVerification.setter
+    def SkipVerification(self, SkipVerification):
+        self._SkipVerification = SkipVerification
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.SkipVerification = params.get("SkipVerification")
+        self._ServiceId = params.get("ServiceId")
+        self._SkipVerification = params.get("SkipVerification")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3233,19 +6365,35 @@ class DeleteServiceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Whether deletion succeeded.
+        :param _Result: Whether deletion succeeded.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteServiceSubDomainMappingRequest(AbstractModel):
@@ -3255,26 +6403,51 @@ class DeleteServiceSubDomainMappingRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Unique service ID.
+        :param _ServiceId: Unique service ID.
         :type ServiceId: str
-        :param SubDomain: Custom domain name bound to service.
+        :param _SubDomain: Custom domain name bound to service.
         :type SubDomain: str
-        :param Environment: Name of the environment whose mapping is to be deleted. Valid values: test (test environment), prepub (pre-release environment), release (release environment).
+        :param _Environment: Name of the environment whose mapping is to be deleted. Valid values: test (test environment), prepub (pre-release environment), release (release environment).
         :type Environment: str
         """
-        self.ServiceId = None
-        self.SubDomain = None
-        self.Environment = None
+        self._ServiceId = None
+        self._SubDomain = None
+        self._Environment = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def SubDomain(self):
+        return self._SubDomain
+
+    @SubDomain.setter
+    def SubDomain(self, SubDomain):
+        self._SubDomain = SubDomain
+
+    @property
+    def Environment(self):
+        return self._Environment
+
+    @Environment.setter
+    def Environment(self, Environment):
+        self._Environment = Environment
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.SubDomain = params.get("SubDomain")
-        self.Environment = params.get("Environment")
+        self._ServiceId = params.get("ServiceId")
+        self._SubDomain = params.get("SubDomain")
+        self._Environment = params.get("Environment")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3287,18 +6460,34 @@ class DeleteServiceSubDomainMappingResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Whether the path mapping of the custom domain name is successfully deleted.
+        :param _Result: Whether the path mapping of the custom domain name is successfully deleted.
         :type Result: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteUpstreamRequest(AbstractModel):
@@ -3308,18 +6497,27 @@ class DeleteUpstreamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UpstreamId: ID of the upstream to be deleted
+        :param _UpstreamId: ID of the upstream to be deleted
         :type UpstreamId: str
         """
-        self.UpstreamId = None
+        self._UpstreamId = None
+
+    @property
+    def UpstreamId(self):
+        return self._UpstreamId
+
+    @UpstreamId.setter
+    def UpstreamId(self, UpstreamId):
+        self._UpstreamId = UpstreamId
 
 
     def _deserialize(self, params):
-        self.UpstreamId = params.get("UpstreamId")
+        self._UpstreamId = params.get("UpstreamId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3332,19 +6530,35 @@ class DeleteUpstreamResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UpstreamId: ID of the deleted upstream
+        :param _UpstreamId: ID of the deleted upstream
 Note: This field may return `NULL`, indicating that no valid value was found.
         :type UpstreamId: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.UpstreamId = None
-        self.RequestId = None
+        self._UpstreamId = None
+        self._RequestId = None
+
+    @property
+    def UpstreamId(self):
+        return self._UpstreamId
+
+    @UpstreamId.setter
+    def UpstreamId(self, UpstreamId):
+        self._UpstreamId = UpstreamId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.UpstreamId = params.get("UpstreamId")
-        self.RequestId = params.get("RequestId")
+        self._UpstreamId = params.get("UpstreamId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteUsagePlanRequest(AbstractModel):
@@ -3354,18 +6568,27 @@ class DeleteUsagePlanRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UsagePlanId: Unique ID of the usage plan to be deleted.
+        :param _UsagePlanId: Unique ID of the usage plan to be deleted.
         :type UsagePlanId: str
         """
-        self.UsagePlanId = None
+        self._UsagePlanId = None
+
+    @property
+    def UsagePlanId(self):
+        return self._UsagePlanId
+
+    @UsagePlanId.setter
+    def UsagePlanId(self, UsagePlanId):
+        self._UsagePlanId = UsagePlanId
 
 
     def _deserialize(self, params):
-        self.UsagePlanId = params.get("UsagePlanId")
+        self._UsagePlanId = params.get("UsagePlanId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3378,19 +6601,35 @@ class DeleteUsagePlanResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Whether deletion succeeded.
+        :param _Result: Whether deletion succeeded.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
 
 
 class DemoteServiceUsagePlanRequest(AbstractModel):
@@ -3400,26 +6639,51 @@ class DemoteServiceUsagePlanRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UsagePlanId: Usage plan ID.
+        :param _UsagePlanId: Usage plan ID.
         :type UsagePlanId: str
-        :param ServiceId: Unique ID of the service to be demoted.
+        :param _ServiceId: Unique ID of the service to be demoted.
         :type ServiceId: str
-        :param Environment: Environment name.
+        :param _Environment: Environment name.
         :type Environment: str
         """
-        self.UsagePlanId = None
-        self.ServiceId = None
-        self.Environment = None
+        self._UsagePlanId = None
+        self._ServiceId = None
+        self._Environment = None
+
+    @property
+    def UsagePlanId(self):
+        return self._UsagePlanId
+
+    @UsagePlanId.setter
+    def UsagePlanId(self, UsagePlanId):
+        self._UsagePlanId = UsagePlanId
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def Environment(self):
+        return self._Environment
+
+    @Environment.setter
+    def Environment(self, Environment):
+        self._Environment = Environment
 
 
     def _deserialize(self, params):
-        self.UsagePlanId = params.get("UsagePlanId")
-        self.ServiceId = params.get("ServiceId")
-        self.Environment = params.get("Environment")
+        self._UsagePlanId = params.get("UsagePlanId")
+        self._ServiceId = params.get("ServiceId")
+        self._Environment = params.get("Environment")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3432,19 +6696,35 @@ class DemoteServiceUsagePlanResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Whether demotion succeeded.
+        :param _Result: Whether demotion succeeded.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
 
 
 class DesApisStatus(AbstractModel):
@@ -3454,109 +6734,262 @@ class DesApisStatus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Unique service ID.
+        :param _ServiceId: Unique service ID.
         :type ServiceId: str
-        :param ApiId: Unique API ID.
+        :param _ApiId: Unique API ID.
         :type ApiId: str
-        :param ApiDesc: Custom API description.
+        :param _ApiDesc: Custom API description.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApiDesc: str
-        :param CreatedTime: Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+        :param _CreatedTime: Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CreatedTime: str
-        :param ModifiedTime: Last modified time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+        :param _ModifiedTime: Last modified time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ModifiedTime: str
-        :param ApiName: API name.
+        :param _ApiName: API name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApiName: str
-        :param VpcId: VPC ID.
+        :param _VpcId: VPC ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type VpcId: int
-        :param UniqVpcId: Unique VPC ID.
+        :param _UniqVpcId: Unique VPC ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UniqVpcId: str
-        :param ApiType: API type. Valid values: NORMAL (general API), TSF (microservice API).
+        :param _ApiType: API type. Valid values: NORMAL (general API), TSF (microservice API).
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApiType: str
-        :param Protocol: API protocol.
+        :param _Protocol: API protocol.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Protocol: str
-        :param IsDebugAfterCharge: Whether to enable debugging after purchase (reserved field for the marketplace)
+        :param _IsDebugAfterCharge: Whether to enable debugging after purchase (reserved field for the marketplace)
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IsDebugAfterCharge: bool
-        :param AuthType: API authentication type. Valid values: `SECRET` (key pair authentication), `NONE` (no authentication), `OAUTH`, and `EIAM`
+        :param _AuthType: API authentication type. Valid values: `SECRET` (key pair authentication), `NONE` (no authentication), `OAUTH`, and `EIAM`
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type AuthType: str
-        :param ApiBusinessType: OAuth API type, which is valid if `AuthType` is `OAUTH`. Valid values: NORMAL (business API), OAUTH (authorization API).
+        :param _ApiBusinessType: OAuth API type, which is valid if `AuthType` is `OAUTH`. Valid values: NORMAL (business API), OAUTH (authorization API).
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApiBusinessType: str
-        :param AuthRelationApiId: Unique ID of associated authorization API, which takes effect only if `AuthType` is `OAUTH` and `ApiBusinessType` is `NORMAL`. It is the unique ID of the OAuth 2.0 authorization API bound to the business API.
+        :param _AuthRelationApiId: Unique ID of associated authorization API, which takes effect only if `AuthType` is `OAUTH` and `ApiBusinessType` is `NORMAL`. It is the unique ID of the OAuth 2.0 authorization API bound to the business API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AuthRelationApiId: str
-        :param OauthConfig: OAuth configuration information, which takes effect if `AuthType` is `OAUTH`.
+        :param _OauthConfig: OAuth configuration information, which takes effect if `AuthType` is `OAUTH`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OauthConfig: :class:`tencentcloud.apigateway.v20180808.models.OauthConfig`
-        :param RelationBuniessApiIds: List of business APIs associated with authorization API.
+        :param _RelationBuniessApiIds: List of business APIs associated with authorization API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RelationBuniessApiIds: list of str
-        :param Tags: Information of tags associated with API.
+        :param _Tags: Information of tags associated with API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Tags: list of str
-        :param Path: API path, such as `/path`.
+        :param _Path: API path, such as `/path`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Path: str
-        :param Method: API request method, such as `GET`.
+        :param _Method: API request method, such as `GET`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Method: str
         """
-        self.ServiceId = None
-        self.ApiId = None
-        self.ApiDesc = None
-        self.CreatedTime = None
-        self.ModifiedTime = None
-        self.ApiName = None
-        self.VpcId = None
-        self.UniqVpcId = None
-        self.ApiType = None
-        self.Protocol = None
-        self.IsDebugAfterCharge = None
-        self.AuthType = None
-        self.ApiBusinessType = None
-        self.AuthRelationApiId = None
-        self.OauthConfig = None
-        self.RelationBuniessApiIds = None
-        self.Tags = None
-        self.Path = None
-        self.Method = None
+        self._ServiceId = None
+        self._ApiId = None
+        self._ApiDesc = None
+        self._CreatedTime = None
+        self._ModifiedTime = None
+        self._ApiName = None
+        self._VpcId = None
+        self._UniqVpcId = None
+        self._ApiType = None
+        self._Protocol = None
+        self._IsDebugAfterCharge = None
+        self._AuthType = None
+        self._ApiBusinessType = None
+        self._AuthRelationApiId = None
+        self._OauthConfig = None
+        self._RelationBuniessApiIds = None
+        self._Tags = None
+        self._Path = None
+        self._Method = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def ApiId(self):
+        return self._ApiId
+
+    @ApiId.setter
+    def ApiId(self, ApiId):
+        self._ApiId = ApiId
+
+    @property
+    def ApiDesc(self):
+        return self._ApiDesc
+
+    @ApiDesc.setter
+    def ApiDesc(self, ApiDesc):
+        self._ApiDesc = ApiDesc
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def ModifiedTime(self):
+        return self._ModifiedTime
+
+    @ModifiedTime.setter
+    def ModifiedTime(self, ModifiedTime):
+        self._ModifiedTime = ModifiedTime
+
+    @property
+    def ApiName(self):
+        return self._ApiName
+
+    @ApiName.setter
+    def ApiName(self, ApiName):
+        self._ApiName = ApiName
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def UniqVpcId(self):
+        return self._UniqVpcId
+
+    @UniqVpcId.setter
+    def UniqVpcId(self, UniqVpcId):
+        self._UniqVpcId = UniqVpcId
+
+    @property
+    def ApiType(self):
+        return self._ApiType
+
+    @ApiType.setter
+    def ApiType(self, ApiType):
+        self._ApiType = ApiType
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def IsDebugAfterCharge(self):
+        return self._IsDebugAfterCharge
+
+    @IsDebugAfterCharge.setter
+    def IsDebugAfterCharge(self, IsDebugAfterCharge):
+        self._IsDebugAfterCharge = IsDebugAfterCharge
+
+    @property
+    def AuthType(self):
+        return self._AuthType
+
+    @AuthType.setter
+    def AuthType(self, AuthType):
+        self._AuthType = AuthType
+
+    @property
+    def ApiBusinessType(self):
+        return self._ApiBusinessType
+
+    @ApiBusinessType.setter
+    def ApiBusinessType(self, ApiBusinessType):
+        self._ApiBusinessType = ApiBusinessType
+
+    @property
+    def AuthRelationApiId(self):
+        return self._AuthRelationApiId
+
+    @AuthRelationApiId.setter
+    def AuthRelationApiId(self, AuthRelationApiId):
+        self._AuthRelationApiId = AuthRelationApiId
+
+    @property
+    def OauthConfig(self):
+        return self._OauthConfig
+
+    @OauthConfig.setter
+    def OauthConfig(self, OauthConfig):
+        self._OauthConfig = OauthConfig
+
+    @property
+    def RelationBuniessApiIds(self):
+        return self._RelationBuniessApiIds
+
+    @RelationBuniessApiIds.setter
+    def RelationBuniessApiIds(self, RelationBuniessApiIds):
+        self._RelationBuniessApiIds = RelationBuniessApiIds
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Path(self):
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Method(self):
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.ApiId = params.get("ApiId")
-        self.ApiDesc = params.get("ApiDesc")
-        self.CreatedTime = params.get("CreatedTime")
-        self.ModifiedTime = params.get("ModifiedTime")
-        self.ApiName = params.get("ApiName")
-        self.VpcId = params.get("VpcId")
-        self.UniqVpcId = params.get("UniqVpcId")
-        self.ApiType = params.get("ApiType")
-        self.Protocol = params.get("Protocol")
-        self.IsDebugAfterCharge = params.get("IsDebugAfterCharge")
-        self.AuthType = params.get("AuthType")
-        self.ApiBusinessType = params.get("ApiBusinessType")
-        self.AuthRelationApiId = params.get("AuthRelationApiId")
+        self._ServiceId = params.get("ServiceId")
+        self._ApiId = params.get("ApiId")
+        self._ApiDesc = params.get("ApiDesc")
+        self._CreatedTime = params.get("CreatedTime")
+        self._ModifiedTime = params.get("ModifiedTime")
+        self._ApiName = params.get("ApiName")
+        self._VpcId = params.get("VpcId")
+        self._UniqVpcId = params.get("UniqVpcId")
+        self._ApiType = params.get("ApiType")
+        self._Protocol = params.get("Protocol")
+        self._IsDebugAfterCharge = params.get("IsDebugAfterCharge")
+        self._AuthType = params.get("AuthType")
+        self._ApiBusinessType = params.get("ApiBusinessType")
+        self._AuthRelationApiId = params.get("AuthRelationApiId")
         if params.get("OauthConfig") is not None:
-            self.OauthConfig = OauthConfig()
-            self.OauthConfig._deserialize(params.get("OauthConfig"))
-        self.RelationBuniessApiIds = params.get("RelationBuniessApiIds")
-        self.Tags = params.get("Tags")
-        self.Path = params.get("Path")
-        self.Method = params.get("Method")
+            self._OauthConfig = OauthConfig()
+            self._OauthConfig._deserialize(params.get("OauthConfig"))
+        self._RelationBuniessApiIds = params.get("RelationBuniessApiIds")
+        self._Tags = params.get("Tags")
+        self._Path = params.get("Path")
+        self._Method = params.get("Method")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3569,18 +7002,27 @@ class DescribeAPIDocDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApiDocId: API document ID
+        :param _ApiDocId: API document ID
         :type ApiDocId: str
         """
-        self.ApiDocId = None
+        self._ApiDocId = None
+
+    @property
+    def ApiDocId(self):
+        return self._ApiDocId
+
+    @ApiDocId.setter
+    def ApiDocId(self, ApiDocId):
+        self._ApiDocId = ApiDocId
 
 
     def _deserialize(self, params):
-        self.ApiDocId = params.get("ApiDocId")
+        self._ApiDocId = params.get("ApiDocId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3593,20 +7035,36 @@ class DescribeAPIDocDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: API document details
+        :param _Result: API document details
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.APIDocInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = APIDocInfo()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = APIDocInfo()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeAPIDocsRequest(AbstractModel):
@@ -3616,22 +7074,39 @@ class DescribeAPIDocsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
+        :param _Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
         :type Limit: int
-        :param Offset: Offset. Default value: 0.
+        :param _Offset: Offset. Default value: 0.
         :type Offset: int
         """
-        self.Limit = None
-        self.Offset = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3644,20 +7119,36 @@ class DescribeAPIDocsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: API document list information
+        :param _Result: API document list information
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.APIDocs`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = APIDocs()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = APIDocs()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeAllPluginApisRequest(AbstractModel):
@@ -3667,34 +7158,75 @@ class DescribeAllPluginApisRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: ID of the service to be queried
+        :param _ServiceId: ID of the service to be queried
         :type ServiceId: str
-        :param PluginId: ID of the plugin to be queried
+        :param _PluginId: ID of the plugin to be queried
         :type PluginId: str
-        :param EnvironmentName: Environment information
+        :param _EnvironmentName: Environment information
         :type EnvironmentName: str
-        :param Limit: Number of returned results. Default value: 20. Maximum value: 100
+        :param _Limit: Number of returned results. Default value: 20. Maximum value: 100
         :type Limit: int
-        :param Offset: Offset. Default value: 0
+        :param _Offset: Offset. Default value: 0
         :type Offset: int
         """
-        self.ServiceId = None
-        self.PluginId = None
-        self.EnvironmentName = None
-        self.Limit = None
-        self.Offset = None
+        self._ServiceId = None
+        self._PluginId = None
+        self._EnvironmentName = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def PluginId(self):
+        return self._PluginId
+
+    @PluginId.setter
+    def PluginId(self, PluginId):
+        self._PluginId = PluginId
+
+    @property
+    def EnvironmentName(self):
+        return self._EnvironmentName
+
+    @EnvironmentName.setter
+    def EnvironmentName(self, EnvironmentName):
+        self._EnvironmentName = EnvironmentName
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.PluginId = params.get("PluginId")
-        self.EnvironmentName = params.get("EnvironmentName")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._ServiceId = params.get("ServiceId")
+        self._PluginId = params.get("PluginId")
+        self._EnvironmentName = params.get("EnvironmentName")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3707,20 +7239,36 @@ class DescribeAllPluginApisResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: List of APIs that ca use this plugin
+        :param _Result: List of APIs that ca use this plugin
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiInfoSummary`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = ApiInfoSummary()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = ApiInfoSummary()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeApiAppBindApisStatusRequest(AbstractModel):
@@ -3730,35 +7278,68 @@ class DescribeApiAppBindApisStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApiAppId: Application ID
+        :param _ApiAppId: Application ID
         :type ApiAppId: str
-        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
+        :param _Limit: Number of returned results. Default value: 20. Maximum value: 100.
         :type Limit: int
-        :param Offset: Offset. Default value: 0.
+        :param _Offset: Offset. Default value: 0.
         :type Offset: int
-        :param Filters: Filter. Valid values: ApiId, ApiName, ServiceId, Environment, KeyWord (match with `name` or ID).
+        :param _Filters: Filter. Valid values: ApiId, ApiName, ServiceId, Environment, KeyWord (match with `name` or ID).
         :type Filters: list of Filter
         """
-        self.ApiAppId = None
-        self.Limit = None
-        self.Offset = None
-        self.Filters = None
+        self._ApiAppId = None
+        self._Limit = None
+        self._Offset = None
+        self._Filters = None
+
+    @property
+    def ApiAppId(self):
+        return self._ApiAppId
+
+    @ApiAppId.setter
+    def ApiAppId(self, ApiAppId):
+        self._ApiAppId = ApiAppId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
 
     def _deserialize(self, params):
-        self.ApiAppId = params.get("ApiAppId")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._ApiAppId = params.get("ApiAppId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3771,21 +7352,37 @@ class DescribeApiAppBindApisStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: List of APIs bound to the application.
+        :param _Result: List of APIs bound to the application.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiAppApiInfos`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = ApiAppApiInfos()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = ApiAppApiInfos()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeApiAppRequest(AbstractModel):
@@ -3795,18 +7392,27 @@ class DescribeApiAppRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApiAppId: Application ID.
+        :param _ApiAppId: Application ID.
         :type ApiAppId: str
         """
-        self.ApiAppId = None
+        self._ApiAppId = None
+
+    @property
+    def ApiAppId(self):
+        return self._ApiAppId
+
+    @ApiAppId.setter
+    def ApiAppId(self, ApiAppId):
+        self._ApiAppId = ApiAppId
 
 
     def _deserialize(self, params):
-        self.ApiAppId = params.get("ApiAppId")
+        self._ApiAppId = params.get("ApiAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3819,21 +7425,37 @@ class DescribeApiAppResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Application details.
+        :param _Result: Application details.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiAppInfos`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = ApiAppInfos()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = ApiAppInfos()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeApiAppsStatusRequest(AbstractModel):
@@ -3843,31 +7465,56 @@ class DescribeApiAppsStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
+        :param _Limit: Number of returned results. Default value: 20. Maximum value: 100.
         :type Limit: int
-        :param Offset: Offset. Default value: 0.
+        :param _Offset: Offset. Default value: 0.
         :type Offset: int
-        :param Filters: Filter. Valid values: ApiAppId, ApiAppName, KeyWord (match with `name` or ID).
+        :param _Filters: Filter. Valid values: ApiAppId, ApiAppName, KeyWord (match with `name` or ID).
         :type Filters: list of Filter
         """
-        self.Limit = None
-        self.Offset = None
-        self.Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._Filters = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
 
     def _deserialize(self, params):
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3880,21 +7527,37 @@ class DescribeApiAppsStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Application list.
+        :param _Result: Application list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiAppInfos`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = ApiAppInfos()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = ApiAppInfos()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeApiBindApiAppsStatusRequest(AbstractModel):
@@ -3904,39 +7567,80 @@ class DescribeApiBindApiAppsStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Service ID
+        :param _ServiceId: Service ID
         :type ServiceId: str
-        :param ApiIds: Array of API IDs
+        :param _ApiIds: Array of API IDs
         :type ApiIds: list of str
-        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
+        :param _Limit: Number of returned results. Default value: 20. Maximum value: 100.
         :type Limit: int
-        :param Offset: Offset. Default value: 0.
+        :param _Offset: Offset. Default value: 0.
         :type Offset: int
-        :param Filters: Filter. Valid values: ApiAppId, Environment, KeyWord (match with `name` or ID).
+        :param _Filters: Filter. Valid values: ApiAppId, Environment, KeyWord (match with `name` or ID).
         :type Filters: list of Filter
         """
-        self.ServiceId = None
-        self.ApiIds = None
-        self.Limit = None
-        self.Offset = None
-        self.Filters = None
+        self._ServiceId = None
+        self._ApiIds = None
+        self._Limit = None
+        self._Offset = None
+        self._Filters = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def ApiIds(self):
+        return self._ApiIds
+
+    @ApiIds.setter
+    def ApiIds(self, ApiIds):
+        self._ApiIds = ApiIds
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.ApiIds = params.get("ApiIds")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._ServiceId = params.get("ServiceId")
+        self._ApiIds = params.get("ApiIds")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -3949,21 +7653,37 @@ class DescribeApiBindApiAppsStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: List of APIs bound to the application.
+        :param _Result: List of APIs bound to the application.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiAppApiInfos`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = ApiAppApiInfos()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = ApiAppApiInfos()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeApiEnvironmentStrategyRequest(AbstractModel):
@@ -3973,34 +7693,75 @@ class DescribeApiEnvironmentStrategyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Unique service ID of API.
+        :param _ServiceId: Unique service ID of API.
         :type ServiceId: str
-        :param EnvironmentNames: Environment list.
+        :param _EnvironmentNames: Environment list.
         :type EnvironmentNames: list of str
-        :param ApiId: Unique API ID.
+        :param _ApiId: Unique API ID.
         :type ApiId: str
-        :param Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
+        :param _Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
         :type Limit: int
-        :param Offset: Offset. Default value: 0.
+        :param _Offset: Offset. Default value: 0.
         :type Offset: int
         """
-        self.ServiceId = None
-        self.EnvironmentNames = None
-        self.ApiId = None
-        self.Limit = None
-        self.Offset = None
+        self._ServiceId = None
+        self._EnvironmentNames = None
+        self._ApiId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def EnvironmentNames(self):
+        return self._EnvironmentNames
+
+    @EnvironmentNames.setter
+    def EnvironmentNames(self, EnvironmentNames):
+        self._EnvironmentNames = EnvironmentNames
+
+    @property
+    def ApiId(self):
+        return self._ApiId
+
+    @ApiId.setter
+    def ApiId(self, ApiId):
+        self._ApiId = ApiId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.EnvironmentNames = params.get("EnvironmentNames")
-        self.ApiId = params.get("ApiId")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._ServiceId = params.get("ServiceId")
+        self._EnvironmentNames = params.get("EnvironmentNames")
+        self._ApiId = params.get("ApiId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4013,21 +7774,37 @@ class DescribeApiEnvironmentStrategyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Details of policies bound to API
+        :param _Result: Details of policies bound to API
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiEnvironmentStrategyStataus`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = ApiEnvironmentStrategyStataus()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = ApiEnvironmentStrategyStataus()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeApiForApiAppRequest(AbstractModel):
@@ -4037,26 +7814,51 @@ class DescribeApiForApiAppRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Unique service ID of the API
+        :param _ServiceId: Unique service ID of the API
         :type ServiceId: str
-        :param ApiId: Unique API ID
+        :param _ApiId: Unique API ID
         :type ApiId: str
-        :param ApiRegion: API region
+        :param _ApiRegion: API region
         :type ApiRegion: str
         """
-        self.ServiceId = None
-        self.ApiId = None
-        self.ApiRegion = None
+        self._ServiceId = None
+        self._ApiId = None
+        self._ApiRegion = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def ApiId(self):
+        return self._ApiId
+
+    @ApiId.setter
+    def ApiId(self, ApiId):
+        self._ApiId = ApiId
+
+    @property
+    def ApiRegion(self):
+        return self._ApiRegion
+
+    @ApiRegion.setter
+    def ApiRegion(self, ApiRegion):
+        self._ApiRegion = ApiRegion
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.ApiId = params.get("ApiId")
-        self.ApiRegion = params.get("ApiRegion")
+        self._ServiceId = params.get("ServiceId")
+        self._ApiId = params.get("ApiId")
+        self._ApiRegion = params.get("ApiRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4069,20 +7871,36 @@ class DescribeApiForApiAppResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: API details.
+        :param _Result: API details.
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = ApiInfo()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = ApiInfo()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeApiKeyRequest(AbstractModel):
@@ -4092,18 +7910,27 @@ class DescribeApiKeyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AccessKeyId: API key ID.
+        :param _AccessKeyId: API key ID.
         :type AccessKeyId: str
         """
-        self.AccessKeyId = None
+        self._AccessKeyId = None
+
+    @property
+    def AccessKeyId(self):
+        return self._AccessKeyId
+
+    @AccessKeyId.setter
+    def AccessKeyId(self, AccessKeyId):
+        self._AccessKeyId = AccessKeyId
 
 
     def _deserialize(self, params):
-        self.AccessKeyId = params.get("AccessKeyId")
+        self._AccessKeyId = params.get("AccessKeyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4116,21 +7943,37 @@ class DescribeApiKeyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Key details.
+        :param _Result: Key details.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiKey`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = ApiKey()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = ApiKey()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeApiKeysStatusRequest(AbstractModel):
@@ -4140,31 +7983,56 @@ class DescribeApiKeysStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
+        :param _Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
         :type Limit: int
-        :param Offset: Offset. Default value: 0.
+        :param _Offset: Offset. Default value: 0.
         :type Offset: int
-        :param Filters: Filter. Valid values: AccessKeyId, AccessKeySecret, SecretName, NotUsagePlanId, Status, KeyWord (match with `name` or `path`).
+        :param _Filters: Filter. Valid values: AccessKeyId, AccessKeySecret, SecretName, NotUsagePlanId, Status, KeyWord (match with `name` or `path`).
         :type Filters: list of Filter
         """
-        self.Limit = None
-        self.Offset = None
-        self.Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._Filters = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
 
     def _deserialize(self, params):
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4177,21 +8045,37 @@ class DescribeApiKeysStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Key list.
+        :param _Result: Key list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiKeysStatus`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = ApiKeysStatus()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = ApiKeysStatus()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeApiRequest(AbstractModel):
@@ -4201,22 +8085,39 @@ class DescribeApiRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Unique service ID of API.
+        :param _ServiceId: Unique service ID of API.
         :type ServiceId: str
-        :param ApiId: Unique API ID.
+        :param _ApiId: Unique API ID.
         :type ApiId: str
         """
-        self.ServiceId = None
-        self.ApiId = None
+        self._ServiceId = None
+        self._ApiId = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def ApiId(self):
+        return self._ApiId
+
+    @ApiId.setter
+    def ApiId(self, ApiId):
+        self._ApiId = ApiId
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.ApiId = params.get("ApiId")
+        self._ServiceId = params.get("ServiceId")
+        self._ApiId = params.get("ApiId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4229,20 +8130,36 @@ class DescribeApiResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: API details.
+        :param _Result: API details.
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = ApiInfo()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = ApiInfo()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeApiUsagePlanRequest(AbstractModel):
@@ -4252,26 +8169,51 @@ class DescribeApiUsagePlanRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Unique ID of the service to be queried.
+        :param _ServiceId: Unique ID of the service to be queried.
         :type ServiceId: str
-        :param Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
+        :param _Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
         :type Limit: int
-        :param Offset: Offset. Default value: 0.
+        :param _Offset: Offset. Default value: 0.
         :type Offset: int
         """
-        self.ServiceId = None
-        self.Limit = None
-        self.Offset = None
+        self._ServiceId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._ServiceId = params.get("ServiceId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4284,21 +8226,37 @@ class DescribeApiUsagePlanResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: List of usage plans bound to API.
+        :param _Result: List of usage plans bound to API.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiUsagePlanSet`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = ApiUsagePlanSet()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = ApiUsagePlanSet()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeApisStatusRequest(AbstractModel):
@@ -4308,35 +8266,68 @@ class DescribeApisStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Unique service ID of API.
+        :param _ServiceId: Unique service ID of API.
         :type ServiceId: str
-        :param Offset: Offset. Default value: 0.
+        :param _Offset: Offset. Default value: 0.
         :type Offset: int
-        :param Limit: Number of returned results. Default value: 20. Maximum value: 100.
+        :param _Limit: Number of returned results. Default value: 20. Maximum value: 100.
         :type Limit: int
-        :param Filters: API filter. Valid values: `ApiId`, `ApiName`, `ApiPath`, `ApiType`, `AuthRelationApiId`, `AuthType`, `ApiBuniessType`, `NotUsagePlanId`, `Environment`, `Tags` (whose values are the list of `$tag_key:tag_value`), `TagKeys` (whose values are the list of tag keys). Note that `NotUsagePlanId` and `Environment` must be used in the same time.
+        :param _Filters: API filter. Valid values: `ApiId`, `ApiName`, `ApiPath`, `ApiType`, `AuthRelationApiId`, `AuthType`, `ApiBuniessType`, `NotUsagePlanId`, `Environment`, `Tags` (whose values are the list of `$tag_key:tag_value`), `TagKeys` (whose values are the list of tag keys). Note that `NotUsagePlanId` and `Environment` must be used in the same time.
         :type Filters: list of Filter
         """
-        self.ServiceId = None
-        self.Offset = None
-        self.Limit = None
-        self.Filters = None
+        self._ServiceId = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+        self._ServiceId = params.get("ServiceId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4349,20 +8340,36 @@ class DescribeApisStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: List of API details.
+        :param _Result: List of API details.
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApisStatus`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = ApisStatus()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = ApisStatus()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeIPStrategyApisStatusRequest(AbstractModel):
@@ -4372,43 +8379,92 @@ class DescribeIPStrategyApisStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Unique service ID.
+        :param _ServiceId: Unique service ID.
         :type ServiceId: str
-        :param StrategyId: Unique policy ID.
+        :param _StrategyId: Unique policy ID.
         :type StrategyId: str
-        :param EnvironmentName: Policy environment.
+        :param _EnvironmentName: Policy environment.
         :type EnvironmentName: str
-        :param Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
+        :param _Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
         :type Limit: int
-        :param Offset: Offset. Default value: 0.
+        :param _Offset: Offset. Default value: 0.
         :type Offset: int
-        :param Filters: Filter. Valid values: ApiPath, ApiName, KeyWord (fuzzy search by `Path` and `Name`).
+        :param _Filters: Filter. Valid values: ApiPath, ApiName, KeyWord (fuzzy search by `Path` and `Name`).
         :type Filters: list of Filter
         """
-        self.ServiceId = None
-        self.StrategyId = None
-        self.EnvironmentName = None
-        self.Limit = None
-        self.Offset = None
-        self.Filters = None
+        self._ServiceId = None
+        self._StrategyId = None
+        self._EnvironmentName = None
+        self._Limit = None
+        self._Offset = None
+        self._Filters = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def StrategyId(self):
+        return self._StrategyId
+
+    @StrategyId.setter
+    def StrategyId(self, StrategyId):
+        self._StrategyId = StrategyId
+
+    @property
+    def EnvironmentName(self):
+        return self._EnvironmentName
+
+    @EnvironmentName.setter
+    def EnvironmentName(self, EnvironmentName):
+        self._EnvironmentName = EnvironmentName
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.StrategyId = params.get("StrategyId")
-        self.EnvironmentName = params.get("EnvironmentName")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._ServiceId = params.get("ServiceId")
+        self._StrategyId = params.get("StrategyId")
+        self._EnvironmentName = params.get("EnvironmentName")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4421,21 +8477,37 @@ class DescribeIPStrategyApisStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: List of APIs bound to environment.
+        :param _Result: List of APIs bound to environment.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.IPStrategyApiStatus`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = IPStrategyApiStatus()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = IPStrategyApiStatus()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeIPStrategyRequest(AbstractModel):
@@ -4445,43 +8517,92 @@ class DescribeIPStrategyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Unique service ID.
+        :param _ServiceId: Unique service ID.
         :type ServiceId: str
-        :param StrategyId: Unique IP policy ID.
+        :param _StrategyId: Unique IP policy ID.
         :type StrategyId: str
-        :param EnvironmentName: Environment associated with policy.
+        :param _EnvironmentName: Environment associated with policy.
         :type EnvironmentName: str
-        :param Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
+        :param _Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
         :type Limit: int
-        :param Offset: Offset. Default value: 0.
+        :param _Offset: Offset. Default value: 0.
         :type Offset: int
-        :param Filters: Filter, which is a reserved field. Filtering is not supported currently.
+        :param _Filters: Filter, which is a reserved field. Filtering is not supported currently.
         :type Filters: list of Filter
         """
-        self.ServiceId = None
-        self.StrategyId = None
-        self.EnvironmentName = None
-        self.Limit = None
-        self.Offset = None
-        self.Filters = None
+        self._ServiceId = None
+        self._StrategyId = None
+        self._EnvironmentName = None
+        self._Limit = None
+        self._Offset = None
+        self._Filters = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def StrategyId(self):
+        return self._StrategyId
+
+    @StrategyId.setter
+    def StrategyId(self, StrategyId):
+        self._StrategyId = StrategyId
+
+    @property
+    def EnvironmentName(self):
+        return self._EnvironmentName
+
+    @EnvironmentName.setter
+    def EnvironmentName(self, EnvironmentName):
+        self._EnvironmentName = EnvironmentName
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.StrategyId = params.get("StrategyId")
-        self.EnvironmentName = params.get("EnvironmentName")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._ServiceId = params.get("ServiceId")
+        self._StrategyId = params.get("StrategyId")
+        self._EnvironmentName = params.get("EnvironmentName")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4494,21 +8615,37 @@ class DescribeIPStrategyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: IP policy details.
+        :param _Result: IP policy details.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.IPStrategy`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = IPStrategy()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = IPStrategy()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeIPStrategysStatusRequest(AbstractModel):
@@ -4518,27 +8655,44 @@ class DescribeIPStrategysStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Unique service ID.
+        :param _ServiceId: Unique service ID.
         :type ServiceId: str
-        :param Filters: Filter. Valid values: StrategyName.
+        :param _Filters: Filter. Valid values: StrategyName.
         :type Filters: list of Filter
         """
-        self.ServiceId = None
-        self.Filters = None
+        self._ServiceId = None
+        self._Filters = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
+        self._ServiceId = params.get("ServiceId")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4551,21 +8705,37 @@ class DescribeIPStrategysStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: List of eligible policies.
+        :param _Result: List of eligible policies.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.IPStrategysStatus`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = IPStrategysStatus()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = IPStrategysStatus()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeLogSearchRequest(AbstractModel):
@@ -4575,23 +8745,23 @@ class DescribeLogSearchRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: Log start time
+        :param _StartTime: Log start time
         :type StartTime: str
-        :param EndTime: Log end time
+        :param _EndTime: Log end time
         :type EndTime: str
-        :param ServiceId: Service ID
+        :param _ServiceId: Service ID
         :type ServiceId: str
-        :param Filters: Reserved field
+        :param _Filters: Reserved field
         :type Filters: list of Filter
-        :param Limit: Number of logs to be returned at a time. Maximum value: 100
+        :param _Limit: Number of logs to be returned at a time. Maximum value: 100
         :type Limit: int
-        :param ConText: Subsequent content can be obtained based on the `ConText` returned last time. Up to 10,000 data entries can be obtained
+        :param _ConText: Subsequent content can be obtained based on the `ConText` returned last time. Up to 10,000 data entries can be obtained
         :type ConText: str
-        :param Sort: Sorting by time. Valid values: asc (ascending), desc (descending). Default value: desc
+        :param _Sort: Sorting by time. Valid values: asc (ascending), desc (descending). Default value: desc
         :type Sort: str
-        :param Query: Reserved field
+        :param _Query: Reserved field
         :type Query: str
-        :param LogQuerys: Search criterion. Valid values:
+        :param _LogQuerys: Search criterion. Valid values:
 req_id: "="
 api_id: "="
 cip: "="
@@ -4604,41 +8774,114 @@ Note:
 ":" indicates included, and "!=" indicates not equal to. For the meanings of fields, please see the `LogSet` description of the output parameter
         :type LogQuerys: list of LogQuery
         """
-        self.StartTime = None
-        self.EndTime = None
-        self.ServiceId = None
-        self.Filters = None
-        self.Limit = None
-        self.ConText = None
-        self.Sort = None
-        self.Query = None
-        self.LogQuerys = None
+        self._StartTime = None
+        self._EndTime = None
+        self._ServiceId = None
+        self._Filters = None
+        self._Limit = None
+        self._ConText = None
+        self._Sort = None
+        self._Query = None
+        self._LogQuerys = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def ConText(self):
+        return self._ConText
+
+    @ConText.setter
+    def ConText(self, ConText):
+        self._ConText = ConText
+
+    @property
+    def Sort(self):
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+    @property
+    def Query(self):
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+    @property
+    def LogQuerys(self):
+        return self._LogQuerys
+
+    @LogQuerys.setter
+    def LogQuerys(self, LogQuerys):
+        self._LogQuerys = LogQuerys
 
 
     def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.ServiceId = params.get("ServiceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._ServiceId = params.get("ServiceId")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
-        self.Limit = params.get("Limit")
-        self.ConText = params.get("ConText")
-        self.Sort = params.get("Sort")
-        self.Query = params.get("Query")
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._ConText = params.get("ConText")
+        self._Sort = params.get("Sort")
+        self._Query = params.get("Query")
         if params.get("LogQuerys") is not None:
-            self.LogQuerys = []
+            self._LogQuerys = []
             for item in params.get("LogQuerys"):
                 obj = LogQuery()
                 obj._deserialize(item)
-                self.LogQuerys.append(obj)
+                self._LogQuerys.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4651,9 +8894,9 @@ class DescribeLogSearchResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ConText: Cursor for getting more search results. If the value is `""`, there will be no subsequent results
+        :param _ConText: Cursor for getting more search results. If the value is `""`, there will be no subsequent results
         :type ConText: str
-        :param LogSet: The returned result contains any number of logs, which are in the following format:
+        :param _LogSet: The returned result contains any number of logs, which are in the following format:
 '[$app_id][$env_name][$service_id][$http_host][$api_id][$uri][$scheme][rsp_st:$status][ups_st:$upstream_status]'
 '[cip:$remote_addr][uip:$upstream_addr][vip:$server_addr][rsp_len:$bytes_sent][req_len:$request_length]'
 '[req_t:$request_time][ups_rsp_t:$upstream_response_time][ups_conn_t:$upstream_connect_time][ups_head_t:$upstream_header_time]’
@@ -4682,22 +8925,54 @@ err_msg: error message.
 tcp_rtt: client TCP connection information. RTT (Round Trip Time) consists of three parts: link propagation delay, end system processing delay, and queuing delay in router cache.
 req_id: request ID.
         :type LogSet: list of str
-        :param TotalCount: Number of logs returned for one search (`TotalCount <= Limit`)
+        :param _TotalCount: Number of logs returned for one search (`TotalCount <= Limit`)
         :type TotalCount: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.ConText = None
-        self.LogSet = None
-        self.TotalCount = None
-        self.RequestId = None
+        self._ConText = None
+        self._LogSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ConText(self):
+        return self._ConText
+
+    @ConText.setter
+    def ConText(self, ConText):
+        self._ConText = ConText
+
+    @property
+    def LogSet(self):
+        return self._LogSet
+
+    @LogSet.setter
+    def LogSet(self, LogSet):
+        self._LogSet = LogSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ConText = params.get("ConText")
-        self.LogSet = params.get("LogSet")
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
+        self._ConText = params.get("ConText")
+        self._LogSet = params.get("LogSet")
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribePluginApisRequest(AbstractModel):
@@ -4707,26 +8982,51 @@ class DescribePluginApisRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PluginId: ID of the plugin to be queried
+        :param _PluginId: ID of the plugin to be queried
         :type PluginId: str
-        :param Limit: Number of returned results. Default value: 20. Maximum value: 100
+        :param _Limit: Number of returned results. Default value: 20. Maximum value: 100
         :type Limit: int
-        :param Offset: Offset. Default value: 0
+        :param _Offset: Offset. Default value: 0
         :type Offset: int
         """
-        self.PluginId = None
-        self.Limit = None
-        self.Offset = None
+        self._PluginId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def PluginId(self):
+        return self._PluginId
+
+    @PluginId.setter
+    def PluginId(self, PluginId):
+        self._PluginId = PluginId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.PluginId = params.get("PluginId")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._PluginId = params.get("PluginId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4739,20 +9039,36 @@ class DescribePluginApisResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: List of APIs bound with the plugin
+        :param _Result: List of APIs bound with the plugin
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.AttachedApiSummary`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = AttachedApiSummary()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = AttachedApiSummary()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribePluginRequest(AbstractModel):
@@ -4762,26 +9078,51 @@ class DescribePluginRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PluginId: ID of the plugin to be queried
+        :param _PluginId: ID of the plugin to be queried
         :type PluginId: str
-        :param Limit: Number of returned results. Default value: 20. Maximum value: 100
+        :param _Limit: Number of returned results. Default value: 20. Maximum value: 100
         :type Limit: int
-        :param Offset: Offset. Default value: 0
+        :param _Offset: Offset. Default value: 0
         :type Offset: int
         """
-        self.PluginId = None
-        self.Limit = None
-        self.Offset = None
+        self._PluginId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def PluginId(self):
+        return self._PluginId
+
+    @PluginId.setter
+    def PluginId(self, PluginId):
+        self._PluginId = PluginId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.PluginId = params.get("PluginId")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._PluginId = params.get("PluginId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4794,20 +9135,36 @@ class DescribePluginResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Plugin details
+        :param _Result: Plugin details
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.Plugin`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = Plugin()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = Plugin()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribePluginsByApiRequest(AbstractModel):
@@ -4817,34 +9174,75 @@ class DescribePluginsByApiRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApiId: ID of the API to query
+        :param _ApiId: ID of the API to query
         :type ApiId: str
-        :param ServiceId: ID of the service to query
+        :param _ServiceId: ID of the service to query
         :type ServiceId: str
-        :param EnvironmentName: Environment information
+        :param _EnvironmentName: Environment information
         :type EnvironmentName: str
-        :param Limit: Number of returned results. Default value: 20. Maximum value: 100
+        :param _Limit: Number of returned results. Default value: 20. Maximum value: 100
         :type Limit: int
-        :param Offset: Offset. Default value: 0
+        :param _Offset: Offset. Default value: 0
         :type Offset: int
         """
-        self.ApiId = None
-        self.ServiceId = None
-        self.EnvironmentName = None
-        self.Limit = None
-        self.Offset = None
+        self._ApiId = None
+        self._ServiceId = None
+        self._EnvironmentName = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def ApiId(self):
+        return self._ApiId
+
+    @ApiId.setter
+    def ApiId(self, ApiId):
+        self._ApiId = ApiId
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def EnvironmentName(self):
+        return self._EnvironmentName
+
+    @EnvironmentName.setter
+    def EnvironmentName(self, EnvironmentName):
+        self._EnvironmentName = EnvironmentName
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.ApiId = params.get("ApiId")
-        self.ServiceId = params.get("ServiceId")
-        self.EnvironmentName = params.get("EnvironmentName")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._ApiId = params.get("ApiId")
+        self._ServiceId = params.get("ServiceId")
+        self._EnvironmentName = params.get("EnvironmentName")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4857,20 +9255,36 @@ class DescribePluginsByApiResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: List of plug-ins bound with the API
+        :param _Result: List of plug-ins bound with the API
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.AttachedPluginSummary`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = AttachedPluginSummary()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = AttachedPluginSummary()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeServiceEnvironmentListRequest(AbstractModel):
@@ -4880,26 +9294,51 @@ class DescribeServiceEnvironmentListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Unique ID of the service to be queried.
+        :param _ServiceId: Unique ID of the service to be queried.
         :type ServiceId: str
-        :param Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
+        :param _Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
         :type Limit: int
-        :param Offset: Offset. Default value: 0.
+        :param _Offset: Offset. Default value: 0.
         :type Offset: int
         """
-        self.ServiceId = None
-        self.Limit = None
-        self.Offset = None
+        self._ServiceId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._ServiceId = params.get("ServiceId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4912,21 +9351,37 @@ class DescribeServiceEnvironmentListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Details of environments bound to service.
+        :param _Result: Details of environments bound to service.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.ServiceEnvironmentSet`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = ServiceEnvironmentSet()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = ServiceEnvironmentSet()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeServiceEnvironmentReleaseHistoryRequest(AbstractModel):
@@ -4936,30 +9391,63 @@ class DescribeServiceEnvironmentReleaseHistoryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Unique ID of the service to be queried.
+        :param _ServiceId: Unique ID of the service to be queried.
         :type ServiceId: str
-        :param EnvironmentName: Environment name.
+        :param _EnvironmentName: Environment name.
         :type EnvironmentName: str
-        :param Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
+        :param _Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
         :type Limit: int
-        :param Offset: Offset. Default value: 0.
+        :param _Offset: Offset. Default value: 0.
         :type Offset: int
         """
-        self.ServiceId = None
-        self.EnvironmentName = None
-        self.Limit = None
-        self.Offset = None
+        self._ServiceId = None
+        self._EnvironmentName = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def EnvironmentName(self):
+        return self._EnvironmentName
+
+    @EnvironmentName.setter
+    def EnvironmentName(self, EnvironmentName):
+        self._EnvironmentName = EnvironmentName
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.EnvironmentName = params.get("EnvironmentName")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._ServiceId = params.get("ServiceId")
+        self._EnvironmentName = params.get("EnvironmentName")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -4972,21 +9460,37 @@ class DescribeServiceEnvironmentReleaseHistoryResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Service release history.
+        :param _Result: Service release history.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.ServiceReleaseHistory`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = ServiceReleaseHistory()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = ServiceReleaseHistory()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeServiceEnvironmentStrategyRequest(AbstractModel):
@@ -4996,26 +9500,51 @@ class DescribeServiceEnvironmentStrategyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Unique service ID.
+        :param _ServiceId: Unique service ID.
         :type ServiceId: str
-        :param Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
+        :param _Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
         :type Limit: int
-        :param Offset: Offset. Default value: 0.
+        :param _Offset: Offset. Default value: 0.
         :type Offset: int
         """
-        self.ServiceId = None
-        self.Limit = None
-        self.Offset = None
+        self._ServiceId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._ServiceId = params.get("ServiceId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5028,21 +9557,37 @@ class DescribeServiceEnvironmentStrategyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Throttling policy list.
+        :param _Result: Throttling policy list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.ServiceEnvironmentStrategyStatus`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = ServiceEnvironmentStrategyStatus()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = ServiceEnvironmentStrategyStatus()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeServiceForApiAppRequest(AbstractModel):
@@ -5052,22 +9597,39 @@ class DescribeServiceForApiAppRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Unique ID of the service to be queried.
+        :param _ServiceId: Unique ID of the service to be queried.
         :type ServiceId: str
-        :param ApiRegion: Service region.
+        :param _ApiRegion: Service region.
         :type ApiRegion: str
         """
-        self.ServiceId = None
-        self.ApiRegion = None
+        self._ServiceId = None
+        self._ApiRegion = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def ApiRegion(self):
+        return self._ApiRegion
+
+    @ApiRegion.setter
+    def ApiRegion(self, ApiRegion):
+        self._ApiRegion = ApiRegion
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.ApiRegion = params.get("ApiRegion")
+        self._ServiceId = params.get("ServiceId")
+        self._ApiRegion = params.get("ApiRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5080,127 +9642,303 @@ class DescribeServiceForApiAppResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Unique service ID.
+        :param _ServiceId: Unique service ID.
         :type ServiceId: str
-        :param AvailableEnvironments: Service environment list.
+        :param _AvailableEnvironments: Service environment list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AvailableEnvironments: list of str
-        :param ServiceName: Service name.
+        :param _ServiceName: Service name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceName: str
-        :param ServiceDesc: Service description.
+        :param _ServiceDesc: Service description.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceDesc: str
-        :param Protocol: Protocol supported by service. Valid values: http, https, http&https.
+        :param _Protocol: Protocol supported by service. Valid values: http, https, http&https.
         :type Protocol: str
-        :param CreatedTime: Service creation time.
+        :param _CreatedTime: Service creation time.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CreatedTime: str
-        :param ModifiedTime: Service modification time.
+        :param _ModifiedTime: Service modification time.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ModifiedTime: str
-        :param ExclusiveSetName: Self-Deployed cluster name.
+        :param _ExclusiveSetName: Self-Deployed cluster name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ExclusiveSetName: str
-        :param NetTypes: Network type list. INNER: private network access; OUTER: public network access.
+        :param _NetTypes: Network type list. INNER: private network access; OUTER: public network access.
         :type NetTypes: list of str
-        :param InternalSubDomain: Subdomain name for private network access.
+        :param _InternalSubDomain: Subdomain name for private network access.
         :type InternalSubDomain: str
-        :param OuterSubDomain: Subdomain name for public network access.
+        :param _OuterSubDomain: Subdomain name for public network access.
         :type OuterSubDomain: str
-        :param InnerHttpPort: Service port number for HTTP access over private network.
+        :param _InnerHttpPort: Service port number for HTTP access over private network.
         :type InnerHttpPort: int
-        :param InnerHttpsPort: Port number for HTTPS access over private network.
+        :param _InnerHttpsPort: Port number for HTTPS access over private network.
         :type InnerHttpsPort: int
-        :param ApiTotalCount: Total number of APIs.
+        :param _ApiTotalCount: Total number of APIs.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApiTotalCount: int
-        :param ApiIdStatusSet: API list.
+        :param _ApiIdStatusSet: API list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApiIdStatusSet: list of ApiIdStatus
-        :param UsagePlanTotalCount: Total number of usage plans.
+        :param _UsagePlanTotalCount: Total number of usage plans.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UsagePlanTotalCount: int
-        :param UsagePlanList: Usage plan array.
+        :param _UsagePlanList: Usage plan array.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UsagePlanList: list of UsagePlan
-        :param IpVersion: IP version.
+        :param _IpVersion: IP version.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IpVersion: str
-        :param UserType: Service user type.
+        :param _UserType: Service user type.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UserType: str
-        :param SetId: Reserved field.
+        :param _SetId: Reserved field.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SetId: int
-        :param Tags: Tag bound to the service.
+        :param _Tags: Tag bound to the service.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Tags: list of Tag
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.ServiceId = None
-        self.AvailableEnvironments = None
-        self.ServiceName = None
-        self.ServiceDesc = None
-        self.Protocol = None
-        self.CreatedTime = None
-        self.ModifiedTime = None
-        self.ExclusiveSetName = None
-        self.NetTypes = None
-        self.InternalSubDomain = None
-        self.OuterSubDomain = None
-        self.InnerHttpPort = None
-        self.InnerHttpsPort = None
-        self.ApiTotalCount = None
-        self.ApiIdStatusSet = None
-        self.UsagePlanTotalCount = None
-        self.UsagePlanList = None
-        self.IpVersion = None
-        self.UserType = None
-        self.SetId = None
-        self.Tags = None
-        self.RequestId = None
+        self._ServiceId = None
+        self._AvailableEnvironments = None
+        self._ServiceName = None
+        self._ServiceDesc = None
+        self._Protocol = None
+        self._CreatedTime = None
+        self._ModifiedTime = None
+        self._ExclusiveSetName = None
+        self._NetTypes = None
+        self._InternalSubDomain = None
+        self._OuterSubDomain = None
+        self._InnerHttpPort = None
+        self._InnerHttpsPort = None
+        self._ApiTotalCount = None
+        self._ApiIdStatusSet = None
+        self._UsagePlanTotalCount = None
+        self._UsagePlanList = None
+        self._IpVersion = None
+        self._UserType = None
+        self._SetId = None
+        self._Tags = None
+        self._RequestId = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def AvailableEnvironments(self):
+        return self._AvailableEnvironments
+
+    @AvailableEnvironments.setter
+    def AvailableEnvironments(self, AvailableEnvironments):
+        self._AvailableEnvironments = AvailableEnvironments
+
+    @property
+    def ServiceName(self):
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def ServiceDesc(self):
+        return self._ServiceDesc
+
+    @ServiceDesc.setter
+    def ServiceDesc(self, ServiceDesc):
+        self._ServiceDesc = ServiceDesc
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def ModifiedTime(self):
+        return self._ModifiedTime
+
+    @ModifiedTime.setter
+    def ModifiedTime(self, ModifiedTime):
+        self._ModifiedTime = ModifiedTime
+
+    @property
+    def ExclusiveSetName(self):
+        return self._ExclusiveSetName
+
+    @ExclusiveSetName.setter
+    def ExclusiveSetName(self, ExclusiveSetName):
+        self._ExclusiveSetName = ExclusiveSetName
+
+    @property
+    def NetTypes(self):
+        return self._NetTypes
+
+    @NetTypes.setter
+    def NetTypes(self, NetTypes):
+        self._NetTypes = NetTypes
+
+    @property
+    def InternalSubDomain(self):
+        return self._InternalSubDomain
+
+    @InternalSubDomain.setter
+    def InternalSubDomain(self, InternalSubDomain):
+        self._InternalSubDomain = InternalSubDomain
+
+    @property
+    def OuterSubDomain(self):
+        return self._OuterSubDomain
+
+    @OuterSubDomain.setter
+    def OuterSubDomain(self, OuterSubDomain):
+        self._OuterSubDomain = OuterSubDomain
+
+    @property
+    def InnerHttpPort(self):
+        return self._InnerHttpPort
+
+    @InnerHttpPort.setter
+    def InnerHttpPort(self, InnerHttpPort):
+        self._InnerHttpPort = InnerHttpPort
+
+    @property
+    def InnerHttpsPort(self):
+        return self._InnerHttpsPort
+
+    @InnerHttpsPort.setter
+    def InnerHttpsPort(self, InnerHttpsPort):
+        self._InnerHttpsPort = InnerHttpsPort
+
+    @property
+    def ApiTotalCount(self):
+        return self._ApiTotalCount
+
+    @ApiTotalCount.setter
+    def ApiTotalCount(self, ApiTotalCount):
+        self._ApiTotalCount = ApiTotalCount
+
+    @property
+    def ApiIdStatusSet(self):
+        return self._ApiIdStatusSet
+
+    @ApiIdStatusSet.setter
+    def ApiIdStatusSet(self, ApiIdStatusSet):
+        self._ApiIdStatusSet = ApiIdStatusSet
+
+    @property
+    def UsagePlanTotalCount(self):
+        return self._UsagePlanTotalCount
+
+    @UsagePlanTotalCount.setter
+    def UsagePlanTotalCount(self, UsagePlanTotalCount):
+        self._UsagePlanTotalCount = UsagePlanTotalCount
+
+    @property
+    def UsagePlanList(self):
+        return self._UsagePlanList
+
+    @UsagePlanList.setter
+    def UsagePlanList(self, UsagePlanList):
+        self._UsagePlanList = UsagePlanList
+
+    @property
+    def IpVersion(self):
+        return self._IpVersion
+
+    @IpVersion.setter
+    def IpVersion(self, IpVersion):
+        self._IpVersion = IpVersion
+
+    @property
+    def UserType(self):
+        return self._UserType
+
+    @UserType.setter
+    def UserType(self, UserType):
+        self._UserType = UserType
+
+    @property
+    def SetId(self):
+        return self._SetId
+
+    @SetId.setter
+    def SetId(self, SetId):
+        self._SetId = SetId
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.AvailableEnvironments = params.get("AvailableEnvironments")
-        self.ServiceName = params.get("ServiceName")
-        self.ServiceDesc = params.get("ServiceDesc")
-        self.Protocol = params.get("Protocol")
-        self.CreatedTime = params.get("CreatedTime")
-        self.ModifiedTime = params.get("ModifiedTime")
-        self.ExclusiveSetName = params.get("ExclusiveSetName")
-        self.NetTypes = params.get("NetTypes")
-        self.InternalSubDomain = params.get("InternalSubDomain")
-        self.OuterSubDomain = params.get("OuterSubDomain")
-        self.InnerHttpPort = params.get("InnerHttpPort")
-        self.InnerHttpsPort = params.get("InnerHttpsPort")
-        self.ApiTotalCount = params.get("ApiTotalCount")
+        self._ServiceId = params.get("ServiceId")
+        self._AvailableEnvironments = params.get("AvailableEnvironments")
+        self._ServiceName = params.get("ServiceName")
+        self._ServiceDesc = params.get("ServiceDesc")
+        self._Protocol = params.get("Protocol")
+        self._CreatedTime = params.get("CreatedTime")
+        self._ModifiedTime = params.get("ModifiedTime")
+        self._ExclusiveSetName = params.get("ExclusiveSetName")
+        self._NetTypes = params.get("NetTypes")
+        self._InternalSubDomain = params.get("InternalSubDomain")
+        self._OuterSubDomain = params.get("OuterSubDomain")
+        self._InnerHttpPort = params.get("InnerHttpPort")
+        self._InnerHttpsPort = params.get("InnerHttpsPort")
+        self._ApiTotalCount = params.get("ApiTotalCount")
         if params.get("ApiIdStatusSet") is not None:
-            self.ApiIdStatusSet = []
+            self._ApiIdStatusSet = []
             for item in params.get("ApiIdStatusSet"):
                 obj = ApiIdStatus()
                 obj._deserialize(item)
-                self.ApiIdStatusSet.append(obj)
-        self.UsagePlanTotalCount = params.get("UsagePlanTotalCount")
+                self._ApiIdStatusSet.append(obj)
+        self._UsagePlanTotalCount = params.get("UsagePlanTotalCount")
         if params.get("UsagePlanList") is not None:
-            self.UsagePlanList = []
+            self._UsagePlanList = []
             for item in params.get("UsagePlanList"):
                 obj = UsagePlan()
                 obj._deserialize(item)
-                self.UsagePlanList.append(obj)
-        self.IpVersion = params.get("IpVersion")
-        self.UserType = params.get("UserType")
-        self.SetId = params.get("SetId")
+                self._UsagePlanList.append(obj)
+        self._IpVersion = params.get("IpVersion")
+        self._UserType = params.get("UserType")
+        self._SetId = params.get("SetId")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Tags.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeServiceReleaseVersionRequest(AbstractModel):
@@ -5210,26 +9948,51 @@ class DescribeServiceReleaseVersionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Unique ID of the service to be queried.
+        :param _ServiceId: Unique ID of the service to be queried.
         :type ServiceId: str
-        :param Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
+        :param _Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
         :type Limit: int
-        :param Offset: Offset. Default value: 0.
+        :param _Offset: Offset. Default value: 0.
         :type Offset: int
         """
-        self.ServiceId = None
-        self.Limit = None
-        self.Offset = None
+        self._ServiceId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._ServiceId = params.get("ServiceId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5242,21 +10005,37 @@ class DescribeServiceReleaseVersionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Service release version list.
+        :param _Result: Service release version list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.ServiceReleaseVersion`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = ServiceReleaseVersion()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = ServiceReleaseVersion()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeServiceRequest(AbstractModel):
@@ -5266,18 +10045,27 @@ class DescribeServiceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Unique ID of the service to be queried.
+        :param _ServiceId: Unique ID of the service to be queried.
         :type ServiceId: str
         """
-        self.ServiceId = None
+        self._ServiceId = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
+        self._ServiceId = params.get("ServiceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5290,145 +10078,361 @@ class DescribeServiceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Unique service ID.
+        :param _ServiceId: Unique service ID.
         :type ServiceId: str
-        :param AvailableEnvironments: Service environment list.
+        :param _AvailableEnvironments: Service environment list.
         :type AvailableEnvironments: list of str
-        :param ServiceName: Service name.
+        :param _ServiceName: Service name.
         :type ServiceName: str
-        :param ServiceDesc: Service description.
+        :param _ServiceDesc: Service description.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceDesc: str
-        :param Protocol: Protocol supported by service. Valid values: http, https, http&https.
+        :param _Protocol: Protocol supported by service. Valid values: http, https, http&https.
         :type Protocol: str
-        :param CreatedTime: Service creation time.
+        :param _CreatedTime: Service creation time.
         :type CreatedTime: str
-        :param ModifiedTime: Service modification time.
+        :param _ModifiedTime: Service modification time.
         :type ModifiedTime: str
-        :param ExclusiveSetName: Dedicated cluster name.
+        :param _ExclusiveSetName: Dedicated cluster name.
         :type ExclusiveSetName: str
-        :param NetTypes: Network type list. INNER: private network access; OUTER: public network access.
+        :param _NetTypes: Network type list. INNER: private network access; OUTER: public network access.
         :type NetTypes: list of str
-        :param InternalSubDomain: Subdomain name for private network access.
+        :param _InternalSubDomain: Subdomain name for private network access.
         :type InternalSubDomain: str
-        :param OuterSubDomain: Subdomain name for public network access.
+        :param _OuterSubDomain: Subdomain name for public network access.
         :type OuterSubDomain: str
-        :param InnerHttpPort: Service port number for HTTP access over private network.
+        :param _InnerHttpPort: Service port number for HTTP access over private network.
         :type InnerHttpPort: int
-        :param InnerHttpsPort: Port number for HTTPS access over private network.
+        :param _InnerHttpsPort: Port number for HTTPS access over private network.
         :type InnerHttpsPort: int
-        :param ApiTotalCount: Total number of APIs.
+        :param _ApiTotalCount: Total number of APIs.
         :type ApiTotalCount: int
-        :param ApiIdStatusSet: API list.
+        :param _ApiIdStatusSet: API list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApiIdStatusSet: list of ApiIdStatus
-        :param UsagePlanTotalCount: Total number of usage plans.
+        :param _UsagePlanTotalCount: Total number of usage plans.
         :type UsagePlanTotalCount: int
-        :param UsagePlanList: Usage plan array.
+        :param _UsagePlanList: Usage plan array.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UsagePlanList: list of UsagePlan
-        :param IpVersion: IP version.
+        :param _IpVersion: IP version.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IpVersion: str
-        :param UserType: Service user type.
+        :param _UserType: Service user type.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UserType: str
-        :param SetId: Reserved field.
+        :param _SetId: Reserved field.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SetId: int
-        :param Tags: Tags bound to a service.
+        :param _Tags: Tags bound to a service.
 Note: this field may return null, indicating that no valid values found.
         :type Tags: list of Tag
-        :param InstanceId: Dedicated instance ID
+        :param _InstanceId: Dedicated instance ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :type InstanceId: str
-        :param InstanceName: Dedicated instance name
+        :param _InstanceName: Dedicated instance name
 Note: this field may return null, indicating that no valid values can be obtained.
         :type InstanceName: str
-        :param SetType: Cluster type
+        :param _SetType: Cluster type
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SetType: str
-        :param DeploymentType: Cluster type for service deployment
+        :param _DeploymentType: Cluster type for service deployment
 Note: this field may return null, indicating that no valid values found.
         :type DeploymentType: str
-        :param SpecialUse: Whether the service if for special usage. Valid values: `DEFAULT` (general usage), `HTTP_DNS`.
+        :param _SpecialUse: Whether the service if for special usage. Valid values: `DEFAULT` (general usage), `HTTP_DNS`.
 Note: This field may return `NULL`, indicating that no valid value was found.
         :type SpecialUse: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.ServiceId = None
-        self.AvailableEnvironments = None
-        self.ServiceName = None
-        self.ServiceDesc = None
-        self.Protocol = None
-        self.CreatedTime = None
-        self.ModifiedTime = None
-        self.ExclusiveSetName = None
-        self.NetTypes = None
-        self.InternalSubDomain = None
-        self.OuterSubDomain = None
-        self.InnerHttpPort = None
-        self.InnerHttpsPort = None
-        self.ApiTotalCount = None
-        self.ApiIdStatusSet = None
-        self.UsagePlanTotalCount = None
-        self.UsagePlanList = None
-        self.IpVersion = None
-        self.UserType = None
-        self.SetId = None
-        self.Tags = None
-        self.InstanceId = None
-        self.InstanceName = None
-        self.SetType = None
-        self.DeploymentType = None
-        self.SpecialUse = None
-        self.RequestId = None
+        self._ServiceId = None
+        self._AvailableEnvironments = None
+        self._ServiceName = None
+        self._ServiceDesc = None
+        self._Protocol = None
+        self._CreatedTime = None
+        self._ModifiedTime = None
+        self._ExclusiveSetName = None
+        self._NetTypes = None
+        self._InternalSubDomain = None
+        self._OuterSubDomain = None
+        self._InnerHttpPort = None
+        self._InnerHttpsPort = None
+        self._ApiTotalCount = None
+        self._ApiIdStatusSet = None
+        self._UsagePlanTotalCount = None
+        self._UsagePlanList = None
+        self._IpVersion = None
+        self._UserType = None
+        self._SetId = None
+        self._Tags = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._SetType = None
+        self._DeploymentType = None
+        self._SpecialUse = None
+        self._RequestId = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def AvailableEnvironments(self):
+        return self._AvailableEnvironments
+
+    @AvailableEnvironments.setter
+    def AvailableEnvironments(self, AvailableEnvironments):
+        self._AvailableEnvironments = AvailableEnvironments
+
+    @property
+    def ServiceName(self):
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def ServiceDesc(self):
+        return self._ServiceDesc
+
+    @ServiceDesc.setter
+    def ServiceDesc(self, ServiceDesc):
+        self._ServiceDesc = ServiceDesc
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def ModifiedTime(self):
+        return self._ModifiedTime
+
+    @ModifiedTime.setter
+    def ModifiedTime(self, ModifiedTime):
+        self._ModifiedTime = ModifiedTime
+
+    @property
+    def ExclusiveSetName(self):
+        return self._ExclusiveSetName
+
+    @ExclusiveSetName.setter
+    def ExclusiveSetName(self, ExclusiveSetName):
+        self._ExclusiveSetName = ExclusiveSetName
+
+    @property
+    def NetTypes(self):
+        return self._NetTypes
+
+    @NetTypes.setter
+    def NetTypes(self, NetTypes):
+        self._NetTypes = NetTypes
+
+    @property
+    def InternalSubDomain(self):
+        return self._InternalSubDomain
+
+    @InternalSubDomain.setter
+    def InternalSubDomain(self, InternalSubDomain):
+        self._InternalSubDomain = InternalSubDomain
+
+    @property
+    def OuterSubDomain(self):
+        return self._OuterSubDomain
+
+    @OuterSubDomain.setter
+    def OuterSubDomain(self, OuterSubDomain):
+        self._OuterSubDomain = OuterSubDomain
+
+    @property
+    def InnerHttpPort(self):
+        return self._InnerHttpPort
+
+    @InnerHttpPort.setter
+    def InnerHttpPort(self, InnerHttpPort):
+        self._InnerHttpPort = InnerHttpPort
+
+    @property
+    def InnerHttpsPort(self):
+        return self._InnerHttpsPort
+
+    @InnerHttpsPort.setter
+    def InnerHttpsPort(self, InnerHttpsPort):
+        self._InnerHttpsPort = InnerHttpsPort
+
+    @property
+    def ApiTotalCount(self):
+        return self._ApiTotalCount
+
+    @ApiTotalCount.setter
+    def ApiTotalCount(self, ApiTotalCount):
+        self._ApiTotalCount = ApiTotalCount
+
+    @property
+    def ApiIdStatusSet(self):
+        return self._ApiIdStatusSet
+
+    @ApiIdStatusSet.setter
+    def ApiIdStatusSet(self, ApiIdStatusSet):
+        self._ApiIdStatusSet = ApiIdStatusSet
+
+    @property
+    def UsagePlanTotalCount(self):
+        return self._UsagePlanTotalCount
+
+    @UsagePlanTotalCount.setter
+    def UsagePlanTotalCount(self, UsagePlanTotalCount):
+        self._UsagePlanTotalCount = UsagePlanTotalCount
+
+    @property
+    def UsagePlanList(self):
+        return self._UsagePlanList
+
+    @UsagePlanList.setter
+    def UsagePlanList(self, UsagePlanList):
+        self._UsagePlanList = UsagePlanList
+
+    @property
+    def IpVersion(self):
+        return self._IpVersion
+
+    @IpVersion.setter
+    def IpVersion(self, IpVersion):
+        self._IpVersion = IpVersion
+
+    @property
+    def UserType(self):
+        return self._UserType
+
+    @UserType.setter
+    def UserType(self, UserType):
+        self._UserType = UserType
+
+    @property
+    def SetId(self):
+        return self._SetId
+
+    @SetId.setter
+    def SetId(self, SetId):
+        self._SetId = SetId
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def SetType(self):
+        return self._SetType
+
+    @SetType.setter
+    def SetType(self, SetType):
+        self._SetType = SetType
+
+    @property
+    def DeploymentType(self):
+        return self._DeploymentType
+
+    @DeploymentType.setter
+    def DeploymentType(self, DeploymentType):
+        self._DeploymentType = DeploymentType
+
+    @property
+    def SpecialUse(self):
+        return self._SpecialUse
+
+    @SpecialUse.setter
+    def SpecialUse(self, SpecialUse):
+        self._SpecialUse = SpecialUse
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.AvailableEnvironments = params.get("AvailableEnvironments")
-        self.ServiceName = params.get("ServiceName")
-        self.ServiceDesc = params.get("ServiceDesc")
-        self.Protocol = params.get("Protocol")
-        self.CreatedTime = params.get("CreatedTime")
-        self.ModifiedTime = params.get("ModifiedTime")
-        self.ExclusiveSetName = params.get("ExclusiveSetName")
-        self.NetTypes = params.get("NetTypes")
-        self.InternalSubDomain = params.get("InternalSubDomain")
-        self.OuterSubDomain = params.get("OuterSubDomain")
-        self.InnerHttpPort = params.get("InnerHttpPort")
-        self.InnerHttpsPort = params.get("InnerHttpsPort")
-        self.ApiTotalCount = params.get("ApiTotalCount")
+        self._ServiceId = params.get("ServiceId")
+        self._AvailableEnvironments = params.get("AvailableEnvironments")
+        self._ServiceName = params.get("ServiceName")
+        self._ServiceDesc = params.get("ServiceDesc")
+        self._Protocol = params.get("Protocol")
+        self._CreatedTime = params.get("CreatedTime")
+        self._ModifiedTime = params.get("ModifiedTime")
+        self._ExclusiveSetName = params.get("ExclusiveSetName")
+        self._NetTypes = params.get("NetTypes")
+        self._InternalSubDomain = params.get("InternalSubDomain")
+        self._OuterSubDomain = params.get("OuterSubDomain")
+        self._InnerHttpPort = params.get("InnerHttpPort")
+        self._InnerHttpsPort = params.get("InnerHttpsPort")
+        self._ApiTotalCount = params.get("ApiTotalCount")
         if params.get("ApiIdStatusSet") is not None:
-            self.ApiIdStatusSet = []
+            self._ApiIdStatusSet = []
             for item in params.get("ApiIdStatusSet"):
                 obj = ApiIdStatus()
                 obj._deserialize(item)
-                self.ApiIdStatusSet.append(obj)
-        self.UsagePlanTotalCount = params.get("UsagePlanTotalCount")
+                self._ApiIdStatusSet.append(obj)
+        self._UsagePlanTotalCount = params.get("UsagePlanTotalCount")
         if params.get("UsagePlanList") is not None:
-            self.UsagePlanList = []
+            self._UsagePlanList = []
             for item in params.get("UsagePlanList"):
                 obj = UsagePlan()
                 obj._deserialize(item)
-                self.UsagePlanList.append(obj)
-        self.IpVersion = params.get("IpVersion")
-        self.UserType = params.get("UserType")
-        self.SetId = params.get("SetId")
+                self._UsagePlanList.append(obj)
+        self._IpVersion = params.get("IpVersion")
+        self._UserType = params.get("UserType")
+        self._SetId = params.get("SetId")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.InstanceId = params.get("InstanceId")
-        self.InstanceName = params.get("InstanceName")
-        self.SetType = params.get("SetType")
-        self.DeploymentType = params.get("DeploymentType")
-        self.SpecialUse = params.get("SpecialUse")
-        self.RequestId = params.get("RequestId")
+                self._Tags.append(obj)
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._SetType = params.get("SetType")
+        self._DeploymentType = params.get("DeploymentType")
+        self._SpecialUse = params.get("SpecialUse")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeServiceSubDomainMappingsRequest(AbstractModel):
@@ -5438,22 +10442,39 @@ class DescribeServiceSubDomainMappingsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Unique service ID.
+        :param _ServiceId: Unique service ID.
         :type ServiceId: str
-        :param SubDomain: Custom domain name bound to service.
+        :param _SubDomain: Custom domain name bound to service.
         :type SubDomain: str
         """
-        self.ServiceId = None
-        self.SubDomain = None
+        self._ServiceId = None
+        self._SubDomain = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def SubDomain(self):
+        return self._SubDomain
+
+    @SubDomain.setter
+    def SubDomain(self, SubDomain):
+        self._SubDomain = SubDomain
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.SubDomain = params.get("SubDomain")
+        self._ServiceId = params.get("ServiceId")
+        self._SubDomain = params.get("SubDomain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5466,20 +10487,36 @@ class DescribeServiceSubDomainMappingsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Custom path mapping list.
+        :param _Result: Custom path mapping list.
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.ServiceSubDomainMappings`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = ServiceSubDomainMappings()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = ServiceSubDomainMappings()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeServiceSubDomainsRequest(AbstractModel):
@@ -5489,26 +10526,51 @@ class DescribeServiceSubDomainsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Unique service ID.
+        :param _ServiceId: Unique service ID.
         :type ServiceId: str
-        :param Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
+        :param _Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
         :type Limit: int
-        :param Offset: Offset. Default value: 0.
+        :param _Offset: Offset. Default value: 0.
         :type Offset: int
         """
-        self.ServiceId = None
-        self.Limit = None
-        self.Offset = None
+        self._ServiceId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._ServiceId = params.get("ServiceId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5521,20 +10583,36 @@ class DescribeServiceSubDomainsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Custom service domain name query.
+        :param _Result: Custom service domain name query.
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.DomainSets`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = DomainSets()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = DomainSets()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeServiceUsagePlanRequest(AbstractModel):
@@ -5544,26 +10622,51 @@ class DescribeServiceUsagePlanRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Unique ID of the service to be queried.
+        :param _ServiceId: Unique ID of the service to be queried.
         :type ServiceId: str
-        :param Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
+        :param _Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
         :type Limit: int
-        :param Offset: Offset. Default value: 0.
+        :param _Offset: Offset. Default value: 0.
         :type Offset: int
         """
-        self.ServiceId = None
-        self.Limit = None
-        self.Offset = None
+        self._ServiceId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._ServiceId = params.get("ServiceId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5576,21 +10679,37 @@ class DescribeServiceUsagePlanResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: List of usage plans bound to service.
+        :param _Result: List of usage plans bound to service.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.ServiceUsagePlanSet`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = ServiceUsagePlanSet()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = ServiceUsagePlanSet()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeServicesStatusRequest(AbstractModel):
@@ -5600,31 +10719,56 @@ class DescribeServicesStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
+        :param _Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
         :type Limit: int
-        :param Offset: Offset. Default value: 0.
+        :param _Offset: Offset. Default value: 0.
         :type Offset: int
-        :param Filters: Filter. Valid values: `ServiceId`, `ServiceName`, `NotUsagePlanId`, `Environment`, `IpVersion`, `InstanceId`, `NetType`, `EIAMAppId`.
+        :param _Filters: Filter. Valid values: `ServiceId`, `ServiceName`, `NotUsagePlanId`, `Environment`, `IpVersion`, `InstanceId`, `NetType`, `EIAMAppId`.
         :type Filters: list of Filter
         """
-        self.Limit = None
-        self.Offset = None
-        self.Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._Filters = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
 
     def _deserialize(self, params):
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5637,21 +10781,37 @@ class DescribeServicesStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Service list query result.
+        :param _Result: Service list query result.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.ServicesStatus`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = ServicesStatus()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = ServicesStatus()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeUpstreamBindApis(AbstractModel):
@@ -5661,27 +10821,44 @@ class DescribeUpstreamBindApis(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Total number
+        :param _TotalCount: Total number
         :type TotalCount: int
-        :param BindApiSet: Information of bound APIs
+        :param _BindApiSet: Information of bound APIs
         :type BindApiSet: list of BindApiInfo
         """
-        self.TotalCount = None
-        self.BindApiSet = None
+        self._TotalCount = None
+        self._BindApiSet = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def BindApiSet(self):
+        return self._BindApiSet
+
+    @BindApiSet.setter
+    def BindApiSet(self, BindApiSet):
+        self._BindApiSet = BindApiSet
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("BindApiSet") is not None:
-            self.BindApiSet = []
+            self._BindApiSet = []
             for item in params.get("BindApiSet"):
                 obj = BindApiInfo()
                 obj._deserialize(item)
-                self.BindApiSet.append(obj)
+                self._BindApiSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5694,35 +10871,68 @@ class DescribeUpstreamBindApisRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: Number of entries per page
+        :param _Limit: Number of entries per page
         :type Limit: int
-        :param Offset: The starting position of paging
+        :param _Offset: The starting position of paging
         :type Offset: int
-        :param UpstreamId: Upstream ID
+        :param _UpstreamId: Upstream ID
         :type UpstreamId: str
-        :param Filters: Filters the results by `ServiceId` and `ApiId`
+        :param _Filters: Filters the results by `ServiceId` and `ApiId`
         :type Filters: list of Filter
         """
-        self.Limit = None
-        self.Offset = None
-        self.UpstreamId = None
-        self.Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._UpstreamId = None
+        self._Filters = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def UpstreamId(self):
+        return self._UpstreamId
+
+    @UpstreamId.setter
+    def UpstreamId(self, UpstreamId):
+        self._UpstreamId = UpstreamId
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
 
     def _deserialize(self, params):
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        self.UpstreamId = params.get("UpstreamId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._UpstreamId = params.get("UpstreamId")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5735,20 +10945,36 @@ class DescribeUpstreamBindApisResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Query results
+        :param _Result: Query results
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.DescribeUpstreamBindApis`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = DescribeUpstreamBindApis()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = DescribeUpstreamBindApis()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeUpstreamInfo(AbstractModel):
@@ -5758,27 +10984,44 @@ class DescribeUpstreamInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Total number of results
+        :param _TotalCount: Total number of results
         :type TotalCount: int
-        :param UpstreamSet: List of query result
+        :param _UpstreamSet: List of query result
         :type UpstreamSet: list of UpstreamInfo
         """
-        self.TotalCount = None
-        self.UpstreamSet = None
+        self._TotalCount = None
+        self._UpstreamSet = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def UpstreamSet(self):
+        return self._UpstreamSet
+
+    @UpstreamSet.setter
+    def UpstreamSet(self, UpstreamSet):
+        self._UpstreamSet = UpstreamSet
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("UpstreamSet") is not None:
-            self.UpstreamSet = []
+            self._UpstreamSet = []
             for item in params.get("UpstreamSet"):
                 obj = UpstreamInfo()
                 obj._deserialize(item)
-                self.UpstreamSet.append(obj)
+                self._UpstreamSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5791,31 +11034,56 @@ class DescribeUpstreamsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: Number of entries per page
+        :param _Limit: Number of entries per page
         :type Limit: int
-        :param Offset: The starting position of paging
+        :param _Offset: The starting position of paging
         :type Offset: int
-        :param Filters: Filters. Valid values: `UpstreamId` and `UpstreamName`
+        :param _Filters: Filters. Valid values: `UpstreamId` and `UpstreamName`
         :type Filters: list of Filter
         """
-        self.Limit = None
-        self.Offset = None
-        self.Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._Filters = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
 
     def _deserialize(self, params):
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5828,20 +11096,36 @@ class DescribeUpstreamsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Query results
+        :param _Result: Query results
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.DescribeUpstreamInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = DescribeUpstreamInfo()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = DescribeUpstreamInfo()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeUsagePlanEnvironmentsRequest(AbstractModel):
@@ -5851,30 +11135,63 @@ class DescribeUsagePlanEnvironmentsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UsagePlanId: Unique ID of the usage plan to be queried.
+        :param _UsagePlanId: Unique ID of the usage plan to be queried.
         :type UsagePlanId: str
-        :param BindType: Binding type. Valid values: API, SERVICE. Default value: SERVICE.
+        :param _BindType: Binding type. Valid values: API, SERVICE. Default value: SERVICE.
         :type BindType: str
-        :param Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
+        :param _Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
         :type Limit: int
-        :param Offset: Offset. Default value: 0.
+        :param _Offset: Offset. Default value: 0.
         :type Offset: int
         """
-        self.UsagePlanId = None
-        self.BindType = None
-        self.Limit = None
-        self.Offset = None
+        self._UsagePlanId = None
+        self._BindType = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def UsagePlanId(self):
+        return self._UsagePlanId
+
+    @UsagePlanId.setter
+    def UsagePlanId(self, UsagePlanId):
+        self._UsagePlanId = UsagePlanId
+
+    @property
+    def BindType(self):
+        return self._BindType
+
+    @BindType.setter
+    def BindType(self, BindType):
+        self._BindType = BindType
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.UsagePlanId = params.get("UsagePlanId")
-        self.BindType = params.get("BindType")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._UsagePlanId = params.get("UsagePlanId")
+        self._BindType = params.get("BindType")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5887,21 +11204,37 @@ class DescribeUsagePlanEnvironmentsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Usage plan binding details.
+        :param _Result: Usage plan binding details.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.UsagePlanEnvironmentStatus`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = UsagePlanEnvironmentStatus()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = UsagePlanEnvironmentStatus()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeUsagePlanRequest(AbstractModel):
@@ -5911,18 +11244,27 @@ class DescribeUsagePlanRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UsagePlanId: Unique ID of the usage plan to be queried.
+        :param _UsagePlanId: Unique ID of the usage plan to be queried.
         :type UsagePlanId: str
         """
-        self.UsagePlanId = None
+        self._UsagePlanId = None
+
+    @property
+    def UsagePlanId(self):
+        return self._UsagePlanId
+
+    @UsagePlanId.setter
+    def UsagePlanId(self, UsagePlanId):
+        self._UsagePlanId = UsagePlanId
 
 
     def _deserialize(self, params):
-        self.UsagePlanId = params.get("UsagePlanId")
+        self._UsagePlanId = params.get("UsagePlanId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5935,21 +11277,37 @@ class DescribeUsagePlanResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Usage plan details.
+        :param _Result: Usage plan details.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.UsagePlanInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = UsagePlanInfo()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = UsagePlanInfo()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeUsagePlanSecretIdsRequest(AbstractModel):
@@ -5959,26 +11317,51 @@ class DescribeUsagePlanSecretIdsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UsagePlanId: Unique ID of bound usage plan.
+        :param _UsagePlanId: Unique ID of bound usage plan.
         :type UsagePlanId: str
-        :param Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
+        :param _Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
         :type Limit: int
-        :param Offset: Offset. Default value: 0.
+        :param _Offset: Offset. Default value: 0.
         :type Offset: int
         """
-        self.UsagePlanId = None
-        self.Limit = None
-        self.Offset = None
+        self._UsagePlanId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def UsagePlanId(self):
+        return self._UsagePlanId
+
+    @UsagePlanId.setter
+    def UsagePlanId(self, UsagePlanId):
+        self._UsagePlanId = UsagePlanId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self.UsagePlanId = params.get("UsagePlanId")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._UsagePlanId = params.get("UsagePlanId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -5991,21 +11374,37 @@ class DescribeUsagePlanSecretIdsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: List of keys bound to usage plan.
+        :param _Result: List of keys bound to usage plan.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.UsagePlanBindSecretStatus`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = UsagePlanBindSecretStatus()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = UsagePlanBindSecretStatus()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeUsagePlansStatusRequest(AbstractModel):
@@ -6015,31 +11414,56 @@ class DescribeUsagePlansStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
+        :param _Limit: Number of results to be returned. Default value: 20. Maximum value: 100.
         :type Limit: int
-        :param Offset: Offset. Default value: 0.
+        :param _Offset: Offset. Default value: 0.
         :type Offset: int
-        :param Filters: Usage plan filter. Valid values: UsagePlanId, UsagePlanName, NotServiceId, NotApiId, Environment.
+        :param _Filters: Usage plan filter. Valid values: UsagePlanId, UsagePlanName, NotServiceId, NotApiId, Environment.
         :type Filters: list of Filter
         """
-        self.Limit = None
-        self.Offset = None
-        self.Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._Filters = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
 
     def _deserialize(self, params):
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         if params.get("Filters") is not None:
-            self.Filters = []
+            self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
-                self.Filters.append(obj)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6052,21 +11476,37 @@ class DescribeUsagePlansStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Usage plan list.
+        :param _Result: Usage plan list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.UsagePlansStatus`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = UsagePlansStatus()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = UsagePlansStatus()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class DetachPluginRequest(AbstractModel):
@@ -6076,30 +11516,63 @@ class DetachPluginRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PluginId: ID of the plugin to be unbound
+        :param _PluginId: ID of the plugin to be unbound
         :type PluginId: str
-        :param ServiceId: Service ID
+        :param _ServiceId: Service ID
         :type ServiceId: str
-        :param EnvironmentName: API environment
+        :param _EnvironmentName: API environment
         :type EnvironmentName: str
-        :param ApiId: ID of the API to unbind from the plugin
+        :param _ApiId: ID of the API to unbind from the plugin
         :type ApiId: str
         """
-        self.PluginId = None
-        self.ServiceId = None
-        self.EnvironmentName = None
-        self.ApiId = None
+        self._PluginId = None
+        self._ServiceId = None
+        self._EnvironmentName = None
+        self._ApiId = None
+
+    @property
+    def PluginId(self):
+        return self._PluginId
+
+    @PluginId.setter
+    def PluginId(self, PluginId):
+        self._PluginId = PluginId
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def EnvironmentName(self):
+        return self._EnvironmentName
+
+    @EnvironmentName.setter
+    def EnvironmentName(self, EnvironmentName):
+        self._EnvironmentName = EnvironmentName
+
+    @property
+    def ApiId(self):
+        return self._ApiId
+
+    @ApiId.setter
+    def ApiId(self, ApiId):
+        self._ApiId = ApiId
 
 
     def _deserialize(self, params):
-        self.PluginId = params.get("PluginId")
-        self.ServiceId = params.get("ServiceId")
-        self.EnvironmentName = params.get("EnvironmentName")
-        self.ApiId = params.get("ApiId")
+        self._PluginId = params.get("PluginId")
+        self._ServiceId = params.get("ServiceId")
+        self._EnvironmentName = params.get("EnvironmentName")
+        self._ApiId = params.get("ApiId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6112,18 +11585,34 @@ class DetachPluginResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Whether unbinding succeeded.
+        :param _Result: Whether unbinding succeeded.
         :type Result: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
 
 
 class DisableApiKeyRequest(AbstractModel):
@@ -6133,18 +11622,27 @@ class DisableApiKeyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AccessKeyId: ID of the key to be disabled.
+        :param _AccessKeyId: ID of the key to be disabled.
         :type AccessKeyId: str
         """
-        self.AccessKeyId = None
+        self._AccessKeyId = None
+
+    @property
+    def AccessKeyId(self):
+        return self._AccessKeyId
+
+    @AccessKeyId.setter
+    def AccessKeyId(self, AccessKeyId):
+        self._AccessKeyId = AccessKeyId
 
 
     def _deserialize(self, params):
-        self.AccessKeyId = params.get("AccessKeyId")
+        self._AccessKeyId = params.get("AccessKeyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6157,19 +11655,35 @@ class DisableApiKeyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Whether the key is successfully disabled.
+        :param _Result: Whether the key is successfully disabled.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
 
 
 class DocumentSDK(AbstractModel):
@@ -6179,22 +11693,39 @@ class DocumentSDK(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DocumentURL: Download link of generated file. Generated documents will be stored in COS.
+        :param _DocumentURL: Download link of generated file. Generated documents will be stored in COS.
         :type DocumentURL: str
-        :param SdkURL: Download link of generated SDK file. Generated SDK files will be stored in COS.
+        :param _SdkURL: Download link of generated SDK file. Generated SDK files will be stored in COS.
         :type SdkURL: str
         """
-        self.DocumentURL = None
-        self.SdkURL = None
+        self._DocumentURL = None
+        self._SdkURL = None
+
+    @property
+    def DocumentURL(self):
+        return self._DocumentURL
+
+    @DocumentURL.setter
+    def DocumentURL(self, DocumentURL):
+        self._DocumentURL = DocumentURL
+
+    @property
+    def SdkURL(self):
+        return self._SdkURL
+
+    @SdkURL.setter
+    def SdkURL(self, SdkURL):
+        self._SdkURL = SdkURL
 
 
     def _deserialize(self, params):
-        self.DocumentURL = params.get("DocumentURL")
-        self.SdkURL = params.get("SdkURL")
+        self._DocumentURL = params.get("DocumentURL")
+        self._SdkURL = params.get("SdkURL")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6207,46 +11738,111 @@ class DomainSetList(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainName: Domain name.
+        :param _DomainName: Domain name.
         :type DomainName: str
-        :param Status: Domain name resolution status. `1`: normal, `0`: failed
+        :param _Status: Domain name resolution status. `1`: normal, `0`: failed
         :type Status: int
-        :param CertificateId: Certificate ID.
+        :param _CertificateId: Certificate ID.
         :type CertificateId: str
-        :param IsDefaultMapping: Whether the default path mapping is used.
+        :param _IsDefaultMapping: Whether the default path mapping is used.
         :type IsDefaultMapping: bool
-        :param Protocol: Custom domain name protocol type.
+        :param _Protocol: Custom domain name protocol type.
         :type Protocol: str
-        :param NetType: Network type. Valid values: INNER, OUTER.
+        :param _NetType: Network type. Valid values: INNER, OUTER.
         :type NetType: str
-        :param IsForcedHttps: Whether to force HTTP requests to redirect to HTTPS. Default value: `false`. When this parameter is `true`, API Gateway will redirect all requests using the custom domain name over the HTTP protocol to the HTTPS protocol for forwarding.
+        :param _IsForcedHttps: Whether to force HTTP requests to redirect to HTTPS. Default value: `false`. When this parameter is `true`, API Gateway will redirect all requests using the custom domain name over the HTTP protocol to the HTTPS protocol for forwarding.
         :type IsForcedHttps: bool
-        :param RegistrationStatus: ICP filing status
+        :param _RegistrationStatus: ICP filing status
         :type RegistrationStatus: bool
         """
-        self.DomainName = None
-        self.Status = None
-        self.CertificateId = None
-        self.IsDefaultMapping = None
-        self.Protocol = None
-        self.NetType = None
-        self.IsForcedHttps = None
-        self.RegistrationStatus = None
+        self._DomainName = None
+        self._Status = None
+        self._CertificateId = None
+        self._IsDefaultMapping = None
+        self._Protocol = None
+        self._NetType = None
+        self._IsForcedHttps = None
+        self._RegistrationStatus = None
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CertificateId(self):
+        return self._CertificateId
+
+    @CertificateId.setter
+    def CertificateId(self, CertificateId):
+        self._CertificateId = CertificateId
+
+    @property
+    def IsDefaultMapping(self):
+        return self._IsDefaultMapping
+
+    @IsDefaultMapping.setter
+    def IsDefaultMapping(self, IsDefaultMapping):
+        self._IsDefaultMapping = IsDefaultMapping
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def NetType(self):
+        return self._NetType
+
+    @NetType.setter
+    def NetType(self, NetType):
+        self._NetType = NetType
+
+    @property
+    def IsForcedHttps(self):
+        return self._IsForcedHttps
+
+    @IsForcedHttps.setter
+    def IsForcedHttps(self, IsForcedHttps):
+        self._IsForcedHttps = IsForcedHttps
+
+    @property
+    def RegistrationStatus(self):
+        return self._RegistrationStatus
+
+    @RegistrationStatus.setter
+    def RegistrationStatus(self, RegistrationStatus):
+        self._RegistrationStatus = RegistrationStatus
 
 
     def _deserialize(self, params):
-        self.DomainName = params.get("DomainName")
-        self.Status = params.get("Status")
-        self.CertificateId = params.get("CertificateId")
-        self.IsDefaultMapping = params.get("IsDefaultMapping")
-        self.Protocol = params.get("Protocol")
-        self.NetType = params.get("NetType")
-        self.IsForcedHttps = params.get("IsForcedHttps")
-        self.RegistrationStatus = params.get("RegistrationStatus")
+        self._DomainName = params.get("DomainName")
+        self._Status = params.get("Status")
+        self._CertificateId = params.get("CertificateId")
+        self._IsDefaultMapping = params.get("IsDefaultMapping")
+        self._Protocol = params.get("Protocol")
+        self._NetType = params.get("NetType")
+        self._IsForcedHttps = params.get("IsForcedHttps")
+        self._RegistrationStatus = params.get("RegistrationStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6259,27 +11855,44 @@ class DomainSets(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Number of custom domain names under service
+        :param _TotalCount: Number of custom domain names under service
         :type TotalCount: int
-        :param DomainSet: Custom service domain name list.
+        :param _DomainSet: Custom service domain name list.
         :type DomainSet: list of DomainSetList
         """
-        self.TotalCount = None
-        self.DomainSet = None
+        self._TotalCount = None
+        self._DomainSet = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DomainSet(self):
+        return self._DomainSet
+
+    @DomainSet.setter
+    def DomainSet(self, DomainSet):
+        self._DomainSet = DomainSet
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("DomainSet") is not None:
-            self.DomainSet = []
+            self._DomainSet = []
             for item in params.get("DomainSet"):
                 obj = DomainSetList()
                 obj._deserialize(item)
-                self.DomainSet.append(obj)
+                self._DomainSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6292,18 +11905,27 @@ class EnableApiKeyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AccessKeyId: ID of the key to be enabled.
+        :param _AccessKeyId: ID of the key to be enabled.
         :type AccessKeyId: str
         """
-        self.AccessKeyId = None
+        self._AccessKeyId = None
+
+    @property
+    def AccessKeyId(self):
+        return self._AccessKeyId
+
+    @AccessKeyId.setter
+    def AccessKeyId(self, AccessKeyId):
+        self._AccessKeyId = AccessKeyId
 
 
     def _deserialize(self, params):
-        self.AccessKeyId = params.get("AccessKeyId")
+        self._AccessKeyId = params.get("AccessKeyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6316,19 +11938,35 @@ class EnableApiKeyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Whether the key is successfully enabled.
+        :param _Result: Whether the key is successfully enabled.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
 
 
 class Environment(AbstractModel):
@@ -6338,30 +11976,63 @@ class Environment(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EnvironmentName: Environment name.
+        :param _EnvironmentName: Environment name.
         :type EnvironmentName: str
-        :param Url: Access path.
+        :param _Url: Access path.
         :type Url: str
-        :param Status: Release status. 1: published. 0: not published.
+        :param _Status: Release status. 1: published. 0: not published.
         :type Status: int
-        :param VersionName: Running version.
+        :param _VersionName: Running version.
         :type VersionName: str
         """
-        self.EnvironmentName = None
-        self.Url = None
-        self.Status = None
-        self.VersionName = None
+        self._EnvironmentName = None
+        self._Url = None
+        self._Status = None
+        self._VersionName = None
+
+    @property
+    def EnvironmentName(self):
+        return self._EnvironmentName
+
+    @EnvironmentName.setter
+    def EnvironmentName(self, EnvironmentName):
+        self._EnvironmentName = EnvironmentName
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def VersionName(self):
+        return self._VersionName
+
+    @VersionName.setter
+    def VersionName(self, VersionName):
+        self._VersionName = VersionName
 
 
     def _deserialize(self, params):
-        self.EnvironmentName = params.get("EnvironmentName")
-        self.Url = params.get("Url")
-        self.Status = params.get("Status")
-        self.VersionName = params.get("VersionName")
+        self._EnvironmentName = params.get("EnvironmentName")
+        self._Url = params.get("Url")
+        self._Status = params.get("Status")
+        self._VersionName = params.get("VersionName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6374,27 +12045,52 @@ class EnvironmentStrategy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EnvironmentName: Environment name
+        :param _EnvironmentName: Environment name
         :type EnvironmentName: str
-        :param Quota: Throttling value
+        :param _Quota: Throttling value
         :type Quota: int
-        :param MaxQuota: Maximum quota value
+        :param _MaxQuota: Maximum quota value
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MaxQuota: int
         """
-        self.EnvironmentName = None
-        self.Quota = None
-        self.MaxQuota = None
+        self._EnvironmentName = None
+        self._Quota = None
+        self._MaxQuota = None
+
+    @property
+    def EnvironmentName(self):
+        return self._EnvironmentName
+
+    @EnvironmentName.setter
+    def EnvironmentName(self, EnvironmentName):
+        self._EnvironmentName = EnvironmentName
+
+    @property
+    def Quota(self):
+        return self._Quota
+
+    @Quota.setter
+    def Quota(self, Quota):
+        self._Quota = Quota
+
+    @property
+    def MaxQuota(self):
+        return self._MaxQuota
+
+    @MaxQuota.setter
+    def MaxQuota(self, MaxQuota):
+        self._MaxQuota = MaxQuota
 
 
     def _deserialize(self, params):
-        self.EnvironmentName = params.get("EnvironmentName")
-        self.Quota = params.get("Quota")
-        self.MaxQuota = params.get("MaxQuota")
+        self._EnvironmentName = params.get("EnvironmentName")
+        self._Quota = params.get("Quota")
+        self._MaxQuota = params.get("MaxQuota")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6407,39 +12103,80 @@ class ErrorCodes(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Code: Custom response configuration error code.
+        :param _Code: Custom response configuration error code.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Code: int
-        :param Msg: Custom response configuration error message.
+        :param _Msg: Custom response configuration error message.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Msg: str
-        :param Desc: Custom response configuration error code remarks.
+        :param _Desc: Custom response configuration error code remarks.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Desc: str
-        :param ConvertedCode: Custom error code conversion.
+        :param _ConvertedCode: Custom error code conversion.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ConvertedCode: int
-        :param NeedConvert: Whether to enable error code conversion.
+        :param _NeedConvert: Whether to enable error code conversion.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type NeedConvert: bool
         """
-        self.Code = None
-        self.Msg = None
-        self.Desc = None
-        self.ConvertedCode = None
-        self.NeedConvert = None
+        self._Code = None
+        self._Msg = None
+        self._Desc = None
+        self._ConvertedCode = None
+        self._NeedConvert = None
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Msg(self):
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Desc(self):
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+    @property
+    def ConvertedCode(self):
+        return self._ConvertedCode
+
+    @ConvertedCode.setter
+    def ConvertedCode(self, ConvertedCode):
+        self._ConvertedCode = ConvertedCode
+
+    @property
+    def NeedConvert(self):
+        return self._NeedConvert
+
+    @NeedConvert.setter
+    def NeedConvert(self, NeedConvert):
+        self._NeedConvert = NeedConvert
 
 
     def _deserialize(self, params):
-        self.Code = params.get("Code")
-        self.Msg = params.get("Msg")
-        self.Desc = params.get("Desc")
-        self.ConvertedCode = params.get("ConvertedCode")
-        self.NeedConvert = params.get("NeedConvert")
+        self._Code = params.get("Code")
+        self._Msg = params.get("Msg")
+        self._Desc = params.get("Desc")
+        self._ConvertedCode = params.get("ConvertedCode")
+        self._NeedConvert = params.get("NeedConvert")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6455,22 +12192,39 @@ class Filter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: Field to be filtered.
+        :param _Name: Field to be filtered.
         :type Name: str
-        :param Values: Filter value of field.
+        :param _Values: Filter value of field.
         :type Values: list of str
         """
-        self.Name = None
-        self.Values = None
+        self._Name = None
+        self._Values = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Values = params.get("Values")
+        self._Name = params.get("Name")
+        self._Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6483,26 +12237,51 @@ class GenerateApiDocumentRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Unique service ID of the document to be created.
+        :param _ServiceId: Unique service ID of the document to be created.
         :type ServiceId: str
-        :param GenEnvironment: Environment of the service for which to create an SDK.
+        :param _GenEnvironment: Environment of the service for which to create an SDK.
         :type GenEnvironment: str
-        :param GenLanguage: Programming language of the SDK to be created. Currently, only Python and JavaScript are supported.
+        :param _GenLanguage: Programming language of the SDK to be created. Currently, only Python and JavaScript are supported.
         :type GenLanguage: str
         """
-        self.ServiceId = None
-        self.GenEnvironment = None
-        self.GenLanguage = None
+        self._ServiceId = None
+        self._GenEnvironment = None
+        self._GenLanguage = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def GenEnvironment(self):
+        return self._GenEnvironment
+
+    @GenEnvironment.setter
+    def GenEnvironment(self, GenEnvironment):
+        self._GenEnvironment = GenEnvironment
+
+    @property
+    def GenLanguage(self):
+        return self._GenLanguage
+
+    @GenLanguage.setter
+    def GenLanguage(self, GenLanguage):
+        self._GenLanguage = GenLanguage
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.GenEnvironment = params.get("GenEnvironment")
-        self.GenLanguage = params.get("GenLanguage")
+        self._ServiceId = params.get("ServiceId")
+        self._GenEnvironment = params.get("GenEnvironment")
+        self._GenLanguage = params.get("GenLanguage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6515,20 +12294,36 @@ class GenerateApiDocumentResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: API document and SDK link.
+        :param _Result: API document and SDK link.
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.DocumentSDK`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = DocumentSDK()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = DocumentSDK()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class HealthCheckConf(AbstractModel):
@@ -6538,30 +12333,63 @@ class HealthCheckConf(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IsHealthCheck: Whether health check is enabled.
+        :param _IsHealthCheck: Whether health check is enabled.
         :type IsHealthCheck: bool
-        :param RequestVolumeThreshold: Health check threshold.
+        :param _RequestVolumeThreshold: Health check threshold.
         :type RequestVolumeThreshold: int
-        :param SleepWindowInMilliseconds: Window size.
+        :param _SleepWindowInMilliseconds: Window size.
         :type SleepWindowInMilliseconds: int
-        :param ErrorThresholdPercentage: Threshold percentage.
+        :param _ErrorThresholdPercentage: Threshold percentage.
         :type ErrorThresholdPercentage: int
         """
-        self.IsHealthCheck = None
-        self.RequestVolumeThreshold = None
-        self.SleepWindowInMilliseconds = None
-        self.ErrorThresholdPercentage = None
+        self._IsHealthCheck = None
+        self._RequestVolumeThreshold = None
+        self._SleepWindowInMilliseconds = None
+        self._ErrorThresholdPercentage = None
+
+    @property
+    def IsHealthCheck(self):
+        return self._IsHealthCheck
+
+    @IsHealthCheck.setter
+    def IsHealthCheck(self, IsHealthCheck):
+        self._IsHealthCheck = IsHealthCheck
+
+    @property
+    def RequestVolumeThreshold(self):
+        return self._RequestVolumeThreshold
+
+    @RequestVolumeThreshold.setter
+    def RequestVolumeThreshold(self, RequestVolumeThreshold):
+        self._RequestVolumeThreshold = RequestVolumeThreshold
+
+    @property
+    def SleepWindowInMilliseconds(self):
+        return self._SleepWindowInMilliseconds
+
+    @SleepWindowInMilliseconds.setter
+    def SleepWindowInMilliseconds(self, SleepWindowInMilliseconds):
+        self._SleepWindowInMilliseconds = SleepWindowInMilliseconds
+
+    @property
+    def ErrorThresholdPercentage(self):
+        return self._ErrorThresholdPercentage
+
+    @ErrorThresholdPercentage.setter
+    def ErrorThresholdPercentage(self, ErrorThresholdPercentage):
+        self._ErrorThresholdPercentage = ErrorThresholdPercentage
 
 
     def _deserialize(self, params):
-        self.IsHealthCheck = params.get("IsHealthCheck")
-        self.RequestVolumeThreshold = params.get("RequestVolumeThreshold")
-        self.SleepWindowInMilliseconds = params.get("SleepWindowInMilliseconds")
-        self.ErrorThresholdPercentage = params.get("ErrorThresholdPercentage")
+        self._IsHealthCheck = params.get("IsHealthCheck")
+        self._RequestVolumeThreshold = params.get("RequestVolumeThreshold")
+        self._SleepWindowInMilliseconds = params.get("SleepWindowInMilliseconds")
+        self._ErrorThresholdPercentage = params.get("ErrorThresholdPercentage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6574,64 +12402,137 @@ class IPStrategy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StrategyId: Unique policy ID.
+        :param _StrategyId: Unique policy ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type StrategyId: str
-        :param StrategyName: Custom policy name.
+        :param _StrategyName: Custom policy name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type StrategyName: str
-        :param StrategyType: Policy type. Valid values: WHITE (allowlist), BLACK (blocklist).
+        :param _StrategyType: Policy type. Valid values: WHITE (allowlist), BLACK (blocklist).
 Note: this field may return null, indicating that no valid values can be obtained.
         :type StrategyType: str
-        :param StrategyData: IP list.
+        :param _StrategyData: IP list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type StrategyData: str
-        :param CreatedTime: Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+        :param _CreatedTime: Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CreatedTime: str
-        :param ModifiedTime: Modification time
+        :param _ModifiedTime: Modification time
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ModifiedTime: str
-        :param ServiceId: Last modified time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+        :param _ServiceId: Last modified time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceId: str
-        :param BindApiTotalCount: Number of APIs bound to policy.
+        :param _BindApiTotalCount: Number of APIs bound to policy.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type BindApiTotalCount: int
-        :param BindApis: Bound API details.
+        :param _BindApis: Bound API details.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type BindApis: list of DesApisStatus
         """
-        self.StrategyId = None
-        self.StrategyName = None
-        self.StrategyType = None
-        self.StrategyData = None
-        self.CreatedTime = None
-        self.ModifiedTime = None
-        self.ServiceId = None
-        self.BindApiTotalCount = None
-        self.BindApis = None
+        self._StrategyId = None
+        self._StrategyName = None
+        self._StrategyType = None
+        self._StrategyData = None
+        self._CreatedTime = None
+        self._ModifiedTime = None
+        self._ServiceId = None
+        self._BindApiTotalCount = None
+        self._BindApis = None
+
+    @property
+    def StrategyId(self):
+        return self._StrategyId
+
+    @StrategyId.setter
+    def StrategyId(self, StrategyId):
+        self._StrategyId = StrategyId
+
+    @property
+    def StrategyName(self):
+        return self._StrategyName
+
+    @StrategyName.setter
+    def StrategyName(self, StrategyName):
+        self._StrategyName = StrategyName
+
+    @property
+    def StrategyType(self):
+        return self._StrategyType
+
+    @StrategyType.setter
+    def StrategyType(self, StrategyType):
+        self._StrategyType = StrategyType
+
+    @property
+    def StrategyData(self):
+        return self._StrategyData
+
+    @StrategyData.setter
+    def StrategyData(self, StrategyData):
+        self._StrategyData = StrategyData
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def ModifiedTime(self):
+        return self._ModifiedTime
+
+    @ModifiedTime.setter
+    def ModifiedTime(self, ModifiedTime):
+        self._ModifiedTime = ModifiedTime
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def BindApiTotalCount(self):
+        return self._BindApiTotalCount
+
+    @BindApiTotalCount.setter
+    def BindApiTotalCount(self, BindApiTotalCount):
+        self._BindApiTotalCount = BindApiTotalCount
+
+    @property
+    def BindApis(self):
+        return self._BindApis
+
+    @BindApis.setter
+    def BindApis(self, BindApis):
+        self._BindApis = BindApis
 
 
     def _deserialize(self, params):
-        self.StrategyId = params.get("StrategyId")
-        self.StrategyName = params.get("StrategyName")
-        self.StrategyType = params.get("StrategyType")
-        self.StrategyData = params.get("StrategyData")
-        self.CreatedTime = params.get("CreatedTime")
-        self.ModifiedTime = params.get("ModifiedTime")
-        self.ServiceId = params.get("ServiceId")
-        self.BindApiTotalCount = params.get("BindApiTotalCount")
+        self._StrategyId = params.get("StrategyId")
+        self._StrategyName = params.get("StrategyName")
+        self._StrategyType = params.get("StrategyType")
+        self._StrategyData = params.get("StrategyData")
+        self._CreatedTime = params.get("CreatedTime")
+        self._ModifiedTime = params.get("ModifiedTime")
+        self._ServiceId = params.get("ServiceId")
+        self._BindApiTotalCount = params.get("BindApiTotalCount")
         if params.get("BindApis") is not None:
-            self.BindApis = []
+            self._BindApis = []
             for item in params.get("BindApis"):
                 obj = DesApisStatus()
                 obj._deserialize(item)
-                self.BindApis.append(obj)
+                self._BindApis.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6644,42 +12545,99 @@ class IPStrategyApi(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApiId: Unique API ID.
+        :param _ApiId: Unique API ID.
         :type ApiId: str
-        :param ApiName: Custom API name.
+        :param _ApiName: Custom API name.
         :type ApiName: str
-        :param ApiType: API type. Valid values: NORMAL (general API), TSF (microservice API).
+        :param _ApiType: API type. Valid values: NORMAL (general API), TSF (microservice API).
         :type ApiType: str
-        :param Path: API path, such as `/path`.
+        :param _Path: API path, such as `/path`.
         :type Path: str
-        :param Method: API request method, such as `GET`.
+        :param _Method: API request method, such as `GET`.
         :type Method: str
-        :param OtherIPStrategyId: Unique ID of another policy bound to API.
+        :param _OtherIPStrategyId: Unique ID of another policy bound to API.
         :type OtherIPStrategyId: str
-        :param OtherEnvironmentName: Environment bound to API.
+        :param _OtherEnvironmentName: Environment bound to API.
         :type OtherEnvironmentName: str
         """
-        self.ApiId = None
-        self.ApiName = None
-        self.ApiType = None
-        self.Path = None
-        self.Method = None
-        self.OtherIPStrategyId = None
-        self.OtherEnvironmentName = None
+        self._ApiId = None
+        self._ApiName = None
+        self._ApiType = None
+        self._Path = None
+        self._Method = None
+        self._OtherIPStrategyId = None
+        self._OtherEnvironmentName = None
+
+    @property
+    def ApiId(self):
+        return self._ApiId
+
+    @ApiId.setter
+    def ApiId(self, ApiId):
+        self._ApiId = ApiId
+
+    @property
+    def ApiName(self):
+        return self._ApiName
+
+    @ApiName.setter
+    def ApiName(self, ApiName):
+        self._ApiName = ApiName
+
+    @property
+    def ApiType(self):
+        return self._ApiType
+
+    @ApiType.setter
+    def ApiType(self, ApiType):
+        self._ApiType = ApiType
+
+    @property
+    def Path(self):
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Method(self):
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
+    @property
+    def OtherIPStrategyId(self):
+        return self._OtherIPStrategyId
+
+    @OtherIPStrategyId.setter
+    def OtherIPStrategyId(self, OtherIPStrategyId):
+        self._OtherIPStrategyId = OtherIPStrategyId
+
+    @property
+    def OtherEnvironmentName(self):
+        return self._OtherEnvironmentName
+
+    @OtherEnvironmentName.setter
+    def OtherEnvironmentName(self, OtherEnvironmentName):
+        self._OtherEnvironmentName = OtherEnvironmentName
 
 
     def _deserialize(self, params):
-        self.ApiId = params.get("ApiId")
-        self.ApiName = params.get("ApiName")
-        self.ApiType = params.get("ApiType")
-        self.Path = params.get("Path")
-        self.Method = params.get("Method")
-        self.OtherIPStrategyId = params.get("OtherIPStrategyId")
-        self.OtherEnvironmentName = params.get("OtherEnvironmentName")
+        self._ApiId = params.get("ApiId")
+        self._ApiName = params.get("ApiName")
+        self._ApiType = params.get("ApiType")
+        self._Path = params.get("Path")
+        self._Method = params.get("Method")
+        self._OtherIPStrategyId = params.get("OtherIPStrategyId")
+        self._OtherEnvironmentName = params.get("OtherEnvironmentName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6692,29 +12650,46 @@ class IPStrategyApiStatus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Number of APIs bound to environment.
+        :param _TotalCount: Number of APIs bound to environment.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TotalCount: int
-        :param ApiIdStatusSet: Details of APIs bound to environment.
+        :param _ApiIdStatusSet: Details of APIs bound to environment.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApiIdStatusSet: list of IPStrategyApi
         """
-        self.TotalCount = None
-        self.ApiIdStatusSet = None
+        self._TotalCount = None
+        self._ApiIdStatusSet = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ApiIdStatusSet(self):
+        return self._ApiIdStatusSet
+
+    @ApiIdStatusSet.setter
+    def ApiIdStatusSet(self, ApiIdStatusSet):
+        self._ApiIdStatusSet = ApiIdStatusSet
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("ApiIdStatusSet") is not None:
-            self.ApiIdStatusSet = []
+            self._ApiIdStatusSet = []
             for item in params.get("ApiIdStatusSet"):
                 obj = IPStrategyApi()
                 obj._deserialize(item)
-                self.ApiIdStatusSet.append(obj)
+                self._ApiIdStatusSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6727,29 +12702,46 @@ class IPStrategysStatus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Number of policies.
+        :param _TotalCount: Number of policies.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TotalCount: int
-        :param StrategySet: Policy list.
+        :param _StrategySet: Policy list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type StrategySet: list of IPStrategy
         """
-        self.TotalCount = None
-        self.StrategySet = None
+        self._TotalCount = None
+        self._StrategySet = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def StrategySet(self):
+        return self._StrategySet
+
+    @StrategySet.setter
+    def StrategySet(self, StrategySet):
+        self._StrategySet = StrategySet
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("StrategySet") is not None:
-            self.StrategySet = []
+            self._StrategySet = []
             for item in params.get("StrategySet"):
                 obj = IPStrategy()
                 obj._deserialize(item)
-                self.StrategySet.append(obj)
+                self._StrategySet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6762,30 +12754,63 @@ class ImportOpenApiRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: The unique ID of the service associated with the API
+        :param _ServiceId: The unique ID of the service associated with the API
         :type ServiceId: str
-        :param Content: Content of the openAPI
+        :param _Content: Content of the openAPI
         :type Content: str
-        :param EncodeType: Format of the content. Values: `YAML` (default), `JSON`
+        :param _EncodeType: Format of the content. Values: `YAML` (default), `JSON`
         :type EncodeType: str
-        :param ContentVersion: Version of the content. It can only be `openAPI` for now.
+        :param _ContentVersion: Version of the content. It can only be `openAPI` for now.
         :type ContentVersion: str
         """
-        self.ServiceId = None
-        self.Content = None
-        self.EncodeType = None
-        self.ContentVersion = None
+        self._ServiceId = None
+        self._Content = None
+        self._EncodeType = None
+        self._ContentVersion = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def EncodeType(self):
+        return self._EncodeType
+
+    @EncodeType.setter
+    def EncodeType(self, EncodeType):
+        self._EncodeType = EncodeType
+
+    @property
+    def ContentVersion(self):
+        return self._ContentVersion
+
+    @ContentVersion.setter
+    def ContentVersion(self, ContentVersion):
+        self._ContentVersion = ContentVersion
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.Content = params.get("Content")
-        self.EncodeType = params.get("EncodeType")
-        self.ContentVersion = params.get("ContentVersion")
+        self._ServiceId = params.get("ServiceId")
+        self._Content = params.get("Content")
+        self._EncodeType = params.get("EncodeType")
+        self._ContentVersion = params.get("ContentVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6798,20 +12823,36 @@ class ImportOpenApiResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: The result of importing the OpenAPI
+        :param _Result: The result of importing the OpenAPI
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.CreateApiRspSet`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = CreateApiRspSet()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = CreateApiRspSet()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class K8sLabel(AbstractModel):
@@ -6821,22 +12862,39 @@ class K8sLabel(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Key: Key of the label
+        :param _Key: Key of the label
         :type Key: str
-        :param Value: Value of the label
+        :param _Value: Value of the label
         :type Value: str
         """
-        self.Key = None
-        self.Value = None
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
 
 
     def _deserialize(self, params):
-        self.Key = params.get("Key")
-        self.Value = params.get("Value")
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6849,47 +12907,104 @@ class K8sService(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Weight: Weight
+        :param _Weight: Weight
         :type Weight: int
-        :param ClusterId: K8s cluster ID
+        :param _ClusterId: K8s cluster ID
         :type ClusterId: str
-        :param Namespace: Namespace of the container
+        :param _Namespace: Namespace of the container
         :type Namespace: str
-        :param ServiceName: Name of the service
+        :param _ServiceName: Name of the service
         :type ServiceName: str
-        :param Port: Service port
+        :param _Port: Service port
         :type Port: int
-        :param ExtraLabels: The additional Label of the Pod
+        :param _ExtraLabels: The additional Label of the Pod
         :type ExtraLabels: list of K8sLabel
-        :param Name: (Optional) Custom name of the service
+        :param _Name: (Optional) Custom name of the service
         :type Name: str
         """
-        self.Weight = None
-        self.ClusterId = None
-        self.Namespace = None
-        self.ServiceName = None
-        self.Port = None
-        self.ExtraLabels = None
-        self.Name = None
+        self._Weight = None
+        self._ClusterId = None
+        self._Namespace = None
+        self._ServiceName = None
+        self._Port = None
+        self._ExtraLabels = None
+        self._Name = None
+
+    @property
+    def Weight(self):
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def ServiceName(self):
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def ExtraLabels(self):
+        return self._ExtraLabels
+
+    @ExtraLabels.setter
+    def ExtraLabels(self, ExtraLabels):
+        self._ExtraLabels = ExtraLabels
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
 
     def _deserialize(self, params):
-        self.Weight = params.get("Weight")
-        self.ClusterId = params.get("ClusterId")
-        self.Namespace = params.get("Namespace")
-        self.ServiceName = params.get("ServiceName")
-        self.Port = params.get("Port")
+        self._Weight = params.get("Weight")
+        self._ClusterId = params.get("ClusterId")
+        self._Namespace = params.get("Namespace")
+        self._ServiceName = params.get("ServiceName")
+        self._Port = params.get("Port")
         if params.get("ExtraLabels") is not None:
-            self.ExtraLabels = []
+            self._ExtraLabels = []
             for item in params.get("ExtraLabels"):
                 obj = K8sLabel()
                 obj._deserialize(item)
-                self.ExtraLabels.append(obj)
-        self.Name = params.get("Name")
+                self._ExtraLabels.append(obj)
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6902,26 +13017,51 @@ class LogQuery(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: Search field
+        :param _Name: Search field
         :type Name: str
-        :param Operator: Operator
+        :param _Operator: Operator
         :type Operator: str
-        :param Value: Search value
+        :param _Value: Search value
         :type Value: str
         """
-        self.Name = None
-        self.Operator = None
-        self.Value = None
+        self._Name = None
+        self._Operator = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Operator = params.get("Operator")
-        self.Value = params.get("Value")
+        self._Name = params.get("Name")
+        self._Operator = params.get("Operator")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6934,26 +13074,51 @@ class MicroService(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: Microservice cluster ID.
+        :param _ClusterId: Microservice cluster ID.
         :type ClusterId: str
-        :param NamespaceId: Microservice namespace ID.
+        :param _NamespaceId: Microservice namespace ID.
         :type NamespaceId: str
-        :param MicroServiceName: Microservice name.
+        :param _MicroServiceName: Microservice name.
         :type MicroServiceName: str
         """
-        self.ClusterId = None
-        self.NamespaceId = None
-        self.MicroServiceName = None
+        self._ClusterId = None
+        self._NamespaceId = None
+        self._MicroServiceName = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def NamespaceId(self):
+        return self._NamespaceId
+
+    @NamespaceId.setter
+    def NamespaceId(self, NamespaceId):
+        self._NamespaceId = NamespaceId
+
+    @property
+    def MicroServiceName(self):
+        return self._MicroServiceName
+
+    @MicroServiceName.setter
+    def MicroServiceName(self, MicroServiceName):
+        self._MicroServiceName = MicroServiceName
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
-        self.NamespaceId = params.get("NamespaceId")
-        self.MicroServiceName = params.get("MicroServiceName")
+        self._ClusterId = params.get("ClusterId")
+        self._NamespaceId = params.get("NamespaceId")
+        self._MicroServiceName = params.get("MicroServiceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6966,26 +13131,51 @@ class MicroServiceReq(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: Microservice cluster.
+        :param _ClusterId: Microservice cluster.
         :type ClusterId: str
-        :param NamespaceId: Microservice namespace.
+        :param _NamespaceId: Microservice namespace.
         :type NamespaceId: str
-        :param MicroServiceName: Microservice name.
+        :param _MicroServiceName: Microservice name.
         :type MicroServiceName: str
         """
-        self.ClusterId = None
-        self.NamespaceId = None
-        self.MicroServiceName = None
+        self._ClusterId = None
+        self._NamespaceId = None
+        self._MicroServiceName = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def NamespaceId(self):
+        return self._NamespaceId
+
+    @NamespaceId.setter
+    def NamespaceId(self, NamespaceId):
+        self._NamespaceId = NamespaceId
+
+    @property
+    def MicroServiceName(self):
+        return self._MicroServiceName
+
+    @MicroServiceName.setter
+    def MicroServiceName(self, MicroServiceName):
+        self._MicroServiceName = MicroServiceName
 
 
     def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
-        self.NamespaceId = params.get("NamespaceId")
-        self.MicroServiceName = params.get("MicroServiceName")
+        self._ClusterId = params.get("ClusterId")
+        self._NamespaceId = params.get("NamespaceId")
+        self._MicroServiceName = params.get("MicroServiceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -6998,34 +13188,75 @@ class ModifyAPIDocRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApiDocId: API document ID
+        :param _ApiDocId: API document ID
         :type ApiDocId: str
-        :param ApiDocName: API document name
+        :param _ApiDocName: API document name
         :type ApiDocName: str
-        :param ServiceId: Service name
+        :param _ServiceId: Service name
         :type ServiceId: str
-        :param Environment: Environment name
+        :param _Environment: Environment name
         :type Environment: str
-        :param ApiIds: List of APIs for which to generate documents
+        :param _ApiIds: List of APIs for which to generate documents
         :type ApiIds: list of str
         """
-        self.ApiDocId = None
-        self.ApiDocName = None
-        self.ServiceId = None
-        self.Environment = None
-        self.ApiIds = None
+        self._ApiDocId = None
+        self._ApiDocName = None
+        self._ServiceId = None
+        self._Environment = None
+        self._ApiIds = None
+
+    @property
+    def ApiDocId(self):
+        return self._ApiDocId
+
+    @ApiDocId.setter
+    def ApiDocId(self, ApiDocId):
+        self._ApiDocId = ApiDocId
+
+    @property
+    def ApiDocName(self):
+        return self._ApiDocName
+
+    @ApiDocName.setter
+    def ApiDocName(self, ApiDocName):
+        self._ApiDocName = ApiDocName
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def Environment(self):
+        return self._Environment
+
+    @Environment.setter
+    def Environment(self, Environment):
+        self._Environment = Environment
+
+    @property
+    def ApiIds(self):
+        return self._ApiIds
+
+    @ApiIds.setter
+    def ApiIds(self, ApiIds):
+        self._ApiIds = ApiIds
 
 
     def _deserialize(self, params):
-        self.ApiDocId = params.get("ApiDocId")
-        self.ApiDocName = params.get("ApiDocName")
-        self.ServiceId = params.get("ServiceId")
-        self.Environment = params.get("Environment")
-        self.ApiIds = params.get("ApiIds")
+        self._ApiDocId = params.get("ApiDocId")
+        self._ApiDocName = params.get("ApiDocName")
+        self._ServiceId = params.get("ServiceId")
+        self._Environment = params.get("Environment")
+        self._ApiIds = params.get("ApiIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7038,20 +13269,36 @@ class ModifyAPIDocResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Basic information of API document
+        :param _Result: Basic information of API document
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.APIDoc`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = APIDoc()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = APIDoc()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyApiAppRequest(AbstractModel):
@@ -7061,26 +13308,51 @@ class ModifyApiAppRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApiAppId: Unique application ID.
+        :param _ApiAppId: Unique application ID.
         :type ApiAppId: str
-        :param ApiAppName: Modified application name
+        :param _ApiAppName: Modified application name
         :type ApiAppName: str
-        :param ApiAppDesc: Modified application description
+        :param _ApiAppDesc: Modified application description
         :type ApiAppDesc: str
         """
-        self.ApiAppId = None
-        self.ApiAppName = None
-        self.ApiAppDesc = None
+        self._ApiAppId = None
+        self._ApiAppName = None
+        self._ApiAppDesc = None
+
+    @property
+    def ApiAppId(self):
+        return self._ApiAppId
+
+    @ApiAppId.setter
+    def ApiAppId(self, ApiAppId):
+        self._ApiAppId = ApiAppId
+
+    @property
+    def ApiAppName(self):
+        return self._ApiAppName
+
+    @ApiAppName.setter
+    def ApiAppName(self, ApiAppName):
+        self._ApiAppName = ApiAppName
+
+    @property
+    def ApiAppDesc(self):
+        return self._ApiAppDesc
+
+    @ApiAppDesc.setter
+    def ApiAppDesc(self, ApiAppDesc):
+        self._ApiAppDesc = ApiAppDesc
 
 
     def _deserialize(self, params):
-        self.ApiAppId = params.get("ApiAppId")
-        self.ApiAppName = params.get("ApiAppName")
-        self.ApiAppDesc = params.get("ApiAppDesc")
+        self._ApiAppId = params.get("ApiAppId")
+        self._ApiAppName = params.get("ApiAppName")
+        self._ApiAppDesc = params.get("ApiAppDesc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7093,19 +13365,35 @@ class ModifyApiAppResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Whether modification succeeded.
+        :param _Result: Whether modification succeeded.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyApiEnvironmentStrategyRequest(AbstractModel):
@@ -7115,30 +13403,63 @@ class ModifyApiEnvironmentStrategyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Unique service ID.
+        :param _ServiceId: Unique service ID.
         :type ServiceId: str
-        :param Strategy: Throttling value.
+        :param _Strategy: Throttling value.
         :type Strategy: int
-        :param EnvironmentName: Environment name.
+        :param _EnvironmentName: Environment name.
         :type EnvironmentName: str
-        :param ApiIds: API list.
+        :param _ApiIds: API list.
         :type ApiIds: list of str
         """
-        self.ServiceId = None
-        self.Strategy = None
-        self.EnvironmentName = None
-        self.ApiIds = None
+        self._ServiceId = None
+        self._Strategy = None
+        self._EnvironmentName = None
+        self._ApiIds = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def Strategy(self):
+        return self._Strategy
+
+    @Strategy.setter
+    def Strategy(self, Strategy):
+        self._Strategy = Strategy
+
+    @property
+    def EnvironmentName(self):
+        return self._EnvironmentName
+
+    @EnvironmentName.setter
+    def EnvironmentName(self, EnvironmentName):
+        self._EnvironmentName = EnvironmentName
+
+    @property
+    def ApiIds(self):
+        return self._ApiIds
+
+    @ApiIds.setter
+    def ApiIds(self, ApiIds):
+        self._ApiIds = ApiIds
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.Strategy = params.get("Strategy")
-        self.EnvironmentName = params.get("EnvironmentName")
-        self.ApiIds = params.get("ApiIds")
+        self._ServiceId = params.get("ServiceId")
+        self._Strategy = params.get("Strategy")
+        self._EnvironmentName = params.get("EnvironmentName")
+        self._ApiIds = params.get("ApiIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7151,19 +13472,35 @@ class ModifyApiEnvironmentStrategyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Whether modification succeeded.
+        :param _Result: Whether modification succeeded.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyApiIncrementRequest(AbstractModel):
@@ -7173,34 +13510,75 @@ class ModifyApiIncrementRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Service ID
+        :param _ServiceId: Service ID
         :type ServiceId: str
-        :param ApiId: API ID
+        :param _ApiId: API ID
         :type ApiId: str
-        :param BusinessType: Authorization type of the API to be modified (you can select `OAUTH`, i.e., authorization API)
+        :param _BusinessType: Authorization type of the API to be modified (you can select `OAUTH`, i.e., authorization API)
         :type BusinessType: str
-        :param PublicKey: Public key value to be modified by OAuth API
+        :param _PublicKey: Public key value to be modified by OAuth API
         :type PublicKey: str
-        :param LoginRedirectUrl: OAuth API redirect address
+        :param _LoginRedirectUrl: OAuth API redirect address
         :type LoginRedirectUrl: str
         """
-        self.ServiceId = None
-        self.ApiId = None
-        self.BusinessType = None
-        self.PublicKey = None
-        self.LoginRedirectUrl = None
+        self._ServiceId = None
+        self._ApiId = None
+        self._BusinessType = None
+        self._PublicKey = None
+        self._LoginRedirectUrl = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def ApiId(self):
+        return self._ApiId
+
+    @ApiId.setter
+    def ApiId(self, ApiId):
+        self._ApiId = ApiId
+
+    @property
+    def BusinessType(self):
+        return self._BusinessType
+
+    @BusinessType.setter
+    def BusinessType(self, BusinessType):
+        self._BusinessType = BusinessType
+
+    @property
+    def PublicKey(self):
+        return self._PublicKey
+
+    @PublicKey.setter
+    def PublicKey(self, PublicKey):
+        self._PublicKey = PublicKey
+
+    @property
+    def LoginRedirectUrl(self):
+        return self._LoginRedirectUrl
+
+    @LoginRedirectUrl.setter
+    def LoginRedirectUrl(self, LoginRedirectUrl):
+        self._LoginRedirectUrl = LoginRedirectUrl
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.ApiId = params.get("ApiId")
-        self.BusinessType = params.get("BusinessType")
-        self.PublicKey = params.get("PublicKey")
-        self.LoginRedirectUrl = params.get("LoginRedirectUrl")
+        self._ServiceId = params.get("ServiceId")
+        self._ApiId = params.get("ApiId")
+        self._BusinessType = params.get("BusinessType")
+        self._PublicKey = params.get("PublicKey")
+        self._LoginRedirectUrl = params.get("LoginRedirectUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7213,14 +13591,22 @@ class ModifyApiIncrementResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyApiRequest(AbstractModel):
@@ -7230,274 +13616,707 @@ class ModifyApiRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Unique service ID of API.
+        :param _ServiceId: Unique service ID of API.
         :type ServiceId: str
-        :param ServiceType: API backend service type. Valid values: HTTP, MOCK, TSF, CLB, SCF, WEBSOCKET, TARGET (in beta test).
+        :param _ServiceType: API backend service type. Valid values: HTTP, MOCK, TSF, CLB, SCF, WEBSOCKET, TARGET (in beta test).
         :type ServiceType: str
-        :param RequestConfig: Request frontend configuration.
+        :param _RequestConfig: Request frontend configuration.
         :type RequestConfig: :class:`tencentcloud.apigateway.v20180808.models.RequestConfig`
-        :param ApiId: Unique API ID.
+        :param _ApiId: Unique API ID.
         :type ApiId: str
-        :param ApiName: Custom API name.
+        :param _ApiName: Custom API name.
         :type ApiName: str
-        :param ApiDesc: Custom API description.
+        :param _ApiDesc: Custom API description.
         :type ApiDesc: str
-        :param ApiType: API type. Valid values: NORMAL, TSF. Default value: NORMAL.
+        :param _ApiType: API type. Valid values: NORMAL, TSF. Default value: NORMAL.
         :type ApiType: str
-        :param AuthType: API authentication type. Valid values: SECRET, NONE, OAUTH, APP. Default value: NONE.
+        :param _AuthType: API authentication type. Valid values: SECRET, NONE, OAUTH, APP. Default value: NONE.
         :type AuthType: str
-        :param AuthRequired: Whether signature authentication is required. True: yes; False: no. This parameter is to be disused.
+        :param _AuthRequired: Whether signature authentication is required. True: yes; False: no. This parameter is to be disused.
         :type AuthRequired: bool
-        :param ServiceTimeout: API backend service timeout period in seconds.
+        :param _ServiceTimeout: API backend service timeout period in seconds.
         :type ServiceTimeout: int
-        :param Protocol: API frontend request type, such as HTTP, HTTPS, or HTTP and HTTPS.
+        :param _Protocol: API frontend request type, such as HTTP, HTTPS, or HTTP and HTTPS.
         :type Protocol: str
-        :param EnableCORS: Whether to enable CORS. True: yes; False: no.
+        :param _EnableCORS: Whether to enable CORS. True: yes; False: no.
         :type EnableCORS: bool
-        :param ConstantParameters: Constant parameter.
+        :param _ConstantParameters: Constant parameter.
         :type ConstantParameters: list of ConstantParameter
-        :param RequestParameters: Frontend request parameter.
+        :param _RequestParameters: Frontend request parameter.
         :type RequestParameters: list of ReqParameter
-        :param ApiBusinessType: This field is valid if `AuthType` is `OAUTH`. NORMAL: business API; OAUTH: authorization API.
+        :param _ApiBusinessType: This field is valid if `AuthType` is `OAUTH`. NORMAL: business API; OAUTH: authorization API.
         :type ApiBusinessType: str
-        :param ServiceMockReturnMessage: Returned message of API backend Mock, which is required if `ServiceType` is `Mock`.
+        :param _ServiceMockReturnMessage: Returned message of API backend Mock, which is required if `ServiceType` is `Mock`.
         :type ServiceMockReturnMessage: str
-        :param MicroServices: List of microservices bound to API.
+        :param _MicroServices: List of microservices bound to API.
         :type MicroServices: list of MicroServiceReq
-        :param ServiceTsfLoadBalanceConf: Load balancing configuration of microservice.
+        :param _ServiceTsfLoadBalanceConf: Load balancing configuration of microservice.
         :type ServiceTsfLoadBalanceConf: :class:`tencentcloud.apigateway.v20180808.models.TsfLoadBalanceConfResp`
-        :param ServiceTsfHealthCheckConf: Health check configuration of microservice.
+        :param _ServiceTsfHealthCheckConf: Health check configuration of microservice.
         :type ServiceTsfHealthCheckConf: :class:`tencentcloud.apigateway.v20180808.models.HealthCheckConf`
-        :param TargetServicesLoadBalanceConf: `target` type load balancing configuration (in beta test).
+        :param _TargetServicesLoadBalanceConf: `target` type load balancing configuration (in beta test).
         :type TargetServicesLoadBalanceConf: int
-        :param TargetServicesHealthCheckConf: `target` health check configuration (in beta test).
+        :param _TargetServicesHealthCheckConf: `target` health check configuration (in beta test).
         :type TargetServicesHealthCheckConf: :class:`tencentcloud.apigateway.v20180808.models.HealthCheckConf`
-        :param ServiceScfFunctionName: SCF function name, which takes effect if the backend type is `SCF`.
+        :param _ServiceScfFunctionName: SCF function name, which takes effect if the backend type is `SCF`.
         :type ServiceScfFunctionName: str
-        :param ServiceWebsocketRegisterFunctionName: SCF WebSocket registration function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param _ServiceWebsocketRegisterFunctionName: SCF WebSocket registration function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :type ServiceWebsocketRegisterFunctionName: str
-        :param ServiceWebsocketCleanupFunctionName: SCF WebSocket cleanup function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param _ServiceWebsocketCleanupFunctionName: SCF WebSocket cleanup function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :type ServiceWebsocketCleanupFunctionName: str
-        :param ServiceWebsocketTransportFunctionName: SCF WebSocket transfer function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param _ServiceWebsocketTransportFunctionName: SCF WebSocket transfer function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :type ServiceWebsocketTransportFunctionName: str
-        :param ServiceScfFunctionNamespace: SCF function namespace, which takes effect if the backend type is `SCF`.
+        :param _ServiceScfFunctionNamespace: SCF function namespace, which takes effect if the backend type is `SCF`.
         :type ServiceScfFunctionNamespace: str
-        :param ServiceScfFunctionQualifier: SCF function version, which takes effect if the backend type is `SCF`.
+        :param _ServiceScfFunctionQualifier: SCF function version, which takes effect if the backend type is `SCF`.
         :type ServiceScfFunctionQualifier: str
-        :param ServiceWebsocketRegisterFunctionNamespace: SCF WebSocket registration function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param _ServiceWebsocketRegisterFunctionNamespace: SCF WebSocket registration function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :type ServiceWebsocketRegisterFunctionNamespace: str
-        :param ServiceWebsocketRegisterFunctionQualifier: SCF WebSocket transfer function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param _ServiceWebsocketRegisterFunctionQualifier: SCF WebSocket transfer function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :type ServiceWebsocketRegisterFunctionQualifier: str
-        :param ServiceWebsocketTransportFunctionNamespace: SCF WebSocket transfer function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param _ServiceWebsocketTransportFunctionNamespace: SCF WebSocket transfer function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :type ServiceWebsocketTransportFunctionNamespace: str
-        :param ServiceWebsocketTransportFunctionQualifier: SCF WebSocket transfer function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param _ServiceWebsocketTransportFunctionQualifier: SCF WebSocket transfer function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :type ServiceWebsocketTransportFunctionQualifier: str
-        :param ServiceWebsocketCleanupFunctionNamespace: SCF WebSocket cleanup function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param _ServiceWebsocketCleanupFunctionNamespace: SCF WebSocket cleanup function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :type ServiceWebsocketCleanupFunctionNamespace: str
-        :param ServiceWebsocketCleanupFunctionQualifier: SCF WebSocket cleanup function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
+        :param _ServiceWebsocketCleanupFunctionQualifier: SCF WebSocket cleanup function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.
         :type ServiceWebsocketCleanupFunctionQualifier: str
-        :param ServiceScfIsIntegratedResponse: Whether to enable response integration, which takes effect if the backend type is `SCF`.
+        :param _ServiceScfIsIntegratedResponse: Whether to enable response integration, which takes effect if the backend type is `SCF`.
         :type ServiceScfIsIntegratedResponse: bool
-        :param IsDebugAfterCharge: Billing after debugging starts (reserved field for marketplace).
+        :param _IsDebugAfterCharge: Billing after debugging starts (reserved field for marketplace).
         :type IsDebugAfterCharge: bool
-        :param TagSpecifications: Tag.
+        :param _TagSpecifications: Tag.
         :type TagSpecifications: :class:`tencentcloud.apigateway.v20180808.models.Tag`
-        :param IsDeleteResponseErrorCodes: Whether to delete the error codes for custom response configuration. If the value is left empty or `False`, the error codes will not be deleted. If the value is `True`, all custom response configuration error codes of the API will be deleted.
+        :param _IsDeleteResponseErrorCodes: Whether to delete the error codes for custom response configuration. If the value is left empty or `False`, the error codes will not be deleted. If the value is `True`, all custom response configuration error codes of the API will be deleted.
         :type IsDeleteResponseErrorCodes: bool
-        :param ResponseType: Return type.
+        :param _ResponseType: Return type.
         :type ResponseType: str
-        :param ResponseSuccessExample: Sample response for successful custom response configuration.
+        :param _ResponseSuccessExample: Sample response for successful custom response configuration.
         :type ResponseSuccessExample: str
-        :param ResponseFailExample: Sample response for failed custom response configuration.
+        :param _ResponseFailExample: Sample response for failed custom response configuration.
         :type ResponseFailExample: str
-        :param ServiceConfig: API backend service configuration.
+        :param _ServiceConfig: API backend service configuration.
         :type ServiceConfig: :class:`tencentcloud.apigateway.v20180808.models.ServiceConfig`
-        :param AuthRelationApiId: Unique ID of associated authorization API, which takes effect only if `AuthType` is `OAUTH` and `ApiBusinessType` is `NORMAL`. It is the unique ID of the OAuth 2.0 authorization API bound to the business API.
+        :param _AuthRelationApiId: Unique ID of associated authorization API, which takes effect only if `AuthType` is `OAUTH` and `ApiBusinessType` is `NORMAL`. It is the unique ID of the OAuth 2.0 authorization API bound to the business API.
         :type AuthRelationApiId: str
-        :param ServiceParameters: API backend service parameter.
+        :param _ServiceParameters: API backend service parameter.
         :type ServiceParameters: list of ServiceParameter
-        :param OauthConfig: OAuth configuration, which takes effect if `AuthType` is `OAUTH`.
+        :param _OauthConfig: OAuth configuration, which takes effect if `AuthType` is `OAUTH`.
         :type OauthConfig: :class:`tencentcloud.apigateway.v20180808.models.OauthConfig`
-        :param ResponseErrorCodes: Custom error code configuration.
+        :param _ResponseErrorCodes: Custom error code configuration.
         :type ResponseErrorCodes: list of ResponseErrorCodeReq
-        :param IsBase64Encoded: Whether to enable Base64 encoding. This parameter takes effect only when the backend is SCF.
+        :param _IsBase64Encoded: Whether to enable Base64 encoding. This parameter takes effect only when the backend is SCF.
         :type IsBase64Encoded: bool
-        :param IsBase64Trigger: Whether to trigger Base64 encoding by header. This parameter takes effect only when the backend is SCF.
+        :param _IsBase64Trigger: Whether to trigger Base64 encoding by header. This parameter takes effect only when the backend is SCF.
         :type IsBase64Trigger: bool
-        :param Base64EncodedTriggerRules: Header trigger rules. The number of rules cannot exceed 10.
+        :param _Base64EncodedTriggerRules: Header trigger rules. The number of rules cannot exceed 10.
         :type Base64EncodedTriggerRules: list of Base64EncodedTriggerRule
-        :param EventBusId: Event bus ID.
+        :param _EventBusId: Event bus ID.
         :type EventBusId: str
-        :param ServiceScfFunctionType: SCF function type, which takes effect when the backend type is `SCF`. Valid values: `EVENT` and `HTTP`.
+        :param _ServiceScfFunctionType: SCF function type, which takes effect when the backend type is `SCF`. Valid values: `EVENT` and `HTTP`.
         :type ServiceScfFunctionType: str
-        :param EIAMAppType: EIAM application type.
+        :param _EIAMAppType: EIAM application type.
         :type EIAMAppType: str
-        :param EIAMAuthType: EIAM application authentication type. Valid values: `AuthenticationOnly`, `Authentication`, `Authorization`.
+        :param _EIAMAuthType: EIAM application authentication type. Valid values: `AuthenticationOnly`, `Authentication`, `Authorization`.
         :type EIAMAuthType: str
-        :param EIAMAppId: Validity of the EIAM application token. Unit: second. Default value: `7200`.
+        :param _EIAMAppId: Validity of the EIAM application token. Unit: second. Default value: `7200`.
         :type EIAMAppId: str
-        :param TokenTimeout: EIAM application ID.
+        :param _TokenTimeout: EIAM application ID.
         :type TokenTimeout: int
         """
-        self.ServiceId = None
-        self.ServiceType = None
-        self.RequestConfig = None
-        self.ApiId = None
-        self.ApiName = None
-        self.ApiDesc = None
-        self.ApiType = None
-        self.AuthType = None
-        self.AuthRequired = None
-        self.ServiceTimeout = None
-        self.Protocol = None
-        self.EnableCORS = None
-        self.ConstantParameters = None
-        self.RequestParameters = None
-        self.ApiBusinessType = None
-        self.ServiceMockReturnMessage = None
-        self.MicroServices = None
-        self.ServiceTsfLoadBalanceConf = None
-        self.ServiceTsfHealthCheckConf = None
-        self.TargetServicesLoadBalanceConf = None
-        self.TargetServicesHealthCheckConf = None
-        self.ServiceScfFunctionName = None
-        self.ServiceWebsocketRegisterFunctionName = None
-        self.ServiceWebsocketCleanupFunctionName = None
-        self.ServiceWebsocketTransportFunctionName = None
-        self.ServiceScfFunctionNamespace = None
-        self.ServiceScfFunctionQualifier = None
-        self.ServiceWebsocketRegisterFunctionNamespace = None
-        self.ServiceWebsocketRegisterFunctionQualifier = None
-        self.ServiceWebsocketTransportFunctionNamespace = None
-        self.ServiceWebsocketTransportFunctionQualifier = None
-        self.ServiceWebsocketCleanupFunctionNamespace = None
-        self.ServiceWebsocketCleanupFunctionQualifier = None
-        self.ServiceScfIsIntegratedResponse = None
-        self.IsDebugAfterCharge = None
-        self.TagSpecifications = None
-        self.IsDeleteResponseErrorCodes = None
-        self.ResponseType = None
-        self.ResponseSuccessExample = None
-        self.ResponseFailExample = None
-        self.ServiceConfig = None
-        self.AuthRelationApiId = None
-        self.ServiceParameters = None
-        self.OauthConfig = None
-        self.ResponseErrorCodes = None
-        self.IsBase64Encoded = None
-        self.IsBase64Trigger = None
-        self.Base64EncodedTriggerRules = None
-        self.EventBusId = None
-        self.ServiceScfFunctionType = None
-        self.EIAMAppType = None
-        self.EIAMAuthType = None
-        self.EIAMAppId = None
-        self.TokenTimeout = None
+        self._ServiceId = None
+        self._ServiceType = None
+        self._RequestConfig = None
+        self._ApiId = None
+        self._ApiName = None
+        self._ApiDesc = None
+        self._ApiType = None
+        self._AuthType = None
+        self._AuthRequired = None
+        self._ServiceTimeout = None
+        self._Protocol = None
+        self._EnableCORS = None
+        self._ConstantParameters = None
+        self._RequestParameters = None
+        self._ApiBusinessType = None
+        self._ServiceMockReturnMessage = None
+        self._MicroServices = None
+        self._ServiceTsfLoadBalanceConf = None
+        self._ServiceTsfHealthCheckConf = None
+        self._TargetServicesLoadBalanceConf = None
+        self._TargetServicesHealthCheckConf = None
+        self._ServiceScfFunctionName = None
+        self._ServiceWebsocketRegisterFunctionName = None
+        self._ServiceWebsocketCleanupFunctionName = None
+        self._ServiceWebsocketTransportFunctionName = None
+        self._ServiceScfFunctionNamespace = None
+        self._ServiceScfFunctionQualifier = None
+        self._ServiceWebsocketRegisterFunctionNamespace = None
+        self._ServiceWebsocketRegisterFunctionQualifier = None
+        self._ServiceWebsocketTransportFunctionNamespace = None
+        self._ServiceWebsocketTransportFunctionQualifier = None
+        self._ServiceWebsocketCleanupFunctionNamespace = None
+        self._ServiceWebsocketCleanupFunctionQualifier = None
+        self._ServiceScfIsIntegratedResponse = None
+        self._IsDebugAfterCharge = None
+        self._TagSpecifications = None
+        self._IsDeleteResponseErrorCodes = None
+        self._ResponseType = None
+        self._ResponseSuccessExample = None
+        self._ResponseFailExample = None
+        self._ServiceConfig = None
+        self._AuthRelationApiId = None
+        self._ServiceParameters = None
+        self._OauthConfig = None
+        self._ResponseErrorCodes = None
+        self._IsBase64Encoded = None
+        self._IsBase64Trigger = None
+        self._Base64EncodedTriggerRules = None
+        self._EventBusId = None
+        self._ServiceScfFunctionType = None
+        self._EIAMAppType = None
+        self._EIAMAuthType = None
+        self._EIAMAppId = None
+        self._TokenTimeout = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def ServiceType(self):
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+    @property
+    def RequestConfig(self):
+        return self._RequestConfig
+
+    @RequestConfig.setter
+    def RequestConfig(self, RequestConfig):
+        self._RequestConfig = RequestConfig
+
+    @property
+    def ApiId(self):
+        return self._ApiId
+
+    @ApiId.setter
+    def ApiId(self, ApiId):
+        self._ApiId = ApiId
+
+    @property
+    def ApiName(self):
+        return self._ApiName
+
+    @ApiName.setter
+    def ApiName(self, ApiName):
+        self._ApiName = ApiName
+
+    @property
+    def ApiDesc(self):
+        return self._ApiDesc
+
+    @ApiDesc.setter
+    def ApiDesc(self, ApiDesc):
+        self._ApiDesc = ApiDesc
+
+    @property
+    def ApiType(self):
+        return self._ApiType
+
+    @ApiType.setter
+    def ApiType(self, ApiType):
+        self._ApiType = ApiType
+
+    @property
+    def AuthType(self):
+        return self._AuthType
+
+    @AuthType.setter
+    def AuthType(self, AuthType):
+        self._AuthType = AuthType
+
+    @property
+    def AuthRequired(self):
+        return self._AuthRequired
+
+    @AuthRequired.setter
+    def AuthRequired(self, AuthRequired):
+        self._AuthRequired = AuthRequired
+
+    @property
+    def ServiceTimeout(self):
+        return self._ServiceTimeout
+
+    @ServiceTimeout.setter
+    def ServiceTimeout(self, ServiceTimeout):
+        self._ServiceTimeout = ServiceTimeout
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def EnableCORS(self):
+        return self._EnableCORS
+
+    @EnableCORS.setter
+    def EnableCORS(self, EnableCORS):
+        self._EnableCORS = EnableCORS
+
+    @property
+    def ConstantParameters(self):
+        return self._ConstantParameters
+
+    @ConstantParameters.setter
+    def ConstantParameters(self, ConstantParameters):
+        self._ConstantParameters = ConstantParameters
+
+    @property
+    def RequestParameters(self):
+        return self._RequestParameters
+
+    @RequestParameters.setter
+    def RequestParameters(self, RequestParameters):
+        self._RequestParameters = RequestParameters
+
+    @property
+    def ApiBusinessType(self):
+        return self._ApiBusinessType
+
+    @ApiBusinessType.setter
+    def ApiBusinessType(self, ApiBusinessType):
+        self._ApiBusinessType = ApiBusinessType
+
+    @property
+    def ServiceMockReturnMessage(self):
+        return self._ServiceMockReturnMessage
+
+    @ServiceMockReturnMessage.setter
+    def ServiceMockReturnMessage(self, ServiceMockReturnMessage):
+        self._ServiceMockReturnMessage = ServiceMockReturnMessage
+
+    @property
+    def MicroServices(self):
+        return self._MicroServices
+
+    @MicroServices.setter
+    def MicroServices(self, MicroServices):
+        self._MicroServices = MicroServices
+
+    @property
+    def ServiceTsfLoadBalanceConf(self):
+        return self._ServiceTsfLoadBalanceConf
+
+    @ServiceTsfLoadBalanceConf.setter
+    def ServiceTsfLoadBalanceConf(self, ServiceTsfLoadBalanceConf):
+        self._ServiceTsfLoadBalanceConf = ServiceTsfLoadBalanceConf
+
+    @property
+    def ServiceTsfHealthCheckConf(self):
+        return self._ServiceTsfHealthCheckConf
+
+    @ServiceTsfHealthCheckConf.setter
+    def ServiceTsfHealthCheckConf(self, ServiceTsfHealthCheckConf):
+        self._ServiceTsfHealthCheckConf = ServiceTsfHealthCheckConf
+
+    @property
+    def TargetServicesLoadBalanceConf(self):
+        return self._TargetServicesLoadBalanceConf
+
+    @TargetServicesLoadBalanceConf.setter
+    def TargetServicesLoadBalanceConf(self, TargetServicesLoadBalanceConf):
+        self._TargetServicesLoadBalanceConf = TargetServicesLoadBalanceConf
+
+    @property
+    def TargetServicesHealthCheckConf(self):
+        return self._TargetServicesHealthCheckConf
+
+    @TargetServicesHealthCheckConf.setter
+    def TargetServicesHealthCheckConf(self, TargetServicesHealthCheckConf):
+        self._TargetServicesHealthCheckConf = TargetServicesHealthCheckConf
+
+    @property
+    def ServiceScfFunctionName(self):
+        return self._ServiceScfFunctionName
+
+    @ServiceScfFunctionName.setter
+    def ServiceScfFunctionName(self, ServiceScfFunctionName):
+        self._ServiceScfFunctionName = ServiceScfFunctionName
+
+    @property
+    def ServiceWebsocketRegisterFunctionName(self):
+        return self._ServiceWebsocketRegisterFunctionName
+
+    @ServiceWebsocketRegisterFunctionName.setter
+    def ServiceWebsocketRegisterFunctionName(self, ServiceWebsocketRegisterFunctionName):
+        self._ServiceWebsocketRegisterFunctionName = ServiceWebsocketRegisterFunctionName
+
+    @property
+    def ServiceWebsocketCleanupFunctionName(self):
+        return self._ServiceWebsocketCleanupFunctionName
+
+    @ServiceWebsocketCleanupFunctionName.setter
+    def ServiceWebsocketCleanupFunctionName(self, ServiceWebsocketCleanupFunctionName):
+        self._ServiceWebsocketCleanupFunctionName = ServiceWebsocketCleanupFunctionName
+
+    @property
+    def ServiceWebsocketTransportFunctionName(self):
+        return self._ServiceWebsocketTransportFunctionName
+
+    @ServiceWebsocketTransportFunctionName.setter
+    def ServiceWebsocketTransportFunctionName(self, ServiceWebsocketTransportFunctionName):
+        self._ServiceWebsocketTransportFunctionName = ServiceWebsocketTransportFunctionName
+
+    @property
+    def ServiceScfFunctionNamespace(self):
+        return self._ServiceScfFunctionNamespace
+
+    @ServiceScfFunctionNamespace.setter
+    def ServiceScfFunctionNamespace(self, ServiceScfFunctionNamespace):
+        self._ServiceScfFunctionNamespace = ServiceScfFunctionNamespace
+
+    @property
+    def ServiceScfFunctionQualifier(self):
+        return self._ServiceScfFunctionQualifier
+
+    @ServiceScfFunctionQualifier.setter
+    def ServiceScfFunctionQualifier(self, ServiceScfFunctionQualifier):
+        self._ServiceScfFunctionQualifier = ServiceScfFunctionQualifier
+
+    @property
+    def ServiceWebsocketRegisterFunctionNamespace(self):
+        return self._ServiceWebsocketRegisterFunctionNamespace
+
+    @ServiceWebsocketRegisterFunctionNamespace.setter
+    def ServiceWebsocketRegisterFunctionNamespace(self, ServiceWebsocketRegisterFunctionNamespace):
+        self._ServiceWebsocketRegisterFunctionNamespace = ServiceWebsocketRegisterFunctionNamespace
+
+    @property
+    def ServiceWebsocketRegisterFunctionQualifier(self):
+        return self._ServiceWebsocketRegisterFunctionQualifier
+
+    @ServiceWebsocketRegisterFunctionQualifier.setter
+    def ServiceWebsocketRegisterFunctionQualifier(self, ServiceWebsocketRegisterFunctionQualifier):
+        self._ServiceWebsocketRegisterFunctionQualifier = ServiceWebsocketRegisterFunctionQualifier
+
+    @property
+    def ServiceWebsocketTransportFunctionNamespace(self):
+        return self._ServiceWebsocketTransportFunctionNamespace
+
+    @ServiceWebsocketTransportFunctionNamespace.setter
+    def ServiceWebsocketTransportFunctionNamespace(self, ServiceWebsocketTransportFunctionNamespace):
+        self._ServiceWebsocketTransportFunctionNamespace = ServiceWebsocketTransportFunctionNamespace
+
+    @property
+    def ServiceWebsocketTransportFunctionQualifier(self):
+        return self._ServiceWebsocketTransportFunctionQualifier
+
+    @ServiceWebsocketTransportFunctionQualifier.setter
+    def ServiceWebsocketTransportFunctionQualifier(self, ServiceWebsocketTransportFunctionQualifier):
+        self._ServiceWebsocketTransportFunctionQualifier = ServiceWebsocketTransportFunctionQualifier
+
+    @property
+    def ServiceWebsocketCleanupFunctionNamespace(self):
+        return self._ServiceWebsocketCleanupFunctionNamespace
+
+    @ServiceWebsocketCleanupFunctionNamespace.setter
+    def ServiceWebsocketCleanupFunctionNamespace(self, ServiceWebsocketCleanupFunctionNamespace):
+        self._ServiceWebsocketCleanupFunctionNamespace = ServiceWebsocketCleanupFunctionNamespace
+
+    @property
+    def ServiceWebsocketCleanupFunctionQualifier(self):
+        return self._ServiceWebsocketCleanupFunctionQualifier
+
+    @ServiceWebsocketCleanupFunctionQualifier.setter
+    def ServiceWebsocketCleanupFunctionQualifier(self, ServiceWebsocketCleanupFunctionQualifier):
+        self._ServiceWebsocketCleanupFunctionQualifier = ServiceWebsocketCleanupFunctionQualifier
+
+    @property
+    def ServiceScfIsIntegratedResponse(self):
+        return self._ServiceScfIsIntegratedResponse
+
+    @ServiceScfIsIntegratedResponse.setter
+    def ServiceScfIsIntegratedResponse(self, ServiceScfIsIntegratedResponse):
+        self._ServiceScfIsIntegratedResponse = ServiceScfIsIntegratedResponse
+
+    @property
+    def IsDebugAfterCharge(self):
+        return self._IsDebugAfterCharge
+
+    @IsDebugAfterCharge.setter
+    def IsDebugAfterCharge(self, IsDebugAfterCharge):
+        self._IsDebugAfterCharge = IsDebugAfterCharge
+
+    @property
+    def TagSpecifications(self):
+        return self._TagSpecifications
+
+    @TagSpecifications.setter
+    def TagSpecifications(self, TagSpecifications):
+        self._TagSpecifications = TagSpecifications
+
+    @property
+    def IsDeleteResponseErrorCodes(self):
+        return self._IsDeleteResponseErrorCodes
+
+    @IsDeleteResponseErrorCodes.setter
+    def IsDeleteResponseErrorCodes(self, IsDeleteResponseErrorCodes):
+        self._IsDeleteResponseErrorCodes = IsDeleteResponseErrorCodes
+
+    @property
+    def ResponseType(self):
+        return self._ResponseType
+
+    @ResponseType.setter
+    def ResponseType(self, ResponseType):
+        self._ResponseType = ResponseType
+
+    @property
+    def ResponseSuccessExample(self):
+        return self._ResponseSuccessExample
+
+    @ResponseSuccessExample.setter
+    def ResponseSuccessExample(self, ResponseSuccessExample):
+        self._ResponseSuccessExample = ResponseSuccessExample
+
+    @property
+    def ResponseFailExample(self):
+        return self._ResponseFailExample
+
+    @ResponseFailExample.setter
+    def ResponseFailExample(self, ResponseFailExample):
+        self._ResponseFailExample = ResponseFailExample
+
+    @property
+    def ServiceConfig(self):
+        return self._ServiceConfig
+
+    @ServiceConfig.setter
+    def ServiceConfig(self, ServiceConfig):
+        self._ServiceConfig = ServiceConfig
+
+    @property
+    def AuthRelationApiId(self):
+        return self._AuthRelationApiId
+
+    @AuthRelationApiId.setter
+    def AuthRelationApiId(self, AuthRelationApiId):
+        self._AuthRelationApiId = AuthRelationApiId
+
+    @property
+    def ServiceParameters(self):
+        return self._ServiceParameters
+
+    @ServiceParameters.setter
+    def ServiceParameters(self, ServiceParameters):
+        self._ServiceParameters = ServiceParameters
+
+    @property
+    def OauthConfig(self):
+        return self._OauthConfig
+
+    @OauthConfig.setter
+    def OauthConfig(self, OauthConfig):
+        self._OauthConfig = OauthConfig
+
+    @property
+    def ResponseErrorCodes(self):
+        return self._ResponseErrorCodes
+
+    @ResponseErrorCodes.setter
+    def ResponseErrorCodes(self, ResponseErrorCodes):
+        self._ResponseErrorCodes = ResponseErrorCodes
+
+    @property
+    def IsBase64Encoded(self):
+        return self._IsBase64Encoded
+
+    @IsBase64Encoded.setter
+    def IsBase64Encoded(self, IsBase64Encoded):
+        self._IsBase64Encoded = IsBase64Encoded
+
+    @property
+    def IsBase64Trigger(self):
+        return self._IsBase64Trigger
+
+    @IsBase64Trigger.setter
+    def IsBase64Trigger(self, IsBase64Trigger):
+        self._IsBase64Trigger = IsBase64Trigger
+
+    @property
+    def Base64EncodedTriggerRules(self):
+        return self._Base64EncodedTriggerRules
+
+    @Base64EncodedTriggerRules.setter
+    def Base64EncodedTriggerRules(self, Base64EncodedTriggerRules):
+        self._Base64EncodedTriggerRules = Base64EncodedTriggerRules
+
+    @property
+    def EventBusId(self):
+        return self._EventBusId
+
+    @EventBusId.setter
+    def EventBusId(self, EventBusId):
+        self._EventBusId = EventBusId
+
+    @property
+    def ServiceScfFunctionType(self):
+        return self._ServiceScfFunctionType
+
+    @ServiceScfFunctionType.setter
+    def ServiceScfFunctionType(self, ServiceScfFunctionType):
+        self._ServiceScfFunctionType = ServiceScfFunctionType
+
+    @property
+    def EIAMAppType(self):
+        return self._EIAMAppType
+
+    @EIAMAppType.setter
+    def EIAMAppType(self, EIAMAppType):
+        self._EIAMAppType = EIAMAppType
+
+    @property
+    def EIAMAuthType(self):
+        return self._EIAMAuthType
+
+    @EIAMAuthType.setter
+    def EIAMAuthType(self, EIAMAuthType):
+        self._EIAMAuthType = EIAMAuthType
+
+    @property
+    def EIAMAppId(self):
+        return self._EIAMAppId
+
+    @EIAMAppId.setter
+    def EIAMAppId(self, EIAMAppId):
+        self._EIAMAppId = EIAMAppId
+
+    @property
+    def TokenTimeout(self):
+        return self._TokenTimeout
+
+    @TokenTimeout.setter
+    def TokenTimeout(self, TokenTimeout):
+        self._TokenTimeout = TokenTimeout
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.ServiceType = params.get("ServiceType")
+        self._ServiceId = params.get("ServiceId")
+        self._ServiceType = params.get("ServiceType")
         if params.get("RequestConfig") is not None:
-            self.RequestConfig = RequestConfig()
-            self.RequestConfig._deserialize(params.get("RequestConfig"))
-        self.ApiId = params.get("ApiId")
-        self.ApiName = params.get("ApiName")
-        self.ApiDesc = params.get("ApiDesc")
-        self.ApiType = params.get("ApiType")
-        self.AuthType = params.get("AuthType")
-        self.AuthRequired = params.get("AuthRequired")
-        self.ServiceTimeout = params.get("ServiceTimeout")
-        self.Protocol = params.get("Protocol")
-        self.EnableCORS = params.get("EnableCORS")
+            self._RequestConfig = RequestConfig()
+            self._RequestConfig._deserialize(params.get("RequestConfig"))
+        self._ApiId = params.get("ApiId")
+        self._ApiName = params.get("ApiName")
+        self._ApiDesc = params.get("ApiDesc")
+        self._ApiType = params.get("ApiType")
+        self._AuthType = params.get("AuthType")
+        self._AuthRequired = params.get("AuthRequired")
+        self._ServiceTimeout = params.get("ServiceTimeout")
+        self._Protocol = params.get("Protocol")
+        self._EnableCORS = params.get("EnableCORS")
         if params.get("ConstantParameters") is not None:
-            self.ConstantParameters = []
+            self._ConstantParameters = []
             for item in params.get("ConstantParameters"):
                 obj = ConstantParameter()
                 obj._deserialize(item)
-                self.ConstantParameters.append(obj)
+                self._ConstantParameters.append(obj)
         if params.get("RequestParameters") is not None:
-            self.RequestParameters = []
+            self._RequestParameters = []
             for item in params.get("RequestParameters"):
                 obj = ReqParameter()
                 obj._deserialize(item)
-                self.RequestParameters.append(obj)
-        self.ApiBusinessType = params.get("ApiBusinessType")
-        self.ServiceMockReturnMessage = params.get("ServiceMockReturnMessage")
+                self._RequestParameters.append(obj)
+        self._ApiBusinessType = params.get("ApiBusinessType")
+        self._ServiceMockReturnMessage = params.get("ServiceMockReturnMessage")
         if params.get("MicroServices") is not None:
-            self.MicroServices = []
+            self._MicroServices = []
             for item in params.get("MicroServices"):
                 obj = MicroServiceReq()
                 obj._deserialize(item)
-                self.MicroServices.append(obj)
+                self._MicroServices.append(obj)
         if params.get("ServiceTsfLoadBalanceConf") is not None:
-            self.ServiceTsfLoadBalanceConf = TsfLoadBalanceConfResp()
-            self.ServiceTsfLoadBalanceConf._deserialize(params.get("ServiceTsfLoadBalanceConf"))
+            self._ServiceTsfLoadBalanceConf = TsfLoadBalanceConfResp()
+            self._ServiceTsfLoadBalanceConf._deserialize(params.get("ServiceTsfLoadBalanceConf"))
         if params.get("ServiceTsfHealthCheckConf") is not None:
-            self.ServiceTsfHealthCheckConf = HealthCheckConf()
-            self.ServiceTsfHealthCheckConf._deserialize(params.get("ServiceTsfHealthCheckConf"))
-        self.TargetServicesLoadBalanceConf = params.get("TargetServicesLoadBalanceConf")
+            self._ServiceTsfHealthCheckConf = HealthCheckConf()
+            self._ServiceTsfHealthCheckConf._deserialize(params.get("ServiceTsfHealthCheckConf"))
+        self._TargetServicesLoadBalanceConf = params.get("TargetServicesLoadBalanceConf")
         if params.get("TargetServicesHealthCheckConf") is not None:
-            self.TargetServicesHealthCheckConf = HealthCheckConf()
-            self.TargetServicesHealthCheckConf._deserialize(params.get("TargetServicesHealthCheckConf"))
-        self.ServiceScfFunctionName = params.get("ServiceScfFunctionName")
-        self.ServiceWebsocketRegisterFunctionName = params.get("ServiceWebsocketRegisterFunctionName")
-        self.ServiceWebsocketCleanupFunctionName = params.get("ServiceWebsocketCleanupFunctionName")
-        self.ServiceWebsocketTransportFunctionName = params.get("ServiceWebsocketTransportFunctionName")
-        self.ServiceScfFunctionNamespace = params.get("ServiceScfFunctionNamespace")
-        self.ServiceScfFunctionQualifier = params.get("ServiceScfFunctionQualifier")
-        self.ServiceWebsocketRegisterFunctionNamespace = params.get("ServiceWebsocketRegisterFunctionNamespace")
-        self.ServiceWebsocketRegisterFunctionQualifier = params.get("ServiceWebsocketRegisterFunctionQualifier")
-        self.ServiceWebsocketTransportFunctionNamespace = params.get("ServiceWebsocketTransportFunctionNamespace")
-        self.ServiceWebsocketTransportFunctionQualifier = params.get("ServiceWebsocketTransportFunctionQualifier")
-        self.ServiceWebsocketCleanupFunctionNamespace = params.get("ServiceWebsocketCleanupFunctionNamespace")
-        self.ServiceWebsocketCleanupFunctionQualifier = params.get("ServiceWebsocketCleanupFunctionQualifier")
-        self.ServiceScfIsIntegratedResponse = params.get("ServiceScfIsIntegratedResponse")
-        self.IsDebugAfterCharge = params.get("IsDebugAfterCharge")
+            self._TargetServicesHealthCheckConf = HealthCheckConf()
+            self._TargetServicesHealthCheckConf._deserialize(params.get("TargetServicesHealthCheckConf"))
+        self._ServiceScfFunctionName = params.get("ServiceScfFunctionName")
+        self._ServiceWebsocketRegisterFunctionName = params.get("ServiceWebsocketRegisterFunctionName")
+        self._ServiceWebsocketCleanupFunctionName = params.get("ServiceWebsocketCleanupFunctionName")
+        self._ServiceWebsocketTransportFunctionName = params.get("ServiceWebsocketTransportFunctionName")
+        self._ServiceScfFunctionNamespace = params.get("ServiceScfFunctionNamespace")
+        self._ServiceScfFunctionQualifier = params.get("ServiceScfFunctionQualifier")
+        self._ServiceWebsocketRegisterFunctionNamespace = params.get("ServiceWebsocketRegisterFunctionNamespace")
+        self._ServiceWebsocketRegisterFunctionQualifier = params.get("ServiceWebsocketRegisterFunctionQualifier")
+        self._ServiceWebsocketTransportFunctionNamespace = params.get("ServiceWebsocketTransportFunctionNamespace")
+        self._ServiceWebsocketTransportFunctionQualifier = params.get("ServiceWebsocketTransportFunctionQualifier")
+        self._ServiceWebsocketCleanupFunctionNamespace = params.get("ServiceWebsocketCleanupFunctionNamespace")
+        self._ServiceWebsocketCleanupFunctionQualifier = params.get("ServiceWebsocketCleanupFunctionQualifier")
+        self._ServiceScfIsIntegratedResponse = params.get("ServiceScfIsIntegratedResponse")
+        self._IsDebugAfterCharge = params.get("IsDebugAfterCharge")
         if params.get("TagSpecifications") is not None:
-            self.TagSpecifications = Tag()
-            self.TagSpecifications._deserialize(params.get("TagSpecifications"))
-        self.IsDeleteResponseErrorCodes = params.get("IsDeleteResponseErrorCodes")
-        self.ResponseType = params.get("ResponseType")
-        self.ResponseSuccessExample = params.get("ResponseSuccessExample")
-        self.ResponseFailExample = params.get("ResponseFailExample")
+            self._TagSpecifications = Tag()
+            self._TagSpecifications._deserialize(params.get("TagSpecifications"))
+        self._IsDeleteResponseErrorCodes = params.get("IsDeleteResponseErrorCodes")
+        self._ResponseType = params.get("ResponseType")
+        self._ResponseSuccessExample = params.get("ResponseSuccessExample")
+        self._ResponseFailExample = params.get("ResponseFailExample")
         if params.get("ServiceConfig") is not None:
-            self.ServiceConfig = ServiceConfig()
-            self.ServiceConfig._deserialize(params.get("ServiceConfig"))
-        self.AuthRelationApiId = params.get("AuthRelationApiId")
+            self._ServiceConfig = ServiceConfig()
+            self._ServiceConfig._deserialize(params.get("ServiceConfig"))
+        self._AuthRelationApiId = params.get("AuthRelationApiId")
         if params.get("ServiceParameters") is not None:
-            self.ServiceParameters = []
+            self._ServiceParameters = []
             for item in params.get("ServiceParameters"):
                 obj = ServiceParameter()
                 obj._deserialize(item)
-                self.ServiceParameters.append(obj)
+                self._ServiceParameters.append(obj)
         if params.get("OauthConfig") is not None:
-            self.OauthConfig = OauthConfig()
-            self.OauthConfig._deserialize(params.get("OauthConfig"))
+            self._OauthConfig = OauthConfig()
+            self._OauthConfig._deserialize(params.get("OauthConfig"))
         if params.get("ResponseErrorCodes") is not None:
-            self.ResponseErrorCodes = []
+            self._ResponseErrorCodes = []
             for item in params.get("ResponseErrorCodes"):
                 obj = ResponseErrorCodeReq()
                 obj._deserialize(item)
-                self.ResponseErrorCodes.append(obj)
-        self.IsBase64Encoded = params.get("IsBase64Encoded")
-        self.IsBase64Trigger = params.get("IsBase64Trigger")
+                self._ResponseErrorCodes.append(obj)
+        self._IsBase64Encoded = params.get("IsBase64Encoded")
+        self._IsBase64Trigger = params.get("IsBase64Trigger")
         if params.get("Base64EncodedTriggerRules") is not None:
-            self.Base64EncodedTriggerRules = []
+            self._Base64EncodedTriggerRules = []
             for item in params.get("Base64EncodedTriggerRules"):
                 obj = Base64EncodedTriggerRule()
                 obj._deserialize(item)
-                self.Base64EncodedTriggerRules.append(obj)
-        self.EventBusId = params.get("EventBusId")
-        self.ServiceScfFunctionType = params.get("ServiceScfFunctionType")
-        self.EIAMAppType = params.get("EIAMAppType")
-        self.EIAMAuthType = params.get("EIAMAuthType")
-        self.EIAMAppId = params.get("EIAMAppId")
-        self.TokenTimeout = params.get("TokenTimeout")
+                self._Base64EncodedTriggerRules.append(obj)
+        self._EventBusId = params.get("EventBusId")
+        self._ServiceScfFunctionType = params.get("ServiceScfFunctionType")
+        self._EIAMAppType = params.get("EIAMAppType")
+        self._EIAMAuthType = params.get("EIAMAuthType")
+        self._EIAMAppId = params.get("EIAMAppId")
+        self._TokenTimeout = params.get("TokenTimeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7510,14 +14329,22 @@ class ModifyApiResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyIPStrategyRequest(AbstractModel):
@@ -7527,26 +14354,51 @@ class ModifyIPStrategyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Unique service ID of the policy to be modified.
+        :param _ServiceId: Unique service ID of the policy to be modified.
         :type ServiceId: str
-        :param StrategyId: Unique ID of the policy to be modified.
+        :param _StrategyId: Unique ID of the policy to be modified.
         :type StrategyId: str
-        :param StrategyData: Details of the policy to be modified.
+        :param _StrategyData: Details of the policy to be modified.
         :type StrategyData: str
         """
-        self.ServiceId = None
-        self.StrategyId = None
-        self.StrategyData = None
+        self._ServiceId = None
+        self._StrategyId = None
+        self._StrategyData = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def StrategyId(self):
+        return self._StrategyId
+
+    @StrategyId.setter
+    def StrategyId(self, StrategyId):
+        self._StrategyId = StrategyId
+
+    @property
+    def StrategyData(self):
+        return self._StrategyData
+
+    @StrategyData.setter
+    def StrategyData(self, StrategyData):
+        self._StrategyData = StrategyData
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.StrategyId = params.get("StrategyId")
-        self.StrategyData = params.get("StrategyData")
+        self._ServiceId = params.get("ServiceId")
+        self._StrategyId = params.get("StrategyId")
+        self._StrategyData = params.get("StrategyData")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7559,19 +14411,35 @@ class ModifyIPStrategyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Whether modification succeeded.
+        :param _Result: Whether modification succeeded.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyPluginRequest(AbstractModel):
@@ -7581,30 +14449,63 @@ class ModifyPluginRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PluginId: ID of the plugin to be modified
+        :param _PluginId: ID of the plugin to be modified
         :type PluginId: str
-        :param PluginName: Plugin name to be modified. A plugin name can contain up to 50 characters out of `a-z`, `A-Z`, `0-9`, and `_`, which must begin with a letter and end with a letter or a number.
+        :param _PluginName: Plugin name to be modified. A plugin name can contain up to 50 characters out of `a-z`, `A-Z`, `0-9`, and `_`, which must begin with a letter and end with a letter or a number.
         :type PluginName: str
-        :param Description: Plugin description to be modified. A description is within 200 characters.
+        :param _Description: Plugin description to be modified. A description is within 200 characters.
         :type Description: str
-        :param PluginData: Plugin definition statement to be modified. The json format is supported.
+        :param _PluginData: Plugin definition statement to be modified. The json format is supported.
         :type PluginData: str
         """
-        self.PluginId = None
-        self.PluginName = None
-        self.Description = None
-        self.PluginData = None
+        self._PluginId = None
+        self._PluginName = None
+        self._Description = None
+        self._PluginData = None
+
+    @property
+    def PluginId(self):
+        return self._PluginId
+
+    @PluginId.setter
+    def PluginId(self, PluginId):
+        self._PluginId = PluginId
+
+    @property
+    def PluginName(self):
+        return self._PluginName
+
+    @PluginName.setter
+    def PluginName(self, PluginName):
+        self._PluginName = PluginName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def PluginData(self):
+        return self._PluginData
+
+    @PluginData.setter
+    def PluginData(self, PluginData):
+        self._PluginData = PluginData
 
 
     def _deserialize(self, params):
-        self.PluginId = params.get("PluginId")
-        self.PluginName = params.get("PluginName")
-        self.Description = params.get("Description")
-        self.PluginData = params.get("PluginData")
+        self._PluginId = params.get("PluginId")
+        self._PluginName = params.get("PluginName")
+        self._Description = params.get("Description")
+        self._PluginData = params.get("PluginData")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7617,18 +14518,34 @@ class ModifyPluginResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Whether modification succeeded.
+        :param _Result: Whether modification succeeded.
         :type Result: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyServiceEnvironmentStrategyRequest(AbstractModel):
@@ -7638,26 +14555,51 @@ class ModifyServiceEnvironmentStrategyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Unique service ID.
+        :param _ServiceId: Unique service ID.
         :type ServiceId: str
-        :param Strategy: Throttling value.
+        :param _Strategy: Throttling value.
         :type Strategy: int
-        :param EnvironmentNames: Environment list.
+        :param _EnvironmentNames: Environment list.
         :type EnvironmentNames: list of str
         """
-        self.ServiceId = None
-        self.Strategy = None
-        self.EnvironmentNames = None
+        self._ServiceId = None
+        self._Strategy = None
+        self._EnvironmentNames = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def Strategy(self):
+        return self._Strategy
+
+    @Strategy.setter
+    def Strategy(self, Strategy):
+        self._Strategy = Strategy
+
+    @property
+    def EnvironmentNames(self):
+        return self._EnvironmentNames
+
+    @EnvironmentNames.setter
+    def EnvironmentNames(self, EnvironmentNames):
+        self._EnvironmentNames = EnvironmentNames
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.Strategy = params.get("Strategy")
-        self.EnvironmentNames = params.get("EnvironmentNames")
+        self._ServiceId = params.get("ServiceId")
+        self._Strategy = params.get("Strategy")
+        self._EnvironmentNames = params.get("EnvironmentNames")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7670,19 +14612,35 @@ class ModifyServiceEnvironmentStrategyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Whether modification succeeded.
+        :param _Result: Whether modification succeeded.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyServiceRequest(AbstractModel):
@@ -7692,34 +14650,75 @@ class ModifyServiceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Unique ID of the service to be modified.
+        :param _ServiceId: Unique ID of the service to be modified.
         :type ServiceId: str
-        :param ServiceName: Service name after modification.
+        :param _ServiceName: Service name after modification.
         :type ServiceName: str
-        :param ServiceDesc: Service description after modification.
+        :param _ServiceDesc: Service description after modification.
         :type ServiceDesc: str
-        :param Protocol: Service frontend request type after modification, such as `http`, `https`, and `http&https`.
+        :param _Protocol: Service frontend request type after modification, such as `http`, `https`, and `http&https`.
         :type Protocol: str
-        :param NetTypes: Network type list, which is used to specify the supported network types. INNER: private network access; OUTER: public network access. Default value: OUTER.
+        :param _NetTypes: Network type list, which is used to specify the supported network types. INNER: private network access; OUTER: public network access. Default value: OUTER.
         :type NetTypes: list of str
         """
-        self.ServiceId = None
-        self.ServiceName = None
-        self.ServiceDesc = None
-        self.Protocol = None
-        self.NetTypes = None
+        self._ServiceId = None
+        self._ServiceName = None
+        self._ServiceDesc = None
+        self._Protocol = None
+        self._NetTypes = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def ServiceName(self):
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def ServiceDesc(self):
+        return self._ServiceDesc
+
+    @ServiceDesc.setter
+    def ServiceDesc(self, ServiceDesc):
+        self._ServiceDesc = ServiceDesc
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def NetTypes(self):
+        return self._NetTypes
+
+    @NetTypes.setter
+    def NetTypes(self, NetTypes):
+        self._NetTypes = NetTypes
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.ServiceName = params.get("ServiceName")
-        self.ServiceDesc = params.get("ServiceDesc")
-        self.Protocol = params.get("Protocol")
-        self.NetTypes = params.get("NetTypes")
+        self._ServiceId = params.get("ServiceId")
+        self._ServiceName = params.get("ServiceName")
+        self._ServiceDesc = params.get("ServiceDesc")
+        self._Protocol = params.get("Protocol")
+        self._NetTypes = params.get("NetTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7732,14 +14731,22 @@ class ModifyServiceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifySubDomainRequest(AbstractModel):
@@ -7749,51 +14756,116 @@ class ModifySubDomainRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Unique service ID.
+        :param _ServiceId: Unique service ID.
         :type ServiceId: str
-        :param SubDomain: Custom domain name whose path mapping is to be modified.
+        :param _SubDomain: Custom domain name whose path mapping is to be modified.
         :type SubDomain: str
-        :param IsDefaultMapping: Whether to change to the default path mapping. true: use the default path mapping; false: use the custom path mapping.
+        :param _IsDefaultMapping: Whether to change to the default path mapping. true: use the default path mapping; false: use the custom path mapping.
         :type IsDefaultMapping: bool
-        :param CertificateId: Certificate ID, which is required if the HTTPS protocol is included.
+        :param _CertificateId: Certificate ID, which is required if the HTTPS protocol is included.
         :type CertificateId: str
-        :param Protocol: Custom domain name protocol type after modification. Valid values: http, https, http&https.
+        :param _Protocol: Custom domain name protocol type after modification. Valid values: http, https, http&https.
         :type Protocol: str
-        :param PathMappingSet: Path mapping list after modification.
+        :param _PathMappingSet: Path mapping list after modification.
         :type PathMappingSet: list of PathMapping
-        :param NetType: Network type. Valid values: INNER, OUTER.
+        :param _NetType: Network type. Valid values: INNER, OUTER.
         :type NetType: str
-        :param IsForcedHttps: Whether to force HTTP requests to redirect to HTTPS. Default value: `false`. When this parameter is `true`, API Gateway will redirect all requests using the custom domain name over the HTTP protocol to the HTTPS protocol for forwarding.
+        :param _IsForcedHttps: Whether to force HTTP requests to redirect to HTTPS. Default value: `false`. When this parameter is `true`, API Gateway will redirect all requests using the custom domain name over the HTTP protocol to the HTTPS protocol for forwarding.
         :type IsForcedHttps: bool
         """
-        self.ServiceId = None
-        self.SubDomain = None
-        self.IsDefaultMapping = None
-        self.CertificateId = None
-        self.Protocol = None
-        self.PathMappingSet = None
-        self.NetType = None
-        self.IsForcedHttps = None
+        self._ServiceId = None
+        self._SubDomain = None
+        self._IsDefaultMapping = None
+        self._CertificateId = None
+        self._Protocol = None
+        self._PathMappingSet = None
+        self._NetType = None
+        self._IsForcedHttps = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def SubDomain(self):
+        return self._SubDomain
+
+    @SubDomain.setter
+    def SubDomain(self, SubDomain):
+        self._SubDomain = SubDomain
+
+    @property
+    def IsDefaultMapping(self):
+        return self._IsDefaultMapping
+
+    @IsDefaultMapping.setter
+    def IsDefaultMapping(self, IsDefaultMapping):
+        self._IsDefaultMapping = IsDefaultMapping
+
+    @property
+    def CertificateId(self):
+        return self._CertificateId
+
+    @CertificateId.setter
+    def CertificateId(self, CertificateId):
+        self._CertificateId = CertificateId
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def PathMappingSet(self):
+        return self._PathMappingSet
+
+    @PathMappingSet.setter
+    def PathMappingSet(self, PathMappingSet):
+        self._PathMappingSet = PathMappingSet
+
+    @property
+    def NetType(self):
+        return self._NetType
+
+    @NetType.setter
+    def NetType(self, NetType):
+        self._NetType = NetType
+
+    @property
+    def IsForcedHttps(self):
+        return self._IsForcedHttps
+
+    @IsForcedHttps.setter
+    def IsForcedHttps(self, IsForcedHttps):
+        self._IsForcedHttps = IsForcedHttps
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.SubDomain = params.get("SubDomain")
-        self.IsDefaultMapping = params.get("IsDefaultMapping")
-        self.CertificateId = params.get("CertificateId")
-        self.Protocol = params.get("Protocol")
+        self._ServiceId = params.get("ServiceId")
+        self._SubDomain = params.get("SubDomain")
+        self._IsDefaultMapping = params.get("IsDefaultMapping")
+        self._CertificateId = params.get("CertificateId")
+        self._Protocol = params.get("Protocol")
         if params.get("PathMappingSet") is not None:
-            self.PathMappingSet = []
+            self._PathMappingSet = []
             for item in params.get("PathMappingSet"):
                 obj = PathMapping()
                 obj._deserialize(item)
-                self.PathMappingSet.append(obj)
-        self.NetType = params.get("NetType")
-        self.IsForcedHttps = params.get("IsForcedHttps")
+                self._PathMappingSet.append(obj)
+        self._NetType = params.get("NetType")
+        self._IsForcedHttps = params.get("IsForcedHttps")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7806,18 +14878,34 @@ class ModifySubDomainResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Whether the custom domain name is successfully modified.
+        :param _Result: Whether the custom domain name is successfully modified.
         :type Result: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyUpstreamRequest(AbstractModel):
@@ -7827,74 +14915,171 @@ class ModifyUpstreamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UpstreamId: Unique upstream ID
+        :param _UpstreamId: Unique upstream ID
         :type UpstreamId: str
-        :param UpstreamName: Upstream name
+        :param _UpstreamName: Upstream name
         :type UpstreamName: str
-        :param UpstreamDescription: Upstream description
+        :param _UpstreamDescription: Upstream description
         :type UpstreamDescription: str
-        :param Scheme: Backend protocol. Valid values: `HTTP`, `HTTPS`
+        :param _Scheme: Backend protocol. Valid values: `HTTP`, `HTTPS`
         :type Scheme: str
-        :param UpstreamType: Upstream access type. Valid values: `IP_PORT`, `K8S`
+        :param _UpstreamType: Upstream access type. Valid values: `IP_PORT`, `K8S`
         :type UpstreamType: str
-        :param Algorithm: Load balancing algorithm. Valid value: `ROUND_ROBIN`
+        :param _Algorithm: Load balancing algorithm. Valid value: `ROUND_ROBIN`
         :type Algorithm: str
-        :param UniqVpcId: Unique VPC ID.
+        :param _UniqVpcId: Unique VPC ID.
         :type UniqVpcId: str
-        :param Retries: Retry attempts. It defaults to `3`.
+        :param _Retries: Retry attempts. It defaults to `3`.
         :type Retries: int
-        :param UpstreamHost: Gateway forwarding to the upstream Host request header
+        :param _UpstreamHost: Gateway forwarding to the upstream Host request header
         :type UpstreamHost: str
-        :param Nodes: List of backend nodes
+        :param _Nodes: List of backend nodes
         :type Nodes: list of UpstreamNode
-        :param HealthChecker: Health check configuration
+        :param _HealthChecker: Health check configuration
         :type HealthChecker: :class:`tencentcloud.apigateway.v20180808.models.UpstreamHealthChecker`
-        :param K8sService: Configuration of TKE service
+        :param _K8sService: Configuration of TKE service
         :type K8sService: list of K8sService
         """
-        self.UpstreamId = None
-        self.UpstreamName = None
-        self.UpstreamDescription = None
-        self.Scheme = None
-        self.UpstreamType = None
-        self.Algorithm = None
-        self.UniqVpcId = None
-        self.Retries = None
-        self.UpstreamHost = None
-        self.Nodes = None
-        self.HealthChecker = None
-        self.K8sService = None
+        self._UpstreamId = None
+        self._UpstreamName = None
+        self._UpstreamDescription = None
+        self._Scheme = None
+        self._UpstreamType = None
+        self._Algorithm = None
+        self._UniqVpcId = None
+        self._Retries = None
+        self._UpstreamHost = None
+        self._Nodes = None
+        self._HealthChecker = None
+        self._K8sService = None
+
+    @property
+    def UpstreamId(self):
+        return self._UpstreamId
+
+    @UpstreamId.setter
+    def UpstreamId(self, UpstreamId):
+        self._UpstreamId = UpstreamId
+
+    @property
+    def UpstreamName(self):
+        return self._UpstreamName
+
+    @UpstreamName.setter
+    def UpstreamName(self, UpstreamName):
+        self._UpstreamName = UpstreamName
+
+    @property
+    def UpstreamDescription(self):
+        return self._UpstreamDescription
+
+    @UpstreamDescription.setter
+    def UpstreamDescription(self, UpstreamDescription):
+        self._UpstreamDescription = UpstreamDescription
+
+    @property
+    def Scheme(self):
+        return self._Scheme
+
+    @Scheme.setter
+    def Scheme(self, Scheme):
+        self._Scheme = Scheme
+
+    @property
+    def UpstreamType(self):
+        return self._UpstreamType
+
+    @UpstreamType.setter
+    def UpstreamType(self, UpstreamType):
+        self._UpstreamType = UpstreamType
+
+    @property
+    def Algorithm(self):
+        return self._Algorithm
+
+    @Algorithm.setter
+    def Algorithm(self, Algorithm):
+        self._Algorithm = Algorithm
+
+    @property
+    def UniqVpcId(self):
+        return self._UniqVpcId
+
+    @UniqVpcId.setter
+    def UniqVpcId(self, UniqVpcId):
+        self._UniqVpcId = UniqVpcId
+
+    @property
+    def Retries(self):
+        return self._Retries
+
+    @Retries.setter
+    def Retries(self, Retries):
+        self._Retries = Retries
+
+    @property
+    def UpstreamHost(self):
+        return self._UpstreamHost
+
+    @UpstreamHost.setter
+    def UpstreamHost(self, UpstreamHost):
+        self._UpstreamHost = UpstreamHost
+
+    @property
+    def Nodes(self):
+        return self._Nodes
+
+    @Nodes.setter
+    def Nodes(self, Nodes):
+        self._Nodes = Nodes
+
+    @property
+    def HealthChecker(self):
+        return self._HealthChecker
+
+    @HealthChecker.setter
+    def HealthChecker(self, HealthChecker):
+        self._HealthChecker = HealthChecker
+
+    @property
+    def K8sService(self):
+        return self._K8sService
+
+    @K8sService.setter
+    def K8sService(self, K8sService):
+        self._K8sService = K8sService
 
 
     def _deserialize(self, params):
-        self.UpstreamId = params.get("UpstreamId")
-        self.UpstreamName = params.get("UpstreamName")
-        self.UpstreamDescription = params.get("UpstreamDescription")
-        self.Scheme = params.get("Scheme")
-        self.UpstreamType = params.get("UpstreamType")
-        self.Algorithm = params.get("Algorithm")
-        self.UniqVpcId = params.get("UniqVpcId")
-        self.Retries = params.get("Retries")
-        self.UpstreamHost = params.get("UpstreamHost")
+        self._UpstreamId = params.get("UpstreamId")
+        self._UpstreamName = params.get("UpstreamName")
+        self._UpstreamDescription = params.get("UpstreamDescription")
+        self._Scheme = params.get("Scheme")
+        self._UpstreamType = params.get("UpstreamType")
+        self._Algorithm = params.get("Algorithm")
+        self._UniqVpcId = params.get("UniqVpcId")
+        self._Retries = params.get("Retries")
+        self._UpstreamHost = params.get("UpstreamHost")
         if params.get("Nodes") is not None:
-            self.Nodes = []
+            self._Nodes = []
             for item in params.get("Nodes"):
                 obj = UpstreamNode()
                 obj._deserialize(item)
-                self.Nodes.append(obj)
+                self._Nodes.append(obj)
         if params.get("HealthChecker") is not None:
-            self.HealthChecker = UpstreamHealthChecker()
-            self.HealthChecker._deserialize(params.get("HealthChecker"))
+            self._HealthChecker = UpstreamHealthChecker()
+            self._HealthChecker._deserialize(params.get("HealthChecker"))
         if params.get("K8sService") is not None:
-            self.K8sService = []
+            self._K8sService = []
             for item in params.get("K8sService"):
                 obj = K8sService()
                 obj._deserialize(item)
-                self.K8sService.append(obj)
+                self._K8sService.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7907,21 +15092,37 @@ class ModifyUpstreamResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Return modified upstream information
+        :param _Result: Return modified upstream information
 Note: This field may return `NULL`, indicating that no valid value was found.
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.UpstreamInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = UpstreamInfo()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = UpstreamInfo()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyUsagePlanRequest(AbstractModel):
@@ -7931,34 +15132,75 @@ class ModifyUsagePlanRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UsagePlanId: Unique usage plan ID.
+        :param _UsagePlanId: Unique usage plan ID.
         :type UsagePlanId: str
-        :param UsagePlanName: Custom usage plan name after modification.
+        :param _UsagePlanName: Custom usage plan name after modification.
         :type UsagePlanName: str
-        :param UsagePlanDesc: Custom usage plan description after modification.
+        :param _UsagePlanDesc: Custom usage plan description after modification.
         :type UsagePlanDesc: str
-        :param MaxRequestNum: Total number of requests allowed. Valid values: -1, [1,99999999]. The default value is `-1`, which indicates no limit.
+        :param _MaxRequestNum: Total number of requests allowed. Valid values: -1, [1,99999999]. The default value is `-1`, which indicates no limit.
         :type MaxRequestNum: int
-        :param MaxRequestNumPreSec: Limit of requests per second. Valid values: -1, [1,2000]. The default value is `-1`, which indicates no limit.
+        :param _MaxRequestNumPreSec: Limit of requests per second. Valid values: -1, [1,2000]. The default value is `-1`, which indicates no limit.
         :type MaxRequestNumPreSec: int
         """
-        self.UsagePlanId = None
-        self.UsagePlanName = None
-        self.UsagePlanDesc = None
-        self.MaxRequestNum = None
-        self.MaxRequestNumPreSec = None
+        self._UsagePlanId = None
+        self._UsagePlanName = None
+        self._UsagePlanDesc = None
+        self._MaxRequestNum = None
+        self._MaxRequestNumPreSec = None
+
+    @property
+    def UsagePlanId(self):
+        return self._UsagePlanId
+
+    @UsagePlanId.setter
+    def UsagePlanId(self, UsagePlanId):
+        self._UsagePlanId = UsagePlanId
+
+    @property
+    def UsagePlanName(self):
+        return self._UsagePlanName
+
+    @UsagePlanName.setter
+    def UsagePlanName(self, UsagePlanName):
+        self._UsagePlanName = UsagePlanName
+
+    @property
+    def UsagePlanDesc(self):
+        return self._UsagePlanDesc
+
+    @UsagePlanDesc.setter
+    def UsagePlanDesc(self, UsagePlanDesc):
+        self._UsagePlanDesc = UsagePlanDesc
+
+    @property
+    def MaxRequestNum(self):
+        return self._MaxRequestNum
+
+    @MaxRequestNum.setter
+    def MaxRequestNum(self, MaxRequestNum):
+        self._MaxRequestNum = MaxRequestNum
+
+    @property
+    def MaxRequestNumPreSec(self):
+        return self._MaxRequestNumPreSec
+
+    @MaxRequestNumPreSec.setter
+    def MaxRequestNumPreSec(self, MaxRequestNumPreSec):
+        self._MaxRequestNumPreSec = MaxRequestNumPreSec
 
 
     def _deserialize(self, params):
-        self.UsagePlanId = params.get("UsagePlanId")
-        self.UsagePlanName = params.get("UsagePlanName")
-        self.UsagePlanDesc = params.get("UsagePlanDesc")
-        self.MaxRequestNum = params.get("MaxRequestNum")
-        self.MaxRequestNumPreSec = params.get("MaxRequestNumPreSec")
+        self._UsagePlanId = params.get("UsagePlanId")
+        self._UsagePlanName = params.get("UsagePlanName")
+        self._UsagePlanDesc = params.get("UsagePlanDesc")
+        self._MaxRequestNum = params.get("MaxRequestNum")
+        self._MaxRequestNumPreSec = params.get("MaxRequestNumPreSec")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -7971,21 +15213,37 @@ class ModifyUsagePlanResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Usage plan details.
+        :param _Result: Usage plan details.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.UsagePlanInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = UsagePlanInfo()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = UsagePlanInfo()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class OauthConfig(AbstractModel):
@@ -7995,26 +15253,51 @@ class OauthConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PublicKey: Public key for user token verification.
+        :param _PublicKey: Public key for user token verification.
         :type PublicKey: str
-        :param TokenLocation: Token delivery location.
+        :param _TokenLocation: Token delivery location.
         :type TokenLocation: str
-        :param LoginRedirectUrl: Redirect address, which is used to guide user logins.
+        :param _LoginRedirectUrl: Redirect address, which is used to guide user logins.
         :type LoginRedirectUrl: str
         """
-        self.PublicKey = None
-        self.TokenLocation = None
-        self.LoginRedirectUrl = None
+        self._PublicKey = None
+        self._TokenLocation = None
+        self._LoginRedirectUrl = None
+
+    @property
+    def PublicKey(self):
+        return self._PublicKey
+
+    @PublicKey.setter
+    def PublicKey(self, PublicKey):
+        self._PublicKey = PublicKey
+
+    @property
+    def TokenLocation(self):
+        return self._TokenLocation
+
+    @TokenLocation.setter
+    def TokenLocation(self, TokenLocation):
+        self._TokenLocation = TokenLocation
+
+    @property
+    def LoginRedirectUrl(self):
+        return self._LoginRedirectUrl
+
+    @LoginRedirectUrl.setter
+    def LoginRedirectUrl(self, LoginRedirectUrl):
+        self._LoginRedirectUrl = LoginRedirectUrl
 
 
     def _deserialize(self, params):
-        self.PublicKey = params.get("PublicKey")
-        self.TokenLocation = params.get("TokenLocation")
-        self.LoginRedirectUrl = params.get("LoginRedirectUrl")
+        self._PublicKey = params.get("PublicKey")
+        self._TokenLocation = params.get("TokenLocation")
+        self._LoginRedirectUrl = params.get("LoginRedirectUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8027,22 +15310,39 @@ class PathMapping(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Path: Path.
+        :param _Path: Path.
         :type Path: str
-        :param Environment: Release environment. Valid values: test, prepub, release.
+        :param _Environment: Release environment. Valid values: test, prepub, release.
         :type Environment: str
         """
-        self.Path = None
-        self.Environment = None
+        self._Path = None
+        self._Environment = None
+
+    @property
+    def Path(self):
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Environment(self):
+        return self._Environment
+
+    @Environment.setter
+    def Environment(self, Environment):
+        self._Environment = Environment
 
 
     def _deserialize(self, params):
-        self.Path = params.get("Path")
-        self.Environment = params.get("Environment")
+        self._Path = params.get("Path")
+        self._Environment = params.get("Environment")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8055,58 +15355,131 @@ class Plugin(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PluginId: Plugin ID
+        :param _PluginId: Plugin ID
         :type PluginId: str
-        :param PluginName: Plugin name
+        :param _PluginName: Plugin name
         :type PluginName: str
-        :param PluginType: Plugin type
+        :param _PluginType: Plugin type
         :type PluginType: str
-        :param PluginData: Plugin definition statement
+        :param _PluginData: Plugin definition statement
         :type PluginData: str
-        :param Description: Plugin description
+        :param _Description: Plugin description
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Description: str
-        :param CreatedTime: Plugin creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+        :param _CreatedTime: Plugin creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
         :type CreatedTime: str
-        :param ModifiedTime: Plugin modification time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used
+        :param _ModifiedTime: Plugin modification time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used
         :type ModifiedTime: str
-        :param AttachedApiTotalCount: Total number of APIs bound with the plugin
+        :param _AttachedApiTotalCount: Total number of APIs bound with the plugin
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AttachedApiTotalCount: int
-        :param AttachedApis: Information of the API bound with the plugin
+        :param _AttachedApis: Information of the API bound with the plugin
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AttachedApis: list of AttachedApiInfo
         """
-        self.PluginId = None
-        self.PluginName = None
-        self.PluginType = None
-        self.PluginData = None
-        self.Description = None
-        self.CreatedTime = None
-        self.ModifiedTime = None
-        self.AttachedApiTotalCount = None
-        self.AttachedApis = None
+        self._PluginId = None
+        self._PluginName = None
+        self._PluginType = None
+        self._PluginData = None
+        self._Description = None
+        self._CreatedTime = None
+        self._ModifiedTime = None
+        self._AttachedApiTotalCount = None
+        self._AttachedApis = None
+
+    @property
+    def PluginId(self):
+        return self._PluginId
+
+    @PluginId.setter
+    def PluginId(self, PluginId):
+        self._PluginId = PluginId
+
+    @property
+    def PluginName(self):
+        return self._PluginName
+
+    @PluginName.setter
+    def PluginName(self, PluginName):
+        self._PluginName = PluginName
+
+    @property
+    def PluginType(self):
+        return self._PluginType
+
+    @PluginType.setter
+    def PluginType(self, PluginType):
+        self._PluginType = PluginType
+
+    @property
+    def PluginData(self):
+        return self._PluginData
+
+    @PluginData.setter
+    def PluginData(self, PluginData):
+        self._PluginData = PluginData
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def ModifiedTime(self):
+        return self._ModifiedTime
+
+    @ModifiedTime.setter
+    def ModifiedTime(self, ModifiedTime):
+        self._ModifiedTime = ModifiedTime
+
+    @property
+    def AttachedApiTotalCount(self):
+        return self._AttachedApiTotalCount
+
+    @AttachedApiTotalCount.setter
+    def AttachedApiTotalCount(self, AttachedApiTotalCount):
+        self._AttachedApiTotalCount = AttachedApiTotalCount
+
+    @property
+    def AttachedApis(self):
+        return self._AttachedApis
+
+    @AttachedApis.setter
+    def AttachedApis(self, AttachedApis):
+        self._AttachedApis = AttachedApis
 
 
     def _deserialize(self, params):
-        self.PluginId = params.get("PluginId")
-        self.PluginName = params.get("PluginName")
-        self.PluginType = params.get("PluginType")
-        self.PluginData = params.get("PluginData")
-        self.Description = params.get("Description")
-        self.CreatedTime = params.get("CreatedTime")
-        self.ModifiedTime = params.get("ModifiedTime")
-        self.AttachedApiTotalCount = params.get("AttachedApiTotalCount")
+        self._PluginId = params.get("PluginId")
+        self._PluginName = params.get("PluginName")
+        self._PluginType = params.get("PluginType")
+        self._PluginData = params.get("PluginData")
+        self._Description = params.get("Description")
+        self._CreatedTime = params.get("CreatedTime")
+        self._ModifiedTime = params.get("ModifiedTime")
+        self._AttachedApiTotalCount = params.get("AttachedApiTotalCount")
         if params.get("AttachedApis") is not None:
-            self.AttachedApis = []
+            self._AttachedApis = []
             for item in params.get("AttachedApis"):
                 obj = AttachedApiInfo()
                 obj._deserialize(item)
-                self.AttachedApis.append(obj)
+                self._AttachedApis.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8119,24 +15492,41 @@ class ReleaseService(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ReleaseDesc: Release remarks.
+        :param _ReleaseDesc: Release remarks.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ReleaseDesc: str
-        :param ReleaseVersion: Published version ID.
+        :param _ReleaseVersion: Published version ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ReleaseVersion: str
         """
-        self.ReleaseDesc = None
-        self.ReleaseVersion = None
+        self._ReleaseDesc = None
+        self._ReleaseVersion = None
+
+    @property
+    def ReleaseDesc(self):
+        return self._ReleaseDesc
+
+    @ReleaseDesc.setter
+    def ReleaseDesc(self, ReleaseDesc):
+        self._ReleaseDesc = ReleaseDesc
+
+    @property
+    def ReleaseVersion(self):
+        return self._ReleaseVersion
+
+    @ReleaseVersion.setter
+    def ReleaseVersion(self, ReleaseVersion):
+        self._ReleaseVersion = ReleaseVersion
 
 
     def _deserialize(self, params):
-        self.ReleaseDesc = params.get("ReleaseDesc")
-        self.ReleaseVersion = params.get("ReleaseVersion")
+        self._ReleaseDesc = params.get("ReleaseDesc")
+        self._ReleaseVersion = params.get("ReleaseVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8149,30 +15539,63 @@ class ReleaseServiceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Unique ID of the service to be published.
+        :param _ServiceId: Unique ID of the service to be published.
         :type ServiceId: str
-        :param EnvironmentName: Name of the environment to be published. Valid values: test (test environment), prepub (pre-release environment), release (release environment).
+        :param _EnvironmentName: Name of the environment to be published. Valid values: test (test environment), prepub (pre-release environment), release (release environment).
         :type EnvironmentName: str
-        :param ReleaseDesc: Release description.
+        :param _ReleaseDesc: Release description.
         :type ReleaseDesc: str
-        :param ApiIds: `apiId` list, which is reserved. Full API release is used by default.
+        :param _ApiIds: `apiId` list, which is reserved. Full API release is used by default.
         :type ApiIds: list of str
         """
-        self.ServiceId = None
-        self.EnvironmentName = None
-        self.ReleaseDesc = None
-        self.ApiIds = None
+        self._ServiceId = None
+        self._EnvironmentName = None
+        self._ReleaseDesc = None
+        self._ApiIds = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def EnvironmentName(self):
+        return self._EnvironmentName
+
+    @EnvironmentName.setter
+    def EnvironmentName(self, EnvironmentName):
+        self._EnvironmentName = EnvironmentName
+
+    @property
+    def ReleaseDesc(self):
+        return self._ReleaseDesc
+
+    @ReleaseDesc.setter
+    def ReleaseDesc(self, ReleaseDesc):
+        self._ReleaseDesc = ReleaseDesc
+
+    @property
+    def ApiIds(self):
+        return self._ApiIds
+
+    @ApiIds.setter
+    def ApiIds(self, ApiIds):
+        self._ApiIds = ApiIds
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.EnvironmentName = params.get("EnvironmentName")
-        self.ReleaseDesc = params.get("ReleaseDesc")
-        self.ApiIds = params.get("ApiIds")
+        self._ServiceId = params.get("ServiceId")
+        self._EnvironmentName = params.get("EnvironmentName")
+        self._ReleaseDesc = params.get("ReleaseDesc")
+        self._ApiIds = params.get("ApiIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8185,20 +15608,36 @@ class ReleaseServiceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Release information.
+        :param _Result: Release information.
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.ReleaseService`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = ReleaseService()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = ReleaseService()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class ReqParameter(AbstractModel):
@@ -8208,38 +15647,87 @@ class ReqParameter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: API frontend parameter name.
+        :param _Name: API frontend parameter name.
         :type Name: str
-        :param Position: Position of the API frontend parameter, such as the header. Supported values: `header`, `query`, and `path`.
+        :param _Position: Position of the API frontend parameter, such as the header. Supported values: `header`, `query`, and `path`.
         :type Position: str
-        :param Type: API frontend parameter type, such as `String` and `int`.
+        :param _Type: API frontend parameter type, such as `String` and `int`.
         :type Type: str
-        :param DefaultValue: Default value of API frontend parameter.
+        :param _DefaultValue: Default value of API frontend parameter.
         :type DefaultValue: str
-        :param Required: Whether the API frontend parameter is required. True: yes; False: no.
+        :param _Required: Whether the API frontend parameter is required. True: yes; False: no.
         :type Required: bool
-        :param Desc: API frontend parameter remarks.
+        :param _Desc: API frontend parameter remarks.
         :type Desc: str
         """
-        self.Name = None
-        self.Position = None
-        self.Type = None
-        self.DefaultValue = None
-        self.Required = None
-        self.Desc = None
+        self._Name = None
+        self._Position = None
+        self._Type = None
+        self._DefaultValue = None
+        self._Required = None
+        self._Desc = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Position(self):
+        return self._Position
+
+    @Position.setter
+    def Position(self, Position):
+        self._Position = Position
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def DefaultValue(self):
+        return self._DefaultValue
+
+    @DefaultValue.setter
+    def DefaultValue(self, DefaultValue):
+        self._DefaultValue = DefaultValue
+
+    @property
+    def Required(self):
+        return self._Required
+
+    @Required.setter
+    def Required(self, Required):
+        self._Required = Required
+
+    @property
+    def Desc(self):
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Position = params.get("Position")
-        self.Type = params.get("Type")
-        self.DefaultValue = params.get("DefaultValue")
-        self.Required = params.get("Required")
-        self.Desc = params.get("Desc")
+        self._Name = params.get("Name")
+        self._Position = params.get("Position")
+        self._Type = params.get("Type")
+        self._DefaultValue = params.get("DefaultValue")
+        self._Required = params.get("Required")
+        self._Desc = params.get("Desc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8252,22 +15740,39 @@ class RequestConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Path: API path, such as `/path`.
+        :param _Path: API path, such as `/path`.
         :type Path: str
-        :param Method: API request method, such as `GET`.
+        :param _Method: API request method, such as `GET`.
         :type Method: str
         """
-        self.Path = None
-        self.Method = None
+        self._Path = None
+        self._Method = None
+
+    @property
+    def Path(self):
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Method(self):
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
 
 
     def _deserialize(self, params):
-        self.Path = params.get("Path")
-        self.Method = params.get("Method")
+        self._Path = params.get("Path")
+        self._Method = params.get("Method")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8280,38 +15785,87 @@ class RequestParameter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: Request parameter name
+        :param _Name: Request parameter name
         :type Name: str
-        :param Desc: Description
+        :param _Desc: Description
         :type Desc: str
-        :param Position: Parameter position
+        :param _Position: Parameter position
         :type Position: str
-        :param Type: Parameter type
+        :param _Type: Parameter type
         :type Type: str
-        :param DefaultValue: Default value
+        :param _DefaultValue: Default value
         :type DefaultValue: str
-        :param Required: Whether it is required
+        :param _Required: Whether it is required
         :type Required: bool
         """
-        self.Name = None
-        self.Desc = None
-        self.Position = None
-        self.Type = None
-        self.DefaultValue = None
-        self.Required = None
+        self._Name = None
+        self._Desc = None
+        self._Position = None
+        self._Type = None
+        self._DefaultValue = None
+        self._Required = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Desc(self):
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+    @property
+    def Position(self):
+        return self._Position
+
+    @Position.setter
+    def Position(self, Position):
+        self._Position = Position
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def DefaultValue(self):
+        return self._DefaultValue
+
+    @DefaultValue.setter
+    def DefaultValue(self, DefaultValue):
+        self._DefaultValue = DefaultValue
+
+    @property
+    def Required(self):
+        return self._Required
+
+    @Required.setter
+    def Required(self, Required):
+        self._Required = Required
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Desc = params.get("Desc")
-        self.Position = params.get("Position")
-        self.Type = params.get("Type")
-        self.DefaultValue = params.get("DefaultValue")
-        self.Required = params.get("Required")
+        self._Name = params.get("Name")
+        self._Desc = params.get("Desc")
+        self._Position = params.get("Position")
+        self._Type = params.get("Type")
+        self._DefaultValue = params.get("DefaultValue")
+        self._Required = params.get("Required")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8324,18 +15878,27 @@ class ResetAPIDocPasswordRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApiDocId: API document ID
+        :param _ApiDocId: API document ID
         :type ApiDocId: str
         """
-        self.ApiDocId = None
+        self._ApiDocId = None
+
+    @property
+    def ApiDocId(self):
+        return self._ApiDocId
+
+    @ApiDocId.setter
+    def ApiDocId(self, ApiDocId):
+        self._ApiDocId = ApiDocId
 
 
     def _deserialize(self, params):
-        self.ApiDocId = params.get("ApiDocId")
+        self._ApiDocId = params.get("ApiDocId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8348,20 +15911,36 @@ class ResetAPIDocPasswordResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Basic information of API document
+        :param _Result: Basic information of API document
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.APIDoc`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = APIDoc()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = APIDoc()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class ResponseErrorCodeReq(AbstractModel):
@@ -8371,34 +15950,75 @@ class ResponseErrorCodeReq(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Code: Custom response configuration error code.
+        :param _Code: Custom response configuration error code.
         :type Code: int
-        :param Msg: Custom response configuration error message.
+        :param _Msg: Custom response configuration error message.
         :type Msg: str
-        :param Desc: Custom response configuration error code remarks.
+        :param _Desc: Custom response configuration error code remarks.
         :type Desc: str
-        :param ConvertedCode: Custom error code conversion.
+        :param _ConvertedCode: Custom error code conversion.
         :type ConvertedCode: int
-        :param NeedConvert: Whether to enable error code conversion.
+        :param _NeedConvert: Whether to enable error code conversion.
         :type NeedConvert: bool
         """
-        self.Code = None
-        self.Msg = None
-        self.Desc = None
-        self.ConvertedCode = None
-        self.NeedConvert = None
+        self._Code = None
+        self._Msg = None
+        self._Desc = None
+        self._ConvertedCode = None
+        self._NeedConvert = None
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Msg(self):
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Desc(self):
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+    @property
+    def ConvertedCode(self):
+        return self._ConvertedCode
+
+    @ConvertedCode.setter
+    def ConvertedCode(self, ConvertedCode):
+        self._ConvertedCode = ConvertedCode
+
+    @property
+    def NeedConvert(self):
+        return self._NeedConvert
+
+    @NeedConvert.setter
+    def NeedConvert(self, NeedConvert):
+        self._NeedConvert = NeedConvert
 
 
     def _deserialize(self, params):
-        self.Code = params.get("Code")
-        self.Msg = params.get("Msg")
-        self.Desc = params.get("Desc")
-        self.ConvertedCode = params.get("ConvertedCode")
-        self.NeedConvert = params.get("NeedConvert")
+        self._Code = params.get("Code")
+        self._Msg = params.get("Msg")
+        self._Desc = params.get("Desc")
+        self._ConvertedCode = params.get("ConvertedCode")
+        self._NeedConvert = params.get("NeedConvert")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8411,114 +16031,267 @@ class Service(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InnerHttpsPort: Port for HTTPS access over private network.
+        :param _InnerHttpsPort: Port for HTTPS access over private network.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type InnerHttpsPort: int
-        :param ServiceDesc: Custom service description.
+        :param _ServiceDesc: Custom service description.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceDesc: str
-        :param Protocol: Service frontend request type, such as `http`, `https`, and `http&https`.
+        :param _Protocol: Service frontend request type, such as `http`, `https`, and `http&https`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Protocol: str
-        :param ModifiedTime: Last modified time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+        :param _ModifiedTime: Last modified time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ModifiedTime: str
-        :param NetTypes: Network types supported by service.
+        :param _NetTypes: Network types supported by service.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type NetTypes: list of str
-        :param ExclusiveSetName: Dedicated cluster name.
+        :param _ExclusiveSetName: Dedicated cluster name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ExclusiveSetName: str
-        :param ServiceId: Unique service ID.
+        :param _ServiceId: Unique service ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceId: str
-        :param IpVersion: IP version.
+        :param _IpVersion: IP version.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IpVersion: str
-        :param AvailableEnvironments: List of published environments, such as test, prepub, and release.
+        :param _AvailableEnvironments: List of published environments, such as test, prepub, and release.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AvailableEnvironments: list of str
-        :param ServiceName: Custom service name.
+        :param _ServiceName: Custom service name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceName: str
-        :param OuterSubDomain: Public domain name assigned by the system for this service.
+        :param _OuterSubDomain: Public domain name assigned by the system for this service.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OuterSubDomain: str
-        :param CreatedTime: Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+        :param _CreatedTime: Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CreatedTime: str
-        :param InnerHttpPort: Port for HTTP access over private network.
+        :param _InnerHttpPort: Port for HTTP access over private network.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type InnerHttpPort: int
-        :param InnerSubDomain: Private domain name automatically assigned by the system for this service.
+        :param _InnerSubDomain: Private domain name automatically assigned by the system for this service.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type InnerSubDomain: str
-        :param TradeIsolateStatus: Billing status of service.
+        :param _TradeIsolateStatus: Billing status of service.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TradeIsolateStatus: int
-        :param Tags: Tags bound to a service.
+        :param _Tags: Tags bound to a service.
 Note: this field may return null, indicating that no valid values found.
         :type Tags: list of Tag
-        :param InstanceId: Dedicated instance
+        :param _InstanceId: Dedicated instance
 Note: this field may return null, indicating that no valid values can be obtained.
         :type InstanceId: str
-        :param SetType: Cluster type
+        :param _SetType: Cluster type
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SetType: str
-        :param DeploymentType: Cluster type for service deployment
+        :param _DeploymentType: Cluster type for service deployment
 Note: this field may return null, indicating that no valid values found.
         :type DeploymentType: str
         """
-        self.InnerHttpsPort = None
-        self.ServiceDesc = None
-        self.Protocol = None
-        self.ModifiedTime = None
-        self.NetTypes = None
-        self.ExclusiveSetName = None
-        self.ServiceId = None
-        self.IpVersion = None
-        self.AvailableEnvironments = None
-        self.ServiceName = None
-        self.OuterSubDomain = None
-        self.CreatedTime = None
-        self.InnerHttpPort = None
-        self.InnerSubDomain = None
-        self.TradeIsolateStatus = None
-        self.Tags = None
-        self.InstanceId = None
-        self.SetType = None
-        self.DeploymentType = None
+        self._InnerHttpsPort = None
+        self._ServiceDesc = None
+        self._Protocol = None
+        self._ModifiedTime = None
+        self._NetTypes = None
+        self._ExclusiveSetName = None
+        self._ServiceId = None
+        self._IpVersion = None
+        self._AvailableEnvironments = None
+        self._ServiceName = None
+        self._OuterSubDomain = None
+        self._CreatedTime = None
+        self._InnerHttpPort = None
+        self._InnerSubDomain = None
+        self._TradeIsolateStatus = None
+        self._Tags = None
+        self._InstanceId = None
+        self._SetType = None
+        self._DeploymentType = None
+
+    @property
+    def InnerHttpsPort(self):
+        return self._InnerHttpsPort
+
+    @InnerHttpsPort.setter
+    def InnerHttpsPort(self, InnerHttpsPort):
+        self._InnerHttpsPort = InnerHttpsPort
+
+    @property
+    def ServiceDesc(self):
+        return self._ServiceDesc
+
+    @ServiceDesc.setter
+    def ServiceDesc(self, ServiceDesc):
+        self._ServiceDesc = ServiceDesc
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def ModifiedTime(self):
+        return self._ModifiedTime
+
+    @ModifiedTime.setter
+    def ModifiedTime(self, ModifiedTime):
+        self._ModifiedTime = ModifiedTime
+
+    @property
+    def NetTypes(self):
+        return self._NetTypes
+
+    @NetTypes.setter
+    def NetTypes(self, NetTypes):
+        self._NetTypes = NetTypes
+
+    @property
+    def ExclusiveSetName(self):
+        return self._ExclusiveSetName
+
+    @ExclusiveSetName.setter
+    def ExclusiveSetName(self, ExclusiveSetName):
+        self._ExclusiveSetName = ExclusiveSetName
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def IpVersion(self):
+        return self._IpVersion
+
+    @IpVersion.setter
+    def IpVersion(self, IpVersion):
+        self._IpVersion = IpVersion
+
+    @property
+    def AvailableEnvironments(self):
+        return self._AvailableEnvironments
+
+    @AvailableEnvironments.setter
+    def AvailableEnvironments(self, AvailableEnvironments):
+        self._AvailableEnvironments = AvailableEnvironments
+
+    @property
+    def ServiceName(self):
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def OuterSubDomain(self):
+        return self._OuterSubDomain
+
+    @OuterSubDomain.setter
+    def OuterSubDomain(self, OuterSubDomain):
+        self._OuterSubDomain = OuterSubDomain
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def InnerHttpPort(self):
+        return self._InnerHttpPort
+
+    @InnerHttpPort.setter
+    def InnerHttpPort(self, InnerHttpPort):
+        self._InnerHttpPort = InnerHttpPort
+
+    @property
+    def InnerSubDomain(self):
+        return self._InnerSubDomain
+
+    @InnerSubDomain.setter
+    def InnerSubDomain(self, InnerSubDomain):
+        self._InnerSubDomain = InnerSubDomain
+
+    @property
+    def TradeIsolateStatus(self):
+        return self._TradeIsolateStatus
+
+    @TradeIsolateStatus.setter
+    def TradeIsolateStatus(self, TradeIsolateStatus):
+        self._TradeIsolateStatus = TradeIsolateStatus
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def SetType(self):
+        return self._SetType
+
+    @SetType.setter
+    def SetType(self, SetType):
+        self._SetType = SetType
+
+    @property
+    def DeploymentType(self):
+        return self._DeploymentType
+
+    @DeploymentType.setter
+    def DeploymentType(self, DeploymentType):
+        self._DeploymentType = DeploymentType
 
 
     def _deserialize(self, params):
-        self.InnerHttpsPort = params.get("InnerHttpsPort")
-        self.ServiceDesc = params.get("ServiceDesc")
-        self.Protocol = params.get("Protocol")
-        self.ModifiedTime = params.get("ModifiedTime")
-        self.NetTypes = params.get("NetTypes")
-        self.ExclusiveSetName = params.get("ExclusiveSetName")
-        self.ServiceId = params.get("ServiceId")
-        self.IpVersion = params.get("IpVersion")
-        self.AvailableEnvironments = params.get("AvailableEnvironments")
-        self.ServiceName = params.get("ServiceName")
-        self.OuterSubDomain = params.get("OuterSubDomain")
-        self.CreatedTime = params.get("CreatedTime")
-        self.InnerHttpPort = params.get("InnerHttpPort")
-        self.InnerSubDomain = params.get("InnerSubDomain")
-        self.TradeIsolateStatus = params.get("TradeIsolateStatus")
+        self._InnerHttpsPort = params.get("InnerHttpsPort")
+        self._ServiceDesc = params.get("ServiceDesc")
+        self._Protocol = params.get("Protocol")
+        self._ModifiedTime = params.get("ModifiedTime")
+        self._NetTypes = params.get("NetTypes")
+        self._ExclusiveSetName = params.get("ExclusiveSetName")
+        self._ServiceId = params.get("ServiceId")
+        self._IpVersion = params.get("IpVersion")
+        self._AvailableEnvironments = params.get("AvailableEnvironments")
+        self._ServiceName = params.get("ServiceName")
+        self._OuterSubDomain = params.get("OuterSubDomain")
+        self._CreatedTime = params.get("CreatedTime")
+        self._InnerHttpPort = params.get("InnerHttpPort")
+        self._InnerSubDomain = params.get("InnerSubDomain")
+        self._TradeIsolateStatus = params.get("TradeIsolateStatus")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.InstanceId = params.get("InstanceId")
-        self.SetType = params.get("SetType")
-        self.DeploymentType = params.get("DeploymentType")
+                self._Tags.append(obj)
+        self._InstanceId = params.get("InstanceId")
+        self._SetType = params.get("SetType")
+        self._DeploymentType = params.get("DeploymentType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8531,46 +16304,103 @@ class ServiceConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Product: The backend type. It’s available when `vpc` is enabled. Values: `clb`, `cvm` and `upstream`.
+        :param _Product: The backend type. It’s available when `vpc` is enabled. Values: `clb`, `cvm` and `upstream`.
         :type Product: str
-        :param UniqVpcId: Unique VPC ID.
+        :param _UniqVpcId: Unique VPC ID.
         :type UniqVpcId: str
-        :param Url: API backend service URL, which is required if `ServiceType` is `HTTP`.
+        :param _Url: API backend service URL, which is required if `ServiceType` is `HTTP`.
         :type Url: str
-        :param Path: API backend service path, such as `/path`, which is required if `ServiceType` is `HTTP`. The frontend and backend paths can be different.
+        :param _Path: API backend service path, such as `/path`, which is required if `ServiceType` is `HTTP`. The frontend and backend paths can be different.
         :type Path: str
-        :param Method: API backend service request method, such as `GET`, which is required if `ServiceType` is `HTTP`. The frontend and backend methods can be different
+        :param _Method: API backend service request method, such as `GET`, which is required if `ServiceType` is `HTTP`. The frontend and backend methods can be different
         :type Method: str
-        :param UpstreamId: It’s required for `upstream`.
+        :param _UpstreamId: It’s required for `upstream`.
 Note: This field may return `NULL`, indicating that no valid value was found.
         :type UpstreamId: str
-        :param CosConfig: API backend COS configuration. It’s required if the `ServiceType` is ·`COS`.
+        :param _CosConfig: API backend COS configuration. It’s required if the `ServiceType` is ·`COS`.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type CosConfig: :class:`tencentcloud.apigateway.v20180808.models.CosConfig`
         """
-        self.Product = None
-        self.UniqVpcId = None
-        self.Url = None
-        self.Path = None
-        self.Method = None
-        self.UpstreamId = None
-        self.CosConfig = None
+        self._Product = None
+        self._UniqVpcId = None
+        self._Url = None
+        self._Path = None
+        self._Method = None
+        self._UpstreamId = None
+        self._CosConfig = None
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def UniqVpcId(self):
+        return self._UniqVpcId
+
+    @UniqVpcId.setter
+    def UniqVpcId(self, UniqVpcId):
+        self._UniqVpcId = UniqVpcId
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Path(self):
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Method(self):
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
+    @property
+    def UpstreamId(self):
+        return self._UpstreamId
+
+    @UpstreamId.setter
+    def UpstreamId(self, UpstreamId):
+        self._UpstreamId = UpstreamId
+
+    @property
+    def CosConfig(self):
+        return self._CosConfig
+
+    @CosConfig.setter
+    def CosConfig(self, CosConfig):
+        self._CosConfig = CosConfig
 
 
     def _deserialize(self, params):
-        self.Product = params.get("Product")
-        self.UniqVpcId = params.get("UniqVpcId")
-        self.Url = params.get("Url")
-        self.Path = params.get("Path")
-        self.Method = params.get("Method")
-        self.UpstreamId = params.get("UpstreamId")
+        self._Product = params.get("Product")
+        self._UniqVpcId = params.get("UniqVpcId")
+        self._Url = params.get("Url")
+        self._Path = params.get("Path")
+        self._Method = params.get("Method")
+        self._UpstreamId = params.get("UpstreamId")
         if params.get("CosConfig") is not None:
-            self.CosConfig = CosConfig()
-            self.CosConfig._deserialize(params.get("CosConfig"))
+            self._CosConfig = CosConfig()
+            self._CosConfig._deserialize(params.get("CosConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8583,29 +16413,46 @@ class ServiceEnvironmentSet(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Total number of environments bound to service.
+        :param _TotalCount: Total number of environments bound to service.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TotalCount: int
-        :param EnvironmentList: List of environments bound to service.
+        :param _EnvironmentList: List of environments bound to service.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type EnvironmentList: list of Environment
         """
-        self.TotalCount = None
-        self.EnvironmentList = None
+        self._TotalCount = None
+        self._EnvironmentList = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def EnvironmentList(self):
+        return self._EnvironmentList
+
+    @EnvironmentList.setter
+    def EnvironmentList(self, EnvironmentList):
+        self._EnvironmentList = EnvironmentList
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("EnvironmentList") is not None:
-            self.EnvironmentList = []
+            self._EnvironmentList = []
             for item in params.get("EnvironmentList"):
                 obj = Environment()
                 obj._deserialize(item)
-                self.EnvironmentList.append(obj)
+                self._EnvironmentList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8618,40 +16465,89 @@ class ServiceEnvironmentStrategy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EnvironmentName: Environment name.
+        :param _EnvironmentName: Environment name.
         :type EnvironmentName: str
-        :param Url: Access service environment URL.
+        :param _Url: Access service environment URL.
         :type Url: str
-        :param Status: Release status.
+        :param _Status: Release status.
         :type Status: int
-        :param VersionName: Published version number.
+        :param _VersionName: Published version number.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type VersionName: str
-        :param Strategy: Throttling value.
+        :param _Strategy: Throttling value.
         :type Strategy: int
-        :param MaxStrategy: Maximum quota value
+        :param _MaxStrategy: Maximum quota value
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MaxStrategy: int
         """
-        self.EnvironmentName = None
-        self.Url = None
-        self.Status = None
-        self.VersionName = None
-        self.Strategy = None
-        self.MaxStrategy = None
+        self._EnvironmentName = None
+        self._Url = None
+        self._Status = None
+        self._VersionName = None
+        self._Strategy = None
+        self._MaxStrategy = None
+
+    @property
+    def EnvironmentName(self):
+        return self._EnvironmentName
+
+    @EnvironmentName.setter
+    def EnvironmentName(self, EnvironmentName):
+        self._EnvironmentName = EnvironmentName
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def VersionName(self):
+        return self._VersionName
+
+    @VersionName.setter
+    def VersionName(self, VersionName):
+        self._VersionName = VersionName
+
+    @property
+    def Strategy(self):
+        return self._Strategy
+
+    @Strategy.setter
+    def Strategy(self, Strategy):
+        self._Strategy = Strategy
+
+    @property
+    def MaxStrategy(self):
+        return self._MaxStrategy
+
+    @MaxStrategy.setter
+    def MaxStrategy(self, MaxStrategy):
+        self._MaxStrategy = MaxStrategy
 
 
     def _deserialize(self, params):
-        self.EnvironmentName = params.get("EnvironmentName")
-        self.Url = params.get("Url")
-        self.Status = params.get("Status")
-        self.VersionName = params.get("VersionName")
-        self.Strategy = params.get("Strategy")
-        self.MaxStrategy = params.get("MaxStrategy")
+        self._EnvironmentName = params.get("EnvironmentName")
+        self._Url = params.get("Url")
+        self._Status = params.get("Status")
+        self._VersionName = params.get("VersionName")
+        self._Strategy = params.get("Strategy")
+        self._MaxStrategy = params.get("MaxStrategy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8664,29 +16560,46 @@ class ServiceEnvironmentStrategyStatus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Number of throttling policies.
+        :param _TotalCount: Number of throttling policies.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TotalCount: int
-        :param EnvironmentList: Throttling policy list.
+        :param _EnvironmentList: Throttling policy list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type EnvironmentList: list of ServiceEnvironmentStrategy
         """
-        self.TotalCount = None
-        self.EnvironmentList = None
+        self._TotalCount = None
+        self._EnvironmentList = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def EnvironmentList(self):
+        return self._EnvironmentList
+
+    @EnvironmentList.setter
+    def EnvironmentList(self, EnvironmentList):
+        self._EnvironmentList = EnvironmentList
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("EnvironmentList") is not None:
-            self.EnvironmentList = []
+            self._EnvironmentList = []
             for item in params.get("EnvironmentList"):
                 obj = ServiceEnvironmentStrategy()
                 obj._deserialize(item)
-                self.EnvironmentList.append(obj)
+                self._EnvironmentList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8699,49 +16612,106 @@ class ServiceParameter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: API backend service parameter name, which is used only if `ServiceType` is `HTTP`. The frontend and backend parameter names can be different.
+        :param _Name: API backend service parameter name, which is used only if `ServiceType` is `HTTP`. The frontend and backend parameter names can be different.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Name: str
-        :param Position: Position of API backend service parameter, such as `head`, which is used only if `ServiceType` is `HTTP`. The positions of frontend and backend parameters can be different.
+        :param _Position: Position of API backend service parameter, such as `head`, which is used only if `ServiceType` is `HTTP`. The positions of frontend and backend parameters can be different.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Position: str
-        :param RelevantRequestParameterPosition: Position of the API frontend parameter corresponding to the backend service parameter, such as `head`, which is used only if `ServiceType` is `HTTP`.
+        :param _RelevantRequestParameterPosition: Position of the API frontend parameter corresponding to the backend service parameter, such as `head`, which is used only if `ServiceType` is `HTTP`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RelevantRequestParameterPosition: str
-        :param RelevantRequestParameterName: Name of the API frontend parameter corresponding to the backend service parameter, which is used only if `ServiceType` is `HTTP`.
+        :param _RelevantRequestParameterName: Name of the API frontend parameter corresponding to the backend service parameter, which is used only if `ServiceType` is `HTTP`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RelevantRequestParameterName: str
-        :param DefaultValue: Default value of API backend service parameter, which is used only if `ServiceType` is `HTTP`.
+        :param _DefaultValue: Default value of API backend service parameter, which is used only if `ServiceType` is `HTTP`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DefaultValue: str
-        :param RelevantRequestParameterDesc: API backend service parameter remarks, which is used only if `ServiceType` is `HTTP`.
+        :param _RelevantRequestParameterDesc: API backend service parameter remarks, which is used only if `ServiceType` is `HTTP`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RelevantRequestParameterDesc: str
-        :param RelevantRequestParameterType: API backend service parameter type, which is used only if `ServiceType` is `HTTP`.
+        :param _RelevantRequestParameterType: API backend service parameter type, which is used only if `ServiceType` is `HTTP`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RelevantRequestParameterType: str
         """
-        self.Name = None
-        self.Position = None
-        self.RelevantRequestParameterPosition = None
-        self.RelevantRequestParameterName = None
-        self.DefaultValue = None
-        self.RelevantRequestParameterDesc = None
-        self.RelevantRequestParameterType = None
+        self._Name = None
+        self._Position = None
+        self._RelevantRequestParameterPosition = None
+        self._RelevantRequestParameterName = None
+        self._DefaultValue = None
+        self._RelevantRequestParameterDesc = None
+        self._RelevantRequestParameterType = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Position(self):
+        return self._Position
+
+    @Position.setter
+    def Position(self, Position):
+        self._Position = Position
+
+    @property
+    def RelevantRequestParameterPosition(self):
+        return self._RelevantRequestParameterPosition
+
+    @RelevantRequestParameterPosition.setter
+    def RelevantRequestParameterPosition(self, RelevantRequestParameterPosition):
+        self._RelevantRequestParameterPosition = RelevantRequestParameterPosition
+
+    @property
+    def RelevantRequestParameterName(self):
+        return self._RelevantRequestParameterName
+
+    @RelevantRequestParameterName.setter
+    def RelevantRequestParameterName(self, RelevantRequestParameterName):
+        self._RelevantRequestParameterName = RelevantRequestParameterName
+
+    @property
+    def DefaultValue(self):
+        return self._DefaultValue
+
+    @DefaultValue.setter
+    def DefaultValue(self, DefaultValue):
+        self._DefaultValue = DefaultValue
+
+    @property
+    def RelevantRequestParameterDesc(self):
+        return self._RelevantRequestParameterDesc
+
+    @RelevantRequestParameterDesc.setter
+    def RelevantRequestParameterDesc(self, RelevantRequestParameterDesc):
+        self._RelevantRequestParameterDesc = RelevantRequestParameterDesc
+
+    @property
+    def RelevantRequestParameterType(self):
+        return self._RelevantRequestParameterType
+
+    @RelevantRequestParameterType.setter
+    def RelevantRequestParameterType(self, RelevantRequestParameterType):
+        self._RelevantRequestParameterType = RelevantRequestParameterType
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Position = params.get("Position")
-        self.RelevantRequestParameterPosition = params.get("RelevantRequestParameterPosition")
-        self.RelevantRequestParameterName = params.get("RelevantRequestParameterName")
-        self.DefaultValue = params.get("DefaultValue")
-        self.RelevantRequestParameterDesc = params.get("RelevantRequestParameterDesc")
-        self.RelevantRequestParameterType = params.get("RelevantRequestParameterType")
+        self._Name = params.get("Name")
+        self._Position = params.get("Position")
+        self._RelevantRequestParameterPosition = params.get("RelevantRequestParameterPosition")
+        self._RelevantRequestParameterName = params.get("RelevantRequestParameterName")
+        self._DefaultValue = params.get("DefaultValue")
+        self._RelevantRequestParameterDesc = params.get("RelevantRequestParameterDesc")
+        self._RelevantRequestParameterType = params.get("RelevantRequestParameterType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8754,29 +16724,46 @@ class ServiceReleaseHistory(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Total number of published versions.
+        :param _TotalCount: Total number of published versions.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TotalCount: int
-        :param VersionList: Historical version list.
+        :param _VersionList: Historical version list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type VersionList: list of ServiceReleaseHistoryInfo
         """
-        self.TotalCount = None
-        self.VersionList = None
+        self._TotalCount = None
+        self._VersionList = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def VersionList(self):
+        return self._VersionList
+
+    @VersionList.setter
+    def VersionList(self, VersionList):
+        self._VersionList = VersionList
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("VersionList") is not None:
-            self.VersionList = []
+            self._VersionList = []
             for item in params.get("VersionList"):
                 obj = ServiceReleaseHistoryInfo()
                 obj._deserialize(item)
-                self.VersionList.append(obj)
+                self._VersionList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8789,29 +16776,54 @@ class ServiceReleaseHistoryInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VersionName: Version ID.
+        :param _VersionName: Version ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type VersionName: str
-        :param VersionDesc: Version description.
+        :param _VersionDesc: Version description.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type VersionDesc: str
-        :param ReleaseTime: Version release time.
+        :param _ReleaseTime: Version release time.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ReleaseTime: str
         """
-        self.VersionName = None
-        self.VersionDesc = None
-        self.ReleaseTime = None
+        self._VersionName = None
+        self._VersionDesc = None
+        self._ReleaseTime = None
+
+    @property
+    def VersionName(self):
+        return self._VersionName
+
+    @VersionName.setter
+    def VersionName(self, VersionName):
+        self._VersionName = VersionName
+
+    @property
+    def VersionDesc(self):
+        return self._VersionDesc
+
+    @VersionDesc.setter
+    def VersionDesc(self, VersionDesc):
+        self._VersionDesc = VersionDesc
+
+    @property
+    def ReleaseTime(self):
+        return self._ReleaseTime
+
+    @ReleaseTime.setter
+    def ReleaseTime(self, ReleaseTime):
+        self._ReleaseTime = ReleaseTime
 
 
     def _deserialize(self, params):
-        self.VersionName = params.get("VersionName")
-        self.VersionDesc = params.get("VersionDesc")
-        self.ReleaseTime = params.get("ReleaseTime")
+        self._VersionName = params.get("VersionName")
+        self._VersionDesc = params.get("VersionDesc")
+        self._ReleaseTime = params.get("ReleaseTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8824,29 +16836,46 @@ class ServiceReleaseVersion(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Total number of published versions.
+        :param _TotalCount: Total number of published versions.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TotalCount: int
-        :param VersionList: Release version list.
+        :param _VersionList: Release version list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type VersionList: list of ServiceReleaseHistoryInfo
         """
-        self.TotalCount = None
-        self.VersionList = None
+        self._TotalCount = None
+        self._VersionList = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def VersionList(self):
+        return self._VersionList
+
+    @VersionList.setter
+    def VersionList(self, VersionList):
+        self._VersionList = VersionList
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("VersionList") is not None:
-            self.VersionList = []
+            self._VersionList = []
             for item in params.get("VersionList"):
                 obj = ServiceReleaseHistoryInfo()
                 obj._deserialize(item)
-                self.VersionList.append(obj)
+                self._VersionList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8859,27 +16888,44 @@ class ServiceSubDomainMappings(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IsDefaultMapping: Whether the default path mapping is used. true: use the default path mapping; false: use the custom path mapping (`PathMappingSet` is required in this case).
+        :param _IsDefaultMapping: Whether the default path mapping is used. true: use the default path mapping; false: use the custom path mapping (`PathMappingSet` is required in this case).
         :type IsDefaultMapping: bool
-        :param PathMappingSet: Custom path mapping list.
+        :param _PathMappingSet: Custom path mapping list.
         :type PathMappingSet: list of PathMapping
         """
-        self.IsDefaultMapping = None
-        self.PathMappingSet = None
+        self._IsDefaultMapping = None
+        self._PathMappingSet = None
+
+    @property
+    def IsDefaultMapping(self):
+        return self._IsDefaultMapping
+
+    @IsDefaultMapping.setter
+    def IsDefaultMapping(self, IsDefaultMapping):
+        self._IsDefaultMapping = IsDefaultMapping
+
+    @property
+    def PathMappingSet(self):
+        return self._PathMappingSet
+
+    @PathMappingSet.setter
+    def PathMappingSet(self, PathMappingSet):
+        self._PathMappingSet = PathMappingSet
 
 
     def _deserialize(self, params):
-        self.IsDefaultMapping = params.get("IsDefaultMapping")
+        self._IsDefaultMapping = params.get("IsDefaultMapping")
         if params.get("PathMappingSet") is not None:
-            self.PathMappingSet = []
+            self._PathMappingSet = []
             for item in params.get("PathMappingSet"):
                 obj = PathMapping()
                 obj._deserialize(item)
-                self.PathMappingSet.append(obj)
+                self._PathMappingSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8892,29 +16938,46 @@ class ServiceUsagePlanSet(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Total number of usage plans bound to service.
+        :param _TotalCount: Total number of usage plans bound to service.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TotalCount: int
-        :param ServiceUsagePlanList: List of usage plans bound to service.
+        :param _ServiceUsagePlanList: List of usage plans bound to service.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceUsagePlanList: list of ApiUsagePlan
         """
-        self.TotalCount = None
-        self.ServiceUsagePlanList = None
+        self._TotalCount = None
+        self._ServiceUsagePlanList = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ServiceUsagePlanList(self):
+        return self._ServiceUsagePlanList
+
+    @ServiceUsagePlanList.setter
+    def ServiceUsagePlanList(self, ServiceUsagePlanList):
+        self._ServiceUsagePlanList = ServiceUsagePlanList
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("ServiceUsagePlanList") is not None:
-            self.ServiceUsagePlanList = []
+            self._ServiceUsagePlanList = []
             for item in params.get("ServiceUsagePlanList"):
                 obj = ApiUsagePlan()
                 obj._deserialize(item)
-                self.ServiceUsagePlanList.append(obj)
+                self._ServiceUsagePlanList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8927,29 +16990,46 @@ class ServicesStatus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Total number of services in list.
+        :param _TotalCount: Total number of services in list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TotalCount: int
-        :param ServiceSet: Service list details.
+        :param _ServiceSet: Service list details.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceSet: list of Service
         """
-        self.TotalCount = None
-        self.ServiceSet = None
+        self._TotalCount = None
+        self._ServiceSet = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ServiceSet(self):
+        return self._ServiceSet
+
+    @ServiceSet.setter
+    def ServiceSet(self, ServiceSet):
+        self._ServiceSet = ServiceSet
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("ServiceSet") is not None:
-            self.ServiceSet = []
+            self._ServiceSet = []
             for item in params.get("ServiceSet"):
                 obj = Service()
                 obj._deserialize(item)
-                self.ServiceSet.append(obj)
+                self._ServiceSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8962,22 +17042,39 @@ class Tag(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Key: Tag key.
+        :param _Key: Tag key.
         :type Key: str
-        :param Value: Tag value.
+        :param _Value: Tag value.
         :type Value: str
         """
-        self.Key = None
-        self.Value = None
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
 
 
     def _deserialize(self, params):
-        self.Key = params.get("Key")
-        self.Value = params.get("Value")
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -8990,34 +17087,75 @@ class TargetServicesReq(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VmIp: VM IP
+        :param _VmIp: VM IP
         :type VmIp: str
-        :param VpcId: VPC ID
+        :param _VpcId: VPC ID
         :type VpcId: str
-        :param VmPort: VM Port
+        :param _VmPort: VM Port
         :type VmPort: int
-        :param HostIp: IP of the host where the CVM instance resides
+        :param _HostIp: IP of the host where the CVM instance resides
         :type HostIp: str
-        :param DockerIp: Docker IP
+        :param _DockerIp: Docker IP
         :type DockerIp: str
         """
-        self.VmIp = None
-        self.VpcId = None
-        self.VmPort = None
-        self.HostIp = None
-        self.DockerIp = None
+        self._VmIp = None
+        self._VpcId = None
+        self._VmPort = None
+        self._HostIp = None
+        self._DockerIp = None
+
+    @property
+    def VmIp(self):
+        return self._VmIp
+
+    @VmIp.setter
+    def VmIp(self, VmIp):
+        self._VmIp = VmIp
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def VmPort(self):
+        return self._VmPort
+
+    @VmPort.setter
+    def VmPort(self, VmPort):
+        self._VmPort = VmPort
+
+    @property
+    def HostIp(self):
+        return self._HostIp
+
+    @HostIp.setter
+    def HostIp(self, HostIp):
+        self._HostIp = HostIp
+
+    @property
+    def DockerIp(self):
+        return self._DockerIp
+
+    @DockerIp.setter
+    def DockerIp(self, DockerIp):
+        self._DockerIp = DockerIp
 
 
     def _deserialize(self, params):
-        self.VmIp = params.get("VmIp")
-        self.VpcId = params.get("VpcId")
-        self.VmPort = params.get("VmPort")
-        self.HostIp = params.get("HostIp")
-        self.DockerIp = params.get("DockerIp")
+        self._VmIp = params.get("VmIp")
+        self._VpcId = params.get("VpcId")
+        self._VmPort = params.get("VmPort")
+        self._HostIp = params.get("HostIp")
+        self._DockerIp = params.get("DockerIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9030,34 +17168,67 @@ class TsfLoadBalanceConfResp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IsLoadBalance: Whether load balancing is enabled.
+        :param _IsLoadBalance: Whether load balancing is enabled.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IsLoadBalance: bool
-        :param Method: Load balancing method.
+        :param _Method: Load balancing method.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Method: str
-        :param SessionStickRequired: Whether session persistence is enabled.
+        :param _SessionStickRequired: Whether session persistence is enabled.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SessionStickRequired: bool
-        :param SessionStickTimeout: Session persistence timeout period.
+        :param _SessionStickTimeout: Session persistence timeout period.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SessionStickTimeout: int
         """
-        self.IsLoadBalance = None
-        self.Method = None
-        self.SessionStickRequired = None
-        self.SessionStickTimeout = None
+        self._IsLoadBalance = None
+        self._Method = None
+        self._SessionStickRequired = None
+        self._SessionStickTimeout = None
+
+    @property
+    def IsLoadBalance(self):
+        return self._IsLoadBalance
+
+    @IsLoadBalance.setter
+    def IsLoadBalance(self, IsLoadBalance):
+        self._IsLoadBalance = IsLoadBalance
+
+    @property
+    def Method(self):
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
+    @property
+    def SessionStickRequired(self):
+        return self._SessionStickRequired
+
+    @SessionStickRequired.setter
+    def SessionStickRequired(self, SessionStickRequired):
+        self._SessionStickRequired = SessionStickRequired
+
+    @property
+    def SessionStickTimeout(self):
+        return self._SessionStickTimeout
+
+    @SessionStickTimeout.setter
+    def SessionStickTimeout(self, SessionStickTimeout):
+        self._SessionStickTimeout = SessionStickTimeout
 
 
     def _deserialize(self, params):
-        self.IsLoadBalance = params.get("IsLoadBalance")
-        self.Method = params.get("Method")
-        self.SessionStickRequired = params.get("SessionStickRequired")
-        self.SessionStickTimeout = params.get("SessionStickTimeout")
+        self._IsLoadBalance = params.get("IsLoadBalance")
+        self._Method = params.get("Method")
+        self._SessionStickRequired = params.get("SessionStickRequired")
+        self._SessionStickTimeout = params.get("SessionStickTimeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9070,34 +17241,75 @@ class UnBindEnvironmentRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BindType: Binding type. Valid values: API, SERVICE. Default value: SERVICE.
+        :param _BindType: Binding type. Valid values: API, SERVICE. Default value: SERVICE.
         :type BindType: str
-        :param UsagePlanIds: List of unique IDs of the usage plans to be bound.
+        :param _UsagePlanIds: List of unique IDs of the usage plans to be bound.
         :type UsagePlanIds: list of str
-        :param Environment: Service environment to be unbound.
+        :param _Environment: Service environment to be unbound.
         :type Environment: str
-        :param ServiceId: Unique ID of the service to be unbound.
+        :param _ServiceId: Unique ID of the service to be unbound.
         :type ServiceId: str
-        :param ApiIds: Unique API ID array, which is required if `BindType` is `API`.
+        :param _ApiIds: Unique API ID array, which is required if `BindType` is `API`.
         :type ApiIds: list of str
         """
-        self.BindType = None
-        self.UsagePlanIds = None
-        self.Environment = None
-        self.ServiceId = None
-        self.ApiIds = None
+        self._BindType = None
+        self._UsagePlanIds = None
+        self._Environment = None
+        self._ServiceId = None
+        self._ApiIds = None
+
+    @property
+    def BindType(self):
+        return self._BindType
+
+    @BindType.setter
+    def BindType(self, BindType):
+        self._BindType = BindType
+
+    @property
+    def UsagePlanIds(self):
+        return self._UsagePlanIds
+
+    @UsagePlanIds.setter
+    def UsagePlanIds(self, UsagePlanIds):
+        self._UsagePlanIds = UsagePlanIds
+
+    @property
+    def Environment(self):
+        return self._Environment
+
+    @Environment.setter
+    def Environment(self, Environment):
+        self._Environment = Environment
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def ApiIds(self):
+        return self._ApiIds
+
+    @ApiIds.setter
+    def ApiIds(self, ApiIds):
+        self._ApiIds = ApiIds
 
 
     def _deserialize(self, params):
-        self.BindType = params.get("BindType")
-        self.UsagePlanIds = params.get("UsagePlanIds")
-        self.Environment = params.get("Environment")
-        self.ServiceId = params.get("ServiceId")
-        self.ApiIds = params.get("ApiIds")
+        self._BindType = params.get("BindType")
+        self._UsagePlanIds = params.get("UsagePlanIds")
+        self._Environment = params.get("Environment")
+        self._ServiceId = params.get("ServiceId")
+        self._ApiIds = params.get("ApiIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9110,19 +17322,35 @@ class UnBindEnvironmentResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Whether unbinding succeeded.
+        :param _Result: Whether unbinding succeeded.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
 
 
 class UnBindIPStrategyRequest(AbstractModel):
@@ -9132,30 +17360,63 @@ class UnBindIPStrategyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Unique ID of the service to be unbound.
+        :param _ServiceId: Unique ID of the service to be unbound.
         :type ServiceId: str
-        :param StrategyId: Unique ID of the IP policy to be unbound.
+        :param _StrategyId: Unique ID of the IP policy to be unbound.
         :type StrategyId: str
-        :param EnvironmentName: Environment to be unbound.
+        :param _EnvironmentName: Environment to be unbound.
         :type EnvironmentName: str
-        :param UnBindApiIds: List of APIs to be unbound.
+        :param _UnBindApiIds: List of APIs to be unbound.
         :type UnBindApiIds: list of str
         """
-        self.ServiceId = None
-        self.StrategyId = None
-        self.EnvironmentName = None
-        self.UnBindApiIds = None
+        self._ServiceId = None
+        self._StrategyId = None
+        self._EnvironmentName = None
+        self._UnBindApiIds = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def StrategyId(self):
+        return self._StrategyId
+
+    @StrategyId.setter
+    def StrategyId(self, StrategyId):
+        self._StrategyId = StrategyId
+
+    @property
+    def EnvironmentName(self):
+        return self._EnvironmentName
+
+    @EnvironmentName.setter
+    def EnvironmentName(self, EnvironmentName):
+        self._EnvironmentName = EnvironmentName
+
+    @property
+    def UnBindApiIds(self):
+        return self._UnBindApiIds
+
+    @UnBindApiIds.setter
+    def UnBindApiIds(self, UnBindApiIds):
+        self._UnBindApiIds = UnBindApiIds
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.StrategyId = params.get("StrategyId")
-        self.EnvironmentName = params.get("EnvironmentName")
-        self.UnBindApiIds = params.get("UnBindApiIds")
+        self._ServiceId = params.get("ServiceId")
+        self._StrategyId = params.get("StrategyId")
+        self._EnvironmentName = params.get("EnvironmentName")
+        self._UnBindApiIds = params.get("UnBindApiIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9168,19 +17429,35 @@ class UnBindIPStrategyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Whether unbinding succeeded.
+        :param _Result: Whether unbinding succeeded.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
 
 
 class UnBindSecretIdsRequest(AbstractModel):
@@ -9190,22 +17467,39 @@ class UnBindSecretIdsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UsagePlanId: Unique ID of the usage plan to be unbound.
+        :param _UsagePlanId: Unique ID of the usage plan to be unbound.
         :type UsagePlanId: str
-        :param AccessKeyIds: Array of IDs of the keys to be unbound.
+        :param _AccessKeyIds: Array of IDs of the keys to be unbound.
         :type AccessKeyIds: list of str
         """
-        self.UsagePlanId = None
-        self.AccessKeyIds = None
+        self._UsagePlanId = None
+        self._AccessKeyIds = None
+
+    @property
+    def UsagePlanId(self):
+        return self._UsagePlanId
+
+    @UsagePlanId.setter
+    def UsagePlanId(self, UsagePlanId):
+        self._UsagePlanId = UsagePlanId
+
+    @property
+    def AccessKeyIds(self):
+        return self._AccessKeyIds
+
+    @AccessKeyIds.setter
+    def AccessKeyIds(self, AccessKeyIds):
+        self._AccessKeyIds = AccessKeyIds
 
 
     def _deserialize(self, params):
-        self.UsagePlanId = params.get("UsagePlanId")
-        self.AccessKeyIds = params.get("AccessKeyIds")
+        self._UsagePlanId = params.get("UsagePlanId")
+        self._AccessKeyIds = params.get("AccessKeyIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9218,19 +17512,35 @@ class UnBindSecretIdsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Whether unbinding succeeded.
+        :param _Result: Whether unbinding succeeded.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
 
 
 class UnBindSubDomainRequest(AbstractModel):
@@ -9240,22 +17550,39 @@ class UnBindSubDomainRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Unique service ID.
+        :param _ServiceId: Unique service ID.
         :type ServiceId: str
-        :param SubDomain: Custom domain name to be unbound.
+        :param _SubDomain: Custom domain name to be unbound.
         :type SubDomain: str
         """
-        self.ServiceId = None
-        self.SubDomain = None
+        self._ServiceId = None
+        self._SubDomain = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def SubDomain(self):
+        return self._SubDomain
+
+    @SubDomain.setter
+    def SubDomain(self, SubDomain):
+        self._SubDomain = SubDomain
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.SubDomain = params.get("SubDomain")
+        self._ServiceId = params.get("ServiceId")
+        self._SubDomain = params.get("SubDomain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9268,18 +17595,34 @@ class UnBindSubDomainResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Whether the custom domain name is successfully unbound.
+        :param _Result: Whether the custom domain name is successfully unbound.
         :type Result: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
 
 
 class UnReleaseServiceRequest(AbstractModel):
@@ -9289,26 +17632,51 @@ class UnReleaseServiceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Unique ID of the service to be deactivated.
+        :param _ServiceId: Unique ID of the service to be deactivated.
         :type ServiceId: str
-        :param EnvironmentName: Name of the environment to be deactivated. Valid values: test (test environment), prepub (pre-release environment), release (release environment).
+        :param _EnvironmentName: Name of the environment to be deactivated. Valid values: test (test environment), prepub (pre-release environment), release (release environment).
         :type EnvironmentName: str
-        :param ApiIds: List of APIs to be deactivated, which is a reserved field.
+        :param _ApiIds: List of APIs to be deactivated, which is a reserved field.
         :type ApiIds: list of str
         """
-        self.ServiceId = None
-        self.EnvironmentName = None
-        self.ApiIds = None
+        self._ServiceId = None
+        self._EnvironmentName = None
+        self._ApiIds = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def EnvironmentName(self):
+        return self._EnvironmentName
+
+    @EnvironmentName.setter
+    def EnvironmentName(self, EnvironmentName):
+        self._EnvironmentName = EnvironmentName
+
+    @property
+    def ApiIds(self):
+        return self._ApiIds
+
+    @ApiIds.setter
+    def ApiIds(self, ApiIds):
+        self._ApiIds = ApiIds
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.EnvironmentName = params.get("EnvironmentName")
-        self.ApiIds = params.get("ApiIds")
+        self._ServiceId = params.get("ServiceId")
+        self._EnvironmentName = params.get("EnvironmentName")
+        self._ApiIds = params.get("ApiIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9321,19 +17689,35 @@ class UnReleaseServiceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Whether deactivation succeeded.
+        :param _Result: Whether deactivation succeeded.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
 
 
 class UnbindApiAppRequest(AbstractModel):
@@ -9343,30 +17727,63 @@ class UnbindApiAppRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApiAppId: Unique ID of the application to be bound.
+        :param _ApiAppId: Unique ID of the application to be bound.
         :type ApiAppId: str
-        :param Environment: Environment to be bound.
+        :param _Environment: Environment to be bound.
         :type Environment: str
-        :param ServiceId: Unique ID of the service to be bound.
+        :param _ServiceId: Unique ID of the service to be bound.
         :type ServiceId: str
-        :param ApiId: Unique ID of the API to be bound.
+        :param _ApiId: Unique ID of the API to be bound.
         :type ApiId: str
         """
-        self.ApiAppId = None
-        self.Environment = None
-        self.ServiceId = None
-        self.ApiId = None
+        self._ApiAppId = None
+        self._Environment = None
+        self._ServiceId = None
+        self._ApiId = None
+
+    @property
+    def ApiAppId(self):
+        return self._ApiAppId
+
+    @ApiAppId.setter
+    def ApiAppId(self, ApiAppId):
+        self._ApiAppId = ApiAppId
+
+    @property
+    def Environment(self):
+        return self._Environment
+
+    @Environment.setter
+    def Environment(self, Environment):
+        self._Environment = Environment
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def ApiId(self):
+        return self._ApiId
+
+    @ApiId.setter
+    def ApiId(self, ApiId):
+        self._ApiId = ApiId
 
 
     def _deserialize(self, params):
-        self.ApiAppId = params.get("ApiAppId")
-        self.Environment = params.get("Environment")
-        self.ServiceId = params.get("ServiceId")
-        self.ApiId = params.get("ApiId")
+        self._ApiAppId = params.get("ApiAppId")
+        self._Environment = params.get("Environment")
+        self._ServiceId = params.get("ServiceId")
+        self._ApiId = params.get("ApiId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9379,19 +17796,35 @@ class UnbindApiAppResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Whether unbinding succeeded.
+        :param _Result: Whether unbinding succeeded.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateApiAppKeyRequest(AbstractModel):
@@ -9401,26 +17834,51 @@ class UpdateApiAppKeyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApiAppId: Unique application ID.
+        :param _ApiAppId: Unique application ID.
         :type ApiAppId: str
-        :param ApiAppKey: Application Key.
+        :param _ApiAppKey: Application Key.
         :type ApiAppKey: str
-        :param ApiAppSecret: Application Secret.
+        :param _ApiAppSecret: Application Secret.
         :type ApiAppSecret: str
         """
-        self.ApiAppId = None
-        self.ApiAppKey = None
-        self.ApiAppSecret = None
+        self._ApiAppId = None
+        self._ApiAppKey = None
+        self._ApiAppSecret = None
+
+    @property
+    def ApiAppId(self):
+        return self._ApiAppId
+
+    @ApiAppId.setter
+    def ApiAppId(self, ApiAppId):
+        self._ApiAppId = ApiAppId
+
+    @property
+    def ApiAppKey(self):
+        return self._ApiAppKey
+
+    @ApiAppKey.setter
+    def ApiAppKey(self, ApiAppKey):
+        self._ApiAppKey = ApiAppKey
+
+    @property
+    def ApiAppSecret(self):
+        return self._ApiAppSecret
+
+    @ApiAppSecret.setter
+    def ApiAppSecret(self, ApiAppSecret):
+        self._ApiAppSecret = ApiAppSecret
 
 
     def _deserialize(self, params):
-        self.ApiAppId = params.get("ApiAppId")
-        self.ApiAppKey = params.get("ApiAppKey")
-        self.ApiAppSecret = params.get("ApiAppSecret")
+        self._ApiAppId = params.get("ApiAppId")
+        self._ApiAppKey = params.get("ApiAppKey")
+        self._ApiAppSecret = params.get("ApiAppSecret")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9433,19 +17891,35 @@ class UpdateApiAppKeyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Whether update succeeded.
+        :param _Result: Whether update succeeded.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateApiKeyRequest(AbstractModel):
@@ -9455,22 +17929,39 @@ class UpdateApiKeyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AccessKeyId: ID of the key to be changed.
+        :param _AccessKeyId: ID of the key to be changed.
         :type AccessKeyId: str
-        :param AccessKeySecret: Key to be updated, which is required when a custom key is updated. It can contain 10–50 letters, digits, and underscores.
+        :param _AccessKeySecret: Key to be updated, which is required when a custom key is updated. It can contain 10–50 letters, digits, and underscores.
         :type AccessKeySecret: str
         """
-        self.AccessKeyId = None
-        self.AccessKeySecret = None
+        self._AccessKeyId = None
+        self._AccessKeySecret = None
+
+    @property
+    def AccessKeyId(self):
+        return self._AccessKeyId
+
+    @AccessKeyId.setter
+    def AccessKeyId(self, AccessKeyId):
+        self._AccessKeyId = AccessKeyId
+
+    @property
+    def AccessKeySecret(self):
+        return self._AccessKeySecret
+
+    @AccessKeySecret.setter
+    def AccessKeySecret(self, AccessKeySecret):
+        self._AccessKeySecret = AccessKeySecret
 
 
     def _deserialize(self, params):
-        self.AccessKeyId = params.get("AccessKeyId")
-        self.AccessKeySecret = params.get("AccessKeySecret")
+        self._AccessKeyId = params.get("AccessKeyId")
+        self._AccessKeySecret = params.get("AccessKeySecret")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9483,21 +17974,37 @@ class UpdateApiKeyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Key details after change.
+        :param _Result: Key details after change.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApiKey`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = ApiKey()
-            self.Result._deserialize(params.get("Result"))
-        self.RequestId = params.get("RequestId")
+            self._Result = ApiKey()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateServiceRequest(AbstractModel):
@@ -9507,30 +18014,63 @@ class UpdateServiceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Unique ID of the service to be switch.
+        :param _ServiceId: Unique ID of the service to be switch.
         :type ServiceId: str
-        :param EnvironmentName: Name of the environment to be switched to. Valid values: test (test environment), prepub (pre-release environment), release (release environment).
+        :param _EnvironmentName: Name of the environment to be switched to. Valid values: test (test environment), prepub (pre-release environment), release (release environment).
         :type EnvironmentName: str
-        :param VersionName: Number of the version to be switched to.
+        :param _VersionName: Number of the version to be switched to.
         :type VersionName: str
-        :param UpdateDesc: Switch description.
+        :param _UpdateDesc: Switch description.
         :type UpdateDesc: str
         """
-        self.ServiceId = None
-        self.EnvironmentName = None
-        self.VersionName = None
-        self.UpdateDesc = None
+        self._ServiceId = None
+        self._EnvironmentName = None
+        self._VersionName = None
+        self._UpdateDesc = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def EnvironmentName(self):
+        return self._EnvironmentName
+
+    @EnvironmentName.setter
+    def EnvironmentName(self, EnvironmentName):
+        self._EnvironmentName = EnvironmentName
+
+    @property
+    def VersionName(self):
+        return self._VersionName
+
+    @VersionName.setter
+    def VersionName(self, VersionName):
+        self._VersionName = VersionName
+
+    @property
+    def UpdateDesc(self):
+        return self._UpdateDesc
+
+    @UpdateDesc.setter
+    def UpdateDesc(self, UpdateDesc):
+        self._UpdateDesc = UpdateDesc
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.EnvironmentName = params.get("EnvironmentName")
-        self.VersionName = params.get("VersionName")
-        self.UpdateDesc = params.get("UpdateDesc")
+        self._ServiceId = params.get("ServiceId")
+        self._EnvironmentName = params.get("EnvironmentName")
+        self._VersionName = params.get("VersionName")
+        self._UpdateDesc = params.get("UpdateDesc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9543,19 +18083,35 @@ class UpdateServiceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: Whether the version is successfully switched.
+        :param _Result: Whether the version is successfully switched.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Result: bool
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Result = None
-        self.RequestId = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
-        self.RequestId = params.get("RequestId")
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
 
 
 class UpstreamHealthChecker(AbstractModel):
@@ -9565,67 +18121,164 @@ class UpstreamHealthChecker(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EnableActiveCheck: Specifies whether to enable active health check
+        :param _EnableActiveCheck: Specifies whether to enable active health check
         :type EnableActiveCheck: bool
-        :param EnablePassiveCheck: Specifies whether the enable passive health check
+        :param _EnablePassiveCheck: Specifies whether the enable passive health check
         :type EnablePassiveCheck: bool
-        :param HealthyHttpStatus: The HTTP status code that indicates that the upstream is healthy
+        :param _HealthyHttpStatus: The HTTP status code that indicates that the upstream is healthy
         :type HealthyHttpStatus: str
-        :param UnhealthyHttpStatus: The HTTP status code that indicates that the upstream is unhealthy
+        :param _UnhealthyHttpStatus: The HTTP status code that indicates that the upstream is unhealthy
         :type UnhealthyHttpStatus: str
-        :param TcpFailureThreshold: The threshold on consecutive TCP errors. Range: [0, 254]. `0` indicates not to check TCP.
+        :param _TcpFailureThreshold: The threshold on consecutive TCP errors. Range: [0, 254]. `0` indicates not to check TCP.
         :type TcpFailureThreshold: int
-        :param TimeoutThreshold: The threshold on consecutive timeouts. Range: [0, 254]. `0` indicates not to check TCP.
+        :param _TimeoutThreshold: The threshold on consecutive timeouts. Range: [0, 254]. `0` indicates not to check TCP.
         :type TimeoutThreshold: int
-        :param HttpFailureThreshold: The threshold on consecutive HTTP errors. Range: [0, 254]. `0` indicates not to check HTTP.
+        :param _HttpFailureThreshold: The threshold on consecutive HTTP errors. Range: [0, 254]. `0` indicates not to check HTTP.
         :type HttpFailureThreshold: int
-        :param ActiveCheckHttpPath: The path for active health check. It defaults to `/`.
+        :param _ActiveCheckHttpPath: The path for active health check. It defaults to `/`.
         :type ActiveCheckHttpPath: str
-        :param ActiveCheckTimeout: The timeout period for active health check in seconds. Default: `5`. 
+        :param _ActiveCheckTimeout: The timeout period for active health check in seconds. Default: `5`. 
         :type ActiveCheckTimeout: int
-        :param ActiveCheckInterval: The interval for active health check in seconds. Default: `5`. 
+        :param _ActiveCheckInterval: The interval for active health check in seconds. Default: `5`. 
         :type ActiveCheckInterval: int
-        :param ActiveRequestHeader: Header of the active health check request
+        :param _ActiveRequestHeader: Header of the active health check request
         :type ActiveRequestHeader: list of UpstreamHealthCheckerReqHeaders
-        :param UnhealthyTimeout: The period for an abnormal to recover automatically in seconds. If only the passive health check is enabled, it must be greater than 0. Otherwise the abnormal nodes can not recovered automatically. The default value is 30 seconds. 
+        :param _UnhealthyTimeout: The period for an abnormal to recover automatically in seconds. If only the passive health check is enabled, it must be greater than 0. Otherwise the abnormal nodes can not recovered automatically. The default value is 30 seconds. 
         :type UnhealthyTimeout: int
         """
-        self.EnableActiveCheck = None
-        self.EnablePassiveCheck = None
-        self.HealthyHttpStatus = None
-        self.UnhealthyHttpStatus = None
-        self.TcpFailureThreshold = None
-        self.TimeoutThreshold = None
-        self.HttpFailureThreshold = None
-        self.ActiveCheckHttpPath = None
-        self.ActiveCheckTimeout = None
-        self.ActiveCheckInterval = None
-        self.ActiveRequestHeader = None
-        self.UnhealthyTimeout = None
+        self._EnableActiveCheck = None
+        self._EnablePassiveCheck = None
+        self._HealthyHttpStatus = None
+        self._UnhealthyHttpStatus = None
+        self._TcpFailureThreshold = None
+        self._TimeoutThreshold = None
+        self._HttpFailureThreshold = None
+        self._ActiveCheckHttpPath = None
+        self._ActiveCheckTimeout = None
+        self._ActiveCheckInterval = None
+        self._ActiveRequestHeader = None
+        self._UnhealthyTimeout = None
+
+    @property
+    def EnableActiveCheck(self):
+        return self._EnableActiveCheck
+
+    @EnableActiveCheck.setter
+    def EnableActiveCheck(self, EnableActiveCheck):
+        self._EnableActiveCheck = EnableActiveCheck
+
+    @property
+    def EnablePassiveCheck(self):
+        return self._EnablePassiveCheck
+
+    @EnablePassiveCheck.setter
+    def EnablePassiveCheck(self, EnablePassiveCheck):
+        self._EnablePassiveCheck = EnablePassiveCheck
+
+    @property
+    def HealthyHttpStatus(self):
+        return self._HealthyHttpStatus
+
+    @HealthyHttpStatus.setter
+    def HealthyHttpStatus(self, HealthyHttpStatus):
+        self._HealthyHttpStatus = HealthyHttpStatus
+
+    @property
+    def UnhealthyHttpStatus(self):
+        return self._UnhealthyHttpStatus
+
+    @UnhealthyHttpStatus.setter
+    def UnhealthyHttpStatus(self, UnhealthyHttpStatus):
+        self._UnhealthyHttpStatus = UnhealthyHttpStatus
+
+    @property
+    def TcpFailureThreshold(self):
+        return self._TcpFailureThreshold
+
+    @TcpFailureThreshold.setter
+    def TcpFailureThreshold(self, TcpFailureThreshold):
+        self._TcpFailureThreshold = TcpFailureThreshold
+
+    @property
+    def TimeoutThreshold(self):
+        return self._TimeoutThreshold
+
+    @TimeoutThreshold.setter
+    def TimeoutThreshold(self, TimeoutThreshold):
+        self._TimeoutThreshold = TimeoutThreshold
+
+    @property
+    def HttpFailureThreshold(self):
+        return self._HttpFailureThreshold
+
+    @HttpFailureThreshold.setter
+    def HttpFailureThreshold(self, HttpFailureThreshold):
+        self._HttpFailureThreshold = HttpFailureThreshold
+
+    @property
+    def ActiveCheckHttpPath(self):
+        return self._ActiveCheckHttpPath
+
+    @ActiveCheckHttpPath.setter
+    def ActiveCheckHttpPath(self, ActiveCheckHttpPath):
+        self._ActiveCheckHttpPath = ActiveCheckHttpPath
+
+    @property
+    def ActiveCheckTimeout(self):
+        return self._ActiveCheckTimeout
+
+    @ActiveCheckTimeout.setter
+    def ActiveCheckTimeout(self, ActiveCheckTimeout):
+        self._ActiveCheckTimeout = ActiveCheckTimeout
+
+    @property
+    def ActiveCheckInterval(self):
+        return self._ActiveCheckInterval
+
+    @ActiveCheckInterval.setter
+    def ActiveCheckInterval(self, ActiveCheckInterval):
+        self._ActiveCheckInterval = ActiveCheckInterval
+
+    @property
+    def ActiveRequestHeader(self):
+        return self._ActiveRequestHeader
+
+    @ActiveRequestHeader.setter
+    def ActiveRequestHeader(self, ActiveRequestHeader):
+        self._ActiveRequestHeader = ActiveRequestHeader
+
+    @property
+    def UnhealthyTimeout(self):
+        return self._UnhealthyTimeout
+
+    @UnhealthyTimeout.setter
+    def UnhealthyTimeout(self, UnhealthyTimeout):
+        self._UnhealthyTimeout = UnhealthyTimeout
 
 
     def _deserialize(self, params):
-        self.EnableActiveCheck = params.get("EnableActiveCheck")
-        self.EnablePassiveCheck = params.get("EnablePassiveCheck")
-        self.HealthyHttpStatus = params.get("HealthyHttpStatus")
-        self.UnhealthyHttpStatus = params.get("UnhealthyHttpStatus")
-        self.TcpFailureThreshold = params.get("TcpFailureThreshold")
-        self.TimeoutThreshold = params.get("TimeoutThreshold")
-        self.HttpFailureThreshold = params.get("HttpFailureThreshold")
-        self.ActiveCheckHttpPath = params.get("ActiveCheckHttpPath")
-        self.ActiveCheckTimeout = params.get("ActiveCheckTimeout")
-        self.ActiveCheckInterval = params.get("ActiveCheckInterval")
+        self._EnableActiveCheck = params.get("EnableActiveCheck")
+        self._EnablePassiveCheck = params.get("EnablePassiveCheck")
+        self._HealthyHttpStatus = params.get("HealthyHttpStatus")
+        self._UnhealthyHttpStatus = params.get("UnhealthyHttpStatus")
+        self._TcpFailureThreshold = params.get("TcpFailureThreshold")
+        self._TimeoutThreshold = params.get("TimeoutThreshold")
+        self._HttpFailureThreshold = params.get("HttpFailureThreshold")
+        self._ActiveCheckHttpPath = params.get("ActiveCheckHttpPath")
+        self._ActiveCheckTimeout = params.get("ActiveCheckTimeout")
+        self._ActiveCheckInterval = params.get("ActiveCheckInterval")
         if params.get("ActiveRequestHeader") is not None:
-            self.ActiveRequestHeader = []
+            self._ActiveRequestHeader = []
             for item in params.get("ActiveRequestHeader"):
                 obj = UpstreamHealthCheckerReqHeaders()
                 obj._deserialize(item)
-                self.ActiveRequestHeader.append(obj)
-        self.UnhealthyTimeout = params.get("UnhealthyTimeout")
+                self._ActiveRequestHeader.append(obj)
+        self._UnhealthyTimeout = params.get("UnhealthyTimeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9644,91 +18297,204 @@ class UpstreamInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UpstreamId: Unique upstream ID
+        :param _UpstreamId: Unique upstream ID
         :type UpstreamId: str
-        :param UpstreamName: Upstream name
+        :param _UpstreamName: Upstream name
         :type UpstreamName: str
-        :param UpstreamDescription: Upstream description
+        :param _UpstreamDescription: Upstream description
         :type UpstreamDescription: str
-        :param Scheme: Backend protocol. Valid values: `HTTP`, `HTTPS`
+        :param _Scheme: Backend protocol. Valid values: `HTTP`, `HTTPS`
         :type Scheme: str
-        :param Algorithm: Load balancing algorithm. Valid value: `ROUND_ROBIN`
+        :param _Algorithm: Load balancing algorithm. Valid value: `ROUND_ROBIN`
         :type Algorithm: str
-        :param UniqVpcId: Unique VPC ID
+        :param _UniqVpcId: Unique VPC ID
         :type UniqVpcId: str
-        :param Retries: Number of retry attempts
+        :param _Retries: Number of retry attempts
         :type Retries: int
-        :param Nodes: Backend nodes
+        :param _Nodes: Backend nodes
         :type Nodes: list of UpstreamNode
-        :param CreatedTime: Creation time.
+        :param _CreatedTime: Creation time.
         :type CreatedTime: str
-        :param Tags: Label
+        :param _Tags: Label
 Note: This field may return `null`, indicating that no valid value was found.
         :type Tags: list of Tag
-        :param HealthChecker: Health check configuration
+        :param _HealthChecker: Health check configuration
 Note: This field may return `null`, indicating that no valid value was found.
         :type HealthChecker: :class:`tencentcloud.apigateway.v20180808.models.UpstreamHealthChecker`
-        :param UpstreamType: Upstream type. Valid values: `IP_PORT`, `K8S`
+        :param _UpstreamType: Upstream type. Valid values: `IP_PORT`, `K8S`
         :type UpstreamType: str
-        :param K8sServices: Configuration of TKE service
+        :param _K8sServices: Configuration of TKE service
 Note: This field may return `NULL`, indicating that no valid value was found.
         :type K8sServices: list of K8sService
-        :param UpstreamHost: The Host header that the gateway forwards to the upstream
+        :param _UpstreamHost: The Host header that the gateway forwards to the upstream
 Note: This field may return `NULL`, indicating that no valid value was found.
         :type UpstreamHost: str
         """
-        self.UpstreamId = None
-        self.UpstreamName = None
-        self.UpstreamDescription = None
-        self.Scheme = None
-        self.Algorithm = None
-        self.UniqVpcId = None
-        self.Retries = None
-        self.Nodes = None
-        self.CreatedTime = None
-        self.Tags = None
-        self.HealthChecker = None
-        self.UpstreamType = None
-        self.K8sServices = None
-        self.UpstreamHost = None
+        self._UpstreamId = None
+        self._UpstreamName = None
+        self._UpstreamDescription = None
+        self._Scheme = None
+        self._Algorithm = None
+        self._UniqVpcId = None
+        self._Retries = None
+        self._Nodes = None
+        self._CreatedTime = None
+        self._Tags = None
+        self._HealthChecker = None
+        self._UpstreamType = None
+        self._K8sServices = None
+        self._UpstreamHost = None
+
+    @property
+    def UpstreamId(self):
+        return self._UpstreamId
+
+    @UpstreamId.setter
+    def UpstreamId(self, UpstreamId):
+        self._UpstreamId = UpstreamId
+
+    @property
+    def UpstreamName(self):
+        return self._UpstreamName
+
+    @UpstreamName.setter
+    def UpstreamName(self, UpstreamName):
+        self._UpstreamName = UpstreamName
+
+    @property
+    def UpstreamDescription(self):
+        return self._UpstreamDescription
+
+    @UpstreamDescription.setter
+    def UpstreamDescription(self, UpstreamDescription):
+        self._UpstreamDescription = UpstreamDescription
+
+    @property
+    def Scheme(self):
+        return self._Scheme
+
+    @Scheme.setter
+    def Scheme(self, Scheme):
+        self._Scheme = Scheme
+
+    @property
+    def Algorithm(self):
+        return self._Algorithm
+
+    @Algorithm.setter
+    def Algorithm(self, Algorithm):
+        self._Algorithm = Algorithm
+
+    @property
+    def UniqVpcId(self):
+        return self._UniqVpcId
+
+    @UniqVpcId.setter
+    def UniqVpcId(self, UniqVpcId):
+        self._UniqVpcId = UniqVpcId
+
+    @property
+    def Retries(self):
+        return self._Retries
+
+    @Retries.setter
+    def Retries(self, Retries):
+        self._Retries = Retries
+
+    @property
+    def Nodes(self):
+        return self._Nodes
+
+    @Nodes.setter
+    def Nodes(self, Nodes):
+        self._Nodes = Nodes
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def HealthChecker(self):
+        return self._HealthChecker
+
+    @HealthChecker.setter
+    def HealthChecker(self, HealthChecker):
+        self._HealthChecker = HealthChecker
+
+    @property
+    def UpstreamType(self):
+        return self._UpstreamType
+
+    @UpstreamType.setter
+    def UpstreamType(self, UpstreamType):
+        self._UpstreamType = UpstreamType
+
+    @property
+    def K8sServices(self):
+        return self._K8sServices
+
+    @K8sServices.setter
+    def K8sServices(self, K8sServices):
+        self._K8sServices = K8sServices
+
+    @property
+    def UpstreamHost(self):
+        return self._UpstreamHost
+
+    @UpstreamHost.setter
+    def UpstreamHost(self, UpstreamHost):
+        self._UpstreamHost = UpstreamHost
 
 
     def _deserialize(self, params):
-        self.UpstreamId = params.get("UpstreamId")
-        self.UpstreamName = params.get("UpstreamName")
-        self.UpstreamDescription = params.get("UpstreamDescription")
-        self.Scheme = params.get("Scheme")
-        self.Algorithm = params.get("Algorithm")
-        self.UniqVpcId = params.get("UniqVpcId")
-        self.Retries = params.get("Retries")
+        self._UpstreamId = params.get("UpstreamId")
+        self._UpstreamName = params.get("UpstreamName")
+        self._UpstreamDescription = params.get("UpstreamDescription")
+        self._Scheme = params.get("Scheme")
+        self._Algorithm = params.get("Algorithm")
+        self._UniqVpcId = params.get("UniqVpcId")
+        self._Retries = params.get("Retries")
         if params.get("Nodes") is not None:
-            self.Nodes = []
+            self._Nodes = []
             for item in params.get("Nodes"):
                 obj = UpstreamNode()
                 obj._deserialize(item)
-                self.Nodes.append(obj)
-        self.CreatedTime = params.get("CreatedTime")
+                self._Nodes.append(obj)
+        self._CreatedTime = params.get("CreatedTime")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
+                self._Tags.append(obj)
         if params.get("HealthChecker") is not None:
-            self.HealthChecker = UpstreamHealthChecker()
-            self.HealthChecker._deserialize(params.get("HealthChecker"))
-        self.UpstreamType = params.get("UpstreamType")
+            self._HealthChecker = UpstreamHealthChecker()
+            self._HealthChecker._deserialize(params.get("HealthChecker"))
+        self._UpstreamType = params.get("UpstreamType")
         if params.get("K8sServices") is not None:
-            self.K8sServices = []
+            self._K8sServices = []
             for item in params.get("K8sServices"):
                 obj = K8sService()
                 obj._deserialize(item)
-                self.K8sServices.append(obj)
-        self.UpstreamHost = params.get("UpstreamHost")
+                self._K8sServices.append(obj)
+        self._UpstreamHost = params.get("UpstreamHost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9741,66 +18507,155 @@ class UpstreamNode(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Host: IP or domain name
+        :param _Host: IP or domain name
         :type Host: str
-        :param Port: The port number. Range: [0, 65535]
+        :param _Port: The port number. Range: [0, 65535]
         :type Port: int
-        :param Weight: Value range: [0, 100]. `0` refers to disable it.
+        :param _Weight: Value range: [0, 100]. `0` refers to disable it.
         :type Weight: int
-        :param VmInstanceId: CVM Instance ID
+        :param _VmInstanceId: CVM Instance ID
 Note: This field may return `NULL`, indicating that no valid value was found.
         :type VmInstanceId: str
-        :param Tags: Tag
+        :param _Tags: Tag
 Note: This field may return `null`, indicating that no valid value was found.
         :type Tags: list of str
-        :param Healthy: Health status of the node. Values: `OFF`, `HEALTHY`, `UNHEALTHY` and `NO_DATA`. It’s not required for creating and editing actions. It only supports VPC upstreams.
+        :param _Healthy: Health status of the node. Values: `OFF`, `HEALTHY`, `UNHEALTHY` and `NO_DATA`. It’s not required for creating and editing actions. It only supports VPC upstreams.
 Note: This field may return `NULL`, indicating that no valid value was found.
         :type Healthy: str
-        :param ServiceName: TKE container name
+        :param _ServiceName: TKE container name
 Note: This field may return `NULL`, indicating that no valid value was found.
         :type ServiceName: str
-        :param NameSpace: TKE namespace
+        :param _NameSpace: TKE namespace
 Note: This field may return `NULL`, indicating that no valid value was found.
         :type NameSpace: str
-        :param ClusterId: ID of the TKE cluster
+        :param _ClusterId: ID of the TKE cluster
 Note: This field may return `null`, indicating that no valid value was found.
         :type ClusterId: str
-        :param Source: Node source. Valid value: `K8S`
+        :param _Source: Node source. Valid value: `K8S`
 Note: This field may return `NULL`, indicating that no valid value was found.
         :type Source: str
-        :param UniqueServiceName: The unique service name in API Gateway
+        :param _UniqueServiceName: The unique service name in API Gateway
 Note: This field may return `null`, indicating that no valid value was found.
         :type UniqueServiceName: str
         """
-        self.Host = None
-        self.Port = None
-        self.Weight = None
-        self.VmInstanceId = None
-        self.Tags = None
-        self.Healthy = None
-        self.ServiceName = None
-        self.NameSpace = None
-        self.ClusterId = None
-        self.Source = None
-        self.UniqueServiceName = None
+        self._Host = None
+        self._Port = None
+        self._Weight = None
+        self._VmInstanceId = None
+        self._Tags = None
+        self._Healthy = None
+        self._ServiceName = None
+        self._NameSpace = None
+        self._ClusterId = None
+        self._Source = None
+        self._UniqueServiceName = None
+
+    @property
+    def Host(self):
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def Weight(self):
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+    @property
+    def VmInstanceId(self):
+        return self._VmInstanceId
+
+    @VmInstanceId.setter
+    def VmInstanceId(self, VmInstanceId):
+        self._VmInstanceId = VmInstanceId
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Healthy(self):
+        return self._Healthy
+
+    @Healthy.setter
+    def Healthy(self, Healthy):
+        self._Healthy = Healthy
+
+    @property
+    def ServiceName(self):
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def NameSpace(self):
+        return self._NameSpace
+
+    @NameSpace.setter
+    def NameSpace(self, NameSpace):
+        self._NameSpace = NameSpace
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Source(self):
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def UniqueServiceName(self):
+        return self._UniqueServiceName
+
+    @UniqueServiceName.setter
+    def UniqueServiceName(self, UniqueServiceName):
+        self._UniqueServiceName = UniqueServiceName
 
 
     def _deserialize(self, params):
-        self.Host = params.get("Host")
-        self.Port = params.get("Port")
-        self.Weight = params.get("Weight")
-        self.VmInstanceId = params.get("VmInstanceId")
-        self.Tags = params.get("Tags")
-        self.Healthy = params.get("Healthy")
-        self.ServiceName = params.get("ServiceName")
-        self.NameSpace = params.get("NameSpace")
-        self.ClusterId = params.get("ClusterId")
-        self.Source = params.get("Source")
-        self.UniqueServiceName = params.get("UniqueServiceName")
+        self._Host = params.get("Host")
+        self._Port = params.get("Port")
+        self._Weight = params.get("Weight")
+        self._VmInstanceId = params.get("VmInstanceId")
+        self._Tags = params.get("Tags")
+        self._Healthy = params.get("Healthy")
+        self._ServiceName = params.get("ServiceName")
+        self._NameSpace = params.get("NameSpace")
+        self._ClusterId = params.get("ClusterId")
+        self._Source = params.get("Source")
+        self._UniqueServiceName = params.get("UniqueServiceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9813,42 +18668,99 @@ class UsagePlan(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Environment: Environment name.
+        :param _Environment: Environment name.
         :type Environment: str
-        :param UsagePlanId: Unique usage plan ID.
+        :param _UsagePlanId: Unique usage plan ID.
         :type UsagePlanId: str
-        :param UsagePlanName: Usage plan name.
+        :param _UsagePlanName: Usage plan name.
         :type UsagePlanName: str
-        :param UsagePlanDesc: Usage plan description.
+        :param _UsagePlanDesc: Usage plan description.
         :type UsagePlanDesc: str
-        :param MaxRequestNumPreSec: Usage plan QPS. `-1` indicates no limit.
+        :param _MaxRequestNumPreSec: Usage plan QPS. `-1` indicates no limit.
         :type MaxRequestNumPreSec: int
-        :param CreatedTime: Usage plan time.
+        :param _CreatedTime: Usage plan time.
         :type CreatedTime: str
-        :param ModifiedTime: Usage plan modification time.
+        :param _ModifiedTime: Usage plan modification time.
         :type ModifiedTime: str
         """
-        self.Environment = None
-        self.UsagePlanId = None
-        self.UsagePlanName = None
-        self.UsagePlanDesc = None
-        self.MaxRequestNumPreSec = None
-        self.CreatedTime = None
-        self.ModifiedTime = None
+        self._Environment = None
+        self._UsagePlanId = None
+        self._UsagePlanName = None
+        self._UsagePlanDesc = None
+        self._MaxRequestNumPreSec = None
+        self._CreatedTime = None
+        self._ModifiedTime = None
+
+    @property
+    def Environment(self):
+        return self._Environment
+
+    @Environment.setter
+    def Environment(self, Environment):
+        self._Environment = Environment
+
+    @property
+    def UsagePlanId(self):
+        return self._UsagePlanId
+
+    @UsagePlanId.setter
+    def UsagePlanId(self, UsagePlanId):
+        self._UsagePlanId = UsagePlanId
+
+    @property
+    def UsagePlanName(self):
+        return self._UsagePlanName
+
+    @UsagePlanName.setter
+    def UsagePlanName(self, UsagePlanName):
+        self._UsagePlanName = UsagePlanName
+
+    @property
+    def UsagePlanDesc(self):
+        return self._UsagePlanDesc
+
+    @UsagePlanDesc.setter
+    def UsagePlanDesc(self, UsagePlanDesc):
+        self._UsagePlanDesc = UsagePlanDesc
+
+    @property
+    def MaxRequestNumPreSec(self):
+        return self._MaxRequestNumPreSec
+
+    @MaxRequestNumPreSec.setter
+    def MaxRequestNumPreSec(self, MaxRequestNumPreSec):
+        self._MaxRequestNumPreSec = MaxRequestNumPreSec
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def ModifiedTime(self):
+        return self._ModifiedTime
+
+    @ModifiedTime.setter
+    def ModifiedTime(self, ModifiedTime):
+        self._ModifiedTime = ModifiedTime
 
 
     def _deserialize(self, params):
-        self.Environment = params.get("Environment")
-        self.UsagePlanId = params.get("UsagePlanId")
-        self.UsagePlanName = params.get("UsagePlanName")
-        self.UsagePlanDesc = params.get("UsagePlanDesc")
-        self.MaxRequestNumPreSec = params.get("MaxRequestNumPreSec")
-        self.CreatedTime = params.get("CreatedTime")
-        self.ModifiedTime = params.get("ModifiedTime")
+        self._Environment = params.get("Environment")
+        self._UsagePlanId = params.get("UsagePlanId")
+        self._UsagePlanName = params.get("UsagePlanName")
+        self._UsagePlanDesc = params.get("UsagePlanDesc")
+        self._MaxRequestNumPreSec = params.get("MaxRequestNumPreSec")
+        self._CreatedTime = params.get("CreatedTime")
+        self._ModifiedTime = params.get("ModifiedTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9861,24 +18773,41 @@ class UsagePlanBindEnvironment(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EnvironmentName: Environment name.
+        :param _EnvironmentName: Environment name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type EnvironmentName: str
-        :param ServiceId: Unique service ID.
+        :param _ServiceId: Unique service ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceId: str
         """
-        self.EnvironmentName = None
-        self.ServiceId = None
+        self._EnvironmentName = None
+        self._ServiceId = None
+
+    @property
+    def EnvironmentName(self):
+        return self._EnvironmentName
+
+    @EnvironmentName.setter
+    def EnvironmentName(self, EnvironmentName):
+        self._EnvironmentName = EnvironmentName
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
 
 
     def _deserialize(self, params):
-        self.EnvironmentName = params.get("EnvironmentName")
-        self.ServiceId = params.get("ServiceId")
+        self._EnvironmentName = params.get("EnvironmentName")
+        self._ServiceId = params.get("ServiceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9891,29 +18820,54 @@ class UsagePlanBindSecret(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AccessKeyId: Key ID.
+        :param _AccessKeyId: Key ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AccessKeyId: str
-        :param SecretName: Key name.
+        :param _SecretName: Key name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SecretName: str
-        :param Status: Key status. 0: disabled. 1: enabled.
+        :param _Status: Key status. 0: disabled. 1: enabled.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Status: int
         """
-        self.AccessKeyId = None
-        self.SecretName = None
-        self.Status = None
+        self._AccessKeyId = None
+        self._SecretName = None
+        self._Status = None
+
+    @property
+    def AccessKeyId(self):
+        return self._AccessKeyId
+
+    @AccessKeyId.setter
+    def AccessKeyId(self, AccessKeyId):
+        self._AccessKeyId = AccessKeyId
+
+    @property
+    def SecretName(self):
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
 
     def _deserialize(self, params):
-        self.AccessKeyId = params.get("AccessKeyId")
-        self.SecretName = params.get("SecretName")
-        self.Status = params.get("Status")
+        self._AccessKeyId = params.get("AccessKeyId")
+        self._SecretName = params.get("SecretName")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9926,29 +18880,46 @@ class UsagePlanBindSecretStatus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Number of keys bound to usage plan.
+        :param _TotalCount: Number of keys bound to usage plan.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TotalCount: int
-        :param AccessKeyList: List of key details.
+        :param _AccessKeyList: List of key details.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AccessKeyList: list of UsagePlanBindSecret
         """
-        self.TotalCount = None
-        self.AccessKeyList = None
+        self._TotalCount = None
+        self._AccessKeyList = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def AccessKeyList(self):
+        return self._AccessKeyList
+
+    @AccessKeyList.setter
+    def AccessKeyList(self, AccessKeyList):
+        self._AccessKeyList = AccessKeyList
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("AccessKeyList") is not None:
-            self.AccessKeyList = []
+            self._AccessKeyList = []
             for item in params.get("AccessKeyList"):
                 obj = UsagePlanBindSecret()
                 obj._deserialize(item)
-                self.AccessKeyList.append(obj)
+                self._AccessKeyList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -9961,74 +18932,171 @@ class UsagePlanEnvironment(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceId: Unique ID of bound service.
+        :param _ServiceId: Unique ID of bound service.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceId: str
-        :param ApiId: Unique API ID.
+        :param _ApiId: Unique API ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApiId: str
-        :param ApiName: API name.
+        :param _ApiName: API name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ApiName: str
-        :param Path: API path.
+        :param _Path: API path.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Path: str
-        :param Method: API method.
+        :param _Method: API method.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Method: str
-        :param Environment: Name of bound environment.
+        :param _Environment: Name of bound environment.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Environment: str
-        :param InUseRequestNum: Used quota.
+        :param _InUseRequestNum: Used quota.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type InUseRequestNum: int
-        :param MaxRequestNum: Maximum number of requests.
+        :param _MaxRequestNum: Maximum number of requests.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MaxRequestNum: int
-        :param MaxRequestNumPreSec: Maximum number of requests per second.
+        :param _MaxRequestNumPreSec: Maximum number of requests per second.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MaxRequestNumPreSec: int
-        :param CreatedTime: Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+        :param _CreatedTime: Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CreatedTime: str
-        :param ModifiedTime: Last modified time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+        :param _ModifiedTime: Last modified time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ModifiedTime: str
-        :param ServiceName: Service name.
+        :param _ServiceName: Service name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ServiceName: str
         """
-        self.ServiceId = None
-        self.ApiId = None
-        self.ApiName = None
-        self.Path = None
-        self.Method = None
-        self.Environment = None
-        self.InUseRequestNum = None
-        self.MaxRequestNum = None
-        self.MaxRequestNumPreSec = None
-        self.CreatedTime = None
-        self.ModifiedTime = None
-        self.ServiceName = None
+        self._ServiceId = None
+        self._ApiId = None
+        self._ApiName = None
+        self._Path = None
+        self._Method = None
+        self._Environment = None
+        self._InUseRequestNum = None
+        self._MaxRequestNum = None
+        self._MaxRequestNumPreSec = None
+        self._CreatedTime = None
+        self._ModifiedTime = None
+        self._ServiceName = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def ApiId(self):
+        return self._ApiId
+
+    @ApiId.setter
+    def ApiId(self, ApiId):
+        self._ApiId = ApiId
+
+    @property
+    def ApiName(self):
+        return self._ApiName
+
+    @ApiName.setter
+    def ApiName(self, ApiName):
+        self._ApiName = ApiName
+
+    @property
+    def Path(self):
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Method(self):
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
+    @property
+    def Environment(self):
+        return self._Environment
+
+    @Environment.setter
+    def Environment(self, Environment):
+        self._Environment = Environment
+
+    @property
+    def InUseRequestNum(self):
+        return self._InUseRequestNum
+
+    @InUseRequestNum.setter
+    def InUseRequestNum(self, InUseRequestNum):
+        self._InUseRequestNum = InUseRequestNum
+
+    @property
+    def MaxRequestNum(self):
+        return self._MaxRequestNum
+
+    @MaxRequestNum.setter
+    def MaxRequestNum(self, MaxRequestNum):
+        self._MaxRequestNum = MaxRequestNum
+
+    @property
+    def MaxRequestNumPreSec(self):
+        return self._MaxRequestNumPreSec
+
+    @MaxRequestNumPreSec.setter
+    def MaxRequestNumPreSec(self, MaxRequestNumPreSec):
+        self._MaxRequestNumPreSec = MaxRequestNumPreSec
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def ModifiedTime(self):
+        return self._ModifiedTime
+
+    @ModifiedTime.setter
+    def ModifiedTime(self, ModifiedTime):
+        self._ModifiedTime = ModifiedTime
+
+    @property
+    def ServiceName(self):
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
 
 
     def _deserialize(self, params):
-        self.ServiceId = params.get("ServiceId")
-        self.ApiId = params.get("ApiId")
-        self.ApiName = params.get("ApiName")
-        self.Path = params.get("Path")
-        self.Method = params.get("Method")
-        self.Environment = params.get("Environment")
-        self.InUseRequestNum = params.get("InUseRequestNum")
-        self.MaxRequestNum = params.get("MaxRequestNum")
-        self.MaxRequestNumPreSec = params.get("MaxRequestNumPreSec")
-        self.CreatedTime = params.get("CreatedTime")
-        self.ModifiedTime = params.get("ModifiedTime")
-        self.ServiceName = params.get("ServiceName")
+        self._ServiceId = params.get("ServiceId")
+        self._ApiId = params.get("ApiId")
+        self._ApiName = params.get("ApiName")
+        self._Path = params.get("Path")
+        self._Method = params.get("Method")
+        self._Environment = params.get("Environment")
+        self._InUseRequestNum = params.get("InUseRequestNum")
+        self._MaxRequestNum = params.get("MaxRequestNum")
+        self._MaxRequestNumPreSec = params.get("MaxRequestNumPreSec")
+        self._CreatedTime = params.get("CreatedTime")
+        self._ModifiedTime = params.get("ModifiedTime")
+        self._ServiceName = params.get("ServiceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -10041,29 +19109,46 @@ class UsagePlanEnvironmentStatus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Number of environments of the service bound to usage plan.
+        :param _TotalCount: Number of environments of the service bound to usage plan.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TotalCount: int
-        :param EnvironmentList: Environment status of services bound to usage plan.
+        :param _EnvironmentList: Environment status of services bound to usage plan.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type EnvironmentList: list of UsagePlanEnvironment
         """
-        self.TotalCount = None
-        self.EnvironmentList = None
+        self._TotalCount = None
+        self._EnvironmentList = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def EnvironmentList(self):
+        return self._EnvironmentList
+
+    @EnvironmentList.setter
+    def EnvironmentList(self, EnvironmentList):
+        self._EnvironmentList = EnvironmentList
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("EnvironmentList") is not None:
-            self.EnvironmentList = []
+            self._EnvironmentList = []
             for item in params.get("EnvironmentList"):
                 obj = UsagePlanEnvironment()
                 obj._deserialize(item)
-                self.EnvironmentList.append(obj)
+                self._EnvironmentList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -10076,84 +19161,189 @@ class UsagePlanInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UsagePlanId: Unique usage plan ID.
+        :param _UsagePlanId: Unique usage plan ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UsagePlanId: str
-        :param UsagePlanName: Usage plan name.
+        :param _UsagePlanName: Usage plan name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UsagePlanName: str
-        :param UsagePlanDesc: Usage plan description.
+        :param _UsagePlanDesc: Usage plan description.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UsagePlanDesc: str
-        :param InitQuota: Number of initialization calls.
+        :param _InitQuota: Number of initialization calls.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type InitQuota: int
-        :param MaxRequestNumPreSec: Limit of requests per second.
+        :param _MaxRequestNumPreSec: Limit of requests per second.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MaxRequestNumPreSec: int
-        :param MaxRequestNum: Maximum number of calls.
+        :param _MaxRequestNum: Maximum number of calls.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MaxRequestNum: int
-        :param IsHide: Whether to hide.
+        :param _IsHide: Whether to hide.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IsHide: int
-        :param CreatedTime: Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+        :param _CreatedTime: Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CreatedTime: str
-        :param ModifiedTime: Last modified time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+        :param _ModifiedTime: Last modified time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ModifiedTime: str
-        :param BindSecretIdTotalCount: Number of bound keys.
+        :param _BindSecretIdTotalCount: Number of bound keys.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type BindSecretIdTotalCount: int
-        :param BindSecretIds: Details of bound keys.
+        :param _BindSecretIds: Details of bound keys.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type BindSecretIds: list of str
-        :param BindEnvironmentTotalCount: Number of bound environments.
+        :param _BindEnvironmentTotalCount: Number of bound environments.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type BindEnvironmentTotalCount: int
-        :param BindEnvironments: Details of bound environments.
+        :param _BindEnvironments: Details of bound environments.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type BindEnvironments: list of UsagePlanBindEnvironment
         """
-        self.UsagePlanId = None
-        self.UsagePlanName = None
-        self.UsagePlanDesc = None
-        self.InitQuota = None
-        self.MaxRequestNumPreSec = None
-        self.MaxRequestNum = None
-        self.IsHide = None
-        self.CreatedTime = None
-        self.ModifiedTime = None
-        self.BindSecretIdTotalCount = None
-        self.BindSecretIds = None
-        self.BindEnvironmentTotalCount = None
-        self.BindEnvironments = None
+        self._UsagePlanId = None
+        self._UsagePlanName = None
+        self._UsagePlanDesc = None
+        self._InitQuota = None
+        self._MaxRequestNumPreSec = None
+        self._MaxRequestNum = None
+        self._IsHide = None
+        self._CreatedTime = None
+        self._ModifiedTime = None
+        self._BindSecretIdTotalCount = None
+        self._BindSecretIds = None
+        self._BindEnvironmentTotalCount = None
+        self._BindEnvironments = None
+
+    @property
+    def UsagePlanId(self):
+        return self._UsagePlanId
+
+    @UsagePlanId.setter
+    def UsagePlanId(self, UsagePlanId):
+        self._UsagePlanId = UsagePlanId
+
+    @property
+    def UsagePlanName(self):
+        return self._UsagePlanName
+
+    @UsagePlanName.setter
+    def UsagePlanName(self, UsagePlanName):
+        self._UsagePlanName = UsagePlanName
+
+    @property
+    def UsagePlanDesc(self):
+        return self._UsagePlanDesc
+
+    @UsagePlanDesc.setter
+    def UsagePlanDesc(self, UsagePlanDesc):
+        self._UsagePlanDesc = UsagePlanDesc
+
+    @property
+    def InitQuota(self):
+        return self._InitQuota
+
+    @InitQuota.setter
+    def InitQuota(self, InitQuota):
+        self._InitQuota = InitQuota
+
+    @property
+    def MaxRequestNumPreSec(self):
+        return self._MaxRequestNumPreSec
+
+    @MaxRequestNumPreSec.setter
+    def MaxRequestNumPreSec(self, MaxRequestNumPreSec):
+        self._MaxRequestNumPreSec = MaxRequestNumPreSec
+
+    @property
+    def MaxRequestNum(self):
+        return self._MaxRequestNum
+
+    @MaxRequestNum.setter
+    def MaxRequestNum(self, MaxRequestNum):
+        self._MaxRequestNum = MaxRequestNum
+
+    @property
+    def IsHide(self):
+        return self._IsHide
+
+    @IsHide.setter
+    def IsHide(self, IsHide):
+        self._IsHide = IsHide
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def ModifiedTime(self):
+        return self._ModifiedTime
+
+    @ModifiedTime.setter
+    def ModifiedTime(self, ModifiedTime):
+        self._ModifiedTime = ModifiedTime
+
+    @property
+    def BindSecretIdTotalCount(self):
+        return self._BindSecretIdTotalCount
+
+    @BindSecretIdTotalCount.setter
+    def BindSecretIdTotalCount(self, BindSecretIdTotalCount):
+        self._BindSecretIdTotalCount = BindSecretIdTotalCount
+
+    @property
+    def BindSecretIds(self):
+        return self._BindSecretIds
+
+    @BindSecretIds.setter
+    def BindSecretIds(self, BindSecretIds):
+        self._BindSecretIds = BindSecretIds
+
+    @property
+    def BindEnvironmentTotalCount(self):
+        return self._BindEnvironmentTotalCount
+
+    @BindEnvironmentTotalCount.setter
+    def BindEnvironmentTotalCount(self, BindEnvironmentTotalCount):
+        self._BindEnvironmentTotalCount = BindEnvironmentTotalCount
+
+    @property
+    def BindEnvironments(self):
+        return self._BindEnvironments
+
+    @BindEnvironments.setter
+    def BindEnvironments(self, BindEnvironments):
+        self._BindEnvironments = BindEnvironments
 
 
     def _deserialize(self, params):
-        self.UsagePlanId = params.get("UsagePlanId")
-        self.UsagePlanName = params.get("UsagePlanName")
-        self.UsagePlanDesc = params.get("UsagePlanDesc")
-        self.InitQuota = params.get("InitQuota")
-        self.MaxRequestNumPreSec = params.get("MaxRequestNumPreSec")
-        self.MaxRequestNum = params.get("MaxRequestNum")
-        self.IsHide = params.get("IsHide")
-        self.CreatedTime = params.get("CreatedTime")
-        self.ModifiedTime = params.get("ModifiedTime")
-        self.BindSecretIdTotalCount = params.get("BindSecretIdTotalCount")
-        self.BindSecretIds = params.get("BindSecretIds")
-        self.BindEnvironmentTotalCount = params.get("BindEnvironmentTotalCount")
+        self._UsagePlanId = params.get("UsagePlanId")
+        self._UsagePlanName = params.get("UsagePlanName")
+        self._UsagePlanDesc = params.get("UsagePlanDesc")
+        self._InitQuota = params.get("InitQuota")
+        self._MaxRequestNumPreSec = params.get("MaxRequestNumPreSec")
+        self._MaxRequestNum = params.get("MaxRequestNum")
+        self._IsHide = params.get("IsHide")
+        self._CreatedTime = params.get("CreatedTime")
+        self._ModifiedTime = params.get("ModifiedTime")
+        self._BindSecretIdTotalCount = params.get("BindSecretIdTotalCount")
+        self._BindSecretIds = params.get("BindSecretIds")
+        self._BindEnvironmentTotalCount = params.get("BindEnvironmentTotalCount")
         if params.get("BindEnvironments") is not None:
-            self.BindEnvironments = []
+            self._BindEnvironments = []
             for item in params.get("BindEnvironments"):
                 obj = UsagePlanBindEnvironment()
                 obj._deserialize(item)
-                self.BindEnvironments.append(obj)
+                self._BindEnvironments.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -10166,49 +19356,106 @@ class UsagePlanStatusInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UsagePlanId: Unique usage plan ID.
+        :param _UsagePlanId: Unique usage plan ID.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UsagePlanId: str
-        :param UsagePlanName: Custom usage plan name.
+        :param _UsagePlanName: Custom usage plan name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UsagePlanName: str
-        :param UsagePlanDesc: Custom usage plan description.
+        :param _UsagePlanDesc: Custom usage plan description.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UsagePlanDesc: str
-        :param MaxRequestNumPreSec: Maximum number of requests per second.
+        :param _MaxRequestNumPreSec: Maximum number of requests per second.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MaxRequestNumPreSec: int
-        :param MaxRequestNum: Total number of requests allowed. `-1` indicates no limit.
+        :param _MaxRequestNum: Total number of requests allowed. `-1` indicates no limit.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type MaxRequestNum: int
-        :param CreatedTime: Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+        :param _CreatedTime: Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CreatedTime: str
-        :param ModifiedTime: Last modified time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
+        :param _ModifiedTime: Last modified time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ModifiedTime: str
         """
-        self.UsagePlanId = None
-        self.UsagePlanName = None
-        self.UsagePlanDesc = None
-        self.MaxRequestNumPreSec = None
-        self.MaxRequestNum = None
-        self.CreatedTime = None
-        self.ModifiedTime = None
+        self._UsagePlanId = None
+        self._UsagePlanName = None
+        self._UsagePlanDesc = None
+        self._MaxRequestNumPreSec = None
+        self._MaxRequestNum = None
+        self._CreatedTime = None
+        self._ModifiedTime = None
+
+    @property
+    def UsagePlanId(self):
+        return self._UsagePlanId
+
+    @UsagePlanId.setter
+    def UsagePlanId(self, UsagePlanId):
+        self._UsagePlanId = UsagePlanId
+
+    @property
+    def UsagePlanName(self):
+        return self._UsagePlanName
+
+    @UsagePlanName.setter
+    def UsagePlanName(self, UsagePlanName):
+        self._UsagePlanName = UsagePlanName
+
+    @property
+    def UsagePlanDesc(self):
+        return self._UsagePlanDesc
+
+    @UsagePlanDesc.setter
+    def UsagePlanDesc(self, UsagePlanDesc):
+        self._UsagePlanDesc = UsagePlanDesc
+
+    @property
+    def MaxRequestNumPreSec(self):
+        return self._MaxRequestNumPreSec
+
+    @MaxRequestNumPreSec.setter
+    def MaxRequestNumPreSec(self, MaxRequestNumPreSec):
+        self._MaxRequestNumPreSec = MaxRequestNumPreSec
+
+    @property
+    def MaxRequestNum(self):
+        return self._MaxRequestNum
+
+    @MaxRequestNum.setter
+    def MaxRequestNum(self, MaxRequestNum):
+        self._MaxRequestNum = MaxRequestNum
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def ModifiedTime(self):
+        return self._ModifiedTime
+
+    @ModifiedTime.setter
+    def ModifiedTime(self, ModifiedTime):
+        self._ModifiedTime = ModifiedTime
 
 
     def _deserialize(self, params):
-        self.UsagePlanId = params.get("UsagePlanId")
-        self.UsagePlanName = params.get("UsagePlanName")
-        self.UsagePlanDesc = params.get("UsagePlanDesc")
-        self.MaxRequestNumPreSec = params.get("MaxRequestNumPreSec")
-        self.MaxRequestNum = params.get("MaxRequestNum")
-        self.CreatedTime = params.get("CreatedTime")
-        self.ModifiedTime = params.get("ModifiedTime")
+        self._UsagePlanId = params.get("UsagePlanId")
+        self._UsagePlanName = params.get("UsagePlanName")
+        self._UsagePlanDesc = params.get("UsagePlanDesc")
+        self._MaxRequestNumPreSec = params.get("MaxRequestNumPreSec")
+        self._MaxRequestNum = params.get("MaxRequestNum")
+        self._CreatedTime = params.get("CreatedTime")
+        self._ModifiedTime = params.get("ModifiedTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -10221,29 +19468,46 @@ class UsagePlansStatus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Number of eligible usage plans.
+        :param _TotalCount: Number of eligible usage plans.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TotalCount: int
-        :param UsagePlanStatusSet: Usage plan list.
+        :param _UsagePlanStatusSet: Usage plan list.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UsagePlanStatusSet: list of UsagePlanStatusInfo
         """
-        self.TotalCount = None
-        self.UsagePlanStatusSet = None
+        self._TotalCount = None
+        self._UsagePlanStatusSet = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def UsagePlanStatusSet(self):
+        return self._UsagePlanStatusSet
+
+    @UsagePlanStatusSet.setter
+    def UsagePlanStatusSet(self, UsagePlanStatusSet):
+        self._UsagePlanStatusSet = UsagePlanStatusSet
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("UsagePlanStatusSet") is not None:
-            self.UsagePlanStatusSet = []
+            self._UsagePlanStatusSet = []
             for item in params.get("UsagePlanStatusSet"):
                 obj = UsagePlanStatusInfo()
                 obj._deserialize(item)
-                self.UsagePlanStatusSet.append(obj)
+                self._UsagePlanStatusSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         

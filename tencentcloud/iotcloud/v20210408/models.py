@@ -25,23 +25,32 @@ class Attribute(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Tags: Attribute list
+        :param _Tags: Attribute list
         :type Tags: list of DeviceTag
         """
-        self.Tags = None
+        self._Tags = None
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = DeviceTag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -54,22 +63,39 @@ class BindProductInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProductId: Product ID
+        :param _ProductId: Product ID
         :type ProductId: str
-        :param ProductName: Product name
+        :param _ProductName: Product name
         :type ProductName: str
         """
-        self.ProductId = None
-        self.ProductName = None
+        self._ProductId = None
+        self._ProductName = None
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def ProductName(self):
+        return self._ProductName
+
+    @ProductName.setter
+    def ProductName(self, ProductName):
+        self._ProductName = ProductName
 
 
     def _deserialize(self, params):
-        self.ProductId = params.get("ProductId")
-        self.ProductName = params.get("ProductName")
+        self._ProductId = params.get("ProductId")
+        self._ProductName = params.get("ProductName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -82,46 +108,111 @@ class CertInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CertName: Certificate name
+        :param _CertName: Certificate name
         :type CertName: str
-        :param CertSN: Hex sequence number of a certificate
+        :param _CertSN: Hex sequence number of a certificate
         :type CertSN: str
-        :param IssuerName: Certificate issuer
+        :param _IssuerName: Certificate issuer
         :type IssuerName: str
-        :param Subject: Certificate subject
+        :param _Subject: Certificate subject
         :type Subject: str
-        :param CreateTime: Certificate creation time (timestamp in milliseconds)
+        :param _CreateTime: Certificate creation time (timestamp in milliseconds)
         :type CreateTime: int
-        :param EffectiveTime: Certificate effective time (timestamp in milliseconds)
+        :param _EffectiveTime: Certificate effective time (timestamp in milliseconds)
         :type EffectiveTime: int
-        :param ExpireTime: Certificate expiration time (timestamp in milliseconds)
+        :param _ExpireTime: Certificate expiration time (timestamp in milliseconds)
         :type ExpireTime: int
-        :param CertText: X.509 certificate content
+        :param _CertText: X.509 certificate content
         :type CertText: str
         """
-        self.CertName = None
-        self.CertSN = None
-        self.IssuerName = None
-        self.Subject = None
-        self.CreateTime = None
-        self.EffectiveTime = None
-        self.ExpireTime = None
-        self.CertText = None
+        self._CertName = None
+        self._CertSN = None
+        self._IssuerName = None
+        self._Subject = None
+        self._CreateTime = None
+        self._EffectiveTime = None
+        self._ExpireTime = None
+        self._CertText = None
+
+    @property
+    def CertName(self):
+        return self._CertName
+
+    @CertName.setter
+    def CertName(self, CertName):
+        self._CertName = CertName
+
+    @property
+    def CertSN(self):
+        return self._CertSN
+
+    @CertSN.setter
+    def CertSN(self, CertSN):
+        self._CertSN = CertSN
+
+    @property
+    def IssuerName(self):
+        return self._IssuerName
+
+    @IssuerName.setter
+    def IssuerName(self, IssuerName):
+        self._IssuerName = IssuerName
+
+    @property
+    def Subject(self):
+        return self._Subject
+
+    @Subject.setter
+    def Subject(self, Subject):
+        self._Subject = Subject
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def EffectiveTime(self):
+        return self._EffectiveTime
+
+    @EffectiveTime.setter
+    def EffectiveTime(self, EffectiveTime):
+        self._EffectiveTime = EffectiveTime
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def CertText(self):
+        return self._CertText
+
+    @CertText.setter
+    def CertText(self, CertText):
+        self._CertText = CertText
 
 
     def _deserialize(self, params):
-        self.CertName = params.get("CertName")
-        self.CertSN = params.get("CertSN")
-        self.IssuerName = params.get("IssuerName")
-        self.Subject = params.get("Subject")
-        self.CreateTime = params.get("CreateTime")
-        self.EffectiveTime = params.get("EffectiveTime")
-        self.ExpireTime = params.get("ExpireTime")
-        self.CertText = params.get("CertText")
+        self._CertName = params.get("CertName")
+        self._CertSN = params.get("CertSN")
+        self._IssuerName = params.get("IssuerName")
+        self._Subject = params.get("Subject")
+        self._CreateTime = params.get("CreateTime")
+        self._EffectiveTime = params.get("EffectiveTime")
+        self._ExpireTime = params.get("ExpireTime")
+        self._CertText = params.get("CertText")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -134,60 +225,149 @@ class CreateDeviceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProductId: Product ID, globally unique ID assigned by Tencent Cloud during product creation
+        :param _ProductId: Product ID, globally unique ID assigned by Tencent Cloud during product creation
         :type ProductId: str
-        :param DeviceName: Device name. It is a string of 1 to 48 characters. Letters, digits, and :_- are allowed.
+        :param _DeviceName: Device name. It is a string of 1 to 48 characters. Letters, digits, and :_- are allowed.
         :type DeviceName: str
-        :param Attribute: Device attribute
+        :param _Attribute: Device attribute
         :type Attribute: :class:`tencentcloud.iotcloud.v20210408.models.Attribute`
-        :param DefinedPsk: Whether to use custom PSK, no by default
+        :param _DefinedPsk: Whether to use custom PSK, no by default
         :type DefinedPsk: str
-        :param Isp: ISP, required for a NB-IoT product. `1`: China Telecom; `2`: China Mobile; `3`: China Unicom
+        :param _Isp: ISP, required for a NB-IoT product. `1`: China Telecom; `2`: China Mobile; `3`: China Unicom
         :type Isp: int
-        :param Imei: IMEI, required for a NB-IoT product
+        :param _Imei: IMEI, required for a NB-IoT product
         :type Imei: str
-        :param LoraDevEui: DevEUI of a LoRa device, required when you create a LoRa device
+        :param _LoraDevEui: DevEUI of a LoRa device, required when you create a LoRa device
         :type LoraDevEui: str
-        :param LoraMoteType: MoteType of a LoRa device
+        :param _LoraMoteType: MoteType of a LoRa device
         :type LoraMoteType: int
-        :param Skey: Skey, required when you create a LoRa device
+        :param _Skey: Skey, required when you create a LoRa device
         :type Skey: str
-        :param LoraAppKey: AppKey of a LoRa device
+        :param _LoraAppKey: AppKey of a LoRa device
         :type LoraAppKey: str
-        :param TlsCrt: Private CA certificate
+        :param _TlsCrt: Private CA certificate
         :type TlsCrt: str
         """
-        self.ProductId = None
-        self.DeviceName = None
-        self.Attribute = None
-        self.DefinedPsk = None
-        self.Isp = None
-        self.Imei = None
-        self.LoraDevEui = None
-        self.LoraMoteType = None
-        self.Skey = None
-        self.LoraAppKey = None
-        self.TlsCrt = None
+        self._ProductId = None
+        self._DeviceName = None
+        self._Attribute = None
+        self._DefinedPsk = None
+        self._Isp = None
+        self._Imei = None
+        self._LoraDevEui = None
+        self._LoraMoteType = None
+        self._Skey = None
+        self._LoraAppKey = None
+        self._TlsCrt = None
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def Attribute(self):
+        return self._Attribute
+
+    @Attribute.setter
+    def Attribute(self, Attribute):
+        self._Attribute = Attribute
+
+    @property
+    def DefinedPsk(self):
+        return self._DefinedPsk
+
+    @DefinedPsk.setter
+    def DefinedPsk(self, DefinedPsk):
+        self._DefinedPsk = DefinedPsk
+
+    @property
+    def Isp(self):
+        return self._Isp
+
+    @Isp.setter
+    def Isp(self, Isp):
+        self._Isp = Isp
+
+    @property
+    def Imei(self):
+        return self._Imei
+
+    @Imei.setter
+    def Imei(self, Imei):
+        self._Imei = Imei
+
+    @property
+    def LoraDevEui(self):
+        return self._LoraDevEui
+
+    @LoraDevEui.setter
+    def LoraDevEui(self, LoraDevEui):
+        self._LoraDevEui = LoraDevEui
+
+    @property
+    def LoraMoteType(self):
+        return self._LoraMoteType
+
+    @LoraMoteType.setter
+    def LoraMoteType(self, LoraMoteType):
+        self._LoraMoteType = LoraMoteType
+
+    @property
+    def Skey(self):
+        return self._Skey
+
+    @Skey.setter
+    def Skey(self, Skey):
+        self._Skey = Skey
+
+    @property
+    def LoraAppKey(self):
+        return self._LoraAppKey
+
+    @LoraAppKey.setter
+    def LoraAppKey(self, LoraAppKey):
+        self._LoraAppKey = LoraAppKey
+
+    @property
+    def TlsCrt(self):
+        return self._TlsCrt
+
+    @TlsCrt.setter
+    def TlsCrt(self, TlsCrt):
+        self._TlsCrt = TlsCrt
 
 
     def _deserialize(self, params):
-        self.ProductId = params.get("ProductId")
-        self.DeviceName = params.get("DeviceName")
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
         if params.get("Attribute") is not None:
-            self.Attribute = Attribute()
-            self.Attribute._deserialize(params.get("Attribute"))
-        self.DefinedPsk = params.get("DefinedPsk")
-        self.Isp = params.get("Isp")
-        self.Imei = params.get("Imei")
-        self.LoraDevEui = params.get("LoraDevEui")
-        self.LoraMoteType = params.get("LoraMoteType")
-        self.Skey = params.get("Skey")
-        self.LoraAppKey = params.get("LoraAppKey")
-        self.TlsCrt = params.get("TlsCrt")
+            self._Attribute = Attribute()
+            self._Attribute._deserialize(params.get("Attribute"))
+        self._DefinedPsk = params.get("DefinedPsk")
+        self._Isp = params.get("Isp")
+        self._Imei = params.get("Imei")
+        self._LoraDevEui = params.get("LoraDevEui")
+        self._LoraMoteType = params.get("LoraMoteType")
+        self._Skey = params.get("Skey")
+        self._LoraAppKey = params.get("LoraAppKey")
+        self._TlsCrt = params.get("TlsCrt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -200,46 +380,118 @@ class CreateDeviceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DeviceName: Device name
+        :param _DeviceName: Device name
         :type DeviceName: str
-        :param DevicePsk: Base64-encoded symmetric encryption key, which is returned if symmetric encryption is used
+        :param _DevicePsk: Base64-encoded symmetric encryption key, which is returned if symmetric encryption is used
         :type DevicePsk: str
-        :param DeviceCert: Device certificate, which authenticates client identity during TLS connection establishment and is returned if asymmetric encryption is used
+        :param _DeviceCert: Device certificate, which authenticates client identity during TLS connection establishment and is returned if asymmetric encryption is used
         :type DeviceCert: str
-        :param DevicePrivateKey: Device private key, which authenticates client identity during TLS connection establishment and is returned if asymmetric encryption is used. Tencent Cloud does not store the key. Please store it by yourself properly.
+        :param _DevicePrivateKey: Device private key, which authenticates client identity during TLS connection establishment and is returned if asymmetric encryption is used. Tencent Cloud does not store the key. Please store it by yourself properly.
         :type DevicePrivateKey: str
-        :param LoraDevEui: DevEUI of a LoRa device, which is returned for a LoRa device
+        :param _LoraDevEui: DevEUI of a LoRa device, which is returned for a LoRa device
         :type LoraDevEui: str
-        :param LoraMoteType: MoteType of a LoRa device, which is returned for a LoRa device
+        :param _LoraMoteType: MoteType of a LoRa device, which is returned for a LoRa device
         :type LoraMoteType: int
-        :param LoraAppKey: AppKey of a LoRa device, which is returned for a LoRa device
+        :param _LoraAppKey: AppKey of a LoRa device, which is returned for a LoRa device
         :type LoraAppKey: str
-        :param LoraNwkKey: NwkKey of a LoRa device, which is returned for a LoRa device
+        :param _LoraNwkKey: NwkKey of a LoRa device, which is returned for a LoRa device
         :type LoraNwkKey: str
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.DeviceName = None
-        self.DevicePsk = None
-        self.DeviceCert = None
-        self.DevicePrivateKey = None
-        self.LoraDevEui = None
-        self.LoraMoteType = None
-        self.LoraAppKey = None
-        self.LoraNwkKey = None
-        self.RequestId = None
+        self._DeviceName = None
+        self._DevicePsk = None
+        self._DeviceCert = None
+        self._DevicePrivateKey = None
+        self._LoraDevEui = None
+        self._LoraMoteType = None
+        self._LoraAppKey = None
+        self._LoraNwkKey = None
+        self._RequestId = None
+
+    @property
+    def DeviceName(self):
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def DevicePsk(self):
+        return self._DevicePsk
+
+    @DevicePsk.setter
+    def DevicePsk(self, DevicePsk):
+        self._DevicePsk = DevicePsk
+
+    @property
+    def DeviceCert(self):
+        return self._DeviceCert
+
+    @DeviceCert.setter
+    def DeviceCert(self, DeviceCert):
+        self._DeviceCert = DeviceCert
+
+    @property
+    def DevicePrivateKey(self):
+        return self._DevicePrivateKey
+
+    @DevicePrivateKey.setter
+    def DevicePrivateKey(self, DevicePrivateKey):
+        self._DevicePrivateKey = DevicePrivateKey
+
+    @property
+    def LoraDevEui(self):
+        return self._LoraDevEui
+
+    @LoraDevEui.setter
+    def LoraDevEui(self, LoraDevEui):
+        self._LoraDevEui = LoraDevEui
+
+    @property
+    def LoraMoteType(self):
+        return self._LoraMoteType
+
+    @LoraMoteType.setter
+    def LoraMoteType(self, LoraMoteType):
+        self._LoraMoteType = LoraMoteType
+
+    @property
+    def LoraAppKey(self):
+        return self._LoraAppKey
+
+    @LoraAppKey.setter
+    def LoraAppKey(self, LoraAppKey):
+        self._LoraAppKey = LoraAppKey
+
+    @property
+    def LoraNwkKey(self):
+        return self._LoraNwkKey
+
+    @LoraNwkKey.setter
+    def LoraNwkKey(self, LoraNwkKey):
+        self._LoraNwkKey = LoraNwkKey
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.DeviceName = params.get("DeviceName")
-        self.DevicePsk = params.get("DevicePsk")
-        self.DeviceCert = params.get("DeviceCert")
-        self.DevicePrivateKey = params.get("DevicePrivateKey")
-        self.LoraDevEui = params.get("LoraDevEui")
-        self.LoraMoteType = params.get("LoraMoteType")
-        self.LoraAppKey = params.get("LoraAppKey")
-        self.LoraNwkKey = params.get("LoraNwkKey")
-        self.RequestId = params.get("RequestId")
+        self._DeviceName = params.get("DeviceName")
+        self._DevicePsk = params.get("DevicePsk")
+        self._DeviceCert = params.get("DeviceCert")
+        self._DevicePrivateKey = params.get("DevicePrivateKey")
+        self._LoraDevEui = params.get("LoraDevEui")
+        self._LoraMoteType = params.get("LoraMoteType")
+        self._LoraAppKey = params.get("LoraAppKey")
+        self._LoraNwkKey = params.get("LoraNwkKey")
+        self._RequestId = params.get("RequestId")
 
 
 class CreatePrivateCARequest(AbstractModel):
@@ -249,26 +501,51 @@ class CreatePrivateCARequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CertName: CA certificate name
+        :param _CertName: CA certificate name
         :type CertName: str
-        :param CertText: CA certificate content
+        :param _CertText: CA certificate content
         :type CertText: str
-        :param VerifyCertText: Content verifying the CA certificate
+        :param _VerifyCertText: Content verifying the CA certificate
         :type VerifyCertText: str
         """
-        self.CertName = None
-        self.CertText = None
-        self.VerifyCertText = None
+        self._CertName = None
+        self._CertText = None
+        self._VerifyCertText = None
+
+    @property
+    def CertName(self):
+        return self._CertName
+
+    @CertName.setter
+    def CertName(self, CertName):
+        self._CertName = CertName
+
+    @property
+    def CertText(self):
+        return self._CertText
+
+    @CertText.setter
+    def CertText(self, CertText):
+        self._CertText = CertText
+
+    @property
+    def VerifyCertText(self):
+        return self._VerifyCertText
+
+    @VerifyCertText.setter
+    def VerifyCertText(self, VerifyCertText):
+        self._VerifyCertText = VerifyCertText
 
 
     def _deserialize(self, params):
-        self.CertName = params.get("CertName")
-        self.CertText = params.get("CertText")
-        self.VerifyCertText = params.get("VerifyCertText")
+        self._CertName = params.get("CertName")
+        self._CertText = params.get("CertText")
+        self._VerifyCertText = params.get("VerifyCertText")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -281,14 +558,22 @@ class CreatePrivateCAResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateProductRequest(AbstractModel):
@@ -298,28 +583,53 @@ class CreateProductRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProductName: Product name, which cannot be same as that of an existing product. Naming rule: [a-zA-Z0-9:_-]{1,32}.
+        :param _ProductName: Product name, which cannot be same as that of an existing product. Naming rule: [a-zA-Z0-9:_-]{1,32}.
         :type ProductName: str
-        :param ProductProperties: Product properties
+        :param _ProductProperties: Product properties
         :type ProductProperties: :class:`tencentcloud.iotcloud.v20210408.models.ProductProperties`
-        :param Skey: Skey, which is required to create a CLAA product.
+        :param _Skey: Skey, which is required to create a CLAA product.
         :type Skey: str
         """
-        self.ProductName = None
-        self.ProductProperties = None
-        self.Skey = None
+        self._ProductName = None
+        self._ProductProperties = None
+        self._Skey = None
+
+    @property
+    def ProductName(self):
+        return self._ProductName
+
+    @ProductName.setter
+    def ProductName(self, ProductName):
+        self._ProductName = ProductName
+
+    @property
+    def ProductProperties(self):
+        return self._ProductProperties
+
+    @ProductProperties.setter
+    def ProductProperties(self, ProductProperties):
+        self._ProductProperties = ProductProperties
+
+    @property
+    def Skey(self):
+        return self._Skey
+
+    @Skey.setter
+    def Skey(self, Skey):
+        self._Skey = Skey
 
 
     def _deserialize(self, params):
-        self.ProductName = params.get("ProductName")
+        self._ProductName = params.get("ProductName")
         if params.get("ProductProperties") is not None:
-            self.ProductProperties = ProductProperties()
-            self.ProductProperties._deserialize(params.get("ProductProperties"))
-        self.Skey = params.get("Skey")
+            self._ProductProperties = ProductProperties()
+            self._ProductProperties._deserialize(params.get("ProductProperties"))
+        self._Skey = params.get("Skey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -332,28 +642,60 @@ class CreateProductResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProductName: Product name
+        :param _ProductName: Product name
         :type ProductName: str
-        :param ProductId: Product ID, the globally unique ID assigned by Tencent Cloud.
+        :param _ProductId: Product ID, the globally unique ID assigned by Tencent Cloud.
         :type ProductId: str
-        :param ProductProperties: Product properties
+        :param _ProductProperties: Product properties
         :type ProductProperties: :class:`tencentcloud.iotcloud.v20210408.models.ProductProperties`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.ProductName = None
-        self.ProductId = None
-        self.ProductProperties = None
-        self.RequestId = None
+        self._ProductName = None
+        self._ProductId = None
+        self._ProductProperties = None
+        self._RequestId = None
+
+    @property
+    def ProductName(self):
+        return self._ProductName
+
+    @ProductName.setter
+    def ProductName(self, ProductName):
+        self._ProductName = ProductName
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def ProductProperties(self):
+        return self._ProductProperties
+
+    @ProductProperties.setter
+    def ProductProperties(self, ProductProperties):
+        self._ProductProperties = ProductProperties
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ProductName = params.get("ProductName")
-        self.ProductId = params.get("ProductId")
+        self._ProductName = params.get("ProductName")
+        self._ProductId = params.get("ProductId")
         if params.get("ProductProperties") is not None:
-            self.ProductProperties = ProductProperties()
-            self.ProductProperties._deserialize(params.get("ProductProperties"))
-        self.RequestId = params.get("RequestId")
+            self._ProductProperties = ProductProperties()
+            self._ProductProperties._deserialize(params.get("ProductProperties"))
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteDeviceRequest(AbstractModel):
@@ -363,26 +705,51 @@ class DeleteDeviceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProductId: ID of the product to which the device belongs
+        :param _ProductId: ID of the product to which the device belongs
         :type ProductId: str
-        :param DeviceName: Name of the device to delete
+        :param _DeviceName: Name of the device to delete
         :type DeviceName: str
-        :param Skey: Skey, which is required to delete a LoRa device or LoRa gateway device
+        :param _Skey: Skey, which is required to delete a LoRa device or LoRa gateway device
         :type Skey: str
         """
-        self.ProductId = None
-        self.DeviceName = None
-        self.Skey = None
+        self._ProductId = None
+        self._DeviceName = None
+        self._Skey = None
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def Skey(self):
+        return self._Skey
+
+    @Skey.setter
+    def Skey(self, Skey):
+        self._Skey = Skey
 
 
     def _deserialize(self, params):
-        self.ProductId = params.get("ProductId")
-        self.DeviceName = params.get("DeviceName")
-        self.Skey = params.get("Skey")
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._Skey = params.get("Skey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -395,14 +762,22 @@ class DeleteDeviceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteDeviceShadowRequest(AbstractModel):
@@ -412,22 +787,39 @@ class DeleteDeviceShadowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProductId: Product ID
+        :param _ProductId: Product ID
         :type ProductId: str
-        :param DeviceName: Device name
+        :param _DeviceName: Device name
         :type DeviceName: str
         """
-        self.ProductId = None
-        self.DeviceName = None
+        self._ProductId = None
+        self._DeviceName = None
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
 
 
     def _deserialize(self, params):
-        self.ProductId = params.get("ProductId")
-        self.DeviceName = params.get("DeviceName")
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -440,14 +832,22 @@ class DeleteDeviceShadowResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeletePrivateCARequest(AbstractModel):
@@ -457,18 +857,27 @@ class DeletePrivateCARequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CertName: Private CA certificate name
+        :param _CertName: Private CA certificate name
         :type CertName: str
         """
-        self.CertName = None
+        self._CertName = None
+
+    @property
+    def CertName(self):
+        return self._CertName
+
+    @CertName.setter
+    def CertName(self, CertName):
+        self._CertName = CertName
 
 
     def _deserialize(self, params):
-        self.CertName = params.get("CertName")
+        self._CertName = params.get("CertName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -481,14 +890,22 @@ class DeletePrivateCAResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteProductRequest(AbstractModel):
@@ -498,22 +915,39 @@ class DeleteProductRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProductId: ID of the product to delete
+        :param _ProductId: ID of the product to delete
         :type ProductId: str
-        :param Skey: Skey, which is required to delete a LoRa product
+        :param _Skey: Skey, which is required to delete a LoRa product
         :type Skey: str
         """
-        self.ProductId = None
-        self.Skey = None
+        self._ProductId = None
+        self._Skey = None
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def Skey(self):
+        return self._Skey
+
+    @Skey.setter
+    def Skey(self, Skey):
+        self._Skey = Skey
 
 
     def _deserialize(self, params):
-        self.ProductId = params.get("ProductId")
-        self.Skey = params.get("Skey")
+        self._ProductId = params.get("ProductId")
+        self._Skey = params.get("Skey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -526,14 +960,22 @@ class DeleteProductResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeDeviceRequest(AbstractModel):
@@ -543,22 +985,39 @@ class DescribeDeviceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProductId: Product ID
+        :param _ProductId: Product ID
         :type ProductId: str
-        :param DeviceName: Device name
+        :param _DeviceName: Device name
         :type DeviceName: str
         """
-        self.ProductId = None
-        self.DeviceName = None
+        self._ProductId = None
+        self._DeviceName = None
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
 
 
     def _deserialize(self, params):
-        self.ProductId = params.get("ProductId")
-        self.DeviceName = params.get("DeviceName")
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -571,134 +1030,342 @@ class DescribeDeviceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DeviceName: Device name
+        :param _DeviceName: Device name
         :type DeviceName: str
-        :param Online: Whether the device is online. `0`: offline; `1`: online
+        :param _Online: Whether the device is online. `0`: offline; `1`: online
         :type Online: int
-        :param LoginTime: Device login time
+        :param _LoginTime: Device login time
         :type LoginTime: int
-        :param Version: Device firmware version
+        :param _Version: Device firmware version
         :type Version: str
-        :param LastUpdateTime: Last updated time of the device
+        :param _LastUpdateTime: Last updated time of the device
         :type LastUpdateTime: int
-        :param DeviceCert: Device certificate
+        :param _DeviceCert: Device certificate
         :type DeviceCert: str
-        :param DevicePsk: Device key
+        :param _DevicePsk: Device key
         :type DevicePsk: str
-        :param Tags: Device attribute
+        :param _Tags: Device attribute
         :type Tags: list of DeviceTag
-        :param DeviceType: Device type
+        :param _DeviceType: Device type
         :type DeviceType: int
-        :param Imei: International Mobile Equipment Identity (IMEI)
+        :param _Imei: International Mobile Equipment Identity (IMEI)
         :type Imei: str
-        :param Isp: ISP
+        :param _Isp: ISP
         :type Isp: int
-        :param ConnIP: IP address
+        :param _ConnIP: IP address
         :type ConnIP: int
-        :param NbiotDeviceID: Device ID at the NB-IoT ISP
+        :param _NbiotDeviceID: Device ID at the NB-IoT ISP
         :type NbiotDeviceID: str
-        :param LoraDevEui: DevEUI of a LoRa device
+        :param _LoraDevEui: DevEUI of a LoRa device
         :type LoraDevEui: str
-        :param LoraMoteType: MoteType of a LoRa device
+        :param _LoraMoteType: MoteType of a LoRa device
         :type LoraMoteType: int
-        :param LogLevel: SDK log level of the device
+        :param _LogLevel: SDK log level of the device
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type LogLevel: int
-        :param FirstOnlineTime: The first time when the device went online
+        :param _FirstOnlineTime: The first time when the device went online
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type FirstOnlineTime: int
-        :param LastOfflineTime: The last time when the device went offline
+        :param _LastOfflineTime: The last time when the device went offline
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type LastOfflineTime: int
-        :param CreateTime: Device creation time
+        :param _CreateTime: Device creation time
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type CreateTime: int
-        :param CertState: Whether the device certificate has been obtained. `0`: no; `1`: yes
+        :param _CertState: Whether the device certificate has been obtained. `0`: no; `1`: yes
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type CertState: int
-        :param EnableState: Whether the device is enabled
+        :param _EnableState: Whether the device is enabled
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type EnableState: int
-        :param Labels: Device tags
+        :param _Labels: Device tags
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type Labels: list of DeviceLabel
-        :param ClientIP: IP address of the MQTT client
+        :param _ClientIP: IP address of the MQTT client
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type ClientIP: str
-        :param FirmwareUpdateTime: Firmware update time of the device
+        :param _FirmwareUpdateTime: Firmware update time of the device
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type FirmwareUpdateTime: int
-        :param CreateUserId: Account ID of the creator
+        :param _CreateUserId: Account ID of the creator
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type CreateUserId: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.DeviceName = None
-        self.Online = None
-        self.LoginTime = None
-        self.Version = None
-        self.LastUpdateTime = None
-        self.DeviceCert = None
-        self.DevicePsk = None
-        self.Tags = None
-        self.DeviceType = None
-        self.Imei = None
-        self.Isp = None
-        self.ConnIP = None
-        self.NbiotDeviceID = None
-        self.LoraDevEui = None
-        self.LoraMoteType = None
-        self.LogLevel = None
-        self.FirstOnlineTime = None
-        self.LastOfflineTime = None
-        self.CreateTime = None
-        self.CertState = None
-        self.EnableState = None
-        self.Labels = None
-        self.ClientIP = None
-        self.FirmwareUpdateTime = None
-        self.CreateUserId = None
-        self.RequestId = None
+        self._DeviceName = None
+        self._Online = None
+        self._LoginTime = None
+        self._Version = None
+        self._LastUpdateTime = None
+        self._DeviceCert = None
+        self._DevicePsk = None
+        self._Tags = None
+        self._DeviceType = None
+        self._Imei = None
+        self._Isp = None
+        self._ConnIP = None
+        self._NbiotDeviceID = None
+        self._LoraDevEui = None
+        self._LoraMoteType = None
+        self._LogLevel = None
+        self._FirstOnlineTime = None
+        self._LastOfflineTime = None
+        self._CreateTime = None
+        self._CertState = None
+        self._EnableState = None
+        self._Labels = None
+        self._ClientIP = None
+        self._FirmwareUpdateTime = None
+        self._CreateUserId = None
+        self._RequestId = None
+
+    @property
+    def DeviceName(self):
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def Online(self):
+        return self._Online
+
+    @Online.setter
+    def Online(self, Online):
+        self._Online = Online
+
+    @property
+    def LoginTime(self):
+        return self._LoginTime
+
+    @LoginTime.setter
+    def LoginTime(self, LoginTime):
+        self._LoginTime = LoginTime
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def LastUpdateTime(self):
+        return self._LastUpdateTime
+
+    @LastUpdateTime.setter
+    def LastUpdateTime(self, LastUpdateTime):
+        self._LastUpdateTime = LastUpdateTime
+
+    @property
+    def DeviceCert(self):
+        return self._DeviceCert
+
+    @DeviceCert.setter
+    def DeviceCert(self, DeviceCert):
+        self._DeviceCert = DeviceCert
+
+    @property
+    def DevicePsk(self):
+        return self._DevicePsk
+
+    @DevicePsk.setter
+    def DevicePsk(self, DevicePsk):
+        self._DevicePsk = DevicePsk
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def DeviceType(self):
+        return self._DeviceType
+
+    @DeviceType.setter
+    def DeviceType(self, DeviceType):
+        self._DeviceType = DeviceType
+
+    @property
+    def Imei(self):
+        return self._Imei
+
+    @Imei.setter
+    def Imei(self, Imei):
+        self._Imei = Imei
+
+    @property
+    def Isp(self):
+        return self._Isp
+
+    @Isp.setter
+    def Isp(self, Isp):
+        self._Isp = Isp
+
+    @property
+    def ConnIP(self):
+        return self._ConnIP
+
+    @ConnIP.setter
+    def ConnIP(self, ConnIP):
+        self._ConnIP = ConnIP
+
+    @property
+    def NbiotDeviceID(self):
+        return self._NbiotDeviceID
+
+    @NbiotDeviceID.setter
+    def NbiotDeviceID(self, NbiotDeviceID):
+        self._NbiotDeviceID = NbiotDeviceID
+
+    @property
+    def LoraDevEui(self):
+        return self._LoraDevEui
+
+    @LoraDevEui.setter
+    def LoraDevEui(self, LoraDevEui):
+        self._LoraDevEui = LoraDevEui
+
+    @property
+    def LoraMoteType(self):
+        return self._LoraMoteType
+
+    @LoraMoteType.setter
+    def LoraMoteType(self, LoraMoteType):
+        self._LoraMoteType = LoraMoteType
+
+    @property
+    def LogLevel(self):
+        return self._LogLevel
+
+    @LogLevel.setter
+    def LogLevel(self, LogLevel):
+        self._LogLevel = LogLevel
+
+    @property
+    def FirstOnlineTime(self):
+        return self._FirstOnlineTime
+
+    @FirstOnlineTime.setter
+    def FirstOnlineTime(self, FirstOnlineTime):
+        self._FirstOnlineTime = FirstOnlineTime
+
+    @property
+    def LastOfflineTime(self):
+        return self._LastOfflineTime
+
+    @LastOfflineTime.setter
+    def LastOfflineTime(self, LastOfflineTime):
+        self._LastOfflineTime = LastOfflineTime
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def CertState(self):
+        return self._CertState
+
+    @CertState.setter
+    def CertState(self, CertState):
+        self._CertState = CertState
+
+    @property
+    def EnableState(self):
+        return self._EnableState
+
+    @EnableState.setter
+    def EnableState(self, EnableState):
+        self._EnableState = EnableState
+
+    @property
+    def Labels(self):
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def ClientIP(self):
+        return self._ClientIP
+
+    @ClientIP.setter
+    def ClientIP(self, ClientIP):
+        self._ClientIP = ClientIP
+
+    @property
+    def FirmwareUpdateTime(self):
+        return self._FirmwareUpdateTime
+
+    @FirmwareUpdateTime.setter
+    def FirmwareUpdateTime(self, FirmwareUpdateTime):
+        self._FirmwareUpdateTime = FirmwareUpdateTime
+
+    @property
+    def CreateUserId(self):
+        return self._CreateUserId
+
+    @CreateUserId.setter
+    def CreateUserId(self, CreateUserId):
+        self._CreateUserId = CreateUserId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.DeviceName = params.get("DeviceName")
-        self.Online = params.get("Online")
-        self.LoginTime = params.get("LoginTime")
-        self.Version = params.get("Version")
-        self.LastUpdateTime = params.get("LastUpdateTime")
-        self.DeviceCert = params.get("DeviceCert")
-        self.DevicePsk = params.get("DevicePsk")
+        self._DeviceName = params.get("DeviceName")
+        self._Online = params.get("Online")
+        self._LoginTime = params.get("LoginTime")
+        self._Version = params.get("Version")
+        self._LastUpdateTime = params.get("LastUpdateTime")
+        self._DeviceCert = params.get("DeviceCert")
+        self._DevicePsk = params.get("DevicePsk")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = DeviceTag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.DeviceType = params.get("DeviceType")
-        self.Imei = params.get("Imei")
-        self.Isp = params.get("Isp")
-        self.ConnIP = params.get("ConnIP")
-        self.NbiotDeviceID = params.get("NbiotDeviceID")
-        self.LoraDevEui = params.get("LoraDevEui")
-        self.LoraMoteType = params.get("LoraMoteType")
-        self.LogLevel = params.get("LogLevel")
-        self.FirstOnlineTime = params.get("FirstOnlineTime")
-        self.LastOfflineTime = params.get("LastOfflineTime")
-        self.CreateTime = params.get("CreateTime")
-        self.CertState = params.get("CertState")
-        self.EnableState = params.get("EnableState")
+                self._Tags.append(obj)
+        self._DeviceType = params.get("DeviceType")
+        self._Imei = params.get("Imei")
+        self._Isp = params.get("Isp")
+        self._ConnIP = params.get("ConnIP")
+        self._NbiotDeviceID = params.get("NbiotDeviceID")
+        self._LoraDevEui = params.get("LoraDevEui")
+        self._LoraMoteType = params.get("LoraMoteType")
+        self._LogLevel = params.get("LogLevel")
+        self._FirstOnlineTime = params.get("FirstOnlineTime")
+        self._LastOfflineTime = params.get("LastOfflineTime")
+        self._CreateTime = params.get("CreateTime")
+        self._CertState = params.get("CertState")
+        self._EnableState = params.get("EnableState")
         if params.get("Labels") is not None:
-            self.Labels = []
+            self._Labels = []
             for item in params.get("Labels"):
                 obj = DeviceLabel()
                 obj._deserialize(item)
-                self.Labels.append(obj)
-        self.ClientIP = params.get("ClientIP")
-        self.FirmwareUpdateTime = params.get("FirmwareUpdateTime")
-        self.CreateUserId = params.get("CreateUserId")
-        self.RequestId = params.get("RequestId")
+                self._Labels.append(obj)
+        self._ClientIP = params.get("ClientIP")
+        self._FirmwareUpdateTime = params.get("FirmwareUpdateTime")
+        self._CreateUserId = params.get("CreateUserId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeDevicesRequest(AbstractModel):
@@ -708,38 +1375,87 @@ class DescribeDevicesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProductId: ID of the product whose devices are queried
+        :param _ProductId: ID of the product whose devices are queried
         :type ProductId: str
-        :param Offset: Offset, which starts from 0
+        :param _Offset: Offset, which starts from 0
         :type Offset: int
-        :param Limit: Page size. Value range: 10-250
+        :param _Limit: Page size. Value range: 10-250
         :type Limit: int
-        :param FirmwareVersion: Device firmware version. If no value is passed in, devices of all firmware versions are returned. If `None-FirmwareVersion` is passed in, devices without version numbers are returned.
+        :param _FirmwareVersion: Device firmware version. If no value is passed in, devices of all firmware versions are returned. If `None-FirmwareVersion` is passed in, devices without version numbers are returned.
         :type FirmwareVersion: str
-        :param DeviceName: Device name to query
+        :param _DeviceName: Device name to query
         :type DeviceName: str
-        :param EnableState: Whether to query enabled or disabled devices. `0`: disabled devices; `1`: enabled devices. By default, both enabled and disabled devices are queried.
+        :param _EnableState: Whether to query enabled or disabled devices. `0`: disabled devices; `1`: enabled devices. By default, both enabled and disabled devices are queried.
         :type EnableState: int
         """
-        self.ProductId = None
-        self.Offset = None
-        self.Limit = None
-        self.FirmwareVersion = None
-        self.DeviceName = None
-        self.EnableState = None
+        self._ProductId = None
+        self._Offset = None
+        self._Limit = None
+        self._FirmwareVersion = None
+        self._DeviceName = None
+        self._EnableState = None
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def FirmwareVersion(self):
+        return self._FirmwareVersion
+
+    @FirmwareVersion.setter
+    def FirmwareVersion(self, FirmwareVersion):
+        self._FirmwareVersion = FirmwareVersion
+
+    @property
+    def DeviceName(self):
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def EnableState(self):
+        return self._EnableState
+
+    @EnableState.setter
+    def EnableState(self, EnableState):
+        self._EnableState = EnableState
 
 
     def _deserialize(self, params):
-        self.ProductId = params.get("ProductId")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.FirmwareVersion = params.get("FirmwareVersion")
-        self.DeviceName = params.get("DeviceName")
-        self.EnableState = params.get("EnableState")
+        self._ProductId = params.get("ProductId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._FirmwareVersion = params.get("FirmwareVersion")
+        self._DeviceName = params.get("DeviceName")
+        self._EnableState = params.get("EnableState")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -752,27 +1468,51 @@ class DescribeDevicesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Total number of the devices returned
+        :param _TotalCount: Total number of the devices returned
         :type TotalCount: int
-        :param Devices: List of device details
+        :param _Devices: List of device details
         :type Devices: list of DeviceInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.Devices = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._Devices = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Devices(self):
+        return self._Devices
+
+    @Devices.setter
+    def Devices(self, Devices):
+        self._Devices = Devices
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("Devices") is not None:
-            self.Devices = []
+            self._Devices = []
             for item in params.get("Devices"):
                 obj = DeviceInfo()
                 obj._deserialize(item)
-                self.Devices.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Devices.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribePrivateCABindedProductsRequest(AbstractModel):
@@ -782,26 +1522,51 @@ class DescribePrivateCABindedProductsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CertName: Certificate name
+        :param _CertName: Certificate name
         :type CertName: str
-        :param Offset: Offset for query
+        :param _Offset: Offset for query
         :type Offset: int
-        :param Limit: Maximum number of records to return, which is 20 by default and cannot exceed 200
+        :param _Limit: Maximum number of records to return, which is 20 by default and cannot exceed 200
         :type Limit: int
         """
-        self.CertName = None
-        self.Offset = None
-        self.Limit = None
+        self._CertName = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def CertName(self):
+        return self._CertName
+
+    @CertName.setter
+    def CertName(self, CertName):
+        self._CertName = CertName
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.CertName = params.get("CertName")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+        self._CertName = params.get("CertName")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -814,23 +1579,39 @@ class DescribePrivateCABindedProductsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Products: List of the products bound to the private CA certificate
+        :param _Products: List of the products bound to the private CA certificate
         :type Products: list of BindProductInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.Products = None
-        self.RequestId = None
+        self._Products = None
+        self._RequestId = None
+
+    @property
+    def Products(self):
+        return self._Products
+
+    @Products.setter
+    def Products(self, Products):
+        self._Products = Products
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("Products") is not None:
-            self.Products = []
+            self._Products = []
             for item in params.get("Products"):
                 obj = BindProductInfo()
                 obj._deserialize(item)
-                self.Products.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Products.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribePrivateCARequest(AbstractModel):
@@ -840,18 +1621,27 @@ class DescribePrivateCARequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CertName: Name of the private CA certificate to query
+        :param _CertName: Name of the private CA certificate to query
         :type CertName: str
         """
-        self.CertName = None
+        self._CertName = None
+
+    @property
+    def CertName(self):
+        return self._CertName
+
+    @CertName.setter
+    def CertName(self, CertName):
+        self._CertName = CertName
 
 
     def _deserialize(self, params):
-        self.CertName = params.get("CertName")
+        self._CertName = params.get("CertName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -864,20 +1654,36 @@ class DescribePrivateCAResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CA: Details of the private CA certificate
+        :param _CA: Details of the private CA certificate
         :type CA: :class:`tencentcloud.iotcloud.v20210408.models.CertInfo`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.CA = None
-        self.RequestId = None
+        self._CA = None
+        self._RequestId = None
+
+    @property
+    def CA(self):
+        return self._CA
+
+    @CA.setter
+    def CA(self, CA):
+        self._CA = CA
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("CA") is not None:
-            self.CA = CertInfo()
-            self.CA._deserialize(params.get("CA"))
-        self.RequestId = params.get("RequestId")
+            self._CA = CertInfo()
+            self._CA._deserialize(params.get("CA"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribePrivateCAsRequest(AbstractModel):
@@ -893,23 +1699,39 @@ class DescribePrivateCAsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CAs: List of private CA certificates
+        :param _CAs: List of private CA certificates
         :type CAs: list of CertInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.CAs = None
-        self.RequestId = None
+        self._CAs = None
+        self._RequestId = None
+
+    @property
+    def CAs(self):
+        return self._CAs
+
+    @CAs.setter
+    def CAs(self, CAs):
+        self._CAs = CAs
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("CAs") is not None:
-            self.CAs = []
+            self._CAs = []
             for item in params.get("CAs"):
                 obj = CertInfo()
                 obj._deserialize(item)
-                self.CAs.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._CAs.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeProductCARequest(AbstractModel):
@@ -919,18 +1741,27 @@ class DescribeProductCARequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProductId: Product ID
+        :param _ProductId: Product ID
         :type ProductId: str
         """
-        self.ProductId = None
+        self._ProductId = None
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
 
 
     def _deserialize(self, params):
-        self.ProductId = params.get("ProductId")
+        self._ProductId = params.get("ProductId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -943,23 +1774,39 @@ class DescribeProductCAResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CAs: List of CA certificates bound to the product
+        :param _CAs: List of CA certificates bound to the product
         :type CAs: list of CertInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.CAs = None
-        self.RequestId = None
+        self._CAs = None
+        self._RequestId = None
+
+    @property
+    def CAs(self):
+        return self._CAs
+
+    @CAs.setter
+    def CAs(self, CAs):
+        self._CAs = CAs
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
         if params.get("CAs") is not None:
-            self.CAs = []
+            self._CAs = []
             for item in params.get("CAs"):
                 obj = CertInfo()
                 obj._deserialize(item)
-                self.CAs.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._CAs.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeProductRequest(AbstractModel):
@@ -969,18 +1816,27 @@ class DescribeProductRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProductId: Product ID
+        :param _ProductId: Product ID
         :type ProductId: str
         """
-        self.ProductId = None
+        self._ProductId = None
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
 
 
     def _deserialize(self, params):
-        self.ProductId = params.get("ProductId")
+        self._ProductId = params.get("ProductId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -993,34 +1849,74 @@ class DescribeProductResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProductId: Product ID
+        :param _ProductId: Product ID
         :type ProductId: str
-        :param ProductName: Product name
+        :param _ProductName: Product name
         :type ProductName: str
-        :param ProductMetadata: Product metadata
+        :param _ProductMetadata: Product metadata
         :type ProductMetadata: :class:`tencentcloud.iotcloud.v20210408.models.ProductMetadata`
-        :param ProductProperties: Product properties
+        :param _ProductProperties: Product properties
         :type ProductProperties: :class:`tencentcloud.iotcloud.v20210408.models.ProductProperties`
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.ProductId = None
-        self.ProductName = None
-        self.ProductMetadata = None
-        self.ProductProperties = None
-        self.RequestId = None
+        self._ProductId = None
+        self._ProductName = None
+        self._ProductMetadata = None
+        self._ProductProperties = None
+        self._RequestId = None
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def ProductName(self):
+        return self._ProductName
+
+    @ProductName.setter
+    def ProductName(self, ProductName):
+        self._ProductName = ProductName
+
+    @property
+    def ProductMetadata(self):
+        return self._ProductMetadata
+
+    @ProductMetadata.setter
+    def ProductMetadata(self, ProductMetadata):
+        self._ProductMetadata = ProductMetadata
+
+    @property
+    def ProductProperties(self):
+        return self._ProductProperties
+
+    @ProductProperties.setter
+    def ProductProperties(self, ProductProperties):
+        self._ProductProperties = ProductProperties
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.ProductId = params.get("ProductId")
-        self.ProductName = params.get("ProductName")
+        self._ProductId = params.get("ProductId")
+        self._ProductName = params.get("ProductName")
         if params.get("ProductMetadata") is not None:
-            self.ProductMetadata = ProductMetadata()
-            self.ProductMetadata._deserialize(params.get("ProductMetadata"))
+            self._ProductMetadata = ProductMetadata()
+            self._ProductMetadata._deserialize(params.get("ProductMetadata"))
         if params.get("ProductProperties") is not None:
-            self.ProductProperties = ProductProperties()
-            self.ProductProperties._deserialize(params.get("ProductProperties"))
-        self.RequestId = params.get("RequestId")
+            self._ProductProperties = ProductProperties()
+            self._ProductProperties._deserialize(params.get("ProductProperties"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeProductsRequest(AbstractModel):
@@ -1030,22 +1926,39 @@ class DescribeProductsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: Offset, starting from 0
+        :param _Offset: Offset, starting from 0
         :type Offset: int
-        :param Limit: Number of entries returned per page. Valid range: 10–250.
+        :param _Limit: Number of entries returned per page. Valid range: 10–250.
         :type Limit: int
         """
-        self.Offset = None
-        self.Limit = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
 
     def _deserialize(self, params):
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1058,27 +1971,51 @@ class DescribeProductsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: Total number of products
+        :param _TotalCount: Total number of products
         :type TotalCount: int
-        :param Products: List of product details
+        :param _Products: List of product details
         :type Products: list of ProductInfo
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.TotalCount = None
-        self.Products = None
-        self.RequestId = None
+        self._TotalCount = None
+        self._Products = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Products(self):
+        return self._Products
+
+    @Products.setter
+    def Products(self, Products):
+        self._Products = Products
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
+        self._TotalCount = params.get("TotalCount")
         if params.get("Products") is not None:
-            self.Products = []
+            self._Products = []
             for item in params.get("Products"):
                 obj = ProductInfo()
                 obj._deserialize(item)
-                self.Products.append(obj)
-        self.RequestId = params.get("RequestId")
+                self._Products.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DeviceInfo(AbstractModel):
@@ -1088,129 +2025,322 @@ class DeviceInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DeviceName: Device name
+        :param _DeviceName: Device name
         :type DeviceName: str
-        :param Online: Whether the device is online. `0`: offline; `1`: online
+        :param _Online: Whether the device is online. `0`: offline; `1`: online
         :type Online: int
-        :param LoginTime: Device login time
+        :param _LoginTime: Device login time
         :type LoginTime: int
-        :param Version: Device version
+        :param _Version: Device version
         :type Version: str
-        :param DeviceCert: Device certificate, which is returned for devices that use certificates for authentication
+        :param _DeviceCert: Device certificate, which is returned for devices that use certificates for authentication
         :type DeviceCert: str
-        :param DevicePsk: Device key, which is returned for devices that use keys for authentication
+        :param _DevicePsk: Device key, which is returned for devices that use keys for authentication
         :type DevicePsk: str
-        :param Tags: Device attribute
+        :param _Tags: Device attribute
         :type Tags: list of DeviceTag
-        :param DeviceType: Device type
+        :param _DeviceType: Device type
         :type DeviceType: int
-        :param Imei: International Mobile Equipment Identity (IMEI)
+        :param _Imei: International Mobile Equipment Identity (IMEI)
         :type Imei: str
-        :param Isp: ISP
+        :param _Isp: ISP
         :type Isp: int
-        :param NbiotDeviceID: Device ID at the NB-IoT ISP
+        :param _NbiotDeviceID: Device ID at the NB-IoT ISP
         :type NbiotDeviceID: str
-        :param ConnIP: IP address
+        :param _ConnIP: IP address
         :type ConnIP: int
-        :param LastUpdateTime: Last updated time of the device
+        :param _LastUpdateTime: Last updated time of the device
         :type LastUpdateTime: int
-        :param LoraDevEui: DevEUI of a LoRa device
+        :param _LoraDevEui: DevEUI of a LoRa device
         :type LoraDevEui: str
-        :param LoraMoteType: MoteType of a LoRa device
+        :param _LoraMoteType: MoteType of a LoRa device
         :type LoraMoteType: int
-        :param FirstOnlineTime: The first time when the device went online
+        :param _FirstOnlineTime: The first time when the device went online
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type FirstOnlineTime: int
-        :param LastOfflineTime: The last time when the device went offline
+        :param _LastOfflineTime: The last time when the device went offline
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type LastOfflineTime: int
-        :param CreateTime: Device creation time
+        :param _CreateTime: Device creation time
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type CreateTime: int
-        :param LogLevel: Device log level
+        :param _LogLevel: Device log level
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type LogLevel: int
-        :param CertState: Whether the device certificate has been obtained. `0`: no; `1`: yes
+        :param _CertState: Whether the device certificate has been obtained. `0`: no; `1`: yes
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type CertState: int
-        :param EnableState: Whether the device is enabled. `0`: disabled; `1`: enabled
+        :param _EnableState: Whether the device is enabled. `0`: disabled; `1`: enabled
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type EnableState: int
-        :param Labels: Device tags
+        :param _Labels: Device tags
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type Labels: list of DeviceLabel
-        :param ClientIP: IP address of the MQTT client
+        :param _ClientIP: IP address of the MQTT client
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type ClientIP: str
-        :param FirmwareUpdateTime: Time of last OTA update
+        :param _FirmwareUpdateTime: Time of last OTA update
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type FirmwareUpdateTime: int
         """
-        self.DeviceName = None
-        self.Online = None
-        self.LoginTime = None
-        self.Version = None
-        self.DeviceCert = None
-        self.DevicePsk = None
-        self.Tags = None
-        self.DeviceType = None
-        self.Imei = None
-        self.Isp = None
-        self.NbiotDeviceID = None
-        self.ConnIP = None
-        self.LastUpdateTime = None
-        self.LoraDevEui = None
-        self.LoraMoteType = None
-        self.FirstOnlineTime = None
-        self.LastOfflineTime = None
-        self.CreateTime = None
-        self.LogLevel = None
-        self.CertState = None
-        self.EnableState = None
-        self.Labels = None
-        self.ClientIP = None
-        self.FirmwareUpdateTime = None
+        self._DeviceName = None
+        self._Online = None
+        self._LoginTime = None
+        self._Version = None
+        self._DeviceCert = None
+        self._DevicePsk = None
+        self._Tags = None
+        self._DeviceType = None
+        self._Imei = None
+        self._Isp = None
+        self._NbiotDeviceID = None
+        self._ConnIP = None
+        self._LastUpdateTime = None
+        self._LoraDevEui = None
+        self._LoraMoteType = None
+        self._FirstOnlineTime = None
+        self._LastOfflineTime = None
+        self._CreateTime = None
+        self._LogLevel = None
+        self._CertState = None
+        self._EnableState = None
+        self._Labels = None
+        self._ClientIP = None
+        self._FirmwareUpdateTime = None
+
+    @property
+    def DeviceName(self):
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def Online(self):
+        return self._Online
+
+    @Online.setter
+    def Online(self, Online):
+        self._Online = Online
+
+    @property
+    def LoginTime(self):
+        return self._LoginTime
+
+    @LoginTime.setter
+    def LoginTime(self, LoginTime):
+        self._LoginTime = LoginTime
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def DeviceCert(self):
+        return self._DeviceCert
+
+    @DeviceCert.setter
+    def DeviceCert(self, DeviceCert):
+        self._DeviceCert = DeviceCert
+
+    @property
+    def DevicePsk(self):
+        return self._DevicePsk
+
+    @DevicePsk.setter
+    def DevicePsk(self, DevicePsk):
+        self._DevicePsk = DevicePsk
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def DeviceType(self):
+        return self._DeviceType
+
+    @DeviceType.setter
+    def DeviceType(self, DeviceType):
+        self._DeviceType = DeviceType
+
+    @property
+    def Imei(self):
+        return self._Imei
+
+    @Imei.setter
+    def Imei(self, Imei):
+        self._Imei = Imei
+
+    @property
+    def Isp(self):
+        return self._Isp
+
+    @Isp.setter
+    def Isp(self, Isp):
+        self._Isp = Isp
+
+    @property
+    def NbiotDeviceID(self):
+        return self._NbiotDeviceID
+
+    @NbiotDeviceID.setter
+    def NbiotDeviceID(self, NbiotDeviceID):
+        self._NbiotDeviceID = NbiotDeviceID
+
+    @property
+    def ConnIP(self):
+        return self._ConnIP
+
+    @ConnIP.setter
+    def ConnIP(self, ConnIP):
+        self._ConnIP = ConnIP
+
+    @property
+    def LastUpdateTime(self):
+        return self._LastUpdateTime
+
+    @LastUpdateTime.setter
+    def LastUpdateTime(self, LastUpdateTime):
+        self._LastUpdateTime = LastUpdateTime
+
+    @property
+    def LoraDevEui(self):
+        return self._LoraDevEui
+
+    @LoraDevEui.setter
+    def LoraDevEui(self, LoraDevEui):
+        self._LoraDevEui = LoraDevEui
+
+    @property
+    def LoraMoteType(self):
+        return self._LoraMoteType
+
+    @LoraMoteType.setter
+    def LoraMoteType(self, LoraMoteType):
+        self._LoraMoteType = LoraMoteType
+
+    @property
+    def FirstOnlineTime(self):
+        return self._FirstOnlineTime
+
+    @FirstOnlineTime.setter
+    def FirstOnlineTime(self, FirstOnlineTime):
+        self._FirstOnlineTime = FirstOnlineTime
+
+    @property
+    def LastOfflineTime(self):
+        return self._LastOfflineTime
+
+    @LastOfflineTime.setter
+    def LastOfflineTime(self, LastOfflineTime):
+        self._LastOfflineTime = LastOfflineTime
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def LogLevel(self):
+        return self._LogLevel
+
+    @LogLevel.setter
+    def LogLevel(self, LogLevel):
+        self._LogLevel = LogLevel
+
+    @property
+    def CertState(self):
+        return self._CertState
+
+    @CertState.setter
+    def CertState(self, CertState):
+        self._CertState = CertState
+
+    @property
+    def EnableState(self):
+        return self._EnableState
+
+    @EnableState.setter
+    def EnableState(self, EnableState):
+        self._EnableState = EnableState
+
+    @property
+    def Labels(self):
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def ClientIP(self):
+        return self._ClientIP
+
+    @ClientIP.setter
+    def ClientIP(self, ClientIP):
+        self._ClientIP = ClientIP
+
+    @property
+    def FirmwareUpdateTime(self):
+        return self._FirmwareUpdateTime
+
+    @FirmwareUpdateTime.setter
+    def FirmwareUpdateTime(self, FirmwareUpdateTime):
+        self._FirmwareUpdateTime = FirmwareUpdateTime
 
 
     def _deserialize(self, params):
-        self.DeviceName = params.get("DeviceName")
-        self.Online = params.get("Online")
-        self.LoginTime = params.get("LoginTime")
-        self.Version = params.get("Version")
-        self.DeviceCert = params.get("DeviceCert")
-        self.DevicePsk = params.get("DevicePsk")
+        self._DeviceName = params.get("DeviceName")
+        self._Online = params.get("Online")
+        self._LoginTime = params.get("LoginTime")
+        self._Version = params.get("Version")
+        self._DeviceCert = params.get("DeviceCert")
+        self._DevicePsk = params.get("DevicePsk")
         if params.get("Tags") is not None:
-            self.Tags = []
+            self._Tags = []
             for item in params.get("Tags"):
                 obj = DeviceTag()
                 obj._deserialize(item)
-                self.Tags.append(obj)
-        self.DeviceType = params.get("DeviceType")
-        self.Imei = params.get("Imei")
-        self.Isp = params.get("Isp")
-        self.NbiotDeviceID = params.get("NbiotDeviceID")
-        self.ConnIP = params.get("ConnIP")
-        self.LastUpdateTime = params.get("LastUpdateTime")
-        self.LoraDevEui = params.get("LoraDevEui")
-        self.LoraMoteType = params.get("LoraMoteType")
-        self.FirstOnlineTime = params.get("FirstOnlineTime")
-        self.LastOfflineTime = params.get("LastOfflineTime")
-        self.CreateTime = params.get("CreateTime")
-        self.LogLevel = params.get("LogLevel")
-        self.CertState = params.get("CertState")
-        self.EnableState = params.get("EnableState")
+                self._Tags.append(obj)
+        self._DeviceType = params.get("DeviceType")
+        self._Imei = params.get("Imei")
+        self._Isp = params.get("Isp")
+        self._NbiotDeviceID = params.get("NbiotDeviceID")
+        self._ConnIP = params.get("ConnIP")
+        self._LastUpdateTime = params.get("LastUpdateTime")
+        self._LoraDevEui = params.get("LoraDevEui")
+        self._LoraMoteType = params.get("LoraMoteType")
+        self._FirstOnlineTime = params.get("FirstOnlineTime")
+        self._LastOfflineTime = params.get("LastOfflineTime")
+        self._CreateTime = params.get("CreateTime")
+        self._LogLevel = params.get("LogLevel")
+        self._CertState = params.get("CertState")
+        self._EnableState = params.get("EnableState")
         if params.get("Labels") is not None:
-            self.Labels = []
+            self._Labels = []
             for item in params.get("Labels"):
                 obj = DeviceLabel()
                 obj._deserialize(item)
-                self.Labels.append(obj)
-        self.ClientIP = params.get("ClientIP")
-        self.FirmwareUpdateTime = params.get("FirmwareUpdateTime")
+                self._Labels.append(obj)
+        self._ClientIP = params.get("ClientIP")
+        self._FirmwareUpdateTime = params.get("FirmwareUpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1223,22 +2353,39 @@ class DeviceLabel(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Key: Tag key
+        :param _Key: Tag key
         :type Key: str
-        :param Value: Tag value
+        :param _Value: Tag value
         :type Value: str
         """
-        self.Key = None
-        self.Value = None
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
 
 
     def _deserialize(self, params):
-        self.Key = params.get("Key")
-        self.Value = params.get("Value")
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1251,31 +2398,64 @@ class DeviceTag(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Tag: Attribute name
+        :param _Tag: Attribute name
         :type Tag: str
-        :param Type: Attribute value type. `1`: integer; `2`: string
+        :param _Type: Attribute value type. `1`: integer; `2`: string
         :type Type: int
-        :param Value: Attribute value
+        :param _Value: Attribute value
         :type Value: str
-        :param Name: Attribute description
+        :param _Name: Attribute description
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type Name: str
         """
-        self.Tag = None
-        self.Type = None
-        self.Value = None
-        self.Name = None
+        self._Tag = None
+        self._Type = None
+        self._Value = None
+        self._Name = None
+
+    @property
+    def Tag(self):
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
 
     def _deserialize(self, params):
-        self.Tag = params.get("Tag")
-        self.Type = params.get("Type")
-        self.Value = params.get("Value")
-        self.Name = params.get("Name")
+        self._Tag = params.get("Tag")
+        self._Type = params.get("Type")
+        self._Value = params.get("Value")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1288,34 +2468,67 @@ class ProductInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProductId: Product ID
+        :param _ProductId: Product ID
         :type ProductId: str
-        :param ProductName: Product name
+        :param _ProductName: Product name
         :type ProductName: str
-        :param ProductMetadata: Product metadata
+        :param _ProductMetadata: Product metadata
         :type ProductMetadata: :class:`tencentcloud.iotcloud.v20210408.models.ProductMetadata`
-        :param ProductProperties: Product properties
+        :param _ProductProperties: Product properties
         :type ProductProperties: :class:`tencentcloud.iotcloud.v20210408.models.ProductProperties`
         """
-        self.ProductId = None
-        self.ProductName = None
-        self.ProductMetadata = None
-        self.ProductProperties = None
+        self._ProductId = None
+        self._ProductName = None
+        self._ProductMetadata = None
+        self._ProductProperties = None
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def ProductName(self):
+        return self._ProductName
+
+    @ProductName.setter
+    def ProductName(self, ProductName):
+        self._ProductName = ProductName
+
+    @property
+    def ProductMetadata(self):
+        return self._ProductMetadata
+
+    @ProductMetadata.setter
+    def ProductMetadata(self, ProductMetadata):
+        self._ProductMetadata = ProductMetadata
+
+    @property
+    def ProductProperties(self):
+        return self._ProductProperties
+
+    @ProductProperties.setter
+    def ProductProperties(self, ProductProperties):
+        self._ProductProperties = ProductProperties
 
 
     def _deserialize(self, params):
-        self.ProductId = params.get("ProductId")
-        self.ProductName = params.get("ProductName")
+        self._ProductId = params.get("ProductId")
+        self._ProductName = params.get("ProductName")
         if params.get("ProductMetadata") is not None:
-            self.ProductMetadata = ProductMetadata()
-            self.ProductMetadata._deserialize(params.get("ProductMetadata"))
+            self._ProductMetadata = ProductMetadata()
+            self._ProductMetadata._deserialize(params.get("ProductMetadata"))
         if params.get("ProductProperties") is not None:
-            self.ProductProperties = ProductProperties()
-            self.ProductProperties._deserialize(params.get("ProductProperties"))
+            self._ProductProperties = ProductProperties()
+            self._ProductProperties._deserialize(params.get("ProductProperties"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1328,18 +2541,27 @@ class ProductMetadata(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CreationDate: Product creation time
+        :param _CreationDate: Product creation time
         :type CreationDate: int
         """
-        self.CreationDate = None
+        self._CreationDate = None
+
+    @property
+    def CreationDate(self):
+        return self._CreationDate
+
+    @CreationDate.setter
+    def CreationDate(self, CreationDate):
+        self._CreationDate = CreationDate
 
 
     def _deserialize(self, params):
-        self.CreationDate = params.get("CreationDate")
+        self._CreationDate = params.get("CreationDate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1352,79 +2574,208 @@ class ProductProperties(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProductDescription: Product description
+        :param _ProductDescription: Product description
         :type ProductDescription: str
-        :param EncryptionType: Authentication type. `1` (default): certificate; `2`: signature
+        :param _EncryptionType: Authentication type. `1` (default): certificate; `2`: signature
         :type EncryptionType: str
-        :param Region: Product region. Valid value: `gz` (Guangzhou)
+        :param _Region: Product region. Valid value: `gz` (Guangzhou)
         :type Region: str
-        :param ProductType: Product type. Valid values:
+        :param _ProductType: Product type. Valid values:
 `0` (default): general; `2`: NB-IoT; `3`: LoRa gateway; `4`: LoRa; `5`: general gateway
         :type ProductType: int
-        :param Format: Data format. Valid values: `json` (default), `custom`
+        :param _Format: Data format. Valid values: `json` (default), `custom`
         :type Format: str
-        :param Platform: Platform of the product. Default value: `0`
+        :param _Platform: Platform of the product. Default value: `0`
         :type Platform: str
-        :param Appeui: AppEUI at the LoRa product operator, required only for LoRa products
+        :param _Appeui: AppEUI at the LoRa product operator, required only for LoRa products
         :type Appeui: str
-        :param ModelId: ID of the Thing Specification Language (TSL) model bound to the product. `-1` means no models are bound.
+        :param _ModelId: ID of the Thing Specification Language (TSL) model bound to the product. `-1` means no models are bound.
         :type ModelId: str
-        :param ModelName: Name of the TSL model bound to the product
+        :param _ModelName: Name of the TSL model bound to the product
         :type ModelName: str
-        :param ProductKey: Product key, which is specific to suite products
+        :param _ProductKey: Product key, which is specific to suite products
         :type ProductKey: str
-        :param RegisterType: Dynamic registration type. `0`: disable; `1`: preset device names; `2`: generate device names dynamically
+        :param _RegisterType: Dynamic registration type. `0`: disable; `1`: preset device names; `2`: generate device names dynamically
         :type RegisterType: int
-        :param ProductSecret: Dynamic registration product key
+        :param _ProductSecret: Dynamic registration product key
         :type ProductSecret: str
-        :param RegisterLimit: The maximum number of devices that can be dynamically created when `RegisterType` is set to `2`
+        :param _RegisterLimit: The maximum number of devices that can be dynamically created when `RegisterType` is set to `2`
         :type RegisterLimit: int
-        :param OriginProductId: Original product ID of a transferred product. This parameter is empty for products that are not transferred.
+        :param _OriginProductId: Original product ID of a transferred product. This parameter is empty for products that are not transferred.
         :type OriginProductId: str
-        :param PrivateCAName: Private CA certificate name
+        :param _PrivateCAName: Private CA certificate name
         :type PrivateCAName: str
-        :param OriginUserId: Original user ID of a transferred product. This parameter is empty for products that are not transferred.
+        :param _OriginUserId: Original user ID of a transferred product. This parameter is empty for products that are not transferred.
         :type OriginUserId: int
         """
-        self.ProductDescription = None
-        self.EncryptionType = None
-        self.Region = None
-        self.ProductType = None
-        self.Format = None
-        self.Platform = None
-        self.Appeui = None
-        self.ModelId = None
-        self.ModelName = None
-        self.ProductKey = None
-        self.RegisterType = None
-        self.ProductSecret = None
-        self.RegisterLimit = None
-        self.OriginProductId = None
-        self.PrivateCAName = None
-        self.OriginUserId = None
+        self._ProductDescription = None
+        self._EncryptionType = None
+        self._Region = None
+        self._ProductType = None
+        self._Format = None
+        self._Platform = None
+        self._Appeui = None
+        self._ModelId = None
+        self._ModelName = None
+        self._ProductKey = None
+        self._RegisterType = None
+        self._ProductSecret = None
+        self._RegisterLimit = None
+        self._OriginProductId = None
+        self._PrivateCAName = None
+        self._OriginUserId = None
+
+    @property
+    def ProductDescription(self):
+        return self._ProductDescription
+
+    @ProductDescription.setter
+    def ProductDescription(self, ProductDescription):
+        self._ProductDescription = ProductDescription
+
+    @property
+    def EncryptionType(self):
+        return self._EncryptionType
+
+    @EncryptionType.setter
+    def EncryptionType(self, EncryptionType):
+        self._EncryptionType = EncryptionType
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def ProductType(self):
+        return self._ProductType
+
+    @ProductType.setter
+    def ProductType(self, ProductType):
+        self._ProductType = ProductType
+
+    @property
+    def Format(self):
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+    @property
+    def Platform(self):
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def Appeui(self):
+        return self._Appeui
+
+    @Appeui.setter
+    def Appeui(self, Appeui):
+        self._Appeui = Appeui
+
+    @property
+    def ModelId(self):
+        return self._ModelId
+
+    @ModelId.setter
+    def ModelId(self, ModelId):
+        self._ModelId = ModelId
+
+    @property
+    def ModelName(self):
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def ProductKey(self):
+        return self._ProductKey
+
+    @ProductKey.setter
+    def ProductKey(self, ProductKey):
+        self._ProductKey = ProductKey
+
+    @property
+    def RegisterType(self):
+        return self._RegisterType
+
+    @RegisterType.setter
+    def RegisterType(self, RegisterType):
+        self._RegisterType = RegisterType
+
+    @property
+    def ProductSecret(self):
+        return self._ProductSecret
+
+    @ProductSecret.setter
+    def ProductSecret(self, ProductSecret):
+        self._ProductSecret = ProductSecret
+
+    @property
+    def RegisterLimit(self):
+        return self._RegisterLimit
+
+    @RegisterLimit.setter
+    def RegisterLimit(self, RegisterLimit):
+        self._RegisterLimit = RegisterLimit
+
+    @property
+    def OriginProductId(self):
+        return self._OriginProductId
+
+    @OriginProductId.setter
+    def OriginProductId(self, OriginProductId):
+        self._OriginProductId = OriginProductId
+
+    @property
+    def PrivateCAName(self):
+        return self._PrivateCAName
+
+    @PrivateCAName.setter
+    def PrivateCAName(self, PrivateCAName):
+        self._PrivateCAName = PrivateCAName
+
+    @property
+    def OriginUserId(self):
+        return self._OriginUserId
+
+    @OriginUserId.setter
+    def OriginUserId(self, OriginUserId):
+        self._OriginUserId = OriginUserId
 
 
     def _deserialize(self, params):
-        self.ProductDescription = params.get("ProductDescription")
-        self.EncryptionType = params.get("EncryptionType")
-        self.Region = params.get("Region")
-        self.ProductType = params.get("ProductType")
-        self.Format = params.get("Format")
-        self.Platform = params.get("Platform")
-        self.Appeui = params.get("Appeui")
-        self.ModelId = params.get("ModelId")
-        self.ModelName = params.get("ModelName")
-        self.ProductKey = params.get("ProductKey")
-        self.RegisterType = params.get("RegisterType")
-        self.ProductSecret = params.get("ProductSecret")
-        self.RegisterLimit = params.get("RegisterLimit")
-        self.OriginProductId = params.get("OriginProductId")
-        self.PrivateCAName = params.get("PrivateCAName")
-        self.OriginUserId = params.get("OriginUserId")
+        self._ProductDescription = params.get("ProductDescription")
+        self._EncryptionType = params.get("EncryptionType")
+        self._Region = params.get("Region")
+        self._ProductType = params.get("ProductType")
+        self._Format = params.get("Format")
+        self._Platform = params.get("Platform")
+        self._Appeui = params.get("Appeui")
+        self._ModelId = params.get("ModelId")
+        self._ModelName = params.get("ModelName")
+        self._ProductKey = params.get("ProductKey")
+        self._RegisterType = params.get("RegisterType")
+        self._ProductSecret = params.get("ProductSecret")
+        self._RegisterLimit = params.get("RegisterLimit")
+        self._OriginProductId = params.get("OriginProductId")
+        self._PrivateCAName = params.get("PrivateCAName")
+        self._OriginUserId = params.get("OriginUserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1437,22 +2788,39 @@ class SetProductsForbiddenStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProductId: List of products to enable or disable
+        :param _ProductId: List of products to enable or disable
         :type ProductId: list of str
-        :param Status: `0`: enable; `1`: disable
+        :param _Status: `0`: enable; `1`: disable
         :type Status: int
         """
-        self.ProductId = None
-        self.Status = None
+        self._ProductId = None
+        self._Status = None
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
 
     def _deserialize(self, params):
-        self.ProductId = params.get("ProductId")
-        self.Status = params.get("Status")
+        self._ProductId = params.get("ProductId")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1465,14 +2833,22 @@ class SetProductsForbiddenStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateDeviceLogLevelRequest(AbstractModel):
@@ -1482,26 +2858,51 @@ class UpdateDeviceLogLevelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProductId: Product ID
+        :param _ProductId: Product ID
         :type ProductId: str
-        :param DeviceName: Device name
+        :param _DeviceName: Device name
         :type DeviceName: str
-        :param LogLevel: Log level. `0`: disable; `1`: error; `2`: warning; `3`: information; `4`: debugging
+        :param _LogLevel: Log level. `0`: disable; `1`: error; `2`: warning; `3`: information; `4`: debugging
         :type LogLevel: int
         """
-        self.ProductId = None
-        self.DeviceName = None
-        self.LogLevel = None
+        self._ProductId = None
+        self._DeviceName = None
+        self._LogLevel = None
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def LogLevel(self):
+        return self._LogLevel
+
+    @LogLevel.setter
+    def LogLevel(self, LogLevel):
+        self._LogLevel = LogLevel
 
 
     def _deserialize(self, params):
-        self.ProductId = params.get("ProductId")
-        self.DeviceName = params.get("DeviceName")
-        self.LogLevel = params.get("LogLevel")
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._LogLevel = params.get("LogLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1514,14 +2915,22 @@ class UpdateDeviceLogLevelResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateDevicesEnableStateRequest(AbstractModel):
@@ -1531,26 +2940,51 @@ class UpdateDevicesEnableStateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProductId: ID of the product to which the device belongs
+        :param _ProductId: ID of the product to which the device belongs
         :type ProductId: str
-        :param DeviceNames: Device names
+        :param _DeviceNames: Device names
         :type DeviceNames: list of str
-        :param Status: New status of the devices. `0`: disabled; `1`: enabled
+        :param _Status: New status of the devices. `0`: disabled; `1`: enabled
         :type Status: int
         """
-        self.ProductId = None
-        self.DeviceNames = None
-        self.Status = None
+        self._ProductId = None
+        self._DeviceNames = None
+        self._Status = None
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceNames(self):
+        return self._DeviceNames
+
+    @DeviceNames.setter
+    def DeviceNames(self, DeviceNames):
+        self._DeviceNames = DeviceNames
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
 
     def _deserialize(self, params):
-        self.ProductId = params.get("ProductId")
-        self.DeviceNames = params.get("DeviceNames")
-        self.Status = params.get("Status")
+        self._ProductId = params.get("ProductId")
+        self._DeviceNames = params.get("DeviceNames")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1563,14 +2997,22 @@ class UpdateDevicesEnableStateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class UpdatePrivateCARequest(AbstractModel):
@@ -1580,26 +3022,51 @@ class UpdatePrivateCARequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CertName: CA certificate name
+        :param _CertName: CA certificate name
         :type CertName: str
-        :param CertText: CA certificate content
+        :param _CertText: CA certificate content
         :type CertText: str
-        :param VerifyCertText: Content verifying the CA certificate
+        :param _VerifyCertText: Content verifying the CA certificate
         :type VerifyCertText: str
         """
-        self.CertName = None
-        self.CertText = None
-        self.VerifyCertText = None
+        self._CertName = None
+        self._CertText = None
+        self._VerifyCertText = None
+
+    @property
+    def CertName(self):
+        return self._CertName
+
+    @CertName.setter
+    def CertName(self, CertName):
+        self._CertName = CertName
+
+    @property
+    def CertText(self):
+        return self._CertText
+
+    @CertText.setter
+    def CertText(self, CertText):
+        self._CertText = CertText
+
+    @property
+    def VerifyCertText(self):
+        return self._VerifyCertText
+
+    @VerifyCertText.setter
+    def VerifyCertText(self, VerifyCertText):
+        self._VerifyCertText = VerifyCertText
 
 
     def _deserialize(self, params):
-        self.CertName = params.get("CertName")
-        self.CertText = params.get("CertText")
-        self.VerifyCertText = params.get("VerifyCertText")
+        self._CertName = params.get("CertName")
+        self._CertText = params.get("CertText")
+        self._VerifyCertText = params.get("VerifyCertText")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1612,14 +3079,22 @@ class UpdatePrivateCAResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RequestId = None
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateProductDynamicRegisterRequest(AbstractModel):
@@ -1629,26 +3104,51 @@ class UpdateProductDynamicRegisterRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProductId: Product ID
+        :param _ProductId: Product ID
         :type ProductId: str
-        :param RegisterType: Dynamic registration type. Valid values: 0 - disabled; 1 - pre-create device; 2 - auto-create device.
+        :param _RegisterType: Dynamic registration type. Valid values: 0 - disabled; 1 - pre-create device; 2 - auto-create device.
         :type RegisterType: int
-        :param RegisterLimit: Maximum dynamically registered devices
+        :param _RegisterLimit: Maximum dynamically registered devices
         :type RegisterLimit: int
         """
-        self.ProductId = None
-        self.RegisterType = None
-        self.RegisterLimit = None
+        self._ProductId = None
+        self._RegisterType = None
+        self._RegisterLimit = None
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def RegisterType(self):
+        return self._RegisterType
+
+    @RegisterType.setter
+    def RegisterType(self, RegisterType):
+        self._RegisterType = RegisterType
+
+    @property
+    def RegisterLimit(self):
+        return self._RegisterLimit
+
+    @RegisterLimit.setter
+    def RegisterLimit(self, RegisterLimit):
+        self._RegisterLimit = RegisterLimit
 
 
     def _deserialize(self, params):
-        self.ProductId = params.get("ProductId")
-        self.RegisterType = params.get("RegisterType")
-        self.RegisterLimit = params.get("RegisterLimit")
+        self._ProductId = params.get("ProductId")
+        self._RegisterType = params.get("RegisterType")
+        self._RegisterLimit = params.get("RegisterLimit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
@@ -1661,23 +3161,55 @@ class UpdateProductDynamicRegisterResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RegisterType: Dynamic registration type. Valid values: 0 - disabled; 1 - pre-create device; 2 - auto-create device.
+        :param _RegisterType: Dynamic registration type. Valid values: 0 - disabled; 1 - pre-create device; 2 - auto-create device.
         :type RegisterType: int
-        :param ProductSecret: Product key for dynamic registration
+        :param _ProductSecret: Product key for dynamic registration
         :type ProductSecret: str
-        :param RegisterLimit: Maximum dynamically registered devices
+        :param _RegisterLimit: Maximum dynamically registered devices
         :type RegisterLimit: int
-        :param RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self.RegisterType = None
-        self.ProductSecret = None
-        self.RegisterLimit = None
-        self.RequestId = None
+        self._RegisterType = None
+        self._ProductSecret = None
+        self._RegisterLimit = None
+        self._RequestId = None
+
+    @property
+    def RegisterType(self):
+        return self._RegisterType
+
+    @RegisterType.setter
+    def RegisterType(self, RegisterType):
+        self._RegisterType = RegisterType
+
+    @property
+    def ProductSecret(self):
+        return self._ProductSecret
+
+    @ProductSecret.setter
+    def ProductSecret(self, ProductSecret):
+        self._ProductSecret = ProductSecret
+
+    @property
+    def RegisterLimit(self):
+        return self._RegisterLimit
+
+    @RegisterLimit.setter
+    def RegisterLimit(self, RegisterLimit):
+        self._RegisterLimit = RegisterLimit
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
 
 
     def _deserialize(self, params):
-        self.RegisterType = params.get("RegisterType")
-        self.ProductSecret = params.get("ProductSecret")
-        self.RegisterLimit = params.get("RegisterLimit")
-        self.RequestId = params.get("RequestId")
+        self._RegisterType = params.get("RegisterType")
+        self._ProductSecret = params.get("ProductSecret")
+        self._RegisterLimit = params.get("RegisterLimit")
+        self._RequestId = params.get("RequestId")
