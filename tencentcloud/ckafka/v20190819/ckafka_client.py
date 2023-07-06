@@ -188,7 +188,7 @@ class CkafkaClient(AbstractClient):
 
 
     def CreateInstancePost(self, request):
-        """This API is used to create a pay-as-you-go instance.
+        """This API is used to create a pay-as-you-go instance.  It will be deprecated in future versions. We recommend that you use the `CreatePostPaidInstance` API instead.  You can call this API via SDK or the TencentCloud API console to create a pay-as-you-go CKafka instance,  which is an alternate option for making a purchase in the console.
 
         :param request: Request instance for CreateInstancePost.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePostRequest`
@@ -224,6 +224,29 @@ class CkafkaClient(AbstractClient):
             body = self.call("CreatePartition", params, headers=headers)
             response = json.loads(body)
             model = models.CreatePartitionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreatePostPaidInstance(self, request):
+        """This API is used to replace `CreateInstancePost`  to create a pay-as-you-go instance.  You can call this API via SDK or the TencentCloud API console to create a pay-as-you-go CKafka instance,  which is an alternate option for making a purchase in the console.
+
+        :param request: Request instance for CreatePostPaidInstance.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.CreatePostPaidInstanceRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.CreatePostPaidInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePostPaidInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreatePostPaidInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -799,6 +822,29 @@ class CkafkaClient(AbstractClient):
             body = self.call("DescribeRoute", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeRouteResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTaskStatus(self, request):
+        """This API is used to query the task status.
+
+        :param request: Request instance for DescribeTaskStatus.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeTaskStatusRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DescribeTaskStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTaskStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTaskStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

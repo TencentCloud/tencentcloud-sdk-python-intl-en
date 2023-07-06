@@ -1888,6 +1888,75 @@ class DeleteStreamLiveWatermarkResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeliveryRestrictionsInfo(AbstractModel):
+    """Distribution configuration information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WebDeliveryAllowed: Corresponds to SCTE-35 web_delivery_allowed_flag parameter.
+        :type WebDeliveryAllowed: str
+        :param _NoRegionalBlackout: Corresponds to SCTE-35 no_regional_blackout_flag parameter.
+        :type NoRegionalBlackout: str
+        :param _ArchiveAllowed: Corresponds to SCTE-35 archive_allowed_flag.
+        :type ArchiveAllowed: str
+        :param _DeviceRestrictions: Corresponds to SCTE-35 device_restrictions parameter.
+        :type DeviceRestrictions: str
+        """
+        self._WebDeliveryAllowed = None
+        self._NoRegionalBlackout = None
+        self._ArchiveAllowed = None
+        self._DeviceRestrictions = None
+
+    @property
+    def WebDeliveryAllowed(self):
+        return self._WebDeliveryAllowed
+
+    @WebDeliveryAllowed.setter
+    def WebDeliveryAllowed(self, WebDeliveryAllowed):
+        self._WebDeliveryAllowed = WebDeliveryAllowed
+
+    @property
+    def NoRegionalBlackout(self):
+        return self._NoRegionalBlackout
+
+    @NoRegionalBlackout.setter
+    def NoRegionalBlackout(self, NoRegionalBlackout):
+        self._NoRegionalBlackout = NoRegionalBlackout
+
+    @property
+    def ArchiveAllowed(self):
+        return self._ArchiveAllowed
+
+    @ArchiveAllowed.setter
+    def ArchiveAllowed(self, ArchiveAllowed):
+        self._ArchiveAllowed = ArchiveAllowed
+
+    @property
+    def DeviceRestrictions(self):
+        return self._DeviceRestrictions
+
+    @DeviceRestrictions.setter
+    def DeviceRestrictions(self, DeviceRestrictions):
+        self._DeviceRestrictions = DeviceRestrictions
+
+
+    def _deserialize(self, params):
+        self._WebDeliveryAllowed = params.get("WebDeliveryAllowed")
+        self._NoRegionalBlackout = params.get("NoRegionalBlackout")
+        self._ArchiveAllowed = params.get("ArchiveAllowed")
+        self._DeviceRestrictions = params.get("DeviceRestrictions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeImageSettings(AbstractModel):
     """Watermark image settings
 
@@ -3871,12 +3940,21 @@ class EventSettingsReq(AbstractModel):
         :type ManifestName: str
         :param _Destinations: URL of the COS bucket to save recording files. This parameter is required if `EventType` is `TIMED_RECORD`. It may contain 1 or 2 URLs. The first URL corresponds to pipeline 0 and the second pipeline 1.
         :type Destinations: list of EventSettingsDestinationReq
+        :param _SCTE35SegmentationDescriptor: SCTE-35 configuration information.
+        :type SCTE35SegmentationDescriptor: list of SegmentationDescriptorInfo
+        :param _SpliceEventID: A 32-bit unique segmentation event identifier.Only one occurrence of a given segmentation_event_id value shall be active at any one time.
+        :type SpliceEventID: int
+        :param _SpliceDuration: The duration of the segment in 90kHz ticks.It used to  give the splicer an indication of when the break will be over and when the network In Point will occur. If not specifyed,the splice_insert will continue when enter a return_to_network to end the splice_insert at the appropriate time.
+        :type SpliceDuration: int
         """
         self._EventType = None
         self._InputAttachment = None
         self._OutputGroupName = None
         self._ManifestName = None
         self._Destinations = None
+        self._SCTE35SegmentationDescriptor = None
+        self._SpliceEventID = None
+        self._SpliceDuration = None
 
     @property
     def EventType(self):
@@ -3918,6 +3996,30 @@ class EventSettingsReq(AbstractModel):
     def Destinations(self, Destinations):
         self._Destinations = Destinations
 
+    @property
+    def SCTE35SegmentationDescriptor(self):
+        return self._SCTE35SegmentationDescriptor
+
+    @SCTE35SegmentationDescriptor.setter
+    def SCTE35SegmentationDescriptor(self, SCTE35SegmentationDescriptor):
+        self._SCTE35SegmentationDescriptor = SCTE35SegmentationDescriptor
+
+    @property
+    def SpliceEventID(self):
+        return self._SpliceEventID
+
+    @SpliceEventID.setter
+    def SpliceEventID(self, SpliceEventID):
+        self._SpliceEventID = SpliceEventID
+
+    @property
+    def SpliceDuration(self):
+        return self._SpliceDuration
+
+    @SpliceDuration.setter
+    def SpliceDuration(self, SpliceDuration):
+        self._SpliceDuration = SpliceDuration
+
 
     def _deserialize(self, params):
         self._EventType = params.get("EventType")
@@ -3930,6 +4032,14 @@ class EventSettingsReq(AbstractModel):
                 obj = EventSettingsDestinationReq()
                 obj._deserialize(item)
                 self._Destinations.append(obj)
+        if params.get("SCTE35SegmentationDescriptor") is not None:
+            self._SCTE35SegmentationDescriptor = []
+            for item in params.get("SCTE35SegmentationDescriptor"):
+                obj = SegmentationDescriptorInfo()
+                obj._deserialize(item)
+                self._SCTE35SegmentationDescriptor.append(obj)
+        self._SpliceEventID = params.get("SpliceEventID")
+        self._SpliceDuration = params.get("SpliceDuration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3957,12 +4067,21 @@ class EventSettingsResp(AbstractModel):
         :type ManifestName: str
         :param _Destinations: URL of the COS bucket where recording files are saved. This parameter is not empty if `EventType` is `TIMED_RECORD`. It may contain 1 or 2 URLs. The first URL corresponds to pipeline 0 and the second pipeline 1.
         :type Destinations: list of EventSettingsDestinationResp
+        :param _SCTE35SegmentationDescriptor: SCTE-35 configuration information.
+        :type SCTE35SegmentationDescriptor: list of SegmentationDescriptorRespInfo
+        :param _SpliceEventID: A 32-bit unique segmentation event identifier.Only one occurrence of a given segmentation_event_id value shall be active at any one time.
+        :type SpliceEventID: int
+        :param _SpliceDuration: The duration of the segment in 90kHz ticks.It used to  give the splicer an indication of when the break will be over and when the network In Point will occur. If not specifyed,the splice_insert will continue when enter a return_to_network to end the splice_insert at the appropriate time.
+        :type SpliceDuration: str
         """
         self._EventType = None
         self._InputAttachment = None
         self._OutputGroupName = None
         self._ManifestName = None
         self._Destinations = None
+        self._SCTE35SegmentationDescriptor = None
+        self._SpliceEventID = None
+        self._SpliceDuration = None
 
     @property
     def EventType(self):
@@ -4004,6 +4123,30 @@ class EventSettingsResp(AbstractModel):
     def Destinations(self, Destinations):
         self._Destinations = Destinations
 
+    @property
+    def SCTE35SegmentationDescriptor(self):
+        return self._SCTE35SegmentationDescriptor
+
+    @SCTE35SegmentationDescriptor.setter
+    def SCTE35SegmentationDescriptor(self, SCTE35SegmentationDescriptor):
+        self._SCTE35SegmentationDescriptor = SCTE35SegmentationDescriptor
+
+    @property
+    def SpliceEventID(self):
+        return self._SpliceEventID
+
+    @SpliceEventID.setter
+    def SpliceEventID(self, SpliceEventID):
+        self._SpliceEventID = SpliceEventID
+
+    @property
+    def SpliceDuration(self):
+        return self._SpliceDuration
+
+    @SpliceDuration.setter
+    def SpliceDuration(self, SpliceDuration):
+        self._SpliceDuration = SpliceDuration
+
 
     def _deserialize(self, params):
         self._EventType = params.get("EventType")
@@ -4016,6 +4159,14 @@ class EventSettingsResp(AbstractModel):
                 obj = EventSettingsDestinationResp()
                 obj._deserialize(item)
                 self._Destinations.append(obj)
+        if params.get("SCTE35SegmentationDescriptor") is not None:
+            self._SCTE35SegmentationDescriptor = []
+            for item in params.get("SCTE35SegmentationDescriptor"):
+                obj = SegmentationDescriptorRespInfo()
+                obj._deserialize(item)
+                self._SCTE35SegmentationDescriptor.append(obj)
+        self._SpliceEventID = params.get("SpliceEventID")
+        self._SpliceDuration = params.get("SpliceDuration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6043,6 +6194,316 @@ class Scte35SettingsInfo(AbstractModel):
 
     def _deserialize(self, params):
         self._Behavior = params.get("Behavior")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SegmentationDescriptorInfo(AbstractModel):
+    """SCTE-35 configuration information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventID: A 32-bit unique segmentation event identifier. Only one occurrence of a given segmentation_event_id value shall be active at any one time.
+        :type EventID: int
+        :param _EventCancelIndicator: Indicates that a previously sent segmentation event, identified by segmentation_event_id, has been cancelled.
+        :type EventCancelIndicator: int
+        :param _DeliveryRestrictions: Distribution configuration.
+        :type DeliveryRestrictions: :class:`tencentcloud.mdl.v20200326.models.DeliveryRestrictionsInfo`
+        :param _Duration: The duration of the segment in 90kHz ticks. indicat when the segment will be over and when the next segmentation message will occur.Shall be 0 for end messages.the time signal will continue until insert a cancellation message when not specify the duration.
+        :type Duration: int
+        :param _UPIDType: Corresponds to SCTE-35 segmentation_upid_type parameter.
+        :type UPIDType: int
+        :param _UPID: Corresponds to SCTE-35 segmentation_upid. 
+        :type UPID: str
+        :param _TypeID: Corresponds to SCTE-35 segmentation_type_id.
+        :type TypeID: int
+        :param _Num: Corresponds to SCTE-35 segment_num。This field provides support for numbering segments within a given collection of segments.
+        :type Num: int
+        :param _Expected: Corresponds to SCTE-35 segment_expected.This field provides a count of the expected number of individual segments within a collection of segments.
+        :type Expected: int
+        :param _SubSegmentNum: Corresponds to SCTE-35 sub_segment_num.This field provides identification for a specific sub-segment within a collection of sub-segments.
+        :type SubSegmentNum: int
+        :param _SubSegmentsExpected: Corresponds to SCTE-35 sub_segments_expected.This field provides a count of the expected number of individual sub-segments within the collection of sub-segments.
+        :type SubSegmentsExpected: int
+        """
+        self._EventID = None
+        self._EventCancelIndicator = None
+        self._DeliveryRestrictions = None
+        self._Duration = None
+        self._UPIDType = None
+        self._UPID = None
+        self._TypeID = None
+        self._Num = None
+        self._Expected = None
+        self._SubSegmentNum = None
+        self._SubSegmentsExpected = None
+
+    @property
+    def EventID(self):
+        return self._EventID
+
+    @EventID.setter
+    def EventID(self, EventID):
+        self._EventID = EventID
+
+    @property
+    def EventCancelIndicator(self):
+        return self._EventCancelIndicator
+
+    @EventCancelIndicator.setter
+    def EventCancelIndicator(self, EventCancelIndicator):
+        self._EventCancelIndicator = EventCancelIndicator
+
+    @property
+    def DeliveryRestrictions(self):
+        return self._DeliveryRestrictions
+
+    @DeliveryRestrictions.setter
+    def DeliveryRestrictions(self, DeliveryRestrictions):
+        self._DeliveryRestrictions = DeliveryRestrictions
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def UPIDType(self):
+        return self._UPIDType
+
+    @UPIDType.setter
+    def UPIDType(self, UPIDType):
+        self._UPIDType = UPIDType
+
+    @property
+    def UPID(self):
+        return self._UPID
+
+    @UPID.setter
+    def UPID(self, UPID):
+        self._UPID = UPID
+
+    @property
+    def TypeID(self):
+        return self._TypeID
+
+    @TypeID.setter
+    def TypeID(self, TypeID):
+        self._TypeID = TypeID
+
+    @property
+    def Num(self):
+        return self._Num
+
+    @Num.setter
+    def Num(self, Num):
+        self._Num = Num
+
+    @property
+    def Expected(self):
+        return self._Expected
+
+    @Expected.setter
+    def Expected(self, Expected):
+        self._Expected = Expected
+
+    @property
+    def SubSegmentNum(self):
+        return self._SubSegmentNum
+
+    @SubSegmentNum.setter
+    def SubSegmentNum(self, SubSegmentNum):
+        self._SubSegmentNum = SubSegmentNum
+
+    @property
+    def SubSegmentsExpected(self):
+        return self._SubSegmentsExpected
+
+    @SubSegmentsExpected.setter
+    def SubSegmentsExpected(self, SubSegmentsExpected):
+        self._SubSegmentsExpected = SubSegmentsExpected
+
+
+    def _deserialize(self, params):
+        self._EventID = params.get("EventID")
+        self._EventCancelIndicator = params.get("EventCancelIndicator")
+        if params.get("DeliveryRestrictions") is not None:
+            self._DeliveryRestrictions = DeliveryRestrictionsInfo()
+            self._DeliveryRestrictions._deserialize(params.get("DeliveryRestrictions"))
+        self._Duration = params.get("Duration")
+        self._UPIDType = params.get("UPIDType")
+        self._UPID = params.get("UPID")
+        self._TypeID = params.get("TypeID")
+        self._Num = params.get("Num")
+        self._Expected = params.get("Expected")
+        self._SubSegmentNum = params.get("SubSegmentNum")
+        self._SubSegmentsExpected = params.get("SubSegmentsExpected")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SegmentationDescriptorRespInfo(AbstractModel):
+    """SCTE-35 configuration information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventID: A 32-bit unique segmentation event identifier. Only one occurrence of a given segmentation_event_id value shall be active at any one time.
+        :type EventID: int
+        :param _EventCancelIndicator: Indicates that a previously sent segmentation event, identified by segmentation_event_id, has been cancelled.
+        :type EventCancelIndicator: int
+        :param _DeliveryRestrictions: Distribution configuration.
+        :type DeliveryRestrictions: :class:`tencentcloud.mdl.v20200326.models.DeliveryRestrictionsInfo`
+        :param _Duration: The duration of the segment in 90kHz ticks. indicat when the segment will be over and when the next segmentation message will occur.Shall be 0 for end messages.the time signal will continue until insert a cancellation message when not specify the duration.
+        :type Duration: str
+        :param _UPIDType: Corresponds to SCTE-35 segmentation_upid_type parameter.
+        :type UPIDType: int
+        :param _UPID: Corresponds to SCTE-35 segmentation_upid. 
+        :type UPID: str
+        :param _TypeID: Corresponds to SCTE-35 segmentation_type_id.
+        :type TypeID: int
+        :param _Num: Corresponds to SCTE-35 segment_num。This field provides support for numbering segments within a given collection of segments.
+        :type Num: int
+        :param _Expected: Corresponds to SCTE-35 segment_expected.This field provides a count of the expected number of individual segments within a collection of segments.
+        :type Expected: int
+        :param _SubSegmentNum: Corresponds to SCTE-35 sub_segment_num.This field provides identification for a specific sub-segment within a collection of sub-segments.
+        :type SubSegmentNum: int
+        :param _SubSegmentsExpected: Corresponds to SCTE-35 sub_segments_expected.This field provides a count of the expected number of individual sub-segments within the collection of sub-segments.
+        :type SubSegmentsExpected: int
+        """
+        self._EventID = None
+        self._EventCancelIndicator = None
+        self._DeliveryRestrictions = None
+        self._Duration = None
+        self._UPIDType = None
+        self._UPID = None
+        self._TypeID = None
+        self._Num = None
+        self._Expected = None
+        self._SubSegmentNum = None
+        self._SubSegmentsExpected = None
+
+    @property
+    def EventID(self):
+        return self._EventID
+
+    @EventID.setter
+    def EventID(self, EventID):
+        self._EventID = EventID
+
+    @property
+    def EventCancelIndicator(self):
+        return self._EventCancelIndicator
+
+    @EventCancelIndicator.setter
+    def EventCancelIndicator(self, EventCancelIndicator):
+        self._EventCancelIndicator = EventCancelIndicator
+
+    @property
+    def DeliveryRestrictions(self):
+        return self._DeliveryRestrictions
+
+    @DeliveryRestrictions.setter
+    def DeliveryRestrictions(self, DeliveryRestrictions):
+        self._DeliveryRestrictions = DeliveryRestrictions
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def UPIDType(self):
+        return self._UPIDType
+
+    @UPIDType.setter
+    def UPIDType(self, UPIDType):
+        self._UPIDType = UPIDType
+
+    @property
+    def UPID(self):
+        return self._UPID
+
+    @UPID.setter
+    def UPID(self, UPID):
+        self._UPID = UPID
+
+    @property
+    def TypeID(self):
+        return self._TypeID
+
+    @TypeID.setter
+    def TypeID(self, TypeID):
+        self._TypeID = TypeID
+
+    @property
+    def Num(self):
+        return self._Num
+
+    @Num.setter
+    def Num(self, Num):
+        self._Num = Num
+
+    @property
+    def Expected(self):
+        return self._Expected
+
+    @Expected.setter
+    def Expected(self, Expected):
+        self._Expected = Expected
+
+    @property
+    def SubSegmentNum(self):
+        return self._SubSegmentNum
+
+    @SubSegmentNum.setter
+    def SubSegmentNum(self, SubSegmentNum):
+        self._SubSegmentNum = SubSegmentNum
+
+    @property
+    def SubSegmentsExpected(self):
+        return self._SubSegmentsExpected
+
+    @SubSegmentsExpected.setter
+    def SubSegmentsExpected(self, SubSegmentsExpected):
+        self._SubSegmentsExpected = SubSegmentsExpected
+
+
+    def _deserialize(self, params):
+        self._EventID = params.get("EventID")
+        self._EventCancelIndicator = params.get("EventCancelIndicator")
+        if params.get("DeliveryRestrictions") is not None:
+            self._DeliveryRestrictions = DeliveryRestrictionsInfo()
+            self._DeliveryRestrictions._deserialize(params.get("DeliveryRestrictions"))
+        self._Duration = params.get("Duration")
+        self._UPIDType = params.get("UPIDType")
+        self._UPID = params.get("UPID")
+        self._TypeID = params.get("TypeID")
+        self._Num = params.get("Num")
+        self._Expected = params.get("Expected")
+        self._SubSegmentNum = params.get("SubSegmentNum")
+        self._SubSegmentsExpected = params.get("SubSegmentsExpected")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

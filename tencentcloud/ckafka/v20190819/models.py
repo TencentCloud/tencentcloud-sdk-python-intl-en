@@ -2307,6 +2307,81 @@ class CreateDatahubTopicResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateInstancePostData(AbstractModel):
+    """Data structure returned by the pay-as-you-go instance creation API
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: This parameter has a fixed value of 0 returned by `CreateInstancePre`. It is only used for backend data alignment  and cannot be used as the query condition for `CheckTaskStatus`. 
+Note:  This field may return null, indicating that no valid values can be obtained.
+        :type FlowId: int
+        :param _DealNames: List of order IDs Note: This field may return null, indicating that no valid values can be obtained.
+        :type DealNames: list of str
+        :param _InstanceId: Instance ID. When multiple instances are purchased, the ID of the first one is returned by default . Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceId: str
+        :param _DealNameInstanceIdMapping: Mapping between orders and the purchased instances.  Note: This field may return null, indicating that no valid values can be obtained.
+        :type DealNameInstanceIdMapping: list of DealInstanceDTO
+        """
+        self._FlowId = None
+        self._DealNames = None
+        self._InstanceId = None
+        self._DealNameInstanceIdMapping = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def DealNames(self):
+        return self._DealNames
+
+    @DealNames.setter
+    def DealNames(self, DealNames):
+        self._DealNames = DealNames
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DealNameInstanceIdMapping(self):
+        return self._DealNameInstanceIdMapping
+
+    @DealNameInstanceIdMapping.setter
+    def DealNameInstanceIdMapping(self, DealNameInstanceIdMapping):
+        self._DealNameInstanceIdMapping = DealNameInstanceIdMapping
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._DealNames = params.get("DealNames")
+        self._InstanceId = params.get("InstanceId")
+        if params.get("DealNameInstanceIdMapping") is not None:
+            self._DealNameInstanceIdMapping = []
+            for item in params.get("DealNameInstanceIdMapping"):
+                obj = DealInstanceDTO()
+                obj._deserialize(item)
+                self._DealNameInstanceIdMapping.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateInstancePostRequest(AbstractModel):
     """CreateInstancePost request structure.
 
@@ -2316,26 +2391,59 @@ class CreateInstancePostRequest(AbstractModel):
         r"""
         :param _InstanceName: Instance name, which is a string of up to 64 characters. It can contain letters, digits, and hyphens (-) and must start with a letter.
         :type InstanceName: str
-        :param _BandWidth: Instance bandwidth
+        :param _BandWidth: Private network peak bandwidth of an instance  in MB/sec.  If you create a Standard Edition instance, pass in the corresponding peak bandwidth for the current instance specification.  If you create a Pro Edition instance, configure the peak bandwidth, partition count, and other parameters as required by Pro Edition.
         :type BandWidth: int
-        :param _VpcId: VPC ID. If this parameter is left empty, the classic network will be used by default.
+        :param _VpcId: ID of the VPC where the default access point of the created instance resides.  This parameter is required as instances cannot be created in the classic network currently.
         :type VpcId: str
-        :param _SubnetId: Subnet ID, which is required for a VPC but not for the classic network.
+        :param _SubnetId: ID of the subnet  where the default access point of the created instance resides. 
         :type SubnetId: str
-        :param _MsgRetentionTime: The maximum retention period for instance logs in minutes. Default value: 1,440 minutes (1 day). Max value: 12960 minutes (90 days). This parameter is optional.
+        :param _InstanceType: Instance specification.  This parameter is required for a Standard Edition instance but not for a Pro Edition instance.  Valid values:  `1` (Small),  `2` (Standard),  `3` (Advanced),  `4` (Large),  `5` (Xlarge L1),  `6` (Xlarge L2),  `7` (Xlarge L3),  `8` (Xlarge L4),  
+        :type InstanceType: int
+        :param _MsgRetentionTime: The maximum instance log retention period in minutes by default.  If this parameter is left empty, the default retention period is 1,440 minutes (1 day) to 30 days.  If the message retention period of the topic is explicitly set, it will prevail.
         :type MsgRetentionTime: int
-        :param _ZoneId: AZ
-        :type ZoneId: int
-        :param _ClusterId: Cluster ID, which can be selected when you create an instance.
+        :param _ClusterId: Cluster ID, which can be selected when you create an instance.  You don’t need to pass in this parameter if the cluster where the instance resides is not specified.
         :type ClusterId: int
+        :param _KafkaVersion: Instance version.  Valid values: `0.10.2`, `1.1.1`, `2.4.2`, and `2.8.1`.
+        :type KafkaVersion: str
+        :param _SpecificationsType: Instance type. Valid values: `standard` (Standard Edition),  `profession`  (Pro Edition)
+        :type SpecificationsType: str
+        :param _DiskType: Instance disk type. Valid values:  `CLOUD_BASIC` (Premium Cloud Storage),  `CLOUD_SSD` (SSD).  If this parameter is left empty, the default value `CLOUD_BASIC` will be used.
+        :type DiskType: str
+        :param _DiskSize: Instance disk size, which must meet the requirement of the instance’s specification.
+        :type DiskSize: int
+        :param _Partition: The maximum number of partitions of the instance, which must meet the requirement of the instance’s specification.
+        :type Partition: int
+        :param _TopicNum: The maximum number of topics of the instance, which must meet the requirement of the instance’s specification.
+        :type TopicNum: int
+        :param _ZoneId: AZ of the instance.  When a multi-AZ instance is created, the value of this parameter is the AZ ID of the subnet where the instance’s default access point resides.
+        :type ZoneId: int
+        :param _MultiZoneFlag: Whether the current instance is a multi-AZ instance
+        :type MultiZoneFlag: bool
+        :param _ZoneIds: This parameter indicates the list of AZ IDs when the instance is deployed in multiple AZs.  Note that `ZoneId` must be included in the array of this parameter.
+        :type ZoneIds: list of int
+        :param _InstanceNum: The number of purchased instances.  Default value: `1`. This parameter is optional.  If it is passed in, multiple instances will be created, with their names being `instanceName` plus different suffixes.
+        :type InstanceNum: int
+        :param _PublicNetworkMonthly: Public network bandwidth in Mbps.  The 3 Mbps of free bandwidth is not included here by default.  For example, if you need 3 Mbps of public network bandwidth, pass in `0`; if you need 6 Mbps, pass in `3`. The value must be an integer multiple of 3.
+        :type PublicNetworkMonthly: int
         """
         self._InstanceName = None
         self._BandWidth = None
         self._VpcId = None
         self._SubnetId = None
+        self._InstanceType = None
         self._MsgRetentionTime = None
-        self._ZoneId = None
         self._ClusterId = None
+        self._KafkaVersion = None
+        self._SpecificationsType = None
+        self._DiskType = None
+        self._DiskSize = None
+        self._Partition = None
+        self._TopicNum = None
+        self._ZoneId = None
+        self._MultiZoneFlag = None
+        self._ZoneIds = None
+        self._InstanceNum = None
+        self._PublicNetworkMonthly = None
 
     @property
     def InstanceName(self):
@@ -2370,12 +2478,76 @@ class CreateInstancePostRequest(AbstractModel):
         self._SubnetId = SubnetId
 
     @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
     def MsgRetentionTime(self):
         return self._MsgRetentionTime
 
     @MsgRetentionTime.setter
     def MsgRetentionTime(self, MsgRetentionTime):
         self._MsgRetentionTime = MsgRetentionTime
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def KafkaVersion(self):
+        return self._KafkaVersion
+
+    @KafkaVersion.setter
+    def KafkaVersion(self, KafkaVersion):
+        self._KafkaVersion = KafkaVersion
+
+    @property
+    def SpecificationsType(self):
+        return self._SpecificationsType
+
+    @SpecificationsType.setter
+    def SpecificationsType(self, SpecificationsType):
+        self._SpecificationsType = SpecificationsType
+
+    @property
+    def DiskType(self):
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def DiskSize(self):
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+    @property
+    def Partition(self):
+        return self._Partition
+
+    @Partition.setter
+    def Partition(self, Partition):
+        self._Partition = Partition
+
+    @property
+    def TopicNum(self):
+        return self._TopicNum
+
+    @TopicNum.setter
+    def TopicNum(self, TopicNum):
+        self._TopicNum = TopicNum
 
     @property
     def ZoneId(self):
@@ -2386,12 +2558,36 @@ class CreateInstancePostRequest(AbstractModel):
         self._ZoneId = ZoneId
 
     @property
-    def ClusterId(self):
-        return self._ClusterId
+    def MultiZoneFlag(self):
+        return self._MultiZoneFlag
 
-    @ClusterId.setter
-    def ClusterId(self, ClusterId):
-        self._ClusterId = ClusterId
+    @MultiZoneFlag.setter
+    def MultiZoneFlag(self, MultiZoneFlag):
+        self._MultiZoneFlag = MultiZoneFlag
+
+    @property
+    def ZoneIds(self):
+        return self._ZoneIds
+
+    @ZoneIds.setter
+    def ZoneIds(self, ZoneIds):
+        self._ZoneIds = ZoneIds
+
+    @property
+    def InstanceNum(self):
+        return self._InstanceNum
+
+    @InstanceNum.setter
+    def InstanceNum(self, InstanceNum):
+        self._InstanceNum = InstanceNum
+
+    @property
+    def PublicNetworkMonthly(self):
+        return self._PublicNetworkMonthly
+
+    @PublicNetworkMonthly.setter
+    def PublicNetworkMonthly(self, PublicNetworkMonthly):
+        self._PublicNetworkMonthly = PublicNetworkMonthly
 
 
     def _deserialize(self, params):
@@ -2399,9 +2595,79 @@ class CreateInstancePostRequest(AbstractModel):
         self._BandWidth = params.get("BandWidth")
         self._VpcId = params.get("VpcId")
         self._SubnetId = params.get("SubnetId")
+        self._InstanceType = params.get("InstanceType")
         self._MsgRetentionTime = params.get("MsgRetentionTime")
-        self._ZoneId = params.get("ZoneId")
         self._ClusterId = params.get("ClusterId")
+        self._KafkaVersion = params.get("KafkaVersion")
+        self._SpecificationsType = params.get("SpecificationsType")
+        self._DiskType = params.get("DiskType")
+        self._DiskSize = params.get("DiskSize")
+        self._Partition = params.get("Partition")
+        self._TopicNum = params.get("TopicNum")
+        self._ZoneId = params.get("ZoneId")
+        self._MultiZoneFlag = params.get("MultiZoneFlag")
+        self._ZoneIds = params.get("ZoneIds")
+        self._InstanceNum = params.get("InstanceNum")
+        self._PublicNetworkMonthly = params.get("PublicNetworkMonthly")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateInstancePostResp(AbstractModel):
+    """Data structure returned by pay-as-you-go instance APIs
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReturnCode: Returned code. `0` indicates normal status while other codes indicate errors.
+        :type ReturnCode: str
+        :param _ReturnMessage: Message returned by the API. An error message will be returned if the API reports an error. 
+        :type ReturnMessage: str
+        :param _Data: Returned data.  Note: This field may return null, indicating that no valid values can be obtained.
+        :type Data: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePostData`
+        """
+        self._ReturnCode = None
+        self._ReturnMessage = None
+        self._Data = None
+
+    @property
+    def ReturnCode(self):
+        return self._ReturnCode
+
+    @ReturnCode.setter
+    def ReturnCode(self, ReturnCode):
+        self._ReturnCode = ReturnCode
+
+    @property
+    def ReturnMessage(self):
+        return self._ReturnMessage
+
+    @ReturnMessage.setter
+    def ReturnMessage(self, ReturnMessage):
+        self._ReturnMessage = ReturnMessage
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+
+    def _deserialize(self, params):
+        self._ReturnCode = params.get("ReturnCode")
+        self._ReturnMessage = params.get("ReturnMessage")
+        if params.get("Data") is not None:
+            self._Data = CreateInstancePostData()
+            self._Data._deserialize(params.get("Data"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2464,13 +2730,15 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         :param _DealNames: Order number list.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type DealNames: list of str
-        :param _InstanceId: Instance ID.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        :param _InstanceId: Instance ID. When multiple instances are purchased, the ID of the first one is returned by default . Note: This field may return null, indicating that no valid values can be obtained.
         :type InstanceId: str
+        :param _DealNameInstanceIdMapping: Mapping between orders and the purchased instances.  Note: This field may return null, indicating that no valid values can be obtained.
+        :type DealNameInstanceIdMapping: list of DealInstanceDTO
         """
         self._FlowId = None
         self._DealNames = None
         self._InstanceId = None
+        self._DealNameInstanceIdMapping = None
 
     @property
     def FlowId(self):
@@ -2496,11 +2764,25 @@ Note: This field may return `null`, indicating that no valid values can be obtai
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def DealNameInstanceIdMapping(self):
+        return self._DealNameInstanceIdMapping
+
+    @DealNameInstanceIdMapping.setter
+    def DealNameInstanceIdMapping(self, DealNameInstanceIdMapping):
+        self._DealNameInstanceIdMapping = DealNameInstanceIdMapping
+
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
         self._DealNames = params.get("DealNames")
         self._InstanceId = params.get("InstanceId")
+        if params.get("DealNameInstanceIdMapping") is not None:
+            self._DealNameInstanceIdMapping = []
+            for item in params.get("DealNameInstanceIdMapping"):
+                obj = DealInstanceDTO()
+                obj._deserialize(item)
+                self._DealNameInstanceIdMapping.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2512,7 +2794,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
 
 class CreateInstancePreResp(AbstractModel):
-    """Response structure of creating a prepaid instance
+    """Data structure returned by monthly subscribed instance APIs
 
     """
 
@@ -2525,8 +2807,7 @@ class CreateInstancePreResp(AbstractModel):
         :param _Data: Data returned by the operation.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Data: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePreData`
-        :param _DeleteRouteTimestamp: Deletion time.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        :param _DeleteRouteTimestamp: Deletion time.  This parameter has been deprecated and will be deleted.  Note: This field may return null, indicating that no valid values can be obtained.
         :type DeleteRouteTimestamp: str
         """
         self._ReturnCode = None
@@ -2560,10 +2841,14 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DeleteRouteTimestamp(self):
+        warnings.warn("parameter `DeleteRouteTimestamp` is deprecated", DeprecationWarning) 
+
         return self._DeleteRouteTimestamp
 
     @DeleteRouteTimestamp.setter
     def DeleteRouteTimestamp(self, DeleteRouteTimestamp):
+        warnings.warn("parameter `DeleteRouteTimestamp` is deprecated", DeprecationWarning) 
+
         self._DeleteRouteTimestamp = DeleteRouteTimestamp
 
 
@@ -2676,6 +2961,282 @@ class CreatePartitionResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Result") is not None:
             self._Result = JgwOperateResponse()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreatePostPaidInstanceRequest(AbstractModel):
+    """CreatePostPaidInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceName: Instance name, which is a string of up to 64 letters, digits, and hyphens (-). It must start with a letter.
+        :type InstanceName: str
+        :param _VpcId: ID of the VPC where the default access point of the created instance resides.  This parameter is required as instances cannot be created in the classic network currently.
+        :type VpcId: str
+        :param _SubnetId: ID of the subnet  where the default access point of the created instance resides.
+        :type SubnetId: str
+        :param _InstanceType: Instance specification.  This parameter is required for a Standard Edition instance but not for a Pro Edition instance.  Valid values:  `1` (Small),  `2` (Standard),  `3` (Advanced),  `4` (Large),  `5` (Xlarge L1),  `6` (Xlarge L2),  `7` (Xlarge L3),  `8` (Xlarge L4),  
+        :type InstanceType: int
+        :param _MsgRetentionTime: The maximum instance log retention period in minutes by default.  If this parameter is left empty, the default retention period is 1,440 minutes (1 day) to 30 days.  If the message retention period of the topic is explicitly set, it will prevail.
+        :type MsgRetentionTime: int
+        :param _ClusterId: Cluster ID, which can be selected when you create an instance.  You don’t need to pass in this parameter if the cluster where the instance resides is not specified.
+        :type ClusterId: int
+        :param _KafkaVersion: Instance version.  Valid values: `0.10.2`, `1.1.1`, `2.4.2`, and `2.8.1`.
+        :type KafkaVersion: str
+        :param _SpecificationsType: Instance type. `standard` (Standard Edition),  `profession`  (Pro Edition)
+        :type SpecificationsType: str
+        :param _DiskType: Instance disk type.  `CLOUD_BASIC` (Premium Cloud Storage),  `CLOUD_SSD` (SSD).  If this parameter is left empty, the default value `CLOUD_BASIC` will be used.
+        :type DiskType: str
+        :param _BandWidth: Private network peak bandwidth of an instance  in MB/sec.  If you create a Standard Edition instance, pass in the corresponding peak bandwidth for the current instance specification.  If you create a Pro Edition instance, configure the peak bandwidth, partition count, and other parameters as required by Pro Edition.
+        :type BandWidth: int
+        :param _DiskSize: Instance disk size, which must meet the requirement of the instance’s specification.
+        :type DiskSize: int
+        :param _Partition: The maximum number of partitions of the instance, which must meet the requirement of the instance’s specification.
+        :type Partition: int
+        :param _TopicNum: The maximum number of topics of the instance, which must meet the requirement of the instance’s specification.
+        :type TopicNum: int
+        :param _ZoneId: AZ of the instance.  When a multi-AZ instance is created, the value of this parameter is the AZ ID of the subnet where the instance’s default access point resides.
+        :type ZoneId: int
+        :param _MultiZoneFlag: Whether the current instance is a multi-AZ instance
+        :type MultiZoneFlag: bool
+        :param _ZoneIds: This parameter indicates the list of AZ IDs when the instance is deployed in multiple AZs.  Note that `ZoneId` must be included in the array of this parameter.
+        :type ZoneIds: list of int
+        :param _InstanceNum: The number of purchased instances.  Default value: `1`. This parameter is optional.  If it is passed in, multiple instances will be created, with their names being `instanceName` plus different suffixes.
+        :type InstanceNum: int
+        :param _PublicNetworkMonthly: Public network bandwidth in Mbps.  The 3 Mbps of free bandwidth is not included here by default.  For example, if you need 3 Mbps of public network bandwidth, pass in `0`; if you need 6 Mbps, pass in `3`.  The value must be an integer multiple of 3.
+        :type PublicNetworkMonthly: int
+        """
+        self._InstanceName = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._InstanceType = None
+        self._MsgRetentionTime = None
+        self._ClusterId = None
+        self._KafkaVersion = None
+        self._SpecificationsType = None
+        self._DiskType = None
+        self._BandWidth = None
+        self._DiskSize = None
+        self._Partition = None
+        self._TopicNum = None
+        self._ZoneId = None
+        self._MultiZoneFlag = None
+        self._ZoneIds = None
+        self._InstanceNum = None
+        self._PublicNetworkMonthly = None
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def MsgRetentionTime(self):
+        return self._MsgRetentionTime
+
+    @MsgRetentionTime.setter
+    def MsgRetentionTime(self, MsgRetentionTime):
+        self._MsgRetentionTime = MsgRetentionTime
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def KafkaVersion(self):
+        return self._KafkaVersion
+
+    @KafkaVersion.setter
+    def KafkaVersion(self, KafkaVersion):
+        self._KafkaVersion = KafkaVersion
+
+    @property
+    def SpecificationsType(self):
+        return self._SpecificationsType
+
+    @SpecificationsType.setter
+    def SpecificationsType(self, SpecificationsType):
+        self._SpecificationsType = SpecificationsType
+
+    @property
+    def DiskType(self):
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def BandWidth(self):
+        return self._BandWidth
+
+    @BandWidth.setter
+    def BandWidth(self, BandWidth):
+        self._BandWidth = BandWidth
+
+    @property
+    def DiskSize(self):
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+    @property
+    def Partition(self):
+        return self._Partition
+
+    @Partition.setter
+    def Partition(self, Partition):
+        self._Partition = Partition
+
+    @property
+    def TopicNum(self):
+        return self._TopicNum
+
+    @TopicNum.setter
+    def TopicNum(self, TopicNum):
+        self._TopicNum = TopicNum
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def MultiZoneFlag(self):
+        return self._MultiZoneFlag
+
+    @MultiZoneFlag.setter
+    def MultiZoneFlag(self, MultiZoneFlag):
+        self._MultiZoneFlag = MultiZoneFlag
+
+    @property
+    def ZoneIds(self):
+        return self._ZoneIds
+
+    @ZoneIds.setter
+    def ZoneIds(self, ZoneIds):
+        self._ZoneIds = ZoneIds
+
+    @property
+    def InstanceNum(self):
+        return self._InstanceNum
+
+    @InstanceNum.setter
+    def InstanceNum(self, InstanceNum):
+        self._InstanceNum = InstanceNum
+
+    @property
+    def PublicNetworkMonthly(self):
+        return self._PublicNetworkMonthly
+
+    @PublicNetworkMonthly.setter
+    def PublicNetworkMonthly(self, PublicNetworkMonthly):
+        self._PublicNetworkMonthly = PublicNetworkMonthly
+
+
+    def _deserialize(self, params):
+        self._InstanceName = params.get("InstanceName")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._InstanceType = params.get("InstanceType")
+        self._MsgRetentionTime = params.get("MsgRetentionTime")
+        self._ClusterId = params.get("ClusterId")
+        self._KafkaVersion = params.get("KafkaVersion")
+        self._SpecificationsType = params.get("SpecificationsType")
+        self._DiskType = params.get("DiskType")
+        self._BandWidth = params.get("BandWidth")
+        self._DiskSize = params.get("DiskSize")
+        self._Partition = params.get("Partition")
+        self._TopicNum = params.get("TopicNum")
+        self._ZoneId = params.get("ZoneId")
+        self._MultiZoneFlag = params.get("MultiZoneFlag")
+        self._ZoneIds = params.get("ZoneIds")
+        self._InstanceNum = params.get("InstanceNum")
+        self._PublicNetworkMonthly = params.get("PublicNetworkMonthly")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePostPaidInstanceResponse(AbstractModel):
+    """CreatePostPaidInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: Returned result
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePostResp`
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = CreateInstancePostResp()
             self._Result._deserialize(params.get("Result"))
         self._RequestId = params.get("RequestId")
 
@@ -3315,6 +3876,51 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def _deserialize(self, params):
         self._TopicName = params.get("TopicName")
         self._TopicId = params.get("TopicId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DealInstanceDTO(AbstractModel):
+    """Mapping between orders and CKafka instances for monthly subscribed and pay-as-you-go instance APIs.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DealName: Order list.  Note: This field may return null, indicating that no valid values can be obtained.
+        :type DealName: str
+        :param _InstanceIdList: ID list of the purchased CKafka instances corresponding to the order list.  Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceIdList: list of str
+        """
+        self._DealName = None
+        self._InstanceIdList = None
+
+    @property
+    def DealName(self):
+        return self._DealName
+
+    @DealName.setter
+    def DealName(self, DealName):
+        self._DealName = DealName
+
+    @property
+    def InstanceIdList(self):
+        return self._InstanceIdList
+
+    @InstanceIdList.setter
+    def InstanceIdList(self, InstanceIdList):
+        self._InstanceIdList = InstanceIdList
+
+
+    def _deserialize(self, params):
+        self._DealName = params.get("DealName")
+        self._InstanceIdList = params.get("InstanceIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5810,8 +6416,11 @@ class DescribeRouteRequest(AbstractModel):
         r"""
         :param _InstanceId: Unique instance ID
         :type InstanceId: str
+        :param _RouteId: Route ID
+        :type RouteId: int
         """
         self._InstanceId = None
+        self._RouteId = None
 
     @property
     def InstanceId(self):
@@ -5821,9 +6430,18 @@ class DescribeRouteRequest(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def RouteId(self):
+        return self._RouteId
+
+    @RouteId.setter
+    def RouteId(self, RouteId):
+        self._RouteId = RouteId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
+        self._RouteId = params.get("RouteId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5869,6 +6487,78 @@ class DescribeRouteResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Result") is not None:
             self._Result = RouteResponse()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTaskStatusRequest(AbstractModel):
+    """DescribeTaskStatus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: Unique task ID
+        :type FlowId: int
+        """
+        self._FlowId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTaskStatusResponse(AbstractModel):
+    """DescribeTaskStatus response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: Returned result
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.TaskStatusResponse`
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = TaskStatusResponse()
             self._Result._deserialize(params.get("Result"))
         self._RequestId = params.get("RequestId")
 
@@ -10745,8 +11435,11 @@ class OperateResponseData(AbstractModel):
         :param _FlowId: FlowId11
 Note: this field may return null, indicating that no valid values can be obtained.
         :type FlowId: int
+        :param _RouteDTO: RouteIdDto Note: This field may return null, indicating that no valid values can be obtained.
+        :type RouteDTO: :class:`tencentcloud.ckafka.v20190819.models.RouteDTO`
         """
         self._FlowId = None
+        self._RouteDTO = None
 
     @property
     def FlowId(self):
@@ -10756,9 +11449,20 @@ Note: this field may return null, indicating that no valid values can be obtaine
     def FlowId(self, FlowId):
         self._FlowId = FlowId
 
+    @property
+    def RouteDTO(self):
+        return self._RouteDTO
+
+    @RouteDTO.setter
+    def RouteDTO(self, RouteDTO):
+        self._RouteDTO = RouteDTO
+
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
+        if params.get("RouteDTO") is not None:
+            self._RouteDTO = RouteDTO()
+            self._RouteDTO._deserialize(params.get("RouteDTO"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11178,6 +11882,39 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
+class RouteDTO(AbstractModel):
+    """RouteDTO
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RouteId: RouteId11 Note: This field may return null, indicating that no valid values can be obtained.
+        :type RouteId: int
+        """
+        self._RouteId = None
+
+    @property
+    def RouteId(self):
+        return self._RouteId
+
+    @RouteId.setter
+    def RouteId(self, RouteId):
+        self._RouteId = RouteId
+
+
+    def _deserialize(self, params):
+        self._RouteId = params.get("RouteId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RouteResponse(AbstractModel):
     """Returned object for route information
 
@@ -11489,6 +12226,51 @@ class Tag(AbstractModel):
     def _deserialize(self, params):
         self._TagKey = params.get("TagKey")
         self._TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskStatusResponse(AbstractModel):
+    """Returned task status
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: Task status. `0` (Successful), `1` (Failed), `2` ( Running)
+        :type Status: int
+        :param _Output: Output information Note: This field may return null, indicating that no valid values can be obtained.
+        :type Output: str
+        """
+        self._Status = None
+        self._Output = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Output(self):
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._Output = params.get("Output")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
