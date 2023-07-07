@@ -39,9 +39,9 @@ class ApplyCertificateRequest(AbstractModel):
         :type ContactPhone: str
         :param _ValidityPeriod: Validity period. The default value is 12 months, which is the only supported value currently.
         :type ValidityPeriod: str
-        :param _CsrEncryptAlgo: Encryption algorithm. Only RSA is supported.
+        :param _CsrEncryptAlgo: Encryption algorithm. RSA and ECC are supported.
         :type CsrEncryptAlgo: str
-        :param _CsrKeyParameter: Key pair parameter. Only the 2048-bit key pair is supported.
+        :param _CsrKeyParameter: Key pair parameter. RSA supports only the 2048-bit key and ECC supports only prime256v1.
         :type CsrKeyParameter: str
         :param _CsrKeyPassword: CSR encryption password
         :type CsrKeyPassword: str
@@ -950,8 +950,11 @@ class CommitCertificateInformationRequest(AbstractModel):
         r"""
         :param _CertificateId: Certificate ID
         :type CertificateId: str
+        :param _VerifyType: Domain validation method
+        :type VerifyType: str
         """
         self._CertificateId = None
+        self._VerifyType = None
 
     @property
     def CertificateId(self):
@@ -961,9 +964,18 @@ class CommitCertificateInformationRequest(AbstractModel):
     def CertificateId(self, CertificateId):
         self._CertificateId = CertificateId
 
+    @property
+    def VerifyType(self):
+        return self._VerifyType
+
+    @VerifyType.setter
+    def VerifyType(self, VerifyType):
+        self._VerifyType = VerifyType
+
 
     def _deserialize(self, params):
         self._CertificateId = params.get("CertificateId")
+        self._VerifyType = params.get("VerifyType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1020,6 +1032,112 @@ class CommitCertificateInformationResponse(AbstractModel):
     def _deserialize(self, params):
         self._OrderId = params.get("OrderId")
         self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateCertificateRequest(AbstractModel):
+    """CreateCertificate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: Certificate product ID. `3`: SecureSite EV Pro; `4`: SecureSite EV; `5`: SecureSite OV Pro; `6`: SecureSite OV; `7`: SecureSite OV wildcard; `8`: GeoTrust EV; `9`: GeoTrust OV; `10`: GeoTrust OV wildcard; `11`: TrustAsia DV multi-domain; `12`: TrustAsia DV wildcard; `13`: TrustAsia OV wildcard D3; `14`: TrustAsia OV D3; `15`: TrustAsia OV multi-domain D3; `16`: TrustAsia EV D3; `17`: TrustAsia EV multi-domain D3; `18`: GlobalSign OV; `19`: GlobalSign OV wildcard; `20`: GlobalSign EV; `21`: TrustAsia OV wildcard multi-domain D3; `22`: GlobalSign OV multi-domain; `23`: GlobalSign OV wildcard multi-domain; `24`: GlobalSign EV multi-domain; `25` WoTrus DV; `26`: WoTrus DV multi-domain; `27`: WoTrus DV wildcard; `28`: WoTrus OV; `29`: WoTrus OV multi-domain; `30`: WoTrus OV wildcard; `31`: WoTrus EV; `32`: WoTrus EV multi-domain; `33`: DNSPod SM2 DV; `34`: DNSPod SM2 DV multi-domain; `35`: DNSPod SM2 DV wildcard; `37`: DNSPod SM2 OV; `38`: DNSPod SM2 OV multi-domain; `39`: DNSPod SM2 OV wildcard: `40`: DNSPod SM2 EV; `41`: DNSPod SM2 EV multi-domain; `42`: TrustAsia DV wildcard multi-domain.
+        :type ProductId: int
+        :param _DomainNum: Number of domains associated with the certificate
+        :type DomainNum: int
+        :param _TimeSpan: Certificate validity period. Currently, you can only purchase 1-year certificates.
+        :type TimeSpan: int
+        """
+        self._ProductId = None
+        self._DomainNum = None
+        self._TimeSpan = None
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DomainNum(self):
+        return self._DomainNum
+
+    @DomainNum.setter
+    def DomainNum(self, DomainNum):
+        self._DomainNum = DomainNum
+
+    @property
+    def TimeSpan(self):
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DomainNum = params.get("DomainNum")
+        self._TimeSpan = params.get("TimeSpan")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCertificateResponse(AbstractModel):
+    """CreateCertificate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CertificateIds: List of certificate IDs
+        :type CertificateIds: list of str
+        :param _DealIds: List of order IDs
+        :type DealIds: list of str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._CertificateIds = None
+        self._DealIds = None
+        self._RequestId = None
+
+    @property
+    def CertificateIds(self):
+        return self._CertificateIds
+
+    @CertificateIds.setter
+    def CertificateIds(self, CertificateIds):
+        self._CertificateIds = CertificateIds
+
+    @property
+    def DealIds(self):
+        return self._DealIds
+
+    @DealIds.setter
+    def DealIds(self, DealIds):
+        self._DealIds = DealIds
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._CertificateIds = params.get("CertificateIds")
+        self._DealIds = params.get("DealIds")
         self._RequestId = params.get("RequestId")
 
 
@@ -1145,8 +1263,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param _CertificateType: Certificate type. `CA`: client certificate; `SVR`: server certificate
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CertificateType: str
-        :param _PackageType: Certificate plan type. `1`: GeoTrust DV SSL CA - G3; `2`: TrustAsia TLS RSA CA; `3`: SecureSite EV Pro; `4`: SecureSite EV; `5`: SecureSite OV Pro; `6`: SecureSite OV; `7`: SecureSite OV wildcard; `8`: GeoTrust EV; `9`: GeoTrust OV; `10`: GeoTrust OV wildcard; `11`: TrustAsia DV multi-domain; `12`: TrustAsia DV wildcard; `13`: TrustAsia OV wildcard D3; `14`: TrustAsia OV D3; `15`: TrustAsia OV multi-domain D3; `16`: TrustAsia EV D3; `17`: TrustAsia EV multi-domain D3; `18`: GlobalSign OV; `19`: GlobalSign OV wildcard; `20`: GlobalSign EV; `21`: TrustAsia OV wildcard multi-domain D3; `22`: GlobalSign OV multi-domain; `23`: GlobalSign OV wildcard multi-domain; `24`: GlobalSign EV multi-domain
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _PackageType: Certificate plan type. null: User-uploaded certificate (no plan type); `1`: GeoTrust DV SSL CA - G3; `2`: TrustAsia TLS RSA CA; `3`: SecureSite EV Pro; `4`: SecureSite EV; `5`: SecureSite OV Pro; `6`: SecureSite OV; `7`: SecureSite OV wildcard; `8`: GeoTrust EV; `9`: GeoTrust OV; `10`: GeoTrust OV wildcard; `11`: TrustAsia DV multi-domain; `12`: TrustAsia DV wildcard; `13`: TrustAsia OV wildcard D3; `14`: TrustAsia OV D3; `15`: TrustAsia OV multi-domain D3; `16`: TrustAsia EV D3; `17`: TrustAsia EV multi-domain D3; `18`: GlobalSign OV; `19`: GlobalSign OV wildcard; `20`: GlobalSign EV; `21`: TrustAsia OV wildcard multi-domain D3; `22`: GlobalSign OV multi-domain; `23`: GlobalSign OV wildcard multi-domain; `24`: GlobalSign EV multi-domain; `25` WoTrus DV; `26`: WoTrus DV multi-domain; `27`: WoTrus DV wildcard; `28`: WoTrus OV; `29`: WoTrus OV multi-domain; `30`: WoTrus OV wildcard; `31`: WoTrus EV; `32`: WoTrus EV multi-domain; `33`: DNSPod SM2 DV; `34`: DNSPod SM2 DV multi-domain; `35`: DNSPod SM2 DV wildcard; `37`: DNSPod SM2 OV; `38`: DNSPod SM2 OV multi-domain; `39`: DNSPod SM2 OV wildcard: `40`: DNSPod SM2 EV; `41`: DNSPod SM2 EV multi-domain; `42`: TrustAsia DV wildcard multi-domain.
         :type PackageType: str
         :param _ProductZhName: Issuer
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -1956,6 +2073,15 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param _Tags: List of tags
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Tags: list of Tags
+        :param _CAEncryptAlgorithms: All encryption algorithms of a CA certificate
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CAEncryptAlgorithms: list of str
+        :param _CACommonNames: All common names of a CA certificate
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CACommonNames: list of str
+        :param _CAEndTimes: All expiration time of a CA certificate
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CAEndTimes: list of str
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -1991,6 +2117,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self._SubmittedData = None
         self._Deployable = None
         self._Tags = None
+        self._CAEncryptAlgorithms = None
+        self._CACommonNames = None
+        self._CAEndTimes = None
         self._RequestId = None
 
     @property
@@ -2250,6 +2379,30 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self._Tags = Tags
 
     @property
+    def CAEncryptAlgorithms(self):
+        return self._CAEncryptAlgorithms
+
+    @CAEncryptAlgorithms.setter
+    def CAEncryptAlgorithms(self, CAEncryptAlgorithms):
+        self._CAEncryptAlgorithms = CAEncryptAlgorithms
+
+    @property
+    def CACommonNames(self):
+        return self._CACommonNames
+
+    @CACommonNames.setter
+    def CACommonNames(self, CACommonNames):
+        self._CACommonNames = CACommonNames
+
+    @property
+    def CAEndTimes(self):
+        return self._CAEndTimes
+
+    @CAEndTimes.setter
+    def CAEndTimes(self, CAEndTimes):
+        self._CAEndTimes = CAEndTimes
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -2302,6 +2455,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
                 obj = Tags()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._CAEncryptAlgorithms = params.get("CAEncryptAlgorithms")
+        self._CACommonNames = params.get("CACommonNames")
+        self._CAEndTimes = params.get("CAEndTimes")
         self._RequestId = params.get("RequestId")
 
 
@@ -4169,7 +4325,7 @@ class UploadCertificateRequest(AbstractModel):
         :type CertificatePublicKey: str
         :param _CertificatePrivateKey: Private key content. This parameter is required when the certificate type is SVR, and not required when the certificate type is CA.
         :type CertificatePrivateKey: str
-        :param _CertificateType: Certificate type. `CA`: client certificate; `SVR`: server certificate. The default value is SVR.
+        :param _CertificateType: Certificate type. Valid values: `CA` (CA certificate) and `SVR` (server certificate). Default value: `SVR`
         :type CertificateType: str
         :param _Alias: Alias
         :type Alias: str
@@ -4310,4 +4466,98 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def _deserialize(self, params):
         self._CertificateId = params.get("CertificateId")
         self._RepeatCertId = params.get("RepeatCertId")
+        self._RequestId = params.get("RequestId")
+
+
+class UploadConfirmLetterRequest(AbstractModel):
+    """UploadConfirmLetter request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CertificateId: Certificate ID
+        :type CertificateId: str
+        :param _ConfirmLetter: Base64-encoded confirmation letter file, which must be a JPG, JPEG, PNG, or PDF file of 1 KB to 1.4 MB
+        :type ConfirmLetter: str
+        """
+        self._CertificateId = None
+        self._ConfirmLetter = None
+
+    @property
+    def CertificateId(self):
+        return self._CertificateId
+
+    @CertificateId.setter
+    def CertificateId(self, CertificateId):
+        self._CertificateId = CertificateId
+
+    @property
+    def ConfirmLetter(self):
+        return self._ConfirmLetter
+
+    @ConfirmLetter.setter
+    def ConfirmLetter(self, ConfirmLetter):
+        self._ConfirmLetter = ConfirmLetter
+
+
+    def _deserialize(self, params):
+        self._CertificateId = params.get("CertificateId")
+        self._ConfirmLetter = params.get("ConfirmLetter")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UploadConfirmLetterResponse(AbstractModel):
+    """UploadConfirmLetter response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CertificateId: Certificate ID
+        :type CertificateId: str
+        :param _IsSuccess: Whether the operation is successful
+        :type IsSuccess: bool
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._CertificateId = None
+        self._IsSuccess = None
+        self._RequestId = None
+
+    @property
+    def CertificateId(self):
+        return self._CertificateId
+
+    @CertificateId.setter
+    def CertificateId(self, CertificateId):
+        self._CertificateId = CertificateId
+
+    @property
+    def IsSuccess(self):
+        return self._IsSuccess
+
+    @IsSuccess.setter
+    def IsSuccess(self, IsSuccess):
+        self._IsSuccess = IsSuccess
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._CertificateId = params.get("CertificateId")
+        self._IsSuccess = params.get("IsSuccess")
         self._RequestId = params.get("RequestId")

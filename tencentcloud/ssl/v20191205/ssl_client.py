@@ -95,6 +95,29 @@ class SslClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateCertificate(self, request):
+        """This API is used to purchase a certificate.
+
+        :param request: Request instance for CreateCertificate.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.CreateCertificateRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.CreateCertificateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCertificate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCertificateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteCertificate(self, request):
         """This API is used to delete a certificate.
 
@@ -339,6 +362,29 @@ class SslClient(AbstractClient):
             body = self.call("UploadCertificate", params, headers=headers)
             response = json.loads(body)
             model = models.UploadCertificateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UploadConfirmLetter(self, request):
+        """This API is used to upload the confirmation letter for a certificate.
+
+        :param request: Request instance for UploadConfirmLetter.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.UploadConfirmLetterRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.UploadConfirmLetterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UploadConfirmLetter", params, headers=headers)
+            response = json.loads(body)
+            model = models.UploadConfirmLetterResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

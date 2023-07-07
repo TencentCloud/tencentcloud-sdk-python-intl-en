@@ -606,6 +606,8 @@ class CreateTawInstanceRequest(AbstractModel):
         :type ResourcePackageType: int
         :param _ResourcePackageNum: The number of prepaid resource packs (only required for prepaid mode)
         :type ResourcePackageNum: int
+        :param _InstanceType: Instance type. `1`: Web; `2`: Application
+        :type InstanceType: int
         """
         self._AreaId = None
         self._ChargeType = None
@@ -618,6 +620,7 @@ class CreateTawInstanceRequest(AbstractModel):
         self._BuyingChannel = None
         self._ResourcePackageType = None
         self._ResourcePackageNum = None
+        self._InstanceType = None
 
     @property
     def AreaId(self):
@@ -707,6 +710,14 @@ class CreateTawInstanceRequest(AbstractModel):
     def ResourcePackageNum(self, ResourcePackageNum):
         self._ResourcePackageNum = ResourcePackageNum
 
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
 
     def _deserialize(self, params):
         self._AreaId = params.get("AreaId")
@@ -725,6 +736,7 @@ class CreateTawInstanceRequest(AbstractModel):
         self._BuyingChannel = params.get("BuyingChannel")
         self._ResourcePackageType = params.get("ResourcePackageType")
         self._ResourcePackageNum = params.get("ResourcePackageNum")
+        self._InstanceType = params.get("InstanceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9984,6 +9996,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param _ProjectStatus: Project status (`1`: Creating; `2`: Running; `3`: Abnormal; `4`: Restarting; `5`: Stopping; `6`: Stopped; `7`: Terminating; `8`: Terminated)
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type ProjectStatus: int
+        :param _AccessPoint: Log access point, which can be ignored. 
+Note:  This field may return null, indicating that no valid values can be obtained.
+        :type AccessPoint: str
         """
         self._Name = None
         self._Creator = None
@@ -10001,6 +10016,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self._Desc = None
         self._IsStar = None
         self._ProjectStatus = None
+        self._AccessPoint = None
 
     @property
     def Name(self):
@@ -10130,6 +10146,14 @@ Note: This field may return `null`, indicating that no valid values can be obtai
     def ProjectStatus(self, ProjectStatus):
         self._ProjectStatus = ProjectStatus
 
+    @property
+    def AccessPoint(self):
+        return self._AccessPoint
+
+    @AccessPoint.setter
+    def AccessPoint(self, AccessPoint):
+        self._AccessPoint = AccessPoint
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -10148,6 +10172,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self._Desc = params.get("Desc")
         self._IsStar = params.get("IsStar")
         self._ProjectStatus = params.get("ProjectStatus")
+        self._AccessPoint = params.get("AccessPoint")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

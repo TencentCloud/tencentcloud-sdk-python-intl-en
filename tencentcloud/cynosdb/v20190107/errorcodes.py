@@ -17,6 +17,9 @@
 # Batch query failed
 FAILEDOPERATION_BATCHGETINSTANCEERROR = 'FailedOperation.BatchGetInstanceError'
 
+# Failed to bind a resource pack
+FAILEDOPERATION_BINDSOURCEPACKAGEERROR = 'FailedOperation.BindSourcePackageError'
+
 # Failed to get permissions. Please try again later. If the problem persists, please contact customer service.
 FAILEDOPERATION_CAMCHECKRESOURCEERROR = 'FailedOperation.CamCheckResourceError'
 
@@ -25,6 +28,9 @@ FAILEDOPERATION_CAMSIGANDAUTHERROR = 'FailedOperation.CamSigAndAuthError'
 
 # Failed to create the order and make a payment.
 FAILEDOPERATION_CREATEORDER = 'FailedOperation.CreateOrder'
+
+# Failed to create a resource pack
+FAILEDOPERATION_CREATESOURCEPACKAGEERROR = 'FailedOperation.CreateSourcePackageError'
 
 # Failed to access the database. Please try again later. If the problem persists, please contact customer service.
 FAILEDOPERATION_DATABASEACCESSERROR = 'FailedOperation.DatabaseAccessError'
@@ -38,17 +44,35 @@ FAILEDOPERATION_FLOWNOTFOUNDERROR = 'FailedOperation.FlowNotFoundError'
 # Failed to query the backup policy. Please try again later. If the problem persists, please contact customer service.
 FAILEDOPERATION_GETBACKUPSTRATEGYERROR = 'FailedOperation.GetBackupStrategyError'
 
+# Failed to query the network information of the access group
+FAILEDOPERATION_GETNETSERVICEINFOERROR = 'FailedOperation.GetNetServiceInfoError'
+
+# Failed to query the details of a read-write instance
+FAILEDOPERATION_GETOSSINFOERROR = 'FailedOperation.GetOssInfoError'
+
 # Insufficient account balance
 FAILEDOPERATION_INSUFFICIENTBALANCE = 'FailedOperation.InsufficientBalance'
 
 # Operation failed. Try again later. If the problem persists, contact customer service.
 FAILEDOPERATION_OPERATIONFAILEDERROR = 'FailedOperation.OperationFailedError'
 
+# Failed to query the consumption details of a resource pack
+FAILEDOPERATION_QUERYSOURCEPACKAGEDETAILERROR = 'FailedOperation.QuerySourcePackageDetailError'
+
+# Failed to query the resource pack
+FAILEDOPERATION_QUERYSOURCEPACKAGEERROR = 'FailedOperation.QuerySourcePackageError'
+
 # Failed to query specifications.
 FAILEDOPERATION_QUERYSPECBYSPECCODEERROR = 'FailedOperation.QuerySpecBySpecCodeError'
 
+# Failed to refund the resource pack
+FAILEDOPERATION_REFUNDSOURCEPACKAGEERROR = 'FailedOperation.RefundSourcePackageError'
+
 # Failed to create the order and make a payment. Please try again later. If the problem persists, please contact customer service.
 FAILEDOPERATION_TRADECREATEORDERERROR = 'FailedOperation.TradeCreateOrderError'
+
+# Failed to unbind the resource pack
+FAILEDOPERATION_UNBINDSOURCEPACKAGEERROR = 'FailedOperation.UnBindSourcePackageError'
 
 # Internal error.
 INTERNALERROR = 'InternalError'
@@ -65,6 +89,9 @@ INTERNALERROR_GETSUBNETFAILED = 'InternalError.GetSubnetFailed'
 # Failed to get the VPC.
 INTERNALERROR_GETVPCFAILED = 'InternalError.GetVpcFailed'
 
+# 
+INTERNALERROR_HTTPERROR = 'InternalError.HttpError'
+
 # An exception occurred while executing the HTTP request.
 INTERNALERROR_INTERNALHTTPSERVERERROR = 'InternalError.InternalHttpServerError'
 
@@ -79,6 +106,9 @@ INTERNALERROR_OPERATIONNOTSUPPORT = 'InternalError.OperationNotSupport'
 
 # Failed to query the database.
 INTERNALERROR_QUERYDATABASEFAILED = 'InternalError.QueryDatabaseFailed'
+
+# Internal service error
+INTERNALERROR_SERVICEERROR = 'InternalError.ServiceError'
 
 # Internal system error.
 INTERNALERROR_SYSTEMERROR = 'InternalError.SystemError'
@@ -179,6 +209,9 @@ INVALIDPARAMETERVALUE_STORAGEPOOLNOTFOUND = 'InvalidParameterValue.StoragePoolNo
 # The selected subnet could not be found.
 INVALIDPARAMETERVALUE_SUBNETNOTFOUND = 'InvalidParameterValue.SubnetNotFound'
 
+# No data found
+INVALIDPARAMETERVALUE_VALUENOTFOUND = 'InvalidParameterValue.ValueNotFound'
+
 # The selected VPC could not be found.
 INVALIDPARAMETERVALUE_VPCNOTFOUND = 'InvalidParameterValue.VpcNotFound'
 
@@ -197,6 +230,9 @@ OPERATIONDENIED_CLUSTEROPNOTALLOWEDERROR = 'OperationDenied.ClusterOpNotAllowedE
 # For the cluster in this status, the operation is not allowed.
 OPERATIONDENIED_CLUSTERSTATUSDENIEDERROR = 'OperationDenied.ClusterStatusDeniedError'
 
+# You do not have the permission to operate this resource.
+OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = 'OperationDenied.InstanceAccessDeniedError'
+
 # For the instance in this status, the operation is not allowed.
 OPERATIONDENIED_INSTANCESTATUSDENIEDERROR = 'OperationDenied.InstanceStatusDeniedError'
 
@@ -214,6 +250,9 @@ OPERATIONDENIED_SERVERLESSINSTANCESTATUSDENIED = 'OperationDenied.ServerlessInst
 
 # The task conflict check failed.
 OPERATIONDENIED_TASKCONFLICTERROR = 'OperationDenied.TaskConflictError'
+
+# This type of specification is unavailable.
+OPERATIONDENIED_UNSUPPORTSALESPECERROR = 'OperationDenied.UnSupportSaleSpecError'
 
 # You need to verify your identity to make a purchase.
 OPERATIONDENIED_USERNOTAUTHENTICATEDERROR = 'OperationDenied.UserNotAuthenticatedError'

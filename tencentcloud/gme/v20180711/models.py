@@ -378,6 +378,39 @@ class ApplicationDataStatistics(AbstractModel):
         
 
 
+class AsrConf(AbstractModel):
+    """Configuration information of Speech-to-Text
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: Speech-to-Text status. Valid values: `open`, `close`.
+        :type Status: str
+        """
+        self._Status = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AudioTextStatisticsItem(AbstractModel):
     """Recording-to-Text usage statistics
 
@@ -423,16 +456,20 @@ class CreateAppRequest(AbstractModel):
         :type AppName: str
         :param _ProjectId: Tencent Cloud project ID. Default value: 0, which means that the default project is used.
         :type ProjectId: int
-        :param _EngineList: List of engines to be supported. All values are selected by default.
+        :param _EngineList: List of engines to be supported.
+Valid values: `android`, `ios`, `unity`, `cocos`, `unreal`, `windows`. All values are selected by default.
         :type EngineList: list of str
-        :param _RegionList: Service region list. All values are selected by default.
+        :param _RegionList: List of regions.
+Valid values: `mainland` (Chinese mainland), `hmt` (Hong Kong, Macao and Taiwan (China)), `sea` (Southeast Asia), `na` (North America), `eu` (Europe), `jpkr` (Japan, Korea and Asia Pacific), `sa` (South America), `oc` (Oceania), `me` (Middle East). All values are selected by default.
         :type RegionList: list of str
         :param _RealtimeSpeechConf: Configuration information of Voice Chat
         :type RealtimeSpeechConf: :class:`tencentcloud.gme.v20180711.models.RealtimeSpeechConf`
-        :param _VoiceMessageConf: Configuration information of Voice Message Service
+        :param _VoiceMessageConf: Configuration information of Voice Messaging
         :type VoiceMessageConf: :class:`tencentcloud.gme.v20180711.models.VoiceMessageConf`
         :param _VoiceFilterConf: Configuration information of Voice Analysis Service
         :type VoiceFilterConf: :class:`tencentcloud.gme.v20180711.models.VoiceFilterConf`
+        :param _AsrConf: Configuration information of Speech-to-Text
+        :type AsrConf: :class:`tencentcloud.gme.v20180711.models.AsrConf`
         :param _Tags: List of tags to be added
         :type Tags: list of Tag
         """
@@ -443,6 +480,7 @@ class CreateAppRequest(AbstractModel):
         self._RealtimeSpeechConf = None
         self._VoiceMessageConf = None
         self._VoiceFilterConf = None
+        self._AsrConf = None
         self._Tags = None
 
     @property
@@ -502,6 +540,14 @@ class CreateAppRequest(AbstractModel):
         self._VoiceFilterConf = VoiceFilterConf
 
     @property
+    def AsrConf(self):
+        return self._AsrConf
+
+    @AsrConf.setter
+    def AsrConf(self, AsrConf):
+        self._AsrConf = AsrConf
+
+    @property
     def Tags(self):
         return self._Tags
 
@@ -524,6 +570,9 @@ class CreateAppRequest(AbstractModel):
         if params.get("VoiceFilterConf") is not None:
             self._VoiceFilterConf = VoiceFilterConf()
             self._VoiceFilterConf._deserialize(params.get("VoiceFilterConf"))
+        if params.get("AsrConf") is not None:
+            self._AsrConf = AsrConf()
+            self._AsrConf._deserialize(params.get("AsrConf"))
         if params.get("Tags") is not None:
             self._Tags = []
             for item in params.get("Tags"):
@@ -559,10 +608,12 @@ class CreateAppResp(AbstractModel):
         :type CreateTime: int
         :param _RealtimeSpeechConf: Configuration information of Voice Chat
         :type RealtimeSpeechConf: :class:`tencentcloud.gme.v20180711.models.RealtimeSpeechConf`
-        :param _VoiceMessageConf: Configuration information of Voice Message Service
+        :param _VoiceMessageConf: Configuration information of Voice Messaging
         :type VoiceMessageConf: :class:`tencentcloud.gme.v20180711.models.VoiceMessageConf`
         :param _VoiceFilterConf: Configuration information of Voice Analysis Service
         :type VoiceFilterConf: :class:`tencentcloud.gme.v20180711.models.VoiceFilterConf`
+        :param _AsrConf: Configuration information of Speech-to-Text
+        :type AsrConf: :class:`tencentcloud.gme.v20180711.models.AsrConf`
         """
         self._BizId = None
         self._AppName = None
@@ -572,6 +623,7 @@ class CreateAppResp(AbstractModel):
         self._RealtimeSpeechConf = None
         self._VoiceMessageConf = None
         self._VoiceFilterConf = None
+        self._AsrConf = None
 
     @property
     def BizId(self):
@@ -637,6 +689,14 @@ class CreateAppResp(AbstractModel):
     def VoiceFilterConf(self, VoiceFilterConf):
         self._VoiceFilterConf = VoiceFilterConf
 
+    @property
+    def AsrConf(self):
+        return self._AsrConf
+
+    @AsrConf.setter
+    def AsrConf(self, AsrConf):
+        self._AsrConf = AsrConf
+
 
     def _deserialize(self, params):
         self._BizId = params.get("BizId")
@@ -653,6 +713,9 @@ class CreateAppResp(AbstractModel):
         if params.get("VoiceFilterConf") is not None:
             self._VoiceFilterConf = VoiceFilterConf()
             self._VoiceFilterConf._deserialize(params.get("VoiceFilterConf"))
+        if params.get("AsrConf") is not None:
+            self._AsrConf = AsrConf()
+            self._AsrConf._deserialize(params.get("AsrConf"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1681,7 +1744,7 @@ class RealtimeSpeechConf(AbstractModel):
         r"""
         :param _Status: Voice Chat status. Valid values: `open`, `close`.
         :type Status: str
-        :param _Quality: Voice Chat sound quality. Valid value: `high`.
+        :param _Quality: Voice Chat sound quality type. Valid values: `high` (HD), `ordinary` (SD).
         :type Quality: str
         """
         self._Status = None
@@ -1753,7 +1816,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
 class RecordInfo(AbstractModel):
     """Information about the recording task in a room.
-    Note: This field may return null, indicating that no valid values can be obtained.
+    Note: This field may return `null`, indicating that no valid values can be obtained.
 
     """
 
@@ -1819,6 +1882,15 @@ class RecordInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class SceneInfo(AbstractModel):
+    """Scenario information. Valid values:
+    `RealTime`: Voice Chat analysis;
+    `VoiceMessage`: Voice Messaging;
+    `GMECloudApi`: GME cloud APIs
+
+    """
 
 
 class StartRecordRequest(AbstractModel):
@@ -2181,8 +2253,12 @@ class VoiceFilterConf(AbstractModel):
         r"""
         :param _Status: Phrase Filtering status. Valid values: `open`, `close`.
         :type Status: str
+        :param _SceneInfos: Scenario configuration information, such as status and callback URL.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type SceneInfos: list of SceneInfo
         """
         self._Status = None
+        self._SceneInfos = None
 
     @property
     def Status(self):
@@ -2192,9 +2268,23 @@ class VoiceFilterConf(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def SceneInfos(self):
+        return self._SceneInfos
+
+    @SceneInfos.setter
+    def SceneInfos(self, SceneInfos):
+        self._SceneInfos = SceneInfos
+
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
+        if params.get("SceneInfos") is not None:
+            self._SceneInfos = []
+            for item in params.get("SceneInfos"):
+                obj = SceneInfo()
+                obj._deserialize(item)
+                self._SceneInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

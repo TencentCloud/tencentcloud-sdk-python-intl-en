@@ -53,14 +53,29 @@ FAILEDOPERATION_CERTIFICATEMISMATCH = 'FailedOperation.CertificateMismatch'
 # The certificate does not exist.
 FAILEDOPERATION_CERTIFICATENOTFOUND = 'FailedOperation.CertificateNotFound'
 
+# The confirmation letter file cannot exceed 1.4 MB.
+FAILEDOPERATION_CONFIRMLETTERTOOLARGE = 'FailedOperation.ConfirmLetterTooLarge'
+
+# The confirmation letter file cannot be smaller than 1 KB.
+FAILEDOPERATION_CONFIRMLETTERTOOSMALL = 'FailedOperation.ConfirmLetterTooSmall'
+
 # The certificate is associated with a Tencent Cloud resource and cannot be deleted.
 FAILEDOPERATION_DELETERESOURCEFAILED = 'FailedOperation.DeleteResourceFailed'
 
 # The number of free certificates exceeds the maximum value.
 FAILEDOPERATION_EXCEEDSFREELIMIT = 'FailedOperation.ExceedsFreeLimit'
 
+# Certificate source error.
+FAILEDOPERATION_INVALIDCERTIFICATESOURCE = 'FailedOperation.InvalidCertificateSource'
+
 # The certificate status is incorrect.
 FAILEDOPERATION_INVALIDCERTIFICATESTATUSCODE = 'FailedOperation.InvalidCertificateStatusCode'
+
+# The format of the confirmation letter file is invalid (JPG, JPEG, PNG, and PDF are supported).
+FAILEDOPERATION_INVALIDCONFIRMLETTERFORMAT = 'FailedOperation.InvalidConfirmLetterFormat'
+
+# The format of the confirmation letter file is invalid (JPG, PDF, and GIF are supported).
+FAILEDOPERATION_INVALIDCONFIRMLETTERFORMATWOSIGN = 'FailedOperation.InvalidConfirmLetterFormatWosign'
 
 # Incorrect parameters.
 FAILEDOPERATION_INVALIDPARAM = 'FailedOperation.InvalidParam'
@@ -110,5 +125,11 @@ INVALIDPARAMETER_PACKAGEIDSINVALID = 'InvalidParameter.PackageIdsInvalid'
 # The parameter is incorrect.
 INVALIDPARAMETER_WITHDETAILREASON = 'InvalidParameter.WithDetailReason'
 
+# Invalid parameter value.
+INVALIDPARAMETERVALUE = 'InvalidParameterValue'
+
 # The API rate limit is reached.
 LIMITEXCEEDED_RATELIMITEXCEEDED = 'LimitExceeded.RateLimitExceeded'
+
+# Missing parameter.
+MISSINGPARAMETER = 'MissingParameter'

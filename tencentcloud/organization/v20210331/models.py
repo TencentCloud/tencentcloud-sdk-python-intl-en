@@ -1624,19 +1624,22 @@ class ListOrganizationIdentityRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: Offset.
+        :param _Offset: Offset.  It must be an integer multiple of the value of `Limit`.  Default value: `0`.
         :type Offset: int
-        :param _Limit: Maximum number of returned results. Maximum value: `50`.
+        :param _Limit: The limit for the number of query results.  Value range:  1-50.  Default value:  `10`.
         :type Limit: int
         :param _SearchKey: Search by name.
         :type SearchKey: str
         :param _IdentityId: Search by identity ID.
         :type IdentityId: int
+        :param _IdentityType: Identity type.  Valid values: `1` (Preset), `2` (Custom).
+        :type IdentityType: int
         """
         self._Offset = None
         self._Limit = None
         self._SearchKey = None
         self._IdentityId = None
+        self._IdentityType = None
 
     @property
     def Offset(self):
@@ -1670,12 +1673,21 @@ class ListOrganizationIdentityRequest(AbstractModel):
     def IdentityId(self, IdentityId):
         self._IdentityId = IdentityId
 
+    @property
+    def IdentityType(self):
+        return self._IdentityType
+
+    @IdentityType.setter
+    def IdentityType(self, IdentityType):
+        self._IdentityType = IdentityType
+
 
     def _deserialize(self, params):
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._SearchKey = params.get("SearchKey")
         self._IdentityId = params.get("IdentityId")
+        self._IdentityType = params.get("IdentityType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

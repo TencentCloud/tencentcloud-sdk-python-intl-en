@@ -1431,9 +1431,9 @@ class ClsClient(AbstractClient):
 
     def UploadLog(self, request, body):
         """## Note
-        To ensure log data reliability and help you use CLS more efficiently, we recommend you use the optimized API to upload logs. For more information about the API, see [Uploading Log via API](https://www.tencentcloud.com/document/product/614/50267).
+        To ensure log data reliability and help you use CLS more efficiently, we recommend you use the optimized API to upload logs. For more information about the API, see [Uploading Log via API](https://intl.cloud.tencent.com/document/product/614/16873?from_cn_redirect=1).
 
-        For the optimized API, we have developed an SDK (available in multiple languages) that provides features including async sending, resource control, automatic retry, graceful shutdown, and detection-based reporting. For details, see [Uploading Log via SDK](https://intl.cloud.tencent.com/document/product/614/45006).
+        For the optimized API, we have developed an SDK (available in multiple languages) that provides features including async sending, resource control, automatic retry, graceful shutdown, and detection-based reporting. For details, see [Uploading Log via SDK](https://intl.cloud.tencent.com/document/product/614/67157?from_cn_redirect=1).
 
         `UploadLog` allows you to synchronously upload log data. If you still want to continue to use this API instead of the optimized one, read this document.
 
@@ -1455,56 +1455,56 @@ class ClsClient(AbstractClient):
 
         #### Input parameters (pb binary streams in `body`)
 
-        | Parameter | Type | Location | Required | Description |
+        | Parameter       | Type    | Location | Required | Description                                                         |
         | ------------ | ------- | ---- | ---- | ------------------------------------------------------------ |
-        | logGroupList | message | pb    | Yes   | The `logGroup` list, which describes the encapsulated log groups. We recommend you enter up to five `logGroup` values.                     |
+        | logGroupList | message | pb   | Yes   | The `logGroup` list, which describes the encapsulated log groups. We recommend you enter up to five `logGroup` values. |
 
         `LogGroup` description:
 
-        | Parameter     | Required | Description                                                         |
+        | Parameter      | Required | Description                                                         |
         | ----------- | -------- | ------------------------------------------------------------ |
         | logs        | Yes       | Log array consisting of multiple `Log` values. The `Log` indicates a log, and a `LogGroup` can contain up to 10,000 `Log` values. |
-        | contextFlow | No       | Unique `LogGroup` ID, which should be passed in if the context feature needs to be used. Format: "{context ID}-{LogGroupID}". <br>Context ID: Uniquely identifies the context (a series of log files that are continuously scrolling or a series of logs that need to be sequenced), which is a 64-bit integer hex string. <br>LogGroupID: A 64-bit integer hex string that continuously increases, such as `102700A66102516A-59F59`.                        |
+        | contextFlow | No       | Unique `LogGroup` ID, which should be passed in if the context feature needs to be used. Format: "{Context ID}-{LogGroupID}". <br>Context ID: Uniquely identifies the context (a series of log files that are continuously scrolling or a series of logs that need to be sequenced), which is a 64-bit integer hex string. <br>LogGroupID: A 64-bit integer hex string that continuously increases, such as `102700A66102516A-59F59`.                        |
         | filename    | No       | Log filename                                                   |
         | source      | No       | Log source, which is generally the machine IP                           |
         | logTags     | No       | List of log tags                                               |
 
         `Log` description:
 
-        | Parameter | Required | Description |
+        | Parameter   | Required | Description                                                         |
         | -------- | -------- | ------------------------------------------------------------ |
-        | time | Yes | Unix timestamp of log time in seconds or milliseconds (recommended) |
-        | contents | No | Log content in key-value format. A log can contain multiple key-value pairs. |
+        | time     | Yes       | Unix timestamp of log time in seconds or milliseconds (recommended)      |
+        | contents | No       | Log content in key-value format. A log can contain multiple key-value pairs. |
 
         `Content` description:
 
-        | Parameter | Required | Description |
+        | Parameter | Required | Description                                                         |
         | ------ | -------- | ------------------------------------------------------------ |
         | key    | Yes       | Key of a field group in one log, which cannot start with `_`.                 |
         | value  | Yes       | Value of a field group. The `value` of one log cannot exceed 1 MB and the total `value` in `LogGroup` cannot exceed 5 MB. |
 
         `LogTag` description:
 
-        | Parameter     | Required | Description                                                         |
+        | Parameter | Required | Description                             |
         | ------ | -------- | -------------------------------- |
-        | key    | Yes       | Key of a custom tag             |
+        | key    | Yes       | Key of a custom tag                 |
         | value  | Yes       | Value corresponding to the custom tag key |
 
-        ## pb Compilation Sample
+        ## pb Compilation Example
 
-        This sample describes how to use the protoc compiler to compile the pb description file into a log upload API in C++.
+        This example shows you how to use the protoc compiler to compile a pb description file into a log upload API in C++.
 
         > ?Currently, protoc supports compilation in multiple programming languages such as Java, C++, and Python. For more information, see [protoc](https://github.com/protocolbuffers/protobuf).
 
         #### 1. Install Protocol Buffers
 
-        Download [Protocol Buffers](https://main.qcloudimg.com/raw/d7810aaf8b3073fbbc9d4049c21532aa/protobuf-2.6.1.tar.gz), decompress the package, and install the tool. The version used in the sample is protobuf 2.6.1 running on CentOS 7.3. Run the following command to decompress the `protobuf-2.6.1.tar.gz` package to the `/usr/local` directory and go to the directory:
+        Download [Protocol Buffers](https://main.qcloudimg.com/raw/d7810aaf8b3073fbbc9d4049c21532aa/protobuf-2.6.1.tar.gz), decompress the package, and install the tool. The version used in the example is protobuf 2.6.1 running on CentOS 7.3. Run the following command to decompress the `protobuf-2.6.1.tar.gz` package to the `/usr/local` directory and go to the directory:
 
         ```
         tar -zxvf protobuf-2.6.1.tar.gz -C /usr/local/ && cd /usr/local/protobuf-2.6.1
         ```
 
-        Run the following commands to start compilation and installation, and configure the environment variables:
+        Run the following commands to start compilation and installation and configure the environment variables:
 
         ```
         [root@VM_0_8_centos protobuf-2.6.1]# ./configure
@@ -1566,7 +1566,7 @@ class ClsClient(AbstractClient):
 
         #### 3. Compile and generate the API
 
-        This sample uses the proto compiler to generate a C++ file in the same directory as the `cls.proto` file. Run the following compilation command:
+        This example uses the proto compiler to generate a C++ file in the same directory as the `cls.proto` file. Run the following compilation command:
 
         ```
         protoc --cpp_out=./ ./cls.proto
@@ -1574,7 +1574,7 @@ class ClsClient(AbstractClient):
 
         > ?`--cpp_out=./` indicates that the file will be compiled in cpp format and output to the current directory. `./cls.proto` indicates the `cls.proto` description file in the current directory.
 
-        After the compilation succeeds, the code file in the corresponding programming language will be generated. This sample generates the `cls.pb.h` header file and [cls.pb.cc](http://cls.pb.cc) code implementation file as shown below:
+        After the compilation succeeds, the code file in the corresponding programming language will be generated. This example generates the `cls.pb.h` header file and [cls.pb.cc](http://cls.pb.cc) code implementation file as shown below:
 
         ```
         [root@VM_0_8_centos protobuf-2.6.1]# protoc --cpp_out=./ ./cls.proto

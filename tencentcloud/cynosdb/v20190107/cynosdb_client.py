@@ -95,6 +95,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def BindClusterResourcePackages(self, request):
+        """This API is used to bind a resource pack to a cluster.
+
+        :param request: Request instance for BindClusterResourcePackages.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.BindClusterResourcePackagesRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.BindClusterResourcePackagesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BindClusterResourcePackages", params, headers=headers)
+            response = json.loads(body)
+            model = models.BindClusterResourcePackagesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CloseAuditService(self, request):
         """This API is used to disable the audit service for a TDSQL-C for MySQL instance.
 
@@ -109,6 +132,75 @@ class CynosdbClient(AbstractClient):
             body = self.call("CloseAuditService", params, headers=headers)
             response = json.loads(body)
             model = models.CloseAuditServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CloseClusterPasswordComplexity(self, request):
+        """This API is used to disable the password complexity for a cluster.
+
+        :param request: Request instance for CloseClusterPasswordComplexity.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.CloseClusterPasswordComplexityRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.CloseClusterPasswordComplexityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CloseClusterPasswordComplexity", params, headers=headers)
+            response = json.loads(body)
+            model = models.CloseClusterPasswordComplexityResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CloseWan(self, request):
+        """This API is used to disable the public network.
+
+        :param request: Request instance for CloseWan.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.CloseWanRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.CloseWanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CloseWan", params, headers=headers)
+            response = json.loads(body)
+            model = models.CloseWanResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CopyClusterPasswordComplexity(self, request):
+        """This API is used to replicate the password complexity for a cluster.
+
+        :param request: Request instance for CopyClusterPasswordComplexity.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.CopyClusterPasswordComplexityRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.CopyClusterPasswordComplexityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CopyClusterPasswordComplexity", params, headers=headers)
+            response = json.loads(body)
+            model = models.CopyClusterPasswordComplexityResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -187,6 +279,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateClusterDatabase(self, request):
+        """This API is used to create a database.
+
+        :param request: Request instance for CreateClusterDatabase.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.CreateClusterDatabaseRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.CreateClusterDatabaseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateClusterDatabase", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateClusterDatabaseResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateClusters(self, request):
         """This API is used to create a cluster.
 
@@ -201,6 +316,75 @@ class CynosdbClient(AbstractClient):
             body = self.call("CreateClusters", params, headers=headers)
             response = json.loads(body)
             model = models.CreateClustersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateParamTemplate(self, request):
+        """This API is used to create a parameter template.
+
+        :param request: Request instance for CreateParamTemplate.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.CreateParamTemplateRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.CreateParamTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateParamTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateParamTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateResourcePackage(self, request):
+        """This API is used to purchase a resource pack.
+
+        :param request: Request instance for CreateResourcePackage.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.CreateResourcePackageRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.CreateResourcePackageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateResourcePackage", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateResourcePackageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteAccounts(self, request):
+        """This API is used to delete an account.
+
+        :param request: Request instance for DeleteAccounts.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DeleteAccountsRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DeleteAccountsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAccounts", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAccountsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -247,6 +431,75 @@ class CynosdbClient(AbstractClient):
             body = self.call("DeleteBackup", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteBackupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteClusterDatabase(self, request):
+        """This API is used to delete a database.
+
+        :param request: Request instance for DeleteClusterDatabase.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DeleteClusterDatabaseRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DeleteClusterDatabaseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteClusterDatabase", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteClusterDatabaseResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteParamTemplate(self, request):
+        """This API is used to delete a parameter template.
+
+        :param request: Request instance for DeleteParamTemplate.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DeleteParamTemplateRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DeleteParamTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteParamTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteParamTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAccountPrivileges(self, request):
+        """This API is used to query the existing permissions of an account.
+
+        :param request: Request instance for DescribeAccountPrivileges.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeAccountPrivilegesRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeAccountPrivilegesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAccountPrivileges", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAccountPrivilegesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -486,6 +739,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeClusterDetailDatabases(self, request):
+        """This API is used to query the database list.
+
+        :param request: Request instance for DescribeClusterDetailDatabases.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClusterDetailDatabasesRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClusterDetailDatabasesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterDetailDatabases", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeClusterDetailDatabasesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeClusterInstanceGrps(self, request):
         """This API is used to query instance groups.
 
@@ -523,6 +799,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("DescribeClusterParams", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeClusterParamsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeClusterPasswordComplexity(self, request):
+        """This API is used to query the details of password complexity for a cluster.
+
+        :param request: Request instance for DescribeClusterPasswordComplexity.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClusterPasswordComplexityRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClusterPasswordComplexityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterPasswordComplexity", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeClusterPasswordComplexityResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -624,6 +923,52 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeInstanceErrorLogs(self, request):
+        """This API is used to query the list of error logs for an instance.
+
+        :param request: Request instance for DescribeInstanceErrorLogs.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeInstanceErrorLogsRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeInstanceErrorLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceErrorLogs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceErrorLogsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeInstanceParams(self, request):
+        """This API is used to query the parameter list of an instance.
+
+        :param request: Request instance for DescribeInstanceParams.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeInstanceParamsRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeInstanceParamsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceParams", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceParamsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeInstanceSlowQueries(self, request):
         """This API is used to query the slow query logs of an instance.
 
@@ -716,6 +1061,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeParamTemplateDetail(self, request):
+        """This API is used to query the details of a parameter template.
+
+        :param request: Request instance for DescribeParamTemplateDetail.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeParamTemplateDetailRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeParamTemplateDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeParamTemplateDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeParamTemplateDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeParamTemplates(self, request):
         """This API is used to query all parameter templates information of a user-specified product.
 
@@ -753,6 +1121,75 @@ class CynosdbClient(AbstractClient):
             body = self.call("DescribeProjectSecurityGroups", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeProjectSecurityGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeResourcePackageDetail(self, request):
+        """This API is used to query the usage details of a resource pack.
+
+        :param request: Request instance for DescribeResourcePackageDetail.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeResourcePackageDetailRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeResourcePackageDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeResourcePackageDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeResourcePackageDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeResourcePackageList(self, request):
+        """This API is used to query the list of the resource packs.
+
+        :param request: Request instance for DescribeResourcePackageList.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeResourcePackageListRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeResourcePackageListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeResourcePackageList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeResourcePackageListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeResourcePackageSaleSpec(self, request):
+        """This API is used to query the specifications of a resource pack.
+
+        :param request: Request instance for DescribeResourcePackageSaleSpec.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeResourcePackageSaleSpecRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeResourcePackageSaleSpecResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeResourcePackageSaleSpec", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeResourcePackageSaleSpecResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -845,6 +1282,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("DescribeZones", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeZonesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ExportInstanceErrorLogs(self, request):
+        """This API is used to export the error logs of an instance.
+
+        :param request: Request instance for ExportInstanceErrorLogs.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ExportInstanceErrorLogsRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ExportInstanceErrorLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ExportInstanceErrorLogs", params, headers=headers)
+            response = json.loads(body)
+            model = models.ExportInstanceErrorLogsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -969,6 +1429,75 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyAccountDescription(self, request):
+        """This API is used to modify the descriptions of a database account.
+
+        :param request: Request instance for ModifyAccountDescription.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyAccountDescriptionRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyAccountDescriptionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAccountDescription", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAccountDescriptionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyAccountHost(self, request):
+        """This API is used to modify the account host.
+
+        :param request: Request instance for ModifyAccountHost.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyAccountHostRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyAccountHostResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAccountHost", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAccountHostResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyAccountPrivileges(self, request):
+        """This API is used to modify the account permissions.
+
+        :param request: Request instance for ModifyAccountPrivileges.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyAccountPrivilegesRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyAccountPrivilegesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAccountPrivileges", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAccountPrivilegesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyAuditRuleTemplates(self, request):
         """This API is used to modify an audit rule template.
 
@@ -1061,6 +1590,52 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyBinlogSaveDays(self, request):
+        """This API is used to modify the binlog retention period in days.
+
+        :param request: Request instance for ModifyBinlogSaveDays.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyBinlogSaveDaysRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyBinlogSaveDaysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyBinlogSaveDays", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyBinlogSaveDaysResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyClusterDatabase(self, request):
+        """This API is used to modify the database.
+
+        :param request: Request instance for ModifyClusterDatabase.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyClusterDatabaseRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyClusterDatabaseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyClusterDatabase", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyClusterDatabaseResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyClusterName(self, request):
         """This API is used to modify cluster name.
 
@@ -1098,6 +1673,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("ModifyClusterParam", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyClusterParamResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyClusterPasswordComplexity(self, request):
+        """This API is used to modify or enable the password complexity for a cluster.
+
+        :param request: Request instance for ModifyClusterPasswordComplexity.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyClusterPasswordComplexityRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyClusterPasswordComplexityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyClusterPasswordComplexity", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyClusterPasswordComplexityResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1176,6 +1774,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyInstanceParam(self, request):
+        """This API is used to modify the instance parameters.
+
+        :param request: Request instance for ModifyInstanceParam.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyInstanceParamRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyInstanceParamResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceParam", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstanceParamResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyMaintainPeriodConfig(self, request):
         """This API is used to modify the maintenance time configuration.
 
@@ -1190,6 +1811,75 @@ class CynosdbClient(AbstractClient):
             body = self.call("ModifyMaintainPeriodConfig", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyMaintainPeriodConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyParamTemplate(self, request):
+        """This API is used to modify a parameter template.
+
+        :param request: Request instance for ModifyParamTemplate.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyParamTemplateRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyParamTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyParamTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyParamTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyResourcePackageClusters(self, request):
+        """This API is used to bind a resource pack to a cluster.
+
+        :param request: Request instance for ModifyResourcePackageClusters.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyResourcePackageClustersRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyResourcePackageClustersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyResourcePackageClusters", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyResourcePackageClustersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyResourcePackageName(self, request):
+        """This API is used to modify the name of a resource pack.
+
+        :param request: Request instance for ModifyResourcePackageName.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyResourcePackageNameRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyResourcePackageNameResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyResourcePackageName", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyResourcePackageNameResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1291,6 +1981,75 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def OpenClusterPasswordComplexity(self, request):
+        """This API is used to enable the password complexity for a cluster.
+
+        :param request: Request instance for OpenClusterPasswordComplexity.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.OpenClusterPasswordComplexityRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.OpenClusterPasswordComplexityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OpenClusterPasswordComplexity", params, headers=headers)
+            response = json.loads(body)
+            model = models.OpenClusterPasswordComplexityResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def OpenReadOnlyInstanceExclusiveAccess(self, request):
+        """This API is used to enable the dedicated access group for a read-only instance.
+
+        :param request: Request instance for OpenReadOnlyInstanceExclusiveAccess.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.OpenReadOnlyInstanceExclusiveAccessRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.OpenReadOnlyInstanceExclusiveAccessResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OpenReadOnlyInstanceExclusiveAccess", params, headers=headers)
+            response = json.loads(body)
+            model = models.OpenReadOnlyInstanceExclusiveAccessResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def OpenWan(self, request):
+        """This API is used to enable the public network.
+
+        :param request: Request instance for OpenWan.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.OpenWanRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.OpenWanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OpenWan", params, headers=headers)
+            response = json.loads(body)
+            model = models.OpenWanResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def PauseServerless(self, request):
         """This API is used to pause a serverless cluster.
 
@@ -1305,6 +2064,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("PauseServerless", params, headers=headers)
             response = json.loads(body)
             model = models.PauseServerlessResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RefundResourcePackage(self, request):
+        """This API is used to refund a resource pack.
+
+        :param request: Request instance for RefundResourcePackage.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.RefundResourcePackageRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.RefundResourcePackageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RefundResourcePackage", params, headers=headers)
+            response = json.loads(body)
+            model = models.RefundResourcePackageResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1535,6 +2317,52 @@ class CynosdbClient(AbstractClient):
             body = self.call("SwitchProxyVpc", params, headers=headers)
             response = json.loads(body)
             model = models.SwitchProxyVpcResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UnbindClusterResourcePackages(self, request):
+        """This API is used to unbind a TDSQL-C for MySQL resource pack.
+
+        :param request: Request instance for UnbindClusterResourcePackages.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.UnbindClusterResourcePackagesRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.UnbindClusterResourcePackagesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UnbindClusterResourcePackages", params, headers=headers)
+            response = json.loads(body)
+            model = models.UnbindClusterResourcePackagesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpgradeClusterVersion(self, request):
+        """This API is used to upgrade the kernel version of a TDSQL-C for MySQL cluster.
+
+        :param request: Request instance for UpgradeClusterVersion.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.UpgradeClusterVersionRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.UpgradeClusterVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpgradeClusterVersion", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpgradeClusterVersionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
