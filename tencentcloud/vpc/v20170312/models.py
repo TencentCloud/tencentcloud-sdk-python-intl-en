@@ -302,6 +302,14 @@ Note: this field may return `null`, indicating that no valid value was found.
         :param _TagSet: List of tags associated with the EIP
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type TagSet: list of Tag
+        :param _DeadlineDate: The expiration time.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type DeadlineDate: str
+        :param _InstanceType: The type of instance bound with the EIP
+Note: this field may return `null`, indicating that no valid value was found.
+        :type InstanceType: str
+        :param _AntiDDoSPackageId: 
+        :type AntiDDoSPackageId: str
         """
         self._AddressId = None
         self._AddressName = None
@@ -322,6 +330,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self._Bandwidth = None
         self._InternetChargeType = None
         self._TagSet = None
+        self._DeadlineDate = None
+        self._InstanceType = None
+        self._AntiDDoSPackageId = None
 
     @property
     def AddressId(self):
@@ -475,6 +486,30 @@ Note: this field may return `null`, indicating that no valid values can be obtai
     def TagSet(self, TagSet):
         self._TagSet = TagSet
 
+    @property
+    def DeadlineDate(self):
+        return self._DeadlineDate
+
+    @DeadlineDate.setter
+    def DeadlineDate(self, DeadlineDate):
+        self._DeadlineDate = DeadlineDate
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def AntiDDoSPackageId(self):
+        return self._AntiDDoSPackageId
+
+    @AntiDDoSPackageId.setter
+    def AntiDDoSPackageId(self, AntiDDoSPackageId):
+        self._AntiDDoSPackageId = AntiDDoSPackageId
+
 
     def _deserialize(self, params):
         self._AddressId = params.get("AddressId")
@@ -503,6 +538,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
                 obj = Tag()
                 obj._deserialize(item)
                 self._TagSet.append(obj)
+        self._DeadlineDate = params.get("DeadlineDate")
+        self._InstanceType = params.get("InstanceType")
+        self._AntiDDoSPackageId = params.get("AntiDDoSPackageId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -783,13 +821,35 @@ class AddressTemplateItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _From: Start address
+        :param _AddressTemplateId: ipm-xxxxxxxx
+        :type AddressTemplateId: str
+        :param _AddressTemplateName: IP template name
+        :type AddressTemplateName: str
+        :param _From: Disused
         :type From: str
-        :param _To: End address
+        :param _To: Disused
         :type To: str
         """
+        self._AddressTemplateId = None
+        self._AddressTemplateName = None
         self._From = None
         self._To = None
+
+    @property
+    def AddressTemplateId(self):
+        return self._AddressTemplateId
+
+    @AddressTemplateId.setter
+    def AddressTemplateId(self, AddressTemplateId):
+        self._AddressTemplateId = AddressTemplateId
+
+    @property
+    def AddressTemplateName(self):
+        return self._AddressTemplateName
+
+    @AddressTemplateName.setter
+    def AddressTemplateName(self, AddressTemplateName):
+        self._AddressTemplateName = AddressTemplateName
 
     @property
     def From(self):
@@ -809,6 +869,8 @@ class AddressTemplateItem(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._AddressTemplateId = params.get("AddressTemplateId")
+        self._AddressTemplateName = params.get("AddressTemplateName")
         self._From = params.get("From")
         self._To = params.get("To")
         memeber_set = set(params.keys())
@@ -3272,6 +3334,9 @@ Note: this field may return null, indicating that no valid value was found.
         :param _MarketId: Cloud marketplace instance ID.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type MarketId: str
+        :param _TagSet: The list of tags to be bound.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type TagSet: list of Tag
         """
         self._CcnId = None
         self._CreatedTime = None
@@ -3280,6 +3345,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self._RenewFlag = None
         self._CcnRegionBandwidthLimit = None
         self._MarketId = None
+        self._TagSet = None
 
     @property
     def CcnId(self):
@@ -3337,6 +3403,14 @@ Note: This field may return `null`, indicating that no valid values can be obtai
     def MarketId(self, MarketId):
         self._MarketId = MarketId
 
+    @property
+    def TagSet(self):
+        return self._TagSet
+
+    @TagSet.setter
+    def TagSet(self, TagSet):
+        self._TagSet = TagSet
+
 
     def _deserialize(self, params):
         self._CcnId = params.get("CcnId")
@@ -3348,6 +3422,12 @@ Note: This field may return `null`, indicating that no valid values can be obtai
             self._CcnRegionBandwidthLimit = CcnRegionBandwidthLimit()
             self._CcnRegionBandwidthLimit._deserialize(params.get("CcnRegionBandwidthLimit"))
         self._MarketId = params.get("MarketId")
+        if params.get("TagSet") is not None:
+            self._TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._TagSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4480,7 +4560,7 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
         :type InstanceId: str
         :param _PrivateIpAddresses: The information of the specified private IPs. You can specify a maximum of 10 IPs each time.
         :type PrivateIpAddresses: list of PrivateIpAddressSpecification
-        :param _SecondaryPrivateIpAddressCount: The number of private IP addresses you can apply for. The total number of private IP addresses cannot exceed the quota.
+        :param _SecondaryPrivateIpAddressCount: The number of private IP addresses you apply for. The total number of private IP addresses cannot exceed the quota.
         :type SecondaryPrivateIpAddressCount: int
         :param _QosLevel: IP service level. It’s used in combination with `SecondaryPrivateIpAddressCount`. Values: `PT` (Gold), `AU` (Silver), `AG` (Bronze) and `DEFAULT`
         :type QosLevel: str
@@ -5480,11 +5560,11 @@ class CreateFlowLogRequest(AbstractModel):
         :type TrafficType: str
         :param _VpcId: The VPC ID or unique ID of the resource. We recommend using the unique ID. This parameter is required unless the `ResourceType` is set to `CCN`.
         :type VpcId: str
-        :param _FlowLogDescription: The description of the flow log instance
+        :param _FlowLogDescription: The description of the flow log.
         :type FlowLogDescription: str
         :param _CloudLogId: The storage ID of the flow log.
         :type CloudLogId: str
-        :param _Tags: Bound tags, such as [{"Key": "city", "Value": "shanghai"}]
+        :param _Tags: Bound tags, such as [{"Key": "city", "Value": "shanghai"}].
         :type Tags: list of Tag
         :param _StorageType: Consumer types: `cls` and `ckafka`
         :type StorageType: str
@@ -5680,11 +5760,14 @@ class CreateHaVipRequest(AbstractModel):
         :type HaVipName: str
         :param _Vip: The specified virtual IP address, which must be within the IP range of the `VPC` and not in use. It will be automatically assigned if not specified.
         :type Vip: str
+        :param _NetworkInterfaceId: The ID of the ENI associated with the HAVIP.
+        :type NetworkInterfaceId: str
         """
         self._VpcId = None
         self._SubnetId = None
         self._HaVipName = None
         self._Vip = None
+        self._NetworkInterfaceId = None
 
     @property
     def VpcId(self):
@@ -5718,12 +5801,21 @@ class CreateHaVipRequest(AbstractModel):
     def Vip(self, Vip):
         self._Vip = Vip
 
+    @property
+    def NetworkInterfaceId(self):
+        return self._NetworkInterfaceId
+
+    @NetworkInterfaceId.setter
+    def NetworkInterfaceId(self, NetworkInterfaceId):
+        self._NetworkInterfaceId = NetworkInterfaceId
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
         self._SubnetId = params.get("SubnetId")
         self._HaVipName = params.get("HaVipName")
         self._Vip = params.get("Vip")
+        self._NetworkInterfaceId = params.get("NetworkInterfaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6250,7 +6342,7 @@ class CreateNetDetectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpcId: The `ID` of a `VPC` instance, such as `vpc-12345678`.
+        :param _VpcId: The ID of a VPC instance, such as `vpc-12345678`.
         :type VpcId: str
         :param _SubnetId: The ID of a subnet instance, such as subnet-12345678.
         :type SubnetId: str
@@ -6260,19 +6352,21 @@ class CreateNetDetectRequest(AbstractModel):
         :type DetectDestinationIp: list of str
         :param _NextHopType: Type of the next hop. Valid values:
 `VPN`: VPN gateway;
-`DIRECTCONNECT`: direct connect gateway;
-`PEERCONNECTION`: peering connection;
+`DIRECTCONNECT`: Direct connect gateway;
+`PEERCONNECTION`: Peering connection;
 `NAT`: NAT gateway;
-`NORMAL_CVM`: normal CVM;
-`CCN`: CCN gateway.
+`NORMAL_CVM`: CVM instance;
+`CCN`: CCN instance;
+`NONEXTHOP`: No next hop.
         :type NextHopType: str
-        :param _NextHopDestination: Next-hop destination gateway. Its value is determined by `NextHopType`.
-If `NextHopType` is set to `VPN`, the parameter value is the VPN gateway ID, such as `vpngw-12345678`.
-If `NextHopType` is set to `DIRECTCONNECT`, the parameter value is the direct connect gateway ID, such as `dcg-12345678`.
-If `NextHopType` is set to `PEERCONNECTION`, the parameter value is the peering connection ID, such as `pcx-12345678`.
-If `NextHopType` is set to `NAT`, the parameter value is the NAT gateway ID, such as `nat-12345678`.
-If `NextHopType` is set to `NORMAL_CVM`, the parameter value is the IPv4 address of the CVM instance, such as `10.0.0.12`.
-If `NextHopType` is set to `CCN`, the parameter value is the CCN ID, such as `ccn-12345678`.
+        :param _NextHopDestination: ID of the next-hop gateway. 
+`NextHopType` = `VPN`: VPN gateway ID, such as `vpngw-12345678`.
+`NextHopType` = `DIRECTCONNECT`: Direct connect gateway ID, such as `dcg-12345678`.
+`NextHopType` = `PEERCONNECTION`: Peering connection ID, such as `pcx-12345678`.
+`NextHopType` = `NAT`: NAT gateway ID, such as `nat-12345678`.
+`NextHopType` = `NORMAL_CVM`: CVM IPv4 address, such as `10.0.0.12`.
+`NextHopType` = `CCN`: CCN instance ID, such as `ccn-12345678`.
+`NextHopType` = `NONEXTHOP`: No next hop.
         :type NextHopDestination: str
         :param _NetDetectDescription: Network detection description.
         :type NetDetectDescription: str
@@ -6478,7 +6572,7 @@ class CreateNetworkAclRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpcId: VPC instance ID, which can be obtained from the `VpcId` field returned by `DescribeVpcs` API.
+        :param _VpcId: VPC instance ID, which can be obtained from the `VpcId` field in the response of the [`DescribeVpcs`](https://intl.cloud.tencent.com/document/product/215/15778?from_cn_redirect=1) API.
         :type VpcId: str
         :param _NetworkAclName: Network ACL name, which can contain up to 60 bytes.
         :type NetworkAclName: str
@@ -6599,7 +6693,7 @@ class CreateNetworkInterfaceRequest(AbstractModel):
         :type SubnetId: str
         :param _NetworkInterfaceDescription: ENI description can be named freely, but the maximum length is 60 characters.
         :type NetworkInterfaceDescription: str
-        :param _SecondaryPrivateIpAddressCount: The number of private IP addresses that is newly applied for. The total number of private IP addresses cannot exceed the quota.
+        :param _SecondaryPrivateIpAddressCount: The number of private IP addresses you apply for. The total number of private IP addresses cannot exceed the quota.
         :type SecondaryPrivateIpAddressCount: int
         :param _QosLevel: IP service level. It’s used in combination with `SecondaryPrivateIpAddressCount`. Values: `PT` (Gold), `AU` (Silver), `AG` (Bronze) and `DEFAULT`
         :type QosLevel: str
@@ -9421,13 +9515,22 @@ class DefaultVpcSubnet(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpcId: Default VpcId
+        :param _VpcId: Default VPC ID
         :type VpcId: str
-        :param _SubnetId: Default SubnetId
+        :param _SubnetId: Default subnet ID
         :type SubnetId: str
+        :param _VpcName: Default VPC name
+        :type VpcName: str
+        :param _SubnetName: Default subnet name
+        :type SubnetName: str
+        :param _CidrBlock: Default subnet IP range
+        :type CidrBlock: str
         """
         self._VpcId = None
         self._SubnetId = None
+        self._VpcName = None
+        self._SubnetName = None
+        self._CidrBlock = None
 
     @property
     def VpcId(self):
@@ -9445,10 +9548,37 @@ class DefaultVpcSubnet(AbstractModel):
     def SubnetId(self, SubnetId):
         self._SubnetId = SubnetId
 
+    @property
+    def VpcName(self):
+        return self._VpcName
+
+    @VpcName.setter
+    def VpcName(self, VpcName):
+        self._VpcName = VpcName
+
+    @property
+    def SubnetName(self):
+        return self._SubnetName
+
+    @SubnetName.setter
+    def SubnetName(self, SubnetName):
+        self._SubnetName = SubnetName
+
+    @property
+    def CidrBlock(self):
+        return self._CidrBlock
+
+    @CidrBlock.setter
+    def CidrBlock(self, CidrBlock):
+        self._CidrBlock = CidrBlock
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
         self._SubnetId = params.get("SubnetId")
+        self._VpcName = params.get("VpcName")
+        self._SubnetName = params.get("SubnetName")
+        self._CidrBlock = params.get("CidrBlock")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10367,7 +10497,7 @@ class DeleteNetDetectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NetDetectId: The `ID` of a network detection instance, such as `netd-12345678`.
+        :param _NetDetectId: ID of a network probe, such as `netd-12345678`.
         :type NetDetectId: str
         """
         self._NetDetectId = None
@@ -13562,7 +13692,7 @@ class DescribeCustomerGatewaysRequest(AbstractModel):
 <li>customer-gateway-name - String - (Filter condition) The name of the user gateway, such as `test-cgw`.</li>
 <li>ip-address - String - (Filter condition) The public IP address, such as `58.211.1.12`.</li>
         :type Filters: list of Filter
-        :param _Offset: The Offset. The default value is 0. For more information about Offset, see the relevant section in the API Introduction.
+        :param _Offset: Offset. Default value: 0. For more information on Offset, see the relevant section in the API [Introduction](https://intl.cloud.tencent.com/document/api/213/11646?from_cn_redirect=1).
         :type Offset: int
         :param _Limit: Number of returned results. Default value: 20. Maximum value: 100.
         :type Limit: int
@@ -14057,9 +14187,9 @@ class DescribeFlowLogsRequest(AbstractModel):
         :type Offset: int
         :param _Limit: The number of rows per page. Default value: 10.
         :type Limit: int
-        :param _Filters: Filter condition. `FlowLogIds` and `Filters` cannot be specified at the same time.
-<li>tag-key - String - Required: No - (Filter condition) Filter by tag key.</li>
-<li> tag:tag-key - String - Required: No - (Filter condition) Filter by tag key-value pair. The tag-key should be replaced with a specified tag key.</li>
+        :param _Filters: Filter condition. `FlowLogId` and `Filters` cannot be specified at the same time.
+<li> `tag-key` - String - Optional - Filter by the tag key.</li>
+<li> `tag:tag-key` - String - Optional - Filter by the tag key-value pair. The tag-key should be replaced with a specified tag key.</li>
         :type Filters: :class:`tencentcloud.vpc.v20170312.models.Filter`
         :param _CloudLogRegion: The region corresponding to the flow log storage ID.
         :type CloudLogRegion: str
@@ -15546,10 +15676,10 @@ class DescribeNetDetectStatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NetDetectIds: The array of network detection instance `IDs`, such as [`netd-12345678`].
+        :param _NetDetectIds: The array of network probe IDs, such as [`netd-12345678`].
         :type NetDetectIds: list of str
         :param _Filters: Filter conditions. `NetDetectIds` and `Filters` cannot be specified at the same time.
-<li>net-detect-id - String - (Filter condition) The network detection instance ID, such as netd-12345678.</li>
+<li>`net-detect-id` - String - The network probe ID, such as `netd-12345678`.</li>
         :type Filters: list of Filter
         :param _Offset: The offset. Default: 0.
         :type Offset: int
@@ -15677,7 +15807,7 @@ class DescribeNetDetectsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NetDetectIds: The array of network detection instance `IDs`, such as [`netd-12345678`].
+        :param _NetDetectIds: The array of network probe IDs, such as [`netd-12345678`].
         :type NetDetectIds: list of str
         :param _Filters: Filter conditions. `NetDetectIds` and `Filters` cannot be specified at the same time.
 <li>vpc-id - String - (Filter condition) The VPC instance ID, such as vpc-12345678.</li>
@@ -19421,7 +19551,7 @@ class DescribeVpnGatewayCcnRoutesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpnGatewayId: The ID of the VPN gateway instance.
+        :param _VpnGatewayId: Instance ID of the VPN gateway
         :type VpnGatewayId: str
         :param _Offset: Offset.
         :type Offset: int
@@ -19532,7 +19662,7 @@ class DescribeVpnGatewayRoutesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpnGatewayId: VPN gateway ID
+        :param _VpnGatewayId: Instance ID of the VPN gateway
         :type VpnGatewayId: str
         :param _Filters: Filter condition. Valid values: `DestinationCidr`, `InstanceId`, and `InstanceType`.
         :type Filters: list of Filter
@@ -19608,10 +19738,14 @@ class DescribeVpnGatewayRoutesResponse(AbstractModel):
         r"""
         :param _Routes: Destination routes of the VPN gateway
         :type Routes: list of VpnGatewayRoute
+        :param _TotalCount: 
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TotalCount: int
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Routes = None
+        self._TotalCount = None
         self._RequestId = None
 
     @property
@@ -19621,6 +19755,14 @@ class DescribeVpnGatewayRoutesResponse(AbstractModel):
     @Routes.setter
     def Routes(self, Routes):
         self._Routes = Routes
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
 
     @property
     def RequestId(self):
@@ -19638,6 +19780,7 @@ class DescribeVpnGatewayRoutesResponse(AbstractModel):
                 obj = VpnGatewayRoute()
                 obj._deserialize(item)
                 self._Routes.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -21654,6 +21797,7 @@ class EnableVpcEndPointConnectRequest(AbstractModel):
         :param _EndPointId: Endpoint ID
         :type EndPointId: list of str
         :param _AcceptFlag: Whether to accept the request of connecting with an endpoint
+
         :type AcceptFlag: bool
         """
         self._EndPointServiceId = None
@@ -22574,9 +22718,9 @@ class GetCcnRegionBandwidthLimitsRequest(AbstractModel):
         :type Filters: list of Filter
         :param _SortedBy: The sorting condition. Valid values: `BandwidthLimit` and `ExpireTime`.
         :type SortedBy: str
-        :param _Offset: The offset.
+        :param _Offset: Offset
         :type Offset: int
-        :param _Limit: The returned quantity.
+        :param _Limit: Quantity of returned items
         :type Limit: int
         :param _OrderBy: In ascending or descending order. Valid values: 'ASC' and 'DESC'.
         :type OrderBy: str
@@ -22667,7 +22811,7 @@ class GetCcnRegionBandwidthLimitsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _CcnBandwidthSet: The outbound bandwidth limits of regions in a CCN instance.
-Note: this field may return null, indicating that no valid value was found.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type CcnBandwidthSet: list of CcnBandwidthInfo
         :param _TotalCount: The number of eligible objects.
 Note: this field may return null, indicating that no valid value was found.
@@ -26116,16 +26260,18 @@ class ModifyNetDetectRequest(AbstractModel):
 `DIRECTCONNECT`: Direct connect gateway;
 `PEERCONNECTION`: Peering connection;
 `NAT`: NAT gateway;
-`NORMAL_CVM`: normal CVM;
-`CCN`: CCN gateway.
+`NORMAL_CVM`: CVM instance;
+`CCN`: CCN instance;
+`NONEXTHOP`: No next hop.
         :type NextHopType: str
-        :param _NextHopDestination: Next-hop destination gateway. Its value is determined by `NextHopType`.
-If `NextHopType` is set to `VPN`, the parameter value is the VPN gateway ID, such as `vpngw-12345678`.
-If `NextHopType` is set to `DIRECTCONNECT`, the parameter value is the direct connect gateway ID, such as `dcg-12345678`.
-If `NextHopType` is set to `PEERCONNECTION`, the parameter value is the peering connection ID, such as `pcx-12345678`.
-If `NextHopType` is set to `NAT`, the parameter value is the NAT gateway ID, such as `nat-12345678`.
-If `NextHopType` is set to `NORMAL_CVM`, the parameter value is the IPv4 address of the CVM instance, such as `10.0.0.12`.
-If `NextHopType` is set to `CCN`, the parameter value is the CCN ID, such as `ccn-12345678`.
+        :param _NextHopDestination: ID of the next-hop gateway. 
+`NextHopType` = `VPN`: VPN gateway ID, such as `vpngw-12345678`.
+`NextHopType` = `DIRECTCONNECT`: Direct connect gateway ID, such as `dcg-12345678`.
+`NextHopType` = `PEERCONNECTION`: Peering connection ID, such as `pcx-12345678`.
+`NextHopType` = `NAT`: NAT gateway ID, such as `nat-12345678`.
+`NextHopType` = `NORMAL_CVM`: CVM IPv4 address, such as `10.0.0.12`.
+`NextHopType` = `CCN`: CCN instance ID, such as `ccn-12345678`.
+`NextHopType` = `NONEXTHOP`: No next hop.
         :type NextHopDestination: str
         :param _NetDetectDescription: Network detection description.
         :type NetDetectDescription: str
@@ -27887,7 +28033,7 @@ class ModifyVpnGatewayCcnRoutesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpnGatewayId: The ID of the VPN gateway instance.
+        :param _VpnGatewayId: Instance ID of the VPN gateway
         :type VpnGatewayId: str
         :param _Routes: The CCN route (IDC IP range) list.
         :type Routes: list of VpngwCcnRoutes
@@ -27962,7 +28108,7 @@ class ModifyVpnGatewayRoutesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpnGatewayId: VPN gateway ID
+        :param _VpnGatewayId: Instance ID of the VPN gateway
         :type VpnGatewayId: str
         :param _Routes: Route parameters to modify
         :type Routes: list of VpnGatewayRouteModify
@@ -28620,21 +28766,23 @@ class NetDetect(AbstractModel):
         :type DetectDestinationIp: list of str
         :param _DetectSourceIp: The array of detection source IPv4 addresses automatically allocated by the system. The length is 2.
         :type DetectSourceIp: list of str
-        :param _NextHopType: Type of the next hop. Valid values:
+        :param _NextHopType: Type of the next hop. Currently supported types are:
 VPN: VPN gateway;
-DIRECTCONNECT: direct connect gateway;
-PEERCONNECTION: peering connection;
-NAT: NAT gateway;
-NORMAL_CVM: normal CVM.
-CCN: CCN gateway.
+`DIRECTCONNECT`: Direct connect gateway;
+`PEERCONNECTION`: Peering connection;
+`NAT`: NAT gateway;
+`NORMAL_CVM`: CVM instance;
+`CCN`: CCN instance;
+`NONEXTHOP`: No next hop.
         :type NextHopType: str
-        :param _NextHopDestination: Next-hop destination gateway. Its value is determined by `NextHopType`.
-If `NextHopType` is set to `VPN`, the parameter value is the VPN gateway ID, such as `vpngw-12345678`.
-If `NextHopType` is set to `DIRECTCONNECT`, the parameter value is the direct connect gateway ID, such as `dcg-12345678`.
-If `NextHopType` is set to `PEERCONNECTION`, the parameter value is the peering connection ID, such as `pcx-12345678`.
-If `NextHopType` is set to `NAT`, the parameter value is the NAT gateway ID, such as `nat-12345678`.
-If `NextHopType` is set to `NORMAL_CVM`, the parameter value is the IPv4 address of the CVM instance, such as `10.0.0.12`.
-If `NextHopType` is set to `CCN`, the parameter value is the CCN ID, such as `ccn-12345678`.
+        :param _NextHopDestination: ID of the next-hop gateway. 
+`NextHopType` = `VPN`: VPN gateway ID, such as `vpngw-12345678`.
+`NextHopType` = `DIRECTCONNECT`: Direct connect gateway ID, such as `dcg-12345678`.
+`NextHopType` = `PEERCONNECTION`: Peering connection ID, such as `pcx-12345678`.
+`NextHopType` = `NAT`: NAT gateway ID, such as `nat-12345678`.
+`NextHopType` = `NORMAL_CVM`: CVM IPv4 address, such as `10.0.0.12`.
+`NextHopType` = `CCN`: CCN instance ID, such as `ccn-12345678`.
+`NextHopType` = `NONEXTHOP`: No next hop.
         :type NextHopDestination: str
         :param _NextHopName: The name of the next-hop gateway.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -30795,6 +30943,92 @@ class ReplaceRoutesResponse(AbstractModel):
                 obj = Route()
                 obj._deserialize(item)
                 self._NewRouteSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ReplaceSecurityGroupPoliciesRequest(AbstractModel):
+    """ReplaceSecurityGroupPolicies request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SecurityGroupId: The security group instance ID, such as `sg-33ocnj9n`. This can be obtained through the `DescribeSecurityGroups` API.
+        :type SecurityGroupId: str
+        :param _SecurityGroupPolicySet: Security group policy set object.
+        :type SecurityGroupPolicySet: :class:`tencentcloud.vpc.v20170312.models.SecurityGroupPolicySet`
+        :param _OriginalSecurityGroupPolicySet: (Optional) The old policy set of the security group, which is used for log records.
+        :type OriginalSecurityGroupPolicySet: :class:`tencentcloud.vpc.v20170312.models.SecurityGroupPolicySet`
+        """
+        self._SecurityGroupId = None
+        self._SecurityGroupPolicySet = None
+        self._OriginalSecurityGroupPolicySet = None
+
+    @property
+    def SecurityGroupId(self):
+        return self._SecurityGroupId
+
+    @SecurityGroupId.setter
+    def SecurityGroupId(self, SecurityGroupId):
+        self._SecurityGroupId = SecurityGroupId
+
+    @property
+    def SecurityGroupPolicySet(self):
+        return self._SecurityGroupPolicySet
+
+    @SecurityGroupPolicySet.setter
+    def SecurityGroupPolicySet(self, SecurityGroupPolicySet):
+        self._SecurityGroupPolicySet = SecurityGroupPolicySet
+
+    @property
+    def OriginalSecurityGroupPolicySet(self):
+        return self._OriginalSecurityGroupPolicySet
+
+    @OriginalSecurityGroupPolicySet.setter
+    def OriginalSecurityGroupPolicySet(self, OriginalSecurityGroupPolicySet):
+        self._OriginalSecurityGroupPolicySet = OriginalSecurityGroupPolicySet
+
+
+    def _deserialize(self, params):
+        self._SecurityGroupId = params.get("SecurityGroupId")
+        if params.get("SecurityGroupPolicySet") is not None:
+            self._SecurityGroupPolicySet = SecurityGroupPolicySet()
+            self._SecurityGroupPolicySet._deserialize(params.get("SecurityGroupPolicySet"))
+        if params.get("OriginalSecurityGroupPolicySet") is not None:
+            self._OriginalSecurityGroupPolicySet = SecurityGroupPolicySet()
+            self._OriginalSecurityGroupPolicySet._deserialize(params.get("OriginalSecurityGroupPolicySet"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReplaceSecurityGroupPoliciesResponse(AbstractModel):
+    """ReplaceSecurityGroupPolicies response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -35902,9 +36136,9 @@ class VpnGatewayRoute(AbstractModel):
         :type RouteId: str
         :param _Type: Route type. Valid values: `VPC`, `CCN` (CCN-propagated route), `Static`, and `BGP`.
         :type Type: str
-        :param _CreateTime: Creation time
+        :param _CreateTime: The creation time.
         :type CreateTime: str
-        :param _UpdateTime: Update time
+        :param _UpdateTime: The update time.
         :type UpdateTime: str
         """
         self._DestinationCidrBlock = None
