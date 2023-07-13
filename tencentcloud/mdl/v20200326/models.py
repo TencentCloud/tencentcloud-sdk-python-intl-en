@@ -3930,7 +3930,7 @@ class EventSettingsReq(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EventType: Valid values: `INPUT_SWITCH`, `TIMED_RECORD`. If it is not specified, `INPUT_SWITCH` will be used.
+        :param _EventType: Valid values: `INPUT_SWITCH`, `TIMED_RECORD`, SCTE35_TIME_SIGNAL, SCTE35_SPLICE_INSERT, SCTE35_RETURN_TO_NETWORK. If it is not specified, `INPUT_SWITCH` will be used.
         :type EventType: str
         :param _InputAttachment: ID of the input to attach, which is required if `EventType` is `INPUT_SWITCH`
         :type InputAttachment: str
@@ -4057,7 +4057,7 @@ class EventSettingsResp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EventType: Only `INPUT_SWITCH` is supported currently.
+        :param _EventType: Valid values: INPUT_SWITCH, TIMED_RECORD, SCTE35_TIME_SIGNAL, SCTE35_SPLICE_INSERT, SCTE35_RETURN_TO_NETWORK.
         :type EventType: str
         :param _InputAttachment: ID of the input attached, which is not empty if `EventType` is `INPUT_SWITCH`
         :type InputAttachment: str

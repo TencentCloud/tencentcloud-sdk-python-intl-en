@@ -424,6 +424,11 @@ def test_import_tcaplusdb():
     from tencentcloud.tcaplusdb.v20190823 import models
 
 
+def test_import_tchd():
+    from tencentcloud.tchd.v20230306 import tchd_client
+    from tencentcloud.tchd.v20230306 import models
+
+
 def test_import_tcr():
     from tencentcloud.tcr.v20190924 import tcr_client
     from tencentcloud.tcr.v20190924 import models
