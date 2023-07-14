@@ -741,6 +741,29 @@ class GaapClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAuthSignature(self, request):
+        """This API is used to get a request signature that can prevent parameter tampering in the process of triggering orders, getting quotes, or activating subscription services.
+
+        :param request: Request instance for DescribeAuthSignature.
+        :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeAuthSignatureRequest`
+        :rtype: :class:`tencentcloud.gaap.v20180529.models.DescribeAuthSignatureResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAuthSignature", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAuthSignatureResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBlackHeader(self, request):
         """This API is used to query names of blocked custom headers.
 

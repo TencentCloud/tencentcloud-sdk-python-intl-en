@@ -4550,6 +4550,37 @@ class DescribeAccessRegionsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeAuthSignatureRequest(AbstractModel):
+    """DescribeAuthSignature request structure.
+
+    """
+
+
+class DescribeAuthSignatureResponse(AbstractModel):
+    """DescribeAuthSignature response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeBlackHeaderRequest(AbstractModel):
     """DescribeBlackHeader request structure.
 
@@ -13633,6 +13664,9 @@ Each bit in the bitmap represents a feature:
 7th bit: QoS acceleration.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type FeatureBitmap: int
+        :param _SupportFeature: Network support 
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SupportFeature: :class:`tencentcloud.gaap.v20180529.models.SupportFeature`
         """
         self._RegionId = None
         self._RegionName = None
@@ -13640,6 +13674,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self._RegionAreaName = None
         self._IDCType = None
         self._FeatureBitmap = None
+        self._SupportFeature = None
 
     @property
     def RegionId(self):
@@ -13689,6 +13724,14 @@ Note: this field may return `null`, indicating that no valid values can be obtai
     def FeatureBitmap(self, FeatureBitmap):
         self._FeatureBitmap = FeatureBitmap
 
+    @property
+    def SupportFeature(self):
+        return self._SupportFeature
+
+    @SupportFeature.setter
+    def SupportFeature(self, SupportFeature):
+        self._SupportFeature = SupportFeature
+
 
     def _deserialize(self, params):
         self._RegionId = params.get("RegionId")
@@ -13697,6 +13740,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self._RegionAreaName = params.get("RegionAreaName")
         self._IDCType = params.get("IDCType")
         self._FeatureBitmap = params.get("FeatureBitmap")
+        if params.get("SupportFeature") is not None:
+            self._SupportFeature = SupportFeature()
+            self._SupportFeature._deserialize(params.get("SupportFeature"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14518,6 +14564,39 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def _deserialize(self, params):
         self._Time = params.get("Time")
         self._Data = params.get("Data")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SupportFeature(AbstractModel):
+    """Network support
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NetworkType: Supported network types. `normal`: General BGP; `cn2`: Dedicated BGP; `triple`: Non-BGP (provided by the top 3 ISPs in the Chinese mainland); `secure_eip`: Custom security EIPs.
+        :type NetworkType: list of str
+        """
+        self._NetworkType = None
+
+    @property
+    def NetworkType(self):
+        return self._NetworkType
+
+    @NetworkType.setter
+    def NetworkType(self, NetworkType):
+        self._NetworkType = NetworkType
+
+
+    def _deserialize(self, params):
+        self._NetworkType = params.get("NetworkType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
