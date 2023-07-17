@@ -1543,6 +1543,330 @@ class DescribeCustomerBillSummaryResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCustomerInfoData(AbstractModel):
+    """Customer information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CustomerUin: Customer UIN Note: This field may return null, indicating that no valid values can be obtained.
+        :type CustomerUin: str
+        :param _Email: Email Note: This field may return null, indicating that no valid values can be obtained.
+        :type Email: str
+        :param _Phone: Mobile number Note: This field may return null, indicating that no valid values can be obtained.
+        :type Phone: str
+        :param _Mark: Remarks Note: This field may return null, indicating that no valid values can be obtained.
+        :type Mark: str
+        :param _Name: Displayed name Note: This field may return null, indicating that no valid values can be obtained.
+        :type Name: str
+        :param _BindTime: Binding time Note: This field may return null, indicating that no valid values can be obtained.
+        :type BindTime: str
+        :param _AccountStatus: Account status Valid values: `0` (Not frozen),  `1` (Frozen).  Note: This field may return null, indicating that no valid values can be obtained.
+        :type AccountStatus: str
+        :param _AuthStatus: Identity verification status Note: This field may return null, indicating that no valid values can be obtained.
+        :type AuthStatus: str
+        """
+        self._CustomerUin = None
+        self._Email = None
+        self._Phone = None
+        self._Mark = None
+        self._Name = None
+        self._BindTime = None
+        self._AccountStatus = None
+        self._AuthStatus = None
+
+    @property
+    def CustomerUin(self):
+        return self._CustomerUin
+
+    @CustomerUin.setter
+    def CustomerUin(self, CustomerUin):
+        self._CustomerUin = CustomerUin
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def Phone(self):
+        return self._Phone
+
+    @Phone.setter
+    def Phone(self, Phone):
+        self._Phone = Phone
+
+    @property
+    def Mark(self):
+        return self._Mark
+
+    @Mark.setter
+    def Mark(self, Mark):
+        self._Mark = Mark
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def BindTime(self):
+        return self._BindTime
+
+    @BindTime.setter
+    def BindTime(self, BindTime):
+        self._BindTime = BindTime
+
+    @property
+    def AccountStatus(self):
+        return self._AccountStatus
+
+    @AccountStatus.setter
+    def AccountStatus(self, AccountStatus):
+        self._AccountStatus = AccountStatus
+
+    @property
+    def AuthStatus(self):
+        return self._AuthStatus
+
+    @AuthStatus.setter
+    def AuthStatus(self, AuthStatus):
+        self._AuthStatus = AuthStatus
+
+
+    def _deserialize(self, params):
+        self._CustomerUin = params.get("CustomerUin")
+        self._Email = params.get("Email")
+        self._Phone = params.get("Phone")
+        self._Mark = params.get("Mark")
+        self._Name = params.get("Name")
+        self._BindTime = params.get("BindTime")
+        self._AccountStatus = params.get("AccountStatus")
+        self._AuthStatus = params.get("AuthStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCustomerInfoRequest(AbstractModel):
+    """DescribeCustomerInfo request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CustomerUin: List of customer UINs
+        :type CustomerUin: list of int
+        """
+        self._CustomerUin = None
+
+    @property
+    def CustomerUin(self):
+        return self._CustomerUin
+
+    @CustomerUin.setter
+    def CustomerUin(self, CustomerUin):
+        self._CustomerUin = CustomerUin
+
+
+    def _deserialize(self, params):
+        self._CustomerUin = params.get("CustomerUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCustomerInfoResponse(AbstractModel):
+    """DescribeCustomerInfo response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: Customer information Note: This field may return null, indicating that no valid values can be obtained.
+        :type Data: list of DescribeCustomerInfoData
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = DescribeCustomerInfoData()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCustomerUinData(AbstractModel):
+    """List of customer UINs
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CustomerUin: Customer UIN Note: This field may return null, indicating that no valid values can be obtained.
+        :type CustomerUin: str
+        """
+        self._CustomerUin = None
+
+    @property
+    def CustomerUin(self):
+        return self._CustomerUin
+
+    @CustomerUin.setter
+    def CustomerUin(self, CustomerUin):
+        self._CustomerUin = CustomerUin
+
+
+    def _deserialize(self, params):
+        self._CustomerUin = params.get("CustomerUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCustomerUinRequest(AbstractModel):
+    """DescribeCustomerUin request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Page: Page number
+        :type Page: int
+        :param _PageSize: Number of data entries per page
+        :type PageSize: int
+        """
+        self._Page = None
+        self._PageSize = None
+
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCustomerUinResponse(AbstractModel):
+    """DescribeCustomerUin response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: List of customer UINs Note: This field may return null, indicating that no valid values can be obtained.
+        :type Data: list of DescribeCustomerUinData
+        :param _Total: The number of customers
+        :type Total: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = DescribeCustomerUinData()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
 class GetCountryCodesRequest(AbstractModel):
     """GetCountryCodes request structure.
 
@@ -1693,6 +2017,76 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class QueryAccountVerificationStatusRequest(AbstractModel):
+    """QueryAccountVerificationStatus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClientUin: Customer UIN
+        :type ClientUin: int
+        """
+        self._ClientUin = None
+
+    @property
+    def ClientUin(self):
+        return self._ClientUin
+
+    @ClientUin.setter
+    def ClientUin(self, ClientUin):
+        self._ClientUin = ClientUin
+
+
+    def _deserialize(self, params):
+        self._ClientUin = params.get("ClientUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryAccountVerificationStatusResponse(AbstractModel):
+    """QueryAccountVerificationStatus response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AccountStatus: Account verification status
+        :type AccountStatus: bool
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._AccountStatus = None
+        self._RequestId = None
+
+    @property
+    def AccountStatus(self):
+        return self._AccountStatus
+
+    @AccountStatus.setter
+    def AccountStatus(self, AccountStatus):
+        self._AccountStatus = AccountStatus
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AccountStatus = params.get("AccountStatus")
+        self._RequestId = params.get("RequestId")
 
 
 class QueryCreditAllocationHistoryData(AbstractModel):
@@ -1949,6 +2343,37 @@ class QueryCreditByUinListResponse(AbstractModel):
                 obj = QueryDirectCustomersCreditData()
                 obj._deserialize(item)
                 self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class QueryCreditQuotaRequest(AbstractModel):
+    """QueryCreditQuota request structure.
+
+    """
+
+
+class QueryCreditQuotaResponse(AbstractModel):
+    """QueryCreditQuota response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 

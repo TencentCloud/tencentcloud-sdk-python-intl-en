@@ -14,11 +14,11 @@
 # limitations under the License.
 
 
-# 
+# Internal error.
 INTERNALERROR = 'InternalError'
 
-# 
+# Incorrect parameter.
 INVALIDPARAMETER = 'InvalidParameter'
 
-# 
+# Invalid parameter value.
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'

@@ -29,9 +29,8 @@ class DescribeEventsRequest(AbstractModel):
         :type EventDate: str
         :param _ProductIds: Query by Product ID(s). Product ID examples: cvm, lb, cdb, cdn, crs.
         :type ProductIds: list of str
-        :param _RegionIds: 1. Query by Region ID(s). Region ID examples: ap-guangzhou、ap-shanghai、ap-singapore.
-2. The region ID for non-region-specific products should be set to "non-regional".
-
+        :param _RegionIds:  1. Query by Region ID(s). Region ID examples: ap-guangzhou、ap-shanghai、ap-singapore.
+2. The region ID for non-region-specific products should be set to non-regional.
         :type RegionIds: list of str
         """
         self._EventDate = None
@@ -117,25 +116,25 @@ class DescribeEventsResponse(AbstractModel):
 
 
 class EventDetail(AbstractModel):
-    """Describes information on an event
+    """Describes information on an event.
 
     """
 
     def __init__(self):
         r"""
-        :param _ProductId: Product ID
+        :param _ProductId: Product ID.
         :type ProductId: str
-        :param _ProductName: Product name
+        :param _ProductName: Product name.
         :type ProductName: str
-        :param _RegionId: Region ID
+        :param _RegionId: Region ID.
         :type RegionId: str
-        :param _RegionName: Region name
+        :param _RegionName: Region name.
         :type RegionName: str
-        :param _StartTime: Event start time
+        :param _StartTime: Event start time.
         :type StartTime: str
         :param _EndTime: Event end time. If the event is still ongoing and has not ended, the end time will be empty.
         :type EndTime: str
-        :param _CurrentStatus: Current status: Normally, Informational, Degradation
+        :param _CurrentStatus: Current status: Normally, Informational, Degradation.
         :type CurrentStatus: str
         """
         self._ProductId = None
@@ -229,6 +228,7 @@ class ProductEventList(AbstractModel):
     def __init__(self):
         r"""
         :param _EventList: Detailed event information.
+Note: this field may return null, indicating that no valid value is obtained.
         :type EventList: list of EventDetail
         """
         self._EventList = None

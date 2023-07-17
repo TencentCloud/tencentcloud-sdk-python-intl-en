@@ -195,6 +195,52 @@ class IntlpartnersmgtClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCustomerInfo(self, request):
+        """This API is used to query the customer information.
+
+        :param request: Request instance for DescribeCustomerInfo.
+        :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeCustomerInfoRequest`
+        :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeCustomerInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCustomerInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCustomerInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCustomerUin(self, request):
+        """This API is used to query the list of customer UINs.
+
+        :param request: Request instance for DescribeCustomerUin.
+        :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeCustomerUinRequest`
+        :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeCustomerUinResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCustomerUin", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCustomerUinResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetCountryCodes(self, request):
         """This API is used to obtain country/region codes.
 
@@ -209,6 +255,29 @@ class IntlpartnersmgtClient(AbstractClient):
             body = self.call("GetCountryCodes", params, headers=headers)
             response = json.loads(body)
             model = models.GetCountryCodesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryAccountVerificationStatus(self, request):
+        """This API is used to query the account verification status.
+
+        :param request: Request instance for QueryAccountVerificationStatus.
+        :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.QueryAccountVerificationStatusRequest`
+        :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.QueryAccountVerificationStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryAccountVerificationStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryAccountVerificationStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -255,6 +324,29 @@ class IntlpartnersmgtClient(AbstractClient):
             body = self.call("QueryCreditByUinList", params, headers=headers)
             response = json.loads(body)
             model = models.QueryCreditByUinListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryCreditQuota(self, request):
+        """This API is used to query customer credits.
+
+        :param request: Request instance for QueryCreditQuota.
+        :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.QueryCreditQuotaRequest`
+        :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.QueryCreditQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryCreditQuota", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryCreditQuotaResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
